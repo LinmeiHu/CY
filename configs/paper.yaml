@@ -1,0 +1,44 @@
+mode: paper
+database_path: data/cyq_game.sqlite3
+event_store_path: runs/paper-events.jsonl
+run_dir: runs
+seed: 20260818
+live_trading_enabled: false
+initial_cash: 10000000.0
+benchmark: 000985.CSI
+chip:
+  grid_step_pct: 0.01
+  lambda_turnover: 1.0
+  engine: cohort
+  smoothing_sigma_bins: 1.5
+  peak_prominence: 0.03
+  warmup_days: 120
+decision:
+  observability_min: 0.60
+  execution_probability_min: 0.85
+  q_margin_r: 0.30
+  regime_min_probability: 0.60
+  regime_margin: 0.10
+  sector_alpha_enabled: false
+portfolio:
+  kelly_fraction: 0.10
+  single_name_cap: 0.05
+  sector_cap: 0.20
+  theme_cap: 0.10
+  adv_participation_cap: 0.03
+  soft_drawdown: 0.06
+  hard_drawdown: 0.10
+  extreme_gross_multiplier: 0.30
+execution:
+  commission_bps: 3.0
+  stamp_duty_sell_bps: 5.0
+  slippage_bps: 8.0
+  impact_coefficient: 0.15
+  lot_size: 100
+  t_plus_one: true
+  default_price_limit_pct: 0.10
+backtest:
+  final_holdout_fraction: 0.20
+  purge_days: 5
+  embargo_days: 5
+  allow_holdout_access: false

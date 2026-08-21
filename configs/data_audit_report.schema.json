@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cyq-game.local/schemas/data-audit-report-v1.json",
+  "title": "CYQ-GAME data audit report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "audit_id",
+    "content_sha256",
+    "scope",
+    "row_count",
+    "symbol_count",
+    "asset_ids",
+    "asset_kinds",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "audit_id": { "type": "string", "pattern": "^CYQ-AUDIT-[0-9a-f]{20}$" },
+    "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "string", "format": "date" },
+        "end": { "type": "string", "format": "date" }
+      }
+    },
+    "row_count": { "type": "integer", "minimum": 0 },
+    "symbol_count": { "type": "integer", "minimum": 0 },
+    "asset_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "asset_kinds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverage",
+        "duplicates",
+        "time_travel",
+        "consistency",
+        "cross_table"
+      ],
+      "properties": {
+        "coverage": { "$ref": "#/$defs/check" },
+        "duplicates": { "$ref": "#/$defs/check" },
+        "time_travel": { "$ref": "#/$defs/check" },
+        "consistency": { "$ref": "#/$defs/check" },
+        "cross_table": { "$ref": "#/$defs/check" }
+      }
+    }
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "examined", "issue_count", "evidence"],
+      "properties": {
+        "status": { "enum": ["PASS", "FAIL", "NOT_RUN"] },
+        "examined": { "type": "integer", "minimum": 0 },
+        "issue_count": { "type": "integer", "minimum": 0 },
+        "evidence": {
+          "type": "array",
+          "maxItems": 20,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

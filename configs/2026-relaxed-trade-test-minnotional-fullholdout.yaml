@@ -1,0 +1,43 @@
+mode: research
+database_path: data/cyq_game.sqlite3
+event_store_path: runs/events.jsonl
+run_dir: runs
+seed: 20260818
+live_trading_enabled: false
+initial_cash: 10000000.0
+benchmark: 000985.CSI
+chip:
+  grid_step_pct: 0.01
+  lambda_turnover: 1.0
+  engine: cohort
+  smoothing_sigma_bins: 1.5
+  peak_prominence: 0.03
+  warmup_days: 60
+decision:
+  observability_min: 0.0
+  execution_probability_min: 0.0
+  q_margin_r: -1.0
+  regime_min_probability: 0.55
+  regime_margin: 0.10
+  sector_alpha_enabled: false
+portfolio:
+  kelly_fraction: 0.20
+  single_name_cap: 0.20
+  sector_cap: 0.40
+  theme_cap: 0.40
+  adv_participation_cap: 0.10
+  min_order_notional: 2000.0
+  allow_unreliable_size: true
+execution:
+  commission_bps: 3.0
+  stamp_duty_sell_bps: 5.0
+  slippage_bps: 5.0
+  impact_coefficient: 0.10
+  lot_size: 1
+  t_plus_one: true
+  default_price_limit_pct: 0.10
+backtest:
+  final_holdout_fraction: 0.20
+  purge_days: 5
+  embargo_days: 5
+  allow_holdout_access: true

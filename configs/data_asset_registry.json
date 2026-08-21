@@ -1,0 +1,1475 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "CYQ-DATA-BASELINE-20260820",
+  "updated_at": "2026-08-21T17:05:00+08:00",
+  "authority": {
+    "policy": "Only assets listed in this registry may be used by CYQ-GAME. Discovery of a new or changed asset does not authorize use: register it first, freeze its lineage, validate the registry, and pass every activation gate.",
+    "human_document": "docs/data-asset-registry.md",
+    "validator": "scripts/validate_data_registry.py",
+    "fail_closed": true,
+    "silent_substitution_forbidden": true
+  },
+  "pit_grade_definitions": {
+    "A": "Strict archival PIT: immutable original or vintage, actual available_at, source, snapshot_id, content hash, and revision chain are preserved.",
+    "B": "Frozen causal research: event or disclosure timing is causal and a frozen capture exists, but supplier revision history or record-level lineage is incomplete.",
+    "C": "Current historical snapshot: may be used only for discovery or reconciliation; it cannot prove what was knowable at a past decision time.",
+    "D": "Unavailable or intrinsically unobservable with the approved data sources."
+  },
+  "status_definitions": {
+    "RESEARCH_CONDITIONAL": "Materialized data that may become a research input only after its listed activation gates pass. Registration alone is not activation.",
+    "DERIVE_ONLY": "A deterministic transform that must be regenerated exclusively from activated registered inputs.",
+    "QA_ONLY": "May be used for adapter, schema, reconciliation, or cross-source checks; never for states, signals, sizing, or performance claims.",
+    "DISCOVERY_ONLY": "A source or snapshot known to exist but not yet materialized and validated as a causal research input.",
+    "DEMO_ONLY": "Synthetic or demonstration data for software tests only.",
+    "GENERATED_OUTPUT": "Mutable state or run output; it is never an authoritative source fact.",
+    "UNAVAILABLE": "Not available or not observable; dependent design claims are prohibited."
+  },
+  "global_gate": {
+    "strict_archival_pit_ready": false,
+    "free_causal_research_ready": true,
+    "backtest_authorized": true,
+    "as_of": "2026-08-21",
+    "reason": "CY-006 and CY-008 are the frozen v2 daily and minute PIT-B research tables. Their exact inventories, daily five-gate audit, nine annual minute audits, and minute cross-year gate pass. Invalid rows remain explicit and fail closed. Authorization applies only through an exact input snapshot manifest for 2018-01-01..2026-08-12. Strict archival PIT-A remains unavailable."
+  },
+  "assets": [
+    {
+      "asset_id": "QD-001",
+      "name": "A-share unadjusted daily bars",
+      "kind": "market_bars_daily",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_daily",
+      "source": "quant local lake; only *.none.parquet is an eligible price fact",
+      "coverage": {
+        "start": "2004-01-02",
+        "end": "2026-08-14",
+        "rows": 15771300,
+        "symbols": 5736,
+        "files": 5736,
+        "partition_filter": "*.none.parquet",
+        "target_2020_2026_rows": 7677483,
+        "target_2020_2026_symbols": 5667
+      },
+      "schema_and_units": "trade_date, symbol, adjust, OHLC, preclose, volume, amount, amplitude, pct_change, change, turnover_rate; price=raw/unadjusted, volume and amount must be normalized by the adapter and recorded in its manifest",
+      "quality_evidence": {
+        "duplicate_symbol_trade_date_keys": 0,
+        "required_null_rows": 15111,
+        "target_2020_2026_required_null_rows": 13083,
+        "note": "OHLC nulls are zero; volume and amount nulls occur on 15,111 rows and must fail closed."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_completed_bar": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-001-none-20260820.json",
+        "manifest_sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3",
+        "immutable_manifest_scope": "all 5,736 eligible *.none.parquet files; adjusted copies are excluded"
+      },
+      "allowed_uses": [
+        "D1-D5 adapter and quality-gate development",
+        "raw-price chip migration after all activation gates pass",
+        "daily execution facts after unit and trading-status validation"
+      ],
+      "blocked_uses": [
+        "strict PIT output",
+        "standalone backtest input",
+        "using qfq prices for chip cost or execution",
+        "rows with null volume or amount"
+      ],
+      "activation_gates": [
+        "freeze an immutable file inventory with hashes and snapshot_id",
+        "attach causal available_at/source/snapshot_id to normalized records",
+        "verify price, volume, amount, calendar, duplicate, and OHLC contracts",
+        "join point-in-time float, corporate actions, trading status, and market rules",
+        "set hard_valid=false on every unknown or inconsistent row"
+      ]
+    },
+    {
+      "asset_id": "QD-002",
+      "name": "A-share daily tradability state",
+      "kind": "trading_state_daily",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_state_daily",
+      "source": "quant local lake",
+      "coverage": {
+        "start": "2006-04-20",
+        "end": "2026-08-14",
+        "rows": 15707867,
+        "symbols": 5494,
+        "files": 5494
+      },
+      "schema_and_units": "trade_date, symbol, trade_status, is_st, limit_pct, up_limit_price, down_limit_price, buy_blocked_open, sell_blocked_open, state_source",
+      "quality_evidence": {
+        "duplicate_symbol_trade_date_keys": 0,
+        "required_null_rows": 0,
+        "note": "Coverage is smaller than QD-001; a missing join must fail closed."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_completed_state_day": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-002-20260820.json",
+        "manifest_sha256": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982",
+        "immutable_manifest_scope": "all 5,494 files in the registered trading-state directory"
+      },
+      "allowed_uses": [
+        "tradability adapter and consistency audits",
+        "T+1/limit/suspension execution controls after activation gates pass"
+      ],
+      "blocked_uses": [
+        "strict PIT output",
+        "assuming a missing state means tradable",
+        "standalone backtest input"
+      ],
+      "activation_gates": [
+        "freeze an immutable file inventory with hashes and snapshot_id",
+        "attach record-level available_at/source/snapshot_id",
+        "validate state_source and historical rule effective dates",
+        "left-join to QD-001 and fail closed on every missing key"
+      ]
+    },
+    {
+      "asset_id": "QD-003",
+      "name": "Broad-market index daily bars",
+      "kind": "index_bars_daily",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily",
+      "source": "quant local lake",
+      "coverage": {
+        "start": "2006-04-20",
+        "end": "2026-08-14",
+        "rows": 28386,
+        "symbols": 6,
+        "indices": [
+          "csi000300",
+          "csi000852",
+          "csi000905",
+          "sh000001",
+          "sz399001",
+          "sz399006"
+        ]
+      },
+      "schema_and_units": "index_symbol, index_name, trade_date, OHLC, volume, amount",
+      "quality_evidence": {
+        "duplicate_index_trade_date_keys": 0,
+        "ohlc_null_rows": 0
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_completed_bar": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-003-20260820.json",
+        "manifest_sha256": "d847419443b2563c1904790f986ef8980dc37d688318fadb3858b3251d84972f",
+        "immutable_manifest_scope": "all 6 files in the registered index directory"
+      },
+      "allowed_uses": [
+        "market-regime adapter development",
+        "causal benchmark features after activation gates pass"
+      ],
+      "blocked_uses": [
+        "strict PIT output",
+        "survivorship-free constituent inference",
+        "standalone backtest input"
+      ],
+      "activation_gates": [
+        "freeze an immutable file inventory with hashes and snapshot_id",
+        "attach record-level available_at/source/snapshot_id",
+        "validate calendar, units, and same-bar causality"
+      ]
+    },
+    {
+      "asset_id": "QD-004",
+      "name": "Canonical unadjusted A-share 1-minute bars",
+      "kind": "market_bars_1min",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813",
+      "source": "quant canonical merge: annual_csv_none (2000-2009), day_parquet_none (2010-2026-04-10), qmt_xtdata (after 2026-04-10 through 2026-08-12)",
+      "coverage": {
+        "start": "2000-06-09",
+        "end": "2026-08-12",
+        "annual_partitions": 28,
+        "price_basis": "none",
+        "period": "1m",
+        "volume_unit": "shares",
+        "amount_unit": "CNY",
+        "sample_years": {
+          "2018": {
+            "rows": 206303953,
+            "symbols": 3570
+          },
+          "2019": {
+            "rows": 213979562,
+            "symbols": 3768
+          },
+          "2020": {
+            "rows": 228604165,
+            "symbols": 4154
+          }
+        }
+      },
+      "schema_and_units": "symbol, datetime/trade timestamp, OHLC, volume in shares, amount in CNY, source lineage; raw/unadjusted price basis",
+      "quality_evidence": {
+        "manifest_status": "validated",
+        "manifest_schema_version": 2,
+        "selected_year_required_nulls": 0,
+        "selected_year_duplicate_keys": 0,
+        "removed_anomalies": 160703,
+        "note": "Pre-2020 minute data is physically present and is retained by the design; a bounded BaoStock probe returning no 2018/2019 data does not negate this local asset."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_completed_bar": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+        "manifest_sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c",
+        "immutable_manifest_scope": "2018-01-01 through 2026-08-12 target canonical bar partitions: 9 annual day files plus the 2026 QMT tail",
+        "source_manifest_path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/manifest.json",
+        "source_manifest_sha256": "b1a6c88996e5015a23544d63398b49d5dd269d50c71567dc03344fbb83e69e8e",
+        "source_manifest_scope": "source lineage, schema, aggregate quality and anomaly quarantine; it is not a content inventory because it does not hash every output Parquet file"
+      },
+      "allowed_uses": [
+        "minute adapter and causality tests",
+        "pre-2020 warm-up and minute research after all activation gates pass",
+        "causal 5-minute derivation after all activation gates pass"
+      ],
+      "blocked_uses": [
+        "strict PIT output",
+        "direct use by the current CYQ runner before an adapter exists",
+        "silent substitution by QMT, TDX, or BaoStock copies",
+        "same-bar signal fill"
+      ],
+      "activation_gates": [
+        "implement and test the CYQ canonical-minute adapter",
+        "freeze an exact output-file inventory with path, size, and SHA-256; the existing source manifest is evidence but not an immutable content inventory",
+        "attach partition/record source, available_at, snapshot_id, and source-manifest lineage",
+        "join daily universe, float, actions, trading state, and historical rules with hard_valid fail-closed behavior",
+        "validate session grid, no cross-session aggregation, units, duplicates, and anomaly exclusions",
+        "prove signal on bar t cannot fill inside bar t"
+      ],
+      "fingerprints": [
+        {
+          "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/manifest.json",
+          "sha256": "b1a6c88996e5015a23544d63398b49d5dd269d50c71567dc03344fbb83e69e8e"
+        }
+      ]
+    },
+    {
+      "asset_id": "QD-005",
+      "name": "Causal 5-minute bars derived from canonical 1-minute bars",
+      "kind": "market_bars_5min",
+      "status": "DERIVE_ONLY",
+      "pit_grade": "B",
+      "physical_state": "VIRTUAL",
+      "location": null,
+      "source": "deterministic session-aware aggregation of QD-004 only",
+      "coverage": {
+        "inherits_from": "QD-004"
+      },
+      "schema_and_units": "5-minute OHLCV/amount; first/high/low/last/sum within a single A-share trading session",
+      "quality_evidence": {
+        "materialized": false
+      },
+      "lineage": {
+        "record_available_at": "derived as source window close plus ingestion latency",
+        "record_snapshot_id": "inherits QD-004 snapshot and transform version",
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "implementation and unit tests for deterministic 1m-to-5m aggregation"
+      ],
+      "blocked_uses": [
+        "independent vendor 5-minute bars as an unnoticed replacement",
+        "cross-lunch or cross-day aggregation",
+        "research before QD-004 activation"
+      ],
+      "activation_gates": [
+        "QD-004 is activated",
+        "transform code, parameters, source snapshot, and output hashes are frozen",
+        "session-boundary and volume/amount conservation tests pass"
+      ]
+    },
+    {
+      "asset_id": "QD-006",
+      "name": "Alternative local minute and 5-minute copies",
+      "kind": "market_bars_intraday_alternates",
+      "status": "QA_ONLY",
+      "pit_grade": "C",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake",
+      "source": "stock_1min_qmt_none, stock_1min_tdx_none, stock_5min_baostock_none, stock_5min_qmt_none",
+      "coverage": {
+        "datasets": [
+          "stock_1min_qmt_none",
+          "stock_1min_tdx_none",
+          "stock_5min_baostock_none",
+          "stock_5min_qmt_none"
+        ]
+      },
+      "schema_and_units": "vendor-specific; normalize only inside a cross-source audit adapter",
+      "quality_evidence": {
+        "note": "These copies overlap QD-004 and have differing source boundaries. They are retained for reconciliation, not as an automatic fallback."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "bounded cross-source reconciliation",
+        "gap investigation",
+        "adapter tests"
+      ],
+      "blocked_uses": [
+        "state, signal, sizing, execution, or performance output",
+        "silent fallback when QD-004 is missing"
+      ],
+      "activation_gates": [
+        "none; QA_ONLY assets cannot be promoted by runtime code",
+        "promotion requires a new registry revision and full independent audit"
+      ]
+    },
+    {
+      "asset_id": "QD-007",
+      "name": "Historical A-share security universe",
+      "kind": "security_master_pit",
+      "status": "DISCOVERY_ONLY",
+      "pit_grade": "B",
+      "physical_state": "CANDIDATE_NOT_MATERIALIZED",
+      "location": null,
+      "source": "BaoStock query_all_stock(date), with exchange/security-name reconciliation",
+      "coverage": {
+        "bounded_probe_rows": {
+          "2010": 2387,
+          "2018": 4138,
+          "2020": 4686,
+          "2026": 7336
+        }
+      },
+      "schema_and_units": "date-effective symbol universe, code name, trade status and security type where available",
+      "quality_evidence": {
+        "probe_status": "candidate source reachable in bounded probe; full materialization not performed"
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "bounded source probes",
+        "adapter and snapshot-schema development"
+      ],
+      "blocked_uses": [
+        "universe construction",
+        "survivorship-bias claims",
+        "states, signals, or backtests"
+      ],
+      "activation_gates": [
+        "materialize immutable date-effective snapshots",
+        "record capture time, source, request parameters, snapshot_id, hash, and revision",
+        "audit listings, delistings, code changes, duplicates, and calendar coverage",
+        "define causal available_at and fail closed on gaps"
+      ]
+    },
+    {
+      "asset_id": "QD-008",
+      "name": "Historical daily industry membership from disclosure chronology",
+      "kind": "industry_membership_pit",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/meta",
+      "source": "quant industry history derived from Eastmoney yjbb notice chronology; daily rows use only notice_date < trade_date",
+      "coverage": {
+        "start": "2005-07-25",
+        "end": "2026-08-13",
+        "rows": 15765727,
+        "known_industry_rows": 14857632,
+        "unknown_industry_rows": 908095,
+        "target_2018_2026_rows": 9427105,
+        "files": 2,
+        "state_input": "industry_daily.parquet",
+        "lineage_input": "industry_events.parquet"
+      },
+      "schema_and_units": "trade_date, symbol, industry, source_notice_date, source_report_date, source; available_at is conservatively derived as notice-date day end and only rows with notice_date < trade_date are eligible",
+      "quality_evidence": {
+        "duplicate_trade_date_symbol_keys": 0,
+        "known_rows_with_missing_or_noncausal_lineage": 0,
+        "sources": [
+          "eastmoney_yjbb_notice_lag1",
+          "unknown"
+        ],
+        "unknown_policy": "UNKNOWN rows are retained for coverage evidence and always hard_valid=false"
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_source_notice_date": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-008-eastmoney-pit-20260820.json",
+        "manifest_sha256": "b9246df9746f8b97484032dce69dc51bcf3937ece8c93b13a5c3ce2330b2038b",
+        "immutable_manifest_scope": "industry_daily.parquet and industry_events.parquet at the registered location"
+      },
+      "allowed_uses": [
+        "industry adapter and causality audits",
+        "PIT sector state and leave-one-out features after all activation gates pass"
+      ],
+      "blocked_uses": [
+        "UNKNOWN rows",
+        "current membership backfill",
+        "strict archival PIT claims",
+        "standalone backtest input"
+      ],
+      "activation_gates": [
+        "adapter rejects report_date > notice_date or notice_date >= trade_date",
+        "UNKNOWN and missing-lineage rows fail closed",
+        "implement mandatory leave-one-out sector features",
+        "pass cross-table symbol/date coverage audit",
+        "strict PIT A remains unavailable until original response vintages and revisions are archived"
+      ]
+    },
+    {
+      "asset_id": "QD-009",
+      "name": "Announcement-aware historical circulating shares",
+      "kind": "free_float_shares_pit",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/meta",
+      "source": "quant local lake; QMT xtdata Capital history",
+      "coverage": {
+        "start": "1990-12-19",
+        "end": "2026-08-14",
+        "rows": 447495,
+        "symbols": 5562,
+        "target_2018_2026_rows": 251546,
+        "target_2018_2026_symbols": 5461,
+        "files": 1
+      },
+      "schema_and_units": "qmt_code, symbol, exchange, m_timetag effective date, m_anntime announcement date, circulating_capital in shares, restrict_circulating_capital, freeFloatCapital, source",
+      "quality_evidence": {
+        "null_core_rows": 0,
+        "nonpositive_circulating_capital_rows": 2561,
+        "duplicate_effective_keys": 262,
+        "selection_policy": "Require both effective date and announcement date no later than decision_at; select the latest effective date and then latest announcement revision; nonpositive values fail closed."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_effective_and_announcement": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-009-qmt-capital-20260820.json",
+        "manifest_sha256": "f92d2b5c2de1d046d8a4ddeac5e910fa96ce74f770627c92b1c702ed6dfd8468",
+        "immutable_manifest_scope": "qmt_capital.parquet"
+      },
+      "allowed_uses": [
+        "bounded circulating-share as-of joins",
+        "turnover and chip migration after row and cross-table gates pass"
+      ],
+      "blocked_uses": [
+        "rows with nonpositive or missing circulating shares",
+        "rows not known by decision_at",
+        "strict archival PIT claims",
+        "standalone backtest input"
+      ],
+      "activation_gates": [
+        "adapter enforces effective_date <= decision_at and announcement_date <= decision_at",
+        "latest causally available revision wins and conflicting identical revisions fail closed",
+        "audit units, discontinuities, duplicates, and impossible values",
+        "set hard_valid=false whenever circulating shares are unknown or nonpositive"
+      ]
+    },
+    {
+      "asset_id": "QD-010",
+      "name": "Corporate actions and share-capital changes",
+      "kind": "corporate_actions_pit",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5",
+      "source": "quant frozen official CNINFO current historical snapshot; no pre-capture revision history",
+      "coverage": {
+        "as_of_date": "2026-08-09",
+        "distribution_rows": 54188,
+        "rights_rows": 990,
+        "files": 3,
+        "current_snapshot": true,
+        "revision_history_complete": false,
+        "supported_action_classes": [
+          "cash distributions",
+          "share distributions",
+          "rights issues"
+        ]
+      },
+      "schema_and_units": "event_id, symbol, known_at, announcement_date, effective_date, share_multiplier, cash_per_share_gross, rights_subscription_ratio, rights_subscription_price, source completeness and timing flags",
+      "quality_evidence": {
+        "known_at_policy": "conservative next local calendar day after date-only announcement",
+        "late_or_incomplete_rows": "converted to UNRESOLVED_CORPORATE_ACTION and block risk",
+        "strict_pit_eligible": false,
+        "unsupported_action_classes": "mergers, exchange offers, identifier changes, and delisting compensation"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "available_at_observed": false,
+        "available_at_from_announcement_date": true,
+        "record_snapshot_id": false,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "manifest_sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+        "source_manifest_path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+        "source_manifest_sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+      },
+      "allowed_uses": [
+        "bounded PIT-B causal research adaptation",
+        "cash/share chip rebasing after row and cross-table gates pass"
+      ],
+      "blocked_uses": [
+        "strict archival PIT claims or production release",
+        "unsupported corporate-action classes",
+        "rights participation or new risk on a rights event",
+        "silently treating absent historical revisions as observed history"
+      ],
+      "activation_gates": [
+        "verify both normalized Parquet files against the frozen inventory",
+        "require known_at <= decision_at and effective_at <= decision_at",
+        "convert late, incomplete, conflicting, or unit-invalid rows to an explicit blocker",
+        "prove chip mass and ledgers conserve exactly",
+        "keep grade A strict PIT and unsupported action classes disabled"
+      ]
+    },
+    {
+      "asset_id": "QD-011",
+      "name": "Publication-aware financial disclosures",
+      "kind": "fundamentals_pit",
+      "status": "DISCOVERY_ONLY",
+      "pit_grade": "B",
+      "physical_state": "CANDIDATE_NOT_MATERIALIZED",
+      "location": null,
+      "source": "BaoStock and CNINFO publication-date candidates",
+      "coverage": {
+        "full_history_materialized": false
+      },
+      "schema_and_units": "symbol, period_end, event/publication time, available_at, normalized financial values, source, snapshot_id, revision_id",
+      "quality_evidence": {
+        "pit_grade_is_record_dependent": true
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "bounded source probes",
+        "risk and quality-filter adapter design"
+      ],
+      "blocked_uses": [
+        "core alpha",
+        "zero-filling missing disclosures",
+        "states, signals, or backtests"
+      ],
+      "activation_gates": [
+        "materialize publication-aware immutable snapshots",
+        "preserve revisions and actual available_at",
+        "audit period units, restatements, lags, and missingness",
+        "restrict use to risk/quality filters until independently promoted"
+      ]
+    },
+    {
+      "asset_id": "QD-012",
+      "name": "Historical market calendar and trading rules",
+      "kind": "market_rules_pit",
+      "status": "DERIVE_ONLY",
+      "pit_grade": "B",
+      "physical_state": "DERIVED_ON_READ",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_state_daily",
+      "source": "derived per day from frozen QD-002 historical tradability states",
+      "coverage": {
+        "start": "2006-04-20",
+        "end": "2026-08-14",
+        "symbols": 5494,
+        "files": 5494,
+        "beijing_initial_limit_coverage": false
+      },
+      "schema_and_units": "trade_date, symbol, trade_status, is_st, limit_pct, up_limit_price, down_limit_price, buy_blocked_open, sell_blocked_open, state_source; lot_size=100 and T+1 for supported Shanghai/Shenzhen A-shares",
+      "quality_evidence": {
+        "adapter": "adapt_historical_trading_rules",
+        "accepted_limit_pct": [
+          0.05,
+          0.1,
+          0.2,
+          0.3
+        ],
+        "historical_transition_check": "300001.SZ changes from 10% to 20% on 2020-08-24",
+        "missing_or_unknown_rule": "fail closed"
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_completed_state_day": true,
+        "snapshot_id_from_qd002_binding": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-002-20260820.json",
+        "manifest_sha256": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982"
+      },
+      "allowed_uses": [
+        "daily PIT-B execution constraints for supported Shanghai/Shenzhen A-shares",
+        "cross-checking limits, suspensions, and ST transitions against daily bars"
+      ],
+      "blocked_uses": [
+        "strict archival PIT claims",
+        "Beijing initial-listing rules until independently sourced",
+        "unknown boards, missing dates, or synthesized current-rule history"
+      ],
+      "activation_gates": [
+        "read only through the bounded QD-002 adapter",
+        "require exact typed status, ST, limits, and blocked-open flags",
+        "reconcile up/down limit prices with the unadjusted daily preclose",
+        "set hard_valid=false on unknown rule scope, missing date, or conflict"
+      ]
+    },
+    {
+      "asset_id": "QD-013",
+      "name": "Current CNINFO historical corporate-action snapshot",
+      "kind": "corporate_action_snapshot",
+      "status": "DISCOVERY_ONLY",
+      "pit_grade": "C",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data",
+      "source": "current CNINFO historical snapshot inventoried by the quant audit",
+      "coverage": {
+        "distribution_rows": 54188,
+        "distribution_symbols": 5121,
+        "rights_rows": 990,
+        "rights_symbols": 641,
+        "strict_pit_eligible_rows": 0
+      },
+      "schema_and_units": "provider snapshot-specific action fields",
+      "quality_evidence": {
+        "note": "Historical-looking rows captured now do not establish historical availability."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": "current-capture lineage only",
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "source discovery",
+        "cross-source reconciliation after exact files are frozen"
+      ],
+      "blocked_uses": [
+        "historical PIT state",
+        "current-snapshot historical backfill",
+        "chip rebase, float bridge, signals, or backtests"
+      ],
+      "activation_gates": [
+        "none in place; this snapshot remains grade C",
+        "a future grade-B/A dataset requires a separate asset registration"
+      ]
+    },
+    {
+      "asset_id": "QD-014",
+      "name": "RPY2 derived daily factor",
+      "kind": "derived_factor",
+      "status": "QA_ONLY",
+      "pit_grade": "C",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_rpy2",
+      "source": "quant derived from qfq daily close with a 500-day rolling window",
+      "coverage": {
+        "rows": 15766102,
+        "files": 1,
+        "window_trading_days": 500,
+        "price_basis": "qfq"
+      },
+      "schema_and_units": "trade_date, symbol, price_basis, close, 500-day low/high/window, rpy2",
+      "quality_evidence": {
+        "note": "Derived qfq factor is not a chip-cost or execution fact."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "cross-checking a freshly regenerated causal factor"
+      ],
+      "blocked_uses": [
+        "chip cost, execution price, direct alpha input, or performance output",
+        "treating the stored factor as authoritative source data"
+      ],
+      "activation_gates": [
+        "none; production use requires deterministic regeneration from activated registered data and a new derived-asset manifest"
+      ]
+    },
+    {
+      "asset_id": "CY-001",
+      "name": "CY 2026 daily PIT integration fixture exported from quant",
+      "kind": "integration_fixture",
+      "status": "QA_ONLY",
+      "pit_grade": "C",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/pit_input_2026_from_quant.csv",
+      "source": "one-time export from quant daily data",
+      "coverage": {
+        "start": "2026-01-05",
+        "end": "2026-08-14",
+        "rows": 775206
+      },
+      "schema_and_units": "symbol, trade_date, OHLC, volume, amount, free_float_shares; record-level source/available_at/snapshot_id/revision_id are absent",
+      "quality_evidence": {
+        "corporate_action_rows": 0,
+        "industry_membership_rows": 0,
+        "fundamental_rows": 0,
+        "market_rule_rows": 0
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/ingest_manifests/pit-5f066b2ce77037c9.json",
+        "manifest_sha256": "bb7d4d1ea273af8430861928c491def06adbe2903e707613fb30b2de1fe1da84"
+      },
+      "allowed_uses": [
+        "CSV importer integration tests",
+        "schema and fail-closed behavior tests"
+      ],
+      "blocked_uses": [
+        "research conclusion",
+        "state, signal, sizing, or performance output",
+        "strict or causal PIT claims"
+      ],
+      "activation_gates": [
+        "none; this file is permanently QA_ONLY",
+        "production data must be registered as a separate asset"
+      ],
+      "fingerprints": [
+        {
+          "path": "/Users/linmei/Documents/CY/data/ingest_manifests/pit-5f066b2ce77037c9.json",
+          "sha256": "bb7d4d1ea273af8430861928c491def06adbe2903e707613fb30b2de1fe1da84"
+        }
+      ]
+    },
+    {
+      "asset_id": "CY-002",
+      "name": "CY synthetic demo bundle",
+      "kind": "synthetic_demo",
+      "status": "DEMO_ONLY",
+      "pit_grade": "D",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data",
+      "source": "scripts/generate_demo_data.py and prior local demonstrations",
+      "coverage": {
+        "files": [
+          "demo.csv",
+          "demo_2026.csv",
+          "demo_2026_fund.csv",
+          "demo_2026_industry.csv"
+        ],
+        "demo_rows": 2088,
+        "demo_2026_rows": 1044,
+        "demo_2026_fund_rows": 20,
+        "demo_2026_industry_rows": 4
+      },
+      "schema_and_units": "test fixture schemas; not a market-data contract",
+      "quality_evidence": {
+        "synthetic": true
+      },
+      "lineage": {
+        "record_available_at": "synthetic",
+        "record_snapshot_id": "file lineage only",
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "unit, integration, CLI, replay, and deterministic software tests"
+      ],
+      "blocked_uses": [
+        "market research",
+        "performance claims",
+        "strategy promotion"
+      ],
+      "activation_gates": [
+        "none; demo data remains DEMO_ONLY"
+      ],
+      "fingerprints": [
+        {
+          "path": "/Users/linmei/Documents/CY/data/demo.csv",
+          "sha256": "d322cdedd50abf2fe43b7624dcf443091317fc0acdcefce3cb0797ed4502b24b"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY/data/demo_2026.csv",
+          "sha256": "910f20f34393c2e340e3d7c429e4445fdbfb1aaf52ec67cd4cac55220f76a14e"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY/data/demo_2026_fund.csv",
+          "sha256": "f010735e1ed994c391b3ab484e122dd2925d0335f7a2c23e45e82f724913babf"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY/data/demo_2026_industry.csv",
+          "sha256": "3bd29c8e093b3620351dd19a341d27702a640788413e7284ed2fa9027c9823f1"
+        }
+      ]
+    },
+    {
+      "asset_id": "CY-003",
+      "name": "CYQ daily PIT-B causal research table 2018-2026",
+      "kind": "daily_pit_b_research_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v1/daily",
+      "source": "deterministic CY join of frozen QD-001/QD-002/QD-003/QD-008/QD-009/QD-010/QD-012 inputs; QMT is primary for bars, trading state, and historical circulating shares",
+      "coverage": {
+        "start": "2018-01-01",
+        "end": "2026-08-12",
+        "rows": 9421907,
+        "hard_valid_rows": 9065778,
+        "hard_invalid_rows": 356129,
+        "hard_valid_ratio": 0.9622020255559729,
+        "partitions": 9,
+        "target_backtest_start": "2020-01-01"
+      },
+      "schema_and_units": "One symbol/trade_date row with raw OHLC, preclose, volume, amount, turnover, trading status, versioned market rule and price limits, PIT industry, QMT historical circulating_shares, final CNINFO corporate-action facts, component available_at/snapshot_id, aggregate available_at/snapshot_id, hard_valid, and invalid_reasons; only hard_valid=true rows may generate state or add risk",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v1/audit.json",
+        "audit_sha256": "e05f36dddd345e1383a7cb78d3135fceea9cb74ab3c52c9fe06042aae0634bff",
+        "gate": "PIT_B_ALL_MARKET_DAILY_DATA",
+        "gate_pass": true,
+        "coverage": "PASS",
+        "duplicates": "PASS",
+        "time_travel": "PASS",
+        "consistency": "PASS",
+        "cross_table": "PASS",
+        "issue_count": 0
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-003-pit-b-daily-2018-2026-20260820.json",
+        "manifest_sha256": "69d4005a3d709c87eaffbdb1ca927cd87d4c18f77819e4c90decee8e65138aff",
+        "component_assets": [
+          "QD-001",
+          "QD-002",
+          "QD-003",
+          "QD-008",
+          "QD-009",
+          "QD-010",
+          "QD-012"
+        ],
+        "pipeline_version": "daily-pit-b-v1",
+        "build_id": "PITB-2365540F1ABDC447913E"
+      },
+      "allowed_uses": [
+        "daily PIT-B causal state generation with row-level hard_valid enforcement",
+        "short, local-regime, and 2020-2026 daily research backtests through the exact input snapshot manifest",
+        "leave-one-out industry context using the registered PIT membership field"
+      ],
+      "blocked_uses": [
+        "strict archival PIT-A claims",
+        "live trading or current-day execution truth",
+        "state generation, new orders, or added risk from hard_valid=false rows",
+        "claiming a complete historical CNINFO revision chain or official rule archive",
+        "using current snapshots to fill unknown historical facts"
+      ],
+      "activation_gates": [
+        "exact nine-file inventory remains hash-identical",
+        "coverage, duplicates, time_travel, consistency, and cross_table audits remain PASS",
+        "runtime verifies the registry and input-snapshot manifest identities",
+        "runtime reads Parquet in date batches and enforces row-level hard_valid before state generation",
+        "requested date range remains within 2018-01-01..2026-08-12"
+      ]
+    },
+    {
+      "asset_id": "CY-006",
+      "name": "CYQ daily PIT-B causal research table v2 2018-2026",
+      "kind": "daily_pit_b_research_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+      "source": "deterministic daily-pit-b-v2 join of frozen QMT/quant bars, trading state, Capital history, PIT industry, final CNINFO actions, and versioned market rules",
+      "coverage": {
+        "start": "2018-01-01",
+        "end": "2026-08-12",
+        "rows": 9421907,
+        "hard_valid_rows": 9063454,
+        "hard_invalid_rows": 358453,
+        "hard_valid_ratio": 0.9619553663605468,
+        "partitions": 9,
+        "target_backtest_start": "2020-01-01"
+      },
+      "schema_and_units": "One symbol/trade_date row with raw OHLC, preclose, volume, amount, circulating shares, turnover, trading status, versioned price-limit rule, PIT industry, final corporate-action facts, component and aggregate available_at/snapshot_id, hard_valid, and invalid_reasons; only hard_valid=true may generate state or add risk",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/audit.json",
+        "audit_sha256": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b",
+        "gate": "PIT_B_ALL_MARKET_DAILY_DATA_V2",
+        "gate_pass": true,
+        "coverage": "PASS",
+        "duplicates": "PASS",
+        "time_travel": "PASS",
+        "consistency": "PASS",
+        "cross_table": "PASS",
+        "issue_count": 0
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+        "component_assets": [
+          "QD-001",
+          "QD-002",
+          "QD-003",
+          "QD-008",
+          "QD-009",
+          "QD-010",
+          "QD-012"
+        ],
+        "pipeline_version": "daily-pit-b-v2",
+        "build_id": "PITB-80B916173F29877FD683"
+      },
+      "allowed_uses": [
+        "daily causal state generation with row-level hard_valid enforcement",
+        "short, local-regime, and 2020-2026 causal research through an exact input snapshot manifest",
+        "leave-one-out industry context using registered PIT membership"
+      ],
+      "blocked_uses": [
+        "strict archival PIT-A claims",
+        "live trading or current-day execution truth",
+        "state generation or added risk from hard_valid=false rows",
+        "current snapshots used as unknown historical facts"
+      ],
+      "activation_gates": [
+        "exact nine-file inventory remains hash-identical",
+        "coverage, duplicates, time_travel, consistency, and cross_table audits remain PASS",
+        "runtime verifies registry and input-snapshot identities",
+        "runtime enforces available_at <= decision_at and hard_valid before state generation",
+        "requested range stays within 2018-01-01..2026-08-12"
+      ]
+    },
+    {
+      "asset_id": "CY-008",
+      "name": "CYQ minute PIT-B causal feature and execution table v2 2018-2026",
+      "kind": "minute_pit_b_research_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2",
+      "source": "deterministic minute-pit-b-v2 transform of frozen QD-004 one-minute bars joined only to causal CY-006 daily context",
+      "coverage": {
+        "start": "2018-01-01",
+        "end": "2026-08-12",
+        "daily_rows": 9365043,
+        "daily_hard_valid_rows": 9024309,
+        "daily_hard_valid_ratio": 0.9636163977036731,
+        "execution_5m_rows": 56190252,
+        "execution_5m_hard_valid_rows": 56011256,
+        "partitions": 18,
+        "inventory_files": 27
+      },
+      "schema_and_units": "Daily symbol/date causal chip observation arrays (at most 32 price-volume bins) plus six ordered five-minute execution windows; every record has source, available_at, snapshot_id, hard_valid, and daily causal trading context",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json",
+        "audit_sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d",
+        "gate": "MINUTE_PIT_B_CROSS_YEAR",
+        "gate_pass": true,
+        "annual_audits": 9,
+        "daily_unique": "PASS",
+        "execution_unique": "PASS",
+        "time_travel": "PASS",
+        "chip_mass": "PASS",
+        "execution_completeness": "PASS"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+        "manifest_sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+        "component_assets": [
+          "QD-004",
+          "CY-006"
+        ],
+        "pipeline_version": "minute-pit-b-v2"
+      },
+      "allowed_uses": [
+        "minute price-volume chip-state observation and pre-2020 state warm-up",
+        "next-window causal execution simulation after a daily decision",
+        "short, local-regime, and 2020-2026 causal research through an exact input snapshot manifest"
+      ],
+      "blocked_uses": [
+        "strict archival PIT-A claims",
+        "same-bar fills or use of minute records after decision_at",
+        "state generation or fills from hard_valid=false records",
+        "order-book queue, hidden-liquidity, or real participant identity claims",
+        "live trading truth"
+      ],
+      "activation_gates": [
+        "exact 27-file inventory remains hash-identical",
+        "all nine annual audits and the cross-year gate remain PASS",
+        "runtime binds CY-006 daily and CY-008 minute snapshots together",
+        "signal formed on t cannot fill within t and CYQK_pre remains pre-trade",
+        "requested range stays within 2018-01-01..2026-08-12"
+      ]
+    },
+    {
+      "asset_id": "CY-009",
+      "name": "CYQ frozen chip-state features v2 in annual query layout",
+      "kind": "chip_state_feature_table",
+      "status": "DERIVE_ONLY",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/processed/chip_state_features_by_year_2018_2026_v2",
+      "source": "deterministic chip-state-features-v2 transform of frozen CY-006 daily and CY-008 minute inputs, physically reordered by trade_date,symbol without changing content",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2026-08-12",
+        "rows": 9421907,
+        "strict_rows": 8542730,
+        "annual_partitions": 9,
+        "inventory_files": 9,
+        "target_backtest_start": "2020-01-01"
+      },
+      "schema_and_units": "One symbol/trade_date row containing causal available_at and snapshot lineage, pre-trade CYQK, conserved chip features, peaks/priors, base retention, data-validity fields, and same-day minute summary factors; raw price coordinates remain separate from corporate-action events",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/cyq_chip_feature_layout_gate_v2.json",
+        "audit_sha256": "73b65cc3ba6d40059e37c103d79fa24127fb56677750dd819fba52ee021355ef",
+        "feature_audit_path": "/Users/linmei/Documents/CY/data/audit/cyq_chip_state_features_gate_v2.json",
+        "feature_audit_sha256": "2e622c423cd092bfe532e27250b4534ed90d00ff74a31dd325c55b3e77256925",
+        "query_benchmark_path": "/Users/linmei/Documents/CY/data/audit/cyq_chip_feature_query_performance_v2.json",
+        "gate": "CHIP_STATE_FEATURES_V2_AND_ANNUAL_LAYOUT",
+        "gate_pass": true,
+        "feature_checks": "13/13 PASS",
+        "content_equivalence": "PASS",
+        "query_speedup": 26.7553403125
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-009-chip-state-features-v2-2018-2026-20260821.json",
+        "manifest_sha256": "d8a8d6c77de3eadb119315bf0c2a9513d94a1f4a28419dc15e616b2713316c32",
+        "component_assets": [
+          "CY-006",
+          "CY-008"
+        ],
+        "pipeline_version": "chip-state-features-v2-annual-layout"
+      },
+      "allowed_uses": [
+        "causal frozen pre-trade chip features instead of rebuilding identical states inside every strategy run",
+        "minute-summary evidence and chip-state warm-up for causal research through the exact input snapshot manifest",
+        "short, local-regime, and 2020-2026 causal research after implementation gates pass"
+      ],
+      "blocked_uses": [
+        "strict archival PIT-A claims",
+        "raw market-data or corporate-action source replacement",
+        "same-bar fills or use before available_at",
+        "state generation or added risk from strict_sample=false records",
+        "live trading truth"
+      ],
+      "activation_gates": [
+        "exact nine-file inventory remains hash-identical",
+        "the 13-check feature audit and annual-layout content-equivalence gate remain PASS",
+        "runtime binds CY-006, CY-008, and CY-009 exact snapshots together",
+        "runtime enforces available_at <= decision_at and CYQK_pre remains pre-trade",
+        "requested range stays within 2018-01-02..2026-08-12"
+      ]
+    },
+    {
+      "asset_id": "CY-OUT-001",
+      "name": "CY mutable SQLite state store",
+      "kind": "generated_state_store",
+      "status": "GENERATED_OUTPUT",
+      "pit_grade": "D",
+      "physical_state": "GENERATED_MUTABLE",
+      "location": "/Users/linmei/Documents/CY/data/cyq_game.sqlite3",
+      "source": "CY runtime",
+      "coverage": {
+        "mutable": true
+      },
+      "schema_and_units": "runtime database; schema controlled by CY code",
+      "quality_evidence": {
+        "note": "Presence or size does not make this an input source."
+      },
+      "lineage": {
+        "record_available_at": "copied from registered normalized inputs where implemented",
+        "record_snapshot_id": "runtime run lineage",
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "generated state, event, and replay storage"
+      ],
+      "blocked_uses": [
+        "authoritative source fact",
+        "data discovery",
+        "silent reuse across incompatible snapshots"
+      ],
+      "activation_gates": [
+        "must be reproducible from activated registered inputs and versioned code",
+        "must never be promoted into the input registry by runtime discovery"
+      ]
+    },
+    {
+      "asset_id": "UN-001",
+      "name": "Historical full-depth order-book queue and tick-by-tick orders",
+      "kind": "level2_order_queue",
+      "status": "UNAVAILABLE",
+      "pit_grade": "D",
+      "physical_state": "NOT_AVAILABLE",
+      "location": null,
+      "source": "no complete free causal source identified",
+      "coverage": {
+        "available": false
+      },
+      "schema_and_units": "not applicable",
+      "quality_evidence": {
+        "note": "Minute bars cannot reconstruct queue priority, cancellations, or hidden liquidity."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "none"
+      ],
+      "blocked_uses": [
+        "queue-position models",
+        "tick-order alpha",
+        "spoofing or manipulation inference"
+      ],
+      "activation_gates": [
+        "requires a separately licensed, audited, PIT-capable dataset and a new registry revision"
+      ]
+    },
+    {
+      "asset_id": "UN-002",
+      "name": "Real participant account identity and intent",
+      "kind": "participant_identity",
+      "status": "UNAVAILABLE",
+      "pit_grade": "D",
+      "physical_state": "NOT_AVAILABLE",
+      "location": null,
+      "source": "intrinsically unobservable from public market data",
+      "coverage": {
+        "available": false
+      },
+      "schema_and_units": "not applicable",
+      "quality_evidence": {
+        "note": "Participant labels remain latent hypotheses and cannot be claims about real accounts."
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "immutable_manifest": false
+      },
+      "allowed_uses": [
+        "latent, explicitly uncertain participant hypotheses derived from activated public data"
+      ],
+      "blocked_uses": [
+        "real dealer/account identification",
+        "intent claims",
+        "ground-truth labels of participant identity"
+      ],
+      "activation_gates": [
+        "none; the claim is outside system scope"
+      ]
+    },
+    {
+      "asset_id": "CY-004",
+      "name": "000820.SZ BaoStock point-in-time repair snapshot through 2026-08-20",
+      "kind": "single_stock_daily_repair_snapshot",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE",
+      "location": "/Users/linmei/Documents/CY/data/raw/shenwu_000820_repair_20260820/baostock_daily",
+      "source": "BaoStock query_history_k_data_plus unadjusted daily response; trading status cross-checked against official CNINFO notice 1225445676",
+      "coverage": {
+        "symbol": "000820.SZ",
+        "start": "2018-01-02",
+        "end": "2026-08-20",
+        "rows": 2095,
+        "active_rows": 2042,
+        "suspended_rows": 53
+      },
+      "schema_and_units": "date, code, raw CNY OHLC/preclose, shares volume, CNY amount, adjustflag=3, turnover percent, pctChg percent, tradestatus, isST; daily record available at 15:00 Asia/Shanghai",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/audits/shenwu_000820_repair_20260820.json",
+        "audit_sha256": "d22aaab55159c46ef347db695b0aab628ef4c477e51f894c57e227164f4f6136",
+        "gate": "SHENWU_000820_TARGETED_REPAIR_20260820",
+        "gate_pass": true,
+        "overlap_rows_with_CY_003": 2088,
+        "overlap_ohlc_exact": true,
+        "turnover_percentage_point_max_delta": 0.00010406310428123788,
+        "old_state_mismatch_count": 15,
+        "official_state_cross_check": "PASS: 2026-07-29 suspended; risk-warning removal and 10% limit effective 2026-07-30",
+        "corporate_action_check": "PASS: QD-010 has no 000820 action effective on or after 2018-01-01"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_available_at_policy": "15:00:00+08:00 on each trade date",
+        "record_snapshot_id": true,
+        "snapshot_id": "BAOSTOCK-SZ.000820-20260820-8BEF0A6FF8C0BF52",
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/raw/shenwu_000820_repair_20260820/baostock_daily/manifest.json",
+        "manifest_sha256": "e7cbec9d9382d25eb34afc9939e4ca673637e2ae3190a9185db2f23cc1890ed7",
+        "response_path": "/Users/linmei/Documents/CY/data/raw/shenwu_000820_repair_20260820/baostock_daily/response.csv",
+        "response_sha256": "8bef0a6ff8c0bf526f0a33d74ff182ef17169b5233c177bf84a4d1c34b4075e4",
+        "component_assets": [
+          "QD-010",
+          "QD-012"
+        ],
+        "official_evidence_id": "EV-008"
+      },
+      "allowed_uses": [
+        "targeted 000820.SZ causal chip replay through 2026-08-20 close",
+        "repair and validation of 000820.SZ suspension and ST-state conflicts",
+        "PIT-B conditional single-stock research after runtime hash and conservation gates pass"
+      ],
+      "blocked_uses": [
+        "strict archival PIT-A claims",
+        "live trading or automated order generation",
+        "other symbols or dates after 2026-08-20",
+        "silent replacement of QD-002 or CY-003 for the full market",
+        "participant identity or dealer-account inference"
+      ],
+      "activation_gates": [
+        "runtime response, manifest, official notice, and audit hashes remain exact",
+        "requested symbol and cutoff stay within registered coverage",
+        "official 2026-07-29 state event is applied only from its effective date",
+        "suspended rows perform no chip turnover update",
+        "QD-010 confirms no replay-period corporate-action rebasing is required",
+        "chip and cohort mass conservation error remains <= 1e-8"
+      ]
+    },
+    {
+      "asset_id": "CY-005",
+      "name": "301511.SZ targeted PIT-B market, corporate-action, and official-disclosure bundle through 2026-08-20",
+      "kind": "single_stock_research_bundle",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE",
+      "location": "/Users/linmei/Documents/CY/data/raw/defu_301511_baostock_20260820_v2",
+      "source": "BaoStock unadjusted daily response plus frozen CNINFO/SZSE official disclosures; old quant daily lake used only for overlap reconciliation",
+      "coverage": {
+        "symbol": "301511.SZ",
+        "start": "2023-08-17",
+        "end": "2026-08-20",
+        "rows": 729,
+        "active_rows": 729,
+        "official_documents": 9
+      },
+      "schema_and_units": "date, code, raw CNY OHLC/preclose, shares volume, CNY amount, adjustflag=3, turnover percent, pctChg percent, tradestatus, isST; daily record available at 15:00 Asia/Shanghai; official disclosures retain source URL, publication date, frozen filename, and SHA-256",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/audits/defu_301511_20260820.json",
+        "audit_sha256": "886f45602a3cde93172730f6a61c87bc557b2667cbf440547accdea369f90ff6",
+        "gate": "DEFU_301511_TARGETED_PIT_RESEARCH_20260820",
+        "gate_pass": true,
+        "overlap_rows_with_QD_001": 725,
+        "overlap_ohlc_exact": true,
+        "volume_max_delta_shares": 82.0,
+        "amount_max_delta_yuan": 61.450000047683716,
+        "turnover_percentage_point_max_delta": 0.003433034219915143,
+        "corporate_action_check": "PASS: 2024-05-20 10-for-14 split/dividend reference and 2026-05-26 cash-dividend reference reconcile",
+        "float_check": "PASS: 2026-08-17 formal unlock and post-event unrestricted shares reconcile"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_available_at_policy": "15:00:00+08:00 on each trade date",
+        "record_snapshot_id": true,
+        "snapshot_id": "BAOSTOCK-SZ.301511-20260820-33EC14A3C454EF98",
+        "snapshot_collected_at": "2026-08-21T11:17:38+08:00",
+        "decision_at": "2026-08-21T11:20:00+08:00",
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/raw/defu_301511_baostock_20260820_v2/manifest.json",
+        "manifest_sha256": "8a03596f8d541b81f2e4e9d6a82692c80a8a2592071a0239372b0cbe280cbe60",
+        "response_path": "/Users/linmei/Documents/CY/data/raw/defu_301511_baostock_20260820_v2/response.csv",
+        "response_sha256": "33ec14a3c454ef984fa364844c54bd61e99e0fe47d52a27b78e0f01a2008b0e8",
+        "official_manifest_path": "/Users/linmei/Documents/CY/data/raw/defu_301511_official_20260820/manifest.json",
+        "official_manifest_sha256": "9e12b2c5cfc86db5f2bb698948a38b214b83a334302680fe40096b0bf19900d3",
+        "official_evidence_ids": [
+          "EV-009",
+          "EV-010"
+        ]
+      },
+      "allowed_uses": [
+        "targeted 301511.SZ causal chip replay through 2026-08-20 close",
+        "conditional 301511.SZ fundamental and valuation research using the frozen official disclosures",
+        "PIT-B conditional single-stock state analysis after runtime hash, corporate-action, float, and conservation gates pass"
+      ],
+      "blocked_uses": [
+        "strict archival PIT-A claims",
+        "current full-market, sector, or leave-one-out state claims through 2026-08-20",
+        "live trading, automated order generation, or position sizing",
+        "other symbols or dates after 2026-08-20",
+        "silent replacement of the registered full-market tables",
+        "participant identity or dealer-account inference"
+      ],
+      "activation_gates": [
+        "runtime response, both manifests, all official documents, and audit hashes remain exact",
+        "requested symbol and cutoff stay within registered coverage",
+        "2024-05-20 split is causally rebased before that date's chip update",
+        "2026-05-26 cash dividend is recorded in a separate ledger without shifting cost-price coordinates",
+        "2026-08-17 unlocked-float change is applied only from its listing date",
+        "signal features on bar t use the pre-trade chip state and cannot fill inside bar t",
+        "chip and cohort mass conservation error remains <= 1e-8",
+        "strict outputs and executable actions remain hard-invalid until full-market state, PIT sector membership, leave-one-out sector features, current trading rules, and an OOS-calibrated EdgeCard are available"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/audit/cyq_free_data_design_decisions_20260820.json",
+      "sha256": "e685ac339529a4b394074f75f3ba4e3688def693fc45218a6a4adb62e54c6293",
+      "role": "authoritative feasibility and redesign decisions"
+    },
+    {
+      "evidence_id": "EV-002",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/audit/cyq_local_minute_inventory_20260820.json",
+      "sha256": "1680dd403e52be705825d6371f9e2ad9e41b1c9a8f0df749f7071d08d897d040",
+      "role": "local minute data inventory"
+    },
+    {
+      "evidence_id": "EV-003",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/audit/cyq_free_data_source_probe_20260820.json",
+      "sha256": "e50729856aa181a826e3505b6116eece235078f258d669972014253c3aa53f1c",
+      "role": "bounded free-source probe evidence"
+    },
+    {
+      "evidence_id": "EV-004",
+      "path": "/Users/linmei/Downloads/workspace/quant/docs/CYQ_GAME_FREE_DATA_FEASIBILITY.md",
+      "sha256": "4c673d89674929da3cb439886a72e3a3e2058ffc1f60e704441af70e23b097b4",
+      "role": "human-readable free-data feasibility analysis"
+    },
+    {
+      "evidence_id": "EV-005",
+      "path": "/Users/linmei/Downloads/workspace/quant/docs/CYQ_GAME_DATA_FEASIBLE_SPEC.md",
+      "sha256": "80d9524eb10c9671ee0f8ca37721122eb82e638a94d16bd42613bf78fd164fba",
+      "role": "data-feasible system specification"
+    },
+    {
+      "evidence_id": "EV-006",
+      "path": "/Users/linmei/Downloads/workspace/quant/docs/CYQ_GAME_EXECUTION_PLAN_V2_DATA_FIRST.md",
+      "sha256": "efbe0559f848b1baa4c9ca0b48500dcd947009357f977aaaefa62b79e86180cb",
+      "role": "data-first execution order and gates"
+    },
+    {
+      "evidence_id": "EV-007",
+      "path": "/Users/linmei/Downloads/workspace/quant/configs/cyq_game_v5_2_2020_2026.json",
+      "sha256": "5817a8ed911a977f0ad0f565e479d252b52b446eabd7383e9bad608025c2e753",
+      "role": "quant-side current CYQ source selection config"
+    },
+    {
+      "evidence_id": "EV-008",
+      "path": "/Users/linmei/Documents/CY/data/raw/shenwu_000820_repair_20260820/official/1225445676.pdf",
+      "sha256": "c475ad2c5819f5f9960e5cbd9b1919383fa954bccec1e9ad52c03f8a7e8e4080",
+      "role": "official CNINFO notice confirming 2026-07-29 suspension and 2026-07-30 removal of delisting risk warning"
+    },
+    {
+      "evidence_id": "EV-009",
+      "path": "/Users/linmei/Documents/CY/data/raw/defu_301511_official_20260820/manifest.json",
+      "sha256": "9e12b2c5cfc86db5f2bb698948a38b214b83a334302680fe40096b0bf19900d3",
+      "role": "frozen inventory, source URLs, publication dates, and exact hashes for nine official 301511.SZ disclosures"
+    },
+    {
+      "evidence_id": "EV-010",
+      "path": "/Users/linmei/Documents/CY/data/audits/defu_301511_20260820.json",
+      "sha256": "886f45602a3cde93172730f6a61c87bc557b2667cbf440547accdea369f90ff6",
+      "role": "targeted PIT, cross-source, corporate-action, float, and official-document activation audit for 301511.SZ"
+    }
+  ],
+  "change_log": [
+    {
+      "at": "2026-08-20T00:00:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Initial CY project data baseline. Registered physical quant assets, candidate free sources, CY fixtures, unavailable inputs, usage boundaries, PIT grades, and activation gates. Explicitly retained pre-2020 local minute data as conditional research input.",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-004",
+        "EV-005",
+        "EV-006",
+        "EV-007"
+      ]
+    },
+    {
+      "at": "2026-08-20T00:00:01+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Corrected QD-004 lineage semantics: its existing manifest freezes source lineage and aggregate quality evidence but does not hash every output Parquet. Marked immutable_manifest=false and added an exact per-file content inventory as an activation gate.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-20T00:00:02+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Frozen exact content inventories for QD-001 eligible raw daily bars, QD-002 trading states, QD-003 index bars, and QD-004 target 2018-2026 minute partitions. This completes file-level freezing only; record-level PIT fields and activation gates remain incomplete.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-20T00:00:03+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered and froze the existing quant Eastmoney disclosure-chronology industry history as QD-008. The daily table enforces notice_date < trade_date; UNKNOWN rows fail closed. This is causal research grade B, not strict archival PIT A.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-20T00:00:04+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered and froze QMT Capital history as QD-009. The adapter requires both effective and announcement dates to be known, selects the latest causal revision, and fails closed on nonpositive circulating shares.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-20T22:05:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-003, the frozen 9,421,907-row daily PIT-B table. Exact nine-file inventory is frozen; coverage, duplicate, time-travel, consistency, and cross-table audits all PASS; 356,129 hard-invalid rows remain explicit and fail closed. Enabled causal daily research and backtest authorization only for an exact input-snapshot manifest. Strict PIT-A remains false.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-20T23:59:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-004 as a targeted immutable PIT-B repair snapshot for 000820.SZ. Its 2,088 overlapping OHLC rows match CY-003, turnover differs by at most 0.000104 percentage points, and official evidence identifies 15 bad legacy state rows. Activation is limited to causal chip replay through 2026-08-20 with exact hashes and mass-conservation gates.",
+      "evidence_ids": [
+        "EV-008"
+      ]
+    },
+    {
+      "at": "2026-08-21T11:20:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-005 as a targeted immutable PIT-B research bundle for 301511.SZ through the 2026-08-20 close. The exact BaoStock snapshot, nine official disclosures, corporate-action references, 2026-08-17 float change, and cross-source audit pass. Activation is limited to conditional single-stock research; full-market, sector leave-one-out, current rule, calibrated EdgeCard, and execution claims remain blocked.",
+      "evidence_ids": [
+        "EV-009",
+        "EV-010"
+      ]
+    },
+    {
+      "at": "2026-08-21T16:00:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-006 daily PIT-B v2 and CY-008 minute PIT-B v2. Frozen 9 daily and 27 minute feature/execution files; all daily gates, nine annual minute audits, and the minute cross-year gate pass. Runtime activation must bind both exact inventories and keep same-bar fills prohibited.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-21T17:05:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-009, the immutable 9,421,907-row frozen chip-state feature table in annual date-sorted layout. Feature and content-equivalence gates pass. Runtime may reuse these causal pre-trade states instead of recomputing them from minute arrays; four representative daily queries improved by 26.76x.",
+      "evidence_ids": []
+    }
+  ]
+}

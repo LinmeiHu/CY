@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyq-game"
+version = "0.1.0"
+description = "PIT-safe A-share chip-state and game-decision research system"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy>=2.0,<3",
+  "PyYAML>=6.0,<7",
+]
+
+[project.optional-dependencies]
+data = [
+  "duckdb>=1.1,<2",
+  "pyarrow>=16,<27",
+]
+dev = [
+  "mypy>=1.11,<2",
+  "pytest>=8,<9",
+  "ruff>=0.6,<1",
+  "types-PyYAML>=6.0,<7",
+]
+
+[project.scripts]
+cyq-game = "cyq_game.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+ignore = ["RUF001"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_ignores = true
+packages = ["cyq_game"]
