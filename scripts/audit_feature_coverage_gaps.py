@@ -45,7 +45,9 @@ def main() -> int:
         ), by_symbol AS (
           SELECT symbol, count(*) AS rows,
             count(*) FILTER (WHERE strict_sample) AS strict_rows,
-            count(*) FILTER (WHERE minute_hard_valid) AS minute_valid_rows,
+            count(*) FILTER (
+              WHERE minute_hard_valid OR COALESCE(minute_requirement_waived, FALSE)
+            ) AS minute_valid_rows,
             count(*) FILTER (WHERE daily_hard_valid) AS daily_valid_rows,
             count(*) FILTER (WHERE invalid_reason LIKE 'WARMUP%') AS warmup_rows,
             count(*) FILTER (WHERE invalid_reason LIKE '%missing_historical_float%') AS float_rows,
@@ -87,7 +89,8 @@ def main() -> int:
             "start": args.start.isoformat(),
             "end": args.end.isoformat(),
             "strict_definition": (
-                "daily_hard_valid AND minute_hard_valid AND state_chain_valid AND warmup"
+                "daily_hard_valid AND (minute_hard_valid OR minute_requirement_waived) "
+                "AND state_chain_valid AND warmup"
             ),
             "backtest_run": False,
         }

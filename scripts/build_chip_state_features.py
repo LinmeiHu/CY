@@ -55,6 +55,7 @@ OUTPUT_SCHEMA = pa.schema(
         ("chip_input_valid", pa.bool_()),
         ("daily_hard_valid", pa.bool_()),
         ("minute_hard_valid", pa.bool_()),
+        ("minute_requirement_waived", pa.bool_()),
         ("state_chain_valid", pa.bool_()),
         ("warmup_count", pa.int32()),
         ("strict_sample", pa.bool_()),
@@ -96,6 +97,15 @@ OUTPUT_SCHEMA = pa.schema(
         ("realized_volatility", pa.float64()),
     ]
 )
+
+
+def _minute_requirement_satisfied(
+    *, trade_status: int | None, minute_hard_valid: bool, minute_available_at: Any
+) -> bool:
+    """Require minutes for trading days, but waive them for explicit suspension."""
+    if trade_status == 0:
+        return True
+    return bool(minute_hard_valid and minute_available_at is not None)
 
 
 def _sha256_bytes(value: bytes) -> str:
@@ -394,7 +404,11 @@ def _process_bucket(
                     )
                 strict = bool(
                     row["daily_hard_valid"]
-                    and minute_valid
+                    and _minute_requirement_satisfied(
+                        trade_status=int(row["trade_status"]),
+                        minute_hard_valid=minute_valid,
+                        minute_available_at=row["minute_available_at"],
+                    )
                     and warmup_count >= config.warmup_days
                 )
                 available_at = (
@@ -414,6 +428,7 @@ def _process_bucket(
                     "chip_input_valid": True,
                     "daily_hard_valid": bool(row["daily_hard_valid"]),
                     "minute_hard_valid": minute_valid,
+                    "minute_requirement_waived": int(row["trade_status"]) == 0,
                     "state_chain_valid": True,
                     "warmup_count": warmup_count,
                     "strict_sample": strict,
