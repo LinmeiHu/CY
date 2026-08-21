@@ -59,6 +59,8 @@ OUTPUT_SCHEMA = pa.schema(
         ("state_chain_valid", pa.bool_()),
         ("warmup_count", pa.int32()),
         ("strict_sample", pa.bool_()),
+        ("research_sample", pa.bool_()),
+        ("daily_research_sample", pa.bool_()),
         ("invalid_reason", pa.string()),
         ("mass_sum", pa.float64()),
         ("state_quality", pa.float64()),
@@ -238,6 +240,8 @@ def _empty_output(row: dict[str, Any], meta: dict[str, str], reason: str) -> dic
             "state_chain_valid": False,
             "warmup_count": 0,
             "strict_sample": False,
+            "research_sample": False,
+            "daily_research_sample": False,
             "invalid_reason": reason,
         }
     )
@@ -411,6 +415,23 @@ def _process_bucket(
                     )
                     and warmup_count >= config.warmup_days
                 )
+                research = bool(
+                    row["bar_valid"]
+                    and row["float_valid"]
+                    and row["corporate_action_valid"]
+                    and _minute_requirement_satisfied(
+                        trade_status=int(row["trade_status"]),
+                        minute_hard_valid=minute_valid,
+                        minute_available_at=row["minute_available_at"],
+                    )
+                    and warmup_count >= config.warmup_days
+                )
+                daily_research = bool(
+                    row["bar_valid"]
+                    and row["float_valid"]
+                    and row["corporate_action_valid"]
+                    and warmup_count >= config.warmup_days
+                )
                 available_at = (
                     max(row["daily_available_at"], row["minute_available_at"])
                     if minute_valid
@@ -432,6 +453,8 @@ def _process_bucket(
                     "state_chain_valid": True,
                     "warmup_count": warmup_count,
                     "strict_sample": strict,
+                    "research_sample": research,
+                    "daily_research_sample": daily_research,
                     "invalid_reason": None if strict else "WARMUP_OR_STRICT_INPUT_INVALID",
                     "mass_sum": state.mass_sum,
                     "state_quality": features.quality,

@@ -45,6 +45,8 @@ def main() -> int:
         ), by_symbol AS (
           SELECT symbol, count(*) AS rows,
             count(*) FILTER (WHERE strict_sample) AS strict_rows,
+            count(*) FILTER (WHERE research_sample) AS research_rows,
+            count(*) FILTER (WHERE daily_research_sample) AS daily_research_rows,
             count(*) FILTER (
               WHERE minute_hard_valid OR COALESCE(minute_requirement_waived, FALSE)
             ) AS minute_valid_rows,
@@ -62,6 +64,8 @@ def main() -> int:
             ELSE 'partial_strict'
           END AS category, count(*) AS symbols, sum(rows) AS rows,
             sum(strict_rows) AS strict_rows, sum(warmup_rows) AS warmup_rows,
+            sum(research_rows) AS research_rows,
+            sum(daily_research_rows) AS daily_research_rows,
             sum(float_rows) AS float_rows, sum(status_rows) AS status_rows,
             sum(action_rows) AS action_rows
           FROM by_symbol GROUP BY 1
@@ -77,6 +81,8 @@ def main() -> int:
           'feature_rows', (SELECT sum(rows) FROM by_symbol),
           'feature_symbols', (SELECT count(*) FROM by_symbol),
           'strict_rows', (SELECT sum(strict_rows) FROM by_symbol),
+          'research_rows', (SELECT sum(research_rows) FROM by_symbol),
+          'daily_research_rows', (SELECT sum(daily_research_rows) FROM by_symbol),
           'strict_symbols', (SELECT count(*) FROM by_symbol WHERE strict_rows = rows)
         )
         """,

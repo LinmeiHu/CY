@@ -660,9 +660,10 @@ class BacktestEngine:
                 prepared_chip = prepared_chip_records.get(symbol)
                 if supports_precomputed_chip:
                     if prepared_chip is None:
-                        raise RuntimeError(
-                            f"missing frozen chip features for {symbol} on {trade_date}"
-                        )
+                        # A missing PIT frozen state makes this symbol
+                        # ineligible for new risk; omit it from today's
+                        # decision universe rather than fabricating features.
+                        continue
                     features = prepared_chip.features
                     intraday_source: ChipObservation | PreparedChipRecord | None = prepared_chip
                     base_retention = prepared_chip.base_retention
@@ -1021,7 +1022,11 @@ class BacktestEngine:
                     )
 
                 gate_accumulator.observe(row)
-                decision_buffer.append(decision_encoder.encode(row) + "\n")
+                # Persist only actionable signals. NO_TRADE is still evaluated
+                # in-memory, but ordinary no-action bars do not bloat the
+                # audit/report input or masquerade as trade decisions.
+                if decision.action.value != "NO_TRADE":
+                    decision_buffer.append(decision_encoder.encode(row) + "\n")
                 if len(decision_buffer) >= 2_048:
                     decision_chunk = "".join(decision_buffer).encode("utf-8")
                     decision_handle.write(decision_chunk)
