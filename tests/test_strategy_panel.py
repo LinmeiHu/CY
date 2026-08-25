@@ -165,3 +165,31 @@ def test_panel_uses_only_predecision_atr_and_never_reuses_ranked_peak_json() -> 
 
     assert "ROWS BETWEEN 14 PRECEDING AND 1 PRECEDING" in source
     assert "peaks_json" not in source
+    assert "chain_epoch_rows" in source
+    assert "FROM chain_epoch_rows\n            WHERE pre_chain_valid" in source
+    assert "PARTITION BY symbol, chain_epoch" in source
+    assert "P90_FALLBACK" not in source
+
+
+def test_panel_rejects_duplicate_input_keys_before_join(tmp_path: Path) -> None:
+    path = tmp_path / "duplicate.parquet"
+    con = duckdb.connect()
+    try:
+        con.execute(
+            f"""
+            COPY (
+                SELECT * FROM (VALUES
+                    ('000001.SZ', DATE '2020-01-02'),
+                    ('000001.SZ', DATE '2020-01-02')
+                ) AS rows(symbol, trade_date)
+            ) TO '{path}' (FORMAT PARQUET)
+            """
+        )
+        with pytest.raises(ValueError, match="not unique"):
+            panel_module._assert_unique_panel_input(
+                con,
+                source_sql=f"['{path}']",
+                source_name="test input",
+            )
+    finally:
+        con.close()

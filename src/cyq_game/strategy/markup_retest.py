@@ -22,6 +22,7 @@ from typing import Any, cast
 import yaml
 
 from cyq_game.chip.ensemble_v2 import AnchorRetentionEstimate
+from cyq_game.chip.price_coordinate import rebase_economic_price
 from cyq_game.data.registry import DataAssetRegistry
 from cyq_game.domain import (
     ChipLifecycleState,
@@ -853,6 +854,7 @@ class LifecycleAnchor:
     band_width: float
     peak_count: int
     mass_method: ChipMassMethod
+    peak_track_id: str = ""
 
 
 @dataclass(frozen=True)
@@ -890,6 +892,7 @@ class LifecycleObservation:
     cash_per_share: float = 0.0
     structure_broken: bool = False
     corporate_action_blocking: bool = False
+    corporate_action_ids: tuple[str, ...] = ()
     market_state: str = "UNKNOWN"
     sector_state: str = "UNKNOWN"
     industry_pit_grade: str = "UNKNOWN"
@@ -897,6 +900,11 @@ class LifecycleObservation:
     evidence_against: tuple[str, ...] = ()
     alternative_explanations: tuple[str, ...] = ()
     anchor_retention_estimates: tuple[AnchorRetentionEstimate, ...] = ()
+    peak_track_id: str | None = None
+    peak_track_band_lower: float | None = None
+    peak_track_band_upper: float | None = None
+    peak_track_ambiguous: bool = True
+    peak_definition_version: str | None = None
 
     def __post_init__(self) -> None:
         if self.available_at > self.decision_at:
@@ -904,15 +912,55 @@ class LifecycleObservation:
                 f"{self.symbol} observation available at {self.available_at} after "
                 f"decision {self.decision_at}"
             )
+        numeric_values = (
+            self.setup_score,
+            self.breakout_excess_atr,
+            self.cost_p10,
+            self.cost_p90,
+            self.recent_band_overlap,
+            self.distribution_score,
+            self.structure_support,
+            self.close,
+            self.close_vs_vwap,
+            self.low,
+            self.volume,
+            self.turnover,
+            self.average_cost,
+            self.cost_p50,
+            self.prior_average_cost,
+            self.prior_cost_p50,
+            self.atr,
+            self.chip_model_disagreement_atr,
+            self.share_multiplier,
+            self.cash_per_share,
+        )
+        if any(not math.isfinite(value) for value in numeric_values):
+            raise ValueError("lifecycle numeric fields must be finite")
         if self.atr <= 0:
             raise ValueError("ATR must be positive")
-        if (
-            not math.isfinite(self.chip_model_disagreement_atr)
-            or self.chip_model_disagreement_atr < 0
-        ):
+        if self.chip_model_disagreement_atr < 0:
             raise ValueError("chip model disagreement must be finite and non-negative")
         if self.cost_p10 > self.cost_p90:
             raise ValueError("cost_p10 cannot exceed cost_p90")
+        if any(
+            value <= 0.0
+            for value in (
+                self.cost_p10,
+                self.cost_p90,
+                self.structure_support,
+                self.close,
+                self.low,
+                self.average_cost,
+                self.cost_p50,
+                self.prior_average_cost,
+                self.prior_cost_p50,
+            )
+        ):
+            raise ValueError("lifecycle price fields must be positive")
+        if self.volume < 0.0 or self.turnover < 0.0:
+            raise ValueError("volume and turnover must be non-negative")
+        if not 0.0 <= self.recent_band_overlap <= 1.0:
+            raise ValueError("recent band overlap must be in [0, 1]")
         if self.peak_count < 1:
             raise ValueError("peak_count must be positive")
         if self.share_multiplier <= 0:
@@ -921,6 +969,20 @@ class LifecycleObservation:
             raise ValueError("cash_per_share cannot be negative")
         if not self.snapshot_ids or any(not item for item in self.snapshot_ids):
             raise ValueError("every observation requires input snapshot ids")
+        if len(set(self.corporate_action_ids)) != len(self.corporate_action_ids):
+            raise ValueError("corporate action ids must be unique")
+
+    @property
+    def peak_identity_valid(self) -> bool:
+        return bool(
+            self.peak_track_id
+            and not self.peak_track_ambiguous
+            and self.peak_track_band_lower is not None
+            and self.peak_track_band_upper is not None
+            and self.peak_track_band_lower > 0.0
+            and self.peak_track_band_upper >= self.peak_track_band_lower
+            and self.peak_definition_version
+        )
 
 
 AnchorRetentionResolver = Callable[
@@ -950,6 +1012,7 @@ class LifecycleMemory:
     holding_days: int = 0
     cooldown_remaining: int = 0
     pending_exit_reason: ExitReason | None = None
+    applied_action_ids: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -1024,8 +1087,13 @@ def freeze_lifecycle_anchor(
 ) -> LifecycleAnchor:
     """Freeze one causal root reference; the band is diagnostics, not lineage."""
 
+    if not observation.peak_identity_valid:
+        raise ValueError("accumulation anchor requires an unambiguous tracked peak")
+    assert observation.peak_track_band_lower is not None
+    assert observation.peak_track_band_upper is not None
+    assert observation.peak_track_id is not None
     reference_mass = observation.chip_profile.mass_between(
-        observation.cost_p10, observation.cost_p90
+        observation.peak_track_band_lower, observation.peak_track_band_upper
     )
     if reference_mass <= 0:
         raise ValueError("accumulation anchor has no measurable chip mass")
@@ -1048,24 +1116,29 @@ def freeze_lifecycle_anchor(
         parent_anchor_id=None,
         role="ROOT",
         created_at=observation.decision_at.date(),
-        lower=observation.cost_p10,
-        upper=observation.cost_p90,
+        lower=observation.peak_track_band_lower,
+        upper=observation.peak_track_band_upper,
         reference_mass=reference_mass,
         average_cost=observation.average_cost,
         cost_p50=observation.cost_p50,
-        band_width=max(observation.cost_p90 - observation.cost_p10, 1e-12),
+        band_width=max(
+            observation.peak_track_band_upper - observation.peak_track_band_lower,
+            1e-12,
+        ),
         peak_count=observation.peak_count,
         mass_method=observation.chip_profile.method,
+        peak_track_id=observation.peak_track_id,
     )
 
 
 def _action_rebased_price(
     value: float, *, share_multiplier: float, cash_per_share: float
 ) -> float:
-    rebased = (value - cash_per_share) / share_multiplier
-    if rebased <= 0:
-        raise ValueError("corporate action produced a non-positive strategy price")
-    return rebased
+    return rebase_economic_price(
+        value,
+        cash_per_share=cash_per_share,
+        share_multiplier=share_multiplier,
+    )
 
 
 def rebase_comparison_anchor(
@@ -1117,6 +1190,13 @@ def rebase_lifecycle_memory(
     cash = observation.cash_per_share
     if multiplier == 1.0 and cash == 0.0:
         return memory
+    if not observation.corporate_action_ids:
+        raise ValueError("economic corporate action requires canonical action ids")
+    already_applied = set(memory.applied_action_ids)
+    if already_applied.intersection(observation.corporate_action_ids):
+        if set(observation.corporate_action_ids).issubset(already_applied):
+            return memory
+        raise ValueError("partially replayed corporate action id set")
 
     comparison = memory.comparison_anchor or memory.accumulation_anchor
     if comparison is not None:
@@ -1151,6 +1231,9 @@ def rebase_lifecycle_memory(
         ),
         pre_breakout_average_cost=price(memory.pre_breakout_average_cost),
         pre_breakout_cost_p50=price(memory.pre_breakout_cost_p50),
+        applied_action_ids=tuple(
+            sorted((*memory.applied_action_ids, *observation.corporate_action_ids))
+        ),
     )
 
 
@@ -1214,7 +1297,18 @@ def maybe_create_support_anchor(
         or estimate.lower < fixed.anchor_retention_floor
     ):
         return None
-    band_width = max(observation.cost_p90 - observation.cost_p10, 1e-12)
+    if (
+        not observation.peak_identity_valid
+        or observation.peak_track_id != comparison_root.peak_track_id
+    ):
+        return None
+    assert observation.peak_track_band_lower is not None
+    assert observation.peak_track_band_upper is not None
+    assert observation.peak_track_id is not None
+    band_width = max(
+        observation.peak_track_band_upper - observation.peak_track_band_lower,
+        1e-12,
+    )
     if band_width / comparison_root.band_width > fixed.anchor_band_expansion_ratio_max:
         return None
     if (
@@ -1240,7 +1334,7 @@ def maybe_create_support_anchor(
         )
     )
     reference_mass = observation.chip_profile.mass_between(
-        observation.cost_p10, observation.cost_p90
+        observation.peak_track_band_lower, observation.peak_track_band_upper
     )
     if reference_mass <= 0:
         return None
@@ -1252,14 +1346,15 @@ def maybe_create_support_anchor(
         parent_anchor_id=parent.anchor_id,
         role="SUPPORT",
         created_at=observation.decision_at.date(),
-        lower=observation.cost_p10,
-        upper=observation.cost_p90,
+        lower=observation.peak_track_band_lower,
+        upper=observation.peak_track_band_upper,
         reference_mass=reference_mass,
         average_cost=observation.average_cost,
         cost_p50=observation.cost_p50,
         band_width=band_width,
         peak_count=observation.peak_count,
         mass_method=observation.chip_profile.method,
+        peak_track_id=observation.peak_track_id,
     )
 
 
@@ -1271,9 +1366,15 @@ def chip_structure_broken(
     comparison_anchor: LifecycleAnchor | None = None,
     resolver: AnchorRetentionResolver | None = None,
 ) -> bool:
+    comparison = comparison_anchor or anchor
+    if (
+        not observation.peak_identity_valid
+        or observation.peak_track_id != comparison.peak_track_id
+    ):
+        return True
     estimate = exact_anchor_retention(anchor, observation, resolver=resolver)
     if estimate is None:
-        return False
+        return True
     comparison = comparison_anchor or anchor
     band_width = max(observation.cost_p90 - observation.cost_p10, 1e-12)
     expanded = (
@@ -1293,6 +1394,11 @@ def distribution_score_with_anchor(
     *,
     resolver: AnchorRetentionResolver | None = None,
 ) -> float:
+    if (
+        not observation.peak_identity_valid
+        or observation.peak_track_id != anchor.peak_track_id
+    ):
+        raise ValueError("distribution requires the same unambiguous peak track")
     estimate = exact_anchor_retention(anchor, observation, resolver=resolver)
     if estimate is None:
         raise ValueError("distribution requires exact anchor lineage")
@@ -1322,16 +1428,23 @@ class LifecycleMachine:
         *,
         trading_index: int,
     ) -> TransitionResult:
-        memory = rebase_lifecycle_memory(memory, observation)
-        if memory.active_signal_id is not None:
-            return self._advance_open(memory, observation)
-        if observation.corporate_action_blocking or not observation.hard_valid:
+        invalid = (
+            observation.corporate_action_blocking
+            or not observation.hard_valid
+            or not observation.peak_identity_valid
+        )
+        if invalid:
+            if memory.active_signal_id is not None:
+                return self._advance_open(memory, observation)
             return TransitionResult(
                 LifecycleMemory(
                     state=ChipLifecycleState.BROKEN,
                     cooldown_remaining=memory.cooldown_remaining,
                 )
             )
+        memory = rebase_lifecycle_memory(memory, observation)
+        if memory.active_signal_id is not None:
+            return self._advance_open(memory, observation)
         # Suspension is an observed trading state, not missing data.  Preserve
         # the lifecycle and do not consume a retest/cooldown trading day.
         if not observation.tradable:
@@ -1460,6 +1573,8 @@ class LifecycleMachine:
             raise ValueError("BREAKOUT state is missing causal retest anchors")
         if memory.accumulation_anchor is None:
             raise ValueError("BREAKOUT state is missing its frozen accumulation anchor")
+        if observation.peak_track_id != memory.accumulation_anchor.peak_track_id:
+            return False
         estimate = exact_anchor_retention(
             memory.accumulation_anchor,
             observation,
@@ -1470,7 +1585,8 @@ class LifecycleMachine:
         support = cast(float, memory.breakout_support)
         breakout_volume = max(cast(float, memory.breakout_volume), 1e-12)
         breakout_turnover = max(cast(float, memory.breakout_turnover), 1e-12)
-        retest_depth_atr = abs(support - observation.low) / observation.atr
+        frozen_breakout_atr = cast(float, memory.breakout_atr)
+        retest_depth_atr = abs(support - observation.low) / frozen_breakout_atr
         retest_volume_ratio = observation.volume / breakout_volume
         retest_turnover_ratio = observation.turnover / breakout_turnover
         # Average cost and p50 are continuous state measurements.  A daily
@@ -1480,7 +1596,7 @@ class LifecycleMachine:
         cost_migration_atr = min(
             observation.average_cost - cast(float, memory.pre_breakout_average_cost),
             observation.cost_p50 - cast(float, memory.pre_breakout_cost_p50),
-        ) / observation.atr
+        ) / frozen_breakout_atr
         return all(
             (
                 retest_depth_atr <= self.parameters.max_retest_depth_atr,
@@ -1584,6 +1700,11 @@ class LifecycleMachine:
                 replace(memory, pending_exit_reason=reason), exit_reason=reason
             )
         if not observation.hard_valid:
+            reason = ExitReason.DATA_INVALID
+            return TransitionResult(
+                replace(memory, pending_exit_reason=reason), exit_reason=reason
+            )
+        if not observation.peak_identity_valid:
             reason = ExitReason.DATA_INVALID
             return TransitionResult(
                 replace(memory, pending_exit_reason=reason), exit_reason=reason

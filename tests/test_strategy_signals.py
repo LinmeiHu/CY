@@ -55,9 +55,15 @@ def _row(
         "cost_p10": 9.5,
         "cost_p90": 10.2,
         "state_quality": 1.0,
+        "known_cost_fraction_min": 1.0,
         "model_spread_cost_p50": 0.0,
         "model_spread_cost_p90": 0.0,
-        "model_spread_main_peak": 0.0,
+        "model_spread_dominant_peak_today": 0.0,
+        "peak_track_id": "peak-track-test",
+        "peak_track_band_lower": 9.5,
+        "peak_track_band_upper": 10.2,
+        "peak_track_ambiguous": False,
+        "peak_definition_version": "canonical-chip-peak-v1",
         "peak_count": 1,
         "recent_band_overlap": 0.9,
         "distribution_score": distribution_score,
@@ -68,10 +74,8 @@ def _row(
         "turnover_fraction": turnover,
         "average_cost": 9.8,
         "cost_p50": 9.8,
-        "main_peak": 9.8,
         "prior_average_cost": 9.5,
         "prior_cost_p50": 9.5,
-        "prior_main_peak": 9.5,
         "atr": 1.0,
         "structure_broken": False,
         "corporate_action_blocking": False,
@@ -85,7 +89,8 @@ def _row(
         "ev_concentration_improves": True,
         "ev_sticky_base": True,
         "ev_downside_absorption": True,
-        "dist_base_loss": distribution_score >= 0.6,
+        "dist_base_loss": None,
+        "exact_lineage_state": "UNKNOWN",
         "dist_cost_band_expands": distribution_score >= 0.6,
         "dist_peak_splits": distribution_score >= 0.6,
         "dist_high_turnover_weak_impact": distribution_score >= 0.6,
@@ -198,10 +203,11 @@ def test_chip_model_disagreement_and_p90_overhang_remain_visible_evidence() -> N
         {
             "close": 10.0,
             "cost_p90": 10.5,
-            "state_quality": 0.8,
+            "state_quality": 0.1,
+            "known_cost_fraction_min": 0.8,
             "model_spread_cost_p50": 0.5,
             "model_spread_cost_p90": 2.0,
-            "model_spread_main_peak": 1.0,
+            "model_spread_dominant_peak_today": 1.0,
             "atr": 1.0,
         }
     )
@@ -218,10 +224,10 @@ def test_chip_model_disagreement_and_p90_overhang_remain_visible_evidence() -> N
 def test_missing_model_disagreement_fails_closed() -> None:
     config = load_markup_retest_config()
     row = _row("000001.SZ", date(2020, 6, 15))
-    row["state_quality"] = 0.8
+    row["known_cost_fraction_min"] = 0.8
     row.pop("model_spread_cost_p50")
     row.pop("model_spread_cost_p90")
-    row.pop("model_spread_main_peak")
+    row.pop("model_spread_dominant_peak_today")
 
     observation = observation_from_record(row, config, "panel-1")
 

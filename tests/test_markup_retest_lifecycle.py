@@ -84,6 +84,11 @@ def _observation(
         evidence_for=("setup evidence",),
         evidence_against=("market reversal",),
         alternative_explanations=("passive flow",),
+        peak_track_id="peak-track-test",
+        peak_track_band_lower=9.5,
+        peak_track_band_upper=10.2,
+        peak_track_ambiguous=False,
+        peak_definition_version="canonical-chip-peak-v1",
     )
 
 
@@ -154,6 +159,74 @@ def test_accumulation_breakout_retest_is_a_causal_multi_stage_signal(
     machine: LifecycleMachine,
 ) -> None:
     _form_signal(machine)
+
+
+def test_retest_depth_and_cost_migration_use_frozen_breakout_atr(
+    machine: LifecycleMachine,
+) -> None:
+    day0 = date(2020, 6, 15)
+    accumulating = machine.advance(
+        LifecycleMemory(), _observation(day0), trading_index=0
+    )
+    breakout = machine.advance(
+        accumulating.memory,
+        replace(
+            _observation(day0 + timedelta(days=1), breakout_excess_atr=0.3),
+            volume=100.0,
+            turnover=0.10,
+            atr=1.0,
+        ),
+        trading_index=1,
+    )
+    retest = _with_anchor_lineage(
+        replace(_observation(day0 + timedelta(days=2)), atr=10.0),
+        breakout.memory,
+    )
+    result = machine.advance(breakout.memory, retest, trading_index=2)
+    assert result.signal is not None
+
+
+def test_different_peak_track_fails_closed_before_cross_day_comparison(
+    machine: LifecycleMachine,
+) -> None:
+    day0 = date(2020, 6, 15)
+    accumulating = machine.advance(
+        LifecycleMemory(), _observation(day0), trading_index=0
+    )
+    breakout = machine.advance(
+        accumulating.memory,
+        replace(
+            _observation(day0 + timedelta(days=1), breakout_excess_atr=0.3),
+            volume=100.0,
+            turnover=0.10,
+        ),
+        trading_index=1,
+    )
+    different = _with_anchor_lineage(
+        replace(
+            _observation(day0 + timedelta(days=2)),
+            peak_track_id="different-track",
+        ),
+        breakout.memory,
+    )
+    result = machine.advance(breakout.memory, different, trading_index=2)
+    assert result.signal is None
+    assert result.memory.state == ChipLifecycleState.BROKEN
+
+
+def test_blocking_action_does_not_rebase_open_lifecycle_before_validation(
+    machine: LifecycleMachine,
+) -> None:
+    opened = _form_signal(machine)
+    assert opened.breakout_support is not None
+    observation = replace(
+        _observation(date(2020, 6, 18)),
+        corporate_action_blocking=True,
+        share_multiplier=2.0,
+    )
+    result = machine.advance(opened, observation, trading_index=3)
+    assert result.memory.breakout_support == opened.breakout_support
+    assert result.exit_reason == ExitReason.CORPORATE_ACTION
 
 
 def test_entry_is_blocked_when_chip_model_interval_exceeds_risk_budget(
@@ -371,10 +444,13 @@ def test_market_and_sector_risk_gate_blocks_entry(
     )
     retest = machine.advance(
         breakout.memory,
-        _observation(
-            day0 + timedelta(days=2),
-            market_state=market_state,
-            sector_state=sector_state,
+        _with_anchor_lineage(
+            _observation(
+                day0 + timedelta(days=2),
+                market_state=market_state,
+                sector_state=sector_state,
+            ),
+            breakout.memory,
         ),
         trading_index=2,
     )
@@ -488,6 +564,7 @@ def test_share_action_rebases_open_support_without_false_stop(
     action_day = replace(
         _observation(date(2020, 6, 18), close=5.1),
         share_multiplier=2.0,
+        corporate_action_ids=("action-20200618",),
         chip_profile=ChipMassProfile.from_histogram(
             prices=(4.75, 4.9, 5.1),
             masses=(0.2, 0.6, 0.2),

@@ -971,7 +971,13 @@ def _advance_parameter(
     signals: list[dict[str, Any]],
     trades: list[dict[str, Any]],
 ) -> None:
-    _apply_corporate_action(state, observation, trade_date)
+    observation_valid = (
+        observation.hard_valid
+        and not observation.corporate_action_blocking
+        and observation.peak_identity_valid
+    )
+    if observation_valid:
+        _apply_corporate_action(state, observation, trade_date)
 
     if state.pending_entry is not None:
         if _advance_pending_entry(
@@ -1058,6 +1064,16 @@ def _advance_pending_entry(
     trade_date: date,
 ) -> bool:
     pending = cast(_PendingEntry, state.pending_entry)
+    if (
+        not observation.hard_valid
+        or observation.corporate_action_blocking
+        or not observation.peak_identity_valid
+    ):
+        state.memory = machine.advance(
+            state.memory, observation, trading_index=0
+        ).memory
+        state.pending_entry = None
+        return True
     execution = pending.execution
     if execution.status == EntryExecutionStatus.FILLED:
         fill_date = _required_datetime(execution.fill_at, "entry fill_at").date()

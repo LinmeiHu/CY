@@ -78,8 +78,13 @@ OUTPUT_SCHEMA = pa.schema(
         ("daily_research_sample", pa.bool_()),
         ("research_suspension_bridge", pa.bool_()),
         ("invalid_reason", pa.string()),
+        ("degraded_mode", pa.string()),
+        ("source_mode", pa.string()),
+        ("action_blocking", pa.bool_()),
+        ("action_provenance", pa.string()),
         ("mass_sum", pa.float64()),
         ("state_quality", pa.float64()),
+        ("known_cost_fraction_min", pa.float64()),
         ("profit_ratio", pa.float64()),
         ("trapped_ratio", pa.float64()),
         ("average_cost", pa.float64()),
@@ -815,8 +820,17 @@ def _process_bucket(
                             else "WARMUP_OR_STRICT_INPUT_INVALID"
                         )
                     ),
+                    "degraded_mode": state.degraded_mode,
+                    "source_mode": (
+                        "MINUTE_OBSERVED"
+                        if minute_valid
+                        else "SYNTHETIC_DAILY_FALLBACK"
+                    ),
+                    "action_blocking": state.action_blocking,
+                    "action_provenance": row["corporate_action_ids"],
                     "mass_sum": state.mass_sum,
                     "state_quality": features.quality,
+                    "known_cost_fraction_min": 1.0,
                     "profit_ratio": features.profit_ratio,
                     "trapped_ratio": features.trapped_ratio,
                     "average_cost": features.average_cost,

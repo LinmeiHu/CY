@@ -25,6 +25,7 @@ import pyarrow as pa  # type: ignore[import-untyped]
 import pyarrow.parquet as pq  # type: ignore[import-untyped]
 
 from cyq_game.chip.ensemble_v2 import AnchorRetentionEstimate
+from cyq_game.chip.price_coordinate import parse_action_ids
 from cyq_game.chip.state_v2 import SellerModel
 from cyq_game.strategy.chip_lineage import PersistedChipLineageResolver
 from cyq_game.strategy.markup_retest import (
@@ -540,7 +541,25 @@ def observation_from_record(
     snapshot_ids.append(panel_snapshot_id)
 
     chip_profile, profile_valid = _chip_profile_from_record(record, config)
-    hard_valid = _as_bool(record.get("research_hard_valid")) and profile_valid
+    peak_track_id = _optional_text(record.get("peak_track_id"))
+    peak_band_lower = _optional_finite_number(record.get("peak_track_band_lower"))
+    peak_band_upper = _optional_finite_number(record.get("peak_track_band_upper"))
+    peak_definition_version = _optional_text(record.get("peak_definition_version"))
+    peak_ambiguous = _as_bool(record.get("peak_track_ambiguous"))
+    peak_valid = bool(
+        peak_track_id
+        and not peak_ambiguous
+        and peak_definition_version
+        and peak_band_lower is not None
+        and peak_band_lower > 0.0
+        and peak_band_upper is not None
+        and peak_band_upper >= peak_band_lower
+    )
+    hard_valid = (
+        _as_bool(record.get("research_hard_valid"))
+        and profile_valid
+        and peak_valid
+    )
     history_count = _finite_number(record.get("history_count"), fallback=0.0)
     setup_score = _finite_number(record.get("setup_score"), fallback=0.0)
     if history_count < config.windows.accumulation:
@@ -579,8 +598,11 @@ def observation_from_record(
         alternatives.append("corporate_action_pending_or_unresolved")
     if not profile_valid:
         alternatives.append("chip_profile_missing_or_invalid")
-    if _as_bool(record.get("dist_base_loss")):
-        alternatives.append("legacy_price_band_retention_ignored")
+    if not peak_valid:
+        alternatives.append("tracked_base_peak_missing_or_ambiguous")
+    lineage_state = _optional_text(record.get("exact_lineage_state")) or "UNKNOWN"
+    if lineage_state == "UNKNOWN":
+        alternatives.append("exact_descendant_lineage=UNKNOWN")
 
     # Seller source is latent.  Preserve disagreement as auditable evidence;
     # the lifecycle applies the configured observability gate before entry.
@@ -588,15 +610,20 @@ def observation_from_record(
     # A missing interval is unknown, never zero disagreement.  Keep a finite
     # sentinel because the immutable observation contract rejects NaN/inf.
     model_spread_atr = 1.0e12
-    if record.get("state_quality") is not None:
+    if record.get("known_cost_fraction_min") is not None:
         known_cost_fraction = min(
             1.0,
-            max(0.0, _finite_number(record.get("state_quality"), fallback=0.0)),
+            max(
+                0.0,
+                _finite_number(
+                    record.get("known_cost_fraction_min"), fallback=0.0
+                ),
+            ),
         )
         spread_fields = (
             "model_spread_cost_p50",
             "model_spread_cost_p90",
-            "model_spread_main_peak",
+            "model_spread_dominant_peak_today",
         )
         spread_values = tuple(
             _optional_finite_number(record.get(field)) for field in spread_fields
@@ -617,6 +644,9 @@ def observation_from_record(
                 f"chip_observability_score={observability:.6f}",
             )
         )
+    else:
+        hard_valid = False
+        alternatives.append("known_cost_fraction=UNKNOWN")
     if current_p90 > current_close:
         alternatives.append(
             f"global_p90_overhang_atr={(current_p90 - current_close) / atr:.6f}"
@@ -632,7 +662,7 @@ def observation_from_record(
         tradable=_as_bool(record.get("tradable_state")),
         pit_grade=pit_grade,
         setup_score=setup_score,
-        breakout_excess_atr=_finite_number(record.get("breakout_excess_atr"), fallback=-math.inf),
+        breakout_excess_atr=_finite_number(record.get("breakout_excess_atr"), fallback=-1e12),
         support_regained=_as_bool(record.get("support_regained")),
         downside_absorption=_as_bool(record.get("ev_downside_absorption")),
         chip_profile=chip_profile,
@@ -647,7 +677,7 @@ def observation_from_record(
         close=current_close,
         close_vs_vwap=_finite_number(
             record.get("close_vs_vwap"),
-            fallback=0.0 if _as_bool(record.get("support_regained")) else -math.inf,
+            fallback=0.0 if _as_bool(record.get("support_regained")) else -1e12,
         ),
         low=_finite_number(record.get("low"), fallback=0.0),
         volume=_finite_number(record.get("volume"), fallback=0.0),
@@ -666,6 +696,7 @@ def observation_from_record(
         ),
         structure_broken=_as_bool(record.get("structure_broken")),
         corporate_action_blocking=_as_bool(record.get("corporate_action_blocking")),
+        corporate_action_ids=parse_action_ids(record.get("corporate_action_ids")),
         market_state=_optional_text(record.get("market_state")) or "UNKNOWN",
         sector_state=_optional_text(record.get("sector_state")) or "UNKNOWN",
         industry_pit_grade=industry_grade,
@@ -673,6 +704,11 @@ def observation_from_record(
         evidence_against=evidence_against,
         alternative_explanations=tuple(dict.fromkeys(alternatives)),
         anchor_retention_estimates=_anchor_retention_estimates_from_record(record),
+        peak_track_id=peak_track_id,
+        peak_track_band_lower=peak_band_lower,
+        peak_track_band_upper=peak_band_upper,
+        peak_track_ambiguous=peak_ambiguous,
+        peak_definition_version=peak_definition_version,
     )
 
 
@@ -1104,38 +1140,16 @@ def _chip_profile_from_record(
     p90 = _finite_number(record.get("cost_p90"), fallback=math.nan)
     p01 = _finite_number(record.get("cost_p01"), fallback=p10)
     p99 = _finite_number(record.get("cost_p99"), fallback=p90)
-    try:
-        return (
-            ChipMassProfile.from_quantiles(
-                p01=p01,
-                p10=p10,
-                p50=p50,
-                p90=p90,
-                p99=p99,
-            ),
-            True,
-        )
-    except ValueError:
-        fallback = next(
-            (
-                value
-                for value in (
-                    _finite_number(record.get("main_peak"), fallback=math.nan),
-                    _finite_number(record.get("average_cost"), fallback=math.nan),
-                    _finite_number(record.get("close"), fallback=math.nan),
-                )
-                if math.isfinite(value) and value > 0
-            ),
-            1.0,
-        )
-        return (
-            ChipMassProfile.from_histogram(
-                prices=(fallback,),
-                masses=(1.0,),
-                mass_tolerance=config.quality.mass_tolerance,
-            ),
-            False,
-        )
+    return (
+        ChipMassProfile.from_quantiles(
+            p01=p01,
+            p10=p10,
+            p50=p50,
+            p90=p90,
+            p99=p99,
+        ),
+        True,
+    )
 
 
 def _anchor_retention_estimates_from_record(
@@ -1291,9 +1305,17 @@ _SIGNAL_INPUT_COLUMNS = (
     "cost_p50",
     "cost_p90",
     "state_quality",
+    "known_cost_fraction_min",
     "model_spread_cost_p50",
     "model_spread_cost_p90",
     "model_spread_main_peak",
+    "model_spread_dominant_peak_today",
+    "peak_track_id",
+    "peak_track_band_lower",
+    "peak_track_band_upper",
+    "peak_track_ambiguous",
+    "peak_definition_version",
+    "exact_lineage_state",
     "cost_p99",
     "peak_count",
     "recent_band_overlap",
@@ -1317,6 +1339,7 @@ _SIGNAL_INPUT_COLUMNS = (
     "cash_per_share",
     "structure_broken",
     "corporate_action_blocking",
+    "corporate_action_ids",
     "market_state",
     "sector_state",
     "effective_industry_pit_grade",

@@ -324,6 +324,12 @@ def _create_panel_table(
             f"DESCRIBE SELECT * FROM read_parquet({feature_sql}, union_by_name=true)"
         ).fetchall()
     }
+    _assert_unique_panel_input(
+        con, source_sql=daily_sql, source_name="registered daily input"
+    )
+    _assert_unique_panel_input(
+        con, source_sql=feature_sql, source_name="registered chip feature input"
+    )
 
     def optional_feature(name: str) -> str:
         if name in feature_columns:
@@ -336,6 +342,50 @@ def _create_panel_table(
     model_spread_cost_p50_sql = optional_feature("model_spread_cost_p50")
     model_spread_cost_p90_sql = optional_feature("model_spread_cost_p90")
     model_spread_main_peak_sql = optional_feature("model_spread_main_peak")
+    model_spread_dominant_peak_sql = optional_feature(
+        "model_spread_dominant_peak_today"
+    )
+    known_cost_fraction_min_sql = optional_feature("known_cost_fraction_min")
+    tracked_base_peak_sql = optional_feature("tracked_base_peak")
+    peak_track_band_lower_sql = optional_feature("peak_track_band_lower")
+    peak_track_band_upper_sql = optional_feature("peak_track_band_upper")
+    peak_track_mass_sql = optional_feature("peak_track_mass")
+    peak_track_prominence_sql = optional_feature("peak_track_prominence")
+    peak_track_id_sql = (
+        "f.peak_track_id"
+        if "peak_track_id" in feature_columns
+        else "CAST(NULL AS VARCHAR) AS peak_track_id"
+    )
+    peak_track_ambiguous_sql = (
+        "f.peak_track_ambiguous"
+        if "peak_track_ambiguous" in feature_columns
+        else "true AS peak_track_ambiguous"
+    )
+    peak_definition_version_sql = (
+        "f.peak_definition_version"
+        if "peak_definition_version" in feature_columns
+        else "CAST(NULL AS VARCHAR) AS peak_definition_version"
+    )
+    degraded_mode_sql = (
+        "f.degraded_mode"
+        if "degraded_mode" in feature_columns
+        else "CAST(NULL AS VARCHAR) AS degraded_mode"
+    )
+    source_mode_sql = (
+        "f.source_mode"
+        if "source_mode" in feature_columns
+        else "CAST(NULL AS VARCHAR) AS source_mode"
+    )
+    action_blocking_sql = (
+        "f.action_blocking"
+        if "action_blocking" in feature_columns
+        else "true AS action_blocking"
+    )
+    action_provenance_sql = (
+        "f.action_provenance"
+        if "action_provenance" in feature_columns
+        else "CAST(NULL AS VARCHAR) AS action_provenance"
+    )
     if boundary.symbols:
         peer_sums_cte = f"""
         peer_universe AS (
@@ -413,10 +463,15 @@ def _create_panel_table(
                 f.daily_hard_valid AS feature_daily_hard_valid,
                 f.minute_hard_valid,
                 f.state_chain_valid,
+                {degraded_mode_sql},
+                {source_mode_sql},
+                {action_blocking_sql},
+                {action_provenance_sql},
                 f.warmup_count,
                 f.strict_sample AS feature_strict_sample,
                 f.mass_sum,
                 f.state_quality,
+                {known_cost_fraction_min_sql},
                 f.profit_ratio,
                 f.trapped_ratio,
                 f.average_cost,
@@ -447,6 +502,15 @@ def _create_panel_table(
                 {model_spread_cost_p50_sql},
                 {model_spread_cost_p90_sql},
                 {model_spread_main_peak_sql},
+                {model_spread_dominant_peak_sql},
+                {tracked_base_peak_sql},
+                {peak_track_band_lower_sql},
+                {peak_track_band_upper_sql},
+                {peak_track_mass_sql},
+                {peak_track_prominence_sql},
+                {peak_track_id_sql},
+                {peak_track_ambiguous_sql},
+                {peak_definition_version_sql},
                 f.opening_30m_return,
                 f.closing_30m_return,
                 f.close_vs_vwap,
@@ -645,28 +709,57 @@ def _create_panel_table(
                 true_range / price_coordinate_factor AS analysis_true_range,
                 price_impact / price_coordinate_factor AS analysis_price_impact
             FROM normalized_raw
-        ), causal_industry AS (
+        ), chain_validity AS (
             SELECT
                 *,
-                last_value(observed_industry IGNORE NULLS) OVER (
+                (
+                    strategy_available_at <= strategy_decision_at AND
+                    bar_valid AND trading_state_valid AND float_valid AND
+                    corporate_action_valid AND market_valid AND market_rule_valid AND
+                    historical_identity_valid AND chip_input_valid AND state_chain_valid AND
+                    NOT action_blocking AND
+                    NOT strategy_corporate_action_blocking AND
+                    abs(mass_sum - 1.0) <= {mass_tol} AND
+                    known_cost_fraction_min IS NOT NULL AND
+                    known_cost_fraction_min BETWEEN 0.0 AND 1.0 AND
+                    peak_track_id IS NOT NULL AND
+                    NOT peak_track_ambiguous
+                ) AS pre_chain_valid
+            FROM normalized
+        ), chain_epoch_rows AS (
+            SELECT
+                *,
+                sum(CASE WHEN pre_chain_valid THEN 0 ELSE 1 END) OVER (
                     PARTITION BY symbol ORDER BY trade_date
+                    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                )::BIGINT AS chain_epoch
+            FROM chain_validity
+        ), valid_window_metrics AS (
+            SELECT
+                symbol,
+                trade_date,
+                chain_epoch,
+                last_value(observed_industry IGNORE NULLS) OVER (
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                 ) AS effective_industry,
                 last_value(
                     CASE WHEN observed_industry IS NOT NULL THEN industry_source END
                     IGNORE NULLS
                 ) OVER (
-                    PARTITION BY symbol ORDER BY trade_date
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                 ) AS effective_industry_source,
                 last_value(
                     CASE WHEN observed_industry IS NOT NULL THEN pit_grade END
                     IGNORE NULLS
                 ) OVER (
-                    PARTITION BY symbol ORDER BY trade_date
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                 ) AS effective_industry_pit_grade,
-                row_number() OVER (PARTITION BY symbol ORDER BY trade_date) AS history_count,
+                row_number() OVER (
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
+                ) AS history_count,
                 lag(analysis_close, 20) OVER symbol_window AS close_lag20,
                 lag(analysis_average_cost, {recent}) OVER symbol_window
                     * price_coordinate_factor AS average_cost_lag20,
@@ -676,6 +769,7 @@ def _create_panel_table(
                 lag(cbw, {recent}) OVER symbol_window AS cbw_lag20,
                 lag(concentration_20, {recent}) OVER symbol_window AS concentration_lag20,
                 lag(peak_count, {recent}) OVER symbol_window AS peak_count_lag20,
+                lag(peak_track_id, {recent}) OVER symbol_window AS peak_track_id_lag20,
                 lag(analysis_p10, {recent}) OVER symbol_window
                     * price_coordinate_factor AS p10_lag20,
                 lag(analysis_p90, {recent}) OVER symbol_window
@@ -690,6 +784,7 @@ def _create_panel_table(
                     * price_coordinate_factor AS prior_dominant_band_lower,
                 lag(analysis_dominant_band_upper) OVER symbol_window
                     * price_coordinate_factor AS prior_dominant_band_upper,
+                lag(peak_track_id) OVER symbol_window AS prior_peak_track_id,
                 lag(analysis_p50) OVER symbol_window
                     * price_coordinate_factor AS prior_p50,
                 lag(analysis_p90) OVER symbol_window
@@ -715,17 +810,27 @@ def _create_panel_table(
                     * price_coordinate_factor AS causal_price_resistance,
                 avg(last_hour_volume_share) OVER recent_window AS tail_volume_mean20,
                 avg(realized_volatility) OVER recent_window AS realized_vol_mean20
-            FROM normalized
+            FROM chain_epoch_rows
+            WHERE pre_chain_valid
             WINDOW
-                symbol_window AS (PARTITION BY symbol ORDER BY trade_date),
+                symbol_window AS (
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
+                ),
                 recent_window AS (
-                    PARTITION BY symbol ORDER BY trade_date
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
                     ROWS BETWEEN {recent - 1} PRECEDING AND CURRENT ROW
                 ),
                 accumulation_prior AS (
-                    PARTITION BY symbol ORDER BY trade_date
+                    PARTITION BY symbol, chain_epoch ORDER BY trade_date
                     ROWS BETWEEN {accumulation} PRECEDING AND 1 PRECEDING
                 )
+        ), causal_industry AS (
+            SELECT
+                c.*,
+                v.* EXCLUDE (symbol, trade_date, chain_epoch)
+            FROM chain_epoch_rows c
+            LEFT JOIN valid_window_metrics v
+              USING (symbol, trade_date, chain_epoch)
         ), market_series AS (
             SELECT DISTINCT
                 trade_date,
@@ -796,16 +901,16 @@ def _create_panel_table(
                     WHEN board_return_count > 1 THEN 0.50
                     ELSE 0.0
                 END AS sector_confidence,
-                greatest(
-                    coalesce(prior_dominant_band_upper, prior_p90),
-                    causal_price_resistance
-                ) AS structure_support,
+                CASE
+                    WHEN peak_track_id IS NOT NULL AND NOT peak_track_ambiguous
+                    THEN greatest(peak_track_band_upper, causal_price_resistance)
+                END AS structure_support,
                 CASE WHEN atr14 > 0 THEN
                     (
-                        close - greatest(
-                            coalesce(prior_dominant_band_upper, prior_p90),
-                            causal_price_resistance
-                        )
+                        close - CASE
+                            WHEN peak_track_id IS NOT NULL AND NOT peak_track_ambiguous
+                            THEN greatest(peak_track_band_upper, causal_price_resistance)
+                        END
                     ) / atr14
                 END AS breakout_excess_atr,
                 (
@@ -819,13 +924,15 @@ def _create_panel_table(
                     peak_count <= peak_count_lag20 + 1
                 ) AS ev_concentration_improves,
                 (
+                    peak_track_id = peak_track_id_lag20 AND
                     recent_band_overlap >= {recent_floor} AND
                     abs(p50 - p50_lag20) <= greatest(atr14, 1e-8)
                 ) AS ev_sticky_base,
                 (
                     close_vs_vwap >= 0 AND closing_30m_return >= 0
                 ) AS ev_downside_absorption,
-                false AS dist_base_loss,
+                CAST(NULL AS BOOLEAN) AS dist_base_loss,
+                'UNKNOWN' AS exact_lineage_state,
                 (cbw > cbw_lag5 * 1.10) AS dist_cost_band_expands,
                 (peak_count >= peak_count_lag5 + 2) AS dist_peak_splits,
                 (
@@ -843,15 +950,9 @@ def _create_panel_table(
                         0
                     ) - 0.01
                 ) AS dist_relative_reversal,
+                pre_chain_valid AS research_hard_valid,
                 (
-                    strategy_available_at <= strategy_decision_at AND
-                    bar_valid AND trading_state_valid AND float_valid AND
-                    corporate_action_valid AND market_valid AND market_rule_valid AND
-                    historical_identity_valid AND chip_input_valid AND state_chain_valid AND
-                    abs(mass_sum - 1.0) <= {mass_tol}
-                ) AS research_hard_valid,
-                (
-                    strategy_available_at <= strategy_decision_at AND
+                    pre_chain_valid AND
                     hard_valid AND feature_strict_sample AND
                     {action_strict_pit} AND
                     NOT strategy_corporate_action_blocking AND
@@ -887,7 +988,7 @@ def _create_panel_table(
                     ev_downside_absorption::INTEGER
                 ) / 5.0 AS setup_score,
                 (
-                    dist_base_loss::INTEGER +
+                    coalesce(dist_base_loss::INTEGER, 0) +
                     dist_cost_band_expands::INTEGER +
                     dist_peak_splits::INTEGER +
                     dist_high_turnover_weak_impact::INTEGER +
@@ -923,6 +1024,8 @@ def _create_panel_table(
                 ELSE effective_industry_pit_grade
             END AS industry_pit_grade,
             history_count,
+            chain_epoch,
+            pre_chain_valid,
             tradable_state,
             sector_fallback,
             sector_confidence,
@@ -981,15 +1084,33 @@ def _create_panel_table(
             model_spread_cost_p50,
             model_spread_cost_p90,
             model_spread_main_peak,
-            CASE WHEN dominant_band_upper IS NOT NULL
-                 THEN 'DOMINANT_HALF_HEIGHT_BAND'
-                 ELSE 'P90_FALLBACK'
+            model_spread_dominant_peak_today,
+            tracked_base_peak,
+            peak_track_band_lower,
+            peak_track_band_upper,
+            peak_track_mass,
+            peak_track_prominence,
+            peak_track_id,
+            peak_track_ambiguous,
+            peak_definition_version,
+            prior_peak_track_id,
+            peak_track_id_lag20,
+            known_cost_fraction_min,
+            degraded_mode,
+            source_mode,
+            action_blocking,
+            action_provenance,
+            CASE WHEN peak_track_band_upper IS NOT NULL
+                 AND peak_track_id IS NOT NULL
+                 AND NOT peak_track_ambiguous
+                 THEN 'TRACKED_BASE_PEAK_BAND'
+                 ELSE 'UNAVAILABLE'
             END AS breakout_cost_ceiling_source,
             profit_ratio, trapped_ratio, asr, cbw, concentration_20,
             base_retention AS source_base_retention,
             recent_band_overlap,
             short_band_overlap,
-            coalesce(peak_count, 1) AS peak_count, state_quality, mass_sum,
+            peak_count, state_quality, mass_sum,
             opening_30m_return, closing_30m_return, close_vs_vwap,
             last_hour_volume_share, realized_volatility,
             structure_support,
@@ -1006,6 +1127,7 @@ def _create_panel_table(
             ev_sticky_base,
             ev_downside_absorption,
             dist_base_loss,
+            exact_lineage_state,
             dist_cost_band_expands,
             dist_peak_splits,
             dist_high_turnover_weak_impact,
@@ -1058,6 +1180,24 @@ def _create_panel_table(
         WHERE trade_date BETWEEN DATE '{history_start}' AND DATE '{end}'
         """
     )
+
+
+def _assert_unique_panel_input(
+    con: duckdb.DuckDBPyConnection, *, source_sql: str, source_name: str
+) -> None:
+    duplicate = con.execute(
+        f"""
+        SELECT symbol, trade_date, count(*) AS row_count
+        FROM read_parquet({source_sql}, union_by_name=true)
+        GROUP BY symbol, trade_date
+        HAVING count(*) <> 1
+        LIMIT 1
+        """
+    ).fetchone()
+    if duplicate is not None:
+        raise ValueError(
+            f"{source_name} is not unique on (symbol, trade_date): {duplicate}"
+        )
 
 
 def _assert_predictor_schema(con: duckdb.DuckDBPyConnection) -> None:

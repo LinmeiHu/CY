@@ -259,8 +259,26 @@ def _ensemble_peak_tracking(models: list[dict[str, Any]]) -> dict[str, Any]:
             if not dominant_valid
             else any(peak.ambiguity for peak in dominant_values)
         ),
+        "model_spread_dominant_peak_today": (
+            max(peak.center_price for peak in dominant_values)
+            - min(peak.center_price for peak in dominant_values)
+            if dominant_valid
+            else None
+        ),
         "tracked_base_peak": (
             median(peak.center_price for peak in base_values) if base_valid else None
+        ),
+        "peak_track_band_lower": (
+            median(peak.band[0] for peak in base_values) if base_valid else None
+        ),
+        "peak_track_band_upper": (
+            median(peak.band[1] for peak in base_values) if base_valid else None
+        ),
+        "peak_track_mass": (
+            median(peak.mass for peak in base_values) if base_valid else None
+        ),
+        "peak_track_prominence": (
+            median(peak.prominence for peak in base_values) if base_valid else None
         ),
         "peak_track_id": (
             "|".join(peak.peak_track_id for peak in base_values)
@@ -272,6 +290,9 @@ def _ensemble_peak_tracking(models: list[dict[str, Any]]) -> dict[str, Any]:
         "peak_track_split": any(peak.split for peak in base_values),
         "peak_track_merge": any(peak.merge for peak in base_values),
         "peak_track_lost": not base_valid,
+        "peak_definition_version": (
+            base_values[0].definition_version if base_valid else None
+        ),
         "peak_fail_closed_reason": (
             None
             if base_valid
