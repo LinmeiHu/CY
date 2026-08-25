@@ -979,35 +979,58 @@ def _compact_packed_lots_by_dimensions(
     *,
     max_holding_days: int,
 ) -> None:
-    """Drop depleted lots and merge age-cap collisions without stable hashes."""
+    """Drop depleted lots and merge age-cap collisions by stable identity."""
 
     size = len(lots)
     positive = lots._shares[:size] > 0
     if not bool(np.any(positive)):
         raise ChipStateContractError("inventory cannot be empty after aggregation")
     keep = positive.copy()
-    capped = np.flatnonzero(positive & (lots._holding_days[:size] == max_holding_days))
-    if capped.size > 1:
-        buckets = lots._cost_bucket_ids[capped]
-        sensitivities = lots._sensitivity_codes[capped]
-        economic = lots._economic_break_evens[capped]
-        economic_keys = np.nan_to_num(economic, nan=-math.inf)
-        order = np.lexsort((economic_keys, sensitivities, buckets))
-        ordered = capped[order]
-        ordered_buckets = lots._cost_bucket_ids[ordered]
-        ordered_sensitivities = lots._sensitivity_codes[ordered]
-        ordered_economic = np.nan_to_num(
-            lots._economic_break_evens[ordered], nan=-math.inf
+    merged = False
+    while True:
+        capped = np.flatnonzero(
+            positive & (lots._holding_days[: len(lots)] == max_holding_days)
         )
+        if capped.size < 2:
+            break
+        # The public/writer boundary keys inventory by stable cell id.  Derive
+        # the same identity here, rather than relying on a parallel raw-float
+        # comparison that can leave cells which materialize to one id apart.
+        capped_cell_ids = np.fromiter(
+            (
+                stable_cell_id(
+                    cost_bucket_id=(
+                        None
+                        if int(lots._cost_bucket_ids[index]) == _UNKNOWN_BUCKET_ID
+                        else int(lots._cost_bucket_ids[index])
+                    ),
+                    holding_days=int(lots._holding_days[index]),
+                    sensitivity=_SENSITIVITY_BY_CODE[
+                        int(lots._sensitivity_codes[index])
+                    ],
+                    economic_break_even=(
+                        None
+                        if int(lots._cost_bucket_ids[index]) == _UNKNOWN_BUCKET_ID
+                        else float(lots._economic_break_evens[index])
+                    ),
+                )
+                for index in capped
+            ),
+            dtype=np.int64,
+            count=int(capped.size),
+        )
+        lots._cell_ids[capped] = capped_cell_ids
+        order = np.argsort(capped_cell_ids, kind="stable")
+        ordered = capped[order]
+        ordered_cell_ids = capped_cell_ids[order]
         group_starts = np.flatnonzero(
             np.r_[
                 True,
-                (ordered_buckets[1:] != ordered_buckets[:-1])
-                | (ordered_sensitivities[1:] != ordered_sensitivities[:-1])
-                | (ordered_economic[1:] != ordered_economic[:-1]),
+                ordered_cell_ids[1:] != ordered_cell_ids[:-1],
             ]
         )
         group_stops = np.r_[group_starts[1:], ordered.size]
+        merged_this_pass = False
         for start, stop in zip(group_starts, group_stops, strict=True):
             if stop - start < 2:
                 continue
@@ -1029,7 +1052,19 @@ def _compact_packed_lots_by_dimensions(
                 )
             lots._shares[first] = combined_shares
             keep[members[1:]] = False
-    if not bool(np.all(keep)):
+            merged = True
+            merged_this_pass = True
+        if not merged_this_pass:
+            break
+        lots.retain(keep)
+        positive = lots._shares[: len(lots)] > 0
+        keep = positive.copy()
+    # A canonical merge can replace the economic break-even with its weighted
+    # aggregate.  The cached ids therefore no longer describe this packed
+    # state and must be regenerated before a lineage/writer boundary.
+    if merged:
+        lots._cell_ids_current = False
+    elif not bool(np.all(keep)):
         lots.retain(keep)
 
 

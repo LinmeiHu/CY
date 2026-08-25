@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from dataclasses import FrozenInstanceError, replace
 from datetime import UTC, datetime
 
@@ -30,6 +31,10 @@ from cyq_game.chip import (
     TurnoverSensitivity,
     initial_unknown_snapshot,
     prepare_minute_path,
+)
+from cyq_game.chip.migration_v2 import (
+    _PackedWorkingLots,
+    _compact_packed_lots_by_dimensions,
 )
 
 MODEL_VERSION = "chip-state-v2-test"
@@ -249,6 +254,41 @@ def test_packed_warmup_reuses_previous_state_without_changing_results(
 
         assert fast_state.to_snapshot() == slow_state.to_snapshot()
         assert fast_state.last_transition == slow_state.last_transition
+
+
+def test_packed_cap_compaction_merges_duplicate_stable_cell_identity() -> None:
+    shares = (144_911.97169761275, 168_777.2626921438)
+    economic_break_even = 52.80000152587891
+    cell = InventoryCell.create(
+        cost_bucket_id=1601,
+        holding_days=180,
+        sensitivity=TurnoverSensitivity.STICKY,
+        acquisition_cost=economic_break_even,
+        economic_break_even=economic_break_even,
+        shares=shares[0],
+    )
+    lots = _PackedWorkingLots(
+        cell_ids=np.asarray((cell.cell_id, cell.cell_id), dtype=np.int64),
+        cost_bucket_ids=np.asarray((1601, 1601), dtype=np.int64),
+        holding_days=np.asarray((180, 180), dtype=np.int16),
+        sensitivity_codes=np.asarray((2, 2), dtype=np.int8),
+        acquisition_costs=np.asarray(
+            (economic_break_even, economic_break_even), dtype=np.float64
+        ),
+        economic_break_evens=np.asarray(
+            (economic_break_even, economic_break_even), dtype=np.float64
+        ),
+        shares=np.asarray(shares, dtype=np.float64),
+        initialization_prior_units=np.asarray((0.0, 0.0), dtype=np.float64),
+    )
+
+    _compact_packed_lots_by_dimensions(lots, max_holding_days=180)
+
+    assert len(lots) == 1
+    assert lots.cell_ids.tolist() == [cell.cell_id]
+    assert lots.shares[0] == math.fsum(shares)
+    assert math.fsum(lots.shares.tolist()) == math.fsum(shares)
+    assert len(set(lots.cell_ids.tolist())) == len(lots)
 
 
 def test_same_price_band_replacement_is_not_anchor_lineage_retention() -> None:
