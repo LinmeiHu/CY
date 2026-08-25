@@ -54,6 +54,7 @@ from cyq_game.chip.peaks import (  # noqa: E402
     detect_canonical_peaks,
     dominant_canonical_peak,
 )
+from cyq_game.chip.profile_metrics import compute_distribution_metrics  # noqa: E402
 from cyq_game.chip.price_coordinate import (  # noqa: E402
     canonical_action_component_id,
     parse_action_ids,
@@ -348,6 +349,7 @@ OUTPUT_SCHEMA = pa.schema(
         ("free_float_shares", pa.float64()),
         ("known_cost_fraction", pa.float64()),
         ("unknown_cost_fraction", pa.float64()),
+        ("profile_close", pa.float64()),
         ("average_cost", pa.float64()),
         ("cost_p01", pa.float64()),
         ("cost_p10", pa.float64()),
@@ -358,7 +360,7 @@ OUTPUT_SCHEMA = pa.schema(
         ("asr", pa.float64()),
         ("cbw", pa.float64()),
         ("concentration_20", pa.float64()),
-        ("dominant_peak_today", pa.float64()),
+        ("main_peak", pa.float64()),
         ("dominant_band_lower", pa.float64()),
         ("dominant_band_upper", pa.float64()),
         ("dominant_band_mass", pa.float64()),
@@ -1585,7 +1587,20 @@ def _output_row(
     current, by_bucket, known_shares, current_economic_buckets = (
         codec.register_state_and_profile(state, grid)
     )
-    profile = _profile_from_bucket_mass(by_bucket, grid, current_price=current_price)
+    metrics = None
+    profile_close = current_price
+    if by_bucket:
+        if profile_close is None:
+            pairs = [
+                (economic_break_even_for_bucket(grid, bucket_id), mass)
+                for bucket_id, mass in sorted(by_bucket.items())
+            ]
+            profile_close = pairs[len(pairs) // 2][0]
+        metrics = compute_distribution_metrics(
+            by_bucket,
+            close=profile_close,
+            grid=grid,
+        )
     total = state.free_float_shares
     checkpoint_local_ids: list[int] = []
     checkpoint_shares: list[float] = []
@@ -1721,21 +1736,22 @@ def _output_row(
         total,
         known_shares / total,
         (total - known_shares) / total,
-        None if profile is None else profile["average"],
-        None if profile is None else profile["p01"],
-        None if profile is None else profile["p10"],
-        None if profile is None else profile["p50"],
-        None if profile is None else profile["p90"],
-        None if profile is None else profile["p99"],
-        None if profile is None else profile["profit_ratio"],
-        None if profile is None else profile["asr"],
-        None if profile is None else profile["cbw"],
-        None if profile is None else profile["concentration_20"],
-        None if profile is None else profile["dominant_peak_today"],
-        None if profile is None else profile["dominant_band_lower"],
-        None if profile is None else profile["dominant_band_upper"],
-        None if profile is None else profile["dominant_band_mass"],
-        None if profile is None else profile["peak_count"],
+        float(profile_close) if profile_close is not None else None,
+        None if metrics is None else metrics.average_cost,
+        None if metrics is None else metrics.cost_p01,
+        None if metrics is None else metrics.cost_p10,
+        None if metrics is None else metrics.cost_p50,
+        None if metrics is None else metrics.cost_p90,
+        None if metrics is None else metrics.cost_p99,
+        None if metrics is None else metrics.profit_ratio,
+        None if metrics is None else metrics.asr,
+        None if metrics is None else metrics.cbw,
+        None if metrics is None else metrics.concentration_20,
+        None if metrics is None else metrics.main_peak,
+        None if metrics is None else metrics.dominant_band_lower,
+        None if metrics is None else metrics.dominant_band_upper,
+        None if metrics is None else metrics.dominant_band_mass,
+        None if metrics is None else metrics.peak_count,
         1.0 if state.hard_valid else 0.0,
         checkpoint_local_ids,
         checkpoint_shares,

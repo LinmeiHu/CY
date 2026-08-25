@@ -8,6 +8,9 @@ from zoneinfo import ZoneInfo
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
+from math import isclose
+from cyq_game.chip.profile_metrics import compute_distribution_metrics
+from cyq_game.strategy.exact_chip_features import _FAST_OPERATOR_COLUMNS
 
 SCRIPT = Path(__file__).parents[1] / "scripts" / "build_real_chip_year.py"
 MODULE = runpy.run_path(str(SCRIPT))
@@ -45,6 +48,10 @@ def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:
     assert schema.field("cash_dividend_per_share").type == pa.float64()
     assert schema.field("share_multiplier").type == pa.float64()
     assert schema.field("research_valid").type == pa.bool_()
+
+
+def test_v12_schema_contains_all_fast_operator_columns() -> None:
+    assert set(_FAST_OPERATOR_COLUMNS).issubset(MODULE["OUTPUT_SCHEMA"].names)
 
 
 def test_minute_inputs_include_registered_2026_qmt_tail(tmp_path: Path) -> None:
@@ -165,6 +172,7 @@ def test_columnar_output_batch_preserves_schema_and_values() -> None:
             "free_float_shares": 100.0,
             "known_cost_fraction": 0.75,
             "unknown_cost_fraction": 0.25,
+            "profile_close": 11.0,
             "average_cost": 10.0,
             "cost_p01": 8.5,
             "cost_p10": 9.0,
@@ -175,7 +183,7 @@ def test_columnar_output_batch_preserves_schema_and_values() -> None:
             "asr": 0.8,
             "cbw": 35.0,
             "concentration_20": 0.9,
-            "dominant_peak_today": 10.0,
+            "main_peak": 10.0,
             "dominant_band_lower": 9.5,
             "dominant_band_upper": 10.5,
             "dominant_band_mass": 0.8,
@@ -377,10 +385,26 @@ def test_zero_retention_company_action_destination_needs_no_codec_entry() -> Non
         previous_economic_buckets={source_id: 100},
         codec=codec,
         grid=grid,
+        current_price=11.0,
         share_multiplier=2.0,
     )
 
+    expected = compute_distribution_metrics({200: 100.0}, close=11.0, grid=grid)
     values = dict(zip(MODULE["OUTPUT_SCHEMA"].names, row, strict=True))
+    assert values["profile_close"] == 11.0
+    assert values["main_peak"] == expected.main_peak
+    assert isclose(values["average_cost"], expected.average_cost, rel_tol=1e-12)
+    assert isclose(values["cost_p01"], expected.cost_p01, rel_tol=1e-12)
+    assert isclose(values["cost_p10"], expected.cost_p10, rel_tol=1e-12)
+    assert isclose(values["cost_p50"], expected.cost_p50, rel_tol=1e-12)
+    assert isclose(values["cost_p90"], expected.cost_p90, rel_tol=1e-12)
+    assert isclose(values["cost_p99"], expected.cost_p99, rel_tol=1e-12)
+    assert isclose(values["profit_ratio"], expected.profit_ratio, rel_tol=1e-12)
+    assert isclose(values["asr"], expected.asr, rel_tol=1e-12)
+    assert values["cbw"] == expected.cbw
+    assert isclose(values["concentration_20"], expected.concentration_20, rel_tol=1e-12)
+    assert values["peak_count"] == expected.peak_count
+
     assert values["destination_override_positions"] == [0]
     assert values["destination_override_cell_ids"] == [transformed_zero_id]
     assert values["inventory_adjustment_shares"] == [100.0]
@@ -493,6 +517,88 @@ def test_terminal_state_roundtrip_is_exact_and_resumable(tmp_path: Path) -> None
         MODULE["_read_terminal_snapshots"](
             path, "000005.SZ", before_year=2022, expected_year=2021
         )
+
+
+def test_v11_terminal_snapshot_can_seed_v12_initial_state(tmp_path: Path) -> None:
+    symbol = "000005.SZ"
+    timestamp = datetime(2020, 12, 31, 15, tzinfo=ZoneInfo("Asia/Shanghai"))
+    snapshots = {
+        model: MODULE["initial_unknown_snapshot"](
+            symbol=symbol,
+            decision_at=timestamp,
+            available_at=timestamp,
+            free_float_shares=1_000.0,
+            latent_supply_shares=0.0,
+            seller_model=model,
+            model_version=MODULE["MODEL_VERSION"],
+            grid_version=MODULE["GRID_VERSION"],
+            input_snapshot_ids=("daily:test",),
+        )
+        for model in MODULE["SELLER_MODEL_ORDER"]
+    }
+    terminal_v12 = tmp_path / "terminal_v12.parquet"
+    terminal_v11 = tmp_path / "terminal_v11.parquet"
+    MODULE["_write_terminal_snapshots"](terminal_v12, snapshots)
+    terminal = pq.read_table(terminal_v12)
+    terminal = terminal.set_column(
+        terminal.schema.get_field_index("storage_version"),
+        "storage_version",
+        pa.array(["chip-operator-log-v11"] * terminal.num_rows),
+    )
+    pq.write_table(terminal, terminal_v11)
+
+    initial_snapshots = MODULE["_read_terminal_snapshots"](
+        terminal_v11, symbol, before_year=2021, expected_year=2020
+    )
+    assert set(initial_snapshots) == set(MODULE["SELLER_MODEL_ORDER"])
+
+    trading_date = date(2021, 1, 2)
+    daily = {
+        "symbol": symbol,
+        "trade_date": trading_date,
+        "open": 10.0,
+        "high": 10.0,
+        "low": 10.0,
+        "close": 10.0,
+        "volume": 100.0,
+        "amount": 1_000.0,
+        "circulating_shares": 1_000.0,
+        "corporate_action_available_date": trading_date,
+        "float_available_date": trading_date,
+        "cash_per_share": 0.0,
+        "share_multiplier": 1.0,
+        "hard_valid": True,
+        "snapshot_id": "daily:2021-01-02",
+        "daily_snapshot_id": "daily:2021-01-02",
+        "float_snapshot_id": "float:2021-01-02",
+        "corporate_action_snapshot_id": "action:2021-01-02",
+    }
+    minute = {
+        "symbol": symbol,
+        "trade_date": trading_date,
+        "bar_end_time": datetime(
+            2021, 1, 2, 15, 0, tzinfo=ZoneInfo("Asia/Shanghai")
+        ),
+        "open": 10.0,
+        "high": 10.0,
+        "low": 10.0,
+        "close": 10.0,
+        "volume": 100.0,
+        "amount": 1_000.0,
+    }
+
+    result, terminal = MODULE["_run_symbol"](
+        symbol,
+        [daily],
+        [minute],
+        2021,
+        None,
+        initial_snapshots,
+        emit_operators=False,
+    )
+
+    assert result["state_resumed"] is True
+    assert {state.trading_date for state in terminal.values()} == {trading_date}
 
 
 def test_terminal_only_run_advances_state_without_writing_operators() -> None:
