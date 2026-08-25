@@ -27,7 +27,7 @@ import pyarrow.parquet as pq  # type: ignore[import-untyped]
 from cyq_game.chip.ensemble_v2 import AnchorRetentionEstimate
 from cyq_game.chip.price_coordinate import parse_action_ids
 from cyq_game.chip.state_v2 import SellerModel
-from cyq_game.strategy.chip_lineage import PersistedChipLineageResolver
+from cyq_game.strategy.chip_lineage import StreamingLineageSession
 from cyq_game.strategy.markup_retest import (
     AnchorRetentionResolver,
     ChipMassProfile,
@@ -152,7 +152,7 @@ def generate_signal_events(
         previous_key = key
         if symbol != row_symbol:
             if symbol is not None and isinstance(
-                anchor_retention_resolver, PersistedChipLineageResolver
+                anchor_retention_resolver, StreamingLineageSession
             ):
                 anchor_retention_resolver.release_symbol(symbol)
             symbol = row_symbol
@@ -237,7 +237,7 @@ def generate_signal_events(
             trading_index += 1
 
     if symbol is not None and isinstance(
-        anchor_retention_resolver, PersistedChipLineageResolver
+        anchor_retention_resolver, StreamingLineageSession
     ):
         anchor_retention_resolver.release_symbol(symbol)
 
@@ -405,7 +405,7 @@ def _generate_panel_events(
             parameters=parameters,
             panel_snapshot_id=panel_snapshot_id,
             anchor_retention_resolver=(
-                PersistedChipLineageResolver(lineage_root)
+                StreamingLineageSession(lineage_root)
                 if lineage_root is not None
                 else None
             ),
@@ -462,7 +462,7 @@ def _generate_panel_group(
         parameters=parameters,
         panel_snapshot_id=panel_snapshot_id,
         anchor_retention_resolver=(
-            PersistedChipLineageResolver(lineage_root)
+            StreamingLineageSession(lineage_root)
             if lineage_root is not None
             else None
         ),

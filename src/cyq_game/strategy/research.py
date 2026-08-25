@@ -25,7 +25,7 @@ import numpy.typing as npt
 
 from cyq_game.chip.ensemble_v2 import AnchorRetentionEstimate
 from cyq_game.domain import ChipLifecycleState
-from cyq_game.strategy.chip_lineage import PersistedChipLineageResolver
+from cyq_game.strategy.chip_lineage import StreamingLineageSession
 from cyq_game.strategy.ledger import TrialLedger
 from cyq_game.strategy.markup_retest import (
     AnchorRetentionResolver,
@@ -249,7 +249,7 @@ def screen_entry_lattice(
         previous_key = key
         if symbol != row_symbol:
             if symbol is not None and isinstance(
-                anchor_retention_resolver, PersistedChipLineageResolver
+                anchor_retention_resolver, StreamingLineageSession
             ):
                 anchor_retention_resolver.release_symbol(symbol)
             symbol = row_symbol
@@ -430,7 +430,7 @@ def screen_entry_lattice(
             trading_index += 1
 
     if symbol is not None and isinstance(
-        anchor_retention_resolver, PersistedChipLineageResolver
+        anchor_retention_resolver, StreamingLineageSession
     ):
         anchor_retention_resolver.release_symbol(symbol)
 
@@ -509,7 +509,7 @@ def _screen_entry_lattice_group(
         panel_snapshot_id=panel_snapshot_id,
         collect_signals=collect_signals,
         anchor_retention_resolver=(
-            PersistedChipLineageResolver(lineage_root)
+            StreamingLineageSession(lineage_root)
             if lineage_root is not None
             else None
         ),

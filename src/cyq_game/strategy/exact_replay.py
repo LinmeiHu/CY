@@ -28,7 +28,7 @@ import duckdb
 import numpy as np
 
 from cyq_game.domain import ExitReason
-from cyq_game.strategy.chip_lineage import PersistedChipLineageResolver
+from cyq_game.strategy.chip_lineage import StreamingLineageSession
 from cyq_game.strategy.execution import (
     EntryExecution,
     EntryExecutionStatus,
@@ -1345,7 +1345,7 @@ def _evaluate_partition(
         symbols,
     ) = arguments
     resolver = (
-        PersistedChipLineageResolver(config.assets.chip_lineage_root)
+        StreamingLineageSession(config.assets.chip_lineage_root)
         if config.assets.chip_lineage_root is not None
         else None
     )

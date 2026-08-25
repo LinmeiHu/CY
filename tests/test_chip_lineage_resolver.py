@@ -24,6 +24,7 @@ from cyq_game.chip.migration_v2 import NONPOSITIVE_ECONOMIC_BUCKET
 from cyq_game.chip.operator_index import build_operator_symbol_index
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
+    StreamingLineageSession,
     ChipLineageResolver,
     PersistedChipLineageResolver,
     _aged_local_id,
@@ -293,6 +294,11 @@ def test_persisted_operator_resolver_traces_anchor_without_counting_new_chips(
     assert first.central == pytest.approx(0.6)
     assert first.upper == pytest.approx(0.7)
     assert resolver.cached_result_count == 1
+
+    session = StreamingLineageSession(tmp_path)
+    streamed = session(anchor, observation)
+    assert streamed == session(anchor, observation)
+    assert session.loaded_symbol_count == 1
     assert resolver.loaded_symbol_count == 1
     assert resolver.cached_operator_step_count == 3
 

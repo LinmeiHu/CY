@@ -806,6 +806,7 @@ class PersistedChipLineageResolver:
             loaded_paths.add(path)
         return result
 
+
     def _trace_model(
         self,
         *,
@@ -1121,3 +1122,56 @@ class PersistedChipLineageResolver:
             if float(adjustment) > 0 and local_id in cleaned:
                 next_economic[local_id] = None if bucket is None else int(bucket)
         return cleaned, next_lineage, next_economic
+
+
+class StreamingLineageSession:
+    """One indexed operator stream shared by all active anchors of a symbol."""
+
+    def __init__(self, root: str | Path) -> None:
+        self._resolver = PersistedChipLineageResolver(root)
+        self._registered_anchors: dict[str, tuple[str, date, float, float]] = {}
+        self._same_day_cache: dict[
+            tuple[str, date], AnchorRetentionEstimate | None
+        ] = {}
+
+    @property
+    def loaded_symbol_count(self) -> int:
+        return self._resolver.loaded_symbol_count
+
+    @property
+    def cached_operator_step_count(self) -> int:
+        return self._resolver.cached_operator_step_count
+
+    def register_anchor(self, anchor: LifecycleAnchor) -> None:
+        contract = (anchor.symbol, anchor.created_at, anchor.lower, anchor.upper)
+        previous = self._registered_anchors.get(anchor.root_anchor_id)
+        if previous is not None and previous != contract:
+            raise ChipStateContractError("streaming anchor contract changed")
+        self._registered_anchors[anchor.root_anchor_id] = contract
+
+    def __call__(
+        self, anchor: LifecycleAnchor, observation: LifecycleObservation
+    ) -> AnchorRetentionEstimate | None:
+        self.register_anchor(anchor)
+        key = (anchor.root_anchor_id, observation.decision_at.date())
+        if key not in self._same_day_cache:
+            self._same_day_cache[key] = self._resolver(anchor, observation)
+        return self._same_day_cache[key]
+
+    def release_symbol(self, symbol: str) -> None:
+        anchor_ids = {
+            anchor_id
+            for anchor_id, contract in self._registered_anchors.items()
+            if contract[0] == symbol
+        }
+        self._registered_anchors = {
+            key: value
+            for key, value in self._registered_anchors.items()
+            if key not in anchor_ids
+        }
+        self._same_day_cache = {
+            key: value
+            for key, value in self._same_day_cache.items()
+            if key[0] not in anchor_ids
+        }
+        self._resolver.release_symbol(symbol)

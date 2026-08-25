@@ -3,6 +3,7 @@
 from cyq_game.strategy.chip_lineage import (
     ChipLineageResolver,
     PersistedChipLineageResolver,
+    StreamingLineageSession,
 )
 from cyq_game.strategy.execution import (
     EntryExecution,
@@ -50,6 +51,7 @@ __all__ = [
     "LifecycleObservation",
     "MarkupRetestConfig",
     "PersistedChipLineageResolver",
+    "StreamingLineageSession",
     "SignalBuildResult",
     "StrategyParameters",
     "StrategySignal",
