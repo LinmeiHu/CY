@@ -629,7 +629,7 @@ class _CellCodec:
                 economic_buckets[positive] = np.floor(
                     np.log(economic_values[positive] / grid.reference_price)
                     / math.log1p(grid.step_pct)
-                    - 0.5
+                    + 0.5
                 ).astype(np.int64)
                 unique_buckets, inverse = np.unique(
                     economic_buckets, return_inverse=True
