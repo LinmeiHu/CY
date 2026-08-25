@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import inspect
 from pathlib import Path
 
 import duckdb
@@ -155,3 +156,12 @@ def test_registered_302_alias_is_preserved_as_chinext() -> None:
         con.close()
 
     assert row == (True, "CHINEXT")
+
+
+def test_panel_uses_only_predecision_atr_and_never_reuses_ranked_peak_json() -> None:
+    """A close decision cannot use its own range or a re-ranked peak identity."""
+
+    source = inspect.getsource(panel_module._create_panel_table)
+
+    assert "ROWS BETWEEN 14 PRECEDING AND 1 PRECEDING" in source
+    assert "peaks_json" not in source

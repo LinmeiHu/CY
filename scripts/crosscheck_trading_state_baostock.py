@@ -40,7 +40,7 @@ def main() -> None:
             code = f"{market}.{code}"
             result = query_with_relogin(
                 bs,
-                lambda: bs.query_history_k_data_plus(
+                lambda code=code: bs.query_history_k_data_plus(
                     code, FIELDS, start_date=a.start, end_date=a.end, frequency="d", adjustflag="3"
                 ),
                 description="baostock.query_history_k_data_plus",

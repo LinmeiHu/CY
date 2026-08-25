@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import shutil
+import sys
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
@@ -26,7 +27,14 @@ from zoneinfo import ZoneInfo
 import duckdb
 import pyarrow as pa  # type: ignore[import-untyped]
 import pyarrow.parquet as pq  # type: ignore[import-untyped]
-from baostock_session import ensure_login, query_with_relogin
+
+# Direct execution already places this directory on sys.path, whereas the
+# import-safe test harness uses runpy and does not.  Keep the shared session
+# helper resolvable in both modes without relying on the caller's CWD.
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
+from baostock_session import ensure_login, query_with_relogin  # noqa: E402
 
 DAILY_FIELDS = (
     "date,code,open,high,low,close,preclose,volume,amount,adjustflag,"
@@ -302,7 +310,7 @@ def _universe_snapshots(bs: Any, dates: list[str], output: Path) -> tuple[str, .
     for day in dates:
         response = query_with_relogin(
             bs,
-            lambda: bs.query_all_stock(day=day),
+            lambda day=day: bs.query_all_stock(day=day),
             description="baostock.query_all_stock",
         )
         if response.error_code != "0":
@@ -342,7 +350,7 @@ def _fetch_indices(bs: Any, start: date, end: date, output: Path) -> list[dict[s
     for name, code in INDEX_CODES.items():
         response = query_with_relogin(
             bs,
-            lambda: bs.query_history_k_data_plus(
+            lambda code=code: bs.query_history_k_data_plus(
                 code,
                 fields,
                 start_date=start.isoformat(),

@@ -110,7 +110,7 @@ def main() -> int:
             try:
                 rs = query_with_relogin(
                     bs,
-                    lambda: bs.query_all_stock(day=day),
+                    lambda day=day: bs.query_all_stock(day=day),
                     description="baostock.query_all_stock",
                 )
             except QueryTimeout as exc:

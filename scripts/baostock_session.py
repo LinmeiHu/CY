@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 """Shared helpers for BaoStock login/session recovery."""
+
+from __future__ import annotations
 
 import time
 from collections.abc import Callable
@@ -54,7 +54,7 @@ def relogin(bs_module: Any) -> None:
     ensure_login(bs_module, attempts=2)
 
 
-def query_with_relogin(
+def query_with_relogin[T](
     bs_module: Any,
     request: Callable[[], T],
     *,

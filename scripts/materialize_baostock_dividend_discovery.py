@@ -54,7 +54,9 @@ def main() -> int:
                 try:
                     rs = query_with_relogin(
                         bs,
-                        lambda: bs.query_dividend_data(code=code, year=str(year), yearType="report"),
+                        lambda code=code, year=year: bs.query_dividend_data(
+                            code=code, year=str(year), yearType="report"
+                        ),
                         description="baostock.query_dividend_data",
                     )
                     rows = rs.get_data().to_dict(orient="records") if rs.error_code == "0" else []

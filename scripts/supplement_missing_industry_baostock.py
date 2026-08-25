@@ -56,7 +56,7 @@ def main() -> int:
                 try:
                     rs = query_with_relogin(
                         bs,
-                        lambda: bs.query_stock_industry(date=asof),
+                        lambda asof=asof: bs.query_stock_industry(date=asof),
                         description="baostock.query_stock_industry",
                     )
                     fields = list(rs.fields)

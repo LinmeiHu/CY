@@ -390,7 +390,8 @@ def _create_panel_table(
         """
 
     # Each CTE layer exists to keep window expressions causal and non-nested.
-    # Every rolling frame ending in "1 PRECEDING" excludes the decision bar.
+    # Volatility scaling is known only through the prior completed session; no
+    # decision-day high/low may change that day's threshold.
     con.execute(
         f"""
         CREATE TABLE causal_panel AS
@@ -435,7 +436,6 @@ def _create_panel_table(
                 f.concentration_20,
                 f.base_retention,
                 f.peak_count,
-                f.peaks_json,
                 {dominant_band_lower_sql},
                 {dominant_band_upper_sql},
                 {dominant_band_mass_sql},
@@ -610,11 +610,6 @@ def _create_panel_table(
                     AS strategy_corporate_action_ids,
                 {_board_sql()} AS board,
                 nullif(nullif(trim(industry), ''), 'UNKNOWN') AS observed_industry,
-                coalesce(
-                    try_cast(json_extract_string(peaks_json, '$[0].center_price') AS DOUBLE),
-                    p50,
-                    average_cost
-                ) AS main_peak,
                 CASE WHEN preclose > 0 THEN close / preclose - 1.0 END AS stock_return,
                 greatest(
                     high - low,
@@ -638,7 +633,6 @@ def _create_panel_table(
                 p10 / price_coordinate_factor AS analysis_p10,
                 p50 / price_coordinate_factor AS analysis_p50,
                 p90 / price_coordinate_factor AS analysis_p90,
-                main_peak / price_coordinate_factor AS analysis_main_peak,
                 dominant_band_lower / price_coordinate_factor
                     AS analysis_dominant_band_lower,
                 dominant_band_upper / price_coordinate_factor
@@ -673,8 +667,6 @@ def _create_panel_table(
                     * price_coordinate_factor AS average_cost_lag20,
                 lag(analysis_p50, {recent}) OVER symbol_window
                     * price_coordinate_factor AS p50_lag20,
-                lag(analysis_main_peak, {recent}) OVER symbol_window
-                    * price_coordinate_factor AS main_peak_lag20,
                 lag(asr, {recent}) OVER symbol_window AS asr_lag20,
                 lag(cbw, {recent}) OVER symbol_window AS cbw_lag20,
                 lag(concentration_20, {recent}) OVER symbol_window AS concentration_lag20,
@@ -689,8 +681,6 @@ def _create_panel_table(
                     * price_coordinate_factor AS p90_lag5,
                 lag(cbw, 5) OVER symbol_window AS cbw_lag5,
                 lag(peak_count, 5) OVER symbol_window AS peak_count_lag5,
-                lag(analysis_main_peak) OVER symbol_window
-                    * price_coordinate_factor AS prior_main_peak,
                 lag(analysis_dominant_band_lower) OVER symbol_window
                     * price_coordinate_factor AS prior_dominant_band_lower,
                 lag(analysis_dominant_band_upper) OVER symbol_window
@@ -703,7 +693,7 @@ def _create_panel_table(
                     * price_coordinate_factor AS prior_average_cost,
                 avg(analysis_true_range) OVER (
                     PARTITION BY symbol ORDER BY trade_date
-                    ROWS BETWEEN 13 PRECEDING AND CURRENT ROW
+                    ROWS BETWEEN 14 PRECEDING AND 1 PRECEDING
                 ) * price_coordinate_factor AS atr14,
                 avg(turnover_fraction) OVER recent_window AS turnover_mean20,
                 avg(amount) OVER recent_window AS amount_mean20,
@@ -977,8 +967,7 @@ def _create_panel_table(
             p50 AS cost_p50,
             p90 AS cost_p90,
             p99 AS cost_p99,
-            main_peak,
-            prior_average_cost, prior_p50 AS prior_cost_p50, prior_main_peak,
+            prior_average_cost, prior_p50 AS prior_cost_p50,
             dominant_band_lower,
             dominant_band_upper,
             dominant_band_mass,

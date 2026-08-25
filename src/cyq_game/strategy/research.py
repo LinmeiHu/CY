@@ -856,7 +856,6 @@ def _advance_entries(
         anchors["turnover"][broke_out] = observation.turnover
         anchors["average_cost"][broke_out] = observation.prior_average_cost
         anchors["cost_p50"][broke_out] = observation.prior_cost_p50
-        anchors["main_peak"][broke_out] = observation.prior_main_peak
 
     retesting = eligible & (state == _BREAKOUT) & ~broke_out
     broken = retesting & (
@@ -906,7 +905,6 @@ def _advance_entries(
         observation.average_cost - anchors["average_cost"],
         observation.cost_p50 - anchors["cost_p50"],
     ) / observation.atr
-    main_peak_not_lower = observation.main_peak >= anchors["main_peak"]
     frozen_support_regained = (
         observation.close
         >= anchors["support"]
@@ -915,7 +913,6 @@ def _advance_entries(
     preliminarily_qualified = ready & (
         (retest_depth <= retest_depth_threshold)
         & (migration >= migration_threshold)
-        & main_peak_not_lower
         & (
             observation.volume
             / np.maximum(anchors["volume"], 1e-12)
@@ -976,7 +973,6 @@ def _advance_entries(
             breakout_turnover=float(anchors["turnover"][index]),
             pre_breakout_average_cost=float(anchors["average_cost"][index]),
             pre_breakout_cost_p50=float(anchors["cost_p50"][index]),
-            pre_breakout_main_peak=float(anchors["main_peak"][index]),
             breakout_index=int(breakout_index[index]),
         )
         if root.anchor_id not in support_cache:
@@ -1081,7 +1077,6 @@ def _empty_anchors(size: int) -> dict[str, npt.NDArray[np.float64]]:
             "turnover",
             "average_cost",
             "cost_p50",
-            "main_peak",
         )
     }
 
@@ -1109,7 +1104,7 @@ def _rebase_lattice_for_action(
                 share_multiplier=multiplier,
                 cash_per_share=cash,
             )
-    for name in ("support", "average_cost", "cost_p50", "main_peak"):
+    for name in ("support", "average_cost", "cost_p50"):
         values = anchors[name]
         present = np.isfinite(values)
         values[present] = (values[present] - cash) / multiplier

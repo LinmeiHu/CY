@@ -843,7 +843,6 @@ class LifecycleAnchor:
     reference_mass: float
     average_cost: float
     cost_p50: float
-    main_peak: float
     band_width: float
     peak_count: int
     mass_method: ChipMassMethod
@@ -876,10 +875,8 @@ class LifecycleObservation:
     turnover: float
     average_cost: float
     cost_p50: float
-    main_peak: float
     prior_average_cost: float
     prior_cost_p50: float
-    prior_main_peak: float
     atr: float
     chip_model_disagreement_atr: float = 0.0
     share_multiplier: float = 1.0
@@ -940,7 +937,6 @@ class LifecycleMemory:
     breakout_turnover: float | None = None
     pre_breakout_average_cost: float | None = None
     pre_breakout_cost_p50: float | None = None
-    pre_breakout_main_peak: float | None = None
     breakout_index: int | None = None
     active_signal_id: str | None = None
     distribution_days: int = 0
@@ -1050,7 +1046,6 @@ def freeze_lifecycle_anchor(
         reference_mass=reference_mass,
         average_cost=observation.average_cost,
         cost_p50=observation.cost_p50,
-        main_peak=observation.main_peak,
         band_width=max(observation.cost_p90 - observation.cost_p10, 1e-12),
         peak_count=observation.peak_count,
         mass_method=observation.chip_profile.method,
@@ -1102,11 +1097,6 @@ def rebase_comparison_anchor(
             share_multiplier=share_multiplier,
             cash_per_share=cash_per_share,
         ),
-        main_peak=_action_rebased_price(
-            anchor.main_peak,
-            share_multiplier=share_multiplier,
-            cash_per_share=cash_per_share,
-        ),
         band_width=max(upper - lower, 1e-12),
     )
 
@@ -1154,7 +1144,6 @@ def rebase_lifecycle_memory(
         ),
         pre_breakout_average_cost=price(memory.pre_breakout_average_cost),
         pre_breakout_cost_p50=price(memory.pre_breakout_cost_p50),
-        pre_breakout_main_peak=price(memory.pre_breakout_main_peak),
     )
 
 
@@ -1229,7 +1218,6 @@ def maybe_create_support_anchor(
     if min(
         observation.average_cost - comparison_root.average_cost,
         observation.cost_p50 - comparison_root.cost_p50,
-        observation.main_peak - comparison_root.main_peak,
     ) < 0:
         return None
     parent = memory.working_anchor or lineage_root
@@ -1262,7 +1250,6 @@ def maybe_create_support_anchor(
         reference_mass=reference_mass,
         average_cost=observation.average_cost,
         cost_p50=observation.cost_p50,
-        main_peak=observation.main_peak,
         band_width=band_width,
         peak_count=observation.peak_count,
         mass_method=observation.chip_profile.method,
@@ -1391,7 +1378,6 @@ class LifecycleMachine:
                     breakout_turnover=observation.turnover,
                     pre_breakout_average_cost=observation.prior_average_cost,
                     pre_breakout_cost_p50=observation.prior_cost_p50,
-                    pre_breakout_main_peak=observation.prior_main_peak,
                     breakout_index=trading_index,
                 )
             )
@@ -1462,7 +1448,6 @@ class LifecycleMachine:
             memory.breakout_turnover,
             memory.pre_breakout_average_cost,
             memory.pre_breakout_cost_p50,
-            memory.pre_breakout_main_peak,
         )
         if any(value is None for value in required):
             raise ValueError("BREAKOUT state is missing causal retest anchors")
@@ -1481,23 +1466,18 @@ class LifecycleMachine:
         retest_depth_atr = abs(support - observation.low) / observation.atr
         retest_volume_ratio = observation.volume / breakout_volume
         retest_turnover_ratio = observation.turnover / breakout_turnover
-        # Average cost and p50 are continuous enough for a numeric ATR threshold.
-        # The exact peak is bucketed, so requiring it to rise by 0.25/0.50 ATR
-        # makes those parameter levels effectively unreachable on short retests.
-        # Treat the peak as a separate structural guard: it may stay in the same
-        # bucket, but it must not migrate lower.
+        # Average cost and p50 are continuous state measurements.  A daily
+        # dominant peak is intentionally not used here: peak rank can switch
+        # between distinct local modes, so comparing ranks across days would
+        # invent a false lineage relation.
         cost_migration_atr = min(
             observation.average_cost - cast(float, memory.pre_breakout_average_cost),
             observation.cost_p50 - cast(float, memory.pre_breakout_cost_p50),
         ) / observation.atr
-        main_peak_not_lower = observation.main_peak >= cast(
-            float, memory.pre_breakout_main_peak
-        )
         return all(
             (
                 retest_depth_atr <= self.parameters.max_retest_depth_atr,
                 cost_migration_atr >= self.parameters.min_cost_migration_atr,
-                main_peak_not_lower,
                 retest_volume_ratio <= self.config.fixed.retest_volume_ratio_max,
                 retest_turnover_ratio <= self.config.fixed.retest_turnover_ratio_max,
                 self._breakout_support_regained(memory, observation),

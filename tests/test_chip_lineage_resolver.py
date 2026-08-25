@@ -128,7 +128,6 @@ def _anchor(anchor_id: str = "root-1") -> LifecycleAnchor:
         reference_mass=1.0,
         average_cost=10.0,
         cost_p50=10.0,
-        main_peak=10.0,
         band_width=0.2,
         peak_count=1,
         mass_method=ChipMassMethod.HISTOGRAM_EXACT,
@@ -162,10 +161,8 @@ def _observation() -> LifecycleObservation:
         turnover=0.1,
         average_cost=10.05,
         cost_p50=10.05,
-        main_peak=10.0,
         prior_average_cost=10.0,
         prior_cost_p50=10.0,
-        prior_main_peak=10.0,
         atr=1.0,
     )
 

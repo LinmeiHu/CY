@@ -73,10 +73,8 @@ def _observation(
         turnover=0.05,
         average_cost=9.8,
         cost_p50=9.8,
-        main_peak=9.8,
         prior_average_cost=9.5,
         prior_cost_p50=9.5,
-        prior_main_peak=9.5,
         atr=1.0,
         chip_model_disagreement_atr=chip_model_disagreement_atr,
         structure_broken=structure_broken,
@@ -186,7 +184,7 @@ def test_entry_is_blocked_when_chip_model_interval_exceeds_risk_budget(
     assert result.memory.state == ChipLifecycleState.BREAKOUT
 
 
-def test_main_peak_may_hold_its_bucket_while_continuous_costs_migrate(
+def test_daily_peak_rank_is_not_a_cross_day_retest_gate(
     machine: LifecycleMachine,
 ) -> None:
     day0 = date(2020, 6, 15)
@@ -202,9 +200,10 @@ def test_main_peak_may_hold_its_bucket_while_continuous_costs_migrate(
         ),
         trading_index=1,
     )
+    # A different local mode can become the daily mass leader.  It is not an
+    # identified continuation of yesterday's peak and must not change entry.
     retest_observation = _with_anchor_lineage(
-        replace(_observation(day0 + timedelta(days=2)), main_peak=9.5),
-        breakout.memory,
+        _observation(day0 + timedelta(days=2)), breakout.memory
     )
     result = machine.advance(
         breakout.memory, retest_observation, trading_index=2
@@ -213,7 +212,7 @@ def test_main_peak_may_hold_its_bucket_while_continuous_costs_migrate(
     assert result.memory.state == ChipLifecycleState.RETEST_READY
 
 
-def test_main_peak_must_not_migrate_lower(
+def test_apparent_daily_peak_drop_does_not_reject_an_otherwise_valid_retest(
     machine: LifecycleMachine,
 ) -> None:
     day0 = date(2020, 6, 15)
@@ -230,14 +229,13 @@ def test_main_peak_must_not_migrate_lower(
         trading_index=1,
     )
     retest_observation = _with_anchor_lineage(
-        replace(_observation(day0 + timedelta(days=2)), main_peak=9.0),
-        breakout.memory,
+        _observation(day0 + timedelta(days=2)), breakout.memory
     )
     result = machine.advance(
         breakout.memory, retest_observation, trading_index=2
     )
-    assert result.signal is None
-    assert result.memory.state == ChipLifecycleState.BREAKOUT
+    assert result.signal is not None
+    assert result.memory.state == ChipLifecycleState.RETEST_READY
 
 
 def test_price_far_above_support_is_not_a_retest(machine: LifecycleMachine) -> None:
@@ -501,10 +499,8 @@ def test_share_action_rebases_open_support_without_false_stop(
         volume=100.0,
         average_cost=4.9,
         cost_p50=4.9,
-        main_peak=4.9,
         prior_average_cost=4.75,
         prior_cost_p50=4.75,
-        prior_main_peak=4.75,
         atr=0.5,
         structure_support=5.0,
     )
@@ -517,7 +513,6 @@ def test_share_action_rebases_open_support_without_false_stop(
     assert result.exit_reason is None
     assert result.memory.breakout_support == pytest.approx(5.0)
     assert result.memory.comparison_anchor is not None
-    assert result.memory.comparison_anchor.main_peak == pytest.approx(4.9)
 
 
 def test_twenty_complete_tradable_days_are_blocked_after_exit(
