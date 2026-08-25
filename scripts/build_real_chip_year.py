@@ -605,6 +605,8 @@ class _CellCodec:
                 TurnoverSensitivity.NEUTRAL,
                 TurnoverSensitivity.STICKY,
             )
+            packed._cell_ids_current = False
+            packed.refresh_cell_ids()
             size = len(packed)
             shares_array = packed._shares[:size]
             active_indices = np.flatnonzero(shares_array > 0)
