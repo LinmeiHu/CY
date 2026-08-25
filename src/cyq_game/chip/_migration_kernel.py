@@ -17,7 +17,7 @@ FloatArray = npt.NDArray[np.float64]
 BoolArray = npt.NDArray[np.bool_]
 
 
-@njit(cache=True, nogil=True)  # type: ignore[untyped-decorator]
+@njit(cache=True, nogil=True)  # type: ignore[misc]
 def disposition_path_no_saturation(
     original: FloatArray,
     costs: FloatArray,
@@ -70,7 +70,7 @@ def disposition_path_no_saturation(
     return remaining, True
 
 
-@njit(cache=True, nogil=True)  # type: ignore[untyped-decorator]
+@njit(cache=True, nogil=True)  # type: ignore[misc]
 def stable_sum(values: FloatArray) -> float:
     """Compiled compensated sum without Python list materialization."""
 
@@ -84,7 +84,7 @@ def stable_sum(values: FloatArray) -> float:
     return total
 
 
-@njit(cache=True, nogil=True)  # type: ignore[untyped-decorator]
+@njit(cache=True, nogil=True)  # type: ignore[misc]
 def stable_weighted_sum(weights: FloatArray, values: FloatArray) -> float:
     total = 0.0
     compensation = 0.0

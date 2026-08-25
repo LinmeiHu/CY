@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import resource
 import time
+from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Iterator
 
 
 @dataclass(frozen=True)

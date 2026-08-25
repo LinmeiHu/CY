@@ -245,14 +245,16 @@ def dominant_canonical_peak(
 ) -> CanonicalPeak | None:
     """Select today's dominant peak with a stable lower-price tie break."""
 
+    candidates = tuple(peaks)
+    if not candidates:
+        return None
     return max(
-        peaks,
+        candidates,
         key=lambda peak: (
             round(peak.mass, 12),
             round(peak.prominence, 12),
             -peak.center_bucket,
         ),
-        default=None,
     )
 
 

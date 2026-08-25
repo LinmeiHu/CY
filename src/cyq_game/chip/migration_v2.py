@@ -2588,7 +2588,9 @@ class DailyMigrationEngine:
                 TurnoverSensitivity.NEUTRAL: 1.0,
                 TurnoverSensitivity.STICKY: 0.25,
             }
-            sensitivity_order = tuple(TurnoverSensitivity)
+            sensitivity_order: tuple[TurnoverSensitivity, ...] = tuple(
+                TurnoverSensitivity
+            )
             group_of = source.sensitivity_codes
             grouped_original = np.asarray(
                 [float(original[group_of == group].sum()) for group in range(3)]

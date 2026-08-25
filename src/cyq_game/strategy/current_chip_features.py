@@ -49,6 +49,8 @@ def build_current_chip_measurement_features(
     """Replay each seller model once and return all current strategy primitives."""
     if start < date(2026, 6, 17) or end < start:
         raise ValueError("current chip measurements require a valid 2026-06-17+ range")
+    if not close_by_date:
+        return []
     resolver = PersistedChipLineageResolver(root)
     by_date: dict[date, list[dict[str, Any]]] = {}
     trackers: dict[str, TemporalPeakTracker] = {}

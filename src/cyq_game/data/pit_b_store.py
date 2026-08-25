@@ -1760,7 +1760,12 @@ def _row_to_prepared_chip(row: Mapping[str, Any]) -> PreparedChipRecord:
     priors = _parse_chip_priors(str(row["priors_json"]))
     peaks = tuple(
         ChipPeak(
+            center_bucket=int(item["center_bucket"]),
             center_price=float(item["center_price"]),
+            lower_bucket=int(item["lower_bucket"]),
+            lower_price=float(item["lower_price"]),
+            upper_bucket=int(item["upper_bucket"]),
+            upper_price=float(item["upper_price"]),
             mass=float(item["mass"]),
             width_pct=float(item["width_pct"]),
             prominence=float(item["prominence"]),

@@ -42,7 +42,10 @@ def build_operator_symbol_index(root: Path) -> Path:
              parquet.num_row_groups, path.stat().st_size, _sha256(path))
         )
     target = root / "operator_symbol_index.parquet"
-    arrays = [pa.array([row[i] for row in rows], type=field.type) for i, field in enumerate(INDEX_SCHEMA)]
+    arrays = [
+        pa.array([row[index] for row in rows], type=field.type)
+        for index, field in enumerate(INDEX_SCHEMA)
+    ]
     pq.write_table(pa.Table.from_arrays(arrays, schema=INDEX_SCHEMA), target,
                    compression="zstd", use_dictionary=True)
     return target

@@ -8,22 +8,21 @@ import os
 import shutil
 from bisect import bisect_right
 from dataclasses import asdict, dataclass
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from itertools import groupby
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import duckdb
 
+from cyq_game.strategy.execution import (
+    ExecutionWindow,
+    resolve_next_legal_fill,
+)
 from cyq_game.strategy.markup_retest import (
     MarkupRetestConfig,
     StrategyStage,
     load_passing_frozen_parameters,
-)
-from cyq_game.strategy.execution import (
-    EntryExecutionStatus,
-    ExecutionWindow,
-    resolve_next_legal_fill,
 )
 from cyq_game.strategy.panel import PanelBuildResult, _verify_inventory
 from cyq_game.strategy.semantic_contract import (
@@ -385,7 +384,7 @@ def _insert_resolved_fills(
     con: duckdb.DuckDBPyConnection,
     *,
     config: MarkupRetestConfig,
-    market_dates: tuple[object, ...],
+    market_dates: tuple[date, ...],
     decision_groups: Any,
     window_groups: Any,
 ) -> None:
@@ -421,15 +420,17 @@ def _insert_resolved_fills(
                 market_trading_dates=market_dates,
                 settings=config.execution,
             )
-            window = resolution.window
+            resolved_window = resolution.window
             output.append(
                 (
                     symbol,
                     trade_date,
-                    None if window is None else window.trade_date,
-                    None if window is None else window.vwap * (1.0 + markup),
-                    None if window is None else window.available_at,
-                    None if window is None else window.snapshot_id,
+                    None if resolved_window is None else resolved_window.trade_date,
+                    None
+                    if resolved_window is None
+                    else resolved_window.vwap * (1.0 + markup),
+                    None if resolved_window is None else resolved_window.available_at,
+                    None if resolved_window is None else resolved_window.snapshot_id,
                     resolution.status.value,
                     "|".join(resolution.reason_codes),
                 )
@@ -446,15 +447,15 @@ def _insert_resolved_fills(
         )
 
 
-def _execution_window_from_row(row: tuple[object, ...]) -> ExecutionWindow:
+def _execution_window_from_row(row: tuple[Any, ...]) -> ExecutionWindow:
     reasons = tuple(
         item for item in str(row[15] or "").replace(",", "|").split("|") if item
     )
     return ExecutionWindow(
         symbol=str(row[0]),
-        trade_date=row[1],
+        trade_date=cast(date, row[1]),
         window_index=int(row[2]),
-        available_at=row[3],
+        available_at=cast(datetime, row[3]),
         open=float(row[4]),
         high=float(row[5]),
         low=float(row[6]),

@@ -31,6 +31,8 @@ import pyarrow.parquet as pq
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from cyq_game.chip._migration_kernel import stable_sum  # noqa: E402
+from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
 from cyq_game.chip.ensemble_v2 import SELLER_MODEL_ORDER  # noqa: E402
 from cyq_game.chip.migration_v2 import (  # noqa: E402
     DEFAULT_MAX_HOLDING_DAYS,
@@ -47,8 +49,6 @@ from cyq_game.chip.migration_v2 import (  # noqa: E402
     initial_unknown_snapshot,
     prepare_minute_path,
 )
-from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
-from cyq_game.chip._migration_kernel import stable_sum  # noqa: E402
 from cyq_game.chip.operator_index import build_operator_symbol_index  # noqa: E402
 from cyq_game.chip.peaks import (  # noqa: E402
     detect_canonical_peaks,

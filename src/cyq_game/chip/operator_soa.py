@@ -25,7 +25,7 @@ class InventorySoA:
             raise ValueError("inventory shares must be finite and non-negative")
 
 
-@njit(cache=True)
+@njit(cache=True)  # type: ignore[misc]
 def advance_inventory_and_lineage(
     inventory_ids: NDArray[np.uint64],
     inventory_shares: NDArray[np.float64],

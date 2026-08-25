@@ -184,7 +184,10 @@ def _chip_feature_binding(tmp_path: Path) -> InputBinding:
                 "base_retention": [0.83],
                 "peak_count": [1],
                 "peaks_json": [
-                    '[{"center_price":10.0,"mass":0.45,"width_pct":0.08,'
+                    '[{"center_bucket":921,"center_price":10.0,'
+                    '"lower_bucket":918,"lower_price":9.9,'
+                    '"upper_bucket":925,"upper_price":10.1,'
+                    '"mass":0.45,"width_pct":0.08,'
                     '"prominence":0.12,"age_mean":8.0,"formation_date":"2023-12-20"}]'
                 ],
                 "priors_json": ['["BOOK_PRIOR:TEST"]'],

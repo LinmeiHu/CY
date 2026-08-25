@@ -10,6 +10,7 @@ import hashlib
 from datetime import date
 from pathlib import Path
 from statistics import median
+from typing import Any
 
 import pyarrow as pa  # type: ignore[import-untyped]
 import pyarrow.parquet as pq  # type: ignore[import-untyped]
@@ -75,7 +76,7 @@ def build_daily_feature_fact(operator_path: Path, output_path: Path) -> int:
         raise ValueError(f"operator scalar schema is incomplete: {sorted(missing)}")
     rows: list[tuple[object, ...]] = []
     tracker: TemporalPeakTracker | None = None
-    pending: list[dict[str, object]] = []
+    pending: list[dict[str, Any]] = []
     pending_key: tuple[str, date] | None = None
     for batch in parquet.iter_batches(columns=list(PROJECTED_COLUMNS), batch_size=8192):
         columns = {name: batch.column(index) for index, name in enumerate(PROJECTED_COLUMNS)}
@@ -106,7 +107,9 @@ def build_daily_feature_fact(operator_path: Path, output_path: Path) -> int:
     return len(rows)
 
 
-def _ensemble_row(models: list[dict[str, object]], tracker: TemporalPeakTracker) -> tuple[object, ...]:
+def _ensemble_row(
+    models: list[dict[str, Any]], tracker: TemporalPeakTracker
+) -> tuple[object, ...]:
     if len(models) != 3 or len({str(row["seller_model"]) for row in models}) != 3:
         raise ValueError("daily feature fact requires exactly three seller models")
     symbol = str(models[0]["symbol"])

@@ -912,19 +912,20 @@ def _process_bucket(
                     "peaks_json": json.dumps(
                         [
                             {
-                                "peak_track_id": peak.peak_track_id,
-                                "age": peak.age,
-                                "band": peak.band,
+                                "center_bucket": peak.center_bucket,
                                 "center_price": peak.center_price,
+                                "lower_bucket": peak.lower_bucket,
+                                "lower_price": peak.lower_price,
+                                "upper_bucket": peak.upper_bucket,
+                                "upper_price": peak.upper_price,
                                 "mass": peak.mass,
                                 "prominence": peak.prominence,
-                                "ambiguity": peak.ambiguity,
-                                "split": peak.split,
-                                "merge": peak.merge,
-                                "lost": peak.lost,
+                                "width_pct": peak.width_pct,
+                                "age_mean": peak.age_mean,
+                                "formation_date": peak.formation_date,
                                 "definition_version": peak.definition_version,
                             }
-                            for peak in peak_tracking.peaks
+                            for peak in features.peaks
                         ],
                         separators=(",", ":"),
                     ),

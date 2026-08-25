@@ -24,9 +24,9 @@ from cyq_game.chip.migration_v2 import NONPOSITIVE_ECONOMIC_BUCKET
 from cyq_game.chip.operator_index import build_operator_symbol_index
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
-    StreamingLineageSession,
     ChipLineageResolver,
     PersistedChipLineageResolver,
+    StreamingLineageSession,
     _aged_local_id,
     _pack_local_id,
 )

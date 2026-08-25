@@ -185,6 +185,8 @@ def _build_semantic_ensemble_features(
     end: date,
 ) -> list[dict[str, Any]]:
     """Build median/min/max measurements for an explicitly authorized horizon."""
+    if not close_by_date:
+        return []
     resolver = PersistedChipLineageResolver(root)
     by_date: dict[date, list[dict[str, Any]]] = {}
     for item in resolver.iter_daily_bucket_mass(symbol, start, end):
