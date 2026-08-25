@@ -314,7 +314,14 @@ def build_strategy_signals(
             f"signal target exists without a reusable matching manifest: {target}"
         )
 
-    panel_files = tuple(sorted(panel.path.rglob("*.parquet")))
+    signal_scan_root = panel.path.parent / "panel_signal_scan"
+    panel_files = tuple(
+        sorted(
+            (signal_scan_root if signal_scan_root.is_dir() else panel.path).rglob(
+                "*.parquet"
+            )
+        )
+    )
     if not panel_files:
         raise FileNotFoundError(f"causal panel has no parquet files: {panel.path}")
     temp = target.with_name(f".{target.name}.tmp-{os.getpid()}")
@@ -436,7 +443,7 @@ def _write_panel_group_shards(
 ) -> SignalShardMetrics:
     index, files, config, parameters, panel_snapshot_id, lineage_root, output_root = arguments
     generated = generate_signal_events(
-        stream_panel(files), config, parameters=parameters,
+        stream_panel(files, strict_schema=True), config, parameters=parameters,
         panel_snapshot_id=panel_snapshot_id,
         anchor_retention_resolver=(
             StreamingLineageSession(lineage_root) if lineage_root is not None else None
@@ -558,6 +565,7 @@ def stream_panel(
     files: Sequence[Path],
     *,
     symbols: Sequence[str] | None = None,
+    strict_schema: bool = False,
 ) -> Iterator[Mapping[str, object]]:
     """Yield one frozen panel scan in canonical symbol/date order."""
     sql_files = "[" + ",".join(_sql_text(str(path)) for path in files) + "]"
@@ -565,9 +573,12 @@ def stream_panel(
     try:
         con.execute("SET threads = 1")
         described = con.execute(
-            f"DESCRIBE SELECT * FROM read_parquet({sql_files}, union_by_name=true)"
+            f"DESCRIBE SELECT * FROM read_parquet({sql_files})"
         ).fetchall()
         available = {str(row[0]) for row in described}
+        missing = set(_SIGNAL_INPUT_COLUMNS) - available
+        if strict_schema and missing:
+            raise ValueError(f"panel_signal_scan schema drift: {sorted(missing)}")
         projected_columns = ", ".join(
             f'"{column}"'
             if column in available
@@ -580,12 +591,13 @@ def stream_panel(
                 return
             symbol_sql = ",".join(_sql_text(symbol) for symbol in symbols)
             symbol_filter = f"WHERE symbol IN ({symbol_sql})"
+        order_clause = "" if strict_schema else "ORDER BY symbol, trade_date"
         query = con.execute(
             f"""
             SELECT {projected_columns}
-            FROM read_parquet({sql_files}, union_by_name=true)
+            FROM read_parquet({sql_files})
             {symbol_filter}
-            ORDER BY symbol, trade_date
+            {order_clause}
             """
         )
         reader = query.fetch_record_batch(65_536)

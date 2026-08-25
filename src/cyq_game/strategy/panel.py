@@ -197,11 +197,31 @@ def build_causal_panel(
             )
             """
         )
+        from cyq_game.strategy.signals import _SIGNAL_INPUT_COLUMNS
+
+        signal_scan_root = temp / "panel_signal_scan"
+        signal_scan_root.mkdir()
+        signal_columns = ", ".join(f'"{name}"' for name in _SIGNAL_INPUT_COLUMNS)
+        con.execute(
+            f"""
+            COPY (
+                SELECT {signal_columns}, symbol_bucket
+                FROM causal_panel
+                ORDER BY symbol_bucket, symbol, trade_date
+            ) TO {_sql_text(str(signal_scan_root))} (
+                FORMAT PARQUET,
+                COMPRESSION ZSTD,
+                PARTITION_BY (symbol_bucket)
+            )
+            """
+        )
     finally:
         con.close()
         db_path.unlink(missing_ok=True)
 
-    parquet_files = sorted((temp / "data").rglob("*.parquet"))
+    parquet_files = sorted((temp / "data").rglob("*.parquet")) + sorted(
+        (temp / "panel_signal_scan").rglob("*.parquet")
+    )
     if not parquet_files:
         shutil.rmtree(temp)
         raise RuntimeError("causal panel build produced no parquet files")
