@@ -47,6 +47,7 @@ from cyq_game.chip.migration_v2 import (  # noqa: E402
     initial_unknown_snapshot,
     prepare_minute_path,
 )
+from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
 from cyq_game.chip.peaks import (  # noqa: E402
     detect_canonical_peaks,
     dominant_canonical_peak,
@@ -346,10 +347,21 @@ OUTPUT_SCHEMA = pa.schema(
         ("known_cost_fraction", pa.float64()),
         ("unknown_cost_fraction", pa.float64()),
         ("average_cost", pa.float64()),
+        ("cost_p01", pa.float64()),
         ("cost_p10", pa.float64()),
         ("cost_p50", pa.float64()),
         ("cost_p90", pa.float64()),
+        ("cost_p99", pa.float64()),
+        ("profit_ratio", pa.float64()),
+        ("asr", pa.float64()),
+        ("cbw", pa.float64()),
+        ("concentration_20", pa.float64()),
         ("dominant_peak_today", pa.float64()),
+        ("dominant_band_lower", pa.float64()),
+        ("dominant_band_upper", pa.float64()),
+        ("dominant_band_mass", pa.float64()),
+        ("peak_count", pa.int32()),
+        ("model_quality", pa.float64()),
         ("checkpoint_local_ids", pa.list_(pa.uint64())),
         ("checkpoint_shares", pa.list_(pa.float64())),
         ("checkpoint_economic_bucket_ids", pa.list_(pa.int32())),
@@ -1476,7 +1488,10 @@ def _cap_prepared_minute_path(
 
 
 def _profile_from_bucket_mass(
-    by_bucket: dict[int, float], grid: StableLogPriceGrid
+    by_bucket: dict[int, float],
+    grid: StableLogPriceGrid,
+    *,
+    current_price: float | None = None,
 ) -> dict[str, float | None] | None:
     if not by_bucket:
         return None
@@ -1485,7 +1500,11 @@ def _profile_from_bucket_mass(
         for bucket_id, mass in sorted(by_bucket.items())
     ]
     profile_total = math.fsum(mass for _, mass, _ in pairs)
-    thresholds = (profile_total * 0.10, profile_total * 0.50, profile_total * 0.90)
+    if current_price is None:
+        current_price = pairs[len(pairs) // 2][0]
+    thresholds = tuple(
+        profile_total * probability for probability in (0.01, 0.10, 0.50, 0.90, 0.99)
+    )
     quantiles: list[float] = []
     cumulative = 0.0
     threshold_index = 0
@@ -1502,12 +1521,41 @@ def _profile_from_bucket_mass(
         as_of=date.min,
     )
     dominant = dominant_canonical_peak(peaks)
+    prices = [item[0] for item in pairs]
+    masses = [item[1] for item in pairs]
+    profit_ratio = math.fsum(
+        mass for price, mass in zip(prices, masses, strict=True) if price <= current_price
+    ) / profile_total
+    asr = math.fsum(
+        mass
+        for price, mass in zip(prices, masses, strict=True)
+        if 0.9 * current_price <= price <= 1.1 * current_price
+    ) / profile_total
+    concentration_20 = 0.0
+    right = 0
+    window_mass = 0.0
+    for left, price in enumerate(prices):
+        while right < len(prices) and prices[right] <= price * 1.20:
+            window_mass += masses[right]
+            right += 1
+        concentration_20 = max(concentration_20, window_mass / profile_total)
+        window_mass -= masses[left]
     return {
         "average": math.fsum(price * mass for price, mass, _ in pairs) / profile_total,
-        "p10": quantiles[0],
-        "p50": quantiles[1],
-        "p90": quantiles[2],
+        "p01": quantiles[0],
+        "p10": quantiles[1],
+        "p50": quantiles[2],
+        "p90": quantiles[3],
+        "p99": quantiles[4],
+        "profit_ratio": profit_ratio,
+        "asr": asr,
+        "cbw": 100.0 * (quantiles[4] - quantiles[0]) / quantiles[0],
+        "concentration_20": concentration_20,
         "dominant_peak_today": None if dominant is None else dominant.center_price,
+        "dominant_band_lower": None if dominant is None else dominant.lower_price,
+        "dominant_band_upper": None if dominant is None else dominant.upper_price,
+        "dominant_band_mass": None if dominant is None else dominant.mass,
+        "peak_count": len(peaks),
     }
 
 
@@ -1524,6 +1572,7 @@ def _output_row(
     share_multiplier: float = 1.0,
     action_provenance_ids: tuple[str, ...] = (),
     force_checkpoint: bool = False,
+    current_price: float | None = None,
 ) -> tuple[
     tuple[Any, ...],
     dict[int, tuple[int | None, int, TurnoverSensitivity, float]],
@@ -1534,7 +1583,7 @@ def _output_row(
     current, by_bucket, known_shares, current_economic_buckets = (
         codec.register_state_and_profile(state, grid)
     )
-    profile = _profile_from_bucket_mass(by_bucket, grid)
+    profile = _profile_from_bucket_mass(by_bucket, grid, current_price=current_price)
     total = state.free_float_shares
     checkpoint_local_ids: list[int] = []
     checkpoint_shares: list[float] = []
@@ -1671,10 +1720,21 @@ def _output_row(
         known_shares / total,
         (total - known_shares) / total,
         None if profile is None else profile["average"],
+        None if profile is None else profile["p01"],
         None if profile is None else profile["p10"],
         None if profile is None else profile["p50"],
         None if profile is None else profile["p90"],
+        None if profile is None else profile["p99"],
+        None if profile is None else profile["profit_ratio"],
+        None if profile is None else profile["asr"],
+        None if profile is None else profile["cbw"],
+        None if profile is None else profile["concentration_20"],
         None if profile is None else profile["dominant_peak_today"],
+        None if profile is None else profile["dominant_band_lower"],
+        None if profile is None else profile["dominant_band_upper"],
+        None if profile is None else profile["dominant_band_mass"],
+        None if profile is None else profile["peak_count"],
+        1.0 if state.hard_valid else 0.0,
         checkpoint_local_ids,
         checkpoint_shares,
         checkpoint_economic_bucket_ids,
@@ -1930,6 +1990,7 @@ def _run_symbol(
                         model not in emitted_models
                         or emitted_day_count % CHECKPOINT_INTERVAL_DAYS == 0
                     ),
+                    current_price=float(row["close"]),
                 )
                 output_rows.append(output_row)
                 previous_output_states[model] = output_state
@@ -1994,6 +2055,15 @@ def _terminal_path(output_root: Path, bucket: int, symbol: str) -> Path:
         output_root
         / "terminal"
         / f"bucket={bucket}"
+        / f"{symbol.replace('.', '_')}.parquet"
+    )
+
+
+def _feature_fact_path(output_root: Path, bucket: int, symbol: str) -> Path:
+    return (
+        output_root
+        / "daily_feature_fact"
+        / f"symbol_bucket={bucket}"
         / f"{symbol.replace('.', '_')}.parquet"
     )
 
@@ -2249,11 +2319,16 @@ def _write_symbol_part(
     emit_operators: bool = True,
     emit_start_date: date | None = None,
 ) -> dict[str, Any]:
+    output_root = path.parents[2]
+    bucket = int(path.parent.name.split("=", 1)[1])
+    feature_path = _feature_fact_path(output_root, bucket, symbol)
     resumed = (
         _existing_part_result(path, symbol, terminal_path, year)
         if emit_operators
         else _existing_terminal_result(terminal_path, symbol, year)
     )
+    if emit_operators and not feature_path.is_file():
+        resumed = None
     if resumed is not None:
         return resumed
     started = time.perf_counter()
@@ -2299,17 +2374,24 @@ def _write_symbol_part(
             gc.enable()
     if writer is not None:
         writer.close()
+    temp_feature_path = feature_path.with_suffix(".tmp.parquet")
+    temp_feature_path.unlink(missing_ok=True)
     try:
+        if emit_operators:
+            build_daily_feature_fact(temp_path, temp_feature_path)
         _write_terminal_snapshots(temp_terminal_path, terminal_snapshots)
         _read_terminal_snapshots(temp_terminal_path, symbol, before_year=year + 1)
     except Exception:
         temp_path.unlink(missing_ok=True)
         temp_terminal_path.unlink(missing_ok=True)
+        temp_feature_path.unlink(missing_ok=True)
         raise
     terminal_path.parent.mkdir(parents=True, exist_ok=True)
     temp_terminal_path.replace(terminal_path)
     if emit_operators:
         temp_path.replace(path)
+        feature_path.parent.mkdir(parents=True, exist_ok=True)
+        temp_feature_path.replace(feature_path)
     result["resumed"] = False
     result["compute_seconds"] = round(time.perf_counter() - started, 3)
     return result
@@ -2358,6 +2440,10 @@ def _run_bucket(
             if emit_operators
             else _existing_terminal_result(terminal_path, symbol, year)
         )
+        if emit_operators and not _feature_fact_path(
+            output_root, bucket, symbol
+        ).is_file():
+            resumed = None
         if resumed is not None:
             results.append(resumed)
             continue
