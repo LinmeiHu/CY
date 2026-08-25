@@ -9,6 +9,7 @@ from cyq_game.chip.core import ChipState, LogPriceGrid
 from cyq_game.chip.features import detect_peaks
 from cyq_game.chip.peaks import (
     CanonicalPeak,
+    EnsembleTemporalPeakTracker,
     TemporalPeakTracker,
     detect_canonical_peaks,
 )
@@ -99,9 +100,97 @@ def test_peak_split_and_missing_base_fail_closed() -> None:
         candidates=(_candidate(13, 0.4, 10, 15), _candidate(17, 0.4, 15, 20)),
     )
     assert split.tracked_base_peak is None
+    assert any(peak.split and peak.ambiguity for peak in split.peaks)
     assert split.fail_closed_reason == "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
 
     missing = tracker.update(as_of=date(2026, 8, 24) + timedelta(days=1), candidates=())
     assert missing.dominant_peak_today is None
     assert missing.tracked_base_peak is None
     assert missing.fail_closed_reason == "PEAK_MISSING"
+
+
+def test_two_near_equal_peaks_can_switch_dominance_without_rewriting_track() -> None:
+    tracker = TemporalPeakTracker(symbol="000001.SZ", model="fifo")
+    first = tracker.update(
+        as_of=date(2026, 8, 23),
+        candidates=(_candidate(10, 0.51), _candidate(20, 0.49)),
+    )
+    assert first.tracked_base_peak is not None
+    base_id = first.tracked_base_peak.peak_track_id
+
+    second = tracker.update(
+        as_of=date(2026, 8, 24),
+        candidates=(_candidate(10, 0.49), _candidate(20, 0.51)),
+    )
+    assert second.dominant_peak_today is not None
+    assert second.dominant_peak_today.center_price == 20.0
+    assert second.tracked_base_peak is not None
+    assert second.tracked_base_peak.center_price == 10.0
+    assert second.tracked_base_peak.peak_track_id == base_id
+
+
+def test_peak_merge_and_lost_reappearance_fail_closed() -> None:
+    tracker = TemporalPeakTracker(symbol="000001.SZ", model="fifo")
+    first = tracker.update(
+        as_of=date(2026, 8, 21),
+        candidates=(_candidate(10, 0.60, 8, 12), _candidate(20, 0.40, 18, 22)),
+    )
+    assert first.tracked_base_peak is not None
+
+    merged = tracker.update(
+        as_of=date(2026, 8, 22), candidates=(_candidate(15, 1.0, 8, 22),)
+    )
+    assert merged.tracked_base_peak is None
+    assert any(peak.merge for peak in merged.peaks)
+    assert merged.fail_closed_reason == "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
+
+    # Use a fresh tracker to make the lost/reappear terminal event explicit.
+    tracker = TemporalPeakTracker(symbol="000001.SZ", model="fifo")
+    original = tracker.update(as_of=date(2026, 8, 21), candidates=(_candidate(10, 1.0),))
+    assert original.tracked_base_peak is not None
+    original_id = original.tracked_base_peak.peak_track_id
+    lost = tracker.update(as_of=date(2026, 8, 22), candidates=())
+    assert any(peak.lost and peak.peak_track_id == original_id for peak in lost.peaks)
+    reappeared = tracker.update(as_of=date(2026, 8, 23), candidates=(_candidate(10, 1.0),))
+    assert reappeared.tracked_base_peak is None
+    assert reappeared.peaks[0].peak_track_id != original_id
+    assert reappeared.fail_closed_reason == "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
+
+
+def test_ensemble_match_keeps_one_id_across_seller_models_and_days() -> None:
+    tracker = EnsembleTemporalPeakTracker(
+        symbol="000001.SZ", models=("uniform", "disposition", "active_sticky")
+    )
+    day_one = {
+        model: (_candidate(10, 0.51), _candidate(20, 0.49))
+        for model in ("uniform", "disposition", "active_sticky")
+    }
+    first = tracker.update(as_of=date(2026, 8, 23), candidates_by_model=day_one).ensemble
+    assert first.tracked_base_peak is not None
+    track_id = first.tracked_base_peak.peak_track_id
+
+    day_two = {
+        model: (_candidate(10, 0.49), _candidate(20, 0.51))
+        for model in ("uniform", "disposition", "active_sticky")
+    }
+    second = tracker.update(as_of=date(2026, 8, 24), candidates_by_model=day_two).ensemble
+    assert second.dominant_peak_today is not None
+    assert second.dominant_peak_today.center_price == 20.0
+    assert second.tracked_base_peak is not None
+    assert second.tracked_base_peak.peak_track_id == track_id
+
+
+def test_ensemble_unmatched_seller_peak_fails_closed_as_ambiguous() -> None:
+    tracker = EnsembleTemporalPeakTracker(
+        symbol="000001.SZ", models=("uniform", "disposition", "active_sticky")
+    )
+    result = tracker.update(
+        as_of=date(2026, 8, 23),
+        candidates_by_model={
+            "active_sticky": (_candidate(10, 0.60), _candidate(20, 0.40)),
+            "disposition": (_candidate(10, 0.60),),
+            "uniform": (_candidate(10, 0.60),),
+        },
+    ).ensemble
+    assert result.tracked_base_peak is None
+    assert result.fail_closed_reason == "ENSEMBLE_PEAK_AMBIGUOUS"

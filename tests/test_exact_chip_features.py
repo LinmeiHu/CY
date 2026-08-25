@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import json
 from datetime import UTC, date, datetime
 from pathlib import Path
 
@@ -9,6 +10,7 @@ import pyarrow.parquet as pq
 
 from cyq_game.chip.ensemble_v2 import SELLER_MODEL_ORDER
 from cyq_game.chip.migration_v2 import NONPOSITIVE_ECONOMIC_BUCKET
+from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
     PersistedChipLineageResolver,
@@ -77,7 +79,7 @@ def test_exact_research_invalid_reason_preserves_source_failure() -> None:
     assert exact_research_invalid_reason(cbw_valid=True, source_valid=True) is None
 
 
-def test_v12_feature_builder_uses_persisted_metrics_without_replay(
+def test_v13_feature_builder_uses_persisted_metrics_without_replay(
     tmp_path: Path,
     monkeypatch,
 ) -> None:
@@ -88,7 +90,7 @@ def test_v12_feature_builder_uses_persisted_metrics_without_replay(
     for offset, model in enumerate(SELLER_MODEL_ORDER):
         rows.append(
             {
-                "storage_version": "chip-operator-log-v12",
+                "storage_version": "chip-operator-log-v13",
                 "symbol": symbol,
                 "trade_date": trade_date,
                 "seller_model": model.value,
@@ -112,6 +114,25 @@ def test_v12_feature_builder_uses_persisted_metrics_without_replay(
                 "cbw": 50.0 + offset,
                 "concentration_20": 0.80 + 0.01 * offset,
                 "peak_count": 1 + offset,
+                "canonical_peaks_json": json.dumps(
+                    [{
+                        "center_bucket": 100 + offset,
+                        "center_price": 10.0 + offset,
+                        "lower_bucket": 99 + offset,
+                        "lower_price": 9.5 + offset,
+                        "upper_bucket": 101 + offset,
+                        "upper_price": 10.5 + offset,
+                        "mass": 0.70 + 0.01 * offset,
+                        "prominence": 0.1,
+                        "width_pct": (10.5 + offset) / (9.5 + offset) - 1.0,
+                        "age_mean": None,
+                        "formation_date": "2020-01-02",
+                        "definition_version": PEAK_DEFINITION_VERSION,
+                    }]
+                ),
+                "cash_dividend_per_share": 0.0,
+                "share_multiplier": 1.0,
+                "action_provenance_ids": [],
             }
         )
     path = tmp_path / "parts" / "bucket=0" / "000001_SZ.parquet"
@@ -119,7 +140,7 @@ def test_v12_feature_builder_uses_persisted_metrics_without_replay(
     pq.write_table(pa.Table.from_pylist(rows), path)
 
     def fail_replay(*_args, **_kwargs):
-        raise AssertionError("v12 daily metrics must not replay inventory")
+        raise AssertionError("v13 daily metrics must not replay inventory")
 
     monkeypatch.setattr(
         PersistedChipLineageResolver,
@@ -141,7 +162,7 @@ def test_v12_feature_builder_uses_persisted_metrics_without_replay(
     assert result[0]["known_cost_fraction_min"] == 0.90
 
 
-def test_v12_feature_builder_falls_back_to_legacy_replay_source(
+def test_v13_feature_builder_falls_back_to_legacy_replay_source(
     tmp_path: Path,
     monkeypatch,
 ) -> None:
@@ -174,6 +195,24 @@ def test_v12_feature_builder_falls_back_to_legacy_replay_source(
                     "available_at": available_at,
                     "known_cost_fraction": 0.9,
                     "research_valid": True,
+                    "canonical_peaks": (
+                        exact_chip_features.CanonicalPeak(
+                            center_bucket=100,
+                            center_price=10.0,
+                            lower_bucket=99,
+                            lower_price=9.5,
+                            upper_bucket=101,
+                            upper_price=10.5,
+                            mass=0.7,
+                            prominence=0.1,
+                            width_pct=10.5 / 9.5 - 1.0,
+                            age_mean=None,
+                            formation_date="2020-01-03",
+                        ),
+                    ),
+                    "cash_dividend_per_share": 0.0,
+                    "share_multiplier": 1.0,
+                    "action_provenance_ids": (),
                 }
                 for offset, model in enumerate(SELLER_MODEL_ORDER)
             ]

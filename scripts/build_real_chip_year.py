@@ -366,6 +366,9 @@ OUTPUT_SCHEMA = pa.schema(
         ("dominant_band_upper", pa.float64()),
         ("dominant_band_mass", pa.float64()),
         ("peak_count", pa.int32()),
+        # Full canonical candidates are required to establish a causal
+        # temporal identity.  The scalar dominant fields remain diagnostics.
+        ("canonical_peaks_json", pa.string()),
         ("model_quality", pa.float64()),
         ("checkpoint_local_ids", pa.list_(pa.uint64())),
         ("checkpoint_shares", pa.list_(pa.float64())),
@@ -1613,6 +1616,7 @@ def _output_row(
             by_bucket,
             close=profile_close,
             grid=grid,
+            as_of=state.trading_date,
         )
     total = state.free_float_shares
     checkpoint_local_ids: list[int] = []
@@ -1766,6 +1770,31 @@ def _output_row(
         None if metrics is None else metrics.dominant_band_upper,
         None if metrics is None else metrics.dominant_band_mass,
         None if metrics is None else metrics.peak_count,
+        (
+            None
+            if metrics is None
+            else json.dumps(
+                [
+                    {
+                        "center_bucket": peak.center_bucket,
+                        "center_price": peak.center_price,
+                        "lower_bucket": peak.lower_bucket,
+                        "lower_price": peak.lower_price,
+                        "upper_bucket": peak.upper_bucket,
+                        "upper_price": peak.upper_price,
+                        "mass": peak.mass,
+                        "prominence": peak.prominence,
+                        "width_pct": peak.width_pct,
+                        "age_mean": peak.age_mean,
+                        "formation_date": peak.formation_date,
+                        "definition_version": peak.definition_version,
+                    }
+                    for peak in metrics.canonical_peaks
+                ],
+                separators=(",", ":"),
+                sort_keys=True,
+            )
+        ),
         1.0 if state.hard_valid else 0.0,
         checkpoint_local_ids,
         checkpoint_shares,

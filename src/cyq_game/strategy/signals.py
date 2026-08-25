@@ -25,6 +25,7 @@ import pyarrow as pa  # type: ignore[import-untyped]
 import pyarrow.parquet as pq  # type: ignore[import-untyped]
 
 from cyq_game.chip.ensemble_v2 import AnchorRetentionEstimate
+from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION
 from cyq_game.chip.price_coordinate import parse_action_ids
 from cyq_game.chip.state_v2 import SellerModel
 from cyq_game.strategy.chip_lineage import StreamingLineageSession
@@ -638,7 +639,7 @@ def observation_from_record(
     peak_valid = bool(
         peak_track_id
         and not peak_ambiguous
-        and peak_definition_version
+        and peak_definition_version == PEAK_DEFINITION_VERSION
         and peak_band_lower is not None
         and peak_band_lower > 0.0
         and peak_band_upper is not None

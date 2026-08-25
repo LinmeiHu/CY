@@ -22,6 +22,7 @@ from typing import Any, cast
 import yaml
 
 from cyq_game.chip.ensemble_v2 import AnchorRetentionEstimate
+from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION
 from cyq_game.chip.price_coordinate import rebase_economic_price
 from cyq_game.data.registry import DataAssetRegistry
 from cyq_game.domain import (
@@ -981,7 +982,7 @@ class LifecycleObservation:
             and self.peak_track_band_upper is not None
             and self.peak_track_band_lower > 0.0
             and self.peak_track_band_upper >= self.peak_track_band_lower
-            and self.peak_definition_version
+            and self.peak_definition_version == PEAK_DEFINITION_VERSION
         )
 
 

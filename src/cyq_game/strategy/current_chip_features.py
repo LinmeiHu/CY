@@ -8,7 +8,7 @@ from pathlib import Path
 from statistics import median
 from typing import Any
 
-from cyq_game.chip.peaks import TemporalPeakTracker
+from cyq_game.chip.peaks import EnsembleTemporalPeakTracker
 from cyq_game.strategy.chip_lineage import PersistedChipLineageResolver
 from cyq_game.strategy.exact_chip_features import (
     DistributionMetrics,
@@ -58,7 +58,10 @@ def build_current_chip_measurement_features(
         return []
     resolver = PersistedChipLineageResolver(root)
     by_date: dict[date, list[dict[str, Any]]] = {}
-    trackers: dict[str, TemporalPeakTracker] = {}
+    ensemble_tracker = EnsembleTemporalPeakTracker(
+        symbol=symbol,
+        models=("uniform", "disposition", "active_sticky"),
+    )
     for item in resolver.iter_daily_bucket_mass(symbol, start, end):
         close = close_by_date.get(item.trade_date)
         if close is None:
@@ -66,13 +69,15 @@ def build_current_chip_measurement_features(
         semantic = asdict(
             semantic_distribution_metrics_from_bucket_mass(item.bucket_mass, close)
         )
-        exact_metrics = distribution_metrics_from_bucket_mass(item.bucket_mass, close)
-        seller_model = item.seller_model.value
-        tracker = trackers.setdefault(
-            seller_model, TemporalPeakTracker(symbol=symbol, model=seller_model)
+        exact_metrics = distribution_metrics_from_bucket_mass(
+            item.bucket_mass, close, as_of=item.trade_date
         )
-        if item.cash_dividend_per_share > 0.0 or item.share_multiplier != 1.0:
-            tracker.apply_corporate_action(
+        seller_model = item.seller_model.value
+        if (
+            seller_model == "uniform"
+            and (item.cash_dividend_per_share > 0.0 or item.share_multiplier != 1.0)
+        ):
+            ensemble_tracker.apply_corporate_action(
                 action_id="|".join(
                     (
                         item.snapshot_id,
@@ -83,9 +88,6 @@ def build_current_chip_measurement_features(
                 cash_per_share=item.cash_dividend_per_share,
                 share_multiplier=item.share_multiplier,
             )
-        peak_tracking = tracker.update(
-            as_of=item.trade_date, candidates=exact_metrics.canonical_peaks
-        )
         exact = asdict(exact_metrics)
         exact.pop("canonical_peaks")
         exact.update(
@@ -99,7 +101,7 @@ def build_current_chip_measurement_features(
                 **semantic,
                 **{f"exact_{key}": value for key, value in exact.items()},
                 "seller_model": seller_model,
-                "peak_tracking": peak_tracking,
+                "canonical_peaks": exact_metrics.canonical_peaks,
                 "source_research_valid": item.research_valid,
                 "known_cost_fraction": (
                     1.0 - item.unknown_mass / item.free_float_shares
@@ -156,7 +158,13 @@ def build_current_chip_measurement_features(
             aggregate[f"model_spread_{field}"] = (
                 max(values) - min(values) if complete else None
             )
-        aggregate.update(_ensemble_peak_tracking(models))
+        aggregate.update(
+            _ensemble_peak_tracking(
+                models,
+                tracker=ensemble_tracker,
+                as_of=trade_date,
+            )
+        )
         source_valid = all(bool(model["source_research_valid"]) for model in models)
         cbw_valid = aggregate["cbw"] is not None
         exact_invalid = exact_research_invalid_reason(

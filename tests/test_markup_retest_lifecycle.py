@@ -88,7 +88,7 @@ def _observation(
         peak_track_band_lower=9.5,
         peak_track_band_upper=10.2,
         peak_track_ambiguous=False,
-        peak_definition_version="canonical-chip-peak-v1",
+        peak_definition_version="canonical-chip-peak-v2",
     )
 
 

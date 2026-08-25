@@ -10,11 +10,13 @@ from __future__ import annotations
 import math
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
+from datetime import date
 
 from cyq_game.chip.migration_v2 import (
     StableLogPriceGrid,
     economic_break_even_for_bucket,
 )
+from cyq_game.chip.peaks import CanonicalPeak, detect_canonical_peaks
 
 
 @dataclass(frozen=True, slots=True)
@@ -34,6 +36,7 @@ class DistributionMetrics:
     cbw: float | None
     concentration_20: float
     peak_count: int
+    canonical_peaks: tuple[CanonicalPeak, ...]
 
 
 def compute_distribution_metrics(
@@ -41,6 +44,7 @@ def compute_distribution_metrics(
     close: float,
     *,
     grid: StableLogPriceGrid,
+    as_of: date = date.min,
 ) -> DistributionMetrics:
     """Compute the canonical daily scalar feature set from known-cost mass."""
 
@@ -87,6 +91,15 @@ def compute_distribution_metrics(
     )
 
     mass_by_bucket = {bucket: mass for _, mass, bucket in pairs}
+    canonical_peaks = detect_canonical_peaks(
+        {
+            bucket: mass
+            for bucket, mass in mass_by_bucket.items()
+            if economic_break_even_for_bucket(grid, bucket) > 0.0
+        },
+        price_for_bucket=lambda bucket: economic_break_even_for_bucket(grid, bucket),
+        as_of=as_of,
+    )
     scores = {
         bucket: (
             mass_by_bucket.get(bucket - 2, 0.0)
@@ -168,4 +181,5 @@ def compute_distribution_metrics(
         cbw=None if p01 <= 0 else 100.0 * (p99 - p01) / p01,
         concentration_20=max_window_mass / total,
         peak_count=max(1, len(structural_peaks)),
+        canonical_peaks=canonical_peaks,
     )

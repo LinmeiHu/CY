@@ -110,7 +110,7 @@ def test_packed_profile_refreshes_stale_cell_ids_even_when_marked_current() -> N
 
 
 def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:
-    assert MODULE["STORAGE_VERSION"] == "chip-operator-log-v12"
+    assert MODULE["STORAGE_VERSION"] == "chip-operator-log-v13"
     assert MODULE["MODEL_VERSION"] == "real-chip-inventory-v2.1"
     assert MODULE["CHECKPOINT_INTERVAL_DAYS"] == 20
     assert MODULE["PARQUET_COMPRESSION_LEVEL"] == 3
@@ -268,6 +268,7 @@ def test_columnar_output_batch_preserves_schema_and_values() -> None:
             "dominant_band_upper": 10.5,
             "dominant_band_mass": 0.8,
             "peak_count": 1,
+            "canonical_peaks_json": None,
             "model_quality": 1.0,
             "checkpoint_local_ids": [1],
             "checkpoint_shares": [100.0],

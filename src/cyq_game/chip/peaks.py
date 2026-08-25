@@ -8,6 +8,7 @@ from dataclasses import dataclass, replace
 from datetime import date
 from hashlib import sha256
 from itertools import pairwise
+from statistics import median
 
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
 from cyq_game.chip.price_coordinate import rebase_economic_price
@@ -63,6 +64,14 @@ class PeakTrackingResult:
     dominant_peak_today: TrackedPeak | None
     tracked_base_peak: TrackedPeak | None
     fail_closed_reason: str | None
+
+
+@dataclass(frozen=True)
+class EnsemblePeakTrackingResult:
+    """A single ensemble track plus the seller-model-local observations."""
+
+    ensemble: PeakTrackingResult
+    by_model: Mapping[str, PeakTrackingResult]
 
 
 def detect_canonical_peaks(
@@ -338,9 +347,11 @@ class TemporalPeakTracker:
         }
         claimed_new: set[int] = set()
         observations: list[TrackedPeak] = []
+        lost: list[TrackedPeak] = []
         for old_index, old in enumerate(self._previous):
             options = old_options[old_index]
             if not options:
+                lost.append(replace(old, lost=True, ambiguity=True))
                 continue
             score, new_index = options[0]
             split = len(options) > 1
@@ -348,6 +359,7 @@ class TemporalPeakTracker:
             tie = len(options) > 1 and abs(score - options[1][0]) <= 0.05
             ambiguous = split or merge or tie or new_index in claimed_new
             if new_index in claimed_new:
+                lost.append(replace(old, lost=True, ambiguity=True, merge=True))
                 continue
             claimed_new.add(new_index)
             new = candidates[new_index]
@@ -399,7 +411,7 @@ class TemporalPeakTracker:
             dominance_margin = dominant.mass - max(
                 (peak.mass for peak in runners_up), default=-math.inf
             )
-            if runners_up and dominance_margin <= _DOMINANCE_AMBIGUITY_MASS:
+            if runners_up and round(dominance_margin, 12) < _DOMINANCE_AMBIGUITY_MASS:
                 dominant = replace(dominant, ambiguity=True)
                 observations = [
                     dominant if peak.peak_track_id == dominant.peak_track_id else peak
@@ -422,9 +434,12 @@ class TemporalPeakTracker:
             reason = "DOMINANT_PEAK_AMBIGUOUS"
         elif tracked_base is None:
             reason = "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
+        # Lost tracks are carried in the result as explicit terminal events,
+        # but never become tomorrow's matching source.  A later look-alike is
+        # necessarily a new identity rather than an unsafe reattachment.
         self._previous = tuple(observations)
         return PeakTrackingResult(
-            peaks=self._previous,
+            peaks=tuple((*self._previous, *lost)),
             dominant_peak_today=dominant,
             tracked_base_peak=tracked_base,
             fail_closed_reason=reason,
@@ -459,3 +474,158 @@ def _new_track_id(symbol: str, model: str, as_of: date, peak: CanonicalPeak) -> 
         )
     )
     return f"peak-{sha256(payload.encode()).hexdigest()[:20]}"
+
+
+class EnsembleTemporalPeakTracker:
+    """Require a one-to-one peak match across every seller model before tracking.
+
+    Local trackers preserve each seller model's causal daily identities.  The
+    separate ensemble tracker only sees consensus candidates, so its id never
+    means a concatenation of unrelated model-local ids.
+    """
+
+    def __init__(self, *, symbol: str, models: Iterable[str]) -> None:
+        ordered = tuple(sorted(set(models)))
+        if len(ordered) < 2:
+            raise ValueError("ensemble peak tracking requires at least two seller models")
+        self._models = ordered
+        self._local = {
+            model: TemporalPeakTracker(symbol=symbol, model=model) for model in ordered
+        }
+        self._ensemble = TemporalPeakTracker(symbol=symbol, model="ENSEMBLE")
+
+    def apply_corporate_action(
+        self,
+        *,
+        action_id: str,
+        cash_per_share: float = 0.0,
+        share_multiplier: float = 1.0,
+    ) -> None:
+        for tracker in (*self._local.values(), self._ensemble):
+            tracker.apply_corporate_action(
+                action_id=action_id,
+                cash_per_share=cash_per_share,
+                share_multiplier=share_multiplier,
+            )
+
+    def update(
+        self,
+        *,
+        as_of: date,
+        candidates_by_model: Mapping[str, tuple[CanonicalPeak, ...]],
+    ) -> EnsemblePeakTrackingResult:
+        if set(candidates_by_model) != set(self._models):
+            empty = self._ensemble.update(as_of=as_of, candidates=())
+            return EnsemblePeakTrackingResult(
+                ensemble=replace(
+                    empty,
+                    tracked_base_peak=None,
+                    fail_closed_reason="ENSEMBLE_SELLER_MODEL_MISSING",
+                ),
+                by_model={},
+            )
+        local = {
+            model: self._local[model].update(
+                as_of=as_of, candidates=tuple(candidates_by_model[model])
+            )
+            for model in self._models
+        }
+        candidates, ambiguous = _ensemble_candidates(
+            candidates_by_model, self._models, as_of
+        )
+        ensemble = self._ensemble.update(as_of=as_of, candidates=candidates)
+        if ambiguous:
+            ensemble = replace(
+                ensemble,
+                tracked_base_peak=None,
+                fail_closed_reason="ENSEMBLE_PEAK_AMBIGUOUS",
+            )
+        return EnsemblePeakTrackingResult(ensemble=ensemble, by_model=local)
+
+
+def _ensemble_candidates(
+    candidates_by_model: Mapping[str, tuple[CanonicalPeak, ...]],
+    models: tuple[str, ...],
+    as_of: date,
+) -> tuple[tuple[CanonicalPeak, ...], bool]:
+    """Build strictly one-to-one same-day seller-model peak consensus groups."""
+
+    anchor_model = models[0]
+    proposals: list[tuple[int, tuple[int, ...]]] = []
+    ambiguous = False
+    for anchor_index, anchor in enumerate(candidates_by_model[anchor_model]):
+        selected = [anchor_index]
+        for model in models[1:]:
+            scored = sorted(
+                (
+                    (score, index)
+                    for index, candidate in enumerate(candidates_by_model[model])
+                    if (score := _canonical_match_score(anchor, candidate)) is not None
+                ),
+                reverse=True,
+            )
+            if not scored:
+                selected = []
+                break
+            if len(scored) > 1 and abs(scored[0][0] - scored[1][0]) <= 0.05:
+                ambiguous = True
+                selected = []
+                break
+            selected.append(scored[0][1])
+        if selected:
+            proposals.append((anchor_index, tuple(selected)))
+
+    for model_offset in range(1, len(models)):
+        counts: dict[int, int] = {}
+        for _, selected in proposals:
+            index = selected[model_offset]
+            counts[index] = counts.get(index, 0) + 1
+        if any(count > 1 for count in counts.values()):
+            ambiguous = True
+
+    consensus: list[CanonicalPeak] = []
+    for _, selected in proposals:
+        if any(
+            sum(other[1][offset] == selected[offset] for other in proposals) > 1
+            for offset in range(1, len(models))
+        ):
+            continue
+        grouped = [
+            candidates_by_model[model][index]
+            for model, index in zip(models, selected, strict=True)
+        ]
+        consensus.append(
+            CanonicalPeak(
+                center_bucket=round(median(peak.center_bucket for peak in grouped)),
+                center_price=median(peak.center_price for peak in grouped),
+                lower_bucket=round(median(peak.lower_bucket for peak in grouped)),
+                lower_price=median(peak.lower_price for peak in grouped),
+                upper_bucket=round(median(peak.upper_bucket for peak in grouped)),
+                upper_price=median(peak.upper_price for peak in grouped),
+                mass=median(peak.mass for peak in grouped),
+                prominence=median(peak.prominence for peak in grouped),
+                width_pct=median(peak.width_pct for peak in grouped),
+                age_mean=None,
+                formation_date=as_of.isoformat(),
+            )
+        )
+    if len(consensus) != len(candidates_by_model[anchor_model]):
+        ambiguous = True
+    return tuple(sorted(consensus, key=lambda peak: peak.center_price)), ambiguous
+
+
+def _canonical_match_score(left: CanonicalPeak, right: CanonicalPeak) -> float | None:
+    synthetic = TrackedPeak(
+        peak_track_id="candidate",
+        age=0,
+        band=(left.lower_price, left.upper_price),
+        center_price=left.center_price,
+        mass=left.mass,
+        prominence=left.prominence,
+        ambiguity=False,
+        split=False,
+        merge=False,
+        lost=False,
+        definition_version=left.definition_version,
+    )
+    return _match_score(synthetic, right)

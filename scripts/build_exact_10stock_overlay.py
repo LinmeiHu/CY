@@ -190,7 +190,7 @@ def main() -> int:
     feature_code_path = Path(build_exact_ensemble_features.__code__.co_filename)
     feature_code_sha256 = hashlib.sha256(feature_code_path.read_bytes()).hexdigest()
     feature_config_sha256 = hashlib.sha256(
-        b"exact-chip-ensemble-features-v4|persisted-daily-metrics-v12|median-three-models|log-grid-25bp-v1"
+        b"exact-chip-ensemble-features-v4|persisted-daily-metrics-v13|median-three-models|log-grid-25bp-v1"
     ).hexdigest()
 
     for year in years:
@@ -213,8 +213,8 @@ def main() -> int:
                     coalesce(CAST(e.available_at AS TIMESTAMP), f.available_at) AS available_at,
                     coalesce(e.snapshot_id, f.daily_snapshot_id) AS daily_snapshot_id,
                     CASE
-                        WHEN e.feature_source = 'PERSISTED_DAILY_METRICS_V12'
-                            THEN 'real-chip-inventory-v2.1/chip-operator-log-v12'
+                        WHEN e.feature_source = 'PERSISTED_DAILY_METRICS_V13'
+                            THEN 'real-chip-inventory-v2.1/chip-operator-log-v13'
                         ELSE 'real-chip-inventory-v2.1/replayed-legacy-operator-log'
                     END AS state_version,
                     coalesce(e.research_valid, false) AS chip_input_valid,

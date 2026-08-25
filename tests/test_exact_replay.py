@@ -50,7 +50,7 @@ def _row(symbol: str, day: date, *, breakout: float = 0.0) -> dict[str, Any]:
         "peak_track_band_lower": 9.5,
         "peak_track_band_upper": 10.2,
         "peak_track_ambiguous": False,
-        "peak_definition_version": "canonical-chip-peak-v1",
+        "peak_definition_version": "canonical-chip-peak-v2",
         "peak_count": 1,
         "recent_band_overlap": 0.9,
         "structure_support": 10.0,

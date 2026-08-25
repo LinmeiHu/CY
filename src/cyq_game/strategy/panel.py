@@ -18,6 +18,7 @@ from typing import Any
 
 import duckdb
 
+from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
 from cyq_game.data.registry import DataAssetRegistry
 from cyq_game.strategy.markup_retest import (
     FORBIDDEN_SIGNAL_FIELDS,
@@ -381,10 +382,30 @@ def _create_panel_table(
         if "peak_track_ambiguous" in feature_columns
         else "true AS peak_track_ambiguous"
     )
+    peak_track_split_sql = (
+        "f.peak_track_split"
+        if "peak_track_split" in feature_columns
+        else "true AS peak_track_split"
+    )
+    peak_track_merge_sql = (
+        "f.peak_track_merge"
+        if "peak_track_merge" in feature_columns
+        else "true AS peak_track_merge"
+    )
+    peak_track_lost_sql = (
+        "f.peak_track_lost"
+        if "peak_track_lost" in feature_columns
+        else "true AS peak_track_lost"
+    )
     peak_definition_version_sql = (
         "f.peak_definition_version"
         if "peak_definition_version" in feature_columns
         else "CAST(NULL AS VARCHAR) AS peak_definition_version"
+    )
+    peak_track_version_sql = (
+        "f.peak_track_version"
+        if "peak_track_version" in feature_columns
+        else "CAST(NULL AS VARCHAR) AS peak_track_version"
     )
     degraded_mode_sql = (
         "f.degraded_mode"
@@ -530,7 +551,11 @@ def _create_panel_table(
                 {peak_track_prominence_sql},
                 {peak_track_id_sql},
                 {peak_track_ambiguous_sql},
+                {peak_track_split_sql},
+                {peak_track_merge_sql},
+                {peak_track_lost_sql},
                 {peak_definition_version_sql},
+                {peak_track_version_sql},
                 f.opening_30m_return,
                 f.closing_30m_return,
                 f.close_vs_vwap,
@@ -743,7 +768,12 @@ def _create_panel_table(
                     known_cost_fraction_min IS NOT NULL AND
                     known_cost_fraction_min BETWEEN 0.0 AND 1.0 AND
                     peak_track_id IS NOT NULL AND
-                    NOT peak_track_ambiguous
+                    NOT peak_track_ambiguous AND
+                    NOT peak_track_split AND
+                    NOT peak_track_merge AND
+                    NOT peak_track_lost AND
+                    peak_definition_version = '{PEAK_DEFINITION_VERSION}' AND
+                    peak_track_version = '{PEAK_TRACK_VERSION}'
                 ) AS pre_chain_valid
             FROM normalized
         ), chain_epoch_rows AS (
@@ -1112,7 +1142,11 @@ def _create_panel_table(
             peak_track_prominence,
             peak_track_id,
             peak_track_ambiguous,
+            peak_track_split,
+            peak_track_merge,
+            peak_track_lost,
             peak_definition_version,
+            peak_track_version,
             prior_peak_track_id,
             peak_track_id_lag20,
             known_cost_fraction_min,
