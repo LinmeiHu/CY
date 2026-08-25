@@ -140,6 +140,140 @@ class EntryExecution:
                 raise ValueError("same-day or prior-day fill is forbidden")
 
 
+@dataclass(frozen=True)
+class LegalFillResolution:
+    """Strategy-independent result of the canonical next-legal-window resolver."""
+
+    symbol: str
+    decision_at: datetime
+    status: EntryExecutionStatus
+    attempted_trading_dates: tuple[date, ...]
+    attempts: tuple[ExecutionAttempt, ...]
+    window: ExecutionWindow | None
+    reason_codes: tuple[str, ...]
+
+
+def resolve_next_legal_fill(
+    *,
+    symbol: str,
+    decision_at: datetime,
+    windows: Iterable[ExecutionWindow],
+    market_trading_dates: Sequence[date],
+    settings: ExecutionSettings,
+) -> LegalFillResolution:
+    """Resolve the first genuinely legal post-decision buy window.
+
+    Labels and order simulation both call this function, so neither can invent
+    a fill from the next panel row's daily open.
+    """
+
+    exchange_tz = settings.next_window_end.tzinfo
+    signal_date = _local_date(decision_at, exchange_tz)
+    symbol_windows = tuple(window for window in windows if window.symbol == symbol)
+    attempts: list[ExecutionAttempt] = []
+    for window in sorted(symbol_windows, key=_window_sort_key):
+        if window.trade_date == signal_date:
+            attempts.append(
+                ExecutionAttempt(
+                    trade_date=window.trade_date,
+                    window_index=window.window_index,
+                    attempted_at=window.available_at,
+                    reason_codes=(ExecutionReason.SAME_DAY_FILL_FORBIDDEN.value,),
+                    snapshot_id=window.snapshot_id,
+                )
+            )
+
+    future_dates = tuple(
+        sorted({item for item in market_trading_dates if item > signal_date})
+    )
+    candidate_dates = future_dates[: settings.max_entry_wait_trading_days]
+    grouped: dict[date, list[ExecutionWindow]] = defaultdict(list)
+    for window in symbol_windows:
+        if window.trade_date in candidate_dates:
+            grouped[window.trade_date].append(window)
+    duplicate_keys = {
+        key
+        for key, count in Counter(
+            (window.trade_date, window.window_index)
+            for window in symbol_windows
+            if window.trade_date in candidate_dates
+        ).items()
+        if count > 1
+    }
+    for trade_date in candidate_dates:
+        date_windows = sorted(grouped.get(trade_date, ()), key=_window_sort_key)
+        if not date_windows:
+            attempts.append(
+                ExecutionAttempt(
+                    trade_date=trade_date,
+                    window_index=None,
+                    attempted_at=None,
+                    reason_codes=(ExecutionReason.MISSING_EXECUTION_WINDOW.value,),
+                    snapshot_id=None,
+                )
+            )
+            continue
+        for window in date_windows:
+            reasons = _window_rejection_reasons(
+                window,
+                trade_date=trade_date,
+                earliest_window_end=settings.next_window_end,
+                duplicate=(trade_date, window.window_index) in duplicate_keys,
+            )
+            if not reasons:
+                markup = (settings.slippage_bps + settings.impact_bps) / 10_000.0
+                per_share_cash = window.vwap * (1.0 + markup) * (
+                    1.0 + settings.fee_bps / 10_000.0
+                )
+                if floor(
+                    settings.nominal_capital_per_signal / per_share_cash / 100.0
+                ) <= 0:
+                    reasons = (ExecutionReason.NOMINAL_BELOW_ONE_LOT.value,)
+            if reasons:
+                attempts.append(
+                    ExecutionAttempt(
+                        trade_date=trade_date,
+                        window_index=window.window_index,
+                        attempted_at=window.available_at,
+                        reason_codes=reasons,
+                        snapshot_id=window.snapshot_id,
+                    )
+                )
+                continue
+            return LegalFillResolution(
+                symbol=symbol,
+                decision_at=decision_at,
+                status=EntryExecutionStatus.FILLED,
+                attempted_trading_dates=tuple(
+                    item for item in candidate_dates if item <= window.trade_date
+                ),
+                attempts=tuple(attempts),
+                window=window,
+                reason_codes=(ExecutionReason.FILLED_NEXT_LEGAL_WINDOW.value,),
+            )
+
+    if len(candidate_dates) < settings.max_entry_wait_trading_days:
+        status = EntryExecutionStatus.PENDING
+        terminal_reason = ExecutionReason.INSUFFICIENT_MARKET_CALENDAR
+    else:
+        status = EntryExecutionStatus.FAILED
+        terminal_reason = ExecutionReason.THREE_DAY_EXECUTION_FAILURE
+    return LegalFillResolution(
+        symbol=symbol,
+        decision_at=decision_at,
+        status=status,
+        attempted_trading_dates=tuple(candidate_dates),
+        attempts=tuple(attempts),
+        window=None,
+        reason_codes=_unique(
+            (
+                *(reason for attempt in attempts for reason in attempt.reason_codes),
+                terminal_reason.value,
+            )
+        ),
+    )
+
+
 def execute_entry(
     signal: StrategySignal,
     windows: Iterable[ExecutionWindow],
@@ -174,109 +308,35 @@ def execute_entry(
             reason_codes=(blocked_reason.value,),
         )
 
-    exchange_tz = settings.next_window_end.tzinfo
-    signal_date = _local_date(signal.decision_at, exchange_tz)
-    symbol_windows = tuple(window for window in windows if window.symbol == signal.symbol)
-    attempts: list[ExecutionAttempt] = []
-
-    # Keep evidence that a same-day window was present but correctly refused.
-    for window in sorted(symbol_windows, key=_window_sort_key):
-        if window.trade_date == signal_date:
-            attempts.append(
-                ExecutionAttempt(
-                    trade_date=window.trade_date,
-                    window_index=window.window_index,
-                    attempted_at=window.available_at,
-                    reason_codes=(ExecutionReason.SAME_DAY_FILL_FORBIDDEN.value,),
-                    snapshot_id=window.snapshot_id,
-                )
-            )
-
-    future_dates = tuple(sorted({item for item in market_trading_dates if item > signal_date}))
-    candidate_dates = future_dates[: settings.max_entry_wait_trading_days]
-    grouped: dict[date, list[ExecutionWindow]] = defaultdict(list)
-    for window in symbol_windows:
-        if window.trade_date in candidate_dates:
-            grouped[window.trade_date].append(window)
-    duplicate_keys = {
-        key
-        for key, count in Counter(
-            (window.trade_date, window.window_index)
-            for window in symbol_windows
-            if window.trade_date in candidate_dates
-        ).items()
-        if count > 1
-    }
-
-    for trade_date in candidate_dates:
-        date_windows = sorted(grouped.get(trade_date, ()), key=_window_sort_key)
-        if not date_windows:
-            attempts.append(
-                ExecutionAttempt(
-                    trade_date=trade_date,
-                    window_index=None,
-                    attempted_at=None,
-                    reason_codes=(ExecutionReason.MISSING_EXECUTION_WINDOW.value,),
-                    snapshot_id=None,
-                )
-            )
-            continue
-        for window in date_windows:
-            reasons = _window_rejection_reasons(
-                window,
-                trade_date=trade_date,
-                earliest_window_end=settings.next_window_end,
-                duplicate=(trade_date, window.window_index) in duplicate_keys,
-            )
-            if reasons:
-                attempts.append(
-                    ExecutionAttempt(
-                        trade_date=trade_date,
-                        window_index=window.window_index,
-                        attempted_at=window.available_at,
-                        reason_codes=reasons,
-                        snapshot_id=window.snapshot_id,
-                    )
-                )
-                continue
-            execution = _fill(
-                signal, window, settings, candidate_dates, attempts, scope=scope
-            )
-            if execution is not None:
-                return execution
-            attempts.append(
-                ExecutionAttempt(
-                    trade_date=trade_date,
-                    window_index=window.window_index,
-                    attempted_at=window.available_at,
-                    reason_codes=(ExecutionReason.NOMINAL_BELOW_ONE_LOT.value,),
-                    snapshot_id=window.snapshot_id,
-                )
-            )
-
-    attempted_dates = tuple(candidate_dates)
-    if len(candidate_dates) < settings.max_entry_wait_trading_days:
-        status = EntryExecutionStatus.PENDING
-        terminal_reason = ExecutionReason.INSUFFICIENT_MARKET_CALENDAR
-    else:
-        status = EntryExecutionStatus.FAILED
-        terminal_reason = ExecutionReason.THREE_DAY_EXECUTION_FAILURE
-    reason_codes = _unique(
-        (
-            *(reason for attempt in attempts for reason in attempt.reason_codes),
-            terminal_reason.value,
-        )
+    resolution = resolve_next_legal_fill(
+        symbol=signal.symbol,
+        decision_at=signal.decision_at,
+        windows=windows,
+        market_trading_dates=market_trading_dates,
+        settings=settings,
     )
+    if resolution.window is not None:
+        execution = _fill(
+            signal,
+            resolution.window,
+            settings,
+            resolution.attempted_trading_dates,
+            list(resolution.attempts),
+            scope=scope,
+        )
+        if execution is None:
+            raise AssertionError("legal fill resolver returned an unaffordable window")
+        return execution
     return EntryExecution(
         signal_id=signal.signal_id,
         symbol=signal.symbol,
         signal_decision_at=signal.decision_at,
-        status=status,
+        status=resolution.status,
         scope=scope,
-        attempted_trading_dates=attempted_dates,
-        attempts=tuple(attempts),
+        attempted_trading_dates=resolution.attempted_trading_dates,
+        attempts=resolution.attempts,
         snapshot_ids=signal.snapshot_ids,
-        reason_codes=reason_codes,
+        reason_codes=resolution.reason_codes,
     )
 
 

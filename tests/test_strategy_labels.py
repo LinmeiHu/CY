@@ -71,14 +71,23 @@ def test_future_labels_are_physically_isolated_and_inventory_verified(tmp_path) 
 
     assert result.path != panel.path
     assert result.rows == 30
-    assert result.valid_rows == 10
+    # Entry occurs in the next legal 5-minute window; the 20-session horizon
+    # therefore starts after that fill, leaving nine fully observed decisions.
+    assert result.valid_rows == 9
     columns = {
         row[0]
         for row in duckdb.sql(
             f"DESCRIBE SELECT * FROM read_parquet('{result.path}/**/*.parquet')"
         ).fetchall()
     }
-    assert {"net_return_20d", "mfe_20d", "mae_20d", "label_valid"} <= columns
+    assert {
+        "net_return_20d",
+        "mfe_20d",
+        "mae_20d",
+        "label_valid",
+        "execution_status",
+        "entry_snapshot_id",
+    } <= columns
 
     artifact = next(result.path.rglob("*.parquet"))
     artifact.write_bytes(artifact.read_bytes() + b"tampered")
