@@ -184,6 +184,7 @@ def test_columnar_output_batch_preserves_schema_and_values() -> None:
             "cbw": 35.0,
             "concentration_20": 0.9,
             "main_peak": 10.0,
+            "dominant_peak_today": 10.0,
             "dominant_band_lower": 9.5,
             "dominant_band_upper": 10.5,
             "dominant_band_mass": 0.8,
@@ -246,7 +247,7 @@ def test_research_valid_only_relaxes_explicit_unknown_cost() -> None:
 def test_daily_profile_peak_uses_stable_bucket_and_tie_break() -> None:
     grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
     profile = MODULE["_profile_from_bucket_mass"](
-        {40: 100.0 + 1e-11, 20: 100.0}, grid
+        {40: 100.0 + 1e-11, 20: 100.0}, grid, current_price=1.0
     )
 
     assert profile is not None
@@ -256,7 +257,9 @@ def test_daily_profile_peak_uses_stable_bucket_and_tie_break() -> None:
 def test_daily_profile_peak_prefers_structural_cluster_over_isolated_spike() -> None:
     grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
     profile = MODULE["_profile_from_bucket_mass"](
-        {20: 60.0, 21: 60.0, 22: 60.0, 40: 100.0}, grid
+        {20: 60.0, 21: 60.0, 22: 60.0, 40: 100.0},
+        grid,
+        current_price=1.0,
     )
 
     assert profile is not None
@@ -320,7 +323,9 @@ def test_daily_profile_preserves_nonpositive_economic_break_even() -> None:
     assert economic_buckets == {123: sentinel}
     assert known_shares == 100.0
     with pytest.raises(ValueError, match="positive"):
-        MODULE["_profile_from_bucket_mass"](by_bucket, grid)
+        MODULE["_profile_from_bucket_mass"](
+            by_bucket, grid, current_price=1.0
+        )
 
 
 def test_zero_retention_company_action_destination_needs_no_codec_entry() -> None:
@@ -393,6 +398,7 @@ def test_zero_retention_company_action_destination_needs_no_codec_entry() -> Non
     values = dict(zip(MODULE["OUTPUT_SCHEMA"].names, row, strict=True))
     assert values["profile_close"] == 11.0
     assert values["main_peak"] == expected.main_peak
+    assert values["dominant_peak_today"] == expected.main_peak
     assert isclose(values["average_cost"], expected.average_cost, rel_tol=1e-12)
     assert isclose(values["cost_p01"], expected.cost_p01, rel_tol=1e-12)
     assert isclose(values["cost_p10"], expected.cost_p10, rel_tol=1e-12)

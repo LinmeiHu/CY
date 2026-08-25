@@ -361,6 +361,7 @@ OUTPUT_SCHEMA = pa.schema(
         ("cbw", pa.float64()),
         ("concentration_20", pa.float64()),
         ("main_peak", pa.float64()),
+        ("dominant_peak_today", pa.float64()),
         ("dominant_band_lower", pa.float64()),
         ("dominant_band_upper", pa.float64()),
         ("dominant_band_mass", pa.float64()),
@@ -628,7 +629,7 @@ class _CellCodec:
                 economic_buckets[positive] = np.floor(
                     np.log(economic_values[positive] / grid.reference_price)
                     / math.log1p(grid.step_pct)
-                    + 0.5
+                    - 0.5
                 ).astype(np.int64)
                 unique_buckets, inverse = np.unique(
                     economic_buckets, return_inverse=True
@@ -1505,7 +1506,7 @@ def _profile_from_bucket_mass(
     ]
     profile_total = math.fsum(mass for _, mass, _ in pairs)
     if current_price is None:
-        current_price = pairs[len(pairs) // 2][0]
+        raise ValueError("non-empty chip mass requires the real daily close")
     thresholds = tuple(
         profile_total * probability for probability in (0.01, 0.10, 0.50, 0.90, 0.99)
     )
@@ -1591,11 +1592,7 @@ def _output_row(
     profile_close = current_price
     if by_bucket:
         if profile_close is None:
-            pairs = [
-                (economic_break_even_for_bucket(grid, bucket_id), mass)
-                for bucket_id, mass in sorted(by_bucket.items())
-            ]
-            profile_close = pairs[len(pairs) // 2][0]
+            raise ValueError("non-empty chip mass requires the real daily close")
         metrics = compute_distribution_metrics(
             by_bucket,
             close=profile_close,
@@ -1747,6 +1744,7 @@ def _output_row(
         None if metrics is None else metrics.asr,
         None if metrics is None else metrics.cbw,
         None if metrics is None else metrics.concentration_20,
+        None if metrics is None else metrics.main_peak,
         None if metrics is None else metrics.main_peak,
         None if metrics is None else metrics.dominant_band_lower,
         None if metrics is None else metrics.dominant_band_upper,
