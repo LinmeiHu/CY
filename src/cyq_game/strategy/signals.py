@@ -85,6 +85,17 @@ class SignalBuildResult:
         return payload
 
 
+@dataclass(frozen=True)
+class SignalShardMetrics:
+    input_rows: int
+    evaluation_rows: int
+    signal_rows: int
+    evaluation_signal_rows: int
+    event_rows: int
+    signal_symbols: tuple[str, ...]
+    files: tuple[str, ...]
+
+
 def signal_path(
     config: MarkupRetestConfig,
     stage: StrategyStage | str,
@@ -312,21 +323,18 @@ def build_strategy_signals(
     temp.mkdir(parents=True)
 
     try:
-        generated = _generate_panel_events(
+        shard_metrics = _generate_panel_event_shards(
             panel_files,
             config,
             parameters=selected,
             panel_snapshot_id=panel.panel_snapshot_id,
             panel_rows=panel.rows,
             threads=threads,
+            output_root=temp,
         )
-        signals_file = temp / "signals.parquet"
-        events_file = temp / "events.parquet"
-        _write_records(signals_file, generated.signals, _signal_schema())
-        _write_records(events_file, generated.events, _event_schema())
-
-        signal_symbols = len({str(row["symbol"]) for row in generated.signals})
-        inventory = _inventory(temp, (signals_file, events_file))
+        artifact_files = tuple(temp / path for path in shard_metrics.files)
+        signal_symbols = len(shard_metrics.signal_symbols)
+        inventory = _inventory(temp, artifact_files)
         snapshot_payload = {
             **semantic_fingerprint_fields(),
             "schema_version": SIGNAL_SCHEMA_VERSION,
@@ -342,11 +350,11 @@ def build_strategy_signals(
             "source_input_inventory": source_input_inventory,
             "inventory": inventory,
             "metrics": {
-                "rows": generated.input_rows,
-                "evaluation_rows": generated.evaluation_rows,
-                "signal_rows": len(generated.signals),
-                "evaluation_signal_rows": generated.evaluation_signal_rows,
-                "event_rows": len(generated.events),
+                "rows": shard_metrics.input_rows,
+                "evaluation_rows": shard_metrics.evaluation_rows,
+                "signal_rows": shard_metrics.signal_rows,
+                "evaluation_signal_rows": shard_metrics.evaluation_signal_rows,
+                "event_rows": shard_metrics.event_rows,
                 "symbols": signal_symbols,
             },
         }
@@ -380,6 +388,72 @@ def build_strategy_signals(
         builder_sha256=builder_sha256,
         strategy_sha256=strategy_sha256,
         expected_source_inventory=source_input_inventory,
+    )
+
+
+def _generate_panel_event_shards(
+    files: Sequence[Path],
+    config: MarkupRetestConfig,
+    *,
+    parameters: StrategyParameters,
+    panel_snapshot_id: str,
+    panel_rows: int,
+    threads: int | None,
+    output_root: Path,
+) -> SignalShardMetrics:
+    groups = _group_panel_files(files)
+    lineage_root = config.assets.chip_lineage_root
+    requested_workers = threads if threads is not None else (os.cpu_count() or 1)
+    worker_count = min(max(requested_workers, 1), 10, len(groups))
+    arguments = tuple(
+        (
+            index, group, config, parameters, panel_snapshot_id, lineage_root,
+            output_root,
+        )
+        for index, group in enumerate(groups)
+    )
+    if worker_count == 1 or (panel_rows < 100_000 and lineage_root is None):
+        metrics = tuple(_write_panel_group_shards(argument) for argument in arguments)
+    else:
+        with ProcessPoolExecutor(max_workers=worker_count) as executor:
+            metrics = tuple(executor.map(_write_panel_group_shards, arguments))
+    return SignalShardMetrics(
+        input_rows=sum(item.input_rows for item in metrics),
+        evaluation_rows=sum(item.evaluation_rows for item in metrics),
+        signal_rows=sum(item.signal_rows for item in metrics),
+        evaluation_signal_rows=sum(item.evaluation_signal_rows for item in metrics),
+        event_rows=sum(item.event_rows for item in metrics),
+        signal_symbols=tuple(sorted({s for item in metrics for s in item.signal_symbols})),
+        files=tuple(path for item in metrics for path in item.files),
+    )
+
+
+def _write_panel_group_shards(
+    arguments: tuple[
+        int, tuple[Path, ...], MarkupRetestConfig, StrategyParameters, str,
+        Path | None, Path,
+    ],
+) -> SignalShardMetrics:
+    index, files, config, parameters, panel_snapshot_id, lineage_root, output_root = arguments
+    generated = generate_signal_events(
+        stream_panel(files), config, parameters=parameters,
+        panel_snapshot_id=panel_snapshot_id,
+        anchor_retention_resolver=(
+            StreamingLineageSession(lineage_root) if lineage_root is not None else None
+        ),
+    )
+    signal_relative = f"signals/part-{index:03d}.parquet"
+    event_relative = f"events/part-{index:03d}.parquet"
+    _write_records(output_root / signal_relative, generated.signals, _signal_schema())
+    _write_records(output_root / event_relative, generated.events, _event_schema())
+    return SignalShardMetrics(
+        input_rows=generated.input_rows,
+        evaluation_rows=generated.evaluation_rows,
+        signal_rows=len(generated.signals),
+        evaluation_signal_rows=generated.evaluation_signal_rows,
+        event_rows=len(generated.events),
+        signal_symbols=tuple(sorted({str(row["symbol"]) for row in generated.signals})),
+        files=(signal_relative, event_relative),
     )
 
 
@@ -517,9 +591,12 @@ def stream_panel(
         reader = query.fetch_record_batch(65_536)
         for batch in reader:
             names = batch.schema.names
-            columns = [batch.column(index).to_pylist() for index in range(len(names))]
-            for values in zip(*columns, strict=True):
-                yield dict(zip(names, values, strict=True))
+            columns = [batch.column(index) for index in range(len(names))]
+            for row_index in range(batch.num_rows):
+                yield {
+                    name: column[row_index].as_py()
+                    for name, column in zip(names, columns, strict=True)
+                }
     finally:
         con.close()
 
@@ -880,7 +957,12 @@ def _event_schema() -> pa.Schema:
 
 
 def _write_records(path: Path, records: Sequence[Mapping[str, Any]], schema: pa.Schema) -> None:
-    table = pa.Table.from_pylist(list(records), schema=schema)
+    arrays = [
+        pa.array([record.get(field.name) for record in records], type=field.type)
+        for field in schema
+    ]
+    table = pa.Table.from_arrays(arrays, schema=schema)
+    path.parent.mkdir(parents=True, exist_ok=True)
     pq.write_table(table, path, compression="zstd")
 
 
