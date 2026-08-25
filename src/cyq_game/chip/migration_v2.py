@@ -20,6 +20,7 @@ import numpy as np
 import numpy.typing as npt
 
 from cyq_game.chip._migration_kernel import disposition_path_no_saturation
+from cyq_game.chip.price_coordinate import rebase_economic_price
 from cyq_game.chip.state_v2 import (
     ChipSnapshotV2,
     ChipStateContractError,
@@ -387,12 +388,13 @@ class _WorkingLot:
         self.refresh_cell_id()
 
     def refresh_cell_id(self) -> None:
-        """Recompute only when one of the three cell dimensions changes."""
+        """Recompute when a causal state coordinate changes."""
 
         self.cell_id = stable_cell_id(
             cost_bucket_id=self.cost_bucket_id,
             holding_days=self.holding_days,
             sensitivity=self.sensitivity,
+            economic_break_even=self.economic_break_even,
         )
 
     def to_cell(self) -> InventoryCell:
@@ -542,7 +544,18 @@ class _PackedWorkingLots:
     @classmethod
     def from_cells(cls, cells: tuple[InventoryCell, ...]) -> _PackedWorkingLots:
         return cls(
-            cell_ids=np.fromiter((cell.cell_id for cell in cells), dtype=np.int64),
+            cell_ids=np.fromiter(
+                (
+                    stable_cell_id(
+                        cost_bucket_id=cell.cost_bucket_id,
+                        holding_days=cell.holding_days,
+                        sensitivity=cell.sensitivity,
+                        economic_break_even=cell.economic_break_even,
+                    )
+                    for cell in cells
+                ),
+                dtype=np.int64,
+            ),
             cost_bucket_ids=np.fromiter(
                 (
                     _UNKNOWN_BUCKET_ID if cell.cost_bucket_id is None else cell.cost_bucket_id
@@ -640,22 +653,35 @@ class _PackedWorkingLots:
         if size == 0:
             self._cell_ids_current = True
             return
-        dimensions = np.column_stack(
-            (
-                self._cost_bucket_ids[:size],
-                self._holding_days[:size].astype(np.int64, copy=False),
-                self._sensitivity_codes[:size].astype(np.int64, copy=False),
-            )
+        dimensions = np.empty(
+            size,
+            dtype=[
+                ("bucket", np.int64),
+                ("holding", np.int16),
+                ("sensitivity", np.int8),
+                ("economic", np.float64),
+            ],
         )
-        unique_dimensions, inverse = np.unique(dimensions, axis=0, return_inverse=True)
+        dimensions["bucket"] = self._cost_bucket_ids[:size]
+        dimensions["holding"] = self._holding_days[:size]
+        dimensions["sensitivity"] = self._sensitivity_codes[:size]
+        dimensions["economic"] = self._economic_break_evens[:size]
+        unique_dimensions, inverse = np.unique(dimensions, return_inverse=True)
         unique_ids = np.fromiter(
             (
                 stable_cell_id(
-                    cost_bucket_id=(None if int(bucket) == _UNKNOWN_BUCKET_ID else int(bucket)),
+                    cost_bucket_id=(
+                        None if int(bucket) == _UNKNOWN_BUCKET_ID else int(bucket)
+                    ),
                     holding_days=int(holding_days),
                     sensitivity=_SENSITIVITY_BY_CODE[int(sensitivity_code)],
+                    economic_break_even=(
+                        None
+                        if int(bucket) == _UNKNOWN_BUCKET_ID
+                        else float(economic_break_even)
+                    ),
                 )
-                for bucket, holding_days, sensitivity_code in unique_dimensions
+                for bucket, holding_days, sensitivity_code, economic_break_even in unique_dimensions
             ),
             dtype=np.int64,
             count=int(unique_dimensions.shape[0]),
@@ -713,6 +739,7 @@ class _PackedWorkingLots:
                         cost_bucket_id=int(bucket_ids[index]),
                         holding_days=0,
                         sensitivity=_SENSITIVITY_BY_CODE[int(sensitivity_codes[index])],
+                        economic_break_even=float(prices[index]),
                     )
                     for index in range(count)
                 ),
@@ -762,7 +789,14 @@ class _PackedWorkingLots:
             known = bucket != _UNKNOWN_BUCKET_ID
             cells.append(
                 InventoryCell(
-                    cell_id=int(self.cell_ids[index]),
+                    cell_id=stable_cell_id(
+                        cost_bucket_id=bucket if known else None,
+                        holding_days=int(self.holding_days[index]),
+                        sensitivity=_SENSITIVITY_BY_CODE[int(self.sensitivity_codes[index])],
+                        economic_break_even=(
+                            float(self.economic_break_evens[index]) if known else None
+                        ),
+                    ),
                     cost_bucket_id=bucket if known else None,
                     holding_days=int(self.holding_days[index]),
                     sensitivity=_SENSITIVITY_BY_CODE[int(self.sensitivity_codes[index])],
@@ -952,15 +986,21 @@ def _compact_packed_lots_by_dimensions(
     if capped.size > 1:
         buckets = lots._cost_bucket_ids[capped]
         sensitivities = lots._sensitivity_codes[capped]
-        order = np.lexsort((sensitivities, buckets))
+        economic = lots._economic_break_evens[capped]
+        economic_keys = np.nan_to_num(economic, nan=-math.inf)
+        order = np.lexsort((economic_keys, sensitivities, buckets))
         ordered = capped[order]
         ordered_buckets = lots._cost_bucket_ids[ordered]
         ordered_sensitivities = lots._sensitivity_codes[ordered]
+        ordered_economic = np.nan_to_num(
+            lots._economic_break_evens[ordered], nan=-math.inf
+        )
         group_starts = np.flatnonzero(
             np.r_[
                 True,
                 (ordered_buckets[1:] != ordered_buckets[:-1])
-                | (ordered_sensitivities[1:] != ordered_sensitivities[:-1]),
+                | (ordered_sensitivities[1:] != ordered_sensitivities[:-1])
+                | (ordered_economic[1:] != ordered_economic[:-1]),
             ]
         )
         group_stops = np.r_[group_starts[1:], ordered.size]
@@ -1347,6 +1387,7 @@ class DailyMigrationEngine:
                 cost_bucket_id=lot.cost_bucket_id,
                 holding_days=lot.holding_days,
                 sensitivity=lot.sensitivity,
+                economic_break_even=lot.economic_break_even,
             )
             self._aged_cell_id_cache[previous_cell_id] = aged_cell_id
         lot.cell_id = aged_cell_id
@@ -1672,6 +1713,7 @@ class DailyMigrationEngine:
         sensitivity_codes = lots._sensitivity_codes[:size]
         shares = lots._shares[:size]
         acquisition_costs = lots._acquisition_costs[:size]
+        economic_break_evens = lots._economic_break_evens[:size]
         initialization_prior_units = lots._initialization_prior_units[:size]
         source_cell_ids = cell_ids.copy() if build_transition else None
         age_mask = (holding_days >= 0) & (holding_days < self.max_holding_days)
@@ -1695,6 +1737,11 @@ class DailyMigrationEngine:
                         cost_bucket_id=(None if bucket == _UNKNOWN_BUCKET_ID else bucket),
                         holding_days=int(holding_days[item]),
                         sensitivity=_SENSITIVITY_BY_CODE[int(sensitivity_codes[item])],
+                        economic_break_even=(
+                            None
+                            if bucket == _UNKNOWN_BUCKET_ID
+                            else float(economic_break_evens[item])
+                        ),
                     )
                     aged_cell_id_cache[previous_cell_id] = aged_cell_id
                 aged_to_ids[unique_position] = aged_cell_id
@@ -1968,6 +2015,7 @@ class DailyMigrationEngine:
                         cost_bucket_id=lot.cost_bucket_id,
                         holding_days=holding_days + 1,
                         sensitivity=lot.sensitivity,
+                        economic_break_even=lot.economic_break_even,
                     )
                     aged_cell_id_cache[previous_cell_id] = aged_cell_id
                 lot.cell_id = aged_cell_id
@@ -2290,19 +2338,27 @@ class DailyMigrationEngine:
         if event.kind == InventoryEventKind.CASH_DIVIDEND:
             for lot in lots:
                 if lot.economic_break_even is not None:
-                    lot.economic_break_even -= event.cash_per_share
+                    lot.economic_break_even = rebase_economic_price(
+                        lot.economic_break_even,
+                        cash_per_share=event.cash_per_share,
+                    )
+                    lot.refresh_cell_id()
         elif event.kind == InventoryEventKind.SPLIT:
             ratio = event.share_ratio
             for lot in lots:
                 lot.shares *= ratio
                 lot.lineage_denominator_shares *= ratio
                 if lot.acquisition_cost is not None:
-                    lot.acquisition_cost /= ratio
+                    lot.acquisition_cost = rebase_economic_price(
+                        lot.acquisition_cost, share_multiplier=ratio
+                    )
                     if lot.economic_break_even is None:
                         raise ChipStateContractError(
                             "known-cost lot contains a missing break-even price"
                         )
-                    lot.economic_break_even /= ratio
+                    lot.economic_break_even = rebase_economic_price(
+                        lot.economic_break_even, share_multiplier=ratio
+                    )
                     lot.cost_bucket_id = self.grid.bucket_for_price(lot.acquisition_cost)
                     lot.refresh_cell_id()
             free_float *= ratio

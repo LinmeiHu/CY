@@ -75,7 +75,7 @@ def test_split_remaps_cost_without_creating_mass() -> None:
     np.testing.assert_array_equal(split.mass, state.mass)
 
 
-def test_cash_dividend_records_economic_proceeds_without_moving_raw_costs() -> None:
+def test_cash_dividend_rebases_the_canonical_economic_cost_coordinate() -> None:
     grid = LogPriceGrid.around(9.0, 11.0, step_pct=0.005)
     state = CohortChipEngine(max_age=10).initialize(
         grid, _distribution(grid), date(2024, 1, 2)
@@ -85,26 +85,27 @@ def test_cash_dividend_records_economic_proceeds_without_moving_raw_costs() -> N
         state, cash_per_share=0.35, as_of=date(2024, 1, 3)
     )
 
-    assert adjusted.average_cost == pytest.approx(state.average_cost, abs=1e-12)
+    assert adjusted.average_cost == pytest.approx(
+        state.average_cost - 0.35, abs=1e-12
+    )
     assert adjusted.economic_average_cost == pytest.approx(
         state.average_cost - 0.35, abs=1e-12
     )
     assert adjusted.cash_distributions_per_share == pytest.approx(0.35, abs=1e-12)
-    assert adjusted.price_basis == "RAW_UNADJUSTED"
+    assert adjusted.price_basis == "CAUSAL_ECONOMIC_BREAK_EVEN"
     np.testing.assert_array_equal(adjusted.mass, state.mass)
     np.testing.assert_array_equal(adjusted.age_mass, state.age_mass)
     assert adjusted.mass_sum == pytest.approx(1.0, abs=1e-12)
 
 
-def test_cash_dividend_does_not_require_positive_economic_cost_coordinate() -> None:
+def test_cash_dividend_fails_closed_on_nonpositive_economic_cost_coordinate() -> None:
     grid = LogPriceGrid.around(0.1, 0.2, step_pct=0.01, padding=0.0)
     state = UniformChipEngine().initialize(
         grid, grid.volume_at_price(0.1, 0.2, 0.15), date(2024, 1, 2)
     )
 
-    adjusted = apply_cash_dividend_to_state(state, 0.2, date(2024, 1, 3))
-    np.testing.assert_array_equal(adjusted.grid.prices, state.grid.prices)
-    assert adjusted.cash_distributions_per_share == pytest.approx(0.2)
+    with pytest.raises(ValueError, match="non-positive"):
+        apply_cash_dividend_to_state(state, 0.2, date(2024, 1, 3))
 
 
 def test_cash_then_split_matches_causal_combined_action_order() -> None:
@@ -118,7 +119,7 @@ def test_cash_then_split_matches_causal_combined_action_order() -> None:
     )
 
     assert cash_then_split.average_cost == pytest.approx(
-        state.average_cost / 2.0, abs=1e-12
+        (state.average_cost - 0.35) / 2.0, abs=1e-12
     )
     assert cash_then_split.cash_distributions_per_share == pytest.approx(
         0.35 / 2.0, abs=1e-12

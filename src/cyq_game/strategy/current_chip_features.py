@@ -61,9 +61,24 @@ def build_current_chip_measurement_features(
         )
         exact_metrics = distribution_metrics_from_bucket_mass(item.bucket_mass, close)
         seller_model = item.seller_model.value
-        peak_tracking = trackers.setdefault(
+        tracker = trackers.setdefault(
             seller_model, TemporalPeakTracker(symbol=symbol, model=seller_model)
-        ).update(as_of=item.trade_date, candidates=exact_metrics.canonical_peaks)
+        )
+        if item.cash_dividend_per_share > 0.0 or item.share_multiplier != 1.0:
+            tracker.apply_corporate_action(
+                action_id="|".join(
+                    (
+                        item.snapshot_id,
+                        *item.action_provenance,
+                        item.trade_date.isoformat(),
+                    )
+                ),
+                cash_per_share=item.cash_dividend_per_share,
+                share_multiplier=item.share_multiplier,
+            )
+        peak_tracking = tracker.update(
+            as_of=item.trade_date, candidates=exact_metrics.canonical_peaks
+        )
         exact = asdict(exact_metrics)
         exact.pop("canonical_peaks")
         exact.update(

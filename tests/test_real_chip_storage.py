@@ -13,7 +13,7 @@ SCRIPT = Path(__file__).parents[1] / "scripts" / "build_real_chip_year.py"
 MODULE = runpy.run_path(str(SCRIPT))
 
 
-def test_v11_packed_cell_ids_are_reversible() -> None:
+def test_v12_packed_cell_dimensions_are_reversible_for_legacy_reading() -> None:
     pack = MODULE["_pack_cell_dimensions"]
     unpack = MODULE["_unpack_cell_dimensions"]
 
@@ -27,18 +27,18 @@ def test_v11_packed_cell_ids_are_reversible() -> None:
         assert unpack(pack(*expected)) == expected
 
 
-def test_v11_schema_keeps_exact_compact_operators_and_economic_coordinates() -> None:
-    assert MODULE["STORAGE_VERSION"] == "chip-operator-log-v11"
+def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:
+    assert MODULE["STORAGE_VERSION"] == "chip-operator-log-v12"
     assert MODULE["MODEL_VERSION"] == "real-chip-inventory-v2.1"
     assert MODULE["CHECKPOINT_INTERVAL_DAYS"] == 20
     assert MODULE["PARQUET_COMPRESSION_LEVEL"] == 3
 
     schema = MODULE["OUTPUT_SCHEMA"]
-    assert schema.field("checkpoint_local_ids").type == pa.list_(pa.uint32())
+    assert schema.field("checkpoint_local_ids").type == pa.list_(pa.uint64())
     assert schema.field("checkpoint_economic_bucket_ids").type == pa.list_(pa.int32())
-    assert schema.field("source_cell_ids_override").type == pa.list_(pa.uint32())
-    assert schema.field("destination_override_cell_ids").type == pa.list_(pa.uint32())
-    assert schema.field("inventory_adjustment_local_ids").type == pa.list_(pa.uint32())
+    assert schema.field("source_cell_ids_override").type == pa.list_(pa.uint64())
+    assert schema.field("destination_override_cell_ids").type == pa.list_(pa.uint64())
+    assert schema.field("inventory_adjustment_local_ids").type == pa.list_(pa.uint64())
     assert schema.field("inventory_adjustment_economic_bucket_ids").type == pa.list_(
         pa.int32()
     )
@@ -169,7 +169,7 @@ def test_columnar_output_batch_preserves_schema_and_values() -> None:
             "cost_p10": 9.0,
             "cost_p50": 10.0,
             "cost_p90": 11.0,
-            "main_peak": 10.0,
+            "dominant_peak_today": 10.0,
             "checkpoint_local_ids": [1],
             "checkpoint_shares": [100.0],
             "checkpoint_economic_bucket_ids": [0],
@@ -185,6 +185,7 @@ def test_columnar_output_batch_preserves_schema_and_values() -> None:
             "inventory_adjustment_economic_bucket_ids": [],
             "cash_dividend_per_share": 0.0,
             "share_multiplier": 1.0,
+            "action_provenance_ids": [],
             "fixed_pre_eligible_shares": 100.0,
             "executed_sell_shares": 0.0,
             "same_day_resale_shares": 0.0,
@@ -230,7 +231,7 @@ def test_daily_profile_peak_uses_stable_bucket_and_tie_break() -> None:
     )
 
     assert profile is not None
-    assert profile["peak"] == grid.price_for_bucket(20)
+    assert profile["dominant_peak_today"] == grid.price_for_bucket(20)
 
 
 def test_daily_profile_peak_prefers_structural_cluster_over_isolated_spike() -> None:
@@ -240,7 +241,7 @@ def test_daily_profile_peak_prefers_structural_cluster_over_isolated_spike() -> 
     )
 
     assert profile is not None
-    assert profile["peak"] == grid.price_for_bucket(21)
+    assert profile["dominant_peak_today"] == grid.price_for_bucket(21)
 
 
 def test_daily_profile_uses_dividend_adjusted_economic_cost() -> None:
@@ -296,12 +297,11 @@ def test_daily_profile_preserves_nonpositive_economic_break_even() -> None:
     _, by_bucket, known_shares, economic_buckets = MODULE[
         "_CellCodec"
     ]().register_state_and_profile(state, grid)
-    profile = MODULE["_profile_from_bucket_mass"](by_bucket, grid)
-
     assert by_bucket == {sentinel: 100.0}
     assert economic_buckets == {123: sentinel}
     assert known_shares == 100.0
-    assert profile == {"average": 0.0, "p10": 0.0, "p50": 0.0, "p90": 0.0, "peak": 0.0}
+    with pytest.raises(ValueError, match="positive"):
+        MODULE["_profile_from_bucket_mass"](by_bucket, grid)
 
 
 def test_zero_retention_company_action_destination_needs_no_codec_entry() -> None:
@@ -370,8 +370,8 @@ def test_zero_retention_company_action_destination_needs_no_codec_entry() -> Non
     )
 
     values = dict(zip(MODULE["OUTPUT_SCHEMA"].names, row, strict=True))
-    assert values["destination_override_positions"] == []
-    assert values["destination_override_cell_ids"] == []
+    assert values["destination_override_positions"] == [0]
+    assert values["destination_override_cell_ids"] == [transformed_zero_id]
     assert values["inventory_adjustment_shares"] == [100.0]
 
 

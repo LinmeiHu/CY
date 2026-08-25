@@ -34,13 +34,15 @@ from cyq_game.chip.state_v2 import (
     tolerance,
 )
 from cyq_game.strategy.markup_retest import LifecycleAnchor, LifecycleObservation
+from cyq_game.strategy.semantic_contract import OPERATOR_LOG_VERSION
 
-_OPERATOR_STORAGE_VERSION = "chip-operator-log-v11"
+_OPERATOR_STORAGE_VERSION = OPERATOR_LOG_VERSION
 _COMPATIBLE_OPERATOR_STORAGE_VERSIONS = frozenset(
     {
         "chip-operator-log-v8",
         "chip-operator-log-v9",
         "chip-operator-log-v10",
+        "chip-operator-log-v11",
         _OPERATOR_STORAGE_VERSION,
     }
 )
@@ -69,7 +71,9 @@ class PersistedDailyBucketMass:
     cost_p10: float
     cost_p50: float
     cost_p90: float
-    main_peak: float
+    cash_dividend_per_share: float
+    share_multiplier: float
+    action_provenance: tuple[str, ...]
 
 
 @dataclass
@@ -246,7 +250,11 @@ def _lineage_operator(
     source_override = tuple(
         int(value) for value in (row.get("source_cell_ids_override") or ())
     )
-    sources = source_override or tuple(sorted(inventory, key=_source_sort_key))
+    sources = source_override or tuple(
+        sorted(inventory)
+        if row.get("storage_version") == _OPERATOR_STORAGE_VERSION
+        else sorted(inventory, key=_source_sort_key)
+    )
     sensitivities = tuple(source & 3 for source in sources)
     retentions = _decode_retention(row, sensitivities)
     destination_overrides = dict(
@@ -708,7 +716,15 @@ class PersistedChipLineageResolver:
                     cost_p10=float(row["cost_p10"]),
                     cost_p50=float(row["cost_p50"]),
                     cost_p90=float(row["cost_p90"]),
-                    main_peak=float(row["main_peak"]),
+                    cash_dividend_per_share=float(
+                        row.get("cash_dividend_per_share") or 0.0
+                    ),
+                    share_multiplier=float(row.get("share_multiplier") or 1.0),
+                    action_provenance=tuple(
+                        str(value)
+                        for value in (row.get("action_provenance_ids") or ())
+                        if str(value)
+                    ),
                 )
 
     def _paths(self, symbol: str, start: date, end: date) -> tuple[Path, ...]:

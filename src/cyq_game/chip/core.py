@@ -9,6 +9,11 @@ from typing import Protocol
 import numpy as np
 from numpy.typing import NDArray
 
+from cyq_game.chip.price_coordinate import (
+    PRICE_COORDINATE_NAME,
+    rebase_economic_price,
+)
+
 FloatArray = NDArray[np.float64]
 MASS_TOLERANCE = 1e-8
 
@@ -21,6 +26,16 @@ class LogPriceGrid:
     _regular_log_step: float | None = field(init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
+        if self.prices.ndim != 1 or len(self.prices) == 0:
+            raise ValueError("log price grid must be a non-empty vector")
+        if np.any(~np.isfinite(self.prices)):
+            raise ValueError("log price grid prices must be finite")
+        if np.any(self.prices <= 0.0):
+            raise ValueError("log price grid prices must be positive")
+        if not np.isfinite(self.step_pct) or not 0.0 < self.step_pct < 1.0:
+            raise ValueError("log price grid step_pct must be finite and in (0, 1)")
+        if len(self.prices) > 1 and np.any(np.diff(self.prices) <= 0.0):
+            raise ValueError("log price grid prices must be strictly increasing")
         log_prices = np.log(self.prices)
         object.__setattr__(self, "_log_prices", log_prices)
         expected_step = log(1.0 + self.step_pct)
@@ -135,9 +150,7 @@ class ChipState:
     quality: float
     age_mass: FloatArray | None = None
     degraded_mode: str | None = None
-    # Cost coordinates remain in the immutable, unadjusted market-price
-    # basis.  Cash distributions are economic proceeds, not a price action.
-    price_basis: str = "RAW_UNADJUSTED"
+    price_basis: str = PRICE_COORDINATE_NAME
     cash_distributions_per_share: float = 0.0
     applied_action_ids: tuple[str, ...] = ()
     action_ledger_version: str = "chip-action-ledger-v2"
@@ -147,8 +160,14 @@ class ChipState:
     def __post_init__(self) -> None:
         if self.mass.shape != self.grid.prices.shape:
             raise ValueError("chip mass shape does not match grid")
-        if self.price_basis != "RAW_UNADJUSTED":
-            raise ValueError("chip state must use the RAW_UNADJUSTED price basis")
+        if np.any(~np.isfinite(self.mass)):
+            raise MassConservationError("chip mass must be finite")
+        if not np.isfinite(self.quality):
+            raise ValueError("chip state quality must be finite")
+        if not 0.0 <= self.quality <= 1.0:
+            raise ValueError("chip state quality must be in [0, 1]")
+        if self.price_basis != PRICE_COORDINATE_NAME:
+            raise ValueError("chip state must use the canonical economic price basis")
         if (
             not np.isfinite(self.cash_distributions_per_share)
             or self.cash_distributions_per_share < 0
@@ -163,6 +182,8 @@ class ChipState:
         if abs(mass_sum - 1.0) > MASS_TOLERANCE:
             raise MassConservationError("chip mass must sum to one")
         if self.age_mass is not None:
+            if np.any(~np.isfinite(self.age_mass)):
+                raise MassConservationError("cohort mass must be finite")
             if self.age_mass.shape[0] != self.mass.shape[0]:
                 raise ValueError("cohort price dimension mismatch")
             if np.max(np.abs(self.age_mass.sum(axis=1) - self.mass)) > MASS_TOLERANCE:
@@ -183,9 +204,9 @@ class ChipState:
 
     @property
     def economic_average_cost(self) -> float:
-        """Average raw cost less cumulative cash received per current share."""
+        """Average cost in the canonical economic break-even coordinate."""
 
-        return self.average_cost - self.cash_distributions_per_share
+        return self.average_cost
 
     @property
     def mass_sum(self) -> float:
@@ -282,9 +303,16 @@ def apply_split_to_state(
         raise ValueError("split ratio must be positive")
     if action_id is not None and action_id in state.applied_action_ids:
         return state
+    rebased_prices = np.asarray(
+        [
+            rebase_economic_price(value, share_multiplier=ratio)
+            for value in state.grid.prices
+        ],
+        dtype=np.float64,
+    )
     rebased = _reprice_state(
         state,
-        state.grid.prices / ratio,
+        rebased_prices,
         as_of=as_of,
         action_name="split",
     )
@@ -316,15 +344,7 @@ def apply_cash_dividend_to_state(
     action_id: str | None = None,
     blocking: bool = False,
 ) -> ChipState:
-    """Record cash proceeds without moving the raw price-cost distribution.
-
-    A cash dividend changes an investor's economic break-even, but it does not
-    change the historical transaction price at which shares entered the
-    position.  Keeping both concepts separate prevents raw OHLC from being
-    compared with a silently shifted chip grid.  ``action_id`` makes replay
-    idempotent; ``blocking`` records a data-quality/action-resolution block for
-    the current event without making future bars permanently blocked.
-    """
+    """Rebase every pre-existing chip to its ex-date economic break-even."""
 
     if not np.isfinite(cash_per_share) or cash_per_share < 0:
         raise ValueError("cash dividend must be finite and non-negative")
@@ -333,20 +353,33 @@ def apply_cash_dividend_to_state(
     action_ids = state.applied_action_ids
     if action_id is not None:
         action_ids = (*action_ids, action_id)
-    return ChipState(
-        grid=state.grid,
-        mass=state.mass.copy(),
+    rebased_prices = np.asarray(
+        [
+            rebase_economic_price(value, cash_per_share=cash_per_share)
+            for value in state.grid.prices
+        ],
+        dtype=np.float64,
+    )
+    rebased = _reprice_state(
+        state,
+        rebased_prices,
         as_of=as_of,
-        engine=state.engine,
-        quality=state.quality,
-        age_mass=None if state.age_mass is None else state.age_mass.copy(),
-        degraded_mode=state.degraded_mode,
-        price_basis=state.price_basis,
+        action_name="cash_dividend",
+    )
+    return ChipState(
+        grid=rebased.grid,
+        mass=rebased.mass,
+        as_of=rebased.as_of,
+        engine=rebased.engine,
+        quality=rebased.quality,
+        age_mass=rebased.age_mass,
+        degraded_mode=rebased.degraded_mode,
+        price_basis=rebased.price_basis,
         cash_distributions_per_share=(
-            state.cash_distributions_per_share + cash_per_share
+            rebased.cash_distributions_per_share + cash_per_share
         ),
         applied_action_ids=action_ids,
-        action_ledger_version=state.action_ledger_version,
+        action_ledger_version=rebased.action_ledger_version,
         action_blocking=blocking,
     )
 

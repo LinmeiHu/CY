@@ -15,6 +15,7 @@ from cyq_game.chip.peaks import (
     PeakTrackingResult,
     TemporalPeakTracker,
     detect_canonical_peaks,
+    dominant_canonical_peak,
 )
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
@@ -88,7 +89,7 @@ def distribution_metrics_from_bucket_mass(
         ),
         as_of=date.min,
     )
-    dominant = max(canonical_peaks, key=lambda peak: peak.mass, default=None)
+    dominant = dominant_canonical_peak(canonical_peaks)
 
     right = 0
     window_mass = 0.0
@@ -139,9 +140,24 @@ def build_exact_ensemble_features(
             continue
         raw_metrics = distribution_metrics_from_bucket_mass(item.bucket_mass, close)
         seller_model = item.seller_model.value
-        tracking = trackers.setdefault(
+        tracker = trackers.setdefault(
             seller_model, TemporalPeakTracker(symbol=symbol, model=seller_model)
-        ).update(as_of=item.trade_date, candidates=raw_metrics.canonical_peaks)
+        )
+        if item.cash_dividend_per_share > 0.0 or item.share_multiplier != 1.0:
+            tracker.apply_corporate_action(
+                action_id="|".join(
+                    (
+                        item.snapshot_id,
+                        *item.action_provenance,
+                        item.trade_date.isoformat(),
+                    )
+                ),
+                cash_per_share=item.cash_dividend_per_share,
+                share_multiplier=item.share_multiplier,
+            )
+        tracking = tracker.update(
+            as_of=item.trade_date, candidates=raw_metrics.canonical_peaks
+        )
         metrics = asdict(raw_metrics)
         metrics.pop("canonical_peaks")
         metrics.update(

@@ -67,18 +67,29 @@ def stable_cell_id(
     cost_bucket_id: int | None,
     holding_days: int,
     sensitivity: TurnoverSensitivity,
+    economic_break_even: float | None = None,
 ) -> int:
-    """Return the identifier for one cost-bucket x age x sensitivity cell.
+    """Return the identifier for one causal cost x age x sensitivity state.
 
-    Acquisition cost and economic break-even are aggregated attributes inside
-    the cell, not additional state dimensions.  Putting either in this key
-    would accidentally create one cell per fill.
+    Economic break-even is a causal state coordinate: corporate actions can
+    make otherwise identical acquisition lots economically distinct.  It must
+    therefore participate in identity; merging it would corrupt both the
+    price distribution and the origin-survival operator.
     """
 
+    if not isinstance(holding_days, int) or holding_days < -1:
+        raise ChipStateContractError("cell holding_days is outside its valid range")
+    if cost_bucket_id is not None and not isinstance(cost_bucket_id, int):
+        raise ChipStateContractError("cost bucket id must be an integer or null")
+    if economic_break_even is not None and not math.isfinite(economic_break_even):
+        raise ChipStateContractError("economic break-even identity must be finite")
     payload: dict[str, object] = {
         "cost_bucket_id": cost_bucket_id,
         "holding_days": holding_days,
         "sensitivity": sensitivity.value,
+        "economic_break_even": (
+            None if economic_break_even is None else float(economic_break_even).hex()
+        ),
     }
     digest = hashlib.sha256(
         json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
@@ -130,6 +141,7 @@ class InventoryCell:
             cost_bucket_id=self.cost_bucket_id,
             holding_days=self.holding_days,
             sensitivity=self.sensitivity,
+            economic_break_even=self.economic_break_even,
         )
         if self.cell_id != expected:
             raise ChipStateContractError("cell_id does not match its immutable dimensions")
@@ -151,6 +163,7 @@ class InventoryCell:
                 cost_bucket_id=cost_bucket_id,
                 holding_days=holding_days,
                 sensitivity=sensitivity,
+                economic_break_even=economic_break_even,
             ),
             cost_bucket_id=cost_bucket_id,
             holding_days=holding_days,

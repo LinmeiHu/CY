@@ -7,12 +7,12 @@ from collections.abc import Mapping
 from typing import Any
 
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
+from cyq_game.chip.price_coordinate import PRICE_COORDINATE_VERSION
 
 SEMANTIC_EPOCH = "cyq-semantic-epoch-20260825-v2"
 CHIP_STATE_SCHEMA_VERSION = "chip-state-v3-economic-identity"
 OPERATOR_LOG_VERSION = "chip-operator-log-v12"
 FEATURE_SCHEMA_VERSION = "chip-features-v5-canonical-peak"
-PRICE_COORDINATE_VERSION = "causal-economic-price-v2"
 PANEL_SCHEMA_VERSION = 11
 STRATEGY_VERSION = "markup-retest-v2-tracked-peak"
 SIGNAL_SCHEMA_VERSION = 3

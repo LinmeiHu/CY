@@ -7,8 +7,10 @@ from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, replace
 from datetime import date
 from hashlib import sha256
+from itertools import pairwise
 
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
+from cyq_game.chip.price_coordinate import rebase_economic_price
 
 _KERNEL = (1.0, 4.0, 6.0, 4.0, 1.0)
 _OFFSETS = (-2, -1, 0, 1, 2)
@@ -122,10 +124,13 @@ def detect_canonical_peaks(
         local_mass = (
             math.fsum(mass for bucket, mass in combined.items() if lower <= bucket <= upper) / total
         )
-        left_floor = min(smoothed(bucket) for bucket in range(first, center + 1))
-        right_floor = min(smoothed(bucket) for bucket in range(center, last + 1))
+        left_floor = min(smoothed(bucket) for bucket in range(first - 1, center + 1))
+        right_floor = min(smoothed(bucket) for bucket in range(center, last + 2))
         prominence = height - max(left_floor, right_floor)
-        if local_mass < _MIN_PEAK_MASS and prominence < _MIN_PROMINENCE:
+        # A wide half-height band can contain most of a diffuse distribution;
+        # mass alone is therefore not evidence of a structural local mode.
+        # Require both material band mass and material topographic prominence.
+        if local_mass < _MIN_PEAK_MASS or prominence < _MIN_PROMINENCE:
             continue
         age_mean: float | None = None
         if age_weight_by_bucket is not None:
@@ -159,7 +164,96 @@ def detect_canonical_peaks(
                 formation_date=as_of.isoformat(),
             )
         )
-    return tuple(sorted(result, key=lambda peak: peak.center_price))
+    # Half-height shoulders inside one broad mode are not independent peaks.
+    # Keep the most prominent representative whenever candidate centers fall
+    # inside each other's bands; this is deterministic non-maximum suppression,
+    # not a cross-day identity heuristic.
+    structural: list[CanonicalPeak] = []
+    for peak in sorted(
+        result,
+        key=lambda value: (
+            -value.prominence,
+            -value.mass,
+            value.center_price,
+        ),
+    ):
+        if any(
+            existing.lower_price <= peak.center_price <= existing.upper_price
+            and peak.lower_price <= existing.center_price <= peak.upper_price
+            for existing in structural
+        ):
+            continue
+        structural.append(peak)
+    ordered = sorted(structural, key=lambda peak: peak.center_bucket)
+    separated: list[CanonicalPeak] = []
+    for peak in ordered:
+        if separated:
+            previous = separated[-1]
+            valley = min(
+                smoothed(bucket)
+                for bucket in range(previous.center_bucket, peak.center_bucket + 1)
+            )
+            weaker_height = min(
+                smoothed(previous.center_bucket), smoothed(peak.center_bucket)
+            )
+            if weaker_height > 0.0 and valley / weaker_height >= 0.80:
+                if peak.prominence > previous.prominence:
+                    separated[-1] = peak
+                continue
+        separated.append(peak)
+
+    valley_boundaries = [
+        min(
+            range(left.center_bucket, right.center_bucket + 1),
+            key=lambda bucket: (smoothed(bucket), bucket),
+        )
+        for left, right in pairwise(separated)
+    ]
+    bounded: list[CanonicalPeak] = []
+    for index, peak in enumerate(separated):
+        lower = peak.lower_bucket if index == 0 else valley_boundaries[index - 1] + 1
+        upper = peak.upper_bucket if index == len(separated) - 1 else valley_boundaries[index]
+        band_mass_raw = math.fsum(
+            combined.get(bucket, 0.0) for bucket in range(lower, upper + 1)
+        )
+        band_mass = band_mass_raw / total
+        age_mean = peak.age_mean
+        if age_weight_by_bucket is not None and band_mass_raw > 0.0:
+            age_mean = math.fsum(
+                float(age_weight_by_bucket.get(bucket, 0.0))
+                for bucket in range(lower, upper + 1)
+            ) / band_mass_raw
+        lower_price = float(price_for_bucket(lower))
+        upper_price = float(price_for_bucket(upper))
+        bounded.append(
+            replace(
+                peak,
+                lower_bucket=lower,
+                lower_price=lower_price,
+                upper_bucket=upper,
+                upper_price=upper_price,
+                mass=band_mass,
+                width_pct=upper_price / lower_price - 1.0,
+                age_mean=age_mean,
+            )
+        )
+    return tuple(bounded)
+
+
+def dominant_canonical_peak(
+    peaks: Iterable[CanonicalPeak],
+) -> CanonicalPeak | None:
+    """Select today's dominant peak with a stable lower-price tie break."""
+
+    return max(
+        peaks,
+        key=lambda peak: (
+            round(peak.mass, 12),
+            round(peak.prominence, 12),
+            -peak.center_bucket,
+        ),
+        default=None,
+    )
 
 
 class TemporalPeakTracker:
@@ -170,6 +264,45 @@ class TemporalPeakTracker:
         self._model = model
         self._previous: tuple[TrackedPeak, ...] = ()
         self._base_track_id: str | None = None
+        self._applied_action_ids: set[str] = set()
+
+    def apply_corporate_action(
+        self,
+        *,
+        action_id: str,
+        cash_per_share: float = 0.0,
+        share_multiplier: float = 1.0,
+    ) -> None:
+        """Move prior tracks onto the same ex-date coordinate exactly once."""
+
+        if not action_id:
+            raise ValueError("peak action id cannot be empty")
+        if action_id in self._applied_action_ids:
+            return
+        self._previous = tuple(
+            replace(
+                peak,
+                band=(
+                    rebase_economic_price(
+                        peak.band[0],
+                        cash_per_share=cash_per_share,
+                        share_multiplier=share_multiplier,
+                    ),
+                    rebase_economic_price(
+                        peak.band[1],
+                        cash_per_share=cash_per_share,
+                        share_multiplier=share_multiplier,
+                    ),
+                ),
+                center_price=rebase_economic_price(
+                    peak.center_price,
+                    cash_per_share=cash_per_share,
+                    share_multiplier=share_multiplier,
+                ),
+            )
+            for peak in self._previous
+        )
+        self._applied_action_ids.add(action_id)
 
     def update(self, *, as_of: date, candidates: tuple[CanonicalPeak, ...]) -> PeakTrackingResult:
         compatibility: dict[tuple[int, int], float] = {}
@@ -250,7 +383,15 @@ class TemporalPeakTracker:
                 )
             )
         observations.sort(key=lambda peak: peak.center_price)
-        dominant = max(observations, key=lambda peak: peak.mass, default=None)
+        dominant = max(
+            observations,
+            key=lambda peak: (
+                round(peak.mass, 12),
+                round(peak.prominence, 12),
+                -peak.center_price,
+            ),
+            default=None,
+        )
         if dominant is not None:
             runners_up = [peak for peak in observations if peak is not dominant]
             dominance_margin = dominant.mass - max(
@@ -295,7 +436,10 @@ def _match_score(old: TrackedPeak, new: CanonicalPeak) -> float | None:
     iou = overlap / union if union > 0.0 else 0.0
     log_distance = abs(math.log(new.center_price / old.center_price))
     permitted = max(0.03, math.log1p(max(new.width_pct, old_upper / old_lower - 1.0)))
-    if iou <= 0.0 and log_distance > permitted:
+    # Non-overlapping bands receive only a narrow continuity allowance.  A
+    # larger action-day move must have been handled by the explicit coordinate
+    # rebase; otherwise treating a nearby mode as the same identity is unsafe.
+    if iou <= 0.0 and log_distance > 0.01:
         return None
     return 2.0 * iou - log_distance / permitted
 

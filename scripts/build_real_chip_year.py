@@ -47,6 +47,14 @@ from cyq_game.chip.migration_v2 import (  # noqa: E402
     initial_unknown_snapshot,
     prepare_minute_path,
 )
+from cyq_game.chip.peaks import (  # noqa: E402
+    detect_canonical_peaks,
+    dominant_canonical_peak,
+)
+from cyq_game.chip.price_coordinate import (  # noqa: E402
+    canonical_action_component_id,
+    parse_action_ids,
+)
 from cyq_game.chip.state_v2 import (  # noqa: E402
     ChipSnapshotV2,
     InventoryCell,
@@ -57,6 +65,11 @@ from cyq_game.chip.state_v2 import (  # noqa: E402
     stable_cell_id,
     tolerance,
 )
+from cyq_game.strategy.semantic_contract import (  # noqa: E402
+    CHIP_STATE_SCHEMA_VERSION,
+    OPERATOR_LOG_VERSION,
+    semantic_fingerprint_fields,
+)
 
 DAILY_ROOT = ROOT / "data/processed/pit_b_daily_2018_2026_v2/daily"
 MINUTE_ROOT = Path(
@@ -65,7 +78,7 @@ MINUTE_ROOT = Path(
 )
 MODEL_VERSION = "real-chip-inventory-v2.1"
 GRID_VERSION = "log-grid-25bp-v1"
-STORAGE_VERSION = "chip-operator-log-v11"
+STORAGE_VERSION = OPERATOR_LOG_VERSION
 STAGE_LAYOUT_VERSION = "bucket-symbol-v3-mixed-native-resolution"
 MINUTE_YEAR_SUPPLEMENTS: dict[int, tuple[str, ...]] = {
     2026: ("2026_qmt_tail.parquet",),
@@ -229,13 +242,21 @@ def _inventory_events(
         row["float_available_date"], _aware(trading_date, 9, 0, 2)
     )
     input_id = str(row.get("corporate_action_snapshot_id") or row["snapshot_id"])
+    source_action_ids = parse_action_ids(row.get("corporate_action_ids"))
     events: list[InventoryEvent] = []
     cash = float(row.get("cash_per_share") or 0.0)
     ratio = float(row.get("share_multiplier") or 1.0)
     if cash > 0:
         events.append(
             InventoryEvent(
-                event_id=f"{trading_date}:01-cash",
+                event_id=canonical_action_component_id(
+                    symbol=previous.symbol,
+                    effective_date=trading_date,
+                    kind="CASH_DIVIDEND",
+                    source_action_ids=source_action_ids,
+                    snapshot_id=input_id,
+                    cash_per_share=cash,
+                ),
                 kind=InventoryEventKind.CASH_DIVIDEND,
                 effective_at=_aware(trading_date, 9),
                 available_at=action_available,
@@ -246,7 +267,14 @@ def _inventory_events(
     if ratio != 1.0:
         events.append(
             InventoryEvent(
-                event_id=f"{trading_date}:02-split",
+                event_id=canonical_action_component_id(
+                    symbol=previous.symbol,
+                    effective_date=trading_date,
+                    kind="SPLIT",
+                    source_action_ids=source_action_ids,
+                    snapshot_id=input_id,
+                    share_multiplier=ratio,
+                ),
                 kind=InventoryEventKind.SPLIT,
                 effective_at=_aware(trading_date, 9, 0, 1),
                 available_at=action_available,
@@ -257,14 +285,22 @@ def _inventory_events(
     expected_float = float(row["circulating_shares"])
     bridged_float = previous.free_float_shares * ratio
     delta = expected_float - bridged_float
+    float_snapshot_id = str(row.get("float_snapshot_id") or row["snapshot_id"])
     if delta > tolerance(expected_float):
         events.append(
             InventoryEvent(
-                event_id=f"{trading_date}:03-float-add",
+                event_id=canonical_action_component_id(
+                    symbol=previous.symbol,
+                    effective_date=trading_date,
+                    kind="FLOAT_ADD_UNKNOWN",
+                    source_action_ids=(),
+                    snapshot_id=float_snapshot_id,
+                    shares=delta,
+                ),
                 kind=InventoryEventKind.FLOAT_ADD_UNKNOWN,
                 effective_at=_aware(trading_date, 9, 0, 2),
                 available_at=float_available,
-                snapshot_id=str(row.get("float_snapshot_id") or row["snapshot_id"]),
+                snapshot_id=float_snapshot_id,
                 shares=delta,
                 sensitivity=TurnoverSensitivity.NEUTRAL,
             )
@@ -273,49 +309,23 @@ def _inventory_events(
         removed = -delta
         events.append(
             InventoryEvent(
-                event_id=f"{trading_date}:03-float-remove",
+                event_id=canonical_action_component_id(
+                    symbol=previous.symbol,
+                    effective_date=trading_date,
+                    kind="FLOAT_REMOVE_EXPLICIT",
+                    source_action_ids=(),
+                    snapshot_id=float_snapshot_id,
+                    shares=removed,
+                ),
                 kind=InventoryEventKind.FLOAT_REMOVE_EXPLICIT,
                 effective_at=_aware(trading_date, 9, 0, 2),
                 available_at=float_available,
-                snapshot_id=str(row.get("float_snapshot_id") or row["snapshot_id"]),
+                snapshot_id=float_snapshot_id,
                 shares=removed,
                 source_removals=_pro_rata_removals(previous, ratio, removed),
             )
         )
     return tuple(events)
-
-
-def _known_profile(snapshot: ChipSnapshotV2) -> dict[str, Any]:
-    by_price: dict[float, float] = defaultdict(float)
-    for cell in snapshot.inventory.cells:
-        if cell.cost_known and cell.economic_break_even is not None and cell.shares > 0:
-            by_price[cell.economic_break_even] += cell.shares
-    if not by_price:
-        raise ValueError("no known-cost chips available for lifecycle anchor")
-    pairs = sorted(by_price.items())
-    total = math.fsum(mass for _, mass in pairs)
-    masses = tuple(mass / total for _, mass in pairs)
-    prices = tuple(price for price, _ in pairs)
-
-    def quantile(level: float) -> float:
-        cumulative = 0.0
-        for price, mass in zip(prices, masses, strict=True):
-            cumulative += mass
-            if cumulative >= level:
-                return price
-        return prices[-1]
-
-    peak_index = max(range(len(masses)), key=masses.__getitem__)
-    return {
-        "prices": prices,
-        "masses": masses,
-        "total": total,
-        "average": math.fsum(p * m for p, m in zip(prices, masses, strict=True)),
-        "p10": quantile(0.10),
-        "p50": quantile(0.50),
-        "p90": quantile(0.90),
-        "peak": prices[peak_index],
-    }
 
 
 OUTPUT_SCHEMA = pa.schema(
@@ -339,22 +349,23 @@ OUTPUT_SCHEMA = pa.schema(
         ("cost_p10", pa.float64()),
         ("cost_p50", pa.float64()),
         ("cost_p90", pa.float64()),
-        ("main_peak", pa.float64()),
-        ("checkpoint_local_ids", pa.list_(pa.uint32())),
+        ("dominant_peak_today", pa.float64()),
+        ("checkpoint_local_ids", pa.list_(pa.uint64())),
         ("checkpoint_shares", pa.list_(pa.float64())),
         ("checkpoint_economic_bucket_ids", pa.list_(pa.int32())),
         ("transition_id", pa.string()),
-        ("source_cell_ids_override", pa.list_(pa.uint32())),
+        ("source_cell_ids_override", pa.list_(pa.uint64())),
         ("destination_override_positions", pa.list_(pa.uint32())),
-        ("destination_override_cell_ids", pa.list_(pa.uint32())),
+        ("destination_override_cell_ids", pa.list_(pa.uint64())),
         ("retention_encoding", pa.uint8()),
         ("retention_values", pa.list_(pa.float64())),
         ("retention_codes", pa.binary()),
-        ("inventory_adjustment_local_ids", pa.list_(pa.uint32())),
+        ("inventory_adjustment_local_ids", pa.list_(pa.uint64())),
         ("inventory_adjustment_shares", pa.list_(pa.float64())),
         ("inventory_adjustment_economic_bucket_ids", pa.list_(pa.int32())),
         ("cash_dividend_per_share", pa.float64()),
         ("share_multiplier", pa.float64()),
+        ("action_provenance_ids", pa.list_(pa.string())),
         ("fixed_pre_eligible_shares", pa.float64()),
         ("executed_sell_shares", pa.float64()),
         ("same_day_resale_shares", pa.float64()),
@@ -544,7 +555,9 @@ class _CellCodec:
         return view, economic
 
     def local_id(self, cell_id: int) -> int:
-        return self.by_cell_id[cell_id]
+        """v12 persists the full causal cell identity, never a lossy local code."""
+
+        return cell_id
 
     def register_state(
         self, state: MutableChipState, grid: StableLogPriceGrid
@@ -1464,7 +1477,7 @@ def _cap_prepared_minute_path(
 
 def _profile_from_bucket_mass(
     by_bucket: dict[int, float], grid: StableLogPriceGrid
-) -> dict[str, float] | None:
+) -> dict[str, float | None] | None:
     if not by_bucket:
         return None
     pairs = [
@@ -1483,33 +1496,18 @@ def _profile_from_bucket_mass(
             threshold_index += 1
     if threshold_index < len(thresholds):
         quantiles.extend([pairs[-1][0]] * (len(thresholds) - threshold_index))
-    # A structural peak is a local cost cluster, not whichever adjacent 25bp
-    # bucket happens to be microscopically tallest.  This same-day triangular
-    # kernel is causal and leaves the mass/quantile calculations untouched.
-    mass_by_bucket = {bucket_id: mass for _, mass, bucket_id in pairs}
-    peak_scores = {
-        bucket_id: (
-            mass_by_bucket.get(bucket_id - 2, 0.0)
-            + 4.0 * mass_by_bucket.get(bucket_id - 1, 0.0)
-            + 6.0 * mass
-            + 4.0 * mass_by_bucket.get(bucket_id + 1, 0.0)
-            + mass_by_bucket.get(bucket_id + 2, 0.0)
-        )
-        for _, mass, bucket_id in pairs
-    }
-    peak_price = max(
-        pairs,
-        key=lambda pair: (
-            round(peak_scores[pair[2]] / profile_total, 12),
-            -pair[2],
-        ),
-    )[0]
+    peaks = detect_canonical_peaks(
+        by_bucket,
+        price_for_bucket=lambda bucket: economic_break_even_for_bucket(grid, bucket),
+        as_of=date.min,
+    )
+    dominant = dominant_canonical_peak(peaks)
     return {
         "average": math.fsum(price * mass for price, mass, _ in pairs) / profile_total,
         "p10": quantiles[0],
         "p50": quantiles[1],
         "p90": quantiles[2],
-        "peak": peak_price,
+        "dominant_peak_today": None if dominant is None else dominant.center_price,
     }
 
 
@@ -1524,6 +1522,7 @@ def _output_row(
     grid: StableLogPriceGrid,
     cash_dividend_per_share: float = 0.0,
     share_multiplier: float = 1.0,
+    action_provenance_ids: tuple[str, ...] = (),
     force_checkpoint: bool = False,
 ) -> tuple[
     tuple[Any, ...],
@@ -1561,9 +1560,10 @@ def _output_row(
     if previous_post is not None:
         previous_by_id = previous_post
         actual_sources = tuple(transition.source_cell_ids)
-        expected_sources = tuple(
-            cell_id for cell_id, _ in sorted(previous_by_id.items(), key=_storage_source_view_key)
-        )
+        # v12 ids are full economic identities and are intentionally not
+        # reversible packed dimension codes.  Numeric id order is the compact,
+        # deterministic source order shared with the replay decoder.
+        expected_sources = tuple(sorted(previous_by_id))
         sources_are_unique = all(
             left != right for left, right in pairwise(actual_sources)
         )
@@ -1594,7 +1594,6 @@ def _output_row(
             ordered_destinations = tuple(transition.destination_cell_ids)
             ordered_fractions = tuple(transition.retained_fractions)
         predicted: dict[int, float] = {}
-        normal_destinations = codec.normal_destination_by_cell_id
         for position, (source_id, destination_id, retained_fraction) in enumerate(
             zip(
                 ordered_sources,
@@ -1603,34 +1602,36 @@ def _output_row(
                 strict=True,
             )
         ):
-            source_cell = previous_by_id[source_id]
-            normal_destination = normal_destinations.get(source_id)
-            if normal_destination is None:
-                normal_destination = codec.normal_destination(source_id, source_cell)
-            # A fully depleted source carries no inventory or anchor bloodline
-            # into its destination.  Company-action days can therefore name a
-            # transformed destination cell that is absent from the POST state
-            # (and intentionally absent from the codec).  Canonicalize only
-            # those zero-mass arcs to the normal aged destination; replay is
-            # unchanged because the retained fraction is exactly zero.
-            if retained_fraction == 0.0:
-                destination_id = normal_destination
-            if destination_id != normal_destination:
-                destination_override_positions.append(position)
-                destination_override_cell_ids.append(codec.local_id(destination_id))
+            source_cell = previous_by_id.get(source_id)
+            if source_cell is None:
+                missing = sorted(set(ordered_sources) - set(previous_by_id))
+                extra = sorted(set(previous_by_id) - set(ordered_sources))
+                raise ValueError(
+                    "transition source is absent from prior POST inventory: "
+                    f"symbol={state.symbol}, date={state.trading_date}, "
+                    f"model={state.seller_model.value}, source={source_id}, "
+                    f"prior_cells={len(previous_by_id)}, arcs={len(ordered_sources)}, "
+                    f"cash={cash_dividend_per_share}, split={share_multiplier}, "
+                    f"missing={missing[:3]}, extra={extra[:3]}, "
+                    f"missing_dims={[codec.by_cell_id.get(value) for value in missing[:3]]}, "
+                    f"extra_dims={[codec.by_cell_id.get(value) for value in extra[:3]]}"
+                )
+            # v12 never infers a destination from a source id: economic-cost
+            # coordinates are state identity and can change on an action day.
+            destination_override_positions.append(position)
+            destination_override_cell_ids.append(codec.local_id(destination_id))
             retained_shares = source_cell[3] * retained_fraction
             if retained_shares != 0.0:
                 predicted[destination_id] = (
                     predicted.get(destination_id, 0.0) + retained_shares
                 )
 
-        sensitivity_codes = tuple(
-            SENSITIVITY_CODE[previous_by_id[source_id][2]]
-            for source_id in ordered_sources
-        )
-        retention_encoding, retention_values, retention_codes = _encode_retention(
-            ordered_fractions, sensitivity_codes
-        )
+        # v12 must be independently replayable without deriving sensitivity
+        # from a compact id.  Retention is therefore stored exactly, and every
+        # destination is explicit below.
+        retention_encoding = RETENTION_RAW
+        retention_values = list(ordered_fractions)
+        retention_codes = b""
         for cell_id, cell in current.items():
             delta = cell[3] - predicted.get(cell_id, 0.0)
             if delta != 0.0:
@@ -1673,7 +1674,7 @@ def _output_row(
         None if profile is None else profile["p10"],
         None if profile is None else profile["p50"],
         None if profile is None else profile["p90"],
-        None if profile is None else profile["peak"],
+        None if profile is None else profile["dominant_peak_today"],
         checkpoint_local_ids,
         checkpoint_shares,
         checkpoint_economic_bucket_ids,
@@ -1689,6 +1690,7 @@ def _output_row(
         adjustment_economic_bucket_ids,
         cash_dividend_per_share,
         share_multiplier,
+        list(action_provenance_ids),
         transition.fixed_pre_eligible_shares,
         transition.executed_sell_shares,
         transition.same_day_resale_shares,
@@ -1921,6 +1923,9 @@ def _run_symbol(
                         row.get("cash_per_share") or 0.0
                     ),
                     share_multiplier=float(row.get("share_multiplier") or 1.0),
+                    action_provenance_ids=parse_action_ids(
+                        row.get("corporate_action_ids")
+                    ),
                     force_checkpoint=(
                         model not in emitted_models
                         or emitted_day_count % CHECKPOINT_INTERVAL_DAYS == 0
@@ -2058,7 +2063,7 @@ def _read_terminal_snapshots(
     snapshots: dict[SellerModel, ChipSnapshotV2] = {}
     dates: set[date] = set()
     for row in table.to_pylist():
-        if row["storage_version"] != STORAGE_VERSION:
+        if row["storage_version"] not in {"chip-operator-log-v11", STORAGE_VERSION}:
             raise ValueError("terminal storage version mismatch")
         if row["model_version"] != MODEL_VERSION or row["grid_version"] != GRID_VERSION:
             raise ValueError("terminal model/grid version mismatch")
@@ -2072,8 +2077,7 @@ def _read_terminal_snapshots(
             raise ValueError("terminal state does not precede target year")
         dates.add(trading_date)
         cells = tuple(
-            InventoryCell(
-                cell_id=int(cell["cell_id"]),
+            InventoryCell.create(
                 cost_bucket_id=(
                     None
                     if cell["cost_bucket_id"] is None
@@ -2393,6 +2397,8 @@ def _run_bucket(
                 )
             )
         except Exception as error:
+            if os.environ.get("CYQ_RAISE_TASK_ERRORS") == "1":
+                raise
             failures.append(
                 {"symbol": symbol, "error": f"{type(error).__name__}: {error}"}
             )
@@ -2698,6 +2704,7 @@ def main() -> int:
     passed = sum(item["passed"] for item in results)
     total = sum(item["symbols"] for item in results)
     evidence = {
+        **semantic_fingerprint_fields(),
         "status": "PASS" if passed / max(total, 1) >= 0.95 else "FAIL",
         "year": args.year,
         "end_date": None if args.end_date is None else args.end_date.isoformat(),
@@ -2759,7 +2766,8 @@ def main() -> int:
         "terminal_glob": str(
             output_root / "terminal" / "bucket=*" / "*.parquet"
         ),
-        "cell_id_encoding": "uint32-cost-zigzag-holding-sensitivity-v1",
+        "cell_id_encoding": "uint64-hashed-cost-age-sensitivity-economic-v2",
+        "chip_state_schema_version": CHIP_STATE_SCHEMA_VERSION,
         "elapsed_seconds": round(time.perf_counter() - started, 3),
         "buckets": bucket_results,
     }

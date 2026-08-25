@@ -34,6 +34,10 @@ from cyq_game.chip import (
 )
 from cyq_game.chip.features import migration_mass, peaks_by_price, semantic_cost_intervals
 from cyq_game.chip.peaks import TemporalPeakTracker
+from cyq_game.chip.price_coordinate import (
+    canonical_action_component_id,
+    parse_action_ids,
+)
 from cyq_game.config import ChipConfig, load_config
 from cyq_game.data import ChipObservation
 from cyq_game.domain import Bar
@@ -488,6 +492,29 @@ def _process_bucket(
                     continue
                 trade_date = row["trade_date"]
                 cash_per_share = row["cash_per_share"]
+                action_sources = parse_action_ids(row.get("corporate_action_ids"))
+                action_snapshot_id = str(
+                    row.get("corporate_action_snapshot_id") or row["daily_snapshot_id"]
+                )
+                cash_value = float(cash_per_share or 0.0)
+                multiplier_value = float(row.get("share_multiplier") or 1.0)
+                if (
+                    peak_tracker is not None
+                    and (cash_value > 0.0 or multiplier_value != 1.0)
+                ):
+                    peak_tracker.apply_corporate_action(
+                        action_id=canonical_action_component_id(
+                            symbol=current_symbol,
+                            effective_date=trade_date,
+                            kind="DAILY_AGGREGATE",
+                            source_action_ids=action_sources,
+                            snapshot_id=action_snapshot_id,
+                            cash_per_share=cash_value,
+                            share_multiplier=multiplier_value,
+                        ),
+                        cash_per_share=cash_value,
+                        share_multiplier=multiplier_value,
+                    )
                 # Corporate-action priority is causal and matches the event
                 # replay engine: cash distribution first, then split.  For a
                 # combined event this yields (cost - cash) / split_ratio.
@@ -521,7 +548,19 @@ def _process_bucket(
                         if len(buffered) >= IO_BATCH_ROWS:
                             _flush(writer, buffered, schema)
                         continue
-                    state = apply_cash_dividend_to_state(state, dividend, trade_date)
+                    state = apply_cash_dividend_to_state(
+                        state,
+                        dividend,
+                        trade_date,
+                        action_id=canonical_action_component_id(
+                            symbol=current_symbol,
+                            effective_date=trade_date,
+                            kind="CASH_DIVIDEND",
+                            source_action_ids=action_sources,
+                            snapshot_id=action_snapshot_id,
+                            cash_per_share=dividend,
+                        ),
+                    )
                     if base_band is not None:
                         base_band = (
                             base_band[0] - dividend,
@@ -543,7 +582,19 @@ def _process_bucket(
                 multiplier = row["share_multiplier"]
                 if state is not None and multiplier is not None and float(multiplier) != 1.0:
                     split_ratio = float(multiplier)
-                    state = apply_split_to_state(state, split_ratio, trade_date)
+                    state = apply_split_to_state(
+                        state,
+                        split_ratio,
+                        trade_date,
+                        action_id=canonical_action_component_id(
+                            symbol=current_symbol,
+                            effective_date=trade_date,
+                            kind="SPLIT",
+                            source_action_ids=action_sources,
+                            snapshot_id=action_snapshot_id,
+                            share_multiplier=split_ratio,
+                        ),
+                    )
                     if base_band is not None:
                         base_band = (
                             base_band[0] / split_ratio,
