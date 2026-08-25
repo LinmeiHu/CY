@@ -64,11 +64,16 @@ def require_active_semantic_epoch(
 ) -> None:
     """Reject every artifact not explicitly produced under this semantic epoch."""
 
-    actual = manifest.get("semantic_epoch")
-    if actual != SEMANTIC_EPOCH:
+    expected = semantic_fingerprint_fields()
+    mismatches = {
+        field: (wanted, manifest.get(field))
+        for field, wanted in expected.items()
+        if manifest.get(field) != wanted
+    }
+    if mismatches:
         raise SemanticContractError(
-            f"{artifact_name} semantic epoch mismatch: "
-            f"expected={SEMANTIC_EPOCH}, actual={actual!r}; rebuild from raw inputs"
+            f"{artifact_name} semantic fingerprint mismatch: {mismatches}; "
+            "rebuild from raw inputs"
         )
 
 

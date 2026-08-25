@@ -41,13 +41,14 @@ from cyq_game.chip.price_coordinate import (
 from cyq_game.config import ChipConfig, load_config
 from cyq_game.data import ChipObservation
 from cyq_game.domain import Bar
+from cyq_game.strategy.semantic_contract import semantic_fingerprint_fields
 
 ROOT = Path(__file__).resolve().parents[1]
 SHANGHAI = ZoneInfo("Asia/Shanghai")
 # v1/v3 materializations are immutable historical artifacts.  The cash-rebased
 # versions explicitly encode corporate-action state semantics in their version.
-STATE_VERSION = "chip-state-features-v2-cash-rebased"
-SEMANTIC_STATE_VERSION = "chip-state-features-semantic-v4-cash-rebased"
+STATE_VERSION = "chip-state-features-v5-canonical-peak"
+SEMANTIC_STATE_VERSION = "chip-state-features-semantic-v5-canonical-peak"
 # A larger batch materially reduces Arrow conversion and Parquet row-group
 # overhead.  Ten workers still remain comfortably below the host's memory
 # capacity at this size.
@@ -1060,6 +1061,7 @@ def main() -> int:
     config_hash, code_hash = _fingerprints(args.config)
     meta = {"config_sha256": config_hash, "code_sha256": code_hash}
     fingerprint = {
+        **semantic_fingerprint_fields(),
         **meta,
         "state_version": state_version,
         "daily": args.daily,

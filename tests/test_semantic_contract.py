@@ -33,6 +33,15 @@ def test_old_artifact_without_semantic_epoch_is_invalid() -> None:
         require_active_semantic_epoch({}, artifact_name="legacy panel")
 
 
+def test_any_semantic_fingerprint_drift_invalidates_artifact() -> None:
+    fields = semantic_fingerprint_fields()
+    for name in fields:
+        drifted = dict(fields)
+        drifted[name] = "legacy"
+        with pytest.raises(SemanticContractError, match="fingerprint mismatch"):
+            require_active_semantic_epoch(drifted, artifact_name="derived")
+
+
 def test_semantic_fingerprint_is_complete_and_self_consistent() -> None:
     fields = semantic_fingerprint_fields()
 
