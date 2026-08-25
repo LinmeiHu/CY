@@ -10,14 +10,11 @@ from statistics import median
 from typing import Any
 
 from cyq_game.chip.migration_v2 import economic_break_even_for_bucket
+from cyq_game.chip.peaks import detect_canonical_peaks
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
     PersistedChipLineageResolver,
 )
-
-_PEAK_KERNEL = (1.0, 4.0, 6.0, 4.0, 1.0)
-_PEAK_OFFSETS = (-2, -1, 0, 1, 2)
-_KERNEL_TOTAL = math.fsum(_PEAK_KERNEL)
 
 
 @dataclass(frozen=True)
@@ -85,27 +82,24 @@ def semantic_distribution_metrics_from_bucket_mass(
         quantile(probability) for probability in (0.05, 0.15, 0.85, 0.95)
     )
 
-    def smoothed(bucket: int) -> float:
-        return math.fsum(
-            weight * combined.get(bucket + offset, 0.0)
-            for offset, weight in zip(_PEAK_OFFSETS, _PEAK_KERNEL, strict=True)
-        ) / (_KERNEL_TOTAL * total)
-
-    local_peaks = tuple(
-        bucket
-        for bucket in buckets
-        if smoothed(bucket) >= smoothed(bucket - 1)
-        and smoothed(bucket) > smoothed(bucket + 1)
+    canonical_peaks = detect_canonical_peaks(
+        combined,
+        price_for_bucket=price,
+        as_of=date.min,
     )
-    lower_candidates = tuple(bucket for bucket in local_peaks if price(bucket) <= close)
-    upper_candidates = tuple(bucket for bucket in local_peaks if price(bucket) > close)
-    lower_bucket = (
-        max(lower_candidates, key=lambda bucket: (smoothed(bucket), bucket))
+    lower_candidates = tuple(
+        peak for peak in canonical_peaks if peak.center_price <= close
+    )
+    upper_candidates = tuple(
+        peak for peak in canonical_peaks if peak.center_price > close
+    )
+    lower_peak = (
+        max(lower_candidates, key=lambda peak: (peak.prominence, peak.center_price))
         if lower_candidates
         else None
     )
-    upper_bucket = (
-        max(upper_candidates, key=lambda bucket: (smoothed(bucket), -bucket))
+    upper_peak = (
+        max(upper_candidates, key=lambda peak: (peak.prominence, -peak.center_price))
         if upper_candidates
         else None
     )
@@ -113,16 +107,19 @@ def semantic_distribution_metrics_from_bucket_mass(
     valley_strength: float | None = None
     valley_depth: float | None = None
     if (
-        lower_bucket is not None
-        and upper_bucket is not None
-        and upper_bucket - lower_bucket >= 2
+        lower_peak is not None
+        and upper_peak is not None
+        and upper_peak.center_bucket - lower_peak.center_bucket >= 2
     ):
         valley_bucket = min(
-            range(lower_bucket + 1, upper_bucket),
-            key=lambda bucket: (smoothed(bucket), bucket),
+            range(lower_peak.center_bucket + 1, upper_peak.center_bucket),
+            key=lambda bucket: (
+                combined.get(bucket, 0.0) / total,
+                bucket,
+            ),
         )
-        valley_strength = smoothed(valley_bucket)
-        weaker_peak = min(smoothed(lower_bucket), smoothed(upper_bucket))
+        valley_strength = combined.get(valley_bucket, 0.0) / total
+        weaker_peak = min(lower_peak.prominence, upper_peak.prominence)
         if weaker_peak > 0:
             valley_depth = max(0.0, min(1.0, 1.0 - valley_strength / weaker_peak))
 
@@ -142,14 +139,14 @@ def semantic_distribution_metrics_from_bucket_mass(
         i90_width_fraction=(p95 - p05) / close,
         profit_ratio=profit_ratio,
         overhang_mass=1.0 - profit_ratio,
-        lower_peak_center=None if lower_bucket is None else price(lower_bucket),
-        lower_peak_strength=None if lower_bucket is None else smoothed(lower_bucket),
-        upper_peak_center=None if upper_bucket is None else price(upper_bucket),
-        upper_peak_strength=None if upper_bucket is None else smoothed(upper_bucket),
+        lower_peak_center=None if lower_peak is None else lower_peak.center_price,
+        lower_peak_strength=None if lower_peak is None else lower_peak.prominence,
+        upper_peak_center=None if upper_peak is None else upper_peak.center_price,
+        upper_peak_strength=None if upper_peak is None else upper_peak.prominence,
         valley_center=None if valley_bucket is None else price(valley_bucket),
         valley_strength=valley_strength,
         valley_depth=valley_depth,
-        price_ordered_peak_count=len(local_peaks),
+        price_ordered_peak_count=len(canonical_peaks),
         known_cost_mass=total,
     )
 

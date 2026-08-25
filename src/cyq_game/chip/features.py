@@ -6,20 +6,12 @@ import numpy as np
 from numpy.typing import NDArray
 
 from cyq_game.chip.core import ChipState
+from cyq_game.chip.peaks import CanonicalPeak, detect_canonical_peaks
 
 FloatArray = NDArray[np.float64]
 
 
-@dataclass(frozen=True)
-class ChipPeak:
-    center_price: float
-    mass: float
-    width_pct: float
-    prominence: float
-    age_mean: float | None
-    formation_date: str
-    lower_price: float | None = None
-    upper_price: float | None = None
+ChipPeak = CanonicalPeak
 
 
 @dataclass(frozen=True)
@@ -263,79 +255,32 @@ def detect_peaks(
     *,
     cumulative: FloatArray | None = None,
 ) -> list[ChipPeak]:
-    smooth = _gaussian_smooth(state.mass, sigma)
-    # Peaks commonly overlap, so repeatedly summing every peak slice turns the
-    # same price-age cells into duplicated work.  Prefix the marginal mass and
-    # age-weighted mass once, then answer every peak interval in O(1).
-    mass_prefix = np.empty(len(state.mass) + 1, dtype=np.float64)
-    mass_prefix[0] = 0.0
-    mass_prefix[1:] = np.cumsum(state.mass) if cumulative is None else cumulative
-    age_weight_prefix: FloatArray | None = None
+    """Compatibility wrapper around the sole canonical detector.
+
+    ``sigma`` and ``min_prominence`` are retained only so older callers fail
+    with a precise migration error instead of silently selecting a different
+    peak definition.
+    """
+    del cumulative
+    if sigma != 1.5 or min_prominence != 0.03:
+        raise ValueError("peak tuning was removed; use the canonical peak definition")
+    age_weight_by_bucket: dict[int, float] | None = None
     if state.age_mass is not None:
         ages = np.arange(state.age_mass.shape[1], dtype=np.float64)
-        age_weight_prefix = np.empty(len(state.mass) + 1, dtype=np.float64)
-        age_weight_prefix[0] = 0.0
-        # macOS Accelerate emits spurious divide/overflow warnings for this
-        # finite matrix-vector product.  The explicit contraction is
-        # numerically equivalent and keeps real non-finite inputs observable.
         age_weighted_mass = np.einsum(
             "ij,j->i", state.age_mass, ages, optimize=False
         )
-        age_weight_prefix[1:] = np.cumsum(age_weighted_mass)
-    left_minima = np.minimum.accumulate(smooth)
-    right_minima = np.minimum.accumulate(smooth[::-1])[::-1]
-    peaks: list[ChipPeak] = []
-    candidate_indexes = np.flatnonzero(
-        (smooth[1:-1] > smooth[:-2]) & (smooth[1:-1] >= smooth[2:])
-    ) + 1
-    positions = np.arange(len(smooth))
-    half_heights = smooth[candidate_indexes] / 2.0
-    below_half_height = smooth[None, :] < half_heights[:, None]
-    left_bounds = (
-        np.where(
-            below_half_height & (positions[None, :] < candidate_indexes[:, None]),
-            positions[None, :],
-            -1,
-        ).max(axis=1)
-        + 1
-    )
-    right_bounds = (
-        np.where(
-            below_half_height & (positions[None, :] > candidate_indexes[:, None]),
-            positions[None, :],
-            len(smooth),
-        ).min(axis=1)
-        - 1
-    )
-    for index_value, left_value, right_value in zip(
-        candidate_indexes, left_bounds, right_bounds, strict=True
-    ):
-        index = int(index_value)
-        left_min = float(left_minima[index])
-        right_min = float(right_minima[index])
-        prominence = float(smooth[index] - max(left_min, right_min))
-        left = int(left_value)
-        right = int(right_value)
-        peak_mass = float(mass_prefix[right + 1] - mass_prefix[left])
-        if peak_mass < min_prominence and prominence < min_prominence:
-            continue
-        age_mean: float | None = None
-        if age_weight_prefix is not None:
-            local_age_weight = age_weight_prefix[right + 1] - age_weight_prefix[left]
-            age_mean = float(local_age_weight / max(peak_mass, 1e-12))
-        peaks.append(
-            ChipPeak(
-                center_price=float(state.grid.prices[index]),
-                mass=peak_mass,
-                width_pct=float(state.grid.prices[right] / state.grid.prices[left] - 1.0),
-                prominence=prominence,
-                age_mean=age_mean,
-                formation_date=state.as_of.isoformat(),
-                lower_price=float(state.grid.prices[left]),
-                upper_price=float(state.grid.prices[right]),
-            )
+        age_weight_by_bucket = {
+            index: float(value) for index, value in enumerate(age_weighted_mass)
+        }
+    return list(
+        detect_canonical_peaks(
+            enumerate(float(value) for value in state.mass),
+            price_for_bucket=lambda bucket: float(state.grid.prices[bucket]),
+            as_of=state.as_of,
+            age_weight_by_bucket=age_weight_by_bucket,
         )
-    return sorted(peaks, key=lambda peak: peak.mass, reverse=True)
+    )
 
 
 def _cdf_values(

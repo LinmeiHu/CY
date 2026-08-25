@@ -33,6 +33,7 @@ from cyq_game.chip import (
     apply_split_to_state,
 )
 from cyq_game.chip.features import migration_mass, peaks_by_price, semantic_cost_intervals
+from cyq_game.chip.peaks import TemporalPeakTracker
 from cyq_game.config import ChipConfig, load_config
 from cyq_game.data import ChipObservation
 from cyq_game.domain import Bar
@@ -101,6 +102,21 @@ OUTPUT_SCHEMA = pa.schema(
         ("concentration_20", pa.float64()),
         ("base_retention", pa.float64()),
         ("peak_count", pa.int32()),
+        ("dominant_peak_today", pa.float64()),
+        ("dominant_peak_ambiguous", pa.bool_()),
+        ("tracked_base_peak", pa.float64()),
+        ("peak_track_id", pa.string()),
+        ("peak_track_age", pa.int32()),
+        ("peak_track_band_lower", pa.float64()),
+        ("peak_track_band_upper", pa.float64()),
+        ("peak_track_mass", pa.float64()),
+        ("peak_track_prominence", pa.float64()),
+        ("peak_track_ambiguous", pa.bool_()),
+        ("peak_track_split", pa.bool_()),
+        ("peak_track_merge", pa.bool_()),
+        ("peak_track_lost", pa.bool_()),
+        ("peak_fail_closed_reason", pa.string()),
+        ("peak_definition_version", pa.string()),
         ("peaks_json", pa.string()),
         ("priors_json", pa.string()),
         ("opening_30m_return", pa.float64()),
@@ -128,11 +144,6 @@ SEMANTIC_OUTPUT_SCHEMA = pa.schema(
         pa.field("i70_base_retention", pa.float64()),
         pa.field("migration_mass", pa.float64()),
         pa.field("average_cost_delta", pa.float64()),
-        pa.field("main_peak_center", pa.float64()),
-        pa.field("main_peak_mass", pa.float64()),
-        pa.field("main_peak_lower", pa.float64()),
-        pa.field("main_peak_upper", pa.float64()),
-        pa.field("main_peak_prominence", pa.float64()),
         pa.field("upper_peak_center", pa.float64()),
         pa.field("upper_peak_mass", pa.float64()),
         pa.field("upper_peak_lower", pa.float64()),
@@ -396,6 +407,7 @@ def _process_bucket(
     i90_band: tuple[float, float, float] | None = None
     i70_band: tuple[float, float, float] | None = None
     previous_state = None
+    peak_tracker: TemporalPeakTracker | None = None
     buffered: list[dict[str, Any]] = []
     priors_json_cache: dict[tuple[str, ...], str] = {(): "[]"}
     row_count = 0
@@ -414,6 +426,9 @@ def _process_bucket(
                     i90_band = None
                     i70_band = None
                     previous_state = None
+                    peak_tracker = TemporalPeakTracker(
+                        symbol=current_symbol, model=config.engine
+                    )
                 strict_input_valid = all(
                     bool(row[name])
                     for name in (
@@ -451,6 +466,9 @@ def _process_bucket(
                     i90_band = None
                     i70_band = None
                     previous_state = None
+                    peak_tracker = TemporalPeakTracker(
+                        symbol=current_symbol, model=config.engine
+                    )
                     invalid_reason = (
                         row["daily_invalid_reasons"] or "CHIP_INPUT_INVALID"
                     )
@@ -486,6 +504,9 @@ def _process_bucket(
                         i90_band = None
                         i70_band = None
                         previous_state = None
+                        peak_tracker = TemporalPeakTracker(
+                            symbol=current_symbol, model=config.engine
+                        )
                         buffered.append(
                             _empty_output(
                                 row,
@@ -597,6 +618,11 @@ def _process_bucket(
                 features = transition.features
                 if features is None:
                     raise AssertionError("feature generation unexpectedly disabled")
+                if peak_tracker is None:
+                    raise AssertionError("peak tracker was not initialized")
+                peak_tracking = peak_tracker.update(
+                    as_of=trade_date, candidates=features.peaks
+                )
                 priors_json = priors_json_cache.get(features.priors)
                 if priors_json is None:
                     priors_json = json.dumps(features.priors, separators=(",", ":"))
@@ -657,12 +683,13 @@ def _process_bucket(
                     i90_retained = _retention(state, i90_band)
                     i70_retained = _retention(state, i70_band)
                 price_peaks = peaks_by_price(features.peaks)
-                main_peak = max(features.peaks, key=lambda peak: peak.mass, default=None)
+                dominant_peak = peak_tracking.dominant_peak_today
+                tracked_base_peak = peak_tracking.tracked_base_peak
                 upper_peaks = [
                     peak
                     for peak in features.peaks
-                    if main_peak is not None
-                    and peak.center_price > main_peak.center_price
+                    if dominant_peak is not None
+                    and peak.center_price > dominant_peak.center_price
                 ]
                 upper_peak = max(
                     upper_peaks,
@@ -765,17 +792,73 @@ def _process_bucket(
                     "concentration_20": features.concentration_20,
                     "base_retention": i90_retained if semantic_v3 else retained,
                     "peak_count": len(features.peaks),
+                    "dominant_peak_today": (
+                        dominant_peak.center_price if dominant_peak is not None else None
+                    ),
+                    "dominant_peak_ambiguous": (
+                        True if dominant_peak is None else dominant_peak.ambiguity
+                    ),
+                    "tracked_base_peak": (
+                        tracked_base_peak.center_price
+                        if tracked_base_peak is not None
+                        else None
+                    ),
+                    "peak_track_id": (
+                        tracked_base_peak.peak_track_id
+                        if tracked_base_peak is not None
+                        else None
+                    ),
+                    "peak_track_age": (
+                        tracked_base_peak.age if tracked_base_peak is not None else None
+                    ),
+                    "peak_track_band_lower": (
+                        tracked_base_peak.band[0]
+                        if tracked_base_peak is not None
+                        else None
+                    ),
+                    "peak_track_band_upper": (
+                        tracked_base_peak.band[1]
+                        if tracked_base_peak is not None
+                        else None
+                    ),
+                    "peak_track_mass": (
+                        tracked_base_peak.mass if tracked_base_peak is not None else None
+                    ),
+                    "peak_track_prominence": (
+                        tracked_base_peak.prominence
+                        if tracked_base_peak is not None
+                        else None
+                    ),
+                    "peak_track_ambiguous": tracked_base_peak is None,
+                    "peak_track_split": (
+                        tracked_base_peak.split if tracked_base_peak is not None else False
+                    ),
+                    "peak_track_merge": (
+                        tracked_base_peak.merge if tracked_base_peak is not None else False
+                    ),
+                    "peak_track_lost": tracked_base_peak is None,
+                    "peak_fail_closed_reason": peak_tracking.fail_closed_reason,
+                    "peak_definition_version": (
+                        dominant_peak.definition_version
+                        if dominant_peak is not None
+                        else None
+                    ),
                     "peaks_json": json.dumps(
                         [
                             {
+                                "peak_track_id": peak.peak_track_id,
+                                "age": peak.age,
+                                "band": peak.band,
                                 "center_price": peak.center_price,
                                 "mass": peak.mass,
-                                "width_pct": peak.width_pct,
                                 "prominence": peak.prominence,
-                                "age_mean": peak.age_mean,
-                                "formation_date": peak.formation_date,
+                                "ambiguity": peak.ambiguity,
+                                "split": peak.split,
+                                "merge": peak.merge,
+                                "lost": peak.lost,
+                                "definition_version": peak.definition_version,
                             }
-                            for peak in features.peaks
+                            for peak in peak_tracking.peaks
                         ],
                         separators=(",", ":"),
                     ),
@@ -812,19 +895,6 @@ def _process_bucket(
                                 state.average_cost - previous_state.average_cost
                                 if previous_state is not None
                                 else None
-                            ),
-                            "main_peak_center": (
-                                main_peak.center_price if main_peak is not None else None
-                            ),
-                            "main_peak_mass": main_peak.mass if main_peak is not None else None,
-                            "main_peak_lower": (
-                                main_peak.lower_price if main_peak is not None else None
-                            ),
-                            "main_peak_upper": (
-                                main_peak.upper_price if main_peak is not None else None
-                            ),
-                            "main_peak_prominence": (
-                                main_peak.prominence if main_peak is not None else None
                             ),
                             "upper_peak_center": (
                                 upper_peak.center_price if upper_peak is not None else None

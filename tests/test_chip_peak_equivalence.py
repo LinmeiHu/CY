@@ -1,105 +1,107 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 
 import numpy as np
+import pytest
 
 from cyq_game.chip.core import ChipState, LogPriceGrid
-from cyq_game.chip.features import ChipPeak, _gaussian_smooth, detect_peaks
+from cyq_game.chip.features import detect_peaks
+from cyq_game.chip.peaks import (
+    CanonicalPeak,
+    TemporalPeakTracker,
+    detect_canonical_peaks,
+)
+from cyq_game.strategy.semantic_contract import PEAK_DEFINITION_VERSION
 
 
-def _reference_detect_peaks(
-    state: ChipState,
-    sigma: float,
-    min_prominence: float,
-) -> list[ChipPeak]:
-    smooth = _gaussian_smooth(state.mass, sigma)
-    left_minima = np.minimum.accumulate(smooth)
-    right_minima = np.minimum.accumulate(smooth[::-1])[::-1]
-    peaks: list[ChipPeak] = []
-    for index in range(1, len(smooth) - 1):
-        if not (smooth[index] > smooth[index - 1] and smooth[index] >= smooth[index + 1]):
-            continue
-        prominence = float(
-            smooth[index] - max(float(left_minima[index]), float(right_minima[index]))
-        )
-        left = index
-        right = index
-        half_height = smooth[index] / 2.0
-        while left > 0 and smooth[left - 1] >= half_height:
-            left -= 1
-        while right < len(smooth) - 1 and smooth[right + 1] >= half_height:
-            right += 1
-        peak_mass = float(state.mass[left : right + 1].sum())
-        if peak_mass < min_prominence and prominence < min_prominence:
-            continue
-        age_mean: float | None = None
-        if state.age_mass is not None:
-            local = state.age_mass[left : right + 1]
-            age_mean = float(
-                np.dot(local.sum(axis=0), np.arange(local.shape[1]))
-                / max(local.sum(), 1e-12)
-            )
-        peaks.append(
-            ChipPeak(
-                center_price=float(state.grid.prices[index]),
-                mass=peak_mass,
-                width_pct=float(state.grid.prices[right] / state.grid.prices[left] - 1.0),
-                prominence=prominence,
-                age_mean=age_mean,
-                formation_date=state.as_of.isoformat(),
-            )
-        )
-    return sorted(peaks, key=lambda peak: peak.mass, reverse=True)
+def _candidate(
+    center: int,
+    mass: float,
+    lower: int | None = None,
+    upper: int | None = None,
+) -> CanonicalPeak:
+    lower = center - 1 if lower is None else lower
+    upper = center + 1 if upper is None else upper
+    return CanonicalPeak(
+        center_bucket=center,
+        center_price=float(center),
+        lower_bucket=lower,
+        lower_price=float(lower),
+        upper_bucket=upper,
+        upper_price=float(upper),
+        mass=mass,
+        prominence=mass / 10.0,
+        width_pct=upper / lower - 1.0,
+        age_mean=None,
+        formation_date="2026-08-25",
+    )
 
 
-def test_vectorized_peak_boundaries_match_reference() -> None:
-    rng = np.random.default_rng(20260821)
+def test_dense_features_delegate_to_canonical_price_ordered_detector() -> None:
     grid = LogPriceGrid.around(5.0, 25.0, 0.005)
-    for with_cohorts in (False, True):
-        for sigma in (0.0, 0.8, 1.5, 2.5):
-            raw = rng.random(len(grid.prices)) ** 4
-            mass = raw / raw.sum()
-            age_mass = None
-            if with_cohorts:
-                shares = rng.dirichlet(np.ones(13), size=len(mass))
-                age_mass = mass[:, None] * shares
-            state = ChipState(
-                grid=grid,
-                mass=mass,
-                as_of=date(2026, 8, 21),
-                engine="test",
-                quality=1.0,
-                age_mass=age_mass,
-            )
-            actual = detect_peaks(state, sigma, 0.01)
-            expected = _reference_detect_peaks(state, sigma, 0.01)
-            assert len(actual) == len(expected)
-            for actual_peak, expected_peak in zip(actual, expected, strict=True):
-                assert actual_peak.formation_date == expected_peak.formation_date
-                np.testing.assert_allclose(
-                    [
-                        actual_peak.center_price,
-                        actual_peak.mass,
-                        actual_peak.width_pct,
-                        actual_peak.prominence,
-                    ],
-                    [
-                        expected_peak.center_price,
-                        expected_peak.mass,
-                        expected_peak.width_pct,
-                        expected_peak.prominence,
-                    ],
-                    rtol=1e-13,
-                    atol=1e-15,
-                )
-                if expected_peak.age_mean is None:
-                    assert actual_peak.age_mean is None
-                else:
-                    assert actual_peak.age_mean is not None
-                    np.testing.assert_allclose(
-                        actual_peak.age_mean,
-                        expected_peak.age_mean,
-                        rtol=1e-13,
-                        atol=1e-15,
-                    )
+    raw = np.zeros(len(grid.prices), dtype=np.float64)
+    raw[len(raw) // 3] = 0.4
+    raw[2 * len(raw) // 3] = 0.6
+    state = ChipState(
+        grid=grid,
+        mass=raw,
+        as_of=date(2026, 8, 25),
+        engine="test",
+        quality=1.0,
+    )
+    dense = detect_peaks(state)
+    canonical = detect_canonical_peaks(
+        enumerate(float(value) for value in raw),
+        price_for_bucket=lambda bucket: float(grid.prices[bucket]),
+        as_of=state.as_of,
+    )
+    assert dense == list(canonical)
+    assert [peak.center_price for peak in dense] == sorted(peak.center_price for peak in dense)
+    assert all(peak.definition_version == PEAK_DEFINITION_VERSION for peak in dense)
+
+
+def test_peak_tuning_cannot_silently_create_an_incompatible_definition() -> None:
+    grid = LogPriceGrid.around(5.0, 25.0, 0.005)
+    mass = np.zeros(len(grid.prices), dtype=np.float64)
+    mass[len(mass) // 2] = 1.0
+    state = ChipState(grid=grid, mass=mass, as_of=date.today(), engine="test", quality=1.0)
+    with pytest.raises(ValueError, match="canonical"):
+        detect_peaks(state, sigma=0.8)
+
+
+def test_dominant_mass_switch_does_not_change_tracked_base_identity() -> None:
+    tracker = TemporalPeakTracker(symbol="000001.SZ", model="fifo")
+    first = tracker.update(
+        as_of=date(2026, 8, 24),
+        candidates=(_candidate(10, 0.60), _candidate(20, 0.40)),
+    )
+    assert first.tracked_base_peak is not None
+    base_id = first.tracked_base_peak.peak_track_id
+
+    second = tracker.update(
+        as_of=date(2026, 8, 25),
+        candidates=(_candidate(10, 0.45), _candidate(20, 0.55)),
+    )
+    assert second.dominant_peak_today is not None
+    assert second.tracked_base_peak is not None
+    assert second.dominant_peak_today.center_price == 20.0
+    assert second.tracked_base_peak.center_price == 10.0
+    assert second.tracked_base_peak.peak_track_id == base_id
+
+
+def test_peak_split_and_missing_base_fail_closed() -> None:
+    tracker = TemporalPeakTracker(symbol="000001.SZ", model="fifo")
+    first = tracker.update(as_of=date(2026, 8, 23), candidates=(_candidate(15, 0.8, 10, 20),))
+    assert first.tracked_base_peak is not None
+    split = tracker.update(
+        as_of=date(2026, 8, 24),
+        candidates=(_candidate(13, 0.4, 10, 15), _candidate(17, 0.4, 15, 20)),
+    )
+    assert split.tracked_base_peak is None
+    assert split.fail_closed_reason == "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
+
+    missing = tracker.update(as_of=date(2026, 8, 24) + timedelta(days=1), candidates=())
+    assert missing.dominant_peak_today is None
+    assert missing.tracked_base_peak is None
+    assert missing.fail_closed_reason == "PEAK_MISSING"

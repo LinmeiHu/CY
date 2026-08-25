@@ -8,9 +8,11 @@ from pathlib import Path
 from statistics import median
 from typing import Any
 
+from cyq_game.chip.peaks import TemporalPeakTracker
 from cyq_game.strategy.chip_lineage import PersistedChipLineageResolver
 from cyq_game.strategy.exact_chip_features import (
     DistributionMetrics,
+    _ensemble_peak_tracking,
     distribution_metrics_from_bucket_mass,
     exact_research_invalid_reason,
 )
@@ -33,7 +35,7 @@ _SEMANTIC_OPTIONAL = frozenset(
 _EXACT_FIELDS = tuple(
     name
     for name in DistributionMetrics.__dataclass_fields__
-    if name not in {"profit_ratio", "peak_count"}
+    if name not in {"profit_ratio", "peak_count", "canonical_peaks"}
 )
 
 
@@ -49,6 +51,7 @@ def build_current_chip_measurement_features(
         raise ValueError("current chip measurements require a valid 2026-06-17+ range")
     resolver = PersistedChipLineageResolver(root)
     by_date: dict[date, list[dict[str, Any]]] = {}
+    trackers: dict[str, TemporalPeakTracker] = {}
     for item in resolver.iter_daily_bucket_mass(symbol, start, end):
         close = close_by_date.get(item.trade_date)
         if close is None:
@@ -56,19 +59,25 @@ def build_current_chip_measurement_features(
         semantic = asdict(
             semantic_distribution_metrics_from_bucket_mass(item.bucket_mass, close)
         )
-        exact = asdict(distribution_metrics_from_bucket_mass(item.bucket_mass, close))
+        exact_metrics = distribution_metrics_from_bucket_mass(item.bucket_mass, close)
+        seller_model = item.seller_model.value
+        peak_tracking = trackers.setdefault(
+            seller_model, TemporalPeakTracker(symbol=symbol, model=seller_model)
+        ).update(as_of=item.trade_date, candidates=exact_metrics.canonical_peaks)
+        exact = asdict(exact_metrics)
+        exact.pop("canonical_peaks")
         exact.update(
             average_cost=item.average_cost,
             cost_p10=item.cost_p10,
             cost_p50=item.cost_p50,
             cost_p90=item.cost_p90,
-            main_peak=item.main_peak,
         )
         by_date.setdefault(item.trade_date, []).append(
             {
                 **semantic,
                 **{f"exact_{key}": value for key, value in exact.items()},
-                "seller_model": item.seller_model.value,
+                "seller_model": seller_model,
+                "peak_tracking": peak_tracking,
                 "source_research_valid": item.research_valid,
                 "known_cost_fraction": (
                     1.0 - item.unknown_mass / item.free_float_shares
@@ -116,11 +125,16 @@ def build_current_chip_measurement_features(
             aggregate[f"model_spread_{field}"] = (
                 max(known) - min(known) if len(known) == 3 else None
             )
-        for field in ("average_cost", "cost_p50", "cost_p90", "main_peak"):
-            values = [float(model[f"exact_{field}"]) for model in models]
-            aggregate[f"model_min_{field}"] = min(values)
-            aggregate[f"model_max_{field}"] = max(values)
-            aggregate[f"model_spread_{field}"] = max(values) - min(values)
+        for field in ("average_cost", "cost_p50", "cost_p90", "dominant_peak_today"):
+            raw_values = [model[f"exact_{field}"] for model in models]
+            values = [float(value) for value in raw_values if value is not None]
+            complete = len(values) == 3
+            aggregate[f"model_min_{field}"] = min(values) if complete else None
+            aggregate[f"model_max_{field}"] = max(values) if complete else None
+            aggregate[f"model_spread_{field}"] = (
+                max(values) - min(values) if complete else None
+            )
+        aggregate.update(_ensemble_peak_tracking(models))
         source_valid = all(bool(model["source_research_valid"]) for model in models)
         cbw_valid = aggregate["cbw"] is not None
         exact_invalid = exact_research_invalid_reason(
