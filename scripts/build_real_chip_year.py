@@ -48,6 +48,7 @@ from cyq_game.chip.migration_v2 import (  # noqa: E402
     prepare_minute_path,
 )
 from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
+from cyq_game.chip._migration_kernel import stable_sum  # noqa: E402
 from cyq_game.chip.operator_index import build_operator_symbol_index  # noqa: E402
 from cyq_game.chip.peaks import (  # noqa: E402
     detect_canonical_peaks,
@@ -1482,7 +1483,7 @@ def _cap_prepared_minute_path(
             (bucket, price, volume * scale)
             for bucket, price, volume in path.bucket_purchases
         ),
-        total_volume=math.fsum(scaled_volumes.tolist()),
+        total_volume=stable_sum(scaled_volumes),
         volumes=scaled_volumes,
         purchase_volumes=scaled_purchase_volumes,
     )

@@ -19,7 +19,11 @@ from typing import cast
 import numpy as np
 import numpy.typing as npt
 
-from cyq_game.chip._migration_kernel import disposition_path_no_saturation
+from cyq_game.chip._migration_kernel import (
+    disposition_path_no_saturation,
+    stable_sum,
+    stable_weighted_sum,
+)
 from cyq_game.chip.price_coordinate import rebase_economic_price
 from cyq_game.chip.state_v2 import (
     ChipSnapshotV2,
@@ -954,16 +958,16 @@ def _compact_packed_lots_at_cap(
             continue
         first = int(members[0])
         shares = lots.shares[members]
-        combined_shares = math.fsum(shares.tolist())
-        lots.initialization_prior_units[first] = math.fsum(
-            lots.initialization_prior_units[members].tolist()
+        combined_shares = stable_sum(shares)
+        lots.initialization_prior_units[first] = stable_sum(
+            lots.initialization_prior_units[members]
         )
         if int(lots.cost_bucket_ids[first]) != _UNKNOWN_BUCKET_ID:
             lots.acquisition_costs[first] = (
-                math.fsum((shares * lots.acquisition_costs[members]).tolist()) / combined_shares
+                stable_weighted_sum(shares, lots.acquisition_costs[members]) / combined_shares
             )
             lots.economic_break_evens[first] = (
-                math.fsum((shares * lots.economic_break_evens[members]).tolist()) / combined_shares
+                stable_weighted_sum(shares, lots.economic_break_evens[members]) / combined_shares
             )
         lots.shares[first] = combined_shares
         keep[members[1:]] = False
@@ -1010,17 +1014,17 @@ def _compact_packed_lots_by_dimensions(
             members = ordered[start:stop]
             first = int(members[0])
             member_shares = lots._shares[members]
-            combined_shares = math.fsum(member_shares.tolist())
-            lots._initialization_prior_units[first] = math.fsum(
-                lots._initialization_prior_units[members].tolist()
+            combined_shares = stable_sum(member_shares)
+            lots._initialization_prior_units[first] = stable_sum(
+                lots._initialization_prior_units[members]
             )
             if int(lots._cost_bucket_ids[first]) != _UNKNOWN_BUCKET_ID:
                 lots._acquisition_costs[first] = (
-                    math.fsum((member_shares * lots._acquisition_costs[members]).tolist())
+                    stable_weighted_sum(member_shares, lots._acquisition_costs[members])
                     / combined_shares
                 )
                 lots._economic_break_evens[first] = (
-                    math.fsum((member_shares * lots._economic_break_evens[members]).tolist())
+                    stable_weighted_sum(member_shares, lots._economic_break_evens[members])
                     / combined_shares
                 )
             lots._shares[first] = combined_shares
