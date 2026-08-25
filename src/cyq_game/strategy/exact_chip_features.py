@@ -20,6 +20,7 @@ from cyq_game.chip.profile_metrics import (
     DistributionMetrics,
     compute_distribution_metrics,
 )
+from cyq_game.chip.peaks import PeakTrackingResult
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
     PersistedChipLineageResolver,
@@ -48,6 +49,77 @@ def distribution_metrics_from_bucket_mass(
     """Backward-compatible public wrapper around the canonical implementation."""
 
     return compute_distribution_metrics(bucket_mass, close, grid=_OPERATOR_GRID)
+
+
+def _ensemble_peak_tracking(models: list[dict[str, Any]]) -> dict[str, Any]:
+    tracking = [model["peak_tracking"] for model in models]
+    if not all(isinstance(value, PeakTrackingResult) for value in tracking):
+        raise TypeError("exact ensemble peak tracking result is invalid")
+    bases = [value.tracked_base_peak for value in tracking]
+    dominants = [value.dominant_peak_today for value in tracking]
+    base_valid = all(base is not None and not base.ambiguity for base in bases)
+    dominant_valid = all(peak is not None for peak in dominants)
+    base_values = [base for base in bases if base is not None]
+    dominant_values = [peak for peak in dominants if peak is not None]
+    return {
+        "dominant_peak_today": (
+            median(peak.center_price for peak in dominant_values)
+            if dominant_valid
+            else None
+        ),
+        "dominant_peak_ambiguous": (
+            True
+            if not dominant_valid
+            else any(peak.ambiguity for peak in dominant_values)
+        ),
+        "model_spread_dominant_peak_today": (
+            max(peak.center_price for peak in dominant_values)
+            - min(peak.center_price for peak in dominant_values)
+            if dominant_valid
+            else None
+        ),
+        "tracked_base_peak": (
+            median(peak.center_price for peak in base_values) if base_valid else None
+        ),
+        "peak_track_band_lower": (
+            median(peak.band[0] for peak in base_values) if base_valid else None
+        ),
+        "peak_track_band_upper": (
+            median(peak.band[1] for peak in base_values) if base_valid else None
+        ),
+        "peak_track_mass": (
+            median(peak.mass for peak in base_values) if base_valid else None
+        ),
+        "peak_track_prominence": (
+            median(peak.prominence for peak in base_values) if base_valid else None
+        ),
+        "peak_track_id": (
+            "|".join(peak.peak_track_id for peak in base_values)
+            if base_valid
+            else None
+        ),
+        "peak_track_age": min(peak.age for peak in base_values) if base_valid else None,
+        "peak_track_ambiguous": not base_valid,
+        "peak_track_split": any(peak.split for peak in base_values),
+        "peak_track_merge": any(peak.merge for peak in base_values),
+        "peak_track_lost": not base_valid,
+        "peak_definition_version": (
+            base_values[0].definition_version if base_valid else None
+        ),
+        "peak_fail_closed_reason": (
+            None
+            if base_valid
+            else "|".join(
+                sorted(
+                    {
+                        value.fail_closed_reason or "PEAK_TRACK_AMBIGUOUS"
+                        for value in tracking
+                        if value.tracked_base_peak is None
+                    }
+                )
+            )
+        ),
+    }
 
 
 def exact_research_invalid_reason(
