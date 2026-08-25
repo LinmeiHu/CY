@@ -13,7 +13,10 @@ from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
     PersistedChipLineageResolver,
 )
+import cyq_game.strategy.exact_chip_features as exact_chip_features
 from cyq_game.strategy.exact_chip_features import (
+    PERSISTED_DAILY_FEATURE_AUTHORITY,
+    REPLAYED_LEGACY_OPERATOR_LOG,
     build_exact_ensemble_features,
     distribution_metrics_from_bucket_mass,
     exact_research_invalid_reason,
@@ -132,7 +135,66 @@ def test_v12_feature_builder_uses_persisted_metrics_without_replay(
     )
 
     assert len(result) == 1
-    assert result[0]["feature_source"] == "PERSISTED_DAILY_METRICS_V12"
+    assert result[0]["feature_source"] == PERSISTED_DAILY_FEATURE_AUTHORITY
     assert result[0]["average_cost"] == 11.0
     assert result[0]["peak_count"] == 2
     assert result[0]["known_cost_fraction_min"] == 0.90
+
+
+def test_v12_feature_builder_falls_back_to_legacy_replay_source(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    symbol = "000001.SZ"
+    trade_date = date(2020, 1, 3)
+
+    available_at = datetime(2020, 1, 3, 15, tzinfo=UTC)
+
+    def replay_rows(*_args, **_kwargs):
+        return {
+            trade_date: [
+                {
+                    "average_cost": 10.0 + offset,
+                    "cost_p01": 8.0 + offset,
+                    "cost_p10": 9.0 + offset,
+                    "cost_p50": 10.0 + offset,
+                    "cost_p90": 11.0 + offset,
+                    "cost_p99": 12.0 + offset,
+                    "main_peak": 10.0 + offset,
+                    "dominant_band_lower": 9.5 + offset,
+                    "dominant_band_upper": 10.5 + offset,
+                    "dominant_band_mass": 0.7 + 0.1 * offset,
+                    "profit_ratio": 0.6 + 0.05 * offset,
+                    "asr": 0.5 + 0.05 * offset,
+                    "cbw": 50.0 + offset,
+                    "concentration_20": 0.8 + 0.05 * offset,
+                    "peak_count": 1 + offset,
+                    "seller_model": model.value,
+                    "snapshot_id": f"snapshot:{model.value}",
+                    "available_at": available_at,
+                    "known_cost_fraction": 0.9,
+                    "research_valid": True,
+                }
+                for offset, model in enumerate(SELLER_MODEL_ORDER)
+            ]
+        }
+
+    monkeypatch.setattr(
+        exact_chip_features,
+        "_fast_daily_models",
+        lambda *_args, **_kwargs: None,
+    )
+    monkeypatch.setattr(
+        exact_chip_features,
+        "_replayed_daily_models",
+        replay_rows,
+    )
+    result = build_exact_ensemble_features(
+        tmp_path,
+        symbol,
+        {trade_date: 10.0},
+        trade_date,
+        trade_date,
+    )
+    assert len(result) == 1
+    assert result[0]["feature_source"] == REPLAYED_LEGACY_OPERATOR_LOG

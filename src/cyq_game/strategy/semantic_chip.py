@@ -1,4 +1,4 @@
-"""Outcome-blind semantic chip measurements from exact persisted inventories."""
+"""Outcome-blind semantic measurements from bucketized replay inventory."""
 
 from __future__ import annotations
 

@@ -58,6 +58,13 @@ _RETENTION_PALETTE_BITPACK = 7
 
 @dataclass(frozen=True)
 class PersistedDailyBucketMass:
+    """Replayed inventory mass projected onto the canonical 25bp grid.
+
+    Shares and transition lineage follow the persisted conservation contract.
+    Economic-cost coordinates are bucketized replay coordinates; this record
+    is not a numerical oracle for persisted V12 daily feature metrics.
+    """
+
     symbol: str
     trade_date: date
     seller_model: SellerModel
@@ -646,7 +653,13 @@ class PersistedChipLineageResolver:
         start: date,
         end: date,
     ) -> Iterable[PersistedDailyBucketMass]:
-        """Replay each model once and expose the causal economic-cost inventory."""
+        """Replay exact shares/lineage and expose bucketized economic mass.
+
+        The replay preserves inventory mass and lineage under the operator
+        contract. Economic coordinates are reconstructed from the canonical
+        25bp bucket grid, so callers must not compare its derived daily metrics
+        bitwise or numerically against persisted V12 daily metrics.
+        """
 
         rows_by_model = self._load_symbol(symbol, start, end)
         if rows_by_model is None:

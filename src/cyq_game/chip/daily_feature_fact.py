@@ -1,7 +1,8 @@
-"""Build the hot daily feature fact from build-time operator scalar columns.
+"""Build the hot daily feature fact from persisted operator scalar columns.
 
-This path never decodes inventory or lineage.  The legacy exact feature builder
-remains a small-sample numerical oracle only.
+This path never decodes inventory or lineage. Persisted V12 daily metrics are
+the canonical daily chip-feature authority; bucketized replay is a separate
+compatibility capability and is not an oracle for these scalar columns.
 """
 
 from __future__ import annotations

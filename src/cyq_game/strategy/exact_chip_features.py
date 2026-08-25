@@ -1,8 +1,8 @@
-"""Strategy features derived from persisted exact chip inventories.
+"""Strategy features from persisted V12 daily metrics.
 
-Operator-log v12 persists the complete daily scalar feature set while the exact
-inventory is already in memory. The normal feature path therefore performs a
-narrow Parquet scan; legacy operator versions retain the replay fallback.
+Operator-log v12 persists the canonical daily scalar feature set. Older
+operator versions retain a bucketized lineage replay compatibility path; that
+replay is not a numerical oracle for persisted V12 daily metrics.
 """
 
 from __future__ import annotations
@@ -27,6 +27,8 @@ from cyq_game.strategy.chip_lineage import (
 )
 
 _FAST_OPERATOR_STORAGE_VERSION = "chip-operator-log-v12"
+PERSISTED_DAILY_FEATURE_AUTHORITY = "PERSISTED_DAILY_METRICS_V12"
+REPLAYED_LEGACY_OPERATOR_LOG = "REPLAYED_LEGACY_OPERATOR_LOG"
 _METRIC_NAMES = tuple(DistributionMetrics.__dataclass_fields__)
 _FAST_OPERATOR_COLUMNS = (
     "storage_version",
@@ -257,7 +259,13 @@ def _replayed_daily_models(
     start: date,
     end: date,
 ) -> dict[date, list[dict[str, Any]]]:
-    """Compatibility path for v8-v11 operator logs."""
+    """Replay bucketized lineage for compatibility, not V12 feature authority.
+
+    Inventory shares and transition lineage are replayed under the persisted
+    conservation contract. Economic-cost coordinates are reconstructed on the
+    canonical 25bp bucket grid, so this path must not be used as a bitwise or
+    numerical oracle for persisted V12 daily metrics.
+    """
 
     resolver = PersistedChipLineageResolver(root)
     by_date: dict[date, list[dict[str, Any]]] = {}
@@ -385,15 +393,20 @@ def build_exact_ensemble_features(
     start: date,
     end: date,
 ) -> list[dict[str, Any]]:
+    """Build ensemble features using the persisted V12 daily authority.
+
+    The legacy fallback is a bucketized lineage replay for compatibility and
+    is not expected to reproduce persisted V12 economic-cost metrics exactly.
+    """
     fast_models = _fast_daily_models(root, symbol, close_by_date, start, end)
     if fast_models is not None:
         return _ensemble_rows(
             symbol,
             fast_models,
-            feature_source="PERSISTED_DAILY_METRICS_V12",
+            feature_source=PERSISTED_DAILY_FEATURE_AUTHORITY,
         )
     return _ensemble_rows(
         symbol,
         _replayed_daily_models(root, symbol, close_by_date, start, end),
-        feature_source="REPLAYED_LEGACY_OPERATOR_LOG",
+        feature_source=REPLAYED_LEGACY_OPERATOR_LOG,
     )

@@ -1,4 +1,4 @@
-"""Single-pass exact and semantic measurements for the current chip state."""
+"""Bucketized replay measurements for the current chip state."""
 
 from __future__ import annotations
 
@@ -46,7 +46,12 @@ def build_current_chip_measurement_features(
     start: date,
     end: date,
 ) -> list[dict[str, Any]]:
-    """Replay each seller model once and return all current strategy primitives."""
+    """Replay each seller model once for current bucketized measurements.
+
+    Shares and lineage remain exact under the persisted operator contract, but
+    replayed economic coordinates use the canonical 25bp grid and are not the
+    persisted V12 daily-feature authority.
+    """
     if start < date(2026, 6, 17) or end < start:
         raise ValueError("current chip measurements require a valid 2026-06-17+ range")
     if not close_by_date:
