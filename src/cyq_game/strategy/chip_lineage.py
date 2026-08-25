@@ -529,6 +529,7 @@ class PersistedChipLineageResolver:
         self._operator_step_cache: dict[
             tuple[str, SellerModel, date, date], _CachedOperatorStep
         ] = {}
+        self._indexed_paths = self._read_symbol_index()
 
     @property
     def cached_result_count(self) -> int:
@@ -728,13 +729,45 @@ class PersistedChipLineageResolver:
                 )
 
     def _paths(self, symbol: str, start: date, end: date) -> tuple[Path, ...]:
-        filename = f"{symbol.replace('.', '_')}.parquet"
-        paths = set(self.root.glob(f"parts/bucket=*/{filename}"))
-        for year in range(start.year, end.year + 1):
-            paths.update(self.root.glob(f"year={year}/parts/bucket=*/{filename}"))
-        if self.root.is_file() and self.root.name == filename:
-            paths.add(self.root)
-        return tuple(sorted(paths))
+        return tuple(
+            path
+            for year, path, first, last in self._indexed_paths.get(symbol, ())
+            if start.year <= year <= end.year and first <= end and last >= start
+        )
+
+    def _read_symbol_index(
+        self,
+    ) -> dict[str, tuple[tuple[int, Path, date, date], ...]]:
+        if self.root.is_file():
+            parquet = pq.ParquetFile(self.root)
+            symbols = parquet.read(columns=["symbol"])["symbol"].unique()
+            if len(symbols) != 1:
+                raise ChipStateContractError("operator file must contain one symbol")
+            symbol = str(symbols[0].as_py())
+            dates = parquet.read(columns=["trade_date"])["trade_date"].combine_chunks()
+            values = [dates[index].as_py() for index in range(len(dates))]
+            return {symbol: ((min(values).year, self.root, min(values), max(values)),)}
+        index_path = self.root / "operator_symbol_index.parquet"
+        if not index_path.is_file():
+            raise FileNotFoundError(
+                f"operator symbol index is required; build it before replay: {index_path}"
+            )
+        result: dict[str, list[tuple[int, Path, date, date]]] = {}
+        parquet = pq.ParquetFile(index_path)
+        for batch in parquet.iter_batches(
+            columns=["symbol", "year", "path", "start_date", "end_date"]
+        ):
+            for index in range(batch.num_rows):
+                symbol = str(batch.column(0)[index].as_py())
+                result.setdefault(symbol, []).append(
+                    (
+                        int(batch.column(1)[index].as_py()),
+                        self.root / str(batch.column(2)[index].as_py()),
+                        batch.column(3)[index].as_py(),
+                        batch.column(4)[index].as_py(),
+                    )
+                )
+        return {key: tuple(sorted(value)) for key, value in result.items()}
 
     def _load_symbol(
         self, symbol: str, start: date, end: date
@@ -748,19 +781,28 @@ class PersistedChipLineageResolver:
             self._symbol_rows[symbol] = result
         loaded_paths = self._loaded_symbol_paths.setdefault(symbol, set())
         for path in (path for path in paths if path not in loaded_paths):
-            for row in pq.read_table(path).to_pylist():
-                if row["storage_version"] not in _COMPATIBLE_OPERATOR_STORAGE_VERSIONS:
-                    raise ChipStateContractError(f"unsupported chip operator storage in {path}")
-                if row["symbol"] != symbol:
-                    raise ChipStateContractError(f"symbol mismatch in {path}")
-                model = SellerModel(row["seller_model"])
-                trade_date = row["trade_date"]
-                previous = result[model].get(trade_date)
-                if previous is not None and previous != row:
-                    raise ChipStateContractError(
-                        "conflicting persisted chip rows for symbol/date/model"
-                    )
-                result[model][trade_date] = row
+            parquet = pq.ParquetFile(path)
+            names = parquet.schema_arrow.names
+            for batch in parquet.iter_batches(columns=names, batch_size=4096):
+                columns = {name: batch.column(index) for index, name in enumerate(names)}
+                for row_index in range(batch.num_rows):
+                    row = {
+                        name: columns[name][row_index].as_py() for name in names
+                    }
+                    if row["storage_version"] not in _COMPATIBLE_OPERATOR_STORAGE_VERSIONS:
+                        raise ChipStateContractError(
+                            f"unsupported chip operator storage in {path}"
+                        )
+                    if row["symbol"] != symbol:
+                        raise ChipStateContractError(f"symbol mismatch in {path}")
+                    model = SellerModel(row["seller_model"])
+                    trade_date = row["trade_date"]
+                    previous = result[model].get(trade_date)
+                    if previous is not None and previous != row:
+                        raise ChipStateContractError(
+                            "conflicting persisted chip rows for symbol/date/model"
+                        )
+                    result[model][trade_date] = row
             loaded_paths.add(path)
         return result
 

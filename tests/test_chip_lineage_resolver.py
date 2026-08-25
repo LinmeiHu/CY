@@ -21,6 +21,7 @@ from cyq_game.chip import (
 )
 from cyq_game.chip.ensemble_v2 import SELLER_MODEL_ORDER
 from cyq_game.chip.migration_v2 import NONPOSITIVE_ECONOMIC_BUCKET
+from cyq_game.chip.operator_index import build_operator_symbol_index
 from cyq_game.strategy.chip_lineage import (
     _OPERATOR_GRID,
     ChipLineageResolver,
@@ -274,6 +275,7 @@ def test_persisted_operator_resolver_traces_anchor_without_counting_new_chips(
     path = tmp_path / "parts" / "bucket=0" / "000001_SZ.parquet"
     path.parent.mkdir(parents=True)
     pq.write_table(pa.Table.from_pylist(rows), path)
+    build_operator_symbol_index(tmp_path)
     resolver = PersistedChipLineageResolver(tmp_path)
     anchor = replace(
         _anchor(),
@@ -401,6 +403,7 @@ def test_v10_resolver_uses_economic_cost_and_replays_checkpoint_across_years(
         path.parent.mkdir(parents=True)
         pq.write_table(pa.Table.from_pylist(rows), path)
 
+    build_operator_symbol_index(tmp_path)
     resolver = PersistedChipLineageResolver(tmp_path)
     anchor = replace(
         _anchor(),

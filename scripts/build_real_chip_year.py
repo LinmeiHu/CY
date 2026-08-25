@@ -48,6 +48,7 @@ from cyq_game.chip.migration_v2 import (  # noqa: E402
     prepare_minute_path,
 )
 from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
+from cyq_game.chip.operator_index import build_operator_symbol_index  # noqa: E402
 from cyq_game.chip.peaks import (  # noqa: E402
     detect_canonical_peaks,
     dominant_canonical_peak,
@@ -2787,6 +2788,9 @@ def main() -> int:
                 )
     results.sort(key=lambda item: (item["bucket"], item["symbols"]))
     bucket_results = _aggregate_bucket_tasks(results)
+    operator_index = (
+        None if args.terminal_only else build_operator_symbol_index(output_root)
+    )
     passed = sum(item["passed"] for item in results)
     total = sum(item["symbols"] for item in results)
     evidence = {
@@ -2855,6 +2859,7 @@ def main() -> int:
         "cell_id_encoding": "uint64-hashed-cost-age-sensitivity-economic-v2",
         "chip_state_schema_version": CHIP_STATE_SCHEMA_VERSION,
         "elapsed_seconds": round(time.perf_counter() - started, 3),
+        "operator_symbol_index": None if operator_index is None else str(operator_index),
         "buckets": bucket_results,
     }
     summary_path = output_root / "summary.json"
