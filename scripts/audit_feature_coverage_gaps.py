@@ -45,30 +45,52 @@ def main() -> int:
         ), by_symbol AS (
           SELECT symbol, count(*) AS rows,
             count(*) FILTER (WHERE strict_sample) AS strict_rows,
-            count(*) FILTER (WHERE research_sample) AS research_rows,
-            count(*) FILTER (WHERE daily_research_sample) AS daily_research_rows,
+            count(*) FILTER (WHERE chip_input_valid AND state_chain_valid) AS research_rows,
+            count(*) FILTER (WHERE daily_hard_valid) AS daily_research_rows,
             count(*) FILTER (
-              WHERE minute_hard_valid OR COALESCE(minute_requirement_waived, FALSE)
+              WHERE minute_hard_valid
             ) AS minute_valid_rows,
+            count(*) FILTER (
+              WHERE minute_snapshot_id IS NOT NULL
+            ) AS minute_observed_rows,
             count(*) FILTER (WHERE daily_hard_valid) AS daily_valid_rows,
             count(*) FILTER (WHERE invalid_reason LIKE 'WARMUP%') AS warmup_rows,
-            count(*) FILTER (WHERE invalid_reason LIKE '%missing_historical_float%') AS float_rows,
-            count(*) FILTER (WHERE invalid_reason LIKE '%trading_state%') AS status_rows,
-            count(*) FILTER (WHERE invalid_reason LIKE '%corporate_action%') AS action_rows
+            count(*) FILTER (
+              WHERE invalid_reason LIKE '%float%' OR NOT daily_hard_valid
+            ) AS float_rows,
+            count(*) FILTER (
+              WHERE invalid_reason LIKE '%status%' OR NOT daily_hard_valid
+            ) AS status_rows,
+            count(*) FILTER (WHERE invalid_reason LIKE '%action%') AS action_rows
           FROM f GROUP BY symbol
         ), categories AS (
           SELECT CASE
             WHEN strict_rows = rows THEN 'complete'
-            WHEN strict_rows = 0 AND minute_valid_rows = 0 THEN 'no_minute_valid'
+            WHEN strict_rows = 0 AND minute_observed_rows = 0 THEN 'no_minute_data'
+            WHEN strict_rows = 0 AND minute_observed_rows > 0
+              AND minute_valid_rows = 0 THEN 'minute_present_status_or_join_blocked'
             WHEN strict_rows = 0 THEN 'no_strict_daily_or_warmup'
             ELSE 'partial_strict'
           END AS category, count(*) AS symbols, sum(rows) AS rows,
             sum(strict_rows) AS strict_rows, sum(warmup_rows) AS warmup_rows,
+            sum(minute_observed_rows) AS minute_observed_rows,
+            sum(minute_valid_rows) AS minute_valid_rows,
             sum(research_rows) AS research_rows,
             sum(daily_research_rows) AS daily_research_rows,
             sum(float_rows) AS float_rows, sum(status_rows) AS status_rows,
             sum(action_rows) AS action_rows
           FROM by_symbol GROUP BY 1
+        ), by_year AS (
+          SELECT year, count(*) AS rows, count(DISTINCT symbol) AS symbols,
+            count(*) FILTER (WHERE strict_sample) AS strict_rows,
+            count(*) FILTER (WHERE minute_snapshot_id IS NOT NULL)
+              AS minute_observed_rows,
+            count(*) FILTER (WHERE minute_hard_valid) AS minute_valid_rows,
+            count(*) FILTER (WHERE minute_snapshot_id IS NULL) AS no_minute_rows,
+            count(*) FILTER (
+              WHERE minute_snapshot_id IS NOT NULL AND NOT minute_hard_valid
+            ) AS observed_but_blocked_rows
+          FROM f GROUP BY year ORDER BY year
         ), supplement_days AS (
           SELECT count(*) AS rows, count(DISTINCT symbol) AS symbols
           FROM read_parquet('{supplement}', union_by_name=true)
@@ -83,7 +105,9 @@ def main() -> int:
           'strict_rows', (SELECT sum(strict_rows) FROM by_symbol),
           'research_rows', (SELECT sum(research_rows) FROM by_symbol),
           'daily_research_rows', (SELECT sum(daily_research_rows) FROM by_symbol),
-          'strict_symbols', (SELECT count(*) FROM by_symbol WHERE strict_rows = rows)
+          'strict_symbols', (SELECT count(*) FROM by_symbol WHERE strict_rows = rows),
+          'symbols_with_strict_rows', (SELECT count(*) FROM by_symbol WHERE strict_rows > 0),
+          'by_year', (SELECT json_group_array(to_json(y)) FROM by_year y)
         )
         """,
         params + params,
@@ -96,7 +120,8 @@ def main() -> int:
             "end": args.end.isoformat(),
             "strict_definition": (
                 "daily_hard_valid AND (minute_hard_valid OR minute_requirement_waived) "
-                "AND state_chain_valid AND warmup"
+                "AND state_chain_valid AND warmup; minute_observed_rows is a separate "
+                "coverage fact and does not make an unknown trading status valid"
             ),
             "backtest_run": False,
         }

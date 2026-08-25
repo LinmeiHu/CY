@@ -24,7 +24,7 @@ def main() -> int:
     parser.add_argument(
         "--manifest",
         type=Path,
-        default=Path("data/input_snapshots/CYQ-PREP-2018-2026-20260820.json"),
+        default=Path("data/input_snapshots/CYQ-PREP-2018-2026-20260821-R2.json"),
     )
     args = parser.parse_args()
     try:

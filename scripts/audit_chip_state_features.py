@@ -77,7 +77,9 @@ def main() -> int:
           max(abs(mass_sum - 1.0)) FILTER (WHERE chip_input_valid) AS max_mass_error,
           count(*) FILTER (
             WHERE strict_sample != (
-              daily_hard_valid AND minute_hard_valid AND state_chain_valid
+              daily_hard_valid
+              AND (minute_hard_valid OR minute_requirement_waived)
+              AND state_chain_valid
               AND warmup_count >= {warmup_days}
             )
           ) AS strict_logic_failures,

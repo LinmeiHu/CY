@@ -9,6 +9,7 @@ description = "PIT-safe A-share chip-state and game-decision research system"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+  "numba>=0.61,<0.62",
   "numpy>=2.0,<3",
   "PyYAML>=6.0,<7",
 ]
@@ -34,6 +35,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"
+pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 100
@@ -42,6 +44,7 @@ target-version = "py312"
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "RUF"]
 ignore = ["RUF001"]
+per-file-ignores = {"scripts/*.py" = ["E501", "B905", "RUF100"]}
 
 [tool.mypy]
 python_version = "3.12"

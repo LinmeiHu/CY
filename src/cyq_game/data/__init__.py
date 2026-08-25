@@ -20,7 +20,9 @@ from .audit import (
 from .corporate_actions import (
     CorporateActionBatch,
     CorporateActionIssue,
+    ReferencePriceResolution,
     adapt_cninfo_corporate_actions,
+    resolve_distribution_reference_price,
 )
 from .events import EventEnvelope, EventStore, replay_state
 from .full_market import build_daily_pit_b_dataset
@@ -99,6 +101,7 @@ __all__ = [
     "QuantParquetDescriptor",
     "QuantReadScope",
     "RecordKey",
+    "ReferencePriceResolution",
     "ValidityAssessment",
     "ValidityReason",
     "adapt_cninfo_corporate_actions",
@@ -114,6 +117,7 @@ __all__ = [
     "read_fundamentals_csv",
     "read_industry_memberships_csv",
     "replay_state",
+    "resolve_distribution_reference_price",
     "select_float_as_of",
     "write_audit_evidence",
 ]

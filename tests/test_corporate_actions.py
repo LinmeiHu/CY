@@ -19,7 +19,44 @@ from cyq_game.data import (  # noqa: E402
     InputBinding,
     QuantReadScope,
     adapt_cninfo_corporate_actions,
+    resolve_distribution_reference_price,
 )
+
+
+@pytest.mark.parametrize(
+    ("previous_close", "observed_preclose", "multiplier", "cash"),
+    (
+        (91.10, 64.66, 1.4, 0.58002),
+        (112.68, 80.25, 1.4, 0.337),
+        (175.84, 146.23, 1.2, 0.363),
+    ),
+)
+def test_reference_price_resolves_603259_share_actions(
+    previous_close: float,
+    observed_preclose: float,
+    multiplier: float,
+    cash: float,
+) -> None:
+    result = resolve_distribution_reference_price(
+        previous_close=previous_close,
+        observed_preclose=observed_preclose,
+        share_multiplier=multiplier,
+        cash_per_pre_action_share=cash,
+    )
+
+    assert result.matched
+    assert result.absolute_error <= result.tolerance
+
+
+def test_reference_price_rejects_wrong_share_terms() -> None:
+    result = resolve_distribution_reference_price(
+        previous_close=112.68,
+        observed_preclose=80.25,
+        share_multiplier=1.2,
+        cash_per_pre_action_share=0.337,
+    )
+
+    assert not result.matched
 
 
 def _sha256(path: Path) -> str:

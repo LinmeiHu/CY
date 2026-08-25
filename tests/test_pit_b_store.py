@@ -328,6 +328,146 @@ def _store(
     )
 
 
+def _calibration_store(
+    tmp_path: Path,
+    *,
+    alternating_prices: bool = False,
+    corporate_action_indices: set[int] | None = None,
+    second_symbol_date_count: int | None = None,
+) -> tuple[PITBDailyStore, list[date]]:
+    dates = [date(2024, 1, 1) + timedelta(days=index) for index in range(145)]
+    symbols = ["000001.SZ", "000002.SZ"]
+    closes_by_symbol: dict[str, list[float]] = {}
+    for symbol in symbols:
+        if alternating_prices:
+            closes_by_symbol[symbol] = [
+                100.0 if index % 2 == 0 else 110.0 for index in range(len(dates))
+            ]
+            continue
+        closes = [100.0] * len(dates)
+        for index in range(len(dates) - 5):
+            win = index % 5 != 4
+            if symbol == "000002.SZ":
+                win = not win
+            closes[index + 5] = closes[index] * (1.01 if win else 0.99)
+        closes_by_symbol[symbol] = closes
+
+    rows = [
+        (symbol, index)
+        for symbol in symbols
+        for index in range(
+            second_symbol_date_count
+            if symbol == "000002.SZ" and second_symbol_date_count is not None
+            else len(dates)
+        )
+    ]
+    row_symbols = [symbol for symbol, _ in rows]
+    row_dates = [dates[index] for _, index in rows]
+    row_closes = [closes_by_symbol[symbol][index] for symbol, index in rows]
+    size = len(rows)
+    data_root = tmp_path / "pit-b-calibration"
+    data_root.mkdir()
+    parquet_path = data_root / "year=2024.parquet"
+    pq.write_table(
+        pa.table(
+            {
+                "symbol": row_symbols,
+                "trade_date": pa.array(row_dates, type=pa.date32()),
+                "open": row_closes,
+                "high": [value * 1.01 for value in row_closes],
+                "low": [value * 0.99 for value in row_closes],
+                "close": row_closes,
+                "volume": [10_000.0] * size,
+                "amount": [value * 10_000.0 for value in row_closes],
+                "circulating_shares": [10_000_000.0] * size,
+                "available_at": [
+                    datetime.combine(item, datetime.min.time()).replace(hour=15, minute=30)
+                    for item in row_dates
+                ],
+                "trade_status": [1] * size,
+                "is_st": [False] * size,
+                "up_limit_price": [value * 1.1 for value in row_closes],
+                "down_limit_price": [value * 0.9 for value in row_closes],
+                "hard_valid": [True] * size,
+                "invalid_reasons": ["[]"] * size,
+                "snapshot_id": [
+                    f"pit-b:{symbol}:{item.isoformat()}"
+                    for symbol, item in zip(row_symbols, row_dates, strict=True)
+                ],
+                "market_rule_id": ["MAIN_10"] * size,
+                "market_rule_valid": [True] * size,
+                "limit_pct": [0.1] * size,
+                "industry": ["银行"] * size,
+                "industry_source": ["TEST_PIT"] * size,
+                "source_notice_date": pa.array(row_dates, type=pa.date32()),
+                "corporate_action_ids": ["[]"] * size,
+                "corporate_action_source": [None] * size,
+                "corporate_action_available_date": pa.array(
+                    [None] * size, type=pa.date32()
+                ),
+                "corporate_action_blocking": [False] * size,
+                "corporate_action_problems": ["[]"] * size,
+                "share_multiplier": [1.0] * size,
+                "cash_per_share": [0.0] * size,
+                "rights_ratio": [0.0] * size,
+                "rights_price": pa.array([None] * size, type=pa.float64()),
+                "bar_valid": [True] * size,
+                "trading_state_valid": [True] * size,
+                "float_valid": [True] * size,
+                "corporate_action_count": [
+                    int(index in (corporate_action_indices or set()))
+                    for _, index in rows
+                ],
+            }
+        ),
+        parquet_path,
+    )
+    inventory_path = tmp_path / "calibration-inventory.json"
+    _write_inventory(data_root, parquet_path, inventory_path)
+    asset = DataAsset(
+        asset_id="TEST-PIT-B-CALIBRATION",
+        name="PIT-B calibration fixture",
+        kind="daily_pit_b",
+        status="RESEARCH_READY",
+        pit_grade="B",
+        physical_state="MATERIALIZED",
+        location=data_root,
+        source="test",
+        lineage={},
+    )
+    binding = InputBinding(
+        role="daily_pit_b",
+        asset=asset,
+        path=data_root,
+        source="test",
+        snapshot_id="TEST-PIT-B-CALIBRATION-SNAPSHOT",
+        available_at_policy="explicit record timestamp",
+        sha256=None,
+        inventory_manifest=inventory_path,
+        inventory_sha256=_sha256(inventory_path),
+    )
+    authorization = DataExecutionAuthorization(
+        operation=DataOperation.BACKTEST,
+        registry_id="TEST-REGISTRY",
+        registry_sha256="a" * 64,
+        input_manifest_id="TEST-CALIBRATION-MANIFEST",
+        input_manifest_sha256="b" * 64,
+        purpose=DataPurpose.CAUSAL_RESEARCH,
+        hard_valid=True,
+        software_test=False,
+        scope_start=dates[0],
+        scope_end=dates[-1],
+    )
+    return (
+        PITBDailyStore(
+            tmp_path / "calibration-metadata.sqlite3",
+            binding=binding,
+            authorization=authorization,
+        ),
+        dates,
+    )
+
+
 def test_inventory_verification_cache_skips_unchanged_file_and_detects_change(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -402,9 +542,151 @@ def test_pit_b_store_separates_strict_signals_from_execution_bars(
         assert forecasts.keys() == {"000001.SZ", "000002.SZ"}
         assert forecasts["000001.SZ"].sample_size == 0
         assert forecasts["000002.SZ"].sample_size == 0
+        assert not forecasts["000001.SZ"].out_of_sample
+        assert forecasts["000001.SZ"].calibration_gate_reason == (
+            "NO_STRICTLY_LATER_EVALUATION_FOLD"
+        )
 
         before_available = datetime(2024, 1, 2, 15, tzinfo=_SHANGHAI)
         assert not store.strict_bars_for_day(["000001.SZ"], date(2024, 1, 2), before_available)
+    finally:
+        store.close()
+
+
+def test_pit_b_calibration_uses_true_later_fold_and_actual_ece_brier(
+    tmp_path: Path,
+) -> None:
+    store, dates = _calibration_store(tmp_path)
+    store.initialize()
+    try:
+        forecasts = store.calibrate_forecasts(
+            ["000001.SZ", "000002.SZ"],
+            set(dates[:120]),
+            datetime.combine(dates[130], datetime.min.time(), _SHANGHAI).replace(
+                hour=15, minute=30
+            ),
+            calibration_train_dates=set(dates[:60]),
+            purge_dates=set(dates[60:65]),
+            evaluation_dates=set(dates[65:105]),
+            embargo_dates=set(dates[105:110]),
+            fold_id=2,
+        )
+        first = forecasts["000001.SZ"]
+        second = forecasts["000002.SZ"]
+        assert first.out_of_sample and first.valid
+        assert second.out_of_sample and second.valid
+        assert first.training_sample_size == 60
+        assert first.sample_size == 40
+        assert first.calibration_train_occurrence_rate == pytest.approx(0.8)
+        assert first.evaluation_occurrence_rate == pytest.approx(0.8)
+        assert second.calibration_train_occurrence_rate == pytest.approx(0.2)
+        assert second.evaluation_occurrence_rate == pytest.approx(0.2)
+        assert first.calibration_error == pytest.approx(0.0)
+        assert first.calibration_brier == pytest.approx(0.16)
+        assert first.baseline_brier == pytest.approx(0.25)
+        assert first.training_end == dates[59]
+        assert first.evaluation_start == dates[65]
+        assert first.evaluation_end == dates[104]
+        assert first.evaluation_label_end == dates[109]
+        assert first.purge_days == 5
+        assert first.embargo_days == 5
+        assert first.calibration_snapshot_id
+        assert len(first.calibration_code_sha256 or "") == 64
+    finally:
+        store.close()
+
+
+def test_sparse_calibration_origins_still_use_fifth_full_sequence_session(
+    tmp_path: Path,
+) -> None:
+    store, dates = _calibration_store(tmp_path, alternating_prices=True)
+    store.initialize()
+    try:
+        even_training_origins = {dates[index] for index in range(0, 80, 2)}
+        even_evaluation_origins = {dates[index] for index in range(84, 135, 2)}
+        forecast = store.calibrate_forecasts(
+            ["000001.SZ"],
+            {dates[index] for index in range(0, 120, 2)},
+            datetime.combine(dates[140], datetime.min.time(), _SHANGHAI).replace(
+                hour=15, minute=30
+            ),
+            calibration_train_dates=even_training_origins,
+            purge_dates=set(dates[79:84]),
+            evaluation_dates=even_evaluation_origins,
+            embargo_dates=set(dates[135:140]),
+            fold_id=2,
+        )["000001.SZ"]
+
+        # Every even origin is followed five full sessions later by an odd
+        # 110-price observation.  Filtering origins before LEAD(5) would
+        # incorrectly compare even origins to later even origins and yield 0%.
+        assert forecast.training_sample_size == 40
+        assert forecast.calibration_train_occurrence_rate == pytest.approx(0.99)
+        assert not forecast.out_of_sample
+        assert forecast.calibration_gate_reason in {
+            "CALIBRATION_SAMPLE_INSUFFICIENT",
+            "CALIBRATION_TRAIN_SINGLE_CLASS",
+        }
+    finally:
+        store.close()
+
+
+def test_pit_b_calibration_excludes_action_origins_and_label_windows(
+    tmp_path: Path,
+) -> None:
+    store, dates = _calibration_store(
+        tmp_path,
+        corporate_action_indices={10, 80},
+    )
+    store.initialize()
+    try:
+        forecast = store.calibrate_forecasts(
+            ["000001.SZ"],
+            set(dates[:120]),
+            datetime.combine(dates[130], datetime.min.time(), _SHANGHAI).replace(
+                hour=15, minute=30
+            ),
+            calibration_train_dates=set(dates[:60]),
+            purge_dates=set(dates[60:65]),
+            evaluation_dates=set(dates[65:105]),
+            embargo_dates=set(dates[105:110]),
+            fold_id=2,
+        )["000001.SZ"]
+
+        # Each action removes its own origin and the preceding five origins.
+        assert forecast.training_sample_size == 54
+        assert forecast.sample_size == 34
+        assert forecast.evaluation_label_end == dates[109]
+    finally:
+        store.close()
+
+
+def test_pit_b_calibration_fails_closed_when_symbol_ends_before_fold(
+    tmp_path: Path,
+) -> None:
+    store, dates = _calibration_store(tmp_path, second_symbol_date_count=104)
+    store.initialize()
+    try:
+        forecast = store.calibrate_forecasts(
+            ["000002.SZ"],
+            set(dates[:120]),
+            datetime.combine(dates[130], datetime.min.time(), _SHANGHAI).replace(
+                hour=15, minute=30
+            ),
+            calibration_train_dates=set(dates[:60]),
+            purge_dates=set(dates[60:65]),
+            evaluation_dates=set(dates[65:105]),
+            embargo_dates=set(dates[105:110]),
+            fold_id=2,
+        )["000002.SZ"]
+
+        assert forecast.sample_size >= 30
+        assert forecast.evaluation_label_end == dates[103]
+        assert not forecast.out_of_sample
+        assert not forecast.valid
+        assert forecast.calibration_gate_reason == (
+            "CALIBRATION_LABEL_COVERAGE_ENDS_BEFORE_EVALUATION"
+        )
     finally:
         store.close()
 

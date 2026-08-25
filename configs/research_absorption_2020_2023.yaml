@@ -1,0 +1,37 @@
+name: cyq_absorption_research_2020_2023
+status: research_only
+sample:
+  fit: [2020-01-02, 2022-12-30]
+  holdout: [2023-01-03, 2023-12-29]
+  warmup_start: 2018-01-02
+  exclude_delisted: true
+  survivorship_bias: accepted_and_reported
+data:
+  daily: data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=*/data_0.parquet
+  features: data/processed/chip_state_features_2018_2026_v2/bucket=*/data.parquet
+  required: [hard_valid, strict_sample, state_chain_valid, available_at, snapshot_id]
+signal:
+  hypothesis: below_cost_absorption
+  close_lte_average_cost: true
+  close_gt_previous_close: true
+  asr_non_decreasing: true
+  concentration_20_non_increasing: true
+  cooldown_calendar_days: 20
+execution:
+  decision: close_t
+  fill: next_valid_open
+  stop_pct: -0.08
+  take_pct: 0.12
+  max_holding_trading_days: 20
+  same_day_stop_precedence: true
+  capacity_per_entry_date: 20
+  position_overlap: final_engine_required
+costs_round_trip_bps:
+  commission: 6
+  slippage: 10
+  stamp_duty: 5
+  impact_allowance: 10
+  total: 31
+decision:
+  default: NO_TRADE
+  promotion_requires: [holdout_positive_after_cost, baseline_increment, position_non_overlap, full_gates]

@@ -1,0 +1,142 @@
+strategy:
+  name: markup_retest_week20
+  version: v1-week20-qa
+  panel_schema_version: 10
+  family: MARKUP_RETEST
+  enabled_families: [MARKUP_RETEST]
+
+governance:
+  registry: configs/data_asset_registry.json
+  legacy_quarantine_manifest: configs/legacy_strategy_quarantine_v1.yaml
+  trial_ledger: output/markup_retest_week20_v1/trials/events.jsonl
+  freeze_manifest: output/markup_retest_week20_v1/freeze_manifest.json
+  survivor_bias: true
+  excluded_boards: [BJ]
+  excluded_delisted: true
+
+assets:
+  daily_asset_id: CY-006
+  minute_asset_id: CY-008
+  chip_feature_asset_id: CY-015
+  chip_lineage_asset_id: CY-016
+  corporate_action_asset_id: QD-010
+  daily_root: data/processed/pit_b_daily_2018_2026_v2/daily
+  minute_root: data/processed/pit_b_minute_2018_2026_v2
+  chip_feature_root: data/registered_inputs/CY-015-MARKUP-RETEST-20STOCK-WEEK-V11-2020/features
+  chip_lineage_root: data/registered_inputs/CY-015-MARKUP-RETEST-20STOCK-WEEK-V11-2020/lineage
+
+outputs:
+  root: output/markup_retest_week20_v1
+  panel_root: output/markup_retest_week20_v1/panel
+  label_root: output/markup_retest_week20_v1/labels
+  signal_root: output/markup_retest_week20_v1/signals
+  validation_root: output/markup_retest_week20_v1/validation
+
+stages:
+  week:
+    start: 2020-06-15
+    end: 2020-06-19
+    history_start: 2020-01-02
+    max_input_date: 2020-06-19
+    symbols: &week20
+      - 000001.SZ
+      - 000006.SZ
+      - 000029.SZ
+      - 000572.SZ
+      - 000670.SZ
+      - 000687.SZ
+      - 000760.SZ
+      - 000792.SZ
+      - 000906.SZ
+      - 000927.SZ
+      - 002030.SZ
+      - 002649.SZ
+      - 300015.SZ
+      - 300165.SZ
+      - 300750.SZ
+      - 600000.SH
+      - 600511.SH
+      - 600519.SH
+      - 603222.SH
+      - 601318.SH
+  year:
+    start: 2020-01-02
+    end: 2020-12-31
+    history_start: 2020-01-02
+    max_input_date: 2020-12-31
+    symbols: *week20
+  development:
+    start: 2020-01-02
+    end: 2020-12-31
+    history_start: 2020-01-02
+    max_input_date: 2020-12-31
+    symbols: *week20
+  resealed:
+    start: 2024-01-02
+    end: 2026-08-12
+    history_start: 2020-01-02
+    min_input_date: 2024-01-01
+    max_input_date: 2026-08-12
+    symbols: *week20
+
+windows:
+  accumulation: 60
+  recent_evidence: 20
+  retest_min: 1
+  retest_max: 10
+  exit_confirmation: 2
+  max_holding: 20
+  cooldown: 20
+  label_horizon: 20
+  embargo: 5
+
+fixed_thresholds:
+  high_turnover_quantile: 0.60
+  low_price_impact_quantile: 0.50
+  support_tolerance_atr: 0.25
+  retest_volume_ratio_max: 0.80
+  retest_turnover_ratio_max: 0.80
+  recent_band_overlap_floor: 0.55
+  anchor_retention_floor: 0.70
+  anchor_severe_retention_floor: 0.50
+  anchor_band_expansion_ratio_max: 1.25
+  anchor_peak_count_increase_max: 1
+  max_model_disagreement_atr: 3.00
+  setup_component_count: 5
+  distribution_component_count: 5
+
+parameters:
+  defaults:
+    setup_score_min: 0.80
+    breakout_buffer_atr: 0.25
+    max_retest_depth_atr: 1.00
+    min_cost_migration_atr: 0.25
+    distribution_score_min: 0.80
+    protective_stop_atr: 1.50
+  grids:
+    setup_score_min: [0.60, 0.80, 1.00]
+    breakout_buffer_atr: [0.00, 0.25, 0.50]
+    max_retest_depth_atr: [0.50, 1.00, 1.50]
+    min_cost_migration_atr: [0.00, 0.25, 0.50]
+    distribution_score_min: [0.60, 0.80, 1.00]
+    protective_stop_atr: [1.00, 1.50, 2.00]
+
+execution:
+  decision_time: "15:30:00+08:00"
+  next_window_end: "09:35:00+08:00"
+  max_entry_wait_trading_days: 3
+  nominal_capital_per_signal: 500000.0
+  fee_bps: 5.0
+  slippage_bps: 10.0
+  impact_bps: 5.0
+
+quality:
+  minimum_board_coverage: 0.95
+  mass_tolerance: 1.0e-9
+  calibration_ece_max: 0.05
+  annual_signal_min: 100
+  annual_signal_max: 200
+  mean_signal_min: 120
+  mean_signal_max: 180
+  current_industry_grade: B_RESEARCH_ONLY
+  unknown_industry_fallback: BOARD_LEAVE_ONE_OUT

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "protocol_id": "CHIP_MECHANISM_INTERACTION_PROTOCOL_V1",
+  "status": "PREREGISTRATION_PENDING",
+  "research_question": "Does timely upward chip-cost migration add net return only when price, market and leave-one-out sector demand confirm absorption and all three seller models agree?",
+  "prior_evidence": {
+    "markup_retest_decision": "NO_TRADE",
+    "chip_incremental_stage1_decision": "NO_CHIP_INCREMENTAL_VALUE",
+    "hypothesis_generation_note": "The earlier cost-migration point estimate was positive but failed its confidence, stale-state and placebo gates. This interaction study is a separate training-only hypothesis, not a reversal or relabeling of that result."
+  },
+  "data_contract": {
+    "development_input": "output/chip_incremental_validation_v1/stage1/evaluated_events.parquet",
+    "development_input_sha256": "8b13c1accd315c41103274584e92d3dc06950d5e0fb19855ebc5e243580caa00",
+    "development_start": "2020-01-02",
+    "development_end": "2022-12-30",
+    "development_classification": "PREVIOUSLY_OBSERVED_TRAINING_ONLY",
+    "forbidden_selection_start": "2023-01-01",
+    "prospective_shadow_start": "2026-08-25",
+    "prospective_shadow_minimum_weeks": 52,
+    "allowed_module": "cost_migration",
+    "hard_valid_required": true,
+    "same_bar_fill_forbidden": true
+  },
+  "fixed_mechanism_gates": {
+    "market_return_20_min": 0.0,
+    "sector_return_20_min": 0.0,
+    "close_at_or_above_exact_p50": true,
+    "profit_ratio_change_20_min": 0.0,
+    "i90_contraction_20_min": 0.0,
+    "maximum_extension_above_i90_atr": 0.25,
+    "current_state_must_beat_stale_state": true,
+    "price_volume_regime_baseline_required": true
+  },
+  "mechanism_parameters": {
+    "cost_migration_floor_vol": [0.0, 0.25, 0.5],
+    "seller_model_disagreement_cap_atr": [0.5, 1.0, 1.5],
+    "overhead_distance_cap_atr": [0.5, 1.0, 2.0],
+    "parameter_count": 27,
+    "adjacency": "exactly one coordinate moves by one registered level",
+    "rationale": {
+      "cost_migration_floor_vol": "Tests whether the estimated cost center rises by a material fraction of recent volatility; sign is fixed by the absorption mechanism.",
+      "seller_model_disagreement_cap_atr": "Represents observability uncertainty across the three seller hypotheses; lower disagreement is always preferred.",
+      "overhead_distance_cap_atr": "Represents remaining supply above price; the scale is in ATR so it is comparable across stocks."
+    }
+  },
+  "evaluation": {
+    "folds": [
+      {
+        "fit": "2020",
+        "evaluate": "2021",
+        "purge_sessions": 20,
+        "embargo_sessions": 5
+      },
+      {
+        "fit": "2020-2021",
+        "evaluate": "2022",
+        "purge_sessions": 20,
+        "embargo_sessions": 5
+      }
+    ],
+    "outcome": "net return through the twentieth market session after a real next-window fill",
+    "costs": "fees, slippage, impact and blocked-exit persistence already included",
+    "primary_statistic": "weekly-block-bootstrap lower 95 percent bound of mean net return",
+    "bootstrap_replicates": 1999,
+    "bootstrap_seed": 20260825,
+    "familywise_control": "Holm correction across 27 parameter nodes",
+    "no_trade_return": 0.0
+  },
+  "power_and_risk_gates": {
+    "minimum_effective_sample": 396,
+    "minimum_distinct_weeks": 52,
+    "minimum_weeks_per_evaluation_fold": 20,
+    "both_evaluation_fold_means_positive": true,
+    "holm_adjusted_absolute_return_lower_bound_positive": true,
+    "incremental_over_fixed_price_volume_regime_lower_bound_min": 0.005,
+    "incremental_over_stale_chip_lower_bound_positive": true,
+    "entry_fill_rate_min": 0.95,
+    "closure_rate_min": 0.95,
+    "blocked_exit_cvar95_not_worse_than_baseline": true,
+    "maximum_drawdown_not_worse_than_baseline": true
+  },
+  "robust_selection": {
+    "minimum_connected_component_nodes": 3,
+    "minimum_direct_passing_neighbors": 1,
+    "rank_within_component": "maximize the minimum evaluation-fold mean, then minimize disagreement cap and overhead cap",
+    "isolated_optimum_forbidden": true,
+    "threshold_changes_after_outcome_read_forbidden": true,
+    "legal_terminal_decisions": ["TRAINING_CANDIDATE_PROSPECTIVE_ONLY", "NO_TRADE"]
+  },
+  "promotion_blockers": [
+    "No result from 2020-2022 may be called OOS or used for live trading.",
+    "2023 has been physically accessed and cannot be restored as an untouched holdout.",
+    "2024-2026 history is excluded from parameter selection in this protocol.",
+    "At least 52 prospective weeks beginning 2026-08-25 are required before promotion review.",
+    "Kelly, EdgeCard and live execution remain disabled unless true OOS calibration and all risk gates pass."
+  ]
+}

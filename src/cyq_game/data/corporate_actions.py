@@ -42,6 +42,64 @@ class CorporateActionBatch:
     rights_rows_seen: int
 
 
+@dataclass(frozen=True)
+class ReferencePriceResolution:
+    """Research-only corroboration of an ex-date distribution price reset."""
+
+    expected_preclose: float
+    observed_preclose: float
+    absolute_error: float
+    tolerance: float
+    matched: bool
+
+
+def resolve_distribution_reference_price(
+    *,
+    previous_close: float,
+    observed_preclose: float,
+    share_multiplier: float,
+    cash_per_pre_action_share: float,
+    relative_tolerance: float = 0.001,
+    absolute_tolerance: float = 0.02,
+) -> ReferencePriceResolution:
+    """Confirm known CNINFO terms against the ex-date reference price.
+
+    This resolves only execution timing for complete terms already available
+    before the declared effective date.  It never invents action terms and the
+    result remains PIT-B research evidence.
+    """
+
+    values = (
+        previous_close,
+        observed_preclose,
+        share_multiplier,
+        cash_per_pre_action_share,
+        relative_tolerance,
+        absolute_tolerance,
+    )
+    if not all(isfinite(value) for value in values):
+        raise ValueError("reference-price resolution requires finite values")
+    if previous_close <= 0 or observed_preclose <= 0:
+        raise ValueError("reference prices must be positive")
+    if share_multiplier <= 1.0 or share_multiplier > 100.0:
+        raise ValueError("research share multiplier must be in (1, 100]")
+    if cash_per_pre_action_share < 0 or cash_per_pre_action_share >= previous_close:
+        raise ValueError("cash distribution is outside the valid price range")
+    if relative_tolerance < 0 or absolute_tolerance < 0:
+        raise ValueError("reference-price tolerances cannot be negative")
+
+    expected = (previous_close - cash_per_pre_action_share) / share_multiplier
+    error = abs(observed_preclose - expected)
+    tolerance = max(absolute_tolerance, observed_preclose * relative_tolerance)
+    return ReferencePriceResolution(
+        expected_preclose=expected,
+        observed_preclose=observed_preclose,
+        absolute_error=error,
+        tolerance=tolerance,
+        matched=error <= tolerance,
+    )
+
+
 def adapt_cninfo_corporate_actions(
     *,
     binding: InputBinding,

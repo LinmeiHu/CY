@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import date
 
 from cyq_game.config import PortfolioConfig
 
@@ -16,17 +17,50 @@ class CalibratedForecast:
     average_loss_r: float
     sample_size: int
     out_of_sample: bool
-    calibration_error: float = 0.0
+    calibration_error: float = 1.0
+    training_sample_size: int = 0
+    calibration_brier: float | None = None
+    baseline_brier: float | None = None
+    calibration_train_occurrence_rate: float | None = None
+    evaluation_occurrence_rate: float | None = None
+    baseline_train_occurrence_rate: float | None = None
+    training_end: date | None = None
+    evaluation_start: date | None = None
+    evaluation_end: date | None = None
+    evaluation_label_end: date | None = None
+    purge_days: int = 0
+    embargo_days: int = 0
+    calibration_snapshot_id: str | None = None
+    calibration_code_sha256: str | None = None
+    calibration_gate_reason: str | None = None
 
     @property
     def valid(self) -> bool:
         return (
             self.out_of_sample
             and self.sample_size >= 30
+            and self.training_sample_size >= 30
             and 0.0 < self.win_probability < 1.0
             and self.average_win_r > 0.0
             and self.average_loss_r > 0.0
-            and 0.0 <= self.calibration_error <= 0.20
+            and 0.0 <= self.calibration_error <= 0.05
+            and self.calibration_brier is not None
+            and self.baseline_brier is not None
+            and self.calibration_brier < self.baseline_brier
+            and self.calibration_train_occurrence_rate is not None
+            and self.evaluation_occurrence_rate is not None
+            and self.baseline_train_occurrence_rate is not None
+            and self.training_end is not None
+            and self.evaluation_start is not None
+            and self.evaluation_end is not None
+            and self.evaluation_label_end is not None
+            and self.training_end < self.evaluation_start <= self.evaluation_end
+            and self.evaluation_end <= self.evaluation_label_end
+            and self.purge_days >= 5
+            and self.embargo_days >= 0
+            and bool(self.calibration_snapshot_id)
+            and bool(self.calibration_code_sha256)
+            and self.calibration_gate_reason is None
         )
 
 

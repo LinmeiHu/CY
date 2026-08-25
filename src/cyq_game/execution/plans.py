@@ -157,3 +157,34 @@ class PlanRepository:
             self.append(adjusted, event_time)
             rebased.append(adjusted)
         return rebased
+
+    def rebase_active_for_cash_dividend(
+        self, symbol: str, cash_per_share: float, event_time: datetime
+    ) -> list[TradingPlan]:
+        """Version active plan stops into the ex-cash price coordinate."""
+
+        if cash_per_share < 0:
+            raise ValueError("cash dividend cannot be negative")
+        if cash_per_share == 0:
+            return []
+        rebased: list[TradingPlan] = []
+        for versions in list(self._plans.values()):
+            latest = versions[-1]
+            if latest.symbol != symbol or latest.status != PlanStatus.ACTIVE:
+                continue
+            if not latest.valid_from <= event_time <= latest.expires_at:
+                continue
+            protective_stop = latest.protective_stop - cash_per_share
+            if protective_stop <= 0:
+                raise ValueError("cash dividend creates a non-positive protective stop")
+            adjusted = replace(
+                latest,
+                version=latest.version + 1,
+                parent_version=latest.version,
+                created_at=event_time,
+                valid_from=event_time,
+                protective_stop=protective_stop,
+            )
+            self.append(adjusted, event_time)
+            rebased.append(adjusted)
+        return rebased

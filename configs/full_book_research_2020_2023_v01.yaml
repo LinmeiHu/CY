@@ -1,0 +1,35 @@
+research_id: CYQ-FULL-BOOK-2020-2023-V01
+mode: research_only
+source_pdf: /Users/linmei/Downloads/股票书籍/筹码结构交易学_从持仓成本分布到可验证的交易决策_重构版.pdf
+data_registry: configs/data_asset_registry.json
+feature_asset: data/processed/chip_state_features_2018_2026_v2/bucket=*/data.parquet
+daily_asset: data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=*/data_0.parquet
+discovery_start: 2020-01-02
+discovery_end: 2022-12-30
+timeout_start: 2023-01-03
+timeout_end: 2023-12-29
+warmup_start: 2018-01-02
+retrospective_only_start: 2024-01-02
+retrospective_only_end: 2026-08-12
+allow_retrospective_tuning: false
+allow_final_holdout_access: false
+target_signals_per_year: 200
+signal_target_tolerance: 0.35
+max_hold_days: 60
+cooldown_days: [20, 40, 60]
+workers: 4
+duckdb_threads_per_worker: 2
+seed: 20260822
+costs:
+  commission_bps_each_side: 3.0
+  stamp_duty_bps_sell: 5.0
+  slippage_bps_each_side: 5.0
+  impact_bps_each_side: 0.0
+rules:
+  contraction_pct: [0.20, 0.40, 0.60]
+  pullback_volume_mult: [0.50, 0.70, 0.85]
+  breakout_volume_mult: [1.00, 1.25, 1.50]
+  market_gate: [false, true]
+  sector_gate: [false, true]
+  confirmation_days: [1, 3]
+  exit_grace_days: [0, 2, 5]

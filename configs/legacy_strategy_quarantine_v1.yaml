@@ -1,0 +1,22 @@
+status: LEGACY_INVALID_FOR_PROMOTION
+sealed_at: 2026-08-22T00:00:00+08:00
+applies_to:
+  - output/full_book_research_2020_2023_v01
+  - output/research_absorption_2020_2023
+  - artifacts/full_book_research_2020_2023_v01
+  - artifacts/research_absorption_2020_2023
+  - scripts/analyze_signal_quality.py
+  - scripts/build_strategy_research_dataset.py
+  - scripts/calibrate_strategy_thresholds.py
+pollution_classes:
+  - FUTURE_LABEL_IN_SIGNAL_SELECTION
+  - DAILY_TOP_N_OR_CAPACITY_TRUNCATION
+  - ACCESSED_RESEALED_2024_2026
+rules:
+  promotion_allowed: false
+  parameter_selection_allowed: false
+  performance_claims_allowed: false
+  audit_read_only: true
+replacement:
+  strategy_module: src/cyq_game/strategy/markup_retest.py
+  config: configs/markup_retest_v1.yaml

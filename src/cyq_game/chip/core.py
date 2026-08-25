@@ -75,7 +75,7 @@ class LogPriceGrid:
         weights = triangle + 0.25 * close_weight
         if float(weights.sum()) <= 0:
             weights[self.bucket(close)] = 1.0
-        return weights / float(weights.sum())
+        return np.array(weights / float(weights.sum()), dtype=np.float64)
 
     def observed_volume_at_price(
         self,
@@ -135,11 +135,27 @@ class ChipState:
     quality: float
     age_mass: FloatArray | None = None
     degraded_mode: str | None = None
+    # Cost coordinates remain in the immutable, unadjusted market-price
+    # basis.  Cash distributions are economic proceeds, not a price action.
+    price_basis: str = "RAW_UNADJUSTED"
+    cash_distributions_per_share: float = 0.0
+    applied_action_ids: tuple[str, ...] = ()
+    action_ledger_version: str = "chip-action-ledger-v2"
+    action_blocking: bool = False
     _mass_sum: float = field(init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
         if self.mass.shape != self.grid.prices.shape:
             raise ValueError("chip mass shape does not match grid")
+        if self.price_basis != "RAW_UNADJUSTED":
+            raise ValueError("chip state must use the RAW_UNADJUSTED price basis")
+        if (
+            not np.isfinite(self.cash_distributions_per_share)
+            or self.cash_distributions_per_share < 0
+        ):
+            raise ValueError("cash distribution ledger must be finite and non-negative")
+        if len(set(self.applied_action_ids)) != len(self.applied_action_ids):
+            raise ValueError("applied corporate action ids must be unique")
         if np.any(self.mass < -1e-12):
             raise MassConservationError("negative chip mass")
         mass_sum = float(self.mass.sum())
@@ -164,6 +180,12 @@ class ChipState:
     @property
     def average_cost(self) -> float:
         return float(np.dot(self.grid.prices, self.mass))
+
+    @property
+    def economic_average_cost(self) -> float:
+        """Average raw cost less cumulative cash received per current share."""
+
+        return self.average_cost - self.cash_distributions_per_share
 
     @property
     def mass_sum(self) -> float:
@@ -207,39 +229,168 @@ def ensure_grid(state: ChipState, low: float, high: float) -> ChipState:
         quality=state.quality,
         age_mass=new_age,
         degraded_mode=state.degraded_mode,
+        price_basis=state.price_basis,
+        cash_distributions_per_share=state.cash_distributions_per_share,
+        applied_action_ids=state.applied_action_ids,
+        action_ledger_version=state.action_ledger_version,
+        action_blocking=state.action_blocking,
     )
 
 
-def apply_split_to_state(state: ChipState, ratio: float, as_of: date) -> ChipState:
-    """Remap cost prices for a split/bonus issue without creating chip mass."""
+def _reprice_state(
+    state: ChipState,
+    adjusted_prices: FloatArray,
+    *,
+    as_of: date,
+    action_name: str,
+) -> ChipState:
+    """Move every cost bucket onto an exact post-action price coordinate."""
 
-    if ratio <= 0:
-        raise ValueError("split ratio must be positive")
-    adjusted_prices = state.grid.prices / ratio
-    new_grid = LogPriceGrid.around(
-        float(adjusted_prices[0]),
-        float(adjusted_prices[-1]),
-        state.grid.step_pct,
-    )
-    indexes = np.array(
-        [new_grid.bucket(float(price)) for price in adjusted_prices],
-        dtype=np.int64,
-    )
-    new_mass = np.zeros_like(new_grid.prices)
-    np.add.at(new_mass, indexes, state.mass)
-    new_age: FloatArray | None = None
-    if state.age_mass is not None:
-        new_age = np.zeros((len(new_grid.prices), state.age_mass.shape[1]), dtype=np.float64)
-        np.add.at(new_age, indexes, state.age_mass)
+    if adjusted_prices.shape != state.grid.prices.shape:
+        raise ValueError(f"{action_name} price coordinate shape mismatch")
+    if np.any(~np.isfinite(adjusted_prices)) or np.any(adjusted_prices <= 0):
+        raise ValueError(f"{action_name} creates a non-positive price coordinate")
+    if len(adjusted_prices) > 1 and np.any(np.diff(adjusted_prices) <= 0):
+        raise ValueError(f"{action_name} price coordinate must remain increasing")
     return ChipState(
-        grid=new_grid,
-        mass=new_mass,
+        grid=LogPriceGrid(adjusted_prices.copy(), state.grid.step_pct),
+        mass=state.mass.copy(),
         as_of=as_of,
         engine=state.engine,
         quality=state.quality,
-        age_mass=new_age,
+        age_mass=None if state.age_mass is None else state.age_mass.copy(),
         degraded_mode=state.degraded_mode,
+        price_basis=state.price_basis,
+        cash_distributions_per_share=state.cash_distributions_per_share,
+        applied_action_ids=state.applied_action_ids,
+        action_ledger_version=state.action_ledger_version,
+        action_blocking=state.action_blocking,
     )
+
+
+def apply_split_to_state(
+    state: ChipState,
+    ratio: float,
+    as_of: date,
+    *,
+    action_id: str | None = None,
+    blocking: bool = False,
+) -> ChipState:
+    """Rebase costs for a split/bonus issue with no rebucketing or mass loss."""
+
+    if not np.isfinite(ratio) or ratio <= 0:
+        raise ValueError("split ratio must be positive")
+    if action_id is not None and action_id in state.applied_action_ids:
+        return state
+    rebased = _reprice_state(
+        state,
+        state.grid.prices / ratio,
+        as_of=as_of,
+        action_name="split",
+    )
+    return ChipState(
+        grid=rebased.grid,
+        mass=rebased.mass,
+        as_of=rebased.as_of,
+        engine=rebased.engine,
+        quality=rebased.quality,
+        age_mass=rebased.age_mass,
+        degraded_mode=rebased.degraded_mode,
+        price_basis=rebased.price_basis,
+        cash_distributions_per_share=rebased.cash_distributions_per_share / ratio,
+        action_ledger_version=rebased.action_ledger_version,
+        action_blocking=blocking,
+        applied_action_ids=(
+            (*rebased.applied_action_ids, action_id)
+            if action_id is not None
+            else rebased.applied_action_ids
+        ),
+    )
+
+
+def apply_cash_dividend_to_state(
+    state: ChipState,
+    cash_per_share: float,
+    as_of: date,
+    *,
+    action_id: str | None = None,
+    blocking: bool = False,
+) -> ChipState:
+    """Record cash proceeds without moving the raw price-cost distribution.
+
+    A cash dividend changes an investor's economic break-even, but it does not
+    change the historical transaction price at which shares entered the
+    position.  Keeping both concepts separate prevents raw OHLC from being
+    compared with a silently shifted chip grid.  ``action_id`` makes replay
+    idempotent; ``blocking`` records a data-quality/action-resolution block for
+    the current event without making future bars permanently blocked.
+    """
+
+    if not np.isfinite(cash_per_share) or cash_per_share < 0:
+        raise ValueError("cash dividend must be finite and non-negative")
+    if action_id is not None and action_id in state.applied_action_ids:
+        return state
+    action_ids = state.applied_action_ids
+    if action_id is not None:
+        action_ids = (*action_ids, action_id)
+    return ChipState(
+        grid=state.grid,
+        mass=state.mass.copy(),
+        as_of=as_of,
+        engine=state.engine,
+        quality=state.quality,
+        age_mass=None if state.age_mass is None else state.age_mass.copy(),
+        degraded_mode=state.degraded_mode,
+        price_basis=state.price_basis,
+        cash_distributions_per_share=(
+            state.cash_distributions_per_share + cash_per_share
+        ),
+        applied_action_ids=action_ids,
+        action_ledger_version=state.action_ledger_version,
+        action_blocking=blocking,
+    )
+
+
+def apply_corporate_actions_to_state(
+    state: ChipState,
+    *,
+    as_of: date,
+    share_multiplier: float = 1.0,
+    cash_per_share: float = 0.0,
+    action_id_prefix: str | None = None,
+    blocking: bool = False,
+) -> ChipState:
+    """Apply the canonical causal action order to one chip state.
+
+    The normalized daily source aggregates actions by symbol/date.  This
+    helper is therefore the single adapter for that aggregate: cash is recorded
+    first in the current-share ledger, then share-count actions rebase both raw
+    cost coordinates and the ledger.  Replaying the same aggregate is a no-op
+    when an action id prefix is supplied.
+    """
+
+    if not np.isfinite(share_multiplier) or share_multiplier <= 0:
+        raise ValueError("share multiplier must be finite and positive")
+    if not np.isfinite(cash_per_share) or cash_per_share < 0:
+        raise ValueError("cash dividend must be finite and non-negative")
+    updated = state
+    if cash_per_share > 0:
+        updated = apply_cash_dividend_to_state(
+            updated,
+            cash_per_share,
+            as_of,
+            action_id=None if action_id_prefix is None else f"{action_id_prefix}:cash",
+            blocking=blocking,
+        )
+    if share_multiplier != 1.0:
+        updated = apply_split_to_state(
+            updated,
+            share_multiplier,
+            as_of,
+            action_id=None if action_id_prefix is None else f"{action_id_prefix}:split",
+            blocking=blocking,
+        )
+    return updated
 
 
 class ChipEngine(Protocol):
@@ -292,7 +443,17 @@ class UniformChipEngine:
         validate_q(q, previous.mass.shape)
         replace = 0.0 if suspended else replacement_fraction(turnover, self.lambda_turnover)
         mass = previous.mass * (1.0 - replace) + q * replace
-        return ChipState(previous.grid, mass, as_of, "uniform", quality=0.60)
+        return ChipState(
+            previous.grid,
+            mass,
+            as_of,
+            "uniform",
+            quality=0.60,
+            price_basis=previous.price_basis,
+            cash_distributions_per_share=previous.cash_distributions_per_share,
+            applied_action_ids=previous.applied_action_ids,
+            action_ledger_version=previous.action_ledger_version,
+        )
 
 
 class CohortChipEngine:
@@ -326,7 +487,18 @@ class CohortChipEngine:
             raise ValueError("cohort engine requires an age-mass state")
         if suspended:
             aged = _age_survivors(cohorts)
-            return ChipState(previous.grid, aged.sum(axis=1), as_of, "cohort", 0.55, aged)
+            return ChipState(
+                previous.grid,
+                aged.sum(axis=1),
+                as_of,
+                "cohort",
+                0.55,
+                aged,
+                price_basis=previous.price_basis,
+                cash_distributions_per_share=previous.cash_distributions_per_share,
+                applied_action_ids=previous.applied_action_ids,
+                action_ledger_version=previous.action_ledger_version,
+            )
         replace = replacement_fraction(turnover, self.lambda_turnover)
         sold = self._sell_exact(previous.grid.prices, close, cohorts, replace)
         survivors = cohorts - sold
@@ -337,7 +509,18 @@ class CohortChipEngine:
         marginal = aged.sum(axis=1)
         if abs(float(sold.sum()) - replace) > 1e-8:
             raise MassConservationError("cohort sold mass differs from replacement")
-        return ChipState(previous.grid, marginal, as_of, "cohort", 0.75, aged)
+        return ChipState(
+            previous.grid,
+            marginal,
+            as_of,
+            "cohort",
+            0.75,
+            aged,
+            price_basis=previous.price_basis,
+            cash_distributions_per_share=previous.cash_distributions_per_share,
+            applied_action_ids=previous.applied_action_ids,
+            action_ledger_version=previous.action_ledger_version,
+        )
 
     def _sell_exact(
         self,
@@ -388,7 +571,7 @@ class CohortChipEngine:
         # Directional, bounded prior; coefficients require OOS calibration before promotion.
         profit_score = 0.60 + 0.65 * np.minimum(np.abs(profit), 0.50) / 0.50
         loss_aversion = np.where(profit < 0, 0.85, 1.0)
-        return profit_score * loss_aversion
+        return np.array(profit_score * loss_aversion, dtype=np.float64)
 
     def _age_scores(self, age_count: int) -> FloatArray:
         if age_count == len(self._age_score):
@@ -447,8 +630,9 @@ def _solve_exact_sold(
     survival: FloatArray | None = None
     converged = False
     for _ in range(32):
-        survival = np.exp(-strength * work_hazard)
-        amount = float((work_mass * (1.0 - survival)).sum())
+        current_survival = np.exp(-strength * work_hazard)
+        survival = current_survival
+        amount = float((work_mass * (1.0 - current_survival)).sum())
         residual = amount - target
         if abs(residual) <= 1e-14:
             converged = True
@@ -465,8 +649,12 @@ def _solve_exact_sold(
     if survival is None:
         raise MassConservationError("hazard solver did not evaluate a candidate")
     if not converged:
-        survival = np.exp(-strength * work_hazard)
-    work_sold = work_mass * (1.0 - survival)
+        survival_array = np.asarray(
+            np.exp(-strength * work_hazard), dtype=np.float64
+        )
+    else:
+        survival_array = survival
+    work_sold = work_mass * (1.0 - survival_array)
     residual = target - float(work_sold.sum())
     if abs(residual) > 1e-13:
         if residual > 0:

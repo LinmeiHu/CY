@@ -5,11 +5,11 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from collections.abc import Mapping, Sequence
 from datetime import UTC, date, datetime, time, tzinfo
 from functools import lru_cache
 from pathlib import Path
-from statistics import fmean
 from typing import Any, cast
 from zoneinfo import ZoneInfo
 
@@ -140,6 +140,7 @@ class PITBDailyStore(PITStore):
         self._duckdb: duckdb.DuckDBPyConnection | None = None
         self._daily_cache_month: tuple[int, int] | None = None
         self._minute_cache_month: tuple[int, int] | None = None
+        self._execution_cache_month: tuple[int, int] | None = None
         self._chip_cache_month: tuple[int, int] | None = None
         self._strict_day_cache: dict[
             tuple[date, datetime, tuple[str, ...] | None], dict[str, dict[str, Any]]
@@ -157,6 +158,12 @@ class PITBDailyStore(PITStore):
     @property
     def decision_timezone(self) -> tzinfo:
         return _SHANGHAI
+
+    @property
+    def activated_daily_files(self) -> tuple[Path, ...]:
+        """Frozen daily files physically visible under the authorized scope."""
+
+        return self._parquet_files
 
     @property
     def supports_native_forecast(self) -> bool:
@@ -197,14 +204,22 @@ class PITBDailyStore(PITStore):
 
     def initialize(self) -> None:
         verification_cache_dir = self.path.parent / ".inventory_verification"
-        self._parquet_files = _verify_inventory_once(
-            self.binding,
-            cache_dir=verification_cache_dir,
+        self._parquet_files = _authorized_partition_files(
+            _verify_inventory_once(
+                self.binding,
+                cache_dir=verification_cache_dir,
+            ),
+            scope_start=self.authorization.scope_start,
+            scope_end=self.authorization.scope_end,
         )
         if self.minute_binding is not None:
-            minute_files = _verify_inventory_once(
-                self.minute_binding,
-                cache_dir=verification_cache_dir,
+            minute_files = _authorized_partition_files(
+                _verify_inventory_once(
+                    self.minute_binding,
+                    cache_dir=verification_cache_dir,
+                ),
+                scope_start=self.authorization.scope_start,
+                scope_end=self.authorization.scope_end,
             )
             root = self.minute_binding.path.resolve()
             self._minute_daily_files = tuple(
@@ -218,9 +233,13 @@ class PITBDailyStore(PITStore):
                     "minute_pit_b inventory must freeze daily and execution_5m Parquet files"
                 )
         if self.chip_feature_binding is not None:
-            self._chip_feature_files = _verify_inventory_once(
-                self.chip_feature_binding,
-                cache_dir=verification_cache_dir,
+            self._chip_feature_files = _authorized_partition_files(
+                _verify_inventory_once(
+                    self.chip_feature_binding,
+                    cache_dir=verification_cache_dir,
+                ),
+                scope_start=self.authorization.scope_start,
+                scope_end=self.authorization.scope_end,
             )
         super().initialize()
         now = datetime.now(UTC)
@@ -247,6 +266,7 @@ class PITBDailyStore(PITStore):
             self._duckdb = None
         self._daily_cache_month = None
         self._minute_cache_month = None
+        self._execution_cache_month = None
         self._chip_cache_month = None
 
     def symbols(self) -> list[str]:
@@ -469,7 +489,7 @@ class PITBDailyStore(PITStore):
         )
         self._connection().execute(
             "CREATE INDEX pit_b_chip_features_month_date "
-            "ON pit_b_chip_features_month(trade_date)"
+            "ON pit_b_chip_features_month(trade_date, symbol)"
         )
         self._chip_cache_month = month
 
@@ -495,9 +515,40 @@ class PITBDailyStore(PITStore):
             [month_start, month_end],
         )
         self._connection().execute(
-            "CREATE INDEX pit_b_minute_month_date ON pit_b_minute_month(trade_date)"
+            "CREATE INDEX pit_b_minute_month_date_symbol "
+            "ON pit_b_minute_month(trade_date, symbol)"
         )
         self._minute_cache_month = month
+
+    def _prepare_execution_month(self, trade_date: date) -> None:
+        """Materialize one execution-minute month for all daily order fills."""
+        month = (trade_date.year, trade_date.month)
+        if self._execution_cache_month == month:
+            return
+        month_start = trade_date.replace(day=1)
+        month_end = (
+            date(trade_date.year + 1, 1, 1)
+            if trade_date.month == 12
+            else date(trade_date.year, trade_date.month + 1, 1)
+        )
+        connection = self._connection()
+        connection.execute(
+            """
+            CREATE OR REPLACE TEMP TABLE pit_b_execution_month AS
+            SELECT symbol, trade_date, window_index, open, high, low, close, volume, amount,
+                   circulating_shares, available_at, trade_status, is_st,
+                   up_limit_price, down_limit_price, market_rule_id,
+                   market_rule_valid, limit_pct, hard_valid
+            FROM pit_b_execution_5m
+            WHERE trade_date >= ? AND trade_date < ?
+            """,
+            [month_start, month_end],
+        )
+        connection.execute(
+            "CREATE INDEX pit_b_execution_month_date_symbol "
+            "ON pit_b_execution_month(trade_date, symbol)"
+        )
+        self._execution_cache_month = month
 
     def execution_windows_for_day(
         self,
@@ -509,13 +560,14 @@ class PITBDailyStore(PITStore):
             return super().execution_windows_for_day(symbols, trade_date, decision_at)
         if not symbols:
             return {}
+        self._prepare_execution_month(trade_date)
         placeholders = ",".join("?" for _ in symbols)
         rows = self._query(
             f"""
             SELECT symbol, trade_date, open, high, low, close, volume, amount,
                    circulating_shares, available_at, trade_status, is_st,
                    up_limit_price, down_limit_price
-            FROM pit_b_execution_5m
+            FROM pit_b_execution_month
             WHERE symbol IN ({placeholders}) AND trade_date = ?
               AND available_at <= ? AND hard_valid = TRUE
             ORDER BY symbol, window_index
@@ -540,6 +592,7 @@ class PITBDailyStore(PITStore):
         symbols = tuple(symbol_boards)
         if not symbols:
             return ExecutionDayBatch({}, {}, frozenset(), frozenset(), {})
+        self._prepare_execution_month(trade_date)
         placeholders = ",".join("?" for _ in symbols)
         rows = self._query(
             f"""
@@ -547,7 +600,7 @@ class PITBDailyStore(PITStore):
                    circulating_shares, available_at, trade_status, is_st,
                    up_limit_price, down_limit_price, market_rule_id,
                    market_rule_valid, limit_pct, hard_valid
-            FROM pit_b_execution_5m
+            FROM pit_b_execution_month
             WHERE symbol IN ({placeholders}) AND trade_date = ? AND available_at <= ?
             ORDER BY symbol, window_index
             """,
@@ -773,112 +826,169 @@ class PITBDailyStore(PITStore):
         symbols: Sequence[str],
         train_dates: set[date],
         decision_at: datetime,
+        *,
+        calibration_train_dates: set[date] | None = None,
+        evaluation_dates: set[date] | None = None,
+        purge_dates: set[date] | None = None,
+        embargo_dates: set[date] | None = None,
+        fold_id: int | None = None,
     ) -> CalibratedForecast:
-        """Compute the existing five-session forecast directly in DuckDB."""
+        """Return one symbol forecast only when a real later fold validates it."""
 
-        if not symbols or not train_dates:
-            return CalibratedForecast(0.5, 1.0, 1.0, 0, True, 0.20)
-        symbol_placeholders = ",".join("?" for _ in symbols)
-        date_placeholders = ",".join("?" for _ in train_dates)
-        ordered_dates = sorted(train_dates)
-        rows = self._query(
-            f"""
-            WITH selected AS (
-              SELECT symbol, trade_date, close,
-                     LEAD(close, 5) OVER (
-                       PARTITION BY symbol ORDER BY trade_date
-                     ) AS close_5
-              FROM pit_b_daily
-              WHERE symbol IN ({symbol_placeholders})
-                AND trade_date IN ({date_placeholders})
-                AND available_at <= ?
-                AND hard_valid = TRUE
-            )
-            SELECT (close_5 / close - 1.0) / 0.05 AS outcome
-            FROM selected
-            WHERE close_5 IS NOT NULL AND close > 0
-            """,
-            [*symbols, *ordered_dates, _local_naive(decision_at)],
-        )
-        outcomes = [float(row["outcome"]) for row in rows if row["outcome"] is not None]
-        wins = [value for value in outcomes if value > 0]
-        losses = [-value for value in outcomes if value < 0]
-        if not wins or not losses:
-            return CalibratedForecast(0.5, 1.0, 1.0, len(outcomes), True, 0.20)
-        probability = min(0.99, max(0.01, len(wins) / len(outcomes)))
-        return CalibratedForecast(
-            win_probability=probability,
-            average_win_r=max(0.05, fmean(wins)),
-            average_loss_r=max(0.05, fmean(losses)),
-            sample_size=len(outcomes),
-            out_of_sample=True,
-            calibration_error=min(0.20, abs(probability - 0.5) * 0.25),
-        )
+        if len(symbols) != 1:
+            return _uncalibrated_forecast("AGGREGATE_NATIVE_FORECAST_NOT_SUPPORTED")
+        return self.calibrate_forecasts(
+            symbols,
+            train_dates,
+            decision_at,
+            calibration_train_dates=calibration_train_dates,
+            evaluation_dates=evaluation_dates,
+            purge_dates=purge_dates,
+            embargo_dates=embargo_dates,
+            fold_id=fold_id,
+        )[symbols[0]]
 
     def calibrate_forecasts(
         self,
         symbols: Sequence[str],
         train_dates: set[date],
         decision_at: datetime,
+        *,
+        calibration_train_dates: set[date] | None = None,
+        evaluation_dates: set[date] | None = None,
+        purge_dates: set[date] | None = None,
+        embargo_dates: set[date] | None = None,
+        fold_id: int | None = None,
     ) -> dict[str, CalibratedForecast]:
-        """Compute symbol-level forecasts with one grouped DuckDB scan per fold."""
+        """Fit on an earlier fold, score a later fold, then fail closed or authorize.
 
-        fallback = CalibratedForecast(0.5, 1.0, 1.0, 0, True, 0.20)
-        result = {symbol: fallback for symbol in symbols}
-        if not symbols or not train_dates:
+        Five-session labels are formed on the complete per-symbol bar sequence
+        before origin dates are assigned to refit/train/evaluation sets.  This
+        prevents sparse ``train_dates`` from changing the label horizon.
+        """
+
+        selected_symbols = tuple(sorted(dict.fromkeys(symbols)))
+        missing_fold = _uncalibrated_forecast("NO_STRICTLY_LATER_EVALUATION_FOLD")
+        result = {symbol: missing_fold for symbol in selected_symbols}
+        calibration_dates = set(calibration_train_dates or ())
+        score_dates = set(evaluation_dates or ())
+        purged = set(purge_dates or ())
+        embargoed = set(embargo_dates or ())
+        if (
+            not selected_symbols
+            or not train_dates
+            or not calibration_dates
+            or not score_dates
+            or fold_id is None
+        ):
             return result
-        symbol_placeholders = ",".join("?" for _ in symbols)
-        date_placeholders = ",".join("?" for _ in train_dates)
-        ordered_dates = sorted(train_dates)
+        if len(purged) < 5:
+            fallback = _uncalibrated_forecast("CALIBRATION_PURGE_SHORTER_THAN_LABEL_HORIZON")
+            return {symbol: fallback for symbol in selected_symbols}
+        if (
+            max(calibration_dates) >= min(score_dates)
+            or calibration_dates & score_dates
+            or purged & (calibration_dates | score_dates)
+        ):
+            fallback = _uncalibrated_forecast("CALIBRATION_FOLD_OVERLAP_OR_ORDER_INVALID")
+            return {symbol: fallback for symbol in selected_symbols}
+        decision_date = decision_at.astimezone(_SHANGHAI).date()
+        if max(score_dates) >= decision_date:
+            fallback = _uncalibrated_forecast("CALIBRATION_LABELS_NOT_AVAILABLE_BEFORE_DECISION")
+            return {symbol: fallback for symbol in selected_symbols}
+
+        origin_dates = train_dates | calibration_dates | score_dates
         rows = self._query(
-            f"""
+            """
             WITH latest AS (
-              SELECT symbol, trade_date, close
+              SELECT symbol, trade_date, close, hard_valid,
+                     corporate_action_count
               FROM pit_b_daily
-              WHERE symbol IN ({symbol_placeholders})
-                AND trade_date IN ({date_placeholders})
-                AND available_at <= ?
-                AND hard_valid = TRUE
+              WHERE symbol IN (SELECT unnest FROM unnest(?))
+                AND trade_date BETWEEN ? AND ?
+                AND available_at < ?
+                AND bar_valid = TRUE
               QUALIFY ROW_NUMBER() OVER (
                 PARTITION BY symbol, trade_date ORDER BY available_at DESC
               ) = 1
-            ), selected AS (
-              SELECT symbol, trade_date, close,
-                     LEAD(close, 5) OVER (
+            ), labeled AS (
+              SELECT symbol, trade_date, close, hard_valid,
+                     corporate_action_count,
+                     LEAD(trade_date, 5) OVER sequence AS label_date,
+                     LEAD(close, 5) OVER sequence AS close_5,
+                     SUM(corporate_action_count) OVER (
                        PARTITION BY symbol ORDER BY trade_date
-                     ) AS close_5
+                       ROWS BETWEEN 1 FOLLOWING AND 5 FOLLOWING
+                     ) AS actions_in_label_window
               FROM latest
+              WINDOW sequence AS (PARTITION BY symbol ORDER BY trade_date)
             ), outcomes AS (
-              SELECT symbol, (close_5 / close - 1.0) / 0.05 AS outcome
-              FROM selected
-              WHERE close_5 IS NOT NULL AND close > 0
+              SELECT symbol, trade_date, label_date,
+                     (close_5 / close - 1.0) / 0.05 AS outcome,
+                     trade_date IN (SELECT unnest FROM unnest(?)) AS is_refit,
+                     trade_date IN (SELECT unnest FROM unnest(?)) AS is_calibration_train,
+                     trade_date IN (SELECT unnest FROM unnest(?)) AS is_evaluation
+              FROM labeled
+              WHERE close > 0 AND close_5 > 0
+                AND label_date < ?
+                AND hard_valid = TRUE
+                AND corporate_action_count = 0
+                AND coalesce(actions_in_label_window, 0) = 0
+            ), pooled AS (
+              SELECT COUNT(*) FILTER (WHERE is_calibration_train) AS pooled_train_n,
+                     COUNT(*) FILTER (
+                       WHERE is_calibration_train AND outcome > 0
+                     ) AS pooled_train_wins
+              FROM outcomes
+            ), grouped AS (
+              SELECT symbol,
+                     COUNT(*) FILTER (WHERE is_refit) AS refit_n,
+                     COUNT(*) FILTER (WHERE is_refit AND outcome > 0) AS refit_wins,
+                     AVG(outcome) FILTER (WHERE is_refit AND outcome > 0) AS average_win_r,
+                     AVG(-outcome) FILTER (WHERE is_refit AND outcome < 0) AS average_loss_r,
+                     COUNT(*) FILTER (WHERE is_calibration_train) AS calibration_train_n,
+                     COUNT(*) FILTER (
+                       WHERE is_calibration_train AND outcome > 0
+                     ) AS calibration_train_wins,
+                     COUNT(*) FILTER (WHERE is_evaluation) AS evaluation_n,
+                     COUNT(*) FILTER (
+                       WHERE is_evaluation AND outcome > 0
+                     ) AS evaluation_wins,
+                     MIN(label_date) FILTER (WHERE is_evaluation) AS first_label_date,
+                     MAX(label_date) FILTER (WHERE is_evaluation) AS last_label_date
+              FROM outcomes
+              GROUP BY symbol
             )
-            SELECT symbol,
-                   COUNT(*) AS sample_size,
-                   COUNT(*) FILTER (WHERE outcome > 0) AS win_count,
-                   AVG(outcome) FILTER (WHERE outcome > 0) AS average_win_r,
-                   AVG(-outcome) FILTER (WHERE outcome < 0) AS average_loss_r
-            FROM outcomes
-            GROUP BY symbol
+            SELECT grouped.*, pooled.*
+            FROM grouped CROSS JOIN pooled
+            ORDER BY symbol
             """,
-            [*symbols, *ordered_dates, _local_naive(decision_at)],
+            [
+                list(selected_symbols),
+                min(origin_dates),
+                decision_date,
+                _local_naive(decision_at),
+                sorted(train_dates),
+                sorted(calibration_dates),
+                sorted(score_dates),
+                decision_date,
+            ],
         )
+        training_end = max(calibration_dates)
+        evaluation_start = min(score_dates)
+        evaluation_end = max(score_dates)
         for row in rows:
             symbol = str(row["symbol"])
-            sample_size = int(row["sample_size"])
-            average_win = _optional_float(row["average_win_r"])
-            average_loss = _optional_float(row["average_loss_r"])
-            if sample_size <= 0 or average_win is None or average_loss is None:
-                result[symbol] = CalibratedForecast(0.5, 1.0, 1.0, sample_size, True, 0.20)
-                continue
-            probability = min(0.99, max(0.01, int(row["win_count"]) / sample_size))
-            result[symbol] = CalibratedForecast(
-                win_probability=probability,
-                average_win_r=max(0.05, average_win),
-                average_loss_r=max(0.05, average_loss),
-                sample_size=sample_size,
-                out_of_sample=True,
-                calibration_error=min(0.20, abs(probability - 0.5) * 0.25),
+            result[symbol] = _evaluated_forecast(
+                row,
+                symbol=symbol,
+                fold_id=fold_id,
+                source_digest=self.source_digest(),
+                training_end=training_end,
+                evaluation_start=evaluation_start,
+                evaluation_end=evaluation_end,
+                purge_days=len(purged),
+                embargo_days=len(embargoed),
             )
         return result
 
@@ -980,7 +1090,8 @@ class PITBDailyStore(PITStore):
             [month_start, month_end],
         )
         connection.execute(
-            "CREATE INDEX pit_b_daily_month_date ON pit_b_daily_month(trade_date)"
+            "CREATE INDEX pit_b_daily_month_date_symbol "
+            "ON pit_b_daily_month(trade_date, symbol)"
         )
         self._daily_cache_month = month
 
@@ -1126,6 +1237,11 @@ class PITBDailyStore(PITStore):
             raise RuntimeError("PIT-B store must be initialized before use")
         if self._duckdb is None:
             connection = duckdb.connect(database=":memory:")
+            # Backtests are scan-bound (Parquet decompression and joins), so
+            # explicitly use DuckDB's worker pool. This changes execution
+            # performance only; PIT semantics and selected rows are unchanged.
+            connection.execute("PRAGMA threads=8")
+            connection.execute("PRAGMA preserve_insertion_order=false")
             read_parquet = cast(Any, connection.read_parquet)
             read_parquet(
                 [str(path) for path in self._parquet_files],
@@ -1159,6 +1275,222 @@ class PITBDailyStore(PITStore):
             raise RuntimeError("PIT-B query returned no result schema")
         columns = [str(item[0]) for item in cursor.description]
         return [dict(zip(columns, row, strict=True)) for row in cursor.fetchall()]
+
+
+def _uncalibrated_forecast(
+    reason: str,
+    *,
+    win_probability: float = 0.5,
+    average_win_r: float = 1.0,
+    average_loss_r: float = 1.0,
+    sample_size: int = 0,
+    training_sample_size: int = 0,
+    calibration_error: float = 1.0,
+    calibration_brier: float | None = None,
+    baseline_brier: float | None = None,
+    calibration_train_occurrence_rate: float | None = None,
+    evaluation_occurrence_rate: float | None = None,
+    baseline_train_occurrence_rate: float | None = None,
+    training_end: date | None = None,
+    evaluation_start: date | None = None,
+    evaluation_end: date | None = None,
+    evaluation_label_end: date | None = None,
+    purge_days: int = 0,
+    embargo_days: int = 0,
+    calibration_snapshot_id: str | None = None,
+) -> CalibratedForecast:
+    return CalibratedForecast(
+        win_probability=win_probability,
+        average_win_r=average_win_r,
+        average_loss_r=average_loss_r,
+        sample_size=sample_size,
+        out_of_sample=False,
+        calibration_error=calibration_error,
+        training_sample_size=training_sample_size,
+        calibration_brier=calibration_brier,
+        baseline_brier=baseline_brier,
+        calibration_train_occurrence_rate=calibration_train_occurrence_rate,
+        evaluation_occurrence_rate=evaluation_occurrence_rate,
+        baseline_train_occurrence_rate=baseline_train_occurrence_rate,
+        training_end=training_end,
+        evaluation_start=evaluation_start,
+        evaluation_end=evaluation_end,
+        evaluation_label_end=evaluation_label_end,
+        purge_days=purge_days,
+        embargo_days=embargo_days,
+        calibration_snapshot_id=calibration_snapshot_id,
+        calibration_code_sha256=_calibration_code_sha256(),
+        calibration_gate_reason=reason,
+    )
+
+
+def _evaluated_forecast(
+    row: Mapping[str, Any],
+    *,
+    symbol: str,
+    fold_id: int,
+    source_digest: str,
+    training_end: date,
+    evaluation_start: date,
+    evaluation_end: date,
+    purge_days: int,
+    embargo_days: int,
+) -> CalibratedForecast:
+    calibration_n = int(row["calibration_train_n"])
+    calibration_wins = int(row["calibration_train_wins"])
+    evaluation_n = int(row["evaluation_n"])
+    evaluation_wins = int(row["evaluation_wins"])
+    refit_n = int(row["refit_n"])
+    refit_wins = int(row["refit_wins"])
+    pooled_n = int(row["pooled_train_n"])
+    pooled_wins = int(row["pooled_train_wins"])
+    average_win = _optional_float(row.get("average_win_r"))
+    average_loss = _optional_float(row.get("average_loss_r"))
+    label_end = (
+        _as_date(row["last_label_date"])
+        if row.get("last_label_date") is not None
+        else None
+    )
+    probability = _bounded_probability(calibration_wins, calibration_n)
+    baseline_probability = _bounded_probability(pooled_wins, pooled_n)
+    evaluation_rate = evaluation_wins / evaluation_n if evaluation_n else None
+    calibration_error = 1.0
+    calibration_brier: float | None = None
+    baseline_brier: float | None = None
+    if probability is not None and baseline_probability is not None and evaluation_n > 0:
+        calibration_error = abs(probability - cast(float, evaluation_rate))
+        calibration_brier = _constant_brier(
+            probability, evaluation_wins, evaluation_n
+        )
+        baseline_brier = _constant_brier(
+            baseline_probability, evaluation_wins, evaluation_n
+        )
+
+    snapshot_id = _calibration_snapshot_id(
+        source_digest=source_digest,
+        symbol=symbol,
+        fold_id=fold_id,
+        training_end=training_end,
+        evaluation_start=evaluation_start,
+        evaluation_end=evaluation_end,
+        purge_days=purge_days,
+        embargo_days=embargo_days,
+    )
+    reason: str | None = None
+    if calibration_n < 30 or evaluation_n < 30 or refit_n < 30:
+        reason = "CALIBRATION_SAMPLE_INSUFFICIENT"
+    elif not 0 < calibration_wins < calibration_n:
+        reason = "CALIBRATION_TRAIN_SINGLE_CLASS"
+    elif not 0 < evaluation_wins < evaluation_n:
+        reason = "CALIBRATION_EVALUATION_SINGLE_CLASS"
+    elif not 0 < refit_wins < refit_n or average_win is None or average_loss is None:
+        reason = "CALIBRATION_REFIT_SINGLE_CLASS"
+    elif probability is None or baseline_probability is None:
+        reason = "CALIBRATION_PROBABILITY_UNAVAILABLE"
+    elif label_end is None:
+        reason = "CALIBRATION_LABEL_WINDOW_UNAVAILABLE"
+    elif label_end < evaluation_end:
+        reason = "CALIBRATION_LABEL_COVERAGE_ENDS_BEFORE_EVALUATION"
+    elif calibration_error > 0.05:
+        reason = "CALIBRATION_ECE_EXCEEDS_LIMIT"
+    elif (
+        calibration_brier is None
+        or baseline_brier is None
+        or calibration_brier >= baseline_brier
+    ):
+        reason = "CALIBRATION_BRIER_DOES_NOT_BEAT_BASELINE"
+
+    if reason is not None:
+        return _uncalibrated_forecast(
+            reason,
+            win_probability=probability or 0.5,
+            average_win_r=max(0.05, average_win or 1.0),
+            average_loss_r=max(0.05, average_loss or 1.0),
+            sample_size=evaluation_n,
+            training_sample_size=calibration_n,
+            calibration_error=calibration_error,
+            calibration_brier=calibration_brier,
+            baseline_brier=baseline_brier,
+            calibration_train_occurrence_rate=probability,
+            evaluation_occurrence_rate=evaluation_rate,
+            baseline_train_occurrence_rate=baseline_probability,
+            training_end=training_end,
+            evaluation_start=evaluation_start,
+            evaluation_end=evaluation_end,
+            evaluation_label_end=label_end,
+            purge_days=purge_days,
+            embargo_days=embargo_days,
+            calibration_snapshot_id=snapshot_id,
+        )
+    return CalibratedForecast(
+        win_probability=cast(float, probability),
+        average_win_r=max(0.05, cast(float, average_win)),
+        average_loss_r=max(0.05, cast(float, average_loss)),
+        sample_size=evaluation_n,
+        out_of_sample=True,
+        calibration_error=calibration_error,
+        training_sample_size=calibration_n,
+        calibration_brier=calibration_brier,
+        baseline_brier=baseline_brier,
+        calibration_train_occurrence_rate=probability,
+        evaluation_occurrence_rate=evaluation_rate,
+        baseline_train_occurrence_rate=baseline_probability,
+        training_end=training_end,
+        evaluation_start=evaluation_start,
+        evaluation_end=evaluation_end,
+        evaluation_label_end=cast(date, label_end),
+        purge_days=purge_days,
+        embargo_days=embargo_days,
+        calibration_snapshot_id=snapshot_id,
+        calibration_code_sha256=_calibration_code_sha256(),
+        calibration_gate_reason=None,
+    )
+
+
+def _bounded_probability(wins: int, sample_size: int) -> float | None:
+    if sample_size <= 0:
+        return None
+    return min(0.99, max(0.01, wins / sample_size))
+
+
+def _constant_brier(probability: float, wins: int, sample_size: int) -> float:
+    losses = sample_size - wins
+    return (
+        wins * (1.0 - probability) ** 2 + losses * probability**2
+    ) / sample_size
+
+
+def _calibration_snapshot_id(
+    *,
+    source_digest: str,
+    symbol: str,
+    fold_id: int,
+    training_end: date,
+    evaluation_start: date,
+    evaluation_end: date,
+    purge_days: int,
+    embargo_days: int,
+) -> str:
+    identity = "|".join(
+        (
+            "PIT_B_TRUE_OOS_CALIBRATION_V3",
+            source_digest,
+            symbol,
+            str(fold_id),
+            training_end.isoformat(),
+            evaluation_start.isoformat(),
+            evaluation_end.isoformat(),
+            str(purge_days),
+            str(embargo_days),
+            _calibration_code_sha256(),
+        )
+    )
+    return "pit-b-calibration-" + hashlib.sha256(identity.encode()).hexdigest()
+
+
+@lru_cache(maxsize=1)
+def _calibration_code_sha256() -> str:
+    return _sha256_file(Path(__file__))
 
 
 def _verify_inventory_once(
@@ -1219,6 +1551,39 @@ def _verify_inventory_once(
     _write_verification_cache(cache_dir, inventory_digest, verified_metadata)
     _VERIFIED_INVENTORIES[key] = result
     return result
+
+
+def _authorized_partition_files(
+    files: Sequence[Path],
+    *,
+    scope_start: date,
+    scope_end: date,
+) -> tuple[Path, ...]:
+    """Physically exclude year partitions outside the activation scope.
+
+    Unknown partition layouts remain available because every query is still
+    decision-time bounded. Registered production datasets use explicit
+    ``partition_year=YYYY`` directories, so a 2020--2022 activation never even
+    presents the 2023 file to DuckDB.
+    """
+
+    selected = tuple(
+        path
+        for path in files
+        if (year := _partition_year(path)) is None
+        or scope_start.year <= year <= scope_end.year
+    )
+    if not selected:
+        raise DataActivationError("PIT-B activation scope contains no frozen files")
+    return selected
+
+
+def _partition_year(path: Path) -> int | None:
+    for part in reversed(path.parts):
+        match = re.search(r"(?:partition_year|year)=(\d{4})(?:\D|$)", part)
+        if match is not None:
+            return int(match.group(1))
+    return None
 
 
 def _verification_metadata(

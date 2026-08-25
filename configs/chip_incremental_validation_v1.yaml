@@ -1,0 +1,151 @@
+protocol:
+  id: CHIP_INCREMENTAL_VALIDATION_PROTOCOL_V1
+  research_line: semantic_chip_incremental_value_v1
+  status: PREREGISTERED_RESEARCH_ONLY
+  predecessor_freeze: output/markup_retest_main_chinext_2020_2023_v1/freeze_manifest.json
+  predecessor_decision_required: NO_TRADE
+  immutable_predecessor: true
+
+governance:
+  registry: configs/data_asset_registry.json
+  protocol_document: docs/CHIP_INCREMENTAL_VALIDATION_PROTOCOL_V1.md
+  trial_ledger: output/chip_incremental_validation_v1/trials/events.jsonl
+  protocol_manifest: output/chip_incremental_validation_v1/protocol_manifest.json
+  output_root: output/chip_incremental_validation_v1
+
+data_lock:
+  research_start: "2020-01-02"
+  research_end: "2022-12-30"
+  warmup_start: "2018-01-02"
+  maximum_input_date: "2022-12-30"
+  forbidden_outcome_start: "2023-01-01"
+  forbidden_outcome_end: "2026-12-31"
+  holdout_outcomes_may_be_read: false
+  physical_2023_incident_disclosed: true
+
+assets:
+  daily_asset_id: CY-006
+  minute_asset_id: CY-008
+  exact_feature_asset_id: CY-019
+  exact_lineage_asset_id: CY-020
+  planned_semantic_overlay_asset_id: CY-021
+  daily_root: data/processed/pit_b_daily_2018_2026_v2/daily
+  minute_root: data/processed/pit_b_minute_2018_2026_v2
+  exact_feature_root: data/registered_inputs/CY-019-MARKUP-RETEST-MAIN-CHINEXT-2020-2023-V11/features
+  exact_lineage_root: data/registered_inputs/CY-019-MARKUP-RETEST-MAIN-CHINEXT-2020-2023-V11/lineage
+  semantic_overlay_root: data/registered_inputs/CY-021-SEMANTIC-CHIP-2020-2022-V1
+
+candidate_event:
+  definition: PRICE_VOLUME_ONLY_BREAKOUT_RETEST
+  requires_research_hard_valid: true
+  requires_tradable: true
+  support_regained: true
+  breakout_excess_atr_minimum: 0.25
+  allowed_market_states: [RISK_ON, NEUTRAL]
+  allowed_sector_states: [STRONG, NEUTRAL]
+  cooldown_trading_sessions: 20
+  maximum_one_event_per_symbol_iso_week: true
+  chip_fields_forbidden_in_candidate_generation: true
+
+semantic_measurement:
+  quantile_bands:
+    I70: [0.15, 0.85]
+    I90: [0.05, 0.95]
+  peak_kernel: [1.0, 4.0, 6.0, 4.0, 1.0]
+  peak_selection: STRONGEST_BELOW_OR_AT_CLOSE_AND_STRONGEST_ABOVE_CLOSE
+  valley_definition: MINIMUM_SMOOTHED_STRENGTH_BETWEEN_SELECTED_PRICE_ORDERED_PEAKS
+  change_horizon_sessions: 20
+  seller_model_aggregation: MEDIAN_WITH_MIN_MAX_SPREAD
+  measurement_parameters_may_be_tuned_on_returns: false
+
+hypothesis_modules:
+  concentrated_support:
+    expected_directions:
+      i70_width_atr: LOWER
+      i90_width_atr: LOWER
+      dominant_band_mass: HIGHER
+  cost_migration:
+    expected_directions:
+      price_minus_cost_migration_20_vol: HIGHER
+      profit_ratio_change_20: HIGHER
+      i90_contraction_20: HIGHER
+  overhead_resolution:
+    expected_directions:
+      profit_ratio: HIGHER
+      upper_to_lower_peak_strength: LOWER
+      valley_depth: HIGHER
+  observability:
+    role: QUALITY_GATE_NOT_ALPHA
+    expected_directions:
+      known_cost_fraction_min: HIGHER
+      seller_model_disagreement_atr: LOWER
+
+outcome:
+  primary: EXACT_FIXED_20_SESSION_NET_RETURN
+  signal_fill: NEXT_LEGAL_5M_WINDOW
+  exit: TWENTIETH_LEGAL_SESSION_5M_WINDOW
+  same_bar_fill_forbidden: true
+  blocked_exits_persist: true
+  fee_bps: 5.0
+  slippage_bps: 10.0
+  impact_bps: 5.0
+
+forward_folds:
+  - id: FIT_2020_EVALUATE_2021
+    fit_start: "2020-01-02"
+    fit_end: "2020-12-03"
+    purge_sessions: 20
+    evaluate_start: "2021-01-04"
+    evaluate_end: "2021-12-03"
+    embargo_sessions: 20
+  - id: FIT_2020_2021_EVALUATE_2022
+    fit_start: "2020-01-02"
+    fit_end: "2021-12-02"
+    purge_sessions: 20
+    evaluate_start: "2022-01-04"
+    evaluate_end: "2022-12-02"
+    embargo_sessions: 20
+
+selection_gates:
+  primary_contrast: TOP_VERSUS_BOTTOM_TRAINING_DISTRIBUTION_QUINTILE
+  minimum_trimmed_mean_net_return_difference: 0.01
+  lower_95_strictly_positive: true
+  maximum_two_sided_ci_half_width: 0.01
+  minimum_distinct_signal_weeks: 104
+  minimum_effective_sample: 396
+  weekly_cluster_bootstrap_resamples: 10000
+  observed_icc_floor: 0.10
+  both_forward_folds_difference_positive: true
+  minimum_monotone_adjacent_steps: 3
+  maximum_adverse_adjacent_reversal: 0.0025
+  deterministic_within_stratum_placebos: 199
+  real_statistic_must_exceed_placebo_quantile: 0.99
+  familywise_method: HOLM
+  familywise_alpha: 0.05
+  module_requires_two_directional_primitives: true
+  passing_modules_required_before_parameter_tuning: 1
+
+capacity:
+  nominal_capital_ceiling_per_signal: 500000.0
+  first_5m_participation_target: 0.10
+  first_5m_participation_absolute_max: 0.25
+  minimum_executable_cash: 10000.0
+  maximum_concurrent_positions: 50
+  maximum_concurrent_same_industry_positions: 10
+  maximum_same_day_new_entries: 10
+  position_cash_rule: MIN_OF_NOMINAL_LIQUIDITY_AND_RISK_BUDGET
+
+sequential_budget:
+  stage_1_hypothesis_modules: 3
+  stage_1_outcome_runs: 1
+  stage_2_allowed_only_after_stage_1_pass: true
+  stage_2_maximum_threshold_variants: 12
+  stage_2_cutpoints: TRAINING_DISTRIBUTION_QUINTILES_ONLY
+  stage_2_requires_adjacent_passing_cutpoints: 2
+  exit_tuning_before_entry_incremental_pass: false
+  threshold_change_requires_new_protocol: true
+
+terminal_decisions:
+  pass: CHIP_INCREMENTAL_VALUE_PASS
+  fail: NO_CHIP_INCREMENTAL_VALUE
+  insufficient: INSUFFICIENT_EVIDENCE

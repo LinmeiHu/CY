@@ -5,7 +5,7 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, TextIO
 
 
 @dataclass(frozen=True)
@@ -29,6 +29,7 @@ class EventStore:
         self._cached_previous_hash: str | None = None
         self._cached_size: int | None = None
         self._cached_events_by_id: dict[str, EventEnvelope] | None = None
+        self._append_handle: TextIO | None = None
 
     def append(
         self,
@@ -77,12 +78,15 @@ class EventStore:
             event_hash=event_hash,
         )
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        with self.path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps(asdict(envelope), sort_keys=True, ensure_ascii=False) + "\n")
-            handle.flush()
+        if self._append_handle is None:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            self._append_handle = self.path.open("a", encoding="utf-8", buffering=1024 * 1024)
+        line = json.dumps(asdict(envelope), sort_keys=True, ensure_ascii=False) + "\n"
+        self._append_handle.write(line)
+        self._append_handle.flush()
         self._cached_sequence = sequence
         self._cached_previous_hash = event_hash
-        self._cached_size = self.path.stat().st_size
+        self._cached_size = (self._cached_size or 0) + len(line.encode("utf-8"))
         self._cached_events_by_id[stable_id] = envelope
         return envelope
 

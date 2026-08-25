@@ -42,6 +42,11 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--minute-root", type=Path, default=DEFAULT_MINUTE_ROOT)
     parser.add_argument("--daily-root", type=Path, default=DEFAULT_DAILY_ROOT)
     parser.add_argument("--supplement-root", type=Path, default=DEFAULT_SUPPLEMENT_ROOT)
+    parser.add_argument(
+        "--baostock-delta-file",
+        type=Path,
+        help="Optional registered raw BaoStock native-5m Parquet delta.",
+    )
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--threads", type=int, default=min(10, os.cpu_count() or 1))
     parser.add_argument("--memory-limit", default="24GB")
@@ -79,6 +84,7 @@ def _create_source_views(
     minute_files: list[Path],
     daily_file: Path,
     supplement_file: Path | None,
+    baostock_delta_file: Path | None = None,
 ) -> None:
     columns = """symbol, exchange, trade_date, bar_end_time, open, high, low, close,
                  volume, amount, source"""
@@ -88,6 +94,24 @@ def _create_source_views(
         escaped = str(supplement_file).replace("'", "''")
         source_sql += f""" UNION ALL SELECT {columns}, source_resolution_minutes
                            FROM read_parquet('{escaped}')"""
+    if baostock_delta_file is not None:
+        escaped = str(baostock_delta_file).replace("'", "''")
+        source_sql += f"""
+          UNION ALL
+          SELECT SUBSTR(code, 4) AS symbol,
+                 UPPER(SUBSTR(code, 1, 2)) AS exchange,
+                 CAST(date AS DATE) AS trade_date,
+                 STRPTIME(SUBSTR(time, 1, 14), '%Y%m%d%H%M%S') AS bar_end_time,
+                 TRY_CAST(open AS DOUBLE) AS open,
+                 TRY_CAST(high AS DOUBLE) AS high,
+                 TRY_CAST(low AS DOUBLE) AS low,
+                 TRY_CAST(close AS DOUBLE) AS close,
+                 TRY_CAST(volume AS DOUBLE) AS volume,
+                 TRY_CAST(amount AS DOUBLE) AS amount,
+                 'baostock_none_5m' AS source,
+                 5 AS source_resolution_minutes
+          FROM read_parquet('{escaped}')
+        """
     connection.execute(
         f"""
         CREATE VIEW minute_source AS
@@ -423,6 +447,8 @@ def main() -> int:
     daily_file = args.daily_root / f"partition_year={args.year}" / "data_0.parquet"
     if not daily_file.exists():
         raise FileNotFoundError(daily_file)
+    if args.baostock_delta_file is not None and not args.baostock_delta_file.is_file():
+        raise FileNotFoundError(args.baostock_delta_file)
     where_sql, parameters = _filters(args)
     temporary_root = (
         args.output_root / ".duckdb_tmp" / f"year={args.year}-pid={os.getpid()}"
@@ -435,7 +461,13 @@ def main() -> int:
         connection.execute(f"SET threads={args.threads}")
         connection.execute(f"SET memory_limit='{args.memory_limit}'")
         connection.execute("SET preserve_insertion_order=false")
-        _create_source_views(connection, minute_files, daily_file, supplement_file)
+        _create_source_views(
+            connection,
+            minute_files,
+            daily_file,
+            supplement_file,
+            args.baostock_delta_file,
+        )
         partition = f"partition_year={args.year}"
         daily_output = args.output_root / "daily" / partition / "data_0.parquet"
         execution_output = (

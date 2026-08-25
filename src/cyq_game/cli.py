@@ -65,8 +65,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             return _kill_switch_status(args)
         if args.command == "kill-switch-reset":
             return _kill_switch_reset(args)
+        if args.command == "strategy":
+            return _markup_retest_strategy(args)
         parser.error("a command is required")
-    except (FileNotFoundError, KeyError, ValueError) as error:
+    except (FileExistsError, FileNotFoundError, KeyError, RuntimeError, ValueError) as error:
         print(
             json.dumps({"status": "ERROR", "error": str(error)}, ensure_ascii=False),
             file=sys.stderr,
@@ -176,7 +178,54 @@ def _parser() -> argparse.ArgumentParser:
     reset.add_argument("--approval-id", required=True)
     reset.add_argument("--reason", required=True)
     reset.add_argument("--released-at", type=datetime.fromisoformat)
+
+    strategy = subparsers.add_parser(
+        "strategy", help="run the unified MARKUP_RETEST v1 research lifecycle"
+    )
+    strategy_actions = strategy.add_subparsers(dest="strategy_action", required=True)
+    validate = strategy_actions.add_parser(
+        "validate", help="validate one configured week, year, or resealed stage"
+    )
+    validate.add_argument(
+        "--stage",
+        required=True,
+        choices=("week", "year", "resealed"),
+    )
+    research = strategy_actions.add_parser(
+        "research", help="run development-only parameter research"
+    )
+    research.add_argument("--stage", required=True, choices=("development",))
+    for command in (validate, research):
+        command.add_argument("--config", default="configs/markup_retest_v1.yaml")
+        command.add_argument("--threads", type=int)
+        command.add_argument("--no-reuse", action="store_true")
     return parser
+
+
+def _markup_retest_strategy(args: argparse.Namespace) -> int:
+    from cyq_game.strategy.orchestration import (
+        prepare_development_research,
+        validate_strategy_stage,
+    )
+
+    if args.strategy_action == "validate":
+        result = validate_strategy_stage(
+            args.config,
+            args.stage,
+            reuse=not args.no_reuse,
+            threads=args.threads,
+        )
+    elif args.strategy_action == "research":
+        result = prepare_development_research(
+            args.config,
+            args.stage,
+            reuse=not args.no_reuse,
+            threads=args.threads,
+        )
+    else:
+        raise ValueError(f"unknown strategy action: {args.strategy_action}")
+    _print_json(result.to_dict())
+    return 0 if result.status not in {"FAIL", "ERROR"} else 1
 
 
 def _generate_demo(args: argparse.Namespace) -> int:

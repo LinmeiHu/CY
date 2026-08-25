@@ -11,6 +11,7 @@ from cyq_game.chip.core import (
     LogPriceGrid,
     UniformChipEngine,
     _solve_exact_sold,
+    apply_cash_dividend_to_state,
     apply_split_to_state,
 )
 
@@ -70,7 +71,93 @@ def test_split_remaps_cost_without_creating_mass() -> None:
     state = UniformChipEngine().initialize(grid, _distribution(grid), date(2024, 1, 2))
     split = apply_split_to_state(state, ratio=2.0, as_of=date(2024, 1, 3))
     assert float(split.mass.sum()) == pytest.approx(1.0)
-    assert split.average_cost == pytest.approx(state.average_cost / 2.0, rel=0.01)
+    assert split.average_cost == pytest.approx(state.average_cost / 2.0, abs=1e-12)
+    np.testing.assert_array_equal(split.mass, state.mass)
+
+
+def test_cash_dividend_records_economic_proceeds_without_moving_raw_costs() -> None:
+    grid = LogPriceGrid.around(9.0, 11.0, step_pct=0.005)
+    state = CohortChipEngine(max_age=10).initialize(
+        grid, _distribution(grid), date(2024, 1, 2)
+    )
+
+    adjusted = apply_cash_dividend_to_state(
+        state, cash_per_share=0.35, as_of=date(2024, 1, 3)
+    )
+
+    assert adjusted.average_cost == pytest.approx(state.average_cost, abs=1e-12)
+    assert adjusted.economic_average_cost == pytest.approx(
+        state.average_cost - 0.35, abs=1e-12
+    )
+    assert adjusted.cash_distributions_per_share == pytest.approx(0.35, abs=1e-12)
+    assert adjusted.price_basis == "RAW_UNADJUSTED"
+    np.testing.assert_array_equal(adjusted.mass, state.mass)
+    np.testing.assert_array_equal(adjusted.age_mass, state.age_mass)
+    assert adjusted.mass_sum == pytest.approx(1.0, abs=1e-12)
+
+
+def test_cash_dividend_does_not_require_positive_economic_cost_coordinate() -> None:
+    grid = LogPriceGrid.around(0.1, 0.2, step_pct=0.01, padding=0.0)
+    state = UniformChipEngine().initialize(
+        grid, grid.volume_at_price(0.1, 0.2, 0.15), date(2024, 1, 2)
+    )
+
+    adjusted = apply_cash_dividend_to_state(state, 0.2, date(2024, 1, 3))
+    np.testing.assert_array_equal(adjusted.grid.prices, state.grid.prices)
+    assert adjusted.cash_distributions_per_share == pytest.approx(0.2)
+
+
+def test_cash_then_split_matches_causal_combined_action_order() -> None:
+    grid = LogPriceGrid.around(9.0, 11.0, step_pct=0.005)
+    state = UniformChipEngine().initialize(grid, _distribution(grid), date(2024, 1, 2))
+
+    cash_then_split = apply_split_to_state(
+        apply_cash_dividend_to_state(state, 0.35, date(2024, 1, 3)),
+        ratio=2.0,
+        as_of=date(2024, 1, 3),
+    )
+
+    assert cash_then_split.average_cost == pytest.approx(
+        state.average_cost / 2.0, abs=1e-12
+    )
+    assert cash_then_split.cash_distributions_per_share == pytest.approx(
+        0.35 / 2.0, abs=1e-12
+    )
+    assert cash_then_split.economic_average_cost == pytest.approx(
+        (state.average_cost - 0.35) / 2.0, abs=1e-12
+    )
+    np.testing.assert_array_equal(cash_then_split.mass, state.mass)
+    assert cash_then_split.mass_sum == pytest.approx(1.0, abs=1e-12)
+
+
+def test_corporate_action_replay_is_idempotent_and_conserves_mass() -> None:
+    grid = LogPriceGrid.around(9.0, 11.0, step_pct=0.005)
+    state = UniformChipEngine().initialize(grid, _distribution(grid), date(2024, 1, 2))
+
+    from cyq_game.chip.core import apply_corporate_actions_to_state
+
+    applied = apply_corporate_actions_to_state(
+        state,
+        as_of=date(2024, 1, 3),
+        share_multiplier=2.0,
+        cash_per_share=0.35,
+        action_id_prefix="AAA:2024-01-03:evt-1",
+    )
+    replayed = apply_corporate_actions_to_state(
+        applied,
+        as_of=date(2024, 1, 3),
+        share_multiplier=2.0,
+        cash_per_share=0.35,
+        action_id_prefix="AAA:2024-01-03:evt-1",
+    )
+
+    np.testing.assert_array_equal(replayed.grid.prices, applied.grid.prices)
+    np.testing.assert_array_equal(replayed.mass, applied.mass)
+    assert replayed.cash_distributions_per_share == pytest.approx(
+        applied.cash_distributions_per_share
+    )
+    assert replayed.applied_action_ids == applied.applied_action_ids
+    assert replayed.mass_sum == pytest.approx(1.0)
 
 
 def test_observed_volume_maps_exact_minute_mass_to_nearest_log_buckets() -> None:

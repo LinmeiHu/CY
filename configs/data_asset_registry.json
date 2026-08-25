@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "registry_id": "CYQ-DATA-BASELINE-20260820",
-  "updated_at": "2026-08-21T17:05:00+08:00",
+  "updated_at": "2026-08-25T04:18:00+08:00",
   "authority": {
     "policy": "Only assets listed in this registry may be used by CYQ-GAME. Discovery of a new or changed asset does not authorize use: register it first, freeze its lineage, validate the registry, and pass every activation gate.",
     "human_document": "docs/data-asset-registry.md",
@@ -439,6 +439,66 @@
         "adapter rejects report_date > notice_date or notice_date >= trade_date",
         "UNKNOWN and missing-lineage rows fail closed",
         "implement mandatory leave-one-out sector features",
+        "pass cross-table symbol/date coverage audit",
+        "strict PIT A remains unavailable until original response vintages and revisions are archived"
+      ]
+    },
+    {
+      "asset_id": "QD-008-BS-MERGED-20260821",
+      "name": "Historical daily industry membership with BaoStock causal supplement",
+      "kind": "industry_membership_pit",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/QD-008-BS-MERGED-20260821",
+      "source": "QD-008 Eastmoney chronology plus BaoStock query_stock_industry supplement for 2019-12-31; supplement requires source_update_date < decision_date",
+      "coverage": {
+        "start": "2005-07-25",
+        "end": "2026-08-13",
+        "rows": 15765727,
+        "known_industry_rows": 14857840,
+        "unknown_industry_rows": 907887,
+        "supplement_rows": 208,
+        "supplement_symbols": 208,
+        "unresolved_target_symbols": 23,
+        "files": 1,
+        "state_input": "industry_daily.parquet"
+      },
+      "schema_and_units": "trade_date, symbol, industry, source_notice_date, source_report_date, source; BaoStock supplement available_at and snapshot_id are preserved in the source manifest",
+      "quality_evidence": {
+        "duplicate_trade_date_symbol_keys": 0,
+        "known_rows_with_missing_or_noncausal_lineage": 0,
+        "supplement_requested_symbols": 231,
+        "supplement_accepted_symbols": 208,
+        "supplement_response_sha256": "a754b7bfa61c8c003ce994fbfb47656d7acccecd2671c6a85863fbbba82b29e7",
+        "unknown_policy": "UNKNOWN and missing industry remain hard_valid=false"
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": false,
+        "available_at_from_source_notice_date": true,
+        "snapshot_id_from_frozen_input": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-008-BS-MERGED-20260821.json",
+        "manifest_sha256": "191d8e78efe9c8cfb3d69a98d4c6fada24f8f79660334256992d5f6165ed60eb",
+        "supplement_manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-008-BS-SUPPLEMENT-20260821.manifest.json",
+        "supplement_manifest_sha256": "50b70367e87c32ef4dd00ca61ea67453e55735da1c8df98ed50b976c48e3ba25",
+        "merge_policy": "known causal supplement wins over UNKNOWN on the same trade_date and symbol"
+      },
+      "allowed_uses": [
+        "industry adapter and causality audits",
+        "PIT sector state and leave-one-out features after activation gates pass",
+        "one-week and research backtests after all required inputs pass"
+      ],
+      "blocked_uses": [
+        "UNKNOWN rows",
+        "current membership backfill",
+        "strict archival PIT claims",
+        "live execution without independent current tradability checks"
+      ],
+      "activation_gates": [
+        "adapter rejects report_date > notice_date or notice_date >= trade_date",
+        "UNKNOWN and missing-lineage rows fail closed",
         "pass cross-table symbol/date coverage audit",
         "strict PIT A remains unavailable until original response vintages and revisions are archived"
       ]
@@ -1094,6 +1154,963 @@
       ]
     },
     {
+      "asset_id": "CY-011",
+      "name": "CYQ whole-book semantic chip-state features v3",
+      "kind": "chip_state_feature_table_semantic_v3",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE_CANDIDATE",
+      "location": "/Users/linmei/Documents/CY/data/processed/chip_state_features_semantic_v3_2018_2026",
+      "source": "deterministic semantic-v3 transform of activated CY-006 daily and CY-008 minute PIT-B inputs using the whole-book I90/I70, migration, and peak definitions",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2026-08-12",
+        "rows": 9421907,
+        "strict_rows": 8655441,
+        "buckets": 40,
+        "inventory_files": 81,
+        "target_discovery_range": "2020-01-01..2023-12-31",
+        "target_holdout_range": "2024-01-01..2026-08-12"
+      },
+      "schema_and_units": "One symbol/trade_date row with exact Q05/Q15/Q85/Q95 intervals, I90/I70 widths, frozen-band retention, normalized migration mass, average-cost delta, price-ordered peaks, and largest-mass main peak; all prices are raw/unadjusted CNY",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/cyq_chip_state_features_semantic_v3_gate.json",
+        "audit_sha256": "e9672bff295e7a464259cee99ac4efaec25f04e9a57aa1df55b9de9bb002ba05",
+        "gate": "WHOLE_BOOK_SEMANTIC_CHIP_STATE_V3",
+        "gate_pass": true,
+        "rows": 9421907,
+        "strict_rows": 8655441,
+        "max_mass_error": 2.9958258096485224e-12,
+        "mass_conservation": "PASS",
+        "pit_and_snapshot_lineage": "PASS",
+        "semantic_intervals_and_migration": "PASS",
+        "peak_fields": "PASS"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-011-chip-state-features-semantic-v3-20260822.json",
+        "manifest_sha256": "edde3818f2989043de756e95792737ecacec2ce91464aaf8846507fdc875383e",
+        "build_manifest_path": "/Users/linmei/Documents/CY/data/processed/chip_state_features_semantic_v3_2018_2026/manifest.json",
+        "build_manifest_sha256": "0f29784c2f28414781e735c44f4cb6d39554349360fc902626951ef08a161053",
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/cyq_chip_state_features_semantic_v3_gate.json",
+        "audit_sha256": "e9672bff295e7a464259cee99ac4efaec25f04e9a57aa1df55b9de9bb002ba05",
+        "component_assets": [
+          "CY-006",
+          "CY-008"
+        ],
+        "pipeline_version": "chip-state-features-semantic-v3"
+      },
+      "allowed_uses": [
+        "causal whole-book chip-state research after exact input and output inventory gates pass",
+        "2020-2023 parameter discovery and 2024-2026 locked validation through the exact snapshot manifest",
+        "pre-trade state features only; no same-day signal-bar fills"
+      ],
+      "blocked_uses": [
+        "all state, signal, sizing, backtest, and performance claims until activated",
+        "replacement for CY-006 or CY-008 source facts",
+        "same-bar fills or post-decision observations"
+      ],
+      "activation_gates": [
+        "materialize only from the exact activated CY-006/CY-008 snapshots",
+        "freeze output inventory and content hashes",
+        "pass exact mass-conservation, state-chain, PIT, and semantic formula audits",
+        "register the resulting manifest and audit hashes before research consumption",
+        "runtime verifies CY-006/CY-008 input identities and CY-011 inventory identity"
+      ]
+    },
+    {
+      "asset_id": "CY-010",
+      "name": "BaoStock historical trading-state crosscheck for 275 gap symbols",
+      "kind": "qa_trading_state_crosscheck",
+      "status": "QA_ONLY",
+      "pit_grade": "C",
+      "physical_state": "MATERIALIZED_IMMUTABLE_CANDIDATE",
+      "location": "/Users/linmei/Documents/CY/data/audit/status_crosscheck_5205_gap_20260413_0812.csv",
+      "source": "BaoStock query_history_k_data_plus",
+      "coverage": {
+        "start": "2026-04-13",
+        "end": "2026-08-12",
+        "rows": 22698,
+        "symbols_requested": 275,
+        "symbols_returned": 275,
+        "errors": 0,
+        "duplicate_symbol_trade_date_keys": 0
+      },
+      "schema_and_units": "symbol, trade_date, tradestatus, isST plus source observation metadata; status observations are QA evidence only",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/status_crosscheck_5205_gap_20260413_0812",
+        "overlay_path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_status_crosschecked_5205_gap_20260413_0812/data.parquet",
+        "overlay_strict_rows_before": 420059,
+        "overlay_strict_rows_after": 435662,
+        "strict_row_delta": 15603,
+        "coverage_decrease": false
+      },
+      "lineage": {
+        "record_available_at": "BaoStock snapshot captured 2026-08-21; not archival vendor-vintage evidence",
+        "record_snapshot_id": "sha256:2e15ebc02a9cac732c9320c6188e7b9649e067ad988b4a59f9a48158ddc222d7",
+        "immutable_manifest": false,
+        "content_sha256": "2e15ebc02a9cac732c9320c6188e7b9649e067ad988b4a59f9a48158ddc222d7",
+        "derived_overlay_sha256": "3968d00118dac56aeae6e1623fc76ed752f1800cc44bafc21b0e32d36186c95c"
+      },
+      "allowed_uses": [
+        "targeted QMT/BaoStock reconciliation",
+        "repair-candidate measurement and QA evidence"
+      ],
+      "blocked_uses": [
+        "feeding strict PIT states, signals, sizing, backtests, or performance claims",
+        "assuming BaoStock current snapshot proves historical availability",
+        "overriding unknown float, corporate action, industry, or market-rule validity"
+      ],
+      "activation_gates": [
+        "record-level available_at and source snapshot must be upgraded to a causal research asset",
+        "cross-source conflicts and missing joins must be audited",
+        "explicit promotion entry is required before any research use"
+      ]
+    },
+    {
+      "asset_id": "CY-012",
+      "name": "603259.SH preclose-confirmed share-action research overlay",
+      "kind": "corporate_action_reference_price_resolution",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE_CANDIDATE",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-012-PRECLOSE-ACTION-RESOLUTION-603259-2019-2021",
+      "source": "Deterministic crosscheck of frozen QD-010 CNINFO terms against CY-006 QMT ex-date preclose resets; no action terms are inferred from price alone",
+      "coverage": {
+        "start": "2019-07-02",
+        "end": "2021-06-11",
+        "symbols": 1,
+        "actions": 3,
+        "rows": 6,
+        "float_bridge_rows": 3
+      },
+      "schema_and_units": "symbol, trade_date, action_trade_date, known_at, effective_date, declared share_multiplier, cash CNY per pre-action share, expected and observed raw preclose CNY, tolerance, action-day flag, causal circulating-share bridge, available_at, snapshot_id and PIT grade",
+      "quality_evidence": {
+        "gate": "KNOWN_CNINFO_TERMS_MATCH_QMT_PRECLOSE_RESET",
+        "gate_pass": true,
+        "duplicate_keys": 0,
+        "max_reference_price_error_cny": 0.0049999999999954525,
+        "strict_pit_eligible": false
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-012-PRECLOSE-ACTION-RESOLUTION-603259-2019-2021/manifest.json",
+        "manifest_sha256": "73edfc96e3b44e3e0d9817c7bbe7d8b22c84350ab6b8573a9f7636d651bc5940",
+        "data_sha256": "656386e7a174be620e23d4815392fb2be4145d22df402fc2a6ae9f38b7aadb1c",
+        "component_assets": ["QD-010", "CY-006"],
+        "pipeline_version": "preclose-action-resolution-v1"
+      },
+      "allowed_uses": [
+        "PIT-B targeted 603259.SH chip-inventory rebasing for the three declared share distributions",
+        "causal circulating-share bridge from each ex-date until QMT Capital reflects the declared multiplier",
+        "ten-stock strategy semantic diagnosis after exact conservation and T+1 gates pass"
+      ],
+      "blocked_uses": [
+        "strict PIT-A or live-trading claims",
+        "use for any symbol or action not explicitly present in the artifact",
+        "deriving undeclared action terms from a price discontinuity",
+        "silently replacing QD-010 or CY-006 source facts"
+      ],
+      "activation_gates": [
+        "manifest and data hashes remain exact",
+        "known_at precedes the declared effective date and reference-price reset",
+        "declared CNINFO terms match raw QMT preclose within max(0.02 CNY, 10bp)",
+        "post-action inventory, float and T+1 ledgers conserve exactly",
+        "all outputs remain labeled B_RESEARCH_ONLY"
+      ]
+    },
+    {
+      "asset_id": "CY-013",
+      "name": "MARKUP_RETEST exact ten-stock ensemble features v11",
+      "kind": "exact_chip_ensemble_feature_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-013-MARKUP-RETEST-10STOCK-EXACT-V11-2020-2023/features",
+      "source": "deterministic three-model feature extraction from registered CY-014 compact chip lineage; 603259 uses registered CY-012 action resolution",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2023-12-29",
+        "rows": 14384,
+        "exact_valid_rows_2020_2023": 9700,
+        "symbols": 10,
+        "annual_partitions": 6
+      },
+      "schema_and_units": "One symbol/trade_date row with raw-price exact ensemble cost quantiles, dominant chip band, three-model disagreement intervals, known-cost fraction, PIT timestamps and snapshot lineage; 2018-2019 rows are explicitly invalid lifecycle warm-up placeholders",
+      "quality_evidence": {
+        "gate": "EXACT10_FEATURE_FREEZE_V11",
+        "gate_pass": true,
+        "missing_model_spread_rows_2020_2023": 0,
+        "feature_rows": 14384,
+        "symbols": 10
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-013-MARKUP-RETEST-10STOCK-EXACT-V11-2020-2023/feature_manifest.json",
+        "manifest_sha256": "ebf72e6ae806f5ebf3fa7a02c99a5e977937daa6cf95ca5fc019de141a4cf356",
+        "component_assets": ["CY-006", "CY-008", "CY-014"],
+        "pipeline_version": "exact-chip-ensemble-features-v3"
+      },
+      "allowed_uses": [
+        "ten-stock MARKUP_RETEST causal development diagnosis for 2020-2023",
+        "formal signal-path parity checks with registered CY-014 anchor lineage",
+        "B-grade research only with explicit unknown pre-2018 cost disclosure"
+      ],
+      "blocked_uses": [
+        "full-market coverage or performance claims",
+        "2024-2026 validation for symbols other than separately completed inventories",
+        "strict PIT-A or live-trading claims",
+        "use without the exact registered CY-014 lineage root"
+      ],
+      "activation_gates": [
+        "feature manifest and every file hash remain exact",
+        "runtime binds CY-013 and CY-014 together",
+        "missing three-model disagreement is UNKNOWN and blocks new risk",
+        "requested symbols and dates remain within the registered ten-stock scope"
+      ]
+    },
+    {
+      "asset_id": "CY-014",
+      "name": "MARKUP_RETEST exact ten-stock chip lineage v11",
+      "kind": "compact_chip_operator_lineage",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-013-MARKUP-RETEST-10STOCK-EXACT-V11-2020-2023/lineage",
+      "source": "frozen compact T+1 operator logs copied byte-identically from the completed v11 ten-stock builds; 603259 is sourced from the CY-012 action-fixed build",
+      "coverage": {
+        "start": "2020-01-02",
+        "end": "2023-12-29",
+        "symbols": 10,
+        "years": 4,
+        "files": 40,
+        "seller_models": 3
+      },
+      "schema_and_units": "Daily compact chip inventory transition operators over cost bucket, holding age and turnover sensitivity for UNIFORM, DISPOSITION and ACTIVE_STICKY seller models; same-day acquired mass cannot be resold",
+      "quality_evidence": {
+        "gate": "EXACT10_LINEAGE_FREEZE_V11",
+        "gate_pass": true,
+        "max_mass_error": 0.0,
+        "max_same_day_resale": 0.0,
+        "fallback_days": 0,
+        "lineage_files": 40
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-013-MARKUP-RETEST-10STOCK-EXACT-V11-2020-2023/lineage_manifest.json",
+        "manifest_sha256": "c3377301380ee26053bcb57f9f10c08842c2b474a0fc93e8498350817e17e365",
+        "component_assets": ["QD-004", "CY-006", "QD-010", "CY-012"],
+        "pipeline_version": "real-chip-inventory-v2.1/chip-operator-log-v11"
+      },
+      "allowed_uses": [
+        "exact ten-stock lifecycle-anchor bloodline tracing for 2020-2023",
+        "shared daily inventory reuse across all MARKUP_RETEST parameter combinations",
+        "B-grade causal research with model-disagreement disclosure"
+      ],
+      "blocked_uses": [
+        "symbols or dates outside the registered inventory",
+        "price-band overlap substituted for anchor bloodline retention",
+        "strict PIT-A, full-market, 2024-2026, or live-trading claims"
+      ],
+      "activation_gates": [
+        "lineage manifest and all 40 file hashes remain exact",
+        "runtime requires all three seller models for every anchor/date estimate",
+        "T+1 and exact mass conservation remain fail-closed",
+        "603259 use remains bound to CY-012"
+      ]
+    },
+    {
+      "asset_id": "CY-015",
+      "name": "MARKUP_RETEST fixed twenty-stock week feature asset v11",
+      "kind": "exact_chip_ensemble_feature_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-015-MARKUP-RETEST-20STOCK-WEEK-V11-2020/features",
+      "source": "deterministic three-model feature extraction from registered CY-016 compact chip lineage using raw CY-006 closes and the existing CY-008 feature panel",
+      "coverage": {
+        "start": "2020-01-02",
+        "end": "2020-12-31",
+        "rows": 4860,
+        "exact_valid_rows": 4656,
+        "unknown_cost_rows": 204,
+        "symbols": 20,
+        "annual_partitions": 1
+      },
+      "schema_and_units": "One symbol/trade_date row with raw-price exact ensemble cost quantiles, dominant chip band, three-model disagreement intervals, known-cost fraction, PIT timestamps and snapshot lineage; fully unknown inventories retain the daily row but cannot fabricate cost features",
+      "quality_evidence": {
+        "gate": "WEEK20_FEATURE_FREEZE_V11",
+        "gate_pass": true,
+        "missing_model_spread_rows_when_chip_valid": 0,
+        "feature_rows": 4860,
+        "symbols": 20
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-015-MARKUP-RETEST-20STOCK-WEEK-V11-2020/feature_manifest.json",
+        "manifest_sha256": "234c924f9081dc8c586d2915baed72b46b267e939cd260caf633599a2adf4201",
+        "component_assets": ["CY-006", "CY-008", "CY-016"],
+        "pipeline_version": "exact-chip-ensemble-features-v3"
+      },
+      "allowed_uses": [
+        "fixed twenty-stock MARKUP_RETEST week validation for 2020-06-15 through 2020-06-19",
+        "formal signal-path checks with registered CY-016 anchor lineage",
+        "B-grade research only with explicit unknown-cost blocking"
+      ],
+      "blocked_uses": [
+        "annual, full-market or performance claims",
+        "dates outside 2020 or symbols outside the declared fixed twenty-stock scope",
+        "strict PIT-A or live-trading claims",
+        "use without the exact registered CY-016 lineage root"
+      ],
+      "activation_gates": [
+        "feature manifest and both file hashes remain exact",
+        "runtime binds CY-015 and CY-016 together",
+        "missing exact cost or three-model disagreement blocks new risk",
+        "requested stage remains the registered fixed week"
+      ]
+    },
+    {
+      "asset_id": "CY-016",
+      "name": "MARKUP_RETEST fixed twenty-stock week chip lineage v11",
+      "kind": "compact_chip_operator_lineage",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-015-MARKUP-RETEST-20STOCK-WEEK-V11-2020/lineage",
+      "source": "frozen compact T+1 operator logs: six byte-identical CY-014 2020 files plus fourteen targeted builds replayed from 2018 warm-up",
+      "coverage": {
+        "start": "2020-01-02",
+        "end": "2020-12-31",
+        "symbols": 20,
+        "years": 1,
+        "files": 20,
+        "seller_models": 3
+      },
+      "schema_and_units": "Daily compact chip inventory transition operators over cost bucket, holding age and turnover sensitivity for UNIFORM, DISPOSITION and ACTIVE_STICKY seller models; same-day acquired mass cannot be resold",
+      "quality_evidence": {
+        "gate": "WEEK20_LINEAGE_FREEZE_V11",
+        "gate_pass": true,
+        "max_mass_error": 0.0,
+        "max_same_day_resale": 0.0,
+        "fallback_days": 0,
+        "lineage_files": 20
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-015-MARKUP-RETEST-20STOCK-WEEK-V11-2020/lineage_manifest.json",
+        "manifest_sha256": "5aa78408b44cc2b4211a9f29518fb8602cb88547327be1b3403d476669b99464",
+        "component_assets": ["QD-004", "CY-006", "QD-010", "CY-014"],
+        "pipeline_version": "real-chip-inventory-v2.1/chip-operator-log-v11"
+      },
+      "allowed_uses": [
+        "exact lifecycle-anchor bloodline tracing for the fixed 2020 validation week",
+        "shared daily inventory reuse across MARKUP_RETEST parameters",
+        "B-grade causal research with model-disagreement disclosure"
+      ],
+      "blocked_uses": [
+        "symbols or dates outside the registered inventory",
+        "price-band overlap substituted for anchor bloodline retention",
+        "annual, full-market, strict PIT-A or live-trading claims"
+      ],
+      "activation_gates": [
+        "lineage manifest and all 20 file hashes remain exact",
+        "runtime requires all three seller models for every anchor/date estimate",
+        "T+1 and exact mass conservation remain fail-closed",
+        "fully unknown economic cost remains UNKNOWN_COST rather than a fabricated price band"
+      ]
+    },
+    {
+      "asset_id": "CY-017",
+      "name": "MARKUP_RETEST main-board and ChiNext 2020 exact feature asset v11",
+      "kind": "exact_chip_ensemble_feature_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-017-MARKUP-RETEST-MAIN-CHINEXT-2020-V11/features",
+      "source": "deterministic three-model feature extraction from registered CY-018 compact chip lineage using raw CY-006 closes and the existing CY-008 feature panel",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2020-12-31",
+        "exact_strategy_start": "2020-01-02",
+        "exact_strategy_end": "2020-12-31",
+        "rows": 2510871,
+        "exact_rows_2020": 871173,
+        "exact_valid_rows_2020": 867978,
+        "unknown_cost_rows_2020": 3195,
+        "symbols": 3736,
+        "annual_partitions": 3,
+        "universe": "2020 surviving Shanghai/Shenzhen main-board and ChiNext sample"
+      },
+      "schema_and_units": "One symbol/trade_date row with raw-price exact ensemble cost quantiles, dominant chip band, three-model disagreement intervals, known-cost fraction, PIT timestamps and snapshot lineage; 2018-2019 rows are explicitly invalid lifecycle warm-up placeholders and unknown inventories cannot fabricate cost features",
+      "quality_evidence": {
+        "gate": "MAIN_CHINEXT_2020_FEATURE_FREEZE_V11",
+        "gate_pass": true,
+        "missing_model_spread_rows_when_research_valid": 0,
+        "duplicate_symbol_trade_date_keys_2020": 0,
+        "feature_rows": 2510871,
+        "exact_rows_2020": 871173,
+        "symbols": 3736
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-017-MARKUP-RETEST-MAIN-CHINEXT-2020-V11/feature_manifest.json",
+        "manifest_sha256": "e3dc4c5b516b10c57febc7732bfaeed84c6ce6715ab13061af26a90330e55cbf",
+        "component_assets": ["CY-006", "CY-008", "CY-018"],
+        "pipeline_version": "exact-chip-ensemble-features-v3"
+      },
+      "allowed_uses": [
+        "2020 Shanghai/Shenzhen main-board and ChiNext MARKUP_RETEST local regression within the declared 3736-symbol survivor sample",
+        "formal signal-path checks with registered CY-018 anchor lineage",
+        "B-grade research only with explicit unknown-cost and survivor-bias disclosure"
+      ],
+      "blocked_uses": [
+        "strict PIT-A or live-trading claims",
+        "2021 and later dates, multi-year or portfolio backtests",
+        "symbols outside the declared 3736-symbol inventory",
+        "use without the exact registered CY-018 lineage root",
+        "claims that the survivor sample represents delisted-stock coverage"
+      ],
+      "activation_gates": [
+        "feature manifest and all four file hashes remain exact",
+        "runtime binds CY-017 and CY-018 together",
+        "missing exact cost or three-model disagreement blocks new risk",
+        "requested stage remains the declared 2020 local regression and registered symbol scope"
+      ]
+    },
+    {
+      "asset_id": "CY-018",
+      "name": "MARKUP_RETEST main-board and ChiNext 2020 chip lineage v11",
+      "kind": "compact_chip_operator_lineage",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-017-MARKUP-RETEST-MAIN-CHINEXT-2020-V11/lineage",
+      "source": "frozen compact T+1 operator logs: 3714 full 2018-warm-up builds plus 22 byte-identical registered CY-014/CY-016 files; 603259 remains bound to CY-012 action resolution",
+      "coverage": {
+        "start": "2020-01-02",
+        "end": "2020-12-31",
+        "symbols": 3736,
+        "years": 1,
+        "files": 3736,
+        "seller_models": 3,
+        "universe": "2020 surviving Shanghai/Shenzhen main-board and ChiNext sample"
+      },
+      "schema_and_units": "Daily compact chip inventory transition operators over cost bucket, holding age and turnover sensitivity for UNIFORM, DISPOSITION and ACTIVE_STICKY seller models; same-day acquired mass cannot be resold and UNKNOWN_COST remains explicit",
+      "quality_evidence": {
+        "gate": "MAIN_CHINEXT_2020_LINEAGE_FREEZE_V11",
+        "gate_pass": true,
+        "lineage_files": 3736,
+        "new_build_files": 3714,
+        "registered_reused_files": 22,
+        "seller_models": 3
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-017-MARKUP-RETEST-MAIN-CHINEXT-2020-V11/lineage_manifest.json",
+        "manifest_sha256": "fc8b89bd55f99003640140d7caf1877dbaec32d88d0490c545c80e2271dc881c",
+        "component_assets": ["QD-004", "CY-006", "QD-010", "CY-012", "CY-014", "CY-016"],
+        "pipeline_version": "real-chip-inventory-v2.1/chip-operator-log-v11"
+      },
+      "allowed_uses": [
+        "exact lifecycle-anchor bloodline tracing for the declared 2020 local regression",
+        "shared daily inventory reuse across MARKUP_RETEST parameters within the registered scope",
+        "B-grade causal research with model-disagreement and survivor-bias disclosure"
+      ],
+      "blocked_uses": [
+        "strict PIT-A or live-trading claims",
+        "2021 and later dates, multi-year or portfolio backtests",
+        "symbols outside the declared inventory or delisted-stock coverage claims",
+        "price-band overlap substituted for anchor bloodline retention"
+      ],
+      "activation_gates": [
+        "lineage manifest and all 3736 file hashes remain exact",
+        "runtime requires all three seller models for every anchor/date estimate",
+        "T+1, exact mass conservation and UNKNOWN_COST remain fail-closed",
+        "603259 remains bound to CY-012 and reused files remain bound to CY-014/CY-016"
+      ]
+    },
+    {
+      "asset_id": "CY-019",
+      "name": "MARKUP_RETEST dynamic main-board and ChiNext 2020-2023 exact feature asset v11",
+      "kind": "exact_chip_ensemble_feature_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-019-MARKUP-RETEST-MAIN-CHINEXT-2020-2023-V11/features",
+      "source": "deterministic three-model feature extraction from registered CY-020 dynamic annual compact chip lineage using raw CY-006 closes and the existing CY-008 feature panel",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2023-12-29",
+        "exact_strategy_start": "2020-01-02",
+        "exact_strategy_end": "2023-12-29",
+        "rows": 5772061,
+        "exact_rows_2020_2023": 4033196,
+        "exact_valid_rows_2020_2023": 3989241,
+        "exact_invalid_rows_2020_2023": 43955,
+        "symbols_union": 4651,
+        "annual_partitions": 6,
+        "universe": "date-varying Shanghai/Shenzhen main-board and ChiNext universe for 2020-2023; 2018-2019 partitions are invalid warm-up only"
+      },
+      "schema_and_units": "One symbol/trade_date row with raw-price exact ensemble cost quantiles, dominant chip band, three-model disagreement intervals, known-cost fraction, PIT timestamps and snapshot lineage; research-invalid rows carry an explicit reason and 2018-2019 rows are blocked warm-up placeholders",
+      "quality_evidence": {
+        "gate": "MAIN_CHINEXT_2020_2023_FEATURE_FREEZE_V11",
+        "gate_pass": true,
+        "feature_files": 7,
+        "feature_rows": 5772061,
+        "exact_rows_2020_2023": 4033196,
+        "symbols_union": 4651,
+        "duplicate_symbol_trade_date_keys": 0,
+        "missing_model_spread_rows_when_research_valid": 0,
+        "research_invalid_rows_without_reason": 0,
+        "annual_chip_valid_ratios": {
+          "2020": 0.993220,
+          "2021": 0.991293,
+          "2022": 0.987728,
+          "2023": 0.983751
+        }
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-019-MARKUP-RETEST-MAIN-CHINEXT-2020-2023-V11/feature_manifest.json",
+        "manifest_sha256": "5b28ca9bd21a24091cf121debcb45a21361f7654daedf32d487ce353b4569bbd",
+        "component_assets": ["CY-006", "CY-008", "CY-020"],
+        "pipeline_version": "exact-chip-ensemble-features-v3"
+      },
+      "allowed_uses": [
+        "2020-2022 MARKUP_RETEST parameter discovery within the registered dynamic main-board and ChiNext universe",
+        "one time-locked 2023 validation using parameters frozen without 2023 outcomes",
+        "formal signal-path and lifecycle-anchor checks bound to registered CY-020",
+        "B-grade causal research with explicit invalid-row and universe-coverage disclosure"
+      ],
+      "blocked_uses": [
+        "strict PIT-A or live-trading claims",
+        "2024 and later dates or any external-validation tuning",
+        "using 2023 outcomes for parameter selection or changing parameters after 2023 access",
+        "symbols, boards or dates outside the registered dynamic inventory",
+        "use without the exact registered CY-020 lineage root"
+      ],
+      "activation_gates": [
+        "feature manifest and all seven file hashes remain exact",
+        "runtime binds CY-019 and CY-020 together",
+        "every research year retains at least 95 percent chip-valid row coverage",
+        "missing exact cost, invalid source state or missing three-model disagreement blocks new risk",
+        "2020-2022 discovery and 2023 time-locked validation remain physically and auditably separated"
+      ]
+    },
+    {
+      "asset_id": "CY-020",
+      "name": "MARKUP_RETEST dynamic main-board and ChiNext 2020-2023 chip lineage v11",
+      "kind": "compact_chip_operator_lineage",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-019-MARKUP-RETEST-MAIN-CHINEXT-2020-2023-V11/lineage",
+      "source": "frozen date-varying annual compact T+1 operator logs assembled through causal prior-year terminal states; registered CY-018 files and CY-012 action resolution remain bound where reused",
+      "coverage": {
+        "start": "2020-01-02",
+        "end": "2023-12-29",
+        "symbols_union": 4651,
+        "symbols_by_year": {
+          "2020": 3939,
+          "2021": 4245,
+          "2022": 4445,
+          "2023": 4572
+        },
+        "years": 4,
+        "files": 17201,
+        "seller_models": 3,
+        "universe": "date-varying Shanghai/Shenzhen main-board and ChiNext universe; explicit single-day IPO exclusions are preserved by year"
+      },
+      "schema_and_units": "Daily compact chip inventory transition operators over economic cost bucket, holding age and turnover sensitivity for UNIFORM, DISPOSITION and ACTIVE_STICKY seller models; company actions rebase cost coordinates causally, same-day acquired mass cannot be resold and UNKNOWN_COST remains explicit",
+      "quality_evidence": {
+        "gate": "MAIN_CHINEXT_2020_2023_LINEAGE_FREEZE_V11",
+        "gate_pass": true,
+        "lineage_files": 17201,
+        "symbols_union": 4651,
+        "part_terminal_sets_equal": true,
+        "seller_models": 3,
+        "annual_explicit_exclusions": {
+          "2020": ["300894.SZ", "605155.SH"],
+          "2021": ["603176.SH"],
+          "2022": ["301105.SZ", "301297.SZ"],
+          "2023": ["301566.SZ"]
+        },
+        "exclusion_reason": "IPO_SINGLE_DAY_NO_PRIOR_STATE"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-019-MARKUP-RETEST-MAIN-CHINEXT-2020-2023-V11/lineage_manifest.json",
+        "manifest_sha256": "f83dc51516e538250d465c168daf1e11f21250684c7530394692712929f4acf6",
+        "component_assets": ["QD-004", "CY-006", "QD-010", "CY-012", "CY-018"],
+        "pipeline_version": "real-chip-inventory-v2.1/chip-operator-log-v11"
+      },
+      "allowed_uses": [
+        "exact lifecycle-anchor bloodline tracing for registered 2020-2023 MARKUP_RETEST research",
+        "shared daily inventory reuse across parameters within the registered dynamic annual symbol sets",
+        "2020-2022 discovery and one time-locked 2023 validation",
+        "B-grade causal research with model-disagreement and explicit exclusion disclosure"
+      ],
+      "blocked_uses": [
+        "strict PIT-A or live-trading claims",
+        "2024 and later dates",
+        "symbols or boards outside the registered annual inventories",
+        "fabricating state for single-day IPO exclusions or any missing prior terminal",
+        "price-band overlap substituted for anchor bloodline retention"
+      ],
+      "activation_gates": [
+        "lineage manifest and all 17201 file hashes remain exact",
+        "runtime requires all three seller models for every anchor/date estimate",
+        "T+1, exact mass conservation, corporate-action rebasing and UNKNOWN_COST remain fail-closed",
+        "annual symbol membership is read from the frozen symbols_by_year manifest",
+        "runtime binds CY-020 to CY-019 and preserves all explicit annual exclusions"
+      ]
+    },
+    {
+      "asset_id": "CY-021",
+      "name": "Semantic exact chip overlay for 2020-2022 incremental-value validation v1",
+      "kind": "semantic_exact_chip_feature_overlay",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-021-SEMANTIC-CHIP-2020-2022-V1",
+      "source": "deterministic outcome-blind semantic extraction from registered CY-020 three-model compact chip lineage, registered CY-019 exact state features and registered CY-006 causal daily prices",
+      "coverage": {
+        "start": "2020-01-02",
+        "end": "2022-12-30",
+        "rows": 2951398,
+        "symbols": 4481,
+        "research_valid_rows": 2924856,
+        "research_valid_ratio": 0.9910069736443543,
+        "annual_research_valid_ratio": {
+          "2020": 0.9938377167439719,
+          "2021": 0.9916148870616839,
+          "2022": 0.9879373119848457
+        },
+        "universe": "date-varying Shanghai/Shenzhen main-board and ChiNext inventory inherited from registered CY-019/CY-020; physically capped before 2023"
+      },
+      "schema_and_units": "Daily pre-trade three-model median semantic chip estimates: Q05/Q15/Q85/Q95 cost prices in CNY per share, I70/I90 widths as close fractions, profit/overhang/known-cost mass fractions, price-ordered lower and upper peak centers with strengths, peak valley center/strength/depth, model minima/maxima/spreads, causal available_at and immutable snapshot_id",
+      "quality_evidence": {
+        "gate": "SEMANTIC_CHIP_OVERLAY_2020_2022_V1",
+        "gate_pass": true,
+        "duplicate_symbol_trade_date_keys": 0,
+        "semantic_invariant_errors": 0,
+        "source_files_verified": 12632,
+        "source_bytes_verified": 103321603854,
+        "maximum_physical_data_year": 2022,
+        "future_partition_data_opened": false,
+        "company_action_golden_symbol": "300438.SZ",
+        "company_action_golden_effective_date": "2020-06-03",
+        "company_action_maximum_absolute_log_deviation": 0.003467396135634266,
+        "company_action_gate": "PASS",
+        "holdout_outcomes_observed": false
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-021-SEMANTIC-CHIP-2020-2022-V1/semantic_manifest.json",
+        "manifest_sha256": "5ec6824ee2d4fd48ec58d7aa6c5743d46340b7f6279e54f09ec3fa23780f8d1c",
+        "component_assets": ["CY-006", "CY-019", "CY-020"],
+        "pipeline_version": "semantic-chip-overlay-v1/chip-incremental-protocol-v1-addendum-05"
+      },
+      "allowed_uses": [
+        "outcome-blind semantic chip measurement and QA for CHIP_INCREMENTAL_VALIDATION_PROTOCOL_V1",
+        "the single preregistered stage-1 incremental-value evaluation on 2020-2022",
+        "stage-2 training-distribution quintile threshold work only if stage 1 explicitly authorizes it"
+      ],
+      "blocked_uses": [
+        "2023 or later data or outcome access",
+        "strict PIT-A, live trading, sizing, execution release or performance claims",
+        "use outside CHIP_INCREMENTAL_VALIDATION_PROTOCOL_V1",
+        "seller-model disagreement used as alpha",
+        "silent replacement, reinterpretation or use without the exact registered component identities"
+      ],
+      "activation_gates": [
+        "semantic manifest and data hashes remain exact",
+        "runtime binds the exact registered CY-006, CY-019 and CY-020 manifests",
+        "available_at never exceeds the same-day 15:30 decision",
+        "semantic invariants, 95 percent annual validity and company-action golden remain passing",
+        "all physical research inputs remain capped at 2022-12-30",
+        "the preregistered protocol and addenda 01 through 05 remain hash-bound and append-only"
+      ]
+    },
+    {
+      "asset_id": "CY-022",
+      "name": "BaoStock unadjusted full-market delta for 2026-08-13 through 2026-08-24",
+      "kind": "baostock_unadjusted_market_delta",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-022-BAOSTOCK-MARKET-DELTA-20260813-20260824-V1",
+      "source": "BaoStock 00.9.30 query_history_k_data_plus, query_all_stock and query_trade_dates; late-frozen current historical response with unadjusted daily and native 5-minute bars",
+      "coverage": {
+        "start": "2026-08-13",
+        "end": "2026-08-24",
+        "trade_dates": 8,
+        "symbols_requested": 5210,
+        "symbols_succeeded": 5210,
+        "symbol_coverage": 1.0,
+        "daily_rows": 41668,
+        "minute_5m_rows": 1998336,
+        "active_symbol_days": 41629,
+        "active_fully_valid_symbol_days": 41628,
+        "active_fully_valid_ratio": 0.999975978284369,
+        "indices": 6
+      },
+      "schema_and_units": "Exact BaoStock string responses; unadjusted CNY/share OHLC, volume in shares, amount in CNY, daily bars available after the close and native 5-minute bars available only at their actual bar_end_time",
+      "quality_evidence": {
+        "gate": "BAOSTOCK_MARKET_DELTA_20260813_20260824_V1",
+        "gate_pass": true,
+        "daily_duplicate_keys": 0,
+        "minute_duplicate_keys": 0,
+        "active_complete_5m_session_ratio": 1.0,
+        "active_volume_reconciliation_failures": 0,
+        "active_amount_reconciliation_failures": 0,
+        "active_fully_valid_ratio": 0.999975978284369,
+        "explicit_active_blockers": ["300462.SZ/2026-08-21"]
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-022-BAOSTOCK-MARKET-DELTA-20260813-20260824-V1/asset_manifest.json",
+        "manifest_sha256": "082334ab2252fa561ae89a51fae8e0e1043c4a1ba50e793059fae5e5eab159a5",
+        "source_manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-022-BAOSTOCK-MARKET-DELTA-20260813-20260824-V1/manifest.json",
+        "source_manifest_sha256": "3767ae521b3e64708ad668e24545805bab47b54e5eb81d0d70bccdbbf59602ee",
+        "snapshot_id": "baostock-market-delta-0bd39c17718598db6e40c9551c8c776bca1e8e60061505ec6e1fd563d80d324d",
+        "pipeline_version": "baostock-market-delta-v1"
+      },
+      "allowed_uses": [
+        "conditional causal normalization for 2026-08-13 through 2026-08-24 after every cross-table gate passes",
+        "daily market/trading-state and native 5-minute execution or volume-at-price derivation",
+        "data-quality and current-state preparation without outcome evaluation"
+      ],
+      "blocked_uses": [
+        "strict PIT-A, live trading, sizing, execution release or performance claims",
+        "fabricating 1-minute rows from native 5-minute responses",
+        "300462.SZ on 2026-08-21 and any other row failing OHLC, session or cross-table gates",
+        "use by the completed CHIP_INCREMENTAL_VALIDATION_PROTOCOL_V1 or any other frozen prior protocol",
+        "parameter selection or return optimization before a new append-only protocol and time split are frozen",
+        "silent replacement of QD-001 through QD-004 or any registered historical asset"
+      ],
+      "activation_gates": [
+        "asset and acquisition manifests, quality report and raw file hashes remain exact",
+        "record-level available_at and snapshot_id are attached during normalization",
+        "daily and minute prices remain unadjusted and units remain shares/CNY",
+        "minute data remains at its real 5-minute resolution and a bar cannot fill inside itself",
+        "industry, float, corporate action, trading rule and cross-table joins fail closed",
+        "active hard-valid coverage remains at least 95 percent",
+        "all new research uses a separately preregistered protocol and quarantined outcome split"
+      ]
+    },
+    {
+      "asset_id": "CY-023",
+      "name": "BaoStock date-effective industry supplement for 2026-08-14 through 2026-08-24",
+      "kind": "date_effective_industry_supplement",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-023-BAOSTOCK-INDUSTRY-20260814-20260824-V1",
+      "source": "BaoStock query_stock_industry date-effective responses captured 2026-08-25; accepted only when source_update_date < decision_date",
+      "coverage": {
+        "start": "2026-08-14",
+        "end": "2026-08-24",
+        "requested_trade_dates": 7,
+        "rows": 26033,
+        "symbols": 5207,
+        "materialized_dates": 5,
+        "carry_policy": "latest earlier causal row only"
+      },
+      "schema_and_units": "symbol, decision_date, CSRC industry label, source_update_date, capture available_at, snapshot_id, source, classification and exact response hash",
+      "quality_evidence": {
+        "gate": "BAOSTOCK_INDUSTRY_20260814_20260824_V1",
+        "gate_pass": true,
+        "duplicate_keys": 0,
+        "request_failures": 0,
+        "same_day_updates_admitted": 0,
+        "causal_carry_policy": true
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-023-BAOSTOCK-INDUSTRY-20260814-20260824-V1/asset_manifest.json",
+        "manifest_sha256": "7f73ed364587a1b027b2560b70de98ceed2512752d27e1deb46fcb56e7611283",
+        "source_manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-023-BAOSTOCK-INDUSTRY-20260814-20260824-V1/industry_daily.manifest.json",
+        "source_manifest_sha256": "f494853caf5a0fb49661c0029b96a4065a6e04abca5f042ec0e65da7ebc30593",
+        "snapshot_id": "baostock-industry-47807074fb3d5470f0d0355bf30e2976e7b16322252f02dae656f36aec4cfd83",
+        "component_assets": ["QD-008", "QD-008-BS-MERGED-20260821"],
+        "pipeline_version": "baostock-industry-supplement-v1"
+      },
+      "allowed_uses": [
+        "conditional PIT-B industry as-of joins for CY-022 dates after all cross-table gates pass",
+        "mandatory leave-one-out sector feature preparation after coverage gates pass"
+      ],
+      "blocked_uses": [
+        "same-day update use or current-membership backfill before source_update_date",
+        "strict PIT-A, live trading or standalone alpha claims",
+        "use outside 2026-08-14 through 2026-08-24",
+        "silent replacement of QD-008 or QD-008-BS-MERGED-20260821"
+      ],
+      "activation_gates": [
+        "asset, source and quality manifest hashes remain exact",
+        "source_update_date remains strictly before decision_date",
+        "missing dates use only the latest earlier causal row and never a later snapshot",
+        "UNKNOWN or missing membership fails closed",
+        "all sector features are point-in-time and leave-one-out"
+      ]
+    },
+    {
+      "asset_id": "CY-024",
+      "name": "CYQ daily PIT-B causal research table through 2026-08-24",
+      "kind": "daily_pit_b_research_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-024-PIT-B-DAILY-2018-20260824-V1",
+      "source": "deterministic extension of frozen CY-006 using registered CY-022 daily/index/trading-state delta, CY-023 PIT industry, QD-009 float history, and QD-010 corporate actions",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2026-08-24",
+        "trade_dates": 2097,
+        "symbols": 5692,
+        "rows": 9463575,
+        "hard_valid_rows": 9104766,
+        "delta_start": "2026-08-13",
+        "delta_end": "2026-08-24",
+        "delta_rows": 41668,
+        "delta_hard_valid_rows": 41312,
+        "delta_hard_valid_ratio": 0.9914562733992512
+      },
+      "schema_and_units": "One symbol/trade_date row with unadjusted CNY/share OHLC, preclose, volume in shares, amount in CNY, causal float, trading state, limits, PIT industry, market state, corporate actions, available_at, snapshot_id, hard_valid and explicit invalid_reasons",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-024-PIT-B-DAILY-2018-20260824-V1/audit.json",
+        "audit_sha256": "a15ec4d0f5f8fa5511875e904b8059ccac44be278bcff59b5c0ba0c903961d83",
+        "gate": "CURRENT_DAILY_PIT_B_20260824_V1",
+        "gate_pass": true,
+        "delta_unique": true,
+        "delta_no_time_travel": true,
+        "delta_hard_valid_at_least_95pct": true,
+        "invalid_rows_have_reasons": true
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-024-PIT-B-DAILY-2018-20260824-V1/asset_manifest.json",
+        "manifest_sha256": "af86daf25f0f57a4cac3c3c0559f4a7cbf073d1d00d157cd1cdbd9c809e2aecf",
+        "snapshot_id": "PITB-CURRENT-FD480342E73C2F0F8E69",
+        "component_assets": ["CY-006", "CY-022", "CY-023", "QD-008-BS-MERGED-20260821", "QD-009", "QD-010"],
+        "pipeline_version": "daily-pit-b-current-extension-v1",
+        "build_id": "PITB-CURRENT-FD480342E73C2F0F8E69"
+      },
+      "allowed_uses": [
+        "daily causal state generation through 2026-08-24 with row-level hard_valid enforcement",
+        "current research data preparation under a separately frozen protocol",
+        "leave-one-out industry context after exact input-snapshot binding"
+      ],
+      "blocked_uses": [
+        "strict PIT-A, live trading, sizing, execution release or performance claims",
+        "state generation or added risk from hard_valid=false rows",
+        "use by any completed or frozen prior protocol",
+        "parameter selection or return optimization before a new append-only protocol and time split are frozen",
+        "silent replacement of CY-006 or any component asset"
+      ],
+      "activation_gates": [
+        "asset manifest, audit and all listed partition hashes remain exact",
+        "runtime verifies the registered component identities and record-level available_at no later than decision_at",
+        "hard_valid is enforced before state generation or added risk",
+        "industry membership remains point-in-time and sector features remain leave-one-out",
+        "active hard-valid coverage remains at least 95 percent"
+      ]
+    },
+    {
+      "asset_id": "CY-025",
+      "name": "CYQ minute PIT-B causal feature and execution table through 2026-08-24",
+      "kind": "minute_pit_b_research_table",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-025-PIT-B-MINUTE-2018-20260824-V1",
+      "source": "space-efficient composite of frozen CY-008 history and a deterministic native-5m CY-022 delta joined to CY-024 daily causal context",
+      "coverage": {
+        "start": "2018-01-02",
+        "end": "2026-08-24",
+        "daily_rows": 9406675,
+        "daily_hard_valid_rows": 9065620,
+        "execution_5m_rows": 56440044,
+        "execution_5m_hard_valid_rows": 56259163,
+        "delta_start": "2026-08-13",
+        "delta_end": "2026-08-24",
+        "delta_daily_rows": 41632,
+        "delta_daily_hard_valid_rows": 41311,
+        "delta_daily_hard_valid_ratio": 0.9922891040545739,
+        "delta_execution_rows": 249792
+      },
+      "schema_and_units": "Daily symbol/date arrays of at most 32 price-volume bins plus six real completed execution windows; historical source resolution is real 1-minute, current delta resolution is native 5-minute, prices are unadjusted CNY/share, volume is shares, amount is CNY",
+      "quality_evidence": {
+        "audit_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-025-PIT-B-MINUTE-2018-20260824-V1/audit.json",
+        "audit_sha256": "8d5edc16e483b09caf57e9fdd48aa9d95da07457857c131df0e92082b85f8745",
+        "gate": "MINUTE_PIT_B_CURRENT_COMPOSITE_20260824_V1",
+        "gate_pass": true,
+        "base_and_delta_do_not_overlap": true,
+        "merged_2026_unique": true,
+        "available_at_not_before_trade_date": true,
+        "daily_delta_hard_valid_at_least_95pct": true,
+        "execution_has_six_windows_per_daily_row": true
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-025-PIT-B-MINUTE-2018-20260824-V1/asset_manifest.json",
+        "manifest_sha256": "92675e4345b582a2e85371a3a47c50117339c38f30d924c6b9b5d01498f31616",
+        "snapshot_id": "MINUTE-PITB-CURRENT-20260824-V1",
+        "component_assets": ["CY-008", "CY-022", "CY-024"],
+        "pipeline_version": "minute-pit-b-current-composite-v1"
+      },
+      "allowed_uses": [
+        "causal after-close volume-at-price observations through 2026-08-24",
+        "next-window execution research with six real completed 5-minute windows",
+        "current chip-state preparation under a separately frozen protocol"
+      ],
+      "blocked_uses": [
+        "fabricating 1-minute rows from native 5-minute observations",
+        "same-bar fills or use after decision_at",
+        "strict PIT-A, live execution, sizing or performance claims",
+        "use by any completed or frozen prior protocol",
+        "state generation or fills from hard_valid=false rows"
+      ],
+      "activation_gates": [
+        "asset manifest, audit and materialized 2026 hashes remain exact",
+        "all 16 historical symlinks resolve to hash-identical frozen CY-008 partitions",
+        "CY-022 raw and CY-024 daily component identities remain exact",
+        "minute resolution remains real 1-minute for CY-008 history and real native 5-minute for CY-022 delta",
+        "a signal formed on t cannot fill within t and CYQK_pre remains pre-trade"
+      ]
+    },
+    {
       "asset_id": "CY-OUT-001",
       "name": "CY mutable SQLite state store",
       "kind": "generated_state_store",
@@ -1333,6 +2350,123 @@
         "chip and cohort mass conservation error remains <= 1e-8",
         "strict outputs and executable actions remain hard-invalid until full-market state, PIT sector membership, leave-one-out sector features, current trading rules, and an OOS-calibrated EdgeCard are available"
       ]
+    },
+    {
+      "asset_id": "CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017",
+      "name": "Historical PIT-B bridge for industry, circulating capital, and corporate actions",
+      "kind": "historical_pit_bridge",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017",
+      "source": "Deterministic bridge from frozen local industry_events, qmt_capital, and current CNINFO normalized actions; this does not reconstruct missing historical response vintages.",
+      "coverage": {"start": "2010-01-01", "end": "2017-12-31", "industry_rows": 82373, "capital_rows": 113380, "corporate_action_rows": 14247},
+      "schema_and_units": "Each output carries available_at, snapshot_id, revision_id, hard_valid, and invalid_reason. Dates are Asia/Shanghai causal availability bounds.",
+      "quality_evidence": {
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017/manifest.json",
+        "manifest_sha256": "30da336805cb18987034c95d9ec90843562337d27fc90521203675499960ce78",
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/historical_pit_bridge_materialized_2010_2017.json",
+        "row_level_policy": "hard_valid=false rows are excluded; corporate actions remain blocked because revision_history_complete=false"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017/manifest.json",
+        "manifest_sha256": "30da336805cb18987034c95d9ec90843562337d27fc90521203675499960ce78",
+        "source_lineage_limit": "Derived availability and deterministic revision identifiers; no original historical response or supplier revision chain is claimed."
+      },
+      "allowed_uses": ["PIT bridge diagnostics", "coverage and fail-closed cross-table audits after QD-007 authorization"],
+      "blocked_uses": ["state generation", "signals", "sizing", "execution", "backtests", "performance claims", "strict PIT-A claims"],
+      "activation_gates": ["QD-007 historical date-effective security universe must be materialized and authorized", "industry and capital hard_valid=false rows remain excluded", "corporate actions remain unavailable until complete revision history is archived", "pass annual cross-table PIT audit and freeze gate"]
+    },
+    {
+      "asset_id": "CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-V2",
+      "name": "Historical PIT-B bridge v2 with causal late-announcement handling",
+      "kind": "historical_pit_bridge",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v2",
+      "source": "Deterministic bridge from frozen local industry_events, qmt_capital, and current CNINFO normalized actions; historical supplier response vintages are not reconstructed.",
+      "coverage": {"start": "2010-01-01", "end": "2017-12-31", "industry_rows": 82373, "capital_rows": 113380, "corporate_action_rows": 14247},
+      "schema_and_units": "Each output carries available_at, snapshot_id, revision_id, hard_valid, and invalid_reason. Capital available_at=max(source_effective_at, announcement_at); nonpositive capital remains hard-invalid.",
+      "quality_evidence": {
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v2/manifest.json",
+        "manifest_sha256": "ba941e836db848f6b4a8eb07b0ff05563c8ce1846caf3f0812914b904f1b9f92",
+        "audit_path": "/Users/linmei/Documents/CY/data/audit/historical_pit_bridge_materialized_2010_2017_v2.json",
+        "row_level_policy": "hard_valid=false rows are excluded; all corporate actions remain blocked because revision_history_complete=false"
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v2/manifest.json",
+        "manifest_sha256": "ba941e836db848f6b4a8eb07b0ff05563c8ce1846caf3f0812914b904f1b9f92",
+        "source_lineage_limit": "Derived availability and deterministic revision identifiers; no original historical response or supplier revision chain is claimed."
+      },
+      "allowed_uses": ["PIT bridge diagnostics", "coverage and fail-closed cross-table audits"],
+      "blocked_uses": ["state generation", "signals", "sizing", "execution", "backtests", "performance claims", "strict PIT-A claims"],
+      "activation_gates": ["QD-007 historical date-effective security universe must be complete and authorized", "capital hard-invalid rows remain excluded", "corporate actions require complete revision history", "annual cross-table PIT and freeze gates pass"]
+    },
+    {
+      "asset_id": "CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-V3",
+      "name": "Historical PIT-B bridge v3 aligned with 2020-2026 conditional research",
+      "kind": "historical_pit_bridge",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED_IMMUTABLE",
+      "location": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v3",
+      "source": "Deterministic bridge from frozen local industry_events, QMT capital, and current CNINFO normalized actions; PIT-B uses known/announcement and effective timing, while missing supplier revision history remains a strict-PIT diagnostic rather than an annual blocker.",
+      "coverage": {"start": "2010-01-01", "end": "2017-12-31", "industry_rows": 82373, "capital_rows": 113380, "corporate_action_rows": 14247},
+      "schema_and_units": "Each output carries available_at, snapshot_id, revision_id, hard_valid, and invalid_reason. Capital available_at=max(source_effective_at, announcement_at); corporate-action available_at=coalesce(known_at, announcement_date); industry is consumed with causal last-known/board fallback at panel layer.",
+      "quality_evidence": {
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v3/manifest.json",
+        "manifest_sha256": "42263e5ede7845e13f730d937061d70bae3b951be254de1dc1c72b36bc2e074f",
+        "bridge_audit_path": "/Users/linmei/Documents/CY/data/audit/historical_pit_bridge_materialized_2010_2017_v3.json",
+        "action_source_audit_path": "/Users/linmei/Documents/CY/data/audit/QD-010-action-source-coverage-2010-2017.json",
+        "freeze_gate_path": "/Users/linmei/Documents/CY/data/audit/pit_b_extension_gate_materialized_recursive_v3_pitb_2010_2017.json",
+        "row_level_policy": "hard_valid=false observations are excluded; 1,073 capital rows are explicit row exclusions; corporate-action revision_history_complete=false remains a strict-PIT diagnostic only and does not invalidate PIT-B timing rows."
+      },
+      "lineage": {
+        "record_available_at": true,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v3/manifest.json",
+        "manifest_sha256": "42263e5ede7845e13f730d937061d70bae3b951be254de1dc1c72b36bc2e074f",
+        "source_lineage_limit": "Derived availability and deterministic revision identifiers are preserved; no original historical supplier response-vintage chain or strict PIT-A claim is made."
+      },
+      "allowed_uses": ["PIT-B conditional state generation after row and cross-table gates pass", "PIT-B conditional signals and backtests with the 2010-2017 label and exclusion report attached", "PIT bridge diagnostics", "coverage and fail-closed cross-table audits"],
+      "blocked_uses": ["strict PIT-A claims", "live trading", "order generation", "sizing", "execution", "performance claims that mix 2010-2017 with 2018-2026 without harmonization", "participant identity or dealer-account inference"],
+      "activation_gates": ["QD-007 historical date-effective security universe is complete and authorized", "exact v3 manifest and all source hashes match", "industry uses causal last-known classification, bounded age, board fallback, and leave-one-out sector features", "capital hard_valid=false rows remain excluded", "corporate-action rows require known_at or announcement date plus effective date; revision_history_complete=false is reported but is not a PIT-B annual blocker", "annual cross-table PIT and freeze gates pass", "2010-2017 results remain separately labeled from 2018-2026 unless feature and rule harmonization is demonstrated" ]
+    },
+    {
+      "asset_id": "QD-011-BAOSTOCK-DIVIDEND-DISCOVERY-2010-2017",
+      "name": "BaoStock historical dividend and bonus discovery capture",
+      "kind": "corporate_actions_discovery",
+      "status": "DISCOVERY_ONLY",
+      "pit_grade": "B",
+      "physical_state": "RAW_QUERY_RESPONSES",
+      "location": "/Users/linmei/Documents/CY/data/discovery/QD-011-BAOSTOCK-DIVIDEND-DISCOVERY-2010-2017",
+      "source": "BaoStock query_dividend_data report-year responses captured on 2026-08-22; pilot only.",
+      "coverage": {"start": "2010-01-01", "end": "2017-12-31"},
+      "schema_and_units": "Per-share cash and stock distribution fields with source dates; raw query response units preserved.",
+      "quality_evidence": {
+        "manifest_path": "/Users/linmei/Documents/CY/data/discovery/QD-011-BAOSTOCK-DIVIDEND-DISCOVERY-2010-2017/pilot_one_code/manifest.json",
+        "manifest_sha256": "9a646909f406c10370cf7eb5e2ba5b2089f3bb4f6fb4e8ec04e4545e2efffc04",
+        "scope": "one-symbol pilot across 2010-2017; feasibility evidence only"
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY/data/discovery/QD-011-BAOSTOCK-DIVIDEND-DISCOVERY-2010-2017/pilot_one_code/manifest.json",
+        "manifest_sha256": "9a646909f406c10370cf7eb5e2ba5b2089f3bb4f6fb4e8ec04e4545e2efffc04",
+        "source_lineage_limit": "BaoStock query results have no historical revision-vintage chain; pilot evidence only."
+      },
+      "allowed_uses": ["source feasibility discovery", "schema and date-field QA"],
+      "blocked_uses": ["state generation", "signals", "sizing", "execution", "backtests", "performance claims"],
+      "activation_gates": ["full symbol-year capture", "historical revision chain or equivalent archival evidence", "record-level available_at and snapshot_id", "cross-table PIT audit"]
     }
   ],
   "evidence": [
@@ -1469,6 +2603,78 @@
       "at": "2026-08-21T17:05:00+08:00",
       "registry_id": "CYQ-DATA-BASELINE-20260820",
       "change": "Registered CY-009, the immutable 9,421,907-row frozen chip-state feature table in annual date-sorted layout. Feature and content-equivalence gates pass. Runtime may reuse these causal pre-trade states instead of recomputing them from minute arrays; four representative daily queries improved by 26.76x.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-21T23:15:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-010 as QA_ONLY BaoStock historical trading-state crosscheck for the 2026-04-13..2026-08-12 gap window. It covers 275 requested symbols with 22,698 rows and no duplicate keys; the candidate overlay adds 15,603 strict rows without reducing date/symbol coverage. It is not activated as a research input.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-22T00:00:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017. Industry has 82,373 hard-valid bridge rows; capital has 78,348 hard-valid rows and 35,032 explicit exclusions; all 14,247 corporate-action rows remain blocked because revision_history_complete=false. This asset is diagnostic/conditional only and does not activate 2010-2017 research.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-22T00:00:01+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered QD-011 BaoStock dividend/bonus responses as DISCOVERY_ONLY pilot evidence. The source exposes announcement and implementation date fields but provides no historical response-vintage chain; it cannot activate corporate actions, backtests, or 2010-2017 research.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-22T00:00:02+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered v2 historical bridge with available_at=max(source_effective_at, announcement_at), preserving causal timing when announcements arrive after nominal effective dates. This reduces capital exclusions to 1,073 nonpositive rows; corporate actions remain fully blocked due incomplete revision history, so no 2010-2017 year is activated.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-22T07:15:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Materialized and registered CY-011 whole-book semantic chip-state features v3. The 9,421,907-row table uses exact Q05/Q15/Q85/Q95 I90/I70 intervals, frozen-band retention, normalized migration, and price-ordered peaks. The 81-file inventory, 40-bucket completion checks, causal availability, snapshot lineage, exact chip-mass conservation, interval, migration, retention, and peak audits all PASS. Authorized for conditional 2020-2023 discovery and 2024-2026 locked validation only; strict PIT-A and live use remain blocked.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-22T08:00:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-V3. It aligns the 2010-2017 bridge with the 2020-2026 PIT-B policy: known/announcement and effective timing are used causally, incomplete supplier revision history remains a strict-PIT diagnostic, and 1,073 nonpositive-capital observations remain explicit row exclusions. The freeze gate is RESEARCH_CONDITIONAL, while registry activation and live/strict PIT-A use remain blocked pending QD-007 authorization and runtime gates.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-24T11:46:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-019 exact features and CY-020 compact chip lineage for the dynamic 2020-2023 Shanghai/Shenzhen main-board and ChiNext universe. All 17201 lineage files and seven feature files are frozen; exact feature keys, model spreads and invalid reasons pass, and each 2020-2023 annual chip-valid ratio exceeds 95 percent. Activation is limited to 2020-2022 discovery and one time-locked 2023 validation; strict PIT-A, live use and 2024-plus use remain blocked.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-25T03:12:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-021, the frozen 2,951,398-row outcome-blind semantic exact-chip overlay for 4,481 main-board and ChiNext symbols during 2020-2022. All 12,632 consumed source files, semantic invariants, annual validity above 98.7 percent, availability, three-model aggregation and the 300438.SZ company-action golden pass. Activation is limited to the preregistered chip incremental-value protocol; 2023-plus, strict PIT-A, live, sizing and unrelated use remain blocked.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-25T03:58:41+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-022, the immutable 2026-08-13 through 2026-08-24 BaoStock full-market delta. All 5,210 requested symbols downloaded; 41,629 active symbol-days have complete native 48-bar sessions with zero daily/minute volume or amount reconciliation failures. One active zero-OHLC bar on 300462.SZ/2026-08-21 is an explicit hard blocker; remaining active validity is 99.9976 percent. Activation remains conditional on normalized available_at/snapshot_id and all metadata cross-table gates; prior frozen protocols and parameter selection are blocked.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-25T04:03:27+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-023, a 26,033-row date-effective BaoStock industry supplement for the CY-022 update window. No duplicate keys, failed requests or same-day updates were admitted. The market-wide 2026-08-17 classification refresh becomes usable only from 2026-08-18; 2026-08-17 and 2026-08-24 use only the latest earlier causal snapshot. UNKNOWN and missing rows remain hard-invalid and all sector features must remain leave-one-out.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-25T04:14:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-024, the immutable daily PIT-B extension through 2026-08-24. The 41,668-row delta has 41,312 hard-valid rows (99.1456 percent), no duplicate keys or time travel, and explicit blockers for every invalid row. The build preserves CY-006 history, binds CY-022/CY-023 and registered float/action inputs, and remains research-only under a new frozen protocol.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-25T04:18:00+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-025, the minute PIT-B extension through 2026-08-24. The 41,632-row native-5m delta is 99.2289 percent hard-valid and supplies exactly six completed execution windows per stock-day. The asset rematerializes only the 2026 partition and references the 16 frozen 2018-2025 CY-008 partitions, avoiding a duplicate 3.1 GiB history; no 5-minute response is fabricated into 1-minute bars.",
       "evidence_ids": []
     }
   ]

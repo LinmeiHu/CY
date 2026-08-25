@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass, replace
 from datetime import date
 from pathlib import Path
@@ -90,6 +91,7 @@ def run_robustness_suite(
     end: date,
     data_authorization: DataExecutionAuthorization,
     store_factory: Callable[[SystemConfig], PITStore] | None = None,
+    max_workers: int = 2,
 ) -> tuple[Path, dict[str, Any]]:
     """Run the fixed matrix with the final holdout locked for every variant."""
 
@@ -102,8 +104,9 @@ def run_robustness_suite(
         raise FileExistsError(f"robustness suite already exists: {suite_dir}")
     suite_dir.mkdir(parents=True, exist_ok=False)
 
-    rows: list[dict[str, Any]] = []
-    for variant in build_robustness_variants(config):
+    variants = build_robustness_variants(config)
+
+    def run_variant(variant: RobustnessVariant) -> dict[str, Any]:
         variant_run_id = f"{suite_id}--{variant.name}"
         store = (
             store_factory(variant.config)
@@ -123,18 +126,22 @@ def run_robustness_suite(
             store.close()
         if result.holdout_tainted:
             raise RuntimeError(f"holdout unexpectedly tainted by {variant.name}")
-        rows.append(
-            {
-                "name": variant.name,
-                "status": "COMPLETE",
-                "rationale": variant.rationale,
-                "changed_parameters": variant.changed_parameters,
-                "run_id": result.run_id,
-                "run_dir": str(result.run_dir.resolve()),
-                "holdout_tainted": result.holdout_tainted,
-                "metrics": result.metrics,
-            }
-        )
+        return {
+            "name": variant.name,
+            "status": "COMPLETE",
+            "rationale": variant.rationale,
+            "changed_parameters": variant.changed_parameters,
+            "run_id": result.run_id,
+            "run_dir": str(result.run_dir.resolve()),
+            "holdout_tainted": result.holdout_tainted,
+            "metrics": result.metrics,
+        }
+
+    # Variants are independent and each owns a separate run directory/database.
+    # Keep a small cap to avoid overwhelming the shared Parquet/DuckDB storage.
+    worker_count = max(1, min(max_workers, len(variants)))
+    with ThreadPoolExecutor(max_workers=worker_count) as executor:
+        rows = list(executor.map(run_variant, variants))
 
     baseline = rows[0]["metrics"]
     for row in rows:

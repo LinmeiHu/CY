@@ -276,7 +276,10 @@ def test_cli_build_backtest_and_deterministic_replay(tmp_path: Path) -> None:
         "DEMO-TECH",
     }
     assert all(row["sector_alpha_enabled"] is False for row in decisions)
-    assert all(row["sector_sizing_confidence"] == 1.0 for row in decisions)
+    assert all(
+        row["sector_sizing_confidence"] == row["sector_state"]["reliability"]
+        for row in decisions
+    )
     assert all(row["fundamental_coverage"] == 1.0 for row in decisions)
     assert all(row["fundamental_source"] == "synthetic-demo" for row in decisions)
     assert all(row["fundamental_snapshot_id"] for row in decisions)

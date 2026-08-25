@@ -18,6 +18,8 @@ class ChipPeak:
     prominence: float
     age_mean: float | None
     formation_date: str
+    lower_price: float | None = None
+    upper_price: float | None = None
 
 
 @dataclass(frozen=True)
@@ -184,6 +186,76 @@ def compute_features(
     )
 
 
+def _quantile_at(state: ChipState, probability: float) -> float:
+    """Return a left-continuous grid quantile without interpolating mass."""
+
+    if not 0.0 <= probability <= 1.0:
+        raise ValueError("probability must be between 0 and 1")
+    cumulative = np.cumsum(state.mass)
+    index = int(np.searchsorted(cumulative, probability, side="left"))
+    index = min(index, len(state.grid.prices) - 1)
+    return float(state.grid.prices[index])
+
+
+def semantic_cost_intervals(state: ChipState) -> dict[str, float]:
+    """Compute the book's I90 (Q05--Q95) and I70 (Q15--Q85) intervals.
+
+    The interval endpoints are grid prices, not interpolated prices.  This is
+    consistent with the chip engine's discrete mass conservation rule and
+    makes the definition reproducible across all downstream consumers.
+    """
+
+    p05 = _quantile_at(state, 0.05)
+    p15 = _quantile_at(state, 0.15)
+    p50 = _quantile_at(state, 0.50)
+    p85 = _quantile_at(state, 0.85)
+    p95 = _quantile_at(state, 0.95)
+    return {
+        "p05": p05,
+        "p15": p15,
+        "p50": p50,
+        "p85": p85,
+        "p95": p95,
+        "i90_lower": p05,
+        "i90_upper": p95,
+        "i90_width_pct": p95 / max(p05, 1e-12) - 1.0,
+        "i70_lower": p15,
+        "i70_upper": p85,
+        "i70_width_pct": p85 / max(p15, 1e-12) - 1.0,
+    }
+
+
+def migration_mass(previous: ChipState, current: ChipState) -> float:
+    """Return Appendix-C's normalized chip migration mass.
+
+    When the price grids differ, previous mass is remapped to the nearest
+    current grid bucket before measuring 1/2 * L1.  The remap is a pure bucket
+    assignment, so the previous mass is conserved exactly.
+    """
+
+    if np.array_equal(previous.grid.prices, current.grid.prices):
+        previous_mass = previous.mass
+    else:
+        previous_mass = np.zeros_like(current.mass)
+        indexes = np.searchsorted(
+            current.grid.prices, previous.grid.prices, side="left"
+        )
+        indexes = np.clip(indexes, 0, len(current.grid.prices) - 1)
+        left = np.maximum(indexes - 1, 0)
+        choose_left = np.abs(
+            current.grid.prices[left] - previous.grid.prices
+        ) <= np.abs(current.grid.prices[indexes] - previous.grid.prices)
+        nearest = np.where(choose_left, left, indexes)
+        np.add.at(previous_mass, nearest, previous.mass)
+    return float(0.5 * np.abs(current.mass - previous_mass).sum())
+
+
+def peaks_by_price(peaks: tuple[ChipPeak, ...] | list[ChipPeak]) -> list[ChipPeak]:
+    """Return peaks in price order; peak mass order is a separate concept."""
+
+    return sorted(peaks, key=lambda peak: peak.center_price)
+
+
 def detect_peaks(
     state: ChipState,
     sigma: float = 1.5,
@@ -203,7 +275,13 @@ def detect_peaks(
         ages = np.arange(state.age_mass.shape[1], dtype=np.float64)
         age_weight_prefix = np.empty(len(state.mass) + 1, dtype=np.float64)
         age_weight_prefix[0] = 0.0
-        age_weight_prefix[1:] = np.cumsum(state.age_mass @ ages)
+        # macOS Accelerate emits spurious divide/overflow warnings for this
+        # finite matrix-vector product.  The explicit contraction is
+        # numerically equivalent and keeps real non-finite inputs observable.
+        age_weighted_mass = np.einsum(
+            "ij,j->i", state.age_mass, ages, optimize=False
+        )
+        age_weight_prefix[1:] = np.cumsum(age_weighted_mass)
     left_minima = np.minimum.accumulate(smooth)
     right_minima = np.minimum.accumulate(smooth[::-1])[::-1]
     peaks: list[ChipPeak] = []
@@ -253,6 +331,8 @@ def detect_peaks(
                 prominence=prominence,
                 age_mean=age_mean,
                 formation_date=state.as_of.isoformat(),
+                lower_price=float(state.grid.prices[left]),
+                upper_price=float(state.grid.prices[right]),
             )
         )
     return sorted(peaks, key=lambda peak: peak.mass, reverse=True)

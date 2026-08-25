@@ -18,6 +18,7 @@ from cyq_game.chip import (
     CohortChipEngine,
     UniformChipEngine,
     advance_chip_state,
+    apply_cash_dividend_to_state,
     apply_split_to_state,
 )
 from cyq_game.config import SystemConfig
@@ -384,6 +385,10 @@ class BacktestEngine:
             raise ValueError("walk-forward plan contains no evaluation dates")
         self.run_dir.mkdir(parents=True, exist_ok=False)
         fold_by_date = {test_date: fold for fold in plan.folds for test_date in fold.test_dates}
+        calibration_fold_by_id: dict[int, WalkForwardFold | None] = {
+            fold.fold_id: (plan.folds[index - 1] if index > 0 else None)
+            for index, fold in enumerate(plan.folds)
+        }
         final_holdout_dates = set(plan.final_holdout_dates)
         started_at = datetime.combine(run_dates[0], time(0), tzinfo=runtime_timezone)
         self.store.register_experiment(
@@ -616,10 +621,42 @@ class BacktestEngine:
             active_fold = fold
             if access_final_holdout and trade_date in final_holdout_dates:
                 active_fold = _holdout_fold(plan)
+            calibration_fold = (
+                (
+                    plan.folds[-1]
+                    if active_fold.fold_id == 10_000
+                    else calibration_fold_by_id.get(active_fold.fold_id)
+                )
+                if active_fold is not None
+                else None
+            )
             if active_fold is not None and active_fold.fold_id not in forecast_cache:
                 if supports_native_forecast:
                     forecast_cache[active_fold.fold_id] = self.store.calibrate_forecasts(
-                        symbols, set(active_fold.train_dates), decision_at
+                        symbols,
+                        set(active_fold.train_dates),
+                        decision_at,
+                        calibration_train_dates=(
+                            set(calibration_fold.train_dates)
+                            if calibration_fold is not None
+                            else None
+                        ),
+                        evaluation_dates=(
+                            set(calibration_fold.test_dates)
+                            if calibration_fold is not None
+                            else None
+                        ),
+                        purge_dates=(
+                            set(calibration_fold.purge_dates)
+                            if calibration_fold is not None
+                            else None
+                        ),
+                        embargo_dates=(
+                            set(calibration_fold.embargo_dates)
+                            if calibration_fold is not None
+                            else None
+                        ),
+                        fold_id=active_fold.fold_id,
                     )
                 else:
                     train_dates = set(active_fold.train_dates)
@@ -635,13 +672,10 @@ class BacktestEngine:
             daily_order_value = 0.02 * decision_equity
             active_fold_id = active_fold.fold_id if active_fold else None
             forecast_train_start = (
-                active_fold.train_dates[0].isoformat()
-                if active_fold and active_fold.train_dates
-                else None
-            )
-            forecast_train_end = (
-                active_fold.train_dates[-1].isoformat()
-                if active_fold and active_fold.train_dates
+                calibration_fold.train_dates[0].isoformat()
+                if active_fold
+                and calibration_fold is not None
+                and calibration_fold.train_dates
                 else None
             )
             market_phase = market.phase.value
@@ -772,9 +806,10 @@ class BacktestEngine:
                 family, edge_card = build_edge_card(
                     stock, ecology, fundamental_score=fundamental_score
                 )
-                sector_sizing_confidence = (
-                    sector.reliability if self.config.decision.sector_alpha_enabled else 1.0
-                )
+                # Disabling sector alpha removes the alpha contribution; it must
+                # never manufacture perfect observability for missing or weak
+                # point-in-time industry data.
+                sector_sizing_confidence = sector.reliability
                 position_value = self.broker.position(symbol) * bar.close
                 equity = decision_equity
                 position_fraction = position_value / safe_equity
@@ -831,6 +866,15 @@ class BacktestEngine:
                     "sector_score": sector.score,
                     "sector_reliability": sector.reliability,
                     "sector_sizing_confidence": sector_sizing_confidence,
+                    "sector_state": {
+                        "relative_strength": sector.relative_strength,
+                        "breadth": sector.breadth,
+                        "capital_flow": sector.capital_flow,
+                        "crowding": sector.crowding,
+                        "score": sector.score,
+                        "reliability": sector.reliability,
+                        "member_count": sector.member_count,
+                    },
                     "sector_member_count_loo": sector.member_count,
                     "sector_alpha_enabled": self.config.decision.sector_alpha_enabled,
                     "stock_types": [item.stock_type.value for item in stock.types],
@@ -940,8 +984,22 @@ class BacktestEngine:
                     "forecast_average_win_r": None,
                     "forecast_average_loss_r": None,
                     "forecast_sample_size": None,
+                    "forecast_training_sample_size": None,
                     "forecast_out_of_sample": None,
                     "forecast_calibration_error": None,
+                    "forecast_calibration_brier": None,
+                    "forecast_baseline_brier": None,
+                    "forecast_calibration_train_occurrence_rate": None,
+                    "forecast_evaluation_occurrence_rate": None,
+                    "forecast_baseline_train_occurrence_rate": None,
+                    "forecast_evaluation_start": None,
+                    "forecast_evaluation_end": None,
+                    "forecast_evaluation_label_end": None,
+                    "forecast_purge_days": None,
+                    "forecast_embargo_days": None,
+                    "forecast_calibration_snapshot_id": None,
+                    "forecast_calibration_code_sha256": None,
+                    "forecast_calibration_gate_reason": None,
                     **bar_provenance_records.get(symbol, {}),
                 }
                 eligibility_reason: str | None = None
@@ -962,15 +1020,61 @@ class BacktestEngine:
                     forecast = forecast_cache[active_fold.fold_id][symbol]
                     row.update(
                         {
-                            "forecast_scope": "SYMBOL_FOLD_TRAIN_ONLY_5D_PRIOR",
+                            "forecast_scope": (
+                                "SYMBOL_PRIOR_FOLD_TRUE_OOS_5D"
+                                if forecast.out_of_sample
+                                else "UNVALIDATED_FAIL_CLOSED"
+                            ),
                             "forecast_train_start": forecast_train_start,
-                            "forecast_train_end": forecast_train_end,
+                            "forecast_train_end": (
+                                forecast.training_end.isoformat()
+                                if forecast.training_end
+                                else None
+                            ),
                             "forecast_win_probability": forecast.win_probability,
                             "forecast_average_win_r": forecast.average_win_r,
                             "forecast_average_loss_r": forecast.average_loss_r,
                             "forecast_sample_size": forecast.sample_size,
+                            "forecast_training_sample_size": forecast.training_sample_size,
                             "forecast_out_of_sample": forecast.out_of_sample,
                             "forecast_calibration_error": forecast.calibration_error,
+                            "forecast_calibration_brier": forecast.calibration_brier,
+                            "forecast_baseline_brier": forecast.baseline_brier,
+                            "forecast_calibration_train_occurrence_rate": (
+                                forecast.calibration_train_occurrence_rate
+                            ),
+                            "forecast_evaluation_occurrence_rate": (
+                                forecast.evaluation_occurrence_rate
+                            ),
+                            "forecast_baseline_train_occurrence_rate": (
+                                forecast.baseline_train_occurrence_rate
+                            ),
+                            "forecast_evaluation_start": (
+                                forecast.evaluation_start.isoformat()
+                                if forecast.evaluation_start
+                                else None
+                            ),
+                            "forecast_evaluation_end": (
+                                forecast.evaluation_end.isoformat()
+                                if forecast.evaluation_end
+                                else None
+                            ),
+                            "forecast_evaluation_label_end": (
+                                forecast.evaluation_label_end.isoformat()
+                                if forecast.evaluation_label_end
+                                else None
+                            ),
+                            "forecast_purge_days": forecast.purge_days,
+                            "forecast_embargo_days": forecast.embargo_days,
+                            "forecast_calibration_snapshot_id": (
+                                forecast.calibration_snapshot_id
+                            ),
+                            "forecast_calibration_code_sha256": (
+                                forecast.calibration_code_sha256
+                            ),
+                            "forecast_calibration_gate_reason": (
+                                forecast.calibration_gate_reason
+                            ),
                         }
                     )
                     new_order = self._make_order(
@@ -1166,6 +1270,41 @@ class BacktestEngine:
                             "cash_amount": cash_amount,
                         }
                     )
+                    if symbol in self._chip_states:
+                        self._chip_states[symbol] = apply_cash_dividend_to_state(
+                            self._chip_states[symbol], action.cash_per_share, trade_date
+                        )
+                    if symbol in self._base_bands:
+                        p10, p90, mass = self._base_bands[symbol]
+                        adjusted_p10 = p10 - action.cash_per_share
+                        adjusted_p90 = p90 - action.cash_per_share
+                        if adjusted_p10 <= 0 or adjusted_p90 <= 0:
+                            raise ValueError(
+                                "cash dividend creates a non-positive base-band coordinate"
+                            )
+                        self._base_bands[symbol] = (adjusted_p10, adjusted_p90, mass)
+                    for price_state, state_name in (
+                        (previous_closes, "previous_close"),
+                        (self._prior_stops, "prior_stop"),
+                        (self._latest_prices, "latest_price"),
+                    ):
+                        if symbol in price_state:
+                            before = price_state[symbol]
+                            after = before - action.cash_per_share
+                            if after <= 0:
+                                raise ValueError(
+                                    "cash dividend creates a non-positive " + state_name
+                                )
+                            price_state[symbol] = after
+                            action_payload[f"{state_name}_before"] = before
+                            action_payload[f"{state_name}_after"] = after
+                    rebased_plans = self.plans.rebase_active_for_cash_dividend(
+                        symbol, action.cash_per_share, decision_at
+                    )
+                    action_payload["rebased_plan_versions"] = [
+                        {"plan_id": plan.plan_id, "version": plan.version}
+                        for plan in rebased_plans
+                    ]
                 elif kind in {"RIGHTS", "RIGHTS_ISSUE"}:
                     # Participation is account-specific. Without an explicit
                     # decision ledger the post-event position is unknowable.
@@ -1776,15 +1915,24 @@ def _calibrate_forecast(
     wins = [value for value in outcomes if value > 0]
     losses = [-value for value in outcomes if value < 0]
     if not wins or not losses:
-        return CalibratedForecast(0.5, 1.0, 1.0, len(outcomes), True, 0.20)
+        return CalibratedForecast(
+            0.5,
+            1.0,
+            1.0,
+            len(outcomes),
+            False,
+            1.0,
+            calibration_gate_reason="NO_STRICTLY_LATER_EVALUATION_FOLD",
+        )
     probability = min(0.99, max(0.01, len(wins) / len(outcomes)))
     return CalibratedForecast(
         win_probability=probability,
         average_win_r=max(0.05, fmean(wins)),
         average_loss_r=max(0.05, fmean(losses)),
         sample_size=len(outcomes),
-        out_of_sample=True,
-        calibration_error=min(0.20, abs(probability - 0.5) * 0.25),
+        out_of_sample=False,
+        calibration_error=1.0,
+        calibration_gate_reason="NO_STRICTLY_LATER_EVALUATION_FOLD",
     )
 
 

@@ -463,8 +463,23 @@ class PITStore:
         symbols: Sequence[str],
         train_dates: set[date],
         decision_at: datetime,
+        *,
+        calibration_train_dates: set[date] | None = None,
+        evaluation_dates: set[date] | None = None,
+        purge_dates: set[date] | None = None,
+        embargo_dates: set[date] | None = None,
+        fold_id: int | None = None,
     ) -> CalibratedForecast:
-        del symbols, train_dates, decision_at
+        del (
+            symbols,
+            train_dates,
+            decision_at,
+            calibration_train_dates,
+            evaluation_dates,
+            purge_dates,
+            embargo_dates,
+            fold_id,
+        )
         raise NotImplementedError("this PIT store does not support native calibration")
 
     def calibrate_forecasts(
@@ -472,11 +487,26 @@ class PITStore:
         symbols: Sequence[str],
         train_dates: set[date],
         decision_at: datetime,
+        *,
+        calibration_train_dates: set[date] | None = None,
+        evaluation_dates: set[date] | None = None,
+        purge_dates: set[date] | None = None,
+        embargo_dates: set[date] | None = None,
+        fold_id: int | None = None,
     ) -> dict[str, CalibratedForecast]:
-        """Return one train-only forecast per symbol for the active walk-forward fold."""
+        """Return one explicitly evaluated forecast per symbol or fail closed."""
 
         return {
-            symbol: self.calibrate_forecast([symbol], train_dates, decision_at)
+            symbol: self.calibrate_forecast(
+                [symbol],
+                train_dates,
+                decision_at,
+                calibration_train_dates=calibration_train_dates,
+                evaluation_dates=evaluation_dates,
+                purge_dates=purge_dates,
+                embargo_dates=embargo_dates,
+                fold_id=fold_id,
+            )
             for symbol in symbols
         }
 

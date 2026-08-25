@@ -259,7 +259,14 @@ def _create_sources(
                CAST(source_report_date AS DATE) AS source_report_date,
                CAST(source AS VARCHAR) AS industry_source
         FROM read_parquet({_sql_literal(str(inputs["industry"]))})
-        WHERE CAST(trade_date AS DATE) BETWEEN {start_sql} AND {end_sql}
+        WHERE COALESCE(CAST(industry AS VARCHAR), '') <> ''
+          AND CAST(industry AS VARCHAR) <> 'UNKNOWN'
+          AND CAST(source_notice_date AS DATE) < CAST(trade_date AS DATE)
+        QUALIFY ROW_NUMBER() OVER (
+          PARTITION BY CAST(trade_date AS DATE), {symbol_sql}
+          ORDER BY CAST(source_notice_date AS DATE) DESC,
+                   CAST(source_report_date AS DATE) DESC NULLS LAST
+        ) = 1
         """
     )
     connection.execute(
@@ -507,7 +514,8 @@ def _create_enriched(connection: Any, manifest: InputSnapshotManifest, build_id:
                  a.share_multiplier, a.cash_per_share, a.rights_ratio, a.rights_price
           FROM daily d
           LEFT JOIN state s USING (trade_date, symbol)
-          LEFT JOIN industry i USING (trade_date, symbol)
+          ASOF LEFT JOIN industry i
+            ON d.symbol = i.symbol AND d.trade_date >= i.trade_date
           ASOF LEFT JOIN float_timeline f
             ON d.symbol = f.symbol AND d.trade_date >= f.timeline_date
           LEFT JOIN market m USING (trade_date)
