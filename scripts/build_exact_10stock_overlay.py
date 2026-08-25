@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a small exact-v11 feature overlay for the ten-stock diagnostic."""
+"""Build a small exact feature overlay for the ten-stock diagnostic."""
 
 from __future__ import annotations
 
@@ -25,8 +25,11 @@ def _build_symbol_exact(
     task: tuple[Path, str, dict[date, float], date, date, Path],
 ) -> tuple[str, int, bool]:
     root, symbol, closes, start_date, end_date, output_path = task
-    if output_path.is_file():
+    if output_path.is_file() and "feature_source" in (
+        pq.ParquetFile(output_path).schema_arrow.names
+    ):
         return symbol, pq.ParquetFile(output_path).metadata.num_rows, True
+    output_path.unlink(missing_ok=True)
     rows = build_exact_ensemble_features(
         root,
         symbol,
@@ -125,6 +128,7 @@ def main() -> int:
         "model_spread_cost_p50",
         "model_spread_cost_p90",
         "model_spread_main_peak",
+        "feature_source",
     }
     exact_ready = False
     if exact_path.exists() and required_exact_columns.issubset(
@@ -186,7 +190,7 @@ def main() -> int:
     feature_code_path = Path(build_exact_ensemble_features.__code__.co_filename)
     feature_code_sha256 = hashlib.sha256(feature_code_path.read_bytes()).hexdigest()
     feature_config_sha256 = hashlib.sha256(
-        b"exact-chip-ensemble-features-v3|dominant-half-height-band|median-three-models|log-grid-25bp-v1"
+        b"exact-chip-ensemble-features-v4|persisted-daily-metrics-v12|median-three-models|log-grid-25bp-v1"
     ).hexdigest()
 
     for year in years:
@@ -208,7 +212,11 @@ def main() -> int:
                 SELECT f.* REPLACE (
                     coalesce(CAST(e.available_at AS TIMESTAMP), f.available_at) AS available_at,
                     coalesce(e.snapshot_id, f.daily_snapshot_id) AS daily_snapshot_id,
-                    'real-chip-inventory-v2.1/chip-operator-log-v11' AS state_version,
+                    CASE
+                        WHEN e.feature_source = 'PERSISTED_DAILY_METRICS_V12'
+                            THEN 'real-chip-inventory-v2.1/chip-operator-log-v12'
+                        ELSE 'real-chip-inventory-v2.1/replayed-legacy-operator-log'
+                    END AS state_version,
                     coalesce(e.research_valid, false) AS chip_input_valid,
                     coalesce(e.research_valid, false) AS state_chain_valid,
                     false AS strict_sample,
@@ -216,13 +224,13 @@ def main() -> int:
                         WHEN e.symbol IS NULL THEN 'B_RESEARCH_ONLY_UNKNOWN_COST'
                         WHEN NOT coalesce(e.research_valid, false) THEN concat_ws(
                             '|',
-                            'B_RESEARCH_ONLY_EXACT_V11',
+                            'B_RESEARCH_ONLY_EXACT',
                             coalesce(
                                 CAST(e.invalid_reason AS VARCHAR),
                                 'SOURCE_RESEARCH_INVALID'
                             )
                         )
-                        ELSE 'B_RESEARCH_ONLY_EXACT_V11'
+                        ELSE 'B_RESEARCH_ONLY_EXACT'
                     END AS invalid_reason,
                     1.0 AS mass_sum,
                     coalesce(e.known_cost_fraction_min, 0.0) AS state_quality,
