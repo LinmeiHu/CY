@@ -14,6 +14,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
+from baostock_session import ensure_login, query_with_relogin
 
 
 def args() -> argparse.Namespace:
@@ -45,14 +46,19 @@ def main() -> int:
     records: list[dict[str, object]] = []
     requests: list[dict[str, object]] = []
     failures: list[dict[str, str]] = []
-    login = bs.login()
-    if login.error_code != "0":
-        failures.append({"request": "login", "error": login.error_msg})
+    try:
+        ensure_login(bs)
+    except RuntimeError as exc:
+        failures.append({"request": "login", "error": str(exc)})
     else:
         try:
             for asof in a.dates:
                 try:
-                    rs = bs.query_stock_industry(date=asof)
+                    rs = query_with_relogin(
+                        bs,
+                        lambda: bs.query_stock_industry(date=asof),
+                        description="baostock.query_stock_industry",
+                    )
                     fields = list(rs.fields)
                     rows: list[list[str]] = []
                     while rs.error_code == "0" and rs.next():

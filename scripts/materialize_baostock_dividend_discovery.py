@@ -14,6 +14,7 @@ from datetime import date
 from pathlib import Path
 
 import baostock as bs
+from baostock_session import ensure_login, query_with_relogin
 
 
 def sha256(path: Path) -> str:
@@ -42,9 +43,7 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     manifest_path = out / "manifest.json"
     records: list[dict[str, object]] = []
-    login = bs.login()
-    if login.error_code != "0":
-        raise RuntimeError(f"BaoStock login failed: {login.error_code} {login.error_msg}")
+    ensure_login(bs)
     try:
         for code in codes:
             for year in range(args.start_year, args.end_year + 1):
@@ -53,7 +52,11 @@ def main() -> int:
                 if path.exists():
                     continue
                 try:
-                    rs = bs.query_dividend_data(code=code, year=str(year), yearType="report")
+                    rs = query_with_relogin(
+                        bs,
+                        lambda: bs.query_dividend_data(code=code, year=str(year), yearType="report"),
+                        description="baostock.query_dividend_data",
+                    )
                     rows = rs.get_data().to_dict(orient="records") if rs.error_code == "0" else []
                     payload = {
                         "request": {"code": code, "year": year, "year_type": "report"},

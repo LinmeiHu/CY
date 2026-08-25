@@ -26,6 +26,7 @@ from zoneinfo import ZoneInfo
 import duckdb
 import pyarrow as pa  # type: ignore[import-untyped]
 import pyarrow.parquet as pq  # type: ignore[import-untyped]
+from baostock_session import ensure_login, query_with_relogin
 
 DAILY_FIELDS = (
     "date,code,open,high,low,close,preclose,volume,amount,adjustflag,"
@@ -145,10 +146,9 @@ def _worker_login(max_attempts: int = 3) -> bool:
         return True
     for attempt in range(1, max_attempts + 1):
         try:
-            login = _WORKER_BS.login()
-            if login.error_code == "0":
-                _WORKER_LOGGED_IN = True
-                return True
+            ensure_login(_WORKER_BS, attempts=1)
+            _WORKER_LOGGED_IN = True
+            return True
         except Exception:
             pass
         if attempt < max_attempts:
@@ -176,13 +176,17 @@ def _query_rows(
 ) -> list[list[str]]:
     if not _worker_login():
         raise RuntimeError("BaoStock worker login retries exhausted")
-    result = _WORKER_BS.query_history_k_data_plus(
-        code,
-        fields,
-        start_date=start,
-        end_date=end,
-        frequency=frequency,
-        adjustflag="3",
+    result = query_with_relogin(
+        _WORKER_BS,
+        lambda: _WORKER_BS.query_history_k_data_plus(
+            code,
+            fields,
+            start_date=start,
+            end_date=end,
+            frequency=frequency,
+            adjustflag="3",
+        ),
+        description="baostock.query_history_k_data_plus",
     )
     if result.error_code != "0":
         raise RuntimeError(
@@ -267,15 +271,17 @@ def _download_symbol(
 def _login() -> Any:
     import baostock as bs  # type: ignore[import-not-found]
 
-    login = bs.login()
-    if login.error_code != "0":
-        raise RuntimeError(f"BaoStock login failed: {login.error_code} {login.error_msg}")
+    ensure_login(bs)
     return bs
 
 
 def _trade_dates(bs: Any, start: date, end: date) -> list[str]:
-    response = bs.query_trade_dates(
+    response = query_with_relogin(
+        bs,
+        lambda: bs.query_trade_dates(
         start_date=start.isoformat(), end_date=end.isoformat()
+        ),
+        description="baostock.query_trade_dates",
     )
     if response.error_code != "0":
         raise RuntimeError(
@@ -294,7 +300,11 @@ def _trade_dates(bs: Any, start: date, end: date) -> list[str]:
 def _universe_snapshots(bs: Any, dates: list[str], output: Path) -> tuple[str, ...]:
     selected: set[str] = set()
     for day in dates:
-        response = bs.query_all_stock(day=day)
+        response = query_with_relogin(
+            bs,
+            lambda: bs.query_all_stock(day=day),
+            description="baostock.query_all_stock",
+        )
         if response.error_code != "0":
             raise RuntimeError(
                 f"universe query failed for {day}: "
@@ -330,13 +340,17 @@ def _fetch_indices(bs: Any, start: date, end: date, output: Path) -> list[dict[s
     result: list[dict[str, Any]] = []
     fields = "date,code,open,high,low,close,preclose,volume,amount,pctChg"
     for name, code in INDEX_CODES.items():
-        response = bs.query_history_k_data_plus(
-            code,
-            fields,
-            start_date=start.isoformat(),
-            end_date=end.isoformat(),
-            frequency="d",
-            adjustflag="3",
+        response = query_with_relogin(
+            bs,
+            lambda: bs.query_history_k_data_plus(
+                code,
+                fields,
+                start_date=start.isoformat(),
+                end_date=end.isoformat(),
+                frequency="d",
+                adjustflag="3",
+            ),
+            description="baostock.query_history_k_data_plus",
         )
         if response.error_code != "0":
             raise RuntimeError(

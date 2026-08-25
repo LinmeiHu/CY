@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 
 import baostock as bs
 import pandas as pd
+from baostock_session import ensure_login, query_with_relogin
 
 FIELDS = (
     "date,code,open,high,low,close,preclose,volume,amount,adjustflag,"
@@ -51,17 +52,19 @@ def main() -> None:
     if end_date == decision_at.date() and decision_at.hour < 15:
         raise ValueError("same-day daily bar is unavailable before 15:00 Asia/Shanghai")
 
-    login = bs.login()
-    if login.error_code != "0":
-        raise RuntimeError(f"BaoStock login failed: {login.error_code} {login.error_msg}")
+    ensure_login(bs)
     try:
-        result = bs.query_history_k_data_plus(
-            args.code,
-            FIELDS,
-            start_date=args.start,
-            end_date=args.end,
-            frequency="d",
-            adjustflag="3",
+        result = query_with_relogin(
+            bs,
+            lambda: bs.query_history_k_data_plus(
+                args.code,
+                FIELDS,
+                start_date=args.start,
+                end_date=args.end,
+                frequency="d",
+                adjustflag="3",
+            ),
+            description="baostock.query_history_k_data_plus",
         )
         if result.error_code != "0":
             raise RuntimeError(

@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 
 import baostock as bs
 import pandas as pd
+from baostock_session import ensure_login, query_with_relogin
 
 FIELDS = "date,code,open,high,low,close,preclose,volume,amount,adjustflag,turn,pctChg,tradestatus,isST"
 
@@ -29,9 +30,7 @@ def main() -> None:
     decision = datetime.fromisoformat(a.decision_at).astimezone(ZoneInfo("Asia/Shanghai"))
     if pd.Timestamp(a.end).date() > decision.date():
         raise ValueError("end exceeds decision_at")
-    login = bs.login()
-    if login.error_code != "0":
-        raise RuntimeError(f"BaoStock login failed: {login.error_code} {login.error_msg}")
+    ensure_login(bs)
     records: list[dict[str, object]] = []
     errors: list[dict[str, str]] = []
     try:
@@ -39,7 +38,13 @@ def main() -> None:
             code = symbol.lower().replace(".sz", "").replace(".sh", "")
             market = "sz" if symbol.upper().endswith(".SZ") else "sh"
             code = f"{market}.{code}"
-            result = bs.query_history_k_data_plus(code, FIELDS, start_date=a.start, end_date=a.end, frequency="d", adjustflag="3")
+            result = query_with_relogin(
+                bs,
+                lambda: bs.query_history_k_data_plus(
+                    code, FIELDS, start_date=a.start, end_date=a.end, frequency="d", adjustflag="3"
+                ),
+                description="baostock.query_history_k_data_plus",
+            )
             if result.error_code != "0":
                 errors.append({"symbol": symbol, "error": f"{result.error_code} {result.error_msg}"})
                 continue

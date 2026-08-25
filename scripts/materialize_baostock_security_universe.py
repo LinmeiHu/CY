@@ -17,6 +17,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import duckdb
+from baostock_session import ensure_login, query_with_relogin
 
 
 def args() -> argparse.Namespace:
@@ -69,25 +70,15 @@ def main() -> int:
     old_login_handler = signal.signal(signal.SIGALRM, login_alarm)
     signal.alarm(ns.timeout)
     try:
-        login = bs.login()
+        ensure_login(bs)
     except LoginTimeout as exc:
+        raise SystemExit(str(exc)) from exc
+    except RuntimeError as exc:
         raise SystemExit(str(exc)) from exc
     finally:
         signal.alarm(0)
         signal.signal(signal.SIGALRM, old_login_handler)
-    if login.error_code != "0":
-        raise SystemExit(f"BaoStock login failed: {login.error_code} {login.error_msg}")
 
-    def relogin() -> object:
-        """Refresh a BaoStock session after the server drops authentication."""
-        try:
-            bs.logout()
-        except Exception:
-            pass
-        refreshed = bs.login()
-        if refreshed.error_code != "0":
-            raise RuntimeError(f"BaoStock relogin failed: {refreshed.error_code} {refreshed.error_msg}")
-        return refreshed
     try:
         manifest = {
             "asset_id": "QD-007",
@@ -117,7 +108,11 @@ def main() -> int:
             old_handler = signal.signal(signal.SIGALRM, alarm_handler)
             signal.alarm(ns.timeout)
             try:
-                rs = bs.query_all_stock(day=day)
+                rs = query_with_relogin(
+                    bs,
+                    lambda: bs.query_all_stock(day=day),
+                    description="baostock.query_all_stock",
+                )
             except QueryTimeout as exc:
                 metadata = {
                     "trade_date": day,
@@ -138,30 +133,6 @@ def main() -> int:
             finally:
                 signal.alarm(0)
                 signal.signal(signal.SIGALRM, old_handler)
-            # BaoStock occasionally returns a transient "user not logged in"
-            # response after a long batch. Refresh the session once and retry
-            # the same date; the raw response remains discovery-only and is
-            # still captured with its request date and hash.
-            if rs.error_code != "0" and "未登录" in str(rs.error_msg):
-                try:
-                    relogin()
-                    rs = bs.query_all_stock(day=day)
-                except Exception as exc:
-                    metadata = {
-                        "trade_date": day,
-                        "request": {"day": day, "fields": ["code", "tradeStatus", "code_name"]},
-                        "captured_at": datetime.now(UTC).isoformat(),
-                        "error_code": "RELOGIN_FAILED",
-                        "error_msg": str(exc),
-                        "row_count": 0,
-                    }
-                    body = {"metadata": metadata, "rows": []}
-                    canonical = (json.dumps(body, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode()
-                    metadata["sha256"] = sha256_bytes(canonical)
-                    target.with_suffix(".json.tmp").write_bytes(canonical)
-                    os.replace(target.with_suffix(".json.tmp"), target)
-                    manifest["snapshots"].append(metadata)
-                    continue
             rows = []
             if rs.error_code == "0":
                 while rs.next():
