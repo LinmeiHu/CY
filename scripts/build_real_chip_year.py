@@ -2663,6 +2663,7 @@ def main() -> int:
     )
     parser.add_argument("--bucket", type=int)
     parser.add_argument("--symbols", nargs="*", default=[])
+    parser.add_argument("--symbols-file", type=Path)
     parser.add_argument("--stage-root", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--daily-root", type=Path, default=DAILY_ROOT)
@@ -2710,7 +2711,16 @@ def main() -> int:
     selected_buckets = [args.bucket] if args.bucket is not None else list(range(args.buckets))
     if any(bucket < 0 or bucket >= args.buckets for bucket in selected_buckets):
         parser.error("--bucket must be between 0 and --buckets - 1")
-    symbols = tuple(args.symbols)
+    file_symbols = (
+        tuple(
+            line.strip()
+            for line in args.symbols_file.read_text().splitlines()
+            if line.strip()
+        )
+        if args.symbols_file is not None
+        else ()
+    )
+    symbols = tuple(dict.fromkeys((*args.symbols, *file_symbols)))
     output_root = args.output or ROOT / f"data/processed/real_chip_inventory_v2/year={args.year}"
     stage_root = args.stage_root or output_root / "_staging"
     resume_root, resume_mode = _resolve_resume_root(
