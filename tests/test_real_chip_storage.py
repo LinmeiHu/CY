@@ -1,4 +1,5 @@
 import json
+import math
 import runpy
 from datetime import date, datetime
 from pathlib import Path
@@ -8,6 +9,8 @@ from zoneinfo import ZoneInfo
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
+import numpy as np
+from cyq_game.chip.migration_v2 import _PackedWorkingLots
 from math import isclose
 from cyq_game.chip.profile_metrics import compute_distribution_metrics
 from cyq_game.strategy.exact_chip_features import _FAST_OPERATOR_COLUMNS
@@ -28,6 +31,33 @@ def test_v12_packed_cell_dimensions_are_reversible_for_legacy_reading() -> None:
     ]
     for expected in dimensions:
         assert unpack(pack(*expected)) == expected
+
+
+def test_packed_profile_bucket_mass_uses_legacy_fsum() -> None:
+    grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
+    bucket = 884
+    shares = np.array([1.0e16, 1.0, 1.0], dtype=np.float64)
+    packed = _PackedWorkingLots(
+        cell_ids=np.array([1, 2, 3], dtype=np.int64),
+        cost_bucket_ids=np.array([0, 0, 0], dtype=np.int64),
+        holding_days=np.array([0, 0, 0], dtype=np.int16),
+        sensitivity_codes=np.array([0, 0, 0], dtype=np.int8),
+        acquisition_costs=np.ones(3, dtype=np.float64),
+        economic_break_evens=np.full(
+            3, grid.price_for_bucket(bucket), dtype=np.float64
+        ),
+        shares=shares,
+        initialization_prior_units=np.zeros(3, dtype=np.float64),
+    )
+    state = SimpleNamespace(packed_lots=packed)
+
+    _, by_bucket, _, _ = MODULE["_CellCodec"]().register_state_and_profile(
+        state, grid
+    )
+
+    expected = math.fsum(shares.tolist())
+    assert float(np.bincount(np.zeros(3, dtype=np.int64), weights=shares)[0]) != expected
+    assert by_bucket == {bucket: expected}
 
 
 def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:

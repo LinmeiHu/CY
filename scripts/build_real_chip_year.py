@@ -634,10 +634,24 @@ class _CellCodec:
                 unique_buckets, inverse = np.unique(
                     economic_buckets, return_inverse=True
                 )
-                bucket_mass = np.bincount(
-                    inverse,
-                    weights=shares_array[known_indices],
-                    minlength=unique_buckets.size,
+                # Keep the vectorized bucket mapping above, but use the same
+                # deterministic, order-independent summation contract as the
+                # legacy replay when aggregating each bucket's shares.
+                order = np.argsort(inverse, kind="stable")
+                ordered_inverse = inverse[order]
+                ordered_shares = shares_array[known_indices][order]
+                boundaries = np.flatnonzero(
+                    ordered_inverse[1:] != ordered_inverse[:-1]
+                ) + 1
+                starts = np.concatenate((np.array([0]), boundaries))
+                stops = np.concatenate((boundaries, np.array([order.size])))
+                bucket_mass = np.fromiter(
+                    (
+                        math.fsum(ordered_shares[start:stop].tolist())
+                        for start, stop in zip(starts, stops, strict=True)
+                    ),
+                    dtype=np.float64,
+                    count=unique_buckets.size,
                 )
                 by_bucket = {
                     int(bucket): float(mass)
