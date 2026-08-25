@@ -30,6 +30,7 @@ from cyq_game.domain import (
     StrategyFamily,
 )
 from cyq_game.game.decision import EdgeCard
+from cyq_game.strategy.semantic_contract import PANEL_SCHEMA_VERSION, STRATEGY_VERSION
 
 FORBIDDEN_SIGNAL_FIELDS = frozenset(
     {
@@ -652,8 +653,14 @@ def load_markup_retest_config(
 
 
 def _validate_config(config: MarkupRetestConfig) -> None:
-    if config.panel_schema_version < 8:
-        raise ValueError("MARKUP_RETEST anchor panel schema must be version 8 or newer")
+    if config.panel_schema_version != PANEL_SCHEMA_VERSION:
+        raise ValueError(
+            f"panel schema version must be {PANEL_SCHEMA_VERSION}; old artifacts are invalid"
+        )
+    if config.strategy_version != STRATEGY_VERSION:
+        raise ValueError(
+            f"strategy version must be {STRATEGY_VERSION}; old artifacts are invalid"
+        )
     if not config.legacy_quarantine_manifest.is_file():
         raise ValueError("legacy quarantine manifest is missing")
     quarantine = _mapping(

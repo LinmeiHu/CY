@@ -26,6 +26,10 @@ from cyq_game.strategy.markup_retest import (
     load_passing_frozen_parameters,
     verify_registered_asset_inventory,
 )
+from cyq_game.strategy.semantic_contract import (
+    require_active_semantic_epoch,
+    semantic_fingerprint_fields,
+)
 
 
 def _board_sql(symbol_expression: str = "symbol") -> str:
@@ -210,6 +214,7 @@ def build_causal_panel(
         for path in parquet_files
     ]
     snapshot_payload = {
+        **semantic_fingerprint_fields(),
         "schema_version": config.panel_schema_version,
         "strategy_version": config.strategy_version,
         "stage": boundary.name.value,
@@ -1311,6 +1316,7 @@ def _load_manifest(
     expected_source_inventory: list[dict[str, Any]],
 ) -> PanelBuildResult:
     payload = json.loads(path.read_text())
+    require_active_semantic_epoch(payload, artifact_name="panel")
     if payload.get("status") != "COMPLETE":
         raise ValueError(f"panel manifest is not complete: {path}")
     if payload.get("config_sha256") != expected_config_sha:
@@ -1322,6 +1328,7 @@ def _load_manifest(
     _verify_inventory(path.parent, payload)
     _verify_source_inventory(payload, expected_source_inventory)
     snapshot_payload = {
+        **semantic_fingerprint_fields(),
         "schema_version": payload.get("schema_version"),
         "strategy_version": payload.get("strategy_version"),
         "stage": payload.get("stage"),

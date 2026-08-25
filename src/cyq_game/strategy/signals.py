@@ -42,9 +42,13 @@ from cyq_game.strategy.markup_retest import (
     verify_registered_asset_inventory,
 )
 from cyq_game.strategy.panel import PanelBuildResult
+from cyq_game.strategy.semantic_contract import (
+    SIGNAL_SCHEMA_VERSION,
+    require_active_semantic_epoch,
+    semantic_fingerprint_fields,
+)
 
 CN_TZ = timezone(timedelta(hours=8))
-SIGNAL_SCHEMA_VERSION = 2
 
 
 @dataclass(frozen=True)
@@ -323,6 +327,7 @@ def build_strategy_signals(
         signal_symbols = len({str(row["symbol"]) for row in generated.signals})
         inventory = _inventory(temp, (signals_file, events_file))
         snapshot_payload = {
+            **semantic_fingerprint_fields(),
             "schema_version": SIGNAL_SCHEMA_VERSION,
             "strategy_version": config.strategy_version,
             "stage": boundary.name.value,
@@ -865,6 +870,7 @@ def _load_manifest(
     expected_source_inventory: list[dict[str, Any]],
 ) -> SignalBuildResult:
     payload = json.loads(path.read_text())
+    require_active_semantic_epoch(payload, artifact_name="signals")
     expected = {
         "status": "COMPLETE",
         "schema_version": SIGNAL_SCHEMA_VERSION,
@@ -883,9 +889,11 @@ def _load_manifest(
     if payload.get("source_input_inventory") != expected_source_inventory:
         raise ValueError(f"signal manifest source input inventory mismatch: {path}")
     _verify_inventory(path.parent, payload)
-    snapshot_payload = {
-        key: payload[key]
-        for key in (
+    snapshot_payload = semantic_fingerprint_fields()
+    snapshot_payload.update(
+        {
+            key: payload[key]
+            for key in (
             "schema_version",
             "strategy_version",
             "stage",
@@ -900,7 +908,8 @@ def _load_manifest(
             "inventory",
             "metrics",
         )
-    }
+        }
+    )
     expected_snapshot = (
         "signals-" + hashlib.sha256(_canonical(snapshot_payload).encode()).hexdigest()
     )

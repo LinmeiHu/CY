@@ -19,6 +19,11 @@ from cyq_game.strategy.markup_retest import (
     load_passing_frozen_parameters,
 )
 from cyq_game.strategy.panel import PanelBuildResult, _verify_inventory
+from cyq_game.strategy.semantic_contract import (
+    LABEL_SCHEMA_VERSION,
+    require_active_semantic_epoch,
+    semantic_fingerprint_fields,
+)
 
 
 @dataclass(frozen=True)
@@ -123,7 +128,8 @@ def build_future_labels(
         for path in parquet_files
     ]
     snapshot_payload = {
-        "schema_version": 1,
+        **semantic_fingerprint_fields(),
+        "schema_version": LABEL_SCHEMA_VERSION,
         "strategy_version": config.strategy_version,
         "stage": boundary.name.value,
         "config_sha256": config.sha256,
@@ -266,6 +272,7 @@ def _load_manifest(
     expected_builder_sha: str,
 ) -> LabelBuildResult:
     payload = json.loads(path.read_text())
+    require_active_semantic_epoch(payload, artifact_name="labels")
     if payload.get("status") != "COMPLETE":
         raise ValueError(f"label manifest is not complete: {path}")
     if payload.get("config_sha256") != expected_config_sha:
@@ -276,6 +283,7 @@ def _load_manifest(
         raise ValueError(f"label builder hash mismatch: {path}")
     _verify_inventory(path.parent, payload)
     snapshot_payload = {
+        **semantic_fingerprint_fields(),
         "schema_version": payload.get("schema_version"),
         "strategy_version": payload.get("strategy_version"),
         "stage": payload.get("stage"),
