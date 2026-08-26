@@ -107,11 +107,28 @@ def detect_canonical_peaks(
             raise ValueError("peak prices must be finite and positive")
         prices[bucket] = value
 
+    smoothed_by_bucket: dict[int, float] = {}
+
     def smoothed(bucket: int) -> float:
-        return math.fsum(
-            weight * combined.get(bucket + offset, 0.0)
-            for offset, weight in zip(_OFFSETS, _KERNEL, strict=True)
-        ) / (_KERNEL_TOTAL * total)
+        """Return this call's exact smoothing result for ``bucket``.
+
+        The cache is deliberately local to one detection call: smoothing is
+        determined only by this call's normalized ``combined`` profile and
+        ``total``.  It is never shared across dates, symbols, or seller models.
+        On a miss, retain the legacy ``math.fsum`` generator and offset order
+        exactly; candidate traversal and every peak tie-break continue to read
+        the same value, only without recomputing it.
+        """
+
+        try:
+            return smoothed_by_bucket[bucket]
+        except KeyError:
+            value = math.fsum(
+                weight * combined.get(bucket + offset, 0.0)
+                for offset, weight in zip(_OFFSETS, _KERNEL, strict=True)
+            ) / (_KERNEL_TOTAL * total)
+            smoothed_by_bucket[bucket] = value
+            return value
 
     first = min(combined)
     last = max(combined)
