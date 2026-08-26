@@ -143,4 +143,3 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
     assert artifact.trading_days == 1
     assert artifact.model_rows == 3
     assert artifact.fallback_rows == 0
-

@@ -30,4 +30,3 @@ def test_exact_oracle_comparison_distinguishes_ieee754_signed_zero(tmp_path: Pat
     pq.write_table(pa.table({"shares": [-0.0], "nested": [[-0.0]]}), negative)
     assert arrow_exact_mismatch_count(positive, positive) == 0
     assert arrow_exact_mismatch_count(positive, negative) > 0
-
