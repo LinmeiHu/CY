@@ -152,6 +152,188 @@ class DataAssetRegistry:
         )
 
 
+CHECKPOINT_JOURNAL_REGISTRY_VERSION = "checkpoint-journal-dependency-registry-v1"
+CHECKPOINT_JOURNAL_STORAGE_VERSION = "chip-checkpoint-journal-storage-v1"
+_CHECKPOINT_JOURNAL_REQUIRED_ROLES = frozenset(
+    {
+        "daily_input",
+        "minute_input",
+        "corporate_action_input",
+        "replay_parameter_manifest",
+        "feature",
+        "terminal_compatibility",
+    }
+)
+
+
+def _logical_digest(value: Any) -> str:
+    return hashlib.sha256(
+        json.dumps(
+            value,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            allow_nan=False,
+        ).encode("utf-8")
+    ).hexdigest()
+
+
+@dataclass(frozen=True)
+class CheckpointJournalDependency:
+    role: str
+    asset_id: str
+    snapshot_id: str
+    content_digest: str
+    inventory_digest: str | None
+    immutable: bool
+    pinned: bool
+
+    @property
+    def key(self) -> str:
+        return _logical_digest(
+            {
+                "asset_id": self.asset_id,
+                "content_digest": self.content_digest,
+                "immutable": self.immutable,
+                "inventory_digest": self.inventory_digest,
+                "pinned": self.pinned,
+                "role": self.role,
+                "snapshot_id": self.snapshot_id,
+            }
+        )
+
+
+@dataclass(frozen=True)
+class CheckpointJournalRegistration:
+    path: Path
+    bundle_id: str
+    bundle_manifest_sha256: str
+    storage_version: str
+    active: bool
+    dependencies: tuple[CheckpointJournalDependency, ...]
+    reverse_references: dict[str, tuple[str, ...]]
+    registry_digest: str
+
+    @classmethod
+    def load(cls, path: str | Path) -> CheckpointJournalRegistration:
+        registry_path = Path(path).expanduser().resolve()
+        payload = _read_json_object(
+            registry_path, label="checkpoint/journal dependency registry"
+        )
+        expected = {
+            "active",
+            "bundle_id",
+            "bundle_manifest_sha256",
+            "dependencies",
+            "registry_digest",
+            "registry_version",
+            "reverse_references",
+            "storage_version",
+        }
+        if set(payload) != expected:
+            raise DataActivationError("checkpoint/journal registry fields mismatch")
+        if payload["registry_version"] != CHECKPOINT_JOURNAL_REGISTRY_VERSION:
+            raise DataActivationError("unknown checkpoint/journal registry version")
+        if payload["storage_version"] != CHECKPOINT_JOURNAL_STORAGE_VERSION:
+            raise DataActivationError("checkpoint/journal registry storage mismatch")
+        active = payload["active"]
+        if not isinstance(active, bool):
+            raise DataActivationError("checkpoint/journal active state must be boolean")
+        raw_dependencies = payload["dependencies"]
+        if not isinstance(raw_dependencies, list) or not raw_dependencies:
+            raise DataActivationError("checkpoint/journal dependencies are incomplete")
+        dependencies = []
+        for raw in raw_dependencies:
+            if not isinstance(raw, dict) or set(raw) != {
+                "asset_id",
+                "content_digest",
+                "immutable",
+                "inventory_digest",
+                "pinned",
+                "role",
+                "snapshot_id",
+            }:
+                raise DataActivationError("checkpoint/journal dependency fields mismatch")
+            dependency = CheckpointJournalDependency(
+                role=_required_text(raw, "role", "checkpoint/journal dependency"),
+                asset_id=_required_text(raw, "asset_id", "checkpoint/journal dependency"),
+                snapshot_id=_required_text(
+                    raw, "snapshot_id", "checkpoint/journal dependency"
+                ),
+                content_digest=_required_digest(
+                    raw, "content_digest", "checkpoint/journal dependency"
+                ),
+                inventory_digest=_optional_digest(
+                    raw, "inventory_digest", "checkpoint/journal dependency"
+                ),
+                immutable=raw["immutable"],
+                pinned=raw["pinned"],
+            )
+            if dependency.immutable is not True or dependency.pinned is not True:
+                raise DataActivationError("active dependency must be immutable and pinned")
+            dependencies.append(dependency)
+        keys = [item.key for item in dependencies]
+        if len(set(keys)) != len(keys):
+            raise DataActivationError("duplicate checkpoint/journal dependency")
+        roles = {item.role for item in dependencies}
+        if not _CHECKPOINT_JOURNAL_REQUIRED_ROLES <= roles:
+            raise DataActivationError("checkpoint/journal dependency roles are incomplete")
+        raw_reverse = payload["reverse_references"]
+        if not isinstance(raw_reverse, dict) or set(raw_reverse) != set(keys):
+            raise DataActivationError("checkpoint/journal reverse references are corrupt")
+        bundle_id = _required_text(payload, "bundle_id", "checkpoint/journal registry")
+        reverse: dict[str, tuple[str, ...]] = {}
+        for key, raw_refs in raw_reverse.items():
+            if raw_refs != [bundle_id]:
+                raise DataActivationError("checkpoint/journal reverse reference mismatch")
+            reverse[key] = tuple(raw_refs)
+        claimed_digest = _required_digest(
+            payload, "registry_digest", "checkpoint/journal registry"
+        )
+        digest_payload = dict(payload)
+        digest_payload.pop("registry_digest")
+        if _logical_digest(digest_payload) != claimed_digest:
+            raise DataActivationError("checkpoint/journal registry digest mismatch")
+        return cls(
+            path=registry_path,
+            bundle_id=bundle_id,
+            bundle_manifest_sha256=_required_digest(
+                payload, "bundle_manifest_sha256", "checkpoint/journal registry"
+            ),
+            storage_version=payload["storage_version"],
+            active=active,
+            dependencies=tuple(dependencies),
+            reverse_references=reverse,
+            registry_digest=claimed_digest,
+        )
+
+    def validate_bundle(self, manifest_path: str | Path) -> None:
+        path = Path(manifest_path).expanduser().resolve()
+        payload = _read_json_object(path, label="checkpoint/journal manifest")
+        if (
+            _sha256_file(path) != self.bundle_manifest_sha256
+            or payload.get("bundle_id") != self.bundle_id
+            or payload.get("artifact_version")
+            != "v12-chip-bundle-checkpoint-journal-v1"
+            or payload.get("registered") is not True
+            or payload.get("registry_modified") is not True
+        ):
+            raise DataActivationError("checkpoint/journal bundle registration mismatch")
+
+    def assert_dependency_gc_allowed(self, dependency_key: str) -> None:
+        if dependency_key not in self.reverse_references:
+            raise DataActivationError("unknown dependency or corrupt reverse reference")
+        if self.active or self.reverse_references[dependency_key]:
+            raise DataActivationError("active bundle prevents dependency GC")
+
+    def release_order(self) -> tuple[str, ...]:
+        return (
+            "DEACTIVATE_BUNDLE",
+            "REMOVE_REVERSE_REFERENCES",
+            "RELEASE_DEPENDENCY_PINS",
+        )
+
+
 @dataclass(frozen=True)
 class InputSnapshotManifest:
     path: Path

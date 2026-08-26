@@ -10,8 +10,10 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import shutil
 import struct
+import uuid
 from dataclasses import dataclass, replace
 from datetime import date, datetime
 from pathlib import Path
@@ -71,6 +73,9 @@ PHASE2_SYMBOLS = ("002260.SZ", "002706.SZ", "300604.SZ")
 PHASE2_TARGET_YEAR = 2020
 PHASE2_WARMUP_YEARS = (2018, 2019)
 PHASE2_WRITER_VERSION = "checkpoint-journal-writer-phase2-prototype-v1"
+PRODUCTION_WRITER_VERSION = "checkpoint-journal-writer-production-v1"
+PRODUCTION_INTEGRATION_VERSION = "checkpoint-journal-production-integration-v1"
+PRODUCTION_REGISTRY_VERSION = "checkpoint-journal-dependency-registry-v1"
 CHECKPOINT_CADENCE = (
     "OPENING_PLUS_EACH_CALENDAR_MONTH_END_TRADING_SESSION_INCLUDING_YEAR_END"
 )
@@ -793,3 +798,240 @@ def verify_root(root: Path) -> None:
             pq.ParquetFile(path)
     if sha256_file(root / "index.json") != manifest["index_sha256"]:
         raise ValueError("manifest index digest mismatch")
+
+
+def _production_resume_fingerprint(source: Path) -> str:
+    manifest = json.loads((source / "manifest.json").read_text(encoding="utf-8"))
+    summary = json.loads((source / "summary.json").read_text(encoding="utf-8"))
+    return logical_sha256(
+        {
+            "integration_version": PRODUCTION_INTEGRATION_VERSION,
+            "source_manifest_sha256": sha256_file(source / "manifest.json"),
+            "source_summary_sha256": sha256_file(source / "summary.json"),
+            "storage_version": STORAGE_VERSION,
+            "symbols": manifest["symbols"],
+            "target_year": manifest["target_year"],
+            "ordinary_source_recompute_rows": summary[
+                "ordinary_source_recompute_rows"
+            ],
+        }
+    )
+
+
+def _production_dependency_bindings(root: Path) -> list[dict[str, Any]]:
+    manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+    role_by_class = {
+        DependencyClass.DAILY: "daily_input",
+        DependencyClass.MINUTE: "minute_input",
+        DependencyClass.CORPORATE_ACTION: "corporate_action_input",
+        DependencyClass.ADDITIONAL_REPLAY_INPUT: "additional_replay_input",
+    }
+    bindings: dict[tuple[str, str, str, str], dict[str, Any]] = {}
+    for part in manifest["parts"]:
+        if part["kind"] != "journal":
+            continue
+        journal = decode_journal((root / part["relative_path"]).read_bytes())
+        for row in journal.rows:
+            for reference in row.dependency_references:
+                role = role_by_class[reference.dependency_class]
+                key = (
+                    role,
+                    reference.asset_id,
+                    reference.snapshot_id,
+                    reference.content_digest,
+                )
+                bindings[key] = {
+                    "asset_id": reference.asset_id,
+                    "content_digest": reference.content_digest,
+                    "immutable": True,
+                    "inventory_digest": reference.inventory_digest,
+                    "pinned": True,
+                    "role": role,
+                    "snapshot_id": reference.snapshot_id,
+                }
+    bindings[(
+        "replay_parameter_manifest",
+        "checkpoint-journal-replay-parameters",
+        manifest["replay_parameter_manifest_digest"],
+        manifest["replay_parameter_manifest_digest"],
+    )] = {
+        "asset_id": "checkpoint-journal-replay-parameters",
+        "content_digest": manifest["replay_parameter_manifest_digest"],
+        "immutable": True,
+        "inventory_digest": None,
+        "pinned": True,
+        "role": "replay_parameter_manifest",
+        "snapshot_id": manifest["replay_parameter_manifest_digest"],
+    }
+    for part in manifest["parts"]:
+        if part["kind"] not in {"feature", "terminal"}:
+            continue
+        symbol = part["relative_path"].split("/", 1)[0].removeprefix("symbol=")
+        role = "feature" if part["kind"] == "feature" else "terminal_compatibility"
+        asset_id = f"checkpoint-journal-{role}-{symbol}"
+        bindings[(role, asset_id, symbol, part["sha256"])] = {
+            "asset_id": asset_id,
+            "content_digest": part["sha256"],
+            "immutable": True,
+            "inventory_digest": None,
+            "pinned": True,
+            "role": role,
+            "snapshot_id": f"{symbol}-{manifest['target_year']}",
+        }
+    return [bindings[key] for key in sorted(bindings)]
+
+
+def activate_production_bundle(source: Path, output: Path) -> dict[str, Any]:
+    """Activate one exact candidate without rerunning its canonical transitions."""
+
+    source = source.resolve()
+    output = output.resolve()
+    if source == output or source in output.parents or output in source.parents:
+        raise ValueError("source and production roots must be separate")
+    if (source / "parts").exists() or (source / "operator_symbol_index.parquet").exists():
+        raise ValueError("checkpoint/journal source cannot mix legacy operator storage")
+    verify_root(source)
+    source_manifest = json.loads(
+        (source / "manifest.json").read_text(encoding="utf-8")
+    )
+    source_summary = json.loads((source / "summary.json").read_text(encoding="utf-8"))
+    if (
+        source_manifest.get("registered") is not False
+        or source_manifest.get("registry_modified") is not False
+        or source_summary.get("exact_mismatch_count") != 0
+    ):
+        raise ValueError("source candidate is not an exact unregistered bundle")
+    expected_model_days = 0
+    for symbol in source_manifest["symbols"]:
+        result = source_summary["symbol_results"][symbol]
+        trading_days = int(result["trading_days"])
+        seller_rows = result["seller_model_rows"]
+        if set(seller_rows) != set(SELLER_MODEL_ORDER) or any(
+            int(seller_rows[model]) != trading_days for model in SELLER_MODEL_ORDER
+        ):
+            raise ValueError("source canonical transition instrumentation is incomplete")
+        expected_model_days += trading_days * len(SELLER_MODEL_ORDER)
+    if int(source_summary["ordinary_source_recompute_rows"]) != expected_model_days:
+        raise ValueError("source canonical transition count is not one per model/day")
+    fingerprint = _production_resume_fingerprint(source)
+    integration_path = output / "production_integration.json"
+    if output.exists():
+        if not integration_path.is_file():
+            raise ValueError("existing production root has no resume fingerprint")
+        integration = json.loads(integration_path.read_text(encoding="utf-8"))
+        if integration.get("resume_fingerprint") != fingerprint:
+            raise ValueError("checkpoint/journal resume fingerprint mismatch")
+        verify_root(output)
+        from cyq_game.data.registry import CheckpointJournalRegistration
+
+        registration = CheckpointJournalRegistration.load(
+            output / "dependency_registry.json"
+        )
+        registration.validate_bundle(output / "manifest.json")
+        if integration.get("registry_digest") != registration.registry_digest:
+            raise ValueError("checkpoint/journal resume registry mismatch")
+        return json.loads((output / "summary.json").read_text(encoding="utf-8"))
+
+    temporary = output.parent / f".{output.name}.tmp-{uuid.uuid4().hex}"
+    if temporary.exists():
+        raise ValueError("production temporary root already exists")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        shutil.copytree(source, temporary, copy_function=os.link)
+        manifest_path = temporary / "manifest.json"
+        manifest_path.unlink()
+        production_manifest = dict(source_manifest)
+        production_manifest.update(
+            {
+                "artifact_version": ARTIFACT_VERSION,
+                "registered": True,
+                "registry_modified": True,
+                "writer_version": PRODUCTION_WRITER_VERSION,
+            }
+        )
+        write_json(manifest_path, production_manifest)
+
+        terminal_bytes = 0
+        for part in production_manifest["parts"]:
+            if part["kind"] != "terminal":
+                continue
+            symbol = part["relative_path"].split("/", 1)[0].removeprefix("symbol=")
+            target = (
+                temporary
+                / "terminal"
+                / "bucket=0"
+                / f"{symbol.replace('.', '_')}.parquet"
+            )
+            target.parent.mkdir(parents=True, exist_ok=True)
+            os.link(temporary / part["relative_path"], target)
+            terminal_bytes += int(part["bytes"])
+
+        dependencies = _production_dependency_bindings(temporary)
+        dependency_keys = [
+            logical_sha256(binding) for binding in dependencies
+        ]
+        registry_payload: dict[str, Any] = {
+            "active": True,
+            "bundle_id": production_manifest["bundle_id"],
+            "bundle_manifest_sha256": sha256_file(manifest_path),
+            "dependencies": dependencies,
+            "registry_version": PRODUCTION_REGISTRY_VERSION,
+            "reverse_references": {
+                key: [production_manifest["bundle_id"]] for key in dependency_keys
+            },
+            "storage_version": STORAGE_VERSION,
+        }
+        registry_payload["registry_digest"] = logical_sha256(registry_payload)
+        registry_path = temporary / "dependency_registry.json"
+        write_json(registry_path, registry_payload)
+
+        shared_stream_id = logical_sha256(
+            {
+                "bundle_id": production_manifest["bundle_id"],
+                "source_manifest_sha256": sha256_file(source / "manifest.json"),
+                "ordinary_source_recompute_rows": source_summary[
+                    "ordinary_source_recompute_rows"
+                ],
+            }
+        )
+        integration = {
+            "integration_version": PRODUCTION_INTEGRATION_VERSION,
+            "registry_digest": registry_payload["registry_digest"],
+            "registry_path": "dependency_registry.json",
+            "resume_fingerprint": fingerprint,
+            "shared_state_stream_consumers": [
+                "checkpoint_journal",
+                "daily_feature",
+                "terminal_compatibility",
+            ],
+            "shared_state_stream_id": shared_stream_id,
+            "source_manifest_sha256": sha256_file(source / "manifest.json"),
+            "storage_version": STORAGE_VERSION,
+            "transition_count_per_model_day": 1,
+        }
+        write_json(temporary / "production_integration.json", integration)
+
+        summary_path = temporary / "summary.json"
+        summary_path.unlink()
+        production_summary = {
+            "compatibility_terminal_bytes": terminal_bytes,
+            "coverage": 1.0,
+            "exact_mismatch_count": 0,
+            "files": len(production_manifest["symbols"]),
+            "max_mass_error": 0.0,
+            "max_same_day_resale": 0.0,
+            "passed_symbols": len(production_manifest["symbols"]),
+            "resume_fingerprint": fingerprint,
+            "status": "PASS",
+            "storage_version": STORAGE_VERSION,
+            "symbols": len(production_manifest["symbols"]),
+            "target_year": production_manifest["target_year"],
+            "transition_count_per_model_day": 1,
+            "year": production_manifest["target_year"],
+        }
+        write_json(summary_path, production_summary)
+        temporary.replace(output)
+        return production_summary
+    except BaseException:
+        shutil.rmtree(temporary, ignore_errors=True)
+        raise

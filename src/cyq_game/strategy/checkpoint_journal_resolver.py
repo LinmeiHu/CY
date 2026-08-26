@@ -14,6 +14,7 @@ from cyq_game.chip.checkpoint_journal_reader import (
     ReplayBackend,
     RestoredDay,
 )
+from cyq_game.data.registry import CheckpointJournalRegistration
 
 
 class ChipResolverMode(StrEnum):
@@ -44,6 +45,7 @@ def build_chip_resolver(
     replay_parameter_manifest_digest: str | None = None,
     dependency_catalog: DependencyCatalog | None = None,
     replay_backend: ReplayBackend | None = None,
+    checkpoint_registration: CheckpointJournalRegistration | None = None,
     legacy_factory: Callable[[str | Path], Any] | None = None,
 ) -> Any:
     if mode is ChipResolverMode.LEGACY_OPERATOR:
@@ -68,6 +70,7 @@ def build_chip_resolver(
             checkpoint_root,
             replay_parameter_manifest_digest=replay_parameter_manifest_digest,
             dependency_catalog=dependency_catalog,
+            registration=checkpoint_registration,
         ),
         backend=replay_backend,
     )

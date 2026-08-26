@@ -91,6 +91,24 @@ def _verify_year(root: Path, year: int, end_date: str) -> dict[str, Any]:
     expected = int(summary["passed"] if year == 2023 else summary["passed_symbols"])
     if len(terminal_files) != expected:
         raise ValueError(f"{year} terminal count differs: {len(terminal_files)} != {expected}")
+    if summary.get("storage_version") == "chip-checkpoint-journal-storage-v1":
+        terminal_bytes = sum(path.stat().st_size for path in terminal_files)
+        if terminal_bytes != int(summary.get("compatibility_terminal_bytes", -1)):
+            raise ValueError(f"{year} compatibility terminal bytes are not counted")
+        return {
+            "year": year,
+            "summary_path": str(summary_path.resolve()),
+            "summary_sha256": _sha256(summary_path),
+            "coverage": float(summary["coverage"]),
+            "symbols": int(summary["symbols"]),
+            "passed_symbols": expected,
+            "terminal_files": len(terminal_files),
+            "operator_files": 0,
+            "operator_rows": 0,
+            "fallback_days": 0,
+            "storage_version": "chip-checkpoint-journal-storage-v1",
+            "compatibility_terminal_bytes": terminal_bytes,
+        }
     part_files = tuple(year_root.glob("parts/bucket=*/*.parquet"))
     if year in (2023, 2024, 2025) and part_files:
         raise ValueError(f"{year} must not retain full operator parts")

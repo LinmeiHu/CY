@@ -13,6 +13,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+CHECKPOINT_JOURNAL_STORAGE_VERSION = "chip-checkpoint-journal-storage-v1"
+
 
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -65,6 +67,18 @@ def main() -> int:
 
     output = args.output.resolve()
     sources = [source.resolve() for source in args.source]
+    storage_versions = {
+        str(
+            json.loads((source / "summary.json").read_text(encoding="utf-8")).get(
+                "storage_version"
+            )
+            or "chip-operator-log-v11"
+        )
+        for source in sources
+    }
+    if len(storage_versions) != 1:
+        raise RuntimeError("source roots cannot mix storage versions")
+    storage_version = next(iter(storage_versions))
     existing_summary = output / "summary.json"
     if existing_summary.is_file():
         payload = json.loads(existing_summary.read_text(encoding="utf-8"))
@@ -87,27 +101,41 @@ def main() -> int:
         part_symbols: set[str] = set()
         terminal_symbols: set[str] = set()
         for source in sources:
-            part_symbols.update(_link_inventory(source, temp, "parts"))
+            if storage_version != CHECKPOINT_JOURNAL_STORAGE_VERSION:
+                part_symbols.update(_link_inventory(source, temp, "parts"))
             terminal_symbols.update(_link_inventory(source, temp, "terminal"))
-        if part_symbols != terminal_symbols:
+        if (
+            storage_version != CHECKPOINT_JOURNAL_STORAGE_VERSION
+            and part_symbols != terminal_symbols
+        ):
             raise RuntimeError(
                 "merged part/terminal symbol sets differ: "
                 f"parts_only={sorted(part_symbols - terminal_symbols)[:5]} "
                 f"terminal_only={sorted(terminal_symbols - part_symbols)[:5]}"
             )
-        if len(part_symbols) != args.expected_files:
+        inventory_symbols = (
+            terminal_symbols
+            if storage_version == CHECKPOINT_JOURNAL_STORAGE_VERSION
+            else part_symbols
+        )
+        if len(inventory_symbols) != args.expected_files:
             raise RuntimeError(
-                f"expected {args.expected_files} symbols, found {len(part_symbols)}"
+                f"expected {args.expected_files} symbols, found {len(inventory_symbols)}"
             )
         payload = {
             "status": "PASS",
             "created_at": datetime.now(UTC).isoformat(),
             "year": args.year,
-            "storage_version": "chip-operator-log-v11",
+            "storage_version": storage_version,
             "model_version": "real-chip-inventory-v2.1",
-            "files": len(part_symbols),
-            "symbols": len(part_symbols),
-            "part_terminal_sets_equal": True,
+            "files": len(inventory_symbols),
+            "symbols": len(inventory_symbols),
+            "part_terminal_sets_equal": (
+                storage_version != CHECKPOINT_JOURNAL_STORAGE_VERSION
+            ),
+            "compatibility_terminal_only": (
+                storage_version == CHECKPOINT_JOURNAL_STORAGE_VERSION
+            ),
             "merge_mode": "verified_hard_links",
             "sources": [_summary_identity(source) for source in sources],
             "excluded_symbols": excluded,

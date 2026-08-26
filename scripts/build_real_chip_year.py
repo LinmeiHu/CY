@@ -33,6 +33,12 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from cyq_game.chip._migration_kernel import stable_sum  # noqa: E402
 from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
+from cyq_game.chip.checkpoint_journal_contract import (  # noqa: E402
+    STORAGE_VERSION as CHECKPOINT_JOURNAL_STORAGE_VERSION,
+)
+from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
+    activate_production_bundle,
+)
 from cyq_game.chip.ensemble_v2 import SELLER_MODEL_ORDER  # noqa: E402
 from cyq_game.chip.migration_v2 import (  # noqa: E402
     DEFAULT_MAX_HOLDING_DAYS,
@@ -83,6 +89,7 @@ MINUTE_ROOT = Path(
 MODEL_VERSION = "real-chip-inventory-v2.1"
 GRID_VERSION = "log-grid-25bp-v1"
 STORAGE_VERSION = OPERATOR_LOG_VERSION
+LEGACY_STORAGE_SELECTOR = "legacy-operator"
 STAGE_LAYOUT_VERSION = "bucket-symbol-v3-mixed-native-resolution"
 MINUTE_YEAR_SUPPLEMENTS: dict[int, tuple[str, ...]] = {
     2026: ("2026_qmt_tail.parquet",),
@@ -2702,6 +2709,17 @@ def _aggregate_bucket_tasks(results: list[dict[str, Any]]) -> list[dict[str, Any
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--storage-format",
+        choices=(LEGACY_STORAGE_SELECTOR, CHECKPOINT_JOURNAL_STORAGE_VERSION),
+        default=LEGACY_STORAGE_SELECTOR,
+        help="Explicit physical storage selector; legacy operator remains default.",
+    )
+    parser.add_argument(
+        "--checkpoint-journal-source",
+        type=Path,
+        help="Exact unregistered checkpoint/journal candidate to activate.",
+    )
     parser.add_argument("--year", type=int, default=2020)
     parser.add_argument("--warmup-start", type=int, default=2018)
     parser.add_argument(
@@ -2766,6 +2784,37 @@ def main() -> int:
         parser.error("--emit-start-date must belong to --year")
     if args.terminal_only and args.emit_start_date is not None:
         parser.error("--terminal-only and --emit-start-date are mutually exclusive")
+    if args.storage_format == CHECKPOINT_JOURNAL_STORAGE_VERSION:
+        if args.checkpoint_journal_source is None or args.output is None:
+            parser.error(
+                "checkpoint/journal storage requires --checkpoint-journal-source and --output"
+            )
+        if any(
+            (
+                args.terminal_only,
+                args.emit_start_date is not None,
+                args.resume_from is not None,
+            )
+        ):
+            parser.error(
+                "checkpoint/journal activation does not accept legacy terminal/resume options"
+            )
+        source_manifest = json.loads(
+            (args.checkpoint_journal_source / "manifest.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        if int(source_manifest["target_year"]) != args.year:
+            parser.error("checkpoint/journal source target year differs from --year")
+        summary = activate_production_bundle(
+            args.checkpoint_journal_source, args.output
+        )
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0
+    if args.checkpoint_journal_source is not None:
+        parser.error(
+            "--checkpoint-journal-source requires explicit checkpoint/journal storage"
+        )
     started = time.perf_counter()
     selected_buckets = [args.bucket] if args.bucket is not None else list(range(args.buckets))
     if any(bucket < 0 or bucket >= args.buckets for bucket in selected_buckets):

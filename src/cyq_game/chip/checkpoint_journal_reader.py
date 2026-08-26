@@ -42,6 +42,7 @@ from cyq_game.chip.journal_codec import (
     JournalModelDigests,
     decode_journal,
 )
+from cyq_game.data.registry import CheckpointJournalRegistration
 from cyq_game.chip.migration_v2 import (
     StableLogPriceGrid,
     bucket_for_economic_break_even,
@@ -298,6 +299,7 @@ class CheckpointJournalReader:
         *,
         replay_parameter_manifest_digest: str,
         dependency_catalog: DependencyCatalog,
+        registration: CheckpointJournalRegistration | None = None,
     ) -> None:
         self.root = Path(root)
         self.dependency_catalog = dependency_catalog
@@ -305,6 +307,16 @@ class CheckpointJournalReader:
             replay_parameter_manifest_digest
         )
         self.manifest = self._read_manifest()
+        if self.manifest["artifact_version"] == ARTIFACT_VERSION:
+            if registration is None:
+                raise CheckpointJournalReadError(
+                    "registered production root requires dependency registration"
+                )
+            registration.validate_bundle(self.root / "manifest.json")
+        elif registration is not None:
+            raise CheckpointJournalReadError(
+                "unregistered prototype cannot use production registration"
+            )
         if (
             self.manifest["replay_parameter_manifest_digest"]
             != replay_parameter_manifest_digest
@@ -354,10 +366,16 @@ class CheckpointJournalReader:
         }
         if set(raw) != expected:
             raise CheckpointJournalReadError("root manifest fields mismatch")
-        if raw["artifact_version"] != PHASE2_MANIFEST_VERSION:
+        if raw["artifact_version"] not in {
+            PHASE2_MANIFEST_VERSION,
+            ARTIFACT_VERSION,
+        }:
             raise CheckpointJournalReadError("unknown or mixed root version")
-        if raw["registered"] is not False or raw["registry_modified"] is not False:
-            raise CheckpointJournalReadError("Phase 3 cannot read an activated prototype root")
+        if raw["artifact_version"] == PHASE2_MANIFEST_VERSION:
+            if raw["registered"] is not False or raw["registry_modified"] is not False:
+                raise CheckpointJournalReadError("prototype activation state mismatch")
+        elif raw["registered"] is not True or raw["registry_modified"] is not True:
+            raise CheckpointJournalReadError("production activation state mismatch")
         if tuple(raw["seller_models"]) != SELLER_MODEL_ORDER:
             raise CheckpointJournalReadError("root seller model coverage mismatch")
         if not isinstance(raw["parts"], list):

@@ -12,6 +12,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+CHECKPOINT_JOURNAL_STORAGE_VERSION = "chip-checkpoint-journal-storage-v1"
+
 
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -61,6 +63,7 @@ def main() -> int:
     symbols_by_year: dict[str, list[str]] = {}
     all_symbols: set[str] = set()
     sources: list[dict[str, Any]] = []
+    storage_versions: set[str] = set()
     try:
         for year, raw_root in sorted(year_roots.items()):
             root = raw_root.resolve()
@@ -68,6 +71,38 @@ def main() -> int:
             summary = json.loads(summary_path.read_text(encoding="utf-8"))
             if summary.get("status") != "PASS" or summary.get("year") != year:
                 raise RuntimeError(f"annual merge summary is not PASS for {year}: {root}")
+            storage_version = str(
+                summary.get("storage_version") or "chip-operator-log-v11"
+            )
+            storage_versions.add(storage_version)
+            if len(storage_versions) != 1:
+                raise RuntimeError("annual roots cannot mix storage versions")
+            if storage_version == CHECKPOINT_JOURNAL_STORAGE_VERSION:
+                terminal_paths = sorted(root.glob("terminal/bucket=*/*.parquet"))
+                terminal_symbols = {_symbol(path) for path in terminal_paths}
+                if len(terminal_paths) != int(summary["files"]):
+                    raise RuntimeError(
+                        f"checkpoint terminal inventory differs for {year}: {root}"
+                    )
+                for source in terminal_paths:
+                    relative = source.relative_to(root / "terminal")
+                    target = temporary / f"year={year}" / "terminal" / relative
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    os.link(source, target)
+                ordered_symbols = sorted(terminal_symbols)
+                symbols_by_year[str(year)] = ordered_symbols
+                all_symbols.update(ordered_symbols)
+                sources.append(
+                    {
+                        "year": year,
+                        "root": str(root),
+                        "files": len(terminal_paths),
+                        "compatibility_terminal": True,
+                        "summary_path": str(summary_path),
+                        "summary_sha256": _sha256(summary_path),
+                    }
+                )
+                continue
             if not summary.get("part_terminal_sets_equal"):
                 raise RuntimeError(f"annual part/terminal sets differ for {year}: {root}")
 
@@ -112,7 +147,7 @@ def main() -> int:
             "status": "PASS",
             "created_at": datetime.now(UTC).isoformat(),
             "merge_mode": "verified_hard_links",
-            "storage_version": "chip-operator-log-v11",
+            "storage_version": next(iter(storage_versions)),
             "model_version": "real-chip-inventory-v2.1",
             "years": sorted(year_roots),
             "symbols": len(ordered_all),
