@@ -785,6 +785,17 @@ def write_json(path: Path, value: Mapping[str, Any]) -> int:
 
 
 def verify_root(root: Path) -> None:
+    for path in root.rglob("*"):
+        if not path.is_file():
+            continue
+        for part in path.relative_to(root).parts:
+            lowered = part.lower()
+            if (
+                lowered in {"tmp", "partial", "orphan"}
+                or lowered.startswith(("tmp-", "partial-", "orphan-"))
+                or lowered.endswith((".tmp", ".partial", ".incomplete", ".orphan"))
+            ):
+                raise ValueError("unregistered partial/tmp/orphan shard")
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
     for part in manifest["parts"]:
         path = root / part["relative_path"]
