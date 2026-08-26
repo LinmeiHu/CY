@@ -1214,7 +1214,7 @@ def validate_checkpoint_logical(value: CheckpointLogical) -> None:
             (state.effective_at, "effective_at"),
         ):
             _utc_timestamp(stamp)
-            if stamp.date() != value.checkpoint_date:
+            if name != "effective_at" and stamp.date() != value.checkpoint_date:
                 raise ContractError(f"checkpoint {name} date mismatch")
         if state.available_at > state.decision_at or state.effective_at > state.decision_at:
             raise ContractError("checkpoint PIT boundary follows decision_at")
@@ -1249,11 +1249,20 @@ def validate_checkpoint_logical(value: CheckpointLogical) -> None:
         if free_float <= 0:
             raise ContractError("free float must be positive")
         lot_total = math.fsum(bits_f64be(lot.shares_bits) for lot in state.lots)
-        if f64be_bits(lot_total) != state.free_float_shares_bits:
-            raise ContractError("checkpoint lot mass does not exactly equal free float bits")
+        conservation_error = bits_f64be(state.conservation_error_bits)
+        computed_error = lot_total - free_float
+        if not (
+            computed_error == 0.0 == conservation_error
+            or f64be_bits(computed_error) == state.conservation_error_bits
+        ):
+            raise ContractError(
+                "checkpoint lot/free-float residual does not exactly equal "
+                "conservation error bits"
+            )
         if bits_f64be(state.latent_supply_shares_bits) < 0:
             raise ContractError("latent supply must be non-negative")
-        bits_f64be(state.conservation_error_bits)
+        if not math.isfinite(conservation_error):
+            raise ContractError("checkpoint conservation error must be finite")
         _require_ordered_unique(state.input_snapshot_ids, "input_snapshot_ids")
         if not state.input_snapshot_ids:
             raise ContractError("input_snapshot_ids cannot be empty")
