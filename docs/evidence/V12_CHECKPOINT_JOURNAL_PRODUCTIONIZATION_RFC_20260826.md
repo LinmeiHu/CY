@@ -226,6 +226,14 @@ The current physical schema is `scripts/build_real_chip_year.py:TERMINAL_SCHEMA`
 | semantic/runtime fingerprint | partial storage/model/grid only | complete semantic fields, replay parameter manifest digest, code inventory, runtime fingerprint |
 | dependency retention state | absent | mandatory binding identity and verified pinned state before production use |
 
+Economic-coordinate oracle decision: `economic_break_even_bits` is the canonical
+checkpoint/journal value.  An economic bucket is derived deterministically from
+those exact binary64 bits by the frozen coordinate-version bucket function.  A
+25bp bucket reconstructed by the legacy resolver is compatibility-only and is
+not a numeric exact oracle; differences from that coarse representation are
+reported separately and never resolved with tolerance or a duplicated persisted
+legacy bucket.
+
 ### 7.2 Physical consumers and migration
 
 | Consumer | Current physical read/assumption | Phase and migration | Exact test | Rollback | Stop materialization only when |
