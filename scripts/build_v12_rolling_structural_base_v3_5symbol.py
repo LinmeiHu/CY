@@ -97,6 +97,108 @@ def _manifest(
     }
 
 
+def _validate_output(
+    *,
+    stage_root: Path,
+    output: Path,
+    input_manifest_root: Path,
+    pre_manifest_summary: dict[str, Any],
+    activation: dict[str, Any],
+) -> dict[str, Any]:
+    root_manifest = json.loads(
+        (output / "manifest.json").read_text(encoding="utf-8")
+    )
+    replay_parameter_manifest_digest = root_manifest[
+        "replay_parameter_manifest_digest"
+    ]
+    semantic_fingerprint = root_manifest["semantic_fingerprint"]
+    artifact_contract_fingerprint = root_manifest[
+        "artifact_contract_fingerprint"
+    ]
+    restored_tracker_scopes = {}
+    reuse_status = {}
+    for symbol in SYMBOLS:
+        symbol_journal_rows = []
+        for part in root_manifest["parts"]:
+            if part["kind"] == "journal" and part["relative_path"].startswith(
+                f"symbol={symbol}/"
+            ):
+                symbol_journal_rows.extend(
+                    decode_journal(
+                        (output / part["relative_path"]).read_bytes()
+                    ).rows
+                )
+        reader = CheckpointJournalReader(
+            output,
+            replay_parameter_manifest_digest=replay_parameter_manifest_digest,
+            dependency_catalog=DependencyCatalog.from_journal_rows(
+                symbol_journal_rows
+            ),
+        )
+        checkpoint = reader.latest_checkpoint(symbol)
+        restored = EnsembleTemporalPeakTracker.from_continuation(
+            symbol=symbol, continuation=checkpoint.temporal_tracker
+        )
+        restored_tracker_scopes[symbol] = len(restored.continuation().scopes)
+        daily_path = _partition(stage_root, "daily", symbol)
+        if daily_path is None:
+            raise AssertionError("daily partition unexpectedly missing")
+        input_fingerprint, _ = builder._symbol_input_fingerprint(
+            symbol=symbol,
+            year=TARGET_YEAR,
+            stage_root=stage_root,
+            daily_path=daily_path,
+            minute_path=_partition(stage_root, "minute", symbol),
+            manifest_root=input_manifest_root,
+        )
+        manifest_path = output / f"symbol={symbol}" / "manifest.json"
+        base = {
+            "manifest_path": manifest_path,
+            "candidate_root": output,
+            "input_fingerprint": input_fingerprint,
+        }
+        reuse_status[symbol] = {
+            "current": builder._symbol_reuse_status(
+                **base,
+                semantic_fingerprint=semantic_fingerprint,
+                artifact_contract_fingerprint=artifact_contract_fingerprint,
+            ),
+            "old_semantic": builder._symbol_reuse_status(
+                **base,
+                semantic_fingerprint=OLD_V2_SEMANTIC_FINGERPRINT,
+                artifact_contract_fingerprint=artifact_contract_fingerprint,
+            ),
+            "old_artifact": builder._symbol_reuse_status(
+                **base,
+                semantic_fingerprint=semantic_fingerprint,
+                artifact_contract_fingerprint=OLD_V2_ARTIFACT_FINGERPRINT,
+            ),
+        }
+
+    result = {
+        **pre_manifest_summary,
+        "activation": activation,
+        "output": str(output),
+        "bytes": regular_file_bytes(output),
+        "git_head": root_manifest["git_head_provenance"],
+        "semantic_fingerprint": semantic_fingerprint,
+        "artifact_contract_fingerprint": artifact_contract_fingerprint,
+        "physical_fingerprint": root_manifest["physical_fingerprint"],
+        "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
+        "root_manifest_sha256": builder.sha256_file(output / "manifest.json"),
+        "symbol_manifest_sha256": {
+            symbol: builder.sha256_file(
+                output / f"symbol={symbol}" / "manifest.json"
+            )
+            for symbol in SYMBOLS
+        },
+        "restored_tracker_scopes": restored_tracker_scopes,
+        "reuse_status": reuse_status,
+    }
+    write_json(output.parent / f"{output.name}.validation.json", result)
+    return result
+
+
 def build(stage_root: Path, output: Path, *, buffer_rows: int) -> dict[str, Any]:
     stage_root = stage_root.resolve()
     output = output.resolve()
@@ -238,80 +340,13 @@ def build(stage_root: Path, output: Path, *, buffer_rows: int) -> dict[str, Any]
     verify_root(candidate_root, verify_all_content=True)
     activation = activate_production_bundle(candidate_root, output)
     verify_root(output, verify_all_content=True)
-
-    journal_rows = []
-    for part in root_manifest["parts"]:
-        if part["kind"] == "journal":
-            journal_rows.extend(
-                decode_journal((output / part["relative_path"]).read_bytes()).rows
-            )
-    reader = CheckpointJournalReader(
-        output,
-        replay_parameter_manifest_digest=replay_parameter_manifest_digest,
-        dependency_catalog=DependencyCatalog.from_journal_rows(journal_rows),
+    return _validate_output(
+        stage_root=stage_root,
+        output=output,
+        input_manifest_root=input_manifest_root,
+        pre_manifest_summary=pre_manifest_summary,
+        activation=activation,
     )
-    restored_tracker_scopes = {}
-    reuse_status = {}
-    for symbol in SYMBOLS:
-        checkpoint = reader.latest_checkpoint(symbol)
-        restored = EnsembleTemporalPeakTracker.from_continuation(
-            symbol=symbol, continuation=checkpoint.temporal_tracker
-        )
-        restored_tracker_scopes[symbol] = len(restored.continuation().scopes)
-        input_fingerprint, _ = builder._symbol_input_fingerprint(
-            symbol=symbol,
-            year=TARGET_YEAR,
-            stage_root=stage_root,
-            daily_path=daily[symbol],  # type: ignore[arg-type]
-            minute_path=minute[symbol],
-            manifest_root=input_manifest_root,
-        )
-        manifest_path = output / f"symbol={symbol}" / "manifest.json"
-        base = {
-            "manifest_path": manifest_path,
-            "candidate_root": output,
-            "input_fingerprint": input_fingerprint,
-        }
-        reuse_status[symbol] = {
-            "current": builder._symbol_reuse_status(
-                **base,
-                semantic_fingerprint=semantic_fingerprint,
-                artifact_contract_fingerprint=artifact_contract_fingerprint,
-            ),
-            "old_semantic": builder._symbol_reuse_status(
-                **base,
-                semantic_fingerprint=OLD_V2_SEMANTIC_FINGERPRINT,
-                artifact_contract_fingerprint=artifact_contract_fingerprint,
-            ),
-            "old_artifact": builder._symbol_reuse_status(
-                **base,
-                semantic_fingerprint=semantic_fingerprint,
-                artifact_contract_fingerprint=OLD_V2_ARTIFACT_FINGERPRINT,
-            ),
-        }
-
-    result = {
-        **pre_manifest_summary,
-        "activation": activation,
-        "output": str(output),
-        "bytes": regular_file_bytes(output),
-        "git_head": git_head,
-        "semantic_fingerprint": semantic_fingerprint,
-        "artifact_contract_fingerprint": artifact_contract_fingerprint,
-        "physical_fingerprint": physical_fingerprint,
-        "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
-        "root_manifest_sha256": builder.sha256_file(output / "manifest.json"),
-        "symbol_manifest_sha256": {
-            symbol: builder.sha256_file(
-                output / f"symbol={symbol}" / "manifest.json"
-            )
-            for symbol in SYMBOLS
-        },
-        "restored_tracker_scopes": restored_tracker_scopes,
-        "reuse_status": reuse_status,
-    }
-    write_json(output.parent / f"{output.name}.validation.json", result)
-    return result
 
 
 def main() -> None:
@@ -321,10 +356,29 @@ def main() -> None:
     parser.add_argument(
         "--buffer-rows", type=int, choices=builder.BUFFER_CANDIDATES, default=24
     )
+    parser.add_argument("--validate-existing", action="store_true")
     args = parser.parse_args()
+    if args.validate_existing:
+        output = args.output.resolve()
+        run_root = output.parent / f".{output.name}.building"
+        candidate_root = run_root / "candidate"
+        verify_root(candidate_root, verify_all_content=True)
+        activation = activate_production_bundle(candidate_root, output)
+        verify_root(output, verify_all_content=True)
+        result = _validate_output(
+            stage_root=args.stage_root.resolve(),
+            output=output,
+            input_manifest_root=run_root / "input-manifests",
+            pre_manifest_summary=json.loads(
+                (candidate_root / "summary.json").read_text(encoding="utf-8")
+            ),
+            activation=activation,
+        )
+    else:
+        result = build(args.stage_root, args.output, buffer_rows=args.buffer_rows)
     print(
         json.dumps(
-            build(args.stage_root, args.output, buffer_rows=args.buffer_rows),
+            result,
             indent=2,
             sort_keys=True,
         )
