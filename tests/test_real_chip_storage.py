@@ -324,28 +324,6 @@ def test_research_valid_only_relaxes_explicit_unknown_cost() -> None:
     )
 
 
-def test_daily_profile_peak_uses_stable_bucket_and_tie_break() -> None:
-    grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
-    profile = MODULE["_profile_from_bucket_mass"](
-        {40: 100.0 + 1e-11, 20: 100.0}, grid, current_price=1.0
-    )
-
-    assert profile is not None
-    assert profile["dominant_peak_today"] == grid.price_for_bucket(20)
-
-
-def test_daily_profile_peak_prefers_structural_cluster_over_isolated_spike() -> None:
-    grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
-    profile = MODULE["_profile_from_bucket_mass"](
-        {20: 60.0, 21: 60.0, 22: 60.0, 40: 100.0},
-        grid,
-        current_price=1.0,
-    )
-
-    assert profile is not None
-    assert profile["dominant_peak_today"] == grid.price_for_bucket(21)
-
-
 def test_daily_profile_uses_dividend_adjusted_economic_cost() -> None:
     grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
     acquisition_bucket = grid.bucket_for_price(10.0)
@@ -402,10 +380,6 @@ def test_daily_profile_preserves_nonpositive_economic_break_even() -> None:
     assert by_bucket == {sentinel: 100.0}
     assert economic_buckets == {123: sentinel}
     assert known_shares == 100.0
-    with pytest.raises(ValueError, match="positive"):
-        MODULE["_profile_from_bucket_mass"](
-            by_bucket, grid, current_price=1.0
-        )
 
 
 def test_zero_retention_company_action_destination_needs_no_codec_entry() -> None:
@@ -754,6 +728,131 @@ def test_terminal_only_run_advances_state_without_writing_operators() -> None:
     assert result["emitted_days"] == 0
     assert result["state_resumed"] is True
     assert {state.trading_date for state in terminal.values()} == {trading_date}
+
+
+def test_direct_day_sink_matches_canonical_operator_projection(
+    tmp_path: Path,
+) -> None:
+    from cyq_game.chip.checkpoint_journal_writer import (
+        _JOURNAL_COLUMNS,
+    )
+    from cyq_game.chip.daily_feature_fact import PROJECTED_COLUMNS
+
+    symbol = "000005.SZ"
+    prior_at = datetime(2023, 12, 29, 15, tzinfo=ZoneInfo("Asia/Shanghai"))
+    initial = {
+        model: MODULE["initial_unknown_snapshot"](
+            symbol=symbol,
+            decision_at=prior_at,
+            available_at=prior_at,
+            free_float_shares=1_000.0,
+            latent_supply_shares=0.0,
+            seller_model=model,
+            model_version=MODULE["MODEL_VERSION"],
+            grid_version=MODULE["GRID_VERSION"],
+            input_snapshot_ids=("daily:prior",),
+        )
+        for model in MODULE["SELLER_MODEL_ORDER"]
+    }
+    days = (date(2024, 1, 2), date(2024, 1, 3))
+    daily_rows = [
+        {
+            "symbol": symbol,
+            "trade_date": day,
+            "open": 10.0,
+            "high": 10.0,
+            "low": 10.0,
+            "close": 10.0,
+            "volume": 100.0,
+            "amount": 1_000.0,
+            "circulating_shares": 1_000.0,
+            "corporate_action_available_date": day,
+            "float_available_date": day,
+            "cash_per_share": 0.0,
+            "share_multiplier": 1.0,
+            "hard_valid": True,
+            "snapshot_id": f"daily:{day}",
+            "daily_snapshot_id": f"daily:{day}",
+            "float_snapshot_id": f"float:{day}",
+            "corporate_action_snapshot_id": f"action:{day}",
+        }
+        for day in days
+    ]
+    minute_rows = [
+        {
+            "symbol": symbol,
+            "trade_date": day,
+            "bar_end_time": datetime(
+                day.year, day.month, day.day, 15, tzinfo=ZoneInfo("Asia/Shanghai")
+            ),
+            "open": 10.0,
+            "high": 10.0,
+            "low": 10.0,
+            "close": 10.0,
+            "volume": 100.0,
+            "amount": 1_000.0,
+        }
+        for day in days
+    ]
+
+    operator_path = tmp_path / "operator.parquet"
+    writer = pq.ParquetWriter(operator_path, MODULE["OUTPUT_SCHEMA"])
+    try:
+        legacy_result, legacy_terminal = MODULE["_run_symbol"](
+            symbol,
+            daily_rows,
+            minute_rows,
+            2024,
+            writer,
+            initial,
+        )
+    finally:
+        writer.close()
+    operator_rows = pq.read_table(operator_path).to_pylist()
+
+    direct_rows: list[dict[str, object]] = []
+    checkpoint_parts_verified = 0
+
+    def consume_day(fact, rows, states) -> None:
+        nonlocal checkpoint_parts_verified
+        direct_rows.extend(rows)
+        if fact.checkpoint_label is None:
+            return
+        identities, model_states = MODULE[
+            "_checkpoint_codec_parts_from_packed_states"
+        ](states)
+        assert tuple(state.seller_model for state in model_states) == (
+            "UNIFORM",
+            "DISPOSITION",
+            "ACTIVE_STICKY",
+        )
+        assert identities
+        checkpoint_parts_verified += 1
+
+    facts = MODULE["_build_replayable_day_facts"](
+        daily_rows, minute_rows, 2024, state_resumed=True
+    )
+    direct_result, direct_terminal = MODULE["_run_symbol"](
+        symbol,
+        daily_rows,
+        minute_rows,
+        2024,
+        None,
+        initial,
+        replayable_day_facts=facts,
+        day_sink=consume_day,
+    )
+
+    projected = (*PROJECTED_COLUMNS, *_JOURNAL_COLUMNS)
+    assert [
+        {name: row[name] for name in projected} for row in direct_rows
+    ] == [
+        {name: row[name] for name in projected} for row in operator_rows
+    ]
+    assert tuple(fact.trading_date for fact in facts if fact.target_required) == days
+    assert checkpoint_parts_verified == 2
+    assert direct_result == legacy_result
+    assert direct_terminal == legacy_terminal
 
 
 def test_targeted_stage_reuses_full_stage_but_not_another_symbol_scope() -> None:

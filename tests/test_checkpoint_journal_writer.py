@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 from pathlib import Path
+import runpy
 from zoneinfo import ZoneInfo
 
 import pyarrow as pa
@@ -9,14 +10,18 @@ import pyarrow.parquet as pq
 
 from cyq_game.chip.checkpoint_journal_contract import SELLER_MODEL_ORDER, logical_sha256
 from cyq_game.chip.checkpoint_journal_writer import (
-    CapturedCell,
-    CapturedCheckpoint,
-    CapturedModelState,
     verify_root,
     write_index,
     write_json,
-    write_symbol_artifacts,
 )
+
+PROTOTYPE = runpy.run_path(
+    str(Path(__file__).parents[1] / "scripts/prototype_checkpoint_journal_writer_3symbol.py")
+)
+CapturedCell = PROTOTYPE["CapturedCell"]
+CapturedCheckpoint = PROTOTYPE["CapturedCheckpoint"]
+CapturedModelState = PROTOTYPE["CapturedModelState"]
+write_symbol_artifacts = PROTOTYPE["write_symbol_artifacts"]
 
 
 def _stamp(day: date) -> datetime:

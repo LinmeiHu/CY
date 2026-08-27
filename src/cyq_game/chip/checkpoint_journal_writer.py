@@ -9,13 +9,12 @@ from __future__ import annotations
 
 import hashlib
 import json
-import math
 import os
 import shutil
 import uuid
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -36,12 +35,9 @@ from cyq_game.chip.checkpoint_journal_contract import (
     TRANSITION_SEMANTICS_VERSION,
     CellIdentity,
     CheckpointLogical,
-    CheckpointLot,
     CheckpointModelState,
     DependencyClass,
     FeatureAssetBinding,
-    LifecycleContinuation,
-    SellerContinuation,
     TemporalTrackerContinuation,
     TrackedPeakContinuation,
     TrackerScopeContinuation,
@@ -78,45 +74,6 @@ CHECKPOINT_CADENCE = (
     "OPENING_PLUS_EACH_CALENDAR_MONTH_END_TRADING_SESSION_INCLUDING_YEAR_END"
 )
 _EMPTY_DIGEST = hashlib.sha256(b"").hexdigest()
-
-
-@dataclass(frozen=True)
-class CapturedCell:
-    cell_id: int
-    cost_bucket_id: int | None
-    holding_days: int
-    sensitivity: str
-    acquisition_cost: float | None
-    economic_break_even: float | None
-    shares: float
-    initialization_prior_units: float
-
-
-@dataclass(frozen=True)
-class CapturedModelState:
-    seller_model: str
-    decision_at: datetime
-    available_at: datetime
-    effective_at: datetime
-    phase: str
-    snapshot_id: str
-    model_version: str
-    grid_version: str
-    cells: tuple[CapturedCell, ...]
-    free_float_shares: float
-    latent_supply_shares: float
-    conservation_error: float
-    input_snapshot_ids: tuple[str, ...]
-    pit_grade: str
-    hard_valid: bool
-    quality_reason_codes: tuple[str, ...]
-
-
-@dataclass(frozen=True)
-class CapturedCheckpoint:
-    symbol: str
-    trading_date: date
-    model_states: tuple[CapturedModelState, ...]
 
 
 @dataclass(frozen=True)
@@ -173,57 +130,6 @@ def digest_suffix(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
-def capture_model_state(snapshot: Any) -> CapturedModelState:
-    """Copy one canonical POST snapshot into the Phase 2 writer boundary."""
-
-    cells = tuple(
-        CapturedCell(
-            cell_id=int(cell.cell_id),
-            cost_bucket_id=(
-                None if cell.cost_bucket_id is None else int(cell.cost_bucket_id)
-            ),
-            holding_days=int(cell.holding_days),
-            sensitivity=str(getattr(cell.sensitivity, "value", cell.sensitivity)),
-            acquisition_cost=(
-                None if cell.acquisition_cost is None else float(cell.acquisition_cost)
-            ),
-            economic_break_even=(
-                None
-                if cell.economic_break_even is None
-                else float(cell.economic_break_even)
-            ),
-            shares=float(cell.shares),
-            initialization_prior_units=float(cell.initialization_prior_units),
-        )
-        for cell in sorted(snapshot.inventory.cells, key=lambda item: item.cell_id)
-    )
-    return CapturedModelState(
-        seller_model=str(getattr(snapshot.seller_model, "value", snapshot.seller_model)),
-        decision_at=snapshot.decision_at,
-        available_at=snapshot.available_at,
-        effective_at=snapshot.effective_at,
-        phase=str(getattr(snapshot.phase, "value", snapshot.phase)),
-        snapshot_id=str(snapshot.snapshot_id),
-        model_version=str(snapshot.model_version),
-        grid_version=str(snapshot.grid_version),
-        cells=cells,
-        free_float_shares=float(snapshot.free_float_shares),
-        latent_supply_shares=float(snapshot.latent_supply_shares),
-        conservation_error=float(snapshot.conservation_error),
-        input_snapshot_ids=tuple(
-            sorted(set(snapshot.input_snapshot_ids), key=lambda item: item.encode("utf-8"))
-        ),
-        pit_grade=str(snapshot.pit_grade),
-        hard_valid=bool(snapshot.hard_valid),
-        quality_reason_codes=tuple(
-            sorted(
-                set(snapshot.quality_reason_codes),
-                key=lambda item: item.encode("utf-8"),
-            )
-        ),
-    )
-
-
 def checkpoint_dates(trading_dates: Sequence[date]) -> tuple[date, ...]:
     ordered = tuple(sorted(set(trading_dates)))
     if not ordered:
@@ -275,10 +181,13 @@ def _tracker(feature: Mapping[str, Any]) -> TemporalTrackerContinuation:
     )
 
 
-def _checkpoint_logical(
-    captured: CapturedCheckpoint,
-    feature: Mapping[str, Any],
+def build_checkpoint_logical(
     *,
+    symbol: str,
+    trading_date: date,
+    identities: tuple[CellIdentity, ...],
+    model_states: tuple[CheckpointModelState, ...],
+    feature: Mapping[str, Any],
     label: str,
     dependency_manifest_digest: str,
     replay_parameter_manifest_digest: str,
@@ -287,98 +196,21 @@ def _checkpoint_logical(
     runtime_fingerprint: str,
     terminal_completeness_digest: str,
 ) -> CheckpointLogical:
-    if tuple(state.seller_model for state in captured.model_states) != SELLER_MODEL_ORDER:
-        raise ValueError("captured checkpoint seller order is incomplete")
-    identities_by_id: dict[int, CellIdentity] = {}
-    for state in captured.model_states:
-        for cell in state.cells:
-            identity = CellIdentity(
-                cell_id=cell.cell_id,
-                cost_bucket_id=cell.cost_bucket_id,
-                holding_days=cell.holding_days,
-                sensitivity=cell.sensitivity,
-                economic_break_even_bits=(
-                    None
-                    if cell.economic_break_even is None
-                    else f64be_bits(cell.economic_break_even)
-                ),
-                economic_coordinate_version="causal-economic-price-v2",
-            )
-            previous = identities_by_id.setdefault(cell.cell_id, identity)
-            if previous != identity:
-                raise ValueError("same cell_id has conflicting checkpoint identity")
-    identities = tuple(identities_by_id[key] for key in sorted(identities_by_id))
-    positions = {identity.cell_id: index for index, identity in enumerate(identities)}
-    empty_lifecycle = LifecycleContinuation(
-        lifecycle_version="phase2-no-active-anchor-v1",
-        active_anchor_ids=(),
-        anchors=(),
-        identity_digest=_EMPTY_DIGEST,
-        share_digest=_EMPTY_DIGEST,
-        retention_digest=_EMPTY_DIGEST,
-        destination_digest=_EMPTY_DIGEST,
-    )
-    model_states = []
-    for state in captured.model_states:
-        lots = tuple(
-            CheckpointLot(
-                identity_position=positions[cell.cell_id],
-                shares_bits=f64be_bits(cell.shares),
-                acquisition_cost_bits=(
-                    None
-                    if cell.acquisition_cost is None
-                    else f64be_bits(cell.acquisition_cost)
-                ),
-                initialization_prior_units_bits=f64be_bits(
-                    cell.initialization_prior_units
-                ),
-            )
-            for cell in state.cells
-        )
-        lot_total = math.fsum(cell.shares for cell in state.cells)
-        if f64be_bits(lot_total - state.free_float_shares) != f64be_bits(
-            state.conservation_error
-        ):
-            raise ValueError("captured checkpoint conservation residual is not exact")
-        model_states.append(
-            CheckpointModelState(
-                seller_model=state.seller_model,
-                decision_at=state.decision_at,
-                available_at=state.available_at,
-                effective_at=state.effective_at,
-                phase=state.phase,
-                snapshot_id=state.snapshot_id,
-                model_version=state.model_version,
-                grid_version=state.grid_version,
-                lots=lots,
-                free_float_shares_bits=f64be_bits(state.free_float_shares),
-                latent_supply_shares_bits=f64be_bits(state.latent_supply_shares),
-                conservation_error_bits=f64be_bits(state.conservation_error),
-                input_snapshot_ids=state.input_snapshot_ids,
-                pit_grade=state.pit_grade,
-                hard_valid=state.hard_valid,
-                quality_reason_codes=state.quality_reason_codes,
-                seller_continuation=SellerContinuation(
-                    continuation_version="canonical-seller-continuation-v1",
-                    values={
-                        "seller_model": state.seller_model,
-                        "snapshot_id": state.snapshot_id,
-                    },
-                ),
-                lifecycle_continuation=empty_lifecycle,
-            )
-        )
+    """Bind canonical checkpoint codec rows to the frozen artifact contract."""
+
+    if tuple(state.seller_model for state in model_states) != SELLER_MODEL_ORDER:
+        raise ValueError("checkpoint seller order is incomplete")
     return CheckpointLogical(
         storage_version=STORAGE_VERSION,
         schema_version=SCHEMA_VERSION,
         artifact_version=ARTIFACT_VERSION,
         checkpoint_codec_version=CHECKPOINT_CODEC_VERSION,
-        symbol=captured.symbol,
-        target_year=captured.trading_date.year,
-        checkpoint_date=captured.trading_date,
+        symbol=symbol,
+        target_year=trading_date.year,
+        checkpoint_date=trading_date,
         checkpoint_label=label,
         identities=identities,
-        model_states=tuple(model_states),
+        model_states=model_states,
         temporal_tracker=_tracker(feature),
         dependency_manifest_digest=dependency_manifest_digest,
         replay_parameter_manifest_digest=replay_parameter_manifest_digest,
@@ -417,7 +249,7 @@ def _tracker_digest(feature: Mapping[str, Any]) -> str:
     return logical_sha256({name: feature.get(name) for name in names})
 
 
-def _journal_day(
+def build_journal_day(
     day_rows: Sequence[Mapping[str, Any]],
     feature: Mapping[str, Any],
     *,
@@ -533,6 +365,30 @@ def _journal_day(
     )
 
 
+def build_journal_logical(
+    *,
+    symbol: str,
+    target_year: int,
+    rows: tuple[JournalDay, ...],
+    dependency_manifest_digest: str,
+    replay_parameter_manifest_digest: str,
+) -> JournalLogical:
+    """Bind one bounded calendar-month journal buffer to its frozen schema."""
+
+    return JournalLogical(
+        storage_version=STORAGE_VERSION,
+        schema_version=SCHEMA_VERSION,
+        artifact_version=ARTIFACT_VERSION,
+        journal_codec_version=JOURNAL_CODEC_VERSION,
+        symbol=symbol,
+        target_year=target_year,
+        dependency_manifest_digest=dependency_manifest_digest,
+        replay_parameter_manifest_digest=replay_parameter_manifest_digest,
+        transition_semantics_version=TRANSITION_SEMANTICS_VERSION,
+        rows=rows,
+    )
+
+
 _JOURNAL_COLUMNS = (
     "trade_date",
     "seller_model",
@@ -549,155 +405,119 @@ _JOURNAL_COLUMNS = (
 )
 
 
-def write_symbol_artifacts(
+def _atomic_write_bytes(path: Path, payload: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{uuid.uuid4().hex}.tmp")
+    try:
+        temporary.write_bytes(payload)
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def write_checkpoint_part(
+    root: Path, logical: CheckpointLogical
+) -> tuple[ArtifactFileMetadata, str]:
+    """Atomically encode one checkpoint without an immediate forensic decode."""
+
+    payload = encode_checkpoint(logical)
+    relative = (
+        Path(f"symbol={logical.symbol}")
+        / "checkpoints"
+        / f"{logical.checkpoint_label}.json"
+    ).as_posix()
+    _atomic_write_bytes(root / relative, payload)
+    logical_digest = checkpoint_logical_digest(logical)
+    return (
+        ArtifactFileMetadata(
+            kind="checkpoint",
+            relative_path=relative,
+            bytes=len(payload),
+            sha256=hashlib.sha256(payload).hexdigest(),
+            logical_digest=logical_digest,
+        ),
+        logical_digest,
+    )
+
+
+def write_journal_part(
+    root: Path, logical: JournalLogical
+) -> ArtifactFileMetadata:
+    """Atomically encode one bounded journal month."""
+
+    if not logical.rows:
+        raise ValueError("journal part requires at least one day")
+    month = logical.rows[0].trading_date.month
+    if any(row.trading_date.month != month for row in logical.rows):
+        raise ValueError("journal part crosses a calendar-month boundary")
+    payload = encode_journal(logical)
+    relative = (
+        Path(f"symbol={logical.symbol}") / "journal" / f"month-{month:02d}.json"
+    ).as_posix()
+    _atomic_write_bytes(root / relative, payload)
+    return ArtifactFileMetadata(
+        kind="journal",
+        relative_path=relative,
+        bytes=len(payload),
+        sha256=hashlib.sha256(payload).hexdigest(),
+        logical_digest=journal_logical_digest(logical),
+    )
+
+
+def finish_symbol_artifacts(
     *,
     root: Path,
     symbol: str,
-    captured_checkpoints: Mapping[date, CapturedCheckpoint],
-    operator_path: Path,
+    replayable_dates: Sequence[date],
+    checkpoint_parts: Mapping[date, tuple[ArtifactFileMetadata, str]],
+    journal_parts: Mapping[tuple[date, date], ArtifactFileMetadata],
+    features: Sequence[Mapping[str, Any]],
     feature_source_path: Path,
     terminal_source_path: Path,
     dependency_manifest_digest: str,
     replay_parameter_manifest_digest: str,
-    replay_contract_hash: str,
-    semantic_fingerprint: str,
-    runtime_fingerprint: str,
     terminal_completeness_digest: str,
     bundle_id: str,
     root_id: str,
-    replayable_dates: Sequence[date] | None = None,
 ) -> SymbolArtifacts:
-    symbol_root = root / f"symbol={symbol}"
-    checkpoint_root = symbol_root / "checkpoints"
-    journal_root = symbol_root / "journal"
-    checkpoint_root.mkdir(parents=True, exist_ok=True)
-    journal_root.mkdir(parents=True, exist_ok=True)
-    operator_rows = pq.read_table(operator_path, columns=list(_JOURNAL_COLUMNS)).to_pylist()
-    features = pq.read_table(feature_source_path).to_pylist()
-    feature_by_date = {row["trade_date"]: row for row in features}
-    rows_by_date: dict[date, list[Mapping[str, Any]]] = {}
-    for row in operator_rows:
-        rows_by_date.setdefault(row["trade_date"], []).append(row)
-    trading_dates = tuple(sorted(rows_by_date))
-    if replayable_dates is not None:
-        authoritative_dates = tuple(replayable_dates)
-        if trading_dates != authoritative_dates:
-            raise ValueError("operator dates differ from authoritative replayable dates")
-        trading_dates = authoritative_dates
+    """Publish small projections around checkpoint/journal parts already closed."""
+
+    trading_dates = tuple(replayable_dates)
+    if trading_dates != tuple(sorted(set(trading_dates))) or not trading_dates:
+        raise ValueError("replayable dates must be non-empty, unique, and ordered")
     cadence_dates = checkpoint_dates(trading_dates)
-    if set(cadence_dates) != set(captured_checkpoints):
-        raise ValueError("captured checkpoint dates do not match frozen cadence")
+    if tuple(checkpoint_parts) != cadence_dates:
+        raise ValueError("checkpoint parts do not match frozen cadence")
+    feature_by_date = {row["trade_date"]: row for row in features}
+    if tuple(feature_by_date) != trading_dates:
+        raise ValueError("feature dates differ from authoritative replayable dates")
 
-    checkpoint_paths: list[str] = []
-    checkpoint_digests: dict[date, str] = {}
-    checkpoint_file_digests: dict[str, str] = {}
-    file_metadata: list[ArtifactFileMetadata] = []
-    checkpoint_bytes = 0
-    for position, checkpoint_date in enumerate(cadence_dates):
-        label = (
-            f"opening-{checkpoint_date.isoformat()}"
-            if position == 0
-            else f"month-{checkpoint_date.month:02d}-{checkpoint_date.isoformat()}"
-        )
-        logical = _checkpoint_logical(
-            captured_checkpoints[checkpoint_date],
-            feature_by_date[checkpoint_date],
-            label=label,
-            dependency_manifest_digest=dependency_manifest_digest,
-            replay_parameter_manifest_digest=replay_parameter_manifest_digest,
-            replay_contract_hash=replay_contract_hash,
-            semantic_fingerprint=semantic_fingerprint,
-            runtime_fingerprint=runtime_fingerprint,
-            terminal_completeness_digest=terminal_completeness_digest,
-        )
-        payload = encode_checkpoint(logical)
-        path = checkpoint_root / f"{label}.json"
-        path.write_bytes(payload)
-        decoded = decode_checkpoint(payload)
-        if decoded != logical:
-            raise ValueError("checkpoint independent read mismatch")
-        relative = path.relative_to(root).as_posix()
-        checkpoint_paths.append(relative)
-        checkpoint_digests[checkpoint_date] = checkpoint_logical_digest(logical)
-        physical_digest = hashlib.sha256(payload).hexdigest()
-        checkpoint_file_digests[relative] = physical_digest
-        size = len(payload)
-        checkpoint_bytes += size
-        file_metadata.append(
-            ArtifactFileMetadata(
-                kind="checkpoint",
-                relative_path=relative,
-                bytes=size,
-                sha256=physical_digest,
-                logical_digest=checkpoint_digests[checkpoint_date],
-            )
-        )
-        del decoded, logical, payload
+    checkpoint_paths = tuple(
+        checkpoint_parts[item][0].relative_path for item in cadence_dates
+    )
+    checkpoint_file_digests = {
+        item.relative_path: item.sha256
+        for item, _ in checkpoint_parts.values()
+    }
+    ordered_journal_parts = tuple(
+        sorted(journal_parts.items(), key=lambda item: item[0])
+    )
+    journal_paths = tuple(item.relative_path for _, item in ordered_journal_parts)
+    file_metadata = [
+        *(checkpoint_parts[item][0] for item in cadence_dates),
+        *(item for _, item in ordered_journal_parts),
+    ]
 
-    journal_paths: list[str] = []
-    journal_parts: dict[tuple[date, date], tuple[str, str]] = {}
-    journal_bytes = 0
-    for month in sorted({item.month for item in trading_dates}):
-        month_dates = tuple(item for item in trading_dates if item.month == month)
-        start, end = month_dates[0], month_dates[-1]
-        anchor = max(item for item in cadence_dates if item <= start)
-        rows = tuple(
-            _journal_day(
-                rows_by_date[item],
-                feature_by_date[item],
-                sequence=sequence,
-                checkpoint_parent_digest=checkpoint_digests[anchor],
-                dependency_manifest_digest=dependency_manifest_digest,
-                replay_parameter_manifest_digest=replay_parameter_manifest_digest,
-                replay_contract_hash=replay_contract_hash,
-                runtime_fingerprint=runtime_fingerprint,
-            )
-            for sequence, item in enumerate(month_dates)
-        )
-        logical = JournalLogical(
-            storage_version=STORAGE_VERSION,
-            schema_version=SCHEMA_VERSION,
-            artifact_version=ARTIFACT_VERSION,
-            journal_codec_version=JOURNAL_CODEC_VERSION,
-            symbol=symbol,
-            target_year=PHASE2_TARGET_YEAR,
-            dependency_manifest_digest=dependency_manifest_digest,
-            replay_parameter_manifest_digest=replay_parameter_manifest_digest,
-            transition_semantics_version=TRANSITION_SEMANTICS_VERSION,
-            rows=rows,
-        )
-        payload = encode_journal(logical)
-        path = journal_root / f"month-{month:02d}.json"
-        path.write_bytes(payload)
-        decoded = decode_journal(payload)
-        if decoded != logical:
-            raise ValueError("journal independent read mismatch")
-        relative = path.relative_to(root).as_posix()
-        journal_paths.append(relative)
-        logical_digest = journal_logical_digest(logical)
-        journal_parts[(start, end)] = (relative, logical_digest)
-        physical_digest = hashlib.sha256(payload).hexdigest()
-        size = len(payload)
-        journal_bytes += size
-        file_metadata.append(
-            ArtifactFileMetadata(
-                kind="journal",
-                relative_path=relative,
-                bytes=size,
-                sha256=physical_digest,
-                logical_digest=logical_digest,
-            )
-        )
-        del decoded, logical, payload
-
+    symbol_root = root / f"symbol={symbol}"
     feature_path = symbol_root / "daily_feature_candidate.parquet"
     terminal_path = symbol_root / "year_end_terminal_candidate.parquet"
+    symbol_root.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(feature_source_path, feature_path)
     shutil.copyfile(terminal_source_path, terminal_path)
     if pq.ParquetFile(feature_path).metadata.num_rows != len(trading_dates):
-        raise ValueError("feature candidate is not independently readable")
+        raise ValueError("feature candidate row count mismatch")
     if pq.ParquetFile(terminal_path).metadata.num_rows != len(SELLER_MODEL_ORDER):
-        raise ValueError("terminal candidate is not independently readable")
+        raise ValueError("terminal candidate row count mismatch")
     feature_relative = feature_path.relative_to(root).as_posix()
     terminal_relative = terminal_path.relative_to(root).as_posix()
     feature_digest = sha256_file(feature_path)
@@ -727,16 +547,16 @@ def write_symbol_artifacts(
         available_at=max(row["available_at"] for row in features),
     )
     index_rows = []
-    for (start, end), (journal_relative, _journal_digest) in journal_parts.items():
+    for (start, end), journal_metadata in ordered_journal_parts:
         anchor = max(item for item in cadence_dates if item <= start)
-        checkpoint_relative = checkpoint_paths[cadence_dates.index(anchor)]
+        checkpoint_relative = checkpoint_parts[anchor][0].relative_path
         index_rows.append(
             CheckpointJournalIndexRow(
                 storage_version=STORAGE_VERSION,
                 schema_version=SCHEMA_VERSION,
                 artifact_version=ARTIFACT_VERSION,
                 symbol=symbol,
-                target_year=PHASE2_TARGET_YEAR,
+                target_year=trading_dates[0].year,
                 checkpoint_dates=tuple(item for item in cadence_dates if item <= start),
                 checkpoint_anchor_date=anchor,
                 journal_start_date=start,
@@ -744,12 +564,8 @@ def write_symbol_artifacts(
                 seller_models=SELLER_MODEL_ORDER,
                 checkpoint_part_path=checkpoint_relative,
                 checkpoint_part_digest=checkpoint_file_digests[checkpoint_relative],
-                journal_part_path=journal_relative,
-                journal_part_digest=next(
-                    item.sha256
-                    for item in file_metadata
-                    if item.relative_path == journal_relative
-                ),
+                journal_part_path=journal_metadata.relative_path,
+                journal_part_digest=journal_metadata.sha256,
                 dependency_manifest_digest=dependency_manifest_digest,
                 replay_parameter_manifest_digest=replay_parameter_manifest_digest,
                 terminal_completeness_digest=terminal_completeness_digest,
@@ -761,14 +577,14 @@ def write_symbol_artifacts(
     return SymbolArtifacts(
         symbol=symbol,
         trading_days=len(trading_dates),
-        model_rows=len(operator_rows),
-        checkpoint_paths=tuple(checkpoint_paths),
-        journal_paths=tuple(journal_paths),
+        model_rows=len(trading_dates) * len(SELLER_MODEL_ORDER),
+        checkpoint_paths=checkpoint_paths,
+        journal_paths=journal_paths,
         feature_path=feature_relative,
         terminal_path=terminal_relative,
         index_rows=tuple(index_rows),
-        checkpoint_bytes=checkpoint_bytes,
-        journal_bytes=journal_bytes,
+        checkpoint_bytes=sum(item.bytes for item, _ in checkpoint_parts.values()),
+        journal_bytes=sum(item.bytes for item in journal_parts.values()),
         feature_bytes=feature_path.stat().st_size,
         terminal_bytes=terminal_path.stat().st_size,
         fallback_rows=0,

@@ -12,7 +12,6 @@ import inspect
 import json
 import math
 import os
-import pickle
 import re
 import shutil
 import struct
@@ -21,7 +20,7 @@ import sys
 import tempfile
 import time
 from collections import Counter, defaultdict
-from collections.abc import Iterator, Mapping
+from collections.abc import Callable, Mapping
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import asdict, dataclass, field, replace
 from datetime import date, datetime
@@ -49,7 +48,13 @@ from cyq_game.chip.checkpoint_journal_contract import (
     JOURNAL_CODEC_VERSION,
     TERMINAL_COMPLETENESS_VERSION,
     TRANSITION_SEMANTICS_VERSION,
+    CellIdentity,
+    CheckpointLot,
+    CheckpointModelState,
     FeatureAssetBinding,
+    LifecycleContinuation,
+    SellerContinuation,
+    f64be_bits,
     logical_sha256,
 )
 from cyq_game.chip.checkpoint_journal_contract import (
@@ -69,22 +74,27 @@ from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
     CHECKPOINT_CADENCE,
     PHASE2_WRITER_VERSION,
     ArtifactFileMetadata,
-    CapturedCell,
-    CapturedCheckpoint,
-    CapturedModelState,
     SymbolArtifacts,
     activate_production_bundle,
     arrow_logical_digest,
-    capture_model_state,
-    checkpoint_dates,
+    build_checkpoint_logical,
+    build_journal_day,
+    build_journal_logical,
+    finish_symbol_artifacts,
     regular_file_bytes,
     sha256_file,
     verify_root,
+    write_checkpoint_part,
     write_index,
+    write_journal_part,
     write_json,
-    write_symbol_artifacts,
 )
-from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
+from cyq_game.chip.daily_feature_fact import (  # noqa: E402
+    FACT_SCHEMA,
+    build_daily_feature_fact,
+    project_daily_feature_row,
+    write_daily_feature_rows,
+)
 from cyq_game.chip.ensemble_v2 import SELLER_MODEL_ORDER  # noqa: E402
 from cyq_game.chip.migration_v2 import (  # noqa: E402
     DEFAULT_MAX_HOLDING_DAYS,
@@ -97,12 +107,12 @@ from cyq_game.chip.migration_v2 import (  # noqa: E402
     PreparedMinutePath,
     StableLogPriceGrid,
     bucket_for_economic_break_even,
-    economic_break_even_for_bucket,
     initial_unknown_snapshot,
     prepare_minute_path,
 )
 from cyq_game.chip.operator_index import build_operator_symbol_index  # noqa: E402
 from cyq_game.chip.peaks import (  # noqa: E402
+    EnsembleTemporalPeakTracker,
     detect_canonical_peaks,
     dominant_canonical_peak,
 )
@@ -1790,78 +1800,6 @@ def _cap_prepared_minute_path(
     )
 
 
-def _profile_from_bucket_mass(
-    by_bucket: dict[int, float],
-    grid: StableLogPriceGrid,
-    *,
-    current_price: float | None = None,
-) -> dict[str, float | None] | None:
-    if not by_bucket:
-        return None
-    pairs = [
-        (economic_break_even_for_bucket(grid, bucket_id), mass, bucket_id)
-        for bucket_id, mass in sorted(by_bucket.items())
-    ]
-    profile_total = math.fsum(mass for _, mass, _ in pairs)
-    if current_price is None:
-        raise ValueError("non-empty chip mass requires the real daily close")
-    thresholds = tuple(
-        profile_total * probability for probability in (0.01, 0.10, 0.50, 0.90, 0.99)
-    )
-    quantiles: list[float] = []
-    cumulative = 0.0
-    threshold_index = 0
-    for price, mass, _ in pairs:
-        cumulative += mass
-        while threshold_index < len(thresholds) and cumulative >= thresholds[threshold_index]:
-            quantiles.append(price)
-            threshold_index += 1
-    if threshold_index < len(thresholds):
-        quantiles.extend([pairs[-1][0]] * (len(thresholds) - threshold_index))
-    peaks = detect_canonical_peaks(
-        by_bucket,
-        price_for_bucket=lambda bucket: economic_break_even_for_bucket(grid, bucket),
-        as_of=date.min,
-    )
-    dominant = dominant_canonical_peak(peaks)
-    prices = [item[0] for item in pairs]
-    masses = [item[1] for item in pairs]
-    profit_ratio = math.fsum(
-        mass for price, mass in zip(prices, masses, strict=True) if price <= current_price
-    ) / profile_total
-    asr = math.fsum(
-        mass
-        for price, mass in zip(prices, masses, strict=True)
-        if 0.9 * current_price <= price <= 1.1 * current_price
-    ) / profile_total
-    concentration_20 = 0.0
-    right = 0
-    window_mass = 0.0
-    for left, price in enumerate(prices):
-        while right < len(prices) and prices[right] <= price * 1.20:
-            window_mass += masses[right]
-            right += 1
-        concentration_20 = max(concentration_20, window_mass / profile_total)
-        window_mass -= masses[left]
-    return {
-        "average": math.fsum(price * mass for price, mass, _ in pairs) / profile_total,
-        "p01": quantiles[0],
-        "p10": quantiles[1],
-        "p50": quantiles[2],
-        "p90": quantiles[3],
-        "p99": quantiles[4],
-        "profit_ratio": profit_ratio,
-        "asr": asr,
-        "cbw": 100.0 * (quantiles[4] - quantiles[0]) / quantiles[0],
-        "concentration_20": concentration_20,
-        "dominant_peak_today": None if dominant is None else dominant.center_price,
-        "dominant_band_lower": None if dominant is None else dominant.lower_price,
-        "dominant_band_upper": None if dominant is None else dominant.upper_price,
-        "dominant_band_mass": None if dominant is None else dominant.mass,
-        "peak_count": len(peaks),
-    }
-
-
 def _output_row(
     *,
     state: MutableChipState,
@@ -1876,6 +1814,7 @@ def _output_row(
     action_provenance_ids: tuple[str, ...] = (),
     force_checkpoint: bool = False,
     current_price: float | None = None,
+    encode_replay: bool = True,
 ) -> tuple[
     tuple[Any, ...],
     dict[int, tuple[int | None, int, TurnoverSensitivity, float]],
@@ -1915,7 +1854,7 @@ def _output_row(
     adjustment_shares: list[float] = []
     adjustment_economic_bucket_ids: list[int | None] = []
 
-    if previous_post is None or force_checkpoint:
+    if encode_replay and (previous_post is None or force_checkpoint):
         checkpoint_local_ids = [codec.local_id(cell_id) for cell_id in current]
         checkpoint_shares = [cell[3] for cell in current.values()]
         checkpoint_economic_bucket_ids = [
@@ -1923,7 +1862,7 @@ def _output_row(
         ]
     # Keep the transition on checkpoint rows too.  A lifecycle anchor may sit
     # before this checkpoint (or in the prior year) and must replay through it.
-    if previous_post is not None:
+    if encode_replay and previous_post is not None:
         previous_by_id = previous_post
         actual_sources = tuple(transition.source_cell_ids)
         # v12 ids are full economic identities and are intentionally not
@@ -2107,19 +2046,38 @@ def _output_row(
     return row, current, current_economic_buckets
 
 
-def _replayable_target_dates(
+@dataclass(frozen=True)
+class ReplayableDayFact:
+    """One governed daily transition input and its output cadence markers."""
+
+    daily_row: dict[str, Any]
+    minute_rows: tuple[dict[str, Any], ...]
+    transition_required: bool
+    target_required: bool
+    checkpoint_label: str | None
+
+    @property
+    def trading_date(self) -> date:
+        return _date(self.daily_row["trade_date"])
+
+
+def _build_replayable_day_facts(
     daily_rows: list[dict[str, Any]],
+    minute_rows: list[dict[str, Any]],
     year: int,
     *,
     state_resumed: bool,
-) -> tuple[date, ...]:
-    """Return the sole authoritative canonical transition date domain."""
+) -> tuple[ReplayableDayFact, ...]:
+    """Build the sole execution-time date, input, and cadence authority."""
 
     ordered = sorted(daily_rows, key=lambda row: _date(row["trade_date"]))
     if not ordered:
         raise ValueError("no daily rows")
+    ordered_dates = tuple(_date(row["trade_date"]) for row in ordered)
+    if ordered_dates != tuple(sorted(set(ordered_dates))):
+        raise ValueError("daily input dates must be unique and ordered")
     if state_resumed:
-        replayable = ordered
+        selected = tuple((row, True) for row in ordered)
     else:
         first_state_index = next(
             (
@@ -2132,17 +2090,44 @@ def _replayable_target_dates(
         )
         if first_state_index is None:
             raise ValueError("no daily row has a known positive circulating share count")
-        replayable = ordered[first_state_index + 1 :]
-    result = tuple(
+        selected = tuple(
+            (row, index != first_state_index)
+            for index, row in enumerate(ordered[first_state_index:], first_state_index)
+        )
+    minute_by_date: dict[date, list[dict[str, Any]]] = defaultdict(list)
+    for row in minute_rows:
+        minute_by_date[_date(row["trade_date"])].append(row)
+    target_dates = tuple(
         _date(row["trade_date"])
-        for row in replayable
-        if _date(row["trade_date"]).year == year
+        for row, transition_required in selected
+        if transition_required and _date(row["trade_date"]).year == year
     )
-    if result != tuple(sorted(set(result))):
-        raise ValueError("replayable target dates must be unique and ordered")
-    if not result:
+    if not target_dates:
         raise ValueError("target year has no replayable transition date")
-    return result
+    month_ends: dict[tuple[int, int], date] = {}
+    for trading_date in target_dates:
+        month_ends[(trading_date.year, trading_date.month)] = trading_date
+    cadence_dates = tuple(dict.fromkeys((target_dates[0], *month_ends.values())))
+    labels = {
+        trading_date: (
+            f"opening-{trading_date.isoformat()}"
+            if position == 0
+            else f"month-{trading_date.month:02d}-{trading_date.isoformat()}"
+        )
+        for position, trading_date in enumerate(cadence_dates)
+    }
+    return tuple(
+        ReplayableDayFact(
+            daily_row=row,
+            minute_rows=tuple(minute_by_date.get(_date(row["trade_date"]), ())),
+            transition_required=transition_required,
+            target_required=(
+                transition_required and _date(row["trade_date"]).year == year
+            ),
+            checkpoint_label=labels.get(_date(row["trade_date"])),
+        )
+        for row, transition_required in selected
+    )
 
 
 def _run_symbol(
@@ -2156,21 +2141,28 @@ def _run_symbol(
     emit_operators: bool = True,
     emit_start_date: date | None = None,
     output_row_group_size: int = OUTPUT_ROW_GROUP_SIZE,
+    replayable_day_facts: tuple[ReplayableDayFact, ...] | None = None,
+    day_sink: Callable[
+        [
+            ReplayableDayFact,
+            tuple[dict[str, Any], ...],
+            Mapping[SellerModel, ChipSnapshotV2 | MutableChipState],
+        ],
+        None,
+    ]
+    | None = None,
 ) -> tuple[dict[str, Any], dict[SellerModel, ChipSnapshotV2]]:
     if output_row_group_size < 1:
         raise ValueError("output row group size must be positive")
-    daily_rows.sort(key=lambda row: _date(row["trade_date"]))
-    if not daily_rows:
-        raise ValueError("no daily rows")
-    replayable_dates = _replayable_target_dates(
+    facts = replayable_day_facts or _build_replayable_day_facts(
         daily_rows,
+        minute_rows,
         year,
         state_resumed=initial_snapshots is not None,
     )
-    replayable_date_set = set(replayable_dates)
-    minute_by_date: dict[date, list[dict[str, Any]]] = defaultdict(list)
-    for row in minute_rows:
-        minute_by_date[_date(row["trade_date"])].append(row)
+    replayable_dates = tuple(
+        fact.trading_date for fact in facts if fact.target_required
+    )
     grid = StableLogPriceGrid(1.0, 0.0025, GRID_VERSION)
     aged_cell_id_cache: dict[int, int] = {}
     engines = {
@@ -2182,21 +2174,10 @@ def _run_symbol(
         )
         for model in SELLER_MODEL_ORDER
     }
-    first_index = next(
-        (
-            index
-            for index, row in enumerate(daily_rows)
-            if row.get("circulating_shares") is not None
-            and float(row["circulating_shares"]) > 0
-        ),
-        None,
-    )
-    if first_index is None:
-        raise ValueError("no daily row has a known positive circulating share count")
-    first = daily_rows[first_index]
+    first = facts[0].daily_row
     first_date = _date(first["trade_date"])
     if initial_snapshots is None:
-        if len(daily_rows) - first_index < 2:
+        if facts[0].transition_required or len(facts) < 2:
             raise ValueError("fewer than two daily rows without a prior terminal state")
         current = {
             model: initial_unknown_snapshot(
@@ -2212,11 +2193,11 @@ def _run_symbol(
             )
             for model in SELLER_MODEL_ORDER
         }
-        rows_to_process = daily_rows[first_index + 1 :]
+        facts_to_process = facts[1:]
     else:
         if set(initial_snapshots) != set(SELLER_MODEL_ORDER):
             raise ValueError("terminal state must contain all seller models")
-        staged_years = {_date(row["trade_date"]).year for row in daily_rows}
+        staged_years = {fact.trading_date.year for fact in facts}
         if staged_years != {year}:
             raise ValueError(
                 "resumed calculation must stage only the target year: "
@@ -2232,7 +2213,7 @@ def _run_symbol(
                 raise ValueError("terminal state must be POST")
             if snapshot.trading_date >= first_date:
                 raise ValueError("terminal state must precede the first staged day")
-        rows_to_process = daily_rows
+        facts_to_process = facts
     codec = _CellCodec()
     emitted_models: set[SellerModel] = set()
     previous_output_states: dict[
@@ -2249,8 +2230,12 @@ def _run_symbol(
     fallback_days = 0
     max_mass_error = 0.0
     max_same_day_resale = 0.0
-    for row in rows_to_process:
-        trading_date = _date(row["trade_date"])
+    for fact in facts_to_process:
+        if not fact.transition_required:
+            raise RuntimeError("non-transition listing boundary entered replay loop")
+        row = fact.daily_row
+        trading_date = fact.trading_date
+        day_projection_rows: list[dict[str, Any]] = []
         state_dates = {state.trading_date for state in current.values()}
         if len(state_dates) != 1:
             raise RuntimeError("seller-model states are not aligned to one trading date")
@@ -2275,7 +2260,7 @@ def _run_symbol(
         bars = (
             []
             if missing_free_float
-            else _minute_bars(minute_by_date.get(trading_date, []), trading_date)
+            else _minute_bars(list(fact.minute_rows), trading_date)
         )
         fallback = False
         if not missing_free_float and not bars and float(row.get("volume") or 0.0) > 0:
@@ -2311,13 +2296,13 @@ def _run_symbol(
         input_quality_reason_codes = tuple(quality_reasons)
         for model in SELLER_MODEL_ORDER:
             previous_post = current[model]
-            in_output_year = trading_date in replayable_date_set
+            in_output_year = fact.target_required
             emit_day = (
                 emit_operators
                 and in_output_year
                 and (emit_start_date is None or trading_date >= emit_start_date)
             )
-            if emit_day and model not in previous_output_states:
+            if emit_day and writer is not None and model not in previous_output_states:
                 if isinstance(previous_post, ChipSnapshotV2):
                     previous_view, previous_economic = (
                         codec.snapshot_view_and_economic_buckets(previous_post, grid)
@@ -2353,8 +2338,8 @@ def _run_symbol(
                 max_mass_error, abs(mutable_state.conservation_error)
             )
             if emit_day:
-                if writer is None:
-                    raise RuntimeError("operator emission requires an output writer")
+                if writer is None and day_sink is None:
+                    raise RuntimeError("output emission requires a writer or day sink")
                 transition = mutable_state.last_transition
                 if transition is None:
                     raise RuntimeError("output-year transition was not built")
@@ -2389,25 +2374,34 @@ def _run_symbol(
                         or emitted_day_count % CHECKPOINT_INTERVAL_DAYS == 0
                     ),
                     current_price=float(row["close"]),
+                    encode_replay=writer is not None,
                 )
-                output_rows.append(output_row)
-                previous_output_states[model] = output_state
-                previous_output_economic_buckets[model] = output_economic
+                if writer is not None:
+                    output_rows.append(output_row)
+                    previous_output_states[model] = output_state
+                    previous_output_economic_buckets[model] = output_economic
+                if day_sink is not None:
+                    day_projection_rows.append(
+                        dict(zip(OUTPUT_SCHEMA.names, output_row, strict=True))
+                    )
                 emitted_models.add(model)
-                if len(output_rows) >= output_row_group_size:
+                if writer is not None and len(output_rows) >= output_row_group_size:
                     writer.write_table(
                         output_rows.to_table(),
                         row_group_size=output_row_group_size,
                     )
                     output_count += len(output_rows)
                     output_rows.clear()
-        if emit_operators and trading_date in replayable_date_set and (
+        if day_sink is not None and day_projection_rows:
+            day_sink(fact, tuple(day_projection_rows), current)
+            output_count += len(day_projection_rows)
+        if emit_operators and fact.target_required and (
             emit_start_date is None or trading_date >= emit_start_date
         ):
             emitted_day_count += 1
-        if trading_date in replayable_date_set:
+        if fact.target_required:
             target_day_count += 1
-    if output_rows:
+    if writer is not None and output_rows:
         if writer is None:
             raise RuntimeError("operator emission requires an output writer")
         writer.write_table(
@@ -2428,11 +2422,11 @@ def _run_symbol(
         "symbol": symbol,
         "rows": output_count,
         "input_days": len(daily_rows),
-        "processed_days": len(rows_to_process),
+        "processed_days": len(facts_to_process),
         "target_days": target_day_count,
         "emitted_days": emitted_day_count,
         "replayed_prior_year_days": sum(
-            _date(row["trade_date"]).year < year for row in rows_to_process
+            fact.trading_date.year < year for fact in facts_to_process
         ),
         "state_resumed": initial_snapshots is not None,
         "fallback_days": fallback_days,
@@ -3176,225 +3170,134 @@ def _resume_contract_binding(
             "python": sys.version.split()[0],
         },
     }
-def _capture_checkpoint_model_state(state: MutableChipState) -> CapturedModelState:
-    """Capture a canonical view without dropping duplicate packed identities."""
 
-    packed = state.packed_lots
-    if packed is None:
-        return capture_model_state(state.to_snapshot())
-    packed.refresh_cell_ids()
-    size = len(packed)
-    active = np.flatnonzero(packed._shares[:size] > 0)
 
-    grouped: dict[int, list[int]] = defaultdict(list)
-    for index_value in active:
-        index = int(index_value)
-        grouped[int(packed._cell_ids[index])].append(index)
-    sensitivities = (
-        TurnoverSensitivity.ACTIVE,
-        TurnoverSensitivity.NEUTRAL,
-        TurnoverSensitivity.STICKY,
-    )
-    cells: list[CapturedCell] = []
-    for cell_id, indexes in sorted(grouped.items()):
-        first = indexes[0]
-        raw_bucket = int(packed._cost_bucket_ids[first])
-        economic_break_even = float(packed._economic_break_evens[first])
-        identity = (
-            raw_bucket,
-            int(packed._holding_days[first]),
-            int(packed._sensitivity_codes[first]),
-            struct.pack(">d", economic_break_even),
-        )
-        for index in indexes[1:]:
-            candidate = (
-                int(packed._cost_bucket_ids[index]),
-                int(packed._holding_days[index]),
-                int(packed._sensitivity_codes[index]),
-                struct.pack(">d", float(packed._economic_break_evens[index])),
-            )
-            if candidate != identity:
-                raise ValueError(f"cell hash collision for {cell_id}")
-        shares = math.fsum(float(packed._shares[index]) for index in indexes)
-        known = math.isfinite(economic_break_even)
-        acquisition_cost = (
-            math.fsum(
-                float(packed._shares[index])
-                * float(packed._acquisition_costs[index])
-                for index in indexes
-            )
-            / shares
-            if known
-            else None
-        )
-        cells.append(
-            CapturedCell(
+def _checkpoint_codec_parts_from_packed_states(
+    states: Mapping[SellerModel, ChipSnapshotV2 | MutableChipState],
+) -> tuple[tuple[CellIdentity, ...], tuple[CheckpointModelState, ...]]:
+    """Project canonical packed arrays directly into the checkpoint schema."""
+
+    packed_states: list[tuple[MutableChipState, np.ndarray]] = []
+    identities_by_id: dict[int, CellIdentity] = {}
+    for model in SELLER_MODEL_ORDER:
+        state = states[model]
+        if not isinstance(state, MutableChipState) or state.packed_lots is None:
+            raise TypeError("production checkpoint capture requires packed mutable state")
+        packed = state.packed_lots
+        packed.refresh_cell_ids()
+        size = len(packed)
+        active = np.flatnonzero(packed._shares[:size] > 0)
+        cell_ids = packed._cell_ids[active]
+        if np.unique(cell_ids).size != active.size:
+            raise ValueError("checkpoint capture received duplicate canonical identities")
+        order = np.argsort(cell_ids, kind="stable")
+        active = active[order]
+        packed_states.append((state, active))
+        for index_value in active:
+            index = int(index_value)
+            cell_id = int(packed._cell_ids[index])
+            economic_break_even = float(packed._economic_break_evens[index])
+            identity = CellIdentity(
                 cell_id=cell_id,
-                cost_bucket_id=raw_bucket if known else None,
-                holding_days=int(packed._holding_days[first]),
-                sensitivity=sensitivities[int(packed._sensitivity_codes[first])].value,
-                acquisition_cost=acquisition_cost,
-                economic_break_even=economic_break_even if known else None,
-                shares=shares,
-                initialization_prior_units=math.fsum(
-                    float(packed._initialization_prior_units[index])
-                    for index in indexes
+                cost_bucket_id=(
+                    int(packed._cost_bucket_ids[index])
+                    if math.isfinite(economic_break_even)
+                    else None
+                ),
+                holding_days=int(packed._holding_days[index]),
+                sensitivity=(
+                    TurnoverSensitivity.ACTIVE,
+                    TurnoverSensitivity.NEUTRAL,
+                    TurnoverSensitivity.STICKY,
+                )[int(packed._sensitivity_codes[index])].value,
+                economic_break_even_bits=(
+                    f64be_bits(economic_break_even)
+                    if math.isfinite(economic_break_even)
+                    else None
+                ),
+                economic_coordinate_version="causal-economic-price-v2",
+            )
+            previous = identities_by_id.setdefault(cell_id, identity)
+            if previous != identity:
+                raise ValueError("same cell_id has conflicting checkpoint identity")
+
+    identities = tuple(identities_by_id[key] for key in sorted(identities_by_id))
+    positions = {identity.cell_id: index for index, identity in enumerate(identities)}
+    empty_digest = hashlib.sha256(b"").hexdigest()
+    empty_lifecycle = LifecycleContinuation(
+        lifecycle_version="phase2-no-active-anchor-v1",
+        active_anchor_ids=(),
+        anchors=(),
+        identity_digest=empty_digest,
+        share_digest=empty_digest,
+        retention_digest=empty_digest,
+        destination_digest=empty_digest,
+    )
+    model_states = []
+    for state, active in packed_states:
+        packed = state.packed_lots
+        if packed is None:
+            raise AssertionError("packed checkpoint state disappeared")
+        lots = tuple(
+            CheckpointLot(
+                identity_position=positions[int(packed._cell_ids[int(index_value)])],
+                shares_bits=f64be_bits(float(packed._shares[int(index_value)])),
+                acquisition_cost_bits=(
+                    f64be_bits(float(packed._acquisition_costs[int(index_value)]))
+                    if math.isfinite(
+                        float(packed._acquisition_costs[int(index_value)])
+                    )
+                    else None
+                ),
+                initialization_prior_units_bits=f64be_bits(
+                    float(packed._initialization_prior_units[int(index_value)])
                 ),
             )
+            for index_value in active
         )
-    total = math.fsum(cell.shares for cell in cells)
-    return CapturedModelState(
-        seller_model=state.seller_model.value,
-        decision_at=state.decision_at,
-        available_at=state.available_at,
-        effective_at=state.effective_at,
-        phase=state.phase.value,
-        snapshot_id=state.snapshot_id,
-        model_version=state.model_version,
-        grid_version=state.grid_version,
-        cells=tuple(cells),
-        free_float_shares=state.free_float_shares,
-        latent_supply_shares=state.latent_supply_shares,
-        conservation_error=total - state.free_float_shares,
-        input_snapshot_ids=tuple(
-            sorted(set(state.input_snapshot_ids), key=lambda item: item.encode("utf-8"))
-        ),
-        pit_grade=state.pit_grade,
-        hard_valid=state.hard_valid,
-        quality_reason_codes=tuple(
-            sorted(
-                set(state.quality_reason_codes),
-                key=lambda item: item.encode("utf-8"),
+        conservation_error = (
+            math.fsum(float(packed._shares[int(index_value)]) for index_value in active)
+            - state.free_float_shares
+        )
+        model_states.append(
+            CheckpointModelState(
+                seller_model=state.seller_model.value,
+                decision_at=state.decision_at,
+                available_at=state.available_at,
+                effective_at=state.effective_at,
+                phase=state.phase.value,
+                snapshot_id=state.snapshot_id,
+                model_version=state.model_version,
+                grid_version=state.grid_version,
+                lots=lots,
+                free_float_shares_bits=f64be_bits(state.free_float_shares),
+                latent_supply_shares_bits=f64be_bits(state.latent_supply_shares),
+                conservation_error_bits=f64be_bits(conservation_error),
+                input_snapshot_ids=tuple(
+                    sorted(
+                        set(state.input_snapshot_ids),
+                        key=lambda item: item.encode("utf-8"),
+                    )
+                ),
+                pit_grade=state.pit_grade,
+                hard_valid=state.hard_valid,
+                quality_reason_codes=tuple(
+                    sorted(
+                        set(state.quality_reason_codes),
+                        key=lambda item: item.encode("utf-8"),
+                    )
+                ),
+                seller_continuation=SellerContinuation(
+                    continuation_version="canonical-seller-continuation-v1",
+                    values={
+                        "seller_model": state.seller_model.value,
+                        "snapshot_id": state.snapshot_id,
+                    },
+                ),
+                lifecycle_continuation=empty_lifecycle,
             )
-        ),
-    )
-
-
-def _spill_checkpoint_model_state(state: MutableChipState, path: Path) -> None:
-    """Persist one model as arrays, before constructing nested checkpoint objects."""
-
-    packed = state.packed_lots
-    if packed is None:
-        raise TypeError("full-market checkpoint capture requires packed state")
-    packed.refresh_cell_ids()
-    size = len(packed)
-    active = np.flatnonzero(packed._shares[:size] > 0)
-    cell_ids = packed._cell_ids[active]
-    if np.unique(cell_ids).size != active.size:
-        raise ValueError("checkpoint capture received duplicate canonical identities")
-    order = np.argsort(cell_ids, kind="stable")
-    active = active[order]
-    cell_ids = cell_ids[order]
-    shares = packed._shares[active].copy()
-    payload = {
-        "seller_model": state.seller_model.value,
-        "decision_at": state.decision_at,
-        "available_at": state.available_at,
-        "effective_at": state.effective_at,
-        "phase": state.phase.value,
-        "snapshot_id": state.snapshot_id,
-        "model_version": state.model_version,
-        "grid_version": state.grid_version,
-        "cell_ids": cell_ids.copy(),
-        "cost_bucket_ids": packed._cost_bucket_ids[active].copy(),
-        "holding_days": packed._holding_days[active].copy(),
-        "sensitivity_codes": packed._sensitivity_codes[active].copy(),
-        "acquisition_costs": packed._acquisition_costs[active].copy(),
-        "economic_break_evens": packed._economic_break_evens[active].copy(),
-        "shares": shares,
-        "initialization_prior_units": packed._initialization_prior_units[active].copy(),
-        "free_float_shares": state.free_float_shares,
-        "latent_supply_shares": state.latent_supply_shares,
-        "conservation_error": math.fsum(shares.tolist()) - state.free_float_shares,
-        "input_snapshot_ids": tuple(
-            sorted(set(state.input_snapshot_ids), key=lambda item: item.encode("utf-8"))
-        ),
-        "pit_grade": state.pit_grade,
-        "hard_valid": state.hard_valid,
-        "quality_reason_codes": tuple(
-            sorted(
-                set(state.quality_reason_codes),
-                key=lambda item: item.encode("utf-8"),
-            )
-        ),
-    }
-    with path.open("wb") as handle:
-        pickle.dump(payload, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-
-def _load_spilled_model_state(path: Path) -> CapturedModelState:
-    with path.open("rb") as handle:
-        value = pickle.load(handle)
-    sensitivities = (
-        TurnoverSensitivity.ACTIVE,
-        TurnoverSensitivity.NEUTRAL,
-        TurnoverSensitivity.STICKY,
-    )
-    cells = tuple(
-        CapturedCell(
-            cell_id=int(value["cell_ids"][index]),
-            cost_bucket_id=(
-                None
-                if not math.isfinite(float(value["economic_break_evens"][index]))
-                else int(value["cost_bucket_ids"][index])
-            ),
-            holding_days=int(value["holding_days"][index]),
-            sensitivity=sensitivities[int(value["sensitivity_codes"][index])].value,
-            acquisition_cost=(
-                None
-                if not math.isfinite(float(value["acquisition_costs"][index]))
-                else float(value["acquisition_costs"][index])
-            ),
-            economic_break_even=(
-                None
-                if not math.isfinite(float(value["economic_break_evens"][index]))
-                else float(value["economic_break_evens"][index])
-            ),
-            shares=float(value["shares"][index]),
-            initialization_prior_units=float(value["initialization_prior_units"][index]),
         )
-        for index in range(len(value["cell_ids"]))
-    )
-    return CapturedModelState(
-        seller_model=value["seller_model"],
-        decision_at=value["decision_at"],
-        available_at=value["available_at"],
-        effective_at=value["effective_at"],
-        phase=value["phase"],
-        snapshot_id=value["snapshot_id"],
-        model_version=value["model_version"],
-        grid_version=value["grid_version"],
-        cells=cells,
-        free_float_shares=value["free_float_shares"],
-        latent_supply_shares=value["latent_supply_shares"],
-        conservation_error=value["conservation_error"],
-        input_snapshot_ids=value["input_snapshot_ids"],
-        pit_grade=value["pit_grade"],
-        hard_valid=value["hard_valid"],
-        quality_reason_codes=value["quality_reason_codes"],
-    )
-
-
-class _SpilledCheckpointMapping(Mapping[date, CapturedCheckpoint]):
-    """Load one temporary checkpoint at a time in frozen cadence order."""
-
-    def __init__(self, paths: Mapping[date, tuple[Path, ...]]) -> None:
-        self._paths = dict(paths)
-
-    def __getitem__(self, key: date) -> CapturedCheckpoint:
-        return CapturedCheckpoint(
-            symbol=self._paths[key][0].parent.parent.name.removeprefix("symbol="),
-            trading_date=key,
-            model_states=tuple(
-                _load_spilled_model_state(path) for path in self._paths[key]
-            ),
-        )
-
-    def __iter__(self) -> Iterator[date]:
-        return iter(self._paths)
-
-    def __len__(self) -> int:
-        return len(self._paths)
+    return identities, tuple(model_states)
 
 
 def _canonicalize_packed_output_state(state: MutableChipState) -> None:
@@ -3477,11 +3380,7 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
         manifest_root=input_manifest_root,
     )
     dependency_manifest_digest = logical_sha256(
-        {
-            "symbol": symbol,
-            "year": year,
-            "input_fingerprint": input_fingerprint,
-        }
+        {"symbol": symbol, "year": year, "input_fingerprint": input_fingerprint}
     )
     replay_contract_hash = logical_sha256(
         {
@@ -3493,98 +3392,156 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
         }
     )
     daily_rows = _read_symbol_partition(daily_path, symbol)
-    minute_rows = _read_symbol_partition(
-        minute_partition, symbol
+    minute_rows = _read_symbol_partition(minute_partition, symbol)
+    replayable_facts = _build_replayable_day_facts(
+        daily_rows, minute_rows, year, state_resumed=False
     )
-    replayable_dates = _replayable_target_dates(
-        daily_rows,
-        year,
-        state_resumed=False,
+    replayable_dates = tuple(
+        fact.trading_date for fact in replayable_facts if fact.target_required
     )
-    capture_dates = set(checkpoint_dates(replayable_dates))
+    candidate_root = Path(payload["candidate_root"])
     safe_symbol = symbol.replace(".", "_")
     temporary_root = Path(
-        tempfile.mkdtemp(prefix=f"v12_checkpoint_journal_phase7_{safe_symbol}_", dir="/tmp")
+        tempfile.mkdtemp(
+            prefix=f"v12_checkpoint_journal_phase7_{safe_symbol}_", dir="/tmp"
+        )
     )
-    capture_root = temporary_root / "checkpoint-captures"
-    capture_root.mkdir()
-    captured: dict[date, dict[str, Path]] = defaultdict(dict)
-    captured_paths: dict[date, tuple[Path, ...]] = {}
-    original_output_row = _output_row
-
-    def capture_output_row(**kwargs: Any) -> Any:
-        result = original_output_row(**kwargs)
-        state = kwargs["state"]
-        if state.trading_date in capture_dates:
-            model = state.seller_model.value
-            if model in captured[state.trading_date]:
-                raise RuntimeError("checkpoint stream emitted a seller model twice")
-            capture_date_root = (
-                capture_root / f"symbol={symbol}" / state.trading_date.isoformat()
-            )
-            capture_date_root.mkdir(parents=True, exist_ok=True)
-            capture_path = capture_date_root / f"{model}.pickle"
-            _spill_checkpoint_model_state(state, capture_path)
-            captured[state.trading_date][model] = capture_path
-            if set(captured[state.trading_date]) == set(
-                CHECKPOINT_JOURNAL_SELLER_MODELS
-            ):
-                captured_paths[state.trading_date] = tuple(
-                    captured[state.trading_date][model_name]
-                    for model_name in CHECKPOINT_JOURNAL_SELLER_MODELS
-                )
-                del captured[state.trading_date]
-        return result
-
-    globals()["_output_row"] = capture_output_row
-    operator_path = temporary_root / "operator.parquet"
     feature_path = temporary_root / "feature.parquet"
     terminal_path = temporary_root / "terminal.parquet"
-    writer = pq.ParquetWriter(
-        operator_path,
-        OUTPUT_SCHEMA,
-        compression="zstd",
-        compression_level=PARQUET_COMPRESSION_LEVEL,
-        use_dictionary=True,
+    feature_rows: list[tuple[object, ...]] = []
+    features: list[dict[str, Any]] = []
+    checkpoint_parts: dict[date, tuple[ArtifactFileMetadata, str]] = {}
+    journal_parts: dict[tuple[date, date], ArtifactFileMetadata] = {}
+    journal_buffer: list[Any] = []
+    journal_month: tuple[int, int] | None = None
+    journal_anchor_digest: str | None = None
+    tracker = EnsembleTemporalPeakTracker(
+        symbol=symbol, models=("uniform", "disposition", "active_sticky")
     )
+
+    def flush_journal_month() -> None:
+        nonlocal journal_buffer
+        if not journal_buffer:
+            return
+        logical = build_journal_logical(
+            symbol=symbol,
+            target_year=year,
+            rows=tuple(journal_buffer),
+            dependency_manifest_digest=dependency_manifest_digest,
+            replay_parameter_manifest_digest=payload[
+                "replay_parameter_manifest_digest"
+            ],
+        )
+        metadata = write_journal_part(candidate_root, logical)
+        key = (journal_buffer[0].trading_date, journal_buffer[-1].trading_date)
+        if key in journal_parts:
+            raise RuntimeError("journal stream emitted a month twice")
+        journal_parts[key] = metadata
+        journal_buffer = []
+
+    def consume_day(
+        fact: ReplayableDayFact,
+        model_rows: tuple[dict[str, Any], ...],
+        states: Mapping[SellerModel, ChipSnapshotV2 | MutableChipState],
+    ) -> None:
+        nonlocal journal_month, journal_anchor_digest
+        if not fact.target_required:
+            raise RuntimeError("direct output sink received a non-target day")
+        feature_row = project_daily_feature_row(list(model_rows), tracker)
+        feature = dict(zip(FACT_SCHEMA.names, feature_row, strict=True))
+        feature_rows.append(feature_row)
+        features.append(feature)
+
+        month = (fact.trading_date.year, fact.trading_date.month)
+        if journal_month is not None and month != journal_month:
+            flush_journal_month()
+        if fact.checkpoint_label is not None:
+            identities, model_states = _checkpoint_codec_parts_from_packed_states(
+                states
+            )
+            logical = build_checkpoint_logical(
+                symbol=symbol,
+                trading_date=fact.trading_date,
+                identities=identities,
+                model_states=model_states,
+                feature=feature,
+                label=fact.checkpoint_label,
+                dependency_manifest_digest=dependency_manifest_digest,
+                replay_parameter_manifest_digest=payload[
+                    "replay_parameter_manifest_digest"
+                ],
+                replay_contract_hash=replay_contract_hash,
+                semantic_fingerprint=payload["semantic_fingerprint"],
+                runtime_fingerprint=payload["runtime_fingerprint"],
+                terminal_completeness_digest=payload[
+                    "terminal_completeness_digest"
+                ],
+            )
+            if fact.trading_date in checkpoint_parts:
+                raise RuntimeError("checkpoint stream emitted a date twice")
+            checkpoint_parts[fact.trading_date] = write_checkpoint_part(
+                candidate_root, logical
+            )
+        if month != journal_month:
+            journal_month = month
+            anchor = max(
+                checkpoint_date
+                for checkpoint_date in checkpoint_parts
+                if checkpoint_date <= fact.trading_date
+            )
+            journal_anchor_digest = checkpoint_parts[anchor][1]
+        if journal_anchor_digest is None:
+            raise RuntimeError("journal stream lacks an opening checkpoint")
+        journal_buffer.append(
+            build_journal_day(
+                model_rows,
+                feature,
+                sequence=len(journal_buffer),
+                checkpoint_parent_digest=journal_anchor_digest,
+                dependency_manifest_digest=dependency_manifest_digest,
+                replay_parameter_manifest_digest=payload[
+                    "replay_parameter_manifest_digest"
+                ],
+                replay_contract_hash=replay_contract_hash,
+                runtime_fingerprint=payload["runtime_fingerprint"],
+            )
+        )
+
     try:
         result, terminal_snapshots = _run_symbol(
             symbol,
             daily_rows,
             minute_rows,
             year,
-            writer,
+            None,
             output_row_group_size=output_buffer_rows,
+            replayable_day_facts=replayable_facts,
+            day_sink=consume_day,
         )
-    finally:
-        writer.close()
-        globals()["_output_row"] = original_output_row
-    try:
-        if captured:
-            raise RuntimeError("checkpoint stream ended with an incomplete seller set")
-        del daily_rows, minute_rows
-        gc.collect()
-        build_daily_feature_fact(operator_path, feature_path)
+        flush_journal_month()
+        emitted_dates = tuple(row["trade_date"] for row in features)
+        if emitted_dates != replayable_dates:
+            raise RuntimeError("direct sinks diverged from replayable day authority")
+        write_daily_feature_rows(feature_rows, feature_path)
         _write_terminal_snapshots(terminal_path, terminal_snapshots)
-        checkpoints = _SpilledCheckpointMapping(captured_paths)
-        if set(checkpoints) != capture_dates:
-            raise RuntimeError("checkpoint stream missed a frozen cadence date")
-        artifact = write_symbol_artifacts(
-            root=Path(payload["candidate_root"]),
+        artifact = finish_symbol_artifacts(
+            root=candidate_root,
             symbol=symbol,
-            captured_checkpoints=checkpoints,
-            operator_path=operator_path,
+            replayable_dates=replayable_dates,
+            checkpoint_parts=checkpoint_parts,
+            journal_parts=journal_parts,
+            features=features,
             feature_source_path=feature_path,
             terminal_source_path=terminal_path,
             dependency_manifest_digest=dependency_manifest_digest,
-            replay_parameter_manifest_digest=payload["replay_parameter_manifest_digest"],
-            replay_contract_hash=replay_contract_hash,
-            semantic_fingerprint=payload["semantic_fingerprint"],
-            runtime_fingerprint=payload["runtime_fingerprint"],
-            terminal_completeness_digest=payload["terminal_completeness_digest"],
+            replay_parameter_manifest_digest=payload[
+                "replay_parameter_manifest_digest"
+            ],
+            terminal_completeness_digest=payload[
+                "terminal_completeness_digest"
+            ],
             bundle_id=payload["bundle_id"],
             root_id=payload["root_id"],
-            replayable_dates=replayable_dates,
         )
         output = _checkpoint_journal_artifact_payload(artifact, result)
         output["resume_contract"] = _resume_contract_binding(
@@ -3692,18 +3649,6 @@ def _link_symbol_evidence(
         os.link(source, destination)
 
 
-def _expected_checkpoint_dates_for_symbol(
-    *, symbol: str, year: int, daily_path: Path
-) -> tuple[date, ...]:
-    daily_rows = _read_symbol_partition(daily_path, symbol)
-    replayable_dates = _replayable_target_dates(
-        daily_rows,
-        year,
-        state_resumed=False,
-    )
-    return checkpoint_dates(replayable_dates)
-
-
 def _existing_checkpoint_dates(artifact: SymbolArtifacts) -> tuple[date, ...]:
     values = []
     for relative in artifact.checkpoint_paths:
@@ -3784,10 +3729,16 @@ def _adopt_c12_progress(
         input_fingerprint = ""
         input_manifest_path = input_manifest_root / "missing"
         if compatible:
-            expected_dates = _expected_checkpoint_dates_for_symbol(
-                symbol=symbol,
-                year=year,
-                daily_path=daily[symbol],
+            legacy_facts = _build_replayable_day_facts(
+                _read_symbol_partition(daily[symbol], symbol),
+                _read_symbol_partition(minute.get(symbol), symbol),
+                year,
+                state_resumed=False,
+            )
+            expected_dates = tuple(
+                fact.trading_date
+                for fact in legacy_facts
+                if fact.checkpoint_label is not None
             )
             compatible = _existing_checkpoint_dates(artifact) == expected_dates
         if compatible:
@@ -3992,11 +3943,8 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
         reusable = False
         if progress_path.exists():
             value = json.loads(progress_path.read_text(encoding="utf-8"))
-            expected_dates = _expected_checkpoint_dates_for_symbol(
-                symbol=symbol,
-                year=args.year,
-                daily_path=daily[symbol],
-            )
+            existing_artifact = _checkpoint_journal_artifact_from_payload(value)
+            expected_dates = _existing_checkpoint_dates(existing_artifact)
             input_fingerprint, _ = _symbol_input_fingerprint(
                 symbol=symbol,
                 year=args.year,

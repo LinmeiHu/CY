@@ -98,7 +98,7 @@ def build_daily_feature_fact(operator_path: Path, output_path: Path) -> int:
                     tracker = EnsembleTemporalPeakTracker(
                         symbol=pending_key[0], models=("uniform", "disposition", "active_sticky")
                     )
-                rows.append(_ensemble_row(pending, tracker))
+                rows.append(project_daily_feature_row(pending, tracker))
                 pending = []
             pending_key = key
             pending.append({name: columns[name][index].as_py() for name in PROJECTED_COLUMNS})
@@ -109,15 +109,31 @@ def build_daily_feature_fact(operator_path: Path, output_path: Path) -> int:
             tracker = EnsembleTemporalPeakTracker(
                 symbol=pending_key[0], models=("uniform", "disposition", "active_sticky")
             )
-        rows.append(_ensemble_row(pending, tracker))
+        rows.append(project_daily_feature_row(pending, tracker))
+    write_daily_feature_rows(rows, output_path)
+    return len(rows)
+
+
+def write_daily_feature_rows(
+    rows: list[tuple[object, ...]], output_path: Path
+) -> None:
+    """Write rows already projected by the canonical daily feature tracker."""
+
     arrays = [
         pa.array([row[index] for row in rows], type=field.type)
         for index, field in enumerate(FACT_SCHEMA)
     ]
+    table = pa.Table.from_arrays(arrays, schema=FACT_SCHEMA)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    pq.write_table(pa.Table.from_arrays(arrays, schema=FACT_SCHEMA), output_path,
-                   compression="zstd", use_dictionary=True)
-    return len(rows)
+    pq.write_table(table, output_path, compression="zstd", use_dictionary=True)
+
+
+def project_daily_feature_row(
+    models: list[dict[str, Any]], tracker: EnsembleTemporalPeakTracker
+) -> tuple[object, ...]:
+    """Project one ordered seller-model group without a persisted operator."""
+
+    return _ensemble_row(models, tracker)
 
 
 def _ensemble_row(
