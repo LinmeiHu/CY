@@ -8,7 +8,6 @@ from __future__ import annotations
 import argparse
 import gc
 import hashlib
-import inspect
 import json
 import math
 import os
@@ -183,31 +182,10 @@ BUFFER_CANDIDATES = (3, 24, 48, 96)
 
 
 def _semantic_fingerprint_v2() -> str:
-    code_dependencies = {
-        name: hashlib.sha256(inspect.getsource(value).encode("utf-8")).hexdigest()
-        for name, value in (
-            ("DailyMigrationEngine", DailyMigrationEngine),
-            ("_canonicalize_packed_output_state", _canonicalize_packed_output_state),
-            ("_cap_prepared_minute_path", _cap_prepared_minute_path),
-            ("_inventory_events", _inventory_events),
-            ("_minute_bars", _minute_bars),
-            ("_output_row", _output_row),
-            ("_pro_rata_removals", _pro_rata_removals),
-            ("initial_unknown_snapshot", initial_unknown_snapshot),
-            ("prepare_minute_path", prepare_minute_path),
-            ("stable_cell_id", stable_cell_id),
-            ("canonical_action_component_id", canonical_action_component_id),
-            ("parse_action_ids", parse_action_ids),
-            ("compute_distribution_metrics", compute_distribution_metrics),
-            ("detect_canonical_peaks", detect_canonical_peaks),
-            ("dominant_canonical_peak", dominant_canonical_peak),
-        )
-    }
     return logical_sha256(
         {
             "semantic_contract": semantic_fingerprint_fields(),
             "frozen_replay_parameters": FROZEN_REPLAY_PARAMETER_VALUES,
-            "semantic_code_dependencies": code_dependencies,
         }
     )
 
@@ -3342,12 +3320,7 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
     minute_path = payload.get("minute_path")
     minute_partition = None if minute_path is None else Path(minute_path)
     stage_root = Path(payload.get("stage_root", daily_path.parents[2]))
-    input_manifest_root = Path(
-        payload.get(
-            "input_manifest_root",
-            Path(payload["progress_root"]) / "input-manifests",
-        )
-    )
+    input_manifest_root = Path(payload["input_manifest_root"])
     output_buffer_rows = int(payload.get("output_buffer_rows", len(SELLER_MODEL_ORDER)))
     if output_buffer_rows not in BUFFER_CANDIDATES:
         raise ValueError("checkpoint/journal buffer rows are outside the frozen candidates")
@@ -3527,8 +3500,8 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
             input_fingerprint=input_fingerprint,
             input_manifest_path=input_manifest_path,
         )
-        progress_path = Path(payload["progress_root"]) / f"{safe_symbol}.json"
-        _atomic_write_json(progress_path, output)
+        symbol_manifest = candidate_root / f"symbol={symbol}" / "manifest.json"
+        _atomic_write_json(symbol_manifest, output)
         return output
     finally:
         shutil.rmtree(temporary_root, ignore_errors=True)
@@ -3549,102 +3522,20 @@ def _checkpoint_journal_manifest_parts(
     return sorted(parts, key=lambda item: item["relative_path"].encode("utf-8"))
 
 
-def _encoded_logical_digest(path: Path) -> str:
-    with path.open("rb") as handle:
-        prefix = handle.read(1024)
-    match = re.search(rb'"logical_digest":"([0-9a-f]{64})"', prefix)
-    if match is None:
-        raise ValueError(f"encoded part lacks logical digest: {path}")
-    return match.group(1).decode("ascii")
-
-
-def _legacy_semantic_fingerprint(path: Path) -> str:
-    with path.open("rb") as handle:
-        handle.seek(max(0, path.stat().st_size - 65_536))
-        suffix = handle.read()
-    match = re.search(
-        rb'semantic_fingerprint\\?"?:\\?"([0-9a-f]{64})', suffix
-    )
-    if match is None:
-        raise ValueError(f"legacy checkpoint lacks semantic fingerprint: {path}")
-    return match.group(1).decode("ascii")
-
-
-def _legacy_file_metadata(
-    *, artifact: SymbolArtifacts, source_root: Path
-) -> tuple[ArtifactFileMetadata, ...]:
-    known_digests: dict[str, str] = {}
-    for row in artifact.index_rows:
-        known_digests[row.checkpoint_part_path] = row.checkpoint_part_digest
-        known_digests[row.journal_part_path] = row.journal_part_digest
-    if artifact.index_rows:
-        known_digests[artifact.feature_path] = artifact.index_rows[0].feature_binding.content_digest
-    metadata = []
-    for kind, relative_paths in (
-        ("checkpoint", artifact.checkpoint_paths),
-        ("journal", artifact.journal_paths),
-        ("feature", (artifact.feature_path,)),
-        ("terminal", (artifact.terminal_path,)),
-    ):
-        for relative in relative_paths:
-            path = source_root / relative
-            physical_digest = known_digests.get(relative)
-            if physical_digest is None:
-                physical_digest = sha256_file(path)
-            if kind in {"checkpoint", "journal"}:
-                logical_digest = _encoded_logical_digest(path)
-            else:
-                logical_digest = arrow_logical_digest(path)
-            metadata.append(
-                ArtifactFileMetadata(
-                    kind=kind,
-                    relative_path=relative,
-                    bytes=path.stat().st_size,
-                    sha256=physical_digest,
-                    logical_digest=logical_digest,
-                )
-            )
-    return tuple(metadata)
-
-
-def _link_symbol_evidence(
-    *, source_root: Path, candidate_root: Path, artifact: SymbolArtifacts
-) -> None:
-    for item in artifact.file_metadata:
-        source = source_root / item.relative_path
-        destination = candidate_root / item.relative_path
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        if destination.exists():
-            source_stat = source.stat()
-            destination_stat = destination.stat()
-            if (source_stat.st_dev, source_stat.st_ino) != (
-                destination_stat.st_dev,
-                destination_stat.st_ino,
-            ):
-                raise ValueError("resume overlay contains non-evidence artifact")
-            continue
-        os.link(source, destination)
-
-
-def _existing_checkpoint_dates(artifact: SymbolArtifacts) -> tuple[date, ...]:
-    values = []
-    for relative in artifact.checkpoint_paths:
-        match = re.search(r"(\d{4}-\d{2}-\d{2})\.json$", relative)
-        if match is None:
-            raise ValueError("checkpoint filename lacks cadence date")
-        values.append(date.fromisoformat(match.group(1)))
-    return tuple(values)
-
-
-def _v2_progress_compatible(
+def _symbol_reuse_status(
     *,
-    value: Mapping[str, Any],
+    manifest_path: Path,
     candidate_root: Path,
     semantic_fingerprint: str,
     input_fingerprint: str,
     artifact_contract_fingerprint: str,
-    checkpoint_dates_digest: str,
-) -> bool:
+) -> str:
+    if not manifest_path.is_file():
+        return "MISSING"
+    try:
+        value = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError("symbol manifest is corrupt") from exc
     contract = value.get("resume_contract", {})
     if (
         contract.get("resume_contract_version") != RESUME_CONTRACT_VERSION
@@ -3652,135 +3543,18 @@ def _v2_progress_compatible(
         or contract.get("input_fingerprint") != input_fingerprint
         or contract.get("artifact_contract_fingerprint")
         != artifact_contract_fingerprint
-        or contract.get("checkpoint_dates_digest") != checkpoint_dates_digest
     ):
-        return False
+        return "STALE"
     files = contract.get("file_integrity_digests", ())
     if not files:
-        return False
+        raise ValueError("symbol manifest has no integrity bindings")
     for item in files:
         path = candidate_root / item["relative_path"]
-        if not path.is_file() or path.stat().st_size != int(item["bytes"]):
-            return False
-    return True
-
-
-def _adopt_c12_progress(
-    *,
-    year: int,
-    stage_root: Path,
-    daily: Mapping[str, Path],
-    minute: Mapping[str, Path],
-    candidate_root: Path,
-    progress_root: Path,
-    input_manifest_root: Path,
-    semantic_fingerprint: str,
-    artifact_contract_fingerprint: str,
-    git_head: str,
-) -> dict[str, int]:
-    legacy_fingerprint = "c12aeba835df0605079e8c3aebb02ab18bc56a31c574b3d709dbe374100281ce"
-    source_run = Path(
-        f"/tmp/v12_checkpoint_journal_phase7_run_{year}_{legacy_fingerprint}"
-    )
-    source_root = source_run / "candidate"
-    source_progress = source_run / "progress"
-    existing_paths = []
-    if source_progress.is_dir():
-        for path in sorted(source_progress.glob("*.json")):
-            value = json.loads(path.read_text(encoding="utf-8"))
-            if "artifact" in value and "result" in value:
-                existing_paths.append(path)
-    report = {
-        "existing_completed_shards": len(existing_paths),
-        "reused_shards": 0,
-        "incompatible_shards": 0,
-        "recompute_shards": 0,
-    }
-    legacy_semantic = logical_sha256(semantic_fingerprint_fields())
-    for progress_path in existing_paths:
-        value = json.loads(progress_path.read_text(encoding="utf-8"))
-        artifact = _checkpoint_journal_artifact_from_payload(value)
-        symbol = artifact.symbol
-        compatible = symbol in daily
-        expected_dates: tuple[date, ...] = ()
-        input_fingerprint = ""
-        input_manifest_path = input_manifest_root / "missing"
-        if compatible:
-            legacy_facts = _build_replayable_day_facts(
-                _read_symbol_partition(daily[symbol], symbol),
-                _read_symbol_partition(minute.get(symbol), symbol),
-                year,
-                state_resumed=False,
-            )
-            expected_dates = tuple(
-                fact.trading_date
-                for fact in legacy_facts
-                if fact.checkpoint_label is not None
-            )
-            compatible = _existing_checkpoint_dates(artifact) == expected_dates
-        if compatible:
-            compatible = all(
-                row.storage_version == CHECKPOINT_JOURNAL_STORAGE_VERSION
-                and row.schema_version == CHECKPOINT_JOURNAL_SCHEMA_VERSION
-                and row.artifact_version == CHECKPOINT_JOURNAL_ARTIFACT_VERSION
-                and row.symbol == symbol
-                and row.target_year == year
-                for row in artifact.index_rows
-            )
-        if compatible:
-            first_checkpoint = source_root / artifact.checkpoint_paths[0]
-            compatible = _legacy_semantic_fingerprint(first_checkpoint) == legacy_semantic
-        if compatible:
-            input_fingerprint, input_manifest_path = _symbol_input_fingerprint(
-                symbol=symbol,
-                year=year,
-                stage_root=stage_root,
-                daily_path=daily[symbol],
-                minute_path=minute.get(symbol),
-                manifest_root=input_manifest_root,
-            )
-            artifact = replace(
-                artifact,
-                file_metadata=_legacy_file_metadata(
-                    artifact=artifact,
-                    source_root=source_root,
-                ),
-                checkpoint_dates_digest=logical_sha256(expected_dates),
-            )
-            adopted_payload = _checkpoint_journal_artifact_payload(
-                artifact,
-                value["result"],
-            )
-            adopted_payload["resume_contract"] = _resume_contract_binding(
-                artifact=artifact,
-                payload={
-                    "year": year,
-                    "semantic_fingerprint": semantic_fingerprint,
-                    "artifact_contract_fingerprint": artifact_contract_fingerprint,
-                    "physical_fingerprint": _physical_fingerprint(3),
-                    "workers": 5,
-                    "output_buffer_rows": 3,
-                    "scheduler": "legacy-c12-utf8-symbol-order",
-                    "largest_first": False,
-                    "git_head": git_head,
-                },
-                input_fingerprint=input_fingerprint,
-                input_manifest_path=input_manifest_path,
-            )
-            _link_symbol_evidence(
-                source_root=source_root,
-                candidate_root=candidate_root,
-                artifact=artifact,
-            )
-            _atomic_write_json(
-                progress_root / f"{symbol.replace('.', '_')}.json",
-                adopted_payload,
-            )
-            report["reused_shards"] += 1
-        else:
-            report["incompatible_shards"] += 1
-            report["recompute_shards"] += 1
-    return report
+        if not path.is_file():
+            return "MISSING"
+        if path.stat().st_size != int(item["bytes"]) or sha256_file(path) != item["sha256"]:
+            raise ValueError("symbol artifact integrity mismatch")
+    return "VALID"
 
 
 def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
@@ -3823,38 +3597,22 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
     buffer_rows = int(args.checkpoint_journal_buffer_rows)
     if buffer_rows not in BUFFER_CANDIDATES:
         raise ValueError("full-market buffer is outside the frozen candidates")
-    legacy_fingerprint = "c12aeba835df0605079e8c3aebb02ab18bc56a31c574b3d709dbe374100281ce"
-    run_root = Path(
-        f"/tmp/v12_checkpoint_journal_phase7_run_{args.year}_{legacy_fingerprint}"
-    ) / "resume_contract_v2"
+    run_root = output.parent / f".{output.name}.building"
     candidate_root = run_root / "candidate"
-    progress_root = run_root / "progress"
     input_manifest_root = run_root / "input-manifests"
     candidate_root.mkdir(parents=True, exist_ok=True)
-    progress_root.mkdir(parents=True, exist_ok=True)
     input_manifest_root.mkdir(parents=True, exist_ok=True)
 
     semantic_fingerprint = _semantic_fingerprint_v2()
     artifact_contract_fingerprint = _artifact_contract_fingerprint()
     physical_fingerprint = _physical_fingerprint(buffer_rows)
     git_head = _git_head_provenance()
-    adoption_path = run_root / "adoption_report.json"
-    if adoption_path.exists():
-        adoption_report = json.loads(adoption_path.read_text(encoding="utf-8"))
-    else:
-        adoption_report = _adopt_c12_progress(
-            year=args.year,
-            stage_root=stage_root,
-            daily=daily,
-            minute=minute,
-            candidate_root=candidate_root,
-            progress_root=progress_root,
-            input_manifest_root=input_manifest_root,
-            semantic_fingerprint=semantic_fingerprint,
-            artifact_contract_fingerprint=artifact_contract_fingerprint,
-            git_head=git_head,
-        )
-        _atomic_write_json(adoption_path, adoption_report)
+    reuse_report = {
+        "existing_completed_shards": 0,
+        "reused_shards": 0,
+        "incompatible_shards": 0,
+        "recompute_shards": 0,
+    }
 
     dependency_manifest_digest = logical_sha256(
         {
@@ -3894,7 +3652,6 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
     common = {
         "year": args.year,
         "candidate_root": str(candidate_root),
-        "progress_root": str(progress_root),
         "dependency_manifest_digest": dependency_manifest_digest,
         "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
         "replay_contract_hash": replay_contract_hash,
@@ -3916,12 +3673,12 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
     payloads = []
     results: dict[str, dict[str, Any]] = {}
     for symbol in symbols:
-        progress_path = progress_root / f"{symbol.replace('.', '_')}.json"
+        progress_path = candidate_root / f"symbol={symbol}" / "manifest.json"
         reusable = False
         if progress_path.exists():
+            reuse_report["existing_completed_shards"] += 1
             value = json.loads(progress_path.read_text(encoding="utf-8"))
             existing_artifact = _checkpoint_journal_artifact_from_payload(value)
-            expected_dates = _existing_checkpoint_dates(existing_artifact)
             input_fingerprint, _ = _symbol_input_fingerprint(
                 symbol=symbol,
                 year=args.year,
@@ -3930,16 +3687,16 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
                 minute_path=minute.get(symbol),
                 manifest_root=input_manifest_root,
             )
-            reusable = _v2_progress_compatible(
-                value=value,
+            reusable = _symbol_reuse_status(
+                manifest_path=progress_path,
                 candidate_root=candidate_root,
                 semantic_fingerprint=semantic_fingerprint,
                 input_fingerprint=input_fingerprint,
                 artifact_contract_fingerprint=artifact_contract_fingerprint,
-                checkpoint_dates_digest=logical_sha256(expected_dates),
-            )
+            ) == "VALID"
             if reusable:
                 results[symbol] = value
+                reuse_report["reused_shards"] += 1
             else:
                 inactive_root = run_root / "incompatible-evidence"
                 inactive_root.mkdir(exist_ok=True)
@@ -3949,12 +3706,8 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
                     if destination.exists():
                         raise ValueError("duplicate incompatible evidence root")
                     os.replace(symbol_root, destination)
-                os.replace(
-                    progress_path,
-                    inactive_root / f"{symbol.replace('.', '_')}.json",
-                )
-                adoption_report["incompatible_shards"] += 1
-                adoption_report["recompute_shards"] += 1
+                reuse_report["incompatible_shards"] += 1
+                reuse_report["recompute_shards"] += 1
         if not reusable:
             payloads.append(
                 {
@@ -3964,16 +3717,13 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
                     "minute_path": None if symbol not in minute else str(minute[symbol]),
                 }
             )
-    _atomic_write_json(adoption_path, adoption_report)
     status_root = output.parent
     status_root.mkdir(parents=True, exist_ok=True)
-    status_path = status_root / "runs" / "resume-contract-v2" / "run_status.json"
+    status_path = status_root / "run_status.json"
     status_path.parent.mkdir(parents=True, exist_ok=True)
-    legacy_status_path = status_root / "run_status.json"
 
     def write_run_status(value: Mapping[str, Any]) -> None:
         _atomic_write_json(status_path, value)
-        _atomic_write_json(legacy_status_path, value)
 
     write_run_status(
         {
@@ -3988,8 +3738,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
             "scheduled": len(symbols),
             "pending": len(payloads),
             "workers": workers,
-            "legacy_fingerprint": legacy_fingerprint,
-            **adoption_report,
+            **reuse_report,
         }
     )
     if payloads:
@@ -4021,8 +3770,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
                             "failure_type": type(exc).__name__,
                             "failure_message": str(exc),
                             "workers": workers,
-                            "legacy_fingerprint": legacy_fingerprint,
-                            **adoption_report,
+                            **reuse_report,
                         }
                     )
                     raise
@@ -4040,8 +3788,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
                         "pending": len(symbols) - len(results),
                         "last_completed_symbol": symbol,
                         "workers": workers,
-                        "legacy_fingerprint": legacy_fingerprint,
-                        **adoption_report,
+                        **reuse_report,
                     }
                 )
         except BaseException:
@@ -4129,7 +3876,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
         "workspace_preflight": "PASS",
         "rss_preflight": "PASS",
         "resume_contract_version": RESUME_CONTRACT_VERSION,
-        **adoption_report,
+        **reuse_report,
     }
     write_json(output / "summary.json", phase7_summary)
     write_run_status(
@@ -4146,8 +3893,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
             "workers": workers,
             "actual_bundle_gib": phase7_summary["actual_bundle_gib"],
             "normalized_5210_gib": phase7_summary["normalized_5210_gib"],
-            "legacy_fingerprint": legacy_fingerprint,
-            **adoption_report,
+            **reuse_report,
         }
     )
     return phase7_summary

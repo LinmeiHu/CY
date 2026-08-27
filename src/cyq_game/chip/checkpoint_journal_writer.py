@@ -799,6 +799,12 @@ def activate_production_bundle(source: Path, output: Path) -> dict[str, Any]:
                 target = temporary / part["relative_path"]
                 target.parent.mkdir(parents=True, exist_ok=True)
                 os.link(source_part, target)
+            for symbol in production_manifest["symbols"]:
+                source_symbol_manifest = source / f"symbol={symbol}" / "manifest.json"
+                if source_symbol_manifest.is_file():
+                    target = temporary / f"symbol={symbol}" / "manifest.json"
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    os.link(source_symbol_manifest, target)
             write_json(temporary / "manifest.json", production_manifest)
             temporary.replace(output)
         except BaseException:

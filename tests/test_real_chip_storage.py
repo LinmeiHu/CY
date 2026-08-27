@@ -978,3 +978,120 @@ def test_staged_prior_symbol_index_roundtrip(tmp_path: Path) -> None:
         "000001.SZ",
         "600000.SH",
     }
+
+
+def test_symbol_resume_has_three_staleness_dimensions_and_integrity(tmp_path: Path) -> None:
+    status = MODULE["_symbol_reuse_status"]
+    part = tmp_path / "symbol=000001.SZ" / "checkpoints" / "year-end.json"
+    part.parent.mkdir(parents=True)
+    part.write_bytes(b"exact-part")
+    manifest = part.parents[1] / "manifest.json"
+    contract = {
+        "resume_contract_version": MODULE["RESUME_CONTRACT_VERSION"],
+        "semantic_fingerprint": "semantic",
+        "input_fingerprint": "input",
+        "artifact_contract_fingerprint": "artifact",
+        "file_integrity_digests": [
+            {
+                "relative_path": part.relative_to(tmp_path).as_posix(),
+                "bytes": part.stat().st_size,
+                "sha256": MODULE["sha256_file"](part),
+            }
+        ],
+        "provenance": {
+            "git_head": "old",
+            "workers": 5,
+            "buffer_rows": 3,
+            "compression": "zstd",
+        },
+    }
+    manifest.write_text(json.dumps({"resume_contract": contract}), encoding="utf-8")
+
+    expected = {
+        "manifest_path": manifest,
+        "candidate_root": tmp_path,
+        "semantic_fingerprint": "semantic",
+        "input_fingerprint": "input",
+        "artifact_contract_fingerprint": "artifact",
+    }
+    assert status(**expected) == "VALID"
+    for field in ("semantic_fingerprint", "input_fingerprint", "artifact_contract_fingerprint"):
+        changed = dict(expected)
+        changed[field] = "changed"
+        assert status(**changed) == "STALE"
+
+    contract["provenance"] = {
+        "git_head": "new",
+        "workers": 10,
+        "buffer_rows": 96,
+        "compression": "different-layout",
+    }
+    manifest.write_text(json.dumps({"resume_contract": contract}), encoding="utf-8")
+    assert status(**expected) == "VALID"
+    assert status(**{**expected, "manifest_path": tmp_path / "missing.json"}) == "MISSING"
+
+    part.write_bytes(b"corrupt-xx")
+    with pytest.raises(ValueError, match="integrity"):
+        status(**expected)
+    part.unlink()
+    assert status(**expected) == "MISSING"
+
+
+def test_symbol_resume_interruption_and_corruption_matrix(tmp_path: Path) -> None:
+    status = MODULE["_symbol_reuse_status"]
+    symbol_root = tmp_path / "symbol=000001.SZ"
+    parts = [
+        symbol_root / "checkpoints" / "year-end.json",
+        symbol_root / "journal" / "month-12.json",
+        symbol_root / "daily_feature_candidate.parquet",
+    ]
+    for index, part in enumerate(parts):
+        part.parent.mkdir(parents=True, exist_ok=True)
+        part.write_bytes(bytes([65 + index]) * 12)
+    manifest = symbol_root / "manifest.json"
+    contract = {
+        "resume_contract_version": MODULE["RESUME_CONTRACT_VERSION"],
+        "semantic_fingerprint": "semantic",
+        "input_fingerprint": "input",
+        "artifact_contract_fingerprint": "artifact",
+        "file_integrity_digests": [
+            {
+                "relative_path": part.relative_to(tmp_path).as_posix(),
+                "bytes": part.stat().st_size,
+                "sha256": MODULE["sha256_file"](part),
+            }
+            for part in parts
+        ],
+    }
+    expected = {
+        "manifest_path": manifest,
+        "candidate_root": tmp_path,
+        "semantic_fingerprint": "semantic",
+        "input_fingerprint": "input",
+        "artifact_contract_fingerprint": "artifact",
+    }
+    assert status(**expected) == "MISSING"
+    manifest.write_text(json.dumps({"resume_contract": contract}), encoding="utf-8")
+    assert status(**expected) == "VALID"
+
+    for index, part in enumerate(parts):
+        original = part.read_bytes()
+        part.unlink()
+        assert status(**expected) == "MISSING"
+        part.write_bytes(original)
+        part.write_bytes(bytes([90 - index]) * len(original))
+        with pytest.raises(ValueError, match="integrity"):
+            status(**expected)
+        part.write_bytes(original)
+    assert status(**expected) == "VALID"
+
+
+def test_semantic_fingerprint_excludes_implementation_source() -> None:
+    fingerprint = MODULE["_semantic_fingerprint_v2"]
+    before = fingerprint()
+    original = MODULE["_canonicalize_packed_output_state"]
+    try:
+        MODULE["_canonicalize_packed_output_state"] = lambda state: None
+        assert fingerprint() == before
+    finally:
+        MODULE["_canonicalize_packed_output_state"] = original
