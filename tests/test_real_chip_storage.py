@@ -123,6 +123,12 @@ def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:
     assert schema.field("cash_dividend_per_share").type == pa.float64()
     assert schema.field("share_multiplier").type == pa.float64()
     assert schema.field("research_valid").type == pa.bool_()
+    assert MODULE["DAILY_FEATURE_FACT_SCHEMA_VERSION"] == (
+        "v12-daily-feature-fact-v4-temporal-peak-observability"
+    )
+    assert MODULE["FACT_SCHEMA"].field("peak_track_age").type == pa.int32()
+    assert MODULE["FACT_SCHEMA"].field("peak_track_mass").type == pa.float64()
+    assert MODULE["FACT_SCHEMA"].field("peak_track_prominence").type == pa.float64()
 
 
 def test_v12_schema_contains_all_fast_operator_columns() -> None:
@@ -1130,3 +1136,15 @@ def test_semantic_fingerprint_excludes_implementation_source() -> None:
         assert fingerprint() == before
     finally:
         MODULE["_canonicalize_packed_output_state"] = original
+
+
+def test_artifact_contract_fingerprint_binds_daily_feature_schema() -> None:
+    fingerprint = MODULE["_artifact_contract_fingerprint"]
+    before = fingerprint()
+    namespace = fingerprint.__globals__
+    original = namespace["DAILY_FEATURE_FACT_SCHEMA_VERSION"]
+    try:
+        namespace["DAILY_FEATURE_FACT_SCHEMA_VERSION"] = "stale-daily-feature-schema"
+        assert fingerprint() != before
+    finally:
+        namespace["DAILY_FEATURE_FACT_SCHEMA_VERSION"] = original

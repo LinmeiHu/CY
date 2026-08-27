@@ -12,6 +12,7 @@ from statistics import median
 
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
 from cyq_game.chip.price_coordinate import rebase_economic_price
+from cyq_game.chip.state_v2 import SellerModel
 
 _KERNEL = (1.0, 4.0, 6.0, 4.0, 1.0)
 _OFFSETS = (-2, -1, 0, 1, 2)
@@ -501,10 +502,17 @@ class EnsembleTemporalPeakTracker:
     means a concatenation of unrelated model-local ids.
     """
 
-    def __init__(self, *, symbol: str, models: Iterable[str]) -> None:
-        ordered = tuple(sorted(set(models)))
-        if len(ordered) < 2:
-            raise ValueError("ensemble peak tracking requires at least two seller models")
+    def __init__(self, *, symbol: str, models: Iterable[SellerModel | str]) -> None:
+        serialized = tuple(models)
+        ordered = tuple(_canonical_seller_model(model) for model in serialized)
+        if len(set(ordered)) != len(ordered):
+            raise ValueError("ensemble peak tracking received duplicate seller models")
+        expected = frozenset(model.value for model in SellerModel)
+        if frozenset(ordered) != expected:
+            raise ValueError("ensemble peak tracking requires exactly three seller models")
+        # Preserve the established lexical anchor-model order after identity
+        # normalization; changing it would alter same-day consensus matching.
+        ordered = tuple(sorted(expected))
         self._models = ordered
         self._local = {
             model: TemporalPeakTracker(symbol=symbol, model=model) for model in ordered
@@ -529,9 +537,15 @@ class EnsembleTemporalPeakTracker:
         self,
         *,
         as_of: date,
-        candidates_by_model: Mapping[str, tuple[CanonicalPeak, ...]],
+        candidates_by_model: Mapping[SellerModel | str, tuple[CanonicalPeak, ...]],
     ) -> EnsemblePeakTrackingResult:
-        if set(candidates_by_model) != set(self._models):
+        canonical_candidates = {
+            _canonical_seller_model(model): tuple(candidates)
+            for model, candidates in candidates_by_model.items()
+        }
+        if len(canonical_candidates) != len(candidates_by_model):
+            raise ValueError("ensemble peak tracking received duplicate seller models")
+        if set(canonical_candidates) != set(self._models):
             empty = self._ensemble.update(as_of=as_of, candidates=())
             return EnsemblePeakTrackingResult(
                 ensemble=replace(
@@ -543,12 +557,12 @@ class EnsembleTemporalPeakTracker:
             )
         local = {
             model: self._local[model].update(
-                as_of=as_of, candidates=tuple(candidates_by_model[model])
+                as_of=as_of, candidates=canonical_candidates[model]
             )
             for model in self._models
         }
         candidates, ambiguous = _ensemble_candidates(
-            candidates_by_model, self._models, as_of
+            canonical_candidates, self._models, as_of
         )
         ensemble = self._ensemble.update(as_of=as_of, candidates=candidates)
         if ambiguous:
@@ -558,6 +572,17 @@ class EnsembleTemporalPeakTracker:
                 fail_closed_reason="ENSEMBLE_PEAK_AMBIGUOUS",
             )
         return EnsemblePeakTrackingResult(ensemble=ensemble, by_model=local)
+
+
+def _canonical_seller_model(value: SellerModel | str) -> str:
+    """Normalize serialized seller-model identity at the tracker boundary."""
+
+    if isinstance(value, SellerModel):
+        return value.value
+    try:
+        return SellerModel(value.upper()).value
+    except (AttributeError, ValueError) as error:
+        raise ValueError(f"unknown seller model: {value!r}") from error
 
 
 def _ensemble_candidates(

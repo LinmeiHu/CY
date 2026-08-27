@@ -146,15 +146,23 @@ def _tracker(feature: Mapping[str, Any]) -> TemporalTrackerContinuation:
             value = feature.get(name)
             return fallback if value is None else float(value)
 
+        def required_number(name: str) -> float:
+            value = feature.get(name)
+            if value is None:
+                raise ValueError(f"tracked peak is missing required {name}")
+            return float(value)
+
         peaks = (
             TrackedPeakContinuation(
                 peak_track_id=str(track_id),
-                age=0,
+                age=int(required_number("peak_track_age")),
                 band_lower_bits=f64be_bits(number("peak_track_band_lower")),
                 band_upper_bits=f64be_bits(number("peak_track_band_upper")),
                 center_price_bits=f64be_bits(number("tracked_base_peak")),
-                mass_bits=f64be_bits(number("dominant_band_mass")),
-                prominence_bits=f64be_bits(0.0),
+                mass_bits=f64be_bits(required_number("peak_track_mass")),
+                prominence_bits=f64be_bits(
+                    required_number("peak_track_prominence")
+                ),
                 ambiguity=bool(feature.get("peak_track_ambiguous", False)),
                 split=bool(feature.get("peak_track_split", False)),
                 merge=bool(feature.get("peak_track_merge", False)),
@@ -236,6 +244,9 @@ def _tracker_digest(feature: Mapping[str, Any]) -> str:
         "peak_track_id",
         "peak_track_band_lower",
         "peak_track_band_upper",
+        "peak_track_age",
+        "peak_track_mass",
+        "peak_track_prominence",
         "peak_track_state",
         "peak_track_ambiguous",
         "peak_track_split",

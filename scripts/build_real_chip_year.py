@@ -96,6 +96,7 @@ from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
     write_json,
 )
 from cyq_game.chip.daily_feature_fact import (  # noqa: E402
+    DAILY_FEATURE_FACT_SCHEMA_VERSION,
     FACT_SCHEMA,
     build_daily_feature_fact,
     project_daily_feature_row,
@@ -181,7 +182,7 @@ TZ = ZoneInfo("Asia/Shanghai")
 
 RESUME_CONTRACT_VERSION = "v12-phase7-resume-contract-v2"
 INPUT_MANIFEST_VERSION = "v12-phase7-symbol-input-manifest-v1"
-ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v3"
+ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v4"
 PHYSICAL_CONTRACT_VERSION = "v12-phase7-physical-contract-v2"
 CHECKPOINT_CADENCE_ALGORITHM_VERSION = "replayable-target-dates-v1"
 SHARD_MANIFEST_VERSION = "v12-phase7-symbol-shard-manifest-v2"
@@ -211,6 +212,10 @@ def _artifact_contract_fingerprint() -> str:
             "index_version": INDEX_VERSION,
             "journal_codec_version": JOURNAL_CODEC_VERSION,
             "manifest_contract": "phase7-hash-once-manifest-v1",
+            "daily_feature_schema": tuple(
+                (field.name, str(field.type), field.nullable) for field in FACT_SCHEMA
+            ),
+            "daily_feature_schema_version": DAILY_FEATURE_FACT_SCHEMA_VERSION,
             "schema_version": CHECKPOINT_JOURNAL_SCHEMA_VERSION,
             "storage_version": CHECKPOINT_JOURNAL_STORAGE_VERSION,
             "terminal_adapter_contract": TERMINAL_COMPLETENESS_VERSION,

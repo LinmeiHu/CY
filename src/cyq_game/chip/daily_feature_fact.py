@@ -20,6 +20,10 @@ import pyarrow.parquet as pq  # type: ignore[import-untyped]
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
 from cyq_game.chip.peaks import CanonicalPeak, EnsembleTemporalPeakTracker
 
+DAILY_FEATURE_FACT_SCHEMA_VERSION = (
+    "v12-daily-feature-fact-v4-temporal-peak-observability"
+)
+
 FACT_SCHEMA = pa.schema(
     [
         ("symbol", pa.string()),
@@ -51,6 +55,9 @@ FACT_SCHEMA = pa.schema(
         ("peak_track_id", pa.string()),
         ("peak_track_band_lower", pa.float64()),
         ("peak_track_band_upper", pa.float64()),
+        ("peak_track_age", pa.int32()),
+        ("peak_track_mass", pa.float64()),
+        ("peak_track_prominence", pa.float64()),
         ("peak_track_state", pa.string()),
         ("peak_track_ambiguous", pa.bool_()),
         ("peak_track_split", pa.bool_()),
@@ -194,6 +201,9 @@ def _ensemble_row(
         None if tracked is None else tracked.center_price,
         None if tracked is None else tracked.peak_track_id,
         None if tracked is None else tracked.band[0], None if tracked is None else tracked.band[1],
+        None if tracked is None else tracked.age,
+        None if tracked is None else tracked.mass,
+        None if tracked is None else tracked.prominence,
         peak_state, tracked is None or tracked.ambiguity,
         any(peak.split for peak in tracking.peaks),
         any(peak.merge for peak in tracking.peaks),
@@ -266,7 +276,9 @@ def _canonical_peaks_from_json(value: object, *, expected_day: date) -> tuple[Ca
     required = set(CanonicalPeak.__dataclass_fields__)
     for item in payload:
         if not isinstance(item, dict) or set(item) != required:
-            raise ValueError("canonical peak artifact schema is incompatible; rebuild from raw inputs")
+            raise ValueError(
+                "canonical peak artifact schema is incompatible; rebuild from raw inputs"
+            )
         if item["definition_version"] != PEAK_DEFINITION_VERSION:
             raise ValueError("canonical peak artifact definition is stale; rebuild from raw inputs")
         if item["formation_date"] != expected_day.isoformat():

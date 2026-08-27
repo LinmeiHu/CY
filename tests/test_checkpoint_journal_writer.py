@@ -1,19 +1,25 @@
 from __future__ import annotations
 
+import runpy
 from datetime import date, datetime
 from pathlib import Path
-import runpy
 from zoneinfo import ZoneInfo
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from cyq_game.chip.checkpoint_journal_contract import SELLER_MODEL_ORDER, logical_sha256
+from cyq_game.chip.checkpoint_compact_codec import decode_compact_checkpoint
+from cyq_game.chip.checkpoint_journal_contract import (
+    SELLER_MODEL_ORDER,
+    bits_f64be,
+    logical_sha256,
+)
 from cyq_game.chip.checkpoint_journal_writer import (
     manifest_coverage,
     verify_root,
     write_json,
 )
+from cyq_game.chip.state_v2 import TurnoverSensitivity, stable_cell_id
 
 PROTOTYPE = runpy.run_path(
     str(Path(__file__).parents[1] / "scripts/prototype_checkpoint_journal_writer_3symbol.py")
@@ -30,13 +36,20 @@ def _stamp(day: date) -> datetime:
 
 def _state(day: date, model: str, position: int) -> CapturedModelState:
     stamp = _stamp(day)
+    sensitivity = ("NEUTRAL", "ACTIVE", "STICKY")[position]
+    economic_break_even = 10.0 + position
     cell = CapturedCell(
-        cell_id=position + 1,
+        cell_id=stable_cell_id(
+            cost_bucket_id=100 + position,
+            holding_days=1,
+            sensitivity=TurnoverSensitivity(sensitivity),
+            economic_break_even=economic_break_even,
+        ),
         cost_bucket_id=100 + position,
         holding_days=1,
-        sensitivity=("NEUTRAL", "ACTIVE", "STICKY")[position],
-        acquisition_cost=10.0 + position,
-        economic_break_even=10.0 + position,
+        sensitivity=sensitivity,
+        acquisition_cost=economic_break_even,
+        economic_break_even=economic_break_even,
         shares=100.0,
         initialization_prior_units=0.0,
     )
@@ -92,6 +105,9 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
         "peak_track_id": "track-1",
         "peak_track_band_lower": 9.0,
         "peak_track_band_upper": 11.0,
+        "peak_track_age": 7,
+        "peak_track_mass": 0.45,
+        "peak_track_prominence": 0.08,
         "peak_track_state": "CONTINUE",
         "peak_track_ambiguous": False,
         "peak_track_split": False,
@@ -105,7 +121,10 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
     terminal_path = tmp_path / "terminal.parquet"
     pq.write_table(
         pa.Table.from_pylist(
-            [{"seller_model": model, "value": float(index)} for index, model in enumerate(SELLER_MODEL_ORDER)]
+            [
+                {"seller_model": model, "value": float(index)}
+                for index, model in enumerate(SELLER_MODEL_ORDER)
+            ]
         ),
         terminal_path,
     )
@@ -114,7 +133,10 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
     captured = CapturedCheckpoint(
         symbol="002260.SZ",
         trading_date=day,
-        model_states=tuple(_state(day, model, index) for index, model in enumerate(SELLER_MODEL_ORDER)),
+        model_states=tuple(
+            _state(day, model, index)
+            for index, model in enumerate(SELLER_MODEL_ORDER)
+        ),
     )
     artifact = write_symbol_artifacts(
         root=artifact_root,
@@ -147,3 +169,8 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
     assert artifact.trading_days == 1
     assert artifact.model_rows == 3
     assert artifact.fallback_rows == 0
+    checkpoint = decode_compact_checkpoint(artifact_root / artifact.checkpoint_paths[0])
+    tracked = checkpoint.temporal_tracker.scopes[-1].previous_peaks[0]
+    assert tracked.age == 7
+    assert bits_f64be(tracked.mass_bits) == 0.45
+    assert bits_f64be(tracked.prominence_bits) == 0.08

@@ -33,6 +33,13 @@ def test_old_artifact_without_semantic_epoch_is_invalid() -> None:
         require_active_semantic_epoch({}, artifact_name="legacy panel")
 
 
+def test_pre_temporal_observability_feature_schema_is_invalid() -> None:
+    legacy = semantic_fingerprint_fields()
+    legacy["feature_schema_version"] = "chip-features-v6-temporal-canonical-peak"
+    with pytest.raises(SemanticContractError, match="rebuild from raw inputs"):
+        require_active_semantic_epoch(legacy, artifact_name="legacy temporal peak shard")
+
+
 def test_any_semantic_fingerprint_drift_invalidates_artifact() -> None:
     fields = semantic_fingerprint_fields()
     for name in fields:

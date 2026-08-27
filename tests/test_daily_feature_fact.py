@@ -15,12 +15,12 @@ from cyq_game.chip.daily_feature_fact import (
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION
 
 
-def test_daily_fact_uses_scalar_operator_columns_without_inventory_replay(
+def test_daily_fact_tracks_production_serialized_seller_models(
     tmp_path: Path,
 ) -> None:
     timestamp = datetime(2020, 1, 2, 15, tzinfo=ZoneInfo("Asia/Shanghai"))
     rows = []
-    for index, model in enumerate(("uniform", "disposition", "active_sticky")):
+    for index, model in enumerate(("UNIFORM", "DISPOSITION", "ACTIVE_STICKY")):
         values = {
             "symbol": "000001.SZ", "trade_date": date(2020, 1, 2),
             "seller_model": model, "snapshot_id": f"s{index}", "available_at": timestamp,
@@ -55,6 +55,10 @@ def test_daily_fact_uses_scalar_operator_columns_without_inventory_replay(
     assert table.schema == FACT_SCHEMA
     assert table.num_rows == 1
     assert table["peak_track_id"][0].as_py()
+    assert table["peak_track_state"][0].as_py() == "TRACKED"
+    assert table["peak_track_age"][0].as_py() == 1
+    assert table["peak_track_mass"][0].as_py() == pytest.approx(0.7)
+    assert table["peak_track_prominence"][0].as_py() == pytest.approx(0.1)
     assert set(PROJECTED_COLUMNS).isdisjoint(
         {"checkpoint_shares", "retention_values", "inventory_adjustment_shares"}
     )
@@ -102,6 +106,9 @@ def test_daily_fact_preserves_governed_all_unknown_profile_nulls(
     assert fact["average_cost"][0].as_py() is None
     assert fact["model_spread_cost_p50"][0].as_py() is None
     assert fact["dominant_peak_today"][0].as_py() is None
+    assert fact["peak_track_age"][0].as_py() is None
+    assert fact["peak_track_mass"][0].as_py() is None
+    assert fact["peak_track_prominence"][0].as_py() is None
     assert fact["known_cost_fraction_min"][0].as_py() == 0.0
     assert fact["hard_valid"][0].as_py() is False
     assert fact["research_valid"][0].as_py() is True

@@ -12,7 +12,7 @@ from cyq_game.chip.price_coordinate import PRICE_COORDINATE_VERSION
 SEMANTIC_EPOCH = "cyq-semantic-epoch-20260825-v3"
 CHIP_STATE_SCHEMA_VERSION = "chip-state-v3-economic-identity"
 OPERATOR_LOG_VERSION = "chip-operator-log-v13"
-FEATURE_SCHEMA_VERSION = "chip-features-v6-temporal-canonical-peak"
+FEATURE_SCHEMA_VERSION = "chip-features-v7-temporal-peak-observability"
 PANEL_SCHEMA_VERSION = 12
 STRATEGY_VERSION = "markup-retest-v3-tracked-peak"
 SIGNAL_SCHEMA_VERSION = 3

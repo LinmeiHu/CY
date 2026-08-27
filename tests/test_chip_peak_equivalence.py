@@ -13,6 +13,7 @@ from cyq_game.chip.peaks import (
     TemporalPeakTracker,
     detect_canonical_peaks,
 )
+from cyq_game.chip.state_v2 import SellerModel
 from cyq_game.strategy.semantic_contract import PEAK_DEFINITION_VERSION
 
 
@@ -194,3 +195,83 @@ def test_ensemble_unmatched_seller_peak_fails_closed_as_ambiguous() -> None:
     ).ensemble
     assert result.tracked_base_peak is None
     assert result.fail_closed_reason == "ENSEMBLE_PEAK_AMBIGUOUS"
+
+
+def test_seller_model_boundary_accepts_enum_and_serialization_case() -> None:
+    lowercase = EnsembleTemporalPeakTracker(
+        symbol="000001.SZ", models=("uniform", "disposition", "active_sticky")
+    )
+    canonical = EnsembleTemporalPeakTracker(
+        symbol="000001.SZ", models=tuple(SellerModel)
+    )
+    candidates = {
+        model: (_candidate(10, 1.0),)
+        for model in ("UNIFORM", "DISPOSITION", "ACTIVE_STICKY")
+    }
+
+    lower_result = lowercase.update(
+        as_of=date(2026, 8, 23), candidates_by_model=candidates
+    )
+    canonical_result = canonical.update(
+        as_of=date(2026, 8, 23),
+        candidates_by_model={SellerModel(model): peaks for model, peaks in candidates.items()},
+    )
+
+    assert lower_result == canonical_result
+    assert lower_result.ensemble.tracked_base_peak is not None
+
+
+def test_seller_model_boundary_rejects_unknown_missing_and_duplicate_models() -> None:
+    with pytest.raises(ValueError, match="unknown seller model"):
+        EnsembleTemporalPeakTracker(
+            symbol="000001.SZ", models=("uniform", "disposition", "invented")
+        )
+    with pytest.raises(ValueError, match="duplicate seller models"):
+        EnsembleTemporalPeakTracker(
+            symbol="000001.SZ",
+            models=("uniform", "UNIFORM", "disposition", "active_sticky"),
+        )
+
+    tracker = EnsembleTemporalPeakTracker(
+        symbol="000001.SZ", models=tuple(SellerModel)
+    )
+    missing = tracker.update(
+        as_of=date(2026, 8, 23),
+        candidates_by_model={
+            SellerModel.UNIFORM: (_candidate(10, 1.0),),
+            SellerModel.DISPOSITION: (_candidate(10, 1.0),),
+        },
+    ).ensemble
+    assert missing.tracked_base_peak is None
+    assert missing.fail_closed_reason == "ENSEMBLE_SELLER_MODEL_MISSING"
+
+    with pytest.raises(ValueError, match="duplicate seller models"):
+        tracker.update(
+            as_of=date(2026, 8, 24),
+            candidates_by_model={
+                "uniform": (_candidate(10, 1.0),),
+                "UNIFORM": (_candidate(10, 1.0),),
+                "disposition": (_candidate(10, 1.0),),
+                "active_sticky": (_candidate(10, 1.0),),
+            },
+        )
+
+
+def test_seller_model_boundary_is_deterministic() -> None:
+    candidates = {
+        model: (_candidate(10, 0.6), _candidate(20, 0.4))
+        for model in ("uniform", "disposition", "active_sticky")
+    }
+    results = []
+    for models in (
+        ("uniform", "disposition", "active_sticky"),
+        ("ACTIVE_STICKY", "UNIFORM", "DISPOSITION"),
+    ):
+        tracker = EnsembleTemporalPeakTracker(symbol="000001.SZ", models=models)
+        results.append(
+            tracker.update(
+                as_of=date(2026, 8, 23), candidates_by_model=candidates
+            )
+        )
+
+    assert results[0] == results[1]
