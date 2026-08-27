@@ -432,12 +432,11 @@ def _sensitivity_code(value: TurnoverSensitivity) -> int:
 
 @dataclass(slots=True, init=False)
 class _PackedWorkingLots:
-    """Persistent structure-of-arrays inventory used on ordinary trading days.
+    """Persistent structure-of-arrays inventory used by production warm-up.
 
     This is deliberately an internal execution representation.  Immutable
-    snapshots and company-action processing keep using the exact domain
-    objects at their boundaries, while the multi-year warm-up loop carries
-    these arrays directly from one day to the next.
+    snapshots remain the public boundary, while the multi-year warm-up loop
+    carries these arrays directly through ordinary and inventory-event days.
     """
 
     _cell_ids: Int64Array
@@ -593,44 +592,6 @@ class _PackedWorkingLots:
             ),
         )
 
-    @classmethod
-    def from_working_lots(cls, lots: list[_WorkingLot]) -> _PackedWorkingLots:
-        positive = [lot for lot in lots if lot.shares > 0]
-        return cls(
-            cell_ids=np.fromiter((lot.cell_id for lot in positive), dtype=np.int64),
-            cost_bucket_ids=np.fromiter(
-                (
-                    _UNKNOWN_BUCKET_ID if lot.cost_bucket_id is None else lot.cost_bucket_id
-                    for lot in positive
-                ),
-                dtype=np.int64,
-            ),
-            holding_days=np.fromiter((lot.holding_days for lot in positive), dtype=np.int16),
-            sensitivity_codes=np.fromiter(
-                (_sensitivity_code(lot.sensitivity) for lot in positive),
-                dtype=np.int8,
-            ),
-            acquisition_costs=np.fromiter(
-                (
-                    np.nan if lot.acquisition_cost is None else lot.acquisition_cost
-                    for lot in positive
-                ),
-                dtype=np.float64,
-            ),
-            economic_break_evens=np.fromiter(
-                (
-                    np.nan if lot.economic_break_even is None else lot.economic_break_even
-                    for lot in positive
-                ),
-                dtype=np.float64,
-            ),
-            shares=np.fromiter((lot.shares for lot in positive), dtype=np.float64),
-            initialization_prior_units=np.fromiter(
-                (lot.initialization_prior_units for lot in positive),
-                dtype=np.float64,
-            ),
-        )
-
     def append(self, other: _PackedWorkingLots) -> None:
         if len(other) == 0:
             return
@@ -641,6 +602,44 @@ class _PackedWorkingLots:
             getattr(self, f"_{name}")[start:stop] = getattr(other, name)
         self._size = stop
         self._cell_ids_current = self._cell_ids_current and other._cell_ids_current
+
+    def append_inventory_lot(
+        self,
+        *,
+        cost_bucket_id: int | None,
+        holding_days: int,
+        sensitivity: TurnoverSensitivity,
+        acquisition_cost: float | None,
+        economic_break_even: float | None,
+        shares: float,
+    ) -> None:
+        """Append one event-created lot without constructing object inventory."""
+
+        index = self._size
+        self._ensure_capacity(index + 1)
+        self._cost_bucket_ids[index] = (
+            _UNKNOWN_BUCKET_ID if cost_bucket_id is None else cost_bucket_id
+        )
+        self._holding_days[index] = holding_days
+        self._sensitivity_codes[index] = _sensitivity_code(sensitivity)
+        self._acquisition_costs[index] = (
+            np.nan if acquisition_cost is None else acquisition_cost
+        )
+        self._economic_break_evens[index] = (
+            np.nan if economic_break_even is None else economic_break_even
+        )
+        self._shares[index] = shares
+        self._initialization_prior_units[index] = 0.0
+        if self._cell_ids_current:
+            self._cell_ids[index] = stable_cell_id(
+                cost_bucket_id=cost_bucket_id,
+                holding_days=holding_days,
+                sensitivity=sensitivity,
+                economic_break_even=economic_break_even,
+            )
+        else:
+            self._cell_ids[index] = 0
+        self._size += 1
 
     def refresh_cell_ids(self) -> None:
         """Materialize stable ids only at a public/lineage boundary.
@@ -763,28 +762,6 @@ class _PackedWorkingLots:
             backing[:retained] = backing[: self._size][mask]
         self._size = retained
 
-    def to_working_lots(self) -> list[_WorkingLot]:
-        result: list[_WorkingLot] = []
-        for index in range(len(self)):
-            bucket = int(self.cost_bucket_ids[index])
-            known = bucket != _UNKNOWN_BUCKET_ID
-            result.append(
-                _WorkingLot(
-                    source_cell_id=None,
-                    cost_bucket_id=bucket if known else None,
-                    holding_days=int(self.holding_days[index]),
-                    sensitivity=_SENSITIVITY_BY_CODE[int(self.sensitivity_codes[index])],
-                    acquisition_cost=(float(self.acquisition_costs[index]) if known else None),
-                    economic_break_even=(
-                        float(self.economic_break_evens[index]) if known else None
-                    ),
-                    shares=float(self.shares[index]),
-                    initialization_prior_units=float(self.initialization_prior_units[index]),
-                    lineage_denominator_shares=0.0,
-                )
-            )
-        return result
-
     def to_cells(self) -> tuple[InventoryCell, ...]:
         self.refresh_cell_ids()
         cells: list[InventoryCell] = []
@@ -813,133 +790,6 @@ class _PackedWorkingLots:
                 )
             )
         return tuple(cells)
-
-
-def _canonicalize_working_lots(lots: list[_WorkingLot]) -> list[_WorkingLot]:
-    """Aggregate an EOD working inventory while reusing existing lot objects.
-
-    The previous implementation sorted every lot and rebuilt every surviving
-    cell on every warm-up day.  Most cells are already unique; only aged-cap
-    collisions and today's purchases need aggregation.  Dict insertion order
-    is deterministic for deterministic market input, so a second full sort is
-    unnecessary; immutable/public snapshots canonicalize at their boundary.
-    """
-
-    grouped: dict[int, _WorkingLot | list[_WorkingLot]] = {}
-    for lot in lots:
-        if lot.shares <= 0:
-            continue
-        cell_id = lot.cell_id
-        existing = grouped.get(cell_id)
-        if existing is None:
-            grouped[cell_id] = lot
-        elif isinstance(existing, list):
-            existing.append(lot)
-        else:
-            grouped[cell_id] = [existing, lot]
-    if not grouped:
-        raise ChipStateContractError("inventory cannot be empty after aggregation")
-    combined: list[_WorkingLot] = []
-    for cell_id, value in grouped.items():
-        if isinstance(value, list):
-            first = value[0]
-            shares = math.fsum(part.shares for part in value)
-            initialization_prior_units = math.fsum(
-                part.initialization_prior_units for part in value
-            )
-            if first.cost_bucket_id is None:
-                acquisition_cost = None
-                economic_break_even = None
-            else:
-                acquisition_cost = (
-                    math.fsum(
-                        part.shares * cast(float, part.acquisition_cost) for part in value
-                    )
-                    / shares
-                )
-                economic_break_even = (
-                    math.fsum(
-                        part.shares * cast(float, part.economic_break_even) for part in value
-                    )
-                    / shares
-                )
-            # Compute every aggregate before mutating ``first``: it is also a
-            # member of ``value``, so changing its shares earlier double-counts
-            # its weight in the cost numerators.
-            first.shares = shares
-            first.initialization_prior_units = initialization_prior_units
-            first.acquisition_cost = acquisition_cost
-            first.economic_break_even = economic_break_even
-        else:
-            first = value
-        first.source_cell_id = None
-        first.lineage_denominator_shares = 0.0
-        first.cell_id = cell_id
-        combined.append(first)
-    return combined
-
-
-def _compact_working_lots_at_cap(
-    lots: list[_WorkingLot],
-    collision_cell_ids: set[int],
-) -> list[_WorkingLot]:
-    """Drop depleted lots and merge only known holding-age-cap collisions.
-
-    The incoming EOD inventory is already canonical.  On an ordinary day,
-    aging can create duplicates only where a max-age cell and the cell just
-    below it both map to the same capped identity.  Rebuilding a dictionary
-    for the complete inventory every day is therefore unnecessary.  Company
-    action days continue to use the general canonicalizer.
-    """
-
-    compacted: list[_WorkingLot] = []
-    grouped: dict[int, list[_WorkingLot]] = {}
-    for lot in lots:
-        if lot.shares <= 0:
-            continue
-        if lot.cell_id not in collision_cell_ids:
-            compacted.append(lot)
-            continue
-        parts = grouped.get(lot.cell_id)
-        if parts is None:
-            grouped[lot.cell_id] = [lot]
-            compacted.append(lot)
-        else:
-            parts.append(lot)
-
-    if not compacted:
-        raise ChipStateContractError("inventory cannot be empty after aggregation")
-
-    for cell_id, parts in grouped.items():
-        if len(parts) == 1:
-            continue
-        first = parts[0]
-        shares = math.fsum(part.shares for part in parts)
-        initialization_prior_units = math.fsum(part.initialization_prior_units for part in parts)
-        if first.cost_bucket_id is None:
-            acquisition_cost = None
-            economic_break_even = None
-        else:
-            acquisition_cost = (
-                math.fsum(
-                    part.shares * cast(float, part.acquisition_cost) for part in parts
-                )
-                / shares
-            )
-            economic_break_even = (
-                math.fsum(
-                    part.shares * cast(float, part.economic_break_even) for part in parts
-                )
-                / shares
-            )
-        first.shares = shares
-        first.initialization_prior_units = initialization_prior_units
-        first.acquisition_cost = acquisition_cost
-        first.economic_break_even = economic_break_even
-        first.source_cell_id = None
-        first.lineage_denominator_shares = 0.0
-        first.cell_id = cell_id
-    return compacted
 
 
 def _compact_packed_lots_at_cap(
@@ -1068,6 +918,65 @@ def _compact_packed_lots_by_dimensions(
         lots.retain(keep)
 
 
+def _canonicalize_packed_event_lots(lots: _PackedWorkingLots) -> None:
+    """Reproduce event-day object aggregation in stable insertion order."""
+
+    size = len(lots)
+    grouped: dict[int, list[int]] = {}
+    for index in range(size):
+        if lots._shares[index] <= 0:
+            continue
+        grouped.setdefault(int(lots._cell_ids[index]), []).append(index)
+    if not grouped:
+        raise ChipStateContractError("inventory cannot be empty after aggregation")
+
+    keep = np.zeros(size, dtype=np.bool_)
+    merged = False
+    for cell_id, members_list in grouped.items():
+        first = members_list[0]
+        keep[first] = True
+        if len(members_list) == 1:
+            continue
+        merged = True
+        members = np.asarray(members_list, dtype=np.int64)
+        member_shares = lots._shares[members].tolist()
+        combined_shares = math.fsum(member_shares)
+        lots._initialization_prior_units[first] = math.fsum(
+            lots._initialization_prior_units[members].tolist()
+        )
+        if int(lots._cost_bucket_ids[first]) != _UNKNOWN_BUCKET_ID:
+            lots._acquisition_costs[first] = (
+                math.fsum(
+                    share * value
+                    for share, value in zip(
+                        member_shares,
+                        lots._acquisition_costs[members].tolist(),
+                        strict=True,
+                    )
+                )
+                / combined_shares
+            )
+            lots._economic_break_evens[first] = (
+                math.fsum(
+                    share * value
+                    for share, value in zip(
+                        member_shares,
+                        lots._economic_break_evens[members].tolist(),
+                        strict=True,
+                    )
+                )
+                / combined_shares
+            )
+        lots._shares[first] = combined_shares
+        lots._cell_ids[first] = cell_id
+    lots.retain(keep)
+    if merged:
+        # The object oracle retains the pre-aggregate id even when the weighted
+        # binary64 economic coordinate changes.  Preserve that temporary stale
+        # state until the existing canonical writer boundary regenerates ids.
+        lots._cell_ids_current = False
+
+
 @dataclass(frozen=True, slots=True)
 class _WorkingTransition:
     """Compact transition view for bulk generation after in-place checks."""
@@ -1104,7 +1013,7 @@ class MutableChipState:
     model_version: str
     grid_version: str
     seller_model: SellerModel
-    lots: list[_WorkingLot] | _PackedWorkingLots
+    lots: _PackedWorkingLots
     free_float_shares: float
     latent_supply_shares: float
     input_snapshot_ids: tuple[str, ...]
@@ -1123,22 +1032,18 @@ class MutableChipState:
 
     @property
     def inventory(self) -> SparseChipInventory:
-        if isinstance(self.lots, _PackedWorkingLots):
-            return SparseChipInventory.canonical(self.lots.to_cells())
-        return SparseChipInventory.canonical(
-            tuple(lot.to_cell() for lot in self.lots if lot.shares > 0)
-        )
+        return SparseChipInventory.canonical(self.lots.to_cells())
 
     @property
-    def packed_lots(self) -> _PackedWorkingLots | None:
-        return self.lots if isinstance(self.lots, _PackedWorkingLots) else None
+    def packed_lots(self) -> _PackedWorkingLots:
+        return self.lots
 
     @property
     def conservation_error(self) -> float:
         return self._conservation_error
 
     @classmethod
-    def from_snapshot(cls, snapshot: ChipSnapshotV2, *, packed: bool = False) -> MutableChipState:
+    def from_snapshot(cls, snapshot: ChipSnapshotV2) -> MutableChipState:
         return cls(
             symbol=snapshot.symbol,
             trading_date=snapshot.trading_date,
@@ -1149,22 +1054,7 @@ class MutableChipState:
             model_version=snapshot.model_version,
             grid_version=snapshot.grid_version,
             seller_model=snapshot.seller_model,
-            lots=_PackedWorkingLots.from_cells(snapshot.inventory.cells)
-            if packed
-            else [
-                _WorkingLot(
-                    source_cell_id=None,
-                    cost_bucket_id=cell.cost_bucket_id,
-                    holding_days=cell.holding_days,
-                    sensitivity=cell.sensitivity,
-                    acquisition_cost=cell.acquisition_cost,
-                    economic_break_even=cell.economic_break_even,
-                    shares=cell.shares,
-                    initialization_prior_units=cell.initialization_prior_units,
-                    lineage_denominator_shares=0.0,
-                )
-                for cell in snapshot.inventory.cells
-            ],
+            lots=_PackedWorkingLots.from_cells(snapshot.inventory.cells),
             free_float_shares=snapshot.free_float_shares,
             latent_supply_shares=snapshot.latent_supply_shares,
             input_snapshot_ids=snapshot.input_snapshot_ids,
@@ -1193,16 +1083,12 @@ class MutableChipState:
             quality_reason_codes=self.quality_reason_codes,
         )
         if snapshot.snapshot_id != self.snapshot_id:
-            if isinstance(self.lots, _PackedWorkingLots):
-                lot_total = math.fsum(self.lots.shares.tolist())
-                lot_known = math.fsum(
-                    self.lots.shares[self.lots.cost_bucket_ids != _UNKNOWN_BUCKET_ID].tolist()
-                )
-            else:
-                lot_total = math.fsum(lot.shares for lot in self.lots)
-                lot_known = math.fsum(
-                    lot.shares for lot in self.lots if lot.cost_bucket_id is not None
-                )
+            lot_total = math.fsum(self.lots.shares.tolist())
+            lot_known = math.fsum(
+                self.lots.shares[
+                    self.lots.cost_bucket_ids != _UNKNOWN_BUCKET_ID
+                ].tolist()
+            )
             raise ChipStateContractError(
                 "transient POST snapshot identity changed: "
                 f"cells={len(self.lots)}/{len(inventory.cells)} "
@@ -1666,53 +1552,7 @@ class DailyMigrationEngine:
         prepared_minute_path: PreparedMinutePath,
         build_transition: bool = False,
     ) -> MutableChipState:
-        """Advance an ordinary day directly from the previous packed EOD state.
-
-        Company-action and float-change days deliberately use the exact object
-        implementation, then repack once at the boundary.  Ordinary days keep
-        the SoA arrays alive across dates and avoid rebuilding Python lots.
-        """
-
-        if inventory_events:
-            if (
-                isinstance(previous_post, MutableChipState)
-                and previous_post.packed_lots is not None
-            ):
-                packed_lots = previous_post.packed_lots
-                previous_post = MutableChipState(
-                    symbol=previous_post.symbol,
-                    trading_date=previous_post.trading_date,
-                    decision_at=previous_post.decision_at,
-                    effective_at=previous_post.effective_at,
-                    available_at=previous_post.available_at,
-                    snapshot_id=previous_post.snapshot_id,
-                    model_version=previous_post.model_version,
-                    grid_version=previous_post.grid_version,
-                    seller_model=previous_post.seller_model,
-                    lots=packed_lots.to_working_lots(),
-                    free_float_shares=previous_post.free_float_shares,
-                    latent_supply_shares=previous_post.latent_supply_shares,
-                    input_snapshot_ids=previous_post.input_snapshot_ids,
-                    hard_valid=previous_post.hard_valid,
-                    quality_reason_codes=previous_post.quality_reason_codes,
-                    last_transition=previous_post.last_transition,
-                    _conservation_error=previous_post.conservation_error,
-                )
-            result = self.advance_warmup_day(
-                previous_post=previous_post,
-                decision_at=decision_at,
-                available_at=available_at,
-                inventory_events=inventory_events,
-                expected_free_float_shares=expected_free_float_shares,
-                additional_input_snapshot_ids=additional_input_snapshot_ids,
-                input_hard_valid=input_hard_valid,
-                input_quality_reason_codes=input_quality_reason_codes,
-                prepared_minute_path=prepared_minute_path,
-                build_transition=build_transition,
-            )
-            if not isinstance(result.lots, _PackedWorkingLots):
-                result.lots = _PackedWorkingLots.from_working_lots(result.lots)
-            return result
+        """Advance one production warm-up day entirely in packed columns."""
 
         require_aware(decision_at, "decision_at")
         require_aware(available_at, "available_at")
@@ -1729,17 +1569,10 @@ class DailyMigrationEngine:
         state = (
             previous_post
             if isinstance(previous_post, MutableChipState)
-            else MutableChipState.from_snapshot(previous_post, packed=True)
+            else MutableChipState.from_snapshot(previous_post)
         )
-        if state.packed_lots is None:
-            object_lots = state.lots
-            if not isinstance(object_lots, list):
-                raise ChipStateContractError("unexpected packed inventory state")
-            state.lots = _PackedWorkingLots.from_working_lots(object_lots)
         lots = state.packed_lots
-        if lots is None:
-            raise ChipStateContractError("packed inventory conversion failed")
-        if build_transition:
+        if build_transition or inventory_events:
             lots.refresh_cell_ids()
 
         previous_snapshot_id = state.snapshot_id
@@ -1754,10 +1587,16 @@ class DailyMigrationEngine:
         acquisition_costs = lots._acquisition_costs[:size]
         economic_break_evens = lots._economic_break_evens[:size]
         initialization_prior_units = lots._initialization_prior_units[:size]
-        source_cell_ids = cell_ids.copy() if build_transition else None
+        source_count = size
+        source_cell_ids = (
+            cell_ids.copy() if build_transition or inventory_events else None
+        )
+        lineage_denominator_shares = (
+            shares.copy() if inventory_events else None
+        )
         age_mask = (holding_days >= 0) & (holding_days < self.max_holding_days)
         holding_days[age_mask] += 1
-        if build_transition:
+        if build_transition or inventory_events:
             aged_cell_id_cache = self._aged_cell_id_cache
             age_indices = np.flatnonzero(age_mask)
             # Many lots have the same canonical dimensions.  Age each distinct
@@ -1791,24 +1630,56 @@ class DailyMigrationEngine:
 
         free_float = state.free_float_shares
         latent_supply = state.latent_supply_shares
-        if abs(free_float - expected_free_float_shares) > tolerance(expected_free_float_shares):
+        if inventory_events:
+            if source_cell_ids is None or lineage_denominator_shares is None:
+                raise ChipStateContractError("event source state was not retained")
+            for event in inventory_events:
+                free_float, latent_supply = self._apply_packed_inventory_event(
+                    lots=lots,
+                    source_cell_ids=source_cell_ids,
+                    lineage_denominator_shares=lineage_denominator_shares,
+                    free_float=free_float,
+                    latent_supply=latent_supply,
+                    event=event,
+                )
+        if abs(free_float - expected_free_float_shares) > tolerance(
+            expected_free_float_shares
+        ):
             raise ChipStateContractError(
-                "ordinary day changed free float without an inventory event"
+                "inventory events do not bridge expected free float"
             )
+        size = len(lots)
+        cost_bucket_ids = lots._cost_bucket_ids[:size]
+        sensitivity_codes = lots._sensitivity_codes[:size]
+        shares = lots._shares[:size]
+        acquisition_costs = lots._acquisition_costs[:size]
+        initialization_prior_units = lots._initialization_prior_units[:size]
         positive = shares > 0
-        source_indices = np.flatnonzero(positive).astype(np.int64, copy=False)
+        source_indices = np.flatnonzero(positive[:source_count]).astype(
+            np.int64, copy=False
+        )
         # Source shares must survive the in-place depletion below, but there is
         # no reason to copy depleted slots or every other inventory column.
         source_shares = shares[source_indices].copy()
-        pre_total = math.fsum(source_shares.tolist())
-        known_mask = cost_bucket_ids[source_indices] != _UNKNOWN_BUCKET_ID
-        pre_known = math.fsum(source_shares[known_mask].tolist())
-        pre_unknown = math.fsum(source_shares[~known_mask].tolist())
+        pre_total = math.fsum(shares[positive].tolist())
+        known_mask = cost_bucket_ids[positive] != _UNKNOWN_BUCKET_ID
+        pre_known = math.fsum(shares[positive][known_mask].tolist())
+        pre_unknown = math.fsum(shares[positive][~known_mask].tolist())
         if abs(pre_total - free_float) > tolerance(free_float):
             raise ChipStateContractError("PRE inventory lost mass before migration")
 
-        pre_input_ids = tuple(sorted({state.snapshot_id, *additional_input_snapshot_ids}))
-        pre_effective_at = state.effective_at
+        pre_input_ids = tuple(
+            sorted(
+                {
+                    state.snapshot_id,
+                    *(event.snapshot_id for event in inventory_events),
+                    *additional_input_snapshot_ids,
+                }
+            )
+        )
+        pre_effective_at = max(
+            (state.effective_at, *(event.effective_at for event in inventory_events))
+        )
         pre_snapshot_id = ""
         if build_transition:
             pre_codes, pre_hard_valid = self._quality_state_from_mass(
@@ -1833,13 +1704,13 @@ class DailyMigrationEngine:
                 input_snapshot_ids=pre_input_ids,
                 hard_valid=pre_hard_valid,
                 quality_reason_codes=pre_codes,
-                inventory_cell_count=len(set(cell_ids[source_indices].tolist())),
+                inventory_cell_count=len(set(lots._cell_ids[:size][positive].tolist())),
                 inventory_total_shares=pre_total,
                 known_cost_shares=pre_known,
                 unknown_cost_shares=pre_unknown,
             )
 
-        fixed_pre_eligible = pre_total
+        fixed_pre_eligible = math.fsum(source_shares.tolist())
         if prepared_minute_path.total_volume > fixed_pre_eligible + tolerance(fixed_pre_eligible):
             raise ChipStateContractError(
                 "daily minute volume exceeds fixed PRE seller pool under T+1"
@@ -1870,7 +1741,17 @@ class DailyMigrationEngine:
         if build_transition:
             if source_cell_ids is None:
                 raise ChipStateContractError("source lineage ids were not retained")
-            retained = shares[remaining_indices] / source_shares
+            lineage_indices = (
+                np.arange(source_count, dtype=np.int64)
+                if inventory_events
+                else source_indices
+            )
+            retained_denominators = (
+                source_shares
+                if lineage_denominator_shares is None
+                else lineage_denominator_shares[lineage_indices]
+            )
+            retained = shares[lineage_indices] / retained_denominators
             retained[np.abs(retained) <= tolerance(1.0)] = 0.0
             retained[np.abs(retained - 1.0) <= tolerance(1.0)] = 1.0
             if bool(np.any((retained < 0) | (retained > 1))):
@@ -1879,8 +1760,8 @@ class DailyMigrationEngine:
                 )
             arcs = sorted(
                 zip(
-                    source_cell_ids[source_indices].tolist(),
-                    cell_ids[source_indices].tolist(),
+                    source_cell_ids[lineage_indices].tolist(),
+                    cell_ids[lineage_indices].tolist(),
                     retained.tolist(),
                     strict=True,
                 )
@@ -1893,7 +1774,9 @@ class DailyMigrationEngine:
             seller_model=self.seller_model,
             active_purchase_fraction=self.active_purchase_fraction,
         )
-        if exhausted_source or bool(np.any(lots.holding_days == self.max_holding_days)):
+        if inventory_events:
+            _canonicalize_packed_event_lots(lots)
+        elif exhausted_source or bool(np.any(lots.holding_days == self.max_holding_days)):
             _compact_packed_lots_by_dimensions(
                 lots,
                 max_holding_days=self.max_holding_days,
@@ -1952,339 +1835,6 @@ class DailyMigrationEngine:
                 "fixed_pre_eligible_shares": fixed_pre_eligible,
                 "executed_sell_shares": prepared_minute_path.total_volume,
                 "input_snapshot_ids": post_input_ids,
-            }
-            transition = _WorkingTransition(
-                transition_id=stable_id("origin_survival_transition", payload),
-                source_cell_ids=tuple(source for source, _, _ in arcs),
-                destination_cell_ids=tuple(destination for _, destination, _ in arcs),
-                retained_fractions=tuple(retained for _, _, retained in arcs),
-                fixed_pre_eligible_shares=fixed_pre_eligible,
-                executed_sell_shares=prepared_minute_path.total_volume,
-                same_day_resale_shares=0.0,
-            )
-        return MutableChipState(
-            symbol=state.symbol,
-            trading_date=decision_at.date(),
-            decision_at=decision_at,
-            effective_at=post_effective_at,
-            available_at=available_at,
-            snapshot_id=snapshot_id,
-            model_version=self.model_version,
-            grid_version=self.grid.grid_version,
-            seller_model=self.seller_model,
-            lots=lots,
-            free_float_shares=free_float,
-            latent_supply_shares=latent_supply,
-            input_snapshot_ids=post_input_ids,
-            hard_valid=post_hard_valid,
-            quality_reason_codes=post_codes,
-            last_transition=transition,
-        )
-
-    def advance_warmup_day(
-        self,
-        *,
-        previous_post: ChipSnapshotV2 | MutableChipState,
-        decision_at: datetime,
-        available_at: datetime,
-        inventory_events: tuple[InventoryEvent, ...],
-        expected_free_float_shares: float,
-        additional_input_snapshot_ids: tuple[str, ...],
-        input_hard_valid: bool,
-        input_quality_reason_codes: tuple[str, ...],
-        prepared_minute_path: PreparedMinutePath,
-        build_transition: bool = False,
-    ) -> MutableChipState:
-        """Advance one day in place; optionally retain the exact output operator."""
-
-        require_aware(decision_at, "decision_at")
-        require_aware(available_at, "available_at")
-        if prepared_minute_path.decision_at != decision_at:
-            raise ChipStateContractError("prepared minute path decision_at mismatch")
-        if prepared_minute_path.grid_version != self.grid.grid_version:
-            raise ChipStateContractError("prepared minute path grid_version mismatch")
-        self._validate_daily_inputs(
-            previous_post=previous_post,
-            decision_at=decision_at,
-            available_at=available_at,
-            inventory_events=inventory_events,
-        )
-        state = (
-            previous_post
-            if isinstance(previous_post, MutableChipState)
-            else MutableChipState.from_snapshot(previous_post)
-        )
-        previous_snapshot_id = state.snapshot_id
-        lots = state.lots
-        if isinstance(lots, _PackedWorkingLots):
-            lots = lots.to_working_lots()
-            state.lots = lots
-        # This loop is executed for every cell, day and seller model.  Keeping
-        # aging inline avoids millions of Python method calls while preserving
-        # the exact same shared cell-id mapping across the three models.
-        aged_cell_id_cache = self._aged_cell_id_cache
-        cache_get = aged_cell_id_cache.get
-        max_holding_days = self.max_holding_days
-        capped_dimensions: set[tuple[int | None, TurnoverSensitivity]] = set()
-        capped_collision_cell_ids: set[int] = set()
-        pre_known_parts: list[float] = []
-        pre_unknown_parts: list[float] = []
-        pre_total_parts: list[float] = []
-        source_indices: list[int] = []
-        source_shares: list[float] = []
-        source_costs: list[float] = []
-        source_sensitivity_codes: list[int] = []
-        needs_costs = self.seller_model == SellerModel.DISPOSITION
-        needs_sensitivity_codes = self.seller_model == SellerModel.ACTIVE_STICKY
-        # Inventory events are rare.  On ordinary days collect the PRE seller
-        # arrays while aging the previous POST state, avoiding a second full
-        # Python scan over every lot.  Event days retain the separate scan
-        # because an event can add, remove or reprice lots before migration.
-        collect_sources_during_aging = not inventory_events
-        for index, lot in enumerate(lots):
-            lot.source_cell_id = lot.cell_id
-            lot.lineage_denominator_shares = lot.shares
-            holding_days = lot.holding_days
-            if 0 <= holding_days < max_holding_days:
-                previous_cell_id = lot.cell_id
-                lot.holding_days = holding_days + 1
-                aged_cell_id = cache_get(previous_cell_id)
-                if aged_cell_id is None:
-                    aged_cell_id = stable_cell_id(
-                        cost_bucket_id=lot.cost_bucket_id,
-                        holding_days=holding_days + 1,
-                        sensitivity=lot.sensitivity,
-                        economic_break_even=lot.economic_break_even,
-                    )
-                    aged_cell_id_cache[previous_cell_id] = aged_cell_id
-                lot.cell_id = aged_cell_id
-            if lot.holding_days == max_holding_days:
-                dimension = (lot.cost_bucket_id, lot.sensitivity)
-                if dimension in capped_dimensions:
-                    capped_collision_cell_ids.add(lot.cell_id)
-                else:
-                    capped_dimensions.add(dimension)
-            if collect_sources_during_aging and lot.shares > 0:
-                pre_total_parts.append(lot.shares)
-                if lot.cost_bucket_id is None:
-                    pre_unknown_parts.append(lot.shares)
-                else:
-                    pre_known_parts.append(lot.shares)
-                if lot.source_cell_id is not None:
-                    source_indices.append(index)
-                    source_shares.append(lot.shares)
-                    if needs_costs:
-                        source_costs.append(
-                            np.nan if lot.acquisition_cost is None else lot.acquisition_cost
-                        )
-                    if needs_sensitivity_codes:
-                        if lot.sensitivity == TurnoverSensitivity.ACTIVE:
-                            source_sensitivity_codes.append(0)
-                        elif lot.sensitivity == TurnoverSensitivity.NEUTRAL:
-                            source_sensitivity_codes.append(1)
-                        else:
-                            source_sensitivity_codes.append(2)
-
-        free_float = state.free_float_shares
-        latent_supply = state.latent_supply_shares
-        for event in inventory_events:
-            free_float, latent_supply = self._apply_inventory_event(
-                lots=lots,
-                free_float=free_float,
-                latent_supply=latent_supply,
-                event=event,
-            )
-        if abs(free_float - expected_free_float_shares) > tolerance(expected_free_float_shares):
-            raise ChipStateContractError("inventory events do not bridge expected free float")
-        if inventory_events:
-            for index, lot in enumerate(lots):
-                if lot.shares <= 0:
-                    continue
-                pre_total_parts.append(lot.shares)
-                if lot.cost_bucket_id is None:
-                    pre_unknown_parts.append(lot.shares)
-                else:
-                    pre_known_parts.append(lot.shares)
-                if lot.source_cell_id is not None:
-                    source_indices.append(index)
-                    source_shares.append(lot.shares)
-                    if needs_costs:
-                        source_costs.append(
-                            np.nan if lot.acquisition_cost is None else lot.acquisition_cost
-                        )
-                    if needs_sensitivity_codes:
-                        if lot.sensitivity == TurnoverSensitivity.ACTIVE:
-                            source_sensitivity_codes.append(0)
-                        elif lot.sensitivity == TurnoverSensitivity.NEUTRAL:
-                            source_sensitivity_codes.append(1)
-                        else:
-                            source_sensitivity_codes.append(2)
-        pre_unknown = math.fsum(pre_unknown_parts)
-        # Hash the same aggregate that SparseChipInventory will recompute when the
-        # transient state is materialized.  Summing the two subtotals can differ
-        # by a few ulps from summing the cells directly, which used to make an
-        # otherwise identical POST snapshot fail its identity check.
-        pre_total = math.fsum(pre_total_parts)
-        pre_known = math.fsum(pre_known_parts)
-        if abs(pre_total - free_float) > tolerance(free_float):
-            raise ChipStateContractError("PRE inventory lost mass before migration")
-        pre_input_ids = tuple(
-            sorted(
-                {
-                    state.snapshot_id,
-                    *(event.snapshot_id for event in inventory_events),
-                    *additional_input_snapshot_ids,
-                }
-            )
-        )
-        pre_effective_at = max(
-            (state.effective_at, *(event.effective_at for event in inventory_events))
-        )
-        pre_snapshot_id = ""
-        if build_transition:
-            pre_codes, pre_hard_valid = self._quality_state_from_mass(
-                previous_post=state,
-                total_shares=pre_total,
-                unknown_cost_shares=pre_unknown,
-                input_hard_valid=input_hard_valid,
-                input_quality_reason_codes=input_quality_reason_codes,
-            )
-            pre_snapshot_id = _snapshot_id(
-                symbol=state.symbol,
-                trading_date=decision_at.date(),
-                decision_at=decision_at,
-                effective_at=pre_effective_at,
-                available_at=available_at,
-                phase=SnapshotPhase.PRE,
-                model_version=self.model_version,
-                grid_version=self.grid.grid_version,
-                seller_model=self.seller_model,
-                free_float_shares=free_float,
-                latent_supply_shares=latent_supply,
-                input_snapshot_ids=pre_input_ids,
-                hard_valid=pre_hard_valid,
-                quality_reason_codes=pre_codes,
-                inventory_cell_count=len({lot.cell_id for lot in lots if lot.shares > 0}),
-                inventory_total_shares=pre_total,
-                known_cost_shares=pre_known,
-                unknown_cost_shares=pre_unknown,
-            )
-        fixed_pre_eligible = math.fsum(source_shares)
-        if prepared_minute_path.total_volume > fixed_pre_eligible + tolerance(fixed_pre_eligible):
-            raise ChipStateContractError(
-                "daily minute volume exceeds fixed PRE seller pool under T+1"
-            )
-        prepared_source = _PreparedSourceState(
-            indices=np.asarray(source_indices, dtype=np.int64),
-            shares=np.asarray(source_shares, dtype=float),
-            costs=np.asarray(source_costs, dtype=float),
-            sensitivity_codes=np.asarray(source_sensitivity_codes, dtype=np.int8),
-        )
-        purchases, exhausted_source = self._migrate_minute_path(
-            lots, prepared_source, prepared_minute_path
-        )
-        arcs: list[tuple[int, int, float]] = []
-        if build_transition:
-            arcs_in_order = True
-            previous_arc: tuple[int, int] | None = None
-            for lot in lots:
-                if lot.source_cell_id is None:
-                    continue
-                if lot.lineage_denominator_shares <= 0:
-                    raise ChipStateContractError("source lineage denominator is non-positive")
-                retained = lot.shares / lot.lineage_denominator_shares
-                if retained < 0 and abs(retained) <= tolerance(1.0):
-                    retained = 0.0
-                if retained > 1 and retained - 1 <= tolerance(1.0):
-                    retained = 1.0
-                if not 0.0 <= retained <= 1.0:
-                    raise ChipStateContractError(
-                        "daily source lineage retained fraction is outside [0, 1]"
-                    )
-                arc_key = (lot.source_cell_id, lot.cell_id)
-                if previous_arc is not None and arc_key <= previous_arc:
-                    arcs_in_order = False
-                previous_arc = arc_key
-                arcs.append((*arc_key, retained))
-            if not arcs_in_order:
-                arcs.sort()
-            for previous, current in pairwise(arcs):
-                if previous[:2] == current[:2]:
-                    raise ChipStateContractError("daily source lineage produced duplicate arcs")
-        lots.extend(purchases)
-        # Previous EOD state is canonical, aging preserves uniqueness except at
-        # the holding-age cap, and today's purchases are already grouped by
-        # (bucket, sensitivity).  Avoid rebuilding a full-inventory dict on the
-        # common path; retain exact aggregation for the three real collision
-        # cases detected above and for a fully depleted source cell.
-        if inventory_events:
-            lots = _canonicalize_working_lots(lots)
-        elif capped_collision_cell_ids or exhausted_source:
-            lots = _compact_working_lots_at_cap(lots, capped_collision_cell_ids)
-        post_known_parts: list[float] = []
-        post_unknown_parts: list[float] = []
-        post_total_parts: list[float] = []
-        for lot in lots:
-            if lot.shares <= 0:
-                continue
-            post_total_parts.append(lot.shares)
-            if lot.cost_bucket_id is None:
-                post_unknown_parts.append(lot.shares)
-            else:
-                post_known_parts.append(lot.shares)
-        post_unknown = math.fsum(post_unknown_parts)
-        post_total = math.fsum(post_total_parts)
-        post_known = math.fsum(post_known_parts)
-        if abs(post_total - free_float) > tolerance(free_float):
-            raise ChipStateContractError("POST inventory migration failed mass conservation")
-        post_input_ids = _merge_sorted_unique(pre_input_ids, prepared_minute_path.snapshot_ids)
-        post_codes, post_hard_valid = self._quality_state_from_mass(
-            previous_post=state,
-            total_shares=post_total,
-            unknown_cost_shares=post_unknown,
-            input_hard_valid=input_hard_valid,
-            input_quality_reason_codes=input_quality_reason_codes,
-        )
-        post_effective_at = (
-            pre_effective_at
-            if prepared_minute_path.latest_timestamp is None
-            else max(pre_effective_at, prepared_minute_path.latest_timestamp)
-        )
-        snapshot_id = _snapshot_id(
-            symbol=state.symbol,
-            trading_date=decision_at.date(),
-            decision_at=decision_at,
-            effective_at=post_effective_at,
-            available_at=available_at,
-            phase=SnapshotPhase.POST,
-            model_version=self.model_version,
-            grid_version=self.grid.grid_version,
-            seller_model=self.seller_model,
-            free_float_shares=free_float,
-            latent_supply_shares=latent_supply,
-            input_snapshot_ids=post_input_ids,
-            hard_valid=post_hard_valid,
-            quality_reason_codes=post_codes,
-            inventory_cell_count=len(lots),
-            inventory_total_shares=post_total,
-            known_cost_shares=post_known,
-            unknown_cost_shares=post_unknown,
-        )
-        transition = None
-        if build_transition:
-            transition_inputs = post_input_ids
-            payload: dict[str, object] = {
-                "symbol": state.symbol,
-                "trading_date": decision_at.date().isoformat(),
-                "source_snapshot_id": previous_snapshot_id,
-                "pre_snapshot_id": pre_snapshot_id,
-                "destination_snapshot_id": snapshot_id,
-                "model_version": self.model_version,
-                "grid_version": self.grid.grid_version,
-                "arc_count": len(arcs),
-                "fixed_pre_eligible_shares": fixed_pre_eligible,
-                "executed_sell_shares": prepared_minute_path.total_volume,
-                "input_snapshot_ids": transition_inputs,
             }
             transition = _WorkingTransition(
                 transition_id=stable_id("origin_survival_transition", payload),
@@ -2456,6 +2006,116 @@ class DailyMigrationEngine:
         latent_supply += event.latent_supply_delta
         if latent_supply < 0:
             raise ChipStateContractError("inventory event made latent supply negative")
+        return free_float, latent_supply
+
+    def _apply_packed_inventory_event(
+        self,
+        *,
+        lots: _PackedWorkingLots,
+        source_cell_ids: Int64Array,
+        lineage_denominator_shares: FloatArray,
+        free_float: float,
+        latent_supply: float,
+        event: InventoryEvent,
+    ) -> tuple[float, float]:
+        """Apply one inventory event directly to the canonical packed columns."""
+
+        size = len(lots)
+        if event.kind == InventoryEventKind.CASH_DIVIDEND:
+            for index in range(size):
+                if int(lots._cost_bucket_ids[index]) == _UNKNOWN_BUCKET_ID:
+                    continue
+                lots._economic_break_evens[index] = rebase_economic_price(
+                    float(lots._economic_break_evens[index]),
+                    cash_per_share=event.cash_per_share,
+                )
+                lots._cell_ids[index] = stable_cell_id(
+                    cost_bucket_id=int(lots._cost_bucket_ids[index]),
+                    holding_days=int(lots._holding_days[index]),
+                    sensitivity=_SENSITIVITY_BY_CODE[
+                        int(lots._sensitivity_codes[index])
+                    ],
+                    economic_break_even=float(lots._economic_break_evens[index]),
+                )
+        elif event.kind == InventoryEventKind.SPLIT:
+            ratio = event.share_ratio
+            for index in range(size):
+                lots._shares[index] *= ratio
+                if index < lineage_denominator_shares.size:
+                    lineage_denominator_shares[index] *= ratio
+                if int(lots._cost_bucket_ids[index]) == _UNKNOWN_BUCKET_ID:
+                    continue
+                lots._acquisition_costs[index] = rebase_economic_price(
+                    float(lots._acquisition_costs[index]),
+                    share_multiplier=ratio,
+                )
+                lots._economic_break_evens[index] = rebase_economic_price(
+                    float(lots._economic_break_evens[index]),
+                    share_multiplier=ratio,
+                )
+                lots._cost_bucket_ids[index] = self.grid.bucket_for_price(
+                    float(lots._acquisition_costs[index])
+                )
+                lots._cell_ids[index] = stable_cell_id(
+                    cost_bucket_id=int(lots._cost_bucket_ids[index]),
+                    holding_days=int(lots._holding_days[index]),
+                    sensitivity=_SENSITIVITY_BY_CODE[
+                        int(lots._sensitivity_codes[index])
+                    ],
+                    economic_break_even=float(lots._economic_break_evens[index]),
+                )
+            free_float *= ratio
+            latent_supply *= ratio
+        elif event.kind == InventoryEventKind.FLOAT_ADD_KNOWN:
+            assert event.issue_price is not None
+            lots.append_inventory_lot(
+                cost_bucket_id=self.grid.bucket_for_price(event.issue_price),
+                holding_days=0,
+                sensitivity=event.sensitivity,
+                acquisition_cost=event.issue_price,
+                economic_break_even=event.issue_price,
+                shares=event.shares,
+            )
+            free_float += event.shares
+        elif event.kind == InventoryEventKind.FLOAT_ADD_UNKNOWN:
+            lots.append_inventory_lot(
+                cost_bucket_id=None,
+                holding_days=-1,
+                sensitivity=event.sensitivity,
+                acquisition_cost=None,
+                economic_break_even=None,
+                shares=event.shares,
+            )
+            free_float += event.shares
+        elif event.kind == InventoryEventKind.FLOAT_REMOVE_EXPLICIT:
+            by_source = {
+                int(source_id): index
+                for index, source_id in enumerate(source_cell_ids)
+            }
+            for source_id, amount in event.source_removals:
+                index = by_source.get(source_id)
+                if index is None:
+                    raise ChipStateContractError(
+                        f"float removal source cell is unavailable: {source_id}"
+                    )
+                source_shares = float(lots._shares[index])
+                if amount > source_shares + tolerance(source_shares):
+                    raise ChipStateContractError("float removal exceeds its source lot")
+                lots._shares[index] -= amount
+                if lots._shares[index] < 0:
+                    raise ChipStateContractError("float removal made a source lot negative")
+                lots._initialization_prior_units[index] *= (
+                    lots._shares[index] / source_shares
+                )
+            free_float -= event.shares
+            if free_float <= 0:
+                raise ChipStateContractError("float removal made free float non-positive")
+        elif event.kind == InventoryEventKind.LATENT_SUPPLY_CHANGE:
+            pass
+        latent_supply += event.latent_supply_delta
+        if latent_supply < 0:
+            raise ChipStateContractError("inventory event made latent supply negative")
+        lots._cell_ids_current = True
         return free_float, latent_supply
 
     def _seller_hazard(self, lot: _WorkingLot, price: float) -> float:

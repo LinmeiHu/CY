@@ -2326,11 +2326,10 @@ def _run_symbol(
                 prepared_minute_path=prepared_minute_path,
                 build_transition=emit_day,
             )
-            if inventory_events and mutable_state.packed_lots is not None:
-                # Event days use the object fallback, whose exact aggregation can
-                # change an economic coordinate by one bit before it is repacked.
-                # The copied ids then describe the pre-aggregate identity and must
-                # be regenerated at the existing canonical output boundary.
+            if inventory_events:
+                # Exact event-day aggregation can change an economic coordinate
+                # by one bit.  Regenerate identity at the existing canonical
+                # output boundary after all packed mutations are complete.
                 mutable_state.packed_lots._cell_ids_current = False
             _canonicalize_packed_output_state(mutable_state)
             current[model] = mutable_state
@@ -3181,7 +3180,7 @@ def _checkpoint_codec_parts_from_packed_states(
     identities_by_id: dict[int, CellIdentity] = {}
     for model in SELLER_MODEL_ORDER:
         state = states[model]
-        if not isinstance(state, MutableChipState) or state.packed_lots is None:
+        if not isinstance(state, MutableChipState):
             raise TypeError("production checkpoint capture requires packed mutable state")
         packed = state.packed_lots
         packed.refresh_cell_ids()

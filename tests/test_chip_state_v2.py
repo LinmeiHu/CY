@@ -33,8 +33,8 @@ from cyq_game.chip import (
     prepare_minute_path,
 )
 from cyq_game.chip.migration_v2 import (
-    _PackedWorkingLots,
     _compact_packed_lots_by_dimensions,
+    _PackedWorkingLots,
 )
 
 MODEL_VERSION = "chip-state-v2-test"
@@ -141,6 +141,21 @@ def _advance(
     )
 
 
+def _assert_compact_transition_matches_reference(compact: object, reference: object) -> None:
+    assert compact is not None
+    assert reference is not None
+    for field_name in (
+        "transition_id",
+        "source_cell_ids",
+        "destination_cell_ids",
+        "retained_fractions",
+        "fixed_pre_eligible_shares",
+        "executed_sell_shares",
+        "same_day_resale_shares",
+    ):
+        assert getattr(compact, field_name) == getattr(reference, field_name)
+
+
 @pytest.mark.parametrize("seller_model", tuple(SellerModel))
 def test_prepared_minute_path_is_exactly_equivalent(seller_model: SellerModel) -> None:
     previous = _known_snapshot(
@@ -227,18 +242,21 @@ def test_packed_warmup_reuses_previous_state_without_changing_results(
             decision_at=_time(day),
             minute_bars=bars,
         )
-        slow_state = slow_engine.advance_warmup_day(
+        slow_result = slow_engine.advance_day(
             previous_post=slow_state,
             decision_at=_time(day),
             available_at=_time(day),
+            minute_bars=None,
             inventory_events=(),
             expected_free_float_shares=1_000.0,
             additional_input_snapshot_ids=(f"daily-{day}", f"float-{day}"),
             input_hard_valid=True,
             input_quality_reason_codes=(),
             prepared_minute_path=prepared_slow,
+            materialize_pre_snapshot=False,
             build_transition=True,
         )
+        slow_state = slow_result.post_snapshot
         fast_state = fast_engine.advance_packed_warmup_day(
             previous_post=fast_state,
             decision_at=_time(day),
@@ -252,8 +270,345 @@ def test_packed_warmup_reuses_previous_state_without_changing_results(
             build_transition=True,
         )
 
-        assert fast_state.to_snapshot() == slow_state.to_snapshot()
-        assert fast_state.last_transition == slow_state.last_transition
+        assert fast_state.to_snapshot() == slow_state
+        _assert_compact_transition_matches_reference(
+            fast_state.last_transition, slow_result.transition
+        )
+
+
+def test_packed_inventory_events_match_object_oracle_after_every_event() -> None:
+    previous = _known_snapshot(snapshot_id="event-oracle-post", day=2)
+    engine = _engine()
+    object_lots = engine._age_previous_inventory(previous)
+    packed_lots = _PackedWorkingLots(
+        cell_ids=np.asarray([lot.cell_id for lot in object_lots], dtype=np.int64),
+        cost_bucket_ids=np.asarray(
+            [
+                np.iinfo(np.int64).min
+                if lot.cost_bucket_id is None
+                else lot.cost_bucket_id
+                for lot in object_lots
+            ],
+            dtype=np.int64,
+        ),
+        holding_days=np.asarray(
+            [lot.holding_days for lot in object_lots], dtype=np.int16
+        ),
+        sensitivity_codes=np.asarray(
+            [
+                {
+                    TurnoverSensitivity.ACTIVE: 0,
+                    TurnoverSensitivity.NEUTRAL: 1,
+                    TurnoverSensitivity.STICKY: 2,
+                }[lot.sensitivity]
+                for lot in object_lots
+            ],
+            dtype=np.int8,
+        ),
+        acquisition_costs=np.asarray(
+            [
+                np.nan if lot.acquisition_cost is None else lot.acquisition_cost
+                for lot in object_lots
+            ],
+            dtype=np.float64,
+        ),
+        economic_break_evens=np.asarray(
+            [
+                np.nan
+                if lot.economic_break_even is None
+                else lot.economic_break_even
+                for lot in object_lots
+            ],
+            dtype=np.float64,
+        ),
+        shares=np.asarray([lot.shares for lot in object_lots], dtype=np.float64),
+        initialization_prior_units=np.asarray(
+            [lot.initialization_prior_units for lot in object_lots],
+            dtype=np.float64,
+        ),
+    )
+    source_cell_ids = np.asarray(
+        [lot.source_cell_id for lot in object_lots], dtype=np.int64
+    )
+    lineage_denominators = np.asarray(
+        [lot.lineage_denominator_shares for lot in object_lots], dtype=np.float64
+    )
+    source_id = int(source_cell_ids[0])
+    events = (
+        InventoryEvent(
+            event_id="event-0-cash",
+            kind=InventoryEventKind.CASH_DIVIDEND,
+            effective_at=_time(3, 9, 0),
+            available_at=_time(2),
+            snapshot_id="event-snapshot-cash",
+            cash_per_share=0.25,
+        ),
+        InventoryEvent(
+            event_id="event-1-split",
+            kind=InventoryEventKind.SPLIT,
+            effective_at=_time(3, 9, 1),
+            available_at=_time(2),
+            snapshot_id="event-snapshot-split",
+            share_ratio=2.0,
+        ),
+        InventoryEvent(
+            event_id="event-2-known",
+            kind=InventoryEventKind.FLOAT_ADD_KNOWN,
+            effective_at=_time(3, 9, 2),
+            available_at=_time(2),
+            snapshot_id="event-snapshot-known",
+            shares=30.0,
+            issue_price=8.0,
+            sensitivity=TurnoverSensitivity.ACTIVE,
+        ),
+        InventoryEvent(
+            event_id="event-3-unknown",
+            kind=InventoryEventKind.FLOAT_ADD_UNKNOWN,
+            effective_at=_time(3, 9, 3),
+            available_at=_time(2),
+            snapshot_id="event-snapshot-unknown",
+            shares=10.0,
+            sensitivity=TurnoverSensitivity.STICKY,
+        ),
+        InventoryEvent(
+            event_id="event-4-remove",
+            kind=InventoryEventKind.FLOAT_REMOVE_EXPLICIT,
+            effective_at=_time(3, 9, 4),
+            available_at=_time(2),
+            snapshot_id="event-snapshot-remove",
+            shares=20.0,
+            source_removals=((source_id, 20.0),),
+        ),
+        InventoryEvent(
+            event_id="event-5-latent",
+            kind=InventoryEventKind.LATENT_SUPPLY_CHANGE,
+            effective_at=_time(3, 9, 5),
+            available_at=_time(2),
+            snapshot_id="event-snapshot-latent",
+            latent_supply_delta=7.0,
+        ),
+    )
+    object_free_float = packed_free_float = previous.free_float_shares
+    object_latent = packed_latent = previous.latent_supply_shares
+
+    def float_bits(values: list[float]) -> list[int]:
+        return np.asarray(values, dtype=np.float64).view(np.uint64).tolist()
+
+    for event_index, event in enumerate(events):
+        object_free_float, object_latent = engine._apply_inventory_event(
+            lots=object_lots,
+            free_float=object_free_float,
+            latent_supply=object_latent,
+            event=event,
+        )
+        packed_free_float, packed_latent = engine._apply_packed_inventory_event(
+            lots=packed_lots,
+            source_cell_ids=source_cell_ids,
+            lineage_denominator_shares=lineage_denominators,
+            free_float=packed_free_float,
+            latent_supply=packed_latent,
+            event=event,
+        )
+
+        assert float_bits([packed_free_float, packed_latent]) == float_bits(
+            [object_free_float, object_latent]
+        ), event_index
+        assert packed_lots.cell_ids.tolist() == [lot.cell_id for lot in object_lots]
+        assert packed_lots.cost_bucket_ids.tolist() == [
+            np.iinfo(np.int64).min if lot.cost_bucket_id is None else lot.cost_bucket_id
+            for lot in object_lots
+        ]
+        assert packed_lots.holding_days.tolist() == [
+            lot.holding_days for lot in object_lots
+        ]
+        assert packed_lots.sensitivity_codes.tolist() == [
+            {TurnoverSensitivity.ACTIVE: 0, TurnoverSensitivity.NEUTRAL: 1,
+             TurnoverSensitivity.STICKY: 2}[lot.sensitivity]
+            for lot in object_lots
+        ]
+        assert float_bits(packed_lots.acquisition_costs.tolist()) == float_bits(
+            [np.nan if lot.acquisition_cost is None else lot.acquisition_cost
+             for lot in object_lots]
+        )
+        assert float_bits(packed_lots.economic_break_evens.tolist()) == float_bits(
+            [np.nan if lot.economic_break_even is None else lot.economic_break_even
+             for lot in object_lots]
+        )
+        assert float_bits(packed_lots.shares.tolist()) == float_bits(
+            [lot.shares for lot in object_lots]
+        )
+        assert float_bits(packed_lots.initialization_prior_units.tolist()) == float_bits(
+            [lot.initialization_prior_units for lot in object_lots]
+        )
+        assert float_bits(lineage_denominators.tolist()) == float_bits(
+            [lot.lineage_denominator_shares for lot in object_lots[: source_cell_ids.size]]
+        )
+
+
+@pytest.mark.parametrize("seller_model", tuple(SellerModel))
+def test_packed_event_day_matches_object_oracle_end_to_end(
+    seller_model: SellerModel,
+) -> None:
+    previous = _known_snapshot(
+        snapshot_id=f"event-day-post-{seller_model}",
+        day=2,
+        shares=1_000.0,
+        seller_model=seller_model,
+    )
+    source_id = previous.inventory.cells[0].cell_id
+    events = (
+        InventoryEvent(
+            event_id="event-day-cash",
+            kind=InventoryEventKind.CASH_DIVIDEND,
+            effective_at=_time(3, 9, 0),
+            available_at=_time(2),
+            snapshot_id="event-day-cash-snapshot",
+            cash_per_share=0.5,
+        ),
+        InventoryEvent(
+            event_id="event-day-split",
+            kind=InventoryEventKind.SPLIT,
+            effective_at=_time(3, 9, 1),
+            available_at=_time(2),
+            snapshot_id="event-day-split-snapshot",
+            share_ratio=2.0,
+        ),
+        InventoryEvent(
+            event_id="event-day-add-unknown",
+            kind=InventoryEventKind.FLOAT_ADD_UNKNOWN,
+            effective_at=_time(3, 9, 2),
+            available_at=_time(2),
+            snapshot_id="event-day-add-snapshot",
+            shares=50.0,
+        ),
+        InventoryEvent(
+            event_id="event-day-remove",
+            kind=InventoryEventKind.FLOAT_REMOVE_EXPLICIT,
+            effective_at=_time(3, 9, 3),
+            available_at=_time(2),
+            snapshot_id="event-day-remove-snapshot",
+            shares=100.0,
+            source_removals=((source_id, 100.0),),
+        ),
+    )
+    bars = tuple(
+        replace(
+            _bar(day=3, volume=volume, price=price),
+            timestamp=_time(3, 10, minute),
+            available_at=_time(3, 10, minute),
+            snapshot_id=f"event-day-minute-{minute}",
+        )
+        for minute, volume, price in (
+            (0, 20.0, 9.9),
+            (1, 30.0, 10.1),
+            (2, 10.0, 10.0),
+        )
+    )
+    slow_engine = _engine(seller_model)
+    fast_engine = _engine(seller_model)
+    slow_result = slow_engine.advance_day(
+        previous_post=previous,
+        decision_at=_time(3),
+        available_at=_time(3),
+        minute_bars=None,
+        inventory_events=events,
+        expected_free_float_shares=1_950.0,
+        additional_input_snapshot_ids=("daily-3", "float-3"),
+        input_hard_valid=True,
+        input_quality_reason_codes=(),
+        prepared_minute_path=prepare_minute_path(
+            grid=slow_engine.grid, decision_at=_time(3), minute_bars=bars
+        ),
+        materialize_pre_snapshot=False,
+        build_transition=True,
+    )
+    fast_state = fast_engine.advance_packed_warmup_day(
+        previous_post=previous,
+        decision_at=_time(3),
+        available_at=_time(3),
+        inventory_events=events,
+        expected_free_float_shares=1_950.0,
+        additional_input_snapshot_ids=("daily-3", "float-3"),
+        input_hard_valid=True,
+        input_quality_reason_codes=(),
+        prepared_minute_path=prepare_minute_path(
+            grid=fast_engine.grid, decision_at=_time(3), minute_bars=bars
+        ),
+        build_transition=True,
+    )
+
+    assert fast_state.to_snapshot() == slow_result.post_snapshot
+    _assert_compact_transition_matches_reference(
+        fast_state.last_transition, slow_result.transition
+    )
+
+
+def test_explicit_full_source_removal_preserves_zero_retention_lineage() -> None:
+    initial = _known_snapshot(snapshot_id="removal-post-2", day=2)
+    addition = InventoryEvent(
+        event_id="removal-add-3",
+        kind=InventoryEventKind.FLOAT_ADD_KNOWN,
+        effective_at=_time(3, 9),
+        available_at=_time(2),
+        snapshot_id="removal-add-snapshot",
+        shares=1.0,
+        issue_price=8.0,
+    )
+    previous = _advance(
+        initial,
+        day=3,
+        events=(addition,),
+        expected_float=101.0,
+    ).post_snapshot
+    removed_cell = next(
+        cell for cell in previous.inventory.cells if cell.acquisition_cost == 8.0
+    )
+    removal = InventoryEvent(
+        event_id="removal-full-4",
+        kind=InventoryEventKind.FLOAT_REMOVE_EXPLICIT,
+        effective_at=_time(4, 9),
+        available_at=_time(3),
+        snapshot_id="removal-full-snapshot",
+        shares=removed_cell.shares,
+        source_removals=((removed_cell.cell_id, removed_cell.shares),),
+    )
+    engine = _engine()
+    prepared = prepare_minute_path(
+        grid=engine.grid,
+        decision_at=_time(4),
+        minute_bars=(),
+    )
+    reference = engine.advance_day(
+        previous_post=previous,
+        decision_at=_time(4),
+        available_at=_time(4),
+        minute_bars=None,
+        inventory_events=(removal,),
+        expected_free_float_shares=100.0,
+        prepared_minute_path=prepared,
+        materialize_pre_snapshot=False,
+        build_transition=True,
+    )
+    packed = _engine().advance_packed_warmup_day(
+        previous_post=previous,
+        decision_at=_time(4),
+        available_at=_time(4),
+        inventory_events=(removal,),
+        expected_free_float_shares=100.0,
+        additional_input_snapshot_ids=(),
+        input_hard_valid=True,
+        input_quality_reason_codes=(),
+        prepared_minute_path=prepared,
+        build_transition=True,
+    )
+
+    assert packed.to_snapshot() == reference.post_snapshot
+    _assert_compact_transition_matches_reference(
+        packed.last_transition, reference.transition
+    )
+    assert reference.transition is not None
+    position = reference.transition.source_cell_ids.index(removed_cell.cell_id)
+    assert reference.transition.retained_fractions[position] == 0.0
 
 
 def test_packed_cap_compaction_merges_duplicate_stable_cell_identity() -> None:
