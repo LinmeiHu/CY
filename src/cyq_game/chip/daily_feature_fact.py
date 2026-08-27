@@ -132,10 +132,19 @@ def _ensemble_row(
         "profit_ratio", "asr", "cbw", "concentration_20", "dominant_peak_today",
         "dominant_band_lower", "dominant_band_upper", "dominant_band_mass",
     )
-    values = {name: median(float(row[name]) for row in models) for name in scalar_names}
+    for model in models:
+        _validate_nullable_profile(model, scalar_names)
+    values = {
+        name: _required_model_median(models, name)
+        for name in scalar_names
+    }
     candidates_by_model = {
-        str(model["seller_model"]): _canonical_peaks_from_json(
-            model["canonical_peaks_json"], expected_day=day
+        str(model["seller_model"]): (
+            ()
+            if model["canonical_peaks_json"] is None
+            else _canonical_peaks_from_json(
+                model["canonical_peaks_json"], expected_day=day
+            )
         )
         for model in models
     }
@@ -150,9 +159,10 @@ def _ensemble_row(
     peak_state = tracking.fail_closed_reason or (
         "TRACKED" if tracked is not None else "LOST"
     )
-    p50s = [float(row["cost_p50"]) for row in models]
-    p90s = [float(row["cost_p90"]) for row in models]
-    peaks = [float(row["dominant_peak_today"]) for row in models]
+    p50_spread = _required_model_spread(models, "cost_p50")
+    p90_spread = _required_model_spread(models, "cost_p90")
+    peak_spread = _required_model_spread(models, "dominant_peak_today")
+    peak_count = _required_model_median(models, "peak_count")
     return (
         symbol, day, snapshot_id, max(row["available_at"] for row in models),
         values["average_cost"], values["cost_p01"], values["cost_p10"], values["cost_p50"],
@@ -161,10 +171,10 @@ def _ensemble_row(
         None if dominant is None else dominant.center_price,
         dominant is None or dominant.ambiguity,
         values["dominant_band_lower"], values["dominant_band_upper"],
-        values["dominant_band_mass"], round(median(int(row["peak_count"]) for row in models)),
+        values["dominant_band_mass"], None if peak_count is None else round(peak_count),
         min(float(row["known_cost_fraction"]) for row in models),
-        min(float(row["model_quality"]) for row in models), max(p50s)-min(p50s),
-        max(p90s)-min(p90s), max(peaks)-min(peaks),
+        min(float(row["model_quality"]) for row in models), p50_spread,
+        p90_spread, peak_spread,
         None if tracked is None else tracked.center_price,
         None if tracked is None else tracked.peak_track_id,
         None if tracked is None else tracked.band[0], None if tracked is None else tracked.band[1],
@@ -177,6 +187,52 @@ def _ensemble_row(
         all(bool(row["hard_valid"]) for row in models),
         all(bool(row["research_valid"]) for row in models), reasons,
     )
+
+
+def _validate_nullable_profile(
+    model: dict[str, Any], scalar_names: tuple[str, ...]
+) -> None:
+    """Accept only the writer's explicit all-unknown profile null state."""
+
+    required_profile = tuple(name for name in scalar_names if name != "cbw")
+    missing_required = tuple(
+        name for name in required_profile if model[name] is None
+    )
+    if not missing_required:
+        return
+    all_profile_fields = (*scalar_names, "peak_count", "canonical_peaks_json")
+    reasons = set(model["quality_reason_codes"] or ())
+    if (
+        len(missing_required) != len(required_profile)
+        or any(model[name] is not None for name in all_profile_fields)
+        or float(model["known_cost_fraction"]) != 0.0
+        or bool(model["hard_valid"])
+        or reasons.isdisjoint(
+            {"UNKNOWN_COST_INITIALIZATION", "UNKNOWN_COST_PRESENT"}
+        )
+    ):
+        raise ValueError(
+            "operator profile has a partial or ungoverned nullable metric state"
+        )
+
+
+def _required_model_median(
+    models: list[dict[str, Any]], field: str
+) -> float | None:
+    observations = [model[field] for model in models]
+    if any(value is None for value in observations):
+        return None
+    return float(median(float(value) for value in observations))
+
+
+def _required_model_spread(
+    models: list[dict[str, Any]], field: str
+) -> float | None:
+    observations = [model[field] for model in models]
+    if any(value is None for value in observations):
+        return None
+    values = [float(value) for value in observations]
+    return max(values) - min(values)
 
 
 def _canonical_peaks_from_json(value: object, *, expected_day: date) -> tuple[CanonicalPeak, ...]:

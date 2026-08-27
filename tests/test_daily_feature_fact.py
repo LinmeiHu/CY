@@ -1,3 +1,4 @@
+import json
 from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -64,4 +65,44 @@ def test_daily_fact_rejects_stale_scalar_only_peak_artifact(tmp_path: Path) -> N
     pq.write_table(pa.Table.from_pylist([]), source)
     with pytest.raises(ValueError, match="canonical_peaks_json"):
         build_daily_feature_fact(source, tmp_path / "fact.parquet")
-import json
+
+
+def test_daily_fact_preserves_governed_all_unknown_profile_nulls(
+    tmp_path: Path,
+) -> None:
+    day = date(2020, 1, 2)
+    timestamp = datetime(2020, 1, 2, 15, tzinfo=ZoneInfo("Asia/Shanghai"))
+    nullable_metrics = {
+        name: None
+        for name in (
+            "average_cost", "cost_p01", "cost_p10", "cost_p50", "cost_p90",
+            "cost_p99", "profit_ratio", "asr", "cbw", "concentration_20",
+            "dominant_peak_today", "dominant_band_lower", "dominant_band_upper",
+            "dominant_band_mass", "peak_count", "canonical_peaks_json",
+        )
+    }
+    rows = [
+        {
+            "symbol": "000029.SZ", "trade_date": day, "seller_model": model,
+            "snapshot_id": f"unknown-{model}", "available_at": timestamp,
+            **nullable_metrics,
+            "cash_dividend_per_share": 0.0, "share_multiplier": 1.0,
+            "action_provenance_ids": [], "known_cost_fraction": 0.0,
+            "model_quality": 0.0, "hard_valid": False, "research_valid": True,
+            "quality_reason_codes": ["UNKNOWN_COST_PRESENT"],
+        }
+        for model in ("UNIFORM", "DISPOSITION", "ACTIVE_STICKY")
+    ]
+    source = tmp_path / "operator.parquet"
+    pq.write_table(pa.Table.from_pylist(rows), source)
+    target = tmp_path / "fact.parquet"
+
+    assert build_daily_feature_fact(source, target) == 1
+    fact = pq.read_table(target)
+    assert fact["average_cost"][0].as_py() is None
+    assert fact["model_spread_cost_p50"][0].as_py() is None
+    assert fact["dominant_peak_today"][0].as_py() is None
+    assert fact["known_cost_fraction_min"][0].as_py() == 0.0
+    assert fact["hard_valid"][0].as_py() is False
+    assert fact["research_valid"][0].as_py() is True
+    assert fact["quality_reason_codes"][0].as_py() == ["UNKNOWN_COST_PRESENT"]
