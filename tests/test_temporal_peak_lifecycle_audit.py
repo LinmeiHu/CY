@@ -73,7 +73,7 @@ def test_case_b_lost_identity_is_a_terminal_matching_event() -> None:
     assert all(peak.peak_track_id != track_a for peak in unrelated.peaks)
 
 
-def test_case_c_new_unrelated_track_is_born_but_cannot_replace_lost_v2_base() -> None:
+def test_case_c_new_unrelated_track_rebinds_after_lost_v3_base() -> None:
     results = _run(
         TemporalPeakTracker(symbol="TEST", model="UNIFORM"),
         (
@@ -95,11 +95,12 @@ def test_case_c_new_unrelated_track_is_born_but_cannot_replace_lost_v2_base() ->
     assert track_b_ids[0] != track_a.peak_track_id
     assert [result.peaks[0].age for result in results[4:]] == [1, 2, 3, 4]
     assert all(result.dominant_peak_today is not None for result in results[4:])
-    assert all(result.tracked_base_peak is None for result in results[4:])
+    assert all(result.tracked_base_peak is not None for result in results[4:])
     assert all(
-        result.fail_closed_reason == "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
+        result.tracked_base_peak.peak_track_id == track_b_ids[0]  # type: ignore[union-attr]
         for result in results[4:]
     )
+    assert all(result.fail_closed_reason is None for result in results[4:])
 
 
 def test_case_d_look_alike_reappearance_gets_a_new_identity_not_a_reattachment() -> None:
@@ -120,7 +121,9 @@ def test_case_d_look_alike_reappearance_gets_a_new_identity_not_a_reattachment()
     track_b = reappeared.peaks[0].peak_track_id
     assert track_b != track_a
     assert continued.peaks[0].peak_track_id == track_b
-    assert continued.tracked_base_peak is None
+    assert reappeared.tracked_base_peak is not None
+    assert continued.tracked_base_peak is not None
+    assert continued.tracked_base_peak.peak_track_id == track_b
 
 
 def test_case_e_split_can_recover_only_through_the_continuing_base_identity() -> None:

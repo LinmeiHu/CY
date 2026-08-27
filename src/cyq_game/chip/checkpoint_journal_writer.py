@@ -138,7 +138,11 @@ def checkpoint_dates(trading_dates: Sequence[date]) -> tuple[date, ...]:
     return tuple(dict.fromkeys((ordered[0], *last_by_month.values())))
 
 
-def _tracker(feature: Mapping[str, Any]) -> TemporalTrackerContinuation:
+def _legacy_tracker_from_feature(
+    feature: Mapping[str, Any],
+) -> TemporalTrackerContinuation:
+    """Support only the unregistered legacy writer fixture, never production."""
+
     track_id = feature.get("peak_track_id")
     peaks: tuple[TrackedPeakContinuation, ...] = ()
     if track_id:
@@ -182,7 +186,7 @@ def _tracker(feature: Mapping[str, Any]) -> TemporalTrackerContinuation:
         for scope in ("uniform", "disposition", "active_sticky", "ENSEMBLE")
     )
     return TemporalTrackerContinuation(
-        tracker_version=str(feature.get("peak_track_version") or "temporal-chip-peak-v2"),
+        tracker_version=str(feature.get("peak_track_version") or "temporal-chip-peak-v3"),
         scopes=scopes,
     )
 
@@ -193,7 +197,7 @@ def build_checkpoint_logical(
     trading_date: date,
     identities: tuple[CellIdentity, ...],
     model_states: tuple[CheckpointModelState, ...],
-    feature: Mapping[str, Any],
+    temporal_tracker: TemporalTrackerContinuation,
     label: str,
     dependency_manifest_digest: str,
     replay_parameter_manifest_digest: str,
@@ -217,7 +221,7 @@ def build_checkpoint_logical(
         checkpoint_label=label,
         identities=identities,
         model_states=model_states,
-        temporal_tracker=_tracker(feature),
+        temporal_tracker=temporal_tracker,
         dependency_manifest_digest=dependency_manifest_digest,
         replay_parameter_manifest_digest=replay_parameter_manifest_digest,
         replay_contract_hash=replay_contract_hash,

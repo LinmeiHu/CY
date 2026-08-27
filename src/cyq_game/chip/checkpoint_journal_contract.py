@@ -19,16 +19,18 @@ from datetime import UTC, date, datetime
 from enum import StrEnum
 from typing import Any
 
+from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
+
 STORAGE_VERSION = "chip-checkpoint-journal-storage-v1"
-SCHEMA_VERSION = "chip-checkpoint-journal-schema-v1"
-ARTIFACT_VERSION = "v12-chip-bundle-checkpoint-journal-v1"
+SCHEMA_VERSION = "chip-checkpoint-journal-schema-v2"
+ARTIFACT_VERSION = "v12-chip-bundle-checkpoint-journal-v2"
 CHECKPOINT_CODEC_VERSION = "chip-checkpoint-codec-v1"
 JOURNAL_CODEC_VERSION = "chip-replay-journal-codec-v1"
 TERMINAL_COMPLETENESS_VERSION = "chip-terminal-completeness-v1"
 DEPENDENCY_BINDING_VERSION = "chip-dependency-binding-v1"
 DEPENDENCY_MANIFEST_VERSION = "chip-replay-dependency-manifest-v1"
 REPLAY_PARAMETER_MANIFEST_VERSION = "chip-replay-parameter-manifest-v1"
-TRANSITION_SEMANTICS_VERSION = "real-chip-transition-semantics-v1"
+TRANSITION_SEMANTICS_VERSION = "real-chip-transition-semantics-v2"
 QUALITY_REASON_CODE_DOMAIN_VERSION = "quality-reason-code-domain-v1"
 REFERENCE_CODEC_MODE = "REFERENCE_ONLY_PHASE_1"
 
@@ -685,7 +687,7 @@ FROZEN_REPLAY_PARAMETER_VALUES: Mapping[str, Any] = {
         "match_permitted_floor": 0.03,
         "nonoverlap_log_limit": 0.01,
         "score_tie": 0.05,
-        "version": "peak-track-v2",
+        "version": "peak-track-v3",
     },
     "feature.ensemble_aggregation": (
         "MEDIAN_SCALARS_MIN_KNOWN_MODEL_QUALITY_MAX_MINUS_MIN_SPREADS_"
@@ -745,7 +747,7 @@ EXPECTED_REPLAY_PARAMETER_OWNER_VERSIONS: Mapping[str, str] = {
     "journal.override_classes": SCHEMA_VERSION,
     "feature.distribution_parameters": "feature-v6",
     "feature.peak_definition_parameters": "peak-definition-v2",
-    "feature.peak_track_parameters": "peak-track-v2",
+    "feature.peak_track_parameters": "peak-track-v3",
     "feature.ensemble_aggregation": "feature-v6",
     "storage.state_codec": "checkpoint-journal-codec-v1",
     "runtime.code_inventory": "replay-manifest-v1",
@@ -1316,15 +1318,25 @@ def validate_checkpoint_logical(value: CheckpointLogical) -> None:
     expected_scopes = ("uniform", "disposition", "active_sticky", "ENSEMBLE")
     if tuple(scope.scope for scope in value.temporal_tracker.scopes) != expected_scopes:
         raise ContractError("temporal tracker scope order/coverage mismatch")
-    _require_text(value.temporal_tracker.tracker_version, "tracker version")
+    if value.temporal_tracker.tracker_version != PEAK_TRACK_VERSION:
+        raise ContractError("temporal tracker version is stale or incompatible")
     for scope in value.temporal_tracker.scopes:
         _require_ordered_unique(scope.applied_action_ids, "tracker action IDs")
         peak_ids = tuple(peak.peak_track_id for peak in scope.previous_peaks)
         if len(set(peak_ids)) != len(peak_ids):
             raise ContractError("duplicate temporal peak track ID")
+        if scope.base_track_id is not None and scope.base_track_id not in peak_ids:
+            raise ContractError("temporal base binding is not a live track")
         for peak in scope.previous_peaks:
-            if peak.age < 0:
-                raise ContractError("temporal peak age must be non-negative")
+            if peak.age < 1:
+                raise ContractError("temporal peak age must be positive")
+            if peak.lost or peak.reappear:
+                raise ContractError("terminal temporal events cannot be live state")
+            if (
+                peak.definition_version != PEAK_DEFINITION_VERSION
+                or peak.track_version != PEAK_TRACK_VERSION
+            ):
+                raise ContractError("temporal peak continuation version is stale")
             for bits in (
                 peak.band_lower_bits,
                 peak.band_upper_bits,

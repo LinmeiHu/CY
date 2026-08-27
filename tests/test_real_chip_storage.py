@@ -2,16 +2,18 @@ import json
 import math
 import runpy
 from datetime import date, datetime
+from math import isclose
 from pathlib import Path
 from types import SimpleNamespace
 from zoneinfo import ZoneInfo
 
+import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
-import numpy as np
+
 from cyq_game.chip.migration_v2 import _PackedWorkingLots
-from math import isclose
+from cyq_game.chip.peaks import CanonicalPeak, TemporalPeakTracker
 from cyq_game.chip.profile_metrics import compute_distribution_metrics
 from cyq_game.strategy.exact_chip_features import _FAST_OPERATOR_COLUMNS
 
@@ -124,7 +126,7 @@ def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:
     assert schema.field("share_multiplier").type == pa.float64()
     assert schema.field("research_valid").type == pa.bool_()
     assert MODULE["DAILY_FEATURE_FACT_SCHEMA_VERSION"] == (
-        "v12-daily-feature-fact-v4-temporal-peak-observability"
+        "v12-daily-feature-fact-v5-rolling-structural-base-v3"
     )
     assert MODULE["FACT_SCHEMA"].field("peak_track_age").type == pa.int32()
     assert MODULE["FACT_SCHEMA"].field("peak_track_mass").type == pa.float64()
@@ -857,6 +859,105 @@ def test_direct_day_sink_matches_canonical_operator_projection(
     assert direct_terminal == legacy_terminal
 
 
+def test_warmup_day_sink_continues_temporal_state_across_year_boundary() -> None:
+    symbol = "000005.SZ"
+    days = (
+        date(2019, 12, 26),
+        date(2019, 12, 27),
+        date(2019, 12, 30),
+        date(2019, 12, 31),
+        date(2020, 1, 2),
+        date(2020, 1, 3),
+    )
+    daily_rows = [
+        {
+            "symbol": symbol,
+            "trade_date": day,
+            "open": 10.0,
+            "high": 10.0,
+            "low": 10.0,
+            "close": 10.0,
+            "volume": 100.0,
+            "amount": 1_000.0,
+            "circulating_shares": 1_000.0,
+            "corporate_action_available_date": day,
+            "float_available_date": day,
+            "cash_per_share": 0.0,
+            "share_multiplier": 1.0,
+            "hard_valid": True,
+            "snapshot_id": f"daily:{day}",
+            "daily_snapshot_id": f"daily:{day}",
+            "float_snapshot_id": f"float:{day}",
+            "corporate_action_snapshot_id": f"action:{day}",
+        }
+        for day in days
+    ]
+
+    def candidate(center: int) -> CanonicalPeak:
+        return CanonicalPeak(
+            center_bucket=center,
+            center_price=float(center),
+            lower_bucket=center - 1,
+            lower_price=float(center - 1),
+            upper_bucket=center + 1,
+            upper_price=float(center + 1),
+            mass=1.0,
+            prominence=0.1,
+            width_pct=(center + 1) / (center - 1) - 1.0,
+            age_mean=None,
+            formation_date="test",
+        )
+
+    path = {
+        date(2019, 12, 27): (candidate(10),),
+        date(2019, 12, 30): (),
+        date(2019, 12, 31): (candidate(20),),
+        date(2020, 1, 2): (candidate(20),),
+        date(2020, 1, 3): (candidate(20),),
+    }
+    continued_tracker = TemporalPeakTracker(symbol=symbol, model="ENSEMBLE")
+    continued_results = []
+    output_results = []
+    sink_dates = []
+
+    def consume_day(fact, model_rows, states) -> None:
+        del states
+        assert len(model_rows) == 3
+        sink_dates.append(fact.trading_date)
+        result = continued_tracker.update(
+            as_of=fact.trading_date,
+            candidates=path[fact.trading_date],
+        )
+        continued_results.append(result)
+        if fact.target_required:
+            output_results.append(result)
+
+    result, _ = MODULE["_run_symbol"](
+        symbol,
+        daily_rows,
+        [],
+        2020,
+        None,
+        replayable_day_facts=MODULE["_build_replayable_day_facts"](
+            daily_rows, [], 2020, state_resumed=False
+        ),
+        day_sink=consume_day,
+    )
+
+    continuous_tracker = TemporalPeakTracker(symbol=symbol, model="ENSEMBLE")
+    continuous = tuple(
+        continuous_tracker.update(as_of=day, candidates=path[day])
+        for day in days[1:]
+    )
+    assert tuple(continued_results) == continuous
+    assert tuple(output_results) == continuous[-2:]
+    assert sink_dates == list(days[1:])
+    assert output_results[0].tracked_base_peak is not None
+    assert output_results[0].tracked_base_peak.age == 2
+    assert result["rows"] == 6
+    assert result["replayed_prior_year_days"] == 3
+
+
 def test_targeted_stage_reuses_full_stage_but_not_another_symbol_scope() -> None:
     matches = MODULE["_stage_marker_matches"]
     full = {
@@ -1056,6 +1157,11 @@ def test_symbol_resume_has_three_staleness_dimensions_and_integrity(tmp_path: Pa
         "artifact_contract_fingerprint": "artifact",
     }
     assert status(**expected) == "VALID"
+    contract["resume_contract_version"] = "v12-phase7-resume-contract-v2"
+    manifest.write_text(json.dumps({"resume_contract": contract}), encoding="utf-8")
+    assert status(**expected) == "STALE"
+    contract["resume_contract_version"] = MODULE["RESUME_CONTRACT_VERSION"]
+    manifest.write_text(json.dumps({"resume_contract": contract}), encoding="utf-8")
     for field in ("semantic_fingerprint", "input_fingerprint", "artifact_contract_fingerprint"):
         changed = dict(expected)
         changed[field] = "changed"

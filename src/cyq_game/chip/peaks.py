@@ -10,6 +10,13 @@ from hashlib import sha256
 from itertools import pairwise
 from statistics import median
 
+from cyq_game.chip.checkpoint_journal_contract import (
+    TemporalTrackerContinuation,
+    TrackedPeakContinuation,
+    TrackerScopeContinuation,
+    bits_f64be,
+    f64be_bits,
+)
 from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERSION
 from cyq_game.chip.price_coordinate import rebase_economic_price
 from cyq_game.chip.state_v2 import SellerModel
@@ -333,7 +340,80 @@ class TemporalPeakTracker:
         )
         self._applied_action_ids.add(action_id)
 
+    def _continuation(self, scope: str) -> TrackerScopeContinuation:
+        return TrackerScopeContinuation(
+            scope=scope,
+            base_track_id=self._base_track_id,
+            applied_action_ids=tuple(sorted(self._applied_action_ids)),
+            previous_peaks=tuple(
+                TrackedPeakContinuation(
+                    peak_track_id=peak.peak_track_id,
+                    age=peak.age,
+                    band_lower_bits=f64be_bits(peak.band[0]),
+                    band_upper_bits=f64be_bits(peak.band[1]),
+                    center_price_bits=f64be_bits(peak.center_price),
+                    mass_bits=f64be_bits(peak.mass),
+                    prominence_bits=f64be_bits(peak.prominence),
+                    ambiguity=peak.ambiguity,
+                    split=peak.split,
+                    merge=peak.merge,
+                    lost=peak.lost,
+                    reappear=False,
+                    definition_version=peak.definition_version,
+                    track_version=peak.track_version,
+                )
+                for peak in self._previous
+            ),
+        )
+
+    def _restore_continuation(self, continuation: TrackerScopeContinuation) -> None:
+        peaks = tuple(
+            TrackedPeak(
+                peak_track_id=peak.peak_track_id,
+                age=peak.age,
+                band=(
+                    bits_f64be(peak.band_lower_bits),
+                    bits_f64be(peak.band_upper_bits),
+                ),
+                center_price=bits_f64be(peak.center_price_bits),
+                mass=bits_f64be(peak.mass_bits),
+                prominence=bits_f64be(peak.prominence_bits),
+                ambiguity=peak.ambiguity,
+                split=peak.split,
+                merge=peak.merge,
+                lost=peak.lost,
+                definition_version=peak.definition_version,
+                track_version=peak.track_version,
+            )
+            for peak in continuation.previous_peaks
+        )
+        if any(
+            peak.reappear
+            or peak.lost
+            or peak.definition_version != PEAK_DEFINITION_VERSION
+            or peak.track_version != PEAK_TRACK_VERSION
+            or peak.age < 1
+            for peak in continuation.previous_peaks
+        ):
+            raise ValueError("temporal tracker continuation contains stale state")
+        peak_ids = tuple(peak.peak_track_id for peak in peaks)
+        if len(set(peak_ids)) != len(peak_ids):
+            raise ValueError("temporal tracker continuation has duplicate identities")
+        if (
+            continuation.base_track_id is not None
+            and continuation.base_track_id not in peak_ids
+        ):
+            raise ValueError("temporal tracker binding is not a live identity")
+        if tuple(continuation.applied_action_ids) != tuple(
+            sorted(set(continuation.applied_action_ids))
+        ):
+            raise ValueError("temporal tracker action IDs are not canonical")
+        self._previous = peaks
+        self._base_track_id = continuation.base_track_id
+        self._applied_action_ids = set(continuation.applied_action_ids)
+
     def update(self, *, as_of: date, candidates: tuple[CanonicalPeak, ...]) -> PeakTrackingResult:
+        bound_track_id_at_start = self._base_track_id
         compatibility: dict[tuple[int, int], float] = {}
         for old_index, old in enumerate(self._previous):
             for new_index, new in enumerate(candidates):
@@ -456,12 +536,18 @@ class TemporalPeakTracker:
         # but never become tomorrow's matching source.  A later look-alike is
         # necessarily a new identity rather than an unsafe reattachment.
         self._previous = tuple(observations)
-        return PeakTrackingResult(
+        result = PeakTrackingResult(
             peaks=tuple((*self._previous, *lost)),
             dominant_peak_today=dominant,
             tracked_base_peak=tracked_base,
             fail_closed_reason=reason,
         )
+        if bound_track_id_at_start is not None and any(
+            peak.lost and peak.peak_track_id == bound_track_id_at_start
+            for peak in lost
+        ):
+            self._base_track_id = None
+        return result
 
 
 def _match_score(old: TrackedPeak, new: CanonicalPeak) -> float | None:
@@ -532,6 +618,42 @@ class EnsembleTemporalPeakTracker:
                 cash_per_share=cash_per_share,
                 share_multiplier=share_multiplier,
             )
+
+    def continuation(self) -> TemporalTrackerContinuation:
+        scope_order = ("uniform", "disposition", "active_sticky", "ENSEMBLE")
+        return TemporalTrackerContinuation(
+            tracker_version=PEAK_TRACK_VERSION,
+            scopes=tuple(
+                (
+                    self._ensemble
+                    if scope == "ENSEMBLE"
+                    else self._local[scope.upper()]
+                )._continuation(scope)
+                for scope in scope_order
+            ),
+        )
+
+    @classmethod
+    def from_continuation(
+        cls,
+        *,
+        symbol: str,
+        continuation: TemporalTrackerContinuation,
+    ) -> EnsembleTemporalPeakTracker:
+        if continuation.tracker_version != PEAK_TRACK_VERSION:
+            raise ValueError("temporal tracker continuation version is incompatible")
+        expected_scopes = ("uniform", "disposition", "active_sticky", "ENSEMBLE")
+        if tuple(scope.scope for scope in continuation.scopes) != expected_scopes:
+            raise ValueError("temporal tracker continuation scope coverage is invalid")
+        tracker = cls(symbol=symbol, models=tuple(SellerModel))
+        for scope in continuation.scopes:
+            target = (
+                tracker._ensemble
+                if scope.scope == "ENSEMBLE"
+                else tracker._local[scope.scope.upper()]
+            )
+            target._restore_continuation(scope)
+        return tracker
 
     def update(
         self,

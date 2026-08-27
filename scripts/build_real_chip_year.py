@@ -180,12 +180,12 @@ SENSITIVITY_CODE = {
 }
 TZ = ZoneInfo("Asia/Shanghai")
 
-RESUME_CONTRACT_VERSION = "v12-phase7-resume-contract-v2"
+RESUME_CONTRACT_VERSION = "v12-phase7-resume-contract-v3"
 INPUT_MANIFEST_VERSION = "v12-phase7-symbol-input-manifest-v1"
-ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v4"
+ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v5"
 PHYSICAL_CONTRACT_VERSION = "v12-phase7-physical-contract-v2"
 CHECKPOINT_CADENCE_ALGORITHM_VERSION = "replayable-target-dates-v1"
-SHARD_MANIFEST_VERSION = "v12-phase7-symbol-shard-manifest-v2"
+SHARD_MANIFEST_VERSION = "v12-phase7-symbol-shard-manifest-v3"
 BUFFER_CANDIDATES = (3, 24, 48, 96)
 
 
@@ -2297,6 +2297,7 @@ def _run_symbol(
                 and in_output_year
                 and (emit_start_date is None or trading_date >= emit_start_date)
             )
+            project_day = emit_day or day_sink is not None
             if emit_day and writer is not None and model not in previous_output_states:
                 if isinstance(previous_post, ChipSnapshotV2):
                     previous_view, previous_economic = (
@@ -2319,14 +2320,14 @@ def _run_symbol(
                 input_hard_valid=input_hard_valid,
                 input_quality_reason_codes=input_quality_reason_codes,
                 prepared_minute_path=prepared_minute_path,
-                build_transition=emit_day,
+                build_transition=project_day,
             )
             _canonicalize_packed_output_state(mutable_state)
             current[model] = mutable_state
             max_mass_error = max(
                 max_mass_error, abs(mutable_state.conservation_error)
             )
-            if emit_day:
+            if project_day:
                 if writer is None and day_sink is None:
                     raise RuntimeError("output emission requires a writer or day sink")
                 transition = mutable_state.last_transition
@@ -2373,7 +2374,8 @@ def _run_symbol(
                     day_projection_rows.append(
                         dict(zip(OUTPUT_SCHEMA.names, output_row, strict=True))
                     )
-                emitted_models.add(model)
+                if emit_day:
+                    emitted_models.add(model)
                 if writer is not None and len(output_rows) >= output_row_group_size:
                     writer.write_table(
                         output_rows.to_table(),
@@ -2383,7 +2385,8 @@ def _run_symbol(
                     output_rows.clear()
         if day_sink is not None and day_projection_rows:
             day_sink(fact, tuple(day_projection_rows), current)
-            output_count += len(day_projection_rows)
+            if fact.target_required:
+                output_count += len(day_projection_rows)
         if emit_operators and fact.target_required and (
             emit_start_date is None or trading_date >= emit_start_date
         ):
@@ -3427,9 +3430,9 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
         states: Mapping[SellerModel, ChipSnapshotV2 | MutableChipState],
     ) -> None:
         nonlocal journal_month, journal_anchor_digest
-        if not fact.target_required:
-            raise RuntimeError("direct output sink received a non-target day")
         feature_row = project_daily_feature_row(list(model_rows), tracker)
+        if not fact.target_required:
+            return
         feature = dict(zip(FACT_SCHEMA.names, feature_row, strict=True))
         feature_rows.append(feature_row)
         features.append(feature)
@@ -3446,7 +3449,7 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
                 trading_date=fact.trading_date,
                 identities=identities,
                 model_states=model_states,
-                feature=feature,
+                temporal_tracker=tracker.continuation(),
                 label=fact.checkpoint_label,
                 dependency_manifest_digest=dependency_manifest_digest,
                 replay_parameter_manifest_digest=payload[

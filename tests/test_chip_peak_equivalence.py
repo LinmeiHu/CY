@@ -153,9 +153,9 @@ def test_peak_merge_and_lost_reappearance_fail_closed() -> None:
     lost = tracker.update(as_of=date(2026, 8, 22), candidates=())
     assert any(peak.lost and peak.peak_track_id == original_id for peak in lost.peaks)
     reappeared = tracker.update(as_of=date(2026, 8, 23), candidates=(_candidate(10, 1.0),))
-    assert reappeared.tracked_base_peak is None
+    assert reappeared.tracked_base_peak is not None
     assert reappeared.peaks[0].peak_track_id != original_id
-    assert reappeared.fail_closed_reason == "TRACKED_BASE_PEAK_LOST_OR_AMBIGUOUS"
+    assert reappeared.fail_closed_reason is None
 
 
 def test_ensemble_match_keeps_one_id_across_seller_models_and_days() -> None:

@@ -114,7 +114,7 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
         "peak_track_merge": False,
         "peak_track_lost": False,
         "peak_definition_version": "canonical-chip-peak-v2",
-        "peak_track_version": "temporal-chip-peak-v2",
+        "peak_track_version": "temporal-chip-peak-v3",
     }
     feature_path = tmp_path / "feature.parquet"
     pq.write_table(pa.Table.from_pylist([feature_row]), feature_path)

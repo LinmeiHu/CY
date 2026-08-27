@@ -111,6 +111,7 @@ from cyq_game.chip.journal_codec import (
     journal_logical_digest,
     validate_journal_logical,
 )
+from cyq_game.chip.peak_versions import PEAK_TRACK_VERSION
 from cyq_game.chip.state_v2 import TurnoverSensitivity, stable_cell_id
 
 _FIXED_CHECKPOINT_FIXTURE_ZLIB_BASE64 = (
@@ -348,7 +349,7 @@ def _checkpoint(*, multiple_cells: bool = False) -> CheckpointLogical:
         for model in SELLER_MODEL_ORDER
     )
     tracker = TemporalTrackerContinuation(
-        tracker_version="peak-track-v2",
+        tracker_version=PEAK_TRACK_VERSION,
         scopes=tuple(
             TrackerScopeContinuation(scope, None, (), ())
             for scope in ("uniform", "disposition", "active_sticky", "ENSEMBLE")
@@ -977,16 +978,13 @@ def test_checkpoint_one_cell_multiple_cells_and_three_models_round_trip_exact() 
         assert tuple(item.seller_model for item in decoded.model_states) == SELLER_MODEL_ORDER
 
 
-def test_fixed_hardcoded_checkpoint_fixture_round_trips_exactly() -> None:
+def test_fixed_hardcoded_v2_checkpoint_fixture_is_incompatible() -> None:
     fixture = zlib.decompress(
         base64.b64decode(_FIXED_CHECKPOINT_FIXTURE_ZLIB_BASE64)
     )
     assert hashlib.sha256(fixture).hexdigest() == _FIXED_CHECKPOINT_FIXTURE_SHA256
-    checkpoint = decode_checkpoint(fixture)
-    assert checkpoint.symbol == "000001.SZ"
-    assert checkpoint.checkpoint_date == date(2020, 12, 31)
-    assert tuple(item.seller_model for item in checkpoint.model_states) == SELLER_MODEL_ORDER
-    assert encode_checkpoint(checkpoint) == fixture
+    with pytest.raises(ContractError, match="version"):
+        decode_checkpoint(fixture)
 
 
 def test_checkpoint_preserves_positive_and_negative_zero_bits() -> None:

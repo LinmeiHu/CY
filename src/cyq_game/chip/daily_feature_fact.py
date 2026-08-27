@@ -21,7 +21,7 @@ from cyq_game.chip.peak_versions import PEAK_DEFINITION_VERSION, PEAK_TRACK_VERS
 from cyq_game.chip.peaks import CanonicalPeak, EnsembleTemporalPeakTracker
 
 DAILY_FEATURE_FACT_SCHEMA_VERSION = (
-    "v12-daily-feature-fact-v4-temporal-peak-observability"
+    "v12-daily-feature-fact-v5-rolling-structural-base-v3"
 )
 
 FACT_SCHEMA = pa.schema(
