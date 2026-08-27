@@ -3569,7 +3569,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
         "buckets": 10,
         "layout_version": "bucket-symbol-v3-mixed-native-resolution",
         "prior_history_start": None,
-        "end_date": "2020-12-31",
+        "end_date": None,
         "daily_root": str(args.daily_root.resolve()),
         "minute_root": str(args.minute_root.resolve()),
         "action_override_sha256": None,

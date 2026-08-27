@@ -948,6 +948,41 @@ def test_stage_marker_separates_end_date_contract() -> None:
     )
 
 
+def test_full_market_accepts_uncapped_full_year_stage_marker(tmp_path: Path) -> None:
+    stage_root = tmp_path / "stage"
+    stage_root.mkdir()
+    daily_root = tmp_path / "daily"
+    minute_root = tmp_path / "minute"
+    (stage_root / "COMPLETE.json").write_text(
+        json.dumps(
+            {
+                "year": 2020,
+                "warmup_start": 2018,
+                "buckets": 10,
+                "layout_version": "bucket-symbol-v3-mixed-native-resolution",
+                "prior_history_start": None,
+                "end_date": None,
+                "daily_root": str(daily_root.resolve()),
+                "minute_root": str(minute_root.resolve()),
+                "action_override_sha256": None,
+                "baostock_delta_sha256": None,
+            }
+        ),
+        encoding="utf-8",
+    )
+    args = SimpleNamespace(
+        year=2020,
+        stage_root=stage_root,
+        output=tmp_path / "bundle",
+        daily_root=daily_root,
+        minute_root=minute_root,
+        buckets=10,
+    )
+
+    with pytest.raises(ValueError, match="full-market stage universe mismatch"):
+        MODULE["_checkpoint_journal_full_market"](args)
+
+
 def test_adjacent_year_terminal_is_discovered_automatically(tmp_path: Path) -> None:
     output_root = tmp_path / "year=2021"
     previous_root = tmp_path / "year=2020"
