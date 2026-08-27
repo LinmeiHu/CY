@@ -355,7 +355,6 @@ def write_symbol_artifacts(
         journal_parts=journal_parts,
         features=features,
         feature_source_path=feature_source_path,
-        terminal_source_path=terminal_source_path,
         dependency_manifest_digest=dependency_manifest_digest,
         replay_parameter_manifest_digest=replay_parameter_manifest_digest,
         terminal_completeness_digest=terminal_completeness_digest,

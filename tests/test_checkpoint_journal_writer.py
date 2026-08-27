@@ -10,8 +10,8 @@ import pyarrow.parquet as pq
 
 from cyq_game.chip.checkpoint_journal_contract import SELLER_MODEL_ORDER, logical_sha256
 from cyq_game.chip.checkpoint_journal_writer import (
+    manifest_coverage,
     verify_root,
-    write_index,
     write_json,
 )
 
@@ -132,19 +132,18 @@ def test_writer_round_trips_checkpoint_journal_index_and_candidates(tmp_path: Pa
         bundle_id="test-bundle",
         root_id="test-root",
     )
-    index = write_index(artifact_root, (artifact,), bundle_id="test-bundle", root_id="test-root")
-    parts = []
-    for relative in (*artifact.checkpoint_paths, *artifact.journal_paths, artifact.feature_path, artifact.terminal_path):
-        kind = "checkpoint" if "/checkpoints/" in relative else "journal" if "/journal/" in relative else "feature" if "feature" in relative else "terminal"
-        path = artifact_root / relative
-        from cyq_game.chip.checkpoint_journal_writer import sha256_file
-
-        parts.append({"kind": kind, "relative_path": relative, "sha256": sha256_file(path)})
+    coverage = manifest_coverage(
+        (artifact,), bundle_id="test-bundle", root_id="test-root"
+    )
+    parts = [item.__dict__ for item in artifact.file_metadata]
     write_json(
         artifact_root / "manifest.json",
-        {"parts": parts, "index_sha256": __import__("hashlib").sha256(index.read_bytes()).hexdigest()},
+        {"coverage": coverage, "parts": parts},
     )
     verify_root(artifact_root)
+    assert not (artifact_root / "index.json").exists()
+    assert not any(item["kind"] == "terminal" for item in parts)
+    assert artifact.terminal_path == ""
     assert artifact.trading_days == 1
     assert artifact.model_rows == 3
     assert artifact.fallback_rows == 0

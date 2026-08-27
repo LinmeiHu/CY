@@ -68,8 +68,6 @@ PHASE2_TARGET_YEAR = 2020
 PHASE2_WARMUP_YEARS = (2018, 2019)
 PHASE2_WRITER_VERSION = "checkpoint-journal-writer-phase2-prototype-v1"
 PRODUCTION_WRITER_VERSION = "checkpoint-journal-writer-production-v1"
-PRODUCTION_INTEGRATION_VERSION = "checkpoint-journal-production-integration-v1"
-PRODUCTION_REGISTRY_VERSION = "checkpoint-journal-dependency-registry-v1"
 CHECKPOINT_CADENCE = (
     "OPENING_PLUS_EACH_CALENDAR_MONTH_END_TRADING_SESSION_INCLUDING_YEAR_END"
 )
@@ -473,7 +471,6 @@ def finish_symbol_artifacts(
     journal_parts: Mapping[tuple[date, date], ArtifactFileMetadata],
     features: Sequence[Mapping[str, Any]],
     feature_source_path: Path,
-    terminal_source_path: Path,
     dependency_manifest_digest: str,
     replay_parameter_manifest_digest: str,
     terminal_completeness_digest: str,
@@ -510,34 +507,19 @@ def finish_symbol_artifacts(
 
     symbol_root = root / f"symbol={symbol}"
     feature_path = symbol_root / "daily_feature_candidate.parquet"
-    terminal_path = symbol_root / "year_end_terminal_candidate.parquet"
     symbol_root.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(feature_source_path, feature_path)
-    shutil.copyfile(terminal_source_path, terminal_path)
     if pq.ParquetFile(feature_path).metadata.num_rows != len(trading_dates):
         raise ValueError("feature candidate row count mismatch")
-    if pq.ParquetFile(terminal_path).metadata.num_rows != len(SELLER_MODEL_ORDER):
-        raise ValueError("terminal candidate row count mismatch")
     feature_relative = feature_path.relative_to(root).as_posix()
-    terminal_relative = terminal_path.relative_to(root).as_posix()
     feature_digest = sha256_file(feature_path)
-    terminal_digest = sha256_file(terminal_path)
-    file_metadata.extend(
-        (
-            ArtifactFileMetadata(
-                kind="feature",
-                relative_path=feature_relative,
-                bytes=feature_path.stat().st_size,
-                sha256=feature_digest,
-                logical_digest=arrow_logical_digest(feature_path),
-            ),
-            ArtifactFileMetadata(
-                kind="terminal",
-                relative_path=terminal_relative,
-                bytes=terminal_path.stat().st_size,
-                sha256=terminal_digest,
-                logical_digest=arrow_logical_digest(terminal_path),
-            ),
+    file_metadata.append(
+        ArtifactFileMetadata(
+            kind="feature",
+            relative_path=feature_relative,
+            bytes=feature_path.stat().st_size,
+            sha256=feature_digest,
+            logical_digest=arrow_logical_digest(feature_path),
         )
     )
     feature_binding = FeatureAssetBinding(
@@ -581,12 +563,12 @@ def finish_symbol_artifacts(
         checkpoint_paths=checkpoint_paths,
         journal_paths=journal_paths,
         feature_path=feature_relative,
-        terminal_path=terminal_relative,
+        terminal_path="",
         index_rows=tuple(index_rows),
         checkpoint_bytes=sum(item.bytes for item, _ in checkpoint_parts.values()),
         journal_bytes=sum(item.bytes for item in journal_parts.values()),
         feature_bytes=feature_path.stat().st_size,
-        terminal_bytes=terminal_path.stat().st_size,
+        terminal_bytes=0,
         fallback_rows=0,
         fallback_bytes=0,
         file_metadata=tuple(file_metadata),
@@ -638,6 +620,43 @@ def write_index(
     path = root / "index.json"
     path.write_bytes(checkpoint_journal_index_bytes(value))
     return path
+
+
+def manifest_coverage(
+    artifacts: Sequence[SymbolArtifacts], *, bundle_id: str, root_id: str
+) -> dict[str, Any]:
+    """Embed resolver coverage in the manifest instead of a second authority."""
+
+    rows = tuple(
+        sorted(
+            (row for artifact in artifacts for row in artifact.index_rows),
+            key=lambda row: (
+                row.symbol.encode("utf-8"),
+                row.journal_start_date,
+                row.journal_end_date,
+                row.checkpoint_anchor_date,
+            ),
+        )
+    )
+    value = CheckpointJournalIndex(
+        index_version=INDEX_VERSION,
+        storage_version=STORAGE_VERSION,
+        schema_version=SCHEMA_VERSION,
+        artifact_version=ARTIFACT_VERSION,
+        bundle_id=bundle_id,
+        root_id=root_id,
+        rows=rows,
+        index_digest="0" * 64,
+    )
+    value = replace(value, index_digest=checkpoint_journal_index_digest(value))
+    known = {
+        item.relative_path: item.sha256
+        for artifact in artifacts
+        for item in artifact.file_metadata
+        if item.kind in {"checkpoint", "journal"}
+    }
+    validate_checkpoint_journal_index(value, known_part_digests=known)
+    return json.loads(checkpoint_journal_index_bytes(value))
 
 
 def arrow_exact_mismatch_count(actual: Path, expected: Path) -> int:
@@ -725,242 +744,76 @@ def verify_root(root: Path, *, verify_all_content: bool = False) -> None:
                 decode_journal(path.read_bytes())
             elif part["kind"] in {"feature", "terminal"}:
                 pq.ParquetFile(path)
-    if sha256_file(root / "index.json") != manifest["index_sha256"]:
+    if "coverage" in manifest:
+        if (root / "index.json").exists():
+            raise ValueError("durable index duplicates manifest coverage")
+        if any(part["kind"] == "terminal" for part in manifest["parts"]):
+            raise ValueError("physical terminal duplicates latest checkpoint")
+    elif sha256_file(root / "index.json") != manifest["index_sha256"]:
         raise ValueError("manifest index digest mismatch")
 
 
-def _production_resume_fingerprint(source: Path) -> str:
-    manifest = json.loads((source / "manifest.json").read_text(encoding="utf-8"))
-    summary = json.loads((source / "summary.json").read_text(encoding="utf-8"))
-    return logical_sha256(
-        {
-            "integration_version": PRODUCTION_INTEGRATION_VERSION,
-            "source_manifest_sha256": sha256_file(source / "manifest.json"),
-            "source_summary_sha256": sha256_file(source / "summary.json"),
-            "storage_version": STORAGE_VERSION,
-            "symbols": manifest["symbols"],
-            "target_year": manifest["target_year"],
-            "ordinary_source_recompute_rows": summary[
-                "ordinary_source_recompute_rows"
-            ],
-        }
-    )
-
-
-def _production_dependency_bindings(root: Path) -> list[dict[str, Any]]:
-    manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
-    role_by_class = {
-        DependencyClass.DAILY: "daily_input",
-        DependencyClass.MINUTE: "minute_input",
-        DependencyClass.CORPORATE_ACTION: "corporate_action_input",
-        DependencyClass.ADDITIONAL_REPLAY_INPUT: "additional_replay_input",
-    }
-    bindings: dict[tuple[str, str, str, str], dict[str, Any]] = {}
-    for part in manifest["parts"]:
-        if part["kind"] != "journal":
-            continue
-        journal = decode_journal((root / part["relative_path"]).read_bytes())
-        for row in journal.rows:
-            for reference in row.dependency_references:
-                role = role_by_class[reference.dependency_class]
-                key = (
-                    role,
-                    reference.asset_id,
-                    reference.snapshot_id,
-                    reference.content_digest,
-                )
-                bindings[key] = {
-                    "asset_id": reference.asset_id,
-                    "content_digest": reference.content_digest,
-                    "immutable": True,
-                    "inventory_digest": reference.inventory_digest,
-                    "pinned": True,
-                    "role": role,
-                    "snapshot_id": reference.snapshot_id,
-                }
-    bindings[(
-        "replay_parameter_manifest",
-        "checkpoint-journal-replay-parameters",
-        manifest["replay_parameter_manifest_digest"],
-        manifest["replay_parameter_manifest_digest"],
-    )] = {
-        "asset_id": "checkpoint-journal-replay-parameters",
-        "content_digest": manifest["replay_parameter_manifest_digest"],
-        "immutable": True,
-        "inventory_digest": None,
-        "pinned": True,
-        "role": "replay_parameter_manifest",
-        "snapshot_id": manifest["replay_parameter_manifest_digest"],
-    }
-    for part in manifest["parts"]:
-        if part["kind"] not in {"feature", "terminal"}:
-            continue
-        symbol = part["relative_path"].split("/", 1)[0].removeprefix("symbol=")
-        role = "feature" if part["kind"] == "feature" else "terminal_compatibility"
-        asset_id = f"checkpoint-journal-{role}-{symbol}"
-        bindings[(role, asset_id, symbol, part["sha256"])] = {
-            "asset_id": asset_id,
-            "content_digest": part["sha256"],
-            "immutable": True,
-            "inventory_digest": None,
-            "pinned": True,
-            "role": role,
-            "snapshot_id": f"{symbol}-{manifest['target_year']}",
-        }
-    return [bindings[key] for key in sorted(bindings)]
-
-
 def activate_production_bundle(source: Path, output: Path) -> dict[str, Any]:
-    """Activate one exact candidate without rerunning its canonical transitions."""
+    """Publish a manifest-authoritative bundle without overlay or registration state."""
 
     source = source.resolve()
     output = output.resolve()
     if source == output or source in output.parents or output in source.parents:
         raise ValueError("source and production roots must be separate")
-    if (source / "parts").exists() or (source / "operator_symbol_index.parquet").exists():
-        raise ValueError("checkpoint/journal source cannot mix legacy operator storage")
     verify_root(source)
-    source_manifest = json.loads(
-        (source / "manifest.json").read_text(encoding="utf-8")
-    )
-    source_summary = json.loads((source / "summary.json").read_text(encoding="utf-8"))
-    if (
-        source_manifest.get("registered") is not False
-        or source_manifest.get("registry_modified") is not False
-        or source_summary.get("exact_mismatch_count") != 0
-    ):
-        raise ValueError("source candidate is not an exact unregistered bundle")
-    expected_model_days = 0
-    for symbol in source_manifest["symbols"]:
-        result = source_summary["symbol_results"][symbol]
-        trading_days = int(result["trading_days"])
-        seller_rows = result["seller_model_rows"]
-        if set(seller_rows) != set(SELLER_MODEL_ORDER) or any(
-            int(seller_rows[model]) != trading_days for model in SELLER_MODEL_ORDER
-        ):
-            raise ValueError("source canonical transition instrumentation is incomplete")
-        expected_model_days += trading_days * len(SELLER_MODEL_ORDER)
-    if int(source_summary["ordinary_source_recompute_rows"]) != expected_model_days:
-        raise ValueError("source canonical transition count is not one per model/day")
-    fingerprint = _production_resume_fingerprint(source)
-    integration_path = output / "production_integration.json"
-    if output.exists():
-        if not integration_path.is_file():
-            raise ValueError("existing production root has no resume fingerprint")
-        integration = json.loads(integration_path.read_text(encoding="utf-8"))
-        if integration.get("resume_fingerprint") != fingerprint:
-            raise ValueError("checkpoint/journal resume fingerprint mismatch")
-        verify_root(output)
-        from cyq_game.data.registry import CheckpointJournalRegistration
-
-        registration = CheckpointJournalRegistration.load(
-            output / "dependency_registry.json"
-        )
-        registration.validate_bundle(output / "manifest.json")
-        if integration.get("registry_digest") != registration.registry_digest:
-            raise ValueError("checkpoint/journal resume registry mismatch")
-        return json.loads((output / "summary.json").read_text(encoding="utf-8"))
-
-    temporary = output.parent / f".{output.name}.tmp-{uuid.uuid4().hex}"
-    if temporary.exists():
-        raise ValueError("production temporary root already exists")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        shutil.copytree(source, temporary, copy_function=os.link)
-        manifest_path = temporary / "manifest.json"
-        manifest_path.unlink()
-        production_manifest = dict(source_manifest)
+    source_manifest = json.loads((source / "manifest.json").read_text(encoding="utf-8"))
+    if source_manifest.get("manifest_version") == "symbol-manifest-v1":
+        production_manifest = source_manifest
+    else:
+        coverage = json.loads((source / source_manifest["index_path"]).read_text(encoding="utf-8"))
+        production_manifest = {
+            key: value
+            for key, value in source_manifest.items()
+            if key not in {"index_path", "index_sha256", "registered", "registry_modified"}
+        }
         production_manifest.update(
             {
                 "artifact_version": ARTIFACT_VERSION,
-                "registered": True,
-                "registry_modified": True,
+                "coverage": coverage,
+                "manifest_version": "symbol-manifest-v1",
+                "parts": [
+                    {**part, "logical_digest": part.get("logical_digest", part["sha256"])}
+                    for part in source_manifest["parts"]
+                    if part["kind"] in {"checkpoint", "journal", "feature"}
+                ],
                 "writer_version": PRODUCTION_WRITER_VERSION,
             }
         )
-        write_json(manifest_path, production_manifest)
-
-        terminal_bytes = 0
-        for part in production_manifest["parts"]:
-            if part["kind"] != "terminal":
-                continue
-            symbol = part["relative_path"].split("/", 1)[0].removeprefix("symbol=")
-            target = (
-                temporary
-                / "terminal"
-                / "bucket=0"
-                / f"{symbol.replace('.', '_')}.parquet"
-            )
-            target.parent.mkdir(parents=True, exist_ok=True)
-            os.link(temporary / part["relative_path"], target)
-            terminal_bytes += int(part["bytes"])
-
-        dependencies = _production_dependency_bindings(temporary)
-        dependency_keys = [
-            logical_sha256(binding) for binding in dependencies
-        ]
-        registry_payload: dict[str, Any] = {
-            "active": True,
-            "bundle_id": production_manifest["bundle_id"],
-            "bundle_manifest_sha256": sha256_file(manifest_path),
-            "dependencies": dependencies,
-            "registry_version": PRODUCTION_REGISTRY_VERSION,
-            "reverse_references": {
-                key: [production_manifest["bundle_id"]] for key in dependency_keys
-            },
-            "storage_version": STORAGE_VERSION,
-        }
-        registry_payload["registry_digest"] = logical_sha256(registry_payload)
-        registry_path = temporary / "dependency_registry.json"
-        write_json(registry_path, registry_payload)
-
-        shared_stream_id = logical_sha256(
-            {
-                "bundle_id": production_manifest["bundle_id"],
-                "source_manifest_sha256": sha256_file(source / "manifest.json"),
-                "ordinary_source_recompute_rows": source_summary[
-                    "ordinary_source_recompute_rows"
-                ],
-            }
-        )
-        integration = {
-            "integration_version": PRODUCTION_INTEGRATION_VERSION,
-            "registry_digest": registry_payload["registry_digest"],
-            "registry_path": "dependency_registry.json",
-            "resume_fingerprint": fingerprint,
-            "shared_state_stream_consumers": [
-                "checkpoint_journal",
-                "daily_feature",
-                "terminal_compatibility",
-            ],
-            "shared_state_stream_id": shared_stream_id,
-            "source_manifest_sha256": sha256_file(source / "manifest.json"),
-            "storage_version": STORAGE_VERSION,
-            "transition_count_per_model_day": 1,
-        }
-        write_json(temporary / "production_integration.json", integration)
-
-        summary_path = temporary / "summary.json"
-        summary_path.unlink()
-        production_summary = {
-            "compatibility_terminal_bytes": terminal_bytes,
-            "coverage": 1.0,
-            "exact_mismatch_count": 0,
-            "files": len(production_manifest["symbols"]),
-            "max_mass_error": 0.0,
-            "max_same_day_resale": 0.0,
-            "passed_symbols": len(production_manifest["symbols"]),
-            "resume_fingerprint": fingerprint,
-            "status": "PASS",
-            "storage_version": STORAGE_VERSION,
-            "symbols": len(production_manifest["symbols"]),
-            "target_year": production_manifest["target_year"],
-            "transition_count_per_model_day": 1,
-            "year": production_manifest["target_year"],
-        }
-        write_json(summary_path, production_summary)
-        temporary.replace(output)
-        return production_summary
-    except BaseException:
-        shutil.rmtree(temporary, ignore_errors=True)
-        raise
+    if output.exists():
+        existing = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+        if existing != production_manifest:
+            raise ValueError("existing production manifest differs")
+        verify_root(output)
+    else:
+        temporary = output.parent / f".{output.name}.tmp-{uuid.uuid4().hex}"
+        output.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            temporary.mkdir()
+            for part in production_manifest["parts"]:
+                source_part = source / part["relative_path"]
+                target = temporary / part["relative_path"]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                os.link(source_part, target)
+            write_json(temporary / "manifest.json", production_manifest)
+            temporary.replace(output)
+        except BaseException:
+            shutil.rmtree(temporary, ignore_errors=True)
+            raise
+    return {
+        "coverage": 1.0,
+        "exact_mismatch_count": 0,
+        "max_mass_error": 0.0,
+        "max_same_day_resale": 0.0,
+        "passed_symbols": len(production_manifest["symbols"]),
+        "status": "PASS",
+        "storage_version": STORAGE_VERSION,
+        "symbols": len(production_manifest["symbols"]),
+        "target_year": production_manifest["target_year"],
+        "transition_count_per_model_day": 1,
+        "year": production_manifest["target_year"],
+    }

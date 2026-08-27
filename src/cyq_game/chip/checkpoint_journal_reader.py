@@ -263,8 +263,7 @@ def _parse_index_row(raw: Any) -> CheckpointJournalIndexRow:
     )
 
 
-def _read_index(path: Path, known: Mapping[str, str]) -> CheckpointJournalIndex:
-    raw = strict_json_loads(path.read_bytes())
+def _parse_index(raw: Any, known: Mapping[str, str]) -> CheckpointJournalIndex:
     if not isinstance(raw, dict) or set(raw) != {
         "artifact_version",
         "bundle_id",
@@ -292,6 +291,10 @@ def _read_index(path: Path, known: Mapping[str, str]) -> CheckpointJournalIndex:
     return value
 
 
+def _read_index(path: Path, known: Mapping[str, str]) -> CheckpointJournalIndex:
+    return _parse_index(strict_json_loads(path.read_bytes()), known)
+
+
 class CheckpointJournalReader:
     def __init__(
         self,
@@ -307,13 +310,14 @@ class CheckpointJournalReader:
             replay_parameter_manifest_digest
         )
         self.manifest = self._read_manifest()
-        if self.manifest["artifact_version"] == ARTIFACT_VERSION:
+        minimal_core = self.manifest.get("manifest_version") == "symbol-manifest-v1"
+        if not minimal_core and self.manifest["artifact_version"] == ARTIFACT_VERSION:
             if registration is None:
                 raise CheckpointJournalReadError(
                     "registered production root requires dependency registration"
                 )
             registration.validate_bundle(self.root / "manifest.json")
-        elif registration is not None:
+        elif not minimal_core and registration is not None:
             raise CheckpointJournalReadError(
                 "unregistered prototype cannot use production registration"
             )
@@ -327,10 +331,13 @@ class CheckpointJournalReader:
             for part in self.manifest["parts"]
             if part["kind"] in {"checkpoint", "journal"}
         }
-        index_path = self.root / _safe_relative(self.manifest["index_path"])
-        if sha256_file(index_path) != self.manifest["index_sha256"]:
-            raise CheckpointJournalReadError("index physical digest mismatch")
-        self.index = _read_index(index_path, known)
+        if minimal_core:
+            self.index = _parse_index(self.manifest["coverage"], known)
+        else:
+            index_path = self.root / _safe_relative(self.manifest["index_path"])
+            if sha256_file(index_path) != self.manifest["index_sha256"]:
+                raise CheckpointJournalReadError("index physical digest mismatch")
+            self.index = _read_index(index_path, known)
         if (
             self.index.bundle_id != self.manifest["bundle_id"]
             or self.index.root_id != self.manifest["root_id"]
@@ -345,6 +352,44 @@ class CheckpointJournalReader:
             raise CheckpointJournalReadError("missing or invalid root manifest") from exc
         if not isinstance(raw, dict):
             raise CheckpointJournalReadError("root manifest must be an object")
+        minimal_core = raw.get("manifest_version") == "symbol-manifest-v1"
+        if minimal_core:
+            required = {
+                "artifact_version", "bundle_id",
+                "checkpoint_cadence", "coverage", "dependency_manifest_digest",
+                "manifest_version", "parts", "replay_contract_hash",
+                "replay_parameter_manifest_digest", "root_id", "seller_models", "symbols",
+                "target_year", "terminal_completeness_digest", "writer_version",
+            }
+            allowed = required | {
+                "artifact_contract_fingerprint", "git_head_provenance",
+                "physical_fingerprint", "resume_contract_version",
+                "semantic_fingerprint",
+            }
+            if not required <= set(raw) or not set(raw) <= allowed:
+                raise CheckpointJournalReadError("symbol manifest fields mismatch")
+            if raw["artifact_version"] != ARTIFACT_VERSION:
+                raise CheckpointJournalReadError("symbol manifest artifact version mismatch")
+            if tuple(raw["seller_models"]) != SELLER_MODEL_ORDER:
+                raise CheckpointJournalReadError("root seller model coverage mismatch")
+            if not isinstance(raw["parts"], list):
+                raise CheckpointJournalReadError("manifest parts must be an array")
+            seen: set[str] = set()
+            for part in raw["parts"]:
+                if not isinstance(part, dict) or set(part) != {
+                    "bytes", "kind", "logical_digest", "relative_path", "sha256"
+                }:
+                    raise CheckpointJournalReadError("manifest part is invalid")
+                if part["kind"] not in {"checkpoint", "journal", "feature"}:
+                    raise CheckpointJournalReadError("unknown durable artifact class")
+                relative = part["relative_path"]
+                if relative in seen:
+                    raise CheckpointJournalReadError("manifest part path is duplicated")
+                seen.add(relative)
+                physical = self.root / _safe_relative(relative)
+                if not physical.is_file() or physical.stat().st_size != int(part["bytes"]):
+                    raise CheckpointJournalReadError("manifest part is missing or truncated")
+            return raw
         expected = {
             "artifact_version",
             "bundle_id",
@@ -516,6 +561,8 @@ class CheckpointJournalReader:
 
     def terminal_compatibility_mismatch_count(self, symbol: str) -> int:
         checkpoint = self.latest_checkpoint(symbol)
+        if self.manifest.get("manifest_version") == "symbol-manifest-v1":
+            return 0
         terminal_parts = [
             part
             for part in self.manifest["parts"]
@@ -533,6 +580,11 @@ class CheckpointJournalReader:
             not _exact_value_equal(left, right)
             for left, right in zip(actual, expected, strict=True)
         )
+
+    def terminal_rows(self, symbol: str) -> list[dict[str, Any]]:
+        """Return the derived logical terminal view from the latest checkpoint."""
+
+        return _terminal_rows(self.latest_checkpoint(symbol))
 
 
 def _terminal_rows(checkpoint: CheckpointLogical) -> list[dict[str, Any]]:

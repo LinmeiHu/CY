@@ -81,11 +81,11 @@ from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
     build_journal_day,
     build_journal_logical,
     finish_symbol_artifacts,
+    manifest_coverage,
     regular_file_bytes,
     sha256_file,
     verify_root,
     write_checkpoint_part,
-    write_index,
     write_journal_part,
     write_json,
 )
@@ -3387,7 +3387,6 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
         )
     )
     feature_path = temporary_root / "feature.parquet"
-    terminal_path = temporary_root / "terminal.parquet"
     feature_rows: list[tuple[object, ...]] = []
     features: list[dict[str, Any]] = []
     checkpoint_parts: dict[date, tuple[ArtifactFileMetadata, str]] = {}
@@ -3488,7 +3487,7 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
         )
 
     try:
-        result, terminal_snapshots = _run_symbol(
+        result, _ = _run_symbol(
             symbol,
             daily_rows,
             minute_rows,
@@ -3503,7 +3502,6 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
         if emitted_dates != replayable_dates:
             raise RuntimeError("direct sinks diverged from replayable day authority")
         write_daily_feature_rows(feature_rows, feature_path)
-        _write_terminal_snapshots(terminal_path, terminal_snapshots)
         artifact = finish_symbol_artifacts(
             root=candidate_root,
             symbol=symbol,
@@ -3512,7 +3510,6 @@ def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]
             journal_parts=journal_parts,
             features=features,
             feature_source_path=feature_path,
-            terminal_source_path=terminal_path,
             dependency_manifest_digest=dependency_manifest_digest,
             replay_parameter_manifest_digest=payload[
                 "replay_parameter_manifest_digest"
@@ -4057,22 +4054,22 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
     artifacts = [
         _checkpoint_journal_artifact_from_payload(results[symbol]) for symbol in symbols
     ]
-    index_path = write_index(
-        candidate_root,
-        artifacts,
-        bundle_id=common["bundle_id"],
-        root_id=common["root_id"],
-    )
     manifest = {
-        "artifact_version": "v12-phase2-checkpoint-journal-3symbol-candidate-v1",
+        "artifact_version": CHECKPOINT_JOURNAL_ARTIFACT_VERSION,
         "bundle_id": common["bundle_id"],
         "checkpoint_cadence": CHECKPOINT_CADENCE,
+        "coverage": manifest_coverage(
+            artifacts,
+            bundle_id=common["bundle_id"],
+            root_id=common["root_id"],
+        ),
         "dependency_manifest_digest": dependency_manifest_digest,
-        "index_path": "index.json",
-        "index_sha256": sha256_file(index_path),
-        "parts": _checkpoint_journal_manifest_parts(artifacts),
-        "registered": False,
-        "registry_modified": False,
+        "manifest_version": "symbol-manifest-v1",
+        "parts": [
+            part
+            for part in _checkpoint_journal_manifest_parts(artifacts)
+            if part["kind"] in {"checkpoint", "journal", "feature"}
+        ],
         "replay_contract_hash": replay_contract_hash,
         "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
         "root_id": common["root_id"],
@@ -4080,7 +4077,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
         "symbols": list(symbols),
         "target_year": args.year,
         "terminal_completeness_digest": terminal_completeness_digest,
-        "writer_version": PHASE2_WRITER_VERSION,
+        "writer_version": PRODUCTION_WRITER_VERSION,
         "resume_contract_version": RESUME_CONTRACT_VERSION,
         "semantic_fingerprint": semantic_fingerprint,
         "artifact_contract_fingerprint": artifact_contract_fingerprint,
