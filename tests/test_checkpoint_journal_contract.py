@@ -11,13 +11,20 @@ import zlib
 from dataclasses import fields, replace
 from datetime import UTC, date, datetime
 from enum import StrEnum
+from pathlib import Path
 
+import numpy as np
 import pytest
 
+import cyq_game.chip.checkpoint_journal_writer as checkpoint_writer
 from cyq_game.chip.checkpoint_codec import (
     checkpoint_logical_digest,
     decode_checkpoint,
     encode_checkpoint,
+)
+from cyq_game.chip.checkpoint_compact_codec import (
+    PRODUCTION_CHECKPOINT_CODEC_VERSION,
+    decode_compact_checkpoint,
 )
 from cyq_game.chip.checkpoint_journal_contract import (
     ARTIFACT_VERSION,
@@ -104,6 +111,7 @@ from cyq_game.chip.journal_codec import (
     journal_logical_digest,
     validate_journal_logical,
 )
+from cyq_game.chip.state_v2 import TurnoverSensitivity, stable_cell_id
 
 _FIXED_CHECKPOINT_FIXTURE_ZLIB_BASE64 = (
     "eNrtWUtv40YS/i86W4N+P+Y2O+tgjZ14grGzQDYOiOruaptrmlRIygvtwP99i6QkS7IcGMkYmIN1sKnu6npXfV3i"
@@ -997,6 +1005,53 @@ def test_checkpoint_deterministic_across_repeated_runs() -> None:
     payloads = {encode_checkpoint(checkpoint) for _ in range(20)}
     digests = {checkpoint_logical_digest(checkpoint) for _ in range(20)}
     assert len(payloads) == len(digests) == 1
+
+
+def test_capacity_codec_is_the_actual_production_checkpoint_writer(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    checkpoint = _checkpoint()
+    identity = checkpoint.identities[0]
+    checkpoint = replace(
+        checkpoint,
+        identities=(
+            replace(
+                identity,
+                cell_id=stable_cell_id(
+                    cost_bucket_id=identity.cost_bucket_id,
+                    holding_days=identity.holding_days,
+                    sensitivity=TurnoverSensitivity(identity.sensitivity),
+                    economic_break_even=None,
+                ),
+            ),
+        ),
+    )
+    calls: list[tuple[Path, CheckpointLogical]] = []
+    production_write = checkpoint_writer.write_compact_checkpoint
+
+    def traced_write(path: Path, logical: CheckpointLogical) -> int:
+        calls.append((path, logical))
+        return production_write(path, logical)
+
+    monkeypatch.setattr(checkpoint_writer, "write_compact_checkpoint", traced_write)
+    metadata, logical_digest = checkpoint_writer.write_checkpoint_part(
+        tmp_path, checkpoint
+    )
+    path = tmp_path / metadata.relative_path
+
+    assert calls == [(path, checkpoint)]
+    assert metadata.relative_path.endswith(".npz")
+    assert metadata.logical_digest == logical_digest == checkpoint_logical_digest(checkpoint)
+    assert decode_compact_checkpoint(path) == checkpoint
+    second_root = tmp_path / "second"
+    second_metadata, _ = checkpoint_writer.write_checkpoint_part(second_root, checkpoint)
+    assert path.read_bytes() == (second_root / second_metadata.relative_path).read_bytes()
+    with np.load(path, allow_pickle=False) as archive:
+        assert int(archive["union_identity"][0]) == 1
+        assert archive["identity_cost_bucket"].shape == (len(checkpoint.identities),)
+        assert archive["model_lot_offsets"].shape == (len(SELLER_MODEL_ORDER) + 1,)
+        assert all(archive[name].dtype != object for name in archive.files)
+    assert PRODUCTION_CHECKPOINT_CODEC_VERSION == "chip-checkpoint-compact-union-npz-v1"
 
 
 def test_checkpoint_duplicate_identity_and_missing_seller_fail_closed() -> None:

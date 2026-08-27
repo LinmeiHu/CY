@@ -38,6 +38,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from cyq_game.chip._migration_kernel import stable_sum  # noqa: E402
+from cyq_game.chip.checkpoint_compact_codec import (  # noqa: E402
+    PRODUCTION_CHECKPOINT_CODEC_VERSION,
+    PRODUCTION_CHECKPOINT_COMPRESSION_LEVEL,
+    PRODUCTION_CHECKPOINT_CONTAINER,
+    PRODUCTION_CHECKPOINT_LAYOUT,
+)
 from cyq_game.chip.checkpoint_journal_contract import (  # noqa: E402
     ARTIFACT_VERSION as CHECKPOINT_JOURNAL_ARTIFACT_VERSION,
 )
@@ -72,6 +78,7 @@ from cyq_game.chip.checkpoint_journal_index import (  # noqa: E402
 from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
     CHECKPOINT_CADENCE,
     PHASE2_WRITER_VERSION,
+    PRODUCTION_WRITER_VERSION,
     ArtifactFileMetadata,
     SymbolArtifacts,
     activate_production_bundle,
@@ -174,8 +181,8 @@ TZ = ZoneInfo("Asia/Shanghai")
 
 RESUME_CONTRACT_VERSION = "v12-phase7-resume-contract-v2"
 INPUT_MANIFEST_VERSION = "v12-phase7-symbol-input-manifest-v1"
-ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v2"
-PHYSICAL_CONTRACT_VERSION = "v12-phase7-physical-contract-v1"
+ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v3"
+PHYSICAL_CONTRACT_VERSION = "v12-phase7-physical-contract-v2"
 CHECKPOINT_CADENCE_ALGORITHM_VERSION = "replayable-target-dates-v1"
 SHARD_MANIFEST_VERSION = "v12-phase7-symbol-shard-manifest-v2"
 BUFFER_CANDIDATES = (3, 24, 48, 96)
@@ -200,6 +207,7 @@ def _artifact_contract_fingerprint() -> str:
                 CHECKPOINT_CADENCE_ALGORITHM_VERSION
             ),
             "checkpoint_codec_version": CHECKPOINT_CODEC_VERSION,
+            "production_checkpoint_codec_version": PRODUCTION_CHECKPOINT_CODEC_VERSION,
             "index_version": INDEX_VERSION,
             "journal_codec_version": JOURNAL_CODEC_VERSION,
             "manifest_contract": "phase7-hash-once-manifest-v1",
@@ -211,17 +219,34 @@ def _artifact_contract_fingerprint() -> str:
     )
 
 
-def _physical_fingerprint(output_buffer_rows: int) -> str:
-    return logical_sha256(
-        {
-            "physical_contract_version": PHYSICAL_CONTRACT_VERSION,
+def _physical_contract(output_buffer_rows: int) -> dict[str, Any]:
+    return {
+        "physical_contract_version": PHYSICAL_CONTRACT_VERSION,
+        "checkpoint": {
+            "codec": PRODUCTION_CHECKPOINT_CODEC_VERSION,
+            "compression": "deflate",
+            "compression_level": PRODUCTION_CHECKPOINT_COMPRESSION_LEVEL,
+            "container": PRODUCTION_CHECKPOINT_CONTAINER,
+            "layout": PRODUCTION_CHECKPOINT_LAYOUT,
+        },
+        "journal": {
+            "codec": JOURNAL_CODEC_VERSION,
+            "compression": "none",
+            "container": "canonical-json",
+        },
+        "daily_feature": {
             "compression": "zstd",
             "compression_level": PARQUET_COMPRESSION_LEVEL,
+            "container": "parquet",
             "dictionary_encoding": True,
-            "operator_row_group_rows": output_buffer_rows,
+            "row_group_rows": output_buffer_rows,
             "writer": "pyarrow.parquet.ParquetWriter",
-        }
-    )
+        },
+    }
+
+
+def _physical_fingerprint(output_buffer_rows: int) -> str:
+    return logical_sha256(_physical_contract(output_buffer_rows))
 
 
 def _git_head_provenance() -> str:
@@ -3829,6 +3854,7 @@ def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
         "semantic_fingerprint": semantic_fingerprint,
         "artifact_contract_fingerprint": artifact_contract_fingerprint,
         "physical_fingerprint": physical_fingerprint,
+        "physical_contract": _physical_contract(buffer_rows),
         "git_head_provenance": git_head,
     }
     write_json(candidate_root / "manifest.json", manifest)

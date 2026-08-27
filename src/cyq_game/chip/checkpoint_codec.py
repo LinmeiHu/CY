@@ -426,6 +426,28 @@ def _decode_logical(raw: Any) -> CheckpointLogical:
     )
 
 
+def decode_checkpoint_logical_bytes(logical: bytes) -> CheckpointLogical:
+    """Decode and validate canonical logical bytes independent of a container."""
+
+    value = _decode_logical(strict_json_loads(logical))
+    validate_checkpoint_logical(value)
+    if canonical_json_bytes(value) != logical:
+        raise ContractError("checkpoint payload is not canonical")
+    if (
+        value.storage_version,
+        value.schema_version,
+        value.artifact_version,
+        value.transition_semantics_version,
+    ) != (
+        STORAGE_VERSION,
+        SCHEMA_VERSION,
+        ARTIFACT_VERSION,
+        TRANSITION_SEMANTICS_VERSION,
+    ):
+        raise ContractError("checkpoint cross-version decode is forbidden")
+    return value
+
+
 def decode_checkpoint(payload: bytes) -> CheckpointLogical:
     envelope = _exact_fields(strict_json_loads(payload), _ENVELOPE_FIELDS, "checkpoint envelope")
     if envelope["codec_mode"] != REFERENCE_CODEC_MODE:
@@ -439,15 +461,4 @@ def decode_checkpoint(payload: bytes) -> CheckpointLogical:
     digest = hashlib.sha256(logical).hexdigest()
     if envelope["logical_digest"] != digest:
         raise ContractError("checkpoint logical digest mismatch")
-    value = _decode_logical(strict_json_loads(logical))
-    validate_checkpoint_logical(value)
-    if checkpoint_logical_bytes(value) != logical:
-        raise ContractError("checkpoint payload is not canonical")
-    if (
-        value.storage_version,
-        value.schema_version,
-        value.artifact_version,
-        value.transition_semantics_version,
-    ) != (STORAGE_VERSION, SCHEMA_VERSION, ARTIFACT_VERSION, TRANSITION_SEMANTICS_VERSION):
-        raise ContractError("checkpoint cross-version decode is forbidden")
-    return value
+    return decode_checkpoint_logical_bytes(logical)

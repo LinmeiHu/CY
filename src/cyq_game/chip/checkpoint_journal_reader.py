@@ -13,10 +13,8 @@ from typing import Any, Mapping, Protocol, Sequence
 
 import pyarrow.parquet as pq
 
-from cyq_game.chip.checkpoint_codec import (
-    checkpoint_logical_digest,
-    decode_checkpoint,
-)
+from cyq_game.chip.checkpoint_codec import checkpoint_logical_digest
+from cyq_game.chip.checkpoint_compact_codec import decode_compact_checkpoint
 from cyq_game.chip.checkpoint_journal_contract import (
     ARTIFACT_VERSION,
     SCHEMA_VERSION,
@@ -42,11 +40,11 @@ from cyq_game.chip.journal_codec import (
     JournalModelDigests,
     decode_journal,
 )
-from cyq_game.data.registry import CheckpointJournalRegistration
 from cyq_game.chip.migration_v2 import (
     StableLogPriceGrid,
     bucket_for_economic_break_even,
 )
+from cyq_game.data.registry import CheckpointJournalRegistration
 
 PHASE3_READER_VERSION = "checkpoint-journal-reader-phase3-v1"
 PHASE2_MANIFEST_VERSION = "v12-phase2-checkpoint-journal-3symbol-candidate-v1"
@@ -363,7 +361,7 @@ class CheckpointJournalReader:
             }
             allowed = required | {
                 "artifact_contract_fingerprint", "git_head_provenance",
-                "physical_fingerprint", "resume_contract_version",
+                "physical_contract", "physical_fingerprint", "resume_contract_version",
                 "semantic_fingerprint",
             }
             if not required <= set(raw) or not set(raw) <= allowed:
@@ -460,7 +458,7 @@ class CheckpointJournalReader:
         path = self.root / _safe_relative(row.checkpoint_part_path)
         if sha256_file(path) != row.checkpoint_part_digest:
             raise CheckpointJournalReadError("checkpoint physical digest mismatch")
-        value = decode_checkpoint(path.read_bytes())
+        value = decode_compact_checkpoint(path)
         if (
             value.symbol != row.symbol
             or value.checkpoint_date != row.checkpoint_anchor_date
@@ -548,10 +546,12 @@ class CheckpointJournalReader:
             if part["kind"] == "checkpoint"
             and part["relative_path"].startswith(f"symbol={symbol}/")
         ]
-        values = [
-            decode_checkpoint((self.root / _safe_relative(part["relative_path"])).read_bytes())
-            for part in parts
-        ]
+        values = []
+        for part in parts:
+            path = self.root / _safe_relative(part["relative_path"])
+            if sha256_file(path) != part["sha256"]:
+                raise CheckpointJournalReadError("checkpoint physical digest mismatch")
+            values.append(decode_compact_checkpoint(path))
         if not values:
             raise CheckpointJournalReadError("symbol has no checkpoint")
         latest = max(values, key=lambda value: value.checkpoint_date)

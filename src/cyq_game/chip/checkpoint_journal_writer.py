@@ -21,10 +21,10 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from cyq_game.chip.checkpoint_codec import (
-    checkpoint_logical_digest,
-    decode_checkpoint,
-    encode_checkpoint,
+from cyq_game.chip.checkpoint_codec import checkpoint_logical_digest
+from cyq_game.chip.checkpoint_compact_codec import (
+    decode_compact_checkpoint,
+    write_compact_checkpoint,
 )
 from cyq_game.chip.checkpoint_journal_contract import (
     ARTIFACT_VERSION,
@@ -416,22 +416,22 @@ def _atomic_write_bytes(path: Path, payload: bytes) -> None:
 def write_checkpoint_part(
     root: Path, logical: CheckpointLogical
 ) -> tuple[ArtifactFileMetadata, str]:
-    """Atomically encode one checkpoint without an immediate forensic decode."""
+    """Atomically write the compact production checkpoint container."""
 
-    payload = encode_checkpoint(logical)
     relative = (
         Path(f"symbol={logical.symbol}")
         / "checkpoints"
-        / f"{logical.checkpoint_label}.json"
+        / f"{logical.checkpoint_label}.npz"
     ).as_posix()
-    _atomic_write_bytes(root / relative, payload)
+    path = root / relative
+    physical_bytes = write_compact_checkpoint(path, logical)
     logical_digest = checkpoint_logical_digest(logical)
     return (
         ArtifactFileMetadata(
             kind="checkpoint",
             relative_path=relative,
-            bytes=len(payload),
-            sha256=hashlib.sha256(payload).hexdigest(),
+            bytes=physical_bytes,
+            sha256=sha256_file(path),
             logical_digest=logical_digest,
         ),
         logical_digest,
@@ -739,7 +739,7 @@ def verify_root(root: Path, *, verify_all_content: bool = False) -> None:
             if not legacy_digest_verified and sha256_file(path) != part["sha256"]:
                 raise ValueError("manifest part digest mismatch")
             if part["kind"] == "checkpoint":
-                decode_checkpoint(path.read_bytes())
+                decode_compact_checkpoint(path)
             elif part["kind"] == "journal":
                 decode_journal(path.read_bytes())
             elif part["kind"] in {"feature", "terminal"}:
