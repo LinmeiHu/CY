@@ -36,6 +36,7 @@ from cyq_game.chip.migration_v2 import (
     _compact_packed_lots_by_dimensions,
     _PackedWorkingLots,
 )
+from cyq_game.chip.state_v2 import stable_cell_id
 
 MODEL_VERSION = "chip-state-v2-test"
 GRID_VERSION = "log-grid-v1-test"
@@ -281,7 +282,6 @@ def test_packed_inventory_events_match_object_oracle_after_every_event() -> None
     engine = _engine()
     object_lots = engine._age_previous_inventory(previous)
     packed_lots = _PackedWorkingLots(
-        cell_ids=np.asarray([lot.cell_id for lot in object_lots], dtype=np.int64),
         cost_bucket_ids=np.asarray(
             [
                 np.iinfo(np.int64).min
@@ -623,7 +623,6 @@ def test_packed_cap_compaction_merges_duplicate_stable_cell_identity() -> None:
         shares=shares[0],
     )
     lots = _PackedWorkingLots(
-        cell_ids=np.asarray((cell.cell_id, cell.cell_id), dtype=np.int64),
         cost_bucket_ids=np.asarray((1601, 1601), dtype=np.int64),
         holding_days=np.asarray((180, 180), dtype=np.int16),
         sensitivity_codes=np.asarray((2, 2), dtype=np.int8),
@@ -640,7 +639,13 @@ def test_packed_cap_compaction_merges_duplicate_stable_cell_identity() -> None:
     _compact_packed_lots_by_dimensions(lots, max_holding_days=180)
 
     assert len(lots) == 1
-    assert lots.cell_ids.tolist() == [cell.cell_id]
+    expected_id = stable_cell_id(
+        cost_bucket_id=int(lots.cost_bucket_ids[0]),
+        holding_days=int(lots.holding_days[0]),
+        sensitivity=TurnoverSensitivity.STICKY,
+        economic_break_even=float(lots.economic_break_evens[0]),
+    )
+    assert lots.cell_ids.tolist() == [expected_id]
     assert lots.shares[0] == math.fsum(shares)
     assert math.fsum(lots.shares.tolist()) == math.fsum(shares)
     assert len(set(lots.cell_ids.tolist())) == len(lots)

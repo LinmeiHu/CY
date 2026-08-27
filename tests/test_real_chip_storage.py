@@ -38,7 +38,6 @@ def test_packed_profile_bucket_mass_uses_legacy_fsum() -> None:
     bucket = 884
     shares = np.array([1.0e16, 1.0, 1.0], dtype=np.float64)
     packed = _PackedWorkingLots(
-        cell_ids=np.array([1, 2, 3], dtype=np.int64),
         cost_bucket_ids=np.array([0, 0, 0], dtype=np.int64),
         holding_days=np.array([0, 0, 0], dtype=np.int16),
         sensitivity_codes=np.array([0, 0, 0], dtype=np.int8),
@@ -60,7 +59,7 @@ def test_packed_profile_bucket_mass_uses_legacy_fsum() -> None:
     assert by_bucket == {bucket: expected}
 
 
-def test_packed_profile_refreshes_stale_cell_ids_even_when_marked_current() -> None:
+def test_packed_profile_derives_cell_ids_only_from_canonical_primitives() -> None:
     grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
     sensitivity = MODULE["TurnoverSensitivity"].NEUTRAL
     cost_bucket_id = 1293
@@ -72,11 +71,8 @@ def test_packed_profile_refreshes_stale_cell_ids_even_when_marked_current() -> N
         sensitivity=sensitivity,
         economic_break_even=economic_break_even,
     )
-    stale_id = 7449910493840738799
     assert canonical_id == 4579257534702646082
-    assert stale_id != canonical_id
     packed = _PackedWorkingLots(
-        cell_ids=np.array([stale_id], dtype=np.int64),
         cost_bucket_ids=np.array([cost_bucket_id], dtype=np.int64),
         holding_days=np.array([holding_days], dtype=np.int16),
         sensitivity_codes=np.array([1], dtype=np.int8),
@@ -85,7 +81,6 @@ def test_packed_profile_refreshes_stale_cell_ids_even_when_marked_current() -> N
         shares=np.array([17.5], dtype=np.float64),
         initialization_prior_units=np.array([0.0], dtype=np.float64),
     )
-    packed._cell_ids_current = True
     state = SimpleNamespace(packed_lots=packed)
     dimensions_before = (
         packed.cost_bucket_ids.copy(),
@@ -101,8 +96,9 @@ def test_packed_profile_refreshes_stale_cell_ids_even_when_marked_current() -> N
     assert view == {
         canonical_id: (cost_bucket_id, holding_days, sensitivity, 17.5)
     }
+    assert not hasattr(packed, "_cell_ids")
+    assert not hasattr(packed, "_cell_ids_current")
     assert packed.cell_ids.tolist() == [canonical_id]
-    assert stale_id not in view
     assert np.array_equal(packed.cost_bucket_ids, dimensions_before[0])
     assert np.array_equal(packed.holding_days, dimensions_before[1])
     assert np.array_equal(packed.sensitivity_codes, dimensions_before[2])

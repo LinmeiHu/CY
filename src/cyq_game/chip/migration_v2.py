@@ -386,15 +386,12 @@ class _WorkingLot:
     shares: float
     initialization_prior_units: float
     lineage_denominator_shares: float
-    cell_id: int = field(init=False)
 
-    def __post_init__(self) -> None:
-        self.refresh_cell_id()
+    @property
+    def cell_id(self) -> int:
+        """Derive identity from the canonical causal coordinates."""
 
-    def refresh_cell_id(self) -> None:
-        """Recompute when a causal state coordinate changes."""
-
-        self.cell_id = stable_cell_id(
+        return stable_cell_id(
             cost_bucket_id=self.cost_bucket_id,
             holding_days=self.holding_days,
             sensitivity=self.sensitivity,
@@ -439,7 +436,6 @@ class _PackedWorkingLots:
     carries these arrays directly through ordinary and inventory-event days.
     """
 
-    _cell_ids: Int64Array
     _cost_bucket_ids: Int64Array
     _holding_days: Int16Array
     _sensitivity_codes: Int8Array
@@ -448,10 +444,8 @@ class _PackedWorkingLots:
     _shares: FloatArray
     _initialization_prior_units: FloatArray
     _size: int
-    _cell_ids_current: bool
 
     _ARRAY_NAMES = (
-        "cell_ids",
         "cost_bucket_ids",
         "holding_days",
         "sensitivity_codes",
@@ -464,7 +458,6 @@ class _PackedWorkingLots:
     def __init__(
         self,
         *,
-        cell_ids: Int64Array,
         cost_bucket_ids: Int64Array,
         holding_days: Int16Array,
         sensitivity_codes: Int8Array,
@@ -474,7 +467,6 @@ class _PackedWorkingLots:
         initialization_prior_units: FloatArray,
     ) -> None:
         arrays = (
-            cell_ids,
             cost_bucket_ids,
             holding_days,
             sensitivity_codes,
@@ -493,11 +485,34 @@ class _PackedWorkingLots:
             target[:size] = source_array
             setattr(self, f"_{name}", target)
         self._size = size
-        self._cell_ids_current = True
 
     @property
     def cell_ids(self) -> Int64Array:
-        return self._cell_ids[: self._size]
+        """Materialize stable IDs only for the requesting boundary."""
+
+        return np.fromiter(
+            (
+                stable_cell_id(
+                    cost_bucket_id=(
+                        None
+                        if int(self._cost_bucket_ids[index]) == _UNKNOWN_BUCKET_ID
+                        else int(self._cost_bucket_ids[index])
+                    ),
+                    holding_days=int(self._holding_days[index]),
+                    sensitivity=_SENSITIVITY_BY_CODE[
+                        int(self._sensitivity_codes[index])
+                    ],
+                    economic_break_even=(
+                        None
+                        if int(self._cost_bucket_ids[index]) == _UNKNOWN_BUCKET_ID
+                        else float(self._economic_break_evens[index])
+                    ),
+                )
+                for index in range(self._size)
+            ),
+            dtype=np.int64,
+            count=self._size,
+        )
 
     @property
     def cost_bucket_ids(self) -> Int64Array:
@@ -547,18 +562,6 @@ class _PackedWorkingLots:
     @classmethod
     def from_cells(cls, cells: tuple[InventoryCell, ...]) -> _PackedWorkingLots:
         return cls(
-            cell_ids=np.fromiter(
-                (
-                    stable_cell_id(
-                        cost_bucket_id=cell.cost_bucket_id,
-                        holding_days=cell.holding_days,
-                        sensitivity=cell.sensitivity,
-                        economic_break_even=cell.economic_break_even,
-                    )
-                    for cell in cells
-                ),
-                dtype=np.int64,
-            ),
             cost_bucket_ids=np.fromiter(
                 (
                     _UNKNOWN_BUCKET_ID if cell.cost_bucket_id is None else cell.cost_bucket_id
@@ -601,7 +604,6 @@ class _PackedWorkingLots:
         for name in self._ARRAY_NAMES:
             getattr(self, f"_{name}")[start:stop] = getattr(other, name)
         self._size = stop
-        self._cell_ids_current = self._cell_ids_current and other._cell_ids_current
 
     def append_inventory_lot(
         self,
@@ -630,67 +632,7 @@ class _PackedWorkingLots:
         )
         self._shares[index] = shares
         self._initialization_prior_units[index] = 0.0
-        if self._cell_ids_current:
-            self._cell_ids[index] = stable_cell_id(
-                cost_bucket_id=cost_bucket_id,
-                holding_days=holding_days,
-                sensitivity=sensitivity,
-                economic_break_even=economic_break_even,
-            )
-        else:
-            self._cell_ids[index] = 0
         self._size += 1
-
-    def refresh_cell_ids(self) -> None:
-        """Materialize stable ids only at a public/lineage boundary.
-
-        During warm-up the three integer dimensions are authoritative.  Hashing
-        every surviving lot after every daily age increment is pure repeated
-        work; one materialization restores the exact public ids when output or
-        lineage is requested.
-        """
-
-        if self._cell_ids_current:
-            return
-        size = self._size
-        if size == 0:
-            self._cell_ids_current = True
-            return
-        dimensions = np.empty(
-            size,
-            dtype=[
-                ("bucket", np.int64),
-                ("holding", np.int16),
-                ("sensitivity", np.int8),
-                ("economic", np.float64),
-            ],
-        )
-        dimensions["bucket"] = self._cost_bucket_ids[:size]
-        dimensions["holding"] = self._holding_days[:size]
-        dimensions["sensitivity"] = self._sensitivity_codes[:size]
-        dimensions["economic"] = self._economic_break_evens[:size]
-        unique_dimensions, inverse = np.unique(dimensions, return_inverse=True)
-        unique_ids = np.fromiter(
-            (
-                stable_cell_id(
-                    cost_bucket_id=(
-                        None if int(bucket) == _UNKNOWN_BUCKET_ID else int(bucket)
-                    ),
-                    holding_days=int(holding_days),
-                    sensitivity=_SENSITIVITY_BY_CODE[int(sensitivity_code)],
-                    economic_break_even=(
-                        None
-                        if int(bucket) == _UNKNOWN_BUCKET_ID
-                        else float(economic_break_even)
-                    ),
-                )
-                for bucket, holding_days, sensitivity_code, economic_break_even in unique_dimensions
-            ),
-            dtype=np.int64,
-            count=int(unique_dimensions.shape[0]),
-        )
-        self._cell_ids[:size] = unique_ids[inverse]
-        self._cell_ids_current = True
 
     def append_purchases(
         self,
@@ -735,22 +677,6 @@ class _PackedWorkingLots:
         self._economic_break_evens[start:stop] = prices
         self._shares[start:stop] = volumes
         self._initialization_prior_units[start:stop] = 0.0
-        if self._cell_ids_current:
-            self._cell_ids[start:stop] = np.fromiter(
-                (
-                    stable_cell_id(
-                        cost_bucket_id=int(bucket_ids[index]),
-                        holding_days=0,
-                        sensitivity=_SENSITIVITY_BY_CODE[int(sensitivity_codes[index])],
-                        economic_break_even=float(prices[index]),
-                    )
-                    for index in range(count)
-                ),
-                dtype=np.int64,
-                count=count,
-            )
-        else:
-            self._cell_ids[start:stop] = 0
         self._size = stop
 
     def retain(self, mask: BoolArray) -> None:
@@ -763,7 +689,6 @@ class _PackedWorkingLots:
         self._size = retained
 
     def to_cells(self) -> tuple[InventoryCell, ...]:
-        self.refresh_cell_ids()
         cells: list[InventoryCell] = []
         for index in range(len(self)):
             bucket = int(self.cost_bucket_ids[index])
@@ -869,7 +794,6 @@ def _compact_packed_lots_by_dimensions(
             dtype=np.int64,
             count=int(capped.size),
         )
-        lots._cell_ids[capped] = capped_cell_ids
         order = np.argsort(capped_cell_ids, kind="stable")
         ordered = capped[order]
         ordered_cell_ids = capped_cell_ids[order]
@@ -909,12 +833,7 @@ def _compact_packed_lots_by_dimensions(
         lots.retain(keep)
         positive = lots._shares[: len(lots)] > 0
         keep = positive.copy()
-    # A canonical merge can replace the economic break-even with its weighted
-    # aggregate.  The cached ids therefore no longer describe this packed
-    # state and must be regenerated before a lineage/writer boundary.
-    if merged:
-        lots._cell_ids_current = False
-    elif not bool(np.all(keep)):
+    if not merged and not bool(np.all(keep)):
         lots.retain(keep)
 
 
@@ -922,11 +841,12 @@ def _canonicalize_packed_event_lots(lots: _PackedWorkingLots) -> None:
     """Reproduce event-day object aggregation in stable insertion order."""
 
     size = len(lots)
+    cell_ids = lots.cell_ids
     grouped: dict[int, list[int]] = {}
     for index in range(size):
         if lots._shares[index] <= 0:
             continue
-        grouped.setdefault(int(lots._cell_ids[index]), []).append(index)
+        grouped.setdefault(int(cell_ids[index]), []).append(index)
     if not grouped:
         raise ChipStateContractError("inventory cannot be empty after aggregation")
 
@@ -968,13 +888,7 @@ def _canonicalize_packed_event_lots(lots: _PackedWorkingLots) -> None:
                 / combined_shares
             )
         lots._shares[first] = combined_shares
-        lots._cell_ids[first] = cell_id
     lots.retain(keep)
-    if merged:
-        # The object oracle retains the pre-aggregate id even when the weighted
-        # binary64 economic coordinate changes.  Preserve that temporary stale
-        # state until the existing canonical writer boundary regenerates ids.
-        lots._cell_ids_current = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -1283,7 +1197,6 @@ class DailyMigrationEngine:
         model_version: str,
         max_holding_days: int = DEFAULT_MAX_HOLDING_DAYS,
         active_purchase_fraction: float = 0.7,
-        aged_cell_id_cache: dict[int, int] | None = None,
     ) -> None:
         if not model_version:
             raise ChipStateContractError("model_version cannot be empty")
@@ -1296,26 +1209,11 @@ class DailyMigrationEngine:
         self.model_version = model_version
         self.max_holding_days = max_holding_days
         self.active_purchase_fraction = active_purchase_fraction
-        # Aging is model-independent.  A full symbol replay otherwise performs
-        # millions of cached-hash calls for the same cell -> next-day cell map.
-        # The annual builder shares this small map across its three models.
-        self._aged_cell_id_cache = aged_cell_id_cache if aged_cell_id_cache is not None else {}
 
     def _age_lot(self, lot: _WorkingLot) -> None:
         if lot.holding_days < 0 or lot.holding_days >= self.max_holding_days:
             return
-        previous_cell_id = lot.cell_id
         lot.holding_days += 1
-        aged_cell_id = self._aged_cell_id_cache.get(previous_cell_id)
-        if aged_cell_id is None:
-            aged_cell_id = stable_cell_id(
-                cost_bucket_id=lot.cost_bucket_id,
-                holding_days=lot.holding_days,
-                sensitivity=lot.sensitivity,
-                economic_break_even=lot.economic_break_even,
-            )
-            self._aged_cell_id_cache[previous_cell_id] = aged_cell_id
-        lot.cell_id = aged_cell_id
 
     def advance_day(
         self,
@@ -1572,14 +1470,11 @@ class DailyMigrationEngine:
             else MutableChipState.from_snapshot(previous_post)
         )
         lots = state.packed_lots
-        if build_transition or inventory_events:
-            lots.refresh_cell_ids()
 
         previous_snapshot_id = state.snapshot_id
         # Keep active array views local.  Accessing the sliced properties inside
         # the per-lot loop created millions of tiny ndarray views per symbol.
         size = len(lots)
-        cell_ids = lots._cell_ids[:size]
         cost_bucket_ids = lots._cost_bucket_ids[:size]
         holding_days = lots._holding_days[:size]
         sensitivity_codes = lots._sensitivity_codes[:size]
@@ -1588,45 +1483,12 @@ class DailyMigrationEngine:
         economic_break_evens = lots._economic_break_evens[:size]
         initialization_prior_units = lots._initialization_prior_units[:size]
         source_count = size
-        source_cell_ids = (
-            cell_ids.copy() if build_transition or inventory_events else None
-        )
+        source_cell_ids = lots.cell_ids if build_transition or inventory_events else None
         lineage_denominator_shares = (
             shares.copy() if inventory_events else None
         )
         age_mask = (holding_days >= 0) & (holding_days < self.max_holding_days)
         holding_days[age_mask] += 1
-        if build_transition or inventory_events:
-            aged_cell_id_cache = self._aged_cell_id_cache
-            age_indices = np.flatnonzero(age_mask)
-            # Many lots have the same canonical dimensions.  Age each distinct
-            # cell id once in Python, then broadcast the result in NumPy.
-            aged_from_ids, first_positions, inverse = np.unique(
-                cell_ids[age_indices], return_index=True, return_inverse=True
-            )
-            aged_to_ids = np.empty_like(aged_from_ids)
-            for unique_position, previous_cell_id_raw in enumerate(aged_from_ids):
-                previous_cell_id = int(previous_cell_id_raw)
-                aged_cell_id = aged_cell_id_cache.get(previous_cell_id)
-                if aged_cell_id is None:
-                    item = int(age_indices[int(first_positions[unique_position])])
-                    bucket = int(cost_bucket_ids[item])
-                    aged_cell_id = stable_cell_id(
-                        cost_bucket_id=(None if bucket == _UNKNOWN_BUCKET_ID else bucket),
-                        holding_days=int(holding_days[item]),
-                        sensitivity=_SENSITIVITY_BY_CODE[int(sensitivity_codes[item])],
-                        economic_break_even=(
-                            None
-                            if bucket == _UNKNOWN_BUCKET_ID
-                            else float(economic_break_evens[item])
-                        ),
-                    )
-                    aged_cell_id_cache[previous_cell_id] = aged_cell_id
-                aged_to_ids[unique_position] = aged_cell_id
-            cell_ids[age_indices] = aged_to_ids[inverse]
-            lots._cell_ids_current = True
-        else:
-            lots._cell_ids_current = False
 
         free_float = state.free_float_shares
         latent_supply = state.latent_supply_shares
@@ -1642,6 +1504,7 @@ class DailyMigrationEngine:
                     latent_supply=latent_supply,
                     event=event,
                 )
+        cell_ids = lots.cell_ids if build_transition else None
         if abs(free_float - expected_free_float_shares) > tolerance(
             expected_free_float_shares
         ):
@@ -1704,7 +1567,7 @@ class DailyMigrationEngine:
                 input_snapshot_ids=pre_input_ids,
                 hard_valid=pre_hard_valid,
                 quality_reason_codes=pre_codes,
-                inventory_cell_count=len(set(lots._cell_ids[:size][positive].tolist())),
+                inventory_cell_count=len(set(cell_ids[positive].tolist())),
                 inventory_total_shares=pre_total,
                 known_cost_shares=pre_known,
                 unknown_cost_shares=pre_unknown,
@@ -1931,7 +1794,6 @@ class DailyMigrationEngine:
                         lot.economic_break_even,
                         cash_per_share=event.cash_per_share,
                     )
-                    lot.refresh_cell_id()
         elif event.kind == InventoryEventKind.SPLIT:
             ratio = event.share_ratio
             for lot in lots:
@@ -1949,7 +1811,6 @@ class DailyMigrationEngine:
                         lot.economic_break_even, share_multiplier=ratio
                     )
                     lot.cost_bucket_id = self.grid.bucket_for_price(lot.acquisition_cost)
-                    lot.refresh_cell_id()
             free_float *= ratio
             latent_supply *= ratio
         elif event.kind == InventoryEventKind.FLOAT_ADD_KNOWN:
@@ -2029,14 +1890,6 @@ class DailyMigrationEngine:
                     float(lots._economic_break_evens[index]),
                     cash_per_share=event.cash_per_share,
                 )
-                lots._cell_ids[index] = stable_cell_id(
-                    cost_bucket_id=int(lots._cost_bucket_ids[index]),
-                    holding_days=int(lots._holding_days[index]),
-                    sensitivity=_SENSITIVITY_BY_CODE[
-                        int(lots._sensitivity_codes[index])
-                    ],
-                    economic_break_even=float(lots._economic_break_evens[index]),
-                )
         elif event.kind == InventoryEventKind.SPLIT:
             ratio = event.share_ratio
             for index in range(size):
@@ -2055,14 +1908,6 @@ class DailyMigrationEngine:
                 )
                 lots._cost_bucket_ids[index] = self.grid.bucket_for_price(
                     float(lots._acquisition_costs[index])
-                )
-                lots._cell_ids[index] = stable_cell_id(
-                    cost_bucket_id=int(lots._cost_bucket_ids[index]),
-                    holding_days=int(lots._holding_days[index]),
-                    sensitivity=_SENSITIVITY_BY_CODE[
-                        int(lots._sensitivity_codes[index])
-                    ],
-                    economic_break_even=float(lots._economic_break_evens[index]),
                 )
             free_float *= ratio
             latent_supply *= ratio
@@ -2115,7 +1960,6 @@ class DailyMigrationEngine:
         latent_supply += event.latent_supply_delta
         if latent_supply < 0:
             raise ChipStateContractError("inventory event made latent supply negative")
-        lots._cell_ids_current = True
         return free_float, latent_supply
 
     def _seller_hazard(self, lot: _WorkingLot, price: float) -> float:

@@ -844,8 +844,6 @@ class _CellCodec:
         self,
         state: MutableChipState,
         grid: StableLogPriceGrid,
-        *,
-        current_cell_ids_verified: bool = False,
     ) -> tuple[
         dict[int, tuple[int | None, int, TurnoverSensitivity, float]],
         dict[int, float],
@@ -867,15 +865,10 @@ class _CellCodec:
                 TurnoverSensitivity.NEUTRAL,
                 TurnoverSensitivity.STICKY,
             )
-            if not current_cell_ids_verified:
-                # External/legacy callers are not trusted to maintain the flag;
-                # recomputation keeps stale-id handling fail closed/canonical.
-                packed._cell_ids_current = False
-            packed.refresh_cell_ids()
             size = len(packed)
             shares_array = packed._shares[:size]
             active_indices = np.flatnonzero(shares_array > 0)
-            cell_ids = packed._cell_ids
+            cell_ids = packed.cell_ids
             bucket_ids = packed._cost_bucket_ids
             acquisition_costs = packed._acquisition_costs
             economic_break_evens = packed._economic_break_evens
@@ -1823,11 +1816,7 @@ def _output_row(
     """Encode a checkpoint or a compact daily operator/replay locator."""
 
     current, by_bucket, known_shares, current_economic_buckets = (
-        codec.register_state_and_profile(
-            state,
-            grid,
-            current_cell_ids_verified=True,
-        )
+        codec.register_state_and_profile(state, grid)
     )
     metrics = None
     profile_close = current_price
@@ -2164,13 +2153,11 @@ def _run_symbol(
         fact.trading_date for fact in facts if fact.target_required
     )
     grid = StableLogPriceGrid(1.0, 0.0025, GRID_VERSION)
-    aged_cell_id_cache: dict[int, int] = {}
     engines = {
         model: DailyMigrationEngine(
             grid=grid,
             seller_model=model,
             model_version=MODEL_VERSION,
-            aged_cell_id_cache=aged_cell_id_cache,
         )
         for model in SELLER_MODEL_ORDER
     }
@@ -2326,11 +2313,6 @@ def _run_symbol(
                 prepared_minute_path=prepared_minute_path,
                 build_transition=emit_day,
             )
-            if inventory_events:
-                # Exact event-day aggregation can change an economic coordinate
-                # by one bit.  Regenerate identity at the existing canonical
-                # output boundary after all packed mutations are complete.
-                mutable_state.packed_lots._cell_ids_current = False
             _canonicalize_packed_output_state(mutable_state)
             current[model] = mutable_state
             max_mass_error = max(
@@ -3176,25 +3158,25 @@ def _checkpoint_codec_parts_from_packed_states(
 ) -> tuple[tuple[CellIdentity, ...], tuple[CheckpointModelState, ...]]:
     """Project canonical packed arrays directly into the checkpoint schema."""
 
-    packed_states: list[tuple[MutableChipState, np.ndarray]] = []
+    packed_states: list[tuple[MutableChipState, np.ndarray, np.ndarray]] = []
     identities_by_id: dict[int, CellIdentity] = {}
     for model in SELLER_MODEL_ORDER:
         state = states[model]
         if not isinstance(state, MutableChipState):
             raise TypeError("production checkpoint capture requires packed mutable state")
         packed = state.packed_lots
-        packed.refresh_cell_ids()
         size = len(packed)
         active = np.flatnonzero(packed._shares[:size] > 0)
-        cell_ids = packed._cell_ids[active]
-        if np.unique(cell_ids).size != active.size:
+        derived_cell_ids = packed.cell_ids
+        active_cell_ids = derived_cell_ids[active]
+        if np.unique(active_cell_ids).size != active.size:
             raise ValueError("checkpoint capture received duplicate canonical identities")
-        order = np.argsort(cell_ids, kind="stable")
+        order = np.argsort(active_cell_ids, kind="stable")
         active = active[order]
-        packed_states.append((state, active))
+        packed_states.append((state, active, derived_cell_ids))
         for index_value in active:
             index = int(index_value)
-            cell_id = int(packed._cell_ids[index])
+            cell_id = int(derived_cell_ids[index])
             economic_break_even = float(packed._economic_break_evens[index])
             identity = CellIdentity(
                 cell_id=cell_id,
@@ -3233,13 +3215,13 @@ def _checkpoint_codec_parts_from_packed_states(
         destination_digest=empty_digest,
     )
     model_states = []
-    for state, active in packed_states:
+    for state, active, derived_cell_ids in packed_states:
         packed = state.packed_lots
         if packed is None:
             raise AssertionError("packed checkpoint state disappeared")
         lots = tuple(
             CheckpointLot(
-                identity_position=positions[int(packed._cell_ids[int(index_value)])],
+                identity_position=positions[int(derived_cell_ids[int(index_value)])],
                 shares_bits=f64be_bits(float(packed._shares[int(index_value)])),
                 acquisition_cost_bits=(
                     f64be_bits(float(packed._acquisition_costs[int(index_value)]))
@@ -3305,16 +3287,16 @@ def _canonicalize_packed_output_state(state: MutableChipState) -> None:
     packed = state.packed_lots
     if packed is None:
         return
-    packed.refresh_cell_ids()
     size = len(packed)
     active = np.flatnonzero(packed._shares[:size] > 0)
-    cell_ids = packed._cell_ids[active]
-    if np.unique(cell_ids).size == active.size:
+    derived_cell_ids = packed.cell_ids
+    active_cell_ids = derived_cell_ids[active]
+    if np.unique(active_cell_ids).size == active.size:
         return
     grouped: dict[int, list[int]] = defaultdict(list)
     for index_value in active:
         index = int(index_value)
-        grouped[int(packed._cell_ids[index])].append(index)
+        grouped[int(derived_cell_ids[index])].append(index)
     keep = np.ones(size, dtype=bool)
     for cell_id, indexes in grouped.items():
         if len(indexes) == 1:
@@ -3351,7 +3333,6 @@ def _canonicalize_packed_output_state(state: MutableChipState) -> None:
             )
         keep[indexes[1:]] = False
     packed.retain(keep)
-    packed._cell_ids_current = True
 
 
 def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]:
