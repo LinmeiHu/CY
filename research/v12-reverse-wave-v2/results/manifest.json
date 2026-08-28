@@ -1,0 +1,131 @@
+{
+  "artifacts": {
+    "control_events.parquet": {
+      "bytes": 357592,
+      "sha256": "16b26352aa8318d0f8ba51dcfa86f12a165555345f9828f34c9a840c60734aa6"
+    },
+    "event_sample.parquet": {
+      "bytes": 1048759,
+      "sha256": "3ed8c0f5439cdadd80f63b4ff59b24ed1ad78a28bb49f18584a261e5c8c2c2d8"
+    },
+    "feature_catalog.csv": {
+      "bytes": 7577,
+      "sha256": "9e4c35afcc532bc12354ec048b25f45d890e75a124e11081a298a161dda68b45"
+    },
+    "feature_family_classification.csv": {
+      "bytes": 3268,
+      "sha256": "418e01a4c9aedfd4e80f290c508ec88bb895a4938e491f93c4a7b0c75e32d3aa"
+    },
+    "feature_lead_analysis.csv": {
+      "bytes": 50606,
+      "sha256": "738e6e001e62dc8b092ad0cfb4a452cf6632c581cec1f04c7b30dece85fdb85a"
+    },
+    "feature_threshold_coverage.csv": {
+      "bytes": 421619,
+      "sha256": "eb8e02c2d7efd29940c4e81f83281ece969da5a0ea1a1fa4f86f643176942274"
+    },
+    "feature_univariate.csv": {
+      "bytes": 128840,
+      "sha256": "4dc25d582fbdddfcfb0da07ed419efce55f90b6642e98673b1c44811223271a1"
+    },
+    "price_wave_labels.parquet": {
+      "bytes": 5616445,
+      "sha256": "71c5748fcad51f9ea83cce79f14908991b47596b69a43c4dbf664b38897abde0"
+    },
+    "production_attribution.parquet": {
+      "bytes": 76646,
+      "sha256": "bce00a558866af5f7f7426a894a6fc573175f2bf34591be9738318c6f9f1c6ae"
+    },
+    "production_attribution_counts.csv": {
+      "bytes": 46,
+      "sha256": "ee89158138dfbc45e5fb73f7f778f2dd5037aaf0cd2648df67cb9328cacb3dc1"
+    },
+    "rejected_winner_gates.parquet": {
+      "bytes": 74666,
+      "sha256": "aba3ffd05c07e071e642d5229a4c9ad2c4b75b1d051e7ad9122ae061e905e3c9"
+    },
+    "sample_summary.csv": {
+      "bytes": 1304,
+      "sha256": "eebaabf76862087dbf3b5292ddd27e45dc1726bf3b87e28810a7c9efeaaefde6"
+    },
+    "threshold_audit.csv": {
+      "bytes": 3695,
+      "sha256": "48a2fc4ad6c607c0be726949b658ec599267e4fdb2186295043c11148f52955e"
+    },
+    "verdicts.json": {
+      "bytes": 547,
+      "sha256": "25d45defb0b609f132b7c06fb5859ffaef98582fdfed2d775de292a804dbfa03"
+    },
+    "wave_events.parquet": {
+      "bytes": 754899,
+      "sha256": "0a6a513601331906ea3ecbef3924c0dc6cbe891bb921e2098c494fcb54c25a72"
+    }
+  },
+  "baseline_implementation_commit": "f502367049ad291dc703c63fdd594798171c9e97",
+  "chronological_splits": {
+    "discovery": "feature_date <= 2020-04-30",
+    "holdout": "feature_date >= 2020-09-01",
+    "validation": "2020-05-01 <= feature_date <= 2020-08-31"
+  },
+  "counts": {
+    "authoritative_attributed_waves": 1599,
+    "authoritative_missed_winners": 1599,
+    "deduplicated_wave_events": 1599,
+    "entry_execution_rows": 0,
+    "frozen_feature_rows": 121251,
+    "price_label_candidate_rows": 121186,
+    "raw_any_upside_rows": 30448,
+    "spaced_control_events": 650,
+    "strict_temporal_valid_rows": 36219
+  },
+  "input_evidence": {
+    "daily_inventory_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "daily_inventory_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "daily_partition_sha256": {
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "2021": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+    },
+    "feature_part_bytes_verified": 25623241,
+    "feature_parts_verified": 500,
+    "freeze_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "ledger_artifact_sha256": {
+      "decision_gates.parquet": "35817766cf05f6b7a5e77078735f6226698fd51955204926ae852f6a1f111381",
+      "execution_events.parquet": "7cb6111adb970b9b4cff51f511e0fadc46ca4698ef996f6068dea1b4d99f432b",
+      "lifecycle_events.parquet": "66a120d028a268696df8a5b85702a4ca0d7db95da8639134de8310da35ac65e7",
+      "lifecycle_summary.parquet": "7d1d9876a0cc98140380f9fc497449bea27a792a428be1f240a5ed29bdce6b3e"
+    },
+    "ledger_manifest_sha256": "4b4ba0325f41dfcda5f9a7e8e3f259907dbf596f5b2863f622bf2503c7e30254",
+    "ledger_provenance": {
+      "artifact_contract_fingerprint": "ca30bc8f06d80b4667f7274ec94185968b99f46e86781b42a6b47fa5ca7c3a98",
+      "execution_config_fingerprint": "db2c711dc9b2ebc61bdc652907ba207420b0c5836e94385bebc162581ae9f487",
+      "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+      "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+      "ledger_implementation_commit": "3488a95dfb17815e7ea23f065c702106dcd10437",
+      "ledger_schema_version": "v12-lifecycle-entry-exit-ledger-v1",
+      "semantic_fingerprint": "54eebd57b9f3507d7bad302c65161e8ded3371c4d6edf5a4a5d8b8fc7be75e12",
+      "strategy_parameter_id": "9baed76ec299161c",
+      "strategy_version": "markup-retest-v3-tracked-peak",
+      "v3_build_commit": "c81bc30a381e8cebcc5b9f8d36524a8a4c9f0151"
+    },
+    "root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a"
+  },
+  "price_wave_label_policy": {
+    "control_segmentation": "nonwinner starts after 20 sessions of feature history, >=60 sessions apart, and >60 sessions from selected wave starts",
+    "coordinate": "cumulative close/preclose; future high and low mapped through the same chain",
+    "downside_labels": [
+      "-10% within 20",
+      "-20% within 60",
+      "neutral +/-10% within 60"
+    ],
+    "event_start": "next recorded trading session T+1",
+    "feature_observation": "bar T available at 15:00 Asia/Shanghai",
+    "upside_labels": [
+      "+20% within 20",
+      "+30% within 40",
+      "+50% within 60"
+    ],
+    "wave_segmentation": "union-positive candidate runs allowing <=5 intervening noncandidates; select lowest economic baseline, earliest tie"
+  },
+  "study": "Reverse Wave Study V2",
+  "study_contract_version": "reverse-wave-v2-pit-price-ledger-v1"
+}

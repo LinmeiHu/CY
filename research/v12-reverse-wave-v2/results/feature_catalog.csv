@@ -1,0 +1,72 @@
+name,family,kind,category,description
+base_exists,structural_base,binary,absolute_state,Canonical rolling structural base exists.
+strict_temporal_valid,structural_base,binary,absolute_state,"Base exists with no ambiguity, split, merge, or loss flag."
+peak_track_age,peak_age,continuous,absolute_state,Canonical V3 tracked-peak age.
+peak_track_mass,peak_mass,continuous,absolute_state,Canonical V3 tracked-peak mass; never substituted.
+peak_track_prominence,peak_prominence,continuous,absolute_state,Canonical V3 tracked-peak prominence; never substituted.
+peak_band_width_abs,peak_shape,continuous,absolute_state,Tracked band upper minus lower in the causal price coordinate.
+peak_band_width_rel_price,peak_shape,continuous,absolute_state,Tracked band width divided by same-day close.
+peak_location_rel_price,peak_shape,continuous,absolute_state,Tracked peak divided by same-day close minus one.
+rolling_base_episode_age,base_persistence,continuous,persistence,Observed consecutive same-base binding age; left-censored when necessary.
+days_since_rebinding,base_persistence,continuous,persistence,Trading sessions since an in-window observed rebind; left-censored episodes are null.
+rebinding_observed,base_persistence,binary,lifecycle_event,Current base episode has an observed in-window rebind.
+base_presence_5,base_persistence,continuous,persistence,Base-existence fraction over T through T-4.
+base_presence_10,base_persistence,continuous,persistence,Base-existence fraction over T through T-9.
+base_presence_20,base_persistence,continuous,persistence,Base-existence fraction over T through T-19.
+peak_track_split,lifecycle_events,binary,lifecycle_event,Canonical V3 split flag.
+peak_track_merge,lifecycle_events,binary,lifecycle_event,Canonical V3 merge flag.
+peak_track_lost,lifecycle_events,binary,lifecycle_event,Canonical V3 lost flag.
+split_count_20,lifecycle_events,continuous,persistence,Split-event count over T through T-19.
+merge_count_20,lifecycle_events,continuous,persistence,Merge-event count over T through T-19.
+lost_count_20,lifecycle_events,continuous,persistence,Lost-event count over T through T-19.
+ensemble_ambiguity,ensemble_ambiguity,binary,absolute_state,Exact-three-model ensemble ambiguity state.
+ambiguity_rate_20,ensemble_ambiguity,continuous,persistence,Ensemble ambiguity fraction over T through T-19.
+concentration_20,scalar_chip,continuous,absolute_state,Frozen fact concentration within 20%.
+profit_ratio,scalar_chip,continuous,absolute_state,Frozen fact profit ratio.
+asr,scalar_chip,continuous,absolute_state,Frozen fact ASR scalar.
+cbw,scalar_chip,continuous,absolute_state,Frozen fact CBW scalar.
+average_cost_rel_price,cost_anchors,continuous,absolute_state,Average cost divided by close minus one.
+p01_rel_price,cost_anchors,continuous,absolute_state,p01 cost divided by close minus one.
+p10_rel_price,cost_anchors,continuous,absolute_state,p10 cost divided by close minus one.
+p50_rel_price,cost_anchors,continuous,absolute_state,p50 cost divided by close minus one.
+p90_rel_price,cost_anchors,continuous,absolute_state,p90 cost divided by close minus one.
+p99_rel_price,cost_anchors,continuous,absolute_state,p99 cost divided by close minus one.
+model_spread_cost_p50,model_consensus,continuous,absolute_state,Seller-model p50 spread from the frozen fact.
+model_spread_cost_p90,model_consensus,continuous,absolute_state,Seller-model p90 spread from the frozen fact.
+model_spread_dominant_peak_today,model_consensus,continuous,absolute_state,Seller-model dominant-peak spread.
+peak_track_age_chg_5,peak_age,continuous,recent_change,PIT-safe T minus T-5 change in peak_track_age.
+peak_track_age_chg_10,peak_age,continuous,recent_change,PIT-safe T minus T-10 change in peak_track_age.
+peak_track_age_chg_20,peak_age,continuous,recent_change,PIT-safe T minus T-20 change in peak_track_age.
+peak_track_mass_chg_5,peak_mass,continuous,recent_change,PIT-safe T minus T-5 change in peak_track_mass.
+peak_track_mass_chg_10,peak_mass,continuous,recent_change,PIT-safe T minus T-10 change in peak_track_mass.
+peak_track_mass_chg_20,peak_mass,continuous,recent_change,PIT-safe T minus T-20 change in peak_track_mass.
+peak_track_prominence_chg_5,peak_prominence,continuous,recent_change,PIT-safe T minus T-5 change in peak_track_prominence.
+peak_track_prominence_chg_10,peak_prominence,continuous,recent_change,PIT-safe T minus T-10 change in peak_track_prominence.
+peak_track_prominence_chg_20,peak_prominence,continuous,recent_change,PIT-safe T minus T-20 change in peak_track_prominence.
+peak_band_width_rel_price_chg_5,peak_shape,continuous,recent_change,PIT-safe T minus T-5 change in peak_band_width_rel_price.
+peak_band_width_rel_price_chg_10,peak_shape,continuous,recent_change,PIT-safe T minus T-10 change in peak_band_width_rel_price.
+peak_band_width_rel_price_chg_20,peak_shape,continuous,recent_change,PIT-safe T minus T-20 change in peak_band_width_rel_price.
+peak_location_rel_price_chg_5,peak_shape,continuous,recent_change,PIT-safe T minus T-5 change in peak_location_rel_price.
+peak_location_rel_price_chg_10,peak_shape,continuous,recent_change,PIT-safe T minus T-10 change in peak_location_rel_price.
+peak_location_rel_price_chg_20,peak_shape,continuous,recent_change,PIT-safe T minus T-20 change in peak_location_rel_price.
+base_presence_20_chg_5,base_persistence,continuous,recent_change,PIT-safe T minus T-5 change in base_presence_20.
+base_presence_20_chg_10,base_persistence,continuous,recent_change,PIT-safe T minus T-10 change in base_presence_20.
+base_presence_20_chg_20,base_persistence,continuous,recent_change,PIT-safe T minus T-20 change in base_presence_20.
+concentration_20_chg_5,scalar_chip,continuous,recent_change,PIT-safe T minus T-5 change in concentration_20.
+concentration_20_chg_10,scalar_chip,continuous,recent_change,PIT-safe T minus T-10 change in concentration_20.
+concentration_20_chg_20,scalar_chip,continuous,recent_change,PIT-safe T minus T-20 change in concentration_20.
+profit_ratio_chg_5,scalar_chip,continuous,recent_change,PIT-safe T minus T-5 change in profit_ratio.
+profit_ratio_chg_10,scalar_chip,continuous,recent_change,PIT-safe T minus T-10 change in profit_ratio.
+profit_ratio_chg_20,scalar_chip,continuous,recent_change,PIT-safe T minus T-20 change in profit_ratio.
+average_cost_rel_price_chg_5,cost_anchors,continuous,recent_change,PIT-safe T minus T-5 change in average_cost_rel_price.
+average_cost_rel_price_chg_10,cost_anchors,continuous,recent_change,PIT-safe T minus T-10 change in average_cost_rel_price.
+average_cost_rel_price_chg_20,cost_anchors,continuous,recent_change,PIT-safe T minus T-20 change in average_cost_rel_price.
+p10_rel_price_chg_5,cost_anchors,continuous,recent_change,PIT-safe T minus T-5 change in p10_rel_price.
+p10_rel_price_chg_10,cost_anchors,continuous,recent_change,PIT-safe T minus T-10 change in p10_rel_price.
+p10_rel_price_chg_20,cost_anchors,continuous,recent_change,PIT-safe T minus T-20 change in p10_rel_price.
+p50_rel_price_chg_5,cost_anchors,continuous,recent_change,PIT-safe T minus T-5 change in p50_rel_price.
+p50_rel_price_chg_10,cost_anchors,continuous,recent_change,PIT-safe T minus T-10 change in p50_rel_price.
+p50_rel_price_chg_20,cost_anchors,continuous,recent_change,PIT-safe T minus T-20 change in p50_rel_price.
+p90_rel_price_chg_5,cost_anchors,continuous,recent_change,PIT-safe T minus T-5 change in p90_rel_price.
+p90_rel_price_chg_10,cost_anchors,continuous,recent_change,PIT-safe T minus T-10 change in p90_rel_price.
+p90_rel_price_chg_20,cost_anchors,continuous,recent_change,PIT-safe T minus T-20 change in p90_rel_price.
