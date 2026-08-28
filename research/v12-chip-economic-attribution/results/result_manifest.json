@@ -1,0 +1,177 @@
+{
+  "accounting_identity": {
+    "formula": "end_equity - start_equity = realized_net_pnl + terminal_unrealized_net_pnl",
+    "p6_holdout_residual": -2.498001805406602e-16
+  },
+  "artifacts": {
+    "V12_CHIP_OVERLAY_ECONOMIC_ATTRIBUTION_AND_WINNER_PRESERVATION_STUDY.md": {
+      "bytes": 25795,
+      "sha256": "9c0fff635365d028cc5b0d9201ebf703a2e0396ba28c02977e61bb153021e52c"
+    },
+    "confirmation_removed_trade_analysis.csv": {
+      "bytes": 15224,
+      "sha256": "3e9a379b9b990089c2aa1e159d014695f6c144ea5730cd0e494718d0fa01c998"
+    },
+    "cross_baseline_chip_consistency.csv": {
+      "bytes": 7229,
+      "sha256": "8112cbde0429044c9c5bbe90ffb120095295fd42a19ce45676b596a92d025fc0"
+    },
+    "deterioration_diagnostics.csv": {
+      "bytes": 783,
+      "sha256": "0ef1f82a561aab269613aca98621d8c8f7b5a03f28bc73b64e5155fc7f0f93a8"
+    },
+    "deterioration_response_comparison.csv": {
+      "bytes": 3231,
+      "sha256": "08ddf35f627e57b70a6d22b8b7301550c5c70412b199b3f3ae4bca26320f4dc7"
+    },
+    "overlay_stage_attribution.csv": {
+      "bytes": 3852,
+      "sha256": "ab0eccc159a3c2afbaab0431d07b8533e40fd1a3bfab042cf8cc24aae1d40d32"
+    },
+    "p6_pnl_reconciliation.csv": {
+      "bytes": 28138,
+      "sha256": "1563d6b4b2d071ceec20d2d937317088876285eac1bca3b70f2e254d768ca6d3"
+    },
+    "pareto_frontier.csv": {
+      "bytes": 1452,
+      "sha256": "0b532d464bdeae9cebfd9fecdbdf599f186944bff1eea83651c030dbb3b2fb22"
+    },
+    "profit_factor_reconciliation.csv": {
+      "bytes": 5202,
+      "sha256": "7ee88179573693b543734c94aa5ad7617762abee9fb79057d31229b8ed4b3bba"
+    },
+    "soft_risk_overlay_comparison.csv": {
+      "bytes": 6891,
+      "sha256": "8869fbad8d0399f5a4a288f9e7d1b9f96ad2515dc9fe9157c20ae7f3f25a0109"
+    },
+    "top_winner_intervention_audit.parquet": {
+      "bytes": 77022,
+      "sha256": "07de9fab0497a2d0be19d1dca3f9f881ee85d540a0c8086999c6150ed8ddd798"
+    },
+    "top_winner_intervention_summary.csv": {
+      "bytes": 37440,
+      "sha256": "78f9647ffca88bd5d3b0e465c347df0d906179fce0d1a391bc89a0b373431fa7"
+    },
+    "topology_state_conditional.csv": {
+      "bytes": 2513,
+      "sha256": "a59b054cde9ae25f19ef42614cf5093ef1b806b5daffa3a94a7c46363131fe6a"
+    },
+    "winner_loser_chip_trajectories.parquet": {
+      "bytes": 26873,
+      "sha256": "b74ef3e1b654e44219c48dfe528fec7d1c181663b90db82632f43f9f0d0925c9"
+    },
+    "winner_survival_waterfall.csv": {
+      "bytes": 5093,
+      "sha256": "aa083d4d0f53310e4163bb423ac83c12224218a0442dd54de1cda93759c3dd3a"
+    }
+  },
+  "baseline_trades_reused_without_modification": true,
+  "candidate_universe_reused_without_modification": true,
+  "chronological_splits_unchanged": {
+    "discovery": "feature_date <= 2020-04-30",
+    "holdout": "feature_date >= 2020-09-01",
+    "validation": "2020-05-01 <= feature_date <= 2020-08-31"
+  },
+  "combined_selection": {
+    "scores": "[{\"variant\":\"COMBINED_S1_D3\",\"discovery_top_decile_mfe_retention\":0.6849223994,\"discovery_weighted_large_loss_exposure\":0.0334075724,\"discovery_max_drawdown\":-0.084929226,\"discovery_net_return\":-0.028540537},{\"variant\":\"COMBINED_S2_D3\",\"discovery_top_decile_mfe_retention\":0.4861154118,\"discovery_weighted_large_loss_exposure\":0.0299145299,\"discovery_max_drawdown\":-0.0584025321,\"discovery_net_return\":-0.020805406}]",
+    "selected_source": "COMBINED_S1_D3",
+    "selection_population": "discovery only",
+    "selection_rule": "Among S1+D3 and S2+D3, choose on discovery only by highest size-weighted top-decile MFE retention, then lower size-weighted large-loss exposure, then maximum drawdown, then net return."
+  },
+  "counts": {
+    "baseline_holdout_completed_trades": 915,
+    "baseline_holdout_top_decile_winners": 92,
+    "baseline_rows": 2937,
+    "candidate_episodes": 5671,
+    "candidate_symbol_days": 47518,
+    "candidate_symbols": 494
+  },
+  "deterioration_contract_preregistered": {
+    "D0": "no chip deterioration action",
+    "D1": "block further adding only; the frozen carrier never pyramids, so this is an intentional no-op",
+    "D2": "at next legal sell open reduce 25% on validated chip deterioration and retain a 75% core",
+    "D3": "at next legal sell open reduce 50% only when validated chip deterioration is accompanied by close below PIT MA5; retain a 50% core",
+    "hard_price_stops_override_chip": true,
+    "validated_chip_deterioration": "same exact canonical track; both mass and prominence at least 20% below their PIT running maxima"
+  },
+  "hard_gates": {
+    "CHIP_VALUE_ROBUST_ACROSS_PRICE_BASELINES": "YES",
+    "CONFIRMATION_VALUE_PRIMARILY_DOWNSIDE_FILTERING": "YES",
+    "CONFIRMATION_VALUE_SOURCE_IDENTIFIED": "YES",
+    "HARD_CHIP_FILTERING_OVERSELECTIVE": "YES",
+    "MASS_PROMINENCE_DETERIORATION_BETTER_FOR_DERISKING_THAN_ENTRY_FILTERING": "MIXED",
+    "P6_PORTFOLIO_RETURN_RECONCILED": "YES",
+    "P6_POSITIVE_RETURN_DEPENDS_MATERIALLY_ON_TERMINAL_MARK_TO_MARKET": "YES",
+    "POSITIVE_HOLDOUT_PORTFOLIO_ECONOMICS_FOUND": "YES",
+    "POSITIVE_HOLDOUT_TRADE_ECONOMICS_FOUND": "NO",
+    "SAFE_TO_DESIGN_PNL_ORIENTED_SWING_STRATEGY": "NO",
+    "SAFE_TO_EXPAND_RESEARCH_TO_FULL_MARKET_3941": "NO",
+    "SAFE_TO_IMPLEMENT_NEW_PRODUCTION_STRATEGY": "NO",
+    "SIMPLE_INTERPRETABLE_CHIP_OVERLAY_FOUND": "NO",
+    "SOFT_CHIP_RISK_SCALING_IMPROVES_WINNER_PRESERVATION": "YES",
+    "SOFT_CHIP_RISK_SCALING_RETAINS_DOWNSIDE_BENEFIT": "YES",
+    "TOPOLOGY_EVENTS_DIRECTLY_BEARISH": "MIXED",
+    "TOP_DECILE_WINNER_RETENTION_ACCEPTABLE": "YES",
+    "TOP_WINNER_DESTRUCTION_STAGE_IDENTIFIED": "YES",
+    "TOP_WINNER_PRIMARY_LOSS_MECHANISM": "FILTERING"
+  },
+  "input_evidence": {
+    "baseline_trades_sha256": "79ec9b89005bdc0cdfb7a41a9f5e2f825c4057e1406b102dd50ca2206a238c05",
+    "candidate_universe_sha256": "3913c3f839c9a5a9f682e47ff256be53a5a8395e371b34df019959692e7dc82a",
+    "pnl_study_commit": "0601a6e82e",
+    "pnl_study_commit_is_ancestor": true,
+    "prior_artifacts_verified": 13,
+    "prior_manifest_sha256": "147be513e339604092788da6731a1241973beea10c77d4f5b1ca0f2ae0b55b93",
+    "prior_runner_sha256": "90594bde9af002d649be9c8fa424fe837c8652095e754d1be77743a7ecef621a"
+  },
+  "portfolio_contract_unchanged": {
+    "baseline_target_fraction": 0.1,
+    "initial_capital": 1.0,
+    "leverage": false,
+    "maximum_concurrent_positions": 10,
+    "tie_break": "descending price trigger strength, then symbol, then trade_id"
+  },
+  "research_object_contract": {
+    "frozen_candidate_universe_modified": false,
+    "frozen_chip_artifacts_modified": false,
+    "full_market_3941_build_started": false,
+    "future_outcome_class_used_by_live_rule": false,
+    "mandatory_hard_price_stop_overridden": false,
+    "production_code_modified": false,
+    "production_strategy_implemented": false,
+    "same_bar_fill_permitted": false,
+    "v3_temporal_semantics_modified": false
+  },
+  "runner": {
+    "path": "research/v12-chip-economic-attribution/run_chip_economic_attribution.py",
+    "sha256": "37fea2ad9b7aac7bd0080154f170114b18bacccf3be4a047a4a4de6558e85432"
+  },
+  "selection_used_discovery_only": true,
+  "soft_risk_contract_preregistered": {
+    "S1": {
+      "FAVORABLE": 1.0,
+      "UNCERTAIN": 0.75,
+      "WEAK": 0.5
+    },
+    "S2": {
+      "FAVORABLE": 1.0,
+      "UNCERTAIN": 0.5,
+      "WEAK": 0.25
+    },
+    "risk_tiers": {
+      "FAVORABLE": "VALID_CANONICAL_BASE",
+      "UNCERTAIN": "ENSEMBLE_AMBIGUOUS",
+      "WEAK": "all other exact V3 temporal states; no synthetic base is supplied"
+    },
+    "selection_rule": "Among S1+D3 and S2+D3, choose on discovery only by highest size-weighted top-decile MFE retention, then lower size-weighted large-loss exposure, then maximum drawdown, then net return."
+  },
+  "source_pnl_study_commit": "0601a6e82e",
+  "study": "V12 Chip Overlay Economic Attribution and Winner Preservation Study",
+  "study_contract_version": "v12-chip-economic-attribution-v1",
+  "transaction_cost_contract_unchanged": {
+    "commission_each_side_bps": 3.0,
+    "sell_stamp_duty_bps": 10.0,
+    "slippage_each_side_bps": 5.0,
+    "transfer_fee_each_side_bps": 0.2
+  }
+}
