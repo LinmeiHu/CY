@@ -1,0 +1,138 @@
+{
+  "artifacts": {
+    "V12_SETUP_ACCUMULATION_FUNNEL_ROOT_CAUSE_STUDY.md": {
+      "bytes": 15073,
+      "sha256": "129a8597e4db925d4f3fd312dc327dfe58ed0c973b9831368d265ecbe54874f4"
+    },
+    "accumulation_component_audit.csv": {
+      "bytes": 9982,
+      "sha256": "46eacc4480c52e631fdf374e95292dd51d5ae33cdb3126761209a7a08c1ccd96"
+    },
+    "accumulation_score_distribution.csv": {
+      "bytes": 900,
+      "sha256": "37857d42cc72a713f4b40777500696fa5d8c0557c009aa28342c3ef3112a9d7e"
+    },
+    "downstream_threshold_audit.csv": {
+      "bytes": 785,
+      "sha256": "38e6fdf470389ec09ae4cfe83eb1dc0109938b9d4526af349c5f5b0f89c52ca8"
+    },
+    "ensemble_ambiguity_audit.csv": {
+      "bytes": 2125,
+      "sha256": "1c4f9e079a2a2b1e7cc64a88a463279dc40162818458fecb7858c15e22d0e074"
+    },
+    "first_blocker_attribution.csv": {
+      "bytes": 1813,
+      "sha256": "4b92fef1705bf9d8377aa1b4fa03dc6b156d12268847d2e6a6443a44c77bd804"
+    },
+    "funnel_stage_summary.csv": {
+      "bytes": 1445,
+      "sha256": "4c7135832a1f514a69446ca10ba0d94157bda291b50fe2aaa119e4d05e12bab0"
+    },
+    "lifecycle_occupancy_audit.csv": {
+      "bytes": 32946,
+      "sha256": "4e0545d1411355f47fab29ae8176e6269da246cac4af3f45cc263f349bf4f500"
+    },
+    "matched_controls.csv": {
+      "bytes": 601762,
+      "sha256": "895d6dd0da0ae2c556de72dae8dca54fb49bdcce9e7bdeedf1ba9c40c8dcaa08"
+    },
+    "rolling_base_eligibility.csv": {
+      "bytes": 13808,
+      "sha256": "1f3aa37ade41b45a87ffe412f8b01d5ba100ba6cb29e3697d49e329492d9ac1c"
+    },
+    "setup_path_catalog.csv": {
+      "bytes": 3055,
+      "sha256": "f5adcf79d4588182fa636d16bcbd47f764ee52977e8904dd457117f6e36e11fa"
+    },
+    "threshold_coverage_diagnostics.csv": {
+      "bytes": 14589,
+      "sha256": "d659239b7222bb30ab2aa996c4ba61b32c79db7afe160422b546d4f4798409e8"
+    },
+    "validity_gate_audit.csv": {
+      "bytes": 4289,
+      "sha256": "fa32335e7ad5c43ed058ea977cfb5c4bc7a8f75f07bb0b3a2944d4f906d068da"
+    },
+    "wave_funnel.csv": {
+      "bytes": 962680,
+      "sha256": "998fda6aaa076d3732176036c4b7fa81b964ad4f309f8e6b0f71c94f7d8c4cd6"
+    },
+    "wave_vs_control_gate_comparison.csv": {
+      "bytes": 14164,
+      "sha256": "8e2ea71f38ee13c7cd0600fe80b2b5b6ffa141fc05640d64829b5660cb5f8bf9"
+    }
+  },
+  "chronological_splits": {
+    "discovery": "feature_date <= 2020-04-30",
+    "holdout": "feature_date >= 2020-09-01",
+    "validation": "2020-05-01 <= feature_date <= 2020-08-31"
+  },
+  "control_matching_contract": "EXACT_FEATURE_DATE_AND_BOARD_WITHOUT_REPLACEMENT_WITHIN_STRATUM;UNION_UPSIDE_NEGATIVE;DISTANCE_GT_10_FROM_SAME_SYMBOL_SELECTED_WAVE",
+  "counts": {
+    "frozen_rows": 121251,
+    "matched_control_symbols": 462,
+    "matched_controls": 1599,
+    "production_hard_valid_rows": 27736,
+    "production_setup_score_evaluations": 27317,
+    "production_setup_score_passes": 1,
+    "setup_created": 1,
+    "strict_temporal_rows": 36219,
+    "symbols": 500,
+    "waves": 1599
+  },
+  "hard_gates": {
+    "1599_WAVES_FIRST_BLOCKER_ATTRIBUTED": "YES",
+    "ACCUMULATION_SCORE_1_00_IS_DOMINANT_BLOCKER": "NO",
+    "DOMINANT_BLOCKER": "LifecycleObservation.hard_valid (principally unavailable/ambiguous canonical peak identity)",
+    "DOMINANT_BLOCKER_CLASSIFICATION": "TEMPORAL_REPRESENTATION_LIMITATION",
+    "ENSEMBLE_AMBIGUITY_IS_DOMINANT_BLOCKER": "YES",
+    "EXISTING_DOWNSTREAM_THRESHOLDS_IDENTIFIABLE": "PARTIAL",
+    "HARD_VALID_IS_SETUP_BLOCKER": "YES",
+    "IMPLEMENTATION_DEFECT_FOUND": "NO",
+    "MATCHED_CONTROL_FUNNEL_COMPLETE": "YES",
+    "ROLLING_BASE_AVAILABILITY_IS_DOMINANT_BLOCKER": "YES",
+    "SAFE_TO_CHANGE_ACCUMULATION_THRESHOLD": "NO",
+    "SAFE_TO_DESIGN_SETUP_RECALL_REMEDIATION": "NO",
+    "SAFE_TO_PROCEED_TO_STRATEGY_REDESIGN": "NO",
+    "SAFE_TO_START_FULL_MARKET_3941_BUILD": "NO",
+    "SETUP_FUNNEL_RECONSTRUCTED_AUTHORITATIVELY": "YES",
+    "SETUP_STATE_MACHINE_IS_DOMINANT_BLOCKER": "NO",
+    "TEMPORAL_VALIDITY_IS_DOMINANT_BLOCKER": "YES",
+    "UNKNOWN_COST_IS_SETUP_BLOCKER": "NO",
+    "WAVE_RECALL_FAILURE_ROOT_CAUSE_IDENTIFIED": "YES"
+  },
+  "input_evidence": {
+    "authoritative_source_sha256": {
+      "configs/markup_retest_main_chinext_2020_v1.yaml": "a4f2e7da19a6f03300af1f1d7bf802019ea72f228b6cf6caff778278f3902f14",
+      "src/cyq_game/strategy/lifecycle_ledger.py": "b64c9561980ec14e5bd12f45679f0e31fa28e59bbe4193f34d9a2b84fa61ee89",
+      "src/cyq_game/strategy/markup_retest.py": "3f9eb1c9e96c800f721dcb1bc344bee043924ae05f8934d31560f8b331c797f8",
+      "src/cyq_game/strategy/panel.py": "c16b791a26f0b142b1b2e782432523120df394f5c5cb21fd6c4a6c77cd58a810",
+      "src/cyq_game/strategy/signals.py": "07bada68cfecd720d269ab014e7322fa42b56bbeed944ce11429b45ec500cb99"
+    },
+    "authoritative_source_unchanged_from_ledger_commit": true,
+    "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+    "ledger_artifact_sha256": {
+      "decision_gates.parquet": "35817766cf05f6b7a5e77078735f6226698fd51955204926ae852f6a1f111381",
+      "execution_events.parquet": "7cb6111adb970b9b4cff51f511e0fadc46ca4698ef996f6068dea1b4d99f432b",
+      "lifecycle_events.parquet": "66a120d028a268696df8a5b85702a4ca0d7db95da8639134de8310da35ac65e7",
+      "lifecycle_summary.parquet": "7d1d9876a0cc98140380f9fc497449bea27a792a428be1f240a5ed29bdce6b3e"
+    },
+    "ledger_manifest_sha256": "4b4ba0325f41dfcda5f9a7e8e3f259907dbf596f5b2863f622bf2503c7e30254",
+    "ledger_provenance": {
+      "artifact_contract_fingerprint": "ca30bc8f06d80b4667f7274ec94185968b99f46e86781b42a6b47fa5ca7c3a98",
+      "execution_config_fingerprint": "db2c711dc9b2ebc61bdc652907ba207420b0c5836e94385bebc162581ae9f487",
+      "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+      "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+      "ledger_implementation_commit": "3488a95dfb17815e7ea23f065c702106dcd10437",
+      "ledger_schema_version": "v12-lifecycle-entry-exit-ledger-v1",
+      "semantic_fingerprint": "54eebd57b9f3507d7bad302c65161e8ded3371c4d6edf5a4a5d8b8fc7be75e12",
+      "strategy_parameter_id": "9baed76ec299161c",
+      "strategy_version": "markup-retest-v3-tracked-peak",
+      "v3_build_commit": "c81bc30a381e8cebcc5b9f8d36524a8a4c9f0151"
+    },
+    "reverse_wave_v2_completed_commit": "b59b1adde6ba43929f9ad20a533f296d610755dd",
+    "reverse_wave_v2_manifest_sha256": "ea596b5fa2da7d70bbc39d6699a0f6ebfc379ded41fd261fde48107a4458ad9a"
+  },
+  "study": "V12 Setup Accumulation Funnel Root Cause Study",
+  "study_contract_version": "v12-setup-accumulation-funnel-authoritative-v1"
+}

@@ -1,0 +1,17 @@
+execution_order,stage,authoritative_file_function,exact_expression,failure_semantics,later_predicates_evaluated
+0,raw snapshots and PIT availability,signals.observation_from_record; LifecycleLedgerCollector._assert_pit,required snapshots; available_at <= decision_at,fail closed,no
+1,frozen research validity adaptation,lifecycle_ledger.build_frozen_v3_panel,v.research_valid -> chip_input_valid and state_chain_valid; frozen hard_valid is not consumed,fail closed downstream,yes
+2,canonical temporal pre-chain validity,panel._create_panel_table,strategy_available_at <= strategy_decision_at AND bar_valid AND trading_state_valid AND float_valid AND corporate_action_valid AND market_valid AND market_rule_valid AND historical_identity_valid AND chip_input_valid AND state_chain_valid AND NOT action_blocking AND NOT strategy_corporate_action_blocking AND abs(mass_sum-1.0) <= mass_tolerance AND known_cost_fraction_min IS NOT NULL AND known_cost_fraction_min BETWEEN 0 AND 1 AND peak_track_id IS NOT NULL AND NOT peak_track_ambiguous AND NOT peak_track_split AND NOT peak_track_merge AND NOT peak_track_lost AND peak_definition_version = canonical-chip-peak-v2 AND peak_track_version = temporal-chip-peak-v3,fail closed,yes
+3,rolling evidence and five components,panel._create_panel_table,"five exact Boolean expressions; ev_sticky_base uses same peak_track_id at lag20, overlap >=0.55, |p50-p50_lag20|<=ATR",NULL later maps false/score fallback,panel computes all
+4,setup score construction,panel._create_panel_table,sum(five Boolean components)/5.0,non-finite maps to 0,panel computes all
+5,observation hard_valid,signals.observation_from_record,research_hard_valid AND profile_valid AND peak_valid; false on missing positive fields or missing known_cost_fraction_min,fail closed,no
+6,accumulation warmup,signals.observation_from_record,if history_count < accumulation(60): setup_score=0.0,fail closed,score remains observable
+7,corporate action,LifecycleMachine.advance,corporate_action_blocking == false,blocking,no
+8,lifecycle hard validity,LifecycleMachine.advance,observation.hard_valid == true,blocking,no
+9,current peak identity,LifecycleObservation.peak_identity_valid,"nonempty id, !ambiguous, valid positive band, exact peak definition version",blocking,no
+10,rebase and active-signal routing,LifecycleMachine.advance,rebase_lifecycle_memory; active_signal_id routes to _advance_open,active lifecycle suppresses setup path,no
+11,tradability,LifecycleMachine.advance,observation.tradable == true,preserve memory and stop,no
+12,cooldown,LifecycleMachine.advance,cooldown_remaining == 0,decrement and stop,no
+13,new-setup lifecycle state,LifecycleMachine.advance,"state in {NEUTRAL,BROKEN}",other states route to breakout/retest,no
+14,accepted accumulation threshold,LifecycleMachine.advance,observation.setup_score >= 1.00,blocking,no
+15,root anchor and setup creation,freeze_lifecycle_anchor; LifecycleMachine.advance,freeze current canonical peak band/mass and enter ACCUMULATING,fail closed via earlier peak validity,terminal setup creation

@@ -1,0 +1,9 @@
+gate,accepted_operator,accepted_threshold,evaluated_rows,pass_rows,fail_rows,blocking_in_ledger,estimability,note
+setup_score,>=,1.0,27317,1,27316,True,WEAKLY_ESTIMABLE,One global pass; zero wave passes.
+breakout_excess_atr,>=,0.25,9,0,9,True,WEAKLY_ESTIMABLE,Only nine accumulating observations; all failed.
+retest_depth_atr,<=,0.5,0,0,0,True,UNIDENTIFIABLE,Never reached.
+cost_migration_atr,>=,0.5,0,0,0,True,UNIDENTIFIABLE,Never reached.
+retest_volume_ratio,<=,0.8,0,0,0,True,UNIDENTIFIABLE,Never reached.
+retest_turnover_ratio,<=,0.8,0,0,0,True,UNIDENTIFIABLE,Never reached.
+exact_root_retention,>=,0.7,0,0,0,True,UNIDENTIFIABLE,Never reached.
+seller_model_disagreement_atr,<=,3.0,9,0,9,False,WEAKLY_ESTIMABLE,"Not a setup gate; nine downstream observations, all above threshold."
