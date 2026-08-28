@@ -1286,15 +1286,41 @@ def _chip_profile_from_record(
     p90 = _finite_number(record.get("cost_p90"), fallback=math.nan)
     p01 = _finite_number(record.get("cost_p01"), fallback=p10)
     p99 = _finite_number(record.get("cost_p99"), fallback=p90)
+    quantiles = (p01, p10, p50, p90, p99)
+    if all(
+        math.isfinite(value) and value > 0.0 for value in quantiles
+    ) and p01 <= p10 <= p50 <= p90 <= p99:
+        return (
+            ChipMassProfile.from_quantiles(
+                p01=p01,
+                p10=p10,
+                p50=p50,
+                p90=p90,
+                p99=p99,
+            ),
+            True,
+        )
+
+    # LifecycleObservation requires a finite positive profile even for an
+    # invalid row.  Keep the row representable with an explicit invalid flag;
+    # the sentinel can never authorize a signal because profile_valid=False.
+    sentinel = next(
+        (
+            value
+            for value in quantiles
+            if math.isfinite(value) and value > 0.0
+        ),
+        1.0,
+    )
     return (
         ChipMassProfile.from_quantiles(
-            p01=p01,
-            p10=p10,
-            p50=p50,
-            p90=p90,
-            p99=p99,
+            p01=sentinel,
+            p10=sentinel,
+            p50=sentinel,
+            p90=sentinel,
+            p99=sentinel,
         ),
-        True,
+        False,
     )
 
 

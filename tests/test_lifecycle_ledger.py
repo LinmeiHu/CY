@@ -38,6 +38,7 @@ from cyq_game.strategy.markup_retest import (
     MarkupRetestConfig,
     rebase_lifecycle_memory,
 )
+from cyq_game.strategy.signals import _chip_profile_from_record
 
 CN_TZ = timezone(timedelta(hours=8))
 
@@ -442,6 +443,23 @@ def test_available_at_pit_fail_closed() -> None:
     future = datetime(2020, 6, 15, 15, 31, tzinfo=CN_TZ)
     with pytest.raises(FutureDataError):
         _observation(day, available_at=future)
+
+
+def test_invalid_frozen_quantiles_remain_representable_but_fail_closed(
+    config: MarkupRetestConfig,
+) -> None:
+    profile, valid = _chip_profile_from_record(
+        {
+            "cost_p01": None,
+            "cost_p10": 0.0,
+            "cost_p50": -1.0,
+            "cost_p90": None,
+            "cost_p99": None,
+        },
+        config,
+    )
+    assert valid is False
+    assert all(price > 0.0 for price in profile.prices)
 
 
 def test_replay_repeat_exact_equality(machine: LifecycleMachine) -> None:
