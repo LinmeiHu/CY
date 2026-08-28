@@ -1,0 +1,151 @@
+{
+  "protocol_id": "v12-chip-model-economic-validity-preregistered-v1",
+  "purpose": "Test whether frozen V3 chip cost structures explain future market reactions beyond matched non-chip and price-only levels; no strategy outcome is an input.",
+  "frozen_inputs": {
+    "baseline_commit": "845b90bb9d1691bb7f8914b0307aee9180a75a78",
+    "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+    "freeze_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "seller_models": [
+      "UNIFORM",
+      "DISPOSITION",
+      "ACTIVE_STICKY"
+    ],
+    "expected_symbols": 500,
+    "expected_feature_rows": 121251,
+    "expected_peak_definition_version": "canonical-chip-peak-v2",
+    "expected_peak_track_version": "temporal-chip-peak-v3"
+  },
+  "chronology": {
+    "decision_snapshots": "frozen opening/month-end checkpoints; the checkpoint state is fixed before any future test window",
+    "discovery": ["2020-01-01", "2020-04-30"],
+    "validation": ["2020-05-01", "2020-08-31"],
+    "holdout": ["2020-09-01", "2020-12-31"],
+    "future_horizons_sessions": [1, 3, 5, 10, 20, 40],
+    "level_search_sessions": 40,
+    "t_plus_one": true
+  },
+  "eligibility": {
+    "research_valid_required": true,
+    "hard_valid_is_never_redefined": true,
+    "market_reaction_session_rule": "bar_valid and trade_status=1 with positive OHLC; current_day_data_tradable is an execution/composite-data gate and is reported but is not redefined or required for this non-execution market-reaction outcome",
+    "checkpoint_market_observation_required": "exclude a frozen checkpoint from level classification when its exact-date registered bar is invalid or suspended; never carry or synthesize a definition price",
+    "allowed_research_quality_reasons": [
+      "TURNOVER_CAPPED_AT_FLOAT",
+      "UNKNOWN_COST_INITIALIZATION",
+      "UNKNOWN_COST_PRESENT"
+    ],
+    "minimum_known_cost_fraction": 0.5,
+    "minimum_level_distance_fraction": 0.005,
+    "maximum_level_distance_fraction": 0.25,
+    "corporate_action_rule": "transform each frozen band on each future effective date by (level-cash_per_share)/share_multiplier; exclude invalid or blocking action paths"
+  },
+  "level_events": {
+    "support": "a pre-existing tracked band lies below the checkpoint close; first future range overlap is approached from a prior close above the transformed upper edge",
+    "resistance": "a pre-existing tracked band lies above the checkpoint close; first future range overlap is approached from a prior close below the transformed lower edge",
+    "material_break_fraction": 0.02,
+    "bounce_or_rejection_fraction": 0.02,
+    "reaction_sessions": 3,
+    "crossing_sessions": [1, 5, 10, 20, 40],
+    "touch_cooldown_sessions": 3,
+    "touch_buckets": ["FIRST", "SECOND", "THIRD_PLUS"],
+    "event_independence": "one deterministic level_id is the independent event; repeated touch rows remain clustered by level_id"
+  },
+  "placebo": {
+    "method": "same symbol and checkpoint, same side and band relative width; choose the lowest modeled-mass candidate from fixed log-distance multipliers that does not overlap a tracked peak",
+    "distance_multipliers": [0.75, 1.25, 0.55, 1.5],
+    "maximum_placebo_to_real_band_mass_ratio": 0.5,
+    "paired_reaction_comparison": "retain pairs for which both real and placebo levels are touched within the fixed search window",
+    "price_only_benchmark": "the pre-checkpoint 20-session swing low for support or swing high for resistance, given the real band's relative width"
+  },
+  "state_matching": {
+    "old_base": "for each damaged/lost first-revisit event, same-symbol/seller/split intact controls are ranked deterministically by L1 distance using level distance/5%, recent volatility/2%, recent trend/10%, and calendar separation/120 days",
+    "ambiguity": "for each ambiguous checkpoint, same-symbol/split non-ambiguous controls are ranked deterministically by L1 distance using recent volatility/2%, recent trend/10%, and calendar separation/120 days",
+    "reuse_and_uncertainty": "nearest controls may repeat when no equally close alternative exists; all paired uncertainty and gate N remain clustered by symbol"
+  },
+  "distribution": {
+    "descriptors": [
+      "weighted_mean",
+      "weighted_median",
+      "p10",
+      "p90",
+      "p90_p10_log_width",
+      "known_cost_fraction",
+      "mass_below_price",
+      "mass_above_price",
+      "mass_within_5pct_below",
+      "mass_within_5pct_above",
+      "bucket_hhi",
+      "normalized_entropy",
+      "tracked_mode_count",
+      "top_two_mode_gap"
+    ],
+    "strength_bins": "discovery-period quintile cut points, frozen for validation and holdout",
+    "shape_rules": {
+      "SINGLE_DOMINANT": "one tracked mode or largest tracked mode has at least 60% of tracked-mode mass",
+      "DOUBLE_PEAK": "exactly two tracked modes, or second/largest tracked-mode mass ratio is at least 0.50",
+      "BROAD": "p90-p10 log width is at or above the discovery 75th percentile and HHI is at or below the discovery 25th percentile",
+      "FRAGMENTED_MULTI": "at least three modes when no prior rule applies"
+    }
+  },
+  "migration": {
+    "median_shift_fraction": 0.03,
+    "dispersion_width_increase_fraction": 0.25,
+    "UPWARD_MIGRATION": "corporate-action-adjusted weighted median rises at least 3%",
+    "DOWNWARD_MIGRATION": "corporate-action-adjusted weighted median falls at least 3%",
+    "DISPERSION": "absolute median shift is below 3% and p90-p10 width expands at least 25%",
+    "STABLE_BASE": "none of the above",
+    "base_intact_mass_retention": 0.8,
+    "base_damaged_mass_retention": 0.5,
+    "new_base_max_age": 5,
+    "persistent_base_min_age": 20
+  },
+  "corporate_action_sanity": {
+    "level_relative_error_review_threshold": 0.05,
+    "mass_absolute_change_review_threshold": 0.10,
+    "tracker_identity_expected": "when the same track survives the action, its prior level is first transformed by the authoritative coordinate rule; ordinary same-day trading may then move the observed level",
+    "exact_daily_full_distribution_comparison": "UNAVAILABLE_WITHOUT_REPLAY; do not invent or rebuild it"
+  },
+  "statistics": {
+    "bootstrap_seed": 120326,
+    "cluster_bootstrap_replicates": 400,
+    "cluster_unit": "level_id for level reactions and symbol for checkpoint-state outcomes",
+    "minimum_effective_events_for_gate": 30,
+    "report_effect_sizes_not_only_p_values": true
+  },
+  "qualitative_predictions": {
+    "support": [
+      "higher bounce and close-above-band probability",
+      "lower material-break probability and future downside excursion",
+      "fewer sessions below the band",
+      "higher local volume/turnover than matched non-chip levels"
+    ],
+    "resistance": [
+      "higher rejection probability",
+      "lower first-touch crossing probability and slower crossing",
+      "lower future upside excursion",
+      "higher local volume/turnover than matched non-chip levels"
+    ],
+    "strength": "mass, prominence, age, and persistence should show directionally coherent discovery-frozen dose response",
+    "repeated_touch": "reaction should weaken and crossing should become easier after repeated interaction",
+    "migration": "upward/downward migration, stable bases, and dispersion should map to distinguishable future structure",
+    "old_base_destruction": "damaged/lost bases should provide less later support than intact bases",
+    "new_base_formation": "persistent new bases should provide more later support than transient new bases and placebos",
+    "full_distribution": "full-shape descriptors may explain reactions not retained by one canonical peak",
+    "ambiguity": "seller-model disagreement may map to volatility, chop, or structural transition but has no preregistered directional return sign"
+  },
+  "gate_rules": {
+    "primary_periods": ["validation", "holdout"],
+    "yes": "both out-of-sample periods meet minimum N and are directionally supportive on a majority of the preregistered primary outcomes, with no major opposite result",
+    "no": "adequately powered out-of-sample periods show no supportive primary outcome or a coherent opposite result",
+    "mixed": "effects differ by period, seller model, representation, or outcome, or power is insufficient",
+    "minimum_economic_effects": {
+      "probability_difference": 0.03,
+      "five_session_return_difference": 0.005,
+      "ten_session_excursion_difference": 0.005,
+      "activity_ratio_difference": 0.05,
+      "dose_response_spearman": 0.30
+    },
+    "production_semantics": "always NO in this research-only study",
+    "full_market_expansion": "always NO in this research-only study"
+  }
+}
