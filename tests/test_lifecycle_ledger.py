@@ -22,11 +22,13 @@ from cyq_game.strategy.execution import (
 from cyq_game.strategy.lifecycle_ledger import (
     EXPECTED_FREEZE_LOCK_SHA256,
     EXPECTED_ROOT_MANIFEST_SHA256,
+    LifecycleLedgerCollector,
     _failed,
     _first_failed,
     accepted_strategy_parameters,
     deterministic_lifecycle_id,
     evaluate_decision_gates,
+    ledger_provenance,
     load_and_validate_freeze,
     verify_frozen_files,
 )
@@ -467,6 +469,116 @@ def test_replay_repeat_exact_equality(machine: LifecycleMachine) -> None:
     first = evaluate_decision_gates(machine, LifecycleMemory(), obs, trading_index=0, record={})
     second = evaluate_decision_gates(machine, LifecycleMemory(), obs, trading_index=0, record={})
     assert first == second
+
+
+def test_positive_collector_path_keeps_qualification_intents_and_fills_distinct(
+    machine: LifecycleMachine, config: MarkupRetestConfig
+) -> None:
+    parameters = accepted_strategy_parameters()
+    setup_observation = _observation(date(2020, 6, 15))
+    setup = machine.advance(
+        LifecycleMemory(), setup_observation, trading_index=0
+    )
+    breakout_observation = _observation(
+        date(2020, 6, 16),
+        breakout_excess_atr=0.3,
+        volume=100.0,
+        turnover=0.10,
+    )
+    breakout = machine.advance(
+        setup.memory, breakout_observation, trading_index=1
+    )
+    retest_observation = _lineage(
+        _observation(date(2020, 6, 17)), breakout.memory
+    )
+    qualified = machine.advance(
+        breakout.memory, retest_observation, trading_index=2
+    )
+    assert qualified.signal is not None
+    entry_day = date(2020, 6, 18)
+    entry_window = _window(entry_day)
+    entry = execute_entry(
+        qualified.signal,
+        (entry_window,),
+        market_trading_dates=(entry_day,),
+        settings=config.execution,
+        scope=ExecutionScope.RESEARCH_EVENT_STUDY,
+    )
+    collector = LifecycleLedgerCollector(
+        config=config,
+        parameters=parameters,
+        provenance=ledger_provenance(
+            config=config, implementation_commit="test-commit"
+        ),
+        windows=(entry_window, _window(date(2020, 6, 19))),
+        anchor_retention_resolver=None,
+    )
+    for memory_before, observation, trading_index, transition in (
+        (LifecycleMemory(), setup_observation, 0, setup),
+        (setup.memory, breakout_observation, 1, breakout),
+        (breakout.memory, retest_observation, 2, qualified),
+    ):
+        collector.on_lifecycle_decision(
+            parameters=parameters,
+            memory_before=memory_before,
+            observation=observation,
+            trading_index=trading_index,
+            transition=transition,
+            record={},
+            is_evaluation=True,
+        )
+    collector.on_entry_execution(
+        parameters=parameters,
+        signal=qualified.signal,
+        execution=entry,
+        observation=retest_observation,
+    )
+    exit_observation = _lineage(
+        _observation(date(2020, 6, 18), close=8.4, low=8.3),
+        qualified.memory,
+    )
+    exit_transition = machine.advance(
+        qualified.memory, exit_observation, trading_index=3
+    )
+    collector.on_lifecycle_decision(
+        parameters=parameters,
+        memory_before=qualified.memory,
+        observation=exit_observation,
+        trading_index=3,
+        transition=exit_transition,
+        record={},
+        is_evaluation=True,
+    )
+    exit_intent = ExitIntent(
+        intent_id="exit-ledger-positive",
+        signal_id=qualified.signal.signal_id,
+        symbol=qualified.signal.symbol,
+        decision_at=exit_observation.decision_at,
+        reason=ExitReason.PROTECTIVE_STOP,
+        quantity=entry.quantity,
+        reference_price=exit_observation.close,
+        available_at=exit_observation.available_at,
+        snapshot_ids=exit_observation.snapshot_ids,
+        hard_valid=True,
+    )
+    exit_day = date(2020, 6, 19)
+    exit_execution = execute_exit(
+        exit_intent,
+        (_window(exit_day),),
+        market_trading_dates=(exit_day,),
+        settings=config.execution,
+    )
+    collector.on_exit_execution(
+        parameters=parameters,
+        intent=exit_intent,
+        execution=exit_execution,
+        observation=exit_observation,
+    )
+    tables = collector.tables()
+    lifecycle_types = {row["event_type"] for row in tables.lifecycle_events}
+    execution_types = {row["event_type"] for row in tables.execution_events}
+    assert {"SETUP_OBSERVED", "BREAKOUT_OBSERVED", "QUALIFIED"} <= lifecycle_types
+    assert {"ENTRY_INTENT", "ENTRY_FILLED", "EXIT_INTENT", "EXIT_FILLED"} <= execution_types
 
 
 def _freeze_fixture(root: Path, lock_path: Path) -> None:
