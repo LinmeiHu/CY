@@ -1,0 +1,207 @@
+{
+  "artifacts": {
+    "V12_PNL_ORIENTED_SWING_STRATEGY_STUDY.md": {
+      "bytes": 11937,
+      "sha256": "d43e7cc28a1378603abe7101a75374ef3dcca4e41378cd81d4fc788478fc5a4f"
+    },
+    "ablation_ladder.csv": {
+      "bytes": 4519,
+      "sha256": "5b89b57e45c90b40bed4238abf0246e390509581c9a7e172584c7ceb0267d34f"
+    },
+    "baseline_template_comparison.csv": {
+      "bytes": 1737,
+      "sha256": "330dd537d50f3651e22b2965e5b703fe688182916e0ec27cf645909cfec0f6b9"
+    },
+    "candidate_universe.parquet": {
+      "bytes": 2960956,
+      "sha256": "3913c3f839c9a5a9f682e47ff256be53a5a8395e371b34df019959692e7dc82a"
+    },
+    "chip_feature_trade_attribution.csv": {
+      "bytes": 228388,
+      "sha256": "5a335bd1e9ea40e131673b7ce4bf5b35a9938a327704358e4cc129fa0a3a6c3c"
+    },
+    "chip_state_trade_stratification.csv": {
+      "bytes": 10130,
+      "sha256": "ff2c8f706b83a0beadb992a44a042ebf5c9170decee44e25a10502b42d66f26f"
+    },
+    "overlay_comparison.csv": {
+      "bytes": 13950,
+      "sha256": "738145ce4f9488080706e1d816e9bd5f44c18f4129e814398a9e1ec8958d98d6"
+    },
+    "portfolio_metrics.csv": {
+      "bytes": 17176,
+      "sha256": "1a1aa2de6fe1dd0d02b796f133161750524526ea8f1603e8df4d44b2a37b197f"
+    },
+    "price_baseline_trades.parquet": {
+      "bytes": 706277,
+      "sha256": "79ec9b89005bdc0cdfb7a41a9f5e2f825c4057e1406b102dd50ca2206a238c05"
+    },
+    "robustness_summary.csv": {
+      "bytes": 23368,
+      "sha256": "0b70f5fbd3848d86c697353bfeab971c8642848b52bc07d39ff895da9194f6d9"
+    },
+    "trade_metrics.csv": {
+      "bytes": 16948,
+      "sha256": "0ce92cea3edadb7c417f1d80d46eb2515ddff5f28ac5f8efa870707e43a4f9cc"
+    },
+    "transaction_cost_sensitivity.csv": {
+      "bytes": 4441,
+      "sha256": "f3cae0ead97350a49fd1d4ba32c887def2af9c990e934c9b970db1891d87859b"
+    },
+    "winner_preservation.csv": {
+      "bytes": 5366,
+      "sha256": "deb6ea48d24bd6255c18506c80d60da915fc7e134e703d56bdf9c9880bad21d1"
+    }
+  },
+  "baseline_contract_preregistered": {
+    "entry": "signal at candidate close; intent for next session; fill at first legal buy open within five source sessions",
+    "hard_stop": "close at or below entry analysis open minus 2.0 times signal-day ATR14; next legal sell open",
+    "maximum_holding_sessions": 20,
+    "profit_protection": "after MFE reaches 2R, close below MA5; next legal sell open",
+    "same_bar_fill": false,
+    "selection_population": "discovery entry-signal split only",
+    "selection_rule": "highest discovery net Profit Factor among templates with at least 30 completed discovery trades; ties by template name",
+    "structure_exit": "from holding session 3, close below the prior five-session low; next legal sell open",
+    "templates": {
+      "T1_CLOSE_STRENGTH": "Candidate close is above preclose and in the upper 40% of the same-day range.",
+      "T2_RECLAIM_PRIOR_3_HIGH": "Candidate close reclaims the maximum high of the prior three valid sessions.",
+      "T3_TREND_RESUMPTION": "Candidate close is above MA5, MA5 is above MA20, and close is above preclose."
+    }
+  },
+  "candidate_contract": {
+    "condition": "analysis_close / trailing_20_session_analysis_close_high - 1 <= -0.05",
+    "eligible": "registered PIT-valid and tradable daily price observation after 60 consecutive price-valid sessions",
+    "name": "P_PRICE_PULLBACK_20",
+    "v3_inputs_used": false
+  },
+  "candidate_definition_fingerprint": "b796131a31eadd0283d154c08befa15fef91721fb501102a00adebd9d8e55cba",
+  "candidate_frozen_before_pnl": true,
+  "candidate_hash_before_pnl": "3913c3f839c9a5a9f682e47ff256be53a5a8395e371b34df019959692e7dc82a",
+  "chip_thresholds_from_discovery_distribution_not_pnl_optimization": {
+    "entry_peak_track_mass_median": 0.23978549714443453,
+    "entry_peak_track_prominence_median": 0.012740602859018367,
+    "volatility_q33": 0.07013047469127,
+    "volatility_q67": 0.09501378476988231
+  },
+  "chronological_splits": {
+    "discovery": "feature_date <= 2020-04-30",
+    "holdout": "feature_date >= 2020-09-01",
+    "validation": "2020-05-01 <= feature_date <= 2020-08-31"
+  },
+  "counts": {
+    "candidate_episodes": 5671,
+    "candidate_symbol_days": 47518,
+    "candidate_symbols": 494,
+    "panel_rows": 121251,
+    "price_baseline_completed_trades": 2505,
+    "price_baseline_rows": 2937,
+    "research_symbols": 500
+  },
+  "hard_gates": {
+    "CANDIDATE_UNIVERSE_FROZEN": "YES",
+    "CANONICAL_BASE_HAS_ECONOMIC_VALUE": "MIXED",
+    "CHIP_COMPLEXITY_JUSTIFIED_BY_PNL": "MIXED",
+    "CHIP_CONFIRMATION_IMPROVES_PNL": "YES",
+    "CHIP_DETERIORATION_REDUCES_DOWNSIDE": "MIXED",
+    "CHIP_HEALTH_IMPROVES_WINNER_HOLDING": "MIXED",
+    "CHIP_OVERLAY_ECONOMICALLY_MEANINGFUL": "MIXED",
+    "CHIP_OVERLAY_IMPROVES_HOLDOUT_MAX_DRAWDOWN": "YES",
+    "CHIP_OVERLAY_IMPROVES_HOLDOUT_NET_RETURN": "YES",
+    "CHIP_OVERLAY_IMPROVES_HOLDOUT_PROFIT_FACTOR": "YES",
+    "CHIP_SIZING_IMPROVES_RISK_ADJUSTED_RETURN": "YES",
+    "CHIP_STATE_HAS_INCREMENTAL_PNL_INFORMATION": "MIXED",
+    "ENSEMBLE_AMBIGUITY_HAS_ECONOMIC_VALUE": "MIXED",
+    "MASS_PROMINENCE_DETERIORATION_HAS_ECONOMIC_VALUE": "MIXED",
+    "MASS_PROMINENCE_ENTRY_LEVEL_HAS_ECONOMIC_VALUE": "NO",
+    "PRICE_BASELINE_PIT_SAFE": "YES",
+    "PRICE_BASELINE_PROFITABLE_AFTER_COSTS": "NO",
+    "SAFE_TO_DESIGN_PNL_ORIENTED_SWING_STRATEGY": "YES",
+    "SAFE_TO_EXPAND_RESEARCH_TO_FULL_MARKET_3941": "NO",
+    "SAFE_TO_IMPLEMENT_NEW_PRODUCTION_STRATEGY": "NO"
+  },
+  "input_evidence": {
+    "authoritative_setup_funnel_commit": "d0a005daf33398d85f14ce1cba722bfc3b13a066",
+    "authoritative_setup_funnel_manifest_sha256": "ed7a6591e46fe4d94e505bdc22b6ef02f73e5eadbff6da49ca35826b2cd5271f",
+    "authoritative_setup_funnel_runner_sha256": "a20f34c88bda71ee28d1800fe59964024e91cd2ae1bb9ac71c12aabca5c25d73",
+    "authoritative_source_sha256": {
+      "configs/markup_retest_main_chinext_2020_v1.yaml": "a4f2e7da19a6f03300af1f1d7bf802019ea72f228b6cf6caff778278f3902f14",
+      "src/cyq_game/strategy/lifecycle_ledger.py": "b64c9561980ec14e5bd12f45679f0e31fa28e59bbe4193f34d9a2b84fa61ee89",
+      "src/cyq_game/strategy/markup_retest.py": "3f9eb1c9e96c800f721dcb1bc344bee043924ae05f8934d31560f8b331c797f8",
+      "src/cyq_game/strategy/panel.py": "c16b791a26f0b142b1b2e782432523120df394f5c5cb21fd6c4a6c77cd58a810",
+      "src/cyq_game/strategy/signals.py": "07bada68cfecd720d269ab014e7322fa42b56bbeed944ce11429b45ec500cb99"
+    },
+    "authoritative_source_unchanged_from_ledger_commit": true,
+    "branch_descends_from_authoritative_setup_funnel": true,
+    "candidate_definition_fingerprint": "b796131a31eadd0283d154c08befa15fef91721fb501102a00adebd9d8e55cba",
+    "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+    "ledger_artifact_sha256": {
+      "decision_gates.parquet": "35817766cf05f6b7a5e77078735f6226698fd51955204926ae852f6a1f111381",
+      "execution_events.parquet": "7cb6111adb970b9b4cff51f511e0fadc46ca4698ef996f6068dea1b4d99f432b",
+      "lifecycle_events.parquet": "66a120d028a268696df8a5b85702a4ca0d7db95da8639134de8310da35ac65e7",
+      "lifecycle_summary.parquet": "7d1d9876a0cc98140380f9fc497449bea27a792a428be1f240a5ed29bdce6b3e"
+    },
+    "ledger_manifest_sha256": "4b4ba0325f41dfcda5f9a7e8e3f259907dbf596f5b2863f622bf2503c7e30254",
+    "ledger_provenance": {
+      "artifact_contract_fingerprint": "ca30bc8f06d80b4667f7274ec94185968b99f46e86781b42a6b47fa5ca7c3a98",
+      "execution_config_fingerprint": "db2c711dc9b2ebc61bdc652907ba207420b0c5836e94385bebc162581ae9f487",
+      "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+      "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+      "ledger_implementation_commit": "3488a95dfb17815e7ea23f065c702106dcd10437",
+      "ledger_schema_version": "v12-lifecycle-entry-exit-ledger-v1",
+      "semantic_fingerprint": "54eebd57b9f3507d7bad302c65161e8ded3371c4d6edf5a4a5d8b8fc7be75e12",
+      "strategy_parameter_id": "9baed76ec299161c",
+      "strategy_version": "markup-retest-v3-tracked-peak",
+      "v3_build_commit": "c81bc30a381e8cebcc5b9f8d36524a8a4c9f0151"
+    },
+    "predecessor_manifest_sha256": "ed8b071236da59cc46ea270d422bf8879d6902cc9cc8ff686460375317889c67",
+    "predecessor_runner_sha256": "584249d1bdb7327f5b371fb8283f654a3acc102b1bd7c86a0fccd1f632f4ee26",
+    "registered_daily_2020_sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+    "registered_minute_daily_2020_sha256": "8cf94aa834c520db71d0912385ac10872ecaa96b1aa356b3fb427a204a16c1bf",
+    "reverse_wave_v2_completed_commit": "b59b1adde6ba43929f9ad20a533f296d610755dd",
+    "reverse_wave_v2_manifest_sha256": "ea596b5fa2da7d70bbc39d6699a0f6ebfc379ded41fd261fde48107a4458ad9a",
+    "source_commit": "6bd5ab91d7fb0aefa07e913e241d58041920eac1",
+    "source_commit_is_ancestor": true
+  },
+  "overlay_contract_preregistered": {
+    "P1": "accept only VALID_CANONICAL_BASE or ENSEMBLE_AMBIGUOUS entry states",
+    "P2": "P1 plus require VALID_CANONICAL_BASE and peak_track_age >= 20",
+    "P3": "P2 plus entry peak mass and prominence at or above their discovery medians",
+    "P4": "P3 plus bounded chip-confidence sizing",
+    "P5": "P4 plus delay a profitable non-hard exit for at most five sessions while structure remains healthy",
+    "P6": "P5 plus sell half after >=20% mass and prominence deterioration with price below MA5"
+  },
+  "portfolio_contract": {
+    "baseline_target_fraction": 0.1,
+    "initial_capital": 1.0,
+    "leverage": false,
+    "maximum_concurrent_positions": 10,
+    "tie_break": "descending price trigger strength, then symbol, then trade_id"
+  },
+  "research_object_contract": {
+    "authoritative_entry_exit_outcomes_consumed": false,
+    "authoritative_lifecycle_or_entry_exit_artifacts_modified": false,
+    "frozen_chip_artifacts_modified": false,
+    "full_market_3941_build_started": false,
+    "mandatory_hard_stop_overridden_by_chip": false,
+    "production_code_modified": false,
+    "production_strategy_implemented": false,
+    "same_bar_signal_fill_permitted": false,
+    "v3_temporal_semantics_modified": false
+  },
+  "runner": {
+    "path": "research/v12-pnl-oriented-swing-study/run_pnl_oriented_swing_study.py",
+    "sha256": "90594bde9af002d649be9c8fa424fe837c8652095e754d1be77743a7ecef621a"
+  },
+  "selected_price_baseline": "T1_CLOSE_STRENGTH",
+  "selection_used_discovery_only": true,
+  "source_commit": "6bd5ab91d7fb0aefa07e913e241d58041920eac1",
+  "study": "V12 P&L-Oriented Swing Strategy Study",
+  "study_contract_version": "v12-pnl-oriented-swing-study-v1",
+  "transaction_cost_contract": {
+    "commission_each_side_bps": 3.0,
+    "sell_stamp_duty_bps": 10.0,
+    "slippage_each_side_bps": 5.0,
+    "transfer_fee_each_side_bps": 0.2
+  }
+}
