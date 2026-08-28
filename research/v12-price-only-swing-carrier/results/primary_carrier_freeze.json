@@ -1,0 +1,43 @@
+{
+  "carrier_definitions_sha256": "4af20cb1b427fa1f519b9ab3201d7a3031ca1c61a2418cff1e364e8f3e7dbeb2",
+  "frozen_after_population": "discovery only",
+  "holdout_evaluated_before_freeze": false,
+  "primary_carrier": "A_PULLBACK_RECLAIM",
+  "selection_comparison": [
+    {
+      "carrier": "A_PULLBACK_RECLAIM",
+      "completed_discovery_trades": 432,
+      "eligible": false,
+      "fallback_used": true,
+      "main_discovery_max_drawdown": -0.08149093501670923,
+      "minimum_discovery_pf_across_diagnostics": 0.8759041183690545,
+      "selected_primary": true
+    },
+    {
+      "carrier": "B_LOCAL_BREAKOUT",
+      "completed_discovery_trades": 349,
+      "eligible": false,
+      "fallback_used": true,
+      "main_discovery_max_drawdown": -0.13104793720832553,
+      "minimum_discovery_pf_across_diagnostics": 0.4708921327171845,
+      "selected_primary": false
+    },
+    {
+      "carrier": "C_TREND_RESUMPTION",
+      "completed_discovery_trades": 88,
+      "eligible": false,
+      "fallback_used": true,
+      "main_discovery_max_drawdown": -0.09802622743341927,
+      "minimum_discovery_pf_across_diagnostics": 0.5064621693765721,
+      "selected_primary": false
+    }
+  ],
+  "selection_contract": {
+    "eligibility": "positive main net expectancy, main PF > 1, positive main portfolio return, max drawdown no worse than -25%, positive stressed-cost expectancy, and positive expectancy at both diagnostic ATR multiples",
+    "fallback": "if none is eligible, apply the same rank among carriers with at least 75 completed discovery trades and freeze the result as a diagnostic primary",
+    "minimum_completed_discovery_trades": 75,
+    "population": "discovery only; validation and holdout are not built until primary_carrier_freeze.json is written",
+    "rank": "eligible carrier with highest minimum discovery PF across main, stressed cost, and both ATR diagnostics; then shallower main max drawdown; then carrier_id"
+  },
+  "validation_evaluated_before_freeze": false
+}

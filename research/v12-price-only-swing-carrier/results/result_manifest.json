@@ -1,0 +1,131 @@
+{
+  "artifacts": {
+    "V12_PRICE_ONLY_SWING_CARRIER_VIABILITY_STUDY.md": {
+      "bytes": 8493,
+      "sha256": "31cd87ec3f93c17934b7e48283cf2df667eadaaeb54ce243cf61b1128c27426b"
+    },
+    "carrier_classification.csv": {
+      "bytes": 463,
+      "sha256": "37e7ae90e1bfbbee89f0e1ae15d113c6f4357dc0cee7157b84f317515e548bc4"
+    },
+    "carrier_definitions.json": {
+      "bytes": 4341,
+      "sha256": "4af20cb1b427fa1f519b9ab3201d7a3031ca1c61a2418cff1e364e8f3e7dbeb2"
+    },
+    "carrier_period_metrics.csv": {
+      "bytes": 7695,
+      "sha256": "f32517920ae9a0dd07e16550ce1fe3fdce57e204643796114b5a5fc91cefc7d3"
+    },
+    "carrier_portfolio_metrics.csv": {
+      "bytes": 2170,
+      "sha256": "aea0c1f6f6364b9614c886e7438bd88abb160f9b9b155075c25eef30666de07c"
+    },
+    "carrier_trade_metrics.csv": {
+      "bytes": 4122,
+      "sha256": "e68de50c6e1cf9eac427450ab771f79ff01ef3987ec87c3311b613dbc801a87f"
+    },
+    "carrier_trade_results.parquet": {
+      "bytes": 996301,
+      "sha256": "9b84d9ca7c11dbd83fb3eed41381639363d2faba15b74f7a745768aa263847b9"
+    },
+    "discovery_selection.csv": {
+      "bytes": 354,
+      "sha256": "8e829ebb8f8969e5fee985a8547daebd7804a405d2bdd3a7f51bfd50eb7130ef"
+    },
+    "entry_conversion_funnel.csv": {
+      "bytes": 901,
+      "sha256": "ae7cb3a5422ec81fae814b6043800fa408a74e8b39b666df1389cc4fe03f6a45"
+    },
+    "frozen_candidate_universe.parquet": {
+      "bytes": 2960956,
+      "sha256": "3913c3f839c9a5a9f682e47ff256be53a5a8395e371b34df019959692e7dc82a"
+    },
+    "monthly_concentration.csv": {
+      "bytes": 2180,
+      "sha256": "b352b581615e22c658acad47e34b58c3c604e41600330fe649426d964eb03fbd"
+    },
+    "portfolio_admissions.csv": {
+      "bytes": 407135,
+      "sha256": "04170d31476cd353acde79ba997322e392c8e6bb81fc4a9b03196c99375a2f0b"
+    },
+    "price_only_trade_attribution.csv": {
+      "bytes": 11569,
+      "sha256": "885958ce6493e57f7a63afa134e80b4f4691128725e4dd7ab5db284373eeea60"
+    },
+    "primary_carrier_freeze.json": {
+      "bytes": 1985,
+      "sha256": "580f2ef6df688f962fdaad58bdd5d7e3b0f8ec824e3bddabb7b131015dc239b2"
+    },
+    "realized_vs_terminal_mtm.csv": {
+      "bytes": 1253,
+      "sha256": "1ea343d4928e2abfa763daf19c4ce527e4df863a3586ee757c7a24018eaae7b8"
+    },
+    "regime_robustness.csv": {
+      "bytes": 6404,
+      "sha256": "86b83e4e7e03b7a2578850ef5fc50200ee6a60701bd72cd9228c81c6c42fdf28"
+    },
+    "risk_rule_sensitivity.csv": {
+      "bytes": 2302,
+      "sha256": "ade79889e19cc2fa3d95a3f329237e5fc8902d874db250236c60dae9394cd0fb"
+    },
+    "symbol_contribution.csv": {
+      "bytes": 232283,
+      "sha256": "5a3a14100af67bd28395960ca9462048fa1eb211672584468d02458a247d85e0"
+    },
+    "symbol_robustness_summary.csv": {
+      "bytes": 1282,
+      "sha256": "4600d5f1899cda93dd529ad80f05f4a2905a7cdb6642a220eb7bd31026ded7bc"
+    },
+    "transaction_cost_sensitivity.csv": {
+      "bytes": 3167,
+      "sha256": "37c48d544b7920542d6b4e18e702a5d93c0b729e2d24965492cbb9f3691a91d5"
+    },
+    "winner_tail_concentration.csv": {
+      "bytes": 2444,
+      "sha256": "e207d290c623966dea190ec53b9b7d6d804d7d36021c9123b0f08eb1a4f3f4d4"
+    }
+  },
+  "carrier_definitions_sha256_before_discovery": "4af20cb1b427fa1f519b9ab3201d7a3031ca1c61a2418cff1e364e8f3e7dbeb2",
+  "counts": {
+    "candidate_episodes": 5671,
+    "candidate_symbol_days": 47518,
+    "candidate_symbols": 494,
+    "trade_result_episode_rows": 17013
+  },
+  "determinism": {
+    "csv_float_format": "%.12g",
+    "parquet_compression": "zstd",
+    "parquet_dictionary": false,
+    "sort_keys": true
+  },
+  "discovery_reporting_volatility_median": 0.039685980158354894,
+  "hard_gates": {
+    "CANDIDATE_UNIVERSE_UNCHANGED": "YES",
+    "CHIP_DATA_USED_IN_CARRIER_SELECTION": "NO",
+    "HOLDOUT_COMPLETED_TRADE_EXPECTANCY_POSITIVE": "NO",
+    "HOLDOUT_NET_PORTFOLIO_RETURN_POSITIVE": "NO",
+    "HOLDOUT_REALIZED_PROFIT_FACTOR_ABOVE_1": "NO",
+    "HOLDOUT_SAMPLE_SIZE_ADEQUATE": "YES",
+    "HOLDOUT_TRANSACTION_COST_ROBUST": "NO",
+    "POSITIVE_RESULT_DEPENDS_MATERIALLY_ON_TERMINAL_MTM": "NO",
+    "PRICE_CARRIER_FAMILY_PRE_REGISTERED": "YES",
+    "PRIMARY_CARRIER_FROZEN_BEFORE_HOLDOUT": "YES",
+    "PRIMARY_CARRIER_FROZEN_BEFORE_VALIDATION": "YES",
+    "PROFIT_CONCENTRATION_ACCEPTABLE": "MIXED",
+    "ROBUST_PRICE_ONLY_SWING_CARRIER_FOUND": "NO",
+    "SAFE_TO_DESIGN_PRODUCTION_SWING_STRATEGY": "NO",
+    "SAFE_TO_EXPAND_RESEARCH_TO_FULL_MARKET_3941": "NO",
+    "SAFE_TO_RETEST_V3_AS_SOFT_OVERLAY": "NO"
+  },
+  "input_evidence": {
+    "chip_attribution_commit": "f41b5bec94912d69ffc889eedd464da44589cdbf",
+    "chip_attribution_commit_is_ancestor": true,
+    "chip_feature_artifacts_opened": false,
+    "frozen_candidate_sha256": "3913c3f839c9a5a9f682e47ff256be53a5a8395e371b34df019959692e7dc82a",
+    "price_inputs_only": true,
+    "registered_daily_sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+  },
+  "primary_carrier": "A_PULLBACK_RECLAIM",
+  "primary_freeze_sha256_before_validation_holdout": "580f2ef6df688f962fdaad58bdd5d7e3b0f8ec824e3bddabb7b131015dc239b2",
+  "study": "V12_PRICE_ONLY_SWING_CARRIER_VIABILITY_STUDY"
+}

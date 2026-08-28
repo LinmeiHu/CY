@@ -1,0 +1,97 @@
+{
+  "candidate": {
+    "artifact_sha256": "3913c3f839c9a5a9f682e47ff256be53a5a8395e371b34df019959692e7dc82a",
+    "name": "P_PRICE_PULLBACK_20",
+    "unchanged": true
+  },
+  "carriers": {
+    "A_PULLBACK_RECLAIM": {
+      "economic_idea": "Recover the short moving reference after a pullback.",
+      "entry_signal": "Within five source sessions of episode start, close crosses from at/below MA5 to above MA5 and closes above preclose."
+    },
+    "B_LOCAL_BREAKOUT": {
+      "economic_idea": "Require local price expansion before accepting the pullback reversal.",
+      "entry_signal": "Within five source sessions of episode start, close exceeds the highest high of the prior three source sessions."
+    },
+    "C_TREND_RESUMPTION": {
+      "economic_idea": "Accept a pullback only when medium trend and renewed short trend agree.",
+      "entry_signal": "Within five source sessions of episode start, MA20 exceeds MA60, close exceeds MA5, MA5 rises, and close exceeds preclose."
+    }
+  },
+  "chip_data_used": false,
+  "chronological_splits": {
+    "discovery": [
+      "2020-01-01",
+      "2020-04-30"
+    ],
+    "holdout": [
+      "2020-09-01",
+      "2020-12-31"
+    ],
+    "validation": [
+      "2020-05-01",
+      "2020-08-31"
+    ]
+  },
+  "cost_scenarios": {
+    "BASE": {
+      "commission_each_side_bps": 3.0,
+      "sell_stamp_bps": 10.0,
+      "slippage_each_side_bps": 5.0,
+      "transfer_each_side_bps": 0.2
+    },
+    "STRESSED": {
+      "commission_each_side_bps": 5.0,
+      "sell_stamp_bps": 10.0,
+      "slippage_each_side_bps": 10.0,
+      "transfer_each_side_bps": 0.2
+    },
+    "ZERO": {
+      "commission_each_side_bps": 0.0,
+      "sell_stamp_bps": 0.0,
+      "slippage_each_side_bps": 0.0,
+      "transfer_each_side_bps": 0.0
+    }
+  },
+  "portfolio_contract": {
+    "allocation": "equal-weight target using equity known before same-open admissions",
+    "initial_capital": 1.0,
+    "leverage": false,
+    "maximum_concurrent_positions": 10,
+    "priority": "descending trigger strength, then candidate_at, symbol, trade_id",
+    "same_symbol_overlap": false,
+    "target_fraction": 0.1
+  },
+  "risk_contract": {
+    "diagnostic_atr_multiples": [
+      1.5,
+      2.5
+    ],
+    "hard_risk": "Close at or below entry analysis open minus ATR multiple times signal-day ATR14; sell at next legal open.",
+    "legal_fill_wait_source_sessions": 3,
+    "ordinary_exit": "From holding session three, close below MA10; sell at next legal open.",
+    "primary_atr_multiple": 2.0,
+    "profit_protection": "After same-trade MFE reaches 2R, close below MA5; sell at next legal open.",
+    "same_bar_fill": false,
+    "signal_wait_source_sessions": 5,
+    "time_exit": "At holding session 20 close; sell at next legal open."
+  },
+  "selection_contract": {
+    "eligibility": "positive main net expectancy, main PF > 1, positive main portfolio return, max drawdown no worse than -25%, positive stressed-cost expectancy, and positive expectancy at both diagnostic ATR multiples",
+    "fallback": "if none is eligible, apply the same rank among carriers with at least 75 completed discovery trades and freeze the result as a diagnostic primary",
+    "minimum_completed_discovery_trades": 75,
+    "population": "discovery only; validation and holdout are not built until primary_carrier_freeze.json is written",
+    "rank": "eligible carrier with highest minimum discovery PF across main, stressed cost, and both ATR diagnostics; then shallower main max drawdown; then carrier_id"
+  },
+  "study": "V12_PRICE_ONLY_SWING_CARRIER_VIABILITY_STUDY",
+  "viability_contract": {
+    "concentration": "YES when net sum remains positive excluding top five trades and top symbol contributes no more than 25% of positive symbol P&L; NO when both fail; otherwise MIXED",
+    "cost_robustness": "holdout expectancy > 0, PF > 1, and portfolio return > 0 under STRESSED costs",
+    "holdout_minimum_completed_trades": 100,
+    "holdout_net_portfolio_return": "> 0",
+    "holdout_net_realized_expectancy": "> 0",
+    "holdout_realized_profit_factor": "> 1.0",
+    "terminal_mtm_materiality": "material when positive total marked P&L changes sign without terminal unrealized P&L or absolute terminal unrealized exceeds 25% of absolute positive total marked P&L",
+    "validation_trade_economics": "net expectancy > 0 and realized PF > 1.0"
+  }
+}
