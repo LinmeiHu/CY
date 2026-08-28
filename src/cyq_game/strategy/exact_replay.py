@@ -21,7 +21,7 @@ from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass, field, replace
 from datetime import date, datetime
 from pathlib import Path
-from typing import Any, cast
+from typing import Any, Protocol, cast
 from zoneinfo import ZoneInfo
 
 import duckdb
@@ -49,6 +49,7 @@ from cyq_game.strategy.markup_retest import (
     StrategyParameters,
     StrategySignal,
     StrategyStage,
+    TransitionResult,
     chip_structure_broken,
     distribution_score_with_anchor,
     exact_anchor_retention,
@@ -119,6 +120,40 @@ class _ParameterState:
     pending_exit: _PendingExit | None = None
 
 
+class ExactReplayAuditSink(Protocol):
+    """Read-only observer for the canonical scalar lifecycle/execution replay."""
+
+    def on_lifecycle_decision(
+        self,
+        *,
+        parameters: StrategyParameters,
+        memory_before: LifecycleMemory,
+        observation: LifecycleObservation,
+        trading_index: int,
+        transition: TransitionResult,
+        record: Mapping[str, object],
+        is_evaluation: bool,
+    ) -> None: ...
+
+    def on_entry_execution(
+        self,
+        *,
+        parameters: StrategyParameters,
+        signal: StrategySignal,
+        execution: EntryExecution,
+        observation: LifecycleObservation,
+    ) -> None: ...
+
+    def on_exit_execution(
+        self,
+        *,
+        parameters: StrategyParameters,
+        intent: ExitIntent,
+        execution: ExitExecution,
+        observation: LifecycleObservation,
+    ) -> None: ...
+
+
 def evaluate_exact_parameter_lattice_symbol(
     records: Iterable[Mapping[str, object]],
     windows: Sequence[ExecutionWindow],
@@ -128,6 +163,7 @@ def evaluate_exact_parameter_lattice_symbol(
     *,
     panel_snapshot_id: str = "panel-in-memory",
     anchor_retention_resolver: AnchorRetentionResolver | None = None,
+    audit_sink: ExactReplayAuditSink | None = None,
 ) -> ExactReplayResult:
     """Replay one complete symbol for every shortlisted parameter.
 
@@ -151,13 +187,18 @@ def evaluate_exact_parameter_lattice_symbol(
     raw_records = [dict(record) for record in records]
     first_broken_date = _first_action_coordinate_mismatch(raw_records)
     ordered_windows = tuple(
-        sorted(windows, key=lambda item: (item.trade_date, item.window_index, item.available_at))
+        sorted(
+            windows,
+            key=lambda item: (item.trade_date, item.window_index, item.available_at),
+        )
     )
     if first_broken_date is not None:
         ordered_windows = tuple(
-            replace(window, corporate_action_blocking=True)
-            if window.trade_date >= first_broken_date
-            else window
+            (
+                replace(window, corporate_action_blocking=True)
+                if window.trade_date >= first_broken_date
+                else window
+            )
             for window in ordered_windows
         )
     ordered_market_dates = tuple(sorted(dict.fromkeys(market_trading_dates)))
@@ -200,8 +241,7 @@ def evaluate_exact_parameter_lattice_symbol(
             symbol = observation.symbol
         elif observation.symbol != symbol:
             raise ValueError(
-                "exact symbol replay received multiple symbols: "
-                f"{symbol}, {observation.symbol}"
+                f"exact symbol replay received multiple symbols: {symbol}, {observation.symbol}"
             )
         if previous_date is not None and trade_date <= previous_date:
             raise ValueError(
@@ -229,6 +269,7 @@ def evaluate_exact_parameter_lattice_symbol(
                 panel_snapshot_id=panel_snapshot_id,
                 signals=signals,
                 trades=trades,
+                audit_sink=audit_sink,
             )
         if observation.tradable:
             trading_index += 1
@@ -315,13 +356,18 @@ def evaluate_exact_entry_lattice_symbol_vectorized(
     raw_records = [dict(record) for record in records]
     first_broken_date = _first_action_coordinate_mismatch(raw_records)
     ordered_windows = tuple(
-        sorted(windows, key=lambda item: (item.trade_date, item.window_index, item.available_at))
+        sorted(
+            windows,
+            key=lambda item: (item.trade_date, item.window_index, item.available_at),
+        )
     )
     if first_broken_date is not None:
         ordered_windows = tuple(
-            replace(window, corporate_action_blocking=True)
-            if window.trade_date >= first_broken_date
-            else window
+            (
+                replace(window, corporate_action_blocking=True)
+                if window.trade_date >= first_broken_date
+                else window
+            )
             for window in ordered_windows
         )
     ordered_market_dates = tuple(sorted(dict.fromkeys(market_trading_dates)))
@@ -491,7 +537,9 @@ def evaluate_exact_entry_lattice_symbol_vectorized(
                         "corporate-action quantity reconciliation changed exit timing"
                     )
                 trades.append(
-                    _trade_record(selected[index], position, adjusted_intent, exact_fill)
+                    _trade_record(
+                        selected[index], position, adjusted_intent, exact_fill
+                    )
                 )
                 positions[index] = None
                 pending_exits[index] = None
@@ -577,9 +625,7 @@ def evaluate_exact_entry_lattice_symbol_vectorized(
                 if position is None:
                     raise RuntimeError("active exact lifecycle has no filled position")
                 root = _lifecycle_anchor(root_anchors[index], index=index)
-                comparison = _lifecycle_anchor(
-                    comparison_anchors[index], index=index
-                )
+                comparison = _lifecycle_anchor(comparison_anchors[index], index=index)
                 cache_key = (
                     root.anchor_id,
                     comparison.lower,
@@ -636,17 +682,13 @@ def evaluate_exact_entry_lattice_symbol_vectorized(
                         open_reason = ExitReason.MAX_HOLDING_PERIOD
                     else:
                         distributing = (
-                            distribution_score
-                            >= selected[index].distribution_score_min
+                            distribution_score >= selected[index].distribution_score_min
                         )
                         distribution_days[index] = (
                             distribution_days[index] + 1 if distributing else 0
                         )
                         state[index] = _ACTIVE
-                        if (
-                            distribution_days[index]
-                            >= config.windows.exit_confirmation
-                        ):
+                        if distribution_days[index] >= config.windows.exit_confirmation:
                             open_reason = ExitReason.DISTRIBUTION_CONFIRMED
                 if open_reason is not None:
                     pending_exits[index] = _vector_exit(
@@ -721,8 +763,7 @@ def evaluate_exact_entry_lattice_symbol_vectorized(
                     eligible=eligible,
                     state=state,
                     setup=observation.setup_score >= setup_threshold,
-                    breakout=observation.breakout_excess_atr
-                    >= breakout_threshold,
+                    breakout=observation.breakout_excess_atr >= breakout_threshold,
                     retest_depth_threshold=retest_depth_threshold,
                     migration_threshold=migration_threshold,
                     observation=observation,
@@ -783,8 +824,7 @@ def evaluate_exact_entry_lattice_symbol_vectorized(
 
 def _validate_fixed_exit_grid(parameters: Sequence[StrategyParameters]) -> None:
     exits = {
-        (item.distribution_score_min, item.protective_stop_atr)
-        for item in parameters
+        (item.distribution_score_min, item.protective_stop_atr) for item in parameters
     }
     if len(exits) != 1:
         raise ValueError(
@@ -903,7 +943,9 @@ def evaluate_exact_parameter_lattice_files(
     config.assert_input_files(stage, execution_files)
     missing = [str(path) for path in execution_files if not path.is_file()]
     if missing:
-        raise FileNotFoundError("missing registered execution input: " + ", ".join(missing))
+        raise FileNotFoundError(
+            "missing registered execution input: " + ", ".join(missing)
+        )
     market_dates = _market_trading_dates(
         execution_files,
         start=boundary.history_start,
@@ -935,9 +977,7 @@ def evaluate_exact_parameter_lattice_files(
             vectorized_entry_grid,
             (
                 tuple(
-                    symbol
-                    for bucket in buckets
-                    for symbol in symbols_by_bucket[bucket]
+                    symbol for bucket in buckets for symbol in symbols_by_bucket[bucket]
                 )
                 if symbols_by_bucket is not None
                 else None
@@ -970,6 +1010,7 @@ def _advance_parameter(
     panel_snapshot_id: str,
     signals: list[dict[str, Any]],
     trades: list[dict[str, Any]],
+    audit_sink: ExactReplayAuditSink | None = None,
 ) -> None:
     observation_valid = (
         observation.hard_valid
@@ -1002,11 +1043,22 @@ def _advance_parameter(
         ):
             return
 
+    memory_before = state.memory
     transition = machine.advance(
-        state.memory,
+        memory_before,
         observation,
         trading_index=trading_index,
     )
+    if audit_sink is not None:
+        audit_sink.on_lifecycle_decision(
+            parameters=parameters,
+            memory_before=memory_before,
+            observation=observation,
+            trading_index=trading_index,
+            transition=transition,
+            record=record,
+            is_evaluation=is_evaluation,
+        )
     state.memory = transition.memory
     if transition.signal is not None:
         execution = execute_entry(
@@ -1021,6 +1073,13 @@ def _advance_parameter(
             execution=execution,
             is_evaluation=is_evaluation,
         )
+        if audit_sink is not None:
+            audit_sink.on_entry_execution(
+                parameters=parameters,
+                signal=transition.signal,
+                execution=execution,
+                observation=observation,
+            )
         signals.append(
             _signal_record(
                 transition.signal,
@@ -1055,6 +1114,13 @@ def _advance_parameter(
             intent=intent,
             execution=exit_execution,
         )
+        if audit_sink is not None:
+            audit_sink.on_exit_execution(
+                parameters=parameters,
+                intent=intent,
+                execution=exit_execution,
+                observation=observation,
+            )
 
 
 def _advance_pending_entry(
@@ -1149,7 +1215,9 @@ def _advance_pending_exit(
             exact_fill.status != ExitExecutionStatus.FILLED
             or exact_fill.fill_at != pending.execution.fill_at
         ):
-            raise RuntimeError("corporate-action quantity reconciliation changed exit timing")
+            raise RuntimeError(
+                "corporate-action quantity reconciliation changed exit timing"
+            )
         trades.append(_trade_record(parameters, position, adjusted_intent, exact_fill))
         state.memory = machine.after_exit()
         state.position = None
@@ -1233,7 +1301,9 @@ def _signal_record(
     payload.update(
         {
             "entry_status": execution.status.value,
-            "entry_fill_at": execution.fill_at.isoformat() if execution.fill_at else None,
+            "entry_fill_at": (
+                execution.fill_at.isoformat() if execution.fill_at else None
+            ),
             "entry_fill_price": execution.fill_price,
             "entry_quantity": execution.quantity,
             "entry_total_cash": execution.total_cash,
@@ -1265,7 +1335,9 @@ def _trade_record(
         "signal_id": position.signal.signal_id,
         "symbol": position.signal.symbol,
         "signal_at": position.signal.decision_at.isoformat(),
-        "entry_at": _required_datetime(position.entry.fill_at, "entry fill_at").isoformat(),
+        "entry_at": _required_datetime(
+            position.entry.fill_at, "entry fill_at"
+        ).isoformat(),
         "entry_price": position.entry.fill_price,
         "entry_cash": position.entry.total_cash,
         "entry_quantity": position.entry.quantity,
@@ -1496,9 +1568,7 @@ def _group_panel_files(
         if raw is None or not raw.isdigit():
             raise ValueError(f"panel file has no symbol_bucket partition: {path}")
         grouped.setdefault(int(raw), []).append(path)
-    return tuple(
-        (bucket, tuple(sorted(grouped[bucket]))) for bucket in sorted(grouped)
-    )
+    return tuple((bucket, tuple(sorted(grouped[bucket]))) for bucket in sorted(grouped))
 
 
 def _coalesce_panel_groups(
@@ -1524,13 +1594,7 @@ def _coalesce_panel_groups(
     return tuple(
         (
             tuple(sorted(bucket for bucket, _ in worker_groups)),
-            tuple(
-                sorted(
-                    path
-                    for _, paths in worker_groups
-                    for path in paths
-                )
-            ),
+            tuple(sorted(path for _, paths in worker_groups for path in paths)),
         )
         for worker_groups in bins
         if worker_groups

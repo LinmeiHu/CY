@@ -110,7 +110,9 @@ def signal_path(
     )
     selected = parameters or frozen or config.parameters
     if frozen is not None and selected != frozen:
-        raise ValueError("resealed signals require exactly the frozen economic parameters")
+        raise ValueError(
+            "resealed signals require exactly the frozen economic parameters"
+        )
     return (
         config.outputs.signal_root
         / boundary.name.value
@@ -281,7 +283,9 @@ def build_strategy_signals(
     )
     selected = parameters or frozen or config.parameters
     if frozen is not None and selected != frozen:
-        raise ValueError("resealed signals require exactly the frozen economic parameters")
+        raise ValueError(
+            "resealed signals require exactly the frozen economic parameters"
+        )
     source_input_inventory = []
     if config.assets.chip_lineage_asset_id is not None:
         source_input_inventory.append(
@@ -290,7 +294,9 @@ def build_strategy_signals(
             )
         )
     if panel.stage != boundary.name.value:
-        raise ValueError(f"panel stage mismatch: {panel.stage} != {boundary.name.value}")
+        raise ValueError(
+            f"panel stage mismatch: {panel.stage} != {boundary.name.value}"
+        )
     if panel.config_sha256 != config.sha256:
         raise ValueError("panel and strategy config hashes differ")
     if not panel.path.is_dir():
@@ -367,7 +373,8 @@ def build_strategy_signals(
             },
         }
         signal_snapshot_id = (
-            "signals-" + hashlib.sha256(_canonical(snapshot_payload).encode()).hexdigest()
+            "signals-"
+            + hashlib.sha256(_canonical(snapshot_payload).encode()).hexdigest()
         )
         payload = {
             **snapshot_payload,
@@ -415,7 +422,12 @@ def _generate_panel_event_shards(
     worker_count = min(max(requested_workers, 1), 10, len(groups))
     arguments = tuple(
         (
-            index, group, config, parameters, panel_snapshot_id, lineage_root,
+            index,
+            group,
+            config,
+            parameters,
+            panel_snapshot_id,
+            lineage_root,
             output_root,
         )
         for index, group in enumerate(groups)
@@ -431,20 +443,31 @@ def _generate_panel_event_shards(
         signal_rows=sum(item.signal_rows for item in metrics),
         evaluation_signal_rows=sum(item.evaluation_signal_rows for item in metrics),
         event_rows=sum(item.event_rows for item in metrics),
-        signal_symbols=tuple(sorted({s for item in metrics for s in item.signal_symbols})),
+        signal_symbols=tuple(
+            sorted({s for item in metrics for s in item.signal_symbols})
+        ),
         files=tuple(path for item in metrics for path in item.files),
     )
 
 
 def _write_panel_group_shards(
     arguments: tuple[
-        int, tuple[Path, ...], MarkupRetestConfig, StrategyParameters, str,
-        Path | None, Path,
+        int,
+        tuple[Path, ...],
+        MarkupRetestConfig,
+        StrategyParameters,
+        str,
+        Path | None,
+        Path,
     ],
 ) -> SignalShardMetrics:
-    index, files, config, parameters, panel_snapshot_id, lineage_root, output_root = arguments
+    index, files, config, parameters, panel_snapshot_id, lineage_root, output_root = (
+        arguments
+    )
     generated = generate_signal_events(
-        stream_panel(files, strict_schema=True), config, parameters=parameters,
+        stream_panel(files, strict_schema=True),
+        config,
+        parameters=parameters,
         panel_snapshot_id=panel_snapshot_id,
         anchor_retention_resolver=(
             StreamingLineageSession(lineage_root) if lineage_root is not None else None
@@ -524,7 +547,9 @@ def _generate_panel_events(
         events=events,
         input_rows=sum(item.input_rows for item in generated_groups),
         evaluation_rows=sum(item.evaluation_rows for item in generated_groups),
-        evaluation_signal_rows=sum(item.evaluation_signal_rows for item in generated_groups),
+        evaluation_signal_rows=sum(
+            item.evaluation_signal_rows for item in generated_groups
+        ),
     )
 
 
@@ -544,9 +569,7 @@ def _generate_panel_group(
         parameters=parameters,
         panel_snapshot_id=panel_snapshot_id,
         anchor_retention_resolver=(
-            StreamingLineageSession(lineage_root)
-            if lineage_root is not None
-            else None
+            StreamingLineageSession(lineage_root) if lineage_root is not None else None
         ),
     )
 
@@ -555,7 +578,11 @@ def _group_panel_files(files: Sequence[Path]) -> tuple[tuple[Path, ...], ...]:
     grouped: dict[str, list[Path]] = {}
     for path in files:
         bucket = next(
-            (part.partition("=")[2] for part in path.parts if part.startswith("symbol_bucket=")),
+            (
+                part.partition("=")[2]
+                for part in path.parts
+                if part.startswith("symbol_bucket=")
+            ),
             "unpartitioned",
         )
         grouped.setdefault(bucket, []).append(path)
@@ -581,9 +608,7 @@ def stream_panel(
         if strict_schema and missing:
             raise ValueError(f"panel_signal_scan schema drift: {sorted(missing)}")
         projected_columns = ", ".join(
-            f'"{column}"'
-            if column in available
-            else f'NULL AS "{column}"'
+            f'"{column}"' if column in available else f'NULL AS "{column}"'
             for column in _SIGNAL_INPUT_COLUMNS
         )
         symbol_filter = ""
@@ -646,9 +671,7 @@ def observation_from_record(
         and peak_band_upper >= peak_band_lower
     )
     hard_valid = (
-        _as_bool(record.get("research_hard_valid"))
-        and profile_valid
-        and peak_valid
+        _as_bool(record.get("research_hard_valid")) and profile_valid and peak_valid
     )
     history_count = _finite_number(record.get("history_count"), fallback=0.0)
     setup_score = _finite_number(record.get("setup_score"), fallback=0.0)
@@ -659,7 +682,9 @@ def observation_from_record(
         _optional_text(record.get("industry_pit_grade")) or "UNKNOWN"
     )
     pit_grade = "A" if strict else "B_RESEARCH_ONLY"
-    evidence_for = tuple(label for field, label in _SETUP_EVIDENCE if _as_bool(record.get(field)))
+    evidence_for = tuple(
+        label for field, label in _SETUP_EVIDENCE if _as_bool(record.get(field))
+    )
     distribution_flags = tuple(
         _as_bool(record.get(field)) for field, _ in _DISTRIBUTION_EVIDENCE
     )
@@ -671,10 +696,26 @@ def observation_from_record(
         if active
     )
     atr = _positive_number(record.get("atr"), fallback=1e-12)
-    current_close = _finite_number(record.get("close"), fallback=0.0)
+    invalid_positive_fields: list[str] = []
+
+    def required_positive(field: str, *, fallback: float) -> float:
+        value = _optional_finite_number(record.get(field))
+        if value is not None and value > 0.0:
+            return value
+        invalid_positive_fields.append(field)
+        return max(fallback, 1e-12)
+
+    current_close = required_positive("close", fallback=chip_profile.prices[-1])
     current_p90 = _positive_number(
         record.get("cost_p90"), fallback=chip_profile.prices[-1]
     )
+    median_fallback = chip_profile.prices[len(chip_profile.prices) // 2]
+    structure_support = required_positive("structure_support", fallback=current_close)
+    current_low = required_positive("low", fallback=current_close)
+    average_cost = required_positive("average_cost", fallback=median_fallback)
+    cost_p50 = required_positive("cost_p50", fallback=median_fallback)
+    prior_average_cost = required_positive("prior_average_cost", fallback=average_cost)
+    prior_cost_p50 = required_positive("prior_cost_p50", fallback=cost_p50)
     alternatives: list[str] = []
     sector_fallback = _optional_text(record.get("sector_fallback"))
     if sector_fallback and sector_fallback != "INDUSTRY_LOO":
@@ -683,13 +724,21 @@ def observation_from_record(
         alternatives.append(f"industry_pit_grade={industry_grade}")
     reason_codes = _optional_text(record.get("reason_codes"))
     if reason_codes:
-        alternatives.extend(f"data_reason={item}" for item in reason_codes.split("|") if item)
+        alternatives.extend(
+            f"data_reason={item}" for item in reason_codes.split("|") if item
+        )
     if _as_bool(record.get("corporate_action_blocking")):
         alternatives.append("corporate_action_pending_or_unresolved")
     if not profile_valid:
         alternatives.append("chip_profile_missing_or_invalid")
     if not peak_valid:
         alternatives.append("tracked_base_peak_missing_or_ambiguous")
+    if invalid_positive_fields:
+        hard_valid = False
+        alternatives.extend(
+            f"nonactionable_positive_field_missing={field}"
+            for field in invalid_positive_fields
+        )
     lineage_state = _optional_text(record.get("exact_lineage_state")) or "UNKNOWN"
     if lineage_state == "UNKNOWN":
         alternatives.append("exact_descendant_lineage=UNKNOWN")
@@ -705,9 +754,7 @@ def observation_from_record(
             1.0,
             max(
                 0.0,
-                _finite_number(
-                    record.get("known_cost_fraction_min"), fallback=0.0
-                ),
+                _finite_number(record.get("known_cost_fraction_min"), fallback=0.0),
             ),
         )
         spread_fields = (
@@ -742,7 +789,9 @@ def observation_from_record(
             f"global_p90_overhang_atr={(current_p90 - current_close) / atr:.6f}"
         )
 
-    distribution_score = sum(distribution_flags) / config.fixed.distribution_component_count
+    distribution_score = (
+        sum(distribution_flags) / config.fixed.distribution_component_count
+    )
     return LifecycleObservation(
         symbol=_required_text(record, "symbol"),
         decision_at=decision_at,
@@ -752,35 +801,37 @@ def observation_from_record(
         tradable=_as_bool(record.get("tradable_state")),
         pit_grade=pit_grade,
         setup_score=setup_score,
-        breakout_excess_atr=_finite_number(record.get("breakout_excess_atr"), fallback=-1e12),
+        breakout_excess_atr=_finite_number(
+            record.get("breakout_excess_atr"), fallback=-1e12
+        ),
         support_regained=_as_bool(record.get("support_regained")),
         downside_absorption=_as_bool(record.get("ev_downside_absorption")),
         chip_profile=chip_profile,
-        cost_p10=_positive_number(record.get("cost_p10"), fallback=chip_profile.prices[0]),
+        cost_p10=_positive_number(
+            record.get("cost_p10"), fallback=chip_profile.prices[0]
+        ),
         cost_p90=current_p90,
         peak_count=max(1, int(_finite_number(record.get("peak_count"), fallback=1.0))),
         recent_band_overlap=_finite_number(
             record.get("recent_band_overlap"), fallback=0.0
         ),
         distribution_score=distribution_score,
-        structure_support=_finite_number(record.get("structure_support"), fallback=0.0),
+        structure_support=structure_support,
         close=current_close,
         close_vs_vwap=_finite_number(
             record.get("close_vs_vwap"),
             fallback=0.0 if _as_bool(record.get("support_regained")) else -1e12,
         ),
-        low=_finite_number(record.get("low"), fallback=0.0),
+        low=current_low,
         volume=_finite_number(record.get("volume"), fallback=0.0),
         turnover=_finite_number(record.get("turnover_fraction"), fallback=0.0),
-        average_cost=_finite_number(record.get("average_cost"), fallback=0.0),
-        cost_p50=_finite_number(record.get("cost_p50"), fallback=0.0),
-        prior_average_cost=_finite_number(record.get("prior_average_cost"), fallback=0.0),
-        prior_cost_p50=_finite_number(record.get("prior_cost_p50"), fallback=0.0),
+        average_cost=average_cost,
+        cost_p50=cost_p50,
+        prior_average_cost=prior_average_cost,
+        prior_cost_p50=prior_cost_p50,
         atr=atr,
         chip_model_disagreement_atr=model_spread_atr,
-        share_multiplier=_positive_number(
-            record.get("share_multiplier"), fallback=1.0
-        ),
+        share_multiplier=_positive_number(record.get("share_multiplier"), fallback=1.0),
         cash_per_share=max(
             0.0, _finite_number(record.get("cash_per_share"), fallback=0.0)
         ),
@@ -922,9 +973,7 @@ def _signal_schema() -> pa.Schema:
             (
                 "anchor_model_retentions",
                 pa.list_(
-                    pa.struct(
-                        [("model", pa.string()), ("retention", pa.float64())]
-                    )
+                    pa.struct([("model", pa.string()), ("retention", pa.float64())])
                 ),
             ),
             ("evidence_for", pa.list_(pa.string())),
@@ -969,7 +1018,9 @@ def _event_schema() -> pa.Schema:
     )
 
 
-def _write_records(path: Path, records: Sequence[Mapping[str, Any]], schema: pa.Schema) -> None:
+def _write_records(
+    path: Path, records: Sequence[Mapping[str, Any]], schema: pa.Schema
+) -> None:
     arrays = [
         pa.array([record.get(field.name) for record in records], type=field.type)
         for field in schema
@@ -1025,20 +1076,20 @@ def _load_manifest(
         {
             key: payload[key]
             for key in (
-            "schema_version",
-            "strategy_version",
-            "stage",
-            "config_sha256",
-            "panel_snapshot_id",
-            "parameter_id",
-            "parameters",
-            "builder_sha256",
-            "strategy_sha256",
-            "selection_policy",
-            "source_input_inventory",
-            "inventory",
-            "metrics",
-        )
+                "schema_version",
+                "strategy_version",
+                "stage",
+                "config_sha256",
+                "panel_snapshot_id",
+                "parameter_id",
+                "parameters",
+                "builder_sha256",
+                "strategy_sha256",
+                "selection_policy",
+                "source_input_inventory",
+                "inventory",
+                "metrics",
+            )
         }
     )
     expected_snapshot = (
@@ -1294,7 +1345,9 @@ def _anchor_retention_estimates_from_record(
         if not isinstance(decoded, Mapping):
             continue
         model_values = _decoded(decoded.get("model_retentions"))
-        if isinstance(model_values, Sequence) and not isinstance(model_values, (str, bytes)):
+        if isinstance(model_values, Sequence) and not isinstance(
+            model_values, (str, bytes)
+        ):
             model_values = {
                 str(entry.get("model")): entry.get("retention")
                 for entry in model_values
@@ -1307,7 +1360,9 @@ def _anchor_retention_estimates_from_record(
                 AnchorRetentionEstimate.from_model_retentions(
                     anchor_id=str(decoded["anchor_id"]),
                     symbol=str(decoded["symbol"]),
-                    anchor_date=_as_date(decoded.get("anchor_date"), field="anchor_date"),
+                    anchor_date=_as_date(
+                        decoded.get("anchor_date"), field="anchor_date"
+                    ),
                     current_date=_as_date(
                         decoded.get("current_date"), field="anchor_current_date"
                     ),
@@ -1410,6 +1465,7 @@ _SIGNAL_INPUT_COLUMNS = (
     "peak_track_band_upper",
     "peak_track_ambiguous",
     "peak_definition_version",
+    "peak_track_version",
     "exact_lineage_state",
     "cost_p99",
     "peak_count",
