@@ -1,0 +1,219 @@
+{
+  "architecture_definitions": {
+    "A_CURRENT_V12": {
+      "definition": "Authoritative production SETUP_OBSERVED; unique canonical base, lifecycle validity, tradability, and production setup_score >= 1.00 all remain required.",
+      "role": "PRODUCTION_BASELINE",
+      "variant": "A"
+    },
+    "B_CANDIDATE_FIRST": {
+      "definition": "Base-free PIT-valid, tradable observation after 60 consecutive base-free-valid sessions; no canonical root is required and no lifecycle state is written.",
+      "role": "BROAD_RESEARCH_CANDIDATE_INTAKE",
+      "variant": "B"
+    },
+    "C_ENSEMBLE_AMBIGUOUS": {
+      "definition": "Candidate-first intake currently in ENSEMBLE_AMBIGUOUS state; canonical_base remains null.",
+      "role": "EXPLICIT_AMBIGUITY_HYPOTHESIS",
+      "variant": "C"
+    },
+    "C_PERSISTENT_AMBIGUITY_20": {
+      "definition": "Candidate-first intake with ensemble ambiguity on at least 50% of the trailing 20 observations; fixed semantic boundary, not discovery-fitted.",
+      "role": "EXPLICIT_PERSISTENCE_HYPOTHESIS",
+      "variant": "C"
+    },
+    "C_TEMPORAL_STATE_STRATIFIED": {
+      "definition": "Same intake as B with an explicit non-substitutable temporal_state carried on every candidate.",
+      "role": "STRATIFIED_RESEARCH_CANDIDATE_INTAKE",
+      "variant": "C"
+    },
+    "D_ANY_1_BASE_FREE_COMPONENT": {
+      "definition": "Candidate-first intake with at least one of four exactly observable base-free accumulation predicates true; sticky-base is unavailable unless canonical identity exists.",
+      "role": "BASE_FREE_ACCUMULATION_EVIDENCE",
+      "variant": "D"
+    },
+    "D_ANY_1_PLUS_AMBIGUITY": {
+      "definition": "Any one base-free accumulation predicate plus explicit ENSEMBLE_AMBIGUOUS state; no fake canonical base.",
+      "role": "ACCUMULATION_PLUS_TEMPORAL_STATE",
+      "variant": "D"
+    },
+    "D_ANY_1_PLUS_VALID_BASE": {
+      "definition": "Any one base-free accumulation predicate plus a valid canonical base; comparison confirmation architecture.",
+      "role": "ACCUMULATION_PLUS_TEMPORAL_CONFIRMATION",
+      "variant": "D"
+    },
+    "D_ANY_2_BASE_FREE_COMPONENTS": {
+      "definition": "Candidate-first intake with at least two of four exactly observable base-free accumulation predicates true; fixed conjunction diagnostic.",
+      "role": "BASE_FREE_ACCUMULATION_CONJUNCTION",
+      "variant": "D"
+    },
+    "P_PRICE_ONLY_BROAD": {
+      "definition": "Registered daily-price PIT-valid, tradable observation after 60 consecutive price-valid sessions; no V3 chip field or canonical peak is used.",
+      "role": "V3_INDEPENDENT_PRICE_RESEARCH_UNIVERSE",
+      "variant": "P"
+    },
+    "P_PRICE_PULLBACK_20": {
+      "definition": "Price-only eligible observation at least 5% below the trailing 20-session economic-price high; boundary fixed before evaluation and not fitted to wave outcomes.",
+      "role": "V3_INDEPENDENT_SWING_PULLBACK_UNIVERSE",
+      "variant": "P"
+    },
+    "P_PRICE_PULLBACK_STABILIZING": {
+      "definition": "Fixed price-only 20-session pullback state plus nonnegative one-session economic-price change; no chip or temporal input.",
+      "role": "V3_INDEPENDENT_SWING_STABILIZATION_UNIVERSE",
+      "variant": "P"
+    }
+  },
+  "artifacts": {
+    "V12_SETUP_RECALL_REMEDIATION_DESIGN_STUDY.md": {
+      "bytes": 16515,
+      "sha256": "73e7a94a5535891e3258e535218c34ca1b89ac77ca52adac072c821bbea0f181"
+    },
+    "accumulation_component_discrimination.csv": {
+      "bytes": 45594,
+      "sha256": "12f9bd423232895282a762d5dd4dfa89562afe636828e83e2fc990d47e5dc8ef"
+    },
+    "accumulation_score_distribution.csv": {
+      "bytes": 11373,
+      "sha256": "4c856dcf0d37f8124eced5cc9c908723f91127015dbf3ee2c974788114be967e"
+    },
+    "architecture_comparison.csv": {
+      "bytes": 8620,
+      "sha256": "dab8240d29461856d28aa22ed6931382eb986b88105d6a21a5d2298247a7a117"
+    },
+    "candidate_recall_vs_control.csv": {
+      "bytes": 34492,
+      "sha256": "42fa64871cfa34c58542aafe1a675016f6eea32b932ce5fe7bd1121ff67f60da"
+    },
+    "researchability_summary.csv": {
+      "bytes": 21000,
+      "sha256": "cdb498341b108553b981ed4462a4b9f2301fccbc9fc6eabf3c23588f6f8a14f4"
+    },
+    "root_anchor_boundary_audit.csv": {
+      "bytes": 1617,
+      "sha256": "817e8b0052e15befb014df031c7bd314dea0d0837005d0295c51f28a47f0afcb"
+    },
+    "temporal_state_outcome_comparison.csv": {
+      "bytes": 21301,
+      "sha256": "df21152d95f7bab713232216b3b9b3dd769580773b7706f8670130be7773cebb"
+    }
+  },
+  "chronological_splits": {
+    "discovery": "feature_date <= 2020-04-30",
+    "holdout": "feature_date >= 2020-09-01",
+    "validation": "2020-05-01 <= feature_date <= 2020-08-31"
+  },
+  "counts": {
+    "candidate_first_eligible_symbol_days": 88695,
+    "complete_price_label_rows": 121186,
+    "frozen_rows": 121251,
+    "matched_controls": 1599,
+    "price_candidate_eligible_symbol_days": 89356,
+    "production_setups": 1,
+    "symbols": 500,
+    "waves": 1599
+  },
+  "hard_gates": {
+    "AMBIGUITY_CAN_BE_EXPLICIT_CANDIDATE_STATE": "YES",
+    "CANDIDATE_FIRST_ENRICHMENT_VALIDATES": "NO",
+    "CANDIDATE_FIRST_RECALL_IMPROVES": "YES",
+    "CURRENT_ACCUMULATION_SCORE_DEGENERATE": "YES",
+    "CURRENT_SETUP_ARCHITECTURE_CLASSIFICATION": "OVERCOUPLED_ARCHITECTURE; TEMPORAL_CONFIRMATION_USED_TOO_EARLY; CONSERVATIVE_DESIGN_CHOICE_AT_ROOT_DEPENDENT_BOUNDARY",
+    "INFORMATIVE_ACCUMULATION_COMPONENTS_FOUND": "YES",
+    "PRODUCTION_TEMPORAL_SEMANTICS_CHANGE_JUSTIFIED": "NO",
+    "PRODUCTION_THRESHOLD_CHANGE_JUSTIFIED": "NO",
+    "RESEARCHABLE_CONTINUATION_FUNNEL_IDENTIFIED": "YES",
+    "ROOT_ANCHOR_CAN_BE_BOUND_LATER_THAN_CANDIDATE_CREATION": "YES",
+    "SAFE_TO_DESIGN_NEW_SETUP_ARCHITECTURE": "YES",
+    "SAFE_TO_IMPLEMENT_NEW_SETUP_ARCHITECTURE": "NO",
+    "SAFE_TO_RUN_PNL_ORIENTED_SWING_STUDY": "YES",
+    "SAFE_TO_START_FULL_MARKET_3941_BUILD": "NO",
+    "TEMPORAL_CONFIRMATION_APPLIED_TOO_EARLY": "YES",
+    "UNIQUE_CANONICAL_BASE_REQUIRED_FOR_CANDIDATE_GENERATION": "NO"
+  },
+  "informative_accumulation_components": [
+    "ev_sticky_base",
+    "ev_downside_absorption"
+  ],
+  "input_evidence": {
+    "authoritative_setup_funnel_commit": "d0a005daf33398d85f14ce1cba722bfc3b13a066",
+    "authoritative_setup_funnel_manifest_sha256": "ed7a6591e46fe4d94e505bdc22b6ef02f73e5eadbff6da49ca35826b2cd5271f",
+    "authoritative_setup_funnel_runner_sha256": "a20f34c88bda71ee28d1800fe59964024e91cd2ae1bb9ac71c12aabca5c25d73",
+    "authoritative_source_sha256": {
+      "configs/markup_retest_main_chinext_2020_v1.yaml": "a4f2e7da19a6f03300af1f1d7bf802019ea72f228b6cf6caff778278f3902f14",
+      "src/cyq_game/strategy/lifecycle_ledger.py": "b64c9561980ec14e5bd12f45679f0e31fa28e59bbe4193f34d9a2b84fa61ee89",
+      "src/cyq_game/strategy/markup_retest.py": "3f9eb1c9e96c800f721dcb1bc344bee043924ae05f8934d31560f8b331c797f8",
+      "src/cyq_game/strategy/panel.py": "c16b791a26f0b142b1b2e782432523120df394f5c5cb21fd6c4a6c77cd58a810",
+      "src/cyq_game/strategy/signals.py": "07bada68cfecd720d269ab014e7322fa42b56bbeed944ce11429b45ec500cb99"
+    },
+    "authoritative_source_unchanged_from_ledger_commit": true,
+    "branch_descends_from_authoritative_setup_funnel": true,
+    "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+    "ledger_artifact_sha256": {
+      "decision_gates.parquet": "35817766cf05f6b7a5e77078735f6226698fd51955204926ae852f6a1f111381",
+      "execution_events.parquet": "7cb6111adb970b9b4cff51f511e0fadc46ca4698ef996f6068dea1b4d99f432b",
+      "lifecycle_events.parquet": "66a120d028a268696df8a5b85702a4ca0d7db95da8639134de8310da35ac65e7",
+      "lifecycle_summary.parquet": "7d1d9876a0cc98140380f9fc497449bea27a792a428be1f240a5ed29bdce6b3e"
+    },
+    "ledger_manifest_sha256": "4b4ba0325f41dfcda5f9a7e8e3f259907dbf596f5b2863f622bf2503c7e30254",
+    "ledger_provenance": {
+      "artifact_contract_fingerprint": "ca30bc8f06d80b4667f7274ec94185968b99f46e86781b42a6b47fa5ca7c3a98",
+      "execution_config_fingerprint": "db2c711dc9b2ebc61bdc652907ba207420b0c5836e94385bebc162581ae9f487",
+      "frozen_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+      "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+      "ledger_implementation_commit": "3488a95dfb17815e7ea23f065c702106dcd10437",
+      "ledger_schema_version": "v12-lifecycle-entry-exit-ledger-v1",
+      "semantic_fingerprint": "54eebd57b9f3507d7bad302c65161e8ded3371c4d6edf5a4a5d8b8fc7be75e12",
+      "strategy_parameter_id": "9baed76ec299161c",
+      "strategy_version": "markup-retest-v3-tracked-peak",
+      "v3_build_commit": "c81bc30a381e8cebcc5b9f8d36524a8a4c9f0151"
+    },
+    "registered_daily_2020_sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+    "registered_minute_daily_2020_sha256": "8cf94aa834c520db71d0912385ac10872ecaa96b1aa356b3fb427a204a16c1bf",
+    "reverse_wave_v2_completed_commit": "b59b1adde6ba43929f9ad20a533f296d610755dd",
+    "reverse_wave_v2_manifest_sha256": "ea596b5fa2da7d70bbc39d6699a0f6ebfc379ded41fd261fde48107a4458ad9a"
+  },
+  "pnl_researchability_criterion_preregistered_before_holdout": {
+    "candidate_layer_must_be_v3_independent": true,
+    "maximum_median_candidate_duration": 20.0,
+    "minimum_holdout_candidate_episodes": 100,
+    "minimum_holdout_enrichment": 1.05,
+    "minimum_holdout_wave_candidates": 100,
+    "minimum_median_candidate_duration": 1.0,
+    "minimum_total_candidate_episodes": 500,
+    "minimum_validation_candidate_episodes": 100,
+    "minimum_validation_enrichment": 1.05,
+    "minimum_validation_wave_candidates": 100
+  },
+  "research_object_contract": {
+    "authoritative_downstream_outcomes_reused_after_counterfactual_setup": false,
+    "base_dependent_components": [
+      "ev_sticky_base"
+    ],
+    "base_free_chain_name": "RESEARCH_BASE_FREE_CHAIN_V1",
+    "base_free_components": [
+      "ev_turnover_absorption",
+      "ev_near_price_chip_growth",
+      "ev_concentration_improves",
+      "ev_downside_absorption"
+    ],
+    "canonical_base_fabricated_during_ambiguity": false,
+    "counterfactual_downstream_lifecycle_simulated": false,
+    "price_only_candidate_consumes_v3": false,
+    "price_only_candidate_inputs": [
+      "CY-006 registered daily OHLC/preclose/trading validity",
+      "authoritative corporate_action_clear"
+    ],
+    "production_ledger_written": false,
+    "production_state_machine_replayed": false
+  },
+  "researchability_criterion_preregistered_before_holdout": {
+    "minimum_holdout_enrichment": 1.1,
+    "minimum_holdout_wave_candidates": 100,
+    "minimum_holdout_wave_recall": 0.25,
+    "minimum_pooled_oos_enrichment_ci_low": 1.0,
+    "minimum_validation_enrichment": 1.1,
+    "minimum_validation_wave_candidates": 100,
+    "minimum_validation_wave_recall": 0.25
+  },
+  "study": "V12 Setup Recall Remediation Design Study",
+  "study_contract_version": "v12-setup-recall-remediation-design-v1"
+}
