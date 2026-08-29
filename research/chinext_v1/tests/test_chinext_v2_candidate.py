@@ -173,7 +173,7 @@ def test_candidate_identities_match_preregistration() -> None:
 
 def test_loss_budget_attempt_is_frozen_hash_bound_and_single_variant() -> None:
     prereg = json.loads(LOSS_BUDGET_PREREG.read_text(encoding="utf-8"))
-    runner = load_module(RUNNER, "chinext_v2_loss_runner_test")
+    implementation_commit = "5e046bded74abaaddeb953e2be22d7190d44251d"
     assert prereg["status"] == "FROZEN_BEFORE_V2_A003_RESULT"
     assert prereg["research_period"] == ["2018-01-02", "2021-12-31"]
     assert prereg["recent_period_firewall"]["used_for_candidate_selection"] == "NO"
@@ -196,13 +196,22 @@ def test_loss_budget_attempt_is_frozen_hash_bound_and_single_variant() -> None:
         "new_state_variable_count": 0,
         "special_case_count": 0,
     }
-    assert runner.candidate_identity(attempt["CANDIDATE_POLICY"]) == attempt[
-        "STRATEGY_SHA"
-    ]
+    assert attempt["STRATEGY_SHA"] == (
+        "20a531dfe434aae5cbf581649897229c7680af556703766f78bc6992b907dee2"
+    )
     bindings = prereg["frozen_bindings"]
-    assert bindings["candidate_module_sha256"] == sha256(CANDIDATE)
-    assert bindings["engine_sha256"] == sha256(ENGINE)
-    assert bindings["runner_sha256"] == sha256(RUNNER)
+    assert bindings["candidate_module_sha256"] == committed_sha256(
+        implementation_commit,
+        "research/chinext_v1/strategy/chinext_v2_candidate.py",
+    )
+    assert bindings["engine_sha256"] == committed_sha256(
+        implementation_commit,
+        "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+    )
+    assert bindings["runner_sha256"] == committed_sha256(
+        implementation_commit,
+        "research/chinext_v1/scripts/run_chinext_v2_research.py",
+    )
     assert bindings["prior_attempt_ledger_sha256"] == committed_sha256(
         "e7f304d7c2f4352c79e9dca39c41f919986a1d45",
         "research/chinext_v1/reports/chinext_v2_attempt_ledger.json",

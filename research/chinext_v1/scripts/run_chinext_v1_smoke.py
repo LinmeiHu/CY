@@ -21,21 +21,8 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT_ROOT = Path(__file__).resolve().parent
-for import_root in (str(SCRIPT_ROOT), str(ROOT)):
-    if import_root not in sys.path:
-        sys.path.insert(0, import_root)
+sys.path.insert(0, str(ROOT))
 
-from chinext_v1_ablation import (  # noqa: E402
-    market_entry_allowed_for_arm,
-    minvol_admission_for_arm,
-    phase7_policy_for,
-    phase8_policy_for,
-    policy_for,
-    price_structure_for_arm,
-    rank_candidates_for_arm,
-)
-from chinext_v1_phase4 import select_with_capacity_envelope  # noqa: E402
 from strategy.chinext_v1_exploratory import (  # noqa: E402
     BREAKOUT_VOLUME_MODE,
     EXECUTION_LIMIT_MODEL,
@@ -58,13 +45,16 @@ from strategy.chinext_v1_exploratory import (  # noqa: E402
     sort_candidates,
     trade_return_summary,
 )
-from strategy.chinext_v2_candidate import (  # noqa: E402
-    evaluate_loss_budget as evaluate_v2_loss_budget,
+from chinext_v1_ablation import (  # noqa: E402
+    market_entry_allowed_for_arm,
+    minvol_admission_for_arm,
+    policy_for,
+    phase7_policy_for,
+    phase8_policy_for,
+    price_structure_for_arm,
+    rank_candidates_for_arm,
 )
-from strategy.chinext_v2_candidate import (  # noqa: E402
-    evaluate_rs_admission as evaluate_v2_rs_admission,
-)
-from strategy.chinext_v2_candidate import policy_for as v2_policy_for  # noqa: E402
+from chinext_v1_phase4 import select_with_capacity_envelope  # noqa: E402
 
 SURVIVOR_WARNING = (
     "CURRENT SURVIVOR UNIVERSE / NOT POINT-IN-TIME / SURVIVORSHIP BIASED / "
@@ -436,11 +426,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
     arm_name = getattr(args, "ablation_arm", "A0_BASELINE")
-    v2_policy = None
-    if arm_name.startswith("V2_"):
-        ablation_policy = policy_for("A0_BASELINE")
-        v2_policy = v2_policy_for(arm_name)
-    elif arm_name.startswith("E"):
+    if arm_name.startswith("E"):
         ablation_policy = phase7_policy_for(arm_name)
     elif arm_name.startswith("W"):
         ablation_policy = phase8_policy_for(arm_name)
@@ -852,7 +838,6 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 
         exit_reason_parts: list[str] = []
         winner_hold_symbols: set[str] = set()
-        loss_budget_triggered_today: set[str] = set()
         if arm_name == "W1_WINNER_HOLD_THROUGH_MARKET_EXIT" and market_state["normal_exit"]:
             for symbol, position in positions.items():
                 held_sessions = sum(d >= position.acquisition_date for d in histories_dates[symbol])
@@ -883,42 +868,6 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                             "execution_deferred_to": "NEXT_SELLABLE_OPEN",
                         }
                     )
-            if (
-                not exit_reason_parts
-                and symbol not in forced_exits
-                and v2_policy is not None
-                and v2_policy.close_loss_budget is not None
-            ):
-                row = day_rows.get(symbol)
-                if not critical_row_valid(row):
-                    counts["v2_loss_budget_unknown"] += 1
-                    continue
-                position = positions[symbol]
-                loss_budget = evaluate_v2_loss_budget(
-                    shares=position.shares,
-                    remaining_cost_basis=position.cost_basis,
-                    remaining_dividends=position.dividends,
-                    cycle_buy_cost=position.cycle_buy_cost,
-                    cycle_realized_pnl=position.cycle_realized_pnl,
-                    close=float(row["close"]),
-                    policy=v2_policy,
-                )
-                if not loss_budget["valid"]:
-                    counts["v2_loss_budget_unknown"] += 1
-                elif loss_budget["triggered"]:
-                    forced_exits.add(symbol)
-                    loss_budget_triggered_today.add(symbol)
-                    counts["v2_loss_budget_signals"] += 1
-                    events.append(
-                        {
-                            "event": "V2_LOSS_BUDGET_EXIT_SIGNAL",
-                            "signal_date": day,
-                            "symbol": symbol,
-                            "cycle_mark_return": loss_budget["cycle_mark_return"],
-                            "loss_budget": v2_policy.close_loss_budget,
-                            "execution_timing": "NEXT_ELIGIBLE_OPEN",
-                        }
-                    )
 
         if exit_reason_parts:
             forced_exits.update(set(planned_members) - winner_hold_symbols)
@@ -944,33 +893,21 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     counts["minvol_pass"] += 1
                 if breakout.passed:
                     counts["breakout_volume_shadow_pass"] += 1
-                entry_event = {
-                    "event": "ENTRY_SIGNAL_EVALUATED",
-                    "signal_date": day,
-                    "symbol": symbol,
-                    "price_structure_pass": price_pass,
-                    "full40": asdict(full),
-                    "phase3_ablation": ablation_diagnostics,
-                    "minvol": asdict(minimum),
-                    "breakout_volume_mode": BREAKOUT_VOLUME_MODE,
-                    "breakout_volume": asdict(breakout),
-                    "rs": rs.get(symbol),
-                }
-                events.append(entry_event)
-                v2_admission = (
-                    {"valid": True, "passed": True, "reason": "NOT_APPLICABLE"}
-                    if v2_policy is None
-                    else evaluate_v2_rs_admission(rs.get(symbol), v2_policy)
+                events.append(
+                    {
+                        "event": "ENTRY_SIGNAL_EVALUATED",
+                        "signal_date": day,
+                        "symbol": symbol,
+                        "price_structure_pass": price_pass,
+                        "full40": asdict(full),
+                        "phase3_ablation": ablation_diagnostics,
+                        "minvol": asdict(minimum),
+                        "breakout_volume_mode": BREAKOUT_VOLUME_MODE,
+                        "breakout_volume": asdict(breakout),
+                        "rs": rs.get(symbol),
+                    }
                 )
-                if v2_policy is not None:
-                    entry_event["v2_rs_admission"] = v2_admission
-                    if not v2_admission["passed"]:
-                        counts["v2_rs_admission_rejected"] += 1
-                if (
-                    minvol_admission_for_arm(minimum, ablation_policy)
-                    and symbol in rs
-                    and v2_admission["passed"]
-                ):
+                if minvol_admission_for_arm(minimum, ablation_policy) and symbol in rs:
                     candidate_symbols.append(symbol)
                     counts["arm_candidate_event"] += 1
             ranked = rank_candidates_for_arm(
@@ -993,8 +930,6 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     planned_members, forced_exits, [], config
                 )
             membership_reason = "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"
-            if loss_budget_triggered_today:
-                membership_reason += "+V2_LOSS_BUDGET_10"
 
         if capacity_envelope is not None and len(desired) > daily_capacity:
             counts["capacity_survivor_overflow_days"] += 1
@@ -1245,14 +1180,6 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "survivor_overflow_days": counts["capacity_survivor_overflow_days"],
             "survivor_overflow_total_slots": counts["capacity_survivor_overflow_total"],
             "max_survivor_overflow_slots": counts["capacity_survivor_overflow_max"],
-        }
-    if v2_policy is not None:
-        summary["v2_candidate"] = {
-            "policy": v2_policy.to_dict(),
-            "rs_admission_rejected_count": counts["v2_rs_admission_rejected"],
-            "loss_budget_signal_count": counts["v2_loss_budget_signals"],
-            "loss_budget_unknown_count": counts["v2_loss_budget_unknown"],
-            "parent_v1_semantics_unchanged_except_candidate_delta": True,
         }
     write_json(args.summary, summary)
     write_report(args.report, summary)
