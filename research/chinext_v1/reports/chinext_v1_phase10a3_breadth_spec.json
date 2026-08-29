@@ -1,0 +1,42 @@
+{
+  "status": "FROZEN_BEFORE_OUTCOME_ANALYSIS",
+  "purpose": "PIT_MARKET_BREADTH_DESCRIPTIVE_AUDIT",
+  "date_range": ["2022-01-04", "2025-12-31"],
+  "warmup_start": "2021-07-08",
+  "source_authorizations": [
+    "CYQ-AUTH-CHINEXT-V1-PIT-B-2024-2025-V1",
+    "CYQ-AUTH-CHINEXT-V1-PIT-B-HOLDOUT-2022-2023-V1"
+  ],
+  "features": [
+    "above_ma20_breadth",
+    "above_ma60_breadth",
+    "positive_20d_momentum_breadth",
+    "positive_60d_momentum_breadth",
+    "b60_breakout_breadth",
+    "cross_sectional_median_20d_return",
+    "cross_sectional_median_close_vs_ma20"
+  ],
+  "minimum_valid_coverage": 0.95,
+  "definitions": {
+    "above_ma20_breadth": "fraction of PIT members with close_t > MA20_t",
+    "above_ma60_breadth": "fraction of PIT members with close_t > MA60_t",
+    "positive_20d_momentum_breadth": "fraction with close_t / close_(t-20) - 1 > 0",
+    "positive_60d_momentum_breadth": "fraction with close_t / close_(t-60) - 1 > 0",
+    "b60_breakout_breadth": "fraction with close_t > max(close_(t-60)..close_(t-1)); current day excluded",
+    "cross_sectional_median_20d_return": "median of close_t / close_(t-20) - 1 over valid PIT members",
+    "cross_sectional_median_close_vs_ma20": "median of close_t / MA20_t - 1 over valid PIT members"
+  },
+  "coverage": "Every denominator is the exact PIT member count; values are INVALID_COVERAGE when valid_count / PIT_MEMBER_COUNT < 95%.",
+  "governance": {
+    "formal_replay_executions": 0,
+    "new_trades": 0,
+    "new_nav": 0,
+    "pit_rebuilt": "NO",
+    "current_survivor_fallback": "NO",
+    "new_data_download": "NO",
+    "threshold_search": "FORBIDDEN"
+  },
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "development_pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+  "holdout_pit_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43"
+}
