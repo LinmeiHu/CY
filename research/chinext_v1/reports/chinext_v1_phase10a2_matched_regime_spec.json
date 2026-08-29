@@ -1,0 +1,43 @@
+{
+  "status": "FROZEN_BEFORE_RESULTS",
+  "purpose": "WITHIN_YEAR_MATCHED_REGIME_DIAGNOSTICS",
+  "input_feature_spec_sha256": "eef08f1af256d8908658cf5d7c518b1871cf16dddbf73f5c85c253a02617461e",
+  "analysis_units": ["frozen_entry_episode", "calendar_quarter", "calendar_month"],
+  "outcome_groups": {
+    "RIGHT_TAIL_20": "MFE >= 0.20",
+    "NON_RIGHT_TAIL_20": "MFE < 0.20",
+    "RIGHT_TAIL_50": "MFE >= 0.50",
+    "NON_RIGHT_TAIL_50": "MFE < 0.50",
+    "LOSER": "realized_return <= 0"
+  },
+  "within_year": {
+    "years": [2022, 2023, 2024, 2025],
+    "minimum_sample": "report group counts; mark INSUFFICIENT_SAMPLE when a group is empty"
+  },
+  "quarter_blocked": {
+    "minimum_right_tail_20": 2,
+    "minimum_non_right_tail_20": 2,
+    "matching_scope": "same calendar quarter",
+    "replacement": "NO_REPLACEMENT"
+  },
+  "temporal_matching": {
+    "scope": "same year and absolute entry_signal_date distance <= 30 calendar days",
+    "priority": ["nearest in time", "normalized symbol lexical order", "frozen episode id"],
+    "maximum_controls_per_right_tail_episode": 1,
+    "replacement": "NO_REPLACEMENT"
+  },
+  "directional_vote": {
+    "higher_is_stronger": ["trend_level", "trend_slope", "index_momentum", "distance_to_high"],
+    "closer_to_zero_is_stronger": ["drawdown"],
+    "direction_not_predeclared": ["volatility", "market_gate_state"]
+  },
+  "effect_size": ["median", "p25", "p75", "median_difference", "cliffs_delta"],
+  "governance": {
+    "formal_replay_executions": 0,
+    "new_trades": 0,
+    "new_nav": 0,
+    "pit_rebuilt": "NO",
+    "new_features": "FORBIDDEN",
+    "threshold_search": "FORBIDDEN"
+  }
+}
