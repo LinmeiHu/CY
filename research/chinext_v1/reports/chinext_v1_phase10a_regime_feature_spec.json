@@ -1,0 +1,42 @@
+{
+  "status": "FROZEN_BEFORE_OUTCOME_ANALYSIS",
+  "purpose": "ZERO_REPLAY_REGIME_FEATURE_AUDIT",
+  "anchor": "399102.SZ",
+  "date_range": ["2022-01-04", "2025-12-31"],
+  "warmup_start": "2021-07-08",
+  "units": ["DAILY_REGIME_OBSERVATION", "FROZEN_ENTRY_EPISODE"],
+  "features": {
+    "trend_level": ["close", "ma20", "ma60", "ma120", "close_vs_ma20", "close_vs_ma60", "close_vs_ma120", "ma20_vs_ma60", "ma60_vs_ma120"],
+    "trend_slope": ["ma20_slope_5", "ma20_slope_20", "ma60_slope_20"],
+    "index_momentum": ["return_20", "return_60", "return_120"],
+    "distance_to_prior_high": ["close_vs_previous_60d_high", "close_vs_previous_120d_high"],
+    "drawdown": ["drawdown_from_trailing_60d_high", "drawdown_from_trailing_120d_high"],
+    "volatility": ["realized_vol_10", "realized_vol_20", "realized_vol_60", "vol_ratio_10_60", "vol_ratio_20_60"],
+    "market_gate_state": ["entry_gate_on", "close_vs_frozen_gate_ma"],
+    "breadth": "NOT_AVAILABLE_UNDER_CURRENT_GOVERNANCE"
+  },
+  "causal_formulas": {
+    "ma": "rolling mean through t inclusive",
+    "slope": "MA_t / MA_(t-k) - 1 for (MA20,k)=(20,5),(20,20) and (MA60,k)=(60,20)",
+    "momentum": "close_t / close_(t-k) - 1 for k in {20,60,120}",
+    "prior_high": "close_t / max(high_(t-1)..high_(t-k)) - 1 for k in {60,120}",
+    "drawdown": "close_t / max(high_(t-k+1)..high_t) - 1 for k in {60,120}",
+    "volatility": "standard deviation of close-to-close returns through t over trailing windows {10,20,60}",
+    "vol_ratio": "realized_vol_10 / realized_vol_60 and realized_vol_20 / realized_vol_60",
+    "entry_gate": "frozen market_entry_allowed_for_arm decision using only anchor history through t"
+  },
+  "outcome_groups": ["LOSER", "SMALL_WINNER", "RIGHT_TAIL_20", "RIGHT_TAIL_50", "RIGHT_TAIL_100", "NON_RIGHT_TAIL_20", "NON_RIGHT_TAIL_50", "CONTINUATION_POSITIVE", "CONTINUATION_NONPOSITIVE"],
+  "effect_size": ["median_difference", "cliffs_delta", "standardized_mean_difference_when_defined"],
+  "governance": {
+    "formal_replay_executions": 0,
+    "new_trades": 0,
+    "new_nav": 0,
+    "pit_rebuilt": "NO",
+    "current_survivor_fallback": "NO",
+    "threshold_selection": "FORBIDDEN",
+    "breadth_status": "NOT_AVAILABLE_UNDER_CURRENT_GOVERNANCE"
+  },
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "development_pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+  "holdout_pit_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43"
+}
