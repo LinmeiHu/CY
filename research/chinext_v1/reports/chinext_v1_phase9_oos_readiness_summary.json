@@ -1,0 +1,70 @@
+{
+  "phase9_result": "BLOCKED_DATA_GOVERNANCE",
+  "phase8_mechanism_frozen": {
+    "winner_min_holding_sessions": 20,
+    "winner_min_current_return": 0.2,
+    "phase8_spec_sha256": "805dc365f5cac89d8114d2ca320d02d3e0a2934bc920566297db310d43ee3d7c"
+  },
+  "available_oos_ranges": [
+    {
+      "range": ["2018-01-01", "2026-08-12"],
+      "assets": ["CY-003", "CY-006", "CY-008"],
+      "status": "DATA_EXISTS_BUT_NO_CHINEXT_V1_AUTHORIZED_UNIVERSE"
+    },
+    {
+      "range": ["2020-01-02", "2023-12-29"],
+      "assets": ["CY-019", "CY-020"],
+      "status": "OTHER_PROTOCOL_SCOPE_MARKUP_RETEST_ONLY"
+    },
+    {
+      "range": ["2026-01-05", "2026-08-24"],
+      "assets": ["CY-001", "CY-024", "CY-025"],
+      "status": "QA_OR_NEW_PROTOCOL_SCOPE_BLOCKED_FOR_FROZEN_PRIOR_PROTOCOL"
+    },
+    {
+      "range": ["2024-01-02", "2025-12-31"],
+      "assets": ["CY-027"],
+      "status": "USED_PHASE1_TO_PHASE8_NOT_OOS"
+    }
+  ],
+  "recommended_oos_range": null,
+  "oos_data_available": true,
+  "oos_pit_available": false,
+  "oos_authorization_valid": false,
+  "oos_manifest": null,
+  "oos_manifest_digest": null,
+  "authorization_ids_found": [
+    "CYQ-AUTH-CHINEXT-V1-PIT-B-2024-2025-V1"
+  ],
+  "authorization_scope_found": {
+    "project": "research/chinext_v1",
+    "start": "2024-01-02",
+    "end": "2025-12-31",
+    "asset_id": "CY-027"
+  },
+  "requirements": {
+    "point_in_time_universe": false,
+    "listing_history": false,
+    "historical_st_risk_state": false,
+    "suspension_tradability": false,
+    "authorized_price_volume_turnover": false,
+    "trade_calendar": true,
+    "no_current_survivor_fallback": true,
+    "central_registry_authorization": false,
+    "120_day_warmup": true
+  },
+  "governance_blockers": [
+    "Only ChinNext V1 authorization is bounded to 2024-01-02..2025-12-31.",
+    "QD-007 is DISCOVERY_ONLY and blocks universe construction, states, signals, and backtests.",
+    "CY-019/CY-020 are MARKUP_RETEST-scoped and cannot be silently reused.",
+    "CY-024/CY-025 explicitly prohibit use by completed or frozen prior protocols."
+  ],
+  "data_blockers": [
+    "No single authorized OOS manifest binds date-varying ChinNext membership, listing/risk/tradability state, and market data.",
+    "Current-survivor fallback is forbidden."
+  ],
+  "new_oos_formal_replay_executions": 0,
+  "pit_rebuilt": "NO",
+  "threshold_search": "NONE",
+  "minimal_next_action": "Obtain a new centrally authorized append-only ChinNext PIT-B OOS artifact and freeze its spec before running O0 then O1 once each."
+}
