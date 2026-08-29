@@ -1,0 +1,176 @@
+{
+  "artifact_id": "CHINEXT-V2-FAILURE-HYPOTHESIS-LEDGER-2018-2021-V1",
+  "attempt_budget": {
+    "large_grid_search": "FORBIDDEN",
+    "maximum_material_candidate_evaluations": 24,
+    "maximum_meaningful_variants_per_mechanism": 2,
+    "maximum_mechanism_hypotheses": 12,
+    "optimization_objective_highest_total_return": "FORBIDDEN"
+  },
+  "authorization": {
+    "frozen_before_candidate_evaluation": true,
+    "sample_status": "IN_SAMPLE_MECHANISM_RESEARCH",
+    "strategy_parent": "CHINEXT_V1_IMMUTABLE",
+    "used_2022_2025_for_v2_selection": "NO",
+    "v1_formal_replay_executions_during_decomposition": 0
+  },
+  "frozen_bindings": {
+    "failure_decomposition_path": "research/chinext_v1/reports/chinext_v1_extended_failure_decomposition.json",
+    "failure_decomposition_sha256": "5de8baaa7a57ad6e8db8f2c08e7bafffce4b11ab8b03ba5e3a78a7a06c4a1f3c",
+    "v1_extended_result_sha256": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094",
+    "v1_strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "hypotheses": [
+    {
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 0,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "EVIDENCE": [
+        "Winner median r120 percentile is 0.602302 versus 0.518005 for losers; top-20 median is 0.608925.",
+        "Top weighted-RS quartile has a positive 0.1115% median and 5.3973% mean cycle return, versus the V1 aggregate -0.9705% median and 3.0456% mean.",
+        "Winner and loser r20 medians are nearly indistinguishable (0.687239 versus 0.694883), so the new evidence is horizon interaction rather than a repeat of the prior no-RS ablation."
+      ],
+      "EXPECTED_BENEFIT": "Suppress entries whose short/mid-horizon strength is not confirmed by persistent cross-sectional strength, improving median trade and return excluding the largest winners without adding a new data source.",
+      "EXPECTED_COST": "Fewer entries and possible loss of some large winners whose r120 percentile is below the cross-sectional median.",
+      "FALSIFICATION_RESULT": "PENDING_PREREGISTERED_CANDIDATE_TEST",
+      "HYPOTHESIS_ID": "HYP-001-LONG-HORIZON-RS-ADMISSION",
+      "MECHANISM": "The existing weighted RS score can admit a security whose short or medium horizon dominates despite below-median persistent relative strength.",
+      "OBSERVED_V1_FAILURE": "V1 has a negative median cycle return and -50.1573% return excluding the best 20 cycles while retaining positive right-tail winners.",
+      "PROPOSED_MINIMAL_CHANGE": "Require the already-computed r120 cross-sectional percentile to be at least the semantic median (0.50) at entry; one optional second variant may require all existing r20/r60/r120 percentiles to be at least 0.50.",
+      "RANK": 1,
+      "STATUS": "AUTHORIZED_FOR_AT_MOST_TWO_VARIANTS",
+      "WHY_V1_MAY_CAUSE_IT": "V1 ranks the weighted 20/60/120 score but has no horizon-consistency admission check, allowing strong short-term rank to compensate for weak persistent rank."
+    },
+    {
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "EVIDENCE": [
+        "Twenty-two cycles ending at or below -10% contribute -413236.91 of realized P&L.",
+        "The <=-10% band has median MFE +4.1982% and median MAE -14.0699%, unlike the top-20 winners with median MFE +55.2179% and median MAE -1.8924%.",
+        "A next-session execution boundary is required; no same-bar exit may be introduced."
+      ],
+      "EXPECTED_BENEFIT": "Cap the severe-loss tail while preserving most right-tail winners.",
+      "EXPECTED_COST": "Gap-through execution can still exceed the threshold, and a stop can truncate eventual winners; top-20 p10 MAE is -6.1294%, so a tighter threshold is not justified.",
+      "FALSIFICATION_RESULT": "DEFERRED_UNLESS_HYP_001_FAILS_TO_PRODUCE_A_DEFENSIBLE_CANDIDATE",
+      "HYPOTHESIS_ID": "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET",
+      "MECHANISM": "V1 waits for existing trend/set exits after a position has entered a persistent adverse path, permitting a small severe-loss tail to absorb a large part of gross winner P&L.",
+      "OBSERVED_V1_FAILURE": "The 58 cycles at or below -5% contribute -759848.23, including 22 cycles at or below -10%.",
+      "PROPOSED_MINIMAL_CHANGE": "If tested, add one close-confirmed -10% cycle-return risk exit, submitted only for the next eligible open under existing execution rules; no tighter sweep.",
+      "RANK": 2,
+      "STATUS": "CONDITIONAL_SINGLE_VARIANT",
+      "WHY_V1_MAY_CAUSE_IT": "Existing individual and market exits are trend conditions rather than an explicit position loss budget."
+    },
+    {
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 0,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "EVIDENCE": [
+        "Thirty-nine cycles with coincident individual-MA and set-removal exit lineage have 25.64% win rate, -6.9250% median return, and -282649.41 realized P&L.",
+        "The prior basic individual-exit disable ablation used a different sample and showed a trade-off; simply repeating that ablation is prohibited and scientifically insufficient."
+      ],
+      "EXPECTED_BENEFIT": "Potentially reduce the specific weak-security exit interaction without disturbing market exits that carry most V1 winner P&L.",
+      "EXPECTED_COST": "The frozen decomposition is descriptive and does not identify a unique causal intervention; changing confirmation may also discard recoveries.",
+      "FALSIFICATION_RESULT": "NO_UNIQUE_MINIMAL_INTERVENTION_IDENTIFIED",
+      "HYPOTHESIS_ID": "HYP-003-INDIVIDUAL-EXIT-SET-REMOVAL-INTERACTION",
+      "MECHANISM": "A security-specific trend break and contemporaneous eligibility removal identify a particularly weak path, but the current evidence does not isolate which exit component causes the loss.",
+      "OBSERVED_V1_FAILURE": "The combined individual-MA/set-removal lineage is the weakest sizeable exit bucket.",
+      "PROPOSED_MINIMAL_CHANGE": "None authorized yet; do not disable the individual exit or add an interaction rule without a uniquely falsifiable causal specification.",
+      "RANK": 3,
+      "STATUS": "DEFERRED_RESEARCH_HYPOTHESIS",
+      "WHY_V1_MAY_CAUSE_IT": "V1 can remain in weak names until two-close confirmation or removal, but the observed bucket alone is not a counterfactual."
+    },
+    {
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 0,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "EVIDENCE": [
+        "The 28 entries that fail the existing breakout-volume shadow diagnostic have 53.57% win rate, +0.5169% median return, and +2.9808% mean return.",
+        "The 166 shadow-pass entries have 43.98% win rate and -1.2620% median return."
+      ],
+      "EXPECTED_BENEFIT": "None supported by the frozen 2018-2021 evidence.",
+      "EXPECTED_COST": "A hard gate would remove a small group with better median and win-rate behavior.",
+      "FALSIFICATION_RESULT": "FALSIFIED_BY_FROZEN_DESCRIPTIVE_EVIDENCE_NO_CANDIDATE_RUN",
+      "HYPOTHESIS_ID": "HYP-004-BREAKOUT-VOLUME-HARD-GATE",
+      "MECHANISM": "Turn the existing shadow breakout-volume check into an entry requirement.",
+      "OBSERVED_V1_FAILURE": "Potential low-quality entries were considered as a source of the negative median.",
+      "PROPOSED_MINIMAL_CHANGE": "No change; retain shadow-only status.",
+      "RANK": 4,
+      "STATUS": "REJECTED_BEFORE_EVALUATION",
+      "WHY_V1_MAY_CAUSE_IT": "The proposed mechanism is contradicted rather than supported by the frozen sample."
+    },
+    {
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 1,
+        "special_case_count": 0
+      },
+      "EVIDENCE": [
+        "The maximum run of nonpositive completed cycles is 10 and losses cluster in several exit months.",
+        "The decomposition does not establish an ex-ante authorized regime feature that uniquely predicts those clusters."
+      ],
+      "EXPECTED_BENEFIT": "Could reduce repeated exposure during an adverse strategy regime.",
+      "EXPECTED_COST": "Adds path dependence, a cooldown length, and likely misses rebounds or right-tail entries; it is highly susceptible to fitting the observed cluster chronology.",
+      "FALSIFICATION_RESULT": "DEFERRED_FOR_LACK_OF_UNIQUE_CAUSAL_TRIGGER",
+      "HYPOTHESIS_ID": "HYP-005-LOSS-CLUSTER-COOLDOWN",
+      "MECHANISM": "Temporarily suppress new entries after a sequence of realized losses.",
+      "OBSERVED_V1_FAILURE": "Losses are temporally clustered and include a ten-cycle nonpositive streak.",
+      "PROPOSED_MINIMAL_CHANGE": "No candidate tonight; retain as deferred research unless an independently authorized causal regime trigger is established.",
+      "RANK": 5,
+      "STATUS": "DEFERRED_RESEARCH_HYPOTHESIS",
+      "WHY_V1_MAY_CAUSE_IT": "V1 has no portfolio-level loss-regime state, but realized-loss timing is itself an outcome and is not enough to justify a tuned cooldown."
+    },
+    {
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 0,
+        "new_parameter_count": 0,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "EVIDENCE": [
+        "2018 is negative despite only 2.8755% average invested ratio and 85.19% flat sessions.",
+        "2019-2021 average invested ratio is approximately 30-34%, so high exposure is not a common explanation across years."
+      ],
+      "EXPECTED_BENEFIT": "No standalone exposure change is supported.",
+      "EXPECTED_COST": "Reducing exposure would likely suppress both losses and the sparse large winners without addressing selection quality.",
+      "FALSIFICATION_RESULT": "FALSIFIED_AS_PRIMARY_MECHANISM_NO_CANDIDATE_RUN",
+      "HYPOTHESIS_ID": "HYP-006-GROSS-EXPOSURE-REDUCTION",
+      "MECHANISM": "Reduce position count or gross exposure to control drawdown.",
+      "OBSERVED_V1_FAILURE": "V1 has uneven annual results and a -20.7627% maximum drawdown.",
+      "PROPOSED_MINIMAL_CHANGE": "No change; do not repeat exposure-matched or position-count ablations without a new interaction.",
+      "RANK": 6,
+      "STATUS": "REJECTED_BEFORE_EVALUATION",
+      "WHY_V1_MAY_CAUSE_IT": "The cross-year exposure evidence does not support overexposure as the primary failure."
+    }
+  ],
+  "prior_research_non_repetition": {
+    "basic_entry_module_ablations": "NOT_REPEATED",
+    "basic_exit_module_ablations": "NOT_REPEATED",
+    "breadth_and_index_threshold_search": "NOT_REPEATED",
+    "industry_concentration_rules": "NOT_REPEATED",
+    "winner_hold_rules": "NOT_REPEATED"
+  },
+  "ranked_hypothesis_count": 6,
+  "selection_firewall": {
+    "accepted_candidate_special_case_count": 0,
+    "candidate_period_end": "2021-12-31",
+    "candidate_period_start": "2018-01-02",
+    "candidate_status_label": "IN_SAMPLE_MECHANISM_RESEARCH",
+    "forbidden_selection_dates": "2022-01-01..2025-12-31",
+    "recent_period_status": "REVISION_HOLDBACK_NOT_USED_FOR_V2_SELECTION",
+    "total_return_alone_is_sufficient": false
+  }
+}
