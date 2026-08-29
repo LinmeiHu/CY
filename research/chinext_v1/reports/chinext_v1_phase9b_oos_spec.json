@@ -1,0 +1,38 @@
+{
+  "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-HOLDOUT-2022-2023-V1",
+  "authorization_purpose": "CHINEXT_V1_TEMPORAL_HOLDOUT_VALIDATION",
+  "authorized_arms": ["O0_BASELINE", "O1_WINNER_HOLD"],
+  "date_range": ["2022-01-04", "2023-12-29"],
+  "warmup_start": "2021-07-08",
+  "holdout_manifest": "research/chinext_v1/reports/chinext_v1_pit_holdout_2022_2023_master_manifest.json",
+  "holdout_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "o0_baseline": {
+    "arm": "O0_BASELINE",
+    "semantics": "frozen Phase 1B baseline"
+  },
+  "o1_winner_hold": {
+    "arm": "O1_WINNER_HOLD",
+    "implementation_policy": "W1_WINNER_HOLD_THROUGH_MARKET_EXIT",
+    "semantics": "only winner-qualified positions skip a confirmed baseline market exit; frozen individual MA30x2 and end-of-test liquidation remain active"
+  },
+  "winner_qualification": {
+    "min_holding_sessions": 20,
+    "min_current_return": 0.2,
+    "information_set": "market-exit decision day only; current close and frozen acquisition date",
+    "future_mfe_or_top20_used": false
+  },
+  "same_contract": [
+    "holdout PIT universe",
+    "entry logic",
+    "B60/FULL40/MINVOL/RS",
+    "market entry gate",
+    "individual exit",
+    "position sizing",
+    "transaction costs",
+    "execution semantics",
+    "listing age, ST, suspension and liquidity rules",
+    "end-of-test semantics"
+  ],
+  "status": "FROZEN_BEFORE_ANY_PHASE9B_RESULT"
+}

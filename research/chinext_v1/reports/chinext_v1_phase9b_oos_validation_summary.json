@@ -1,0 +1,152 @@
+{
+  "O0_BASELINE": {
+    "2022_return": -0.1729136755700007,
+    "2023_return": 0.021392085054959376,
+    "annualized_return": -0.08168328625996357,
+    "average_holdings": 1.7995867768595042,
+    "average_invested_fraction": 0.17835449106928172,
+    "max_drawdown": -0.193413353857543,
+    "mean_trade_return": -0.016552130299664392,
+    "median_trade_return": -0.033237367977433055,
+    "return_ex_best10": -0.3180227300000004,
+    "return_ex_best20": -0.33743483100000043,
+    "same_day_fills": 0,
+    "sharpe_rf0": -0.6815090306324758,
+    "stale_held_valuations": 0,
+    "top10_concentration": 0.8897358169266522,
+    "top1_concentration": 0.1590985122108264,
+    "top20_concentration": 0.9958255765854177,
+    "top5_concentration": 0.6679956421052143,
+    "total_return": -0.15522057457000038,
+    "trade_count": 94,
+    "volatility": 0.11501727513195209,
+    "win_rate": 0.2553191489361702
+  },
+  "O1_MINUS_O0": {
+    "annualized_return_delta_pp": -1.0566258135918716,
+    "average_invested_fraction_delta_pp": 0.12643166196423528,
+    "max_drawdown_delta_pp": -1.8263247154262197,
+    "return_delta_pp": -1.9132641000000006,
+    "return_ex_best10_delta_pp": 0.14791390000000182,
+    "return_ex_best20_delta_pp": 0.17108289999999693,
+    "sharpe_delta": -0.09690735686525165,
+    "top20_concentration_delta_pp": -0.051744746596016356,
+    "trade_count_delta": 0
+  },
+  "O1_WINNER_HOLD": {
+    "2022_return": -0.1729136755700007,
+    "2023_return": -0.0017404954688275964,
+    "annualized_return": -0.09224954439588229,
+    "average_holdings": 1.8140495867768596,
+    "average_invested_fraction": 0.17961880768892408,
+    "max_drawdown": -0.2116766010118052,
+    "mean_trade_return": -0.01922628440210797,
+    "median_trade_return": -0.03323736797743307,
+    "return_ex_best10": -0.3165435910000004,
+    "return_ex_best20": -0.33572400200000047,
+    "same_day_fills": 0,
+    "sharpe_rf0": -0.7784163874977275,
+    "stale_held_valuations": 0,
+    "top10_concentration": 0.8770065491960469,
+    "top1_concentration": 0.17560149867800107,
+    "top20_concentration": 0.9953081291194575,
+    "top5_concentration": 0.6275867707160698,
+    "total_return": -0.17435321557000039,
+    "trade_count": 94,
+    "volatility": 0.1154632843339543,
+    "win_rate": 0.2553191489361702
+  },
+  "current_survivor_fallback": "NO",
+  "development_direction": {
+    "drawdown_delta_pp": 3.5144,
+    "return_delta_pp": 9.5111,
+    "same_direction": false
+  },
+  "year_consistency": {
+    "2022_delta_pp": 0.0,
+    "2023_delta_pp": -2.31325855538373,
+    "classification": "negative_in_one_unchanged_in_one"
+  },
+  "right_tail_generalization_findings": {
+    "top20_concentration_delta_pp": -0.051744746596016356,
+    "return_ex_best20_delta_pp": 0.17108289999999693,
+    "finding": "right-tail concentration did not materially worsen, but total return and drawdown both worsened; activation count is only 2"
+  },
+  "winner_hold_generalization": "NOT_SUPPORTED_OOS",
+  "evidence_strength": "WEAK",
+  "diagnostics": {
+    "deferred_episodes": [
+      {
+        "entry_episode": [
+          "300161.SZ",
+          "2023-03-23"
+        ],
+        "extra_holding_sessions": 3,
+        "o0_market_exit_date": "2023-04-24",
+        "o0_realized_return": 0.33447836272876424,
+        "o0_return": 0.33447836272876424,
+        "o1_final_exit_date": "2023-04-27",
+        "o1_final_exit_reason": "MARKET_MA20_X2+MARKET_CLOSE_LT_MA20_X0.96",
+        "o1_realized_pnl": 17711.892000000007,
+        "o1_realized_return": 0.2103822341382535,
+        "return_difference": -0.12409612859051075
+      },
+      {
+        "entry_episode": [
+          "300226.SZ",
+          "2023-03-22"
+        ],
+        "extra_holding_sessions": 4,
+        "o0_market_exit_date": "2023-04-24",
+        "o0_realized_return": 0.35007052026407787,
+        "o0_return": 0.35007052026407787,
+        "o1_final_exit_date": "2023-04-28",
+        "o1_final_exit_reason": "MARKET_MA20_X2+MARKET_CLOSE_LT_MA20_X0.96",
+        "o1_realized_pnl": 19584.068999999996,
+        "o1_realized_return": 0.22340029797552402,
+        "return_difference": -0.12667022228855385
+      }
+    ],
+    "deferred_eventually_loser_count": 0,
+    "deferred_eventually_loser_pnl": 0,
+    "deferred_eventually_loser_rate": 0.0,
+    "market_exit_position_count": 72,
+    "normal_market_exit_count": 70,
+    "winner_deferred_count": 2,
+    "winner_qualified_at_market_exit_count": 2
+  },
+  "formal_replay_executions": 2,
+  "formal_run_order": [
+    "O0_BASELINE",
+    "O1_WINNER_HOLD"
+  ],
+  "authorization_valid": true,
+  "qd007_global_status": "DISCOVERY_ONLY",
+  "pit_2024_2025_artifact_unchanged": true,
+  "contract_identity": {
+    "cost_bps_per_side": 10,
+    "same_holdout_pit": true,
+    "same_date_range": true,
+    "same_entry_logic": true,
+    "same_individual_exit": true,
+    "same_execution_semantics": true
+  },
+  "holdout_date_range": [
+    "2022-01-04",
+    "2023-12-29"
+  ],
+  "holdout_pit_rebuilt": "NO",
+  "identity": {
+    "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-HOLDOUT-2022-2023-V1",
+    "holdout_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+    "phase9b_spec_sha256": "e2265b3a3fec2e809d88b69d1884faf3b27a78df47ad617fed1fe32c07e0602d",
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "phase9b_result": "PASS",
+  "strategy_modified": "NO",
+  "warmup_start": "2021-07-08",
+  "winner_mechanism": {
+    "min_current_return": 0.2,
+    "min_holding_sessions": 20
+  }
+}

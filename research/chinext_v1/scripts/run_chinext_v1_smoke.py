@@ -198,10 +198,25 @@ def load_pit_membership(
 ) -> tuple[list[str], dict[date, dict[str, int]], dict[str, Any]]:
     """Load the frozen daily PIT universe without any survivor fallback."""
 
-    frame = pd.read_parquet(
-        path,
-        columns=["trade_date", "symbol", "listed_trading_days", "pit_grade"],
-    )
+    try:
+        frame = pd.read_parquet(
+            path,
+            columns=["trade_date", "symbol", "listed_trading_days", "pit_grade"],
+        )
+    except (OSError, ValueError) as exc:
+        # The frozen holdout parquet is valid and readable by DuckDB, while
+        # some local PyArrow builds reject its repetition-level metadata.
+        # Keep the schema/date checks below identical and fail closed if both
+        # readers reject the artifact.
+        try:
+            connection = duckdb.connect()
+            frame = connection.execute(
+                "SELECT trade_date, symbol, listed_trading_days, pit_grade "
+                "FROM read_parquet(?)", [str(path)]
+            ).fetchdf()
+            connection.close()
+        except Exception:
+            raise exc
     required = {"trade_date", "symbol", "listed_trading_days", "pit_grade"}
     if set(frame.columns) != required:
         raise ValueError("PIT membership schema mismatch")
@@ -416,7 +431,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     elif arm_name.startswith("W"):
         ablation_policy = phase8_policy_for(arm_name)
     else:
-        ablation_policy = policy_for(arm_name)
+        # Phase 9B names the frozen baseline O0_BASELINE; the policy registry
+        # retains its historical A0_BASELINE identifier.
+        ablation_policy = policy_for("A0_BASELINE" if arm_name == "O0_BASELINE" else arm_name)
     capacity_envelope = getattr(args, "capacity_envelope", None)
     capacity_identity = getattr(args, "capacity_envelope_identity", None)
     pit_membership_path = getattr(args, "pit_membership", None)
@@ -442,7 +459,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         if full_survivor
         else deterministic_equidistant_sample(candidates["symbol"].tolist(), args.sample_size)
     )
-    warmup_start = date(args.start.year - 1, 1, 1)
+    warmup_start = getattr(args, "warmup_start", date(args.start.year - 1, 1, 1))
     panel = load_sample_panel(connection, paths, sample, warmup_start, args.end)
     sessions = load_sessions(args.calendar, warmup_start, args.end)
     simulation_sessions = [day for day in sessions if args.start <= day <= args.end]
