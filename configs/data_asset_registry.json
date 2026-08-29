@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "registry_id": "CYQ-DATA-BASELINE-20260820",
-  "updated_at": "2026-08-29T14:00:00+08:00",
+  "updated_at": "2026-08-29T23:51:07+08:00",
   "authority": {
     "policy": "Only assets listed in this registry may be used by CYQ-GAME. Discovery of a new or changed asset does not authorize use: register it first, freeze its lineage, validate the registry, and pass every activation gate.",
     "human_document": "docs/data-asset-registry.md",
@@ -2899,6 +2899,97 @@
           "sha256": "6225973009634864ec4839128fa2ed49f001c660b3c94da710c7ad6dc4d05a2a"
         }
       ]
+    },
+    {
+      "asset_id": "CY-029",
+      "name": "Bounded ChinNext V1 free historical identity and state for 2017-2021",
+      "kind": "bounded_historical_identity_state_pit",
+      "status": "RESEARCH_CONDITIONAL",
+      "pit_grade": "B",
+      "physical_state": "MATERIALIZED",
+      "location": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021",
+      "source": "Deterministic bounded materialization from all 1,153 QD-003 sessions of BaoStock date-specific denominator and minimum daily state, BaoStock stock basic, and 27 targeted hash-bound SZSE/CNINFO documents; current-survivor membership and projected historical names are not authorization inputs",
+      "coverage": {
+        "start": "2017-04-12",
+        "end": "2021-12-31",
+        "trade_dates": 1153,
+        "warmup_trade_dates": 180,
+        "normalized_daily_rows": 924549,
+        "historical_symbols": 1098,
+        "current_survivor_identities": 1058,
+        "historical_non_survivors": 40,
+        "new_listings": 478,
+        "delistings": 8,
+        "risk_warning_intervals": 24,
+        "full_session_suspensions": 18915
+      },
+      "schema_and_units": "daily_historical_state.parquet: trade_date, symbol, source_code, listed_trading_days, daily trade status, full-day suspension, risk-warning boolean and ST/STAR_ST subtype, raw volume/amount strings, conservative next-session earliest_safe_use_date and bounded authorization class; security_master.parquet: effective list/out dates, diagnostic BaoStock code identity, current identity continuity and official alias hash",
+      "quality_evidence": {
+        "validation_report": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/reports/chinext_v1_gate_ab_closure.md",
+        "validation_report_sha256": "4552206419c379ecc0d9696101a16449cc190db135c84ad7768ff309eeca3084",
+        "validation_summary": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/reports/chinext_v1_gate_ab_closure_summary.json",
+        "validation_summary_sha256": "b86b2cb09827d30ae4bc7bf3b6fcbb665da88c708eba9956bead3736518c26b1",
+        "historical_denominator": "PASS: 1,153/1,153 QD-003 dates, 0 failed snapshots, date-varying code-set hashes",
+        "alias_reconciliation": "PASS: one detected anomaly, 300114 to 302132 effective 2025-02-17, zero unresolved",
+        "risk_warning_reconciliation": "PASS: 24/24 intervals with official subtype, 12 ST and 12 STAR_ST, zero unresolved",
+        "suspension_reconciliation": "PASS: 300198.SZ BaoStock/QMT 93/93 exact dates and all five warmup NULL rows legitimate full-session suspensions",
+        "deterministic_rebuild": "PASS: both normalized parquet files byte-identical across consecutive builds",
+        "gate_a": "PASS",
+        "gate_b": "PASS"
+      },
+      "lineage": {
+        "record_available_at": false,
+        "record_snapshot_id": true,
+        "immutable_manifest": true,
+        "manifest_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/reports/chinext_v1_free_historical_state_manifest.json",
+        "manifest_sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61",
+        "component_assets": ["QD-003", "QD-007"],
+        "bounded_authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+        "source_lineage_limit": "BaoStock has no record-level historical available_at or supplier revision-vintage chain. Authorization is bounded effective-state PIT-B for these exact hashes only; it is not strict PIT-A or global QD-007/BaoStock certification."
+      },
+      "allowed_uses": [
+        "exact 2017-04-12..2021-12-31 ChinNext V1 Gate A historical identity/state correctness",
+        "exact 180-session 2017 warmup Gate B compatibility",
+        "Phase12B4 input preparation only after a separate Gate C preregistration authorizes that pilot"
+      ],
+      "blocked_uses": [
+        "Gate C, Phase12B4, strategy replay, trades, NAV or performance without separate preregistration",
+        "production, live trading, order generation or executable sizing",
+        "other projects, strategies, artifacts, fields, symbols, downloads or date ranges",
+        "strict PIT-A, supplier revision-lineage or global QD-007/BaoStock claims",
+        "current-survivor fallback, current alias/name projection, synthetic fill or unknown-state substitution"
+      ],
+      "activation_gates": [
+        "central bounded authorization CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1 exists and purpose is CHINEXT_PIT_B_RESEARCH",
+        "bound manifest, daily historical state, security master and frozen strategy paths and SHA-256 digests remain exact",
+        "requested range exactly equals 2017-04-12..2021-12-31",
+        "consumer remains inside research/chinext_v1 and QD-007 remains DISCOVERY_ONLY globally",
+        "current-survivor fallback remains false and earliest_safe_use_date is enforced",
+        "record-level available_at and supplier revision lineage remain explicitly unavailable",
+        "Gate C remains separately preregistered before any Phase12B4 execution"
+      ],
+      "fingerprints": [
+        {
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+          "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+          "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/specs/chinext_v1_free_historical_state_acquisition_spec.json",
+          "sha256": "c443c1ff4981f8f55d05d34dda09f99387b1a9b65a0a546e3cbe03c3db9ae104"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/specs/chinext_v1_free_historical_state_official_events.json",
+          "sha256": "e9d0c128f1e4b8ba245ccd3f048b9f7cfd2a29bb8512d9cba66bf30711cc8906"
+        },
+        {
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/scripts/build_chinext_v1_free_historical_state.py",
+          "sha256": "7df24e4f892dbafaad9487e26c9903d9f7dc8bfd656963838240b30e1c6221e1"
+        }
+      ]
     }
   ],
   "bounded_authorizations": [
@@ -3009,6 +3100,60 @@
       "known_limitations": [
         "record-level historical available_at is unavailable",
         "BaoStock supplier revision-vintage lineage is unavailable",
+        "this is bounded artifact authorization, not strict PIT-A or vendor-level certification"
+      ]
+    },
+    {
+      "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+      "purpose": "CHINEXT_PIT_B_RESEARCH",
+      "asset_id": "CY-029",
+      "dependency_asset_id": "QD-007",
+      "dependency_status": "DISCOVERY_ONLY",
+      "scope": {
+        "project": "research/chinext_v1",
+        "start": "2017-04-12",
+        "end": "2021-12-31"
+      },
+      "bound_manifest": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/reports/chinext_v1_free_historical_state_manifest.json",
+        "sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61"
+      },
+      "bound_artifacts": [
+        {
+          "role": "daily_historical_state",
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+          "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+        },
+        {
+          "role": "security_master",
+          "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+          "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+        }
+      ],
+      "bound_strategy": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/strategy/chinext_v1_exploratory.py",
+        "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+      },
+      "current_survivor_fallback_allowed": false,
+      "record_level_available_at_available": false,
+      "qd007_globally_upgraded": false,
+      "allowed_uses": [
+        "Gate A historical identity/state input correctness for the exact bound artifact",
+        "Gate B 2017 warmup compatibility for the exact bound artifact",
+        "Phase12B4 input use only after a separate Gate C preregistration"
+      ],
+      "blocked_uses": [
+        "Gate C or Phase12B4 execution without separate preregistration",
+        "strategy replay, trades, NAV, performance, optimization, production or live trading",
+        "other projects, strategies, artifacts, fields, symbols, downloads or dates",
+        "current-survivor fallback or QD-007 global upgrade",
+        "strict PIT-A or supplier revision-lineage claims"
+      ],
+      "known_limitations": [
+        "record-level historical available_at is unavailable",
+        "BaoStock supplier revision-vintage lineage is unavailable",
+        "retrospective rows require the stored conservative earliest_safe_use_date",
+        "intraday or temporary suspension subtype is not authorized",
         "this is bounded artifact authorization, not strict PIT-A or vendor-level certification"
       ]
     }
@@ -3237,6 +3382,12 @@
       "at": "2026-08-29T16:00:00+08:00",
       "registry_id": "CYQ-DATA-BASELINE-20260820",
       "change": "Registered CY-028 and bounded authorization CYQ-AUTH-CHINEXT-V1-PIT-B-HOLDOUT-2022-2023-V1 for the exact 484-date 2022-01-04..2023-12-29 ChinNext temporal holdout artifact. Authorization is limited to research/chinext_v1 and exactly one O0 baseline plus one O1 Phase-8 winner-hold replay; QD-007 remains DISCOVERY_ONLY and no Phase 9B replay is executed by Phase 9A.",
+      "evidence_ids": []
+    },
+    {
+      "at": "2026-08-29T23:51:07+08:00",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "change": "Registered CY-029 and bounded authorization CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1 for the exact free 1,153-date ChinNext V1 historical identity/state artifact. Gate A and Gate B pass with one official alias boundary, 24/24 official ST or STAR_ST intervals, 93/93 suspension crosscheck and five legitimate warmup suspensions. QD-007 remains DISCOVERY_ONLY; strict PIT-A, supplier revision lineage, current-survivor fallback, Gate C/Phase12B4 execution and all strategy outcomes remain blocked pending separate preregistration.",
       "evidence_ids": []
     }
   ]

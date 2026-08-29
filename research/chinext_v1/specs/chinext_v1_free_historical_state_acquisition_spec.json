@@ -1,0 +1,147 @@
+{
+  "acquisition_spec_id": "CHINEXT-V1-FREE-HISTORICAL-STATE-2017-2021-V1",
+  "authorization_target": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+  "baostock": {
+    "cost_required": false,
+    "login_token_required": false,
+    "module_version": "00.9.10",
+    "package_version": "0.9.1"
+  },
+  "calendar": {
+    "asset_id": "QD-003",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+    "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "trading_date_count": 1153,
+    "trading_dates_serialization": "ascending YYYY-MM-DD joined by LF with one trailing LF",
+    "trading_dates_sha256": "8048846379e1a91ce1b869dab683707f9d3c323cdf337213212b88b0a7a46de5"
+  },
+  "date_range": [
+    "2017-04-12",
+    "2021-12-31"
+  ],
+  "failure_retry_rule": {
+    "empty_query_all_stock_is_failure": true,
+    "max_attempts": 3,
+    "parameters_may_change_between_attempts": false,
+    "retry_delay_seconds": 2,
+    "success_requires_error_code": "0",
+    "unexplained_missing_trading_date": "FAIL_CLOSED"
+  },
+  "fields": {
+    "query_all_stock": [
+      "code",
+      "tradeStatus",
+      "code_name"
+    ],
+    "query_history_k_data_plus": [
+      "date",
+      "code",
+      "tradestatus",
+      "isST",
+      "volume",
+      "amount"
+    ],
+    "query_stock_basic": [
+      "code",
+      "code_name",
+      "ipoDate",
+      "outDate",
+      "type",
+      "status"
+    ]
+  },
+  "frozen_strategy": {
+    "modified": false,
+    "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "hash_rule": {
+    "algorithm": "SHA-256",
+    "artifact_hash": "hash exact stored bytes",
+    "sorted_code_set": "ascending code strings joined by LF with one trailing LF"
+  },
+  "identity_rules": {
+    "alias_anomaly_rule": [
+      "flag overlapping candidate codes with identical security-basic ipoDate and identical bounded daily-state fingerprints",
+      "flag a code returned before an official code-effective boundary",
+      "flag date-specific identity conflicts not explained by inclusive list/out boundaries",
+      "historical code_name is diagnostic only and cannot authorize identity",
+      "every genuine anomaly requires a data-driven official event or remains UNRESOLVED_FAIL_CLOSED"
+    ],
+    "candidate_code_range": "SZSE numeric code 300000..309799",
+    "candidate_type": "BaoStock security basic type=1",
+    "current_status_filter_allowed": false,
+    "official_code_semantics": "SZSE bounded ChinNext stock-code semantics; source document must be hash-bound",
+    "selection_rule": "date-specific query_all_stock code intersect type=1 and bounded official code semantics, then apply date-effective official alias events",
+    "ticker_prefix_alone_authorizes_membership": false
+  },
+  "known_at_rule": {
+    "baostock_retrospective_state": "bounded effective-state only; earliest safe strategy use is the next repository trading session unless an official publication/effective event proves an earlier safe boundary",
+    "official_date_only_publication": "effective no earlier than max(source effective date, next repository trading session after publication date)",
+    "record_level_revision_vintage_available": false,
+    "strict_pit_a": false
+  },
+  "official_evidence_rule": {
+    "allowed_domains": [
+      "szse.cn",
+      "cninfo.com.cn"
+    ],
+    "broad_scraping_allowed": false,
+    "required_fields": [
+      "event_type",
+      "old_code_or_symbol",
+      "new_code_or_risk_warning_type",
+      "publication_date",
+      "effective_date",
+      "effective_end_if_available",
+      "source_url",
+      "source_document_sha256"
+    ],
+    "targeting_rule": "download only documents required by detected alias or risk-warning transition boundaries"
+  },
+  "query_functions": {
+    "denominator": "baostock.query_all_stock(day=trade_date)",
+    "security_basic": "baostock.query_stock_basic()",
+    "state": "baostock.query_history_k_data_plus(code, fields, start_date, end_date, frequency='d', adjustflag='3')"
+  },
+  "raw_serialization_rule": {
+    "compression": "gzip with mtime=0 and empty embedded filename",
+    "encoding": "UTF-8",
+    "format": "canonical JSON Lines",
+    "json": "ensure_ascii=false, sort_keys=true, separators=(',', ':')",
+    "row_order": {
+      "daily_state": "code, date",
+      "historical_denominator": "trade_date, code",
+      "security_basic": "code"
+    },
+    "source_fields_preserved_as_strings": true
+  },
+  "repository_start": {
+    "branch": "research/chinext-v1",
+    "head": "351b4bb19a0cb8bf8a8c666db2d9fb26ed3d5ede"
+  },
+  "risk_state_rules": {
+    "isST_false": "NORMAL under bounded BaoStock effective-state semantics",
+    "isST_true": "RISK_WARNING_PENDING_OFFICIAL_SUBTYPE",
+    "official_subtypes": [
+      "ST",
+      "STAR_ST",
+      "OTHER_SUPPORTED"
+    ],
+    "st_transition_rule": "derive contiguous isST intervals first; subtype each interval only from hash-bound SZSE/CNINFO evidence; ambiguous intervals fail closed",
+    "suspension_rule": "tradestatus=0 authorizes FULL_DAY only; intraday/temporary remains UNKNOWN_NOT_AUTHORIZED"
+  },
+  "storage_rule": {
+    "normalized": "one security master plus one combined daily bounded historical-state artifact",
+    "raw": "one denominator stream, one security-basic stream, one daily-state stream, one query index, and targeted official documents",
+    "redundant_full_size_representation_allowed": false
+  },
+  "strategy_outcome_use": "FORBIDDEN",
+  "warmup": {
+    "date_range": [
+      "2017-04-12",
+      "2017-12-29"
+    ],
+    "trading_date_count": 180
+  }
+}

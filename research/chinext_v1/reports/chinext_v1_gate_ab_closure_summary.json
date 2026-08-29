@@ -1,0 +1,158 @@
+{
+  "active_blockers_remaining": [],
+  "alias_normalization": {
+    "anomaly_count": 1,
+    "resolved_count": 1,
+    "status": "PASS_HASH_BOUND_OFFICIAL_BOUNDARY",
+    "unresolved_count": 0,
+    "verified_event": {
+      "effective_date": "2025-02-17",
+      "new_code": "302132.SZ",
+      "old_code": "300114.SZ",
+      "source_document_sha256": "dd68049c48df826848f361fd9e7b23dd20b6805144a2e5bc36e54db638611488",
+      "target_period_action": "302132.SZ_EXCLUDED_300114.SZ_RETAINED"
+    }
+  },
+  "authorization": {
+    "authorized_date_range": [
+      "2017-04-12",
+      "2021-12-31"
+    ],
+    "authorized_symbol_scope": "date-specific SZSE type=1 stocks within official ChinNext code semantics after official alias normalization",
+    "class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "known_at_limitations": [
+      "BaoStock has no record-level historical available_at or revision-vintage chain.",
+      "Combined retrospective rows may be consumed no earlier than earliest_safe_use_date, the next QD-003 session.",
+      "Official risk-warning subtype events are effective on their explicit effective_date."
+    ],
+    "revision_history_complete": false,
+    "strict_pit_a": false
+  },
+  "contracts": {
+    "CHINEXT-V1-MISSING-HISTORICAL-IDENTITY-LISTOUT-ALIAS-V1": "SATISFIED_FREE_BOUNDED_PIT_B",
+    "CHINEXT-V1-MISSING-RISK-WARNING-SUSPENSION-SEMANTICS-V1": "SATISFIED_FREE_BOUNDED_PIT_B"
+  },
+  "counts": {
+    "current_survivor_identities": 1058,
+    "delistings": 8,
+    "historical_gem_symbols_ever_seen": 1098,
+    "historical_non_survivors": 40,
+    "historical_symbols_ever_seen": 1098,
+    "new_listings": 478,
+    "normalized_daily_rows": 924549,
+    "raw_daily_state_rows": 925702,
+    "raw_denominator_rows": 5002929,
+    "suspension_sessions": 18915
+  },
+  "frozen_strategy": {
+    "modified": false,
+    "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "gate_a": {
+    "alias_continuity": "PASS",
+    "decision": "PASS",
+    "delisting_boundary": "PASS",
+    "fail_closed_unknown_conflict": "PASS",
+    "full_session_suspension": "PASS",
+    "gem_identity": "PASS",
+    "hash_bound_authorization": "PASS",
+    "listing_boundary": "PASS",
+    "non_survivor_retention": "PASS",
+    "star_st": "PASS",
+    "st": "PASS"
+  },
+  "gate_b": {
+    "calendar_status": "PASS_180_QD003_SESSIONS",
+    "corporate_action_status": "PASS_BOUNDED_PIT_635_OF_635",
+    "decision": "PASS",
+    "identity_status": "PASS",
+    "price_status": "PASS_HASH_BOUND_5_NULL_ROWS_PRESERVED_AS_SUSPENSIONS",
+    "state_status": "PASS",
+    "suspension_status": "PASS_5_OF_5_LEGITIMATE_SUSPENSIONS",
+    "warmup_date_range": [
+      "2017-04-12",
+      "2017-12-29"
+    ],
+    "warmup_sessions": 180
+  },
+  "historical_denominator": {
+    "current_set_projected_backward": false,
+    "historical_set_changes_through_time": true,
+    "snapshot_failure_count": 0,
+    "trading_dates_acquired": 1153,
+    "trading_dates_required": 1153
+  },
+  "manifest": {
+    "path": "research/chinext_v1/reports/chinext_v1_free_historical_state_manifest.json",
+    "sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61"
+  },
+  "materialization": {
+    "daily_historical_state": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+      "rows": 924549,
+      "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+    },
+    "deterministic_rebuild": "PASS_BYTE_IDENTICAL",
+    "representative_cases": {
+      "300028.SZ_delisting": "present_through_2020-08-03_absent_2020-08-04",
+      "300029.SZ_ST": "first_ST_2020-09-15",
+      "300114.SZ_alias": "retained_1153_sessions",
+      "300198.SZ_suspension": "PASS_93_OF_93",
+      "300372.SZ_warmup_nulls": "PASS_5_OF_5_LEGITIMATE_SUSPENSIONS",
+      "300795.SZ_STAR_ST": "first_STAR_ST_2021-04-28",
+      "300812.SZ_listing": "first_present_2020-01-09",
+      "302132.SZ_future_alias": "zero_normalized_target_rows"
+    },
+    "result": "PASS",
+    "security_master": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+      "rows": 1098,
+      "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+    }
+  },
+  "official_evidence": {
+    "document_count": 27,
+    "events_path": "research/chinext_v1/specs/chinext_v1_free_historical_state_official_events.json",
+    "events_sha256": "e9d0c128f1e4b8ba245ccd3f048b9f7cfd2a29bb8512d9cba66bf30711cc8906",
+    "hash_status": "PASS_27_OF_27"
+  },
+  "raw_artifacts": {
+    "daily_state_sha256": "4469184910db81f2c98b795e3427e9332077e8db51833c9177712c11e8b2a7ce",
+    "denominator_sha256": "c66527f2a4f912515bfc66f32c38d8cc0780088e1c11584bc552c131fe628d98",
+    "hash_status": "PASS",
+    "security_basic_sha256": "bb2b2908f43a22218eeb3e466297209e83ff3f392e3870174069f7bd70e957d8"
+  },
+  "research_frontier": {
+    "current": "FREE_HISTORICAL_STATE_ACQUISITION_AND_GATE_AB_CLOSURE_COMPLETED",
+    "next": "PHASE12B4_BOUNDED_CORRECTNESS_PILOT",
+    "safe_to_preregister_gate_c": "YES"
+  },
+  "research_scope": {
+    "free_paid_data_required": "NO",
+    "gate_c_executed": false,
+    "new_nav": 0,
+    "new_strategy_trades": 0,
+    "phase12b4_executed": false,
+    "strategy_performance_consumed": false
+  },
+  "risk_warning": {
+    "interval_count": 24,
+    "removal_positive_control": {
+      "effective_date": "2022-04-12",
+      "scope": "OUT_OF_AUTHORIZED_RANGE_VALIDATION_ONLY",
+      "status": "PASS_OFFICIAL_EVENT_AND_PRIOR_BAOSTOCK_DAILY_CONTROL",
+      "symbol": "300795.SZ"
+    },
+    "star_st_interval_count": 12,
+    "st_interval_count": 12,
+    "unresolved_count": 0
+  },
+  "summary_version": "chinext-v1-free-historical-state-gate-ab-closure-1",
+  "suspension": {
+    "authorization": "FULL_SESSION_DAILY_ONLY",
+    "intraday_or_temporary_subtype": "UNKNOWN_NOT_AUTHORIZED",
+    "qmt_300198_crosscheck": "PASS_93_OF_93",
+    "qmt_300198_sorted_yyyymmdd_sha256": "0dfbbd52889738b0ee0d882199ef87b20b2ef212171bb0c099cd5873aeb211c7"
+  }
+}

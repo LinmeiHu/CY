@@ -1,0 +1,457 @@
+{
+  "acquisition": {
+    "baostock_module_version": "00.9.10",
+    "baostock_package_version": "0.9.1",
+    "snapshot_failure_count": 0,
+    "trading_dates_acquired": 1153,
+    "trading_dates_required": 1153
+  },
+  "acquisition_spec": {
+    "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/specs/chinext_v1_free_historical_state_acquisition_spec.json",
+    "sha256": "c443c1ff4981f8f55d05d34dda09f99387b1a9b65a0a546e3cbe03c3db9ae104"
+  },
+  "alias_anomalies": [
+    {
+      "codes": [
+        "sz.300114",
+        "sz.302132"
+      ],
+      "effective_date": "2025-02-17",
+      "new_code": "sz.302132",
+      "official_source_sha256": "dd68049c48df826848f361fd9e7b23dd20b6805144a2e5bc36e54db638611488",
+      "old_code": "sz.300114",
+      "status": "RESOLVED_OFFICIAL_BOUNDARY"
+    }
+  ],
+  "authorization": {
+    "class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "date_range": [
+      "2017-04-12",
+      "2021-12-31"
+    ],
+    "known_at_limitations": [
+      "BaoStock has no record-level historical available_at or revision vintage",
+      "combined retrospective rows are safe no earlier than earliest_safe_use_date, the next QD-003 session",
+      "official risk-warning subtype events are effective on their explicit effective_date"
+    ],
+    "revision_limitations": [
+      "STRICT_PIT_A=NO",
+      "supplier revision_history_complete=false",
+      "authorization is exact-artifact, date-, field-, and hash-bounded"
+    ],
+    "symbol_scope": "date-specific SZSE type=1 stocks within official ChinNext code semantics after official alias normalization"
+  },
+  "counts": {
+    "current_survivor_identities": 1058,
+    "delistings": 8,
+    "historical_gem_symbols_ever_seen": 1098,
+    "historical_non_survivors": 40,
+    "historical_symbols_ever_seen": 1098,
+    "new_listings": 478,
+    "normalized_daily_rows": 924549,
+    "raw_daily_state_rows": 925702,
+    "raw_denominator_rows": 5002929,
+    "suspension_sessions": 18915
+  },
+  "gate_a": {
+    "alias_continuity": "PASS",
+    "decision": "PASS",
+    "delisting_boundary": "PASS",
+    "fail_closed_unknown_conflict": "PASS",
+    "full_session_suspension": "PASS",
+    "gem_identity": "PASS",
+    "hash_bound_authorization": "PASS",
+    "listing_boundary": "PASS",
+    "non_survivor_retention": "PASS",
+    "st": "PASS",
+    "star_st": "PASS"
+  },
+  "gate_b": {
+    "calendar_status": "PASS_180_QD003_SESSIONS",
+    "corporate_action_status": "PASS_BOUNDED_PIT_635_OF_635",
+    "decision": "PASS",
+    "identity_status": "PASS",
+    "price_status": "PASS_HASH_BOUND_5_NULL_ROWS_PRESERVED_AS_SUSPENSIONS",
+    "state_status": "PASS",
+    "suspension_status": "PASS_5_OF_5_LEGITIMATE_SUSPENSIONS",
+    "warmup_date_range": [
+      "2017-04-12",
+      "2017-12-29"
+    ],
+    "warmup_sessions": 180
+  },
+  "historical_denominator_samples": {
+    "2017-04-12": {
+      "row_count": 3757,
+      "sorted_code_set_sha256": "0300a4f8175af6f67bd9cafac7e5cbd10b76702b4fefad1f0019f092a36074d3"
+    },
+    "2018-01-02": {
+      "row_count": 4042,
+      "sorted_code_set_sha256": "33c5ae7026acc6251a42c2af76912d073b546d3cd49a97853c7434a309b57752"
+    },
+    "2019-01-02": {
+      "row_count": 4136,
+      "sorted_code_set_sha256": "77f1f9b1dbed988c590499895b46f8878943d86e9935f26dcfb8c4b3a9455ae8"
+    },
+    "2020-01-02": {
+      "row_count": 4306,
+      "sorted_code_set_sha256": "8f19bfa4d216898128291c448e95183f0176468dc2c0f44908b25910b532aa26"
+    },
+    "2021-01-04": {
+      "row_count": 4687,
+      "sorted_code_set_sha256": "524271137093686d2aef0a773eaca9745c89e587085f2cf833abcd4e9766fba3"
+    },
+    "2021-12-31": {
+      "row_count": 5147,
+      "sorted_code_set_sha256": "8dec16bc7862f60552f04ec822d92d224a2d6e2682e4dbfbb38fccf1b947e424"
+    }
+  },
+  "manifest_id": "CHINEXT-V1-FREE-HISTORICAL-STATE-2017-2021-MANIFEST-V1",
+  "materialization": {
+    "deterministic_rebuild": "PASS_BYTE_IDENTICAL",
+    "representative_checks": {
+      "alias_future_code_rows": 0,
+      "alias_old_code_rows": 1153,
+      "delisted_300028_last_date": "2020-08-03",
+      "later_listing_300812_first_date": "2020-01-09",
+      "st_300029_first_date": "2020-09-15",
+      "star_st_300795_first_date": "2021-04-28"
+    },
+    "result": "PASS"
+  },
+  "normalized_artifacts": {
+    "daily_historical_state": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+      "rows": 924549,
+      "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+    },
+    "security_master": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+      "rows": 1098,
+      "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+    }
+  },
+  "official_documents": {
+    "count": 27,
+    "events_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/specs/chinext_v1_free_historical_state_official_events.json",
+    "events_sha256": "e9d0c128f1e4b8ba245ccd3f048b9f7cfd2a29bb8512d9cba66bf30711cc8906",
+    "hash_status": "PASS_27_OF_27",
+    "index_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/official_documents_index.json",
+    "index_sha256": "92b594501b37f8850b6d7faf0d0b329b8f74e8b07fc46286741f474cae1600d4"
+  },
+  "raw_artifacts": {
+    "daily_state": {
+      "index_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/baostock_daily_state_index.json",
+      "index_sha256": "d845dda5b06ff67696482cbdf74c01b25390dca9b5cdb9fb46612ec81ddc6864",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/baostock_daily_state.jsonl.gz",
+      "sha256": "4469184910db81f2c98b795e3427e9332077e8db51833c9177712c11e8b2a7ce"
+    },
+    "denominator": {
+      "index_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/baostock_historical_denominator_index.json",
+      "index_sha256": "f55b1e4f33b50d86f9d18bfb1f982602fd0cdf55a97db58d003c75da5d23180e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/baostock_historical_denominator.jsonl.gz",
+      "sha256": "c66527f2a4f912515bfc66f32c38d8cc0780088e1c11584bc552c131fe628d98"
+    },
+    "security_basic": {
+      "meta_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/baostock_stock_basic.meta.json",
+      "meta_sha256": "7898bf0bea1646ea4dcafe335413ef0bbf5c292d3d68051ddaa821efb13c03fd",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_free_2017_2021/raw/baostock_stock_basic.jsonl.gz",
+      "sha256": "bb2b2908f43a22218eeb3e466297209e83ff3f392e3870174069f7bd70e957d8"
+    }
+  },
+  "research_scope": {
+    "free_paid_data_required": "NO",
+    "gate_c_executed": false,
+    "new_nav": 0,
+    "new_strategy_trades": 0,
+    "phase12b4_executed": false,
+    "strategy_performance_consumed": false
+  },
+  "risk_warning": {
+    "interval_count": 24,
+    "intervals": [
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-27",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300023",
+        "source_document": "cninfo_300023_20210427_1209816027.pdf",
+        "source_document_sha256": "8f7b4d07e2396459bc7ac0b94625e3240adf86bb8c2c2e82238a62b289dba51f",
+        "start_date": "2021-04-28"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2020-09-14",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300029",
+        "source_document": "cninfo_300029_20200914_1208429137.pdf",
+        "source_document_sha256": "fc67463429ac332135f1ddf6777530f61cdf6cc329478e99bd15e831fb45ead9",
+        "start_date": "2020-09-15"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-01-23",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300038",
+        "source_document": "cninfo_300038_20210123_1209168349.pdf",
+        "source_document_sha256": "cb45c05d99df61666956fba297466ba1126db86e494faf3321003741151abcd7",
+        "start_date": "2021-01-26"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-29",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300044",
+        "source_document": "cninfo_300044_20210429_1209856900.pdf",
+        "source_document_sha256": "60dc4465e864dc61884ed79b1ab5c1d3a0668a26cba3a1fe13345031a267f581",
+        "start_date": "2021-04-30"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-23",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300051",
+        "source_document": "cninfo_300051_20210423_1209774150.pdf",
+        "source_document_sha256": "4699dabc9b854da90bb7561e866ae4c259bac8ab5daa715865e71267fe46361c",
+        "start_date": "2021-04-26"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2020-11-03",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300064",
+        "source_document": "cninfo_300064_20201103_1208675670.pdf",
+        "source_document_sha256": "9604d27c8468f7eb119740908dcb7bdc1521ef4cdf69941caa69a4976cbdbb42",
+        "start_date": "2020-11-04"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-27",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300071",
+        "source_document": "cninfo_300071_20210427_1209817891.pdf",
+        "source_document_sha256": "76bdac8e07c9d3a6e51558870ee76517daa2e709bbea6283c669b5600dfa2de5",
+        "start_date": "2021-04-28"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-10-09",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300089",
+        "source_document": "cninfo_300089_20211009_1211219803.pdf",
+        "source_document_sha256": "f38f381f88bbf504e78b18129bcddc5243741e1af8fdeee73d406374b5e4303e",
+        "start_date": "2021-10-12"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-30",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300178",
+        "source_document": "cninfo_300178_20210430_1209871737.pdf",
+        "source_document_sha256": "28ee5fcc424ef021f6284bb8c077a5a2179f0b5488f828bc0f486f32aee67c83",
+        "start_date": "2021-05-06"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-29",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300202",
+        "source_document": "cninfo_300202_20210429_1209856906.pdf",
+        "source_document_sha256": "dcc79d424b303df92bb697c7957ad25004c6d48fdada3f410373c6fb3d08c870",
+        "start_date": "2021-04-30"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-08-21",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300256",
+        "source_document": "cninfo_300256_20210821_1210810551.pdf",
+        "source_document_sha256": "2e2be4c13b2616abbef2c1b755b4edf8dd6f714adc78811705ee4551baef23ed",
+        "start_date": "2021-08-24"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-30",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300269",
+        "source_document": "cninfo_300269_20210430_1209871574.pdf",
+        "source_document_sha256": "36f5b2195dfe1a6af9daf46142be09511a5051fb8b7726e40e10b45ea6a50f01",
+        "start_date": "2021-05-06"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-29",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300278",
+        "source_document": "cninfo_300278_20210429_1209855951.pdf",
+        "source_document_sha256": "a83ae5cd4391fa80e0d5c2d69ac503b6bcd7c6b09c58c727fb768c9d36b4817d",
+        "start_date": "2021-04-30"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-28",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300312",
+        "source_document": "cninfo_300312_20210428_1209837257.pdf",
+        "source_document_sha256": "ff13620bb43ae42778c5122fb7713236237239004c840dc972a93019ce2bc4a8",
+        "start_date": "2021-04-29"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-27",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300313",
+        "source_document": "cninfo_300313_20210427_1209817663.pdf",
+        "source_document_sha256": "d2926a67a34fa384b81d4e636c35fbb6072d35ce1b2321d3e674f4f1e166529c",
+        "start_date": "2021-04-28"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-02-01",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300325",
+        "source_document": "cninfo_300325_20210201_1209217920.pdf",
+        "source_document_sha256": "8c9100bb9489fcdf291ca2007190a4d9f120789b66e976e63570eeec1c926a27",
+        "start_date": "2021-02-02"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-05-28",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300356",
+        "source_document": "cninfo_300356_20210528_1210116101.pdf",
+        "source_document_sha256": "ff03bafabd04042ba6ebb969c3ef89418ecca98e698e5880740d49e1644023b7",
+        "start_date": "2021-05-31"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2020-09-14",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300367",
+        "source_document": "cninfo_300367_20200914_1208429027.pdf",
+        "source_document_sha256": "d349054e65006e7fa21845460d48f1fc58415476995b4ac110ba946a1abcbdcd",
+        "start_date": "2020-09-15"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-23",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300370",
+        "source_document": "cninfo_300370_20210423_1209777416.pdf",
+        "source_document_sha256": "a45976d2d5f18fedf09755b32694e34496995bdf4fceba05227c3cd18152509b",
+        "start_date": "2021-04-26"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2020-09-14",
+        "risk_warning_type": "ST",
+        "source_code": "sz.300446",
+        "source_document": "cninfo_300446_20200914_1208429864.pdf",
+        "source_document_sha256": "9010724116f6525ec7b9305e69e83690b591c88df32b6be2e75685c3b7474e4c",
+        "start_date": "2020-09-15"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-30",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300495",
+        "source_document": "cninfo_300495_20210430_1209893133.pdf",
+        "source_document_sha256": "db2d0adb020111b17bc8b9f06009733444cc0b279fd88593173992758ee9737e",
+        "start_date": "2021-05-07"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-29",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300530",
+        "source_document": "cninfo_300530_20210429_1209856471.pdf",
+        "source_document_sha256": "b1548bdd399659be8c886683f9774b04361197f21b8401a919f6afaa7dde6da6",
+        "start_date": "2021-04-30"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-27",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300795",
+        "source_document": "cninfo_300795_20210427_1209814210.pdf",
+        "source_document_sha256": "ed2b0e1d62cdd50aa294040762328d94b583abeb0dc48b0992e0c0081efee70b",
+        "start_date": "2021-04-28"
+      },
+      {
+        "end_date": "2021-12-31",
+        "publication_date": "2021-04-27",
+        "risk_warning_type": "STAR_ST",
+        "source_code": "sz.300859",
+        "source_document": "cninfo_300859_20210427_1209817647.pdf",
+        "source_document_sha256": "c85fbee635a654bb43d09f87eaa0de4b68d44bb9249fd02c0eb7bcbee20ec72d",
+        "start_date": "2021-04-28"
+      }
+    ],
+    "removal_positive_control": {
+      "effective_date": "2022-04-12",
+      "scope": "OUT_OF_AUTHORIZED_RANGE_VALIDATION_ONLY",
+      "source_document_sha256": "36671fcac5c4d9b2039a7652136b1854c0620d1645e96204264af67d9ee5b6ba",
+      "status": "PASS_OFFICIAL_EVENT_AND_PRIOR_BAOSTOCK_DAILY_CONTROL",
+      "symbol": "300795.SZ"
+    },
+    "st_interval_count": 12,
+    "star_st_interval_count": 12,
+    "unresolved_count": 0
+  },
+  "safe_to_preregister_gate_c": "YES",
+  "source_hash_status": "PASS",
+  "strategy": {
+    "modified": false,
+    "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "suspension_crosscheck": {
+    "baostock_count": 93,
+    "exact_date_match_count": 93,
+    "qmt_count": 93,
+    "sorted_yyyymmdd_sha256": "0dfbbd52889738b0ee0d882199ef87b20b2ef212171bb0c099cd5873aeb211c7",
+    "status": "PASS_93_OF_93"
+  },
+  "warmup_null_rows": [
+    {
+      "amount_raw": "",
+      "classification": "LEGITIMATE_SUSPENSION",
+      "date": "2017-04-21",
+      "symbol": "300372.SZ",
+      "trade_status": "0",
+      "volume_raw": ""
+    },
+    {
+      "amount_raw": "",
+      "classification": "LEGITIMATE_SUSPENSION",
+      "date": "2017-04-24",
+      "symbol": "300372.SZ",
+      "trade_status": "0",
+      "volume_raw": ""
+    },
+    {
+      "amount_raw": "",
+      "classification": "LEGITIMATE_SUSPENSION",
+      "date": "2017-04-25",
+      "symbol": "300372.SZ",
+      "trade_status": "0",
+      "volume_raw": ""
+    },
+    {
+      "amount_raw": "",
+      "classification": "LEGITIMATE_SUSPENSION",
+      "date": "2017-05-19",
+      "symbol": "300372.SZ",
+      "trade_status": "0",
+      "volume_raw": ""
+    },
+    {
+      "amount_raw": "",
+      "classification": "LEGITIMATE_SUSPENSION",
+      "date": "2017-08-28",
+      "symbol": "300372.SZ",
+      "trade_status": "0",
+      "volume_raw": ""
+    }
+  ]
+}
