@@ -181,6 +181,51 @@ def load_survivors(path: Path) -> tuple[list[str], dict[str, str]]:
     return symbols, names
 
 
+def load_pit_membership(
+    path: Path,
+    start: date,
+    end: date,
+) -> tuple[list[str], dict[date, dict[str, int]], dict[str, Any]]:
+    """Load the frozen daily PIT universe without any survivor fallback."""
+
+    frame = pd.read_parquet(
+        path,
+        columns=["trade_date", "symbol", "listed_trading_days", "pit_grade"],
+    )
+    required = {"trade_date", "symbol", "listed_trading_days", "pit_grade"}
+    if set(frame.columns) != required:
+        raise ValueError("PIT membership schema mismatch")
+    frame["trade_date"] = pd.to_datetime(frame["trade_date"]).dt.date
+    if frame.empty or frame.duplicated(["trade_date", "symbol"]).any():
+        raise ValueError("PIT membership is empty or contains duplicate security-date rows")
+    if frame["trade_date"].min() != start or frame["trade_date"].max() != end:
+        raise ValueError("PIT membership date range does not exactly match replay scope")
+    if not frame["trade_date"].between(start, end).all():
+        raise ValueError("PIT membership contains out-of-scope dates")
+    if set(frame["pit_grade"].astype(str).unique()) != {"B_RECONSTRUCTED"}:
+        raise ValueError("PIT membership grade mismatch")
+    ages = pd.to_numeric(frame["listed_trading_days"], errors="coerce")
+    if ages.isna().any() or (ages < 1).any() or (ages % 1 != 0).any():
+        raise ValueError("PIT membership contains invalid listing ages")
+    symbols = sorted(frame["symbol"].astype(str).unique())
+    if any(not (symbol.startswith(("300", "301", "302")) and symbol.endswith(".SZ")) for symbol in symbols):
+        raise ValueError("PIT membership contains a non-ChiNext identity")
+    by_date: dict[date, dict[str, int]] = {}
+    for trade_date, rows in frame.groupby("trade_date", sort=True):
+        by_date[trade_date] = dict(
+            zip(rows["symbol"].astype(str), rows["listed_trading_days"].astype(int), strict=True)
+        )
+    metadata = {
+        "path": str(path),
+        "sha256": sha256_file(path),
+        "rows": len(frame),
+        "date_count": len(by_date),
+        "unique_symbols": len(symbols),
+        "pit_grade": "B_RECONSTRUCTED",
+    }
+    return symbols, by_date, metadata
+
+
 def history_candidates(
     connection: duckdb.DuckDBPyConnection,
     paths: list[str],
@@ -355,7 +400,17 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     if args.start >= args.end:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
-    survivors, survivor_names = load_survivors(args.survivor)
+    pit_membership_path = getattr(args, "pit_membership", None)
+    pit_mode = pit_membership_path is not None
+    if pit_mode:
+        survivors, pit_membership, pit_metadata = load_pit_membership(
+            Path(pit_membership_path), args.start, args.end
+        )
+        survivor_names: dict[str, str] = {}
+    else:
+        survivors, survivor_names = load_survivors(args.survivor)
+        pit_membership = {}
+        pit_metadata = None
     market_rows, market_metadata = load_market(args.market)
     if min(market_rows) > args.start or max(market_rows) < args.end:
         raise ValueError("exact 399102.SZ input does not cover smoke range")
@@ -374,6 +429,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     simulation_sessions = [day for day in sessions if args.start <= day <= args.end]
     if not simulation_sessions:
         raise ValueError("explicit trade calendar has no sessions in smoke range")
+    if pit_mode and set(pit_membership) != set(simulation_sessions):
+        missing = sorted(set(simulation_sessions) - set(pit_membership))
+        extra = sorted(set(pit_membership) - set(simulation_sessions))
+        raise ValueError(
+            f"PIT membership/session coverage mismatch; missing={missing[:5]}, extra={extra[:5]}"
+        )
     rows_by_date = row_map(panel)
 
     histories_close: dict[str, list[float]] = {symbol: [] for symbol in sample}
@@ -498,6 +559,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     pending.pop(symbol, None)
                     continue
                 side = "BUY" if difference > 0 else "SELL"
+                if pit_mode and side == "BUY":
+                    listing_age = pit_membership[day].get(symbol)
+                    if listing_age is None or listing_age < config.min_completed_observations:
+                        raise RuntimeError(
+                            f"pending buy is outside authorized PIT membership/age on {day}: {symbol}"
+                        )
                 decision = decide_next_open_fill(
                     signal_date=order.signal_date,
                     execution_date=day,
@@ -644,11 +711,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         basic_eligible: list[str] = []
         history_valid_today = 0
         liquidity_valid_today = 0
+        active_membership = pit_membership.get(day, {}) if pit_mode else None
         for symbol in sample:
             row = day_rows.get(symbol)
             dates = histories_dates[symbol]
+            membership_ok = (
+                not pit_mode
+                or (
+                    active_membership is not None
+                    and active_membership.get(symbol, 0) >= config.min_completed_observations
+                )
+            )
             history_ok = (
-                len(dates) >= config.min_completed_observations
+                membership_ok
+                and len(dates) >= config.min_completed_observations
                 and contiguous_tail(dates, sessions, session_index, 121)
             )
             if history_ok:
@@ -667,7 +743,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 basic_eligible.append(symbol)
                 usable_symbols.add(symbol)
             else:
-                if row is None:
+                if pit_mode and active_membership is not None and symbol not in active_membership:
+                    daily_failure_counts["outside_pit_membership"] += 1
+                elif pit_mode and active_membership is not None and active_membership[symbol] < config.min_completed_observations:
+                    daily_failure_counts["listing_age_below_180"] += 1
+                elif row is None:
                     daily_failure_counts["missing_daily_row"] += 1
                 elif row.get("is_st") is True:
                     daily_failure_counts["known_risk_warning"] += 1
@@ -854,8 +934,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     write_jsonl(nav_path, daily_nav)
 
     start_rows = rows_by_date.get(args.start, {})
-    current_name_risk_count = sum(
-        "ST" in survivor_names.get(symbol, "").upper() for symbol in sample
+    current_name_risk_count = (
+        0
+        if pit_mode
+        else sum("ST" in survivor_names.get(symbol, "").upper() for symbol in sample)
     )
     data_found_symbols = set(panel["symbol"].unique())
     known_risk_symbols = set(panel.loc[panel["is_st"].eq(True), "symbol"].unique())
@@ -882,12 +964,22 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             market_value + position.dividends - position.cost_basis
         )
     summary: dict[str, Any] = {
-        "warning": SURVIVOR_WARNING,
+        "warning": (
+            "AUTHORIZED FROZEN PIT-B REPLAY / RECORD-LEVEL AVAILABLE_AT UNAVAILABLE"
+            if pit_mode
+            else SURVIVOR_WARNING
+        ),
         "research_mode": RESEARCH_MODE,
         "configuration": config.to_dict(),
         "data": {
-            "survivor_manifest": str(args.survivor),
-            "survivor_manifest_sha256": sha256_file(args.survivor),
+            **(
+                {"pit_membership": pit_metadata, "current_survivor_fallback": False}
+                if pit_mode
+                else {
+                    "survivor_manifest": str(args.survivor),
+                    "survivor_manifest_sha256": sha256_file(args.survivor),
+                }
+            ),
             "daily_root": str(args.daily_root),
             "calendar": str(args.calendar),
             "market_anchor": market_metadata,
@@ -895,18 +987,21 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "market_gate_reason": "exact QMT 399102.SZ daily history covers the full smoke range",
             "execution_limit_model": EXECUTION_LIMIT_MODEL,
             "risk_warning_model": (
-                "known CY-006 is_st=true and current manifest ST names excluded by daily eligibility; "
+                "known CY-006 is_st=true excluded by daily eligibility; "
                 "complete historical risk-warning taxonomy is UNVERIFIED"
             ),
         },
         "sample": {
             "selection_rule": (
-                "all manifest current survivors; daily symbol-level fail closed"
+                "authorized frozen daily PIT membership with listing age >=180; no survivor fallback"
+                if pit_mode
+                else "all manifest current survivors; daily symbol-level fail closed"
                 if full_survivor
                 else "current-survivor symbols with >=180 pre-start valid completed observations, "
                 "sorted by symbol, then 50 deterministic equidistant indices; no return outcome used"
             ),
             "full_survivor_mode": full_survivor,
+            "pit_membership_mode": pit_mode,
             "symbols": sample,
             "date_range": [args.start, args.end],
             "raw_universe_count": len(survivors),
