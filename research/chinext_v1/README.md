@@ -1,5 +1,9 @@
 # ChinNext V1 research
 
+> **CURRENT SURVIVOR UNIVERSE / NOT POINT-IN-TIME / SURVIVORSHIP BIASED /
+> NOT VALID FOR FINAL PERFORMANCE CLAIMS** applies to the exploratory smoke
+> baseline described below. It does not change the separate Phase 1 PIT contract.
+
 ## Phase 0 status
 
 This directory is an isolated research scaffold for a future ChiNext single-stock
@@ -48,6 +52,29 @@ an empty/failing eligibility result when any critical identity, listing-age,
 risk-warning, suspension, tradability, amount-unit, lineage, or availability fact
 is unknown. It never falls back from `399102.SZ` to another index.
 
+## Exploratory survivor-biased baseline
+
+The explicitly authorized `EXPLORATORY_SURVIVOR_BIASED` path is implemented as
+an independent research strategy and deterministic small-sample replay:
+
+- `strategy/chinext_v1_exploratory.py`: causal B60/FULL40/MINVOL/breakout-volume,
+  20/60/120 cross-sectional RS, MA30 x 2 exit, fixed 10% member targets,
+  no-replacement membership and next-open/T+1 primitives.
+- `scripts/run_chinext_v1_smoke.py`: reads existing Mac CY-006 stock data and the
+  existing quant exchange calendar, selects 50 current survivors without looking
+  at outcome returns, and runs only the 2024-01-02..2025-12-31 smoke replay.
+- `scripts/export_qmt_399102_smoke.py`: bounded one-symbol freezer for the exact
+  verified `399102.SZ` QMT anchor; it is not a stock-data downloader.
+- `tests/test_chinext_v1_exploratory.py`: targeted semantic and execution tests.
+- `reports/chinext_v1_smoke.md` and `reports/chinext_v1_smoke_summary.json`: the
+  labeled human- and machine-readable results. Full event/execution/NAV ledgers
+  remain under the Git-ignored `output/chinext_v1_smoke/` directory.
+
+This exploratory route does not modify, bypass, or claim to satisfy the canonical
+PIT universe contract. Complete historical risk-warning coverage remains unknown.
+The execution limit model is `PARTIAL`: known CY-006 open-limit/trade-state fields
+are enforced, while order-book queue and impact are not modeled.
+
 ## Phase boundary
 
 Phase 0 stops here. The next phase should first materialize and validate the required
@@ -56,3 +83,7 @@ should not begin parameter optimization or a full-market backtest.
 
 Phase 1 also stops at the data foundation. It does not implement strategy signals,
 portfolio construction, exits, replacement, execution, or returns.
+
+The later exploratory baseline is a separate, explicitly survivor-biased research
+artifact. It stops after the deterministic 50-stock smoke run. It performs no
+parameter sweep and no full-current-universe or formal PIT-universe backtest.
