@@ -1,0 +1,308 @@
+{
+  "authorization": {
+    "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+    "class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "record_level_available_at_available": false,
+    "revision_history_complete": false,
+    "strict_pit_a": false
+  },
+  "counts": {
+    "authorization_violation_count": 0,
+    "determinism_mismatch_count": 0,
+    "hash_failure_count": 0,
+    "required_invariant_mismatch_count": 0,
+    "required_unknown_state_count": 0
+  },
+  "execution_firewall": {
+    "formal_strategy_replay": false,
+    "nav_generation": false,
+    "performance_metrics": false,
+    "strategy_modification": false,
+    "strategy_signals": false,
+    "trades": false
+  },
+  "gate_c_repair_count": 3,
+  "gate_c_result": "PASS",
+  "input_hashes_verified": 23,
+  "invariant_checks": [
+    {
+      "details": {
+        "sample_hashes": [
+          "0300a4f8175af6f67bd9cafac7e5cbd10b76702b4fefad1f0019f092a36074d3",
+          "33c5ae7026acc6251a42c2af76912d073b546d3cd49a97853c7434a309b57752",
+          "77f1f9b1dbed988c590499895b46f8878943d86e9935f26dcfb8c4b3a9455ae8",
+          "8f19bfa4d216898128291c448e95183f0176468dc2c0f44908b25910b532aa26",
+          "524271137093686d2aef0a773eaca9745c89e587085f2cf833abcd4e9766fba3",
+          "8dec16bc7862f60552f04ec822d92d224a2d6e2682e4dbfbb38fccf1b947e424"
+        ],
+        "trading_dates": 1153
+      },
+      "invariant_id": "C-IDENTITY-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "first_row": [
+          "2020-01-09",
+          1
+        ]
+      },
+      "invariant_id": "C-IDENTITY-002",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "date_range": [
+          "2017-04-12",
+          "2020-08-03"
+        ],
+        "master": [
+          "2020-08-03",
+          "HISTORICAL_NON_SURVIVOR"
+        ]
+      },
+      "invariant_id": "C-IDENTITY-003",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "count": 40,
+        "required_symbols": [
+          "300028.SZ",
+          "300362.SZ",
+          "300431.SZ"
+        ]
+      },
+      "invariant_id": "C-IDENTITY-004",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "alias_map": {
+          "302132.SZ": "300114.SZ"
+        },
+        "authorized_new_rows": 0,
+        "authorized_old_rows": 1153,
+        "cy006_source_rows": 973,
+        "state_matches": 973
+      },
+      "invariant_id": "C-IDENTITY-005",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "st": [
+          [
+            "2020-09-14",
+            "NORMAL"
+          ],
+          [
+            "2020-09-15",
+            "ST"
+          ]
+        ],
+        "star_st": [
+          [
+            "2021-04-27",
+            "NORMAL"
+          ],
+          [
+            "2021-04-28",
+            "STAR_ST"
+          ]
+        ]
+      },
+      "invariant_id": "C-STATE-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "out_of_range_rows": 0,
+        "validation_event_count": 1
+      },
+      "invariant_id": "C-STATE-002",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "invalid_official_event_timing": 0,
+        "unsafe_combined_rows": 0
+      },
+      "invariant_id": "C-KNOWN-AT-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "count": 93,
+        "sorted_yyyymmdd_sha256": "0dfbbd52889738b0ee0d882199ef87b20b2ef212171bb0c099cd5873aeb211c7"
+      },
+      "invariant_id": "C-SUSPENSION-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "qd001_rows": 5,
+        "qd001_volume_amount_null_rows": 5,
+        "raw_ohlc_preserved_but_not_tradable": true,
+        "state_rows": 5
+      },
+      "invariant_id": "C-WARMUP-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "cy006_boundary_rows": [
+          [
+            "2018-05-15",
+            10.88,
+            0,
+            null,
+            "2018-05-15",
+            0.0,
+            1.0,
+            true,
+            false
+          ],
+          [
+            "2018-05-16",
+            10.66,
+            1,
+            "cninfo:distribution:deba827b250b20ed90d13a29e20ff7ee",
+            "2018-05-10",
+            0.05,
+            1.0,
+            true,
+            false
+          ],
+          [
+            "2018-05-17",
+            10.56,
+            0,
+            null,
+            "2018-05-17",
+            0.0,
+            1.0,
+            true,
+            false
+          ]
+        ],
+        "visible_event": {
+          "cash_per_share": 0.05,
+          "effective_date": "2018-05-16",
+          "event_id": "cninfo:distribution:deba827b250b20ed90d13a29e20ff7ee",
+          "event_type": "cash_dividend",
+          "known_at": "2018-05-10",
+          "share_multiplier": 1.0,
+          "symbol": "302132.SZ"
+        }
+      },
+      "invariant_id": "C-CA-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "rebased_prior_price": [
+          9.95
+        ],
+        "rebased_prior_volume": [
+          100.0
+        ],
+        "same_day_raw_close": 10.66
+      },
+      "invariant_id": "C-CA-002",
+      "status": "PASS"
+    },
+    {
+      "details": [
+        {
+          "check_id": "CA_BEFORE_EFFECTIVE_DATE",
+          "reason": "future corporate-action fact",
+          "status": "PASS_FAIL_CLOSED"
+        },
+        {
+          "check_id": "CA_RIGHTS_PARTICIPATION",
+          "reason": "rights participation is execution-unresolved",
+          "status": "PASS_FAIL_CLOSED"
+        },
+        {
+          "check_id": "CA_DUPLICATE_EVENT",
+          "reason": "duplicate corporate-action identity",
+          "status": "PASS_FAIL_CLOSED"
+        },
+        {
+          "check_id": "CA_UNSUPPORTED_EVENT",
+          "reason": "unknown event type: 'merger'",
+          "status": "PASS_FAIL_CLOSED"
+        }
+      ],
+      "invariant_id": "C-CA-003",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "authorization_checks": [
+          {
+            "check_id": "AUTH_BAD_HASH",
+            "reason": "bounded manifest hash mismatch",
+            "status": "PASS_FAIL_CLOSED"
+          },
+          {
+            "check_id": "AUTH_OUT_OF_RANGE",
+            "reason": "bounded authorization date range mismatch: expected 2017-04-12..2021-12-31, got 2017-04-12..2022-01-04",
+            "status": "PASS_FAIL_CLOSED"
+          },
+          {
+            "check_id": "AUTH_CURRENT_SURVIVOR_FALLBACK",
+            "reason": "current-survivor fallback is forbidden",
+            "status": "PASS_FAIL_CLOSED"
+          },
+          {
+            "check_id": "AUTH_WRONG_CLASS",
+            "reason": "bounded authorization purpose mismatch: expected CHINEXT_PIT_B_RESEARCH, got CAUSAL_RESEARCH",
+            "status": "PASS_FAIL_CLOSED"
+          },
+          {
+            "check_id": "AUTH_MISSING_REGISTRATION",
+            "reason": "missing bounded research authorization: MISSING-GATE-C-AUTH",
+            "status": "PASS_FAIL_CLOSED"
+          }
+        ],
+        "official_documents": {
+          "document_count": 27,
+          "failure_count": 0,
+          "failures": [],
+          "status": "PASS"
+        }
+      },
+      "invariant_id": "C-AUTH-001",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "canonical_result": "PASS_BYTE_IDENTICAL",
+        "rebuilds": 2
+      },
+      "invariant_id": "C-DETERMINISM-001",
+      "status": "PASS"
+    }
+  ],
+  "missing_invariants": [],
+  "official_documents": {
+    "document_count": 27,
+    "failure_count": 0,
+    "failures": [],
+    "status": "PASS"
+  },
+  "pilot_scope": {
+    "formal_replay_end": "2021-12-31",
+    "formal_replay_start": "2018-01-02",
+    "historical_state_end": "2021-12-31",
+    "historical_state_start": "2017-04-12",
+    "warmup_end": "2017-12-29",
+    "warmup_start": "2017-04-12"
+  },
+  "runner_sha256": "5c6463c8f910ffd222b0920ff7d450c886de198b9e848ae312aede79eb753d27",
+  "spec_commit": "7f3fffa2fe4530f73d63216e2ce6c0db92e6f64d",
+  "spec_id": "CHINEXT-V1-GATE-C-BOUNDED-CORRECTNESS-PILOT-V1",
+  "spec_sha256": "bcd4f2d1f3d8ad185ef8558026386859a3dbe7ab87bf23b9ac438caa78ae4bb6"
+}

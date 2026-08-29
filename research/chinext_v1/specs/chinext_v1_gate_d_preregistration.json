@@ -1,0 +1,262 @@
+{
+  "authorization": {
+    "class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "historical_state_authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+    "purpose": "CHINEXT_PIT_B_RESEARCH",
+    "record_level_available_at_available": false,
+    "revision_history_complete": false,
+    "strict_pit_a": false
+  },
+  "canonical_validation": {
+    "canonical_row_order": [
+      "trade_date",
+      "canonical_symbol"
+    ],
+    "logical_rebuilds": 2,
+    "persistent_duplicate_daily_store": false,
+    "required_result": "PASS_LOGICAL_HASH_IDENTICAL",
+    "serialization": "length-prefixed UTF-8 canonical field values with explicit NULL marker"
+  },
+  "corporate_action_validation": {
+    "allowed_supported_classes": [
+      "cash_dividend",
+      "share_distribution",
+      "bonus_share"
+    ],
+    "all_required_qd010_event_ids_must_match_cy006": true,
+    "effective_rule": "known_at <= decision_date AND effective_date <= decision_date",
+    "expected_target_qd010_distribution_events": 2503,
+    "expected_target_qd010_rights_events": 5,
+    "rights_participation": "FAIL_CLOSED_EXECUTION_UNRESOLVED",
+    "same_day_rule": "rebase prior history before appending the raw effective-date bar"
+  },
+  "execution_firewall": {
+    "formal_strategy_replay": false,
+    "nav_generation": false,
+    "performance_metrics": false,
+    "strategy_modification": false,
+    "strategy_signals": false,
+    "trades": false
+  },
+  "expected_full_scope_metrics": {
+    "alias_normalizations_applied": 1,
+    "authorized_foundation_historical_symbols": 1098,
+    "calendar_mismatch_count": 0,
+    "corporate_action_failure_count": 0,
+    "delistings_captured": 7,
+    "determinism_mismatch_count": 0,
+    "hash_failure_count": 0,
+    "historical_gem_symbols_ever_seen": 1097,
+    "historical_symbols_ever_seen": 1097,
+    "new_listings_captured": 387,
+    "non_survivors_retained": 39,
+    "price_input_missing_count": 0,
+    "required_state_missing_count": 0,
+    "risk_warning_removals_captured_validation_only": 1,
+    "star_st_intervals_captured": 12,
+    "state_conflict_count": 0,
+    "state_unknown_count": 0,
+    "st_intervals_captured": 12,
+    "suspension_sessions_captured": 9594,
+    "target_daily_state_rows": 803907,
+    "trading_dates_validated": 973,
+    "universe_mismatch_count": 0
+  },
+  "fail_closed_rules": [
+    "Any unbound or changed input hash stops before full validation.",
+    "Any duplicate or missing canonical security-date key is a required-state failure.",
+    "Any current alias projected before its official boundary is a universe mismatch.",
+    "Any conflict between authorized historical state and CY-006 state is reported and blocks replay authorization.",
+    "Suspended rows may retain raw flat OHLC diagnostics but may never become tradable price facts.",
+    "Missing normal-session OHLCV/amount, unknown risk subtype, or unknown full-session status blocks replay authorization.",
+    "Unsupported corporate actions and rights participation fail closed; they are not coerced into a supported event.",
+    "No unknown or missing value is silently converted to false, normal, tradable, or no-event."
+  ],
+  "frozen_at": "2026-08-30",
+  "gate": "D",
+  "input_bindings": {
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "frozen_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "gate_c_preregistration": {
+      "path": "research/chinext_v1/specs/chinext_v1_gate_c_preregistration.json",
+      "sha256": "bcd4f2d1f3d8ad185ef8558026386859a3dbe7ab87bf23b9ac438caa78ae4bb6"
+    },
+    "gate_c_result": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_c_result.json",
+      "sha256": "1e521a897fcdf05e940316bea08f211e56a44baedcce94457487c4392cbacea8"
+    },
+    "gate_c_runner": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_gate_c.py",
+      "sha256": "5c6463c8f910ffd222b0920ff7d450c886de198b9e848ae312aede79eb753d27"
+    },
+    "historical_state_daily": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+      "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+    },
+    "historical_state_manifest": {
+      "path": "research/chinext_v1/reports/chinext_v1_free_historical_state_manifest.json",
+      "sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61"
+    },
+    "historical_state_security_master": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+      "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+    },
+    "market_anchor_399102": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "qd001_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-001-none-20260820.json",
+      "sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3"
+    },
+    "qd003_calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "qd010_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "replay_engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "replay_wrapper_reference": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_pit_replay.py",
+      "sha256": "769417841e91f3ddcf0e151e36a29b24bf63becb52fb4713f04ca24e363bb3f0"
+    }
+  },
+  "prerequisites": {
+    "frozen_v1_sha_status": "PASS",
+    "gate_a": "PASS",
+    "gate_b": "PASS",
+    "gate_c": "PASS",
+    "gate_c_repair_count": 3,
+    "gate_c_spec_commit": "7f3fffa2fe4530f73d63216e2ce6c0db92e6f64d"
+  },
+  "state_overlay_semantics": {
+    "alias_rule": "Derive physical-current-symbol to canonical-historical-symbol mappings only from security_master rows carrying a matching official_alias_source_sha256 and matching official effective boundary.",
+    "combined_retrospective_state": "Consume no earlier than earliest_safe_use_date, the next QD-003 session.",
+    "current_session_full_suspension": "May only block trading or history ingestion; absence of a full-session executable bar cannot create a fill.",
+    "current_session_risk_warning": "May use same-effective-date subtype only when the bound official event has publication_date <= effective_date; otherwise use the last safely available state or fail closed.",
+    "identity_rule": "No current-survivor fallback and no current code/name projection.",
+    "raw_bar_rule": "QD-001/CY-006 unadjusted bars are completed-close facts for signals; next-session open is the earliest fill.",
+    "warmup_rule": "2017 QD-001 bars are joined to the authorized historical state and QD-010 events; suspended NULL volume/amount rows are retained but never ingested as tradable history."
+  },
+  "storage_discipline": {
+    "existing_daily_state_reused": true,
+    "full_logical_join_persisted": false,
+    "retained_outputs": [
+      "Gate D machine-readable summary",
+      "Gate D human-readable report",
+      "strategy input requirement matrix"
+    ],
+    "transient_full_join_allowed": true
+  },
+  "strategy_input_requirements": [
+    {
+      "authorization": "QD-001/CY-006 bounded PIT-B completed-bar facts",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "nonpositive/nonfinite/missing normal-session values are excluded",
+      "input": "raw unadjusted close history",
+      "lookback": "180 completed observations; direct signal maximum 121"
+    },
+    {
+      "authorization": "QD-001/CY-006 bounded PIT-B completed-bar facts",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "NULL suspension volume is not filled",
+      "input": "raw volume history",
+      "lookback": "31 observations for MINVOL; 21 for shadow breakout volume"
+    },
+    {
+      "authorization": "QD-001/CY-006 bounded PIT-B completed-bar facts",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "missing amount blocks liquidity admission",
+      "input": "raw amount",
+      "lookback": "20 sessions"
+    },
+    {
+      "authorization": "CY-029 exact artifact",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "unknown/missing identity or age is ineligible",
+      "input": "historical GEM identity and listed trading age",
+      "lookback": "180 listed completed sessions"
+    },
+    {
+      "authorization": "CY-029 official-event-bounded subtype",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "unknown subtype is ineligible",
+      "input": "NORMAL/ST/STAR_ST state",
+      "lookback": "daily effective state"
+    },
+    {
+      "authorization": "CY-029 full-session daily only",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "unknown or suspended session cannot fill or enter tradable history",
+      "input": "full-session suspension",
+      "lookback": "daily state"
+    },
+    {
+      "authorization": "QD-010/CY-006 bounded PIT-B",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "future, duplicate, ambiguous, unsupported, or rights-participation event blocks",
+      "input": "corporate-action event terms and causal coordinates",
+      "lookback": "all events affecting retained history"
+    },
+    {
+      "authorization": "CY-006 bounded PIT-B",
+      "earliest_required_date": "2018-01-02",
+      "fail_closed": "invalid open, hard-invalid row, suspension, or unknown limit state cannot fill",
+      "input": "next-session open, T+1, tradability, and open-limit state",
+      "lookback": "execution session"
+    },
+    {
+      "authorization": "QD-003 exact calendar hash",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed": "missing/extra session blocks",
+      "input": "trading calendar",
+      "lookback": "entire warmup and replay range"
+    },
+    {
+      "authorization": "frozen 399102.SZ artifact",
+      "earliest_required_date": "2017-12-01",
+      "fail_closed": "missing/nonpositive/noncontiguous market close disables entry and market exits",
+      "input": "399102.SZ market close",
+      "lookback": "21 sessions"
+    },
+    {
+      "authorization": "frozen strategy constant",
+      "earliest_required_date": "2018-01-02",
+      "fail_closed": "any semantic change requires a new strategy artifact",
+      "input": "transaction cost and portfolio sizing",
+      "lookback": "10 bps per filled side; 10 positions at 10% each"
+    }
+  ],
+  "target_scope": {
+    "end": "2021-12-31",
+    "start": "2018-01-02",
+    "warmup_end": "2017-12-29",
+    "warmup_start": "2017-04-12"
+  },
+  "zero_tolerance_pass_rule": {
+    "authorization_failure_count": 0,
+    "calendar_mismatch_count": 0,
+    "corporate_action_failure_count": 0,
+    "determinism_mismatch_count": 0,
+    "hash_failure_count": 0,
+    "price_input_missing_count": 0,
+    "required_state_missing_count": 0,
+    "state_conflict_count": 0,
+    "state_unknown_count": 0,
+    "universe_mismatch_count": 0
+  },
+  "spec_id": "CHINEXT-V1-GATE-D-FULL-PIT-VALIDATION-V1",
+  "spec_version": 1,
+  "status": "FROZEN_BEFORE_GATE_D_EXECUTION"
+}
