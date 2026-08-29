@@ -1,0 +1,178 @@
+{
+  "phase12b_result": "PASS",
+  "readiness_status": "BLOCKED_DATA_GOVERNANCE",
+  "formal_replay_executions": 0,
+  "new_strategy_trades": 0,
+  "new_strategy_nav": 0,
+  "no_performance_metrics_computed": true,
+  "pit_full_materialization": "NO",
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "strategy_modified": "NO",
+  "target_date_range": [
+    "2018-01-02",
+    "2021-12-31"
+  ],
+  "target_trade_date_count": 973,
+  "required_price_warmup_trading_days": 180,
+  "required_warmup_start_date": "2017-04-12",
+  "validation_dates": [
+    "2018-01-02",
+    "2018-06-29",
+    "2019-01-02",
+    "2019-06-28",
+    "2020-01-02",
+    "2020-06-30",
+    "2021-01-04",
+    "2021-06-30"
+  ],
+  "phase12b_spec_sha256": "1f3aea2d90571cd10c76a9e2dadc08675476781d5893bebf7ae6be864612d739",
+  "extended_universe_source": "QD-007 discovery snapshots plus frozen CY-006 dependencies; no authorized PIT artifact",
+  "extended_universe_authorization_id": null,
+  "extended_universe_authorization_ready": "NO",
+  "warmup_source": "QD-001 candidate (not activated); QD-004 1-minute candidate cannot substitute",
+  "warmup_data_asset_id": null,
+  "warmup_data_authorization_ready": "NO",
+  "warmup_price_semantics_match": "NO_UNPROVEN_CAUSAL_REBASE",
+  "warmup_volume_semantics_match": "YES_SCHEMA_ONLY",
+  "warmup_turnover_semantics_match": "YES_SCHEMA_ONLY",
+  "warmup_symbol_identity_match": "YES_ADAPTER_REQUIRED",
+  "warmup_calendar_match": "YES",
+  "overlap_validation_result": "NOT_RUN_NO_AUTHORIZED_CY006_COMPATIBLE_WARMUP",
+  "pilot_materialization_authorized": "NO",
+  "pilot_exact_set_match_result": "NOT_RUN_BLOCKED",
+  "pilot_date_results": [
+    {
+      "trade_date": "2018-01-02",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2018-06-29",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2019-01-02",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2019-06-28",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2020-01-02",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2020-06-30",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2021-01-04",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    },
+    {
+      "trade_date": "2021-06-30",
+      "symbol_count": null,
+      "set_digest": null,
+      "validation_status": "BLOCKED_NO_AUTHORIZED_PIT_ARTIFACT"
+    }
+  ],
+  "boundary_validation": {
+    "179_180": "NOT_RUN_FOR_2018_2021_NO_AUTHORIZED_UNIVERSE",
+    "future_listing": "NOT_RUN_BLOCKED",
+    "historical_non_survivor": "UNRESOLVED_NO_AUTHORIZED_PIT_UNIVERSE",
+    "historical_st": "UNRESOLVED_NO_AUTHORIZED_PIT_UNIVERSE",
+    "historical_suspension": "UNRESOLVED_NO_AUTHORIZED_PIT_UNIVERSE"
+  },
+  "early_2018_warmup_coverage": "UNAVAILABLE_NO_AUTHORIZED_WARMUP_AND_PIT_DENOMINATOR",
+  "historical_non_survivor_count_2018_2021": "UNRESOLVED",
+  "full_materialization_estimated_rows": 1070300,
+  "full_materialization_estimated_bytes": 3161896,
+  "full_materialization_technically_ready": "NO",
+  "full_materialization_authorized": "NO",
+  "formal_replay_authorized": "NO",
+  "readiness_gates": {
+    "extended_universe_ready": "NO",
+    "price_data_ready": "PARTIAL",
+    "history_window_ready": "NO",
+    "market_anchor_ready": "YES",
+    "execution_data_ready": "PARTIAL",
+    "corporate_action_semantics_ready": "YES",
+    "governance_ready": "NO"
+  },
+  "source_matrix": [
+    {
+      "source": "QD-007 BaoStock query_all_stock(date)",
+      "asset_id": "QD-007",
+      "path": null,
+      "date_coverage": "bounded probes only (2010-2017/2018/2020/2026)",
+      "field": "date-effective security identity/listing/trade status",
+      "pit_semantics": "discovery snapshots; no immutable manifest/record available_at",
+      "authorization": "DISCOVERY_ONLY",
+      "known_limitation": "cannot construct PIT universe"
+    },
+    {
+      "source": "CY-006 daily PIT-B v2",
+      "asset_id": "CY-006",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+      "date_coverage": "2018-01-01..2026-08-12",
+      "field": "daily OHLCV/amount/state/limits/actions",
+      "pit_semantics": "B frozen causal table with hard_valid",
+      "authorization": "RESEARCH_CONDITIONAL",
+      "known_limitation": "no 2017 partition and no standalone historical membership denominator"
+    },
+    {
+      "source": "quant stock_daily",
+      "asset_id": "QD-001",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_daily",
+      "date_coverage": "2004-01-02..2026-08-14",
+      "field": "raw daily OHLCV/amount",
+      "pit_semantics": "B source; completed-bar available_at but no record-level available_at",
+      "authorization": "RESEARCH_CONDITIONAL",
+      "known_limitation": "not activated as CY-006-compatible 2017 warmup; corporate-action parity unproven"
+    },
+    {
+      "source": "quant canonical 1-minute lake",
+      "asset_id": "QD-004",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813",
+      "date_coverage": "2000-06-09..2026-08-12",
+      "field": "raw 1-minute OHLCV/amount",
+      "pit_semantics": "B source; completed-bar available_at",
+      "authorization": "RESEARCH_CONDITIONAL",
+      "known_limitation": "minute data cannot silently substitute for daily CY-006 PIT rows"
+    },
+    {
+      "source": "historical PIT-B bridge v3",
+      "asset_id": "CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-V3",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CYQ-PIT-B-HISTORICAL-BRIDGE-2010-2017-v3",
+      "date_coverage": "2010-01-01..2017-12-31",
+      "field": "industry/capital/actions bridge",
+      "pit_semantics": "derived PIT-B; no supplier revision chain",
+      "authorization": "RESEARCH_CONDITIONAL",
+      "known_limitation": "blocked for state generation until QD-007 universe is authorized; actions revision history incomplete"
+    }
+  ],
+  "blockers": [
+    "QD-007 remains DISCOVERY_ONLY; no immutable authorized date-effective 2018-2021 ChinNext PIT universe",
+    "QD-001 2017 daily candidate is not activated/authorized as a CY-006-compatible causal warmup source",
+    "QD-004 is 1-minute and cannot silently substitute for required daily PIT rows",
+    "historical non-survivor/ST/suspension PIT coverage cannot be proven without the authorized universe and state joins",
+    "full 2018-2021 materialization and frozen replay require a future separate authorization"
+  ],
+  "next_recommended_phase": "Authorize/activate a separate PIT-B universe and CY-006-compatible 2017 daily warmup, then run Phase 12C correctness-only full materialization; no replay in Phase 12B",
+  "qd007_status": "DISCOVERY_ONLY",
+  "phase12a_summary_sha256": "9ca4db9729ac15515b6865606c73c59357aea926a86beaa57b95165ba5597f14"
+}
