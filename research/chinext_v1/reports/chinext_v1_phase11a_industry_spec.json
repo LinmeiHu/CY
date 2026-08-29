@@ -1,0 +1,45 @@
+{
+  "status": "FROZEN_BEFORE_OUTCOME_ANALYSIS",
+  "purpose": "CHINEXT_PIT_INDUSTRY_ATTRIBUTION",
+  "date_range": ["2022-01-04", "2025-12-31"],
+  "primary_industry_taxonomy": "CY-006 historical daily industry field (Eastmoney yjbb disclosure chronology; registry industry_membership_pit), as recorded in frozen PIT-B rows",
+  "classification_date_semantics": "Use the CY-006 row for the trade entry signal date; only rows with source_notice_date < trade_date and industry_valid/hard_valid evidence are eligible.",
+  "join_rule": "symbol + entry_signal_date exact join to frozen CY-006 daily PIT-B row; no current classification backfill and no survivor universe input.",
+  "minimum_industry_coverage": 0.95,
+  "same_industry_minimum_trades": 5,
+  "right_tail_definitions": {
+    "RIGHT_TAIL_20": "MFE >= 0.20",
+    "RIGHT_TAIL_50": "MFE >= 0.50",
+    "DEVELOPMENT_TOP10_TOP20": "frozen Phase 2 development baseline trade attribution identities; no reselection",
+    "OOS_TOP10": "frozen OOS O0 trade attribution identities where available"
+  },
+  "industry_metrics": [
+    "trade_count", "unique_symbols", "win_rate", "median_return", "mean_return",
+    "total_realized_pnl", "positive_pnl", "negative_pnl", "median_mfe",
+    "median_holding_days", "trade_share", "gross_positive_pnl_share",
+    "signed_pnl_share", "right_tail_20_count", "right_tail_50_count", "industry_hhi"
+  ],
+  "cyclical_mapping": "No authorized cyclical/defensive mapping is assumed; industry-level results only.",
+  "sector_concentration_diagnostics": [
+    "maximum simultaneous same-industry positions",
+    "maximum industry nominal portfolio weight when reliably reconstructable",
+    "median maximum industry weight",
+    "days with industry weight > 30%",
+    "days with industry weight > 40%"
+  ],
+  "governance": {
+    "formal_replay_executions": 0,
+    "new_trades": 0,
+    "new_nav": 0,
+    "pit_rebuilt": "NO",
+    "current_survivor_fallback": "NO",
+    "strategy_industry_filter": "NO",
+    "sector_cap_counterfactual": "NO"
+  },
+  "frozen_identities": {
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "development_pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+    "holdout_pit_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+    "phase10a3_commit": "c4b418179e4726a29c9f406f6b2d3884f84e7485"
+  }
+}
