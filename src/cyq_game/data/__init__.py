@@ -52,12 +52,14 @@ from .quant_adapter import (
     select_float_as_of,
 )
 from .registry import (
+    BoundedResearchAuthorization,
     DataActivationError,
     DataAsset,
     DataAssetRegistry,
     DataExecutionAuthorization,
     DataOperation,
     DataPurpose,
+    FrozenArtifactBinding,
     InputBinding,
     InputSnapshotManifest,
 )
@@ -68,6 +70,7 @@ __all__ = [
     "REQUIRED_STRATEGY_DOMAINS",
     "AuditCheck",
     "AuditStatus",
+    "BoundedResearchAuthorization",
     "ChipObservation",
     "CorporateActionBatch",
     "CorporateActionIssue",
@@ -84,6 +87,7 @@ __all__ = [
     "EventStore",
     "ExecutionDayBatch",
     "ExperimentRecord",
+    "FrozenArtifactBinding",
     "FundamentalRecord",
     "IndustryMembershipRecord",
     "InputBinding",

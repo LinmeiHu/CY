@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -66,6 +67,7 @@ def validate_registry(
         "status_definitions",
         "global_gate",
         "assets",
+        "bounded_authorizations",
         "evidence",
         "change_log",
     ):
@@ -144,14 +146,24 @@ def validate_registry(
                 verify_hashes=verify_hashes,
             )
 
+    _validate_bounded_authorizations(
+        registry.get("bounded_authorizations"),
+        assets={
+            asset["asset_id"]: asset
+            for asset in assets
+            if isinstance(asset, dict) and "asset_id" in asset
+        },
+        errors=errors,
+        verify_paths=verify_paths,
+        verify_hashes=verify_hashes,
+    )
+
     evidence = registry.get("evidence", [])
     evidence_ids: list[str] = []
     for item in evidence:
         if isinstance(item, dict) and isinstance(item.get("evidence_id"), str):
             evidence_ids.append(item["evidence_id"])
-    duplicate_evidence = sorted(
-        item for item, count in Counter(evidence_ids).items() if count > 1
-    )
+    duplicate_evidence = sorted(item for item, count in Counter(evidence_ids).items() if count > 1)
     if duplicate_evidence:
         errors.append(f"duplicate evidence_id values: {', '.join(duplicate_evidence)}")
     for index, item in enumerate(evidence):
@@ -175,8 +187,7 @@ def validate_registry(
             errors.append(f"global_gate.{field} must be boolean")
     if gate.get("strict_archival_pit_ready") and not gate.get("free_causal_research_ready"):
         errors.append(
-            "strict_archival_pit_ready cannot be true while "
-            "free_causal_research_ready is false"
+            "strict_archival_pit_ready cannot be true while free_causal_research_ready is false"
         )
     if gate.get("backtest_authorized") and not gate.get("free_causal_research_ready"):
         errors.append("backtest_authorized cannot be true before free_causal_research_ready")
@@ -189,6 +200,128 @@ def validate_registry(
     if not registry.get("change_log"):
         errors.append("change_log must contain at least one append-only entry")
     return errors
+
+
+def _validate_bounded_authorizations(
+    value: Any,
+    *,
+    assets: dict[str, dict[str, Any]],
+    errors: list[str],
+    verify_paths: bool,
+    verify_hashes: bool,
+) -> None:
+    if not isinstance(value, list):
+        errors.append("bounded_authorizations must be a list")
+        return
+    ids = [
+        item.get("authorization_id")
+        for item in value
+        if isinstance(item, dict) and isinstance(item.get("authorization_id"), str)
+    ]
+    duplicates = sorted(item for item, count in Counter(ids).items() if count > 1)
+    if duplicates:
+        errors.append("duplicate bounded authorization_id values: " + ", ".join(duplicates))
+    for index, item in enumerate(value):
+        if not isinstance(item, dict):
+            errors.append(f"bounded_authorizations[{index}] must be an object")
+            continue
+        label = str(item.get("authorization_id", f"bounded_authorizations[{index}]"))
+        required = {
+            "authorization_id",
+            "purpose",
+            "asset_id",
+            "dependency_asset_id",
+            "dependency_status",
+            "scope",
+            "bound_manifest",
+            "bound_artifacts",
+            "bound_strategy",
+            "current_survivor_fallback_allowed",
+            "record_level_available_at_available",
+            "allowed_uses",
+            "blocked_uses",
+            "known_limitations",
+        }
+        missing = sorted(required - item.keys())
+        if missing:
+            errors.append(f"{label}: missing fields: {', '.join(missing)}")
+            continue
+        if item["purpose"] != "CHINEXT_PIT_B_RESEARCH":
+            errors.append(f"{label}: unsupported bounded purpose {item['purpose']!r}")
+        asset = assets.get(item["asset_id"])
+        if asset is None or asset.get("status") != "RESEARCH_CONDITIONAL":
+            errors.append(f"{label}: asset must be registered RESEARCH_CONDITIONAL")
+        elif asset.get("lineage", {}).get("bounded_authorization_id") != label:
+            errors.append(f"{label}: asset lineage must bind this authorization_id")
+        dependency = assets.get(item["dependency_asset_id"])
+        if dependency is None:
+            errors.append(f"{label}: dependency asset is unregistered")
+        elif dependency.get("status") != item["dependency_status"]:
+            errors.append(f"{label}: dependency status does not match registry")
+        scope = item.get("scope")
+        if not isinstance(scope, dict):
+            errors.append(f"{label}: scope must be an object")
+        else:
+            project = scope.get("project")
+            if (
+                not isinstance(project, str)
+                or not project
+                or Path(project).is_absolute()
+                or ".." in Path(project).parts
+            ):
+                errors.append(f"{label}: project scope must be repository-relative")
+            try:
+                start = date.fromisoformat(str(scope.get("start")))
+                end = date.fromisoformat(str(scope.get("end")))
+                if end < start:
+                    errors.append(f"{label}: scope end precedes start")
+            except ValueError:
+                errors.append(f"{label}: scope dates must be ISO dates")
+        _validate_fingerprint(
+            item.get("bound_manifest"),
+            f"{label} bound manifest",
+            errors,
+            verify_paths=verify_paths,
+            verify_hashes=verify_hashes,
+        )
+        strategy = item.get("bound_strategy")
+        _validate_fingerprint(
+            strategy,
+            f"{label} bound strategy",
+            errors,
+            verify_paths=verify_paths,
+            verify_hashes=verify_hashes,
+        )
+        artifacts = item.get("bound_artifacts")
+        if not isinstance(artifacts, list) or not artifacts:
+            errors.append(f"{label}: bound_artifacts must be a non-empty list")
+        else:
+            roles = [
+                artifact["role"]
+                for artifact in artifacts
+                if isinstance(artifact, dict) and isinstance(artifact.get("role"), str)
+            ]
+            duplicate_roles = sorted(role for role, count in Counter(roles).items() if count > 1)
+            if duplicate_roles:
+                errors.append(f"{label}: duplicate artifact roles: {', '.join(duplicate_roles)}")
+            for artifact_index, artifact in enumerate(artifacts):
+                if not isinstance(artifact, dict) or not artifact.get("role"):
+                    errors.append(f"{label}: artifact {artifact_index} requires role")
+                    continue
+                _validate_fingerprint(
+                    artifact,
+                    f"{label} artifact {artifact['role']}",
+                    errors,
+                    verify_paths=verify_paths,
+                    verify_hashes=verify_hashes,
+                )
+        if item.get("current_survivor_fallback_allowed") is not False:
+            errors.append(f"{label}: current-survivor fallback must be false")
+        if item.get("record_level_available_at_available") is not False:
+            errors.append(f"{label}: missing record-level available_at must remain explicit")
+        for list_field in ("allowed_uses", "blocked_uses", "known_limitations"):
+            if not isinstance(item.get(list_field), list) or not item[list_field]:
+                errors.append(f"{label}: {list_field} must be a non-empty list")
 
 
 def _validate_lineage_manifests(
