@@ -1,0 +1,117 @@
+{
+  "2017_ca_event_count": 2384,
+  "2017_gem_ca_event_count": 541,
+  "blockers": [
+    "QD-007 remains DISCOVERY_ONLY; no immutable authorized 2018-2021 historical GEM identity/list-out universe",
+    "QD-001/QD-010 overlap has one unmatched event and no QD-001 event-state field; causal rebased path cannot be proven",
+    "QD-010 revision_history_complete=false prevents vendor-level PIT certification",
+    "historical ST/suspension facts exist in QD-002 but are not joined to an authorized extended PIT universe",
+    "Phase12B4 pilot is prohibited until both input authorizations validate"
+  ],
+  "ca_adapter_code_sha256": "2015313b4e3f78390aaeb6eadbc59393282f06d8bc62e63794d05bbb511297c6",
+  "ca_adapter_spec_sha256": "1b768108b1d1a07d89f3acf27bff5e9ca1e82a82d28e02cff9be4b88a7cfd7e5",
+  "ca_source_has_2017_coverage": "YES",
+  "can_proceed_to_2018_2021_frozen_replay": "NO",
+  "can_proceed_to_full_2018_2021_pit_materialization": "NO",
+  "can_proceed_to_phase12b4_8date_pilot": "NO",
+  "can_rebase_qd001_to_cy006_causal_semantics": "NO",
+  "cy006_ca_authorization_status": "RESEARCH_CONDITIONAL",
+  "cy006_ca_available_at_semantics": "known_at is next local calendar day after date-only announcement; effective/known must be <= decision date",
+  "cy006_ca_date_coverage": [
+    "2017-04-12",
+    "2026-08-09"
+  ],
+  "cy006_ca_event_fields": [
+    "event_id",
+    "known_at",
+    "effective_date",
+    "share_multiplier",
+    "cash_per_share_gross",
+    "rights_subscription_ratio",
+    "event_type"
+  ],
+  "cy006_ca_revision_lineage": "current snapshot; revision_history_complete=false; strict PIT-A unavailable",
+  "cy006_ca_source_asset_id": "QD-010",
+  "cy006_ca_source_path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5",
+  "cy006_ca_source_schema": [
+    "event_id",
+    "symbol",
+    "known_at",
+    "announcement_date",
+    "effective_date",
+    "share_multiplier",
+    "cash_per_share_gross",
+    "rights_subscription_ratio",
+    "event_type"
+  ],
+  "dependencies": {
+    "GEM_IDENTITY_2018_2021": "NOT_READY",
+    "LIST_DATE_2018_2021": "NOT_READY",
+    "OUT_DATE_2018_2021": "NOT_READY",
+    "ST_STATE_2018_2021": "NOT_READY",
+    "SUSPENSION_STATE_2018_2021": "NOT_READY",
+    "TRADE_CALENDAR_2018_2021": "READY"
+  },
+  "extended_state_authorization_id": null,
+  "extended_state_authorization_ready": "NO",
+  "formal_replay_authorized": "NO",
+  "formal_replay_executions": 0,
+  "historical_state_capture_ready": "PARTIAL",
+  "historical_state_manifest_sha256": "b4ef7d25b1e0f536f13c9c3130b17bf4734ca56502359731a667f26c2cf69f90",
+  "new_strategy_nav": 0,
+  "new_strategy_trades": 0,
+  "next_recommended_phase": "Resolve QD-010/QD-001 causal event adapter mismatch and authorize an immutable 2018-2021 historical state capture; then rerun activation before Phase12B4 pilot",
+  "no_performance_metrics_computed": true,
+  "overlap": {
+    "close_semantic_match_rate": 1.0,
+    "corporate_action_event_alignment_rate": 0.9984251968503937,
+    "corporate_action_event_count_source_a": 635,
+    "corporate_action_event_count_source_b": 634,
+    "corporate_action_rebased_path_match_rate": "UNAVAILABLE_QD001_EVENT_STATE_MISSING",
+    "date_range": [
+      "2018-01-02",
+      "2018-12-28"
+    ],
+    "dividend_event_match_count": "UNAVAILABLE",
+    "high_semantic_match_rate": 1.0,
+    "low_semantic_match_rate": 1.0,
+    "mismatch_count": 1,
+    "mismatch_samples": [
+      {
+        "effective_date": "2018-05-16",
+        "event_type": "cash_dividend",
+        "reason": "QD-010 event absent from CY-006 daily marker",
+        "symbol": "302132.SZ"
+      }
+    ],
+    "open_semantic_match_rate": 1.0,
+    "other_ca_event_match_count": "UNAVAILABLE",
+    "outcome_blind": true,
+    "overlap_rows_compared": 176414,
+    "overlap_symbol_count": 738,
+    "spec_sha256": "1b768108b1d1a07d89f3acf27bff5e9ca1e82a82d28e02cff9be4b88a7cfd7e5",
+    "split_event_match_count": "UNAVAILABLE",
+    "turnover_match_rate": 1.0,
+    "volume_match_rate": 1.0
+  },
+  "phase12b3_result": "PASS",
+  "pilot_materialization": "NOT_RUN_NO_UNIVERSE_AUTHORIZATION",
+  "pit_full_materialization": "NO",
+  "pit_pilot_materialization": "NO",
+  "readiness_status": "BLOCKED_DATA_GOVERNANCE",
+  "strategy_modified": "NO",
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "validation_dates": [
+    "2018-01-02",
+    "2018-06-29",
+    "2019-01-02",
+    "2019-06-28",
+    "2020-01-02",
+    "2020-06-30",
+    "2021-01-04",
+    "2021-06-30"
+  ],
+  "warmup_authorization_id": null,
+  "warmup_authorization_ready": "NO",
+  "warmup_data_technically_ready": "NO"
+}

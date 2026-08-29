@@ -1,0 +1,43 @@
+{
+  "phase": "12B3",
+  "purpose": "QD001_CAUSAL_CORPORATE_ACTION_ADAPTER",
+  "status": "FROZEN_BEFORE_IMPLEMENTATION",
+  "qd001_source": {
+    "asset_id": "QD-001",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_daily",
+    "manifest_sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3",
+    "coverage": ["2004-01-02", "2026-08-14"],
+    "semantics": "raw/unadjusted daily OHLC; volume shares; amount CNY"
+  },
+  "corporate_action_source": {
+    "asset_id": "QD-010",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5",
+    "inventory_manifest_sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+    "normalized_distributions_sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387",
+    "normalized_rights_sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb",
+    "coverage": ["2017-04-12", "2026-08-09"],
+    "revision_lineage": "current snapshot; revision_history_complete=false; strict PIT-A unavailable"
+  },
+  "trade_calendar": {
+    "asset_id": "QD-003",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+    "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+  },
+  "warmup_date_range": ["2017-04-12", "2017-12-31"],
+  "overlap_date_range": ["2018-01-02", "2018-12-28"],
+  "symbol_normalization": "six-digit QD-001 numeric GEM code -> .SZ; reject non-GEM/ambiguous values",
+  "event_date_semantics": "event is usable only when known_at <= decision_date and effective_date <= decision_date",
+  "available_at_semantics": "QD-010 known_at is conservative next local calendar day after date-only announcement",
+  "rebasing_formula": {
+    "past_price": "(past_price - cash_per_share_gross) / share_multiplier",
+    "past_volume": "past_volume * share_multiplier",
+    "same_day_bar": "append raw bar after rebasing prior history"
+  },
+  "corporate_action_classes": ["cash_dividend", "share_distribution", "bonus_share"],
+  "rights_policy": "fail closed; rights execution is unresolved",
+  "overlap_verification": "all common GEM symbol/date rows; exact OHLCV/amount plus event-key alignment",
+  "tolerance": {"price_absolute": 1e-9, "price_relative": 1e-9, "volume": "exact", "amount": "exact"},
+  "error_policy": ["missing event", "unknown event type", "ambiguous terms", "future event", "duplicate event id", "symbol/calendar mismatch"],
+  "outcome_blind": true,
+  "strategy_replay": false
+}

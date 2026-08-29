@@ -1,0 +1,79 @@
+{
+  "asset_id": "CHINEXT-V1-EXTENDED-HISTORICAL-STATE-CAPTURE-CANDIDATE",
+  "capture_is_pit_universe": false,
+  "capture_timestamp": "2026-08-29T00:00:00+08:00",
+  "components": [
+    {
+      "asset_id": "CY-027 security_master artifact",
+      "coverage": "list_date 2009-10-30..2026-07-10; source artifact is frozen but not record-level archival PIT",
+      "limitation": "derived from current BaoStock basic snapshot; cannot alone prove historical membership availability",
+      "out_date_rows": 41,
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025/security_master.parquet",
+      "role": "exact GEM identity and list/out source lineage",
+      "rows": 1440,
+      "sha256": "dc8aaacbe76c6096e38c98630d632c64270a9563d466b7eb2ff5b91635ad9591",
+      "symbols": 1440
+    },
+    {
+      "asset_id": "QD-002",
+      "limitation": "state source is registered but historical PIT universe join and QD-007 authorization remain absent",
+      "manifest_sha256": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_state_daily",
+      "role": "historical ST/suspension/tradability state",
+      "st_rows": {
+        "2018": 0,
+        "2019": 0,
+        "2020": 258,
+        "2021": 4204
+      },
+      "suspension_rows": {
+        "2018": 7084,
+        "2019": 1030,
+        "2020": 1043,
+        "2021": 432
+      },
+      "yearly_rows": {
+        "2018": 176414,
+        "2019": 185915,
+        "2020": 201867,
+        "2021": 229868
+      },
+      "yearly_symbols": {
+        "2018": 738,
+        "2019": 790,
+        "2020": 897,
+        "2021": 965
+      }
+    },
+    {
+      "asset_id": "QD-007",
+      "coverage": "2010-2017 snapshots only; no 2018-2021 snapshots",
+      "limitation": "DISCOVERY_ONLY; no immutable 2018-2021 date-effective universe",
+      "manifest_sha256": "0510645cb6a1f44f83bcdfa0700c0cfdaa8db31691b0a1985908b03975645353",
+      "path": "/Users/linmei/Documents/CY/data/discovery/QD-007-BS-2010-2017",
+      "role": "historical date-effective identity discovery"
+    },
+    {
+      "asset_id": "QD-010",
+      "coverage": "2017-04-12..2026-08-09 effective dates observed; 2017 GEM events=541",
+      "limitation": "current snapshot, revision_history_complete=false, strict PIT-A unavailable",
+      "manifest_sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5",
+      "role": "corporate actions"
+    }
+  ],
+  "current_survivor_fallback": false,
+  "date_range": [
+    "2018-01-02",
+    "2021-12-31"
+  ],
+  "pit_grade": "B_RECONSTRUCTED",
+  "purpose": "research-only historical state capture; not a PIT universe",
+  "source_hashes": {
+    "calendar": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "cy006_manifest": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "qd001_manifest": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3",
+    "strategy": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "status": "CAPTURED_PENDING_GOVERNANCE_AUTHORIZATION"
+}

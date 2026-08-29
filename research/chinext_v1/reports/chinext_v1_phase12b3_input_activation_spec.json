@@ -1,0 +1,55 @@
+{
+  "authorizations": {
+    "extended_state": null,
+    "formal_replay": null,
+    "warmup": null
+  },
+  "ca_adapter_code_sha256": "2015313b4e3f78390aaeb6eadbc59393282f06d8bc62e63794d05bbb511297c6",
+  "ca_adapter_spec_sha256": "1b768108b1d1a07d89f3acf27bff5e9ca1e82a82d28e02cff9be4b88a7cfd7e5",
+  "ca_source": {
+    "asset_id": "QD-010",
+    "manifest_sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5"
+  },
+  "calendar": {
+    "asset_id": "QD-003",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+    "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+  },
+  "corporate_action_formula": "past_price=(past_price-cash_per_share)/share_multiplier; past_volume=past_volume*share_multiplier; apply only when known_at and effective_date are <= decision date",
+  "membership_capture": {
+    "asset_id": "CHINEXT-V1-EXTENDED-HISTORICAL-STATE-CAPTURE-CANDIDATE",
+    "current_survivor_fallback": false,
+    "pit_universe_materialization": false,
+    "status": "PARTIAL_PENDING_AUTHORIZATION"
+  },
+  "outcome_blind": true,
+  "phase": "12B3",
+  "phase12b2_spec_sha256": "764df1a6e52d1a5087916a76d5983e48cf14a79e05d66157eac3de0004c665c8",
+  "purpose": "CHINEXT_PIT_B_EXTENDED_INPUT_ACTIVATION",
+  "qd001_source": {
+    "asset_id": "QD-001",
+    "manifest_sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_daily"
+  },
+  "required_warmup": [
+    "2017-04-12",
+    "2017-12-31"
+  ],
+  "status": "FROZEN_BEFORE_ACTIVATION_RESULT",
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "target_date_range": [
+    "2018-01-02",
+    "2021-12-31"
+  ],
+  "validation_dates": [
+    "2018-01-02",
+    "2018-06-29",
+    "2019-01-02",
+    "2019-06-28",
+    "2020-01-02",
+    "2020-06-30",
+    "2021-01-04",
+    "2021-06-30"
+  ]
+}
