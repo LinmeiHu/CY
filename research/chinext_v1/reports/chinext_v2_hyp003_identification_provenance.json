@@ -1,0 +1,398 @@
+{
+  "artifact_id": "CHINEXT-V2-HYP003-IDENTIFICATION-AND-A001-A002-PREREG-PROVENANCE-CLOSURE-V1",
+  "artifact_role": "SUPERSEDING_NOTE_ONLY_DOES_NOT_MUTATE_FROZEN_EVIDENCE",
+  "a001_a002_provenance": {
+    "a001_prereg_validity": "VALID_FROZEN_BEFORE_FIRST_RESULT",
+    "a001_result_evidence_status": "VALID_HASH_BOUND_RESULT_LEDGER_PREREG_HASH_METADATA_SUPERSEDED",
+    "a002_prereg_validity": "VALID_FROZEN_BEFORE_FIRST_RESULT",
+    "a002_result_evidence_status": "VALID_HASH_BOUND_RESULT_LEDGER_PREREG_HASH_METADATA_SUPERSEDED",
+    "attempt_ledger_commit": "e7f304d7c2f4352c79e9dca39c41f919986a1d45",
+    "attempt_ledger_path": "research/chinext_v1/reports/chinext_v2_attempt_ledger.json",
+    "byte_difference_status": "FREEZE_TO_CURRENT_HEAD_BYTE_IDENTICAL",
+    "classification": "LEDGER_HASH_RECORDING_ERROR",
+    "current_prereg_sha256": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5",
+    "evidence": [
+      "The preregistration path has exactly one Git history entry: e21b04b6604ef186af05e92553900dddae4627bc.",
+      "The exact preregistration bytes at e21b04b, the A001/A002 result commit e7f304d, every later relevant commit, and current HEAD all hash to 57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5.",
+      "The e21b04b runner bytes require the working-tree preregistration bytes to equal git show HEAD:<path> before loading an attempt or producing a completed result.",
+      "A001 and A002 raw result and ledger hashes match their frozen registrations; no A001/A002 rerun is required or authorized.",
+      "5061837b6cade9e3b927aa9506eb003787f354ec721bd6f6f6537bf4530f385d first appears as ledger metadata in e7f304d and does not identify any Git version of the preregistration path."
+    ],
+    "first_result_registration_commit": "e7f304d7c2f4352c79e9dca39c41f919986a1d45",
+    "historical_prereg_sha_at_freeze": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5",
+    "ledger_recorded_sha256": "5061837b6cade9e3b927aa9506eb003787f354ec721bd6f6f6537bf4530f385d",
+    "prereg_commit": "e21b04b6604ef186af05e92553900dddae4627bc",
+    "prereg_first_result_commit": "e7f304d7c2f4352c79e9dca39c41f919986a1d45",
+    "prereg_path": "research/chinext_v1/specs/chinext_v2_attempt_preregistration.json",
+    "preregistration_git_blob_oid": "867045ca246c32a7fe223fc023ad620915cf3f35",
+    "provenance_remediation": "Preserve the historical attempt ledger unchanged and supersede only its erroneous preregistration_sha256 metadata with this closure artifact.",
+    "raw_result_artifacts": {
+      "V2-A001": {
+        "path": "research/chinext_v1/output/chinext_v2_attempt_v2_a001/attempt_result.json",
+        "sha256": "181ffb49deaadcc1b107f6da3ce557c784ce17453b9a4d03ff9d72d7e3d7d90d",
+        "storage": "GIT_IGNORED_OUTPUT_HASH_REGISTERED_IN_ATTEMPT_LEDGER"
+      },
+      "V2-A002": {
+        "path": "research/chinext_v1/output/chinext_v2_attempt_v2_a002/attempt_result.json",
+        "sha256": "0e2ee26827a36d5cb2032897fa81f057953bfc42c34cef5f7364093820a9c575",
+        "storage": "GIT_IGNORED_OUTPUT_HASH_REGISTERED_IN_ATTEMPT_LEDGER"
+      }
+    },
+    "semantic_difference_status": "NONE_FREEZE_TO_CURRENT_HEAD",
+    "semantic_field_audit": {
+      "acceptance_criteria": "UNCHANGED_BYTE_IDENTICAL",
+      "candidate_ids": "UNCHANGED_BYTE_IDENTICAL",
+      "candidate_parameters": "UNCHANGED_BYTE_IDENTICAL",
+      "candidate_shas": "UNCHANGED_BYTE_IDENTICAL",
+      "execution_semantics": "UNCHANGED_BYTE_IDENTICAL",
+      "hypothesis_definition": "UNCHANGED_BYTE_IDENTICAL",
+      "input_hashes": "UNCHANGED_BYTE_IDENTICAL",
+      "metrics": "UNCHANGED_BYTE_IDENTICAL",
+      "rejection_criteria": "UNCHANGED_BYTE_IDENTICAL",
+      "sample_dates": "UNCHANGED_BYTE_IDENTICAL",
+      "strategy_delta": "UNCHANGED_BYTE_IDENTICAL"
+    },
+    "sha_timeline": [
+      {
+        "before_or_after_first_result_view": "BEFORE",
+        "commit": "e21b04b6604ef186af05e92553900dddae4627bc",
+        "commit_time": "2026-08-30T01:30:31+08:00",
+        "event": "PREREGISTRATION_FROZEN",
+        "file_sha256": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5"
+      },
+      {
+        "before_or_after_first_result_view": "AFTER_FIRST_RESULT_GENERATION",
+        "commit": "e7f304d7c2f4352c79e9dca39c41f919986a1d45",
+        "commit_time": "2026-08-30T01:33:55+08:00",
+        "event": "A001_A002_RESULTS_REGISTERED_LEDGER_HASH_ERROR_INTRODUCED",
+        "file_sha256": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5"
+      },
+      {
+        "before_or_after_first_result_view": "AFTER",
+        "commit": "5e046bded74abaaddeb953e2be22d7190d44251d",
+        "commit_time": "2026-08-30T01:43:45+08:00",
+        "event": "A003_PREREGISTRATION_COMMITTED_PREREG_UNCHANGED",
+        "file_sha256": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5"
+      },
+      {
+        "before_or_after_first_result_view": "AFTER",
+        "commit": "e5a66794eb064e6df92b5bf95c09261427253a66",
+        "commit_time": "2026-08-30T01:47:49+08:00",
+        "event": "V2_MECHANISM_CONCLUSION_FROZEN_PREREG_UNCHANGED",
+        "file_sha256": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5"
+      },
+      {
+        "before_or_after_first_result_view": "AFTER",
+        "commit": "159341ee444d927f38fff5b546aace55cd76e9eb",
+        "commit_time": "2026-08-30T01:51:58+08:00",
+        "event": "AUTHORITATIVE_START_HEAD_PREREG_UNCHANGED",
+        "file_sha256": "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5"
+      }
+    ]
+  },
+  "authorization": {
+    "a004_authorized": "NO",
+    "a004_run": "NO",
+    "new_candidate_results_viewed": "NO",
+    "research_sample": "2018-01-02..2021-12-31_IN_SAMPLE_MECHANISM_RESEARCH",
+    "used_2022_2025_for_selection": "NO"
+  },
+  "frozen_bindings": {
+    "attempt_ledger": {
+      "path": "research/chinext_v1/reports/chinext_v2_attempt_ledger.json",
+      "sha256": "cdd927c96df117827f9b17825d216e12a6b48bae3e9176cef60080767f9a0b3a"
+    },
+    "failure_analyzer": {
+      "path": "research/chinext_v1/scripts/analyze_chinext_v1_extended_failure.py",
+      "sha256": "4a39760d1004db24203eb391b5ea427e575ed532d7dc9ea2c271836ee793b0ba"
+    },
+    "failure_decomposition": {
+      "path": "research/chinext_v1/reports/chinext_v1_extended_failure_decomposition.json",
+      "sha256": "5de8baaa7a57ad6e8db8f2c08e7bafffce4b11ab8b03ba5e3a78a7a06c4a1f3c"
+    },
+    "frozen_v1_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "gate_d_replay_engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "hypothesis_ledger": {
+      "path": "research/chinext_v1/specs/chinext_v2_failure_hypothesis_ledger.json",
+      "sha256": "1a0fce79cc31d16388d7befe9aadf884a817bfbd3084d6d7fa656d0c919bae30"
+    },
+    "v1_event_ledger": {
+      "path": "research/chinext_v1/output/chinext_v1_extended_2018_2021/event_ledger.jsonl",
+      "sha256": "9fb92730ca1c30e448b32b07b6c5ab369b178c820821daf21f3b69b90b0dfc86"
+    },
+    "v1_execution_ledger": {
+      "path": "research/chinext_v1/output/chinext_v1_extended_2018_2021/execution_ledger.jsonl",
+      "sha256": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"
+    },
+    "v1_replay_artifact_manifest": {
+      "path": "research/chinext_v1/reports/chinext_v1_extended_replay_artifact_manifest.json",
+      "sha256": "fdd9095afc68867c4161636803ff66f10358ac152dfe13f52942f63a21937de1"
+    },
+    "v1_replay_summary": {
+      "path": "research/chinext_v1/reports/chinext_v1_extended_replay_summary.json",
+      "sha256": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094"
+    }
+  },
+  "hyp003_identification": {
+    "cohort_identity_hash_rule": "Map each row to keys trade_id, entry, signal, execution, raw; sort rows by trade_id; JSON serialize with sort_keys=true and separators=(',', ':'); append LF; SHA256 bytes.",
+    "cohort_identity_rows": [
+      ["300001.SZ-001", "2020-06-12", "2020-07-17", "2020-07-20", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300002.SZ-001", "2021-11-17", "2021-11-24", "2021-11-25", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300037.SZ-001", "2019-02-14", "2019-03-21", "2019-03-22", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300041.SZ-001", "2019-11-20", "2019-11-22", "2019-11-25", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300042.SZ-001", "2021-04-16", "2021-05-06", "2021-05-07", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300085.SZ-001", "2021-04-27", "2021-04-30", "2021-05-06", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300088.SZ-001", "2020-06-16", "2020-07-24", "2020-07-27", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300101.SZ-001", "2021-05-27", "2021-06-30", "2021-07-01", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300102.SZ-001", "2021-05-12", "2021-07-16", "2021-07-19", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300115.SZ-001", "2020-02-18", "2020-03-10", "2020-03-11", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300184.SZ-001", "2021-10-15", "2021-10-28", "2021-10-29", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300227.SZ-001", "2020-06-08", "2020-06-12", "2020-06-15", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300308.SZ-002", "2020-12-21", "2020-12-25", "2020-12-28", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300348.SZ-001", "2021-04-16", "2021-04-30", "2021-05-06", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300349.SZ-001", "2019-04-12", "2019-04-23", "2019-04-24", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300377.SZ-001", "2019-10-28", "2019-11-11", "2019-11-12", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300393.SZ-001", "2020-06-16", "2020-06-23", "2020-06-24", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300394.SZ-002", "2021-05-27", "2021-06-30", "2021-07-01", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300408.SZ-001", "2020-02-18", "2020-03-10", "2020-03-11", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300422.SZ-001", "2019-04-24", "2019-04-26", "2019-04-29", "MARKET_MA20_X2+MARKET_CLOSE_LT_MA20_X0.96"],
+      ["300451.SZ-002", "2019-12-17", "2019-12-30", "2019-12-31", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300452.SZ-001", "2020-08-25", "2020-09-10", "2020-09-11", "MARKET_MA20_X2+MARKET_CLOSE_LT_MA20_X0.96"],
+      ["300458.SZ-003", "2020-02-18", "2020-03-02", "2020-03-03", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300494.SZ-001", "2020-06-11", "2020-07-17", "2020-07-20", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300529.SZ-001", "2020-08-28", "2020-09-09", "2020-09-10", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300531.SZ-001", "2021-04-16", "2021-04-29", "2021-04-30", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300541.SZ-001", "2021-04-20", "2021-04-29", "2021-04-30", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300587.SZ-001", "2021-05-12", "2021-07-09", "2021-07-12", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300595.SZ-002", "2020-09-03", "2020-09-07", "2020-09-08", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300623.SZ-001", "2021-05-25", "2021-07-16", "2021-07-19", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300674.SZ-001", "2021-04-16", "2021-04-26", "2021-04-27", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300687.SZ-001", "2021-05-31", "2021-07-16", "2021-07-19", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300699.SZ-001", "2019-08-22", "2019-09-24", "2019-09-25", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300702.SZ-002", "2020-08-28", "2020-09-08", "2020-09-09", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300725.SZ-001", "2020-08-27", "2020-09-09", "2020-09-10", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300745.SZ-001", "2019-04-17", "2019-04-26", "2019-04-29", "MARKET_MA20_X2+MARKET_CLOSE_LT_MA20_X0.96"],
+      ["300780.SZ-001", "2021-11-01", "2021-11-08", "2021-11-09", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300835.SZ-001", "2021-04-14", "2021-04-26", "2021-04-27", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"],
+      ["300873.SZ-001", "2021-11-19", "2021-11-26", "2021-11-29", "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"]
+    ],
+    "cohort_identity_schema": [
+      "trade_id",
+      "entry_signal_date",
+      "exit_signal_date",
+      "exit_execution_date",
+      "raw_exit_reason"
+    ],
+    "cohort_reconstruction_status": "PASS_39_OF_39_FROM_FROZEN_HASH_BOUND_INPUTS",
+    "counterfactual_families": [
+      {
+        "causal_claim": "The second-close confirmation waits one completed session too long after an individual MA30 breach.",
+        "counterfactual_id": "HYP003-CF01-ADVANCE-INDIVIDUAL-EXIT",
+        "decision_point": "First completed close below its own MA30.",
+        "disposition": "REMAINING_BUT_NOT_EXECUTABLE_UNDER_UNIQUE_IDENTIFICATION_RULE",
+        "exact_intervention": "Replace the frozen MA30 x2 trigger with a first-breach trigger and preserve next-eligible-open execution.",
+        "falsification_criterion": "The claimed delay mechanism is not broad if first-to-second-confirmation path loss is mixed or too small relative to loss already present before the second close.",
+        "inputs_known_at_decision": ["completed adjusted close history", "MA30", "historical identity/state", "execution eligibility"],
+        "new_state_required": 0,
+        "parameters_required": ["exit_confirm=1 instead of frozen 2"],
+        "potential_right_tail_damage": "A single transient breach can eject eventual recoveries and right-tail holdings.",
+        "targeted_failure_pattern": "Loss accumulated before the current individual exit executes."
+      },
+      {
+        "causal_claim": "The frozen MA30 x2 trigger is still too sensitive to a transient security-specific break.",
+        "counterfactual_id": "HYP003-CF02-DELAY-OR-PERSISTENCE-CONFIRMATION",
+        "decision_point": "Current two-close individual exit signal.",
+        "disposition": "REMAINING_FAMILY_BUT_REJECTED_FOR_UNFIXED_WINDOW_AND_STATE",
+        "exact_intervention": "Defer or cancel the exit unless the below-MA condition remains persistent under an independently fixed state transition.",
+        "falsification_criterion": "Reject if the independently specified persistence state does not isolate transient signals without using post-exit recovery knowledge.",
+        "inputs_known_at_decision": ["completed adjusted close history", "MA30", "existing individual signal"],
+        "new_state_required": 1,
+        "parameters_required": ["confirmation window", "cancellation/re-cross semantics"],
+        "potential_right_tail_damage": "A delayed exit can deepen already-material losses.",
+        "targeted_failure_pattern": "False individual exits followed by a causal signal reversal."
+      },
+      {
+        "causal_claim": "An individual trend break has different meaning under supportive versus weak market-anchor state.",
+        "counterfactual_id": "HYP003-CF03-MARKET-CONDITIONED-INDIVIDUAL-EXIT",
+        "decision_point": "Current individual exit signal after the completed market-anchor close.",
+        "disposition": "REMAINING_DIRECTIONALLY_UNDERIDENTIFIED_FAMILY",
+        "exact_intervention": "Condition individual-exit admission on an independently specified existing market-gate state.",
+        "falsification_criterion": "Reject if the preregistered market-state direction does not isolate the targeted weak lineage or if it merely reproduces market exit.",
+        "inputs_known_at_decision": ["existing individual signal", "399102.SZ completed-close market gate state"],
+        "new_state_required": 0,
+        "parameters_required": ["semantic direction: suppress under supportive market or suppress under weak market"],
+        "potential_right_tail_damage": "Either direction can retain deteriorating names or remove idiosyncratic recoveries.",
+        "targeted_failure_pattern": "Security-specific weakness whose causal interpretation depends on market context."
+      },
+      {
+        "causal_claim": "The individual exit module should be removed and positions should wait for market exit.",
+        "counterfactual_id": "HYP003-CF04-DISABLE-INDIVIDUAL-EXIT",
+        "decision_point": "Every individual exit signal.",
+        "disposition": "REJECTED_BROAD_REPEAT_NOT_HYP003_SPECIFIC",
+        "exact_intervention": "Disable individual exit and its downstream set removal.",
+        "falsification_criterion": "Already addressed as a basic module ablation on a different sample; repeating it does not identify the HYP-003 interaction.",
+        "inputs_known_at_decision": ["existing individual signal"],
+        "new_state_required": 0,
+        "parameters_required": [],
+        "potential_right_tail_damage": "Weak holdings can remain until portfolio-level market exit.",
+        "targeted_failure_pattern": "All individual exits, not the HYP-003 cohort specifically."
+      },
+      {
+        "causal_claim": "Individual exits should differ by current profit, MFE, or giveback state.",
+        "counterfactual_id": "HYP003-CF05-POSITION-PATH-CONDITIONED-EXIT",
+        "decision_point": "Current individual exit signal.",
+        "disposition": "REJECTED_THRESHOLD_DEPENDENT_AND_OVERLAPS_CONSUMED_OR_PRIOR_MECHANISMS",
+        "exact_intervention": "Suppress or accelerate individual exit using a position-path threshold.",
+        "falsification_criterion": "Reject any rule whose threshold is selected from the realized winner/loser path.",
+        "inputs_known_at_decision": ["cycle mark", "cost basis", "running peak if separately maintained"],
+        "new_state_required": 0,
+        "parameters_required": ["profit/loss or giveback boundary"],
+        "potential_right_tail_damage": "Path thresholds can turn the strategy into a tuned stop or winner-hold rule.",
+        "targeted_failure_pattern": "Negative marks versus profitable giveback cases."
+      },
+      {
+        "causal_claim": "A removed symbol should be re-entered after an individual exit proves transient.",
+        "counterfactual_id": "HYP003-CF06-REENTRY-AFTER-SIGNAL-CLEAR",
+        "decision_point": "Sessions after the completed exit.",
+        "disposition": "REJECTED_REQUIRES_POST_EXIT_RECOVERY_DEFINITION_AND_COOLDOWN",
+        "exact_intervention": "Permit special re-entry after a recovery condition.",
+        "falsification_criterion": "Reject any definition based on knowing the later recovery or winner outcome.",
+        "inputs_known_at_decision": ["future completed closes only when they later occur"],
+        "new_state_required": 1,
+        "parameters_required": ["recovery boundary", "cooldown", "re-entry window"],
+        "potential_right_tail_damage": "Adds fitted path dependence and portfolio crowding changes.",
+        "targeted_failure_pattern": "Premature exits that later recover."
+      },
+      {
+        "causal_claim": "Changing precedence between individual exit and set removal changes the exit outcome.",
+        "counterfactual_id": "HYP003-CF07-PRECEDENCE-OR-SET-REMOVAL-ONLY",
+        "decision_point": "Current individual signal and desired-set construction.",
+        "disposition": "REJECTED_NOT_A_BEHAVIORALLY_DISTINCT_COUNTERFACTUAL",
+        "exact_intervention": "Relabel or reorder individual signal and set removal.",
+        "falsification_criterion": "The frozen engine proves set removal is downstream of forced_exits and is the scheduling mechanism, so precedence-only changes do not define an independent exit.",
+        "inputs_known_at_decision": ["existing individual signal", "planned membership"],
+        "new_state_required": 0,
+        "parameters_required": [],
+        "potential_right_tail_damage": "None if label-only; equivalent to disabling the individual exit if removal is suppressed.",
+        "targeted_failure_pattern": "None independently identifiable."
+      }
+    ],
+    "decision_time_features_available": [
+      "completed and causally available adjusted close history through the signal session",
+      "MA30 current and prior-close conditions used by the frozen two-close individual signal",
+      "current historical identity, risk-warning, suspension, and execution eligibility state",
+      "current cycle cash-on-cash mark from already-filled legs, dividends, costs, and completed close",
+      "399102.SZ completed-close market entry/normal-exit/emergency state",
+      "frozen entry-event B60, FULL40, MINVOL, breakout-volume shadow, and r20/r60/r120/weighted-RS diagnostics",
+      "planned-membership transition and pending-order lineage"
+    ],
+    "exact_missing_identification_evidence": [
+      "A parameter-free, independently specified semantic objective for the individual exit: early loss containment, persistence confirmation, or market-conditioned interpretation.",
+      "An independently frozen precedence/state-transition rule that selects exactly one direction for the existing market gate and individual signal without using realized recovery or candidate performance.",
+      "If persistence is intended, an externally justified confirmation and cancellation definition fixed without choosing among 1/2/3/5-session alternatives.",
+      "No current frozen evidence supplies a causal no-exit control; the poor realized bucket can mean the signal identifies already-weak holdings rather than that the exit causes the loss."
+    ],
+    "frozen_39_cycle_definition": "A completed V1 cycle whose final exit signal date is present in both INDIVIDUAL_EXIT_SIGNAL and previous-minus-desired removal sets, after canonical_exit_reason gives precedence only to raw reasons exactly equal to a single market reason.",
+    "frozen_39_identity_sha256": "7fb0ab398fa5f56f980cabd0e9d577a75a7d424d5400dfd585a69ab1145dab11",
+    "frozen_observed_failure_metrics": {
+      "cycle_count": 39,
+      "median_return": -0.06925009015783393,
+      "realized_pnl": -282649.4122099999,
+      "win_rate": 0.2564102564102564
+    },
+    "identification_status": "UNDERIDENTIFIED",
+    "lineage_correction": {
+      "all_individual_signal_events_have_same_date_set_removal": true,
+      "combined_market_contamination_count": 3,
+      "combined_market_contamination_cycle_ids": [
+        "300422.SZ-001",
+        "300745.SZ-001",
+        "300452.SZ-001"
+      ],
+      "combined_market_contamination_raw_reason": "MARKET_MA20_X2+MARKET_CLOSE_LT_MA20_X0.96",
+      "pure_individual_downstream_set_removal_count": 36,
+      "root_cause": "canonical_exit_reason recognizes only raw == MARKET_MA20_X2 or raw == MARKET_CLOSE_LT_MA20_X0.96; the combined market-reason string falls through to the individual-plus-removal label.",
+      "set_removal_causal_role": "DOWNSTREAM_EXECUTION_CONSEQUENCE_OF_INDIVIDUAL_FORCED_EXIT_NOT_AN_INDEPENDENT_CAUSE"
+    },
+    "pairwise_non_discrimination": [
+      {
+        "counterfactual_pair": ["HYP003-CF01-ADVANCE-INDIVIDUAL-EXIT", "HYP003-CF02-DELAY-OR-PERSISTENCE-CONFIRMATION"],
+        "why_frozen_evidence_cannot_discriminate": "The same weak realized bucket supports opposite stories: the exit may arrive too late after loss has accumulated, or it may be a timely response that would become worse if delayed. No frozen no-exit control resolves the sign."
+      },
+      {
+        "counterfactual_pair": ["HYP003-CF01-ADVANCE-INDIVIDUAL-EXIT", "HYP003-CF03-MARKET-CONDITIONED-INDIVIDUAL-EXIT"],
+        "why_frozen_evidence_cannot_discriminate": "Loss at the second close does not identify whether timing or market context is causal; market-supportive and market-weak states both admit coherent but opposite interpretations."
+      },
+      {
+        "counterfactual_pair": ["HYP003-CF02-DELAY-OR-PERSISTENCE-CONFIRMATION", "HYP003-CF03-MARKET-CONDITIONED-INDIVIDUAL-EXIT"],
+        "why_frozen_evidence_cannot_discriminate": "Both can suppress a subset of current exits, but the observed exit outcome contains no causal evidence selecting a persistence window or a market-state direction."
+      }
+    ],
+    "path_evidence": {
+      "combined_market_contamination_3": {
+        "cycle_count": 3,
+        "median_return": -0.0935478793628624,
+        "realized_pnl": -48543.70800000002,
+        "win_rate": 0.0
+      },
+      "pure_36_market_entry_permission_false": {
+        "cycle_count": 7,
+        "median_return": -0.08223720164147653,
+        "realized_pnl": -90147.89300000004,
+        "win_rate": 0.0
+      },
+      "pure_36_market_entry_permission_true": {
+        "cycle_count": 29,
+        "median_return": -0.05628757809228608,
+        "realized_pnl": -143957.81120999984,
+        "win_rate": 0.3448275862068966
+      },
+      "pure_individual_downstream_set_removal_36": {
+        "cycle_count": 36,
+        "median_mae_to_signal": -0.08668960351642631,
+        "median_mfe_to_signal": 0.05489246061643426,
+        "median_return": -0.0679572054158553,
+        "median_signal_close_return": -0.06535121473835334,
+        "realized_pnl": -234105.7042099999,
+        "win_rate": 0.2777777777777778
+      },
+      "second_confirmation_session": {
+        "adverse_delta_count": 19,
+        "cycle_count": 36,
+        "mean_close_mark_delta": -0.008775994880191835,
+        "median_close_mark_before_second_confirmation": -0.06527091870341226,
+        "median_close_mark_delta": -0.005337792625667904,
+        "interpretation": "Mixed-direction incremental evidence; most median loss already existed before the second confirmation, so it does not uniquely justify advancing or delaying the exit."
+      },
+      "signal_to_next_open_execution": {
+        "adverse_delta_count": 17,
+        "cycle_count": 36,
+        "median_return_delta": 0.00007309227039028164
+      }
+    },
+    "per_cycle_reconstruction_fields": [
+      "entry signal/execution dates and frozen entry-event diagnostics",
+      "holding path through signal, MFE, MAE, signal close mark, and realized cycle outcome",
+      "individual, desired-set-removal, market normal/emergency, and T+1 lineage",
+      "market entry permission and existing V1 decision-time states"
+    ],
+    "per_cycle_storage_policy": "Do not duplicate the full frozen ledgers or daily paths; retain exact cohort identities and hash bindings so all fields reconstruct deterministically from the registered source artifacts.",
+    "remaining_counterfactuals": [
+      "HYP003-CF01-ADVANCE-INDIVIDUAL-EXIT",
+      "HYP003-CF02-DELAY-OR-PERSISTENCE-CONFIRMATION",
+      "HYP003-CF03-MARKET-CONDITIONED-INDIVIDUAL-EXIT"
+    ],
+    "selected_counterfactual": null,
+    "structural_causal_finding": "The observed bucket is endogenous to the exit rule: own_exit_signal adds the symbol to forced_exits, desired-set construction excludes forced_exits, and that membership transition schedules the sell. The two labels do not identify two independent causal exit components.",
+    "target_failure_metric": null,
+    "falsification_criterion": null
+  },
+  "source_head": "159341ee444d927f38fff5b546aace55cd76e9eb",
+  "status": "PROVENANCE_CLOSED_HYP003_UNDERIDENTIFIED_A004_NOT_AUTHORIZED"
+}

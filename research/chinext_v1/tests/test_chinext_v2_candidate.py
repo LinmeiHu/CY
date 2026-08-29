@@ -23,6 +23,10 @@ LOSS_BUDGET_PREREG = (
     / "research/chinext_v1/specs/chinext_v2_loss_budget_attempt_preregistration.json"
 )
 ATTEMPT_LEDGER = ROOT / "research/chinext_v1/reports/chinext_v2_attempt_ledger.json"
+HYP003_IDENTIFICATION = (
+    ROOT
+    / "research/chinext_v1/reports/chinext_v2_hyp003_identification_provenance.json"
+)
 
 
 def sha256(path: Path) -> str:
@@ -263,3 +267,148 @@ def test_completed_attempts_are_all_auditable_and_rejected() -> None:
     }
     assert ledger["research_stop"]["brute_force_search_used"] == "NO"
     assert ledger["research_stop"]["revision_holdback_run"] == "NO"
+
+
+def test_a001_a002_preregistration_provenance_is_closed_without_rewrite() -> None:
+    note = json.loads(HYP003_IDENTIFICATION.read_text(encoding="utf-8"))
+    provenance = note["a001_a002_provenance"]
+    freeze_commit = "e21b04b6604ef186af05e92553900dddae4627bc"
+    first_result_commit = "e7f304d7c2f4352c79e9dca39c41f919986a1d45"
+    actual = "57d172f611853b6e67a5a331a171cbba97295a28874ff543fde60476efc732f5"
+    recorded = "5061837b6cade9e3b927aa9506eb003787f354ec721bd6f6f6537bf4530f385d"
+
+    assert provenance["classification"] == "LEDGER_HASH_RECORDING_ERROR"
+    assert provenance["prereg_commit"] == freeze_commit
+    assert provenance["prereg_first_result_commit"] == first_result_commit
+    assert provenance["historical_prereg_sha_at_freeze"] == actual
+    assert provenance["current_prereg_sha256"] == actual == sha256(PREREG)
+    assert provenance["ledger_recorded_sha256"] == recorded
+    assert json.loads(ATTEMPT_LEDGER.read_text(encoding="utf-8"))["frozen_bindings"][
+        "preregistration_sha256"
+    ] == recorded
+    for row in provenance["sha_timeline"]:
+        assert committed_sha256(row["commit"], provenance["prereg_path"]) == actual
+    history = subprocess.run(
+        ["git", "log", "--format=%H", "--", provenance["prereg_path"]],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.splitlines()
+    assert history == [freeze_commit]
+    assert subprocess.run(
+        ["git", "merge-base", "--is-ancestor", freeze_commit, first_result_commit],
+        cwd=ROOT,
+        check=False,
+    ).returncode == 0
+    assert provenance["semantic_difference_status"] == "NONE_FREEZE_TO_CURRENT_HEAD"
+    assert set(provenance["semantic_field_audit"].values()) == {
+        "UNCHANGED_BYTE_IDENTICAL"
+    }
+    assert provenance["a001_prereg_validity"] == "VALID_FROZEN_BEFORE_FIRST_RESULT"
+    assert provenance["a002_prereg_validity"] == "VALID_FROZEN_BEFORE_FIRST_RESULT"
+
+
+def test_hyp003_is_hash_bound_underidentified_and_does_not_authorize_a004() -> None:
+    note = json.loads(HYP003_IDENTIFICATION.read_text(encoding="utf-8"))
+    hyp003 = note["hyp003_identification"]
+    correction = hyp003["lineage_correction"]
+
+    assert hyp003["identification_status"] == "UNDERIDENTIFIED"
+    assert hyp003["selected_counterfactual"] is None
+    assert hyp003["target_failure_metric"] is None
+    assert hyp003["falsification_criterion"] is None
+    assert hyp003["frozen_observed_failure_metrics"]["cycle_count"] == 39
+    assert correction["pure_individual_downstream_set_removal_count"] == 36
+    assert correction["combined_market_contamination_count"] == 3
+    assert correction["all_individual_signal_events_have_same_date_set_removal"] is True
+    assert set(correction["combined_market_contamination_cycle_ids"]) == {
+        "300422.SZ-001",
+        "300452.SZ-001",
+        "300745.SZ-001",
+    }
+    rows = hyp003["cohort_identity_rows"]
+    assert len(rows) == len({row[0] for row in rows}) == 39
+    assert sum(row[4].startswith("MARKET_") for row in rows) == 3
+    identity = [
+        {
+            "entry": row[1],
+            "execution": row[3],
+            "raw": row[4],
+            "signal": row[2],
+            "trade_id": row[0],
+        }
+        for row in sorted(rows, key=lambda row: row[0])
+    ]
+    payload = (json.dumps(identity, sort_keys=True, separators=(",", ":")) + "\n").encode()
+    assert hashlib.sha256(payload).hexdigest() == hyp003["frozen_39_identity_sha256"]
+    runner = load_module(RUNNER, "chinext_v2_hyp003_source_reconstruction_test")
+    events = runner.read_jsonl(
+        ROOT / note["frozen_bindings"]["v1_event_ledger"]["path"]
+    )
+    executions = runner.read_jsonl(
+        ROOT / note["frozen_bindings"]["v1_execution_ledger"]["path"]
+    )
+    individual = {
+        (str(row["symbol"]), str(row["signal_date"]))
+        for row in events
+        if row.get("event") == "INDIVIDUAL_EXIT_SIGNAL"
+    }
+    removals = {
+        (str(symbol), str(row["signal_date"]))
+        for row in events
+        if row.get("event") == "DESIRED_SET_CHANGED"
+        for symbol in row.get("previous", [])
+        if symbol not in row.get("desired", [])
+    }
+    counters: dict[str, int] = {}
+    reconstructed = []
+    for trip in runner.reconstruct_round_trips(executions):
+        symbol = str(trip["symbol"])
+        counters[symbol] = counters.get(symbol, 0) + 1
+        key = (symbol, str(trip["exit_signal_date"]))
+        if str(trip["exit_reason"]) in {
+            "MARKET_MA20_X2",
+            "MARKET_CLOSE_LT_MA20_X0.96",
+        } or key not in individual or key not in removals:
+            continue
+        reconstructed.append(
+            [
+                f"{symbol}-{counters[symbol]:03d}",
+                str(trip["entry_signal_date"]),
+                str(trip["exit_signal_date"]),
+                str(trip["exit_execution_date"]),
+                str(trip["exit_reason"]),
+            ]
+        )
+    assert sorted(reconstructed) == rows
+    assert len(hyp003["counterfactual_families"]) == 7
+    assert hyp003["remaining_counterfactuals"] == [
+        "HYP003-CF01-ADVANCE-INDIVIDUAL-EXIT",
+        "HYP003-CF02-DELAY-OR-PERSISTENCE-CONFIRMATION",
+        "HYP003-CF03-MARKET-CONDITIONED-INDIVIDUAL-EXIT",
+    ]
+    assert len(hyp003["pairwise_non_discrimination"]) == 3
+    assert note["authorization"] == {
+        "a004_authorized": "NO",
+        "a004_run": "NO",
+        "new_candidate_results_viewed": "NO",
+        "research_sample": "2018-01-02..2021-12-31_IN_SAMPLE_MECHANISM_RESEARCH",
+        "used_2022_2025_for_selection": "NO",
+    }
+    assert not (
+        ROOT / "research/chinext_v1/specs/chinext_v2_hyp003_counterfactual_spec.json"
+    ).exists()
+    assert not (
+        ROOT / "research/chinext_v1/output/chinext_v2_attempt_v2_a004"
+    ).exists()
+    for item in note["frozen_bindings"].values():
+        path = ROOT / item["path"]
+        if path.is_file():
+            assert sha256(path) == item["sha256"]
+    assert sha256(STRATEGY) == (
+        "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    )
+    assert sha256(ENGINE) == (
+        "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    )
