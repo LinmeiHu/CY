@@ -50,6 +50,7 @@ from chinext_v1_ablation import (  # noqa: E402
     minvol_admission_for_arm,
     policy_for,
     phase7_policy_for,
+    phase8_policy_for,
     price_structure_for_arm,
     rank_candidates_for_arm,
 )
@@ -410,7 +411,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
     arm_name = getattr(args, "ablation_arm", "A0_BASELINE")
-    ablation_policy = phase7_policy_for(arm_name) if arm_name.startswith("E") else policy_for(arm_name)
+    if arm_name.startswith("E"):
+        ablation_policy = phase7_policy_for(arm_name)
+    elif arm_name.startswith("W"):
+        ablation_policy = phase8_policy_for(arm_name)
+    else:
+        ablation_policy = policy_for(arm_name)
     capacity_envelope = getattr(args, "capacity_envelope", None)
     capacity_identity = getattr(args, "capacity_envelope_identity", None)
     pit_membership_path = getattr(args, "pit_membership", None)
@@ -814,6 +820,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         )
 
         exit_reason_parts: list[str] = []
+        winner_hold_symbols: set[str] = set()
+        if arm_name == "W1_WINNER_HOLD_THROUGH_MARKET_EXIT" and market_state["normal_exit"]:
+            for symbol, position in positions.items():
+                held_sessions = sum(d >= position.acquisition_date for d in histories_dates[symbol])
+                row = day_rows.get(symbol)
+                current = None if row is None else row.get("close")
+                entry = position.cost_basis / position.shares if position.shares > 0 else None
+                if held_sessions >= 20 and entry and current and float(current) / entry - 1.0 >= 0.20:
+                    winner_hold_symbols.add(symbol)
         if getattr(ablation_policy, "market_exit", True) and market_state["normal_exit"]:
             exit_reason_parts.append("MARKET_MA20_X2")
         if getattr(ablation_policy, "market_exit", True) and market_state["emergency_exit"]:
@@ -838,8 +853,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     )
 
         if exit_reason_parts:
-            forced_exits.update(planned_members)
-            desired = ()
+            forced_exits.update(set(planned_members) - winner_hold_symbols)
+            desired = tuple(sorted(winner_hold_symbols)) if arm_name == "W1_WINNER_HOLD_THROUGH_MARKET_EXIT" else ()
             counts["market_exit_signal_days"] += 1
             membership_reason = "+".join(exit_reason_parts)
         else:

@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from cyq_game.data import DataAssetRegistry, DataPurpose
-from chinext_v1_ablation import ARM_ORDER, phase7_policy_for, policy_for
+from chinext_v1_ablation import ARM_ORDER, phase7_policy_for, phase8_policy_for, policy_for
 from run_chinext_v1_full_survivor import INITIAL_CASH, performance_extensions, read_jsonl, year_metrics
 from run_chinext_v1_pit_replay import reconstruct_round_trips
 from run_chinext_v1_smoke import (
@@ -195,7 +195,7 @@ def arm_metrics(
     }
     return {
         "arm": arm,
-        "policy": (phase7_policy_for(arm).to_dict() if arm.startswith("E") else policy_for(arm).to_dict()),
+        "policy": (phase7_policy_for(arm).to_dict() if arm.startswith("E") else (phase8_policy_for(arm).to_dict() if arm.startswith("W") else policy_for(arm).to_dict())),
         "total_return": total_return,
         "annualized_return": float(engine_summary["portfolio"]["annualized_return"]),
         "max_drawdown": float(engine_summary["portfolio"]["max_drawdown"]),

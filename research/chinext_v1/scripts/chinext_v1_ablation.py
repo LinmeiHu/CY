@@ -60,6 +60,12 @@ def phase7_policy_for(name: str) -> Phase7ExitPolicy:
     raise ValueError(f"unregistered Phase 7 exit arm: {name}")
 
 
+def phase8_policy_for(name: str) -> Phase7ExitPolicy:
+    if name == "W1_WINNER_HOLD_THROUGH_MARKET_EXIT":
+        return Phase7ExitPolicy(name)
+    raise ValueError(f"unregistered Phase 8 exit arm: {name}")
+
+
 POLICIES = {
     "A0_BASELINE": ArmPolicy("A0_BASELINE"),
     "A1_MINUS_MINVOL": ArmPolicy("A1_MINUS_MINVOL", minvol_hard_filter=False),

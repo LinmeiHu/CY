@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+"""Run the single pre-registered W1 winner-hold-through-market-exit replay."""
+from __future__ import annotations
+import argparse, json
+from datetime import date
+from pathlib import Path
+from run_chinext_v1_full_survivor import INITIAL_CASH, read_jsonl
+from run_chinext_v1_phase3_ablation import arm_metrics
+from run_chinext_v1_pit_replay import reconstruct_round_trips
+from run_chinext_v1_smoke import DEFAULT_CALENDAR, DEFAULT_DAILY_ROOT, DEFAULT_MARKET, run, sha256_file, write_json
+ROOT=Path(__file__).resolve().parents[3]; R=ROOT/'research/chinext_v1/reports'; M=ROOT/'research/chinext_v1/data/pit_2024_2025/daily_membership.parquet'; SPEC=R/'chinext_v1_phase8_winner_hold_spec.json'; STR=ROOT/'research/chinext_v1/strategy/chinext_v1_exploratory.py'; MAN=R/'chinext_v1_pit_master_manifest.json'; OUT=ROOT/'research/chinext_v1/output/chinext_v1_phase8_winner_hold/W1_WINNER_HOLD_THROUGH_MARKET_EXIT'; START=date(2024,1,2); END=date(2025,12,31)
+def main():
+ p=argparse.ArgumentParser(); p.add_argument('--daily-root',type=Path,default=DEFAULT_DAILY_ROOT); p.add_argument('--market',type=Path,default=DEFAULT_MARKET); p.add_argument('--calendar',type=Path,default=DEFAULT_CALENDAR); a=p.parse_args()
+ if sha256_file(STR)!='dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a' or sha256_file(MAN)!='8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7': raise RuntimeError('frozen identity mismatch')
+ spec=json.loads(SPEC.read_text());
+ if spec['status']!='FROZEN_BEFORE_ANY_REPLAY_RESULT' or spec['winner_qualification'] != {'min_current_return':0.2,'min_holding_sessions':20,'information_set':'market-exit decision day only; current close and frozen acquisition date','future_mfe_or_top20_used':False}: raise RuntimeError('spec mismatch')
+ OUT.mkdir(parents=True,exist_ok=True); args=argparse.Namespace(start=START,end=END,sample_size=10000,full_survivor=True,initial_cash=INITIAL_CASH,pit_membership=M,daily_root=a.daily_root,market=a.market,calendar=a.calendar,summary=OUT/'engine_summary.json',report=OUT/'engine_report.md',output_dir=OUT,ablation_arm='W1_WINNER_HOLD_THROUGH_MARKET_EXIT'); eng=run(args); ex=read_jsonl(eng['audit']['execution_ledger']); nav=read_jsonl(eng['audit']['daily_nav']); trips=reconstruct_round_trips(ex); top20=[(r['symbol'],r['entry_signal_date']) for r in json.loads((R/'chinext_v1_winner_attribution_summary.json').read_text())['top20_trades']]; metrics=arm_metrics('W1_WINNER_HOLD_THROUGH_MARKET_EXIT',eng,ex,nav,top20)
+ base=json.loads((R/'chinext_v1_pit_replay_summary.json').read_text()); e2=json.loads((R/'chinext_v1_phase7_exit_ablation_summary.json').read_text())['arms']['E2_MARKET_EXIT_DISABLED']; summary={'identity':{'spec_sha256':sha256_file(SPEC),'strategy_sha256':sha256_file(STR),'pit_manifest_sha256':sha256_file(MAN)},'formal_replay_executions':1,'formal_run_order':['W1_WINNER_HOLD_THROUGH_MARKET_EXIT'],'winner_qualification':spec['winner_qualification'],'W0_BASELINE':{'total_return':base['portfolio']['total_return'],'max_drawdown':base['portfolio']['max_drawdown'],'average_holdings':base['portfolio']['average_holdings'],'average_invested_fraction':base['portfolio']['average_invested_ratio'],'top20_concentration':0.8425435214865872,'return_ex_best20':-0.3219529632499998},'E2_MARKET_EXIT_DISABLED_FROZEN':e2,'W1_WINNER_HOLD_THROUGH_MARKET_EXIT':metrics,'pit_rebuilt':'NO','strategy_modified':'NO','current_survivor_fallback':'NO'}; write_json(R/'chinext_v1_phase8_winner_hold_summary.json',summary); (R/'chinext_v1_phase8_winner_hold.md').write_text('# ChinNext V1 Phase 8 — Winner hold through market exit\n\nExactly one replay: W1. Winner qualification is causal: holding sessions >=20 and current return >=20% on market-exit decision day.\n\n'+json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+if __name__=='__main__': raise SystemExit(main())

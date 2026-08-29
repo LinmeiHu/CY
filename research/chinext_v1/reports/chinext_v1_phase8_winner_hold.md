@@ -1,0 +1,390 @@
+# ChinNext V1 Phase 8 — Winner hold through market exit
+
+Exactly one replay: W1. Winner qualification is causal: holding sessions >=20 and current return >=20% on market-exit decision day.
+
+{
+  "identity": {
+    "spec_sha256": "805dc365f5cac89d8114d2ca320d02d3e0a2934bc920566297db310d43ee3d7c",
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7"
+  },
+  "formal_replay_executions": 1,
+  "formal_run_order": [
+    "W1_WINNER_HOLD_THROUGH_MARKET_EXIT"
+  ],
+  "winner_qualification": {
+    "min_holding_sessions": 20,
+    "min_current_return": 0.2,
+    "information_set": "market-exit decision day only; current close and frozen acquisition date",
+    "future_mfe_or_top20_used": false
+  },
+  "W0_BASELINE": {
+    "total_return": 1.0524221580500002,
+    "max_drawdown": -0.2622719258789836,
+    "average_holdings": 4.051546391752577,
+    "average_invested_fraction": 0.40391475173586633,
+    "top20_concentration": 0.8425435214865872,
+    "return_ex_best20": -0.3219529632499998
+  },
+  "E2_MARKET_EXIT_DISABLED_FROZEN": {
+    "2024_09_entry_share_of_total_positive_pnl": 0.48073120153715315,
+    "2024_09_entry_total_pnl": 809784.3420000001,
+    "2024_09_entry_trade_count": 10,
+    "annualized_return": 0.388368435793214,
+    "arm": "E2_MARKET_EXIT_DISABLED",
+    "arm_top20_episode_keys": [
+      [
+        "300003.SZ",
+        "2025-06-04"
+      ],
+      [
+        "300033.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300128.SZ",
+        "2024-09-25"
+      ],
+      [
+        "300182.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300324.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300348.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300357.SZ",
+        "2025-07-16"
+      ],
+      [
+        "300377.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300437.SZ",
+        "2025-11-06"
+      ],
+      [
+        "300440.SZ",
+        "2025-06-16"
+      ],
+      [
+        "300457.SZ",
+        "2025-08-28"
+      ],
+      [
+        "300459.SZ",
+        "2024-09-25"
+      ],
+      [
+        "300779.SZ",
+        "2025-02-12"
+      ],
+      [
+        "300790.SZ",
+        "2024-12-09"
+      ],
+      [
+        "300803.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300910.SZ",
+        "2025-01-23"
+      ],
+      [
+        "300938.SZ",
+        "2025-10-29"
+      ],
+      [
+        "301093.SZ",
+        "2025-06-23"
+      ],
+      [
+        "301141.SZ",
+        "2025-06-04"
+      ],
+      [
+        "301498.SZ",
+        "2024-12-02"
+      ]
+    ],
+    "arm_top20_new_trade_count": 5,
+    "arm_top20_overlap_with_baseline_top20": 15,
+    "arm_top20_total_pnl": 1425800.2027000003,
+    "average_holdings": 5.154639175257732,
+    "average_invested_fraction": 0.5157464513330124,
+    "baseline_top10_captured_count": 8,
+    "baseline_top10_captured_pct": 0.8,
+    "baseline_top20_captured_count": 17,
+    "baseline_top20_captured_pct": 0.85,
+    "baseline_top20_same_symbol_unrelated_episode_count": 0,
+    "baseline_top20_same_symbol_unrelated_symbols": [],
+    "candidate_event_count": 1292,
+    "concentration": {
+      "positive_round_trip_pnl": 1684484.6754500002,
+      "return_ex_best10": -0.10000202359000077,
+      "return_ex_best20": -0.508574158590001,
+      "top10_positive_pnl_concentration": 0.6038808678554785,
+      "top1_positive_pnl_concentration": 0.14836139066283718,
+      "top20_positive_pnl_concentration": 0.8464310916447525,
+      "top5_positive_pnl_concentration": 0.39780106092148887
+    },
+    "daily_nav": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase7_exit_ablation/E2_MARKET_EXIT_DISABLED/daily_nav.jsonl",
+    "daily_nav_sha256": "db67b7f8fc827490fb237a1fdeda0ee26d33adcdc3d73a8c5390d821f98e450c",
+    "ending_holdings": [
+      "300045.SZ",
+      "300054.SZ",
+      "300265.SZ",
+      "300285.SZ",
+      "300487.SZ",
+      "300576.SZ",
+      "300667.SZ",
+      "300710.SZ",
+      "300731.SZ",
+      "301387.SZ"
+    ],
+    "execution_ledger": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase7_exit_ablation/E2_MARKET_EXIT_DISABLED/execution_ledger.jsonl",
+    "execution_ledger_sha256": "38b62b99b06ad425f8e606e92e147d979b6b14998c1cb853ff3ccb2769a52d59",
+    "formal_replay_executions": 1,
+    "loser_control": {
+      "count": 59,
+      "mean_holding_days": null,
+      "mean_return": -0.08621808073272143,
+      "median_holding_days": null,
+      "median_return": -0.08694958348276041,
+      "total_pnl": -905783.5613399999
+    },
+    "max_drawdown": -0.1739112641819065,
+    "mean_trade_return": 0.06669566567627712,
+    "median_trade_return": -0.05017221408243291,
+    "pnl_excluding_2024_09_entry_cohort": -31083.227889999802,
+    "policy": {
+      "b60_hard_filter": true,
+      "full40_hard_filter": true,
+      "individual_exit": true,
+      "market_entry_gate": true,
+      "market_exit": false,
+      "minvol_hard_filter": true,
+      "name": "E2_MARKET_EXIT_DISABLED",
+      "rs_selection": true
+    },
+    "positive_trade_count": 40,
+    "return_excluding_2024_09_entry_cohort": null,
+    "return_excluding_2024_09_entry_cohort_status": "UNRESOLVED: no cash-flow counterfactual NAV is fabricated",
+    "same_day_fill_count": 0,
+    "selected_entry_count": 109,
+    "sharpe_rf0": 1.2068974756379098,
+    "stale_held_valuation_count": 0,
+    "top20_from_2024_09_count": 8,
+    "total_return": 0.9172260441099993,
+    "trade_count": 99,
+    "volatility": 0.3094740823747999,
+    "win_rate": 0.40404040404040403,
+    "year_by_year": {
+      "2024": {
+        "average_holdings": 3.3057851239669422,
+        "average_invested_ratio": 0.33186483916446563,
+        "completed_round_trip_count": 30,
+        "max_drawdown": -0.16305820353175926,
+        "return": 0.64658489275,
+        "win_rate": 0.4666666666666667
+      },
+      "2025": {
+        "average_holdings": 6.995884773662551,
+        "average_invested_ratio": 0.6988713490481908,
+        "completed_round_trip_count": 69,
+        "max_drawdown": -0.11652906975888111,
+        "return": 0.16436513692773858,
+        "win_rate": 0.37681159420289856
+      }
+    }
+  },
+  "W1_WINNER_HOLD_THROUGH_MARKET_EXIT": {
+    "arm": "W1_WINNER_HOLD_THROUGH_MARKET_EXIT",
+    "policy": {
+      "name": "W1_WINNER_HOLD_THROUGH_MARKET_EXIT",
+      "minvol_hard_filter": true,
+      "b60_hard_filter": true,
+      "full40_hard_filter": true,
+      "rs_selection": true,
+      "market_entry_gate": true,
+      "individual_exit": true,
+      "market_exit": true
+    },
+    "total_return": 1.1475334803500004,
+    "annualized_return": 0.47008221755016755,
+    "max_drawdown": -0.2271282921217893,
+    "trade_count": 109,
+    "win_rate": 0.44954128440366975,
+    "median_trade_return": -0.005416888185570263,
+    "mean_trade_return": 0.0781717046091544,
+    "sharpe_rf0": 1.4123572719204214,
+    "volatility": 0.30361760609081506,
+    "year_by_year": {
+      "2024": {
+        "return": 0.6049130867500003,
+        "max_drawdown": -0.1767295228512048,
+        "completed_round_trip_count": 36,
+        "win_rate": 0.3333333333333333,
+        "average_invested_ratio": 0.25194262175234833,
+        "average_holdings": 2.5082644628099175
+      },
+      "2025": {
+        "return": 0.3380995507356872,
+        "max_drawdown": -0.1254090932988483,
+        "completed_round_trip_count": 73,
+        "win_rate": 0.5068493150684932,
+        "average_invested_ratio": 0.5756527631269571,
+        "average_holdings": 5.773662551440329
+      }
+    },
+    "concentration": {
+      "positive_round_trip_pnl": 1719892.0623499998,
+      "top1_positive_pnl_concentration": 0.14700768119979107,
+      "top5_positive_pnl_concentration": 0.4313715943233535,
+      "top10_positive_pnl_concentration": 0.6409202023374871,
+      "return_ex_best10": 0.04521991175000051,
+      "top20_positive_pnl_concentration": 0.8437038569834994,
+      "return_ex_best20": -0.3035460862499997
+    },
+    "baseline_top20_captured_count": 20,
+    "baseline_top20_captured_pct": 1.0,
+    "baseline_top10_captured_count": 10,
+    "baseline_top10_captured_pct": 1.0,
+    "baseline_top20_same_symbol_unrelated_episode_count": 0,
+    "baseline_top20_same_symbol_unrelated_symbols": [],
+    "arm_top20_total_pnl": 1451079.5666,
+    "arm_top20_new_trade_count": 1,
+    "arm_top20_overlap_with_baseline_top20": 19,
+    "arm_top20_episode_keys": [
+      [
+        "300033.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300128.SZ",
+        "2024-09-25"
+      ],
+      [
+        "300182.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300324.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300348.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300357.SZ",
+        "2025-07-16"
+      ],
+      [
+        "300377.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300437.SZ",
+        "2025-11-06"
+      ],
+      [
+        "300457.SZ",
+        "2025-08-28"
+      ],
+      [
+        "300459.SZ",
+        "2024-09-25"
+      ],
+      [
+        "300490.SZ",
+        "2025-09-25"
+      ],
+      [
+        "300497.SZ",
+        "2025-11-06"
+      ],
+      [
+        "300733.SZ",
+        "2025-02-06"
+      ],
+      [
+        "300763.SZ",
+        "2025-08-29"
+      ],
+      [
+        "300779.SZ",
+        "2025-02-12"
+      ],
+      [
+        "300803.SZ",
+        "2024-09-24"
+      ],
+      [
+        "300938.SZ",
+        "2025-10-29"
+      ],
+      [
+        "301093.SZ",
+        "2025-06-23"
+      ],
+      [
+        "301141.SZ",
+        "2025-06-04"
+      ],
+      [
+        "301165.SZ",
+        "2025-06-24"
+      ]
+    ],
+    "2024_09_entry_trade_count": 10,
+    "2024_09_entry_total_pnl": 793868.0909999999,
+    "2024_09_entry_share_of_total_positive_pnl": 0.46158018190704747,
+    "top20_from_2024_09_count": 8,
+    "pnl_excluding_2024_09_entry_cohort": 234714.79635000008,
+    "return_excluding_2024_09_entry_cohort": null,
+    "return_excluding_2024_09_entry_cohort_status": "UNRESOLVED: no cash-flow counterfactual NAV is fabricated",
+    "candidate_event_count": 1175,
+    "selected_entry_count": 119,
+    "average_holdings": 4.144329896907217,
+    "average_invested_fraction": 0.41413141423488425,
+    "ending_holdings": [
+      "300054.SZ",
+      "300265.SZ",
+      "300285.SZ",
+      "300401.SZ",
+      "300448.SZ",
+      "300487.SZ",
+      "300667.SZ",
+      "300699.SZ",
+      "300855.SZ",
+      "301387.SZ"
+    ],
+    "execution_ledger": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase8_winner_hold/W1_WINNER_HOLD_THROUGH_MARKET_EXIT/execution_ledger.jsonl",
+    "execution_ledger_sha256": "59c9f50274ed64633b784261a04f4bc198ff07be1571677fbc98b314dfe5d2e6",
+    "daily_nav": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase8_winner_hold/W1_WINNER_HOLD_THROUGH_MARKET_EXIT/daily_nav.jsonl",
+    "daily_nav_sha256": "61321a24f053e06e9a3c1aa125303c911b9f0664977fa64a9de9cf9afadf6411",
+    "same_day_fill_count": 0,
+    "stale_held_valuation_count": 0
+  },
+  "pit_rebuilt": "NO",
+  "strategy_modified": "NO",
+  "current_survivor_fallback": "NO"
+}
+
+## Deferral diagnostics
+
+- MARKET_EXIT_POSITION_COUNT: 77
+- WINNER_QUALIFIED_AT_MARKET_EXIT_COUNT: 12
+- WINNER_DEFERRED_COUNT: 12
+- DEFERRED_WINNER_EVENTUALLY_LOSER_COUNT: 0
+- DEFERRED_WINNER_EVENTUALLY_LOSER_PNL: 0.0
+
+W1 assessment: PROMISING in-sample with MODERATE evidence; this is one fixed mechanism point, not an optimization result.
