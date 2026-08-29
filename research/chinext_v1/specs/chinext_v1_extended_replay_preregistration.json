@@ -1,0 +1,208 @@
+{
+  "authorization": {
+    "class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "historical_state_authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+    "record_level_available_at_available": false,
+    "revision_history_complete": false,
+    "strict_pit_a": false
+  },
+  "corporate_action_semantics": {
+    "causal_coordinates": "known_at<=decision_session and effective_date<=decision_session",
+    "history_rebasing_boundary": "before current-session raw bar is appended",
+    "rights_participation": "FAIL_CLOSED_EXECUTION_UNRESOLVED",
+    "same_day_raw_bar_ordering": "REBASE_PRIOR_HISTORY_THEN_APPEND_RAW_BAR",
+    "unknown_or_incomplete_event": "FAIL_CLOSED"
+  },
+  "execution_semantics": {
+    "board_lot_shares": 100,
+    "cash_handling": "UNINVESTED_CASH_RETAINED; BUY_NOTIONAL_CAPPED_BY_AVAILABLE_CASH_INCLUSIVE_OF_COST",
+    "execution_price": "next_QD003_session_raw_open",
+    "fill_timing": "signal_on_completed_session_t; no fill before session_t_plus_1_open",
+    "initial_cash_cny": 1000000.0,
+    "intraday_or_temporary_suspension_subtype": "NOT_AUTHORIZED",
+    "open_limit_semantics": "reuse frozen PARTIAL open-limit execution model",
+    "position_sizing": "maximum 10 holdings; 10 percent target NAV weight each",
+    "rank_replacement": "OFF",
+    "slippage_model": "NONE_SEPARATELY_MODELED",
+    "stamp_duty_model": "NONE_SEPARATELY_MODELED",
+    "t_plus_one": "sell execution_date must be later than latest acquisition_date",
+    "transaction_cost_bps_per_filled_side": 10.0
+  },
+  "fail_closed_rules": [
+    "input path missing",
+    "input hash mismatch",
+    "authorization class mismatch",
+    "historical state outside 2017-04-12..2021-12-31",
+    "membership before earliest_safe_use_date",
+    "unknown or ambiguous identity, risk-warning subtype, suspension, or corporate action",
+    "unresolved rights-participation execution semantics",
+    "same-session fill",
+    "held security reaches unresolved corporate-action blocker",
+    "stale held valuation",
+    "transient canonical input contract mismatch"
+  ],
+  "first_view_execution_count": 1,
+  "gate_d_result_sha256": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c",
+  "input_bindings": {
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "frozen_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "gate_d_preregistration": {
+      "path": "research/chinext_v1/specs/chinext_v1_gate_d_preregistration.json",
+      "sha256": "dd1c9e3747a52138b1238c90f6c34d37a405f45cda6adc01a3264f286bdd5342"
+    },
+    "gate_d_result": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_d_result.json",
+      "sha256": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c"
+    },
+    "historical_state_manifest": {
+      "path": "research/chinext_v1/reports/chinext_v1_free_historical_state_manifest.json",
+      "sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61"
+    },
+    "market_anchor_399102": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "official_events": {
+      "path": "research/chinext_v1/specs/chinext_v1_free_historical_state_official_events.json",
+      "sha256": "e9d0c128f1e4b8ba245ccd3f048b9f7cfd2a29bb8512d9cba66bf30711cc8906"
+    },
+    "qd001_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-001-none-20260820.json",
+      "sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3"
+    },
+    "qd003_calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "qd010_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "replay_engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    }
+  },
+  "input_requirement_matrix": {
+    "binding": "research/chinext_v1/reports/chinext_v1_gate_d_result.json#strategy_input_requirement_matrix",
+    "required_rows": 11,
+    "status": "PASS"
+  },
+  "prerequisites": {
+    "frozen_v1_sha_status": "PASS",
+    "gate_a": "PASS",
+    "gate_b": "PASS",
+    "gate_c": "PASS",
+    "gate_d": "PASS",
+    "safe_to_run_extended_history_strategy_replay": "YES"
+  },
+  "price_coordinate_semantics": "unadjusted raw daily bars; bounded QD-010 events rebase retained history/share coordinates only at causal effective boundary",
+  "replay_range": {
+    "end": "2021-12-31",
+    "start": "2018-01-02",
+    "trading_calendar": "QD-003",
+    "warmup_start": "2017-04-12"
+  },
+  "reporting_metrics": {
+    "annual": [
+      "2018_TOTAL_RETURN",
+      "2019_TOTAL_RETURN",
+      "2020_TOTAL_RETURN",
+      "2021_TOTAL_RETURN"
+    ],
+    "frozen_primary": [
+      "TOTAL_RETURN",
+      "MAX_DRAWDOWN",
+      "TRADES",
+      "WIN_RATE",
+      "MEDIAN_TRADE",
+      "MEAN_TRADE",
+      "TOP20_PNL_CONCENTRATION",
+      "RETURN_EX_BEST20"
+    ],
+    "frozen_supporting": [
+      "ANNUALIZED_RETURN",
+      "VOLATILITY",
+      "SHARPE_ZERO_RISK_FREE",
+      "PROFIT_FACTOR",
+      "TURNOVER",
+      "AVERAGE_HOLDINGS",
+      "AVERAGE_INVESTED_RATIO",
+      "ENDING_HOLDINGS",
+      "SAME_DAY_FILL_COUNT",
+      "STALE_HELD_VALUATION_COUNT",
+      "CORPORATE_ACTIONS_APPLIED",
+      "CORPORATE_ACTIONS_BLOCKED"
+    ],
+    "round_trip_definition": "completed position lifecycle reconstructed from frozen leg-level execution ledger; partial CAP/SET resize legs remain within the lifecycle"
+  },
+  "result_label": "PREREGISTERED_EXTENDED_HISTORY_VALIDATION",
+  "runner_sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae",
+  "sample_chronology": {
+    "2018_2021_after_first_view": "CONSUMED_PREREGISTERED_EXTENDED_HISTORY_VALIDATION",
+    "2018_2021_before_first_view": "UNCONSUMED_FOR_FROZEN_V1_EXTENDED_HISTORY_PERFORMANCE",
+    "2022_2025": "REVISION_HOLDBACK_NOT_USED_FOR_V2_SELECTION"
+  },
+  "spec_id": "CHINEXT-V1-EXTENDED-REPLAY-2018-2021-V1",
+  "status": "FROZEN_BEFORE_FIRST_VIEW_REPLAY",
+  "strategy_configuration": {
+    "box_days": 40,
+    "box_width_max": 0.2,
+    "breakout_days": 60,
+    "breakout_volume_lookback": 20,
+    "breakout_volume_threshold": 1.2,
+    "direction_efficiency_max": 0.45,
+    "entry_ma": 20,
+    "exit_confirm": 2,
+    "exit_ma": 30,
+    "ma_dispersion_max": 0.08,
+    "market_emergency_ratio": 0.96,
+    "market_exit_confirm": 2,
+    "market_ma": 20,
+    "max_holdings": 10,
+    "min_completed_observations": 180,
+    "minvol_location_max": 0.5,
+    "minvol_lookback": 30,
+    "minvol_ratio_max": 0.7,
+    "rs120_weight": 0.3,
+    "rs20_weight": 0.2,
+    "rs60_weight": 0.5,
+    "target_weight": 0.1,
+    "transaction_cost_bps": 10.0,
+    "turnover20_days": 20,
+    "turnover20_min_cny": 100000000.0,
+    "vol_ratio_max": 0.85
+  },
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "transient_input_contract": {
+    "canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "membership_rows": 803527,
+    "membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81",
+    "membership_symbols": 1097,
+    "partition_hashes": {
+      "2018": "54b9cfa07e766be6a482292e4c778e595d1f0353de1476ef7661f7a97928724d",
+      "2019": "b09d911d9cbbf4030ec07ca3b2d6c02e0439606f25ab7cd022574411616275c5",
+      "2020": "51040e1dc8348fa36c424a0e2c1a7f0df2e850c1e66e4db297ef2d2da276ff1c",
+      "2021": "87be050a207095880e385f8cf5c438fbecd3dddcf2f61e14a361f72b275b940a"
+    },
+    "target_rows": 803907,
+    "warmup_rows": 120642
+  },
+  "universe_and_state_semantics": {
+    "alias_normalization": "physical 302132.SZ maps data-driven to canonical 300114.SZ; official boundary 2025-02-17 is outside replay",
+    "current_universe_projection": "FORBIDDEN",
+    "historical_membership": "date-effective CY-029 membership shifted to earliest_safe_use_date on QD-003",
+    "risk_warning": "NORMAL/ST/STAR_ST official-event-bounded effective state; risky rows excluded",
+    "suspension": "full-session daily state only; suspended rows are not tradable and no synthetic volume/amount is fabricated"
+  }
+}

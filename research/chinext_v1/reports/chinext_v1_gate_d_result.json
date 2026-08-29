@@ -1,0 +1,232 @@
+{
+  "authorization": {
+    "class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "historical_state_authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+    "purpose": "CHINEXT_PIT_B_RESEARCH",
+    "record_level_available_at_available": false,
+    "revision_history_complete": false,
+    "strict_pit_a": false
+  },
+  "corporate_actions": {
+    "corporate_action_failure_count": 0,
+    "cy006_action_event_id_count": 2514,
+    "cy006_blocking_row_count": 13,
+    "cy006_invalid_action_row_count": 13,
+    "direct_fail_closed_overlay": [
+      {
+        "event_id": "cninfo:distribution:8f9ccc256e87f957242ac5eade0b8f49",
+        "known_at": "2020-12-19",
+        "physical_symbol": "300008.SZ",
+        "reason": "missing_effective_date",
+        "safe_session": "2020-12-21"
+      },
+      {
+        "event_id": "cninfo:distribution:ae1899c76f6324fe8727dea497b3295e",
+        "known_at": "2019-02-02",
+        "physical_symbol": "300056.SZ",
+        "reason": "missing_effective_date",
+        "safe_session": "2019-02-11"
+      }
+    ],
+    "direct_fail_closed_overlay_sha256": "fc498d3337087d65296f641d1f006e713d96fd043aeff74a424d76bfbfdf724f",
+    "distribution_event_count": 2503,
+    "duplicate_source_event_count": 0,
+    "event_id_set_sha256": "41a6658de14fee3d2731c32a53f4013e19faf87d5242eef8c9bd2d846bd439fd",
+    "extra_cy006_event_ids": [],
+    "malformed_distribution_count": 0,
+    "malformed_rights_count": 0,
+    "missing_cy006_event_ids": [],
+    "rights_event_count": 5,
+    "rights_participation": "FAIL_CLOSED_EXECUTION_UNRESOLVED",
+    "unresolved_fail_closed_event_count": 8,
+    "unresolved_fail_closed_event_ids": [
+      "cninfo:distribution:0ca9e00d3d956c5a564b27bf003035ec",
+      "cninfo:distribution:291e641b8b9b38fb822b9942b9031db8",
+      "cninfo:distribution:742bdd914acf99ac1a9e3a725419f90c",
+      "cninfo:distribution:8f9ccc256e87f957242ac5eade0b8f49",
+      "cninfo:distribution:a8801ab0b49db3a02295658838e87de5",
+      "cninfo:distribution:ae1899c76f6324fe8727dea497b3295e",
+      "cninfo:distribution:b51c0a7f12cd88bd81d51ce263b33638",
+      "cninfo:distribution:ec48e8e61e8533b9d3f75a5a5c4f9d58"
+    ],
+    "unresolved_fail_closed_failure_count": 0
+  },
+  "execution_firewall": {
+    "formal_strategy_replay": false,
+    "nav_generation": false,
+    "performance_metrics": false,
+    "strategy_modification": false,
+    "strategy_signals": false,
+    "trades": false
+  },
+  "expected_metrics_match": true,
+  "gate_d_repair_count": 3,
+  "gate_d_result": "PASS",
+  "input_hashes_verified": 37,
+  "logical_materialization": {
+    "combined_sha256": "d8cdf0c43b978e65dd019acf9df51b9e59e4f64f30d40e939da8923718f9c785",
+    "deterministic": true,
+    "persistent_duplicate_daily_store": false,
+    "target_rows": 803907,
+    "target_sha256": "22ee88047b14f905de8cb7e62bf6db4d029841695b973b55e3cf2c93ab5bfc7e",
+    "warmup_rows": 120642,
+    "warmup_sha256": "6c092924063b5cc24b554cbc32e756cf178b27e53c3cc3f0061c50949f641115"
+  },
+  "market_anchor": {
+    "coverage_status": "PASS",
+    "missing_required_sessions": 0
+  },
+  "metrics": {
+    "alias_normalizations_applied": 1,
+    "authorization_failure_count": 0,
+    "authorized_foundation_historical_symbols": 1098,
+    "calendar_mismatch_count": 0,
+    "corporate_action_failure_count": 0,
+    "delistings_captured": 7,
+    "determinism_mismatch_count": 0,
+    "hash_failure_count": 0,
+    "historical_gem_symbols_ever_seen": 1097,
+    "historical_symbols_ever_seen": 1097,
+    "new_listings_captured": 387,
+    "non_survivors_retained": 39,
+    "price_input_missing_count": 0,
+    "required_state_missing_count": 0,
+    "risk_warning_removals_captured_validation_only": 1,
+    "st_intervals_captured": 12,
+    "star_st_intervals_captured": 12,
+    "state_conflict_count": 0,
+    "state_unknown_count": 0,
+    "suspension_sessions_captured": 9594,
+    "target_daily_state_rows": 803907,
+    "trading_dates_validated": 973,
+    "universe_mismatch_count": 0
+  },
+  "prerequisites": {
+    "frozen_v1_sha_status": "PASS",
+    "gate_a": "PASS",
+    "gate_b": "PASS",
+    "gate_c": "PASS",
+    "gate_c_repair_count": 3,
+    "gate_c_spec_commit": "7f3fffa2fe4530f73d63216e2ce6c0db92e6f64d"
+  },
+  "safe_to_run_extended_history_strategy_replay": "YES",
+  "spec_commit": "72dc09182bee897bde8b1b61a62b66d076f9f486",
+  "spec_id": "CHINEXT-V1-GATE-D-FULL-PIT-VALIDATION-V1",
+  "spec_sha256": "dd1c9e3747a52138b1238c90f6c34d37a405f45cda6adc01a3264f286bdd5342",
+  "strategy_input_requirement_matrix": [
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "180 completed observations; direct signal maximum 121",
+      "source": "QD-001/CY-006 bounded PIT-B completed-bar facts",
+      "strategy_input": "raw unadjusted close history"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "31 observations for MINVOL; 21 for shadow breakout volume",
+      "source": "QD-001/CY-006 bounded PIT-B completed-bar facts",
+      "strategy_input": "raw volume history"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "20 sessions",
+      "source": "QD-001/CY-006 bounded PIT-B completed-bar facts",
+      "strategy_input": "raw amount"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "180 listed completed sessions",
+      "source": "CY-029 exact artifact",
+      "strategy_input": "historical GEM identity and listed trading age"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "daily effective state",
+      "source": "CY-029 official-event-bounded subtype",
+      "strategy_input": "NORMAL/ST/STAR_ST state"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "daily state",
+      "source": "CY-029 full-session daily only",
+      "strategy_input": "full-session suspension"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "all events affecting retained history",
+      "source": "QD-010/CY-006 bounded PIT-B",
+      "strategy_input": "corporate-action event terms and causal coordinates"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2018-01-02",
+      "fail_closed_status": "PASS",
+      "lookback": "execution session",
+      "source": "CY-006 bounded PIT-B",
+      "strategy_input": "next-session open, T+1, tradability, and open-limit state"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-04-12",
+      "fail_closed_status": "PASS",
+      "lookback": "entire warmup and replay range",
+      "source": "QD-003 exact calendar hash",
+      "strategy_input": "trading calendar"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2017-12-01",
+      "fail_closed_status": "PASS",
+      "lookback": "21 sessions",
+      "source": "frozen 399102.SZ artifact",
+      "strategy_input": "399102.SZ market close"
+    },
+    {
+      "authorization_status": "PASS_BOUNDED_PIT_B",
+      "coverage_status": "PASS",
+      "earliest_required_date": "2018-01-02",
+      "fail_closed_status": "PASS",
+      "lookback": "10 bps per filled side; 10 positions at 10% each",
+      "source": "frozen strategy constant",
+      "strategy_input": "transaction cost and portfolio sizing"
+    }
+  ],
+  "strategy_input_requirement_matrix_status": "PASS",
+  "target_join": {
+    "logical_rows": 803907,
+    "missing_cy006_rows": 0,
+    "normal_session_invalid_price_rows": 0
+  },
+  "warmup": {
+    "logical_rows": 120642,
+    "missing_price_rows": 0,
+    "normal_session_invalid_price_rows": 0,
+    "required_file_count": 711,
+    "required_file_hash_failure_count": 0,
+    "required_physical_symbol_count": 711
+  },
+  "zero_tolerance_pass": true
+}
