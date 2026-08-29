@@ -1,0 +1,409 @@
+{
+  "assessment_id": "CHINEXT-V1-EXTENDED-PIT-FOUNDATION-CURRENT-HEAD-V1",
+  "assessment_status": "COMPLETE_BLOCKED_EXTERNAL_DATA",
+  "starting_head": "396d20bfe98b74aa2af286c8e0ae64fe44c8f503",
+  "branch": "research/chinext-v1",
+  "scope": {
+    "target_date_range": [
+      "2018-01-02",
+      "2021-12-31"
+    ],
+    "target_trading_sessions": 973,
+    "warmup_date_range": [
+      "2017-04-12",
+      "2017-12-29"
+    ],
+    "formal_strategy_replay_executions": 0,
+    "new_strategy_trades": 0,
+    "new_strategy_nav": 0,
+    "no_strategy_performance_computed": true,
+    "pit_pilot_materialization": "NOT_RUN",
+    "pit_large_materialization": "NOT_RUN"
+  },
+  "frozen_strategy": {
+    "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "modified": false
+  },
+  "reconciliation": {
+    "latest_authoritative_result": "CORPORATE_ACTION_RESEARCH_AND_IMPLEMENTATION_RESOLVED; QD010/CY006=635/635 exact event-ID matches, 0 unmatched; QD010 remains BOUNDED_PIT_AUTHORIZED",
+    "current_research_frontier": "ACQUIRE_AND_AUTHORIZE_2017_2018_2021_DATE_EFFECTIVE_GEM_IDENTITY_LIST_OUT_ALIAS_AND_COMPLETE_RISK_WARNING_STATE",
+    "active_blockers": [
+      "No authorized date-effective 2017-04-12..2021-12-31 GEM identity, symbol-alias, listing, delisting, and non-survivor denominator exists.",
+      "QD-002 exposes only a generic BaoStock isST-derived boolean; complete ST versus *ST taxonomy and transition semantics are unproven.",
+      "QD-002 daily trade_status retains suspension-like observations, but authoritative subtype/effective-date semantics and the authorized historical identity join are incomplete."
+    ],
+    "stale_artifacts": [
+      {
+        "path": "research/chinext_v1/reports/chinext_v1_phase12b3_warmup_overlap.json",
+        "stale_claim": "635 QD-010 keys versus 634 CY-006 keys",
+        "superseded_by": "research/chinext_v1/reports/chinext_v1_corporate_action_adjudication.md",
+        "current_fact": "635/635 exact event-ID matches and 0 unmatched"
+      },
+      {
+        "path": "research/chinext_v1/reports/chinext_v1_phase12b3_input_activation_summary.json",
+        "stale_claim": "QD-001/QD-010 overlap mismatch remains an active blocker",
+        "superseded_scope": "corporate-action blocker only; its historical-state blockers remain valid"
+      }
+    ]
+  },
+  "frozen_evidence_hashes": {
+    "chinext_pit_universe_contract": "6e8b8f5b5a5b4f381181cb244306efe5eba7a24b672ebe452b8f9a894295056e",
+    "corporate_action_adjudication": "11ac623ce3f5c88a278852cc3e91b112f1b333ef2f40b299189b05ba7694ee6d",
+    "qd001_manifest": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3",
+    "qd002_manifest": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982",
+    "qd003_manifest": "d847419443b2563c1904790f986ef8980dc37d688318fadb3858b3251d84972f",
+    "qd007_discovery_root_manifest": "0510645cb6a1f44f83bcdfa0700c0cfdaa8db31691b0a1985908b03975645353",
+    "qd010_manifest": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+    "cy006_manifest": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "cy027_source_manifest": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+    "cy027_security_master": "dc8aaacbe76c6096e38c98630d632c64270a9563d466b7eb2ff5b91635ad9591",
+    "cy027_daily_membership": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+    "trade_calendar_file": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "current_security_master_file": "385b222370b26bb3d09a5c06181e26cf1b636fde8f7c50d0ed04521f7a197d50"
+  },
+  "gate_a": {
+    "decision": "BLOCKED_EXTERNAL_DATA",
+    "historical_state_authorization": "NOT_ISSUED",
+    "authorized_date_range": "NONE",
+    "authorized_symbol_scope": "NONE",
+    "gem_identity_status": "BLOCKED_NO_AUTHORIZED_DATE_EFFECTIVE_SOURCE",
+    "gem_identity_source": "NONE_AUTHORIZED_FOR_2017_2021",
+    "gem_identity_rule": "REQUIRES_TIME_QUALIFIED_BOARD_EQUALS_CHINEXT_ASSERTION; 300/301/302 PREFIXES_ARE_SANITY_CHECKS_ONLY",
+    "listing_status": "BLOCKED_NO_AUTHORIZED_LISTING_BOUNDARY_AND_ALIAS_CHAIN",
+    "delisting_status": "BLOCKED_NO_AUTHORIZED_END_BOUNDARY_SEMANTICS",
+    "non_survivor_status": "PHYSICAL_QD002_ROWS_OBSERVED_BUT_NOT_AUTHORIZED_AS_MEMBERSHIP",
+    "st_status": "PARTIAL_GENERIC_IS_ST_BOOLEAN_ONLY",
+    "star_st_status": "BLOCKED_NOT_DISTINGUISHED",
+    "suspension_status": "PARTIAL_DAILY_TRADE_STATUS_ONLY; SUBTYPE_AND_IDENTITY_AUTHORIZATION_INCOMPLETE",
+    "hash_bound_status": "EXISTING_COMPONENT_HASHES_EXACT; NO_AUTHORIZED_COMPOSITE_HISTORICAL_STATE",
+    "source_adjudication": {
+      "QD-002": {
+        "SOURCE_ID": "QD-002",
+        "RAW_LOCATION": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_state_daily",
+        "CONTENT_HASH": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982",
+        "CONTENT_HASH_SCOPE": "immutable inventory of all 5,494 registered files",
+        "FIELDS": [
+          "trade_date",
+          "symbol",
+          "trade_status",
+          "is_st",
+          "limit_pct",
+          "up_limit_price",
+          "down_limit_price",
+          "buy_blocked_open",
+          "sell_blocked_open",
+          "state_source"
+        ],
+        "DATE_RANGE": [
+          "2006-04-20",
+          "2026-08-14"
+        ],
+        "SYMBOL_SCOPE": "registered A-share daily state; prefix-screened 300/301/302 rows are diagnostics, not GEM identity",
+        "EFFECTIVE_DATE_SEMANTICS": "daily state keyed by trade_date; source maps BaoStock daily tradestatus/isST to trade_status/is_st",
+        "KNOWN_AT_OR_OBSERVATION_SEMANTICS": "available after completed state day; no record-level available_at",
+        "REVISION_HISTORY_STATUS": "supplier revision-vintage history not provided; frozen input snapshot only",
+        "NON_SURVIVOR_COVERAGE": "physical rows include symbols ending before 2021-12-31, but first/last observed rows do not prove listing/delisting boundaries",
+        "IMMUTABILITY_STATUS": "HASH_BOUND",
+        "CURRENT_AUTHORIZATION": "RESEARCH_CONDITIONAL_PIT_B",
+        "ALLOWED_USE": "tradability adapter/consistency audit and bounded execution controls only after activation gates pass",
+        "FORBIDDEN_USE": "standalone historical universe, missing-state-as-tradable, strict PIT output, or complete ST/*ST taxonomy",
+        "TARGET_DIAGNOSTIC_BY_YEAR": {
+          "2018": {
+            "rows": 176657,
+            "symbols": 739,
+            "trade_status_zero_rows": 7084,
+            "is_st_true_rows": 0
+          },
+          "2019": {
+            "rows": 186159,
+            "symbols": 791,
+            "trade_status_zero_rows": 1030,
+            "is_st_true_rows": 0
+          },
+          "2020": {
+            "rows": 202110,
+            "symbols": 898,
+            "trade_status_zero_rows": 1043,
+            "is_st_true_rows": 258
+          },
+          "2021": {
+            "rows": 238981,
+            "symbols": 1091,
+            "trade_status_zero_rows": 437,
+            "is_st_true_rows": 4204
+          }
+        }
+      },
+      "CY-027": {
+        "SOURCE_ID": "CY-027",
+        "RAW_LOCATION": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025",
+        "CONTENT_HASH": {
+          "source_manifest": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+          "security_master": "dc8aaacbe76c6096e38c98630d632c64270a9563d466b7eb2ff5b91635ad9591",
+          "daily_membership": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+        },
+        "FIELDS": [
+          "trade_date",
+          "symbol",
+          "listed_trading_days",
+          "list_date",
+          "out_date",
+          "identity_source",
+          "pit_grade"
+        ],
+        "DATE_RANGE": [
+          "2024-01-02",
+          "2025-12-31"
+        ],
+        "SYMBOL_SCOPE": "exact frozen artifact only: 1,440 master rows and 1,404 membership symbols",
+        "EFFECTIVE_DATE_SEMANTICS": "list_date <= day <= out_date over explicit exchange sessions; exact 2024-2025 artifact reconciled on five frozen dates",
+        "KNOWN_AT_OR_OBSERVATION_SEMANTICS": "supplier record-level available_at absent; source captured in 2026",
+        "REVISION_HISTORY_STATUS": "supplier revision-vintage chain absent",
+        "NON_SURVIVOR_COVERAGE": "41 out_date rows in the frozen master; claim is limited to the authorized artifact",
+        "IMMUTABILITY_STATUS": "EXACT_ARTIFACT_HASH_BOUND",
+        "CURRENT_AUTHORIZATION": "CYQ-AUTH-CHINEXT-V1-PIT-B-2024-2025-V1",
+        "ALLOWED_USE": "exact 2024-01-02..2025-12-31 ChinNext V1 bounded artifact",
+        "FORBIDDEN_USE": "other date ranges, historical backfill, vendor-level QD-007 authorization, strict PIT-A, or current-survivor fallback",
+        "WHY_NOT_EXTENDABLE": "builder starts from the current local GEM master and current BaoStock basic identity; target-range aliases can project later identities backward"
+      },
+      "QD-007": {
+        "SOURCE_ID": "QD-007",
+        "RAW_LOCATION": "/Users/linmei/Documents/CY/data/discovery/QD-007-BS-2010-2017",
+        "CONTENT_HASH": "0510645cb6a1f44f83bcdfa0700c0cfdaa8db31691b0a1985908b03975645353",
+        "CONTENT_HASH_SCOPE": "root discovery manifest only; not an authorized immutable inventory of the full directory",
+        "FIELDS": [
+          "code",
+          "tradeStatus",
+          "code_name"
+        ],
+        "DATE_RANGE": "no 2018-2021 materialization; 2017 capture starts 2017-07-03, after required warmup start, and records 68 failed dates",
+        "SYMBOL_SCOPE": "all securities returned by BaoStock query_all_stock(day); no board field",
+        "EFFECTIVE_DATE_SEMANTICS": "date-parameterized observation only; no listing/delisting or alias effective interval",
+        "KNOWN_AT_OR_OBSERVATION_SEMANTICS": "captured in 2026; no historical record-level available_at",
+        "REVISION_HISTORY_STATUS": "no supplier revision-vintage chain",
+        "NON_SURVIVOR_COVERAGE": "not proven for target interval",
+        "IMMUTABILITY_STATUS": "individual discovery captures have hashes, but registry declares no immutable authorized materialization",
+        "CURRENT_AUTHORIZATION": "DISCOVERY_ONLY",
+        "ALLOWED_USE": "bounded probes and adapter/schema discovery",
+        "FORBIDDEN_USE": "universe construction, survivorship claims, states, signals, or backtests"
+      }
+    },
+    "representative_state_evidence": {
+      "identity_alias_counterexample": {
+        "symbols_in_current_master": [
+          "300132",
+          "302132"
+        ],
+        "both_currently_labeled": "GEM",
+        "repository_fail_closed_boundary": "302132.SZ is historically invalid before 2025-02-17",
+        "consequence": "current GEM identity cannot be projected backward to 2018-2021"
+      },
+      "non_survivor_physical_examples_not_membership_authority": [
+        {
+          "symbol": "300362",
+          "last_qd002_date": "2021-08-30"
+        },
+        {
+          "symbol": "300431",
+          "last_qd002_date": "2020-11-10"
+        },
+        {
+          "symbol": "300028",
+          "last_qd002_date": "2020-08-03"
+        }
+      ],
+      "generic_is_st_examples": [
+        {
+          "symbol": "300029",
+          "first_true_date": "2020-09-15"
+        },
+        {
+          "symbol": "300367",
+          "first_true_date": "2020-09-15"
+        },
+        {
+          "symbol": "300446",
+          "first_true_date": "2020-09-15"
+        }
+      ],
+      "evidence_limit": "examples prove physical retention only; they do not authorize GEM identity, list/out boundaries, or ST versus *ST classification"
+    }
+  },
+  "gate_b": {
+    "decision": "BLOCKED_EXTERNAL_DATA",
+    "earliest_formal_decision_date": "2018-01-02",
+    "max_lookback_required": 180,
+    "max_lookback_formula": "max(min_completed_observations=180, contiguous history=121, B60=61, FULL40=40, MINVOL=31, breakout-volume=21, RS120=120, MA windows)=180 completed sessions",
+    "calendar_sessions_required": 180,
+    "actual_warmup_start_required": "2017-04-12",
+    "actual_warmup_end": "2017-12-29",
+    "warmup_price_status": "SOURCE_PRESENT_HASH_BOUND_PARTIAL; 120642 PREFIX_DIAGNOSTIC_ROWS, 5 VOLUME_OR_AMOUNT_NULL_ROWS FAIL_CLOSED, AUTHORIZED_IDENTITY_DENOMINATOR_MISSING",
+    "warmup_corporate_action_status": "PASS_BOUNDED_PIT_AUTHORIZED; QD-010 COVERS FROM 2017-04-12 AND CURRENT ADJUDICATION SUPERSEDES STALE OVERLAP MISMATCH",
+    "warmup_state_status": "BLOCKED_EXTERNAL_DATA; QD-002 HAS DAILY GENERIC STATE BUT COMPLETE TAXONOMY/IDENTITY JOIN IS UNAUTHORIZED",
+    "warmup_calendar_status": "PASS; EXACTLY_180_EXCHANGE_SESSIONS_FROM_2017-04-12_THROUGH_2017-12-29",
+    "warmup_identity_status": "BLOCKED_EXTERNAL_DATA; QD-007 STARTS_2017-07-03_AND_HAS_NO_BOARD_FIELD",
+    "warmup_non_survivor_status": "BLOCKED_EXTERNAL_DATA; PHYSICAL_ROWS_DO_NOT_ESTABLISH_AUTHORIZED_DENOMINATOR",
+    "prefix_diagnostic": {
+      "warning": "300/301/302 prefix is not a membership rule",
+      "qd001": {
+        "rows": 120642,
+        "symbols": 711,
+        "ohlc_null_rows": 0,
+        "volume_or_amount_null_rows": 5,
+        "null_example_symbol": "300372",
+        "null_example_dates": [
+          "2017-04-21",
+          "2017-04-24",
+          "2017-04-25",
+          "2017-05-19",
+          "2017-08-28"
+        ]
+      },
+      "qd002": {
+        "rows": 120642,
+        "symbols": 711,
+        "trade_status_zero_rows": 9321,
+        "is_st_true_rows": 0,
+        "required_null_rows": 0
+      }
+    }
+  },
+  "gate_c": {
+    "decision": "NOT_AUTHORIZED",
+    "entry_condition": "GATE_A=PASS AND GATE_B=PASS AND CORPORATE_ACTION=RESOLVED",
+    "pilot_spec": "NOT_CREATED",
+    "pilot_result": "NOT_RUN",
+    "pilot_failures": "NOT_APPLICABLE_PREREQUISITE_GATE_BLOCKED"
+  },
+  "gate_d": {
+    "decision": "NOT_AUTHORIZED",
+    "entry_condition": "GATE_C=PASS",
+    "metrics": {
+      "TRADING_DATES_VALIDATED": "NOT_RUN",
+      "SYMBOLS_EVER_SEEN": "NOT_RUN",
+      "NON_SURVIVORS_RETAINED": "NOT_RUN",
+      "NEW_LISTINGS_CAPTURED": "NOT_RUN",
+      "DELISTINGS_CAPTURED": "NOT_RUN",
+      "ST_INTERVALS_CAPTURED": "NOT_RUN",
+      "STAR_ST_INTERVALS_CAPTURED": "NOT_RUN",
+      "SUSPENSION_INTERVALS_CAPTURED": "NOT_RUN",
+      "STATE_UNKNOWN_COUNT": "NOT_RUN",
+      "STATE_CONFLICT_COUNT": "NOT_RUN",
+      "HASH_FAILURE_COUNT": "NOT_RUN",
+      "DUPLICATE_STATE_COUNT": "NOT_RUN",
+      "CALENDAR_MISMATCH_COUNT": "NOT_RUN",
+      "CORPORATE_ACTION_FAILURE_COUNT": "NOT_RUN",
+      "DETERMINISM_MISMATCH_COUNT": "NOT_RUN"
+    }
+  },
+  "exact_missing_data_contract": [
+    {
+      "CONTRACT_ID": "CHINEXT-V1-MISSING-HISTORICAL-IDENTITY-LISTOUT-ALIAS-V1",
+      "MISSING_STATE_DIMENSION": "security identity, date-effective GEM membership, symbol aliases/code changes, listing, delisting, non-survivor denominator",
+      "REQUIRED_DATASET_CLASS": "AUTHORIZED_DATE_EFFECTIVE_HISTORICAL_SECURITY_MASTER_OR_COMPLETE_EXCHANGE_SNAPSHOTS",
+      "REQUIRED_FIELDS": [
+        "stable_security_or_issuer_id",
+        "trading_symbol",
+        "exchange",
+        "board_or_market_segment",
+        "identity_effective_from",
+        "identity_effective_end_exclusive",
+        "symbol_alias_or_predecessor_successor_id",
+        "alias_effective_from",
+        "alias_effective_end_exclusive",
+        "list_date",
+        "first_listed_exchange_session_or_normalization_rule",
+        "delist_or_membership_end_date",
+        "end_date_is_last_eligible_or_first_ineligible",
+        "source_record_id",
+        "known_at_or_snapshot_observed_at",
+        "snapshot_id_or_revision_id"
+      ],
+      "DATE_RANGE": [
+        "2017-04-12",
+        "2021-12-31"
+      ],
+      "SYMBOL_SCOPE": "every security ever classified as SZSE GEM/ChinNext at any time in range, including new listings, delisted/non-survivors, renamed securities, and predecessor/successor codes",
+      "EFFECTIVE_DATE_SEMANTICS": "exchange-session-effective intervals; adapter must explicitly normalize whether each raw end date is last eligible or first ineligible",
+      "KNOWN_AT_SEMANTICS": "record or complete snapshot must be observable no later than decision_at; later current board/name facts cannot backfill earlier dates",
+      "REVISION_LINEAGE_REQUIREMENT": "immutable archival snapshots for every required effective date or a complete revision chain that reconstructs the value known at each decision_at; bounded PIT-B limitations must be explicit",
+      "NON_SURVIVOR_REQUIREMENT": "today's absence cannot remove a historical member; the denominator must retain all target-range non-survivors and their final eligible boundary",
+      "IMMUTABILITY_REQUIREMENT": "all raw files, request parameters, schema/codebook versions, adapter version, and output manifest must be SHA-256 bound and reject drift",
+      "WHY_EXISTING_ASSETS_FAIL": [
+        "QD-002 has daily state rows but no board assertion, alias chain, or authoritative list/out boundary.",
+        "QD-007 is DISCOVERY_ONLY, has no 2018-2021 materialization, begins 2017 coverage after the required warmup start, and has no board field.",
+        "CY-027 is authorized only for its exact 2024-2025 artifact and starts from a current GEM master/current BaoStock basic snapshot.",
+        "The current master labels both 300132 and 302132 as GEM while repository logic rejects 302132.SZ before 2025-02-17, proving backward projection unsafe.",
+        "First/last QD-001 or QD-002 observations cannot be interpreted as official listing/delisting boundaries."
+      ],
+      "WHAT_EXACTLY_MUST_BE_ACQUIRED": "one authorized, source-lineage-bound historical security master/event feed or complete dated exchange snapshots satisfying every required field and covering the full warmup plus target interval; no provider is preselected by this assessment",
+      "ACCEPTANCE_TEST": [
+        "hash inventory and schema/codebook identity verify exactly before use",
+        "all 180 warmup and 973 target exchange sessions are covered without an unexplained snapshot gap",
+        "one canonical row per stable security/effective interval; duplicate or conflicting identities fail closed",
+        "302132.SZ is not projected into dates before its proven code-effective boundary and its historical predecessor identity is resolved",
+        "representative early member, later listing, non-survivor, and delisting cases pass before/on/after boundary checks",
+        "two deterministic builds produce byte- or canonical-content-identical output",
+        "current-survivor and ticker-prefix fallbacks remain disabled"
+      ]
+    },
+    {
+      "CONTRACT_ID": "CHINEXT-V1-MISSING-RISK-WARNING-SUSPENSION-SEMANTICS-V1",
+      "MISSING_STATE_DIMENSION": "normal/ST/*ST/other required risk-warning transitions and source-defined suspension classification",
+      "REQUIRED_DATASET_CLASS": "AUTHORIZED_HISTORICAL_RISK_WARNING_AND_TRADABILITY_EVENT_OR_DAILY_STATE_WITH_AUTHORITATIVE_CODEBOOK",
+      "REQUIRED_FIELDS": [
+        "stable_security_id",
+        "trading_symbol",
+        "state_type_normal_st_star_st_other",
+        "announcement_at_if_applicable",
+        "known_at",
+        "effective_start_trading_date",
+        "effective_end_exclusive_or_removal_date",
+        "trade_status",
+        "suspension_type_full_day_intraday_temporary_other",
+        "suspension_effective_start",
+        "suspension_effective_end",
+        "source_record_id",
+        "snapshot_id_or_revision_id",
+        "source_codebook_version"
+      ],
+      "DATE_RANGE": [
+        "2017-04-12",
+        "2021-12-31"
+      ],
+      "SYMBOL_SCOPE": "the complete authorized historical GEM denominator, including non-survivors and code aliases",
+      "EFFECTIVE_DATE_SEMANTICS": "state changes apply only from the source-defined effective trading boundary; announcement, known, effective, and removal dates must not be conflated",
+      "KNOWN_AT_SEMANTICS": "known_at <= decision_at; date-only announcements require a documented conservative availability rule",
+      "REVISION_LINEAGE_REQUIREMENT": "retain supplier revision/vintage identity or explicitly bounded frozen-snapshot limitations; unknown or revised periods fail closed",
+      "NON_SURVIVOR_REQUIREMENT": "state history continues through the final eligible interval for delisted/non-survivor securities",
+      "IMMUTABILITY_REQUIREMENT": "raw state/event files and the authoritative field codebook are hash-bound; adapter rejects unsupported values and source drift",
+      "WHY_EXISTING_ASSETS_FAIL": [
+        "QD-002 is_st is a generic BaoStock isST-derived boolean and does not distinguish is_st from is_star_st or prove complete warning-category coverage.",
+        "QD-002 trade_status supplies daily provider state but no inspected contract proves full-day/intraday/temporary subtype semantics or historical rule revisions.",
+        "CY-006 cannot create the missing historical identity denominator and begins at 2018-01-01, after the required warmup start.",
+        "QD-007 query_all_stock exposes tradeStatus only, remains DISCOVERY_ONLY, and cannot authorize states."
+      ],
+      "WHAT_EXACTLY_MUST_BE_ACQUIRED": "an authorized historical risk-warning/status feed plus its authoritative field codebook and revision evidence; QD-002 may remain a supplemental daily cross-check only where the acquired contract proves equivalent semantics",
+      "ACCEPTANCE_TEST": [
+        "normal-to-ST, ST-to-*ST, and risk-warning-removal boundaries are proven where source coverage contains such transitions",
+        "ST and *ST remain distinct canonical states; an ambiguous generic boolean cannot populate either by guess",
+        "source-defined full-day suspension is distinguished from unsupported intraday/temporary states",
+        "missing bar and zero volume never create a suspension fact",
+        "every required state joins one-to-one to the authorized identity denominator; missing/conflicting rows fail closed",
+        "known_at/effective boundary tests reject future visibility",
+        "hash mutation, unknown category, duplicate state, and source conflict tests all reject deterministically"
+      ]
+    }
+  ],
+  "final_decision": {
+    "active_primary_blocker": "CHINEXT-V1-MISSING-HISTORICAL-IDENTITY-LISTOUT-ALIAS-V1",
+    "active_secondary_blockers": [
+      "CHINEXT-V1-MISSING-RISK-WARNING-SUSPENSION-SEMANTICS-V1",
+      "complete 2017 warmup identity/state/non-survivor compatibility depends on the same acquisitions"
+    ],
+    "safe_to_run_extended_history_strategy_replay": "NO",
+    "next_research_frontier": "AUTHORIZED_EXTERNAL_CAUSAL_INPUT_ACQUISITION_AND_BOUNDED_REGISTRATION",
+    "next_direction": "Acquire exactly the two contracted historical identity/state inputs, bind them immutably, then reuse the existing minimal universe/state path for Gate A/B correctness; only after both pass may a preregistered Gate C pilot be created."
+  }
+}
