@@ -1,0 +1,374 @@
+{
+  "authorization": {
+    "authorization_class": "BOUNDED_EFFECTIVE_STATE_PIT_B",
+    "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-FREE-2017-2021-V1",
+    "authorized_date_range": [
+      "2017-04-12",
+      "2021-12-31"
+    ],
+    "current_survivor_fallback": false,
+    "record_level_available_at_available": false,
+    "revision_history_complete": false,
+    "strict_pit_a": false
+  },
+  "canonical_result": {
+    "encoding": "UTF-8",
+    "format": "JSON",
+    "json_options": {
+      "ensure_ascii": false,
+      "indent": 2,
+      "sort_keys": true,
+      "terminal_newline": true
+    },
+    "required_rebuilds": 2,
+    "required_result": "PASS_BYTE_IDENTICAL"
+  },
+  "execution_firewall": {
+    "formal_strategy_replay": false,
+    "nav_generation": false,
+    "performance_metrics": false,
+    "strategy_modification": false,
+    "strategy_signals": false,
+    "trades": false
+  },
+  "frozen_at": "2026-08-30",
+  "frozen_invariants": [
+    {
+      "category": "universe_identity",
+      "invariant_id": "C-IDENTITY-001",
+      "requirement": "The six frozen historical denominator samples have six distinct sorted-code-set hashes; a current universe must not be projected backward."
+    },
+    {
+      "category": "universe_identity",
+      "invariant_id": "C-IDENTITY-002",
+      "requirement": "A future listing is absent before its authorized listing boundary and first appears with listed_trading_days=1."
+    },
+    {
+      "category": "universe_identity",
+      "invariant_id": "C-IDENTITY-003",
+      "requirement": "A delisted historical non-survivor remains present through the frozen inclusive out-date boundary and is absent on the following session."
+    },
+    {
+      "category": "universe_identity",
+      "invariant_id": "C-IDENTITY-004",
+      "requirement": "All 40 historical non-survivor identities remain in the bounded security master; no current-survivor filter is permitted."
+    },
+    {
+      "category": "universe_identity",
+      "invariant_id": "C-IDENTITY-005",
+      "requirement": "Official alias normalization is data-driven: 302132.SZ is absent from authorized target-period rows, 300114.SZ is retained, and CY-006/QD-001 rows projected under current code 302132.SZ map to canonical 300114.SZ only before the official 2025-02-17 boundary."
+    },
+    {
+      "category": "risk_warning",
+      "invariant_id": "C-STATE-001",
+      "requirement": "NORMAL to ST and NORMAL to STAR_ST transitions match the hash-bound official effective dates; subtype ambiguity or unregistered evidence fails closed."
+    },
+    {
+      "category": "risk_warning",
+      "invariant_id": "C-STATE-002",
+      "requirement": "The 300795.SZ 2022-04-12 removal is validation-only and must not extend the authorized input range beyond 2021-12-31."
+    },
+    {
+      "category": "known_at",
+      "invariant_id": "C-KNOWN-AT-001",
+      "requirement": "Every retrospective combined daily state row has earliest_safe_use_date strictly after trade_date; official risk-warning events retain their explicit publication and effective dates."
+    },
+    {
+      "category": "suspension",
+      "invariant_id": "C-SUSPENSION-001",
+      "requirement": "Only full-session daily suspension is authorized; 300198.SZ has the exact frozen 93-session date set and intraday/temporary subtype stays unauthorized."
+    },
+    {
+      "category": "warmup",
+      "invariant_id": "C-WARMUP-001",
+      "requirement": "The five QD-001 warmup NULL volume/amount rows for 300372.SZ remain legitimate full-session suspensions; no synthetic price, flow, volume, or amount is created."
+    },
+    {
+      "category": "corporate_action",
+      "invariant_id": "C-CA-001",
+      "requirement": "A corporate action may rebase prior history only when known_at <= decision_date and effective_date <= decision_date."
+    },
+    {
+      "category": "corporate_action",
+      "invariant_id": "C-CA-002",
+      "requirement": "At the effective-date boundary, prior history is rebased before the same-day raw bar is appended; the same-day raw OHLCV row is not itself rebased."
+    },
+    {
+      "category": "corporate_action",
+      "invariant_id": "C-CA-003",
+      "requirement": "Rights participation and unsupported, future, ambiguous, duplicate, late, incomplete, or conflicting event semantics fail closed."
+    },
+    {
+      "category": "authorization",
+      "invariant_id": "C-AUTH-001",
+      "requirement": "Any hash mismatch, missing registered source, wrong authorization class, current-survivor fallback, or out-of-range request fails closed."
+    },
+    {
+      "category": "determinism",
+      "invariant_id": "C-DETERMINISM-001",
+      "requirement": "Two executions against the same committed spec and exact frozen inputs produce byte-identical canonical result bytes."
+    }
+  ],
+  "gate": "C",
+  "input_bindings": {
+    "corporate_action_adapter": {
+      "path": "research/chinext_v1/scripts/chinext_v1_qd001_causal_adapter.py",
+      "sha256": "2015313b4e3f78390aaeb6eadbc59393282f06d8bc62e63794d05bbb511297c6"
+    },
+    "corporate_action_adjudication": {
+      "path": "research/chinext_v1/reports/chinext_v1_corporate_action_adjudication.md",
+      "sha256": "11ac623ce3f5c88a278852cc3e91b112f1b333ef2f40b299189b05ba7694ee6d"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_partitions": [
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+      }
+    ],
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "frozen_strategy_reference": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "gate_ab_summary": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_ab_closure_summary.json",
+      "sha256": "b86b2cb09827d30ae4bc7bf3b6fcbb665da88c708eba9956bead3736518c26b1"
+    },
+    "historical_state_builder": {
+      "path": "research/chinext_v1/scripts/build_chinext_v1_free_historical_state.py",
+      "sha256": "7df24e4f892dbafaad9487e26c9903d9f7dc8bfd656963838240b30e1c6221e1"
+    },
+    "historical_state_daily": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+      "rows": 924549,
+      "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+    },
+    "historical_state_manifest": {
+      "path": "research/chinext_v1/reports/chinext_v1_free_historical_state_manifest.json",
+      "sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61"
+    },
+    "historical_state_security_master": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+      "rows": 1098,
+      "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+    },
+    "official_document_index": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/raw/official_documents_index.json",
+      "sha256": "92b594501b37f8850b6d7faf0d0b329b8f74e8b07fc46286741f474cae1600d4"
+    },
+    "official_events": {
+      "path": "research/chinext_v1/specs/chinext_v1_free_historical_state_official_events.json",
+      "sha256": "e9d0c128f1e4b8ba245ccd3f048b9f7cfd2a29bb8512d9cba66bf30711cc8906"
+    },
+    "qd001_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-001-none-20260820.json",
+      "sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3"
+    },
+    "qd003_calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "qd003_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-003-20260820.json",
+      "sha256": "d847419443b2563c1904790f986ef8980dc37d688318fadb3858b3251d84972f"
+    },
+    "qd010_distributions": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+    },
+    "qd010_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "qd010_rights": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+    },
+    "qd010_source_manifest": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+      "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+    }
+  },
+  "pass_rule": {
+    "authorization_violation_count": 0,
+    "determinism_mismatch_count": 0,
+    "hash_failure_count": 0,
+    "intentional_fail_closed_checks_must_raise": true,
+    "required_invariant_mismatch_count": 0,
+    "required_unknown_state_count": 0
+  },
+  "pilot_scope": {
+    "formal_replay_end": "2021-12-31",
+    "formal_replay_start": "2018-01-02",
+    "historical_state_end": "2021-12-31",
+    "historical_state_start": "2017-04-12",
+    "warmup_end": "2017-12-29",
+    "warmup_start": "2017-04-12"
+  },
+  "repository_start": {
+    "branch": "research/chinext-v1",
+    "head": "7ff9996864bb1e7049f98554f7a272717ad68397",
+    "toplevel": "/Users/linmei/Documents/CY-supermind-v6",
+    "worktree_clean": true
+  },
+  "sample_design": {
+    "cases": [
+      {
+        "case_id": "C-CASE-ORDINARY-CONTINUING",
+        "dates": [
+          "2017-12-29",
+          "2018-01-02",
+          "2019-01-02",
+          "2020-01-02",
+          "2021-01-04"
+        ],
+        "expected_full_day_suspended": false,
+        "expected_risk_warning_type": "NORMAL",
+        "expected_trade_status": "1",
+        "symbol": "300001.SZ"
+      },
+      {
+        "absent_date": "2020-01-08",
+        "case_id": "C-CASE-NEW-LISTING",
+        "expected_first_listed_trading_days": 1,
+        "first_present_date": "2020-01-09",
+        "symbol": "300812.SZ"
+      },
+      {
+        "absent_date": "2020-08-04",
+        "case_id": "C-CASE-DELISTING-NON-SURVIVOR",
+        "expected_identity_status": "HISTORICAL_NON_SURVIVOR",
+        "last_present_date": "2020-08-03",
+        "symbol": "300028.SZ"
+      },
+      {
+        "case_id": "C-CASE-NON-SURVIVOR-RETENTION",
+        "expected_total_count": 40,
+        "required_symbols": [
+          "300028.SZ",
+          "300362.SZ",
+          "300431.SZ"
+        ]
+      },
+      {
+        "before": {
+          "date": "2020-09-14",
+          "risk_warning_type": "NORMAL"
+        },
+        "case_id": "C-CASE-ST",
+        "effective": {
+          "date": "2020-09-15",
+          "risk_warning_type": "ST"
+        },
+        "symbol": "300029.SZ"
+      },
+      {
+        "before": {
+          "date": "2021-04-27",
+          "risk_warning_type": "NORMAL"
+        },
+        "case_id": "C-CASE-STAR-ST",
+        "effective": {
+          "date": "2021-04-28",
+          "risk_warning_type": "STAR_ST"
+        },
+        "symbol": "300795.SZ"
+      },
+      {
+        "authorization": "OUT_OF_RANGE_REMOVAL_POSITIVE_CONTROL_ONLY",
+        "case_id": "C-CASE-RISK-WARNING-REMOVAL",
+        "effective_date": "2022-04-12",
+        "publication_date": "2022-04-09",
+        "source_document_sha256": "36671fcac5c4d9b2039a7652136b1854c0620d1645e96204264af67d9ee5b6ba",
+        "symbol": "300795.SZ"
+      },
+      {
+        "case_id": "C-CASE-FULL-SESSION-SUSPENSION",
+        "date_range": [
+          "2017-04-20",
+          "2017-08-31"
+        ],
+        "expected_count": 93,
+        "expected_sorted_yyyymmdd_sha256": "0dfbbd52889738b0ee0d882199ef87b20b2ef212171bb0c099cd5873aeb211c7",
+        "symbol": "300198.SZ"
+      },
+      {
+        "case_id": "C-CASE-ALIAS-NORMALIZATION",
+        "cy006_projected_source_symbol": "302132.SZ",
+        "effective_date": "2025-02-17",
+        "expected_authorized_new_code_rows": 0,
+        "expected_authorized_old_code_rows": 1153,
+        "expected_cy006_target_rows_mapped": 973,
+        "new_code": "302132.SZ",
+        "old_code": "300114.SZ",
+        "source_document_sha256": "dd68049c48df826848f361fd9e7b23dd20b6805144a2e5bc36e54db638611488"
+      },
+      {
+        "case_id": "C-CASE-WARMUP-SUSPENSION-NULLS",
+        "dates": [
+          "2017-04-21",
+          "2017-04-24",
+          "2017-04-25",
+          "2017-05-19",
+          "2017-08-28"
+        ],
+        "expected_amount_raw": "",
+        "expected_full_day_suspended": true,
+        "expected_trade_status": "0",
+        "expected_volume_raw": "",
+        "symbol": "300372.SZ"
+      },
+      {
+        "case_id": "C-CASE-CORPORATE-ACTION-BOUNDARY",
+        "cash_per_share_gross": 0.05,
+        "effective_date": "2018-05-16",
+        "event_id": "cninfo:distribution:deba827b250b20ed90d13a29e20ff7ee",
+        "event_type": "cash_dividend",
+        "expected_canonical_symbol": "300114.SZ",
+        "known_at": "2018-05-10",
+        "physical_source_symbol": "302132.SZ",
+        "share_multiplier": 1.0
+      },
+      {
+        "case_id": "C-CASE-UNSUPPORTED-RIGHTS",
+        "effective_date": "2018-02-09",
+        "event_id": "cninfo:rights:e7d7411609e1e50fdc319a34940d49d2",
+        "expected_result": "FAIL_CLOSED_RIGHTS_PARTICIPATION_UNRESOLVED",
+        "known_at": "2018-01-27",
+        "rights_subscription_price": 3.56,
+        "rights_subscription_ratio": 0.2,
+        "symbol": "300110.SZ"
+      }
+    ],
+    "selection_rule": "Cases are frozen from source semantics and existing Gate A/B positive controls only. No strategy signal, trade, NAV, return, winner/loser identity, or profitability was inspected or used. Ordinary control is the lexicographically first long-lived authorized symbol verified NORMAL and trading on each frozen year-region date; boundary controls are the repository-frozen real listing, delisting, risk-warning, suspension, alias, warmup, and corporate-action cases.",
+    "time_regions": [
+      "2017_WARMUP",
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+    ]
+  },
+  "spec_id": "CHINEXT-V1-GATE-C-BOUNDED-CORRECTNESS-PILOT-V1",
+  "spec_version": 1,
+  "status": "FROZEN_BEFORE_PILOT_EXECUTION"
+}
