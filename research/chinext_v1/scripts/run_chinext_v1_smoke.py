@@ -52,6 +52,7 @@ from chinext_v1_ablation import (  # noqa: E402
     price_structure_for_arm,
     rank_candidates_for_arm,
 )
+from chinext_v1_phase4 import select_with_capacity_envelope  # noqa: E402
 
 SURVIVOR_WARNING = (
     "CURRENT SURVIVOR UNIVERSE / NOT POINT-IN-TIME / SURVIVORSHIP BIASED / "
@@ -408,6 +409,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
     ablation_policy = policy_for(getattr(args, "ablation_arm", "A0_BASELINE"))
+    capacity_envelope = getattr(args, "capacity_envelope", None)
+    capacity_identity = getattr(args, "capacity_envelope_identity", None)
     pit_membership_path = getattr(args, "pit_membership", None)
     pit_mode = pit_membership_path is not None
     if pit_mode:
@@ -437,6 +440,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     simulation_sessions = [day for day in sessions if args.start <= day <= args.end]
     if not simulation_sessions:
         raise ValueError("explicit trade calendar has no sessions in smoke range")
+    if capacity_envelope is not None:
+        if set(capacity_envelope) != set(simulation_sessions):
+            missing = sorted(set(simulation_sessions) - set(capacity_envelope))
+            extra = sorted(set(capacity_envelope) - set(simulation_sessions))
+            raise ValueError(
+                f"capacity envelope/session coverage mismatch; missing={missing[:5]}, extra={extra[:5]}"
+            )
+        if any(not 0 <= int(value) <= config.max_holdings for value in capacity_envelope.values()):
+            raise ValueError("capacity envelope value outside frozen portfolio bounds")
     if pit_mode and set(pit_membership) != set(simulation_sessions):
         missing = sorted(set(simulation_sessions) - set(pit_membership))
         extra = sorted(set(pit_membership) - set(simulation_sessions))
@@ -793,6 +805,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             market_state = {"valid": False, "entry_permission": False, "normal_exit": False, "emergency_exit": False}
             counts["market_missing_days"] += 1
 
+        daily_capacity = (
+            config.max_holdings
+            if capacity_envelope is None
+            else int(capacity_envelope[day])
+        )
+
         exit_reason_parts: list[str] = []
         if market_state["normal_exit"]:
             exit_reason_parts.append("MARKET_MA20_X2")
@@ -865,14 +883,26 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 market_state, ablation_policy
             )
             if entry_allowed:
-                desired = select_no_replacement_members(
-                    planned_members, forced_exits, ranked, config
-                )
+                if capacity_envelope is None:
+                    desired = select_no_replacement_members(
+                        planned_members, forced_exits, ranked, config
+                    )
+                else:
+                    desired = select_with_capacity_envelope(
+                        planned_members, forced_exits, ranked, daily_capacity
+                    )
             else:
                 desired = select_no_replacement_members(
                     planned_members, forced_exits, [], config
                 )
             membership_reason = "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"
+
+        if capacity_envelope is not None and len(desired) > daily_capacity:
+            counts["capacity_survivor_overflow_days"] += 1
+            counts["capacity_survivor_overflow_total"] += len(desired) - daily_capacity
+            counts["capacity_survivor_overflow_max"] = max(
+                counts["capacity_survivor_overflow_max"], len(desired) - daily_capacity
+            )
 
         if set_change_required(planned_members, desired):
             previous = planned_members
@@ -913,21 +943,27 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             value += market_value
             invested += market_value
         counts["stale_held_valuations"] += stale
-        daily_nav.append(
-            {
-                "trade_date": day,
-                "nav": value,
-                "cash": cash,
-                "holdings": len(positions),
-                "invested_ratio": 0.0 if value <= 0 else invested / value,
-                "pending_orders": len(pending),
-                "planned_members": len(planned_members),
-                "market_entry_permission": market_state["entry_permission"],
-                "market_normal_exit": market_state["normal_exit"],
-                "market_emergency_exit": market_state["emergency_exit"],
-                "basic_eligible": len(basic_eligible),
-            }
-        )
+        nav_row = {
+            "trade_date": day,
+            "nav": value,
+            "cash": cash,
+            "holdings": len(positions),
+            "invested_ratio": 0.0 if value <= 0 else invested / value,
+            "pending_orders": len(pending),
+            "planned_members": len(planned_members),
+            "market_entry_permission": market_state["entry_permission"],
+            "market_normal_exit": market_state["normal_exit"],
+            "market_emergency_exit": market_state["emergency_exit"],
+            "basic_eligible": len(basic_eligible),
+        }
+        if capacity_envelope is not None:
+            nav_row.update(
+                {
+                    "allowed_target_member_count": daily_capacity,
+                    "target_member_overflow": max(0, len(planned_members) - daily_capacity),
+                }
+            )
+        daily_nav.append(nav_row)
 
     if action_blocked_held:
         raise RuntimeError(
@@ -1098,6 +1134,19 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "daily_nav_sha256": sha256_file(nav_path),
         },
     }
+    if capacity_envelope is not None:
+        summary["phase4_capacity_envelope"] = {
+            "active": True,
+            "identity": capacity_identity,
+            "application": "ENTRY_SLOT_CEILING_WITH_STICKY_SURVIVORS",
+            "average_allowed_target_member_count": fmean(
+                row["allowed_target_member_count"] for row in daily_nav
+            ),
+            "average_planned_member_count": fmean(row["planned_members"] for row in daily_nav),
+            "survivor_overflow_days": counts["capacity_survivor_overflow_days"],
+            "survivor_overflow_total_slots": counts["capacity_survivor_overflow_total"],
+            "max_survivor_overflow_slots": counts["capacity_survivor_overflow_max"],
+        }
     write_json(args.summary, summary)
     write_report(args.report, summary)
     return summary
