@@ -1,0 +1,97 @@
+{
+  "calendar_sessions": 243,
+  "candidate_pass_daily_proxy": false,
+  "critical_bar_coverage": {
+    "exact_1m_final_candidates": 61,
+    "final_candidate_symbols": 63,
+    "five_minute_fallback_symbols": [
+      "600810.SH",
+      "600847.SH"
+    ],
+    "no_fill_events": 0
+  },
+  "event_counts": {
+    "BUY_FILLED": 64,
+    "BUY_SIGNAL": 64,
+    "REBALANCE_FILLED": 78,
+    "SELL_FILLED": 64,
+    "TAIL_SELL_SIGNAL": 64
+  },
+  "execution": "QMT critical bars with fail-closed availability; exact SuperMind matching unverified",
+  "experiment": "V6_MAINBOARD_CURRENT_SURVIVOR_COUNTERFACTUAL",
+  "forward_quality": {
+    "fwd_10d": {
+      "mean": 0.0007094494498636289,
+      "median": -0.009048657097026291,
+      "n": 59,
+      "p10": -0.06616390145801909,
+      "p90": 0.0731026851067338,
+      "win_rate": 0.4406779661016949
+    },
+    "fwd_20d": {
+      "mean": -0.0016756945580650687,
+      "median": -0.022934882650713362,
+      "n": 54,
+      "p10": -0.1257076355647298,
+      "p90": 0.08138027762585283,
+      "win_rate": 0.37037037037037035
+    },
+    "fwd_5d": {
+      "mean": -0.01369813124776476,
+      "median": -0.0219780219780219,
+      "n": 59,
+      "p10": -0.08311208659473938,
+      "p90": 0.049161924065486494,
+      "win_rate": 0.3559322033898305
+    },
+    "fwd_60d": {
+      "mean": -0.00811342359372819,
+      "median": -0.028301886792452935,
+      "n": 53,
+      "p10": -0.21613903413536145,
+      "p90": 0.20742881722275106,
+      "win_rate": 0.4339622641509434
+    },
+    "mae_20d": {
+      "mean": -0.08474926021700135,
+      "median": -0.07131588615391271,
+      "n": 59,
+      "p10": -0.1683331960574362,
+      "p90": -0.01772769751335474,
+      "win_rate": 0.03389830508474576
+    },
+    "mfe_20d": {
+      "mean": 0.10535154283093219,
+      "median": 0.054747548966640025,
+      "n": 59,
+      "p10": -0.011759668902526041,
+      "p90": 0.23636585930013543,
+      "win_rate": 0.847457627118644
+    }
+  },
+  "generated_at": "2026-08-28T23:28:08.784452+08:00",
+  "limitations": [
+    "current-survivor universe is not historical point-in-time and has survivorship bias",
+    "stock limit-up/down, lot size, fees, slippage, partial fills, and cash are not simulated",
+    "QMT front adjustment is not proven equivalent to SuperMind fq=pre",
+    "order_target return semantics are simplified to full fill or fail-closed no-fill",
+    "600810.SH, 600847.SH exact 1m history was unavailable; their open/final-close references use QMT 5m bars and 14:57 uses the 15:00 5m-bar open as an approximation"
+  ],
+  "price_basis": "QMT front-adjusted; SuperMind fq=pre equivalence unverified",
+  "roundtrip_holding_pnl": {
+    "mean": 0.018682498074931463,
+    "median": -0.009638278297882275,
+    "n": 64,
+    "p10": -0.08388590868581622,
+    "p90": 0.10790292864156792,
+    "win_rate": 0.359375
+  },
+  "status": "EXPLORATORY_NON_PIT",
+  "strategy_source_sha256": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+  "unique_bought_symbols": 63,
+  "universe_count": 3191,
+  "universe_definition": "current-listed SH 600/601/603/605 and SZ 000/001/002/003 main-board stocks",
+  "universe_point_in_time": false,
+  "window_end": "2026-08-28",
+  "window_start": "2025-08-28"
+}

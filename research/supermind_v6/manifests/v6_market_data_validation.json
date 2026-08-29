@@ -1,0 +1,2374 @@
+{
+  "checks": {
+    "daily": "PASS",
+    "daily_minute_price_basis": "PASS",
+    "minute_critical_recent_window": "PASS",
+    "minute_full_history": "FAIL",
+    "no_forward_fill": "PASS",
+    "opening_auction": "UNVERIFIED",
+    "point_in_time_listing_gate": "PASS",
+    "security_master": "PASS",
+    "supermind_pre_adjustment_equivalence": "UNVERIFIED",
+    "trade_calendar": "PASS",
+    "turnover_amount_cny": "PASS",
+    "universe": "PASS"
+  },
+  "failures": [
+    "HISTORICAL_MINUTE_COVERAGE_INCOMPLETE:144",
+    "MISSING_CRITICAL_BAR:OPEN_BAR_09_30:175",
+    "OPEN_AUCTION_EXACT_REPLICATION_UNVERIFIED",
+    "SUPERMIND_PRE_ADJUSTMENT_EQUIVALENCE_UNVERIFIED"
+  ],
+  "manifest_path": "research/supermind_v6/manifests/v6_market_data_manifest.json",
+  "manifest_sha256_before_validation_update": "2b55161a51c31972f4b4ef9bfe767fb3401b14317878ea8b70542cc42be619df",
+  "metrics": {
+    "amount_unit_medians": {
+      "159141.SZ": 100.0431226037124,
+      "159201.SZ": 99.89088164610652,
+      "159206.SZ": 99.90528546557763,
+      "159207.SZ": 99.87856157607689,
+      "159209.SZ": 99.90854635693773,
+      "159227.SZ": 99.89135151369565,
+      "159235.SZ": 99.9183698820311,
+      "159259.SZ": 99.83927164293742,
+      "159263.SZ": 99.93432094944043,
+      "159307.SZ": 99.90489449114844,
+      "159325.SZ": 99.98388830636745,
+      "159326.SZ": 99.93550309373107,
+      "159363.SZ": 99.93244881556814,
+      "159387.SZ": 99.91303573370375,
+      "159399.SZ": 99.90645547117848,
+      "159516.SZ": 100.02051508927607,
+      "159530.SZ": 99.93551329614546,
+      "159562.SZ": 99.90442558710723,
+      "159566.SZ": 100.00134098548226,
+      "159583.SZ": 99.91320283303371,
+      "159593.SZ": 99.97286451471393,
+      "159601.SZ": 99.97302065872174,
+      "159611.SZ": 99.90903337853396,
+      "159622.SZ": 100.00871407506754,
+      "159623.SZ": 100.01524919432254,
+      "159625.SZ": 99.92655992478473,
+      "159638.SZ": 99.98264591027424,
+      "159667.SZ": 99.9703588876722,
+      "159680.SZ": 99.94110501429596,
+      "159692.SZ": 100.0152040303812,
+      "159697.SZ": 99.9019218004571,
+      "159732.SZ": 99.95035460831512,
+      "159736.SZ": 99.97801206102551,
+      "159755.SZ": 100.05681769971292,
+      "159758.SZ": 99.92807321983176,
+      "159766.SZ": 99.94510940471703,
+      "159781.SZ": 100.05833862917189,
+      "159790.SZ": 100.01388122306597,
+      "159796.SZ": 100.02994624349529,
+      "159819.SZ": 99.98449900378706,
+      "159825.SZ": 99.91406413135957,
+      "159837.SZ": 100.01814134434507,
+      "159851.SZ": 100.04797205354788,
+      "159852.SZ": 100.02069367850179,
+      "159859.SZ": 100.05394071087231,
+      "159865.SZ": 99.95507587117748,
+      "159869.SZ": 100.00667421425317,
+      "159870.SZ": 99.95686661808034,
+      "159876.SZ": 99.93039437657168,
+      "159880.SZ": 99.89935990443192,
+      "159883.SZ": 100.00508234178646,
+      "159901.SZ": 99.96181350121648,
+      "159905.SZ": 99.96248395970505,
+      "159915.SZ": 99.9980708852617,
+      "159928.SZ": 99.93724565657104,
+      "159929.SZ": 99.96300835176552,
+      "159938.SZ": 99.95681325602814,
+      "159949.SZ": 100.04054735966403,
+      "159967.SZ": 99.97943336788963,
+      "159980.SZ": 99.97215420524226,
+      "159992.SZ": 100.00345157657307,
+      "159993.SZ": 100.04482847158079,
+      "159995.SZ": 100.0710910880401,
+      "159997.SZ": 99.97434028404992,
+      "159998.SZ": 100.02571140428692,
+      "510050.SH": 99.99530177183846,
+      "510150.SH": 99.91072709030084,
+      "510180.SH": 99.96443379379984,
+      "510210.SH": 99.91200420489027,
+      "510300.SH": 99.97727532868642,
+      "510500.SH": 99.93588958357097,
+      "510720.SH": 99.90965048501712,
+      "510810.SH": 99.97096783482547,
+      "510880.SH": 99.94545473249757,
+      "512010.SH": 99.92586874151984,
+      "512040.SH": 99.92583974060209,
+      "512070.SH": 100.01537739067561,
+      "512100.SH": 99.92146124536994,
+      "512170.SH": 99.98382394413683,
+      "512200.SH": 99.97167961558374,
+      "512290.SH": 99.96990068162579,
+      "512400.SH": 99.94255932035442,
+      "512480.SH": 100.02603536668758,
+      "512660.SH": 99.98097251309159,
+      "512670.SH": 99.9550471708184,
+      "512690.SH": 99.97670236321841,
+      "512710.SH": 99.95950491900179,
+      "512760.SH": 100.02215375091129,
+      "512800.SH": 99.96444368259415,
+      "512880.SH": 100.0910969841221,
+      "512890.SH": 99.94328661566733,
+      "512940.SH": 99.995611076178,
+      "512950.SH": 99.96920955419775,
+      "512980.SH": 99.96469773507829,
+      "515000.SH": 99.96098502204268,
+      "515030.SH": 100.00039195452517,
+      "515050.SH": 99.97247437501342,
+      "515170.SH": 99.97487566907014,
+      "515180.SH": 99.9139621577748,
+      "515210.SH": 99.8843005832037,
+      "515220.SH": 99.91239001658968,
+      "515230.SH": 100.00799363242272,
+      "515300.SH": 99.95829229563228,
+      "515400.SH": 99.99750274697833,
+      "515450.SH": 99.94028386273376,
+      "515630.SH": 100.03231355673627,
+      "515650.SH": 99.9459126239683,
+      "515700.SH": 100.02697343248286,
+      "515790.SH": 99.99774302514446,
+      "515800.SH": 99.95550172315566,
+      "515880.SH": 99.9554858102823,
+      "515900.SH": 99.95273873124746,
+      "515980.SH": 99.95507205936747,
+      "516130.SH": 99.94573211915537,
+      "516150.SH": 99.91756565965238,
+      "516160.SH": 99.98855531799819,
+      "516350.SH": 100.05150731676515,
+      "516510.SH": 100.02723534001461,
+      "516570.SH": 99.95596692528451,
+      "516650.SH": 99.96560552531535,
+      "516820.SH": 100.00369886867936,
+      "516970.SH": 99.94425680821581,
+      "560050.SH": 99.9739849481262,
+      "560080.SH": 99.97110600673018,
+      "560280.SH": 99.912473859685,
+      "560570.SH": 99.92752250706748,
+      "560710.SH": 99.87962202493603,
+      "560860.SH": 99.936449977675,
+      "561360.SH": 99.88359532868381,
+      "561380.SH": 99.90204269661245,
+      "561420.SH": 99.90282742373566,
+      "561550.SH": 99.96232554545651,
+      "561580.SH": 99.93221367326046,
+      "561980.SH": 100.01824797785666,
+      "562060.SH": 99.87540621576002,
+      "562500.SH": 99.96345352774338,
+      "562550.SH": 99.89660871056078,
+      "562800.SH": 99.99146064684277,
+      "562950.SH": 100.01144564576046,
+      "563230.SH": 99.95019297824167,
+      "563300.SH": 99.89972526334945,
+      "563360.SH": 99.96706440321245,
+      "588000.SH": 100.04387444251178,
+      "588020.SH": 99.95505706021751,
+      "588170.SH": 99.9330446200851,
+      "588200.SH": 100.1145469811846,
+      "588220.SH": 100.03224925193133,
+      "588460.SH": 100.01118390855265,
+      "588790.SH": 99.9544432372267,
+      "589070.SH": 99.91175434690595,
+      "589680.SH": 99.97510461245952,
+      "589720.SH": 100.09907550350005
+    },
+    "anchor_coverage": {
+      "000300.SH": {
+        "duplicate_dates": 0,
+        "first_date": "2002-01-04",
+        "last_date": "2026-08-28",
+        "rows": 5981
+      },
+      "000852.SH": {
+        "duplicate_dates": 0,
+        "first_date": "2013-04-01",
+        "last_date": "2026-08-28",
+        "rows": 3260
+      }
+    },
+    "daily_before_list_valid_rows": 0,
+    "daily_dates_not_in_calendar": 0,
+    "daily_duplicate_rows": 0,
+    "daily_rows": 212679,
+    "daily_valid_rows": 212504,
+    "data_bytes": 27226025,
+    "final_pre_adj_close_mismatches": 0,
+    "final_raw_close_mismatches": 0,
+    "historical_minute_incomplete_symbols": [
+      "510300.SH",
+      "588000.SH",
+      "512880.SH",
+      "588200.SH",
+      "159915.SZ",
+      "515880.SH",
+      "510500.SH",
+      "159516.SZ",
+      "512890.SH",
+      "563360.SH",
+      "588170.SH",
+      "512100.SH",
+      "159995.SZ",
+      "512170.SH",
+      "510880.SH",
+      "510050.SH",
+      "159819.SZ",
+      "159949.SZ",
+      "515050.SH",
+      "512480.SH",
+      "512400.SH",
+      "515450.SH",
+      "515180.SH",
+      "159530.SZ",
+      "159992.SZ",
+      "562500.SH",
+      "512010.SH",
+      "510180.SH",
+      "159326.SZ",
+      "510210.SH",
+      "512070.SH",
+      "159928.SZ",
+      "159201.SZ",
+      "159206.SZ",
+      "159781.SZ",
+      "515220.SH",
+      "512690.SH",
+      "159870.SZ",
+      "512800.SH",
+      "512760.SH",
+      "159611.SZ",
+      "159869.SZ",
+      "159755.SZ",
+      "516650.SH",
+      "159852.SZ",
+      "560860.SH",
+      "159307.SZ",
+      "159363.SZ",
+      "512710.SH",
+      "515980.SH",
+      "561980.SH",
+      "159865.SZ",
+      "512660.SH",
+      "159263.SZ",
+      "159851.SZ",
+      "512950.SH",
+      "516150.SH",
+      "159967.SZ",
+      "515790.SH",
+      "588220.SH",
+      "159796.SZ",
+      "159980.SZ",
+      "510810.SH",
+      "515300.SH",
+      "159227.SZ",
+      "562800.SH",
+      "159566.SZ",
+      "515230.SH",
+      "159993.SZ",
+      "512040.SH",
+      "159938.SZ",
+      "159859.SZ",
+      "515800.SH",
+      "561380.SH",
+      "589720.SH",
+      "159736.SZ",
+      "159583.SZ",
+      "515170.SH",
+      "159399.SZ",
+      "159883.SZ",
+      "563300.SH",
+      "515000.SH",
+      "159562.SZ",
+      "159732.SZ",
+      "516160.SH",
+      "512290.SH",
+      "159901.SZ",
+      "512980.SH",
+      "515900.SH",
+      "562060.SH",
+      "515650.SH",
+      "512200.SH",
+      "159623.SZ",
+      "510720.SH",
+      "159766.SZ",
+      "560280.SH",
+      "560080.SH",
+      "159625.SZ",
+      "560050.SH",
+      "515030.SH",
+      "159593.SZ",
+      "516510.SH",
+      "561580.SH",
+      "159235.SZ",
+      "588790.SH",
+      "516350.SH",
+      "159667.SZ",
+      "159929.SZ",
+      "159207.SZ",
+      "159209.SZ",
+      "159692.SZ",
+      "562550.SH",
+      "159905.SZ",
+      "589680.SH",
+      "516820.SH",
+      "561360.SH",
+      "512670.SH",
+      "515400.SH",
+      "562950.SH",
+      "159825.SZ",
+      "561550.SH",
+      "159622.SZ",
+      "510150.SH",
+      "159758.SZ",
+      "159998.SZ",
+      "515700.SH",
+      "159601.SZ",
+      "159680.SZ",
+      "159837.SZ",
+      "159997.SZ",
+      "588020.SH",
+      "588460.SH",
+      "159697.SZ",
+      "159876.SZ",
+      "515630.SH",
+      "516970.SH",
+      "159638.SZ",
+      "159387.SZ",
+      "159325.SZ",
+      "159790.SZ",
+      "516570.SH",
+      "515210.SH",
+      "516130.SH",
+      "159880.SZ"
+    ],
+    "history_first_121_date": {
+      "159141.SZ": "2026-06-15",
+      "159201.SZ": "2025-08-21",
+      "159206.SZ": "2025-09-05",
+      "159207.SZ": "2025-09-30",
+      "159209.SZ": "2025-09-16",
+      "159227.SZ": "2025-11-11",
+      "159235.SZ": "2025-10-29",
+      "159259.SZ": "2026-03-04",
+      "159263.SZ": "2025-12-31",
+      "159307.SZ": "2024-10-25",
+      "159325.SZ": "2025-05-12",
+      "159326.SZ": "2025-03-14",
+      "159363.SZ": "2025-06-18",
+      "159387.SZ": "2025-12-03",
+      "159399.SZ": "2025-08-21",
+      "159516.SZ": "2024-01-22",
+      "159530.SZ": "2024-07-22",
+      "159562.SZ": "2024-07-24",
+      "159566.SZ": "2024-08-12",
+      "159583.SZ": "2025-01-02",
+      "159593.SZ": "2024-09-04",
+      "159601.SZ": "2022-05-10",
+      "159611.SZ": "2022-07-11",
+      "159622.SZ": "2023-11-03",
+      "159623.SZ": "2023-03-14",
+      "159625.SZ": "2022-10-28",
+      "159638.SZ": "2023-02-14",
+      "159667.SZ": "2023-04-21",
+      "159680.SZ": "2023-05-31",
+      "159692.SZ": "2023-11-17",
+      "159697.SZ": "2023-10-31",
+      "159732.SZ": "2022-02-24",
+      "159736.SZ": "2022-03-29",
+      "159755.SZ": "2021-12-20",
+      "159758.SZ": "2022-06-30",
+      "159766.SZ": "2022-01-19",
+      "159781.SZ": "2021-12-29",
+      "159790.SZ": "2022-02-09",
+      "159796.SZ": "2022-09-06",
+      "159819.SZ": "2021-03-26",
+      "159825.SZ": "2021-06-30",
+      "159837.SZ": "2021-07-28",
+      "159851.SZ": "2021-09-10",
+      "159852.SZ": "2021-08-10",
+      "159859.SZ": "2021-12-31",
+      "159865.SZ": "2021-08-30",
+      "159869.SZ": "2021-08-27",
+      "159870.SZ": "2021-08-25",
+      "159876.SZ": "2021-09-15",
+      "159880.SZ": "2021-09-16",
+      "159883.SZ": "2021-11-01",
+      "159901.SZ": "2006-10-23",
+      "159905.SZ": "2011-07-11",
+      "159915.SZ": "2012-06-12",
+      "159928.SZ": "2014-03-20",
+      "159929.SZ": "2014-03-20",
+      "159938.SZ": "2015-07-07",
+      "159949.SZ": "2017-01-18",
+      "159967.SZ": "2020-01-08",
+      "159980.SZ": "2020-06-24",
+      "159992.SZ": "2020-10-12",
+      "159993.SZ": "2020-08-03",
+      "159995.SZ": "2020-08-04",
+      "159997.SZ": "2020-09-14",
+      "159998.SZ": "2020-10-13",
+      "510050.SH": "2006-02-24",
+      "510150.SH": "2011-08-18",
+      "510180.SH": "2006-11-09",
+      "510210.SH": "2011-09-16",
+      "510300.SH": "2012-11-20",
+      "510500.SH": "2013-09-11",
+      "510720.SH": "2024-11-11",
+      "510810.SH": "2017-03-02",
+      "510880.SH": "2007-07-19",
+      "512010.SH": "2014-04-23",
+      "512040.SH": "2019-05-31",
+      "512070.SH": "2015-01-14",
+      "512100.SH": "2017-05-04",
+      "512170.SH": "2019-12-10",
+      "512200.SH": "2018-03-27",
+      "512290.SH": "2019-11-13",
+      "512400.SH": "2018-03-05",
+      "512480.SH": "2019-12-05",
+      "512660.SH": "2017-02-09",
+      "512670.SH": "2020-02-04",
+      "512690.SH": "2019-10-30",
+      "512710.SH": "2020-02-27",
+      "512760.SH": "2019-12-05",
+      "512800.SH": "2018-01-26",
+      "512880.SH": "2017-02-09",
+      "512890.SH": "2019-07-19",
+      "512940.SH": "2026-08-20",
+      "512950.SH": "2019-07-19",
+      "512980.SH": "2018-07-20",
+      "515000.SH": "2020-02-19",
+      "515030.SH": "2020-08-27",
+      "515050.SH": "2020-04-13",
+      "515170.SH": "2021-07-14",
+      "515180.SH": "2020-06-22",
+      "515210.SH": "2020-08-25",
+      "515220.SH": "2020-08-25",
+      "515230.SH": "2021-08-24",
+      "515300.SH": "2020-03-23",
+      "515400.SH": "2021-07-21",
+      "515450.SH": "2020-08-20",
+      "515630.SH": "2020-09-28",
+      "515650.SH": "2020-05-12",
+      "515700.SH": "2020-08-04",
+      "515790.SH": "2021-06-21",
+      "515800.SH": "2020-06-16",
+      "515880.SH": "2020-03-11",
+      "515900.SH": "2020-06-18",
+      "515980.SH": "2020-08-04",
+      "516130.SH": "2022-04-11",
+      "516150.SH": "2021-09-08",
+      "516160.SH": "2021-08-05",
+      "516350.SH": "2022-06-27",
+      "516510.SH": "2021-09-30",
+      "516570.SH": "2021-12-14",
+      "516650.SH": "2021-12-15",
+      "516820.SH": "2021-12-27",
+      "516970.SH": "2021-12-29",
+      "560050.SH": "2022-05-10",
+      "560080.SH": "2023-04-12",
+      "560280.SH": "2024-04-26",
+      "560570.SH": "2026-03-25",
+      "560710.SH": "2026-08-10",
+      "560860.SH": "2023-09-05",
+      "561360.SH": "2024-04-29",
+      "561380.SH": "2025-06-25",
+      "561420.SH": null,
+      "561550.SH": "2022-06-14",
+      "561580.SH": "2023-11-24",
+      "561980.SH": "2024-03-06",
+      "562060.SH": "2024-07-02",
+      "562500.SH": "2022-07-01",
+      "562550.SH": "2023-09-19",
+      "562800.SH": "2022-03-29",
+      "562950.SH": "2022-07-22",
+      "563230.SH": "2026-03-24",
+      "563300.SH": "2024-03-19",
+      "563360.SH": "2025-04-11",
+      "588000.SH": "2021-05-17",
+      "588020.SH": "2024-03-05",
+      "588170.SH": "2025-09-29",
+      "588200.SH": "2023-04-21",
+      "588220.SH": "2024-03-20",
+      "588460.SH": "2023-07-07",
+      "588790.SH": "2025-07-11",
+      "589070.SH": "2026-07-27",
+      "589680.SH": "2025-08-27",
+      "589720.SH": "2026-01-28"
+    },
+    "minute_critical_rows": 109187,
+    "minute_duplicate_rows": 0,
+    "minute_range_end": "2026-08-28",
+    "minute_range_start": "2025-08-27",
+    "missing_critical_bar_counts": {
+      "FINAL_CLOSE_BAR": 0,
+      "OPEN_BAR_09_30": 175,
+      "PSEUDO_CLOSE_14_57_OPEN": 0
+    },
+    "per_symbol_minute_coverage": {
+      "159141.SZ": {
+        "expected_valid_daily_sessions_in_range": 174,
+        "first_date": "2025-12-11",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 174,
+          "OPEN_BAR_09_30": 174,
+          "PSEUDO_CLOSE_14_57_OPEN": 174
+        },
+        "rows": 522
+      },
+      "159201.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159206.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159207.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 242,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 730
+      },
+      "159209.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 231,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 719
+      },
+      "159227.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159235.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159259.SZ": {
+        "expected_valid_daily_sessions_in_range": 243,
+        "first_date": "2025-08-28",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 243,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 243
+        },
+        "rows": 729
+      },
+      "159263.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159307.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 239,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 727
+      },
+      "159325.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159326.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159363.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159387.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159399.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 231,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 719
+      },
+      "159516.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159530.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159562.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159566.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159583.SZ": {
+        "expected_valid_daily_sessions_in_range": 243,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 243,
+          "OPEN_BAR_09_30": 241,
+          "PSEUDO_CLOSE_14_57_OPEN": 243
+        },
+        "rows": 727
+      },
+      "159593.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159601.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159611.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159622.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159623.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 242,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 730
+      },
+      "159625.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159638.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159667.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159680.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159692.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159697.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159732.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159736.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159755.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159758.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159766.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159781.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159790.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159796.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159819.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159825.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159837.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159851.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159852.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159859.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159865.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159869.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159870.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159876.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159880.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159883.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159901.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159905.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159915.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159928.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159929.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159938.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159949.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159967.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159980.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159992.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159993.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159995.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159997.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "159998.SZ": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510050.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510150.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510180.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510210.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510300.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510500.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510720.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510810.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "510880.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512010.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512040.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512070.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512100.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512170.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512200.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512290.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512400.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512480.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512660.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512670.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512690.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512710.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512760.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512800.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512880.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512890.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512940.SH": {
+        "expected_valid_daily_sessions_in_range": 127,
+        "first_date": "2026-02-26",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 127,
+          "OPEN_BAR_09_30": 127,
+          "PSEUDO_CLOSE_14_57_OPEN": 127
+        },
+        "rows": 381
+      },
+      "512950.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "512980.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515000.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515030.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515050.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515170.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515180.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515210.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515220.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515230.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515300.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515400.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515450.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515630.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515650.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515700.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515790.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515800.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515880.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515900.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "515980.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516130.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516150.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516160.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516350.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516510.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516570.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516650.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516820.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "516970.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "560050.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "560080.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "560280.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "560570.SH": {
+        "expected_valid_daily_sessions_in_range": 228,
+        "first_date": "2025-09-18",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 228,
+          "OPEN_BAR_09_30": 228,
+          "PSEUDO_CLOSE_14_57_OPEN": 228
+        },
+        "rows": 684
+      },
+      "560710.SH": {
+        "expected_valid_daily_sessions_in_range": 135,
+        "first_date": "2026-02-06",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 135,
+          "OPEN_BAR_09_30": 135,
+          "PSEUDO_CLOSE_14_57_OPEN": 135
+        },
+        "rows": 405
+      },
+      "560860.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "561360.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "561380.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "561420.SH": {
+        "expected_valid_daily_sessions_in_range": 38,
+        "first_date": "2026-07-08",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 38,
+          "OPEN_BAR_09_30": 38,
+          "PSEUDO_CLOSE_14_57_OPEN": 38
+        },
+        "rows": 114
+      },
+      "561550.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "561580.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "561980.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "562060.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "562500.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "562550.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "562800.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "562950.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "563230.SH": {
+        "expected_valid_daily_sessions_in_range": 229,
+        "first_date": "2025-09-17",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 229,
+          "OPEN_BAR_09_30": 229,
+          "PSEUDO_CLOSE_14_57_OPEN": 229
+        },
+        "rows": 687
+      },
+      "563300.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "563360.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588000.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588020.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588170.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588200.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588220.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588460.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "588790.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "589070.SH": {
+        "expected_valid_daily_sessions_in_range": 145,
+        "first_date": "2026-01-23",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 145,
+          "OPEN_BAR_09_30": 145,
+          "PSEUDO_CLOSE_14_57_OPEN": 145
+        },
+        "rows": 435
+      },
+      "589680.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      },
+      "589720.SH": {
+        "expected_valid_daily_sessions_in_range": 244,
+        "first_date": "2025-08-27",
+        "last_date": "2026-08-28",
+        "role_date_counts": {
+          "FINAL_CLOSE_BAR": 244,
+          "OPEN_BAR_09_30": 243,
+          "PSEUDO_CLOSE_14_57_OPEN": 244
+        },
+        "rows": 731
+      }
+    },
+    "security_master_rows": 152,
+    "universe_expected": 152,
+    "universe_parsed": 152
+  },
+  "samples": {
+    "corporate_action_candidate": {
+      "after": {
+        "adj_factor_close_ratio": 1.0,
+        "pre_adj_close": 4.7379999999999995,
+        "raw_close": 4.7379999999999995,
+        "trade_date": "2026-01-19"
+      },
+      "before": {
+        "adj_factor_close_ratio": 0.9746861494134595,
+        "pre_adj_close": 4.736,
+        "raw_close": 4.859,
+        "trade_date": "2026-01-16"
+      },
+      "status": "QMT_FRONT_FACTOR_CHANGE_NOT_SUPERMIND_EQUIVALENCE_PROOF",
+      "symbol": "510300.SH"
+    },
+    "latest_rows": [
+      {
+        "amount_cny": 2835120646.0,
+        "final_minute_close": 4.679,
+        "official_daily_close": 4.678999999999999,
+        "open_09_30": 4.684,
+        "open_14_57": 4.6770000000000005,
+        "pre_adj_close": 4.678999999999999,
+        "raw_close": 4.678999999999999,
+        "symbol": "510300.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 6046933.0
+      },
+      {
+        "amount_cny": 4903064585.0,
+        "final_minute_close": 1.756,
+        "official_daily_close": 1.756,
+        "open_09_30": 1.7810000000000001,
+        "open_14_57": 1.7550000000000001,
+        "pre_adj_close": 1.756,
+        "raw_close": 1.756,
+        "symbol": "588000.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 27537424.0
+      },
+      {
+        "amount_cny": 1919491996.0,
+        "final_minute_close": 1.104,
+        "official_daily_close": 1.1039999999999999,
+        "open_09_30": 1.105,
+        "open_14_57": 1.1039999999999999,
+        "pre_adj_close": 1.1039999999999999,
+        "raw_close": 1.1039999999999999,
+        "symbol": "512880.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 17388624.0
+      },
+      {
+        "amount_cny": 2706899573.0,
+        "final_minute_close": 1.174,
+        "official_daily_close": 1.174,
+        "open_09_30": 1.199,
+        "open_14_57": 1.174,
+        "pre_adj_close": 1.174,
+        "raw_close": 1.174,
+        "symbol": "588200.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 22672530.0
+      },
+      {
+        "amount_cny": 3189533158.0000005,
+        "final_minute_close": 0.668,
+        "official_daily_close": 0.668,
+        "open_09_30": 0.676,
+        "open_14_57": 0.668,
+        "pre_adj_close": 0.668,
+        "raw_close": 0.668,
+        "symbol": "515880.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 46880842.0
+      },
+      {
+        "amount_cny": 5179583482.0,
+        "final_minute_close": 3.443,
+        "official_daily_close": 3.443,
+        "open_09_30": 3.478,
+        "open_14_57": 3.445,
+        "pre_adj_close": 3.443,
+        "raw_close": 3.443,
+        "symbol": "159915.SZ",
+        "trade_date": "2026-08-28",
+        "volume_raw": 14854271.0
+      },
+      {
+        "amount_cny": 3415026039.0,
+        "final_minute_close": 0.721,
+        "official_daily_close": 0.721,
+        "open_09_30": 0.739,
+        "open_14_57": 0.721,
+        "pre_adj_close": 0.721,
+        "raw_close": 0.721,
+        "symbol": "159516.SZ",
+        "trade_date": "2026-08-28",
+        "volume_raw": 46646383.0
+      },
+      {
+        "amount_cny": 639312890.0,
+        "final_minute_close": 1.154,
+        "official_daily_close": 1.154,
+        "open_09_30": 1.174,
+        "open_14_57": 1.1520000000000001,
+        "pre_adj_close": 1.154,
+        "raw_close": 1.154,
+        "symbol": "159995.SZ",
+        "trade_date": "2026-08-28",
+        "volume_raw": 5455379.0
+      },
+      {
+        "amount_cny": 404402220.0,
+        "final_minute_close": 1.736,
+        "official_daily_close": 1.736,
+        "open_09_30": 1.7530000000000001,
+        "open_14_57": 1.7349999999999999,
+        "pre_adj_close": 1.736,
+        "raw_close": 1.736,
+        "symbol": "159819.SZ",
+        "trade_date": "2026-08-28",
+        "volume_raw": 2292188.0
+      },
+      {
+        "amount_cny": 1524901797.0,
+        "final_minute_close": 1.611,
+        "official_daily_close": 1.611,
+        "open_09_30": 1.6280000000000001,
+        "open_14_57": 1.611,
+        "pre_adj_close": 1.611,
+        "raw_close": 1.611,
+        "symbol": "159949.SZ",
+        "trade_date": "2026-08-28",
+        "volume_raw": 9338484.0
+      },
+      {
+        "amount_cny": 895127758.0,
+        "final_minute_close": 3.037,
+        "official_daily_close": 3.037,
+        "open_09_30": 3.033,
+        "open_14_57": 3.036,
+        "pre_adj_close": 3.037,
+        "raw_close": 3.037,
+        "symbol": "510050.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 2947698.0
+      },
+      {
+        "amount_cny": 8798825.0,
+        "final_minute_close": 1.106,
+        "official_daily_close": 1.106,
+        "open_09_30": 1.101,
+        "open_14_57": 1.106,
+        "pre_adj_close": 1.106,
+        "raw_close": 1.106,
+        "symbol": "561420.SH",
+        "trade_date": "2026-08-28",
+        "volume_raw": 80009.0
+      }
+    ],
+    "selection": {
+      "early_listed": "510050.SH",
+      "late_listed": "561420.SH",
+      "shanghai": [
+        "510300.SH",
+        "588000.SH",
+        "512880.SH",
+        "588200.SH",
+        "515880.SH"
+      ],
+      "shenzhen": [
+        "159915.SZ",
+        "159516.SZ",
+        "159995.SZ",
+        "159819.SZ",
+        "159949.SZ"
+      ]
+    }
+  },
+  "status": "FAIL",
+  "v6_data_ready": false,
+  "validation_version": "v6-market-data-qmt-validation-1",
+  "warnings": []
+}

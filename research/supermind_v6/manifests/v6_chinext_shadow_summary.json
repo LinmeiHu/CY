@@ -1,0 +1,86 @@
+{
+  "calendar_sessions": 243,
+  "candidate_pass_daily_proxy": false,
+  "event_counts": {
+    "BUY_FILLED": 37,
+    "BUY_SIGNAL": 37,
+    "REBALANCE_FILLED": 49,
+    "SELL_FILLED": 37,
+    "TAIL_SELL_SIGNAL": 37
+  },
+  "execution": "QMT critical bars with fail-closed availability; exact SuperMind matching unverified",
+  "experiment": "V6_CHINEXT_CURRENT_SURVIVOR_COUNTERFACTUAL",
+  "forward_quality": {
+    "fwd_10d": {
+      "mean": 0.0261978682848791,
+      "median": 0.009829867674858273,
+      "n": 37,
+      "p10": -0.0666145998968883,
+      "p90": 0.1481184508120555,
+      "win_rate": 0.5675675675675675
+    },
+    "fwd_20d": {
+      "mean": 0.013090478964415252,
+      "median": -0.004931392137274504,
+      "n": 36,
+      "p10": -0.14016749776243442,
+      "p90": 0.20721929364176317,
+      "win_rate": 0.5
+    },
+    "fwd_5d": {
+      "mean": -0.020936570940859534,
+      "median": -0.021276595744680882,
+      "n": 37,
+      "p10": -0.08562820367764161,
+      "p90": 0.04865334884707509,
+      "win_rate": 0.32432432432432434
+    },
+    "fwd_60d": {
+      "mean": 0.035146372943710674,
+      "median": -0.01895275806366975,
+      "n": 36,
+      "p10": -0.14105047151322314,
+      "p90": 0.3154607005526985,
+      "win_rate": 0.3888888888888889
+    },
+    "mae_20d": {
+      "mean": -0.08188185254107228,
+      "median": -0.06706652126499457,
+      "n": 37,
+      "p10": -0.15999437245001644,
+      "p90": -0.014427921534498577,
+      "win_rate": 0.05405405405405406
+    },
+    "mfe_20d": {
+      "mean": 0.13364321582253647,
+      "median": 0.09287925696594423,
+      "n": 37,
+      "p10": 0.002780837299697892,
+      "p90": 0.3205906612289788,
+      "win_rate": 0.918918918918919
+    }
+  },
+  "generated_at": "2026-08-28T22:45:33.799164+08:00",
+  "limitations": [
+    "current-survivor universe is not historical point-in-time and has survivorship bias",
+    "stock limit-up/down, lot size, fees, slippage, partial fills, and cash are not simulated",
+    "QMT front adjustment is not proven equivalent to SuperMind fq=pre",
+    "order_target return semantics are simplified to full fill or fail-closed no-fill"
+  ],
+  "price_basis": "QMT front-adjusted; SuperMind fq=pre equivalence unverified",
+  "roundtrip_holding_pnl": {
+    "mean": 0.028741317185065944,
+    "median": 0.014619883040935644,
+    "n": 37,
+    "p10": -0.0987388379404297,
+    "p90": 0.17531059791525438,
+    "win_rate": 0.5405405405405406
+  },
+  "status": "EXPLORATORY_NON_PIT",
+  "strategy_source_sha256": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+  "unique_bought_symbols": 37,
+  "universe_count": 1398,
+  "universe_point_in_time": false,
+  "window_end": "2026-08-28",
+  "window_start": "2025-08-28"
+}

@@ -1,0 +1,104 @@
+{
+  "availability": {
+    "counts": {
+      "executable_09_30": 1857,
+      "executable_15_00": 1858,
+      "tail_signal_available_14_57": 1858
+    },
+    "path": "research/supermind_v6/data/market_data_hybrid_canary/execution_availability/critical_execution.parquet",
+    "rows": 3228,
+    "sha256": "c604e0522eed09ec65bb409c9eb4f546f4aa93829d5fe564e5d7a2a31bf3c78c"
+  },
+  "build_version": "v6-hybrid-critical-history-1",
+  "generated_at": "2026-08-29T07:37:53.967627+08:00",
+  "local_parquet_reader": "DuckDB (PyArrow 19 raised repetition-level histogram errors)",
+  "source_priority": [
+    "QMT_EXACT_1M",
+    "QMT_5M_ANCHOR_FALLBACK",
+    "LOCAL_ZIP_EXACT_1M"
+  ],
+  "strategy_source_sha256": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+  "symbols": {
+    "000852.SH": {
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "limitation": "QMT index intraday retention starts 2025-08-27; older 14:57 entry-anchor snapshots fail closed",
+      "partition_sha256": "3734499892f49822e7088e02e495d8ccc8fefe875cf31d99bf583f613cd51882",
+      "rows": 731,
+      "source_counts": {
+        "QMT_EXACT_1M": 731
+      },
+      "valid_rows": 731
+    },
+    "510300.SH": {
+      "first_date": "2020-01-02",
+      "last_date": "2026-08-28",
+      "local": {
+        "daily_reconciliation_mismatch": 0,
+        "lineage": [
+          {
+            "archive": "/Users/linmei/Downloads/2010-2025/1分钟/ETF1分钟历史行情_2010-2025/ETF数据/510300.SH.zip",
+            "archive_sha256": "281271cb412859d3b40994921b11b26cf124cd556fabf7449b93b149361cd2a3",
+            "member": "2020/510300.SH.parquet",
+            "rows": 729
+          },
+          {
+            "archive": "/Users/linmei/Downloads/2010-2025/1分钟/ETF1分钟历史行情_2010-2025/ETF数据/510300.SH.zip",
+            "archive_sha256": "281271cb412859d3b40994921b11b26cf124cd556fabf7449b93b149361cd2a3",
+            "member": "2021/510300.SH.parquet",
+            "rows": 729
+          },
+          {
+            "archive": "/Users/linmei/Downloads/2010-2025/1分钟/ETF1分钟历史行情_2010-2025/ETF数据/510300.SH.zip",
+            "archive_sha256": "281271cb412859d3b40994921b11b26cf124cd556fabf7449b93b149361cd2a3",
+            "member": "2022/510300.SH.parquet",
+            "rows": 726
+          },
+          {
+            "archive": "/Users/linmei/Downloads/2010-2025/1分钟/ETF1分钟历史行情_2010-2025/ETF数据/510300.SH.zip",
+            "archive_sha256": "281271cb412859d3b40994921b11b26cf124cd556fabf7449b93b149361cd2a3",
+            "member": "2023/510300.SH.parquet",
+            "rows": 726
+          },
+          {
+            "archive": "/Users/linmei/Downloads/2010-2025/1分钟/ETF1分钟历史行情_2010-2025/ETF数据/510300.SH.zip",
+            "archive_sha256": "281271cb412859d3b40994921b11b26cf124cd556fabf7449b93b149361cd2a3",
+            "member": "2024/510300.SH.parquet",
+            "rows": 726
+          },
+          {
+            "archive": "/Users/linmei/Downloads/2010-2025/1分钟/ETF1分钟历史行情_2010-2025/ETF数据/510300.SH.zip",
+            "archive_sha256": "281271cb412859d3b40994921b11b26cf124cd556fabf7449b93b149361cd2a3",
+            "member": "2025/510300.SH.parquet",
+            "rows": 729
+          },
+          {
+            "archive": "/Users/linmei/Downloads/2026/ETF1分钟历史行情_2026/ETF数据/510300.SH.zip",
+            "archive_sha256": "d9dea34d42cecb78ed27077f8304ff52b2fb86e11f7f9ed9a2330ae5a7d3db89",
+            "member": "2026/510300.SH.parquet",
+            "rows": 462
+          }
+        ],
+        "missing_daily_factor": 0
+      },
+      "partition_sha256": "d217ce48c2f83c3ef67db01f470e60e42a3225857e3d0d9e363ede339946e26d",
+      "rows": 4842,
+      "source_counts": {
+        "LOCAL_ZIP_EXACT_1M": 4111,
+        "QMT_EXACT_1M": 731
+      },
+      "valid_rows": 4842
+    }
+  },
+  "totals": {
+    "hybrid_rows": 5573,
+    "local_daily_reconciliation_mismatch": 0,
+    "local_missing_daily_factor": 0,
+    "source_counts": {
+      "LOCAL_ZIP_EXACT_1M": 4111,
+      "QMT_EXACT_1M": 1462
+    }
+  },
+  "window_end": "2026-08-28",
+  "window_start": "2020-01-01"
+}

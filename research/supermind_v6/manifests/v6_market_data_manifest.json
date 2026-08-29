@@ -1,0 +1,4123 @@
+{
+  "adjustment_method": "QMT dividend_type=none retained beside dividend_type=front for daily and 1m; SuperMind fq=pre equivalence unverified",
+  "contract_version": "v6-market-data-contract-1",
+  "created_at": "2026-08-28T18:12:04.695727+08:00",
+  "daily_rows": 212679,
+  "daily_schema": [
+    "trade_date",
+    "symbol",
+    "raw_code",
+    "exchange",
+    "row_status",
+    "qmt_time_ms",
+    "raw_open",
+    "pre_adj_open",
+    "raw_high",
+    "pre_adj_high",
+    "raw_low",
+    "pre_adj_low",
+    "raw_close",
+    "pre_adj_close",
+    "adj_factor_close_ratio",
+    "volume_raw",
+    "amount_cny",
+    "raw_pre_close",
+    "qmt_suspend_flag",
+    "qmt_index",
+    "volume_unit",
+    "volume_shares",
+    "available_at",
+    "source",
+    "adjustment_status",
+    "capture_at",
+    "snapshot_id",
+    "source_endpoint"
+  ],
+  "daily_valid_rows": 212504,
+  "dataset_version": "v6-market-data-qmt-v1",
+  "date_end": "2026-08-28",
+  "date_start": "2005-02-23",
+  "duplicate_counts": {
+    "daily_symbol_date": 0,
+    "minute_symbol_datetime": 0,
+    "universe_codes": 0
+  },
+  "full_minute_rows_exported": 0,
+  "index_daily_rows": 9241,
+  "index_date_coverage": {
+    "000300.SH": {
+      "first_121_date": "2005-07-07",
+      "first_date": "2002-01-04",
+      "last_date": "2026-08-28",
+      "partition_bytes": 550982,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=000300.SH/daily.parquet",
+      "partition_sha256": "9419145ca47ef1e48256c67cbabd2369f9fba27e73133a6da14e3fcc1b22e4b8",
+      "rows": 5981,
+      "valid_rows": 5260
+    },
+    "000852.SH": {
+      "first_121_date": "2013-09-30",
+      "first_date": "2013-04-01",
+      "last_date": "2026-08-28",
+      "partition_bytes": 334243,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=000852.SH/daily.parquet",
+      "partition_sha256": "61b76afeafc91482f4429abb2c22c2fd4ca7a96836bfb10036af89fd538bf76e",
+      "rows": 3260,
+      "valid_rows": 3260
+    }
+  },
+  "minute_dataset_scope": "critical_execution_bars_only_09_30_14_57_15_00",
+  "minute_date_end": "2026-08-28",
+  "minute_date_start": "2025-08-27",
+  "minute_rows": 109187,
+  "minute_schema": [
+    "trade_date",
+    "datetime",
+    "symbol",
+    "raw_code",
+    "exchange",
+    "bar_role",
+    "row_status",
+    "qmt_time_ms",
+    "raw_open",
+    "pre_adj_open",
+    "raw_high",
+    "pre_adj_high",
+    "raw_low",
+    "pre_adj_low",
+    "raw_close",
+    "pre_adj_close",
+    "adj_factor_close_ratio",
+    "volume_raw",
+    "amount_cny",
+    "raw_pre_close",
+    "qmt_suspend_flag",
+    "qmt_index",
+    "volume_unit",
+    "volume_shares",
+    "timezone",
+    "source",
+    "adjustment_status",
+    "opening_auction_status",
+    "capture_at",
+    "snapshot_id",
+    "source_endpoint",
+    "available_at"
+  ],
+  "missing_counts": {
+    "daily_symbol_partitions": 0,
+    "index_daily_partitions": 0,
+    "minute_critical_symbol_partitions": 0,
+    "opening_auction_symbol_partitions": 152
+  },
+  "per_symbol_date_coverage": {
+    "159141.SZ": {
+      "first_121_date": "2026-06-15",
+      "first_date": "2025-12-11",
+      "last_date": "2026-08-28",
+      "partition_bytes": 34689,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159141.SZ/daily.parquet",
+      "partition_sha256": "2624b5aaf1e5ea10e3b9e3d190d7bd0be6fb64d2b7152f0f50992165bf257d49",
+      "rows": 174,
+      "valid_rows": 174
+    },
+    "159201.SZ": {
+      "first_121_date": "2025-08-21",
+      "first_date": "2025-02-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 45110,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159201.SZ/daily.parquet",
+      "partition_sha256": "0dd5b59f33e174243a1ca4a18f32c25e19ecdd427660b9784e3c9fce5bd48bdf",
+      "rows": 368,
+      "valid_rows": 368
+    },
+    "159206.SZ": {
+      "first_121_date": "2025-09-05",
+      "first_date": "2025-03-14",
+      "last_date": "2026-08-28",
+      "partition_bytes": 47206,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159206.SZ/daily.parquet",
+      "partition_sha256": "6029a348dce868883ce0e14401ad172f99917a1082f24075adea6fb079f0996d",
+      "rows": 357,
+      "valid_rows": 357
+    },
+    "159207.SZ": {
+      "first_121_date": "2025-09-30",
+      "first_date": "2025-04-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 45263,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159207.SZ/daily.parquet",
+      "partition_sha256": "a26651c26f13556eacba6f88bc30c111e2f2a845ba9df43b3d5e926a758fc585",
+      "rows": 340,
+      "valid_rows": 340
+    },
+    "159209.SZ": {
+      "first_121_date": "2025-09-16",
+      "first_date": "2025-03-25",
+      "last_date": "2026-08-28",
+      "partition_bytes": 47633,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159209.SZ/daily.parquet",
+      "partition_sha256": "c258aca35a8fa0ad2e4a791609807bf960547fdf6d718a5466d35aa90e783d5a",
+      "rows": 350,
+      "valid_rows": 350
+    },
+    "159227.SZ": {
+      "first_121_date": "2025-11-11",
+      "first_date": "2025-05-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 42761,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159227.SZ/daily.parquet",
+      "partition_sha256": "61c8497720b66a6a8b71a777ee5313d75a4832a430cde125434f6697ab06fc57",
+      "rows": 316,
+      "valid_rows": 316
+    },
+    "159235.SZ": {
+      "first_121_date": "2025-10-29",
+      "first_date": "2025-04-30",
+      "last_date": "2026-08-28",
+      "partition_bytes": 42728,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159235.SZ/daily.parquet",
+      "partition_sha256": "4bac6db4a46ea4d1db3a58c6abb7eadd4c88c8f92ad5dd9603920aab6c71904f",
+      "rows": 325,
+      "valid_rows": 325
+    },
+    "159259.SZ": {
+      "first_121_date": "2026-03-04",
+      "first_date": "2025-08-28",
+      "last_date": "2026-08-28",
+      "partition_bytes": 39240,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159259.SZ/daily.parquet",
+      "partition_sha256": "98982ba7d560cd73a51f4db92aa811a17eade5a2e2f849105337740aae9adcc0",
+      "rows": 243,
+      "valid_rows": 243
+    },
+    "159263.SZ": {
+      "first_121_date": "2025-12-31",
+      "first_date": "2025-07-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 39767,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159263.SZ/daily.parquet",
+      "partition_sha256": "f1862376054aa652e47cb35e5e2a7a062887e1ba2a4cab7c775fae8b413d785f",
+      "rows": 280,
+      "valid_rows": 280
+    },
+    "159307.SZ": {
+      "first_121_date": "2024-10-25",
+      "first_date": "2024-04-25",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58700,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159307.SZ/daily.parquet",
+      "partition_sha256": "73679d341acdd6b03ee68feaf0f1d3a1690693e337c33d15ee48de33f6e31c45",
+      "rows": 570,
+      "valid_rows": 570
+    },
+    "159325.SZ": {
+      "first_121_date": "2025-05-12",
+      "first_date": "2024-11-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 51601,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159325.SZ/daily.parquet",
+      "partition_sha256": "44289609ebb8f2a9749f62122f8f81d171fe1763a5181924ceaa576bc144dc3f",
+      "rows": 440,
+      "valid_rows": 440
+    },
+    "159326.SZ": {
+      "first_121_date": "2025-03-14",
+      "first_date": "2024-09-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 53595,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159326.SZ/daily.parquet",
+      "partition_sha256": "31a49cca5661a9d95c7f2d2f67f8d9a7e17b4fd0936e45bc931ac5a683b5a650",
+      "rows": 477,
+      "valid_rows": 477
+    },
+    "159363.SZ": {
+      "first_121_date": "2025-06-18",
+      "first_date": "2024-12-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 50331,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159363.SZ/daily.parquet",
+      "partition_sha256": "07246a4eafc6ecf8e38203c82fdf9482e4b1222cdf42321312bc9a8f4bbdc8d0",
+      "rows": 414,
+      "valid_rows": 414
+    },
+    "159387.SZ": {
+      "first_121_date": "2025-12-03",
+      "first_date": "2025-06-10",
+      "last_date": "2026-08-28",
+      "partition_bytes": 42919,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159387.SZ/daily.parquet",
+      "partition_sha256": "59757a8a9f43a9c98dd6fd0b5cd565c17897790d17aabab582250ec0eb3b296a",
+      "rows": 300,
+      "valid_rows": 300
+    },
+    "159399.SZ": {
+      "first_121_date": "2025-08-21",
+      "first_date": "2025-02-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 50707,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159399.SZ/daily.parquet",
+      "partition_sha256": "67eeae1b4b9fc7361aeb72533e3169cdc863531fe875dad7e3b73d94a459b7a2",
+      "rows": 368,
+      "valid_rows": 368
+    },
+    "159516.SZ": {
+      "first_121_date": "2024-01-22",
+      "first_date": "2023-07-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 69476,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159516.SZ/daily.parquet",
+      "partition_sha256": "679cf64dec6cf4f595f6ccaae727f4886dcb15ce462898b3099ff37f9fd8d995",
+      "rows": 750,
+      "valid_rows": 750
+    },
+    "159530.SZ": {
+      "first_121_date": "2024-07-22",
+      "first_date": "2024-01-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61724,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159530.SZ/daily.parquet",
+      "partition_sha256": "fcbbc2596606e4364ea364285ebbd15bc4a2993a4f6a7109514c260c34aaa0a7",
+      "rows": 632,
+      "valid_rows": 632
+    },
+    "159562.SZ": {
+      "first_121_date": "2024-07-24",
+      "first_date": "2024-01-22",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64634,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159562.SZ/daily.parquet",
+      "partition_sha256": "e10a05ce3dafe9bf25be78fa040d8bf91bf8c0c5271f43ad65c1640e0e0c9066",
+      "rows": 630,
+      "valid_rows": 630
+    },
+    "159566.SZ": {
+      "first_121_date": "2024-08-12",
+      "first_date": "2024-02-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62516,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159566.SZ/daily.parquet",
+      "partition_sha256": "2d41860baae83b35ba48ef9049c3f8231983c1c259a2055d02e4f7942c1f9d68",
+      "rows": 617,
+      "valid_rows": 617
+    },
+    "159583.SZ": {
+      "first_121_date": "2025-01-02",
+      "first_date": "2024-07-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 57089,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159583.SZ/daily.parquet",
+      "partition_sha256": "42caef0a101b5fcc4b41068baf6596a1c85f2daa87103092f9db6bb765352b36",
+      "rows": 521,
+      "valid_rows": 521
+    },
+    "159593.SZ": {
+      "first_121_date": "2024-09-04",
+      "first_date": "2024-03-12",
+      "last_date": "2026-08-28",
+      "partition_bytes": 56973,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159593.SZ/daily.parquet",
+      "partition_sha256": "35e5d83b8e35185b8dc28eb70172934c691e1a11234e4cf2b0518d731432508c",
+      "rows": 600,
+      "valid_rows": 600
+    },
+    "159601.SZ": {
+      "first_121_date": "2022-05-10",
+      "first_date": "2021-11-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 83568,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159601.SZ/daily.parquet",
+      "partition_sha256": "6469ed6549c065d36ea39449d97ede87c2ca16da55b965a9c6f54cc9ea9d4629",
+      "rows": 1168,
+      "valid_rows": 1168
+    },
+    "159611.SZ": {
+      "first_121_date": "2022-07-11",
+      "first_date": "2022-01-07",
+      "last_date": "2026-08-28",
+      "partition_bytes": 79913,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159611.SZ/daily.parquet",
+      "partition_sha256": "53c90ca7fe6acaef9ae41136cfd1a37aa6e9d77c8bb17375f4c618f68e587c3f",
+      "rows": 1125,
+      "valid_rows": 1125
+    },
+    "159622.SZ": {
+      "first_121_date": "2023-11-03",
+      "first_date": "2023-05-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68214,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159622.SZ/daily.parquet",
+      "partition_sha256": "d48be6707203838ea97584fcf21a1e4d14b8d829ab0ebd66ac02bbf08d348c4e",
+      "rows": 805,
+      "valid_rows": 805
+    },
+    "159623.SZ": {
+      "first_121_date": "2023-03-14",
+      "first_date": "2022-09-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 76277,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159623.SZ/daily.parquet",
+      "partition_sha256": "dd1131420c4036178628b7a1e6e84f8bffed2b813777a7ee49b525df6a5dbaf0",
+      "rows": 961,
+      "valid_rows": 961
+    },
+    "159625.SZ": {
+      "first_121_date": "2022-10-28",
+      "first_date": "2022-04-29",
+      "last_date": "2026-08-28",
+      "partition_bytes": 76066,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159625.SZ/daily.parquet",
+      "partition_sha256": "cbf3fafde45edc7171edf275fccd28d69b931a3d78af2364c41d3ad40e879f81",
+      "rows": 1052,
+      "valid_rows": 1052
+    },
+    "159638.SZ": {
+      "first_121_date": "2023-02-14",
+      "first_date": "2022-08-12",
+      "last_date": "2026-08-28",
+      "partition_bytes": 73903,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159638.SZ/daily.parquet",
+      "partition_sha256": "7018cf992acbf91e86e40f77feb22fe8d7c7e096a6830746de0fda902cc5017d",
+      "rows": 981,
+      "valid_rows": 981
+    },
+    "159667.SZ": {
+      "first_121_date": "2023-04-21",
+      "first_date": "2022-10-26",
+      "last_date": "2026-08-28",
+      "partition_bytes": 81460,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159667.SZ/daily.parquet",
+      "partition_sha256": "ea142668d200e5dbbe201dfe4ea9abfd52b926356239733c84b7b26e7f09a421",
+      "rows": 934,
+      "valid_rows": 934
+    },
+    "159680.SZ": {
+      "first_121_date": "2023-05-31",
+      "first_date": "2022-11-30",
+      "last_date": "2026-08-28",
+      "partition_bytes": 75569,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159680.SZ/daily.parquet",
+      "partition_sha256": "93ee688e6f3be7f8ff5240567cbb21ab707b34747fc4dcf161dc56c4e2cbae85",
+      "rows": 909,
+      "valid_rows": 909
+    },
+    "159692.SZ": {
+      "first_121_date": "2023-11-17",
+      "first_date": "2023-05-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67630,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159692.SZ/daily.parquet",
+      "partition_sha256": "de9215d9dd539323822c988a5889e6b3de000e049dca18d16af5ae0bb066fba8",
+      "rows": 795,
+      "valid_rows": 795
+    },
+    "159697.SZ": {
+      "first_121_date": "2023-10-31",
+      "first_date": "2023-05-04",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65850,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159697.SZ/daily.parquet",
+      "partition_sha256": "58b6a898de20518918c819ea553ba1bb13d7a772919584e6e4d698c9180f248f",
+      "rows": 808,
+      "valid_rows": 808
+    },
+    "159732.SZ": {
+      "first_121_date": "2022-02-24",
+      "first_date": "2021-08-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 89724,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159732.SZ/daily.parquet",
+      "partition_sha256": "507125a06cba8df4b6225e37b4eb09d6e4c83b79dca5cc9862728e4db81385aa",
+      "rows": 1216,
+      "valid_rows": 1216
+    },
+    "159736.SZ": {
+      "first_121_date": "2022-03-29",
+      "first_date": "2021-09-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 84225,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159736.SZ/daily.parquet",
+      "partition_sha256": "873e27c4dc346a3e0980702ca3f5c6d221f07037e4e4dda58090ac19b444edb5",
+      "rows": 1193,
+      "valid_rows": 1193
+    },
+    "159755.SZ": {
+      "first_121_date": "2021-12-20",
+      "first_date": "2021-06-24",
+      "last_date": "2026-08-28",
+      "partition_bytes": 94135,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159755.SZ/daily.parquet",
+      "partition_sha256": "913c5ac4e1020031185e5c7ff0a883f630e13fc81391354a27db58396b09b1d9",
+      "rows": 1258,
+      "valid_rows": 1258
+    },
+    "159758.SZ": {
+      "first_121_date": "2022-06-30",
+      "first_date": "2021-12-28",
+      "last_date": "2026-08-28",
+      "partition_bytes": 79180,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159758.SZ/daily.parquet",
+      "partition_sha256": "60880635fd18450e690b85929c1faa6682972cbe8204ad65ca8ab848608d7ac4",
+      "rows": 1132,
+      "valid_rows": 1132
+    },
+    "159766.SZ": {
+      "first_121_date": "2022-01-19",
+      "first_date": "2021-07-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 88047,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159766.SZ/daily.parquet",
+      "partition_sha256": "562d1d73fe718630f28b666fad8f79f93a5a02a3871b047579c67d452055d3a8",
+      "rows": 1237,
+      "valid_rows": 1237
+    },
+    "159781.SZ": {
+      "first_121_date": "2021-12-29",
+      "first_date": "2021-07-05",
+      "last_date": "2026-08-28",
+      "partition_bytes": 90756,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159781.SZ/daily.parquet",
+      "partition_sha256": "cf8e0ef4333f702f45a4ea205ffb9c76d132ee66930ee9394756787735be4497",
+      "rows": 1251,
+      "valid_rows": 1251
+    },
+    "159790.SZ": {
+      "first_121_date": "2022-02-09",
+      "first_date": "2021-08-06",
+      "last_date": "2026-08-28",
+      "partition_bytes": 87218,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159790.SZ/daily.parquet",
+      "partition_sha256": "7329b7228a1c3d566058eaf0dbce04985529090117c3d261c910f1b80e7a228c",
+      "rows": 1227,
+      "valid_rows": 1227
+    },
+    "159796.SZ": {
+      "first_121_date": "2022-09-06",
+      "first_date": "2022-03-14",
+      "last_date": "2026-08-28",
+      "partition_bytes": 83158,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159796.SZ/daily.parquet",
+      "partition_sha256": "cf6d8ab8e6b86821a921f9d99a75a55ffacac732cb20126589b651c7b0a3dd43",
+      "rows": 1084,
+      "valid_rows": 1084
+    },
+    "159819.SZ": {
+      "first_121_date": "2021-03-26",
+      "first_date": "2020-09-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 101443,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159819.SZ/daily.parquet",
+      "partition_sha256": "a3ff7ece04b07ba5b953687106b9c5d30000a407bb660a4b06728a274c304f51",
+      "rows": 1437,
+      "valid_rows": 1437
+    },
+    "159825.SZ": {
+      "first_121_date": "2021-06-30",
+      "first_date": "2020-12-29",
+      "last_date": "2026-08-28",
+      "partition_bytes": 91612,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159825.SZ/daily.parquet",
+      "partition_sha256": "d75a426c34cda82abb948a31079e1a99324c122044aaa5dbbb9e4c7815d21bd6",
+      "rows": 1374,
+      "valid_rows": 1374
+    },
+    "159837.SZ": {
+      "first_121_date": "2021-07-28",
+      "first_date": "2021-01-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 91529,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159837.SZ/daily.parquet",
+      "partition_sha256": "607b8b210ced6a41f9ac0a6fed0f5e7a8cdbf18cd7ed8fb10368b3f2f0d5fa94",
+      "rows": 1354,
+      "valid_rows": 1354
+    },
+    "159851.SZ": {
+      "first_121_date": "2021-09-10",
+      "first_date": "2021-03-19",
+      "last_date": "2026-08-28",
+      "partition_bytes": 97350,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159851.SZ/daily.parquet",
+      "partition_sha256": "0f4960abf6d565a70a83fc9c96dec161709385a59bad06d9755478f8d64375f8",
+      "rows": 1322,
+      "valid_rows": 1322
+    },
+    "159852.SZ": {
+      "first_121_date": "2021-08-10",
+      "first_date": "2021-02-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 94063,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159852.SZ/daily.parquet",
+      "partition_sha256": "80d0d1ddcc76aa94fe7345febb682bcf478a8aeeebb4df13d06c4759c7b772c2",
+      "rows": 1345,
+      "valid_rows": 1345
+    },
+    "159859.SZ": {
+      "first_121_date": "2021-12-31",
+      "first_date": "2021-07-07",
+      "last_date": "2026-08-28",
+      "partition_bytes": 87393,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159859.SZ/daily.parquet",
+      "partition_sha256": "e3abc9f1a1776ce9133dacc51accf5316fa1280851de078242db8f4a078427c2",
+      "rows": 1249,
+      "valid_rows": 1249
+    },
+    "159865.SZ": {
+      "first_121_date": "2021-08-30",
+      "first_date": "2021-03-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 89171,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159865.SZ/daily.parquet",
+      "partition_sha256": "fd48aa74b057afd75acc3fb1788c97e71b0a6d20ad6231ca013ebbb52b6ea0c8",
+      "rows": 1331,
+      "valid_rows": 1331
+    },
+    "159869.SZ": {
+      "first_121_date": "2021-08-27",
+      "first_date": "2021-03-05",
+      "last_date": "2026-08-28",
+      "partition_bytes": 98158,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159869.SZ/daily.parquet",
+      "partition_sha256": "7eb469300a05786bc0a783a2f09808429a5cbeb1c1cfb0c6fe4c44dbcc417025",
+      "rows": 1332,
+      "valid_rows": 1332
+    },
+    "159870.SZ": {
+      "first_121_date": "2021-08-25",
+      "first_date": "2021-03-03",
+      "last_date": "2026-08-28",
+      "partition_bytes": 93195,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159870.SZ/daily.parquet",
+      "partition_sha256": "719fa53cd3f3acd3ad960c4a77be04117c8629b757ccd89ea793c8acafd88744",
+      "rows": 1334,
+      "valid_rows": 1334
+    },
+    "159876.SZ": {
+      "first_121_date": "2021-09-15",
+      "first_date": "2021-03-24",
+      "last_date": "2026-08-28",
+      "partition_bytes": 93447,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159876.SZ/daily.parquet",
+      "partition_sha256": "7aeea0c158d47fcc4e7436a4f37e6cfd0ceec90a9b68ca2b2fdc7b86c8c1492e",
+      "rows": 1318,
+      "valid_rows": 1318
+    },
+    "159880.SZ": {
+      "first_121_date": "2021-09-16",
+      "first_date": "2021-03-25",
+      "last_date": "2026-08-28",
+      "partition_bytes": 95748,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159880.SZ/daily.parquet",
+      "partition_sha256": "8c9e49502adc9e58ec9b1475352f3a44deab8d054d8a0097009e22760fe2d530",
+      "rows": 1318,
+      "valid_rows": 1318
+    },
+    "159883.SZ": {
+      "first_121_date": "2021-11-01",
+      "first_date": "2021-04-30",
+      "last_date": "2026-08-28",
+      "partition_bytes": 87333,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159883.SZ/daily.parquet",
+      "partition_sha256": "50fd16fbc60ed3b52b2c3d1fe8afaeec08fbcb337fe1eeaf39c9191df5f1ec54",
+      "rows": 1293,
+      "valid_rows": 1293
+    },
+    "159901.SZ": {
+      "first_121_date": "2006-10-23",
+      "first_date": "2006-04-24",
+      "last_date": "2026-08-28",
+      "partition_bytes": 392934,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159901.SZ/daily.parquet",
+      "partition_sha256": "ad4f33ff3f26fd4e843beb54b213c53b6e7730b5acb0dcc3200033f874ac00ca",
+      "rows": 4944,
+      "valid_rows": 4944
+    },
+    "159905.SZ": {
+      "first_121_date": "2011-07-11",
+      "first_date": "2011-01-11",
+      "last_date": "2026-08-28",
+      "partition_bytes": 259912,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159905.SZ/daily.parquet",
+      "partition_sha256": "b9b09d7153ba18040e39cec778deca5962b65533d2da77f21551526e50fecc67",
+      "rows": 3797,
+      "valid_rows": 3797
+    },
+    "159915.SZ": {
+      "first_121_date": "2012-06-12",
+      "first_date": "2011-12-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 252827,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159915.SZ/daily.parquet",
+      "partition_sha256": "608c1043d7de858a9658f8574c93e50fb11434d3f4860f0983311a540b95ec91",
+      "rows": 3574,
+      "valid_rows": 3574
+    },
+    "159928.SZ": {
+      "first_121_date": "2014-03-20",
+      "first_date": "2013-09-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 215284,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159928.SZ/daily.parquet",
+      "partition_sha256": "ce18ea6646b6dbbf4b46a6b1d20304f2029c5721b3e6f72a7a00eac3d229692c",
+      "rows": 3148,
+      "valid_rows": 3148
+    },
+    "159929.SZ": {
+      "first_121_date": "2014-03-20",
+      "first_date": "2013-09-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 201022,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159929.SZ/daily.parquet",
+      "partition_sha256": "e440c0644fdd73a697438db94dfca93ef6d15948a3904202a89f310942e4c09e",
+      "rows": 3148,
+      "valid_rows": 3148
+    },
+    "159938.SZ": {
+      "first_121_date": "2015-07-07",
+      "first_date": "2015-01-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 182630,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159938.SZ/daily.parquet",
+      "partition_sha256": "e4002a7c78e6d4be814978eb8d595d58984ecffc2469b6c3baf6084ff85f59d2",
+      "rows": 2830,
+      "valid_rows": 2830
+    },
+    "159949.SZ": {
+      "first_121_date": "2017-01-18",
+      "first_date": "2016-07-22",
+      "last_date": "2026-08-28",
+      "partition_bytes": 165906,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159949.SZ/daily.parquet",
+      "partition_sha256": "fc3090683eff4de3968bbd8c2c4b74c7c7f0c4b8846286d79d963fcb7e9d6655",
+      "rows": 2454,
+      "valid_rows": 2454
+    },
+    "159967.SZ": {
+      "first_121_date": "2020-01-08",
+      "first_date": "2019-07-15",
+      "last_date": "2026-08-28",
+      "partition_bytes": 121325,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159967.SZ/daily.parquet",
+      "partition_sha256": "af33dc09bcd4fb0ee007b3e675d9856612e216d9abd4e89af78dd2473508e4f6",
+      "rows": 1730,
+      "valid_rows": 1730
+    },
+    "159980.SZ": {
+      "first_121_date": "2020-06-24",
+      "first_date": "2019-12-24",
+      "last_date": "2026-08-28",
+      "partition_bytes": 114501,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159980.SZ/daily.parquet",
+      "partition_sha256": "ce31b59e199a4c0e2be79c21707135fdb07d74eeb9d049602ea49cdc0cb66d64",
+      "rows": 1620,
+      "valid_rows": 1620
+    },
+    "159992.SZ": {
+      "first_121_date": "2020-10-12",
+      "first_date": "2020-04-10",
+      "last_date": "2026-08-28",
+      "partition_bytes": 106979,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159992.SZ/daily.parquet",
+      "partition_sha256": "bbc587d42389de75b4adcfd68e35ecec7b51c924a930fed7b46518039f06d670",
+      "rows": 1550,
+      "valid_rows": 1550
+    },
+    "159993.SZ": {
+      "first_121_date": "2020-08-03",
+      "first_date": "2020-02-07",
+      "last_date": "2026-08-28",
+      "partition_bytes": 104714,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159993.SZ/daily.parquet",
+      "partition_sha256": "6989ebdd870056b2b1cd446b8da44f57a840db125c368a7bc5ccf71e4e5d9c7e",
+      "rows": 1593,
+      "valid_rows": 1593
+    },
+    "159995.SZ": {
+      "first_121_date": "2020-08-04",
+      "first_date": "2020-02-10",
+      "last_date": "2026-08-28",
+      "partition_bytes": 114111,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159995.SZ/daily.parquet",
+      "partition_sha256": "dc7dc2c1fb2d714929b57a366ae440a4a5613e923a2f2ed206e688ca3a62d242",
+      "rows": 1593,
+      "valid_rows": 1593
+    },
+    "159997.SZ": {
+      "first_121_date": "2020-09-14",
+      "first_date": "2020-03-20",
+      "last_date": "2026-08-28",
+      "partition_bytes": 109738,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159997.SZ/daily.parquet",
+      "partition_sha256": "37cfcf01a0f7460401d1dcbc29d6913b107d01112f5b52a066eb8fe836ad9c01",
+      "rows": 1564,
+      "valid_rows": 1564
+    },
+    "159998.SZ": {
+      "first_121_date": "2020-10-13",
+      "first_date": "2020-04-13",
+      "last_date": "2026-08-28",
+      "partition_bytes": 103257,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=159998.SZ/daily.parquet",
+      "partition_sha256": "858e2f04bc80e6f665286c056c5b3b9b5aabe1887b996b9b0327a966672de539",
+      "rows": 1549,
+      "valid_rows": 1549
+    },
+    "510050.SH": {
+      "first_121_date": "2006-02-24",
+      "first_date": "2005-02-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 411335,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510050.SH/daily.parquet",
+      "partition_sha256": "8b55859eaf5baa12725f3db6ac264cdababe4bc216bd95d57aaeffb5dbcc3321",
+      "rows": 5231,
+      "valid_rows": 5108
+    },
+    "510150.SH": {
+      "first_121_date": "2011-08-18",
+      "first_date": "2011-02-25",
+      "last_date": "2026-08-28",
+      "partition_bytes": 262716,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510150.SH/daily.parquet",
+      "partition_sha256": "e9869996feae9d29c8c8149f75f267faa7133c19163739b249a1fe55d98ad3c6",
+      "rows": 3756,
+      "valid_rows": 3756
+    },
+    "510180.SH": {
+      "first_121_date": "2006-11-09",
+      "first_date": "2006-05-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 396919,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510180.SH/daily.parquet",
+      "partition_sha256": "57ed8080ba4bcd8490ec68f159c7beef99ab0b293562031ae2f797b5a37e4ec3",
+      "rows": 4930,
+      "valid_rows": 4930
+    },
+    "510210.SH": {
+      "first_121_date": "2011-09-16",
+      "first_date": "2011-03-25",
+      "last_date": "2026-08-28",
+      "partition_bytes": 261079,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510210.SH/daily.parquet",
+      "partition_sha256": "83ab66a0b05345d2346bb29bcaf0d62062fe9e42f641680360fc0880c65f8241",
+      "rows": 3700,
+      "valid_rows": 3700
+    },
+    "510300.SH": {
+      "first_121_date": "2012-11-20",
+      "first_date": "2012-05-28",
+      "last_date": "2026-08-28",
+      "partition_bytes": 285179,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510300.SH/daily.parquet",
+      "partition_sha256": "15458d4adcd6e01d9b8d07f348df4bbb3288a5c231db0e1bcb9211338e8067cf",
+      "rows": 3466,
+      "valid_rows": 3466
+    },
+    "510500.SH": {
+      "first_121_date": "2013-09-11",
+      "first_date": "2013-03-15",
+      "last_date": "2026-08-28",
+      "partition_bytes": 324583,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510500.SH/daily.parquet",
+      "partition_sha256": "85fa3fb307a500161b8f03b311241806d3afb68024c09446139d894d6d0ee5d6",
+      "rows": 3269,
+      "valid_rows": 3269
+    },
+    "510720.SH": {
+      "first_121_date": "2024-11-11",
+      "first_date": "2024-05-15",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62122,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510720.SH/daily.parquet",
+      "partition_sha256": "69769bc4a1923aafa1630e8eaf7fdb11c79db77d751df3b5927561d30ed9eea7",
+      "rows": 559,
+      "valid_rows": 559
+    },
+    "510810.SH": {
+      "first_121_date": "2017-03-02",
+      "first_date": "2016-08-29",
+      "last_date": "2026-08-28",
+      "partition_bytes": 149194,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510810.SH/daily.parquet",
+      "partition_sha256": "da63bdc6a005e09346c19aa907279ace2e4a26eeb9920f17fb9f69873e1eda8c",
+      "rows": 2420,
+      "valid_rows": 2420
+    },
+    "510880.SH": {
+      "first_121_date": "2007-07-19",
+      "first_date": "2007-01-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 372398,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=510880.SH/daily.parquet",
+      "partition_sha256": "888b5247104021cd88b7895bfe924ccb74918cb6fe86cef079457fc2c2586250",
+      "rows": 4767,
+      "valid_rows": 4715
+    },
+    "512010.SH": {
+      "first_121_date": "2014-04-23",
+      "first_date": "2013-10-28",
+      "last_date": "2026-08-28",
+      "partition_bytes": 204010,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512010.SH/daily.parquet",
+      "partition_sha256": "01c95f945935f779cb8de4d3eede6ddba430c673b800a2f76751bc8d3890c4eb",
+      "rows": 3123,
+      "valid_rows": 3123
+    },
+    "512040.SH": {
+      "first_121_date": "2019-05-31",
+      "first_date": "2018-11-29",
+      "last_date": "2026-08-28",
+      "partition_bytes": 130129,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512040.SH/daily.parquet",
+      "partition_sha256": "95b342e0bb32e5cd296a9f68d86ead3a650e19143870eeab894a15866abcb52d",
+      "rows": 1880,
+      "valid_rows": 1880
+    },
+    "512070.SH": {
+      "first_121_date": "2015-01-14",
+      "first_date": "2014-07-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 200130,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512070.SH/daily.parquet",
+      "partition_sha256": "0484228e52065a7f258345222776d694eae941f473268d8eeb9d9474033666ef",
+      "rows": 2945,
+      "valid_rows": 2945
+    },
+    "512100.SH": {
+      "first_121_date": "2017-05-04",
+      "first_date": "2016-11-04",
+      "last_date": "2026-08-28",
+      "partition_bytes": 193231,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512100.SH/daily.parquet",
+      "partition_sha256": "0f858b288614d27c4b91a4eb28255cec965cee9fc70eef73a1952e00008e3a8f",
+      "rows": 2385,
+      "valid_rows": 2385
+    },
+    "512170.SH": {
+      "first_121_date": "2019-12-10",
+      "first_date": "2019-06-17",
+      "last_date": "2026-08-28",
+      "partition_bytes": 121856,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512170.SH/daily.parquet",
+      "partition_sha256": "ae58b7275ed0a380d575e117abf817fea59d97d68e6ce18183b9875735d7f3e7",
+      "rows": 1749,
+      "valid_rows": 1749
+    },
+    "512200.SH": {
+      "first_121_date": "2018-03-27",
+      "first_date": "2017-09-25",
+      "last_date": "2026-08-28",
+      "partition_bytes": 154362,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512200.SH/daily.parquet",
+      "partition_sha256": "833525907501f24700a10e1d33691796f22e9fc7118529b06d0eaf3b53a3c51a",
+      "rows": 2166,
+      "valid_rows": 2166
+    },
+    "512290.SH": {
+      "first_121_date": "2019-11-13",
+      "first_date": "2019-05-20",
+      "last_date": "2026-08-28",
+      "partition_bytes": 121998,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512290.SH/daily.parquet",
+      "partition_sha256": "48943c91432348636fcd785e716781d3175a4949e391fc3b1c74e9a7f3d4954d",
+      "rows": 1769,
+      "valid_rows": 1769
+    },
+    "512400.SH": {
+      "first_121_date": "2018-03-05",
+      "first_date": "2017-09-01",
+      "last_date": "2026-08-28",
+      "partition_bytes": 160936,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512400.SH/daily.parquet",
+      "partition_sha256": "7c10cf5ce5137f53fd39b7ba3cfcd2c3aec16834d429ddace63551ad02afd4cb",
+      "rows": 2182,
+      "valid_rows": 2182
+    },
+    "512480.SH": {
+      "first_121_date": "2019-12-05",
+      "first_date": "2019-06-12",
+      "last_date": "2026-08-28",
+      "partition_bytes": 126755,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512480.SH/daily.parquet",
+      "partition_sha256": "622221f625157fb1319146700b461348c0e86bd52dd532a40fef0f54b13dda45",
+      "rows": 1752,
+      "valid_rows": 1752
+    },
+    "512660.SH": {
+      "first_121_date": "2017-02-09",
+      "first_date": "2016-08-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 156655,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512660.SH/daily.parquet",
+      "partition_sha256": "f8f3db8ec3dccd49a97e89aae180688fbf5a6885df2fc269ff37104aaccfb30f",
+      "rows": 2443,
+      "valid_rows": 2443
+    },
+    "512670.SH": {
+      "first_121_date": "2020-02-04",
+      "first_date": "2019-08-01",
+      "last_date": "2026-08-28",
+      "partition_bytes": 116330,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512670.SH/daily.parquet",
+      "partition_sha256": "06e5a89e3859d67667d68b34f54a12568c71e35656f0ee157217d97d5ba31517",
+      "rows": 1716,
+      "valid_rows": 1716
+    },
+    "512690.SH": {
+      "first_121_date": "2019-10-30",
+      "first_date": "2019-05-06",
+      "last_date": "2026-08-28",
+      "partition_bytes": 129667,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512690.SH/daily.parquet",
+      "partition_sha256": "337bf62374292870b177a57cd4fb8a66d88ad5e38b400fadadef2cd9a9b2a7a6",
+      "rows": 1778,
+      "valid_rows": 1778
+    },
+    "512710.SH": {
+      "first_121_date": "2020-02-27",
+      "first_date": "2019-08-26",
+      "last_date": "2026-08-28",
+      "partition_bytes": 112436,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512710.SH/daily.parquet",
+      "partition_sha256": "6a6dd118d0f9b6e6c08bed1e9bdaf34e2482181bd91535d495493905755cdf0d",
+      "rows": 1699,
+      "valid_rows": 1699
+    },
+    "512760.SH": {
+      "first_121_date": "2019-12-05",
+      "first_date": "2019-06-12",
+      "last_date": "2026-08-28",
+      "partition_bytes": 124411,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512760.SH/daily.parquet",
+      "partition_sha256": "49c787f72671dbfb829974a00c1b85bb9d86246d745412d10122b60cbc250917",
+      "rows": 1752,
+      "valid_rows": 1752
+    },
+    "512800.SH": {
+      "first_121_date": "2018-01-26",
+      "first_date": "2017-08-03",
+      "last_date": "2026-08-28",
+      "partition_bytes": 142635,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512800.SH/daily.parquet",
+      "partition_sha256": "da1e3fa91582357774f0a578b26e057df8963b7ddabfb7b51d1a55f4c9f921c8",
+      "rows": 2203,
+      "valid_rows": 2203
+    },
+    "512880.SH": {
+      "first_121_date": "2017-02-09",
+      "first_date": "2016-08-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 154509,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512880.SH/daily.parquet",
+      "partition_sha256": "1107ac06b170fe8c0c5e0946d45969ec1de8340c56328b864efe31fba9258be9",
+      "rows": 2443,
+      "valid_rows": 2443
+    },
+    "512890.SH": {
+      "first_121_date": "2019-07-19",
+      "first_date": "2019-01-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 118896,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512890.SH/daily.parquet",
+      "partition_sha256": "671d82e4ca1ad056d066d921c496980e2c4f45db003dd37d576b874af35c5452",
+      "rows": 1845,
+      "valid_rows": 1845
+    },
+    "512940.SH": {
+      "first_121_date": "2026-08-20",
+      "first_date": "2026-02-26",
+      "last_date": "2026-08-28",
+      "partition_bytes": 31417,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512940.SH/daily.parquet",
+      "partition_sha256": "852c4766660aa139a51792730493872ae65f57ae9efbbdf7cc7191520e5ac4a3",
+      "rows": 127,
+      "valid_rows": 127
+    },
+    "512950.SH": {
+      "first_121_date": "2019-07-19",
+      "first_date": "2019-01-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 118347,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512950.SH/daily.parquet",
+      "partition_sha256": "d57472658044afb2c1a342ab56dbe4257a6f1554086b91d423a415c6badd72c2",
+      "rows": 1846,
+      "valid_rows": 1846
+    },
+    "512980.SH": {
+      "first_121_date": "2018-07-20",
+      "first_date": "2018-01-19",
+      "last_date": "2026-08-28",
+      "partition_bytes": 134247,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=512980.SH/daily.parquet",
+      "partition_sha256": "bae0530399c13c1fde25e71335790a3613e6e19c62765369c5ee0844e5e60dd5",
+      "rows": 2088,
+      "valid_rows": 2088
+    },
+    "515000.SH": {
+      "first_121_date": "2020-02-19",
+      "first_date": "2019-08-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 117295,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515000.SH/daily.parquet",
+      "partition_sha256": "f3dd96f47be42818c1b947828565d610464818f64d60b623a51c4020fe6fd867",
+      "rows": 1706,
+      "valid_rows": 1706
+    },
+    "515030.SH": {
+      "first_121_date": "2020-08-27",
+      "first_date": "2020-03-04",
+      "last_date": "2026-08-28",
+      "partition_bytes": 118801,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515030.SH/daily.parquet",
+      "partition_sha256": "ee3d81c2f1bf83bfbe7787e3f7429267f854f90d7239d77996b40709134743a0",
+      "rows": 1576,
+      "valid_rows": 1576
+    },
+    "515050.SH": {
+      "first_121_date": "2020-04-13",
+      "first_date": "2019-10-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 119837,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515050.SH/daily.parquet",
+      "partition_sha256": "652f2ef74ca1c547062579f61b7d12d57f9f00d9cf4b70214c998d08bf5d4f46",
+      "rows": 1669,
+      "valid_rows": 1669
+    },
+    "515170.SH": {
+      "first_121_date": "2021-07-14",
+      "first_date": "2021-01-13",
+      "last_date": "2026-08-28",
+      "partition_bytes": 91976,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515170.SH/daily.parquet",
+      "partition_sha256": "9b3141e80bb7d29ea56b759054bfc0bdef9b1d18d87776e3663ed75c8bad0d4f",
+      "rows": 1364,
+      "valid_rows": 1364
+    },
+    "515180.SH": {
+      "first_121_date": "2020-06-22",
+      "first_date": "2019-12-20",
+      "last_date": "2026-08-28",
+      "partition_bytes": 116206,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515180.SH/daily.parquet",
+      "partition_sha256": "d857d97b630c67e2814414a9f9d92455f98593ef90b643fa62ae743f37a8616f",
+      "rows": 1622,
+      "valid_rows": 1622
+    },
+    "515210.SH": {
+      "first_121_date": "2020-08-25",
+      "first_date": "2020-03-02",
+      "last_date": "2026-08-28",
+      "partition_bytes": 118381,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515210.SH/daily.parquet",
+      "partition_sha256": "2d3afeb1298e37e30630a677944f2b364c2fe32351b0a3c64d71d5c6286b3cfa",
+      "rows": 1578,
+      "valid_rows": 1578
+    },
+    "515220.SH": {
+      "first_121_date": "2020-08-25",
+      "first_date": "2020-03-02",
+      "last_date": "2026-08-28",
+      "partition_bytes": 128869,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515220.SH/daily.parquet",
+      "partition_sha256": "a537779e9704f94e55f6ca32b0c9056075fe6e2ddd5fd2f338df431561b90b45",
+      "rows": 1578,
+      "valid_rows": 1578
+    },
+    "515230.SH": {
+      "first_121_date": "2021-08-24",
+      "first_date": "2021-03-02",
+      "last_date": "2026-08-28",
+      "partition_bytes": 92995,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515230.SH/daily.parquet",
+      "partition_sha256": "aab3221a792167fe4aeb1ed559e33cf51cc86cdaf239a3ec3517a437e71cd7ff",
+      "rows": 1335,
+      "valid_rows": 1335
+    },
+    "515300.SH": {
+      "first_121_date": "2020-03-23",
+      "first_date": "2019-09-19",
+      "last_date": "2026-08-28",
+      "partition_bytes": 122740,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515300.SH/daily.parquet",
+      "partition_sha256": "e9ef6e588f81f070a1dc7b806f95f3c9b9ea960710f6800dc47614fe3540ac96",
+      "rows": 1683,
+      "valid_rows": 1683
+    },
+    "515400.SH": {
+      "first_121_date": "2021-07-21",
+      "first_date": "2021-01-20",
+      "last_date": "2026-08-28",
+      "partition_bytes": 93876,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515400.SH/daily.parquet",
+      "partition_sha256": "2fc3f2e1cacc30191d309796a097f22c764e446c112f095b3402bfee431fbec0",
+      "rows": 1359,
+      "valid_rows": 1359
+    },
+    "515450.SH": {
+      "first_121_date": "2020-08-20",
+      "first_date": "2020-02-26",
+      "last_date": "2026-08-28",
+      "partition_bytes": 116711,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515450.SH/daily.parquet",
+      "partition_sha256": "d57b20a3d1e26169315033320c8b2012ca1dbd7e95288ce68097ede959045193",
+      "rows": 1581,
+      "valid_rows": 1581
+    },
+    "515630.SH": {
+      "first_121_date": "2020-09-28",
+      "first_date": "2020-04-03",
+      "last_date": "2026-08-28",
+      "partition_bytes": 103136,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515630.SH/daily.parquet",
+      "partition_sha256": "01fb0a359c8dea763dcb269ce426d2f045b3f1a81e0743c04c9adb36ee411a86",
+      "rows": 1554,
+      "valid_rows": 1554
+    },
+    "515650.SH": {
+      "first_121_date": "2020-05-12",
+      "first_date": "2019-11-11",
+      "last_date": "2026-08-28",
+      "partition_bytes": 110699,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515650.SH/daily.parquet",
+      "partition_sha256": "3b79b1ed47f7cbe711c43d7340bed521b8fe90ab5e238533823e16f5d82be385",
+      "rows": 1651,
+      "valid_rows": 1651
+    },
+    "515700.SH": {
+      "first_121_date": "2020-08-04",
+      "first_date": "2020-02-10",
+      "last_date": "2026-08-28",
+      "partition_bytes": 123865,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515700.SH/daily.parquet",
+      "partition_sha256": "9f608efc596a7d5d0cc4220846d18efe21ee81a10f028e3ef7a5723df314f22e",
+      "rows": 1593,
+      "valid_rows": 1593
+    },
+    "515790.SH": {
+      "first_121_date": "2021-06-21",
+      "first_date": "2020-12-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 102803,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515790.SH/daily.parquet",
+      "partition_sha256": "3370e24995554a931682773c9c78dbade0d3a6c177f5f19cc0b39180a4a6f16f",
+      "rows": 1381,
+      "valid_rows": 1381
+    },
+    "515800.SH": {
+      "first_121_date": "2020-06-16",
+      "first_date": "2019-12-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 111938,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515800.SH/daily.parquet",
+      "partition_sha256": "928cd91c4e863736c9c14ed38055ffbc83d8547eee81626cda2d87c9de26fc1e",
+      "rows": 1626,
+      "valid_rows": 1626
+    },
+    "515880.SH": {
+      "first_121_date": "2020-03-11",
+      "first_date": "2019-09-06",
+      "last_date": "2026-08-28",
+      "partition_bytes": 122179,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515880.SH/daily.parquet",
+      "partition_sha256": "fd3223ee27f817870755f62e37540f42f098fa132e486d99b2a7e1dc83da7440",
+      "rows": 1691,
+      "valid_rows": 1691
+    },
+    "515900.SH": {
+      "first_121_date": "2020-06-18",
+      "first_date": "2019-12-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 111137,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515900.SH/daily.parquet",
+      "partition_sha256": "5d0c8302991bd0aaf640cba262e7bc61b0c9aedc7ebd4a65c95d47c535312a53",
+      "rows": 1624,
+      "valid_rows": 1624
+    },
+    "515980.SH": {
+      "first_121_date": "2020-08-04",
+      "first_date": "2020-02-10",
+      "last_date": "2026-08-28",
+      "partition_bytes": 108128,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=515980.SH/daily.parquet",
+      "partition_sha256": "2564c50e0f61e433c7e2ddfaf443146099c2c39c39fa19a14c6d7ed2dbed3b94",
+      "rows": 1593,
+      "valid_rows": 1593
+    },
+    "516130.SH": {
+      "first_121_date": "2022-04-11",
+      "first_date": "2021-10-13",
+      "last_date": "2026-08-28",
+      "partition_bytes": 79984,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516130.SH/daily.parquet",
+      "partition_sha256": "37f36a9c4eff2f5e055fa539e0d81661b83cb09e37d932d4f06400f4f17c34d9",
+      "rows": 1186,
+      "valid_rows": 1186
+    },
+    "516150.SH": {
+      "first_121_date": "2021-09-08",
+      "first_date": "2021-03-17",
+      "last_date": "2026-08-28",
+      "partition_bytes": 100433,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516150.SH/daily.parquet",
+      "partition_sha256": "2aad90d5220492b746701660e12b347b1acf43782ffbeee0075cd07c76f7194a",
+      "rows": 1324,
+      "valid_rows": 1324
+    },
+    "516160.SH": {
+      "first_121_date": "2021-08-05",
+      "first_date": "2021-02-04",
+      "last_date": "2026-08-28",
+      "partition_bytes": 116723,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516160.SH/daily.parquet",
+      "partition_sha256": "3244896495e7793fed9dddecba4fce3224aec1960794552125559da2870672b5",
+      "rows": 1348,
+      "valid_rows": 1348
+    },
+    "516350.SH": {
+      "first_121_date": "2022-06-27",
+      "first_date": "2021-12-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 87345,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516350.SH/daily.parquet",
+      "partition_sha256": "47aed9190567fe3b871ef3b2558da736f986ed62334c30c11784cdfe217397fb",
+      "rows": 1135,
+      "valid_rows": 1135
+    },
+    "516510.SH": {
+      "first_121_date": "2021-09-30",
+      "first_date": "2021-04-07",
+      "last_date": "2026-08-28",
+      "partition_bytes": 97114,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516510.SH/daily.parquet",
+      "partition_sha256": "fc01d96108713aee901706d1e28939897f0091f70a1c4d47c8829e00abe3727b",
+      "rows": 1310,
+      "valid_rows": 1310
+    },
+    "516570.SH": {
+      "first_121_date": "2021-12-14",
+      "first_date": "2021-06-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 86981,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516570.SH/daily.parquet",
+      "partition_sha256": "ed033fc7312ccc2f8142fe8d7b8b0fa042f66395d0b18f0f340a7d57b3a4f794",
+      "rows": 1262,
+      "valid_rows": 1262
+    },
+    "516650.SH": {
+      "first_121_date": "2021-12-15",
+      "first_date": "2021-06-21",
+      "last_date": "2026-08-28",
+      "partition_bytes": 93332,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516650.SH/daily.parquet",
+      "partition_sha256": "0d40351eb0546e31376a59c79ed4b6d4070acec79e05a73a9cafa9bf09de3e7e",
+      "rows": 1261,
+      "valid_rows": 1261
+    },
+    "516820.SH": {
+      "first_121_date": "2021-12-27",
+      "first_date": "2021-07-01",
+      "last_date": "2026-08-28",
+      "partition_bytes": 85671,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516820.SH/daily.parquet",
+      "partition_sha256": "ad5f20f84f15686ec30e7c0149618c04ce766cbdf93de20950d778652fa25cc7",
+      "rows": 1253,
+      "valid_rows": 1253
+    },
+    "516970.SH": {
+      "first_121_date": "2021-12-29",
+      "first_date": "2021-07-05",
+      "last_date": "2026-08-28",
+      "partition_bytes": 85866,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=516970.SH/daily.parquet",
+      "partition_sha256": "5464b3546f7f7431f3e9266a005af7d4ffe112999ebcfe60adbc32ce11f57656",
+      "rows": 1251,
+      "valid_rows": 1251
+    },
+    "560050.SH": {
+      "first_121_date": "2022-05-10",
+      "first_date": "2021-11-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 83450,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=560050.SH/daily.parquet",
+      "partition_sha256": "0b526bb0cd93d8b134af639ff29dd8edd8fa41120804282d798ba58e52c6a702",
+      "rows": 1168,
+      "valid_rows": 1168
+    },
+    "560080.SH": {
+      "first_121_date": "2023-04-12",
+      "first_date": "2022-10-17",
+      "last_date": "2026-08-28",
+      "partition_bytes": 72038,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=560080.SH/daily.parquet",
+      "partition_sha256": "8d811052316f5afea922e115784ebc997f6f3d5bce1cb924a6d75398633f906f",
+      "rows": 941,
+      "valid_rows": 941
+    },
+    "560280.SH": {
+      "first_121_date": "2024-04-26",
+      "first_date": "2023-10-30",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63942,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=560280.SH/daily.parquet",
+      "partition_sha256": "a1b64b0217cc09826a8bae4886f97d1af87b1194c95c60e277e83f83cbd4dcb8",
+      "rows": 689,
+      "valid_rows": 689
+    },
+    "560570.SH": {
+      "first_121_date": "2026-03-25",
+      "first_date": "2025-09-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 36348,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=560570.SH/daily.parquet",
+      "partition_sha256": "82ff25ad041536a361d69e7559011051e5302763e587ae4297c2dee2dc86f323",
+      "rows": 228,
+      "valid_rows": 228
+    },
+    "560710.SH": {
+      "first_121_date": "2026-08-10",
+      "first_date": "2026-02-06",
+      "last_date": "2026-08-28",
+      "partition_bytes": 32115,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=560710.SH/daily.parquet",
+      "partition_sha256": "337ad569c8aa684bfed18381db70eeba7dfa442cf375e34bbd1faf8e88af2d13",
+      "rows": 135,
+      "valid_rows": 135
+    },
+    "560860.SH": {
+      "first_121_date": "2023-09-05",
+      "first_date": "2023-03-13",
+      "last_date": "2026-08-28",
+      "partition_bytes": 71704,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=560860.SH/daily.parquet",
+      "partition_sha256": "36517a71bded4ef904784472f4890a4e68ee5958b329e6a7ac09bd7130d38ceb",
+      "rows": 842,
+      "valid_rows": 842
+    },
+    "561360.SH": {
+      "first_121_date": "2024-04-29",
+      "first_date": "2023-10-31",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61469,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=561360.SH/daily.parquet",
+      "partition_sha256": "c1f6049c7c5aee95595f0bb1f171fccd2e48289995c9b629887b7c2586e57bcb",
+      "rows": 688,
+      "valid_rows": 688
+    },
+    "561380.SH": {
+      "first_121_date": "2025-06-25",
+      "first_date": "2024-12-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 52984,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=561380.SH/daily.parquet",
+      "partition_sha256": "8cb87366b3e5db42b604d03adf8adb405ee54fbbe7a29f36fdea082c1b994e91",
+      "rows": 409,
+      "valid_rows": 409
+    },
+    "561420.SH": {
+      "first_121_date": null,
+      "first_date": "2026-07-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 24060,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=561420.SH/daily.parquet",
+      "partition_sha256": "63c5f488206a1953d2b4b5dd6e52cbd60190763bedecc5d26df07773c2750083",
+      "rows": 38,
+      "valid_rows": 38
+    },
+    "561550.SH": {
+      "first_121_date": "2022-06-14",
+      "first_date": "2021-12-10",
+      "last_date": "2026-08-28",
+      "partition_bytes": 82509,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=561550.SH/daily.parquet",
+      "partition_sha256": "f523160e265b6b8a6906bf65d20d0df923478d87c1ff7fd32d51a23cdcbb49b3",
+      "rows": 1144,
+      "valid_rows": 1144
+    },
+    "561580.SH": {
+      "first_121_date": "2023-11-24",
+      "first_date": "2023-05-30",
+      "last_date": "2026-08-28",
+      "partition_bytes": 71696,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=561580.SH/daily.parquet",
+      "partition_sha256": "fc69324bdf7cf3a4b27010846be31e03da17d44475140592ee3278244ce9ad4e",
+      "rows": 790,
+      "valid_rows": 790
+    },
+    "561980.SH": {
+      "first_121_date": "2024-03-06",
+      "first_date": "2023-09-01",
+      "last_date": "2026-08-28",
+      "partition_bytes": 73887,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=561980.SH/daily.parquet",
+      "partition_sha256": "49c4c335062023ceb80618450eb47fdf21290deba7f39bc0e9351386935b2138",
+      "rows": 724,
+      "valid_rows": 724
+    },
+    "562060.SH": {
+      "first_121_date": "2024-07-02",
+      "first_date": "2023-12-28",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61814,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=562060.SH/daily.parquet",
+      "partition_sha256": "09a6ddb3fac785478f2461ac2b3ccd41da10a6410a87d490e8d50dbc2e24efa5",
+      "rows": 646,
+      "valid_rows": 646
+    },
+    "562500.SH": {
+      "first_121_date": "2022-07-01",
+      "first_date": "2021-12-29",
+      "last_date": "2026-08-28",
+      "partition_bytes": 84909,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=562500.SH/daily.parquet",
+      "partition_sha256": "40de99f0cfd580722f51a55dee881bcdf27a39c7a60b0420e6728720e700c594",
+      "rows": 1131,
+      "valid_rows": 1131
+    },
+    "562550.SH": {
+      "first_121_date": "2023-09-19",
+      "first_date": "2023-03-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65357,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=562550.SH/daily.parquet",
+      "partition_sha256": "3b9f743692d6a9ffd120a23d101667ccc30de8afdc6478da1bbd129afed9cb42",
+      "rows": 832,
+      "valid_rows": 832
+    },
+    "562800.SH": {
+      "first_121_date": "2022-03-29",
+      "first_date": "2021-09-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 88534,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=562800.SH/daily.parquet",
+      "partition_sha256": "341279f0c9951c54d19b87bb0f3e39ffecf0752ed54f595bb31acc2ffdc460e4",
+      "rows": 1193,
+      "valid_rows": 1193
+    },
+    "562950.SH": {
+      "first_121_date": "2022-07-22",
+      "first_date": "2022-01-20",
+      "last_date": "2026-08-28",
+      "partition_bytes": 84651,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=562950.SH/daily.parquet",
+      "partition_sha256": "0415b96af84f66dbfaa3654b0fc0b0aebe69ccb0a202c25d90c4ee8b260d15a9",
+      "rows": 1116,
+      "valid_rows": 1116
+    },
+    "563230.SH": {
+      "first_121_date": "2026-03-24",
+      "first_date": "2025-09-17",
+      "last_date": "2026-08-28",
+      "partition_bytes": 38190,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=563230.SH/daily.parquet",
+      "partition_sha256": "b05bac307a69948abfa5f20e5070c9dee7e2af8b31775aaa2e001259d4d91c2e",
+      "rows": 229,
+      "valid_rows": 229
+    },
+    "563300.SH": {
+      "first_121_date": "2024-03-19",
+      "first_date": "2023-09-14",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66503,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=563300.SH/daily.parquet",
+      "partition_sha256": "26421e1f2464c6fededa0dac6c48895c73912b1e5714e6fd4dc1275b08a95d78",
+      "rows": 715,
+      "valid_rows": 715
+    },
+    "563360.SH": {
+      "first_121_date": "2025-04-11",
+      "first_date": "2024-10-15",
+      "last_date": "2026-08-28",
+      "partition_bytes": 50592,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=563360.SH/daily.parquet",
+      "partition_sha256": "832dbe8dea03aae328814089e14fdfc8b49dbf5b3906ab2375de8857b61172ad",
+      "rows": 458,
+      "valid_rows": 458
+    },
+    "588000.SH": {
+      "first_121_date": "2021-05-17",
+      "first_date": "2020-11-16",
+      "last_date": "2026-08-28",
+      "partition_bytes": 105049,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588000.SH/daily.parquet",
+      "partition_sha256": "687ee95625f7da757fe5b80b2b0ee5e86c527a4fa12ac908c79a2aeafb5c86a3",
+      "rows": 1405,
+      "valid_rows": 1405
+    },
+    "588020.SH": {
+      "first_121_date": "2024-03-05",
+      "first_date": "2023-08-31",
+      "last_date": "2026-08-28",
+      "partition_bytes": 72494,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588020.SH/daily.parquet",
+      "partition_sha256": "c6129c16349692aa6c3b1bcc805f5429d7adeef9c46e529ad6881ec0b769e42c",
+      "rows": 725,
+      "valid_rows": 725
+    },
+    "588170.SH": {
+      "first_121_date": "2025-09-29",
+      "first_date": "2025-04-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 48548,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588170.SH/daily.parquet",
+      "partition_sha256": "5582f1adc2103878e844fb49703f670a93798f0ba01a63db22fcbc78549cbbf3",
+      "rows": 341,
+      "valid_rows": 341
+    },
+    "588200.SH": {
+      "first_121_date": "2023-04-21",
+      "first_date": "2022-10-26",
+      "last_date": "2026-08-28",
+      "partition_bytes": 86768,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588200.SH/daily.parquet",
+      "partition_sha256": "244304b905f88d09734d3dc3d560b2cfffc608602854fa86815cdc3f1ce95417",
+      "rows": 934,
+      "valid_rows": 934
+    },
+    "588220.SH": {
+      "first_121_date": "2024-03-20",
+      "first_date": "2023-09-15",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67175,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588220.SH/daily.parquet",
+      "partition_sha256": "4dfe708e013d8fc8e3628b64e8ea06122f4d9693654ca677163ffafa7864ca1c",
+      "rows": 714,
+      "valid_rows": 714
+    },
+    "588460.SH": {
+      "first_121_date": "2023-07-07",
+      "first_date": "2023-01-05",
+      "last_date": "2026-08-28",
+      "partition_bytes": 75861,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588460.SH/daily.parquet",
+      "partition_sha256": "aa4eb090cc01bee918656724f1244a409c6707ac4402326b002d0543459206e5",
+      "rows": 884,
+      "valid_rows": 884
+    },
+    "588790.SH": {
+      "first_121_date": "2025-07-11",
+      "first_date": "2025-01-09",
+      "last_date": "2026-08-28",
+      "partition_bytes": 47510,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=588790.SH/daily.parquet",
+      "partition_sha256": "c94d205164945b0497074c485215e3cac43b065823767024fc14e5c29742ecac",
+      "rows": 397,
+      "valid_rows": 397
+    },
+    "589070.SH": {
+      "first_121_date": "2026-07-27",
+      "first_date": "2026-01-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 33307,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=589070.SH/daily.parquet",
+      "partition_sha256": "05e4d9ee00a9ec32adb6ba0bdcf1ce7a57bd0866e38cb56a3e7f76e1f33d41cc",
+      "rows": 145,
+      "valid_rows": 145
+    },
+    "589680.SH": {
+      "first_121_date": "2025-08-27",
+      "first_date": "2025-03-05",
+      "last_date": "2026-08-28",
+      "partition_bytes": 46911,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=589680.SH/daily.parquet",
+      "partition_sha256": "2591b44b27d8022d2c2597e800b18f6d13ba2c1fa89ad65b56e792999a36589f",
+      "rows": 364,
+      "valid_rows": 364
+    },
+    "589720.SH": {
+      "first_121_date": "2026-01-28",
+      "first_date": "2025-08-01",
+      "last_date": "2026-08-28",
+      "partition_bytes": 39893,
+      "partition_path": "data/market_data_qmt_v1/daily/symbol=589720.SH/daily.parquet",
+      "partition_sha256": "8473f8d995a0f910014d617eb41f6e493a5191e713b142e0e2c04b4950418189",
+      "rows": 262,
+      "valid_rows": 262
+    }
+  },
+  "per_symbol_minute_critical_coverage": {
+    "159141.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 174,
+        "OPEN_BAR_09_30": 174,
+        "PSEUDO_CLOSE_14_57_OPEN": 174
+      },
+      "first_date": "2025-12-11",
+      "last_date": "2026-08-28",
+      "partition_bytes": 55250,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159141.SZ/critical.parquet",
+      "partition_sha256": "cc04b78194a5cff209e032c5629c0bfceede51be973944379a0ef15b977eced0",
+      "rows": 522,
+      "valid_rows": 522
+    },
+    "159201.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63021,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159201.SZ/critical.parquet",
+      "partition_sha256": "0e0cf2665abccf3f80a240434b32bf78908f8302388e604fdfd6d0ee205686fa",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159206.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68795,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159206.SZ/critical.parquet",
+      "partition_sha256": "408dee64113bb011b7cfb6e289ad08a8fdf3f6f107f6aa0f3f5ce02da0678893",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159207.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 242,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60948,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159207.SZ/critical.parquet",
+      "partition_sha256": "84c7b5167864868a49861cf35cf8ea940bf0034b74cefc2e974458394fe0aaf9",
+      "rows": 730,
+      "valid_rows": 712
+    },
+    "159209.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 231,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66704,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159209.SZ/critical.parquet",
+      "partition_sha256": "72658d393b2def878487cbb467b7bbfde08c6c058b12305c4c0cf29eb12ec050",
+      "rows": 719,
+      "valid_rows": 715
+    },
+    "159227.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65074,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159227.SZ/critical.parquet",
+      "partition_sha256": "eccf1a49d5ee70366383f0bff999bbd4f9481578bc81357de972755fdbb4bec1",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159235.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60123,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159235.SZ/critical.parquet",
+      "partition_sha256": "4ab4d404e10ee0ee3b6a4995ebb0662df74ed5b4ce9e84290fa7de8ec8bc0a68",
+      "rows": 731,
+      "valid_rows": 668
+    },
+    "159259.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 243,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 243
+      },
+      "first_date": "2025-08-28",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66696,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159259.SZ/critical.parquet",
+      "partition_sha256": "0c74b84d16870d54a052340096145be8f1f78bc55338eab87ff72915f8f12a1e",
+      "rows": 729,
+      "valid_rows": 727
+    },
+    "159263.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61298,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159263.SZ/critical.parquet",
+      "partition_sha256": "49134937c20f833cbd28d95d0af180a6ba54a85fe6ece88d3e13de26b7cb8fca",
+      "rows": 731,
+      "valid_rows": 726
+    },
+    "159307.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 239,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62363,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159307.SZ/critical.parquet",
+      "partition_sha256": "8a30122294dde0e9574a02d66d9c3af02215e46f5b0b536e97681d7a37980143",
+      "rows": 727,
+      "valid_rows": 726
+    },
+    "159325.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68777,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159325.SZ/critical.parquet",
+      "partition_sha256": "1b0e983422d2423d53664fd9852b5c3733f032b1b277851e2474702df09ce6d7",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159326.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 69693,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159326.SZ/critical.parquet",
+      "partition_sha256": "5ab2ae52accc127045ea2fb1b0bdde49732f55454fcbfd00f295481d392a2ed3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159363.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67254,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159363.SZ/critical.parquet",
+      "partition_sha256": "bc9682d662f3a7879172422406ae3753f93324a4cf92b55a21f27b88197e3378",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159387.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63081,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159387.SZ/critical.parquet",
+      "partition_sha256": "eb846458eaa581052dce026597836de888e849cff8b8201a1464a2826a7e6cce",
+      "rows": 731,
+      "valid_rows": 673
+    },
+    "159399.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 231,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 71114,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159399.SZ/critical.parquet",
+      "partition_sha256": "d054e362070edeb40e47e0294a14467ec0a10e59de7bacacccfaf5670fe94176",
+      "rows": 719,
+      "valid_rows": 719
+    },
+    "159516.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 70206,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159516.SZ/critical.parquet",
+      "partition_sha256": "8cdaf822d12d3197d0e9aa1183fa2cc9c73c01b8a037c540bf02189d14dc1c21",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159530.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65406,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159530.SZ/critical.parquet",
+      "partition_sha256": "7e0853b376e0af10291f0bd771ef742d1664daf0b85b7d2415def9cf2e5ed4ef",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159562.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68519,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159562.SZ/critical.parquet",
+      "partition_sha256": "5e81cd5774b428068e37ca9a0f925114fc102ab428a26b45a164d2089a902102",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159566.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67156,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159566.SZ/critical.parquet",
+      "partition_sha256": "08755f0ca3f44f86a2050063f6a6a2a202e6fc13278949cdf06e276c809a494d",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159583.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 243,
+        "OPEN_BAR_09_30": 241,
+        "PSEUDO_CLOSE_14_57_OPEN": 243
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68428,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159583.SZ/critical.parquet",
+      "partition_sha256": "90f16b1a4a45d14aacf3f8aacdfedcc2b2eb3035aa99a72585710111f49ca335",
+      "rows": 727,
+      "valid_rows": 727
+    },
+    "159593.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 57987,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159593.SZ/critical.parquet",
+      "partition_sha256": "105bc7f58aceebca088a61e930ab0991bbc33739e3a8e4ff5796cc02877ba8e6",
+      "rows": 731,
+      "valid_rows": 704
+    },
+    "159601.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59464,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159601.SZ/critical.parquet",
+      "partition_sha256": "8206de766b32102dbdc95af644cdfdc96528cd8fdcd140db08ee7d87d685f052",
+      "rows": 731,
+      "valid_rows": 722
+    },
+    "159611.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61037,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159611.SZ/critical.parquet",
+      "partition_sha256": "f075c0cbf4c003db25c0633c7bc8f97b031475eb51bd9ab9fd595f35add5e6b6",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159622.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63367,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159622.SZ/critical.parquet",
+      "partition_sha256": "c73f27c5de9159da9c1b4701de6b64980cf73ccd5f17d0a90ea08955532e557d",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159623.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 242,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 51684,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159623.SZ/critical.parquet",
+      "partition_sha256": "0eea50dea5ffed8d268ebe7db81f8e3dbe33995a223b1ae308d841bb08da27f7",
+      "rows": 730,
+      "valid_rows": 246
+    },
+    "159625.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60496,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159625.SZ/critical.parquet",
+      "partition_sha256": "c5994f7df0b08cd3737a4bbed72428887a207ccef6065a89718061b489ccc986",
+      "rows": 731,
+      "valid_rows": 717
+    },
+    "159638.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63734,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159638.SZ/critical.parquet",
+      "partition_sha256": "92c41f798c5cc620160e8db955b6e67686751e983281064e55c6c003813f5068",
+      "rows": 731,
+      "valid_rows": 730
+    },
+    "159667.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 72010,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159667.SZ/critical.parquet",
+      "partition_sha256": "be629df46885a9a3a4145576c85307be0cbc687b6f29bd0ecb77014cb7a450ba",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159680.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63394,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159680.SZ/critical.parquet",
+      "partition_sha256": "2d2a98bb6c796f6933ffa64fe78f17aed21778accc766f47324207a0b9681469",
+      "rows": 731,
+      "valid_rows": 714
+    },
+    "159692.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62815,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159692.SZ/critical.parquet",
+      "partition_sha256": "3a75a8deafb55d7340459ecf364c75771fedfdd9ff80c1771402512f97e8be63",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159697.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64586,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159697.SZ/critical.parquet",
+      "partition_sha256": "8d524eec2a70a1244cba08423e980dfbc220854fabc42ee0149636dfef12accd",
+      "rows": 731,
+      "valid_rows": 683
+    },
+    "159732.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66251,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159732.SZ/critical.parquet",
+      "partition_sha256": "6281d6d4acfb9df7d5d677eea2103f44d35e4ee9ee952a4ea066bbc92091364a",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159736.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59461,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159736.SZ/critical.parquet",
+      "partition_sha256": "76bece46970ea04812da1495d0b3401d1a03544768281ef1b62d435141daf84c",
+      "rows": 731,
+      "valid_rows": 725
+    },
+    "159755.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64540,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159755.SZ/critical.parquet",
+      "partition_sha256": "6891a7c92db8666cd07aa95340581a13646cf4263dde5c3767a731157ad841c2",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159758.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58003,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159758.SZ/critical.parquet",
+      "partition_sha256": "36955b54d4133ccc7c12d77edb9b86f08675f95589395960e493fcdda8c3b673",
+      "rows": 731,
+      "valid_rows": 716
+    },
+    "159766.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61266,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159766.SZ/critical.parquet",
+      "partition_sha256": "c9d894434b4792f1e7c11796b0cd7a1ea1fb8841b3b4215b9c86556bc9c41742",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159781.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65493,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159781.SZ/critical.parquet",
+      "partition_sha256": "f4ae9a89a7e5b2bbc9aa84978efbcb2ebfb8844a0dc6f2cf7a689fcbb5240fde",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159790.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59755,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159790.SZ/critical.parquet",
+      "partition_sha256": "a51edb2935a3b9282ca01f861ef979bf4e42b7505fe2c1531c00c480ef475c70",
+      "rows": 731,
+      "valid_rows": 723
+    },
+    "159796.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64080,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159796.SZ/critical.parquet",
+      "partition_sha256": "93e03ae3ccf8c7f3fa94af205f21f41e3e42d219e07345666027b70816794ae6",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159819.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68124,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159819.SZ/critical.parquet",
+      "partition_sha256": "2253534739e63bd9a5cacf62d8ff6e447a8d3d03968471436fa2264ddf2d50bd",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159825.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59906,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159825.SZ/critical.parquet",
+      "partition_sha256": "cb6a1f5d2dd14f93e2f4e7167f77e7a3f401ab54f868da974c7cfa080db56c4d",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159837.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59385,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159837.SZ/critical.parquet",
+      "partition_sha256": "8e3f28e78afd7e93d5dc5814cbaed53a432a395f5fafded29a8bc567234729bd",
+      "rows": 731,
+      "valid_rows": 728
+    },
+    "159851.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63768,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159851.SZ/critical.parquet",
+      "partition_sha256": "e283de400d79b6f479c901cf54a2b8ec9839044c4f7f61b73cfeefc4d28b567e",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159852.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63865,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159852.SZ/critical.parquet",
+      "partition_sha256": "cd458c2b37e1f126b987cdbc43ca5a85124ee2b713d2fb581619fda1966cd6e6",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159859.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58410,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159859.SZ/critical.parquet",
+      "partition_sha256": "9c7c9836b8bdac6c84ff1fee3af2cd27e6c35bd170c91fbf8dea3c34e924534c",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159865.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58380,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159865.SZ/critical.parquet",
+      "partition_sha256": "7b7cc7fc34e8f390734f3c2750d52dc31edea42d40ba6ab2820f09ce2f0c55d2",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159869.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66770,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159869.SZ/critical.parquet",
+      "partition_sha256": "671d11a27a2dc37632a3678c5d4a019a85c2b5acc859c3287cc59d39537f9b59",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159870.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63490,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159870.SZ/critical.parquet",
+      "partition_sha256": "ad65c6b2111798c8aa91309ac44d41315956ac39aeeb0c13ade56ace7cb62a31",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159876.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64386,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159876.SZ/critical.parquet",
+      "partition_sha256": "2b71d522479baa70e5f0b0a09acd77ebce9a789f291b5e65e7a34c3fab491571",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159880.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68105,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159880.SZ/critical.parquet",
+      "partition_sha256": "ee7905129e02a3fc88ee97f88aae961228f86e0b41fd3997f0dffbb3adebecee",
+      "rows": 731,
+      "valid_rows": 730
+    },
+    "159883.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59215,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159883.SZ/critical.parquet",
+      "partition_sha256": "3117e9aa07e921dbc51453577a2f1febea35c277223225b1bde2b03153516352",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159901.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68195,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159901.SZ/critical.parquet",
+      "partition_sha256": "150efe049cf2316401da029171449137d021cb72f99fa49680ba2a968b33af7b",
+      "rows": 731,
+      "valid_rows": 730
+    },
+    "159905.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60765,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159905.SZ/critical.parquet",
+      "partition_sha256": "4784f20fb04ff61a997d96a47bd5b84c57c2d6b7227d8d6286de2f56aed746fc",
+      "rows": 731,
+      "valid_rows": 729
+    },
+    "159915.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 71266,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159915.SZ/critical.parquet",
+      "partition_sha256": "f60724562188305052beee9eb43e4f577c6f48008fb1c2df3ff1ef9d47c648cc",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159928.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61480,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159928.SZ/critical.parquet",
+      "partition_sha256": "7d69cff41f940e8b34dbc588a5cb37427d3a9feb8881b3137329f3edcd73edd6",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159929.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63923,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159929.SZ/critical.parquet",
+      "partition_sha256": "353508c559b66110c0564d1d8ecfd1fed8710bc511e0a4904df22a15c71739f0",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159938.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59387,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159938.SZ/critical.parquet",
+      "partition_sha256": "9a65bbc2c660bb84f0356ef0a82e9a28e5e2afac8f1d3da56edfa854d57342e1",
+      "rows": 731,
+      "valid_rows": 728
+    },
+    "159949.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68331,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159949.SZ/critical.parquet",
+      "partition_sha256": "a37ed2ea43566d76267c9bc9615eabeb89764f44197c69f60f53d7dd51456daf",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159967.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63570,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159967.SZ/critical.parquet",
+      "partition_sha256": "26185dbdec72d8e13f3a82845c2de51d222d55b65af92646465cd28d4fad2b39",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159980.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65519,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159980.SZ/critical.parquet",
+      "partition_sha256": "9d001125386c611eaded078003cb13c742ea649e3b08c959864e5a0320505b17",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159992.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62107,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159992.SZ/critical.parquet",
+      "partition_sha256": "877d621dbd812ac60761b63fb7dc7b154f1ed313d773b7c622764c65da3384e4",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159993.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63257,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159993.SZ/critical.parquet",
+      "partition_sha256": "3798392741edacb0aae1328ff80018c3955b2af62f7045e5c8abfec2164fc543",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159995.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 69713,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159995.SZ/critical.parquet",
+      "partition_sha256": "0ff4a2d191907f05c98a7c2f346470fac13124014076bf966026b2757e6a3c61",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "159997.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67472,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159997.SZ/critical.parquet",
+      "partition_sha256": "de8340792e65b5ad9429a530708fd2eb95560582b1ad1e07fa652fa4e27e3745",
+      "rows": 731,
+      "valid_rows": 724
+    },
+    "159998.SZ": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61174,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=159998.SZ/critical.parquet",
+      "partition_sha256": "9949f8ce6648380a7cc2f6f5864177efeefaf0bc99465d228877c08fedb412d1",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "510050.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65097,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510050.SH/critical.parquet",
+      "partition_sha256": "3f4790a0e649b338f58c06ce4bada5aa8c865f894cdab0edbc3d72f91046f3c3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "510150.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58759,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510150.SH/critical.parquet",
+      "partition_sha256": "12029f9b1ff088e2eeff3c2f8fab1d1fbf28e1b58320d0a89b630b232343e9b4",
+      "rows": 731,
+      "valid_rows": 730
+    },
+    "510180.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68258,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510180.SH/critical.parquet",
+      "partition_sha256": "0fef1e4ca509ff694767db07ab82adbc3a2c2813e4b432f5fa85b19fbbf80ede",
+      "rows": 731,
+      "valid_rows": 670
+    },
+    "510210.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58480,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510210.SH/critical.parquet",
+      "partition_sha256": "054e768b148cb067a531abcd0eccda6c946b88effe8f34ff1b5e8d676f6e80ba",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "510300.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 71403,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510300.SH/critical.parquet",
+      "partition_sha256": "6cbed98cbf50d030529e9fb2af14015e33788562e9944be3f4c5ae62411360ec",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "510500.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 81092,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510500.SH/critical.parquet",
+      "partition_sha256": "8dc4aee43b967d7c178297dd52c16247d41d9a3011d40f8a16f80375dfa35bc3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "510720.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67593,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510720.SH/critical.parquet",
+      "partition_sha256": "33ea470284fe4459f916f3f7a9114c813b8500b902eea581b79cdaad4f48d62d",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "510810.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 54135,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510810.SH/critical.parquet",
+      "partition_sha256": "1da653f5ca9dd2b95d1c954bcf1109436d043b83835f23847169852226d4a299",
+      "rows": 731,
+      "valid_rows": 338
+    },
+    "510880.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66653,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=510880.SH/critical.parquet",
+      "partition_sha256": "84420b69ab4e03e1ac5380c8bec3ef1279453c224e0237dd191030bc969aff3d",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512010.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59346,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512010.SH/critical.parquet",
+      "partition_sha256": "12c4d99f770182a021f31c373a13720d03791e94b5508d8fb900d18b06de6cd3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512040.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61034,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512040.SH/critical.parquet",
+      "partition_sha256": "bab39ae63d948d92998385aec3c79d5cf084a15234d35f543c97586251fee489",
+      "rows": 731,
+      "valid_rows": 717
+    },
+    "512070.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60382,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512070.SH/critical.parquet",
+      "partition_sha256": "bda9fb6ec52152186fea0e768d2ff2d231bc975bd4decf0a01be3c015e41e99b",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512100.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 69487,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512100.SH/critical.parquet",
+      "partition_sha256": "0d3bf8431786dab39f88dde55cab17fdec874aed69464c306bfb1b31cc3af664",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512170.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58677,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512170.SH/critical.parquet",
+      "partition_sha256": "4a89279a0b2e742ce8f810430f0cbbf777236246c15b7d6ca2528906c3b20519",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512200.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65373,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512200.SH/critical.parquet",
+      "partition_sha256": "b338039964be83db631564af721989b4ee29c78d4a8975cf831073b0522ef444",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512290.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62957,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512290.SH/critical.parquet",
+      "partition_sha256": "5a6f44bb7b6568ccf32a1f0d0efd71d7817cd6ead950322b98ba984cef6aa6b9",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512400.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 70189,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512400.SH/critical.parquet",
+      "partition_sha256": "ac9e51d69695b1de2280cec0f9525170a5273975fdedf9754879af9602f0cbd3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512480.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 69564,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512480.SH/critical.parquet",
+      "partition_sha256": "606cc58b9ebd3687c2ec39333ddfd3044c7f0e5155a07859a032aace57433ad9",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512660.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65767,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512660.SH/critical.parquet",
+      "partition_sha256": "4cd54fc6a2814b288f93c1e44215bd1883da0fa227aa6e577aaa36497f84417b",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512670.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63366,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512670.SH/critical.parquet",
+      "partition_sha256": "dca7b81dda336d3753baae750d08964b0056db1cc037000ac911be1a21786eed",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512690.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61790,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512690.SH/critical.parquet",
+      "partition_sha256": "12138f6fe9e5db8e115b4be812abd76aca0d49ab2459cc26af910b8846744357",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512710.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62178,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512710.SH/critical.parquet",
+      "partition_sha256": "4afc3fbbf020fd2f7cbb4779009d19b200df9a1f5c3f52bfcd1e75f0dfbf9156",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512760.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67979,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512760.SH/critical.parquet",
+      "partition_sha256": "8dadbfe7345e895aedc6a0235969b17bb00ea35f07f6100f0974d1606177e4d8",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512800.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58358,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512800.SH/critical.parquet",
+      "partition_sha256": "abd0b121d0937df36e5252e42566c120d89655eddc61156ff5c2a6b14675b1c3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512880.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64414,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512880.SH/critical.parquet",
+      "partition_sha256": "a02198f07703ac098b7201f1a805dc67d8a07f2419a3edb9e4115106c9aef2dc",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512890.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 58528,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512890.SH/critical.parquet",
+      "partition_sha256": "0483dfa2c874a23e3657a4e54a9d506289bf038783f5d314f7616b768e77b330",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "512940.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 127,
+        "OPEN_BAR_09_30": 127,
+        "PSEUDO_CLOSE_14_57_OPEN": 127
+      },
+      "first_date": "2026-02-26",
+      "last_date": "2026-08-28",
+      "partition_bytes": 46420,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512940.SH/critical.parquet",
+      "partition_sha256": "27baa4c91857d04885634a8d9576415c3d7abddd2ab6fd0ad9e309cde8b92a0c",
+      "rows": 381,
+      "valid_rows": 374
+    },
+    "512950.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 55808,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512950.SH/critical.parquet",
+      "partition_sha256": "5814f6f9853e1c4cbad60924b8faedbfc5af8f3ededbe1174e3a25b537cec6c4",
+      "rows": 731,
+      "valid_rows": 457
+    },
+    "512980.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64735,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=512980.SH/critical.parquet",
+      "partition_sha256": "8c250aa7a6d3e2722d25fc282260947d195a5564ac687d90e0732d55f7afe3d3",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515000.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65466,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515000.SH/critical.parquet",
+      "partition_sha256": "dccba4c8e5edcfd6d3adebbc64151ac6f7b0a7c56426cf23f2b3cee8b5b9d207",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515030.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66272,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515030.SH/critical.parquet",
+      "partition_sha256": "c80cfaaf2c0f20f375507bb0b2cc612021a9a6390e6aae76a774fc1f1f1f6279",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515050.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 74385,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515050.SH/critical.parquet",
+      "partition_sha256": "ca1857511581246ee615a16be735cb498f457e54478bac4e4b2715b290767337",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515170.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59312,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515170.SH/critical.parquet",
+      "partition_sha256": "304919bae03710bdb113a95794ee95ca9f72a17e4a043b7abbdefd4c923f185e",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515180.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60334,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515180.SH/critical.parquet",
+      "partition_sha256": "14431487099181fd492d19edc24eab69b687805f9d4fc6d6009a26a1e3f6752e",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515210.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66152,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515210.SH/critical.parquet",
+      "partition_sha256": "bd362b5124f853b0809f2deba661814bfdb5cb9d99ec5eb0851e00b165af5995",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515220.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65574,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515220.SH/critical.parquet",
+      "partition_sha256": "8deebf330f1a56e59a5417f0d387727a7fb515d30018f73a33a28b3f4259c775",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515230.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63525,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515230.SH/critical.parquet",
+      "partition_sha256": "f03b56531bf68017fb91e68ead11ea09a9fd654c84da78bed2e001c398368eda",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515300.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61802,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515300.SH/critical.parquet",
+      "partition_sha256": "74280f61c1395be573606941f44dbb54aaebb7e69831fcf0086f9be709978f5f",
+      "rows": 731,
+      "valid_rows": 718
+    },
+    "515400.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62623,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515400.SH/critical.parquet",
+      "partition_sha256": "58c9835988dfa75b6f1cdcfc04ab10120ea15945ca8e964cc7cc98bb9c8510c6",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515450.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61099,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515450.SH/critical.parquet",
+      "partition_sha256": "48085ae484cb912352b4399b3409b30e64c2e6e587845cfa9797029fba33ad8c",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515630.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62288,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515630.SH/critical.parquet",
+      "partition_sha256": "21aad7cad3b64c75252640835188728bec74d42a4d41294386b616641f07a950",
+      "rows": 731,
+      "valid_rows": 715
+    },
+    "515650.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61835,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515650.SH/critical.parquet",
+      "partition_sha256": "cd822f7af459de76ab0b0bf10977c0caa5eef746b02793481cf355c6c445befc",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515700.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65839,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515700.SH/critical.parquet",
+      "partition_sha256": "9a36907d3980e951dabb4589a2125685e7d128d0e1828905b5820f8d56166a7b",
+      "rows": 731,
+      "valid_rows": 729
+    },
+    "515790.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64856,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515790.SH/critical.parquet",
+      "partition_sha256": "6f5ddbcc0059b028022d8871dd01738cce5074a8ea30fa6064ee7f12b63db31f",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515800.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59265,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515800.SH/critical.parquet",
+      "partition_sha256": "d6ee7b3fb7018c9e9057ee7eaec24827c09d73b3181abc8fc212960fbc43609c",
+      "rows": 731,
+      "valid_rows": 652
+    },
+    "515880.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 74914,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515880.SH/critical.parquet",
+      "partition_sha256": "634f5d341ba72798405a675c1036b70308eba666b87846a26bea6fa5a6fd38d7",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "515900.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 56879,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515900.SH/critical.parquet",
+      "partition_sha256": "2672c5bfea0e3bc99019a55e9adead33b55f502a1c26809aca0a4a956cab91f7",
+      "rows": 731,
+      "valid_rows": 465
+    },
+    "515980.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65578,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=515980.SH/critical.parquet",
+      "partition_sha256": "027a5aca856c85f3b6bf2aeb4dfb166ae6bd9dc46e3af26cd498152e695dad9b",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516130.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 57494,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516130.SH/critical.parquet",
+      "partition_sha256": "b6b75c18c6ffd8ca2da219c2a72ac6c40d19cd90299bed44daea2b38f64f5069",
+      "rows": 731,
+      "valid_rows": 643
+    },
+    "516150.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67407,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516150.SH/critical.parquet",
+      "partition_sha256": "8b92c3d779021819e09d5f011add7906c7c54cb2647931c583d88f84626cda1d",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516160.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68005,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516160.SH/critical.parquet",
+      "partition_sha256": "6ed412c5f50a229a3025404fb2ffa36201d5337dd97a53f193c357b026a2f916",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516350.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67293,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516350.SH/critical.parquet",
+      "partition_sha256": "b46ba165b0ad5b67f691deb49984269e5f8d5dc43266f9d9f8d86d5512637d9e",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516510.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65322,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516510.SH/critical.parquet",
+      "partition_sha256": "089274abc060b36993dfaf3ee0ddb82a7e3ea3c2ac993924cc9b3ea03df7f9ed",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516570.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61656,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516570.SH/critical.parquet",
+      "partition_sha256": "f5ba182128e0337a3bc4eabb9688f1ef1597f13544931bf74151d72889f3f6ac",
+      "rows": 731,
+      "valid_rows": 614
+    },
+    "516650.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 69145,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516650.SH/critical.parquet",
+      "partition_sha256": "d17992f45a7270358c504eabc207b0b4335ee289d301022215357936fa6ac755",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516820.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 57208,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516820.SH/critical.parquet",
+      "partition_sha256": "14352711aba9e3ed51e0f8862a31eb33ed101497228a5e43273fe808f1191eb0",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "516970.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61103,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=516970.SH/critical.parquet",
+      "partition_sha256": "778e50bfa3fc510225965b690d3069bf9296dad9ad97fde84354fc2897ba8e26",
+      "rows": 731,
+      "valid_rows": 723
+    },
+    "560050.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 59249,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=560050.SH/critical.parquet",
+      "partition_sha256": "d1ad4e1dfbb6a3d26fc42ec7ce55e85f85fb75b445204ff397b7ed609eb20f3b",
+      "rows": 731,
+      "valid_rows": 695
+    },
+    "560080.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60783,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=560080.SH/critical.parquet",
+      "partition_sha256": "3ec8f0d37311367fef8c99e79ff403e9a331fd411a1ca8231cebfb6e5264f3c1",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "560280.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64284,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=560280.SH/critical.parquet",
+      "partition_sha256": "e1d54064c102946f33df3c1a7db7de303dce26ba6a620c543a6f00dacaeadb55",
+      "rows": 731,
+      "valid_rows": 725
+    },
+    "560570.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 228,
+        "OPEN_BAR_09_30": 228,
+        "PSEUDO_CLOSE_14_57_OPEN": 228
+      },
+      "first_date": "2025-09-18",
+      "last_date": "2026-08-28",
+      "partition_bytes": 53245,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=560570.SH/critical.parquet",
+      "partition_sha256": "1a1e6387c2b4e9a9b1c3d19096bdb7e2c684121c879696cc078822038c9e97b8",
+      "rows": 684,
+      "valid_rows": 439
+    },
+    "560710.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 135,
+        "OPEN_BAR_09_30": 135,
+        "PSEUDO_CLOSE_14_57_OPEN": 135
+      },
+      "first_date": "2026-02-06",
+      "last_date": "2026-08-28",
+      "partition_bytes": 47940,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=560710.SH/critical.parquet",
+      "partition_sha256": "9ef89d633316f6c7ae1cb17e08bbbf23878559f34ed7d2de17f7231fd44b20ce",
+      "rows": 405,
+      "valid_rows": 405
+    },
+    "560860.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68109,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=560860.SH/critical.parquet",
+      "partition_sha256": "686ba0072d67def314a8530d9d1e201f3db7be663a5dffc7a6ad8479f358eaf0",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "561360.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65915,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=561360.SH/critical.parquet",
+      "partition_sha256": "955567e1dbb54fd63ffb21794c771897996060bb0fc336d510f6ed14ee328446",
+      "rows": 731,
+      "valid_rows": 717
+    },
+    "561380.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 72841,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=561380.SH/critical.parquet",
+      "partition_sha256": "16908cd33876c40db6d385a1a8844ebcbf68254a5577780848f6c098e6527dee",
+      "rows": 731,
+      "valid_rows": 709
+    },
+    "561420.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 38,
+        "OPEN_BAR_09_30": 38,
+        "PSEUDO_CLOSE_14_57_OPEN": 38
+      },
+      "first_date": "2026-07-08",
+      "last_date": "2026-08-28",
+      "partition_bytes": 29640,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=561420.SH/critical.parquet",
+      "partition_sha256": "a68f06051d455d901d5a622e6b09ad2e8f0b4fdb693067b16f9111cc69252470",
+      "rows": 114,
+      "valid_rows": 38
+    },
+    "561550.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63473,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=561550.SH/critical.parquet",
+      "partition_sha256": "66fb26b31aa191a0cd2df4a3992f066d71a7e9ffc726879f89e44c21c0013f6c",
+      "rows": 731,
+      "valid_rows": 686
+    },
+    "561580.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65092,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=561580.SH/critical.parquet",
+      "partition_sha256": "2584ccc2942dd019b9435ae9610c87783e4cd2db2107732e399d152a9e850849",
+      "rows": 731,
+      "valid_rows": 712
+    },
+    "561980.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 76276,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=561980.SH/critical.parquet",
+      "partition_sha256": "9cff00cf1e5e546efad5a2669f4f8250dc548b74673cc9474fa0e207e0108a3b",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "562060.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 55340,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=562060.SH/critical.parquet",
+      "partition_sha256": "29a95a47a3abd424bd88f7d67e8ee186bb565b86161f6725e3bba1c7782951dd",
+      "rows": 731,
+      "valid_rows": 689
+    },
+    "562500.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64397,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=562500.SH/critical.parquet",
+      "partition_sha256": "c7ab7b67d94164e683b359ecc71336a6cb1f98b6b0b74237d51c02b89273ede8",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "562550.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 60243,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=562550.SH/critical.parquet",
+      "partition_sha256": "6f59b2730638464232d16cb807c446a13489e52abb36732d7ab15867ddb1a9f4",
+      "rows": 731,
+      "valid_rows": 698
+    },
+    "562800.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 65233,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=562800.SH/critical.parquet",
+      "partition_sha256": "6bb02e6480e1fdc5566746a11d6a564375aafbe72bdc3441d9c596b9c3449160",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "562950.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 66232,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=562950.SH/critical.parquet",
+      "partition_sha256": "32d34748dfe1bcbe77d5db534840b287fa58a0f6bd7b8201f2a311bd47f63f2a",
+      "rows": 731,
+      "valid_rows": 706
+    },
+    "563230.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 229,
+        "OPEN_BAR_09_30": 229,
+        "PSEUDO_CLOSE_14_57_OPEN": 229
+      },
+      "first_date": "2025-09-17",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64312,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=563230.SH/critical.parquet",
+      "partition_sha256": "0561a4c0373272c538bdf38b74de9921f571c6d7f82e23a34e25428d7c5701a4",
+      "rows": 687,
+      "valid_rows": 682
+    },
+    "563300.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 64741,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=563300.SH/critical.parquet",
+      "partition_sha256": "b62a04fac971507dbac4a00cb882c7902605083c11801dc0b35f8cb816152ed9",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "563360.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63157,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=563360.SH/critical.parquet",
+      "partition_sha256": "947aa373ec7a6967787b2c330dd41fe3a8d49073dad3b59abc18d6515bf30be5",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "588000.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 68917,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588000.SH/critical.parquet",
+      "partition_sha256": "a4d06590b3971c29d40e8ba2dcc7d26e39e4e02fe7c9c1648d9aa7f10bf6a4c4",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "588020.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 73214,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588020.SH/critical.parquet",
+      "partition_sha256": "fb21f9c9390a133dc8b1ba5e2391feff1bb2349b5e310a430bc62d839d6b3530",
+      "rows": 731,
+      "valid_rows": 722
+    },
+    "588170.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 75900,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588170.SH/critical.parquet",
+      "partition_sha256": "84132ce450409a4e4ca794a018044f253057315af72401d0bb9579e7204ba248",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "588200.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 76201,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588200.SH/critical.parquet",
+      "partition_sha256": "b2c384f1a224ec32300a0def11d3b945efb206c0269a888356635ed68c749d12",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "588220.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67620,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588220.SH/critical.parquet",
+      "partition_sha256": "a77b49e52af3714d9b535ccdcab08d66161d4ba4e8cdcb0ab1f1b4edb8456be0",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "588460.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 67897,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588460.SH/critical.parquet",
+      "partition_sha256": "d7d2b6410fc6c03c1a1e90d0cfeda90d0d8733d9e3577bc93012ef6d74cfa869",
+      "rows": 731,
+      "valid_rows": 729
+    },
+    "588790.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 61603,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=588790.SH/critical.parquet",
+      "partition_sha256": "a12491b9e4d0563f2f4ae67502db11cfd7c7a22724c068f3b6b1e68d9fd6d007",
+      "rows": 731,
+      "valid_rows": 731
+    },
+    "589070.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 145,
+        "OPEN_BAR_09_30": 145,
+        "PSEUDO_CLOSE_14_57_OPEN": 145
+      },
+      "first_date": "2026-01-23",
+      "last_date": "2026-08-28",
+      "partition_bytes": 51476,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=589070.SH/critical.parquet",
+      "partition_sha256": "f2b5ebc411939fd310809e66895143f72c28bb8beae1939083dc0c14a3da1200",
+      "rows": 435,
+      "valid_rows": 433
+    },
+    "589680.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 63713,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=589680.SH/critical.parquet",
+      "partition_sha256": "3dbebe6e8ac0542677e4bb650e3c57c0468506ed77b1577a49f06ee60b0a9589",
+      "rows": 731,
+      "valid_rows": 661
+    },
+    "589720.SH": {
+      "bar_role_counts": {
+        "FINAL_CLOSE_BAR": 244,
+        "OPEN_BAR_09_30": 243,
+        "PSEUDO_CLOSE_14_57_OPEN": 244
+      },
+      "first_date": "2025-08-27",
+      "last_date": "2026-08-28",
+      "partition_bytes": 62609,
+      "partition_path": "data/market_data_qmt_v1/minute_critical/symbol=589720.SH/critical.parquet",
+      "partition_sha256": "3b9ec7a9c0728b5459e4320ce1479d443e2937ba7b3c5f29e1c0c7aab6b7d1be",
+      "rows": 731,
+      "valid_rows": 731
+    }
+  },
+  "provider": {
+    "etf_daily": "QMT XtData via Guojin MiniQmt",
+    "index_daily": "QMT XtData via Guojin MiniQmt",
+    "minute_critical": "QMT XtData 1m via Guojin MiniQmt",
+    "security_master": "Shanghai Stock Exchange + Shenzhen Stock Exchange",
+    "trade_calendar": "QMT XtData; Sina/local-calendar overlap cross-check"
+  },
+  "provider_limitations": [
+    "QMT historical 1m response begins around 2025-08-27 despite a 1990 start request",
+    "QMT proprietary cache is external to the research artifact and has no immutable response hash"
+  ],
+  "provider_version": {
+    "pandas": "2.2.3",
+    "pyarrow": "17.0.0",
+    "python": "3.11.9",
+    "qmt_client": "2.0.8.300",
+    "xtdata_server_tag": "sp3",
+    "xtdata_server_version": "1.0"
+  },
+  "request": {
+    "end_date": "20260828",
+    "start_date": "19900101"
+  },
+  "storage_bytes": 27226025,
+  "strategy_source_path": "research/supermind_v6/strategy/SuperMind_V6_CSI1000_MA15_ENTRY_HS300_MA20_EXIT_MINVOLLOC30_CAP50_SET_TAIL_SELL_OPEN_BUY_COMMENTS_FIXED.py",
+  "strategy_source_sha256": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+  "symbols_expected": [
+    "510300.SH",
+    "588000.SH",
+    "512880.SH",
+    "588200.SH",
+    "159915.SZ",
+    "515880.SH",
+    "510500.SH",
+    "159516.SZ",
+    "512890.SH",
+    "563360.SH",
+    "588170.SH",
+    "512100.SH",
+    "159995.SZ",
+    "512170.SH",
+    "510880.SH",
+    "510050.SH",
+    "159819.SZ",
+    "159949.SZ",
+    "515050.SH",
+    "512480.SH",
+    "512400.SH",
+    "515450.SH",
+    "515180.SH",
+    "159530.SZ",
+    "159992.SZ",
+    "562500.SH",
+    "512010.SH",
+    "510180.SH",
+    "159326.SZ",
+    "510210.SH",
+    "512070.SH",
+    "159928.SZ",
+    "159201.SZ",
+    "159206.SZ",
+    "159781.SZ",
+    "515220.SH",
+    "512690.SH",
+    "159870.SZ",
+    "512800.SH",
+    "512760.SH",
+    "159611.SZ",
+    "159869.SZ",
+    "159755.SZ",
+    "516650.SH",
+    "159852.SZ",
+    "560860.SH",
+    "159307.SZ",
+    "159363.SZ",
+    "512710.SH",
+    "515980.SH",
+    "561980.SH",
+    "159865.SZ",
+    "512660.SH",
+    "159263.SZ",
+    "159851.SZ",
+    "512950.SH",
+    "516150.SH",
+    "159967.SZ",
+    "515790.SH",
+    "588220.SH",
+    "159259.SZ",
+    "159796.SZ",
+    "159980.SZ",
+    "510810.SH",
+    "515300.SH",
+    "159227.SZ",
+    "562800.SH",
+    "159566.SZ",
+    "515230.SH",
+    "159993.SZ",
+    "512040.SH",
+    "159938.SZ",
+    "159859.SZ",
+    "515800.SH",
+    "561380.SH",
+    "589720.SH",
+    "159736.SZ",
+    "159583.SZ",
+    "515170.SH",
+    "159399.SZ",
+    "159883.SZ",
+    "563300.SH",
+    "563230.SH",
+    "515000.SH",
+    "159562.SZ",
+    "159732.SZ",
+    "516160.SH",
+    "512290.SH",
+    "159901.SZ",
+    "512980.SH",
+    "515900.SH",
+    "562060.SH",
+    "515650.SH",
+    "512200.SH",
+    "159623.SZ",
+    "510720.SH",
+    "159766.SZ",
+    "560280.SH",
+    "560080.SH",
+    "159625.SZ",
+    "560050.SH",
+    "515030.SH",
+    "159593.SZ",
+    "516510.SH",
+    "561580.SH",
+    "159235.SZ",
+    "588790.SH",
+    "516350.SH",
+    "159667.SZ",
+    "159929.SZ",
+    "159207.SZ",
+    "159209.SZ",
+    "589070.SH",
+    "159692.SZ",
+    "159141.SZ",
+    "562550.SH",
+    "159905.SZ",
+    "589680.SH",
+    "516820.SH",
+    "560710.SH",
+    "561360.SH",
+    "512670.SH",
+    "515400.SH",
+    "562950.SH",
+    "159825.SZ",
+    "561550.SH",
+    "512940.SH",
+    "159622.SZ",
+    "510150.SH",
+    "159758.SZ",
+    "159998.SZ",
+    "515700.SH",
+    "159601.SZ",
+    "159680.SZ",
+    "159837.SZ",
+    "560570.SH",
+    "159997.SZ",
+    "588020.SH",
+    "588460.SH",
+    "159697.SZ",
+    "159876.SZ",
+    "515630.SH",
+    "516970.SH",
+    "159638.SZ",
+    "561420.SH",
+    "159387.SZ",
+    "159325.SZ",
+    "159790.SZ",
+    "516570.SH",
+    "515210.SH",
+    "516130.SH",
+    "159880.SZ"
+  ],
+  "symbols_present": [
+    "159141.SZ",
+    "159201.SZ",
+    "159206.SZ",
+    "159207.SZ",
+    "159209.SZ",
+    "159227.SZ",
+    "159235.SZ",
+    "159259.SZ",
+    "159263.SZ",
+    "159307.SZ",
+    "159325.SZ",
+    "159326.SZ",
+    "159363.SZ",
+    "159387.SZ",
+    "159399.SZ",
+    "159516.SZ",
+    "159530.SZ",
+    "159562.SZ",
+    "159566.SZ",
+    "159583.SZ",
+    "159593.SZ",
+    "159601.SZ",
+    "159611.SZ",
+    "159622.SZ",
+    "159623.SZ",
+    "159625.SZ",
+    "159638.SZ",
+    "159667.SZ",
+    "159680.SZ",
+    "159692.SZ",
+    "159697.SZ",
+    "159732.SZ",
+    "159736.SZ",
+    "159755.SZ",
+    "159758.SZ",
+    "159766.SZ",
+    "159781.SZ",
+    "159790.SZ",
+    "159796.SZ",
+    "159819.SZ",
+    "159825.SZ",
+    "159837.SZ",
+    "159851.SZ",
+    "159852.SZ",
+    "159859.SZ",
+    "159865.SZ",
+    "159869.SZ",
+    "159870.SZ",
+    "159876.SZ",
+    "159880.SZ",
+    "159883.SZ",
+    "159901.SZ",
+    "159905.SZ",
+    "159915.SZ",
+    "159928.SZ",
+    "159929.SZ",
+    "159938.SZ",
+    "159949.SZ",
+    "159967.SZ",
+    "159980.SZ",
+    "159992.SZ",
+    "159993.SZ",
+    "159995.SZ",
+    "159997.SZ",
+    "159998.SZ",
+    "510050.SH",
+    "510150.SH",
+    "510180.SH",
+    "510210.SH",
+    "510300.SH",
+    "510500.SH",
+    "510720.SH",
+    "510810.SH",
+    "510880.SH",
+    "512010.SH",
+    "512040.SH",
+    "512070.SH",
+    "512100.SH",
+    "512170.SH",
+    "512200.SH",
+    "512290.SH",
+    "512400.SH",
+    "512480.SH",
+    "512660.SH",
+    "512670.SH",
+    "512690.SH",
+    "512710.SH",
+    "512760.SH",
+    "512800.SH",
+    "512880.SH",
+    "512890.SH",
+    "512940.SH",
+    "512950.SH",
+    "512980.SH",
+    "515000.SH",
+    "515030.SH",
+    "515050.SH",
+    "515170.SH",
+    "515180.SH",
+    "515210.SH",
+    "515220.SH",
+    "515230.SH",
+    "515300.SH",
+    "515400.SH",
+    "515450.SH",
+    "515630.SH",
+    "515650.SH",
+    "515700.SH",
+    "515790.SH",
+    "515800.SH",
+    "515880.SH",
+    "515900.SH",
+    "515980.SH",
+    "516130.SH",
+    "516150.SH",
+    "516160.SH",
+    "516350.SH",
+    "516510.SH",
+    "516570.SH",
+    "516650.SH",
+    "516820.SH",
+    "516970.SH",
+    "560050.SH",
+    "560080.SH",
+    "560280.SH",
+    "560570.SH",
+    "560710.SH",
+    "560860.SH",
+    "561360.SH",
+    "561380.SH",
+    "561420.SH",
+    "561550.SH",
+    "561580.SH",
+    "561980.SH",
+    "562060.SH",
+    "562500.SH",
+    "562550.SH",
+    "562800.SH",
+    "562950.SH",
+    "563230.SH",
+    "563300.SH",
+    "563360.SH",
+    "588000.SH",
+    "588020.SH",
+    "588170.SH",
+    "588200.SH",
+    "588220.SH",
+    "588460.SH",
+    "588790.SH",
+    "589070.SH",
+    "589680.SH",
+    "589720.SH"
+  ],
+  "timezone": "Asia/Shanghai",
+  "trade_calendar_source": {
+    "covers_requested_end": true,
+    "exact_match_reference_overlap": true,
+    "first_date": "1990-12-19",
+    "last_date": "2026-08-28",
+    "partition_sha256": "66e86a2144a58c63a9b7679c90851d2997038d188fc964bc59026ffa598d41b2",
+    "provider": "QMT XtData get_trading_calendar(SH)",
+    "reference_overlap_end": "2026-08-27",
+    "reference_overlap_start": "1990-12-19",
+    "reference_path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/metadata/trade_calendar_reference.parquet",
+    "reference_provider": "Sina via AkShare plus local quant-calendar audit",
+    "rows": 8714
+  },
+  "universe_count": 152,
+  "universe_sha256": "0a647dba2e5ef80088c9ec9c9ebdb889b1744ddb1686d0e20867a9a7059f98c3",
+  "validation_failures": [
+    "HISTORICAL_MINUTE_COVERAGE_INCOMPLETE:144",
+    "MISSING_CRITICAL_BAR:OPEN_BAR_09_30:175",
+    "OPEN_AUCTION_EXACT_REPLICATION_UNVERIFIED",
+    "SUPERMIND_PRE_ADJUSTMENT_EQUIVALENCE_UNVERIFIED"
+  ],
+  "validation_path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/manifests/v6_market_data_validation.json",
+  "validation_status": "FAIL"
+}

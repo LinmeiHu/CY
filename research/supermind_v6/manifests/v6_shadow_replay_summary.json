@@ -1,0 +1,28 @@
+{
+  "availability_path": "research/supermind_v6/data/market_data_qmt_v1/execution_availability/critical_execution_with_market_anchor.parquet",
+  "availability_sha256": "e745f8d17b0701afb65f1e31de0680ad75a709d435be497a82e1adc7ee67434d",
+  "calendar_sessions": 243,
+  "event_counts": {
+    "BUY_FILLED": 28,
+    "BUY_OR_REBALANCE_NO_FILL": 2,
+    "BUY_SIGNAL": 28,
+    "REBALANCE_FILLED": 41,
+    "SELL_FILLED": 28,
+    "TAIL_SELL_SIGNAL": 28
+  },
+  "events_path": "research/supermind_v6/output/v6_shadow_replay_events.parquet",
+  "events_sha256": "32fb140f12dc5ef205d01f39162563186c92242b4c46e7b20552d573de42def8",
+  "exact_supermind_replication": false,
+  "execution_assumption": "09:30/15:00 shadow fills use QMT critical-minute close only when execution availability is valid",
+  "generated_at": "2026-08-28T22:06:15.681635+08:00",
+  "no_fill_policy": "unavailable 09:30 or 15:00 bar => no fill; frozen retry state is retained",
+  "pdf_pages": 179,
+  "pdf_path": "research/supermind_v6/output/pdf/v6_shadow_replay_candles_20250828_20260828.pdf",
+  "pdf_sha256": "1ae823a94be13b0df863ce9a206197372430374b4f21c7fa64450a075a833c8e",
+  "price_basis": "QMT pre_adj; SuperMind fq=pre equivalence remains unverified",
+  "shadow_replay_version": "v6-shadow-replay-1",
+  "strategy_source_sha256": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+  "tail_policy": "unavailable 14:57 bar => no intraday tail signal",
+  "window_end": "2026-08-28",
+  "window_start": "2025-08-28"
+}
