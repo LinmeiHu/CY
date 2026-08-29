@@ -28,6 +28,7 @@ class DataPurpose(StrEnum):
     CAUSAL_RESEARCH = "CAUSAL_RESEARCH"
     STRICT_ARCHIVAL_RESEARCH = "STRICT_ARCHIVAL_RESEARCH"
     CHINEXT_PIT_B_RESEARCH = "CHINEXT_PIT_B_RESEARCH"
+    CHINEXT_V1_TEMPORAL_HOLDOUT_VALIDATION = "CHINEXT_V1_TEMPORAL_HOLDOUT_VALIDATION"
 
 
 class DataOperation(StrEnum):
@@ -297,7 +298,10 @@ def _load_bounded_authorizations(
             raise DataActivationError(
                 f"unknown purpose for bounded authorization {authorization_id}"
             ) from exc
-        if purpose is not DataPurpose.CHINEXT_PIT_B_RESEARCH:
+        if purpose not in (
+            DataPurpose.CHINEXT_PIT_B_RESEARCH,
+            DataPurpose.CHINEXT_V1_TEMPORAL_HOLDOUT_VALIDATION,
+        ):
             raise DataActivationError(f"unsupported bounded authorization purpose: {purpose.value}")
         asset_id = _required_text(raw, "asset_id", f"authorization {authorization_id}")
         asset = assets.get(asset_id)

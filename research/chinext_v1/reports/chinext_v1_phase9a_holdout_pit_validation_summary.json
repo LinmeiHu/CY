@@ -1,0 +1,64 @@
+{
+  "phase9a_result": "PASS",
+  "holdout_pit_build_status": "PASS",
+  "purpose": "CHINEXT_V1_TEMPORAL_HOLDOUT_PIT_2022_2023",
+  "calendar_years": [2022, 2023],
+  "actual_first_trade_date": "2022-01-04",
+  "actual_last_trade_date": "2023-12-29",
+  "warmup_start_required": "2021-07-08",
+  "holdout_selection_contamination": "NO",
+  "holdout_date_count": 484,
+  "holdout_unique_symbol_count": 1350,
+  "holdout_membership_rows": 591299,
+  "average_daily_universe": 1221.6921487603306,
+  "min_daily_universe": 1090,
+  "max_daily_universe": 1333,
+  "future_listed_exclusion_count": 0,
+  "historical_non_survivor_count": 41,
+  "fail_closed_row_count": 11904,
+  "data_quality": {
+    "missing_daily_rows": 0,
+    "hard_invalid_rows": 11904,
+    "historical_st_row_count": 10213,
+    "historical_suspension_or_untradable_row_count": 11904,
+    "amount_input_missing_or_invalid_row_count": 1076,
+    "turnover20_window_missing_or_invalid_rows": 8492,
+    "available_at_missing_rows": 0,
+    "snapshot_id_missing_rows": 0
+  },
+  "fixed_snapshot_audits": {
+    "2022-01-04": {"membership_count": 1090, "membership_set_sha256": "c8fef6d6439ea6b3fd798e0282d8db725c412661132df2b0c910dc67a7b9aadb"},
+    "2022-06-30": {"membership_count": 1154, "membership_set_sha256": "80b74860c2b2644ad8dbfa507051d1360b8e9829f0fd045eaa0c46ea48e3eae2"},
+    "2023-01-03": {"membership_count": 1232, "membership_set_sha256": "c20381eb7959dbd43f3e0c6f95b3f18bd7d2a04c068c046ed3124b48d9f2debd"},
+    "2023-06-30": {"membership_count": 1282, "membership_set_sha256": "68b7e6dccb140fab30e0d754286a09d60ba3faf1215afb65ed3c38397e0a49ed"},
+    "2023-12-29": {"membership_count": 1333, "membership_set_sha256": "b637232bae219e0583e6dc0b563af78311b4fe4757623d1e13daa1283c9adba2"}
+  },
+  "critical_cases": {
+    "future_listing_absent": "PASS",
+    "age_179_fails_age_180_passes": "PASS",
+    "historical_st_preserved": "PASS",
+    "historical_suspension_preserved": "PASS",
+    "historical_delisted_retained": "PASS",
+    "current_survivor_never_used": "PASS",
+    "deterministic_rebuild": "PASS",
+    "prior_2024_2025_artifact_unchanged": "PASS"
+  },
+  "component_sha256": {
+    "holdout_manifest": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+    "daily_membership": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+    "security_master": "6225973009634864ec4839128fa2ed49f001c660b3c94da710c7ad6dc4d05a2a",
+    "source_security_master": "385b222370b26bb3d09a5c06181e26cf1b636fde8f7c50d0ed04521f7a197d50",
+    "trade_calendar": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "baostock_basic_snapshot": "2438d4fe64af83f3f8b20daffe458621b86777ed1fcf53b1e3150ad7c78bd65f",
+    "cy006_input_manifest": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+  },
+  "current_survivor_used": false,
+  "strategy_results_used": false,
+  "oos_formal_replay_executions": 0,
+  "pit_2024_2025_artifact_unchanged": true,
+  "lineage_limitations": [
+    "BaoStock record-level available_at is unavailable.",
+    "BaoStock supplier revision-vintage lineage is unavailable.",
+    "This is bounded PIT-B research authorization, not strict PIT-A or vendor-level certification."
+  ]
+}

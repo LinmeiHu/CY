@@ -1,0 +1,155 @@
+{
+  "artifacts": {
+    "daily_membership": {
+      "date_count": 484,
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "rows": 591299,
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+      "unique_symbols": 1350
+    },
+    "security_master": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_holdout_2022_2023/security_master.parquet",
+      "rows": 1440,
+      "sha256": "6225973009634864ec4839128fa2ed49f001c660b3c94da710c7ad6dc4d05a2a"
+    }
+  },
+  "asset_id": "CHINEXT-V1-PIT-B-TEMPORAL-HOLDOUT-2022-2023",
+  "calendar_years": [
+    2022,
+    2023
+  ],
+  "critical_cases": {
+    "age_179_fails": {
+      "date": "2022-01-04",
+      "pass": true,
+      "symbol": "300967.SZ"
+    },
+    "age_180_passes": {
+      "date": "2022-01-05",
+      "pass": true,
+      "symbol": "300967.SZ"
+    },
+    "calendar_is_explicit": {
+      "all_session_count": 8797,
+      "pass": true,
+      "session_count": 484
+    },
+    "chronological_membership_continuity": {
+      "pass": true,
+      "symbols_with_interval_mismatch": 0
+    },
+    "current_survivor_membership_input": {
+      "pass": true,
+      "used": false
+    },
+    "future_listing_absent": {
+      "pass": true,
+      "pre_listing_rows": 0,
+      "symbol": "300804.SZ"
+    },
+    "historical_delisted_retained": {
+      "membership_rows": 4182,
+      "pass": true,
+      "symbol_count": 17
+    }
+  },
+  "current_survivor_used": false,
+  "daily_counts": {
+    "average": 1221.6921487603306,
+    "maximum": 1333,
+    "minimum": 1090
+  },
+  "daily_quality": {
+    "amount_input_missing_or_invalid_row_count": 1076,
+    "available_at_missing_rows": 0,
+    "cy006_partitions": [
+      "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+      "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+      "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet"
+    ],
+    "fail_closed_row_count": 11904,
+    "hard_invalid_rows": 11904,
+    "historical_st_row_count": 10213,
+    "historical_suspension_or_untradable_row_count": 11904,
+    "joined_rows": 591299,
+    "missing_daily_rows": 0,
+    "snapshot_id_missing_rows": 0,
+    "source_turnover_rate_present_rows": 590223,
+    "turnover20_window_missing_or_invalid_rows": 8492
+  },
+  "date_range": [
+    "2022-01-04",
+    "2023-12-29"
+  ],
+  "fixed_snapshot_audit_dates": {
+    "2022-01-04": {
+      "membership_count": 1090,
+      "membership_set_sha256": "c8fef6d6439ea6b3fd798e0282d8db725c412661132df2b0c910dc67a7b9aadb"
+    },
+    "2022-06-30": {
+      "membership_count": 1154,
+      "membership_set_sha256": "80b74860c2b2644ad8dbfa507051d1360b8e9829f0fd045eaa0c46ea48e3eae2"
+    },
+    "2023-01-03": {
+      "membership_count": 1232,
+      "membership_set_sha256": "c20381eb7959dbd43f3e0c6f95b3f18bd7d2a04c068c046ed3124b48d9f2debd"
+    },
+    "2023-06-30": {
+      "membership_count": 1282,
+      "membership_set_sha256": "68b7e6dccb140fab30e0d754286a09d60ba3faf1215afb65ed3c38397e0a49ed"
+    },
+    "2023-12-29": {
+      "membership_count": 1333,
+      "membership_set_sha256": "b637232bae219e0583e6dc0b563af78311b4fe4757623d1e13daa1283c9adba2"
+    }
+  },
+  "governance": {
+    "formal_strategy_replay_executions": 0,
+    "record_level_available_at_from_provider": false,
+    "registry_asset": "QD-007",
+    "registry_status_at_build": "DISCOVERY_ONLY",
+    "strategy_results_used": false
+  },
+  "holdout_statistics": {
+    "fail_closed_row_count": 11904,
+    "future_listed_exclusion_count": 0,
+    "historical_non_survivor_count": 41
+  },
+  "identity_audit": {
+    "accepted_identity_symbols": 1440,
+    "exact_local_gem_symbols": 1440,
+    "excluded_symbols": [],
+    "invalid_or_missing_list_date": 0,
+    "invalid_out_before_list": 0,
+    "missing_baostock_basic": 0,
+    "non_equity_type": 0
+  },
+  "pit_grade": "B_RECONSTRUCTED",
+  "prior_2024_2025_artifact_hashes_before_build": {
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025/manifest.json": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7"
+  },
+  "purpose": "CHINEXT_V1_TEMPORAL_HOLDOUT_PIT_2022_2023",
+  "source_assets": {
+    "baostock_basic_snapshot": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025/raw/baostock_stock_basic.csv",
+      "sha256": "2438d4fe64af83f3f8b20daffe458621b86777ed1fcf53b1e3150ad7c78bd65f"
+    },
+    "daily_pit_b": {
+      "asset_id": "CY-006",
+      "manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily"
+    },
+    "security_master": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/security_master.parquet",
+      "sha256": "385b222370b26bb3d09a5c06181e26cf1b636fde8f7c50d0ed04521f7a197d50"
+    },
+    "trade_calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "status": "MATERIALIZED_PENDING_GOVERNANCE_DECISION",
+  "trade_date_count": 484,
+  "warmup_start_required": "2021-07-08"
+}
