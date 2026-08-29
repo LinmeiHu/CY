@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import subprocess
 import sys
 from pathlib import Path
 from types import ModuleType
@@ -17,11 +18,25 @@ CANDIDATE = ROOT / "research/chinext_v1/strategy/chinext_v2_candidate.py"
 ENGINE = ROOT / "research/chinext_v1/scripts/run_chinext_v1_smoke.py"
 RUNNER = ROOT / "research/chinext_v1/scripts/run_chinext_v2_research.py"
 PREREG = ROOT / "research/chinext_v1/specs/chinext_v2_attempt_preregistration.json"
+LOSS_BUDGET_PREREG = (
+    ROOT
+    / "research/chinext_v1/specs/chinext_v2_loss_budget_attempt_preregistration.json"
+)
 ATTEMPT_LEDGER = ROOT / "research/chinext_v1/reports/chinext_v2_attempt_ledger.json"
 
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def committed_sha256(commit: str, relative_path: str) -> str:
+    payload = subprocess.run(
+        ["git", "show", f"{commit}:{relative_path}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    ).stdout
+    return hashlib.sha256(payload).hexdigest()
 
 
 def load_module(path: Path, name: str) -> ModuleType:
@@ -39,12 +54,18 @@ def test_v1_remains_immutable_and_candidate_policies_are_exact() -> None:
     assert set(candidate.POLICIES) == {
         "V2_R120_MEDIAN",
         "V2_ALL_HORIZON_MEDIAN",
+        "V2_LOSS_BUDGET_10",
     }
     assert candidate.POLICIES["V2_R120_MEDIAN"].required_rs_horizons == ("r120",)
     assert candidate.POLICIES[
         "V2_ALL_HORIZON_MEDIAN"
     ].required_rs_horizons == ("r20", "r60", "r120")
-    assert {policy.rs_floor for policy in candidate.POLICIES.values()} == {0.5}
+    assert candidate.POLICIES["V2_R120_MEDIAN"].rs_floor == 0.5
+    assert candidate.POLICIES["V2_ALL_HORIZON_MEDIAN"].rs_floor == 0.5
+    loss_budget = candidate.POLICIES["V2_LOSS_BUDGET_10"]
+    assert loss_budget.required_rs_horizons == ()
+    assert loss_budget.rs_floor is None
+    assert loss_budget.close_loss_budget == -0.10
 
 
 def test_v2_rs_admission_uses_median_and_fails_closed() -> None:
@@ -65,16 +86,65 @@ def test_v2_rs_admission_uses_median_and_fails_closed() -> None:
     )["passed"] is False
 
 
+def test_loss_budget_uses_existing_whole_cycle_cash_flows_and_exact_boundary() -> None:
+    candidate = load_module(CANDIDATE, "chinext_v2_loss_budget_test")
+    policy = candidate.policy_for("V2_LOSS_BUDGET_10")
+    boundary = candidate.evaluate_loss_budget(
+        shares=100,
+        remaining_cost_basis=1_000,
+        remaining_dividends=0,
+        cycle_buy_cost=1_000,
+        cycle_realized_pnl=0,
+        close=9,
+        policy=policy,
+    )
+    assert boundary["valid"] is True
+    assert boundary["cycle_mark_return"] == pytest.approx(-0.10)
+    assert boundary["triggered"] is True
+    partial_cycle = candidate.evaluate_loss_budget(
+        shares=100,
+        remaining_cost_basis=1_000,
+        remaining_dividends=20,
+        cycle_buy_cost=2_000,
+        cycle_realized_pnl=100,
+        close=7,
+        policy=policy,
+    )
+    assert partial_cycle["cycle_mark_return"] == pytest.approx(-0.09)
+    assert partial_cycle["triggered"] is False
+    invalid = candidate.evaluate_loss_budget(
+        shares=100,
+        remaining_cost_basis=1_000,
+        remaining_dividends=0,
+        cycle_buy_cost=0,
+        cycle_realized_pnl=0,
+        close=9,
+        policy=policy,
+    )
+    assert invalid["valid"] is False
+    assert invalid["triggered"] is False
+
+
 def test_attempts_are_preregistered_hash_bound_and_within_budget() -> None:
     prereg = json.loads(PREREG.read_text(encoding="utf-8"))
+    implementation_commit = "e21b04b6604ef186af05e92553900dddae4627bc"
     assert prereg["status"] == "FROZEN_BEFORE_ANY_V2_CANDIDATE_RESULT"
     assert prereg["research_period"] == ["2018-01-02", "2021-12-31"]
     assert prereg["recent_period_firewall"]["used_for_candidate_selection"] == "NO"
     assert prereg["attempt_budget"]["material_candidate_evaluations_preregistered"] == 2
     assert prereg["attempt_budget"]["maximum_variants_for_hypothesis"] == 2
-    assert prereg["frozen_bindings"]["candidate_module_sha256"] == sha256(CANDIDATE)
-    assert prereg["frozen_bindings"]["engine_sha256"] == sha256(ENGINE)
-    assert prereg["frozen_bindings"]["runner_sha256"] == sha256(RUNNER)
+    assert prereg["frozen_bindings"]["candidate_module_sha256"] == committed_sha256(
+        implementation_commit,
+        "research/chinext_v1/strategy/chinext_v2_candidate.py",
+    )
+    assert prereg["frozen_bindings"]["engine_sha256"] == committed_sha256(
+        implementation_commit,
+        "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+    )
+    assert prereg["frozen_bindings"]["runner_sha256"] == committed_sha256(
+        implementation_commit,
+        "research/chinext_v1/scripts/run_chinext_v2_research.py",
+    )
     assert {row["RESULT_STATUS"] for row in prereg["attempts"]} == {
         "PREREGISTERED_NOT_RUN"
     }
@@ -86,14 +156,53 @@ def test_attempts_are_preregistered_hash_bound_and_within_budget() -> None:
 
 
 def test_candidate_identities_match_preregistration() -> None:
-    runner = load_module(RUNNER, "chinext_v2_runner_test")
     prereg = json.loads(PREREG.read_text(encoding="utf-8"))
-    for attempt in prereg["attempts"]:
-        assert runner.candidate_identity(attempt["CANDIDATE_POLICY"]) == attempt[
-            "STRATEGY_SHA"
-        ]
+    completed = json.loads(ATTEMPT_LEDGER.read_text(encoding="utf-8"))
+    result_ids = {row["ATTEMPT_ID"]: row["STRATEGY_SHA"] for row in completed["attempts"]}
+    assert {row["ATTEMPT_ID"]: row["STRATEGY_SHA"] for row in prereg["attempts"]} == result_ids
+    assert completed["frozen_bindings"]["candidate_implementation_commit"] == (
+        "e21b04b6604ef186af05e92553900dddae4627bc"
+    )
+    runner = load_module(RUNNER, "chinext_v2_runner_test")
     with pytest.raises(ValueError, match="unregistered ChinNext V2 candidate"):
         runner.policy_for("V2_NOT_REGISTERED")
+
+
+def test_loss_budget_attempt_is_frozen_hash_bound_and_single_variant() -> None:
+    prereg = json.loads(LOSS_BUDGET_PREREG.read_text(encoding="utf-8"))
+    runner = load_module(RUNNER, "chinext_v2_loss_runner_test")
+    assert prereg["status"] == "FROZEN_BEFORE_V2_A003_RESULT"
+    assert prereg["research_period"] == ["2018-01-02", "2021-12-31"]
+    assert prereg["recent_period_firewall"]["used_for_candidate_selection"] == "NO"
+    assert prereg["attempt_budget"]["material_candidate_evaluations_before_this_spec"] == 2
+    assert prereg["attempt_budget"]["material_candidate_evaluations_preregistered_here"] == 1
+    assert prereg["attempt_budget"]["material_candidate_evaluations_total_if_completed"] == 3
+    assert prereg["attempt_budget"]["maximum_variants_for_hypothesis"] == 1
+    assert prereg["attempt_budget"]["parameter_grid"] == "NONE"
+    assert len(prereg["attempts"]) == 1
+    attempt = prereg["attempts"][0]
+    assert attempt["ATTEMPT_ID"] == "V2-A003"
+    assert attempt["HYPOTHESIS_ID"] == "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET"
+    assert attempt["CANDIDATE_POLICY"] == "V2_LOSS_BUDGET_10"
+    assert attempt["RESULT_STATUS"] == "PREREGISTERED_NOT_RUN"
+    assert attempt["PARAMETERS_IF_ANY"]["close_loss_budget"] == -0.10
+    assert attempt["PARAMETERS_IF_ANY"]["threshold_variants"] == "NONE"
+    assert attempt["COMPLEXITY_DELTA"] == {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 0,
+        "special_case_count": 0,
+    }
+    assert runner.candidate_identity(attempt["CANDIDATE_POLICY"]) == attempt[
+        "STRATEGY_SHA"
+    ]
+    bindings = prereg["frozen_bindings"]
+    assert bindings["candidate_module_sha256"] == sha256(CANDIDATE)
+    assert bindings["engine_sha256"] == sha256(ENGINE)
+    assert bindings["runner_sha256"] == sha256(RUNNER)
+    assert bindings["prior_attempt_ledger_sha256"] == sha256(ATTEMPT_LEDGER)
+    assert prereg["causal_contract"]["same_bar_fill"] == "FORBIDDEN"
+    assert prereg["causal_contract"]["stale_or_synthetic_signal_price"] == "FORBIDDEN"
 
 
 def test_completed_hypothesis_one_attempts_are_all_auditable_and_rejected() -> None:

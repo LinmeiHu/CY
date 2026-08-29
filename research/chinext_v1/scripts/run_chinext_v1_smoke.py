@@ -59,6 +59,9 @@ from strategy.chinext_v1_exploratory import (  # noqa: E402
     trade_return_summary,
 )
 from strategy.chinext_v2_candidate import (  # noqa: E402
+    evaluate_loss_budget as evaluate_v2_loss_budget,
+)
+from strategy.chinext_v2_candidate import (  # noqa: E402
     evaluate_rs_admission as evaluate_v2_rs_admission,
 )
 from strategy.chinext_v2_candidate import policy_for as v2_policy_for  # noqa: E402
@@ -849,6 +852,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 
         exit_reason_parts: list[str] = []
         winner_hold_symbols: set[str] = set()
+        loss_budget_triggered_today: set[str] = set()
         if arm_name == "W1_WINNER_HOLD_THROUGH_MARKET_EXIT" and market_state["normal_exit"]:
             for symbol, position in positions.items():
                 held_sessions = sum(d >= position.acquisition_date for d in histories_dates[symbol])
@@ -877,6 +881,42 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                             "symbol": symbol,
                             "acquisition_date": day,
                             "execution_deferred_to": "NEXT_SELLABLE_OPEN",
+                        }
+                    )
+            if (
+                not exit_reason_parts
+                and symbol not in forced_exits
+                and v2_policy is not None
+                and v2_policy.close_loss_budget is not None
+            ):
+                row = day_rows.get(symbol)
+                if not critical_row_valid(row):
+                    counts["v2_loss_budget_unknown"] += 1
+                    continue
+                position = positions[symbol]
+                loss_budget = evaluate_v2_loss_budget(
+                    shares=position.shares,
+                    remaining_cost_basis=position.cost_basis,
+                    remaining_dividends=position.dividends,
+                    cycle_buy_cost=position.cycle_buy_cost,
+                    cycle_realized_pnl=position.cycle_realized_pnl,
+                    close=float(row["close"]),
+                    policy=v2_policy,
+                )
+                if not loss_budget["valid"]:
+                    counts["v2_loss_budget_unknown"] += 1
+                elif loss_budget["triggered"]:
+                    forced_exits.add(symbol)
+                    loss_budget_triggered_today.add(symbol)
+                    counts["v2_loss_budget_signals"] += 1
+                    events.append(
+                        {
+                            "event": "V2_LOSS_BUDGET_EXIT_SIGNAL",
+                            "signal_date": day,
+                            "symbol": symbol,
+                            "cycle_mark_return": loss_budget["cycle_mark_return"],
+                            "loss_budget": v2_policy.close_loss_budget,
+                            "execution_timing": "NEXT_ELIGIBLE_OPEN",
                         }
                     )
 
@@ -953,6 +993,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     planned_members, forced_exits, [], config
                 )
             membership_reason = "SET_CHANGE_ENTRY_OR_INDIVIDUAL_EXIT"
+            if loss_budget_triggered_today:
+                membership_reason += "+V2_LOSS_BUDGET_10"
 
         if capacity_envelope is not None and len(desired) > daily_capacity:
             counts["capacity_survivor_overflow_days"] += 1
@@ -1208,7 +1250,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         summary["v2_candidate"] = {
             "policy": v2_policy.to_dict(),
             "rs_admission_rejected_count": counts["v2_rs_admission_rejected"],
-            "parent_v1_semantics_unchanged_except_entry_admission": True,
+            "loss_budget_signal_count": counts["v2_loss_budget_signals"],
+            "loss_budget_unknown_count": counts["v2_loss_budget_unknown"],
+            "parent_v1_semantics_unchanged_except_candidate_delta": True,
         }
     write_json(args.summary, summary)
     write_report(args.report, summary)

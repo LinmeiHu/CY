@@ -39,7 +39,9 @@ WARMUP_START = date(2017, 4, 12)
 PREREG_RELATIVE = Path(
     "research/chinext_v1/specs/chinext_v2_attempt_preregistration.json"
 )
-PREREG = ROOT / PREREG_RELATIVE
+LOSS_BUDGET_PREREG_RELATIVE = Path(
+    "research/chinext_v1/specs/chinext_v2_loss_budget_attempt_preregistration.json"
+)
 V1_STRATEGY = ROOT / "research/chinext_v1/strategy/chinext_v1_exploratory.py"
 CANDIDATE_MODULE = ROOT / "research/chinext_v1/strategy/chinext_v2_candidate.py"
 ENGINE = ROOT / "research/chinext_v1/scripts/run_chinext_v1_smoke.py"
@@ -51,6 +53,7 @@ DECOMPOSITION = (
 HYPOTHESIS_LEDGER = (
     ROOT / "research/chinext_v1/specs/chinext_v2_failure_hypothesis_ledger.json"
 )
+PRIOR_ATTEMPT_LEDGER = ROOT / "research/chinext_v1/reports/chinext_v2_attempt_ledger.json"
 MARKET = ROOT / "research/chinext_v1/data/smoke/399102_daily.csv"
 CALENDAR = Path("/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet")
 
@@ -68,26 +71,38 @@ def sha256_file(path: Path) -> str:
 
 
 def candidate_identity(policy_name: str) -> str:
+    policy = policy_for(policy_name)
+    semantic_delta = (
+        "ONE_CLOSE_CONFIRMED_CYCLE_LOSS_BUDGET_WITH_NEXT_OPEN_EXIT"
+        if policy.close_loss_budget is not None
+        else "ONE_POST_MINVOL_PRE_RANK_RS_ADMISSION_CONDITION"
+    )
     payload = {
         "candidate_module_sha256": sha256_file(CANDIDATE_MODULE),
         "engine_sha256": sha256_file(ENGINE),
         "parent_v1_strategy_sha256": PARENT_V1_STRATEGY_SHA256,
-        "policy": policy_for(policy_name).to_dict(),
-        "semantic_delta": "ONE_POST_MINVOL_PRE_RANK_RS_ADMISSION_CONDITION",
+        "policy": policy.to_dict(),
+        "semantic_delta": semantic_delta,
     }
     return hashlib.sha256(extended.canonical_bytes(payload)).hexdigest()
 
 
 def load_preregistered_attempt(attempt_id: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    prereg_relative = (
+        LOSS_BUDGET_PREREG_RELATIVE if attempt_id == "V2-A003" else PREREG_RELATIVE
+    )
+    prereg_path = ROOT / prereg_relative
     committed = subprocess.run(
-        ["git", "show", f"HEAD:{PREREG_RELATIVE.as_posix()}"],
+        ["git", "show", f"HEAD:{prereg_relative.as_posix()}"],
         cwd=ROOT,
         check=True,
         capture_output=True,
     ).stdout
-    if committed != PREREG.read_bytes():
+    if committed != prereg_path.read_bytes():
         raise V2ResearchError("V2 attempt preregistration differs from committed bytes")
     prereg = json.loads(committed)
+    if not str(prereg.get("status", "")).startswith("FROZEN_BEFORE"):
+        raise V2ResearchError("V2 attempt preregistration is not frozen before results")
     if prereg["research_period"] != [START.isoformat(), END.isoformat()]:
         raise V2ResearchError("V2 research period is not exact 2018-2021")
     if prereg["recent_period_firewall"]["used_for_candidate_selection"] != "NO":
@@ -107,6 +122,8 @@ def load_preregistered_attempt(attempt_id: str) -> tuple[dict[str, Any], dict[st
         "v1_extended_result": V1_SUMMARY,
         "v1_strategy": V1_STRATEGY,
     }
+    if attempt_id == "V2-A003":
+        bindings["prior_attempt_ledger"] = PRIOR_ATTEMPT_LEDGER
     for name, path in bindings.items():
         if sha256_file(path) != prereg["frozen_bindings"][f"{name}_sha256"]:
             raise V2ResearchError(f"preregistered file hash mismatch: {name}")
@@ -132,6 +149,7 @@ def build_result(
 ) -> dict[str, Any]:
     summary = json.loads(engine_summary_path.read_text(encoding="utf-8"))
     executions = read_jsonl(Path(summary["audit"]["execution_ledger"]))
+    events = read_jsonl(Path(summary["audit"]["event_ledger"]))
     nav = read_jsonl(Path(summary["audit"]["daily_nav"]))
     trips = reconstruct_round_trips(executions)
     if len(nav) != 973 or nav[0]["trade_date"] != START.isoformat() or nav[-1][
@@ -154,6 +172,12 @@ def build_result(
         (str(row["symbol"]), str(row["entry_signal_date"])) for row in trips
     }
     top20_retained = len(candidate_trip_ids & v1_top20_identities())
+    severe_losses = [row for row in trips if float(row["round_trip_return"]) <= -0.10]
+    loss_budget_events = [
+        row for row in events if row.get("event") == "V2_LOSS_BUDGET_EXIT_SIGNAL"
+    ]
+    if len(loss_budget_events) != summary["v2_candidate"]["loss_budget_signal_count"]:
+        raise V2ResearchError("loss-budget event count differs from engine summary")
     result = {
         "ATTEMPT_ID": attempt["ATTEMPT_ID"],
         "CANDIDATE_POLICY": attempt["CANDIDATE_POLICY"],
@@ -192,6 +216,20 @@ def build_result(
             ],
             "TOTAL_RETURN": portfolio["total_return"],
             "TRADES": len(trips),
+            "CYCLES_LE_NEGATIVE_10_COUNT": len(severe_losses),
+            "CYCLES_LE_NEGATIVE_10_REALIZED_PNL": sum(
+                float(row["realized_pnl"]) for row in severe_losses
+            ),
+            "NEGATIVE_REALIZED_PNL": sum(
+                min(0.0, float(row["realized_pnl"])) for row in trips
+            ),
+            "POSITIVE_20_PCT_CYCLE_COUNT": sum(
+                float(row["round_trip_return"]) >= 0.20 for row in trips
+            ),
+            "V2_LOSS_BUDGET_SIGNAL_COUNT": len(loss_budget_events),
+            "V2_LOSS_BUDGET_UNKNOWN_COUNT": summary["v2_candidate"][
+                "loss_budget_unknown_count"
+            ],
             "V1_TOP20_ENTRY_IDENTITY_RETAINED": top20_retained,
             "WIN_RATE": portfolio["win_rate"],
             "year_returns": {year: row["return"] for year, row in years.items()},
@@ -216,7 +254,11 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     cli = parse_args()
     if cli.identity_only:
-        policy_names = ("V2_R120_MEDIAN", "V2_ALL_HORIZON_MEDIAN")
+        policy_names = (
+            "V2_R120_MEDIAN",
+            "V2_ALL_HORIZON_MEDIAN",
+            "V2_LOSS_BUDGET_10",
+        )
         print(
             json.dumps(
                 {name: candidate_identity(name) for name in sorted(policy_names)},

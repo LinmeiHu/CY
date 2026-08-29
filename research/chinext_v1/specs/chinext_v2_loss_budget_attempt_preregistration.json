@@ -1,0 +1,107 @@
+{
+  "artifact_id": "CHINEXT-V2-LOSS-BUDGET-ATTEMPT-PREREGISTRATION-2018-2021-V1",
+  "attempt_budget": {
+    "material_candidate_evaluations_before_this_spec": 2,
+    "material_candidate_evaluations_preregistered_here": 1,
+    "material_candidate_evaluations_total_if_completed": 3,
+    "maximum_material_candidate_evaluations": 24,
+    "maximum_variants_for_hypothesis": 1,
+    "parameter_grid": "NONE"
+  },
+  "attempts": [
+    {
+      "ACCEPTANCE_REJECTION_LOGIC": {
+        "accept_as_primary_only_if_all": [
+          "CYCLES_LE_NEGATIVE_10_COUNT is below the V1 count of 22",
+          "CYCLES_LE_NEGATIVE_10_REALIZED_PNL is less negative than the V1 value -413236.9100000001",
+          "NEGATIVE_REALIZED_PNL is less negative than the V1 value -915745.1530000002",
+          "MEDIAN_TRADE improves versus V1",
+          "RETURN_EX_BEST20 improves versus V1",
+          "MAX_DRAWDOWN is no worse than V1",
+          "TOP20_PNL_CONCENTRATION does not exceed V1",
+          "at least two calendar-year returns improve versus V1",
+          "no V1-positive calendar year becomes negative",
+          "TRADES remains at least half the V1 count (97)",
+          "at least half of V1 top-20 entry identities (10) remain represented",
+          "at least half of the V1 >=+20% cycle count (9 of 17) remains",
+          "SPECIAL_CASE_COUNT remains zero",
+          "2022-2025 remains unused"
+        ],
+        "decision_rule": "Total return alone can never accept the candidate. Failure of any required structural condition rejects it as the primary V2 candidate. No threshold change, second loss-budget variant, or result-conditioned repair is authorized. If this single variant fails and no separately frozen hypothesis has a unique minimal intervention, conclude NO_DEFENSIBLE_V2_CANDIDATE."
+      },
+      "ATTEMPT_ID": "V2-A003",
+      "CANDIDATE_POLICY": "V2_LOSS_BUDGET_10",
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "EXACT_CHANGE": "For an existing position not already covered by a market or individual exit, mark the complete cycle at each causally available, hard-valid completed close using prior realized P&L, remaining dividends, split-adjusted shares, remaining cost basis, and total cycle buy cost. If the mark is at or below -10%, add the symbol to the existing forced-exit set for execution at the next eligible open under unchanged T+1, trading-state, limit, fee, and corporate-action semantics. Never execute at the signal close and never substitute a stale or synthetic close.",
+      "EXPECTED_COST": "A gap before the next eligible open can exceed the budget, and a later recovery or large winner that first crosses -10% can be truncated. The candidate may also create a new entry cycle after a completed exit under unchanged V1 admission rules.",
+      "EXPECTED_DIRECTION": "Reduce the number and realized P&L drag of severe-loss cycles, improve median trade and return excluding the best 20, and preserve at least half of the large-winner identities and >=+20% cycles without increasing concentration or drawdown.",
+      "HYPOTHESIS_ID": "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET",
+      "PARAMETERS_IF_ANY": {
+        "close_loss_budget": -0.1,
+        "execution_timing": "NEXT_ELIGIBLE_OPEN",
+        "signal_price": "COMPLETED_HARD_VALID_CLOSE",
+        "threshold_variants": "NONE"
+      },
+      "PARENT_STRATEGY_SHA": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+      "RESULT_STATUS": "PREREGISTERED_NOT_RUN",
+      "STRATEGY_SHA": "20a531dfe434aae5cbf581649897229c7680af556703766f78bc6992b907dee2",
+      "WHY_THIS_PARAMETER_VALUE": "-10% is the single mechanism boundary justified before evaluation by the frozen V1 decomposition: 22 completed cycles at or below -10% contributed -413236.91, while the V1 top-20 winners had only -6.1294% p10 MAE. No tighter threshold or sweep is authorized."
+    }
+  ],
+  "baseline_metrics": {
+    "CYCLES_LE_NEGATIVE_10_COUNT": 22,
+    "CYCLES_LE_NEGATIVE_10_REALIZED_PNL": -413236.9100000001,
+    "MAX_DRAWDOWN": -0.20762679470782652,
+    "MEAN_TRADE": 0.030455684400042576,
+    "MEDIAN_TRADE": -0.00970512426371722,
+    "NEGATIVE_REALIZED_PNL": -915745.1530000002,
+    "POSITIVE_20_PCT_CYCLE_COUNT": 17,
+    "RETURN_EX_BEST20": -0.5015728892100006,
+    "TOP20_PNL_CONCENTRATION": 0.7351787051890619,
+    "TOTAL_RETURN": 0.6482237267899993,
+    "TRADES": 194,
+    "WIN_RATE": 0.4536082474226804,
+    "year_returns": {
+      "2018": -0.03783516999999992,
+      "2019": 0.23490683088052555,
+      "2020": 0.05267228742443164,
+      "2021": 0.31776904262665284
+    }
+  },
+  "causal_contract": {
+    "decision_input": "same-session completed close with available_at no later than that session close and all existing hard-valid/PIT/state/corporate-action flags true",
+    "earliest_execution": "next eligible open after signal_date",
+    "existing_exit_precedence": "market exit, then individual exit, then loss-budget exit",
+    "missing_or_invalid_close": "COUNT_UNKNOWN_AND_DO_NOT_SIGNAL",
+    "same_bar_fill": "FORBIDDEN",
+    "stale_or_synthetic_signal_price": "FORBIDDEN"
+  },
+  "frozen_bindings": {
+    "candidate_module_sha256": "51ea97f8b67bfe379ca9c36b27b23a897aca166234a6eb212c74149da887b607",
+    "engine_sha256": "7b16894d823e9156274ec8beffe61719a97a22da5f08844ea7f759953dba695f",
+    "failure_decomposition_sha256": "5de8baaa7a57ad6e8db8f2c08e7bafffce4b11ab8b03ba5e3a78a7a06c4a1f3c",
+    "formal_input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "hypothesis_ledger_sha256": "1a0fce79cc31d16388d7befe9aadf884a817bfbd3084d6d7fa656d0c919bae30",
+    "prior_attempt_ledger_sha256": "ac5c39dfd407a111386cf008047936c8c340d760d65776fa7a7bb1f5f4e91bec",
+    "runner_sha256": "521d6e7e7255958ed58f95f40b9f0d648880df3a4ea2f29387685dd631eb28ac",
+    "v1_extended_result_sha256": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094",
+    "v1_strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "recent_period_firewall": {
+    "period": "2022-01-01..2025-12-31",
+    "status": "REVISION_HOLDBACK_NOT_USED_FOR_V2_SELECTION",
+    "used_for_candidate_selection": "NO"
+  },
+  "research_period": [
+    "2018-01-02",
+    "2021-12-31"
+  ],
+  "sample_status": "IN_SAMPLE_MECHANISM_RESEARCH",
+  "status": "FROZEN_BEFORE_V2_A003_RESULT",
+  "warmup_start": "2017-04-12"
+}
