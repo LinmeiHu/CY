@@ -1,0 +1,109 @@
+{
+  "calendar": {
+    "first_date": "1990-12-19 00:00:00",
+    "last_date": "2026-12-31 00:00:00",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+    "rows": 8797,
+    "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "unique_dates": 8797
+  },
+  "current_master": {
+    "gem_delist_date_known_rows": 0,
+    "gem_list_date_known_rows": 2,
+    "gem_listed_rows": 1399,
+    "gem_rows": 1440,
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/security_master.parquet",
+    "point_in_time_accepted": false,
+    "rows": 5891,
+    "schema": [
+      "symbol",
+      "secid",
+      "name",
+      "exchange",
+      "board",
+      "status",
+      "list_date",
+      "delist_date",
+      "industry",
+      "full_name",
+      "company_name",
+      "source"
+    ],
+    "sha256": "385b222370b26bb3d09a5c06181e26cf1b636fde8f7c50d0ed04521f7a197d50"
+  },
+  "current_survivor": {
+    "historical_universe_use_allowed": false,
+    "list_date_known_rows": 2,
+    "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/manifests/chinext_current_survivor_universe.json",
+    "point_in_time_status": "NON_PIT_CURRENT_SURVIVOR; most legacy list_date values are absent",
+    "symbol_count": 1398
+  },
+  "cy006_2020_chinext_prefix_bounded": {
+    "amount_close_volume_ratio_median": 1.0000055353303303,
+    "buy_blocked_rows": 1884,
+    "first_date": "2020-01-02",
+    "hard_invalid_rows": 8746,
+    "historical_identity_invalid_rows": 0,
+    "is_st_rows": 258,
+    "last_date": "2020-12-31",
+    "missing_available_at_rows": 0,
+    "nontrading_rows": 1043,
+    "rows": 201867,
+    "sell_blocked_rows": 2200,
+    "snapshot_ids": 1,
+    "symbols": 897
+  },
+  "generated_at": "2026-08-29T03:55:12.684084+00:00",
+  "interpretation": {
+    "amount_unit_evidence": "median amount/(close*volume) near 1 supports amount CNY with volume shares",
+    "prefix_is_membership_fact": false,
+    "risk_warning_mapping_complete": false,
+    "suspension_and_daily_state_available": true,
+    "universe_construction_authorized": false
+  },
+  "probe_version": "chinext-v1-local-data-capability-probe-1",
+  "registry": {
+    "cy006": {
+      "coverage": {
+        "end": "2026-08-12",
+        "hard_invalid_rows": 358453,
+        "hard_valid_ratio": 0.9619553663605468,
+        "hard_valid_rows": 9063454,
+        "partitions": 9,
+        "rows": 9421907,
+        "start": "2018-01-01",
+        "target_backtest_start": "2020-01-01"
+      },
+      "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "status": "RESEARCH_CONDITIONAL"
+    },
+    "path": "/Users/linmei/Documents/CY-supermind-v6/configs/data_asset_registry.json",
+    "qd002": {
+      "manifest_sha256": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982",
+      "schema_and_units": "trade_date, symbol, trade_status, is_st, limit_pct, up_limit_price, down_limit_price, buy_blocked_open, sell_blocked_open, state_source",
+      "status": "RESEARCH_CONDITIONAL"
+    },
+    "qd003": {
+      "contains_399102": false,
+      "indices": [
+        "csi000300",
+        "csi000852",
+        "csi000905",
+        "sh000001",
+        "sz399001",
+        "sz399006"
+      ],
+      "status": "RESEARCH_CONDITIONAL"
+    },
+    "qd007": {
+      "blocked_uses": [
+        "universe construction",
+        "survivorship-bias claims",
+        "states, signals, or backtests"
+      ],
+      "physical_state": "CANDIDATE_NOT_MATERIALIZED",
+      "status": "DISCOVERY_ONLY"
+    },
+    "sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2"
+  }
+}

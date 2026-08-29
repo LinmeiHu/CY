@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-08-29T03:54:16.621102+00:00",
+  "policy": {
+    "activated_for_universe_construction": false,
+    "current_survivor_used_for_historical_universe": false,
+    "limitations": [
+      "three bounded dates do not establish complete historical coverage",
+      "code prefix is a sanity count only, not board membership",
+      "response has no list_date or delist_date",
+      "code_name is not used to infer ST or risk-warning history",
+      "tradeStatus is observed data but does not prove side-specific tradability"
+    ],
+    "prefix_is_membership_fact": false
+  },
+  "registry_status": "DISCOVERY_ONLY",
+  "samples": [
+    {
+      "all_market_rows": 4042,
+      "chinext_prefix_sanity_rows": 710,
+      "error_code": "0",
+      "fields": [
+        "code",
+        "tradeStatus",
+        "code_name"
+      ],
+      "metadata_payload_sha256": "e35f0a923b85b0c7e9fff15cef0e43da2c012e2be3f2a76ddb519364d47a662f",
+      "prefix_trade_status_counts": {
+        "0": 47,
+        "1": 663
+      },
+      "raw_snapshot_file_sha256": "e3623671f2f1488fe6d24e1251d231ea15c5eb095271d2ff4573e5aecdc9250a",
+      "raw_snapshot_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/baostock_pit_probe/2018-01-02/snapshot_2018-01-02.json",
+      "status": "DISCOVERY_ONLY",
+      "trade_date": "2018-01-02"
+    },
+    {
+      "all_market_rows": 4515,
+      "chinext_prefix_sanity_rows": 851,
+      "error_code": "0",
+      "fields": [
+        "code",
+        "tradeStatus",
+        "code_name"
+      ],
+      "metadata_payload_sha256": "d9ffb8ddf911cc7dabed3b2e09659f3ab34205cfaa4ce79c6be7bbabc486123f",
+      "prefix_trade_status_counts": {
+        "0": 4,
+        "1": 847
+      },
+      "raw_snapshot_file_sha256": "4867294d9f5257ed2ea4da4858ff4158fe4b03bbdf9184ce90483a8a1717cae5",
+      "raw_snapshot_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/baostock_pit_probe/2020-08-24/snapshot_2020-08-24.json",
+      "status": "DISCOVERY_ONLY",
+      "trade_date": "2020-08-24"
+    },
+    {
+      "all_market_rows": 7340,
+      "chinext_prefix_sanity_rows": 1401,
+      "error_code": "0",
+      "fields": [
+        "code",
+        "tradeStatus",
+        "code_name"
+      ],
+      "metadata_payload_sha256": "caaa80159f6badaad5475ed265326c954ea1d0e386e7ae88b173c2e51501e297",
+      "prefix_trade_status_counts": {
+        "0": 1,
+        "1": 1400
+      },
+      "raw_snapshot_file_sha256": "1ecd00c3139ea84e76cdd5e8f1d3dde279192fd5a6d5b5a9c28d0e397e55c42b",
+      "raw_snapshot_path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/baostock_pit_probe/2026-08-12/snapshot_2026-08-12.json",
+      "status": "DISCOVERY_ONLY",
+      "trade_date": "2026-08-12"
+    }
+  ],
+  "source": "baostock.query_all_stock(day)",
+  "summary_version": "chinext-v1-baostock-qd007-probe-summary-1"
+}
