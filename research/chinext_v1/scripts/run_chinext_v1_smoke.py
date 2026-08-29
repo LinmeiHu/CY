@@ -45,6 +45,13 @@ from strategy.chinext_v1_exploratory import (  # noqa: E402
     sort_candidates,
     trade_return_summary,
 )
+from chinext_v1_ablation import (  # noqa: E402
+    market_entry_allowed_for_arm,
+    minvol_admission_for_arm,
+    policy_for,
+    price_structure_for_arm,
+    rank_candidates_for_arm,
+)
 
 SURVIVOR_WARNING = (
     "CURRENT SURVIVOR UNIVERSE / NOT POINT-IN-TIME / SURVIVORSHIP BIASED / "
@@ -400,6 +407,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     if args.start >= args.end:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
+    ablation_policy = policy_for(getattr(args, "ablation_arm", "A0_BASELINE"))
     pit_membership_path = getattr(args, "pit_membership", None)
     pit_mode = pit_membership_path is not None
     if pit_mode:
@@ -821,7 +829,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             for symbol in basic_eligible:
                 if symbol in committed or symbol in forced_exits:
                     continue
-                price_pass, full = entry_price_structure(histories_close[symbol], config)
+                price_pass, full, ablation_diagnostics = price_structure_for_arm(
+                    histories_close[symbol], config, ablation_policy
+                )
                 if not price_pass:
                     continue
                 counts["entry_signal"] += 1
@@ -838,16 +848,22 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                         "symbol": symbol,
                         "price_structure_pass": price_pass,
                         "full40": asdict(full),
+                        "phase3_ablation": ablation_diagnostics,
                         "minvol": asdict(minimum),
                         "breakout_volume_mode": BREAKOUT_VOLUME_MODE,
                         "breakout_volume": asdict(breakout),
                         "rs": rs.get(symbol),
                     }
                 )
-                if minimum.passed and symbol in rs:
+                if minvol_admission_for_arm(minimum, ablation_policy) and symbol in rs:
                     candidate_symbols.append(symbol)
-            ranked = sort_candidates(candidate_symbols, rs)
-            entry_allowed = market_state["valid"] and market_state["entry_permission"]
+                    counts["arm_candidate_event"] += 1
+            ranked = rank_candidates_for_arm(
+                candidate_symbols, rs, day, ablation_policy
+            )
+            entry_allowed = market_entry_allowed_for_arm(
+                market_state, ablation_policy
+            )
             if entry_allowed:
                 desired = select_no_replacement_members(
                     planned_members, forced_exits, ranked, config
@@ -971,6 +987,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         ),
         "research_mode": RESEARCH_MODE,
         "configuration": config.to_dict(),
+        "phase3_ablation": ablation_policy.to_dict(),
         "data": {
             **(
                 {"pit_membership": pit_metadata, "current_survivor_fallback": False}
@@ -1035,7 +1052,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "entry_signal_count": counts["entry_signal"],
             "price_structure_signal_count": counts["entry_signal"],
             "minvol_pass_count": counts["minvol_pass"],
-            "final_entry_candidate_count": counts["minvol_pass"],
+            "final_entry_candidate_count": counts["arm_candidate_event"],
             "breakout_volume_shadow_pass_count": counts["breakout_volume_shadow_pass"],
             "individual_exit_signal_count": counts["individual_exit_signals"],
             "market_exit_signal_days": counts["market_exit_signal_days"],

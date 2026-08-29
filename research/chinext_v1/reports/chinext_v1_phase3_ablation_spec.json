@@ -1,0 +1,191 @@
+{
+  "spec_id": "CHINEXT_V1_PHASE3_MODULE_ABLATION_V1",
+  "status": "FROZEN_BEFORE_ANY_ABLATION_RESULT",
+  "results_observed_before_freeze": false,
+  "purpose": "single-factor removal/isolation of five frozen admission/selection modules; no parameter search",
+  "formal_run_order": [
+    "A0_BASELINE",
+    "A1_MINUS_MINVOL",
+    "A2_MINUS_B60",
+    "A3_MINUS_FULL40",
+    "A4_NO_RS_SELECTION_CONTROL",
+    "A5_MINUS_MARKET_ENTRY_GATE"
+  ],
+  "formal_replay_count_expected": 6,
+  "frozen_inputs": {
+    "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-2024-2025-V1",
+    "strategy_path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "pit_manifest_path": "research/chinext_v1/reports/chinext_v1_pit_master_manifest.json",
+    "pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+    "phase1b_summary_path": "research/chinext_v1/reports/chinext_v1_pit_replay_summary.json",
+    "phase1b_summary_sha256": "10c9a10860dfaef5ee621a5e98741a9b0f881be247e8115cd524d9098a66d6af",
+    "phase2_attribution_path": "research/chinext_v1/reports/chinext_v1_trade_attribution.csv",
+    "phase2_attribution_sha256": "f7da1796d082c6dc473b36a6039b47967bfed4f7719e3660c08a4ace739797dd",
+    "date_range": [
+      "2024-01-02",
+      "2025-12-31"
+    ],
+    "pit_rebuilt": false,
+    "current_survivor_fallback": false
+  },
+  "frozen_baseline": {
+    "total_return": 1.0524221580500002,
+    "max_drawdown": -0.2622719258789836,
+    "trade_count": 111,
+    "top10_positive_pnl_concentration": 0.6230487574354671,
+    "top20_positive_pnl_concentration": 0.8425435214865872,
+    "return_ex_best10": 0.03609161875000022,
+    "return_ex_best20": -0.3219529632499998,
+    "baseline_top20_episode_key": "(normalized_symbol, entry_signal_date)",
+    "baseline_top20_episode_keys": [
+      ["300377.SZ", "2024-09-24"],
+      ["300497.SZ", "2025-11-06"],
+      ["300033.SZ", "2024-09-24"],
+      ["300437.SZ", "2025-11-06"],
+      ["300803.SZ", "2024-09-24"],
+      ["300348.SZ", "2024-09-24"],
+      ["301165.SZ", "2025-06-24"],
+      ["301093.SZ", "2025-06-23"],
+      ["300779.SZ", "2025-02-12"],
+      ["301141.SZ", "2025-06-04"],
+      ["300128.SZ", "2024-09-25"],
+      ["300324.SZ", "2024-09-24"],
+      ["300490.SZ", "2025-09-25"],
+      ["300457.SZ", "2025-08-28"],
+      ["300763.SZ", "2025-08-29"],
+      ["300459.SZ", "2024-09-25"],
+      ["300357.SZ", "2025-07-16"],
+      ["300182.SZ", "2024-09-24"],
+      ["300938.SZ", "2025-10-29"],
+      ["300442.SZ", "2024-09-24"]
+    ]
+  },
+  "common_contract": {
+    "universe": "authorized frozen daily ChinNext PIT-B membership with listed_trading_days >= 180",
+    "daily_input": "frozen CY-006 PIT-B daily partitions",
+    "market_anchor": "399102.SZ",
+    "initial_cash": 1000000.0,
+    "transaction_cost_bps_per_filled_side": 10.0,
+    "separate_stamp_duty": false,
+    "board_lot": 100,
+    "max_holdings": 10,
+    "target_weight": 0.1,
+    "set_change_only": true,
+    "rank_replacement": "OFF",
+    "execution": "completed-close signal; next-session open; T+1/tradability/limit checks unchanged",
+    "individual_exit": "MA30 x2 unchanged",
+    "market_exits": "399102 MA20 x2 and emergency Close < MA20*0.96 unchanged in every arm",
+    "corporate_actions": "existing replay semantics unchanged",
+    "entry_ma": 20,
+    "b60_days": 60,
+    "full40": {
+      "box_days": 40,
+      "box_width_max": 0.2,
+      "ma_dispersion_max": 0.08,
+      "direction_efficiency_max": 0.45,
+      "vol_ratio_10_60_max": 0.85
+    },
+    "minvol": {
+      "lookback": 30,
+      "location_max": 0.5,
+      "minimum_volume_ratio_max": 0.7,
+      "signal_day_excluded": true
+    },
+    "rs_weights": {
+      "r20": 0.2,
+      "r60": 0.5,
+      "r120": 0.3
+    },
+    "breakout_volume": "SHADOW; never an admission filter"
+  },
+  "arms": {
+    "A0_BASELINE": {
+      "single_change": "NONE",
+      "minvol_hard_filter": true,
+      "b60_hard_filter": true,
+      "full40_hard_filter": true,
+      "candidate_priority": "FROZEN_RS_SCORE_DESC_MOM60_DESC_SYMBOL_ASC",
+      "market_entry_gate": true
+    },
+    "A1_MINUS_MINVOL": {
+      "single_change": "disable the entire MINVOL hard admission filter",
+      "minvol_hard_filter": false,
+      "b60_hard_filter": true,
+      "full40_hard_filter": true,
+      "candidate_priority": "FROZEN_RS_SCORE_DESC_MOM60_DESC_SYMBOL_ASC",
+      "market_entry_gate": true
+    },
+    "A2_MINUS_B60": {
+      "single_change": "remove only strict signal Close > previous-60-close high admission",
+      "minvol_hard_filter": true,
+      "b60_hard_filter": false,
+      "full40_hard_filter": true,
+      "candidate_priority": "FROZEN_RS_SCORE_DESC_MOM60_DESC_SYMBOL_ASC",
+      "market_entry_gate": true
+    },
+    "A3_MINUS_FULL40": {
+      "single_change": "disable the entire FULL40 admission module",
+      "minvol_hard_filter": true,
+      "b60_hard_filter": true,
+      "full40_hard_filter": false,
+      "candidate_priority": "FROZEN_RS_SCORE_DESC_MOM60_DESC_SYMBOL_ASC",
+      "market_entry_gate": true
+    },
+    "A4_NO_RS_SELECTION_CONTROL": {
+      "single_change": "replace RS vacancy priority only with deterministic SHA256 ascending priority",
+      "minvol_hard_filter": true,
+      "b60_hard_filter": true,
+      "full40_hard_filter": true,
+      "candidate_priority": "SHA256_ASC",
+      "priority_preimage": "CHINEXT_V1_PHASE3_NO_RS_V1|{signal_date ISO YYYY-MM-DD}|{normalized_symbol}",
+      "fixed_domain_string": "CHINEXT_V1_PHASE3_NO_RS_V1",
+      "market_entry_gate": true
+    },
+    "A5_MINUS_MARKET_ENTRY_GATE": {
+      "single_change": "remove market entry permission blocking for NEW ENTRIES only; all market exits remain active",
+      "minvol_hard_filter": true,
+      "b60_hard_filter": true,
+      "full40_hard_filter": true,
+      "candidate_priority": "FROZEN_RS_SCORE_DESC_MOM60_DESC_SYMBOL_ASC",
+      "market_entry_gate": false
+    }
+  },
+  "metric_contract": {
+    "trade": "completed position cycle from frozen accounting semantics",
+    "pnl_concentration_denominator": "sum of positive completed-cycle realized PnL",
+    "return_ex_best_n": "arm total return minus top-N completed-cycle PnL / frozen initial cash; ending marked positions unchanged",
+    "winner_capture": "exact same (normalized_symbol, entry_signal_date) episode; same symbol at another date is reported separately and is not captured",
+    "arm_top20": "top 20 completed cycles by realized PnL descending with symbol and exit date deterministic tie-break",
+    "candidate_event_count": "symbol-date events passing every arm-active admission module and present in the eligible RS table, before market entry permission and vacancy selection",
+    "selected_entry_count": "filled BUY legs whose new_position is true",
+    "average_invested_fraction": "mean daily marked invested_ratio",
+    "2024_09_entry_cohort": "completed cycles with entry_signal_date from 2024-09-01 through 2024-09-30 inclusive",
+    "pnl_excluding_2024_09_entry_cohort": "sum of completed-cycle realized PnL outside the fixed cohort",
+    "return_excluding_2024_09_entry_cohort": "UNRESOLVED unless a cash-flow counterfactual can be reconstructed without a new strategy replay; no proxy portfolio return may be fabricated"
+  },
+  "comparison_contract": {
+    "percentage_point_deltas": "100 * (arm decimal metric - A0 decimal metric)",
+    "drawdown_delta": "arm max_drawdown - A0 max_drawdown; negative means worse drawdown",
+    "module_label_rules_in_order": [
+      "RISK_FILTERING if removal worsens max drawdown by at least 5pp or expands completed trades or average exposure by at least 25%, unless it meets POSSIBLY_HARMFUL",
+      "POSSIBLY_HARMFUL if removal improves total return by at least 10pp, does not worsen max drawdown by more than 3pp, and improves return-ex-best20 by at least 10pp",
+      "CLEARLY_HELPFUL if removal reduces total return by at least 10pp and also reduces exact baseline-Top20 capture or worsens return-ex-best20",
+      "REDUNDANT_IN_THIS_SAMPLE if absolute return delta <5pp, drawdown delta <3pp, Top20 concentration delta <5pp, return-ex-best20 delta <5pp, and exact Top20 capture loss <=2",
+      "TRADEOFF if return changes by at least 5pp while drawdown, concentration, exposure, or winner capture moves materially in the opposite direction",
+      "INCONCLUSIVE otherwise"
+    ],
+    "most_helpful_module": "removed module whose arm has the most negative return delta, only if another risk/concentration/capture metric also worsens; otherwise INCONCLUSIVE",
+    "most_redundant_module": "arm satisfying REDUNDANT_IN_THIS_SAMPLE with smallest absolute return delta; otherwise INCONCLUSIVE",
+    "largest_risk_control_effect": "removed module whose arm has the most negative max-drawdown delta; report INCONCLUSIVE if all absolute deltas <1pp",
+    "largest_winner_capture_effect": "removed module with largest loss of exact baseline Top20 episodes; ties use fixed arm order"
+  },
+  "prohibited": [
+    "parameter sweeps",
+    "adding/deleting/redefining arms after freeze",
+    "exit ablation",
+    "universe/date/cost/position-size changes",
+    "current-survivor fallback",
+    "PIT rebuild"
+  ]
+}
