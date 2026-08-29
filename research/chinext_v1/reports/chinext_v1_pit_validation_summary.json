@@ -1,0 +1,102 @@
+{
+  "blocked_reason": {
+    "available_at": "BaoStock historical security responses do not expose record-level historical available_at or revision lineage.",
+    "decision": "Fail closed before strategy, signal, execution, cost, benchmark, or performance computation.",
+    "registry": "configs/data_asset_registry.json keeps QD-007 DISCOVERY_ONLY and explicitly blocks universe construction, states, signals, and backtests."
+  },
+  "current_survivor_comparator": {
+    "annualized_return_10bps_per_side": 0.436890606292782,
+    "average_holdings": 4.051546391752577,
+    "average_invested_ratio": 0.40391475173586633,
+    "entry_candidates": 1175,
+    "max_drawdown_10bps_per_side": -0.2622719258789836,
+    "median_round_trip_return": -0.01074995073617439,
+    "return_ex_best10": 0.03609161875000022,
+    "return_ex_best20": -0.3219529632499998,
+    "round_trips": 111,
+    "source": "chinext_v1_full_survivor_summary.json and chinext_v1_robustness_summary.json",
+    "top10_positive_pnl_concentration": 0.6230487574354671,
+    "top20_positive_pnl_concentration": 0.8425435214865872,
+    "total_return_10bps_per_side": 1.0524221580500002,
+    "warning": "NON-PIT CURRENT-SURVIVOR COMPARATOR ONLY",
+    "win_rate": 0.44144144144144143,
+    "year_returns": {
+      "2024": 0.4904941877500004,
+      "2025": 0.377007823927356
+    }
+  },
+  "date_range": [
+    "2024-01-02",
+    "2025-12-31"
+  ],
+  "environment": {
+    "branch": "research/chinext-v1",
+    "head": "7ba9b09564df9510432bc5cc60e339aba64acb68",
+    "repo": "/Users/linmei/Documents/CY-supermind-v6",
+    "valid": true
+  },
+  "metrics": {
+    "399006_return": null,
+    "399102_return": null,
+    "annualized_return": null,
+    "average_holdings": null,
+    "average_invested_ratio": null,
+    "completed_round_trip_count": null,
+    "entry_candidate_count": null,
+    "history_valid_count": null,
+    "liquidity_valid_count": null,
+    "max_drawdown": null,
+    "mean_trade_return": null,
+    "median_trade_return": null,
+    "new_position_count": null,
+    "percent_days_flat": null,
+    "profit_factor": null,
+    "sharpe": null,
+    "top10_pnl_concentration": null,
+    "top20_pnl_concentration": null,
+    "total_return": null,
+    "turnover": null,
+    "volatility": null,
+    "win_rate": null,
+    "year_returns": {
+      "2024": null,
+      "2025": null
+    }
+  },
+  "pit_build": {
+    "artifact_status": "MATERIALIZED_PENDING_GOVERNANCE_DECISION",
+    "average_daily_universe": 1364.540206185567,
+    "daily_membership_rows": 661802,
+    "date_count": 485,
+    "daily_membership_sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+    "historical_snapshot_reconciliation": "5/5 EXACT_SET_MATCH",
+    "max_daily_universe": 1393,
+    "min_daily_universe": 1333,
+    "specified_date_counts": {
+      "2024-01-02": 1333,
+      "2024-06-28": 1348,
+      "2025-01-02": 1365,
+      "2025-06-30": 1382,
+      "2025-12-31": 1393
+    },
+    "technical_validation_cases": "A-G PASS",
+    "unique_symbols_in_range": 1404
+  },
+  "pit_result": "BLOCKED",
+  "strategy": {
+    "modified": false,
+    "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "tests": {
+    "command": "research/chinext_v1/.venv/bin/python -m pytest -q research/chinext_v1/tests/",
+    "passed": 63,
+    "result": "PASS"
+  },
+  "universe_policy": {
+    "current_survivor_used": false,
+    "daily_price_and_state_source": "registered CY-006 local PIT-B data (audit only; replay not run)",
+    "membership_candidate": "local exact SZSE GEM identity + BaoStock effective list/out interval",
+    "membership_registry_asset": "QD-007"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "artifacts": {
+    "daily_membership": {
+      "date_count": 485,
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "rows": 661802,
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+      "unique_symbols": 1404
+    },
+    "security_master": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025/security_master.parquet",
+      "rows": 1440,
+      "sha256": "dc8aaacbe76c6096e38c98630d632c64270a9563d466b7eb2ff5b91635ad9591"
+    }
+  },
+  "asset_id": "CHINEXT-V1-PIT-B-2024-2025-CANDIDATE",
+  "current_survivor_used": false,
+  "daily_counts": {
+    "average": 1364.540206185567,
+    "maximum": 1393,
+    "minimum": 1333,
+    "specified_dates": {
+      "2024-01-02": 1333,
+      "2024-06-28": 1348,
+      "2025-01-02": 1365,
+      "2025-06-30": 1382,
+      "2025-12-31": 1393
+    }
+  },
+  "date_range": [
+    "2024-01-02",
+    "2025-12-31"
+  ],
+  "derivation": "exact local GEM/SZ identity intersect BaoStock equity basic; inclusive list/out effective interval expanded only over explicit exchange sessions",
+  "governance": {
+    "formal_replay_authorized": false,
+    "record_available_at_from_provider": false,
+    "registry_asset": "QD-007",
+    "registry_blocked_use": "universe construction, states, signals, or backtests",
+    "registry_status_at_build": "DISCOVERY_ONLY",
+    "strict_archival_pit_a": false
+  },
+  "historical_snapshot_reconciliation": {
+    "2024-01-02": {
+      "derived_interval_count": 1333,
+      "exact_set_match": true,
+      "historical_snapshot_exact_board_count": 1333,
+      "missing_from_derived_intervals": [],
+      "missing_from_historical_snapshot": [],
+      "snapshot_sha256": "0c005d982c82c70a0d71fac3f95e3699c567defb1906a72e98be04f41ca310d3",
+      "trade_status_counts": {
+        "1": 1333
+      }
+    },
+    "2024-06-28": {
+      "derived_interval_count": 1348,
+      "exact_set_match": true,
+      "historical_snapshot_exact_board_count": 1348,
+      "missing_from_derived_intervals": [],
+      "missing_from_historical_snapshot": [],
+      "snapshot_sha256": "a56e8167edf58221f42170ebe9eb4127297e6863795ae879cc67a978e67720b3",
+      "trade_status_counts": {
+        "0": 6,
+        "1": 1342
+      }
+    },
+    "2025-01-02": {
+      "derived_interval_count": 1365,
+      "exact_set_match": true,
+      "historical_snapshot_exact_board_count": 1365,
+      "missing_from_derived_intervals": [],
+      "missing_from_historical_snapshot": [],
+      "snapshot_sha256": "fd0fb61328535c8b6a726ed2848e11e045e625114c2e7dc2c9c64292ea231761",
+      "trade_status_counts": {
+        "0": 1,
+        "1": 1364
+      }
+    },
+    "2025-06-30": {
+      "derived_interval_count": 1382,
+      "exact_set_match": true,
+      "historical_snapshot_exact_board_count": 1382,
+      "missing_from_derived_intervals": [],
+      "missing_from_historical_snapshot": [],
+      "snapshot_sha256": "7985025e7223017548c9f338fdbb40c7e33c22806c9727d0829da996921a241c",
+      "trade_status_counts": {
+        "0": 5,
+        "1": 1377
+      }
+    },
+    "2025-12-31": {
+      "derived_interval_count": 1393,
+      "exact_set_match": true,
+      "historical_snapshot_exact_board_count": 1393,
+      "missing_from_derived_intervals": [],
+      "missing_from_historical_snapshot": [],
+      "snapshot_sha256": "0b7125d9b7416638602a9c47c100c0dbf80cf839a44a6958a65278dcfe975396",
+      "trade_status_counts": {
+        "0": 2,
+        "1": 1391
+      }
+    }
+  },
+  "identity_audit": {
+    "accepted_identity_symbols": 1440,
+    "exact_local_gem_symbols": 1440,
+    "excluded_symbols": [],
+    "invalid_or_missing_list_date": 0,
+    "invalid_out_before_list": 0,
+    "missing_baostock_basic": 0,
+    "non_equity_type": 0
+  },
+  "identity_sources": {
+    "local_exact_board_master": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/security_master.parquet",
+    "local_exact_board_master_sha256": "385b222370b26bb3d09a5c06181e26cf1b636fde8f7c50d0ed04521f7a197d50",
+    "trade_calendar": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+    "trade_calendar_sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+  },
+  "pit_grade": "B_RECONSTRUCTED",
+  "registered_daily_input": {
+    "asset_id": "CY-006",
+    "input_manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "input_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily"
+  },
+  "source_capture": {
+    "baostock_basic_sha256": "2438d4fe64af83f3f8b20daffe458621b86777ed1fcf53b1e3150ad7c78bd65f",
+    "captured_at": "2026-08-29T05:17:37.950496+00:00",
+    "manifest": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/pit_2024_2025/raw/source_capture.json",
+    "manifest_sha256": "92dc323d48d992665fa993bbc70189ab7f6fe44371e56b0a354964f6f21151f1",
+    "mode": "REUSED_LOCAL_IMMUTABLE_RAW",
+    "request_parameters": {
+      "query_all_stock_days": [
+        "2024-01-02",
+        "2024-06-28",
+        "2025-01-02",
+        "2025-06-30",
+        "2025-12-31"
+      ],
+      "query_stock_basic": {}
+    },
+    "source": "BaoStock 0.9.10 query_stock_basic/query_all_stock(day)"
+  },
+  "status": "MATERIALIZED_PENDING_GOVERNANCE_DECISION",
+  "validation_cases": {
+    "A_future_listing_absent": {
+      "pass": true,
+      "pre_2025_membership_rows": 0,
+      "symbol": "301173.SZ"
+    },
+    "B_age_179_fails": {
+      "eligible": false,
+      "listed_trading_days": 179,
+      "pass": true,
+      "symbol": "301429.SZ",
+      "trade_date": "2024-01-08"
+    },
+    "C_age_180_passes": {
+      "eligible": true,
+      "listed_trading_days": 180,
+      "pass": true,
+      "symbol": "301429.SZ",
+      "trade_date": "2024-01-09"
+    },
+    "D_historical_is_st_excluded": {
+      "example": [
+        {
+          "symbol": "300262.SZ",
+          "trade_date": "2024-07-15"
+        }
+      ],
+      "observed_rows": 15308,
+      "pass": true
+    },
+    "E_suspension_not_tradable_excluded": {
+      "example": [
+        {
+          "symbol": "300262.SZ",
+          "trade_date": "2024-07-15"
+        }
+      ],
+      "observed_rows": 5191,
+      "pass": true
+    },
+    "F_delisted_history_retained": {
+      "example": {
+        "historical_rows_retained": 131,
+        "last_materialized_date": "2024-07-18",
+        "out_date": "2024-07-18",
+        "symbol": "300282.SZ"
+      },
+      "pass": true
+    },
+    "G_current_survivor_not_used": {
+      "inputs": [
+        "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+        "/Users/linmei/Downloads/workspace/quant/data/lake/meta/security_master.parquet",
+        "BaoStock"
+      ],
+      "pass": true
+    },
+    "daily_data_gaps_fail_closed": 4
+  }
+}
