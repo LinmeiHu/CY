@@ -65,12 +65,15 @@ windows are causal; orders first become eligible at a later session open.
 
 > **EXPLORATORY / SURVIVOR-BIASED / SMALL SAMPLE**
 
-- TRADE_COUNT: `54` completed sell legs
+- ENTRY_BUY_EXECUTION_COUNT: `26`
+- REBALANCE_BUY_LEG_COUNT: `34`
 - BUY_FILL_COUNT: `60`
 - SELL_FILL_COUNT: `54`
-- WIN_RATE: `72.2222%`
-- AVERAGE_TRADE_RETURN: `13.5284%`
-- MEDIAN_TRADE_RETURN: `5.5004%`
+- COMPLETED_ROUND_TRIP_COUNT: `25`
+- REBALANCE_SELL_LEG_COUNT: `29`
+- WIN_RATE: `44.0000%`
+- AVERAGE_TRADE_RETURN: `6.5870%`
+- MEDIAN_TRADE_RETURN: `-1.3588%`
 - TOTAL_RETURN: `19.6955%`
 - ANNUALIZED_RETURN: `9.4867%`
 - MAX_DRAWDOWN: `-6.1811%`
@@ -94,7 +97,7 @@ same-day exit signals are logged as `EXIT_SIGNAL_BLOCKED_BY_T1` and deferred.
 - CORPORATE_ACTIONS_BLOCKED: `0`
 - STALE_HELD_VALUATIONS: `0`
 - EVENT_LEDGER: `research/chinext_v1/output/chinext_v1_smoke/event_ledger.jsonl` (`af92c6910c3fd3a30692cc4cdbce7db8ca06830c150dd0d4cb0dd3a3cefcc306`)
-- EXECUTION_LEDGER: `research/chinext_v1/output/chinext_v1_smoke/execution_ledger.jsonl` (`d35f8b73869b48052ddadd321da799a1c53cd797a9dc754067a8ff25c3f690dc`)
+- EXECUTION_LEDGER: `research/chinext_v1/output/chinext_v1_smoke/execution_ledger.jsonl` (`ceba6ef4bb25cb5a45076404c0c1972f31200819c9ea078dab4f30ad9e30f577`)
 - DAILY_NAV: `research/chinext_v1/output/chinext_v1_smoke/daily_nav.jsonl` (`eb4d49603594dde4baf3d59462899d33c364a79d82922fae3e7b32e57e5b9b85`)
 
 Cash dividends and share multipliers use the repository's existing research replay

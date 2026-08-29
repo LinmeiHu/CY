@@ -75,6 +75,19 @@ PIT universe contract. Complete historical risk-warning coverage remains unknown
 The execution limit model is `PARTIAL`: known CY-006 open-limit/trade-state fields
 are enforced, while order-book queue and impact are not modeled.
 
+## Full current-survivor replay
+
+`scripts/run_chinext_v1_full_survivor.py` runs the same frozen configuration over
+every symbol in the current-survivor manifest for exactly 2024-01-02 through
+2025-12-31. Daily RS uses the full basic-eligible cross section. The human report
+is `reports/chinext_v1_full_survivor.md`; the machine summary is
+`reports/chinext_v1_full_survivor_summary.json`; large ledgers remain Git-ignored.
+
+This expansion is still **NON-PIT and SURVIVORSHIP BIASED**. Its purpose is only to
+judge whether a separately authorized PIT validation is worth undertaking. It does
+not change B60, FULL40, MINVOL, RS weights, MA30, market gate, portfolio sizing,
+replacement, T+1, execution timing, or any other strategy parameter.
+
 ## Phase boundary
 
 Phase 0 stops here. The next phase should first materialize and validate the required

@@ -8,7 +8,7 @@
     "event_ledger_sha256": "af92c6910c3fd3a30692cc4cdbce7db8ca06830c150dd0d4cb0dd3a3cefcc306",
     "events": 208,
     "execution_ledger": "research/chinext_v1/output/chinext_v1_smoke/execution_ledger.jsonl",
-    "execution_ledger_sha256": "d35f8b73869b48052ddadd321da799a1c53cd797a9dc754067a8ff25c3f690dc",
+    "execution_ledger_sha256": "ceba6ef4bb25cb5a45076404c0c1972f31200819c9ea078dab4f30ad9e30f577",
     "executions": 156,
     "stale_held_valuation_count": 0
   },
@@ -60,12 +60,15 @@
   "execution": {
     "board_lot": 100,
     "buy_fill_count": 60,
+    "completed_round_trip_count": 25,
+    "entry_buy_execution_count": 26,
     "failed_open_execution_count": 4,
     "rank_replacement": "OFF",
+    "rebalance_buy_leg_count": 34,
+    "rebalance_sell_leg_count": 29,
     "sell_fill_count": 54,
     "t1_blocked_exit_count": 5,
     "t1_execution_blocked_count": 0,
-    "trade_count": 54,
     "transaction_cost_bps_per_side": 10.0,
     "turnover": 5.588993166581757
   },
@@ -73,28 +76,77 @@
     "annualized_return": 0.09486747019245212,
     "average_holdings": 1.109278350515464,
     "average_invested_ratio": 0.11202560675786447,
-    "average_trade_return": 0.13528369335398255,
+    "average_trade_return": 0.06587009523755233,
     "ending_holdings": [
       "300696.SZ"
     ],
     "ending_pending_orders": [],
     "max_drawdown": -0.061810543344615665,
     "max_holdings": 10,
-    "median_trade_return": 0.05500376997907319,
+    "median_trade_return": -0.013587541574249505,
+    "pnl_contribution_by_symbol": {
+      "300001.SZ": -5250.595000000006,
+      "300027.SZ": -1522.5920000000062,
+      "300111.SZ": 80340.07400000002,
+      "300139.SZ": -10275.512000000002,
+      "300271.SZ": -1044.8019999999815,
+      "300357.SZ": 14539.823999999997,
+      "300387.SZ": -2808.5780000000163,
+      "300440.SZ": -2918.9240000000136,
+      "300490.SZ": 31643.650000000023,
+      "300569.SZ": -3831.4939999999915,
+      "300595.SZ": 13122.30699999998,
+      "300620.SZ": -11853.263999999996,
+      "300647.SZ": 8340.011999999997,
+      "300671.SZ": 8765.861999999994,
+      "300696.SZ": 27375.529999999995,
+      "300752.SZ": -5631.947000000022,
+      "300779.SZ": 45736.02200000001,
+      "300884.SZ": -5927.536999999997,
+      "300910.SZ": 13172.580000000002,
+      "300938.SZ": 17970.527999999984,
+      "301099.SZ": -8059.281999999992,
+      "301266.SZ": -4926.832999999984
+    },
+    "sell_leg_return_metrics": {
+      "average_trade_return": 0.13528369335398255,
+      "median_trade_return": 0.05500376997907319,
+      "trade_count": 54,
+      "win_rate": 0.7222222222222222
+    },
     "total_return": 0.19695502899999973,
-    "trade_count": 54,
-    "win_rate": 0.7222222222222222
+    "trade_count": 25,
+    "win_rate": 0.44
   },
   "research_mode": "EXPLORATORY_SURVIVOR_BIASED",
   "sample": {
     "average_final_eligible": 26.562886597938146,
     "average_history_valid": 46.91546391752577,
     "average_liquidity_valid": 26.562886597938146,
+    "daily_failure_reason_counts": {
+      "insufficient_or_noncontiguous_history": 555,
+      "invalid_price_or_volume": 26,
+      "known_risk_warning": 915,
+      "turnover20_below_threshold": 9871
+    },
+    "data_found_count": 50,
     "date_range": [
       "2024-01-02",
       "2025-12-31"
     ],
+    "failure_reason_counts": {
+      "insufficient_history": 0,
+      "known_risk_warning_without_any_eligible_day": 0,
+      "missing_data": 0,
+      "other_daily_validity_failure": 0,
+      "turnover_failure": 1
+    },
+    "final_eligible_count": 49,
+    "full_survivor_mode": false,
     "history_candidate_count": 1225,
+    "history_valid_count": 50,
+    "known_risk_warning_symbol_count": 4,
+    "liquidity_valid_count": 49,
     "raw_sample_count": 50,
     "raw_universe_count": 1398,
     "sample_current_name_st_count": 2,
@@ -157,9 +209,11 @@
   "signals": {
     "breakout_volume_shadow_pass_count": 31,
     "entry_signal_count": 43,
+    "final_entry_candidate_count": 37,
     "individual_exit_signal_count": 16,
     "market_exit_signal_days": 191,
     "minvol_pass_count": 37,
+    "price_structure_signal_count": 43,
     "set_change_count": 37
   },
   "warning": "CURRENT SURVIVOR UNIVERSE / NOT POINT-IN-TIME / SURVIVORSHIP BIASED / NOT VALID FOR FINAL PERFORMANCE CLAIMS"

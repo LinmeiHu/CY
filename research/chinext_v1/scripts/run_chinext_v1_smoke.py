@@ -69,6 +69,8 @@ class Position:
     acquisition_date: date
     entry_signal_date: date
     dividends: float = 0.0
+    cycle_buy_cost: float = 0.0
+    cycle_realized_pnl: float = 0.0
 
 
 @dataclass
@@ -84,6 +86,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--start", type=date.fromisoformat, default=date(2024, 1, 2))
     parser.add_argument("--end", type=date.fromisoformat, default=date(2025, 12, 31))
     parser.add_argument("--sample-size", type=int, default=50)
+    parser.add_argument(
+        "--full-survivor",
+        action="store_true",
+        help="replay every manifest survivor; intended for the dedicated full wrapper",
+    )
     parser.add_argument("--initial-cash", type=float, default=1_000_000.0)
     parser.add_argument("--survivor", type=Path, default=DEFAULT_SURVIVOR)
     parser.add_argument("--daily-root", type=Path, default=DEFAULT_DAILY_ROOT)
@@ -355,7 +362,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     paths = daily_glob(args.daily_root, date(2018, 1, 1), args.end)
     connection = duckdb.connect()
     candidates = history_candidates(connection, paths, survivors, args.start, config)
-    sample = deterministic_equidistant_sample(candidates["symbol"].tolist(), args.sample_size)
+    full_survivor = bool(getattr(args, "full_survivor", False))
+    sample = (
+        tuple(survivors)
+        if full_survivor
+        else deterministic_equidistant_sample(candidates["symbol"].tolist(), args.sample_size)
+    )
     warmup_start = date(args.start.year - 1, 1, 1)
     panel = load_sample_panel(connection, paths, sample, warmup_start, args.end)
     sessions = load_sessions(args.calendar, warmup_start, args.end)
@@ -380,13 +392,18 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 
     counts: Counter[str] = Counter()
     eligibility_counts: Counter[str] = Counter()
+    daily_failure_counts: Counter[str] = Counter()
     events: list[dict[str, Any]] = []
     executions: list[dict[str, Any]] = []
-    closed_returns: list[float] = []
+    sell_leg_returns: list[float] = []
+    completed_round_trip_returns: list[float] = []
+    realized_pnl_by_symbol: dict[str, float] = defaultdict(float)
     daily_nav: list[dict[str, Any]] = []
     total_traded_notional = 0.0
     action_blocked_held: list[dict[str, Any]] = []
     usable_symbols: set[str] = set()
+    history_valid_symbols: set[str] = set()
+    liquidity_valid_symbols: set[str] = set()
 
     all_sessions_index = {day: index for index, day in enumerate(sessions)}
 
@@ -508,6 +525,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     continue
                 price = decision.price
                 if side == "BUY":
+                    new_position = position is None
                     budget = min(difference, cash / (1.0 + transaction_cost_rate))
                     shares = math.floor(budget / price / 100.0) * 100.0
                     if shares <= 0:
@@ -524,15 +542,25 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                             cost_basis=notional + cost,
                             acquisition_date=day,
                             entry_signal_date=order.signal_date,
+                            cycle_buy_cost=notional + cost,
                         )
                     else:
                         position.shares += shares
                         position.cost_basis += notional + cost
+                        position.cycle_buy_cost += notional + cost
                         position.acquisition_date = day  # conservative minimal T+1 ledger
                     total_traded_notional += notional
                     counts["buy_fills"] += 1
                     base_execution.update(
-                        {"status": "FILLED", "execution_price": price, "shares": shares, "notional": notional, "cost": cost}
+                        {
+                            "status": "FILLED",
+                            "execution_price": price,
+                            "shares": shares,
+                            "notional": notional,
+                            "cost": cost,
+                            "new_position": new_position,
+                            "rebalance_buy_leg": not new_position,
+                        }
                     )
                 else:
                     assert position is not None
@@ -553,13 +581,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     cost = notional * transaction_cost_rate
                     proceeds = notional - cost
                     cash += proceeds
-                    trade_return = (proceeds + allocated_dividend - allocated_cost) / allocated_cost
-                    closed_returns.append(trade_return)
+                    realized_pnl = proceeds + allocated_dividend - allocated_cost
+                    trade_return = realized_pnl / allocated_cost
+                    sell_leg_returns.append(trade_return)
+                    realized_pnl_by_symbol[symbol] += realized_pnl
+                    position.cycle_realized_pnl += realized_pnl
                     position.shares -= shares
                     position.cost_basis -= allocated_cost
                     position.dividends -= allocated_dividend
                     full_exit = position.shares < 1e-9
                     if full_exit:
+                        round_trip_return = (
+                            position.cycle_realized_pnl / position.cycle_buy_cost
+                        )
+                        completed_round_trip_returns.append(round_trip_return)
                         positions.pop(symbol)
                         forced_exits.discard(symbol)
                     total_traded_notional += notional
@@ -572,7 +607,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                             "notional": notional,
                             "cost": cost,
                             "trade_return": trade_return,
+                            "realized_pnl": realized_pnl,
                             "full_exit": full_exit,
+                            "completed_round_trip": full_exit,
+                            "rebalance_sell_leg": not full_exit,
+                            "round_trip_return": round_trip_return if full_exit else None,
                         }
                     )
                 pending.pop(symbol, None)
@@ -614,6 +653,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             )
             if history_ok:
                 history_valid_today += 1
+                history_valid_symbols.add(symbol)
             liquidity_ok = (
                 history_ok
                 and contiguous_tail(dates, sessions, session_index, config.turnover20_days)
@@ -622,9 +662,29 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             )
             if liquidity_ok:
                 liquidity_valid_today += 1
+                liquidity_valid_symbols.add(symbol)
             if history_ok and liquidity_ok and critical_row_valid(row):
                 basic_eligible.append(symbol)
                 usable_symbols.add(symbol)
+            else:
+                if row is None:
+                    daily_failure_counts["missing_daily_row"] += 1
+                elif row.get("is_st") is True:
+                    daily_failure_counts["known_risk_warning"] += 1
+                elif not finite_positive(row.get("close")) or not finite_positive(
+                    row.get("volume")
+                ):
+                    daily_failure_counts["invalid_price_or_volume"] += 1
+                elif row.get("trade_status") != 1 or row.get(
+                    "current_day_data_tradable"
+                ) is not True:
+                    daily_failure_counts["suspended_or_not_tradable"] += 1
+                elif not history_ok:
+                    daily_failure_counts["insufficient_or_noncontiguous_history"] += 1
+                elif not liquidity_ok:
+                    daily_failure_counts["turnover20_below_threshold"] += 1
+                else:
+                    daily_failure_counts["other_hard_validity_failure"] += 1
         eligibility_counts["history_valid_daily_sum"] += history_valid_today
         eligibility_counts["liquidity_valid_daily_sum"] += liquidity_valid_today
         eligibility_counts["final_eligible_daily_sum"] += len(basic_eligible)
@@ -782,7 +842,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise RuntimeError("NAV rows do not match explicit simulation sessions")
 
     performance = performance_summary([row["nav"] for row in daily_nav])
-    trade_metrics = trade_return_summary(closed_returns)
+    sell_leg_metrics = trade_return_summary(sell_leg_returns)
+    round_trip_metrics = trade_return_summary(completed_round_trip_returns)
     daily_count = eligibility_counts["daily_count"]
     average_nav = fmean(row["nav"] for row in daily_nav)
     event_path = args.output_dir / "event_ledger.jsonl"
@@ -796,6 +857,30 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     current_name_risk_count = sum(
         "ST" in survivor_names.get(symbol, "").upper() for symbol in sample
     )
+    data_found_symbols = set(panel["symbol"].unique())
+    known_risk_symbols = set(panel.loc[panel["is_st"].eq(True), "symbol"].unique())
+    missing_symbols = set(sample) - data_found_symbols
+    insufficient_history_symbols = data_found_symbols - history_valid_symbols
+    turnover_failure_symbols = history_valid_symbols - liquidity_valid_symbols
+    final_other_failure_symbols = liquidity_valid_symbols - usable_symbols
+    entry_buy_count = sum(
+        row.get("status") == "FILLED"
+        and row.get("side") == "BUY"
+        and row.get("new_position") is True
+        for row in executions
+    )
+    rebalance_buy_count = counts["buy_fills"] - entry_buy_count
+    completed_round_trip_count = sum(
+        row.get("status") == "FILLED" and row.get("completed_round_trip") is True
+        for row in executions
+    )
+    rebalance_sell_count = counts["sell_fills"] - completed_round_trip_count
+    pnl_contribution = dict(realized_pnl_by_symbol)
+    for symbol, position in positions.items():
+        market_value = position.shares * last_prices[symbol]
+        pnl_contribution[symbol] = pnl_contribution.get(symbol, 0.0) + (
+            market_value + position.dividends - position.cost_basis
+        )
     summary: dict[str, Any] = {
         "warning": SURVIVOR_WARNING,
         "research_mode": RESEARCH_MODE,
@@ -816,15 +901,35 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         },
         "sample": {
             "selection_rule": (
-                "current-survivor symbols with >=180 pre-start valid completed observations, "
+                "all manifest current survivors; daily symbol-level fail closed"
+                if full_survivor
+                else "current-survivor symbols with >=180 pre-start valid completed observations, "
                 "sorted by symbol, then 50 deterministic equidistant indices; no return outcome used"
             ),
+            "full_survivor_mode": full_survivor,
             "symbols": sample,
             "date_range": [args.start, args.end],
             "raw_universe_count": len(survivors),
             "history_candidate_count": len(candidates),
             "raw_sample_count": len(sample),
             "usable_sample_count": len(usable_symbols),
+            "data_found_count": len(data_found_symbols),
+            "history_valid_count": len(history_valid_symbols),
+            "liquidity_valid_count": len(liquidity_valid_symbols),
+            "final_eligible_count": len(usable_symbols),
+            "failure_reason_counts": {
+                "missing_data": len(missing_symbols),
+                "insufficient_history": len(insufficient_history_symbols),
+                "turnover_failure": len(turnover_failure_symbols),
+                "known_risk_warning_without_any_eligible_day": len(
+                    final_other_failure_symbols & known_risk_symbols
+                ),
+                "other_daily_validity_failure": len(
+                    final_other_failure_symbols - known_risk_symbols
+                ),
+            },
+            "daily_failure_reason_counts": dict(sorted(daily_failure_counts.items())),
+            "known_risk_warning_symbol_count": len(known_risk_symbols),
             "sample_current_name_st_count": current_name_risk_count,
             "start_row_count": len(start_rows),
             "average_history_valid": eligibility_counts["history_valid_daily_sum"] / daily_count,
@@ -833,16 +938,21 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         },
         "signals": {
             "entry_signal_count": counts["entry_signal"],
+            "price_structure_signal_count": counts["entry_signal"],
             "minvol_pass_count": counts["minvol_pass"],
+            "final_entry_candidate_count": counts["minvol_pass"],
             "breakout_volume_shadow_pass_count": counts["breakout_volume_shadow_pass"],
             "individual_exit_signal_count": counts["individual_exit_signals"],
             "market_exit_signal_days": counts["market_exit_signal_days"],
             "set_change_count": counts["set_changes"],
         },
         "execution": {
-            "trade_count": trade_metrics["trade_count"],
             "buy_fill_count": counts["buy_fills"],
+            "entry_buy_execution_count": entry_buy_count,
+            "rebalance_buy_leg_count": rebalance_buy_count,
             "sell_fill_count": counts["sell_fills"],
+            "completed_round_trip_count": completed_round_trip_count,
+            "rebalance_sell_leg_count": rebalance_sell_count,
             "t1_blocked_exit_count": counts["t1_blocked_exit_signal"],
             "t1_execution_blocked_count": counts["t1_execution_blocked"],
             "failed_open_execution_count": counts["failed_open_execution"],
@@ -857,8 +967,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "average_invested_ratio": fmean(row["invested_ratio"] for row in daily_nav),
             "ending_holdings": sorted(positions),
             "ending_pending_orders": sorted(pending),
+            "sell_leg_return_metrics": sell_leg_metrics,
+            "pnl_contribution_by_symbol": dict(sorted(pnl_contribution.items())),
             **performance,
-            **trade_metrics,
+            **round_trip_metrics,
         },
         "audit": {
             "events": len(events),
@@ -953,9 +1065,12 @@ windows are causal; orders first become eligible at a later session open.
 
 > **EXPLORATORY / SURVIVOR-BIASED / SMALL SAMPLE**
 
-- TRADE_COUNT: `{execution['trade_count']}` completed sell legs
+- ENTRY_BUY_EXECUTION_COUNT: `{execution['entry_buy_execution_count']}`
+- REBALANCE_BUY_LEG_COUNT: `{execution['rebalance_buy_leg_count']}`
 - BUY_FILL_COUNT: `{execution['buy_fill_count']}`
 - SELL_FILL_COUNT: `{execution['sell_fill_count']}`
+- COMPLETED_ROUND_TRIP_COUNT: `{execution['completed_round_trip_count']}`
+- REBALANCE_SELL_LEG_COUNT: `{execution['rebalance_sell_leg_count']}`
 - WIN_RATE: `{fmt_pct(portfolio['win_rate'])}`
 - AVERAGE_TRADE_RETURN: `{fmt_pct(portfolio['average_trade_return'])}`
 - MEDIAN_TRADE_RETURN: `{fmt_pct(portfolio['median_trade_return'])}`
@@ -1020,7 +1135,7 @@ def main() -> int:
                     "sample_size": summary["sample"]["raw_sample_count"],
                     "usable": summary["sample"]["usable_sample_count"],
                     "entry_signals": summary["signals"]["entry_signal_count"],
-                    "trade_count": summary["execution"]["trade_count"],
+                    "completed_round_trips": summary["execution"]["completed_round_trip_count"],
                     "total_return": summary["portfolio"]["total_return"],
                     "report": str(args.report),
                 }
