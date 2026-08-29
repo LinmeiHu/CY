@@ -1,0 +1,285 @@
+{
+  "benchmarks": {
+    "399006.SZ": {
+      "metrics": {
+        "annualized_return": 0.31670870994320865,
+        "max_drawdown": -0.2913685355830451,
+        "sharpe_rf0": 0.9706132604732916,
+        "total_return": 0.7259196333552216,
+        "volatility": 0.34301656905653344
+      },
+      "name": "创业板指",
+      "source": "registered QD-003 frozen local lake; ex-post benchmark only",
+      "symbol": "399006.SZ"
+    },
+    "399102.SZ": {
+      "metrics": {
+        "annualized_return": 0.24964495273333265,
+        "max_drawdown": -0.25925974543605945,
+        "sharpe_rf0": 0.8254229715865664,
+        "total_return": 0.5559176688759424,
+        "volatility": 0.339235364283742
+      },
+      "name": "创业板综",
+      "source": "QMT exact frozen daily",
+      "symbol": "399102.SZ"
+    }
+  },
+  "cost_contract": {
+    "evidence": [
+      "/Users/linmei/Documents/CY-supermind-v6/configs/research.yaml",
+      "/Users/linmei/Documents/CY-supermind-v6/src/cyq_game/config.py"
+    ],
+    "interpretation": "separate sensitivity only; not part of frozen ChinNext baseline",
+    "sell_bps": 5.0,
+    "status": "VERIFIED_LOCAL_RESEARCH_CONTRACT"
+  },
+  "cost_sensitivity": {
+    "10bps_per_side": {
+      "annualized_return": 0.436890606292782,
+      "cumulative_extra_cost": 0.0,
+      "max_drawdown": -0.2622719258789836,
+      "sell_stamp_bps": 0.0,
+      "sharpe_rf0": 1.350499330682452,
+      "side_bps": 10.0,
+      "total_return": 1.0524221580500002,
+      "volatility": 0.30050072632847824
+    },
+    "10bps_per_side_plus_5bps_sell_stamp": {
+      "annualized_return": 0.4337543046524146,
+      "cumulative_extra_cost": 8876.66635,
+      "max_drawdown": -0.26458925257844945,
+      "sell_stamp_bps": 5.0,
+      "sharpe_rf0": 1.341853625945456,
+      "side_bps": 10.0,
+      "total_return": 1.0435454917000002,
+      "volatility": 0.30089028138811036
+    },
+    "20bps_per_side": {
+      "annualized_return": 0.4239608396522363,
+      "cumulative_extra_cost": 36472.27870000001,
+      "max_drawdown": -0.27099936580454087,
+      "sell_stamp_bps": 0.0,
+      "sharpe_rf0": 1.3146570384882788,
+      "side_bps": 20.0,
+      "total_return": 1.0159498793500004,
+      "volatility": 0.3021759464398534
+    },
+    "30bps_per_side": {
+      "annualized_return": 0.4109145480530527,
+      "cumulative_extra_cost": 72944.55740000002,
+      "max_drawdown": -0.27976344352045346,
+      "sell_stamp_bps": 0.0,
+      "sharpe_rf0": 1.2784849326355487,
+      "side_bps": 30.0,
+      "total_return": 0.9794776006500001,
+      "volatility": 0.30391050655403534
+    },
+    "50bps_per_side": {
+      "annualized_return": 0.3844593312683353,
+      "cumulative_extra_cost": 145889.11480000004,
+      "max_drawdown": -0.29740243904632946,
+      "sell_stamp_bps": 0.0,
+      "sharpe_rf0": 1.2051452098667828,
+      "side_bps": 50.0,
+      "total_return": 0.9065330432500001,
+      "volatility": 0.3075698764124941
+    }
+  },
+  "date_range": [
+    "2024-01-02",
+    "2025-12-31"
+  ],
+  "excess": {
+    "399006.SZ": {
+      "annualized_return": 0.12018189634957333,
+      "total_return": 0.3265025246947786
+    },
+    "399102.SZ": {
+      "annualized_return": 0.18724565355944933,
+      "total_return": 0.49650448917405776
+    }
+  },
+  "exposure_aware": {
+    "average_invested_ratio": 0.40391475173586633,
+    "definition": "close-to-close day classified by end-of-day holdings; open exits remain in that day's return",
+    "flat_day_count": 228,
+    "invested_day_count": 256,
+    "market_return_during_strategy_flat_days": -0.10638358613377441,
+    "market_return_during_strategy_invested_days": 0.7411471462842467,
+    "return_while_flat": -0.042812179635370984,
+    "return_while_invested": 1.14422092966891
+  },
+  "frozen_inputs": {
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/data/smoke/399102_daily.csv": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_full_survivor/daily_nav.jsonl": "82c71b6824bf4058181c88dbaa626f989e2651912aab3777d4d5ffdce096e8ea",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_full_survivor/execution_ledger.jsonl": "f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/reports/chinext_v1_full_survivor_summary.json": "3d18027af56b41796d9c60d7712e7085efcae4e33d080db4a901b567ec23ef91",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/strategy/chinext_v1_exploratory.py": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/sz399006.parquet": "0d0f8dbb573f1016eaa94f11aa847ea2bf2be296691caa591f93320ddd640c2c"
+  },
+  "method": "post-process frozen executions/NAV; no signal or fill regeneration",
+  "pnl_concentration": {
+    "mean_round_trip_return": 0.07731215882773483,
+    "median_round_trip_return": -0.01074995073617439,
+    "portfolio_return_excluding_best_round_trips": {
+      "best1": 0.8358560040500002,
+      "best10": 0.03609161875000022,
+      "best20": -0.3219529632499998,
+      "best5": 0.3842030190500002
+    },
+    "positive_round_trip_pnl": 1631221.51705,
+    "round_trip_count": 111,
+    "top_pnl_concentration_of_positive_round_trip_pnl": {
+      "top1": 0.13276317884259606,
+      "top10": 0.6230487574354671,
+      "top20": 0.8425435214865872,
+      "top5": 0.4096434064997181,
+      "top50": 1.0
+    },
+    "winner_distribution": {
+      "+10% ~ +20%": {
+        "count": 9,
+        "pnl": 200178.639
+      },
+      "+20% ~ +50%": {
+        "count": 10,
+        "pnl": 457415.57304999995
+      },
+      "-10% ~ 0": {
+        "count": 46,
+        "pnl": -341217.3919999999
+      },
+      "-20% ~ -10%": {
+        "count": 15,
+        "pnl": -299388.831
+      },
+      "0 ~ +10%": {
+        "count": 22,
+        "pnl": 120261.46699999998
+      },
+      "< -20%": {
+        "count": 1,
+        "pnl": -51462.69299999997
+      },
+      "> +50%": {
+        "count": 8,
+        "pnl": 853365.838
+      }
+    }
+  },
+  "robustness_result": "FRAGILE",
+  "warning": "EXPLORATORY CURRENT-SURVIVOR NON-PIT SURVIVORSHIP-BIASED",
+  "year_split": {
+    "2024": {
+      "benchmarks": {
+        "399006.SZ": {
+          "annualized_return": 0.15598408499938965,
+          "max_drawdown": -0.20550812935012386,
+          "sharpe_rf0": 0.5587201236506997,
+          "total_return": 0.15392572865547072,
+          "volatility": 0.3903970434974815
+        },
+        "399102.SZ": {
+          "annualized_return": 0.10964762112739002,
+          "max_drawdown": -0.25925974543605945,
+          "sharpe_rf0": 0.4551696189338594,
+          "total_return": 0.1082290550393683,
+          "volatility": 0.3946190328692095
+        }
+      },
+      "strategy_costs": {
+        "10bps_per_side": {
+          "annualized_return": 0.4979176056401451,
+          "max_drawdown": -0.23542285793100215,
+          "sharpe_rf0": 1.2526738154573187,
+          "total_return": 0.4904941877500004,
+          "volatility": 0.37592730915844547
+        },
+        "10bps_per_side_plus_5bps_sell_stamp": {
+          "annualized_return": 0.49525494366127765,
+          "max_drawdown": -0.2364504443180846,
+          "sharpe_rf0": 1.247385257350041,
+          "total_return": 0.48787726825000033,
+          "volatility": 0.37615570090685313
+        },
+        "20bps_per_side": {
+          "annualized_return": 0.4877710538820559,
+          "max_drawdown": -0.23894769464797894,
+          "sharpe_rf0": 1.231885445217022,
+          "total_return": 0.4805216387500004,
+          "volatility": 0.3770609098202429
+        },
+        "30bps_per_side": {
+          "annualized_return": 0.47762535286849217,
+          "max_drawdown": -0.24248732862850308,
+          "sharpe_rf0": 1.211062311364757,
+          "total_return": 0.4705490897500004,
+          "volatility": 0.37821288382236656
+        },
+        "50bps_per_side": {
+          "annualized_return": 0.4573365259417157,
+          "max_drawdown": -0.24961136266489037,
+          "sharpe_rf0": 1.1693176024572554,
+          "total_return": 0.45060399175000043,
+          "volatility": 0.38057271847599883
+        }
+      }
+    },
+    "2025": {
+      "benchmarks": {
+        "399006.SZ": {
+          "annualized_return": 0.49817390977955656,
+          "max_drawdown": -0.20789096948786334,
+          "sharpe_rf0": 1.545519759381091,
+          "total_return": 0.49569386529428194,
+          "volatility": 0.2890970527845691
+        },
+        "399102.SZ": {
+          "annualized_return": 0.40592932077795685,
+          "max_drawdown": -0.2197844103842569,
+          "sharpe_rf0": 1.3844950706170929,
+          "total_return": 0.4039675839582375,
+          "volatility": 0.2741652531141327
+        }
+      },
+      "strategy_costs": {
+        "10bps_per_side": {
+          "annualized_return": 0.37882186784846805,
+          "max_drawdown": -0.10176871214757299,
+          "sharpe_rf0": 1.7055064198426473,
+          "total_return": 0.377007823927356,
+          "volatility": 0.20010095815785117
+        },
+        "10bps_per_side_plus_5bps_sell_stamp": {
+          "annualized_return": 0.3752585395659016,
+          "max_drawdown": -0.10325252182664957,
+          "sharpe_rf0": 1.6870489888773126,
+          "total_return": 0.37346374953598227,
+          "volatility": 0.20084130635209763
+        },
+        "20bps_per_side": {
+          "annualized_return": 0.3633792466940624,
+          "max_drawdown": -0.10689737027561541,
+          "sharpe_rf0": 1.6284858101478383,
+          "total_return": 0.36164837215892387,
+          "volatility": 0.20299410714439234
+        },
+        "30bps_per_side": {
+          "annualized_return": 0.3477279083726488,
+          "max_drawdown": -0.11211188999249722,
+          "sharpe_rf0": 1.551502497576339,
+          "total_return": 0.34608059972110117,
+          "volatility": 0.20600843912016972
+        },
+        "50bps_per_side": {
+          "annualized_return": 0.31578195841792245,
+          "max_drawdown": -0.12280728576908262,
+          "sharpe_rf0": 1.3978365729536133,
+          "total_return": 0.3143029069911556,
+          "volatility": 0.21242414058480014
+        }
+      }
+    }
+  }
+}
