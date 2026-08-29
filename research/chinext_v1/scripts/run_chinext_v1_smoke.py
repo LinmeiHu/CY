@@ -21,8 +21,21 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+SCRIPT_ROOT = Path(__file__).resolve().parent
+for import_root in (str(SCRIPT_ROOT), str(ROOT)):
+    if import_root not in sys.path:
+        sys.path.insert(0, import_root)
 
+from chinext_v1_ablation import (  # noqa: E402
+    market_entry_allowed_for_arm,
+    minvol_admission_for_arm,
+    phase7_policy_for,
+    phase8_policy_for,
+    policy_for,
+    price_structure_for_arm,
+    rank_candidates_for_arm,
+)
+from chinext_v1_phase4 import select_with_capacity_envelope  # noqa: E402
 from strategy.chinext_v1_exploratory import (  # noqa: E402
     BREAKOUT_VOLUME_MODE,
     EXECUTION_LIMIT_MODEL,
@@ -45,16 +58,10 @@ from strategy.chinext_v1_exploratory import (  # noqa: E402
     sort_candidates,
     trade_return_summary,
 )
-from chinext_v1_ablation import (  # noqa: E402
-    market_entry_allowed_for_arm,
-    minvol_admission_for_arm,
-    policy_for,
-    phase7_policy_for,
-    phase8_policy_for,
-    price_structure_for_arm,
-    rank_candidates_for_arm,
+from strategy.chinext_v2_candidate import (  # noqa: E402
+    evaluate_rs_admission as evaluate_v2_rs_admission,
 )
-from chinext_v1_phase4 import select_with_capacity_envelope  # noqa: E402
+from strategy.chinext_v2_candidate import policy_for as v2_policy_for  # noqa: E402
 
 SURVIVOR_WARNING = (
     "CURRENT SURVIVOR UNIVERSE / NOT POINT-IN-TIME / SURVIVORSHIP BIASED / "
@@ -426,7 +433,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
     arm_name = getattr(args, "ablation_arm", "A0_BASELINE")
-    if arm_name.startswith("E"):
+    v2_policy = None
+    if arm_name.startswith("V2_"):
+        ablation_policy = policy_for("A0_BASELINE")
+        v2_policy = v2_policy_for(arm_name)
+    elif arm_name.startswith("E"):
         ablation_policy = phase7_policy_for(arm_name)
     elif arm_name.startswith("W"):
         ablation_policy = phase8_policy_for(arm_name)
@@ -893,21 +904,33 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     counts["minvol_pass"] += 1
                 if breakout.passed:
                     counts["breakout_volume_shadow_pass"] += 1
-                events.append(
-                    {
-                        "event": "ENTRY_SIGNAL_EVALUATED",
-                        "signal_date": day,
-                        "symbol": symbol,
-                        "price_structure_pass": price_pass,
-                        "full40": asdict(full),
-                        "phase3_ablation": ablation_diagnostics,
-                        "minvol": asdict(minimum),
-                        "breakout_volume_mode": BREAKOUT_VOLUME_MODE,
-                        "breakout_volume": asdict(breakout),
-                        "rs": rs.get(symbol),
-                    }
+                entry_event = {
+                    "event": "ENTRY_SIGNAL_EVALUATED",
+                    "signal_date": day,
+                    "symbol": symbol,
+                    "price_structure_pass": price_pass,
+                    "full40": asdict(full),
+                    "phase3_ablation": ablation_diagnostics,
+                    "minvol": asdict(minimum),
+                    "breakout_volume_mode": BREAKOUT_VOLUME_MODE,
+                    "breakout_volume": asdict(breakout),
+                    "rs": rs.get(symbol),
+                }
+                events.append(entry_event)
+                v2_admission = (
+                    {"valid": True, "passed": True, "reason": "NOT_APPLICABLE"}
+                    if v2_policy is None
+                    else evaluate_v2_rs_admission(rs.get(symbol), v2_policy)
                 )
-                if minvol_admission_for_arm(minimum, ablation_policy) and symbol in rs:
+                if v2_policy is not None:
+                    entry_event["v2_rs_admission"] = v2_admission
+                    if not v2_admission["passed"]:
+                        counts["v2_rs_admission_rejected"] += 1
+                if (
+                    minvol_admission_for_arm(minimum, ablation_policy)
+                    and symbol in rs
+                    and v2_admission["passed"]
+                ):
                     candidate_symbols.append(symbol)
                     counts["arm_candidate_event"] += 1
             ranked = rank_candidates_for_arm(
@@ -1180,6 +1203,12 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "survivor_overflow_days": counts["capacity_survivor_overflow_days"],
             "survivor_overflow_total_slots": counts["capacity_survivor_overflow_total"],
             "max_survivor_overflow_slots": counts["capacity_survivor_overflow_max"],
+        }
+    if v2_policy is not None:
+        summary["v2_candidate"] = {
+            "policy": v2_policy.to_dict(),
+            "rs_admission_rejected_count": counts["v2_rs_admission_rejected"],
+            "parent_v1_semantics_unchanged_except_entry_admission": True,
         }
     write_json(args.summary, summary)
     write_report(args.report, summary)
