@@ -159,7 +159,10 @@ def test_candidate_identities_match_preregistration() -> None:
     prereg = json.loads(PREREG.read_text(encoding="utf-8"))
     completed = json.loads(ATTEMPT_LEDGER.read_text(encoding="utf-8"))
     result_ids = {row["ATTEMPT_ID"]: row["STRATEGY_SHA"] for row in completed["attempts"]}
-    assert {row["ATTEMPT_ID"]: row["STRATEGY_SHA"] for row in prereg["attempts"]} == result_ids
+    prereg_ids = {
+        row["ATTEMPT_ID"]: row["STRATEGY_SHA"] for row in prereg["attempts"]
+    }
+    assert {attempt_id: result_ids[attempt_id] for attempt_id in prereg_ids} == prereg_ids
     assert completed["frozen_bindings"]["candidate_implementation_commit"] == (
         "e21b04b6604ef186af05e92553900dddae4627bc"
     )
@@ -200,32 +203,54 @@ def test_loss_budget_attempt_is_frozen_hash_bound_and_single_variant() -> None:
     assert bindings["candidate_module_sha256"] == sha256(CANDIDATE)
     assert bindings["engine_sha256"] == sha256(ENGINE)
     assert bindings["runner_sha256"] == sha256(RUNNER)
-    assert bindings["prior_attempt_ledger_sha256"] == sha256(ATTEMPT_LEDGER)
+    assert bindings["prior_attempt_ledger_sha256"] == committed_sha256(
+        "e7f304d7c2f4352c79e9dca39c41f919986a1d45",
+        "research/chinext_v1/reports/chinext_v2_attempt_ledger.json",
+    )
     assert prereg["causal_contract"]["same_bar_fill"] == "FORBIDDEN"
     assert prereg["causal_contract"]["stale_or_synthetic_signal_price"] == "FORBIDDEN"
 
 
-def test_completed_hypothesis_one_attempts_are_all_auditable_and_rejected() -> None:
+def test_completed_attempts_are_all_auditable_and_rejected() -> None:
     ledger = json.loads(ATTEMPT_LEDGER.read_text(encoding="utf-8"))
-    assert ledger["candidate_attempts"] == 2
+    assert ledger["candidate_attempts"] == 3
     assert ledger["accepted_attempts"] == 0
-    assert ledger["rejected_attempts"] == 2
+    assert ledger["rejected_attempts"] == 3
     assert ledger["technical_failed_attempts"] == 0
-    assert ledger["primary_v2_status"] == "NO_PRIMARY_FROM_HYP_001"
+    assert ledger["primary_v2_status"] == "NO_DEFENSIBLE_V2_CANDIDATE"
     assert ledger["recent_period_firewall"]["used_2022_2025_for_v2_selection"] == "NO"
     assert {row["ATTEMPT_ID"] for row in ledger["attempts"]} == {
         "V2-A001",
         "V2-A002",
+        "V2-A003",
     }
     for row in ledger["attempts"]:
         assert row["DECISION"] == "REJECTED_PRIMARY"
-        assert row["acceptance_checks"]["top20_concentration_no_higher"] is False
-        assert all(
-            value
-            for name, value in row["acceptance_checks"].items()
-            if name not in {"top20_concentration_no_higher", "used_2022_2025"}
-        )
         assert row["acceptance_checks"]["used_2022_2025"] is False
         raw = ROOT / row["RESULT_ARTIFACT"]["path"]
         if raw.is_file():
             assert sha256(raw) == row["RESULT_ARTIFACT"]["sha256"]
+    first_two = ledger["attempts"][:2]
+    assert all(
+        row["acceptance_checks"]["top20_concentration_no_higher"] is False
+        for row in first_two
+    )
+    loss_budget = ledger["attempts"][2]
+    assert loss_budget["ATTEMPT_ID"] == "V2-A003"
+    for failed in (
+        "max_drawdown_no_worse",
+        "median_trade_improves",
+        "negative_realized_pnl_improves",
+        "return_ex_best20_improves",
+        "severe_loss_count_reduces",
+        "severe_loss_pnl_improves",
+    ):
+        assert loss_budget["acceptance_checks"][failed] is False
+    assert loss_budget["causal_audit"] == {
+        "after_2021_execution_count": 0,
+        "loss_signal_to_later_full_exit_matches": 13,
+        "same_day_fill_count": 0,
+        "stale_held_valuation_count": 0,
+    }
+    assert ledger["research_stop"]["brute_force_search_used"] == "NO"
+    assert ledger["research_stop"]["revision_holdback_run"] == "NO"

@@ -97,12 +97,81 @@
         "event_ledger_sha256": "859b2e083978467f917461b6f9d0e36827e4fc317678da880ff5d2cbb54ab2db",
         "execution_ledger_sha256": "2caa5286cc493761416cb3a49d22e648a8f4e8eac37eb68c6b17dfe938d7dedc"
       }
+    },
+    {
+      "2018_RETURN": -0.03783516999999992,
+      "2019_RETURN": 0.24458048627697182,
+      "2020_RETURN": 0.0017618069716149876,
+      "2021_RETURN": 0.333967467446628,
+      "ATTEMPT_ID": "V2-A003",
+      "CHANGE": "At each causally available hard-valid completed close, exit an otherwise-unforced position whose whole-cycle cash-on-cash mark is <= -10%, using the unchanged next-eligible-open execution path.",
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "CYCLES_LE_NEGATIVE_10_COUNT": 26,
+      "CYCLES_LE_NEGATIVE_10_REALIZED_PNL": -433148.08900000015,
+      "DECISION": "REJECTED_PRIMARY",
+      "HYPOTHESIS_ID": "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET",
+      "MAX_DRAWDOWN": -0.2122553116925604,
+      "MEAN_TRADE": 0.027783742497073053,
+      "MEDIAN_TRADE": -0.013557870700727868,
+      "NEGATIVE_REALIZED_PNL": -919162.6530000002,
+      "POSITIVE_20_PCT_CYCLE_COUNT": 16,
+      "REASON": "The implementation is causal and executes all 13 loss-budget signals on later eligible opens, but the mechanism fails its target: severe-loss cycles rise from 22 to 26, severe-loss P&L and total negative P&L become more negative, median trade and ex-best20 worsen, and max drawdown increases. Lower concentration plus better 2019 and 2021 cannot override the frozen structural failures.",
+      "RESULT_ARTIFACT": {
+        "path": "research/chinext_v1/output/chinext_v2_attempt_v2_a003/attempt_result.json",
+        "sha256": "2cd001f21dc8e0bafc042711ea836ed63fb5c02cf64b172d2710b4d590cd79a4"
+      },
+      "RETURN_EX_BEST20": -0.505120642880001,
+      "STRATEGY_SHA": "20a531dfe434aae5cbf581649897229c7680af556703766f78bc6992b907dee2",
+      "TOP20_PNL_CONCENTRATION": 0.7274949008643752,
+      "TOTAL_RETURN": 0.6002291361199992,
+      "TRADES": 197,
+      "V1_TOP20_ENTRY_IDENTITY_RETAINED": 19,
+      "V2_LOSS_BUDGET_SIGNAL_COUNT": 13,
+      "V2_LOSS_BUDGET_UNKNOWN_COUNT": 7,
+      "WIN_RATE": 0.4416243654822335,
+      "acceptance_checks": {
+        "at_least_half_positive_20_pct_cycles_remain": true,
+        "at_least_two_years_improve": true,
+        "max_drawdown_no_worse": false,
+        "median_trade_improves": false,
+        "negative_realized_pnl_improves": false,
+        "no_v1_positive_year_becomes_negative": true,
+        "return_ex_best20_improves": false,
+        "severe_loss_count_reduces": false,
+        "severe_loss_pnl_improves": false,
+        "special_case_count_zero": true,
+        "top20_concentration_no_higher": true,
+        "trades_at_least_97": true,
+        "used_2022_2025": false,
+        "v1_top20_identity_retained_at_least_10": true
+      },
+      "causal_audit": {
+        "after_2021_execution_count": 0,
+        "loss_signal_to_later_full_exit_matches": 13,
+        "same_day_fill_count": 0,
+        "stale_held_valuation_count": 0
+      },
+      "raw_artifact_hashes": {
+        "daily_nav_sha256": "896c7e1b575645e1ddf5c2fdb50fe5e4ceb3bcfe6155e4d6d15e0a50b2865aa5",
+        "engine_summary_sha256": "ee454efe1c847dbf0e8ab779f95cc21f324afb48f074f216dced0c8e0af69d4f",
+        "event_ledger_sha256": "4193f4e193d7263bf979872b59f77b44a691f5de5904b2d465280a303a9e6de7",
+        "execution_ledger_sha256": "a63194c5470d973fc736890510cfe475a047e599d3025b7592bb1909cf48616d"
+      }
     }
   ],
   "baseline_metrics": {
+    "CYCLES_LE_NEGATIVE_10_COUNT": 22,
+    "CYCLES_LE_NEGATIVE_10_REALIZED_PNL": -413236.9100000001,
     "MAX_DRAWDOWN": -0.20762679470782652,
     "MEAN_TRADE": 0.030455684400042576,
     "MEDIAN_TRADE": -0.00970512426371722,
+    "NEGATIVE_REALIZED_PNL": -915745.1530000002,
+    "POSITIVE_20_PCT_CYCLE_COUNT": 17,
     "RETURN_EX_BEST20": -0.5015728892100006,
     "TOP20_PNL_CONCENTRATION": 0.7351787051890619,
     "TOTAL_RETURN": 0.6482237267899993,
@@ -115,24 +184,36 @@
       "2021": 0.31776904262665284
     }
   },
-  "candidate_attempts": 2,
+  "candidate_attempts": 3,
   "frozen_bindings": {
     "candidate_implementation_commit": "e21b04b6604ef186af05e92553900dddae4627bc",
     "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "loss_budget_candidate_implementation_commit": "5e046bded74abaaddeb953e2be22d7190d44251d",
+    "loss_budget_preregistration_path": "research/chinext_v1/specs/chinext_v2_loss_budget_attempt_preregistration.json",
+    "loss_budget_preregistration_sha256": "99d5ca4ec55025a00f3199bb448442474efbdd430bf555f57326ea8bc2947e9d",
+    "prior_attempt_ledger_sha256": "ac5c39dfd407a111386cf008047936c8c340d760d65776fa7a7bb1f5f4e91bec",
     "preregistration_path": "research/chinext_v1/specs/chinext_v2_attempt_preregistration.json",
     "preregistration_sha256": "5061837b6cade9e3b927aa9506eb003787f354ec721bd6f6f6537bf4530f385d",
     "v1_strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
   },
   "hypothesis_updates": {
     "HYP-001-LONG-HORIZON-RS-ADMISSION": "FALSIFIED_AS_PRIMARY_UNDER_FROZEN_CONCENTRATION_RULE",
-    "next_ranked_hypothesis": "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET"
+    "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET": "FALSIFIED_AS_PRIMARY_UNDER_FROZEN_SEVERE_LOSS_AND_ROBUSTNESS_RULES",
+    "next_ranked_hypothesis": "NONE_WITH_UNIQUE_MINIMAL_INTERVENTION"
   },
-  "primary_v2_status": "NO_PRIMARY_FROM_HYP_001",
+  "primary_v2_status": "NO_DEFENSIBLE_V2_CANDIDATE",
   "recent_period_firewall": {
     "status": "PASS",
     "used_2022_2025_for_v2_selection": "NO"
   },
-  "rejected_attempts": 2,
+  "rejected_attempts": 3,
+  "research_stop": {
+    "brute_force_search_used": "NO",
+    "reason": "Both frozen HYP-001 variants violate the non-lottery concentration rule. The single frozen HYP-002 variant worsens its severe-loss target and multiple robustness metrics. HYP-003 has no uniquely identified causal intervention; remaining ranked hypotheses are already falsified or need unavailable independent causal evidence.",
+    "revision_holdback_preregistration": "NOT_CREATED_NO_FROZEN_V2_CANDIDATE",
+    "revision_holdback_run": "NO",
+    "threshold_or_parameter_search_used": "NO"
+  },
   "sample_status": "IN_SAMPLE_MECHANISM_RESEARCH",
   "technical_failed_attempts": 0
 }
