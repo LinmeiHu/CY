@@ -1,0 +1,40 @@
+{
+  "phase": "12B2",
+  "purpose": "CHINEXT_PIT_B_EXTENDED_HISTORY_2018_2021_ACTIVATION",
+  "status": "FROZEN_BEFORE_PILOT",
+  "validation_dates": [
+    "2018-01-02", "2018-06-29", "2019-01-02", "2019-06-28",
+    "2020-01-02", "2020-06-30", "2021-01-04", "2021-06-30"
+  ],
+  "target_date_range": ["2018-01-02", "2021-12-31"],
+  "required_warmup": {"trading_days": 180, "start_date": "2017-04-12"},
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "phase12b_spec_sha256": "1f3aea2d90571cd10c76a9e2dadc08675476781d5893bebf7ae6be864612d739",
+  "warmup_equivalence_spec_sha256": "f56f6f46c2f7d6f5eb551f49b2b34ba664af68c8733a74e66583324040adaed0",
+  "extended_universe_authorization_id": null,
+  "warmup_authorization_id": null,
+  "source_assets": {
+    "universe": {"asset_id": "QD-007", "status": "DISCOVERY_ONLY", "manifest_sha256": null},
+    "daily_baseline": {"asset_id": "CY-006", "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "warmup_candidate": {"asset_id": "QD-001", "manifest_sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3"},
+    "trade_calendar": {"asset_id": "QD-003", "manifest_sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"}
+  },
+  "membership_logic": {
+    "gem_identity": "exact historical GEM identity; no current-survivor fallback",
+    "listed_trading_days": "179 excluded, 180 included",
+    "future_listing": "excluded",
+    "out_date": "retain while historically active, exclude after out_date",
+    "st_risk_warning": "exclude on effective dates",
+    "suspension_non_tradable": "exclude/fail closed on effective dates"
+  },
+  "price_and_action_semantics": {
+    "price": "raw/unadjusted",
+    "corporate_actions": "causal rebasing required; QD-001 event identity absent",
+    "volume": "shares",
+    "turnover": "CNY amount",
+    "calendar": "frozen exchange-session calendar"
+  },
+  "pilot_policy": "8 frozen dates only after both bounded authorizations validate; no full 973-date materialization",
+  "formal_replay_authorized": false,
+  "outcome_blind": true
+}

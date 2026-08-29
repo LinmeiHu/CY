@@ -1,0 +1,124 @@
+{
+  "phase12b2_result": "PASS",
+  "readiness_status": "BLOCKED_DATA_GOVERNANCE",
+  "formal_replay_executions": 0,
+  "new_strategy_trades": 0,
+  "new_strategy_nav": 0,
+  "no_performance_metrics_computed": true,
+  "pit_full_materialization": "NO",
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "strategy_modified": "NO",
+  "qd001_date_coverage": [
+    "2004-01-02",
+    "2026-08-14"
+  ],
+  "qd001_has_2017_warmup": "YES",
+  "qd001_has_2018_overlap": "YES",
+  "warmup_overlap_date_range": [
+    "2018-01-02",
+    "2018-12-28"
+  ],
+  "overlap_symbol_count": 738,
+  "overlap_rows_compared": 176414,
+  "price_exact_match_rate": 1.0,
+  "price_within_tolerance_rate": 1.0,
+  "volume_exact_match_rate": 1.0,
+  "turnover_exact_match_rate": 1.0,
+  "symbol_identity_match_rate": 1.0,
+  "calendar_match_rate": 1.0,
+  "corporate_action_event_count_source_a": "UNAVAILABLE_QD001_HAS_NO_EVENT_FIELD",
+  "corporate_action_event_count_source_b": 634,
+  "corporate_action_event_alignment_rate": "UNAVAILABLE",
+  "can_rebase_qd001_to_cy006_causal_semantics": "NO",
+  "warmup_data_technically_ready": "NO",
+  "list_out_history_ready_2018_2021": "NO",
+  "st_history_ready_2018_2021": "NO",
+  "suspension_history_ready_2018_2021": "NO",
+  "exact_gem_identity_ready_2018_2021": "NO",
+  "historical_non_survivor_retention_possible": "NO",
+  "universe_technically_ready": "NO",
+  "extended_universe_authorization_id": null,
+  "warmup_authorization_id": null,
+  "universe_authorization_valid": "NO",
+  "warmup_authorization_valid": "NO",
+  "phase12b2_spec_sha256": "764df1a6e52d1a5087916a76d5983e48cf14a79e05d66157eac3de0004c665c8",
+  "warmup_equivalence_spec_sha256": "f56f6f46c2f7d6f5eb551f49b2b34ba664af68c8733a74e66583324040adaed0",
+  "validation_dates": [
+    "2018-01-02",
+    "2018-06-29",
+    "2019-01-02",
+    "2019-06-28",
+    "2020-01-02",
+    "2020-06-30",
+    "2021-01-04",
+    "2021-06-30"
+  ],
+  "pilot_date_results": [
+    {
+      "trade_date": "2018-01-02",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2018-06-29",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2019-01-02",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2019-06-28",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2020-01-02",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2020-06-30",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2021-01-04",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    },
+    {
+      "trade_date": "2021-06-30",
+      "symbol_count": null,
+      "symbol_set_digest": null,
+      "validation_status": "BLOCKED_NO_VALID_UNIVERSE_AUTHORIZATION"
+    }
+  ],
+  "pilot_exact_set_match_result": "NOT_RUN_BLOCKED",
+  "boundary_results": {
+    "179_180": "CONTRACT_FROZEN_BUT_SOURCE_PILOT_BLOCKED",
+    "future_listing": "NOT_RUN_BLOCKED",
+    "historical_non_survivor": "UNRESOLVED",
+    "historical_st": "UNRESOLVED",
+    "historical_suspension": "UNRESOLVED"
+  },
+  "early2018_history_complete_rate": "UNAVAILABLE_NO_PILOT_UNIVERSE",
+  "full_materialization_authorized": "NO",
+  "formal_replay_authorized": "NO",
+  "blockers": [
+    "QD-007 remains DISCOVERY_ONLY and has no immutable authorized 2018-2021 date-effective universe",
+    "QD-001 has 2017/2018 bars and exact OHLCV overlap, but no corporate-action event/state field or causal rebase proof",
+    "historical list/out, ST/risk-warning, suspension and non-survivor states are not authorized for the target period",
+    "no bounded universe or warmup authorization can be validly issued; pilot must fail closed"
+  ],
+  "next_recommended_phase": "Create an immutable historical universe capture and a CY-006-compatible causal warmup adapter, then repeat activation and run the 8-date pilot; keep replay authorization separate"
+}

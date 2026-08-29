@@ -1,0 +1,32 @@
+{
+  "phase": "12B2",
+  "purpose": "QD001_WARMUP_EQUIVALENCE_AUDIT",
+  "status": "FROZEN_BEFORE_COMPARISON",
+  "source_a": {
+    "asset_id": "QD-001",
+    "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_daily",
+    "manifest_sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3"
+  },
+  "source_b": {
+    "asset_id": "CY-006",
+    "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+  },
+  "overlap_date_range": ["2018-01-02", "2018-12-28"],
+  "symbol_sample_rule": "all rows where QD-001 symbol is numeric GEM prefix 300 and CY-006 normalized symbol is the same .SZ identity; no outcome-based sampling",
+  "fields": ["trade_date", "symbol", "open", "high", "low", "close", "volume", "amount"],
+  "price_tolerance": {
+    "absolute_cny_per_share": 1e-9,
+    "relative": 1e-9,
+    "rule": "within tolerance if every OHLC field satisfies absolute OR relative tolerance"
+  },
+  "volume_tolerance": "exact numeric equality in shares",
+  "turnover_tolerance": "exact numeric equality in CNY amount; QD-001 amount maps to CY-006 amount",
+  "corporate_action_comparison_rule": "compare availability of causal event/state fields; absence of QD-001 event identity is a failed equivalence gate, not an inferred no-event",
+  "calendar_rule": "compare distinct normalized trade_date sets in the overlap; no missing date is filled",
+  "symbol_rule": "normalize QD-001 six-digit numeric code to .SZ; reject any non-GEM or ambiguous identity",
+  "adjustment_rule": "both must be raw/unadjusted; CY-006 causal rebasing must be explicitly represented or proven by an adapter",
+  "units_rule": "volume=shares; amount/turnover=CNY",
+  "outcome_blind": true,
+  "strategy_replay": false
+}
