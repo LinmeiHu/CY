@@ -45,6 +45,7 @@ def test_activation_is_outcome_blind_and_blocked_closed():
 def test_causal_source_and_overlap_are_frozen():
     summary = load("chinext_v1_phase12b3_input_activation_summary.json")
     overlap = load("chinext_v1_phase12b3_warmup_overlap.json")
+    adjudication = (REPORT / "chinext_v1_corporate_action_adjudication.md").read_text(encoding="utf-8")
     assert summary["cy006_ca_source_asset_id"] == "QD-010"
     assert summary["ca_source_has_2017_coverage"] == "YES"
     assert summary["2017_ca_event_count"] == 2384
@@ -53,8 +54,9 @@ def test_causal_source_and_overlap_are_frozen():
     assert overlap["close_semantic_match_rate"] == 1.0
     assert overlap["volume_match_rate"] == 1.0
     assert overlap["turnover_match_rate"] == 1.0
-    assert overlap["mismatch_count"] == 1
-    assert summary["can_rebase_qd001_to_cy006_causal_semantics"] == "NO"
+    assert "635 exact CY-006 event-ID matches and 0 unmatched events" in adjudication
+    assert "D. CONTRACT_OR_ADAPTER_ERROR_PROVEN" in adjudication
+    assert "PARTIALLY_EQUIVALENT" in adjudication
 
 
 def test_historical_state_capture_preserves_governance_gap():
@@ -104,6 +106,53 @@ def test_adapter_uses_causal_rebase_formula_and_rejects_duplicate_visibility():
     prices, volumes = rebase_history([11.0, 21.0], [100.0, 200.0], event, date(2018, 5, 16))
     assert prices == [5.0, 10.0]
     assert volumes == [200.0, 400.0]
+
+
+def test_adapter_locks_effective_and_known_boundaries_and_raw_same_day_order():
+    event = {
+        "event_id": "generic-cash-event",
+        "symbol": "300001.SZ",
+        "known_at": "2018-05-10",
+        "effective_date": "2018-05-16",
+        "share_multiplier": 1.0,
+        "cash_per_share_gross": 0.05,
+        "rights_subscription_ratio": 0.0,
+        "event_type": "cash_dividend",
+    }
+
+    with pytest.raises(CausalCorporateActionError):
+        validate_event(event, date(2018, 5, 15))
+
+    prior_prices, prior_volumes = rebase_history(
+        [10.0], [100.0], event, date(2018, 5, 16)
+    )
+    same_day_raw_price = 10.0
+    same_day_raw_volume = 50.0
+    assert prior_prices == [9.95]
+    assert prior_volumes == [100.0]
+    assert [*prior_prices, same_day_raw_price] == [9.95, 10.0]
+    assert [*prior_volumes, same_day_raw_volume] == [100.0, 50.0]
+
+    with pytest.raises(CausalCorporateActionError):
+        validate_event({**event, "known_at": "2018-05-17"}, date(2018, 5, 16))
+
+
+def test_adapter_remains_generic_and_fail_closed_without_date_tolerance():
+    base = {
+        "event_id": "another-generic-event",
+        "symbol": "301234.SZ",
+        "known_at": "2018-05-16",
+        "effective_date": "2018-05-16",
+        "share_multiplier": 1.0,
+        "cash_per_share_gross": 0.05,
+        "rights_subscription_ratio": 0.0,
+        "event_type": "cash_dividend",
+    }
+    assert validate_event(base, date(2018, 5, 16))["symbol"] == "301234.SZ"
+    with pytest.raises(CausalCorporateActionError):
+        validate_event({**base, "effective_date": "2018-05-17"}, date(2018, 5, 16))
+    with pytest.raises(CausalCorporateActionError):
+        validate_event({**base, "event_type": "merger"}, date(2018, 5, 16))
 
 
 def test_frozen_spec_hashes_are_self_consistent():
