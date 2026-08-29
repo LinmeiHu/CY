@@ -17,6 +17,7 @@ CANDIDATE = ROOT / "research/chinext_v1/strategy/chinext_v2_candidate.py"
 ENGINE = ROOT / "research/chinext_v1/scripts/run_chinext_v1_smoke.py"
 RUNNER = ROOT / "research/chinext_v1/scripts/run_chinext_v2_research.py"
 PREREG = ROOT / "research/chinext_v1/specs/chinext_v2_attempt_preregistration.json"
+ATTEMPT_LEDGER = ROOT / "research/chinext_v1/reports/chinext_v2_attempt_ledger.json"
 
 
 def sha256(path: Path) -> str:
@@ -93,3 +94,29 @@ def test_candidate_identities_match_preregistration() -> None:
         ]
     with pytest.raises(ValueError, match="unregistered ChinNext V2 candidate"):
         runner.policy_for("V2_NOT_REGISTERED")
+
+
+def test_completed_hypothesis_one_attempts_are_all_auditable_and_rejected() -> None:
+    ledger = json.loads(ATTEMPT_LEDGER.read_text(encoding="utf-8"))
+    assert ledger["candidate_attempts"] == 2
+    assert ledger["accepted_attempts"] == 0
+    assert ledger["rejected_attempts"] == 2
+    assert ledger["technical_failed_attempts"] == 0
+    assert ledger["primary_v2_status"] == "NO_PRIMARY_FROM_HYP_001"
+    assert ledger["recent_period_firewall"]["used_2022_2025_for_v2_selection"] == "NO"
+    assert {row["ATTEMPT_ID"] for row in ledger["attempts"]} == {
+        "V2-A001",
+        "V2-A002",
+    }
+    for row in ledger["attempts"]:
+        assert row["DECISION"] == "REJECTED_PRIMARY"
+        assert row["acceptance_checks"]["top20_concentration_no_higher"] is False
+        assert all(
+            value
+            for name, value in row["acceptance_checks"].items()
+            if name not in {"top20_concentration_no_higher", "used_2022_2025"}
+        )
+        assert row["acceptance_checks"]["used_2022_2025"] is False
+        raw = ROOT / row["RESULT_ARTIFACT"]["path"]
+        if raw.is_file():
+            assert sha256(raw) == row["RESULT_ARTIFACT"]["sha256"]

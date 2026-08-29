@@ -1,0 +1,138 @@
+{
+  "accepted_attempts": 0,
+  "artifact_id": "CHINEXT-V2-MECHANISM-ATTEMPT-LEDGER-2018-2021-V1",
+  "attempts": [
+    {
+      "2018_RETURN": -0.008229460999999882,
+      "2019_RETURN": 0.17328109198855723,
+      "2020_RETURN": 0.13171458090471178,
+      "2021_RETURN": 0.24713665755794212,
+      "ATTEMPT_ID": "V2-A001",
+      "CHANGE": "Require r120 cross-sectional percentile >= 0.50 after unchanged V1 entry gates and before unchanged weighted-RS ranking.",
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "DECISION": "REJECTED_PRIMARY",
+      "HYPOTHESIS_ID": "HYP-001-LONG-HORIZON-RS-ADMISSION",
+      "MAX_DRAWDOWN": -0.15051684363658535,
+      "MEAN_TRADE": 0.040108809078487594,
+      "MEDIAN_TRADE": -0.003444381705251084,
+      "REASON": "The candidate improves median trade, ex-best20, drawdown, 2018, and 2020 while retaining 133 trades and 15/20 V1 top-winner entry identities, but top20 positive-PnL concentration rises from 0.735179 to 0.800369 and violates the preregistered non-lottery condition.",
+      "RESULT_ARTIFACT": {
+        "path": "research/chinext_v1/output/chinext_v2_attempt_v2_a001/attempt_result.json",
+        "sha256": "181ffb49deaadcc1b107f6da3ce557c784ce17453b9a4d03ff9d72d7e3d7d90d"
+      },
+      "RETURN_EX_BEST20": -0.33510360549000073,
+      "STRATEGY_SHA": "af288e1941d7fde35380ca916242f4390a62d9770f97ea227fe5092e7b18367b",
+      "TOP20_PNL_CONCENTRATION": 0.8003689759298988,
+      "TOTAL_RETURN": 0.6423443895099994,
+      "TRADES": 133,
+      "V1_TOP20_ENTRY_IDENTITY_RETAINED": 15,
+      "WIN_RATE": 0.48120300751879697,
+      "acceptance_checks": {
+        "at_least_two_years_improve": true,
+        "max_drawdown_no_worse": true,
+        "median_trade_improves": true,
+        "no_v1_positive_year_becomes_negative": true,
+        "return_ex_best20_improves": true,
+        "special_case_count_zero": true,
+        "top20_concentration_no_higher": false,
+        "trades_at_least_97": true,
+        "used_2022_2025": false,
+        "v1_top20_identity_retained_at_least_10": true
+      },
+      "raw_artifact_hashes": {
+        "daily_nav_sha256": "a2fc4c0ab226b8addd564a64ee8909277fa900e64f1d852b902002ff95f072e7",
+        "event_ledger_sha256": "49c3f8f32884b4d25e3813c2855a708d7a07bfa89aedff91cbefa9a69d84522d",
+        "execution_ledger_sha256": "bc41b312bf85f44ffe69dae47dc15792a8df933da98ad46486a02d24aa967926"
+      }
+    },
+    {
+      "2018_RETURN": -0.004322854999999848,
+      "2019_RETURN": 0.19362086894140784,
+      "2020_RETURN": 0.1254346197449836,
+      "2021_RETURN": 0.28769781348740975,
+      "ATTEMPT_ID": "V2-A002",
+      "CHANGE": "Require r20, r60, and r120 cross-sectional percentiles each >= 0.50 after unchanged V1 entry gates and before unchanged weighted-RS ranking.",
+      "COMPLEXITY_DELTA": {
+        "new_condition_count": 1,
+        "new_parameter_count": 1,
+        "new_state_variable_count": 0,
+        "special_case_count": 0
+      },
+      "DECISION": "REJECTED_PRIMARY",
+      "HYPOTHESIS_ID": "HYP-001-LONG-HORIZON-RS-ADMISSION",
+      "MAX_DRAWDOWN": -0.15064604549497063,
+      "MEAN_TRADE": 0.057890845927453444,
+      "MEDIAN_TRADE": 0.0015219098325147252,
+      "REASON": "The candidate improves total return, median trade, ex-best20, drawdown, 2018, and 2020 while retaining 102 trades and 14/20 V1 top-winner entry identities, but top20 positive-PnL concentration rises to 0.855980 and violates the preregistered non-lottery condition; higher total return cannot override that failure.",
+      "RESULT_ARTIFACT": {
+        "path": "research/chinext_v1/output/chinext_v2_attempt_v2_a002/attempt_result.json",
+        "sha256": "0e2ee26827a36d5cb2032897fa81f057953bfc42c34cef5f7364093820a9c575"
+      },
+      "RETURN_EX_BEST20": -0.26375569968999857,
+      "STRATEGY_SHA": "877d644f409138b5a1636092a4bce159aa49bd3d911c200c07b3158ceaa77c16",
+      "TOP20_PNL_CONCENTRATION": 0.855980200728383,
+      "TOTAL_RETURN": 0.7223411203100014,
+      "TRADES": 102,
+      "V1_TOP20_ENTRY_IDENTITY_RETAINED": 14,
+      "WIN_RATE": 0.5098039215686274,
+      "acceptance_checks": {
+        "at_least_two_years_improve": true,
+        "max_drawdown_no_worse": true,
+        "median_trade_improves": true,
+        "no_v1_positive_year_becomes_negative": true,
+        "return_ex_best20_improves": true,
+        "special_case_count_zero": true,
+        "top20_concentration_no_higher": false,
+        "trades_at_least_97": true,
+        "used_2022_2025": false,
+        "v1_top20_identity_retained_at_least_10": true
+      },
+      "raw_artifact_hashes": {
+        "daily_nav_sha256": "24c4c43709dd1d38241874794977aa305ec8bb697d5dc7f4b341024780079e1e",
+        "event_ledger_sha256": "859b2e083978467f917461b6f9d0e36827e4fc317678da880ff5d2cbb54ab2db",
+        "execution_ledger_sha256": "2caa5286cc493761416cb3a49d22e648a8f4e8eac37eb68c6b17dfe938d7dedc"
+      }
+    }
+  ],
+  "baseline_metrics": {
+    "MAX_DRAWDOWN": -0.20762679470782652,
+    "MEAN_TRADE": 0.030455684400042576,
+    "MEDIAN_TRADE": -0.00970512426371722,
+    "RETURN_EX_BEST20": -0.5015728892100006,
+    "TOP20_PNL_CONCENTRATION": 0.7351787051890619,
+    "TOTAL_RETURN": 0.6482237267899993,
+    "TRADES": 194,
+    "WIN_RATE": 0.4536082474226804,
+    "year_returns": {
+      "2018": -0.03783516999999992,
+      "2019": 0.23490683088052555,
+      "2020": 0.05267228742443164,
+      "2021": 0.31776904262665284
+    }
+  },
+  "candidate_attempts": 2,
+  "frozen_bindings": {
+    "candidate_implementation_commit": "e21b04b6604ef186af05e92553900dddae4627bc",
+    "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "preregistration_path": "research/chinext_v1/specs/chinext_v2_attempt_preregistration.json",
+    "preregistration_sha256": "5061837b6cade9e3b927aa9506eb003787f354ec721bd6f6f6537bf4530f385d",
+    "v1_strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "hypothesis_updates": {
+    "HYP-001-LONG-HORIZON-RS-ADMISSION": "FALSIFIED_AS_PRIMARY_UNDER_FROZEN_CONCENTRATION_RULE",
+    "next_ranked_hypothesis": "HYP-002-CAUSAL-SEVERE-LOSS-BUDGET"
+  },
+  "primary_v2_status": "NO_PRIMARY_FROM_HYP_001",
+  "recent_period_firewall": {
+    "status": "PASS",
+    "used_2022_2025_for_v2_selection": "NO"
+  },
+  "rejected_attempts": 2,
+  "sample_status": "IN_SAMPLE_MECHANISM_RESEARCH",
+  "technical_failed_attempts": 0
+}
