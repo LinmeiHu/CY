@@ -1,0 +1,453 @@
+{
+  "development_expectancy": {
+    "average_loser": -0.06984899476757021,
+    "average_winner": 0.263516067458529,
+    "payoff_ratio": 3.772653684357321,
+    "profit_factor": 2.9816133957017534,
+    "trade_expectancy_approx": 0.07731215882773484,
+    "win_rate": 0.44144144144144143
+  },
+  "exit_path": {
+    "note": "canonical market exits are identifiable from frozen exit reasons; individual versus set-change subtypes remain combined in execution signal_reason",
+    "status": "PARTIAL_DESCRIPTIVE"
+  },
+  "failure_classification": {
+    "cross_regime_generalization": "NOT_SUPPORTED",
+    "evidence_strength": "MODERATE",
+    "primary": "MIXED",
+    "secondary": "RIGHT_TAIL_SCARCITY"
+  },
+  "feature_stability": {
+    "development_2024_2025": {
+      "box_width": {
+        "median": 0.16062378167641334,
+        "p25": 0.13948717948717948,
+        "p75": 0.1826973799894498
+      },
+      "breakout_volume_ratio": {
+        "median": 2.500643918616272,
+        "p25": 1.608479868907709,
+        "p75": 3.6946715808452852
+      },
+      "direction_efficiency": {
+        "median": 0.10077519379844983,
+        "p25": 0.05249343832021,
+        "p75": 0.149867374005305
+      },
+      "final_rs_score": {
+        "median": 0.6788617886178862,
+        "p25": 0.5942408376963351,
+        "p75": 0.778622327790974
+      },
+      "ma_dispersion": {
+        "median": 0.03597265547222417,
+        "p25": 0.02605271129960629,
+        "p75": 0.04864359214218883
+      },
+      "minimum_volume_ratio": {
+        "median": 0.46944047851271586,
+        "p25": 0.41690999897304504,
+        "p75": 0.5375579942049683
+      },
+      "minvol_location": {
+        "median": 0.14903846153846104,
+        "p25": 0.07462686567164285,
+        "p75": 0.26136363636363663
+      },
+      "mom120": {
+        "median": 0.2667060910703727,
+        "p25": 0.051392974563073235,
+        "p75": 0.40093896713615007
+      },
+      "mom20": {
+        "median": 0.14083769633507837,
+        "p25": 0.09090909090909083,
+        "p75": 0.19577960140679962
+      },
+      "mom60": {
+        "median": 0.20107323232323226,
+        "p25": 0.0992555831265507,
+        "p75": 0.3041622198505871
+      },
+      "rs_percentile": {
+        "median": 0.6788617886178862,
+        "p25": 0.5942408376963351,
+        "p75": 0.778622327790974
+      },
+      "turnover20_mean": {
+        "median": null,
+        "p25": null,
+        "p75": null
+      },
+      "vol10_vol60_ratio": {
+        "median": 0.6940893520237696,
+        "p25": 0.5973110224360267,
+        "p75": 0.7556659320052515
+      }
+    },
+    "oos_2022_2023": {
+      "box_width": {
+        "median": 0.16538614333386314,
+        "p25": 0.14147286821705407,
+        "p75": 0.18093101514301746
+      },
+      "breakout_volume_ratio": {
+        "median": 1.9129265323172748,
+        "p25": 1.430756250755089,
+        "p75": 2.6104452575679877
+      },
+      "direction_efficiency": {
+        "median": 0.11243790169622137,
+        "p25": 0.05473684210526309,
+        "p75": 0.17280453257790376
+      },
+      "final_rs_score": {
+        "median": 0.6552359369705185,
+        "p25": 0.5397463002114165,
+        "p75": 0.7593073593073593
+      },
+      "ma_dispersion": {
+        "median": 0.03701283882605999,
+        "p25": 0.025296619655249764,
+        "p75": 0.04988113340900813
+      },
+      "minimum_volume_ratio": {
+        "median": 0.47943773502275855,
+        "p25": 0.41866459199805506,
+        "p75": 0.5301283133853362
+      },
+      "minvol_location": {
+        "median": 0.1577027027027029,
+        "p25": 0.05319148936170288,
+        "p75": 0.26865671641791006
+      },
+      "mom120": {
+        "median": 0.08781608176769484,
+        "p25": -0.01998824221046447,
+        "p75": 0.25780519723312767
+      },
+      "mom20": {
+        "median": 0.09931987693235522,
+        "p25": 0.07224334600760463,
+        "p75": 0.14349442379182165
+      },
+      "mom60": {
+        "median": 0.170813065702361,
+        "p25": 0.11076923076923073,
+        "p75": 0.2857142857142858
+      },
+      "rs_percentile": {
+        "median": 0.6552359369705185,
+        "p25": 0.5397463002114165,
+        "p75": 0.7593073593073593
+      },
+      "turnover20_mean": {
+        "median": null,
+        "p25": null,
+        "p75": null
+      },
+      "vol10_vol60_ratio": {
+        "median": 0.7119214712307916,
+        "p25": 0.6179257774659922,
+        "p75": 0.7931277932897352
+      }
+    },
+    "turnover20_mean_status": "UNRESOLVED: entry event does not carry turnover20_mean"
+  },
+  "formal_replay_executions": 0,
+  "identity": {
+    "development_pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+    "holdout_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+    "phase9b_spec_sha256": "e2265b3a3fec2e809d88b69d1884faf3b27a78df47ad617fed1fe32c07e0602d",
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "market_regime": {
+    "development_average_invested_fraction": 0.40391475173586633,
+    "development_candidate_event_count": 1175,
+    "development_market_exit_event_count": 191,
+    "development_selected_entry_count": 121,
+    "oos_average_invested_fraction": 0.17835449106928172,
+    "oos_candidate_event_count": 266,
+    "oos_market_exit_event_count": 252,
+    "oos_selected_entry_count": 94
+  },
+  "new_nav": 0,
+  "new_trades": 0,
+  "next_research_questions": [
+    "Would a separately authorized regime-conditioned admission study explain continuation drift without changing this frozen strategy?",
+    "Can a future untouched period test whether the observed right-tail scarcity repeats?"
+  ],
+  "oos_expectancy": {
+    "average_loser": -0.05272166642406891,
+    "average_winner": 0.08894235006318213,
+    "payoff_ratio": 1.6870170481291438,
+    "profit_factor": 0.5784058450728493,
+    "trade_expectancy_approx": -0.0165521302996644,
+    "win_rate": 0.2553191489361702
+  },
+  "oos_status_after_phase9b": "CONSUMED_FOR_DIAGNOSTIC_ANALYSIS",
+  "phase9c_result": "PASS",
+  "pit_rebuilt": "NO",
+  "yearly": {
+    "2022": {
+      "average_holdings": 1.0867768595041323,
+      "average_invested_fraction": 0.10744679010178616,
+      "average_loser": -0.06428401991392971,
+      "average_winner": 0.04963453254441884,
+      "continuation": {
+        "10": {
+          "full_observable_count": 7,
+          "median_mae": -0.08897010423727991,
+          "median_mfe": 0.045410471881059955,
+          "median_return": -0.08666136147052184,
+          "positive_rate": 0.2857142857142857
+        },
+        "20": {
+          "full_observable_count": 2,
+          "median_mae": -0.03886566368123667,
+          "median_mfe": 0.19611273864029088,
+          "median_return": 0.11906624529400722,
+          "positive_rate": 1.0
+        },
+        "5": {
+          "full_observable_count": 27,
+          "median_mae": -0.042887029288702916,
+          "median_mfe": 0.04520606550363637,
+          "median_return": -0.021118981090389233,
+          "positive_rate": 0.2962962962962963
+        }
+      },
+      "mean_trade_return": -0.048889620933071795,
+      "median_mae": -0.07706955506869517,
+      "median_mfe": 0.03347280334728042,
+      "median_trade_return": -0.0511826974306892,
+      "payoff_ratio": 0.7721130789716455,
+      "profit_factor": 0.1198694709829104,
+      "return_ex_best10": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best20": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best5": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "top10_positive_pnl_share": 1.0,
+      "top1_positive_pnl_share": 0.5048524514786942,
+      "top20_positive_pnl_share": 1.0,
+      "top5_positive_pnl_share": 1.0,
+      "total_negative_pnl": -196463.67200000005,
+      "total_positive_pnl": 23549.996430000032,
+      "trade_count": 37,
+      "win_rate": 0.13513513513513514,
+      "winner_frequency": {
+        "count": 37,
+        "mean_mfe": 0.0502259022301576,
+        "mfe_distribution": {
+          "median": 0.03347280334728042,
+          "p25": 0.011998607670099748,
+          "p75": 0.06997742663656892
+        },
+        "mfe_ge_100_count": 0,
+        "mfe_ge_100_rate": 0.0,
+        "mfe_ge_10_count": 5,
+        "mfe_ge_20_count": 2,
+        "mfe_ge_20_rate": 0.05405405405405406,
+        "mfe_ge_30_count": 0,
+        "mfe_ge_50_count": 0,
+        "mfe_ge_50_rate": 0.0,
+        "p75_mfe": 0.06997742663656892,
+        "p90_mfe": 0.1017233540453355
+      }
+    },
+    "2023": {
+      "average_holdings": 2.512396694214876,
+      "average_invested_fraction": 0.2492621920367773,
+      "average_loser": -0.04298494769576509,
+      "average_winner": 0.09928651256811984,
+      "continuation": {
+        "10": {
+          "full_observable_count": 31,
+          "median_mae": -0.035947976411664806,
+          "median_mfe": 0.1088305489260144,
+          "median_return": 0.03436843850149174,
+          "positive_rate": 0.7096774193548387
+        },
+        "20": {
+          "full_observable_count": 10,
+          "median_mae": -0.02703933929435287,
+          "median_mfe": 0.10727909670452163,
+          "median_return": 0.025098037816096652,
+          "positive_rate": 0.6
+        },
+        "5": {
+          "full_observable_count": 41,
+          "median_mae": -0.04067321178120609,
+          "median_mfe": 0.05799339814057736,
+          "median_return": 0.015274463007159955,
+          "positive_rate": 0.5853658536585366
+        }
+      },
+      "mean_trade_return": 0.004438872392196555,
+      "median_mae": -0.05003508393155942,
+      "median_mfe": 0.0555870032831427,
+      "median_trade_return": -0.020964993123327523,
+      "payoff_ratio": 2.3097972171756678,
+      "profit_factor": 1.1248322758868285,
+      "return_ex_best10": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best20": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best5": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "top10_positive_pnl_share": 0.9411424541452192,
+      "top1_positive_pnl_share": 0.18259982519516876,
+      "top20_positive_pnl_share": 1.0,
+      "top5_positive_pnl_share": 0.7666689385373547,
+      "total_negative_pnl": -141734.987,
+      "total_positive_pnl": 159428.08800000005,
+      "trade_count": 57,
+      "win_rate": 0.3333333333333333,
+      "winner_frequency": {
+        "count": 57,
+        "mean_mfe": 0.10392803103931096,
+        "mfe_distribution": {
+          "median": 0.0555870032831427,
+          "p25": 0.01259583789704255,
+          "p75": 0.13163186388244386
+        },
+        "mfe_ge_100_count": 0,
+        "mfe_ge_100_rate": 0.0,
+        "mfe_ge_10_count": 20,
+        "mfe_ge_20_count": 9,
+        "mfe_ge_20_rate": 0.15789473684210525,
+        "mfe_ge_30_count": 5,
+        "mfe_ge_50_count": 3,
+        "mfe_ge_50_rate": 0.05263157894736842,
+        "p75_mfe": 0.13163186388244386,
+        "p90_mfe": 0.2434382515946878
+      }
+    },
+    "2024": {
+      "average_holdings": 2.3636363636363638,
+      "average_invested_fraction": 0.23588404552500603,
+      "average_loser": -0.06412272367638233,
+      "average_winner": 0.6174234505384367,
+      "continuation": {
+        "10": {
+          "full_observable_count": 23,
+          "median_mae": -0.04218467052608854,
+          "median_mfe": 0.1246771138281384,
+          "median_return": 0.020063231989819297,
+          "positive_rate": 0.6521739130434783
+        },
+        "20": {
+          "full_observable_count": 10,
+          "median_mae": -0.014686039998959066,
+          "median_mfe": 0.8805768417093696,
+          "median_return": 0.6325396079168821,
+          "positive_rate": 1.0
+        },
+        "5": {
+          "full_observable_count": 33,
+          "median_mae": -0.04692289554350393,
+          "median_mfe": 0.0656883298392732,
+          "median_return": -0.0024231395460204697,
+          "positive_rate": 0.48484848484848486
+        }
+      },
+      "mean_trade_return": 0.15110238397040263,
+      "median_mae": -0.061553935844448404,
+      "median_mfe": 0.06423482144609938,
+      "median_trade_return": -0.02620211325063075,
+      "payoff_ratio": 9.628777680350561,
+      "profit_factor": 3.0525789572978703,
+      "return_ex_best10": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best20": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best5": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "top10_positive_pnl_share": 0.9845265043286533,
+      "top1_positive_pnl_share": 0.29688597692209706,
+      "top20_positive_pnl_share": 1.0,
+      "top5_positive_pnl_share": 0.774317649015104,
+      "total_negative_pnl": -238964.83300000007,
+      "total_positive_pnl": 729459.0207499999,
+      "trade_count": 38,
+      "win_rate": 0.3157894736842105,
+      "winner_frequency": {
+        "count": 38,
+        "mean_mfe": 0.39168286287499826,
+        "mfe_distribution": {
+          "median": 0.06423482144609938,
+          "p25": 0.027891596578247357,
+          "p75": 0.4634461080320955
+        },
+        "mfe_ge_100_count": 4,
+        "mfe_ge_100_rate": 0.10526315789473684,
+        "mfe_ge_10_count": 12,
+        "mfe_ge_20_count": 11,
+        "mfe_ge_20_rate": 0.2894736842105263,
+        "mfe_ge_30_count": 11,
+        "mfe_ge_50_count": 9,
+        "mfe_ge_50_rate": 0.23684210526315788,
+        "p75_mfe": 0.4634461080320955,
+        "p90_mfe": 0.9874476987447698
+      }
+    },
+    "2025": {
+      "average_holdings": 5.732510288065844,
+      "average_invested_fraction": 0.5712539735590276,
+      "average_loser": -0.0739846350000948,
+      "average_winner": 0.1487352945677481,
+      "continuation": {
+        "10": {
+          "full_observable_count": 50,
+          "median_mae": -0.04006433285575628,
+          "median_mfe": 0.09097718023490264,
+          "median_return": 0.008283967990740826,
+          "positive_rate": 0.6
+        },
+        "20": {
+          "full_observable_count": 25,
+          "median_mae": -0.026840324046454866,
+          "median_mfe": 0.16471573966830144,
+          "median_return": 0.04472332182262284,
+          "positive_rate": 0.84
+        },
+        "5": {
+          "full_observable_count": 68,
+          "median_mae": -0.03298509275552952,
+          "median_mfe": 0.05871168749140698,
+          "median_return": 0.0077782631670803015,
+          "positive_rate": 0.5588235294117647
+        }
+      },
+      "mean_trade_return": 0.03890080875346941,
+      "median_mae": -0.04756434423447453,
+      "median_mfe": 0.10793060861736636,
+      "median_trade_return": 0.0048272396296711595,
+      "payoff_ratio": 2.01035383316492,
+      "profit_factor": 1.9901884139499142,
+      "return_ex_best10": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best20": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "return_ex_best5": "UNRESOLVED: frozen exclusion is portfolio-level",
+      "top10_positive_pnl_share": 0.7227017390654374,
+      "top1_positive_pnl_share": 0.1435929244466185,
+      "top20_positive_pnl_share": 0.9238228942966078,
+      "top5_positive_pnl_share": 0.4991600583822151,
+      "total_negative_pnl": -453104.0829999998,
+      "total_positive_pnl": 901762.4962999999,
+      "trade_count": 73,
+      "win_rate": 0.5068493150684932,
+      "winner_frequency": {
+        "count": 73,
+        "mean_mfe": 0.18072408189187555,
+        "mfe_distribution": {
+          "median": 0.10793060861736636,
+          "p25": 0.05615620670456156,
+          "p75": 0.22220366635407163
+        },
+        "mfe_ge_100_count": 1,
+        "mfe_ge_100_rate": 0.0136986301369863,
+        "mfe_ge_10_count": 39,
+        "mfe_ge_20_count": 20,
+        "mfe_ge_20_rate": 0.273972602739726,
+        "mfe_ge_30_count": 15,
+        "mfe_ge_50_count": 6,
+        "mfe_ge_50_rate": 0.0821917808219178,
+        "p75_mfe": 0.22220366635407163,
+        "p90_mfe": 0.3757009345794393
+      }
+    }
+  }
+}
