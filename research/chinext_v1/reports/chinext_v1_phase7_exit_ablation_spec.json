@@ -1,0 +1,32 @@
+{
+  "phase": "CHINEXT_V1_PHASE7",
+  "status": "FROZEN_BEFORE_ANY_ABLATION_RESULT",
+  "formal_run_order": [
+    "E1_INDIVIDUAL_EXIT_DISABLED",
+    "E2_MARKET_EXIT_DISABLED"
+  ],
+  "baseline": "E0_FROZEN_PHASE1B",
+  "date_range": ["2024-01-02", "2025-12-31"],
+  "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+  "pit_manifest_digest": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+  "authorization_id": "CYQ-AUTH-CHINEXT-V1-PIT-B-2024-2025-V1",
+  "causal_gate": {
+    "set_removal_is_downstream_of_individual_exit": "YES",
+    "evidence": "forced_exits is populated by own_exit_signal; candidate selection excludes forced_exits; desired-set removal then schedules SET_CHANGE execution"
+  },
+  "arms": {
+    "E1_INDIVIDUAL_EXIT_DISABLED": {
+      "individual_exit": "OFF",
+      "individual_exit_downstream_set_removal": "OFF",
+      "market_exit": "ON",
+      "all_other_logic": "E0_FROZEN"
+    },
+    "E2_MARKET_EXIT_DISABLED": {
+      "individual_exit": "ON",
+      "individual_exit_downstream_set_removal": "ON",
+      "market_exit": "OFF",
+      "market_entry_gate": "ON",
+      "all_other_logic": "E0_FROZEN"
+    }
+  }
+}

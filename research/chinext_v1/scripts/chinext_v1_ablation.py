@@ -46,6 +46,20 @@ class ArmPolicy:
         return asdict(self)
 
 
+@dataclass(frozen=True)
+class Phase7ExitPolicy(ArmPolicy):
+    individual_exit: bool = True
+    market_exit: bool = True
+
+
+def phase7_policy_for(name: str) -> Phase7ExitPolicy:
+    if name == "E1_INDIVIDUAL_EXIT_DISABLED":
+        return Phase7ExitPolicy(name, individual_exit=False)
+    if name == "E2_MARKET_EXIT_DISABLED":
+        return Phase7ExitPolicy(name, market_exit=False)
+    raise ValueError(f"unregistered Phase 7 exit arm: {name}")
+
+
 POLICIES = {
     "A0_BASELINE": ArmPolicy("A0_BASELINE"),
     "A1_MINUS_MINVOL": ArmPolicy("A1_MINUS_MINVOL", minvol_hard_filter=False),

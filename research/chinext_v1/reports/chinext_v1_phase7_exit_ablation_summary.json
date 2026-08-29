@@ -1,0 +1,409 @@
+{
+  "arms": {
+    "E0_FROZEN_PHASE1B": {
+      "annualized_return": 0.436890606292782,
+      "arm": "E0_FROZEN_PHASE1B",
+      "average_holdings": 4.051546391752577,
+      "average_invested_fraction": 0.40391475173586633,
+      "concentration": {
+        "return_ex_best20": -0.3219529632499998,
+        "top20_positive_pnl_concentration": 0.8425435214865872
+      },
+      "max_drawdown": -0.2622719258789836,
+      "mean_trade_return": 0.07731215882773483,
+      "median_trade_return": -0.01074995073617439,
+      "total_return": 1.0524221580500002,
+      "trade_count": 111,
+      "win_rate": 0.44144144144144143
+    },
+    "E1_INDIVIDUAL_EXIT_DISABLED": {
+      "2024_09_entry_share_of_total_positive_pnl": 0.5193073562611309,
+      "2024_09_entry_total_pnl": 735255.7080000001,
+      "2024_09_entry_trade_count": 10,
+      "annualized_return": 0.3991142179423601,
+      "arm": "E1_INDIVIDUAL_EXIT_DISABLED",
+      "arm_top20_episode_keys": [
+        [
+          "300033.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300128.SZ",
+          "2024-09-25"
+        ],
+        [
+          "300182.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300324.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300348.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300377.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300437.SZ",
+          "2025-11-06"
+        ],
+        [
+          "300442.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300459.SZ",
+          "2024-09-25"
+        ],
+        [
+          "300733.SZ",
+          "2025-02-06"
+        ],
+        [
+          "300779.SZ",
+          "2025-02-12"
+        ],
+        [
+          "300801.SZ",
+          "2025-06-23"
+        ],
+        [
+          "300803.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300863.SZ",
+          "2025-06-23"
+        ],
+        [
+          "300910.SZ",
+          "2025-01-23"
+        ],
+        [
+          "300938.SZ",
+          "2025-10-29"
+        ],
+        [
+          "301093.SZ",
+          "2025-06-23"
+        ],
+        [
+          "301141.SZ",
+          "2025-06-04"
+        ],
+        [
+          "301165.SZ",
+          "2025-06-24"
+        ],
+        [
+          "301301.SZ",
+          "2024-04-29"
+        ]
+      ],
+      "arm_top20_new_trade_count": 5,
+      "arm_top20_overlap_with_baseline_top20": 15,
+      "arm_top20_total_pnl": 1258929.5366000002,
+      "average_holdings": 4.181443298969072,
+      "average_invested_fraction": 0.4152448279028522,
+      "baseline_top10_captured_count": 9,
+      "baseline_top10_captured_pct": 0.9,
+      "baseline_top20_captured_count": 15,
+      "baseline_top20_captured_pct": 0.75,
+      "baseline_top20_same_symbol_unrelated_episode_count": 1,
+      "baseline_top20_same_symbol_unrelated_symbols": [
+        "300357.SZ"
+      ],
+      "candidate_event_count": 1173,
+      "concentration": {
+        "positive_round_trip_pnl": 1415839.1926,
+        "return_ex_best10": -0.010335949399999378,
+        "return_ex_best20": -0.3121565813999996,
+        "top10_positive_pnl_concentration": 0.676001137419001,
+        "top1_positive_pnl_concentration": 0.16850054882426205,
+        "top20_positive_pnl_concentration": 0.8891755103121167,
+        "top5_positive_pnl_concentration": 0.45471054224579893
+      },
+      "daily_nav": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase7_exit_ablation/E1_INDIVIDUAL_EXIT_DISABLED/daily_nav.jsonl",
+      "daily_nav_sha256": "105883608ba2e3a82a35f03b3842ecb7f393ab584ec454e63f7c7fa295977a74",
+      "ending_holdings": [
+        "300054.SZ",
+        "300265.SZ",
+        "300285.SZ",
+        "300327.SZ",
+        "300401.SZ",
+        "300448.SZ",
+        "300487.SZ",
+        "300667.SZ",
+        "300699.SZ",
+        "300855.SZ"
+      ],
+      "execution_ledger": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase7_exit_ablation/E1_INDIVIDUAL_EXIT_DISABLED/execution_ledger.jsonl",
+      "execution_ledger_sha256": "55798c23e1d42045a80200dc99a801297d4f39976a361af4e1bec97555ecb94b",
+      "formal_replay_executions": 1,
+      "loser_control": {
+        "count": 46,
+        "mean_holding_days": null,
+        "mean_return": -0.07011249897030641,
+        "median_holding_days": null,
+        "median_return": -0.0662275058439072,
+        "total_pnl": -514471.81239999994
+      },
+      "max_drawdown": -0.2537282669315396,
+      "mean_trade_return": 0.10721067269127549,
+      "median_trade_return": -0.008083826186430018,
+      "pnl_excluding_2024_09_entry_cohort": 166111.67219999997,
+      "policy": {
+        "b60_hard_filter": true,
+        "full40_hard_filter": true,
+        "individual_exit": false,
+        "market_entry_gate": true,
+        "market_exit": true,
+        "minvol_hard_filter": true,
+        "name": "E1_INDIVIDUAL_EXIT_DISABLED",
+        "rs_selection": true
+      },
+      "positive_trade_count": 36,
+      "return_excluding_2024_09_entry_cohort": null,
+      "return_excluding_2024_09_entry_cohort_status": "UNRESOLVED: no cash-flow counterfactual NAV is fabricated",
+      "same_day_fill_count": 0,
+      "selected_entry_count": 92,
+      "sharpe_rf0": 1.2640123854742167,
+      "stale_held_valuation_count": 0,
+      "top20_from_2024_09_count": 9,
+      "total_return": 0.9467729552000006,
+      "trade_count": 82,
+      "volatility": 0.2990556489375755,
+      "win_rate": 0.43902439024390244,
+      "year_by_year": {
+        "2024": {
+          "average_holdings": 2.458677685950413,
+          "average_invested_ratio": 0.2435212509030407,
+          "completed_round_trip_count": 37,
+          "max_drawdown": -0.24062897133707073,
+          "return": 0.5210182530000003,
+          "win_rate": 0.32432432432432434
+        },
+        "2025": {
+          "average_holdings": 5.897119341563786,
+          "average_invested_ratio": 0.5862617235158332,
+          "completed_round_trip_count": 45,
+          "max_drawdown": -0.08236047605428265,
+          "return": 0.27991426227808747,
+          "win_rate": 0.5333333333333333
+        }
+      }
+    },
+    "E2_MARKET_EXIT_DISABLED": {
+      "2024_09_entry_share_of_total_positive_pnl": 0.48073120153715315,
+      "2024_09_entry_total_pnl": 809784.3420000001,
+      "2024_09_entry_trade_count": 10,
+      "annualized_return": 0.388368435793214,
+      "arm": "E2_MARKET_EXIT_DISABLED",
+      "arm_top20_episode_keys": [
+        [
+          "300003.SZ",
+          "2025-06-04"
+        ],
+        [
+          "300033.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300128.SZ",
+          "2024-09-25"
+        ],
+        [
+          "300182.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300324.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300348.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300357.SZ",
+          "2025-07-16"
+        ],
+        [
+          "300377.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300437.SZ",
+          "2025-11-06"
+        ],
+        [
+          "300440.SZ",
+          "2025-06-16"
+        ],
+        [
+          "300457.SZ",
+          "2025-08-28"
+        ],
+        [
+          "300459.SZ",
+          "2024-09-25"
+        ],
+        [
+          "300779.SZ",
+          "2025-02-12"
+        ],
+        [
+          "300790.SZ",
+          "2024-12-09"
+        ],
+        [
+          "300803.SZ",
+          "2024-09-24"
+        ],
+        [
+          "300910.SZ",
+          "2025-01-23"
+        ],
+        [
+          "300938.SZ",
+          "2025-10-29"
+        ],
+        [
+          "301093.SZ",
+          "2025-06-23"
+        ],
+        [
+          "301141.SZ",
+          "2025-06-04"
+        ],
+        [
+          "301498.SZ",
+          "2024-12-02"
+        ]
+      ],
+      "arm_top20_new_trade_count": 5,
+      "arm_top20_overlap_with_baseline_top20": 15,
+      "arm_top20_total_pnl": 1425800.2027000003,
+      "average_holdings": 5.154639175257732,
+      "average_invested_fraction": 0.5157464513330124,
+      "baseline_top10_captured_count": 8,
+      "baseline_top10_captured_pct": 0.8,
+      "baseline_top20_captured_count": 17,
+      "baseline_top20_captured_pct": 0.85,
+      "baseline_top20_same_symbol_unrelated_episode_count": 0,
+      "baseline_top20_same_symbol_unrelated_symbols": [],
+      "candidate_event_count": 1292,
+      "concentration": {
+        "positive_round_trip_pnl": 1684484.6754500002,
+        "return_ex_best10": -0.10000202359000077,
+        "return_ex_best20": -0.508574158590001,
+        "top10_positive_pnl_concentration": 0.6038808678554785,
+        "top1_positive_pnl_concentration": 0.14836139066283718,
+        "top20_positive_pnl_concentration": 0.8464310916447525,
+        "top5_positive_pnl_concentration": 0.39780106092148887
+      },
+      "daily_nav": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase7_exit_ablation/E2_MARKET_EXIT_DISABLED/daily_nav.jsonl",
+      "daily_nav_sha256": "db67b7f8fc827490fb237a1fdeda0ee26d33adcdc3d73a8c5390d821f98e450c",
+      "ending_holdings": [
+        "300045.SZ",
+        "300054.SZ",
+        "300265.SZ",
+        "300285.SZ",
+        "300487.SZ",
+        "300576.SZ",
+        "300667.SZ",
+        "300710.SZ",
+        "300731.SZ",
+        "301387.SZ"
+      ],
+      "execution_ledger": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase7_exit_ablation/E2_MARKET_EXIT_DISABLED/execution_ledger.jsonl",
+      "execution_ledger_sha256": "38b62b99b06ad425f8e606e92e147d979b6b14998c1cb853ff3ccb2769a52d59",
+      "formal_replay_executions": 1,
+      "loser_control": {
+        "count": 59,
+        "mean_holding_days": null,
+        "mean_return": -0.08621808073272143,
+        "median_holding_days": null,
+        "median_return": -0.08694958348276041,
+        "total_pnl": -905783.5613399999
+      },
+      "max_drawdown": -0.1739112641819065,
+      "mean_trade_return": 0.06669566567627712,
+      "median_trade_return": -0.05017221408243291,
+      "pnl_excluding_2024_09_entry_cohort": -31083.227889999802,
+      "policy": {
+        "b60_hard_filter": true,
+        "full40_hard_filter": true,
+        "individual_exit": true,
+        "market_entry_gate": true,
+        "market_exit": false,
+        "minvol_hard_filter": true,
+        "name": "E2_MARKET_EXIT_DISABLED",
+        "rs_selection": true
+      },
+      "positive_trade_count": 40,
+      "return_excluding_2024_09_entry_cohort": null,
+      "return_excluding_2024_09_entry_cohort_status": "UNRESOLVED: no cash-flow counterfactual NAV is fabricated",
+      "same_day_fill_count": 0,
+      "selected_entry_count": 109,
+      "sharpe_rf0": 1.2068974756379098,
+      "stale_held_valuation_count": 0,
+      "top20_from_2024_09_count": 8,
+      "total_return": 0.9172260441099993,
+      "trade_count": 99,
+      "volatility": 0.3094740823747999,
+      "win_rate": 0.40404040404040403,
+      "year_by_year": {
+        "2024": {
+          "average_holdings": 3.3057851239669422,
+          "average_invested_ratio": 0.33186483916446563,
+          "completed_round_trip_count": 30,
+          "max_drawdown": -0.16305820353175926,
+          "return": 0.64658489275,
+          "win_rate": 0.4666666666666667
+        },
+        "2025": {
+          "average_holdings": 6.995884773662551,
+          "average_invested_ratio": 0.6988713490481908,
+          "completed_round_trip_count": 69,
+          "max_drawdown": -0.11652906975888111,
+          "return": 0.16436513692773858,
+          "win_rate": 0.37681159420289856
+        }
+      }
+    }
+  },
+  "current_survivor_fallback": "NO",
+  "e1_generic_episode_findings": {
+    "baseline_episode_count": 34,
+    "continued_after_baseline_exit_count": 22,
+    "end_of_test_count": 0,
+    "later_market_exit_count": 22,
+    "not_recaptured_due_to_portfolio_path_count": 12,
+    "recaptured_count": 22
+  },
+  "e2_market_episode_findings": {
+    "baseline_episode_count": 77,
+    "continued_after_baseline_exit_count": 54,
+    "end_of_test_count": 0,
+    "later_market_exit_count": 0,
+    "not_recaptured_due_to_portfolio_path_count": 15,
+    "recaptured_count": 62
+  },
+  "formal_replay_executions": 2,
+  "formal_run_order": [
+    "E1_INDIVIDUAL_EXIT_DISABLED",
+    "E2_MARKET_EXIT_DISABLED"
+  ],
+  "identity": {
+    "pit_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+    "spec_sha256": "dad98d9c21e1ea411b2989d28514a8d0adde20043cd799c3f8b8d551b94e9410",
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "pit_rebuilt": "NO",
+  "strategy_modified": "NO"
+}

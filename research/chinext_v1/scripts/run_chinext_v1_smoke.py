@@ -49,6 +49,7 @@ from chinext_v1_ablation import (  # noqa: E402
     market_entry_allowed_for_arm,
     minvol_admission_for_arm,
     policy_for,
+    phase7_policy_for,
     price_structure_for_arm,
     rank_candidates_for_arm,
 )
@@ -408,7 +409,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     if args.start >= args.end:
         raise ValueError("smoke start must precede end")
     config = ChinNextV1Config()
-    ablation_policy = policy_for(getattr(args, "ablation_arm", "A0_BASELINE"))
+    arm_name = getattr(args, "ablation_arm", "A0_BASELINE")
+    ablation_policy = phase7_policy_for(arm_name) if arm_name.startswith("E") else policy_for(arm_name)
     capacity_envelope = getattr(args, "capacity_envelope", None)
     capacity_identity = getattr(args, "capacity_envelope_identity", None)
     pit_membership_path = getattr(args, "pit_membership", None)
@@ -812,13 +814,13 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         )
 
         exit_reason_parts: list[str] = []
-        if market_state["normal_exit"]:
+        if getattr(ablation_policy, "market_exit", True) and market_state["normal_exit"]:
             exit_reason_parts.append("MARKET_MA20_X2")
-        if market_state["emergency_exit"]:
+        if getattr(ablation_policy, "market_exit", True) and market_state["emergency_exit"]:
             exit_reason_parts.append("MARKET_CLOSE_LT_MA20_X0.96")
 
         for symbol in sorted(positions):
-            if own_exit_signal(histories_close[symbol], config):
+            if getattr(ablation_policy, "individual_exit", True) and own_exit_signal(histories_close[symbol], config):
                 if symbol not in forced_exits:
                     counts["individual_exit_signals"] += 1
                     events.append({"event": "INDIVIDUAL_EXIT_SIGNAL", "signal_date": day, "symbol": symbol, "reason": "MA30_X2"})
