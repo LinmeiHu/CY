@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`DEEPEN_H013_TEST_POST_DAY5_PERSISTENCE`.
+`REJECT_H014_PIVOT_TO_EXCURSION_ORDER`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,14 +49,14 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-EXP-PEL-001 establishes that right-tail separation is visible by day 5 in the
-frozen survivor sample. The unresolved question is whether day-5 continuation
-relates to multiplicatively residual return after day 5, or merely shares
-arithmetic with terminal return. This remains path attribution, not an exit rule.
+EXP-PLP-001 rejects incremental day-5 persistence after removing direct shared
+arithmetic. The remaining high-value question is whether winners and false
+breakouts differ in full-path excursion sequence: adversity before opportunity
+versus opportunity before adversity. This is path topology, not an exit rule.
 
 ## Exact next action
 
-Persist/checkpoint EXP-PEL-001, then freeze one residual-return experiment using
-`(1 + terminal_return) / (1 + landmark_return) - 1`, with day 5 primary and
-day10/day20 survivor confirmations. EXP-P7-003 must never be silently repaired,
-rerun, or overwritten.
+Checkpoint EXP-PLP-001, audit availability and semantics of accepted MFE, MAE,
+days-to-MFE, days-to-MAE, duration, and exit lineage without testing a rule, then
+preregister one normalized excursion-order experiment. EXP-P7-003 must never be
+silently repaired, rerun, or overwritten.

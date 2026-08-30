@@ -1,0 +1,108 @@
+{
+  "experiment_id": "EXP-PLP-001",
+  "spec_id": "CHINEXT-V1-POST-LANDMARK-RESIDUAL-PERSISTENCE-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_RESIDUAL_RETURN_TEST",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_HOLDING_PATH_FALSIFICATION",
+  "hypothesis_id": "H-014",
+  "question": "Does day-5 strength relate to return earned after day 5 once its direct arithmetic contribution to terminal return is removed?",
+  "mechanism": "If V1's right tail is a persistence process rather than merely early outcome separation, stronger day-5 paths should continue to earn higher multiplicatively residual returns under the frozen holding path.",
+  "prediction": "Day-5 return has a positive, stable association with multiplicatively residual terminal return after day 5; fixed day-10/day-20 survivor confirmations retain the direction.",
+  "interpretation_boundary": "Residualization removes direct shared arithmetic only. The analysis remains conditional on survival through each landmark and on the frozen exit mechanism, and cannot establish a deployable hold or exit rule.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_landmark_persistence.py",
+      "sha256": "cdfc3ef67df7497aa970b70fa1f305787da2b7a9f036d987d2137358c850bafc"
+    },
+    "accepted_landmark_table": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/post_entry_landmark_attribution.csv",
+      "sha256": "995693e6d5ee7b0190e13e8e1d620f1cfc62f784901d1e3e7acbed8b139ee9eb"
+    },
+    "accepted_landmark_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/post_entry_landmark_emergence.json",
+      "sha256": "4ede7c09694b07dca228d085f5fc59c0c864b8f38eee9b9dbd288ca03b9564f6"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_landmark_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_entry_landmark_emergence.py",
+      "sha256": "b95179c18b83e7ef4504dad8bc30a691f659a3fe2210d2f20896f1ba5495a750"
+    },
+    "accepted_control_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    }
+  },
+  "sample": {
+    "primary": "all 295 accepted EXP-PEL-001 cycles observable through day 5",
+    "expected_available": {
+      "return_5d": 295,
+      "return_10d": 192,
+      "return_20d": 91
+    },
+    "missingness": "No imputation or post-exit extension. Day-10/day-20 use their own fixed survivor samples and cannot replace day 5."
+  },
+  "return_identity": "residual_return_after_d = (1 + round_trip_return) / (1 + return_d) - 1",
+  "primary_predictor": "accepted return_5d",
+  "primary_endpoint": "multiplicatively residual round-trip return after day 5",
+  "fixed_neighbors": [
+    "return_10d versus residual return after day 10 in the 192-cycle survivor sample",
+    "return_20d versus residual return after day 20 in the 91-cycle survivor sample"
+  ],
+  "fixed_controls": {
+    "continuous_ranked": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "mechanical_sensitivity": ["holding_trading_days", "canonical_exit_reason"]
+  },
+  "gates": {
+    "raw": "rho >= 0.10, positive within-year rank rho, and positive in >=7/8 LOYO estimates",
+    "controlled": "pre-entry partial-rank rho >= 0.10 and positive in >=7/8 controlled LOYO estimates",
+    "mechanical": "duration/exit partial-rank rho >= 0.05 with >=7/8 LOYO positive, positive ex-global-Top-4 P&L and ex-severe-loss estimates, and >=80% positive leave-one-security and leave-one-industry omissions",
+    "neighbors": "day-10 and day-20 residual-return rhos positive with >=6/8 LOYO positive signs; neither can replace day 5",
+    "stable_giveback": "raw rho <= -0.10 with negative sign in >=7/8 LOYO estimates",
+    "decision": {
+      "DEEPEN": "raw, controlled, mechanical, and neighbor gates pass",
+      "REFINE": "raw, controlled, and mechanical gates pass but later landmarks fail",
+      "PIVOT": "stable giveback gate passes",
+      "REJECT": "none of the preceding conditions pass"
+    }
+  },
+  "falsification": [
+    "exact multiplicative reconstruction with maximum error <= 1e-12",
+    "within-entry-year ranks, per-year estimates, and eight LOYO omissions",
+    "fixed pre-entry V1, market, breadth, beta, volatility, and liquidity controls",
+    "holding duration and canonical exit reason sensitivity",
+    "global Top-4 realized-PnL removal",
+    "severe-loser and extreme-winner removals",
+    "leave-one-security and leave-one-industry omissions",
+    "three independent baseline blocks",
+    "fixed day-10/day-20 survivor confirmations",
+    "zero post-exit prices, counterfactual paths, replays, or strategy rules"
+  ],
+  "forbidden": [
+    "calling residual association a causal or deployable hold signal",
+    "testing an exit, stop, hold, ranking, sizing, entry, or production change",
+    "changing the landmark, residual formula, sample, controls, or gates after results",
+    "imputing returns after an actual exit",
+    "breadth historical redesign or invalid Phase 7/8/9 use",
+    "untouched OOS or PIT-A claim"
+  ],
+  "outputs": [
+    "artifacts/post_landmark_persistence.csv",
+    "artifacts/post_landmark_persistence.json",
+    "reports/post_landmark_persistence.md"
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-PEL-001_COMPLETE_DEEPEN` on 2026-08-30.
+`EXP-PLP-001_COMPLETE_REJECTED` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -20,6 +20,16 @@ EXP-PEL-001 is complete. Day-5 continuation passes every gate against the fixed
 extreme-winner outcome (raw 0.292, controlled 0.313, duration/exit 0.221; 8/8
 LOYO), with positive day10/day20 confirmation. This locates separation but remains
 mechanically qualified because day-5 return is embedded in terminal return.
+
+EXP-PLP-001 is frozen before residual-return calculation. It removes day-5
+return from terminal return multiplicatively and tests whether the remaining
+return retains stable positive association. Its six-input aggregate is
+`11a1a45a...`; no strategy rule or post-exit path is authorized.
+
+EXP-PLP-001 is complete and rejects H-014. Raw/pre-entry-controlled residual
+return rhos are -0.045/-0.073, with 1/8 and 0/8 positive LOYO signs; all four
+gates fail. Day10 is approximately zero and day20 is negative. H-013 is retained
+only as descriptive day-5 separation, not persistence or a hold signal.
 
 ## Recovered autonomous environment
 
@@ -145,9 +155,9 @@ mechanisms.
 
 ## Required next action
 
-Checkpoint EXP-PEL-001, then preregister one H-014 residual-return falsification:
-day-5 return versus return earned after day 5, with day10/day20 confirmation and
-duration/exit controls. It cannot authorize an exit, filter, or strategy change.
+Checkpoint EXP-PLP-001, then preregister the selected full-path excursion-order
+question using normalized MFE-versus-MAE timing with fixed raw/binary neighbors.
+It cannot authorize an exit, filter, or strategy change.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

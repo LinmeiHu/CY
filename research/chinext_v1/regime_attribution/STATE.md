@@ -2,11 +2,11 @@
 
 ## CURRENT_PHASE
 
-EXP-PEL-001_COMPLETE_DEEPEN — both preregistered pre-entry mechanism families
-remain rejected, while right-tail separation is observable by the day-5 landmark
-with explicit mechanical qualification. H-004 remains frozen for prospective
-validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions remain
-invalid. No strategy or production change is authorized.
+EXP-PLP-001_COMPLETE_REJECTED — right-tail separation is observable by day 5,
+but it does not imply incremental post-day-5 persistence after shared arithmetic
+is removed. H-004 remains frozen for prospective validation; EXP-P7-003 and all
+Phase 8/9/final strategy conclusions remain invalid. No strategy or production
+change is authorized.
 
 ## AUTONOMOUS_WORKSPACE_OWNERSHIP
 
@@ -426,6 +426,39 @@ authorization, a new experiment ID, and fresh isolated outputs.
   observable by day 5 but cannot be called an ex-ante edge or strategy signal.
 - Next falsification: test day-5 return against multiplicatively residual terminal
   return earned after day 5. This distinguishes persistence from shared arithmetic.
+
+## AUTONOMOUS_CYCLE_EXP_PLP_001_PREREGISTRATION
+
+- H-014 asks whether day-5 strength relates to return earned after day 5 after
+  removing its direct contribution to terminal return.
+- Frozen identity: `(1 + terminal) / (1 + landmark) - 1`; day 5 is primary and
+  the existing 295/192/91 day5/day10/day20 survivor samples are unchanged.
+- Primary gates require raw and pre-entry-controlled rho >=0.10 with >=7/8 LOYO
+  positive signs. Duration/exit mechanics, Top-4 P&L, severe losses, securities,
+  industries, blocks, and fixed later landmarks are explicit falsifications.
+- Residualization does not remove survival or exit-mechanism conditioning. No
+  hold, sell, exit, entry, ranking, sizing, or production action is tested.
+- Spec SHA `9b7b1c9b...`; six-input aggregate `11a1a45a...`.
+- Status: frozen before the first residual-return calculation.
+
+## AUTONOMOUS_CYCLE_EXP_PLP_001_RESULT
+
+- Multiplicative residual reconstruction error is <=`3.33e-16`; no post-exit
+  price, replay, counterfactual path, or entry/exit rule was used.
+- Day-5 return versus residual return: raw rho -0.045, within-year -0.026, and
+  1/8 positive LOYO. The pre-entry-controlled rho is -0.073 with 0/8 positive
+  LOYO; duration/exit-controlled rho is -0.288 with 0/8 positive LOYO.
+- All three independent blocks are slightly negative. Ex-Top-4 P&L rho is
+  -0.080; ex-severe-loss rho is -0.120; leave-one-security and leave-one-industry
+  positive fractions are both 0.0.
+- Fixed day10 residual rho is 0.019 (6/8 positive LOYO) while day20 is -0.258
+  (0/8 positive LOYO). All four preregistered gates fail.
+- Two executions are byte-identical. Output hashes: table `cde69cea...`, JSON
+  `5fb7c974...`, report `bd1c5849...`.
+- Scientific decision: `REJECT` H-014. H-013 remains valid only as landmark
+  separation; it is not evidence of return persistence or a hold signal.
+- Next frontier: full-path MFE/MAE ordering, selected in
+  `reports/frontier_ranking_after_plp_20260830.md`.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

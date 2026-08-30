@@ -195,6 +195,31 @@ byte-consistent with one another.
 - Result: day-5/extreme-winner rho is 0.292, within-year rho 0.183, and 8/8
   LOYO. The fixed controlled rho is 0.313 (8/8); duration/exit sensitivity is
   0.221; ex-Top-4 is 0.239. Day10/day20 survivor rhos are 0.345/0.504, both 8/8.
-- Status: `SUPPORTED_WITH_MECHANICAL_QUALIFICATION` by EXP-PEL-001. Right-tail
-  separation is observable by day 5, but day-5 return is part of terminal return
-  and landmark survival is governed by the frozen exit path.
+- Status: `SUPPORTED_AS_LANDMARK_SEPARATION_ONLY` by EXP-PEL-001 and EXP-PLP-001.
+  Right-tail separation is observable by day 5, but H-014 rejects incremental
+  post-day-5 persistence after removing shared arithmetic.
+
+### H-014 — post-landmark residual persistence
+
+- Question: does day-5 strength relate to return earned after day 5 once its
+  direct arithmetic contribution to terminal return is removed?
+- Mechanism: if extreme winners are persistent paths rather than merely outcomes
+  already separated by day 5, stronger early paths should continue earning higher
+  multiplicatively residual returns under the frozen strategy.
+- Prediction: day-5 return associates positively with residual return after day 5
+  after pre-entry controls; day10/day20 survivor samples retain the direction.
+- Required data: accepted EXP-PEL-001 table/result and accepted pre-entry controls.
+- Primary test: day-5 return versus `(1 + terminal) / (1 + day5) - 1` in all 295
+  fixed day-5 survivors, with within-year ranks and LOYO.
+- Falsification: exact reconstruction, pre-entry controls, duration/exit controls,
+  years, blocks, Top-4 P&L, severe-loss and extreme-winner removal, securities,
+  industries, and fixed day10/day20 survivor confirmations.
+- Metrics: raw and partial-rank Spearman-equivalent association; direction and
+  magnitude gates are frozen in `EXP-PLP-001_spec.json`.
+- Confounds: residualization removes shared arithmetic but not survival selection
+  or the strategy's frozen exit mechanics; no causal or hold-rule claim follows.
+- Result: raw rho -0.045, within-year -0.026, 1/8 positive LOYO; fixed
+  pre-entry-controlled rho -0.073 with 0/8 positive LOYO. Duration/exit control
+  is -0.288; day10 is 0.019 and day20 is -0.258. Every gate fails.
+- Status: `REJECTED` by EXP-PLP-001. Day-5 separation does not demonstrate
+  incremental post-day-5 persistence and cannot support a hold rule.

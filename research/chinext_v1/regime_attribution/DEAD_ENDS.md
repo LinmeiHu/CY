@@ -24,6 +24,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   neighboring-definition gates. Do not promote the apparently positive >=10-peer
   industry subset or 60-session stock-residual neighbor; both were fixed
   falsification views and contradict the primary/other neighbor evidence.
+- H-014's post-day-5 persistence mechanism is rejected by EXP-PLP-001. Day-5
+  right-tail separation does not survive removal of its direct arithmetic
+  contribution to terminal return: raw and controlled residual-return rhos are
+  negative and all gates fail. Do not reinterpret H-013 as a hold signal or search
+  alternate landmarks/residual formulas to rescue continuation.
 
 ## Invalid rather than rejected
 
