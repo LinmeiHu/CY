@@ -95,3 +95,9 @@ representation and rejects the exact selling-effort-absorption score. This is
 ordinary representation evidence, not a participant, process, usefulness, or
 terminal claim. No S1--S12 condition is active. Continue map-first with
 contemporaneous geometry against objective-crossing acceptance/rejection levels.
+
+MKT-MIN-AD-GEO-001 completes with full support but fails distinctness through
+early-block joint PIT reconstruction. This is an ordinary geometry result, not
+an S1--S12 condition. No active STOP exists. Continue with a map/data-contract-
+first future broad-market response study of the seven stable objective-crossing
+levels; strategy outcomes and CY-011 remain prohibited.

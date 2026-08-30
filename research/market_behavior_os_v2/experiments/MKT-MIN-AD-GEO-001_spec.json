@@ -1,0 +1,90 @@
+{
+  "experiment_id": "MKT-MIN-AD-GEO-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CROSS_FAMILY_GEOMETRY_ESTIMATES",
+  "question": "Is the accepted same-session rally-effort-distribution score a manifestation of full-market objective prior-high formation/closing state or a distinct completed-session coordinate?",
+  "research_role": "strategy-independent contemporaneous cross-family representation geometry",
+  "inputs": {
+    "geometry_map": {"path": "research/market_behavior_os_v2/RALLY_DISTRIBUTION_BREAKOUT_GEOMETRY_MAP.md", "sha256": "42a119157297473b3d0694b640cfa7613f0cde750b148b1e4232b32ad4dae774"},
+    "rally_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-001_panel.csv", "sha256": "e78856ea6e912d04c9356bf5d53d53c4098f33f8a5dae08c94a09341a0e80614"},
+    "rally_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-001_result.json", "sha256": "c5638d675e65c633eb55ee2211f6249b62660c094f95ea46ef2791ff6cf104f5"},
+    "breakout_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_panel.csv", "sha256": "99fd26ee6973c338e8df803e44434bc0ad6498dfefee518d9c51bc4c605d4d11"},
+    "breakout_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_result.json", "sha256": "5e626f4902456d148e07cb982c87abdb670b45474f2305ddcf9e21a6eea7fbab"},
+    "vwap_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_panel.csv", "sha256": "b08abaabfea3fff9c5de716963ad0cd079d54884c63ab994f2b56c1448cb10c2"},
+    "vwap_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_result.json", "sha256": "b09808a98c3f5625bbf82e5ef1d754fae979410ee0acb25c630e021b52a55884"}
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-03-06",
+    "date_end": "2023-12-29",
+    "expected_rows": 11336,
+    "expected_rows_per_group": 1417,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]}
+  },
+  "availability": {
+    "breakout_levels": "15:00 Asia/Shanghai",
+    "rally_and_vwap_scores": "15:30 Asia/Shanghai",
+    "joint_state": "15:30 Asia/Shanghai",
+    "same_session_action": "forbidden"
+  },
+  "target": {
+    "name": "rally_effort_distribution",
+    "pit": "rally_effort_distribution__median__aligned_mean",
+    "relative_to_all": "rally_effort_distribution__relative_to_all",
+    "relative_rank": "rally_effort_distribution__relative_view_rank_pct"
+  },
+  "breakout_roles": {
+    "formation_participation": "breakout_formation_participation20",
+    "formation_depth": "breakout_formation_depth20",
+    "closing_acceptance": "breakout_closing_acceptance20",
+    "closing_rejection_depth": "breakout_closing_rejection_depth20",
+    "formation_diffusion": "breakout_formation_diffusion20",
+    "formation_leadership_concentration": "breakout_formation_leadership_top3_20",
+    "stock_industry_divergence": "breakout_stock_industry_divergence20"
+  },
+  "fixed_alternatives": {
+    "open_close_return": {
+      "raw": "open_close_log_return__median",
+      "pit": "open_close_log_return__median__pit_3y_pct",
+      "relative_rank": "open_close_log_return__relative_view_rank_pct",
+      "relative_to_all": "construct same-date raw view minus ALL_A"
+    },
+    "vwap_defense_recovery": {
+      "pit": "vwap_defense_recovery__median__aligned_mean",
+      "relative_to_all": "vwap_defense_recovery__relative_to_all",
+      "relative_rank": "vwap_defense_recovery__relative_view_rank_pct"
+    }
+  },
+  "coordinates": {
+    "pit": "target causal-percentile score versus breakout trailing-756 percentile and fixed PIT alternatives",
+    "relative_to_all": "same-date view minus ALL_A for target, breakout roles, and alternatives; ALL_A excluded",
+    "relative_rank": "same-date governed-view ranks pooled within denominator"
+  },
+  "gates": {
+    "minimum_complete_observations_per_cell_block": 150,
+    "pairwise_redundancy_absolute_spearman": 0.85,
+    "joint_rank_reconstruction_median_adjusted_r2_maximum": 0.7,
+    "joint_rank_reconstruction_maximum_adjusted_r2": 0.85,
+    "all_blocks_coordinates_cells_required": true,
+    "two_byte_identical_runs": true,
+    "no_rescue": "No breakout role, block, coordinate, view, denominator, fixed-alternative deletion, threshold, state bin, or favorable subset may replace a failed exact geometry."
+  },
+  "prohibited_computations": [
+    "interaction product, threshold, state bin, resistance score, or latent composite",
+    "future market, stock, industry, volatility, or strategy state",
+    "strategy membership, signal, trade, fill, P&L, MFE, MAE, exit, duration, or outcome class",
+    "participant identity, distribution, resistance causality, future rejection, or reversal inference",
+    "raw security rows, raw minute rows, post-2023 data, or CY-011"
+  ],
+  "claim_boundary": "Passing establishes only contemporaneous nonredundancy; failing establishes only reconstruction under fixed completed-session geometry. Neither establishes participant distribution, resistance, future reversal, prediction, habitat, execution, payoff, or strategy usefulness.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-GEO-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-GEO-001_pairwise_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-GEO-001_joint_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-GEO-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-AD-GEO-001_geometry.md"
+  ]
+}

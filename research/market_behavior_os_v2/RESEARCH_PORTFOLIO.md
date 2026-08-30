@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | One rally-effort-distribution representation survives; its relation to objective resistance/acceptance is unknown | Map cross-family contemporaneous geometry without future labels |
+| EXPLORE | 35% | Seven objective-crossing levels are stable, but their strategy-independent future market response is unknown | Freeze response data contract before usefulness estimates |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Rally distribution remains strongly return-linked and may simply mirror objective closing rejection | Retain return/VWAP controls and all seven breakout levels in fixed geometry |
+| FALSIFY | 20% | Rally distribution fails direct-dimension geometry; breakout levels still lack economic challenge | Require nonoverlap, controls, both blocks, and neighboring response horizons |
 
 Mandatory checkpoint questions:
 

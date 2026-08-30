@@ -379,3 +379,12 @@ boundaries. Do not infer participants or reversal. The active frontier is
 contemporaneous geometry against all seven full-market objective-crossing
 levels, with special attention to closing rejection/acceptance and fixed
 return/VWAP alternatives. Use the later 15:30 availability and no future data.
+
+MKT-MIN-AD-GEO-001 finds no pairwise breakout-role redundancy but fails direct-
+dimension geometry because the mandatory nine-control block-A PIT adjusted R2
+is 0.756/0.761. Preserve rally distribution only as a stable manifestation; do
+not select block B/relative coordinates or attribute reconstruction specifically
+to resistance. The active frontier is a map/data-contract-first future broad-
+market response study of the seven stable objective-crossing levels, with exact
+1/3/5-session causal return/downside semantics, nonoverlap, fixed controls, and
+no strategy outcome access.

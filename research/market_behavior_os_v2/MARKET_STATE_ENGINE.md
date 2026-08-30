@@ -371,3 +371,15 @@ The engine does not interpret the coordinate as participant distribution,
 informed selling, resistance, future reversal, timing, usefulness, or strategy
 state. `selling_effort_absorption` is not added because its leave-one-component-
 out representation stability fails.
+
+## MKT-MIN-AD-GEO-001 boundary
+
+The engine does not retain rally-effort distribution as a distinct direct
+dimension. Individual objective-crossing roles are below pairwise redundancy,
+but the mandatory seven-role plus return/VWAP geometry reconstructs the score in
+early-block PIT above the fixed joint boundary. Later and relative coordinates
+cannot rescue the conjunctive failure.
+
+The stable MKT-MIN-AD-001 score remains a descriptive manifestation in the
+research ledger. The engine adds no resistance, distribution, reversal,
+interaction, predictor, habitat, usefulness, or strategy annotation.

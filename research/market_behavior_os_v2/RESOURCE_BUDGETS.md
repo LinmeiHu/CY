@@ -110,6 +110,11 @@ the bound MKT-MIN-SUPACC score panel. It reopens zero raw minute rows and
 completes in seconds with a compact CSV/result/report. Two executions are
 byte-identical; no resource expansion or new raw-data scan is authorized.
 
+MKT-MIN-AD-GEO-001 reads three compact bound panels and joins 11,336 exact
+completed-session keys. It reads zero raw security/minute rows, completes in
+seconds, and produces compact panel/audit/result/report artifacts. Two runs are
+byte-identical; no raw-data or resource expansion is authorized.
+
 MKT-BREAKOUT-DIFF-001 reuses the same exact staged daily coordinate and reads no
 minute partition. Both full representation runs complete in about 35 seconds,
 peak RSS remains below 2.63 GB, and five durable files total 13,845,802 bytes.

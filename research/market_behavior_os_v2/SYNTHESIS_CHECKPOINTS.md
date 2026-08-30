@@ -2011,3 +2011,54 @@ PIT/relative views, both blocks, all seven breakout levels, and fixed return/
 VWAP alternatives. Determine redundancy/latent geometry only. Do not read a
 future response, infer resistance causality, form a state threshold, or create a
 strategy.
+
+## SYNTH-MKT-045 — after rally-distribution/objective-crossing geometry
+
+### What was learned?
+
+All same-date support gates pass. Rally-effort distribution is not pairwise
+redundant with an individual objective-crossing role: closing acceptance and
+rejection depth are highest at absolute rho 0.744 and 0.732; formation and
+industry roles are at most 0.321.
+
+The mandatory full geometry fails distinctness in early PIT. Seven breakout
+roles plus open-close return and VWAP defense reconstruct the rally score at
+adjusted R2 0.756 median/0.761 maximum in block A. Block-B PIT is 0.677/0.693;
+relative-to-ALL_A and rank medians are only 0.108--0.190. The conjunctive early
+failure cannot be rescued.
+
+Because the fixed model includes ordinary alternatives, this does not prove the
+breakout roles caused the reconstruction. No incremental breakout model was
+preregistered, so none is selected after seeing the result. The rally score is
+stable representation evidence but not a direct engine dimension.
+
+### What market behavior are we still not studying?
+
+The seven stable objective-crossing levels still have no strategy-independent
+economic challenge: we do not know whether they precede broad cross-sectional
+return, downside response, or merely describe the current close. We also lack
+order flow, stock-setup interaction, execution, and capacity.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Contemporaneous geometry supplies no future reversal, breakout continuation,
+failure veto, or payoff asymmetry. No direct rally-distribution dimension is
+promoted. CHINEXT V1 remains unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** move to a data-contract-first future broad-market
+  response test for the stable objective-crossing levels.
+- **Existing-strategy archaeology:** no strategy outcomes have been reopened;
+  keep that separation.
+- **Strategy invention:** breakout continuation/reversal remains inactive until
+  a future market response survives and later transfers to an executable setup.
+
+### Research Director decision
+
+`MAP_OBJECTIVE_BREAKOUT_FUTURE_MARKET_RESPONSE_DATA_CONTRACT`. Define exact
+causal action-coordinate forward 1/3/5-session broad cross-sectional return and
+downside responses, response availability, nonoverlap phases, current trend/
+breadth/volatility controls, reused blocks, and neighboring-horizon no-rescue
+gates before reading any response. This is market behavior, not a trading
+backtest. Strategy outcomes, fills, post-2023 data, and CY-011 remain prohibited.

@@ -1335,3 +1335,26 @@ Two runs are byte-identical: panel `e78856ea...`, result `c5638d67...`, report
 against the seven full-market objective-crossing levels, particularly closing
 acceptance/rejection, with return/VWAP alternatives retained. Do not read future
 values or infer resistance, timing, payoff, or a rule.
+
+The cross-family map `42a11915...` and MKT-MIN-AD-GEO-001 spec `f5018ec2...`
+were frozen before correlations. All support gates pass at the later 15:30 joint
+availability. No breakout role is pairwise redundant with rally distribution:
+closing acceptance/rejection are highest at absolute rho 0.744/0.732 and all
+others are at most 0.321.
+
+The full fixed geometry nevertheless fails distinctness in block-A PIT. Nine
+mandatory controls (seven breakout levels, open-close return, VWAP defense)
+reconstruct the score at adjusted R2 0.756 median/0.761 maximum. Block-B PIT is
+0.677/0.693 and relative coordinates are low, but cannot rescue the conjunctive
+failure. The design did not preregister breakout incremental R2 beyond ordinary
+alternatives, so do not attribute reconstruction specifically to resistance.
+
+Two runs are byte-identical: panel `10410386...`, pairwise `8d167a9a...`, joint
+`e2ef27e2...`, result `3aea7e4e...`, report `34fbe7f3...`; three tests pass.
+Rally distribution remains representation evidence, not a direct engine
+dimension or future-reversal mechanism.
+
+Next build a data contract before any future-response estimate for the seven
+stable objective-crossing levels: exact causal-coordinate 1/3/5-session broad
+cross-sectional return/downside responses, nonoverlap, fixed controls/blocks,
+and no trading claim. Do not use strategy outcomes or CY-011.

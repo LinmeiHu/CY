@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-044_MAP_RALLY_DISTRIBUTION_BREAKOUT_GEOMETRY`
-- `CURRENT_PRIMARY_FRONTIER`: contemporaneous cross-family geometry of the accepted rally-effort-distribution score versus full-market objective-crossing acceptance/rejection levels
-- `SUPPORTING_FRONTIER`: ordinary return, volatility, activity, and accepted VWAP defense remain fixed alternatives; no temporal or usefulness claim
+- `CURRENT_PHASE`: `SYNTH-MKT-045_MAP_OBJECTIVE_BREAKOUT_FUTURE_MARKET_RESPONSE_CONTRACT`
+- `CURRENT_PRIMARY_FRONTIER`: data-contract-first strategy-independent future broad-market response to seven stable objective-crossing levels
+- `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1456,3 +1456,37 @@ manifestation of full-market objective-crossing closing rejection/acceptance or
 a distinct state coordinate. Freeze contemporaneous PIT/relative geometry and
 fixed return/VWAP controls before correlations; do not call either coordinate a
 future reversal, resistance process, habitat, or strategy.
+
+### MKT-MIN-AD-GEO-001 cross-family geometry
+
+The geometry map `42a11915...` and frozen spec `f5018ec2...` join the rally score
+and seven full-market objective-crossing levels at the later 15:30 availability.
+They preserve causal-PIT, view-minus-ALL_A, and governed-view-rank coordinates,
+both fixed historical blocks, and mandatory open-close return plus VWAP-defense
+alternatives.
+
+Every support gate passes. No individual breakout role reaches pairwise
+redundancy: maximum absolute rho is 0.744 for closing acceptance and 0.732 for
+closing rejection depth; all other roles are at most 0.321. The mandatory nine-
+control joint PIT geometry nevertheless reconstructs the rally score in block A
+at adjusted R2 0.756 median/0.761 maximum, above the 0.70 median boundary. Block
+B PIT is 0.677/0.693 and relative geometries are only 0.108--0.190 median, but
+they cannot rescue the conjunctive early-PIT failure.
+
+Because ordinary return and VWAP defense were fixed alongside all seven
+breakout roles, the result does not attribute reconstruction specifically to
+objective resistance; no post-result incremental model is allowed. The rally
+score remains a stable descriptive manifestation but is not retained as a
+distinct direct Market State Engine dimension.
+
+Two executions are byte-identical: panel `10410386...`, pairwise `8d167a9a...`,
+joint `e2ef27e2...`, result `3aea7e4e...`, report `34fbe7f3...`. Three focused
+tests pass. Future values, outcomes, strategies, raw security/minute rows,
+post-2023 data, and CY-011 remain unread.
+
+SYNTH-MKT-045 moves from completed representation/geometry to a data-contract-
+first future broad-market response question for the seven stable objective-
+crossing levels. Before estimating usefulness, freeze exact causal action-
+coordinate forward 1/3/5-session cross-sectional return and downside-response
+semantics, nonoverlap, controls, blocks, and no-trading claim. Do not use the
+rally score as a direct predictor, read strategy outcomes, or open CY-011.
