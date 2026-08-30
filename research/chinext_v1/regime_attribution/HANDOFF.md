@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-D5D-001_PREREGISTERED` on 2026-08-30.
+`EXP-D5D-002_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -28,13 +28,20 @@ VWAP-time component is not selected. Two runs are byte-identical; no strategy
 action is authorized. The next ranked independent question is a fixed day-5
 market-versus-stock decomposition of H-013, not another intraday feature search.
 
-EXP-D5D-001 now freezes H-022 before the first component/outcome association.
+EXP-D5D-001 froze H-022 before the first component/outcome association.
 All 295 accepted H-013 survivors map to exact 399102 entry opens and fifth-session
 closes; 284 have complete fixed controls, and exact log additivity reconstructs
 accepted action-safe returns within `1.11e-16`. Execute spec SHA `756b4605...`
 without changing the Day-5 landmark, 399102 proxy, decomposition, controls,
 neighbors, gates, or explanatory-only timing boundary. AVAILABLE_AT is Day-5
 15:30; no action, hold, or exit rule is authorized.
+
+EXP-D5D-001 then failed after in-memory calculations when its temporal gate
+compared structured block rank packets directly with zero. No estimate was
+printed or inspected and no output exists. Its spec/runner remain frozen.
+EXP-D5D-002 preserves every scientific element and corrects only extraction of
+the already-intended block `rho` scalars, with fresh identity and `_v2` outputs.
+Execute D5D-002 spec SHA `c0dde313...`; do not modify its contract.
 
 EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

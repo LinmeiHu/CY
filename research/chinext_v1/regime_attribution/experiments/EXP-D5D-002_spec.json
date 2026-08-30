@@ -1,0 +1,124 @@
+{
+  "experiment_id": "EXP-D5D-002",
+  "spec_id": "CHINEXT-V1-DAY5-MARKET-STOCK-DECOMPOSITION-CLEAN-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_VALID_COMPONENT_OUTCOME_TEST",
+  "created_on": "2026-08-30",
+  "hypothesis_id": "H-022",
+  "evidence_grade": "EXPLORATORY_HOLDING_PATH_COMPONENT_ATTRIBUTION",
+  "question": "Does stock-specific continuation, rather than contemporaneous 399102 movement, carry the already-known H-013 day-5 extreme-winner separation?",
+  "scientific_contract": {
+    "inherits_from": "EXP-D5D-001",
+    "spec_sha256": "756b4605ab00d21b6063c646e611b14da68ed32db9b9ffbdec1f0558238975ce",
+    "unchanged": [
+      "question",
+      "mechanism",
+      "prediction",
+      "population",
+      "eligibility",
+      "feature definitions",
+      "outcomes",
+      "controls",
+      "metrics",
+      "expected directions",
+      "LOYO and block tests",
+      "all gate thresholds",
+      "all falsification tests",
+      "decision mapping",
+      "timing and interpretation boundaries",
+      "all scientific inputs"
+    ]
+  },
+  "implementation_correction": "The D5D-001 block diagnostics are structured rank-association packets. D5D-002 extracts each packet's existing rho scalar before applying the unchanged temporal gate. No result was printed, inspected, or written by D5D-001.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_day5_market_stock_decomposition_v2.py",
+      "sha256": "f8bd145a172746d2f56b07bf9a1bb85fa0458de015a645ab457c3141f77746d3"
+    },
+    "runner_test": {
+      "path": "research/chinext_v1/regime_attribution/tests/test_day5_market_stock_decomposition_v2.py",
+      "sha256": "de1cf37ee575a76de7e98b0a2a25aa854f81bb47985c4969f05634464dd14caf"
+    },
+    "frozen_d5d001_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-D5D-001_spec.json",
+      "sha256": "756b4605ab00d21b6063c646e611b14da68ed32db9b9ffbdec1f0558238975ce"
+    },
+    "frozen_d5d001_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_day5_market_stock_decomposition.py",
+      "sha256": "8a68d68d87b764f214aa0ccf03e5eb9f31ecd932d0ccc925c77d97711c8e908a"
+    },
+    "frozen_d5d001_manifest": {
+      "path": "research/chinext_v1/regime_attribution/integrity/EXP-D5D-001_pre_execution.sha256",
+      "sha256": "7c2b0dc2745f9f13449806359783a6de7052f7eee6b42cabf50460cc8ad41cd3"
+    },
+    "d5d001_failure_record": {
+      "path": "research/chinext_v1/regime_attribution/reports/EXP-D5D-001_failure.md",
+      "sha256": "223215176171a07fa260cfb6292734de6afa51e7f864d9324963956c4356035e"
+    },
+    "accepted_day5_sample": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/post_entry_landmark_attribution.csv",
+      "sha256": "995693e6d5ee7b0190e13e8e1d620f1cfc62f784901d1e3e7acbed8b139ee9eb"
+    },
+    "accepted_h013_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/post_entry_landmark_emergence.json",
+      "sha256": "4ede7c09694b07dca228d085f5fc59c0c864b8f38eee9b9dbd288ca03b9564f6"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_h013_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-PEL-001_spec.json",
+      "sha256": "dd48b47b2c5eacc637b84c64602a74494c346059c679358a39a620a6bf83793b"
+    },
+    "accepted_h013_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_entry_landmark_emergence.py",
+      "sha256": "b95179c18b83e7ef4504dad8bc30a691f659a3fe2210d2f20896f1ba5495a750"
+    },
+    "rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "frozen_399102_anchor": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "exact_exchange_calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "sample": {
+    "cycles": 295,
+    "extreme_winners": 15,
+    "fixed_control_complete": 284,
+    "eligibility": "Exactly the accepted EXP-PEL-001 trades with non-null action-safe return_5d; unchanged from D5D-001.",
+    "blocks": {
+      "EXTENDED_2018_2021": 137,
+      "HOLDOUT_O0_2022_2023": 59,
+      "DEVELOPMENT_2024_2025": 99
+    }
+  },
+  "primary_feature": "Unchanged stock_specific_day5_excess = log1p(accepted return_5d) - log(399102 fifth-session close / entry-session open)",
+  "primary_endpoint": "Unchanged accepted round_trip_return >= 0.50 extreme_winner label",
+  "controls": "Exactly EXP-D5D-001 contemporaneous market, frozen pre-entry V1/market/breadth/beta/liquidity, and entry-year controls",
+  "gates": "Exactly every threshold and decision mapping frozen in EXP-D5D-001 spec SHA 756b4605...",
+  "available_at_timestamp": "DAY5_SESSION_15:30_ASIA_SHANGHAI",
+  "potential_action_timestamp": "NEXT_VALID_SESSION_OR_LATER_ONLY; EXPLANATORY_TEST_AUTHORIZES_NO_ACTION",
+  "permitted_differences_from_d5d001": [
+    "fresh EXP-D5D-002 identity",
+    "fresh _v2 output paths",
+    "explicit extraction of block rank packet rho scalars"
+  ],
+  "forbidden": [
+    "any scientific definition, population, outcome, control, metric, expected direction, gate, threshold, falsification, or interpretation change",
+    "inspection-driven code changes",
+    "alternate landmark or market proxy",
+    "entry, hold, exit, threshold, replay, or canonical V1 modification"
+  ],
+  "outputs": [
+    "artifacts/day5_market_stock_decomposition_v2.csv",
+    "artifacts/day5_market_stock_decomposition_v2.json",
+    "reports/day5_market_stock_decomposition_v2.md",
+    "reports/day5_market_stock_decomposition_v2_evidence_packet.md"
+  ]
+}

@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`EXECUTE_EXP_D5D_001_DAY5_MARKET_STOCK_DECOMPOSITION`.
+`EXECUTE_EXP_D5D_002_CLEAN_DAY5_MARKET_STOCK_DECOMPOSITION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,10 +66,9 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Execute EXP-D5D-001 exactly under spec SHA `756b4605...`. The accepted 295
-survivors map completely to the frozen 399102 entry open and exact fifth-session
-close; 284 retain all fixed entry controls, and component additivity passes to
-`1.11e-16`. Apply the frozen stock-specific, market-companion, LOYO, block,
-neighbor, tail, security, industry, and mechanical gates. Do not inspect a result
-and alter the decomposition, revisit intraday components, choose another
-landmark/index, retest H-018/H-019, or create a hold/exit rule.
+Execute clean EXP-D5D-002 exactly under spec SHA `c0dde313...`. EXP-D5D-001 is
+invalid after a block-packet type error and has no output or inspected estimate.
+D5D-002 changes only identity, output paths, and explicit extraction of the
+already-intended block `rho` scalars; all H-022 science remains frozen. Do not
+inspect a result and alter the decomposition, revisit intraday components, choose
+another landmark/index, retest H-018/H-019, or create a hold/exit rule.

@@ -2,9 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-D5D-001_PREREGISTERED — H-022 freezes the explanatory decomposition of the
-accepted H-013 day-5 return into exact 399102 and stock-specific components.
-No component/outcome association has been executed or inspected.
+EXP-D5D-002_PREREGISTERED — H-022 remains unresolved after EXP-D5D-001 failed on
+a block-packet type error without printed, inspected, or written estimates.
+D5D-002 preserves the explanatory decomposition exactly and corrects only scalar
+extraction for the frozen temporal gate.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
@@ -755,6 +756,23 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Spec SHA `756b4605ab00d21b6063c646e611b14da68ed32db9b9ffbdec1f0558238975ce`;
   runner SHA `8a68d68d87b764f214aa0ccf03e5eb9f31ecd932d0ccc925c77d97711c8e908a`.
   Status is frozen before the first component/outcome test.
+
+## AUTONOMOUS_CYCLE_EXP_D5D_001_FAILURE_AND_002_PREREGISTRATION
+
+- EXP-D5D-001 completed its input and in-memory analysis path through structured
+  block diagnostics, then raised `TypeError` because the frozen temporal gate
+  compared each rank-association packet directly with zero instead of using the
+  packet's scientifically intended `rho` field.
+- No estimate was printed or inspected. No D5D-001 table, JSON, report, or
+  evidence packet exists. Its pre-execution manifest remains exact, and its
+  frozen spec/runner are preserved unchanged.
+- EXP-D5D-002 inherits every H-022 scientific definition, population, outcome,
+  control, metric, direction, threshold, gate, falsification, timing boundary,
+  and input exactly. Only identity, `_v2` outputs, and explicit extraction of
+  the block packet `rho` scalars differ.
+- D5D-002 spec SHA `c0dde313bcef3d631f2ac11fed6bc3fec270e94fbb296612a913cad4b44ec3c6`;
+  runner SHA `f8bd145a172746d2f56b07bf9a1bb85fa0458de015a645ab457c3141f77746d3`.
+  Status is frozen before the first valid component/outcome test.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

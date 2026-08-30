@@ -79,5 +79,10 @@ Updated 2026-08-30 after resume integrity reconciliation.
   80 Phase-6 control-complete opportunities with the accepted 84 Phase-5
   opportunity20 cycles. It stopped before any scientific calculation and has no
   outputs. H-021 was cleanly executed only as EXP-IBQ-002.
+- EXP-D5D-001 is permanently invalid after its temporal-gate implementation
+  compared structured block rank packets directly with zero. It produced no
+  output and no estimate was printed or inspected. H-022 may be executed only as
+  fresh EXP-D5D-002 with the frozen science unchanged and explicit extraction of
+  the already-intended block `rho` scalar.
 
 Do not delete, overwrite, silently repair, or cite an invalid branch as evidence.

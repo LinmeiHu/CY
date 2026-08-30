@@ -445,6 +445,10 @@ byte-consistent with one another.
   survival, and overlap arithmetically with terminal return. AVAILABLE_AT is
   Day-5 15:30; any potential action is next valid session or later, but this
   explanatory experiment authorizes no action.
-- Status: `PREREGISTERED` as EXP-D5D-001 before the first component/outcome
-  association. No alternate landmark, market proxy, threshold, hold/exit rule,
-  replay, or strategy modification is authorized.
+- Status: `PREREGISTERED` as clean EXP-D5D-002 before the first valid
+  component/outcome association. EXP-D5D-001 is invalid after its structured
+  block packet was compared directly with zero; no estimate was printed,
+  inspected, or written. D5D-002 preserves the science exactly and changes only
+  identity, output paths, and extraction of each already-intended block `rho`.
+  No alternate landmark, market proxy, threshold, hold/exit rule, replay, or
+  strategy modification is authorized.
