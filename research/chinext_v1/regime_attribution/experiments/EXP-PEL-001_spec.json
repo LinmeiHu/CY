@@ -1,0 +1,101 @@
+{
+  "experiment_id": "EXP-PEL-001",
+  "spec_id": "CHINEXT-V1-POSTENTRY-LANDMARK-RIGHTTAIL-EMERGENCE-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_LANDMARK_OUTCOME_JOIN",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_HOLDING_PATH_MECHANISM",
+  "hypothesis_id": "H-013",
+  "question": "After two independent pre-entry mechanisms failed, does V1's extreme-winner tail become distinguishable by the fifth observable holding-path session?",
+  "mechanism": "Rare winners may be emergent trend-persistence events rather than entries identifiable by their pre-entry state. Early continuation would locate when the tail begins to separate under the frozen strategy.",
+  "prediction": "Among trades observable through the fifth held session, day-5 close return is positively and stably associated with the fixed >=50% extreme-winner outcome after pre-entry controls; day-10 and day-20 survivor samples retain the direction.",
+  "interpretation_boundary": "Day-5 return is part of the future holding path and terminal return. The experiment can locate emergence but cannot establish a causal, ex-ante, or tradable signal. Each landmark conditions on survival under the frozen exit logic.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_entry_landmark_emergence.py",
+      "sha256": "b95179c18b83e7ef4504dad8bc30a691f659a3fe2210d2f20896f1ba5495a750"
+    },
+    "yearly_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_control_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    }
+  },
+  "sample": {
+    "all_completed_cycles": 399,
+    "primary": "return_5d is non-null under the frozen Phase 1 observable holding-path convention",
+    "expected_available": {
+      "return_5d": 295,
+      "return_10d": 192,
+      "return_20d": 91
+    },
+    "minimum_extreme_winners": 8,
+    "missingness": "No imputation, carry-forward, post-exit price, or counterfactual return. Day-10/day-20 use their own survivor samples and cannot replace day-5."
+  },
+  "primary_predictor": "Frozen Phase 1 return_5d: close return on the fifth observable held-path session when the trade remains observable.",
+  "primary_endpoint": "round_trip_return >= 0.50",
+  "secondary_endpoints": [
+    "round_trip_return >= 0.20",
+    "false breakout",
+    "severe loss",
+    "MFE",
+    "round-trip return"
+  ],
+  "fixed_controls": {
+    "continuous_ranked": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "post_outcome_sensitivity_only": ["holding_trading_days", "canonical_exit_reason"]
+  },
+  "gates": {
+    "raw": "day-5 rho >= 0.20, positive within-year rank rho, and positive in >=7/8 LOYO estimates",
+    "controlled": "partial-rank rho >= 0.20 and positive in >=7/8 controlled LOYO estimates",
+    "neighbors": "day-10 and day-20 survivor-sample rhos are positive with >=6/8 LOYO positive signs; they cannot replace day-5",
+    "falsification": "positive ex-global-Top-4 P&L, holding-duration/exit partial rho >=0.10, and >=80% positive leave-one-extreme-security and leave-one-industry omissions",
+    "decision": {
+      "DEEPEN": "all raw, controlled, neighbor, and falsification gates pass",
+      "REFINE": "raw and controlled pass but neighbor or mechanical falsification fails",
+      "PIVOT": "raw passes but controlled fails",
+      "REJECT": "raw gate fails"
+    }
+  },
+  "falsification": [
+    "within-entry-year ranks and eight LOYO omissions",
+    "three independent baseline blocks",
+    "day-10 and day-20 survivor landmarks",
+    "fixed pre-entry V1, market, breadth, beta, and liquidity controls",
+    "global Top-4 realized-PnL removal",
+    "leave-one-extreme-security and leave-one-industry omissions",
+    "holding duration and exit reason as explicit post-outcome mechanical sensitivity",
+    "zero post-exit prices, counterfactual returns, replays, or missing-value substitution"
+  ],
+  "forbidden": [
+    "calling day-5 return an entry predictor, causal edge, or deployable signal",
+    "choosing a different landmark after results",
+    "imputing returns after an actual exit",
+    "exit, hold, stop, entry, ranking, exposure, or production modification",
+    "breadth historical redesign or invalid Phase 7/8/9 use",
+    "untouched OOS or PIT-A claim"
+  ],
+  "outputs": [
+    "artifacts/post_entry_landmark_attribution.csv",
+    "artifacts/post_entry_landmark_emergence.json",
+    "reports/post_entry_landmark_emergence.md"
+  ]
+}

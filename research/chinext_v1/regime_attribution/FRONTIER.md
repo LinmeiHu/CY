@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H012_PIVOT_TO_POSTENTRY_LANDMARK_PATH`.
+`DEEPEN_H013_TEST_POST_DAY5_PERSISTENCE`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,15 +49,14 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-When, after entry, does V1's right tail become distinguishable from ordinary
-trades? The next minimum experiment should use only frozen observable holding
-paths, condition explicitly on landmark availability, and test whether early
-continuation adds information beyond pre-entry state, holding duration, and exit
-lineage. It must remain mechanism description, not an exit or filter design.
+EXP-PEL-001 establishes that right-tail separation is visible by day 5 in the
+frozen survivor sample. The unresolved question is whether day-5 continuation
+relates to multiplicatively residual return after day 5, or merely shares
+arithmetic with terminal return. This remains path attribution, not an exit rule.
 
 ## Exact next action
 
-Persist/checkpoint EXP-ICD-001, then audit fixed 5/10/20-session landmark-path
-coverage without reading outcome values. If adequate, preregister one early-path
-emergence hypothesis with explicit survivor-selection and mechanical-overlap
-limitations. EXP-P7-003 must never be silently repaired, rerun, or overwritten.
+Persist/checkpoint EXP-PEL-001, then freeze one residual-return experiment using
+`(1 + terminal_return) / (1 + landmark_return) - 1`, with day 5 primary and
+day10/day20 survivor confirmations. EXP-P7-003 must never be silently repaired,
+rerun, or overwritten.

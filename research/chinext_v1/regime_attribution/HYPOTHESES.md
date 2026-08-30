@@ -172,3 +172,29 @@ byte-consistent with one another.
   with negative mean/median and >=10-peer definitions. Neither component passes.
 - Status: `REJECTED` by EXP-ICD-001. V1's extreme-winner tail is not explained by
   this preregistered entry-signal industry-versus-stock RS decomposition.
+
+### H-013 — post-entry landmark emergence
+
+- Question: after two pre-entry mechanisms failed, is the rare right tail already
+  distinguishable by the fifth observable held-path session?
+- Mechanism: extreme winners are emergent persistence events under the frozen
+  strategy rather than entries separable by the tested pre-entry states.
+- Prediction: day-5 close return associates positively with the fixed >=50%
+  outcome after fixed pre-entry controls; day-10/day-20 survivor samples retain
+  the direction.
+- Required data: accepted Phase 1 return5/10/20 with no post-exit imputation;
+  accepted pre-entry controls, outcomes, duration, and exit lineage.
+- Primary test: day 5 only, with within-year ranks, LOYO, and a fixed residual
+  design.
+- Falsification: later landmark survivors, blocks, Top-4 P&L, security, industry,
+  holding duration, exit reason, and missingness/mechanical-overlap audit.
+- Metrics: extreme-winner rank association; winner20, false-breakout, severe-loss,
+  MFE, and terminal return are secondary.
+- Confounds: day-5 return is part of terminal outcome; landmark survival is
+  conditioned by the frozen exit rule; no causal or ex-ante claim is possible.
+- Result: day-5/extreme-winner rho is 0.292, within-year rho 0.183, and 8/8
+  LOYO. The fixed controlled rho is 0.313 (8/8); duration/exit sensitivity is
+  0.221; ex-Top-4 is 0.239. Day10/day20 survivor rhos are 0.345/0.504, both 8/8.
+- Status: `SUPPORTED_WITH_MECHANICAL_QUALIFICATION` by EXP-PEL-001. Right-tail
+  separation is observable by day 5, but day-5 return is part of terminal return
+  and landmark survival is governed by the frozen exit path.

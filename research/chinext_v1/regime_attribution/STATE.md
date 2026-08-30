@@ -2,11 +2,11 @@
 
 ## CURRENT_PHASE
 
-EXP-ICD-001_COMPLETE_REJECTED — both preregistered pre-entry mechanism families,
-H-011 demand/compression and H-012 industry-versus-stock strength, are rejected.
-H-004 remains frozen for prospective validation; EXP-P7-003 and all Phase
-8/9/final strategy conclusions remain invalid. No strategy or production change
-is authorized.
+EXP-PEL-001_COMPLETE_DEEPEN — both preregistered pre-entry mechanism families
+remain rejected, while right-tail separation is observable by the day-5 landmark
+with explicit mechanical qualification. H-004 remains frozen for prospective
+validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions remain
+invalid. No strategy or production change is authorized.
 
 ## AUTONOMOUS_WORKSPACE_OWNERSHIP
 
@@ -395,6 +395,37 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Next frontier: post-entry landmark-path emergence. Pre-entry states have now
   failed two independent mechanistic designs; determine when the rare winners
   first separate after entry without using post-exit data or proposing an exit.
+
+## AUTONOMOUS_CYCLE_EXP_PEL_001_PREREGISTRATION
+
+- Availability-only counts: day5/day10/day20 = 295/192/91; no path values or
+  terminal outcomes inspected before freeze.
+- Day 5 is the sole primary landmark. Later horizons are survivor-sample
+  confirmations and cannot replace it.
+- Fixed controls: pre-entry V1, market, breadth, beta, liquidity, and year state.
+  Duration and exit reason are a separate mechanical sensitivity.
+- Interpretation is strictly descriptive: early return is part of the eventual
+  outcome and is unavailable ex ante at entry.
+- Spec: `experiments/EXP-PEL-001_spec.json`, SHA `dd48b47b...`.
+- Status: frozen before the first landmark/outcome join.
+
+## AUTONOMOUS_CYCLE_EXP_PEL_001_RESULT
+
+- Fixed primary sample: 295 cycles, including all 15 extreme winners and all 39
+  winner20 cycles. Later survivor samples are 192/91 at day10/day20.
+- Day-5/extreme-winner rho 0.292; within-year 0.183; 8/8 LOYO. Fixed controlled
+  rho 0.313 with 8/8; holding-duration/exit sensitivity 0.221; ex-Top-4 0.239;
+  leave-one-security and leave-one-industry positive fractions both 1.0.
+- Day10/day20 survivor rhos 0.345/0.504, both 8/8. Extreme winners have median
+  day-5 return 26.1% versus -1.5% ordinary losers and -6.8% severe losers.
+- Entry-RS benchmark rho is only 0.135 in the same landmark sample.
+- Integrity: four-input plus spec aggregate `3256e829...` unchanged; zero causal,
+  post-exit, counterfactual, or replay failures; two executions byte-identical.
+- Output hashes: table `995693e6...`, JSON `4ede7c09...`, report `24372385...`.
+- Scientific decision: `DEEPEN`, with mechanical qualification. Separation is
+  observable by day 5 but cannot be called an ex-ante edge or strategy signal.
+- Next falsification: test day-5 return against multiplicatively residual terminal
+  return earned after day 5. This distinguishes persistence from shared arithmetic.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

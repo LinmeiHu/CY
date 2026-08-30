@@ -98,3 +98,10 @@ have at least one valid peer and the fixed >=5-peer rule admits 296 entries in
 both horizons (136/194 EXTENDED, 67/94 HOLDOUT, 93/111 DEVELOPMENT). Entry-date
 eligible-universe industry mapping coverage is 100%; peer count has minimum 0,
 median 11, maximum 62. No outcome was read before freezing the >=5 rule.
+
+EXP-PEL-001's availability-only audit reads only null/not-null status from the
+already accepted Phase 1 path columns: 295/399 trades have return5, 192/399 have
+return10, and 91/399 have return20. Counts by EXTENDED/HOLDOUT/DEVELOPMENT are
+137/59/99, 92/35/65, and 47/10/34 respectively. All 399 signal dates precede
+execution dates. No path value or terminal outcome was inspected before day 5
+was frozen as the sole primary landmark.
