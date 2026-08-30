@@ -1233,3 +1233,44 @@ limits/suspensions, missing bars, and market-wide support-test eligibility.
 Fail closed if the prior level and current minute path cannot be expressed in
 one causal corporate-action coordinate. Do not read future payoff or strategy
 outcomes.
+
+## SYNTH-MKT-029 — after objective-support reused-sample invalidation
+
+### What was learned?
+
+The causal daily coordinate has ample market-wide support, but the prior minute-
+readiness cohort is not a valid complete-history audit cohort for 40-session
+objective levels. All source hashes and 11,336 population cells pass. Thirty-
+seven reused sessions fail before minute access: 17 recent listings and 20
+windows crossing invalid or blocking corporate-action history. The first is
+`603232.SH` on 2019-06-10. No coordinate descriptor or output was accepted.
+
+### What market behavior are we still not studying?
+
+Objective cross-day support tests, penetration, recovery speed/volume, repeated-
+test strengthening, and resistance remain unrepresented. Accumulation/
+distribution, cross-asset state, and portable multi-strategy habitats also
+remain open. The invalid sample does not reduce the information value of exact
+support-coordinate feasibility because thousands of eligible sequences exist in
+every frozen year/view.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A data-contract failure cannot imply a pullback or reversal strategy.
+Same-session VWAP defense remains descriptive and dynamically unsupported.
+
+### Parallel-track awareness
+
+- **Market research:** refine only the audit sample semantics; preserve the
+  causal action coordinate, fixed levels, dates, views, and no-rescue gates.
+- **Existing-strategy archaeology:** no strategy membership or outcome was read.
+- **Strategy invention:** pullback/reversal stays inactive pending objective
+  representation and temporal evidence.
+
+### Research Director decision
+
+`REFINE_SAMPLE_CONTRACT` via MKT-SUPPORT-DATA-002 map-first. Retain the six
+fixed five-session June blocks and four governed views, but select ten complete
+CY-006 coordinate-eligible symbol sequences per year/view by frozen hash before
+any QD-004 behavior. Preserve the independent five-action/year challenge, full
+population audit, exact coordinate/minute/lineage gates, and claim boundaries.

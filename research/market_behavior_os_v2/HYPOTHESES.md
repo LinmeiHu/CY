@@ -431,7 +431,7 @@
 
 ## MKT-H-028 — objective cross-day support coordinate feasibility
 
-- Status: `FROZEN_DATA_AUDIT_PENDING`.
+- Status: `SAMPLE_CONTRACT_INVALID_COORDINATE_FAMILY_UNRESOLVED`.
 - Candidate coordinate: prior 10/20/40 causal adjusted daily lows through t-1
   compared with raw t minute prices mapped by the completed current cash/share
   action scale.
@@ -441,3 +441,9 @@
   daily population floors.
 - Boundary: coordinate feasibility is not support, defense, recovery,
   accumulation, future payoff, habitat, timing, execution, or a strategy.
+- Result: all input hashes and full-population gates pass, but 37 reused cohort
+  sessions fail the frozen 40-step eligibility rule before minute access. The
+  first is `603232.SH`/2019-06-10 across a blocking hard-invalid action row;
+  17 failures are short listing histories and 20 are invalid action histories.
+  The exact reused-sample design is invalid. It does not reject the coordinate
+  or support-defense hypothesis family.

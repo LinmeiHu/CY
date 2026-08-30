@@ -204,3 +204,11 @@ MKT-SUPPORT-DATA-001 is frozen under spec `3d86cb04...`. It audits the accepted
 prior-low coordinates, 241 raw bars, daily/minute close identity, limit state,
 snapshot lineage, and full daily population. Execute fail-closed; no support or
 recovery representation exists merely because a coordinate is computable.
+
+MKT-SUPPORT-DATA-001 fails before minute access: 37 reused cohort sessions do
+not meet its own complete 40-step coordinate gate. Seventeen lack listing
+history and twenty span invalid/blocking action history. All hashes and full
+population cells pass. Do not replace rows inside 001 or weaken the gate. The
+active refinement is a separately frozen retry that retains the six fixed
+five-session date blocks and four views but hash-selects only CY-006-complete
+coordinate sequences before any minute behavior is read.

@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-001_FROZEN_AUDIT_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-001_INVALID_SAMPLE_CONTRACT_SYNTHESIS`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -821,6 +821,24 @@ the accepted 1,200 minute sessions plus five hash-selected supported actions in
 each 2018--2023 year, and a full daily market-population audit. Execute without
 outcomes or CY-011; any coordinate, grid, action, lineage, or population failure
 fails closed.
+
+MKT-SUPPORT-DATA-001 failed closed before any raw minute row was read. All
+governed partition content hashes and all 11,336 daily population cells passed;
+the minimum population margin was 426. The first target failure was
+`603232.SH` on 2019-06-10. Its 40-session window contains the blocking,
+hard-invalid 2019-05-30 action row, leaving 40/41 valid history rows and 38/40
+valid coordinate steps.
+
+The frozen accepted 1,200-session reuse cohort contains 37 ineligible unique
+sessions: 17 have fewer than 41 rows since listing and 20 span an invalid or
+blocking action-history row. They occur in 2019/2021/2022/2023 with counts
+5/5/7/20 across eight symbols. The no-replacement gate therefore invalidates
+001 before minute-coordinate construction. No sample, coordinate, population,
+result, or report output was accepted. This rejects the frozen sample contract,
+not the causal action coordinate, objective support representation, or broader
+support-defense family. SYNTH-MKT-029 requires a map-first semantic retry whose
+fixed five-session sample is selected from CY-006 coordinate eligibility alone,
+before and without minute behavior.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

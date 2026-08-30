@@ -13,5 +13,7 @@ Required-scale minute representation and the later signed/directional-process
 tests completed without an active blocker. MKT-INDRS-001 also completed with
 seven minimal representation roles and no correctness disagreement. No result
 establishes economic usefulness or authorizes a strategy rule or CY-011.
-Continue MKT-SUPPORT-DATA-001 frozen fail-closed coordinate audit; reinstate a STOP only if an
-S1-S12 boundary is actually encountered.
+MKT-SUPPORT-DATA-001 failed its reused-sample gate before minute access, which is
+an ordinary invalid experiment rather than an S1-S12 condition. Continue with a
+separately frozen CY-006-eligible five-session sample retry; reinstate a STOP only
+if an S1-S12 boundary is actually encountered.

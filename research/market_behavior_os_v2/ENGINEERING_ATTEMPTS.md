@@ -202,6 +202,20 @@ or used for a research decision.
 MKT-VOL-TRANS-004 changes only the result hash alias and output identity. The
 scientific and final control specs, every estimate, and every gate are unchanged.
 
+## MKT-SUPPORT-DATA-001 — invalid reused-sample coordinate coverage
+
+The runner verified every frozen partition content hash and completed the full
+daily population audit before target construction. All 11,336 population cells
+pass with a minimum margin of 426. Target coverage then stopped on
+`603232.SH`/2019-06-10 before QD-004 access: a blocking hard-invalid 2019-05-30
+action row leaves 40/41 valid history rows and 38/40 valid coordinate steps.
+
+The reused accepted cohort contains 37 such failures: 17 short listing histories
+and 20 invalid/blocking action-history windows. The runner emitted no frozen
+output. This is a scientific sample-contract mismatch, not an adapter or action-
+coordinate implementation defect. Do not alter 001; freeze any eligibility-
+aware sample as a new semantic experiment.
+
 ## MKT-STYLE-001 — invalid cumulative size-rank denominator
 
 The first implementation used an ordered window for both row number and count.

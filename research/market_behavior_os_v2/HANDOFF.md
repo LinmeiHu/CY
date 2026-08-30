@@ -855,3 +855,20 @@ disagreement, time travel, and population shortfalls all fail closed. Add exactl
 five hash-selected supported action sessions per year without inspecting minute
 behavior. The output is data feasibility only, available at 15:30; no support,
 recovery, accumulation, payoff, strategy, or CY-011 claim is allowed.
+
+MKT-SUPPORT-DATA-001 is invalid before minute-coordinate construction. Full
+partition hashes passed first, as did all 11,336 full-population cells with a
+minimum margin of 426. The first target failure is `603232.SH` on 2019-06-10:
+the blocking/hard-invalid 2019-05-30 action row leaves only 40/41 valid history
+rows and 38/40 valid coordinate steps.
+
+Thirty-seven of the reused accepted sessions are coordinate-ineligible. Seventeen
+are recent listings with fewer than 41 available rows; twenty span an invalid or
+blocking action row. The failures cover eight symbols and occur 5/5/7/20 times
+in 2019/2021/2022/2023. The frozen no-replacement rule stopped the audit before
+reading QD-004 rows, so no output artifact or scientific estimate exists. This
+is a sample-contract failure, not evidence against the causal coordinate or
+support-defense family. The exact retry must preselect complete five-session
+cohorts from CY-006 coordinate eligibility only, preserving fixed dates/views,
+hash ordering, action challenges, full-population gates, and all no-rescue
+boundaries before any minute access.
