@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`EXECUTE_CONTRACT_EXACT_EXP_CBC_003_FOR_UNCHANGED_H025`.
+`STOP_FRONTIER_EXHAUSTED_PENDING_NEW_DATA_OR_EXPLICIT_LINEAGE_GOVERNANCE`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -69,7 +69,8 @@ requiring locked prospective validation.
 
 ## Exact next action
 
-Execute CBC-003 only after validating exact four-key LOYO behavior, all bindings,
-and all 81 CY-011 files. Preserve CBC-001/002 as invalid. Do not materialize
-2024-2026, screen features, tune weights, alter gates, create thresholds, or
-modify V1. Disclose CBC-002 inspection in the final evidence classification.
+No autonomous experiment is authorized next. Wait for future untouched data to
+validate frozen H-004/H-023, or obtain explicit human authorization for a new
+outcome-blind original-breakout lineage/replay contract. Do not open locked
+CY-011 validation for rejected H-025, promote its positive migration component,
+or continue searching consumed features.

@@ -69,6 +69,13 @@ Updated 2026-08-30 after resume integrity reconciliation.
   0.025/0.005, Day-5 is negative, HOLDOUT is negative, and all five gates fail.
   Do not search alternate early landmarks, residual identities, stop thresholds,
   or exit rules. H-023 is retained only as descriptive loss localization.
+- H-025's fixed concentrated-retained-base/upward-migration chip composite is
+  rejected by contract-exact CBC-003. Raw/controlled MFE rhos are -0.016/-0.085,
+  both blocks are negative, non-false-breakout is negative, and every gate fails.
+  Upward cost migration alone is positive (0.168), but it is one post-result
+  component inside a failed composite and cannot be promoted. Do not screen other
+  CY-011 fields, tune weights, create chip thresholds, or open locked 2024-2026
+  validation to rescue the family.
 
 ## Invalid rather than rejected
 

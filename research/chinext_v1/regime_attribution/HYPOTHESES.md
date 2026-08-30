@@ -549,7 +549,10 @@ byte-consistent with one another.
 - Confounds: PIT-B rather than strict PIT-A; already-consumed outcomes; only four
   discovery years; chip features are available at signal-day 15:30 and cannot
   fill inside that bar.
-- Status: `PREREGISTERED_UNRESOLVED_EXP-CBC-003`. CBC-001/002 remain invalid.
-  CBC-003 freezes exact 2020-2023 omissions and n>=120 under unchanged science,
-  while disclosing CBC-002 output inspection; spec SHA `0bb54c00...`. No
-  scientific element may change.
+- Result: raw/within-year MFE rhos are -0.016/-0.032 with 2/4 positive LOYO;
+  controlled rho is -0.085 with 0/4. I70/opportunity20/non-false-breakout rhos
+  are 0.014/0.033/-0.045. Both blocks are negative. Component rhos are
+  -0.023/-0.111/+0.168 for narrow I90/retention/upward migration.
+- Status: `REJECTED` by valid CBC-003 with disclosed CBC-002 contamination. All
+  gates fail. Do not promote the one positive component post hoc, search other
+  CY-011 fields, or access locked validation for this rejected composite.

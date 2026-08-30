@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-CBC-003_PREREGISTERED_H025_UNRESOLVED` on 2026-08-30.
+`AUTONOMOUS_STOP_FRONTIER_EXHAUSTED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -120,6 +120,18 @@ below the pre-audited omission sizes 155/159/183/163. It binds and discloses the
 inspected invalid CBC-002 output, changes no H-025 science, uses fresh `_v3`
 outputs, and leaves locked 2024-2026 unopened. Spec/runner SHAs are
 `0bb54c00...`/`7d549d37...`.
+
+CBC-003 validly rejects H-025: raw/controlled MFE rhos -0.016/-0.085, exact LOYO
+2/4 and 0/4, both blocks negative, and every gate fails. I70/opportunity/non-false
+neighbors are 0.014/0.033/-0.045. Upward migration alone is positive but cannot
+be promoted from a failed composite. Two runs are byte-identical; 2024-2026 was
+not opened.
+
+The autonomous run stops at a genuine governance boundary. No independent
+high-information historical question remains without post-hoc mining. H-004
+needs future untouched data; original lifecycle breakout research needs a new
+outcome-blind lineage/replay contract. Exact human action: wait for future data or
+explicitly authorize that lineage program. Do not unlock CY-011 for rejected H-025.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

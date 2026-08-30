@@ -2,9 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-CBC-003_PREREGISTERED — H-025 remains unresolved. CBC-001/002 are invalid;
-CBC-003 freezes contract-exact 2020-2023 omissions and n>=120 with fresh outputs.
-Locked 2024-2026 validation remains unopened.
+AUTONOMOUS_STOP_FRONTIER_EXHAUSTED — CBC-003 validly rejects H-025. CBC-001/002
+remain invalid. No high-information executable frontier remains without new
+future data, locked-holdout access, material lineage construction, or post-hoc
+feature mining. Locked 2024-2026 remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -1004,6 +1005,41 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Spec SHA `0bb54c007bf7662ba8aab45179e37eb91e22fc0e3f79c663630855b503ad675a`;
   runner SHA `7d549d37cfc948c946513c31081bf090f643188b9cd80e1e2350730a28e57494`.
   Status is frozen before the contract-exact association.
+
+## AUTONOMOUS_CYCLE_EXP_CBC_003_RESULT
+
+- Exact raw/controlled MFE rhos are -0.016/-0.085 with 2/4 and 0/4 positive
+  discovery-year omissions. Within-year rho is -0.032.
+- I70, opportunity20, and non-false-breakout neighbors are 0.014/0.033/-0.045
+  with 2/4, 3/4, and 0/4 positive LOYO.
+- EXTENDED and HOLDOUT block rhos are -0.061/-0.016. Narrow-I90, retention, and
+  upward-migration components are -0.023/-0.111/+0.168; component coherence fails.
+- Duration/exit rho is 0.047, ex-Top4 is -0.015, ex-severe is 0.010, and security/
+  industry positive omission fractions are 0.000/0.037. Every frozen gate fails.
+- Decision: `REJECT` / `NO_STABLE_CHIP_BASE_COHERENCE_OPPORTUNITY_EFFECT`.
+  CBC-002 output inspection is disclosed, but definitions/gates predate it and
+  CBC-003 uses exact contract mechanics. Evidence remains exploratory PIT-B.
+- Two CBC-003 executions are byte-identical. Output hashes: table `46aa2963...`,
+  JSON `d55475ae...`, report `7f0f4b45...`, packet `c793beae...`.
+- No 2024-2026 row was materialized. Do not promote upward migration alone,
+  screen chip fields, create rules, or unlock validation for the rejected family.
+
+## AUTONOMOUS_STOP_2026_08_30
+
+- H-004 remains `PROSPECTIVE_VALIDATION_PENDING` and cannot be validated without
+  future untouched observations.
+- H-023 remains descriptive Day-3 severe-loss localization; H-024 rejects
+  incremental post-Day3 failure, so no stop/exit experiment is justified.
+- Original lifecycle breakout timing/support is not retained for all accepted
+  cycles. Reconstructing it requires a material new lineage/replay contract.
+- Remaining pre-entry RS, chip-component, canonical-score, and dispersion ideas
+  are already observed neighbors or arise from failed families; promoting them
+  would be post-hoc mining on consumed outcomes.
+- Therefore the autonomous run stops successfully at a scientific/governance
+  boundary. Exact next human decision: wait for future untouched H-004/H-023
+  observations, or explicitly authorize a new outcome-blind original-breakout
+  lineage program with a new research contract. Do not unlock CY-011 validation
+  for rejected H-025.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
