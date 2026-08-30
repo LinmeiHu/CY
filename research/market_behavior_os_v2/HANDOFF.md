@@ -321,3 +321,10 @@ path as descriptive only. SYNTH-MKT-014 moves to MKT-INDRS-001 map-first:
 industry leadership/diffusion/persistence/rotation plus stock-versus-industry
 and industry-versus-market relative strength, without reproducing the failed
 MA20 industry-diffusion representation or reading outcomes/CY-011.
+
+MKT-INDRS-001 is frozen before construction under spec `e49f2098...`. It binds
+the exact six CY-006 partitions and accepted 120-step action-aware core, causal
+industry membership, five-member/80%/ten-industry gates, eleven distinct roles,
+exact leave-one-out industry medians, fixed neighbors, three coordinate
+families, external breadth controls, and serial determinism. No MA20 diffusion
+clone, outcome, strategy field, or CY-011 may enter.

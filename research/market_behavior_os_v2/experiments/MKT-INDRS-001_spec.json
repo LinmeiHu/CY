@@ -1,0 +1,116 @@
+{
+  "experiment_id": "MKT-INDRS-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Which same-session industry leadership, diffusion, persistence, rotation, and stock/industry relative-strength roles are portable and nonredundant?",
+  "research_role": "strategy-independent industry/relative-strength representation before usefulness",
+  "input": {
+    "asset_id": "CY-006",
+    "registry_path": "configs/data_asset_registry.json",
+    "source_root": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "selected_partition_sha256": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "expected_rows": 6155390,
+    "source_start": "2018-01-02",
+    "source_end": "2023-12-29"
+  },
+  "universe": {
+    "causal_core": "exact MKT-BRTH-002 120-step action-aware core",
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "minimum_view_counts": {"ALL_A": 1000, "SH_A": 400, "SZ_A": 400, "CHINEXT_BOARD": 200},
+    "industry_mapping_minimum": 0.80,
+    "industry_member_minimum": 5,
+    "industry_count_minimum": 10,
+    "common_industries_for_rotation_minimum": 10
+  },
+  "pit": {
+    "decision_at": "completed official close at 15:00 Asia/Shanghai",
+    "record_gate": "available_at <= decision_at",
+    "industry_gate": "industry_valid, nonempty, source_notice_date <= trade_date; no backfill",
+    "first_actionable_time": "later causally valid session; experiment creates no action",
+    "grade": "bounded PIT-B"
+  },
+  "roles": {
+    "industry_positive_participation_1d": ["industry_positive_participation_median", "industry_positive_participation_mean", "industry_positive_participation_majority"],
+    "industry_return_depth_1d": ["industry_return_depth_median_of_medians", "industry_return_depth_mean_of_medians", "industry_return_depth_median_of_means"],
+    "industry_return_dispersion_1d": ["industry_return_dispersion_iqr", "industry_return_dispersion_p90_p10", "industry_return_dispersion_mad"],
+    "industry_market_rs_depth20": ["industry_market_rs_depth_median", "industry_market_rs_depth_mean", "industry_market_rs_depth_p60"],
+    "industry_leadership_concentration20": ["industry_leadership_positive_mass_top3", "industry_leadership_positive_mass_top5", "industry_leadership_positive_mass_top10"],
+    "winner_industry_diffusion20": ["winner_industry_entropy_top10", "winner_industry_entropy_top5", "winner_industry_entropy_top20"],
+    "industry_leadership_persistence20": ["industry_leadership_jaccard_top5_lag5", "industry_leadership_jaccard_top3_lag5", "industry_leadership_jaccard_top10_lag5"],
+    "industry_rank_rotation20": ["industry_rank_rotation_spearman_lag5", "industry_rank_rotation_kendall_lag5", "industry_rank_rotation_displacement_lag5"],
+    "stock_industry_rs_dispersion20": ["stock_industry_rs_dispersion_iqr", "stock_industry_rs_dispersion_p90_p10", "stock_industry_rs_dispersion_mad"],
+    "stock_industry_rs_tail_balance20": ["stock_industry_rs_tail_balance_p90_p10", "stock_industry_rs_tail_balance_p80_p20", "stock_industry_rs_tail_balance_p95_p05"],
+    "stock_industry_rs_concentration20": ["stock_industry_rs_positive_mass_top10", "stock_industry_rs_positive_mass_top5", "stock_industry_rs_positive_mass_top20"]
+  },
+  "leave_one_out": {
+    "primary_context": "exact other-member median 20-session return in current causal industry/view/denominator/date",
+    "minimum_total_members": 5,
+    "inclusive_context_forbidden": true
+  },
+  "coordinates": {
+    "absolute": true,
+    "pit_expanding_percentile": "minimum 504 observations",
+    "pit_3y_percentile": "trailing 756 including current; minimum 504",
+    "pit_3y_robust_z": "trailing 756 median/MAD; minimum 504; zero MAD missing",
+    "relative": "same-date view minus ALL_A and governed-view rank"
+  },
+  "gates": {
+    "raw_coverage": 0.95,
+    "worst_median_neighbor_spearman": 0.70,
+    "all_status_vs_non_st_median_spearman": 0.90,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "pit_and_relative_expected_coverage": 0.95,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "external_redundancy_absolute_spearman": 0.85,
+    "minimal_panel_priority": [
+      "industry_positive_participation_1d",
+      "industry_return_depth_1d",
+      "industry_return_dispersion_1d",
+      "industry_market_rs_depth20",
+      "industry_leadership_concentration20",
+      "winner_industry_diffusion20",
+      "industry_leadership_persistence20",
+      "industry_rank_rotation20",
+      "stock_industry_rs_dispersion20",
+      "stock_industry_rs_tail_balance20",
+      "stock_industry_rs_concentration20"
+    ],
+    "no_rescue": "No favorable neighbor, horizon, view, denominator, year, industry subset, inclusive industry context, or related failed breadth role replaces a failed primary."
+  },
+  "external_controls": {
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "fields": ["breadth_net_new_high_low60", "leadership_positive_mass_top10"]
+    }
+  },
+  "forbidden_fields": [
+    "MKT-BRTH industry_diffusion_ma10/20/60 or breadth_industry_divergence fields",
+    "future return or post-decision observation",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "unregistered industry/index/style membership or current-survivor substitution",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes portable industry/relative-strength state coordinates only, not future persistence, stock selection alpha, sector rotation usefulness, habitat fitness, causality, or a strategy rule.",
+  "engineering": {
+    "duckdb_threads": 1,
+    "determinism": "two byte-identical runs required"
+  },
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-INDRS-001_representation.md"
+  ]
+}

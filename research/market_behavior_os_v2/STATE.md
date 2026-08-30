@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-001_MAP_NEXT`
+- `CURRENT_PHASE`: `MKT-INDRS-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent industry leadership, rotation, and relative-strength representation
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -363,3 +363,12 @@ usefulness all fail or remain unestablished. SYNTH-MKT-014 shifts the primary
 frontier to the higher-EIV, underexplored industry leadership/rotation and
 stock-versus-industry relative-strength family instead of further minute-path
 rescue.
+
+The MKT-INDRS-001 data contract, Representation Map, and spec `e49f2098...` are
+frozen before construction. Eleven roles span same-day equal-industry
+participation/depth/dispersion, industry-vs-market depth, industry leadership
+concentration, winner-industry diffusion, persistence, rank rotation, and three
+exact leave-one-out stock/industry residual roles. The rejected MA20 industry
+diffusion/divergence fields are prohibited. PIT membership, five-member/80%/
+ten-industry gates, common-label rotation, absolute/PIT/relative coordinates,
+neighbors, redundancy, compression, and no-usefulness boundaries are fixed.
