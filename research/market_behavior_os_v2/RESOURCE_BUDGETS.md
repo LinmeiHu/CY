@@ -75,6 +75,12 @@ durable artifacts. Any temporal representation that reuses this sample must
 retain the 1.5-GiB daily limit, exact block batching, reference-equivalence gate,
 and release-between-block behavior; it may not expand the raw data envelope.
 
+MKT-SUPPORT-DYN-001 reuses the immutable 004 coordinate artifact and block-pruned
+raw reads, so no daily spill is recreated. Each final run completes in about 50
+seconds, reads exactly 2,307,575 rows, and writes about 15.2 MB. The inherited
+3-GiB RSS, 8-GiB system-headroom, 20-GiB read, 100-MiB durable-output, and
+ten-minute ceilings all pass.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

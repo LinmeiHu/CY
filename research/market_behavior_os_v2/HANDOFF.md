@@ -1063,3 +1063,23 @@ passing a process gate is not support defense, usefulness, habitat, or a rule.
 Rolling prior-low definitions are not claimed to be one unchanged price level.
 PIT historical and promotable relative coordinates remain unavailable, and
 OHLCV cannot support buyer/seller or absorption language.
+
+MKT-SUPPORT-DYN-001 completes reproducibly. Both absolute endpoint-rate roles
+pass shape, L10/L40, auction, and external geometry, but neither has a common
+direction. Speed has zero block medians; activity has -0.144/-0.014 medians with
+near-even signs and mixed years. The raw timing/activity rho -0.380 vanishes to
+-0.005 after fixed controls and reverses by block (-0.010/+0.025), rejecting a
+shared process under the frozen gate.
+
+Completion state is not estimable at its arm floor: first-R/F is 276/39, block F
+is 21/18, and annual F counts include 2/2/3. Risk-difference intervals cross
+zero and annual signs split. Only 16/192 conditional cells contain five
+trajectories, so no relative state is promoted. Five scalar cases and two full
+runs reproduce exactly; hashes are session `7484e947...`, trajectory
+`80d6c63c...`, transition `0bddbd5e...`, stability `b1c321ab...`, result
+`dfde86c9...`, report `66fff13e...`.
+
+SYNTH-MKT-035 selects one final semantic falsifier before leaving this temporal
+branch: freeze a count-only MKT-SUPPORT-LVL-DATA-001 audit of whether all tested
+days in a sequence share the exact same binary L20 coordinate. No tolerance,
+near-touch band, direction estimate, process rescue, payoff, or strategy field.

@@ -252,3 +252,15 @@ and 269 have at least two completed recoveries, with every fixed year/block floo
 passing. This changes feasibility only. The engine still emits no recovery
 direction, defense, deterioration, transition, habitat, timing, or strategy
 state until a separately frozen temporal map survives its process gates.
+
+MKT-SUPPORT-DYN-001 adds two completed-history coordinates: recovery-speed
+endpoint rate and recovery-volume-intensity endpoint rate. Both survive fixed
+shape, L10/L40, auction, and generic-path geometry. They have no causal
+historical or promotable relative coordinates, and only 100/269 sequences have
+three or more recovered days.
+
+The engine adds no common direction or support-defense annotation. Speed block
+medians are zero; activity directions are near-even and mixed by year. Raw
+timing/activity coupling is control-explained, and completion-state dependence
+is below its first-F support floor with nonportable intervals/signs. The exact
+unchanged-level feasibility audit remains before any physical support process.

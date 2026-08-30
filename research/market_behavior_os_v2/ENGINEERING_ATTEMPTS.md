@@ -308,3 +308,17 @@ decisions matched. No multithreaded artifact was accepted.
 The final implementation fixes DuckDB to one thread, preserving full precision
 instead of rounding away the discrepancy. Two subsequent complete executions
 are byte-identical; no representation formula or gate changed.
+
+## MKT-SUPPORT-DYN-001 — invalid default CSV float parsing
+
+The first execution failed the parent descriptor-equivalence gate on two exact
+boundary sessions. The first difference was 600162.SH on 2020-04-16: parent
+`tested=False`, reconstructed `tested=True`. The default parser changed stored
+coordinate scale `0.32403374497482107` down by one ULP, making mapped minimum low
+equal rather than strictly greater than L20.
+
+The correction uses pandas `float_precision="round_trip"` for the immutable
+17-significant-digit coordinate artifact. A focused regression binds that exact
+session and preserves `2 * scale > L20`. No price tolerance, rounding, level,
+test rule, row, or scientific gate changed. Five focused tests and two complete
+final executions pass byte-identically.

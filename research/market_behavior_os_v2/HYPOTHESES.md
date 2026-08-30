@@ -510,7 +510,7 @@
 
 ## MKT-H-032 — objective-recovery temporal dynamics
 
-- Status: `FROZEN_UNTESTED`.
+- Status: `REPRESENTATIONS_SUPPORTED_COMMON_PROCESS_UNSUPPORTED`.
 - Hypothesis: within an adequate outcome-blind sample, recovery-speed and/or
   recovery-period activity endpoint rates may form stable absolute temporal
   coordinates across shapes, neighboring levels, auction treatment, blocks,
@@ -525,3 +525,9 @@
 - Boundary: rolling objective levels are not one fixed price; activity is not
   buyer initiative. No future value, support defense, accumulation, prediction,
   habitat, timing, execution, strategy usefulness, or CY-011 enters.
+- Result: both endpoint-rate representations pass all fixed quality gates, but
+  no common direction survives. Raw speed/activity coupling is negative in both
+  blocks and all years, then vanishes and reverses after the preregistered
+  controls. Completion state fails the first-F support floor and its observed
+  risk differences are not portable. Retain the coordinates; reject the exact
+  common-direction, residual-coupling, and transition-process hypotheses.

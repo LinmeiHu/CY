@@ -115,6 +115,8 @@
 | `reports/MKT-SUPPORT-DYN-DATA-004_audit.md` | Reproducible 315/269 repeated-test/recovery adequacy result; no process estimate |
 | `OBJECTIVE_SUPPORT_TEMPORAL_DYNAMICS_MAP.md` | Frozen recovery timing/activity progression, coupling, transition, and compression architecture |
 | `experiments/MKT-SUPPORT-DYN-001_spec.json` | Frozen endpoint/shape/level/auction/process/transition falsification contract |
+| `scripts/run_mkt_support_dyn_001.py` | Passing two-role temporal representation and failed common-process execution |
+| `reports/MKT-SUPPORT-DYN-001_dynamics.md` | Stable recovery coordinates; no common direction, residual coupling, or supported completion transition |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

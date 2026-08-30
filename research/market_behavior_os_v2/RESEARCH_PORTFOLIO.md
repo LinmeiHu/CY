@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Recovery speed and recovery-volume intensity survive external geometry; the outcome-blind temporal sample and map are frozen | Execute MKT-SUPPORT-DYN-001 without outcome fields |
+| EXPLORE | 35% | Two recovery trajectories are representationally stable but show no common direction or residual coupling | Freeze exact unchanged-L20 count feasibility before deciding whether to leave the branch |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 10% | Two recovery observations could diversify pullback/reversal mechanisms only if a repeated process survives | Keep archetypes inactive until temporal recurrence/failure evidence |
+| INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Three objective-level roles collapse into ordinary daily/minute geometry | Preserve compression; require block/year/neighbor stability before calling either survivor a repeated process |
+| FALSIFY | 20% | Stable rolling-level coordinates do not imply one defended price | Audit exact physical-level identity without tolerance or favorable subgroup direction |
 
 Mandatory checkpoint questions:
 

@@ -1506,3 +1506,58 @@ speed progression, recovery-volume-intensity progression, their coupling, and
 recovered/failed/restored transitions. Require fixed L10/L20/L40, auction,
 shape, block, year, support, generic-path, and no-rescue gates. Do not infer
 buyer identity from OHLCV or read return, payoff, timing, strategy, or CY-011.
+
+## SYNTH-MKT-035 — after objective-recovery temporal dynamics
+
+### What was learned?
+
+Recovery-speed and recovery-volume-intensity endpoint rates are stable absolute
+completed-history coordinates. Both survive OLS/Theil--Sen, L10/L40, auction,
+and fixed generic-path challenges in both temporal blocks. This is narrower
+than a rich five-day trajectory: 169/269 eligible sequences have exactly two
+recovered days and only 100 have at least three.
+
+Neither coordinate has a portable common direction. Speed has zero block
+medians and intervals touching zero. Activity signs are near-even, intervals
+cross zero, and annual medians split. The raw negative timing/activity relation
+is present in both blocks and all years but disappears after fixed controls,
+rejecting a shared latent recovery process under the frozen gate.
+
+Recovery-completion state is not supported: only 39 sequences begin F, block B
+has 18, several years have 2--3, all bootstrap intervals cross zero, and annual
+signs split. Sparse relative cells and differing descriptive views cannot rescue
+the pooled result.
+
+### What market behavior are we still not studying?
+
+The rolling L20 definition may change between tested days, so actual repeated
+testing of one unchanged physical price remains unmeasured. Same-day multiple-
+episode dynamics, resistance symmetry, support-to-resistance role reversal,
+breakout acceptance/rejection, causal historical normalization, full-population
+relative recovery, industry diffusion, future outcomes, and execution remain
+unexplained.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Two stable descriptors without common direction, residual coupling, or a
+supported transition do not imply pullback continuation, reversal, or support
+defense. No prototype, CHINEXT change, or combination is authorized.
+
+### Parallel-track awareness
+
+- **Market research:** retain two temporal coordinates but test the final
+  unchanged-level semantic prerequisite before leaving this branch.
+- **Existing-strategy archaeology:** no strategy, candidate, return, or outcome
+  field was read; CHINEXT evidence is unchanged.
+- **Strategy invention:** no active prototype; the raw coupling is explicitly
+  control-explained and cannot seed a combination.
+
+### Research Director decision
+
+`REFINE_EXACT_PHYSICAL_LEVEL_FEASIBILITY_ONCE`. Freeze a count-only
+MKT-SUPPORT-LVL-DATA-001 audit before inspecting level identity. Require exact
+binary L20 equality across every tested day; no cent rounding, tolerance,
+near-touch band, favorable subset direction, process estimate, outcome, or
+sample enlargement. If support fails, deprioritize this temporal branch. If it
+passes, a same-level map may be considered as exploratory discovery only because
+the broad temporal sample is already consumed.

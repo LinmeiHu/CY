@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
+- `CURRENT_PHASE`: `SYNTH-MKT-035_COMPLETE_MKT-SUPPORT-LVL-DATA-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: exact unchanged-price-level feasibility after rolling-level recovery process failure
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -1068,6 +1068,38 @@ that rolling Lh semantics do not imply one unchanged physical level, OHLCV does
 not identify buyer/seller initiative, PIT historical normalization is absent,
 and the ten-symbol conditional cells cannot support a promoted relative state.
 Execute without future/outcome/strategy fields or CY-011; no gate may be rescued.
+
+MKT-SUPPORT-DYN-001 completes as
+`COMPLETE_REPRESENTATION_PASS_NO_PROCESS`. Recovery-speed and recovery-volume-
+intensity endpoint rates both pass exact population, OLS/Theil--Sen, L10/L40,
+auction, and fixed generic-path gates. Only 100/269 trajectories have at least
+three recovered days; the other 169 are valid two-point rates, so the result is
+not described as rich five-point shape evidence.
+
+Neither role has a common direction. Recovery-speed medians are zero in both
+blocks and both bootstrap intervals include zero. Recovery-activity medians are
+-0.144/-0.014, but nonzero sign fractions are only 0.533/0.506, both intervals
+include zero, and annual medians split 3/6. Raw timing/activity coupling is
+-0.380 (-0.485/-0.304 blocks and negative in 6/6 years), but disappears after
+the frozen controls: -0.005 globally and -0.010/+0.025 by block. No shared
+recovery process survives.
+
+Completion-state dependence is unsupported: only 39 first-F sequences exist
+versus the frozen 50, block B has 18 versus 20, and three years have only 2/2/3
+first-F cases. The apparent global risk difference 0.115 has block values
+0.065/0.155, bootstrap intervals crossing zero, and only 3/6 annual sign
+agreement. Descriptive relative support is also inadequate: only 16/192 cells
+have five trajectories and the maximum is seven.
+
+Five independent scalar cases reproduce exactly; the parent-coordinate boundary
+audit passes after using round-trip float parsing. Two final executions are byte-
+identical: session `7484e947...`, trajectory `80d6c63c...`, transition
+`0bddbd5e...`, stability `b1c321ab...`, result `dfde86c9...`, report
+`66fff13e...`; five focused tests pass. No future/outcome/strategy field or
+CY-011 was read. SYNTH-MKT-035 retains two completed-history coordinates, emits
+no support-defense state, and selects exact unchanged-L20 feasibility as the
+final semantic falsifier before frontier deprioritization or deeper same-level
+research.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

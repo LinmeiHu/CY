@@ -298,3 +298,10 @@ rate primary, OLS/Theil--Sen shapes, L10/L40 and auction neighbors, generic-path
 compression, directional/coupling gates, and separately supported R/F endpoint
 transition. Do not call rolling levels the same physical support, use sparse
 relative cells, fabricate PIT history, or read any future/outcome field.
+
+MKT-SUPPORT-DYN-001 retains both absolute temporal coordinates but rejects a
+common directional process, residual timing/activity coupling, and supported
+completion-state dependence. The final in-frontier semantic question is whether
+repeated tested days share one exact physical L20 at all. Freeze count-only
+MKT-SUPPORT-LVL-DATA-001 before inspecting level identity; exact binary equality,
+no tolerance, no direction estimate, and no process rescue.

@@ -74,6 +74,12 @@ trigger, habitat, or execution result has been estimated. Pullback continuation,
 reversal, and support defense remain `WAIT_FOR_MARKET_MECHANISM` while temporal
 representations are frozen and falsified.
 
+MKT-SUPPORT-DYN-001 does not activate those archetypes. Stable recovery timing
+and activity trajectory coordinates show no common direction, residual coupling,
+or supported recovery-completion transition. No outcome, trigger, habitat, or
+execution evidence exists. Pullback continuation, reversal, and support defense
+remain `WAIT_FOR_MARKET_MECHANISM` during the final exact-level feasibility audit.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a
