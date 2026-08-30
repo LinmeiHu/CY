@@ -284,3 +284,20 @@
   a supported temporal state edge, not yet a fully falsified rotation mechanism.
   Delayed-block and neighboring-definition replication are required before any
   archetype, return, timing, or strategy claim.
+
+## MKT-H-018 — rotation-persistence falsification
+
+- Status: `BROAD_MECHANISM_FAILS_FALSIFICATION_TWO_OF_THREE_PASS`.
+- Failed required replication: delayed t+10 Spearman rotation, whose underlying
+  t+5-to-t+10 block shares no rank endpoint with current t-5-to-t rotation, has
+  raw partial rho 0.023 in consumed block A and -0.111 in consumed block B. PIT
+  is 0.052/-0.071, phase sampling 0.051/-0.089, and both relative coordinate
+  medians are below 0.05.
+- Passing adjacent definitions: Kendall is 0.262/0.212 raw and displacement is
+  0.266/0.207; both pass every fixed coordinate/sign/support gate. These
+  adjacent blocks still share the boundary rank snapshot and cannot rescue the
+  delayed failure under the preregistered all-required rule.
+- Boundary: evidence is consumed exploratory falsification, not confirmation.
+  Immediate adjacent clustering remains descriptive, but no durable rotation
+  process, future return, selection alpha, habitat, timing, or strategy
+  archetype is established. No further horizon/definition rescue is allowed.

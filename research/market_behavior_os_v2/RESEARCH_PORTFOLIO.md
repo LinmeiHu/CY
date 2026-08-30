@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 20% | Immediate rotation persistence survives; both diffusion cross-edges fail | Preserve the one edge without broadening the search |
+| EXPLORE | 35% | Rotation fails delayed falsification; residual tail balance/concentration remain distinct but temporally unknown | Map their state dynamics with fixed broad controls |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 10% | Rotation/relative-strength representations exist but no recurring temporal process survives | Keep industry rotation and RS leadership in search space only |
+| INVENT | 5% | No industry process has survived robust falsification | Keep residual relative-strength mechanisms in search space only |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 35% | Immediate persistence may be shared-endpoint or 20-session-rank geometry | Freeze delayed-block plus Kendall/displacement replication; all must pass without new horizon search |
+| FALSIFY | 25% | Delayed rotation falsification is complete and negative | Preserve the rejection; do not search another rotation horizon |
 
 Mandatory checkpoint questions:
 

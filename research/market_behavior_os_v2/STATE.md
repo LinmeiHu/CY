@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-ROT-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: falsification of immediate industry rank-rotation persistence through delayed and alternate-definition replication
-- `SUPPORTING_FRONTIER`: accepted Kendall/displacement rotation definitions and the same fixed current controls
+- `CURRENT_PHASE`: `MKT-INDRS-TAIL-DYN-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: temporal meaning of distinct leave-one-out stock/industry residual tail balance and concentration
+- `SUPPORTING_FRONTIER`: frozen industry/relative-strength panel and accepted broad risk/concentration controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -486,3 +486,17 @@ support, and nonoverlap architecture. Because both blocks and these hypotheses
 are now post-result, all evidence is explicitly
 `CONSUMED_EXPLORATORY_FALSIFICATION_NOT_CONFIRMATION`; post-2023 data and the
 locked holdout remain unopened.
+
+MKT-INDRS-ROT-001 is complete and the all-required mechanism fails. Delayed
+t+10 Spearman persistence with no shared rank endpoint is only 0.023 in block A
+and reverses to -0.111 in block B; PIT is 0.052/-0.071 and phase-sampled raw is
+0.051/-0.089. Both governed relative effects remain below 0.05. Adjacent
+Kendall and displacement replications pass every gate at raw 0.262/0.212 and
+0.266/0.207, but they cannot rescue the delayed failure.
+
+Two executions are byte-identical: panel `37043081...`, result `fe536b7e...`,
+report `744727e9...`; six focused tests pass. Immediate adjacent rotation
+clustering remains descriptive evidence, but no broadly persistent rotation
+process, usefulness claim, or archetype survives. SYNTH-MKT-018 pivots away
+from rotation-window rescue to a map-first temporal study of the two distinct
+leave-one-out residual-tail coordinates. No S1-S12 STOP is active.

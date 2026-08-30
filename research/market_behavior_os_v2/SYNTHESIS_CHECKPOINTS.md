@@ -760,3 +760,49 @@ underlying t+5-to-t+10 rotation shares no rank endpoint with the current block,
 and (b) next-block persistence under the already-accepted Kendall and mean-rank-
 displacement definitions. Require all fixed replications across the same
 blocks/coordinates/controls; do not add horizons, outcomes, or CY-011.
+
+## SYNTH-MKT-018 — after rotation-persistence falsification
+
+### What was learned?
+
+Immediate adjacent rotation clustering is not a robust broad persistence
+process. The delayed Spearman response whose rank endpoints do not overlap the
+current block is only 0.023 raw in consumed block A and reverses to -0.111 in
+block B; PIT and phase estimates also reverse and fail. Adjacent Kendall and
+mean-rank-displacement replications pass at roughly 0.21-0.27 raw, but both
+still share the boundary rank snapshot. The preregistered all-required rule
+rejects the mechanism rather than selecting those favorable definitions.
+
+### What market behavior are we still not studying?
+
+The accepted leave-one-out residual tail-balance and concentration coordinates
+have no temporal meaning: we do not know whether stock leadership relative to
+industry context persists, diffuses, concentrates, or reverses beyond broad
+risk/concentration state. Size/style leadership, objective support/acceptance,
+accumulation/distribution, cross-asset state, and portable multi-strategy
+habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The only industry temporal survivor fails its required non-shared-endpoint
+falsification. Adjacent clustering supplies neither future return direction nor
+selection, trigger, execution, exit, capacity, or habitat evidence. An industry-
+rotation strategy archetype is therefore downgraded rather than activated.
+
+### Parallel-track awareness
+
+- **Market research:** pivot from rotation rescue to residual-tail state
+  dynamics using the two distinct accepted coordinates.
+- **Existing-strategy archaeology:** no strategy field or return was read; seed
+  strategies remain unchanged.
+- **Strategy invention:** no archetype is active; residual relative-strength
+  structure remains hypothesis search space only.
+
+### Research Director decision
+
+`PIVOT_WITHIN_FAMILY` to MKT-INDRS-TAIL-DYN-001 map-first. Freeze a minimal
+outcome-blind temporal graph for residual tail balance and residual
+concentration after economically matched broad risk/concentration controls.
+Define response semantics, current-state controls, blocks, overlap, effect/sign
+gates, and no-rescue rules before shifting future values. Do not read returns,
+strategy outcomes, failed roles, post-2023 data, or CY-011.

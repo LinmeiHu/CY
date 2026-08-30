@@ -474,3 +474,19 @@ hypotheses were generated afterward. Label every estimate
 `CONSUMED_EXPLORATORY_FALSIFICATION_NOT_CONFIRMATION`; a pass still requires
 independent future time. Do not read post-2023 data, market/stock returns,
 strategy fields, failed roles, or CY-011.
+
+## MKT-INDRS-ROT-001 result and next frontier
+
+The all-required falsification fails. Delayed non-shared-endpoint Spearman has
+raw partial rho 0.023/-0.111, PIT 0.052/-0.071, and phase 0.051/-0.089 in the
+two consumed blocks. Adjacent Kendall and displacement pass at raw 0.262/0.212
+and 0.266/0.207, but cannot rescue the delayed reversal. Two runs are
+byte-identical: panel `37043081...`, result `fe536b7e...`, report `744727e9...`.
+
+Do not add another rotation horizon, block, definition, control deletion, or
+favorable subset. Immediate adjacent clustering remains descriptive; the broad
+rotation-persistence mechanism and any rotation archetype are not established.
+Next continue map-first with MKT-INDRS-TAIL-DYN-001 on residual tail balance and
+concentration. Freeze a small state-only graph and its controls before shifting
+future values. Market/stock returns, strategies, post-2023 data, and CY-011
+remain prohibited.

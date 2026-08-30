@@ -49,6 +49,7 @@
 | `experiments/MKT-INDRS-DYN-001_spec.json` | Frozen next-block leadership-state response and untouched-confirmation contract |
 | `reports/MKT-INDRS-DYN-001_dynamics.md` | Immediate rotation persistence and two rejected diffusion cross-edges |
 | `experiments/MKT-INDRS-ROT-001_spec.json` | Frozen three-replication consumed-falsification contract; not fresh confirmation |
+| `reports/MKT-INDRS-ROT-001_falsification.md` | Delayed non-shared-endpoint failure and adjacent Kendall/displacement passes |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |
