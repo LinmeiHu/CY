@@ -194,3 +194,11 @@ engine retains five direct coordinates: industry return dispersion, winner-
 industry diffusion, rank rotation, residual tail balance, and residual
 concentration. No transition or future annotation is attached; representation
 distinctness is not temporal meaning.
+
+MKT-INDRS-DYN-001 adds one provisional temporal annotation: five-session rank
+rotation persists into the immediately following block across raw, PIT,
+relative, temporal, group-sign, and phase-zero gates. Winner diffusion neither
+replicates as a precursor to rotation nor as a response to rotation. The engine
+retains no diffusion/rotation cross-process. Rotation persistence remains
+provisional until delayed non-shared-endpoint and alternate-definition
+falsification; it has no return or strategy meaning.

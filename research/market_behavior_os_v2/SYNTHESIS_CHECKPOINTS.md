@@ -709,3 +709,54 @@ and their next nonoverlapping five-session state, incremental to role-specific
 current controls. Freeze temporal blocks, overlap handling, effect/sign gates,
 and response availability before constructing future values. Do not access
 market returns, stock selection, strategy outcomes, failed roles, or CY-011.
+
+## SYNTH-MKT-017 — after industry leadership temporal-response test
+
+### What was learned?
+
+Industry rank rotation persists into the immediately adjacent five-session
+block. The partial effect survives fixed broad leadership, co-movement, and
+volatility-change controls; 2019-2021 discovery, untouched 2022-2023
+confirmation, causal PIT, governed-view relative coordinates, all eight group
+signs, and every-fifth-session estimates all pass. Raw partial rho is 0.250 and
+0.221; phase-zero is 0.220 and 0.161.
+
+Winner diffusion does not provide a stable precursor to rotation: its 0.246
+discovery effect collapses to 0.008 confirmation. Rotation also does not
+stably broaden or narrow future winner diffusion: the edge changes from 0.033
+to -0.235. These cross-edges are rejected without selecting the favorable
+block or coordinate.
+
+### What market behavior are we still not studying?
+
+The surviving rotation edge may partly reflect the common rank snapshot between
+adjacent blocks or the smooth 20-session return-rank construction. We have not
+tested a delayed non-shared-endpoint block or the accepted Kendall/displacement
+rotation definitions. Residual tail dynamics, size/style rotation, objective
+support/acceptance, accumulation/distribution, and multi-strategy habitats also
+remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+Not yet. Rotation clustering is a recurring state edge but has no direction of
+industry or stock return, no selection rule, trigger, execution, exit, capacity,
+or habitat result. It justifies focused falsification of an industry-rotation
+process, not an active strategy archetype.
+
+### Parallel-track awareness
+
+- **Market research:** preserve the immediate persistence edge and falsify its
+  shared-endpoint/definition alternatives.
+- **Existing-strategy archaeology:** no strategy field or return was read; seed
+  strategies remain unchanged.
+- **Strategy invention:** industry rotation remains search space, now with one
+  supported but not fully replicated state dynamic.
+
+### Research Director decision
+
+`FALSIFY` before further temporal or strategy work. Freeze a minimal
+MKT-INDRS-ROT-001 replication with (a) a delayed t+10 primary response whose
+underlying t+5-to-t+10 rotation shares no rank endpoint with the current block,
+and (b) next-block persistence under the already-accepted Kendall and mean-rank-
+displacement definitions. Require all fixed replications across the same
+blocks/coordinates/controls; do not add horizons, outcomes, or CY-011.

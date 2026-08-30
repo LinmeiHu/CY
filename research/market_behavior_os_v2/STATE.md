@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-DYN-001_FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION`
-- `CURRENT_PRIMARY_FRONTIER`: outcome-blind temporal dynamics of externally distinct winner-industry diffusion and rank rotation
-- `SUPPORTING_FRONTIER`: fixed current breadth, leadership, correlation, and volatility controls for incremental next-state tests
+- `CURRENT_PHASE`: `MKT-INDRS-ROT-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: falsification of immediate industry rank-rotation persistence through delayed and alternate-definition replication
+- `SUPPORTING_FRONTIER`: accepted Kendall/displacement rotation definitions and the same fixed current controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -165,6 +165,10 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   reconstructable. Five direct engine roles remain: industry return dispersion,
   winner diffusion, rank rotation, residual tail balance, and residual
   concentration. This remains contemporaneous evidence only.
+- MKT-INDRS-DYN-001 freezes one provisional state edge: rank rotation persists
+  into the adjacent next five-session block across all raw/PIT/relative,
+  temporal, sign, and phase-zero gates. Both winner-diffusion cross-edges fail
+  untouched confirmation or sign replication. No cross-process freezes.
 
 ## Data/governance status
 
@@ -243,6 +247,12 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   sixteen focused breadth/industry/geometry tests pass. It reads no future
   value, market return, strategy outcome, failed role, failed MA field, or
   CY-011.
+- MKT-INDRS-DYN-001 binds spec `b1266eed...` and geometry panel `7954dc81...`.
+  Two runs are byte-identical: panel `3aba96f1...`, result `10930928...`, report
+  `ed31dc93...`; sixteen focused industry temporal/geometry tests pass.
+  Confirmation is now consumed for these exact three edges only. No market/
+  stock return, strategy outcome, failed role, failed MA field, or CY-011 was
+  read.
 
 ## Current frontier
 
@@ -453,3 +463,16 @@ change. Controls, four coordinate systems, 2019-2021 discovery, untouched
 2022-2023 confirmation, phase-zero nonoverlap, effect/sign/support gates, and
 response availability are fixed. Execute twice; no market/stock return or
 strategy outcome may enter.
+
+MKT-INDRS-DYN-001 is complete. Rotation persistence passes at raw partial rho
+0.250 discovery/0.221 untouched confirmation and PIT 0.216/0.244, with all
+group and phase-zero gates. Diffusion-to-rotation collapses from 0.246 to 0.008;
+rotation-to-diffusion change reverses from 0.033 to -0.235. Neither failed edge
+is rescued.
+
+SYNTH-MKT-017 selects MKT-INDRS-ROT-001 map-first falsification. The accepted
+edge shares rank state t between adjacent blocks and uses smooth 20-session
+returns. Freeze a delayed t+10 response with no shared rank endpoint and
+next-block persistence under the already-accepted Kendall/displacement
+definitions. Require all replications; add no horizons, returns, strategies, or
+CY-011. No S1-S12 STOP is active.

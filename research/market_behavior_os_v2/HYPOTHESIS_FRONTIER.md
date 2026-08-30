@@ -2,8 +2,8 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do winner-industry diffusion and rank rotation form replicating next-block leadership dynamics after current-state controls? | Very high | Very high | Frozen 10,696-row panel; future state only | High | Medium; confirmation must be untouched before spec | ACTIVE_MKT_INDRS_DYN_001_MAP_FIRST |
-| 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | QUEUED_AFTER_LEADERSHIP_DYNAMICS |
+| 1 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Very high | High | Frozen panels; state responses only | Very high | Low-medium | ACTIVE_MKT_INDRS_ROT_001_MAP_FIRST |
+| 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | QUEUED_AFTER_ROTATION_FALSIFICATION |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -55,3 +55,8 @@ question stays within the same deep frontier: freeze a small outcome-blind
 temporal graph for winner diffusion and rank rotation before constructing any
 future state. Equal-industry participation and residual dispersion are removed
 as direct predictors; strategy outcomes remain prohibited.
+
+MKT-INDRS-DYN-001 supports immediate rank-rotation persistence but rejects both
+winner-diffusion cross-edges. Before interpreting persistence as a process, the
+active question is a minimal delayed-block and alternate-definition
+falsification. No market return or strategy outcome may enter.

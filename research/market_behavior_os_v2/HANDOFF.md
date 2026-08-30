@@ -437,7 +437,26 @@ must both lie in the block. Raw/PIT/relative replication, group sign support,
 phase-zero nonoverlap, minimum effect, and no-rescue gates are fixed. Execute
 twice without market returns, stock selection, strategies, or CY-011.
 
+MKT-INDRS-DYN-001 completed with one of three exact edges. Rotation persistence
+passes every gate: raw partial rho 0.250 discovery/0.221 untouched confirmation,
+PIT 0.216/0.244, and phase-zero 0.220/0.161; all eight raw/PIT and both relative
+groups support the positive sign. Diffusion-to-rotation collapses from 0.246 to
+0.008 confirmation. Rotation-to-diffusion change reverses from 0.033 to -0.235.
+Both cross-edges are rejected without favorable-block rescue.
+
+Two runs are byte-identical: panel `3aba96f1...`, result `10930928...`, report
+`ed31dc93...`; sixteen focused tests pass. The 2022-2023 confirmation block is
+now consumed for these exact edges, not for any future replication definition.
+No market/stock return, selection, strategy, failed role, or CY-011 was read.
+
+SYNTH-MKT-017 finds no new archetype. Immediate rotation clustering is a
+supported state edge, but adjacent blocks share the rank snapshot at t and the
+20-session return ranks are smooth. Next freeze MKT-INDRS-ROT-001 with exactly
+three falsifications: delayed t+10 primary rotation with no shared endpoint,
+next-block Kendall persistence, and next-block mean-rank-displacement
+persistence. Require all; do not add horizons or outcomes.
+
 ## Human decision required?
 
-No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-DYN-001
-map-first; CY-011 remains locked and unopened.
+No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-ROT-001
+map-first falsification; CY-011 remains locked and unopened.

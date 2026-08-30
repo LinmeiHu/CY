@@ -46,6 +46,7 @@
 | `experiments/MKT-INDRS-GEO-002_spec.json` | Exact semantic retry after nested causal-PIT warm-up audit |
 | `reports/MKT-INDRS-GEO-002_geometry.md` | Five direct engine coordinates and two compressed industry manifestations |
 | `experiments/MKT-INDRS-DYN-001_spec.json` | Frozen next-block leadership-state response and untouched-confirmation contract |
+| `reports/MKT-INDRS-DYN-001_dynamics.md` | Immediate rotation persistence and two rejected diffusion cross-edges |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

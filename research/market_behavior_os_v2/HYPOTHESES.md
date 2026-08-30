@@ -261,3 +261,26 @@
   persistence, market return, selection alpha, habitat, timing, causality, or
   strategy. The five roles require temporal-process evidence before any
   relative-strength or industry-rotation archetype decision.
+
+## MKT-H-017 — next-block industry leadership dynamics
+
+- Status: `ROTATION_PERSISTENCE_SUPPORTED_CROSS_EDGES_REJECTED`.
+- Supported edge: current rank rotation predicts rotation in the immediately
+  following five-session block after fixed broad leadership, co-movement, and
+  volatility-change controls. Raw partial rho is 0.250 discovery and 0.221 in
+  untouched confirmation; PIT is 0.216/0.244; phase-zero nonoverlap is
+  0.220/0.161. All eight raw/PIT groups and both relative groups support the
+  positive sign, and every frozen coordinate gate passes.
+- Rejected edge: winner diffusion to next-block rotation is 0.246 in discovery
+  but 0.008 in confirmation, with failed confirmation sign/effect/nonoverlap
+  and relative gates. The discovery association is consumed and cannot be
+  promoted.
+- Rejected edge: rotation to future winner-diffusion change is 0.033 discovery
+  and -0.235 confirmation. The sign reversal and failed discovery/relative
+  gates reject a stable directed edge; the favorable confirmation subset does
+  not rescue it.
+- Boundary: the surviving persistence edge shares the current rank snapshot at
+  the boundary between adjacent blocks and uses 20-session return ranks. It is
+  a supported temporal state edge, not yet a fully falsified rotation mechanism.
+  Delayed-block and neighboring-definition replication are required before any
+  archetype, return, timing, or strategy claim.

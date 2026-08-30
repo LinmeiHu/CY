@@ -71,6 +71,14 @@ MKT-H-016 external industry-engine geometry
   -> temporal leadership dynamics are now permitted outcome-blind
   -> strategy usefulness remains prohibited/unestablished
 
+MKT-H-017 leadership temporal dynamics
+  -> immediate next-block rank rotation persistence replicates
+  -> diffusion-to-rotation discovery effect fails untouched confirmation
+  -> rotation-to-diffusion-change reverses across blocks
+  -> winner diffusion and rotation do not form a stable directed cross-process
+  -> shared-endpoint and alternate-definition falsification still required
+  -> no return, habitat, timing, or strategy claim
+
 MKT-H-009 directional-tail/risk-appetite construction
   -> all eleven exact representations pass their own gates
   -> central direction absorbs ordinary participation/depth/concentration/diffusion
