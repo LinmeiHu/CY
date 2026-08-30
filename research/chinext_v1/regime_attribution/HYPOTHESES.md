@@ -458,3 +458,31 @@ byte-consistent with one another.
   no output or inspected estimate. Do not mine beta forms, alternate landmarks,
   market proxies, or thresholds to rescue a component, and do not create a
   hold/exit or strategy rule.
+
+### H-023 — early severe-loss path formation
+
+- Question: does action-safe stock-specific adverse return become distinguishable
+  by the third held session among accepted severe-loss outcomes?
+- Mechanism: if severe losses reflect early demand failure rather than only late
+  exit mechanics, the stock should underperform contemporaneous 399102 within
+  the first three held sessions, before most severe-loss exits occur.
+- Prediction: negative stock-specific Day-3 continuation is positively and
+  stably associated with the fixed <=-10% completed-cycle severe-loss label, raw
+  and after concurrent market plus frozen entry controls.
+- Required data: exact accepted entries and outcomes, frozen daily action-safe
+  stock panel, 399102 anchor, exact calendar, and fixed pre-entry controls.
+- Primary test: one fixed Day-3 adverse stock-specific log return among 356
+  actual survivors containing 42 severe losses. Day-2 all-cycle, Day-5 survivor,
+  and Day-3 beta-adjusted definitions are fixed neighbors, not alternatives.
+- Falsification: within-year ranks, eight LOYO omissions, three endpoint-varying
+  blocks, concurrent market/pre-entry controls, duration/exit, Bottom-4 P&L,
+  securities, industries, action accounting, and two early severe exits retained
+  in the Day-2 neighbor.
+- Metrics: raw and partial-rank association; gates frozen in
+  `EXP-SLF-001_spec.json` SHA `592f4289...`.
+- Confounds: Day-3 return is post-entry, survivor-conditioned, and embedded in
+  terminal loss. AVAILABLE_AT is Day-3 15:30 and any potential action is next
+  valid session or later, but this experiment authorizes no action.
+- Status: `PREREGISTERED` as EXP-SLF-001 before the first early-path/outcome
+  association. No alternate landmark, loss/stop threshold, exit rule, replay, or
+  V1 modification is authorized.

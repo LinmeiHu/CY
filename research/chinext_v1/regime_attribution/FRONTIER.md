@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REFINE_H022_PIVOT_TO_SEVERE_LOSS_EARLY_FORMATION_AUDIT`.
+`EXECUTE_EXP_SLF_001_EARLY_SEVERE_LOSS_FORMATION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,9 +66,9 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Audit exact action-safe coverage for a minimum-sufficient early severe-loss
-formation study, prioritizing a fixed early landmark only if enough of the 44
-accepted severe losses remain observable and temporal/block variation is
-estimable. The question is when adverse paths become distinguishable, not how to
-optimize a stop. Do not mine beta definitions to deepen H-022, revisit intraday
-components/H-018/H-019, select a threshold, or create an exit rule.
+Execute EXP-SLF-001 exactly under spec SHA `592f4289...`. The Day-3 primary has
+356 survivors/42 severe losses, 342 complete controls, endpoint variation in all
+three blocks and years, and 1,744 exact action-safe path rows. Apply the frozen
+Day-2/Day-5/beta neighbors and all temporal/mechanical/concentration gates. Do
+not inspect a result and change the landmark, mine beta definitions, reinterpret
+the path as a stop signal, revisit H-018/H-019/H-021/H-022, or create an exit rule.

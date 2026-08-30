@@ -2,9 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-D5D-003_COMPLETE_REFINED — H-022 core stock-specific and market components
-both survive, but the beta-adjusted neighbor and temporal gate fail. The result
-does not cleanly assign H-013 or authorize a holding/exit action.
+EXP-SLF-001_PREREGISTERED — H-023 freezes one action-safe Day-3 stock-specific
+adverse-path test against accepted severe losses. No early-path/outcome
+association has been calculated or inspected.
+EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
@@ -814,6 +815,29 @@ authorization, a new experiment ID, and fresh isolated outputs.
   report `7f38a1fa...`, packet `9bf133e5...`.
 - No alternate beta, market proxy, landmark, threshold, hold/exit rule, replay,
   or strategy modification is authorized.
+
+## AUTONOMOUS_CYCLE_EXP_SLF_001_PREREGISTRATION
+
+- The severe-loss audit starts from all 399 accepted cycles and 44 fixed
+  <=-10% severe losses. Day 3 retains 356 cycles and 42 severe losses; 342 have
+  the complete fixed control set.
+- Day-3 block populations/severe losses are DEVELOPMENT 104/16, EXTENDED 173/20,
+  and HOLDOUT 79/6. Every block and every entry year retains endpoint variation.
+- The fixed primary is negative action-safe stock-minus-399102 log return from
+  entry open through the third held-session close. Day-2 all-cycle, Day-5
+  survivor, and Day-3 beta-adjusted variants are fixed falsification neighbors.
+- Exact reconstruction yields 1,744 permitted path rows: 399 Day-2, 356 Day-3,
+  and 295 Day-5 paths. Five early corporate-action cycles pass exact share/cash
+  accounting; accepted Day-5 returns reconstruct within `2.55e-16`.
+- All 399 index entry opens, 399 Day-2 closes, 356 Day-3 closes, and 295 Day-5
+  closes map exactly. No post-exit price or counterfactual survival is read.
+- The 43 pre-Day3 exits include two severe losses; they are excluded from the
+  survivor-conditioned primary but preserved in the fixed Day-2 neighbor.
+- AVAILABLE_AT is Day-3 15:30 Asia/Shanghai. Potential action is next valid
+  session or later, but no stop, hold, exit, or other action is authorized.
+- Spec SHA `592f428988839b59a2f7232bc81088c8fe18ede318d90df406a064ea2b332e5d`;
+  runner SHA `77a738c58cce11da0a9e25b616101621ef5a68b76e3b3029df9adb575a9179d4`.
+  Status is frozen before the first early-path/outcome association.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-D5D-003_COMPLETE_REFINED` on 2026-08-30.
+`EXP-SLF-001_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -51,6 +51,14 @@ three-block temporal gate. It validly returns `REFINE`: stock-specific raw/contr
 and HOLDOUT temporal evidence fail. Two runs are byte-identical. No hold/exit or
 strategy action follows. Next audit early severe-loss formation coverage; do not
 historically deepen H-022 by alternate beta, index, horizon, or threshold.
+
+EXP-SLF-001 now freezes H-023 before the first early-path/outcome association.
+The exact Day-3 sample is 356 survivors with 42/44 severe losses and 342 complete
+controls; all blocks/years retain endpoint variation. A 1,744-row action-safe
+reconstruction covers fixed Day-2/3/5 paths, five corporate-action cycles, and
+all exact 399102 landmarks; Day-5 reconciliation error is <=`2.55e-16`. Execute
+spec SHA `592f4289...` without changing landmark, endpoint, controls, gates, or
+neighbors. The result is explanatory only and cannot authorize a stop or exit.
 
 EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

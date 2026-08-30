@@ -1,0 +1,149 @@
+{
+  "experiment_id": "EXP-SLF-001",
+  "spec_id": "CHINEXT-V1-EARLY-SEVERE-LOSS-FORMATION-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_EARLY_PATH_OUTCOME_TEST",
+  "created_on": "2026-08-30",
+  "hypothesis_id": "H-023",
+  "evidence_grade": "EXPLORATORY_HOLDING_PATH_MECHANISM",
+  "question": "Does action-safe stock-specific adverse return become distinguishable by the third held session among accepted severe-loss outcomes?",
+  "mechanism": "If severe losses reflect early demand failure rather than only late exit mechanics, the stock should underperform contemporaneous 399102 within the first three held sessions, before most severe-loss exits occur.",
+  "prediction": "Negative stock-specific day-3 continuation is positively and stably associated with the fixed completed-cycle <=-10% severe-loss label, raw and after contemporaneous market plus frozen entry controls.",
+  "interpretation_boundary": "Day-3 return is post-entry, survivor-conditioned, and embedded in terminal loss. The experiment can locate adverse-path formation but cannot establish a causal predictor or justify a stop, hold, exit, or production rule.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_early_severe_loss_formation.py",
+      "sha256": "77a738c58cce11da0a9e25b616101621ef5a68b76e3b3029df9adb575a9179d4"
+    },
+    "runner_test": {
+      "path": "research/chinext_v1/regime_attribution/tests/test_early_severe_loss_formation.py",
+      "sha256": "ba914e5dc74565059761dce7c4480ed4be7c51c39d709631ccfcd2dce0df3196"
+    },
+    "accepted_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "accepted_entry_fills": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/entry_gap_premium_attribution.csv",
+      "sha256": "8cc3a20a5015e93d9e3d8faf333ddd260dd95f736ccf503e23c54b6d5c11de23"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_transient_contract": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-WLA-001_spec.json",
+      "sha256": "b46c233662f47f38e9557daf938af9d0fb6f9944bb396906e3457505280ae9e4"
+    },
+    "action_safe_builder": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "accepted_early_path_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_early_path_reversal.py",
+      "sha256": "65c0089fc213c535635f0ad6252a5722f3f152f1dc1daa721e7282cfdb1adb97"
+    },
+    "accepted_partial_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_day5_market_stock_decomposition.py",
+      "sha256": "8a68d68d87b764f214aa0ccf03e5eb9f31ecd932d0ccc925c77d97711c8e908a"
+    },
+    "accepted_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "frozen_399102_anchor": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "exact_exchange_calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "transient_contract": {
+    "canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "sample": {
+    "cycles": 399,
+    "severe_losses": 44,
+    "day3_survivors": 356,
+    "day3_severe_losses": 42,
+    "day5_survivors": 295,
+    "day5_severe_losses": 34,
+    "fixed_control_complete_day3": 342,
+    "expected_path_rows": 1744,
+    "eligibility": "Day-3 primary requires actual frozen-strategy observability through the third held session. No post-exit price, imputation, or counterfactual survival. The Day-2 neighbor retains all 399 cycles and all 44 severe losses."
+  },
+  "block_endpoint_counts_day3": {
+    "DEVELOPMENT_2024_2025": {"rows": 104, "severe_losses": 16, "endpoint_levels": 2},
+    "EXTENDED_2018_2021": {"rows": 173, "severe_losses": 20, "endpoint_levels": 2},
+    "HOLDOUT_O0_2022_2023": {"rows": 79, "severe_losses": 6, "endpoint_levels": 2}
+  },
+  "primary_feature": "adverse_stock_specific_3d = -(log1p(action-safe stock return from entry open through third-held-session close) - log(399102 third-session close / entry-session open))",
+  "primary_endpoint": "Accepted completed-cycle round_trip_return <= -0.10 severe_loss label",
+  "fixed_neighbors": {
+    "day2_all_cycles": "Same stock-specific adverse return through the second held session; includes all 399 cycles and all early exits",
+    "day5_survivors": "Same stock-specific adverse return through the fifth held session among the fixed 295 survivors",
+    "day3_beta_adjusted": "-(stock day-3 log return - frozen entry_beta60 * market day-3 log return)"
+  },
+  "fixed_controls": {
+    "continuous_ranked": [
+      "market_day3_log_return",
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "post_outcome_sensitivity_only": [
+      "holding_trading_days",
+      "canonical_exit_reason"
+    ]
+  },
+  "gates": {
+    "raw": "day-3 rho >=0.15, positive within-year rank rho, and >=7/8 positive LOYO estimates",
+    "controlled": "partial-rank rho >=0.15 after concurrent market and fixed pre-entry controls, with >=7/8 positive LOYO estimates",
+    "neighbors": "day-2 all-cycle and day-5 survivor rhos positive with >=6/8 positive LOYO; beta-adjusted day-3 rho >=0.10 with >=6/8",
+    "temporal": "all three block rhos estimable, >=2/3 positive, and none negative",
+    "falsification": "holding-duration/exit partial rho >=0.10; ex-Bottom-4 realized-PnL rho positive; >=80% positive leave-one-severe-security and leave-one-industry omissions",
+    "decision": {
+      "DEEPEN": "all five gates pass",
+      "REFINE": "raw and controlled pass but a neighbor, temporal, or falsification gate fails",
+      "PIVOT": "raw passes but controlled fails",
+      "REJECT": "raw gate fails"
+    }
+  },
+  "available_at_timestamp": "DAY3_SESSION_15:30_ASIA_SHANGHAI",
+  "potential_action_timestamp": "NEXT_VALID_SESSION_OR_LATER_ONLY; EXPLANATORY_TEST_AUTHORIZES_NO_ACTION",
+  "falsification": [
+    "eight LOYO omissions and within-year ranks",
+    "three independent blocks with endpoint variation pre-audited",
+    "Day-2 all-cycle neighbor retaining two pre-Day3 severe exits",
+    "Day-5 survivor and beta-adjusted neighbors",
+    "concurrent market and frozen pre-entry V1/market/breadth/beta/liquidity controls",
+    "holding-duration and exit-reason mechanical sensitivity",
+    "Bottom-4 PnL removal, security, and industry concentration",
+    "exact share/cash corporate-action reconstruction and Day-5 reconciliation",
+    "zero post-exit prices, counterfactual returns, imputation, or strategy replay"
+  ],
+  "forbidden": [
+    "choosing another early landmark after results",
+    "return, loss, stop, or clock thresholds",
+    "calling a post-entry path an ex-ante entry predictor",
+    "stop, hold, exit, ranking, sizing, exposure, replay, or production modification",
+    "revisiting H-018, H-019, H-021, or H-022",
+    "invalid Phase 7/8/9 use"
+  ],
+  "outputs": [
+    "artifacts/early_severe_loss_formation.csv",
+    "artifacts/early_severe_loss_formation.json",
+    "reports/early_severe_loss_formation.md",
+    "reports/early_severe_loss_formation_evidence_packet.md"
+  ]
+}
