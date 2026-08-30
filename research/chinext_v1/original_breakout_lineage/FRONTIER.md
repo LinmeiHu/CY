@@ -112,6 +112,11 @@ RS rank, and cutoff margin are context, not selectable thresholds. EXP-OBL-008
 must freeze coverage, class presence, deterministic replay identity, and the
 outcome prohibition before any economic reveal.
 
+EXP-OBL-008 is frozen before any new event replay. The neutral classes require
+at least 50 events each, at most 85% concentration, and presence in at least six
+years. Temporary performance and execution products are explicitly forbidden
+from the parent constructor; only event ledgers and identity columns may enter.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

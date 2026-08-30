@@ -107,6 +107,12 @@ identity columns, and freeze exact contested/uncontested selection lineage plus
 continuous pressure/rank context. Generated performance/execution/NAV files
 must remain unread and temporary. No candidate rule exists.
 
+EXP-OBL-008 is now committed before replay. It freezes the exact capacity
+boundary and all input/runner hashes, prohibits outcome and temporary
+performance-file access, and requires balanced multi-year neutral classes plus
+exact identity/rank/cutoff reconstruction. Execute it from a clean tree, then
+repeat the full freeze for byte identity before any separate reveal.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

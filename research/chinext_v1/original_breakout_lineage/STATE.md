@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`AUDIT_OBL_002_COMPLETE_SELECTION_LINEAGE_FREEZE_PLANNED`
+`EXP_OBL_008_FROZEN_BEFORE_EVENT_REPLAY`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -104,9 +104,8 @@ must be temporary and the feature runner may read only their event ledgers.
 
 ## Exact next action
 
-Preregister EXP-OBL-008 before running any replay. Freeze the exact canonical
-`CONTESTED` versus `UNCONTESTED` capacity lineage plus candidate count,
-vacancies, selection pressure, normalized rank, and contested cutoff margin.
-Run unchanged engines only in temporary directories, read event ledgers only,
-join identity-only 399-cycle keys, and fail on any mapping discrepancy. Do not
-open CY-011.
+Execute committed EXP-OBL-008. Run unchanged engines only in temporary
+directories, read event ledgers only, join identity-only 399-cycle keys, and
+freeze exact `CONTESTED` versus `UNCONTESTED` lineage plus continuous
+competition/rank context only if every construction gate passes. Reproduce
+byte-for-byte before any outcome reveal. Do not open CY-011.
