@@ -148,3 +148,8 @@ MKT-STYLE-001 is frozen under spec `a32ca8fc...`. Eight roles must survive
 lagged-size assignment, fixed bucket/horizon neighbors, absolute/PIT/relative
 coordinates, coverage/portability, and fixed-priority redundancy compression.
 No role has economic usefulness or strategy status; execute twice.
+
+MKT-STYLE-001 retains six minimal roles. One-day return spread compresses into
+positive participation balance; the 10/20/40 leadership family fails neighbor
+stability. The active frontier is MKT-STYLE-GEO-001 map-first external geometry
+against accepted market-engine dimensions before any temporal or payoff claim.

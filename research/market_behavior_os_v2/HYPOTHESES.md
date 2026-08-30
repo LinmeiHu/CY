@@ -367,3 +367,17 @@
 - Boundary: this rejects the exact simple 1/3/5-session self-dynamic. It does
   not invalidate the same-session representation or the broader intraday
   research family, and establishes no return, habitat, timing, or strategy.
+
+## MKT-H-024 — circulating-size market-state representation
+
+- Status: `SIX_OF_EIGHT_MINIMAL_ROLES`.
+- Passing roles: size structure, positive participation balance, winner
+  diffusion, positive-mass concentration, size-curve divergence, and leadership
+  transition. Worst neighbor rho is 0.723--0.988; denominator rho is
+  0.973--0.997; PIT/robust-z/relative expected coverage is 1.000.
+- One-day return spread is stable but redundant with participation balance at
+  rho 0.903. Twenty-day leadership fails 10/20/40 definition stability at
+  0.683/0.634.
+- Boundary: six circulating-size representations exist. This does not establish
+  total/free-float cap, a small-cap premium, risk appetite, external engine
+  distinctness, temporal dynamics, usefulness, timing, or a strategy.

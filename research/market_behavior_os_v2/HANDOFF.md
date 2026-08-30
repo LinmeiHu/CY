@@ -703,3 +703,26 @@ relative-to-ALL_A, and governed-view rank coordinates. Apply 95% coverage, 0.70
 neighbor, 0.90 denominator, 150-observation year-cell, and 0.85 fixed-priority
 compression gates exactly. Execute twice. Do not read future values, strategy
 outcomes, total/free-float cap substitutes, post-2023 data, or CY-011.
+
+MKT-STYLE-001 completes with six minimal roles: size structure, positive
+participation balance, winner diffusion, positive-mass concentration, size-
+curve divergence, and leadership transition. Every accepted role passes raw
+coverage, neighboring-definition, denominator, year-cell, causal-PIT/robust-z,
+and relative-coordinate gates.
+
+One-day return spread is stable but compressed into participation balance at
+rho 0.903. Twenty-day leadership fails the fixed 10/20/40 horizon family: its
+10-day neighbor has median rho 0.683 and 40-day 0.634. Do not select 10/20/40,
+retune the horizon, or count the one-day spread separately.
+
+Two valid single-thread runs are byte-identical: panel `5ed52618...`, result
+`134dc205...`, report `4da04ee0...`; five focused tests pass. The earlier empty-
+small-bucket partial run and multithreaded 1e-15 hash divergence are invalid
+engineering attempts and provide no research evidence.
+
+SYNTH-MKT-024 selects MKT-STYLE-GEO-001 map-first. Before temporal or economic
+usefulness, test each of the six size roles against role-specific accepted
+market direction, breadth, volatility, liquidity/co-movement, and leadership
+alternatives. Freeze pairwise and fixed-control joint reconstruction in raw/PIT
+and relative space; do not remove a control to promote a size role or combine
+roles into a trading rule.

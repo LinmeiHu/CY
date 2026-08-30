@@ -1023,3 +1023,45 @@ divergence, transition, neighboring definitions, absolute/PIT/relative views,
 coverage, portability, redundancy, and no-rescue rules before construction.
 Do not use current-close bucket assignment for same-session returns and do not
 read future or strategy outcomes.
+
+## SYNTH-MKT-024 — after circulating-size representation construction
+
+### What was learned?
+
+Circulating size supports six internally stable, nonredundant roles: structure,
+positive participation balance, winner diffusion, positive-mass concentration,
+size-curve divergence, and leadership transition. A signed one-day return spread
+mostly restates participation. The simple 10/20/40 cumulative leadership family
+is not neighboring-horizon stable.
+
+### What market behavior are we still not studying?
+
+We do not know whether the six size roles are direct market-engine dimensions or
+manifestations of already accepted breadth, dispersion, volatility, liquidity,
+co-movement, and leadership states. Their temporal processes and economic
+usefulness are also untested. Growth/value, beta, true total/free-float cap,
+cross-asset state, and portable multi-strategy habitats remain unavailable or
+open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Stable size state geometry alone supplies no future direction, payoff,
+trigger, execution, exit, capacity, or habitat evidence. “Small-cap rotation”
+and “size breadth” remain labels, not archetypes.
+
+### Parallel-track awareness
+
+- **Market research:** compress the six size roles against the accepted market
+  engine before temporal research.
+- **Existing-strategy archaeology:** no future or strategy outcome was read;
+  seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; size roles cannot advance
+  before external distinctness and temporal replication.
+
+### Research Director decision
+
+`DEEPEN_TO_EXTERNAL_STYLE_GEOMETRY` via MKT-STYLE-GEO-001 map-first. Assign
+role-specific accepted market controls and freeze pairwise plus joint rank-
+reconstruction gates in raw/PIT and relative space before estimation. Preserve
+all six roles initially; do not delete controls, read future outcomes, or form a
+Trend/Breadth/Style rule.

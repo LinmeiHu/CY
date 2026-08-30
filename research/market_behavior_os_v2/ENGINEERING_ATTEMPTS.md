@@ -201,3 +201,27 @@ or used for a research decision.
 
 MKT-VOL-TRANS-004 changes only the result hash alias and output identity. The
 scientific and final control specs, every estimate, and every gate are unchanged.
+
+## MKT-STYLE-001 — invalid cumulative size-rank denominator
+
+The first implementation used an ordered window for both row number and count.
+The count was therefore cumulative, the first size-rank fraction was 0.5, and
+every small tail was empty. Execution reached partial result writing but failed
+before a complete report. The first differing state was
+`size_rank_fraction`; partial roles and compression are unaccepted evidence.
+
+The correction changes only the denominator to the full same-date/view/
+denominator partition. A focused four-row regression test requires exact rank
+fractions 0.125, 0.375, 0.625, and 0.875. Bucket boundaries, roles, gates, and
+all scientific semantics are unchanged.
+
+## MKT-STYLE-001 — invalid parallel floating reduction
+
+After the rank correction, scientific decisions repeated but two executions
+had different panel hashes. The first differing cell was
+`size_return_spread1_small40_large40`, differing by about 1e-15 while keys and
+decisions matched. No multithreaded artifact was accepted.
+
+The final implementation fixes DuckDB to one thread, preserving full precision
+instead of rounding away the discrepancy. Two subsequent complete executions
+are byte-identical; no representation formula or gate changed.

@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent size/style leadership and diffusion representation
-- `SUPPORTING_FRONTIER`: one stable same-session VWAP defense/recovery coordinate with no tested 1/3/5-session state dynamic
+- `CURRENT_PHASE`: `MKT-STYLE-GEO-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: external market-engine geometry of six stable circulating-size roles
+- `SUPPORTING_FRONTIER`: strategy-independent circulating-size structure, participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -706,3 +706,24 @@ causal-PIT, robust-z, relative-to-ALL_A, and governed-view rank coordinates;
 coverage, neighboring-definition, denominator, year-cell, redundancy, and no-
 rescue gates are fixed. No future value, strategy outcome, unregistered style
 field, post-2023 data, or CY-011 may enter.
+
+MKT-STYLE-001 completes with six of eight minimal roles. Size structure,
+positive participation balance, winner diffusion, positive-mass concentration,
+size-curve divergence, and leadership transition pass all construction gates
+and fixed-priority compression. Their worst neighboring-definition median rho
+ranges from 0.723 to 0.988, denominator rho from 0.973 to 0.997, and all PIT,
+robust-z, and relative expected coverage is 1.000.
+
+One-day size leadership is internally stable but redundant with positive
+participation balance at Spearman 0.903. Twenty-day size leadership fails only
+neighboring-horizon stability: 10-day median rho 0.683 and 40-day 0.634 versus
+0.70. Its broader family remains open, but the exact 10/20/40 representation
+does not freeze.
+
+Two valid single-thread executions are byte-identical: panel `5ed52618...`,
+result `134dc205...`, report `4da04ee0...`; five focused tests pass. Earlier
+partial outputs from the cumulative-rank denominator defect and parallel
+1e-15 reduction nondeterminism are invalid and not evidence. This establishes
+representations only, not a small-cap premium, risk appetite, temporal process,
+usefulness, or archetype. SYNTH-MKT-024 selects external engine geometry before
+any dynamic or payoff test. No S1-S12 STOP is active.

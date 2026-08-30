@@ -79,3 +79,19 @@ representations only. It does not establish future return, a small-cap premium,
 risk appetite, style timing, strategy habitat, entry/exit, execution, capacity,
 causality, or a new archetype. Future values, strategy outcomes, post-2023 data,
 unregistered style fields, and CY-011 are prohibited.
+
+## MKT-STYLE-001 result
+
+Six roles survive construction and fixed-priority compression: size structure,
+positive participation balance, winner diffusion, positive-mass concentration,
+size-curve divergence, and leadership transition. Their worst neighboring-
+definition rho is 0.723--0.988 and denominator rho 0.973--0.997; all causal-PIT,
+robust-z, and relative expected coverage is 1.000.
+
+One-day return spread is stable but redundant with positive participation
+balance at rho 0.903. Twenty-day leadership fails the fixed 10/20/40 family:
+neighbor rho is 0.683 for 10 days and 0.634 for 40 days. Neither can be rescued
+by choosing a favorable horizon or counting a redundant role twice.
+
+Two valid single-thread executions are byte-identical: panel `5ed52618...`,
+result `134dc205...`, report `4da04ee0...`. This remains representation-only.

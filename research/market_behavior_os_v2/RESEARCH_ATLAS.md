@@ -73,6 +73,7 @@
 | `reports/MKT-STYLE-DATA-001_audit.md` | Passing circulating-market-value PIT and population audit |
 | `MARKET_SIZE_STYLE_REPRESENTATION_MAP.md` | Frozen eight-role circulating-size state representation architecture |
 | `experiments/MKT-STYLE-001_spec.json` | Frozen lagged-size bucket and representation/compression contract |
+| `reports/MKT-STYLE-001_representation.md` | Six minimal circulating-size roles; one redundant and one unstable role |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

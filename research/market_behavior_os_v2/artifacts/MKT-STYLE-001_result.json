@@ -1,0 +1,1203 @@
+{
+  "compression": {
+    "accepted_roles": [
+      "size_structure",
+      "positive_participation_balance",
+      "winner_diffusion",
+      "positive_mass_concentration",
+      "size_curve_divergence",
+      "leadership_transition"
+    ],
+    "excluded_roles": {
+      "size_leadership_1d": "redundant_with:positive_participation_balance",
+      "size_leadership_20d": "construction_gate_failed"
+    }
+  },
+  "current_close_bucket_assignment_used": false,
+  "cy011_read": false,
+  "experiment_id": "MKT-STYLE-001",
+  "future_fields_read": [],
+  "hashes": {
+    "data_contract_result_sha256": "a03954d6315f29c7c5a119b91729fbfeef84feb51c7c12ed2330b7822a19f019",
+    "data_contract_spec_sha256": "506c24bcdd498162b3d44faa3008aa54ddf9a4132606b5da9a890240e224484b",
+    "panel_sha256": "5ed526187d71cb0c719a98ba99fcba368ea6dc53b6ad097efbebb5bb1f2863ad",
+    "source": {
+      "inputs": {
+        "cy006_audit": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b",
+        "cy006_manifest": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+        "qd009_manifest": "f92d2b5c2de1d046d8a4ddeac5e910fa96ce74f770627c92b1c702ed6dfd8468",
+        "registry": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+      },
+      "partitions": {
+        "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+      }
+    },
+    "spec_sha256": "a32ca8fcdb6080beb97f4226a891c44270a46e9d0a4818d4132501fdc1a808a3"
+  },
+  "population": {
+    "first_date": "2018-01-02",
+    "groups": 8,
+    "last_date": "2023-12-29",
+    "rows": 11656
+  },
+  "post_2023_data_read": false,
+  "redundancy_spearman": {
+    "leadership_transition": {
+      "leadership_transition": 1.0,
+      "positive_mass_concentration": 0.030673042469881145,
+      "positive_participation_balance": 0.2720877816030006,
+      "size_curve_divergence": 0.029080309445786986,
+      "size_leadership_1d": 0.3071984075628391,
+      "size_leadership_20d": 0.3156154421930316,
+      "size_structure": 0.010457203553702962,
+      "winner_diffusion": 0.005865114323594672
+    },
+    "positive_mass_concentration": {
+      "leadership_transition": 0.030673042469881145,
+      "positive_mass_concentration": 1.0,
+      "positive_participation_balance": 0.1348205246551455,
+      "size_curve_divergence": 0.5781589509133043,
+      "size_leadership_1d": 0.1557686184500214,
+      "size_leadership_20d": 0.048518780243206,
+      "size_structure": -0.04790514518418912,
+      "winner_diffusion": -0.6706051355902412
+    },
+    "positive_participation_balance": {
+      "leadership_transition": 0.2720877816030006,
+      "positive_mass_concentration": 0.1348205246551455,
+      "positive_participation_balance": 1.0,
+      "size_curve_divergence": 0.11199418762496274,
+      "size_leadership_1d": 0.9034151452098157,
+      "size_leadership_20d": 0.18493362452735634,
+      "size_structure": -0.04593837637489197,
+      "winner_diffusion": -0.03869973415160019
+    },
+    "size_curve_divergence": {
+      "leadership_transition": 0.029080309445786986,
+      "positive_mass_concentration": 0.5781589509133043,
+      "positive_participation_balance": 0.11199418762496274,
+      "size_curve_divergence": 1.0,
+      "size_leadership_1d": 0.11199779813900058,
+      "size_leadership_20d": 0.003655990374438736,
+      "size_structure": 0.16536369545023114,
+      "winner_diffusion": -0.5641596045405375
+    },
+    "size_leadership_1d": {
+      "leadership_transition": 0.3071984075628391,
+      "positive_mass_concentration": 0.1557686184500214,
+      "positive_participation_balance": 0.9034151452098157,
+      "size_curve_divergence": 0.11199779813900058,
+      "size_leadership_1d": 1.0,
+      "size_leadership_20d": 0.21958018442888677,
+      "size_structure": -0.040782928058363394,
+      "winner_diffusion": -0.016678152430579487
+    },
+    "size_leadership_20d": {
+      "leadership_transition": 0.3156154421930316,
+      "positive_mass_concentration": 0.048518780243206,
+      "positive_participation_balance": 0.18493362452735634,
+      "size_curve_divergence": 0.003655990374438736,
+      "size_leadership_1d": 0.21958018442888677,
+      "size_leadership_20d": 1.0,
+      "size_structure": -0.11812580348720432,
+      "winner_diffusion": 0.019495111302847038
+    },
+    "size_structure": {
+      "leadership_transition": 0.010457203553702962,
+      "positive_mass_concentration": -0.04790514518418912,
+      "positive_participation_balance": -0.04593837637489197,
+      "size_curve_divergence": 0.16536369545023114,
+      "size_leadership_1d": -0.040782928058363394,
+      "size_leadership_20d": -0.11812580348720432,
+      "size_structure": 1.0,
+      "winner_diffusion": -0.0008207137947932583
+    },
+    "winner_diffusion": {
+      "leadership_transition": 0.005865114323594672,
+      "positive_mass_concentration": -0.6706051355902412,
+      "positive_participation_balance": -0.03869973415160019,
+      "size_curve_divergence": -0.5641596045405375,
+      "size_leadership_1d": -0.016678152430579487,
+      "size_leadership_20d": 0.019495111302847038,
+      "size_structure": -0.0008207137947932583,
+      "winner_diffusion": 1.0
+    }
+  },
+  "risk_appetite_claim": "NONE",
+  "role_diagnostics": {
+    "leadership_transition": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 0.9828414550446122,
+        "CHINEXT_BOARD": 0.9828414550446122,
+        "SH_A": 0.9828414550446122,
+        "SZ_A": 0.9828414550446122
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.99700198618206,
+        "CHINEXT_BOARD": 0.999227404707751,
+        "SH_A": 0.9970796461891155,
+        "SZ_A": 0.9966528921090902
+      },
+      "denominator_median": 0.9970408161855877,
+      "neighbors": {
+        "size_leadership_transition10": {
+          "by_view": {
+            "ALL_A": 0.7166916030701175,
+            "CHINEXT_BOARD": 0.7385863869446226,
+            "SH_A": 0.6925946112706487,
+            "SZ_A": 0.7293378132165166
+          },
+          "median_across_views": 0.723014708143317
+        },
+        "size_leadership_transition3": {
+          "by_view": {
+            "ALL_A": 0.7833150090206814,
+            "CHINEXT_BOARD": 0.7817970591016764,
+            "SH_A": 0.7756828700732471,
+            "SZ_A": 0.7858721049202224
+          },
+          "median_across_views": 0.7825560340611789
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_leadership_transition5",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "positive_mass_concentration": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 0.9993136582017845,
+        "CHINEXT_BOARD": 0.9993136582017845,
+        "SH_A": 0.9993136582017845,
+        "SZ_A": 0.9993136582017845
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9855787785013209,
+        "CHINEXT_BOARD": 0.9930326549251186,
+        "SH_A": 0.9806103660082673,
+        "SZ_A": 0.9791985911759631
+      },
+      "denominator_median": 0.9830945722547941,
+      "neighbors": {
+        "size_positive_mass_hhi": {
+          "by_view": {
+            "ALL_A": 0.9666290618437736,
+            "CHINEXT_BOARD": 0.9640003657586744,
+            "SH_A": 0.9619095891831848,
+            "SZ_A": 0.9662485336412839
+          },
+          "median_across_views": 0.9651244496999791
+        },
+        "size_positive_mass_one_minus_entropy": {
+          "by_view": {
+            "ALL_A": 0.9621166891468811,
+            "CHINEXT_BOARD": 0.958221160989878,
+            "SH_A": 0.9560336418670519,
+            "SZ_A": 0.9615867589450506
+          },
+          "median_across_views": 0.9599039599674644
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_positive_mass_max_share",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "positive_participation_balance": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 0.9993136582017845,
+        "CHINEXT_BOARD": 0.9993136582017845,
+        "SH_A": 0.9993136582017845,
+        "SZ_A": 0.9993136582017845
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9972352795893874,
+        "CHINEXT_BOARD": 0.9993659094046682,
+        "SH_A": 0.997212159969277,
+        "SZ_A": 0.9960643813585753
+      },
+      "denominator_median": 0.9972237197793322,
+      "neighbors": {
+        "size_positive_participation_small20_large20": {
+          "by_view": {
+            "ALL_A": 0.9909771465958283,
+            "CHINEXT_BOARD": 0.9799779332829439,
+            "SH_A": 0.9869325073101352,
+            "SZ_A": 0.9881036666744836
+          },
+          "median_across_views": 0.9875180869923094
+        },
+        "size_positive_participation_small40_large40": {
+          "by_view": {
+            "ALL_A": 0.9951800738495858,
+            "CHINEXT_BOARD": 0.9861704921059252,
+            "SH_A": 0.9919540070565847,
+            "SZ_A": 0.9922380432665311
+          },
+          "median_across_views": 0.9920960251615578
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_positive_participation_small30_large30",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "size_curve_divergence": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 0.9993136582017845,
+        "CHINEXT_BOARD": 0.9993136582017845,
+        "SH_A": 0.9993136582017845,
+        "SZ_A": 0.9993136582017845
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9923206034955924,
+        "CHINEXT_BOARD": 0.9975538100289567,
+        "SH_A": 0.9917836131560844,
+        "SZ_A": 0.9893313233193937
+      },
+      "denominator_median": 0.9920521083258385,
+      "neighbors": {
+        "size_bucket_return_mean_adjacent_gap5": {
+          "by_view": {
+            "ALL_A": 0.9100348154983084,
+            "CHINEXT_BOARD": 0.8630626737285668,
+            "SH_A": 0.8719057721990595,
+            "SZ_A": 0.8868149868372752
+          },
+          "median_across_views": 0.8793603795181674
+        },
+        "size_bucket_return_range5": {
+          "by_view": {
+            "ALL_A": 0.9947987079326012,
+            "CHINEXT_BOARD": 0.9919465950347793,
+            "SH_A": 0.9931933974649907,
+            "SZ_A": 0.9935319963806686
+          },
+          "median_across_views": 0.9933626969228296
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_bucket_return_std5",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "size_leadership_1d": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 0.9993136582017845,
+        "CHINEXT_BOARD": 0.9993136582017845,
+        "SH_A": 0.9993136582017845,
+        "SZ_A": 0.9993136582017845
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9969142571938177,
+        "CHINEXT_BOARD": 0.9992557230852273,
+        "SH_A": 0.9975044279426254,
+        "SZ_A": 0.9963345328051085
+      },
+      "denominator_median": 0.9972093425682216,
+      "neighbors": {
+        "size_return_spread1_small20_large20": {
+          "by_view": {
+            "ALL_A": 0.9893602325615571,
+            "CHINEXT_BOARD": 0.979601987071084,
+            "SH_A": 0.9859388649615708,
+            "SZ_A": 0.9869710757511563
+          },
+          "median_across_views": 0.9864549703563635
+        },
+        "size_return_spread1_small40_large40": {
+          "by_view": {
+            "ALL_A": 0.9945263211340944,
+            "CHINEXT_BOARD": 0.9854864951929249,
+            "SH_A": 0.9907430009581727,
+            "SZ_A": 0.9919498724004523
+          },
+          "median_across_views": 0.9913464366793125
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_return_spread1_small30_large30",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "size_leadership_20d": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": false,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": false,
+      "coverage_by_view": {
+        "ALL_A": 0.9862731640356898,
+        "CHINEXT_BOARD": 0.9862731640356898,
+        "SH_A": 0.9862731640356898,
+        "SZ_A": 0.9862731640356898
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9970213432374238,
+        "CHINEXT_BOARD": 0.9996452522278821,
+        "SH_A": 0.9967553976623367,
+        "SZ_A": 0.9968867225198611
+      },
+      "denominator_median": 0.9969540328786424,
+      "neighbors": {
+        "size_return_spread10_small30_large30": {
+          "by_view": {
+            "ALL_A": 0.6764267650719619,
+            "CHINEXT_BOARD": 0.7464265294685192,
+            "SH_A": 0.6754052304401039,
+            "SZ_A": 0.6886007257572773
+          },
+          "median_across_views": 0.6825137454146195
+        },
+        "size_return_spread40_small30_large30": {
+          "by_view": {
+            "ALL_A": 0.624712058014398,
+            "CHINEXT_BOARD": 0.6608520089919908,
+            "SH_A": 0.6320492527928565,
+            "SZ_A": 0.6350429755432717
+          },
+          "median_across_views": 0.6335461141680641
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_return_spread20_small30_large30",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "size_structure": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9945653860757193,
+        "CHINEXT_BOARD": 0.9975587735063065,
+        "SH_A": 0.9658785499363551,
+        "SZ_A": 0.9952429751770101
+      },
+      "denominator_median": 0.9949041806263648,
+      "neighbors": {
+        "size_log_value_mad": {
+          "by_view": {
+            "ALL_A": 0.9612351433445004,
+            "CHINEXT_BOARD": 0.9913341821276695,
+            "SH_A": 0.9434095350266326,
+            "SZ_A": 0.9825478012868388
+          },
+          "median_across_views": 0.9718914723156696
+        },
+        "size_log_value_p90_p10": {
+          "by_view": {
+            "ALL_A": 0.94382961404238,
+            "CHINEXT_BOARD": 0.9432893173551299,
+            "SH_A": 0.7376075196654012,
+            "SZ_A": 0.9465310082445749
+          },
+          "median_across_views": 0.9435594656987549
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_log_value_iqr",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    },
+    "winner_diffusion": {
+      "checks": {
+        "denominator_stability": true,
+        "neighbor_stability": true,
+        "pit_coverage": true,
+        "raw_coverage": true,
+        "relative_rank_coverage": true,
+        "relative_to_all_coverage": true,
+        "robust_z_coverage": true,
+        "year_cells": true
+      },
+      "construction_gate_pass": true,
+      "coverage_by_view": {
+        "ALL_A": 0.9993136582017845,
+        "CHINEXT_BOARD": 0.9993136582017845,
+        "SH_A": 0.9993136582017845,
+        "SZ_A": 0.9993136582017845
+      },
+      "denominator_by_view": {
+        "ALL_A": 0.9751106864427852,
+        "CHINEXT_BOARD": 0.9918621180772293,
+        "SH_A": 0.9705405495117675,
+        "SZ_A": 0.9688668241984656
+      },
+      "denominator_median": 0.9728256179772763,
+      "neighbors": {
+        "size_winner_entropy_top20": {
+          "by_view": {
+            "ALL_A": 0.7939595141067034,
+            "CHINEXT_BOARD": 0.7360499336943289,
+            "SH_A": 0.7666810548410777,
+            "SZ_A": 0.7758095546981835
+          },
+          "median_across_views": 0.7712453047696306
+        },
+        "size_winner_entropy_top5": {
+          "by_view": {
+            "ALL_A": 0.7389922386407985,
+            "CHINEXT_BOARD": 0.6467221294029553,
+            "SH_A": 0.722511665877612,
+            "SZ_A": 0.7269971167572098
+          },
+          "median_across_views": 0.7247543913174108
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "size_winner_entropy_top10",
+      "relative_rank_expected_coverage": 1.0,
+      "relative_to_all_expected_coverage": 1.0,
+      "robust_z_expected_coverage": 1.0,
+      "year_support": {
+        "ALL_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "ALL_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "ALL_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "ALL_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SH_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SH_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SH_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2019": {
+          "nondegenerate": true,
+          "observations": 244
+        },
+        "SZ_A:2020": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2021": {
+          "nondegenerate": true,
+          "observations": 243
+        },
+        "SZ_A:2022": {
+          "nondegenerate": true,
+          "observations": 242
+        },
+        "SZ_A:2023": {
+          "nondegenerate": true,
+          "observations": 242
+        }
+      }
+    }
+  },
+  "small_cap_premium_claim": "NONE",
+  "status": "COMPLETE_6_OF_8_MINIMAL_ROLES",
+  "strategy_or_outcome_fields_read": [],
+  "unregistered_style_fields_read": [],
+  "usefulness_claim": "NONE"
+}
