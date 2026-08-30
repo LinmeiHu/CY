@@ -53,6 +53,7 @@
 | VWAP defense/recovery 1/3/5-session state dynamic | TEMPORAL_PROCESS_FAIL: h=1 partial rho -0.035/+0.005; h=3 0.004/-0.058; h=5 0.024/0.046; shape and relative gates also fail | Preserve same-session representation evidence; do not tune horizon, select an aggregator/view/block, remove controls, or infer cross-day support or accumulation |
 | Circulating-size one-day return spread as a separate mechanism | INTERNALLY_REDUNDANT: stable role but Spearman 0.903 with positive participation balance | Retain participation balance in the fixed-priority panel; do not count signed return spread as separate evidence |
 | Circulating-size 10/20/40-session leadership representation | NEIGHBORING_HORIZON_UNSTABLE: 20-day primary correlates only 0.683 with 10-day and 0.634 with 40-day definitions | Do not select a favorable horizon or retune the family; broader size-leadership research requires structurally different semantics |
+| MKT-STYLE-GEO-001 within-view relative-rank geometry | INVALID_BEFORE_GEOMETRY: governed-view rank is a same-date cross-view ordinal and can be structurally constant through time within one view | Use MKT-STYLE-GEO-002 matched four-view/date estimand; never drop relative rank, relax nondegeneracy, or cite a nonexistent 001 geometry result |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

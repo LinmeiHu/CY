@@ -1065,3 +1065,43 @@ role-specific accepted market controls and freeze pairwise plus joint rank-
 reconstruction gates in raw/PIT and relative space before estimation. Preserve
 all six roles initially; do not delete controls, read future outcomes, or form a
 Trend/Breadth/Style rule.
+
+## SYNTH-MKT-025 — after external-style support audit
+
+### What was learned?
+
+The first external-geometry design used the wrong observation unit for governed-
+view relative rank. The rank is defined across four views on one date; several
+fields are therefore legitimately constant through time inside a fixed view.
+The frozen nondegeneracy gate stopped before estimates. This invalidates the
+001 estimand, not a size representation.
+
+### What market behavior are we still not studying?
+
+External size-state distinctness remains unknown. Even after it is resolved,
+recurring size-leadership processes, breadth/size migration, objective price-
+level defense, cross-asset state, and portable multi-strategy habitats remain
+unstudied. Growth/value, beta, true total/free-float cap, and post-2023
+confirmation remain unavailable or outside the current contract.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A corrected contemporaneous estimand supplies no temporal direction,
+payoff, trigger, execution, exit, capacity, or habitat evidence. “Small-cap
+rotation” and “size breadth” remain inactive hypothesis labels.
+
+### Parallel-track awareness
+
+- **Market research:** execute the exact cross-view rank correction before any
+  temporal or usefulness test.
+- **Existing-strategy archaeology:** no future or strategy outcome was read;
+  seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; do not form a
+  Trend/Breadth/Style rule from representation geometry.
+
+### Research Director decision
+
+`RETRY_EXTERNAL_STYLE_GEOMETRY_WITH_CORRECT_RANK_UNIT` via MKT-STYLE-GEO-002.
+Keep all roles, controls, hashes, years, thresholds, and coordinates. Estimate
+relative rank only on matched same-date four-view cells with date fixed effects;
+execute twice and fail closed before any estimate if support is incomplete.

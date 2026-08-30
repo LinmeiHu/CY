@@ -738,3 +738,20 @@ audits first. Then apply pairwise rho <0.85 and joint rank reconstruction below
 0.70 median/0.85 maximum in all four coordinates. Do not delete a control,
 select a coordinate/view/year, or use a failed/duplicated size role. Execute
 twice without future values, strategy outcomes, post-2023 data, or CY-011.
+
+The MKT-STYLE-GEO-001 support audit stopped before estimates. The relative-rank
+coordinate is defined across the four views on each date, but 001 audited it as
+a time series inside one view. The first cell, size structure in
+ALL_A/ALL_STATUS/2021, contained 243 complete observations but constant ranks:
+size 0.75, turnover 0.50, and realized volatility 0.50. The unchanged
+nondegeneracy rule correctly failed closed. No 001 output artifact exists and
+this is not evidence against any size role.
+
+MKT-STYLE-GEO-002 is frozen under SHA-256
+`9860c89319122a920bef848f08d92a8882cf9f644f5a8174768e297c73f7e36a`.
+It inherits every role, control, input identity, year, threshold, coordinate,
+prohibition, and claim boundary. The only correction estimates relative rank
+across the four same-date views: require 150 complete, cross-sectionally
+nondegenerate dates per denominator/year; summarize daily cross-view Spearman;
+and use date-demeaned joint within-R2. Execute the exact retry twice. No future
+value, strategy outcome, post-2023 data, or CY-011 may enter.

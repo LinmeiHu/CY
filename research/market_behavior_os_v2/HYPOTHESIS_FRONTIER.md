@@ -158,3 +158,10 @@ MKT-STYLE-GEO-001 is frozen under spec `2bf960c6...`. Six roles, three accepted
 controls each, four conjunctive coordinates, complete support audit, and fixed
 pairwise/joint thresholds are immutable. Execute twice; no usefulness or
 interaction claim is permitted.
+
+MKT-STYLE-GEO-001 is invalid before geometry: it treated contemporaneous
+four-view ranks as within-view time series, where several are structurally
+constant. MKT-STYLE-GEO-002 is frozen under control spec `9860c893...`; it
+retains every scientific field and changes only relative-rank support and
+estimation to matched same-date cross-view geometry. Execute the exact retry;
+do not delete the coordinate or reinterpret the failed audit as a role result.

@@ -75,7 +75,9 @@
 | `experiments/MKT-STYLE-001_spec.json` | Frozen lagged-size bucket and representation/compression contract |
 | `reports/MKT-STYLE-001_representation.md` | Six minimal circulating-size roles; one redundant and one unstable role |
 | `MARKET_SIZE_STYLE_EXTERNAL_GEOMETRY_MAP.md` | Frozen role-specific market-engine alternatives and external distinctness gates |
-| `experiments/MKT-STYLE-GEO-001_spec.json` | Frozen four-coordinate pairwise/joint geometry contract |
+| `experiments/MKT-STYLE-GEO-001_spec.json` | Invalid frozen within-view relative-rank geometry contract retained as evidence |
+| `MARKET_SIZE_STYLE_EXTERNAL_GEOMETRY_MAP_V2.md` | Same-date cross-view relative-rank estimand correction; all scientific controls and gates retained |
+| `experiments/MKT-STYLE-GEO-002_spec.json` | Frozen exact semantic retry after relative-rank support audit |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

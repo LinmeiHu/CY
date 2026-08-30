@@ -1,0 +1,31 @@
+{
+  "experiment_id": "MKT-STYLE-GEO-002",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_GEOMETRY_ESTIMATION",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-STYLE-GEO-001_spec.json",
+  "inherits_scientific_design_sha256": "2bf960c60d5fffcb98bb9442c2d05eb91859b91002baf69eab69b2b98bb6d7c8",
+  "invalid_predecessor": "MKT-STYLE-GEO-001 treated a contemporaneous four-view ordinal rank as a within-view time series; the unchanged nondegeneracy gate stopped before any correlation, reconstruction, panel, result, or report",
+  "only_semantic_correction": {
+    "coordinate": "relative_rank",
+    "support_unit": "For each role, denominator, and eligible year, require at least 150 complete dates containing all four governed views and at least two distinct cross-view values on every one of those dates for the role and all three frozen controls.",
+    "pairwise_estimand": "For each denominator-year cell, compute the Spearman correlation across the four governed views on each complete date, then take the median absolute daily cross-view correlation. Apply the inherited pairwise threshold to the median of the six denominator-year cell summaries.",
+    "joint_estimand": "For each denominator-year cell, pool the four-view relative ranks across complete dates, remove date fixed effects by within-date demeaning the target and all three frozen controls, and regress the demeaned target on the demeaned controls without an intercept. Use adjusted within R2 and apply the inherited median and maximum thresholds across the six denominator-year cells.",
+    "reason": "relative_view_rank_pct is defined only by contemporaneous ordering across the four governed views; within one fixed view it can be structurally constant even when the cross-view ordering is fully observed and economically meaningful"
+  },
+  "unchanged_scientific_fields": [
+    "six accepted circulating-size roles and all fixed role-specific three-control sets",
+    "six input panel/result identities and hashes",
+    "full 10696-row common population and eight groups",
+    "2021-2023 eligibility, exact 15:00 availability, and outcome-blind boundary",
+    "raw, causal PIT, relative-to-ALL_A, and relative-rank source definitions",
+    "within-group raw, PIT, and relative-to-ALL_A estimands",
+    "0.85 pairwise and 0.70/0.85 joint reconstruction thresholds",
+    "all four coordinates conjunctive, no-rescue rule, prohibited fields, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-GEO-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-GEO-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-STYLE-GEO-002_geometry.md"
+  ]
+}

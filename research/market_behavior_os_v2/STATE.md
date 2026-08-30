@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-GEO-001_FROZEN_EXECUTION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-GEO-002_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: external market-engine geometry of six stable circulating-size roles
 - `SUPPORTING_FRONTIER`: strategy-independent circulating-size structure, participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -740,3 +740,18 @@ below 0.85; fixed-control joint adjusted R2 must remain below 0.70 median and
 0.85 maximum in every coordinate. No control deletion or favorable-coordinate
 rescue is allowed. Future values, outcomes, post-2023 data, and CY-011 remain
 prohibited.
+
+MKT-STYLE-GEO-001 stopped before any geometry because its relative-rank support
+audit used the wrong semantic unit. Governed-view ranks are contemporaneous
+cross-view ordinals, but 001 required variation through time within each fixed
+view. The first failed cell had a constant 0.75 size rank and constant 0.50
+turnover/volatility ranks in ALL_A/ALL_STATUS/2021. No correlation,
+reconstruction, panel, result, or report exists, and no size role failed.
+
+MKT-STYLE-GEO-002 is frozen under control spec `9860c893...`. It preserves all
+six roles, eighteen fixed role/control links, six source identities, four
+coordinates, 2021--2023 dates, thresholds, prohibitions, and no-rescue logic.
+Only relative-rank geometry changes to matched same-date four-view estimation:
+at least 150 nondegenerate complete dates per denominator/year, daily cross-view
+Spearman summaries, and date-fixed-effect joint within-R2. Execute twice before
+any temporal or usefulness research. No S1--S12 STOP is active.

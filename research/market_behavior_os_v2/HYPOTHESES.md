@@ -381,3 +381,16 @@
 - Boundary: six circulating-size representations exist. This does not establish
   total/free-float cap, a small-cap premium, risk appetite, external engine
   distinctness, temporal dynamics, usefulness, timing, or a strategy.
+
+## MKT-H-025 — circulating-size external engine geometry
+
+- Status: `CORRECTED_ESTIMAND_FROZEN_RESULT_PENDING`.
+- MKT-STYLE-GEO-001 is invalid before geometry because it treated a same-date
+  four-view ordinal rank as a within-view time series. Its first support cell
+  had complete but constant ranks; no estimate or output artifact exists.
+- MKT-STYLE-GEO-002 retains the six roles, all fixed controls, source hashes,
+  years, thresholds, coordinates, and no-rescue architecture. Only relative-
+  rank support and estimation move to matched four-view dates with date fixed
+  effects.
+- Boundary: the invalid audit is not evidence for or against external
+  distinctness, temporal dynamics, economic usefulness, or a strategy.
