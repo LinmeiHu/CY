@@ -12,6 +12,7 @@ association. No combination is confirmed or authorized as a rule.
 | synchronization pressure x upside/downside extreme participation | direction-neutral synchronization x signed tail breadth | EXACT_WEAKEST_LINK_AND_PROCESS_FAIL | Arithmetic-shape stability fails (0.691/0.646); side episodes are sparse and unstable. No continuous interaction/process/panic claim; do not substitute geometric aggregation. |
 | minute-volatility ordinal progression x same-session/daily volatility states | five-day minute path shape x volatility level/change/concentration | CONTINUOUS_GEOMETRY_DISTINCT_STATE_PROCESS_UNTESTED | Pairwise median absolute rho <=0.249 and joint rank reconstruction adjusted R2 0.195 median/0.223 max. This permits state-process research, not usefulness or contraction/expansion labels. |
 | minute-volatility exact sign state x daily volatility level state | rising/falling/flat path x low/middle/high level | EXACT_STATE_PROCESS_FAIL | Definition-neighbor agreement and transition stability fail; level context is warm-up-limited/sparse. No discrete state, habitat, contraction/expansion, or rule. |
+| continuous minute-volatility path x current volatility controls -> future minute volatility | distinct five-day path x five current-state controls | INCREMENTAL_TEMPORAL_RESPONSE_FAIL | h=5 partial and nonoverlap effects are near zero; h=1 flips sign and h=3 weakens. Raw negative association is control-explained, not a mechanism. |
 
 No synergy claim is permitted without frozen `BASELINE`, `A`, `B`, and `A+B`
 comparisons and temporal evidence.

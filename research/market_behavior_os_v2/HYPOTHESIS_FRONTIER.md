@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does the continuous distinct minute-volatility path associate with future 1/3/5-session minute-volatility change after fixed current-volatility controls? | High | High | Frozen daily minute-volatility levels; no raw rescan | High | Medium/temporal-validation risk | ACTIVE_MKT_MIN_VOL_RESP_001_MAP_FIRST |
+| 1 | Can industry leadership, diffusion, persistence, rotation, stock-vs-industry RS, and industry-vs-market RS be represented as distinct portable market state? | Very high | Very high | Registered CY-006 industry labels and daily facts; contract audit required | High | Medium | ACTIVE_MKT_INDRS_001_MAP_FIRST |
 | 2 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 3 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 4 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -31,3 +31,8 @@ MKT-MIN-VOL-STATE-001 rejects exact sign states and transitions. The continuous
 coordinate remains defensible, so the active queue moves to a preregistered
 strategy-independent temporal response with fixed 1/3/5 horizons and untouched
 confirmation time. No discrete-state rescue or future market return is allowed.
+
+MKT-MIN-VOL-RESP-002 finds no incremental future-volatility response. The
+minute path is deprioritized after representation, state, and temporal-response
+closure. The active queue diversifies to industry leadership/rotation and
+relative strength, explicitly excluding the failed MA20 diffusion clone.

@@ -161,3 +161,10 @@ accepted ordinal definitions produce low state agreement and transition
 matrices separated by total variation 0.469/0.611. The daily-level context is
 also early-year warm-up-limited and later-cell sparse. The engine retains only
 the continuous path coordinate and emits no volatility path state or process.
+
+MKT-MIN-VOL-RESP-002 finds no incremental temporal meaning for that continuous
+coordinate. Five-session partial-rank response is about -0.02 in both temporal
+blocks and fixed non-overlap is also near zero; one-session response flips sign
+and three-session response weakens. Raw negative association is explained by
+current-volatility controls. The engine retains a descriptive coordinate only,
+with no continuation/reversal or usefulness annotation.

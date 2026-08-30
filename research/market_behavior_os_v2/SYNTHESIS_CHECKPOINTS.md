@@ -551,3 +551,50 @@ future log change in the already-frozen minute-volatility level at 1/3/5
 sessions, fixed current-volatility controls, and a predeclared discovery versus
 untouched confirmation split. Do not read market returns, strategy outcomes,
 raw minutes, failed path fields, or CY-011.
+
+## SYNTH-MKT-014 — after continuous minute-volatility temporal falsification
+
+### What was learned?
+
+The h=5 future minute-volatility partial-rank response after five fixed controls
+is -0.017 in discovery and -0.015 in untouched confirmation, with 5/8 and 6/8
+group sign support. Fixed phase-zero non-overlap is -0.005/-0.019. h=1 flips
+from +0.033 to -0.092, while h=3 weakens from +0.060 to +0.010. Coverage passes,
+but every substantive effect/neighbor/nonoverlap gate fails.
+
+Raw negative associations around -0.12 to -0.23 do not survive incrementality.
+They cannot be promoted by removing current-volatility controls. The minute
+path is a stable, externally distinct descriptive coordinate with neither exact
+state nor tested future-volatility meaning.
+
+### What market behavior are we still not studying?
+
+Industry leadership, equal-industry diffusion, leadership persistence/churn,
+rotation, industry-versus-market relative strength, and stock-versus-industry
+relative strength remain major unrepresented dimensions. Objective support and
+acceptance remain data-contract-blocked. Size/style leadership, accumulation/
+distribution, and portable multi-strategy habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The volatility temporal mechanism failed. A relative-strength or industry-
+rotation archetype is only a search-space candidate until its market-state
+representations and temporal meaning survive; nothing is promoted now.
+
+### Parallel-track awareness
+
+- **Market research:** deprioritize minute-path rescue and diversify to
+  industry/relative-strength state representation.
+- **Existing-strategy archaeology:** no strategy field was read and no seed
+  strategy modification is authorized.
+- **Strategy invention:** industry rotation/relative strength remains a
+  candidate family, not an active archetype.
+
+### Research Director decision
+
+`EXPLORE` MKT-INDRS-001 map-first. Establish exact PIT industry-membership,
+coverage, aggregation, and comparability semantics; then build genuinely
+distinct same-session industry leadership/diffusion, persistence/rotation,
+industry-vs-market RS, and stock-vs-industry RS representations. Do not recreate
+the failed MA20 industry-diffusion role, optimize horizons, read outcomes, or
+open CY-011.

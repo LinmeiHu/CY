@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-RESP-002_FROZEN_BEFORE_FORWARD_RESPONSE`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent future-volatility response to the continuous minute-volatility path
+- `CURRENT_PHASE`: `MKT-INDRS-001_MAP_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent industry leadership, rotation, and relative-strength representation
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -347,3 +347,19 @@ was computed. MKT-MIN-VOL-RESP-002 control spec `9ef7a0b2...` changes only the
 domain rule: any nonpositive current/future endpoint makes that response/control
 missing, with no epsilon, clipping, imputation, or relaxed coverage gate. All
 scientific roles, horizons, blocks, thresholds, and prohibitions are unchanged.
+
+MKT-MIN-VOL-RESP-002 is complete and no replicating incremental temporal
+response freezes. The primary h=5 median partial rho is -0.017 discovery and
+-0.015 confirmation, below 0.10; group sign agreement is 5/8 and 6/8. Fixed
+phase-zero non-overlap is -0.005/-0.019, below 0.08. h=1 flips sign across
+blocks; h=3 is weak. Raw negative rhos around -0.12 to -0.23 are absorbed by
+the five current-volatility controls and cannot be promoted. Two runs are
+byte-identical: panel `f0ca6162...`, result `e9f1245c...`, report `fb89e0c1...`;
+five tests pass.
+
+The continuous minute-volatility path remains a distinct descriptive coordinate
+only. Exact states, transitions, future-volatility meaning, and strategy
+usefulness all fail or remain unestablished. SYNTH-MKT-014 shifts the primary
+frontier to the higher-EIV, underexplored industry leadership/rotation and
+stock-versus-industry relative-strength family instead of further minute-path
+rescue.

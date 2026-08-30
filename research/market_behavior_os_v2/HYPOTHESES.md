@@ -199,3 +199,17 @@
 - Boundary: the continuous path representation and its external distinctness
   remain valid. No exact sign state, dwell process, transition process,
   contraction/expansion label, usefulness, habitat, or strategy rule freezes.
+
+## MKT-H-014 — continuous path future-volatility response
+
+- Status: `NO_REPLICATING_INCREMENTAL_RESPONSE`.
+- Result: the primary h=5 partial-rank association after five fixed controls is
+  -0.017 in 2019-2021 discovery and -0.015 in untouched 2022-2023 confirmation,
+  versus the 0.10 gate. Fixed phase-zero non-overlap is -0.005/-0.019 versus
+  0.08. Primary group sign support is 5/8 and 6/8.
+- Neighbors: h=1 changes sign (+0.033 to -0.092); h=3 weakens (+0.060 to
+  +0.010). Raw associations are negative but are absorbed by current-volatility
+  controls and have no incremental claim.
+- Boundary: no volatility continuation/reversal mechanism, forecast, market-
+  return meaning, strategy usefulness, or archetype. The continuous coordinate
+  remains descriptive and exact states remain rejected.

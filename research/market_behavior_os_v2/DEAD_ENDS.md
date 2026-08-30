@@ -34,6 +34,8 @@
 | MKT-MIN-PATH-002 non-volatility progressions plus every signed reversal and curvature | REPRESENTATION_NOT_FROZEN: 35 of 36 roles fail fixed definition/aggregation gates | Do not select a favorable descriptor/operator or combine failed roles; require a structurally different preregistered family |
 | MKT-MIN-VOL-GEO-001 shared 2019-2023 raw/PIT cell list | INVALID_BEFORE_GEOMETRY: 2019 PIT is inside 504-observation warm-up and 2020 daily-control PIT cells have only 102-107 observations versus the unchanged 150 gate | Use MKT-MIN-VOL-GEO-002 coordinate-specific year eligibility; never lower the cell gate or cite a nonexistent 001 geometry result |
 | MKT-MIN-VOL-STATE-001 exact rising/falling/flat state/process | REPRESENTATION_NOT_FROZEN: neighbor kappa 0.425/0.275, macro-Jaccard 0.423/0.305, transition TV 0.469/0.611; daily-level geometry coverage/cells fail | Retain the continuous coordinate only; do not tune sign/zero boundaries, select a neighbor/view/year, or relabel states as contraction/expansion |
+| MKT-MIN-VOL-RESP-001 undeclared zero log domain | INVALID_BEFORE_RESPONSE: valid 2020-02-03 minute-volatility level is exactly zero in all groups | Use RESP-002 exact missing-domain rule; never add epsilon, clip, or cite a nonexistent RESP-001 result |
+| MKT-MIN-VOL-RESP-002 future-volatility continuation/reversal | TEMPORAL_RESPONSE_FAIL: h=5 partial rho -0.017/-0.015, nonoverlap -0.005/-0.019, h=1 sign flip, h=3 weak | Do not promote raw negative association, select horizon/group/block, remove controls, or revive exact states |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

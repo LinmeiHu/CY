@@ -308,3 +308,16 @@ MKT-MIN-VOL-RESP-002 control spec `9ef7a0b2...` is frozen. It makes only affecte
 log responses/control values missing, forbids epsilon/clipping/imputation, and
 keeps every coverage/effect/sign/validation gate unchanged. Execute the exact
 retry twice.
+
+MKT-MIN-VOL-RESP-002 is complete and fails. Primary h=5 partial rho is only
+-0.017 in discovery and -0.015 in untouched confirmation; fixed non-overlap is
+-0.005/-0.019. h=1 flips from +0.033 to -0.092 and h=3 weakens from +0.060 to
++0.010. Raw negative associations are not incremental after the five controls.
+Two runs are byte-identical: panel `f0ca6162...`, result `e9f1245c...`, report
+`fb89e0c1...`; five tests pass.
+
+Do not rescue a horizon, raw association, group, or state. Retain the continuous
+path as descriptive only. SYNTH-MKT-014 moves to MKT-INDRS-001 map-first:
+industry leadership/diffusion/persistence/rotation plus stock-versus-industry
+and industry-versus-market relative strength, without reproducing the failed
+MA20 industry-diffusion representation or reading outcomes/CY-011.
