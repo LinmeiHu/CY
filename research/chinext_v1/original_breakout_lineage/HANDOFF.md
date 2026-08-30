@@ -71,6 +71,16 @@ positive neighbor direction in at least seven of eight years. The exact next
 action is execution without outcomes, followed by deterministic reproduction if
 all gates pass.
 
+EXP-OBL-006 then stopped before writing any output. T-1/T-3 rho is 0.421 and
+T-1/T-5 rho is 0.309, failing the frozen 0.60 robustness gate. No outcome was
+read; H-OBL-005 is rejected and no horizon/threshold may be selected.
+
+The current frontier is H-OBL-006: the already frozen exact number of sessions
+since the most recent canonical reference close. It was not an assignment axis
+of the rejected taxonomy and has 60 observed states with broad yearly coverage.
+Preregister a continuous, unbinned outcome test with base-depth, positioning,
+breakout-margin, V1-state, and market controls. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

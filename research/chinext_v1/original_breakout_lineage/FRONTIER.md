@@ -70,6 +70,20 @@ materialized. A valid feature requires continuous variation, at least 0.60
 T-1/T-3 and T-1/T-5 rank agreement, positive temporal-neighbor direction in at
 least seven of eight years, exact reconciliation, and no outcome access.
 
+## Frontier after EXP-OBL-006
+
+Single-session positioning is rejected before outcomes. Its T-1/T-3 and T-1/T-5
+rank agreement is only 0.421 and 0.309. The frozen 0.60 gate will not be changed
+and no temporal horizon will be selected.
+
+The next independent mechanism is exact canonical-reference age. It measures
+the number of sessions between the latest prior-60 reference close and the
+signal, has 60 observed integer states with broad yearly variation, and was
+already frozen outcome-blind as context rather than used in the failed taxonomy
+assignment. H-OBL-006 asks whether longer time beneath resistance represents
+supply turnover after controlling base depth, positioning, and breakout margin.
+It must be tested continuously without bins or thresholds.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

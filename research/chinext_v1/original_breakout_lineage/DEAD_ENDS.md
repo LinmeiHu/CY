@@ -41,3 +41,14 @@ on one arbitrary zone width for outcome testing.
 
 No outcome was joined. Do not choose 3% after observing its higher agreement or
 search other widths. Decision: `REJECTED_BEFORE_OUTCOME`.
+
+## D-OBL-005 — single-session prebreakout positioning
+
+The exact T-1 log distance to the canonical resistance reconstructed all 399
+events and reconciled exactly, but it was not a stable formation state across
+the fixed temporal neighbors. T-1/T-3 rho was 0.421 and T-1/T-5 rho was 0.309,
+below the preregistered 0.60 requirement for both.
+
+No outcome was joined and no feature artifact was written. Do not weaken the
+gate, select one temporal horizon, search distance thresholds, or use this as a
+retrospective entry rule. Decision: `REJECTED_BEFORE_OUTCOME`.

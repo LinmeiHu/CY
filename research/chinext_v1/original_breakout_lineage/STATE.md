@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_006_FROZEN_BEFORE_FEATURE_MATERIALIZATION`
+`EXP_OBL_006_REJECTED_BEFORE_OUTCOME_NEXT_FRONTIER_SELECTED`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -78,16 +78,22 @@ EXP-OBL-005 rejects H-OBL-004 before any outcome join. The 2% distinct resistanc
 test episode count varies well, but its 1% neighbor rho is 0.604 below the frozen
 0.65 gate (3% rho 0.713). No feature artifact or outcome test is accepted.
 
+EXP-OBL-006 rejects H-OBL-005 before any outcome join. T-1 positioning covers
+and reconciles all 399 events but is not a persistent trajectory state: T-1/T-3
+rho is 0.421 and T-1/T-5 rho is 0.309 versus the frozen 0.60 requirement. No
+output is accepted and no temporal horizon may be selected post hoc.
+
 ## Current scientific decision
 
-`PIVOT_TO_PARAMETER_FREE_PREBREAKOUT_POSITIONING` — fixed-width episode topology
-is definition-sensitive; t-1 log distance to the exact reference avoids a zone
-threshold and directly measures whether price was already accepted near the high.
+`PIVOT_TO_CANONICAL_REFERENCE_AGE` — both fixed-width episode topology and
+single-session positioning fail outcome-blind robustness. Exact sessions since
+the most recent prior-60 reference is a parameter-free path-duration state,
+already frozen without outcomes, and is distinct from the failed taxonomy's
+assignment axes.
 
 ## Exact next action
 
-Execute frozen EXP-OBL-006 to reconstruct T-1 prebreakout distance with fixed
-T-3/T-5 temporal neighbors without outcomes. If all construction gates pass,
-repeat it for byte identity, commit the frozen feature, and only then preregister
-a separate outcome reveal. Preserve signal breakout margin/reference age as
-controls. Do not search distance thresholds.
+Preregister EXP-OBL-007 against the already frozen exact reference-age feature.
+Test whether longer supply-turnover time predicts MFE and non-false-breakout
+after fixed base-depth, positioning, breakout-margin, V1-state, and market
+controls. Do not bin or threshold reference age and do not open CY-011.
