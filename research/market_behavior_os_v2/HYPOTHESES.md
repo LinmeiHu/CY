@@ -71,8 +71,9 @@
 
 ## MKT-H-007 — market-wide five-day intraday state
 
-- Status: `DATA_READY_REPRESENTATION_SCALE_STOP`.
+- Status: `REQUIRED_SCALE_APPROVED_REPRESENTATION_PENDING`.
 - Result: AUDIT-MKT-MIN-001 passes exact PIT/session/reconciliation/descriptor
   readiness on 240 trajectories and 1,200 sessions across 2018-2023/four views.
-- Boundary: only six market dates are present; no 504-observation PIT-normalized
-  market state or minute mechanism is frozen. Safe vectorized scale is required.
+- Boundary: no 504-observation PIT-normalized market state or minute mechanism is
+  frozen yet. Tiny/small/reference/20-date full-market vector gates pass, so the
+  required 2018-2023 scale is approved under the frozen resource envelope.

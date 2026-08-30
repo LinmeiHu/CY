@@ -72,3 +72,24 @@ The first difference was `ALL_A / ALL_STATUS / 2018-07-03`: binary total
 from their three-decimal representation. The retry therefore uses exact
 `DECIMAL(38,3)` addition after verifying that scale; it does not round source
 values or relax conservation.
+
+## MKT-MIN-001-A — vectorized scale gate passes
+
+The frozen adapter uses annual partition selection, Parquet date/symbol
+predicates, governed-column reads, and one-date batches. It validates group keys
+and the exact 241-row auction/continuous/lunch grid, then reshapes complete
+sessions and calculates the 34 frozen NumPy descriptors across all securities at
+once. Python does not loop over minute rows or security sessions.
+
+Tiny and 1,200-session reference gates pass. The worst descriptor difference is
+`4.99933427988708e-13`, both opening-window runs match exactly, and derived
+five-minute volume/amount conservation differences are zero. Two small runs have
+identical descriptor/opening hashes.
+
+The frozen 20-date representative test processes 18,201,043 rows and 71,481
+final sessions in about eight seconds. Two market-panel hashes are
+`ee274ca0c1cb2cd2c6fdd6427d01546aeebecee8e1c1c5c444e3af81a01d390c`;
+two opening hashes are
+`9093a928e0bb47d0548e4b8b855e7f30c91837875035d1267efb7598553ab360`.
+Peak RSS remains below the 3 GiB hard ceiling. This is the accepted architecture
+for required scale; it is not scientific representation evidence.

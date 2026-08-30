@@ -37,8 +37,10 @@ MKT-H-006 volatility construction
 
 MKT-H-007 market-wide five-day minute state
   -> exact bounded readiness PASS
-  -> only six market dates; no PIT-normalized state freeze
-  -> STOP until safe vectorized adapter/resource contract
+  -> optimized 1,200-session equivalence PASS
+  -> 20-date full-market resource/determinism gate PASS
+  -> required 2018-2023 scale approved
+  -> no PIT-normalized state freeze yet
 
 CHINEXT five-day minute feasibility
   -> strategy-conditioned descriptors only

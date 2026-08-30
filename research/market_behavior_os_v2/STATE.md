@@ -6,7 +6,11 @@ Updated 2026-08-30.
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
-- `CURRENT_PHASE`: `STOP_UNSAFE_MARKET_MINUTE_REPRESENTATION_SCALE`
+- `RESEARCH_OS_VERSION`: `2.1`
+- `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
+- `CURRENT_PHASE`: `MKT-MIN-001_REQUIRED_SCALE_APPROVED`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent five-day market intraday representation
+- `SUPPORTING_FRONTIER`: vectorized governed minute aggregation only
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -80,6 +84,13 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   on 240 trajectories/1,200 sessions across six years and four views. Both
   opening-window and five-minute conservation differences are exactly zero.
   This is feasibility, not a market-state representation.
+- MKT-MIN-001 engineering gates now pass at tiny, small, and representative
+  scale. All 34 optimized descriptors match the frozen NumPy reference across
+  1,200 sessions within `5.0e-13`; opening-window differences and exact five-
+  minute volume/amount conservation are zero. The frozen 20-date full-market
+  test processed 18,201,043 raw rows and 71,481 eligible sessions, and two runs
+  produced the same panel hash `ee274ca0...` and opening hash `9093a928...`.
+  This resolves the engineering STOP but freezes no minute representation yet.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
@@ -115,14 +126,17 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
 - AUDIT-MKT-MIN-001 is byte-identical across reruns: sample `6cc2f9b6...`,
   session audit `2b1b57cc...`, descriptors `9f177c29...`, result `12096da2...`,
   report `581e4573...`.
+- MKT-MIN-001 binds the same immutable QD-004/CY-006/CY-008 inventories. Its
+  vector path is partition/date-pruned, column-pruned, one-date batched, and
+  reshapes exact 241-row sessions for NumPy bulk calculation. Representative
+  peak RSS was below the frozen 3 GiB ceiling and measured throughput exceeded
+  2.25 million raw rows/second. The required 1,486,577,999-row scan is approved
+  under the unchanged 90-minute/3-GiB envelope.
 
 ## Current frontier
 
-The highest-information next task is a strategy-independent five-day Market
-Intraday Representation Map. The bounded readiness sample cannot meet the
-required 504-observation causal normalization and market-date portability gates.
-Scaling the current rowwise adapter would require over 100 million minute rows
-and violates the accepted no-full-market-build scale policy. Autonomous work is
-stopped under the Research Contract's unsafe-resource-use boundary until a
-vectorized partition-pruned adapter and frozen resource budget exist. See
-`STOP.md`. No daily failure is being rescued and no outcome test is authorized.
+The highest-information task remains MKT-MIN-001. The unsafe rowwise approach is
+retired; the frozen vectorized adapter and measured resource envelope approve the
+required 2018-2023 full-cross-section construction. Next, run required scale,
+construct the five-day trajectory/PIT/relative coordinates, test representation
+quality and redundancy, and synthesize before any outcome or habitat access.

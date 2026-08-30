@@ -2,6 +2,12 @@
 
 Updated 2026-08-30.
 
+## V2.1 resume identity
+
+- Exact starting checkpoint: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`.
+- Branch/worktree/ancestry/exclusivity checks passed before work.
+- CY-011 and all strategy outcomes remain unopened.
+
 ## What changed?
 
 The active program was corrected from CHINEXT-centered optimization to
@@ -86,22 +92,42 @@ mapped raw rows, zero opening-window difference, and zero five-minute
 volume/amount conservation difference. Two flat sessions and one lock on each
 limit side are retained.
 
-## Why work stopped
+## Minute scale blocker resolution
 
-The next ranked task is a true market-state five-day minute representation. Six
-sampled market dates cannot meet the 504-observation causal normalization gate.
-A defensible date/cross-section expansion under the current rowwise adapter
-would exceed 100 million raw minute rows and violate the frozen no-full-market-
-build resource policy. `STOP.md` records the genuine
-`STOP_UNSAFE_MARKET_MINUTE_REPRESENTATION_SCALE` boundary. Resume only with a
-reviewed vectorized/partition-pruned adapter and frozen resource budget; do not
-weaken the gate or substitute CHINEXT events.
+The `STOP_UNSAFE_MARKET_MINUTE_REPRESENTATION_SCALE` blocker is resolved. The
+scientific contract retains all 1,457 pre-2024 exchange dates, the full eligible
+ALL_A/SH_A/SZ_A/CHINEXT_BOARD cross-section, both denominators, 34 descriptors,
+and the 504-observation PIT gate. No 50-name proxy or CHINEXT event substitution
+is used.
+
+The adapter reads one date at a time through Parquet date predicates and only
+the governed columns. It validates the 09:30 auction, 09:31..11:30 and
+13:01..15:00 grid, raw adjustment, OHLC/units, missing bars, timestamps, causal
+CY-006/CY-008 lineage, and exact five-minute mass conservation. Complete 241-row
+sessions are reshaped and all security descriptors are computed with NumPy
+across sessions, without a Python loop over minute rows or securities.
+
+Tiny and all 1,200 accepted reference sessions pass. Maximum descriptor
+difference is `4.99933427988708e-13`; opening-window and volume/amount
+conservation differences are zero; 17 causal corporate-action sessions are
+retained. Two small runs have identical descriptor hash `05b0a966...` and
+opening hash `0a8d4586...`.
+
+The predeclared 2020-02-03..2020-02-28 full-market stage processed 18,201,043
+raw rows, 75,442 complete raw sessions, and 71,481 final causal sessions in about
+eight seconds. Its minimum view cross-section is 753 and minimum descriptor
+coverage 0.99933. Two runs have identical market panel `ee274ca0...` and opening
+`9093a928...` hashes. Peak RSS is about 2.54 GiB, below the 3 GiB hard ceiling;
+required scale projects safely inside 90 minutes.
+
+No minute representation or mechanism has been frozen yet. Required scale and
+the outcome-blind stability/redundancy analysis remain next.
 
 Do not populate strategy x habitat outcomes from MKT-GEO-001, and do not return
 automatically to CHINEXT minute-feature screening.
 
 ## Human decision required?
 
-Yes, but it is an engineering/resource decision rather than a scientific label:
-authorize and review the vectorized market-minute aggregation budget before the
-next representation freeze. CY-011 and all outcomes remain unopened.
+No. The V2.1 prompt authorized resolving this engineering blocker and the frozen
+measured envelope now passes. Continue with required scale; CY-011 and all
+outcomes remain unopened.

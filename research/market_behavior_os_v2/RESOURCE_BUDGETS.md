@@ -39,3 +39,17 @@ not the metadata estimate alone, must approve required scale.
 
 No stage may proceed after semantic disagreement, nondeterminism, resource
 ceiling breach, or a projection above the full-scale envelope.
+
+## Representative measurement and approval
+
+The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in
+about eight seconds. Measured throughput was 2.27-2.31 million rows/second;
+median date processing was about 0.21 seconds. Peak RSS was 2.54 GiB or less,
+opening reconciliation covered 71,481 sessions exactly, and both durable panel
+and opening hashes reproduced.
+
+Conservatively applying 2.0 million rows/second to 1,486,577,999 rows yields
+12.4 minutes of raw calculation. Annual causal-context loads, integrity hashing,
+serialization, and analysis retain a large margin inside the 90-minute ceiling.
+The required scale is approved with the one-date batch, 8 GiB system-headroom,
+and 3 GiB hard-RSS rules unchanged.
