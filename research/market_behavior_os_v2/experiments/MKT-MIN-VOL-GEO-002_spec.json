@@ -1,0 +1,29 @@
+{
+  "experiment_id": "MKT-MIN-VOL-GEO-002",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_GEOMETRY_RESULT",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-MIN-VOL-GEO-001_spec.json",
+  "inherits_scientific_design_sha256": "d1f67d059c5c08311618b255e0b7c684642c773bbad815029b57bdcc0bbce475",
+  "invalid_predecessor": "MKT-MIN-VOL-GEO-001 applied its 2019-2023 150-observation cell gate to causal PIT coordinates still inside their 504-observation warm-up; stopped before any correlation or result artifact",
+  "only_semantic_correction": {
+    "raw_cell_years": [2019, 2020, 2021, 2022, 2023],
+    "pit_cell_and_geometry_years": [2021, 2022, 2023],
+    "relative_cell_and_geometry_years": [2019, 2020, 2021, 2022, 2023],
+    "absolute_and_joint_geometry_population": "all 10696 common rows from 2018-07-03 through 2023-12-29",
+    "reason": "preserve the unchanged 150-observation gate and exclude incomplete causal PIT warm-up cells rather than lower a threshold"
+  },
+  "unchanged_scientific_fields": [
+    "target and five controls",
+    "input panels, result identities, hashes, common keys, populations, views, and denominators",
+    "15:00 control availability, 15:30 path availability, and 15:30 geometry decision timestamp",
+    "absolute, PIT, relative, and joint-rank definitions",
+    "0.85 pairwise and 0.70/0.85 joint reconstruction thresholds",
+    "no-rescue rule, prohibited fields, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-VOL-GEO-002_geometry.md"
+  ]
+}

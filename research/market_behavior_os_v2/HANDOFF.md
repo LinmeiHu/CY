@@ -251,3 +251,13 @@ binds exact path panel `d0a396a9...` and volatility panel `f7361284...`, expects
 10,696 common rows/1,337 per group, and fixes the joint decision timestamp at
 15:30. It tests five controls without importing any failed role. Execute twice,
 verify exact artifact hashes, and classify only state-coordinate redundancy.
+
+The first construction stopped before any correlation: 2019 PIT fields are
+correctly missing during the frozen 504-observation warm-up, and 2020 daily-
+control PIT cells have only 102-107 observations in the audited group. The
+unchanged gate is 150. MKT-MIN-VOL-GEO-001 is invalid, with no result artifact.
+
+MKT-MIN-VOL-GEO-002 control spec `b556472d...` is frozen. It changes only the
+coordinate-specific year eligibility—raw 2019-2023, complete PIT 2021-2023,
+relative 2019-2023—and retains all scientific roles, hashes, population,
+thresholds, 15:30 availability, and prohibitions. Execute the exact retry.
