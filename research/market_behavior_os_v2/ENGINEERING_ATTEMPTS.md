@@ -177,3 +177,16 @@ direction-modifier grouping. It pools all four governed views within each
 index/denominator, retains both denominators and all six indices, and performs
 the complete support audit before correlations. The 150/120 cell gates,
 habitat splits, response, controls, blocks, and claims are unchanged.
+
+## MKT-VOL-TRANS-002 — invalid discovery-habitat support
+
+The direction grouping correction passed its complete support audit. Before any
+correlation, the same audit then found a block-A discovery raw view/denominator
+cell with 127 complete observations against 150. No 002 output or result was
+accepted.
+
+MKT-VOL-TRANS-003 keeps the direction correction and pools both governed
+denominators within each discovery view. It retains all four views and changes
+six-of-eight sign support to the equivalent three-of-four 75% proportion. Cell
+thresholds, habitats, fields, controls, horizons, blocks, and claims remain
+unchanged.

@@ -545,3 +545,15 @@ pool all four governed views within each index/denominator, take the two-
 denominator median per index, then summarize all six indices. Discovery remains
 eight matching cells. Run every support audit before correlations. No threshold,
 split, horizon, control, block, or claim is changed.
+
+MKT-VOL-TRANS-002 is also invalid before accepted estimation: its complete
+audit found a block-A discovery raw cell with 127 observations versus 150. No
+002 output exists.
+
+MKT-VOL-TRANS-003 is frozen under control-spec SHA-256
+`a90dd17f7ae861a4627e9f6ccd2c78ba5edcade7393e2f4af6281249057e73e1`.
+Direction retains all-view pooling within index/denominator. Discovery pools
+both denominators within each view, retains all four views, and uses three-of-
+four sign support, preserving 75%. Run the full support audit before any
+correlation. All scientific semantics and gates remain inherited from
+`21145136...`.

@@ -1,0 +1,36 @@
+{
+  "experiment_id": "MKT-VOL-TRANS-003",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_VOLATILITY_STATE_CONSTRUCTION",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-VOL-TRANS-001_spec.json",
+  "inherits_scientific_design_sha256": "21145136eeb09369b755aad7fca591dcd280e3577159d7c65c5c1362bdacbb43",
+  "predecessor_control_spec_path": "research/market_behavior_os_v2/experiments/MKT-VOL-TRANS-002_spec.json",
+  "predecessor_control_spec_sha256": "e04c720b8980be9bd69e01e442ee09db86ab1fab6b89d5ae0093f57f31a8138f",
+  "invalid_predecessors": [
+    "MKT-VOL-TRANS-001: block-A direction PIT view/denominator cell 123 < 150",
+    "MKT-VOL-TRANS-002: block-A discovery raw view/denominator cell 127 < 150"
+  ],
+  "only_estimator_corrections": {
+    "direction_modifier_grouping": "pool four views within index/denominator, median two denominators per index, summarize six indices; four-of-six sign support",
+    "discovery_modifier_grouping": "pool two denominators within each view, summarize four views; three-of-four sign support, preserving the inherited 75 percent proportion",
+    "complete_support_audit_before_any_estimate": true,
+    "reason": "retain all governed views, denominators, indices, habitat definitions, and unchanged cell thresholds while aligning each modifier with a supported portable aggregation level"
+  },
+  "unchanged_scientific_fields": [
+    "six immutable input identities and hashes",
+    "10696-row base population, six direction indices, and exact 15:00 availability",
+    "t+25 response and no-return-interval-overlap semantics",
+    "volatility transition predictor and three fixed current controls",
+    "raw, causal PIT, relative-to-ALL_A, and relative-rank baseline coordinates",
+    "causal-PIT 50/50 primary and 40/60 shape-neighbor habitats",
+    "2019-2021 and 2022-2023 reused-time blocks",
+    "all effect, magnitude, phase, coordinate, and cell-support thresholds",
+    "separate baseline/direction/discovery claims, no-rescue rule, prohibitions, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-003_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-003_result.json",
+    "research/market_behavior_os_v2/reports/MKT-VOL-TRANS-003_dynamics.md"
+  ]
+}

@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-VOL-TRANS-002_FROZEN_EXECUTION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-VOL-TRANS-003_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent daily volatility contraction/expansion transition architecture conditional on accepted direction and discovery breadth
 - `SUPPORTING_FRONTIER`: four frozen daily-volatility roles plus accepted direction/discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -559,3 +559,14 @@ summarizes all six indices. Discovery remains eight matching cells. A complete
 support audit now precedes every estimate. All horizons, habitats, controls,
 coordinates, blocks, thresholds, prohibitions, and claim boundaries are
 unchanged.
+
+MKT-VOL-TRANS-002 also stopped in its complete pre-estimate audit. The direction
+grouping correction passed support, but one block-A discovery raw
+view/denominator cell had 127 rows versus 150. No 002 result is accepted.
+
+MKT-VOL-TRANS-003 control spec `a90dd17f...` is frozen. Direction grouping is
+unchanged from 002. Discovery now retains and pools both denominators within
+each view, summarizes all four views, and requires three-of-four sign support—
+the same 75% proportion as six-of-eight. All support audits still precede every
+correlation. No scientific field, horizon, habitat, effect threshold, block,
+prohibition, or claim boundary changes.
