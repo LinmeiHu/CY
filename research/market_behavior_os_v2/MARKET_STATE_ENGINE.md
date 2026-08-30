@@ -264,3 +264,9 @@ medians are zero; activity directions are near-even and mixed by year. Raw
 timing/activity coupling is control-explained, and completion-state dependence
 is below its first-F support floor with nonportable intervals/signs. The exact
 unchanged-level feasibility audit remains before any physical support process.
+
+MKT-SUPPORT-LVL-DATA-001 finds only seven exact unchanged-L20 repeated-test
+sequences; L10/L40 and auction neighbors also have only 5--9. The engine therefore
+retains the two rolling-definition trajectory coordinates but explicitly does
+not label them repeated support, defense, strengthening, or deterioration. No
+same-level temporal state is emitted and this exact branch is deprioritized.

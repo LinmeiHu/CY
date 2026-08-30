@@ -9,7 +9,7 @@
 | Opening-window reconciliation | CY-008 execution_5m | PASS for six 5-minute opening windows | Execution rows do not represent the full intraday path |
 | Exact market calendar | QD-002 calendar binding | PASS | Frozen exchange-session dates only |
 | Same-session dimensionless descriptors | QD-004 + CY-008 | PASS on AUDIT-MKT-MIN-001; required-scale adapter pending | Available at session date 15:30; no same-bar use |
-| Cross-day objective support/resistance | CY-006 causal action chain + QD-004/CY-008 raw minute path | TWO STABLE RECOVERY TRAJECTORY COORDINATES; COMMON PROCESS FAIL | Timing/activity endpoint rates pass shape/level/auction/generic controls, but direction and residual coupling fail; completion F arm is sparse. PIT historical/relative state and usefulness remain absent |
+| Cross-day objective support/resistance | CY-006 causal action chain + QD-004/CY-008 raw minute path | TWO ROLLING-LEVEL COORDINATES; PROCESS/UNCHANGED-LEVEL BRANCH FAIL | Direction/residual coupling fail and only 7 primary sequences retain one exact L20. No defense state; PIT history/relative state/usefulness absent |
 | Order-flow aggressor, queue, cancellation, hidden liquidity, participant identity | none | UNAVAILABLE | OHLCV/amount cannot support these claims |
 | Historical constituent-index minute breadth | none | UNAVAILABLE | Current constituent lists may not substitute; use governed ALL_A/SH_A/SZ_A/CHINEXT_BOARD views |
 | Strict archival PIT-A | none for the active minute source | UNAVAILABLE | All active minute conclusions remain bounded PIT-B |

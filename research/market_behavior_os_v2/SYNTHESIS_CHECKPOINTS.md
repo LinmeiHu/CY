@@ -1561,3 +1561,52 @@ near-touch band, favorable subset direction, process estimate, outcome, or
 sample enlargement. If support fails, deprioritize this temporal branch. If it
 passes, a same-level map may be considered as exploratory discovery only because
 the broad temporal sample is already consumed.
+
+## SYNTH-MKT-036 — after exact physical-level feasibility
+
+### What was learned?
+
+The rolling prior-low semantics almost never retest one unchanged coordinate.
+Only 7/315 primary L20-continuous repeated-test sequences keep one exact level
+across every tested day; blocks are 3/4 and two years have zero. L10, L40, and
+auction neighbors have only 5--9. Every predeclared count gate fails.
+
+This clarifies the earlier representation: a penetration often installs a new
+lower trailing minimum for the next session. Recovery-speed and recovery-
+activity rates therefore describe behavior around successive rolling objective
+lows, not repeated defense of one fixed price. Their representation stability
+remains valid, while a same-level defense interpretation is rejected.
+
+### What market behavior are we still not studying?
+
+Objective prior-high crossings, immediate rejection, time back below a crossed
+level, follow-through, pullback depth, VWAP acceptance, closing acceptance, and
+breakout-to-failure ordering remain unrepresented market-wide. Resistance role
+reversal, same-day event episodes, accumulation/distribution, full relative
+states, causal historical normalization, outcomes, and execution also remain.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The support result narrows an interpretation rather than creating a
+mechanism. No pullback, reversal, defense, breakout, or CHINEXT prototype is
+authorized.
+
+### Parallel-track awareness
+
+- **Market research:** preserve the rolling-level descriptors and deprioritize
+  their exact temporal branch; pivot to the distinct prior-high acceptance/
+  rejection representation family.
+- **Existing-strategy archaeology:** no strategy or outcome field was read; no
+  CHINEXT rule changes.
+- **Strategy invention:** none active; breakout research begins at representation
+  semantics, not an assumed strategy.
+
+### Research Director decision
+
+`DEPRIORITIZE_OBJECTIVE_SUPPORT_TEMPORAL_BRANCH_AND_PIVOT_BREAKOUT_ACCEPTANCE`.
+Build a deep map before estimates. Freeze causal prior-high L10/L20/L40,
+continuous/auction clocks, crossing and rejection episodes, immediate versus
+late acceptance, fixed generic price-path alternatives, and the boundary between
+completed-session predictor representation and post-cross attribution. Do not
+reuse CHINEXT outcomes, call a crossing a breakout success, or optimize minute
+windows.

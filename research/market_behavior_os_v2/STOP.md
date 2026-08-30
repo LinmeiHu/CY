@@ -50,3 +50,7 @@ and requires no raw-minute or resource expansion.
 
 That audit is frozen as MKT-SUPPORT-LVL-DATA-001. It is executable within a
 one-minute/1-GiB/zero-raw-read envelope, so no STOP condition is active.
+
+MKT-SUPPORT-LVL-DATA-001 completes and fails ordinary adequacy with seven primary
+cases. No STOP is active: the exact branch is deprioritized and the map-first
+objective breakout acceptance/rejection frontier is data-feasible in principle.

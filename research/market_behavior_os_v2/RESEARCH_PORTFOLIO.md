@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Two recovery trajectories are stable but rolling-level process claims fail; exact-level contract is frozen | Execute MKT-SUPPORT-LVL-DATA-001 count-only feasibility |
+| EXPLORE | 35% | Exact unchanged support levels are too sparse; breakout acceptance/rejection remains unrepresented | Freeze objective prior-high breakout representation and data semantics |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Stable rolling-level coordinates do not imply one defended price | Audit exact physical-level identity without tolerance or favorable subgroup direction |
+| FALSIFY | 20% | Stable rolling-level coordinates do not imply one defended price; exact identity has only seven cases | Preserve failure and forbid tolerance/subset rescue |
 
 Mandatory checkpoint questions:
 

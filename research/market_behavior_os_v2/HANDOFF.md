@@ -1089,3 +1089,15 @@ MKT-SUPPORT-LVL-DATA-001 is frozen under spec `cfd6cde6...` and contract
 binary equality across every tested day, all four fixed level/path views, and
 unchanged total/block/year count floors. Zero raw partitions, trajectory values,
 direction estimates, correlations, outcomes, strategy fields, or CY-011.
+
+MKT-SUPPORT-LVL-DATA-001 fails: primary unchanged-L20 repeated/twice-recovered
+counts are only 7/7, with blocks 3/4 and zero cases in 2019 and 2023. L10 is 9/7,
+L40 5/5, and L20 auction 7/7; every fixed gate fails. This shows the accepted
+rolling-level trajectories usually follow successive objective lows, not repeated
+defense of one unchanged price.
+
+Two runs reproduce exactly: count `0174c5ce...`, result `7ee82869...`, report
+`8e1caf61...`; five scalar cases and three focused tests pass. SYNTH-MKT-036
+deprioritizes the exact objective-support temporal branch while retaining its two
+descriptive coordinates. Next: build an objective prior-high breakout acceptance/
+rejection representation and PIT data map before computing any breakout path.

@@ -81,6 +81,10 @@ seconds, reads exactly 2,307,575 rows, and writes about 15.2 MB. The inherited
 3-GiB RSS, 8-GiB system-headroom, 20-GiB read, 100-MiB durable-output, and
 ten-minute ceilings all pass.
 
+MKT-SUPPORT-LVL-DATA-001 reads durable panels only, completes in under three
+seconds, reads zero raw partition rows, and writes under 1 MB. Its 1-GiB RSS,
+8-GiB headroom, 10-MiB output, and one-minute ceilings pass twice.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

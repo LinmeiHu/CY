@@ -534,7 +534,7 @@
 
 ## MKT-H-033 — unchanged objective-level feasibility
 
-- Status: `FROZEN_UNTESTED`.
+- Status: `HYPOTHESIS_REJECTED_INADEQUATE_EXACT_LEVEL_SUPPORT`.
 - Hypothesis: a sufficient subset of repeated-tested and twice-recovered
   sequences may retain the exact same causal prior-low bit pattern on every
   tested day, allowing a later same-physical-coordinate temporal map.
@@ -544,3 +544,7 @@
   day subset, sample enlargement, trajectory direction, or outcome can rescue.
 - Boundary: passing is semantic feasibility on already consumed exploratory
   data, not evidence of defense, strengthening, prediction, or usefulness.
+- Result: only 7 primary sequences keep one exact L20 across every tested day;
+  every block/year and L10/L40/auction neighbor floor fails. No same-level
+  dynamics map is authorized. This rejects the exact physical-coordinate branch,
+  not the broader support/resistance family or the two rolling-level descriptors.

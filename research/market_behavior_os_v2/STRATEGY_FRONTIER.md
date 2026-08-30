@@ -80,6 +80,11 @@ or supported recovery-completion transition. No outcome, trigger, habitat, or
 execution evidence exists. Pullback continuation, reversal, and support defense
 remain `WAIT_FOR_MARKET_MECHANISM` during the final exact-level feasibility audit.
 
+MKT-SUPPORT-LVL-DATA-001 leaves only seven unchanged-L20 sequences, so no
+same-price defense mechanism or archetype can be formed. Pullback/reversal/
+support-defense remain inactive. The next breakout-acceptance frontier is market
+representation work only and does not activate a breakout strategy.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

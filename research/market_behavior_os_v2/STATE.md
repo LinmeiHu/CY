@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-LVL-DATA-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: exact unchanged-price-level feasibility after rolling-level recovery process failure
+- `CURRENT_PHASE`: `SYNTH-MKT-036_COMPLETE_BREAKOUT_ACCEPTANCE_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: objective prior-high breakout and rejection/acceptance representation semantics
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -1108,6 +1108,26 @@ parsing; A,A,B is not constant. Primary L20 continuous, L10/L40 continuous, and
 L20 auction views have fixed total/block/year repeated-test and twice-recovered
 floors. This audit reads zero raw partition rows and computes no trajectory,
 direction, correlation, transition, process, payoff, or strategy field.
+
+MKT-SUPPORT-LVL-DATA-001 fails same-level adequacy decisively. Only 7/315
+primary L20-continuous repeated-test sequences keep one exact causal level on
+every tested day, versus 120 required; blocks are 3/4 versus 50 each and annual
+counts are 1/0/2/3/1/0 versus 15 each. All seven are twice recovered, still far
+below the frozen 100/40/15 recovery floors.
+
+Every fixed neighbor also fails: L10 continuous has 9 constant repeated and 7
+constant twice-recovered; L40 has 5/5; L20 auction has 7/7. The reason is
+semantically coherent with the rolling minimum: penetration often installs a
+new lower prior-low coordinate for the next session, so repeated testing of the
+definition is usually not repeated testing of one unchanged price.
+
+Five scalar cases reproduce exact binary bits/counts and two runs are byte-
+identical: count audit `0174c5ce...`, result `7ee82869...`, report `8e1caf61...`;
+three focused tests pass. Zero raw partitions, trajectories, directions,
+processes, outcomes, strategy fields, post-2023 data, or CY-011 were read.
+SYNTH-MKT-036 deprioritizes this exact objective-support temporal branch and
+pivots map-first to the structurally distinct objective prior-high breakout
+acceptance/rejection family.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

@@ -310,3 +310,9 @@ MKT-SUPPORT-LVL-DATA-001 is frozen under `cfd6cde6...`. Execute exact level-bit
 counts across L20 continuous, L10/L40 neighbors, and L20 auction using bound
 artifacts only. This is the final semantic feasibility audit, not a subgroup
 direction search or rescue of MKT-SUPPORT-DYN-001.
+
+MKT-SUPPORT-LVL-DATA-001 finds only 7 primary constant-level sequences and every
+neighbor/block/year gate fails. Do not add tolerance, select A,A from A,A,B,
+or enlarge the sample. The rolling-level coordinates remain descriptive but the
+exact temporal support branch is deprioritized. Map the distinct prior-high
+breakout acceptance/rejection family before any new coordinate construction.
