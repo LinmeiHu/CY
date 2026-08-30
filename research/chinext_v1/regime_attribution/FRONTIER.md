@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`PREREGISTER_ONE_GOVERNED_CHIP_BASE_COHERENCE_DISCOVERY_TEST`.
+`EXECUTE_PREREGISTERED_H025_CHIP_BASE_COHERENCE_DISCOVERY`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -69,10 +69,8 @@ requiring locked prospective validation.
 
 ## Exact next action
 
-Form H-025 and preregister one minimum-sufficient 2020-2023 CY-011 discovery
-experiment before its first chip/outcome association. Freeze a composite of
-narrow I90 width, prior-I90-band retention, and close-normalized upward
-average-cost migration; use MFE primary, fixed breadth/daily controls, I70 and
-binary endpoints as attacks, and exact immutable bindings. Do not inspect
-2024-2026, screen other chip fields, tune weights, create thresholds, or modify
-V1.
+Execute frozen EXP-CBC-001 after revalidating every bound identity and all 81
+CY-011 inventory files. Do not materialize 2024-2026, screen other chip fields,
+tune weights, create thresholds, or modify V1. If every gate passes, classify
+`VALIDATE` and stop before locked temporal validation; otherwise apply the frozen
+decision and continue from evidence without rescuing the chip family.

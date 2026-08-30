@@ -2,7 +2,7 @@
 
 ## Status
 
-`CY-011_ENTRY_COVERAGE_AUDIT_COMPLETE` on 2026-08-30.
+`EXP-CBC-001_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -86,6 +86,15 @@ entries have one strict, hard-valid 15:30 row with complete semantic fields and
 maximum mass error `1.89e-12`; no row after 2023 was materialized. Preregister at
 most one concentrated-base/upward-migration composite against MFE with H-004 and
 daily controls. The locked 2024-2026 validation range remains unopened.
+
+EXP-CBC-001 now freezes H-025: one equal-weight within-year rank composite of
+narrow I90 width, I90 retention, and close-normalized upward average-cost
+migration against continuous MFE in the exact 220-entry discovery sample. I70,
+opportunity20, non-false-breakout, breadth/daily state, LOYO, blocks,
+duration/exit, tails, security, industry, and component coherence are fixed
+attacks. Execute only after all 81 CY-011 identities pass. Do not touch locked
+2024-2026; a full pass means `VALIDATE` and requires stopping before that access.
+Spec SHA is `e919e3b8...`; runner SHA is `ecb68f64...`.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

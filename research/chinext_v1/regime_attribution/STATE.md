@@ -2,9 +2,9 @@
 
 ## CURRENT_PHASE
 
-CY-011_ENTRY_COVERAGE_AUDIT_COMPLETE — H-024 is rejected and the next independent
-frontier has 220/220 hard-valid PIT-B discovery rows. No chip/outcome association
-has been executed; 2024-2026 locked validation remains unopened.
+EXP-CBC-001_PREREGISTERED — H-025 freezes one chip-base coherence composite before
+its first chip/outcome association. The 220-row PIT-B discovery sample is exact;
+2024-2026 locked validation remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -924,6 +924,28 @@ authorization, a new experiment ID, and fresh isolated outputs.
   preregistered concentrated-base/upward-migration composite is justified; MFE
   must be primary and H-004 breadth/daily state must be controlled. No threshold,
   rule, replay, or strategy action is authorized.
+
+## AUTONOMOUS_CYCLE_EXP_CBC_001_PREREGISTRATION
+
+- H-025 freezes one equal-weight within-entry-year rank composite of narrow I90
+  width, I90 prior-band retention, and close-normalized upward average-cost
+  migration. No other CY-011 field, weight, threshold, or horizon is eligible.
+- The primary endpoint is continuous accepted MFE in exactly 220 authorized
+  2020-2023 entries. I70, opportunity20, and non-false-breakout are fixed attacks.
+- All 81 CY-011 files (5,778,765,864 bytes) must be size/hash verified before
+  materialization. Registry, inventory, manifest, gate, accepted outcomes, and
+  analysis helpers are hash-bound.
+- Fixed controls include H-004 breadth, V1 entry state, index trend/volatility,
+  beta, liquidity, and year. Falsification covers LOYO, two blocks, I70,
+  duration/exit, Top-4 PnL, severe losses, securities, industries, and component
+  coherence.
+- AVAILABLE_AT is signal-session 15:30 Asia/Shanghai. Potential action is next
+  valid session or later, but this discovery authorizes no action.
+- No 2024-2026 row may be materialized. A full pass means only `VALIDATE` and
+  requires an explicit stop before locked temporal validation.
+- Spec SHA `e919e3b8303a59b79bd1f0a5f4690c75bace18328a4b31324499c0b183ebdeed`;
+  runner SHA `ecb68f642260ca2193fc06326d2aa195471b1e92606edb3c48d34863d6d8ba0d`.
+  Status is frozen before the first chip/outcome association.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

@@ -1,0 +1,139 @@
+{
+  "experiment_id": "EXP-CBC-001",
+  "spec_id": "CHINEXT-V1-CHIP-BASE-COHERENCE-2020-2023-V1",
+  "status": "FROZEN_BEFORE_FIRST_CHIP_OUTCOME_ASSOCIATION",
+  "created_on": "2026-08-30",
+  "hypothesis_id": "H-025",
+  "evidence_grade": "EXPLORATORY_PIT_B_DISCOVERY",
+  "question": "Does a concentrated retained chip-cost base with upward marginal cost migration describe post-entry MFE opportunity beyond frozen H-004 breadth and daily V1/market/risk state?",
+  "mechanism": "If latent demand absorbs available supply without dispersing the established cost base, the central cost distribution should remain narrow and retained while marginal average cost migrates upward; that coherent state should permit greater subsequent favorable excursion.",
+  "prediction": "A fixed equal-weight within-entry-year rank composite of narrow I90 width, I90 base retention, and close-normalized upward average-cost migration has positive, stable raw and controlled association with MFE. I70, opportunity20, and non-false-breakout attacks retain the direction.",
+  "interpretation_boundary": "This is PIT-B discovery on already-consumed 2020-2023 outcomes. Even a passing result is not validated, cannot access the locked 2024-2026 partition automatically, and cannot authorize a chip threshold, signal, filter, ranking, sizing, entry, exit, replay, or production change.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_chip_base_coherence.py",
+      "sha256": "ecb68f642260ca2193fc06326d2aa195471b1e92606edb3c48d34863d6d8ba0d"
+    },
+    "runner_test": {
+      "path": "research/chinext_v1/regime_attribution/tests/test_chip_base_coherence.py",
+      "sha256": "16329a66e392f2460b5c9adcb6e4ae49130c551299d14a8cc8cb4917482d210a"
+    },
+    "accepted_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy011_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-011-chip-state-features-semantic-v3-20260822.json",
+      "sha256": "edde3818f2989043de756e95792737ecacec2ce91464aaf8846507fdc875383e"
+    },
+    "cy011_build_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/processed/chip_state_features_semantic_v3_2018_2026/manifest.json",
+      "sha256": "0f29784c2f28414781e735c44f4cb6d39554349360fc902626951ef08a161053"
+    },
+    "cy011_gate_audit": {
+      "path": "/Users/linmei/Documents/CY/data/audit/cyq_chip_state_features_semantic_v3_gate.json",
+      "sha256": "e9672bff295e7a464259cee99ac4efaec25f04e9a57aa1df55b9de9bb002ba05"
+    },
+    "accepted_partial_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_day5_market_stock_decomposition.py",
+      "sha256": "8a68d68d87b764f214aa0ccf03e5eb9f31ecd932d0ccc925c77d97711c8e908a"
+    },
+    "accepted_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    }
+  },
+  "cy011_inventory_contract": {
+    "files": 81,
+    "bytes": 5778765864,
+    "runtime_verification": "Every registered file must match recorded size and SHA-256 before feature materialization."
+  },
+  "sample": {
+    "discovery_rows": 220,
+    "control_complete": 220,
+    "opportunity20": 38,
+    "false_breakout": 125,
+    "severe_loss": 23,
+    "unique_securities": 172,
+    "unique_industries": 54,
+    "entry_year_counts": {"2020": 65, "2021": 61, "2022": 37, "2023": 57},
+    "eligibility": "Accepted V1 signal-date entries from 2020-01-01 through 2023-12-31 with exactly one strict, hard-valid CY-011 row available by signal-day 15:30 and complete frozen controls. No row from 2024-2026 may be materialized."
+  },
+  "block_counts": {
+    "EXTENDED_2018_2021": 126,
+    "HOLDOUT_O0_2022_2023": 94
+  },
+  "primary_feature": "chip_base_coherence = equal-weight mean of within-entry-year percentile ranks of -i90_width_pct, i90_base_retention, and average_cost_delta / cyqk_close_pre",
+  "primary_endpoint": "continuous accepted MFE",
+  "fixed_neighbors": {
+    "i70": "Replace I90 width and retention with I70 width and retention while preserving the migration component and equal weights",
+    "opportunity20": "accepted MFE >= 0.20; direction positive, but sparse 2022 event count prevents year-specific binary gates",
+    "non_false_breakout": "1 - accepted false_breakout; direction positive"
+  },
+  "fixed_controls": {
+    "continuous_ranked": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "post_outcome_sensitivity_only": ["holding_trading_days", "canonical_exit_reason"]
+  },
+  "gates": {
+    "raw": "MFE rho >=0.12, positive within-year rank rho, and exactly 4/4 positive LOYO estimates",
+    "controlled": "partial-rank MFE rho >=0.10 after fixed V1/market/breadth/beta/liquidity controls, with exactly 4/4 positive LOYO estimates",
+    "neighbors": "I70 MFE, opportunity20, and non-false-breakout rhos positive with >=3/4 positive LOYO estimates",
+    "temporal": "both fixed block MFE rhos estimable and positive",
+    "component_coherence": "at least two of three oriented component MFE rhos positive and none below -0.05",
+    "falsification": "duration/exit partial rho >=0.08; ex-Top4-PnL and ex-severe-loss rhos positive; >=80% positive leave-one-security and leave-one-industry omissions; component coherence passes",
+    "decision": {
+      "VALIDATE": "all five main gates pass; stop before locked 2024-2026 access and require explicit strategic review",
+      "REFINE": "raw and controlled pass but a neighbor, temporal, component, or falsification gate fails; no historical feature refinement",
+      "PIVOT": "raw passes but controlled fails",
+      "REJECT": "raw gate fails"
+    }
+  },
+  "available_at_timestamp": "SIGNAL_SESSION_15:30_ASIA_SHANGHAI",
+  "potential_action_timestamp": "NEXT_VALID_SESSION_OR_LATER_ONLY; DISCOVERY_AUTHORIZES_NO_ACTION",
+  "falsification": [
+    "exact 81-file CY-011 size and SHA-256 verification before every execution",
+    "strict PIT-B availability, snapshot, hard-valid, state-chain, and mass-conservation checks",
+    "exact logical exclusion of locked 2024-2026 rows",
+    "within-year ranks and four LOYO omissions",
+    "two fixed temporal blocks",
+    "frozen H-004 breadth plus V1, market trend/volatility, beta, and liquidity controls",
+    "I70 neighboring distribution definition and two fixed outcome neighbors",
+    "holding-duration and exit-reason mechanical sensitivity",
+    "Top-4 PnL and severe-loss removal, security, industry, and component coherence",
+    "one primary composite with no weights, fields, thresholds, or horizons selected after outcomes"
+  ],
+  "forbidden": [
+    "reading or materializing 2024-2026 locked validation rows or outcomes",
+    "screening other CY-011 features, selecting components, changing weights, or substituting I70 after results",
+    "chip thresholds, bins, interactions, filters, signals, ranking, sizing, entry, exit, replay, or production modification",
+    "using same-session information for a fill inside the signal bar",
+    "claiming strict PIT-A, prospective validation, causal effect, or performance improvement",
+    "invalid Phase 7/8/9 use"
+  ],
+  "outputs": [
+    "artifacts/chip_base_coherence_attribution.csv",
+    "artifacts/chip_base_coherence_attribution.json",
+    "reports/chip_base_coherence_attribution.md",
+    "reports/chip_base_coherence_evidence_packet.md"
+  ]
+}

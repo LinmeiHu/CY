@@ -525,3 +525,29 @@ byte-consistent with one another.
 - Status: `REJECTED` by valid EXP-SLP-001. All five gates fail. H-023 remains
   descriptive Day-3 localization only; no stop, exit, hold, threshold, replay,
   or V1 action is supported.
+
+### H-025 — pre-entry chip-base coherence
+
+- Question: does a concentrated retained chip-cost base with upward marginal
+  cost migration describe subsequent MFE beyond frozen H-004 breadth and daily
+  V1/market/risk state?
+- Mechanism: latent demand absorbs supply without dispersing the established cost
+  base, leaving a narrow retained central distribution while marginal average
+  cost migrates upward.
+- Prediction: one equal-weight within-year rank composite of narrow I90 width,
+  I90 retention, and close-normalized upward average-cost migration has positive,
+  stable raw and controlled MFE association.
+- Required data: accepted 2020-2023 V1 entries/outcomes and exact registered
+  CY-011 PIT-B semantic chip rows. 2024-2026 is locked and unavailable here.
+- Primary test: continuous MFE across the fixed 220-entry discovery sample. I70,
+  opportunity20, and non-false-breakout are fixed attacks.
+- Falsification: complete 81-file identity verification, PIT/snapshot/mass gates,
+  four LOYO, two blocks, breadth/daily controls, duration/exit, Top-4, severe
+  losses, securities, industries, and component coherence.
+- Metrics: raw and partial-rank associations with gates frozen in
+  `EXP-CBC-001_spec.json` SHA `e919e3b8...`.
+- Confounds: PIT-B rather than strict PIT-A; already-consumed outcomes; only four
+  discovery years; chip features are available at signal-day 15:30 and cannot
+  fill inside that bar.
+- Status: `PREREGISTERED_UNRESOLVED`. No chip/outcome association has been
+  executed. No threshold, filter, signal, replay, or strategy action is allowed.
