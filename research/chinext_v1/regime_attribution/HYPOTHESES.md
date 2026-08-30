@@ -273,3 +273,27 @@ byte-consistent with one another.
 - Status: `SUPPORTED_WITH_COMPLETED_PATH_QUALIFICATION` by EXP-FBB-001. The
   opportunity-before-adversity false-breakout topology is not an entry or exit
   signal and now motivates an independent entry-execution attribution.
+
+### H-017 — action-safe T+1 entry-gap mechanism
+
+- Question: does a stock-specific T+1 gap relative to 399102 contribute to the
+  supported false-breakout topology?
+- Mechanism: a gap-up fill may raise basis after the signal, leaving limited MFE
+  before internal opportunity-then-adversity reversal.
+- Prediction: action-safe stock-minus-market signal-close-to-T+1-open gap is
+  positively associated with false breakout and H-016 oriented path order.
+- Required data: exact accepted fill ledgers, action-safe signal/execution bars,
+  399102 close/open, H-016 paths, and accepted pre-entry controls.
+- Primary test: one continuous excess log gap versus false breakout, with
+  within-year ranks, LOYO, and one fixed market/pre-entry partial-rank design.
+- Falsification: raw stock gap, H-016 topology, duration/exit, actions, blocks,
+  Top-4 absolute gaps, Bottom-4 P&L, security, industry, and exact fill lineage.
+- Metrics: raw and controlled rank association; gates frozen in
+  `EXP-EGP-001_spec.json`.
+- Confounds: outcomes are already consumed; all fills are T+1 open, and no
+  counterfactual fill or deployable gap threshold is tested.
+- Result: primary raw/controlled rhos -0.072/-0.079, both 0/8 positive LOYO;
+  raw stock gap -0.099 and topology -0.061. All five gates fail. Every fill is
+  exactly T+1 open, so intraday fill premium has no variation.
+- Status: `REJECTED` by EXP-EGP-001. Entry gap does not explain false-breakout
+  topology and cannot support a gap filter or alternate-fill claim.

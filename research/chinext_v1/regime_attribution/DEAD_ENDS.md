@@ -33,6 +33,10 @@ Updated 2026-08-30 after resume integrity reconciliation.
   mechanism: raw association is positive, but the frozen magnitude/duration/
   entry/year/exit-controlled rho 0.076 fails the 0.10 gate. Do not tune the order
   normalization or controls to rescue the right-tail endpoint.
+- H-017's adverse T+1 entry-gap mechanism is rejected by EXP-EGP-001 with weak
+  opposite signs across raw, controlled, topology, blocks, and LOYO views. All
+  completed entries fill exactly at T+1 open, so there is no varying intraday
+  fill premium. Do not search inverse gaps, gap thresholds, or alternate fills.
 
 ## Invalid rather than rejected
 

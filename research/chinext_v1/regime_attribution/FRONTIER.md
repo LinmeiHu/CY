@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`DEEPEN_FALSE_BREAKOUT_AUDIT_ENTRY_EXECUTION_PREMIUM`.
+`REJECT_H017_AUDIT_ENTRY_COHORT_CROWDING`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,15 +49,14 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-EXP-FBB-001 establishes that opportunity-before-adversity order survives entry/
-exit-boundary removal and controls. The next unresolved question is whether
-false-breakout topology begins with an adverse entry execution premium relative
-to the signal close, or whether it emerges only after a normal T+1 fill.
+EXP-EGP-001 rejects stock-specific T+1 entry gap as the source of false-breakout
+topology. The next independent portfolio-level question is whether simultaneous
+new-entry cohort size dilutes selection quality or concentrates crowded breakout
+failures beyond breadth and fixed entry state.
 
 ## Exact next action
 
-Checkpoint EXP-FBB-001, then audit availability and exact hashes of accepted
-execution fills and signal-session closes without reading outcomes. If all three
-baseline ledgers and PIT/action-safe closes can be bound, freeze one continuous
-entry-premium attribution; otherwise record the data blocker and pivot.
+Checkpoint EXP-EGP-001, then outcome-blind audit same-day new-position cohort
+counts from the exact accepted ledgers. If cohort-date coverage and variation are
+adequate, preregister one cohort-date-level crowding experiment; otherwise pivot.
 EXP-P7-003 must never be silently repaired, rerun, or overwritten.

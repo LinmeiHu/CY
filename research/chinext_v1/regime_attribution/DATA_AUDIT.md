@@ -118,3 +118,12 @@ MAE-at-entry, 3 MFE-at-exit, and 24 MAE-at-exit paths. The frozen directional
 boundary-clean rule (exclude MFE-at-entry and MAE-at-exit) admits 265/399 cycles;
 requiring both extrema strictly inside the path admits 179/399. These counts were
 frozen without reading the false-breakout endpoint.
+
+EXP-EGP-001's outcome-blind entry audit binds the three accepted execution
+ledgers at their baseline-manifest hashes. Their 409 entry fills join 399/399
+completed cycles; the ten unmatched development entries are the already-known
+terminal open cycles. All 399 signal/execution bars are hard-valid, have one exact
+T+1 action-safe coordinate step, match ledger execution open exactly, and cover
+399102 signal close/execution open. Execution price equals execution open for all
+399, so intraday fill premium has no variation. No gap value was calculated
+before the stock-minus-market feature and gates were frozen.

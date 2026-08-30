@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-FBB-001_COMPLETE_DEEPEN` on 2026-08-30.
+`EXP-EGP-001_COMPLETE_REJECTED` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -49,6 +49,14 @@ EXP-FBB-001 is complete and passes all gates. Boundary-clean raw/controlled rhos
 are 0.600/0.183; strict-interior rho is 0.543; temporal, block, Bottom-4,
 holding>=5, security, and industry attacks survive. This supports completed-path
 false-breakout topology only, not an exit signal.
+
+EXP-EGP-001 is frozen before outcome testing. Exact accepted ledgers join all 399
+cycles and show every fill equals the T+1 open. The primary is the action-safe
+stock-minus-market overnight gap; its thirteen-input aggregate is `b1131b87...`.
+
+EXP-EGP-001 is complete and rejected. Raw/controlled gap rhos are -0.072/-0.079
+with 0/8 positive LOYO; all five gates fail and the topology association is also
+negative. Exact T+1-open implementation has no varying intraday slippage.
 
 ## Recovered autonomous environment
 
@@ -174,10 +182,9 @@ mechanisms.
 
 ## Required next action
 
-Checkpoint EXP-FBB-001, then outcome-blind audit exact accepted fills and
-signal-session closes for one continuous entry-execution-premium mechanism. Do
-not proceed if exact baseline-ledger identity or PIT/action-safe close semantics
-cannot be established.
+Checkpoint EXP-EGP-001, then outcome-blind audit exact-ledger same-day entry
+cohorts. If adequate, freeze a cohort-date-level H-018 crowding test rather than a
+pseudoreplicated trade-level primary.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

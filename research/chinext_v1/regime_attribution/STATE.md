@@ -2,8 +2,8 @@
 
 ## CURRENT_PHASE
 
-EXP-FBB-001_COMPLETE_DEEPEN — false-breakout opportunity-before-adversity order
-survives explicit entry/exit-boundary falsification. H-004 remains frozen for
+EXP-EGP-001_COMPLETE_REJECTED — false-breakout path topology remains supported,
+but stock-specific T+1 entry gap does not explain it. H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
 remain invalid. No strategy or production change is authorized.
 
@@ -519,6 +519,38 @@ authorization, a new experiment ID, and fresh isolated outputs.
   `19f3002d...`, report `0c795980...`.
 - Next highest-value question: whether entry execution premium/gap contributes
   to the supported false-breakout topology using exact accepted fill lineage.
+
+## AUTONOMOUS_CYCLE_EXP_EGP_001_PREREGISTRATION
+
+- H-017 tests one action-safe stock-minus-399102 log gap from signal close to the
+  exact T+1 execution open against false breakout and H-016 topology.
+- All 399 fills equal execution open exactly. The varying mechanism is overnight
+  entry timing, not intraday slippage; no alternate fill is constructed.
+- Fixed controls include market gap and accepted pre-entry V1/market/breadth/
+  beta/volatility/liquidity state. Duration/exit is a separate sensitivity.
+- LOYO, years, blocks, absolute-gap and loss tails, actions, securities, and
+  industries are frozen attacks. No gap threshold or strategy rule is allowed.
+- Spec SHA `8aaa5cea...`; thirteen-input aggregate `b1131b87...`.
+- Status: frozen before the first entry-gap/outcome calculation.
+
+## AUTONOMOUS_CYCLE_EXP_EGP_001_RESULT
+
+- All 399 exact T+1-open fills and action-safe coordinates reconcile; only one
+  entry step contains a supported corporate action. Intraday fill premium is
+  exactly zero for every completed cycle.
+- Stock-minus-market entry gap versus false breakout: raw rho -0.072,
+  within-year -0.084, 0/8 positive LOYO. Controlled rho is -0.079 with 0/8;
+  duration/exit rho -0.056.
+- Raw stock gap rho is -0.099 and the H-016 topology association is -0.061,
+  both with 0/8 positive LOYO. All three blocks are negative and all five gates
+  fail.
+- Secondary MFE/terminal-return rhos are weakly positive 0.078/0.071, so the
+  preregistered adverse-gap mechanism is contradicted rather than merely absent.
+- Decision `REJECT`; do not search inverse or thresholded gap definitions.
+- Two runs are byte-identical. Output hashes: table `8cc3a20a...`, JSON
+  `44448b73...`, report `ea7bdc23...`.
+- Next independent question: whether same-day entry cohort size/crowding explains
+  false-breakout incidence after breadth and entry-state controls.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

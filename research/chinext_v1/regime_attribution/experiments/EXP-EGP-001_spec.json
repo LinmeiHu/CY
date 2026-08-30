@@ -1,0 +1,138 @@
+{
+  "experiment_id": "EXP-EGP-001",
+  "spec_id": "CHINEXT-V1-ACTION-SAFE-T1-ENTRY-GAP-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_ENTRY_GAP_OUTCOME_TEST",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_ENTRY_TIMING_MECHANISM",
+  "hypothesis_id": "H-017",
+  "question": "Does a stock-specific T+1 entry gap relative to 399102 contribute to the supported false-breakout topology?",
+  "mechanism": "Gap-up execution may raise the entry basis after the signal, leaving limited favorable excursion before an internal opportunity-then-adversity reversal.",
+  "prediction": "Action-safe stock-minus-market signal-close-to-T+1-open gap is positively and stably associated with false breakouts and with the H-016 MFE-before-MAE topology after pre-entry and market controls.",
+  "interpretation_boundary": "Every accepted fill is exactly the T+1 open. The experiment tests overnight entry timing, not intraday slippage, and does not test avoiding or resizing a fill.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_entry_gap_premium_attribution.py",
+      "sha256": "18c54a2de063e7ffa93cd3fca5702f106991505829db1d277b68701487c4a0c0"
+    },
+    "accepted_boundary_table": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/false_breakout_boundary_attribution.csv",
+      "sha256": "b09dc954daf5f07d4679ff4f8b9b655c06c18119d4dcd865d8a5414f8e4cf746"
+    },
+    "accepted_boundary_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/false_breakout_boundary_falsification.json",
+      "sha256": "19f3002df930184301313b96810f535f3c7be44c243f2b97036c69ed3477d94c"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "development_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/development_execution_ledger.jsonl",
+      "sha256": "f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5"
+    },
+    "extended_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/extended_execution_ledger.jsonl",
+      "sha256": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"
+    },
+    "holdout_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/holdout_execution_ledger.jsonl",
+      "sha256": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"
+    },
+    "phase2_action_safe_builder": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "accepted_wla_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-WLA-001_spec.json",
+      "sha256": "b46c233662f47f38e9557daf938af9d0fb6f9944bb396906e3457505280ae9e4"
+    },
+    "accepted_control_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "accepted_partial_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_entry_landmark_emergence.py",
+      "sha256": "b95179c18b83e7ef4504dad8bc30a691f659a3fe2210d2f20896f1ba5495a750"
+    },
+    "accepted_boundary_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_false_breakout_boundary_falsification.py",
+      "sha256": "7d4d48d255a68f4f5564c2b5c173017c13843985b4e75d692910e186bed8a5c9"
+    },
+    "index_399102_bars": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    }
+  },
+  "transient_contract": {
+    "canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "sample": {
+    "completed_cycles": 399,
+    "false_breakouts": 213,
+    "execution": "all 399 completed entries fill exactly at the next trading-session open",
+    "eligibility": "exact accepted fill plus hard-valid signal and execution bars plus valid corporate-action coordinate and 399102 close/open",
+    "missingness": "fail closed; no fill substitution, price imputation, post-entry extension, or replay"
+  },
+  "primary_feature": "log(action-safe stock T+1 execution-open / signal close) minus log(399102 T+1 open / signal close)",
+  "primary_endpoint": "false_breakout = mfe < 0.10 and round_trip_return <= 0",
+  "topology_companion": "positive association with H-016 oriented order, where positive means MFE occurs before MAE",
+  "fixed_controls": {
+    "continuous_ranked": [
+      "market_entry_gap_log",
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "post_outcome_sensitivity": ["holding_trading_days", "canonical_exit_reason"]
+  },
+  "fixed_neighbor": "raw action-safe stock signal-close-to-T+1-open log gap without market subtraction",
+  "gates": {
+    "raw": "primary rho >= 0.10, positive within-year rank rho, and >=7/8 positive LOYO",
+    "controlled": "pre-entry/market partial-rank rho >= 0.10 and >=7/8 positive controlled LOYO",
+    "topology": "primary versus H-016 oriented-order rho >= 0.10, positive within-year rho, and >=7/8 positive LOYO",
+    "neighbor": "raw stock-gap rho positive with >=6/8 positive LOYO",
+    "falsification": "ex-Top-4 absolute gaps, ex-global-Bottom-4 P&L, no-action, and duration/exit estimates each >=0.05; >=80% positive leave-one-security and leave-one-industry omissions; >=2/3 positive baseline blocks",
+    "decision": {
+      "DEEPEN": "all five gates pass",
+      "REFINE": "raw and controlled pass but at least one topology/neighbor/falsification gate fails",
+      "PIVOT": "raw passes but controlled fails",
+      "REJECT": "raw gate fails"
+    }
+  },
+  "falsification": [
+    "exact three-ledger hashes and one-to-one completed-cycle fill joins",
+    "execution price equals execution open exactly for all 399 cycles",
+    "one valid action-safe coordinate step for all 399 entries",
+    "stock-specific gap after 399102 gap subtraction",
+    "fixed pre-entry market, breadth, beta, volatility, and liquidity controls",
+    "within-year ranks, per-year estimates, and eight LOYO omissions",
+    "H-016 false-breakout topology companion",
+    "global Bottom-4 P&L and Top-4 absolute-gap removal",
+    "corporate-action-step exclusion and duration/exit sensitivity",
+    "leave-one-security and leave-one-industry omissions",
+    "three independent baseline blocks",
+    "zero post-entry rows, replays, counterfactual fills, or strategy rules"
+  ],
+  "forbidden": [
+    "calling the entry gap execution slippage or a deployable gap filter",
+    "testing an alternate fill, entry cancellation, sizing, ranking, exit, or production change",
+    "changing index subtraction, feature, endpoint, controls, neighbors, or gates after results",
+    "thresholding or searching gap definitions",
+    "breadth historical redesign or invalid Phase 7/8/9 use",
+    "untouched OOS or PIT-A claim"
+  ],
+  "outputs": [
+    "artifacts/entry_gap_premium_attribution.csv",
+    "artifacts/entry_gap_premium_attribution.json",
+    "reports/entry_gap_premium_attribution.md"
+  ]
+}
