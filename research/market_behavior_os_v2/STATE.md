@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-001_FROZEN_AUDIT_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -807,6 +807,20 @@ five same-session size representations remain valid, but the preregistered
 style temporal branch establishes no self-process or participation precursor.
 SYNTH-MKT-028 diversifies to objective cross-day support-defense data semantics
 before representation construction. No S1--S12 STOP is active.
+
+The objective-support data contract and MKT-SUPPORT-DATA-001 spec `3d86cb04...`
+are frozen before new raw minute access. Prior 10/20/40-session daily-low
+candidates use the existing causal cash/share action bridge; every step must be
+valid, rights/unresolved/blocking actions fail, and no future-adjusted price may
+enter.
+
+Current raw minute OHLC maps into the same continuous coordinate only after an
+exact 241-row session and exact QD-004/CY-006 close identity. This makes the
+audit descriptor available at 15:30, never intraday. The fixed audit contains
+the accepted 1,200 minute sessions plus five hash-selected supported actions in
+each 2018--2023 year, and a full daily market-population audit. Execute without
+outcomes or CY-011; any coordinate, grid, action, lineage, or population failure
+fails closed.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

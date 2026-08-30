@@ -198,3 +198,9 @@ cannot rescue. Close exact style temporal search. The active frontier diversifie
 to MKT-SUPPORT-DATA-001 map-first: determine whether objective prior price levels
 and minute test/penetration/recovery can be placed in one exact PIT and corporate-
 action coordinate before constructing a support-defense representation.
+
+MKT-SUPPORT-DATA-001 is frozen under spec `3d86cb04...`. It audits the accepted
+1,200 sessions plus 30 hash-selected supported action sessions, exact 10/20/40
+prior-low coordinates, 241 raw bars, daily/minute close identity, limit state,
+snapshot lineage, and full daily population. Execute fail-closed; no support or
+recovery representation exists merely because a coordinate is computable.

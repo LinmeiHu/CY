@@ -1,0 +1,179 @@
+{
+  "experiment_id": "MKT-SUPPORT-DATA-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_NEW_RAW_MINUTE_ACCESS",
+  "question": "Can prior objective daily lows and current raw minute prices be expressed in one exact PIT-B corporate-action coordinate for market-wide support-defense research?",
+  "research_role": "data-contract and coordinate feasibility only",
+  "inputs": {
+    "registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "qd004_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+      "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_audit": {
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/audit.json",
+      "sha256": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b"
+    },
+    "cy008_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+      "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"
+    },
+    "cy008_audit": {
+      "path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json",
+      "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"
+    },
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "accepted_minute_sample": {
+      "path": "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_sample.csv",
+      "sha256": "6cc2f9b692274a2dcb309f368f0efc710cec464d38fe77146e03197c595bf6e4"
+    },
+    "action_coordinate_reference": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_brth_001.py",
+      "sha256": "2b5d8b476426ae7cdaf1cd6e28c9f899e422d764b7765b7bb74fdf1cd6198cf7"
+    },
+    "minute_adapter_reference": {
+      "path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py",
+      "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"
+    }
+  },
+  "required_partitions": {
+    "qd004": [
+      "bars/2018_day_parquet_none.parquet",
+      "bars/2019_day_parquet_none.parquet",
+      "bars/2020_day_parquet_none.parquet",
+      "bars/2021_day_parquet_none.parquet",
+      "bars/2022_day_parquet_none.parquet",
+      "bars/2023_day_parquet_none.parquet"
+    ],
+    "cy006": [
+      "partition_year=2018/data_0.parquet",
+      "partition_year=2019/data_0.parquet",
+      "partition_year=2020/data_0.parquet",
+      "partition_year=2021/data_0.parquet",
+      "partition_year=2022/data_0.parquet",
+      "partition_year=2023/data_0.parquet"
+    ],
+    "cy008_daily": [
+      "daily/partition_year=2018/data_0.parquet",
+      "daily/partition_year=2019/data_0.parquet",
+      "daily/partition_year=2020/data_0.parquet",
+      "daily/partition_year=2021/data_0.parquet",
+      "daily/partition_year=2022/data_0.parquet",
+      "daily/partition_year=2023/data_0.parquet"
+    ]
+  },
+  "date_range": {
+    "start": "2018-01-02",
+    "end": "2023-12-29",
+    "years": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "exchange_sessions": 1457
+  },
+  "action_coordinate": {
+    "no_action_bridge": "previous raw close",
+    "supported_action_bridge": "(previous raw close - causal cash_per_share) / causal share_multiplier",
+    "rights_ratio_required": 0,
+    "share_multiplier_strictly_positive": true,
+    "bridge_strictly_positive": true,
+    "all_required_steps_valid": true,
+    "future_adjustment": false,
+    "chain_repair_or_fill": false
+  },
+  "support_candidates": {
+    "primary_previous_sessions": 20,
+    "fixed_feasibility_neighbors": [
+      10,
+      40
+    ],
+    "price": "minimum action-coordinate daily low through t-1",
+    "available_at": "t-1 15:00 Asia/Shanghai"
+  },
+  "minute_contract": {
+    "timestamp": "completed Asia/Shanghai bar end",
+    "grid": "09:30 auction plus 09:31..11:30 and 13:01..15:00",
+    "rows_per_session": 241,
+    "price_basis": "raw/unadjusted adjust=none",
+    "volume_unit": "shares",
+    "amount_unit": "CNY",
+    "current_scale": "action-coordinate close(t) / exact-equal raw daily close(t)",
+    "descriptor_available_at": "t 15:30 Asia/Shanghai",
+    "same_bar_or_same_session_action": false,
+    "missing_policy": "FAIL_CLOSED_NO_REPLACEMENT"
+  },
+  "sample": {
+    "accepted_market_sessions": 1200,
+    "supported_action_sessions_per_year": 5,
+    "supported_action_years": 6,
+    "action_minimum_date_in_year": "03-01",
+    "action_selection_order": "SHA256(MKT-SUPPORT-DATA-001|year|symbol|trade_date)",
+    "selection_source": "CY-006 only; minute completeness and support behavior prohibited",
+    "expected_cohort_rows": 1230,
+    "cohort_identity_preserved_on_duplicate_security_date": true
+  },
+  "full_daily_population_minimums": {
+    "ALL_A": 1000,
+    "SH_A": 400,
+    "SZ_A": 400,
+    "CHINEXT_BOARD": 200,
+    "denominators": [
+      "ALL_STATUS",
+      "NON_ST"
+    ],
+    "first_eligible_date": "after forty completed exchange sessions",
+    "every_date_required": true
+  },
+  "gates": {
+    "exact_input_and_partition_identities": true,
+    "exact_sample_cohort_rows": 1230,
+    "action_cohort_rows_each_year": 5,
+    "zero_duplicate_source_keys": true,
+    "zero_time_travel_rows": true,
+    "zero_invalid_action_coordinate_rows": true,
+    "zero_rights_or_blocking_action_rows": true,
+    "zero_minute_grid_or_reconciliation_failures": true,
+    "zero_daily_minute_close_mismatches": true,
+    "zero_transformed_close_identity_failures": true,
+    "all_10_20_40_prior_levels_positive_finite": true,
+    "all_daily_view_denominator_population_minimums": true,
+    "no_rescue": "No sample replacement, source substitution, tolerance introduction, action-chain repair, lookback selection, current/future adjustment, population-floor relaxation, or favorable cohort may rescue a failed data-contract gate."
+  },
+  "prohibited_inputs": [
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "future market, industry, stock, or strategy return",
+    "minute completeness or support behavior during action-session selection",
+    "adjusted vendor minute prices or future-adjusted daily prices",
+    "rights, blocking, unresolved, late, conflicting, or unsupported corporate actions",
+    "unregistered fallback data",
+    "post-2023 partitions",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only PIT-B data and coordinate feasibility for a later objective support-defense representation map; it does not validate support, defense, recovery, accumulation, prediction, habitat, timing, execution, or a strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-001_sample.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-001_coordinate_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-001_population_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-DATA-001_audit.md"
+  ]
+}

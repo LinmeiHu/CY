@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Exact style self/precursor processes are closed; objective price-level defense remains unrepresented | Map PIT/action feasibility of market-wide support tests and recovery |
+| EXPLORE | 35% | Exact style self/precursor processes are closed; objective price-level defense remains unrepresented | Execute frozen PIT/action/minute coordinate audit |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | Objective support defense could diversify pullback/reversal mechanisms if representation exists | Keep archetypes inactive until PIT representation and temporal meaning |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

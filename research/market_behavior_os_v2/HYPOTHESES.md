@@ -428,3 +428,16 @@
 - Boundary: the exact style temporal branch is closed without additional edges
   or horizons. Same-session size roles remain representations only; no size
   premium, payoff, habitat, timing, or strategy is established.
+
+## MKT-H-028 — objective cross-day support coordinate feasibility
+
+- Status: `FROZEN_DATA_AUDIT_PENDING`.
+- Candidate coordinate: prior 10/20/40 causal adjusted daily lows through t-1
+  compared with raw t minute prices mapped by the completed current cash/share
+  action scale.
+- Audit: exact source identities, every action-chain step, rights/blocking
+  exclusion, 241-bar grid, CY-006/CY-008 snapshot binding, exact daily/minute
+  close identity, 1,200 accepted sessions plus 30 action sessions, and full
+  daily population floors.
+- Boundary: coordinate feasibility is not support, defense, recovery,
+  accumulation, future payoff, habitat, timing, execution, or a strategy.

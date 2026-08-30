@@ -85,6 +85,8 @@
 | `MARKET_SIZE_PARTICIPATION_PRECURSOR_MAP.md` | Frozen single size-participation-to-future-transition edge and neighbor/control architecture |
 | `experiments/MKT-STYLE-PART-DYN-001_spec.json` | Frozen precursor response, reused blocks, corrected rank estimator, and no-rescue gates |
 | `reports/MKT-STYLE-PART-DYN-001_dynamics.md` | Failed size-participation precursor and non-rescuing favorable phase sample |
+| `OBJECTIVE_SUPPORT_DATA_CONTRACT.md` | Frozen prior-level/current-minute PIT and corporate-action coordinate semantics |
+| `experiments/MKT-SUPPORT-DATA-001_spec.json` | Frozen bounded raw-minute/action audit and full daily population gates |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

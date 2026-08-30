@@ -841,3 +841,17 @@ CY-011 was read. Close the exact style temporal branch without another edge or
 horizon. SYNTH-MKT-028 selects MKT-SUPPORT-DATA-001 map-first: establish exact
 PIT, corporate-action-coordinate, prior-level, minute-timestamp, and support-
 test feasibility before defining any market-wide objective support defense.
+
+MKT-SUPPORT-DATA-001 is frozen under SHA-256
+`3d86cb04a1bfaecbcc43621115edf8a3838d7bd19e717e53c07e9360469e426a`
+before new QD-004 access. It binds exact registry/calendar/QD-004/CY-006/CY-008/
+QD-010 identities, the accepted 1,200-session minute sample, and the established
+action-coordinate/minute-adapter implementations.
+
+Audit prior 10/20/40 adjusted daily lows through t-1 and map the exact raw t
+minute path into the same causal cash/share coordinate. Rights, blocking or
+unresolved actions, invalid chain steps, incomplete grids, daily/minute close
+disagreement, time travel, and population shortfalls all fail closed. Add exactly
+five hash-selected supported action sessions per year without inspecting minute
+behavior. The output is data feasibility only, available at 15:30; no support,
+recovery, accumulation, payoff, strategy, or CY-011 claim is allowed.
