@@ -2,12 +2,12 @@
 
 ## Status
 
-`EXP-IBQ-002_PREREGISTERED` on 2026-08-30.
+`EXP-IBQ-002_COMPLETE_REJECTED` on 2026-08-30.
 
-H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier is
-now integrated and ranked first. EXP-IBQ-001 freezes one completed entry-signal-
-session path-acceptance composite under spec SHA `298cd0ba...`; no intraday
-outcome association has yet been executed or inspected.
+H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
+integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
+entry-signal-session path-acceptance composite under spec SHA `298cd0ba...` but
+stopped before any intraday outcome association was executed or inspected.
 
 The outcome-blind audit finds 399/399 hard-valid signal sessions, 96,159 exact
 QD-004 bars, and exact agreement with 2,394 CY-008 opening windows. Features are
@@ -19,15 +19,21 @@ EXP-IBQ-001 is invalid with no scientific estimate or output. It stopped at the
 first endpoint-count assertion because 80 (the Phase-6 control-complete subset)
 was mistaken for the accepted 84 opportunity20 cycles. EXP-IBQ-002 preserves all
 science and corrects only assertions to 84 opportunity20, 213 false breakouts,
-zero overlap, and primary n=297, with fresh outputs. Execute spec SHA
+zero overlap, and primary n=297, with fresh outputs. It executed under spec SHA
 `7ac82fe8...` without changing definitions, gates, controls, or interpretation.
 
-EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
-demand/compression mechanism is rejected after 399 complete cycles, 2,793
-hard-valid trajectory rows, two byte-identical runs, and the full preregistered
-falsification set. EXP-P7-003 is invalidated, and Phase 8/9 plus `FINAL_REPORT.md`
-are downstream-invalid. Frozen V1 remains unchanged; no strategy or production
-action is authorized.
+EXP-IBQ-002 validly rejects H-021: raw/controlled rhos 0.012/-0.009, LOYO 6/8
+and 2/8, block rhos +0.107/+0.003/-0.132, and all five gates fail. The descriptive
+VWAP-time component is not selected. Two runs are byte-identical; no strategy
+action is authorized. The next ranked independent question is a fixed day-5
+market-versus-stock decomposition of H-013, not another intraday feature search.
+
+EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
+pre-entry demand/compression mechanism remains rejected after 399 complete
+cycles, 2,793 hard-valid trajectory rows, two byte-identical runs, and the full
+preregistered falsification set. EXP-P7-003 is invalidated, and Phase 8/9 plus
+`FINAL_REPORT.md` are downstream-invalid. Frozen V1 remains unchanged; no
+strategy or production action is authorized.
 
 EXP-ICD-001 is complete and rejected. The fixed 296-cycle sample has 14 extreme
 winners, but neither industry-market relative20 nor stock-industry residual20

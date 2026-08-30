@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`PREREGISTER_EXP_IBQ_002_CLEAN_ENTRY_SIGNAL_PATH_ACCEPTANCE`.
+`REJECT_H021_PIVOT_TO_DAY5_MARKET_STOCK_DECOMPOSITION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -55,12 +55,10 @@ entry-signal sessions: 96,159 frozen QD-004 bars, 399 CY-008 daily gates, and
 whether persistent price acceptance is visible on the completed entry-signal
 session, before the T+1 entry and earlier than H-019's descriptive day-5 boundary.
 
-H-021/EXP-IBQ-002 freezes one three-component continuous path-acceptance score.
-The primary compares the existing 80 opportunity20 paths with 213 existing false
-breakouts, then controls the complete daily OHLC/amount bar, V1 state, market,
-breadth, beta, liquidity, and year. It includes LOYO, block, tail, security,
-industry, five-minute, and auction-semantic attacks. No threshold, interaction,
-rule, or original-breakout-time claim is allowed.
+H-021/EXP-IBQ-002 is complete and rejected. The valid 84-opportunity/213-false
+primary has raw/controlled rhos 0.012/-0.009, conflicting block signs, and zero
+passing gates. Five-minute and auction neighbors agree. The descriptive VWAP-time
+component cannot be selected after the failed composite.
 
 The actual earlier lifecycle `breakout_at` and support are not retained for all
 accepted cycles. The experiment is explicitly the entry-signal/retest-confirmation
@@ -68,11 +66,9 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Execute EXP-IBQ-002 exactly under spec SHA `7ac82fe8...`, apply its frozen gates,
-persist the scientific decision, then rerank. Do not pursue H-007 interactions,
-mine intraday thresholds, infer order flow, or repair EXP-RTD-001/EXP-P7-003.
-
-EXP-IBQ-001 is invalid with no estimate: its count assertion used the 80-row
-Phase-6 control-complete subset instead of the accepted 84 opportunity20 endpoint.
-EXP-IBQ-002 changes only identity, output paths, and count assertions to
-84/213/297; the H-021 science is unchanged.
+Preregister the minimum-sufficient day-5 market-versus-stock decomposition of the
+accepted H-013 separation. Test whether stock-specific day-5 excess, rather than
+contemporaneous 399102 movement, carries the already-known extreme-winner
+association. Preserve the accepted 295 survivors, action-safe return, fixed
+entry controls, and explanatory-only boundary. Do not revisit intraday components,
+thresholds, H-018/H-019, EXP-RTD-001, or EXP-P7-003.

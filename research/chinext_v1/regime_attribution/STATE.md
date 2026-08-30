@@ -2,8 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-IBQ-002_PREREGISTERED — H-021 clean re-execution after EXP-IBQ-001 stopped
-before scientific calculation on a frozen expected-count binding error.
+EXP-IBQ-002_COMPLETE_REJECTED — H-021 entry-signal-session path acceptance is
+weak raw, absent after daily controls, and block-unstable. EXP-IBQ-001 remains
+invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
@@ -710,6 +711,28 @@ authorization, a new experiment ID, and fresh isolated outputs.
   are the fresh ID/output paths and assertions 84/213/297. Spec SHA
   `7ac82fe890aa51afeddee5e13b173bf111370057c796fb6beb25493ea3cdb39d`;
   status frozen before the first valid intraday-feature/outcome association.
+
+## AUTONOMOUS_CYCLE_EXP_IBQ_002_RESULT
+
+- Valid population: 399 completed cycles, 84 fixed opportunity20 successes, 213
+  fixed false breakouts, zero overlap, 297 primary rows, and 286 fixed-control-
+  complete primary rows.
+- Primary raw/within-year rhos are 0.012/0.015 with 6/8 positive LOYO. The fixed
+  daily-bar/V1/market/risk/year partial rho is -0.009 with only 2/8 positive LOYO.
+- Independent block rhos are +0.107 DEVELOPMENT, +0.003 EXTENDED, and -0.132
+  HOLDOUT. The temporal gate fails.
+- Full-sample opportunity20 rho is -0.003 (3/8 LOYO) and non-false-breakout rho
+  is 0.036. Five-minute and auction-neighbor composites are 0.013 and 0.012.
+- Ex-Top4 P&L, ex-extreme-winner, and ex-severe-loss rhos are 0.019/0.006/-0.003.
+  Security/industry leave-one-out minima cross zero. Every frozen gate fails.
+- Time above session VWAP alone is descriptive at 0.095 with 8/8 LOYO, but path
+  efficiency is 0.032 and opening-peak retention is -0.001. The component cannot
+  replace the failed preregistered composite or start a threshold search.
+- All 399 sessions, 96,159 raw bars, 2,394 CY-008 windows, timestamps, and hashes
+  pass; two complete executions are byte-identical. Output hashes: table
+  `b503ec0c...`, JSON `c7b70809...`, report `40621bd9...`, packet `6c523c2a...`.
+- Scientific decision: `REJECTED`. No intraday filter, confirmation rule, entry,
+  exit, sizing, overlay, order-flow claim, or strategy modification is authorized.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

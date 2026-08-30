@@ -52,6 +52,13 @@ Updated 2026-08-30 after resume integrity reconciliation.
   relationships are positive, but the fixed breadth/trend residual is 0.002 and
   the block signs are unstable. Do not search tail thresholds, interactions, or
   substitute this feature for frozen H-004 breadth.
+- H-021's entry-signal-session intraday path-acceptance mechanism is rejected by
+  EXP-IBQ-002. The fixed composite is 0.012 raw and -0.009 after complete daily-
+  bar/V1/market/risk controls, block signs conflict, all gates fail, and 1m/5m/
+  auction definitions agree on weakness. Do not select the descriptive VWAP-time
+  component post hoc, search clock-time thresholds, swap outcome definitions,
+  or turn the entry-signal day into a filter. Original lifecycle breakout timing
+  remains a separate lineage gap, not a license to relabel this failed event.
 
 ## Invalid rather than rejected
 
@@ -68,5 +75,9 @@ Updated 2026-08-30 after resume integrity reconciliation.
   scientific evidence, because they consume EXP-P7-003 ledgers.
 - EXP-RTD-001 is permanently invalid after its duplicate-column implementation
   failure. Its scientific question was cleanly re-executed only as EXP-RTD-002.
+- EXP-IBQ-001 is permanently invalid after its expected-count binding confused
+  80 Phase-6 control-complete opportunities with the accepted 84 Phase-5
+  opportunity20 cycles. It stopped before any scientific calculation and has no
+  outputs. H-021 was cleanly executed only as EXP-IBQ-002.
 
 Do not delete, overwrite, silently repair, or cite an invalid branch as evidence.

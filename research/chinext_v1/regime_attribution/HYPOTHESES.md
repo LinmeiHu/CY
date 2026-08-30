@@ -405,7 +405,12 @@ byte-consistent with one another.
 - Confounds: all history is outcome-consumed PIT-B; the feature session is the
   accepted retest-confirmation/entry-intent date, not the earlier lifecycle
   breakout. Full-session data are available only at 15:30 for T+1 or later.
-- Status: `PREREGISTERED` under clean EXP-IBQ-002. EXP-IBQ-001 is invalid because
+- Result: primary raw/controlled rhos are 0.012/-0.009 with 6/8 and 2/8
+  positive LOYO. Blocks are +0.107/+0.003/-0.132; the opportunity20 full-sample
+  rho is -0.003; five-minute and auction neighbors are 0.013/0.012; all five
+  gates fail. Time above VWAP alone is descriptive at 0.095 with 8/8 LOYO but is
+  not a replacement hypothesis after the preregistered composite failed.
+- Status: `REJECTED` by EXP-IBQ-002. EXP-IBQ-001 is invalid because
   it confused the accepted 84-opportunity endpoint with the 80-row Phase-6
   control-complete subset and stopped before any association. EXP-IBQ-002 changes
   only identity, outputs, and assertions to 84/213/297; no scientific definition,

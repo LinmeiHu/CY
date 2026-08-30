@@ -1,0 +1,260 @@
+{
+  "attacks": {
+    "ex_extreme_winners": 0.006181037237439912,
+    "ex_severe_losses": -0.002833727830669413,
+    "ex_top4_absolute_pnl": 0.01906533281570498,
+    "industry_leave_one_out": {
+      "groups": 63,
+      "maximum": 0.038953745237682844,
+      "minimum": -0.009289126368262455,
+      "positive_fraction": 0.9365079365079365
+    },
+    "security_leave_one_out": {
+      "groups": 226,
+      "maximum": 0.02918847620387499,
+      "minimum": -0.01574485532084303,
+      "positive_fraction": 0.995575221238938
+    }
+  },
+  "audit": {
+    "available_at_timestamp": "entry signal session 15:30 Asia/Shanghai",
+    "continuous_bar_rows": 95760,
+    "cy008_daily_hard_valid": 399,
+    "cy008_opening_windows_hard_valid": 2394,
+    "feature_rows": 399,
+    "flat_signal_sessions": 1,
+    "identity_rows": 399,
+    "maximum_relative_opening_window_difference": 0.0,
+    "potential_action_timestamp": "T+1 open or later; never same-session",
+    "raw_bar_rows": 96159
+  },
+  "components": {
+    "opening_peak_retention": {
+      "loyo": {
+        "positive": 4,
+        "total": 8,
+        "values": {
+          "2018": 0.002894871544692569,
+          "2019": -0.023832255270898904,
+          "2020": -0.022758074073543178,
+          "2021": 0.04065992404154148,
+          "2022": -0.008401778481914991,
+          "2023": 0.0076087616392298985,
+          "2024": 0.02594826411308802,
+          "2025": -0.03523456207749876
+        }
+      },
+      "rho": -0.0010901430927141237
+    },
+    "path_efficiency_1m": {
+      "loyo": {
+        "positive": 7,
+        "total": 8,
+        "values": {
+          "2018": 0.024533386798471498,
+          "2019": 0.02277862141315592,
+          "2020": 0.06312380862666374,
+          "2021": 0.012452467666034512,
+          "2022": 0.03534629219797986,
+          "2023": 0.07374929192505476,
+          "2024": 0.028323912918371958,
+          "2025": -0.013569602085342001
+        }
+      },
+      "rho": 0.031740135269117904
+    },
+    "time_above_session_vwap": {
+      "loyo": {
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.09051192896962126,
+          "2019": 0.10700791387625247,
+          "2020": 0.08955271476552681,
+          "2021": 0.13234597440563262,
+          "2022": 0.0844344042062225,
+          "2023": 0.09994539945303543,
+          "2024": 0.110753227399203,
+          "2025": 0.03562233043423453
+        }
+      },
+      "rho": 0.0945280272643496
+    }
+  },
+  "decision": "REJECTED",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE_ON_OUTCOME_CONSUMED_HISTORY",
+  "experiment_id": "EXP-IBQ-002",
+  "gates": {
+    "controlled_daily_incrementality": false,
+    "falsification": false,
+    "outcome_neighbors": false,
+    "raw": false,
+    "temporal": false
+  },
+  "hypothesis_id": "H-021",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/configs/data_asset_registry.json": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/experiments/EXP-IBQ-001_spec.json": "298cd0bad4d298af5328edc0257cd473be854ffce88f777e2524844de45b9315",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_intraday_signal_day_quality.py": "333fb93c05c70e95a4ec8c62282959b4ab736e4fe088ed5dec26014750270d4b",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_intraday_signal_day_quality_v2.py": "4f6ad24d0675e3820fbf486d0b9a5775e39ce7d3562427ff880e4455e6b4c5c3",
+    "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d",
+    "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+    "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+  },
+  "interpretation_boundary": "Features are complete entry-signal-session observations available at 15:30 for T+1 or later. They cannot justify an earlier same-session action and do not identify the original lifecycle breakout timestamp.",
+  "neighbors": {
+    "signal_day_path_acceptance_5m": {
+      "loyo": {
+        "positive": 7,
+        "total": 8,
+        "values": {
+          "2018": 0.012404558803856986,
+          "2019": 0.0035628272418241247,
+          "2020": 0.0015291712041627375,
+          "2021": 0.04034865888957097,
+          "2022": 0.013103022994514792,
+          "2023": 0.04030090947386176,
+          "2024": 0.02838065652090675,
+          "2025": -0.038817054853823446
+        }
+      },
+      "rho": 0.013472165679846333
+    },
+    "signal_day_path_acceptance_auction": {
+      "loyo": {
+        "positive": 6,
+        "total": 8,
+        "values": {
+          "2018": 0.010704707085151973,
+          "2019": 0.0015185828897426993,
+          "2020": -0.0031806928006702494,
+          "2021": 0.03863956056426164,
+          "2022": 0.013789927761035697,
+          "2023": 0.041288388103173514,
+          "2024": 0.02679461603331499,
+          "2025": -0.042796851325702906
+        }
+      },
+      "rho": 0.011771832999556392
+    }
+  },
+  "population": {
+    "all_completed_cycles": 399,
+    "false_breakout": 213,
+    "primary_disjoint_population": 297,
+    "primary_fixed_control_complete": 286,
+    "success_opportunity20": 84
+  },
+  "primary": {
+    "blocks": {
+      "DEVELOPMENT_2024_2025": 0.10656386473239514,
+      "EXTENDED_2018_2021": 0.0031421205663765546,
+      "HOLDOUT_O0_2022_2023": -0.13237689883173406
+    },
+    "controlled_loyo": {
+      "positive": 2,
+      "total": 8,
+      "values": {
+        "2018": -0.009144162539315725,
+        "2019": -0.005592969898883006,
+        "2020": -0.061548650383032845,
+        "2021": 0.04797148365188651,
+        "2022": -0.006928462022512929,
+        "2023": -0.02714417139925015,
+        "2024": 0.03296460301339496,
+        "2025": -0.03984403408333893
+      }
+    },
+    "controlled_rho": -0.009117458166319184,
+    "raw_loyo": {
+      "positive": 6,
+      "total": 8,
+      "values": {
+        "2018": 0.011347877015350467,
+        "2019": 0.002394684681506772,
+        "2020": -0.0024466730093048355,
+        "2021": 0.0388225612315627,
+        "2022": 0.014265376568105493,
+        "2023": 0.04332059740014558,
+        "2024": 0.02628470206760081,
+        "2025": -0.04227475107643404
+      }
+    },
+    "raw_rho": 0.012338582570213415,
+    "within_year_rho": 0.01465749859451355
+  },
+  "secondary": {
+    "mfe": {
+      "loyo": {
+        "positive": 6,
+        "total": 8,
+        "values": {
+          "2018": 0.00021838553511213847,
+          "2019": 0.0002544679639608423,
+          "2020": -0.03464654445624463,
+          "2021": 0.009019441460011537,
+          "2022": 0.001921271140311116,
+          "2023": 0.010871232288245212,
+          "2024": 0.005825306858314532,
+          "2025": -0.05077347468794868
+        }
+      },
+      "rho": -0.006578930900473816
+    },
+    "non_false_breakout": {
+      "loyo": {
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.027787843160361324,
+          "2019": 0.03966589628558605,
+          "2020": 0.010294805041199088,
+          "2021": 0.05366281512858181,
+          "2022": 0.046475279191989585,
+          "2023": 0.04509506092794944,
+          "2024": 0.03852327496646658,
+          "2025": 0.022678188407226973
+        }
+      },
+      "rho": 0.035549354431100924
+    },
+    "opportunity20": {
+      "loyo": {
+        "positive": 3,
+        "total": 8,
+        "values": {
+          "2018": -0.001229158158281404,
+          "2019": -0.01616240750839744,
+          "2020": -0.006941435582607602,
+          "2021": 0.017455632352232683,
+          "2022": -0.008898165615516478,
+          "2023": 0.027951324170274076,
+          "2024": 0.010754303828796002,
+          "2025": -0.05612969940621322
+        }
+      },
+      "rho": -0.0032557818562542447
+    },
+    "round_trip_return": {
+      "loyo": {
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.056432158416864296,
+          "2019": 0.06182497361238749,
+          "2020": 0.06238138832398457,
+          "2021": 0.06463715823601801,
+          "2022": 0.076919681355693,
+          "2023": 0.08559906354919031,
+          "2024": 0.07020144709334881,
+          "2025": 0.03459135617057518
+        }
+      },
+      "rho": 0.06442891426246067
+    }
+  },
+  "verdict": "SIGNAL_DAY_PATH_ACCEPTANCE_FAILS_RAW_OR_DAILY_INCREMENTAL_GATES"
+}
