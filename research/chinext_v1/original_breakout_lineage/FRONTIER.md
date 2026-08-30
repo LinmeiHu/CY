@@ -23,6 +23,18 @@ base/recovery shape, prior-20 volatility/range contraction, canonical resistance
 test proximity, and signal-session path relative to the prior-60 close reference.
 The lineage count and assignment rules cannot be selected from future outcomes.
 
+## Outcome-blind frontier result
+
+EXP-OBL-003 freezes `LINEAGE-OBL-003-4193834A6A3A39BF`. All 399 events receive
+one of four balanced neutral base-repair/acceptance quadrants; all lineages occur
+in every year/block and exact neighboring assignment agreement is 84.46%.
+
+No outcome has been revealed. The highest-value next question is H-OBL-003:
+whether these frozen structural lineages have economically and temporally stable
+differences in MFE opportunity and false-breakout behavior. The reveal must be a
+separate experiment. Terminal return and right-tail contribution are secondary;
+they may not redefine the primary mechanism after inspection.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

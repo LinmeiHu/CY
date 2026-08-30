@@ -30,3 +30,25 @@ Status: `AUDIT_EVIDENCE_ACCEPTED_PENDING_PROGRAM_CHECKPOINT`.
   participant identity.
 
 Status: `AUDIT_EVIDENCE_ACCEPTED_PENDING_FRESH_FEATURE_MATERIALIZATION`.
+
+## E-OBL-003 — outcome-blind lineage freeze
+
+- Freeze ID: `LINEAGE-OBL-003-4193834A6A3A39BF`.
+- Population: 399/399 unique accepted event identities, 2018-2025.
+- Daily reconstruction: 31,920 action-safe rows; every accepted event strictly
+  exceeds its prior-60 close reference; maximum adjusted/raw-coordinate breakout
+  margin error `2.22e-16`.
+- Intraday reconstruction: 96,159 exact raw one-minute rows, 95,760 continuous
+  rows, 399 hard-valid daily gates, and 2,394 exact opening windows; maximum
+  QD-004/CY-008 discrepancy `0`.
+- Lineage counts: L00 92, L01 112, L10 96, L11 99.
+- Every lineage occurs in every year and temporal block.
+- Fixed simpler-base/exact-five-minute neighboring assignment agreement: 84.46%.
+- No forbidden outcome column exists in either feature or assignment artifact.
+- Two full executions are byte-identical across the feature, assignment, audit,
+  freeze-manifest, and report files.
+- Feature SHA-256: `a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0`.
+- Assignment SHA-256: `4193834a6a3a39bf5e9b96d2813d1fffeea92831fe61e5b53b9af6b8b1fa1017`.
+
+Decision: `FREEZE_LINEAGE`. The IDs remain neutral and have no performance
+meaning until a separately committed reveal contract is executed.

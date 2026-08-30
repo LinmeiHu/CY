@@ -4,7 +4,8 @@
 
 Independent program initialized at autonomous branch start HEAD
 `5309f2ef8a5ee6a57c7b63934acff77897faf1b3`. No outcome reveal has occurred in
-this new program. CY-011 remains locked and unopened.
+this new program. CY-011 remains locked and unopened. EXP-OBL-003 has frozen
+`LINEAGE-OBL-003-4193834A6A3A39BF` after two byte-identical full runs.
 
 ## Canonical original V1 breakout
 
@@ -35,12 +36,17 @@ presence in every year. The runner projects only identity columns from the
 accepted trade source; its explicit forbidden-column set blocks every future
 outcome.
 
+EXP-OBL-003 passes all construction gates. It covers 399 events, has lineage
+counts 92/112/96/99, all four IDs in every year and block, 84.46% exact neighbor
+agreement, 31,920 action-safe daily rows, 96,159 exact minute rows, and zero
+forbidden outcome columns. H-OBL-002 decision: `FREEZE_LINEAGE`.
+
 ## Current frontier
 
-Execute and deterministically rerun EXP-OBL-003. If every frozen construction gate
-passes, commit its `LINEAGE_FREEZE_ID`, then preregister EXP-OBL-002 outcome reveal.
-If a gate fails, do not inspect outcomes; diagnose only the outcome-blind
-construction and record REFINE or REJECT under a new identity if justified.
+Commit the frozen assignment and preregister EXP-OBL-004 as a separate outcome
+reveal. Primary outcomes, contrasts, controls, LOYO/blocks, right-tail and
+concentration attacks, and decision gates must be fixed before the first join.
+No assignment, class label, or threshold may change afterward.
 
 ## Governance
 

@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_003_FROZEN_OUTCOME_BLIND_FEASIBILITY_REFINEMENT`
+`LINEAGE_FROZEN_PENDING_SEPARATE_OUTCOME_REVEAL_PREREGISTRATION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -63,14 +63,18 @@ EXP-OBL-003 preserves the exact assignments and changes only that construction
 gate to require every lineage be present (minimum one) in every year. All
 performance/outcome information remains unseen.
 
+EXP-OBL-003 now passes every gate and is deterministic across two full runs.
+`LINEAGE-OBL-003-4193834A6A3A39BF` freezes 399 assignments with counts
+92/112/96/99 and 84.46% neighbor agreement. Feature and assignment outputs
+contain no outcome column. H-OBL-002 receives `FREEZE_LINEAGE`.
+
 ## Current scientific decision
 
-`EXECUTE_OUTCOME_BLIND_FEASIBILITY_REFINEMENT` — materialize the frozen representation and accept
-it only if coverage, class balance, every-year presence, neighboring assignment,
-PIT, and deterministic rerun gates pass.
+`PREREGISTER_SEPARATE_OUTCOME_REVEAL` — preserve the assignment artifact exactly,
+freeze primary outcomes, contrasts, controls, temporal/tail/concentration attacks,
+and decision gates before the first outcome join.
 
 ## Exact next action
 
-Execute EXP-OBL-003 without any outcome access, verify byte-identical rerun, freeze
-the assignment under a new `LINEAGE_FREEZE_ID`, and only then create a separate
-outcome-reveal experiment.
+Commit the complete lineage freeze, then preregister EXP-OBL-004 against its exact
+hashes. Do not modify, relabel, merge, or rank lineages after outcome access.
