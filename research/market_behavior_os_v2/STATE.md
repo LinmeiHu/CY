@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-TAIL-DYN-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-INDRS-TAIL-DYN-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: temporal meaning of distinct leave-one-out stock/industry residual tail balance and concentration
 - `SUPPORTING_FRONTIER`: frozen industry/relative-strength panel and accepted broad risk/concentration controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -500,3 +500,19 @@ clustering remains descriptive evidence, but no broadly persistent rotation
 process, usefulness claim, or archetype survives. SYNTH-MKT-018 pivots away
 from rotation-window rescue to a map-first temporal study of the two distinct
 leave-one-out residual-tail coordinates. No S1-S12 STOP is active.
+
+The residual-leadership dynamics map and spec `56a83827...` are frozen before
+future-state construction. Four exact positive t+20 edges test tail-balance
+self-persistence, residual-concentration self-persistence, and both directional
+cross-edges. The 20-session shift rolls the source 20-session return interval
+fully forward; every-twentieth-session phase estimates are fixed. Tail responses
+use the three accepted broad risk controls; concentration responses use the
+three accepted broad concentration controls; cross-edges also control the
+response role's current value.
+
+Both pre-2024 blocks are labeled
+`REUSED_PRE2024_EXPLORATORY_REPLICATION_NOT_CONFIRMATION`. Self-processes stand
+independently; coupling requires both cross-edges. No failed edge can be rescued
+by another edge, coordinate, block, subset, or the rejected rotation evidence.
+Execute without returns, named-security futures, strategies, post-2023 data, or
+CY-011.

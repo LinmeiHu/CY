@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | ACTIVE_MKT_INDRS_TAIL_DYN_001_MAP_FIRST |
+| 1 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | ACTIVE_MKT_INDRS_TAIL_DYN_001_FROZEN_EXECUTION |
 | 2 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
@@ -71,3 +71,8 @@ Spearman is 0.023/-0.111 raw while adjacent Kendall/displacement pass. The
 all-required rule prevents rescue by the two favorable definitions. The active
 frontier now diversifies within the same deep family to the distinct residual
 tail-balance/concentration coordinates; their future state meaning is unknown.
+
+MKT-INDRS-TAIL-DYN-001 is frozen under spec `56a83827...` before shifting any
+future value. Its natural t+20 horizon avoids overlap between the current and
+future 20-session return intervals. Four edges, response-specific controls,
+reused-time labels, and no-rescue process classifications are fixed.

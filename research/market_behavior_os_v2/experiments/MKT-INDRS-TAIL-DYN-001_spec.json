@@ -1,0 +1,146 @@
+{
+  "experiment_id": "MKT-INDRS-TAIL-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION",
+  "question": "Do distinct within-industry residual tail balance and leadership concentration form nonoverlapping recurring or coupled state processes?",
+  "research_role": "strategy-independent residual-leadership temporal dynamics after rotation falsification",
+  "inputs": {
+    "industry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_result.json",
+      "sha256": "578d9dbaa16bc1da2aaee790309c56475cc102de9fc592a72aaae1bd43c41085"
+    },
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+      "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json",
+      "sha256": "9b3eaa0da0e9adba67f61df81d25412ae0277cff37ecf63074738d622989a346"
+    },
+    "rotation_falsification_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-ROT-001_result.json",
+      "sha256": "fe536b7ea1d863391d9d2443a4e5cb8e6780e849c3556c710baec03ac626370c"
+    }
+  },
+  "prerequisite": {
+    "accepted_direct_engine_coordinates": [
+      "stock_industry_rs_tail_balance20",
+      "stock_industry_rs_concentration20"
+    ],
+    "rotation_persistence_survives_all_falsifications": false,
+    "rotation_horizon_rescue_prohibited": true
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "future_shift_sessions": 20,
+    "phase_stride": 20
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date close at 15:00 Asia/Shanghai",
+    "response_available_at": "completed t+20 exchange-session close at 15:00 Asia/Shanghai",
+    "underlying_interval_rule": "current t-20 to t and response t to t+20 share only endpoint t and no return interval",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "fields": {
+    "tail_balance": "stock_industry_rs_tail_balance_p90_p10",
+    "residual_concentration": "stock_industry_rs_positive_mass_top10",
+    "risk_central_direction": "median_signed_limit_utilization",
+    "risk_upside_extreme": "upside_extreme_participation_70",
+    "risk_downside_extreme": "downside_extreme_participation_70",
+    "breadth_leadership_concentration": "leadership_positive_mass_top10",
+    "amount_concentration": "liquidity_amount_share_top10",
+    "volatility_concentration": "volatility_mass_share_top10"
+  },
+  "responses": {
+    "future_tail_balance20": "tail_balance coordinate shifted exactly 20 sessions earlier within view/denominator",
+    "future_residual_concentration20": "residual_concentration coordinate shifted exactly 20 sessions earlier within view/denominator"
+  },
+  "edges": {
+    "tail_balance_nonoverlap_persistence": {
+      "predictor": "tail_balance",
+      "response": "future_tail_balance20",
+      "controls": ["risk_central_direction", "risk_upside_extreme", "risk_downside_extreme"],
+      "sign": "positive"
+    },
+    "concentration_nonoverlap_persistence": {
+      "predictor": "residual_concentration",
+      "response": "future_residual_concentration20",
+      "controls": ["breadth_leadership_concentration", "amount_concentration", "volatility_concentration"],
+      "sign": "positive"
+    },
+    "concentration_to_future_tail_balance": {
+      "predictor": "residual_concentration",
+      "response": "future_tail_balance20",
+      "controls": ["tail_balance", "risk_central_direction", "risk_upside_extreme", "risk_downside_extreme"],
+      "sign": "positive"
+    },
+    "tail_balance_to_future_concentration": {
+      "predictor": "tail_balance",
+      "response": "future_residual_concentration20",
+      "controls": ["residual_concentration", "breadth_leadership_concentration", "amount_concentration", "volatility_concentration"],
+      "sign": "positive"
+    }
+  },
+  "coordinates": {
+    "raw": "<field>",
+    "pit": "<field>_pit_3y_pct",
+    "relative_to_all": "<field>_relative_to_all",
+    "relative_rank": "<field>_relative_view_rank_pct"
+  },
+  "temporal_blocks": {
+    "block_a_reused": {"start": "2019-01-01", "end": "2021-12-31"},
+    "block_b_reused": {"start": "2022-01-01", "end": "2023-12-31"},
+    "membership_rule": "predictor and response dates both inside block",
+    "evidence_label": "REUSED_PRE2024_EXPLORATORY_REPLICATION_NOT_CONFIRMATION"
+  },
+  "estimation": {
+    "primary": "partial Spearman after rank residualization on the edge's fixed same-coordinate controls",
+    "raw_and_pit_groups": "eight view/denominator groups",
+    "relative_groups": "two denominators pooled across non-ALL_A or all rank views",
+    "self_process_rule": "each self-edge stands or fails independently",
+    "coupled_process_rule": "both cross-edges must pass; one cross-edge cannot rescue the other"
+  },
+  "gates": {
+    "raw_group_block_minimum_observations": 150,
+    "pit_group_block_minimum_observations": 150,
+    "relative_to_all_denominator_block_minimum_observations": 450,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "raw_median_partial_rho_minimum": 0.10,
+    "raw_positive_group_support_minimum_of_8": 6,
+    "block_b_to_block_a_magnitude_ratio_minimum": 0.50,
+    "phase_median_partial_rho_minimum": 0.08,
+    "pit_median_partial_rho_minimum": 0.08,
+    "pit_positive_group_support_minimum_of_8": 6,
+    "relative_median_partial_rho_minimum": 0.05,
+    "relative_positive_group_support_minimum_of_2": 2,
+    "no_rescue": "No response, edge, sign, coordinate, block, phase, view, denominator, control deletion, favorable subset, or rotation-horizon result can replace a failed exact edge."
+  },
+  "classification": {
+    "tail_balance_state_process": "tail_balance_nonoverlap_persistence passes",
+    "residual_concentration_state_process": "concentration_nonoverlap_persistence passes",
+    "coupled_tail_concentration_process": "both directional cross-edges pass",
+    "no_process": "the relevant exact required edge or edge pair fails"
+  },
+  "prohibited_fields": [
+    "future market, industry, or stock return",
+    "future security identity, stock rank, selection, or named-leader persistence",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "failed MKT-INDRS roles or rejected rotation/diffusion temporal edges",
+    "failed MA industry-diffusion/divergence fields",
+    "post-2023 CY-006 partitions",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes reused-time exploratory state dynamics only; independent future time remains required, and no return, security-selection, timing, habitat, causality, execution, capacity, or strategy claim is permitted.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-TAIL-DYN-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-TAIL-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-INDRS-TAIL-DYN-001_dynamics.md"
+  ]
+}

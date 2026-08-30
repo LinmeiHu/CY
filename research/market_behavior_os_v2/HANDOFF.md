@@ -490,3 +490,16 @@ Next continue map-first with MKT-INDRS-TAIL-DYN-001 on residual tail balance and
 concentration. Freeze a small state-only graph and its controls before shifting
 future values. Market/stock returns, strategies, post-2023 data, and CY-011
 remain prohibited.
+
+The MKT-INDRS-TAIL-DYN-001 map and spec are now frozen under SHA-256
+`56a83827c7ba0bea69d611f6d0ec8778a3364cb2c14d62d444e230d839fb5bca`
+before future states are shifted. Execute exactly four positive t+20 edges:
+two nonoverlapping self-persistence edges and both directional cross-edges.
+Use the response role's fixed broad controls; cross-edges also control its
+current state. Self-processes stand separately and coupling requires both
+cross-edges.
+
+Both time blocks are reused pre-2024 exploratory evidence, not untouched
+confirmation. Preserve the 20-session phase stride, all coordinate/support/
+sign gates, and the no-rescue rule. Do not read returns, future security
+identities, strategy fields, rejected roles/edges, post-2023 data, or CY-011.
