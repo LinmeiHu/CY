@@ -89,6 +89,21 @@ outcomes before association. Base width, T-1 positioning, signal breakout
 margin, V1 entry state, and market state are fixed controls. Exact age zero and
 the age-59 window boundary are removal attacks rather than selectable classes.
 
+## Frontier after EXP-OBL-007
+
+Reference age is null for MFE and contradicts the expected raw direction for
+non-false-breakout. All gates fail; age bins, thresholds, and sign reversal are
+closed.
+
+The highest-value independent frontier is now cross-sectional selection
+competition. Canonical V1 ranks daily eligible signals and admits only available
+vacancies, so accepted breakouts may have sparse/unopposed versus crowded/rank-
+margin lineages even when their single-stock shapes look similar. Before a
+hypothesis test, AUDIT-OBL-002 must establish that the full PIT candidate set,
+rank order, portfolio vacancies, and selected boundary can be reproduced inside
+this autonomous workspace without outcomes or reliance on the original
+worktree's output directory.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

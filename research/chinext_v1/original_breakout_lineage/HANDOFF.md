@@ -87,6 +87,18 @@ least 0.10/0.08 for both endpoints, and includes LOYO, blocks, tails, exact
 zero/59 boundary removal, duration/exit, security, and industry attacks. Execute
 the committed runner without changing gates or controls.
 
+EXP-OBL-007 is complete and rejected. MFE raw/controlled rhos are
+0.0005/0.0133; non-false-breakout raw/controlled rhos are -0.0544/0.0421. All
+four gate families fail and two runs are byte-identical. Do not bin age or flip
+the mechanism direction.
+
+The next frontier is an outcome-blind feasibility audit of cross-sectional
+selection competition. Reconstruct, if possible, each signal day's complete
+eligible candidate set, RS order, portfolio vacancies, selection boundary, and
+accepted mapping using only autonomous-workspace code and registered PIT data.
+Do not bind or consume the original source worktree's output ledgers. CY-011
+remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_007_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
+`EXP_OBL_007_COMPLETE_REJECTED_NEXT_FEASIBILITY_AUDIT_SELECTED`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -83,17 +83,23 @@ and reconciles all 399 events but is not a persistent trajectory state: T-1/T-3
 rho is 0.421 and T-1/T-5 rho is 0.309 versus the frozen 0.60 requirement. No
 output is accepted and no temporal horizon may be selected post hoc.
 
+EXP-OBL-007 validly rejects H-OBL-006. MFE raw/controlled rhos are 0.0005/0.0133;
+non-false-breakout raw/controlled rhos are -0.0544/0.0421. All raw, controlled,
+temporal, and falsification gates fail. Two executions and all four outputs are
+byte-identical. No reference-age bin or reversed-direction claim is allowed.
+
 ## Current scientific decision
 
-`PIVOT_TO_CANONICAL_REFERENCE_AGE` — both fixed-width episode topology and
-single-session positioning fail outcome-blind robustness. Exact sessions since
-the most recent prior-60 reference is a parameter-free path-duration state,
-already frozen without outcomes, and is distinct from the failed taxonomy's
-assignment axes.
+`PIVOT_TO_CROSS_SECTIONAL_SELECTION_FEASIBILITY` — single-stock base,
+signal-session acceptance, repeated resistance, positioning, and reference-age
+families are now null or outcome-blind unstable. The next independent mechanism
+is whether accepted signals form different PIT selection-competition lineages
+under cross-sectional RS ranking and finite portfolio capacity.
 
 ## Exact next action
 
-Execute frozen EXP-OBL-007 against the already frozen exact reference-age
-feature. Apply the two co-primary gates plus LOYO, temporal-block, tail,
-zero/boundary-age, duration/exit, security, and industry attacks. Do not bin or
-threshold reference age and do not open CY-011.
+Run AUDIT-OBL-002 without outcomes. Determine whether the complete daily PIT
+eligible candidate set, frozen RS ordering, vacancy count, selection boundary,
+and accepted trade mapping can be reconstructed exactly inside the autonomous
+workspace. If not, record the data gap and pivot. Do not use outputs from the
+original source worktree and do not open CY-011.

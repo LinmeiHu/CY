@@ -52,3 +52,15 @@ below the preregistered 0.60 requirement for both.
 No outcome was joined and no feature artifact was written. Do not weaken the
 gate, select one temporal horizon, search distance thresholds, or use this as a
 retrospective entry rule. Decision: `REJECTED_BEFORE_OUTCOME`.
+
+## D-OBL-006 — canonical-reference age as supply-turnover duration
+
+EXP-OBL-007 finds no positive continuous supply-turnover relationship. MFE raw
+and controlled rhos are 0.0005 and 0.0133. Non-false-breakout raw rho is -0.0544
+and controlled rho is 0.0421. The development block is negative for both
+endpoints, all four gate families fail, and tail/boundary/concentration attacks
+do not rescue the mechanism.
+
+Two executions are byte-identical. Do not bin reference age, reverse its sign,
+search age thresholds, or reinterpret top-tail summaries as primary support.
+Decision: `REJECTED`; no strategy rule or CY-011 access.

@@ -1,0 +1,321 @@
+{
+  "attacks": {
+    "ex_extreme_winners": {
+      "mfe": {
+        "n": 384,
+        "pvalue": 0.7797158611065798,
+        "rho": -0.014318785452989818
+      },
+      "non_false_breakout": {
+        "n": 384,
+        "pvalue": 0.19696310618370505,
+        "rho": -0.06598624857366839
+      }
+    },
+    "ex_reference_age_window_boundary": {
+      "mfe": {
+        "n": 384,
+        "pvalue": 0.9396687673455952,
+        "rho": 0.0038749626957039615
+      },
+      "non_false_breakout": {
+        "n": 384,
+        "pvalue": 0.25056996712559876,
+        "rho": -0.05877384111510714
+      }
+    },
+    "ex_reference_age_zero": {
+      "mfe": {
+        "n": 336,
+        "pvalue": 0.21462963508641925,
+        "rho": 0.06787341886474582
+      },
+      "non_false_breakout": {
+        "n": 336,
+        "pvalue": 0.7528849380562364,
+        "rho": 0.01723876683147895
+      }
+    },
+    "ex_severe_losses": {
+      "mfe": {
+        "n": 355,
+        "pvalue": 0.9441236174562728,
+        "rho": 0.003733037715512271
+      },
+      "non_false_breakout": {
+        "n": 355,
+        "pvalue": 0.41708853111173694,
+        "rho": -0.04320128227527467
+      }
+    },
+    "ex_top1pct_absolute_pnl": {
+      "mfe": {
+        "n": 395,
+        "pvalue": 0.9021956051050981,
+        "rho": -0.006202776150021055
+      },
+      "non_false_breakout": {
+        "n": 395,
+        "pvalue": 0.2411895070672575,
+        "rho": -0.059106416420042766
+      }
+    },
+    "holding_duration_exit_control": {
+      "mfe": {
+        "n": 383,
+        "partial_rank_rho": 0.003944632339038662,
+        "pvalue": 0.9386665469074242
+      },
+      "non_false_breakout": {
+        "n": 383,
+        "partial_rank_rho": 0.023617560145913753,
+        "pvalue": 0.6449720457892004
+      }
+    },
+    "industry_leave_one_out": {
+      "mfe": {
+        "groups": 68,
+        "maximum": 0.013141368719989617,
+        "minimum": -0.01440586275659479,
+        "positive_fraction": 0.5441176470588235
+      },
+      "non_false_breakout": {
+        "groups": 68,
+        "maximum": -0.03255194380562121,
+        "minimum": -0.07091000643581348,
+        "positive_fraction": 0.0
+      }
+    },
+    "security_leave_one_out": {
+      "mfe": {
+        "groups": 281,
+        "maximum": 0.009102818586373266,
+        "minimum": -0.009383060563540211,
+        "positive_fraction": 0.6014234875444839
+      },
+      "non_false_breakout": {
+        "groups": 281,
+        "maximum": -0.04363561106124862,
+        "minimum": -0.06525870346129889,
+        "positive_fraction": 0.0
+      }
+    }
+  },
+  "decision": "REJECTED",
+  "endpoint_support": {
+    "mfe": false,
+    "non_false_breakout": false
+  },
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "experiment_id": "EXP-OBL-007",
+  "gates": {
+    "controlled_both_endpoints": false,
+    "falsification": false,
+    "raw_both_endpoints": false,
+    "temporal_both_endpoints": false
+  },
+  "hypothesis_id": "H-OBL-006",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/formation_features_v3.csv": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-003.json": "da978745fe485561dfce33a77a0e568ff14b61a9c575d57ac9d17a75b4ea4a4d",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_reference_age_outcome_reveal.py": "85acde8d16354fe117cfd4ae1e5d66e89f366a4293881704382fa591259e79ff",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+  },
+  "interpretation_boundary": "Reference age and all formation controls existed by the completed signal session. This mechanism reveal authorizes no bin, threshold, entry, exit, size, overlay, production change, or CY-011 access.",
+  "output_table_sha256": "426b19c5569b5b7f2f7f14af3ada03ad7226f6fa8091525530381cba02415a32",
+  "population": {
+    "controlled_complete": 383,
+    "events": 399,
+    "reference_age_maximum": 59,
+    "reference_age_minimum": 0,
+    "reference_age_unique": 60
+  },
+  "predictor": "sessions_since_reference",
+  "primary": {
+    "mfe": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.23778234765599787,
+          "rho": -0.11297237639996409
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.5634544037191009,
+          "rho": 0.04172935012404784
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.5580687986551058,
+          "rho": -0.06117349891195282
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.01329265441512564,
+        "pvalue": 0.7954010592021857
+      },
+      "controlled_loyo": {
+        "maximum": 0.058915625715258275,
+        "minimum": -0.022725240363282776,
+        "positive": 6,
+        "total": 8,
+        "values": {
+          "2018": 0.017280628809381506,
+          "2019": -0.022725240363282776,
+          "2020": 0.018678394217444976,
+          "2021": -0.011219098321413865,
+          "2022": 0.00974895832227144,
+          "2023": 0.009541852254505982,
+          "2024": 0.021132987368454675,
+          "2025": 0.058915625715258275
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.9925499788247458,
+        "rho": 0.0004689234634541163
+      },
+      "raw_bh_qvalue": 0.9925499788247458,
+      "raw_loyo": {
+        "maximum": 0.031989132533345815,
+        "minimum": -0.03518757993892274,
+        "positive": 4,
+        "total": 8,
+        "values": {
+          "2018": 0.011942523297147957,
+          "2019": -0.03518757993892274,
+          "2020": 0.002343458824906621,
+          "2021": -0.0017836467105244245,
+          "2022": -0.013027158458357104,
+          "2023": 0.01165925688641881,
+          "2024": -0.007740342233275729,
+          "2025": 0.031989132533345815
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.651789831163931,
+        "rho": -0.022660306199757722
+      }
+    },
+    "non_false_breakout": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.012425877610900197,
+          "rho": -0.2365715439660266
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.48924942634520463,
+          "rho": 0.04993876979075717
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.41051107021028277,
+          "rho": -0.08587747444344125
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.04211726530692773,
+        "pvalue": 0.41112144516753957
+      },
+      "controlled_loyo": {
+        "maximum": 0.10396748763367519,
+        "minimum": -0.0017287545452579003,
+        "positive": 7,
+        "total": 8,
+        "values": {
+          "2018": 0.051351536552761944,
+          "2019": 0.011847442987406573,
+          "2020": 0.0227350883965169,
+          "2021": -0.0017287545452579003,
+          "2022": 0.04638511824366312,
+          "2023": 0.04037939466949125,
+          "2024": 0.0591802971231535,
+          "2025": 0.10396748763367519
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.27871215534230287,
+        "rho": -0.054359114568288694
+      },
+      "raw_bh_qvalue": 0.5574243106846057,
+      "raw_loyo": {
+        "maximum": 0.0024666918045155996,
+        "minimum": -0.07906427422484585,
+        "positive": 1,
+        "total": 8,
+        "values": {
+          "2018": -0.04623328146254172,
+          "2019": -0.07498289416808789,
+          "2020": -0.07906427422484585,
+          "2021": -0.07381755900654338,
+          "2022": -0.06258547007381399,
+          "2023": -0.048900828132244625,
+          "2024": -0.04953431764467685,
+          "2025": 0.0024666918045155996
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.39894305239068895,
+        "rho": -0.042342239871131455
+      }
+    }
+  },
+  "right_tail_not_decision_rescuing": {
+    "top_10pct": {
+      "mean_reference_age": 22.625,
+      "median_reference_age": 19.5,
+      "n": 40,
+      "positive_pnl_share": 0.7446018551165795
+    },
+    "top_1pct": {
+      "mean_reference_age": 32.0,
+      "median_reference_age": 36.0,
+      "n": 4,
+      "positive_pnl_share": 0.1762921512949848
+    },
+    "top_5pct": {
+      "mean_reference_age": 24.3,
+      "median_reference_age": 25.0,
+      "n": 20,
+      "positive_pnl_share": 0.5444854815555271
+    }
+  },
+  "secondary_not_decision_rescuing": {
+    "extreme_winner": {
+      "n": 399,
+      "pvalue": 0.42211403730943964,
+      "rho": 0.04029832044288659
+    },
+    "mae": {
+      "n": 399,
+      "pvalue": 0.5191723698759898,
+      "rho": -0.03236453347823773
+    },
+    "opportunity20": {
+      "n": 399,
+      "pvalue": 0.910106719705548,
+      "rho": -0.005670009723271139
+    },
+    "round_trip_return": {
+      "n": 399,
+      "pvalue": 0.22482315047090615,
+      "rho": -0.06090078102970999
+    },
+    "severe_loss": {
+      "n": 399,
+      "pvalue": 0.6403252620538473,
+      "rho": 0.02346184948929456
+    }
+  },
+  "verdict": "REFERENCE_AGE_FAILS_PRIMARY_RAW_OR_CONTROLLED_GATES"
+}
