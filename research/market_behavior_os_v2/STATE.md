@@ -8,7 +8,7 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-007_COMPLETE_MKT-SHOCK-001_NEXT`
+- `CURRENT_PHASE`: `MKT-SHOCK-001_SPEC_FROZEN_CONSTRUCTION_NEXT`
 - `CURRENT_PRIMARY_FRONTIER`: correlation/liquidity shock-and-recovery representation
 - `SUPPORTING_FRONTIER`: completed CHINEXT habitat association and frozen correlation/liquidity levels
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -182,4 +182,7 @@ five-session liquidity-change window. MKT-SHOCK-001 is the next outcome-blind
 primary frontier. It must build a Representation Map, preserve continuous
 absolute/PIT/relative coordinates, predeclare event and neighboring-shape
 definitions, separate shock from high level, and test redundancy against frozen
-volatility before any future-path or strategy outcome is read.
+volatility before any future-path or strategy outcome is read. The map, causal
+state machine, fixed 0.85/0.90/0.95 threshold neighbors, aggregation/activity-
+horizon neighbors, coverage/event/state/relief gates, and volatility-redundancy
+tests are now frozen under spec `98b4545e...` before construction.

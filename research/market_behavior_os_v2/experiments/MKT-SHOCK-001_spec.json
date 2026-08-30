@@ -1,0 +1,127 @@
+{
+  "experiment_id": "MKT-SHOCK-001",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "question": "Can a direction-neutral synchronization/activity shock, dwell, stress-relief, and post-stress activity-impairment process be represented stably from frozen correlation/liquidity levels without rescuing the failed raw liquidity-change window?",
+  "research_role": "strategy-independent process representation and volatility-redundancy falsification",
+  "usefulness_boundary": "No panic, negative-direction event, price recovery, future return, reversal, strategy, habitat, or economic-usefulness claim is permitted.",
+  "forbidden_inputs": [
+    "strategy membership, signal, entry, trade, fill, P&L, MFE, MAE, exit, duration, or outcome class",
+    "future returns or any observation after the completed current close",
+    "CY-011",
+    "2024-2026 data",
+    "participant identity, order-flow side, unregistered sentiment/fund flow, or constituent fallback",
+    "liquidity_activity_change3, liquidity_activity_change5, or liquidity_activity_change10 as a shock representation"
+  ],
+  "inputs": {
+    "correlation_liquidity_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_correlation_liquidity_panel.csv",
+      "sha256": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573",
+      "source_spec_sha256": "56407172efc49cf306391824718c194c86844fb24065597b952b94b97469d9fd"
+    },
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc",
+      "source_spec_sha256": "bf2976e8c818ff57b38c16a4f4c23395a90367f7e9c9bea5314da824ee04ffad",
+      "role": "same-date redundancy control only"
+    },
+    "snapshot_id": "CY-006:de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+  },
+  "pit": {
+    "decision_at": "completed official close at 15:00 Asia/Shanghai",
+    "available_at": "must equal the same completed close in both frozen panels",
+    "normalization": "strictly causal panel coordinates including current completed observation only, minimum 504 observations",
+    "episode_update": "sequential past/current state only; episode peak is causal running peak, never hindsight peak",
+    "missing_required_state": "break episode and emit missing process coordinates",
+    "first_actionable_time": "later causally valid session; this experiment creates no action",
+    "pit_grade": "bounded PIT-B"
+  },
+  "population": {
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "source_window": ["2018-07-03", "2023-12-29"],
+    "normalized_start": "first date each group has all required 504-observation causal percentiles",
+    "no_cross_group_imputation": true
+  },
+  "frozen_components": {
+    "correlation": "correlation_median20 and its causal 3-year percentile",
+    "synchronization": "directional_sync_balance5 and its causal 3-year percentile",
+    "activity": "liquidity_median_amount_ratio20 and its causal 3-year percentile",
+    "activity_neighbors": "construct strictly causal 3-year percentiles for frozen ratio10 and ratio60 raw neighbors with the same minimum history",
+    "turnover_modifier": "liquidity_turnover_median absolute/PIT/relative coordinates",
+    "concentration_modifier": "liquidity_amount_share_top10 absolute/PIT/relative coordinates",
+    "volatility_controls": [
+      "realized_volatility_median20",
+      "intraday_range_median_smooth5",
+      "volatility_mass_share_top10",
+      "realized_volatility_change5"
+    ]
+  },
+  "continuous_representations": {
+    "synchronization_pressure_primary": "min(correlation_pct, synchronization_pct)",
+    "synchronization_pressure_neighbors": [
+      "sqrt(correlation_pct * synchronization_pct)",
+      "mean(correlation_pct, synchronization_pct)"
+    ],
+    "joint_stress_primary": "min(correlation_pct, synchronization_pct, activity20_pct)",
+    "joint_stress_neighbors": {
+      "geometric": "cuberoot(correlation_pct * synchronization_pct * activity20_pct)",
+      "arithmetic": "mean(correlation_pct, synchronization_pct, activity20_pct)",
+      "activity10": "min(correlation_pct, synchronization_pct, activity10_pct)",
+      "activity60": "min(correlation_pct, synchronization_pct, activity60_pct)"
+    }
+  },
+  "state_machine": {
+    "primary": {"stress": 0.90, "reset": 0.50, "activity_impairment": 0.10},
+    "permissive_neighbor": {"stress": 0.85, "reset": 0.45, "activity_impairment": 0.15},
+    "strict_neighbor": {"stress": 0.95, "reset": 0.55, "activity_impairment": 0.05},
+    "states": {
+      "NORMAL": "inactive or primary score below reset",
+      "ONSET": "inactive primary score enters >= stress threshold",
+      "STRESS": "active episode remains >= stress threshold after onset",
+      "RELIEF": "active episode score is between reset and stress threshold"
+    },
+    "episode_age": "causal sessions since onset while active",
+    "episode_peak": "causal running maximum score while active",
+    "stress_relief": "episode_peak - current score while active",
+    "activity_impairment": "RELIEF and activity percentile <= impairment threshold",
+    "reentry": "return above stress threshold before reset remains the same episode and is not a new onset"
+  },
+  "coordinates": {
+    "absolute": "retain all frozen raw component levels",
+    "pit": "retain expanding/trailing percentiles and robust z for frozen components plus causal joint-score history",
+    "relative": "retain frozen view-minus-ALL_A and view ranks; derive same-date joint-score view-minus-ALL_A and rank",
+    "process": "state, onset, episode age, causal episode peak, relief magnitude, activity-impairment flag"
+  },
+  "gates": {
+    "post_warmup_score_coverage": 0.95,
+    "minimum_normalized_observations_per_group": 700,
+    "joint_score_worst_neighbor_median_spearman": 0.70,
+    "all_status_vs_non_st_median_spearman": 0.90,
+    "view_year_minimum_observations": 100,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "minimum_primary_onsets_per_group": 8,
+    "minimum_primary_onset_years_per_group": 3,
+    "onset_match_within_two_sessions": 0.50,
+    "stress_state_jaccard": 0.50,
+    "relief_state_jaccard": 0.50,
+    "relief_neighbor_median_spearman": 0.70,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "volatility_redundancy_edge_absolute_spearman": 0.85,
+    "no_rescue": "A failed primary process is not replaced by a threshold, aggregation, or activity-horizon neighbor."
+  },
+  "interpretation": {
+    "direction_neutral": true,
+    "panic_claim": "PROHIBITED_NO_NEGATIVE_DIRECTION_COORDINATE",
+    "recovery_claim": "STRESS_RELIEF_ONLY_NOT_PRICE_RECOVERY",
+    "impairment_claim": "ACTIVITY_DRY_UP_DESCRIPTOR_ONLY",
+    "future_path": "NOT_READ",
+    "strategy_usefulness": "NOT_TESTED"
+  },
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SHOCK-001_shock_recovery_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SHOCK-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SHOCK-001_shock_recovery_representation.md"
+  ]
+}
