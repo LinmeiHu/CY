@@ -8,7 +8,7 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-009_COMPLETE_MKT-DSTRESS-001_NEXT`
+- `CURRENT_PHASE`: `MKT-DSTRESS-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: outcome-blind directional synchronization/stress process geometry
 - `SUPPORTING_FRONTIER`: frozen central/upside/downside signed state plus synchronization pressure
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -223,3 +223,8 @@ activity as a modifier rather than silently redefining direction; test broad
 neighboring aggregation/state definitions, dwell/transition support, view/year
 portability, and redundancy with volatility; and read no future return or
 strategy outcome. It may not rescue the failed all-three 0.90/0.50 episode.
+
+The MKT-DSTRESS-001 map and spec `63093a0a...` are now frozen before
+construction. Primary recurring-process entry/reset is 0.80/0.50 with fixed
+0.70/0.40 and 0.90/0.60 neighbors. Upside/downside remain separate, activity is
+only a modifier, and every failed MKT-SHOCK episode field is column-prohibited.

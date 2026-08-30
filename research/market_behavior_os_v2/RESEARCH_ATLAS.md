@@ -15,6 +15,7 @@
 | `SHOCK_RECOVERY_REPRESENTATION_MAP.md` | Outcome-blind level/onset/stress/relief/activity-dry-up semantics |
 | `RISK_APPETITE_REPRESENTATION_MAP.md` | Outcome-blind signed participation, tail depth, concentration, diffusion, and asymmetry map |
 | `RISK_APPETITE_DATA_CONTRACT.md` | Registered limit-relative coordinate, causal denominator, industry, and fail-closed rules |
+| `DIRECTIONAL_STRESS_PROCESS_MAP.md` | Outcome-blind upside/downside synchronization, elevated-process, dwell, relief, and activity-modifier semantics |
 | `LEADER_FAILURE_REPRESENTATION_MAP.md` | Separates concentration/discovery level from transition/failure claims |
 | `VOLATILITY_REPRESENTATION_MAP.md` | Outcome-blind multidimensional volatility concept map |
 | `MARKET_INTRADAY_SAMPLING_CONTRACT.md` | Strategy-independent bounded minute readiness sampling and PIT contract |

@@ -199,3 +199,10 @@ Synchronization/Stress Process Map before testing. Use only frozen risk and
 stress coordinates, preserve upside/downside primitives, keep liquidity
 activity an explicit modifier, and do not reuse the rejected all-three sparse
 episode as a primary. No outcomes, strategy fields, or CY-011 are permitted.
+
+The MKT-DSTRESS-001 Process Map and spec `63093a0a...` are now frozen before
+construction. It binds panel hashes `bba55a5a...` and `fe7436e...`, prunes all
+failed shock-episode fields, and fixes separate upside/downside score neighbors,
+0.70/0.80/0.90 process configurations, side-specific event/dwell/relief gates,
+and explicit activity modifiers. Execute twice; do not call an elevated process
+panic or rescue a failed side/configuration.

@@ -1,0 +1,81 @@
+{
+  "experiment_id": "MKT-DSTRESS-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Can direction-neutral synchronization pressure and separately frozen upside/downside extreme participation form stable recurring directional processes without outcome labels?",
+  "research_role": "outcome-blind continuous geometry and causal process representation only",
+  "usefulness_boundary": "No panic, forced selling, speculation, recovery, forecast, habitat, reversal, continuation, or strategy claim is permitted.",
+  "inputs": {
+    "shock_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-SHOCK-001_shock_recovery_panel.csv",
+      "sha256": "bba55a5ab23a252b73d7b85edb39d53404284d1c3c1ca4388b0dd4cd1b1889eb",
+      "allowed_columns": ["trade_date", "market_view", "denominator", "synchronization_pressure", "joint_stress_score", "liquidity_median_amount_ratio20_pit_3y_pct", "activity10_pit_3y_pct", "activity60_pit_3y_pct", "realized_volatility_median20", "intraday_range_median_smooth5", "volatility_mass_share_top10", "realized_volatility_change5", "decision_at_clq", "available_at_clq", "snapshot_id_clq"]
+    },
+    "risk_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1",
+      "allowed_columns": ["trade_date", "market_view", "denominator", "view_valid", "upside_extreme_participation_50", "upside_extreme_participation_70", "upside_extreme_participation_90", "downside_extreme_participation_50", "downside_extreme_participation_70", "downside_extreme_participation_90", "median_signed_limit_utilization_pit_expanding_pct", "median_signed_limit_utilization_pit_3y_pct", "median_signed_limit_utilization_pit_3y_robust_z", "decision_at", "available_at", "snapshot_id"]
+    },
+    "common_start_after_causal_normalization": "no earlier than observation 504 within each group",
+    "end": "2023-12-29"
+  },
+  "forbidden_columns": [
+    "state_primary, shock_onset_primary, episode_id_primary, episode_age_primary, episode_peak_primary, stress_relief_primary, activity_impairment_primary",
+    "all permissive/strict failed MKT-SHOCK-001 episode fields",
+    "strategy membership, signal, trade, fill, return outcome, MFE, MAE, exit, or outcome class",
+    "future return or post-decision path",
+    "CY-011"
+  ],
+  "continuous_representations": {
+    "downside_directional_synchronization": {
+      "primary": "min(synchronization_pressure, downside_extreme_70_pit_3y_pct)",
+      "aggregation_neighbors": ["geometric_mean", "arithmetic_mean"],
+      "signed_definition_neighbors": ["downside_extreme_50_pit_3y_pct", "downside_extreme_90_pit_3y_pct"]
+    },
+    "upside_directional_synchronization": {
+      "primary": "min(synchronization_pressure, upside_extreme_70_pit_3y_pct)",
+      "aggregation_neighbors": ["geometric_mean", "arithmetic_mean"],
+      "signed_definition_neighbors": ["upside_extreme_50_pit_3y_pct", "upside_extreme_90_pit_3y_pct"]
+    },
+    "directional_balance": "upside primary minus downside primary; deterministic summary, never an independent mechanism",
+    "activity_modifier": "liquidity_median_amount_ratio20_pit_3y_pct with fixed activity10/activity60 coordinates",
+    "broad_direction_modifier": "frozen central signed-limit-utilization causal coordinates"
+  },
+  "process_configurations": {
+    "permissive": {"entry": 0.7, "reset_below": 0.4, "high_activity": 0.7},
+    "primary": {"entry": 0.8, "reset_below": 0.5, "high_activity": 0.8},
+    "strict": {"entry": 0.9, "reset_below": 0.6, "high_activity": 0.9}
+  },
+  "gates": {
+    "common_post_warmup_coverage": 0.95,
+    "minimum_group_observations": 700,
+    "worst_median_score_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 100,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "single_input_or_volatility_redundancy_median_absolute_spearman": 0.85,
+    "minimum_onsets_each_group": 8,
+    "minimum_onset_years_each_group": 3,
+    "onset_match_tolerance_sessions": 2,
+    "minimum_onset_match_each_neighbor": 0.5,
+    "minimum_elevated_and_relief_state_jaccard_each_neighbor": 0.5,
+    "minimum_dwell_and_relief_median_spearman_each_neighbor": 0.7,
+    "minimum_high_activity_observations_each_group": 5,
+    "minimum_high_activity_years_each_group": 2,
+    "minimum_high_activity_jaccard_each_neighbor": 0.3,
+    "no_rescue": "A failed continuous side, process side, threshold configuration, or modifier is not replaced by the other side or a favorable neighbor."
+  },
+  "coordinates": {
+    "absolute": "frozen component percentiles and continuous composite scores",
+    "pit": "causal expanding/trailing percentile and robust z of each primary composite after 504 observations",
+    "relative": "same-date view minus ALL_A and governed-view rank",
+    "process": "causal side-specific state, onset, dwell, peak, relief, and explicit activity modifier"
+  },
+  "engineering": {"deterministic_reruns_required": 2},
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-DSTRESS-001_directional_process_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-DSTRESS-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-DSTRESS-001_directional_process.md"
+  ]
+}
