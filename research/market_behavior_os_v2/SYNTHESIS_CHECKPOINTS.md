@@ -1911,3 +1911,52 @@ differences, actual-session endpoint/OLS/Theil--Sen shape checks where relevant,
 and fixed controls from accepted discovery/concentration changes. Require both
 2018--2020 and 2021--2023 portability and nonoverlap challenges. Do not tune a
 window, form state bins, read outcomes, or call a stable level a process.
+
+## SYNTH-MKT-043 — after full-market breakout temporal representation
+
+### What was learned?
+
+The seven full-market objective-crossing levels do not support the exact broad
+historical dynamics tested. All seven 5-session changes fail the conjunctive
+3/10-session and OLS/Theil--Sen neighbor gate: worst full-sample median rho is
+0.460--0.580 versus 0.70. All seven adjacent-block accelerations have an
+incompatible negative worst neighbor, -0.182-- -0.041. The failures reproduce
+in 2018--2020, 2021--2023, and every-fifth-primary-row phase diagnostics.
+
+ALL_STATUS/NON_ST agreement remains 0.976--0.999, and endpoint-level
+correlations are below 0.85. This preserves the parent levels but cannot rescue
+the temporal definitions. Early-block causal-PIT external-control support is
+only 97/102 versus 150, so no generic-breadth-distinct temporal coordinate is
+established either. Zero of fourteen enters the engine.
+
+### What market behavior are we still not studying?
+
+We still lack a falsifiable market-wide distinction between selling effort that
+is absorbed and buying effort that is distributed, as opposed to ordinary
+return, volatility, volume activity, or already accepted VWAP defense/recovery.
+We also lack order flow, full-market cross-day minute acceptance, future
+economic usefulness, stock-level setup interaction, execution, and capacity.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Stable breakout levels plus unstable temporal operators imply neither a
+breakout-continuation nor failed-breakout-reversal process. No trigger, veto,
+exit, payoff asymmetry, or habitat is promoted. CHINEXT V1 remains unchanged and
+CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** close the exact breakout change/acceleration branch and
+  test effort-versus-result intraday representations without reopening raw data.
+- **Existing-strategy archaeology:** no new outcome access or rule change.
+- **Strategy invention:** accumulation/reversal remains only a hypothesis until
+  representation and external geometry survive.
+
+### Research Director decision
+
+`CLOSE_EXACT_BREAKOUT_DYNAMICS_AND_MAP_ABSORPTION_DISTRIBUTION`. Use only bound
+MKT-MIN-001 daily descriptors. Predefine selling effort, price response,
+recovery/acceptance, buying effort, and late rejection roles with broad
+aggregation/quantile neighbors; compress against return, volatility, activity,
+and accepted VWAP defense/recovery. Never infer participant identity, optimize
+weights, reopen raw minutes, read future outcomes, or create a strategy rule.

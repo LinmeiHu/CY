@@ -1,0 +1,4619 @@
+{
+  "construction_pass_roles": [],
+  "cy011_read": false,
+  "experiment_id": "MKT-BREAKOUT-DIFF-DYN-001",
+  "external_geometry": {
+    "closing_acceptance__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.5779066123172012,
+      "maximum_joint_adjusted_rank_r2": 0.3349661081700722,
+      "minimum_n": 97
+    },
+    "closing_acceptance__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.5830049024319908,
+      "maximum_joint_adjusted_rank_r2": 0.3265621907512867,
+      "minimum_n": 102
+    },
+    "closing_rejection_depth__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.7031611613717652,
+      "maximum_joint_adjusted_rank_r2": 0.48713873971793276,
+      "minimum_n": 97
+    },
+    "closing_rejection_depth__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.703818468654404,
+      "maximum_joint_adjusted_rank_r2": 0.49430709134191564,
+      "minimum_n": 102
+    },
+    "formation_depth__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.33386684668032657,
+      "maximum_joint_adjusted_rank_r2": 0.12341012812513896,
+      "minimum_n": 97
+    },
+    "formation_depth__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.3910645897123612,
+      "maximum_joint_adjusted_rank_r2": 0.15392486713668063,
+      "minimum_n": 102
+    },
+    "formation_diffusion__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.5967415316642121,
+      "maximum_joint_adjusted_rank_r2": 0.4463639501596597,
+      "minimum_n": 97
+    },
+    "formation_diffusion__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.6136875680089264,
+      "maximum_joint_adjusted_rank_r2": 0.5088551649658322,
+      "minimum_n": 102
+    },
+    "formation_leadership_concentration__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.2501958776499229,
+      "maximum_joint_adjusted_rank_r2": 0.06051537878576441,
+      "minimum_n": 97
+    },
+    "formation_leadership_concentration__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.20831590230268868,
+      "maximum_joint_adjusted_rank_r2": 0.051759398715246596,
+      "minimum_n": 102
+    },
+    "formation_participation__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.6666447506837787,
+      "maximum_joint_adjusted_rank_r2": 0.4643270405830072,
+      "minimum_n": 97
+    },
+    "formation_participation__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.6424758421476575,
+      "maximum_joint_adjusted_rank_r2": 0.5266488795645614,
+      "minimum_n": 102
+    },
+    "stock_industry_divergence__acceleration": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.37377708815484956,
+      "maximum_joint_adjusted_rank_r2": 0.1252831209696259,
+      "minimum_n": 97
+    },
+    "stock_industry_divergence__change": {
+      "all_external_cells_pass": false,
+      "cells": 44,
+      "maximum_absolute_pairwise_spearman": 0.2900690411702507,
+      "maximum_joint_adjusted_rank_r2": 0.06964804501202038,
+      "minimum_n": 102
+    }
+  },
+  "future_values_read": false,
+  "hashes": {
+    "breadth_panel_sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+    "external_audit_sha256": "3e8d3238e651a0704ac2d9eaf5b93bb07d082ad6d693fdd217c8fdf66ec1bfb7",
+    "level_panel_sha256": "99fd26ee6973c338e8df803e44434bc0ad6498dfefee518d9c51bc4c605d4d11",
+    "panel_sha256": "909aa755d2fc136b19be683b633a50112ef98ef03f754bf3c2f7abcbc082619a",
+    "runner_sha256": "d0163fc48e8d1a2074bcc71f7182314e724dab456e1fbb42d630a26fadc12ca4",
+    "spec_sha256": "3c095e17a76b19cbc82fece8dc458cc3e16bc02c859175bf83f7a7c1b8416d14",
+    "stability_audit_sha256": "0c7ad93bb26b38025049ff85893d060585c3f87f80681b184eb5b7f5ab40d131"
+  },
+  "mechanism_claim": "NONE",
+  "minimal_panel": {
+    "accepted_roles": [],
+    "excluded_roles": {
+      "closing_acceptance__acceleration": "representation_gate_failed",
+      "closing_acceptance__change": "representation_gate_failed",
+      "closing_rejection_depth__acceleration": "representation_gate_failed",
+      "closing_rejection_depth__change": "representation_gate_failed",
+      "formation_depth__acceleration": "representation_gate_failed",
+      "formation_depth__change": "representation_gate_failed",
+      "formation_diffusion__acceleration": "representation_gate_failed",
+      "formation_diffusion__change": "representation_gate_failed",
+      "formation_leadership_concentration__acceleration": "representation_gate_failed",
+      "formation_leadership_concentration__change": "representation_gate_failed",
+      "formation_participation__acceleration": "representation_gate_failed",
+      "formation_participation__change": "representation_gate_failed",
+      "stock_industry_divergence__acceleration": "representation_gate_failed",
+      "stock_industry_divergence__change": "representation_gate_failed"
+    }
+  },
+  "population": {
+    "first_date": "2018-03-06",
+    "groups": 8,
+    "last_date": "2023-12-29",
+    "roles_attempted": 14,
+    "rows": 11336
+  },
+  "post_2023_rows_read": 0,
+  "primary_spearman_all_a_all_status": {
+    "closing_acceptance__acceleration": {
+      "closing_acceptance__acceleration": 1.0,
+      "closing_acceptance__change": 0.8585527479012357,
+      "closing_rejection_depth__acceleration": -0.8643777372788567,
+      "closing_rejection_depth__change": -0.7394541868717045,
+      "formation_depth__acceleration": 0.2046900302251834,
+      "formation_depth__change": 0.1673606095370628,
+      "formation_diffusion__acceleration": -0.062353851815261874,
+      "formation_diffusion__change": -0.08414448886021941,
+      "formation_leadership_concentration__acceleration": 0.07598083987518395,
+      "formation_leadership_concentration__change": 0.09364595186718125,
+      "formation_participation__acceleration": 0.07083772744367796,
+      "formation_participation__change": 0.04441695064240233,
+      "stock_industry_divergence__acceleration": 0.10339002870179226,
+      "stock_industry_divergence__change": 0.08662186495061593
+    },
+    "closing_acceptance__change": {
+      "closing_acceptance__acceleration": 0.8585527479012357,
+      "closing_acceptance__change": 1.0,
+      "closing_rejection_depth__acceleration": -0.7559289254963842,
+      "closing_rejection_depth__change": -0.8637593774446302,
+      "formation_depth__acceleration": 0.18150031177819867,
+      "formation_depth__change": 0.19601502905238471,
+      "formation_diffusion__acceleration": -0.01332573918247524,
+      "formation_diffusion__change": -0.06070790058766841,
+      "formation_leadership_concentration__acceleration": 0.04251153555208936,
+      "formation_leadership_concentration__change": 0.07023357275786875,
+      "formation_participation__acceleration": 0.08415255818044506,
+      "formation_participation__change": 0.05333020899794355,
+      "stock_industry_divergence__acceleration": 0.08666588647440965,
+      "stock_industry_divergence__change": 0.09081317559207777
+    },
+    "closing_rejection_depth__acceleration": {
+      "closing_acceptance__acceleration": -0.8643777372788567,
+      "closing_acceptance__change": -0.7559289254963842,
+      "closing_rejection_depth__acceleration": 1.0,
+      "closing_rejection_depth__change": 0.848813586760366,
+      "formation_depth__acceleration": 0.05016385329867262,
+      "formation_depth__change": 0.04352313879513408,
+      "formation_diffusion__acceleration": -0.16885221454889562,
+      "formation_diffusion__change": -0.1009236472217619,
+      "formation_leadership_concentration__acceleration": 0.027923673691544863,
+      "formation_leadership_concentration__change": 0.0051104603343409315,
+      "formation_participation__acceleration": -0.26463502839435676,
+      "formation_participation__change": -0.20820207583758252,
+      "stock_industry_divergence__acceleration": -0.08248096812266098,
+      "stock_industry_divergence__change": -0.057007209844994605
+    },
+    "closing_rejection_depth__change": {
+      "closing_acceptance__acceleration": -0.7394541868717045,
+      "closing_acceptance__change": -0.8637593774446302,
+      "closing_rejection_depth__acceleration": 0.848813586760366,
+      "closing_rejection_depth__change": 1.0,
+      "formation_depth__acceleration": 0.041890077264193526,
+      "formation_depth__change": 0.08098602483535464,
+      "formation_diffusion__acceleration": -0.1921707448514204,
+      "formation_diffusion__change": -0.17565105548856907,
+      "formation_leadership_concentration__acceleration": 0.03206007272435002,
+      "formation_leadership_concentration__change": 0.020976675103130966,
+      "formation_participation__acceleration": -0.25614824040049883,
+      "formation_participation__change": -0.2699927147008595,
+      "stock_industry_divergence__acceleration": -0.09487674938381929,
+      "stock_industry_divergence__change": -0.07869472619594652
+    },
+    "formation_depth__acceleration": {
+      "closing_acceptance__acceleration": 0.2046900302251834,
+      "closing_acceptance__change": 0.18150031177819867,
+      "closing_rejection_depth__acceleration": 0.05016385329867262,
+      "closing_rejection_depth__change": 0.041890077264193526,
+      "formation_depth__acceleration": 1.0,
+      "formation_depth__change": 0.8173736540046438,
+      "formation_diffusion__acceleration": -0.31425968049593345,
+      "formation_diffusion__change": -0.2602917566340583,
+      "formation_leadership_concentration__acceleration": 0.1943225133155416,
+      "formation_leadership_concentration__change": 0.19402877799627602,
+      "formation_participation__acceleration": -0.26659616186079266,
+      "formation_participation__change": -0.21077773564517477,
+      "stock_industry_divergence__acceleration": 0.07589478723119729,
+      "stock_industry_divergence__change": 0.10344391607893179
+    },
+    "formation_depth__change": {
+      "closing_acceptance__acceleration": 0.1673606095370628,
+      "closing_acceptance__change": 0.19601502905238471,
+      "closing_rejection_depth__acceleration": 0.04352313879513408,
+      "closing_rejection_depth__change": 0.08098602483535464,
+      "formation_depth__acceleration": 0.8173736540046438,
+      "formation_depth__change": 1.0,
+      "formation_diffusion__acceleration": -0.26554524168428334,
+      "formation_diffusion__change": -0.34269982620799144,
+      "formation_leadership_concentration__acceleration": 0.14698440412796265,
+      "formation_leadership_concentration__change": 0.19684684242869113,
+      "formation_participation__acceleration": -0.2250887978499919,
+      "formation_participation__change": -0.3122187750212233,
+      "stock_industry_divergence__acceleration": 0.031135672423476823,
+      "stock_industry_divergence__change": 0.09659984149931475
+    },
+    "formation_diffusion__acceleration": {
+      "closing_acceptance__acceleration": -0.062353851815261874,
+      "closing_acceptance__change": -0.01332573918247524,
+      "closing_rejection_depth__acceleration": -0.16885221454889562,
+      "closing_rejection_depth__change": -0.1921707448514204,
+      "formation_depth__acceleration": -0.31425968049593345,
+      "formation_depth__change": -0.26554524168428334,
+      "formation_diffusion__acceleration": 1.0,
+      "formation_diffusion__change": 0.7812820747939562,
+      "formation_leadership_concentration__acceleration": -0.3143008887436421,
+      "formation_leadership_concentration__change": -0.28734119939687497,
+      "formation_participation__acceleration": 0.6413051407282554,
+      "formation_participation__change": 0.5329776229349089,
+      "stock_industry_divergence__acceleration": 0.09819417919133158,
+      "stock_industry_divergence__change": 0.058102625450916885
+    },
+    "formation_diffusion__change": {
+      "closing_acceptance__acceleration": -0.08414448886021941,
+      "closing_acceptance__change": -0.06070790058766841,
+      "closing_rejection_depth__acceleration": -0.1009236472217619,
+      "closing_rejection_depth__change": -0.17565105548856907,
+      "formation_depth__acceleration": -0.2602917566340583,
+      "formation_depth__change": -0.34269982620799144,
+      "formation_diffusion__acceleration": 0.7812820747939562,
+      "formation_diffusion__change": 1.0,
+      "formation_leadership_concentration__acceleration": -0.23133098788538695,
+      "formation_leadership_concentration__change": -0.2994856931155579,
+      "formation_participation__acceleration": 0.5000417941673834,
+      "formation_participation__change": 0.68531796342421,
+      "stock_industry_divergence__acceleration": 0.09717785843325906,
+      "stock_industry_divergence__change": 0.11402309661185785
+    },
+    "formation_leadership_concentration__acceleration": {
+      "closing_acceptance__acceleration": 0.07598083987518395,
+      "closing_acceptance__change": 0.04251153555208936,
+      "closing_rejection_depth__acceleration": 0.027923673691544863,
+      "closing_rejection_depth__change": 0.03206007272435002,
+      "formation_depth__acceleration": 0.1943225133155416,
+      "formation_depth__change": 0.14698440412796265,
+      "formation_diffusion__acceleration": -0.3143008887436421,
+      "formation_diffusion__change": -0.23133098788538695,
+      "formation_leadership_concentration__acceleration": 1.0,
+      "formation_leadership_concentration__change": 0.8370861072034481,
+      "formation_participation__acceleration": -0.17979630226782622,
+      "formation_participation__change": -0.1510232173773022,
+      "stock_industry_divergence__acceleration": 0.2826076232768102,
+      "stock_industry_divergence__change": 0.2497910593207137
+    },
+    "formation_leadership_concentration__change": {
+      "closing_acceptance__acceleration": 0.09364595186718125,
+      "closing_acceptance__change": 0.07023357275786875,
+      "closing_rejection_depth__acceleration": 0.0051104603343409315,
+      "closing_rejection_depth__change": 0.020976675103130966,
+      "formation_depth__acceleration": 0.19402877799627602,
+      "formation_depth__change": 0.19684684242869113,
+      "formation_diffusion__acceleration": -0.28734119939687497,
+      "formation_diffusion__change": -0.2994856931155579,
+      "formation_leadership_concentration__acceleration": 0.8370861072034481,
+      "formation_leadership_concentration__change": 1.0,
+      "formation_participation__acceleration": -0.15648216205462867,
+      "formation_participation__change": -0.18294517400520388,
+      "stock_industry_divergence__acceleration": 0.22241218322080458,
+      "stock_industry_divergence__change": 0.2991032587091776
+    },
+    "formation_participation__acceleration": {
+      "closing_acceptance__acceleration": 0.07083772744367796,
+      "closing_acceptance__change": 0.08415255818044506,
+      "closing_rejection_depth__acceleration": -0.26463502839435676,
+      "closing_rejection_depth__change": -0.25614824040049883,
+      "formation_depth__acceleration": -0.26659616186079266,
+      "formation_depth__change": -0.2250887978499919,
+      "formation_diffusion__acceleration": 0.6413051407282554,
+      "formation_diffusion__change": 0.5000417941673834,
+      "formation_leadership_concentration__acceleration": -0.17979630226782622,
+      "formation_leadership_concentration__change": -0.15648216205462867,
+      "formation_participation__acceleration": 1.0,
+      "formation_participation__change": 0.757583459260109,
+      "stock_industry_divergence__acceleration": 0.1195767447240346,
+      "stock_industry_divergence__change": 0.08870432687204094
+    },
+    "formation_participation__change": {
+      "closing_acceptance__acceleration": 0.04441695064240233,
+      "closing_acceptance__change": 0.05333020899794355,
+      "closing_rejection_depth__acceleration": -0.20820207583758252,
+      "closing_rejection_depth__change": -0.2699927147008595,
+      "formation_depth__acceleration": -0.21077773564517477,
+      "formation_depth__change": -0.3122187750212233,
+      "formation_diffusion__acceleration": 0.5329776229349089,
+      "formation_diffusion__change": 0.68531796342421,
+      "formation_leadership_concentration__acceleration": -0.1510232173773022,
+      "formation_leadership_concentration__change": -0.18294517400520388,
+      "formation_participation__acceleration": 0.757583459260109,
+      "formation_participation__change": 1.0,
+      "stock_industry_divergence__acceleration": 0.08543629526298419,
+      "stock_industry_divergence__change": 0.10583413324733738
+    },
+    "stock_industry_divergence__acceleration": {
+      "closing_acceptance__acceleration": 0.10339002870179226,
+      "closing_acceptance__change": 0.08666588647440965,
+      "closing_rejection_depth__acceleration": -0.08248096812266098,
+      "closing_rejection_depth__change": -0.09487674938381929,
+      "formation_depth__acceleration": 0.07589478723119729,
+      "formation_depth__change": 0.031135672423476823,
+      "formation_diffusion__acceleration": 0.09819417919133158,
+      "formation_diffusion__change": 0.09717785843325906,
+      "formation_leadership_concentration__acceleration": 0.2826076232768102,
+      "formation_leadership_concentration__change": 0.22241218322080458,
+      "formation_participation__acceleration": 0.1195767447240346,
+      "formation_participation__change": 0.08543629526298419,
+      "stock_industry_divergence__acceleration": 1.0,
+      "stock_industry_divergence__change": 0.7832138950437262
+    },
+    "stock_industry_divergence__change": {
+      "closing_acceptance__acceleration": 0.08662186495061593,
+      "closing_acceptance__change": 0.09081317559207777,
+      "closing_rejection_depth__acceleration": -0.057007209844994605,
+      "closing_rejection_depth__change": -0.07869472619594652,
+      "formation_depth__acceleration": 0.10344391607893179,
+      "formation_depth__change": 0.09659984149931475,
+      "formation_diffusion__acceleration": 0.058102625450916885,
+      "formation_diffusion__change": 0.11402309661185785,
+      "formation_leadership_concentration__acceleration": 0.2497910593207137,
+      "formation_leadership_concentration__change": 0.2991032587091776,
+      "formation_participation__acceleration": 0.08870432687204094,
+      "formation_participation__change": 0.10583413324733738,
+      "stock_industry_divergence__acceleration": 0.7832138950437262,
+      "stock_industry_divergence__change": 1.0
+    }
+  },
+  "raw_minute_rows_read": 0,
+  "raw_security_rows_read": 0,
+  "resource_audit": {
+    "durable_output_bytes_before_result_report": 27507332,
+    "peak_rss_ceiling_bytes": 3221225472,
+    "resource_gate_pass": true
+  },
+  "role_diagnostics": {
+    "closing_acceptance__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9981829683076737,
+        "CHINEXT_BOARD": 0.9988612435686295,
+        "SH_A": 0.9957051484692883,
+        "SZ_A": 0.9969807946904373
+      },
+      "all_status_vs_non_st_median_spearman": 0.9975818814990556,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "closing_acceptance__acceleration_neighbor_h10": -0.17396166601050073,
+          "closing_acceptance__acceleration_neighbor_h3": 0.1638408921859311,
+          "closing_acceptance__acceleration_neighbor_ols5": 0.8716280935372469,
+          "closing_acceptance__acceleration_neighbor_theilsen5": 0.8174120621813488
+        },
+        "B": {
+          "closing_acceptance__acceleration_neighbor_h10": -0.18669422986666953,
+          "closing_acceptance__acceleration_neighbor_h3": 0.19852515247663427,
+          "closing_acceptance__acceleration_neighbor_ols5": 0.8763425832639288,
+          "closing_acceptance__acceleration_neighbor_theilsen5": 0.8236235758345715
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "closing_acceptance__acceleration_neighbor_h10": -0.18213390867142248,
+        "closing_acceptance__acceleration_neighbor_h3": 0.1796604486056077,
+        "closing_acceptance__acceleration_neighbor_ols5": 0.872986965721964,
+        "closing_acceptance__acceleration_neighbor_theilsen5": 0.8210412948491745
+      },
+      "minimum_raw_coverage": 0.9929428369795342,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "closing_acceptance__acceleration_neighbor_h10": -0.19130601155626986,
+        "closing_acceptance__acceleration_neighbor_h3": 0.17849218518608695,
+        "closing_acceptance__acceleration_neighbor_ols5": 0.8535699962087778,
+        "closing_acceptance__acceleration_neighbor_theilsen5": 0.8066136894424496
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "closing_acceptance",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.39215967796502277,
+        "ALL_A:NON_ST": 0.39280642602033616,
+        "CHINEXT_BOARD:ALL_STATUS": 0.39740946577612635,
+        "CHINEXT_BOARD:NON_ST": 0.39682172616598416,
+        "SH_A:ALL_STATUS": 0.39390615436321075,
+        "SH_A:NON_ST": 0.3921945451856771,
+        "SZ_A:ALL_STATUS": 0.39278988394682723,
+        "SZ_A:NON_ST": 0.3947872302011604
+      },
+      "same_session_level_median_absolute_spearman": 0.39335629019177343,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.18669422986666953,
+      "worst_full_neighbor_median_spearman": -0.18213390867142248,
+      "worst_phase_zero_neighbor_median_spearman": -0.19130601155626986
+    },
+    "closing_acceptance__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9981894063793877,
+        "CHINEXT_BOARD": 0.9989566206172681,
+        "SH_A": 0.9957588496347973,
+        "SZ_A": 0.9969691578732686
+      },
+      "all_status_vs_non_st_median_spearman": 0.9975792821263281,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "closing_acceptance__change_neighbor_h10": 0.47451985784042305,
+          "closing_acceptance__change_neighbor_h3": 0.4958036103004816,
+          "closing_acceptance__change_neighbor_ols5": 0.8214840301746789,
+          "closing_acceptance__change_neighbor_theilsen5": 0.756198183314218
+        },
+        "B": {
+          "closing_acceptance__change_neighbor_h10": 0.47663031007763645,
+          "closing_acceptance__change_neighbor_h3": 0.509079408863521,
+          "closing_acceptance__change_neighbor_ols5": 0.8240224296486178,
+          "closing_acceptance__change_neighbor_theilsen5": 0.7607108170945746
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "closing_acceptance__change_neighbor_h10": 0.475467219435437,
+        "closing_acceptance__change_neighbor_h3": 0.502159885065913,
+        "closing_acceptance__change_neighbor_ols5": 0.8228391494000831,
+        "closing_acceptance__change_neighbor_theilsen5": 0.757477640552227
+      },
+      "minimum_raw_coverage": 0.9964714184897672,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "closing_acceptance__change_neighbor_h10": 0.4900752652584653,
+        "closing_acceptance__change_neighbor_h3": 0.513311936892026,
+        "closing_acceptance__change_neighbor_ols5": 0.8042781660835621,
+        "closing_acceptance__change_neighbor_theilsen5": 0.7522451451812899
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "closing_acceptance",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.6881514131939256,
+        "ALL_A:NON_ST": 0.6893412649650767,
+        "CHINEXT_BOARD:ALL_STATUS": 0.6835640748535238,
+        "CHINEXT_BOARD:NON_ST": 0.6826269026045979,
+        "SH_A:ALL_STATUS": 0.686892233280235,
+        "SH_A:NON_ST": 0.6878842053212624,
+        "SZ_A:ALL_STATUS": 0.6893925741650616,
+        "SZ_A:NON_ST": 0.6913613630978283
+      },
+      "same_session_level_median_absolute_spearman": 0.6880178092575939,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.47451985784042305,
+      "worst_full_neighbor_median_spearman": 0.475467219435437,
+      "worst_phase_zero_neighbor_median_spearman": 0.4900752652584653
+    },
+    "closing_rejection_depth__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9986408774581398,
+        "CHINEXT_BOARD": 0.9991797253801378,
+        "SH_A": 0.9966857970589313,
+        "SZ_A": 0.9979518919277364
+      },
+      "all_status_vs_non_st_median_spearman": 0.998296384692938,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "closing_rejection_depth__acceleration_neighbor_h10": -0.1370775123334096,
+          "closing_rejection_depth__acceleration_neighbor_h3": 0.17443067694401437,
+          "closing_rejection_depth__acceleration_neighbor_ols5": 0.8543054871251375,
+          "closing_rejection_depth__acceleration_neighbor_theilsen5": 0.8165246046350261
+        },
+        "B": {
+          "closing_rejection_depth__acceleration_neighbor_h10": -0.13448084365303323,
+          "closing_rejection_depth__acceleration_neighbor_h3": 0.21002987259083294,
+          "closing_rejection_depth__acceleration_neighbor_ols5": 0.8740379290585618,
+          "closing_rejection_depth__acceleration_neighbor_theilsen5": 0.8330154596165833
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "closing_rejection_depth__acceleration_neighbor_h10": -0.1365013764234845,
+        "closing_rejection_depth__acceleration_neighbor_h3": 0.19069664418986887,
+        "closing_rejection_depth__acceleration_neighbor_ols5": 0.8623737498197435,
+        "closing_rejection_depth__acceleration_neighbor_theilsen5": 0.8247051225783523
+      },
+      "minimum_raw_coverage": 0.9929428369795342,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "closing_rejection_depth__acceleration_neighbor_h10": -0.15055895392251722,
+        "closing_rejection_depth__acceleration_neighbor_h3": 0.22090785457224874,
+        "closing_rejection_depth__acceleration_neighbor_ols5": 0.8685783665959346,
+        "closing_rejection_depth__acceleration_neighbor_theilsen5": 0.8138544689733815
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "closing_rejection_depth",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.4086440936401659,
+        "ALL_A:NON_ST": 0.40717944093336866,
+        "CHINEXT_BOARD:ALL_STATUS": 0.3843490549598169,
+        "CHINEXT_BOARD:NON_ST": 0.38472742120621145,
+        "SH_A:ALL_STATUS": 0.418714536350043,
+        "SH_A:NON_ST": 0.4202219396519279,
+        "SZ_A:ALL_STATUS": 0.40429099910885063,
+        "SZ_A:NON_ST": 0.40258913079023056
+      },
+      "same_session_level_median_absolute_spearman": 0.4057352200211096,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.1370775123334096,
+      "worst_full_neighbor_median_spearman": -0.1365013764234845,
+      "worst_phase_zero_neighbor_median_spearman": -0.15055895392251722
+    },
+    "closing_rejection_depth__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.998645213391455,
+        "CHINEXT_BOARD": 0.9991724322005985,
+        "SH_A": 0.9967639880345832,
+        "SZ_A": 0.9978917684201654
+      },
+      "all_status_vs_non_st_median_spearman": 0.9982684909058102,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "closing_rejection_depth__change_neighbor_h10": 0.44935369033848155,
+          "closing_rejection_depth__change_neighbor_h3": 0.51874022535857,
+          "closing_rejection_depth__change_neighbor_ols5": 0.8195581871407254,
+          "closing_rejection_depth__change_neighbor_theilsen5": 0.7768369435698091
+        },
+        "B": {
+          "closing_rejection_depth__change_neighbor_h10": 0.47478838842787824,
+          "closing_rejection_depth__change_neighbor_h3": 0.5440748603653442,
+          "closing_rejection_depth__change_neighbor_ols5": 0.8363542953232836,
+          "closing_rejection_depth__change_neighbor_theilsen5": 0.7948554396778229
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "closing_rejection_depth__change_neighbor_h10": 0.45969763149898657,
+        "closing_rejection_depth__change_neighbor_h3": 0.5281609819436254,
+        "closing_rejection_depth__change_neighbor_ols5": 0.8273989013154566,
+        "closing_rejection_depth__change_neighbor_theilsen5": 0.7837392938789751
+      },
+      "minimum_raw_coverage": 0.9964714184897672,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "closing_rejection_depth__change_neighbor_h10": 0.44507985245002046,
+        "closing_rejection_depth__change_neighbor_h3": 0.5499785042107392,
+        "closing_rejection_depth__change_neighbor_ols5": 0.8381279708927953,
+        "closing_rejection_depth__change_neighbor_theilsen5": 0.7714534330257918
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "closing_rejection_depth",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.6602877172054301,
+        "ALL_A:NON_ST": 0.6597281834178568,
+        "CHINEXT_BOARD:ALL_STATUS": 0.6490449905106028,
+        "CHINEXT_BOARD:NON_ST": 0.6495807985139868,
+        "SH_A:ALL_STATUS": 0.6721222756157511,
+        "SH_A:NON_ST": 0.6710322024322782,
+        "SZ_A:ALL_STATUS": 0.6593886139927574,
+        "SZ_A:NON_ST": 0.6595174476437353
+      },
+      "same_session_level_median_absolute_spearman": 0.659622815530796,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.44935369033848155,
+      "worst_full_neighbor_median_spearman": 0.45969763149898657,
+      "worst_phase_zero_neighbor_median_spearman": 0.44507985245002046
+    },
+    "formation_depth__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9972582621222644,
+        "CHINEXT_BOARD": 0.9983291466500421,
+        "SH_A": 0.9949420527165028,
+        "SZ_A": 0.9968078234476506
+      },
+      "all_status_vs_non_st_median_spearman": 0.9970330427849575,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_depth__acceleration_neighbor_h10": -0.11580889800926865,
+          "formation_depth__acceleration_neighbor_h3": 0.17324108170903585,
+          "formation_depth__acceleration_neighbor_ols5": 0.9118004465967322,
+          "formation_depth__acceleration_neighbor_theilsen5": 0.878782924946397
+        },
+        "B": {
+          "formation_depth__acceleration_neighbor_h10": -0.09213270161125607,
+          "formation_depth__acceleration_neighbor_h3": 0.1514227300772255,
+          "formation_depth__acceleration_neighbor_ols5": 0.9310406362425869,
+          "formation_depth__acceleration_neighbor_theilsen5": 0.877791934436151
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_depth__acceleration_neighbor_h10": -0.10317424145519771,
+        "formation_depth__acceleration_neighbor_h3": 0.16152930429000734,
+        "formation_depth__acceleration_neighbor_ols5": 0.9207593830899997,
+        "formation_depth__acceleration_neighbor_theilsen5": 0.8774529337720878
+      },
+      "minimum_raw_coverage": 0.9929428369795342,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_depth__acceleration_neighbor_h10": -0.10463754093073344,
+        "formation_depth__acceleration_neighbor_h3": 0.12193769178514124,
+        "formation_depth__acceleration_neighbor_ols5": 0.9315035580499794,
+        "formation_depth__acceleration_neighbor_theilsen5": 0.8955610594124916
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_depth",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.22555006742212164,
+        "ALL_A:NON_ST": 0.226382129367204,
+        "CHINEXT_BOARD:ALL_STATUS": 0.27544843448466777,
+        "CHINEXT_BOARD:NON_ST": 0.27599505015058823,
+        "SH_A:ALL_STATUS": 0.23451461690365855,
+        "SH_A:NON_ST": 0.23333712515271823,
+        "SZ_A:ALL_STATUS": 0.24095060417968903,
+        "SZ_A:NON_ST": 0.24143170023963426
+      },
+      "same_session_level_median_absolute_spearman": 0.23773261054167377,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.11580889800926865,
+      "worst_full_neighbor_median_spearman": -0.10317424145519771,
+      "worst_phase_zero_neighbor_median_spearman": -0.10463754093073344
+    },
+    "formation_depth__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.997468719699779,
+        "CHINEXT_BOARD": 0.9983399282786509,
+        "SH_A": 0.995314707501512,
+        "SZ_A": 0.9967636214486255
+      },
+      "all_status_vs_non_st_median_spearman": 0.9971161705742022,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_depth__change_neighbor_h10": 0.49843044261621267,
+          "formation_depth__change_neighbor_h3": 0.5559717855640143,
+          "formation_depth__change_neighbor_ols5": 0.8841410841269717,
+          "formation_depth__change_neighbor_theilsen5": 0.8441772938436322
+        },
+        "B": {
+          "formation_depth__change_neighbor_h10": 0.5422721738683975,
+          "formation_depth__change_neighbor_h3": 0.5727787124717223,
+          "formation_depth__change_neighbor_ols5": 0.9022714030998387,
+          "formation_depth__change_neighbor_theilsen5": 0.8470415893036918
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_depth__change_neighbor_h10": 0.5203704237605455,
+        "formation_depth__change_neighbor_h3": 0.561239633519244,
+        "formation_depth__change_neighbor_ols5": 0.8939806193591666,
+        "formation_depth__change_neighbor_theilsen5": 0.844357236039012
+      },
+      "minimum_raw_coverage": 0.9964714184897672,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_depth__change_neighbor_h10": 0.5024024897386838,
+        "formation_depth__change_neighbor_h3": 0.5470156855727251,
+        "formation_depth__change_neighbor_ols5": 0.8914933855444523,
+        "formation_depth__change_neighbor_theilsen5": 0.8502010862256465
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_depth",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.4554882911528661,
+        "ALL_A:NON_ST": 0.4563512600729456,
+        "CHINEXT_BOARD:ALL_STATUS": 0.5029493055141991,
+        "CHINEXT_BOARD:NON_ST": 0.5066637590432547,
+        "SH_A:ALL_STATUS": 0.4594324491480378,
+        "SH_A:NON_ST": 0.4594545380833001,
+        "SZ_A:ALL_STATUS": 0.47614763069549204,
+        "SZ_A:NON_ST": 0.47530906105473353
+      },
+      "same_session_level_median_absolute_spearman": 0.4673817995690168,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.49843044261621267,
+      "worst_full_neighbor_median_spearman": 0.5203704237605455,
+      "worst_phase_zero_neighbor_median_spearman": 0.5024024897386838
+    },
+    "formation_diffusion__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9948971953955261,
+        "CHINEXT_BOARD": 0.9983564340003591,
+        "SH_A": 0.994736263033227,
+        "SZ_A": 0.9940283454496927
+      },
+      "all_status_vs_non_st_median_spearman": 0.9948167292143766,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_diffusion__acceleration_neighbor_h10": -0.06478102493753124,
+          "formation_diffusion__acceleration_neighbor_h3": 0.17086757769550437,
+          "formation_diffusion__acceleration_neighbor_ols5": 0.9532073718736194,
+          "formation_diffusion__acceleration_neighbor_theilsen5": 0.9238589825594906
+        },
+        "B": {
+          "formation_diffusion__acceleration_neighbor_h10": -0.07954859320996623,
+          "formation_diffusion__acceleration_neighbor_h3": 0.18835539813676577,
+          "formation_diffusion__acceleration_neighbor_ols5": 0.9491571171107247,
+          "formation_diffusion__acceleration_neighbor_theilsen5": 0.9175650482795358
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_diffusion__acceleration_neighbor_h10": -0.07062100793319508,
+        "formation_diffusion__acceleration_neighbor_h3": 0.17796126586510888,
+        "formation_diffusion__acceleration_neighbor_ols5": 0.9516937900604456,
+        "formation_diffusion__acceleration_neighbor_theilsen5": 0.9211020422905531
+      },
+      "minimum_raw_coverage": 0.9696541990119972,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_diffusion__acceleration_neighbor_h10": -0.040562455655627355,
+        "formation_diffusion__acceleration_neighbor_h3": 0.15688536609445508,
+        "formation_diffusion__acceleration_neighbor_ols5": 0.945722159968503,
+        "formation_diffusion__acceleration_neighbor_theilsen5": 0.9221204838102506
+      },
+      "pit_expected_coverage": 0.9974923376985233,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_diffusion",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.16031048796907005,
+        "ALL_A:NON_ST": 0.1621174513211041,
+        "CHINEXT_BOARD:ALL_STATUS": 0.16946549559111856,
+        "CHINEXT_BOARD:NON_ST": 0.16860828078056153,
+        "SH_A:ALL_STATUS": 0.165607714154169,
+        "SH_A:NON_ST": 0.1654932504966621,
+        "SZ_A:ALL_STATUS": 0.15894876756276993,
+        "SZ_A:NON_ST": 0.16065458653096124
+      },
+      "same_session_level_median_absolute_spearman": 0.1638053509088831,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 175,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 240,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 233,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 175,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 240,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 233,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 190,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 190,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.07954859320996623,
+      "worst_full_neighbor_median_spearman": -0.07062100793319508,
+      "worst_phase_zero_neighbor_median_spearman": -0.040562455655627355
+    },
+    "formation_diffusion__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9954132168210627,
+        "CHINEXT_BOARD": 0.9982960567494938,
+        "SH_A": 0.9952202474441183,
+        "SZ_A": 0.9944698121216702
+      },
+      "all_status_vs_non_st_median_spearman": 0.9953167321325904,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_diffusion__change_neighbor_h10": 0.5883745795206847,
+          "formation_diffusion__change_neighbor_h3": 0.6618790944290565,
+          "formation_diffusion__change_neighbor_ols5": 0.9500366753547116,
+          "formation_diffusion__change_neighbor_theilsen5": 0.911963416145603
+        },
+        "B": {
+          "formation_diffusion__change_neighbor_h10": 0.5756835386696585,
+          "formation_diffusion__change_neighbor_h3": 0.6420463055763793,
+          "formation_diffusion__change_neighbor_ols5": 0.9358785050138058,
+          "formation_diffusion__change_neighbor_theilsen5": 0.899732580941928
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_diffusion__change_neighbor_h10": 0.5795870536243741,
+        "formation_diffusion__change_neighbor_h3": 0.6492982506678591,
+        "formation_diffusion__change_neighbor_ols5": 0.9442810039423635,
+        "formation_diffusion__change_neighbor_theilsen5": 0.9063000385998206
+      },
+      "minimum_raw_coverage": 0.9809456598447425,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_diffusion__change_neighbor_h10": 0.601771044391417,
+        "formation_diffusion__change_neighbor_h3": 0.6481933025213329,
+        "formation_diffusion__change_neighbor_ols5": 0.9353037011790619,
+        "formation_diffusion__change_neighbor_theilsen5": 0.9011968436000173
+      },
+      "pit_expected_coverage": 0.9983416252072969,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_diffusion",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.46198230597853146,
+        "ALL_A:NON_ST": 0.46717094231001405,
+        "CHINEXT_BOARD:ALL_STATUS": 0.48923987730330676,
+        "CHINEXT_BOARD:NON_ST": 0.4886104757110228,
+        "SH_A:ALL_STATUS": 0.4729043685086404,
+        "SH_A:NON_ST": 0.4757949561846491,
+        "SZ_A:ALL_STATUS": 0.4560455870610468,
+        "SZ_A:NON_ST": 0.4601590012029689
+      },
+      "same_session_level_median_absolute_spearman": 0.47003765540932724,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 186,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 236,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 186,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 236,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 196,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 196,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.5756835386696585,
+      "worst_full_neighbor_median_spearman": 0.5795870536243741,
+      "worst_phase_zero_neighbor_median_spearman": 0.601771044391417
+    },
+    "formation_leadership_concentration__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9936066469967687,
+        "CHINEXT_BOARD": 0.9947218953867577,
+        "SH_A": 0.989590163609233,
+        "SZ_A": 0.9885704261317969
+      },
+      "all_status_vs_non_st_median_spearman": 0.9915984053030009,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_leadership_concentration__acceleration_neighbor_h10": -0.11523102718896808,
+          "formation_leadership_concentration__acceleration_neighbor_h3": 0.1726096943068991,
+          "formation_leadership_concentration__acceleration_neighbor_ols5": 0.9009807610768545,
+          "formation_leadership_concentration__acceleration_neighbor_theilsen5": 0.854193579547032
+        },
+        "B": {
+          "formation_leadership_concentration__acceleration_neighbor_h10": -0.15141061722442717,
+          "formation_leadership_concentration__acceleration_neighbor_h3": 0.14200315952888898,
+          "formation_leadership_concentration__acceleration_neighbor_ols5": 0.9037006197503884,
+          "formation_leadership_concentration__acceleration_neighbor_theilsen5": 0.8625518437562936
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_leadership_concentration__acceleration_neighbor_h10": -0.13478903831310826,
+        "formation_leadership_concentration__acceleration_neighbor_h3": 0.152834791067011,
+        "formation_leadership_concentration__acceleration_neighbor_ols5": 0.902776037012339,
+        "formation_leadership_concentration__acceleration_neighbor_theilsen5": 0.8602303643329539
+      },
+      "minimum_raw_coverage": 0.9696541990119972,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_leadership_concentration__acceleration_neighbor_h10": -0.13277582961755954,
+        "formation_leadership_concentration__acceleration_neighbor_h3": 0.13930605593755502,
+        "formation_leadership_concentration__acceleration_neighbor_ols5": 0.8914720510404992,
+        "formation_leadership_concentration__acceleration_neighbor_theilsen5": 0.8538631828547223
+      },
+      "pit_expected_coverage": 0.9974923376985233,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_leadership_concentration",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.3415660231867027,
+        "ALL_A:NON_ST": 0.33858881453146966,
+        "CHINEXT_BOARD:ALL_STATUS": 0.3395221759637679,
+        "CHINEXT_BOARD:NON_ST": 0.34324811375281294,
+        "SH_A:ALL_STATUS": 0.358208503059775,
+        "SH_A:NON_ST": 0.35502984395215836,
+        "SZ_A:ALL_STATUS": 0.3133898094989022,
+        "SZ_A:NON_ST": 0.3117680226134664
+      },
+      "same_session_level_median_absolute_spearman": 0.3405440995752353,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 175,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 240,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 233,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 175,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 240,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 233,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 190,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 190,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.15141061722442717,
+      "worst_full_neighbor_median_spearman": -0.13478903831310826,
+      "worst_phase_zero_neighbor_median_spearman": -0.13277582961755954
+    },
+    "formation_leadership_concentration__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9939236331457867,
+        "CHINEXT_BOARD": 0.9948519372421005,
+        "SH_A": 0.9890357230273209,
+        "SZ_A": 0.9899935972352394
+      },
+      "all_status_vs_non_st_median_spearman": 0.9919586151905131,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_leadership_concentration__change_neighbor_h10": 0.5237220194447889,
+          "formation_leadership_concentration__change_neighbor_h3": 0.5462052457226785,
+          "formation_leadership_concentration__change_neighbor_ols5": 0.8722384689565414,
+          "formation_leadership_concentration__change_neighbor_theilsen5": 0.8112461392958846
+        },
+        "B": {
+          "formation_leadership_concentration__change_neighbor_h10": 0.49590490165080636,
+          "formation_leadership_concentration__change_neighbor_h3": 0.5328112708849235,
+          "formation_leadership_concentration__change_neighbor_ols5": 0.8742440971558141,
+          "formation_leadership_concentration__change_neighbor_theilsen5": 0.8240581258852056
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_leadership_concentration__change_neighbor_h10": 0.5049611672810824,
+        "formation_leadership_concentration__change_neighbor_h3": 0.5392960517204703,
+        "formation_leadership_concentration__change_neighbor_ols5": 0.8736152543607082,
+        "formation_leadership_concentration__change_neighbor_theilsen5": 0.8166638983584502
+      },
+      "minimum_raw_coverage": 0.9809456598447425,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_leadership_concentration__change_neighbor_h10": 0.5235001790554519,
+        "formation_leadership_concentration__change_neighbor_h3": 0.537375974032122,
+        "formation_leadership_concentration__change_neighbor_ols5": 0.8673936628975384,
+        "formation_leadership_concentration__change_neighbor_theilsen5": 0.8209479429895368
+      },
+      "pit_expected_coverage": 0.9983416252072969,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_leadership_concentration",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.6221307738028962,
+        "ALL_A:NON_ST": 0.6224271372365215,
+        "CHINEXT_BOARD:ALL_STATUS": 0.6342943104249306,
+        "CHINEXT_BOARD:NON_ST": 0.6420661584803952,
+        "SH_A:ALL_STATUS": 0.6313414975813578,
+        "SH_A:NON_ST": 0.6379875341838632,
+        "SZ_A:ALL_STATUS": 0.6098557240008085,
+        "SZ_A:NON_ST": 0.6134991365813728
+      },
+      "same_session_level_median_absolute_spearman": 0.6268843174089397,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 186,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 236,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 186,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 236,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 196,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 196,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.49590490165080636,
+      "worst_full_neighbor_median_spearman": 0.5049611672810824,
+      "worst_phase_zero_neighbor_median_spearman": 0.5235001790554519
+    },
+    "formation_participation__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9992149538005783,
+        "CHINEXT_BOARD": 0.9997935796369614,
+        "SH_A": 0.9990838844309976,
+        "SZ_A": 0.999007684715658
+      },
+      "all_status_vs_non_st_median_spearman": 0.9991494191157879,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_participation__acceleration_neighbor_h10": -0.009609401549722,
+          "formation_participation__acceleration_neighbor_h3": 0.1457880150107184,
+          "formation_participation__acceleration_neighbor_ols5": 0.9342783028102926,
+          "formation_participation__acceleration_neighbor_theilsen5": 0.8781094947835324
+        },
+        "B": {
+          "formation_participation__acceleration_neighbor_h10": -0.07418741068859863,
+          "formation_participation__acceleration_neighbor_h3": 0.12639597179111997,
+          "formation_participation__acceleration_neighbor_ols5": 0.9539729371541301,
+          "formation_participation__acceleration_neighbor_theilsen5": 0.9112295158222328
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_participation__acceleration_neighbor_h10": -0.04070285780045359,
+        "formation_participation__acceleration_neighbor_h3": 0.13631425539811243,
+        "formation_participation__acceleration_neighbor_ols5": 0.9436379652650273,
+        "formation_participation__acceleration_neighbor_theilsen5": 0.8935005208880689
+      },
+      "minimum_raw_coverage": 0.9929428369795342,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_participation__acceleration_neighbor_h10": -0.043174202294854344,
+        "formation_participation__acceleration_neighbor_h3": 0.1140826111862191,
+        "formation_participation__acceleration_neighbor_ols5": 0.9306586265287629,
+        "formation_participation__acceleration_neighbor_theilsen5": 0.8644759805874441
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_participation",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.2089129847111541,
+        "ALL_A:NON_ST": 0.21011912145523579,
+        "CHINEXT_BOARD:ALL_STATUS": 0.21959507840844866,
+        "CHINEXT_BOARD:NON_ST": 0.2194045757739615,
+        "SH_A:ALL_STATUS": 0.1974497703548111,
+        "SH_A:NON_ST": 0.19952346699723425,
+        "SZ_A:ALL_STATUS": 0.21501864434682594,
+        "SZ_A:NON_ST": 0.2169496887421248
+      },
+      "same_session_level_median_absolute_spearman": 0.21256888290103088,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.07418741068859863,
+      "worst_full_neighbor_median_spearman": -0.04070285780045359,
+      "worst_phase_zero_neighbor_median_spearman": -0.043174202294854344
+    },
+    "formation_participation__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9992500290700533,
+        "CHINEXT_BOARD": 0.9997182882821551,
+        "SH_A": 0.9990964679174434,
+        "SZ_A": 0.9989791177847204
+      },
+      "all_status_vs_non_st_median_spearman": 0.9991732484937483,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "formation_participation__change_neighbor_h10": 0.5670637963164737,
+          "formation_participation__change_neighbor_h3": 0.6039289907169554,
+          "formation_participation__change_neighbor_ols5": 0.9368167924652986,
+          "formation_participation__change_neighbor_theilsen5": 0.8782704916881701
+        },
+        "B": {
+          "formation_participation__change_neighbor_h10": 0.5440021713936932,
+          "formation_participation__change_neighbor_h3": 0.64288276216603,
+          "formation_participation__change_neighbor_ols5": 0.9363084395909205,
+          "formation_participation__change_neighbor_theilsen5": 0.8950897143631897
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "formation_participation__change_neighbor_h10": 0.5569418453354038,
+        "formation_participation__change_neighbor_h3": 0.6245376425279678,
+        "formation_participation__change_neighbor_ols5": 0.9368022348000706,
+        "formation_participation__change_neighbor_theilsen5": 0.886209731630839
+      },
+      "minimum_raw_coverage": 0.9964714184897672,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "formation_participation__change_neighbor_h10": 0.5838749715390783,
+        "formation_participation__change_neighbor_h3": 0.5871680727171842,
+        "formation_participation__change_neighbor_ols5": 0.917380457468516,
+        "formation_participation__change_neighbor_theilsen5": 0.874308137373977
+      },
+      "pit_expected_coverage": 1.0,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "formation_participation",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.4630417605517463,
+        "ALL_A:NON_ST": 0.4652642849782974,
+        "CHINEXT_BOARD:ALL_STATUS": 0.4565824007698653,
+        "CHINEXT_BOARD:NON_ST": 0.4557554203844608,
+        "SH_A:ALL_STATUS": 0.46995100395299455,
+        "SH_A:NON_ST": 0.4721091440396037,
+        "SZ_A:ALL_STATUS": 0.46022776981382213,
+        "SZ_A:NON_ST": 0.4623827826202303
+      },
+      "same_session_level_median_absolute_spearman": 0.46271227158598827,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.5440021713936932,
+      "worst_full_neighbor_median_spearman": 0.5569418453354038,
+      "worst_phase_zero_neighbor_median_spearman": 0.5838749715390783
+    },
+    "stock_industry_divergence__acceleration": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9912928243520349,
+        "CHINEXT_BOARD": 0.9848934423219656,
+        "SH_A": 0.9548121813283148,
+        "SZ_A": 0.9697182322624193
+      },
+      "all_status_vs_non_st_median_spearman": 0.9773058372921924,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "stock_industry_divergence__acceleration_neighbor_h10": -0.1064619138580146,
+          "stock_industry_divergence__acceleration_neighbor_h3": 0.13944582447813092,
+          "stock_industry_divergence__acceleration_neighbor_ols5": 0.909863987973454,
+          "stock_industry_divergence__acceleration_neighbor_theilsen5": 0.8578693567202182
+        },
+        "B": {
+          "stock_industry_divergence__acceleration_neighbor_h10": -0.07330787903274501,
+          "stock_industry_divergence__acceleration_neighbor_h3": 0.1330996595001847,
+          "stock_industry_divergence__acceleration_neighbor_ols5": 0.9292594831703247,
+          "stock_industry_divergence__acceleration_neighbor_theilsen5": 0.8886963763228356
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "stock_industry_divergence__acceleration_neighbor_h10": -0.08517127971269839,
+        "stock_industry_divergence__acceleration_neighbor_h3": 0.1379823569728289,
+        "stock_industry_divergence__acceleration_neighbor_ols5": 0.921506565931975,
+        "stock_industry_divergence__acceleration_neighbor_theilsen5": 0.873297622358325
+      },
+      "minimum_raw_coverage": 0.9696541990119972,
+      "operator": "acceleration",
+      "phase_zero_neighbor_median_spearman": {
+        "stock_industry_divergence__acceleration_neighbor_h10": -0.09470478051900794,
+        "stock_industry_divergence__acceleration_neighbor_h3": 0.15314424297741352,
+        "stock_industry_divergence__acceleration_neighbor_ols5": 0.9205601695325227,
+        "stock_industry_divergence__acceleration_neighbor_theilsen5": 0.8826695976469134
+      },
+      "pit_expected_coverage": 0.9974923376985233,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "stock_industry_divergence",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.20942593279101526,
+        "ALL_A:NON_ST": 0.2123323657961325,
+        "CHINEXT_BOARD:ALL_STATUS": 0.32093996074119285,
+        "CHINEXT_BOARD:NON_ST": 0.3205935765097134,
+        "SH_A:ALL_STATUS": 0.31130637442987946,
+        "SH_A:NON_ST": 0.3110371535140016,
+        "SZ_A:ALL_STATUS": 0.22318688104479542,
+        "SZ_A:NON_ST": 0.2231185223133377
+      },
+      "same_session_level_median_absolute_spearman": 0.2671120172793985,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 175,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 240,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 233,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 175,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 240,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 233,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 190,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 190,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 193,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": -0.1064619138580146,
+      "worst_full_neighbor_median_spearman": -0.08517127971269839,
+      "worst_phase_zero_neighbor_median_spearman": -0.09470478051900794
+    },
+    "stock_industry_divergence__change": {
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9917668417144453,
+        "CHINEXT_BOARD": 0.9829847451737554,
+        "SH_A": 0.9535716172702688,
+        "SZ_A": 0.9697163127251538
+      },
+      "all_status_vs_non_st_median_spearman": 0.9763505289494546,
+      "all_view_year_cells_nondegenerate": true,
+      "block_neighbor_median_spearman": {
+        "A": {
+          "stock_industry_divergence__change_neighbor_h10": 0.5234247847828899,
+          "stock_industry_divergence__change_neighbor_h3": 0.5625546800817485,
+          "stock_industry_divergence__change_neighbor_ols5": 0.8832496586561769,
+          "stock_industry_divergence__change_neighbor_theilsen5": 0.8289232763170299
+        },
+        "B": {
+          "stock_industry_divergence__change_neighbor_h10": 0.5371495142346712,
+          "stock_industry_divergence__change_neighbor_h3": 0.575374809634532,
+          "stock_industry_divergence__change_neighbor_ols5": 0.9032241947047308,
+          "stock_industry_divergence__change_neighbor_theilsen5": 0.8488857141431133
+        }
+      },
+      "construction_gate_pass": false,
+      "full_neighbor_median_spearman": {
+        "stock_industry_divergence__change_neighbor_h10": 0.5275334777313064,
+        "stock_industry_divergence__change_neighbor_h3": 0.5644318672187274,
+        "stock_industry_divergence__change_neighbor_ols5": 0.8942874722049505,
+        "stock_industry_divergence__change_neighbor_theilsen5": 0.8397539645631555
+      },
+      "minimum_raw_coverage": 0.9809456598447425,
+      "operator": "change",
+      "phase_zero_neighbor_median_spearman": {
+        "stock_industry_divergence__change_neighbor_h10": 0.5133119523028398,
+        "stock_industry_divergence__change_neighbor_h3": 0.5740843757252996,
+        "stock_industry_divergence__change_neighbor_ols5": 0.8891968834282289,
+        "stock_industry_divergence__change_neighbor_theilsen5": 0.8254869175020062
+      },
+      "pit_expected_coverage": 0.9983416252072969,
+      "relative_expected_coverage": 1.0,
+      "relative_rank_expected_coverage": 1.0,
+      "role": "stock_industry_divergence",
+      "same_session_level_by_group": {
+        "ALL_A:ALL_STATUS": 0.5344311321027324,
+        "ALL_A:NON_ST": 0.5340087440895953,
+        "CHINEXT_BOARD:ALL_STATUS": 0.6140182011987924,
+        "CHINEXT_BOARD:NON_ST": 0.6258989454570936,
+        "SH_A:ALL_STATUS": 0.6110863523181929,
+        "SH_A:NON_ST": 0.6141197943040916,
+        "SZ_A:ALL_STATUS": 0.5366062570945839,
+        "SZ_A:NON_ST": 0.5326772868408902
+      },
+      "same_session_level_median_absolute_spearman": 0.5738463047063884,
+      "view_year_cells": {
+        "ALL_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "ALL_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 186,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 236,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 186,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 241,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 236,
+          "nondegenerate": true
+        },
+        "CHINEXT_BOARD:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 196,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 196,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SH_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:ALL_STATUS:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2018": {
+          "gate_pass": true,
+          "n": 198,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2019": {
+          "gate_pass": true,
+          "n": 244,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2020": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2021": {
+          "gate_pass": true,
+          "n": 243,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2022": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        },
+        "SZ_A:NON_ST:2023": {
+          "gate_pass": true,
+          "n": 242,
+          "nondegenerate": true
+        }
+      },
+      "worst_block_neighbor_median_spearman": 0.5234247847828899,
+      "worst_full_neighbor_median_spearman": 0.5275334777313064,
+      "worst_phase_zero_neighbor_median_spearman": 0.5133119523028398
+    }
+  },
+  "scalar_cases": [
+    {
+      "denominator": "NON_ST",
+      "exact_match": true,
+      "market_view": "SZ_A",
+      "operator": "change",
+      "role": "formation_participation",
+      "scalar": 0.032730257804107946,
+      "selection_hash": "0000151859254385d2667bf6e334b3041dcc57ac7a5df6f8ecd792a4f3491157",
+      "trade_date": "2019-12-16"
+    },
+    {
+      "denominator": "ALL_STATUS",
+      "exact_match": true,
+      "market_view": "CHINEXT_BOARD",
+      "operator": "change",
+      "role": "closing_acceptance",
+      "scalar": 0.0018315018315018471,
+      "selection_hash": "0000e3e1b7c5172468e49b128be94d3fcb6fca955162e27571aa44fa159959dc",
+      "trade_date": "2021-07-06"
+    },
+    {
+      "denominator": "ALL_STATUS",
+      "exact_match": true,
+      "market_view": "CHINEXT_BOARD",
+      "operator": "change",
+      "role": "formation_depth",
+      "scalar": -0.0012736568075891394,
+      "selection_hash": "0001401131004e66c7360b0e7d3aef25395a28d363e7428563ca1873f7ae7727",
+      "trade_date": "2020-09-11"
+    },
+    {
+      "denominator": "ALL_STATUS",
+      "exact_match": true,
+      "market_view": "CHINEXT_BOARD",
+      "operator": "change",
+      "role": "formation_depth",
+      "scalar": 0.0002678343100448996,
+      "selection_hash": "00016846be3cb6a86220d242136e9e916839366b417cfff8103c739908de6f63",
+      "trade_date": "2022-04-15"
+    },
+    {
+      "denominator": "NON_ST",
+      "exact_match": true,
+      "market_view": "SZ_A",
+      "operator": "acceleration",
+      "role": "formation_participation",
+      "scalar": 0.012437596041006962,
+      "selection_hash": "000172fa4b94af6fe9972a5e0c38c2e594c5e18af9fea547ded692c024bf43ec",
+      "trade_date": "2018-12-06"
+    }
+  ],
+  "status": "COMPLETE_0_OF_14_REPRESENTATIONS_PASS_0_MINIMAL",
+  "strategy_or_outcome_fields_read": [],
+  "usefulness_claim": "NONE"
+}

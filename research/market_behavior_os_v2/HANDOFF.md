@@ -1282,3 +1282,35 @@ broad temporal change/acceleration geometry after nonoverlap and accepted-
 breadth-change controls. Build that map before estimates. Do not label a level
 as momentum, improving acceptance, expanding opportunity, or a strategy habitat
 until a separately frozen dynamic survives.
+
+The temporal map `aaeaba05...` and MKT-BREAKOUT-DIFF-DYN-001 spec
+`3c095e17...` were frozen before temporal estimates. They apply fixed 5-session
+change and adjacent-block acceleration, 3/10-session and OLS/Theil--Sen
+neighbors, 2018--2020/2021--2023 blocks, every-fifth-primary-row phase checks,
+absolute/PIT/relative coordinates, and matched discovery/concentration dynamic
+controls to all seven parent levels.
+
+Zero of fourteen exact representations passes. Every change role misses the
+0.70 neighboring-definition floor (worst full median rho 0.460--0.580), and
+every acceleration role has an incompatible negative worst neighbor
+(-0.182-- -0.041). Denominator stability is 0.976--0.999 and endpoint-level
+correlations are below the redundancy boundary, but neither can rescue temporal
+definition instability. Early-block PIT external-control cells have only
+97/102 complete observations versus 150, so external distinctness is not
+established either.
+
+The parent-schema validator first stopped before estimates; the corrected
+validator binds the actual immutable parent fields. A later deterministic rerun
+found volatile peak RSS in result JSON. Removing only that telemetry yields two
+byte-identical final runs: panel `909aa755...`, stability `0c7ad93b...`,
+external `3e8d3238...`, result `a1108373...`, report `7b923c14...`. The 3-GiB
+gate remains enforced. Four focused tests pass, five scalar cases are exact,
+and no raw/future/outcome/CY-011 input was read.
+
+The exact full-market breakout temporal branch is now closed without tuning.
+Retain the seven levels as completed-session observations only. Next map a
+strategy-independent same-session absorption/distribution falsification from
+already accepted MKT-MIN-001 descriptors, explicitly separating selling/buying
+effort from price response and compressing against accepted VWAP defense,
+ordinary return, and activity. Do not reopen raw minute data or infer investor
+intent.

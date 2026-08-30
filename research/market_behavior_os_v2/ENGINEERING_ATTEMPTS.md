@@ -399,3 +399,28 @@ allowed. The runner now preserves the accepted materialization boundaries
 (`base -> stepped -> chained -> continuous`) before the prior-high window,
 then drops disposable stages. All 9,575 protected targets reproduce exactly;
 the final two count runs are byte-identical and stay below every resource ceiling.
+
+## MKT-BREAKOUT-DIFF-DYN-001-A — invalid parent-result schema assumption
+
+The first frozen runner invocation stopped before temporal construction or any
+estimate because its activation validator requested generic `usefulness_claim`,
+`future_values_read`, and `strategy_or_outcome_fields_read` keys that the bound
+MKT-BREAKOUT-DIFF-001 result does not contain. The immutable parent instead
+records `claim=REPRESENTATION_AND_EXTERNAL_GEOMETRY_ONLY`,
+`outcome_or_strategy_fields_read=[]`, and `post_2023_read=false`.
+
+The validator now binds those actual immutable fields. No source, role,
+operator, coordinate, population, estimate, gate, or claim changed.
+
+## MKT-BREAKOUT-DIFF-DYN-001-B — invalid volatile resource telemetry
+
+After complete estimates, a two-run byte check found identical panel,
+stability, external-audit, and report hashes but different result JSON hashes.
+The first differing field was measured process peak RSS, which naturally varies
+between executions. It is audit telemetry, not a scientific result.
+
+The runner continues to measure and enforce the frozen 3-GiB ceiling before
+output acceptance, but serializes only the deterministic ceiling, durable byte
+count, and pass/fail result. No estimate, gate, resource limit, scientific
+decision, or report value changed. Two subsequent full executions are
+byte-identical.

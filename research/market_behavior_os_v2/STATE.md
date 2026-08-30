@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-042_MAP_FULL_MARKET_BREAKOUT_FORMATION_DYNAMICS`
-- `CURRENT_PRIMARY_FRONTIER`: temporal momentum, acceleration, and transition geometry of seven full-market objective-breakout level coordinates
-- `SUPPORTING_FRONTIER`: accepted discovery breadth and leadership concentration as fixed redundancy controls
+- `CURRENT_PHASE`: `SYNTH-MKT-043_MAP_INTRADAY_ABSORPTION_DISTRIBUTION_FALSIFICATION`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent same-session selling-effort absorption and rally-distribution representations from already accepted minute descriptors
+- `SUPPORTING_FRONTIER`: seven stable full-market objective-breakout levels remain level coordinates only; accepted VWAP defense/recovery is a fixed alternative
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1387,3 +1387,40 @@ direct roles. Stable levels do not establish momentum, acceleration, state
 transition, prediction, usefulness, habitat, or a strategy. Freeze broad
 3/5/10-session changes, second differences, nonoverlap/shape controls, and
 generic accepted-breadth-change alternatives before estimating direction.
+
+### MKT-BREAKOUT-DIFF-DYN-001 historical temporal rejection
+
+The temporal map `aaeaba05...` and frozen spec `3c095e17...` define 5-session
+endpoint-rate change and adjacent-block acceleration for all seven direct level
+roles, with fixed 3/10-session, OLS, Theil--Sen, block, phase, denominator,
+year, causal-PIT, relative, endpoint-level, and accepted-breadth-dynamic gates.
+
+Zero of fourteen exact representations passes. Change roles have worst full-
+sample neighboring-definition median Spearman from 0.460 to 0.580, below 0.70.
+Acceleration roles have incompatible worst neighbors from -0.182 to -0.041.
+The same failures persist in both fixed blocks and the every-fifth-primary-row
+phase diagnostic. Denominator stability remains high (0.976--0.999), and no
+role is rejected for endpoint-level redundancy; those facts cannot rescue the
+definition failure. Early-block PIT external-control cells also have only
+97/102 complete observations versus 150 and therefore cannot establish
+external distinctness even if construction had passed.
+
+The first execution stopped before estimates because the parent activation
+validator requested fields not present in the bound parent result schema. After
+binding the actual immutable schema, a reproducibility audit found volatile peak
+RSS serialized into result JSON; it was removed while the enforced 3-GiB gate
+and deterministic ceiling/output-size audit remain. No formula, estimate, gate,
+or decision changed. The final two executions are byte-identical: panel
+`909aa755...`, stability `0c7ad93b...`, external `3e8d3238...`, result
+`a1108373...`, and report `7b923c14...`. Four focused tests pass. Five scalar
+operators reproduce exactly; raw security/minute rows, future values, outcomes,
+post-2023 data, and CY-011 remain unread.
+
+SYNTH-MKT-043 closes this exact temporal branch without window or shape rescue.
+The seven parent levels remain valid completed-session representations, but no
+momentum, acceleration, transition, or process annotation enters the Market
+State Engine. The next highest-information gap is a falsifiable same-session
+intraday absorption/distribution map using already accepted MKT-MIN-001
+descriptors. It must distinguish selling/buying effort from price result,
+compress against accepted VWAP defense/recovery and ordinary return/activity,
+and avoid participant-intent, future, outcome, strategy, or raw-minute claims.

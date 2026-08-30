@@ -362,3 +362,12 @@ positive-return concentration. The frontier deepens to temporal geometry: freeze
 broad 3/5/10-session change and acceleration shapes for the seven direct roles,
 plus state-transition semantics only if continuous dynamics justify them. Do not
 infer improvement/deterioration from stable levels or tune a window.
+
+MKT-BREAKOUT-DIFF-DYN-001 rejects all fourteen exact historical change and
+acceleration roles. The five-session changes miss the fixed 3/10/shape floor,
+and acceleration definitions are incompatible across horizons. Do not tune
+these operators or infer a process from the parent levels. The active frontier
+is a map-first same-session absorption/distribution falsification using bound
+MKT-MIN-001 daily descriptors. Separate effort from result, preserve broad
+shape/quantile neighbors, and compress against return, volatility, activity,
+and accepted VWAP defense before any mechanism label.

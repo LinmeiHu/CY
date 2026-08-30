@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Seven full-market objective-crossing levels now freeze; their momentum, acceleration, and transitions remain unknown | Map broad temporal dynamics without tuning windows |
+| EXPLORE | 35% | Exact breakout change/acceleration failed; market-wide effort-versus-result absorption/distribution remains untested | Map falsifiable same-session absorption/distribution from bound minute descriptors |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Levels are distinct, but apparent temporal movement may be smoothing overlap or generic breadth change | Fix nonoverlap/shape and accepted-breadth-change controls before temporal estimates |
+| FALSIFY | 20% | Traditional accumulation/distribution language may collapse into return, volatility, activity, or VWAP defense | Require fixed component, shape, and external-geometry failures to be preserved |
 
 Mandatory checkpoint questions:
 

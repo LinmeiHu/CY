@@ -1,0 +1,175 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DIFF-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_TEMPORAL_REPRESENTATION_ESTIMATES",
+  "question": "Which historical change and acceleration representations of the seven accepted full-market objective-breakout levels are stable across fixed horizons, shapes, years, blocks, views, and denominators and distinct from their endpoint levels and accepted generic-breadth dynamics?",
+  "research_role": "strategy-independent historical temporal representation quality and compression only",
+  "outcome_access": false,
+  "inputs": {
+    "dynamics_map": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DIFFUSION_DYNAMICS_MAP.md",
+      "sha256": "aaeaba05fca7aca12e56ead50b8c6607e68b15f2115c7c45ec509e61075dfd1d"
+    },
+    "level_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_panel.csv",
+      "sha256": "99fd26ee6973c338e8df803e44434bc0ad6498dfefee518d9c51bc4c605d4d11"
+    },
+    "level_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_result.json",
+      "sha256": "5e626f4902456d148e07cb982c87abdb670b45474f2305ddcf9e21a6eea7fbab"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"
+    },
+    "breadth_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+      "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"
+    },
+    "causal_coordinate_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_trnd_001.py",
+      "sha256": "6228d9b1cc7cfb96646078c8f09dd9bee5e8fdbac0a6ea935e5aa805cad59273"
+    }
+  },
+  "parent_activation": {
+    "required_status": "COMPLETE_SUPPORTED_LEVEL_REPRESENTATION_GEOMETRY",
+    "required_direct_roles": [
+      "formation_participation",
+      "formation_depth",
+      "closing_acceptance",
+      "closing_rejection_depth",
+      "formation_diffusion",
+      "formation_leadership_concentration",
+      "stock_industry_divergence"
+    ],
+    "compressed_role_not_advanced": "equal_industry_formation",
+    "failed_domain_roles_not_advanced": [
+      "acceptance_diffusion",
+      "acceptance_leadership_concentration"
+    ]
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-03-06",
+    "date_end": "2023-12-29",
+    "expected_rows": 11336,
+    "expected_rows_per_group": 1417,
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "historical_blocks": {
+      "A": [2018, 2019, 2020],
+      "B": [2021, 2022, 2023]
+    }
+  },
+  "roles": {
+    "formation_participation": "breakout_formation_participation20",
+    "formation_depth": "breakout_formation_depth20",
+    "closing_acceptance": "breakout_closing_acceptance20",
+    "closing_rejection_depth": "breakout_closing_rejection_depth20",
+    "formation_diffusion": "breakout_formation_diffusion20",
+    "formation_leadership_concentration": "breakout_formation_leadership_top3_20",
+    "stock_industry_divergence": "breakout_stock_industry_divergence20"
+  },
+  "operators": {
+    "change": {
+      "primary": "(x_t - x_t_minus_5) / 5",
+      "neighbors": [
+        "(x_t - x_t_minus_3) / 3",
+        "(x_t - x_t_minus_10) / 10",
+        "OLS slope over t-5 through t",
+        "Theil-Sen median pair slope over t-5 through t"
+      ]
+    },
+    "acceleration": {
+      "primary": "change5_t - change5_t_minus_5 using adjacent nonoverlapping intervals",
+      "neighbors": [
+        "change3_t - change3_t_minus_3",
+        "change10_t - change10_t_minus_10",
+        "recent-six-point OLS slope minus prior-six-point OLS slope",
+        "recent-six-point Theil-Sen slope minus prior-six-point Theil-Sen slope"
+      ]
+    }
+  },
+  "coordinates": {
+    "absolute": true,
+    "pit_expanding_percentile": "causal within-view/denominator; minimum 504 valid observations",
+    "pit_3y_percentile": "causal trailing 756 valid observations including current; minimum 504",
+    "pit_3y_robust_z": "causal trailing 756 valid observations median/MAD; minimum 504; zero MAD missing",
+    "relative_to_all": "same-date same-denominator primary minus ALL_A primary",
+    "relative_view_rank_pct": "same-date same-denominator primary rank among at least three governed views",
+    "future_normalization": false
+  },
+  "external_controls": {
+    "discovery": "breadth_net_new_high_low60",
+    "leadership_concentration": "leadership_positive_mass_top10",
+    "control_operator_must_match_candidate": true,
+    "coordinates": ["absolute", "pit_3y_pct", "relative_to_all"],
+    "absolute_and_pit_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "relative_views": ["SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "historical_blocks": ["A", "B"],
+    "minimum_complete_observations_per_cell": 150,
+    "maximum_absolute_pairwise_spearman": 0.85,
+    "maximum_joint_adjusted_rank_r2": 0.7,
+    "controls_may_not_be_deleted": true
+  },
+  "gates": {
+    "raw_coverage": 0.95,
+    "worst_full_sample_neighbor_median_spearman": 0.7,
+    "worst_block_neighbor_median_spearman": 0.6,
+    "phase_zero_worst_neighbor_median_spearman": 0.55,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "pit_expected_coverage": 0.95,
+    "relative_expected_coverage": 0.95,
+    "same_session_level_redundancy_absolute_spearman": 0.85,
+    "internal_redundancy_absolute_spearman": 0.85,
+    "minimal_role_priority": [
+      "formation_participation__change",
+      "formation_participation__acceleration",
+      "formation_depth__change",
+      "formation_depth__acceleration",
+      "closing_acceptance__change",
+      "closing_acceptance__acceleration",
+      "closing_rejection_depth__change",
+      "closing_rejection_depth__acceleration",
+      "formation_diffusion__change",
+      "formation_diffusion__acceleration",
+      "formation_leadership_concentration__change",
+      "formation_leadership_concentration__acceleration",
+      "stock_industry_divergence__change",
+      "stock_industry_divergence__acceleration"
+    ],
+    "five_scalar_cases_exact": true,
+    "two_byte_identical_runs": true,
+    "no_rescue": "No role, operator, horizon, shape definition, block, phase, coordinate, view, denominator, year, control deletion, correlation boundary, or priority may change after estimates are observed."
+  },
+  "resource_budget": {
+    "raw_security_rows_read": 0,
+    "raw_minute_rows_read": 0,
+    "single_process": true,
+    "peak_rss_ceiling_gib": 3,
+    "wall_clock_ceiling_minutes": 5,
+    "durable_output_ceiling_mib": 100
+  },
+  "prohibited_computations": [
+    "equal-industry formation temporal role",
+    "acceptance diffusion or acceptance leadership concentration temporal role",
+    "future state, future return, recurrence, persistence, reversal, transition probability, state bin, or threshold",
+    "market, industry, stock, volatility, or strategy outcome",
+    "strategy membership, signal, candidate, trade, fill, P&L, MFE, MAE, exit, or outcome class",
+    "entry timing, execution, minute path, raw CY-006, QD-004, CY-008, post-2023 data, or CY-011",
+    "economic usefulness, habitat, trading rule, or strategy-archetype promotion"
+  ],
+  "claim_boundary": "Passing establishes only stable historical completed-session change or acceleration representations, not a recurring process, future transition, demand/supply mechanism, prediction, habitat, timing, execution, payoff, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DYN-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DYN-001_stability_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DYN-001_external_geometry_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DIFF-DYN-001_representation.md"
+  ]
+}

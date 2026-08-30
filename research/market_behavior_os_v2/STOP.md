@@ -82,3 +82,10 @@ coordinates after construction, external, and internal compression gates. This
 is positive representation evidence, not a terminal condition. No S1--S12
 boundary is active. Continue map-first with their temporal change/acceleration
 geometry; do not open outcomes or CY-011.
+
+MKT-BREAKOUT-DIFF-DYN-001 then rejects all fourteen exact historical change and
+acceleration representations under fixed definition-neighbor gates. This is an
+ordinary negative result, not an S1--S12 condition. No active STOP exists. Close
+the exact temporal branch without tuning and move to the map-first
+accumulation/distribution falsification frontier using bound daily minute
+descriptors only.

@@ -344,3 +344,16 @@ acceptance diffusion/concentration are not engine coordinates. The seven retaine
 levels are available only at the completed 15:00 close. The engine emits no
 momentum, acceleration, transition, recurring breakout-opportunity process,
 forecast, habitat, trigger, timing, usefulness, or strategy annotation.
+
+## MKT-BREAKOUT-DIFF-DYN-001 boundary
+
+The engine adds no temporal breakout-diffusion coordinate. Zero of fourteen
+fixed 5-session change/acceleration roles passes neighboring 3/10-session and
+OLS/Theil--Sen representation gates. High denominator agreement and low
+endpoint-level redundancy do not rescue the failures; early-block causal-PIT
+external-control support is also below its frozen floor.
+
+The seven MKT-BREAKOUT-DIFF-001 levels remain completed-session observations.
+They receive no strengthening/weakening, momentum, acceleration, transition,
+recurrence, opportunity-process, forecast, habitat, usefulness, or strategy
+annotation.
