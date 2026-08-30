@@ -65,6 +65,11 @@ accepted near resistance before the breakout session rather than requiring a
 large one-day displacement. Signal breakout margin and reference age will be
 controls if the feature is later tested.
 
+EXP-OBL-006 freezes this outcome-blind construction before any value is
+materialized. A valid feature requires continuous variation, at least 0.60
+T-1/T-3 and T-1/T-5 rank agreement, positive temporal-neighbor direction in at
+least seven of eight years, exact reconciliation, and no outcome access.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

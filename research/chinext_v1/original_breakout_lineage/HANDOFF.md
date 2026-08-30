@@ -64,6 +64,13 @@ log(t-1 close / canonical reference) with T-3 and T-5 temporal neighbors before
 any association. Breakout margin and reference age are future controls. No
 candidate rule exists and CY-011 remains locked.
 
+EXP-OBL-006 is frozen before feature materialization. It binds the runner and
+all PIT inputs, prohibits every future outcome, requires at least 300 primary
+values, at least 0.60 rank agreement with both fixed temporal neighbors, and
+positive neighbor direction in at least seven of eight years. The exact next
+action is execution without outcomes, followed by deterministic reproduction if
+all gates pass.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

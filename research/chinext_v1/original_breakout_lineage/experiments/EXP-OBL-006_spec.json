@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-006",
+  "hypothesis_id": "H-OBL-005",
+  "status": "FROZEN_BEFORE_FEATURE_MATERIALIZATION",
+  "evidence_grade": "EXPLORATORY_OUTCOME_BLIND_FEATURE_FREEZE_BOUNDED_PIT_B",
+  "outcome_access": false,
+  "question": "Can prebreakout positioning relative to the exact canonical resistance be represented as a stable parameter-free continuous feature before outcomes are joined?",
+  "mechanism": "A close already positioned near the canonical prior-60 close reference may represent price acceptance before the signal session and require less one-session displacement to break out.",
+  "population": {
+    "events": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "event_key": ["baseline_block", "symbol", "entry_signal_date"],
+    "outcome_projection": "FORBIDDEN"
+  },
+  "reference": {
+    "definition": "maximum action-safe adjusted close over t-60..t-1",
+    "canonical_predicate": "signal close t strictly exceeds the reference",
+    "feature_timing": "t-1, t-3, and t-5 closes are completed before the signal session",
+    "available_at": "before signal session; combined event artifact frozen at signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "T+1 open or later"
+  },
+  "primary_feature": {
+    "name": "prebreakout_distance_t1",
+    "definition": "log(adjusted close at t-1 / canonical prior-60 adjusted-close reference)",
+    "expected_range": "non-positive because t-1 belongs to the reference window",
+    "interpretation": "larger values, nearer zero, mean the stock was already positioned closer to resistance",
+    "missing_data": "no imputation; incomplete or invalid action coordinates fail the experiment"
+  },
+  "neighbors": {
+    "prebreakout_distance_t3": "log(adjusted close at t-3 / the same canonical reference)",
+    "prebreakout_distance_t5": "log(adjusted close at t-5 / the same canonical reference)"
+  },
+  "later_controls_not_alternatives": [
+    "signal displacement from t-1 to t",
+    "signal breakout margin above the canonical reference",
+    "sessions since the most recent exact reference close",
+    "frozen V1 entry state and market context"
+  ],
+  "construction_gates": {
+    "minimum_primary_unique_values": 300,
+    "minimum_neighbor_spearman": 0.6,
+    "minimum_positive_years_per_neighbor": 7
+  },
+  "decision": {
+    "FREEZE_FEATURE": "all identity, PIT, exact-reconciliation, continuous-variation, temporal-neighbor, and outcome-prohibition gates pass",
+    "REFINE": "an outcome-blind implementation defect is diagnosed and a fresh experiment identity is justified",
+    "REJECT": "the parameter-free positioning feature lacks variation, exact reconstruction, or temporal-neighbor stability"
+  },
+  "forbidden": [
+    "future return, MFE, MAE, false-breakout, holding, exit, winner, or loser data",
+    "choosing T-3 or T-5 from outcomes",
+    "distance threshold or horizon sweep",
+    "visual support/resistance line",
+    "V1 modification",
+    "CY-011 access"
+  ],
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_prebreakout_positioning_feature_freeze.py",
+      "sha256": "07d708134d725ed97cdbf5b22fb62c05944b298c010852737d002224a154d854"
+    },
+    "base_outcome_blind_runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_outcome_blind_lineage_freeze.py",
+      "sha256": "d6bea6233ff1db8ec7004e1b438d87ebf95f6c7d7088c8800220ecb840002d7e"
+    },
+    "base_outcome_blind_spec": {
+      "path": "research/chinext_v1/original_breakout_lineage/experiments/EXP-OBL-003_spec.json",
+      "sha256": "11e5573312961cecb85d0f7756c9ef6fd6dc3a0ef359ab612ba1b11a181fe907"
+    },
+    "identity_projection_source": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "frozen_formation_features": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/formation_features_v3.csv",
+      "sha256": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0"
+    },
+    "phase2_outcome_blind_helper": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_frozen_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    },
+    "extended_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "canonical_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  },
+  "output_contract": {
+    "feature_table": "research/chinext_v1/original_breakout_lineage/artifacts/prebreakout_positioning_features.csv",
+    "audit": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-006_audit.json",
+    "feature_freeze": "research/chinext_v1/original_breakout_lineage/feature_freezes/FEATURE-OBL-006.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-006_prebreakout_positioning_feature_freeze.md"
+  }
+}

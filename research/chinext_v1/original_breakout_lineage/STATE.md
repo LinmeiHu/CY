@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_005_REJECTED_BEFORE_OUTCOME_NEXT_FRONTIER_SELECTED`
+`EXP_OBL_006_FROZEN_BEFORE_FEATURE_MATERIALIZATION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -86,7 +86,8 @@ threshold and directly measures whether price was already accepted near the high
 
 ## Exact next action
 
-Preregister EXP-OBL-006 to freeze T-1 prebreakout distance with fixed T-3/T-5
-temporal neighbors. Reconstruct action-safe values without outcomes and preserve
-signal breakout margin/reference age as later controls. Do not search distance
-thresholds.
+Execute frozen EXP-OBL-006 to reconstruct T-1 prebreakout distance with fixed
+T-3/T-5 temporal neighbors without outcomes. If all construction gates pass,
+repeat it for byte identity, commit the frozen feature, and only then preregister
+a separate outcome reveal. Preserve signal breakout margin/reference age as
+controls. Do not search distance thresholds.
