@@ -224,3 +224,9 @@ raw/PIT self-edge weakens sharply in the later reused block, its 3/10 definition
 also decay, and phase-zero reverses. Favorable relative behavior is not a
 portable process. The engine retains all five contemporaneous coordinates but
 emits no size persistence, reversal, rotation, or habitat state.
+
+MKT-STYLE-PART-DYN-001 also fails. Current size positive participation has near-
+zero full-sample partial association with future accepted T5 and reverses across
+reused blocks; both tail definitions and both relative views fail. A favorable
+phase-only sample is not a state process. The engine closes this exact style
+temporal branch and retains contemporaneous size roles without future meaning.

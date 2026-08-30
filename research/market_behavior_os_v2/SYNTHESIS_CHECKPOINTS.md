@@ -1190,3 +1190,46 @@ balance, controlling current T5 and fixed current broad/size state. Freeze 20/40
 tail neighbors, blocks, phase, coordinates, support/effect/sign gates, and no-
 rescue rules before shifting a response. Do not add diffusion/concentration
 edges, tune a horizon, or read payoff.
+
+## SYNTH-MKT-028 — after size-participation precursor falsification
+
+### What was learned?
+
+Current small-minus-large positive participation does not precede the future
+accepted leadership transition after current T5, curve divergence, and broad
+direction controls. Full raw/PIT effects are near zero and reverse; both tail
+definitions and relative views fail. The favorable phase-only sample is not a
+portable precursor.
+
+### What market behavior are we still not studying?
+
+Objective cross-day price-level defense remains absent: prior support levels,
+number and depth of tests, time beyond the level, recovery speed, recovery
+volume, and repeated-test strengthening/weakening have no market-first PIT
+representation. Accumulation/distribution, cross-asset state, and portable
+multi-strategy habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Size/style rotation now has two failed temporal architectures and remains
+research-only. Same-session VWAP defense is distinct but has no cross-day self-
+dynamic and cannot imply pullback/reversal without objective-level evidence.
+
+### Parallel-track awareness
+
+- **Market research:** diversify from the closed style temporal branch to PIT-
+  valid objective support-defense semantics.
+- **Existing-strategy archaeology:** no strategy outcome was read; CHINEXT
+  support interpretations are not imported as market facts.
+- **Strategy invention:** style rotation is inactive; pullback/reversal remains
+  waiting for a market-first support mechanism.
+
+### Research Director decision
+
+`DIVERSIFY_TO_OBJECTIVE_SUPPORT_DATA_CONTRACT` via MKT-SUPPORT-DATA-001 map-
+first. Before constructing a descriptor, bind exact prior-level availability,
+raw/action-adjusted price coordinates, minute timestamps, auctions/breaks,
+limits/suspensions, missing bars, and market-wide support-test eligibility.
+Fail closed if the prior level and current minute path cannot be expressed in
+one causal corporate-action coordinate. Do not read future payoff or strategy
+outcomes.

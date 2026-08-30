@@ -416,12 +416,15 @@
 
 ## MKT-H-027 — size participation as leadership-transition precursor
 
-- Status: `FROZEN_RESULT_PENDING`.
+- Status: `TEMPORAL_PRECURSOR_FAIL`.
 - Primary: accepted small30-minus-large30 positive participation at t to
   accepted T5 at t+5, after current T5, size-curve divergence, and broad central
   direction.
-- Challenges: raw small20/large20 and small40/large40 predictors, four primary
-  coordinates, two reused blocks, phase-zero, group signs, and the full no-
-  rescue architecture.
-- Boundary: passing would establish only an outcome-blind precursor to a future
-  accepted size state, not payoff, a size premium, habitat, timing, or strategy.
+- Raw +0.032/-0.033 and PIT +0.032/-0.036 reverse across blocks. Relative-to-
+  ALL_A is +0.010/-0.036 and corrected rank -0.013/+0.014. Both 20/40 tail
+  neighbors also reverse and miss effect floors.
+- Phase-zero +0.147/+0.099 is non-rescuing because the full primary and every
+  definition/coordinate challenge fail.
+- Boundary: the exact style temporal branch is closed without additional edges
+  or horizons. Same-session size roles remain representations only; no size
+  premium, payoff, habitat, timing, or strategy is established.

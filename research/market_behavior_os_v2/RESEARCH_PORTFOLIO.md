@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Transition self-dynamics fail; one distinct participation-to-transition edge remains untested | Execute the frozen single precursor edge |
+| EXPLORE | 35% | Exact style self/precursor processes are closed; objective price-level defense remains unrepresented | Map PIT/action feasibility of market-wide support tests and recovery |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 5% | Distinct size states exist but no temporal mechanism or payoff does | Keep small-cap/style-rotation archetypes inactive |
+| INVENT | 10% | Objective support defense could diversify pullback/reversal mechanisms if representation exists | Keep archetypes inactive until PIT representation and temporal meaning |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 30% | The exact transition self-process fails across blocks/phase | Control the precursor edge for current T5 and reject it without horizon rescue if it does not replicate |
+| FALSIFY | 20% | Style self/precursor processes both fail without rescue | Preserve closures; require objective-level semantics before any support claim |
 
 Mandatory checkpoint questions:
 

@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-PART-DYN-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: whether distinct circulating-size participation breadth precedes a nonoverlapping future leadership transition
+- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -789,6 +789,24 @@ phase-zero nonoverlap, and no-rescue gates are conjunctive. Both 2021 and
 2022--2023 blocks are reused exploratory evidence. Future market payoff,
 strategy outcomes, failed size roles, post-2023 data, and CY-011 remain
 prohibited. Execute twice.
+
+MKT-STYLE-PART-DYN-001 rejects the final bounded style precursor. Primary raw
+partial rho is +0.032 in reused block A and -0.033 in block B; PIT is
++0.032/-0.036. Relative-to-ALL_A is +0.010/-0.036 and corrected relative rank
+is -0.013/+0.014. All primary effects miss their floors and signs do not
+replicate.
+
+Small20/large20 and small40/large40 raw neighbors are about +0.033 in block A
+and reverse to -0.027/-0.036 in block B. Phase-zero alone is +0.147/+0.099, but
+cannot rescue a weak, sign-reversing full primary or failed neighbors and
+coordinates. All support audits pass first.
+
+Two runs are byte-identical: panel `601bbcfc...`, result `da197687...`, report
+`d3d6cd27...`; five focused tests pass. No additional edge is authorized. The
+five same-session size representations remain valid, but the preregistered
+style temporal branch establishes no self-process or participation precursor.
+SYNTH-MKT-028 diversifies to objective cross-day support-defense data semantics
+before representation construction. No S1--S12 STOP is active.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

@@ -823,3 +823,21 @@ primary coordinates, corrected date-fixed-effect rank estimation, phase-zero
 sampling, and the frozen effect/sign/support architecture. Execute twice. Do not
 add diffusion/concentration edges, read payoff or strategy outcomes, use post-
 2023 data, or open CY-011.
+
+MKT-STYLE-PART-DYN-001 completes with `COMPLETE_PRECURSOR_FAIL`. Primary raw is
++0.032/-0.033 across reused blocks; PIT +0.032/-0.036; relative-to-ALL_A
++0.010/-0.036; corrected rank -0.013/+0.014. Both raw tail-definition neighbors
+are about +0.033 in block A and reverse to -0.027/-0.036 in block B.
+
+Phase-zero is +0.147/+0.099, but it is a non-rescuing sparse phase diagnostic:
+the full primary misses effect and sign gates, and every definition/coordinate
+challenge fails. Eighteen of 43 checks pass; all support and nondegeneracy gates
+pass before estimates. No precursor freezes.
+
+Two runs are byte-identical: panel `601bbcfc...`, result `da197687...`, report
+`d3d6cd27...`; five focused tests pass. No future payoff, stock selection,
+strategy outcome, additional edge, failed size predictor, post-2023 field, or
+CY-011 was read. Close the exact style temporal branch without another edge or
+horizon. SYNTH-MKT-028 selects MKT-SUPPORT-DATA-001 map-first: establish exact
+PIT, corporate-action-coordinate, prior-level, minute-timestamp, and support-
+test feasibility before defining any market-wide objective support defense.

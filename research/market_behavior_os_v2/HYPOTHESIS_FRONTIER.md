@@ -191,3 +191,10 @@ tail-definition neighbors, current T5/curve/central-direction controls, four
 primary coordinates, reused blocks, phase-zero sampling, and all support/effect/
 sign gates are fixed. Execute twice; failure closes this style precursor branch
 without a diffusion/concentration or horizon search.
+
+MKT-STYLE-PART-DYN-001 fails: full raw/PIT primaries are near zero and reverse,
+both tail definitions reverse, and relative coordinates fail. Phase-zero alone
+cannot rescue. Close exact style temporal search. The active frontier diversifies
+to MKT-SUPPORT-DATA-001 map-first: determine whether objective prior price levels
+and minute test/penetration/recovery can be placed in one exact PIT and corporate-
+action coordinate before constructing a support-defense representation.

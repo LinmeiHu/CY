@@ -95,7 +95,8 @@ MKT-H-024 circulating-size representation
   -> size structure collapses into cross-view turnover/concentration/volatility ordering
   -> leadership-transition temporal-process research is now permitted outcome-blind
   -> MKT-H-026 exact transition self-process fails raw/PIT/neighbor/phase replication
-  -> one positive-participation precursor edge remains before diversification
+  -> MKT-H-027 positive-participation precursor is near zero and reverses
+  -> exact style temporal branch closes without more edges/horizons
   -> no size premium, habitat, timing, or strategy claim
 
 HAB-H-001 CHINEXT direction/discovery association
