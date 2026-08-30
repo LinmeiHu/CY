@@ -84,6 +84,11 @@ assignment. H-OBL-006 asks whether longer time beneath resistance represents
 supply turnover after controlling base depth, positioning, and breakout margin.
 It must be tested continuously without bins or thresholds.
 
+EXP-OBL-007 freezes the positive supply-turnover prediction and both co-primary
+outcomes before association. Base width, T-1 positioning, signal breakout
+margin, V1 entry state, and market state are fixed controls. Exact age zero and
+the age-59 window boundary are removal attacks rather than selectable classes.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_006_REJECTED_BEFORE_OUTCOME_NEXT_FRONTIER_SELECTED`
+`EXP_OBL_007_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -93,7 +93,7 @@ assignment axes.
 
 ## Exact next action
 
-Preregister EXP-OBL-007 against the already frozen exact reference-age feature.
-Test whether longer supply-turnover time predicts MFE and non-false-breakout
-after fixed base-depth, positioning, breakout-margin, V1-state, and market
-controls. Do not bin or threshold reference age and do not open CY-011.
+Execute frozen EXP-OBL-007 against the already frozen exact reference-age
+feature. Apply the two co-primary gates plus LOYO, temporal-block, tail,
+zero/boundary-age, duration/exit, security, and industry attacks. Do not bin or
+threshold reference age and do not open CY-011.

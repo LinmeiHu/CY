@@ -81,6 +81,12 @@ of the rejected taxonomy and has 60 observed states with broad yearly coverage.
 Preregister a continuous, unbinned outcome test with base-depth, positioning,
 breakout-margin, V1-state, and market controls. CY-011 remains locked.
 
+EXP-OBL-007 is now frozen before its first outcome join. It predicts positive
+MFE and non-false-breakout associations, requires raw/controlled rhos of at
+least 0.10/0.08 for both endpoints, and includes LOYO, blocks, tails, exact
+zero/59 boundary removal, duration/exit, security, and industry attacks. Execute
+the committed runner without changing gates or controls.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

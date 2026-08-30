@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-007",
+  "hypothesis_id": "H-OBL-006",
+  "status": "FROZEN_BEFORE_FIRST_OUTCOME_JOIN",
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "question": "Does the exact duration beneath the canonical prior-60 resistance distinguish subsequent opportunity and false-breakout behavior?",
+  "mechanism": "More sessions since the most recent canonical reference close permit more supply turnover beneath resistance; after controlling base depth and current positioning, older references should precede greater MFE and fewer false breakouts.",
+  "feature_provenance": {
+    "source": "outcome-blind formation artifact frozen by EXP-OBL-003",
+    "formation_feature_sha256": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0",
+    "lineage_freeze_id": "LINEAGE-OBL-003-4193834A6A3A39BF",
+    "role_in_rejected_taxonomy": "context only; not a lineage-assignment axis",
+    "modification_after_reveal": "FORBIDDEN"
+  },
+  "population": {
+    "events": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "expected_outcome_counts": {
+      "opportunity20": 84,
+      "false_breakout": 213,
+      "extreme_winner": 15,
+      "severe_loss": 44
+    },
+    "controlled_minimum_complete_rows": 380,
+    "qualification": "Accepted completed-entry population is historically outcome-consumed and bounded PIT-B; CY-011 is not used."
+  },
+  "primary_predictor": {
+    "name": "sessions_since_reference",
+    "definition": "integer session distance from signal t to the latest occurrence of the maximum adjusted close in t-60..t-1",
+    "support": "0 through 59 inclusive",
+    "form": "continuous ordinal Spearman/rank treatment; no bins, thresholds, or transformations selected from outcomes",
+    "expected_direction": "positive"
+  },
+  "primary_outcomes": {
+    "mfe": {
+      "definition": "accepted continuous maximum favorable excursion over the actual frozen holding path",
+      "expected_direction": "positive"
+    },
+    "non_false_breakout": {
+      "definition": "one minus the accepted false_breakout indicator, where false breakout is MFE<10% and terminal return<=0",
+      "expected_direction": "positive"
+    }
+  },
+  "primary_metrics": {
+    "raw": "Spearman association over all 399 events",
+    "controlled": "partial rank association after fixed controls and entry-year effects",
+    "within_year": "descriptive within-year rank association",
+    "loyo": "all eight leave-one-entry-year-out omissions",
+    "temporal_blocks": "the three frozen baseline blocks",
+    "multiple_testing": "Benjamini-Hochberg over exactly the two raw primary endpoint p-values"
+  },
+  "fixed_controls": [
+    "entry_rs_score",
+    "entry_mom20",
+    "entry_box_width",
+    "entry_minvol_location",
+    "entry_breakout_volume_ratio",
+    "index_return_20d",
+    "index_realized_vol20",
+    "breadth_composite",
+    "entry_beta60",
+    "entry_log_amount20",
+    "prebreakout_distance",
+    "breakout_margin",
+    "entry-year fixed effects"
+  ],
+  "controls_interpretation": "Entry box width represents base depth; prebreakout distance and signal breakout margin separate elapsed turnover time from current position and breakout displacement. Breadth remains a frozen control only.",
+  "secondary_not_decision_rescuing": [
+    "opportunity20",
+    "terminal round_trip_return",
+    "extreme_winner",
+    "severe_loss",
+    "MAE",
+    "top 1/5/10% right-tail contribution"
+  ],
+  "falsification": {
+    "temporal": "LOYO and three frozen baseline blocks",
+    "tails": [
+      "remove Top-1% absolute realized-PnL events",
+      "remove >=50% extreme winners",
+      "remove <=-10% severe losses"
+    ],
+    "structural_boundaries": [
+      "remove reference-age-zero events",
+      "remove reference-age-59 window-boundary events"
+    ],
+    "post_entry_conditioning": "add actual holding duration and canonical exit-reason dummies only as a sensitivity attack, never as a causal control",
+    "concentration": [
+      "leave one security out",
+      "leave one PIT industry out"
+    ],
+    "timing": "reference age is known at completed signal close and can inform T+1 or later only",
+    "right_tail": "terminal/right-tail summaries cannot rescue a failed primary gate"
+  },
+  "decision_gates": {
+    "raw_minimum_rho": 0.1,
+    "raw_minimum_positive_loyo": 7,
+    "maximum_bh_qvalue": 0.1,
+    "controlled_minimum_rho": 0.08,
+    "controlled_minimum_positive_loyo": 6,
+    "minimum_positive_blocks": 2,
+    "minimum_block_rho_exclusive": -0.05,
+    "attack_minimum_rho_exclusive": 0.0,
+    "minimum_leave_group_positive_fraction": 0.85,
+    "leave_group_minimum_rho_exclusive": -0.02
+  },
+  "decision": {
+    "VALIDATE": "both primary endpoints pass raw, controlled, temporal, and falsification gates",
+    "SUPPORTED_WEAK": "both pass raw, controlled, and temporal gates but falsification fails",
+    "REFINE": "exactly one primary endpoint passes raw and controlled magnitude gates",
+    "REJECTED": "neither primary endpoint passes raw and controlled magnitude gates"
+  },
+  "interpretation_boundary": {
+    "available_at_timestamp": "entry signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "entry execution T+1 open or later",
+    "forbidden": [
+      "reference-age bin or threshold search",
+      "choosing a sign after outcome inspection",
+      "same-session action",
+      "entry, exit, sizing, overlay, or production rule",
+      "CY-011 access",
+      "claiming strict archival PIT-A"
+    ]
+  },
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_reference_age_outcome_reveal.py",
+      "sha256": "85acde8d16354fe117cfd4ae1e5d66e89f366a4293881704382fa591259e79ff"
+    },
+    "analysis_helper": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py",
+      "sha256": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f"
+    },
+    "formation_features": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/formation_features_v3.csv",
+      "sha256": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0"
+    },
+    "lineage_freeze_manifest": {
+      "path": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-003.json",
+      "sha256": "da978745fe485561dfce33a77a0e568ff14b61a9c575d57ac9d17a75b4ea4a4d"
+    },
+    "accepted_outcomes": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv",
+      "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"
+    },
+    "accepted_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_trade_paths": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    }
+  },
+  "output_contract": {
+    "table": "research/chinext_v1/original_breakout_lineage/artifacts/reference_age_outcome_reveal.csv",
+    "result": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-007_result.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-007_reference_age_outcome_reveal.md",
+    "evidence_packet": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-007_evidence_packet.md"
+  }
+}
