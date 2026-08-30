@@ -87,11 +87,14 @@ no inferred transition.
    threshold neighbors; primary STRESS and RELIEF state Jaccards are each
    `>=0.50` against both;
 7. primary relief magnitude has median common-active-date Spearman `>=0.70`
-   against both threshold neighbors;
-8. accepted shock/recovery roles are compressed at absolute Spearman `0.85` and
+   against both threshold neighbors, and episode age has the same `>=0.70`
+   median-neighbor requirement;
+8. every group has at least five primary activity-impairment observations in at
+   least two years, with event Jaccard `>=0.30` against both threshold neighbors;
+9. accepted shock/recovery roles are compressed at absolute Spearman `0.85` and
    explicitly tested against frozen realized-volatility level, change, intraday
    range, and volatility concentration;
-9. no failed state/neighbor is replaced, and no cutoff, horizon, or aggregation
+10. no failed state/neighbor is replaced, and no cutoff, horizon, or aggregation
    is optimized after construction.
 
 ## Interpretation boundary

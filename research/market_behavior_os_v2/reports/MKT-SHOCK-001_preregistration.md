@@ -3,7 +3,7 @@
 Status: `FROZEN_BEFORE_CONSTRUCTION_RESULT`.
 
 Frozen spec SHA-256:
-`98b4545eb8bf40eb13eb33861bf05a58e32c89e1dbbc4878437ab2276664cd4d`.
+`9fb559c5d4a59f8fc83b6b7408edfc6534125edb9e4badfd6f8c3e3dccfe5fe3`.
 
 MKT-SHOCK-001 is an outcome-blind representation experiment. It uses the frozen
 MKT-CLQ-001 and MKT-VOL-001 panels only. No strategy field, future return,
@@ -22,5 +22,7 @@ Permissive/strict threshold configurations, smooth aggregation shapes, and
 They cannot replace a failed primary. Representation gates cover causal
 coverage, score stability, denominator portability, view-year nondegeneracy,
 onset/state agreement, relief-shape stability, and redundancy against frozen
-volatility. Because the process is direction-neutral, a panic or reversal claim
-is prohibited regardless of the result.
+volatility. Dwell and activity-dry-up receive separate neighbor/sample gates;
+they cannot inherit acceptance from the score. Because the process is
+direction-neutral, a panic or reversal claim is prohibited regardless of the
+result.

@@ -185,4 +185,4 @@ definitions, separate shock from high level, and test redundancy against frozen
 volatility before any future-path or strategy outcome is read. The map, causal
 state machine, fixed 0.85/0.90/0.95 threshold neighbors, aggregation/activity-
 horizon neighbors, coverage/event/state/relief gates, and volatility-redundancy
-tests are now frozen under spec `98b4545e...` before construction.
+tests are now frozen under spec `9fb559c5...` before construction.
