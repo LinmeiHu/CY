@@ -1,0 +1,55 @@
+{
+  "experiment_id": "MKT-GEO-001",
+  "frozen_at": "2026-08-30",
+  "status": "FROZEN_BEFORE_GEOMETRY_RESULT",
+  "track": "MARKET",
+  "question": "How do the frozen trend-direction descriptor and the two frozen breadth descriptors relate contemporaneously across indices, market views, years, and state transitions?",
+  "purpose": "Outcome-blind state redundancy and geometry only.",
+  "forbidden_claims": [
+    "trading signal",
+    "strategy usefulness",
+    "strategy habitat prediction",
+    "future-return prediction",
+    "Trend x Breadth trading rule",
+    "causal mechanism"
+  ],
+  "forbidden_inputs": [
+    "strategy membership, trades, returns, P&L, MFE, MAE, exits, duration, or outcome class",
+    "future security or index return",
+    "CY-011",
+    "MKT-BRTH-001 invalid panels"
+  ],
+  "inputs": {
+    "trend_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_trend_panel.csv",
+      "sha256": "fd933284bec590b5dee15549b176db973bebc07c8ee71edab64249c9b2e26e5a",
+      "representation": "direction_return_60 and its causal PIT coordinates only"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "representations": ["breadth_net_new_high_low60", "leadership_positive_mass_top10"],
+      "denominator": "ALL_STATUS"
+    },
+    "date_end": "2023-12-29"
+  },
+  "fixed_geometry": {
+    "continuous": "Spearman association for each of 6 index x 4 breadth-view pairs; median/range only, not pooled independent inference",
+    "conditional": "rank-residual discovery-versus-concentration association controlling contemporaneous direction",
+    "direction_state": "POSITIVE if absolute 60-session log direction >0; NEGATIVE if <0; exact zero is NEUTRAL",
+    "discovery_state": "EXPANSION if net new-high/new-low participation >0; BREAKDOWN if <0; exact zero is BALANCED",
+    "concentration_state": "CONCENTRATED if causal 3-year percentile >=0.80; DIFFUSE if <=0.20; otherwise MIDDLE",
+    "transition": "descriptive next-session state transition and dwell time; never a forecast or action rule"
+  },
+  "representation_gate": {
+    "trend_breadth_nonredundancy": "median absolute Spearman across the 24 index/view pairs <0.85 for each breadth role",
+    "breadth_role_conditional_distinctness": "median absolute partial rank correlation between discovery and concentration after direction <0.85",
+    "coverage": "all 24 index/view pairs and every 2019-2023 year represented",
+    "state_cell_rule": "report sparse cells; do not merge, optimize, or remove them"
+  },
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-GEO-001_geometry_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-GEO-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-GEO-001_trend_breadth_geometry.md"
+  ]
+}

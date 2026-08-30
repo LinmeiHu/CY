@@ -14,3 +14,17 @@ the independent Market State Engine and opportunity definitions exist.
 
 No new prototype is authorized. CHINEXT is not automatically ranked first for
 new experimentation merely because it has the deepest existing ledger.
+
+MKT-BRTH-002 and MKT-GEO-001 do not change this frontier into an implementation
+queue. Stable discovery/concentration descriptors have not established an
+opportunity process, trigger, veto, exit, or habitat-conditioned payoff. No new
+leadership, breakout, reversal, or defensive archetype is promoted.
+
+MKT-CLQ-001 also does not promote panic/oversold reversal or a defensive timing
+archetype. Stable co-movement and liquidity descriptors are state coordinates,
+not evidence of recovery, impairment, or executable edge.
+
+MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
+a leader-failure rule, while stable volatility roles have no outcome meaning.
+AUDIT-MKT-MIN-001 proves data feasibility only and cannot promote pullback,
+panic, intraday timing, accumulation, or breakout-acceptance archetypes.

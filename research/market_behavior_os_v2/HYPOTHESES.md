@@ -16,18 +16,63 @@
 
 ## MKT-H-002 — independent breadth state
 
-- Status: `PROPOSED`.
+- Status: `PARTIAL_REPRESENTATION_SUPPORT`.
 - Claim: participation level, depth, acceleration, divergence, diffusion, and
   leadership concentration can be represented on market dates without strategy
   selection and without collapsing to accepted trend direction.
-- Required first step: outcome-blind lineage/coverage audit of the prior daily
-  feature panel and its underlying registered facts.
-- Falsification: inadequate comparable coverage, high redundancy with direction,
-  instability across years/definitions, or unresolvable PIT lineage.
+- Result: MKT-BRTH-002 freezes net new-high/new-low discovery and leadership
+  concentration across four governed views and two denominators. Current
+  participation, depth, momentum, acceleration, industry diffusion, divergence,
+  and transition definitions fail fixed neighboring stability. These are exact
+  representation failures, not family rejection.
+- Boundary: no forecast, usefulness, strategy, or habitat claim.
 
 ## MKT-H-003 — correlation/liquidity panic state
 
-- Status: `PROPOSED`.
+- Status: `PARTIAL_REPRESENTATION_SUPPORT_PANIC_UNTESTED`.
 - Claim: synchronized correlation and liquidity shock form an observable market
   process distinct from ordinary volatility expansion.
-- Boundary: representation must precede any reversal or strategy-return test.
+- Result: MKT-CLQ-001 freezes co-movement, directional synchronization,
+  liquidity activity, turnover level, and amount concentration. Participation
+  and industry diffusion are redundant with activity; fixed liquidity change is
+  horizon-unstable.
+- Boundary: no correlation x liquidity interaction, shock, panic, recovery,
+  impairment, reversal, or strategy-return claim was tested.
+
+## MKT-H-004 — trend/breadth state geometry
+
+- Status: `SUPPORTED_REPRESENTATION_GEOMETRY`.
+- Result: all three nonredundancy gates pass across 24 index/view pairs. Median
+  direction/discovery rho is 0.489; median direction/concentration rho is -0.360;
+  median discovery/concentration partial rank after direction is -0.490.
+- Boundary: contemporaneous geometry only. The zero discovery boundary is
+  occupancy-imbalanced and not a validated habitat boundary.
+
+## MKT-H-005 — leader failure representation
+
+- Status: `LEVEL_IMBALANCE_SUPPORTED_TRANSITIONS_NOT_FROZEN`.
+- Claim: concentration decay and discovery deterioration can be represented as
+  distinct contemporaneous processes rather than inferred from concentration
+  level.
+- Boundary: representation quality precedes any future path, short, reversal,
+  breakout-veto, or strategy association.
+- Result: the level imbalance passes. Concentration decay and discovery
+  deterioration fail neighboring-definition stability, so no joint leader-
+  failure transition is formed.
+
+## MKT-H-006 — multidimensional volatility state
+
+- Status: `PARTIAL_REPRESENTATION_SUPPORT`.
+- Result: realized volatility, intraday range, volatility-mass concentration,
+  and volatility change freeze. Downside volatility and dispersion are stable
+  but redundant; term structure and downside-mass share fail.
+- Boundary: no contraction/expansion usefulness, panic, habitat, or strategy
+  claim exists.
+
+## MKT-H-007 — market-wide five-day intraday state
+
+- Status: `DATA_READY_REPRESENTATION_SCALE_STOP`.
+- Result: AUDIT-MKT-MIN-001 passes exact PIT/session/reconciliation/descriptor
+  readiness on 240 trajectories and 1,200 sessions across 2018-2023/four views.
+- Boundary: only six market dates are present; no 504-observation PIT-normalized
+  market state or minute mechanism is frozen. Safe vectorized scale is required.

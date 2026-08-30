@@ -2,13 +2,16 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does breadth expansion/deterioration describe the market independently of CHINEXT admissions and outcomes? | Very high | High | Daily cross-section exists with coverage caveats | High | Medium | EXECUTE_NEXT |
-| 2 | Are correlation/liquidity panic states representable before studying recovery or impairment? | Very high | Very high | Input/lineage audit needed | High | Medium | NEXT_INDEPENDENT |
-| 3 | Can five-day selling pressure, demand, and compression roles be frozen without CHINEXT-event sampling? | High | Very high | Minute PIT-B available; expensive and mining-prone | High | High | QUEUED |
-| 4 | Which accepted trend-direction x breadth states are stable market habitats before any strategy association? | Very high | Very high | Depends on breadth; other trend roles unavailable | High | Medium | WAIT |
-| 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Index/cross-section inputs available | High | Medium | QUEUED |
+| 1 | Can five-day selling pressure, demand, and compression roles be frozen without CHINEXT-event sampling? | Very high | Very high | Exact bounded readiness passes; safe market-scale adapter absent | High | Very high unsafe current scale | STOP_UNTIL_VECTORIZED_RESOURCE_CONTRACT |
+| 2 | Does outcome-blind multi-axis state geometry have portable dwell and transition structure? | High | High | Trend/breadth/correlation/liquidity/volatility roles exist | High | Medium | DEFER_BEHIND_MINUTE_EIV |
+| 3 | Can a correlation/liquidity shock-and-recovery process be frozen without payoff labels? | High | Very high | Component roles exist; transition definition absent | High | Medium-high | QUEUED_AFTER_STOP_RESOLUTION |
+| 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
+| 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED_AFTER_STOP_RESOLUTION |
 | 6 | How do leadership concentration, diffusion, and failure evolve across industry states? | High | High | Coverage/industry governance needed | High | Medium | QUEUED |
 | 7 | Can trend strength/alignment be replicated from an independent source, and can quality/age/transition be represented without window clones? | High | Medium | Current QD-003 has 21 strict OHLC failures | High | Medium; rescue/mining risk | DEFER_DIVERSIFY_FIRST |
 
-Completed MKT-TRND-001 accepted direction only. The next breadth question remains
-construction-only: no strategy outcome, trade, or future return may be read.
+Correlation/liquidity, leader, and volatility construction plus the bounded
+market-minute readiness audit are complete. The current STOP is resource safety,
+not a negative scientific result: the next minute representation requires a
+reviewed vectorized adapter and frozen resource budget before any market-scale
+minute access.

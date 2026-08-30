@@ -1,0 +1,92 @@
+{
+  "experiment_id": "MKT-BRTH-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Can participation, depth, new-high/new-low participation, momentum, acceleration, industry diffusion, leadership concentration, divergence, and transition breadth concepts be represented stably as a strategy-independent market state?",
+  "research_role": "representation construction and latent-mechanism compression only",
+  "usefulness_boundary": "No forecast, strategy, habitat, threshold, Trend x Breadth interaction, or economic-usefulness claim is permitted.",
+  "forbidden_inputs": [
+    "CHINEXT V1 membership, basic-eligible denominator, signal, entry, trade, fill, return, P&L, MFE, MAE, exit, duration, or outcome class",
+    "SuperMind V6 outcomes",
+    "future returns or post-decision observations",
+    "current survivors or current index constituent lists",
+    "unregistered market-cap, style, fund-flow, sentiment, participant identity, or industry fallback",
+    "CY-011",
+    "2024, 2025, or 2026 CY-006 partitions"
+  ],
+  "input": {
+    "asset_id": "CY-006",
+    "registry_path": "configs/data_asset_registry.json",
+    "source_root": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "selected_partition_sha256": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "source_start": "2018-01-02",
+    "source_end": "2023-12-29",
+    "outcome_blind_audit_rows": 6155390,
+    "outcome_blind_audit_duplicate_keys": 0,
+    "outcome_blind_audit_time_travel_rows": 0,
+    "outcome_blind_audit_hard_valid_ohlc_failures": 0
+  },
+  "pit": {
+    "decision_at": "completed official close at 15:00 Asia/Shanghai",
+    "record_gate": "available_at <= decision_at",
+    "first_actionable_time": "later causally valid session; this experiment creates no action",
+    "price_coordinate": "causal action-aware continuous coordinate from raw closes; no future adjustment factor",
+    "unknown_required_fact": "missing and fail closed",
+    "pit_grade": "bounded PIT-B"
+  },
+  "universe": {
+    "primary": "all current CY-006 A-share observations passing the market-level causal 120-session core; ST retained",
+    "sensitivity": "same core with current is_st=false",
+    "no_liquidity_threshold": true,
+    "no_strategy_membership": true,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "minimum_counts": {"ALL_A": 1000, "SH_A": 400, "SZ_A": 400, "CHINEXT_BOARD": 200},
+    "industry_mapping_minimum": 0.8,
+    "industry_member_minimum": 5,
+    "industry_count_minimum": 10
+  },
+  "representations": {
+    "participation": {"primary": "breadth_above_ma20", "neighbors": ["breadth_above_ma10", "breadth_above_ma60"]},
+    "depth": {"primary": "breadth_median_distance_ma20", "neighbors": ["breadth_median_distance_ma10", "breadth_median_distance_ma60"]},
+    "new_high_low": {"primary": "breadth_net_new_high_low60", "neighbors": ["breadth_net_new_high_low40", "breadth_net_new_high_low80"]},
+    "momentum": {"primary": "breadth_momentum_balance5", "neighbors": ["breadth_momentum_balance3", "breadth_momentum_balance10"]},
+    "acceleration": {"primary": "breadth_participation_acceleration5", "neighbors": ["breadth_participation_acceleration3", "breadth_participation_acceleration10"]},
+    "industry_diffusion": {"primary": "industry_diffusion_ma20", "neighbors": ["industry_diffusion_ma10", "industry_diffusion_ma60"]},
+    "leadership_concentration": {"primary": "leadership_positive_mass_top10", "neighbors": ["leadership_positive_mass_top5", "leadership_positive_mass_top20"]},
+    "divergence": {"primary": "breadth_industry_divergence_ma20", "neighbors": ["breadth_industry_divergence_ma10", "breadth_industry_divergence_ma60"]},
+    "transition": {"primary": "breadth_net_crossing_ma20_5", "neighbors": ["breadth_net_crossing_ma20_3", "breadth_net_crossing_ma20_10"]}
+  },
+  "coordinates": {
+    "absolute": "raw fraction, distance, difference, or positive-return-mass share",
+    "pit_expanding_percentile": "causal within-view/denominator expanding percentile including current; minimum 504 observations",
+    "pit_3y_percentile": "causal trailing 756-session percentile including current; minimum 504 observations",
+    "pit_3y_robust_z": "causal trailing 756-session median/MAD z; minimum 504; zero MAD missing",
+    "relative": "same-date view minus ALL_A and rank across available governed views"
+  },
+  "gates": {
+    "daily_feature_usable_fraction": 0.95,
+    "raw_coverage": 0.95,
+    "worst_median_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "minimal_panel_priority": ["participation", "depth", "new_high_low", "momentum", "industry_diffusion", "leadership_concentration", "divergence", "acceleration", "transition"],
+    "no_rescue": "A failed primary is not replaced by a better-looking neighbor within MKT-BRTH-001."
+  },
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-BRTH-001_breadth_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BRTH-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-BRTH-001_breadth_representation_freeze.md"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "experiment_id": "AUDIT-MKT-MIN-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_MARKET_MINUTE_ACCESS",
+  "outcome_access": false,
+  "question": "Can a deterministic strategy-independent cross-year/view sample support exact five-session minute descriptors under the registered PIT contract?",
+  "sample": {
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "anchor_rule": "first exchange session on or after June 15",
+    "relative_sessions": [-5, -4, -3, -2, -1],
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "symbols_per_anchor_view": 10,
+    "expected_trajectories": 240,
+    "expected_sessions": 1200,
+    "selection_source": "CY-006 daily eligibility only; minute facts prohibited",
+    "selection_order": "SHA256(AUDIT-MKT-MIN-001|anchor|view|symbol)"
+  },
+  "data_contract": {
+    "bar_timestamp": "completed bar end Asia/Shanghai",
+    "expected_session": "09:30 auction plus 09:31..11:30 and 13:01..15:00",
+    "trajectory_available_at": "Day -1 15:30 Asia/Shanghai",
+    "first_action": "anchor session or later; never same-bar",
+    "price_basis": "raw/unadjusted; same-session dimensionless descriptors only",
+    "alternative_fallback": false,
+    "missing_policy": "FAIL_CLOSED"
+  },
+  "input_bindings": {
+    "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "calendar": {"path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet", "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"},
+    "qd004_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "cy008_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_audit": {"path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json", "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"},
+    "descriptor_implementation": {"path": "research/chinext_v1/research_os_v2/scripts/audit_five_day_minute_data.py", "sha256": "1e3a1fa7071722a3b373ddd596f86a171b888aa30a5f9c22b7f2b0c389f01618"}
+  },
+  "selected_partitions": {
+    "qd004": [
+      "bars/2018_day_parquet_none.parquet", "bars/2019_day_parquet_none.parquet",
+      "bars/2020_day_parquet_none.parquet", "bars/2021_day_parquet_none.parquet",
+      "bars/2022_day_parquet_none.parquet", "bars/2023_day_parquet_none.parquet"
+    ],
+    "cy008_daily": [
+      "daily/partition_year=2018/data_0.parquet", "daily/partition_year=2019/data_0.parquet",
+      "daily/partition_year=2020/data_0.parquet", "daily/partition_year=2021/data_0.parquet",
+      "daily/partition_year=2022/data_0.parquet", "daily/partition_year=2023/data_0.parquet"
+    ],
+    "cy008_execution": [
+      "execution_5m/partition_year=2018/data_0.parquet", "execution_5m/partition_year=2019/data_0.parquet",
+      "execution_5m/partition_year=2020/data_0.parquet", "execution_5m/partition_year=2021/data_0.parquet",
+      "execution_5m/partition_year=2022/data_0.parquet", "execution_5m/partition_year=2023/data_0.parquet"
+    ]
+  },
+  "forbidden_inputs": [
+    "strategy membership, signals, trades, outcomes, MFE, MAE, exits, or post-entry paths",
+    "minute completeness or descriptor values during symbol selection",
+    "CY-011",
+    "post-2023 partitions"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_sample.csv",
+    "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_session_audit.csv",
+    "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_daily_descriptors.csv",
+    "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_result.json",
+    "research/market_behavior_os_v2/reports/AUDIT-MKT-MIN-001_market_minute_readiness.md"
+  ]
+}

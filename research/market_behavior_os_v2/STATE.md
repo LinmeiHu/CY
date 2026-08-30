@@ -6,7 +6,7 @@ Updated 2026-08-30.
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
-- `CURRENT_PHASE`: `STRATEGY_AGNOSTIC_BREADTH_REPLICATION_DESIGN`
+- `CURRENT_PHASE`: `STOP_UNSAFE_MARKET_MINUTE_REPRESENTATION_SCALE`
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -24,6 +24,19 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
 
+### MKT-TRND-001 semantic boundary
+
+MKT-TRND-001 established representation stability, not strategy usefulness.
+
+- Trend direction passed the tested neighboring-horizon representation-stability
+  gate.
+- The current quality, age, and transition representations failed that gate.
+- Those failures do not reject the broader quality, age, or transition research
+  families.
+- Strength and alignment remain data-contract-limited and unresolved.
+- No trend representation has been established as a trading signal or as a
+  strategy-habitat predictor.
+
 - Breadth/participation has qualified evidence for opportunity formation among
   CHINEXT entries, not a general market state or finished strategy gate.
 - CHINEXT economics depend materially on rare right-tail outcomes.
@@ -31,20 +44,49 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
   entry-actionable.
 - Five-day minute data are exact and feasible for 399 CHINEXT event windows, but
   the event sampling is strategy-conditioned and preview features are redundant.
-- One strategy-independent state role is frozen: 60-session log direction, with
+- One strategy-independent descriptor role is frozen: 60-session log direction, with
   stable 40/80-session neighbors and separate absolute, causal PIT-normalized,
   and contemporaneous relative coordinates.
 - Five other fixed trend roles did not freeze. Quality, age, and transition are
   horizon-unstable. Strength and alignment have stable neighbors but are
   data-contract-limited because exact OHLC quarantine propagates through their
   rolling windows. These are representation results, not mechanism rejection.
+- MKT-BRTH-002 froze two strategy-independent breadth descriptor roles: net
+  40/60/80-session new-high/new-low participation and top-5/10/20 positive-return
+  leadership concentration. Both have complete raw/PIT/relative coverage across
+  ALL_A, SH_A, SZ_A, and CHINEXT_BOARD and pass ALL_STATUS/NON_ST sensitivity.
+- The current participation, depth, momentum, acceleration, industry diffusion,
+  divergence, and transition representations failed fixed neighboring-definition
+  stability. Their broader research families remain open.
+- Outcome-blind MKT-GEO-001 shows direction, discovery breadth, and leadership
+  concentration are not redundant at the preregistered 0.85 boundary. It does
+  not establish prediction, strategy usefulness, habitat fitness, or causality.
+- MKT-CLQ-001 freezes five nonredundant strategy-independent descriptor roles:
+  20-session leave-one-out co-movement, five-session directional synchronization,
+  own-history-relative liquidity activity, turnover level, and top-decile amount
+  concentration. Participation and industry liquidity diffusion are stable but
+  redundant with activity. The fixed liquidity-change representation fails
+  neighboring-horizon stability; the broader transition family remains open.
+- MKT-CLQ-001 establishes no panic state, recovery/impairment process, forecast,
+  habitat, strategy usefulness, or causal mechanism.
+- MKT-LDR-001 freezes only a causal leadership-concentration-versus-discovery
+  level imbalance. Concentration decay (worst neighbor rho 0.683) and discovery
+  deterioration (0.500) fail, so joint leader-failure geometry is not formed.
+- MKT-VOL-001 freezes realized volatility, intraday range, volatility-mass
+  concentration, and volatility change. Downside volatility and dispersion are
+  stable but redundant with level/range. Term structure and downside-mass share
+  fail fixed neighbor stability. No volatility usefulness is established.
+- AUDIT-MKT-MIN-001 passes exact strategy-independent five-day minute readiness
+  on 240 trajectories/1,200 sessions across six years and four views. Both
+  opening-window and five-minute conservation differences are exactly zero.
+  This is feasibility, not a market-state representation.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
 
 - QD-003 registers six broad-market daily index series with an immutable
   six-file manifest and completed-bar availability semantics.
-- MKT-TRND-001 will end at 2023-12-31, attach causal availability, verify the
+- MKT-TRND-001 ended at 2023-12-31, attached causal availability, verified the
   manifest, and read no strategy output. It completed on 19,569 rows across six
   indices. Successful runs are byte-identical: panel `fd933284...`, result
   `784db3a5...`, and tracked report `f4cadca6...`.
@@ -55,11 +97,32 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
   frozen `399102` market-anchor CSV. No CY-011 asset, security row, trade, label,
   or strategy outcome was accessed. The rows are quarantined and unused. CY-011
   itself remains unopened.
+- MKT-BRTH-001 is invalid because parallel floating aggregation was not byte
+  deterministic. MKT-BRTH-002 is the exact one-thread scientific retry. Two
+  runs are byte-identical: panel `60ca6bf5...`, result `4e0ceabe...`, report
+  `26ba1883...`.
+- MKT-GEO-001 is byte-identical across reruns: panel `2c98865a...`, result
+  `bd457bcc...`, report `a5a43d8e...`.
+- MKT-CLQ-001 is byte-identical across two completed serial runs: panel
+  `d45993ce...`, result `9ada5db3...`, report `e6c78597...`. Its amount ledger
+  uses exact `DECIMAL(38,3)` addition only after the frozen source audit proved
+  zero eligible values beyond three decimals. No tolerance or relaxed
+  conservation was used.
+- MKT-LDR-001 is byte-identical across reruns: panel `67fb4aee...`, result
+  `e7894be5...`, report `d35b3f71...`.
+- MKT-VOL-001 is byte-identical across reruns: panel `f7361284...`, result
+  `ed3b6cea...`, report `5d25db5a...`.
+- AUDIT-MKT-MIN-001 is byte-identical across reruns: sample `6cc2f9b6...`,
+  session audit `2b1b57cc...`, descriptors `9f177c29...`, result `12096da2...`,
+  report `581e4573...`.
 
 ## Current frontier
 
-The highest-information next task is a strategy-independent breadth replication
-design on market dates rather than CHINEXT entry dates. It should test level,
-depth, acceleration, divergence, diffusion, and leadership concentration without
-strategy outcomes. Trend-role rescue is deferred to avoid local parameter search
-after five preregistered representations failed to freeze.
+The highest-information next task is a strategy-independent five-day Market
+Intraday Representation Map. The bounded readiness sample cannot meet the
+required 504-observation causal normalization and market-date portability gates.
+Scaling the current rowwise adapter would require over 100 million minute rows
+and violates the accepted no-full-market-build scale policy. Autonomous work is
+stopped under the Research Contract's unsafe-resource-use boundary until a
+vectorized partition-pruned adapter and frozen resource budget exist. See
+`STOP.md`. No daily failure is being rescued and no outcome test is authorized.

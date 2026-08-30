@@ -1,0 +1,166 @@
+# Research synthesis checkpoints
+
+## SYNTH-MKT-002 — after deterministic breadth construction
+
+### What was learned?
+
+MKT-BRTH-002 constructed nine strategy-independent breadth concepts on 6,155,390
+pre-2024 CY-006 rows and four governed portability views. Net 40/60/80-session
+new-high/new-low participation and top-5/10/20 positive-return leadership
+concentration passed every frozen construction gate. They are stable
+representations, not useful trading variables by default.
+
+Participation, depth, and industry diffusion were mutually highly redundant but
+their fixed long neighbor failed the 0.70 stability gate. Momentum and net
+crossing formed another redundant cluster and also failed fixed horizon
+stability. Divergence and acceleration were still less stable. The broader
+families remain open; exact definitions are not frozen.
+
+MKT-BRTH-001 is invalid evidence because parallel aggregation was not byte
+deterministic. MKT-BRTH-002 changed only the thread count and passed two exact
+serial reproductions.
+
+### What market behavior are we still not studying?
+
+Correlation/liquidity panic state, volatility conditional structure, leader
+failure, pullback/reversal formation, and market-wide multi-day minute behavior
+remain materially unstudied. Correlation/liquidity panic is the highest-value
+independent gap after the permitted state-geometry check.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. New-high/new-low discovery and leadership concentration are observable state
+descriptors. No causal opportunity process, trigger, veto, exit logic, or
+economic usefulness has been established. They do not yet authorize a breakout,
+leadership, reversal, defensive, or other new strategy family.
+
+### Parallel-track awareness
+
+- **Market research:** two breadth roles plus trend direction are now stable
+  enough for outcome-blind state geometry.
+- **Existing-strategy archaeology:** prior H-004 remains a CHINEXT-conditioned
+  participation result. MKT-BRTH-002 neither replicates nor rejects it; the new
+  strategy-independent participation representation failed its own horizon gate.
+- **Strategy invention:** no family crosses the preliminary-mechanism threshold.
+
+### Allocation decision
+
+Run one outcome-blind continuous Trend × Breadth state-geometry experiment. It
+may test redundancy, concordance, state occupancy, and dwell/transition geometry.
+It may not read future returns, strategy outcomes, or create a trading rule.
+Afterward, return to the independent correlation/liquidity frontier.
+
+## SYNTH-MKT-003 — after outcome-blind Trend × Breadth geometry
+
+### What market behavior are we still not studying?
+
+Correlation/liquidity panic structure remains the largest untouched market-state
+family. Leader failure is also not captured merely by concentration level.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Nonredundant state geometry is not a payoff mechanism. The common
+`NEGATIVE__EXPANSION` occupancy and the imbalance around zero discovery show why
+the geometry cannot be converted mechanically into trend, breakout, or reversal
+rules.
+
+### Allocation decision
+
+Return to independent correlation/liquidity representation construction. Defer
+all economic usefulness, future-return, and strategy-habitat association.
+
+## SYNTH-MKT-004 — after correlation/liquidity construction
+
+### What was learned?
+
+MKT-CLQ-001 freezes five nonredundant descriptor roles: leave-one-out rolling
+co-movement, directional synchronization, own-history-relative liquidity
+activity, turnover level, and amount concentration. Liquidity participation and
+industry diffusion pass their fixed definition gates but are redundant with
+activity. Fixed liquidity change fails neighboring-horizon stability. None of
+these findings establishes panic, recovery, impairment, or usefulness.
+
+Two successful single-thread runs are byte-identical. Exact liquidity mass
+conservation uses `DECIMAL(38,3)` only after the source audit proved that no
+eligible amount has more than three decimals. Earlier binder and binary-sum
+attempts are invalid and preserved.
+
+### What market behavior are we still not studying?
+
+Leader failure as a transition, volatility-conditioned state change,
+correlation/liquidity shock-and-recovery paths, pullback/reversal formation, and
+market-wide multi-day minute behavior remain unstudied. A high concentration
+level is not leader failure, and a high correlation level is not panic.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The new roles are stable state descriptors. No recurring opportunity
+process, future-path asymmetry, trigger, veto, exit, or capacity profile has
+been established. Panic reversal, defensive timing, and liquidity-shock
+archetypes remain hypotheses only.
+
+### Parallel-track awareness
+
+- **Market research:** trend, breadth, correlation, and liquidity now have a
+  minimal set of defensible continuous coordinates.
+- **Existing-strategy archaeology:** no CHINEXT or SuperMind outcome was read;
+  the construction neither improves nor rejects either seed strategy.
+- **Strategy invention:** no family crosses the preliminary-mechanism threshold.
+
+### Allocation decision
+
+Construct one outcome-blind leader-failure Representation Map using frozen
+discovery and concentration inputs. Separate level imbalance from temporal
+deterioration. Do not read future paths or promote a strategy archetype.
+
+## SYNTH-MKT-005 — after leader, volatility, and market-minute readiness
+
+### What was learned?
+
+MKT-LDR-001 freezes a causal leadership/discovery level imbalance but rejects
+the fixed concentration-decay and discovery-deterioration transition
+representations. It therefore does not form joint leader-failure geometry.
+
+MKT-VOL-001 freezes realized volatility, intraday range, volatility-mass
+concentration, and volatility change. Downside volatility and dispersion are
+stable but redundant; term structure and downside-mass share fail fixed
+neighboring definitions. These are state coordinates, not useful volatility
+regimes.
+
+AUDIT-MKT-MIN-001 proves exact strategy-independent minute readiness on 240
+trajectories and 1,200 sessions across six years/four views. It has zero opening-
+window discrepancy and zero five-minute volume/amount conservation discrepancy.
+It is a six-market-date feasibility sample, not a representation freeze.
+
+### What market behavior are we still not studying?
+
+Market-wide five-day supply/demand/VWAP/volume trajectories remain the largest
+aggregation gap. Panic shock-and-recovery, objective support defense,
+accumulation/distribution falsification, pullback/reversal formation, and
+breakout acceptance also remain unstudied as recurring market processes.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Stable level coordinates, a failed leader-transition test, volatility
+representations, and minute data feasibility do not establish an opportunity
+process, payoff asymmetry, trigger, veto, exit, or capacity profile. No pullback,
+panic-reversal, intraday, leadership, or defensive archetype is promoted.
+
+### Parallel-track awareness
+
+- **Market research:** continuous daily dimensions are materially broader; the
+  highest-diversification minute family is data-ready but not safely scalable
+  with the current adapter.
+- **Existing-strategy archaeology:** no new CHINEXT/SuperMind outcome or trade
+  field was read; no result is required to improve either seed strategy.
+- **Strategy invention:** no family crosses the preliminary-mechanism threshold.
+
+### Allocation and STOP decision
+
+The next highest-EIV experiment is a strategy-independent five-day Market
+Intraday Representation Map with at least 504 causal market dates per view and a
+material cross-section. The current rowwise adapter would require over 100
+million raw one-minute rows and conflicts with the frozen no-full-market-build
+scale policy. Stop under `unsafe resource use` until a reviewed vectorized,
+partition-pruned adapter and frozen resource budget/sample contract exist. Do
+not weaken the 504 gate, reduce to favorable dates, or substitute CHINEXT events.

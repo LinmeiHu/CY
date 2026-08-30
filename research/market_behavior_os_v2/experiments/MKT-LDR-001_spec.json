@@ -1,0 +1,58 @@
+{
+  "experiment_id": "MKT-LDR-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Can concentration decay, discovery deterioration, and their causal level imbalance represent leader deterioration without outcomes?",
+  "research_role": "outcome-blind representation construction only",
+  "usefulness_boundary": "No leader-failure, forecast, reversal, continuation, short, breakout-veto, habitat, or strategy-usefulness claim is permitted.",
+  "input": {
+    "breadth_panel_path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+    "breadth_panel_sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+    "breadth_result_path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+    "breadth_result_sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070",
+    "rows": 10696,
+    "first_date": "2018-07-03",
+    "last_date": "2023-12-29",
+    "permitted_columns": [
+      "trade_date", "market_view", "denominator", "decision_at", "available_at", "snapshot_id",
+      "breadth_net_new_high_low40", "breadth_net_new_high_low60", "breadth_net_new_high_low80",
+      "leadership_positive_mass_top5", "leadership_positive_mass_top10", "leadership_positive_mass_top20"
+    ]
+  },
+  "representations": {
+    "concentration_decay": {
+      "primary": "leadership_concentration_decay5_top10",
+      "neighbors": ["leadership_concentration_decay5_top5", "leadership_concentration_decay5_top20", "leadership_concentration_decay3_top10", "leadership_concentration_decay10_top10"]
+    },
+    "discovery_deterioration": {
+      "primary": "discovery_deterioration5_h60",
+      "neighbors": ["discovery_deterioration5_h40", "discovery_deterioration5_h80", "discovery_deterioration3_h60", "discovery_deterioration10_h60"]
+    },
+    "leadership_discovery_imbalance": {
+      "primary": "leadership_discovery_imbalance_top10_h60",
+      "neighbors": ["leadership_discovery_imbalance_top5_h40", "leadership_discovery_imbalance_top20_h80"]
+    }
+  },
+  "gates": {
+    "post_warmup_raw_coverage": 0.95,
+    "worst_median_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "joint_deterioration_requires_both_transition_roles": true,
+    "no_rescue": "A failed primary is not replaced by a favorable neighbor, threshold, or horizon."
+  },
+  "forbidden_inputs": [
+    "raw CY-006 rows",
+    "CHINEXT V1 or any strategy membership, signal, trade, return outcome, MFE, MAE, or exit",
+    "future returns or post-decision paths",
+    "CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-LDR-001_leader_deterioration_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-LDR-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-LDR-001_leader_failure_representation.md"
+  ]
+}

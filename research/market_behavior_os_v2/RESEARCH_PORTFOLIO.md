@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Independent market-state foundations are the largest missing layer | Freeze strategy-agnostic breadth, then audit correlation/liquidity |
-| EXPLOIT | 15% | Direction is frozen and participation/MFE is the strongest prior clue | Reconstruct breadth on market dates without strategy outcomes |
+| EXPLORE | 35% | Market-wide five-day minute roles are the highest-diversification gap | STOP until vectorized adapter/resource contract; then freeze roles outcome-blind |
+| EXPLOIT | 15% | Direction, breadth, correlation/liquidity, and volatility roles are frozen | Preserve for later process tests; do not optimize now |
 | INVENT | 10% | No new family yet meets preliminary-evidence threshold | Map executable implications only after a mechanism survives |
-| REPLICATE | 15% | Strong prior participation clues are CHINEXT-conditioned | Re-express participation on market dates, not entry dates |
-| TRANSFER | 10% | Cross-index/cross-universe portability is largely unknown | Preserve six-index direction and test breadth continuity |
-| FALSIFY | 15% | Five trend roles failed to freeze and breadth can rediscover direction | Preserve negative representations; attack coverage and redundancy |
+| REPLICATE | 15% | All completed constructions and the minute audit are reproducible; usefulness is untouched | Future independent-time replication remains required |
+| TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
+| FALSIFY | 15% | Feasibility can be mistaken for representation or usefulness | Preserve the six-date/504-history distinction and no-archetype boundary |
 
 Mandatory checkpoint questions:
 

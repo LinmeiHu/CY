@@ -1,0 +1,68 @@
+{
+  "experiment_id": "MKT-VOL-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Can level, downside, range, term-structure, dispersion, asymmetry, concentration, and change volatility concepts be represented stably as strategy-independent market state?",
+  "research_role": "outcome-blind representation construction and redundancy compression only",
+  "usefulness_boundary": "No panic, contraction/expansion usefulness, forecast, reversal, continuation, habitat, interaction, or strategy claim is permitted.",
+  "input": {
+    "asset_id": "CY-006",
+    "source_root": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "selected_partition_sha256": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "source_start": "2018-01-02",
+    "source_end": "2023-12-29",
+    "outcome_blind_audit_rows": 6155390,
+    "outcome_blind_audit_duplicate_keys": 0,
+    "outcome_blind_audit_time_travel_rows": 0,
+    "outcome_blind_audit_hard_valid_ohlc_failures": 0
+  },
+  "universe": {
+    "primary": "same causal 120-session strategy-independent A-share core with ST retained",
+    "sensitivity": "same core with current is_st=false",
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "minimum_counts": {"ALL_A": 1000, "SH_A": 400, "SZ_A": 400, "CHINEXT_BOARD": 200},
+    "no_strategy_membership": true
+  },
+  "representations": {
+    "realized_volatility": {"primary": "realized_volatility_median20", "neighbors": ["realized_volatility_median10", "realized_volatility_median40"]},
+    "downside_volatility": {"primary": "downside_volatility_median20", "neighbors": ["downside_volatility_median10", "downside_volatility_median40"]},
+    "intraday_range": {"primary": "intraday_range_median_smooth5", "neighbors": ["intraday_range_median_smooth3", "intraday_range_median_smooth10"]},
+    "term_structure": {"primary": "volatility_term_structure_10_40", "neighbors": ["volatility_term_structure_10_20", "volatility_term_structure_20_40"]},
+    "dispersion": {"primary": "return_dispersion_smooth5", "neighbors": ["return_dispersion_smooth3", "return_dispersion_smooth10"]},
+    "downside_mass_share": {"primary": "downside_mass_share_smooth5", "neighbors": ["downside_mass_share_smooth3", "downside_mass_share_smooth10"]},
+    "volatility_concentration": {"primary": "volatility_mass_share_top10", "neighbors": ["volatility_mass_share_top5", "volatility_mass_share_top20"]},
+    "volatility_change": {"primary": "realized_volatility_change5", "neighbors": ["realized_volatility_change3", "realized_volatility_change10"]}
+  },
+  "gates": {
+    "post_warmup_raw_coverage": 0.95,
+    "worst_median_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "minimal_panel_priority": ["realized_volatility", "downside_volatility", "intraday_range", "term_structure", "dispersion", "downside_mass_share", "volatility_concentration", "volatility_change"],
+    "no_rescue": "A failed primary is not replaced by a favorable neighbor or horizon."
+  },
+  "forbidden_inputs": [
+    "strategy membership, signal, trade, return outcome, MFE, MAE, or exit",
+    "future return or post-decision path",
+    "CY-011",
+    "CY-006 partitions after 2023"
+  ],
+  "engineering": {"duckdb_threads": 1},
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-VOL-001_volatility_representation.md"
+  ]
+}
