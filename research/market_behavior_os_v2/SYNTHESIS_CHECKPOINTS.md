@@ -1866,3 +1866,48 @@ acceptance/rejection, equal-industry formation, formation diffusion/concentratio
 and stock/industry divergence. Require absolute/PIT/relative coordinates,
 cross-year and denominator stability, and fixed redundancy against MKT-BRTH-002.
 Do not estimate transitions, outcomes, habitat, or a strategy.
+
+## SYNTH-MKT-042 — after full-market breakout level representation
+
+### What was learned?
+
+All eight supported level roles pass fixed definition, denominator, cross-year,
+semantic-bound, causal-PIT, relative, and external-control gates. None is
+reconstructable from accepted close-based discovery breadth and positive-return
+leadership concentration at 0.85 pairwise/0.70 joint boundaries. Equal-industry
+formation is internally redundant with stock-weighted participation at rho 0.978.
+
+Seven direct completed-session coordinates remain: formation participation,
+formation depth, closing acceptance, closing rejection depth, formation
+diffusion, formation leadership concentration, and stock/industry divergence.
+They are distinct observations, not a latent score or process.
+
+### What market behavior are we still not studying?
+
+We still lack formation momentum and acceleration, persistence/reversal,
+transitions among opportunity/acceptance/concentration states, resistance role
+reversal, full-market minute acceptance, order flow, accumulation/distribution,
+stock-level setup interaction, outcomes, execution, and capacity. The stable
+levels do not answer whether opportunity breadth is strengthening or weakening.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A broad objective-crossing state could eventually inform breakout or
+failed-breakout architectures, but no temporal process, outcome relation, or
+habitat exists. CHINEXT V1 is unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** deepen the seven direct levels into a falsifiable
+  continuous temporal map.
+- **Existing-strategy archaeology:** no new outcome access or rule change.
+- **Strategy invention:** none active; representation is several gates before an
+  executable archetype.
+
+### Research Director decision
+
+`DEEPEN_TO_TEMPORAL_GEOMETRY`. Freeze broad 3/5/10-session changes, second
+differences, actual-session endpoint/OLS/Theil--Sen shape checks where relevant,
+and fixed controls from accepted discovery/concentration changes. Require both
+2018--2020 and 2021--2023 portability and nonoverlap challenges. Do not tune a
+window, form state bins, read outcomes, or call a stable level a process.

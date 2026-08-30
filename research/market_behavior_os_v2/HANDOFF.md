@@ -1256,3 +1256,29 @@ temporary use below 2.33 GB. No minute, outcome, strategy, post-2023, or CY-011
 input was read. Next freeze and execute supported level representation quality,
 including cross-year/definition/denominator stability and compression against
 accepted breadth; do not estimate transitions or usefulness yet.
+
+MKT-BREAKOUT-DIFF-001 was then frozen under `9a7d63eb...`, explicitly excluding
+the two failed acceptance-industry roles. All eight supported roles pass raw,
+causal-PIT, relative, L10/L40, year/view, denominator, semantic-bound, and fixed
+external discovery/concentration gates. The maximum external pairwise rho/joint
+R2 is 0.752/0.642 for formation participation, still below 0.85/0.70; every
+other role has more margin.
+
+Internal compression removes equal-industry formation because its ALL_A raw rho
+with stock-weighted formation participation is 0.978. The Market State Engine
+retains seven completed-session coordinates: formation participation, crossing
+depth, closing acceptance, closing rejection depth, formation diffusion,
+formation leadership concentration, and stock/industry divergence. These are
+distinct observations, not seven mechanisms or a composite.
+
+Two runs are byte-identical: panel `99fd26ee...`, stability `d47e82a2...`,
+external `37ca992f...`, result `5e626f49...`, report `69603940...`. Five scalar
+aggregate cases are exact; four focused tests and lint pass. Peak RSS stays
+below 2.63 GB. No transition, future value, outcome, strategy field, minute
+partition, post-2023 row, or CY-011 was read.
+
+The next highest-information question is whether these seven levels have stable
+broad temporal change/acceleration geometry after nonoverlap and accepted-
+breadth-change controls. Build that map before estimates. Do not label a level
+as momentum, improving acceptance, expanding opportunity, or a strategy habitat
+until a separately frozen dynamic survives.

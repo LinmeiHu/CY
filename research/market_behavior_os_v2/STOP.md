@@ -76,3 +76,9 @@ misses the 0.85 coverage floor, while all formation-side and nonindustry domains
 pass. This is an ordinary role-specific data-adequacy failure, not S1--S12.
 No STOP is active. Preserve the failed acceptance-industry roles and continue
 with a separately frozen representation experiment for only the supported roles.
+
+MKT-BREAKOUT-DIFF-001 freezes seven direct full-market completed-session level
+coordinates after construction, external, and internal compression gates. This
+is positive representation evidence, not a terminal condition. No S1--S12
+boundary is active. Continue map-first with their temporal change/acceleration
+geometry; do not open outcomes or CY-011.

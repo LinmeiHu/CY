@@ -1,0 +1,210 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DIFF-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FULL_MARKET_LEVEL_REPRESENTATION_ESTIMATES",
+  "question": "Which supported full-market objective prior-high formation, closing-state, and formation-industry roles are stable across fixed definitions, years, views, and denominators, and which remain distinct from accepted discovery breadth and leadership concentration?",
+  "research_role": "strategy-independent level representation quality and latent-mechanism compression only",
+  "outcome_access": false,
+  "inputs": {
+    "representation_map": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DIFFUSION_REPRESENTATION_MAP.md",
+      "sha256": "c7c307e0a8ae1666045f68464e017c323c9a9c6b9a4b707006d6675e79965817"
+    },
+    "data_contract": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DIFFUSION_DATA_CONTRACT.md",
+      "sha256": "bc6cc64ef92b82bc077a950f9360a38616cfc320bc523d71dd923caa720b0db2"
+    },
+    "data_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-BREAKOUT-DIFF-DATA-001_spec.json",
+      "sha256": "c659f60d2d38df9c8d02aa0a5f3d780c8cbb1df9104701ea8af47611bf46b58e"
+    },
+    "data_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_breakout_diff_data_001.py",
+      "sha256": "5f3b305950a937e9e731bfbf719f99fe5464bc937696f7d58a3f69695768a222"
+    },
+    "data_count_audit": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DATA-001_count_audit.csv",
+      "sha256": "f94d2a38123a6000d49ad9732a1874c4d1e12bf04a5c7812f2df6ceb4584209f"
+    },
+    "data_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DATA-001_result.json",
+      "sha256": "e7c6dd8de8fe8e40c63d2d22fe44a4a5ac842ab3fbda22bfbd3700b00db73d03"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"
+    },
+    "breadth_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+      "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"
+    },
+    "breadth_scientific_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_brth_001.py",
+      "sha256": "2b5d8b476426ae7cdaf1cd6e28c9f899e422d764b7765b7bb74fdf1cd6198cf7"
+    },
+    "breadth_serial_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_brth_002.py",
+      "sha256": "b60116f30c3ec3420eb9c61588a0c9ed78e5aae1fa5c5d1d97061a8d288487ca"
+    },
+    "causal_coordinate_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_trnd_001.py",
+      "sha256": "6228d9b1cc7cfb96646078c8f09dd9bee5e8fdbac0a6ea935e5aa805cad59273"
+    }
+  },
+  "data_activation": {
+    "required_status": "COMPLETE_FULL_MARKET_DOMAIN_ADEQUACY_FAIL",
+    "required_supported_domains": [
+      "all coordinate, annual count, nonindustry, formation-industry, view/denominator nesting, scalar, and resource gates pass",
+      "only L40 CHINEXT_BOARD acceptance-industry coverage fails"
+    ],
+    "failed_roles_not_advanced": [
+      "acceptance_diffusion",
+      "acceptance_leadership_concentration"
+    ],
+    "failure_floor_or_definition_changed": false
+  },
+  "population": {
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_post_warmup_dates": 1417,
+    "expected_date_view_denominator_rows": 11336,
+    "expected_eligible_all_a_all_status_security_dates": 5550255,
+    "lookbacks": [10, 20, 40],
+    "primary_lookback": 20
+  },
+  "roles": {
+    "formation_participation": {
+      "primary": "breakout_formation_participation20",
+      "neighbors": ["breakout_formation_participation10", "breakout_formation_participation40"],
+      "domain": "nonindustry"
+    },
+    "formation_depth": {
+      "primary": "breakout_formation_depth20",
+      "neighbors": ["breakout_formation_depth10", "breakout_formation_depth40"],
+      "domain": "nonindustry"
+    },
+    "closing_acceptance": {
+      "primary": "breakout_closing_acceptance20",
+      "neighbors": ["breakout_closing_acceptance10", "breakout_closing_acceptance40"],
+      "domain": "nonindustry"
+    },
+    "closing_rejection_depth": {
+      "primary": "breakout_closing_rejection_depth20",
+      "neighbors": ["breakout_closing_rejection_depth10", "breakout_closing_rejection_depth40"],
+      "domain": "nonindustry"
+    },
+    "equal_industry_formation": {
+      "primary": "breakout_equal_industry_formation20",
+      "neighbors": ["breakout_equal_industry_formation10", "breakout_equal_industry_formation40"],
+      "domain": "formation_industry"
+    },
+    "formation_diffusion": {
+      "primary": "breakout_formation_diffusion20",
+      "neighbors": ["breakout_formation_diffusion10", "breakout_formation_diffusion40"],
+      "domain": "formation_industry"
+    },
+    "formation_leadership_concentration": {
+      "primary": "breakout_formation_leadership_top3_20",
+      "neighbors": [
+        "breakout_formation_leadership_top3_10",
+        "breakout_formation_leadership_top3_40",
+        "breakout_formation_leadership_top1_20",
+        "breakout_formation_leadership_top5_20"
+      ],
+      "domain": "formation_industry"
+    },
+    "stock_industry_divergence": {
+      "primary": "breakout_stock_industry_divergence20",
+      "neighbors": ["breakout_stock_industry_divergence10", "breakout_stock_industry_divergence40"],
+      "domain": "formation_industry"
+    }
+  },
+  "formulas": {
+    "formation_participation": "crossing_count / eligible_count",
+    "formation_depth": "mean(mapped_high / prior_high_level - 1 among crossing securities)",
+    "closing_acceptance": "close_above_count / crossing_count; equality remains neutral",
+    "closing_rejection_depth": "mean(max(prior_high_level / coordinate_close - 1,0) among crossing securities)",
+    "equal_industry_formation": "equal-weight mean of within-industry crossing_count / eligible_count after five-member gate",
+    "formation_diffusion": "1 - 0.5 * sum(abs(industry event share - industry eligible share)) over included industries",
+    "formation_leadership_concentration": "top-k share of positive industry excess event mass max(cross_i - market_included_cross_rate * eligible_i,0); k=3 primary, k=1/5 neighbors",
+    "stock_industry_divergence": "stock-weighted formation participation - equal-industry formation"
+  },
+  "coordinates": {
+    "absolute": true,
+    "pit_expanding_percentile": "causal within-view/denominator; minimum 504 valid observations",
+    "pit_3y_percentile": "causal trailing 756 observations including current; minimum 504 valid observations",
+    "pit_3y_robust_z": "causal trailing 756 observations median/MAD; minimum 504; zero MAD missing",
+    "relative_to_all": "same-date same-denominator view value minus ALL_A",
+    "relative_view_rank_pct": "same-date same-denominator rank among at least three available governed views",
+    "within_year_rank": false,
+    "future_normalization": false
+  },
+  "external_controls": {
+    "discovery": "breadth_net_new_high_low60",
+    "leadership_concentration": "leadership_positive_mass_top10",
+    "coordinates": ["absolute", "pit_3y_pct", "relative_to_all"],
+    "absolute_and_pit_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "relative_views": ["SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "minimum_complete_observations_per_cell": 150,
+    "maximum_absolute_pairwise_spearman": 0.85,
+    "maximum_joint_adjusted_rank_r2": 0.7,
+    "controls_may_not_be_deleted": true
+  },
+  "gates": {
+    "nonindustry_minimum_raw_coverage": 0.95,
+    "formation_industry_minimum_raw_coverage": 0.9,
+    "worst_median_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "semantic_bounds_required": true,
+    "pit_expected_coverage": 0.95,
+    "relative_expected_coverage": 0.95,
+    "internal_redundancy_absolute_spearman": 0.85,
+    "minimal_role_priority": [
+      "formation_participation",
+      "formation_depth",
+      "closing_acceptance",
+      "closing_rejection_depth",
+      "equal_industry_formation",
+      "formation_diffusion",
+      "formation_leadership_concentration",
+      "stock_industry_divergence"
+    ],
+    "five_aggregate_scalar_cases_exact": true,
+    "two_byte_identical_runs": true,
+    "no_rescue": "No failed acceptance-industry role, lookback, view, denominator, year, coordinate, control, member/event floor, correlation boundary, or role priority may change after estimates are observed."
+  },
+  "resource_budget": {
+    "single_process": true,
+    "duckdb_threads": 1,
+    "daily_memory_limit_gib": 1.5,
+    "temporary_spill_ceiling_gib": 10,
+    "compressed_read_ceiling_gib": 20,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "filesystem_headroom_fraction": 0.25,
+    "wall_clock_ceiling_minutes": 10,
+    "durable_output_ceiling_mib": 100,
+    "security_level_durable_output": false
+  },
+  "prohibited_computations": [
+    "acceptance diffusion or acceptance leadership concentration estimate",
+    "momentum, acceleration, trajectory, transition, state bin, or threshold",
+    "future market, industry, stock, volatility, or strategy outcome",
+    "strategy membership, signal, candidate, trade, fill, P&L, MFE, MAE, exit, or outcome class",
+    "entry timing, execution, minute path, QD-004, CY-008, post-2023 data, or CY-011",
+    "economic usefulness, habitat, trading rule, or strategy archetype promotion"
+  ],
+  "claim_boundary": "Passing establishes only stable, compressed full-market completed-session representations. It establishes no recurring process, prediction, demand, breakout quality, habitat, timing, execution, payoff, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_stability_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_external_geometry_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DIFF-001_representation.md"
+  ]
+}

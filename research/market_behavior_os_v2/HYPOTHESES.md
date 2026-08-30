@@ -628,7 +628,7 @@
 
 ## MKT-H-038 — full-market objective breakout formation and diffusion
 
-- Status: `PARTIAL_DATA_ADEQUACY_FORMATION_ROLES_ADVANCE_ACCEPTANCE_INDUSTRY_ROLES_DEFER`.
+- Status: `SEVEN_DIRECT_LEVEL_REPRESENTATIONS_STABLE_PROCESS_UNTESTED`.
 - Hypothesis: objective prior-high crossing participation, conditional crossing
   depth, closing acceptance/rejection, equal-industry formation, event diffusion,
   formation concentration, and stock/industry divergence may form a stable
@@ -642,7 +642,13 @@
   resource gates pass. L40 CHINEXT acceptance-industry domain covers only
   81.37%/81.09% versus 85%; exact acceptance diffusion and acceptance
   concentration therefore do not advance under the full neighbor set.
-- Boundary: retain those failures without lowering floors. Freeze a separate
-  level-representation experiment only for the supported formation, depth,
-  closing-state, and formation-industry roles. Data support is not representation
-  stability, a recurring process, habitat usefulness, or a strategy.
+- Representation result: all eight supported roles pass construction and fixed
+  external geometry. Equal-industry formation is internally redundant with
+  stock-weighted participation at rho 0.978. The minimal direct set is formation
+  participation, formation depth, closing acceptance, closing rejection depth,
+  formation diffusion, formation leadership concentration, and stock/industry
+  divergence.
+- Boundary: stable completed-session levels are not momentum, acceleration,
+  transition, recurring process, prediction, habitat usefulness, or a strategy.
+  The next temporal map may use only the seven direct roles and cannot revive the
+  failed acceptance-industry roles.

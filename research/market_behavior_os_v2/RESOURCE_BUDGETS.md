@@ -98,6 +98,12 @@ temporary usage below 2.33 GB, and 41,230 bytes of durable output. The fixed
 1.5-GiB DuckDB, 3-GiB RSS, 8-GiB headroom, 10-GiB temporary, 20-GiB read,
 100-MiB output, and ten-minute ceilings all pass.
 
+MKT-BREAKOUT-DIFF-001 reuses the same exact staged daily coordinate and reads no
+minute partition. Both full representation runs complete in about 35 seconds,
+peak RSS remains below 2.63 GB, and five durable files total 13,845,802 bytes.
+The unchanged 1.5/3/8/10-GiB memory/RSS/headroom/spill and ten-minute/100-MiB
+ceilings pass.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

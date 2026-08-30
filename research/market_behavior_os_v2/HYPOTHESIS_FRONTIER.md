@@ -354,3 +354,11 @@ rescue. All formation-side and nonindustry roles retain their frozen domains.
 The primary frontier is a separately frozen level-representation experiment for
 those supported roles, with L10/L20/L40, absolute/PIT/relative, denominator,
 cross-year, and accepted-breadth redundancy gates unchanged.
+
+MKT-BREAKOUT-DIFF-001 retains seven direct level roles after every fixed gate.
+Equal-industry formation is a redundant manifestation of formation participation;
+all other supported roles remain externally distinct from accepted discovery and
+positive-return concentration. The frontier deepens to temporal geometry: freeze
+broad 3/5/10-session change and acceleration shapes for the seven direct roles,
+plus state-transition semantics only if continuous dynamics justify them. Do not
+infer improvement/deterioration from stable levels or tune a window.

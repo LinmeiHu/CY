@@ -328,3 +328,19 @@ The seven same-session and seven repeated-event coordinates remain descriptive.
 No trend-conditioned, discovery-conditioned, concentration-conditioned, joint
 state, interaction, gate, predictor, usefulness, or strategy annotation is
 emitted.
+
+## MKT-BREAKOUT-DIFF-001 boundary
+
+The engine now retains seven full-market completed-session objective-crossing
+level coordinates: formation participation, conditional crossing depth, closing
+acceptance, closing rejection depth, formation-industry diffusion, formation-
+leadership concentration, and stock/industry formation divergence. All have
+absolute, causal PIT, and contemporaneous relative views and pass fixed L10/L40,
+year/view, denominator, semantic-bound, and external discovery/concentration
+gates. Equal-industry formation is compressed into participation at rho 0.978.
+
+The L40 ChiNext acceptance-industry domain remains below its frozen floor, so
+acceptance diffusion/concentration are not engine coordinates. The seven retained
+levels are available only at the completed 15:00 close. The engine emits no
+momentum, acceleration, transition, recurring breakout-opportunity process,
+forecast, habitat, trigger, timing, usefulness, or strategy annotation.

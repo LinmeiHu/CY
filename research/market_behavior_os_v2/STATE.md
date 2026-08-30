@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-041_FREEZE_SUPPORTED_BREAKOUT_DIFFUSION_LEVEL_REPRESENTATIONS`
-- `CURRENT_PRIMARY_FRONTIER`: full-market objective breakout formation, closing-state, and formation-industry representation quality
+- `CURRENT_PHASE`: `SYNTH-MKT-042_MAP_FULL_MARKET_BREAKOUT_FORMATION_DYNAMICS`
+- `CURRENT_PRIMARY_FRONTIER`: temporal momentum, acceleration, and transition geometry of seven full-market objective-breakout level coordinates
 - `SUPPORTING_FRONTIER`: accepted discovery breadth and leadership concentration as fixed redundancy controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -1348,3 +1348,42 @@ CY-008, outcomes, strategy fields, post-2023 data, and CY-011 were not read.
 SYNTH-MKT-041 requires a separately frozen representation experiment for only
 the supported roles. Data adequacy is not representation stability, a process,
 usefulness, habitat evidence, or a strategy.
+
+MKT-BREAKOUT-DIFF-001 was frozen under spec `9a7d63eb...` before any level
+correlation or normalization. The exact failed acceptance-diffusion and
+acceptance-concentration roles are programmatically excluded. Eight supported
+roles retain L20 primary, L10/L40 neighbors, all years/views/denominators,
+absolute/PIT/relative coordinates, fixed semantic bounds, and external controls
+from MKT-BRTH-002 discovery breadth and positive-return concentration.
+
+All eight supported roles pass construction and external geometry. Minimum
+neighbor medians range from 0.728 for formation leadership concentration to
+0.930 for closing rejection depth; denominator medians range 0.981--0.999.
+Raw coverage is 1.000 for nonindustry roles and 0.992 minimum for formation-
+industry roles; expected PIT and relative coverage are at least 0.999/1.000.
+
+Every external raw/PIT/relative cell passes the fixed pairwise 0.85 and joint
+adjusted-rank-R2 0.70 boundaries. Maximum pairwise/control rho and joint R2 are
+0.752/0.642 for formation participation, 0.743/0.621 for equal-industry
+formation, 0.719/0.566 for formation diffusion, and lower for the other roles.
+Thus the family is not merely MKT-BRTH-002 close discovery or return-mass
+concentration under these fixed controls.
+
+Internal compression removes equal-industry formation: its absolute ALL_A rho
+with stock-weighted formation participation is 0.978. Seven direct completed-
+session levels remain: formation participation, formation depth, closing
+acceptance, closing rejection depth, formation diffusion, formation leadership
+concentration, and stock/industry divergence. Five aggregate cases reproduce
+counts and count-derived values exactly.
+
+Two runs are byte-identical: panel `99fd26ee...`, stability `d47e82a2...`,
+external geometry `37ca992f...`, result `5e626f49...`, and report
+`69603940...`. Four focused tests pass and lint is clean. Peak RSS remains below
+2.63 GB and durable output is 13.85 MB. No minute, outcome, strategy,
+post-2023, or CY-011 input was read.
+
+SYNTH-MKT-042 deepens this frontier to a map-first temporal study of the seven
+direct roles. Stable levels do not establish momentum, acceleration, state
+transition, prediction, usefulness, habitat, or a strategy. Freeze broad
+3/5/10-session changes, second differences, nonoverlap/shape controls, and
+generic accepted-breadth-change alternatives before estimating direction.

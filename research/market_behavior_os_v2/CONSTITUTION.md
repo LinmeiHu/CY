@@ -24,8 +24,8 @@ This constitution governs the active autonomous program from checkpoint
 
 ## Active frontier
 
-- Primary: strategy-independent full-market objective prior-high formation,
-  closing-state, and formation-industry representation quality.
+- Primary: strategy-independent temporal dynamics of full-market objective
+  prior-high formation, closing-state, and formation-industry coordinates.
 - Supporting: accepted close-based discovery breadth and positive-return
   leadership concentration as fixed external redundancy controls.
 - Outcome access: prohibited until representation quality and any recurring
