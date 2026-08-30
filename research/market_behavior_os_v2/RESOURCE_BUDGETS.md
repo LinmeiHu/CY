@@ -31,8 +31,9 @@ not the metadata estimate alone, must approve required scale.
 
 1. Tiny: ten accepted AUDIT-MKT-MIN-001 sessions.
 2. Small: all 1,200 accepted mapped sessions and their distinct source sessions.
-3. Representative: twenty consecutive full-market exchange dates spanning an
-   ordinary and an abnormal/limit-state mix, with resource telemetry.
+3. Representative: the twenty consecutive sessions from 2020-02-03 through
+   2020-02-28, frozen before their full-market descriptors are read, with
+   resource telemetry.
 4. Required scale: every 2018-2023 exchange date under the unchanged scientific
    and resource contract.
 
