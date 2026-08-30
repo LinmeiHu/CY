@@ -2,9 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-IBQ-002_COMPLETE_REJECTED — H-021 entry-signal-session path acceptance is
-weak raw, absent after daily controls, and block-unstable. EXP-IBQ-001 remains
-invalid with no estimate.
+EXP-D5D-001_PREREGISTERED — H-022 freezes the explanatory decomposition of the
+accepted H-013 day-5 return into exact 399102 and stock-specific components.
+No component/outcome association has been executed or inspected.
+EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
@@ -733,6 +734,27 @@ authorization, a new experiment ID, and fresh isolated outputs.
   `b503ec0c...`, JSON `c7b70809...`, report `40621bd9...`, packet `6c523c2a...`.
 - Scientific decision: `REJECTED`. No intraday filter, confirmation rule, entry,
   exit, sizing, overlay, order-flow claim, or strategy modification is authorized.
+
+## AUTONOMOUS_CYCLE_EXP_D5D_001_PREREGISTRATION
+
+- H-022 asks whether stock-specific continuation, rather than contemporaneous
+  399102 movement, carries the accepted H-013 day-5 extreme-winner separation.
+- The population is unchanged: 295 accepted day-5 survivors, 15 extreme winners,
+  and 284 fixed-control-complete rows across blocks 137/59/99.
+- All 295 entry-execution dates map to exact 399102 entry opens and all 295 fifth
+  held sessions map to exact 399102 closes through calendar SHA `1ccd72b9...` and
+  index SHA `e096e4d5...`. No row, outcome, or accepted stock return changes.
+- The primary stock-specific component is
+  `log1p(return_5d) - log(index_day5_close / index_entry_open)`. Exact log
+  additivity reconstructs accepted action-safe returns within `1.11e-16`.
+- One beta-adjusted and one simple-return neighbor, market-component companion,
+  LOYO, blocks, Top-4, duration/exit, security, industry, and exact-alignment
+  attacks are frozen. No alternate landmark or market proxy may replace them.
+- AVAILABLE_AT is Day-5 15:30 Asia/Shanghai. Potential action is next valid
+  session or later, but the explanatory experiment authorizes no action.
+- Spec SHA `756b4605ab00d21b6063c646e611b14da68ed32db9b9ffbdec1f0558238975ce`;
+  runner SHA `8a68d68d87b764f214aa0ccf03e5eb9f31ecd932d0ccc925c77d97711c8e908a`.
+  Status is frozen before the first component/outcome test.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

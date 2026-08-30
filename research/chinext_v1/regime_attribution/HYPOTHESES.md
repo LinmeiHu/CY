@@ -416,3 +416,35 @@ byte-consistent with one another.
   only identity, outputs, and assertions to 84/213/297; no scientific definition,
   gate, control, or interpretation changed. No threshold, entry, exit, sizing,
   overlay, original-breakout, order-flow, or production claim is authorized.
+
+### H-022 — day-5 market-versus-stock continuation decomposition
+
+- Question: does stock-specific continuation, rather than contemporaneous
+  399102 movement, carry the already-known H-013 day-5 extreme-winner
+  separation?
+- Mechanism: if rare winners are security-specific demand-persistence events,
+  the action-safe stock return in excess of the exact concurrent market move
+  should retain H-013's association after market and frozen entry controls. If
+  the market component dominates, H-013 is primarily a regime path.
+- Prediction: stock-specific day-5 log excess is positively and stably associated
+  with the fixed >=50% extreme-winner endpoint, raw and after contemporaneous
+  market plus fixed pre-entry controls.
+- Required data: the accepted 295 EXP-PEL survivors, accepted action-safe
+  `return_5d`, exact calendar, frozen 399102 entry open/fifth-session close, and
+  accepted pre-entry controls.
+- Primary test: `log1p(return_5d) - log(399102 day5 close / entry-session open)`
+  against the accepted extreme-winner label; fixed companion test attributes the
+  399102 component conditional on stock-specific excess.
+- Falsification: within-year ranks, eight LOYO omissions, three blocks,
+  beta-adjusted and simple-return neighbors, accepted H-013 reproduction,
+  Top-4 P&L, holding/exit, securities, industries, exact calendar alignment, and
+  component additivity.
+- Metrics: raw and controlled rank association; gates are frozen in
+  `EXP-D5D-001_spec.json` SHA `756b4605...`.
+- Confounds: both components are observable only at Day-5 close, condition on
+  survival, and overlap arithmetically with terminal return. AVAILABLE_AT is
+  Day-5 15:30; any potential action is next valid session or later, but this
+  explanatory experiment authorizes no action.
+- Status: `PREREGISTERED` as EXP-D5D-001 before the first component/outcome
+  association. No alternate landmark, market proxy, threshold, hold/exit rule,
+  replay, or strategy modification is authorized.

@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H021_PIVOT_TO_DAY5_MARKET_STOCK_DECOMPOSITION`.
+`EXECUTE_EXP_D5D_001_DAY5_MARKET_STOCK_DECOMPOSITION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,9 +66,10 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Preregister the minimum-sufficient day-5 market-versus-stock decomposition of the
-accepted H-013 separation. Test whether stock-specific day-5 excess, rather than
-contemporaneous 399102 movement, carries the already-known extreme-winner
-association. Preserve the accepted 295 survivors, action-safe return, fixed
-entry controls, and explanatory-only boundary. Do not revisit intraday components,
-thresholds, H-018/H-019, EXP-RTD-001, or EXP-P7-003.
+Execute EXP-D5D-001 exactly under spec SHA `756b4605...`. The accepted 295
+survivors map completely to the frozen 399102 entry open and exact fifth-session
+close; 284 retain all fixed entry controls, and component additivity passes to
+`1.11e-16`. Apply the frozen stock-specific, market-companion, LOYO, block,
+neighbor, tail, security, industry, and mechanical gates. Do not inspect a result
+and alter the decomposition, revisit intraday components, choose another
+landmark/index, retest H-018/H-019, or create a hold/exit rule.

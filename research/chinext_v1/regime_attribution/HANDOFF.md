@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-IBQ-002_COMPLETE_REJECTED` on 2026-08-30.
+`EXP-D5D-001_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -27,6 +27,14 @@ and 2/8, block rhos +0.107/+0.003/-0.132, and all five gates fail. The descripti
 VWAP-time component is not selected. Two runs are byte-identical; no strategy
 action is authorized. The next ranked independent question is a fixed day-5
 market-versus-stock decomposition of H-013, not another intraday feature search.
+
+EXP-D5D-001 now freezes H-022 before the first component/outcome association.
+All 295 accepted H-013 survivors map to exact 399102 entry opens and fifth-session
+closes; 284 have complete fixed controls, and exact log additivity reconstructs
+accepted action-safe returns within `1.11e-16`. Execute spec SHA `756b4605...`
+without changing the Day-5 landmark, 399102 proxy, decomposition, controls,
+neighbors, gates, or explanatory-only timing boundary. AVAILABLE_AT is Day-5
+15:30; no action, hold, or exit rule is authorized.
 
 EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete
