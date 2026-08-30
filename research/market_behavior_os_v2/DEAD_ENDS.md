@@ -47,6 +47,7 @@
 | Rank rotation -> future winner-diffusion change | TEMPORAL_EDGE_FAIL: raw partial rho 0.033 discovery and -0.235 confirmation with failed discovery, sign-replication, and relative gates | Do not promote the favorable negative confirmation subset or redefine the response after the sign reversal |
 | Broad industry rank-rotation persistence | FALSIFICATION_FAIL: delayed non-shared-endpoint Spearman is 0.023/-0.111 raw, 0.052/-0.071 PIT, and 0.051/-0.089 phase; only adjacent Kendall/displacement pass | Do not add another lag/horizon, choose the favorable adjacent definitions, delete controls, or relabel adjacent overlap clustering as a durable rotation process |
 | Residual tail-balance/concentration t+20 dynamics | TEMPORAL_PROCESS_FAIL: both self-edges fail raw/PIT replication and both cross-edges reverse from positive block A to negative block B | Preserve same-session representations; do not tune horizon, select raw/relative evidence, remove broad controls, or infer named-leader/selection persistence |
+| T+25 daily-volatility transition and direction/discovery modifiers | TEMPORAL_PROCESS_FAIL: baseline raw 0.051/0.094 conflicts with relative/phase signs; direction modifier 0.004/0.340 and discovery 0.194/0.064 fail block replication | Preserve the four volatility representations; do not tune horizon, habitat split, choose a favorable block/coordinate/neighbor, or relabel a modifier as strategy habitat |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

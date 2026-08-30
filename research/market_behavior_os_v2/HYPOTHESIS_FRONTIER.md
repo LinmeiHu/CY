@@ -2,9 +2,10 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | High | High | Four volatility roles and direction/discovery freeze | High | Medium | ACTIVE_MKT_VOL_TRANS_004_EXACT_SERIALIZATION_RETRY |
-| 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
-| 3 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
+| 1 | Can same-session market minute levels form stable support-defense, VWAP-acceptance, and accumulation/demand mechanisms without failed path operators? | Very high | Very high | Frozen 10,696-row daily minute panel | Very high | Medium | ACTIVE_MKT_MIN_SUPACC_001_MAP_FIRST |
+| 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
+| 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
+| 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -103,3 +104,8 @@ retry without changing scientific semantics.
 MKT-VOL-TRANS-003 is invalid only at report serialization; its partial effects
 were not inspected. MKT-VOL-TRANS-004 is the exact hash-alias/output-identity
 retry of the same final estimator and remains the active frontier.
+
+MKT-VOL-TRANS-004 finds no baseline dynamic and no replicating direction or
+discovery modifier. The frontier closes exact horizon/habitat rescue and pivots
+to market-wide intraday support/acceptance/accumulation representation using
+existing same-session minute levels, not failed multi-day path operators.

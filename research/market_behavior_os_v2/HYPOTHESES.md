@@ -318,3 +318,20 @@
   rejects only the exact nonoverlapping temporal graph; it establishes no
   future return, named-leader persistence, selection alpha, habitat, timing, or
   strategy archetype.
+
+## MKT-H-020 — continuous volatility transition and state modification
+
+- Status: `ZERO_OF_THREE_TRANSITION_CLAIMS_PASS`.
+- Baseline: t+25 volatility-change partial rho is only 0.051/0.094 raw. PIT is
+  0.111/0.088, but governed relative coordinates are negative and the block-B
+  phase estimate is -0.275. The all-coordinate/sign architecture rejects a
+  portable recurrence or reversal dynamic.
+- Direction modifier: the primary high-minus-low difference is 0.004 in block A
+  and 0.340 in block B; PIT and 40/60 neighbors show the same late-only pattern.
+  Block-A raw effect and sign support fail.
+- Discovery modifier: primary raw is 0.194/0.064 and PIT 0.192/0.075; block B
+  misses the fixed effect and magnitude gates even though its 40/60 neighbor is
+  slightly above 0.10. The neighbor cannot rescue the primary.
+- Boundary: daily-volatility role representations remain stable. No continuous
+  transition process, direction/discovery state modifier, strategy habitat,
+  future return, timing, or rule is established.

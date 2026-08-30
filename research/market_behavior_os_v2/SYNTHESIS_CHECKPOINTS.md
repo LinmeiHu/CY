@@ -852,3 +852,50 @@ roles and test whether transition behavior differs across defensible direction
 and discovery coordinates. Freeze representation, controls, temporal semantics,
 interaction geometry, blocks, and no-rescue gates before future values. Do not
 construct a trading rule or read returns, strategy outcomes, or CY-011.
+
+## SYNTH-MKT-020 — after continuous volatility transition research
+
+### What was learned?
+
+The nonoverlapping t+25 transition does not form a portable recurrence or
+reversal process. Raw partial effects are below 0.10 in both blocks, PIT is only
+modestly positive, relative signs disagree, and the late phase estimate is
+negative. Direction modification is a block-B-only effect; discovery
+modification is mainly a block-A effect. The frozen 50/50 primary and 40/60
+shape neighbor therefore reject both modifiers rather than selecting the
+favorable period or definition.
+
+### What market behavior are we still not studying?
+
+Market-wide intraday support defense, VWAP acceptance, and falsifiable
+accumulation/demand structure have not been represented as latent mechanisms.
+The minute program has stable same-session levels, but prior multi-day OLS and
+non-slope path operators mostly failed; those failures do not test coherent
+same-session mechanism bundles. Size/style leadership, cross-asset state, and
+portable multi-strategy habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Neither volatility recurrence/reversal nor direction/discovery modification
+replicates. No transition direction, trigger, execution, exit, capacity, or
+strategy-habitat result exists. Support-defense/acceptance remains a hypothesis
+family, not an archetype.
+
+### Parallel-track awareness
+
+- **Market research:** build outcome-blind same-session minute mechanism
+  representations before any future response or strategy test.
+- **Existing-strategy archaeology:** no strategy return or candidate field was
+  read; seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; objective support/acceptance
+  could become a new family only after representation and temporal gates.
+
+### Research Director decision
+
+`DIVERSIFY_TO_INTRADAY_MECHANISMS` with MKT-MIN-SUPACC-001 map-first. Use the
+frozen market-wide daily minute panel to construct economically distinct support
+defense, VWAP acceptance, and accumulation/demand representations. Freeze
+component signs, shape neighbors, PIT/relative coordinates, redundancy and
+latent-compression gates before construction. Explicitly prohibit the failed
+OLS slopes, ordinal progressions, signed reversals, curvatures, future returns,
+strategy outcomes, and CY-011.

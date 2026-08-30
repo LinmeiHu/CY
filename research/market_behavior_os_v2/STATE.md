@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-VOL-TRANS-004_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent daily volatility contraction/expansion transition architecture conditional on accepted direction and discovery breadth
-- `SUPPORTING_FRONTIER`: four frozen daily-volatility roles plus accepted direction/discovery coordinates
+- `CURRENT_PHASE`: `MKT-MIN-SUPACC-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: market-wide intraday support defense, VWAP acceptance, and accumulation/demand mechanism representation
+- `SUPPORTING_FRONTIER`: frozen same-session minute levels without failed five-day path operators
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -581,3 +581,19 @@ MKT-VOL-TRANS-004 spec `e2859b62...` is frozen. It changes only the hash-key
 alias expected by the renderer and the output identity. Every input, response,
 estimator, grouping, habitat, control, block, support/effect gate, prohibition,
 and claim remains inherited unchanged.
+
+MKT-VOL-TRANS-004 is complete with zero of three claims. The t+25 baseline is
+raw 0.051/0.094, PIT 0.111/0.088, but relative coordinates are negative and the
+block-B phase estimate is -0.275; no portable recurrence/reversal dynamic
+freezes. Direction modification is absent in block A (raw 0.004) but large in
+block B (0.340). Discovery modification decays from raw 0.194 to 0.064 and PIT
+0.192 to 0.075. Neither block-specific modifier replicates under the primary
+and shape-neighbor gates.
+
+Two runs are byte-identical: panel `cfc44d72...`, result `498173ac...`, report
+`33794b78...`; all support gates passed and focused tests pass. The four daily-
+volatility representations remain valid, but no tested nonoverlapping transition
+or direction/discovery modifier freezes. SYNTH-MKT-020 pivots to an unstudied
+minute family: objective support defense, VWAP acceptance, and accumulation/
+demand mechanisms from already-frozen same-session levels, explicitly excluding
+failed five-day path operators. No S1-S12 STOP is active.

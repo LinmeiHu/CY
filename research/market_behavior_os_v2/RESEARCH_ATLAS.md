@@ -61,6 +61,7 @@
 | `experiments/MKT-VOL-TRANS-002_spec.json` | Frozen coverage-correct retry control spec |
 | `experiments/MKT-VOL-TRANS-003_spec.json` | Frozen final coverage-correct control spec |
 | `experiments/MKT-VOL-TRANS-004_spec.json` | Frozen hash-alias/output-identity retry spec |
+| `reports/MKT-VOL-TRANS-004_dynamics.md` | Zero-of-three nonoverlapping transition/modifier result |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

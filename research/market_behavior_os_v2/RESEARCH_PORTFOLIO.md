@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Industry temporal frontier closes negatively; daily-volatility transitions remain underexplored | Map continuous contraction/expansion architecture conditional on direction/discovery |
+| EXPLORE | 35% | Daily-volatility transitions also close negatively; objective minute support/acceptance mechanisms remain unrepresented | Build same-session minute mechanism map without failed path operators |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 5% | No industry process has survived robust falsification | Downgrade industry archetypes; keep volatility-transition mechanisms in search space only |
+| INVENT | 5% | No tested temporal process has survived robust falsification | Keep support-defense/acceptance mechanisms in search space only until representation quality passes |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 25% | Rotation and residual-tail temporal graphs are complete and negative | Preserve both rejections; do not search another industry horizon |
+| FALSIFY | 25% | Industry and volatility temporal graphs are complete and negative | Preserve rejections; do not search another horizon or habitat split |
 
 Mandatory checkpoint questions:
 

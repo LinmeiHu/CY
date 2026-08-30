@@ -567,3 +567,16 @@ MKT-VOL-TRANS-004 is frozen under SHA-256
 It inherits scientific spec `21145136...` and final control spec `a90dd17f...`.
 Only expose the existing scientific hash as `hashes.spec_sha256` and write 004
 outputs. Rerun the exact estimator twice; no research decision or gate changes.
+
+MKT-VOL-TRANS-004 completes with zero of three claims. Baseline raw partial rho
+is 0.051/0.094; relative signs conflict and block-B phase is -0.275. Direction
+modification is 0.004/0.340 raw, so block A fails. Discovery modification is
+0.194/0.064 raw and 0.192/0.075 PIT, so block B fails. No favorable block,
+coordinate, or 40/60 neighbor rescues a primary.
+
+Two runs are byte-identical: panel `cfc44d72...`, result `498173ac...`, report
+`33794b78...`. Preserve daily-volatility representation evidence but do not
+tune the transition horizon or habitat split. Next map MKT-MIN-SUPACC-001 using
+only frozen same-session market minute levels to represent objective support
+defense, VWAP acceptance, and accumulation/demand. Do not reuse rejected OLS,
+ordinal, reversal, or curvature paths; do not read outcomes or CY-011.
