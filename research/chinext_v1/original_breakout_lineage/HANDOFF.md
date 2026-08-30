@@ -189,6 +189,13 @@ and a fixed low-versus-close support neighbor. This must pass outcome-blind
 coverage, balance, temporal-presence, and stability gates before any reveal.
 CY-011 remains locked.
 
+EXP-OBL-013 is now committed before construction. It exactly preserves canonical
+earliest-minimum tie handling and signal-time volume rebasing. The primary uses
+anchor-low defense plus t-1 recovery; the fixed neighbor uses close support.
+All 399 canonical admissions, four-class balance/every-year presence, 65%
+neighbor agreement, PIT, and outcome prohibition must pass. Execute without
+outcomes and repeat only for byte identity. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

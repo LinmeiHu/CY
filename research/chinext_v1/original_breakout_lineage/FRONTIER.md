@@ -197,6 +197,11 @@ support semantics will be the fixed neighboring-definition attack. This uses a
 strategy-native anchor and has lower search dimensionality than another general
 volume-feature family.
 
+EXP-OBL-013 is now frozen before construction with the canonical earliest-
+minimum tie rule, signal-coordinate volume rebasing, low-support/recovery primary
+classes, and one close-support neighbor. No outcome may be read until a separate
+freeze is accepted.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

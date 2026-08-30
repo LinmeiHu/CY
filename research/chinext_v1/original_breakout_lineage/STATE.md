@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_012_REJECTED_BEFORE_OUTCOME_PIVOT_TO_MINVOL_ANCHOR`
+`EXP_OBL_013_FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -147,10 +147,15 @@ anchor creates neutral support-held/recovery lineages. This is narrower than the
 rejected aggregate downside-amount transition and requires an outcome-blind
 neighboring support-definition gate before any economic reveal.
 
+EXP-OBL-013 is frozen before construction. It preserves V1's earliest-minimum
+tie rule and signal-time share-adjusted volume coordinate. Primary classes use
+anchor-low defense and t-1 close recovery; the fixed neighbor uses close support.
+All 399 canonical MINVOL admissions, four-class balance and every-year presence,
+65% neighbor agreement, PIT lineage, and outcome prohibition are immutable.
+
 ## Exact next action
 
-Preregister EXP-OBL-013 around the canonical t-30..t-1 minimum-volume session.
-Use deterministic tie handling, neutral support-held/recovery classes, and a
-fixed low-versus-close support neighbor. Reject before outcomes if coverage,
-balance, temporal presence, or neighboring stability fails. Do not revisit pivot
-radii, modify V1, or open CY-011.
+Execute committed EXP-OBL-013 without outcomes. If every construction gate
+passes, rerun for byte identity and freeze the assignments; otherwise reject
+without changing support semantics, class gates, or tie handling. Do not revisit
+pivot radii, modify V1, or open CY-011.
