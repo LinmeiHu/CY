@@ -1,0 +1,28 @@
+{
+  "experiment_id": "MKT-MIN-PATH-002",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-MIN-PATH-001_spec.json",
+  "inherits_scientific_design_sha256": "bf7e05dcba95c647129638f36cd22684c012edf7aca9b0bcbb5e9355bac62327",
+  "invalid_predecessor": "MKT-MIN-PATH-001 declared derived trajectory availability at 15:00 rather than the frozen artifact's 15:30; stopped before construction",
+  "only_semantic_correction": {
+    "latest_included_minute": "Day -1 completed 15:00 bar Asia/Shanghai",
+    "trajectory_available_at": "Day -1 15:30 Asia/Shanghai",
+    "first_possible_action": "later causally valid observation/session; experiment creates no action"
+  },
+  "unchanged_scientific_fields": [
+    "input hashes and populations",
+    "twelve descriptors and their candidate-mechanism assignments",
+    "three non-slope operators and all definition neighbors",
+    "median primary and p40/p60 aggregation neighbors",
+    "coverage, stability, denominator, year, PIT, relative, reversal-sign, redundancy, and compression gates",
+    "old OLS/endpoint/precomputed-shape, raw-minute, outcome, strategy, and CY-011 prohibitions",
+    "no-rescue and claim boundaries"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_nonslope_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-PATH-002_nonslope_trajectory.md"
+  ]
+}

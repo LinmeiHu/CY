@@ -137,3 +137,15 @@ missing on inadequate coordinate coverage. The corrected runner therefore
 keeps the 0.99 threshold unchanged, marks that exact group/date `view_valid=false`,
 and records all 603 core rows outside their registered limits. It does not alter
 CY-006 market-rule facts. All other eligible group/dates pass the frozen gate.
+
+## MKT-MIN-PATH-001 — invalid availability declaration
+
+The bound-input test stopped before trajectory construction because every
+required-scale trajectory row carries `available_at=15:30`, while the new spec
+incorrectly declared 15:00. The latest included minute remains the completed
+15:00 bar; the derived market artifact becomes available at 15:30 under the
+original MKT-MIN-001 contract. No feature/result artifact was accepted.
+
+MKT-MIN-PATH-002 inherits the exact `bf7e05dc...` scientific design and changes
+only derived-artifact availability plus output identity. No timestamp is moved
+earlier, no post-15:00 minute is read, and no descriptor/operator/gate changes.

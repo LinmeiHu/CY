@@ -221,3 +221,10 @@ binds exact daily hash `bdbb3cb9...` and trajectory hash `89d3e33b...`, selects
 rescans plus every OLS/endpoint/precomputed-shape field. Execute twice and keep
 all 36 attempts in the ledger; no favorable descriptor/operator may rescue
 another.
+
+The MKT-MIN-PATH-001 input audit invalidated that preregistration before
+construction: derived trajectories are available at 15:30, not 15:00. The
+latest included minute is still the completed 15:00 bar. MKT-MIN-PATH-002 is
+frozen under control spec `161b4bb7...`, inheriting scientific design
+`bf7e05dc...` unchanged and correcting only availability/output identity. Run
+the exact retry; no earlier timestamp or scientific change is allowed.
