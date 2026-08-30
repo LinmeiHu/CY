@@ -127,6 +127,14 @@ EXP-OBL-009 is frozen under fresh runner/output identities. It changes no
 scientific definition or assignment and will be the only accepted freeze if the
 40/90% feasibility gates pass reproducibly.
 
+EXP-OBL-009 now freezes `LINEAGE-OBL-009-2BECCEFAF46C1140` reproducibly. The
+48 contested events are concentrated toward later years but present in seven of
+eight; the 351 uncontested events span all years. Before outcomes, the next
+question is whether winning a capacity-constrained RS tournament adds economic
+information beyond absolute RS and the fixed V1/market/breadth state. A separate
+reveal must retain the frozen positive direction and treat temporal imbalance as
+a falsification attack.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

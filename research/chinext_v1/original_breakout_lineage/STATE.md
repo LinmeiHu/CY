@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_009_FROZEN_BEFORE_EVENT_REPLAY`
+`EXP_OBL_009_COMPLETE_SELECTION_LINEAGE_FROZEN`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -108,10 +108,16 @@ output because the neutral 48/351 split misses the preregistered minimum 50 and
 maximum 85% gates. No outcome was read. This is a construction-feasibility
 failure, not economic evidence.
 
+EXP-OBL-009 freezes `LINEAGE-OBL-009-2BECCEFAF46C1140` with 48 contested and
+351 uncontested accepted signals. All 399 identities, exact ranks, capacity
+boundary, cutoff missingness, and PIT timing pass; contested events occur in
+seven years. Two full three-block executions and all accepted outputs are byte-
+identical. No outcome or temporary performance file was read.
+
 ## Exact next action
 
-Execute fresh EXP-OBL-009 with the exact engine, population, event-only access,
-capacity boundary, assignments, and continuous context. Only the outcome-blind
-feasibility gates are 40/90%, with six-year minimum presence unchanged. If all
-gates pass, reproduce byte-for-byte and commit the lineage freeze before any
-outcome reveal. Do not open CY-011.
+Commit the EXP-OBL-009 lineage freeze, then preregister a separate EXP-OBL-010
+outcome reveal. Predict contested positive versus uncontested on both MFE and
+non-false-breakout; control absolute RS, V1 entry state, market/breadth, and year.
+Treat the low early-year contested incidence as a temporal falsification risk,
+not a reason to reweight or redefine the lineage. Do not open CY-011.

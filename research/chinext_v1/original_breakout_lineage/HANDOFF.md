@@ -124,6 +124,17 @@ EXP-OBL-008 scientific definitions and changes only minimum class size 50 to 40
 and maximum class share 85% to 90%. Execute from a clean tree, then repeat the
 full three-block replay for byte identity before any outcome reveal.
 
+EXP-OBL-009 passes twice byte-identically and freezes
+`LINEAGE-OBL-009-2BECCEFAF46C1140`: contested 48, uncontested 351, exact 399
+coverage, contested present in seven years. Parent access was event-ledger only;
+no outcome, NAV, execution, summary, report, or source-worktree ledger was read.
+
+The next experiment must be a separate outcome reveal with frozen positive
+direction for contested selection on both MFE and non-false-breakout. Absolute
+RS, V1 entry state, market/breadth, year, candidate/vacancy context, tails,
+duration/exit, security/industry, and the late concentration of contested events
+must be attacks or controls. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

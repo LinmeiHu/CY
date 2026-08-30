@@ -12,6 +12,7 @@
 | EXP-OBL-007 | H-OBL-006 | Test exact canonical-reference age as a supply-turnover formation mechanism. | COMPLETE_REJECTED | VALID_REVEAL; no rule |
 | AUDIT-OBL-002 | H-OBL-007 | Audit reconstruction feasibility for outcome-blind cross-sectional signal competition and rank margin. | COMPLETE_FEASIBLE_BOUNDED | NONE |
 | EXP-OBL-008 | H-OBL-007 | Freeze exact contested/uncontested selection lineage and continuous competition context from fresh event-only replays. | REFINE_CONSTRUCTION_GATE_FAILED; no output | NONE |
-| EXP-OBL-009 | H-OBL-007 | Clean feasibility refinement preserving the exact selection boundary/assignments and changing only balance gates to 40/90%. | FROZEN_BEFORE_EVENT_REPLAY | FORBIDDEN |
+| EXP-OBL-009 | H-OBL-007 | Clean feasibility refinement preserving the exact selection boundary/assignments and changing only balance gates to 40/90%. | COMPLETE_FREEZE_LINEAGE | NONE; freeze only |
+| EXP-OBL-010 | H-OBL-008 | Reveal MFE/non-false-breakout outcomes against the frozen contested selection lineage. | PLANNED_NOT_PREREGISTERED | FORBIDDEN until freeze commit |
 
 Invalid or failed attempts will remain as separate immutable rows and identities.
