@@ -138,3 +138,8 @@ MKT-STYLE-DATA-001 is frozen under spec `506c24bc...`. It audits only raw close
 times causal circulating shares, with an explicit circulating-value label and
 total-cap/freeFloatCapital nonclaims. Representation design remains blocked
 until every PIT, lineage, unit, and population gate passes.
+
+MKT-STYLE-DATA-001 passes all hard gates and all eight populations on every
+session. Circulating-market-value size is now representation-ready, while total
+cap, true free-float cap, growth/value, and beta remain unavailable. The active
+frontier is MKT-STYLE-001 deep map-first representation construction.

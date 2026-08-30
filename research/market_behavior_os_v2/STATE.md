@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-DATA-001_FROZEN_EXECUTION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-001_REPRESENTATION_MAP_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent size/style leadership and diffusion representation
 - `SUPPORTING_FRONTIER`: one stable same-session VWAP defense/recovery coordinate with no tested 1/3/5-session state dynamic
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -678,3 +678,17 @@ lineage dates, 15:00 availability, positive finite components/product, turnover
 unit consistency, view/denominator population minimums, and no-rescue rules are
 fixed. Strategy fields, future/adjusted prices, unregistered style inputs,
 post-2023 data, and CY-011 remain prohibited.
+
+MKT-STYLE-DATA-001 passes every frozen contract gate. Across 6,155,390 exact
+2018-2023 CY-006 rows there are zero duplicate keys, time-travel rows,
+hard-valid component failures, float-lineage failures, size-product failures,
+turnover-unit failures, or 15:00 decision-time failures. Circulating market
+value spans CNY 218.8 million to 3.267 trillion, with median CNY 4.042 billion.
+
+All eight view/denominator groups meet their population minimum on every one of
+1,457 sessions. Two runs are byte-identical: result `a03954d6...`, report
+`7c1511fd...`; four focused tests pass. This establishes data readiness only for
+circulating-market-value size. It does not make the value total market cap,
+true free-float cap, enterprise value, or an economically useful style factor.
+SYNTH-MKT-023 proceeds to a deep strategy-independent size representation map
+before construction or usefulness. No S1-S12 STOP is active.

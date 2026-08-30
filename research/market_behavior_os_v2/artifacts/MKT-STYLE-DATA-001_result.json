@@ -1,0 +1,142 @@
+{
+  "accepted_semantic_label": "circulating_market_value_cny",
+  "cy011_read": false,
+  "data_contract_decision": {
+    "checks": {
+      "component_contract": true,
+      "date_end": true,
+      "date_start": true,
+      "decision_time": true,
+      "duplicate_keys": true,
+      "lineage_contract": true,
+      "positive_value_summary": true,
+      "row_count": true,
+      "size_contract": true,
+      "time_travel": true,
+      "turnover_units": true
+    },
+    "data_contract_gate_pass": true
+  },
+  "experiment_id": "MKT-STYLE-DATA-001",
+  "future_fields_read": [],
+  "hashes": {
+    "cy006_audit_sha256": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b",
+    "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partition_sha256": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "qd009_manifest_sha256": "f92d2b5c2de1d046d8a4ddeac5e910fa96ce74f770627c92b1c702ed6dfd8468",
+    "registry_sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+    "spec_sha256": "506c24bcdd498162b3d44faa3008aa54ddf9a4132606b5da9a890240e224484b"
+  },
+  "population_audit": {
+    "ALL_A:ALL_STATUS": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 5002,
+      "median_eligible_count": 3933.0,
+      "minimum_eligible_count": 2984,
+      "required_minimum": 1000
+    },
+    "ALL_A:NON_ST": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 4923,
+      "median_eligible_count": 3788.0,
+      "minimum_eligible_count": 2939,
+      "required_minimum": 1000
+    },
+    "CHINEXT_BOARD:ALL_STATUS": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 1317,
+      "median_eligible_count": 856.0,
+      "minimum_eligible_count": 618,
+      "required_minimum": 200
+    },
+    "CHINEXT_BOARD:NON_ST": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 1306,
+      "median_eligible_count": 854.0,
+      "minimum_eligible_count": 618,
+      "required_minimum": 200
+    },
+    "SH_A:ALL_STATUS": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 2222,
+      "median_eligible_count": 1712.0,
+      "minimum_eligible_count": 1227,
+      "required_minimum": 400
+    },
+    "SH_A:NON_ST": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 2193,
+      "median_eligible_count": 1651.0,
+      "minimum_eligible_count": 1200,
+      "required_minimum": 400
+    },
+    "SZ_A:ALL_STATUS": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 2781,
+      "median_eligible_count": 2222.0,
+      "minimum_eligible_count": 1756,
+      "required_minimum": 400
+    },
+    "SZ_A:NON_ST": {
+      "dates": 1457,
+      "eligible_dates": 1457,
+      "eligible_fraction": 1.0,
+      "ineligible_dates_fail_closed": 0,
+      "maximum_eligible_count": 2730,
+      "median_eligible_count": 2138.0,
+      "minimum_eligible_count": 1739,
+      "required_minimum": 400
+    }
+  },
+  "post_2023_data_read": false,
+  "representation_claim": "NONE",
+  "row_audit": {
+    "decision_time_failures": 0,
+    "duplicate_keys": 0,
+    "first_date": "2018-01-02",
+    "hard_valid_component_failures": 0,
+    "hard_valid_lineage_failures": 0,
+    "hard_valid_size_failures": 0,
+    "last_date": "2023-12-29",
+    "maximum_circulating_value": 3267370477800.0,
+    "median_circulating_value": 4041608907.5199995,
+    "minimum_circulating_value": 218800000.0,
+    "rows": 6155390,
+    "snapshot_count": 1,
+    "time_travel_rows": 0,
+    "turnover_unit_failures": 0
+  },
+  "status": "COMPLETE_DATA_CONTRACT_PASS",
+  "strategy_or_outcome_fields_read": [],
+  "total_market_cap_claim": "NONE",
+  "true_free_float_cap_claim": "NONE",
+  "usefulness_claim": "NONE"
+}

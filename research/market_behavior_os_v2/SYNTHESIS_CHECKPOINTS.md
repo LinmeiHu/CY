@@ -983,3 +983,43 @@ participation, leadership, diffusion, divergence, and transition semantics
 before construction. Fail closed on unclear lineage or adjustment semantics.
 Do not combine with Trend/Breadth, read strategy outcomes, or form a trading
 rule before representation stability and redundancy compression.
+
+## SYNTH-MKT-023 — after circulating-size data-contract audit
+
+### What was learned?
+
+CY-006 supports a causal circulating-market-value size coordinate with exact
+lineage, units, availability, and population coverage. It does not support a
+claim of total market cap or true free-float cap: the exposed field is
+`circulating_shares`, while QD-009's separate `freeFloatCapital` is not in the
+governed daily table.
+
+### What market behavior are we still not studying?
+
+We still have no representation of small/large participation, leadership,
+diffusion, concentration, divergence, or transition. Growth/value, beta,
+profitability/investment, cross-asset state, and portable multi-strategy
+habitats remain unavailable or unstudied.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Input readiness contains no state geometry, temporal process, payoff,
+trigger, execution, exit, capacity, or habitat evidence. “Small-cap rotation”
+remains a hypothesis label only.
+
+### Parallel-track awareness
+
+- **Market research:** build strategy-independent circulating-size state roles.
+- **Existing-strategy archaeology:** no strategy field or future return was
+  read; seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; size leadership cannot advance
+  before representation stability and redundancy compression.
+
+### Research Director decision
+
+`PROCEED_TO_SIZE_REPRESENTATION_MAP` with MKT-STYLE-001. Freeze lagged size-
+bucket assignment, participation, leadership, diffusion, concentration,
+divergence, transition, neighboring definitions, absolute/PIT/relative views,
+coverage, portability, redundancy, and no-rescue rules before construction.
+Do not use current-close bucket assignment for same-session returns and do not
+read future or strategy outcomes.

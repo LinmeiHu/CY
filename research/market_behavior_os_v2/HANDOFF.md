@@ -672,3 +672,21 @@ true free-float cap, or enterprise value. QD-009 `freeFloatCapital` is not
 exposed by CY-006 and must not be joined separately. Enforce 15:00 availability,
 turnover unit consistency, population minimums, and the frozen no-rescue rule.
 No future/adjusted price, strategy field, post-2023 data, or CY-011 may enter.
+
+MKT-STYLE-DATA-001 completes with `COMPLETE_DATA_CONTRACT_PASS`. The exact
+6,155,390-row source has zero duplicate, time-travel, hard-valid component,
+float-lineage, circulating-value, turnover-unit, or decision-time failures.
+Every view/denominator clears its population floor on all 1,457 dates.
+
+Circulating market value is CNY 218.8 million minimum, CNY 4.042 billion median,
+and CNY 3.267 trillion maximum. Two runs are byte-identical: result
+`a03954d6...`, report `7c1511fd...`; four focused tests pass. Preserve the
+semantic boundary: this is circulating-market-value size only, not total cap,
+true free-float cap, enterprise value, growth/value, or beta.
+
+SYNTH-MKT-023 selects MKT-STYLE-001 deep representation mapping before
+construction. Separate size participation, small/large leadership, diffusion,
+concentration, divergence, and transitions; retain absolute, causal-PIT, and
+relative views. Use lagged size membership for current return attribution and
+avoid current-close sort leakage. Freeze neighboring bucket/horizon definitions,
+coverage, portability, redundancy, and no-rescue gates before estimates.

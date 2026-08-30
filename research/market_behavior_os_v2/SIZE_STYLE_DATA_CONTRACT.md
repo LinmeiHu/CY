@@ -53,3 +53,15 @@ style taxonomy, or that any size bucket predicts returns. Growth/value,
 profitability, investment, high/low beta, total capitalization, true free-float
 capitalization, fund flow, sentiment, strategy outcomes, and CY-011 remain
 unavailable or prohibited.
+
+## MKT-STYLE-DATA-001 result
+
+All frozen gates pass. The exact 6,155,390-row source has zero duplicate,
+time-travel, component, float-lineage, size-product, turnover-unit, or decision-
+time failures. All eight view/denominator groups meet their population floors on
+all 1,457 dates. Circulating value spans CNY 218.8 million to 3.267 trillion,
+with median CNY 4.042 billion.
+
+Two executions are byte-identical: result `a03954d6...`, report `7c1511fd...`.
+This permits a circulating-market-value size representation map only; every
+explicit nonclaim above remains in force.
