@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H018_RANK_NEXT_INDEPENDENT_FRONTIER`.
+`REJECT_H019_AUDIT_SEVERE_LOSS_FORMATION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -54,10 +54,19 @@ topology. EXP-ECC-001 also rejects simultaneous accepted-entry cohort crowding:
 raw/controlled cohort-date rhos are -0.045/-0.118 with 0/8 positive LOYO, and
 the topology association is -0.042. All gates fail.
 
+The ranked next frontier is H-019: whether favorable close-peak return is already
+surrendered by day 5 and precedes additional residual failure. Coverage is exact
+for 295 survivors, including five action paths, and the accepted day-5 return is
+reconstructed to machine precision under the frozen Phase-1 accounting.
+
+EXP-EPR-001 rejects the forward persistence mechanism: future-failure raw and
+controlled rhos are only 0.032/0.061 and fail tail/block attacks. Giveback does
+associate with false breakout (0.306) and H-016 topology (0.418), but this is
+descriptive localization by day 5, not evidence for an exit action.
+
 ## Exact next action
 
-Rank the remaining independent mechanism frontiers. Prefer a minimum-sufficient
-early held-path reversal experiment that temporally separates initial favorable
-excursion, day-5 giveback, and residual post-day-5 outcome if action-safe daily
-path coverage is complete. EXP-P7-003 must never be silently repaired, rerun, or
-overwritten.
+Audit the remaining severe-loss formation frontier without reading new outcome
+associations. Determine whether one mechanistically distinct pre-entry or early
+path state can be frozen without duplicating H-011/H-019 or mining landmarks.
+If not, pivot rather than force a test. EXP-P7-003 remains forbidden.

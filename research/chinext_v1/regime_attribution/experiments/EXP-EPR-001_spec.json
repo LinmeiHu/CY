@@ -1,0 +1,89 @@
+{
+  "experiment_id": "EXP-EPR-001",
+  "status": "FROZEN_BEFORE_FIRST_REVERSAL_OUTCOME_TEST",
+  "created_on": "2026-08-30",
+  "hypothesis_id": "H-019",
+  "evidence_grade": "EXPLORATORY_HOLDING_PATH_MECHANISM",
+  "question": "Does close-peak giveback by the fifth held session precede additional post-day-5 failure beyond day-5 return and fixed pre-entry state?",
+  "mechanism": "A failed demand impulse may first create a favorable close peak, surrender it by day 5, and then continue deteriorating under the frozen strategy.",
+  "prediction": "Day-5 close-peak giveback is positively associated with negative residual return after day 5, false-breakout incidence, and H-016 oriented path order.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_early_path_reversal.py",
+      "sha256": "65c0089fc213c535635f0ad6252a5722f3f152f1dc1daa721e7282cfdb1adb97"
+    },
+    "accepted_landmark_residuals": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/post_landmark_persistence.csv",
+      "sha256": "cde69cea33445ffa75c0a009d198a5150f1f9a5d3cebf1758b98c491c863305c"
+    },
+    "accepted_entry_fills": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/entry_gap_premium_attribution.csv",
+      "sha256": "8cc3a20a5015e93d9e3d8faf333ddd260dd95f736ccf503e23c54b6d5c11de23"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_h016_paths": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/false_breakout_boundary_attribution.csv",
+      "sha256": "b09dc954daf5f07d4679ff4f8b9b655c06c18119d4dcd865d8a5414f8e4cf746"
+    },
+    "phase2_action_safe_builder": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "accepted_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "accepted_transient_contract": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-WLA-001_spec.json",
+      "sha256": "b46c233662f47f38e9557daf938af9d0fb6f9944bb396906e3457505280ae9e4"
+    }
+  },
+  "transient_contract": {
+    "canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "sample": {
+    "cycles": 295,
+    "path_rows": 1475,
+    "blocks": {
+      "EXTENDED_2018_2021": 137,
+      "HOLDOUT_O0_2022_2023": 59,
+      "DEVELOPMENT_2024_2025": 99
+    },
+    "early_action_cycles": 5
+  },
+  "primary_feature": "Maximum close total return over held sessions 1-5 minus accepted day-5 close total return, using exact Phase-1 share/cash corporate-action accounting.",
+  "primary_endpoint": "Negative multiplicatively residual terminal return after day 5.",
+  "controls": [
+    "accepted day-5 return",
+    "fixed pre-entry V1 state",
+    "market trend and volatility",
+    "breadth",
+    "beta and liquidity",
+    "entry year"
+  ],
+  "gates": {
+    "raw": "rho >= 0.10, positive within-year rank, >=7/8 positive LOYO",
+    "controlled": "partial rho >= 0.10 after day-5 and fixed controls, >=7/8 positive LOYO",
+    "false_breakout": "rho >= 0.10, >=7/8 positive LOYO",
+    "neighbor": "high-based giveback positive with >=6/8 LOYO and H-016 topology positive",
+    "falsification": "duration/exit partial rho >= 0.08; positive ex-Top4 P&L, ex-severe-loss, ex-extreme-winner, >=2/3 blocks, >=80% leave-security and leave-industry directions"
+  },
+  "forbidden": [
+    "alternate landmark search",
+    "giveback thresholds",
+    "entry or exit rules",
+    "holding extension",
+    "strategy replay",
+    "invalid Phase 7/8/9 use",
+    "production modification"
+  ],
+  "outputs": [
+    "artifacts/early_path_reversal.csv",
+    "artifacts/early_path_reversal.json",
+    "reports/early_path_reversal.md"
+  ]
+}

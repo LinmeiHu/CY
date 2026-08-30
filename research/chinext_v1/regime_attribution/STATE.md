@@ -2,9 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-ECC-001_COMPLETE_REJECTED — false-breakout path topology remains supported,
-but stock-specific T+1 entry gap and independent same-day entry crowding are
-rejected. H-004 remains frozen for
+EXP-EPR-001_COMPLETE_REJECTED_WITH_DESCRIPTIVE_LOCALIZATION — false-breakout path
+topology is visible by day 5 but does not predict additional post-day-5 failure.
+Entry gap and entry crowding remain rejected. H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
 remain invalid. No strategy or production change is authorized.
 
@@ -587,6 +587,38 @@ authorization, a new experiment ID, and fresh isolated outputs.
   generated report `20072f89...`.
 - Scientific decision: `REJECT` H-018. Same-day entry crowding does not explain
   false-breakout formation and authorizes no threshold, throttle, or sizing rule.
+
+## AUTONOMOUS_CYCLE_EXP_EPR_001_PREREGISTRATION
+
+- H-019 tests whether close-peak giveback by the fifth held session precedes
+  additional post-day-5 failure beyond accepted day-5 return and pre-entry state.
+- The fixed sample contains 295 day-5 survivors and exactly 1,475 hard-valid
+  action-safe path rows. Exact Phase-1 share/cash accounting reconstructs all
+  accepted day-5 returns within `2.55e-16`; five cycles contain early actions.
+- One close-based giveback feature and one negative residual-return primary are
+  frozen. False breakout, H-016 topology, one high-based neighbor, duration/exit,
+  tails, blocks, securities, and industries are explicit attacks.
+- Survival and actual-exit conditioning remain. No alternate landmark, threshold,
+  entry, hold, exit, replay, or production action is allowed.
+- Spec SHA `cac0e359...`; eight-input-plus-spec aggregate `fe431fab...`.
+- Status: frozen before the first reversal/outcome test.
+
+## AUTONOMOUS_CYCLE_EXP_EPR_001_RESULT
+
+- Early close-peak giveback versus negative residual post-day-5 return has raw
+  rho 0.032 and fixed controlled rho 0.061; both fail the 0.10 magnitude gate.
+  Duration/exit-controlled rho is 0.040.
+- False-breakout rho is 0.306 and H-016-topology rho is 0.418, each with 8/8
+  positive LOYO. These locate the completed-path signature by day 5 but do not
+  establish subsequent deterioration.
+- Block future-failure rhos are 0.052/0.005/-0.026. Ex-Top4, ex-severe-loss, and
+  ex-extreme-winner rhos are 0.008/-0.008/0.006. Raw, controlled, and full
+  falsification gates fail.
+- Exact action-safe reconstruction error is `3.54e-16`; two executions are
+  byte-identical; the 236-file preexisting aggregate remains `e5afd9e2...`.
+- Output hashes: table `22990a28...`, JSON `e1d646e5...`, report `4c5367aa...`.
+- Scientific decision: `REJECT` forward persistence while retaining descriptive
+  localization. No day-5 sell, threshold, hold, or exit rule is authorized.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

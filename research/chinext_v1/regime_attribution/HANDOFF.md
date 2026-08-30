@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-ECC-001_COMPLETE_REJECTED_WITH_RECORDED_OMISSION` on 2026-08-30.
+`EXP-EPR-001_COMPLETE_REJECTED_WITH_DESCRIPTIVE_LOCALIZATION` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -69,6 +69,18 @@ EXP-ECC-001 is complete and rejected. Raw/controlled cohort-date rhos are
 preexisting scientific-state aggregate is unchanged. Narrative security/industry
 attacks were not serialized by the frozen runner; that non-decisive omission is
 recorded and cannot rescue the failed primary gates.
+
+EXP-EPR-001 is frozen before endpoint testing. It uses 295 day-5 survivors and
+1,475 exact action-safe held-path rows. Five early corporate-action cycles pass
+the exact Phase-1 share/cash accounting, and all accepted day-5 returns reconstruct
+within `2.55e-16`. The one-feature eight-input-plus-spec aggregate is
+`fe431fab...`; no alternate landmark, threshold, hold, exit, or replay is allowed.
+
+EXP-EPR-001 is complete. Early giveback associates with the already-realized
+false-breakout label (0.306) and H-016 topology (0.418), both 8/8 LOYO, but not
+with additional post-day-5 failure (raw/controlled 0.032/0.061). Tail and block
+attacks collapse the forward result. The decision is REJECT persistence; the
+descriptive localization cannot support a day-5 sell rule.
 
 ## Recovered autonomous environment
 
@@ -194,10 +206,9 @@ mechanisms.
 
 ## Required next action
 
-Rank the remaining independent frontiers. If action-safe early held-path coverage
-is complete, freeze one minimum-sufficient experiment distinguishing early peak,
-day-5 giveback, and residual post-day-5 failure; otherwise pivot to the next
-audited PIT-valid mechanism.
+Audit severe-loss formation for one independent, PIT-valid, non-duplicative
+mechanism. Freeze a minimum-sufficient test only if the audit supports one without
+horizon/threshold mining; otherwise pivot to the next ranked frontier.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

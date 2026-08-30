@@ -42,6 +42,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   opposite the preregistered direction, while the three blocks disagree. Do not
   reverse the sign into a cohort-size rule, search cohort thresholds, throttle
   simultaneous entries, or alter sizing from this consumed sample.
+- H-019's day-5 peak-giveback persistence mechanism is rejected by EXP-EPR-001.
+  Giveback describes the false-breakout label and completed H-016 topology but
+  does not explain residual post-day-5 return after fixed state, tails, or blocks.
+  Do not search alternate early landmarks or giveback thresholds, and do not turn
+  the descriptive day-5 separation into a sell rule.
 
 ## Invalid rather than rejected
 

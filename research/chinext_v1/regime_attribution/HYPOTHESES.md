@@ -328,3 +328,34 @@ byte-consistent with one another.
   serialized by the frozen runner; this cannot rescue the failed primary gates
   and is retained as a non-decisive protocol omission. No cohort threshold, entry
   throttle, sizing rule, replay, or strategy modification is authorized.
+
+### H-019 — early held-path reversal
+
+- Question: does close-peak giveback accumulated by the fifth held session
+  precede additional return failure after day 5 beyond the observed day-5 return
+  and fixed pre-entry state?
+- Mechanism: a failed demand impulse may create an initial favorable close peak,
+  surrender it by day 5, and then continue deteriorating under the frozen V1 exit
+  process.
+- Prediction: close-peak-to-day5 giveback is positively associated with negative
+  multiplicatively residual return after day 5, false-breakout incidence, and the
+  H-016 oriented opportunity-before-adversity order.
+- Required data: accepted day-5 residual outcomes, exact accepted entry fills,
+  action-safe daily bars, accepted pre-entry controls, and H-016 paths.
+- Primary test: one continuous day-5 giveback feature versus future failure in
+  all 295 observable survivors, with within-year ranks, LOYO, and a fixed partial
+  rank controlling day-5 return and pre-entry/year state.
+- Falsification: intraday-high neighbor, duration/exit controls, Top-4 P&L,
+  severe-loss and extreme-winner removal, three blocks, securities, industries,
+  exact day-5 reconstruction, and H-016 topology.
+- Metrics: raw and controlled rank association; gates frozen in
+  `EXP-EPR-001_spec.json`.
+- Confounds: the feature is observable only after entry, the sample is conditioned
+  on frozen-strategy survival through day 5, and residual return remains affected
+  by the actual exit. No causal exit or tradable claim follows.
+- Result: future-failure raw/controlled rhos are 0.032/0.061, below both 0.10
+  gates and unstable across blocks/tail removal. False-breakout and H-016-topology
+  rhos are 0.306/0.418 with 8/8 positive LOYO, locating but not extending failure.
+- Status: `REJECTED_WITH_DESCRIPTIVE_LOCALIZATION` by EXP-EPR-001. No alternate
+  landmark, threshold, entry, holding, exit, replay, or production modification
+  is authorized.

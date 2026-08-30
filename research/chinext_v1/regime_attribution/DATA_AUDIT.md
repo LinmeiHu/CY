@@ -137,3 +137,14 @@ are 130 EXTENDED, 62 HOLDOUT, and 63 DEVELOPMENT. Completed-cycle entry counts
 equal all-entry counts on every admitted cohort date; the ten terminal open
 development entries remain excluded from endpoints rather than silently assigned
 outcomes. The primary unit is the unweighted cohort date, not the trade.
+
+EXP-EPR-001's outcome-blind path audit uses the already frozen 295 day-5 survivor
+identities and reads exactly five held sessions per cycle: 1,475/1,475 rows are
+present and hard-valid, with zero invalid action-coordinate steps. Five cycles
+contain an early corporate action. A naive adjusted-price shortcut differs from
+the accepted day-5 return by as much as 57 basis points and was rejected before
+preregistration. Reusing the exact Phase-1 share-multiplier/cash accounting
+reconstructs every accepted day-5 return with maximum absolute error
+`2.55e-16`. Block counts are 137 EXTENDED, 59 HOLDOUT, and 99 DEVELOPMENT; all
+eight entry years remain represented. No endpoint association was calculated
+before the one day-5 feature and its gates were frozen.
