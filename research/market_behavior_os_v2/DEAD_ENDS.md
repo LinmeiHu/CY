@@ -40,6 +40,7 @@
 | MKT-INDRS-001 positive-mass industry leadership concentration | REPRESENTATION_NOT_FROZEN: minimum raw coverage 0.945 because total positive industry mass can be zero | Preserve undefined zero-denominator dates; do not add epsilon, impute, switch to signed mass, or select top3/5/10 after results |
 | MKT-INDRS-001 top-set leadership persistence | REPRESENTATION_NOT_FROZEN: weakest top3/5/10 neighbor rho 0.540 and ALL_STATUS/NON_ST median rho 0.895 | Do not tune top-k, lag, denominator, view, or year; rank rotation is separate and remains valid |
 | MKT-INDRS-001 equal-industry return depth as a separate mechanism | REDUNDANT_REPRESENTATION: absolute Spearman 0.980 with equal-industry positive participation | Retain the simpler participation role in the minimal panel; do not count depth as independent evidence |
+| MKT-INDRS-GEO-001 general raw/PIT/relative year lists | INVALID_BEFORE_GEOMETRY: accepted leadership/discovery imbalance is itself a post-504 causal-percentile role; raw/relative are incomplete before 2021 and its nested PIT coordinate before 2023 | Use MKT-INDRS-GEO-002 control-specific eligibility; never lower coverage/cell gates, delete the fixed control, or cite a nonexistent 001 geometry result |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

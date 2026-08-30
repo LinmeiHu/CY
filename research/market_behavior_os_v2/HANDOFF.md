@@ -384,6 +384,18 @@ joint rank reconstruction must remain below 0.70 median and 0.85 maximum
 adjusted R2 in every eligible coordinate family. Execute twice and preserve any
 redundancy as latent-mechanism evidence rather than a failed source role.
 
+The MKT-INDRS-GEO-001 coverage audit invalidated the first preregistration
+before any geometry. The accepted leadership/discovery-imbalance control is
+itself built after a 504-observation causal-percentile warm-up: it has no 2019
+values and only 107/group in 2020. Its own PIT percentile imposes a second
+warm-up and has only 89/group in 2022. No 001 output artifact exists.
+
+MKT-INDRS-GEO-002 is frozen under control spec `7b91844c...`, inheriting the
+exact scientific design `33b0f114...`. Only the nested control's eligible years
+change: raw/relative 2021-2023 and PIT 2023, with winner-diffusion joint models
+using the fixed-control intersection. No gate is lowered and no control is
+dropped. Execute the retry twice.
+
 ## Human decision required?
 
 No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-GEO-001

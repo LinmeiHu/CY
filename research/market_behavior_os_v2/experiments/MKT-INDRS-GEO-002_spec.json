@@ -1,0 +1,42 @@
+{
+  "experiment_id": "MKT-INDRS-GEO-002",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_GEOMETRY_RESULT",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-INDRS-GEO-001_spec.json",
+  "inherits_scientific_design_sha256": "33b0f114becea9d2677e3e38fd51f45e1433279c8058a26a94a435ff78ea276e",
+  "invalid_predecessor": "MKT-INDRS-GEO-001 applied general raw/relative/PIT year lists to a nested causal-percentile control; its unchanged coverage gate stopped before any geometry estimate or output artifact",
+  "only_semantic_correction": {
+    "control_coordinate_years": {
+      "leadership_discovery_imbalance": {
+        "raw": [2021, 2022, 2023],
+        "pit": [2023],
+        "relative_to_all": [2021, 2022, 2023],
+        "relative_rank": [2021, 2022, 2023]
+      }
+    },
+    "joint_coordinate_years": {
+      "winner_industry_diffusion20": {
+        "raw": [2021, 2022, 2023],
+        "pit": [2023],
+        "relative_to_all": [2021, 2022, 2023],
+        "relative_rank": [2021, 2022, 2023]
+      }
+    },
+    "reason": "retain the unchanged 95% coverage and 150-observation gates while excluding incomplete first- and second-stage causal warm-up years for the nested leadership/discovery-imbalance control"
+  },
+  "unchanged_scientific_fields": [
+    "seven targets and all fixed role-specific controls",
+    "six input panel/result identities and hashes",
+    "full 10696-row common population and eight groups",
+    "15:00 availability and outcome-blind boundary",
+    "raw, causal PIT, relative-to-ALL_A, relative-rank, and joint-rank definitions",
+    "0.85 pairwise and 0.70/0.85 joint reconstruction thresholds",
+    "no-rescue rule, prohibited fields, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-INDRS-GEO-002_geometry.md"
+  ]
+}

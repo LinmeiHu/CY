@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Which of the seven frozen industry/relative-strength coordinates add a distinct dimension beyond the accepted Market State Engine? | Very high | High | Frozen panels only; no raw rebuild | High | Low-medium | ACTIVE_MKT_INDRS_GEO_001_MAP_FIRST |
+| 1 | Which of the seven frozen industry/relative-strength coordinates add a distinct dimension beyond the accepted Market State Engine? | Very high | High | Frozen panels only; nested-control years corrected before geometry | High | Low-medium | ACTIVE_MKT_INDRS_GEO_002_FROZEN |
 | 2 | Do distinct industry rotation/diffusion/residual coordinates have replicating temporal meaning after state controls? | Very high | Very high | Future market/industry state can be built after geometry | High | Medium; confirmation must be untouched before spec | WAIT_FOR_GEOMETRY |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
@@ -43,3 +43,9 @@ first construction tested external redundancy against only discovery and broad
 leadership concentration, the next question is outcome-blind role-specific
 geometry against the accepted Market State Engine. Temporal outcomes remain
 untouched until that compression is frozen.
+
+MKT-INDRS-GEO-001 is invalid before geometry because its general year lists
+entered incomplete nested causal-control warm-ups. MKT-INDRS-GEO-002 retains
+the scientific design and changes only that control's raw/relative/PIT eligible
+years. The next action remains the exact outcome-blind geometry, not a new
+frontier or control substitution.

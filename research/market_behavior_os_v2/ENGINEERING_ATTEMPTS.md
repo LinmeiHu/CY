@@ -149,3 +149,18 @@ original MKT-MIN-001 contract. No feature/result artifact was accepted.
 MKT-MIN-PATH-002 inherits the exact `bf7e05dc...` scientific design and changes
 only derived-artifact availability plus output identity. No timestamp is moved
 earlier, no post-15:00 minute is read, and no descriptor/operator/gate changes.
+
+## MKT-INDRS-GEO-001 — invalid nested causal warm-up eligibility
+
+The bound-input audit passed all six hashes, accepted-role identities, 10,696
+keys, and 15:00 timestamps, then stopped before geometry because the frozen
+general raw coverage period included an accepted control that is itself built
+from two causal rolling percentiles. The leadership/discovery imbalance has no
+2019 values and only 107 observations/group in 2020. Its own PIT percentile has
+a second warm-up and only 89 observations/group in 2022. No panel, correlation,
+joint reconstruction, or result was accepted.
+
+MKT-INDRS-GEO-002 inherits spec `33b0f114...` and changes only eligible years
+for this nested control and the corresponding fixed-control joint intersection.
+The 95% coverage, 150-observation cell, pairwise, and joint thresholds are not
+lowered; the control is not deleted or replaced.

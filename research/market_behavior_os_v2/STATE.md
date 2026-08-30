@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-GEO-001_FROZEN_BEFORE_GEOMETRY_RESULT`
+- `CURRENT_PHASE`: `MKT-INDRS-GEO-002_FROZEN_BEFORE_GEOMETRY_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: outcome-blind external geometry of the seven accepted industry/relative-strength roles against the frozen Market State Engine
 - `SUPPORTING_FRONTIER`: role-specific accepted breadth, risk-appetite, correlation/liquidity, volatility, and leadership controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -410,3 +410,13 @@ at most three accepted controls. Raw 2019-2023, complete causal-PIT 2021-2023,
 and relative 2019-2023 cells retain the 150-observation gate; the full 10,696-
 row common population is unchanged. Pairwise 0.85 and joint adjusted-rank-R2
 0.70/0.85 gates are fixed. Execute twice without outcomes or CY-011.
+
+MKT-INDRS-GEO-001 stopped before geometry because its general year lists did
+not account for the accepted leadership/discovery imbalance's nested causal
+warm-ups. Raw/relative values are complete from 2021; the role's own PIT
+percentile is complete only in 2023. No 001 output artifact exists.
+
+MKT-INDRS-GEO-002 control spec `7b91844c...` is frozen. It changes only that
+control's coordinate-specific years and the fixed joint-model intersection,
+retaining every target, control, input hash, common row, threshold, prohibition,
+and claim boundary. Execute the exact retry twice.

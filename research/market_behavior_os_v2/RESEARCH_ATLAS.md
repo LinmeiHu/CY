@@ -21,6 +21,7 @@
 | `INDUSTRY_RELATIVE_STRENGTH_REPRESENTATION_MAP.md` | Outcome-blind equal-industry leadership, diffusion, rotation, and stock/industry residual concept map |
 | `INDUSTRY_RELATIVE_STRENGTH_DATA_CONTRACT.md` | Exact causal membership, action-aware return, group coverage, and leave-one-out semantics |
 | `INDUSTRY_ENGINE_GEOMETRY_MAP.md` | Role-specific external redundancy and joint reconstruction map for accepted industry/relative-strength roles |
+| `INDUSTRY_ENGINE_GEOMETRY_MAP_V2.md` | Exact nested-causal-control year-eligibility correction; scientific geometry unchanged |
 | `MARKET_INTRADAY_SAMPLING_CONTRACT.md` | Strategy-independent bounded minute readiness sampling and PIT contract |
 | `MARKET_INTRADAY_REPRESENTATION_MAP.md` | Required-scale same-session and five-day minute representation semantics |
 | `MARKET_INTRADAY_NONSLOPE_PROCESS_MAP.md` | Fixed five-day ordinal progression, signed reversal, and curvature semantics after OLS failure |
@@ -41,6 +42,7 @@
 | `experiments/MKT-INDRS-001_spec.json` | Frozen eleven-role industry/relative-strength construction contract |
 | `reports/MKT-INDRS-001_representation.md` | Eight stable roles, seven-role compression, three exact failures, and no-usefulness boundary |
 | `experiments/MKT-INDRS-GEO-001_spec.json` | Frozen outcome-blind engine-geometry contract for seven industry roles |
+| `experiments/MKT-INDRS-GEO-002_spec.json` | Exact semantic retry after nested causal-PIT warm-up audit |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

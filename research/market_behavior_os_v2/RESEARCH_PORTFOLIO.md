@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Seven industry/relative-strength coordinates freeze internally, but broader-engine distinctness is unresolved | Freeze role-specific MKT-INDRS-GEO-001 geometry before temporal meaning |
+| EXPLORE | 30% | Seven industry/relative-strength coordinates freeze internally, but broader-engine distinctness is unresolved | Execute nested-warm-up-corrected MKT-INDRS-GEO-002 before temporal meaning |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | Rotation/relative-strength representations exist but no recurring temporal process survives | Keep industry rotation and RS leadership in search space only |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
