@@ -136,3 +136,20 @@
 - External result: no accepted or stable role reaches 0.85 median absolute
   Spearman with frozen breadth discovery/leadership or volatility controls; the
   largest value is 0.664.
+
+## MKT-H-010 — directional synchronization/stress process
+
+- Status: `EXACT_CONTINUOUS_AND_PROCESS_REPRESENTATIONS_FAIL`.
+- Claim: direction-neutral synchronization plus separate downside/upside extreme
+  breadth can form stable recurring elevated processes.
+- Result: both sides pass coverage, denominator, year, and single-input/
+  volatility nonredundancy. Geometric and 50/90-definition neighbors are strong,
+  but the frozen arithmetic neighbor is only 0.691 downside and 0.646 upside,
+  below 0.70. Neither continuous primary freezes.
+- Result: primary 0.80/0.50 episodes are also sparse. Downside produces 1-4
+  onsets per group in one year; upside 0-8 across zero to two years. Strict
+  matching, state overlap, dwell/relief, and high-activity support fail.
+- Boundary: no continuous directional-synchronization role, onset, dwell,
+  relief, high-activity modifier, panic, speculation, forecast, or strategy
+  claim. Do not replace weakest-link with the geometric neighbor or lower event
+  thresholds. The broader directional-process family remains open.

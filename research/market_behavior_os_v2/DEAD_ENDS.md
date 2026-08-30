@@ -29,6 +29,7 @@
 | HAB-CHX-001 final return/right-tail/failure primaries | EXPLORATORY_ASSOCIATION_FAIL: no absolute A or B primary passes for return, winner20/50, false breakout, severe loss, or extreme loss | Do not promote direction/discovery into a V1 gate; independent future time is required for any new confirmation |
 | HAB-CHX-001 MFE opportunity conversion | OPPORTUNITY_WITHOUT_CONVERSION: B associates with MFE>=20%, but B-given-A and conversion20 gates fail | Do not equate excursion opportunity with harvested edge or tune a discovery cutoff |
 | MKT-SHOCK-001 0.90 onset / 0.50 reset episode | REPRESENTATION_NOT_FROZEN: zero or one onset/group, strict onset match zero, unstable state overlap, undefined dwell/relief, and zero dry-up observations | Do not lower the 0.90 threshold, raise the reset, or substitute the permissive neighbor; require a structurally different event process |
+| MKT-DSTRESS-001 weakest-link directional scores and 0.80/0.50 processes | REPRESENTATION_NOT_FROZEN: arithmetic-shape rho 0.691 downside/0.646 upside; side onsets sparse and strict/state/dwell/activity gates fail | Do not substitute geometric aggregation, lower thresholds, or retain a favorable view/side; broader directional-process family requires different structure |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

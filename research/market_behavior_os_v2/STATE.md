@@ -8,9 +8,9 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-DSTRESS-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: outcome-blind directional synchronization/stress process geometry
-- `SUPPORTING_FRONTIER`: frozen central/upside/downside signed state plus synchronization pressure
+- `CURRENT_PHASE`: `SYNTH-MKT-010_COMPLETE_MKT-MIN-PATH-001_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: structurally distinct non-slope five-day market intraday trajectories
+- `SUPPORTING_FRONTIER`: frozen same-session intraday levels and rejected exact OLS/directional-stress processes
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -141,6 +141,12 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   registered limit geometry and fail closed. Only CHINEXT_BOARD/ALL_STATUS on
   2021-05-17 falls below the fixed 99% cell gate and is marked missing. No limit
   fact is repaired and no threshold is relaxed.
+- MKT-DSTRESS-001 freezes no directional interaction or process. Continuous
+  downside/upside weakest-link scores fail their arithmetic-shape neighbors at
+  0.691/0.646 despite passing coverage, denominator, year, and external-
+  redundancy gates. The 0.80/0.50 processes yield only 1-4 downside onsets in
+  one year and 0-8 upside onsets across at most two years; strict/state/dwell/
+  activity gates fail. No panic, speculation, or process role freezes.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
@@ -198,6 +204,10 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   runs are byte-identical: panel `fe7436e...`, result `4fdfd600...`, report
   `b69b2b2e...`. It reads no stress score, strategy field, future return, or
   CY-011.
+- MKT-DSTRESS-001 binds frozen spec `63093a0a...`, shock panel `bba55a5a...`,
+  and risk panel `fe7436e...`. Two runs are byte-identical: panel `c3fe91ec...`,
+  result `c00f8eed...`, report `27a092cd...`. Failed shock episode fields,
+  future returns, strategy outcomes, and CY-011 remain unread.
 
 ## Current frontier
 
@@ -224,7 +234,15 @@ neighboring aggregation/state definitions, dwell/transition support, view/year
 portability, and redundancy with volatility; and read no future return or
 strategy outcome. It may not rescue the failed all-three 0.90/0.50 episode.
 
-The MKT-DSTRESS-001 map and spec `63093a0a...` are now frozen before
-construction. Primary recurring-process entry/reset is 0.80/0.50 with fixed
-0.70/0.40 and 0.90/0.60 neighbors. Upside/downside remain separate, activity is
-only a modifier, and every failed MKT-SHOCK episode field is column-prohibited.
+MKT-DSTRESS-001 is complete and both exact continuous/process sides fail. Do not
+replace weakest-link with the favorable geometric neighbor, lower thresholds,
+or retain a favorable side/view.
+
+MKT-MIN-PATH-001 is next. It must freeze a structurally distinct non-slope
+five-day intraday Process Map before construction, bind the existing exact
+required-scale trajectory panel rather than rescan 1.47 billion minute rows,
+and focus on economically interpretable monotonicity, reversal, and curvature
+shapes. It may not promote endpoint change, OLS3, or any favorable old neighbor
+as a replacement for the rejected OLS5 primary; must preserve absolute/PIT/
+relative coordinates, test definition/view/year/denominator stability and
+redundancy with same-session levels; and may read no outcomes or strategy fields.

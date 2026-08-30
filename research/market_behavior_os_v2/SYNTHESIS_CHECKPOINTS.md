@@ -366,3 +366,52 @@ Stress Process Map first. Use only frozen MKT-RISK-001 and MKT-SHOCK-001
 coordinates, keep upside/downside separate, retain activity as an explicit
 modifier, test broad neighboring process definitions and portability, and do
 not rescue the rejected all-three 0.90/0.50 episode or read outcomes.
+
+## SYNTH-MKT-010 — after directional synchronization/process falsification
+
+### What was learned?
+
+MKT-DSTRESS-001 has 814-815 normalized observations per group. Both sides pass
+coverage, denominator portability (0.959 downside, 0.981 upside), year-cell
+nondegeneracy, and single-input/volatility nonredundancy (maximum 0.742/0.639).
+The fixed threshold-50/90 and geometric neighbors are strong. Nevertheless the
+weakest-link primaries fail their frozen arithmetic-shape neighbor at 0.691
+downside and 0.646 upside. Neither continuous interaction freezes.
+
+The process failure is independent and stronger. Downside produces only 1-4
+primary onsets per group, all in one year. Upside produces 0-8 across zero to
+two years, including zero on CHINEXT. Strict onset matching, ELEVATED/RELIEF
+overlap, dwell/relief comparability, and high-activity support fail. No
+configuration or favorable side replaces the primary.
+
+### What market behavior are we still not studying?
+
+The largest preserved gap is the five-day path shape inside already-frozen
+market-wide intraday levels. Exact OLS slopes fail, but monotonic progression,
+reversal, and curvature are structurally different path questions and already
+exist in the exact required-scale trajectory artifact. Objective support/
+acceptance, accumulation/distribution falsification, and strategy-independent
+economic usefulness also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The directional interaction/process is rejected. Separate primitives do not
+imply panic reversal, speculative momentum, a trigger, recovery, exit, or payoff
+asymmetry. No archetype is promoted.
+
+### Parallel-track awareness
+
+- **Market research:** preserve separate signed/synchronization levels; move to
+  a different high-EIV intraday process family rather than tune aggregation.
+- **Existing-strategy archaeology:** no new outcome was read and no seed rule is
+  changed.
+- **Strategy invention:** no family crosses the preliminary-mechanism threshold.
+
+### Research Director decision
+
+`EXPLORE` MKT-MIN-PATH-001 and `REJECT` aggregation/threshold rescue of
+MKT-DSTRESS-001. Freeze a non-slope five-day intraday Process Map first, using
+the exact existing trajectory panel. Monotonicity, reversal, and curvature must
+have independent economic semantics and fixed neighboring definitions. Do not
+promote endpoint change or OLS3 as an OLS5 substitute, rescan raw minute data,
+or read outcomes.

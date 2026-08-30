@@ -9,7 +9,7 @@ association. No combination is confirmed or authorized as a rule.
 | trend direction x new-high/new-low discovery for CHINEXT V1 | slow direction x price discovery | FORMATION_COUNT_SYNERGY_ONLY_PAYOFF_SYNERGY_FAIL | A+B adjusted-R2 increment passes only evaluated/candidate daily counts; selected counts and every payoff endpoint fail. This is consumed exploratory association, not a rule. |
 | trend habitat x five-day supply/demand | slow environment x recent trajectory | WAIT | Same-session minute levels freeze but every exact five-day OLS trajectory primary fails; no supply/demand trajectory mechanism exists |
 | correlation state x liquidity activity | synchronization/co-movement x activity | CONTINUOUS_JOINT_STRESS_SUPPORTED_EXACT_EPISODE_FAIL | MKT-SHOCK-001 freezes a nonvolatility-redundant continuous weakest-link score; exact onset/dwell/relief/dry-up fails sparse/stability gates. No panic/usefulness claim. |
-| synchronization pressure x upside/downside extreme participation | direction-neutral synchronization x signed tail breadth | MAP_NEXT_NO_PROCESS_CLAIM | Both primitive families freeze and are outcome-blind. MKT-DSTRESS-001 must map directional process geometry before any onset, panic, speculation, reversal, or usefulness wording. |
+| synchronization pressure x upside/downside extreme participation | direction-neutral synchronization x signed tail breadth | EXACT_WEAKEST_LINK_AND_PROCESS_FAIL | Arithmetic-shape stability fails (0.691/0.646); side episodes are sparse and unstable. No continuous interaction/process/panic claim; do not substitute geometric aggregation. |
 
 No synergy claim is permitted without frozen `BASELINE`, `A`, `B`, and `A+B`
 comparisons and temporal evidence.

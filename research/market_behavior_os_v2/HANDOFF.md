@@ -200,9 +200,17 @@ stress coordinates, preserve upside/downside primitives, keep liquidity
 activity an explicit modifier, and do not reuse the rejected all-three sparse
 episode as a primary. No outcomes, strategy fields, or CY-011 are permitted.
 
-The MKT-DSTRESS-001 Process Map and spec `63093a0a...` are now frozen before
-construction. It binds panel hashes `bba55a5a...` and `fe7436e...`, prunes all
-failed shock-episode fields, and fixes separate upside/downside score neighbors,
-0.70/0.80/0.90 process configurations, side-specific event/dwell/relief gates,
-and explicit activity modifiers. Execute twice; do not call an elevated process
-panic or rescue a failed side/configuration.
+MKT-DSTRESS-001 is complete and byte-identical across two runs: panel
+`c3fe91ec...`, result `c00f8eed...`, report `27a092cd...`; four targeted tests
+pass. Both continuous sides fail only after their full gates: the arithmetic
+aggregation neighbor is 0.691 downside and 0.646 upside. The exact process also
+fails with 1-4 downside onsets in one year and 0-8 upside onsets across at most
+two years, plus failed strict/state/dwell/activity support. No directional
+interaction, elevated process, activity modifier, panic, or strategy claim
+freezes. Do not substitute geometric aggregation or lower thresholds.
+
+SYNTH-MKT-010 selects MKT-MIN-PATH-001. Freeze a structurally distinct non-slope
+five-day intraday Process Map before construction. Reuse the exact required-
+scale trajectory artifact, avoid a raw-minute rescan, and test monotonicity,
+reversal, and curvature shapes without promoting endpoint/OLS3 neighbors as an
+OLS5 rescue. Outcomes, strategy fields, and CY-011 remain prohibited.

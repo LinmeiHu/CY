@@ -120,3 +120,17 @@ edge. Tail balance is stable but deterministically equals upside minus downside
 extreme participation, so it adds no independent mechanism. No role is redundant
 with frozen breadth or volatility. This is signed state representation, not a
 panic process, habitat, forecast, or trading signal.
+
+## MKT-DSTRESS-001 boundary
+
+The tested weakest-link combination of synchronization pressure and signed
+extreme participation does not freeze. Downside/upside coverage, denominator,
+year, and single-input/volatility nonredundancy pass, but the arithmetic-shape
+neighbors are 0.691 and 0.646 versus the fixed 0.70 gate. Favorable geometric
+and 50/90-definition neighbors cannot rescue either primary.
+
+The 0.80 entry/0.50 reset recurring processes also fail. Downside has only 1-4
+onsets per group in one year; upside has 0-8 in at most two years. Strict onset,
+state overlap, dwell/relief, and activity support fail. The engine therefore
+retains the signed and synchronization primitives separately and emits no
+directional interaction, onset, panic, or activity-modified process.

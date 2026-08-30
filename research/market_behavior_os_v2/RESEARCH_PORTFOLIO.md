@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Signed tail primitives now freeze but synchronization remains direction-neutral and process-free | Build MKT-DSTRESS-001 map without future outcomes |
+| EXPLORE | 30% | Directional weakest-link processes fail; non-slope intraday path shapes remain a distinct exact-data gap | Build MKT-MIN-PATH-001 map without future outcomes |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No new family yet meets preliminary-evidence threshold | Map executable implications only after a mechanism survives |
 | REPLICATE | 15% | HAB and state constructions are reproducible; habitat outcomes are consumed | Future independent-time replication remains required |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Signed levels can be mistaken for panic/onset and deterministic asymmetry can be mistaken for a new mechanism | Require process neighbors, event support, portability, and volatility redundancy tests |
+| FALSIFY | 20% | Existing trajectory columns create temptation to select favorable post-hoc shapes | Freeze economic roles and shape neighbors before testing; prohibit OLS rescue and outcome access |
 
 Mandatory checkpoint questions:
 
