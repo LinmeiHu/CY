@@ -21,6 +21,7 @@
 | `VOLATILITY_TRANSITION_HABITAT_MAP.md` | Continuous t+25 volatility transition and direction/discovery modifier contract |
 | `VOLATILITY_TRANSITION_HABITAT_MAP_V2.md` | Direction-modifier support correction with all-view pooling and unchanged gates |
 | `VOLATILITY_TRANSITION_HABITAT_MAP_V3.md` | Final direction/discovery portable grouping correction with unchanged cell gates |
+| `VOLATILITY_TRANSITION_HABITAT_MAP_V4.md` | Output-schema-only retry after unaccepted report serialization |
 | `INDUSTRY_RELATIVE_STRENGTH_REPRESENTATION_MAP.md` | Outcome-blind equal-industry leadership, diffusion, rotation, and stock/industry residual concept map |
 | `INDUSTRY_RELATIVE_STRENGTH_DATA_CONTRACT.md` | Exact causal membership, action-aware return, group coverage, and leave-one-out semantics |
 | `INDUSTRY_ENGINE_GEOMETRY_MAP.md` | Role-specific external redundancy and joint reconstruction map for accepted industry/relative-strength roles |
@@ -59,6 +60,7 @@
 | `experiments/MKT-VOL-TRANS-001_spec.json` | Frozen baseline and state-modifier volatility-transition contract |
 | `experiments/MKT-VOL-TRANS-002_spec.json` | Frozen coverage-correct retry control spec |
 | `experiments/MKT-VOL-TRANS-003_spec.json` | Frozen final coverage-correct control spec |
+| `experiments/MKT-VOL-TRANS-004_spec.json` | Frozen hash-alias/output-identity retry spec |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

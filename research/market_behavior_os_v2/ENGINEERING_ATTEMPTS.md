@@ -190,3 +190,14 @@ denominators within each discovery view. It retains all four views and changes
 six-of-eight sign support to the equivalent three-of-four 75% proportion. Cell
 thresholds, habitats, fields, controls, horizons, blocks, and claims remain
 unchanged.
+
+## MKT-VOL-TRANS-003 — invalid report hash-key serialization
+
+The complete support audit passed and all frozen estimators ran. The report
+renderer then requested `hashes.spec_sha256`, while the result stored the same
+immutable parent identity as `hashes.scientific_spec_sha256`. Execution stopped
+without a complete accepted output set. Partial 003 estimates were not inspected
+or used for a research decision.
+
+MKT-VOL-TRANS-004 changes only the result hash alias and output identity. The
+scientific and final control specs, every estimate, and every gate are unchanged.

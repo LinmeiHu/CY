@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | High | High | Four volatility roles and direction/discovery freeze | High | Medium | ACTIVE_MKT_VOL_TRANS_003_FROZEN_EXECUTION |
+| 1 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | High | High | Four volatility roles and direction/discovery freeze | High | Medium | ACTIVE_MKT_VOL_TRANS_004_EXACT_SERIALIZATION_RETRY |
 | 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 3 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
@@ -99,3 +99,7 @@ MKT-VOL-TRANS-002 is invalid before estimates because one discovery cell also
 misses support. MKT-VOL-TRANS-003 retains both denominators within each view and
 preserves the 75% sign-support proportion. Execute this final support-correct
 retry without changing scientific semantics.
+
+MKT-VOL-TRANS-003 is invalid only at report serialization; its partial effects
+were not inspected. MKT-VOL-TRANS-004 is the exact hash-alias/output-identity
+retry of the same final estimator and remains the active frontier.

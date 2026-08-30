@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-VOL-TRANS-003_FROZEN_EXECUTION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-VOL-TRANS-004_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent daily volatility contraction/expansion transition architecture conditional on accepted direction and discovery breadth
 - `SUPPORTING_FRONTIER`: four frozen daily-volatility roles plus accepted direction/discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -570,3 +570,14 @@ each view, summarizes all four views, and requires three-of-four sign support—
 the same 75% proportion as six-of-eight. All support audits still precede every
 correlation. No scientific field, horizon, habitat, effect threshold, block,
 prohibition, or claim boundary changes.
+
+MKT-VOL-TRANS-003 passed its complete support audit and ran the fixed
+estimators, then stopped before a complete output set because its report
+renderer requested `hashes.spec_sha256` while the result object stored the same
+identity as `hashes.scientific_spec_sha256`. Partial 003 files are unaccepted;
+their estimates were not inspected or used to choose the correction.
+
+MKT-VOL-TRANS-004 spec `e2859b62...` is frozen. It changes only the hash-key
+alias expected by the renderer and the output identity. Every input, response,
+estimator, grouping, habitat, control, block, support/effect gate, prohibition,
+and claim remains inherited unchanged.

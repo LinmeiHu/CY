@@ -1,0 +1,30 @@
+{
+  "experiment_id": "MKT-VOL-TRANS-004",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_ACCEPTED_RESULT_SERIALIZATION",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-VOL-TRANS-001_spec.json",
+  "inherits_scientific_design_sha256": "21145136eeb09369b755aad7fca591dcd280e3577159d7c65c5c1362bdacbb43",
+  "inherits_final_control_spec_path": "research/market_behavior_os_v2/experiments/MKT-VOL-TRANS-003_spec.json",
+  "inherits_final_control_spec_sha256": "a90dd17f7ae861a4627e9f6ccd2c78ba5edcade7393e2f4af6281249057e73e1",
+  "invalid_predecessor": "MKT-VOL-TRANS-003 passed support and estimation but report serialization requested hashes.spec_sha256 while the result used hashes.scientific_spec_sha256; no complete output set was accepted and partial estimates were not inspected",
+  "only_engineering_correction": {
+    "result_hash_alias": "set hashes.spec_sha256 equal to the immutable inherited scientific spec hash already stored as hashes.scientific_spec_sha256",
+    "output_identity": "MKT-VOL-TRANS-004",
+    "reason": "allow deterministic report serialization without changing any scientific value"
+  },
+  "unchanged_scientific_fields": [
+    "all inputs, hashes, rows, timestamps, and t+25 response",
+    "baseline and modifier estimators, controls, and coordinate systems",
+    "direction all-view and discovery all-denominator grouping",
+    "50/50 primary and 40/60 neighbor habitats",
+    "blocks, support/effect/sign/magnitude/phase gates",
+    "complete support audit before estimates",
+    "contamination label, no-rescue rule, prohibitions, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-004_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-004_result.json",
+    "research/market_behavior_os_v2/reports/MKT-VOL-TRANS-004_dynamics.md"
+  ]
+}

@@ -557,3 +557,13 @@ both denominators within each view, retains all four views, and uses three-of-
 four sign support, preserving 75%. Run the full support audit before any
 correlation. All scientific semantics and gates remain inherited from
 `21145136...`.
+
+MKT-VOL-TRANS-003 completed support and estimation but failed report
+serialization on a hash-key alias. Its partial files are unaccepted and no 003
+effect was inspected or cited.
+
+MKT-VOL-TRANS-004 is frozen under SHA-256
+`e2859b62539f12c5112bd3bbb845c7d47695fbfd104bd3f126552ba231ccc9cb`.
+It inherits scientific spec `21145136...` and final control spec `a90dd17f...`.
+Only expose the existing scientific hash as `hashes.spec_sha256` and write 004
+outputs. Rerun the exact estimator twice; no research decision or gate changes.
