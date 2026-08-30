@@ -1,0 +1,86 @@
+{
+  "experiment_id": "MKT-MIN-001",
+  "frozen_at": "2026-08-30",
+  "status": "FROZEN_BEFORE_OPTIMIZED_IMPLEMENTATION_AND_REQUIRED_SCALE_ACCESS",
+  "track": "MARKET",
+  "research_role": "strategy-independent five-day market intraday representation construction and redundancy compression",
+  "outcome_access": false,
+  "question": "Which economically distinct market-wide same-session minute states and five-day trajectories are PIT-valid, stable, portable, and nonredundant?",
+  "reference": {
+    "implementation": "research/chinext_v1/research_os_v2/scripts/audit_five_day_minute_data.py",
+    "sha256": "1e3a1fa7071722a3b373ddd596f86a171b888aa30a5f9c22b7f2b0c389f01618",
+    "accepted_market_sample": "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_sample.csv",
+    "sample_sha256": "6cc2f9b692274a2dcb309f368f0efc710cec464d38fe77146e03197c595bf6e4",
+    "accepted_descriptors": "research/market_behavior_os_v2/artifacts/AUDIT-MKT-MIN-001_daily_descriptors.csv",
+    "descriptors_sha256": "9f177c29cb019cdbc667392fbf72db0ffb9e7fdb2d3d30bcfb8669888cc1d13c"
+  },
+  "inputs": {
+    "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "calendar": {"path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet", "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"},
+    "qd004_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "cy006_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "cy008_audit": {"path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json", "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"}
+  },
+  "construction_window": {"start": "2018-01-02", "end": "2023-12-29", "exchange_sessions": 1457, "maximum_five_day_trajectories": 1453},
+  "population": {
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "minimum_counts": {"ALL_A": 1000, "SH_A": 400, "SZ_A": 400, "CHINEXT_BOARD": 200},
+    "selection": "full current causal view; no security sampling, liquidity threshold, strategy membership, or outcome selection"
+  },
+  "minute_contract": {
+    "timestamp": "completed Asia/Shanghai bar end",
+    "grid": "09:30 auction plus 09:31..11:30 and 13:01..15:00 continuous",
+    "price_basis": "raw/unadjusted",
+    "units": {"volume": "shares", "amount": "CNY"},
+    "session_available_at": "trade_date 15:30 Asia/Shanghai",
+    "same_bar_action": false,
+    "cross_day_raw_price_comparison": false,
+    "missing_policy": "FAIL_CLOSED_NO_REPLACEMENT"
+  },
+  "expected_output": {
+    "same_session_descriptors": 34,
+    "daily_cross_section_statistics": ["p40", "median", "p60"],
+    "five_day_trajectory_fields": ["day_m5", "day_m4", "day_m3", "day_m2", "day_m1", "endpoint_change5", "endpoint_slope5", "ols_slope5", "ols_slope3", "signed_monotonic_fraction", "slope_acceleration", "reversal_shape"],
+    "minimum_pit_normalized_observations_per_view_denominator": 504,
+    "required_daily_view_denominator_rows": 11656,
+    "required_trajectory_view_denominator_rows": 11624
+  },
+  "validation_ladder": {
+    "tiny": "first ten accepted AUDIT-MKT-MIN-001 source sessions",
+    "small": "all 1200 accepted mapped sessions compared to frozen reference",
+    "representative": "twenty consecutive full-market exchange dates selected before descriptor results",
+    "required": "all 1457 2018-2023 exchange dates"
+  },
+  "equivalence_gates": {
+    "exact": ["session keys", "row counts", "distinct timestamps", "expected grid", "opening window count", "lunch boundary", "volume and amount conservation", "PIT cutoff", "missing rejection", "raw adjustment semantics", "deterministic ordering"],
+    "floating": "all 34 descriptors must match the accepted NumPy reference at rtol=1e-12 and atol=1e-12; no scientific scaling after disagreement",
+    "determinism": "successful small and representative outputs must be byte-identical across two runs"
+  },
+  "representation_gates": {
+    "raw_coverage": 0.95,
+    "worst_median_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "pit_minimum_observations": 504,
+    "no_rescue": "A failed primary is not replaced by a favorable aggregation, horizon, window, or view."
+  },
+  "resource_contract": "research/market_behavior_os_v2/RESOURCE_BUDGETS.md",
+  "forbidden_inputs": [
+    "strategy membership, signals, trades, fills, P&L, MFE, MAE, exits, durations, or outcome classes",
+    "future returns or post-decision observations",
+    "current constituent lists or present-day survivor substitution",
+    "unregistered fallback minute sources",
+    "cross-day raw minute price levels",
+    "CY-011",
+    "2024-2026 construction partitions"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-001_trajectory_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-001_market_intraday_representation.md"
+  ]
+}
