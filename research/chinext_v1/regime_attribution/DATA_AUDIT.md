@@ -105,3 +105,10 @@ return10, and 91/399 have return20. Counts by EXTENDED/HOLDOUT/DEVELOPMENT are
 137/59/99, 92/35/65, and 47/10/34 respectively. All 399 signal dates precede
 execution dates. No path value or terminal outcome was inspected before day 5
 was frozen as the sole primary landmark.
+
+EXP-EOS-001's availability/semantics audit finds 399/399 non-null, finite
+accepted values for holding duration, MFE, MAE, days-to-MFE, days-to-MAE, and
+canonical exit reason. Phase 1 constructs zero-based coordinates over the held
+path from entry execution through exit execution inclusive; Python max/min over
+chronological tuples retains the first occurrence on an exact tie. No excursion
+order was calculated before its primary orientation and gates were frozen.

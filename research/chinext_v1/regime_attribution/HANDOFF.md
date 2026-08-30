@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-PLP-001_COMPLETE_REJECTED` on 2026-08-30.
+`EXP-EOS-001_COMPLETE_REFINE` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -30,6 +30,16 @@ EXP-PLP-001 is complete and rejects H-014. Raw/pre-entry-controlled residual
 return rhos are -0.045/-0.073, with 1/8 and 0/8 positive LOYO signs; all four
 gates fail. Day10 is approximately zero and day20 is negative. H-013 is retained
 only as descriptive day-5 separation, not persistence or a hold signal.
+
+EXP-EOS-001 is frozen before outcome testing. It tests one normalized full-path
+order statistic against extreme winners and false breakouts, with raw-day and
+signed-order neighbors only. Its six-input aggregate is `ff7184f3...`; no entry,
+exit, or other strategy rule is authorized.
+
+EXP-EOS-001 is complete. False-breakout order passes all gates (actual raw rho
+-0.709; controlled oriented 0.323; 8/8 LOYO), while extreme-winner controlled
+rho 0.076 fails its magnitude gate. The decision is `REFINE`, limited to
+false-breakout path topology with full-path/exit conditioning.
 
 ## Recovered autonomous environment
 
@@ -155,9 +165,9 @@ mechanisms.
 
 ## Required next action
 
-Checkpoint EXP-PLP-001, then preregister the selected full-path excursion-order
-question using normalized MFE-versus-MAE timing with fixed raw/binary neighbors.
-It cannot authorize an exit, filter, or strategy change.
+Checkpoint EXP-EOS-001, then freeze the boundary-mechanics falsification: add
+MFE-at-entry/MAE-at-exit controls and require a boundary-clean false-breakout
+sample. It cannot authorize an exit, filter, or strategy change.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

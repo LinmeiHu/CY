@@ -1,0 +1,122 @@
+{
+  "experiment_id": "EXP-EOS-001",
+  "spec_id": "CHINEXT-V1-EXCURSION-ORDER-SEQUENCE-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_EXCURSION_OUTCOME_TEST",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_FULL_PATH_MECHANISM",
+  "hypothesis_id": "H-015",
+  "question": "Does adversity-before-opportunity path ordering distinguish V1 extreme winners from false breakouts beyond excursion magnitude and frozen path mechanics?",
+  "mechanism": "Durable demand may absorb early adverse movement before later expansion to MFE, whereas failed breakouts may realize their limited opportunity before later deterioration to MAE.",
+  "prediction": "Normalized days-to-MFE minus days-to-MAE is positively associated with extreme winners and negatively associated with false breakouts after fixed magnitude, duration, entry-state, year, and exit controls.",
+  "interpretation_boundary": "The feature uses the completed held path and is conditioned on the frozen exit mechanism. It is descriptive path topology, unavailable at entry, and cannot establish a causal or deployable rule.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_excursion_order_sequence.py",
+      "sha256": "68a2783dbec2c86c51ffbcff369a47e1ac5747fc8e3b18c021030842fa366798"
+    },
+    "accepted_yearly_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_phase1_path_builder": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase1_yearly_decomposition.py",
+      "sha256": "a1e2073f7d898577438eaf241826437cf29f7b1e550e383a407956b0c8867c39"
+    },
+    "accepted_control_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "accepted_partial_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_entry_landmark_emergence.py",
+      "sha256": "b95179c18b83e7ef4504dad8bc30a691f659a3fe2210d2f20896f1ba5495a750"
+    }
+  },
+  "sample": {
+    "all_completed_cycles": 399,
+    "eligibility": "complete accepted MFE, MAE, days-to-MFE, days-to-MAE, holding duration, terminal return, and exit lineage",
+    "expected_endpoint_counts": {
+      "extreme_winner": 15,
+      "false_breakout": 213
+    },
+    "missingness": "fail closed; no imputation, post-exit extension, coordinate substitution, or replay"
+  },
+  "path_semantics": {
+    "primary": "(days_to_mfe - days_to_mae) / max(holding_trading_days, 1)",
+    "positive_meaning": "MAE occurs before MFE",
+    "coordinates": "zero-based offsets over entry-execution through exit-execution inclusive",
+    "tie_rule": "accepted Phase 1 Python max/min over chronological tuples returns the first occurrence; same-session MFE/MAE has primary value zero"
+  },
+  "primary_endpoints": {
+    "extreme_winner": {
+      "definition": "round_trip_return >= 0.50",
+      "expected_direction": 1
+    },
+    "false_breakout": {
+      "definition": "mfe < 0.10 and round_trip_return <= 0",
+      "expected_direction": -1
+    }
+  },
+  "multiplicity": "Benjamini-Hochberg over exactly the two primary raw endpoint p-values",
+  "fixed_controls": {
+    "path_ranked": ["mfe", "negative mae", "holding_trading_days"],
+    "preentry_ranked": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year", "canonical_exit_reason"]
+  },
+  "fixed_neighbors": [
+    "unscaled days_to_mfe minus days_to_mae",
+    "signed ordering in {-1, 0, 1}"
+  ],
+  "gates_per_endpoint": {
+    "raw": "oriented rho >= 0.15, positive within-year rank rho, >=7/8 positive LOYO, and BH q <= 0.05",
+    "controlled": "oriented partial-rank rho >= 0.10 with >=7/8 positive controlled LOYO",
+    "neighbors": "both unscaled-day and signed-order oriented rhos positive with >=6/8 positive LOYO",
+    "falsification": "oriented ex-global-Top-4 P&L, holding>=5, and ex-opposite-tail rhos each >=0.05; >=80% positive leave-one-security and leave-one-industry omissions; >=2/3 positive baseline blocks",
+    "decision": {
+      "DEEPEN": "both endpoints pass all four gates",
+      "REFINE": "exactly one endpoint passes all four gates",
+      "PIVOT": "at least one endpoint passes raw and controlled gates but fails neighbor or falsification",
+      "REJECT": "no endpoint passes both raw and controlled gates"
+    }
+  },
+  "falsification": [
+    "integer coordinates within each accepted held path",
+    "within-year ranks, per-year estimates, and eight LOYO omissions",
+    "MFE, adverse-excursion magnitude, and holding-duration controls",
+    "fixed V1 entry, market, breadth, beta, volatility, and liquidity controls",
+    "canonical exit reason and entry-year controls",
+    "raw-day and signed-order neighboring definitions",
+    "global Top-4 realized-PnL removal and opposite-tail removal",
+    "holding duration >=5 sensitivity",
+    "leave-one-security and leave-one-industry omissions",
+    "three independent baseline blocks",
+    "zero post-exit rows, replays, counterfactual paths, or strategy rules"
+  ],
+  "forbidden": [
+    "calling completed-path order an entry predictor or actionable state",
+    "testing any entry, hold, exit, stop, ranking, sizing, or production change",
+    "changing endpoint, orientation, normalization, neighbor, control, or gate after results",
+    "adding path-order variants to rescue a failed primary",
+    "breadth historical redesign or invalid Phase 7/8/9 use",
+    "untouched OOS or PIT-A claim"
+  ],
+  "outputs": [
+    "artifacts/excursion_order_attribution.csv",
+    "artifacts/excursion_order_sequence.json",
+    "reports/excursion_order_sequence.md"
+  ]
+}

@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H014_PIVOT_TO_EXCURSION_ORDER`.
+`REFINE_H015_TEST_BOUNDARY_MECHANICS`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,14 +49,14 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-EXP-PLP-001 rejects incremental day-5 persistence after removing direct shared
-arithmetic. The remaining high-value question is whether winners and false
-breakouts differ in full-path excursion sequence: adversity before opportunity
-versus opportunity before adversity. This is path topology, not an exit rule.
+EXP-EOS-001 finds stable excursion ordering only for false breakouts. The urgent
+falsification is whether this is an internally meaningful deterioration sequence
+or a boundary artifact caused by MFE at entry and MAE at the strategy's exit.
+This remains completed-path attribution, not an exit rule.
 
 ## Exact next action
 
-Checkpoint EXP-PLP-001, audit availability and semantics of accepted MFE, MAE,
-days-to-MFE, days-to-MAE, duration, and exit lineage without testing a rule, then
-preregister one normalized excursion-order experiment. EXP-P7-003 must never be
-silently repaired, rerun, or overwritten.
+Checkpoint EXP-EOS-001, audit outcome-blind entry/exit-boundary counts, then
+freeze one false-breakout-only experiment requiring both full-sample boundary
+controls and a boundary-clean sample. EXP-P7-003 must never be silently repaired,
+rerun, or overwritten.

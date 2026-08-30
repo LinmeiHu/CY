@@ -29,6 +29,10 @@ Updated 2026-08-30 after resume integrity reconciliation.
   contribution to terminal return: raw and controlled residual-return rhos are
   negative and all gates fail. Do not reinterpret H-013 as a hold signal or search
   alternate landmarks/residual formulas to rescue continuation.
+- H-015 does not support excursion order as an incremental extreme-winner
+  mechanism: raw association is positive, but the frozen magnitude/duration/
+  entry/year/exit-controlled rho 0.076 fails the 0.10 gate. Do not tune the order
+  normalization or controls to rescue the right-tail endpoint.
 
 ## Invalid rather than rejected
 

@@ -223,3 +223,30 @@ byte-consistent with one another.
   is -0.288; day10 is 0.019 and day20 is -0.258. Every gate fails.
 - Status: `REJECTED` by EXP-PLP-001. Day-5 separation does not demonstrate
   incremental post-day-5 persistence and cannot support a hold rule.
+
+### H-015 — full-path excursion ordering
+
+- Question: does adversity-before-opportunity ordering distinguish extreme
+  winners from false breakouts beyond excursion magnitude and path mechanics?
+- Mechanism: durable demand may absorb early adversity before expanding to a
+  later MFE, while failed breakouts may realize limited opportunity before later
+  deterioration to MAE.
+- Prediction: normalized `days_to_mfe - days_to_mae` is positively associated
+  with extreme winners and negatively associated with false breakouts.
+- Required data: accepted Phase 1 MFE/MAE occurrence coordinates, duration,
+  terminal outcomes, exit lineage, and accepted pre-entry controls.
+- Primary tests: exactly two oriented endpoint associations with BH over two,
+  within-year ranks, LOYO, and one fixed partial-rank design.
+- Falsification: raw-day and signed-order neighbors, magnitude/duration/exit
+  controls, years, blocks, Top-4 P&L, opposite tail, holding>=5, security,
+  industry, first-occurrence semantics, and coordinate integrity.
+- Metrics: raw and controlled oriented rank association; gates frozen in
+  `EXP-EOS-001_spec.json`.
+- Confounds: completed-path ordering is unavailable at entry and conditioned by
+  the frozen exit; MFE/MAE magnitudes are outcome-linked path summaries.
+- Result: extreme-winner raw rho 0.263 but controlled rho 0.076, below gate.
+  False-breakout actual raw rho is -0.709; controlled oriented rho is 0.323 with
+  8/8 LOYO and every neighbor/concentration/block falsification passing.
+- Status: `SUPPORTED_FOR_FALSE_BREAKOUT_ONLY_WITH_FULL_PATH_QUALIFICATION` by
+  EXP-EOS-001. The extreme-winner mechanism is rejected after controls; the
+  false-breakout mechanism requires entry/exit-boundary falsification.

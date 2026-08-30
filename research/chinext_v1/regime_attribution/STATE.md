@@ -2,11 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-PLP-001_COMPLETE_REJECTED — right-tail separation is observable by day 5,
-but it does not imply incremental post-day-5 persistence after shared arithmetic
-is removed. H-004 remains frozen for prospective validation; EXP-P7-003 and all
-Phase 8/9/final strategy conclusions remain invalid. No strategy or production
-change is authorized.
+EXP-EOS-001_COMPLETE_REFINE — full-path excursion order survives only for false
+breakouts, not as an incremental extreme-winner mechanism. H-004 remains frozen
+for prospective validation; EXP-P7-003 and all Phase 8/9/final strategy
+conclusions remain invalid. No strategy or production change is authorized.
 
 ## AUTONOMOUS_WORKSPACE_OWNERSHIP
 
@@ -459,6 +458,37 @@ authorization, a new experiment ID, and fresh isolated outputs.
   separation; it is not evidence of return persistence or a hold signal.
 - Next frontier: full-path MFE/MAE ordering, selected in
   `reports/frontier_ranking_after_plp_20260830.md`.
+
+## AUTONOMOUS_CYCLE_EXP_EOS_001_PREREGISTRATION
+
+- H-015 tests whether normalized `days_to_mfe - days_to_mae` distinguishes
+  extreme winners (positive direction) and false breakouts (negative direction).
+- The primary divides by `max(holding_trading_days, 1)`; raw days and signed
+  order are the only fixed neighbors. BH covers exactly two endpoint p-values.
+- Fixed controls include MFE, adverse-excursion magnitude, duration, pre-entry
+  V1/market/breadth/beta/liquidity state, year, and canonical exit reason.
+- Falsification covers LOYO, years, blocks, Top-4 P&L, opposite-tail removal,
+  holding>=5, securities, industries, coordinate integrity, and path semantics.
+- The completed-path feature is unavailable at entry and authorizes no strategy
+  action. Spec SHA `67ad63c0...`; six-input aggregate `ff7184f3...`.
+- Status: frozen before the first excursion-order/outcome test.
+
+## AUTONOMOUS_CYCLE_EXP_EOS_001_RESULT
+
+- All 399 accepted paths pass integer/range checks; 13 have same-session MFE/MAE
+  and none has zero duration. Two executions are byte-identical.
+- Extreme winner: raw rho 0.263, within-year 0.150, 8/8 LOYO, but fixed
+  magnitude/duration/pre-entry/year/exit-controlled rho is only 0.076, below the
+  0.10 gate despite 8/8 direction. This endpoint fails the controlled gate.
+- False breakout: actual raw rho -0.709; oriented within-year 0.648; 8/8 LOYO;
+  BH q `6.58e-62`. Controlled oriented rho is 0.323 with 8/8 LOYO. Raw-day,
+  signed-order, block, Top-4, holding>=5, opposite-tail, security, and industry
+  falsifications all pass.
+- Scientific decision: `REFINE`. Full-path order describes false-breakout
+  topology only; it is not an incremental extreme-winner mechanism.
+- Output hashes: table `9c31f5e6...`, JSON `d18d9133...`, report `1a4faefb...`.
+- Next falsification: determine whether the false-breakout association is induced
+  by MFE at the entry boundary and MAE at the exit boundary.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
