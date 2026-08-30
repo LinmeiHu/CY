@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-CBC-001_INVALID_H025_UNRESOLVED` on 2026-08-30.
+`EXP-CBC-002_PREREGISTERED_H025_UNRESOLVED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -101,6 +101,12 @@ the controlled call omitted required keyword-only `extra_controls=()`. No result
 was printed or inspected and no output exists. Preserve CBC-001 frozen and
 invalid. Continue H-025 only as fresh CBC-002 with new paths and identical science;
 the explicit empty argument is the sole permitted engineering correction.
+
+EXP-CBC-002 now supplies fresh runner/spec/output identities and preserves all
+H-025 science. The sole fix is `extra_controls=()` in the unchanged controlled
+call. It rebinds CBC-001's frozen spec/runner and all CY-011/accepted inputs. Run
+only CBC-002; CBC-001 remains invalid. Spec SHA is `c3de29a9...`; runner SHA is
+`ec1f7809...`. Locked 2024-2026 remains unopened.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

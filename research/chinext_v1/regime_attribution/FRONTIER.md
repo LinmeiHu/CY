@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`CREATE_CLEAN_EXP_CBC_002_FOR_UNCHANGED_H025`.
+`EXECUTE_CLEAN_EXP_CBC_002_FOR_UNCHANGED_H025`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -69,8 +69,7 @@ requiring locked prospective validation.
 
 ## Exact next action
 
-Preserve EXP-CBC-001 as invalid. Create EXP-CBC-002 with fresh runner, spec, and
-output paths while inheriting every H-025 scientific definition and gate exactly.
-Correct only the omitted explicit `extra_controls=()` call. Revalidate every
-bound identity and all 81 CY-011 files before execution. Do not materialize
-2024-2026, screen features, tune weights, create thresholds, or modify V1.
+Execute clean EXP-CBC-002 after revalidating its fresh spec, all bound identities,
+and all 81 CY-011 files. CBC-001 remains frozen and invalid. Do not materialize
+2024-2026, screen features, tune weights, create thresholds, or modify V1. Apply
+the unchanged H-025 gates exactly.

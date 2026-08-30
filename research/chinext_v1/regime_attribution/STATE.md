@@ -2,10 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-CBC-001_INVALID — H-025 remains unresolved. CBC-001 failed on a missing
-explicit empty controlled-estimator argument; no estimate was output/inspected
-and no artifact exists. Fresh CBC-002 identity is required. Locked 2024-2026
-validation remains unopened.
+EXP-CBC-002_PREREGISTERED — H-025 remains unresolved. CBC-001 is permanently
+invalid with no accepted estimate. CBC-002 preserves unchanged science and fresh
+outputs; locked 2024-2026 validation remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -960,6 +959,21 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - A clean re-execution requires fresh EXP-CBC-002 identity and output paths. The
   only permitted engineering correction is explicit `extra_controls=()` in the
   already-intended controlled call.
+
+## AUTONOMOUS_CYCLE_EXP_CBC_002_PREREGISTRATION
+
+- CBC-002 inherits every H-025 scientific element exactly from invalid CBC-001.
+- The sole correction is explicit `extra_controls=()` in the controlled call;
+  this adds no scientific control and changes no model.
+- Runner, test, CBC-001 spec/runner, accepted trades/controls, registry,
+  inventory, manifest, gate audit, and rank helpers are freshly hash-bound.
+- All four outputs use new `_v2` paths. No valid chip/outcome association has
+  been executed or inspected.
+- The 220-row 2020-2023 discovery sample, 81-file runtime verification, 15:30
+  availability, all gates, and locked 2024-2026 exclusion remain unchanged.
+- Spec SHA `c3de29a97599c1fdc57fc8cfb5d68acbdeb8c6fa36303ac6c84acb6d86d5254d`;
+  runner SHA `ec1f78095972a304a210b0dce6eea916afff339e87268ee36add1ba33c13f9f0`.
+  Status is frozen before the first valid chip/outcome association.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
