@@ -549,7 +549,7 @@ byte-consistent with one another.
 - Confounds: PIT-B rather than strict PIT-A; already-consumed outcomes; only four
   discovery years; chip features are available at signal-day 15:30 and cannot
   fill inside that bar.
-- Status: `PREREGISTERED_UNRESOLVED_EXP-CBC-002`. CBC-001 remains invalid with no
-  accepted result. CBC-002 freezes unchanged science with fresh outputs and only
-  the explicit empty controlled-estimator argument correction under spec SHA
-  `c3de29a9...`. No threshold, filter, signal, replay, or action is allowed.
+- Status: `UNRESOLVED_AFTER_INVALID_EXP-CBC-001_AND_002`. CBC-002 outputs were
+  inspected before an impossible eight-year LOYO universe and inherited n>=180
+  omission floor were identified. All CBC-002 estimates are invalid. Continue
+  only with contract-exact four-year CBC-003; no scientific element may change.

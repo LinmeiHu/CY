@@ -2,9 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-CBC-002_PREREGISTERED — H-025 remains unresolved. CBC-001 is permanently
-invalid with no accepted estimate. CBC-002 preserves unchanged science and fresh
-outputs; locked 2024-2026 validation remains unopened.
+EXP-CBC-002_INVALID_AFTER_OUTPUT_INSPECTION — H-025 remains unresolved. Its LOYO
+helpers violated the frozen four-year universe; every CBC-002 value is invalid.
+CBC-003 requires exact 2020-2023 omissions and fresh outputs. Locked 2024-2026
+validation remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -974,6 +975,21 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Spec SHA `c3de29a97599c1fdc57fc8cfb5d68acbdeb8c6fa36303ac6c84acb6d86d5254d`;
   runner SHA `ec1f78095972a304a210b0dce6eea916afff339e87268ee36add1ba33c13f9f0`.
   Status is frozen before the first valid chip/outcome association.
+
+## AUTONOMOUS_CYCLE_EXP_CBC_002_INVALIDATION
+
+- CBC-002 completed and wrote outputs, but inspection exposed LOYO counts above
+  four even though the frozen discovery universe contains only 2020-2023.
+- The reused raw helper iterates 2018-2025, so omissions of absent years duplicate
+  the full sample. The reused controlled helper does the same and also requires
+  n>=180, leaving actual omitted-year samples of 155, 159, and 163 non-estimable.
+- This contradicts the frozen exactly-four-LOYO contract. Because output values
+  were displayed before discovery, every CBC-002 estimate and decision is
+  downstream-invalid. Invalid artifacts are retained for provenance only.
+- H-025 remains unresolved. A fresh CBC-003 may correct only the omission-year
+  universe and use an outcome-independent controlled minimum below all four
+  pre-audited omission sizes. No scientific feature, endpoint, weight, control,
+  gate, direction, or interpretation may change.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
