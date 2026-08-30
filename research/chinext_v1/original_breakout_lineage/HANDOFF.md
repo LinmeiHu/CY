@@ -113,6 +113,12 @@ performance-file access, and requires balanced multi-year neutral classes plus
 exact identity/rank/cutoff reconstruction. Execute it from a clean tree, then
 repeat the full freeze for byte identity before any separate reveal.
 
+EXP-OBL-008 stopped without output after exact reconstruction: contested 48,
+uncontested 351. Both classes have broad temporal presence, but minimum-size 50
+and maximum-share 85% fail. No outcome/performance file was read. A fresh EXP-
+OBL-009 may preserve all assignments and relax only the outcome-blind feasibility
+gate to 40/90%; do not alter the capacity boundary or context fields.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

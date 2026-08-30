@@ -117,6 +117,12 @@ at least 50 events each, at most 85% concentration, and presence in at least six
 years. Temporary performance and execution products are explicitly forbidden
 from the parent constructor; only event ledgers and identity columns may enter.
 
+EXP-OBL-008 then maps all 399 identities but fails only its balance gates with a
+48/351 split. The minority class is structural and present in seven years; no
+outcome was read. EXP-OBL-009 may therefore preserve every scientific and
+engineering definition and change only minimum size 50 to 40 and maximum share
+85% to 90%. The exact contested boundary cannot change.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

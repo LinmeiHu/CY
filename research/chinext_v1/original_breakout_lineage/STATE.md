@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_008_FROZEN_BEFORE_EVENT_REPLAY`
+`EXP_OBL_008_GATE_FAILED_CLEAN_REFINEMENT_SELECTED`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -102,10 +102,16 @@ sets. All three bounded block inputs remain available. Original source-worktree
 ledgers are missing from the autonomous tree and were not opened; fresh replays
 must be temporary and the feature runner may read only their event ledgers.
 
+EXP-OBL-008 reconstructs all 399 identities exactly and passes rank, capacity,
+cutoff, temporal-presence, and outcome-prohibition checks. It writes no accepted
+output because the neutral 48/351 split misses the preregistered minimum 50 and
+maximum 85% gates. No outcome was read. This is a construction-feasibility
+failure, not economic evidence.
+
 ## Exact next action
 
-Execute committed EXP-OBL-008. Run unchanged engines only in temporary
-directories, read event ledgers only, join identity-only 399-cycle keys, and
-freeze exact `CONTESTED` versus `UNCONTESTED` lineage plus continuous
-competition/rank context only if every construction gate passes. Reproduce
-byte-for-byte before any outcome reveal. Do not open CY-011.
+Create and commit fresh EXP-OBL-009 with fresh paths. Preserve the exact engine,
+population, event-only access, capacity boundary, assignments, and continuous
+context. Change only the outcome-blind feasibility gates to minimum 40 and
+maximum 90%, retaining six-year minimum presence. Reexecute and reproduce before
+any outcome reveal. Do not open CY-011.
