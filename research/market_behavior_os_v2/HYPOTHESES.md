@@ -458,3 +458,6 @@
   inheritance. It passes all gates on 1,230 rows/1,225 sessions and 30 supported
   actions. Two runs are identical. This establishes coordinate feasibility only;
   support-defense representation remains untested.
+- MKT-SUPPORT-001 spec `4c58431d...` freezes the minimum session/trajectory
+  representation map. No role is accepted until all fixed level, auction,
+  support, shape, portability, and redundancy gates complete.

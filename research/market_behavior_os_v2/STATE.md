@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-001_REPRESENTATION_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-001_FROZEN_REPRESENTATION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -906,6 +906,21 @@ selects a deep objective-support representation map before any usefulness test:
 separate test opportunity, penetration, duration beyond level, recovery speed,
 recovery volume, closing recovery, repeated tests, and five-session trajectory;
 preserve 10/20/40 level neighbors and do not call a price touch “defense.”
+
+The objective-support representation map and MKT-SUPPORT-001 spec
+`4c58431d...` are frozen before reconstruction. The 20-session prior low is
+primary; 10/40-session levels and auction inclusion are fixed non-rescuing
+neighbors. No near-touch threshold exists.
+
+Session roles separate signed test geometry, time below, repeated test episodes,
+closing level state, conditional recovery completion/speed/amplitude, and
+recovery-volume intensity. Deterministic penetration depth cannot count apart
+from signed geometry. Fixed internal priority and 0.85 redundancy compression
+apply. Five-day slope is challenged by endpoint and ordinal shapes; conditional
+recovery trajectories require 30 sequences despite the known prefreeze count of
+29. Absolute and sampled relative coordinates are allowed; causal historical
+normalization is explicitly unavailable from isolated blocks. Execute twice
+without outcomes, strategy fields, post-2023 data, or CY-011.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

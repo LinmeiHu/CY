@@ -234,3 +234,9 @@ no-rescue gate. It passes twice with byte-identical outputs and transparent
 source-disagreement diagnostics. The active frontier is now the minimum
 objective-support representation map; do not infer defense from the 118 observed
 level-test sessions or read payoff.
+
+MKT-SUPPORT-001 is frozen under spec `4c58431d...`. Execute the preregistered
+session roles, 10/20/40 and auction challenges, five-day trajectory shapes,
+conditional-support floors, and fixed-priority redundancy compression. The PIT-
+historical coordinate remains unavailable rather than backfilled from isolated
+weeks. No role may be selected by view/year or promoted to usefulness.

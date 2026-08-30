@@ -1,0 +1,117 @@
+{
+  "experiment_id": "MKT-SUPPORT-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_REPRESENTATION_CONSTRUCTION",
+  "question": "Which objective-level test, penetration, duration, recurrence, and recovery representations are semantically valid, stable, and nonredundant?",
+  "outcome_access": false,
+  "inputs": {
+    "data_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DATA-003_spec.json", "sha256": "7a734dd94bd61f2bc52578c6a8706edde637b23d3f5636b4877b7e13ca931b6f"},
+    "data_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_data_003.py", "sha256": "91dde0e182fa3418fae653e93f3e9a1e6058e5fdf5c48245190fd49388f01597"},
+    "sample": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_sample.csv", "sha256": "c1eb0cbcd74ce1ab4e298100a1e5182490ee912130332795370b4a96a3856bc3"},
+    "coordinate_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_coordinate_audit.csv", "sha256": "ef08a242d3267c8825f0da6f6a6edf4cfc92f59e3773c194850d274074866e58"},
+    "data_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_result.json", "sha256": "072fa454208b5db78cc0ec3741fc183d1d2d6062bd9400e9f66601ad2f691665"},
+    "qd004_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "minute_adapter": {"path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py", "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"}
+  },
+  "sample_contract": {
+    "market_rows": 1200,
+    "market_sequences": 240,
+    "action_rows": 30,
+    "unique_sessions": 1225,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "rows_per_year_view": 50,
+    "symbols_per_year_view": 10,
+    "sessions_per_sequence": 5
+  },
+  "level_definitions": {
+    "primary": 20,
+    "fixed_neighbors": [10, 40],
+    "source": "minimum causal action-coordinate daily low through t-1",
+    "near_touch_threshold": null
+  },
+  "session_definitions": {
+    "primary": "240 continuous bars 09:31..11:30 and 13:01..15:00",
+    "fixed_neighbor": "241 bars including separate 09:30 auction",
+    "availability": "t 15:30 Asia/Shanghai",
+    "same_session_action": false
+  },
+  "session_roles": {
+    "signed_test_geometry": "min(mapped low)/level - 1",
+    "tested": "signed_test_geometry <= 0",
+    "penetration_depth": "max(0,-signed_test_geometry); deterministic manifestation only",
+    "time_beyond_level": "fraction mapped closes strictly below level",
+    "test_recurrence": "starts of contiguous mapped-low <= level episodes",
+    "closing_level_state": "mapped 15:00 close/level - 1",
+    "recovery_completion": "any close >= level from first tested bar through 15:00",
+    "recovery_speed": "bars from first test to first close >= level; zero if immediate; undefined if unrecovered",
+    "recovery_amplitude": "(mapped 15:00 close - mapped minimum low)/level on tested sessions",
+    "recovery_volume_intensity": "volume share from first test through first recovery divided by continuous-bar share"
+  },
+  "trajectory": {
+    "eligible_cohort": "market sequences only",
+    "unconditional_roles": ["signed_test_geometry", "time_beyond_level", "test_recurrence", "closing_level_state"],
+    "primary_operator": "OLS slope on centered indices [-2,-1,0,1,2]",
+    "fixed_shape_challenges": ["day_minus1_minus_day_minus5", "five_day_spearman_ordinal"],
+    "repeated_test_roles": ["tested_day_count", "total_test_episode_count"],
+    "conditional_recovery_minimum_tested_days": 2,
+    "conditional_recovery_minimum_sequences": 30,
+    "known_prefreeze_primary_sequences_with_at_least_two_tests": 29
+  },
+  "coordinates": {
+    "absolute": "dimensionless/count values with unchanged cross-year semantics",
+    "relative": "same-date/year/view average-tie ranks over exactly ten cohort rows",
+    "pit_historical": "UNAVAILABLE_FROM_ISOLATED_BLOCKS_NO_FABRICATION"
+  },
+  "support_gates": {
+    "all_session_role_coverage": 1.0,
+    "primary_tested_market_rows_minimum": 100,
+    "years_with_at_least_ten_primary_tests_minimum": 4,
+    "primary_recovery_volume_rows_minimum": 60,
+    "conditional_neighbor_intersection_minimum": 30,
+    "conditional_trajectory_sequences_minimum": 30
+  },
+  "stability_gates": {
+    "level_neighbor_median_within_year_view_spearman_minimum": 0.70,
+    "level_neighbor_cells_at_or_above_0_50_minimum": 18,
+    "level_neighbor_total_cells": 24,
+    "conditional_neighbor_global_spearman_minimum": 0.60,
+    "auction_neighbor_median_within_cell_spearman_minimum": 0.85,
+    "trajectory_slope_endpoint_global_spearman_minimum": 0.70,
+    "trajectory_slope_ordinal_global_spearman_minimum": 0.60,
+    "trajectory_same_qualitative_sign_years_minimum": 5,
+    "internal_redundancy_absolute_spearman_boundary": 0.85
+  },
+  "internal_priority": [
+    "signed_test_geometry",
+    "time_beyond_level",
+    "test_recurrence",
+    "closing_level_state",
+    "recovery_speed",
+    "recovery_amplitude",
+    "recovery_volume_intensity"
+  ],
+  "falsification": {
+    "source_close_mismatch_sensitivity": "39 integer-cent mismatch sessions versus all others; descriptive only",
+    "independent_manual_cases": 5,
+    "manual_case_categories": ["no_test", "penetration_recovery", "penetration_nonrecovery", "repeated_test", "supported_action"]
+  },
+  "prohibited": [
+    "near-touch threshold introduction",
+    "auction, 10-day, or 40-day rescue",
+    "imputing unrecovered speed as 240",
+    "calling a touch defense",
+    "buyer/seller initiative or participant identity claims",
+    "future value, payoff, outcome, strategy, habitat, or execution fields",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes representation quality only, not support, defense, recovery predictiveness, accumulation, timing, habitat, execution, or strategy usefulness.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-001_session_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-001_trajectory_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-001_representation.md"
+  ]
+}

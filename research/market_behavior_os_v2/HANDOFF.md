@@ -917,3 +917,13 @@ content-verified runs are byte-identical: sample `c1eb0cbc...`, coordinate
 MKT-SUPPORT-001 representation quality, not payoff: distinguish opportunity,
 penetration, duration, recovery speed/volume, closing recovery, repeated tests,
 and five-session trajectories with fixed 10/20/40 neighbors.
+
+MKT-SUPPORT-001 is frozen under SHA-256
+`4c58431daa1a21268eedcb8d6ebc306aadfb4aac89f8c9218e956fc91e36bef4`.
+It distinguishes opportunity/penetration, duration, recurrence, closing state,
+and conditional recovery speed/amplitude/volume. Primary continuous-session
+20-day levels face 10/40-level and auction-inclusive challenges. Five-day slopes
+face endpoint/ordinal shapes; repeated-test frequency is separate. The known 29
+conditional recovery sequences cannot pass the unchanged 30-sequence floor and
+cannot be rescued by near-touch bands or neighbor definitions. Execute twice;
+no payoff or support-defense claim is permitted.

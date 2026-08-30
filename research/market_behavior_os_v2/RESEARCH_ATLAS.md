@@ -95,6 +95,8 @@
 | `experiments/MKT-SUPPORT-DATA-003_spec.json` | Frozen exact-inheritance source-role retry before raw-minute access |
 | `scripts/run_mkt_support_data_003.py` | Passing source-role coordinate audit with exact disagreement diagnostics |
 | `reports/MKT-SUPPORT-DATA-003_audit.md` | Bounded PIT-B coordinate feasibility result; no support or usefulness claim |
+| `OBJECTIVE_SUPPORT_REPRESENTATION_MAP.md` | Frozen two-part objective-level session and five-day trajectory architecture |
+| `experiments/MKT-SUPPORT-001_spec.json` | Frozen representation/support/stability/redundancy contract before reconstruction |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |
