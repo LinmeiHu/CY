@@ -23,6 +23,7 @@
 | `INDUSTRY_ENGINE_GEOMETRY_MAP.md` | Role-specific external redundancy and joint reconstruction map for accepted industry/relative-strength roles |
 | `INDUSTRY_ENGINE_GEOMETRY_MAP_V2.md` | Exact nested-causal-control year-eligibility correction; scientific geometry unchanged |
 | `INDUSTRY_LEADERSHIP_DYNAMICS_MAP.md` | Three-edge outcome-blind next-block diffusion/rotation temporal-process map |
+| `INDUSTRY_ROTATION_PERSISTENCE_FALSIFICATION_MAP.md` | Delayed non-shared-endpoint and alternate-definition falsification of immediate rotation persistence |
 | `MARKET_INTRADAY_SAMPLING_CONTRACT.md` | Strategy-independent bounded minute readiness sampling and PIT contract |
 | `MARKET_INTRADAY_REPRESENTATION_MAP.md` | Required-scale same-session and five-day minute representation semantics |
 | `MARKET_INTRADAY_NONSLOPE_PROCESS_MAP.md` | Fixed five-day ordinal progression, signed reversal, and curvature semantics after OLS failure |
@@ -47,6 +48,7 @@
 | `reports/MKT-INDRS-GEO-002_geometry.md` | Five direct engine coordinates and two compressed industry manifestations |
 | `experiments/MKT-INDRS-DYN-001_spec.json` | Frozen next-block leadership-state response and untouched-confirmation contract |
 | `reports/MKT-INDRS-DYN-001_dynamics.md` | Immediate rotation persistence and two rejected diffusion cross-edges |
+| `experiments/MKT-INDRS-ROT-001_spec.json` | Frozen three-replication consumed-falsification contract; not fresh confirmation |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

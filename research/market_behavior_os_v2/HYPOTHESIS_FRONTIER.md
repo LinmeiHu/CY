@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Very high | High | Frozen panels; state responses only | Very high | Low-medium | ACTIVE_MKT_INDRS_ROT_001_MAP_FIRST |
+| 1 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Very high | High | Frozen panels; state responses only | Very high | Low-medium | ACTIVE_MKT_INDRS_ROT_001_FROZEN_EXECUTION |
 | 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | QUEUED_AFTER_ROTATION_FALSIFICATION |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
@@ -60,3 +60,8 @@ MKT-INDRS-DYN-001 supports immediate rank-rotation persistence but rejects both
 winner-diffusion cross-edges. Before interpreting persistence as a process, the
 active question is a minimal delayed-block and alternate-definition
 falsification. No market return or strategy outcome may enter.
+
+MKT-INDRS-ROT-001 is frozen before response construction under spec
+`1af3e497...`. The reuse of both time blocks is consumed exploratory
+falsification, never fresh confirmation. Execute exactly the three all-required
+replications without adding a definition, horizon, outcome, or holdout.

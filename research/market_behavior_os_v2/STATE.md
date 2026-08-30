@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-ROT-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-INDRS-ROT-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: falsification of immediate industry rank-rotation persistence through delayed and alternate-definition replication
 - `SUPPORTING_FRONTIER`: accepted Kendall/displacement rotation definitions and the same fixed current controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -476,3 +476,13 @@ returns. Freeze a delayed t+10 response with no shared rank endpoint and
 next-block persistence under the already-accepted Kendall/displacement
 definitions. Require all replications; add no horizons, returns, strategies, or
 CY-011. No S1-S12 STOP is active.
+
+The falsification map and spec `1af3e497...` are frozen before any delayed
+response or alternate coordinate is constructed. Exactly three replications
+are allowed: delayed t+10 Spearman persistence with no shared rank endpoint,
+next-block Kendall persistence, and next-block mean-rank-displacement
+persistence. All three must pass the unchanged raw/PIT/relative, block, sign,
+support, and nonoverlap architecture. Because both blocks and these hypotheses
+are now post-result, all evidence is explicitly
+`CONSUMED_EXPLORATORY_FALSIFICATION_NOT_CONFIRMATION`; post-2023 data and the
+locked holdout remain unopened.

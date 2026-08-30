@@ -1,0 +1,132 @@
+{
+  "experiment_id": "MKT-INDRS-ROT-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FALSIFICATION_RESPONSE_CONSTRUCTION",
+  "question": "Does immediate rank-rotation persistence survive a delayed non-shared-endpoint response and the accepted Kendall/displacement definitions?",
+  "research_role": "consumed exploratory falsification of the sole accepted MKT-INDRS-DYN-001 edge",
+  "inputs": {
+    "industry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_panel.csv",
+      "sha256": "c9e8d44935261256c1f3a6246026ba2ff0a02d3373386771fe58182ad3baeaf4"
+    },
+    "industry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_result.json",
+      "sha256": "578d9dbaa16bc1da2aaee790309c56475cc102de9fc592a72aaae1bd43c41085"
+    },
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+      "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json",
+      "sha256": "9b3eaa0da0e9adba67f61df81d25412ae0277cff37ecf63074738d622989a346"
+    },
+    "dynamics_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-DYN-001_result.json",
+      "sha256": "109309289ffcdeafef00b4ce6bb3c9c5da39448e59062d7ed08a15d93509ab3d"
+    }
+  },
+  "prerequisite": {
+    "accepted_edge": "rotation_persistence",
+    "rejected_edges": ["diffusion_to_rotation", "rotation_to_diffusion_change"],
+    "original_response_shift_sessions": 5,
+    "original_confirmation_is_consumed": true
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"]
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date close at 15:00 Asia/Shanghai",
+    "response_available_at": "completed t+5 or t+10 exchange-session close at 15:00 Asia/Shanghai",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "rotation_definitions": {
+    "spearman": "industry_rank_rotation_spearman_lag5",
+    "kendall": "industry_rank_rotation_kendall_lag5",
+    "displacement": "industry_rank_rotation_displacement_lag5"
+  },
+  "controls": {
+    "breadth_leadership": "leadership_positive_mass_top10",
+    "co_movement": "correlation_median20",
+    "volatility_change": "realized_volatility_change5"
+  },
+  "coordinates": {
+    "raw": "<field>",
+    "pit": "<field>_pit_3y_pct; Kendall/displacement constructed causally with trailing 756 and minimum 504 valid observations",
+    "relative_to_all": "<field>_relative_to_all; Kendall/displacement constructed same date",
+    "relative_rank": "<field>_relative_view_rank_pct; Kendall/displacement constructed same date"
+  },
+  "replications": {
+    "delayed_spearman_persistence": {
+      "predictor_definition": "spearman",
+      "response_definition": "spearman",
+      "response_shift_sessions": 10,
+      "response_underlying_block": "t+5 versus t+10; no rank endpoint shared with current t-5 versus t",
+      "phase_stride": 10
+    },
+    "kendall_next_block_persistence": {
+      "predictor_definition": "kendall",
+      "response_definition": "kendall",
+      "response_shift_sessions": 5,
+      "response_underlying_block": "t versus t+5",
+      "phase_stride": 5
+    },
+    "displacement_next_block_persistence": {
+      "predictor_definition": "displacement",
+      "response_definition": "displacement",
+      "response_shift_sessions": 5,
+      "response_underlying_block": "t versus t+5",
+      "phase_stride": 5
+    }
+  },
+  "temporal_blocks": {
+    "block_a_consumed": {"start": "2019-01-01", "end": "2021-12-31"},
+    "block_b_consumed": {"start": "2022-01-01", "end": "2023-12-31"},
+    "membership_rule": "predictor and response dates both inside block",
+    "evidence_label": "CONSUMED_EXPLORATORY_FALSIFICATION_NOT_CONFIRMATION"
+  },
+  "estimation": {
+    "primary": "partial Spearman after rank residualization on the three fixed same-coordinate controls",
+    "raw_and_pit_groups": "eight view/denominator groups",
+    "relative_groups": "two denominators pooled across non-ALL_A or all rank views",
+    "sign": "positive, inherited from MKT-INDRS-DYN-001 survivor",
+    "mechanism_requires_all_replications": true
+  },
+  "gates": {
+    "raw_group_block_minimum_observations": 150,
+    "pit_group_block_minimum_observations": 150,
+    "relative_to_all_denominator_block_minimum_observations": 450,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "raw_median_partial_rho_minimum": 0.10,
+    "raw_positive_group_support_minimum_of_8": 6,
+    "block_b_to_block_a_magnitude_ratio_minimum": 0.50,
+    "phase_median_partial_rho_minimum": 0.08,
+    "pit_median_partial_rho_minimum": 0.08,
+    "pit_positive_group_support_minimum_of_8": 6,
+    "relative_median_partial_rho_minimum": 0.05,
+    "relative_positive_group_support_minimum_of_2": 2,
+    "no_rescue": "All three replications must pass. No definition, delay, block, coordinate, phase, view, denominator, control deletion, or favorable subset can replace a failed replication."
+  },
+  "prohibited_fields": [
+    "future market, industry, or stock return",
+    "future stock rank, selected industry return, or stock-selection outcome",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "failed MKT-INDRS roles or failed winner-diffusion temporal edges",
+    "failed MA industry-diffusion/divergence fields",
+    "post-2023 CY-006 partitions",
+    "CY-011"
+  ],
+  "claim_boundary": "All passes establish consumed exploratory rotation-persistence replication only; independent future time remains required before confirmation, and no return, timing, habitat, causality, execution, or strategy claim is permitted.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-ROT-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-ROT-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-INDRS-ROT-001_falsification.md"
+  ]
+}

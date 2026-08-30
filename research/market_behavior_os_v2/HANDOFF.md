@@ -459,4 +459,18 @@ persistence. Require all; do not add horizons or outcomes.
 ## Human decision required?
 
 No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-ROT-001
-map-first falsification; CY-011 remains locked and unopened.
+frozen execution; CY-011 remains locked and unopened.
+
+## MKT-INDRS-ROT-001 frozen continuation
+
+The delayed/alternate-definition falsification map and spec are frozen under
+SHA-256 `1af3e49717f5055deb2b7ac6bc95e191b6eaee749fc477d646997acac176610e`
+before any new response is shifted. Execute only delayed t+10 Spearman,
+next-block Kendall, and next-block displacement persistence; every replication
+must pass. Use the same three current controls and exact raw/PIT/relative gates.
+
+MKT-INDRS-DYN-001 already consumed both 2019-2021 and 2022-2023, and the new
+hypotheses were generated afterward. Label every estimate
+`CONSUMED_EXPLORATORY_FALSIFICATION_NOT_CONFIRMATION`; a pass still requires
+independent future time. Do not read post-2023 data, market/stock returns,
+strategy fields, failed roles, or CY-011.
