@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`PREREGISTER_EXP_IBQ_001_ENTRY_SIGNAL_PATH_ACCEPTANCE`.
+`PREREGISTER_EXP_IBQ_002_CLEAN_ENTRY_SIGNAL_PATH_ACCEPTANCE`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -55,7 +55,7 @@ entry-signal sessions: 96,159 frozen QD-004 bars, 399 CY-008 daily gates, and
 whether persistent price acceptance is visible on the completed entry-signal
 session, before the T+1 entry and earlier than H-019's descriptive day-5 boundary.
 
-H-021/EXP-IBQ-001 freezes one three-component continuous path-acceptance score.
+H-021/EXP-IBQ-002 freezes one three-component continuous path-acceptance score.
 The primary compares the existing 80 opportunity20 paths with 213 existing false
 breakouts, then controls the complete daily OHLC/amount bar, V1 state, market,
 breadth, beta, liquidity, and year. It includes LOYO, block, tail, security,
@@ -68,6 +68,11 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Execute EXP-IBQ-001 exactly under spec SHA `298cd0ba...`, apply its frozen gates,
+Execute EXP-IBQ-002 exactly under spec SHA `7ac82fe8...`, apply its frozen gates,
 persist the scientific decision, then rerank. Do not pursue H-007 interactions,
 mine intraday thresholds, infer order flow, or repair EXP-RTD-001/EXP-P7-003.
+
+EXP-IBQ-001 is invalid with no estimate: its count assertion used the 80-row
+Phase-6 control-complete subset instead of the accepted 84 opportunity20 endpoint.
+EXP-IBQ-002 changes only identity, output paths, and count assertions to
+84/213/297; the H-021 science is unchanged.

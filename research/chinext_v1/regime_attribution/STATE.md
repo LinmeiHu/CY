@@ -2,8 +2,8 @@
 
 ## CURRENT_PHASE
 
-EXP-IBQ-001_PREREGISTERED — H-021 tests one fixed entry-signal-session path-
-acceptance composite after an outcome-blind 399/399 intraday coverage audit.
+EXP-IBQ-002_PREREGISTERED — H-021 clean re-execution after EXP-IBQ-001 stopped
+before scientific calculation on a frozen expected-count binding error.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
@@ -694,6 +694,22 @@ authorization, a new experiment ID, and fresh isolated outputs.
   earlier lifecycle breakout timestamp, or authorize a trading rule.
 - Spec SHA `298cd0bad4d298af5328edc0257cd473be854ffce88f777e2524844de45b9315`;
   status frozen before the first intraday-feature/outcome join.
+
+## AUTONOMOUS_CYCLE_EXP_IBQ_001_FAILURE_AND_002_PREREGISTRATION
+
+- EXP-IBQ-001 passed every raw inventory, session, PIT, timing, and feature-
+  construction check, then stopped at its first endpoint-count assertion before
+  any correlation, partial-rank, LOYO, gate, print, or output write.
+- Root cause: the spec bound 80, which is the Phase-6 breadth-control-complete
+  subset, rather than the accepted Phase-5 `opportunity20` count of 84. False
+  breakouts remain 213, overlap is zero, and the unchanged endpoint definitions
+  imply a 297-row disjoint primary.
+- EXP-IBQ-001 remains permanently invalid; its spec/runner are not repaired and
+  it has no output. Failure details are in `reports/EXP-IBQ-001_failure.md`.
+- EXP-IBQ-002 inherits every H-021 scientific element exactly. Permitted changes
+  are the fresh ID/output paths and assertions 84/213/297. Spec SHA
+  `7ac82fe890aa51afeddee5e13b173bf111370057c796fb6beb25493ea3cdb39d`;
+  status frozen before the first valid intraday-feature/outcome association.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

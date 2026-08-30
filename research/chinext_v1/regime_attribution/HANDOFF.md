@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-IBQ-001_PREREGISTERED` on 2026-08-30.
+`EXP-IBQ-002_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier is
 now integrated and ranked first. EXP-IBQ-001 freezes one completed entry-signal-
@@ -13,8 +13,14 @@ The outcome-blind audit finds 399/399 hard-valid signal sessions, 96,159 exact
 QD-004 bars, and exact agreement with 2,394 CY-008 opening windows. Features are
 available at signal-day 15:30 and apply only at T+1 or later. The event is the
 accepted retest-confirmation/entry-intent session, not an inferred earlier
-lifecycle breakout. Execute the frozen runner without changing definitions,
-gates, controls, population, or interpretation.
+lifecycle breakout.
+
+EXP-IBQ-001 is invalid with no scientific estimate or output. It stopped at the
+first endpoint-count assertion because 80 (the Phase-6 control-complete subset)
+was mistaken for the accepted 84 opportunity20 cycles. EXP-IBQ-002 preserves all
+science and corrects only assertions to 84 opportunity20, 213 false breakouts,
+zero overlap, and primary n=297, with fresh outputs. Execute spec SHA
+`7ac82fe8...` without changing definitions, gates, controls, or interpretation.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793

@@ -405,5 +405,9 @@ byte-consistent with one another.
 - Confounds: all history is outcome-consumed PIT-B; the feature session is the
   accepted retest-confirmation/entry-intent date, not the earlier lifecycle
   breakout. Full-session data are available only at 15:30 for T+1 or later.
-- Status: `PREREGISTERED`; no threshold, entry, exit, sizing, overlay, original-
-  breakout, order-flow, or production claim is authorized.
+- Status: `PREREGISTERED` under clean EXP-IBQ-002. EXP-IBQ-001 is invalid because
+  it confused the accepted 84-opportunity endpoint with the 80-row Phase-6
+  control-complete subset and stopped before any association. EXP-IBQ-002 changes
+  only identity, outputs, and assertions to 84/213/297; no scientific definition,
+  gate, control, or interpretation changed. No threshold, entry, exit, sizing,
+  overlay, original-breakout, order-flow, or production claim is authorized.

@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-IBQ-002",
+  "hypothesis_id": "H-021",
+  "status": "FROZEN_BEFORE_FIRST_INTRADAY_OUTCOME_JOIN",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE_ON_OUTCOME_CONSUMED_HISTORY",
+  "reexecution_contract": {
+    "inherits_exact_scientific_contract_from": "EXP-IBQ-001",
+    "inherited_spec_path": "research/chinext_v1/regime_attribution/experiments/EXP-IBQ-001_spec.json",
+    "inherited_spec_sha256": "298cd0bad4d298af5328edc0257cd473be854ffce88f777e2524844de45b9315",
+    "failure_reason": "EXP-IBQ-001 bound the Phase-6 breadth-control-complete opportunity count of 80 instead of the accepted Phase-5 opportunity20 count of 84 and stopped at the first count assertion before any scientific calculation",
+    "permitted_differences": [
+      "fresh experiment identity EXP-IBQ-002",
+      "fresh runner and output paths",
+      "expected opportunity20 count corrected from 80 to 84",
+      "expected disjoint opportunity20-versus-false-breakout count corrected from 293 to 297"
+    ],
+    "scientific_changes": "NONE",
+    "unchanged": [
+      "question",
+      "mechanism",
+      "feature session",
+      "raw data and PIT contract",
+      "feature definitions",
+      "outcome definitions",
+      "controls",
+      "metrics",
+      "expected directions",
+      "LOYO and temporal tests",
+      "falsification attacks",
+      "decision gates",
+      "multiple-testing rule",
+      "interpretation and execution-time boundaries"
+    ]
+  },
+  "question": "Does persistent demand and price acceptance during the completed V1 entry-signal session distinguish fixed MFE>=20% opportunities from the existing false-breakout class?",
+  "mechanism": "A valid demand impulse should advance with lower path friction, spend more of the session accepted above volume-weighted price, and retain its first-30-minute attack rather than spike and reject.",
+  "interpretation_boundary": {
+    "event": "entry_signal_date completed session, which is the V1 retest-confirmation/entry-intent date and is not asserted to be the earlier lifecycle breakout date",
+    "available_at_timestamp": "entry_signal_date 15:30:00 Asia/Shanghai",
+    "potential_action_timestamp": "entry_execution_date open or later",
+    "forbidden": [
+      "same-session action",
+      "retrospective justification of an already-completed open fill",
+      "original-breakout-timestamp claim",
+      "threshold, entry, exit, sizing, overlay, or production rule",
+      "order-book, queue, hidden-liquidity, participant-identity, or absorption claim beyond OHLCV proxies"
+    ]
+  },
+  "population": {
+    "all_completed_cycles": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "primary_success": "existing opportunity20 == true (MFE>=20%); expected n=84",
+    "primary_failure": "existing false_breakout == true; expected n=213",
+    "primary_disjoint_population": 297,
+    "overlap": 0,
+    "other_cycles": "retained for full-sample secondary endpoints but excluded from the fixed success-versus-false primary"
+  },
+  "primary_predictor": {
+    "name": "signal_day_path_acceptance",
+    "construction": "unchanged EXP-IBQ-001 equal-weight mean of entry-year percentile ranks of signed one-minute path efficiency, time above full-session VWAP, and 10:00 retention from the first-30-minute high",
+    "expected_direction": "positive for opportunity20 success relative to false breakout"
+  },
+  "outcomes": {
+    "primary": "breakout_success: 1 for existing opportunity20, 0 for existing false_breakout",
+    "secondary": [
+      "opportunity20 in all 399 cycles, expected positive",
+      "non_false_breakout in all 399 cycles, expected positive",
+      "MFE continuous, descriptive expected positive",
+      "terminal round_trip_return, descriptive expected positive"
+    ]
+  },
+  "controls": "exactly inherited from EXP-IBQ-001: four daily-bar redundancy controls, five V1 entry-state controls, five market/risk controls, and entry-year fixed effects",
+  "falsification": "exactly inherited from EXP-IBQ-001: 5m and auction neighbors, LOYO, blocks, outcome neighbors, Top-4 P&L/extreme-winner/severe-loss removal, security/industry concentration, PIT and timing",
+  "decision_gates": {
+    "raw_minimum_rho": 0.1,
+    "raw_minimum_positive_loyo": 7,
+    "controlled_minimum_rho": 0.1,
+    "controlled_minimum_positive_loyo": 7,
+    "minimum_positive_blocks": 2,
+    "minimum_block_rho_exclusive": -0.1,
+    "secondary_minimum_rho": 0.08,
+    "secondary_minimum_positive_loyo": 7,
+    "neighbor_minimum_rho": 0.07,
+    "neighbor_minimum_positive_loyo": 6,
+    "tail_minimum_rho_exclusive": 0.0,
+    "minimum_leave_group_positive_fraction": 0.9,
+    "decision": {
+      "VALIDATE": "all raw, controlled, temporal, outcome-neighbor, and falsification gates pass",
+      "SUPPORTED_WEAK": "raw and controlled gates pass but at least one other gate fails",
+      "REJECTED": "raw or controlled gate fails"
+    }
+  },
+  "input_bindings": {
+    "exp_ibq_001_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-IBQ-001_spec.json",
+      "sha256": "298cd0bad4d298af5328edc0257cd473be854ffce88f777e2524844de45b9315"
+    },
+    "exp_ibq_001_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_intraday_signal_day_quality.py",
+      "sha256": "333fb93c05c70e95a4ec8c62282959b4ab736e4fe088ed5dec26014750270d4b"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "yearly_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "mechanism_outcomes": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv",
+      "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"
+    },
+    "accepted_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_intraday_signal_day_quality_v2.py",
+      "sha256": "4f6ad24d0675e3820fbf486d0b9a5775e39ce7d3562427ff880e4455e6b4c5c3"
+    },
+    "qd004_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+      "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+    },
+    "cy008_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+      "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"
+    },
+    "cy008_cross_year_audit": {
+      "path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json",
+      "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"
+    }
+  },
+  "output_contract": {
+    "table": "research/chinext_v1/regime_attribution/artifacts/intraday_signal_day_quality_v2.csv",
+    "result": "research/chinext_v1/regime_attribution/artifacts/intraday_signal_day_quality_v2.json",
+    "report": "research/chinext_v1/regime_attribution/reports/intraday_signal_day_quality_v2.md",
+    "evidence_packet": "research/chinext_v1/regime_attribution/reports/intraday_signal_day_quality_v2_evidence_packet.md"
+  }
+}
