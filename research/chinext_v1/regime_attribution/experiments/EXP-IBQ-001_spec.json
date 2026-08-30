@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-IBQ-001",
+  "hypothesis_id": "H-021",
+  "status": "FROZEN_BEFORE_FIRST_INTRADAY_OUTCOME_JOIN",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE_ON_OUTCOME_CONSUMED_HISTORY",
+  "question": "Does persistent demand and price acceptance during the completed V1 entry-signal session distinguish fixed MFE>=20% opportunities from the existing false-breakout class?",
+  "mechanism": "A valid demand impulse should advance with lower path friction, spend more of the session accepted above volume-weighted price, and retain its first-30-minute attack rather than spike and reject.",
+  "interpretation_boundary": {
+    "event": "entry_signal_date completed session, which is the V1 retest-confirmation/entry-intent date and is not asserted to be the earlier lifecycle breakout date",
+    "available_at_timestamp": "entry_signal_date 15:30:00 Asia/Shanghai",
+    "potential_action_timestamp": "entry_execution_date open or later",
+    "forbidden": [
+      "same-session action",
+      "retrospective justification of an already-completed open fill",
+      "original-breakout-timestamp claim",
+      "threshold, entry, exit, sizing, overlay, or production rule",
+      "order-book, queue, hidden-liquidity, participant-identity, or absorption claim beyond OHLCV proxies"
+    ]
+  },
+  "population": {
+    "all_completed_cycles": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "primary_success": "existing opportunity20 == true (MFE>=20%); expected n=80",
+    "primary_failure": "existing false_breakout == true; expected n=213",
+    "primary_disjoint_population": 293,
+    "other_cycles": "retained for full-sample secondary endpoints but excluded from the fixed success-versus-false primary"
+  },
+  "data_contract": {
+    "raw_source": "QD-004 unadjusted one-minute OHLCV/amount, exact 2018-2025 annual inventory entries",
+    "causal_gate": "CY-008 daily hard-valid row and six hard-valid opening execution windows must agree exactly with the raw source",
+    "session_grid": "241 rows: separate 09:30 auction bar plus 09:31..11:30 and 13:01..15:00 continuous-session bars",
+    "primary_path_grid": "240 continuous-session one-minute bars; 09:30 auction excluded",
+    "flat_session_policy": "if exact full-session price range and total path variation are zero, path efficiency=0, VWAP ties count 0.5, close location=0.5; preserve and disclose the row",
+    "price_basis": "raw/unadjusted CNY per share; within-session ratios only",
+    "volume_unit": "shares",
+    "amount_unit": "CNY",
+    "vwap": "sum(amount)/sum(volume) over 09:31..15:00",
+    "survivorship_boundary": "fixed accepted V1 completed cycles; no inference about non-admitted or delisted securities"
+  },
+  "primary_predictor": {
+    "name": "signal_day_path_acceptance",
+    "construction": "equal-weight mean of entry-year percentile ranks of exactly three components",
+    "components": {
+      "path_efficiency_1m": "signed log(15:00 close / 09:31 open) divided by total absolute one-minute log-price variation, including the first 09:31 close/open move",
+      "time_above_session_vwap": "fraction of 240 continuous-session closes strictly above full-session VWAP plus one-half of exact VWAP ties",
+      "opening_peak_retention": "log(10:00 close / maximum high from 09:31 through 10:00); higher means less first-attack rejection"
+    },
+    "expected_direction": "positive for opportunity20 success relative to false breakout"
+  },
+  "outcomes": {
+    "primary": "breakout_success: 1 for existing opportunity20, 0 for existing false_breakout",
+    "secondary": [
+      "opportunity20 in all 399 cycles, expected positive",
+      "non_false_breakout in all 399 cycles, expected positive",
+      "MFE continuous, descriptive expected positive",
+      "terminal round_trip_return, descriptive expected positive"
+    ],
+    "independence": "all predictors end on entry_signal_date; all primary outcomes begin after the T+1 execution open"
+  },
+  "controls": {
+    "daily_bar_redundancy": [
+      "signal_day_log_return",
+      "signal_day_log_range",
+      "signal_day_close_location",
+      "signal_day_log_amount"
+    ],
+    "entry_state": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio"
+    ],
+    "market_and_risk": [
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "time": "entry-year fixed effects"
+  },
+  "primary_metrics": [
+    "raw Spearman rho",
+    "within-year rank rho",
+    "eight leave-one-year-out rhos",
+    "fixed-control partial Spearman rho and LOYO",
+    "three independent baseline-block rhos"
+  ],
+  "falsification": {
+    "bar_frequency_neighbor": "replace only one-minute path efficiency with causally aggregated five-minute path efficiency",
+    "auction_neighbor": "replace only one-minute path efficiency with a 09:30-auction-inclusive efficiency",
+    "tail_attacks": [
+      "exclude Top-4 absolute realized P&L cycles",
+      "exclude >=50% extreme winners",
+      "exclude <=-10% severe losses"
+    ],
+    "concentration_attacks": [
+      "leave one security out",
+      "leave one industry out"
+    ],
+    "timing": "399/399 feature aggregates must be available at 15:30 before T+1 execution",
+    "daily_redundancy": "primary effect must survive the frozen daily OHLC/amount controls"
+  },
+  "decision_gates": {
+    "raw_minimum_rho": 0.1,
+    "raw_minimum_positive_loyo": 7,
+    "controlled_minimum_rho": 0.1,
+    "controlled_minimum_positive_loyo": 7,
+    "minimum_positive_blocks": 2,
+    "minimum_block_rho_exclusive": -0.1,
+    "secondary_minimum_rho": 0.08,
+    "secondary_minimum_positive_loyo": 7,
+    "neighbor_minimum_rho": 0.07,
+    "neighbor_minimum_positive_loyo": 6,
+    "tail_minimum_rho_exclusive": 0.0,
+    "minimum_leave_group_positive_fraction": 0.9,
+    "decision": {
+      "VALIDATE": "all raw, controlled, temporal, outcome-neighbor, and falsification gates pass",
+      "SUPPORTED_WEAK": "raw and controlled gates pass but at least one other gate fails",
+      "REJECTED": "raw or controlled gate fails"
+    }
+  },
+  "multiple_testing_control": "one primary composite and one primary endpoint; components and two neighboring composites are fixed diagnostics and cannot replace the primary",
+  "input_bindings": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "yearly_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "mechanism_outcomes": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv",
+      "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"
+    },
+    "accepted_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_intraday_signal_day_quality.py",
+      "sha256": "333fb93c05c70e95a4ec8c62282959b4ab736e4fe088ed5dec26014750270d4b"
+    },
+    "qd004_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+      "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+    },
+    "cy008_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+      "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"
+    },
+    "cy008_cross_year_audit": {
+      "path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json",
+      "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"
+    }
+  },
+  "output_contract": {
+    "table": "research/chinext_v1/regime_attribution/artifacts/intraday_signal_day_quality.csv",
+    "result": "research/chinext_v1/regime_attribution/artifacts/intraday_signal_day_quality.json",
+    "report": "research/chinext_v1/regime_attribution/reports/intraday_signal_day_quality.md",
+    "evidence_packet": "research/chinext_v1/regime_attribution/reports/intraday_signal_day_quality_evidence_packet.md"
+  }
+}

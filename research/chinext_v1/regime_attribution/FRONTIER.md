@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H020_RANK_NEXT_INDEPENDENT_FRONTIER`.
+`PREREGISTER_EXP_IBQ_001_ENTRY_SIGNAL_PATH_ACCEPTANCE`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,23 +49,25 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-EXP-EGP-001 rejects stock-specific T+1 entry gap as the source of false-breakout
-topology. EXP-ECC-001 also rejects simultaneous accepted-entry cohort crowding:
-raw/controlled cohort-date rhos are -0.045/-0.118 with 0/8 positive LOYO, and
-the topology association is -0.042. All gates fail.
+The supplemental intraday audit finds exact hard-valid coverage for all 399
+entry-signal sessions: 96,159 frozen QD-004 bars, 399 CY-008 daily gates, and
+2,394 opening five-minute windows. This supports a minimum-sufficient test of
+whether persistent price acceptance is visible on the completed entry-signal
+session, before the T+1 entry and earlier than H-019's descriptive day-5 boundary.
 
-The ranked next frontier is H-019: whether favorable close-peak return is already
-surrendered by day 5 and precedes additional residual failure. Coverage is exact
-for 295 survivors, including five action paths, and the accepted day-5 return is
-reconstructed to machine precision under the frozen Phase-1 accounting.
+H-021/EXP-IBQ-001 freezes one three-component continuous path-acceptance score.
+The primary compares the existing 80 opportunity20 paths with 213 existing false
+breakouts, then controls the complete daily OHLC/amount bar, V1 state, market,
+breadth, beta, liquidity, and year. It includes LOYO, block, tail, security,
+industry, five-minute, and auction-semantic attacks. No threshold, interaction,
+rule, or original-breakout-time claim is allowed.
 
-EXP-EPR-001 rejects the forward persistence mechanism: future-failure raw and
-controlled rhos are only 0.032/0.061 and fail tail/block attacks. Giveback does
-associate with false breakout (0.306) and H-016 topology (0.418), but this is
-descriptive localization by day 5, not evidence for an exit action.
+The actual earlier lifecycle `breakout_at` and support are not retained for all
+accepted cycles. The experiment is explicitly the entry-signal/retest-confirmation
+session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Rank the remaining independent V1 mechanism questions. Do not pursue H-007
-interactions merely to rescue breadth or H-020, and do not mine thresholds.
-EXP-RTD-001 and EXP-P7-003 remain forbidden.
+Execute EXP-IBQ-001 exactly under spec SHA `298cd0ba...`, apply its frozen gates,
+persist the scientific decision, then rerank. Do not pursue H-007 interactions,
+mine intraday thresholds, infer order flow, or repair EXP-RTD-001/EXP-P7-003.

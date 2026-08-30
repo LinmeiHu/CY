@@ -379,3 +379,31 @@ byte-consistent with one another.
   the 2018-2021 block is materially positive.
 - Status: `REJECTED` by valid EXP-RTD-002. EXP-RTD-001 remains invalid. No
   threshold, interaction, overlay, replay, or strategy modification is authorized.
+
+### H-021 — entry-signal-session path acceptance
+
+- Question: does persistent demand/price acceptance during the completed V1
+  entry-signal session distinguish fixed MFE>=20% opportunities from the existing
+  false-breakout class?
+- Mechanism: a valid impulse should advance with less path friction, spend more
+  time accepted above volume-weighted price, and retain its first-30-minute attack
+  rather than spike and reject.
+- Prediction: the fixed signal-day path-acceptance composite is positively
+  associated with opportunity20 success versus false breakout, both raw and after
+  daily-bar/V1/market/risk/year controls.
+- Required data: exact QD-004 raw one-minute sessions, CY-008 hard-valid daily and
+  opening-window gates, 399 accepted trade identities, fixed outcomes and controls.
+- Primary test: one continuous equal-weight within-year rank composite of signed
+  one-minute path efficiency, time above full-session VWAP, and 10:00 retention
+  from the first-30-minute high, tested on the fixed disjoint 80/213 endpoint.
+- Falsification: daily OHLC/amount redundancy controls, eight LOYO omissions,
+  three blocks, opportunity20 and non-false full-sample endpoints, fixed five-
+  minute and auction neighbors, Top-4 P&L/extreme-winner/severe-loss removal,
+  security/industry concentration, exact session/hash/timestamp checks.
+- Metrics: raw, within-year, partial-rank, LOYO and block rhos; gates frozen in
+  `EXP-IBQ-001_spec.json` SHA `298cd0ba...`.
+- Confounds: all history is outcome-consumed PIT-B; the feature session is the
+  accepted retest-confirmation/entry-intent date, not the earlier lifecycle
+  breakout. Full-session data are available only at 15:30 for T+1 or later.
+- Status: `PREREGISTERED`; no threshold, entry, exit, sizing, overlay, original-
+  breakout, order-flow, or production claim is authorized.

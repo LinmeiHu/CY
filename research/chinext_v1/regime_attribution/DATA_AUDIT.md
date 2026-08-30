@@ -157,3 +157,27 @@ complete rows, 383 fixed-control-complete rows, and 213 false-breakout labels.
 It has zero duplicate columns, zero volatility missingness, and 399/399 causal
 signal-date/first-applicable/T+1 alignments. No outcome association was calculated
 before EXP-RTD-002 was frozen.
+
+## Intraday breakout-quality availability audit
+
+The supplemental intraday audit found registered QD-004 raw one-minute OHLCV/
+amount and the CY-008 PIT-B derivative. All 399 accepted entry-signal sessions
+and all 399 T+1 execution sessions have hard-valid 241-bar days and six hard-valid
+opening windows. The 399 signal sessions comprise 96,159 raw rows, and their
+2,394 reconstructed opening-window rows match CY-008 exactly. Relevant frozen
+QD-004/CY-008 inventories and the cross-year PASS audit were rehashed before
+preregistration.
+
+The 09:30 auction is a separate bar; the continuous grid is 09:31..11:30 and
+13:01..15:00. Full-session aggregates are available at 15:30 and can apply only
+at T+1 open or later. Entry-day post-open bars cannot justify the already-filled
+open. One flat, hard-valid limit-locked session is retained under a frozen neutral
+mathematical policy. Raw prices are unadjusted; volume/amount reconstruct VWAP.
+Ticks, bid/ask, queue, cancellations, hidden liquidity, and participant identity
+remain unavailable.
+
+The accepted completed-trade ledger does not retain the original lifecycle
+`breakout_at` and reference for every cycle. EXP-IBQ-001 therefore freezes the
+completed entry-signal/retest-confirmation session, not an inferred original
+breakout timestamp. Full details are in
+`reports/intraday_breakout_quality_data_audit_20260830.md`.

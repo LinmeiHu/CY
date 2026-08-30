@@ -2,8 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-RTD-002_COMPLETE_REJECTED — H-020 right-tail density is raw but not incremental
-to frozen breadth/trend and is block-unstable. EXP-RTD-001 remains invalid.
+EXP-IBQ-001_PREREGISTERED — H-021 tests one fixed entry-signal-session path-
+acceptance composite after an outcome-blind 399/399 intraday coverage audit.
+EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
 remain invalid. No strategy or production change is authorized.
@@ -665,6 +666,34 @@ authorization, a new experiment ID, and fresh isolated outputs.
   Output hashes: table `31515122...`, JSON `9abd1860...`, report `23c6a971...`.
 - Scientific decision: `REJECT`. H-020 is redundant with breadth/trend or
   block-specific and authorizes no threshold, interaction, overlay, or strategy.
+
+## AUTONOMOUS_CYCLE_EXP_IBQ_001_PREREGISTRATION
+
+- The supplemental intraday frontier was ranked against day-5 market/stock
+  decomposition, severe-loss formation, original lifecycle breakout tracing,
+  and additional chip interactions. Entry-signal-session path acceptance ranks
+  first because it is earlier than H-019's day-5 localization, independent of
+  breadth rescue, exactly covered, and falsifiable with one composite.
+- QD-004 raw 1-minute data and CY-008 causal gates cover 399/399 completed
+  entry-signal sessions: 96,159 raw rows, 399 hard-valid daily rows, and 2,394
+  hard-valid opening windows. Raw reconstruction matches CY-008 opening OHLCV/
+  amount exactly. All relevant inventory hashes pass.
+- The sole primary feature is the equal-weight within-entry-year rank of signed
+  one-minute path efficiency, time above full-session VWAP, and 10:00 retention
+  from the first-30-minute high. The 09:30 auction is excluded from the primary
+  and retained only in a fixed neighbor.
+- One flat/limit-locked hard-valid session is preserved with preregistered neutral
+  values. No row is dropped. The primary endpoint is the disjoint existing 80
+  opportunity20 successes versus 213 existing false breakouts.
+- Fixed controls include complete daily OHLC/amount information, V1 entry state,
+  market/breadth, beta/liquidity, and year. LOYO, blocks, full-sample outcome
+  neighbors, five-minute/auction definitions, tail removal, securities, and
+  industries are frozen attacks.
+- Full-session features are available at signal-day 15:30 and may apply only at
+  T+1 open or later. The experiment cannot justify same-session action, infer the
+  earlier lifecycle breakout timestamp, or authorize a trading rule.
+- Spec SHA `298cd0bad4d298af5328edc0257cd473be854ffce88f777e2524844de45b9315`;
+  status frozen before the first intraday-feature/outcome join.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
