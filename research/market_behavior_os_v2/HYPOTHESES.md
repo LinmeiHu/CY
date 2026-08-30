@@ -384,13 +384,17 @@
 
 ## MKT-H-025 — circulating-size external engine geometry
 
-- Status: `CORRECTED_ESTIMAND_FROZEN_RESULT_PENDING`.
+- Status: `FIVE_OF_SIX_DIRECT_ENGINE_COORDINATES`.
 - MKT-STYLE-GEO-001 is invalid before geometry because it treated a same-date
   four-view ordinal rank as a within-view time series. Its first support cell
   had complete but constant ranks; no estimate or output artifact exists.
-- MKT-STYLE-GEO-002 retains the six roles, all fixed controls, source hashes,
-  years, thresholds, coordinates, and no-rescue architecture. Only relative-
-  rank support and estimation move to matched four-view dates with date fixed
-  effects.
-- Boundary: the invalid audit is not evidence for or against external
-  distinctness, temporal dynamics, economic usefulness, or a strategy.
+- MKT-STYLE-GEO-002 retains five direct roles: positive participation balance,
+  winner diffusion, positive-mass concentration, size-curve divergence, and
+  leadership transition. Their maximum joint median/maximum adjusted R2 is
+  0.219/0.278; pairwise median absolute rho is at most 0.800.
+- Size structure is externally redundant only in corrected relative-rank space:
+  all three fixed controls share its exact four-view ordering, with pairwise rho
+  and joint within-R2 1.000. All coordinates were conjunctive, so favorable
+  raw/PIT/relative-to-ALL_A geometry cannot rescue it.
+- Boundary: external distinctness is contemporaneous only. It establishes no
+  temporal dynamics, size premium, economic usefulness, habitat, or strategy.

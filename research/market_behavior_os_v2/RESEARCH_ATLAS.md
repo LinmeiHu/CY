@@ -78,6 +78,7 @@
 | `experiments/MKT-STYLE-GEO-001_spec.json` | Invalid frozen within-view relative-rank geometry contract retained as evidence |
 | `MARKET_SIZE_STYLE_EXTERNAL_GEOMETRY_MAP_V2.md` | Same-date cross-view relative-rank estimand correction; all scientific controls and gates retained |
 | `experiments/MKT-STYLE-GEO-002_spec.json` | Frozen exact semantic retry after relative-rank support audit |
+| `reports/MKT-STYLE-GEO-002_geometry.md` | Five direct size coordinates and one externally redundant structure manifestation |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

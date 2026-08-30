@@ -1105,3 +1105,46 @@ rotation” and “size breadth” remain inactive hypothesis labels.
 Keep all roles, controls, hashes, years, thresholds, and coordinates. Estimate
 relative rank only on matched same-date four-view cells with date fixed effects;
 execute twice and fail closed before any estimate if support is incomplete.
+
+## SYNTH-MKT-026 — after corrected external-style geometry
+
+### What was learned?
+
+Five circulating-size roles survive external market-engine compression:
+positive participation balance, winner diffusion, positive-mass concentration,
+size-curve divergence, and leadership transition. Size structure is not a sixth
+direct mechanism; its four-view ordering is exactly the same as activity,
+liquidity-concentration, and volatility ordering.
+
+### What market behavior are we still not studying?
+
+We still do not know whether size leadership changes persist, reverse, or recur
+across nonoverlapping intervals; whether participation, diffusion, concentration,
+and divergence form a directed process; or whether any size state has payoff or
+habitat meaning. Objective price-level defense, cross-asset state, growth/value,
+beta, and portable multi-strategy habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Five direct coordinates create a plausible size/style-rotation research
+family, but no temporal direction, payoff, trigger, execution, exit, capacity,
+or habitat evidence exists. The archetype remains inactive.
+
+### Parallel-track awareness
+
+- **Market research:** test the transition coordinate's nonoverlapping future
+  state meaning before considering interactions among size roles.
+- **Existing-strategy archaeology:** no future return or strategy outcome was
+  read; seed strategies remain unchanged.
+- **Strategy invention:** size/style rotation enters the candidate frontier but
+  remains `WAIT_FOR_TEMPORAL_PROCESS`, not a prototype.
+
+### Research Director decision
+
+`DEEPEN_TO_NONOVERLAPPING_SIZE_TRANSITION_PROCESS` via MKT-STYLE-DYN-001 map-
+first. Use the accepted five-session leadership-transition coordinate as the
+primary and fixed three/ten-session definitions as neighbors. Freeze future
+state alignment, current controls, reused temporal blocks, phase samples,
+absolute/PIT/relative estimators, effect/sign/support gates, and no-rescue rules
+before shifting any future state. Market payoff and strategy outcomes remain
+prohibited.

@@ -165,3 +165,10 @@ constant. MKT-STYLE-GEO-002 is frozen under control spec `9860c893...`; it
 retains every scientific field and changes only relative-rank support and
 estimation to matched same-date cross-view geometry. Execute the exact retry;
 do not delete the coordinate or reinterpret the failed audit as a role result.
+
+MKT-STYLE-GEO-002 retains five direct coordinates. Size structure collapses
+into the same cross-view turnover/liquidity-concentration/volatility ordering;
+the other five pass every pairwise and joint gate. The next frontier is
+MKT-STYLE-DYN-001 map-first: test the distinct five-session leadership-
+transition role against its next nonoverlapping state, with 3/10-session shape
+neighbors and no future return or strategy outcome.

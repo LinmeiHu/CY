@@ -10,8 +10,9 @@ the independent Market State Engine and opportunity definitions exist.
 | 3 | Pullback continuation | No direct support yet; coherent trend/pullback/exhaustion process | High | Daily plus minute feasible | Medium / unknown | Potentially distinct from breakout | WAIT_FOR_MARKET_MECHANISM |
 | 4 | Panic/oversold reversal | No direct support yet | Very high | Correlation/liquidity/minute states exist, recovery absent | Medium-high / unknown | Low versus breakout | WAIT_FOR_MARKET_MECHANISM |
 | 5 | Relative-strength leadership / industry rotation | Immediate rank-rotation persistence replicates; both winner-diffusion cross-edges fail; shared-endpoint/definition falsification pending | Medium-high if process survives falsification | Daily comparison feasible | Medium / potentially scalable | Participation/residual dispersion already compress | WAIT_FOR_ROTATION_FALSIFICATION |
-| 6 | Failed-breakout reversal | Completed-path ordering supported, not actionable | High | Daily/minute feasible | Medium / unknown | Distinct trigger, related formation | RESEARCH_ONLY |
-| 7 | SuperMind V6 archaeology | Methodology inspected, program evidence absent | Medium | Replay audit required | High | Related breakout mechanism | DEFER |
+| 6 | Size/style rotation | Five direct circulating-size states; temporal direction and payoff untested | High if a nonoverlapping leadership process exists | Daily PIT representation feasible | Medium / broad capacity unknown | Size structure already compresses into activity/risk | WAIT_FOR_TEMPORAL_PROCESS |
+| 7 | Failed-breakout reversal | Completed-path ordering supported, not actionable | High | Daily/minute feasible | Medium / unknown | Distinct trigger, related formation | RESEARCH_ONLY |
+| 8 | SuperMind V6 archaeology | Methodology inspected, program evidence absent | Medium | Replay audit required | High | Related breakout mechanism | DEFER |
 
 No new prototype is authorized. CHINEXT is not automatically ranked first for
 new experimentation merely because it has the deepest existing ledger.
@@ -33,6 +34,11 @@ execution, exits, capacity, and habitat effects remain untested.
 MKT-INDRS-GEO-002 still does not promote an archetype. It compresses seven
 industry roles to five direct coordinates but supplies no future leadership
 direction, stock-selection result, trigger, exit, capacity, or habitat evidence.
+
+MKT-STYLE-GEO-002 likewise does not promote size/style rotation. Five direct
+state coordinates survive, but none has temporal direction, payoff, a trigger,
+execution, exit, capacity, or habitat evidence. The candidate remains inactive
+until a separately frozen nonoverlapping state process replicates.
 
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.

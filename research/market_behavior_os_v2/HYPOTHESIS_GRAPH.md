@@ -87,6 +87,15 @@ MKT-H-009 directional-tail/risk-appetite construction
   -> no breadth/volatility redundancy
   -> directional synchronization/process geometry is now permitted outcome-blind
 
+MKT-H-024 circulating-size representation
+  -> six internally nonredundant coordinates remain
+  -> one-day leadership collapses into positive participation
+  -> exact 10/20/40 leadership level fails neighboring-horizon stability
+  -> MKT-H-025 corrected external geometry retains five direct coordinates
+  -> size structure collapses into cross-view turnover/concentration/volatility ordering
+  -> leadership-transition temporal-process research is now permitted outcome-blind
+  -> no size premium, habitat, timing, or strategy claim
+
 HAB-H-001 CHINEXT direction/discovery association
   -> A and B opportunity-density associations pass
   -> fixed A+B incrementality only for evaluated/candidate daily counts

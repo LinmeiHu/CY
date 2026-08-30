@@ -54,6 +54,7 @@
 | Circulating-size one-day return spread as a separate mechanism | INTERNALLY_REDUNDANT: stable role but Spearman 0.903 with positive participation balance | Retain participation balance in the fixed-priority panel; do not count signed return spread as separate evidence |
 | Circulating-size 10/20/40-session leadership representation | NEIGHBORING_HORIZON_UNSTABLE: 20-day primary correlates only 0.683 with 10-day and 0.634 with 40-day definitions | Do not select a favorable horizon or retune the family; broader size-leadership research requires structurally different semantics |
 | MKT-STYLE-GEO-001 within-view relative-rank geometry | INVALID_BEFORE_GEOMETRY: governed-view rank is a same-date cross-view ordinal and can be structurally constant through time within one view | Use MKT-STYLE-GEO-002 matched four-view/date estimand; never drop relative rank, relax nondegeneracy, or cite a nonexistent 001 geometry result |
+| Circulating-size structure as a direct engine coordinate | EXTERNALLY_REDUNDANT: its governed-view ordering is identical to turnover, liquidity concentration, and realized-volatility ordering; relative-rank rho and joint within-R2 are 1.000 | Preserve the stable absolute structure descriptor, but do not count it as a direct mechanism or select raw/PIT coordinates to rescue it |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

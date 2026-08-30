@@ -13,6 +13,7 @@ return. Initial dimensions are:
 | Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
 | Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_EXTERNALLY_DISTINCT_ROLE_USEFULNESS_UNTESTED |
 | Industry/relative strength | industry return dispersion, winner-industry diffusion, rank rotation, stock/industry residual tail balance, and residual concentration are externally distinct; participation and residual dispersion compress into existing dimensions | causal expanding/trailing percentiles and robust z | governed-view contrasts and exact stock-versus-industry residuals | FIVE_DIRECT_ENGINE_ROLES_TEMPORAL_MEANING_UNTESTED |
+| Circulating size/style | positive participation balance, winner diffusion, positive-mass concentration, size-curve divergence, and leadership transition are externally distinct; size structure compresses into activity/risk ordering | causal trailing percentiles and robust z | relative-to-ALL_A plus corrected same-date four-view ranks | FIVE_DIRECT_ENGINE_ROLES_TEMPORAL_MEANING_UNTESTED |
 | Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
 
@@ -202,3 +203,18 @@ replicates as a precursor to rotation nor as a response to rotation. The engine
 retains no diffusion/rotation cross-process. Rotation persistence remains
 provisional until delayed non-shared-endpoint and alternate-definition
 falsification; it has no return or strategy meaning.
+
+## MKT-STYLE-001 and MKT-STYLE-GEO-002 boundary
+
+Six circulating-size roles survive internal compression, but corrected external
+geometry retains only five as direct engine coordinates: positive participation
+balance, winner diffusion, positive-mass concentration, size-curve divergence,
+and leadership transition. Size structure shares the exact four-view ordering
+of turnover, liquidity concentration, and realized volatility and is retained
+only as a descriptive manifestation.
+
+The five direct roles are contemporaneous market-state coordinates. None has a
+future annotation, size-premium interpretation, habitat, or strategy meaning.
+The stable transition coordinate may enter a separately frozen outcome-blind
+future-state process test; the failed 10/20/40 leadership level may not be
+revived or selected as a favorable horizon.

@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-GEO-002_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: external market-engine geometry of six stable circulating-size roles
-- `SUPPORTING_FRONTIER`: strategy-independent circulating-size structure, participation, diffusion, concentration, divergence, and transition representations
+- `CURRENT_PHASE`: `MKT-STYLE-DYN-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: nonoverlapping temporal meaning of the distinct circulating-size leadership-transition coordinate
+- `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -755,3 +755,23 @@ Only relative-rank geometry changes to matched same-date four-view estimation:
 at least 150 nondegenerate complete dates per denominator/year, daily cross-view
 Spearman summaries, and date-fixed-effect joint within-R2. Execute twice before
 any temporal or usefulness research. No S1--S12 STOP is active.
+
+MKT-STYLE-GEO-002 completes with five of six direct engine coordinates. Positive
+participation balance, winner diffusion, positive-mass concentration, size-
+curve divergence, and leadership transition pass every raw, PIT, relative-to-
+ALL_A, and corrected cross-view-rank gate. Their largest pairwise median absolute
+rho is 0.800 and largest joint median/maximum adjusted R2 is 0.219/0.278.
+
+Size structure is a cross-view activity/risk manifestation: its relative-rank
+ordering is identical to turnover, liquidity concentration, and realized-
+volatility ordering. All three pairwise rhos and joint adjusted within-R2 are
+1.000. Raw/PIT/relative-to-ALL_A passing coordinates cannot rescue the required
+conjunctive role. Minimum corrected rank support is 240 nondegenerate matched
+dates per denominator/year.
+
+Two executions are byte-identical: panel `a55fa57c...`, result `4294a7bd...`,
+report `50d78e23...`; ten focused 001/002 tests pass. This establishes only
+contemporaneous representation compression. SYNTH-MKT-026 selects map-first
+nonoverlapping temporal falsification of the distinct leadership-transition
+coordinate; it does not authorize a size premium, habitat, or strategy. No
+S1--S12 STOP is active.

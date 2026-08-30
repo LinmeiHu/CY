@@ -755,3 +755,26 @@ across the four same-date views: require 150 complete, cross-sectionally
 nondegenerate dates per denominator/year; summarize daily cross-view Spearman;
 and use date-demeaned joint within-R2. Execute the exact retry twice. No future
 value, strategy outcome, post-2023 data, or CY-011 may enter.
+
+MKT-STYLE-GEO-002 completes on 10,696 rows. Five roles remain direct engine
+coordinates: positive participation balance, winner diffusion, positive-mass
+concentration, size-curve divergence, and leadership transition. Their largest
+joint median/maximum adjusted rank R2 values are respectively 0.185/0.226,
+0.026/0.061, 0.025/0.028, 0.219/0.278, and 0.057/0.062. Largest pairwise median
+absolute rho is 0.800, arising from the coarse four-view rank coordinate.
+
+Size structure fails conjunctive external distinctness. Across governed views,
+its rank ordering is identical to turnover, liquidity amount concentration, and
+realized volatility: pairwise rho 1.000 for all three and joint adjusted within-
+R2 1.000. Preserve it as a stable descriptive manifestation, not a direct
+mechanism. Minimum corrected rank support is 240 dates versus the unchanged 150
+gate.
+
+Two final runs are byte-identical: panel `a55fa57c...`, result `4294a7bd...`,
+report `50d78e23...`; ten focused tests pass. No future value, strategy outcome,
+failed role, post-2023 field, or CY-011 was read. SYNTH-MKT-026 selects
+MKT-STYLE-DYN-001 map-first: test whether the accepted five-session leadership-
+transition coordinate has a replicating nonoverlapping future state dynamic,
+with 3/10-session definitions as fixed neighbors. Freeze all responses,
+controls, blocks, phase samples, coordinates, and gates before shifting a future
+state. Do not read market payoff or form a size-rotation rule.
