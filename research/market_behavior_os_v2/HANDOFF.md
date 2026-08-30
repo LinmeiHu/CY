@@ -428,6 +428,15 @@ untouched-confirmation blocks, purged overlap handling, response availability,
 effect/sign replication, and no-rescue rules declared before future values are
 constructed.
 
+That temporal map and spec are now frozen under SHA-256 `b1266eed...` before
+any future value is shifted. The exact edges are rotation persistence,
+winner-diffusion to next-block rotation, and rotation to five-session winner-
+diffusion change. Each uses three fixed current controls. Discovery is
+2019-2021 and confirmation is untouched 2022-2023; predictor and t+5 response
+must both lie in the block. Raw/PIT/relative replication, group sign support,
+phase-zero nonoverlap, minimum effect, and no-rescue gates are fixed. Execute
+twice without market returns, stock selection, strategies, or CY-011.
+
 ## Human decision required?
 
 No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-DYN-001

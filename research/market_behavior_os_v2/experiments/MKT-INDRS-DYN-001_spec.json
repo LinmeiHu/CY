@@ -1,0 +1,116 @@
+{
+  "experiment_id": "MKT-INDRS-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION",
+  "question": "Do winner-industry diffusion and industry rank rotation form replicating next-block leadership dynamics after fixed current-state controls?",
+  "research_role": "outcome-blind temporal process after representation and external compression",
+  "inputs": {
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+      "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json",
+      "sha256": "9b3eaa0da0e9adba67f61df81d25412ae0277cff37ecf63074738d622989a346"
+    }
+  },
+  "required_direct_engine_coordinates": [
+    "industry_return_dispersion_1d",
+    "winner_industry_diffusion20",
+    "industry_rank_rotation20",
+    "stock_industry_rs_tail_balance20",
+    "stock_industry_rs_concentration20"
+  ],
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "future_shift_sessions": 5
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date close at 15:00 Asia/Shanghai",
+    "response_available_at": "completed t+5 exchange-session close at 15:00 Asia/Shanghai",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "fields": {
+    "winner_diffusion": "winner_industry_entropy_top10",
+    "rank_rotation": "industry_rank_rotation_spearman_lag5",
+    "breadth_discovery": "breadth_net_new_high_low60",
+    "breadth_leadership": "leadership_positive_mass_top10",
+    "co_movement": "correlation_median20",
+    "volatility_change": "realized_volatility_change5"
+  },
+  "coordinates": {
+    "raw": "<field>",
+    "pit": "<field>_pit_3y_pct",
+    "relative_to_all": "<field>_relative_to_all",
+    "relative_rank": "<field>_relative_view_rank_pct"
+  },
+  "responses": {
+    "next_block_rank_rotation5": "rank_rotation coordinate shifted exactly five sessions earlier within view/denominator; value at t+5 compares industry ranks at t and t+5",
+    "future_winner_diffusion_change5": "winner_diffusion coordinate at t+5 minus value at t within view/denominator"
+  },
+  "edges": {
+    "rotation_persistence": {
+      "predictor": "rank_rotation",
+      "response": "next_block_rank_rotation5",
+      "controls": ["breadth_leadership", "co_movement", "volatility_change"]
+    },
+    "diffusion_to_rotation": {
+      "predictor": "winner_diffusion",
+      "response": "next_block_rank_rotation5",
+      "controls": ["rank_rotation", "breadth_discovery", "breadth_leadership"]
+    },
+    "rotation_to_diffusion_change": {
+      "predictor": "rank_rotation",
+      "response": "future_winner_diffusion_change5",
+      "controls": ["winner_diffusion", "breadth_discovery", "breadth_leadership"]
+    }
+  },
+  "temporal_blocks": {
+    "discovery": {"start": "2019-01-01", "end": "2021-12-31"},
+    "confirmation_untouched_before_specification": {"start": "2022-01-01", "end": "2023-12-31"},
+    "membership_rule": "predictor date and response date must both fall inside the block"
+  },
+  "estimation": {
+    "primary": "partial Spearman by rank-residualizing predictor and response on fixed controls with intercept",
+    "raw_and_pit_groups": "eight view/denominator groups",
+    "relative_groups": "two denominators pooled across non-ALL_A or all rank views",
+    "nonoverlap": "phase-zero every fifth valid predictor row within each original view/denominator and temporal block",
+    "sign": "not prespecified; must replicate after discovery"
+  },
+  "gates": {
+    "raw_group_block_minimum_observations": 150,
+    "pit_group_block_minimum_observations": 150,
+    "relative_to_all_denominator_block_minimum_observations": 450,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "raw_median_absolute_partial_rho_minimum": 0.10,
+    "raw_group_sign_support_minimum_of_8": 6,
+    "confirmation_to_discovery_absolute_magnitude_ratio_minimum": 0.50,
+    "phase_zero_raw_median_absolute_partial_rho_minimum": 0.08,
+    "pit_median_absolute_partial_rho_minimum": 0.08,
+    "pit_group_sign_support_minimum_of_8": 6,
+    "relative_median_absolute_partial_rho_minimum": 0.05,
+    "relative_group_sign_support_minimum_of_2": 2,
+    "no_rescue": "No edge, sign, coordinate, block, phase, view, denominator, control deletion, or favorable subset can replace a failed exact temporal edge."
+  },
+  "prohibited_fields": [
+    "future market, industry, or stock return",
+    "future stock rank, selected industry return, or stock-selection outcome",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "MKT-INDRS-001 failed roles, equal-industry participation, or stock/industry residual dispersion as direct predictors",
+    "failed MA industry-diffusion/divergence fields",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a replicating outcome-blind leadership-state dynamic, not market/stock return prediction, industry timing, habitat fitness, causality, execution, or a strategy rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-DYN-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-INDRS-DYN-001_dynamics.md"
+  ]
+}

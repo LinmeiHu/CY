@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-DYN-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-INDRS-DYN-001_FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION`
 - `CURRENT_PRIMARY_FRONTIER`: outcome-blind temporal dynamics of externally distinct winner-industry diffusion and rank rotation
 - `SUPPORTING_FRONTIER`: fixed current breadth, leadership, correlation, and volatility controls for incremental next-state tests
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -445,3 +445,11 @@ responses, availability, discovery/untouched-confirmation blocks, overlap,
 controls, sign/effect gates, and no-rescue rules before constructing future
 values. Market returns, selection outcomes, strategies, failed roles, and
 CY-011 remain prohibited. No S1-S12 STOP is active.
+
+The leadership dynamics map and spec `b1266eed...` are now frozen before any
+future state is shifted. Three edges only test rotation persistence,
+diffusion-to-next-block rotation, and rotation-to-five-session diffusion
+change. Controls, four coordinate systems, 2019-2021 discovery, untouched
+2022-2023 confirmation, phase-zero nonoverlap, effect/sign/support gates, and
+response availability are fixed. Execute twice; no market/stock return or
+strategy outcome may enter.
