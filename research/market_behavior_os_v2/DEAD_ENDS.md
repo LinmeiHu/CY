@@ -32,6 +32,7 @@
 | MKT-DSTRESS-001 weakest-link directional scores and 0.80/0.50 processes | REPRESENTATION_NOT_FROZEN: arithmetic-shape rho 0.691 downside/0.646 upside; side onsets sparse and strict/state/dwell/activity gates fail | Do not substitute geometric aggregation, lower thresholds, or retain a favorable view/side; broader directional-process family requires different structure |
 | MKT-MIN-PATH-001 15:00 derived-trajectory availability | INVALID_BEFORE_CONSTRUCTION: source artifact is available at 15:30 after the completed 15:00 bar | Use the exact MKT-MIN-PATH-002 semantic retry only; never backdate availability |
 | MKT-MIN-PATH-002 non-volatility progressions plus every signed reversal and curvature | REPRESENTATION_NOT_FROZEN: 35 of 36 roles fail fixed definition/aggregation gates | Do not select a favorable descriptor/operator or combine failed roles; require a structurally different preregistered family |
+| MKT-MIN-VOL-GEO-001 shared 2019-2023 raw/PIT cell list | INVALID_BEFORE_GEOMETRY: 2019 PIT is inside 504-observation warm-up and 2020 daily-control PIT cells have only 102-107 observations versus the unchanged 150 gate | Use MKT-MIN-VOL-GEO-002 coordinate-specific year eligibility; never lower the cell gate or cite a nonexistent 001 geometry result |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-GEO-002_FROZEN_BEFORE_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: outcome-blind geometry of the sole stable five-day minute-volatility progression
+- `CURRENT_PHASE`: `MKT-MIN-VOL-STATE-001_MAP_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: outcome-blind state geometry and recurrence of the distinct minute-volatility path
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -295,3 +295,16 @@ spec `b556472d...` inherits the scientific design and changes only cell
 eligibility: raw 2019-2023, complete PIT 2021-2023, relative 2019-2023. The
 150-observation gate, population, inputs, controls, thresholds, and prohibitions
 are unchanged.
+
+MKT-MIN-VOL-GEO-002 is complete. Every available coordinate view is below the
+0.85 pairwise redundancy edge. The largest median absolute rho is 0.249 versus
+the Day -1 minute-volatility level; among daily controls it is 0.238 versus
+volatility concentration. Joint five-control raw-rank reconstruction is only
+0.195 median adjusted R2 and 0.223 maximum, passing the 0.70/0.85 gates. Two
+runs are byte-identical: panel `8cbe07f0...`, result `8bc15644...`, report
+`163e14ac...`; five targeted tests pass.
+
+This establishes a distinct contemporaneous volatility-path coordinate, not a
+contraction/expansion mechanism, forecast, habitat, or signal. SYNTH-MKT-012
+selects a map-first outcome-blind recurrence/state-geometry test before any
+economic-usefulness study.

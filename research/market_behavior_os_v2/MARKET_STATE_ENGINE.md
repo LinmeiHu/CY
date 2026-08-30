@@ -11,7 +11,7 @@ return. Initial dimensions are:
 | Liquidity | own-history-relative activity, turnover level, and amount concentration frozen; participation/diffusion compressed into activity; fixed change unstable | causal percentiles and robust z | governed-view contrasts with audited units | THREE_ROLES_FROZEN_TRANSITION_NOT_FROZEN |
 | Dispersion/correlation | leave-one-out 20-session co-movement and 5-session directional synchronization frozen | causal percentiles and robust z | governed-view contrasts | TWO_ROLES_FROZEN_PANIC_PROCESS_UNTESTED |
 | Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
-| Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_ROLE_FROZEN_USEFULNESS_AND_EXTERNAL_REDUNDANCY_UNTESTED |
+| Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_EXTERNALLY_DISTINCT_ROLE_USEFULNESS_UNTESTED |
 | Leadership/style | concentration, persistence, diffusion, failure | causal history | industry/index contrasts | CONSTRUCTION_PENDING |
 | Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
@@ -147,3 +147,10 @@ signed reversal or curvature freezes. The accepted ordinal role is a path-shape
 coordinate only. External redundancy with daily volatility remains to be tested
 before it can be treated as a distinct state mechanism; usefulness remains
 untested regardless of that result.
+
+MKT-MIN-VOL-GEO-002 clears that external redundancy question. Pairwise median
+absolute associations are at most 0.249 and joint five-control adjusted rank R2
+is 0.195 median/0.223 maximum. The engine may retain the path as a separate
+continuous coordinate. It may not yet emit discrete contraction/expansion
+states: definition-neighbor state agreement, recurrence, dwell, and transition
+support remain untested.

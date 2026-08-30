@@ -458,3 +458,50 @@ archetype.
 the sole accepted path role against accepted same-session minute volatility and
 daily volatility level/change/concentration coordinates. Do not add any failed
 path role, tune a threshold, read raw minutes, or access outcomes/CY-011.
+
+## SYNTH-MKT-012 — after minute-volatility external geometry
+
+### What was learned?
+
+MKT-MIN-VOL-GEO-002 preserves 10,696 common rows and finds the accepted path
+pairwise distinct from its Day -1 minute level and four accepted daily
+volatility controls in every available absolute, causal-PIT, and relative view.
+The largest median absolute rho is 0.249. All five controls jointly reconstruct
+only 0.195 median adjusted rank R2, with 0.223 maximum, well below the frozen
+0.70/0.85 gates. Two runs are byte-identical.
+
+The predecessor is separately invalid: its cell list ignored causal PIT warm-up
+and stopped before any correlation. No threshold or favorable year was used to
+rescue it; the exact retry uses complete PIT years 2021-2023.
+
+### What market behavior are we still not studying?
+
+We do not know whether the continuous path forms stable rising/falling/flat
+states under both accepted ordinal definitions, whether those states recur in
+every view/year, or whether dwell and transitions are portable. Objective
+support/acceptance remains data-contract-blocked; accumulation/distribution,
+leader/industry rotation, multi-strategy portability, and economic usefulness
+remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. External distinctness supplies neither an executable trigger nor a future
+market/payoff relationship. A volatility-breakout or volatility-mean-reversion
+archetype would require stable states, temporal outcomes, execution, exit, and
+capacity evidence that do not exist.
+
+### Parallel-track awareness
+
+- **Market research:** retain the continuous path separately and test discrete
+  state/process semantics outcome-blind.
+- **Existing-strategy archaeology:** no new strategy outcome or trade field was
+  read; no seed rule changes.
+- **Strategy invention:** no archetype reaches preliminary mechanism support.
+
+### Research Director decision
+
+`EXPLORE` MKT-MIN-VOL-STATE-001 and `FALSIFY` premature contraction/expansion
+labels. Freeze exact sign states for the primary and its two accepted ordinal
+neighbors, fixed daily-volatility-level context, recurrence, state agreement,
+dwell, and transition gates. Read no future returns, strategy outcomes, raw
+minute rows, failed path roles, or CY-011.

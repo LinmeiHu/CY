@@ -261,3 +261,16 @@ MKT-MIN-VOL-GEO-002 control spec `b556472d...` is frozen. It changes only the
 coordinate-specific year eligibility—raw 2019-2023, complete PIT 2021-2023,
 relative 2019-2023—and retains all scientific roles, hashes, population,
 thresholds, 15:30 availability, and prohibitions. Execute the exact retry.
+
+MKT-MIN-VOL-GEO-002 is complete. The target is pairwise distinct from all five
+controls across every available absolute/PIT/relative view. Median absolute raw
+rho is 0.249 against the Day -1 minute level and at most 0.238 against the four
+daily controls. The five controls jointly reconstruct 0.195 median adjusted
+rank R2 (0.223 maximum), well below 0.70/0.85. Two runs are byte-identical:
+panel `8cbe07f0...`, result `8bc15644...`, report `163e14ac...`; five tests pass.
+
+Treat this only as a distinct path coordinate. Next freeze
+MKT-MIN-VOL-STATE-001 to test sign-state agreement with the two accepted
+ordinal neighbors, recurrence across views/years, dwell, transitions, and
+outcome-blind geometry with frozen daily volatility level. Do not access future
+returns or strategy outcomes. Human input is not required; CY-011 stays unopened.

@@ -171,3 +171,17 @@
   supply/demand, a transition mechanism, habitat, forecast, or trading signal.
   The broader failed descriptor families remain open only under structurally
   different representations, not favorable window/operator selection.
+
+## MKT-H-012 — external geometry of the minute-volatility path
+
+- Status: `DISTINCT_CONTEMPORANEOUS_PATH_COORDINATE`.
+- Claim: the accepted minute-realized-volatility ordinal progression may add a
+  state coordinate beyond its Day -1 level and accepted daily volatility level,
+  range, concentration, and change.
+- Result: all five controls pass the fixed 0.85 pairwise-distinctness gate in
+  every available absolute, causal-PIT, and relative view. The largest median
+  absolute association is 0.249. Joint raw-rank reconstruction by all five
+  controls is 0.195 median adjusted R2 and 0.223 maximum, passing 0.70/0.85.
+- Boundary: distinctness does not establish contraction/expansion, recurrence,
+  transition stability, prediction, strategy usefulness, habitat, or causality.
+  Those claims require separate frozen tests.

@@ -46,7 +46,10 @@ MKT-H-007 market-wide five-day minute state
   -> 32 same-session levels freeze
   -> selloff-duration and auction-gap levels fail
   -> all exact five-day OLS trajectories fail shape-neighbor stability
-  -> no minute mechanism/usefulness claim
+  -> MKT-H-011 freezes only minute-volatility ordinal progression among 36 non-slope roles
+  -> MKT-H-012 shows it is distinct from five accepted minute/daily volatility controls
+  -> recurrent sign-state/dwell/transition stability remains untested
+  -> no minute usefulness claim
 
 MKT-H-009 directional-tail/risk-appetite construction
   -> all eleven exact representations pass their own gates

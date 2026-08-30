@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Is the sole stable five-day minute-volatility progression distinct from frozen same-session and daily volatility states? | High | High | Exact frozen panels exist; no raw-minute rescan | High | Low | ACTIVE_MKT_MIN_VOL_GEO_001_MAP_FIRST |
+| 1 | Does the distinct minute-volatility path form stable recurrent rising/falling/flat states across accepted ordinal definitions, views, and years? | High | High | Exact frozen path and level coordinates exist | High | Medium/discrete-state risk | ACTIVE_MKT_MIN_VOL_STATE_001_MAP_FIRST |
 | 2 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 3 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 4 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -21,3 +21,8 @@ progression. The active queue first tests its outcome-blind redundancy against
 accepted minute/daily volatility coordinates. This is cheaper and scientifically
 prior to usefulness or state interaction. The 35 failed paths remain rejected;
 none enters MKT-MIN-VOL-GEO-001.
+
+MKT-MIN-VOL-GEO-002 finds the survivor externally distinct from five frozen
+volatility controls. The active queue now tests whether exact sign states and
+their recurrence/dwell/transitions survive the two already-accepted ordinal
+definitions. No outcome or optimized state threshold is allowed.
