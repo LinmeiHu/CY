@@ -293,3 +293,10 @@ contraction labels. Next freeze MKT-MIN-VOL-RESP-001: a strategy-independent,
 continuous association with future 1/3/5-session minute-volatility change,
 incremental to fixed current volatility controls and with confirmation time
 untouched before specification. No market-return or strategy outcome is needed.
+
+MKT-MIN-VOL-RESP-001 is frozen before forward construction under spec
+`595f2ec5...`. It binds geometry panel `8cbe07f0...` and daily minute panel
+`bdbb3cb9...`; h=5 is primary, h=1/3 mandatory neighbors; 2019-2021 is discovery
+and 2022-2023 untouched confirmation. Partial rank after five fixed controls and
+fixed phase-zero h=5 non-overlap are primary evidence. Execute twice without
+reading price returns, strategy outcomes, raw minutes, or CY-011.

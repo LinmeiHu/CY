@@ -1,0 +1,81 @@
+{
+  "experiment_id": "MKT-MIN-VOL-RESP-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FORWARD_RESPONSE_CONSTRUCTION",
+  "question": "Does the continuous minute-volatility ordinal path associate incrementally and portably with future 1/3/5-session market minute-volatility change?",
+  "research_role": "strategy-independent temporal response after representation and redundancy gates",
+  "inputs": {
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-002_panel.csv",
+      "sha256": "8cbe07f000f39edfc4f79849fbeb66022f2d334c4d465f72b8ba7e15e8df48ed"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-002_result.json",
+      "sha256": "8bc15644a0edbfd4b2e5c158e0b7d6a8435ca0dbf3da16b45bf9acf8d90c04c5"
+    },
+    "daily_minute_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+      "sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701"
+    },
+    "daily_minute_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+      "sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe"
+    },
+    "date_end": "2023-12-29"
+  },
+  "predictor": {
+    "field": "minute_realized_volatility__ordinal_progression",
+    "available_at": "predictor date 15:30 Asia/Shanghai after completed 15:00 minute bar"
+  },
+  "controls": [
+    "minute_realized_volatility__day_m1_level",
+    "realized_volatility_median20",
+    "intraday_range_median_smooth5",
+    "volatility_mass_share_top10",
+    "realized_volatility_change5"
+  ],
+  "response": {
+    "source_field": "minute_realized_volatility__median",
+    "formula": "log(level[t+h] / level[t]) within exact governed group",
+    "horizons_sessions": [1, 3, 5],
+    "primary_horizon_sessions": 5,
+    "availability": "response h becomes available at 15:30 Asia/Shanghai on group session t+h and is never a predictor at t"
+  },
+  "temporal_blocks": {
+    "discovery": ["2019-01-01", "2021-12-31"],
+    "confirmation": ["2022-01-01", "2023-12-29"],
+    "excluded_from_effect_estimation": ["2018-01-01", "2018-12-31"]
+  },
+  "estimation": {
+    "raw": "within each block and eight governed groups, Spearman predictor versus response",
+    "primary": "partial rank correlation of predictor and response after five current-state control ranks plus intercept",
+    "overlap_sensitivity": "for h=5, fixed phase-zero positions 0,5,10,... within each sorted group/block; no phase search"
+  },
+  "gates": {
+    "full_sample_discovery_minimum_per_group": 700,
+    "full_sample_confirmation_minimum_per_group": 450,
+    "nonoverlap_discovery_minimum_per_group": 120,
+    "nonoverlap_confirmation_minimum_per_group": 80,
+    "primary_block_median_absolute_partial_rho_minimum": 0.10,
+    "primary_group_sign_agreement_minimum_of_8": 6,
+    "neighbor_block_median_absolute_partial_rho_minimum": 0.05,
+    "nonoverlap_block_median_absolute_partial_rho_minimum": 0.08,
+    "nonoverlap_group_sign_agreement_minimum_of_8": 5,
+    "sign_rule": "primary discovery and confirmation medians must share one nonzero sign; every neighbor and nonoverlap block median must share it",
+    "no_rescue": "No favorable horizon, block, group, denominator, view, phase, control subset, sign, raw association, discrete state, or failed representation replaces a failed primary gate."
+  },
+  "forbidden_fields": [
+    "raw minute rows",
+    "failed MKT-MIN-PATH-002 field, neighboring definition, discrete state, OLS, endpoint, signed-reversal, or curvature",
+    "future security or market price return",
+    "strategy membership, candidate, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a replicating conditional association with later market minute-volatility change. It does not establish causality, market-return prediction, strategy usefulness, habitat, entry/exit timing, or a trading rule. Failure leaves the coordinate descriptive only.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-RESP-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-RESP-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-VOL-RESP-001_response.md"
+  ]
+}

@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-RESP-001_MAP_NEXT`
+- `CURRENT_PHASE`: `MKT-MIN-VOL-RESP-001_FROZEN_BEFORE_FORWARD_RESPONSE`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent future-volatility response to the continuous minute-volatility path
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -331,3 +331,11 @@ SYNTH-MKT-013 selects a preregistered continuous temporal-response study using
 future minute-volatility levels only, with explicit 1/3/5-session horizons,
 incremental controls, and untouched confirmation time. It is not a return or
 strategy test.
+
+The MKT-MIN-VOL-RESP-001 map and spec `595f2ec5...` are frozen before any
+forward value is constructed. The h=5 future minute-volatility log change is
+primary; h=1/3 are mandatory neighbors. Five current-volatility controls,
+2019-2021 discovery, untouched 2022-2023 confirmation, fixed phase-zero
+non-overlap, effect-size/sign/coverage gates, response availability, and all
+prohibitions are fixed. Future market price returns, strategy outcomes, raw
+minutes, failed path fields, discrete-state rescue, and CY-011 remain forbidden.
