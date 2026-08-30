@@ -338,3 +338,37 @@ onward. This is fail-closed and does not impute a price. The event population,
 crossing clock, post-cross formula, sample, thresholds, gates, and claims are
 unchanged. A focused regression covers the leading zero-volume case; three
 tests and both final deterministic executions pass.
+
+## MKT-BREAKOUT-DYN-001 — invalid selection ordinal as time
+
+The frozen temporal map/spec declared `market_sequence_rank` as the event-time
+coordinate. The first attempted trajectory stopped before any count or estimate:
+`2018|01|ALL_A|02|600576.SH / L10_CONTINUOUS` crosses on 2018-03-12 and
+2018-03-13, but both rows correctly retain selection ordinal 2. The field ranks
+the hash-selected symbol inside its block/view and is constant through time.
+
+The already frozen `relative_day` values -5 through -1 are the actual market-
+session coordinate. MKT-BREAKOUT-DYN-002 changes only that declaration and
+output identity. It retains the original bootstrap/scalar seed identity and all
+roles, controls, gates, definitions, and prohibitions.
+
+## MKT-BREAKOUT-DYN-002-A — invalid wrapper parent-spec path
+
+The first 002 wrapper invocation redirected the imported module's active spec
+path before calling its immutable 001 parent validator. The validator therefore
+compared the 002 file with the expected 001 hash and stopped before reading the
+panel or constructing an estimate. The wrapper now scopes the parent path only
+during parent validation and restores the active output spec afterward. A
+focused regression exercises this exact wrapped order.
+
+## MKT-BREAKOUT-DYN-002-B — invalid nondeterministic output schema
+
+The corrected 002 runner completed the frozen estimators, then output inspection
+found `elapsed_seconds` serialized into result JSON. That field cannot be byte-
+identical across runs. The wrapper hash also did not bind its imported scientific
+runner. No 002 result is accepted as reproducible evidence.
+
+MKT-BREAKOUT-DYN-003 changes only output identity: dynamic elapsed metadata is
+removed and wrapper, time-coordinate, and scientific-runner hashes are recorded.
+All revealed estimates, sample rows, roles, operators, seeds, controls, gates,
+and decisions are unchanged. Two 003 runs are byte-identical.

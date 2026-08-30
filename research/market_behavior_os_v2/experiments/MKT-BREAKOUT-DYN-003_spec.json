@@ -1,0 +1,28 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DYN-003",
+  "track": "MARKET",
+  "research_role": "output-schema-only deterministic retry",
+  "status": "FROZEN_BEFORE_DETERMINISTIC_RETRY",
+  "frozen_at": "2026-08-30T22:12:21Z",
+  "scientific_control_parent": {
+    "path": "research/market_behavior_os_v2/experiments/MKT-BREAKOUT-DYN-002_spec.json",
+    "sha256": "973b6ecf89d12a10701f13e89233458d802d5ea25c24504135140c6758d8c209"
+  },
+  "output_corrections": {
+    "remove_dynamic_elapsed_seconds_from_result": true,
+    "record_wrapper_and_imported_runner_hashes": true,
+    "outputs": {
+      "trajectory_panel": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-003_trajectory_panel.csv",
+      "stability_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-003_stability_audit.csv",
+      "coupling_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-003_coupling_audit.csv",
+      "result": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-003_result.json",
+      "report": "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DYN-003_dynamics.md"
+    }
+  },
+  "unchanged_science": true,
+  "revealed_002_estimates_used_to_change_science": false,
+  "prohibited_changes": [
+    "sample, role, control, definition, time coordinate, operator, support floor, threshold, seed, estimate, or claim change",
+    "read raw minute rows, future returns, outcomes, strategy fields, post-2023 data, or CY-011"
+  ]
+}

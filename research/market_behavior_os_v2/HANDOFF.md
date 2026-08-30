@@ -1156,3 +1156,38 @@ operators, generic controls, blocks/years, and no-rescue gates before estimating
 direction or coupling. Do not infer a breakout/failed-breakout process, revive
 the three compressed roles, use post-cross values as first-cross predictors,
 read outcomes, modify CHINEXT V1, or open CY-011.
+
+The temporal map `f41204fc...` and MKT-BREAKOUT-DYN-001 spec `09f29ecf...`
+were frozen before any role-specific trajectory count or sign. The first run
+stopped before estimates: `market_sequence_rank` is the constant symbol-
+selection ordinal, not time. The first differing sequence had two crossing days
+at the same ordinal 2. The V2 control map `3b8f77c8...` and 002 spec
+`973b6ecf...` change only event time to frozen `relative_day` (-5 through -1).
+
+The first 002 wrapper call failed before estimates because its active spec path
+was redirected too early. After the adapter correction, 002 produced estimates
+but could not satisfy byte reproducibility because result JSON included dynamic
+elapsed seconds and bound only the wrapper, not the imported scientific runner.
+Those 002 outputs are unaccepted. The output-only 003 spec `9cc7883f...` removes
+dynamic timing, records all runner hashes, and changes no science.
+
+MKT-BREAKOUT-DYN-003 passes representation for all seven roles but finds no
+common direction. Unconditional roles have 250 endpoint/108 three-plus-event
+trajectories; reacquisition has 171/58. Continuation intervals cross zero,
+rejection reverses by block, four roles have zero/incompatible medians, and
+VWAP acceptance fails block-A interval/sign-fraction gates despite a negative
+late block. No strengthening/weakening process is emitted.
+
+No residual compression passes. Rejection depth versus below-level dwell is the
+nearest pair at -0.693 globally and -0.682/-0.657 by block, just below the fixed
+global 0.70 boundary. Do not lower it. Five scalar cases are exact; two complete
+runs are byte-identical: trajectory `e5b42475...`, stability `0f10b7d0...`,
+coupling `53567843...`, result `1a735a25...`, report `001cca98...`. Eight focused
+tests and lint pass; raw-minute reads are zero.
+
+SYNTH-MKT-039 next requires a map, not estimates, for strictly prior-day accepted
+trend/breadth conditioning of same-session breakout roles. Preserve trend
+direction, breadth discovery, and leadership concentration as separate
+primitives; use fixed generic controls and blocks; do not combine them into a
+trading gate, read payoff, revive compressed roles, modify CHINEXT, or open
+CY-011.

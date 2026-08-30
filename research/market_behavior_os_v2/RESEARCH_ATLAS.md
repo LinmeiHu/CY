@@ -129,6 +129,11 @@
 | `experiments/MKT-BREAKOUT-001_spec.json` | Frozen ten-role same-session representation, shape, external-geometry, scalar, and no-rescue contract |
 | `scripts/run_mkt_breakout_001.py` | Exact post-cross path construction, fixed-definition stability, generic-path compression, and deterministic output |
 | `reports/MKT-BREAKOUT-001_representation.md` | Seven retained observables, three compressed manifestations, and explicit no-usefulness boundary |
+| `OBJECTIVE_BREAKOUT_TEMPORAL_DYNAMICS_MAP.md` | Frozen repeated-event roles, actual-gap operators, controls, direction, compression, and no-rescue design; 001 time declaration invalid |
+| `OBJECTIVE_BREAKOUT_TEMPORAL_DYNAMICS_MAP_V2.md` | Control-only correction from selection ordinal to frozen `relative_day` market-session time |
+| `experiments/MKT-BREAKOUT-DYN-003_spec.json` | Deterministic output-only retry inheriting all 001/002 temporal science |
+| `scripts/run_mkt_breakout_dyn_003.py` | Relative-day temporal execution with composite runner identity and deterministic outputs |
+| `reports/MKT-BREAKOUT-DYN-003_dynamics.md` | Seven stable temporal coordinates; no common direction or residual compression |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

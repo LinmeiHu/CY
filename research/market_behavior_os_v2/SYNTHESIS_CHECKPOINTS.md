@@ -1711,3 +1711,58 @@ gaps, endpoint and robust shape challenges, generic controls, block/year
 portability, coupling, transition, and no-rescue gates before estimating any
 direction. Do not revive compressed roles, flatten raw minutes, optimize windows,
 read outcomes, change CHINEXT V1, or open CY-011.
+
+## SYNTH-MKT-039 — after objective prior-high repeated-event dynamics
+
+### What was learned?
+
+All seven repeated-event endpoint-rate coordinates are representation-stable
+under actual `relative_day` market-session gaps, OLS/Theil--Sen challenges,
+L10/L40 and auction definitions, and fixed generic-control rates. Main roles
+have 250 endpoint trajectories and 108 with at least three events; conditional
+reacquisition has 171 and 58. The earlier selection-rank time declaration and
+two output attempts are invalid; only deterministic 003 is evidence.
+
+Representation stability does not become an unconditional process. No role
+passes the common-direction gate. Rejection reverses across blocks; multiple
+roles have zero medians; continuation intervals cross zero. VWAP acceptance is
+more negative in block B, but block A touches zero and misses the 0.60 sign-
+fraction floor. The nearest residual pair, rejection depth and below-level
+dwell, is -0.693 globally against a fixed 0.70 compression boundary. It is not
+rounded or rescued.
+
+### What market behavior are we still not studying?
+
+Strictly prior-day market-state conditioning of objective-breakout behavior,
+state-dependent acceptance/rejection, resistance role reversal, event-to-future-
+state response, industry diffusion of crossings, continuous PIT normalization,
+full relative event state, order flow, accumulation/distribution, payoff,
+execution, capacity, and strategy habitat remain unstudied. The unconditional
+five-session result cannot answer whether heterogeneous market environments
+cancel one another.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. There is no unconditional strengthening/weakening breakout process and no
+latent seven-role score. Breakout continuation and failed-breakout reversal
+remain inactive. CHINEXT V1 is unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** preserve all seven descriptive temporal coordinates but
+  deprioritize further unconditional shape search. Move to prior-day state
+  conditioning only after a frozen map.
+- **Existing-strategy archaeology:** no strategy outcome was read and the old
+  V1 acceptance lineage remains rejected.
+- **Strategy invention:** no prototype; any later state-conditioned association
+  would still precede payoff, execution, and validation.
+
+### Research Director decision
+
+`DEPRIORITIZE_UNCONDITIONAL_BREAKOUT_DIRECTION_AND_MAP_PRIOR_DAY_STATE_GEOMETRY`.
+Use only accepted trend direction, breadth discovery, and breadth leadership
+concentration available strictly before the crossing session. Keep A, B, and
+their fixed joint increment separate; bind same-event generic controls and
+blocks before estimates. This is strategy-independent behavior research, not a
+Trend x Breadth trading gate. No payoff, strategy field, post-2023 data, or
+CY-011 may enter.

@@ -70,6 +70,8 @@
 | Objective prior-high follow-through excursion as a distinct minute role | EXTERNALLY_REDUNDANT: global Spearman is 0.980 with official daily-high margin and fixed joint adjusted R2 is 0.963 | Preserve as an auditable excursion descriptor; do not delete daily-high geometry or call it incremental breakout follow-through |
 | Objective prior-high closing acceptance margin as a distinct minute role | JOINTLY_RECONSTRUCTABLE: fixed open-close return, daily-high margin, and close location explain global adjusted rank R2 0.772 | Preserve as descriptive closing geometry; do not remove controls or count it as an independent acceptance mechanism |
 | Above-level close episodes as a separate breakout role | INTERNALLY_REDUNDANT: global Spearman is 0.963 with loss-episode count | Retain loss episodes by frozen priority; do not count mirrored episode segmentation as another mechanism |
+| Unconditional five-session direction of objective-breakout roles | COMMON_DIRECTION_FAIL: all seven stable rates fail block median/interval/sign-fraction/year gates; rejection reverses and several roles have zero medians | Preserve the temporal coordinates; do not select VWAP's later negative block, choose years/views, flip signs, lower fractions, or call the paths strengthening/weakening |
+| Residual rejection-depth/below-level-dwell compression | FROZEN_BOUNDARY_FAIL: residual rho is -0.693 globally versus 0.70 required, despite -0.682/-0.657 blocks | Retain both roles; do not round the correlation, lower the global boundary, delete controls, or construct a latent rejection score |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

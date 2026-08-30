@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do the seven stable objective prior-high post-cross observables form portable repeated-event trajectories or a smaller residual process? | Very high | Very high | 275 sequences have two or more L20 crossing days; role-specific support not yet frozen | Very high | Medium | ACTIVE_MAP_FIRST_MKT_BREAKOUT_DYN_001 |
+| 1 | Do strictly prior-day accepted trend and breadth primitives condition objective-breakout path roles after generic controls? | Very high | High | Frozen trend/breadth panels plus 964 event sessions; exact prior-day join not yet audited | Very high | Medium | ACTIVE_MAP_FIRST_MKT_BREAKOUT_HAB_001 |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -331,3 +331,10 @@ above-level episodes are compressed. The active frontier remains breakout
 representation, but now at the repeated-event temporal layer. Build and freeze
 the map before inspecting role-specific sequence directions or correlations;
 do not turn the seven observables into a score or read future payoff.
+
+MKT-BREAKOUT-DYN-003 retains all seven temporal representations but finds no
+common direction or residual compression. The unconditional branch is therefore
+deprioritized without tuning another shape. The active question is whether
+strictly prior-day accepted trend direction and breadth discovery/concentration
+condition same-session event roles after fixed controls. Freeze the join,
+coordinate, A/B, block, and no-rule gates before any association estimate.

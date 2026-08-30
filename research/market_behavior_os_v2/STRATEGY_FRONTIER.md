@@ -99,6 +99,12 @@ execution, or capacity evidence exists. Breakout continuation and failed-
 breakout reversal remain `WAIT_FOR_MARKET_MECHANISM` while the repeated-event
 temporal map is frozen and falsified.
 
+MKT-BREAKOUT-DYN-003 adds stable completed-history trajectory coordinates but
+no common direction or residual process. It activates no prototype. Breakout
+continuation and failed-breakout reversal remain `WAIT_FOR_MARKET_MECHANISM`.
+The next prior-day state-conditioning study is still market behavior research;
+even a replicated association will not authorize payoff, execution, or a rule.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

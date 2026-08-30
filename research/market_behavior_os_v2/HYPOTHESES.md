@@ -592,3 +592,20 @@
 - Boundary: the seven observations are not seven latent mechanisms. The result
   establishes no temporal process, common direction, future value, habitat,
   trigger, execution edge, breakout strategy, or failed-breakout strategy.
+
+## MKT-H-036 — objective prior-high repeated-event temporal dynamics
+
+- Status: `SEVEN_TEMPORAL_COORDINATES_STABLE_NO_COMMON_DIRECTION_OR_COMPRESSION`.
+- Hypothesis: endpoint rates across repeated crossing days can remain stable
+  under OLS/Theil--Sen shapes, L10/L40, auction, and generic-control challenges;
+  portable block/year direction or residual compression would be separate gates.
+- Primary: actual `relative_day` market-session gaps under L20 continuous. The
+  001 declaration of selection rank as time is invalid; 003 is the deterministic
+  exact-control retry.
+- Result: all seven representations pass. Main roles have 250 endpoint and 108
+  three-plus-event trajectories; reacquisition has 171/58. Zero roles pass
+  common direction. Residual rejection/dwell rho -0.693 misses the fixed 0.70
+  compression boundary; all other pairs also fail.
+- Boundary: stable rates are completed-history coordinates only. There is no
+  unconditional breakout-acceptance/rejection process, favorable direction,
+  latent score, prediction, habitat, usefulness, or strategy archetype.

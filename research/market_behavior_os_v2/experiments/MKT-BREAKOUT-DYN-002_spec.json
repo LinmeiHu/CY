@@ -1,0 +1,35 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DYN-002",
+  "track": "MARKET",
+  "research_role": "control-only temporal-coordinate retry",
+  "status": "FROZEN_BEFORE_ROLE_SPECIFIC_TRAJECTORY_COUNTS_OR_ESTIMATES",
+  "frozen_at": "2026-08-30T22:12:21Z",
+  "scientific_parent_spec": {
+    "path": "research/market_behavior_os_v2/experiments/MKT-BREAKOUT-DYN-001_spec.json",
+    "sha256": "09f29ecff92864cae4242bdad64632314298d690f5b09644f606d6b605df69eb"
+  },
+  "control_correction_map": {
+    "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_TEMPORAL_DYNAMICS_MAP_V2.md",
+    "sha256": "3b8f77c8e01ef994b415bc4fe5d2a3901625cb53f1d759716b4889fdaa82ded5"
+  },
+  "overrides": {
+    "event_time": "relative_day",
+    "required_sequence_time_grid": [-5, -4, -3, -2, -1],
+    "selection_attribute_not_time": "market_sequence_rank",
+    "bootstrap_and_scalar_seed_identity": "MKT-BREAKOUT-DYN-001",
+    "outputs": {
+      "trajectory_panel": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-002_trajectory_panel.csv",
+      "stability_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-002_stability_audit.csv",
+      "coupling_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-002_coupling_audit.csv",
+      "result": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-002_result.json",
+      "report": "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DYN-002_dynamics.md"
+    }
+  },
+  "unchanged_science": true,
+  "role_specific_estimates_inspected_before_freeze": false,
+  "prohibited_actions": [
+    "use market_sequence_rank as time",
+    "change a role, control, definition, operator, gate, seed, or sample",
+    "read raw minute rows, future returns, outcomes, strategy fields, post-2023 data, or CY-011"
+  ]
+}

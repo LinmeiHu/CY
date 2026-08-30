@@ -1,0 +1,165 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DYN-001",
+  "track": "MARKET",
+  "research_role": "repeated-event temporal representation and falsification",
+  "status": "FROZEN_BEFORE_ROLE_SPECIFIC_TRAJECTORY_COUNTS_OR_ESTIMATES",
+  "frozen_at": "2026-08-30T22:12:21Z",
+  "question": "Do the seven retained objective prior-high post-cross observables form stable repeated-event trajectories, common algebraic directions, or a smaller residual process?",
+  "inputs": {
+    "session_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_session_panel.csv",
+      "sha256": "e67ac766ac8ad63b6f95309e08a70cf5d0daca3450159adc45de99ef2faa1b99"
+    },
+    "parent_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_result.json",
+      "sha256": "c56d57afd5e7e00215c233b974ab7f1a8b283d3001e87dc255ab51d7651e83ce"
+    },
+    "parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-BREAKOUT-001_spec.json",
+      "sha256": "f314165c8cfaefe9cb0ba761dc8ced6884abd192d36481a8d740f2c0a592821f"
+    },
+    "representation_map": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_ACCEPTANCE_REPRESENTATION_MAP.md",
+      "sha256": "0b3363e43e7eee1ef3d222abe8c4017d93784e545ddbf82683e90f15b7666c47"
+    },
+    "data_contract": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DATA_CONTRACT.md",
+      "sha256": "721517cdec1d11c78768422000a103a5a76ce30323580275553a86b9d7422a28"
+    },
+    "temporal_dynamics_map": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_TEMPORAL_DYNAMICS_MAP.md",
+      "sha256": "f41204fc6523bb3a2b0b2ce0207671bd625a8ebfe70736d5136a4a1dd50770e3"
+    }
+  },
+  "population": {
+    "immutable_sequences": 1920,
+    "immutable_cohort_rows": 9600,
+    "primary_definition": "L20_CONTINUOUS",
+    "level_challenges": ["L10_CONTINUOUS", "L40_CONTINUOUS"],
+    "clock_challenge": "L20_AUCTION",
+    "known_broad_event_support_only": {
+      "zero_primary_cross_days": 1402,
+      "one_primary_cross_day": 243,
+      "two_or_more_primary_cross_days": 275
+    },
+    "sequence_key": "sequence_id",
+    "event_time": "market_sequence_rank",
+    "fixed_blocks": {"A": "2018-2020", "B": "2021-2023"},
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "views": ["ALL_A", "CHINEXT_BOARD", "SH_A", "SZ_A"]
+  },
+  "availability": {
+    "source_session_row": "15:30 Asia/Shanghai after the completed crossing session",
+    "trajectory": "15:30 Asia/Shanghai on the last included event day",
+    "pit_class": "PIT-B_ARCHIVAL_RECORD_AVAILABILITY_UNAVAILABLE",
+    "post_cross_values_are_first_cross_predictors": false,
+    "future_sessions_used": false
+  },
+  "roles": {
+    "continuation30_log_return": {"domain_flag": "domain_main", "kind": "continuous", "controls": ["first_cross_fraction", "open_close_log_return", "daily_high_margin", "minute_realized_volatility"]},
+    "rejection_depth": {"domain_flag": "domain_main", "kind": "continuous", "controls": ["intraday_log_range", "close_location", "open_close_log_return", "first_cross_fraction"]},
+    "below_level_close_fraction": {"domain_flag": "domain_main", "kind": "continuous", "controls": ["close_location", "open_close_log_return", "first_cross_fraction", "minute_realized_volatility"]},
+    "loss_episode_count": {"domain_flag": "domain_main", "kind": "discrete_source_continuous_rate", "controls": ["minute_realized_volatility", "intraday_log_range", "first_cross_fraction"]},
+    "reacquisition_bars": {"domain_flag": "domain_reacquisition", "kind": "conditional_continuous", "controls": ["first_cross_fraction", "high_time_fraction", "minute_realized_volatility", "close_location"]},
+    "post_cross_cumulative_vwap_acceptance_fraction": {"domain_flag": "domain_main", "kind": "continuous", "controls": ["open_close_log_return", "session_vwap_recovery_count", "session_longest_below_vwap_fraction", "session_downside_excursion", "session_recovery_speed_30bar"]},
+    "post_cross_activity_ratio": {"domain_flag": "domain_main", "kind": "continuous", "controls": ["minute_volume_concentration", "closing30_volume_share", "first_cross_fraction"]}
+  },
+  "prohibited_roles": [
+    "follow_through_excursion",
+    "closing_acceptance_margin",
+    "above_level_close_episode_count"
+  ],
+  "operators": {
+    "primary_endpoint_rate": "(last value - first value) / (last market_sequence_rank - first market_sequence_rank), minimum two distinct event days",
+    "ols_challenge": "OLS slope of value on market_sequence_rank, minimum three event days",
+    "theil_sen_challenge": "median of all pairwise value/rank slopes, minimum three event days",
+    "controls": "endpoint rates on exactly the target role's qualifying event days"
+  },
+  "support_gates": {
+    "main_endpoint": {"total": 160, "each_block": 60, "each_year": 12, "each_view": 25},
+    "main_shape": {"total": 60, "each_block": 20, "each_year": 5},
+    "reacquisition_endpoint": {"total": 70, "each_block": 25, "each_year": 5, "each_view": 10},
+    "reacquisition_shape": {"total": 20, "each_block": 6, "each_year": 2},
+    "definition_intersection_main": {"global": 60, "each_block": 20},
+    "definition_intersection_reacquisition": {"global": 25, "each_block": 8},
+    "external_complete_main": {"global": 120, "each_block": 45},
+    "external_complete_reacquisition": {"global": 50, "each_block": 18}
+  },
+  "representation_gates": {
+    "endpoint_nondegeneracy": {"minimum_unique_global": 10, "minimum_unique_each_block": 5, "minimum_unique_each_year": 3},
+    "shape_agreement": {"minimum_global_spearman": 0.65, "minimum_each_block_spearman": 0.45, "minimum_global_sign_agreement": 0.65, "minimum_each_block_sign_agreement": 0.55},
+    "level_definition": {"minimum_global_spearman": 0.35, "minimum_each_block_spearman": 0.20, "minimum_global_sign_agreement": 0.60, "minimum_each_block_sign_agreement": 0.55},
+    "auction_clock": {"minimum_global_spearman": 0.75, "minimum_each_block_spearman": 0.65, "minimum_global_sign_agreement": 0.85, "minimum_each_block_sign_agreement": 0.80},
+    "external_pairwise_absolute_spearman_maximum": 0.85,
+    "external_joint_rank_adjusted_r2_global_maximum": 0.70,
+    "external_joint_rank_adjusted_r2_each_block_maximum": 0.85,
+    "all_support_shape_definition_clock_and_external_gates_required_per_role": true
+  },
+  "common_direction_gate": {
+    "both_block_medians_same_nonzero_sign": true,
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed_rule": "first eight bytes of SHA256(experiment_id|role|block), unsigned big-endian modulo 2^32",
+    "both_block_95pct_median_intervals_exclude_zero": true,
+    "minimum_nonzero_sign_fraction_each_block": 0.60,
+    "minimum_year_medians_same_sign": 5,
+    "direction_is_not_favorability": true
+  },
+  "residual_compression": {
+    "minimum_global_absolute_spearman": 0.70,
+    "minimum_each_block_absolute_spearman": 0.60,
+    "same_sign_required_global_and_blocks": true,
+    "minimum_global_intersection": 50,
+    "minimum_each_block_intersection": 20,
+    "fixed_priority": [
+      "continuation30_log_return",
+      "rejection_depth",
+      "below_level_close_fraction",
+      "loss_episode_count",
+      "reacquisition_bars",
+      "post_cross_cumulative_vwap_acceptance_fraction",
+      "post_cross_activity_ratio"
+    ],
+    "pca_or_score_prohibited": true
+  },
+  "validation": {
+    "manual_scalar_cases": 5,
+    "scalar_selection": "lowest SHA256(experiment_id|sequence_id|role) among eligible primary trajectories, unique sequence identities",
+    "maximum_aggregate_absolute_difference": 1e-12,
+    "two_complete_runs_byte_identical": true
+  },
+  "resource_budget": {
+    "raw_minute_rows_read": 0,
+    "wall_seconds": 120,
+    "peak_rss_bytes": 2147483648,
+    "durable_output_ceiling_mib": 64
+  },
+  "outputs": {
+    "trajectory_panel": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-001_trajectory_panel.csv",
+    "stability_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-001_stability_audit.csv",
+    "coupling_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-001_coupling_audit.csv",
+    "result": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DYN-001_result.json",
+    "report": "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DYN-001_dynamics.md"
+  },
+  "prohibited_inputs_or_actions": [
+    "raw minute partitions",
+    "future market return",
+    "security outcome or payoff",
+    "strategy field or event",
+    "post-2023 data",
+    "CY-011",
+    "PIT normalization inferred from isolated blocks",
+    "cross-sectional rank inferred from sampled sequences",
+    "interpolation of non-crossing days",
+    "conditional-role imputation",
+    "favorable role, definition, clock, view, year, or block selection",
+    "PCA, clustering search, latent score, or strategy rule"
+  ],
+  "claim_boundary": {
+    "representation_only": true,
+    "common_direction_is_not_favorability": true,
+    "no_order_flow_or_participant_identity": true,
+    "no_prediction_or_usefulness": true,
+    "no_habitat_or_strategy_claim": true,
+    "no_new_archetype": true
+  }
+}

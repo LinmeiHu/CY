@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-038_COMPLETE_BREAKOUT_TEMPORAL_MAP_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: multi-session dynamics of the seven retained objective prior-high post-cross observables
-- `SUPPORTING_FRONTIER`: fixed event-day support and generic path controls needed before any temporal-process claim
+- `CURRENT_PHASE`: `SYNTH-MKT-039_COMPLETE_PRIOR_DAY_MARKET_STATE_CONDITIONAL_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: prior-day accepted market-state conditioning of strategy-independent objective-breakout path roles
+- `SUPPORTING_FRONTIER`: fixed same-event generic controls and separate trend/breadth primitives; no combined trading rule
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1223,3 +1223,47 @@ contract must freeze role-specific support floors, actual event-day gaps,
 shape alternatives, generic controls, block/year portability, and no-rescue
 rules before inspecting temporal direction. No breakout, failed-breakout,
 resistance-role-reversal, usefulness, habitat, or strategy claim exists.
+
+MKT-BREAKOUT-DYN-001 is invalid before estimates because its frozen map/spec
+misdeclared `market_sequence_rank` as event time. The first identity,
+`2018|01|ALL_A|02|600576.SH / L10_CONTINUOUS`, has two dates but selection rank
+2 on both. That field is the symbol-selection ordinal. MKT-BREAKOUT-DYN-002
+corrects only time to the frozen `relative_day` market-session coordinate.
+
+The first 002 wrapper execution was also invalid before estimates because the
+adapter redirected the active spec path before validating the 001 parent. The
+corrected wrapper then completed estimates, but its result serialized dynamic
+elapsed time and did not bind the imported scientific runner, so 002 is not
+accepted as a byte-reproducible output. MKT-BREAKOUT-DYN-003 inherits all 001/
+002 science and changes only deterministic output identity and runner hashing.
+
+MKT-BREAKOUT-DYN-003 completes as
+`COMPLETE_REPRESENTATION_PASS_NO_COMMON_DIRECTION`. Every retained role passes
+endpoint/shape support, endpoint nondegeneracy, OLS/Theil--Sen shape agreement,
+L10/L40 and auction portability, and fixed control-rate external geometry.
+Unconditional roles each have 250 endpoint trajectories and 108 three-plus-
+event trajectories; conditional reacquisition has 171 and 58.
+
+No common direction passes. Continuation block medians are -0.00018/-0.00079
+with both intervals crossing zero; rejection reverses +0.00025/-0.00349;
+dwell, loss episodes, reacquisition, and activity contain zero or incompatible
+block medians. VWAP-acceptance rates are -0.025/-0.154, but block A's interval
+ends at zero and its negative fraction is only 0.537 versus 0.60. No role may be
+called strengthening, weakening, acceptance, rejection, demand, or exhaustion.
+
+Residual role compression also retains all seven. The closest pair is rejection
+depth versus below-level dwell at -0.693 globally and -0.682/-0.657 by block;
+it misses the unchanged 0.70 global boundary and is not rescued. Five manual
+cases reproduce exactly. Two final runs are byte-identical: trajectory
+`e5b42475...`, stability `0f10b7d0...`, coupling `53567843...`, result
+`1a735a25...`, and report `001cca98...`; eight focused tests pass and lint is
+clean. Zero raw minute rows, future values, outcomes, strategy fields,
+post-2023 data, or CY-011 were read.
+
+SYNTH-MKT-039 deprioritizes unconditional five-session breakout direction. The
+seven stable session and temporal coordinates remain available as descriptive
+event behavior. Before any payoff or strategy study, the next high-information
+question is whether strictly prior-day accepted trend direction and breadth
+discovery/concentration states condition same-day breakout path roles after
+their fixed generic controls. This must be map-first, keep trend and breadth
+primitive, and cannot form a gate or Trend x Breadth trading rule.

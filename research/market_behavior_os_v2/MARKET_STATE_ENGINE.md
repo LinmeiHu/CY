@@ -301,3 +301,17 @@ causal historical normalization or a full contemporaneous relative rank. The
 engine emits no latent breakout state, temporal direction, resistance-role
 reversal, predictor, habitat, usefulness, or strategy annotation until a
 separately frozen repeated-event process survives.
+
+## MKT-BREAKOUT-DYN-003 boundary
+
+The engine retains actual-gap endpoint-rate coordinates for all seven accepted
+breakout observations. OLS/Theil--Sen, L10/L40, auction, year/block, and fixed
+generic temporal geometry pass. The unconditional roles have 250 repeated-event
+trajectories and conditional reacquisition has 171.
+
+The engine adds no common direction, composite, or process annotation. Every
+common-direction gate fails and all seven residual roles remain separate; the
+nearest rejection/dwell residual correlation misses its global compression
+boundary. These coordinates remain completed-history descriptors available at
+15:30 on their last included day. They have no causal PIT normalization,
+relative state, predictor, habitat, usefulness, or strategy meaning.
