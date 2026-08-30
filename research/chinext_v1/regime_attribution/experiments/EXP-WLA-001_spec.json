@@ -1,0 +1,212 @@
+{
+  "experiment_id": "EXP-WLA-001",
+  "spec_id": "CHINEXT-V1-WINNER-LOSER-PREENTRY-TRAJECTORY-ARCHAEOLOGY-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_TRAJECTORY_OUTCOME_JOIN",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE",
+  "question": "Do extreme winners enter through a repeatable stock-level transition in which market-relative strength improves into the entry signal while volatility, trading range, and downside-session traded-amount share contracted earlier?",
+  "hypothesis_id": "H-011",
+  "mechanism": "Latent demand strengthens relative to the market while supply pressure and price variability contract, followed by relative-strength release into the completed-close entry signal.",
+  "prediction": "Extreme-winner probability is positively associated with late relative-strength improvement and with prior volatility, range, and downside-amount contraction; the RS component and at least one supply/compression component must survive fixed V1-entry, market, breadth, beta, liquidity, temporal, concentration, and strategy-path falsification.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "yearly_trades": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "phase5_trade_mechanism": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv",
+      "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"
+    },
+    "daily_regime_features": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/daily_regime_features.parquet",
+      "sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6"
+    },
+    "phase2_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    },
+    "extended_input_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "gate_c_runner": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_gate_c.py",
+      "sha256": "5c6463c8f910ffd222b0920ff7d450c886de198b9e848ae312aede79eb753d27"
+    },
+    "gate_d_runner": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_gate_d.py",
+      "sha256": "f7c18b68323f91bb7591d83dfde861bdde74dee2a3fbf1be036fbe949a01ee5a"
+    },
+    "gate_c_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_gate_c_preregistration.json",
+      "sha256": "bcd4f2d1f3d8ad185ef8558026386859a3dbe7ab87bf23b9ac438caa78ae4bb6"
+    },
+    "gate_d_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_gate_d_preregistration.json",
+      "sha256": "dd1c9e3747a52138b1238c90f6c34d37a405f45cda6adc01a3264f286bdd5342"
+    },
+    "gate_c_result": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_c_result.json",
+      "sha256": "1e521a897fcdf05e940316bea08f211e56a44baedcce94457487c4392cbacea8"
+    },
+    "gate_d_result": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_d_result.json",
+      "sha256": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c"
+    },
+    "strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "extended_historical_state": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+      "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+    },
+    "extended_security_master": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+      "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+    },
+    "extended_official_document_index": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/raw/official_documents_index.json",
+      "sha256": "92b594501b37f8850b6d7faf0d0b329b8f74e8b07fc46286741f474cae1600d4"
+    },
+    "market_anchor_399102": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "csi300": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/csi000300.parquet",
+      "sha256": "6d93a34f308fec0390a184a68a4d7856f566c917248b886b6a4e7dffcf9dda63"
+    },
+    "chinext100": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/sz399006.parquet",
+      "sha256": "0d0f8dbb573f1016eaa94f11aa847ea2bf2be296691caa591f93320ddd640c2c"
+    }
+  },
+  "transient_contract": {
+    "canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "sample": {
+    "expected_completed_cycles": 399,
+    "conditioning": "Actual frozen V1 entry cycles only; no non-entry controls and no universe substitution.",
+    "outcome_groups": {
+      "extreme_winner": "round_trip_return >= 0.50",
+      "strong_winner": "0.20 <= round_trip_return < 0.50",
+      "ordinary_winner": "0 < round_trip_return < 0.20",
+      "ordinary_loser": "-0.10 < round_trip_return <= 0",
+      "severe_loser": "round_trip_return <= -0.10"
+    },
+    "fixed_secondary_outcomes": {
+      "winner20": "round_trip_return >= 0.20",
+      "false_breakout": "mfe < 0.10 and round_trip_return <= 0",
+      "severe_loss": "round_trip_return <= -0.10"
+    },
+    "missingness": "No imputation. A primary 20-session window requires 21 contiguous hard-valid rows and 20 exact causal coordinate steps. Unknown lineage fails closed."
+  },
+  "timestamp_semantics": {
+    "T_minus_1": "Completed entry-signal close, available at 15:00 Asia/Shanghai and applicable only to the later first-valid entry execution.",
+    "other_anchors": "T-k is k-1 exchange sessions before the entry-signal close for k in 60,40,20,10,5,3,1.",
+    "anchors": [60, 40, 20, 10, 5, 3, 1],
+    "post_entry_price_rows": "FORBIDDEN"
+  },
+  "feature_definitions": {
+    "relative_strength20": "Sum of the stock's exact action-safe 20 daily log returns minus the 399102 20-session log return.",
+    "realized_vol20": "Sample standard deviation of the 20 exact stock daily log returns times sqrt(252).",
+    "range_width20": "(maximum action-coordinate high minus minimum action-coordinate low) over the latest action-coordinate close in the 20-bar window.",
+    "downside_amount_share20": "Traded amount on negative stock-return sessions divided by total traded amount over the 20-bar window; this is not classified order flow.",
+    "higher_low10": "Log ratio of the latest 10-bar minimum low to the prior 10-bar minimum low.",
+    "lower_high10": "Log ratio of the latest 10-bar maximum high to the prior 10-bar maximum high.",
+    "distance_to_prior_high20": "Log of anchor close divided by maximum high over the prior 20 bars, excluding the anchor bar.",
+    "amount_ratio5_to_prior15": "Mean traded amount over the last five bars divided by mean traded amount over the prior 15 bars."
+  },
+  "primary_transitions": {
+    "rs_improvement": "relative_strength20(T-1) - relative_strength20(T-20); expected positive",
+    "volatility_compression": "realized_vol20(T-20) - realized_vol20(T-5); expected positive",
+    "range_compression": "range_width20(T-20) - range_width20(T-5); expected positive",
+    "downside_amount_contraction": "downside_amount_share20(T-20) - downside_amount_share20(T-5); expected positive"
+  },
+  "fixed_controls": {
+    "continuous_ranked": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "estimator": "Pearson correlation of predictor and binary extreme-winner residuals after separate least-squares projections; predictor and continuous controls are percentile ranked."
+  },
+  "primary_gates": {
+    "component_raw": "rho >= 0.10, BH q <= 0.10 across exactly four primaries, positive within-year rank rho, positive in >=7/8 LOYO estimates, and positive fixed T-3 neighbor with >=6/8 LOYO signs.",
+    "component_controlled": "partial-rank rho >= 0.10 with positive sign in >=7/8 controlled LOYO estimates.",
+    "component_falsification": "Positive after removing global Top-4 P&L cycles, after holding-duration/exit-reason controls, after industry fixed effects, and in >=80% leave-one-extreme-security-out and leave-one-industry-out estimates.",
+    "family_support": "RS improvement and at least one volatility/range/downside-amount contraction component pass all gates.",
+    "decision": {
+      "DEEPEN": "family_support passes",
+      "REFINE": "at least one component passes but the full mechanism does not",
+      "PIVOT": "a raw component passes but controlled/falsification gates fail",
+      "REJECT": "no raw component passes"
+    }
+  },
+  "falsification": [
+    "eight fixed LOYO omissions and within-entry-year ranks",
+    "three independent baseline-block estimates",
+    "T-3 neighboring transition definition",
+    "global Top-4 realized-PnL removal as the fixed top-1% sensitivity",
+    "leave-one-extreme-security-out and leave-one-industry-out estimates",
+    "fixed market return, market volatility, breadth, stock beta, and traded-amount liquidity controls",
+    "fixed V1 entry-feature controls",
+    "post-outcome holding-duration and exit-reason sensitivity, explicitly not a causal control",
+    "PIT timestamps, action-coordinate continuity, first-applicable entry ordering, and zero post-entry price use"
+  ],
+  "forbidden": [
+    "breadth historical redesign, threshold, overlay, or interaction",
+    "feature or horizon replacement after results",
+    "large feature screen or feature-combination search",
+    "year-specific parameters",
+    "strategy replay or strategy modification",
+    "post-entry or post-exit price use in trajectory construction",
+    "conversion of group differences into entry filters",
+    "untouched OOS, PIT-A, causal order-flow, or deployability claim"
+  ],
+  "outputs": [
+    "artifacts/pre_entry_trajectories.csv",
+    "artifacts/pre_entry_transitions.csv",
+    "artifacts/pre_entry_group_trajectories.csv",
+    "artifacts/winner_loser_trajectory_archaeology.json",
+    "reports/winner_loser_trajectory_archaeology.md"
+  ]
+}

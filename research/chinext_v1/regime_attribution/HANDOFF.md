@@ -2,12 +2,14 @@
 
 ## Status
 
-`ENVIRONMENT_VALID_WORKSPACE_RECOVERED` on 2026-08-30.
+`EXP-WLA-001_COMPLETE_REJECTED` on 2026-08-30.
 
-The latest valid experiment is EXP-P6-001. EXP-P7-003 is invalidated, and Phase
-8/9 plus `FINAL_REPORT.md` are downstream-invalid. Frozen V1 remains unchanged;
-no strategy or production action is authorized. Workspace recovery is complete,
-but no scientific experiment was started in the recovery turn.
+EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
+demand/compression mechanism is rejected after 399 complete cycles, 2,793
+hard-valid trajectory rows, two byte-identical runs, and the full preregistered
+falsification set. EXP-P7-003 is invalidated, and Phase 8/9 plus `FINAL_REPORT.md`
+are downstream-invalid. Frozen V1 remains unchanged; no strategy or production
+action is authorized.
 
 ## Recovered autonomous environment
 
@@ -133,12 +135,11 @@ mechanisms.
 
 ## Required next action
 
-The next autonomous launch may proceed only from EXP-P6-001 and must ignore the
-invalid candidate branch. The preferred scientific continuation is prospective
-validation of the frozen breadth-opportunity hypothesis on future untouched
-PIT-A-quality data, or one new registered causal data family with a single
-preregistered incrementality test. Do not run another 2018-2025 threshold,
-interaction, overlay, or exit optimization.
+Checkpoint EXP-WLA-001, then audit PIT-valid industry coverage without outcomes.
+If same-industry cohorts and 20/60-session return histories are adequate, freeze
+one H-012 industry-leadership-versus-stock-residual experiment. Do not reuse H-011
+anchors/features to search for a replacement result. No threshold, interaction,
+overlay, exit optimization, or strategy modification is authorized.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

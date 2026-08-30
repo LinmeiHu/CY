@@ -73,3 +73,20 @@ All three bind the same authoritative strategy SHA-256
   identity manifest rehashes all 15 arm ledgers; the Phase 8/9 audit found zero
   same-day fills, timestamp/first-applicable failures, missing-input candidate
   buys, target-weight mismatches, or signal/rank/exit changes.
+
+## Isolated-worktree input restoration and EXP-WLA-001 audit
+
+The dedicated worktree initially lacked six Git-ignored but hash-bound input
+artifacts. Before preregistration, the following source bytes were copied into the
+isolated worktree and rehashed exactly: CY-028 membership `1af35779...`, CY-027
+membership `9a6a0a07...`, extended historical state `995cdbcc...`, extended
+security master `ff709212...`, official-document index `92b59450...`, and exact
+399102 anchor `e096e4d5...`. No output ledger, source-worktree modification, or
+external `opportunity_conversion/` file was imported.
+
+An outcome-blind audit read only trade IDs, symbols, blocks, and entry-signal
+dates. For every one of 399 cycles and every fixed anchor T-60/T-40/T-20/T-10/
+T-5/T-3/T-1, all 21 required rows exist, all are hard-valid, and all 20 causal
+corporate-action coordinate steps are contiguous. The accepted extended
+transient canonical and membership hashes remain `07b2f8ea...` and `c4e89c4e...`.
+No outcome column was read during this availability audit.

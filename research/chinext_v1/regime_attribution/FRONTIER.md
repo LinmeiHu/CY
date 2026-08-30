@@ -38,23 +38,28 @@ independent STOP condition.
 
 ## Current decision
 
-`WORKSPACE_RECOVERED_RESEARCH_NOT_STARTED`.
+`REJECT_H011_PIVOT_TO_INDUSTRY_CONTEXT_AUDIT`.
 
-Frozen V1 remains authoritative and unchanged. No threshold, overlay, entry
-adaptation, exit adaptation, neighbor substitution, or production change is
-authorized.
+Breadth historical optimization is closed and H-004 is
+`PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the fixed stock-level
+demand/compression transition: no component passes even its raw gate. Frozen V1
+remains authoritative and unchanged. No threshold, overlay, entry adaptation,
+exit adaptation, neighbor substitution, or production change is authorized.
 
 ## Highest-information unresolved question
 
-Can the already frozen breadth-opportunity hypothesis be confirmed prospectively
-on genuinely future, untouched PIT-A-quality data? A secondary route is one newly
-registered causal style/liquidity/risk-appetite family with one preregistered
-incrementality hypothesis. Neither route should reuse Phase 7's invalid outputs.
+Is V1's right tail an industry-wide leadership phenomenon or a stock-specific
+residual phenomenon? This is independent of the rejected trajectory shape and can
+separate industry return relative to 399102 from stock return relative to its
+PIT-valid industry cohort. Prospective H-004 confirmation remains the highest
+confirmatory question but is unavailable until genuinely future untouched
+PIT-A-quality data exist.
 
 ## Exact next action
 
-The next autonomous launch may resume from EXP-P6-001 in the dedicated worktree.
-It must reread the full authority ledger, establish a new pre-experiment integrity
-snapshot, and pursue future prospective validation or one newly governed causal
-data family. EXP-P7-003 must never be silently repaired, rerun, or overwritten.
-Do not run another 2018-2025 threshold or interaction search.
+Persist/checkpoint EXP-WLA-001, then perform an outcome-blind audit of industry
+label validity, same-industry cohort size, and 20/60-session return coverage at
+the entry signal. Only if coverage is adequate may one industry-versus-stock
+residual hypothesis be preregistered. EXP-P7-003 must never be silently repaired,
+rerun, or overwritten. Do not run another 2018-2025 breadth threshold or
+interaction search.

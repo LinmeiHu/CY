@@ -2,10 +2,11 @@
 
 ## CURRENT_PHASE
 
-WORKSPACE_RECOVERY_COMPLETE — the authoritative state through EXP-P6-001 is
-committed in a dedicated clean worktree. EXP-P7-003 and all Phase 8/9/final
-strategy conclusions remain invalid. No scientific experiment was started during
-recovery and no production change is authorized.
+EXP-WLA-001_COMPLETE_REJECTED — the independent winner/loser pre-entry
+demand/compression hypothesis failed every preregistered component gate. H-004
+remains frozen for prospective validation; EXP-P7-003 and all Phase 8/9/final
+strategy conclusions remain invalid. No strategy or production change is
+authorized.
 
 ## AUTONOMOUS_WORKSPACE_OWNERSHIP
 
@@ -317,13 +318,48 @@ H-006 and H-007.
 
 ## NEXT_PHASE
 
-On the next autonomous-research launch, resume only from the validated EXP-P6-001
-frontier after rereading GOAL, RESEARCH_CONTRACT, STATE, FRONTIER, HANDOFF,
-HYPOTHESES, EXPERIMENT_REGISTRY, and DEAD_ENDS. Do not repair, rebind, rerun, or
-consume EXP-P7-003/Phase 8/9. The preferred continuation is prospective
-confirmation on future untouched PIT-A-quality data or one newly registered
-causal data family. Revisiting the invalid candidate branch still requires
-explicit human authorization, a new experiment ID, and fresh isolated outputs.
+Verify the complete EXP-WLA-001 frozen-input fingerprint, execute its single fixed
+trajectory design, actively falsify the result, and persist a DEEPEN/REFINE/PIVOT/
+REJECT decision. Do not repair, rebind, rerun, or consume EXP-P7-003/Phase 8/9.
+Revisiting the invalid candidate branch still requires explicit human
+authorization, a new experiment ID, and fresh isolated outputs.
+
+## AUTONOMOUS_CYCLE_EXP_WLA_001_PREREGISTRATION
+
+- Frontier ranking: `reports/frontier_ranking_20260830.md`.
+- Hypothesis: H-011 pre-entry demand/compression transition.
+- Spec: `experiments/EXP-WLA-001_spec.json`.
+- Fixed sample: all 399 accepted cycles; 15 extreme winners, 24 strong winners,
+  122 ordinary winners, 194 ordinary losers, and 44 severe losers.
+- Fixed primary transitions: RS improvement T-20 to T-1; volatility, range, and
+  downside-session amount contraction T-20 to T-5.
+- Fixed family gate: RS plus at least one supply/compression component must pass
+  raw, controlled, temporal, neighboring-definition, tail, security, industry,
+  holding/exit, PIT, and execution attacks.
+- All 2018-2025 outcomes are consumed; this is exploratory mechanism evidence,
+  never untouched OOS or a strategy filter.
+
+## AUTONOMOUS_CYCLE_EXP_WLA_001_RESULT
+
+- Integrity: 399 complete cycles, 2,793 fixed trade/anchor rows, zero hard-valid,
+  coordinate, causal, post-entry-price, or replay failures. The 25-input plus spec
+  aggregate stayed `3b1870ff...` before and after execution.
+- Determinism: two complete executions produced identical hashes: trajectories
+  `37aeff1b...`, transitions `d18be1df...`, group summaries `8bf7e098...`, result
+  JSON `14dc3321...`, and report `fa5305c0...`.
+- Primary raw/controlled rho: RS improvement 0.022/0.018; volatility compression
+  0.001/0.006; range compression -0.074/-0.090; downside-amount contraction
+  0.014/0.003. BH q-values are 0.565..0.987.
+- None passes. Range compression is directionally contradictory; the other three
+  are economically negligible and fail control or falsification gates.
+- All five outcome groups show similar late relative-strength acceleration and
+  breakout-day range/volatility expansion. This appears common to V1 admission,
+  not specific to its right tail.
+- Scientific decision: `REJECT`. H-011 is a dead end; do not rescue it through
+  alternative anchors, descriptive-feature promotion, or feature combinations.
+- Next highest-information independent question: whether right-tail formation is
+  industry-wide or stock-specific, using only PIT-valid industry labels and a
+  separately audited stock-minus-industry decomposition.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

@@ -106,3 +106,41 @@ byte-consistent with one another.
 - H-010 returns to `UNRESOLVED`. Explanatory-only/no-deployment remains the safe
   policy because no valid candidate evidence exists, not because the invalid
   Phase 7/8/9 branch proved rejection.
+
+## Status at autonomous mechanism restart
+
+- H-004 is `PROSPECTIVE_VALIDATION_PENDING`. Its historical breadth-opportunity
+  conclusion is frozen. No threshold, overlay, exit adaptation, or additional
+  historical interaction is authorized.
+- H-011 is `REJECTED` by EXP-WLA-001.
+
+### H-011 — pre-entry demand/compression transition
+
+- Question: do extreme winners enter through a repeatable stock-level state
+  transition rather than merely a high static V1 entry score?
+- Mechanism: latent demand strengthens relative to 399102 while volatility,
+  price range, and downside-session traded-amount share contract before the
+  completed-close entry signal.
+- Prediction: extreme-winner probability rises with T-20-to-T-1 relative-strength
+  improvement and with at least one T-20-to-T-5 compression/supply contraction,
+  after fixed V1 entry, year, market, breadth, beta, and liquidity controls.
+- Required data: 399 frozen cycles; exact action-safe CY-006 stock history;
+  QD-003 calendar; exact 399102 anchor; frozen entry and breadth artifacts.
+- Primary test: four fixed continuous transitions, within-year ranks, BH over
+  exactly four hypotheses, eight LOYO omissions, and one fixed residual design.
+- Falsification: T-3 neighbors; block, security, industry, global Top-4 P&L,
+  market/beta/volatility/liquidity, holding-duration/exit, PIT, and execution
+  attacks.
+- Metrics: raw and controlled rank association with the fixed >=50% extreme-winner
+  outcome; >=20% winner, false-breakout, severe-loss, MFE, and terminal-return
+  endpoints are secondary.
+- Confounds: V1 already selects high RS/breakouts; all outcomes are consumed;
+  PIT-B rather than PIT-A; only 15 extreme winners; down-session traded amount is
+  not classified order flow.
+- Result: none of the four primaries passed its raw gate. RS improvement rho was
+  0.022 (controlled 0.018); volatility compression 0.001 (controlled 0.006);
+  range compression -0.074 (controlled -0.090, contradictory); and downside-
+  amount contraction 0.014 (controlled 0.003). BH q-values were 0.565..0.987.
+  No component survived the fixed neighbor, LOYO, control, and falsification set.
+- Status: `REJECTED`. Similar late acceleration appears across all outcome groups;
+  this demand/compression transition does not distinguish V1's extreme winners.

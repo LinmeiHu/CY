@@ -13,6 +13,12 @@ Updated 2026-08-30 after resume integrity reconciliation.
   fixed path/year/exit controls: rejected by EXP-P6-001.
 - The prior winner-hold exit adaptation remains rejected by its earlier
   2022-2023 evidence and is not revived by the valid mechanism work.
+- H-011's pre-entry demand/compression transition is rejected by EXP-WLA-001.
+  Extreme-winner probability is not materially associated with fixed T-20-to-T-1
+  market-relative-strength improvement or T-20-to-T-5 volatility, range, or
+  downside-session amount contraction. Do not continue this family by swapping
+  anchors, selecting one of the descriptive structural features, or combining
+  trajectories until an attractive result appears.
 
 ## Invalid rather than rejected
 

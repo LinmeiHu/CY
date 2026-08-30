@@ -1,0 +1,3759 @@
+{
+  "audit": {
+    "causal_entry_failures": 0,
+    "complete_trade_anchor_pairs": 399,
+    "coordinate_window_failures": 0,
+    "hard_valid_window_failures": 0,
+    "panel_counts": {
+      "DEVELOPMENT_2024_2025": 971167,
+      "EXTENDED_2018_2021": 924453,
+      "HOLDOUT_O0_2022_2023": 715513
+    },
+    "post_entry_price_rows_read": 0,
+    "strategy_replays": 0,
+    "trajectory_rows": 2793,
+    "transient_canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "transient_membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "breadth_h004_status": "PROSPECTIVE_VALIDATION_PENDING_FROZEN",
+  "coherent_demand_compression_mechanism": false,
+  "concentration": {
+    "extreme_winner_cycles": 15,
+    "extreme_winner_unique_securities": 14,
+    "global_top1pct_trade_count": 4,
+    "maximum_extreme_winner_cycles_per_security": 2
+  },
+  "control_columns": [
+    "entry_rs_score",
+    "entry_mom20",
+    "entry_box_width",
+    "entry_minvol_location",
+    "entry_breakout_volume_ratio",
+    "index_return_20d",
+    "index_realized_vol20",
+    "breadth_composite",
+    "entry_beta60",
+    "entry_log_amount20"
+  ],
+  "decision": "REJECT",
+  "experiment_id": "EXP-WLA-001",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/configs/data_asset_registry.json": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_2024_2025/daily_membership.parquet": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_free_2017_2021/raw/official_documents_index.json": "92b594501b37f8850b6d7faf0d0b329b8f74e8b07fc46286741f474cae1600d4",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/smoke/399102_daily.csv": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/daily_regime_features.parquet": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/reports/chinext_v1_gate_c_result.json": "1e521a897fcdf05e940316bea08f211e56a44baedcce94457487c4392cbacea8",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/reports/chinext_v1_gate_d_result.json": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/scripts/run_chinext_v1_extended_replay.py": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/scripts/run_chinext_v1_gate_c.py": "5c6463c8f910ffd222b0920ff7d450c886de198b9e848ae312aede79eb753d27",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/scripts/run_chinext_v1_gate_d.py": "f7c18b68323f91bb7591d83dfde861bdde74dee2a3fbf1be036fbe949a01ee5a",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/specs/chinext_v1_gate_c_preregistration.json": "bcd4f2d1f3d8ad185ef8558026386859a3dbe7ab87bf23b9ac438caa78ae4bb6",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/specs/chinext_v1_gate_d_preregistration.json": "dd1c9e3747a52138b1238c90f6c34d37a405f45cda6adc01a3264f286bdd5342",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/strategy/chinext_v1_exploratory.py": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/csi000300.parquet": "6d93a34f308fec0390a184a68a4d7856f566c917248b886b6a4e7dffcf9dda63",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/sz399006.parquet": "0d0f8dbb573f1016eaa94f11aa847ea2bf2be296691caa591f93320ddd640c2c",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+  },
+  "multiple_testing": "Benjamini-Hochberg across exactly four frozen primary transitions",
+  "outcome_group_counts": {
+    "extreme_winner": 15,
+    "ordinary_loser": 194,
+    "ordinary_winner": 122,
+    "severe_loser": 44,
+    "strong_winner": 24
+  },
+  "passing_components": [],
+  "primary": {
+    "downside_amount_contraction": {
+      "baseline_block": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "p_value": 0.548022897466768,
+          "rho": 0.057623221294273684
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "p_value": 0.9373955768383389,
+          "rho": -0.005675742447457484
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "p_value": null,
+          "rho": null
+        }
+      },
+      "bh_q_value": 0.9872781758973228,
+      "controlled": {
+        "loyo": {
+          "2018": {
+            "n": 380,
+            "p_value": 0.935470338470384,
+            "partial_rank_rho": 0.004167091595994429
+          },
+          "2019": {
+            "n": 334,
+            "p_value": 0.8362179874741038,
+            "partial_rank_rho": 0.011354156038389875
+          },
+          "2020": {
+            "n": 318,
+            "p_value": 0.9790819658596278,
+            "partial_rank_rho": -0.0014761496033677754
+          },
+          "2021": {
+            "n": 322,
+            "p_value": 0.6679115133790905,
+            "partial_rank_rho": 0.023998015346735076
+          },
+          "2022": {
+            "n": 346,
+            "p_value": 0.9603280144493804,
+            "partial_rank_rho": 0.0026838519571551374
+          },
+          "2023": {
+            "n": 326,
+            "p_value": 0.8968901747840297,
+            "partial_rank_rho": 0.007204953188833265
+          },
+          "2024": {
+            "n": 345,
+            "p_value": 0.4765977546541183,
+            "partial_rank_rho": -0.03844659233479553
+          },
+          "2025": {
+            "n": 310,
+            "p_value": 0.8705876575366492,
+            "partial_rank_rho": 0.009290114666741262
+          }
+        },
+        "loyo_positive_count": 6,
+        "n": 383,
+        "p_value": 0.9550169075319497,
+        "partial_rank_rho": 0.002891752247884672
+      },
+      "controlled_gate": false,
+      "ex_global_top1pct_pnl": {
+        "loyo": {
+          "2018": {
+            "n": 384,
+            "p_value": 0.27021408169944494,
+            "rho": 0.05640435446947186
+          },
+          "2019": {
+            "n": 338,
+            "p_value": 0.23963778315927356,
+            "rho": 0.06413184526390231
+          },
+          "2020": {
+            "n": 330,
+            "p_value": 0.36806305238586656,
+            "rho": 0.04970726393099217
+          },
+          "2021": {
+            "n": 335,
+            "p_value": 0.1855218513866938,
+            "rho": 0.07251053115699463
+          },
+          "2022": {
+            "n": 358,
+            "p_value": 0.26453084568789864,
+            "rho": 0.059124184922945244
+          },
+          "2023": {
+            "n": 338,
+            "p_value": 0.2508475738042612,
+            "rho": 0.06262959215171814
+          },
+          "2024": {
+            "n": 359,
+            "p_value": 0.539803552966725,
+            "rho": 0.03246339818656003
+          },
+          "2025": {
+            "n": 323,
+            "p_value": 0.4541723565382998,
+            "rho": 0.04179020551411087
+          }
+        },
+        "loyo_negative_count": 0,
+        "loyo_positive_count": 8,
+        "n": 395,
+        "p_value": 0.2773954378195391,
+        "rho": 0.05478466343767296,
+        "within_year_rank_p_value": 0.5267415905207836,
+        "within_year_rank_rho": 0.031942176472958266
+      },
+      "expected_direction": "positive",
+      "falsification_gate": false,
+      "holding_duration_exit_reason_control": {
+        "n": 383,
+        "p_value": 0.9706660935410227,
+        "partial_rank_rho": -0.0018851669064406072
+      },
+      "industry_fixed_effect_control": {
+        "n": 383,
+        "p_value": 0.9924860345902948,
+        "partial_rank_rho": -0.0004827897111273141
+      },
+      "leave_one_extreme_security_out": {
+        "estimates": {
+          "300033.SZ": {
+            "n": 397,
+            "p_value": 0.9863004996933962,
+            "rho": 0.0008644945221097783
+          },
+          "300079.SZ": {
+            "n": 398,
+            "p_value": 0.7338753814704257,
+            "rho": 0.017093924595426194
+          },
+          "300128.SZ": {
+            "n": 398,
+            "p_value": 0.6986065834107302,
+            "rho": 0.019468080789235388
+          },
+          "300241.SZ": {
+            "n": 397,
+            "p_value": 0.9020478343631533,
+            "rho": 0.006196428358137857
+          },
+          "300324.SZ": {
+            "n": 397,
+            "p_value": 0.7225532300775415,
+            "rho": 0.017874312571551514
+          },
+          "300348.SZ": {
+            "n": 397,
+            "p_value": 0.930216803872419,
+            "rho": -0.004408997100982705
+          },
+          "300377.SZ": {
+            "n": 397,
+            "p_value": 0.635908231539512,
+            "rho": 0.02383241676206868
+          },
+          "300390.SZ": {
+            "n": 397,
+            "p_value": 0.8202524093528677,
+            "rho": 0.011439560045792968
+          },
+          "300432.SZ": {
+            "n": 398,
+            "p_value": 0.5919648154734733,
+            "rho": 0.026946672799734343
+          },
+          "300437.SZ": {
+            "n": 398,
+            "p_value": 0.9773995987244404,
+            "rho": -0.0014244937162855161
+          },
+          "300497.SZ": {
+            "n": 398,
+            "p_value": 0.5191487618008424,
+            "rho": 0.03240723204549549
+          },
+          "300638.SZ": {
+            "n": 398,
+            "p_value": 0.4713591237525617,
+            "rho": 0.0362058819555902
+          },
+          "300655.SZ": {
+            "n": 398,
+            "p_value": 0.917269057161962,
+            "rho": 0.005223143626380225
+          },
+          "300803.SZ": {
+            "n": 398,
+            "p_value": 0.9548172580519623,
+            "rho": 0.0028489874325710323
+          }
+        },
+        "maximum_rho": 0.0362058819555902,
+        "minimum_rho": -0.004408997100982705,
+        "positive_fraction": 0.8571428571428571,
+        "valid_omissions": 14
+      },
+      "leave_one_industry_out": {
+        "estimates": {
+          "IT\u670d\u52a1\u2161": {
+            "n": 373,
+            "p_value": 0.6535068740623415,
+            "rho": 0.02331804371572998
+          },
+          "\u4e00\u822c\u96f6\u552e": {
+            "n": 398,
+            "p_value": 0.7744047578193498,
+            "rho": 0.014411448400367021
+          },
+          "\u4e13\u4e1a\u670d\u52a1": {
+            "n": 393,
+            "p_value": 0.7583272704762016,
+            "rho": 0.01556895954377652
+          },
+          "\u4e13\u7528\u8bbe\u5907": {
+            "n": 392,
+            "p_value": 0.7995217811169629,
+            "rho": 0.012867784637208505
+          },
+          "\u4e2a\u62a4\u7528\u54c1": {
+            "n": 398,
+            "p_value": 0.7831641765073905,
+            "rho": 0.013837287109515746
+          },
+          "\u4e2d\u836f\u2161": {
+            "n": 398,
+            "p_value": 0.7866756938998801,
+            "rho": 0.013607622593175236
+          },
+          "\u4e92\u8054\u7f51\u7535\u5546": {
+            "n": 398,
+            "p_value": 0.7656738552716853,
+            "rho": 0.0149856096912183
+          },
+          "\u5143\u4ef6": {
+            "n": 392,
+            "p_value": 0.7870042338231966,
+            "rho": 0.013690382741870235
+          },
+          "\u5149\u4f0f\u8bbe\u5907": {
+            "n": 393,
+            "p_value": 0.7848731574322119,
+            "rho": 0.013813061850869394
+          },
+          "\u5149\u5b66\u5149\u7535\u5b50": {
+            "n": 385,
+            "p_value": 0.9591053858028797,
+            "rho": 0.0026218007332660773
+          },
+          "\u5176\u4ed6\u7535\u5b50\u2161": {
+            "n": 394,
+            "p_value": 0.7388151461790274,
+            "rho": 0.016849942089223243
+          },
+          "\u5176\u4ed6\u7535\u6e90\u8bbe\u5907\u2161": {
+            "n": 396,
+            "p_value": 0.7540195373373969,
+            "rho": 0.015795062759006155
+          },
+          "\u517b\u6b96\u4e1a": {
+            "n": 394,
+            "p_value": 0.7739063039243456,
+            "rho": 0.014517770173759822
+          },
+          "\u519b\u5de5\u7535\u5b50\u2161": {
+            "n": 392,
+            "p_value": 0.8013142800251861,
+            "rho": 0.012750270622256829
+          },
+          "\u519c\u4ea7\u54c1\u52a0\u5de5": {
+            "n": 396,
+            "p_value": 0.7803164037741742,
+            "rho": 0.014059341576697786
+          },
+          "\u519c\u5316\u5236\u54c1": {
+            "n": 398,
+            "p_value": 0.7604494338186938,
+            "rho": 0.015330106465729064
+          },
+          "\u51fa\u7248": {
+            "n": 397,
+            "p_value": 0.7835023905458335,
+            "rho": 0.013832651297174122
+          },
+          "\u52a8\u7269\u4fdd\u5065\u2161": {
+            "n": 397,
+            "p_value": 0.7887854274583417,
+            "rho": 0.013486835014744769
+          },
+          "\u5316\u5986\u54c1": {
+            "n": 398,
+            "p_value": 0.7831641765073905,
+            "rho": 0.013837287109515746
+          },
+          "\u5316\u5b66\u5236\u54c1": {
+            "n": 392,
+            "p_value": 0.7816561034109706,
+            "rho": 0.014042924786725261
+          },
+          "\u5316\u5b66\u5236\u836f": {
+            "n": 385,
+            "p_value": 0.5174807353239853,
+            "rho": 0.03308462830073859
+          },
+          "\u533b\u7597\u5668\u68b0": {
+            "n": 382,
+            "p_value": 0.7723477550307416,
+            "rho": 0.01484999695093844
+          },
+          "\u533b\u7597\u670d\u52a1": {
+            "n": 387,
+            "p_value": 0.7960378721297866,
+            "rho": 0.013181252928766981
+          },
+          "\u534a\u5bfc\u4f53": {
+            "n": 383,
+            "p_value": 0.7629571916685106,
+            "rho": 0.01546064155604584
+          },
+          "\u5546\u7528\u8f66": {
+            "n": 398,
+            "p_value": 0.7709089164821831,
+            "rho": 0.014641112916707532
+          },
+          "\u57fa\u7840\u5efa\u8bbe": {
+            "n": 398,
+            "p_value": 0.7744047578193498,
+            "rho": 0.014411448400367021
+          },
+          "\u5851\u6599": {
+            "n": 396,
+            "p_value": 0.7962177140651241,
+            "rho": 0.013017908867312765
+          },
+          "\u591a\u5143\u91d1\u878d": {
+            "n": 398,
+            "p_value": 0.7639311882495369,
+            "rho": 0.015100441949388553
+          },
+          "\u5bb6\u7535\u96f6\u90e8\u4ef6\u2161": {
+            "n": 398,
+            "p_value": 0.7761543936781594,
+            "rho": 0.014296616142196766
+          },
+          "\u5de5\u4e1a\u91d1\u5c5e": {
+            "n": 398,
+            "p_value": 0.7744047578193498,
+            "rho": 0.014411448400367021
+          },
+          "\u5de5\u7a0b\u54a8\u8be2\u670d\u52a1\u2161": {
+            "n": 395,
+            "p_value": 0.7983698219060631,
+            "rho": 0.012893786362534642
+          },
+          "\u5f71\u89c6\u9662\u7ebf": {
+            "n": 394,
+            "p_value": 0.7335959053991432,
+            "rho": 0.017199767876542756
+          },
+          "\u6469\u6258\u8f66\u53ca\u5176\u4ed6": {
+            "n": 398,
+            "p_value": 0.7639311882495369,
+            "rho": 0.015100441949388553
+          },
+          "\u6559\u80b2": {
+            "n": 398,
+            "p_value": 0.7639311882495369,
+            "rho": 0.015100441949388553
+          },
+          "\u6570\u5b57\u5a92\u4f53": {
+            "n": 396,
+            "p_value": 0.7820788350513477,
+            "rho": 0.013943626831210561
+          },
+          "\u65c5\u6e38\u53ca\u666f\u533a": {
+            "n": 397,
+            "p_value": 0.762471767598082,
+            "rho": 0.015215916426891534
+          },
+          "\u6a61\u80f6": {
+            "n": 397,
+            "p_value": 0.7817435723136916,
+            "rho": 0.01394792339131724
+          },
+          "\u6c7d\u8f66\u96f6\u90e8\u4ef6": {
+            "n": 392,
+            "p_value": 0.7533118698436982,
+            "rho": 0.015923149025952075
+          },
+          "\u6d88\u8d39\u7535\u5b50": {
+            "n": 388,
+            "p_value": 0.7330952821564329,
+            "rho": 0.017366939354986136
+          },
+          "\u6e14\u4e1a": {
+            "n": 398,
+            "p_value": 0.7849193900632474,
+            "rho": 0.013722454851345491
+          },
+          "\u6e38\u620f\u2161": {
+            "n": 392,
+            "p_value": 0.7763182382364265,
+            "rho": 0.014395466831580292
+          },
+          "\u7269\u6d41": {
+            "n": 398,
+            "p_value": 0.7849193900632474,
+            "rho": 0.013722454851345491
+          },
+          "\u7279\u94a2\u2161": {
+            "n": 398,
+            "p_value": 0.7639311882495369,
+            "rho": 0.015100441949388553
+          },
+          "\u73af\u4fdd\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.7642178992176913,
+            "rho": 0.015100644332748415
+          },
+          "\u73af\u5883\u6cbb\u7406": {
+            "n": 395,
+            "p_value": 0.9601555494741577,
+            "rho": -0.0025216668441419864
+          },
+          "\u751f\u7269\u5236\u54c1": {
+            "n": 385,
+            "p_value": 0.7462168737474254,
+            "rho": 0.016546472966554468
+          },
+          "\u7535\u5b50\u5316\u5b66\u54c1\u2161": {
+            "n": 388,
+            "p_value": 0.9459196685045959,
+            "rho": 0.0034547653270699434
+          },
+          "\u7535\u6c60": {
+            "n": 375,
+            "p_value": 0.5079554400554016,
+            "rho": 0.034291228821909124
+          },
+          "\u7535\u7f51\u8bbe\u5907": {
+            "n": 386,
+            "p_value": 0.7602851859972364,
+            "rho": 0.01557908546618961
+          },
+          "\u7535\u89c6\u5e7f\u64ad\u2161": {
+            "n": 396,
+            "p_value": 0.7767949212259021,
+            "rho": 0.014290771067672235
+          },
+          "\u79cd\u690d\u4e1a": {
+            "n": 398,
+            "p_value": 0.7604494338186938,
+            "rho": 0.015330106465729064
+          },
+          "\u81ea\u52a8\u5316\u8bbe\u5907": {
+            "n": 396,
+            "p_value": 0.803312541638763,
+            "rho": 0.012555049885363866
+          },
+          "\u822a\u5929\u88c5\u5907\u2161": {
+            "n": 398,
+            "p_value": 0.7849193900632474,
+            "rho": 0.013722454851345491
+          },
+          "\u822a\u6d77\u88c5\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.7887854274583417,
+            "rho": 0.013486835014744769
+          },
+          "\u822a\u7a7a\u88c5\u5907\u2161": {
+            "n": 391,
+            "p_value": 0.8035056828426368,
+            "rho": 0.012622910753991152
+          },
+          "\u88c5\u4fee\u5efa\u6750": {
+            "n": 397,
+            "p_value": 0.7782292779418579,
+            "rho": 0.014178467579603475
+          },
+          "\u8ba1\u7b97\u673a\u8bbe\u5907": {
+            "n": 388,
+            "p_value": 0.7144867614710043,
+            "rho": 0.018631055870984337
+          },
+          "\u8bc1\u5238\u2161": {
+            "n": 395,
+            "p_value": 0.7612860259900361,
+            "rho": 0.015333151350041195
+          },
+          "\u8f68\u4ea4\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.7905486054125065,
+            "rho": 0.01337156292060165
+          },
+          "\u8f6f\u4ef6\u5f00\u53d1": {
+            "n": 369,
+            "p_value": 0.5850461443169823,
+            "rho": -0.02851609253607544
+          },
+          "\u901a\u4fe1\u670d\u52a1": {
+            "n": 395,
+            "p_value": 0.7683104825141118,
+            "rho": 0.014868510400039945
+          },
+          "\u901a\u4fe1\u8bbe\u5907": {
+            "n": 383,
+            "p_value": 0.45536912413036224,
+            "rho": 0.038255132636952176
+          },
+          "\u901a\u7528\u8bbe\u5907": {
+            "n": 385,
+            "p_value": 0.8224397097083525,
+            "rho": 0.01147383161914361
+          },
+          "\u91d1\u5c5e\u65b0\u6750\u6599": {
+            "n": 394,
+            "p_value": 0.7615678298483499,
+            "rho": 0.015334030344172018
+          },
+          "\u98ce\u7535\u8bbe\u5907": {
+            "n": 398,
+            "p_value": 0.7604494338186938,
+            "rho": 0.015330106465729064
+          },
+          "\u98df\u54c1\u52a0\u5de5": {
+            "n": 397,
+            "p_value": 0.7520205404211635,
+            "rho": 0.01590754899175024
+          },
+          "\u9970\u54c1": {
+            "n": 398,
+            "p_value": 0.7849193900632474,
+            "rho": 0.013722454851345491
+          },
+          "\u9972\u6599": {
+            "n": 397,
+            "p_value": 0.7835023905458335,
+            "rho": 0.013832651297174122
+          }
+        },
+        "maximum_rho": 0.038255132636952176,
+        "minimum_rho": -0.02851609253607544,
+        "positive_fraction": 0.9705882352941176,
+        "valid_omissions": 68
+      },
+      "neighbor": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.8065264080695153,
+            "rho": 0.012473162629526127
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.5944928656356874,
+            "rho": 0.028885213674359905
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.9793099113429602,
+            "rho": 0.0014243894127801992
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.2576643701114707,
+            "rho": 0.0617387733790278
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.873117541849512,
+            "rho": 0.00842261729805009
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7785920509445622,
+            "rho": 0.015258060313463755
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.28784628637749854,
+            "rho": -0.05609038214337717
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.856152673085244,
+            "rho": 0.010078284083072849
+          }
+        },
+        "loyo_negative_count": 1,
+        "loyo_positive_count": 7,
+        "n": 399,
+        "p_value": 0.8357817330065045,
+        "rho": 0.010409964342947603,
+        "within_year_rank_p_value": 0.6740434126851058,
+        "within_year_rank_rho": 0.02112050967359044
+      },
+      "passes": false,
+      "raw": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.7650782587539742,
+            "rho": 0.015218452012101253
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.7611692451126655,
+            "rho": 0.01649477349232885
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.9227960985280123,
+            "rho": 0.0053227183319681124
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.557283751404638,
+            "rho": 0.03203258097056805
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.750364392348846,
+            "rho": 0.01677891477485569
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7080731854755189,
+            "rho": 0.020319976057266896
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.8565452167092601,
+            "rho": -0.009547299088234413
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.7428288271981327,
+            "rho": 0.018240861274321934
+          }
+        },
+        "loyo_negative_count": 1,
+        "loyo_positive_count": 7,
+        "n": 399,
+        "p_value": 0.7740916592386838,
+        "rho": 0.014413796782542834,
+        "within_year_rank_p_value": 0.6889923886468633,
+        "within_year_rank_rho": 0.02009723166200588
+      },
+      "raw_gate": false
+    },
+    "range_compression": {
+      "baseline_block": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "p_value": 0.5556113475265697,
+          "rho": -0.05653599070381569
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "p_value": 0.07742124251420206,
+          "rho": -0.12708727654089585
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "p_value": null,
+          "rho": null
+        }
+      },
+      "bh_q_value": 0.5649108399742695,
+      "controlled": {
+        "loyo": {
+          "2018": {
+            "n": 380,
+            "p_value": 0.07938042919077883,
+            "partial_rank_rho": -0.09010700718330422
+          },
+          "2019": {
+            "n": 334,
+            "p_value": 0.07049731955097817,
+            "partial_rank_rho": -0.09909554971060944
+          },
+          "2020": {
+            "n": 318,
+            "p_value": 0.10196830384971069,
+            "partial_rank_rho": -0.09187559538583434
+          },
+          "2021": {
+            "n": 322,
+            "p_value": 0.48786368096374316,
+            "partial_rank_rho": -0.03879529984919155
+          },
+          "2022": {
+            "n": 346,
+            "p_value": 0.08896961164779407,
+            "partial_rank_rho": -0.09157787084124702
+          },
+          "2023": {
+            "n": 326,
+            "p_value": 0.05770312902113534,
+            "partial_rank_rho": -0.10522971709177004
+          },
+          "2024": {
+            "n": 345,
+            "p_value": 0.13921207455214352,
+            "partial_rank_rho": -0.07977482295886879
+          },
+          "2025": {
+            "n": 310,
+            "p_value": 0.03553535775516373,
+            "partial_rank_rho": -0.11945194031871745
+          }
+        },
+        "loyo_positive_count": 0,
+        "n": 383,
+        "p_value": 0.0782519427949387,
+        "partial_rank_rho": -0.09009023321304041
+      },
+      "controlled_gate": false,
+      "ex_global_top1pct_pnl": {
+        "loyo": {
+          "2018": {
+            "n": 384,
+            "p_value": 0.06372820617635523,
+            "rho": -0.0947114316622218
+          },
+          "2019": {
+            "n": 338,
+            "p_value": 0.08048421942295458,
+            "rho": -0.09520895089839243
+          },
+          "2020": {
+            "n": 330,
+            "p_value": 0.06241167867163175,
+            "rho": -0.1026929035579678
+          },
+          "2021": {
+            "n": 335,
+            "p_value": 0.22650508957315646,
+            "rho": -0.0662521817416588
+          },
+          "2022": {
+            "n": 358,
+            "p_value": 0.051203049064466086,
+            "rho": -0.10313450535565417
+          },
+          "2023": {
+            "n": 338,
+            "p_value": 0.0594870459068295,
+            "rho": -0.10261683516263777
+          },
+          "2024": {
+            "n": 359,
+            "p_value": 0.0906933569013867,
+            "rho": -0.08942013871747073
+          },
+          "2025": {
+            "n": 323,
+            "p_value": 0.06926281499184607,
+            "rho": -0.10121664454793827
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 395,
+        "p_value": 0.059618796488628396,
+        "rho": -0.09486112905587214,
+        "within_year_rank_p_value": 0.45760056288836115,
+        "within_year_rank_rho": -0.0374801554006916
+      },
+      "expected_direction": "positive",
+      "falsification_gate": false,
+      "holding_duration_exit_reason_control": {
+        "n": 383,
+        "p_value": 0.1376456686859336,
+        "partial_rank_rho": -0.0759989790802777
+      },
+      "industry_fixed_effect_control": {
+        "n": 383,
+        "p_value": 0.04242252370396414,
+        "partial_rank_rho": -0.1037541296121775
+      },
+      "leave_one_extreme_security_out": {
+        "estimates": {
+          "300033.SZ": {
+            "n": 397,
+            "p_value": 0.12051134182072573,
+            "rho": -0.07805150542476856
+          },
+          "300079.SZ": {
+            "n": 398,
+            "p_value": 0.14081202539163343,
+            "rho": -0.07395496543715636
+          },
+          "300128.SZ": {
+            "n": 398,
+            "p_value": 0.2719454745330907,
+            "rho": -0.055199131506063745
+          },
+          "300241.SZ": {
+            "n": 397,
+            "p_value": 0.26153933318063294,
+            "rho": -0.05648282772610278
+          },
+          "300324.SZ": {
+            "n": 397,
+            "p_value": 0.24382925681131895,
+            "rho": -0.05862774523468896
+          },
+          "300348.SZ": {
+            "n": 397,
+            "p_value": 0.13789243123875197,
+            "rho": -0.07459546446527496
+          },
+          "300377.SZ": {
+            "n": 397,
+            "p_value": 0.1529959527916684,
+            "rho": -0.07185473653763709
+          },
+          "300390.SZ": {
+            "n": 397,
+            "p_value": 0.18219980286243828,
+            "rho": -0.06708825318522334
+          },
+          "300432.SZ": {
+            "n": 398,
+            "p_value": 0.16101297948372562,
+            "rho": -0.07039373114644258
+          },
+          "300437.SZ": {
+            "n": 398,
+            "p_value": 0.1499834521926132,
+            "rho": -0.07229305610148992
+          },
+          "300497.SZ": {
+            "n": 398,
+            "p_value": 0.10527370452849759,
+            "rho": -0.08131484963796487
+          },
+          "300638.SZ": {
+            "n": 398,
+            "p_value": 0.08595885853204467,
+            "rho": -0.08618186983527372
+          },
+          "300655.SZ": {
+            "n": 398,
+            "p_value": 0.2528082460983065,
+            "rho": -0.057454579890182475
+          },
+          "300803.SZ": {
+            "n": 398,
+            "p_value": 0.060294854514341134,
+            "rho": -0.09425400089422498
+          }
+        },
+        "maximum_rho": -0.055199131506063745,
+        "minimum_rho": -0.09425400089422498,
+        "positive_fraction": 0.0,
+        "valid_omissions": 14
+      },
+      "leave_one_industry_out": {
+        "estimates": {
+          "IT\u670d\u52a1\u2161": {
+            "n": 373,
+            "p_value": 0.14651529361106266,
+            "rho": -0.07532514121654348
+          },
+          "\u4e00\u822c\u96f6\u552e": {
+            "n": 398,
+            "p_value": 0.14426191161464624,
+            "rho": -0.07332039684170791
+          },
+          "\u4e13\u4e1a\u670d\u52a1": {
+            "n": 393,
+            "p_value": 0.13757725410862398,
+            "rho": -0.0750353614102312
+          },
+          "\u4e13\u7528\u8bbe\u5907": {
+            "n": 392,
+            "p_value": 0.15357135684452608,
+            "rho": -0.07221236218780482
+          },
+          "\u4e2a\u62a4\u7528\u54c1": {
+            "n": 398,
+            "p_value": 0.1423811027455695,
+            "rho": -0.07366489361621868
+          },
+          "\u4e2d\u836f\u2161": {
+            "n": 398,
+            "p_value": 0.1423811027455695,
+            "rho": -0.07366489361621868
+          },
+          "\u4e92\u8054\u7f51\u7535\u5546": {
+            "n": 398,
+            "p_value": 0.14300594371497324,
+            "rho": -0.07355006135804842
+          },
+          "\u5143\u4ef6": {
+            "n": 392,
+            "p_value": 0.1393380686754525,
+            "rho": -0.07479767051674169
+          },
+          "\u5149\u4f0f\u8bbe\u5907": {
+            "n": 393,
+            "p_value": 0.13881247015091583,
+            "rho": -0.07480124171784358
+          },
+          "\u5149\u5b66\u5149\u7535\u5b50": {
+            "n": 385,
+            "p_value": 0.28120464495062836,
+            "rho": -0.055057815398587624
+          },
+          "\u5176\u4ed6\u7535\u5b50\u2161": {
+            "n": 394,
+            "p_value": 0.13523567966332214,
+            "rho": -0.0753874571673552
+          },
+          "\u5176\u4ed6\u7535\u6e90\u8bbe\u5907\u2161": {
+            "n": 396,
+            "p_value": 0.14664185378334565,
+            "rho": -0.07307386177518232
+          },
+          "\u517b\u6b96\u4e1a": {
+            "n": 394,
+            "p_value": 0.15038655002706347,
+            "rho": -0.0725888508687991
+          },
+          "\u519b\u5de5\u7535\u5b50\u2161": {
+            "n": 392,
+            "p_value": 0.14567703844628402,
+            "rho": -0.07362253036722491
+          },
+          "\u519c\u4ea7\u54c1\u52a0\u5de5": {
+            "n": 396,
+            "p_value": 0.14664185378334565,
+            "rho": -0.07307386177518232
+          },
+          "\u519c\u5316\u5236\u54c1": {
+            "n": 398,
+            "p_value": 0.1392881791761419,
+            "rho": -0.07423905490706995
+          },
+          "\u51fa\u7248": {
+            "n": 397,
+            "p_value": 0.14864994340010548,
+            "rho": -0.07262141931016412
+          },
+          "\u52a8\u7269\u4fdd\u5065\u2161": {
+            "n": 397,
+            "p_value": 0.1422932578096336,
+            "rho": -0.07377414025159532
+          },
+          "\u5316\u5986\u54c1": {
+            "n": 398,
+            "p_value": 0.14175835215814875,
+            "rho": -0.07377972587438893
+          },
+          "\u5316\u5b66\u5236\u54c1": {
+            "n": 392,
+            "p_value": 0.14375267519714197,
+            "rho": -0.07397507241207993
+          },
+          "\u5316\u5b66\u5236\u836f": {
+            "n": 385,
+            "p_value": 0.09722355849458816,
+            "rho": -0.08464670938830478
+          },
+          "\u533b\u7597\u5668\u68b0": {
+            "n": 382,
+            "p_value": 0.1409244510221537,
+            "rho": -0.07547220672596286
+          },
+          "\u533b\u7597\u670d\u52a1": {
+            "n": 387,
+            "p_value": 0.12494348027271951,
+            "rho": -0.07812888099596428
+          },
+          "\u534a\u5bfc\u4f53": {
+            "n": 383,
+            "p_value": 0.12858364411029588,
+            "rho": -0.07779015712057709
+          },
+          "\u5546\u7528\u8f66": {
+            "n": 398,
+            "p_value": 0.1423811027455695,
+            "rho": -0.07366489361621868
+          },
+          "\u57fa\u7840\u5efa\u8bbe": {
+            "n": 398,
+            "p_value": 0.13867582457832822,
+            "rho": -0.07435388716524022
+          },
+          "\u5851\u6599": {
+            "n": 396,
+            "p_value": 0.14472759746894756,
+            "rho": -0.073421006011644
+          },
+          "\u591a\u5143\u91d1\u878d": {
+            "n": 398,
+            "p_value": 0.14426191161464624,
+            "rho": -0.07332039684170791
+          },
+          "\u5bb6\u7535\u96f6\u90e8\u4ef6\u2161": {
+            "n": 398,
+            "p_value": 0.1399026054849943,
+            "rho": -0.0741242226488997
+          },
+          "\u5de5\u4e1a\u91d1\u5c5e": {
+            "n": 398,
+            "p_value": 0.1423811027455695,
+            "rho": -0.07366489361621868
+          },
+          "\u5de5\u7a0b\u54a8\u8be2\u670d\u52a1\u2161": {
+            "n": 395,
+            "p_value": 0.1359443888372832,
+            "rho": -0.07515567366270191
+          },
+          "\u5f71\u89c6\u9662\u7ebf": {
+            "n": 394,
+            "p_value": 0.1364515553152357,
+            "rho": -0.07515423997580888
+          },
+          "\u6469\u6258\u8f66\u53ca\u5176\u4ed6": {
+            "n": 398,
+            "p_value": 0.13624704793115414,
+            "rho": -0.07481321619792124
+          },
+          "\u6559\u80b2": {
+            "n": 398,
+            "p_value": 0.13624704793115414,
+            "rho": -0.07481321619792124
+          },
+          "\u6570\u5b57\u5a92\u4f53": {
+            "n": 396,
+            "p_value": 0.14536355204785636,
+            "rho": -0.07330529126615676
+          },
+          "\u65c5\u6e38\u53ca\u666f\u533a": {
+            "n": 397,
+            "p_value": 0.14481051690204325,
+            "rho": -0.07331305187502284
+          },
+          "\u6a61\u80f6": {
+            "n": 397,
+            "p_value": 0.1422932578096336,
+            "rho": -0.07377414025159532
+          },
+          "\u6c7d\u8f66\u96f6\u90e8\u4ef6": {
+            "n": 392,
+            "p_value": 0.13201305008848543,
+            "rho": -0.0762078386961618
+          },
+          "\u6d88\u8d39\u7535\u5b50": {
+            "n": 388,
+            "p_value": 0.13399523268880872,
+            "rho": -0.07621162046844432
+          },
+          "\u6e14\u4e1a": {
+            "n": 398,
+            "p_value": 0.1356449952864901,
+            "rho": -0.07492804845609148
+          },
+          "\u6e38\u620f\u2161": {
+            "n": 392,
+            "p_value": 0.14058864031280305,
+            "rho": -0.07456264248683832
+          },
+          "\u7269\u6d41": {
+            "n": 398,
+            "p_value": 0.14489304592837401,
+            "rho": -0.07320556458353766
+          },
+          "\u7279\u94a2\u2161": {
+            "n": 398,
+            "p_value": 0.1356449952864901,
+            "rho": -0.07492804845609148
+          },
+          "\u73af\u4fdd\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.14544511110427522,
+            "rho": -0.07319777978087973
+          },
+          "\u73af\u5883\u6cbb\u7406": {
+            "n": 395,
+            "p_value": 0.1508876643043358,
+            "rho": -0.07240786223893417
+          },
+          "\u751f\u7269\u5236\u54c1": {
+            "n": 385,
+            "p_value": 0.14184846342244756,
+            "rho": -0.0750026256367177
+          },
+          "\u7535\u5b50\u5316\u5b66\u54c1\u2161": {
+            "n": 388,
+            "p_value": 0.2514459965731184,
+            "rho": -0.05836085713228869
+          },
+          "\u7535\u6c60": {
+            "n": 375,
+            "p_value": 0.4113151355239063,
+            "rho": -0.04254911657902194
+          },
+          "\u7535\u7f51\u8bbe\u5907": {
+            "n": 386,
+            "p_value": 0.14452618575204576,
+            "rho": -0.07440667460106776
+          },
+          "\u7535\u89c6\u5e7f\u64ad\u2161": {
+            "n": 396,
+            "p_value": 0.1434620622559966,
+            "rho": -0.07365243550261844
+          },
+          "\u79cd\u690d\u4e1a": {
+            "n": 398,
+            "p_value": 0.1423811027455695,
+            "rho": -0.07366489361621868
+          },
+          "\u81ea\u52a8\u5316\u8bbe\u5907": {
+            "n": 396,
+            "p_value": 0.13909922102911934,
+            "rho": -0.07446243872102902
+          },
+          "\u822a\u5929\u88c5\u5907\u2161": {
+            "n": 398,
+            "p_value": 0.13806553792991785,
+            "rho": -0.07446871942341048
+          },
+          "\u822a\u6d77\u88c5\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.14608182448658055,
+            "rho": -0.07308250768673662
+          },
+          "\u822a\u7a7a\u88c5\u5907\u2161": {
+            "n": 391,
+            "p_value": 0.1337089274469468,
+            "rho": -0.07597340678103086
+          },
+          "\u88c5\u4fee\u5efa\u6750": {
+            "n": 397,
+            "p_value": 0.1367519423452313,
+            "rho": -0.07481158909888337
+          },
+          "\u8ba1\u7b97\u673a\u8bbe\u5907": {
+            "n": 388,
+            "p_value": 0.24057042395731867,
+            "rho": -0.0597180863679233
+          },
+          "\u8bc1\u5238\u2161": {
+            "n": 395,
+            "p_value": 0.14464428486620323,
+            "rho": -0.07352943033769754
+          },
+          "\u8f68\u4ea4\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.14104724676011887,
+            "rho": -0.07400468443988154
+          },
+          "\u8f6f\u4ef6\u5f00\u53d1": {
+            "n": 369,
+            "p_value": 0.04293490848193418,
+            "rho": -0.1054468696526306
+          },
+          "\u901a\u4fe1\u670d\u52a1": {
+            "n": 395,
+            "p_value": 0.14656267090470668,
+            "rho": -0.07318094962519661
+          },
+          "\u901a\u4fe1\u8bbe\u5907": {
+            "n": 383,
+            "p_value": 0.07947842173014635,
+            "rho": -0.08972338674390427
+          },
+          "\u901a\u7528\u8bbe\u5907": {
+            "n": 385,
+            "p_value": 0.1412061208385217,
+            "rho": -0.07512340281165605
+          },
+          "\u91d1\u5c5e\u65b0\u6750\u6599": {
+            "n": 394,
+            "p_value": 0.15104473408282404,
+            "rho": -0.07247224227302593
+          },
+          "\u98ce\u7535\u8bbe\u5907": {
+            "n": 398,
+            "p_value": 0.14363287877248018,
+            "rho": -0.07343522909987817
+          },
+          "\u98df\u54c1\u52a0\u5de5": {
+            "n": 397,
+            "p_value": 0.13980960809043086,
+            "rho": -0.07423522862816778
+          },
+          "\u9970\u54c1": {
+            "n": 398,
+            "p_value": 0.14426191161464624,
+            "rho": -0.07332039684170791
+          },
+          "\u9972\u6599": {
+            "n": 397,
+            "p_value": 0.13919391898136882,
+            "rho": -0.0743505007223109
+          }
+        },
+        "maximum_rho": -0.04254911657902194,
+        "minimum_rho": -0.1054468696526306,
+        "positive_fraction": 0.0,
+        "valid_omissions": 68
+      },
+      "neighbor": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.6300401933707198,
+            "rho": -0.02452856383126908
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.44334006576438056,
+            "rho": -0.04158541486094175
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.6771432411258436,
+            "rho": -0.02286519846831372
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.7013140365328054,
+            "rho": 0.020937497058974647
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.5435141948437939,
+            "rho": -0.032032473661088134
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.5857027359890479,
+            "rho": -0.029576050560221213
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.44985341725008554,
+            "rho": -0.039894071190122365
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.484005930547568,
+            "rho": -0.03889717906442166
+          }
+        },
+        "loyo_negative_count": 7,
+        "loyo_positive_count": 1,
+        "n": 399,
+        "p_value": 0.5971108648019017,
+        "rho": -0.026539689313888393,
+        "within_year_rank_p_value": 0.876886147533221,
+        "within_year_rank_rho": -0.007779879740805409
+      },
+      "passes": false,
+      "raw": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.15128987082114925,
+            "rho": -0.07298888945411698
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.1733013110793015,
+            "rho": -0.0738005593342225
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.15077530307292614,
+            "rho": -0.07879122488589417
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.5014691924438999,
+            "rho": -0.03668535809478464
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.11920927021968089,
+            "rho": -0.08203761887943276
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.1388667493534412,
+            "rho": -0.08019520799825264
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.1253762276211781,
+            "rho": -0.08081106728255556
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.13149538638341146,
+            "rho": -0.0837080620122993
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.14122770999356737,
+        "rho": -0.07378491210111214,
+        "within_year_rank_p_value": 0.4776578283849493,
+        "within_year_rank_rho": -0.0356487392862539
+      },
+      "raw_gate": false
+    },
+    "rs_improvement": {
+      "baseline_block": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "p_value": 0.9638679644322801,
+          "rho": -0.004348922361831976
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "p_value": 0.9537057581711599,
+          "rho": -0.004195113982903358
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "p_value": null,
+          "rho": null
+        }
+      },
+      "bh_q_value": 0.9872781758973228,
+      "controlled": {
+        "loyo": {
+          "2018": {
+            "n": 380,
+            "p_value": 0.7141675520961438,
+            "partial_rank_rho": 0.018849412979569095
+          },
+          "2019": {
+            "n": 334,
+            "p_value": 0.7893541523479902,
+            "partial_rank_rho": 0.014671981468679311
+          },
+          "2020": {
+            "n": 318,
+            "p_value": 0.6161182567655389,
+            "partial_rank_rho": 0.028220365141449752
+          },
+          "2021": {
+            "n": 322,
+            "p_value": 0.6678114867325454,
+            "partial_rank_rho": -0.02400570190635789
+          },
+          "2022": {
+            "n": 346,
+            "p_value": 0.8453340699637921,
+            "partial_rank_rho": 0.010525105298885493
+          },
+          "2023": {
+            "n": 326,
+            "p_value": 0.5692996632779903,
+            "partial_rank_rho": 0.031632219730237936
+          },
+          "2024": {
+            "n": 345,
+            "p_value": 0.20311535529263394,
+            "partial_rank_rho": 0.06868958917568257
+          },
+          "2025": {
+            "n": 310,
+            "p_value": 0.9542393963139463,
+            "partial_rank_rho": -0.003272396881138409
+          }
+        },
+        "loyo_positive_count": 6,
+        "n": 383,
+        "p_value": 0.7302023896199326,
+        "partial_rank_rho": 0.017677739535402446
+      },
+      "controlled_gate": false,
+      "ex_global_top1pct_pnl": {
+        "loyo": {
+          "2018": {
+            "n": 384,
+            "p_value": 0.9594133995113402,
+            "rho": 0.002605444588477477
+          },
+          "2019": {
+            "n": 338,
+            "p_value": 0.6624950946670662,
+            "rho": 0.023825780986442415
+          },
+          "2020": {
+            "n": 330,
+            "p_value": 0.9705806678102966,
+            "rho": 0.0020379092164221394
+          },
+          "2021": {
+            "n": 335,
+            "p_value": 0.6033834121464297,
+            "rho": -0.02848628009739075
+          },
+          "2022": {
+            "n": 358,
+            "p_value": 0.9611383585612211,
+            "rho": 0.0025842358972942964
+          },
+          "2023": {
+            "n": 338,
+            "p_value": 0.971285804546717,
+            "rho": -0.0019651850197674177
+          },
+          "2024": {
+            "n": 359,
+            "p_value": 0.41495923658057043,
+            "rho": 0.04315493651147501
+          },
+          "2025": {
+            "n": 323,
+            "p_value": 0.7862878215133052,
+            "rho": -0.015144157044104396
+          }
+        },
+        "loyo_negative_count": 3,
+        "loyo_positive_count": 5,
+        "n": 395,
+        "p_value": 0.9467142526068468,
+        "rho": 0.0033734398668517833,
+        "within_year_rank_p_value": 0.9788502828397109,
+        "within_year_rank_rho": -0.0013381203301923775
+      },
+      "expected_direction": "positive",
+      "falsification_gate": false,
+      "holding_duration_exit_reason_control": {
+        "n": 383,
+        "p_value": 0.9675653479194138,
+        "partial_rank_rho": -0.0020845429900883047
+      },
+      "industry_fixed_effect_control": {
+        "n": 383,
+        "p_value": 0.5721217663886936,
+        "partial_rank_rho": 0.028955135431608277
+      },
+      "leave_one_extreme_security_out": {
+        "estimates": {
+          "300033.SZ": {
+            "n": 397,
+            "p_value": 0.6341173116573899,
+            "rho": 0.023958848184185286
+          },
+          "300079.SZ": {
+            "n": 398,
+            "p_value": 0.5100022906447852,
+            "rho": 0.03311947890363825
+          },
+          "300128.SZ": {
+            "n": 398,
+            "p_value": 0.41925490295886503,
+            "rho": 0.04059807091413721
+          },
+          "300241.SZ": {
+            "n": 397,
+            "p_value": 0.6141138995651797,
+            "rho": 0.02538152385160315
+          },
+          "300324.SZ": {
+            "n": 397,
+            "p_value": 0.47168274845042746,
+            "rho": 0.036225273478344394
+          },
+          "300348.SZ": {
+            "n": 397,
+            "p_value": 0.7172394359235935,
+            "rho": 0.018231798822982544
+          },
+          "300377.SZ": {
+            "n": 397,
+            "p_value": 0.8184124145015017,
+            "rho": 0.011558722129603311
+          },
+          "300390.SZ": {
+            "n": 397,
+            "p_value": 0.9452782181960779,
+            "rho": 0.0034557004304999585
+          },
+          "300432.SZ": {
+            "n": 398,
+            "p_value": 0.46123703251227577,
+            "rho": 0.03703683662342342
+          },
+          "300437.SZ": {
+            "n": 398,
+            "p_value": 0.9962327784751088,
+            "rho": 0.00023741561938091937
+          },
+          "300497.SZ": {
+            "n": 398,
+            "p_value": 0.9285180534301527,
+            "rho": 0.004510896768237467
+          },
+          "300638.SZ": {
+            "n": 398,
+            "p_value": 0.42746748575787996,
+            "rho": 0.039885824055994445
+          },
+          "300655.SZ": {
+            "n": 398,
+            "p_value": 0.9041662082289373,
+            "rho": 0.006054098294213443
+          },
+          "300803.SZ": {
+            "n": 398,
+            "p_value": 0.691627104755107,
+            "rho": 0.019942912027997223
+          }
+        },
+        "maximum_rho": 0.04059807091413721,
+        "minimum_rho": 0.00023741561938091937,
+        "positive_fraction": 1.0,
+        "valid_omissions": 14
+      },
+      "leave_one_industry_out": {
+        "estimates": {
+          "IT\u670d\u52a1\u2161": {
+            "n": 373,
+            "p_value": 0.5250357673681838,
+            "rho": 0.03301206188968513
+          },
+          "\u4e00\u822c\u96f6\u552e": {
+            "n": 398,
+            "p_value": 0.6519268613952984,
+            "rho": 0.022679370988625394
+          },
+          "\u4e13\u4e1a\u670d\u52a1": {
+            "n": 393,
+            "p_value": 0.6452326712688357,
+            "rho": 0.02329490939256788
+          },
+          "\u4e13\u7528\u8bbe\u5907": {
+            "n": 392,
+            "p_value": 0.6385619857641109,
+            "rho": 0.02379658802771436
+          },
+          "\u4e2a\u62a4\u7528\u54c1": {
+            "n": 398,
+            "p_value": 0.6502812142941057,
+            "rho": 0.02279420324679565
+          },
+          "\u4e2d\u836f\u2161": {
+            "n": 398,
+            "p_value": 0.6668129241774674,
+            "rho": 0.021645880665093098
+          },
+          "\u4e92\u8054\u7f51\u7535\u5546": {
+            "n": 398,
+            "p_value": 0.6601803147472596,
+            "rho": 0.022105209697774117
+          },
+          "\u5143\u4ef6": {
+            "n": 392,
+            "p_value": 0.6602642567114834,
+            "rho": 0.022268905833342574
+          },
+          "\u5149\u4f0f\u8bbe\u5907": {
+            "n": 393,
+            "p_value": 0.6419146754685834,
+            "rho": 0.023529029084955494
+          },
+          "\u5149\u5b66\u5149\u7535\u5b50": {
+            "n": 385,
+            "p_value": 0.6339272971195264,
+            "rho": 0.024345292523185003
+          },
+          "\u5176\u4ed6\u7535\u5b50\u2161": {
+            "n": 394,
+            "p_value": 0.6686169712070067,
+            "rho": 0.021630894515923267
+          },
+          "\u5176\u4ed6\u7535\u6e90\u8bbe\u5907\u2161": {
+            "n": 396,
+            "p_value": 0.6819707655529427,
+            "rho": 0.020655082069469585
+          },
+          "\u517b\u6b96\u4e1a": {
+            "n": 394,
+            "p_value": 0.6402956950328584,
+            "rho": 0.023613240644067175
+          },
+          "\u519b\u5de5\u7535\u5b50\u2161": {
+            "n": 392,
+            "p_value": 0.6720706114902025,
+            "rho": 0.021446307728680843
+          },
+          "\u519c\u4ea7\u54c1\u52a0\u5de5": {
+            "n": 396,
+            "p_value": 0.6602080115010205,
+            "rho": 0.02215937376080351
+          },
+          "\u519c\u5316\u5236\u54c1": {
+            "n": 398,
+            "p_value": 0.646995018366428,
+            "rho": 0.02302386776313616
+          },
+          "\u51fa\u7248": {
+            "n": 397,
+            "p_value": 0.6585358497200917,
+            "rho": 0.022247514169621715
+          },
+          "\u52a8\u7269\u4fdd\u5065\u2161": {
+            "n": 397,
+            "p_value": 0.6651789208434443,
+            "rho": 0.02178642579304924
+          },
+          "\u5316\u5986\u54c1": {
+            "n": 398,
+            "p_value": 0.6519268613952984,
+            "rho": 0.022679370988625394
+          },
+          "\u5316\u5b66\u5236\u54c1": {
+            "n": 392,
+            "p_value": 0.6720706114902025,
+            "rho": 0.021446307728680843
+          },
+          "\u5316\u5b66\u5236\u836f": {
+            "n": 385,
+            "p_value": 0.9144426221306798,
+            "rho": 0.005493296774462256
+          },
+          "\u533b\u7597\u5668\u68b0": {
+            "n": 382,
+            "p_value": 0.6212120328635906,
+            "rho": 0.02536110590386606
+          },
+          "\u533b\u7597\u670d\u52a1": {
+            "n": 387,
+            "p_value": 0.6518439131474981,
+            "rho": 0.023007277839302367
+          },
+          "\u534a\u5bfc\u4f53": {
+            "n": 383,
+            "p_value": 0.6776935406468736,
+            "rho": 0.021304033640220644
+          },
+          "\u5546\u7528\u8f66": {
+            "n": 398,
+            "p_value": 0.6502812142941057,
+            "rho": 0.02279420324679565
+          },
+          "\u57fa\u7840\u5efa\u8bbe": {
+            "n": 398,
+            "p_value": 0.670139024175519,
+            "rho": 0.021416216148752585
+          },
+          "\u5851\u6599": {
+            "n": 396,
+            "p_value": 0.6786048800188366,
+            "rho": 0.020886511560444035
+          },
+          "\u591a\u5143\u91d1\u878d": {
+            "n": 398,
+            "p_value": 0.6601803147472596,
+            "rho": 0.022105209697774117
+          },
+          "\u5bb6\u7535\u96f6\u90e8\u4ef6\u2161": {
+            "n": 398,
+            "p_value": 0.6535741988363941,
+            "rho": 0.02256453873045514
+          },
+          "\u5de5\u4e1a\u91d1\u5c5e": {
+            "n": 398,
+            "p_value": 0.6535741988363941,
+            "rho": 0.02256453873045514
+          },
+          "\u5de5\u7a0b\u54a8\u8be2\u670d\u52a1\u2161": {
+            "n": 395,
+            "p_value": 0.645281774302731,
+            "rho": 0.023232047500062417
+          },
+          "\u5f71\u89c6\u9662\u7ebf": {
+            "n": 394,
+            "p_value": 0.6469146664597066,
+            "rho": 0.02314680626097449
+          },
+          "\u6469\u6258\u8f66\u53ca\u5176\u4ed6": {
+            "n": 398,
+            "p_value": 0.6519268613952984,
+            "rho": 0.022679370988625394
+          },
+          "\u6559\u80b2": {
+            "n": 398,
+            "p_value": 0.6519268613952984,
+            "rho": 0.022679370988625394
+          },
+          "\u6570\u5b57\u5a92\u4f53": {
+            "n": 396,
+            "p_value": 0.650258058020557,
+            "rho": 0.022853662233726854
+          },
+          "\u65c5\u6e38\u53ca\u666f\u533a": {
+            "n": 397,
+            "p_value": 0.675192679214949,
+            "rho": 0.021094793228190536
+          },
+          "\u6a61\u80f6": {
+            "n": 397,
+            "p_value": 0.6651789208434443,
+            "rho": 0.02178642579304924
+          },
+          "\u6c7d\u8f66\u96f6\u90e8\u4ef6": {
+            "n": 392,
+            "p_value": 0.6402207888567706,
+            "rho": 0.02367907401276268
+          },
+          "\u6d88\u8d39\u7535\u5b50": {
+            "n": 388,
+            "p_value": 0.6603216669280625,
+            "rho": 0.022380076488384196
+          },
+          "\u6e14\u4e1a": {
+            "n": 398,
+            "p_value": 0.655223219773033,
+            "rho": 0.022449706472284885
+          },
+          "\u6e38\u620f\u2161": {
+            "n": 392,
+            "p_value": 0.6856627775084805,
+            "rho": 0.020506195609067437
+          },
+          "\u7269\u6d41": {
+            "n": 398,
+            "p_value": 0.670139024175519,
+            "rho": 0.021416216148752585
+          },
+          "\u7279\u94a2\u2161": {
+            "n": 398,
+            "p_value": 0.6585262846336353,
+            "rho": 0.02222004195594437
+          },
+          "\u73af\u4fdd\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.6469750858911489,
+            "rho": 0.023054418828623538
+          },
+          "\u73af\u5883\u6cbb\u7406": {
+            "n": 395,
+            "p_value": 0.9848157847340564,
+            "rho": -0.0009606349882445661
+          },
+          "\u751f\u7269\u5236\u54c1": {
+            "n": 385,
+            "p_value": 0.6586544971053866,
+            "rho": 0.02258533171347216
+          },
+          "\u7535\u5b50\u5316\u5b66\u54c1\u2161": {
+            "n": 388,
+            "p_value": 0.8901715775556374,
+            "rho": 0.007032915130106671
+          },
+          "\u7535\u6c60": {
+            "n": 375,
+            "p_value": 0.44118698688374725,
+            "rho": 0.03988979679283307
+          },
+          "\u7535\u7f51\u8bbe\u5907": {
+            "n": 386,
+            "p_value": 0.6501385563767613,
+            "rho": 0.02315810001730888
+          },
+          "\u7535\u89c6\u5e7f\u64ad\u2161": {
+            "n": 396,
+            "p_value": 0.66353811975728,
+            "rho": 0.02192794426982906
+          },
+          "\u79cd\u690d\u4e1a": {
+            "n": 398,
+            "p_value": 0.6601803147472596,
+            "rho": 0.022105209697774117
+          },
+          "\u81ea\u52a8\u5316\u8bbe\u5907": {
+            "n": 396,
+            "p_value": 0.66353811975728,
+            "rho": 0.02192794426982906
+          },
+          "\u822a\u5929\u88c5\u5907\u2161": {
+            "n": 398,
+            "p_value": 0.6502812142941057,
+            "rho": 0.02279420324679565
+          },
+          "\u822a\u6d77\u88c5\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.6735196769240159,
+            "rho": 0.021210065322333653
+          },
+          "\u822a\u7a7a\u88c5\u5907\u2161": {
+            "n": 391,
+            "p_value": 0.6823270027944468,
+            "rho": 0.020762918623387316
+          },
+          "\u88c5\u4fee\u5efa\u6750": {
+            "n": 397,
+            "p_value": 0.6568792426436574,
+            "rho": 0.022362786263764832
+          },
+          "\u8ba1\u7b97\u673a\u8bbe\u5907": {
+            "n": 388,
+            "p_value": 0.44957955137939754,
+            "rho": 0.038495956501636515
+          },
+          "\u8bc1\u5238\u2161": {
+            "n": 395,
+            "p_value": 0.6685812458896419,
+            "rho": 0.021605804175058047
+          },
+          "\u8f68\u4ea4\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.6453303716390446,
+            "rho": 0.023169690922766654
+          },
+          "\u8f6f\u4ef6\u5f00\u53d1": {
+            "n": 369,
+            "p_value": 0.9259142566650465,
+            "rho": 0.004857136640760102
+          },
+          "\u901a\u4fe1\u670d\u52a1": {
+            "n": 395,
+            "p_value": 0.666906070111593,
+            "rho": 0.02172196441255836
+          },
+          "\u901a\u4fe1\u8bbe\u5907": {
+            "n": 383,
+            "p_value": 0.40789867028869586,
+            "rho": 0.042407827956095004
+          },
+          "\u901a\u7528\u8bbe\u5907": {
+            "n": 385,
+            "p_value": 0.6827669773103036,
+            "rho": 0.0208944512643352
+          },
+          "\u91d1\u5c5e\u65b0\u6750\u6599": {
+            "n": 394,
+            "p_value": 0.6635833635289363,
+            "rho": 0.021980720303242777
+          },
+          "\u98ce\u7535\u8bbe\u5907": {
+            "n": 398,
+            "p_value": 0.6585262846336353,
+            "rho": 0.02222004195594437
+          },
+          "\u98df\u54c1\u52a0\u5de5": {
+            "n": 397,
+            "p_value": 0.6735196769240159,
+            "rho": 0.021210065322333653
+          },
+          "\u9970\u54c1": {
+            "n": 398,
+            "p_value": 0.646995018366428,
+            "rho": 0.02302386776313616
+          },
+          "\u9972\u6599": {
+            "n": 397,
+            "p_value": 0.6601941280854653,
+            "rho": 0.022132242075478592
+          }
+        },
+        "maximum_rho": 0.042407827956095004,
+        "minimum_rho": -0.0009606349882445661,
+        "positive_fraction": 0.9852941176470589,
+        "valid_omissions": 68
+      },
+      "neighbor": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.6946278946819262,
+            "rho": 0.019992868329623215
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.602426258274813,
+            "rho": 0.028265691665258354
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.71346294614425,
+            "rho": 0.020166355370414397
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.4767398379253661,
+            "rho": 0.038832793690576906
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.7294709800820627,
+            "rho": 0.018237950842234445
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7847313763180912,
+            "rho": 0.014824181821137773
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.408367891527031,
+            "rho": 0.043644795831928734
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.7383014952727759,
+            "rho": -0.018574027690291286
+          }
+        },
+        "loyo_negative_count": 1,
+        "loyo_positive_count": 7,
+        "n": 399,
+        "p_value": 0.6901379723404665,
+        "rho": 0.02001916219797616,
+        "within_year_rank_p_value": 0.9912185306284556,
+        "within_year_rank_rho": -0.0005527313475151165
+      },
+      "passes": false,
+      "raw": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.6705431145993241,
+            "rho": 0.0216639140407559
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.44504141459702373,
+            "rho": 0.04143053435866636
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.7012794747745478,
+            "rho": 0.02106596973638084
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.7331615112534664,
+            "rho": 0.01861110849686635
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.6607259105810797,
+            "rho": 0.023145617614326625
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7683905194976279,
+            "rho": 0.01598119113400706
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.4028920610068665,
+            "rho": 0.04415625828308416
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.9010435734006834,
+            "rho": -0.006913203131364021
+          }
+        },
+        "loyo_negative_count": 1,
+        "loyo_positive_count": 7,
+        "n": 399,
+        "p_value": 0.6585167673809341,
+        "rho": 0.02219267123661357,
+        "within_year_rank_p_value": 0.9897507328336522,
+        "within_year_rank_rho": -0.0006451235308199819
+      },
+      "raw_gate": false
+    },
+    "volatility_compression": {
+      "baseline_block": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "p_value": 0.23285700321831646,
+          "rho": 0.11415921199808937
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "p_value": 0.24062618584625992,
+          "rho": -0.08464259389034423
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "p_value": null,
+          "rho": null
+        }
+      },
+      "bh_q_value": 0.9872781758973228,
+      "controlled": {
+        "loyo": {
+          "2018": {
+            "n": 380,
+            "p_value": 0.9010508505637385,
+            "partial_rank_rho": 0.0063992148382679345
+          },
+          "2019": {
+            "n": 334,
+            "p_value": 0.9431062865243173,
+            "partial_rank_rho": 0.003919666041655737
+          },
+          "2020": {
+            "n": 318,
+            "p_value": 0.8872283191090411,
+            "partial_rank_rho": 0.007983748115164363
+          },
+          "2021": {
+            "n": 322,
+            "p_value": 0.2633419655524184,
+            "partial_rank_rho": 0.06251520560315624
+          },
+          "2022": {
+            "n": 346,
+            "p_value": 0.8043276086905203,
+            "partial_rank_rho": 0.013366915053300003
+          },
+          "2023": {
+            "n": 326,
+            "p_value": 0.9380723279392066,
+            "partial_rank_rho": 0.004319584787930854
+          },
+          "2024": {
+            "n": 345,
+            "p_value": 0.43054424609940684,
+            "partial_rank_rho": -0.042573793671753776
+          },
+          "2025": {
+            "n": 310,
+            "p_value": 0.9164782066478017,
+            "partial_rank_rho": -0.005980376004660587
+          }
+        },
+        "loyo_positive_count": 6,
+        "n": 383,
+        "p_value": 0.8995531422282383,
+        "partial_rank_rho": 0.006470923579003279
+      },
+      "controlled_gate": false,
+      "ex_global_top1pct_pnl": {
+        "loyo": {
+          "2018": {
+            "n": 384,
+            "p_value": 0.8526936913044108,
+            "rho": -0.00950635187687728
+          },
+          "2019": {
+            "n": 338,
+            "p_value": 0.8752668286521936,
+            "rho": 0.008569747311329092
+          },
+          "2020": {
+            "n": 330,
+            "p_value": 0.8991966171968356,
+            "rho": -0.006999775134667347
+          },
+          "2021": {
+            "n": 335,
+            "p_value": 0.8842358041784482,
+            "rho": -0.007984790633359528
+          },
+          "2022": {
+            "n": 358,
+            "p_value": 0.8258646030966176,
+            "rho": -0.011668216627177276
+          },
+          "2023": {
+            "n": 338,
+            "p_value": 0.8498001318383052,
+            "rho": -0.010338582060515545
+          },
+          "2024": {
+            "n": 359,
+            "p_value": 0.4298371969706306,
+            "rho": -0.04179419527012219
+          },
+          "2025": {
+            "n": 323,
+            "p_value": 0.9125511425367411,
+            "rho": -0.00613434209381444
+          }
+        },
+        "loyo_negative_count": 7,
+        "loyo_positive_count": 1,
+        "n": 395,
+        "p_value": 0.8348185116727751,
+        "rho": -0.010525132384577562,
+        "within_year_rank_p_value": 0.8168080812184467,
+        "within_year_rank_rho": 0.01169234889621019
+      },
+      "expected_direction": "positive",
+      "falsification_gate": false,
+      "holding_duration_exit_reason_control": {
+        "n": 383,
+        "p_value": 0.5053729532533643,
+        "partial_rank_rho": 0.03413571655732302
+      },
+      "industry_fixed_effect_control": {
+        "n": 383,
+        "p_value": 0.48023638278294417,
+        "partial_rank_rho": 0.0361773913864494
+      },
+      "leave_one_extreme_security_out": {
+        "estimates": {
+          "300033.SZ": {
+            "n": 397,
+            "p_value": 0.8559580613426752,
+            "rho": -0.0091389420908748
+          },
+          "300079.SZ": {
+            "n": 398,
+            "p_value": 0.6777466726310355,
+            "rho": 0.0208925745055209
+          },
+          "300128.SZ": {
+            "n": 398,
+            "p_value": 0.9285180534301527,
+            "rho": 0.004510896768237467
+          },
+          "300241.SZ": {
+            "n": 397,
+            "p_value": 0.9867815638714614,
+            "rho": -0.0008341345866724037
+          },
+          "300324.SZ": {
+            "n": 397,
+            "p_value": 0.8591049600752596,
+            "rho": 0.008937156285775757
+          },
+          "300348.SZ": {
+            "n": 397,
+            "p_value": 0.9076729544058036,
+            "rho": -0.005838942106706826
+          },
+          "300377.SZ": {
+            "n": 397,
+            "p_value": 0.7691404853310022,
+            "rho": -0.01477609839248258
+          },
+          "300390.SZ": {
+            "n": 397,
+            "p_value": 0.7066528723551799,
+            "rho": -0.0189467713258446
+          },
+          "300432.SZ": {
+            "n": 398,
+            "p_value": 0.7392164502737664,
+            "rho": 0.016737801166354815
+          },
+          "300437.SZ": {
+            "n": 398,
+            "p_value": 0.9322709955184141,
+            "rho": 0.004273481148856549
+          },
+          "300497.SZ": {
+            "n": 398,
+            "p_value": 0.9661050432034921,
+            "rho": -0.0021367405744282743
+          },
+          "300638.SZ": {
+            "n": 398,
+            "p_value": 0.92101700169459,
+            "rho": 0.004985728006999306
+          },
+          "300655.SZ": {
+            "n": 398,
+            "p_value": 0.6486147746112242,
+            "rho": 0.022910607270258718
+          },
+          "300803.SZ": {
+            "n": 398,
+            "p_value": 0.6742933008161376,
+            "rho": -0.021129990124901823
+          }
+        },
+        "maximum_rho": 0.022910607270258718,
+        "minimum_rho": -0.021129990124901823,
+        "positive_fraction": 0.5,
+        "valid_omissions": 14
+      },
+      "leave_one_industry_out": {
+        "estimates": {
+          "IT\u670d\u52a1\u2161": {
+            "n": 373,
+            "p_value": 0.6318195072969317,
+            "rho": 0.02489004666285784
+          },
+          "\u4e00\u822c\u96f6\u552e": {
+            "n": 398,
+            "p_value": 0.9881566421292134,
+            "rho": 0.0007464096781066586
+          },
+          "\u4e13\u4e1a\u670d\u52a1": {
+            "n": 393,
+            "p_value": 0.9963086335552124,
+            "rho": 0.00023411969238761683
+          },
+          "\u4e13\u7528\u8bbe\u5907": {
+            "n": 392,
+            "p_value": 0.9935234021798469,
+            "rho": 0.00041129905233086545
+          },
+          "\u4e2a\u62a4\u7528\u54c1": {
+            "n": 398,
+            "p_value": 0.9936226416390272,
+            "rho": 0.0004019129035958931
+          },
+          "\u4e2d\u836f\u2161": {
+            "n": 398,
+            "p_value": 0.9954447203613135,
+            "rho": 0.0002870806454256379
+          },
+          "\u4e92\u8054\u7f51\u7535\u5546": {
+            "n": 398,
+            "p_value": 0.9772265597966967,
+            "rho": 0.0014354032271281895
+          },
+          "\u5143\u4ef6": {
+            "n": 392,
+            "p_value": 0.9972242904326092,
+            "rho": -0.00017627102242751374
+          },
+          "\u5149\u4f0f\u8bbe\u5907": {
+            "n": 393,
+            "p_value": 0.9704756784752674,
+            "rho": 0.0018729575391009346
+          },
+          "\u5149\u5b66\u5149\u7535\u5b50": {
+            "n": 385,
+            "p_value": 0.9805198018968362,
+            "rho": -0.001248476539650513
+          },
+          "\u5176\u4ed6\u7535\u5b50\u2161": {
+            "n": 394,
+            "p_value": 0.9696320036226826,
+            "rho": 0.0019240418302573254
+          },
+          "\u5176\u4ed6\u7535\u6e90\u8bbe\u5907\u2161": {
+            "n": 396,
+            "p_value": 0.9697878362935068,
+            "rho": 0.0019092933005392056
+          },
+          "\u517b\u6b96\u4e1a": {
+            "n": 394,
+            "p_value": 0.9733115106863903,
+            "rho": 0.001690824638710983
+          },
+          "\u519b\u5de5\u7535\u5b50\u2161": {
+            "n": 392,
+            "p_value": 0.9676255108855685,
+            "rho": 0.002056495261654327
+          },
+          "\u519c\u4ea7\u54c1\u52a0\u5de5": {
+            "n": 396,
+            "p_value": 0.9972527909163147,
+            "rho": -0.00017357211823083686
+          },
+          "\u519c\u5316\u5236\u54c1": {
+            "n": 398,
+            "p_value": 0.9954447203613135,
+            "rho": 0.0002870806454256379
+          },
+          "\u51fa\u7248": {
+            "n": 397,
+            "p_value": 0.9762552610474811,
+            "rho": 0.0014985372238605298
+          },
+          "\u52a8\u7269\u4fdd\u5065\u2161": {
+            "n": 397,
+            "p_value": 0.9762552610474811,
+            "rho": 0.0014985372238605298
+          },
+          "\u5316\u5986\u54c1": {
+            "n": 398,
+            "p_value": 0.9881566421292134,
+            "rho": 0.0007464096781066586
+          },
+          "\u5316\u5b66\u5236\u54c1": {
+            "n": 392,
+            "p_value": 0.9990747618250322,
+            "rho": -5.875700747583792e-05
+          },
+          "\u5316\u5b66\u5236\u836f": {
+            "n": 385,
+            "p_value": 0.9844152862525639,
+            "rho": -0.0009987812317204102
+          },
+          "\u533b\u7597\u5668\u68b0": {
+            "n": 382,
+            "p_value": 0.9800547049018552,
+            "rho": 0.001283333069834186
+          },
+          "\u533b\u7597\u670d\u52a1": {
+            "n": 387,
+            "p_value": 0.9831281505194978,
+            "rho": 0.0010784661487172984
+          },
+          "\u534a\u5bfc\u4f53": {
+            "n": 383,
+            "p_value": 0.9507688528842604,
+            "rho": 0.003165170712261353
+          },
+          "\u5546\u7528\u8f66": {
+            "n": 398,
+            "p_value": 0.97904799963935,
+            "rho": 0.0013205709689579344
+          },
+          "\u57fa\u7840\u5efa\u8bbe": {
+            "n": 398,
+            "p_value": 0.9936226416390272,
+            "rho": 0.0004019129035958931
+          },
+          "\u5851\u6599": {
+            "n": 396,
+            "p_value": 0.9606391763449605,
+            "rho": 0.0024878670279753286
+          },
+          "\u591a\u5143\u91d1\u878d": {
+            "n": 398,
+            "p_value": 0.9954447203613135,
+            "rho": 0.0002870806454256379
+          },
+          "\u5bb6\u7535\u96f6\u90e8\u4ef6\u2161": {
+            "n": 398,
+            "p_value": 0.9899785930577392,
+            "rho": 0.0006315774199364034
+          },
+          "\u5de5\u4e1a\u91d1\u5c5e": {
+            "n": 398,
+            "p_value": 0.9954447203613135,
+            "rho": 0.0002870806454256379
+          },
+          "\u5de5\u7a0b\u54a8\u8be2\u670d\u52a1\u2161": {
+            "n": 395,
+            "p_value": 0.976133079954512,
+            "rho": 0.001510083087504057
+          },
+          "\u5f71\u89c6\u9662\u7ebf": {
+            "n": 394,
+            "p_value": 0.997238614228892,
+            "rho": 0.00017491289365975687
+          },
+          "\u6469\u6258\u8f66\u53ca\u5176\u4ed6": {
+            "n": 398,
+            "p_value": 0.9881566421292134,
+            "rho": 0.0007464096781066586
+          },
+          "\u6559\u80b2": {
+            "n": 398,
+            "p_value": 0.9954447203613135,
+            "rho": 0.0002870806454256379
+          },
+          "\u6570\u5b57\u5a92\u4f53": {
+            "n": 396,
+            "p_value": 0.9972527909163147,
+            "rho": -0.00017357211823083686
+          },
+          "\u65c5\u6e38\u53ca\u666f\u533a": {
+            "n": 397,
+            "p_value": 0.9945196817972953,
+            "rho": -0.000345816282429353
+          },
+          "\u6a61\u80f6": {
+            "n": 397,
+            "p_value": 0.9707779183521511,
+            "rho": 0.0018443535062898828
+          },
+          "\u6c7d\u8f66\u96f6\u90e8\u4ef6": {
+            "n": 392,
+            "p_value": 0.9990747618250322,
+            "rho": 5.875700747583792e-05
+          },
+          "\u6d88\u8d39\u7535\u5b50": {
+            "n": 388,
+            "p_value": 0.9971951922560269,
+            "rho": 0.0001790406119070736
+          },
+          "\u6e14\u4e1a": {
+            "n": 398,
+            "p_value": 0.9972668227500894,
+            "rho": 0.00017224838725538274
+          },
+          "\u6e38\u620f\u2161": {
+            "n": 392,
+            "p_value": 0.9861221213972813,
+            "rho": 0.0008813551121375689
+          },
+          "\u7269\u6d41": {
+            "n": 398,
+            "p_value": 0.9936226416390272,
+            "rho": 0.0004019129035958931
+          },
+          "\u7279\u94a2\u2161": {
+            "n": 398,
+            "p_value": 0.999088939338906,
+            "rho": -5.7416129085127584e-05
+          },
+          "\u73af\u4fdd\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.967127103339229,
+            "rho": 0.002074897694576118
+          },
+          "\u73af\u5883\u6cbb\u7406": {
+            "n": 395,
+            "p_value": 0.9374253828927077,
+            "rho": 0.003962619326508835
+          },
+          "\u751f\u7269\u5236\u54c1": {
+            "n": 385,
+            "p_value": 0.9943459653208915,
+            "rho": 0.00036233152481506133
+          },
+          "\u7535\u5b50\u5316\u5b66\u54c1\u2161": {
+            "n": 388,
+            "p_value": 0.6522390774278459,
+            "rho": 0.022949512529821768
+          },
+          "\u7535\u6c60": {
+            "n": 375,
+            "p_value": 0.9913787163543998,
+            "rho": 0.0005598567970923939
+          },
+          "\u7535\u7f51\u8bbe\u5907": {
+            "n": 386,
+            "p_value": 0.9971804131249717,
+            "rho": -0.00018045272740760165
+          },
+          "\u7535\u89c6\u5e7f\u64ad\u2161": {
+            "n": 396,
+            "p_value": 0.9844334351054802,
+            "rho": 0.000983575336641409
+          },
+          "\u79cd\u690d\u4e1a": {
+            "n": 398,
+            "p_value": 0.9772265597966967,
+            "rho": 0.0014354032271281895
+          },
+          "\u81ea\u52a8\u5316\u8bbe\u5907": {
+            "n": 396,
+            "p_value": 0.9807713531355509,
+            "rho": 0.0012150048276158582
+          },
+          "\u822a\u5929\u88c5\u5907\u2161": {
+            "n": 398,
+            "p_value": 0.9881566421292134,
+            "rho": 0.0007464096781066586
+          },
+          "\u822a\u6d77\u88c5\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.9945196817972953,
+            "rho": -0.000345816282429353
+          },
+          "\u822a\u7a7a\u88c5\u5907\u2161": {
+            "n": 391,
+            "p_value": 0.9833036161907698,
+            "rho": -0.0010617401568777606
+          },
+          "\u88c5\u4fee\u5efa\u6750": {
+            "n": 397,
+            "p_value": 1.0,
+            "rho": 0.0
+          },
+          "\u8ba1\u7b97\u673a\u8bbe\u5907": {
+            "n": 388,
+            "p_value": 0.8997525539620217,
+            "rho": 0.006415992750272753
+          },
+          "\u8bc1\u5238\u2161": {
+            "n": 395,
+            "p_value": 0.9816397169138548,
+            "rho": 0.0011616023750031209
+          },
+          "\u8f68\u4ea4\u8bbe\u5907\u2161": {
+            "n": 397,
+            "p_value": 0.9744293434885585,
+            "rho": 0.0016138093180036476
+          },
+          "\u8f6f\u4ef6\u5f00\u53d1": {
+            "n": 369,
+            "p_value": 0.21829047800520668,
+            "rho": -0.06423954911973039
+          },
+          "\u901a\u4fe1\u670d\u52a1": {
+            "n": 395,
+            "p_value": 0.9651234659051352,
+            "rho": 0.0022070445125059296
+          },
+          "\u901a\u4fe1\u8bbe\u5907": {
+            "n": 383,
+            "p_value": 0.9510669513142904,
+            "rho": 0.0031459813023809353
+          },
+          "\u901a\u7528\u8bbe\u5907": {
+            "n": 385,
+            "p_value": 0.9416264544052458,
+            "rho": -0.0037440924230889676
+          },
+          "\u91d1\u5c5e\u65b0\u6750\u6599": {
+            "n": 394,
+            "p_value": 0.9567593104795704,
+            "rho": 0.0027403020006695243
+          },
+          "\u98ce\u7535\u8bbe\u5907": {
+            "n": 398,
+            "p_value": 0.9772265597966967,
+            "rho": 0.0014354032271281895
+          },
+          "\u98df\u54c1\u52a0\u5de5": {
+            "n": 397,
+            "p_value": 0.9726035594154723,
+            "rho": 0.0017290814121467652
+          },
+          "\u9970\u54c1": {
+            "n": 398,
+            "p_value": 0.9754052382406263,
+            "rho": 0.0015502354852984447
+          },
+          "\u9972\u6599": {
+            "n": 397,
+            "p_value": 0.9835600755932823,
+            "rho": 0.001037448847288059
+          }
+        },
+        "maximum_rho": 0.02489004666285784,
+        "minimum_rho": -0.06423954911973039,
+        "positive_fraction": 0.7941176470588235,
+        "valid_omissions": 68
+      },
+      "neighbor": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.5244905065827212,
+            "rho": -0.032406350755180315
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.8116494975594206,
+            "rho": -0.01293252193999492
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.5507451614181903,
+            "rho": -0.03276095649394458
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.8466481377489242,
+            "rho": -0.010558225012645334
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.5203895934554423,
+            "rho": -0.03388942865593382
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.5266812059440233,
+            "rho": -0.034348713975807035
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.13868698033047627,
+            "rho": -0.07808326754306001
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.6010126625997134,
+            "rho": -0.029068769793325823
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.513159464110925,
+        "rho": -0.032831426004680905,
+        "within_year_rank_p_value": 0.9038079981690375,
+        "within_year_rank_rho": 0.0060691695424424765
+      },
+      "passes": false,
+      "raw": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.9654180923184793,
+            "rho": 0.0022081675468539072
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.7503199188958857,
+            "rho": 0.017269176003705786
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.894666313242866,
+            "rho": 0.007271882791562069
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.6136427422007936,
+            "rho": 0.027558756812667482
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.9849513104987797,
+            "rho": -0.0009947973186673334
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.975552344241024,
+            "rho": 0.0016632008872496035
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.30125819591618436,
+            "rho": -0.05455599478991093
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.9581834022730751,
+            "rho": 0.0029152061397318164
+          }
+        },
+        "loyo_negative_count": 2,
+        "loyo_positive_count": 6,
+        "n": 399,
+        "p_value": 0.9872781758973228,
+        "rho": 0.0008007664879190464,
+        "within_year_rank_p_value": 0.714041824782919,
+        "within_year_rank_rho": 0.018400783344287325
+      },
+      "raw_gate": false
+    }
+  },
+  "raw_gate_components": [],
+  "secondary": {
+    "downside_amount_contraction": {
+      "false_breakout": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.8140113265627436,
+            "rho": -0.011981458631671741
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.8210139086340144,
+            "rho": 0.012278208370874948
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.9253318150072386,
+            "rho": -0.005147377653440176
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.614010516359328,
+            "rho": -0.027530191317086828
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.7290494851859657,
+            "rho": -0.018267524601967147
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7096677818882471,
+            "rho": -0.02020371642895059
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.8300823770852988,
+            "rho": -0.011333465178571306
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.7714783543112818,
+            "rho": 0.016147051605395885
+          }
+        },
+        "loyo_negative_count": 6,
+        "loyo_positive_count": 2,
+        "n": 399,
+        "p_value": 0.8675554049838108,
+        "rho": -0.008374792321714083,
+        "within_year_rank_p_value": 0.6968389443381906,
+        "within_year_rank_rho": -0.0195634603236471
+      },
+      "mfe": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.5361081825767501,
+            "rho": -0.031504030748124905
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.46987690430814666,
+            "rho": -0.03920653655783644
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.602880392891435,
+            "rho": -0.028568808324897766
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.7095497000027844,
+            "rho": -0.02033243112345379
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.7369018386864543,
+            "rho": -0.01771749973535017
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7550748504529647,
+            "rho": -0.016929356990895515
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.6045131644111184,
+            "rho": -0.027348766761855336
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.2905322905504709,
+            "rho": -0.05871431764176382
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.545937304753087,
+        "rho": -0.030318939220668178,
+        "within_year_rank_p_value": 0.9008496685431169,
+        "within_year_rank_rho": -0.006256773889573296
+      },
+      "round_trip_return": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.41144688261366713,
+            "rho": -0.04181440504959674
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.2164057315766943,
+            "rho": -0.06701309500935294
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.6107094460861616,
+            "rho": -0.027953934808881635
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.8230585648025974,
+            "rho": -0.012207706121287092
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.5858384079347406,
+            "rho": -0.028731533148222656
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.6625725672103118,
+            "rho": -0.02367925319313005
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.3614186174822007,
+            "rho": -0.04817419384459986
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.11233270321939944,
+            "rho": -0.08810716496876231
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.40899996587671483,
+        "rho": -0.041446707220312094,
+        "within_year_rank_p_value": 0.2330363097877706,
+        "within_year_rank_rho": -0.05983759100886535
+      },
+      "severe_loss": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.9833503310507428,
+            "rho": 0.0010628808117018865
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.9823882979204126,
+            "rho": -0.0011980536280832776
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.9027314228999529,
+            "rho": -0.006712210991697145
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.5604903215847234,
+            "rho": -0.03177250023579682
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.46826445244193426,
+            "rho": -0.03823953409496754
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.7351587774280357,
+            "rho": -0.01835728192708124
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.9062102721502449,
+            "rho": -0.006222573984730301
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.9780928596291156,
+            "rho": -0.0015267310977880339
+          }
+        },
+        "loyo_negative_count": 7,
+        "loyo_positive_count": 1,
+        "n": 399,
+        "p_value": 0.790550666260003,
+        "rho": -0.013337665004341408,
+        "within_year_rank_p_value": 0.9551488316874103,
+        "within_year_rank_rho": 0.002824489567753233
+      },
+      "winner20": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.03548154911941474,
+            "rho": -0.10679358448561234
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.21749774116193205,
+            "rho": -0.06685444958648352
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.12409265863326535,
+            "rho": -0.08431195777301932
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.018700977099777003,
+            "rho": -0.12784972194028582
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.03878446472671277,
+            "rho": -0.10866507514835255
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.06790494193927982,
+            "rho": -0.09883916110899285
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.010942725503456652,
+            "rho": -0.1337836818473591
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.031624566968538104,
+            "rho": -0.11906260673276517
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.03474929680528369,
+        "rho": -0.10573088527248088,
+        "within_year_rank_p_value": 0.4654070257584467,
+        "within_year_rank_rho": -0.03664702910274128
+      }
+    },
+    "range_compression": {
+      "false_breakout": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.8133091092714694,
+            "rho": -0.01202754116487048
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.96583665447438,
+            "rho": 0.002324515177010306
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.9542523853478535,
+            "rho": -0.003150819048469441
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.3723017833061245,
+            "rho": -0.04867921246133896
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.7870175043897237,
+            "rho": 0.0142491979167298
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.8848192008469213,
+            "rho": 0.007861945453262709
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.6271971022927731,
+            "rho": -0.025646620732729435
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.5290597176167882,
+            "rho": -0.03498527847835775
+          }
+        },
+        "loyo_negative_count": 5,
+        "loyo_positive_count": 3,
+        "n": 399,
+        "p_value": 0.8091942394675462,
+        "rho": -0.012126001382481849,
+        "within_year_rank_p_value": 0.7295992534456777,
+        "within_year_rank_rho": -0.017357731023680753
+      },
+      "mfe": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.7327262076040051,
+            "rho": 0.017391905489253245
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.9642796479651795,
+            "rho": -0.0024305247752670644
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.6460414949798978,
+            "rho": 0.025220597903265977
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.44297856714886397,
+            "rho": 0.04186551255902062
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.667278890480448,
+            "rho": -0.022669783693958535
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.5717219220392267,
+            "rho": -0.030684815784571766
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.6797805209083636,
+            "rho": 0.021797364639992996
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.6679064627394136,
+            "rho": 0.023849617557392403
+          }
+        },
+        "loyo_negative_count": 3,
+        "loyo_positive_count": 5,
+        "n": 399,
+        "p_value": 0.8543147892731009,
+        "rho": 0.009221026748273563,
+        "within_year_rank_p_value": 0.7533877948176617,
+        "within_year_rank_rho": 0.01577696383524616
+      },
+      "round_trip_return": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.9790087232441517,
+            "rho": 0.0013400973013772616
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.8188659375263708,
+            "rho": 0.012428131793365152
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.5652332979735781,
+            "rho": -0.03157782861062869
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.5997802074812633,
+            "rho": 0.02864106702483604
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.6188565202356412,
+            "rho": -0.026232754016089273
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.44842988429526554,
+            "rho": -0.04112306620882208
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.7224924811972936,
+            "rho": 0.01875443187789188
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.500883321130297,
+            "rho": 0.03741023764888232
+          }
+        },
+        "loyo_negative_count": 3,
+        "loyo_positive_count": 5,
+        "n": 399,
+        "p_value": 0.98693839102647,
+        "rho": -0.0008221558922431707,
+        "within_year_rank_p_value": 0.6188924568508264,
+        "within_year_rank_rho": 0.024976654463196232
+      },
+      "severe_loss": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.9890911460665219,
+            "rho": 0.0006963701869770981
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.5670616392578607,
+            "rho": -0.031057236358774196
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.34651856415105864,
+            "rho": 0.05166841484306407
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.9607361047615803,
+            "rho": -0.002687703947439006
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.8633036063798278,
+            "rho": 0.009080290704825068
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.8273542867398105,
+            "rho": 0.01183620367561199
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.627938661899925,
+            "rho": -0.02559143103579222
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.7424579797261324,
+            "rho": -0.018268127273532678
+          }
+        },
+        "loyo_negative_count": 4,
+        "loyo_positive_count": 4,
+        "n": 399,
+        "p_value": 0.9922744094706828,
+        "rho": -0.0004862690366166139,
+        "within_year_rank_p_value": 0.8901000304656579,
+        "within_year_rank_rho": -0.006939221595500201
+      },
+      "winner20": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.5633627160228435,
+            "rho": -0.029424674478479358
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.8151344842941244,
+            "rho": -0.012688804010037759
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.3534033556833954,
+            "rho": -0.05093633502486916
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.871415959210859,
+            "rho": -0.008836596842057311
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.43519376702302637,
+            "rho": -0.041138406244864735
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.2331628588291093,
+            "rho": -0.06463875934117527
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.9748881098405092,
+            "rho": -0.001662516514185018
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.3838141776919468,
+            "rho": -0.04839175476632686
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.5207888319886129,
+        "rho": -0.03223949377677865,
+        "within_year_rank_p_value": 0.4852856110350614,
+        "within_year_rank_rho": -0.03503421759671201
+      }
+    },
+    "rs_improvement": {
+      "false_breakout": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.25995911964803636,
+            "rho": 0.0573266712992294
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.6211040048203568,
+            "rho": 0.026821328965503526
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.49139801393841576,
+            "rho": 0.037778632353430625
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.16347950079689494,
+            "rho": 0.07596631158136542
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.40997545094710497,
+            "rho": 0.043434939104243155
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.3398137446090562,
+            "rho": 0.051770169116767656
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.7183211178540367,
+            "rho": 0.0190487349010729
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.052306007793366346,
+            "rho": 0.10758137228147911
+          }
+        },
+        "loyo_negative_count": 0,
+        "loyo_positive_count": 8,
+        "n": 399,
+        "p_value": 0.30673961387813337,
+        "rho": 0.05129560297049877,
+        "within_year_rank_p_value": 0.17787541982353272,
+        "within_year_rank_rho": 0.06758553717910602
+      },
+      "mfe": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.9395836329381048,
+            "rho": 0.0038602568529468493
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.6751763063659006,
+            "rho": 0.02274019619101077
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.9082835511336964,
+            "rho": 0.0063273318529605774
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.7200462906439902,
+            "rho": -0.019564835349953284
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.8362092019180944,
+            "rho": 0.010903650794803878
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.8814479402707176,
+            "rho": -0.008093740393286924
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.6863895094011836,
+            "rho": 0.021322036673898048
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.19473249395371003,
+            "rho": -0.07200120465570764
+          }
+        },
+        "loyo_negative_count": 3,
+        "loyo_positive_count": 5,
+        "n": 399,
+        "p_value": 0.9556271962471684,
+        "rho": -0.0027943335378061767,
+        "within_year_rank_p_value": 0.5311281449390282,
+        "within_year_rank_rho": -0.03144435525417683
+      },
+      "round_trip_return": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.05377604255723779,
+            "rho": -0.09799207282010255
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.18626581562480943,
+            "rho": -0.07164013930931225
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.07907014044913638,
+            "rho": -0.09622755296184558
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.05000903723388692,
+            "rho": -0.10669455904410546
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.07880311938701581,
+            "rho": -0.09250301754520877
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.10586587724727958,
+            "rho": -0.08759300249546603
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.35937585502379454,
+            "rho": -0.048379271820143545
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.001096819147562425,
+            "rho": -0.18001272887072403
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.055346223854004596,
+        "rho": -0.09600691427060114,
+        "within_year_rank_p_value": 0.012028164360644392,
+        "within_year_rank_rho": -0.12561882438998861
+      },
+      "severe_loss": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.10343958522009367,
+            "rho": 0.08279475012532972
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.22225829483133464,
+            "rho": 0.06616942345875333
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.03442938583185108,
+            "rho": 0.11577263144593915
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.14529976024894758,
+            "rho": 0.07938325587614493
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.21721953496806437,
+            "rho": 0.06501147100872406
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.2736483455901904,
+            "rho": 0.059359678056182405
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.6842981511817343,
+            "rho": 0.021472262341674982
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.08024654093796486,
+            "rho": 0.09702639355942573
+          }
+        },
+        "loyo_negative_count": 0,
+        "loyo_positive_count": 8,
+        "n": 399,
+        "p_value": 0.14584951841185015,
+        "rho": 0.07294035549249209,
+        "within_year_rank_p_value": 0.3710097700121133,
+        "within_year_rank_rho": 0.04490347694720555
+      },
+      "winner20": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.39444025403448757,
+            "rho": -0.043352608821998845
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.9579916806891222,
+            "rho": -0.0028587424054235264
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.5445326336658681,
+            "rho": -0.0332729285243097
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.25440496089569326,
+            "rho": -0.062162649461177735
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.39896634012874466,
+            "rho": -0.044463583122688
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.4037507122968037,
+            "rho": -0.04529110348395274
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.7249535638101479,
+            "rho": -0.018581066923244318
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.14308954791573936,
+            "rho": -0.08128259153058116
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.41454175905390733,
+        "rho": -0.040958811411861966,
+        "within_year_rank_p_value": 0.43295656505959956,
+        "within_year_rank_rho": -0.03936450341505514
+      }
+    },
+    "volatility_compression": {
+      "false_breakout": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.3367740343921287,
+            "rho": 0.04889356772386045
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.5268909208394554,
+            "rho": 0.03433130107584452
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.883042854632232,
+            "rho": 0.008079823104490942
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.5678709446049721,
+            "rho": 0.031176574272992363
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.2730179723020771,
+            "rho": 0.05776344610028686
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.31282391407094035,
+            "rho": 0.0547369409859234
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.14374483760094936,
+            "rho": 0.07709948846830904
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.4837090266162828,
+            "rho": 0.03892358374796651
+          }
+        },
+        "loyo_negative_count": 0,
+        "loyo_positive_count": 8,
+        "n": 399,
+        "p_value": 0.37448740660803825,
+        "rho": 0.044578321629123924,
+        "within_year_rank_p_value": 0.43605646580588553,
+        "within_year_rank_rho": 0.03910001457731781
+      },
+      "mfe": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.7285045566431235,
+            "rho": -0.017677778156143905
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.7225812736667986,
+            "rho": -0.01926555373118224
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.8918436674469643,
+            "rho": 0.007467932777182295
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.6999637913587805,
+            "rho": -0.021036941090468223
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.28265069281691796,
+            "rho": -0.056618870309120974
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.42593708924815976,
+            "rho": -0.043189614693162286
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.3218241517844566,
+            "rho": -0.05228862699738886
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.6957968749580581,
+            "rho": -0.021736447992676385
+          }
+        },
+        "loyo_negative_count": 7,
+        "loyo_positive_count": 1,
+        "n": 399,
+        "p_value": 0.5707241718331515,
+        "rho": -0.028468329658666403,
+        "within_year_rank_p_value": 0.6911836713562576,
+        "within_year_rank_rho": -0.019947941767172597
+      },
+      "round_trip_return": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.27599402910332227,
+            "rho": -0.055440336908227264
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.4734903750429481,
+            "rho": -0.038888441403946754
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.49952561200235013,
+            "rho": -0.03707357370776801
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.31143847111970735,
+            "rho": -0.05521941784321773
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.22208548214626578,
+            "rho": -0.06433040852053834
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.2288943264571935,
+            "rho": -0.06523175495144588
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.09580347354186652,
+            "rho": -0.08779556480617068
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.5523102189037224,
+            "rho": -0.03303323793896203
+          }
+        },
+        "loyo_negative_count": 8,
+        "loyo_positive_count": 0,
+        "n": 399,
+        "p_value": 0.27089543723171583,
+        "rho": -0.05525031170892054,
+        "within_year_rank_p_value": 0.29499674589412594,
+        "within_year_rank_rho": -0.052555370436946455
+      },
+      "severe_loss": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.8849918317916452,
+            "rho": 0.007366863556968248
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.7976269497143536,
+            "rho": -0.013915853680044225
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.6526616089854164,
+            "rho": -0.024715505589582513
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.7960447878712276,
+            "rho": -0.014110445724054784
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.9439374575427173,
+            "rho": 0.0037088511329567177
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.8466422146937496,
+            "rho": 0.010496256089693652
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.8304908192533991,
+            "rho": 0.011305803437045195
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.9027795104219716,
+            "rho": 0.006791321090160563
+          }
+        },
+        "loyo_negative_count": 3,
+        "loyo_positive_count": 5,
+        "n": 399,
+        "p_value": 0.9834460887304384,
+        "rho": -0.0010420050784641726,
+        "within_year_rank_p_value": 0.9467800617900548,
+        "within_year_rank_rho": 0.0033522294131162
+      },
+      "winner20": {
+        "loyo": {
+          "2018": {
+            "n": 388,
+            "p_value": 0.5797169254766883,
+            "rho": -0.02820024069003808
+          },
+          "2019": {
+            "n": 342,
+            "p_value": 0.698577172906892,
+            "rho": -0.021014264348639608
+          },
+          "2020": {
+            "n": 334,
+            "p_value": 0.572205574339973,
+            "rho": -0.031013655599819532
+          },
+          "2021": {
+            "n": 338,
+            "p_value": 0.5361791115053409,
+            "rho": -0.03376295093988372
+          },
+          "2022": {
+            "n": 362,
+            "p_value": 0.4985593064737328,
+            "rho": -0.03568170572741118
+          },
+          "2023": {
+            "n": 342,
+            "p_value": 0.40476681697588446,
+            "rho": -0.0451933880503304
+          },
+          "2024": {
+            "n": 361,
+            "p_value": 0.38389521833551965,
+            "rho": -0.045963691862762265
+          },
+          "2025": {
+            "n": 326,
+            "p_value": 0.9434377760778893,
+            "rho": 0.0039446780578750945
+          }
+        },
+        "loyo_negative_count": 7,
+        "loyo_positive_count": 1,
+        "n": 399,
+        "p_value": 0.548647644465124,
+        "rho": -0.030114618050581868,
+        "within_year_rank_p_value": 0.8520107544366076,
+        "within_year_rank_rho": -0.009368542325827359
+      }
+    }
+  },
+  "spec_sha256": "b46c233662f47f38e9557daf938af9d0fb6f9944bb396906e3457505280ae9e4",
+  "strategy_modification": "NONE"
+}
