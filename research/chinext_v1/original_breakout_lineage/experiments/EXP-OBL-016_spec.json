@@ -1,0 +1,29 @@
+{
+  "experiment_id": "EXP-OBL-016",
+  "hypothesis_id": "H-OBL-012",
+  "status": "FROZEN_BEFORE_FIRST_OUTCOME_JOIN",
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "question": "Does frozen minimum-volume support defense predict greater MFE and fewer false breakouts?",
+  "mechanism": "If the canonical minimum-volume session marks seller exhaustion, retaining its low should precede more opportunity and fewer failed breakouts.",
+  "lineage_freeze": {"lineage_freeze_id": "LINEAGE-OBL-015-65FA3D5627E3182F", "assignment_sha256": "65fa3d5627e3182f7422effbaf133a9eddc9f5d5e45db72faad07be0641eaece", "modification_after_reveal": "FORBIDDEN"},
+  "population": {"events": 399, "lineage_counts": {"L_SUPPORT_BROKEN": 267, "L_SUPPORT_HELD": 132}, "expected_outcome_counts": {"opportunity20": 84, "false_breakout": 213, "extreme_winner": 15, "severe_loss": 44}},
+  "primary_predictor": {"name": "support_held", "mapping": {"L_SUPPORT_HELD": 1, "L_SUPPORT_BROKEN": 0}, "expected_direction": "positive"},
+  "primary_outcomes": {"mfe": {"expected_direction": "positive"}, "non_false_breakout": {"expected_direction": "positive"}},
+  "fixed_controls": ["entry_rs_score", "entry_mom20", "entry_box_width", "entry_minvol_location", "entry_breakout_volume_ratio", "index_return_20d", "index_realized_vol20", "breadth_composite", "entry_beta60", "entry_log_amount20", "minimum_volume_ratio", "sessions_since_minimum_volume", "entry-year fixed effects"],
+  "falsification": ["fixed close-support neighbor", "LOYO and three blocks", "remove 2025", "remove top-1% PnL/extreme winners/severe losses", "holding duration and exit reason", "leave one security and industry out", "PIT and timing"],
+  "decision_gates": {"raw_minimum_rho": 0.1, "raw_minimum_positive_loyo": 7, "maximum_bh_qvalue": 0.1, "controlled_minimum_rho": 0.08, "controlled_minimum_positive_loyo": 6, "minimum_positive_blocks": 2, "minimum_block_rho_exclusive": -0.05},
+  "decision": {"VALIDATE": "both endpoints pass all gates", "REFINE": "at least one endpoint passes raw and controlled magnitude", "REJECTED": "neither endpoint passes raw and controlled magnitude"},
+  "timing": {"available_at_timestamp": "signal close 15:30 Asia/Shanghai", "potential_action_timestamp": "T+1 open or later"},
+  "forbidden": ["lineage change", "support-distance or age threshold", "recovery-axis rescue", "entry/exit/sizing/overlay/production rule", "V1 modification", "CY-011 access"],
+  "input_bindings": {
+    "runner": {"path": "research/chinext_v1/original_breakout_lineage/scripts/run_minvol_support_outcome_reveal.py", "sha256": "82e9a473f9be5f01f847dc1b633cae192fcfeccce341f88fd0b3832397538ec9"},
+    "analysis_helper": {"path": "research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py", "sha256": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f"},
+    "features": {"path": "research/chinext_v1/original_breakout_lineage/artifacts/minvol_support_features.csv", "sha256": "2db425b4e79c9ef6d51ca083d9e55bac097582099ff7aef68718cda2cf889b49"},
+    "assignments": {"path": "research/chinext_v1/original_breakout_lineage/artifacts/minvol_support_assignments.csv", "sha256": "65fa3d5627e3182f7422effbaf133a9eddc9f5d5e45db72faad07be0641eaece"},
+    "freeze": {"path": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-015.json", "sha256": "83d9f2e3495e8e7688bf37e737c4ce9123a87216fed2c851a355e9bafab56a9a"},
+    "outcomes": {"path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv", "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"},
+    "controls": {"path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv", "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"},
+    "trades": {"path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv", "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"}
+  },
+  "output_contract": {"table": "research/chinext_v1/original_breakout_lineage/artifacts/minvol_support_outcome_reveal.csv", "result": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-016_result.json", "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-016_minvol_support_outcome_reveal.md", "evidence": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-016_evidence_packet.md"}
+}

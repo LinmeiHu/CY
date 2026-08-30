@@ -19,6 +19,6 @@
 | EXP-OBL-013 | H-OBL-011 | Construct outcome-blind canonical minimum-volume support/recovery lineages with a fixed low/close support neighbor. | INVALID_ENGINEERING_NULL_RIGHTS_COALESCE; no output | NONE |
 | EXP-OBL-014 | H-OBL-011 | Scientifically unchanged clean reexecution of EXP-OBL-013 with canonical null-rights coalescing and fresh outputs. | REFINE_CONSTRUCTION_GATE_FAILED; no output | NONE |
 | EXP-OBL-015 | H-OBL-011 | Outcome-blind feasibility refinement removing only the collapsed recovery axis and preserving binary low support plus close-support neighbor. | COMPLETE_FREEZE_LINEAGE | NONE; freeze only |
-| EXP-OBL-016 | H-OBL-012 | Reveal MFE/non-false-breakout outcomes against frozen minimum-volume support lineage. | PLANNED_NOT_PREREGISTERED | NONE under this identity |
+| EXP-OBL-016 | H-OBL-012 | Reveal MFE/non-false-breakout outcomes against frozen minimum-volume support lineage. | FROZEN_BEFORE_FIRST_OUTCOME_JOIN | NONE under this identity |
 
 Invalid or failed attempts will remain as separate immutable rows and identities.
