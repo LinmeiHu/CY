@@ -1,0 +1,93 @@
+{
+  "experiment_id": "MKT-MIN-VOL-STATE-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_STATE_RESULT",
+  "question": "Do exact rising, falling, and flat minute-volatility ordinal path states recur and preserve dwell/transition structure under both accepted definitions?",
+  "research_role": "outcome-blind recurrent state representation before economic usefulness",
+  "inputs": {
+    "path_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_nonslope_panel.csv",
+      "sha256": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0"
+    },
+    "path_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_result.json",
+      "sha256": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc"
+    },
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc"
+    },
+    "volatility_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+      "sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-002_result.json",
+      "sha256": "8bc15644a0edbfd4b2e5c158e0b7d6a8435ca0dbf3da16b45bf9acf8d90c04c5"
+    },
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29"
+  },
+  "path_fields": {
+    "primary": "minute_realized_volatility__ordinal_progression",
+    "neighbor_all_pairs": "minute_realized_volatility__ordinal_progression_neighbor_all_pairs",
+    "neighbor_rank_time": "minute_realized_volatility__ordinal_progression_neighbor_rank_time"
+  },
+  "path_states": {
+    "RISING": "value > 0",
+    "FALLING": "value < 0",
+    "FLAT": "value == 0",
+    "MISSING": "nonfinite; never imputed"
+  },
+  "level_context": {
+    "field": "realized_volatility_median20_pit_expanding_pct",
+    "LOW_LEVEL": "value <= 0.20",
+    "MIDDLE_LEVEL": "0.20 < value < 0.80",
+    "HIGH_LEVEL": "value >= 0.80"
+  },
+  "availability": {
+    "daily_level_available_at": "same trade date 15:00 Asia/Shanghai",
+    "path_available_at": "same trade date 15:30 Asia/Shanghai after completed 15:00 minute bar",
+    "current_state_available_at": "same trade date 15:30 Asia/Shanghai",
+    "process_attribution": "dwell and transition facts become available only as later states complete and are never entry predictors",
+    "first_possible_action": "later causally valid observation/session under a separate experiment; this experiment creates no action"
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "cell_years": [2019, 2020, 2021, 2022, 2023]
+  },
+  "gates": {
+    "exact_groups": 8,
+    "group_year_minimum_valid_observations": 150,
+    "state_group_year_minimum_observations": 20,
+    "neighbor_state_kappa_median_minimum": 0.60,
+    "neighbor_state_kappa_group_minimum": 0.50,
+    "neighbor_macro_jaccard_median_minimum": 0.60,
+    "neighbor_macro_jaccard_group_minimum": 0.50,
+    "state_group_minimum_completed_runs": 20,
+    "neighbor_to_primary_median_dwell_ratio_minimum": 0.50,
+    "neighbor_to_primary_median_dwell_ratio_maximum": 2.00,
+    "transition_total_variation_median_maximum": 0.20,
+    "transition_total_variation_group_maximum": 0.30,
+    "path_by_level_group_year_minimum_observations": 5,
+    "no_rescue": "No favorable state, neighbor, view, denominator, year, transition, level cell, alternative boundary, or failed representation replaces a failed primary gate."
+  },
+  "forbidden_fields": [
+    "raw minute rows",
+    "failed MKT-MIN-PATH-002 descriptor/operator or any OLS, endpoint, signed-reversal, or curvature field",
+    "future market return or future volatility used as a predictor outcome",
+    "strategy membership, candidate, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes descriptive recurrent path states only; it does not establish economic expansion/contraction, forecasting, usefulness, habitat, causality, or a trading rule. Failure rejects only this exact state architecture, not the continuous path coordinate.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-STATE-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-STATE-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-VOL-STATE-001_state.md"
+  ]
+}

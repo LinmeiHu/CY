@@ -274,3 +274,9 @@ MKT-MIN-VOL-STATE-001 to test sign-state agreement with the two accepted
 ordinal neighbors, recurrence across views/years, dwell, transitions, and
 outcome-blind geometry with frozen daily volatility level. Do not access future
 returns or strategy outcomes. Human input is not required; CY-011 stays unopened.
+
+MKT-MIN-VOL-STATE-001 is frozen before result under spec `bf3c5e7a...`. Exact
+sign/zero states are tested against both accepted ordinal definitions, with
+fixed recurrence, agreement, run/dwell, transition-matrix, and daily-level
+context gates. Dwell and transitions are post-state attribution only. Execute
+twice; do not relabel a favorable subset as contraction/expansion.

@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-STATE-001_MAP_NEXT`
+- `CURRENT_PHASE`: `MKT-MIN-VOL-STATE-001_FROZEN_BEFORE_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: outcome-blind state geometry and recurrence of the distinct minute-volatility path
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -308,3 +308,11 @@ This establishes a distinct contemporaneous volatility-path coordinate, not a
 contraction/expansion mechanism, forecast, habitat, or signal. SYNTH-MKT-012
 selects a map-first outcome-blind recurrence/state-geometry test before any
 economic-usefulness study.
+
+The MKT-MIN-VOL-STATE-001 map and spec `bf3c5e7a...` are frozen before
+construction. Primary and neighbor states use exact zero/sign only. Kappa,
+macro-Jaccard, every group/year state count, run/dwell support, transition total
+variation, and fixed 20/80 daily-volatility-level geometry are preregistered.
+Later dwell/transition observations are explicitly post-state attribution, not
+entry predictors. No future return, strategy outcome, raw minute row, failed
+path role, or CY-011 may be read.
