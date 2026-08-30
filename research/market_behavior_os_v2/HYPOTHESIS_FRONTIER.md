@@ -247,3 +247,8 @@ selecting cells, or estimate the 29-sequence conditional trajectory. The active
 frontier is role-specific external geometry: test whether each survivor is
 reconstructable from ordinary daily support distance/range/close state or generic
 intraday return, low timing, volatility, close location, and volume activity.
+
+MKT-SUPPORT-GEO-001 is frozen under spec `c828ed0e...`. Construct only the fixed
+official-daily and generic-minute controls, audit complete domains first, and
+apply all pairwise/joint gates in raw/relative or fixed conditional blocks. Do
+not delete an explanatory control to preserve a support label.

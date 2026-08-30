@@ -1,0 +1,108 @@
+{
+  "experiment_id": "MKT-SUPPORT-GEO-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONTROL_CONSTRUCTION",
+  "question": "Which internally stable objective-support roles remain distinct from matched ordinary daily and minute path/activity geometry?",
+  "outcome_access": false,
+  "inputs": {
+    "support_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-001_spec.json", "sha256": "4c58431daa1a21268eedcb8d6ebc306aadfb4aac89f8c9218e956fc91e36bef4"},
+    "support_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_001.py", "sha256": "45d483250191d1bb86531d936487c521cf117dcc20430bea0a10f55f25cd4205"},
+    "session_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-001_session_panel.csv", "sha256": "501194a74e30c523d100ac76edc8a4984821523a23063e89a441834e4194b23e"},
+    "trajectory_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-001_trajectory_panel.csv", "sha256": "668005f76c383a4dc8ae9e9735f25c328a54a7ebf950482a82c430e0291bfae0"},
+    "support_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-001_result.json", "sha256": "cbb3f3a6e101757c5ef7e6d59e28b380a0e6044ce7cccf20815ef85e6c5cd06c"},
+    "data_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_data_003.py", "sha256": "91dde0e182fa3418fae653e93f3e9a1e6058e5fdf5c48245190fd49388f01597"},
+    "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "qd004_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "cy006_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"}
+  },
+  "roles": {
+    "signed_test_geometry": {
+      "target": "h20_cont_signed_test_geometry",
+      "domain": "all_market_sessions",
+      "coordinates": ["raw", "relative_rank"],
+      "controls": ["daily_low_level_distance", "daily_close_level_distance", "minute_time_of_low"]
+    },
+    "recovery_speed": {
+      "target": "h20_cont_recovery_speed",
+      "domain": "tested_recovered_sessions",
+      "coordinates": ["raw"],
+      "controls": ["minute_time_of_low", "minute_close_location", "minute_realized_volatility"]
+    },
+    "recovery_amplitude": {
+      "target": "h20_cont_recovery_amplitude",
+      "domain": "tested_sessions",
+      "coordinates": ["raw"],
+      "controls": ["daily_range", "minute_close_location", "minute_open_to_close_return"]
+    },
+    "recovery_volume_intensity": {
+      "target": "h20_cont_recovery_volume_intensity",
+      "domain": "tested_recovered_sessions",
+      "coordinates": ["raw"],
+      "controls": ["minute_volume_herfindahl", "minute_opening30_volume_share", "minute_closing30_volume_share", "minute_time_of_low"]
+    },
+    "signed_test_geometry_trajectory": {
+      "target": "h20_signed_test_geometry__slope5",
+      "domain": "all_market_sequences",
+      "coordinates": ["raw", "relative_rank"],
+      "controls": ["daily_low_level_distance__slope5", "daily_close_level_distance__slope5", "minute_intraday_range__slope5"]
+    },
+    "closing_level_state_trajectory": {
+      "target": "h20_closing_level_state__slope5",
+      "domain": "all_market_sequences",
+      "coordinates": ["raw", "relative_rank"],
+      "controls": ["daily_close_level_distance__slope5", "daily_low_level_distance__slope5", "minute_open_to_close_return__slope5"]
+    }
+  },
+  "control_formulas": {
+    "daily_low_level_distance": "(coordinate_close * CY006 low / CY006 close) / support_low20 - 1",
+    "daily_close_level_distance": "coordinate_close / support_low20 - 1",
+    "daily_range": "(CY006 high - CY006 low) / CY006 close",
+    "minute_open_to_close_return": "QD004 15:00 close / QD004 09:31 open - 1",
+    "minute_intraday_range": "(max continuous high - min continuous low) / QD004 09:31 open",
+    "minute_close_location": "(QD004 15:00 close - min continuous low) / (max continuous high - min continuous low)",
+    "minute_time_of_low": "first continuous minimum-low index / 239",
+    "minute_realized_volatility": "sqrt(sum squared consecutive continuous log-close changes)",
+    "minute_volume_herfindahl": "sum squared continuous minute-volume shares",
+    "minute_opening30_volume_share": "first 30 continuous bars volume / total continuous volume",
+    "minute_closing30_volume_share": "last 30 continuous bars volume / total continuous volume",
+    "trajectory_operator": "OLS slope on centered indices [-2,-1,0,1,2]"
+  },
+  "support_gates": {
+    "unconditional_session_rows": 1200,
+    "unconditional_year_view_cell_rows": 50,
+    "trajectory_rows": 240,
+    "trajectory_year_view_cell_rows": 10,
+    "conditional_blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "conditional_block_minimum_rows": 30,
+    "all_required_fields_nondegenerate": true
+  },
+  "distinctness_gates": {
+    "pairwise_absolute_spearman_strictly_below": 0.85,
+    "joint_adjusted_rank_r2_full_strictly_below": 0.70,
+    "joint_adjusted_rank_r2_max_cell_or_block_strictly_below": 0.85,
+    "unconditional_pairwise_median_cell_absolute_spearman_strictly_below": 0.85,
+    "all_coordinates_and_blocks_required": true
+  },
+  "coordinate_policy": {
+    "unconditional_session": ["raw", "same_date_view_relative_rank"],
+    "conditional_session": ["raw_only_sparse_domain"],
+    "trajectory": ["raw", "year_view_relative_rank"],
+    "pit_historical": "UNAVAILABLE_NO_FABRICATION"
+  },
+  "prohibited": [
+    "control deletion or substitution",
+    "favorable coordinate, view, year, block, or role selection",
+    "pooling unsupported conditional recovery trajectories",
+    "future value, payoff, strategy, habitat, timing, or execution fields",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes external representation distinctness only, not support defense, temporal recurrence, prediction, payoff, habitat, timing, execution, or strategy usefulness.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-GEO-001_session_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-GEO-001_trajectory_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-GEO-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-GEO-001_geometry.md"
+  ]
+}

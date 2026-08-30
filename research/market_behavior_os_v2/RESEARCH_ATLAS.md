@@ -99,6 +99,8 @@
 | `experiments/MKT-SUPPORT-001_spec.json` | Frozen representation/support/stability/redundancy contract before reconstruction |
 | `scripts/run_mkt_support_001.py` | Passing session/trajectory construction, fixed gates, redundancy, and five-case reconstruction |
 | `reports/MKT-SUPPORT-001_representation.md` | Four session roles, two trajectory shapes, exact failures, and no usefulness claim |
+| `OBJECTIVE_SUPPORT_EXTERNAL_GEOMETRY_MAP.md` | Frozen role-specific daily/minute alternatives and external distinctness gates |
+| `experiments/MKT-SUPPORT-GEO-001_spec.json` | Frozen raw/relative/conditional-block geometry before control construction |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

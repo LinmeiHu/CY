@@ -945,3 +945,11 @@ Two runs are identical: session `501194a7...`, trajectory `668005f7...`, result
 quality only. Next map role-specific external controls for daily support
 distance/range/close location and ordinary minute path/volatility/activity to
 determine which roles are genuinely support-specific.
+
+MKT-SUPPORT-GEO-001 is frozen under SHA-256
+`c828ed0e73a652ff6979067712fbd293e43f553e4dd3683e358db06504552ba1`.
+Each role has fixed daily/minute alternatives and unchanged domains. Raw and
+relative geometry are required for unconditional roles; conditional roles use
+raw full plus 2018--2020/2021--2023 blocks with 30-row floors. Pairwise rho
+0.85 and joint adjusted-rank R2 0.70 full/0.85 maximum are strict boundaries.
+Execute twice without deleting controls or reading future/payoff fields.

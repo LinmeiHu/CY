@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-GEO-001_EXTERNAL_GEOMETRY_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-GEO-001_FROZEN_EXTERNAL_GEOMETRY_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -947,6 +947,18 @@ Two final executions are byte-identical: session `501194a7...`, trajectory
 pass. No PIT history was fabricated. SYNTH-MKT-032 requires role-specific
 external geometry against ordinary daily-level and intraday path/activity
 alternatives before any temporal or usefulness claim.
+
+The objective-support external-geometry map and MKT-SUPPORT-GEO-001 spec
+`c828ed0e...` are frozen before control construction. Signed geometry, recovery
+speed, recovery amplitude, recovery-volume intensity, and both stable slopes
+have fixed role-specific daily/minute alternatives.
+
+Unconditional session and trajectory roles require raw and sampled relative-
+rank geometry; conditional tested/recovered roles remain raw-only with fixed
+2018--2020 and 2021--2023 blocks of at least 30 rows. Pairwise absolute rho must
+stay below 0.85 and joint adjusted rank R2 below 0.70 full/0.85 maximum cell or
+block. Every coordinate and block is required. No control deletion, sparse rank,
+future value, outcome, post-2023 data, or CY-011 is allowed. Execute twice.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from
