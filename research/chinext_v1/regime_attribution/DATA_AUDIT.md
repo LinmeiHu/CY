@@ -90,3 +90,11 @@ T-5/T-3/T-1, all 21 required rows exist, all are hard-valid, and all 20 causal
 corporate-action coordinate steps are contiguous. The accepted extended
 transient canonical and membership hashes remain `07b2f8ea...` and `c4e89c4e...`.
 No outcome column was read during this availability audit.
+
+The subsequent EXP-ICD-001 industry audit was also outcome-blind. All 399 entry
+securities have a source-notice-valid industry label and exact own ret20/ret60.
+There are 68 contemporaneous labels. Excluding the entry security, 367 entries
+have at least one valid peer and the fixed >=5-peer rule admits 296 entries in
+both horizons (136/194 EXTENDED, 67/94 HOLDOUT, 93/111 DEVELOPMENT). Entry-date
+eligible-universe industry mapping coverage is 100%; peer count has minimum 0,
+median 11, maximum 62. No outcome was read before freezing the >=5 rule.

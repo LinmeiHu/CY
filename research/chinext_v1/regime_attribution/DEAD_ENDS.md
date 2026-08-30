@@ -19,6 +19,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   downside-session amount contraction. Do not continue this family by swapping
   anchors, selecting one of the descriptive structural features, or combining
   trajectories until an attractive result appears.
+- H-012's preregistered industry-versus-stock strength decomposition is rejected
+  by EXP-ICD-001. Neither 20-session component survives its raw, controlled, and
+  neighboring-definition gates. Do not promote the apparently positive >=10-peer
+  industry subset or 60-session stock-residual neighbor; both were fixed
+  falsification views and contradict the primary/other neighbor evidence.
 
 ## Invalid rather than rejected
 

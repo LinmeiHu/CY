@@ -1,0 +1,200 @@
+{
+  "experiment_id": "EXP-ICD-001",
+  "spec_id": "CHINEXT-V1-INDUSTRY-VERSUS-STOCK-RIGHTTAIL-DECOMPOSITION-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_INDUSTRY_OUTCOME_JOIN",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE",
+  "hypothesis_id": "H-012",
+  "question": "Is V1's extreme-winner tail primarily associated with industry-wide leadership or with stock-specific strength relative to contemporaneous PIT-valid industry peers?",
+  "mechanism": "Persistent demand may propagate through an industry cohort, making industry leadership the opportunity carrier; alternatively, the tail may be idiosyncratic to a stock after removing its industry's return.",
+  "competing_predictions": {
+    "industry_wide": "Same-industry peer mean 20-session return relative to 399102 is positively associated with extreme winners after controlling the stock-specific residual and fixed entry/market exposures.",
+    "stock_specific": "Stock 20-session return minus the same-industry peer mean is positively associated with extreme winners after controlling industry leadership and fixed entry/market exposures."
+  },
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_industry_context_decomposition.py",
+      "sha256": "4f436375b5a8ac5d6d075e6ec2fbd557794b76940483f69c6f50c2f9ba698f2b"
+    },
+    "accepted_transition_table": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "daily_regime_features": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/daily_regime_features.parquet",
+      "sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6"
+    },
+    "accepted_wla_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    },
+    "phase2_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    },
+    "extended_input_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "gate_c_runner": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_gate_c.py",
+      "sha256": "5c6463c8f910ffd222b0920ff7d450c886de198b9e848ae312aede79eb753d27"
+    },
+    "gate_d_runner": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_gate_d.py",
+      "sha256": "f7c18b68323f91bb7591d83dfde861bdde74dee2a3fbf1be036fbe949a01ee5a"
+    },
+    "gate_c_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_gate_c_preregistration.json",
+      "sha256": "bcd4f2d1f3d8ad185ef8558026386859a3dbe7ab87bf23b9ac438caa78ae4bb6"
+    },
+    "gate_d_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_gate_d_preregistration.json",
+      "sha256": "dd1c9e3747a52138b1238c90f6c34d37a405f45cda6adc01a3264f286bdd5342"
+    },
+    "gate_c_result": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_c_result.json",
+      "sha256": "1e521a897fcdf05e940316bea08f211e56a44baedcce94457487c4392cbacea8"
+    },
+    "gate_d_result": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_d_result.json",
+      "sha256": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c"
+    },
+    "strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "extended_historical_state": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/daily_historical_state.parquet",
+      "sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444"
+    },
+    "extended_security_master": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/normalized/security_master.parquet",
+      "sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54"
+    },
+    "extended_official_document_index": {
+      "path": "research/chinext_v1/data/pit_free_2017_2021/raw/official_documents_index.json",
+      "sha256": "92b594501b37f8850b6d7faf0d0b329b8f74e8b07fc46286741f474cae1600d4"
+    },
+    "market_anchor_399102": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "csi300": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/csi000300.parquet",
+      "sha256": "6d93a34f308fec0390a184a68a4d7856f566c917248b886b6a4e7dffcf9dda63"
+    },
+    "chinext100": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily/sz399006.parquet",
+      "sha256": "0d0f8dbb573f1016eaa94f11aa847ea2bf2be296691caa591f93320ddd640c2c"
+    }
+  },
+  "transient_contract": {
+    "canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "sample": {
+    "universe": "All 399 frozen V1 entry cycles before peer eligibility",
+    "minimum_peer_count": 5,
+    "expected_eligible_cycles": 296,
+    "minimum_extreme_winners": 8,
+    "peer_definition": "Other contemporaneously basic-eligible securities with the entry security's source-notice-valid industry label; the entry security is excluded.",
+    "missingness": "Cycles with fewer than five valid peers at either 20 or 60 sessions are excluded by the outcome-blind eligibility rule; no imputation or label substitution."
+  },
+  "primary_components": {
+    "industry_market_relative20": "Equal-weight mean simple 20-session return of eligible same-industry peers minus exact 399102 20-session return.",
+    "stock_industry_residual20": "Entry stock simple 20-session return minus equal-weight mean same-industry peer return."
+  },
+  "fixed_neighbors": {
+    "cohort_center": "Replace peer mean with peer median at 20 sessions; it is falsification-only.",
+    "horizon": "Use the analogous mean-peer decomposition at 60 sessions; it is falsification-only.",
+    "peer_count": "Require at least ten peers; it is falsification-only and cannot replace the primary sample."
+  },
+  "primary_endpoint": "round_trip_return >= 0.50",
+  "secondary_endpoints": [
+    "round_trip_return >= 0.20",
+    "false breakout: mfe < 0.10 and return <= 0",
+    "severe loss: return <= -0.10",
+    "MFE",
+    "round-trip return"
+  ],
+  "fixed_controls": {
+    "continuous_ranked": [
+      "competing decomposition component",
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20",
+      "log_peer_count"
+    ],
+    "categorical": ["entry_year"],
+    "estimator": "Residual correlation after separate least-squares projections; predictor and continuous controls are percentile ranked and the binary endpoint remains binary."
+  },
+  "gates": {
+    "raw": "rho >= 0.10, BH q <= 0.10 across exactly two primary components, positive within-year rank rho, and positive in >=7/8 LOYO estimates.",
+    "neighbor": "Both peer-median 20-session and mean-peer 60-session definitions are positive with >=6/8 LOYO positive signs.",
+    "controlled": "Partial-rank rho >= 0.10 and positive in >=7/8 controlled LOYO estimates.",
+    "falsification": "Positive ex-global-Top-4 P&L, after holding-duration/exit-reason sensitivity, in >=80% leave-one-extreme-security and leave-one-industry omissions, and nonnegative in the >=10-peer sensitivity when estimable.",
+    "decision": {
+      "DEEPEN": "industry component alone passes all gates",
+      "PIVOT": "stock-specific component alone passes, or a raw association fails incrementality/stability",
+      "REFINE": "both components pass all gates",
+      "REJECT": "neither raw component passes"
+    }
+  },
+  "falsification": [
+    "within-entry-year ranks and eight LOYO omissions",
+    "three independent baseline-block estimates",
+    "peer median and 60-session horizon neighbors",
+    "minimum ten-peer sensitivity",
+    "global Top-4 realized-PnL removal",
+    "leave-one-extreme-security and leave-one-industry omissions",
+    "competing-component, V1-entry, market, breadth, beta, liquidity, and peer-count controls",
+    "holding-duration and exit-reason post-outcome sensitivity",
+    "exact PIT label, stock return, peer eligibility, and entry applicability audit"
+  ],
+  "forbidden": [
+    "industry label fallback or current taxonomy backfill",
+    "selecting a different peer count, center, horizon, or component after results",
+    "industry threshold, filter, sector rotation rule, or strategy modification",
+    "breadth historical redesign or invalid Phase 7/8/9 use",
+    "large industry-feature or interaction screen",
+    "year-specific parameters",
+    "untouched OOS, PIT-A, or deployability claim"
+  ],
+  "outputs": [
+    "artifacts/industry_context_decomposition.csv",
+    "artifacts/industry_context_attribution.json",
+    "reports/industry_context_attribution.md"
+  ]
+}

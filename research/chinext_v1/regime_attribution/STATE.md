@@ -2,11 +2,11 @@
 
 ## CURRENT_PHASE
 
-EXP-WLA-001_COMPLETE_REJECTED — the independent winner/loser pre-entry
-demand/compression hypothesis failed every preregistered component gate. H-004
-remains frozen for prospective validation; EXP-P7-003 and all Phase 8/9/final
-strategy conclusions remain invalid. No strategy or production change is
-authorized.
+EXP-ICD-001_COMPLETE_REJECTED — both preregistered pre-entry mechanism families,
+H-011 demand/compression and H-012 industry-versus-stock strength, are rejected.
+H-004 remains frozen for prospective validation; EXP-P7-003 and all Phase
+8/9/final strategy conclusions remain invalid. No strategy or production change
+is authorized.
 
 ## AUTONOMOUS_WORKSPACE_OWNERSHIP
 
@@ -360,6 +360,41 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Next highest-information independent question: whether right-tail formation is
   industry-wide or stock-specific, using only PIT-valid industry labels and a
   separately audited stock-minus-industry decomposition.
+
+## AUTONOMOUS_CYCLE_EXP_ICD_001_PREREGISTRATION
+
+- Hypothesis: H-012, two competing mechanisms rather than a directional feature
+  screen.
+- Outcome-blind eligibility: all 399 own labels/returns valid; fixed >=5-peer
+  sample 296; peer-mapped coverage 100% on entry dates; 20/60 counts identical.
+- Primary components: peer-industry mean ret20 minus 399102 ret20, and entry-stock
+  ret20 minus peer-industry mean ret20.
+- Both are tested; neither can be substituted after results. Peer median, 60d,
+  and >=10 peers are falsification neighbors only.
+- Fixed controls include the competing component, V1 entry state, market return/
+  volatility, frozen breadth, beta, amount liquidity, peer count, and year.
+- Spec: `experiments/EXP-ICD-001_spec.json`, SHA `a148520f...`.
+- Status: frozen before the first industry-feature/outcome join.
+
+## AUTONOMOUS_CYCLE_EXP_ICD_001_RESULT
+
+- Fixed sample: 296 cycles, including 14 extreme winners and 34 winner20 cycles;
+  33 PIT-valid labels; minimum/median peers 5/14.
+- Industry-market relative20: raw rho 0.065, within-year 0.053, 7/8 raw LOYO,
+  but BH q 0.524, controlled rho -0.041 with 0/8 positive LOYO, and 60d neighbor
+  -0.038.
+- Stock-industry residual20: raw rho -0.029, within-year -0.033, controlled rho
+  -0.094 with 0/8 positive LOYO; peer-median and >=10-peer views are also
+  negative. The positive 60d neighbor is contradictory and cannot replace it.
+- Integrity: zero mapping/PIT/replay/post-entry-price failures; 25-input plus spec
+  aggregate `2299d234...` unchanged; two complete runs byte-identical.
+- Output hashes: decomposition `e37bb39a...`, result JSON `542f89a4...`, report
+  `cbf74bd2...`.
+- Scientific decision: `REJECT`. Neither industry-wide nor stock-specific entry
+  RS decomposition explains the right tail under the frozen gates.
+- Next frontier: post-entry landmark-path emergence. Pre-entry states have now
+  failed two independent mechanistic designs; determine when the rare winners
+  first separate after entry without using post-exit data or proposing an exit.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

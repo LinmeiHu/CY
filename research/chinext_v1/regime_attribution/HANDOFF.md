@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-WLA-001_COMPLETE_REJECTED` on 2026-08-30.
+`EXP-ICD-001_COMPLETE_REJECTED` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -10,6 +10,11 @@ hard-valid trajectory rows, two byte-identical runs, and the full preregistered
 falsification set. EXP-P7-003 is invalidated, and Phase 8/9 plus `FINAL_REPORT.md`
 are downstream-invalid. Frozen V1 remains unchanged; no strategy or production
 action is authorized.
+
+EXP-ICD-001 is complete and rejected. The fixed 296-cycle sample has 14 extreme
+winners, but neither industry-market relative20 nor stock-industry residual20
+survives the preregistered raw, controlled, and neighbor gates. Its input
+aggregate stayed exact and two executions are byte-identical.
 
 ## Recovered autonomous environment
 
@@ -135,11 +140,10 @@ mechanisms.
 
 ## Required next action
 
-Checkpoint EXP-WLA-001, then audit PIT-valid industry coverage without outcomes.
-If same-industry cohorts and 20/60-session return histories are adequate, freeze
-one H-012 industry-leadership-versus-stock-residual experiment. Do not reuse H-011
-anchors/features to search for a replacement result. No threshold, interaction,
-overlay, exit optimization, or strategy modification is authorized.
+Checkpoint EXP-ICD-001, then audit fixed post-entry landmark availability without
+outcomes. If coverage is adequate, preregister one H-013 early-path emergence
+test. It must state survivor selection and outcome overlap explicitly and cannot
+authorize an exit, filter, or strategy change.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

@@ -38,28 +38,26 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H011_PIVOT_TO_INDUSTRY_CONTEXT_AUDIT`.
+`REJECT_H012_PIVOT_TO_POSTENTRY_LANDMARK_PATH`.
 
 Breadth historical optimization is closed and H-004 is
-`PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the fixed stock-level
-demand/compression transition: no component passes even its raw gate. Frozen V1
-remains authoritative and unchanged. No threshold, overlay, entry adaptation,
-exit adaptation, neighbor substitution, or production change is authorized.
+`PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
+demand/compression transition, and EXP-ICD-001 rejects the industry-versus-stock
+entry-strength decomposition. Frozen V1 remains authoritative and unchanged. No
+threshold, overlay, entry adaptation, exit adaptation, neighbor substitution, or
+production change is authorized.
 
 ## Highest-information unresolved question
 
-Is V1's right tail an industry-wide leadership phenomenon or a stock-specific
-residual phenomenon? This is independent of the rejected trajectory shape and can
-separate industry return relative to 399102 from stock return relative to its
-PIT-valid industry cohort. Prospective H-004 confirmation remains the highest
-confirmatory question but is unavailable until genuinely future untouched
-PIT-A-quality data exist.
+When, after entry, does V1's right tail become distinguishable from ordinary
+trades? The next minimum experiment should use only frozen observable holding
+paths, condition explicitly on landmark availability, and test whether early
+continuation adds information beyond pre-entry state, holding duration, and exit
+lineage. It must remain mechanism description, not an exit or filter design.
 
 ## Exact next action
 
-Persist/checkpoint EXP-WLA-001, then perform an outcome-blind audit of industry
-label validity, same-industry cohort size, and 20/60-session return coverage at
-the entry signal. Only if coverage is adequate may one industry-versus-stock
-residual hypothesis be preregistered. EXP-P7-003 must never be silently repaired,
-rerun, or overwritten. Do not run another 2018-2025 breadth threshold or
-interaction search.
+Persist/checkpoint EXP-ICD-001, then audit fixed 5/10/20-session landmark-path
+coverage without reading outcome values. If adequate, preregister one early-path
+emergence hypothesis with explicit survivor-selection and mechanical-overlap
+limitations. EXP-P7-003 must never be silently repaired, rerun, or overwritten.

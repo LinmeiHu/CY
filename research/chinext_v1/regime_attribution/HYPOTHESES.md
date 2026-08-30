@@ -144,3 +144,31 @@ byte-consistent with one another.
   No component survived the fixed neighbor, LOYO, control, and falsification set.
 - Status: `REJECTED`. Similar late acceleration appears across all outcome groups;
   this demand/compression transition does not distinguish V1's extreme winners.
+
+### H-012 — industry-wide versus stock-specific right-tail strength
+
+- Question: is V1's extreme-winner tail associated with broad demand inside the
+  stock's industry or with idiosyncratic strength after removing its industry?
+- Competing mechanisms: industry leadership is the carrier if same-industry peer
+  return relative to 399102 survives; stock-specific selection is the carrier if
+  stock-minus-peer return survives instead.
+- Predictions: each component is tested separately against the fixed >=50%
+  outcome while controlling the competing component, V1 entry state, market,
+  breadth, beta, liquidity, peer count, and entry year.
+- Required data: exact source-notice-valid industry label; entry stock ret20/60;
+  at least five contemporaneously basic-eligible same-industry peers; 399102;
+  accepted entry controls and outcomes.
+- Primary tests: exactly two 20-session components, BH over two, within-year
+  ranks, LOYO, and fixed partial-rank models.
+- Falsification: peer median, 60 sessions, >=10 peers, block, Top-4 P&L,
+  security, industry, holding/exit, PIT, and no-replay checks.
+- Metrics: raw/controlled rank association with extreme winner; winner20,
+  false-breakout, severe-loss, MFE, and terminal return are secondary.
+- Confounds: only 296/399 entries have five peers; 68 contemporaneous industry
+  labels appear; taxonomy is PIT-valid but bounded PIT-B; all outcomes consumed.
+- Result: industry-market relative20 rho is 0.065 but becomes -0.041 after the
+  fixed controls (0/8 controlled LOYO); the 60-session neighbor is -0.038.
+  Stock-industry residual20 rho is -0.029 and controlled rho is -0.094 (0/8),
+  with negative mean/median and >=10-peer definitions. Neither component passes.
+- Status: `REJECTED` by EXP-ICD-001. V1's extreme-winner tail is not explained by
+  this preregistered entry-signal industry-versus-stock RS decomposition.
