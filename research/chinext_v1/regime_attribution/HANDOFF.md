@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-EPR-001_COMPLETE_REJECTED_WITH_DESCRIPTIVE_LOCALIZATION` on 2026-08-30.
+`EXP-RTD-001_INVALIDATED_AFTER_PARTIAL_IN_MEMORY_EXECUTION` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -81,6 +81,11 @@ false-breakout label (0.306) and H-016 topology (0.418), both 8/8 LOYO, but not
 with additional post-day-5 failure (raw/controlled 0.032/0.061). Tail and block
 attacks collapse the forward result. The decision is REJECT persistence; the
 descriptive localization cannot support a day-5 sell rule.
+
+The severe-loss audit did not freeze a new test: only 34/44 severe losses survive
+day 5, none survives day 20, and the four already-tested H-011 transitions are
+weak. H-020 instead freezes the unresolved H-006 right-tail-density incrementality
+question on 383 complete rows; aggregate `da07bde4...`.
 
 ## Recovered autonomous environment
 
@@ -206,9 +211,10 @@ mechanisms.
 
 ## Required next action
 
-Audit severe-loss formation for one independent, PIT-valid, non-duplicative
-mechanism. Freeze a minimum-sufficient test only if the audit supports one without
-horizon/threshold mining; otherwise pivot to the next ranked frontier.
+Do not modify or rerun EXP-RTD-001. Create EXP-RTD-002 with a new runner/spec and
+new output paths. Project `index_realized_vol20` from exactly one accepted source,
+preserve all scientific definitions/gates, then execute twice and persist the
+result.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

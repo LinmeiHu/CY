@@ -1,0 +1,24 @@
+{
+  "experiment_id":"EXP-RTD-001",
+  "status":"FROZEN_BEFORE_FIRST_INCREMENTALITY_TEST",
+  "created_on":"2026-08-30",
+  "hypothesis_id":"H-020",
+  "question":"Does eligible-universe 20-session right-tail density add MFE opportunity information beyond frozen H-004 breadth and trend?",
+  "mechanism":"A dense cross-sectional right tail may represent leadership intensity distinct from broad participation.",
+  "prediction":"Right-tail density retains positive MFE association after three frozen breadth and three trend controls.",
+  "input_bindings":{
+    "runner":{"path":"research/chinext_v1/regime_attribution/scripts/run_right_tail_density_incrementality.py","sha256":"f3e99f8ef2abc6571d6288315d69a2004b6dfd7e11d6f458a41adec9b18aa0be"},
+    "daily_features":{"path":"research/chinext_v1/regime_attribution/artifacts/daily_regime_features.parquet","sha256":"5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6"},
+    "accepted_trades":{"path":"research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv","sha256":"77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"},
+    "accepted_controls":{"path":"research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv","sha256":"d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"},
+    "rank_runner":{"path":"research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py","sha256":"7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"}
+  },
+  "sample":{"cycles":399,"feature_complete":387,"fixed_control_complete":383},
+  "primary_feature":"cross_sectional_return20_right_tail_ge20",
+  "primary_outcome":"mfe",
+  "controls":["breadth_above_ma20","breadth_above_ma60","breadth_above_ma20_change20","index_return_20d","index_close_to_ma60","index_ma20_slope_5d","entry_year"],
+  "neighbors":["cross_sectional_return20_p90","cross_sectional_return20_p90_p10_spread"],
+  "gates":{"raw":"rho>=0.10, positive within-year, >=7/8 LOYO","controlled":"partial rho>=0.10, >=7/8 LOYO","outcome":"opportunity20 rho>=0.10 with >=7/8 LOYO and non-false-breakout positive","neighbor":"both positive with >=6/8 LOYO","falsification":"risk partial>=0.08, >=2/3 positive blocks, ex-Top4 positive, security/industry positive fraction>=0.80"},
+  "forbidden":["thresholds","interactions","breadth optimization","overlay","strategy replay","production change","invalid Phase 7/8/9 use"],
+  "outputs":["artifacts/right_tail_density_incrementality.csv","artifacts/right_tail_density_incrementality.json","reports/right_tail_density_incrementality.md"]
+}

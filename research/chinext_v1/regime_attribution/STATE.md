@@ -2,9 +2,8 @@
 
 ## CURRENT_PHASE
 
-EXP-EPR-001_COMPLETE_REJECTED_WITH_DESCRIPTIVE_LOCALIZATION — false-breakout path
-topology is visible by day 5 but does not predict additional post-day-5 failure.
-Entry gap and entry crowding remain rejected. H-004 remains frozen for
+EXP-RTD-001_INVALIDATED_AFTER_PARTIAL_IN_MEMORY_EXECUTION — no result artifact
+exists and H-020 remains unresolved. H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
 remain invalid. No strategy or production change is authorized.
 
@@ -619,6 +618,25 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Output hashes: table `22990a28...`, JSON `e1d646e5...`, report `4c5367aa...`.
 - Scientific decision: `REJECT` forward persistence while retaining descriptive
   localization. No day-5 sell, threshold, hold, or exit rule is authorized.
+
+## AUTONOMOUS_CYCLE_EXP_RTD_001_PREREGISTRATION
+
+- H-020 freezes one eligible-universe 20-session right-tail-density feature against
+  MFE, controlling the three accepted H-004 breadth and three trend variables.
+- Coverage is 387/399 raw and 383/399 complete controls across all blocks/years.
+- Opportunity20, non-false-breakout, two fixed neighboring definitions, risk,
+  blocks, Top-4, securities, and industries are attacks; no threshold or interaction.
+- Spec SHA `ae0f5f87...`; five-input-plus-spec aggregate `da07bde4...`.
+- Status: frozen before the first incrementality calculation.
+
+## AUTONOMOUS_CYCLE_EXP_RTD_001_FAILURE
+
+- Duplicate suffixed `index_realized_vol20` columns caused a `KeyError` before
+  any output was written. Some calculations had begun in memory, but no estimate
+  was printed or inspected.
+- The frozen runner/spec are not repaired. Bound inputs are unchanged and H-020
+  remains unresolved. Continuation requires fresh EXP-RTD-002 identities and
+  output paths while preserving every scientific gate.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

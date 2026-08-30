@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H019_AUDIT_SEVERE_LOSS_FORMATION`.
+`INVALIDATE_EXP_RTD_001_PREPARE_FRESH_EXP_RTD_002`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,7 +66,6 @@ descriptive localization by day 5, not evidence for an exit action.
 
 ## Exact next action
 
-Audit the remaining severe-loss formation frontier without reading new outcome
-associations. Determine whether one mechanistically distinct pre-entry or early
-path state can be frozen without duplicating H-011/H-019 or mining landmarks.
-If not, pivot rather than force a test. EXP-P7-003 remains forbidden.
+Do not modify or rerun EXP-RTD-001. Create EXP-RTD-002 with a new runner and
+output paths, sourcing `index_realized_vol20` exactly once while preserving every
+scientific gate. EXP-P7-003 remains forbidden.

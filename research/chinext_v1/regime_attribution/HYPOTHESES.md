@@ -359,3 +359,21 @@ byte-consistent with one another.
 - Status: `REJECTED_WITH_DESCRIPTIVE_LOCALIZATION` by EXP-EPR-001. No alternate
   landmark, threshold, entry, holding, exit, replay, or production modification
   is authorized.
+
+### H-020 — eligible-universe right-tail density incrementality
+
+- Question: does the fraction of eligible stocks with 20-session return >=20%
+  add opportunity information beyond frozen H-004 breadth and trend?
+- Mechanism: dense cross-sectional leadership may represent opportunity intensity
+  distinct from the fraction merely above moving averages.
+- Prediction: the fixed right-tail-density feature retains positive MFE association
+  after three breadth and three trend controls.
+- Required data: accepted PIT daily feature library, 399 cycles, and fixed controls.
+- Primary test: continuous MFE partial rank on 383 complete rows; LOYO and years.
+- Falsification: opportunity20/non-false-breakout endpoints, p90 and p90-p10
+  neighbors, risk controls, blocks, Top-4 P&L, securities, and industries.
+- Confounds: the univariate relationship was already explored in Phase 3; this is
+  exploratory incrementality, not new confirmatory OOS evidence.
+- Status: `UNRESOLVED`; EXP-RTD-001 is invalidated after an in-memory merge-column
+  failure and wrote no outputs. Fresh EXP-RTD-002 is required. No threshold,
+  interaction, overlay, replay, or strategy modification is authorized.
