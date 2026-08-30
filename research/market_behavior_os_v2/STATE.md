@@ -8,7 +8,7 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-006_COMPLETE_HAB-CHX-001_NEXT`
+- `CURRENT_PHASE`: `HAB-CHX-001_SPEC_FROZEN_OUTCOME_JOIN_NEXT`
 - `CURRENT_PRIMARY_FRONTIER`: CHINEXT V1 market-habitat association
 - `SUPPORTING_FRONTIER`: frozen trend direction and breadth discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -161,4 +161,7 @@ market direction and breadth-discovery mechanisms describe CHINEXT V1
 opportunity/payoff habitats. HAB-CHX-001 must use continuous/preregistered state
 coordinates, baseline/A/B/A+B comparisons, right-tail and failure decomposition,
 and exploratory wording because CHINEXT outcomes are already consumed. It may
-not optimize a trading rule or read CY-011.
+not optimize a trading rule or read CY-011. Its exact input hashes, 1,337-date
+calendar denominator, 819 evaluated events, 638 admissible candidates, 280
+selected admissions, endpoints, temporal blocks, bootstrap, nested models, and
+no-rescue gates are now frozen before the market-state/outcome join.

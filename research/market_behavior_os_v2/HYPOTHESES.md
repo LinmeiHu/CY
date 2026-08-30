@@ -79,3 +79,12 @@
   endpoint shape-neighbor stability, so no five-day trajectory role freezes.
 - Boundary: representation support is not a supply/demand mechanism, usefulness,
   habitat, or signal. The broader trajectory family remains open.
+
+## HAB-H-001 — CHINEXT V1 direction/discovery habitat association
+
+- Status: `SPEC_FROZEN_OUTCOME_JOIN_NOT_RUN`.
+- Claim: frozen market direction and new-high/new-low discovery may describe
+  variation in the observed V1 opportunity process or completed-cycle payoff.
+- Experiment: HAB-CHX-001, 2018-07-03..2023-12-29, two mechanisms only.
+- Boundary: all outcomes are consumed; this is exploratory association and can
+  neither establish causality nor authorize a strategy rule or archetype.

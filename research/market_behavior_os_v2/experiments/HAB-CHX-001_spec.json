@@ -1,0 +1,150 @@
+{
+  "experiment_id": "HAB-CHX-001",
+  "status": "FROZEN_BEFORE_MARKET_STATE_OUTCOME_JOIN",
+  "frozen_at": "2026-08-30",
+  "track": "STRATEGY_X_MARKET_HABITAT",
+  "question": "Do the already-frozen, strategy-independent trend-direction and new-high/new-low discovery representations describe CHINEXT V1 opportunity generation, admission conversion, or completed-cycle payoff shape without optimizing a trading rule?",
+  "evidence_grade": "EXPLORATORY_ASSOCIATION_ONLY_ALL_2018_2023_CHINEXT_OUTCOMES_ALREADY_CONSUMED",
+  "non_claims": [
+    "No market representation is presumed to be a trading signal or causal mechanism.",
+    "No state boundary is an entry gate, veto, exposure overlay, or strategy recommendation.",
+    "No result may be called untouched out-of-sample evidence.",
+    "No result is required to improve CHINEXT V1.",
+    "CY-011 remains unopened."
+  ],
+  "inputs": {
+    "trend_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_trend_panel.csv",
+      "sha256": "fd933284bec590b5dee15549b176db973bebc07c8ee71edab64249c9b2e26e5a",
+      "frozen_representation": "direction_return_60",
+      "selector": "index_symbol == sz399006 and source_hard_valid == true"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "frozen_representation": "breadth_net_new_high_low60",
+      "selector": "market_view == CHINEXT_BOARD and denominator == ALL_STATUS and view_valid == true",
+      "neighboring_denominator": "CHINEXT_BOARD/NON_ST is a fixed sensitivity only"
+    },
+    "completed_cycles": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "baseline_manifest": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/baseline_manifest.json",
+      "sha256": "682b45455442f00e15e6273622ab6566d1c5c1d94069efc5fbbd40cb17f0977b"
+    },
+    "frozen_event_ledgers": {
+      "source_checkout_root": "/Users/linmei/Documents/CY-supermind-v6",
+      "EXTENDED_2018_2021": {
+        "path": "research/chinext_v1/output/chinext_v1_extended_2018_2021/event_ledger.jsonl",
+        "sha256": "9fb92730ca1c30e448b32b07b6c5ab369b178c820821daf21f3b69b90b0dfc86"
+      },
+      "HOLDOUT_O0_2022_2023": {
+        "path": "research/chinext_v1/output/chinext_v1_phase9b_oos/O0_BASELINE/event_ledger.jsonl",
+        "sha256": "ea2200e87ada0bc9a2b5ddcf7b9426c7bdfba20befc9cf58a802233fa5cef50c"
+      }
+    }
+  },
+  "time_and_pit_contract": {
+    "research_window": "intersection of valid frozen state rows, 2018-07-03 through 2023-12-29",
+    "strategy_state_join": "entry signal date equals market trade_date",
+    "market_decision_at": "completed official close at 15:00 Asia/Shanghai",
+    "market_available_at": "must be <= strategy signal decision time and exactly the same completed close",
+    "execution": "entry_execution_date must be strictly later than entry_signal_date",
+    "same_bar_fill": "prohibited",
+    "unknown_lineage_or_missing_state": "fail closed; no interpolation or proxy index/view substitution",
+    "post_2023": "unavailable from the frozen market-state panels and excluded, not backfilled",
+    "pit_grade": "bounded PIT-B inherited from the frozen CHINEXT and CY-006 contracts"
+  },
+  "market_coordinates": {
+    "A_trend_direction": {
+      "primary_absolute": "sz399006 direction_return_60, log(close_t / close_t-60)",
+      "fixed_model_unit": "0.10 log-return units",
+      "secondary_pit": "direction_return_60_pit_3y_pct",
+      "diagnostic_positive_boundary": "direction_return_60 > 0"
+    },
+    "B_breadth_discovery": {
+      "primary_absolute": "CHINEXT_BOARD/ALL_STATUS breadth_net_new_high_low60",
+      "fixed_model_unit": "0.01 net-fraction units",
+      "secondary_pit": "breadth_net_new_high_low60_pit_3y_pct where causally available",
+      "secondary_relative": "breadth_net_new_high_low60_relative_to_all",
+      "diagnostic_positive_boundary": "breadth_net_new_high_low60 > 0",
+      "distinction_from_old_H004": "This is frozen 40/60/80-session new-high/new-low discovery. It is not the prior CHINEXT breadth-above-MA20/positive-return20/change20 composite."
+    },
+    "diagnostic_cells": {
+      "NEITHER": "A <= 0 and B <= 0",
+      "A_ONLY": "A > 0 and B <= 0",
+      "B_ONLY": "A <= 0 and B > 0",
+      "A_AND_B": "A > 0 and B > 0",
+      "purpose": "coarse economic diagnostics only; zero was not validated as an optimal habitat boundary",
+      "minimum_cell_dates": 30,
+      "minimum_cell_completed_cycles": 20
+    }
+  },
+  "strategy_process_definitions": {
+    "evaluated_opportunity": "one ENTRY_SIGNAL_EVALUATED event; the engine already established price_structure_pass and excluded committed/forced-exit names",
+    "admissible_candidate": "evaluated event with minvol.passed == true and a non-null rs object",
+    "selected_admission": "symbol added in a same-date DESIRED_SET_CHANGED event",
+    "calendar_denominator": "all 1,337 common valid market-state dates, including zero-event dates",
+    "expected_pre_outcome_counts": {
+      "valid_market_dates": 1337,
+      "evaluated_events": 819,
+      "admissible_candidates": 638,
+      "selected_admissions": 280,
+      "distinct_evaluation_dates": 360
+    },
+    "zero_day_limitation": "A zero observed count can mean no qualifying structure or that the engine's market-exit branch suppressed entry evaluation; it is observed V1 opportunity generation, not latent technical-pattern incidence."
+  },
+  "fixed_payoff_definitions": {
+    "round_trip_return": "frozen completed-cycle round_trip_return",
+    "mfe": "frozen observable MFE through actual exit",
+    "mae": "frozen observable MAE through actual exit",
+    "winner20": "round_trip_return >= 0.20",
+    "winner50": "round_trip_return >= 0.50",
+    "severe_loss10": "round_trip_return <= -0.10",
+    "extreme_loss20": "round_trip_return <= -0.20",
+    "false_breakout": "mfe < 0.10 and round_trip_return <= 0",
+    "opportunity20": "mfe >= 0.20",
+    "conversion20": "round_trip_return >= 0.20 among opportunity20 cycles",
+    "giveback_from_peak": "mfe - round_trip_return",
+    "positive_pnl_concentration": "share of positive realized PnL contributed by the top 20 positive-PnL completed cycles in the analysis sample"
+  },
+  "analyses": {
+    "continuous_primary": "Spearman association of absolute A and B with each process/payoff endpoint, plus partial-rank A|B and B|A; no window or cutoff search",
+    "uncertainty": "2,000 deterministic signal-date cluster bootstrap resamples, seed 20260830, percentile 90% interval",
+    "nested_models": {
+      "BASELINE": "outcome ~ intercept",
+      "A": "outcome ~ intercept + A/0.10",
+      "B": "outcome ~ intercept + B/0.01",
+      "A+B": "outcome ~ intercept + A/0.10 + B/0.01 + (A/0.10)*(B/0.01)",
+      "comparison": "sample-identical OLS/LPM adjusted R-squared and coefficient diagnostics; no fitted model is an executable predictor"
+    },
+    "samples": {
+      "daily_process": "all common valid market dates for evaluated/candidate/selected counts",
+      "event_conversion": "evaluated events for candidate and selected flags; selected-among-candidate separately",
+      "completed_cycle_payoff": "selected admissions reconciling one-to-one to frozen completed cycles and valid same-date state"
+    },
+    "temporal_stability": {
+      "early_block": "2018-07-03 through 2020-12-31",
+      "late_block": "2021-01-04 through 2023-12-29",
+      "year_cells": "2018 through 2023; endpoint-year cells below 20 observations are INSUFFICIENT_EVIDENCE",
+      "leave_one_year_out": "report sign counts for every continuous primary with adequate remaining sample"
+    },
+    "neighbor_sensitivity": "repeat primary B associations with CHINEXT_BOARD/NON_ST breadth; this cannot replace a failed ALL_STATUS primary",
+    "right_tail_and_failure": "report winner20/winner50, opportunity/conversion, positive-PnL concentration, false-breakout, severe-loss10, and extreme-loss20 for every adequately populated diagnostic cell and temporal block"
+  },
+  "fixed_evidence_gates": {
+    "single_coordinate_association": "absolute full-sample rho >= 0.10, 90% cluster-bootstrap interval excludes zero, both temporal-block rhos have the same sign with abs(rho) >= 0.05, and at least four eligible year cells have that sign",
+    "A_plus_B_incrementality": "A+B adjusted R-squared exceeds max(A,B) by >= 0.01 in the full sample and both temporal blocks, and the interaction coefficient has the same sign in both blocks with a full-sample 90% cluster-bootstrap interval excluding zero",
+    "habitat_supported": "at least one frozen coordinate passes the single-coordinate gate for an opportunity-process or payoff endpoint; wording remains exploratory association",
+    "strategy_rule_authorized": false,
+    "new_strategy_archetype_authorized": false,
+    "no_rescue": "A failed coordinate, sample, boundary, or endpoint is not replaced by a better-looking neighbor or cutoff in this experiment"
+  },
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/HAB-CHX-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/HAB-CHX-001_result.json",
+    "research/market_behavior_os_v2/reports/HAB-CHX-001_chinext_market_habitat.md"
+  ]
+}
