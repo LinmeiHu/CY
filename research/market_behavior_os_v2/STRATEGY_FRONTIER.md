@@ -105,6 +105,12 @@ continuation and failed-breakout reversal remain `WAIT_FOR_MARKET_MECHANISM`.
 The next prior-day state-conditioning study is still market behavior research;
 even a replicated association will not authorize payoff, execution, or a rule.
 
+MKT-BREAKOUT-HAB-001 provides no replicated prior-day state conditioning and
+therefore no habitat candidate. Both breakout prototypes remain inactive. The
+next full-market opportunity-diffusion study is a Market State Engine
+representation task only; it does not authorize a candidate list, trigger,
+payoff test, or strategy rule.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

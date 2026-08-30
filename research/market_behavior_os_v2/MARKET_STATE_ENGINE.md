@@ -315,3 +315,16 @@ nearest rejection/dwell residual correlation misses its global compression
 boundary. These coordinates remain completed-history descriptors available at
 15:30 on their last included day. They have no causal PIT normalization,
 relative state, predictor, habitat, usefulness, or strategy meaning.
+
+## MKT-BREAKOUT-HAB-001 boundary
+
+The engine adds no prior-day state annotation to any breakout role. All support
+gates pass, but zero controlled trend/breadth primitive edges and zero fixed
+joint increments replicate across absolute, PIT, relative, block, index/view,
+and year gates. The favorable block/coordinate fragments are retained only in
+the audit and cannot be selected as habitats.
+
+The seven same-session and seven repeated-event coordinates remain descriptive.
+No trend-conditioned, discovery-conditioned, concentration-conditioned, joint
+state, interaction, gate, predictor, usefulness, or strategy annotation is
+emitted.

@@ -61,3 +61,11 @@ reacquisition, every year/view, L10/L40, and auction challenges pass. Coordinate
 equivalence and five scalar cases agree and two runs are byte-identical. No
 S1--S12 condition is active. Continue with a separately frozen representation-
 quality experiment; count adequacy is not a mechanism or usefulness result.
+
+MKT-BREAKOUT-001 and MKT-BREAKOUT-DYN-003 establish stable same-session and
+repeated-event coordinates but no common temporal direction. MKT-BREAKOUT-HAB-
+001 then finds zero portable prior-close trend/breadth conditioning edges or
+joint increments with complete support. These are ordinary negative scientific
+results, not S1--S12 conditions. No STOP is active. Continue map-first with the
+distinct full-market objective-crossing opportunity diffusion representation;
+do not estimate market breadth from the bounded 10-symbol cohort.

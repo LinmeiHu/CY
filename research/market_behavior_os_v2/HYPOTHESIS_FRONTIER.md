@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do strictly prior-day accepted trend and breadth primitives condition objective-breakout path roles after generic controls? | Very high | High | Frozen trend/breadth panels plus 964 event sessions; exact prior-day join not yet audited | Very high | Medium | ACTIVE_MAP_FIRST_MKT_BREAKOUT_HAB_001 |
+| 1 | Can full-market objective prior-high crossing opportunity be represented as participation, industry diffusion, closing acceptance breadth, and concentration distinct from existing breadth? | Very high | Very high | Governed CY-006 daily universe/action facts; full-population coordinate architecture required | Very high | Medium-high | ACTIVE_MAP_FIRST_MKT_BREAKOUT_DIFF_001 |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -338,3 +338,10 @@ deprioritized without tuning another shape. The active question is whether
 strictly prior-day accepted trend direction and breadth discovery/concentration
 condition same-session event roles after fixed controls. Freeze the join,
 coordinate, A/B, block, and no-rule gates before any association estimate.
+
+MKT-BREAKOUT-HAB-001 finds zero portable primitive or joint prior-state effects
+with complete support. The sampled path-conditioning branch is closed without
+threshold or subset rescue. The frontier moves upstream to full-market event
+formation: map crossing participation, industry diffusion, acceptance/rejection
+breadth, and leadership concentration, then test redundancy against accepted
+breadth. The bounded event cohort is prohibited as a market-breadth estimator.

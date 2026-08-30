@@ -372,3 +372,15 @@ MKT-BREAKOUT-DYN-003 changes only output identity: dynamic elapsed metadata is
 removed and wrapper, time-coordinate, and scientific-runner hashes are recorded.
 All revealed estimates, sample rows, roles, operators, seeds, controls, gates,
 and decisions are unchanged. Two 003 runs are byte-identical.
+
+## MKT-BREAKOUT-HAB-001-A — invalid missing derived block label
+
+The first frozen runner attempt loaded and validated all bound parents, then
+stopped before its first support count because the breakout input projection
+retained `target_year` but not a materialized `temporal_block` column. The
+scientific spec had already fixed A=2018--2020 and B=2021--2023.
+
+The adapter now derives that exact label immediately after the primary L20
+projection. A focused regression requires both A and B. No event, prior-state
+date, role, coordinate, control, support floor, estimator, threshold, or claim
+changed; no invalid-run output was accepted.

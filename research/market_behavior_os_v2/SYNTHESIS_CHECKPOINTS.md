@@ -1766,3 +1766,55 @@ their fixed joint increment separate; bind same-event generic controls and
 blocks before estimates. This is strategy-independent behavior research, not a
 Trend x Breadth trading gate. No payoff, strategy field, post-2023 data, or
 CY-011 may enter.
+
+## SYNTH-MKT-040 — after prior-day market-state conditioning
+
+### What was learned?
+
+The exact prior-close state architecture has ample support but no portable
+association. The join retains 830 events/480 date-view cells for every main
+role and 596/381 for reacquisition. State rows are strictly prior, security
+responses are median-aggregated before estimation, and all six indices/four
+views plus raw/PIT/relative coordinates remain in the test.
+
+None of 21 primitive edges and none of seven fixed joint increments passes.
+The strongest-looking subsets do not replicate: concentration/rejection changes
+absolute sign and misses PIT late/year and relative effect gates; concentration/
+activity weakens sharply and reverses in relative coordinates. A block-A 0.116
+joint PIT increment for rejection becomes 0.002 in block B. These are failed
+subsets, not habitats.
+
+### What market behavior are we still not studying?
+
+Market-wide objective-crossing participation, closing acceptance breadth,
+industry diffusion, leadership concentration of crossings, transitions in
+breakout opportunity density, resistance role reversal, full-market intraday
+acceptance, order flow, accumulation/distribution, outcomes, execution, and
+capacity remain unstudied. The 10-symbol-per-block cohort cannot estimate
+market-wide event breadth.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Neither unconditional breakout dynamics nor prior-day trend/breadth
+conditioning provides a mechanism. Breakout continuation and failed-breakout
+reversal remain inactive; CHINEXT V1 is unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** close the sampled breakout-path branch and move upstream
+  to full-universe opportunity formation and diffusion.
+- **Existing-strategy archaeology:** no new outcome access and no CHINEXT rule
+  change.
+- **Strategy invention:** none active; opportunity breadth representation is
+  several stages before a prototype.
+
+### Research Director decision
+
+`CLOSE_SAMPLED_BREAKOUT_PATH_CONDITIONING_AND_MAP_MARKET_WIDE_BREAKOUT_DIFFUSION`.
+Build a strategy-independent full-eligible-universe daily map of L10/L20/L40
+prior-high crossing participation, closing acceptance/rejection breadth,
+industry diffusion, positive-event concentration, and transitions. Preserve
+absolute/PIT/relative coordinates and compress against accepted discovery
+breadth and leadership concentration before any usefulness question. Do not
+estimate from the bounded 10-symbol cohort, optimize lookbacks, read outcomes,
+or open CY-011.

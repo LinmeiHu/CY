@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-039_COMPLETE_PRIOR_DAY_MARKET_STATE_CONDITIONAL_MAP_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: prior-day accepted market-state conditioning of strategy-independent objective-breakout path roles
-- `SUPPORTING_FRONTIER`: fixed same-event generic controls and separate trend/breadth primitives; no combined trading rule
+- `CURRENT_PHASE`: `SYNTH-MKT-040_COMPLETE_MARKET_WIDE_BREAKOUT_DIFFUSION_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: full-market objective breakout opportunity participation, industry diffusion, acceptance, and concentration representation
+- `SUPPORTING_FRONTIER`: accepted discovery breadth and leadership concentration as fixed redundancy controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1267,3 +1267,46 @@ question is whether strictly prior-day accepted trend direction and breadth
 discovery/concentration states condition same-day breakout path roles after
 their fixed generic controls. This must be map-first, keep trend and breadth
 primitive, and cannot form a gate or Trend x Breadth trading rule.
+
+The prior-day breakout-state geometry map and MKT-BREAKOUT-HAB-001 spec were
+frozen under SHA-256 `c5235299...` and `066ed2e8...`. Event responses are
+aggregated to event-date x market-view medians before state estimation, six
+trend indices remain separate portability replications, and every state value
+is from the immediately preceding common governed close. Absolute, causal PIT,
+and contemporaneous relative coordinates are all required.
+
+The first execution stopped before a support count because the input projection
+had not materialized the frozen A/B label from retained `target_year`. The
+minimal adapter correction derives A for 2018--2020 and B for 2021--2023. No
+sample, state, estimator, threshold, or output was changed.
+
+MKT-BREAKOUT-HAB-001 completes as
+`COMPLETE_NO_PORTABLE_PRIOR_STATE_CONDITIONING`. Support is ample: 892/964
+primary events have a prior state date; every main role has 830 events and 480
+date-view cells, while reacquisition has 596 and 381. Every frozen total,
+block, year, view, primitive-cell, coordinate-coverage, and joint support gate
+passes before estimation.
+
+Zero of 21 primitive edges and zero of seven joint A+B1+B2 increments pass all
+raw/PIT/relative, block, index/view-sign, and year gates. Rejection depth versus
+leadership concentration flips +0.056/-0.076 in absolute coordinates; PIT is
+-0.113/-0.086 but misses the late 0.10 effect and has only 4/6 annual signs;
+relative is -0.054/-0.088. Activity versus concentration is -0.082/-0.083
+absolute, -0.235/-0.076 PIT, and reverses -0.034/+0.055 relative. The strongest
+joint subset is also nonportable: rejection PIT adjusted-R2 increment is 0.116
+in block A and 0.002 in B. No favorable subset is promoted.
+
+Five aggregate scalar cases reproduce exactly and two executions are byte-
+identical: panel `b94b7907...`, edge `e7e9a5c6...`, joint `5ff4b8be...`, result
+`4149a17c...`, and report `10fed166...`; four focused tests pass and lint is
+clean. No raw minute row, return/payoff, strategy field, post-2023 data, or
+CY-011 was read. The result establishes no causal state effect, habitat, gate,
+interaction, synergy, or strategy archetype.
+
+SYNTH-MKT-040 closes the sampled objective-breakout path-conditioning branch
+without rejecting breakout behavior as a family. The next distinct unresolved
+question is market-wide formation: whether objective prior-high crossing
+opportunities themselves diffuse broadly across securities/industries or
+concentrate in narrow leadership, and whether those representations add
+anything beyond accepted new-high/new-low breadth and leadership concentration.
+Build the full-market daily representation/data map before construction.

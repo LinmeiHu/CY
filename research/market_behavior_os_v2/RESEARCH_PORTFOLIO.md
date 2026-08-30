@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Seven repeated-event coordinates pass, but unconditional direction and residual compression fail | Freeze prior-day trend/breadth conditioning of same-session event roles |
+| EXPLORE | 35% | Prior-day state conditioning also fails with full support; full-market objective-crossing formation remains unrepresented | Freeze full-universe breakout participation/diffusion/concentration map |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Unconditional direction is absent; heterogeneous prior-day state is one bounded alternative before leaving the breakout family | Require block replication, fixed controls, primitive A/B comparisons, and no favorable-role selection |
+| FALSIFY | 20% | Market-wide crossing breadth could simply rediscover accepted new-high/new-low breadth or leadership concentration | Fix role-specific redundancy controls and L10/L40/action/denominator challenges before construction |
 
 Mandatory checkpoint questions:
 

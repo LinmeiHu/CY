@@ -1,0 +1,96 @@
+{
+  "experiment_id": "MKT-BREAKOUT-HAB-001",
+  "track": "MARKET",
+  "research_role": "strategy-independent prior-day state conditioning",
+  "status": "FROZEN_BEFORE_PRIOR_STATE_JOIN_OR_ASSOCIATION_ESTIMATES",
+  "frozen_at": "2026-08-30T22:29:51Z",
+  "question": "Do strictly prior-day accepted trend and breadth primitives condition next-session objective-breakout path roles after generic controls?",
+  "inputs": {
+    "breakout_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_session_panel.csv", "sha256": "e67ac766ac8ad63b6f95309e08a70cf5d0daca3450159adc45de99ef2faa1b99"},
+    "breakout_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_result.json", "sha256": "c56d57afd5e7e00215c233b974ab7f1a8b283d3001e87dc255ab51d7651e83ce"},
+    "trend_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_trend_panel.csv", "sha256": "fd933284bec590b5dee15549b176db973bebc07c8ee71edab64249c9b2e26e5a"},
+    "trend_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_result.json", "sha256": "784db3a54046e569c55912c5fff0afed7bf45b6c33573fcb13d23a6bca5cc7d5"},
+    "breadth_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv", "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"},
+    "breadth_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json", "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"},
+    "state_geometry_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-GEO-001_result.json", "sha256": "bd457bccd72a708a333e1de65423b3767f4c51be1300a5a8455213b3bf5e4759"},
+    "state_geometry_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-GEO-001_geometry_panel.csv", "sha256": "2c98865a60f40b634e90f7751bfcaa0d90feca6cf484fdc58b945c39ca203c99"},
+    "research_map": {"path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_PRIOR_DAY_STATE_GEOMETRY_MAP.md", "sha256": "c52352995a115da8b778d6aa9d7a74df3f3f61f6c27b258cc201a2ba7a825d2f"}
+  },
+  "population": {
+    "breakout_definition": "L20_CONTINUOUS",
+    "breakout_domain_main": "domain_main",
+    "breakout_domain_reacquisition": "domain_reacquisition",
+    "breadth_denominator": "ALL_STATUS",
+    "market_views": ["ALL_A", "CHINEXT_BOARD", "SH_A", "SZ_A"],
+    "indices": ["csi000300", "csi000852", "csi000905", "sh000001", "sz399001", "sz399006"],
+    "blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "unit": "event_date x market_view x role median",
+    "prior_state_date": "immediately preceding governed date common to accepted trend and breadth panels"
+  },
+  "roles": {
+    "continuation30_log_return": {"domain_flag": "domain_main", "controls": ["first_cross_fraction", "open_close_log_return", "daily_high_margin", "minute_realized_volatility"]},
+    "rejection_depth": {"domain_flag": "domain_main", "controls": ["intraday_log_range", "close_location", "open_close_log_return", "first_cross_fraction"]},
+    "below_level_close_fraction": {"domain_flag": "domain_main", "controls": ["close_location", "open_close_log_return", "first_cross_fraction", "minute_realized_volatility"]},
+    "loss_episode_count": {"domain_flag": "domain_main", "controls": ["minute_realized_volatility", "intraday_log_range", "first_cross_fraction"]},
+    "reacquisition_bars": {"domain_flag": "domain_reacquisition", "controls": ["first_cross_fraction", "high_time_fraction", "minute_realized_volatility", "close_location"]},
+    "post_cross_cumulative_vwap_acceptance_fraction": {"domain_flag": "domain_main", "controls": ["open_close_log_return", "session_vwap_recovery_count", "session_longest_below_vwap_fraction", "session_downside_excursion", "session_recovery_speed_30bar"]},
+    "post_cross_activity_ratio": {"domain_flag": "domain_main", "controls": ["minute_volume_concentration", "closing30_volume_share", "first_cross_fraction"]}
+  },
+  "prohibited_roles": ["follow_through_excursion", "closing_acceptance_margin", "above_level_close_episode_count"],
+  "state_primitives": {
+    "A_direction": {"absolute": "direction_return_60", "pit": "direction_return_60_pit_3y_pct", "relative": "direction_return_60_relative_rank_pct"},
+    "B1_discovery": {"absolute": "breadth_net_new_high_low60", "pit": "breadth_net_new_high_low60_pit_3y_pct", "relative": "breadth_net_new_high_low60_relative_view_rank_pct"},
+    "B2_concentration": {"absolute": "leadership_positive_mass_top10", "pit": "leadership_positive_mass_top10_pit_3y_pct", "relative": "leadership_positive_mass_top10_relative_view_rank_pct"}
+  },
+  "coordinate_systems": ["absolute", "pit", "relative"],
+  "estimands": {
+    "primitive_edges": ["A_direction | generic controls + B1_discovery + B2_concentration", "B1_discovery | generic controls + A_direction + B2_concentration", "B2_concentration | generic controls + A_direction + B1_discovery"],
+    "estimator": "rank partial Spearman within index x market_view x temporal block",
+    "joint_increment": "adjusted rank R2(A+B1+B2+generic controls) - adjusted rank R2(generic controls), pooled across market views separately for each index/block/coordinate",
+    "interaction_or_synergy_claim": false
+  },
+  "support_gates": {
+    "main_event_rows_after_prior_join": {"total": 700, "each_block": 280, "each_year": 70, "each_view": 140},
+    "reacquisition_event_rows_after_prior_join": {"total": 450, "each_block": 170, "each_year": 40, "each_view": 85},
+    "main_date_view_cells": {"total": 300, "each_block": 120, "each_year": 30, "each_view": 60},
+    "reacquisition_date_view_cells": {"total": 220, "each_block": 80, "each_year": 20, "each_view": 40},
+    "primitive_cell_main": 25,
+    "primitive_cell_reacquisition": 16,
+    "joint_block_main": 100,
+    "joint_block_reacquisition": 65,
+    "minimum_coordinate_coverage": 0.95
+  },
+  "nondegeneracy": {"minimum_unique_response_per_primitive_cell": 8, "minimum_unique_state_per_primitive_cell": 8, "minimum_unique_each_year_pooled": 5},
+  "primitive_edge_gate": {
+    "minimum_median_absolute_partial_spearman_each_block": 0.10,
+    "minimum_same_sign_index_view_cells_each_block": 18,
+    "same_nonzero_block_median_sign": true,
+    "minimum_annual_median_sign_agreement": 5,
+    "all_absolute_pit_relative_coordinates_required": true,
+    "all_six_indices_and_four_views_retained": true
+  },
+  "joint_increment_gate": {
+    "minimum_median_adjusted_r2_increment_each_block": 0.02,
+    "minimum_positive_indices_each_block": 5,
+    "all_absolute_pit_relative_coordinates_required": true,
+    "not_interaction_or_synergy": true
+  },
+  "validation": {
+    "manual_scalar_cases": 5,
+    "case_selection": "lowest SHA256(experiment_id|role|event_date|market_view), unique event_date x view identities",
+    "maximum_aggregate_absolute_difference": 1e-12,
+    "two_complete_runs_byte_identical": true
+  },
+  "resource_budget": {"raw_minute_rows_read": 0, "wall_seconds": 180, "peak_rss_bytes": 2147483648, "durable_output_ceiling_mib": 64},
+  "outputs": {
+    "state_response_panel": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-HAB-001_state_response_panel.csv",
+    "edge_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-HAB-001_edge_audit.csv",
+    "joint_audit": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-HAB-001_joint_audit.csv",
+    "result": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-HAB-001_result.json",
+    "report": "research/market_behavior_os_v2/reports/MKT-BREAKOUT-HAB-001_geometry.md"
+  },
+  "outcome_access": "FUTURE_SAME_SESSION_MARKET_EVENT_STATE_ONLY",
+  "prohibited_inputs_or_actions": ["same-day close state as prior information", "failed trend or breadth roles", "raw minute partitions", "future market or security return", "strategy event, trade, payoff, MFE, MAE, exit, or capacity", "post-2023 data", "CY-011", "preferred-index selection", "view/denominator substitution", "security-row pseudo-replication", "role/state score", "threshold state bins", "Trend x Breadth trading rule"],
+  "claim_boundary": {"consumed_exploratory_pre2024": true, "strategy_independent": true, "no_causality": true, "no_payoff_or_strategy_usefulness": true, "no_interaction_or_synergy": true, "no_new_archetype": true}
+}

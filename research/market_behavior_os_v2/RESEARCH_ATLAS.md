@@ -134,6 +134,10 @@
 | `experiments/MKT-BREAKOUT-DYN-003_spec.json` | Deterministic output-only retry inheriting all 001/002 temporal science |
 | `scripts/run_mkt_breakout_dyn_003.py` | Relative-day temporal execution with composite runner identity and deterministic outputs |
 | `reports/MKT-BREAKOUT-DYN-003_dynamics.md` | Seven stable temporal coordinates; no common direction or residual compression |
+| `OBJECTIVE_BREAKOUT_PRIOR_DAY_STATE_GEOMETRY_MAP.md` | Frozen prior-close A/B primitives, date-view response unit, coordinates, partial edges, joint increment, and no-rule boundary |
+| `experiments/MKT-BREAKOUT-HAB-001_spec.json` | Frozen 21-edge/seven-joint support, replication, scalar, and determinism contract |
+| `scripts/run_mkt_breakout_hab_001.py` | Strict prior-date join, date-view aggregation, controlled rank geometry, and deterministic output |
+| `reports/MKT-BREAKOUT-HAB-001_geometry.md` | Complete support with zero portable primitive edges or joint increments |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

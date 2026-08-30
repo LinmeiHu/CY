@@ -609,3 +609,19 @@
 - Boundary: stable rates are completed-history coordinates only. There is no
   unconditional breakout-acceptance/rejection process, favorable direction,
   latent score, prediction, habitat, usefulness, or strategy archetype.
+
+## MKT-H-037 — prior-day market-state conditioning of breakout paths
+
+- Status: `ZERO_OF_TWENTY_ONE_PRIMITIVE_EDGES_ZERO_OF_SEVEN_JOINT_INCREMENTS`.
+- Hypothesis: accepted prior-close trend direction, breadth discovery, or
+  leadership concentration may condition one of seven next-session post-cross
+  roles after generic controls and the other two state primitives.
+- Design: event-date/view medians, six separate index replications, absolute/
+  causal-PIT/relative coordinates, both blocks, year signs, and a fixed joint
+  adjusted-R2 increment. No state bins, outcome, or strategy field.
+- Result: every support gate passes on 830 main/596 reacquisition events, but no
+  edge or joint role passes. Apparent block/coordinate subsets weaken, reverse,
+  or miss annual/effect gates and are not promoted.
+- Boundary: this rejects the exact prior-day continuous conditioning
+  architecture on the consumed sample, not trend/breadth representation,
+  breakout behavior broadly, or all possible market habitat research.

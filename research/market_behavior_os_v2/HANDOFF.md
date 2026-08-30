@@ -1191,3 +1191,32 @@ direction, breadth discovery, and leadership concentration as separate
 primitives; use fixed generic controls and blocks; do not combine them into a
 trading gate, read payoff, revive compressed roles, modify CHINEXT, or open
 CY-011.
+
+MKT-BREAKOUT-HAB-001 was frozen under map `c5235299...` and spec `066ed2e8...`.
+It uses only prior-close accepted trend direction, breadth discovery, and
+leadership concentration. Security responses are aggregated to date-view
+medians, six indices are separate replications, and raw/PIT/relative coordinates
+plus both temporal blocks are conjunctive. No state bin or trading gate exists.
+
+The first runner attempt failed before counts because the projected breakout
+frame lacked the derived frozen A/B label. Adding `target_year <= 2020 -> A`,
+otherwise B, fixes only the adapter; a focused regression binds the two labels.
+
+The final result has full support but no portable conditioning. Main roles each
+retain 830 events/480 date-view cells and reacquisition 596/381. None of 21
+primitive edges or seven joint increments passes. Strong-looking subsets fail:
+rejection/concentration flips in absolute coordinates, misses PIT late-effect/
+annual gates, and is weak relative; activity/concentration weakens from PIT
+block A to B and reverses relative. Rejection's joint PIT increment collapses
+from 0.116 to 0.002. Do not select any subset.
+
+Two runs are byte-identical: panel `b94b7907...`, edge `e7e9a5c6...`, joint
+`5ff4b8be...`, result `4149a17c...`, report `10fed166...`; five scalar cases are
+exact and four focused tests pass. This closes only sampled path conditioning.
+
+SYNTH-MKT-040 next requires a deep market-wide objective-breakout diffusion
+map: full eligible-universe crossing participation, industry diffusion,
+closing acceptance/rejection, and concentration must be constructed before
+economic testing and compressed against accepted breadth/concentration. Do not
+reuse the 10-symbol sample as a market breadth estimator, read payoff, tune a
+lookback, modify CHINEXT, or open CY-011.
