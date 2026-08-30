@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | High | High | Four volatility roles and direction/discovery freeze | High | Medium | ACTIVE_MKT_VOL_TRANS_001_FROZEN_EXECUTION |
+| 1 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | High | High | Four volatility roles and direction/discovery freeze | High | Medium | ACTIVE_MKT_VOL_TRANS_002_FROZEN_EXECUTION |
 | 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 3 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
@@ -88,3 +88,9 @@ MKT-VOL-TRANS-001 is frozen under spec `21145136...`. Its t+25 response removes
 return-interval overlap; baseline dynamics and causal-PIT direction/discovery
 modifiers have separate fixed gates and reused-time labels. No strategy habitat
 or return interpretation is permitted.
+
+MKT-VOL-TRANS-001 is invalid before accepted estimation because one direction-
+PIT cell misses the unchanged support gate. MKT-VOL-TRANS-002 retains every
+scientific field and pools all four governed views within index/denominator for
+the direction modifier. The frontier remains the exact retry, not a new habitat
+or lower threshold.

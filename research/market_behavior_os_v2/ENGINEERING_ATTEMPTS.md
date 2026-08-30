@@ -164,3 +164,16 @@ MKT-INDRS-GEO-002 inherits spec `33b0f114...` and changes only eligible years
 for this nested control and the corresponding fixed-control joint intersection.
 The 95% coverage, 150-observation cell, pairwise, and joint thresholds are not
 lowered; the control is not deleted or replaced.
+
+## MKT-VOL-TRANS-001 — invalid direction-habitat PIT support
+
+The frozen input, key, timestamp, population, and t+25 response-shift audits
+passed. The run then stopped before any output was accepted because one block-A
+direction-habitat PIT cell within a separate view/denominator retained 123
+complete observations against the unchanged 150 minimum. No result is cited.
+
+MKT-VOL-TRANS-002 inherits scientific spec `21145136...` and changes only the
+direction-modifier grouping. It pools all four governed views within each
+index/denominator, retains both denominators and all six indices, and performs
+the complete support audit before correlations. The 150/120 cell gates,
+habitat splits, response, controls, blocks, and claims are unchanged.

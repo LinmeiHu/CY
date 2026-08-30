@@ -1,0 +1,31 @@
+{
+  "experiment_id": "MKT-VOL-TRANS-002",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_VOLATILITY_STATE_CONSTRUCTION",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-VOL-TRANS-001_spec.json",
+  "inherits_scientific_design_sha256": "21145136eeb09369b755aad7fca591dcd280e3577159d7c65c5c1362bdacbb43",
+  "invalid_predecessor": "MKT-VOL-TRANS-001 stopped before an output was accepted when a block-A direction-habitat PIT view/denominator cell had 123 observations versus the unchanged 150 minimum",
+  "only_estimator_correction": {
+    "direction_modifier_grouping": "within each index and denominator, pool all four governed views before low/high partial correlations; take the median of the two denominator differences as the index effect; summarize all six indices",
+    "discovery_modifier_grouping": "unchanged eight matching view/denominator cells",
+    "complete_support_audit_before_any_estimate": true,
+    "reason": "retain every view/index/denominator and the unchanged support threshold while defining the direction modifier at its intended all-view cross-index level"
+  },
+  "unchanged_scientific_fields": [
+    "six immutable input identities and hashes",
+    "10696-row base population, six direction indices, and exact 15:00 availability",
+    "t+25 response and no-return-interval-overlap semantics",
+    "volatility transition predictor and three fixed current controls",
+    "raw, causal PIT, relative-to-ALL_A, and relative-rank baseline coordinates",
+    "causal-PIT 50/50 primary and 40/60 shape-neighbor habitats",
+    "2019-2021 and 2022-2023 reused-time blocks",
+    "all effect, sign, magnitude, phase, coordinate, and support gates",
+    "separate baseline/direction/discovery claims, no-rescue rule, prohibitions, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-VOL-TRANS-002_dynamics.md"
+  ]
+}

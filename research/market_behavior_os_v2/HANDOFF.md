@@ -533,3 +533,15 @@ coordinates. Preserve all six direction indices and all eight discovery groups;
 do not select a favorable habitat. Baseline and modifiers stand independently.
 Both blocks are reused exploratory evidence, never confirmation. Future price
 returns, strategy fields, failed roles, post-2023 data, and CY-011 are forbidden.
+
+MKT-VOL-TRANS-001 is invalid before accepted estimation: one block-A direction
+PIT cell had 123 observations versus the unchanged 150 gate. No 001 output
+artifact exists and no effect may be cited.
+
+MKT-VOL-TRANS-002 is frozen under control-spec SHA-256
+`e04c720b8980be9bd69e01e442ee09db86ab1fab6b89d5ae0093f57f31a8138f`,
+inheriting scientific spec `21145136...`. Only direction grouping changes:
+pool all four governed views within each index/denominator, take the two-
+denominator median per index, then summarize all six indices. Discovery remains
+eight matching cells. Run every support audit before correlations. No threshold,
+split, horizon, control, block, or claim is changed.

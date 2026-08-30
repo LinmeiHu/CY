@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-VOL-TRANS-001_FROZEN_EXECUTION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-VOL-TRANS-002_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent daily volatility contraction/expansion transition architecture conditional on accepted direction and discovery breadth
 - `SUPPORTING_FRONTIER`: four frozen daily-volatility roles plus accepted direction/discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -546,3 +546,16 @@ eight matching view/denominator groups. Baseline, direction modification, and
 discovery modification stand separately. Both blocks remain reused exploratory
 evidence, not confirmation. Execute without price returns, strategies, failed
 roles, post-2023 data, or CY-011.
+
+MKT-VOL-TRANS-001 stopped before an output was accepted. All immutable inputs,
+keys, timestamps, populations, and the exact t+25 shift passed, but one block-A
+direction-habitat PIT view/denominator cell retained only 123 complete rows
+against the unchanged 150 minimum. No estimate is cited.
+
+MKT-VOL-TRANS-002 control spec `e04c720b...` is frozen. It changes only the
+direction-modifier estimand: within each index/denominator it retains and pools
+all four governed views, then takes the two-denominator median per index and
+summarizes all six indices. Discovery remains eight matching cells. A complete
+support audit now precedes every estimate. All horizons, habitats, controls,
+coordinates, blocks, thresholds, prohibitions, and claim boundaries are
+unchanged.
