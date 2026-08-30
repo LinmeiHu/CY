@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-004",
+  "hypothesis_id": "H-OBL-003",
+  "status": "FROZEN_BEFORE_FIRST_OUTCOME_JOIN",
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "question": "Do the four outcome-blind original-breakout formation lineages have economically and temporally stable differences in subsequent MFE opportunity and false-breakout behavior?",
+  "mechanism": "A formation combining stronger base repair/compression and persistent signal-session acceptance above the canonical prior-60 close reference should create more favorable excursion and fewer false breakouts than a formation lacking both structures.",
+  "lineage_freeze": {
+    "lineage_freeze_id": "LINEAGE-OBL-003-4193834A6A3A39BF",
+    "assignment_sha256": "4193834a6a3a39bf5e9b96d2813d1fffeea92831fe61e5b53b9af6b8b1fa1017",
+    "feature_sha256": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0",
+    "freeze_manifest_sha256": "da978745fe485561dfce33a77a0e568ff14b61a9c575d57ac9d17a75b4ea4a4d",
+    "modification_after_reveal": "FORBIDDEN"
+  },
+  "population": {
+    "events": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "lineage_counts": {
+      "L00_BASE_LOW_ACCEPTANCE_LOW": 92,
+      "L01_BASE_LOW_ACCEPTANCE_HIGH": 112,
+      "L10_BASE_HIGH_ACCEPTANCE_LOW": 96,
+      "L11_BASE_HIGH_ACCEPTANCE_HIGH": 99
+    },
+    "expected_outcome_counts": {
+      "opportunity20": 84,
+      "false_breakout": 213,
+      "extreme_winner": 15,
+      "severe_loss": 44
+    },
+    "controlled_minimum_complete_rows": 380,
+    "qualification": "Accepted completed-entry population is historically outcome-consumed and bounded PIT-B; CY-011 is not used."
+  },
+  "primary_predictor": {
+    "name": "lineage_strength",
+    "mapping": {
+      "L00_BASE_LOW_ACCEPTANCE_LOW": 0,
+      "L01_BASE_LOW_ACCEPTANCE_HIGH": 1,
+      "L10_BASE_HIGH_ACCEPTANCE_LOW": 1,
+      "L11_BASE_HIGH_ACCEPTANCE_HIGH": 2
+    },
+    "rationale": "The score counts the two independently frozen structural states and treats base-high-only and acceptance-high-only symmetrically.",
+    "expected_direction": "positive"
+  },
+  "primary_outcomes": {
+    "mfe": {
+      "definition": "accepted continuous maximum favorable excursion over the actual frozen holding path",
+      "expected_direction": "positive"
+    },
+    "non_false_breakout": {
+      "definition": "one minus the accepted false_breakout indicator, where false breakout is MFE<10% and terminal return<=0",
+      "expected_direction": "positive"
+    }
+  },
+  "primary_metrics": {
+    "raw": "Spearman association over all 399 events",
+    "controlled": "partial rank association after fixed controls and entry-year effects",
+    "within_year": "descriptive within-year rank association",
+    "loyo": "all eight leave-one-entry-year-out omissions",
+    "temporal_blocks": "the three frozen baseline blocks",
+    "multiple_testing": "Benjamini-Hochberg over exactly the two raw primary endpoint p-values"
+  },
+  "fixed_controls": [
+    "entry_rs_score",
+    "entry_mom20",
+    "entry_box_width",
+    "entry_minvol_location",
+    "entry_breakout_volume_ratio",
+    "index_return_20d",
+    "index_realized_vol20",
+    "breadth_composite",
+    "entry_beta60",
+    "entry_log_amount20",
+    "entry-year fixed effects"
+  ],
+  "controls_interpretation": "Breadth is a frozen control only; this experiment does not reopen H-004 optimization.",
+  "mechanism_decomposition": {
+    "base_high": "fixed L10/L11 versus L00/L01 main effect, descriptive and not decision-rescuing",
+    "acceptance_high": "fixed L01/L11 versus L00/L10 main effect, descriptive and not decision-rescuing"
+  },
+  "secondary_not_decision_rescuing": [
+    "opportunity20",
+    "terminal round_trip_return",
+    "extreme_winner",
+    "severe_loss",
+    "MAE",
+    "lineage-level positive-PnL share",
+    "MFE Kruskal-Wallis omnibus"
+  ],
+  "falsification": {
+    "neighbor": "the frozen simpler-base plus exact-five-minute neighbor lineage score",
+    "temporal": "LOYO and three baseline blocks",
+    "tails": [
+      "remove Top-1% absolute realized-PnL events",
+      "remove >=50% extreme winners",
+      "remove <=-10% severe losses"
+    ],
+    "post_entry_conditioning": "add actual holding duration and canonical exit-reason dummies only as a sensitivity attack, never as a causal control",
+    "concentration": [
+      "leave one security out",
+      "leave one PIT industry out"
+    ],
+    "timing": "full signal-session lineage available 15:30 and potential action T+1 or later only",
+    "right_tail": "terminal/right-tail summaries cannot rescue a failed primary gate"
+  },
+  "decision_gates": {
+    "raw_minimum_rho": 0.1,
+    "raw_minimum_positive_loyo": 7,
+    "maximum_bh_qvalue": 0.1,
+    "controlled_minimum_rho": 0.08,
+    "controlled_minimum_positive_loyo": 6,
+    "minimum_positive_blocks": 2,
+    "minimum_block_rho_exclusive": -0.05,
+    "neighbor_minimum_rho": 0.06,
+    "neighbor_minimum_positive_loyo": 6,
+    "attack_minimum_rho_exclusive": 0.0,
+    "minimum_leave_group_positive_fraction": 0.85,
+    "leave_group_minimum_rho_exclusive": -0.02
+  },
+  "decision": {
+    "VALIDATE": "both primary endpoints pass raw, controlled, temporal, neighbor, and falsification gates",
+    "SUPPORTED_WEAK": "both pass raw, controlled, and temporal gates but neighbor or falsification fails",
+    "REFINE": "exactly one primary endpoint passes raw and controlled magnitude gates",
+    "REJECTED": "neither primary endpoint passes raw and controlled magnitude gates"
+  },
+  "interpretation_boundary": {
+    "available_at_timestamp": "entry signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "entry execution T+1 open or later",
+    "forbidden": [
+      "relabeling, merging, or redefining frozen lineages",
+      "threshold or horizon search",
+      "same-session action",
+      "entry, exit, sizing, overlay, or production rule",
+      "CY-011 access",
+      "claiming strict archival PIT-A"
+    ]
+  },
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py",
+      "sha256": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f"
+    },
+    "lineage_assignments": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/lineage_assignments_v3.csv",
+      "sha256": "4193834a6a3a39bf5e9b96d2813d1fffeea92831fe61e5b53b9af6b8b1fa1017"
+    },
+    "formation_features": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/formation_features_v3.csv",
+      "sha256": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0"
+    },
+    "lineage_freeze_manifest": {
+      "path": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-003.json",
+      "sha256": "da978745fe485561dfce33a77a0e568ff14b61a9c575d57ac9d17a75b4ea4a4d"
+    },
+    "accepted_outcomes": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv",
+      "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"
+    },
+    "accepted_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_trade_paths": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    }
+  },
+  "output_contract": {
+    "table": "research/chinext_v1/original_breakout_lineage/artifacts/lineage_outcome_reveal.csv",
+    "result": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-004_result.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-004_lineage_outcome_reveal.md",
+    "evidence_packet": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-004_evidence_packet.md"
+  }
+}

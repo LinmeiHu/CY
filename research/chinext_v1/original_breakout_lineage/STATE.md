@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`LINEAGE_FROZEN_PENDING_SEPARATE_OUTCOME_REVEAL_PREREGISTRATION`
+`EXP_OBL_004_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -70,11 +70,11 @@ contain no outcome column. H-OBL-002 receives `FREEZE_LINEAGE`.
 
 ## Current scientific decision
 
-`PREREGISTER_SEPARATE_OUTCOME_REVEAL` — preserve the assignment artifact exactly,
-freeze primary outcomes, contrasts, controls, temporal/tail/concentration attacks,
-and decision gates before the first outcome join.
+`EXECUTE_FROZEN_OUTCOME_REVEAL` — test the immutable ordinal lineage score against
+both MFE and non-false-breakout under the fixed controls and falsification set.
 
 ## Exact next action
 
-Commit the complete lineage freeze, then preregister EXP-OBL-004 against its exact
-hashes. Do not modify, relabel, merge, or rank lineages after outcome access.
+Execute EXP-OBL-004 once without intermediate modification, apply its gates,
+rerun for byte identity, and persist the decision. Do not modify, relabel, merge,
+or rank lineages after outcome access.

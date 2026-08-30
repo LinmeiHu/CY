@@ -43,10 +43,11 @@ forbidden outcome columns. H-OBL-002 decision: `FREEZE_LINEAGE`.
 
 ## Current frontier
 
-Commit the frozen assignment and preregister EXP-OBL-004 as a separate outcome
-reveal. Primary outcomes, contrasts, controls, LOYO/blocks, right-tail and
-concentration attacks, and decision gates must be fixed before the first join.
-No assignment, class label, or threshold may change afterward.
+EXP-OBL-004 is frozen before its first outcome join. It maps L00=0, L01/L10=1,
+and L11=2 and requires positive separation for both MFE and non-false-breakout.
+Fixed controls, BH across two tests, LOYO/blocks, neighboring assignment, tails,
+duration/exit, security, and industry attacks are preregistered. Execute without
+changing any assignment, class label, endpoint, threshold, control, or gate.
 
 ## Governance
 
