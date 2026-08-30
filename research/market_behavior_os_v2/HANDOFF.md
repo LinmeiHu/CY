@@ -659,3 +659,16 @@ participation, leadership concentration, diffusion, divergence, and transition
 representations. Fail closed on unclear market-cap/free-float/industry lineage.
 Do not combine style with Trend/Breadth or read strategy outcomes before a
 defensible representation exists.
+
+MKT-STYLE-DATA-001 is frozen under SHA-256
+`506c24bcdd498162b3d44faa3008aa54ddf9a4132606b5da9a890240e224484b`
+before calculating circulating market value. Bind exact CY-006/QD-009 registry,
+audit, manifest, and six 2018-2023 partition identities. Audit every
+hard-valid component and float-lineage date before accepting the product.
+
+The only candidate coordinate is raw completed close times causal
+`circulating_shares`. Call it circulating market value, never total market cap,
+true free-float cap, or enterprise value. QD-009 `freeFloatCapital` is not
+exposed by CY-006 and must not be joined separately. Enforce 15:00 availability,
+turnover unit consistency, population minimums, and the frozen no-rescue rule.
+No future/adjusted price, strategy field, post-2023 data, or CY-011 may enter.

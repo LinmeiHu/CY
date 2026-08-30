@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Intraday state dynamics fail; size/style leadership remains unrepresented | Audit PIT size/style inputs and build a strategy-independent representation map |
+| EXPLORE | 35% | Intraday state dynamics fail; size/style leadership remains unrepresented | Execute the frozen circulating-size PIT audit |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 5% | No intraday future process survives | Retire defense/recovery as an active archetype; keep size/style invention closed pending representation |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

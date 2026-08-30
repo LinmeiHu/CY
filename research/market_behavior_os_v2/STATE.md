@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-001_DATA_CONTRACT_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-DATA-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent size/style leadership and diffusion representation
 - `SUPPORTING_FRONTIER`: one stable same-session VWAP defense/recovery coordinate with no tested 1/3/5-session state dynamic
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -666,3 +666,15 @@ valid, but no simple 1/3/5-session persistence, reversal, future price process,
 strategy usefulness, or archetype is established. SYNTH-MKT-022 diversifies to
 the still-unrepresented size/style leadership frontier, beginning with a PIT
 data-contract and representation map. No S1-S12 STOP is active.
+
+The size/style data contract and MKT-STYLE-DATA-001 spec `506c24bc...` are
+frozen before deriving a size value. The only candidate is raw completed close
+times causally available `circulating_shares`, labeled circulating market value
+in CNY. It is explicitly not total market capitalization, QD-009's separate
+`freeFloatCapital`, enterprise value, growth/value, or beta.
+
+Exact registry/manifest/partition identities, all row-level validity and float-
+lineage dates, 15:00 availability, positive finite components/product, turnover
+unit consistency, view/denominator population minimums, and no-rescue rules are
+fixed. Strategy fields, future/adjusted prices, unregistered style inputs,
+post-2023 data, and CY-011 remain prohibited.

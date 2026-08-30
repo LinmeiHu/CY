@@ -68,6 +68,8 @@
 | `MARKET_INTRADAY_DEFENSE_DYNAMICS_MAP.md` | Frozen outcome-blind temporal-meaning architecture for the distinct minute coordinate |
 | `experiments/MKT-MIN-DEF-DYN-001_spec.json` | Frozen t+1 primary and t+3/t+5 neighboring state-dynamics contract |
 | `reports/MKT-MIN-DEF-DYN-001_dynamics.md` | Failed 1/3/5-session VWAP defense/recovery state dynamic |
+| `SIZE_STYLE_DATA_CONTRACT.md` | Frozen circulating-market-value size semantics and fail-closed PIT audit gates |
+| `experiments/MKT-STYLE-DATA-001_spec.json` | Frozen CY-006/QD-009 size-input feasibility contract |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

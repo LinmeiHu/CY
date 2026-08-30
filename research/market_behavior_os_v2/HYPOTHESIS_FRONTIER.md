@@ -133,3 +133,8 @@ partial sign across reused blocks; h=3/h=5 and every shape/relative challenge
 fail the conjunctive architecture. The minute representation remains valid,
 but horizon/shape rescue is closed. The active frontier diversifies to
 MKT-STYLE-001 data-contract/map-first strategy-independent size/style state.
+
+MKT-STYLE-DATA-001 is frozen under spec `506c24bc...`. It audits only raw close
+times causal circulating shares, with an explicit circulating-value label and
+total-cap/freeFloatCapital nonclaims. Representation design remains blocked
+until every PIT, lineage, unit, and population gate passes.
