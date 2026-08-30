@@ -1,0 +1,61 @@
+{
+  "experiment_id": "MKT-SUPPORT-DYN-DATA-003",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_EXACT_BLOCK_BATCH_RETRY_BEFORE_COMPLETE_MINUTE_AUDIT",
+  "question": "Can exact five-session-block batching execute the unchanged objective-recovery sample contract safely and reproducibly?",
+  "outcome_access": false,
+  "inputs": {
+    "batch_contract_v3": {"path": "research/market_behavior_os_v2/OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT_V3.md", "sha256": "ee63a73328fd8502bb9584b6f5fe0d3680d39be2079e551030355b3df5442130"},
+    "parent_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DYN-DATA-002_spec.json", "sha256": "2bcf7cbff24fd3be5a405a4051af942de396c65445296a5849acd9a77587cfc9"},
+    "parent_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_dyn_data_002.py", "sha256": "d03b5e16b8a0d97d11c9c3aa22ec09421a17b5c52c47a1ac645b8b5fe490f691"}
+  },
+  "invalid_parent": {
+    "experiment_id": "MKT-SUPPORT-DYN-DATA-002",
+    "outputs_accepted": false,
+    "failure_stage": "first annual raw-minute phase before complete output",
+    "failure": "lifetime peak process RSS exceeds 3 GiB",
+    "first_year_exact_target_sessions": 1595,
+    "first_year_required_raw_rows": 384395,
+    "first_year_materialized_cartesian_rows": 2849825,
+    "diagnostic_peak_rss_bytes": 4344119296,
+    "adequacy_counts_inspected_or_accepted": false
+  },
+  "exact_inheritance": {
+    "calendar_blocks": true,
+    "sample_and_hash_order": true,
+    "coordinate_and_source_roles": true,
+    "minute_descriptors": true,
+    "sample_adequacy_gates": true,
+    "resource_ceiling_values": true,
+    "outcome_and_claim_boundaries": true,
+    "underlying_input_and_partition_identities": true
+  },
+  "only_change": {
+    "minute_batch_keys": ["target_year", "block_id"],
+    "dates_per_batch": 5,
+    "release_batch_before_next": true,
+    "exact_expected_complete_raw_rows": 2307575,
+    "output_experiment_id": "MKT-SUPPORT-DYN-DATA-003"
+  },
+  "reference_equivalence": {
+    "year": 2018,
+    "block_id": 1,
+    "reference_reader": "parent annual reader restricted to the same first block",
+    "candidate_reader": "new block-batched reader restricted to the same first block",
+    "exact_keys_and_rows": true,
+    "canonical_frame_hash_equal": true,
+    "all_source_coordinate_test_and_recovery_fields_equal": true,
+    "must_pass_before_complete_scale": true
+  },
+  "no_rescue": "No calendar, date, block, symbol, view, coordinate, level, auction, near-touch, source, tolerance, action, adequacy floor, outcome boundary, or scientific claim may change.",
+  "claim_boundary": "Passing establishes only bounded PIT-B data and sample adequacy for a later objective-recovery temporal representation map; it establishes no support, defense, strengthening, weakening, failure process, prediction, habitat, timing, execution, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-003_sample.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-003_coordinate_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-003_population_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-003_support_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-003_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-DYN-DATA-003_audit.md"
+  ]
+}

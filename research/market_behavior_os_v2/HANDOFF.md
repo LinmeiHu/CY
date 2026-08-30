@@ -1007,3 +1007,16 @@ It inherits every 001 scientific identity and changes only the exact-SQL engine
 to one thread/2-GiB memory plus a 10-GiB isolated disposable-spill cap. Spill
 must be removed before QD-004 access. Execute twice; 3-GiB RSS, 8-GiB headroom,
 20-GiB compressed read, 100-MiB durable output, and ten-minute limits remain.
+
+MKT-SUPPORT-DYN-DATA-002 passes the capped daily phase but fails the 3-GiB
+lifetime RSS guard during its first annual minute phase. The annual predicate
+materializes 2,849,825 rows for 1,595 exact 2018 target sessions (384,395
+required rows). A bounded diagnostic peaks at 4,344,119,296 bytes. No complete
+002 output, support count, or process estimate is accepted.
+
+MKT-SUPPORT-DYN-DATA-003 is frozen under SHA-256
+`e8045eb3953f17c08e8e7324f0ea1f10e11c4c4206c16c591f65fca129824a68`.
+It retains every 001/002 scientific and resource value and changes only the
+minute read to exact five-session `(year, block_id)` batches. It requires
+2,307,575 total raw rows and exact canonical-frame equivalence between parent
+and candidate readers on 2018 block 1 before complete scale. Execute twice.

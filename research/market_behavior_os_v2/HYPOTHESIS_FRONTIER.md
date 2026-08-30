@@ -273,3 +273,9 @@ uncapped daily build exceeds RSS/headroom; exact 2-GiB-memory SQL exceeds only
 the 1-GiB spill cap. MKT-SUPPORT-DYN-DATA-002 is frozen under `2bcf7cbf...` and
 changes only disposable spill to a measured-safe 10-GiB cap. The active action
 is this exact retry, not a smaller sample or altered support floor.
+
+MKT-SUPPORT-DYN-DATA-002 fails during annual minute materialization because its
+independent date/symbol filters read a Cartesian superset. MKT-SUPPORT-DYN-DATA-
+003 is frozen under `e8045eb3...` and batches only by the preexisting five-day
+block. First-block exact reference equivalence is mandatory; failure cannot be
+rescued by dropping sessions or raising RSS.

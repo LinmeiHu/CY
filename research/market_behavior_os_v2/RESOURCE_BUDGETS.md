@@ -57,6 +57,12 @@ ceilings except disposable temporary disk, which is frozen at 10 GiB in an
 isolated directory removed before minute reads. This remains below 3% of the
 349-GiB prefreeze free disk and preserves the 25% disk-headroom rule.
 
+The 002 first annual minute request materializes 2,849,825 rows for 384,395
+required 2018 rows and breaches 3 GiB. The 003 retry preserves the 2-GiB daily
+memory/10-GiB disposable-spill settings and batches raw minutes by the frozen
+five-session block. Its exact complete raw-row budget is 2,307,575, and every
+block table must be released before the next.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

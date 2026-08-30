@@ -26,3 +26,7 @@ same-SQL 2-GiB-memory execution proves a bounded correction: 2.70 GB peak RSS,
 12.89 GB available memory, and 8.79 GB disposable spill against 349 GiB free
 disk. MKT-SUPPORT-DYN-DATA-002 is separately frozen with a 10-GiB spill cap and
 unchanged science. This is an ordinary exact retry, not an active S1--S12 STOP.
+The 002 annual minute batch then breaches RSS through a diagnosed Cartesian
+over-read. MKT-SUPPORT-DYN-DATA-003 is separately frozen to use the existing
+five-session blocks, with exact reference equivalence before scale. This remains
+a bounded engineering retry rather than an S1--S12 STOP.

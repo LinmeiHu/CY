@@ -259,6 +259,20 @@ or minute-derived count is accepted. The separately frozen 002 retry changes
 only the disposable spill ceiling and engine configuration; all science remains
 identical.
 
+## MKT-SUPPORT-DYN-DATA-002 — invalid annual minute Cartesian over-read
+
+The exact 002 resource retry passes the daily phase under its measured cap and
+removes spill before minute access. Its first annual QD-004 phase then breaches
+the unchanged 3-GiB lifetime RSS ceiling. No complete output or adequacy count
+is accepted.
+
+The first differing population is explicit: 1,595 exact 2018 target sessions
+require 384,395 rows, while independent annual date/symbol predicates
+materialize 2,849,825 rows before the exact-pair merge. A separate 1-GiB daily
+measurement plus that annual table peaks at 4,344,119,296 bytes. The 003 retry
+must batch by the already frozen five-session block and prove reference
+equivalence before complete scale; it may not shrink or replace the sample.
+
 ## MKT-STYLE-001 — invalid cumulative size-rank denominator
 
 The first implementation used an ordered window for both row number and count.

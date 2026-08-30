@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-002_FROZEN_EXACT_RESOURCE_RETRY_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-003_FROZEN_BLOCK_BATCH_RETRY_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -1010,6 +1010,19 @@ scientific retry. It changes only DuckDB execution to one thread/2-GiB memory
 and permits at most 10 GiB isolated disposable spill, removed before minute
 access. All sample, coordinate, source-role, adequacy, outcome, RSS, headroom,
 read, durable-output, and wall-time gates remain unchanged.
+
+MKT-SUPPORT-DYN-DATA-002 is also invalid before complete output. Its capped
+daily phase passes and cleans spill, but the first annual minute read breaches
+the unchanged 3-GiB lifetime RSS gate. The first differing population is 1,595
+exact 2018 target sessions/384,395 required rows versus 2,849,825 materialized
+rows from independent annual date/symbol predicates. A bounded diagnostic peaks
+at 4,344,119,296 bytes. No adequacy count is inspected or accepted.
+
+MKT-SUPPORT-DYN-DATA-003 is frozen under SHA-256 `e8045eb3...`. It inherits all
+science and resource values and changes only minute batching to the already
+frozen `(year, block_id)` five-session units, releasing every batch before the
+next. Complete raw-row conservation is exactly 2,307,575. Exact reference/
+candidate equivalence on 2018 block 1 must pass before all 48 blocks execute.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from
