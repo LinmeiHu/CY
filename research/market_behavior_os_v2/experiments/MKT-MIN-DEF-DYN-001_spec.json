@@ -1,0 +1,108 @@
+{
+  "experiment_id": "MKT-MIN-DEF-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION",
+  "question": "Does the distinct same-session VWAP defense/recovery coordinate have replicating next-session and neighboring-horizon state dynamics after fixed current-state controls?",
+  "research_role": "outcome-blind temporal meaning after intraday representation and external compression",
+  "inputs": {
+    "mechanism_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_panel.csv",
+      "sha256": "b08abaabfea3fff9c5de716963ad0cd079d54884c63ab994f2b56c1448cb10c2"
+    },
+    "mechanism_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_result.json",
+      "sha256": "b09808a98c3f5625bbf82e5ef1d754fae979410ee0acb25c630e021b52a55884"
+    }
+  },
+  "required_accepted_coordinate": "vwap_defense_recovery",
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2020-02-03",
+    "date_end": "2023-12-29",
+    "expected_complete_rows": 7632,
+    "expected_complete_rows_per_group": 954,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"]
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date derived session state at 15:30 Asia/Shanghai",
+    "response_available_at": "completed t+h derived session state at 15:30 Asia/Shanghai",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "fields": {
+    "primary": "vwap_defense_recovery__median__aligned_mean",
+    "aggregation_neighbors": [
+      "vwap_defense_recovery__median__aligned_median",
+      "vwap_defense_recovery__median__aligned_geometric_mean"
+    ],
+    "cross_section_neighbors": [
+      "vwap_defense_recovery__p40__aligned_mean",
+      "vwap_defense_recovery__p60__aligned_mean"
+    ],
+    "relative_to_all": "vwap_defense_recovery__relative_to_all",
+    "relative_rank": "vwap_defense_recovery__relative_view_rank_pct",
+    "controls_pit": [
+      "open_close_log_return__median__pit_3y_pct",
+      "downside_realized_volatility__median__pit_3y_pct",
+      "minute_volume_concentration__median__pit_3y_pct"
+    ],
+    "controls_relative_rank": [
+      "open_close_log_return__relative_view_rank_pct",
+      "downside_realized_volatility__relative_view_rank_pct",
+      "minute_volume_concentration__relative_view_rank_pct"
+    ],
+    "controls_relative_to_all": "each controls_pit field minus its same-date/same-denominator ALL_A value"
+  },
+  "responses": {
+    "primary_horizon_sessions": 1,
+    "neighbor_horizon_sessions": [3, 5],
+    "construction": "exact same coordinate at t+h shifted within view/denominator on the governed exchange-session sequence",
+    "same_block_rule": "predictor and response dates must both fall inside the temporal block"
+  },
+  "temporal_blocks": {
+    "block_a_reused_exploration": {"start": "2020-01-01", "end": "2021-12-31"},
+    "block_b_reused_validation": {"start": "2022-01-01", "end": "2023-12-31"},
+    "evidence_label": "both blocks reuse pre-2024 time and are exploratory, not untouched confirmation"
+  },
+  "estimation": {
+    "primary": "partial Spearman by rank-residualizing predictor and response on three fixed current-session controls with intercept",
+    "absolute_groups": "eight view/denominator groups",
+    "relative_to_all_groups": "six non-ALL_A view/denominator groups",
+    "relative_rank_groups": "two denominators pooled across four governed views",
+    "sign": "learned from block-A primary absolute median and required everywhere else",
+    "raw_unadjusted": "diagnostic only; cannot rescue the fixed partial estimator"
+  },
+  "gates": {
+    "absolute_group_block_minimum_observations": 150,
+    "relative_to_all_group_block_minimum_observations": 150,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "h1_primary_median_absolute_partial_rho_minimum": 0.10,
+    "h1_primary_group_sign_support_minimum_of_8": 6,
+    "h1_block_b_to_block_a_absolute_magnitude_ratio_minimum": 0.50,
+    "h1_shape_neighbor_median_absolute_partial_rho_minimum": 0.08,
+    "h1_shape_neighbor_group_sign_support_minimum_of_8": 6,
+    "h1_relative_median_absolute_partial_rho_minimum": 0.05,
+    "h1_relative_to_all_sign_support_minimum_of_6": 5,
+    "h1_relative_rank_sign_support_minimum_of_2": 2,
+    "h3_h5_median_absolute_partial_rho_minimum": 0.05,
+    "h3_h5_group_sign_support_minimum_of_8": 6,
+    "all_required": true,
+    "no_rescue": "No horizon, block, coordinate, aggregation, cross-section definition, view, denominator, sign, control deletion, failed role, or favorable subset can replace a failed primary state dynamic."
+  },
+  "prohibited_fields": [
+    "future market price return, future volatility, future industry state, or future stock state",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "late_vwap_acceptance or price_volume_demand_balance as independent mechanisms",
+    "leave-one-component-out selection or any failed/redundant MKT-MIN role",
+    "raw minute rows",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a replicating outcome-blind same-session VWAP-defense/recovery state dynamic; it does not establish cross-day support/resistance, participant accumulation, causality, price or volatility prediction, habitat fitness, timing, execution, or a strategy rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-DEF-DYN-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-DEF-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-DEF-DYN-001_dynamics.md"
+  ]
+}

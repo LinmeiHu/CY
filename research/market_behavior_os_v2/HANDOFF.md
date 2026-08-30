@@ -618,3 +618,21 @@ market-state values only, with nonoverlap, controls, fixed horizons/blocks, and
 no favorable-coordinate rescue frozen before shifting. Do not read future
 price returns, strategy fields, raw minute rows, failed roles, post-2023 data,
 or CY-011.
+
+MKT-MIN-DEF-DYN-001 is frozen under spec SHA-256
+`b53452c922eff99ac9d8a367dc905b00b08335beec337e8507144b686423ecee`
+before future shifting. The primary asks whether the exact accepted score at t
+predicts the same state at t+1 after current open-to-close return, downside
+realized volatility, and minute-volume concentration. h=3 and h=5 are fixed
+non-rescuing neighbors.
+
+At h=1 also challenge median/geometric aggregation, p40/p60 cross sections,
+relative-to-ALL_A, and governed-view relative rank. Use the fixed 2020-2021 and
+2022-2023 reused blocks; learn sign in block A and require replication in block
+B. All gates are conjunctive. Do not reinterpret either block as untouched
+confirmation or use an unadjusted estimate to rescue the partial estimator.
+
+The source minute/PIT contract and 15:30 availability remain inherited. Read
+only future values of the accepted dimensionless defense/recovery state. Future
+price return, future volatility/industry/stock state, strategy fields, failed
+roles, raw minutes, post-2023 data, and CY-011 remain forbidden. Execute twice.

@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | One same-session VWAP defense/recovery coordinate is distinct, but its temporal meaning is unknown | Map an outcome-blind, nonoverlapping state-dynamics test |
+| EXPLORE | 35% | One same-session VWAP defense/recovery coordinate is distinct, but its temporal meaning is unknown | Execute the frozen outcome-blind state-dynamics test |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 5% | Representation passes, but no future process or payoff evidence exists | Keep defense/recovery as a state hypothesis, not an archetype |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

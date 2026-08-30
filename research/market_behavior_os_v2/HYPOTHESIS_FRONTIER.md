@@ -121,3 +121,9 @@ from fixed daily controls, and price-volume demand balance is primarily
 open-to-close return geometry. The next frontier is MKT-MIN-DEF-DYN-001
 map-first: test only whether the distinct defense/recovery state has repeatable
 future state dynamics, without future price return or strategy outcomes.
+
+MKT-MIN-DEF-DYN-001 is frozen under spec `b53452c9...`. The t+1 partial state
+edge, h=3/h=5 neighbors, h=1 aggregation/cross-section challenges, absolute and
+relative coordinates, reused blocks, and all-required no-rescue logic are fixed.
+Execute twice without reading any future price, volatility, industry, stock, or
+strategy outcome.

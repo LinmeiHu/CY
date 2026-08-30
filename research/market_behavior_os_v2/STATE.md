@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-DEF-DYN-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-MIN-DEF-DYN-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: outcome-blind temporal meaning of the distinct same-session VWAP defense/recovery coordinate
 - `SUPPORTING_FRONTIER`: stable same-session minute mechanisms with late acceptance and demand balance compressed into daily-return geometry
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -635,3 +635,16 @@ cross-day support, participant accumulation, a future process, a signal, a
 strategy habitat, or a new archetype. SYNTH-MKT-021 selects map-first temporal-
 meaning research on this sole distinct coordinate without reading future price
 returns or strategy outcomes. No S1-S12 STOP is active.
+
+MKT-MIN-DEF-DYN-001 is frozen under SHA-256 `b53452c9...` before any future
+state is constructed. The exact same accepted coordinate at t+1 is primary;
+t+3 and t+5 are natural, non-rescuing neighbors. Three current-session controls,
+four h=1 shape/definition challenges, relative-to-ALL_A and relative-rank views,
+2020-2021/2022-2023 reused blocks, support/effect/sign gates, and all-required
+logic are fixed. Both blocks are explicitly exploratory, not untouched
+confirmation.
+
+The inherited completed-bar grid and 15:30 availability remain unchanged. The
+response is a future dimensionless state value, not a cross-day price level.
+Future price return, volatility, industry/stock state, strategy fields, raw
+minutes, failed roles, post-2023 data, and CY-011 are prohibited.
