@@ -1,0 +1,286 @@
+{
+  "attacks": {
+    "candidate_vacancy_components": {
+      "mfe": {
+        "n": 383,
+        "partial_rank_rho": 0.02365004464557581,
+        "pvalue": 0.6445172542554778
+      },
+      "non_false_breakout": {
+        "n": 383,
+        "partial_rank_rho": 0.05513805258158176,
+        "pvalue": 0.2817641031391952
+      }
+    },
+    "ex_2025": {
+      "mfe": {
+        "n": 326,
+        "pvalue": 0.0011985259303712037,
+        "rho": 0.17864528438210533
+      },
+      "non_false_breakout": {
+        "n": 326,
+        "pvalue": 0.13388991731514055,
+        "rho": 0.08319403888234596
+      }
+    },
+    "ex_extreme_winners": {
+      "mfe": {
+        "n": 384,
+        "pvalue": 5.238887530753689e-05,
+        "rho": 0.20487983903308538
+      },
+      "non_false_breakout": {
+        "n": 384,
+        "pvalue": 0.047842491196781724,
+        "rho": 0.10104924977153647
+      }
+    },
+    "ex_severe_losses": {
+      "mfe": {
+        "n": 355,
+        "pvalue": 1.1977844600968505e-06,
+        "rho": 0.2543753050710761
+      },
+      "non_false_breakout": {
+        "n": 355,
+        "pvalue": 0.005077577506648558,
+        "rho": 0.14841740461878808
+      }
+    },
+    "ex_top1pct_absolute_pnl": {
+      "mfe": {
+        "n": 395,
+        "pvalue": 5.905133939116328e-06,
+        "rho": 0.2256849680563853
+      },
+      "non_false_breakout": {
+        "n": 395,
+        "pvalue": 0.01703292212996069,
+        "rho": 0.11999869898817668
+      }
+    },
+    "holding_duration_exit_control": {
+      "mfe": {
+        "n": 383,
+        "partial_rank_rho": 0.10597182492959559,
+        "pvalue": 0.0381749775853519
+      },
+      "non_false_breakout": {
+        "n": 383,
+        "partial_rank_rho": 0.03365062182476558,
+        "pvalue": 0.5114451856171848
+      }
+    },
+    "industry_leave_one_out": {
+      "mfe": {
+        "groups": 68,
+        "maximum": 0.2550416984230202,
+        "minimum": 0.21476437794546627,
+        "positive_fraction": 1.0
+      },
+      "non_false_breakout": {
+        "groups": 68,
+        "maximum": 0.14235858475088142,
+        "minimum": 0.11230528272947761,
+        "positive_fraction": 1.0
+      }
+    },
+    "post_2021": {
+      "mfe": {
+        "n": 205,
+        "pvalue": 4.936998039695593e-05,
+        "rho": 0.27950305769320016
+      },
+      "non_false_breakout": {
+        "n": 205,
+        "pvalue": 0.005375935351640188,
+        "rho": 0.1937540232656834
+      }
+    },
+    "security_leave_one_out": {
+      "mfe": {
+        "groups": 281,
+        "maximum": 0.2449422684817157,
+        "minimum": 0.22090359693458936,
+        "positive_fraction": 1.0
+      },
+      "non_false_breakout": {
+        "groups": 281,
+        "maximum": 0.13586614183475063,
+        "minimum": 0.11727898699740141,
+        "positive_fraction": 1.0
+      }
+    }
+  },
+  "decision": "REJECTED",
+  "endpoint_support": {
+    "mfe": false,
+    "non_false_breakout": false
+  },
+  "evidence_grade": "POST_SECONDARY_EXPLORATORY_REVEAL_BOUNDED_PIT_B",
+  "experiment_id": "EXP-OBL-011",
+  "gates": {
+    "all_three_blocks_both_endpoints": true,
+    "controlled_both_endpoints": false,
+    "falsification": true,
+    "raw_both_endpoints": true
+  },
+  "hypothesis_id": "H-OBL-009",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-009_audit.json": "571ca5fee39f6d7f70b43beeee26f3f5e88f2a4094400c37c4468dc41b585187",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/selection_competition_features_v2.csv": "2beccefaf46c1140c4cb243e5c26999fb1d1f63afb6aa25c9db4a7901122c848",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-009.json": "b18fccf51defbde8e8422328940e177d4dfd877a0575e8c3b302c5bbd2b1e5d6",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_selection_lineage_outcome_reveal.py": "0c02af8c04a28af8649835bbff247d04b030af2527284ebfe11e21982f94d22c",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_selection_pressure_outcome_reveal.py": "193e67f2632f41a8dc4c55deea22f00d474ac5cf1a00d1bd767fb1f21da973c0",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+  },
+  "interpretation_boundary": "Selection pressure was frozen before outcomes, but selected for this test after secondary inspection. No threshold, rule, strategy change, or CY-011 access is authorized.",
+  "lineage_freeze_id": "LINEAGE-OBL-009-2BECCEFAF46C1140",
+  "multiple_testing_qualification": "Primary predictor was observed as a preregistered non-rescuing secondary in EXP-OBL-010; this follow-up is not independent confirmation.",
+  "output_table_sha256": "2cc206f1d29a7a9168a38ccd5a6b01622a8ff061fc489f355ba7eb3fdecd4d68",
+  "population": {
+    "controlled_complete": 383,
+    "events": 399
+  },
+  "primary": {
+    "mfe": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.00020426087453473537,
+          "rho": 0.34548065787807436
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.02399577400031128,
+          "rho": 0.16203201885273597
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.9099113059327322,
+          "rho": 0.011828431473211701
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.07659008048769038,
+        "pvalue": 0.13460244846654032
+      },
+      "controlled_loyo": {
+        "maximum": 0.09661738845181457,
+        "minimum": 0.042877526462056705,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.07717572890233018,
+          "2019": 0.09575769916723463,
+          "2020": 0.08665741389525286,
+          "2021": 0.07459718841245688,
+          "2022": 0.09661738845181457,
+          "2023": 0.07381278012297994,
+          "2024": 0.042877526462056705,
+          "2025": 0.06195190249480805
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 2.962136749040391e-06,
+        "rho": 0.23150443408168506
+      },
+      "raw_bh_qvalue": 5.924273498080782e-06,
+      "raw_loyo": {
+        "maximum": 0.25722954147342314,
+        "minimum": 0.17864528438210533,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.21078285819421314,
+          "2019": 0.2486429113567005,
+          "2020": 0.24481908115487921,
+          "2021": 0.25722954147342314,
+          "2022": 0.2425907354251157,
+          "2023": 0.2513788451865705,
+          "2024": 0.2074648972730213,
+          "2025": 0.17864528438210533
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.0025828293393841788,
+        "rho": 0.15047416926878968
+      }
+    },
+    "non_false_breakout": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.0021098883328797406,
+          "rho": 0.28882496086633697
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.28966176248383985,
+          "rho": 0.07640457730105035
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.9240212038795123,
+          "rho": 0.009969782904896411
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.03800778429643989,
+        "pvalue": 0.4582910970108036
+      },
+      "controlled_loyo": {
+        "maximum": 0.055409629757705886,
+        "minimum": 0.010216644009219813,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.03928885566539449,
+          "2019": 0.05149680763755571,
+          "2020": 0.028780481510971546,
+          "2021": 0.04006092543490858,
+          "2022": 0.055409629757705886,
+          "2023": 0.04311132429273277,
+          "2024": 0.010216644009219813,
+          "2025": 0.03010765170405876
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.012032447123596792,
+        "rho": 0.125612588549796
+      },
+      "raw_bh_qvalue": 0.012032447123596792,
+      "raw_loyo": {
+        "maximum": 0.15575791613531517,
+        "minimum": 0.08319403888234596,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.11096364242657061,
+          "2019": 0.15575791613531517,
+          "2020": 0.12776344777175194,
+          "2021": 0.14451893034405863,
+          "2022": 0.13439914791698981,
+          "2023": 0.1288285865235068,
+          "2024": 0.11528270923533016,
+          "2025": 0.08319403888234596
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.07098514963540886,
+        "rho": 0.09049005762947544
+      }
+    }
+  },
+  "verdict": "SELECTION_PRESSURE_FAILS_PRIMARY_MAGNITUDE_GATES"
+}

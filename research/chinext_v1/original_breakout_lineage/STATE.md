@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_011_FROZEN_POST_SECONDARY_BEFORE_EXECUTION`
+`EXP_OBL_011_COMPLETE_REJECTED_PIVOT_TO_PIVOT_TOPOLOGY`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -120,16 +120,25 @@ gate. MFE raw/controlled rhos are 0.139/0.096 and non-false-breakout rhos are
 is negative/null and removing 2025 leaves only 0.016/0.018, so no stable binary
 lineage claim or rule is allowed. Two executions are byte-identical.
 
-EXP-OBL-011 is now preregistered as one explicitly post-secondary exploratory
-follow-up on the already frozen continuous selection-pressure ratio. It preserves
-positive direction and both co-primary endpoints, controls the binary contested
-lineage plus absolute RS/breadth/V1/market/year state, and requires both endpoints
-to remain positive in all three frozen blocks. Its candidate/vacancy, 2025,
-post-2021, tail, duration/exit, security, and industry attacks are frozen. The
-previous secondary inspection means this is not independent confirmation.
+EXP-OBL-011 is validly rejected. Raw selection-pressure rhos are 0.2315 for MFE
+and 0.1256 for non-false-breakout with 8/8 LOYO direction. After binary contested
+selection and the fixed RS/breadth/V1/market/year controls, they are only 0.0766
+and 0.0380, below both frozen 0.08 gates. Candidate/vacancy-component partial
+rhos are 0.0237/0.0551 and the 2022-2023 raw block is nearly null at
+0.0118/0.0100. The raw effect survives tail and concentration attacks, but it is
+not sufficiently incremental. Two executions are byte-identical. H-OBL-009 and
+the selection-competition family are closed without thresholds or rules.
+
+The next independent formation question is objective prior-60 pivot topology.
+Unlike the rejected broad base score, it asks whether the ordering of local
+troughs and peaks creates neutral higher-low/lower-high structures before the
+signal. Construction must be outcome-blind and must pass a fixed neighboring
+pivot-definition test before any economic reveal.
 
 ## Exact next action
 
-Execute committed EXP-OBL-011 once under its frozen input hashes and gates, then
-repeat without changes for byte identity. Do not bin or threshold pressure,
-inspect rank/margin variants, modify V1, or open CY-011.
+Preregister EXP-OBL-012 as an outcome-blind prior-60 pivot-topology construction.
+Use only action-safe pre-signal prices, a small neutral taxonomy, natural zero-
+slope ordering, and one fixed neighboring pivot definition. Reject before
+outcomes if coverage, class balance, temporal presence, or neighbor stability
+fails. Do not revisit selection pressure, modify V1, or open CY-011.

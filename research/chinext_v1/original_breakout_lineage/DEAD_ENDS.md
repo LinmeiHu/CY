@@ -64,3 +64,21 @@ do not rescue the mechanism.
 Two executions are byte-identical. Do not bin reference age, reverse its sign,
 search age thresholds, or reinterpret top-tail summaries as primary support.
 Decision: `REJECTED`; no strategy rule or CY-011 access.
+
+## D-OBL-007 — cross-sectional selection competition
+
+The exact binary contested lineage has aggregate MFE/non-false-breakout
+separation but fails temporal stability in EXP-OBL-010. Its one permitted
+continuous follow-up is rejected by EXP-OBL-011. Selection pressure raw rhos are
+0.2315 and 0.1256 with positive LOYO signs, but controlled rhos are only 0.0766
+and 0.0380 versus the frozen 0.08 gates after the binary lineage and fixed
+RS/breadth/V1/market/year controls. The 2022-2023 block is nearly null at 0.0118
+and 0.0100. Candidate/vacancy-component controls reduce the estimates to 0.0237
+and 0.0551.
+
+The raw relation survives tail and concentration attacks, but it is not
+sufficiently incremental. This follow-up was also post-secondary rather than
+independent confirmation. Do not search pressure bins, capacity thresholds,
+selected rank, cutoff margin, or alternate candidate/vacancy formulas.
+
+Decision: `REJECTED`; selection competition is closed on the consumed sample.

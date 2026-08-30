@@ -160,6 +160,18 @@ security, and industry attacks. This is post-secondary evidence, not independent
 confirmation. Execute unchanged, repeat for byte identity, and apply gates
 literally. CY-011 remains locked.
 
+EXP-OBL-011 is complete and rejected. Raw pressure rhos are 0.2315/0.1256, but
+controlled rhos are 0.0766/0.0380 and candidate/vacancy-component partial rhos
+0.0237/0.0551. The 2022-2023 block is nearly null. Two runs are byte-identical.
+Do not search pressure, rank, margin, or capacity variants; the selection family
+is closed.
+
+The next frontier is H-OBL-010, objective prior-60 pivot topology. Preregister an
+outcome-blind EXP-OBL-012 construction using action-safe pre-signal prices, a
+small neutral higher-low/lower-high hierarchy, and one fixed neighboring pivot
+definition. Coverage, temporal presence, balance, and neighboring agreement must
+pass before any outcome reveal. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

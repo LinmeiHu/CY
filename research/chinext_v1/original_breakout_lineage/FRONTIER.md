@@ -156,6 +156,28 @@ V1/market state, and year; both endpoints must be positive in all three blocks.
 Because its predictor was inspected in EXP-OBL-010 secondary evidence, even a
 passing result requires independent future confirmation and cannot become a rule.
 
+## Frontier after EXP-OBL-011
+
+Continuous pressure is rejected. Its raw relation is positive but falls below
+both controlled gates, and the 2022-2023 block is nearly null. Binary and
+continuous selection competition are closed; no rank, cutoff, or pressure
+threshold search is permitted.
+
+Updated independent ranking:
+
+| Rank | Frontier | Information value and independence | Feasibility / risk | Decision |
+|---:|---|---|---|---|
+| 1 | Objective prior-60 pivot topology | Directly tests higher-low/lower-high formation and supply compression, which the broad average-rank base score did not represent as ordered turning points | Exact action-safe daily history exists; one fixed pivot definition plus one neighbor limits mining risk | SELECT H-OBL-010 |
+| 2 | Further signal-session intraday path engineering | Literal acceptance mechanism, but two fixed composites and acceptance axes are already rejected | Data exist; repeated-feature risk is now high | DEFER_LOW |
+| 3 | Daily volume/demand contraction | Interpretable supply mechanism | H-011 already rejected volatility, range, RS, and downside-amount transitions | REJECT_NEARBY_FAMILY |
+| 4 | Industry/stock leadership | Reusable contextual mechanism | H-012 already rejected both fixed components | REJECT_NEARBY_FAMILY |
+| 5 | Order-flow absorption | Potentially distinct | Tick/queue data unavailable; OHLCV proxies risk repeating intraday search | BLOCKED_DATA_GAP |
+
+EXP-OBL-012 should first determine, without outcomes, whether a compact pivot-
+ordering taxonomy has adequate coverage, temporal presence, class balance, and
+neighboring-definition stability. Only a successful freeze may authorize a
+separate outcome reveal.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
