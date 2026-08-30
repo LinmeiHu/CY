@@ -152,6 +152,14 @@ without bins or thresholds against both co-primary endpoints, controlling
 absolute RS, breadth, V1/market state, and year, with full temporal/tail/
 concentration attacks. CY-011 remains locked.
 
+EXP-OBL-011 is now committed for execution under fresh runner/output identities.
+It controls binary contested selection in addition to absolute RS, breadth,
+V1/market state, and year. Both endpoints must be positive in every frozen block,
+with LOYO, ex-2025, post-2021, candidate/vacancy-component, tail, duration/exit,
+security, and industry attacks. This is post-secondary evidence, not independent
+confirmation. Execute unchanged, repeat for byte identity, and apply gates
+literally. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

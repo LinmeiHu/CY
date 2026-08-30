@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_010_COMPLETE_REFINE_TEMPORAL_INSTABILITY`
+`EXP_OBL_011_FROZEN_POST_SECONDARY_BEFORE_EXECUTION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -120,10 +120,16 @@ gate. MFE raw/controlled rhos are 0.139/0.096 and non-false-breakout rhos are
 is negative/null and removing 2025 leaves only 0.016/0.018, so no stable binary
 lineage claim or rule is allowed. Two executions are byte-identical.
 
+EXP-OBL-011 is now preregistered as one explicitly post-secondary exploratory
+follow-up on the already frozen continuous selection-pressure ratio. It preserves
+positive direction and both co-primary endpoints, controls the binary contested
+lineage plus absolute RS/breadth/V1/market/year state, and requires both endpoints
+to remain positive in all three frozen blocks. Its candidate/vacancy, 2025,
+post-2021, tail, duration/exit, security, and industry attacks are frozen. The
+previous secondary inspection means this is not independent confirmation.
+
 ## Exact next action
 
-Preregister EXP-OBL-011 as an explicitly post-secondary exploratory follow-up on
-the already frozen continuous selection-pressure ratio. Preserve positive
-direction and both co-primary endpoints; require raw/controlled incrementality,
-LOYO/blocks, 2025 removal, tails, duration/exit, and concentration. Do not bin or
-threshold pressure, and do not open CY-011.
+Execute committed EXP-OBL-011 once under its frozen input hashes and gates, then
+repeat without changes for byte identity. Do not bin or threshold pressure,
+inspect rank/margin variants, modify V1, or open CY-011.

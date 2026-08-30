@@ -150,6 +150,12 @@ participation intensity beyond breadth and absolute RS. It must be labeled
 post-secondary exploratory, use no threshold, and face the same temporal failure
 directly; it cannot retroactively rescue EXP-OBL-010.
 
+EXP-OBL-011 is frozen before execution as exactly that bounded follow-up. It
+controls binary contested selection as well as absolute RS, breadth, fixed
+V1/market state, and year; both endpoints must be positive in all three blocks.
+Because its predictor was inspected in EXP-OBL-010 secondary evidence, even a
+passing result requires independent future confirmation and cannot become a rule.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
