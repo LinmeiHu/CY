@@ -223,6 +223,11 @@ for MFE and non-false-breakout, control minvol location/ratio, anchor age,
 V1/market/breadth/year state, and attack the close-support neighbor plus full
 temporal/tail/concentration/duration set. CY-011 remains locked.
 
+EXP-OBL-016 is rejected: MFE raw/controlled 0.034/0.049; non-false 0.016/0.034;
+close-support neighbor negative/null. Two runs are byte-identical. The consumed-
+sample frontier is exhausted without a candidate. CY-011 remains locked and
+unopened. Resume only with future untouched data or a materially new contract.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

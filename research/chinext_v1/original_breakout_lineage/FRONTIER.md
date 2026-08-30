@@ -219,6 +219,11 @@ agreement. The next question is economic only after this freeze: whether held
 minimum-volume support predicts greater opportunity and fewer false breakouts
 beyond minvol level/ratio, support age, V1 state, market state, and breadth.
 
+EXP-OBL-016 rejects the mechanism. All independent executable formation families
+are now null/unstable and order-flow data are unavailable. Further search on the
+consumed 399 cycles would be repeated mining. Decision: `STOP_EXHAUSTED`; wait
+for future untouched data or a new human-authorized data contract. CY-011 locked.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

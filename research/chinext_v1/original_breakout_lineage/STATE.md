@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_016_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
+`STOP_FRONTIER_EXHAUSTED_ON_CONSUMED_SAMPLE`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -177,9 +177,8 @@ and outcome-prohibition gates pass. No outcomes were read.
 
 ## Exact next action
 
-EXP-OBL-016 is preregistered with support-held positive direction
-for both MFE and non-false-breakout. Control canonical minvol location/ratio,
-support age, V1/market/breadth/year state; it attacks the fixed close-support neighbor,
-LOYO/blocks, tails, duration/exit, security/industry, and PIT timing. Do not alter
-the freeze, modify V1, or open CY-011.
-Execute committed EXP-OBL-016 unchanged and repeat for byte identity.
+EXP-OBL-016 is rejected: MFE raw/controlled 0.034/0.049 and non-false 0.016/0.034;
+the fixed close-support neighbor is negative/null. Two runs are byte-identical.
+The consumed-sample frontier is exhausted without a candidate. CY-011 remains
+locked. Resume only with future untouched observations or explicit authorization
+for a materially new data/mechanism contract. `CANDIDATE_READY_FOR_CY011: NO`.

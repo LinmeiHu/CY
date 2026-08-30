@@ -94,3 +94,9 @@ sensitive to the pivot radius for an auditable lineage freeze.
 No outcome was read and no artifact was accepted. Do not select a radius, search
 pivot windows, weaken the stability gate, merge classes, or inspect economic
 outcomes under this definition. Decision: `REJECTED_BEFORE_OUTCOME`.
+
+## D-OBL-009 — canonical minimum-volume support defense
+
+EXP-OBL-016 rejects the valid binary freeze. MFE raw/controlled rhos are
+0.034/0.049 and non-false-breakout 0.016/0.034; the fixed close-support neighbor
+is negative/null. Do not search support distances, ages, or MINVOL thresholds.
