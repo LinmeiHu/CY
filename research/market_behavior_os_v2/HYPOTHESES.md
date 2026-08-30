@@ -153,3 +153,21 @@
   relief, high-activity modifier, panic, speculation, forecast, or strategy
   claim. Do not replace weakest-link with the geometric neighbor or lower event
   thresholds. The broader directional-process family remains open.
+
+## MKT-H-011 — non-slope five-day market intraday paths
+
+- Status: `ONE_OF_THIRTY_SIX_REPRESENTATIONS_SUPPORTED`.
+- Claim: ordinal progression, signed reversal, and curvature can provide stable
+  five-day representations not reducible to exact OLS/endpoint clones.
+- Contract: 12 preregistered descriptors x three fixed operators from Day -5
+  through Day -1; median primary with p40/p60 aggregation neighbors; absolute,
+  causal PIT, and governed-view relative coordinates; no raw-minute rescan,
+  outcome, strategy field, or favorable operator substitution.
+- Result: only `minute_realized_volatility__ordinal_progression` passes. Its
+  weakest definition neighbor is 0.711 and it is not same-session-level
+  redundant (median absolute rho 0.246). All other progression roles and all
+  reversal/curvature roles fail the fixed representation gate.
+- Boundary: the survivor is not yet established as contraction, expansion,
+  supply/demand, a transition mechanism, habitat, forecast, or trading signal.
+  The broader failed descriptor families remain open only under structurally
+  different representations, not favorable window/operator selection.

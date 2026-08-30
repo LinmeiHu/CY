@@ -11,5 +11,6 @@ scale projects below the 90-minute ceiling.
 
 Required-scale minute representation and the later signed/directional-process
 tests completed without an active blocker. No result establishes economic
-usefulness or authorizes a strategy rule or CY-011. Continue MKT-MIN-PATH-001
-map-first; reinstate a STOP only if an S1-S12 boundary is actually encountered.
+usefulness or authorizes a strategy rule or CY-011. Continue
+MKT-MIN-VOL-GEO-001 map-first; reinstate a STOP only if an S1-S12 boundary is
+actually encountered.

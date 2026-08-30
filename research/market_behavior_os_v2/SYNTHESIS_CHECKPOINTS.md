@@ -415,3 +415,46 @@ the exact existing trajectory panel. Monotonicity, reversal, and curvature must
 have independent economic semantics and fixed neighboring definitions. Do not
 promote endpoint change or OLS3 as an OLS5 substitute, rescan raw minute data,
 or read outcomes.
+
+## SYNTH-MKT-011 — after non-slope five-day path construction
+
+### What was learned?
+
+MKT-MIN-PATH-002 tested all 36 preregistered roles on 11,624 exact group/date
+rows after correcting only derived-artifact availability from invalid 15:00 to
+15:30. One role freezes: minute-realized-volatility ordinal progression. Its
+weakest definition neighbor is 0.711, aggregation neighbors are 0.889/0.868,
+denominator stability is 0.968, and raw/PIT/relative coverage is complete. Its
+median same-session-level correlation is 0.246. The other 35 roles fail; no
+signed reversal or curvature survives.
+
+### What market behavior are we still not studying?
+
+We do not know whether the sole path survivor is distinct from daily volatility
+level, change, and concentration, or merely another manifestation of them.
+Objective cross-day support/acceptance remains blocked by the missing registered
+action-safe adjusted minute-level contract. Accumulation/distribution,
+leader/industry transitions, conditional volatility processes, and portable
+multi-strategy habitat evidence also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A stable ordinal path coordinate has no direction, trigger, payoff,
+executable confirmation, exit, or capacity evidence. It does not yet establish
+contraction/expansion and implies no volatility-breakout or mean-reversion
+archetype.
+
+### Parallel-track awareness
+
+- **Market research:** test external volatility redundancy before mechanism
+  interpretation or interaction.
+- **Existing-strategy archaeology:** no new outcome/trade field was read; seed
+  findings and rejections remain unchanged.
+- **Strategy invention:** no mechanism crosses the preliminary-evidence gate.
+
+### Research Director decision
+
+`FALSIFY` MKT-MIN-VOL-GEO-001 next. Freeze a compact, outcome-blind geometry of
+the sole accepted path role against accepted same-session minute volatility and
+daily volatility level/change/concentration coordinates. Do not add any failed
+path role, tune a threshold, read raw minutes, or access outcomes/CY-011.

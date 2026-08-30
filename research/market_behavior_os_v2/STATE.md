@@ -1,6 +1,6 @@
 # Market Behavior Research OS V2 state
 
-Updated 2026-08-30.
+Updated 2026-08-31.
 
 ## Program identity
 
@@ -8,9 +8,9 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-PATH-002_FROZEN_BEFORE_CONSTRUCTION_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: structurally distinct non-slope five-day market intraday trajectories
-- `SUPPORTING_FRONTIER`: frozen same-session intraday levels and rejected exact OLS/directional-stress processes
+- `CURRENT_PHASE`: `MKT-MIN-VOL-GEO-001_MAP_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: outcome-blind geometry of the sole stable five-day minute-volatility progression
+- `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -208,6 +208,12 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   and risk panel `fe7436e...`. Two runs are byte-identical: panel `c3fe91ec...`,
   result `c00f8eed...`, report `27a092cd...`. Failed shock episode fields,
   future returns, strategy outcomes, and CY-011 remain unread.
+- MKT-MIN-PATH-002 binds control spec `161b4bb7...`, scientific design
+  `bf7e05dc...`, daily panel `bdbb3cb9...`, and source trajectory
+  `89d3e33b...`. Two runs are byte-identical: panel `d0a396a9...`, result
+  `a21b56ea...`, report `f6ef7331...`; four targeted tests pass. It reads no
+  raw minute row, OLS/endpoint/precomputed-shape field, outcome, strategy field,
+  or CY-011.
 
 ## Current frontier
 
@@ -257,4 +263,20 @@ The MKT-MIN-PATH-001 input audit stopped before construction because its new
 spec declared 15:00 availability while the frozen derived artifact is available
 at 15:30 after the completed 15:00 bar. MKT-MIN-PATH-002 control spec
 `161b4bb7...` inherits the exact scientific design `bf7e05dc...` and corrects
-only availability/output identity. No representation has yet run.
+only availability/output identity.
+
+MKT-MIN-PATH-002 is complete. Of 36 fixed roles, only
+`minute_realized_volatility__ordinal_progression` passes. Its weakest definition
+neighbor is 0.711, aggregation neighbors are 0.889/0.868, denominator
+stability is 0.968, raw/PIT/relative coverage is complete, and its median
+absolute correlation with the same-session level is 0.246. All 35 other roles
+fail the fixed representation gate; reversal and curvature freeze no role. The
+survivor is a stable shape descriptor, not volatility contraction/expansion,
+supply exhaustion, demand strength, a habitat, forecast, or signal.
+
+SYNTH-MKT-011 selects MKT-MIN-VOL-GEO-001 next. Before economic usefulness,
+test whether the sole survivor is contemporaneously nonredundant with frozen
+same-session minute volatility and daily volatility level/change/concentration
+coordinates. Freeze inputs, transformations, portability and redundancy gates
+before construction; read no outcomes, strategy fields, raw minute rows, or
+CY-011. Do not add a favorable failed path descriptor to the geometry.

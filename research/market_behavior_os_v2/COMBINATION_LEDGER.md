@@ -10,6 +10,7 @@ association. No combination is confirmed or authorized as a rule.
 | trend habitat x five-day supply/demand | slow environment x recent trajectory | WAIT | Same-session minute levels freeze but every exact five-day OLS trajectory primary fails; no supply/demand trajectory mechanism exists |
 | correlation state x liquidity activity | synchronization/co-movement x activity | CONTINUOUS_JOINT_STRESS_SUPPORTED_EXACT_EPISODE_FAIL | MKT-SHOCK-001 freezes a nonvolatility-redundant continuous weakest-link score; exact onset/dwell/relief/dry-up fails sparse/stability gates. No panic/usefulness claim. |
 | synchronization pressure x upside/downside extreme participation | direction-neutral synchronization x signed tail breadth | EXACT_WEAKEST_LINK_AND_PROCESS_FAIL | Arithmetic-shape stability fails (0.691/0.646); side episodes are sparse and unstable. No continuous interaction/process/panic claim; do not substitute geometric aggregation. |
+| minute-volatility ordinal progression x same-session/daily volatility states | five-day minute path shape x volatility level/change/concentration | PENDING_OUTCOME_BLIND_REDUNDANCY | Only the path role has passed its own gate. Freeze and test geometry before any interaction, usefulness, or contraction/expansion label. |
 
 No synergy claim is permitted without frozen `BASELINE`, `A`, `B`, and `A+B`
 comparisons and temporal evidence.

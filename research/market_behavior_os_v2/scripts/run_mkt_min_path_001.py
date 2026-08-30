@@ -7,11 +7,15 @@ import hashlib
 import json
 import math
 import sys
+import warnings
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
+
+
+warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)
 
 
 ROOT = Path(__file__).resolve().parents[3]

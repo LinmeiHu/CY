@@ -11,7 +11,7 @@ return. Initial dimensions are:
 | Liquidity | own-history-relative activity, turnover level, and amount concentration frozen; participation/diffusion compressed into activity; fixed change unstable | causal percentiles and robust z | governed-view contrasts with audited units | THREE_ROLES_FROZEN_TRANSITION_NOT_FROZEN |
 | Dispersion/correlation | leave-one-out 20-session co-movement and 5-session directional synchronization frozen | causal percentiles and robust z | governed-view contrasts | TWO_ROLES_FROZEN_PANIC_PROCESS_UNTESTED |
 | Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
-| Five-day intraday trajectory | exact Day -5..Day -1 OLS slopes with endpoint/3-day neighbors | causal coordinates constructed but primary gates fail | governed-view contrasts constructed | EXACT_SLOPE_REPRESENTATIONS_NOT_FROZEN |
+| Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_ROLE_FROZEN_USEFULNESS_AND_EXTERNAL_REDUNDANCY_UNTESTED |
 | Leadership/style | concentration, persistence, diffusion, failure | causal history | industry/index contrasts | CONSTRUCTION_PENDING |
 | Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
@@ -134,3 +134,16 @@ onsets per group in one year; upside has 0-8 in at most two years. Strict onset,
 state overlap, dwell/relief, and activity support fail. The engine therefore
 retains the signed and synchronization primitives separately and emits no
 directional interaction, onset, panic, or activity-modified process.
+
+## MKT-MIN-PATH-002 boundary
+
+The corrected 15:30-available exact retry freezes one of 36 non-slope roles:
+minute-realized-volatility ordinal progression. It is stable across two broad
+ordinal definitions and p40/p60 aggregation, portable across denominators and
+view/year cells, and distinct from its same-session minute-volatility level.
+
+No selling-pressure, demand, VWAP, path, or volume trajectory freezes, and no
+signed reversal or curvature freezes. The accepted ordinal role is a path-shape
+coordinate only. External redundancy with daily volatility remains to be tested
+before it can be treated as a distinct state mechanism; usefulness remains
+untested regardless of that result.

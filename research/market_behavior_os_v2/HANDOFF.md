@@ -1,6 +1,6 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-08-30.
+Updated 2026-08-31.
 
 ## V2.1 resume identity
 
@@ -171,11 +171,6 @@ facts, preserve absolute/PIT/relative coordinates, and test redundancy against
 breadth/volatility. Do not combine it with stress or read outcomes until its own
 representations freeze.
 
-## Human decision required?
-
-No. Continue with MKT-DSTRESS-001 map-first outcome-blind directional-process
-research. CY-011 remains unopened.
-
 MKT-RISK-001 was frozen before construction under spec `7b5303c3...`. Its map
 keeps positive and negative participation/tails separate, uses registered
 5%/10%/20% limit geometry, and binds only accepted breadth/volatility roles as
@@ -226,5 +221,27 @@ The MKT-MIN-PATH-001 input audit invalidated that preregistration before
 construction: derived trajectories are available at 15:30, not 15:00. The
 latest included minute is still the completed 15:00 bar. MKT-MIN-PATH-002 is
 frozen under control spec `161b4bb7...`, inheriting scientific design
-`bf7e05dc...` unchanged and correcting only availability/output identity. Run
-the exact retry; no earlier timestamp or scientific change is allowed.
+`bf7e05dc...` unchanged and correcting only availability/output identity.
+
+MKT-MIN-PATH-002 completed on 11,624 group/date rows. Exactly one of 36 roles
+freezes: `minute_realized_volatility__ordinal_progression`. It passes complete
+raw/PIT/relative coverage, definition-neighbor rhos 0.779/0.711,
+aggregation-neighbor rhos 0.889/0.868, denominator rho 0.968, and every
+view/year nondegeneracy gate. Its median same-session-level rho is only 0.246.
+Every signed-reversal and curvature role fails, as do the other eleven ordinal
+progressions. No failed descriptor/operator may be rescued.
+
+Two runs are byte-identical: panel `d0a396a9...`, result `a21b56ea...`, report
+`f6ef7331...`; four targeted tests pass. No raw minute row, OLS/endpoint/
+precomputed shape, outcome, strategy field, or CY-011 was read. This establishes
+one stable five-day path representation only—not contraction/expansion,
+supply/demand, prediction, habitat fitness, or a trading signal.
+
+SYNTH-MKT-011 selects MKT-MIN-VOL-GEO-001. Freeze an outcome-blind geometry
+study of the sole accepted path role against accepted same-session minute and
+daily volatility coordinates. The purpose is redundancy/mechanism separation
+before usefulness. Do not add any failed path role or read outcomes.
+
+## Human decision required?
+
+No. Continue map-first with MKT-MIN-VOL-GEO-001. CY-011 remains unopened.

@@ -30,6 +30,8 @@
 | HAB-CHX-001 MFE opportunity conversion | OPPORTUNITY_WITHOUT_CONVERSION: B associates with MFE>=20%, but B-given-A and conversion20 gates fail | Do not equate excursion opportunity with harvested edge or tune a discovery cutoff |
 | MKT-SHOCK-001 0.90 onset / 0.50 reset episode | REPRESENTATION_NOT_FROZEN: zero or one onset/group, strict onset match zero, unstable state overlap, undefined dwell/relief, and zero dry-up observations | Do not lower the 0.90 threshold, raise the reset, or substitute the permissive neighbor; require a structurally different event process |
 | MKT-DSTRESS-001 weakest-link directional scores and 0.80/0.50 processes | REPRESENTATION_NOT_FROZEN: arithmetic-shape rho 0.691 downside/0.646 upside; side onsets sparse and strict/state/dwell/activity gates fail | Do not substitute geometric aggregation, lower thresholds, or retain a favorable view/side; broader directional-process family requires different structure |
+| MKT-MIN-PATH-001 15:00 derived-trajectory availability | INVALID_BEFORE_CONSTRUCTION: source artifact is available at 15:30 after the completed 15:00 bar | Use the exact MKT-MIN-PATH-002 semantic retry only; never backdate availability |
+| MKT-MIN-PATH-002 non-volatility progressions plus every signed reversal and curvature | REPRESENTATION_NOT_FROZEN: 35 of 36 roles fail fixed definition/aggregation gates | Do not select a favorable descriptor/operator or combine failed roles; require a structurally different preregistered family |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.
