@@ -806,3 +806,49 @@ concentration after economically matched broad risk/concentration controls.
 Define response semantics, current-state controls, blocks, overlap, effect/sign
 gates, and no-rescue rules before shifting future values. Do not read returns,
 strategy outcomes, failed roles, post-2023 data, or CY-011.
+
+## SYNTH-MKT-019 — after residual-leadership temporal dynamics
+
+### What was learned?
+
+Neither distinct within-industry residual shape forms a robust nonoverlapping
+state process. Tail-balance self-persistence is barely 0.102 raw in block A,
+falls to 0.055 in block B, and is negative in both PIT blocks. Residual-
+concentration persistence is strong only in block A; raw falls 0.234 to 0.061
+and PIT reverses 0.309 to -0.020. Both directional cross-edges reverse from
+positive block A to materially negative block B. Zero of four exact edges
+passes, so no self-process or coupled process freezes.
+
+### What market behavior are we still not studying?
+
+Continuous daily-volatility contraction/expansion transitions conditional on
+accepted slow direction and price discovery remain unstudied, despite four
+stable volatility roles. Size/style leadership, objective support/acceptance,
+accumulation/distribution, cross-asset state, and portable multi-strategy
+habitats remain open. Industry same-session geometry is represented, but its
+tested future processes are now negative.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Rotation fails delayed falsification and residual-tail self/cross dynamics
+all fail. Stable industry coordinates remain descriptive but provide no future
+direction, persistence, trigger, execution, exit, capacity, or habitat evidence.
+Industry rotation and residual-leadership archetypes are downgraded.
+
+### Parallel-track awareness
+
+- **Market research:** diversify from the exhausted industry temporal frontier
+  to daily-volatility transition geometry.
+- **Existing-strategy archaeology:** no strategy outcome or return was read;
+  seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; volatility-transition ideas
+  remain hypotheses until state dynamics exist.
+
+### Research Director decision
+
+`DIVERSIFY` to MKT-VOL-TRANS-001 map-first. Build a continuous, outcome-blind
+contraction/expansion transition architecture from accepted daily-volatility
+roles and test whether transition behavior differs across defensible direction
+and discovery coordinates. Freeze representation, controls, temporal semantics,
+interaction geometry, blocks, and no-rescue gates before future values. Do not
+construct a trading rule or read returns, strategy outcomes, or CY-011.

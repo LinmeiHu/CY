@@ -2,8 +2,9 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | ACTIVE_MKT_INDRS_TAIL_DYN_001_FROZEN_EXECUTION |
-| 2 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
+| 1 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | High | High | Four volatility roles and direction/discovery freeze | High | Medium | ACTIVE_MKT_VOL_TRANS_001_MAP_FIRST |
+| 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
+| 3 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -76,3 +77,9 @@ MKT-INDRS-TAIL-DYN-001 is frozen under spec `56a83827...` before shifting any
 future value. Its natural t+20 horizon avoids overlap between the current and
 future 20-session return intervals. Four edges, response-specific controls,
 reused-time labels, and no-rescue process classifications are fixed.
+
+MKT-INDRS-TAIL-DYN-001 finds zero of four t+20 edges. Both self-edges fail
+cross-block/PIT gates and both cross-edges reverse raw sign. Further horizon or
+coordinate rescue is closed. The active frontier diversifies to continuous
+daily-volatility transition behavior conditional on already-defensible
+direction and discovery breadth, without forming a trading rule.

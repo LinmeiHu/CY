@@ -301,3 +301,20 @@
   Immediate adjacent clustering remains descriptive, but no durable rotation
   process, future return, selection alpha, habitat, timing, or strategy
   archetype is established. No further horizon/definition rescue is allowed.
+
+## MKT-H-019 — nonoverlapping residual-leadership tail dynamics
+
+- Status: `ZERO_OF_FOUR_EXACT_EDGES_PASS_NO_PROCESS`.
+- Tail-balance self-edge: raw partial rho is 0.102 in reused block A and 0.055
+  in block B, but causal PIT is -0.049/-0.058 and the block-A phase estimate is
+  0.011. No recurring tail-balance process freezes.
+- Residual-concentration self-edge: raw 0.234/0.061 and PIT 0.309/-0.020. Its
+  phase and relative estimates are favorable, but the all-coordinate and
+  cross-block gates reject a process rather than selecting them.
+- Cross-edges: concentration->future tail balance changes raw sign from 0.186
+  to -0.265; tail balance->future concentration changes from 0.109 to -0.218.
+  Relative signs also conflict across blocks. No coupled process freezes.
+- Boundary: stable, distinct same-session representations remain valid. This
+  rejects only the exact nonoverlapping temporal graph; it establishes no
+  future return, named-leader persistence, selection alpha, habitat, timing, or
+  strategy archetype.

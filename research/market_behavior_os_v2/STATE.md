@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-TAIL-DYN-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: temporal meaning of distinct leave-one-out stock/industry residual tail balance and concentration
-- `SUPPORTING_FRONTIER`: frozen industry/relative-strength panel and accepted broad risk/concentration controls
+- `CURRENT_PHASE`: `MKT-VOL-TRANS-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent daily volatility contraction/expansion transition architecture conditional on accepted direction and discovery breadth
+- `SUPPORTING_FRONTIER`: four frozen daily-volatility roles plus accepted direction/discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -516,3 +516,18 @@ independently; coupling requires both cross-edges. No failed edge can be rescued
 by another edge, coordinate, block, subset, or the rejected rotation evidence.
 Execute without returns, named-security futures, strategies, post-2023 data, or
 CY-011.
+
+MKT-INDRS-TAIL-DYN-001 is complete with zero of four exact edges. Tail-balance
+self-persistence is raw 0.102/0.055 but PIT reverses to -0.049/-0.058 and the
+first phase estimate is 0.011. Residual-concentration self-persistence decays
+from raw 0.234 to 0.061 and PIT from 0.309 to -0.020. Both cross-edges reverse
+from positive raw block A (0.186/0.109) to negative block B (-0.265/-0.218),
+with incompatible relative-coordinate signs.
+
+Two runs are byte-identical: panel `4d4fc15a...`, result `2e24894a...`, report
+`965e17a0...`; six focused tests pass. The same-session residual representations
+remain stable and distinct, but no nonoverlapping tail-balance process,
+concentration process, or coupled process freezes. SYNTH-MKT-019 finds marginal
+information in further industry-window rescue too low and pivots to the
+strategy-independent daily-volatility transition frontier. No S1-S12 STOP is
+active.

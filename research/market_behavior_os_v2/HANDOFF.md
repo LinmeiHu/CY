@@ -503,3 +503,19 @@ Both time blocks are reused pre-2024 exploratory evidence, not untouched
 confirmation. Preserve the 20-session phase stride, all coordinate/support/
 sign gates, and the no-rescue rule. Do not read returns, future security
 identities, strategy fields, rejected roles/edges, post-2023 data, or CY-011.
+
+## MKT-INDRS-TAIL-DYN-001 result and frontier pivot
+
+Zero of four exact t+20 edges passes. Tail-balance persistence is raw
+0.102/0.055 but PIT -0.049/-0.058. Residual-concentration persistence decays
+from raw 0.234 to 0.061 and PIT 0.309 to -0.020. Concentration->tail balance
+reverses 0.186 to -0.265; tail balance->concentration reverses 0.109 to -0.218.
+No self-process or coupled process freezes.
+
+Two runs are byte-identical: panel `4d4fc15a...`, result `2e24894a...`, report
+`965e17a0...`. Preserve the stable same-session coordinates, but do not tune the
+t+20 horizon, choose a favorable coordinate/block, or form an industry/relative-
+strength archetype. Next map MKT-VOL-TRANS-001: continuous daily-volatility
+contraction/expansion transition architecture conditional on accepted direction
+and discovery breadth, outcome-blind and before any strategy study. CY-011
+remains locked.
