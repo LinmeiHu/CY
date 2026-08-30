@@ -978,3 +978,18 @@ selected from CY-006 coordinate eligibility only, before minute behavior is
 read. It must support a falsifiable repeated-test/recovery dynamic without using
 the current 29-sequence shortfall, near-touch bands, favorable dates, strategy
 events, or outcome selection.
+
+MKT-SUPPORT-DYN-DATA-001 is frozen under SHA-256
+`cb6559ee585eef7fc147c1036bbd0cc81d4a8634b8d2aca339cfa10358a9b02d`.
+Its 48 five-session blocks are selected solely by a March--November calendar
+quantile operator; ten complete CY-006-eligible symbols per block/view are then
+hash-selected. The immutable sample has 1,920 sequences, 9,600 cohort rows,
+9,575 unique security-sessions, minimum 625 candidates per cell, and 38 selected
+supported-action sessions before minute access.
+
+Sample adequacy requires at least 120 repeated-tested sequences, 50 per fixed
+temporal block and 15 per year; at least 100 must have two defined recovered
+days, including 40 per block. Count only—no process estimate is allowed. The
+planned 2,307,575 minute rows must stay below 20 GiB compressed reads, 3 GiB RSS,
+8 GiB system headroom, 100 MiB durable output, and ten minutes. Execute twice;
+no date/symbol/level/auction/near-touch/support-floor rescue is permitted.

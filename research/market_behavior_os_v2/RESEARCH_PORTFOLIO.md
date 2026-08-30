@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Recovery speed and recovery-volume intensity survive external geometry, but the temporal sample is inadequate | Freeze a larger calendar-distributed eligibility-only sample contract before minute recovery analysis |
+| EXPLORE | 35% | Recovery speed and recovery-volume intensity survive external geometry; larger sample is frozen outcome-blind | Execute MKT-SUPPORT-DYN-DATA-001 count-only adequacy audit twice |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | Two recovery observations could diversify pullback/reversal mechanisms only if a repeated process survives | Keep archetypes inactive until temporal recurrence/failure evidence |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

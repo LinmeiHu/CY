@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-033_COMPLETE_MKT-SUPPORT-DYN-DATA-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -981,6 +981,22 @@ CY-011 was read. The survivors remain sparse completed-session observations,
 not support defense, temporal recurrence, prediction, timing, or usefulness.
 SYNTH-MKT-033 selects a separately frozen calendar-distributed, eligibility-only
 larger sample contract before any repeated-test/recovery dynamic is estimated.
+
+The objective-support temporal-sample map and MKT-SUPPORT-DYN-DATA-001 spec
+`cb6559ee...` are now frozen before new QD-004 access. Each year contributes
+eight calendar-only nonoverlapping March--November five-session blocks. Ten
+CY-006-coordinate-eligible symbols are hash-selected for every block/view,
+producing exactly 1,920 sequences, 9,600 cohort rows, and 9,575 unique security-
+sessions. Daily-only feasibility gives at least 625 candidates in every cell and
+38 naturally selected supported-action sessions.
+
+The later-map gate is fixed at at least 120 sequences with two tested days (50
+per temporal block, 15 per year) and at least 100 sequences with two defined
+recovered days (40 per block). These are count-only gates; no temporal estimate
+may be inspected inside the data experiment. Planned raw scale is 2,307,575
+minute rows, with 20 GiB compressed-read, 3 GiB RSS, 8 GiB memory-headroom,
+100 MiB durable-output, and ten-minute wall ceilings. Execute twice without
+date/symbol replacement, near-touch rescue, outcome access, or CY-011.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

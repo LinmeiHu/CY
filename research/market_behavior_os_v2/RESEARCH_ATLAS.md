@@ -103,6 +103,8 @@
 | `experiments/MKT-SUPPORT-GEO-001_spec.json` | Frozen raw/relative/conditional-block geometry before control construction |
 | `scripts/run_mkt_support_geo_001.py` | Content-verified fixed-control geometry and deterministic output construction |
 | `reports/MKT-SUPPORT-GEO-001_geometry.md` | Two distinct conditional recovery observations and four externally compressed roles |
+| `OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT.md` | Frozen calendar-only larger-sample, count-adequacy, PIT, and resource semantics |
+| `experiments/MKT-SUPPORT-DYN-DATA-001_spec.json` | Frozen 48-block/1,920-sequence sample contract before minute access |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

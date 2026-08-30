@@ -21,4 +21,7 @@ MKT-SUPPORT-GEO-001 retains two externally distinct conditional recovery
 observations without reading outcomes. The 29-sequence conditional-trajectory
 shortfall is an ordinary support limitation, not a STOP. Continue map-first with
 a separately frozen larger eligibility-only sample before temporal research.
-Reinstate a STOP only if an S1-S12 boundary is encountered.
+MKT-SUPPORT-DYN-DATA-001 is now frozen at a bounded 2.31-million-row minute
+scale with conservative resource ceilings and ample host headroom. Execute it
+fail-closed; a failed support floor remains an ordinary invalid/unsupported
+experiment unless an S1-S12 condition is encountered.

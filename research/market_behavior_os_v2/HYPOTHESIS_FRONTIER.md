@@ -261,3 +261,9 @@ sequences. Freeze MKT-SUPPORT-DYN-DATA-001 map-first: calendar-distributed date
 blocks and symbols must be selected from calendar/CY-006 eligibility alone,
 with fixed scale, resource, action, and support gates before QD-004 behavior is
 read. Only then may repeated-test recovery dynamics be represented.
+
+MKT-SUPPORT-DYN-DATA-001 is frozen under spec `cb6559ee...`. It fixes eight
+calendar-distributed nonoverlapping blocks per year, ten daily-eligible symbols
+per block/view, exact identities, count-only adequacy floors, and a bounded
+2.31-million-row resource envelope. Execute the data audit twice. No recovery
+slope, process direction, future return, or strategy field may be estimated.

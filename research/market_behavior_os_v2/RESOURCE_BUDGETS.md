@@ -40,6 +40,16 @@ not the metadata estimate alone, must approve required scale.
 No stage may proceed after semantic disagreement, nondeterminism, resource
 ceiling breach, or a projection above the full-scale envelope.
 
+## MKT-SUPPORT-DYN-DATA-001 bounded sample envelope
+
+- 1,920 sequences, 9,600 cohort rows, and 9,575 unique security-sessions.
+- Exactly 2,307,575 planned raw minute rows; annual date/symbol/column pruning.
+- One process; 20 GiB compressed-read, 3 GiB RSS, 1 GiB temporary-disk,
+  100 MiB durable-output, and ten-minute wall ceilings.
+- At least 8 GiB system-memory headroom between annual reads; no raw-minute
+  materialization or duplicate raw dataset.
+- Prefreeze host check: 349 GiB free disk and more than 8 GiB free memory.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in
