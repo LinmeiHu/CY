@@ -993,3 +993,17 @@ days, including 40 per block. Count only—no process estimate is allowed. The
 planned 2,307,575 minute rows must stay below 20 GiB compressed reads, 3 GiB RSS,
 8 GiB system headroom, 100 MiB durable output, and ten minutes. Execute twice;
 no date/symbol/level/auction/near-touch/support-floor rescue is permitted.
+
+MKT-SUPPORT-DYN-DATA-001 stops before its first newly selected QD-004 row. The
+exact daily-coordinate build peaks at 11,135,991,808 bytes RSS with only
+7,738,458,112 bytes headroom, violating 3 GiB/8 GiB. Exact SQL under a 2-GiB
+DuckDB memory limit peaks at 2,698,985,472 bytes and preserves
+12,885,016,576 bytes headroom, but its 8,787,951,616-byte live spill violates
+001's 1-GiB temp cap. No 001 output or minute-derived count exists.
+
+MKT-SUPPORT-DYN-DATA-002 is frozen under SHA-256
+`2bcf7cbff24fd3be5a405a4051af942de396c65445296a5849acd9a77587cfc9`.
+It inherits every 001 scientific identity and changes only the exact-SQL engine
+to one thread/2-GiB memory plus a 10-GiB isolated disposable-spill cap. Spill
+must be removed before QD-004 access. Execute twice; 3-GiB RSS, 8-GiB headroom,
+20-GiB compressed read, 100-MiB durable output, and ten-minute limits remain.

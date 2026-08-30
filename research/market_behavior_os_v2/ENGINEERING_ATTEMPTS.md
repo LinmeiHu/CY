@@ -245,6 +245,20 @@ lexicographically first *unused* audit identity in the frozen category order. A
 regression check requires five categories and five distinct identities. No
 scientific value, threshold, sample row, or representation decision changes.
 
+## MKT-SUPPORT-DYN-DATA-001 — invalid daily-coordinate resource envelope
+
+The exact six-year DuckDB daily-coordinate construction completed sample and
+target selection but reached 11,135,991,808 bytes peak RSS and only
+7,738,458,112 bytes live system headroom. The frozen 3-GiB RSS and 8-GiB
+headroom guards stopped execution before the first newly selected QD-004 row.
+
+An exact-SQL 2-GiB-memory-limit measurement reduced peak RSS to 2,698,985,472
+bytes and preserved 12,885,016,576 bytes headroom, but required 8,787,951,616
+bytes live disposable spill, above 001's 1-GiB temporary ceiling. No 001 output
+or minute-derived count is accepted. The separately frozen 002 retry changes
+only the disposable spill ceiling and engine configuration; all science remains
+identical.
+
 ## MKT-STYLE-001 — invalid cumulative size-rank denominator
 
 The first implementation used an ordered window for both row number and count.

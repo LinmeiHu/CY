@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-001_FROZEN_EXECUTION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-002_FROZEN_EXACT_RESOURCE_RETRY_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -997,6 +997,19 @@ may be inspected inside the data experiment. Planned raw scale is 2,307,575
 minute rows, with 20 GiB compressed-read, 3 GiB RSS, 8 GiB memory-headroom,
 100 MiB durable-output, and ten-minute wall ceilings. Execute twice without
 date/symbol replacement, near-touch rescue, outcome access, or CY-011.
+
+MKT-SUPPORT-DYN-DATA-001 is invalid before new minute access under its resource
+contract. Exact daily construction reached 11,135,991,808 bytes peak RSS and
+left 7,738,458,112 bytes memory available, violating the 3-GiB RSS and 8-GiB
+headroom rules. A 2-GiB-memory-limit same-SQL measurement passes RSS/headroom at
+2,698,985,472/12,885,016,576 bytes but needs 8,787,951,616 bytes disposable
+spill, above 001's 1-GiB cap. No minute row or adequacy count is accepted.
+
+MKT-SUPPORT-DYN-DATA-002 is frozen under SHA-256 `2bcf7cbf...` as an exact
+scientific retry. It changes only DuckDB execution to one thread/2-GiB memory
+and permits at most 10 GiB isolated disposable spill, removed before minute
+access. All sample, coordinate, source-role, adequacy, outcome, RSS, headroom,
+read, durable-output, and wall-time gates remain unchanged.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

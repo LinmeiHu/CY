@@ -267,3 +267,9 @@ calendar-distributed nonoverlapping blocks per year, ten daily-eligible symbols
 per block/view, exact identities, count-only adequacy floors, and a bounded
 2.31-million-row resource envelope. Execute the data audit twice. No recovery
 slope, process direction, future return, or strategy field may be estimated.
+
+MKT-SUPPORT-DYN-DATA-001 fails its resource guard before minute access. The
+uncapped daily build exceeds RSS/headroom; exact 2-GiB-memory SQL exceeds only
+the 1-GiB spill cap. MKT-SUPPORT-DYN-DATA-002 is frozen under `2bcf7cbf...` and
+changes only disposable spill to a measured-safe 10-GiB cap. The active action
+is this exact retry, not a smaller sample or altered support floor.

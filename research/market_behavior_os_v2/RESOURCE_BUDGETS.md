@@ -50,6 +50,13 @@ ceiling breach, or a projection above the full-scale envelope.
   materialization or duplicate raw dataset.
 - Prefreeze host check: 349 GiB free disk and more than 8 GiB free memory.
 
+MKT-SUPPORT-DYN-DATA-001 is invalid before minute access: uncapped daily SQL
+peaks at 11,135,991,808 bytes RSS; exact 2-GiB-memory SQL peaks at
+2,698,985,472 bytes but needs 8,787,951,616 bytes spill. The 002 retry keeps all
+ceilings except disposable temporary disk, which is frozen at 10 GiB in an
+isolated directory removed before minute reads. This remains below 3% of the
+349-GiB prefreeze free disk and preserves the 25% disk-headroom rule.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

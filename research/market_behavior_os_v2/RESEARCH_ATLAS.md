@@ -105,6 +105,8 @@
 | `reports/MKT-SUPPORT-GEO-001_geometry.md` | Two distinct conditional recovery observations and four externally compressed roles |
 | `OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT.md` | Frozen calendar-only larger-sample, count-adequacy, PIT, and resource semantics |
 | `experiments/MKT-SUPPORT-DYN-DATA-001_spec.json` | Frozen 48-block/1,920-sequence sample contract before minute access |
+| `OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT_V2.md` | Exact scientific resource retry after measured RSS/spill failure |
+| `experiments/MKT-SUPPORT-DYN-DATA-002_spec.json` | Frozen 2-GiB-memory/10-GiB-spill execution correction |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

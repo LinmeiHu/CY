@@ -21,7 +21,8 @@ MKT-SUPPORT-GEO-001 retains two externally distinct conditional recovery
 observations without reading outcomes. The 29-sequence conditional-trajectory
 shortfall is an ordinary support limitation, not a STOP. Continue map-first with
 a separately frozen larger eligibility-only sample before temporal research.
-MKT-SUPPORT-DYN-DATA-001 is now frozen at a bounded 2.31-million-row minute
-scale with conservative resource ceilings and ample host headroom. Execute it
-fail-closed; a failed support floor remains an ordinary invalid/unsupported
-experiment unless an S1-S12 condition is encountered.
+MKT-SUPPORT-DYN-DATA-001 fails its resource guard before minute access, but a
+same-SQL 2-GiB-memory execution proves a bounded correction: 2.70 GB peak RSS,
+12.89 GB available memory, and 8.79 GB disposable spill against 349 GiB free
+disk. MKT-SUPPORT-DYN-DATA-002 is separately frozen with a 10-GiB spill cap and
+unchanged science. This is an ordinary exact retry, not an active S1--S12 STOP.
