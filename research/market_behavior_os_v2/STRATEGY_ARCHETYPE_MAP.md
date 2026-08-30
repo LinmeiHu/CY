@@ -12,7 +12,7 @@ exist to justify a family record.
 | Pullback continuation | controlled retracement exhausts supply within persistent trend | recovery/reacceleration trigger; support failure exit | coherent hypothesis only | SEARCH_SPACE |
 | Relative-strength leadership | persistent relative demand diffuses or reconcentrates in leaders | renewed leadership trigger; relative failure exit | RS fragments; no mechanism closure | SEARCH_SPACE |
 | Mean reversion | displacement exceeds persistent information and normalizes | reversal confirmation; normalization exit | untested | SEARCH_SPACE |
-| Oversold/panic reversal | correlation/liquidity shock exhausts forced selling | intraday recovery trigger; renewed low/liquidity failure exit | continuous direction-neutral stress only; exact episode fails and downside direction absent | SEARCH_SPACE |
+| Oversold/panic reversal | correlation/liquidity shock exhausts forced selling | intraday recovery trigger; renewed low/liquidity failure exit | downside extreme participation freezes separately; directional stress process/onset and recovery remain unbuilt | SEARCH_SPACE |
 | Failed-breakout reversal | rejected acceptance traps late demand | rejection trigger; reclaimed breakout invalidates | completed-path topology only | SEARCH_SPACE |
 | Support defense | repeated tests show decreasing penetration and faster recovery | defense confirmation; decisive loss exit | exact old reps failed; family open | SEARCH_SPACE |
 | Industry rotation | leadership migrates with breadth/diffusion confirmation | relative transition trigger; leadership failure exit | one rotation rep rejected | SEARCH_SPACE |

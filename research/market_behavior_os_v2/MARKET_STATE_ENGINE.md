@@ -13,7 +13,7 @@ return. Initial dimensions are:
 | Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
 | Five-day intraday trajectory | exact Day -5..Day -1 OLS slopes with endpoint/3-day neighbors | causal coordinates constructed but primary gates fail | governed-view contrasts constructed | EXACT_SLOPE_REPRESENTATIONS_NOT_FROZEN |
 | Leadership/style | concentration, persistence, diffusion, failure | causal history | industry/index contrasts | CONSTRUCTION_PENDING |
-| Risk appetite | observable tail participation and speculative demand proxies | causal history | segment contrasts | REPRESENTATION_PENDING |
+| Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
 
 ## Construction gates
@@ -103,3 +103,20 @@ payoff. Direction's payoff association is more-negative MAE; discovery's is
 MFE>=20% opportunity without strict incremental or conversion support. Final
 return, right-tail, false-breakout, and severe-loss primaries fail. Discrete
 habitats remain unfrozen.
+
+## MKT-RISK-001 boundary
+
+All eleven preregistered same-session signed representations pass fixed
+definition, denominator, coverage, year, PIT, and relative-coordinate gates.
+The registered-limit coordinate is exact on 5,035,742 of 5,036,345 causal core
+rows. Six hundred three out-of-bound rows fail closed; one CHINEXT/ALL_STATUS
+group/date falls below 99% and is missing rather than repaired.
+
+Outcome-blind compression retains three roles: cross-sectional central
+direction, upside extreme participation, and downside extreme participation.
+Ordinary signed participation, tail depth, same-day mass concentration, and
+industry diffusion are central-direction manifestations at the frozen 0.85
+edge. Tail balance is stable but deterministically equals upside minus downside
+extreme participation, so it adds no independent mechanism. No role is redundant
+with frozen breadth or volatility. This is signed state representation, not a
+panic process, habitat, forecast, or trading signal.

@@ -20,7 +20,8 @@ MKT-H-003 correlation/liquidity panic construction
   -> liquidity change horizon-unstable
   -> MKT-H-008 synchronization and joint stress scores freeze
   -> exact 0.90/0.50 episode onset/dwell/relief/dry-up fails sparse/stability gates
-  -> direction still absent; panic interaction/recovery remains unformed
+  -> MKT-H-009 supplies separate same-session central/upside/downside direction
+  -> direction x synchronization process remains unformed
   -> if a separately frozen process is stable and distinct from volatility
        -> panic-process archaeology
        -> only after mechanism evidence: reversal archetype decision
@@ -46,6 +47,14 @@ MKT-H-007 market-wide five-day minute state
   -> selloff-duration and auction-gap levels fail
   -> all exact five-day OLS trajectories fail shape-neighbor stability
   -> no minute mechanism/usefulness claim
+
+MKT-H-009 directional-tail/risk-appetite construction
+  -> all eleven exact representations pass their own gates
+  -> central direction absorbs ordinary participation/depth/concentration/diffusion
+  -> upside and downside extreme participation remain distinct primitives
+  -> tail balance is deterministic, not a fourth mechanism
+  -> no breadth/volatility redundancy
+  -> directional synchronization/process geometry is now permitted outcome-blind
 
 HAB-H-001 CHINEXT direction/discovery association
   -> A and B opportunity-density associations pass

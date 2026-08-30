@@ -117,7 +117,7 @@
 
 ## MKT-H-009 — directional-tail and risk-appetite state
 
-- Status: `FROZEN_BEFORE_REPRESENTATION_CONSTRUCTION`.
+- Status: `REPRESENTATION_SUPPORTED_THREE_NONREDUNDANT_ROLES`.
 - Claim: same-session positive/negative participation, signed tail depth,
   limit-relative extreme participation, directional industry diffusion, tail
   concentration, and asymmetry can be represented independently of strategy
@@ -127,3 +127,12 @@
   coordinates, and frozen breadth/volatility redundancy controls.
 - Boundary: no panic, forecast, habitat, interaction, or strategy claim; no
   MKT-SHOCK-001 score enters construction.
+- Result: all 11 exact primaries pass coverage, fixed neighbors, denominator,
+  year, PIT, and relative-coordinate gates. Central direction absorbs ordinary
+  participation, tail depth, concentration, and industry diffusion at the 0.85
+  edge. Upside and downside extreme participation remain separate from central
+  direction and from each other. Tail balance is stable but is the deterministic
+  difference of those two primitives, so it is not a fourth mechanism.
+- External result: no accepted or stable role reaches 0.85 median absolute
+  Spearman with frozen breadth discovery/leadership or volatility controls; the
+  largest value is 0.664.

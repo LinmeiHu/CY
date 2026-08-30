@@ -313,3 +313,56 @@ using registered causal return, limit, industry, activity, and view facts. Keep
 positive and negative tails separate, preserve absolute/PIT/relative views,
 test neighboring definitions and redundancy with breadth/volatility, and do not
 combine the result with stress or read outcomes until its own roles freeze.
+
+## SYNTH-MKT-009 — after directional-tail/risk-appetite representation
+
+### What was learned?
+
+MKT-RISK-001 constructs a registered-limit-relative coordinate on 5,035,742 of
+5,036,345 causal core rows. Six hundred three closes outside their registered
+limit geometry fail closed. Only `CHINEXT_BOARD / ALL_STATUS / 2021-05-17`
+falls below the unchanged 99% group/date gate and is marked missing. The first
+over-strict whole-run abort is invalid; no market-rule fact or gate was changed.
+
+All eleven preregistered roles pass fixed neighbors, denominator sensitivity,
+coverage, cross-year nondegeneracy, causal-PIT, and relative-coordinate gates.
+Compression is severe: central signed direction absorbs ordinary positive/
+negative participation, tail depth, same-day tail concentration, and industry
+diffusion at absolute Spearman 0.85. Upside and downside extreme participation
+remain separately nonredundant. Tail balance is stable but is exactly their
+difference and therefore is not a fourth mechanism. No role is externally
+redundant with frozen breadth or volatility; the largest median absolute rho is
+0.664.
+
+### What market behavior are we still not studying?
+
+We still do not know whether direction-neutral synchronization represents a
+recurring downside process, an upside speculative process, or neither. No
+portable directional onset, dwell, transition, relief, or activity-modified
+process exists. Non-slope intraday trajectories, objective support/acceptance,
+accumulation/distribution falsification, and multi-strategy habitat portability
+also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Separate extreme tails are state descriptors. They provide neither onset,
+recovery, executable confirmation, payoff asymmetry, exit, nor capacity. The
+oversold/panic-reversal and speculative-momentum archetypes remain search-space
+hypotheses only.
+
+### Parallel-track awareness
+
+- **Market research:** signed primitives now permit directional process research
+  without outcomes.
+- **Existing-strategy archaeology:** no new CHINEXT or SuperMind outcome/trade
+  field was read; no seed-strategy rule changes.
+- **Strategy invention:** no family crosses the preliminary-mechanism threshold.
+
+### Research Director decision
+
+`EXPLORE` MKT-DSTRESS-001 and `FALSIFY` any attempt to relabel stable signed
+levels as panic. Build and freeze an outcome-blind Directional Synchronization/
+Stress Process Map first. Use only frozen MKT-RISK-001 and MKT-SHOCK-001
+coordinates, keep upside/downside separate, retain activity as an explicit
+modifier, test broad neighboring process definitions and portability, and do
+not rescue the rejected all-three 0.90/0.50 episode or read outcomes.

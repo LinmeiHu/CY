@@ -122,3 +122,18 @@ Pandas stopped at concatenation and no result was accepted. The projection now
 selects `entry_signal_date` before renaming it. A regression test asserts unique
 panel columns and the unchanged 1,337 + 819 + 280 row decomposition. No input,
 sample, endpoint, gate, or estimate changed.
+
+## MKT-RISK-001-A — invalid over-strict runner abort
+
+The first frozen run constructed the daily panel in memory and then stopped the
+entire experiment because `CHINEXT_BOARD / ALL_STATUS / 2021-05-17` retained
+827 of 838 coordinates, or 0.9868735 below the frozen 0.99 group/date gate.
+The first invalid rows were 11 ST securities whose registered 5% limit geometry
+did not enclose their completed close. No source fact was repaired, no tolerance
+was introduced, and no result artifact was accepted.
+
+The scientific contract already says an affected representation may be marked
+missing on inadequate coordinate coverage. The corrected runner therefore
+keeps the 0.99 threshold unchanged, marks that exact group/date `view_valid=false`,
+and records all 603 core rows outside their registered limits. It does not alter
+CY-006 market-rule facts. All other eligible group/dates pass the frozen gate.

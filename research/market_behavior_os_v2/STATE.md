@@ -8,9 +8,9 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-RISK-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent directional tail/risk-appetite representation
-- `SUPPORTING_FRONTIER`: frozen direction-neutral stress scores and failed exact episode
+- `CURRENT_PHASE`: `SYNTH-MKT-009_COMPLETE_MKT-DSTRESS-001_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: outcome-blind directional synchronization/stress process geometry
+- `SUPPORTING_FRONTIER`: frozen central/upside/downside signed state plus synchronization pressure
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -131,6 +131,16 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   one onset per group, strict onset match is zero, stress/relief states are
   unstable, dwell/relief neighbor correlations are unavailable, and no
   activity-dry-up observation occurs. No onset/dwell/relief/impairment freezes.
+- MKT-RISK-001 freezes three nonredundant same-session roles: central signed
+  limit utilization and separate upside/downside extreme participation. All 11
+  exact primaries pass their own gates, but ordinary participation, tail depth,
+  same-day concentration, and industry diffusion are central-direction
+  manifestations. Tail balance is a deterministic composite, not a fourth
+  mechanism. No role is redundant with frozen breadth/volatility.
+- Of 5,036,345 causal core rows, 603 completed closes fall outside their
+  registered limit geometry and fail closed. Only CHINEXT_BOARD/ALL_STATUS on
+  2021-05-17 falls below the fixed 99% cell gate and is marked missing. No limit
+  fact is repaired and no threshold is relaxed.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
@@ -183,6 +193,11 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   and frozen spec `9fb559c5...`. Two runs are byte-identical: panel
   `bba55a5a...`, result `29eb55a5...`, report `9b51ec9c...`. It reads no raw
   liquidity-change field, future return, strategy field, or CY-011.
+- MKT-RISK-001 binds frozen spec `7b5303c3...`, breadth panel `60ca6bf5...`,
+  volatility panel `f7361284...`, and the same six CY-006 partitions. Two final
+  runs are byte-identical: panel `fe7436e...`, result `4fdfd600...`, report
+  `b69b2b2e...`. It reads no stress score, strategy field, future return, or
+  CY-011.
 
 ## Current frontier
 
@@ -196,10 +211,15 @@ diffusion, and leadership concentration where registered data permits; preserve
 absolute/PIT/relative coordinates; test neighboring definitions and redundancy
 with breadth/volatility; and read no future return or strategy outcome.
 
-The MKT-RISK-001 Representation Map, data contract, symmetric limit-relative
-definitions, representation gates, and frozen external breadth/volatility
-controls are preregistered under spec `7b5303c3...`. Construction has not yet
-run. The security coordinate uses registered date-effective upward/downward
-price-limit distance and fails closed—without clipping or tolerance—when the
-registered geometry is invalid. The direction-neutral MKT-SHOCK-001 score
-remains excluded.
+MKT-RISK-001 is complete. All exact roles are stable, but compression leaves
+central direction and distinct upside/downside extreme participation. These
+signed primitives satisfy the missing prerequisite for studying whether frozen
+direction-neutral synchronization pressure has a stable directional geometry.
+
+MKT-DSTRESS-001 is next. It must build an outcome-blind directional
+synchronization/stress Process Map before construction; keep upside and downside
+separate; use frozen MKT-RISK-001 and MKT-SHOCK-001 inputs only; treat liquidity
+activity as a modifier rather than silently redefining direction; test broad
+neighboring aggregation/state definitions, dwell/transition support, view/year
+portability, and redundancy with volatility; and read no future return or
+strategy outcome. It may not rescue the failed all-three 0.90/0.50 episode.

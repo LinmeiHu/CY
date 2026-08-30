@@ -173,13 +173,29 @@ representations freeze.
 
 ## Human decision required?
 
-No. Continue with MKT-RISK-001 map-first representation research. CY-011 remains
-unopened.
+No. Continue with MKT-DSTRESS-001 map-first outcome-blind directional-process
+research. CY-011 remains unopened.
 
-MKT-RISK-001 is now frozen before construction under spec `7b5303c3...`. Its
-map keeps positive and negative participation/tails separate; uses actual
-registered 5%/10%/20% limit geometry rather than a fixed raw-return cutoff;
-preserves absolute, causal PIT, and governed-view relative coordinates; and
-binds only the accepted frozen breadth/volatility roles as redundancy controls.
-Invalid limit geometry fails closed without clipping or tolerance. Run the
-frozen construction twice and accept no non-byte-identical result.
+MKT-RISK-001 was frozen before construction under spec `7b5303c3...`. Its map
+keeps positive and negative participation/tails separate, uses registered
+5%/10%/20% limit geometry, and binds only accepted breadth/volatility roles as
+redundancy controls. The construction subsequently completed as recorded below.
+
+MKT-RISK-001 is now complete. It uses 5,035,742 exact registered-limit
+coordinates from 5,036,345 causal core rows. The 603 out-of-bound rows are not
+repaired; one CHINEXT/ALL_STATUS group/date misses the unchanged 99% gate and is
+missing. Every one of the eleven preregistered roles passes its own stability
+gate. Compression leaves central direction plus separate upside and downside
+extreme participation. Tail balance is retained as a coordinate but excluded as
+the deterministic difference of the two tail primitives. No external breadth/
+volatility redundancy reaches 0.85.
+
+Two final runs are byte-identical: panel `fe7436e...`, result `4fdfd600...`,
+and report `b69b2b2e...`; four targeted tests pass. The first over-strict runner
+abort is invalid and separately recorded.
+
+SYNTH-MKT-009 selects MKT-DSTRESS-001. Build and freeze a Directional
+Synchronization/Stress Process Map before testing. Use only frozen risk and
+stress coordinates, preserve upside/downside primitives, keep liquidity
+activity an explicit modifier, and do not reuse the rejected all-three sparse
+episode as a primary. No outcomes, strategy fields, or CY-011 are permitted.
