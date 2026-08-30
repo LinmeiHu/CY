@@ -401,13 +401,15 @@
 
 ## MKT-H-026 — circulating-size leadership-transition dynamics
 
-- Status: `FROZEN_RESULT_PENDING`.
+- Status: `STATE_DYNAMIC_FAIL`.
 - Primary: accepted `T5(t)` versus the same accepted transition at t+5. Their
   daily size-return components are disjoint; passing sign will determine
   persistence versus reversal.
-- Challenges: raw 3/10-session definitions, three fixed current controls,
-  reused 2021 and 2022--2023 blocks, phase-zero sampling, raw/PIT/relative-to-
-  ALL_A/corrected-rank coordinates, and group-sign replication are conjunctive.
-- Boundary: no future market payoff, stock-selection result, strategy outcome,
-  post-2023 data, or CY-011 may enter. Passing would establish a state process,
-  not a size premium, habitat, or strategy.
+- Raw/PIT partial rho falls from 0.179/0.181 to 0.053/0.055. Raw 3/10 neighbors
+  fall from 0.148/0.130 to 0.058/0.049. Phase-zero reverses from +0.181 to
+  -0.078. No persistence or reversal process passes.
+- Relative-to-ALL_A 0.077/0.187 and corrected-rank 0.022/0.188 are diagnostics
+  only and cannot rescue the conjunctive architecture.
+- Boundary: this rejects only the exact transition self-process. It preserves
+  same-session representations and establishes no size premium, habitat,
+  timing, payoff, or strategy.

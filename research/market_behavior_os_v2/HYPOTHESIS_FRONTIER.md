@@ -178,3 +178,10 @@ uses disjoint daily size-return components; raw 3/10 definitions, three current
 controls, reused blocks, phase-zero sampling, all four primary coordinates, and
 all effect/sign/support gates are immutable. Execute twice; no payoff or size-
 rotation strategy claim is permitted.
+
+MKT-STYLE-DYN-001 rejects a portable self-process. Raw/PIT recurrence decays
+below threshold, both 3/10 definitions weaken, and phase-zero reverses. One
+distinct precursor mechanism remains worth a bounded test before diversification:
+MKT-STYLE-PART-DYN-001 asks whether current positive-participation balance leads
+future accepted T5 after its current state and fixed broad controls. Map first;
+do not add another edge or optimize a horizon.

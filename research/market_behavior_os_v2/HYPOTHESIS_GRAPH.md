@@ -94,6 +94,8 @@ MKT-H-024 circulating-size representation
   -> MKT-H-025 corrected external geometry retains five direct coordinates
   -> size structure collapses into cross-view turnover/concentration/volatility ordering
   -> leadership-transition temporal-process research is now permitted outcome-blind
+  -> MKT-H-026 exact transition self-process fails raw/PIT/neighbor/phase replication
+  -> one positive-participation precursor edge remains before diversification
   -> no size premium, habitat, timing, or strategy claim
 
 HAB-H-001 CHINEXT direction/discovery association

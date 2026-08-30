@@ -791,3 +791,22 @@ corrected date-fixed-effect four-view ranks, reused 2021 versus 2022--2023
 blocks, phase-zero sampling, effect/sign/support gates, and the all-required
 rule. Execute twice without future market payoff, stock selection, strategy
 outcomes, failed size roles, post-2023 data, or CY-011.
+
+MKT-STYLE-DYN-001 completes with `COMPLETE_STATE_DYNAMIC_FAIL`. The primary raw
+partial rho is 0.179 in reused 2021 and only 0.053 in reused 2022--2023; PIT is
+0.181/0.055. Raw three-session and ten-session definitions decay from
+0.148/0.130 to 0.058/0.049. The primary phase-zero sample reverses from +0.181
+to -0.078.
+
+Relative-to-ALL_A rises from 0.077 to 0.187 and corrected relative rank from
+0.022 to 0.188, but the all-required design forbids favorable-coordinate rescue.
+Thirty-five of 43 checks pass; all support/nondegeneracy gates pass first. No
+recurrence or reversal label freezes.
+
+Two runs are byte-identical: panel `067d1657...`, result `9405263f...`, report
+`101dc3de...`; five focused tests pass. No future market payoff, stock selection,
+strategy outcome, failed size predictor, post-2023 field, or CY-011 was read.
+SYNTH-MKT-027 selects one bounded map-first precursor edge before leaving the
+style frontier: accepted current positive-participation balance to future
+accepted T5, controlling current T5 and fixed current market/size state. Do not
+add another edge or interpret the failed self-process as a size-rotation rule.

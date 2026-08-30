@@ -81,6 +81,7 @@
 | `reports/MKT-STYLE-GEO-002_geometry.md` | Five direct size coordinates and one externally redundant structure manifestation |
 | `MARKET_SIZE_STYLE_TRANSITION_DYNAMICS_MAP.md` | Frozen nonoverlapping 3/5/10-session size-leadership transition process architecture |
 | `experiments/MKT-STYLE-DYN-001_spec.json` | Frozen future accepted size-state response, controls, reused blocks, and no-rescue gates |
+| `reports/MKT-STYLE-DYN-001_dynamics.md` | Failed 3/5/10-session leadership-transition self-process and phase reversal |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

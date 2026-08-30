@@ -218,3 +218,9 @@ future annotation, size-premium interpretation, habitat, or strategy meaning.
 The stable transition coordinate may enter a separately frozen outcome-blind
 future-state process test; the failed 10/20/40 leadership level may not be
 revived or selected as a favorable horizon.
+
+MKT-STYLE-DYN-001 does not add a temporal annotation. The accepted transition's
+raw/PIT self-edge weakens sharply in the later reused block, its 3/10 definitions
+also decay, and phase-zero reverses. Favorable relative behavior is not a
+portable process. The engine retains all five contemporaneous coordinates but
+emits no size persistence, reversal, rotation, or habitat state.

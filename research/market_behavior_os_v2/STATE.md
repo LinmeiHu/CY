@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-DYN-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: nonoverlapping temporal meaning of the distinct circulating-size leadership-transition coordinate
+- `CURRENT_PHASE`: `MKT-STYLE-PART-DYN-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: whether distinct circulating-size participation breadth precedes a nonoverlapping future leadership transition
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -789,3 +789,21 @@ phase-zero nonoverlap, and no-rescue gates are conjunctive. Both 2021 and
 2022--2023 blocks are reused exploratory evidence. Future market payoff,
 strategy outcomes, failed size roles, post-2023 data, and CY-011 remain
 prohibited. Execute twice.
+
+MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
+rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from
+0.181 to 0.055. Raw 3/10-session neighbors likewise decay from 0.148/0.130 to
+0.058/0.049, missing their frozen 0.06 floor.
+
+The nonoverlapping phase-zero challenge reverses from +0.181 to -0.078 and loses
+later-block sign support. Relative-to-ALL_A is +0.077/+0.187, while corrected
+relative rank is +0.022/+0.188; their favorable late behavior cannot rescue
+failed raw/PIT/definition/phase gates. All support audits pass before estimates.
+
+Two runs are byte-identical: panel `067d1657...`, result `9405263f...`, report
+`101dc3de...`; five focused tests pass. This rejects only exact 3/5/10
+leadership-transition recurrence/reversal, not the five same-session size
+coordinates or broader style family. SYNTH-MKT-027 permits one map-first cross-
+mechanism edge: current accepted positive participation balance to future
+accepted T5 after current-state controls. No payoff, habitat, or archetype is
+established, and no S1--S12 STOP is active.

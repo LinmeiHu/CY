@@ -1148,3 +1148,45 @@ state alignment, current controls, reused temporal blocks, phase samples,
 absolute/PIT/relative estimators, effect/sign/support gates, and no-rescue rules
 before shifting any future state. Market payoff and strategy outcomes remain
 prohibited.
+
+## SYNTH-MKT-027 — after size-transition self-process falsification
+
+### What was learned?
+
+The accepted five-session leadership transition does not have a portable exact
+self-process. Its raw/PIT effect decays by roughly two thirds, both accepted
+definition neighbors weaken below their floors, and the nonoverlapping phase
+sample reverses. The strong later relative behavior is not enough under the
+conjunctive design.
+
+### What market behavior are we still not studying?
+
+We have not tested whether distinct size participation breadth precedes future
+leadership migration after controlling the current transition. Size diffusion,
+concentration, and curve divergence also lack directed temporal meaning.
+Objective support/price-level defense, accumulation/distribution, cross-asset
+state, and portable multi-strategy habitats remain major unstudied families.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The size/style-rotation candidate loses its simplest state recurrence test.
+A distinct participation precursor is still a falsifiable market mechanism, but
+there is no payoff, trigger, execution, exit, capacity, or habitat evidence.
+
+### Parallel-track awareness
+
+- **Market research:** allow one fixed participation-to-transition edge, then
+  diversify if it fails rather than search more style horizons.
+- **Existing-strategy archaeology:** no market payoff or strategy outcome was
+  read; seed strategies remain unchanged.
+- **Strategy invention:** size/style rotation remains inactive and moves from
+  `WAIT_FOR_TEMPORAL_PROCESS` to `WAIT_FOR_PRECURSOR_PROCESS`.
+
+### Research Director decision
+
+`TEST_ONE_SIZE_PARTICIPATION_PRECURSOR` via MKT-STYLE-PART-DYN-001 map-first.
+Predict future accepted T5 only from current accepted positive-participation
+balance, controlling current T5 and fixed current broad/size state. Freeze 20/40
+tail neighbors, blocks, phase, coordinates, support/effect/sign gates, and no-
+rescue rules before shifting a response. Do not add diffusion/concentration
+edges, tune a horizon, or read payoff.
