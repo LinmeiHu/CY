@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_002_FROZEN_CLEAN_REEXECUTION`
+`EXP_OBL_003_FROZEN_OUTCOME_BLIND_FEASIBILITY_REFINEMENT`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -55,14 +55,22 @@ EXP-OBL-002 preserves every scientific definition, weight, 0.50 split, lineage
 ID, gate, timing rule, and outcome prohibition. It changes only the corrected
 membership hash plus fresh experiment, runner, and output identities.
 
+EXP-OBL-002 then covered all 399 events with balanced overall lineages and 84.46%
+neighbor agreement, but failed the minimum-two-per-lineage-in-every-year gate
+because the 11-event 2018 sample split 1/4/3/3. No output or outcome was read.
+
+EXP-OBL-003 preserves the exact assignments and changes only that construction
+gate to require every lineage be present (minimum one) in every year. All
+performance/outcome information remains unseen.
+
 ## Current scientific decision
 
-`EXECUTE_CLEAN_OUTCOME_BLIND_FREEZE` — materialize the frozen representation and accept
+`EXECUTE_OUTCOME_BLIND_FEASIBILITY_REFINEMENT` — materialize the frozen representation and accept
 it only if coverage, class balance, every-year presence, neighboring assignment,
 PIT, and deterministic rerun gates pass.
 
 ## Exact next action
 
-Execute EXP-OBL-002 without any outcome access, verify byte-identical rerun, freeze
+Execute EXP-OBL-003 without any outcome access, verify byte-identical rerun, freeze
 the assignment under a new `LINEAGE_FREEZE_ID`, and only then create a separate
 outcome-reveal experiment.
