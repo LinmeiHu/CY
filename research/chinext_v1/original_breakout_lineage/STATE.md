@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_011_COMPLETE_REJECTED_PIVOT_TO_PIVOT_TOPOLOGY`
+`EXP_OBL_012_FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -135,10 +135,16 @@ troughs and peaks creates neutral higher-low/lower-high structures before the
 signal. Construction must be outcome-blind and must pass a fixed neighboring
 pivot-definition test before any economic reveal.
 
+EXP-OBL-012 is frozen before feature materialization. It uses strict centered
+three-session extrema with no ties and classifies only the signs of the latest
+two trough and peak changes. The single fixed neighbor uses centered five-session
+extrema. All 399 events must have two peaks/troughs under both definitions; four
+neutral classes, per-year presence, size/concentration, 60% assignment agreement,
+PIT, and outcome-prohibition gates are immutable.
+
 ## Exact next action
 
-Preregister EXP-OBL-012 as an outcome-blind prior-60 pivot-topology construction.
-Use only action-safe pre-signal prices, a small neutral taxonomy, natural zero-
-slope ordering, and one fixed neighboring pivot definition. Reject before
-outcomes if coverage, class balance, temporal presence, or neighbor stability
-fails. Do not revisit selection pressure, modify V1, or open CY-011.
+Execute committed EXP-OBL-012 without outcomes. If all frozen construction gates
+pass, rerun for byte identity and freeze the neutral assignments; otherwise
+reject the definition without changing radius, boundaries, or gates. Do not
+revisit selection pressure, modify V1, or open CY-011.

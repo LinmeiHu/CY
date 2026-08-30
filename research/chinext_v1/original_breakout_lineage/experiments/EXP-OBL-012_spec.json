@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-012",
+  "hypothesis_id": "H-OBL-010",
+  "status": "FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION",
+  "evidence_grade": "EXPLORATORY_OUTCOME_BLIND_LINEAGE_CONSTRUCTION_BOUNDED_PIT_B",
+  "outcome_access": false,
+  "question": "Can the canonical prior-60 path be classified reproducibly by the ordering of its two latest objective troughs and peaks before any future outcome is inspected?",
+  "mechanism": "Rising troughs represent strengthening support and falling peaks represent contracting overhead supply. Their four neutral combinations may describe distinct original-breakout formation structures without assigning good or bad outcome meaning.",
+  "population": {
+    "events": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "identity_projection": ["trade_id", "baseline_block", "symbol", "entry_signal_date", "entry_execution_date"],
+    "qualification": "Accepted completed V1 entries, bounded PIT-B; completion and post-entry values cannot enter features or assignments."
+  },
+  "timing": {
+    "feature_window": "adjusted high/low path over t-60 through t-1 only",
+    "available_at_timestamp": "completed signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "T+1 open or later",
+    "same_session_action": "FORBIDDEN"
+  },
+  "primary_pivot_definition": {
+    "grid": "daily action-safe adjusted-coordinate highs and lows",
+    "radius": 1,
+    "trough": "center low is strictly below both immediately adjacent lows",
+    "peak": "center high is strictly above both immediately adjacent highs",
+    "tie_rule": "ties are not pivots",
+    "feature": "log change from the penultimate to latest strict trough and peak",
+    "natural_boundaries": {
+      "higher_low": "trough log change strictly greater than zero",
+      "lower_high": "peak log change strictly less than zero"
+    }
+  },
+  "neutral_lineages": {
+    "L00_NONRISING_TROUGH_NONFALLING_PEAK": "not higher-low and not lower-high",
+    "L01_NONRISING_TROUGH_LOWER_HIGH": "not higher-low and lower-high",
+    "L10_HIGHER_LOW_NONFALLING_PEAK": "higher-low and not lower-high",
+    "L11_HIGHER_LOW_LOWER_HIGH": "higher-low and lower-high",
+    "outcome_meaning": "NONE"
+  },
+  "fixed_neighbor": {
+    "radius": 2,
+    "definition": "the center must be strictly lower or higher than all four adjacent values in a five-session centered window",
+    "purpose": "test whether lineage assignment survives one lower-frequency pivot definition",
+    "not_selectable": true
+  },
+  "construction_gates": {
+    "minimum_lineage_size": 25,
+    "maximum_lineage_fraction": 0.45,
+    "minimum_lineage_count_per_year": 1,
+    "minimum_neighbor_assignment_agreement": 0.6,
+    "minimum_primary_peaks_and_troughs_per_event": 2,
+    "minimum_neighbor_peaks_and_troughs_per_event": 2
+  },
+  "decision": {
+    "FREEZE_LINEAGE": "all 399 events have complete PIT-valid pivots, all neutral classes pass balance/year gates, and three-session/five-session assignment agreement reaches 0.60",
+    "REJECT_BEFORE_OUTCOME": "coverage, class balance, temporal presence, neighboring-definition stability, PIT, or outcome-prohibition gate fails"
+  },
+  "outcome_prohibition": [
+    "future return or PnL",
+    "MFE or MAE",
+    "future false-breakout status",
+    "holding duration, holding path, or exit",
+    "winner, loser, severe-loss, or right-tail class",
+    "any outcome-guided relabeling or class merge"
+  ],
+  "interpretation_boundary": {
+    "if_frozen": "A freeze authorizes only a separately preregistered outcome reveal, not an economic claim.",
+    "forbidden": [
+      "selecting a pivot radius after construction",
+      "changing the zero slope boundary",
+      "lineage merging or relabeling based on future outcomes",
+      "threshold, filter, entry, exit, sizing, or overlay rule",
+      "canonical V1 modification",
+      "CY-011 access"
+    ]
+  },
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_pivot_topology_lineage_freeze.py",
+      "sha256": "89ef9a7e8f152f45b779b5924345831d1139752d0afef17c63fc931e05eb4f0e"
+    },
+    "outcome_blind_daily_helper": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_outcome_blind_lineage_freeze.py",
+      "sha256": "d6bea6233ff1db8ec7004e1b438d87ebf95f6c7d7088c8800220ecb840002d7e"
+    },
+    "identity_projection_source": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "phase2_outcome_blind_helper": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_frozen_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    },
+    "extended_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "canonical_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  },
+  "output_contract": {
+    "features": "research/chinext_v1/original_breakout_lineage/artifacts/pivot_topology_features.csv",
+    "assignments": "research/chinext_v1/original_breakout_lineage/artifacts/pivot_topology_assignments.csv",
+    "audit": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-012_audit.json",
+    "freeze": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-012.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-012_pivot_topology_freeze.md"
+  }
+}

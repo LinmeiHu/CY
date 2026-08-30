@@ -178,6 +178,11 @@ ordering taxonomy has adequate coverage, temporal presence, class balance, and
 neighboring-definition stability. Only a successful freeze may authorize a
 separate outcome reveal.
 
+EXP-OBL-012 is now frozen with strict three-session extrema, a five-session
+neighbor, natural zero-change signs, four neutral classes, and no outcome access.
+The definitions, balance/year gates, and 60% neighboring-assignment gate cannot
+change after construction.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

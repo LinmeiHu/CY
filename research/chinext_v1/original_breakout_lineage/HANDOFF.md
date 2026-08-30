@@ -172,6 +172,13 @@ small neutral higher-low/lower-high hierarchy, and one fixed neighboring pivot
 definition. Coverage, temporal presence, balance, and neighboring agreement must
 pass before any outcome reveal. CY-011 remains locked.
 
+EXP-OBL-012 is now committed before construction. It uses strict three-session
+centered extrema, no pivot ties, natural zero-change higher-low/lower-high signs,
+and one strict five-session neighbor. Every event needs two peaks and troughs
+under both definitions; four-class balance, every-year presence, 60% neighboring
+agreement, PIT, and outcome prohibition are frozen. Execute without outcomes and
+repeat for byte identity only if all gates pass. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025
