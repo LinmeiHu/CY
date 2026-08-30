@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-SUPACC-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: market-wide intraday support defense, VWAP acceptance, and accumulation/demand mechanism representation
-- `SUPPORTING_FRONTIER`: frozen same-session minute levels without failed five-day path operators
+- `CURRENT_PHASE`: `MKT-MIN-DEF-DYN-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: outcome-blind temporal meaning of the distinct same-session VWAP defense/recovery coordinate
+- `SUPPORTING_FRONTIER`: stable same-session minute mechanisms with late acceptance and demand balance compressed into daily-return geometry
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -611,3 +611,27 @@ rediscovering daily return or generic volatility/volume concentration. The
 derived panel remains available at 15:30, not 15:00. Cross-day support,
 participant accumulation, future values, outcomes, failed path operators, raw
 minutes, and CY-011 remain prohibited.
+
+MKT-MIN-SUPACC-001 is complete. All three frozen mechanism scores pass every
+internal representation gate. Their worst median correlations are 0.892 for
+aggregation shape, 0.894 for leave-one-out components, and 0.965 for
+cross-sectional definitions; denominator stability is at least 0.998. This is
+strong score stability, not causal-mechanism or usefulness evidence.
+
+Only `vwap_defense_recovery` survives the frozen external-geometry gate. Its
+maximum pairwise PIT correlation with open-to-close return, downside realized
+volatility, and minute-volume concentration is 0.764; joint reconstruction is
+0.588 median/0.607 maximum adjusted R2 in PIT space and 0.109/0.111 in relative
+space. `late_vwap_acceptance` fails the PIT joint-reconstruction gate at
+0.701 median, while `price_volume_demand_balance` fails both pairwise
+distinctness (0.914 with open-to-close return) and PIT joint reconstruction
+(0.916 median). These two stable composites remain descriptive manifestations,
+but are not independent engine dimensions.
+
+Two runs are byte-identical: panel `b08abaab...`, result `b09808a9...`, report
+`e070f9a9...`; five focused tests pass. The survivor is available only at 15:30
+and remains a same-session VWAP defense/recovery representation. It is not
+cross-day support, participant accumulation, a future process, a signal, a
+strategy habitat, or a new archetype. SYNTH-MKT-021 selects map-first temporal-
+meaning research on this sole distinct coordinate without reading future price
+returns or strategy outcomes. No S1-S12 STOP is active.

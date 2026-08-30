@@ -1,0 +1,1277 @@
+{
+  "compression": {
+    "accepted_mechanisms": [
+      "vwap_defense_recovery"
+    ],
+    "eligible_before_internal_compression": [
+      "vwap_defense_recovery"
+    ],
+    "excluded_mechanisms": {
+      "late_vwap_acceptance": "external_geometry_failed",
+      "price_volume_demand_balance": "external_geometry_failed"
+    },
+    "pairwise_correlations": {}
+  },
+  "cross_day_support_claim": "NONE",
+  "cy011_read": false,
+  "experiment_id": "MKT-MIN-SUPACC-001",
+  "external_geometry": {
+    "late_vwap_acceptance": {
+      "checks": {
+        "joint_pit_distinct": false,
+        "joint_relative_distinct": true,
+        "pairwise_distinct": true
+      },
+      "eligible": true,
+      "external_gate_pass": false,
+      "joint_reconstruction": {
+        "pit": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.7033816480259811,
+            "ALL_A:NON_ST": 0.7016550175337213,
+            "CHINEXT_BOARD:ALL_STATUS": 0.6889871224526438,
+            "CHINEXT_BOARD:NON_ST": 0.689106389942012,
+            "SH_A:ALL_STATUS": 0.7035573349617188,
+            "SH_A:NON_ST": 0.700972694975549,
+            "SZ_A:ALL_STATUS": 0.7005752121925052,
+            "SZ_A:NON_ST": 0.6978808648520252
+          },
+          "maximum_adjusted_r2": 0.7035573349617188,
+          "median_adjusted_r2": 0.7007739535840272,
+          "support_by_group": {
+            "ALL_A:ALL_STATUS": 727,
+            "ALL_A:NON_ST": 727,
+            "CHINEXT_BOARD:ALL_STATUS": 727,
+            "CHINEXT_BOARD:NON_ST": 727,
+            "SH_A:ALL_STATUS": 727,
+            "SH_A:NON_ST": 727,
+            "SZ_A:ALL_STATUS": 727,
+            "SZ_A:NON_ST": 727
+          }
+        },
+        "relative_rank": {
+          "by_group": {
+            "ALL_STATUS": 0.2497159075003864,
+            "NON_ST": 0.2514224901776605
+          },
+          "maximum_adjusted_r2": 0.2514224901776605,
+          "median_adjusted_r2": 0.25056919883902345,
+          "support_by_group": {
+            "ALL_STATUS": 2908,
+            "NON_ST": 2908
+          }
+        }
+      },
+      "maximum_pairwise_median_absolute_spearman": 0.8326906376791923,
+      "pairwise": {
+        "pit": {
+          "downside_realized_volatility": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.10733352087472235,
+              "ALL_A:NON_ST": -0.10662539536160878,
+              "CHINEXT_BOARD:ALL_STATUS": -0.20195559321474776,
+              "CHINEXT_BOARD:NON_ST": -0.20253282966851385,
+              "SH_A:ALL_STATUS": -0.0717179828701346,
+              "SH_A:NON_ST": -0.06852372079525874,
+              "SZ_A:ALL_STATUS": -0.13996703462736831,
+              "SZ_A:NON_ST": -0.14126622851616205
+            },
+            "median_across_groups": -0.12365027775104534,
+            "minimum_across_groups": -0.20253282966851385
+          },
+          "minute_volume_concentration": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.005243633070955871,
+              "ALL_A:NON_ST": -0.009953925851459098,
+              "CHINEXT_BOARD:ALL_STATUS": 0.028606824296580246,
+              "CHINEXT_BOARD:NON_ST": 0.024975434531044446,
+              "SH_A:ALL_STATUS": -0.042724197839887845,
+              "SH_A:NON_ST": -0.04976197320361486,
+              "SZ_A:ALL_STATUS": 0.023787265112196827,
+              "SZ_A:NON_ST": 0.01826759311309552
+            },
+            "median_across_groups": 0.006511980021069825,
+            "minimum_across_groups": -0.04976197320361486
+          },
+          "open_close_log_return": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.8343979199086559,
+              "ALL_A:NON_ST": 0.8332609317217659,
+              "CHINEXT_BOARD:ALL_STATUS": 0.8298540643840056,
+              "CHINEXT_BOARD:NON_ST": 0.8298924219681502,
+              "SH_A:ALL_STATUS": 0.8331639619750595,
+              "SH_A:NON_ST": 0.8311414366579283,
+              "SZ_A:ALL_STATUS": 0.8339178999354983,
+              "SZ_A:NON_ST": 0.8322173133833252
+            },
+            "median_across_groups": 0.8326906376791923,
+            "minimum_across_groups": 0.8298540643840056
+          }
+        },
+        "relative_rank": {
+          "downside_realized_volatility": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.05971135832107151,
+              "ALL_A:NON_ST": -0.06302927925398172,
+              "CHINEXT_BOARD:ALL_STATUS": -0.08174584670806016,
+              "CHINEXT_BOARD:NON_ST": -0.08626591031179365,
+              "SH_A:ALL_STATUS": -0.07944279258668749,
+              "SH_A:NON_ST": -0.09072998522276292,
+              "SZ_A:ALL_STATUS": -0.07577482672963491,
+              "SZ_A:NON_ST": -0.06846601996184169
+            },
+            "median_across_groups": -0.07760880965816119,
+            "minimum_across_groups": -0.09072998522276292
+          },
+          "minute_volume_concentration": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.07128043681814669,
+              "ALL_A:NON_ST": 0.058086550320894645,
+              "CHINEXT_BOARD:ALL_STATUS": 0.11675713899411415,
+              "CHINEXT_BOARD:NON_ST": 0.10572261978045226,
+              "SH_A:ALL_STATUS": 0.04183658544085873,
+              "SH_A:NON_ST": 0.037176226093494226,
+              "SZ_A:ALL_STATUS": -0.025880937349454253,
+              "SZ_A:NON_ST": -0.02004681564310367
+            },
+            "median_across_groups": 0.04996156788087669,
+            "minimum_across_groups": -0.025880937349454253
+          },
+          "open_close_log_return": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.3530446504162314,
+              "ALL_A:NON_ST": 0.31672247000112275,
+              "CHINEXT_BOARD:ALL_STATUS": 0.538604208062432,
+              "CHINEXT_BOARD:NON_ST": 0.554639098939235,
+              "SH_A:ALL_STATUS": 0.5309445233593472,
+              "SH_A:NON_ST": 0.5427992784372139,
+              "SZ_A:ALL_STATUS": 0.3668454841511184,
+              "SZ_A:NON_ST": 0.3700876602569967
+            },
+            "median_across_groups": 0.4505160918081719,
+            "minimum_across_groups": 0.31672247000112275
+          }
+        }
+      }
+    },
+    "price_volume_demand_balance": {
+      "checks": {
+        "joint_pit_distinct": false,
+        "joint_relative_distinct": true,
+        "pairwise_distinct": false
+      },
+      "eligible": true,
+      "external_gate_pass": false,
+      "joint_reconstruction": {
+        "pit": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9138046964820892,
+            "ALL_A:NON_ST": 0.9153712558704776,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9181074414586793,
+            "CHINEXT_BOARD:NON_ST": 0.9175582860464211,
+            "SH_A:ALL_STATUS": 0.9041885523394695,
+            "SH_A:NON_ST": 0.9060887942357023,
+            "SZ_A:ALL_STATUS": 0.9161498267905281,
+            "SZ_A:NON_ST": 0.9173670842237618
+          },
+          "maximum_adjusted_r2": 0.9181074414586793,
+          "median_adjusted_r2": 0.9157605413305029,
+          "support_by_group": {
+            "ALL_A:ALL_STATUS": 727,
+            "ALL_A:NON_ST": 727,
+            "CHINEXT_BOARD:ALL_STATUS": 727,
+            "CHINEXT_BOARD:NON_ST": 727,
+            "SH_A:ALL_STATUS": 727,
+            "SH_A:NON_ST": 727,
+            "SZ_A:ALL_STATUS": 727,
+            "SZ_A:NON_ST": 727
+          }
+        },
+        "relative_rank": {
+          "by_group": {
+            "ALL_STATUS": 0.3529010735610423,
+            "NON_ST": 0.3748698805730116
+          },
+          "maximum_adjusted_r2": 0.3748698805730116,
+          "median_adjusted_r2": 0.36388547706702695,
+          "support_by_group": {
+            "ALL_STATUS": 2908,
+            "NON_ST": 2908
+          }
+        }
+      },
+      "maximum_pairwise_median_absolute_spearman": 0.9135539974628399,
+      "pairwise": {
+        "pit": {
+          "downside_realized_volatility": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.049022579884993894,
+              "ALL_A:NON_ST": 0.05564608799741304,
+              "CHINEXT_BOARD:ALL_STATUS": -0.023778243711552623,
+              "CHINEXT_BOARD:NON_ST": -0.02406896022769434,
+              "SH_A:ALL_STATUS": 0.08494959509471726,
+              "SH_A:NON_ST": 0.09017470478103545,
+              "SZ_A:ALL_STATUS": 0.02255756048407046,
+              "SZ_A:NON_ST": 0.024927470303783457
+            },
+            "median_across_groups": 0.03697502509438867,
+            "minimum_across_groups": -0.02406896022769434
+          },
+          "minute_volume_concentration": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.1379238630123823,
+              "ALL_A:NON_ST": -0.14425275446159422,
+              "CHINEXT_BOARD:ALL_STATUS": -0.16531622665496143,
+              "CHINEXT_BOARD:NON_ST": -0.1710776793090455,
+              "SH_A:ALL_STATUS": -0.16322960555507346,
+              "SH_A:NON_ST": -0.17057780955389282,
+              "SZ_A:ALL_STATUS": -0.11678720347699335,
+              "SZ_A:NON_ST": -0.12419179122412864
+            },
+            "median_across_groups": -0.15374118000833384,
+            "minimum_across_groups": -0.1710776793090455
+          },
+          "open_close_log_return": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.913071823104741,
+              "ALL_A:NON_ST": 0.9122680021416721,
+              "CHINEXT_BOARD:ALL_STATUS": 0.918181601346135,
+              "CHINEXT_BOARD:NON_ST": 0.9174970442817961,
+              "SH_A:ALL_STATUS": 0.9065752791633751,
+              "SH_A:NON_ST": 0.9061476778004842,
+              "SZ_A:ALL_STATUS": 0.9147009383226099,
+              "SZ_A:NON_ST": 0.9140361718209389
+            },
+            "median_across_groups": 0.9135539974628399,
+            "minimum_across_groups": 0.9061476778004842
+          }
+        },
+        "relative_rank": {
+          "downside_realized_volatility": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.19074356524712535,
+              "ALL_A:NON_ST": 0.1978403757107087,
+              "CHINEXT_BOARD:ALL_STATUS": 0.29491967960784404,
+              "CHINEXT_BOARD:NON_ST": 0.3176823732442326,
+              "SH_A:ALL_STATUS": 0.10140382468407824,
+              "SH_A:NON_ST": 0.10347026315184799,
+              "SZ_A:ALL_STATUS": 0.04590659561395632,
+              "SZ_A:NON_ST": 0.012006437658056918
+            },
+            "median_across_groups": 0.14710691419948668,
+            "minimum_across_groups": 0.012006437658056918
+          },
+          "minute_volume_concentration": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.173977147100213,
+              "ALL_A:NON_ST": -0.18190741485391115,
+              "CHINEXT_BOARD:ALL_STATUS": -0.2991516835896468,
+              "CHINEXT_BOARD:NON_ST": -0.3034308879911306,
+              "SH_A:ALL_STATUS": -0.08420138633808906,
+              "SH_A:NON_ST": -0.10962242522275906,
+              "SZ_A:ALL_STATUS": -0.04751212999772238,
+              "SZ_A:NON_ST": -0.0666244335634074
+            },
+            "median_across_groups": -0.14179978616148603,
+            "minimum_across_groups": -0.3034308879911306
+          },
+          "open_close_log_return": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.35954261468699583,
+              "ALL_A:NON_ST": 0.3590296167135385,
+              "CHINEXT_BOARD:ALL_STATUS": 0.5462516581899127,
+              "CHINEXT_BOARD:NON_ST": 0.5644360818512926,
+              "SH_A:ALL_STATUS": 0.5348804240338071,
+              "SH_A:NON_ST": 0.5681694742135225,
+              "SZ_A:ALL_STATUS": 0.3548919242277858,
+              "SZ_A:NON_ST": 0.38388230383124183
+            },
+            "median_across_groups": 0.4593813639325245,
+            "minimum_across_groups": 0.3548919242277858
+          }
+        }
+      }
+    },
+    "vwap_defense_recovery": {
+      "checks": {
+        "joint_pit_distinct": true,
+        "joint_relative_distinct": true,
+        "pairwise_distinct": true
+      },
+      "eligible": true,
+      "external_gate_pass": true,
+      "joint_reconstruction": {
+        "pit": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.5835532763118794,
+            "ALL_A:NON_ST": 0.5786832415262639,
+            "CHINEXT_BOARD:ALL_STATUS": 0.6068743539816188,
+            "CHINEXT_BOARD:NON_ST": 0.6047673893652727,
+            "SH_A:ALL_STATUS": 0.5636435598645839,
+            "SH_A:NON_ST": 0.5620646135228486,
+            "SZ_A:ALL_STATUS": 0.5999360638060314,
+            "SZ_A:NON_ST": 0.5917375571622032
+          },
+          "maximum_adjusted_r2": 0.6068743539816188,
+          "median_adjusted_r2": 0.5876454167370413,
+          "support_by_group": {
+            "ALL_A:ALL_STATUS": 727,
+            "ALL_A:NON_ST": 727,
+            "CHINEXT_BOARD:ALL_STATUS": 727,
+            "CHINEXT_BOARD:NON_ST": 727,
+            "SH_A:ALL_STATUS": 727,
+            "SH_A:NON_ST": 727,
+            "SZ_A:ALL_STATUS": 727,
+            "SZ_A:NON_ST": 727
+          }
+        },
+        "relative_rank": {
+          "by_group": {
+            "ALL_STATUS": 0.10686969162388282,
+            "NON_ST": 0.11070042223146448
+          },
+          "maximum_adjusted_r2": 0.11070042223146448,
+          "median_adjusted_r2": 0.10878505692767365,
+          "support_by_group": {
+            "ALL_STATUS": 2908,
+            "NON_ST": 2908
+          }
+        }
+      },
+      "maximum_pairwise_median_absolute_spearman": 0.7642544943258365,
+      "pairwise": {
+        "pit": {
+          "downside_realized_volatility": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.22715259071729954,
+              "ALL_A:NON_ST": -0.22683690133387502,
+              "CHINEXT_BOARD:ALL_STATUS": -0.2445050246322496,
+              "CHINEXT_BOARD:NON_ST": -0.24375634656114709,
+              "SH_A:ALL_STATUS": -0.22344666327543816,
+              "SH_A:NON_ST": -0.22361762324981183,
+              "SZ_A:ALL_STATUS": -0.24055588813906412,
+              "SZ_A:NON_ST": -0.24361293095920622
+            },
+            "median_across_groups": -0.23385423942818184,
+            "minimum_across_groups": -0.2445050246322496
+          },
+          "minute_volume_concentration": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.1194429801184198,
+              "ALL_A:NON_ST": 0.11926554618789813,
+              "CHINEXT_BOARD:ALL_STATUS": 0.09585130502471932,
+              "CHINEXT_BOARD:NON_ST": 0.09137685492760883,
+              "SH_A:ALL_STATUS": 0.10640879032384275,
+              "SH_A:NON_ST": 0.10240171317448694,
+              "SZ_A:ALL_STATUS": 0.1305316311608517,
+              "SZ_A:NON_ST": 0.13205029185082592
+            },
+            "median_across_groups": 0.11283716825587044,
+            "minimum_across_groups": 0.09137685492760883
+          },
+          "open_close_log_return": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.7615654947667511,
+              "ALL_A:NON_ST": 0.7581268973533577,
+              "CHINEXT_BOARD:ALL_STATUS": 0.777717943405927,
+              "CHINEXT_BOARD:NON_ST": 0.7764820215717303,
+              "SH_A:ALL_STATUS": 0.7461321835296509,
+              "SH_A:NON_ST": 0.7452601841344957,
+              "SZ_A:ALL_STATUS": 0.7727909501605925,
+              "SZ_A:NON_ST": 0.766943493884922
+            },
+            "median_across_groups": 0.7642544943258365,
+            "minimum_across_groups": 0.7452601841344957
+          }
+        },
+        "relative_rank": {
+          "downside_realized_volatility": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": -0.02176947805567167,
+              "ALL_A:NON_ST": -0.027944998581941126,
+              "CHINEXT_BOARD:ALL_STATUS": -0.10459754134548661,
+              "CHINEXT_BOARD:NON_ST": -0.12712228506689668,
+              "SH_A:ALL_STATUS": -0.07355970942243935,
+              "SH_A:NON_ST": -0.06900419807851285,
+              "SZ_A:ALL_STATUS": -0.06112786965716019,
+              "SZ_A:NON_ST": -0.07720805886914361
+            },
+            "median_across_groups": -0.0712819537504761,
+            "minimum_across_groups": -0.12712228506689668
+          },
+          "minute_volume_concentration": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.045640256868058275,
+              "ALL_A:NON_ST": 0.059193109910369676,
+              "CHINEXT_BOARD:ALL_STATUS": 0.1036512508308057,
+              "CHINEXT_BOARD:NON_ST": 0.09754539569540292,
+              "SH_A:ALL_STATUS": 0.004871916672680261,
+              "SH_A:NON_ST": 0.030298522465940874,
+              "SZ_A:ALL_STATUS": 0.04743494357201639,
+              "SZ_A:NON_ST": 0.06090054527348825
+            },
+            "median_across_groups": 0.05331402674119304,
+            "minimum_across_groups": 0.004871916672680261
+          },
+          "open_close_log_return": {
+            "by_group": {
+              "ALL_A:ALL_STATUS": 0.1973907427018173,
+              "ALL_A:NON_ST": 0.17785697296060474,
+              "CHINEXT_BOARD:ALL_STATUS": 0.3416511634588488,
+              "CHINEXT_BOARD:NON_ST": 0.321223721805095,
+              "SH_A:ALL_STATUS": 0.38889714076517756,
+              "SH_A:NON_ST": 0.40400832410119053,
+              "SZ_A:ALL_STATUS": 0.24286476769930312,
+              "SZ_A:NON_ST": 0.26957788794620663
+            },
+            "median_across_groups": 0.2954008048756508,
+            "minimum_across_groups": 0.17785697296060474
+          }
+        }
+      }
+    }
+  },
+  "failed_level_roles_read": [],
+  "failed_path_roles_read": [],
+  "future_state_fields_read": [],
+  "hashes": {
+    "minute_daily_panel_sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701",
+    "minute_result_sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe",
+    "panel_sha256": "b08abaabfea3fff9c5de716963ad0cd079d54884c63ab994f2b56c1448cb10c2",
+    "spec_sha256": "fcdc9d359a153ba473543ee7ccfabb6f7ed68a4c37fca34a5a2b3e4f60be9435"
+  },
+  "participant_accumulation_claim": "NONE",
+  "population": {
+    "first_date": "2018-01-02",
+    "groups": 8,
+    "last_date": "2023-12-29",
+    "minimum_descriptor_coverage": 0.96694214876,
+    "rows": 11656
+  },
+  "post_2023_data_read": false,
+  "raw_minute_rows_read": false,
+  "representation_diagnostics": {
+    "late_vwap_acceptance": {
+      "checks": {
+        "cross_section_stability": true,
+        "denominator_stability": true,
+        "leave_one_out_stability": true,
+        "rank_coverage": true,
+        "relative_coverage": true,
+        "shape_stability": true,
+        "source_coverage": true,
+        "year_cells": true
+      },
+      "cross_section_neighbors": {
+        "p40": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9878687842188302,
+            "ALL_A:NON_ST": 0.9877943859958259,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9881257595649596,
+            "CHINEXT_BOARD:NON_ST": 0.9881288458219922,
+            "SH_A:ALL_STATUS": 0.9856061835755316,
+            "SH_A:NON_ST": 0.986059871564954,
+            "SZ_A:ALL_STATUS": 0.9875529417815013,
+            "SZ_A:NON_ST": 0.9875410002550926
+          },
+          "median_across_groups": 0.9876736638886636,
+          "minimum_across_groups": 0.9856061835755316
+        },
+        "p60": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.988753019001048,
+            "ALL_A:NON_ST": 0.9891135538522379,
+            "CHINEXT_BOARD:ALL_STATUS": 0.989333088463611,
+            "CHINEXT_BOARD:NON_ST": 0.9890459358695403,
+            "SH_A:ALL_STATUS": 0.9873016395907054,
+            "SH_A:NON_ST": 0.9876704054158418,
+            "SZ_A:ALL_STATUS": 0.9888247248434331,
+            "SZ_A:NON_ST": 0.9894907545283804
+          },
+          "median_across_groups": 0.9889353303564867,
+          "minimum_across_groups": 0.9873016395907054
+        }
+      },
+      "denominator_stability": {
+        "by_view": {
+          "ALL_A": 0.9995893806979511,
+          "CHINEXT_BOARD": 0.9998565700292048,
+          "SH_A": 0.9994249878297362,
+          "SZ_A": 0.9994942271690492
+        },
+        "median_across_views": 0.9995418039335002
+      },
+      "leave_one_out_neighbors": {
+        "final30_log_return": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9459452152119301,
+            "ALL_A:NON_ST": 0.9459869535281895,
+            "CHINEXT_BOARD:ALL_STATUS": 0.94910611031151,
+            "CHINEXT_BOARD:NON_ST": 0.9490650040523814,
+            "SH_A:ALL_STATUS": 0.9427749042794675,
+            "SH_A:NON_ST": 0.9425997265580564,
+            "SZ_A:ALL_STATUS": 0.9481541139451974,
+            "SZ_A:NON_ST": 0.9480685632121575
+          },
+          "median_across_groups": 0.9470277583701735,
+          "minimum_across_groups": 0.9425997265580564
+        },
+        "late_vwap_acceptance_fraction": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9553486280024698,
+            "ALL_A:NON_ST": 0.9552360026728001,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9616809684569189,
+            "CHINEXT_BOARD:NON_ST": 0.9617021820757476,
+            "SH_A:ALL_STATUS": 0.9522048316586504,
+            "SH_A:NON_ST": 0.9520841068077821,
+            "SZ_A:ALL_STATUS": 0.957804341196482,
+            "SZ_A:NON_ST": 0.9578804133564407
+          },
+          "median_across_groups": 0.9565764845994759,
+          "minimum_across_groups": 0.9520841068077821
+        },
+        "time_above_vwap_fraction": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9496504713468832,
+            "ALL_A:NON_ST": 0.9496057993961416,
+            "CHINEXT_BOARD:ALL_STATUS": 0.951230422542192,
+            "CHINEXT_BOARD:NON_ST": 0.9514860366111187,
+            "SH_A:ALL_STATUS": 0.9479472885561788,
+            "SH_A:NON_ST": 0.9475781639590489,
+            "SZ_A:ALL_STATUS": 0.9506466848733074,
+            "SZ_A:NON_ST": 0.9505180636169925
+          },
+          "median_across_groups": 0.9500842674819379,
+          "minimum_across_groups": 0.9475781639590489
+        },
+        "volume_above_vwap_fraction": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9657552426282814,
+            "ALL_A:NON_ST": 0.9657085546355307,
+            "CHINEXT_BOARD:ALL_STATUS": 0.968338335991516,
+            "CHINEXT_BOARD:NON_ST": 0.9684803552936483,
+            "SH_A:ALL_STATUS": 0.9628490773571152,
+            "SH_A:NON_ST": 0.9629012900759386,
+            "SZ_A:ALL_STATUS": 0.9670712250673686,
+            "SZ_A:NON_ST": 0.9671546001803365
+          },
+          "median_across_groups": 0.9664132338478251,
+          "minimum_across_groups": 0.9628490773571152
+        }
+      },
+      "raw_coverage_by_component": {
+        "final30_log_return": 1.0,
+        "late_vwap_acceptance_fraction": 1.0,
+        "time_above_vwap_fraction": 1.0,
+        "volume_above_vwap_fraction": 1.0
+      },
+      "relative_coverage": 1.0,
+      "relative_rank_coverage": 1.0,
+      "representation_gate_pass": true,
+      "shape_neighbors": {
+        "geometric_mean": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9648302720887034,
+            "ALL_A:NON_ST": 0.9647090712435793,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9685061313223551,
+            "CHINEXT_BOARD:NON_ST": 0.9686730245501377,
+            "SH_A:ALL_STATUS": 0.9624382892020806,
+            "SH_A:NON_ST": 0.9624324800557558,
+            "SZ_A:ALL_STATUS": 0.966592976220893,
+            "SZ_A:NON_ST": 0.9664506725552306
+          },
+          "median_across_groups": 0.965640472321967,
+          "minimum_across_groups": 0.9624324800557558
+        },
+        "median": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9814524757350643,
+            "ALL_A:NON_ST": 0.9814373263462612,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9815739796858737,
+            "CHINEXT_BOARD:NON_ST": 0.9815700878080509,
+            "SH_A:ALL_STATUS": 0.9791418386174825,
+            "SH_A:NON_ST": 0.9791070972222277,
+            "SZ_A:ALL_STATUS": 0.9824570033699711,
+            "SZ_A:NON_ST": 0.9824238570594702
+          },
+          "median_across_groups": 0.9815112817715577,
+          "minimum_across_groups": 0.9791070972222277
+        }
+      },
+      "year_cells": {
+        "all_cells_pass": true,
+        "cells": {
+          "ALL_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          }
+        }
+      }
+    },
+    "price_volume_demand_balance": {
+      "checks": {
+        "cross_section_stability": true,
+        "denominator_stability": true,
+        "leave_one_out_stability": true,
+        "rank_coverage": true,
+        "relative_coverage": true,
+        "shape_stability": true,
+        "source_coverage": true,
+        "year_cells": true
+      },
+      "cross_section_neighbors": {
+        "p40": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9923735034228715,
+            "ALL_A:NON_ST": 0.9930616051797595,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9961015422275565,
+            "CHINEXT_BOARD:NON_ST": 0.9959650330366808,
+            "SH_A:ALL_STATUS": 0.9889809186936326,
+            "SH_A:NON_ST": 0.9897557112512888,
+            "SZ_A:ALL_STATUS": 0.9940713709646308,
+            "SZ_A:NON_ST": 0.9944688017295162
+          },
+          "median_across_groups": 0.9935664880721952,
+          "minimum_across_groups": 0.9889809186936326
+        },
+        "p60": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9920911698651274,
+            "ALL_A:NON_ST": 0.9918208123271038,
+            "CHINEXT_BOARD:ALL_STATUS": 0.994881414899827,
+            "CHINEXT_BOARD:NON_ST": 0.9950325503359918,
+            "SH_A:ALL_STATUS": 0.9884435130685366,
+            "SH_A:NON_ST": 0.9881441380872258,
+            "SZ_A:ALL_STATUS": 0.9935642229868652,
+            "SZ_A:NON_ST": 0.9938160263627556
+          },
+          "median_across_groups": 0.9928276964259963,
+          "minimum_across_groups": 0.9881441380872258
+        }
+      },
+      "denominator_stability": {
+        "by_view": {
+          "ALL_A": 0.9989481422684262,
+          "CHINEXT_BOARD": 0.99972611099295,
+          "SH_A": 0.9988750053288263,
+          "SZ_A": 0.9989533733712508
+        },
+        "median_across_views": 0.9989507578198384
+      },
+      "leave_one_out_neighbors": {
+        "down_minute_volume_share": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9577094131317384,
+            "ALL_A:NON_ST": 0.9568837397683021,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9570441057837885,
+            "CHINEXT_BOARD:NON_ST": 0.9571764621981311,
+            "SH_A:ALL_STATUS": 0.9567363438096995,
+            "SH_A:NON_ST": 0.9557866881373632,
+            "SZ_A:ALL_STATUS": 0.9576665731647332,
+            "SZ_A:NON_ST": 0.9568352231214473
+          },
+          "median_across_groups": 0.9569639227760454,
+          "minimum_across_groups": 0.9557866881373632
+        },
+        "positive_minute_fraction": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9690044465993883,
+            "ALL_A:NON_ST": 0.9675754696002902,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9642508161068656,
+            "CHINEXT_BOARD:NON_ST": 0.9641484015346466,
+            "SH_A:ALL_STATUS": 0.9725276807524736,
+            "SH_A:NON_ST": 0.9715514709679555,
+            "SZ_A:ALL_STATUS": 0.9659194682568885,
+            "SZ_A:NON_ST": 0.964740195335706
+          },
+          "median_across_groups": 0.9667474689285893,
+          "minimum_across_groups": 0.9641484015346466
+        },
+        "up_minute_volume_share": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9949128641036973,
+            "ALL_A:NON_ST": 0.994986401776908,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9958640571658448,
+            "CHINEXT_BOARD:NON_ST": 0.9959091688668917,
+            "SH_A:ALL_STATUS": 0.9938642989295723,
+            "SH_A:NON_ST": 0.9937753266295615,
+            "SZ_A:ALL_STATUS": 0.9952349672528497,
+            "SZ_A:NON_ST": 0.9953189258607527
+          },
+          "median_across_groups": 0.9951106845148788,
+          "minimum_across_groups": 0.9937753266295615
+        },
+        "upside_excursion": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9815758323075259,
+            "ALL_A:NON_ST": 0.9819028180066203,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9822032117720627,
+            "CHINEXT_BOARD:NON_ST": 0.9824587366213627,
+            "SH_A:ALL_STATUS": 0.9786804780432691,
+            "SH_A:NON_ST": 0.9789854352549395,
+            "SZ_A:ALL_STATUS": 0.9823829588583416,
+            "SZ_A:NON_ST": 0.982525880860612
+          },
+          "median_across_groups": 0.9820530148893415,
+          "minimum_across_groups": 0.9786804780432691
+        }
+      },
+      "raw_coverage_by_component": {
+        "down_minute_volume_share": 1.0,
+        "positive_minute_fraction": 1.0,
+        "up_minute_volume_share": 1.0,
+        "upside_excursion": 1.0
+      },
+      "relative_coverage": 1.0,
+      "relative_rank_coverage": 1.0,
+      "representation_gate_pass": true,
+      "shape_neighbors": {
+        "geometric_mean": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9836487534106886,
+            "ALL_A:NON_ST": 0.9832215082912046,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9779250724422208,
+            "CHINEXT_BOARD:NON_ST": 0.9778941899232284,
+            "SH_A:ALL_STATUS": 0.9802267715048701,
+            "SH_A:NON_ST": 0.9804276301292381,
+            "SZ_A:ALL_STATUS": 0.9843455138966645,
+            "SZ_A:NON_ST": 0.9831978910561693
+          },
+          "median_across_groups": 0.9818127605927036,
+          "minimum_across_groups": 0.9778941899232284
+        },
+        "median": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9866335404200899,
+            "ALL_A:NON_ST": 0.9865416728880056,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9877908212089204,
+            "CHINEXT_BOARD:NON_ST": 0.9878759164580225,
+            "SH_A:ALL_STATUS": 0.9826876441498118,
+            "SH_A:NON_ST": 0.9824558989698106,
+            "SZ_A:ALL_STATUS": 0.9880282818492183,
+            "SZ_A:NON_ST": 0.9875947773231116
+          },
+          "median_across_groups": 0.9871141588716008,
+          "minimum_across_groups": 0.9824558989698106
+        }
+      },
+      "year_cells": {
+        "all_cells_pass": true,
+        "cells": {
+          "ALL_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          }
+        }
+      }
+    },
+    "vwap_defense_recovery": {
+      "checks": {
+        "cross_section_stability": true,
+        "denominator_stability": true,
+        "leave_one_out_stability": true,
+        "rank_coverage": true,
+        "relative_coverage": true,
+        "shape_stability": true,
+        "source_coverage": true,
+        "year_cells": true
+      },
+      "cross_section_neighbors": {
+        "p40": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9681151217677924,
+            "ALL_A:NON_ST": 0.96818764492222,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9781263002888148,
+            "CHINEXT_BOARD:NON_ST": 0.977467022610461,
+            "SH_A:ALL_STATUS": 0.9675854228981277,
+            "SH_A:NON_ST": 0.9677186016545042,
+            "SZ_A:ALL_STATUS": 0.9734533870860914,
+            "SZ_A:NON_ST": 0.9739820186728982
+          },
+          "median_across_groups": 0.9708205160041556,
+          "minimum_across_groups": 0.9675854228981277
+        },
+        "p60": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.965378239212615,
+            "ALL_A:NON_ST": 0.9663680584343853,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9724261390641334,
+            "CHINEXT_BOARD:NON_ST": 0.9720488094952052,
+            "SH_A:ALL_STATUS": 0.9618505844164754,
+            "SH_A:NON_ST": 0.9625245478906248,
+            "SZ_A:ALL_STATUS": 0.9642882674528245,
+            "SZ_A:NON_ST": 0.9648728932189324
+          },
+          "median_across_groups": 0.9651255662157737,
+          "minimum_across_groups": 0.9618505844164754
+        }
+      },
+      "denominator_stability": {
+        "by_view": {
+          "ALL_A": 0.9982721335319209,
+          "CHINEXT_BOARD": 0.9986893385355128,
+          "SH_A": 0.9980806826249524,
+          "SZ_A": 0.9967717212432049
+        },
+        "median_across_views": 0.9981764080784367
+      },
+      "leave_one_out_neighbors": {
+        "downside_excursion": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.8939473612260019,
+            "ALL_A:NON_ST": 0.8933558033313219,
+            "CHINEXT_BOARD:ALL_STATUS": 0.894646268188082,
+            "CHINEXT_BOARD:NON_ST": 0.8947741278426495,
+            "SH_A:ALL_STATUS": 0.8905588443536805,
+            "SH_A:NON_ST": 0.8897809922559783,
+            "SZ_A:ALL_STATUS": 0.8957438549263883,
+            "SZ_A:NON_ST": 0.8933956079356594
+          },
+          "median_across_groups": 0.8936714845808307,
+          "minimum_across_groups": 0.8897809922559783
+        },
+        "longest_below_vwap_fraction": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.8946870829916826,
+            "ALL_A:NON_ST": 0.8946243105647471,
+            "CHINEXT_BOARD:ALL_STATUS": 0.897884109656037,
+            "CHINEXT_BOARD:NON_ST": 0.897792118850588,
+            "SH_A:ALL_STATUS": 0.8893891273540415,
+            "SH_A:NON_ST": 0.8888484584815258,
+            "SZ_A:ALL_STATUS": 0.896740808079827,
+            "SZ_A:NON_ST": 0.8950832207927899
+          },
+          "median_across_groups": 0.8948851518922363,
+          "minimum_across_groups": 0.8888484584815258
+        },
+        "recovery_speed_30bar": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9021540012372635,
+            "ALL_A:NON_ST": 0.9022681289685685,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9044153752925954,
+            "CHINEXT_BOARD:NON_ST": 0.9044501704562542,
+            "SH_A:ALL_STATUS": 0.8994453404696436,
+            "SH_A:NON_ST": 0.9003497437978908,
+            "SZ_A:ALL_STATUS": 0.9034901217282846,
+            "SZ_A:NON_ST": 0.9031915798482595
+          },
+          "median_across_groups": 0.9027298544084139,
+          "minimum_across_groups": 0.8994453404696436
+        },
+        "vwap_recovery_count": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9087343687481467,
+            "ALL_A:NON_ST": 0.907841995227215,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9118299897857222,
+            "CHINEXT_BOARD:NON_ST": 0.9113668060176554,
+            "SH_A:ALL_STATUS": 0.9045332584682085,
+            "SH_A:NON_ST": 0.9032470298064342,
+            "SZ_A:ALL_STATUS": 0.909117591624763,
+            "SZ_A:NON_ST": 0.9069327449825213
+          },
+          "median_across_groups": 0.9082881819876809,
+          "minimum_across_groups": 0.9032470298064342
+        }
+      },
+      "raw_coverage_by_component": {
+        "downside_excursion": 1.0,
+        "longest_below_vwap_fraction": 1.0,
+        "recovery_speed_30bar": 1.0,
+        "vwap_recovery_count": 1.0
+      },
+      "relative_coverage": 1.0,
+      "relative_rank_coverage": 1.0,
+      "representation_gate_pass": true,
+      "shape_neighbors": {
+        "geometric_mean": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.8920767823508149,
+            "ALL_A:NON_ST": 0.891190171319269,
+            "CHINEXT_BOARD:ALL_STATUS": 0.8918810664756417,
+            "CHINEXT_BOARD:NON_ST": 0.8927469832820121,
+            "SH_A:ALL_STATUS": 0.8929138706632529,
+            "SH_A:NON_ST": 0.8934948763111568,
+            "SZ_A:ALL_STATUS": 0.8917250760016352,
+            "SZ_A:NON_ST": 0.8897926038022816
+          },
+          "median_across_groups": 0.8919789244132283,
+          "minimum_across_groups": 0.8897926038022816
+        },
+        "median": {
+          "by_group": {
+            "ALL_A:ALL_STATUS": 0.9632807787499862,
+            "ALL_A:NON_ST": 0.9634595561236893,
+            "CHINEXT_BOARD:ALL_STATUS": 0.9599711966585369,
+            "CHINEXT_BOARD:NON_ST": 0.9602055698067721,
+            "SH_A:ALL_STATUS": 0.962730417626174,
+            "SH_A:NON_ST": 0.9624273549242297,
+            "SZ_A:ALL_STATUS": 0.9619365804491524,
+            "SZ_A:NON_ST": 0.9616656547625602
+          },
+          "median_across_groups": 0.9621819676866911,
+          "minimum_across_groups": 0.9599711966585369
+        }
+      },
+      "year_cells": {
+        "all_cells_pass": true,
+        "cells": {
+          "ALL_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "ALL_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "CHINEXT_BOARD:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SH_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:ALL_STATUS:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2021": {
+            "n": 243,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2022": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          },
+          "SZ_A:NON_ST:2023": {
+            "n": 242,
+            "nondegenerate": true,
+            "pass": true
+          }
+        }
+      }
+    }
+  },
+  "status": "COMPLETE_1_OF_3_MINIMAL_MECHANISMS",
+  "strategy_or_outcome_fields_read": [],
+  "usefulness_claim": "NONE"
+}

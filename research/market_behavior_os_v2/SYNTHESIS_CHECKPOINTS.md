@@ -899,3 +899,45 @@ component signs, shape neighbors, PIT/relative coordinates, redundancy and
 latent-compression gates before construction. Explicitly prohibit the failed
 OLS slopes, ordinal progressions, signed reversals, curvatures, future returns,
 strategy outcomes, and CY-011.
+
+## SYNTH-MKT-021 — after same-session minute-mechanism construction
+
+### What was learned?
+
+All three preregistered composites are internally stable, but internal coherence
+does not make them independent market mechanisms. VWAP defense/recovery alone
+survives the frozen daily-return, downside-volatility, and minute-volume-
+concentration geometry. Late acceptance is jointly reconstructable at the PIT
+boundary, while price-volume demand balance is mostly open-to-close return.
+
+### What market behavior are we still not studying?
+
+We do not know whether same-session VWAP defense/recovery recurs, mean-reverts,
+or has no repeatable next-state behavior after controlling for current return,
+volatility, and volume concentration. Cross-day objective price-level defense
+remains unmeasured because no action-safe cross-day level exists in this panel.
+Size/style leadership, cross-asset state, and portable multi-strategy habitats
+also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. One distinct completed-session coordinate supplies no future direction,
+payoff, trigger, execution, exit, capacity, or habitat evidence. Late acceptance
+and demand balance are compressed rather than combined into a strategy story.
+
+### Parallel-track awareness
+
+- **Market research:** determine the outcome-blind temporal meaning of the sole
+  distinct intraday coordinate.
+- **Existing-strategy archaeology:** no strategy field or future price return
+  was read; seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; a defense/recovery family can
+  advance only after a stable future state process exists.
+
+### Research Director decision
+
+`DEEPEN_WITHOUT_PAYOFFS` via MKT-MIN-DEF-DYN-001 map-first. Freeze a
+nonoverlapping future-market-state response, current-state controls, natural
+horizons, temporal blocks, coordinate/neighbor gates, and no-rescue rules before
+shifting the accepted score. Do not read future price return, strategy outcomes,
+raw minute rows, failed roles, post-2023 data, or CY-011.

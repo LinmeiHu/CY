@@ -114,3 +114,10 @@ MKT-MIN-SUPACC-001 is frozen under spec `fcdc9d35...`. Three four-component
 same-session mechanism scores must survive aggregation, leave-one-out,
 cross-sectional, denominator, PIT/relative, and external-control compression.
 No future state or strategy outcome may enter.
+
+MKT-MIN-SUPACC-001 retains one distinct coordinate. VWAP defense/recovery passes
+all internal and external gates. Late acceptance is jointly reconstructable
+from fixed daily controls, and price-volume demand balance is primarily
+open-to-close return geometry. The next frontier is MKT-MIN-DEF-DYN-001
+map-first: test only whether the distinct defense/recovery state has repeatable
+future state dynamics, without future price return or strategy outcomes.

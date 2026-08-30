@@ -64,6 +64,7 @@
 | `experiments/MKT-VOL-TRANS-004_spec.json` | Frozen hash-alias/output-identity retry spec |
 | `reports/MKT-VOL-TRANS-004_dynamics.md` | Zero-of-three nonoverlapping transition/modifier result |
 | `experiments/MKT-MIN-SUPACC-001_spec.json` | Frozen same-session minute mechanism construction contract |
+| `reports/MKT-MIN-SUPACC-001_representation.md` | One distinct same-session VWAP defense/recovery coordinate; two externally compressed manifestations |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

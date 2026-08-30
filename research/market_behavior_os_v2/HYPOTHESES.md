@@ -335,3 +335,20 @@
 - Boundary: daily-volatility role representations remain stable. No continuous
   transition process, direction/discovery state modifier, strategy habitat,
   future return, timing, or rule is established.
+
+## MKT-H-021 — same-session VWAP defense/recovery representation
+
+- Status: `ONE_OF_THREE_MINIMAL_ENGINE_DIMENSIONS`.
+- All three fixed four-component composites pass internal stability. Worst
+  median correlations are 0.892 across aggregation shapes, 0.894 across all
+  leave-one-out variants, 0.965 across p40/p60 definitions, and at least 0.998
+  across denominators.
+- VWAP defense/recovery passes external distinctness: maximum pairwise PIT rho
+  0.764; fixed-control joint adjusted rank R2 is 0.588 median/0.607 maximum in
+  PIT and 0.109/0.111 in relative space.
+- Late acceptance fails PIT joint distinctness at 0.701 median adjusted R2.
+  Demand balance fails pairwise distinctness at 0.914 with open-to-close return
+  and PIT joint reconstruction at 0.916 median adjusted R2.
+- Boundary: the survivor is a 15:30-available same-session representation. It
+  is not evidence of cross-day support, participant accumulation, future
+  recurrence, price return, strategy usefulness, entry timing, or an archetype.

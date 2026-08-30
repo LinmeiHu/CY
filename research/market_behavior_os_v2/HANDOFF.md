@@ -593,3 +593,28 @@ Do not read raw minutes, future values, outcomes, failed level/path fields, or
 CY-011. Do not call these cross-day support/resistance or participant
 accumulation. Execute twice and compress redundant passing mechanisms only in
 the frozen priority order.
+
+MKT-MIN-SUPACC-001 completes with one of three minimal engine dimensions. All
+three composites pass their internal construction, aggregation, leave-one-out,
+p40/p60, denominator, coverage, and coordinate gates. Internal stability alone
+does not establish a causal mechanism.
+
+Only `vwap_defense_recovery` passes external geometry: maximum pairwise PIT rho
+0.764; joint adjusted R2 0.588 median/0.607 maximum in PIT and 0.109/0.111 in
+relative space. `late_vwap_acceptance` is jointly reconstructable at the frozen
+PIT boundary (0.701 median adjusted R2). `price_volume_demand_balance` is mostly
+open-to-close return (PIT rho 0.914; joint adjusted R2 0.916). Preserve both as
+descriptive manifestations, but do not count them as independent mechanisms.
+
+Two runs are byte-identical: panel `b08abaab...`, result `b09808a9...`, report
+`e070f9a9...`; five focused tests pass. The accepted coordinate is a completed-
+session, 15:30-available representation only. Do not call it cross-day support,
+participant accumulation, supply exhaustion, future persistence, a signal, or
+a strategy habitat.
+
+SYNTH-MKT-021 selects MKT-MIN-DEF-DYN-001 map-first. Test the temporal meaning
+of the sole distinct same-session defense/recovery coordinate using future
+market-state values only, with nonoverlap, controls, fixed horizons/blocks, and
+no favorable-coordinate rescue frozen before shifting. Do not read future
+price returns, strategy fields, raw minute rows, failed roles, post-2023 data,
+or CY-011.

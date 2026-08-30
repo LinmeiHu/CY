@@ -95,3 +95,22 @@ compression only. It does not establish future return, future volatility,
 strategy usefulness, habitat fitness, entry timing, execution, or a new
 archetype. Future values, strategy outcomes, failed path roles, raw minute rows,
 post-2023 data, and CY-011 are prohibited.
+
+## MKT-MIN-SUPACC-001 result
+
+All three frozen scores pass the internal representation gates. The worst
+median aggregation-shape, leave-one-out, and cross-sectional-definition
+correlations are 0.892, 0.894, and 0.965 respectively; denominator stability is
+at least 0.998.
+
+Only `vwap_defense_recovery` survives external compression. Its maximum
+pairwise PIT correlation is 0.764 and fixed-control joint reconstruction is
+0.588 median/0.607 maximum adjusted R2 in PIT space. Late acceptance fails PIT
+joint distinctness at 0.701 median adjusted R2. Demand balance is return-
+redundant: PIT rho 0.914 with open-to-close return and PIT joint reconstruction
+0.916 median adjusted R2. The two excluded composites remain stable descriptive
+manifestations, not independent engine dimensions.
+
+Two executions are byte-identical: panel `b08abaab...`, result `b09808a9...`,
+report `e070f9a9...`. This result remains representation-only and preserves the
+15:30 availability and all claim prohibitions above.
