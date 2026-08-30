@@ -2,8 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-RTD-001_INVALIDATED_AFTER_PARTIAL_IN_MEMORY_EXECUTION — no result artifact
-exists and H-020 remains unresolved. H-004 remains frozen for
+EXP-RTD-002_COMPLETE_REJECTED — H-020 right-tail density is raw but not incremental
+to frozen breadth/trend and is block-unstable. EXP-RTD-001 remains invalid.
+H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
 remain invalid. No strategy or production change is authorized.
 
@@ -637,6 +638,33 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - The frozen runner/spec are not repaired. Bound inputs are unchanged and H-020
   remains unresolved. Continuation requires fresh EXP-RTD-002 identities and
   output paths while preserving every scientific gate.
+
+## AUTONOMOUS_CYCLE_EXP_RTD_002_PREREGISTRATION
+
+- Every scientific field in EXP-RTD-001 and EXP-RTD-002 is identical; only the
+  experiment identity, runner binding, and output namespace are fresh.
+- `index_realized_vol20` is sourced once from accepted pre-entry controls. Its
+  daily duplicate agrees within `1.11e-16` but is excluded before the merge.
+- The corrected frame has 399 rows, zero duplicate columns, zero volatility
+  missingness, 387/383 feature/control-complete rows, 213 unchanged labels, and
+  399/399 causal applicability checks.
+- Spec SHA `a56ce387...`; five-input-plus-spec aggregate `c1a1bbdc...`.
+- Status: frozen before the first EXP-RTD-002 outcome calculation.
+
+## AUTONOMOUS_CYCLE_EXP_RTD_002_RESULT
+
+- Raw MFE rho is 0.111, within-year 0.114, with 8/8 positive LOYO. MFE>=20%
+  opportunity rho is 0.119 with 8/8 signs; both raw/outcome gates pass.
+- The decisive breadth/trend partial rho is 0.002 with 5/8 positive LOYO. Adding
+  beta, liquidity, and volatility gives -0.007 with 4/8. Controlled gate fails.
+- Fixed p90 and p90-p10 neighbors are positive, and ex-Top4 rho is 0.117, but
+  block rhos are 0.264/-0.103/0.022. Full falsification gate fails.
+- Engineering audit: 399 rows, one intended volatility column, no missingness or
+  duplicate columns, 399 causal checks, unchanged sample/labels.
+- Two runs are byte-identical; the preexisting aggregate remains `998988e3...`.
+  Output hashes: table `31515122...`, JSON `9abd1860...`, report `23c6a971...`.
+- Scientific decision: `REJECT`. H-020 is redundant with breadth/trend or
+  block-specific and authorizes no threshold, interaction, overlay, or strategy.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

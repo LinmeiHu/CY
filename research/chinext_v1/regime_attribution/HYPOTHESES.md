@@ -374,6 +374,8 @@ byte-consistent with one another.
   neighbors, risk controls, blocks, Top-4 P&L, securities, and industries.
 - Confounds: the univariate relationship was already explored in Phase 3; this is
   exploratory incrementality, not new confirmatory OOS evidence.
-- Status: `UNRESOLVED`; EXP-RTD-001 is invalidated after an in-memory merge-column
-  failure and wrote no outputs. Fresh EXP-RTD-002 is required. No threshold,
-  interaction, overlay, replay, or strategy modification is authorized.
+- Result: raw MFE rho 0.111 with 8/8 positive LOYO collapses to fixed
+  breadth/trend partial rho 0.002 (5/8) and risk-controlled -0.007 (4/8). Only
+  the 2018-2021 block is materially positive.
+- Status: `REJECTED` by valid EXP-RTD-002. EXP-RTD-001 remains invalid. No
+  threshold, interaction, overlay, replay, or strategy modification is authorized.

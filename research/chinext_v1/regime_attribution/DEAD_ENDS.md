@@ -47,6 +47,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   does not explain residual post-day-5 return after fixed state, tails, or blocks.
   Do not search alternate early landmarks or giveback thresholds, and do not turn
   the descriptive day-5 separation into a sell rule.
+- H-020's eligible-universe right-tail-density mechanism is rejected as
+  incremental opportunity information by EXP-RTD-002. Raw and neighboring
+  relationships are positive, but the fixed breadth/trend residual is 0.002 and
+  the block signs are unstable. Do not search tail thresholds, interactions, or
+  substitute this feature for frozen H-004 breadth.
 
 ## Invalid rather than rejected
 
@@ -61,5 +66,7 @@ Updated 2026-08-30 after resume integrity reconciliation.
   reproduces the failure before transient materialization.
 - EXP-P8P9-001 and `FINAL_REPORT.md` are downstream-invalid, not negative
   scientific evidence, because they consume EXP-P7-003 ledgers.
+- EXP-RTD-001 is permanently invalid after its duplicate-column implementation
+  failure. Its scientific question was cleanly re-executed only as EXP-RTD-002.
 
 Do not delete, overwrite, silently repair, or cite an invalid branch as evidence.

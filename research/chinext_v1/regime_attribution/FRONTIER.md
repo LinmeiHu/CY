@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`INVALIDATE_EXP_RTD_001_PREPARE_FRESH_EXP_RTD_002`.
+`REJECT_H020_RANK_NEXT_INDEPENDENT_FRONTIER`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,6 +66,6 @@ descriptive localization by day 5, not evidence for an exit action.
 
 ## Exact next action
 
-Do not modify or rerun EXP-RTD-001. Create EXP-RTD-002 with a new runner and
-output paths, sourcing `index_realized_vol20` exactly once while preserving every
-scientific gate. EXP-P7-003 remains forbidden.
+Rank the remaining independent V1 mechanism questions. Do not pursue H-007
+interactions merely to rescue breadth or H-020, and do not mine thresholds.
+EXP-RTD-001 and EXP-P7-003 remain forbidden.

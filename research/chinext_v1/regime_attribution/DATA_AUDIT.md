@@ -148,3 +148,12 @@ reconstructs every accepted day-5 return with maximum absolute error
 `2.55e-16`. Block counts are 137 EXTENDED, 59 HOLDOUT, and 99 DEVELOPMENT; all
 eight entry years remain represented. No endpoint association was calculated
 before the one day-5 feature and its gates were frozen.
+
+EXP-RTD-002's engineering-only audit reconciles both available
+`index_realized_vol20` projections on all 399 entries (maximum absolute difference
+`1.11e-16`) and retains the accepted pre-entry control as the single intended
+source. The corrected merge conserves 399 rows, unique source keys, 387 feature-
+complete rows, 383 fixed-control-complete rows, and 213 false-breakout labels.
+It has zero duplicate columns, zero volatility missingness, and 399/399 causal
+signal-date/first-applicable/T+1 alignments. No outcome association was calculated
+before EXP-RTD-002 was frozen.

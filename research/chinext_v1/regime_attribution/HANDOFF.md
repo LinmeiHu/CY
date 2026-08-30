@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-RTD-001_INVALIDATED_AFTER_PARTIAL_IN_MEMORY_EXECUTION` on 2026-08-30.
+`EXP-RTD-002_COMPLETE_REJECTED` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -211,10 +211,9 @@ mechanisms.
 
 ## Required next action
 
-Do not modify or rerun EXP-RTD-001. Create EXP-RTD-002 with a new runner/spec and
-new output paths. Project `index_realized_vol20` from exactly one accepted source,
-preserve all scientific definitions/gates, then execute twice and persist the
-result.
+Rank the next independent frontier. Exclude H-007 breadth interactions as rescue
+search, preserve H-004 for prospective validation, and never modify/rerun
+EXP-RTD-001.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.
