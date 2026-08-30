@@ -2,10 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-D5D-002_PREREGISTERED — H-022 remains unresolved after EXP-D5D-001 failed on
-a block-packet type error without printed, inspected, or written estimates.
-D5D-002 preserves the explanatory decomposition exactly and corrects only scalar
-extraction for the frozen temporal gate.
+EXP-D5D-003_PREREGISTERED — H-022 remains unresolved after D5D-001/D5D-002
+engineering failures without printed, inspected, or written estimates. The
+HOLDOUT endpoint is constant; D5D-003 preserves the frozen temporal gate and
+records the non-estimable block as a gate failure without imputation.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
@@ -772,6 +772,21 @@ authorization, a new experiment ID, and fresh isolated outputs.
   the block packet `rho` scalars differ.
 - D5D-002 spec SHA `c0dde313bcef3d631f2ac11fed6bc3fec270e94fbb296612a913cad4b44ec3c6`;
   runner SHA `f8bd145a172746d2f56b07bf9a1bb85fa0458de015a645ab457c3141f77746d3`.
+  Status is frozen before the first valid component/outcome test.
+
+## AUTONOMOUS_CYCLE_EXP_D5D_002_FAILURE_AND_003_PREREGISTRATION
+
+- D5D-002 reached the fixed block diagnostic and found HOLDOUT rho `None`, then
+  raised before output. The accepted block has 59 survivors, zero extreme
+  winners, and one endpoint level; correlation is scientifically non-estimable.
+- No estimate was printed or inspected and no D5D-002 output exists. Its full
+  pre-execution manifest was exact at execution.
+- The frozen temporal gate requires three estimable block rhos. D5D-003 does not
+  impute, pool, remove HOLDOUT, or alter the endpoint. It retains the block's
+  `rho=None`; two estimable rhos make the unchanged temporal gate false.
+- All other H-022 scientific elements and inputs remain exact. D5D-003 spec SHA
+  `9c583257804db5336f5056ac02592aeb9f5e28263fe71b163b453867f272e842`;
+  runner SHA `7916df0e6516e28a19e222268040392a522326f680677bd0d4a537a7db5b4e0f`.
   Status is frozen before the first valid component/outcome test.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE

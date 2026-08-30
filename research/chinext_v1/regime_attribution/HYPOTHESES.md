@@ -445,10 +445,11 @@ byte-consistent with one another.
   survival, and overlap arithmetically with terminal return. AVAILABLE_AT is
   Day-5 15:30; any potential action is next valid session or later, but this
   explanatory experiment authorizes no action.
-- Status: `PREREGISTERED` as clean EXP-D5D-002 before the first valid
-  component/outcome association. EXP-D5D-001 is invalid after its structured
-  block packet was compared directly with zero; no estimate was printed,
-  inspected, or written. D5D-002 preserves the science exactly and changes only
-  identity, output paths, and extraction of each already-intended block `rho`.
-  No alternate landmark, market proxy, threshold, hold/exit rule, replay, or
-  strategy modification is authorized.
+- Status: `PREREGISTERED` as final clean EXP-D5D-003 before the first valid
+  component/outcome association. D5D-001 and D5D-002 are invalid engineering
+  attempts with no output or inspected estimate. The accepted HOLDOUT survivor
+  block has zero extreme winners, so its block rho is non-estimable; D5D-003
+  retains `rho=None` without imputation and therefore fails the unchanged
+  three-block temporal gate. All other science remains exact. No alternate
+  landmark, market proxy, threshold, hold/exit rule, replay, or strategy
+  modification is authorized.

@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`EXECUTE_EXP_D5D_002_CLEAN_DAY5_MARKET_STOCK_DECOMPOSITION`.
+`EXECUTE_EXP_D5D_003_FINAL_CLEAN_DAY5_MARKET_STOCK_DECOMPOSITION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,9 +66,9 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Execute clean EXP-D5D-002 exactly under spec SHA `c0dde313...`. EXP-D5D-001 is
-invalid after a block-packet type error and has no output or inspected estimate.
-D5D-002 changes only identity, output paths, and explicit extraction of the
-already-intended block `rho` scalars; all H-022 science remains frozen. Do not
-inspect a result and alter the decomposition, revisit intraday components, choose
-another landmark/index, retest H-018/H-019, or create a hold/exit rule.
+Execute final clean EXP-D5D-003 exactly under spec SHA `9c583257...`. D5D-001 and
+D5D-002 are invalid with no output or inspected estimate. The HOLDOUT survivor
+block has zero extreme winners, so its rho is non-estimable; D5D-003 retains
+`rho=None` without imputation and fails the unchanged three-block temporal gate.
+Do not alter the decomposition, drop or pool HOLDOUT, choose another endpoint,
+landmark, or index, revisit intraday/H-018/H-019, or create a hold/exit rule.

@@ -84,5 +84,10 @@ Updated 2026-08-30 after resume integrity reconciliation.
   output and no estimate was printed or inspected. H-022 may be executed only as
   fresh EXP-D5D-002 with the frozen science unchanged and explicit extraction of
   the already-intended block `rho` scalar.
+- EXP-D5D-002 is permanently invalid because it raised on the HOLDOUT block's
+  non-estimable rho. The fixed 59-trade block has zero extreme winners, so no
+  correlation exists. EXP-D5D-003 retains this as `rho=None` and fails the
+  already-frozen three-block temporal gate; no imputation, pooling, or endpoint
+  change is allowed.
 
 Do not delete, overwrite, silently repair, or cite an invalid branch as evidence.

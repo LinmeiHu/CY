@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-D5D-002_PREREGISTERED` on 2026-08-30.
+`EXP-D5D-003_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -41,7 +41,13 @@ compared structured block rank packets directly with zero. No estimate was
 printed or inspected and no output exists. Its spec/runner remain frozen.
 EXP-D5D-002 preserves every scientific element and corrects only extraction of
 the already-intended block `rho` scalars, with fresh identity and `_v2` outputs.
-Execute D5D-002 spec SHA `c0dde313...`; do not modify its contract.
+It then stopped because HOLDOUT rho is non-estimable: the accepted 59 survivors
+contain zero extreme winners. Again no output or estimate was printed/inspected.
+
+EXP-D5D-003 is the final clean identity. It preserves all H-022 science, retains
+HOLDOUT `rho=None` without imputation, and consequently fails the unchanged
+three-block temporal gate. Execute spec SHA `9c583257...`; do not modify its
+contract, drop/pool HOLDOUT, or redefine the endpoint.
 
 EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete
