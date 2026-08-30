@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-D5D-003_PREREGISTERED` on 2026-08-30.
+`EXP-D5D-003_COMPLETE_REFINED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -46,8 +46,11 @@ contain zero extreme winners. Again no output or estimate was printed/inspected.
 
 EXP-D5D-003 is the final clean identity. It preserves all H-022 science, retains
 HOLDOUT `rho=None` without imputation, and consequently fails the unchanged
-three-block temporal gate. Execute spec SHA `9c583257...`; do not modify its
-contract, drop/pool HOLDOUT, or redefine the endpoint.
+three-block temporal gate. It validly returns `REFINE`: stock-specific raw/control
+0.223/0.283 and market raw/control 0.190/0.159 pass, but beta-adjusted 0.055/0.132
+and HOLDOUT temporal evidence fail. Two runs are byte-identical. No hold/exit or
+strategy action follows. Next audit early severe-loss formation coverage; do not
+historically deepen H-022 by alternate beta, index, horizon, or threshold.
 
 EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

@@ -2,10 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-D5D-003_PREREGISTERED — H-022 remains unresolved after D5D-001/D5D-002
-engineering failures without printed, inspected, or written estimates. The
-HOLDOUT endpoint is constant; D5D-003 preserves the frozen temporal gate and
-records the non-estimable block as a gate failure without imputation.
+EXP-D5D-003_COMPLETE_REFINED — H-022 core stock-specific and market components
+both survive, but the beta-adjusted neighbor and temporal gate fail. The result
+does not cleanly assign H-013 or authorize a holding/exit action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
 H-004 remains frozen for
@@ -788,6 +787,33 @@ authorization, a new experiment ID, and fresh isolated outputs.
   `9c583257804db5336f5056ac02592aeb9f5e28263fe71b163b453867f272e842`;
   runner SHA `7916df0e6516e28a19e222268040392a522326f680677bd0d4a537a7db5b4e0f`.
   Status is frozen before the first valid component/outcome test.
+
+## AUTONOMOUS_CYCLE_EXP_D5D_003_RESULT
+
+- Valid population: 295 accepted day-5 survivors, 15 extreme winners, 284
+  fixed-control-complete rows, and exact 295/295 market mappings.
+- Stock-specific log excess has raw/within-year rhos 0.223/0.147 with 8/8
+  positive LOYO; after concurrent market plus fixed entry controls its partial
+  rho is 0.283 with 8/8. Both stock core gates pass.
+- The concurrent 399102 component is also positive: raw 0.190 and
+  stock-specific/pre-entry-controlled 0.159, both 8/8. The market gate passes.
+- The fixed beta-adjusted neighbor is weak at 0.055 raw and 0.132 controlled;
+  its magnitude gate fails. The simple-return neighbor is 0.228 with 8/8.
+- DEVELOPMENT/EXTENDED stock-specific block rhos are 0.305/0.180. HOLDOUT's 59
+  survivors contain zero extreme winners; rho remains `None`, so the frozen
+  three-block temporal gate fails without imputation.
+- Ex-Top4 P&L rho is 0.162, duration/exit partial rho is 0.209, and all
+  leave-security/industry omissions are positive. The separate falsification
+  gate passes.
+- Winner20/MFE/terminal-return associations are 0.322/0.597/0.577; false
+  breakout and severe loss are -0.551/-0.340. These are secondary descriptive
+  path associations, not new decision signals.
+- Decision: `REFINE` /
+  `STOCK_SPECIFIC_COMPONENT_SURVIVES_CORE_BUT_NOT_FULL_FALSIFICATION`. Both runs
+  are byte-identical. Output hashes: table `f9610a93...`, JSON `052e1417...`,
+  report `7f38a1fa...`, packet `9bf133e5...`.
+- No alternate beta, market proxy, landmark, threshold, hold/exit rule, replay,
+  or strategy modification is authorized.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

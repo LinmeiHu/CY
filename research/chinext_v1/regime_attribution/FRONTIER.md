@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`EXECUTE_EXP_D5D_003_FINAL_CLEAN_DAY5_MARKET_STOCK_DECOMPOSITION`.
+`REFINE_H022_PIVOT_TO_SEVERE_LOSS_EARLY_FORMATION_AUDIT`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,9 +66,9 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Execute final clean EXP-D5D-003 exactly under spec SHA `9c583257...`. D5D-001 and
-D5D-002 are invalid with no output or inspected estimate. The HOLDOUT survivor
-block has zero extreme winners, so its rho is non-estimable; D5D-003 retains
-`rho=None` without imputation and fails the unchanged three-block temporal gate.
-Do not alter the decomposition, drop or pool HOLDOUT, choose another endpoint,
-landmark, or index, revisit intraday/H-018/H-019, or create a hold/exit rule.
+Audit exact action-safe coverage for a minimum-sufficient early severe-loss
+formation study, prioritizing a fixed early landmark only if enough of the 44
+accepted severe losses remain observable and temporal/block variation is
+estimable. The question is when adverse paths become distinguishable, not how to
+optimize a stop. Do not mine beta definitions to deepen H-022, revisit intraday
+components/H-018/H-019, select a threshold, or create an exit rule.

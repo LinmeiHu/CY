@@ -445,11 +445,16 @@ byte-consistent with one another.
   survival, and overlap arithmetically with terminal return. AVAILABLE_AT is
   Day-5 15:30; any potential action is next valid session or later, but this
   explanatory experiment authorizes no action.
-- Status: `PREREGISTERED` as final clean EXP-D5D-003 before the first valid
-  component/outcome association. D5D-001 and D5D-002 are invalid engineering
-  attempts with no output or inspected estimate. The accepted HOLDOUT survivor
-  block has zero extreme winners, so its block rho is non-estimable; D5D-003
-  retains `rho=None` without imputation and therefore fails the unchanged
-  three-block temporal gate. All other science remains exact. No alternate
-  landmark, market proxy, threshold, hold/exit rule, replay, or strategy
-  modification is authorized.
+- Result: stock-specific excess passes the core raw/controlled gates at
+  0.223/0.283 with 8/8 positive LOYO. The 399102 component is also independently
+  positive at 0.190/0.159 with 8/8. The fixed beta-adjusted neighbor is only
+  0.055 raw and 0.132 controlled, so the neighbor gate fails. DEVELOPMENT and
+  EXTENDED stock-specific rhos are 0.305/0.180; HOLDOUT has zero extreme winners
+  and is non-estimable, so the temporal gate fails. Tail, duration/exit,
+  security, and industry attacks pass.
+- Status: `REFINE_QUALIFIED` by valid EXP-D5D-003. The core result suggests both
+  stock-specific and market components in H-013, but beta-definition and temporal
+  falsification prevent clean attribution. D5D-001/D5D-002 remain invalid with
+  no output or inspected estimate. Do not mine beta forms, alternate landmarks,
+  market proxies, or thresholds to rescue a component, and do not create a
+  hold/exit or strategy rule.

@@ -59,6 +59,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   component post hoc, search clock-time thresholds, swap outcome definitions,
   or turn the entry-signal day into a filter. Original lifecycle breakout timing
   remains a separate lineage gap, not a license to relabel this failed event.
+- H-022 does not support choosing a uniquely stock-specific or market-driven
+  explanation for H-013. Both unadjusted components pass core gates, but the
+  beta-adjusted neighbor is weak and HOLDOUT has no extreme-winner variation.
+  Do not search beta estimators, alternate market proxies, or day landmarks to
+  force a clean attribution from this consumed sample.
 
 ## Invalid rather than rejected
 
