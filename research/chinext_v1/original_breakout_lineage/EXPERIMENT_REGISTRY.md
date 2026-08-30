@@ -15,6 +15,7 @@
 | EXP-OBL-009 | H-OBL-007 | Clean feasibility refinement preserving the exact selection boundary/assignments and changing only balance gates to 40/90%. | COMPLETE_FREEZE_LINEAGE | NONE; freeze only |
 | EXP-OBL-010 | H-OBL-008 | Reveal MFE/non-false-breakout outcomes against the frozen contested selection lineage. | COMPLETE_REFINE_TEMPORAL_INSTABILITY | VALID_REVEAL; no rule |
 | EXP-OBL-011 | H-OBL-009 | Test frozen continuous candidate/vacancy pressure as participation intensity beyond breadth, absolute RS, and binary contested selection. | COMPLETE_REJECTED | VALID_POST_SECONDARY_REVEAL; no rule |
-| EXP-OBL-012 | H-OBL-010 | Construct an outcome-blind prior-60 pivot-topology taxonomy with fixed three-session/five-session neighboring-definition falsification. | FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION | NONE |
+| EXP-OBL-012 | H-OBL-010 | Construct an outcome-blind prior-60 pivot-topology taxonomy with fixed three-session/five-session neighboring-definition falsification. | REJECTED_CONSTRUCTION_ROBUSTNESS; no output | NONE |
+| EXP-OBL-013 | H-OBL-011 | Construct outcome-blind canonical minimum-volume support/recovery lineages. | PLANNED_NOT_PREREGISTERED | NONE |
 
 Invalid or failed attempts will remain as separate immutable rows and identities.

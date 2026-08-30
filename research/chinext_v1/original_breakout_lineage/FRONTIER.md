@@ -183,6 +183,20 @@ neighbor, natural zero-change signs, four neutral classes, and no outcome access
 The definitions, balance/year gates, and 60% neighboring-assignment gate cannot
 change after construction.
 
+## Frontier after EXP-OBL-012
+
+Pivot topology is rejected before outcomes because three-session/five-session
+assignment agreement is only 39.60%. Its balanced classes do not justify choosing
+a radius after inspection.
+
+The next highest-value independent formation anchor is V1's exact minimum-volume
+session in t-30..t-1. Rather than screen another volume transition, H-OBL-011 asks
+whether the already-canonical dry-up session establishes support that remains
+defended and whether price recovers above its close by t-1. Low-versus-close
+support semantics will be the fixed neighboring-definition attack. This uses a
+strategy-native anchor and has lower search dimensionality than another general
+volume-feature family.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

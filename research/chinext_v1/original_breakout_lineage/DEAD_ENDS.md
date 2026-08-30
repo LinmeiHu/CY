@@ -82,3 +82,15 @@ independent confirmation. Do not search pressure bins, capacity thresholds,
 selected rank, cutoff margin, or alternate candidate/vacancy formulas.
 
 Decision: `REJECTED`; selection competition is closed on the consumed sample.
+
+## D-OBL-008 — strict local-pivot topology
+
+EXP-OBL-012 reconstructs strict three-session higher-low/lower-high classes for
+all 399 events with balanced counts 86/63/169/81 and every-year presence. The
+fixed strict five-session neighbor agrees on only 39.60% of assignments versus
+the frozen 60% requirement. Local peak/trough ordering is therefore too
+sensitive to the pivot radius for an auditable lineage freeze.
+
+No outcome was read and no artifact was accepted. Do not select a radius, search
+pivot windows, weaken the stability gate, merge classes, or inspect economic
+outcomes under this definition. Decision: `REJECTED_BEFORE_OUTCOME`.

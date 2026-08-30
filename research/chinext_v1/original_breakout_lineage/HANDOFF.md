@@ -179,6 +179,16 @@ under both definitions; four-class balance, every-year presence, 60% neighboring
 agreement, PIT, and outcome prohibition are frozen. Execute without outcomes and
 repeat for byte identity only if all gates pass. CY-011 remains locked.
 
+EXP-OBL-012 is rejected before outcomes. All 399 events map to balanced primary
+classes 86/63/169/81, but the fixed five-session neighbor agrees only 39.60%,
+below 60%. No output or outcome was read. Do not change pivot radius or gates.
+
+Next, preregister EXP-OBL-013 around V1's exact t-30..t-1 minimum-volume session.
+Construct neutral support-held/recovery lineages using deterministic tie handling
+and a fixed low-versus-close support neighbor. This must pass outcome-blind
+coverage, balance, temporal-presence, and stability gates before any reveal.
+CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_012_FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION`
+`EXP_OBL_012_REJECTED_BEFORE_OUTCOME_PIVOT_TO_MINVOL_ANCHOR`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -135,16 +135,22 @@ troughs and peaks creates neutral higher-low/lower-high structures before the
 signal. Construction must be outcome-blind and must pass a fixed neighboring
 pivot-definition test before any economic reveal.
 
-EXP-OBL-012 is frozen before feature materialization. It uses strict centered
-three-session extrema with no ties and classifies only the signs of the latest
-two trough and peak changes. The single fixed neighbor uses centered five-session
-extrema. All 399 events must have two peaks/troughs under both definitions; four
-neutral classes, per-year presence, size/concentration, 60% assignment agreement,
-PIT, and outcome-prohibition gates are immutable.
+EXP-OBL-012 is rejected before outcomes. It covers all 399 events with balanced
+three-session classes 86/63/169/81 and every-year presence, but the fixed strict
+five-session neighbor agrees on only 39.60% of assignments versus the frozen 60%
+gate. No output or economic outcome was read. Do not choose a pivot radius,
+search windows, weaken the gate, or reveal outcomes for this definition.
+
+The next independent structure is the exact canonical minimum-volume session,
+already defined by V1 over t-30..t-1. H-OBL-011 asks whether that supply-dry-up
+anchor creates neutral support-held/recovery lineages. This is narrower than the
+rejected aggregate downside-amount transition and requires an outcome-blind
+neighboring support-definition gate before any economic reveal.
 
 ## Exact next action
 
-Execute committed EXP-OBL-012 without outcomes. If all frozen construction gates
-pass, rerun for byte identity and freeze the neutral assignments; otherwise
-reject the definition without changing radius, boundaries, or gates. Do not
-revisit selection pressure, modify V1, or open CY-011.
+Preregister EXP-OBL-013 around the canonical t-30..t-1 minimum-volume session.
+Use deterministic tie handling, neutral support-held/recovery classes, and a
+fixed low-versus-close support neighbor. Reject before outcomes if coverage,
+balance, temporal presence, or neighboring stability fails. Do not revisit pivot
+radii, modify V1, or open CY-011.
