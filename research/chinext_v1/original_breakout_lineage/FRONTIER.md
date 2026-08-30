@@ -52,6 +52,19 @@ Updated ranking:
 
 The next step is outcome-blind feature freezing, not an outcome calculation.
 
+## Frontier after EXP-OBL-005
+
+Distinct fixed-width resistance episodes are rejected before outcomes because
+1%/2% neighboring-definition agreement misses the frozen gate. Selecting 3% or
+searching other widths is prohibited.
+
+The next question is parameter-free prebreakout positioning: the action-safe log
+distance of t-1 close to the exact canonical reference. T-3 and T-5 are fixed
+temporal neighbors, not selectable horizons. This tests whether price was already
+accepted near resistance before the breakout session rather than requiring a
+large one-day displacement. Signal breakout margin and reference age will be
+controls if the feature is later tested.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

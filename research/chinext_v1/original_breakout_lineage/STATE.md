@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_005_FROZEN_OUTCOME_BLIND_FEATURE_CONSTRUCTION`
+`EXP_OBL_005_REJECTED_BEFORE_OUTCOME_NEXT_FRONTIER_SELECTED`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -74,14 +74,19 @@ reverse the positive development block; the frozen neighbor is approximately
 zero. All five gates fail and two executions are byte-identical. No component is
 promoted from this failed composite.
 
+EXP-OBL-005 rejects H-OBL-004 before any outcome join. The 2% distinct resistance-
+test episode count varies well, but its 1% neighbor rho is 0.604 below the frozen
+0.65 gate (3% rho 0.713). No feature artifact or outcome test is accepted.
+
 ## Current scientific decision
 
-`EXECUTE_RESISTANCE_FEATURE_FREEZE` — reconstruct distinct 2% zone-entry episodes
-and fixed 1%/3% neighbors without an outcome join.
+`PIVOT_TO_PARAMETER_FREE_PREBREAKOUT_POSITIONING` — fixed-width episode topology
+is definition-sensitive; t-1 log distance to the exact reference avoids a zone
+threshold and directly measures whether price was already accepted near the high.
 
 ## Exact next action
 
-Execute EXP-OBL-005, verify exact reconciliation and deterministic rerun, and
-freeze the feature if all gates pass. Do not infer from outcomes or alter the
-rejected lineages. Only after the topology feature freeze may a new outcome test
-begin.
+Preregister EXP-OBL-006 to freeze T-1 prebreakout distance with fixed T-3/T-5
+temporal neighbors. Reconstruct action-safe values without outcomes and preserve
+signal breakout margin/reference age as later controls. Do not search distance
+thresholds.

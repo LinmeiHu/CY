@@ -55,6 +55,15 @@ Zone duration, reference age, prebreakout distance, box width, V1 entry state,
 market state, and H-004 breadth are controls, not new search dimensions. EXP-
 OBL-005 is frozen before feature materialization. No candidate rule exists.
 
+EXP-OBL-005 is now rejected before outcomes: 2%/1% episode-count rho is 0.604,
+below the 0.65 neighboring gate; 2%/3% is 0.713. No artifact or outcome test is
+accepted. Do not choose 3% or search other widths.
+
+The next frontier is parameter-free prebreakout positioning. Freeze action-safe
+log(t-1 close / canonical reference) with T-3 and T-5 temporal neighbors before
+any association. Breakout margin and reference age are future controls. No
+candidate rule exists and CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

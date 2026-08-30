@@ -31,3 +31,13 @@ post hoc. Do not relabel, merge, reweight, or threshold the four classes based o
 revealed outcomes.
 
 Decision: `REJECTED`; no entry, exit, size, overlay, or production rule.
+
+## D-OBL-004 — fixed-width repeated resistance-test episodes
+
+The 2% episode count has strong variation but fails the preregistered neighboring-
+definition gate: rho is 0.604 against the 1% definition and 0.713 against 3%,
+while both were required to reach 0.65. The feature is therefore too dependent
+on one arbitrary zone width for outcome testing.
+
+No outcome was joined. Do not choose 3% after observing its higher agreement or
+search other widths. Decision: `REJECTED_BEFORE_OUTCOME`.
