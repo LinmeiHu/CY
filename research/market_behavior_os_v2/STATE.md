@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-001_FROZEN_REPRESENTATION_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-GEO-001_EXTERNAL_GEOMETRY_MAP_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -921,6 +921,32 @@ recovery trajectories require 30 sequences despite the known prefreeze count of
 29. Absolute and sampled relative coordinates are allowed; causal historical
 normalization is explicitly unavailable from isolated blocks. Execute twice
 without outcomes, strategy fields, post-2023 data, or CY-011.
+
+MKT-SUPPORT-001 completes with four direct session roles. Signed objective-level
+test geometry, recovery speed, recovery amplitude, and recovery-volume intensity
+pass fixed 10/20/40 level, continuous/auction, support, and redundancy gates.
+The 20-day continuous primary has 117 tested market rows; 104 recover, while 13
+do not. Recovery speed is 0/1/2.25 bars at the 25th/50th/75th percentiles and
+68 maximum; these are descriptive representations, not defense quality.
+
+Time beyond level and test recurrence fail because only 16/15 of 24 10-day and
+13/12 of 24 40-day cells reach rho 0.50; auction comparisons also lack all 24
+nondegenerate cells. Their exact representations are not frozen. Closing level
+state passes all definition gates but is redundant with signed test geometry at
+global rho 0.947 and median cell absolute rho 0.904.
+
+Five-day signed-test-geometry and closing-level-state slopes pass endpoint/
+ordinal shape gates (rho 0.974/0.912 and 0.961/0.918; six of six years). Time-
+below and recurrence trajectories have only 60/64 defined ordinals and fail the
+240-sequence gate. Conditional recovery trajectories are not estimated: 29
+sequences versus 30 required. Five distinct manual cases reconstruct seven
+fields exactly.
+
+Two final executions are byte-identical: session `501194a7...`, trajectory
+`668005f7...`, result `cbb3f3a6...`, report `41a99062...`; five focused tests
+pass. No PIT history was fabricated. SYNTH-MKT-032 requires role-specific
+external geometry against ordinary daily-level and intraday path/activity
+alternatives before any temporal or usefulness claim.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

@@ -927,3 +927,21 @@ face endpoint/ordinal shapes; repeated-test frequency is separate. The known 29
 conditional recovery sequences cannot pass the unchanged 30-sequence floor and
 cannot be rescued by near-touch bands or neighbor definitions. Execute twice;
 no payoff or support-defense claim is permitted.
+
+MKT-SUPPORT-001 completes with four direct session roles: signed test geometry,
+conditional recovery speed, recovery amplitude, and recovery-volume intensity.
+Primary support is 117 tested market rows, including 104 recoveries and 13
+nonrecoveries. Time-below and test recurrence fail cross-level/auction cell
+gates. Closing level state passes but compresses into signed geometry at rho
+0.947 globally/0.904 median cell.
+
+Signed-geometry and closing-state five-day trajectories pass all fixed shape
+gates; time-below/recurrence fail ordinal coverage. Conditional recovery
+trajectory is not estimated at 29 versus the unchanged 30-sequence floor. Five
+distinct manual cases match all seven independently reconstructed fields.
+
+Two runs are identical: session `501194a7...`, trajectory `668005f7...`, result
+`cbb3f3a6...`, report `41a99062...`; five tests pass. This is representation
+quality only. Next map role-specific external controls for daily support
+distance/range/close location and ordinary minute path/volatility/activity to
+determine which roles are genuinely support-specific.

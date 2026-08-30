@@ -461,3 +461,16 @@
 - MKT-SUPPORT-001 spec `4c58431d...` freezes the minimum session/trajectory
   representation map. No role is accepted until all fixed level, auction,
   support, shape, portability, and redundancy gates complete.
+
+## MKT-H-029 — objective-level test and recovery representation
+
+- Status: `FOUR_SESSION_TWO_TRAJECTORY_ROLES_REPRESENTATION_ONLY`.
+- Session survivors: signed test geometry, conditional recovery speed, recovery
+  amplitude, and recovery-volume intensity. All pass fixed level/auction and
+  internal distinctness gates.
+- Exact time-below and test-recurrence roles fail definition-cell support;
+  closing level state is redundant with signed geometry.
+- Five-day signed-geometry and closing-state slopes pass shape gates. Conditional
+  recovery strengthening/weakening remains `NOT_ESTIMABLE_SUPPORT` at 29<30.
+- Boundary: no role has external distinctness, PIT historical normalization,
+  temporal meaning, support-defense truth, prediction, habitat, or usefulness.

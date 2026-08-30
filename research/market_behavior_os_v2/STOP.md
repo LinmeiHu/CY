@@ -16,5 +16,6 @@ establishes economic usefulness or authorizes a strategy rule or CY-011.
 MKT-SUPPORT-DATA-001 failed its reused-sample gate and 002 failed an inapplicable
 cross-source close-equality assumption. Both are ordinary invalid experiments,
 not S1-S12 conditions. MKT-SUPPORT-DATA-003 resolves the coordinate contract.
-MKT-SUPPORT-001 is frozen and should be executed before usefulness. Reinstate a
+MKT-SUPPORT-001 completes representation quality without a STOP. Continue with
+role-specific external geometry before temporal/usefulness research. Reinstate a
 STOP only if an S1-S12 boundary is actually encountered.

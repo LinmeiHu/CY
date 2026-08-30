@@ -240,3 +240,10 @@ session roles, 10/20/40 and auction challenges, five-day trajectory shapes,
 conditional-support floors, and fixed-priority redundancy compression. The PIT-
 historical coordinate remains unavailable rather than backfilled from isolated
 weeks. No role may be selected by view/year or promoted to usefulness.
+
+MKT-SUPPORT-001 retains four session roles and two trajectory shapes. Do not
+count closing state apart from signed geometry, revive time-below/recurrence by
+selecting cells, or estimate the 29-sequence conditional trajectory. The active
+frontier is role-specific external geometry: test whether each survivor is
+reconstructable from ordinary daily support distance/range/close state or generic
+intraday return, low timing, volatility, close location, and volume activity.

@@ -1364,3 +1364,52 @@ fixed 10/20/40 level neighbors, support/opportunity conditioning, coverage and
 cross-year gates, and redundancy compression. Preserve complete close-source
 diagnostics as controls. Do not test payoff, name accumulation, or turn a touch
 into defense.
+
+## SYNTH-MKT-032 — after objective-support representation construction
+
+### What was learned?
+
+Objective-level behavior is not one factor. Four distinct session roles survive
+internal tests: signed test geometry, recovery speed, recovery amplitude, and
+recovery-volume intensity. Closing state is a geometry manifestation rather
+than a separate session mechanism. Exact time-below and episode count are too
+sparse/definition-sensitive across fixed level cells.
+
+Two unconditional five-day shapes are stable: signed test geometry and closing
+level state. They may still be the same broader price-level progression. The
+more mechanism-specific question—whether recovery improves across repeated
+tests—cannot be estimated on 29 sequences against the frozen 30 floor.
+
+### What market behavior are we still not studying?
+
+We do not know whether recovery speed, amplitude, or volume intensity is
+support-specific rather than generic intraday return/range/low-timing/activity.
+We also lack an unbiased larger repeated-test sample, objective resistance,
+support-to-resistance transitions, temporal recurrence, failure dynamics,
+economic outcomes, and PIT historical normalization.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. These are stable observations, not a recurring process or edge. Pullback
+continuation and reversal remain inactive until external distinctness and
+temporal behavior exist.
+
+### Parallel-track awareness
+
+- **Market research:** test support-role external geometry before adding
+  temporal or payoff meaning.
+- **Existing-strategy archaeology:** no CHINEXT field/outcome was read; no rule
+  modification.
+- **Strategy invention:** no prototype; preserve pullback/reversal as backlog
+  hypotheses only.
+
+### Research Director decision
+
+`TEST_OBJECTIVE_SUPPORT_EXTERNAL_GEOMETRY` map-first. For each of the four
+session survivors and two stable trajectories, freeze economically matched
+daily and generic minute alternatives before reconstruction: daily level
+distance/range/close location and minute return, close location, time of low,
+realized volatility, and volume concentration/intensity. Use role-specific
+controls, fixed pairwise/joint redundancy gates, and the existing support
+domains. Do not delete a control, pool unsupported conditional trajectories, or
+read future payoff.

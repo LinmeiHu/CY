@@ -232,6 +232,19 @@ role error, not floating tolerance trouble alone. A corrected implementation
 must preserve QD-004 prices and use CY-006 only to obtain the causal coordinate
 scale. It must report exact close differences and never force equality.
 
+## MKT-SUPPORT-001 — invalid overlapping manual case identities
+
+The first complete construction passed scientific gates but the validation
+casebook used the same eligible session for overlapping recovery/repeated-test
+categories and another session for both no-test/action categories. The first
+duplicate was `ACTION|2018|03|603727.SH|2018-06-15`. The resulting output set is
+unaccepted even though estimates completed.
+
+The minimal correction preserves all descriptors and gates and selects the
+lexicographically first *unused* audit identity in the frozen category order. A
+regression check requires five categories and five distinct identities. No
+scientific value, threshold, sample row, or representation decision changes.
+
 ## MKT-STYLE-001 — invalid cumulative size-rank denominator
 
 The first implementation used an ordered window for both row number and count.

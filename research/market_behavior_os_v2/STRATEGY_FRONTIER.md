@@ -55,6 +55,12 @@ does not activate pullback continuation or reversal. Representation quality,
 temporal behavior, failure structure, payoff, execution, and habitat remain
 absent. Keep both archetypes at `WAIT_FOR_MARKET_MECHANISM`.
 
+MKT-SUPPORT-001 adds four internally distinct session observations but still no
+recurring support process. The conditional five-day recovery mechanism is not
+estimable at its frozen support floor. Pullback/reversal remain inactive until
+external geometry and temporal evidence distinguish support behavior from
+ordinary daily/minute path.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

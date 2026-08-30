@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Objective-support coordinate feasibility passes, but defense/recovery/repeated-test representations do not yet exist | Execute frozen MKT-SUPPORT-001 representation and compression gates |
+| EXPLORE | 35% | Four objective-level/recovery roles survive internal gates; support-specific distinctness is unknown | Map fixed daily and generic intraday alternatives before temporal/usefulness tests |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | Objective support defense could diversify pullback/reversal mechanisms if representation exists | Keep archetypes inactive until PIT representation and temporal meaning |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
