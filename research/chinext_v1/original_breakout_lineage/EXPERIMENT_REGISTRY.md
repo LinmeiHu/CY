@@ -16,6 +16,7 @@
 | EXP-OBL-010 | H-OBL-008 | Reveal MFE/non-false-breakout outcomes against the frozen contested selection lineage. | COMPLETE_REFINE_TEMPORAL_INSTABILITY | VALID_REVEAL; no rule |
 | EXP-OBL-011 | H-OBL-009 | Test frozen continuous candidate/vacancy pressure as participation intensity beyond breadth, absolute RS, and binary contested selection. | COMPLETE_REJECTED | VALID_POST_SECONDARY_REVEAL; no rule |
 | EXP-OBL-012 | H-OBL-010 | Construct an outcome-blind prior-60 pivot-topology taxonomy with fixed three-session/five-session neighboring-definition falsification. | REJECTED_CONSTRUCTION_ROBUSTNESS; no output | NONE |
-| EXP-OBL-013 | H-OBL-011 | Construct outcome-blind canonical minimum-volume support/recovery lineages with a fixed low/close support neighbor. | FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION | NONE |
+| EXP-OBL-013 | H-OBL-011 | Construct outcome-blind canonical minimum-volume support/recovery lineages with a fixed low/close support neighbor. | INVALID_ENGINEERING_NULL_RIGHTS_COALESCE; no output | NONE |
+| EXP-OBL-014 | H-OBL-011 | Scientifically unchanged clean reexecution of EXP-OBL-013 with canonical null-rights coalescing and fresh outputs. | FROZEN_CLEAN_REEXECUTION_BEFORE_CONSTRUCTION | NONE |
 
 Invalid or failed attempts will remain as separate immutable rows and identities.

@@ -196,6 +196,13 @@ All 399 canonical admissions, four-class balance/every-year presence, 65%
 neighbor agreement, PIT, and outcome prohibition must pass. Execute without
 outcomes and repeat only for byte identity. CY-011 remains locked.
 
+EXP-OBL-013 stopped during engineering validation and is permanently invalid.
+Optional no-rights rows store `rights_ratio` as null; canonical code coalesces it
+to zero, while the invalid runner did not. No output or outcome was accessed.
+EXP-OBL-014 is committed as a scientifically identical clean reexecution with
+only canonical null coalescing and fresh identities. Execute it unchanged; all
+original construction gates remain binding. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

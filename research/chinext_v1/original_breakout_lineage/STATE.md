@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_013_FROZEN_BEFORE_OUTCOME_BLIND_CONSTRUCTION`
+`EXP_OBL_014_FROZEN_CLEAN_REEXECUTION_BEFORE_CONSTRUCTION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -147,15 +147,20 @@ anchor creates neutral support-held/recovery lineages. This is narrower than the
 rejected aggregate downside-amount transition and requires an outcome-blind
 neighboring support-definition gate before any economic reveal.
 
-EXP-OBL-013 is frozen before construction. It preserves V1's earliest-minimum
-tie rule and signal-time share-adjusted volume coordinate. Primary classes use
-anchor-low defense and t-1 close recovery; the fixed neighbor uses close support.
-All 399 canonical MINVOL admissions, four-class balance and every-year presence,
-65% neighbor agreement, PIT lineage, and outcome prohibition are immutable.
+EXP-OBL-013 is permanently invalid due to an engineering-only null-rights
+coalescing defect. It stopped during volume-coordinate construction before any
+accepted feature, assignment, or outcome access. The first differing field was
+null optional `rights_ratio`, which canonical semantics treat as zero.
+
+EXP-OBL-014 is the fresh clean reexecution. It changes only that coalescing plus
+experiment/output identities and preserves V1's earliest-minimum tie rule,
+signal-time share-adjusted volume coordinate, anchor-low defense, t-1 recovery,
+close-support neighbor, all 399 admissions, class/year gates, 65% agreement, PIT,
+and outcome prohibition exactly.
 
 ## Exact next action
 
-Execute committed EXP-OBL-013 without outcomes. If every construction gate
+Execute committed EXP-OBL-014 without outcomes. If every construction gate
 passes, rerun for byte identity and freeze the assignments; otherwise reject
 without changing support semantics, class gates, or tie handling. Do not revisit
 pivot radii, modify V1, or open CY-011.

@@ -202,6 +202,11 @@ minimum tie rule, signal-coordinate volume rebasing, low-support/recovery primar
 classes, and one close-support neighbor. No outcome may be read until a separate
 freeze is accepted.
 
+EXP-OBL-013 is invalid only because null optional rights were not coalesced to
+canonical zero. No scientific output was produced. EXP-OBL-014 is frozen as an
+otherwise byte-equivalent clean design with fresh outputs; its science and gates
+are unchanged.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
