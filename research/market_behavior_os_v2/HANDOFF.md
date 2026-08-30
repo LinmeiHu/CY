@@ -726,3 +726,15 @@ market direction, breadth, volatility, liquidity/co-movement, and leadership
 alternatives. Freeze pairwise and fixed-control joint reconstruction in raw/PIT
 and relative space; do not remove a control to promote a size role or combine
 roles into a trading rule.
+
+MKT-STYLE-GEO-001 is frozen under SHA-256
+`2bf960c60d5fffcb98bb9442c2d05eb91859b91002baf69eab69b2b98bb6d7c8`
+before correlations or regressions. Preserve the exact role-specific three-
+control sets from the map. Every control is an accepted representation or a
+direct industry coordinate surviving prior external compression.
+
+Complete all 2021-2023 raw/PIT/relative group-year support and nondegeneracy
+audits first. Then apply pairwise rho <0.85 and joint rank reconstruction below
+0.70 median/0.85 maximum in all four coordinates. Do not delete a control,
+select a coordinate/view/year, or use a failed/duplicated size role. Execute
+twice without future values, strategy outcomes, post-2023 data, or CY-011.

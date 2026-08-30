@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Six circulating-size roles pass internally; external engine distinctness is unknown | Map role-specific external geometry before temporal tests |
+| EXPLORE | 35% | Six circulating-size roles pass internally; external engine distinctness is unknown | Execute frozen role-specific external geometry |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 5% | Size representation exists but no external or temporal mechanism does | Keep small-cap/style-rotation archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

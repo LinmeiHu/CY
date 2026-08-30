@@ -1,0 +1,114 @@
+{
+  "experiment_id": "MKT-STYLE-GEO-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_EXTERNAL_GEOMETRY_ESTIMATION",
+  "question": "Which stable circulating-size roles remain direct market-engine coordinates after fixed role-specific accepted controls?",
+  "research_role": "outcome-blind external geometry and latent-mechanism compression",
+  "inputs": {
+    "style": {
+      "panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_panel.csv", "sha256": "5ed526187d71cb0c719a98ba99fcba368ea6dc53b6ad097efbebb5bb1f2863ad"},
+      "result": {"path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_result.json", "sha256": "134dc2053c0558a5a63c70bfd09edf1b5579d4e4af4e6c16a94e32b9883614ad"}
+    },
+    "breadth": {
+      "panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv", "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"},
+      "result": {"path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json", "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"}
+    },
+    "correlation_liquidity": {
+      "panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_correlation_liquidity_panel.csv", "sha256": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573"},
+      "result": {"path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_result.json", "sha256": "9ada5db39ba531e6a41b3f26ceef106233c8871c0fe60a9d971df293bac24eb2"}
+    },
+    "volatility": {
+      "panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv", "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc"},
+      "result": {"path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json", "sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"}
+    },
+    "risk_appetite": {
+      "panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv", "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1"},
+      "result": {"path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json", "sha256": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe"}
+    },
+    "industry_geometry": {
+      "panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv", "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"},
+      "result": {"path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json", "sha256": "9b3eaa0da0e9adba67f61df81d25412ae0277cff37ecf63074738d622989a346"}
+    }
+  },
+  "required_style_roles": [
+    "size_structure",
+    "positive_participation_balance",
+    "winner_diffusion",
+    "positive_mass_concentration",
+    "size_curve_divergence",
+    "leadership_transition"
+  ],
+  "role_fields": {
+    "size_structure": "size_log_value_iqr",
+    "positive_participation_balance": "size_positive_participation_small30_large30",
+    "winner_diffusion": "size_winner_entropy_top10",
+    "positive_mass_concentration": "size_positive_mass_max_share",
+    "size_curve_divergence": "size_bucket_return_std5",
+    "leadership_transition": "size_leadership_transition5"
+  },
+  "control_fields": {
+    "size_structure": ["liquidity_turnover_median", "liquidity_amount_share_top10", "realized_volatility_median20"],
+    "positive_participation_balance": ["median_signed_limit_utilization", "breadth_net_new_high_low60", "directional_sync_balance5"],
+    "winner_diffusion": ["winner_industry_entropy_top10", "breadth_net_new_high_low60", "leadership_positive_mass_top10"],
+    "positive_mass_concentration": ["leadership_positive_mass_top10", "stock_industry_rs_positive_mass_top10", "liquidity_amount_share_top10"],
+    "size_curve_divergence": ["industry_return_dispersion_iqr", "intraday_range_median_smooth5", "correlation_median20"],
+    "leadership_transition": ["realized_volatility_change5", "industry_rank_rotation_spearman_lag5", "directional_sync_balance5"]
+  },
+  "field_sources": {
+    "liquidity_turnover_median": "correlation_liquidity",
+    "liquidity_amount_share_top10": "correlation_liquidity",
+    "realized_volatility_median20": "volatility",
+    "median_signed_limit_utilization": "risk_appetite",
+    "breadth_net_new_high_low60": "breadth",
+    "directional_sync_balance5": "correlation_liquidity",
+    "winner_industry_entropy_top10": "industry_geometry",
+    "leadership_positive_mass_top10": "breadth",
+    "stock_industry_rs_positive_mass_top10": "industry_geometry",
+    "industry_return_dispersion_iqr": "industry_geometry",
+    "intraday_range_median_smooth5": "volatility",
+    "correlation_median20": "correlation_liquidity",
+    "realized_volatility_change5": "volatility",
+    "industry_rank_rotation_spearman_lag5": "industry_geometry"
+  },
+  "coordinates": {
+    "raw": "<field>",
+    "pit": "style uses <field>__pit_3y_pct; controls use <field>_pit_3y_pct",
+    "relative_to_all": "style uses <field>__relative_to_all; controls use <field>_relative_to_all",
+    "relative_rank": "style uses <field>__relative_view_rank_pct; controls use <field>_relative_view_rank_pct"
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "eligible_years": [2021, 2022, 2023],
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"]
+  },
+  "estimation": {
+    "pairwise": "within-group Spearman for every role/control/coordinate",
+    "joint": "within-group rank-OLS role reconstruction from all fixed controls plus intercept",
+    "relative_to_all_groups": "exclude ALL_A deterministic zero",
+    "support_audit": "complete all role/control/coordinate/view/denominator/year support and nondegeneracy checks before estimates"
+  },
+  "gates": {
+    "minimum_group_year_observations": 150,
+    "pairwise_external_redundancy_absolute_spearman": 0.85,
+    "joint_rank_reconstruction_median_adjusted_r2_maximum": 0.70,
+    "joint_rank_reconstruction_maximum_adjusted_r2": 0.85,
+    "all_coordinates_required": true,
+    "no_rescue": "No role, control deletion, coordinate, view, denominator, year, regression subset, residual definition, failed control, or threshold change may rescue a failed external-geometry gate."
+  },
+  "prohibited_inputs": [
+    "future market, industry, stock, volatility, or size state",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "failed breadth acceleration, liquidity change, volatility term structure, or compressed industry participation/dispersion controls",
+    "size_leadership_1d or size_leadership_20d as direct roles",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes contemporaneous external distinctness only; it does not establish causality, size premium, risk appetite, temporal dynamics, future return, habitat, timing, execution, or a strategy rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-GEO-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-GEO-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-STYLE-GEO-001_geometry.md"
+  ]
+}

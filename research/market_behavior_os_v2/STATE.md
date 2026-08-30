@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-GEO-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-GEO-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: external market-engine geometry of six stable circulating-size roles
 - `SUPPORTING_FRONTIER`: strategy-independent circulating-size structure, participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -727,3 +727,16 @@ partial outputs from the cumulative-rank denominator defect and parallel
 representations only, not a small-cap premium, risk appetite, temporal process,
 usefulness, or archetype. SYNTH-MKT-024 selects external engine geometry before
 any dynamic or payoff test. No S1-S12 STOP is active.
+
+The size external-geometry map and MKT-STYLE-GEO-001 spec `2bf960c6...` are
+frozen before estimation. Each of the six size roles has three fixed accepted
+alternatives drawn from breadth, risk, correlation/liquidity, volatility, and
+direct industry-engine coordinates. Failed or compressed controls are excluded.
+
+Raw, causal-PIT, relative-to-ALL_A, and relative-rank coordinates are all
+required. Every 2021-2023 group/year cell must pass 150-observation and
+nondegeneracy audits before any estimate. Pairwise absolute rho must remain
+below 0.85; fixed-control joint adjusted R2 must remain below 0.70 median and
+0.85 maximum in every coordinate. No control deletion or favorable-coordinate
+rescue is allowed. Future values, outcomes, post-2023 data, and CY-011 remain
+prohibited.
