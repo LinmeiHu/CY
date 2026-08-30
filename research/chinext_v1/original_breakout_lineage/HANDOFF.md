@@ -203,6 +203,16 @@ EXP-OBL-014 is committed as a scientifically identical clean reexecution with
 only canonical null coalescing and fresh identities. Execute it unchanged; all
 original construction gates remain binding. CY-011 remains locked.
 
+EXP-OBL-014 passes the correction but fails four-class feasibility: recovery is
+true for 392/399 and counts are 3/264/4/128. No output or outcome was read. The
+support split itself is 267 broken / 132 held with 76.19% low/close neighbor
+agreement and every-year presence.
+
+EXP-OBL-015 is committed as an outcome-blind refinement removing only the
+collapsed recovery axis. It preserves the exact anchor and support definitions;
+binary size/concentration/year and 65% neighbor gates are frozen. Execute and
+repeat for byte identity if it passes. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

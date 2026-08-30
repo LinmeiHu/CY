@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_014_FROZEN_CLEAN_REEXECUTION_BEFORE_CONSTRUCTION`
+`EXP_OBL_015_FROZEN_OUTCOME_BLIND_FEASIBILITY_REFINEMENT`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -158,9 +158,20 @@ signal-time share-adjusted volume coordinate, anchor-low defense, t-1 recovery,
 close-support neighbor, all 399 admissions, class/year gates, 65% agreement, PIT,
 and outcome prohibition exactly.
 
+EXP-OBL-014 passes engineering and canonical-anchor checks but fails the frozen
+four-class feasibility gates. Recovery above the anchor close occurs in 392/399,
+producing counts 3/264/4/128. Low support itself remains a broad 267/132 split,
+spans every year, and agrees with fixed close support on 76.19%. No output or
+outcome was read.
+
+EXP-OBL-015 is frozen as the minimum outcome-blind refinement: remove only the
+collapsed recovery assignment axis and preserve the anchor/support definitions.
+The binary classes require 50 minimum size, 75% maximum share, every-year
+presence, and the unchanged 65% low/close-support agreement gate.
+
 ## Exact next action
 
-Execute committed EXP-OBL-014 without outcomes. If every construction gate
+Execute committed EXP-OBL-015 without outcomes. If every construction gate
 passes, rerun for byte identity and freeze the assignments; otherwise reject
 without changing support semantics, class gates, or tie handling. Do not revisit
 pivot radii, modify V1, or open CY-011.

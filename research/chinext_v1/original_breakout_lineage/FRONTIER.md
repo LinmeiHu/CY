@@ -207,6 +207,12 @@ canonical zero. No scientific output was produced. EXP-OBL-014 is frozen as an
 otherwise byte-equivalent clean design with fresh outputs; its science and gates
 are unchanged.
 
+EXP-OBL-014 validly finds the recovery axis structurally collapsed before
+outcomes: 392/399 recover above the anchor close. The low-support axis remains
+267/132 with 76.19% low/close neighbor agreement. EXP-OBL-015 therefore removes
+only recovery and freezes the unchanged binary support construction under fresh
+balance/year gates. This refinement uses no economic outcome.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
