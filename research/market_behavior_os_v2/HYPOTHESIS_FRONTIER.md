@@ -305,3 +305,8 @@ completion-state dependence. The final in-frontier semantic question is whether
 repeated tested days share one exact physical L20 at all. Freeze count-only
 MKT-SUPPORT-LVL-DATA-001 before inspecting level identity; exact binary equality,
 no tolerance, no direction estimate, and no process rescue.
+
+MKT-SUPPORT-LVL-DATA-001 is frozen under `cfd6cde6...`. Execute exact level-bit
+counts across L20 continuous, L10/L40 neighbors, and L20 auction using bound
+artifacts only. This is the final semantic feasibility audit, not a subgroup
+direction search or rescue of MKT-SUPPORT-DYN-001.

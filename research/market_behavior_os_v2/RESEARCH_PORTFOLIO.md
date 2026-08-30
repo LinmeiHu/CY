@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Two recovery trajectories are representationally stable but show no common direction or residual coupling | Freeze exact unchanged-L20 count feasibility before deciding whether to leave the branch |
+| EXPLORE | 35% | Two recovery trajectories are stable but rolling-level process claims fail; exact-level contract is frozen | Execute MKT-SUPPORT-LVL-DATA-001 count-only feasibility |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

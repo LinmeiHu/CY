@@ -117,6 +117,8 @@
 | `experiments/MKT-SUPPORT-DYN-001_spec.json` | Frozen endpoint/shape/level/auction/process/transition falsification contract |
 | `scripts/run_mkt_support_dyn_001.py` | Passing two-role temporal representation and failed common-process execution |
 | `reports/MKT-SUPPORT-DYN-001_dynamics.md` | Stable recovery coordinates; no common direction, residual coupling, or supported completion transition |
+| `OBJECTIVE_SUPPORT_PHYSICAL_LEVEL_FEASIBILITY_CONTRACT.md` | Frozen exact binary-level identity and count-only same-coordinate feasibility semantics |
+| `experiments/MKT-SUPPORT-LVL-DATA-001_spec.json` | Frozen zero-raw-read L10/L20/L40 continuous/auction count gates |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

@@ -531,3 +531,16 @@
   controls. Completion state fails the first-F support floor and its observed
   risk differences are not portable. Retain the coordinates; reject the exact
   common-direction, residual-coupling, and transition-process hypotheses.
+
+## MKT-H-033 — unchanged objective-level feasibility
+
+- Status: `FROZEN_UNTESTED`.
+- Hypothesis: a sufficient subset of repeated-tested and twice-recovered
+  sequences may retain the exact same causal prior-low bit pattern on every
+  tested day, allowing a later same-physical-coordinate temporal map.
+- Primary/neighbor support is frozen for L20 continuous, L10/L40 continuous,
+  and L20 auction views across total, fixed blocks, and every year.
+- Falsifier: any count gate fails. No tolerance, rounding, modal level, tested-
+  day subset, sample enlargement, trajectory direction, or outcome can rescue.
+- Boundary: passing is semantic feasibility on already consumed exploratory
+  data, not evidence of defense, strengthening, prediction, or usefulness.

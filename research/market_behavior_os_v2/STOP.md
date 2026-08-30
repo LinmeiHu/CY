@@ -47,3 +47,6 @@ coordinates but no common direction, residual coupling, or supported completion
 transition. This is an ordinary negative process result, not a STOP. One bounded
 count-only exact-level semantic audit remains; it uses existing durable artifacts
 and requires no raw-minute or resource expansion.
+
+That audit is frozen as MKT-SUPPORT-LVL-DATA-001. It is executable within a
+one-minute/1-GiB/zero-raw-read envelope, so no STOP condition is active.

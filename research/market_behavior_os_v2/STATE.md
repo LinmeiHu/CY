@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-035_COMPLETE_MKT-SUPPORT-LVL-DATA-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-LVL-DATA-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: exact unchanged-price-level feasibility after rolling-level recovery process failure
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -1100,6 +1100,14 @@ CY-011 was read. SYNTH-MKT-035 retains two completed-history coordinates, emits
 no support-defense state, and selects exact unchanged-L20 feasibility as the
 final semantic falsifier before frontier deprioritization or deeper same-level
 research.
+
+MKT-SUPPORT-LVL-DATA-001 is frozen under spec SHA-256 `cfd6cde6...` and
+contract SHA-256 `63ba8b17...` before level identity is counted. Exact identity
+means one IEEE-754 binary64 bit pattern across every tested day after round-trip
+parsing; A,A,B is not constant. Primary L20 continuous, L10/L40 continuous, and
+L20 auction views have fixed total/block/year repeated-test and twice-recovered
+floors. This audit reads zero raw partition rows and computes no trajectory,
+direction, correlation, transition, process, payoff, or strategy field.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

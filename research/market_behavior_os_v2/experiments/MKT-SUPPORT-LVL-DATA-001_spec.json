@@ -1,0 +1,98 @@
+{
+  "experiment_id": "MKT-SUPPORT-LVL-DATA-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_LEVEL_IDENTITY_COUNTS",
+  "question": "Do enough repeated-tested objective-level sequences retain one exact causal prior-low coordinate on every tested day to support a same-physical-level temporal map?",
+  "research_role": "count-only semantic feasibility after rolling-level process failure",
+  "outcome_access": false,
+  "inputs": {
+    "feasibility_contract": {"path": "research/market_behavior_os_v2/OBJECTIVE_SUPPORT_PHYSICAL_LEVEL_FEASIBILITY_CONTRACT.md", "sha256": "63ba8b1783ba9f41d0fae0c7a7169b69b7cf753033fcc82817a413cb8665e53e"},
+    "dynamics_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DYN-001_spec.json", "sha256": "2abeaff258a7f9a42fd98423e574dd90c5e4263ce494cb04bcee9a18992eeef0"},
+    "dynamics_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_dyn_001.py", "sha256": "780b245612165d94329f5a2a51e427d11c07b80540d2af014b792df77295d471"},
+    "dynamics_session_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_session_panel.csv", "sha256": "7484e94780d471a00d7dc908ea3348d9d82fb10316c58bd0491fdd6ed5ed4bbf"},
+    "dynamics_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_result.json", "sha256": "dfde86c9474c7db21036730b7fc893f858648edda8ca0a13ff0c1819373b6934"},
+    "data004_sample": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_sample.csv", "sha256": "5a2ac52218f947579295fdd4ad0be431a125fb84db63bdd50fc9d7a02b37fc78"},
+    "data004_coordinate_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_coordinate_audit.csv", "sha256": "fb881921e75ab5a091251ea5730af46358958cadc926077b0d6a4818f67d8864"},
+    "data004_support_count_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_support_count_audit.csv", "sha256": "d00f1ec0c9eadc4f20c2645462ecabfed4ad105c96c64b1f5b5e8bc4febce93f"}
+  },
+  "population": {
+    "exact_sequences": 1920,
+    "exact_cohort_rows": 9600,
+    "exact_unique_physical_sessions": 9575,
+    "primary_repeated_test_sequences": 315,
+    "primary_twice_recovered_sequences": 269,
+    "relative_days": [-5, -4, -3, -2, -1],
+    "temporal_blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"]
+  },
+  "identity_semantics": {
+    "coordinate_parser": "pandas read_csv float_precision=round_trip",
+    "level_identity": "exact IEEE-754 binary64 bit-pattern equality",
+    "constant_sequence": "all tested-day level bit patterns are identical",
+    "mixed_A_A_B_constant": false,
+    "cent_or_decimal_rounding": false,
+    "absolute_or_relative_tolerance": null,
+    "modal_or_subset_level_selection": false,
+    "near_touch_band": null
+  },
+  "views": [
+    {"name": "L20_CONT", "level_horizon": 20, "path": "cont", "gate_family": "primary"},
+    {"name": "L10_CONT", "level_horizon": 10, "path": "cont", "gate_family": "level_neighbor"},
+    {"name": "L40_CONT", "level_horizon": 40, "path": "cont", "gate_family": "level_neighbor"},
+    {"name": "L20_AUCTION", "level_horizon": 20, "path": "auction", "gate_family": "primary"}
+  ],
+  "adequacy_gates": {
+    "primary": {
+      "constant_repeated_total_minimum": 120,
+      "constant_repeated_each_block_minimum": 50,
+      "constant_repeated_each_year_minimum": 15,
+      "constant_twice_recovered_total_minimum": 100,
+      "constant_twice_recovered_each_block_minimum": 40,
+      "constant_twice_recovered_each_year_minimum": 15
+    },
+    "level_neighbor": {
+      "constant_repeated_total_minimum": 80,
+      "constant_repeated_each_block_minimum": 30,
+      "constant_repeated_each_year_minimum": 10,
+      "constant_twice_recovered_total_minimum": 60,
+      "constant_twice_recovered_each_block_minimum": 20,
+      "constant_twice_recovered_each_year_minimum": 8
+    },
+    "all_four_views_required_before_same_level_map": true
+  },
+  "audits": {
+    "primary_parent_count_exact_reproduction": true,
+    "tested_day_count_distribution": true,
+    "unique_tested_level_count_distribution": true,
+    "counts_by_block_year_and_market_view": true,
+    "manual_scalar_cases": 5,
+    "manual_case_selection": "smallest SHA256(MKT-SUPPORT-LVL-DATA-001|sequence_id) among primary constant-level repeated-test sequences",
+    "manual_may_not_call_vectorized_count": true,
+    "two_byte_identical_runs_required": true
+  },
+  "resource_budget": {
+    "raw_minute_rows_read": 0,
+    "raw_daily_partition_rows_read": 0,
+    "peak_rss_ceiling_gib": 1,
+    "system_memory_headroom_floor_gib": 8,
+    "durable_output_ceiling_mib": 10,
+    "wall_clock_ceiling_minutes": 1,
+    "single_process": true
+  },
+  "prohibited_computations": [
+    "trajectory endpoint rate, OLS slope, or Theil-Sen slope",
+    "direction, sign fraction, correlation, regression, risk difference, or transition process",
+    "future market, industry, stock, or strategy return",
+    "strategy membership, signal, candidate, trade, P&L, MFE, MAE, exit, duration, or outcome",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "no_rescue": "No tolerance, rounding, level subset, horizon, path, block, year, view, date, symbol, tested state, recovery state, support floor, sample enlargement, direction estimate, or outcome may rescue a failed count gate.",
+  "claim_boundary": "Passing establishes only adequate exploratory support for a later exact unchanged-coordinate temporal representation map on already consumed data. It establishes no support, defense, strengthening, weakening, process, prediction, payoff, timing, habitat, execution, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-LVL-DATA-001_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-LVL-DATA-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-LVL-DATA-001_audit.md"
+  ]
+}

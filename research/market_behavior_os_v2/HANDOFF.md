@@ -1083,3 +1083,9 @@ SYNTH-MKT-035 selects one final semantic falsifier before leaving this temporal
 branch: freeze a count-only MKT-SUPPORT-LVL-DATA-001 audit of whether all tested
 days in a sequence share the exact same binary L20 coordinate. No tolerance,
 near-touch band, direction estimate, process rescue, payoff, or strategy field.
+
+MKT-SUPPORT-LVL-DATA-001 is frozen under spec `cfd6cde6...` and contract
+`63ba8b17...`. Execute next using only bound durable artifacts. It requires exact
+binary equality across every tested day, all four fixed level/path views, and
+unchanged total/block/year count floors. Zero raw partitions, trajectory values,
+direction estimates, correlations, outcomes, strategy fields, or CY-011.
