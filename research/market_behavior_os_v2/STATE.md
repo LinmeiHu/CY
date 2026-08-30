@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-043_MAP_INTRADAY_ABSORPTION_DISTRIBUTION_FALSIFICATION`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent same-session selling-effort absorption and rally-distribution representations from already accepted minute descriptors
-- `SUPPORTING_FRONTIER`: seven stable full-market objective-breakout levels remain level coordinates only; accepted VWAP defense/recovery is a fixed alternative
+- `CURRENT_PHASE`: `SYNTH-MKT-044_MAP_RALLY_DISTRIBUTION_BREAKOUT_GEOMETRY`
+- `CURRENT_PRIMARY_FRONTIER`: contemporaneous cross-family geometry of the accepted rally-effort-distribution score versus full-market objective-crossing acceptance/rejection levels
+- `SUPPORTING_FRONTIER`: ordinary return, volatility, activity, and accepted VWAP defense remain fixed alternatives; no temporal or usefulness claim
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1424,3 +1424,35 @@ intraday absorption/distribution map using already accepted MKT-MIN-001
 descriptors. It must distinguish selling/buying effort from price result,
 compress against accepted VWAP defense/recovery and ordinary return/activity,
 and avoid participant-intent, future, outcome, strategy, or raw-minute claims.
+
+### MKT-MIN-AD-001 absorption/distribution falsification
+
+The falsification map `52a36366...` and frozen spec `311391c7...` define two
+same-session effort-versus-result hypotheses from accepted MKT-MIN-001 levels.
+Both use equal causal-percentile scores with fixed mean/median/geometric,
+leave-one-component-out, p40/p60, year, denominator, relative, and external-
+geometry gates. Raw minute rows were not reopened; availability remains 15:30.
+
+`selling_effort_absorption` fails representation indispensability. Its worst
+leave-one-component-out median rho is 0.502 versus 0.70 (other omissions range
+0.567--0.676), despite shape 0.718, cross-section 0.854, and denominator 0.991.
+Do not select a recovery/damage subset or relabel VWAP defense as accumulation.
+
+`rally_effort_distribution` passes representation: worst shape 0.895,
+leave-one-out 0.774, p40/p60 0.975, and denominator 0.999. It also passes fixed
+external geometry against open-close return, downside volatility, volume
+concentration, and accepted VWAP defense. The maximum pairwise median absolute
+rho is 0.792 (open-close return), while joint PIT adjusted R2 is 0.649 median/
+0.655 maximum and relative-rank R2 0.161/0.163. It is therefore retained as one
+same-session OHLCV representation, not as participant distribution, future
+reversal, or usefulness.
+
+Two executions are byte-identical: panel `e78856ea...`, result `c5638d67...`,
+report `5e6e3525...`. Three focused tests pass. Future values, outcomes,
+post-2023 rows, raw minute rows, and CY-011 remain unread.
+
+SYNTH-MKT-044 next asks whether the retained score is simply the minute-scale
+manifestation of full-market objective-crossing closing rejection/acceptance or
+a distinct state coordinate. Freeze contemporaneous PIT/relative geometry and
+fixed return/VWAP controls before correlations; do not call either coordinate a
+future reversal, resistance process, habitat, or strategy.

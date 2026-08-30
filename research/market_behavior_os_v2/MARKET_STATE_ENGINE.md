@@ -357,3 +357,17 @@ The seven MKT-BREAKOUT-DIFF-001 levels remain completed-session observations.
 They receive no strengthening/weakening, momentum, acceleration, transition,
 recurrence, opportunity-process, forecast, habitat, usefulness, or strategy
 annotation.
+
+## MKT-MIN-AD-001 boundary
+
+The engine retains one completed-session `rally_effort_distribution`
+coordinate available at 15:30. It is an equal causal-percentile representation
+of high upside-minute volume with shallow upside excursion, weak late VWAP
+acceptance, and weak final-30-minute return. It passes component/aggregation/
+quantile/denominator/year gates and remains below fixed return, volatility,
+activity, and VWAP-defense redundancy boundaries.
+
+The engine does not interpret the coordinate as participant distribution,
+informed selling, resistance, future reversal, timing, usefulness, or strategy
+state. `selling_effort_absorption` is not added because its leave-one-component-
+out representation stability fails.

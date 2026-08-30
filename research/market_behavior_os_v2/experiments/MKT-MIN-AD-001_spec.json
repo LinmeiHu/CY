@@ -1,0 +1,111 @@
+{
+  "experiment_id": "MKT-MIN-AD-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_ABSORPTION_DISTRIBUTION_SCORE_CONSTRUCTION",
+  "question": "Do explicit selling-effort absorption and rally-effort distribution hypotheses form stable same-session market representations distinct from return, volatility, activity, and accepted VWAP defense/recovery?",
+  "research_role": "strategy-independent same-session intraday effort-versus-result representation falsification",
+  "inputs": {
+    "representation_map": {
+      "path": "research/market_behavior_os_v2/MARKET_INTRADAY_ABSORPTION_DISTRIBUTION_MAP.md",
+      "sha256": "52a36366c057a0de8d0f6202c087aec38374df6a13405e792c822b88269e38cf"
+    },
+    "minute_daily_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+      "sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701"
+    },
+    "minute_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+      "sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe"
+    },
+    "vwap_defense_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_panel.csv",
+      "sha256": "b08abaabfea3fff9c5de716963ad0cd079d54884c63ab994f2b56c1448cb10c2"
+    },
+    "vwap_defense_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_result.json",
+      "sha256": "b09808a98c3f5625bbf82e5ef1d754fae979410ee0acb25c630e021b52a55884"
+    }
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-01-02",
+    "date_end": "2023-12-29",
+    "expected_rows": 11656,
+    "expected_rows_per_group": 1457,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"]
+  },
+  "availability": {
+    "last_included_minute": "completed 15:00 bar",
+    "derived_artifact_available_at": "15:30 Asia/Shanghai",
+    "same_session_action": "forbidden"
+  },
+  "cross_section_definitions": ["median", "p40", "p60"],
+  "hypotheses": {
+    "selling_effort_absorption": {
+      "positive": ["down_minute_volume_share", "recovery_speed_30bar", "vwap_recovery_count"],
+      "negative": ["downside_excursion"]
+    },
+    "rally_effort_distribution": {
+      "positive": ["up_minute_volume_share"],
+      "negative": ["upside_excursion", "late_vwap_acceptance_fraction", "final30_log_return"]
+    }
+  },
+  "external_controls": {
+    "raw_accepted_levels": ["open_close_log_return", "downside_realized_volatility", "minute_volume_concentration"],
+    "accepted_score": {
+      "name": "vwap_defense_recovery",
+      "pit_field": "vwap_defense_recovery__median__aligned_mean",
+      "relative_rank_field": "vwap_defense_recovery__relative_view_rank_pct"
+    },
+    "controls_may_not_be_deleted": true
+  },
+  "causal_normalization": {
+    "window_sessions": 756,
+    "minimum_valid_observations": 504,
+    "current_observation_included": true,
+    "negative_alignment": "one minus causal percentile"
+  },
+  "aggregation": {
+    "primary": "equal arithmetic mean of four aligned component causal percentiles",
+    "shape_neighbors": ["median", "geometric_mean"],
+    "component_neighbors": "four leave-one-component-out arithmetic means",
+    "cross_section_neighbors": ["p40", "p60"],
+    "weight_optimization": "forbidden"
+  },
+  "relative_coordinates": {
+    "relative_to_all": "hypothesis score minus same-date/denominator ALL_A score",
+    "relative_rank": "same-date/denominator governed-view percentile rank"
+  },
+  "gates": {
+    "minimum_source_raw_coverage": 0.95,
+    "minimum_shape_neighbor_median_spearman": 0.7,
+    "minimum_leave_one_component_out_median_spearman": 0.7,
+    "minimum_cross_section_neighbor_median_spearman": 0.7,
+    "minimum_denominator_median_spearman": 0.9,
+    "eligible_years": [2021, 2022, 2023],
+    "minimum_group_year_observations": 150,
+    "pairwise_external_redundancy_absolute_spearman": 0.85,
+    "joint_rank_reconstruction_median_adjusted_r2_maximum": 0.7,
+    "joint_rank_reconstruction_maximum_adjusted_r2": 0.85,
+    "hypothesis_pairwise_compression_absolute_spearman": 0.85,
+    "two_byte_identical_runs": true,
+    "no_rescue": "No component, sign, weight, aggregator, cross-section definition, view, denominator, year, control deletion, participant label, failed path operator, or favorable subset can replace a failed exact representation."
+  },
+  "compression_priority": ["selling_effort_absorption", "rally_effort_distribution"],
+  "prohibited_fields": [
+    "future market, industry, stock, or volatility state",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "participant identity, trade aggressor, institution, inventory, or order-flow inference",
+    "selloff_duration_fraction or auction_to_continuous_open_log_return",
+    "failed/redundant MKT-MIN path or level roles outside fixed components/controls",
+    "raw minute rows, post-2023 data, or CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a same-session OHLCV effort-versus-result representation; it does not establish participant accumulation/distribution, cross-day process, future reversal, prediction, habitat, causality, timing, execution, payoff, or strategy usefulness.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-AD-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-AD-001_representation.md"
+  ]
+}

@@ -89,3 +89,9 @@ ordinary negative result, not an S1--S12 condition. No active STOP exists. Close
 the exact temporal branch without tuning and move to the map-first
 accumulation/distribution falsification frontier using bound daily minute
 descriptors only.
+
+MKT-MIN-AD-001 retains one same-session rally-effort-distribution
+representation and rejects the exact selling-effort-absorption score. This is
+ordinary representation evidence, not a participant, process, usefulness, or
+terminal claim. No S1--S12 condition is active. Continue map-first with
+contemporaneous geometry against objective-crossing acceptance/rejection levels.

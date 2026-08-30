@@ -1960,3 +1960,54 @@ recovery/acceptance, buying effort, and late rejection roles with broad
 aggregation/quantile neighbors; compress against return, volatility, activity,
 and accepted VWAP defense/recovery. Never infer participant identity, optimize
 weights, reopen raw minutes, read future outcomes, or create a strategy rule.
+
+## SYNTH-MKT-044 — after intraday absorption/distribution falsification
+
+### What was learned?
+
+The exact selling-effort-absorption score is not stable to component removal:
+its worst leave-one-out median rho is 0.502 versus 0.70. Shape, p40/p60, and
+denominator gates pass, but recovery/damage components are not interchangeable
+manifestations of one robust score. This does not reject broader absorption or
+accumulation research.
+
+The rally-effort-distribution score passes all representation gates. Worst
+shape, leave-one-out, and p40/p60 rho are 0.895, 0.774, and 0.975;
+ALL_STATUS/NON_ST median rho is 0.999. It remains below fixed redundancy
+boundaries against return, downside volatility, volume concentration, and VWAP
+defense: maximum pairwise median absolute rho 0.792, joint PIT adjusted R2
+0.649 median/0.655 maximum, and relative-rank R2 0.161/0.163.
+
+This is a stable same-session OHLCV representation only. The result does not
+identify sellers, distribution by holders, resistance, or future reversal.
+
+### What market behavior are we still not studying?
+
+We do not know whether the retained minute-scale score is merely the same
+market state as objective prior-high closing rejection/weak acceptance, or
+whether it is a distinct cross-family coordinate. We also still lack order
+flow, cross-day recurrence, future economic usefulness, stock-level setup
+interaction, execution, and capacity.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A representation with a distribution label is not a short trigger, failure
+veto, or reversal mechanism. No future transition or payoff has been tested.
+CHINEXT V1 remains unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** test contemporaneous geometry against objective-crossing
+  acceptance/rejection before any temporal or economic question.
+- **Existing-strategy archaeology:** no new outcome access or rule change.
+- **Strategy invention:** failed-breakout/reversal remains inactive; one state
+  descriptor is far below the prototype threshold.
+
+### Research Director decision
+
+`MAP_RALLY_DISTRIBUTION_VERSUS_OBJECTIVE_RESISTANCE_GEOMETRY`. Join only
+completed same-date panels at the later 15:30 availability. Preserve absolute/
+PIT/relative views, both blocks, all seven breakout levels, and fixed return/
+VWAP alternatives. Determine redundancy/latent geometry only. Do not read a
+future response, infer resistance causality, form a state threshold, or create a
+strategy.

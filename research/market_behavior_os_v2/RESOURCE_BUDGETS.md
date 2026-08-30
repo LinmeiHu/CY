@@ -105,6 +105,11 @@ bytes before result/report. Each final run stays below the enforced 3-GiB RSS,
 not serialized; the deterministic artifact records the enforced ceiling and
 gate result. Two final executions are byte-identical.
 
+MKT-MIN-AD-001 reads only the 11,656-row bound daily minute-descriptor panel and
+the bound MKT-MIN-SUPACC score panel. It reopens zero raw minute rows and
+completes in seconds with a compact CSV/result/report. Two executions are
+byte-identical; no resource expansion or new raw-data scan is authorized.
+
 MKT-BREAKOUT-DIFF-001 reuses the same exact staged daily coordinate and reads no
 minute partition. Both full representation runs complete in about 35 seconds,
 peak RSS remains below 2.63 GB, and five durable files total 13,845,802 bytes.

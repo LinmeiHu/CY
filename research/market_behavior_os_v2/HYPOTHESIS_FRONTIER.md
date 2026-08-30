@@ -371,3 +371,11 @@ is a map-first same-session absorption/distribution falsification using bound
 MKT-MIN-001 daily descriptors. Separate effort from result, preserve broad
 shape/quantile neighbors, and compress against return, volatility, activity,
 and accepted VWAP defense before any mechanism label.
+
+MKT-MIN-AD-001 rejects the exact selling-effort-absorption score but retains one
+same-session rally-effort-distribution representation. Its maximum external
+pairwise rho is 0.792 and joint PIT adjusted R2 0.649/0.655, below frozen
+boundaries. Do not infer participants or reversal. The active frontier is
+contemporaneous geometry against all seven full-market objective-crossing
+levels, with special attention to closing rejection/acceptance and fixed
+return/VWAP alternatives. Use the later 15:30 availability and no future data.

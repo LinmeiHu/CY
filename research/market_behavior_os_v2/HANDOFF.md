@@ -1314,3 +1314,24 @@ already accepted MKT-MIN-001 descriptors, explicitly separating selling/buying
 effort from price response and compressing against accepted VWAP defense,
 ordinary return, and activity. Do not reopen raw minute data or infer investor
 intent.
+
+The absorption/distribution map `52a36366...` and MKT-MIN-AD-001 spec
+`311391c7...` were frozen before construction. Selling-effort absorption aligns
+downside volume with shallow damage, fast recovery, and VWAP recovery. Rally-
+effort distribution aligns upside volume with shallow upside response, weak
+late VWAP acceptance, and weak final-30-minute return. These are falsifiable
+OHLCV labels only.
+
+Selling-effort absorption fails its fixed leave-one-out gate at worst median rho
+0.502 versus 0.70. Rally-effort distribution passes: worst shape/leave-one-out/
+p40-p60 rho 0.895/0.774/0.975 and denominator rho 0.999. Against open-close
+return, downside volatility, volume concentration, and accepted VWAP defense,
+its maximum pairwise median absolute rho is 0.792; joint PIT adjusted R2 is
+0.649 median/0.655 maximum, and relative-rank R2 0.161/0.163. It remains one
+same-session representation, not participant intent or a reversal process.
+
+Two runs are byte-identical: panel `e78856ea...`, result `c5638d67...`, report
+`5e6e3525...`; three focused tests pass. Next freeze contemporaneous geometry
+against the seven full-market objective-crossing levels, particularly closing
+acceptance/rejection, with return/VWAP alternatives retained. Do not read future
+values or infer resistance, timing, payoff, or a rule.
