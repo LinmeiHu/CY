@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-RESP-001_FROZEN_BEFORE_FORWARD_RESPONSE`
+- `CURRENT_PHASE`: `MKT-MIN-VOL-RESP-002_FROZEN_BEFORE_FORWARD_RESPONSE`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent future-volatility response to the continuous minute-volatility path
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -339,3 +339,11 @@ primary; h=1/3 are mandatory neighbors. Five current-volatility controls,
 non-overlap, effect-size/sign/coverage gates, response availability, and all
 prohibitions are fixed. Future market price returns, strategy outcomes, raw
 minutes, failed path fields, discrete-state rescue, and CY-011 remain forbidden.
+
+MKT-MIN-VOL-RESP-001 stopped before response construction because the frozen
+minute-volatility level is exactly zero for all groups on 2020-02-03 and its log
+domain behavior was undeclared. No forward response or confirmation estimate
+was computed. MKT-MIN-VOL-RESP-002 control spec `9ef7a0b2...` changes only the
+domain rule: any nonpositive current/future endpoint makes that response/control
+missing, with no epsilon, clipping, imputation, or relaxed coverage gate. All
+scientific roles, horizons, blocks, thresholds, and prohibitions are unchanged.

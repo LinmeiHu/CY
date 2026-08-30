@@ -1,0 +1,28 @@
+{
+  "experiment_id": "MKT-MIN-VOL-RESP-002",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FORWARD_RESPONSE_CONSTRUCTION",
+  "inherits_scientific_design_path": "research/market_behavior_os_v2/experiments/MKT-MIN-VOL-RESP-001_spec.json",
+  "inherits_scientific_design_sha256": "595f2ec5b92150d9cc3533104b3a0ce11a82271938cd3e90716ef640dff863a9",
+  "invalid_predecessor": "MKT-MIN-VOL-RESP-001 found a valid zero minute-volatility endpoint on 2020-02-03, making its undeclared log-domain behavior ambiguous; stopped before forward-response construction",
+  "only_semantic_correction": {
+    "response_domain": "construct log(level[t+h]/level[t]) only when both endpoints are finite and strictly positive; otherwise response is missing",
+    "current_log_control_domain": "construct log current minute-volatility control only when current level is finite and strictly positive; otherwise missing",
+    "zero_handling": "no epsilon, clipping, replacement, normalization, or imputation",
+    "coverage": "all frozen observation-count gates remain unchanged"
+  },
+  "unchanged_scientific_fields": [
+    "input hashes, population, predictor, and five controls",
+    "h=5 primary and h=1/3 neighboring responses",
+    "2019-2021 discovery and untouched 2022-2023 confirmation",
+    "raw and partial-rank estimation plus fixed phase-zero non-overlap",
+    "effect, sign, group portability, neighboring-horizon, non-overlap, and coverage gates",
+    "availability, no-rescue rule, prohibited fields, and claim boundary"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-RESP-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-RESP-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-VOL-RESP-002_response.md"
+  ]
+}

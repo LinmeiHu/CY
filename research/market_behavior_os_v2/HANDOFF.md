@@ -300,3 +300,11 @@ MKT-MIN-VOL-RESP-001 is frozen before forward construction under spec
 and 2022-2023 untouched confirmation. Partial rank after five fixed controls and
 fixed phase-zero h=5 non-overlap are primary evidence. Execute twice without
 reading price returns, strategy outcomes, raw minutes, or CY-011.
+
+Pre-result tests found the valid 2020-02-03 minute-volatility median is exactly
+zero in all eight groups, so RESP-001's log ratio had an undeclared domain case.
+It is invalid before response construction; confirmation remains unread.
+MKT-MIN-VOL-RESP-002 control spec `9ef7a0b2...` is frozen. It makes only affected
+log responses/control values missing, forbids epsilon/clipping/imputation, and
+keeps every coverage/effect/sign/validation gate unchanged. Execute the exact
+retry twice.
