@@ -2,8 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-SLP-001_COMPLETE_REJECTED — H-024 finds no stable additional failure after
-Day 3. H-023 remains descriptive Day-3 localization, not a stop or exit signal.
+CY-011_ENTRY_COVERAGE_AUDIT_COMPLETE — H-024 is rejected and the next independent
+frontier has 220/220 hard-valid PIT-B discovery rows. No chip/outcome association
+has been executed; 2024-2026 locked validation remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -900,6 +901,29 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - H-023 therefore locates realized severe-loss topology by Day 3 but does not
   explain additional failure afterward. No stop, exit, hold, threshold, replay,
   or V1 modification is authorized.
+
+## AUTONOMOUS_CYCLE_CY011_ENTRY_COVERAGE_AUDIT
+
+- CY-011 is registered `RESEARCH_CONDITIONAL`, PIT-B, for 2020-2023 discovery
+  and 2024-2026 locked validation. Registry, inventory, manifest, and audit hashes
+  match exactly.
+- All 81 registered files (5,778,765,864 bytes) match their recorded sizes and
+  SHA-256 identities. The registered mass, PIT/snapshot, semantic, and peak gates
+  pass.
+- The exact authorized discovery sample has 220 accepted signal-date entries:
+  65/61/37/57 in 2020/2021/2022/2023. Every key joins one-to-one to a strict,
+  hard-valid CY-011 row available at 15:30, with no invalid reason or waiver.
+- Maximum entry-row chip-mass error is `1.89e-12`; all proposed semantic fields
+  and all fixed controls are complete. Endpoint counts are 38 opportunity20,
+  125 false breakout, and 23 severe loss; no association was calculated.
+- No row after 2023 was materialized. The physical files are symbol-bucketed, so
+  their immutable Parquet footer metadata spans the locked horizon, but the
+  audit query was exactly date-restricted. 2024-2026 values/outcomes remain
+  unopened.
+- Audit decision: `PASS_MINIMUM_SUFFICIENT_DISCOVERY_ONLY`. At most one
+  preregistered concentrated-base/upward-migration composite is justified; MFE
+  must be primary and H-004 breadth/daily state must be controlled. No threshold,
+  rule, replay, or strategy action is authorized.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

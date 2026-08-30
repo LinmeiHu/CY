@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-SLP-001_COMPLETE_REJECTED` on 2026-08-30.
+`CY-011_ENTRY_COVERAGE_AUDIT_COMPLETE` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -79,6 +79,13 @@ EXP-SLP-001 validly rejects H-024. Raw/controlled residual-failure rhos are
 are byte-identical. H-023 remains descriptive Day-3 localization only. The next
 frontier is a read-only CY-011 chip-state governance/coverage audit restricted to
 authorized 2020-2023 discovery; do not open 2024-2026 locked validation.
+
+That audit now passes. All 81 registered CY-011 files and their aggregate
+inventory/manifest/audit identities match. All 220 accepted 2020-2023 signal-date
+entries have one strict, hard-valid 15:30 row with complete semantic fields and
+maximum mass error `1.89e-12`; no row after 2023 was materialized. Preregister at
+most one concentrated-base/upward-migration composite against MFE with H-004 and
+daily controls. The locked 2024-2026 validation range remains unopened.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

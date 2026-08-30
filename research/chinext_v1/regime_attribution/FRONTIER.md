@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`PIVOT_TO_GOVERNED_CHIP_STATE_AVAILABILITY_AUDIT`.
+`PREREGISTER_ONE_GOVERNED_CHIP_BASE_COHERENCE_DISCOVERY_TEST`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -54,20 +54,25 @@ frozen H-023 adverse state has raw/controlled future-failure rhos 0.025/0.005;
 Day-5 and HOLDOUT signs are negative and every gate fails. Early held-path
 localization is now repeatedly descriptive rather than incrementally predictive.
 
-The highest-value independent executable question is whether a small,
-mechanistically fixed pre-entry chip/supply-demand state can be supported by an
-already registered causal feature table. CY-011 is registered for conditional
-2020-2023 discovery with strict availability and mass-conservation gates, while
-2024-2026 is locked validation and must not be opened. Before any hypothesis or
-outcome join, audit exact registry authorization, immutable identities, entry-date
-coverage, `available_at`, `snapshot_id`, `hard_valid`, company-action semantics,
-and feature meanings. If those cannot be established without broadening the
-authorized protocol, fail closed and return to the frontier.
+The outcome-blind CY-011 audit passes. All 220 accepted 2020-2023 signal-date
+entries join one-to-one to strict, hard-valid semantic chip rows available at
+15:30; every registered file identity matches and entry-row mass error is below
+`1.89e-12`. No locked 2024-2026 row or outcome was materialized.
+
+The next question is whether a concentrated retained cost base combined with
+upward marginal cost migration describes post-entry MFE opportunity beyond
+frozen H-004 breadth and daily V1/market/risk state. One equal-weight oriented
+rank composite is the maximum justified family. MFE must be primary because 2022
+has only one opportunity20 event. I70 is a fixed neighboring definition, not a
+selection alternative. Any positive result remains exploratory PIT-B evidence
+requiring locked prospective validation.
 
 ## Exact next action
 
-Perform a read-only CY-011 chip-state data-governance and entry-coverage audit.
-Do not inspect chip/outcome associations, do not access the locked 2024-2026
-validation partition, and do not expand registry authorization. Persist whether
-a minimum-sufficient 2020-2023 discovery experiment is scientifically possible;
-only then rank and, if justified, preregister one mechanistic hypothesis.
+Form H-025 and preregister one minimum-sufficient 2020-2023 CY-011 discovery
+experiment before its first chip/outcome association. Freeze a composite of
+narrow I90 width, prior-I90-band retention, and close-normalized upward
+average-cost migration; use MFE primary, fixed breadth/daily controls, I70 and
+binary endpoints as attacks, and exact immutable bindings. Do not inspect
+2024-2026, screen other chip fields, tune weights, create thresholds, or modify
+V1.
