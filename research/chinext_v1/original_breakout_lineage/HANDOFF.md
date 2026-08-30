@@ -7,6 +7,11 @@ Independent program initialized at autonomous branch start HEAD
 this new program. CY-011 remains locked and unopened. EXP-OBL-003 has frozen
 `LINEAGE-OBL-003-4193834A6A3A39BF` after two byte-identical full runs.
 
+EXP-OBL-004 has now revealed outcomes and rejects H-OBL-003. Raw/controlled rhos
+are 0.015/0.017 for MFE and 0.027/0.043 for non-false-breakout. Both earlier
+blocks reverse the positive development block; all gates fail. The taxonomy and
+its components may not be relabeled or promoted.
+
 ## Canonical original V1 breakout
 
 At completed close `t`, `close_t` must strictly exceed the maximum of the prior
@@ -43,11 +48,11 @@ forbidden outcome columns. H-OBL-002 decision: `FREEZE_LINEAGE`.
 
 ## Current frontier
 
-EXP-OBL-004 is frozen before its first outcome join. It maps L00=0, L01/L10=1,
-and L11=2 and requires positive separation for both MFE and non-false-breakout.
-Fixed controls, BH across two tests, LOYO/blocks, neighboring assignment, tails,
-duration/exit, security, and industry attacks are preregistered. Execute without
-changing any assignment, class label, endpoint, threshold, control, or gate.
+The next independent question is repeated objective resistance testing. Freeze a
+new outcome-blind artifact counting prior-60 closes within 2% of the canonical
+reference, with 1%/3% neighbors, before any new association. Reference age,
+prebreakout distance, box width, V1 entry state, market state, and H-004 breadth
+are controls, not new search dimensions. No candidate rule exists.
 
 ## Governance
 

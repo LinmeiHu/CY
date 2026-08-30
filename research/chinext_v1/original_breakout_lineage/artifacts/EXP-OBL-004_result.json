@@ -1,0 +1,685 @@
+{
+  "attacks": {
+    "ex_extreme_winners": {
+      "mfe": {
+        "n": 384,
+        "pvalue": 0.8635907791047637,
+        "rho": -0.008795896637997423
+      },
+      "non_false_breakout": {
+        "n": 384,
+        "pvalue": 0.8069779223731057,
+        "rho": 0.012508528220102967
+      }
+    },
+    "ex_severe_losses": {
+      "mfe": {
+        "n": 355,
+        "pvalue": 0.8833670280448366,
+        "rho": -0.007813586417371088
+      },
+      "non_false_breakout": {
+        "n": 355,
+        "pvalue": 0.5495792067503609,
+        "rho": 0.031863598296981974
+      }
+    },
+    "ex_top1pct_absolute_pnl": {
+      "mfe": {
+        "n": 395,
+        "pvalue": 0.7561168136444422,
+        "rho": 0.015675901576744172
+      },
+      "non_false_breakout": {
+        "n": 395,
+        "pvalue": 0.5859962585627312,
+        "rho": 0.027486099527169645
+      }
+    },
+    "holding_duration_exit_control": {
+      "mfe": {
+        "n": 383,
+        "partial_rank_rho": -0.013494179340621654,
+        "pvalue": 0.7923693907275254
+      },
+      "non_false_breakout": {
+        "n": 383,
+        "partial_rank_rho": 0.019253751023696,
+        "pvalue": 0.7072094356845252
+      }
+    },
+    "industry_leave_one_out": {
+      "mfe": {
+        "groups": 68,
+        "maximum": 0.03241882756576393,
+        "minimum": -0.0004668691259932697,
+        "positive_fraction": 0.9852941176470589
+      },
+      "non_false_breakout": {
+        "groups": 68,
+        "maximum": 0.0442190823730552,
+        "minimum": 0.0010309134528239936,
+        "positive_fraction": 1.0
+      }
+    },
+    "security_leave_one_out": {
+      "mfe": {
+        "groups": 281,
+        "maximum": 0.023451880249200658,
+        "minimum": 0.003770870800206541,
+        "positive_fraction": 1.0
+      },
+      "non_false_breakout": {
+        "groups": 281,
+        "maximum": 0.035345023656451306,
+        "minimum": 0.01608450766523706,
+        "positive_fraction": 1.0
+      }
+    }
+  },
+  "decision": "REJECTED",
+  "endpoint_support": {
+    "mfe": false,
+    "non_false_breakout": false
+  },
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "experiment_id": "EXP-OBL-004",
+  "gates": {
+    "controlled_both_endpoints": false,
+    "falsification": false,
+    "neighbor_both_endpoints": false,
+    "raw_both_endpoints": false,
+    "temporal_both_endpoints": false
+  },
+  "hypothesis_id": "H-OBL-003",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/formation_features_v3.csv": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/lineage_assignments_v3.csv": "4193834a6a3a39bf5e9b96d2813d1fffeea92831fe61e5b53b9af6b8b1fa1017",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-003.json": "da978745fe485561dfce33a77a0e568ff14b61a9c575d57ac9d17a75b4ea4a4d",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+  },
+  "interpretation_boundary": "Lineages were frozen without outcomes. Full signal-session information is available at 15:30 for T+1 or later only. This reveal tests mechanism separation and authorizes no entry, exit, size, overlay, or production rule.",
+  "lineage_freeze_id": "LINEAGE-OBL-003-4193834A6A3A39BF",
+  "lineage_summary": [
+    {
+      "extreme_winner_rate": 0.010869565217391304,
+      "false_breakout_rate": 0.5652173913043478,
+      "lineage_id": "L00_BASE_LOW_ACCEPTANCE_LOW",
+      "lineage_strength": 0.0,
+      "mean_mfe": 0.11839768408417095,
+      "mean_terminal_return": -0.001996743766939487,
+      "median_mfe": 0.06790428423273605,
+      "median_terminal_return": -0.022899053380618248,
+      "n": 92,
+      "opportunity20_rate": 0.1956521739130435,
+      "positive_pnl_share": 0.11397989098378111,
+      "severe_loss_rate": 0.09782608695652174
+    },
+    {
+      "extreme_winner_rate": 0.03571428571428571,
+      "false_breakout_rate": 0.5535714285714286,
+      "lineage_id": "L01_BASE_LOW_ACCEPTANCE_HIGH",
+      "lineage_strength": 1.0,
+      "mean_mfe": 0.15306498880568473,
+      "mean_terminal_return": 0.02405639389300216,
+      "median_mfe": 0.0611376502761189,
+      "median_terminal_return": -0.022357381327962902,
+      "n": 112,
+      "opportunity20_rate": 0.19642857142857142,
+      "positive_pnl_share": 0.2463236219903304,
+      "severe_loss_rate": 0.13392857142857142
+    },
+    {
+      "extreme_winner_rate": 0.052083333333333336,
+      "false_breakout_rate": 0.4895833333333333,
+      "lineage_id": "L10_BASE_HIGH_ACCEPTANCE_LOW",
+      "lineage_strength": 1.0,
+      "mean_mfe": 0.21139748641710496,
+      "mean_terminal_return": 0.0667884396249485,
+      "median_mfe": 0.0635914179104476,
+      "median_terminal_return": -0.011216023375552,
+      "n": 96,
+      "opportunity20_rate": 0.22916666666666666,
+      "positive_pnl_share": 0.3454803715299717,
+      "severe_loss_rate": 0.08333333333333333
+    },
+    {
+      "extreme_winner_rate": 0.050505050505050504,
+      "false_breakout_rate": 0.5252525252525253,
+      "lineage_id": "L11_BASE_HIGH_ACCEPTANCE_HIGH",
+      "lineage_strength": 2.0,
+      "mean_mfe": 0.17784800003457896,
+      "mean_terminal_return": 0.04052369961480314,
+      "median_mfe": 0.060377358490566,
+      "median_terminal_return": -0.0159762961018697,
+      "n": 99,
+      "opportunity20_rate": 0.2222222222222222,
+      "positive_pnl_share": 0.29421611549591675,
+      "severe_loss_rate": 0.12121212121212122
+    }
+  ],
+  "mechanism_axes": {
+    "acceptance_high": {
+      "mfe": {
+        "blocks": {
+          "DEVELOPMENT_2024_2025": {
+            "n": 111,
+            "pvalue": 0.15848714347167261,
+            "rho": 0.13476227731334106
+          },
+          "EXTENDED_2018_2021": {
+            "n": 194,
+            "pvalue": 0.4821316210717872,
+            "rho": -0.050759205838690445
+          },
+          "HOLDOUT_O0_2022_2023": {
+            "n": 94,
+            "pvalue": 0.2124198937234889,
+            "rho": -0.12980379160244307
+          }
+        },
+        "controlled": {
+          "n": 383,
+          "partial_rank_rho": -0.0039734335798261855,
+          "pvalue": 0.9382196176199573
+        },
+        "controlled_loyo": {
+          "maximum": 0.014954461319441913,
+          "minimum": -0.034642277483540165,
+          "positive": 4,
+          "total": 8,
+          "values": {
+            "2018": -0.002992143088926605,
+            "2019": 0.014954461319441913,
+            "2020": 0.006845639387702586,
+            "2021": -0.03152551505473621,
+            "2022": 0.009275337094934291,
+            "2023": 0.0010139358689838784,
+            "2024": -0.0034133055282301733,
+            "2025": -0.034642277483540165
+          }
+        },
+        "raw": {
+          "n": 399,
+          "pvalue": 0.9688423986384588,
+          "rho": -0.001961607851851015
+        },
+        "raw_loyo": {
+          "maximum": 0.023941913625165703,
+          "minimum": -0.05729063184004364,
+          "positive": 5,
+          "total": 8,
+          "values": {
+            "2018": 0.009078268831703196,
+            "2019": 0.023941913625165703,
+            "2020": 0.013034500858239062,
+            "2021": -0.02775416504316169,
+            "2022": 0.014460117796188417,
+            "2023": 0.007004116796089246,
+            "2024": -0.005643091522786806,
+            "2025": -0.05729063184004364
+          }
+        },
+        "within_year": {
+          "n": 399,
+          "pvalue": 0.7625279516244424,
+          "rho": -0.015173795932906782
+        }
+      },
+      "non_false_breakout": {
+        "blocks": {
+          "DEVELOPMENT_2024_2025": {
+            "n": 111,
+            "pvalue": 0.3881341038212177,
+            "rho": 0.08270871589124582
+          },
+          "EXTENDED_2018_2021": {
+            "n": 194,
+            "pvalue": 0.46762040786727255,
+            "rho": -0.05245239923943623
+          },
+          "HOLDOUT_O0_2022_2023": {
+            "n": 94,
+            "pvalue": 0.5643588089979137,
+            "rho": -0.06020051085924341
+          }
+        },
+        "controlled": {
+          "n": 383,
+          "partial_rank_rho": -0.011751972825557021,
+          "pvalue": 0.8186770942669387
+        },
+        "controlled_loyo": {
+          "maximum": 0.007955934569347206,
+          "minimum": -0.05050926038852207,
+          "positive": 2,
+          "total": 8,
+          "values": {
+            "2018": -0.007502268833283476,
+            "2019": 0.007955934569347206,
+            "2020": -0.00023422746027734927,
+            "2021": -0.02692294070648867,
+            "2022": -0.0013879691130340432,
+            "2023": -0.032570024006827486,
+            "2024": 0.005266372684376235,
+            "2025": -0.05050926038852207
+          }
+        },
+        "raw": {
+          "n": 399,
+          "pvalue": 0.7850401880955403,
+          "rho": -0.013697250661489907
+        },
+        "raw_loyo": {
+          "maximum": 0.006549419085740371,
+          "minimum": -0.0629657510760986,
+          "positive": 2,
+          "total": 8,
+          "values": {
+            "2018": -0.0076726342710997444,
+            "2019": 0.006549419085740371,
+            "2020": -0.0002526082685704332,
+            "2021": -0.031025206119386167,
+            "2022": 0.0006728148144007987,
+            "2023": -0.01970443477755684,
+            "2024": -0.0005844895744969127,
+            "2025": -0.0629657510760986
+          }
+        },
+        "within_year": {
+          "n": 399,
+          "pvalue": 0.29857442363232983,
+          "rho": 0.052168085248484236
+        }
+      }
+    },
+    "base_high": {
+      "mfe": {
+        "blocks": {
+          "DEVELOPMENT_2024_2025": {
+            "n": 111,
+            "pvalue": 0.01441456460481404,
+            "rho": 0.23168991322025242
+          },
+          "EXTENDED_2018_2021": {
+            "n": 194,
+            "pvalue": 0.3511530226985722,
+            "rho": -0.067298185978778
+          },
+          "HOLDOUT_O0_2022_2023": {
+            "n": 94,
+            "pvalue": 0.4556352963698731,
+            "rho": -0.07787450197381574
+          }
+        },
+        "controlled": {
+          "n": 383,
+          "partial_rank_rho": 0.027577078056037645,
+          "pvalue": 0.5905547224073341
+        },
+        "controlled_loyo": {
+          "maximum": 0.08102199972322673,
+          "minimum": -0.026724652712167663,
+          "positive": 6,
+          "total": 8,
+          "values": {
+            "2018": 0.03049174609247728,
+            "2019": 0.05941542682161797,
+            "2020": 0.0011580076909124548,
+            "2021": 0.08102199972322673,
+            "2022": 0.04004141391134139,
+            "2023": 0.04915103710572298,
+            "2024": -0.004912697418824347,
+            "2025": -0.026724652712167663
+          }
+        },
+        "raw": {
+          "n": 399,
+          "pvalue": 0.6515205555007697,
+          "rho": 0.022679065934434
+        },
+        "raw_loyo": {
+          "maximum": 0.056141705265039664,
+          "minimum": -0.01932952234933282,
+          "positive": 6,
+          "total": 8,
+          "values": {
+            "2018": 0.02670123576774733,
+            "2019": 0.056141705265039664,
+            "2020": 0.004813956425733562,
+            "2021": 0.05205557379966037,
+            "2022": 0.02929018245745023,
+            "2023": 0.031929301573142325,
+            "2024": -0.0017026841233905993,
+            "2025": -0.01932952234933282
+          }
+        },
+        "within_year": {
+          "n": 399,
+          "pvalue": 0.8110628881648971,
+          "rho": 0.012004954576855274
+        }
+      },
+      "non_false_breakout": {
+        "blocks": {
+          "DEVELOPMENT_2024_2025": {
+            "n": 111,
+            "pvalue": 0.010116959658315836,
+            "rho": 0.2431818181818182
+          },
+          "EXTENDED_2018_2021": {
+            "n": 194,
+            "pvalue": 0.6641683039261785,
+            "rho": -0.031366294524189264
+          },
+          "HOLDOUT_O0_2022_2023": {
+            "n": 94,
+            "pvalue": 0.6782735029544041,
+            "rho": -0.043345279963709335
+          }
+        },
+        "controlled": {
+          "n": 383,
+          "partial_rank_rho": 0.07140144000624772,
+          "pvalue": 0.16314651832619378
+        },
+        "controlled_loyo": {
+          "maximum": 0.12012230756111329,
+          "minimum": 0.024048912482025345,
+          "positive": 8,
+          "total": 8,
+          "values": {
+            "2018": 0.07617552879218638,
+            "2019": 0.10868557452119987,
+            "2020": 0.029881640706946693,
+            "2021": 0.12012230756111329,
+            "2022": 0.08416031085029366,
+            "2023": 0.09616719173641283,
+            "2024": 0.03945069061512798,
+            "2025": 0.024048912482025345
+          }
+        },
+        "raw": {
+          "n": 399,
+          "pvalue": 0.3073060093670067,
+          "rho": 0.0512356541431274
+        },
+        "raw_loyo": {
+          "maximum": 0.08375930227744816,
+          "minimum": 0.005457152882721504,
+          "positive": 8,
+          "total": 8,
+          "values": {
+            "2018": 0.06579108230987285,
+            "2019": 0.08375930227744816,
+            "2020": 0.022337331336212657,
+            "2021": 0.07518966022632662,
+            "2022": 0.055191782343373755,
+            "2023": 0.0637569809275249,
+            "2024": 0.03434386914278687,
+            "2025": 0.005457152882721504
+          }
+        },
+        "within_year": {
+          "n": 399,
+          "pvalue": 0.22604163948758813,
+          "rho": 0.06074132529692243
+        }
+      }
+    }
+  },
+  "neighbor": {
+    "mfe": {
+      "loyo": {
+        "maximum": 0.050927426345359704,
+        "minimum": -0.056149795855775064,
+        "positive": 5,
+        "total": 8,
+        "values": {
+          "2018": 0.020341718946154535,
+          "2019": 0.050927426345359704,
+          "2020": 0.002418977940157519,
+          "2021": -0.009306281864600413,
+          "2022": 0.017064795627360536,
+          "2023": 0.013396241773583374,
+          "2024": -0.013807072777916667,
+          "2025": -0.056149795855775064
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.9343331108034998,
+        "rho": 0.00413784219143637
+      }
+    },
+    "non_false_breakout": {
+      "loyo": {
+        "maximum": 0.026811095814379744,
+        "minimum": -0.05381965901082645,
+        "positive": 3,
+        "total": 8,
+        "values": {
+          "2018": 0.01315781314292883,
+          "2019": 0.026811095814379744,
+          "2020": -0.008463914321935675,
+          "2021": -0.00865381352781508,
+          "2022": 0.008191825142151023,
+          "2023": -0.0013753399303163155,
+          "2024": -0.01479171444545317,
+          "2025": -0.05381965901082645
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.9344792340171266,
+        "rho": -0.004128613870065066
+      }
+    }
+  },
+  "omnibus": {
+    "false_breakout_rates_by_lineage": {
+      "L00_BASE_LOW_ACCEPTANCE_LOW": 0.5652173913043478,
+      "L01_BASE_LOW_ACCEPTANCE_HIGH": 0.5535714285714286,
+      "L10_BASE_HIGH_ACCEPTANCE_LOW": 0.4895833333333333,
+      "L11_BASE_HIGH_ACCEPTANCE_HIGH": 0.5252525252525253
+    },
+    "mfe_kruskal_pvalue": 0.9735785389007892,
+    "mfe_kruskal_statistic": 0.22427474586590168,
+    "ordinal_summary": [
+      {
+        "lineage_strength": 0.0,
+        "mean_mfe": 0.11839768408417094,
+        "n": 92,
+        "non_false_breakout_rate": 0.43478260869565216
+      },
+      {
+        "lineage_strength": 1.0,
+        "mean_mfe": 0.1799876800109556,
+        "n": 208,
+        "non_false_breakout_rate": 0.47596153846153844
+      },
+      {
+        "lineage_strength": 2.0,
+        "mean_mfe": 0.17784800003457896,
+        "n": 99,
+        "non_false_breakout_rate": 0.47474747474747475
+      }
+    ]
+  },
+  "output_table_sha256": "2ff0154a6c8b00c67c9d8b641eea5360068d9bfa56e2e4b77ce9be5cc8b582b8",
+  "population": {
+    "controlled_complete": 383,
+    "events": 399,
+    "extreme_winner": 15,
+    "false_breakout": 213,
+    "opportunity20": 84,
+    "severe_loss": 44
+  },
+  "primary": {
+    "mfe": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.0074871572299801525,
+          "rho": 0.25256899338353056
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.21565846779529085,
+          "rho": -0.08929374533485719
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.15196613685138566,
+          "rho": -0.148930822045956
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.01716441078479429,
+        "pvalue": 0.7377451549278391
+      },
+      "controlled_loyo": {
+        "maximum": 0.05382263855064444,
+        "minimum": -0.04433922659242928,
+        "positive": 6,
+        "total": 8,
+        "values": {
+          "2018": 0.019938169554555248,
+          "2019": 0.05382263855064444,
+          "2020": 0.005875998079036493,
+          "2021": 0.035953668118461984,
+          "2022": 0.03564644059926829,
+          "2023": 0.0362214132122784,
+          "2024": -0.0060496251626812395,
+          "2025": -0.04433922659242928
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.7663189113759097,
+        "rho": 0.014924270229787383
+      },
+      "raw_bh_qvalue": 0.7663189113759097,
+      "raw_loyo": {
+        "maximum": 0.05726722924009458,
+        "minimum": -0.055614052004064295,
+        "positive": 6,
+        "total": 8,
+        "values": {
+          "2018": 0.0257124673458111,
+          "2019": 0.05726722924009458,
+          "2020": 0.012768471173521725,
+          "2021": 0.017643999513545276,
+          "2022": 0.03144567344081695,
+          "2023": 0.02801503799491489,
+          "2024": -0.005394500963451451,
+          "2025": -0.055614052004064295
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.6736713409502084,
+        "rho": -0.02114608852883989
+      }
+    },
+    "non_false_breakout": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.01784880912083802,
+          "rho": 0.2244943874176743
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.3767541621145887,
+          "rho": -0.06380745251888793
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.4709705905953546,
+          "rho": -0.07525662687941334
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.04324310130967934,
+        "pvalue": 0.398718125265946
+      },
+      "controlled_loyo": {
+        "maximum": 0.08463697116726145,
+        "minimum": -0.019101119692058625,
+        "positive": 7,
+        "total": 8,
+        "values": {
+          "2018": 0.049617541192988265,
+          "2019": 0.08463697116726145,
+          "2020": 0.021214486992842358,
+          "2021": 0.0675795123906004,
+          "2022": 0.05978855293764077,
+          "2023": 0.04628980171138546,
+          "2024": 0.03253491623620697,
+          "2025": -0.019101119692058625
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.5912299756913942,
+        "rho": 0.026966065888768088
+      },
+      "raw_bh_qvalue": 0.7663189113759097,
+      "raw_loyo": {
+        "maximum": 0.06450125690653535,
+        "minimum": -0.04201618880273958,
+        "positive": 7,
+        "total": 8,
+        "values": {
+          "2018": 0.04168199404304733,
+          "2019": 0.06450125690653535,
+          "2020": 0.01572340792713233,
+          "2021": 0.032000894002437434,
+          "2022": 0.03999869197739389,
+          "2023": 0.03157671764065447,
+          "2024": 0.02453380738197056,
+          "2025": -0.04201618880273958
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.23101663213427162,
+        "rho": 0.06009654371526529
+      }
+    }
+  },
+  "secondary_not_decision_rescuing": {
+    "extreme_winner": {
+      "n": 399,
+      "pvalue": 0.15743197651705193,
+      "rho": 0.07090994538709382
+    },
+    "mae": {
+      "n": 399,
+      "pvalue": 0.7525766101364679,
+      "rho": 0.015830603156385153
+    },
+    "opportunity20": {
+      "n": 399,
+      "pvalue": 0.655140516298977,
+      "rho": 0.022427135079215045
+    },
+    "round_trip_return": {
+      "n": 399,
+      "pvalue": 0.46598661205427017,
+      "rho": 0.03659947611138698
+    },
+    "severe_loss": {
+      "n": 399,
+      "pvalue": 0.6079326333337959,
+      "rho": 0.025760016110103666
+    }
+  },
+  "verdict": "FROZEN_LINEAGE_STRENGTH_FAILS_PRIMARY_RAW_OR_CONTROLLED_GATES"
+}

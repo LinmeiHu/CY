@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_004_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
+`EXP_OBL_004_REJECTED_NEXT_FRONTIER_SELECTED`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -68,13 +68,21 @@ EXP-OBL-003 now passes every gate and is deterministic across two full runs.
 92/112/96/99 and 84.46% neighbor agreement. Feature and assignment outputs
 contain no outcome column. H-OBL-002 receives `FREEZE_LINEAGE`.
 
+EXP-OBL-004 validly rejects H-OBL-003. Lineage strength has raw/controlled MFE
+rhos 0.015/0.017 and non-false-breakout rhos 0.027/0.043. Both earlier blocks
+reverse the positive development block; the frozen neighbor is approximately
+zero. All five gates fail and two executions are byte-identical. No component is
+promoted from this failed composite.
+
 ## Current scientific decision
 
-`EXECUTE_FROZEN_OUTCOME_REVEAL` — test the immutable ordinal lineage score against
-both MFE and non-false-breakout under the fixed controls and falsification set.
+`PIVOT_TO_OBJECTIVE_RESISTANCE_TEST_TOPOLOGY` — the broad 2x2 partition failed,
+but the canonical prior-60 close reference provides a narrower, independent and
+economically interpretable supply-depletion question.
 
 ## Exact next action
 
-Execute EXP-OBL-004 once without intermediate modification, apply its gates,
-rerun for byte identity, and persist the decision. Do not modify, relabel, merge,
-or rank lineages after outcome access.
+Preregister an outcome-blind EXP-OBL-005 feature freeze for the count of prior-60
+closes within 2% of the reference, with fixed 1% and 3% neighbors. Reconstruct
+from daily causal history; do not infer from outcomes or alter the rejected
+lineages. Only after the topology feature freeze may a new outcome test begin.

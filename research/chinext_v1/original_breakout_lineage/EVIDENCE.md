@@ -52,3 +52,23 @@ Status: `AUDIT_EVIDENCE_ACCEPTED_PENDING_FRESH_FEATURE_MATERIALIZATION`.
 
 Decision: `FREEZE_LINEAGE`. The IDs remain neutral and have no performance
 meaning until a separately committed reveal contract is executed.
+
+## E-OBL-004 — frozen lineage outcome reveal
+
+- Primary MFE raw/controlled rhos: `0.0149 / 0.0172`; raw LOYO 6/8.
+- Primary non-false-breakout raw/controlled rhos: `0.0270 / 0.0432`; raw LOYO
+  7/8 but both magnitudes fail.
+- Block MFE rhos: development `+0.2526`, extended `-0.0893`, holdout `-0.1489`.
+- Block non-false-breakout rhos: development `+0.2245`, extended `-0.0638`,
+  holdout `-0.0753`.
+- The frozen neighbor is approximately zero for both endpoints.
+- Intraday acceptance main effects are approximately zero; the base-high main
+  effect is weak and reverses across blocks. Neither is eligible for promotion.
+- Frozen lineage mean MFE ranges 11.8%..21.1%, but the rank omnibus p-value is
+  `0.974`; mean differences are right-tail-sensitive and not distributional
+  separation.
+- All five gates fail. Two executions are byte-identical.
+- Result SHA-256: `f01660f94f26b4f4e5e69d33e92a944f071c4fa796f0b1097fd0b90090fb7acf`.
+
+Decision: `REJECTED`. The first compact base-repair/acceptance taxonomy is a
+reproducible descriptive partition, not a stable economic lineage mechanism.

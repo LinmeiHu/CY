@@ -35,6 +35,23 @@ differences in MFE opportunity and false-breakout behavior. The reveal must be a
 separate experiment. Terminal return and right-tail contribution are secondary;
 they may not redefine the primary mechanism after inspection.
 
+## Frontier after EXP-OBL-004
+
+The first taxonomy is economically rejected. Its positive development-block
+ordering reverses in both earlier blocks; no relabeling or merge is allowed.
+
+Updated ranking:
+
+| Rank | Frontier | Rationale | Decision |
+|---:|---|---|---|
+| 1 | Objective repeated resistance testing | Directly uses the canonical prior-60 close reference and asks a narrower supply-depletion question not answered by the failed broad scores; fixed 2% definition already existed before reveal | SELECT H-OBL-004 |
+| 2 | Support recovery / reference age | Interpretable but correlated with repeated testing; treat as controls first | DEFER |
+| 3 | Industry/stock relative-strength formation | Existing H-012 decomposition was rejected and creates repeated-search risk | DEFER_LOW |
+| 4 | Further signal-session intraday feature search | Frozen acceptance axis and prior H-021 both fail; searching alternatives is high-risk | REJECT_FAMILY_FOR_NOW |
+| 5 | Volume dry-up/downside-amount variants | Nearby H-011 components failed; high repeated-search risk | DEFER_LOW |
+
+The next step is outcome-blind feature freezing, not an outcome calculation.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
