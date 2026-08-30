@@ -2,8 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-EGP-001_COMPLETE_REJECTED — false-breakout path topology remains supported,
-but stock-specific T+1 entry gap does not explain it. H-004 remains frozen for
+EXP-ECC-001_COMPLETE_REJECTED — false-breakout path topology remains supported,
+but stock-specific T+1 entry gap and independent same-day entry crowding are
+rejected. H-004 remains frozen for
 prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
 remain invalid. No strategy or production change is authorized.
 
@@ -551,6 +552,41 @@ authorization, a new experiment ID, and fresh isolated outputs.
   `44448b73...`, report `ea7bdc23...`.
 - Next independent question: whether same-day entry cohort size/crowding explains
   false-breakout incidence after breadth and entry-state controls.
+
+## AUTONOMOUS_CYCLE_EXP_ECC_001_PREREGISTRATION
+
+- H-018 tests whether the number of all accepted new entries on the same exact
+  execution date increases completed-trade false-breakout incidence.
+- The independent primary unit is 255 unweighted cohort dates. The frozen all-fill
+  cohort distribution is 1:163, 2:64, 3:16, 4:6, 5:3, 6:1, 7:1, 8:1; 92 dates
+  contain multiple entries.
+- The primary is continuous cohort size versus false-breakout rate. Fixed controls
+  cover mean breadth, entry RS, market return/volatility, beta/liquidity, industry
+  concentration, and entry year.
+- Trade-level association is a neighbor only. H-016 topology, size<5, blocks,
+  years, LOYO, securities, and industries are frozen falsification views.
+- No cohort threshold, entry throttle, sizing rule, replay, or strategy change is
+  authorized. Spec SHA `8d6f6def...`; seven-input-plus-spec aggregate
+  `7d2b366b...`.
+- Status: frozen before the first cohort/outcome calculation.
+
+## AUTONOMOUS_CYCLE_EXP_ECC_001_RESULT
+
+- Raw cohort-date rho is -0.045, within-year rho -0.056, and 0/8 LOYO estimates
+  are positive. The fixed controlled rho is -0.118 with 0/8 positive LOYO.
+- Trade-level neighbor rho is -0.059; H-016 topology rho is -0.042; restricting
+  to cohort size below five yields -0.032. Multi-entry-minus-single-entry
+  false-breakout rate is -0.0143.
+- Block rhos are -0.124, -0.023, and +0.075. All five gates fail. The negative
+  signs are not converted into an inverse rule or new hypothesis after inspection.
+- The narrative security/industry attacks were not serialized by the frozen
+  runner. This non-decisive omission cannot rescue failed primary gates and is
+  explicitly preserved rather than repaired post-result.
+- Two executions are byte-identical; the 230-file preexisting aggregate remains
+  `39200702...`. Output hashes are table `a12e988d...`, JSON `a9af99e6...`, and
+  generated report `20072f89...`.
+- Scientific decision: `REJECT` H-018. Same-day entry crowding does not explain
+  false-breakout formation and authorizes no threshold, throttle, or sizing rule.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

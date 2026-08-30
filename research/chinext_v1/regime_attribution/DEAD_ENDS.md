@@ -37,6 +37,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   opposite signs across raw, controlled, topology, blocks, and LOYO views. All
   completed entries fill exactly at T+1 open, so there is no varying intraday
   fill premium. Do not search inverse gaps, gap thresholds, or alternate fills.
+- H-018's same-day entry-cohort crowding mechanism is rejected by EXP-ECC-001.
+  Raw, controlled, trade-level, topology, small-cohort, and LOYO evidence is weakly
+  opposite the preregistered direction, while the three blocks disagree. Do not
+  reverse the sign into a cohort-size rule, search cohort thresholds, throttle
+  simultaneous entries, or alter sizing from this consumed sample.
 
 ## Invalid rather than rejected
 

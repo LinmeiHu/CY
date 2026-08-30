@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-EGP-001_COMPLETE_REJECTED` on 2026-08-30.
+`EXP-ECC-001_COMPLETE_REJECTED_WITH_RECORDED_OMISSION` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -57,6 +57,18 @@ stock-minus-market overnight gap; its thirteen-input aggregate is `b1131b87...`.
 EXP-EGP-001 is complete and rejected. Raw/controlled gap rhos are -0.072/-0.079
 with 0/8 positive LOYO; all five gates fail and the topology association is also
 negative. Exact T+1-open implementation has no varying intraday slippage.
+
+EXP-ECC-001 is frozen before its first cohort/outcome calculation. The primary
+unit is 255 unweighted entry dates, including 92 multi-entry dates, with all-fill
+cohort sizes 1..8. The fixed seven-input-plus-spec aggregate is `7d2b366b...`.
+No cohort threshold, throttle, sizing, replay, or strategy change is authorized.
+
+EXP-ECC-001 is complete and rejected. Raw/controlled cohort-date rhos are
+-0.045/-0.118 with 0/8 positive LOYO; trade-level and topology rhos are
+-0.059/-0.042; every frozen gate fails. Two runs are byte-identical and the
+preexisting scientific-state aggregate is unchanged. Narrative security/industry
+attacks were not serialized by the frozen runner; that non-decisive omission is
+recorded and cannot rescue the failed primary gates.
 
 ## Recovered autonomous environment
 
@@ -182,9 +194,10 @@ mechanisms.
 
 ## Required next action
 
-Checkpoint EXP-EGP-001, then outcome-blind audit exact-ledger same-day entry
-cohorts. If adequate, freeze a cohort-date-level H-018 crowding test rather than a
-pseudoreplicated trade-level primary.
+Rank the remaining independent frontiers. If action-safe early held-path coverage
+is complete, freeze one minimum-sufficient experiment distinguishing early peak,
+day-5 giveback, and residual post-day-5 failure; otherwise pivot to the next
+audited PIT-valid mechanism.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

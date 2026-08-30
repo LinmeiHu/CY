@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REJECT_H017_AUDIT_ENTRY_COHORT_CROWDING`.
+`REJECT_H018_RANK_NEXT_INDEPENDENT_FRONTIER`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -50,13 +50,14 @@ production change is authorized.
 ## Highest-information unresolved question
 
 EXP-EGP-001 rejects stock-specific T+1 entry gap as the source of false-breakout
-topology. The next independent portfolio-level question is whether simultaneous
-new-entry cohort size dilutes selection quality or concentrates crowded breakout
-failures beyond breadth and fixed entry state.
+topology. EXP-ECC-001 also rejects simultaneous accepted-entry cohort crowding:
+raw/controlled cohort-date rhos are -0.045/-0.118 with 0/8 positive LOYO, and
+the topology association is -0.042. All gates fail.
 
 ## Exact next action
 
-Checkpoint EXP-EGP-001, then outcome-blind audit same-day new-position cohort
-counts from the exact accepted ledgers. If cohort-date coverage and variation are
-adequate, preregister one cohort-date-level crowding experiment; otherwise pivot.
-EXP-P7-003 must never be silently repaired, rerun, or overwritten.
+Rank the remaining independent mechanism frontiers. Prefer a minimum-sufficient
+early held-path reversal experiment that temporally separates initial favorable
+excursion, day-5 giveback, and residual post-day-5 outcome if action-safe daily
+path coverage is complete. EXP-P7-003 must never be silently repaired, rerun, or
+overwritten.

@@ -1,0 +1,24 @@
+{
+  "experiment_id":"EXP-ECC-001",
+  "status":"FROZEN_BEFORE_FIRST_COHORT_OUTCOME_TEST",
+  "created_on":"2026-08-30",
+  "hypothesis_id":"H-018",
+  "question":"Does same-day new-entry cohort size increase false-breakout incidence beyond breadth and entry state?",
+  "mechanism":"Simultaneous breakout bursts may dilute marginal selection quality or concentrate crowded failures.",
+  "prediction":"Cohort size is positively associated with false-breakout rate and mean H-016 oriented order at the independent cohort-date level.",
+  "input_bindings":{
+    "runner":{"path":"research/chinext_v1/regime_attribution/scripts/run_entry_cohort_crowding.py","sha256":"d89e3b75bda4d5613d43077ff101a46d65ddb42e3d0bda6422428c965c3616aa"},
+    "accepted_trades":{"path":"research/chinext_v1/regime_attribution/artifacts/entry_gap_premium_attribution.csv","sha256":"8cc3a20a5015e93d9e3d8faf333ddd260dd95f736ccf503e23c54b6d5c11de23"},
+    "accepted_controls":{"path":"research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv","sha256":"d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"},
+    "development_ledger":{"path":"research/chinext_v1/data/execution_ledgers/development_execution_ledger.jsonl","sha256":"f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5"},
+    "extended_ledger":{"path":"research/chinext_v1/data/execution_ledgers/extended_execution_ledger.jsonl","sha256":"878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"},
+    "holdout_ledger":{"path":"research/chinext_v1/data/execution_ledgers/holdout_execution_ledger.jsonl","sha256":"c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"},
+    "control_runner":{"path":"research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py","sha256":"7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"}
+  },
+  "sample":{"cohort_dates":255,"multi_entry_dates":92,"cohort_size_counts":{"1":163,"2":64,"3":16,"4":6,"5":3,"6":1,"7":1,"8":1}},
+  "primary":"Unweighted cohort-date Spearman association: all-entry cohort size versus completed-trade false-breakout rate.",
+  "controls":["mean breadth","mean entry RS","mean market return/volatility","mean beta/liquidity","industry concentration","entry year"],
+  "gates":{"raw":"rho>=0.10, positive within-year, >=7/8 LOYO","controlled":"partial rho>=0.10, >=7/8 LOYO","neighbor":"positive trade-level and multi-minus-single rate","topology":"rho>=0.10, >=7/8 LOYO","falsification":"positive below size 5 and in >=2/3 blocks"},
+  "forbidden":["trade-level primary inference","cohort thresholds","entry throttling","sizing or production changes","invalid Phase 7/8/9 use"],
+  "outputs":["artifacts/entry_cohort_crowding.csv","artifacts/entry_cohort_crowding.json","reports/entry_cohort_crowding.md"]
+}

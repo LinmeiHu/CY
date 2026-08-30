@@ -127,3 +127,13 @@ T+1 action-safe coordinate step, match ledger execution open exactly, and cover
 399102 signal close/execution open. Execution price equals execution open for all
 399, so intraday fill premium has no variation. No gap value was calculated
 before the stock-minus-market feature and gates were frozen.
+
+EXP-ECC-001's outcome-blind cohort audit reads all 409 accepted entry-fill dates
+from the same three exact ledgers and no outcome value. The 399 completed cycles
+occupy 255 execution dates; counting all accepted fills on those dates produces
+the fixed cohort-size distribution 1:163, 2:64, 3:16, 4:6, 5:3, 6:1, 7:1,
+8:1. There are 92 multi-entry dates. Independent cohort dates by baseline block
+are 130 EXTENDED, 62 HOLDOUT, and 63 DEVELOPMENT. Completed-cycle entry counts
+equal all-entry counts on every admitted cohort date; the ten terminal open
+development entries remain excluded from endpoints rather than silently assigned
+outcomes. The primary unit is the unweighted cohort date, not the trade.

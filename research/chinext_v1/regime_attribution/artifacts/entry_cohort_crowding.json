@@ -1,0 +1,313 @@
+{
+  "audit": {
+    "cohort_dates": 255,
+    "cohort_size_counts": {
+      "1": 163,
+      "2": 64,
+      "3": 16,
+      "4": 6,
+      "5": 3,
+      "6": 1,
+      "7": 1,
+      "8": 1
+    },
+    "multi_entry_dates": 92,
+    "pseudoreplicated_primary": false,
+    "rules_tested": 0,
+    "strategy_replays": 0,
+    "trades": 399
+  },
+  "decision": "REJECT",
+  "evidence_grade": "EXPLORATORY_PORTFOLIO_INTERACTION",
+  "experiment_id": "EXP-ECC-001",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/execution_ledgers/development_execution_ledger.jsonl": "f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/execution_ledgers/extended_execution_ledger.jsonl": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/execution_ledgers/holdout_execution_ledger.jsonl": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/entry_gap_premium_attribution.csv": "8cc3a20a5015e93d9e3d8faf333ddd260dd95f736ccf503e23c54b6d5c11de23",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_entry_cohort_crowding.py": "d89e3b75bda4d5613d43077ff101a46d65ddb42e3d0bda6422428c965c3616aa",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+  },
+  "interpretation_boundary": "cohort counts describe accepted fills and do not authorize throttling simultaneous entries",
+  "mechanism_verdict": "ENTRY_COHORT_SIZE_DOES_NOT_EXPLAIN_FALSE_BREAKOUTS",
+  "primary": {
+    "blocks": {
+      "DEVELOPMENT_2024_2025": {
+        "n": 63,
+        "p_value": 0.5611997648843554,
+        "rho": 0.07459843428013099
+      },
+      "EXTENDED_2018_2021": {
+        "n": 130,
+        "p_value": 0.16029497141323734,
+        "rho": -0.1238675197525583
+      },
+      "HOLDOUT_O0_2022_2023": {
+        "n": 62,
+        "p_value": 0.8611057789308221,
+        "rho": -0.022679495053474275
+      }
+    },
+    "cohort_date_raw": {
+      "loyo": {
+        "2018": {
+          "n": 244,
+          "p_value": 0.7292582556118022,
+          "rho": -0.022269180467008213
+        },
+        "2019": {
+          "n": 216,
+          "p_value": 0.3979274750303573,
+          "rho": -0.057804616309108534
+        },
+        "2020": {
+          "n": 215,
+          "p_value": 0.5806748131200482,
+          "rho": -0.03788062157746961
+        },
+        "2021": {
+          "n": 215,
+          "p_value": 0.7231917726850503,
+          "rho": -0.024294045280544786
+        },
+        "2022": {
+          "n": 230,
+          "p_value": 0.5204877048384278,
+          "rho": -0.04258417115373916
+        },
+        "2023": {
+          "n": 218,
+          "p_value": 0.4120627826641525,
+          "rho": -0.05583326634702448
+        },
+        "2024": {
+          "n": 238,
+          "p_value": 0.3541526175587226,
+          "rho": -0.06032314191564319
+        },
+        "2025": {
+          "n": 209,
+          "p_value": 0.3686660826405037,
+          "rho": -0.06249739426965014
+        }
+      },
+      "loyo_negative_count": 8,
+      "loyo_positive_count": 0,
+      "n": 255,
+      "p_value": 0.4740556347963669,
+      "rho": -0.04502962639181137,
+      "within_year_rank_p_value": 0.3745137235206455,
+      "within_year_rank_rho": -0.05584281358341983
+    },
+    "cohort_size_below5": {
+      "loyo": {
+        "2018": {
+          "n": 238,
+          "p_value": 0.8821984683138624,
+          "rho": -0.009655880070357614
+        },
+        "2019": {
+          "n": 210,
+          "p_value": 0.5788531578557239,
+          "rho": -0.03851851435418908
+        },
+        "2020": {
+          "n": 210,
+          "p_value": 0.7486730587481938,
+          "rho": -0.02223898229479386
+        },
+        "2021": {
+          "n": 211,
+          "p_value": 0.8956135021507048,
+          "rho": -0.009086282838002408
+        },
+        "2022": {
+          "n": 225,
+          "p_value": 0.631171855820474,
+          "rho": -0.03217613288889059
+        },
+        "2023": {
+          "n": 212,
+          "p_value": 0.5435936817167968,
+          "rho": -0.04194518222071159
+        },
+        "2024": {
+          "n": 233,
+          "p_value": 0.3721390375868503,
+          "rho": -0.05873328368971614
+        },
+        "2025": {
+          "n": 204,
+          "p_value": 0.5269218355723526,
+          "rho": -0.044550441327155965
+        }
+      },
+      "loyo_negative_count": 8,
+      "loyo_positive_count": 0,
+      "n": 249,
+      "p_value": 0.6152054143140198,
+      "rho": -0.03200748492628212,
+      "within_year_rank_p_value": 0.3905652884037718,
+      "within_year_rank_rho": -0.0546453907654249
+    },
+    "controlled": {
+      "loyo": {
+        "2018": {
+          "n": 239,
+          "p_value": 0.06919336699730877,
+          "partial_rank_rho": -0.11775009181924204
+        },
+        "2019": {
+          "n": 208,
+          "p_value": 0.06082451485004116,
+          "partial_rank_rho": -0.13022252782138893
+        },
+        "2020": {
+          "n": 202,
+          "p_value": 0.05366405994873722,
+          "partial_rank_rho": -0.13597447201825627
+        },
+        "2021": {
+          "n": 202,
+          "p_value": 0.07761203334226628,
+          "partial_rank_rho": -0.1244539219079064
+        },
+        "2022": {
+          "n": 217,
+          "p_value": 0.050760261815462115,
+          "partial_rank_rho": -0.13279138113756436
+        },
+        "2023": {
+          "n": 205,
+          "p_value": 0.3681789191364904,
+          "partial_rank_rho": -0.06317451474222595
+        },
+        "2024": {
+          "n": 225,
+          "p_value": 0.15092628194930316,
+          "partial_rank_rho": -0.09606463068795452
+        },
+        "2025": {
+          "n": 196,
+          "p_value": 0.06438310034713927,
+          "partial_rank_rho": -0.13237315198692412
+        }
+      },
+      "loyo_positive_count": 0,
+      "n": 242,
+      "p_value": 0.06721054669263421,
+      "partial_rank_rho": -0.11785364688050218
+    },
+    "controlled_gate": false,
+    "falsification_gate": false,
+    "multi_minus_single_rate": -0.014336680257592493,
+    "neighbor_gate": false,
+    "raw_gate": false,
+    "topology": {
+      "loyo": {
+        "2018": {
+          "n": 244,
+          "p_value": 0.7281935641537886,
+          "rho": -0.02236033576623033
+        },
+        "2019": {
+          "n": 216,
+          "p_value": 0.4958940107761518,
+          "rho": -0.04657887696503927
+        },
+        "2020": {
+          "n": 215,
+          "p_value": 0.4235536058300081,
+          "rho": -0.05485673168326985
+        },
+        "2021": {
+          "n": 215,
+          "p_value": 0.5177723194192405,
+          "rho": -0.04434705876082143
+        },
+        "2022": {
+          "n": 230,
+          "p_value": 0.5055797024153972,
+          "rho": -0.0441163340235007
+        },
+        "2023": {
+          "n": 218,
+          "p_value": 0.6914603675002999,
+          "rho": -0.027030187615676344
+        },
+        "2024": {
+          "n": 238,
+          "p_value": 0.3825825956270087,
+          "rho": -0.056851278695003025
+        },
+        "2025": {
+          "n": 209,
+          "p_value": 0.5208904825182228,
+          "rho": -0.0446518646122003
+        }
+      },
+      "loyo_negative_count": 8,
+      "loyo_positive_count": 0,
+      "n": 255,
+      "p_value": 0.5037069390180049,
+      "rho": -0.04206176397710685,
+      "within_year_rank_p_value": 0.5834157270932127,
+      "within_year_rank_rho": -0.034501562852129936
+    },
+    "topology_gate": false,
+    "trade_level_neighbor": {
+      "loyo": {
+        "2018": {
+          "n": 388,
+          "p_value": 0.3914606681500914,
+          "rho": -0.043626173731344565
+        },
+        "2019": {
+          "n": 342,
+          "p_value": 0.20436438845543597,
+          "rho": -0.06880182815544449
+        },
+        "2020": {
+          "n": 334,
+          "p_value": 0.4297789156726116,
+          "rho": -0.04334554218493376
+        },
+        "2021": {
+          "n": 338,
+          "p_value": 0.1797278528682715,
+          "rho": -0.0731462508045515
+        },
+        "2022": {
+          "n": 362,
+          "p_value": 0.17198885792139526,
+          "rho": -0.07194277856219723
+        },
+        "2023": {
+          "n": 342,
+          "p_value": 0.3248974177180123,
+          "rho": -0.053390109292185635
+        },
+        "2024": {
+          "n": 361,
+          "p_value": 0.31420317119254376,
+          "rho": -0.05311742797840692
+        },
+        "2025": {
+          "n": 326,
+          "p_value": 0.19602433595924956,
+          "rho": -0.07179385144253943
+        }
+      },
+      "loyo_negative_count": 8,
+      "loyo_positive_count": 0,
+      "n": 399,
+      "p_value": 0.23834233870436894,
+      "rho": -0.05916474500790949,
+      "within_year_rank_p_value": 0.14171951965149274,
+      "within_year_rank_rho": -0.0736940463414561
+    }
+  },
+  "spec_sha256": "8d6f6def0213cdf387c88eeaa10d7105fae1188b502f5da9c0a5e17147e26125",
+  "strategy_modification": "NONE"
+}

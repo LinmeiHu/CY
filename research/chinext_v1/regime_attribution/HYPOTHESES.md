@@ -297,3 +297,34 @@ byte-consistent with one another.
   exactly T+1 open, so intraday fill premium has no variation.
 - Status: `REJECTED` by EXP-EGP-001. Entry gap does not explain false-breakout
   topology and cannot support a gap filter or alternate-fill claim.
+
+### H-018 — same-day entry-cohort crowding
+
+- Question: does the number of accepted new entries on the same execution date
+  increase false-breakout incidence beyond breadth and fixed entry state?
+- Mechanism: simultaneous breakout bursts may dilute marginal selection quality
+  or concentrate crowded failures even when the canonical V1 ranking and entry
+  rules are unchanged.
+- Prediction: all-entry cohort size is positively associated with completed-trade
+  false-breakout rate and mean H-016 oriented excursion order at the independent
+  cohort-date level.
+- Required data: all exact accepted entry fills from the three frozen ledgers,
+  completed-cycle endpoints, H-016 topology, and accepted PIT entry-state
+  controls.
+- Primary test: one unweighted cohort-date Spearman association across the fixed
+  255 dates, with within-year direction, eight LOYO omissions, and one fixed
+  partial-rank design.
+- Falsification: trade-level neighbor, multi-entry-minus-single-entry rate,
+  topology, cohort size below five, three independent blocks, years, securities,
+  industries, and exact ledger reconciliation.
+- Metrics: raw and controlled cohort-date rank association; direction and
+  magnitude gates are frozen in `EXP-ECC-001_spec.json`.
+- Confounds: cohort count is generated after canonical signal acceptance and may
+  proxy breadth or shared market state; within-date completed outcomes are not
+  independent. The cohort-date primary avoids treating 399 trades as independent.
+- Result: raw/controlled cohort-date rhos are -0.045/-0.118 with 0/8 positive
+  LOYO; trade-level and H-016-topology rhos are -0.059/-0.042; all gates fail.
+- Status: `REJECTED` by EXP-ECC-001. Narrative security/industry attacks were not
+  serialized by the frozen runner; this cannot rescue the failed primary gates
+  and is retained as a non-decisive protocol omission. No cohort threshold, entry
+  throttle, sizing rule, replay, or strategy modification is authorized.
