@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-003_FROZEN_AUDIT_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-001_REPRESENTATION_MAP_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -885,6 +885,27 @@ descriptive only; no tolerance, rounding/clipping of mapped prices, source
 substitution, resampling, or gate relaxation is permitted. All other 002 gates
 and all claim/prohibited-input boundaries are inherited unchanged. Execute twice
 if complete.
+
+MKT-SUPPORT-DATA-003 completes with `COMPLETE_DATA_CONTRACT_PASS`. All 1,230
+cohort rows (1,225 unique sessions), all 30 action challenges, and all 11,336
+daily population cells pass. Minimum population margin is 426; there are zero
+mapping-identity, nonfinite, rights, or blocking-action failures. The bounded
+sample observes 118 primary prior-20-session level tests, 12 up-limit contacts,
+and four down-limit contacts; these are feasibility counts, not representation
+evidence.
+
+The complete source diagnostic retains 1,161 bitwise and 39 integer-cent daily/
+minute final-close mismatches, all cent mismatches in 2018. Maximum difference
+is seven cents. Two full content-verified executions are byte-identical: sample
+`c1eb0cbc...`, coordinate audit `ef08a242...`, population audit `823aebae...`,
+result `072fa454...`, and report `29bb9d29...`; 15 focused 001/002/003 tests
+pass.
+
+This establishes only bounded PIT-B coordinate feasibility. SYNTH-MKT-031
+selects a deep objective-support representation map before any usefulness test:
+separate test opportunity, penetration, duration beyond level, recovery speed,
+recovery volume, closing recovery, repeated tests, and five-session trajectory;
+preserve 10/20/40 level neighbors and do not call a price touch “defense.”
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

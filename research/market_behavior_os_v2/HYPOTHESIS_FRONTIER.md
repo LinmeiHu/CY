@@ -230,4 +230,7 @@ its final bar. Record disagreement rather than forcing identity.
 MKT-SUPPORT-DATA-003 is frozen under spec `7a734dd9...`. It changes only that
 source-role assumption, requires complete disagreement/scale diagnostics, and
 inherits every other 002 sample, coordinate, minute, population, lineage, and
-no-rescue gate. Execute twice if complete; no support claim follows from a pass.
+no-rescue gate. It passes twice with byte-identical outputs and transparent
+source-disagreement diagnostics. The active frontier is now the minimum
+objective-support representation map; do not infer defense from the 118 observed
+level-test sessions or read payoff.

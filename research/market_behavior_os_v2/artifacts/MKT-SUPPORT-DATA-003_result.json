@@ -1,0 +1,79 @@
+{
+  "accumulation_claim": "NONE",
+  "coordinate_audit": {
+    "binary_close_match_sessions": 64,
+    "binary_close_mismatch_sessions": 1161,
+    "cohort_rows": 1230,
+    "down_limit_contact_rows": 4,
+    "integer_cent_match_sessions": 1186,
+    "integer_cent_mismatch_sessions": 39,
+    "integer_cent_mismatch_sessions_by_year": {
+      "2018": 39
+    },
+    "mapped_close_multiplication_identity_failures": 0,
+    "mapped_or_raw_nonfinite_rows": 0,
+    "maximum_absolute_integer_cent_difference": 7,
+    "maximum_absolute_raw_close_difference": 0.07000022888183643,
+    "primary_level_tests": 118,
+    "rights_or_blocking_action_rows": 0,
+    "supported_action_rows": 30,
+    "supported_action_rows_by_year": {
+      "2018": 5,
+      "2019": 5,
+      "2020": 5,
+      "2021": 5,
+      "2022": 5,
+      "2023": 5
+    },
+    "unique_sessions": 1225,
+    "up_limit_contact_rows": 12
+  },
+  "cy011_read": false,
+  "experiment_id": "MKT-SUPPORT-DATA-003",
+  "future_fields_read": [],
+  "hashes": {
+    "bound_inputs": {
+      "calendar": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+      "cy006_audit": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b",
+      "cy006_inventory": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "cy008_audit": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d",
+      "cy008_inventory": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+      "minute_adapter_reference": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8",
+      "parent_contract": "a5fe22d1a1f55ba2a937feb14cd8b3c9f2b49abde555b2a23cdf9c4e3b5afdeb",
+      "parent_runner": "0116486106c1c805cedf6a1c1421f8241efd36fd92b7ac3c5c2ba72c09d24eef",
+      "qd004_inventory": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c",
+      "qd010_inventory": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+      "registry": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "coordinate_audit_sha256": "ef08a242d3267c8825f0da6f6a6edf4cfc92f59e3773c194850d274074866e58",
+    "parent_runner_sha256": "afef0ee03e89eed417dc501dad0db4b9f55a170332d85bef9cbc6716e9f095e7",
+    "parent_spec_sha256": "79ec5129deddb2add59731a44bfa40b95bcbad827022bc61440f1b778b7ff689",
+    "population_audit_sha256": "823aebaefc01f222b9875e35f95dcaca6f19d44121eccbfa64518135a2a1a48d",
+    "sample_sha256": "c1eb0cbcd74ce1ab4e298100a1e5182490ee912130332795370b4a96a3856bc3",
+    "spec_sha256": "7a734dd94bd61f2bc52578c6a8706edde637b23d3f5636b4877b7e13ca931b6f"
+  },
+  "partition_content_hashes_verified": true,
+  "population_audit": {
+    "cells": 11336,
+    "first_date": "2018-03-06",
+    "last_date": "2023-12-29",
+    "minimum_margin": 426,
+    "passing_cells": 11336
+  },
+  "post_2023_data_read": false,
+  "recovery_claim": "NONE",
+  "representation_claim": "NONE",
+  "source_roles": {
+    "daily_minute_close_equality_required": false,
+    "daily_scale_source": "CY-006 causal coordinate_close(t) / CY-006 raw daily close(t)",
+    "mapped_final_close_forced_to_daily_coordinate_close": false,
+    "mapped_minute_formula": "QD-004 raw minute OHLC * daily coordinate scale",
+    "minute_price_source": "QD-004 raw adjust=none OHLC without daily-close substitution",
+    "numeric_tolerance": null,
+    "rounding_or_clipping_of_mapped_prices": false
+  },
+  "status": "COMPLETE_DATA_CONTRACT_PASS",
+  "strategy_or_outcome_fields_read": [],
+  "support_defense_claim": "NONE",
+  "usefulness_claim": "NONE"
+}

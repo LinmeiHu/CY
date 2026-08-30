@@ -1318,3 +1318,49 @@ cross-source close equality. Freeze CY-006 as the causal scale source and QD-004
 as the observed minute-price source. Require exact scale multiplication,
 positive finite outputs, complete source-disagreement diagnostics, and no
 tolerance, substitution, resampling, support claim, or outcome access.
+
+## SYNTH-MKT-031 — after objective-support coordinate feasibility
+
+### What was learned?
+
+Objective prior daily lows and raw minute paths can be placed in one exact
+causal coordinate without forcing independent source closes to agree. All 1,230
+cohort rows, 30 supported actions, and 11,336 population cells pass. Two full
+runs are byte-identical. The 118 primary-level test sessions show only that the
+sample contains observable test opportunities; they do not establish defense.
+
+The source-role correction is materially important: 1,161 binary and 39 exact-
+cent final-close disagreements remain in the audit rather than being rounded,
+tolerated away, or overwritten.
+
+### What market behavior are we still not studying?
+
+We still lack distinct representations for proximity/test opportunity,
+penetration depth, time beyond an objective level, recovery speed, recovery
+volume, closing recovery/acceptance, repeated test episodes, and whether those
+properties improve or deteriorate over five sessions. Resistance, support-to-
+resistance transitions, accumulation/distribution, and cross-asset state remain
+open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Coordinate feasibility is infrastructure evidence. Pullback continuation
+and oversold reversal remain hypotheses without a demonstrated market process.
+
+### Parallel-track awareness
+
+- **Market research:** deepen the objective-support frontier through
+  representation quality and latent-role compression.
+- **Existing-strategy archaeology:** no strategy membership or outcome has been
+  read; no CHINEXT rule changes.
+- **Strategy invention:** no active prototype; wait for representation and
+  temporal evidence.
+
+### Research Director decision
+
+`DEEPEN_OBJECTIVE_SUPPORT_REPRESENTATION_MAP`. Before estimation, define the
+minimum economically distinct session roles and five-session trajectories,
+fixed 10/20/40 level neighbors, support/opportunity conditioning, coverage and
+cross-year gates, and redundancy compression. Preserve complete close-source
+diagnostics as controls. Do not test payoff, name accumulation, or turn a touch
+into defense.

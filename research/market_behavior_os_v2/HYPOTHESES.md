@@ -455,4 +455,6 @@
   observed minute OHLC. Status remains unresolved pending a source-role-correct
   retry; no representation or mechanism is established.
 - MKT-SUPPORT-DATA-003 spec `7a734dd9...` freezes that correction by exact 002
-  inheritance. Passing would establish coordinate feasibility only.
+  inheritance. It passes all gates on 1,230 rows/1,225 sessions and 30 supported
+  actions. Two runs are identical. This establishes coordinate feasibility only;
+  support-defense representation remains untested.

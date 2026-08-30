@@ -50,6 +50,11 @@ zero and reverse, while phase-only evidence cannot rescue. Size/style rotation
 is not an active prototype. Diversify to objective support-defense market
 representation before revisiting any pullback or reversal archetype.
 
+MKT-SUPPORT-DATA-003 makes objective-level research technically feasible but
+does not activate pullback continuation or reversal. Representation quality,
+temporal behavior, failure structure, payoff, execution, and habitat remain
+absent. Keep both archetypes at `WAIT_FOR_MARKET_MECHANISM`.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

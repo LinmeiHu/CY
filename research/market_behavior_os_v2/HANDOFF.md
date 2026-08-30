@@ -902,3 +902,18 @@ It inherits the exact 002 sample and every non-equality gate. CY-006 supplies
 without substitution, rounding, clipping, or a forced final-close identity.
 Complete binary/cent/raw-difference diagnostics are mandatory but do not select
 or alter rows. Execute twice before any support representation claim.
+
+MKT-SUPPORT-DATA-003 passes the complete contract. It audits 1,230 cohort rows
+covering 1,225 unique sessions, exactly 30 supported actions, and 11,336/11,336
+population cells with minimum margin 426. There are zero mapped-price,
+nonfinite, rights, or blocking-action failures. It observes 118 primary level
+tests, but this count has no defense or usefulness meaning.
+
+Source disagreement remains visible: 1,161 binary and 39 exact-cent close
+mismatches, with a seven-cent maximum; all cent mismatches are 2018. Two full
+content-verified runs are byte-identical: sample `c1eb0cbc...`, coordinate
+`ef08a242...`, population `823aebae...`, result `072fa454...`, report
+`29bb9d29...`. Fifteen focused tests pass. The next frontier is map-first
+MKT-SUPPORT-001 representation quality, not payoff: distinguish opportunity,
+penetration, duration, recovery speed/volume, closing recovery, repeated tests,
+and five-session trajectories with fixed 10/20/40 neighbors.

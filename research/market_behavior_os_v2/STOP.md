@@ -15,6 +15,6 @@ seven minimal representation roles and no correctness disagreement. No result
 establishes economic usefulness or authorizes a strategy rule or CY-011.
 MKT-SUPPORT-DATA-001 failed its reused-sample gate and 002 failed an inapplicable
 cross-source close-equality assumption. Both are ordinary invalid experiments,
-not S1-S12 conditions. Execute frozen MKT-SUPPORT-DATA-003, which retains the
-002 sample and maps observed QD-004 OHLC by the CY-006 causal coordinate scale;
+not S1-S12 conditions. MKT-SUPPORT-DATA-003 resolves the coordinate contract.
+Continue with an objective-support representation map before usefulness;
 reinstate a STOP only if an S1-S12 boundary is actually encountered.
