@@ -1,0 +1,145 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DATA-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_PRIOR_HIGH_COORDINATE_OR_NEW_RAW_MINUTE_ACCESS",
+  "question": "Does the immutable calendar-distributed market sample provide adequate strict prior-high crossing, closing-state, censoring, and reacquisition support for a later objective breakout-acceptance representation experiment?",
+  "research_role": "coordinate and event-domain feasibility counts only",
+  "outcome_access": false,
+  "inputs": {
+    "representation_map": {"path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_ACCEPTANCE_REPRESENTATION_MAP.md", "sha256": "0b3363e43e7eee1ef3d222abe8c4017d93784e545ddbf82683e90f15b7666c47"},
+    "data_contract": {"path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DATA_CONTRACT.md", "sha256": "721517cdec1d11c78768422000a103a5a76ce30323580275553a86b9d7422a28"},
+    "parent_004_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DYN-DATA-004_spec.json", "sha256": "63c8a1f86dcf1e05e8f4284df3c1d9d2454c50dbc1f56e670b4a83090c35e6e2"},
+    "parent_004_sample": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_sample.csv", "sha256": "5a2ac52218f947579295fdd4ad0be431a125fb84db63bdd50fc9d7a02b37fc78"},
+    "parent_004_coordinate_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_coordinate_audit.csv", "sha256": "fb881921e75ab5a091251ea5730af46358958cadc926077b0d6a4818f67d8864"},
+    "parent_004_population_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_population_audit.csv", "sha256": "823aebaefc01f222b9875e35f95dcaca6f19d44121eccbfa64518135a2a1a48d"},
+    "parent_004_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_result.json", "sha256": "604f864053f4fb1b373452e0f5640f185c161397a83201afa80b53aa4e6cea27"},
+    "source_role_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_data_003.py", "sha256": "91dde0e182fa3418fae653e93f3e9a1e6058e5fdf5c48245190fd49388f01597"},
+    "minute_adapter": {"path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py", "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"},
+    "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "calendar": {"path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet", "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"},
+    "qd004_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "cy006_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy006_audit": {"path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/audit.json", "sha256": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b"},
+    "cy008_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "cy008_audit": {"path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json", "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"},
+    "qd010_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json", "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"}
+  },
+  "required_partitions": {
+    "qd004": ["bars/2018_day_parquet_none.parquet", "bars/2019_day_parquet_none.parquet", "bars/2020_day_parquet_none.parquet", "bars/2021_day_parquet_none.parquet", "bars/2022_day_parquet_none.parquet", "bars/2023_day_parquet_none.parquet"],
+    "cy006": ["partition_year=2018/data_0.parquet", "partition_year=2019/data_0.parquet", "partition_year=2020/data_0.parquet", "partition_year=2021/data_0.parquet", "partition_year=2022/data_0.parquet", "partition_year=2023/data_0.parquet"],
+    "cy008_daily": ["daily/partition_year=2018/data_0.parquet", "daily/partition_year=2019/data_0.parquet", "daily/partition_year=2020/data_0.parquet", "daily/partition_year=2021/data_0.parquet", "daily/partition_year=2022/data_0.parquet", "daily/partition_year=2023/data_0.parquet"]
+  },
+  "population": {
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "temporal_blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "expected_sequences": 1920,
+    "expected_cohort_rows": 9600,
+    "expected_unique_sessions": 9575,
+    "cohort_identity_preserved": true
+  },
+  "coordinate": {
+    "daily_source": "CY-006 causal PIT-B raw OHLC and action chain",
+    "minute_source": "QD-004 raw unadjusted OHLCV and amount",
+    "mapped_minute_price": "raw_minute_price * coordinate_close / daily_raw_close",
+    "daily_coordinate_high": "coordinate_close * daily_raw_high / daily_raw_close",
+    "lookbacks": [10, 20, 40],
+    "primary_lookback": 20,
+    "window": "strictly prior completed consecutive valid exchange sessions; current excluded",
+    "rounding_or_tolerance": null,
+    "parent_coordinate_equivalence": "exact binary equality for coordinate_close, scale, support_low10/20/40, snapshot, and eligibility on every unique target"
+  },
+  "event": {
+    "primary_path": "240 continuous bars 09:31..11:30 and 13:01..15:00",
+    "challenge_path": "241 bars including separate 09:30 auction",
+    "crossing": "first mapped high strictly greater than fixed prior-high level",
+    "equality_is_crossing": false,
+    "closing_states": ["CROSS_CLOSE_ABOVE", "CROSS_CLOSE_EQUAL", "CROSS_CLOSE_BELOW"],
+    "remaining_bar_horizons": [5, 15, 30, 60],
+    "close_loss": "any post-cross close strictly below level",
+    "reacquisition": "a later close strictly above level after the first close loss",
+    "descriptor_available_at": "t 15:30 Asia/Shanghai",
+    "same_bar_action": false
+  },
+  "count_gates": {
+    "primary": {
+      "crossings_total": 360,
+      "crossings_each_block": 120,
+      "crossings_each_year": 30,
+      "close_above_total": 120,
+      "close_below_total": 120,
+      "each_close_arm_each_block": 40,
+      "each_close_arm_each_year": 10,
+      "remaining60_total": 240,
+      "remaining60_each_block": 80,
+      "remaining60_each_year": 20,
+      "each_view_total": 50,
+      "each_view_each_year": 5
+    },
+    "conditional_reacquisition": {
+      "total": 80,
+      "each_block": 25,
+      "each_year": 5,
+      "failure_defers_only_this_role": true
+    },
+    "each_neighbor_or_auction": {
+      "crossings_total": 240,
+      "crossings_each_block": 80,
+      "crossings_each_year": 20,
+      "close_above_total": 80,
+      "close_below_total": 80
+    },
+    "all_primary_nonconditional_gates_required": true,
+    "neighbors_cannot_rescue_primary": true
+  },
+  "resource_budget": {
+    "single_process": true,
+    "duckdb_threads": 1,
+    "daily_memory_limit_gib": 1.5,
+    "temporary_spill_ceiling_gib": 10,
+    "batch_keys": ["target_year", "block_id"],
+    "planned_raw_minute_rows": 2307575,
+    "compressed_read_ceiling_gib": 20,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "filesystem_headroom_fraction": 0.25,
+    "wall_clock_ceiling_minutes": 10,
+    "durable_output_ceiling_mib": 100,
+    "raw_materialization": false
+  },
+  "scalar_reconstruction": {
+    "cases": 5,
+    "selection": "smallest SHA256(MKT-BREAKOUT-DATA-001|symbol|trade_date) among unique primary continuous L20 crossings",
+    "must_not_call_vector_event_helper": true,
+    "exact_fields": ["resistance_high20", "first_cross_index", "closing_state", "remaining_bars"]
+  },
+  "prohibited_computations": [
+    "post-cross continuation return or excursion",
+    "pullback depth or dwell magnitude",
+    "VWAP or volume-intensity acceptance",
+    "trajectory rate, transition probability, direction, correlation, or regression",
+    "future market, industry, stock, or volatility value",
+    "strategy membership, signal, candidate, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "within-year rank, acceptance composite, favorable label, threshold search, or sample replacement",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "gates": {
+    "exact_input_and_partition_hashes": true,
+    "exact_parent_sample_and_coordinate_equivalence": true,
+    "exact_241_bar_grid_and_CY008_lineage": true,
+    "zero_missing_or_nonfinite_prices": true,
+    "zero_rights_or_blocking_actions": true,
+    "five_scalar_cases_exact": true,
+    "two_byte_identical_runs": true,
+    "no_rescue": "No lookback, crossing comparison, near-level band, path, clock, date, view, sample, action, tolerance, count floor, closing-state pooling, or horizon may be changed after counts are observed."
+  },
+  "claim_boundary": "Passing establishes only bounded PIT-B prior-high coordinate and event-domain feasibility; it establishes no stable representation, recurring process, supply depletion, demand, prediction, habitat, timing, execution, payoff, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_coordinate_event_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DATA-001_audit.md"
+  ]
+}

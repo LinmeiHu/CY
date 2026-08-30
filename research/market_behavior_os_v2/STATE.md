@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-036_COMPLETE_BREAKOUT_ACCEPTANCE_MAP_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: objective prior-high breakout and rejection/acceptance representation semantics
-- `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
+- `CURRENT_PHASE`: `SYNTH-MKT-037_COMPLETE_BREAKOUT_REPRESENTATION_FREEZE_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: objective prior-high breakout acceptance/rejection same-session representation quality
+- `SUPPORTING_FRONTIER`: fixed generic daily/minute path controls needed for breakout-role compression
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1128,6 +1128,39 @@ processes, outcomes, strategy fields, post-2023 data, or CY-011 were read.
 SYNTH-MKT-036 deprioritizes this exact objective-support temporal branch and
 pivots map-first to the structurally distinct objective prior-high breakout
 acceptance/rejection family.
+
+The objective breakout map and MKT-BREAKOUT-DATA-001 were frozen before any
+prior-high or crossing count was constructed. The map separates objective
+prior-high opportunity, immediate 5/15/30/60-bar post-cross attribution,
+follow-through, rejection depth, level dwell, loss episodes, reacquisition,
+closing/VWAP acceptance, activity, and repetition. It fixes completed-session
+availability at 15:30 and prohibits using later bars as predictors at the first
+crossing. It also preserves the exact non-duplication boundary from the rejected
+399-event CHINEXT V1 prior-60-close/ranked-acceptance lineage.
+
+MKT-BREAKOUT-DATA-001 completes as `COMPLETE_EVENT_SUPPORT_PASS`. All 9,575
+unique target coordinates exactly reproduce the parent coordinate close, scale,
+support L10/L20/L40, and snapshot fields. The new causal prior-high coordinate
+uses maximum daily coordinate high over the strictly prior 10/20/40 completed
+sessions; a strict high greater than the fixed level defines a crossing.
+
+Primary L20 continuous support is 964 cohort crossing sessions and 957 unique
+physical sessions, split 474/490 across 2018--2020/2021--2023 and
+162/137/175/184/158/148 by year. Completed closing states are 464 above, one
+equal, and 499 below. There are 899 events with 60 later bars and 641
+loss-and-reacquisition cases. All four view/year floors, L10/L40 neighbors, and
+the auction challenge pass; only four crossings are auction-only. Five scalar
+cases reconstruct exact prior highs, first-cross indices, closing states, and
+censoring counts.
+
+Two complete executions are byte-identical: coordinate/event audit
+`1eaeed29...`, count audit `59e74964...`, result `b21244e9...`, and report
+`574163ef...`; three focused tests pass and lint is clean. The audit reads the
+exact 2,307,575 raw rows and writes 4.74 MB. It computes no post-cross magnitude,
+trajectory, correlation, future value, outcome, or strategy field and does not
+open CY-011. SYNTH-MKT-037 permits a separately frozen same-session
+representation-quality experiment; it establishes no breakout mechanism or
+usefulness.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

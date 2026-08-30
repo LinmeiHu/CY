@@ -316,3 +316,11 @@ neighbor/block/year gate fails. Do not add tolerance, select A,A from A,A,B,
 or enlarge the sample. The rolling-level coordinates remain descriptive but the
 exact temporal support branch is deprioritized. Map the distinct prior-high
 breakout acceptance/rejection family before any new coordinate construction.
+
+The objective breakout map (`0b3363e4...`), data contract (`721517cd...`), and
+MKT-BREAKOUT-DATA-001 spec (`db3d0cfa...`) were frozen before construction. The
+count audit passes with 964 primary events, 464/499 close-above/below arms, 899
+full 60-bar opportunities, 641 reacquisitions, and all fixed year/block/view/
+neighbor/auction gates. Freeze MKT-BREAKOUT-001 next for same-session role
+representation and generic-path compression. Do not infer favorable acceptance,
+read outcomes, or reproduce the rejected V1 ranked acceptance composite.

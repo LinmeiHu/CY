@@ -121,6 +121,11 @@
 | `experiments/MKT-SUPPORT-LVL-DATA-001_spec.json` | Frozen zero-raw-read L10/L20/L40 continuous/auction count gates |
 | `scripts/run_mkt_support_lvl_data_001.py` | Exact binary-level identity count and scalar audit implementation |
 | `reports/MKT-SUPPORT-LVL-DATA-001_audit.md` | Seven unchanged-L20 sequences; every primary/neighbor adequacy gate fails |
+| `OBJECTIVE_BREAKOUT_ACCEPTANCE_REPRESENTATION_MAP.md` | Strategy-independent prior-high continuation, rejection, dwell, reacquisition, acceptance, activity, and timing architecture |
+| `OBJECTIVE_BREAKOUT_DATA_CONTRACT.md` | Exact causal prior-high, strict-crossing, censoring, count, resource, and non-duplication semantics |
+| `experiments/MKT-BREAKOUT-DATA-001_spec.json` | Frozen coordinate/event-domain feasibility gates before construction |
+| `scripts/run_mkt_breakout_data_001.py` | Exact parent-coordinate equivalence, block-batched crossing counts, and scalar reconstruction |
+| `reports/MKT-BREAKOUT-DATA-001_audit.md` | 964 primary crossings with both closing arms and every fixed support gate passing |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

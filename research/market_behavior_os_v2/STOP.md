@@ -54,3 +54,10 @@ one-minute/1-GiB/zero-raw-read envelope, so no STOP condition is active.
 MKT-SUPPORT-LVL-DATA-001 completes and fails ordinary adequacy with seven primary
 cases. No STOP is active: the exact branch is deprioritized and the map-first
 objective breakout acceptance/rejection frontier is data-feasible in principle.
+
+MKT-BREAKOUT-DATA-001 then confirms that feasibility inside the inherited
+resource envelope: 964 primary crossings, both closing arms, the 60-bar horizon,
+reacquisition, every year/view, L10/L40, and auction challenges pass. Coordinate
+equivalence and five scalar cases agree and two runs are byte-identical. No
+S1--S12 condition is active. Continue with a separately frozen representation-
+quality experiment; count adequacy is not a mechanism or usefulness result.

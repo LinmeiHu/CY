@@ -548,3 +548,25 @@
   every block/year and L10/L40/auction neighbor floor fails. No same-level
   dynamics map is authorized. This rejects the exact physical-coordinate branch,
   not the broader support/resistance family or the two rolling-level descriptors.
+
+## MKT-H-034 — objective prior-high breakout event feasibility
+
+- Status: `EVENT_DOMAIN_ADEQUATE_REPRESENTATION_UNTESTED`.
+- Hypothesis: the immutable calendar/CY-006-selected sample may contain enough
+  strict prior-high crossing, close-above/close-below, full 60-bar, and
+  loss/reacquisition events to support a later strategy-independent
+  acceptance/rejection representation experiment.
+- Primary: mapped continuous high strictly greater than the maximum causal daily
+  coordinate high over the prior 20 completed sessions. L10/L40 and the 09:30
+  auction-inclusive clock are fixed challenges.
+- Falsifiers: exact parent-coordinate disagreement, any PIT/minute/resource
+  failure, insufficient total/block/year/view or closing-arm support, insufficient
+  60-bar opportunity, neighbor failure, or scalar disagreement. No count floor,
+  lookback, threshold, clock, or state pooling may be changed after reveal.
+- Result: 964 primary cohort crossings (957 unique), blocks 474/490, years
+  162/137/175/184/158/148, closing states 464/1/499 above/equal/below, 899 with
+  60 remaining bars, and 641 loss/reacquisition cases. Every primary,
+  L10/L40, auction, year, block, view, and conditional gate passes.
+- Boundary: this is data/event support only. It establishes no stable acceptance
+  representation, continuation/rejection process, supply depletion, demand,
+  future outcome, habitat, timing, execution, or strategy.

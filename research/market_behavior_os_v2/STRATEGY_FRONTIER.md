@@ -85,6 +85,13 @@ same-price defense mechanism or archetype can be formed. Pullback/reversal/
 support-defense remain inactive. The next breakout-acceptance frontier is market
 representation work only and does not activate a breakout strategy.
 
+MKT-BREAKOUT-DATA-001 still does not activate a breakout or failed-breakout
+strategy. Its 964 crossings, both closing arms, full-horizon support, and
+reacquisition cases establish only that a representation experiment is
+estimable. No post-cross role, recurring process, future outcome, trigger,
+execution, capacity, or habitat effect has survived. Keep every prototype
+inactive while same-session role stability and redundancy are tested.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

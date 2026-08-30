@@ -1101,3 +1101,28 @@ Two runs reproduce exactly: count `0174c5ce...`, result `7ee82869...`, report
 deprioritizes the exact objective-support temporal branch while retaining its two
 descriptive coordinates. Next: build an objective prior-high breakout acceptance/
 rejection representation and PIT data map before computing any breakout path.
+
+The objective breakout representation map is now frozen under SHA-256
+`0b3363e4...`, with the data contract `721517cd...` and
+MKT-BREAKOUT-DATA-001 spec `db3d0cfa...` fixed before prior-high construction or
+crossing counts. It uses causal prior daily highs at L10/L20/L40, strict
+crossing, continuous/auction clocks, neutral close-above/equal/below states,
+explicit +5/+15/+30/+60 censoring, and conditional loss/reacquisition support.
+Full-session descriptors are first available at 15:30; post-cross bars are
+attribution, never predictors at the first-cross time.
+
+MKT-BREAKOUT-DATA-001 passes every count gate. The primary has 964 cohort
+crossings (957 unique), 474/490 by fixed block, 464 close-above, one equal, 499
+close-below, 899 with 60 remaining bars, and 641 loss/reacquisition cases. All
+years, governed views, L10/L40, and auction challenges pass. The 9,575 parent
+coordinates match exactly and five scalar cases independently reconstruct the
+level/event facts.
+
+Two executions are byte-identical: coordinate/event `1eaeed29...`, counts
+`59e74964...`, result `b21244e9...`, report `574163ef...`; three focused tests
+pass. Exact raw rows are 2,307,575 and durable output is 4.74 MB. This is event-
+domain feasibility only. No continuation, rejection depth, dwell, VWAP,
+activity, trajectory, outcome, strategy, post-2023 partition, or CY-011 was
+read. Next freeze MKT-BREAKOUT-001 for same-session representation stability,
+L10/L40 and auction portability, generic-path compression, and scalar
+replication before constructing any post-cross magnitude.

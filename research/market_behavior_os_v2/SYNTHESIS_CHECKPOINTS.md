@@ -1610,3 +1610,54 @@ late acceptance, fixed generic price-path alternatives, and the boundary between
 completed-session predictor representation and post-cross attribution. Do not
 reuse CHINEXT outcomes, call a crossing a breakout success, or optimize minute
 windows.
+
+## SYNTH-MKT-037 — after objective prior-high event feasibility
+
+### What was learned?
+
+The strategy-independent event domain is ample under exact causal semantics.
+L20 continuous contains 964 cohort crossings (957 unique), split 474/490 across
+the fixed blocks and at least 137 in every year. Close-above and close-below arms
+are balanced at 464/499; 899 events retain 60 later bars and 641 lose then
+reacquire the level. Every governed view/year, L10/L40 neighbor, and auction
+challenge passes. Only four events are auction-only.
+
+This is not a favorable-state result. The experiment constructed counts and
+censoring only, exactly matched all 9,575 parent coordinates, and read no
+post-cross magnitude or outcome. The old CHINEXT V1 ranked prior-60-close
+acceptance lineage remains rejected on its consumed 399-event population.
+
+### What market behavior are we still not studying?
+
+Immediate continuation, follow-through excursion, pullback/rejection depth,
+below-level dwell, loss episodes, reacquisition speed, closing/VWAP acceptance,
+breakout activity, repeated crossing episodes, five-session event sequences,
+resistance role reversal, and accumulation/distribution remain unrepresented.
+PIT historical normalization and full contemporaneous relative ranks require a
+continuous/full-cross-section population and remain unavailable in this bounded
+sample. Future outcomes, strategy incrementality, habitat, execution, and
+capacity are also unstudied.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Event availability is not a recurring process or an edge. Neither a breakout
+continuation nor failed-breakout reversal prototype is authorized, and CHINEXT
+V1 is unchanged.
+
+### Parallel-track awareness
+
+- **Market research:** deepen the same frontier by constructing stable,
+  economically distinct post-cross path roles under fixed controls.
+- **Existing-strategy archaeology:** preserve the exact OBL rejection and do not
+  re-rank or relabel its acceptance classes.
+- **Strategy invention:** no active prototype; event-domain adequacy is two
+  scientific stages before usefulness.
+
+### Research Director decision
+
+`DEEPEN_BREAKOUT_ACCEPTANCE_SAME_SESSION_REPRESENTATION`. Freeze
+MKT-BREAKOUT-001 before computing any post-cross magnitude. Primary L20
+continuous, L10/L40 and auction challenges, 5/15/30/60 censoring, neutral
+closing states, conditional reacquisition, fixed generic daily/minute controls,
+scalar reconstruction, and no-rescue gates must be immutable. No future value,
+outcome, strategy field, post-2023 partition, or CY-011 may enter.

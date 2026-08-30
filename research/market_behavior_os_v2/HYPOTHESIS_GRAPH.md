@@ -108,6 +108,15 @@ MKT-H-028 objective-support coordinate
   -> larger calendar-distributed eligibility-only sample required before temporal process
   -> no support defense, return, habitat, timing, or strategy claim
 
+MKT-H-034 objective prior-high breakout event feasibility
+  -> market-wide calendar/CY-006-selected sample, not CHINEXT strategy signals
+  -> prior daily coordinate-high L10/L20/L40 and strict minute crossing
+  -> L20 continuous has 964 events, balanced close-above/below arms, 899 full
+     60-bar opportunities, and 641 loss/reacquisition cases
+  -> all year/block/view, L10/L40, auction, coordinate, scalar, and resource gates pass
+  -> same-session continuation/rejection/acceptance representation may be frozen
+  -> no process, outcome, habitat, timing, execution, or strategy claim
+
 HAB-H-001 CHINEXT direction/discovery association
   -> A and B opportunity-density associations pass
   -> fixed A+B incrementality only for evaluated/candidate daily counts

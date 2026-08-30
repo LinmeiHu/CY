@@ -85,6 +85,12 @@ MKT-SUPPORT-LVL-DATA-001 reads durable panels only, completes in under three
 seconds, reads zero raw partition rows, and writes under 1 MB. Its 1-GiB RSS,
 8-GiB headroom, 10-MiB output, and one-minute ceilings pass twice.
 
+MKT-BREAKOUT-DATA-001 reuses the exact 1.5-GiB daily-coordinate, 10-GiB
+disposable-spill, and fixed `(year, block_id)` minute batching envelope. It reads
+exactly 2,307,575 complete raw rows, preserves the 3-GiB RSS/8-GiB headroom/
+ten-minute ceilings, and writes 4,742,204 bytes. Two full executions complete
+inside the envelope with byte-identical outputs; no raw dataset is materialized.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

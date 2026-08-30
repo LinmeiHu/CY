@@ -270,3 +270,18 @@ sequences; L10/L40 and auction neighbors also have only 5--9. The engine therefo
 retains the two rolling-definition trajectory coordinates but explicitly does
 not label them repeated support, defense, strengthening, or deterioration. No
 same-level temporal state is emitted and this exact branch is deprioritized.
+
+## MKT-BREAKOUT-DATA-001 boundary
+
+The engine now has an audited event domain, not a breakout state. Objective
+prior-high L10/L20/L40 coordinates use the accepted causal action chain and
+strictly prior daily highs; mapped minute highs define strict crossings. The
+primary L20 continuous domain supplies 964 cohort events with both closing arms,
+899 full 60-bar opportunities, and 641 loss/reacquisition cases across both
+blocks and all years/views. Neighbor and auction support pass.
+
+No post-cross magnitude or latent score has yet passed representation quality.
+The engine therefore emits no continuation, rejection, acceptance, demand,
+overhead-supply, transition, habitat, timing, or strategy coordinate from this
+audit. A separately frozen same-session experiment must first survive
+definition stability and generic-path compression.
