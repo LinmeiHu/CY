@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "AUDIT-ROSV2-M001",
+  "hypothesis_id": "H-ROSV2-M001",
+  "status": "FROZEN_BEFORE_FIVE_DAY_MINUTE_ACCESS",
+  "outcome_access": false,
+  "question": "Can exact Day -5 through Day -1 QD-004/CY-008 minute sessions and a bounded interpretable descriptor preview be constructed for all 399 canonical accepted events without PIT, session, action-coordinate, or outcome-blindness failure?",
+  "scope": {
+    "events": 399,
+    "relative_trading_sessions": [-5, -4, -3, -2, -1],
+    "expected_event_sessions": 1995,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "identity_projection": [
+      "trade_id",
+      "baseline_block",
+      "symbol",
+      "entry_signal_date",
+      "entry_execution_date"
+    ],
+    "forbidden_inputs": [
+      "round_trip_return",
+      "realized_pnl",
+      "mfe",
+      "mae",
+      "false_breakout",
+      "winner20",
+      "extreme_winner",
+      "severe_loss",
+      "exit dates or reason",
+      "holding duration",
+      "post-entry path"
+    ]
+  },
+  "data_contract": {
+    "qd004": "exact inventoried raw/unadjusted one-minute bars only",
+    "cy008": "exact inventoried causal daily context and six sequential opening windows only",
+    "bar_timestamp": "completed bar end in Asia/Shanghai",
+    "expected_session": "one 09:30 auction row plus 09:31..11:30 and 13:01..15:00 continuous rows",
+    "daily_available_at": "trade_date 15:30 Asia/Shanghai",
+    "five_day_trajectory_available_at": "Day -1 15:30 Asia/Shanghai",
+    "potential_action": "signal session or later; never a minute before descriptor completion and never same-bar fill",
+    "price_basis": "raw/unadjusted; preview features are same-session dimensionless quantities",
+    "cross_day_raw_price_comparison": false,
+    "future_adjusted_price_allowed": false,
+    "alternative_data_fallback": false
+  },
+  "session_gates": {
+    "raw_rows_per_session": 241,
+    "continuous_rows_per_session": 240,
+    "derived_5m_windows_per_session": 48,
+    "cy008_opening_windows_per_session": 6,
+    "exact_grid_required": true,
+    "unique_bar_end_time_required": true,
+    "hard_valid_required": true,
+    "session_complete_required": true,
+    "ohlc_valid_required": true,
+    "units_valid_required": true,
+    "volume_reconciled_required": true,
+    "amount_reconciled_required": true,
+    "market_rule_valid_required": true,
+    "causal_inputs_valid_required": true,
+    "opening_window_max_relative_error": 1e-12,
+    "five_minute_volume_amount_conservation_error": 0.0,
+    "missing_or_invalid_policy": "FAIL_CLOSED"
+  },
+  "descriptor_preview": {
+    "purpose": "outcome-blind feasibility and redundancy audit only; not a predictor freeze",
+    "families": [
+      "price path",
+      "VWAP structure",
+      "selling pressure proxy",
+      "buying pressure proxy",
+      "intraday volatility",
+      "volume concentration"
+    ],
+    "count": 34,
+    "selection_from_outcomes": 0,
+    "threshold_search": false,
+    "clock_window_search": false,
+    "neighbor_search": false,
+    "raw_sequence_model": false,
+    "required_diagnostics": [
+      "complete finite coverage",
+      "distribution summary",
+      "unique-value count",
+      "outcome-blind pairwise rank redundancy"
+    ]
+  },
+  "decision_gates": {
+    "PASS_FIVE_DAY_MINUTE_DATA_AND_DESCRIPTOR_FEASIBILITY": "all 1,995 event-sessions and every fixed session/PIT/inventory/reconciliation/descriptor gate pass",
+    "FAIL_DATA_CONTRACT": "any required event-session, inventory, timestamp, hard-valid, grid, unit, reconciliation, or outcome-blind gate fails",
+    "interpretation": "PASS authorizes only comparison of a minimal outcome-blind five-day representation freeze against the three-coordinate trend build; it does not authorize outcome association or a strategy rule"
+  },
+  "resource_estimate": {
+    "target_rows": 480795,
+    "target_raw_rows_formula": "399 events x 5 sessions x 241 bars",
+    "annual_qd004_partitions": 8,
+    "annual_cy008_partitions": 16,
+    "expected_output_footprint": "less than 10 MB",
+    "expected_runtime": "minutes; dominated by exact file hashing and filtered annual Parquet reads",
+    "scale_policy": "one fixed 399-event population only; no full-market minute build"
+  },
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/research_os_v2/scripts/audit_five_day_minute_data.py",
+      "sha256": "1e3a1fa7071722a3b373ddd596f86a171b888aa30a5f9c22b7f2b0c389f01618"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "identity_source": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "qd004_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+      "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+    },
+    "cy008_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+      "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"
+    },
+    "cy008_cross_year_audit": {
+      "path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json",
+      "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"
+    },
+    "accepted_prior_intraday_audit": {
+      "path": "research/chinext_v1/regime_attribution/reports/intraday_breakout_quality_data_audit_20260830.md",
+      "sha256": "41f9f97c2c2dda1c3f6b7a5e0c47ba89d41b5205fdf1a7c63e6bd6f30fd1a0dc"
+    }
+  },
+  "outputs": {
+    "session_audit": "research/chinext_v1/research_os_v2/artifacts/AUDIT-ROSV2-M001_session_audit.csv",
+    "daily_descriptors": "research/chinext_v1/research_os_v2/artifacts/AUDIT-ROSV2-M001_daily_descriptors.csv",
+    "result": "research/chinext_v1/research_os_v2/artifacts/AUDIT-ROSV2-M001_result.json",
+    "report": "research/chinext_v1/research_os_v2/reports/AUDIT-ROSV2-M001_five_day_minute_data.md"
+  }
+}
