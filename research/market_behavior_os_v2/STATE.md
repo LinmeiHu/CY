@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-001_REPRESENTATION_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent size/style leadership and diffusion representation
 - `SUPPORTING_FRONTIER`: one stable same-session VWAP defense/recovery coordinate with no tested 1/3/5-session state dynamic
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -692,3 +692,17 @@ circulating-market-value size. It does not make the value total market cap,
 true free-float cap, enterprise value, or an economically useful style factor.
 SYNTH-MKT-023 proceeds to a deep strategy-independent size representation map
 before construction or usefulness. No S1-S12 STOP is active.
+
+The strategy-independent size map and MKT-STYLE-001 spec `a32ca8fc...` are
+frozen before bucket or role construction. Same-session return attribution uses
+only exact t-1 circulating-size ranks; a t close may not sort its own return.
+Bottom/top 30% is primary with 20%/40% neighbors, three buckets support
+diffusion/concentration, and five support curve divergence.
+
+Eight roles separately cover size structure, positive participation balance,
+one-day and twenty-day leadership, winner diffusion, positive-mass
+concentration, curve divergence, and leadership transition. Absolute, 756/504
+causal-PIT, robust-z, relative-to-ALL_A, and governed-view rank coordinates;
+coverage, neighboring-definition, denominator, year-cell, redundancy, and no-
+rescue gates are fixed. No future value, strategy outcome, unregistered style
+field, post-2023 data, or CY-011 may enter.

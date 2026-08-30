@@ -1,0 +1,128 @@
+{
+  "experiment_id": "MKT-STYLE-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_SIZE_BUCKET_OR_ROLE_CONSTRUCTION",
+  "question": "Which circulating-size structure, participation, leadership, diffusion, concentration, divergence, and transition representations are stable, portable, and nonredundant?",
+  "research_role": "strategy-independent circulating-size state representation",
+  "inputs": {
+    "data_contract_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-STYLE-DATA-001_spec.json",
+      "sha256": "506c24bcdd498162b3d44faa3008aa54ddf9a4132606b5da9a890240e224484b"
+    },
+    "data_contract_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-DATA-001_result.json",
+      "sha256": "a03954d6315f29c7c5a119b91729fbfeef84feb51c7c12ed2330b7822a19f019"
+    }
+  },
+  "inherited_source": "exact CY-006 registry, manifest, audit, QD-009 manifest, and six 2018-2023 partition identities from the frozen data-contract spec",
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-01-02",
+    "date_end": "2023-12-29",
+    "expected_rows": 11656,
+    "expected_rows_per_group": 1457,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "view_minimum_counts": {"ALL_A": 1000, "SH_A": 400, "SZ_A": 400, "CHINEXT_BOARD": 200}
+  },
+  "availability": {
+    "size_assignment": "completed t-1 close times causal t-1 circulating shares",
+    "state_available_at": "completed t close at 15:00 Asia/Shanghai",
+    "same_bar_action": "forbidden; this experiment creates no action"
+  },
+  "security_coordinate": {
+    "size": "raw close * circulating_shares in CNY",
+    "current_return": "causal corporate-action-aware step return inherited from the market breadth adapter",
+    "bucket_assignment": "within each view/denominator, assign t return from exact t-1 circulating-size percentile",
+    "consecutive_session_requirement": true,
+    "current_close_sort": "forbidden"
+  },
+  "bucket_definitions": {
+    "primary_small_large": [0.30, 0.70],
+    "neighbor_small_large": [[0.20, 0.80], [0.40, 0.60]],
+    "diffusion_concentration_buckets": 3,
+    "divergence_buckets": 5,
+    "minimum_extreme_bucket_members": 50,
+    "minimum_quintile_members": 30
+  },
+  "roles": {
+    "size_structure": {
+      "primary": "size_log_value_iqr",
+      "neighbors": ["size_log_value_p90_p10", "size_log_value_mad"]
+    },
+    "positive_participation_balance": {
+      "primary": "size_positive_participation_small30_large30",
+      "neighbors": ["size_positive_participation_small20_large20", "size_positive_participation_small40_large40"]
+    },
+    "size_leadership_1d": {
+      "primary": "size_return_spread1_small30_large30",
+      "neighbors": ["size_return_spread1_small20_large20", "size_return_spread1_small40_large40"]
+    },
+    "size_leadership_20d": {
+      "primary": "size_return_spread20_small30_large30",
+      "neighbors": ["size_return_spread10_small30_large30", "size_return_spread40_small30_large30"]
+    },
+    "winner_diffusion": {
+      "primary": "size_winner_entropy_top10",
+      "neighbors": ["size_winner_entropy_top5", "size_winner_entropy_top20"]
+    },
+    "positive_mass_concentration": {
+      "primary": "size_positive_mass_max_share",
+      "neighbors": ["size_positive_mass_hhi", "size_positive_mass_one_minus_entropy"]
+    },
+    "size_curve_divergence": {
+      "primary": "size_bucket_return_std5",
+      "neighbors": ["size_bucket_return_range5", "size_bucket_return_mean_adjacent_gap5"]
+    },
+    "leadership_transition": {
+      "primary": "size_leadership_transition5",
+      "neighbors": ["size_leadership_transition3", "size_leadership_transition10"]
+    }
+  },
+  "role_priority": [
+    "size_structure",
+    "positive_participation_balance",
+    "size_leadership_1d",
+    "size_leadership_20d",
+    "winner_diffusion",
+    "positive_mass_concentration",
+    "size_curve_divergence",
+    "leadership_transition"
+  ],
+  "causal_normalization": {
+    "window_sessions": 756,
+    "minimum_valid_observations": 504,
+    "current_observation_included": true,
+    "coordinates": ["rolling_percentile", "rolling_robust_z"]
+  },
+  "relative_coordinates": {
+    "relative_to_all": "primary minus same-date/same-denominator ALL_A primary",
+    "relative_rank": "same-date/same-denominator governed-view percentile rank"
+  },
+  "gates": {
+    "minimum_raw_coverage_each_view": 0.95,
+    "minimum_neighbor_median_spearman": 0.70,
+    "minimum_denominator_median_spearman": 0.90,
+    "eligible_years": [2019, 2020, 2021, 2022, 2023],
+    "minimum_view_year_observations": 150,
+    "role_redundancy_absolute_spearman": 0.85,
+    "expected_pit_coverage": 1.0,
+    "expected_relative_coverage": 1.0,
+    "no_rescue": "No bucket boundary, horizon, neighbor, view, denominator, year, absolute threshold, current-close sort, normalization, role order, favorable subset, or failed role can replace a failed primary representation."
+  },
+  "prohibited_inputs": [
+    "current t close used to assign the size bucket for t return",
+    "future or post-decision state, return, or outcome",
+    "total market cap, QD-009 freeFloatCapital, enterprise value, book value, earnings, beta, profitability, investment, fund flow, or sentiment",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only stable and nonredundant circulating-size state representations; it does not establish a small-cap premium, risk appetite, future return, strategy habitat, timing, causality, execution, or a rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-STYLE-001_representation.md"
+  ]
+}

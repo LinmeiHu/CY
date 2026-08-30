@@ -143,3 +143,8 @@ MKT-STYLE-DATA-001 passes all hard gates and all eight populations on every
 session. Circulating-market-value size is now representation-ready, while total
 cap, true free-float cap, growth/value, and beta remain unavailable. The active
 frontier is MKT-STYLE-001 deep map-first representation construction.
+
+MKT-STYLE-001 is frozen under spec `a32ca8fc...`. Eight roles must survive
+lagged-size assignment, fixed bucket/horizon neighbors, absolute/PIT/relative
+coordinates, coverage/portability, and fixed-priority redundancy compression.
+No role has economic usefulness or strategy status; execute twice.

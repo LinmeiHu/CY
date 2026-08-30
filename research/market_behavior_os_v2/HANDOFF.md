@@ -690,3 +690,16 @@ concentration, divergence, and transitions; retain absolute, causal-PIT, and
 relative views. Use lagged size membership for current return attribution and
 avoid current-close sort leakage. Freeze neighboring bucket/horizon definitions,
 coverage, portability, redundancy, and no-rescue gates before estimates.
+
+MKT-STYLE-001 is frozen under SHA-256
+`a32ca8fcdb6080beb97f4226a891c44270a46e9d0a4818d4132501fdc1a808a3`
+before constructing buckets or roles. Attribute t returns using exact t-1
+circulating-size ranks; current-close assignment is prohibited. Use 30/70
+primary tails with 20/80 and 40/60 neighbors, three equal buckets for
+diffusion/concentration, and five for curve divergence.
+
+Construct all eight roles separately and preserve raw, causal-PIT/robust-z,
+relative-to-ALL_A, and governed-view rank coordinates. Apply 95% coverage, 0.70
+neighbor, 0.90 denominator, 150-observation year-cell, and 0.85 fixed-priority
+compression gates exactly. Execute twice. Do not read future values, strategy
+outcomes, total/free-float cap substitutes, post-2023 data, or CY-011.

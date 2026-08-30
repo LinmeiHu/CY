@@ -71,6 +71,8 @@
 | `SIZE_STYLE_DATA_CONTRACT.md` | Frozen circulating-market-value size semantics and fail-closed PIT audit gates |
 | `experiments/MKT-STYLE-DATA-001_spec.json` | Frozen CY-006/QD-009 size-input feasibility contract |
 | `reports/MKT-STYLE-DATA-001_audit.md` | Passing circulating-market-value PIT and population audit |
+| `MARKET_SIZE_STYLE_REPRESENTATION_MAP.md` | Frozen eight-role circulating-size state representation architecture |
+| `experiments/MKT-STYLE-001_spec.json` | Frozen lagged-size bucket and representation/compression contract |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |
