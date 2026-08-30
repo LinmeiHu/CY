@@ -25,14 +25,16 @@ inform T+1 or later.
 
 ## Active experiment
 
-EXP-OBL-001 is frozen before outcome reveal. It creates four neutral quadrants of
-base repair/compression and canonical prior-60 reference acceptance. The runner
-projects only identity columns from the accepted trade source; its explicit
-forbidden-column set blocks every future outcome.
+EXP-OBL-001 is invalid due only to a one-character holdout-membership hash typo;
+it stopped before reading a data row and produced no output. EXP-OBL-002 is the
+fresh clean identity with unchanged science and corrected binding. It creates
+four neutral quadrants of base repair/compression and canonical prior-60 reference
+acceptance. Its runner projects only identity columns from the accepted trade
+source; its explicit forbidden-column set blocks every future outcome.
 
 ## Current frontier
 
-Execute and deterministically rerun EXP-OBL-001. If every frozen construction gate
+Execute and deterministically rerun EXP-OBL-002. If every frozen construction gate
 passes, commit its `LINEAGE_FREEZE_ID`, then preregister EXP-OBL-002 outcome reveal.
 If a gate fails, do not inspect outcomes; diagnose only the outcome-blind
 construction and record REFINE or REJECT under a new identity if justified.

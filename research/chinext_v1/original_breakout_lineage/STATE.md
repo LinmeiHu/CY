@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_001_FROZEN_BEFORE_OUTCOME_REVEAL`
+`EXP_OBL_002_FROZEN_CLEAN_REEXECUTION`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -47,19 +47,22 @@ is conditioned on completed accepted entries and is not strict archival PIT-A.
 
 ## Active preregistration
 
-EXP-OBL-001 fixes a neutral 2x2 hierarchy from a base-repair score and a
-canonical-reference acceptance score. All definitions, weights, the 0.50 split,
-four IDs, construction gates, neighbor test, outcome prohibition, and input/code
-hashes are frozen. Its runner cannot load an outcome column.
+EXP-OBL-001 is permanently invalid: it stopped at its first input-hash check due
+to a one-character holdout-membership binding typo. No data row, feature,
+lineage, or outcome was read or calculated; no output exists.
+
+EXP-OBL-002 preserves every scientific definition, weight, 0.50 split, lineage
+ID, gate, timing rule, and outcome prohibition. It changes only the corrected
+membership hash plus fresh experiment, runner, and output identities.
 
 ## Current scientific decision
 
-`EXECUTE_OUTCOME_BLIND_FREEZE` — materialize the frozen representation and accept
+`EXECUTE_CLEAN_OUTCOME_BLIND_FREEZE` — materialize the frozen representation and accept
 it only if coverage, class balance, every-year presence, neighboring assignment,
 PIT, and deterministic rerun gates pass.
 
 ## Exact next action
 
-Execute EXP-OBL-001 without any outcome access, verify byte-identical rerun, freeze
+Execute EXP-OBL-002 without any outcome access, verify byte-identical rerun, freeze
 the assignment under a new `LINEAGE_FREEZE_ID`, and only then create a separate
 outcome-reveal experiment.
