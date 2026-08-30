@@ -1,0 +1,116 @@
+{
+  "experiment_id": "MKT-MIN-VOL-GEO-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_GEOMETRY_RESULT",
+  "question": "Is the sole stable five-day minute-volatility ordinal progression distinct from frozen same-session and daily volatility states?",
+  "research_role": "outcome-blind redundancy and latent-mechanism compression before usefulness",
+  "inputs": {
+    "path_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_nonslope_panel.csv",
+      "sha256": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0"
+    },
+    "path_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_result.json",
+      "sha256": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc"
+    },
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc"
+    },
+    "volatility_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+      "sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"
+    },
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29"
+  },
+  "target": {
+    "raw": "minute_realized_volatility__ordinal_progression",
+    "pit": "minute_realized_volatility__ordinal_progression__pit_expanding_pct",
+    "relative_to_all": "minute_realized_volatility__ordinal_progression__relative_to_all_a",
+    "relative_rank": "minute_realized_volatility__ordinal_progression__view_rank"
+  },
+  "controls": {
+    "minute_level": {
+      "raw": "minute_realized_volatility__day_m1_level",
+      "pit": null,
+      "relative_to_all": null,
+      "relative_rank": null,
+      "source": "path_panel"
+    },
+    "daily_realized_level": {
+      "raw": "realized_volatility_median20",
+      "pit": "realized_volatility_median20_pit_expanding_pct",
+      "relative_to_all": "realized_volatility_median20_relative_to_all",
+      "relative_rank": "realized_volatility_median20_relative_view_rank_pct",
+      "source": "volatility_panel"
+    },
+    "daily_intraday_range": {
+      "raw": "intraday_range_median_smooth5",
+      "pit": "intraday_range_median_smooth5_pit_expanding_pct",
+      "relative_to_all": "intraday_range_median_smooth5_relative_to_all",
+      "relative_rank": "intraday_range_median_smooth5_relative_view_rank_pct",
+      "source": "volatility_panel"
+    },
+    "daily_volatility_concentration": {
+      "raw": "volatility_mass_share_top10",
+      "pit": "volatility_mass_share_top10_pit_expanding_pct",
+      "relative_to_all": "volatility_mass_share_top10_relative_to_all",
+      "relative_rank": "volatility_mass_share_top10_relative_view_rank_pct",
+      "source": "volatility_panel"
+    },
+    "daily_volatility_change": {
+      "raw": "realized_volatility_change5",
+      "pit": "realized_volatility_change5_pit_expanding_pct",
+      "relative_to_all": "realized_volatility_change5_relative_to_all",
+      "relative_rank": "realized_volatility_change5_relative_view_rank_pct",
+      "source": "volatility_panel"
+    }
+  },
+  "availability": {
+    "volatility_controls_available_at": "same trade date 15:00 Asia/Shanghai",
+    "path_available_at": "same trade date 15:30 Asia/Shanghai after completed 15:00 minute bar",
+    "geometry_decision_at": "same trade date 15:30 Asia/Shanghai",
+    "first_possible_action": "later causally valid observation/session; experiment creates no action"
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "eligible_years_for_cell_gate": [2019, 2020, 2021, 2022, 2023]
+  },
+  "geometry": {
+    "absolute": "within each of eight groups, raw target-control Spearman",
+    "pit": "within each group, causal expanding-percentile target-control Spearman",
+    "relative": "within each denominator, target-control Spearman for both relative-to-ALL_A and governed-view rank",
+    "joint_reconstruction": "within each group, average-rank OLS of target on all five raw control ranks plus intercept; report adjusted R-squared"
+  },
+  "gates": {
+    "exact_common_rows": 10696,
+    "exact_groups": 8,
+    "exact_rows_per_group": 1337,
+    "group_year_minimum_observations": 150,
+    "all_eligible_group_year_cells_nondegenerate": true,
+    "pairwise_median_absolute_spearman_strictly_below": 0.85,
+    "joint_rank_reconstruction_median_adjusted_r2_strictly_below": 0.70,
+    "joint_rank_reconstruction_max_adjusted_r2_strictly_below": 0.85,
+    "no_rescue": "No favorable coordinate, view, denominator, control subset, failed path role, or alternative threshold replaces a failed primary gate."
+  },
+  "forbidden_fields": [
+    "raw minute rows",
+    "MKT-MIN-PATH-002 failed role, neighbor, OLS, endpoint, signed-reversal, or curvature fields",
+    "MKT-VOL-001 rejected or redundant roles",
+    "future return",
+    "strategy membership, candidate, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a distinct contemporaneous path coordinate; failing compresses it into frozen volatility. Neither establishes contraction, expansion, usefulness, prediction, habitat, causality, or a trading rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-VOL-GEO-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-VOL-GEO-001_geometry.md"
+  ]
+}

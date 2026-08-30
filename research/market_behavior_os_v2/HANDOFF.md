@@ -245,3 +245,9 @@ before usefulness. Do not add any failed path role or read outcomes.
 ## Human decision required?
 
 No. Continue map-first with MKT-MIN-VOL-GEO-001. CY-011 remains unopened.
+
+The map and spec `d1f67d05...` are now frozen before construction. The study
+binds exact path panel `d0a396a9...` and volatility panel `f7361284...`, expects
+10,696 common rows/1,337 per group, and fixes the joint decision timestamp at
+15:30. It tests five controls without importing any failed role. Execute twice,
+verify exact artifact hashes, and classify only state-coordinate redundancy.

@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-GEO-001_MAP_NEXT`
+- `CURRENT_PHASE`: `MKT-MIN-VOL-GEO-001_FROZEN_BEFORE_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: outcome-blind geometry of the sole stable five-day minute-volatility progression
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -280,3 +280,10 @@ same-session minute volatility and daily volatility level/change/concentration
 coordinates. Freeze inputs, transformations, portability and redundancy gates
 before construction; read no outcomes, strategy fields, raw minute rows, or
 CY-011. Do not add a favorable failed path descriptor to the geometry.
+
+The MKT-MIN-VOL-GEO-001 map and spec `d1f67d05...` are frozen before
+construction. The target is the sole accepted path; controls are the raw Day -1
+minute-volatility level plus four accepted daily volatility roles. Pairwise
+absolute/PIT/relative geometry is tested where frozen coordinates exist, with a
+joint raw-rank reconstruction diagnostic. Every input hash, common row, group,
+year cell, availability timestamp, threshold, and no-rescue rule is fixed.
