@@ -2,10 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-CBC-002_INVALID_AFTER_OUTPUT_INSPECTION — H-025 remains unresolved. Its LOYO
-helpers violated the frozen four-year universe; every CBC-002 value is invalid.
-CBC-003 requires exact 2020-2023 omissions and fresh outputs. Locked 2024-2026
-validation remains unopened.
+EXP-CBC-003_PREREGISTERED — H-025 remains unresolved. CBC-001/002 are invalid;
+CBC-003 freezes contract-exact 2020-2023 omissions and n>=120 with fresh outputs.
+Locked 2024-2026 validation remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -990,6 +989,21 @@ authorization, a new experiment ID, and fresh isolated outputs.
   universe and use an outcome-independent controlled minimum below all four
   pre-audited omission sizes. No scientific feature, endpoint, weight, control,
   gate, direction, or interpretation may change.
+
+## AUTONOMOUS_CYCLE_EXP_CBC_003_PREREGISTRATION
+
+- CBC-003 implements the already-frozen omission universe exactly as
+  2020/2021/2022/2023. All raw, controlled, neighbor, component, and tail rank
+  packets use only those four keys.
+- Pre-result omission sizes are 155/159/183/163. The controlled estimator floor
+  is frozen at 120, below every sample and independent of result direction.
+- All H-025 science remains unchanged. CBC-002 inspected invalid output is bound
+  explicitly and treated only as contamination/audit evidence.
+- CBC-003 uses fresh `_v3` outputs, rehashes all 81 CY-011 files, and continues to
+  prohibit locked 2024-2026 materialization and every strategy action.
+- Spec SHA `0bb54c007bf7662ba8aab45179e37eb91e22fc0e3f79c663630855b503ad675a`;
+  runner SHA `7d549d37cfc948c946513c31081bf090f643188b9cd80e1e2350730a28e57494`.
+  Status is frozen before the contract-exact association.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

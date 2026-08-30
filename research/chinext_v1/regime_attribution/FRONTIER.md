@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`CREATE_CONTRACT_EXACT_EXP_CBC_003_FOR_UNCHANGED_H025`.
+`EXECUTE_CONTRACT_EXACT_EXP_CBC_003_FOR_UNCHANGED_H025`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -69,8 +69,7 @@ requiring locked prospective validation.
 
 ## Exact next action
 
-Preserve CBC-002 outputs as invalid audit evidence. Create CBC-003 with fresh
-identity and paths, exact LOYO keys 2020-2023, and a fixed outcome-independent
-controlled minimum below the pre-audited 155-row smallest omission. Bind CBC-001
-and CBC-002 provenance. Do not materialize 2024-2026, screen features, tune
-weights, alter gates, create thresholds, or modify V1.
+Execute CBC-003 only after validating exact four-key LOYO behavior, all bindings,
+and all 81 CY-011 files. Preserve CBC-001/002 as invalid. Do not materialize
+2024-2026, screen features, tune weights, alter gates, create thresholds, or
+modify V1. Disclose CBC-002 inspection in the final evidence classification.

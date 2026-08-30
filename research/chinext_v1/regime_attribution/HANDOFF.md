@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-CBC-002_INVALID_AFTER_OUTPUT_INSPECTION_H025_UNRESOLVED` on 2026-08-30.
+`EXP-CBC-003_PREREGISTERED_H025_UNRESOLVED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -114,6 +114,12 @@ universe; the controlled helper's inherited n>=180 floor also makes three actual
 omissions non-estimable. Every CBC-002 value is invalid and retained only for
 audit. H-025 remains unresolved. Continue only with fresh CBC-003 exact-year LOYO
 implementation and unchanged science; locked 2024-2026 remains unopened.
+
+CBC-003 now freezes exact 2020-2023 LOYO keys and a 120-row controlled floor
+below the pre-audited omission sizes 155/159/183/163. It binds and discloses the
+inspected invalid CBC-002 output, changes no H-025 science, uses fresh `_v3`
+outputs, and leaves locked 2024-2026 unopened. Spec/runner SHAs are
+`0bb54c00...`/`7d549d37...`.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete
