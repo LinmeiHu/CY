@@ -1,0 +1,93 @@
+{
+  "experiment_id": "EXP-P3-002",
+  "spec_id": "CHINEXT-V1-UNIVARIATE-REGIME-ATTRIBUTION-2018-2025-V2",
+  "status": "FROZEN_BEFORE_FEATURE_OUTCOME_JOIN",
+  "created_on": "2026-08-30",
+  "supersedes": {
+    "experiment_id": "EXP-P3-001",
+    "reason": "The Phase 2 feature artifact was correctness-revised before any outcome join: exact DATE lineage, equal-weight industry dispersion, and explicit causal corporate-action coordinate coverage were fixed. EXP-P3-001 was never executed and its bound input hash is stale."
+  },
+  "objective": "Test H-003 through H-007 with continuous and fixed-quantile univariate attribution, then actively falsify temporal stability without selecting a trading threshold or interaction.",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE; all 2018-2025 outcomes were already consumed",
+  "inputs": {
+    "daily_regime_features_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+    "yearly_trades_sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb",
+    "yearly_decomposition_sha256": "c86c41ba0a35192ca0c4e3b64679abcca614c69c1412ba75c78bb184bc3c8f9e",
+    "baseline_manifest_sha256": "682b45455442f00e15e6273622ab6566d1c5c1d94069efc5fbbd40cb17f0977b",
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "join": {
+    "keys": ["baseline_block", "entry_signal_date=trade_date"],
+    "feature_timestamp": "entry signal day's completed close",
+    "causal_gate": "feature first_applicable_trade_date must be no later than entry_execution_date and strictly later than entry_signal_date",
+    "expected_cycles": 399,
+    "missing_feature_policy": "feature-by-feature deletion; never impute",
+    "minimum_feature_sample": 100
+  },
+  "outcomes": {
+    "continuous_primary": ["round_trip_return", "mfe", "mae", "return_5d", "return_10d", "return_20d"],
+    "binary_primary": {
+      "winner_ge20": "round_trip_return >= 0.20",
+      "winner_ge50": "round_trip_return >= 0.50",
+      "severe_loss_le_neg10": "round_trip_return <= -0.10",
+      "extreme_loss_le_neg20": "round_trip_return <= -0.20"
+    },
+    "continuation_missingness": "A horizon is observed only when the frozen holding path reaches it; no post-exit data or zero fill"
+  },
+  "hypothesis_families": {
+    "H-003_trend_persistence": {
+      "primary_features": ["index_return_60d", "index_close_to_ma60", "index_ma20_slope_5d", "index_above_ma20_fraction20", "index_above_ma20_state_flips20"],
+      "expected_winner_direction": [1, 1, 1, 1, -1]
+    },
+    "H-004_breadth": {
+      "primary_features": ["breadth_above_ma20", "breadth_above_ma60", "breadth_positive_return20", "breadth_above_ma20_change20", "breadth_above_ma20_state_flips20"],
+      "expected_winner_direction": [1, 1, 1, 1, -1]
+    },
+    "H-005_rotation_persistence": {
+      "primary_features": ["ret20_cross_sectional_rank_stability5", "ret20_top_decile_overlap5", "leadership_turnover5", "ret5_current_vs_prior5_cross_sectional_correlation"],
+      "expected_winner_direction": [1, 1, -1, 1]
+    },
+    "H-006_dispersion_tail": {
+      "primary_features": ["cross_sectional_return20_p90", "cross_sectional_return20_p90_p10_spread", "cross_sectional_return20_skewness", "cross_sectional_return20_right_tail_ge20", "cross_sectional_return20_left_tail_le_neg20"],
+      "expected_winner_direction": [1, 1, 1, 1, -1]
+    },
+    "H-007_volatility": {
+      "primary_features": ["index_realized_vol20", "index_vol20_to_vol60", "cross_sectional_return20_std", "index_atr20_to_close"],
+      "expected_winner_direction": [0, 0, 0, 0],
+      "interpretation": "No monotone sign is preregistered. Fixed quintile shape is diagnostic only; an interaction is not tested here."
+    }
+  },
+  "all_feature_policy": "Report every numeric Phase 2 feature for completeness, but promotion decisions use only the preregistered primary features above.",
+  "estimators": {
+    "continuous": "Spearman rho with two-sided asymptotic p-value",
+    "binary": "Spearman rho and Cliff's delta (positive group minus negative group)",
+    "bins": "pooled feature quintiles from feature values only, qcut with duplicate edges dropped; report count, feature median, all outcome means/medians and event rates",
+    "multiplicity": "Benjamini-Hochberg q-values across all feature x primary-outcome Spearman tests; q<=0.10 is descriptive, not sufficient for promotion"
+  },
+  "falsification": {
+    "within_year_rank": "replace feature by its entry-year percentile rank and recompute pooled associations",
+    "leave_one_year_out": "omit each entry-signal year 2018 through 2025 without refitting or changing the feature",
+    "global_ex_best5": "remove the five cycles with greatest realized P&L and recompute continuous realized-return association",
+    "gate_conditioning": "all actual V1 entries are already conditioned on the frozen binary market entry gate; verify index_close_to_ma20 is positive on every joined entry rather than comparing to non-entries",
+    "direction_stability": "full and within-year-rank signs agree, and at least 7 of 8 LOYO estimates have the same nonzero sign as full sample",
+    "minimum_effect": "absolute full-sample Spearman rho >= 0.10 for winner_ge20 or MFE",
+    "family_support": "at least two primary features meet expected direction (when preregistered), direction stability, minimum effect, and no opposite-sign winner_ge50 result of absolute rho >=0.10",
+    "family_rejection": "no primary feature survives, or surviving signs contradict the proposed economic mechanism",
+    "otherwise": "AMBIGUOUS/REFINE"
+  },
+  "forbidden": [
+    "threshold selection or strategy rule design",
+    "interaction search",
+    "year-specific parameters",
+    "calendar-year parameter mapping",
+    "feature imputation",
+    "dropping failed or unfavorable families",
+    "claiming untouched OOS or deployability"
+  ],
+  "outputs": [
+    "artifacts/univariate_attribution.json",
+    "artifacts/univariate_feature_results.csv",
+    "artifacts/univariate_quintiles.csv",
+    "reports/phase3_univariate_attribution.md"
+  ]
+}

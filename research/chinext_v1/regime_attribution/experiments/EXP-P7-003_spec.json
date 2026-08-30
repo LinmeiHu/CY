@@ -1,0 +1,29 @@
+{
+  "experiment_id": "EXP-P7-003",
+  "spec_id": "CHINEXT-V1R-RAW-BREADTH-ENTRY-EXPOSURE-CANDIDATE-2018-2025-V3",
+  "status": "FROZEN_BEFORE_ANY_CANDIDATE_PORTFOLIO_RESULT",
+  "created_on": "2026-08-30",
+  "base_spec": {
+    "path": "experiments/EXP-P7-002_spec.json",
+    "sha256": "305442a5e442181bc23214a22e2413d3a24f54c722be4a52e8a957ca97e13eb4",
+    "inheritance": "All P7-002 fields, inherited P7-001 fields, arms, metrics, gates, prohibitions, and the corrected 2023-01-01 development warmup remain exact."
+  },
+  "replacements": {
+    "experiment_id": "EXP-P7-003",
+    "status": "FROZEN_BEFORE_ANY_CANDIDATE_PORTFOLIO_RESULT"
+  },
+  "extended_registry_compatibility": {
+    "legacy_registry_source": "git show HEAD:configs/data_asset_registry.json",
+    "legacy_registry_sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+    "current_registry_requirement": "After removing only assets CY-030/CY-031/CY-032, the three CYQ-AUTH-CHINEXT-V1R-P7-* authorizations, and their single change-log row, the parsed current registry must equal the parsed legacy registry exactly.",
+    "gate_c_validation": "Every legacy Gate C bound file except the whole-registry byte hash must still match exactly. The legacy registry bytes must retain their frozen hash, the append-only projection must pass, the legacy CY-029 authorization must pass against current registry semantics, and the new CY-030 authorization must already have passed before materialization.",
+    "scope": "Compatibility is allowed only inside the hash-bound EXP-P7-003 candidate wrapper; legacy Gate C and extended replay scripts remain unchanged."
+  },
+  "invalidation_reason_for_base": "EXP-P7-002 reached the formal runner but failed before any strategy replay because the legacy extended-input materializer correctly rejected the append-extended current registry whole-file hash. No NAV, trade, candidate, or portfolio result was produced.",
+  "additional_forbidden": [
+    "executing EXP-P7-001 or EXP-P7-002",
+    "ignoring any non-registry legacy Gate C hash mismatch",
+    "accepting a current registry that is not an exact semantic append-only extension",
+    "modifying the legacy Gate C or extended replay scripts for this compatibility path"
+  ]
+}

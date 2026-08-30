@@ -1,0 +1,118 @@
+{
+  "experiment_id": "EXP-P7-001",
+  "spec_id": "CHINEXT-V1R-RAW-BREADTH-ENTRY-EXPOSURE-CANDIDATE-2018-2025-V1",
+  "status": "FROZEN_BEFORE_ANY_CANDIDATE_PORTFOLIO_RESULT",
+  "created_on": "2026-08-30",
+  "objective": "Test one simple strictly PIT exposure-only V1-R candidate derived from the supported breadth/entry-opportunity mechanism, without changing frozen V1 membership selection, ranking, exits, or execution semantics.",
+  "evidence_grade": "OUTCOME-CONSUMED_CANDIDATE_REPLAY; no untouched OOS remains",
+  "frozen_code_and_evidence": {
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "overlay_capable_runner_sha256": "3136edf9fc6a8a9f0a8d42487d8703943b0eaacaccdd188be18a6274cb4793e3",
+    "extended_input_materializer_sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae",
+    "daily_regime_features_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+    "phase6_result_sha256": "3e4226658a17fd1a4a7636c6385a05da0a725de25fb2e72ece8157b708a9370e",
+    "baseline_manifest_sha256": "682b45455442f00e15e6273622ab6566d1c5c1d94069efc5fbbd40cb17f0977b",
+    "market_399102_sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779",
+    "calendar_sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+  },
+  "bounded_block_inputs": {
+    "EXTENDED_2018_2021": {
+      "source_manifest_sha256": "7d1604c0c24a081ff767e6b4ef8a3d4c642614395484cd401ed57031c7187e61",
+      "daily_historical_state_sha256": "995cdbcc14f290c208740a0deda4d2ec5329e194b469452546a4ed0cb89e7444",
+      "security_master_sha256": "ff709212fa96067c117e4ad951f33c1cfd45f107142401f5deb43c6d61f23f54",
+      "target_dates": ["2018-01-02", "2021-12-31"],
+      "warmup_start": "2017-04-12",
+      "pit_class": "BOUNDED_EFFECTIVE_STATE_PIT_B_NOT_STRICT_PIT_A",
+      "authorization_id": "CYQ-AUTH-CHINEXT-V1R-P7-2017-2021-V1"
+    },
+    "HOLDOUT_O0_2022_2023": {
+      "source_manifest_sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+      "daily_membership_sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+      "security_master_sha256": "6225973009634864ec4839128fa2ed49f001c660b3c94da710c7ad6dc4d05a2a",
+      "target_dates": ["2022-01-04", "2023-12-29"],
+      "warmup_start": "2021-07-08",
+      "pit_class": "BOUNDED_RECONSTRUCTED_PIT_B_NOT_STRICT_PIT_A",
+      "authorization_id": "CYQ-AUTH-CHINEXT-V1R-P7-2022-2023-V1"
+    },
+    "DEVELOPMENT_2024_2025": {
+      "source_manifest_sha256": "8b4519ff6cf74aa0ca13b15bd3954cce3a37f6dd19d25f3f77743e9a974e75f7",
+      "daily_membership_sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+      "security_master_sha256": "dc8aaacbe76c6096e38c98630d632c64270a9563d466b7eb2ff5b91635ad9591",
+      "target_dates": ["2024-01-02", "2025-12-31"],
+      "warmup_start": "2023-07-07",
+      "pit_class": "BOUNDED_RECONSTRUCTED_PIT_B_NOT_STRICT_PIT_A",
+      "authorization_id": "CYQ-AUTH-CHINEXT-V1R-P7-2024-2025-V1"
+    }
+  },
+  "regime_timestamp": {
+    "feature": "raw breadth_above_ma20 only",
+    "decision_at": "completed entry-signal session close t",
+    "first_applicable_execution": "first causally valid open after t",
+    "required_coverage": "eligible_count >= 100 and non-null breadth value",
+    "missing_or_unknown": "new-entry multiplier 0.0; no imputation, alternative breadth, or current-universe fallback",
+    "forbidden_transform": "full-year ranks, pooled ranks, outcome labels, or future-normalized terciles"
+  },
+  "portfolio_application": {
+    "scope": "new member target weight only; frozen target weight is 10% before multiplier",
+    "persistence": "the target weight assigned on the member's entry-signal date remains sticky through that planned-member lifetime",
+    "survivors": "existing members keep their assigned target weight when another set change occurs",
+    "zero_multiplier": "the selected member creates no buy but reserves its frozen no-replacement slot until a normal V1 set-removal/market-exit event",
+    "unchanged": [
+      "stock signals and RS ordering",
+      "maximum ten planned members and no replacement",
+      "all exit signals and winner-hold remains off",
+      "completed-close/T+1/open-limit/tradability execution",
+      "sell-before-buy, board lot, 10 bps per filled side",
+      "corporate-action share/cash ledger and fail-closed behavior"
+    ]
+  },
+  "frozen_arms": {
+    "C0_ALL_ONE_CONTROL": "multiplier 1.0 on every session including feature-missing sessions; must reproduce frozen V1 economics/executions",
+    "A40_HALF_PRIMARY": "multiplier 0.5 if raw breadth_above_ma20 < 0.40, otherwise 1.0; missing/unknown is 0.0",
+    "N30_HALF_NEIGHBOR": "multiplier 0.5 if raw breadth_above_ma20 < 0.30, otherwise 1.0; missing/unknown is 0.0",
+    "N50_HALF_NEIGHBOR": "multiplier 0.5 if raw breadth_above_ma20 < 0.50, otherwise 1.0; missing/unknown is 0.0",
+    "Z40_ZERO_SEVERITY": "multiplier 0.0 if raw breadth_above_ma20 < 0.40, otherwise 1.0; missing/unknown is 0.0"
+  },
+  "formal_run_order": [
+    "each block C0_ALL_ONE_CONTROL",
+    "each block A40_HALF_PRIMARY",
+    "each block N30_HALF_NEIGHBOR",
+    "each block N50_HALF_NEIGHBOR",
+    "each block Z40_ZERO_SEVERITY"
+  ],
+  "primary_metrics": [
+    "block and calendar-year return and max drawdown",
+    "trade count, win/mean/median trade, severe-loss rate",
+    "average invested fraction, turnover, filled-side costs",
+    "Top-10/20 concentration, winner20/50 participation and P&L capture",
+    "return ex-best5/10/20 and exposure-normalized return",
+    "false-breakout count/P&L when exact cycle matching is available",
+    "same-bar fill, stale valuation, and corporate-action audit"
+  ],
+  "control_gate": "C0 execution ledger and projected event/NAV ledgers must hash-match each frozen authoritative block and all baseline metrics must match at 1e-12; otherwise all candidate arms are invalid",
+  "promotion_gate": {
+    "primary_only": "A40_HALF_PRIMARY is judged before neighbors and may not be replaced by a better-looking arm",
+    "bad_environment": "improves 2022 return and does not worsen 2023 return by more than 2 percentage points",
+    "drawdown": "max drawdown is no worse in at least 2 of 3 independent blocks",
+    "right_tail": "retains at least 90% of baseline >=20% winner entries and at least 80% of baseline positive Top-20 P&L",
+    "distribution": "improves return ex-best20 in at least 2 of 3 blocks",
+    "neighbors": "N30 and N50 show the same direction for 2022 return and at least 2/3 block drawdowns; no arm is selected by CAGR",
+    "classification": "promotion only authorizes Phase 8 robustness; it is not a deployability PASS"
+  },
+  "forbidden": [
+    "threshold/multiplier optimization or selecting a neighboring arm as primary",
+    "full-year percentile composite or future-normalized regime",
+    "entry-quality, ranking, market-gate, or exit changes",
+    "naive chaining of the three independently funded NAV blocks",
+    "production/live use, order generation, or untouched OOS claim",
+    "overwriting any authoritative baseline output"
+  ],
+  "outputs": [
+    "artifacts/v1r_candidate_results.json",
+    "artifacts/v1r_candidate_yearly_metrics.csv",
+    "artifacts/v1r_candidate_trade_metrics.csv",
+    "reports/phase7_v1r_exposure_candidate.md",
+    "output/phase7_v1r/<block>/<arm>/ immutable ledgers"
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "alternative_control_sets_tested": 0,
+  "archetype_counts": {
+    "all_cycles": 399,
+    "annual_top10_pnl": 80,
+    "annual_top20_pnl": 151,
+    "extreme_loss": 2,
+    "failed_opportunity20": 45,
+    "false_breakout": 213,
+    "global_top10_pnl": 10,
+    "global_top20_pnl": 20,
+    "lost_opportunity20": 6,
+    "severe_loss": 44,
+    "winner20": 39,
+    "winner50": 15
+  },
+  "breadth_complete_cycles": 383,
+  "controlled_conversion": {
+    "categorical_controls": [
+      "entry_year",
+      "canonical_exit_reason"
+    ],
+    "control_columns": [
+      "mfe",
+      "holding_trading_days",
+      "time_to_mfe_fraction"
+    ],
+    "controlled_opportunity20_cycles": 80,
+    "endpoints": {
+      "capture_ratio_opportunity20": {
+        "expected_direction": 1,
+        "loyo": {
+          "2018": {
+            "n": 80,
+            "p_value": 0.8029591199444566,
+            "partial_rank_rho": -0.028337494592795373
+          },
+          "2019": {
+            "n": 69,
+            "p_value": 0.6129215399519192,
+            "partial_rank_rho": 0.06197777274301835
+          },
+          "2020": {
+            "n": 65,
+            "p_value": 0.5256551209187209,
+            "partial_rank_rho": -0.08014727424163363
+          },
+          "2021": {
+            "n": 67,
+            "p_value": 0.8787158814103909,
+            "partial_rank_rho": 0.018998579269418028
+          },
+          "2022": {
+            "n": 79,
+            "p_value": 0.7784920075491091,
+            "partial_rank_rho": -0.032151291669207285
+          },
+          "2023": {
+            "n": 71,
+            "p_value": 0.4116570209225632,
+            "partial_rank_rho": -0.09894945259821462
+          },
+          "2024": {
+            "n": 69,
+            "p_value": 0.8550282563268323,
+            "partial_rank_rho": -0.022401786351407948
+          },
+          "2025": {
+            "n": 60,
+            "p_value": 0.5911832766393769,
+            "partial_rank_rho": -0.07074334567680081
+          }
+        },
+        "loyo_expected_sign_count": 2,
+        "n": 80,
+        "p_value": 0.8029591199444566,
+        "partial_rank_rho": -0.028337494592795373,
+        "passes_incremental_support_gate": false
+      },
+      "conversion20_within_opportunity": {
+        "expected_direction": 1,
+        "loyo": {
+          "2018": {
+            "n": 80,
+            "p_value": 0.5465344697683548,
+            "partial_rank_rho": -0.06841075152864995
+          },
+          "2019": {
+            "n": 69,
+            "p_value": 0.8061386065525404,
+            "partial_rank_rho": -0.03008691931604407
+          },
+          "2020": {
+            "n": 65,
+            "p_value": 0.3645539929125089,
+            "partial_rank_rho": -0.11431377196753224
+          },
+          "2021": {
+            "n": 67,
+            "p_value": 0.3311870529593913,
+            "partial_rank_rho": -0.12055015290780464
+          },
+          "2022": {
+            "n": 79,
+            "p_value": 0.5515431017912797,
+            "partial_rank_rho": -0.0679995381716091
+          },
+          "2023": {
+            "n": 71,
+            "p_value": 0.7011845308443783,
+            "partial_rank_rho": -0.04633743318122394
+          },
+          "2024": {
+            "n": 69,
+            "p_value": 0.5879848008903439,
+            "partial_rank_rho": -0.06636044109881516
+          },
+          "2025": {
+            "n": 60,
+            "p_value": 0.8327538331343249,
+            "partial_rank_rho": -0.02784247548662685
+          }
+        },
+        "loyo_expected_sign_count": 0,
+        "n": 80,
+        "p_value": 0.5465344697683548,
+        "partial_rank_rho": -0.06841075152864995,
+        "passes_incremental_support_gate": false
+      },
+      "giveback_from_peak": {
+        "expected_direction": -1,
+        "loyo": {
+          "2018": {
+            "n": 80,
+            "p_value": 0.43539782485974315,
+            "partial_rank_rho": -0.08842600594580449
+          },
+          "2019": {
+            "n": 69,
+            "p_value": 0.08155953122193506,
+            "partial_rank_rho": -0.21116332329635612
+          },
+          "2020": {
+            "n": 65,
+            "p_value": 0.8370457079874555,
+            "partial_rank_rho": 0.02601108607928987
+          },
+          "2021": {
+            "n": 67,
+            "p_value": 0.32361896072530005,
+            "partial_rank_rho": -0.12243682087198109
+          },
+          "2022": {
+            "n": 79,
+            "p_value": 0.4510871394264748,
+            "partial_rank_rho": -0.08600057623030236
+          },
+          "2023": {
+            "n": 71,
+            "p_value": 0.4514028997071159,
+            "partial_rank_rho": -0.09080080086184163
+          },
+          "2024": {
+            "n": 69,
+            "p_value": 0.5362466445106909,
+            "partial_rank_rho": -0.07573503143550772
+          },
+          "2025": {
+            "n": 60,
+            "p_value": 0.67984365783186,
+            "partial_rank_rho": -0.054380806592559304
+          }
+        },
+        "loyo_expected_sign_count": 7,
+        "n": 80,
+        "p_value": 0.43539782485974315,
+        "partial_rank_rho": -0.08842600594580449,
+        "passes_incremental_support_gate": false
+      }
+    },
+    "incremental_conversion_support": false,
+    "supported_endpoints": []
+  },
+  "downside_gate_falsification": {
+    "downside_gate_support": false,
+    "phase5_expected_negative_loyo_count": 1,
+    "phase5_severe_loss_rho": 0.03601857742406562,
+    "verdict": "REJECTED_AS_DOWNSIDE_GATE"
+  },
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE; all 2018-2025 outcomes are consumed",
+  "experiment_id": "EXP-P6-001",
+  "formal_strategy_replays": 0,
+  "h8_verdict": "SUPPORTED_ENTRY_OPPORTUNITY_PRIMARY_WITH_QUALIFICATION",
+  "input_hashes": {
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/regime_attribution/artifacts/breadth_opportunity_conversion.json": "2bb830692d365ea37ed929bd8f6e77b6346c177cf96649df8c717f385b199912",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/regime_attribution/artifacts/entry_cohort_attribution.csv": "a2b7934bae35ce9eabc434ad0f7c00af9dcafb00b2485a5277071d0ffbd54995",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/regime_attribution/experiments/EXP-P5-001_spec.json": "25806c3528fa6bf9c5657218fa26054a9ef86df24b5344602136812d644300b7"
+  },
+  "output_hashes": {
+    "winner_severe_archetypes_csv": "d4cd43d0a8d2c993bc2d9bbefc00e5d5ed551b9271efa8d95feac1a89d695fbf"
+  },
+  "overlay_simulations": 0,
+  "post_exit_price_rows_read": 0,
+  "result": "PASS",
+  "sample_cycles": 399,
+  "spec_sha256": "03d79098b42433805270467cd8ce8c458cc8591fc2e8fcf84e7534541382aa7a",
+  "thresholds_optimized": 0,
+  "top_pnl_trade_ids": {
+    "global_top10_pnl": [
+      "DEVELOPMENT_2024_2025:300377.SZ-001",
+      "EXTENDED_2018_2021:300432.SZ-001",
+      "DEVELOPMENT_2024_2025:300497.SZ-001",
+      "DEVELOPMENT_2024_2025:300033.SZ-001",
+      "DEVELOPMENT_2024_2025:300437.SZ-001",
+      "EXTENDED_2018_2021:300655.SZ-001",
+      "EXTENDED_2018_2021:300241.SZ-001",
+      "DEVELOPMENT_2024_2025:300803.SZ-001",
+      "EXTENDED_2018_2021:300390.SZ-002",
+      "DEVELOPMENT_2024_2025:300348.SZ-001"
+    ],
+    "global_top20_pnl": [
+      "DEVELOPMENT_2024_2025:300377.SZ-001",
+      "EXTENDED_2018_2021:300432.SZ-001",
+      "DEVELOPMENT_2024_2025:300497.SZ-001",
+      "DEVELOPMENT_2024_2025:300033.SZ-001",
+      "DEVELOPMENT_2024_2025:300437.SZ-001",
+      "EXTENDED_2018_2021:300655.SZ-001",
+      "EXTENDED_2018_2021:300241.SZ-001",
+      "DEVELOPMENT_2024_2025:300803.SZ-001",
+      "EXTENDED_2018_2021:300390.SZ-002",
+      "DEVELOPMENT_2024_2025:300348.SZ-001",
+      "EXTENDED_2018_2021:300033.SZ-001",
+      "EXTENDED_2018_2021:300079.SZ-001",
+      "DEVELOPMENT_2024_2025:301165.SZ-001",
+      "EXTENDED_2018_2021:300638.SZ-001",
+      "DEVELOPMENT_2024_2025:301093.SZ-001",
+      "DEVELOPMENT_2024_2025:300779.SZ-001",
+      "EXTENDED_2018_2021:300059.SZ-001",
+      "DEVELOPMENT_2024_2025:301141.SZ-001",
+      "DEVELOPMENT_2024_2025:300128.SZ-001",
+      "EXTENDED_2018_2021:300627.SZ-001"
+    ]
+  }
+}

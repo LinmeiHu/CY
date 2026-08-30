@@ -1,0 +1,162 @@
+{
+  "experiment_id": "EXP-P8P9-001",
+  "spec_id": "CHINEXT-V1R-P7-FROZEN-OUTPUT-ROBUSTNESS-FALSIFICATION-V1",
+  "status": "FROZEN_BEFORE_PHASE8_9_DERIVED_DIAGNOSTICS",
+  "created_on": "2026-08-30",
+  "hypotheses": [
+    "H-009 is rejected unless temporal, rolling, LOYO, exposure-normalized, neighboring-definition, right-tail, and implementation diagnostics jointly overturn EXP-P7-003.",
+    "H-010 is supported if no coarse stable PIT relationship survives the fixed audit and V1-R remains explanatory only."
+  ],
+  "known_before_freeze": {
+    "phase7_decision": "REJECT_OR_RETAIN_EXPLANATORY_ONLY",
+    "phase7_failed_gates": [
+      "bad_environment",
+      "neighbor_stability"
+    ],
+    "phase7_passed_or_partial_gates": [
+      "drawdown_2_of_3",
+      "right_tail",
+      "distribution_exbest20_2_of_3"
+    ],
+    "boundary": "Phase 7 block/year results are already known. The exact rolling, expanding, no-refit LOYO, frequency, beta-timing, cost, implementation, and ten-challenge outputs have not been calculated before this freeze."
+  },
+  "input_bindings": {
+    "phase8_9_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase8_9_robustness_falsification.py",
+      "sha256": "c1dcb6d545b9a17acba311b6c272d206235a6506a7ee4771abf91e317bffd656"
+    },
+    "phase7_ledger_manifest": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/v1r_candidate_ledger_manifest.json",
+      "sha256": "4cfcb8a339f43d096b18c01e267762f8070c5326d85c6a1955774876bbbb9fe5"
+    },
+    "phase7_candidate_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/v1r_candidate_results.json",
+      "sha256": "adec6fcb36848b5d3a2a560feeef87df8606f215c381d6a8f69b483482a662a8"
+    },
+    "phase7_yearly_metrics": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/v1r_candidate_yearly_metrics.csv",
+      "sha256": "5f8b429c7807c6d24bb4101caf960a15ade7f62801c87d7fbfd34d1fab7be357"
+    },
+    "phase7_block_trade_metrics": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/v1r_candidate_trade_metrics.csv",
+      "sha256": "b9f048166a243ac85b2abbc038d206bb504c6180d71cea55ae476e6bd01b44fd"
+    },
+    "daily_regime_features": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/daily_regime_features.parquet",
+      "sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6"
+    },
+    "phase7_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P7-003_spec.json",
+      "sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+    },
+    "ledger_manifest_builder": {
+      "path": "research/chinext_v1/regime_attribution/scripts/build_phase7_ledger_manifest.py",
+      "sha256": "c45cada43be9ae9101e4ccfa02cabed6db40055942290f673b944ff304fd4033"
+    }
+  },
+  "sample": {
+    "blocks": [
+      "EXTENDED_2018_2021",
+      "HOLDOUT_O0_2022_2023",
+      "DEVELOPMENT_2024_2025"
+    ],
+    "calendar_years": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "primary": "A40_HALF_PRIMARY",
+    "control": "C0_ALL_ONE_CONTROL",
+    "neighbors_for_falsification_only": [
+      "N30_HALF_NEIGHBOR",
+      "N50_HALF_NEIGHBOR"
+    ],
+    "severity_boundary_for_falsification_only": "Z40_ZERO_SEVERITY",
+    "nav_semantics": "Three independent bounded NAV blocks. Never chain across blocks."
+  },
+  "fixed_diagnostics": {
+    "yearly": "Candidate minus control calendar-year return, max drawdown, exposure, severe-loss rate, and winner counts; exact equality is neutral.",
+    "rolling": "All overlapping 126- and 252-session windows within each independent block, using NAV[end]/NAV[end-window]-1 for each arm and candidate minus control active return.",
+    "expanding": "Within-block prefixes ending at each calendar year end, each starting from that block's independent initial capital; never chain blocks.",
+    "loyo": "For each omitted calendar year, arithmetic mean/median and signs of the remaining seven annual active-return deltas. No parameter refit exists; this is a stability diagnostic, not OOS performance.",
+    "regime_frequency": "By year, raw breadth_above_ma20 valid/missing fractions and fractions below/at-or-above 0.40 among valid sessions.",
+    "neighbor_sensitivity": "Compare all frozen arms to the same control by calendar year. Never replace the primary after results.",
+    "exposure_and_tails": "Block return/drawdown/exposure/turnover/cost/exposure-normalized deltas; ex-best5/10/20; severe losses; winner20/50; inherited baseline winner and Top-20 capture.",
+    "cost_sensitivity": "0/10/25/50 bps per filled side using frozen filled notional and a non-endogenous additive ledger adjustment. It is explicitly not an exact cash/share-path replay.",
+    "beta_timing": "OLS with intercept of same-day portfolio return on 399102 index_return_1d, by block and pooled with lineage; report active alpha/beta and active returns on index-up/down days. This is descriptive and cannot be a strategy input.",
+    "implementation": "Rehash all 15 ledgers; verify three C0 gates, completed-close availability, first-applicable date, no same-day fill, exact new-buy target weight, missing-input fail-closed behavior, overlay identity, and zero signal/rank/exit changes."
+  },
+  "robustness_gates": {
+    "yearly": {
+      "minimum_positive_years": 5,
+      "maximum_negative_years": 2
+    },
+    "rolling": {
+      "minimum_positive_fraction": 0.6,
+      "minimum_passing_blocks_per_window": 2
+    },
+    "expanding": {
+      "minimum_positive_prefixes": 5
+    },
+    "loyo": {
+      "minimum_mean_active_return": 0.0,
+      "require_every_omitted_year_panel": true
+    },
+    "regime_frequency": {
+      "minimum_valid_fraction": 0.8,
+      "minimum_each_state_fraction": 0.1
+    },
+    "exposure_normalization": {
+      "minimum_nonworse_blocks": 2,
+      "maximum_allowed_block_degradation": -0.05
+    },
+    "required_for_robust_candidate": [
+      "yearly",
+      "rolling",
+      "expanding_prefix",
+      "loyo_no_refit",
+      "regime_frequency",
+      "neighboring_definitions",
+      "exposure_normalization",
+      "right_tail_retention",
+      "pit_execution_implementation"
+    ]
+  },
+  "phase9_challenges": [
+    "market beta timing",
+    "drawdown from exposure reduction alone",
+    "future winner sacrifice",
+    "one/two-year support",
+    "threshold mining versus threshold sensitivity",
+    "extreme-trade dependence",
+    "stable regime identifiability",
+    "realistic PIT implementation",
+    "neighboring-definition disappearance",
+    "complexity-adjusted benefit"
+  ],
+  "decision_rule": "Candidate remains rejected if EXP-P7-003 failed promotion or any required Phase 8 robustness component fails. A neighbor may never replace the primary. H-010 is supported when the candidate remains rejected and the regime evidence is retained only as explanation.",
+  "oos_boundary": "All 2018-2025 outcomes were already consumed before V1-R design. No untouched OOS exists. The 2022-2023 block is not called V1-R OOS. Walk-forward selection is infeasible because there is no untouched period and no trained/fitted model.",
+  "forbidden": [
+    "strategy replay",
+    "threshold or multiplier fitting",
+    "selecting a neighbor as the new primary",
+    "new feature or interaction",
+    "year-specific rule",
+    "entry/exit/ranking change",
+    "naive chaining of independent NAV blocks",
+    "claiming rolling, expanding, or LOYO diagnostics are untouched OOS",
+    "claiming ledger-notional cost sensitivity is an exact endogenous replay"
+  ],
+  "outputs": [
+    "artifacts/v1r_robustness_falsification.json",
+    "artifacts/v1r_rolling_metrics.csv",
+    "artifacts/v1r_temporal_metrics.csv",
+    "reports/phase8_robustness_overfitting.md",
+    "reports/phase9_failure_falsification.md"
+  ]
+}

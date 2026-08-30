@@ -1,0 +1,133 @@
+{
+  "experiment_id": "EXP-P2-001",
+  "spec_id": "CHINEXT-V1-PIT-REGIME-FEATURE-LIBRARY-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FEATURE_RESULT_AND_BEFORE_OUTCOME_JOIN",
+  "created_on": "2026-08-30",
+  "objective": "Build and audit the widest economically meaningful daily PIT regime feature library supported by existing authorized inputs, without reading trade outcomes or selecting thresholds.",
+  "forbidden_inputs": [
+    "trade return, P&L, MFE, MAE, holding duration, exit reason, NAV return",
+    "current survivor universe",
+    "future constituents or classifications",
+    "whole-year labels or statistics",
+    "unregistered style, value/growth, market-cap, or risk-appetite substitutes"
+  ],
+  "date_range": ["2018-01-02", "2025-12-31"],
+  "decision_timestamp": "completed official close of trade_date at 15:00 Asia/Shanghai",
+  "first_applicable_execution": "next causally valid session; never the feature-formation bar",
+  "inputs": {
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "calendar_sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "extended_transient_input_canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "extended_membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81",
+    "holdout_membership_sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+    "development_membership_sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+    "anchor_399102_sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779",
+    "csi300_sha256": "6d93a34f308fec0390a184a68a4d7856f566c917248b886b6a4e7dffcf9dda63",
+    "chinext100_sha256": "0d0f8dbb573f1016eaa94f11aa847ea2bf2be296691caa591f93320ddd640c2c"
+  },
+  "universe": {
+    "denominator": "exact frozen date-specific membership intersected with the frozen V1 basic-eligible contract",
+    "extended_semantics": "CY-029 rows use earliest_safe_use_date, exactly matching the frozen extended replay; official 302132.SZ physical rows map to canonical 300114.SZ before 2025-02-17",
+    "basic_eligible": [
+      "listed_trading_days >= 180",
+      "current and previous 120 explicit exchange sessions all pass frozen critical_row_valid",
+      "last 20 completed-session amount_cny mean >= 100,000,000",
+      "hard_valid, bar_valid, trading_state_valid, corporate_action_valid, market_rule_valid, historical_identity_valid",
+      "trade_status=1, current_day_data_tradable=true, is_st=false, corporate_action_blocking=false",
+      "available_at <= completed close; finite positive close/volume and finite nonnegative amount"
+    ],
+    "validation": "daily eligible counts must exactly equal authoritative daily_nav.basic_eligible on all 1,942 target dates",
+    "daily_minimum_eligible_count": 100,
+    "feature_observation_coverage_minimum": 0.95,
+    "industry_mapping_coverage_minimum": 0.80,
+    "rank_match_coverage_minimum": 0.80
+  },
+  "price_coordinate": {
+    "definition": "causally continuous adjusted price index compounded from raw closes; on a visible supported action day prior_close is rebased as (prior_close-cash_per_share)/share_multiplier",
+    "rights": "any nonzero/unknown rights participation or blocking action invalidates the affected history and fails closed",
+    "no_normalization": true
+  },
+  "feature_groups": {
+    "index_trend": {
+      "source": "exact 399102.SZ completed bars",
+      "features": [
+        "index_return_1d, 5d, 10d, 20d, 60d, 120d",
+        "index_close_to_ma5, ma10, ma20, ma60, ma120",
+        "index_ma20_slope_5d, index_ma60_slope_10d",
+        "index_drawdown_from_high60, high120, high252",
+        "index_positive_day_fraction20, index_above_ma20_fraction20",
+        "index_above_ma20_state_flips20"
+      ]
+    },
+    "breadth": {
+      "features": [
+        "breadth_above_ma5, ma10, ma20, ma60, ma120",
+        "breadth_positive_return1, return5, return20, return60",
+        "breadth_new_high60, breadth_new_low60",
+        "advance_decline_balance",
+        "breadth_above_ma20_change5, change20, volatility10, state_flips20"
+      ]
+    },
+    "volatility": {
+      "features": [
+        "index_realized_vol10, vol20, vol60 (log-return standard deviation annualized by sqrt(252))",
+        "index_downside_vol20, downside_vol60",
+        "index_atr20_to_close, index_vol20_to_vol60",
+        "cross_sectional_return1_std, return5_std, return20_std",
+        "cross_sectional_down_fraction1"
+      ]
+    },
+    "dispersion_and_tail": {
+      "features": [
+        "cross_sectional_return1, return5, return20 p10/p50/p90 and p90-p10 spread",
+        "cross_sectional_return1, return5, return20 skewness and excess kurtosis",
+        "cross_sectional_return20_right_tail_ge20, left_tail_le_neg20",
+        "cross_sectional_return5_right_tail_ge10, left_tail_le_neg10"
+      ]
+    },
+    "style_relative_strength": {
+      "features": [
+        "399102 minus CSI300 return20 and return60",
+        "399102 minus 399006 return20 and return60"
+      ],
+      "interpretation": "observed index-spread proxies only; not constituent-reconstructed small/large or growth/value factors"
+    },
+    "liquidity_participation": {
+      "features": [
+        "index_amount_to_ma20, index_volume_to_ma20",
+        "eligible_total_amount, median_amount, total_amount_to_ma20",
+        "eligible_fraction_amount_above_own_ma20, median_own_amount_to_ma20"
+      ]
+    },
+    "risk_appetite": {
+      "features": [
+        "eligible_fraction_return1_ge5, ge10, le_neg5, le_neg10",
+        "upside_downside_tail_balance5",
+        "eligible_fraction_close_at_upper_limit, close_at_lower_limit"
+      ],
+      "limit_tolerance": "max(0.001 CNY, limit_price*1e-6), matching the registered execution validator"
+    },
+    "rotation_persistence": {
+      "features": [
+        "ret20_cross_sectional_rank_stability5 (same-symbol Spearman/Pearson-of-percentile-ranks)",
+        "ret20_top_decile_overlap5, leadership_turnover5=1-overlap",
+        "ret5_current_vs_prior5_cross_sectional_correlation",
+        "industry_ret20_dispersion, industry_top3_overlap5, industry_leadership_turnover5"
+      ]
+    }
+  },
+  "unavailable_families": {
+    "growth_vs_value": "UNAVAILABLE: no exact registered PIT factor/index pair selected",
+    "market_cap_small_vs_large": "UNAVAILABLE: no frozen PIT market-cap denominator selected; observed 399102-vs-399006 is only an index-spread proxy",
+    "high_beta_vs_low_beta": "DEFERRED: can be derived only after validating a causal rolling-beta implementation and coverage",
+    "fund_flow_or_sentiment": "UNAVAILABLE: no registered PIT source",
+    "sector_cyclical_mapping": "UNAVAILABLE: prior audit found no authorized cyclical mapping"
+  },
+  "outputs": [
+    "artifacts/daily_regime_features.parquet",
+    "artifacts/regime_feature_audit.json",
+    "reports/phase2_feature_library.md"
+  ],
+  "outcome_analysis_in_this_experiment": false
+}

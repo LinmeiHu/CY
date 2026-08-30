@@ -1,0 +1,834 @@
+{
+  "arms": [
+    "C0_ALL_ONE_CONTROL",
+    "A40_HALF_PRIMARY",
+    "N30_HALF_NEIGHBOR",
+    "N50_HALF_NEIGHBOR",
+    "Z40_ZERO_SEVERITY"
+  ],
+  "blocks": [
+    "EXTENDED_2018_2021",
+    "HOLDOUT_O0_2022_2023",
+    "DEVELOPMENT_2024_2025"
+  ],
+  "builder_sha256": "c45cada43be9ae9101e4ccfa02cabed6db40055942290f673b944ff304fd4033",
+  "experiment_id": "EXP-P7-003",
+  "ledger_count": 15,
+  "ledgers": [
+    {
+      "arm": "C0_ALL_ONE_CONTROL",
+      "block": "EXTENDED_2018_2021",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 312652,
+          "maximum_date_field": "2021-12-31",
+          "minimum_date_field": "2018-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/C0_ALL_ONE_CONTROL/daily_nav.jsonl",
+          "row_count": 973,
+          "sha256": "a0406c0b73845e019b4d562baf33cf0c739112364590f7aa3f7cdaff1051d45b"
+        },
+        "engine_report.md": {
+          "byte_count": 17370,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/C0_ALL_ONE_CONTROL/engine_report.md",
+          "sha256": "7ae58249aec891b7ea611b07cc0c509529aa5af27bec549e387a60fa976f7fbe"
+        },
+        "engine_summary.json": {
+          "byte_count": 33648,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/C0_ALL_ONE_CONTROL/engine_summary.json",
+          "sha256": "5a8eba9931a75d0dee3b761d9416dff7e145c610e9011712471c0adee9359631"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 1040269,
+          "maximum_date_field": "2021-12-28",
+          "minimum_date_field": "2017-04-13",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/C0_ALL_ONE_CONTROL/event_ledger.jsonl",
+          "row_count": 3767,
+          "sha256": "3c22021b0f1d411bc5ae93388c3f370c72791ca2a00ba1a2ec2b846ab511689a"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 392109,
+          "maximum_date_field": "2021-12-21",
+          "minimum_date_field": "2018-01-09",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/C0_ALL_ONE_CONTROL/execution_ledger.jsonl",
+          "row_count": 877,
+          "sha256": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "C0_ALL_ONE_CONTROL",
+        "block": "EXTENDED_2018_2021",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "1.0": 973
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "A40_HALF_PRIMARY",
+      "block": "EXTENDED_2018_2021",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 307861,
+          "maximum_date_field": "2021-12-31",
+          "minimum_date_field": "2018-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/A40_HALF_PRIMARY/daily_nav.jsonl",
+          "row_count": 973,
+          "sha256": "982ef0e178e134dae2d45216d7232b1ba35e5b4dc1788254ea06de28879e276e"
+        },
+        "engine_report.md": {
+          "byte_count": 17364,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/A40_HALF_PRIMARY/engine_report.md",
+          "sha256": "44cccd030075b238b04a531fe29e146a70d240a1fbd82c38cb70e9f5aac24104"
+        },
+        "engine_summary.json": {
+          "byte_count": 33341,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/A40_HALF_PRIMARY/engine_summary.json",
+          "sha256": "7d5823eb09c75108e51a54c5b36b2b7425f06d3bb1089e0f939b4505edccba84"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 991180,
+          "maximum_date_field": "2021-12-28",
+          "minimum_date_field": "2017-04-13",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/A40_HALF_PRIMARY/event_ledger.jsonl",
+          "row_count": 3721,
+          "sha256": "89b8875c4c27be0f269d6dc5e718975c6e8776d38ee9b0d5d464035b8efd7e08"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 357696,
+          "maximum_date_field": "2021-12-21",
+          "minimum_date_field": "2018-03-19",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/A40_HALF_PRIMARY/execution_ledger.jsonl",
+          "row_count": 805,
+          "sha256": "85436aa4344c2ceb01973cedc49b8a7d30fe723d2f35e9b25496f253adb08ec4"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "A40_HALF_PRIMARY",
+        "block": "EXTENDED_2018_2021",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 125,
+          "0.5": 285,
+          "1.0": 563
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "N30_HALF_NEIGHBOR",
+      "block": "EXTENDED_2018_2021",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 310295,
+          "maximum_date_field": "2021-12-31",
+          "minimum_date_field": "2018-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N30_HALF_NEIGHBOR/daily_nav.jsonl",
+          "row_count": 973,
+          "sha256": "07614463b13cad381b9779b1700212457ca797f6abf1b6167dde38dd2b6cac7b"
+        },
+        "engine_report.md": {
+          "byte_count": 17367,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N30_HALF_NEIGHBOR/engine_report.md",
+          "sha256": "04dd8b5aa4eb56e82cf8fd738a445283f5af5228cf7560b5298bffd313aacfba"
+        },
+        "engine_summary.json": {
+          "byte_count": 33285,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N30_HALF_NEIGHBOR/engine_summary.json",
+          "sha256": "2f27ae15f30696badeaba2cf092b4ed39b7cc78f1ceef6575fc0041c11754bac"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 991311,
+          "maximum_date_field": "2021-12-28",
+          "minimum_date_field": "2017-04-13",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N30_HALF_NEIGHBOR/event_ledger.jsonl",
+          "row_count": 3722,
+          "sha256": "119c83635ff23534fcdc4b3a31c4284e37352c3c45ce4d8ba9025f4e03e0567e"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 357884,
+          "maximum_date_field": "2021-12-21",
+          "minimum_date_field": "2018-03-19",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N30_HALF_NEIGHBOR/execution_ledger.jsonl",
+          "row_count": 805,
+          "sha256": "7d006057e601549dc875f058545885621989299fd3810a6c753b7c3160404abc"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "N30_HALF_NEIGHBOR",
+        "block": "EXTENDED_2018_2021",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 125,
+          "0.5": 141,
+          "1.0": 707
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "N50_HALF_NEIGHBOR",
+      "block": "EXTENDED_2018_2021",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 307257,
+          "maximum_date_field": "2021-12-31",
+          "minimum_date_field": "2018-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N50_HALF_NEIGHBOR/daily_nav.jsonl",
+          "row_count": 973,
+          "sha256": "db7d0c0e6eea95dcd0d05f0bd573e8ca9c6fff3c9eda3d1e6c5dc35f9f378183"
+        },
+        "engine_report.md": {
+          "byte_count": 17367,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N50_HALF_NEIGHBOR/engine_report.md",
+          "sha256": "38d1702b8c5d9294b0cbe7a1ff4a32713381a5848834051d8ac4a2ea5c73aa0f"
+        },
+        "engine_summary.json": {
+          "byte_count": 33302,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N50_HALF_NEIGHBOR/engine_summary.json",
+          "sha256": "c319cbe54c43bddc18de69049aa304f8421f540d19834c7cccf69ccaa9535f61"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 991233,
+          "maximum_date_field": "2021-12-28",
+          "minimum_date_field": "2017-04-13",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N50_HALF_NEIGHBOR/event_ledger.jsonl",
+          "row_count": 3721,
+          "sha256": "a7b7e63b089f6875775758c78b981b3cc111f36cbeff422be9a39ee1139835da"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 357824,
+          "maximum_date_field": "2021-12-21",
+          "minimum_date_field": "2018-03-19",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/N50_HALF_NEIGHBOR/execution_ledger.jsonl",
+          "row_count": 805,
+          "sha256": "8c19d66cf9c3105a23df6cd45d502d8198e3c688d7e3a3cbef26f91471afabc3"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "N50_HALF_NEIGHBOR",
+        "block": "EXTENDED_2018_2021",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 125,
+          "0.5": 423,
+          "1.0": 425
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "Z40_ZERO_SEVERITY",
+      "block": "EXTENDED_2018_2021",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 308665,
+          "maximum_date_field": "2021-12-31",
+          "minimum_date_field": "2018-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/Z40_ZERO_SEVERITY/daily_nav.jsonl",
+          "row_count": 973,
+          "sha256": "fb689dc03c32a9c35a9fa00dcddd8c9fcdf6fbf877dcb2e7bc5f94826da1780b"
+        },
+        "engine_report.md": {
+          "byte_count": 17366,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/Z40_ZERO_SEVERITY/engine_report.md",
+          "sha256": "261c925b5a91c8b446db1bf1c00e82c88e185059da9261fe120c56310826ed9f"
+        },
+        "engine_summary.json": {
+          "byte_count": 32894,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/Z40_ZERO_SEVERITY/engine_summary.json",
+          "sha256": "216a5ef11b04631f8e5a881730044842d33b4f149f7dd4149243f727383aa1e8"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 978318,
+          "maximum_date_field": "2021-12-28",
+          "minimum_date_field": "2017-04-13",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/Z40_ZERO_SEVERITY/event_ledger.jsonl",
+          "row_count": 3705,
+          "sha256": "4e27c5fd1fb76397c0653c34a567bcda5ff62661d89ee47d74f3eaefa9e418ea"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 335007,
+          "maximum_date_field": "2021-12-21",
+          "minimum_date_field": "2018-03-19",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/EXTENDED_2018_2021/Z40_ZERO_SEVERITY/execution_ledger.jsonl",
+          "row_count": 750,
+          "sha256": "a1298a21fbaa0027665858842d6f7e9b7617549aa7b9c9d9ea66faab4e2da1c2"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "Z40_ZERO_SEVERITY",
+        "block": "EXTENDED_2018_2021",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 410,
+          "1.0": 563
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "C0_ALL_ONE_CONTROL",
+      "block": "HOLDOUT_O0_2022_2023",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 152960,
+          "maximum_date_field": "2023-12-29",
+          "minimum_date_field": "2022-01-04",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/C0_ALL_ONE_CONTROL/daily_nav.jsonl",
+          "row_count": 484,
+          "sha256": "984988c240736a40b96391fc67bbe17f36e513b4f26eddf7ed4b6a338a161ad5"
+        },
+        "engine_report.md": {
+          "byte_count": 20130,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/C0_ALL_ONE_CONTROL/engine_report.md",
+          "sha256": "b00ddfc51c2f9d9e78086bcef84812320aea9e1c5a18599e84f5f1425a82e2bc"
+        },
+        "engine_summary.json": {
+          "byte_count": 35978,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/C0_ALL_ONE_CONTROL/engine_summary.json",
+          "sha256": "bc2b6cf13d0c468aded1e5c65847b0b665641920c99410235755462e4265d8ab"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 681605,
+          "maximum_date_field": "2023-12-18",
+          "minimum_date_field": "2021-07-08",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/C0_ALL_ONE_CONTROL/event_ledger.jsonl",
+          "row_count": 2341,
+          "sha256": "f1abdc370baf35c91cf71c87e7fed4435f3711455bf0b7361e362ed5aad326e2"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 179292,
+          "maximum_date_field": "2023-11-28",
+          "minimum_date_field": "2022-05-20",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/C0_ALL_ONE_CONTROL/execution_ledger.jsonl",
+          "row_count": 415,
+          "sha256": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "C0_ALL_ONE_CONTROL",
+        "block": "HOLDOUT_O0_2022_2023",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "1.0": 484
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "A40_HALF_PRIMARY",
+      "block": "HOLDOUT_O0_2022_2023",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 152961,
+          "maximum_date_field": "2023-12-29",
+          "minimum_date_field": "2022-01-04",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY/daily_nav.jsonl",
+          "row_count": 484,
+          "sha256": "2f4548d4d4c92fac1fa26ef6be3e105da39dd83e08a2d5bbd84bd196dacf66b2"
+        },
+        "engine_report.md": {
+          "byte_count": 20124,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY/engine_report.md",
+          "sha256": "a4c30eaaa4ed5f924c709b74b7a52f12f914a8e754a2e52277926ff4015d5aed"
+        },
+        "engine_summary.json": {
+          "byte_count": 36052,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY/engine_summary.json",
+          "sha256": "2259586aecef2a48f2b2e3ed22d7e93a2c97209fc17f65259361ff2e23998ec9"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 681607,
+          "maximum_date_field": "2023-12-18",
+          "minimum_date_field": "2021-07-08",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY/event_ledger.jsonl",
+          "row_count": 2341,
+          "sha256": "5d989ef8d3b220e526c8435711c180b7ab1aa3b89196cd9a93cb5ec68d0e3f4b"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 179313,
+          "maximum_date_field": "2023-11-28",
+          "minimum_date_field": "2022-05-20",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY/execution_ledger.jsonl",
+          "row_count": 415,
+          "sha256": "b8d1977af54adb27222dafcf8c80fca6b7e4306084911f9827e012ed65800d0b"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "A40_HALF_PRIMARY",
+        "block": "HOLDOUT_O0_2022_2023",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 59,
+          "0.5": 164,
+          "1.0": 261
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "N30_HALF_NEIGHBOR",
+      "block": "HOLDOUT_O0_2022_2023",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 152960,
+          "maximum_date_field": "2023-12-29",
+          "minimum_date_field": "2022-01-04",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N30_HALF_NEIGHBOR/daily_nav.jsonl",
+          "row_count": 484,
+          "sha256": "984988c240736a40b96391fc67bbe17f36e513b4f26eddf7ed4b6a338a161ad5"
+        },
+        "engine_report.md": {
+          "byte_count": 20127,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N30_HALF_NEIGHBOR/engine_report.md",
+          "sha256": "9484be750d97a4d825bde834302808a818299f86cb2db8bf23c148d0208d4d90"
+        },
+        "engine_summary.json": {
+          "byte_count": 36048,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N30_HALF_NEIGHBOR/engine_summary.json",
+          "sha256": "adf93194236da64cbaf224a8d231184ed416007723b75b841178ae8978374454"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 681605,
+          "maximum_date_field": "2023-12-18",
+          "minimum_date_field": "2021-07-08",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N30_HALF_NEIGHBOR/event_ledger.jsonl",
+          "row_count": 2341,
+          "sha256": "f1abdc370baf35c91cf71c87e7fed4435f3711455bf0b7361e362ed5aad326e2"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 179292,
+          "maximum_date_field": "2023-11-28",
+          "minimum_date_field": "2022-05-20",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N30_HALF_NEIGHBOR/execution_ledger.jsonl",
+          "row_count": 415,
+          "sha256": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "N30_HALF_NEIGHBOR",
+        "block": "HOLDOUT_O0_2022_2023",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 59,
+          "0.5": 112,
+          "1.0": 313
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "N50_HALF_NEIGHBOR",
+      "block": "HOLDOUT_O0_2022_2023",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 153007,
+          "maximum_date_field": "2023-12-29",
+          "minimum_date_field": "2022-01-04",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N50_HALF_NEIGHBOR/daily_nav.jsonl",
+          "row_count": 484,
+          "sha256": "e5c95ae158e8aeaa4e84a8bd29dae644b96a1fb557f6fbe1c532235d79bac215"
+        },
+        "engine_report.md": {
+          "byte_count": 20127,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N50_HALF_NEIGHBOR/engine_report.md",
+          "sha256": "b13341118ed2bb199fe640e442f324f535ed2842961f3068317e3b0936d54ed3"
+        },
+        "engine_summary.json": {
+          "byte_count": 36041,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N50_HALF_NEIGHBOR/engine_summary.json",
+          "sha256": "f950d0f5d52691e473ad83ee84e2da97155b0c56b3bda8233210d672df13a1af"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 681638,
+          "maximum_date_field": "2023-12-18",
+          "minimum_date_field": "2021-07-08",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N50_HALF_NEIGHBOR/event_ledger.jsonl",
+          "row_count": 2341,
+          "sha256": "41c31b5c29c198c155da27ac3902022ac84ef17d1e97ada788309c3b1c603386"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 178850,
+          "maximum_date_field": "2023-11-28",
+          "minimum_date_field": "2022-05-20",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/N50_HALF_NEIGHBOR/execution_ledger.jsonl",
+          "row_count": 415,
+          "sha256": "e6106c5b1cc7640b12748b5fdb22145d3c447a6c6d625e9b8a8a0f375adea64b"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "N50_HALF_NEIGHBOR",
+        "block": "HOLDOUT_O0_2022_2023",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 59,
+          "0.5": 224,
+          "1.0": 201
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "Z40_ZERO_SEVERITY",
+      "block": "HOLDOUT_O0_2022_2023",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 152932,
+          "maximum_date_field": "2023-12-29",
+          "minimum_date_field": "2022-01-04",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/Z40_ZERO_SEVERITY/daily_nav.jsonl",
+          "row_count": 484,
+          "sha256": "cce77c3ba2416a3bd3de17830fc9b8bccb70511624468562d9a108fdb035771c"
+        },
+        "engine_report.md": {
+          "byte_count": 20127,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/Z40_ZERO_SEVERITY/engine_report.md",
+          "sha256": "289b7255cdc8c08f9e23ec60f6d372e33d2642297072581c656f1f4b4993bdec"
+        },
+        "engine_summary.json": {
+          "byte_count": 35940,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/Z40_ZERO_SEVERITY/engine_summary.json",
+          "sha256": "b042a2bb9d5f83cfafd47aec298d687bdb163cc8137d83b2811948a856584dae"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 681605,
+          "maximum_date_field": "2023-12-18",
+          "minimum_date_field": "2021-07-08",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/Z40_ZERO_SEVERITY/event_ledger.jsonl",
+          "row_count": 2341,
+          "sha256": "adac350b31f5d7b68097030850570fa6473d79ec593b121947aa73238e5411a6"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 177361,
+          "maximum_date_field": "2023-11-28",
+          "minimum_date_field": "2022-05-20",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/Z40_ZERO_SEVERITY/execution_ledger.jsonl",
+          "row_count": 411,
+          "sha256": "349cd0f1d63c27ad7319691d9a2f389958efddf70a8a4780436f49dd0c9072c8"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "Z40_ZERO_SEVERITY",
+        "block": "HOLDOUT_O0_2022_2023",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 223,
+          "1.0": 261
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "C0_ALL_ONE_CONTROL",
+      "block": "DEVELOPMENT_2024_2025",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 154975,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2024-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/C0_ALL_ONE_CONTROL/daily_nav.jsonl",
+          "row_count": 485,
+          "sha256": "ad1d64c68d166223dffe5c451b9785fe71f5457ed00cd601bfdc3a93f56cbb5d"
+        },
+        "engine_report.md": {
+          "byte_count": 20731,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/C0_ALL_ONE_CONTROL/engine_report.md",
+          "sha256": "2240043e4de37b856b40d6533f4167f35bfa4e86d6b71cf9e2154203ed50df63"
+        },
+        "engine_summary.json": {
+          "byte_count": 37900,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/C0_ALL_ONE_CONTROL/engine_summary.json",
+          "sha256": "9cc362b184d8eb2bddebf459ad20edef83dd77294be1702c340a67a8963c9c78"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 1997596,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2023-03-14",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/C0_ALL_ONE_CONTROL/event_ledger.jsonl",
+          "row_count": 4786,
+          "sha256": "dfee4da3a86af5e5d41d7e4015c9708486ed6a3958f31d4c60304de5052341c3"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 275138,
+          "maximum_date_field": "2025-12-22",
+          "minimum_date_field": "2024-03-11",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/C0_ALL_ONE_CONTROL/execution_ledger.jsonl",
+          "row_count": 623,
+          "sha256": "f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "C0_ALL_ONE_CONTROL",
+        "block": "DEVELOPMENT_2024_2025",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "1.0": 485
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "A40_HALF_PRIMARY",
+      "block": "DEVELOPMENT_2024_2025",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 155364,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2024-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/A40_HALF_PRIMARY/daily_nav.jsonl",
+          "row_count": 485,
+          "sha256": "4fae32009090b9060239dedbbd4a1b395a30505e1d29c3fd03dc9b7658838b6e"
+        },
+        "engine_report.md": {
+          "byte_count": 20725,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/A40_HALF_PRIMARY/engine_report.md",
+          "sha256": "c5ff70f3cf8f2316bb02ee3be9306be858c500f6e5742192bca1bd982e692db3"
+        },
+        "engine_summary.json": {
+          "byte_count": 37919,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/A40_HALF_PRIMARY/engine_summary.json",
+          "sha256": "3d8a57ba727266cb92f721a73b93b79611fc02b5a797111f6ff778aef21b8689"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 1997626,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2023-03-14",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/A40_HALF_PRIMARY/event_ledger.jsonl",
+          "row_count": 4786,
+          "sha256": "d70c57ca9def76fbab21871ceabe6c9fcc67b4263eb1b9953d4e2b6f788b7f49"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 274373,
+          "maximum_date_field": "2025-12-22",
+          "minimum_date_field": "2024-03-11",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/A40_HALF_PRIMARY/execution_ledger.jsonl",
+          "row_count": 623,
+          "sha256": "ce93d35393aeb61a072d49f32c07be91988267d58104710317684b7a1d843658"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "A40_HALF_PRIMARY",
+        "block": "DEVELOPMENT_2024_2025",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.5": 206,
+          "1.0": 279
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "N30_HALF_NEIGHBOR",
+      "block": "DEVELOPMENT_2024_2025",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 155003,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2024-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N30_HALF_NEIGHBOR/daily_nav.jsonl",
+          "row_count": 485,
+          "sha256": "0967a6a22f3b7639a3c51c45a980230b41c3fb9b1ec16499dd674f68eafedb10"
+        },
+        "engine_report.md": {
+          "byte_count": 20728,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N30_HALF_NEIGHBOR/engine_report.md",
+          "sha256": "48e8513cb12d67bcf146b092d4d583835492e826d9aa03eac936f6f8a353ae72"
+        },
+        "engine_summary.json": {
+          "byte_count": 37919,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N30_HALF_NEIGHBOR/engine_summary.json",
+          "sha256": "db4dd50ee1d50e3260718bffa55b580fd31b6edd4d1331490c9cc8d1bbb87e8e"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 1997605,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2023-03-14",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N30_HALF_NEIGHBOR/event_ledger.jsonl",
+          "row_count": 4786,
+          "sha256": "768b01dddcfcdd7d670848f7da91b31ab422cfc64782a4db780aef437610e09a"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 274495,
+          "maximum_date_field": "2025-12-22",
+          "minimum_date_field": "2024-03-11",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N30_HALF_NEIGHBOR/execution_ledger.jsonl",
+          "row_count": 623,
+          "sha256": "700cc8bb34d3736f9c2fdaccf844ce72d2a8e6bc9a52d2ba18fb431cced154c8"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "N30_HALF_NEIGHBOR",
+        "block": "DEVELOPMENT_2024_2025",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.5": 122,
+          "1.0": 363
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "N50_HALF_NEIGHBOR",
+      "block": "DEVELOPMENT_2024_2025",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 155881,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2024-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N50_HALF_NEIGHBOR/daily_nav.jsonl",
+          "row_count": 485,
+          "sha256": "cba201908680d6885ee3028e84569a3a140802b5d30af7dfc75511706de8cf42"
+        },
+        "engine_report.md": {
+          "byte_count": 20727,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N50_HALF_NEIGHBOR/engine_report.md",
+          "sha256": "5623efb99c49443604e91260698826eae5358ab3e8b24ada83be11ff0b068728"
+        },
+        "engine_summary.json": {
+          "byte_count": 37964,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N50_HALF_NEIGHBOR/engine_summary.json",
+          "sha256": "3df228d52535521e8ae3f2c9b8d5e9538325a40bf462abe1d96ea83df9efbc0f"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 1997749,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2023-03-14",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N50_HALF_NEIGHBOR/event_ledger.jsonl",
+          "row_count": 4786,
+          "sha256": "ecfc3302c7c3b0fad026e2ca57217ea6ac21da8ab9f935ecd55f6f7d67de4c32"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 273640,
+          "maximum_date_field": "2025-12-22",
+          "minimum_date_field": "2024-03-11",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/N50_HALF_NEIGHBOR/execution_ledger.jsonl",
+          "row_count": 623,
+          "sha256": "4ab2683e65a7a7d44d734dc760d726e42059269c87c347dbc6d1e4b1327d2e1b"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "N50_HALF_NEIGHBOR",
+        "block": "DEVELOPMENT_2024_2025",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.5": 266,
+          "1.0": 219
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    },
+    {
+      "arm": "Z40_ZERO_SEVERITY",
+      "block": "DEVELOPMENT_2024_2025",
+      "files": {
+        "daily_nav.jsonl": {
+          "byte_count": 155348,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2024-01-02",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/Z40_ZERO_SEVERITY/daily_nav.jsonl",
+          "row_count": 485,
+          "sha256": "65996c58cc08032dd347300d2db6acbdbf353557e3f26a6f0f7fd730b1c1872e"
+        },
+        "engine_report.md": {
+          "byte_count": 20726,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/Z40_ZERO_SEVERITY/engine_report.md",
+          "sha256": "a54430e5869889dfcc20135027fbdab7302a68872cd7c0775bd63d98fff0d8a3"
+        },
+        "engine_summary.json": {
+          "byte_count": 37502,
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/Z40_ZERO_SEVERITY/engine_summary.json",
+          "sha256": "b1dfd0061e30f8bebd16f29578597f093c8ff8f9f7f56f47c387b4f1f0aa53fb"
+        },
+        "event_ledger.jsonl": {
+          "byte_count": 1996363,
+          "maximum_date_field": "2025-12-31",
+          "minimum_date_field": "2023-03-14",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/Z40_ZERO_SEVERITY/event_ledger.jsonl",
+          "row_count": 4780,
+          "sha256": "98a32e12f6f05cc6e8c6a4ee4dac244dc51b58776749c5e7eb5a96d9f2ea290b"
+        },
+        "execution_ledger.jsonl": {
+          "byte_count": 254473,
+          "maximum_date_field": "2025-12-22",
+          "minimum_date_field": "2024-03-11",
+          "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/DEVELOPMENT_2024_2025/Z40_ZERO_SEVERITY/execution_ledger.jsonl",
+          "row_count": 577,
+          "sha256": "ad4487cfaa7366ff57c8e0850c6e73fe086282dafafbc397a8a1071287db7aaa"
+        }
+      },
+      "overlay_identity": {
+        "application": "FIRST_CAUSALLY_VALID_LATER_OPEN_STICKY_MEMBER_TARGET",
+        "arm": "Z40_ZERO_SEVERITY",
+        "block": "DEVELOPMENT_2024_2025",
+        "decision_timestamp": "COMPLETED_SIGNAL_CLOSE_T",
+        "experiment_id": "EXP-P7-003",
+        "feature": "breadth_above_ma20",
+        "feature_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+        "multiplier_counts": {
+          "0.0": 206,
+          "1.0": 279
+        },
+        "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e"
+      }
+    }
+  ],
+  "manifest_id": "CHINEXT-V1R-P7-FROZEN-LEDGER-MANIFEST-V1",
+  "purpose": "OUTCOME_BLIND_IDENTITY_BINDING_FOR_PHASE8_9"
+}

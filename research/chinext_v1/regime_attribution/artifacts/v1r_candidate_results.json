@@ -1,0 +1,156 @@
+{
+  "authorization": {
+    "blocks": {
+      "DEVELOPMENT_2024_2025": {
+        "asset_id": "CY-032",
+        "authorization_id": "CYQ-AUTH-CHINEXT-V1R-P7-2024-2025-V1",
+        "scope": [
+          "2024-01-02",
+          "2025-12-31"
+        ]
+      },
+      "EXTENDED_2018_2021": {
+        "asset_id": "CY-030",
+        "authorization_id": "CYQ-AUTH-CHINEXT-V1R-P7-2017-2021-V1",
+        "scope": [
+          "2017-04-12",
+          "2021-12-31"
+        ]
+      },
+      "HOLDOUT_O0_2022_2023": {
+        "asset_id": "CY-031",
+        "authorization_id": "CYQ-AUTH-CHINEXT-V1R-P7-2022-2023-V1",
+        "scope": [
+          "2022-01-04",
+          "2023-12-29"
+        ]
+      }
+    },
+    "registry_sha256": "0b61a977e08bdce45dea4730792b7c9e6927139f7373b2ef359d211747fc3814"
+  },
+  "base_spec_sha256": "db1ba58b240d0bb21b6289815aa66c3145aceae84fb86a51fdfe3e775ec5d4c8",
+  "control_gate": {
+    "DEVELOPMENT_2024_2025": {
+      "baseline_output": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_pit_replay",
+      "checks": {
+        "completed_cycles_exact": true,
+        "daily_nav_projection_hash_exact": true,
+        "event_ledger_projection_hash_exact": true,
+        "execution_ledger_hash_exact": true,
+        "max_drawdown_exact_1e12": true,
+        "total_return_exact_1e12": true
+      },
+      "daily_nav_projection_removed_fields": [
+        "planned_target_weight_sum"
+      ],
+      "event_projection_removed_fields": [
+        "desired_target_weights",
+        "phase3_ablation"
+      ],
+      "pass": true
+    },
+    "EXTENDED_2018_2021": {
+      "baseline_output": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_extended_2018_2021",
+      "checks": {
+        "completed_cycles_exact": true,
+        "daily_nav_projection_hash_exact": true,
+        "event_ledger_projection_hash_exact": true,
+        "execution_ledger_hash_exact": true,
+        "max_drawdown_exact_1e12": true,
+        "total_return_exact_1e12": true
+      },
+      "daily_nav_projection_removed_fields": [
+        "planned_target_weight_sum"
+      ],
+      "event_projection_removed_fields": [
+        "desired_target_weights"
+      ],
+      "pass": true
+    },
+    "HOLDOUT_O0_2022_2023": {
+      "baseline_output": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_phase9b_oos/O0_BASELINE",
+      "checks": {
+        "completed_cycles_exact": true,
+        "daily_nav_projection_hash_exact": true,
+        "event_ledger_projection_hash_exact": true,
+        "execution_ledger_hash_exact": true,
+        "max_drawdown_exact_1e12": true,
+        "total_return_exact_1e12": true
+      },
+      "daily_nav_projection_removed_fields": [
+        "planned_target_weight_sum"
+      ],
+      "event_projection_removed_fields": [
+        "desired_target_weights"
+      ],
+      "pass": true
+    }
+  },
+  "evidence_grade": "OUTCOME_CONSUMED_CANDIDATE_REPLAY_NO_UNTOUCHED_OOS",
+  "experiment_id": "EXP-P7-003",
+  "falsification": {
+    "entry_signal_changes": 0,
+    "exit_changes": 0,
+    "false_breakout_candidate_metric": "UNAVAILABLE_NOT_BOUND_IN_EXP_P7_003",
+    "multipliers_optimized": 0,
+    "naive_nav_chaining": false,
+    "neighbor_selected_as_primary": false,
+    "rank_changes": 0,
+    "strict_pit_a_claim": false,
+    "thresholds_optimized": 0,
+    "untouched_oos_claim": false
+  },
+  "formal_replay_execution_count": 15,
+  "formal_run_order": [
+    "EXTENDED_2018_2021/C0_ALL_ONE_CONTROL",
+    "HOLDOUT_O0_2022_2023/C0_ALL_ONE_CONTROL",
+    "DEVELOPMENT_2024_2025/C0_ALL_ONE_CONTROL",
+    "EXTENDED_2018_2021/A40_HALF_PRIMARY",
+    "HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY",
+    "DEVELOPMENT_2024_2025/A40_HALF_PRIMARY",
+    "EXTENDED_2018_2021/N30_HALF_NEIGHBOR",
+    "HOLDOUT_O0_2022_2023/N30_HALF_NEIGHBOR",
+    "DEVELOPMENT_2024_2025/N30_HALF_NEIGHBOR",
+    "EXTENDED_2018_2021/N50_HALF_NEIGHBOR",
+    "HOLDOUT_O0_2022_2023/N50_HALF_NEIGHBOR",
+    "DEVELOPMENT_2024_2025/N50_HALF_NEIGHBOR",
+    "EXTENDED_2018_2021/Z40_ZERO_SEVERITY",
+    "HOLDOUT_O0_2022_2023/Z40_ZERO_SEVERITY",
+    "DEVELOPMENT_2024_2025/Z40_ZERO_SEVERITY"
+  ],
+  "output_hashes": {
+    "v1r_candidate_trade_metrics_csv": "b9f048166a243ac85b2abbc038d206bb504c6180d71cea55ae476e6bd01b44fd",
+    "v1r_candidate_yearly_metrics_csv": "5f8b429c7807c6d24bb4101caf960a15ade7f62801c87d7fbfd34d1fab7be357"
+  },
+  "promotion": {
+    "decision": "REJECT_OR_RETAIN_EXPLANATORY_ONLY",
+    "gates": {
+      "bad_environment": false,
+      "distribution": true,
+      "drawdown": true,
+      "exbest20_improvement_block_count": 2,
+      "neighbor_stability": false,
+      "neighbors": {
+        "N30_HALF_NEIGHBOR": {
+          "improves_2022_return": false,
+          "nonworse_block_drawdown_count": 3,
+          "passes": false
+        },
+        "N50_HALF_NEIGHBOR": {
+          "improves_2022_return": true,
+          "nonworse_block_drawdown_count": 2,
+          "passes": true
+        }
+      },
+      "nonworse_block_drawdown_count": 2,
+      "right_tail": true,
+      "top20_positive_pnl_capture": 0.9063877877778895,
+      "winner20_entry_retention": 0.9487179487179487
+    },
+    "passes_all_phase7_promotion_gates": false,
+    "primary_arm": "A40_HALF_PRIMARY"
+  },
+  "result": "PASS",
+  "spec_sha256": "620dbbcbde02fe1dae1867a7237dfa23eee85ad3d87b8b80c28d491db387911e",
+  "warmup_spec_sha256": "305442a5e442181bc23214a22e2413d3a24f54c722be4a52e8a957ca97e13eb4"
+}

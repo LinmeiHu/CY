@@ -1,0 +1,4382 @@
+{
+  "artifact_id": "CHINEXT-V1-PHASE1-YEARLY-DECOMPOSITION-2018-2025-V1",
+  "cross_year_associations": [
+    {
+      "diagnostic": "win_rate",
+      "sample_years": 8,
+      "spearman_rho": 0.5714285714285714,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "mean_trade_return",
+      "sample_years": 8,
+      "spearman_rho": 0.9285714285714286,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "median_trade_return",
+      "sample_years": 8,
+      "spearman_rho": 0.5714285714285714,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "top_winner_rate_ge_20",
+      "sample_years": 8,
+      "spearman_rho": 0.9700772721497398,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "super_winner_rate_ge_50",
+      "sample_years": 8,
+      "spearman_rho": 0.8624886920341297,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "severe_loss_rate_le_neg10",
+      "sample_years": 8,
+      "spearman_rho": 0.3333333333333333,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "median_mfe",
+      "sample_years": 8,
+      "spearman_rho": 0.7857142857142857,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "median_mae",
+      "sample_years": 8,
+      "spearman_rho": 0.0,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "median_holding_days",
+      "sample_years": 8,
+      "spearman_rho": 0.6347419188140273,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    },
+    {
+      "diagnostic": "average_invested_ratio",
+      "sample_years": 8,
+      "spearman_rho": 0.5476190476190477,
+      "status": "DESCRIPTIVE_NO_CAUSAL_OR_P_VALUE_CLAIM"
+    }
+  ],
+  "definitions": {
+    "ex_best_n": "annual frozen return minus top-N completed-cycle realized P&L / annual starting NAV",
+    "extreme_loss": "round_trip_return <= -0.20",
+    "holding_path": "first-entry-open gross total-return path; corporate-action adjusted; exit session uses actual exit open only",
+    "severe_loss": "round_trip_return <= -0.10",
+    "super_winner": "round_trip_return >= +0.50",
+    "top_winner": "round_trip_return >= +0.20",
+    "trade_year": "exit_execution_year",
+    "turnover": "annual filled notional / annual average authoritative NAV"
+  },
+  "experiment_id": "EXP-P1-001",
+  "findings": {
+    "H-001": "SUPPORTED_AT_YEARLY_DECOMPOSITION_LEVEL",
+    "H-002": "SUPPORTED_WITH_QUALIFICATION",
+    "market_regime_causality": "UNRESOLVED_PENDING_PHASE2_AND_PHASE3"
+  },
+  "formal_replay_executions": 0,
+  "input_identity": {
+    "baseline_manifest_sha256": "682b45455442f00e15e6273622ab6566d1c5c1d94069efc5fbbd40cb17f0977b",
+    "calendar_sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+    "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "ledger_hashes": {
+      "DEVELOPMENT_2024_2025": {
+        "daily_nav": "a1b8399c7f199a76ae6e891bbd690de16a3312d2cc548c77d552f2531adcc071",
+        "event_ledger": "721bdaa57e701ce40a9be37c29b6f0a13427efaf9074682bfc79255a4e62f655",
+        "execution_ledger": "f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5"
+      },
+      "EXTENDED_2018_2021": {
+        "daily_nav": "4794fe7877adb4ac912e8def90d8b46cc4e3d213c1c40cc567860e98a799901a",
+        "event_ledger": "9fb92730ca1c30e448b32b07b6c5ab369b178c820821daf21f3b69b90b0dfc86",
+        "execution_ledger": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"
+      },
+      "HOLDOUT_O0_2022_2023": {
+        "daily_nav": "1ff55ee194bbdc5fcb4c6041d99dbe5335548a22f05877aa17dc79fbe7152aa8",
+        "event_ledger": "ea2200e87ada0bc9a2b5ddcf7b9426c7bdfba20befc9cf58a802233fa5cef50c",
+        "execution_ledger": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"
+      }
+    },
+    "strategy_sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "new_nav": 0,
+  "new_strategy_trades": 0,
+  "outputs": {
+    "metrics_csv": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/regime_attribution/artifacts/yearly_metrics.csv",
+    "metrics_csv_sha256": "2bfc6fa0bb0f5f136e1a04c6a0e96b597f3d64fb0de22b9d8bb7538e25c4dce0",
+    "trades_csv": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+    "trades_csv_sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+  },
+  "overall_entry_month_cohorts": [
+    {
+      "cohort": "2018-01",
+      "mean_return": 0.0471646580020965,
+      "median_return": 0.0471646580020965,
+      "realized_pnl": 4600.320000000007,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2018-03",
+      "mean_return": -0.04866615404437869,
+      "median_return": -0.035007223772730606,
+      "realized_pnl": -19948.929000000004,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2018-05",
+      "mean_return": -0.04811063025125717,
+      "median_return": -0.06282087643184656,
+      "realized_pnl": -13978.94600000001,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2018-08",
+      "mean_return": -0.03465988556897654,
+      "median_return": -0.03465988556897654,
+      "realized_pnl": -3339.350000000006,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2018-09",
+      "mean_return": -0.019669200950819855,
+      "median_return": -0.019669200950819855,
+      "realized_pnl": -1868.0800000000017,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2018-12",
+      "mean_return": -0.03501739895791938,
+      "median_return": -0.03501739895791938,
+      "realized_pnl": -3300.1849999999977,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-01",
+      "mean_return": 0.024920886529398212,
+      "median_return": 0.02028535154450235,
+      "realized_pnl": 7073.624999999985,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2019-02",
+      "mean_return": 0.2741532097236434,
+      "median_return": 0.17285114542914826,
+      "realized_pnl": 247357.27700000003,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 3,
+      "trade_count": 9,
+      "win_rate": 0.8888888888888888
+    },
+    {
+      "cohort": "2019-03",
+      "mean_return": -0.04980115451181381,
+      "median_return": -0.04980115451181381,
+      "realized_pnl": -6040.540000000008,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-04",
+      "mean_return": -0.10281187901608312,
+      "median_return": -0.08263371550872833,
+      "realized_pnl": -51333.93300000003,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-05",
+      "mean_return": 0.017312502800629674,
+      "median_return": 0.017312502800629674,
+      "realized_pnl": 1950.6960000000254,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2019-07",
+      "mean_return": -0.02028205146137299,
+      "median_return": -0.02028205146137299,
+      "realized_pnl": -4667.582000000009,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-08",
+      "mean_return": 0.04620402650053538,
+      "median_return": 0.023068268197008985,
+      "realized_pnl": 63363.625,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 12,
+      "win_rate": 0.6666666666666666
+    },
+    {
+      "cohort": "2019-09",
+      "mean_return": 0.011761216724452014,
+      "median_return": 0.011761216724452014,
+      "realized_pnl": 1383.3719999999994,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2019-10",
+      "mean_return": -0.07600586519851522,
+      "median_return": -0.06111737988225353,
+      "realized_pnl": -39521.47999999996,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-11",
+      "mean_return": -0.0393069662132445,
+      "median_return": -0.025399497647661407,
+      "realized_pnl": -43780.461000000025,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 9,
+      "win_rate": 0.2222222222222222
+    },
+    {
+      "cohort": "2019-12",
+      "mean_return": 0.06657959122605107,
+      "median_return": 0.027691218324809103,
+      "realized_pnl": 85904.85300000002,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 2,
+      "trade_count": 11,
+      "win_rate": 0.8181818181818182
+    },
+    {
+      "cohort": "2020-02",
+      "mean_return": -0.06679247087475854,
+      "median_return": -0.0846413088710964,
+      "realized_pnl": -75983.28799999997,
+      "severe_loss_count_le_neg10": 4,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 9,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2020-04",
+      "mean_return": 0.006024522101692431,
+      "median_return": 0.006024522101692431,
+      "realized_pnl": 686.43299999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2020-05",
+      "mean_return": 0.008889647958044236,
+      "median_return": 0.0011152564249911493,
+      "realized_pnl": 3343.809000000034,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.6666666666666666
+    },
+    {
+      "cohort": "2020-06",
+      "mean_return": 0.10916217791242366,
+      "median_return": 0.040866989406719095,
+      "realized_pnl": 155532.537,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 4,
+      "trade_count": 12,
+      "win_rate": 0.5833333333333334
+    },
+    {
+      "cohort": "2020-07",
+      "mean_return": -0.07313295729694975,
+      "median_return": -0.07313295729694975,
+      "realized_pnl": -9786.848999999987,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2020-08",
+      "mean_return": -0.048754554477539264,
+      "median_return": -0.06959140842286723,
+      "realized_pnl": -52570.44900000001,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 8,
+      "win_rate": 0.125
+    },
+    {
+      "cohort": "2020-09",
+      "mean_return": -0.11179093248761689,
+      "median_return": -0.12937856200406217,
+      "realized_pnl": -74366.24399999999,
+      "severe_loss_count_le_neg10": 4,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2020-10",
+      "mean_return": 0.07353262456138952,
+      "median_return": 0.04287968524981513,
+      "realized_pnl": 88058.42000000001,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 10,
+      "win_rate": 0.7
+    },
+    {
+      "cohort": "2020-11",
+      "mean_return": -0.05028662757682741,
+      "median_return": -0.05028662757682741,
+      "realized_pnl": -12579.385999999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2020-12",
+      "mean_return": 0.008080036538022441,
+      "median_return": -0.003268192124579107,
+      "realized_pnl": 10884.765000000047,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 14,
+      "win_rate": 0.42857142857142855
+    },
+    {
+      "cohort": "2021-01",
+      "mean_return": 0.018716945323353815,
+      "median_return": 0.018716945323353815,
+      "realized_pnl": 4680.226999999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2021-02",
+      "mean_return": -0.07312989386423518,
+      "median_return": -0.07312989386423518,
+      "realized_pnl": -9218.896000000008,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2021-03",
+      "mean_return": 0.1498683135046771,
+      "median_return": 0.1498683135046771,
+      "realized_pnl": 18317.219999999998,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2021-04",
+      "mean_return": -0.030181148474207577,
+      "median_return": -0.04716143170793636,
+      "realized_pnl": -55455.35899999998,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 14,
+      "win_rate": 0.2857142857142857
+    },
+    {
+      "cohort": "2021-05",
+      "mean_return": 0.3620963872992046,
+      "median_return": 0.08673254079404996,
+      "realized_pnl": 475395.99079000007,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 4,
+      "trade_count": 10,
+      "win_rate": 0.9
+    },
+    {
+      "cohort": "2021-06",
+      "mean_return": 0.5982207543698203,
+      "median_return": 0.5982207543698203,
+      "realized_pnl": 95109.81899999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2021-07",
+      "mean_return": -0.01722264346777258,
+      "median_return": -0.02606004787405488,
+      "realized_pnl": -14246.447999999975,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.4
+    },
+    {
+      "cohort": "2021-08",
+      "mean_return": 0.09003972211994,
+      "median_return": 0.0313836917996608,
+      "realized_pnl": 63898.19499999997,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 4,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2021-09",
+      "mean_return": -0.04694137694240852,
+      "median_return": -0.04694137694240852,
+      "realized_pnl": -17204.785000000033,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2021-10",
+      "mean_return": -0.14171828171828169,
+      "median_return": -0.14171828171828169,
+      "realized_pnl": -25719.217999999993,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2021-11",
+      "mean_return": -0.051437481450388484,
+      "median_return": -0.061179976319073175,
+      "realized_pnl": -118174.90500000012,
+      "severe_loss_count_le_neg10": 3,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 13,
+      "win_rate": 0.15384615384615385
+    },
+    {
+      "cohort": "2021-12",
+      "mean_return": -0.02241344215341157,
+      "median_return": -0.021275513836203037,
+      "realized_pnl": -26232.144,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 7,
+      "win_rate": 0.2857142857142857
+    },
+    {
+      "cohort": "2022-05",
+      "mean_return": -0.03317514743289428,
+      "median_return": -0.03317514743289428,
+      "realized_pnl": -6470.792999999991,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.5
+    },
+    {
+      "cohort": "2022-06",
+      "mean_return": -0.03765856333008979,
+      "median_return": -0.046305849323090564,
+      "realized_pnl": -28127.75056999999,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 7,
+      "win_rate": 0.14285714285714285
+    },
+    {
+      "cohort": "2022-07",
+      "mean_return": -0.04801529234819671,
+      "median_return": -0.0511826974306892,
+      "realized_pnl": -52264.74899999996,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 11,
+      "win_rate": 0.18181818181818182
+    },
+    {
+      "cohort": "2022-08",
+      "mean_return": -0.06888744730640302,
+      "median_return": -0.06918333265124647,
+      "realized_pnl": -75734.71000000005,
+      "severe_loss_count_le_neg10": 3,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 12,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2022-10",
+      "mean_return": 0.026213399577087616,
+      "median_return": 0.026213399577087616,
+      "realized_pnl": 2074.6349999999948,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2022-11",
+      "mean_return": -0.04654825133172533,
+      "median_return": -0.04654825133172533,
+      "realized_pnl": -7654.728000000017,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2022-12",
+      "mean_return": -0.028627524876938128,
+      "median_return": -0.028627524876938128,
+      "realized_pnl": -4735.580000000002,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2023-01",
+      "mean_return": 0.047135341151863595,
+      "median_return": 0.024547605134456023,
+      "realized_pnl": 40055.379,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 10,
+      "win_rate": 0.6
+    },
+    {
+      "cohort": "2023-02",
+      "mean_return": -0.054477932879991996,
+      "median_return": -0.053987983914049034,
+      "realized_pnl": -14053.872999999992,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2023-03",
+      "mean_return": 0.03925167467324313,
+      "median_return": -0.034201700362119856,
+      "realized_pnl": 30798.631000000016,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 2,
+      "trade_count": 10,
+      "win_rate": 0.2
+    },
+    {
+      "cohort": "2023-04",
+      "mean_return": -0.03928247594324544,
+      "median_return": -0.03928247594324544,
+      "realized_pnl": -6915.139999999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.5
+    },
+    {
+      "cohort": "2023-05",
+      "mean_return": -0.030796801403199504,
+      "median_return": -0.030796801403199504,
+      "realized_pnl": -5324.641000000003,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2023-06",
+      "mean_return": -0.05083216844983547,
+      "median_return": -0.0852100099791572,
+      "realized_pnl": -22376.459000000003,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.2
+    },
+    {
+      "cohort": "2023-07",
+      "mean_return": -0.023816715205539456,
+      "median_return": -0.024522592925033525,
+      "realized_pnl": -14236.746,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 7,
+      "win_rate": 0.14285714285714285
+    },
+    {
+      "cohort": "2023-08",
+      "mean_return": -0.00638083699592772,
+      "median_return": -0.007368854237738799,
+      "realized_pnl": -1662.1700000000128,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2023-10",
+      "mean_return": -0.022667383724345107,
+      "median_return": -0.019506808980493118,
+      "realized_pnl": -9404.66899999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.2
+    },
+    {
+      "cohort": "2023-11",
+      "mean_return": 0.024609519973446455,
+      "median_return": 0.005383290744874961,
+      "realized_pnl": 20812.78900000002,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 10,
+      "win_rate": 0.6
+    },
+    {
+      "cohort": "2024-03",
+      "mean_return": -0.03333474519551494,
+      "median_return": -0.03333474519551494,
+      "realized_pnl": -6166.845000000016,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2024-04",
+      "mean_return": 0.0002782265809278536,
+      "median_return": -0.012575144328340565,
+      "realized_pnl": -489.24624999998014,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 5,
+      "win_rate": 0.2
+    },
+    {
+      "cohort": "2024-05",
+      "mean_return": -0.048248887975226216,
+      "median_return": -0.05552016451167633,
+      "realized_pnl": -30013.27900000002,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 6,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2024-08",
+      "mean_return": -0.05022858182709481,
+      "median_return": -0.05022858182709481,
+      "realized_pnl": -4841.949999999997,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2024-09",
+      "mean_return": 0.71963971877627,
+      "median_return": 0.5269876881028801,
+      "realized_pnl": 706394.406,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 9,
+      "trade_count": 10,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2024-12",
+      "mean_return": -0.07496473783732553,
+      "median_return": -0.07960293284875833,
+      "realized_pnl": -174388.89800000007,
+      "severe_loss_count_le_neg10": 5,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 14,
+      "win_rate": 0.07142857142857142
+    },
+    {
+      "cohort": "2025-01",
+      "mean_return": 0.13387577570596276,
+      "median_return": 0.13387577570596276,
+      "realized_pnl": 20133.073999999982,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2025-02",
+      "mean_return": 0.03899356268821565,
+      "median_return": 0.006906763733088701,
+      "realized_pnl": 57137.40000000009,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 10,
+      "win_rate": 0.5
+    },
+    {
+      "cohort": "2025-03",
+      "mean_return": -0.05442788561759819,
+      "median_return": -0.05994424538490668,
+      "realized_pnl": -34094.34400000001,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.25
+    },
+    {
+      "cohort": "2025-04",
+      "mean_return": 0.018718028292328055,
+      "median_return": 0.018718028292328055,
+      "realized_pnl": 2841.5400000000045,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2025-05",
+      "mean_return": -0.07463462484922968,
+      "median_return": -0.06106117333993417,
+      "realized_pnl": -60236.59799999995,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2025-06",
+      "mean_return": 0.03760542755416247,
+      "median_return": -0.032818471361718574,
+      "realized_pnl": 130748.4883000001,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 3,
+      "trade_count": 21,
+      "win_rate": 0.42857142857142855
+    },
+    {
+      "cohort": "2025-07",
+      "mean_return": 0.06365521538336444,
+      "median_return": 0.027682230986636996,
+      "realized_pnl": 47979.076000000015,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.8
+    },
+    {
+      "cohort": "2025-08",
+      "mean_return": 0.05046944973121108,
+      "median_return": 0.0624912347879587,
+      "realized_pnl": 42138.91500000003,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 5,
+      "win_rate": 0.6
+    },
+    {
+      "cohort": "2025-09",
+      "mean_return": 0.006781229044449305,
+      "median_return": 0.009705462770841444,
+      "realized_pnl": 6939.8539999999475,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 8,
+      "win_rate": 0.5
+    },
+    {
+      "cohort": "2025-10",
+      "mean_return": 0.07873690168527075,
+      "median_return": 0.07479767769612566,
+      "realized_pnl": 40273.87899999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2025-11",
+      "mean_return": 0.15679380020772643,
+      "median_return": 0.017133655061597416,
+      "realized_pnl": 199152.8479999999,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 2,
+      "trade_count": 8,
+      "win_rate": 0.625
+    },
+    {
+      "cohort": "2025-12",
+      "mean_return": -0.008516984222073514,
+      "median_return": -0.008516984222073514,
+      "realized_pnl": -4355.719000000012,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.5
+    }
+  ],
+  "overall_exit_lineage": {
+    "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+      "mean_return": -0.04196512849780809,
+      "median_holding_days": 12.0,
+      "median_mae": -0.08176614881439082,
+      "median_mfe": 0.06159014557670783,
+      "median_return": -0.06106117333993417,
+      "realized_pnl": -523616.8112099997,
+      "trade_count": 95,
+      "win_rate": 0.25263157894736843
+    },
+    "MARKET_EMERGENCY_X0.96": {
+      "mean_return": 0.04521183273936558,
+      "median_holding_days": 28.5,
+      "median_mae": -0.032785008205793664,
+      "median_mfe": 0.2095603393333615,
+      "median_return": 0.017576062526458998,
+      "realized_pnl": 77591.58300000003,
+      "trade_count": 14,
+      "win_rate": 0.6428571428571429
+    },
+    "MARKET_MA20_X2": {
+      "mean_return": 0.0589975785264738,
+      "median_holding_days": 8.0,
+      "median_mae": -0.040433513964151735,
+      "median_mfe": 0.060685154975530065,
+      "median_return": -0.007368854237738799,
+      "realized_pnl": 1931557.4004799998,
+      "trade_count": 283,
+      "win_rate": 0.44876325088339225
+    },
+    "SET_REMOVAL": {
+      "mean_return": -0.05834871696186574,
+      "median_holding_days": 7.0,
+      "median_mae": -0.0728682170542635,
+      "median_mfe": 0.09399075500770415,
+      "median_return": -0.05523238131717684,
+      "realized_pnl": -53376.419000000016,
+      "trade_count": 7,
+      "win_rate": 0.14285714285714285
+    }
+  },
+  "overall_exit_month_cohorts": [
+    {
+      "cohort": "2018-01",
+      "mean_return": 0.0471646580020965,
+      "median_return": 0.0471646580020965,
+      "realized_pnl": 4600.320000000007,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2018-03",
+      "mean_return": -0.04866615404437869,
+      "median_return": -0.035007223772730606,
+      "realized_pnl": -19948.929000000004,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2018-05",
+      "mean_return": -0.04811063025125717,
+      "median_return": -0.06282087643184656,
+      "realized_pnl": -13978.94600000001,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2018-09",
+      "mean_return": -0.03465988556897654,
+      "median_return": -0.03465988556897654,
+      "realized_pnl": -3339.350000000006,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2018-10",
+      "mean_return": -0.019669200950819855,
+      "median_return": -0.019669200950819855,
+      "realized_pnl": -1868.0800000000017,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2018-12",
+      "mean_return": -0.03501739895791938,
+      "median_return": -0.03501739895791938,
+      "realized_pnl": -3300.1849999999977,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-01",
+      "mean_return": 0.024920886529398212,
+      "median_return": 0.02028535154450235,
+      "realized_pnl": 7073.624999999985,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2019-03",
+      "mean_return": 0.24175777330009768,
+      "median_return": 0.14547990482285028,
+      "realized_pnl": 241316.73700000002,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 3,
+      "trade_count": 10,
+      "win_rate": 0.8
+    },
+    {
+      "cohort": "2019-04",
+      "mean_return": -0.10281187901608312,
+      "median_return": -0.08263371550872833,
+      "realized_pnl": -51333.93300000003,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-06",
+      "mean_return": 0.017312502800629674,
+      "median_return": 0.017312502800629674,
+      "realized_pnl": 1950.6960000000254,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2019-07",
+      "mean_return": -0.025130425130425144,
+      "median_return": -0.025130425130425144,
+      "realized_pnl": -2888.8640000000014,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2019-08",
+      "mean_return": -0.013640046954917296,
+      "median_return": -0.01449577424652435,
+      "realized_pnl": -6333.575000000012,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.25
+    },
+    {
+      "cohort": "2019-09",
+      "mean_return": 0.0605336044758225,
+      "median_return": 0.042176903770444016,
+      "realized_pnl": 69301.854,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 10,
+      "win_rate": 0.8
+    },
+    {
+      "cohort": "2019-11",
+      "mean_return": -0.050598935131789334,
+      "median_return": -0.042784687963987426,
+      "realized_pnl": -83301.94099999998,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 13,
+      "win_rate": 0.15384615384615385
+    },
+    {
+      "cohort": "2019-12",
+      "mean_return": -0.0952547710420711,
+      "median_return": -0.0952547710420711,
+      "realized_pnl": -11635.659000000014,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2020-02",
+      "mean_return": 0.08276302745286329,
+      "median_return": 0.04907723853570242,
+      "realized_pnl": 97540.51200000003,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 2,
+      "trade_count": 10,
+      "win_rate": 0.9
+    },
+    {
+      "cohort": "2020-03",
+      "mean_return": -0.06679247087475854,
+      "median_return": -0.0846413088710964,
+      "realized_pnl": -75983.28799999997,
+      "severe_loss_count_le_neg10": 4,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 9,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2020-04",
+      "mean_return": 0.006024522101692431,
+      "median_return": 0.006024522101692431,
+      "realized_pnl": 686.43299999999,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2020-05",
+      "mean_return": 0.008889647958044236,
+      "median_return": 0.0011152564249911493,
+      "realized_pnl": 3343.809000000034,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.6666666666666666
+    },
+    {
+      "cohort": "2020-06",
+      "mean_return": -0.13622779984137268,
+      "median_return": -0.13622779984137268,
+      "realized_pnl": -32923.20500000001,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2020-07",
+      "mean_return": 0.15824017346318292,
+      "median_return": 0.1245962866598754,
+      "realized_pnl": 188455.742,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 4,
+      "trade_count": 10,
+      "win_rate": 0.7
+    },
+    {
+      "cohort": "2020-08",
+      "mean_return": -0.0503798446705358,
+      "median_return": -0.056945615204257935,
+      "realized_pnl": -19916.400999999983,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2020-09",
+      "mean_return": -0.079180411049431,
+      "median_return": -0.0935478793628624,
+      "realized_pnl": -116807.141,
+      "severe_loss_count_le_neg10": 5,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 11,
+      "win_rate": 0.09090909090909091
+    },
+    {
+      "cohort": "2020-11",
+      "mean_return": 0.05289608253835337,
+      "median_return": 0.03309463440100119,
+      "realized_pnl": 75479.03400000001,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 12,
+      "win_rate": 0.5833333333333334
+    },
+    {
+      "cohort": "2020-12",
+      "mean_return": 0.003595242033564636,
+      "median_return": -0.003444381705251163,
+      "realized_pnl": 3033.1810000000305,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 13,
+      "win_rate": 0.38461538461538464
+    },
+    {
+      "cohort": "2021-02",
+      "mean_return": 0.007671590469611589,
+      "median_return": 0.018716945323353815,
+      "realized_pnl": 3312.915000000008,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.75
+    },
+    {
+      "cohort": "2021-04",
+      "mean_return": -0.009387426234229109,
+      "median_return": -0.03803528532358664,
+      "realized_pnl": -9687.95199999998,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 7,
+      "win_rate": 0.2857142857142857
+    },
+    {
+      "cohort": "2021-05",
+      "mean_return": -0.02586947268682815,
+      "median_return": -0.05138534174642114,
+      "realized_pnl": -27450.187000000005,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 8,
+      "win_rate": 0.375
+    },
+    {
+      "cohort": "2021-07",
+      "mean_return": 0.25831696312643776,
+      "median_return": 0.06223341513648624,
+      "realized_pnl": 556259.3617900001,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 5,
+      "trade_count": 16,
+      "win_rate": 0.75
+    },
+    {
+      "cohort": "2021-08",
+      "mean_return": 0.09003972211994,
+      "median_return": 0.0313836917996608,
+      "realized_pnl": 63898.19499999997,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 4,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2021-09",
+      "mean_return": -0.04694137694240852,
+      "median_return": -0.04694137694240852,
+      "realized_pnl": -17204.785000000033,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2021-10",
+      "mean_return": -0.14171828171828169,
+      "median_return": -0.14171828171828169,
+      "realized_pnl": -25719.217999999993,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2021-11",
+      "mean_return": -0.09225104900261526,
+      "median_return": -0.07846765240615898,
+      "realized_pnl": -50912.399000000005,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2021-12",
+      "mean_return": -0.032284012171828566,
+      "median_return": -0.04880293685134832,
+      "realized_pnl": -93494.65000000011,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 17,
+      "win_rate": 0.23529411764705882
+    },
+    {
+      "cohort": "2022-06",
+      "mean_return": -0.10760050160511861,
+      "median_return": -0.10760050160511861,
+      "realized_pnl": -22310.104000000007,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2022-07",
+      "mean_return": -0.03571819171090798,
+      "median_return": -0.0479138779939271,
+      "realized_pnl": -64553.18856999993,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 18,
+      "win_rate": 0.2222222222222222
+    },
+    {
+      "cohort": "2022-08",
+      "mean_return": -0.06888744730640302,
+      "median_return": -0.06918333265124647,
+      "realized_pnl": -75734.71000000005,
+      "severe_loss_count_le_neg10": 3,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 12,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2022-11",
+      "mean_return": -0.022294367695454346,
+      "median_return": -0.033410523902327266,
+      "realized_pnl": -5580.093000000023,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2022-12",
+      "mean_return": -0.028627524876938128,
+      "median_return": -0.028627524876938128,
+      "realized_pnl": -4735.580000000002,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2023-02",
+      "mean_return": 0.02368612406758923,
+      "median_return": -0.026362659614377195,
+      "realized_pnl": 26001.50600000001,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 13,
+      "win_rate": 0.46153846153846156
+    },
+    {
+      "cohort": "2023-04",
+      "mean_return": 0.026162649570495033,
+      "median_return": -0.034201700362119856,
+      "realized_pnl": 23883.491000000016,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 2,
+      "trade_count": 12,
+      "win_rate": 0.25
+    },
+    {
+      "cohort": "2023-05",
+      "mean_return": -0.009729194426122892,
+      "median_return": -0.009729194426122892,
+      "realized_pnl": -788.2489999999962,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2023-06",
+      "mean_return": -0.033656017473773905,
+      "median_return": -0.03756355585673486,
+      "realized_pnl": -11699.041000000012,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.25
+    },
+    {
+      "cohort": "2023-07",
+      "mean_return": -0.04329961015642388,
+      "median_return": -0.037295106482872105,
+      "realized_pnl": -26542.34299999998,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 7,
+      "win_rate": 0.14285714285714285
+    },
+    {
+      "cohort": "2023-08",
+      "mean_return": -0.010832685413190001,
+      "median_return": -0.01597629610186976,
+      "realized_pnl": -4570.383000000031,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.2
+    },
+    {
+      "cohort": "2023-10",
+      "mean_return": -0.010056059015578002,
+      "median_return": -0.013754570037292507,
+      "realized_pnl": -2530.325000000008,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 0.3333333333333333
+    },
+    {
+      "cohort": "2023-11",
+      "mean_return": 0.013577204846622752,
+      "median_return": -0.0021097533949051227,
+      "realized_pnl": 13938.445000000036,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 12,
+      "win_rate": 0.5
+    },
+    {
+      "cohort": "2024-03",
+      "mean_return": -0.03333474519551494,
+      "median_return": -0.03333474519551494,
+      "realized_pnl": -6166.845000000016,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2024-05",
+      "mean_return": -0.02619110863151982,
+      "median_return": -0.05231059324415922,
+      "realized_pnl": -30502.525250000002,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 11,
+      "win_rate": 0.09090909090909091
+    },
+    {
+      "cohort": "2024-09",
+      "mean_return": -0.05022858182709481,
+      "median_return": -0.05022858182709481,
+      "realized_pnl": -4841.949999999997,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2024-10",
+      "mean_return": 0.10813263344043093,
+      "median_return": 0.10813263344043093,
+      "realized_pnl": 9969.623999999996,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 1,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2024-11",
+      "mean_return": 0.7875849504802521,
+      "median_return": 0.5362502665873453,
+      "realized_pnl": 696424.782,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 9,
+      "trade_count": 9,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2024-12",
+      "mean_return": -0.07496473783732553,
+      "median_return": -0.07960293284875833,
+      "realized_pnl": -174388.89800000007,
+      "severe_loss_count_le_neg10": 5,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 14,
+      "win_rate": 0.07142857142857142
+    },
+    {
+      "cohort": "2025-02",
+      "mean_return": -0.10667883652078003,
+      "median_return": -0.10667883652078003,
+      "realized_pnl": -33974.80599999998,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.0
+    },
+    {
+      "cohort": "2025-03",
+      "mean_return": 0.03995827178148358,
+      "median_return": 0.0048272396296711595,
+      "realized_pnl": 77150.93600000005,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 13,
+      "win_rate": 0.5384615384615384
+    },
+    {
+      "cohort": "2025-05",
+      "mean_return": -0.05916144449517058,
+      "median_return": -0.059597201044569496,
+      "realized_pnl": -38308.522,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 4,
+      "win_rate": 0.25
+    },
+    {
+      "cohort": "2025-06",
+      "mean_return": -0.026143378346372093,
+      "median_return": -0.0532844642362475,
+      "realized_pnl": -57208.146999999895,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 1,
+      "trade_count": 13,
+      "win_rate": 0.15384615384615385
+    },
+    {
+      "cohort": "2025-07",
+      "mean_return": -0.020368470695319447,
+      "median_return": -0.032818471361718574,
+      "realized_pnl": -14562.782999999932,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 5,
+      "win_rate": 0.4
+    },
+    {
+      "cohort": "2025-08",
+      "mean_return": 0.07305638664991428,
+      "median_return": 0.061592993490077304,
+      "realized_pnl": 35070.185000000034,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 3,
+      "win_rate": 1.0
+    },
+    {
+      "cohort": "2025-09",
+      "mean_return": -0.008119650287579482,
+      "median_return": -0.05314612537015199,
+      "realized_pnl": -23524.71400000009,
+      "severe_loss_count_le_neg10": 2,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 9,
+      "win_rate": 0.4444444444444444
+    },
+    {
+      "cohort": "2025-10",
+      "mean_return": 0.1447628893827866,
+      "median_return": 0.0624912347879587,
+      "realized_pnl": 268945.25630000007,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 4,
+      "trade_count": 11,
+      "win_rate": 0.8181818181818182
+    },
+    {
+      "cohort": "2025-11",
+      "mean_return": 0.1355055551561476,
+      "median_return": 0.02720286492027061,
+      "realized_pnl": 239426.7269999999,
+      "severe_loss_count_le_neg10": 1,
+      "top_winner_count_ge_20": 2,
+      "trade_count": 11,
+      "win_rate": 0.7272727272727273
+    },
+    {
+      "cohort": "2025-12",
+      "mean_return": -0.008516984222073514,
+      "median_return": -0.008516984222073514,
+      "realized_pnl": -4355.719000000012,
+      "severe_loss_count_le_neg10": 0,
+      "top_winner_count_ge_20": 0,
+      "trade_count": 2,
+      "win_rate": 0.5
+    }
+  ],
+  "pit_rebuilt": false,
+  "result": "PASS",
+  "sample": {
+    "completed_cycles": 399,
+    "daily_nav_rows": 1942,
+    "nav_blocks": [
+      "EXTENDED_2018_2021",
+      "HOLDOUT_O0_2022_2023",
+      "DEVELOPMENT_2024_2025"
+    ],
+    "nav_blocks_are_independent": true,
+    "years": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "strategy_modified": false,
+  "yearly": {
+    "2018": {
+      "baseline_block": "EXTENDED_2018_2021",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2018-01",
+          "mean_return": 0.0471646580020965,
+          "median_return": 0.0471646580020965,
+          "realized_pnl": 4600.320000000007,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2018-03",
+          "mean_return": -0.04866615404437869,
+          "median_return": -0.035007223772730606,
+          "realized_pnl": -19948.929000000004,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2018-05",
+          "mean_return": -0.04811063025125717,
+          "median_return": -0.06282087643184656,
+          "realized_pnl": -13978.94600000001,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2018-08",
+          "mean_return": -0.03465988556897654,
+          "median_return": -0.03465988556897654,
+          "realized_pnl": -3339.350000000006,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2018-09",
+          "mean_return": -0.019669200950819855,
+          "median_return": -0.019669200950819855,
+          "realized_pnl": -1868.0800000000017,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2018-12",
+          "mean_return": -0.03501739895791938,
+          "median_return": -0.03501739895791938,
+          "realized_pnl": -3300.1849999999977,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        }
+      ],
+      "exit_lineage": {
+        "MARKET_EMERGENCY_X0.96": {
+          "mean_return": -0.04866615404437869,
+          "median_holding_days": 9.0,
+          "median_mae": -0.04816130305313393,
+          "median_mfe": 0.0447978330283787,
+          "median_return": -0.035007223772730606,
+          "realized_pnl": -19948.929000000004,
+          "trade_count": 4,
+          "win_rate": 0.0
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": -0.026644816889912968,
+          "median_holding_days": 5.0,
+          "median_mae": -0.040433513964151735,
+          "median_mfe": 0.010408921933085624,
+          "median_return": -0.03465988556897654,
+          "realized_pnl": -17886.24100000001,
+          "trade_count": 7,
+          "win_rate": 0.2857142857142857
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2018-01",
+          "mean_return": 0.0471646580020965,
+          "median_return": 0.0471646580020965,
+          "realized_pnl": 4600.320000000007,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2018-03",
+          "mean_return": -0.04866615404437869,
+          "median_return": -0.035007223772730606,
+          "realized_pnl": -19948.929000000004,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2018-05",
+          "mean_return": -0.04811063025125717,
+          "median_return": -0.06282087643184656,
+          "realized_pnl": -13978.94600000001,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2018-09",
+          "mean_return": -0.03465988556897654,
+          "median_return": -0.03465988556897654,
+          "realized_pnl": -3339.350000000006,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2018-10",
+          "mean_return": -0.019669200950819855,
+          "median_return": -0.019669200950819855,
+          "realized_pnl": -1868.0800000000017,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2018-12",
+          "mean_return": -0.03501739895791938,
+          "median_return": -0.03501739895791938,
+          "realized_pnl": -3300.1849999999977,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 0.29218106995884774,
+        "average_invested_ratio": 0.028754991535826592,
+        "average_nav": 978339.889053498,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 10,
+        "drawdown_window_realized_pnl": -42435.49000000002,
+        "drawdown_window_severe_loss_pnl": -11480.603000000003,
+        "end_nav": 962164.8300000001,
+        "filled_notional": 2127170.0,
+        "flat_session_fraction": 0.8518518518518519,
+        "full_position_fraction": 0.0,
+        "market_entry_permission_fraction": 0.3950617283950617,
+        "max_drawdown": -0.046535273427177115,
+        "max_holdings": 4,
+        "median_invested_ratio": 0.0,
+        "peak_date": "2018-03-12",
+        "portfolio_return": -0.03783516999999992,
+        "portfolio_return_per_average_invested_ratio": -1.3157774695520288,
+        "portfolio_return_per_turnover": -0.01740136238294079,
+        "sessions": 243,
+        "start_nav": 1000000.0,
+        "trough_date": "2018-12-10",
+        "turnover_total_filled_notional_over_average_nav": 2.174264817166911
+      },
+      "trade_metrics": {
+        "average_loser": -0.048998885911334444,
+        "average_winner": 0.029905819397552248,
+        "days_to_mfe_distribution": {
+          "count": 11,
+          "mean": 1.1818181818181819,
+          "median": 0.0,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 2.5,
+          "p90": 3.0
+        },
+        "ex_best10_pnl_return": 0.02635456700000001,
+        "ex_best10_portfolio_return": -0.011480602999999909,
+        "ex_best20_pnl_return": 0.037835170000000015,
+        "ex_best20_portfolio_return": 9.71445146547012e-17,
+        "ex_best5_pnl_return": -1.8599999999996726e-06,
+        "ex_best5_portfolio_return": -0.03783702999999992,
+        "extreme_loss_rate_le_neg20": 0.0,
+        "giveback_distribution": {
+          "count": 11,
+          "mean": 0.043297265868087575,
+          "median": 0.0487559224401328,
+          "p10": 0.005277154263265558,
+          "p25": 0.013515148809491893,
+          "p75": 0.06272450920850813,
+          "p90": 0.07287320007878029
+        },
+        "holding_distribution": {
+          "count": 11,
+          "mean": 6.454545454545454,
+          "median": 6.0,
+          "p10": 2.0,
+          "p25": 4.0,
+          "p75": 9.0,
+          "p90": 11.0
+        },
+        "mae_distribution": {
+          "count": 11,
+          "mean": -0.056930914822900386,
+          "median": -0.040433513964151735,
+          "p10": -0.10956937799043054,
+          "p25": -0.07568388082188415,
+          "p75": -0.037684782501503866,
+          "p90": -0.03248730964467006
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 10,
+          "mean": -4.055500512459618,
+          "median": -1.8606666403276548,
+          "p10": -10.365864135863571,
+          "p25": -4.462498133314989,
+          "p75": -0.274831391795638,
+          "p90": 0.39863471246771054
+        },
+        "mfe_distribution": {
+          "count": 11,
+          "mean": 0.030547288153158283,
+          "median": 0.027607361963190247,
+          "p10": 0.002107925801011934,
+          "p25": 0.007596805464150536,
+          "p75": 0.0478761862276923,
+          "p90": 0.06598984771573613
+        },
+        "mfe_ge_20_rate": 0.0,
+        "mfe_ge_50_rate": 0.0,
+        "negative_pnl": -43708.84600000002,
+        "payoff_ratio": 0.6103367217709418,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 2,
+            "rate": 0.18181818181818182,
+            "realized_pnl": 5873.676000000007
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 1,
+            "rate": 0.09090909090909091,
+            "realized_pnl": -11480.603000000003
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 8,
+            "rate": 0.7272727272727273,
+            "realized_pnl": -32228.243000000017
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          }
+        },
+        "positive_pnl": 5873.676000000007,
+        "positive_pnl_hhi": 0.6604154649041141,
+        "profit_factor_pnl": 0.13438185945243222,
+        "realized_pnl": -37835.17000000001,
+        "return_distribution": {
+          "count": 11,
+          "mean": -0.03465257585517323,
+          "median": -0.03465988556897654,
+          "p10": -0.09415799511493293,
+          "p25": -0.05383892996956839,
+          "p75": -0.017253497367991043,
+          "p90": 0.012646980793007991
+        },
+        "severe_loss_rate_le_neg10": 0.09090909090909091,
+        "super_winner_rate_ge_50": 0.0,
+        "top10_positive_pnl_share": 1.0,
+        "top20_positive_pnl_share": 1.0,
+        "top5_positive_pnl_share": 1.0,
+        "top_winner_rate_ge_20": 0.0,
+        "trade_count": 11,
+        "win_rate": 0.18181818181818182
+      }
+    },
+    "2019": {
+      "baseline_block": "EXTENDED_2018_2021",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2019-01",
+          "mean_return": 0.024920886529398212,
+          "median_return": 0.02028535154450235,
+          "realized_pnl": 7073.624999999985,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2019-02",
+          "mean_return": 0.2741532097236434,
+          "median_return": 0.17285114542914826,
+          "realized_pnl": 247357.27700000003,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 3,
+          "trade_count": 9,
+          "win_rate": 0.8888888888888888
+        },
+        {
+          "cohort": "2019-03",
+          "mean_return": -0.04980115451181381,
+          "median_return": -0.04980115451181381,
+          "realized_pnl": -6040.540000000008,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2019-04",
+          "mean_return": -0.10281187901608312,
+          "median_return": -0.08263371550872833,
+          "realized_pnl": -51333.93300000003,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2019-05",
+          "mean_return": 0.017312502800629674,
+          "median_return": 0.017312502800629674,
+          "realized_pnl": 1950.6960000000254,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2019-07",
+          "mean_return": -0.02028205146137299,
+          "median_return": -0.02028205146137299,
+          "realized_pnl": -4667.582000000009,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2019-08",
+          "mean_return": 0.04620402650053538,
+          "median_return": 0.023068268197008985,
+          "realized_pnl": 63363.625,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 12,
+          "win_rate": 0.6666666666666666
+        },
+        {
+          "cohort": "2019-09",
+          "mean_return": 0.011761216724452014,
+          "median_return": 0.011761216724452014,
+          "realized_pnl": 1383.3719999999994,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2019-10",
+          "mean_return": -0.07600586519851522,
+          "median_return": -0.06111737988225353,
+          "realized_pnl": -39521.47999999996,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2019-11",
+          "mean_return": -0.0393069662132445,
+          "median_return": -0.025399497647661407,
+          "realized_pnl": -43780.461000000025,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 9,
+          "win_rate": 0.2222222222222222
+        },
+        {
+          "cohort": "2019-12",
+          "mean_return": -0.0952547710420711,
+          "median_return": -0.0952547710420711,
+          "realized_pnl": -11635.659000000014,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.08079918510597006,
+          "median_holding_days": 8.0,
+          "median_mae": -0.08921940245352095,
+          "median_mfe": 0.03246659118160833,
+          "median_return": -0.08263371550872833,
+          "realized_pnl": -81930.95900000005,
+          "trade_count": 8,
+          "win_rate": 0.25
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": 0.06770094067218958,
+          "median_holding_days": 11.5,
+          "median_mae": -0.02685297140438908,
+          "median_mfe": 0.060643758178351104,
+          "median_return": 0.00833659803288278,
+          "realized_pnl": 252753.88800000006,
+          "trade_count": 38,
+          "win_rate": 0.5526315789473685
+        },
+        "SET_REMOVAL": {
+          "mean_return": -0.05523238131717684,
+          "median_holding_days": 7.0,
+          "median_mae": -0.05778120184899849,
+          "median_mfe": 0.09399075500770415,
+          "median_return": -0.05523238131717684,
+          "realized_pnl": -6673.989000000007,
+          "trade_count": 1,
+          "win_rate": 0.0
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2019-01",
+          "mean_return": 0.024920886529398212,
+          "median_return": 0.02028535154450235,
+          "realized_pnl": 7073.624999999985,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2019-03",
+          "mean_return": 0.24175777330009768,
+          "median_return": 0.14547990482285028,
+          "realized_pnl": 241316.73700000002,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 3,
+          "trade_count": 10,
+          "win_rate": 0.8
+        },
+        {
+          "cohort": "2019-04",
+          "mean_return": -0.10281187901608312,
+          "median_return": -0.08263371550872833,
+          "realized_pnl": -51333.93300000003,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2019-06",
+          "mean_return": 0.017312502800629674,
+          "median_return": 0.017312502800629674,
+          "realized_pnl": 1950.6960000000254,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2019-07",
+          "mean_return": -0.025130425130425144,
+          "median_return": -0.025130425130425144,
+          "realized_pnl": -2888.8640000000014,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2019-08",
+          "mean_return": -0.013640046954917296,
+          "median_return": -0.01449577424652435,
+          "realized_pnl": -6333.575000000012,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.25
+        },
+        {
+          "cohort": "2019-09",
+          "mean_return": 0.0605336044758225,
+          "median_return": 0.042176903770444016,
+          "realized_pnl": 69301.854,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 10,
+          "win_rate": 0.8
+        },
+        {
+          "cohort": "2019-11",
+          "mean_return": -0.050598935131789334,
+          "median_return": -0.042784687963987426,
+          "realized_pnl": -83301.94099999998,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 13,
+          "win_rate": 0.15384615384615385
+        },
+        {
+          "cohort": "2019-12",
+          "mean_return": -0.0952547710420711,
+          "median_return": -0.0952547710420711,
+          "realized_pnl": -11635.659000000014,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 3.0245901639344264,
+        "average_invested_ratio": 0.3013226459326236,
+        "average_nav": 1151015.0240614752,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 43,
+        "drawdown_window_realized_pnl": 168710.97400000002,
+        "drawdown_window_severe_loss_pnl": -64580.616,
+        "end_nav": 1188183.9209999996,
+        "filled_notional": 12331909.0,
+        "flat_session_fraction": 0.4344262295081967,
+        "full_position_fraction": 0.11885245901639344,
+        "market_entry_permission_fraction": 0.610655737704918,
+        "max_drawdown": -0.10205347070687709,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.09966597782973168,
+        "peak_date": "2019-03-12",
+        "portfolio_return": 0.23490683088052555,
+        "portfolio_return_per_average_invested_ratio": 0.7795857166774357,
+        "portfolio_return_per_turnover": 0.02192533950730199,
+        "sessions": 244,
+        "start_nav": 962164.8300000001,
+        "trough_date": "2019-12-11",
+        "turnover_total_filled_notional_over_average_nav": 10.713942687286208
+      },
+      "trade_metrics": {
+        "average_loser": -0.05965641441759012,
+        "average_winner": 0.14359842736523606,
+        "days_to_mfe_distribution": {
+          "count": 47,
+          "mean": 7.702127659574468,
+          "median": 4.0,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 15.0,
+          "p90": 20.4
+        },
+        "ex_best10_pnl_return": -0.3211000323094329,
+        "ex_best10_portfolio_return": -0.08619320142890735,
+        "ex_best20_pnl_return": -0.3539812445649256,
+        "ex_best20_portfolio_return": -0.11907441368440003,
+        "ex_best5_pnl_return": -0.25868506126959556,
+        "ex_best5_portfolio_return": -0.02377823038907001,
+        "extreme_loss_rate_le_neg20": 0.0,
+        "giveback_distribution": {
+          "count": 47,
+          "mean": 0.06648518256126838,
+          "median": 0.0599933042417707,
+          "p10": 0.008108588842527503,
+          "p25": 0.026011495948958675,
+          "p75": 0.09141575676627857,
+          "p90": 0.14438911069116694
+        },
+        "holding_distribution": {
+          "count": 47,
+          "mean": 13.042553191489361,
+          "median": 11.0,
+          "p10": 2.0,
+          "p25": 4.0,
+          "p75": 22.0,
+          "p90": 25.799999999999997
+        },
+        "mae_distribution": {
+          "count": 47,
+          "mean": -0.04895034610513885,
+          "median": -0.03742640874684611,
+          "p10": -0.09016033432337353,
+          "p25": -0.06930036744648765,
+          "p75": -0.015010910125861698,
+          "p90": -0.005890050755213141
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 47,
+          "mean": -3.731521261965793,
+          "median": -0.09341742754097858,
+          "p10": -6.076172292437999,
+          "p25": -1.8439493885497167,
+          "p75": 0.5221633631110529,
+          "p90": 0.6575489009926894
+        },
+        "mfe_distribution": {
+          "count": 47,
+          "mean": 0.13920343012716835,
+          "median": 0.05977382875605808,
+          "p10": 0.010684756631585081,
+          "p25": 0.031366755963433635,
+          "p75": 0.16727769288662853,
+          "p90": 0.2601775688732209
+        },
+        "mfe_ge_20_rate": 0.1702127659574468,
+        "mfe_ge_50_rate": 0.0425531914893617,
+        "negative_pnl": -178285.64300000007,
+        "payoff_ratio": 2.407091153015979,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 19,
+            "rate": 0.40425531914893614,
+            "realized_pnl": 114960.34700000004
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 3,
+            "rate": 0.06382978723404255,
+            "realized_pnl": -64580.616
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 21,
+            "rate": 0.44680851063829785,
+            "realized_pnl": -113705.02700000006
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 2,
+            "rate": 0.0425531914893617,
+            "realized_pnl": 160154.08500000002
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 2,
+            "rate": 0.0425531914893617,
+            "realized_pnl": 67320.151
+          }
+        },
+        "positive_pnl": 342434.58300000004,
+        "positive_pnl_hhi": 0.1412725215909454,
+        "profit_factor_pnl": 1.9207075636482962,
+        "realized_pnl": 164148.93999999997,
+        "return_distribution": {
+          "count": 47,
+          "mean": 0.03980872092294185,
+          "median": -0.002969718652223035,
+          "p10": -0.08137024254710251,
+          "p25": -0.04934252429836108,
+          "p75": 0.04682880235354259,
+          "p90": 0.17598859298439545
+        },
+        "severe_loss_rate_le_neg10": 0.06382978723404255,
+        "super_winner_rate_ge_50": 0.0425531914893617,
+        "top10_positive_pnl_share": 0.9022194992495838,
+        "top20_positive_pnl_share": 0.9946083745869791,
+        "top5_positive_pnl_share": 0.7268473464901177,
+        "top_winner_rate_ge_20": 0.0851063829787234,
+        "trade_count": 47,
+        "win_rate": 0.48936170212765956
+      }
+    },
+    "2020": {
+      "baseline_block": "EXTENDED_2018_2021",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2019-12",
+          "mean_return": 0.08276302745286329,
+          "median_return": 0.04907723853570242,
+          "realized_pnl": 97540.51200000003,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 2,
+          "trade_count": 10,
+          "win_rate": 0.9
+        },
+        {
+          "cohort": "2020-02",
+          "mean_return": -0.06679247087475854,
+          "median_return": -0.0846413088710964,
+          "realized_pnl": -75983.28799999997,
+          "severe_loss_count_le_neg10": 4,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 9,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2020-04",
+          "mean_return": 0.006024522101692431,
+          "median_return": 0.006024522101692431,
+          "realized_pnl": 686.43299999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2020-05",
+          "mean_return": 0.008889647958044236,
+          "median_return": 0.0011152564249911493,
+          "realized_pnl": 3343.809000000034,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.6666666666666666
+        },
+        {
+          "cohort": "2020-06",
+          "mean_return": 0.10916217791242366,
+          "median_return": 0.040866989406719095,
+          "realized_pnl": 155532.537,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 4,
+          "trade_count": 12,
+          "win_rate": 0.5833333333333334
+        },
+        {
+          "cohort": "2020-07",
+          "mean_return": -0.07313295729694975,
+          "median_return": -0.07313295729694975,
+          "realized_pnl": -9786.848999999987,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2020-08",
+          "mean_return": -0.048754554477539264,
+          "median_return": -0.06959140842286723,
+          "realized_pnl": -52570.44900000001,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 8,
+          "win_rate": 0.125
+        },
+        {
+          "cohort": "2020-09",
+          "mean_return": -0.11179093248761689,
+          "median_return": -0.12937856200406217,
+          "realized_pnl": -74366.24399999999,
+          "severe_loss_count_le_neg10": 4,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2020-10",
+          "mean_return": 0.07353262456138952,
+          "median_return": 0.04287968524981513,
+          "realized_pnl": 88058.42000000001,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 10,
+          "win_rate": 0.7
+        },
+        {
+          "cohort": "2020-11",
+          "mean_return": -0.05028662757682741,
+          "median_return": -0.05028662757682741,
+          "realized_pnl": -12579.385999999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2020-12",
+          "mean_return": 0.003595242033564636,
+          "median_return": -0.003444381705251163,
+          "realized_pnl": 3033.1810000000305,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 13,
+          "win_rate": 0.38461538461538464
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.05117103603741332,
+          "median_holding_days": 9.0,
+          "median_mae": -0.10328865273920224,
+          "median_mfe": 0.05298257309517773,
+          "median_return": -0.08354407175903122,
+          "realized_pnl": -94352.96999999997,
+          "trade_count": 14,
+          "win_rate": 0.21428571428571427
+        },
+        "MARKET_EMERGENCY_X0.96": {
+          "mean_return": 0.08276302745286329,
+          "median_holding_days": 30.0,
+          "median_mae": -0.024181106100166216,
+          "median_mfe": 0.2449032751975746,
+          "median_return": 0.04907723853570242,
+          "realized_pnl": 97540.51200000003,
+          "trade_count": 10,
+          "win_rate": 0.9
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": 0.03341994514393147,
+          "median_holding_days": 6.5,
+          "median_mae": -0.038628397426988814,
+          "median_mfe": 0.06721349756222728,
+          "median_return": -0.0008617196855651207,
+          "realized_pnl": 166423.56400000007,
+          "trade_count": 44,
+          "win_rate": 0.5
+        },
+        "SET_REMOVAL": {
+          "mean_return": -0.058868106235980565,
+          "median_holding_days": 6.5,
+          "median_mae": -0.09931289640591962,
+          "median_mfe": 0.14507145859604886,
+          "median_return": -0.07582903105647563,
+          "realized_pnl": -46702.43000000001,
+          "trade_count": 6,
+          "win_rate": 0.16666666666666666
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2020-02",
+          "mean_return": 0.08276302745286329,
+          "median_return": 0.04907723853570242,
+          "realized_pnl": 97540.51200000003,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 2,
+          "trade_count": 10,
+          "win_rate": 0.9
+        },
+        {
+          "cohort": "2020-03",
+          "mean_return": -0.06679247087475854,
+          "median_return": -0.0846413088710964,
+          "realized_pnl": -75983.28799999997,
+          "severe_loss_count_le_neg10": 4,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 9,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2020-04",
+          "mean_return": 0.006024522101692431,
+          "median_return": 0.006024522101692431,
+          "realized_pnl": 686.43299999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2020-05",
+          "mean_return": 0.008889647958044236,
+          "median_return": 0.0011152564249911493,
+          "realized_pnl": 3343.809000000034,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.6666666666666666
+        },
+        {
+          "cohort": "2020-06",
+          "mean_return": -0.13622779984137268,
+          "median_return": -0.13622779984137268,
+          "realized_pnl": -32923.20500000001,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2020-07",
+          "mean_return": 0.15824017346318292,
+          "median_return": 0.1245962866598754,
+          "realized_pnl": 188455.742,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 4,
+          "trade_count": 10,
+          "win_rate": 0.7
+        },
+        {
+          "cohort": "2020-08",
+          "mean_return": -0.0503798446705358,
+          "median_return": -0.056945615204257935,
+          "realized_pnl": -19916.400999999983,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2020-09",
+          "mean_return": -0.079180411049431,
+          "median_return": -0.0935478793628624,
+          "realized_pnl": -116807.141,
+          "severe_loss_count_le_neg10": 5,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 11,
+          "win_rate": 0.09090909090909091
+        },
+        {
+          "cohort": "2020-11",
+          "mean_return": 0.05289608253835337,
+          "median_return": 0.03309463440100119,
+          "realized_pnl": 75479.03400000001,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 12,
+          "win_rate": 0.5833333333333334
+        },
+        {
+          "cohort": "2020-12",
+          "mean_return": 0.003595242033564636,
+          "median_return": -0.003444381705251163,
+          "realized_pnl": 3033.1810000000305,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 13,
+          "win_rate": 0.38461538461538464
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 3.4074074074074074,
+        "average_invested_ratio": 0.33743762982790926,
+        "average_nav": 1229954.4656707814,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 24,
+        "drawdown_window_realized_pnl": 51732.20000000002,
+        "drawdown_window_severe_loss_pnl": -85329.81800000003,
+        "end_nav": 1250768.2859999998,
+        "filled_notional": 17362435.0,
+        "flat_session_fraction": 0.4444444444444444,
+        "full_position_fraction": 0.16049382716049382,
+        "market_entry_permission_fraction": 0.6419753086419753,
+        "max_drawdown": -0.20762679470782652,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.10097210548547436,
+        "peak_date": "2020-07-13",
+        "portfolio_return": 0.05267228742443164,
+        "portfolio_return_per_average_invested_ratio": 0.1560948832271437,
+        "portfolio_return_per_turnover": 0.003731303537480465,
+        "sessions": 243,
+        "start_nav": 1188183.9209999996,
+        "trough_date": "2020-10-15",
+        "turnover_total_filled_notional_over_average_nav": 14.116323396192584
+      },
+      "trade_metrics": {
+        "average_loser": -0.06989182939166431,
+        "average_winner": 0.1129796018627673,
+        "days_to_mfe_distribution": {
+          "count": 74,
+          "mean": 7.95945945945946,
+          "median": 3.5,
+          "p10": 0.0,
+          "p25": 1.0,
+          "p75": 15.0,
+          "p90": 22.80000000000001
+        },
+        "ex_best10_pnl_return": -0.27467083944826426,
+        "ex_best10_portfolio_return": -0.22199855202383262,
+        "ex_best20_pnl_return": -0.36450530961191163,
+        "ex_best20_portfolio_return": -0.31183302218748,
+        "ex_best5_pnl_return": -0.1727270689097299,
+        "ex_best5_portfolio_return": -0.12005478148529825,
+        "extreme_loss_rate_le_neg20": 0.013513513513513514,
+        "giveback_distribution": {
+          "count": 74,
+          "mean": 0.1168184358526217,
+          "median": 0.09363922922464962,
+          "p10": 0.002949750919295569,
+          "p25": 0.018415935174917623,
+          "p75": 0.18686112888076717,
+          "p90": 0.23987104056329367
+        },
+        "holding_distribution": {
+          "count": 74,
+          "mean": 12.864864864864865,
+          "median": 10.0,
+          "p10": 3.0,
+          "p25": 4.0,
+          "p75": 21.0,
+          "p90": 28.0
+        },
+        "mae_distribution": {
+          "count": 74,
+          "mean": -0.06475658708437641,
+          "median": -0.04643531413621599,
+          "p10": -0.14344590307591312,
+          "p25": -0.10061982352622745,
+          "p75": -0.021986166007905122,
+          "p90": -0.01563905355682743
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 73,
+          "mean": -4.235889036143649,
+          "median": -0.04588184984625751,
+          "p10": -2.7811748908861382,
+          "p25": -1.544682008974739,
+          "p75": 0.3960708641809719,
+          "p90": 0.7669038472887721
+        },
+        "mfe_distribution": {
+          "count": 74,
+          "mean": 0.16180356671430463,
+          "median": 0.09407478054742768,
+          "p10": 0.014493081135642894,
+          "p25": 0.0386880321848479,
+          "p75": 0.23439399273857692,
+          "p90": 0.3873672630420938
+        },
+        "mfe_ge_20_rate": 0.2972972972972973,
+        "mfe_ge_50_rate": 0.05405405405405406,
+        "negative_pnl": -349155.69299999997,
+        "payoff_ratio": 1.6164922687835936,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 1,
+            "rate": 0.013513513513513514,
+            "realized_pnl": -25402.505000000026
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 28,
+            "rate": 0.3783783783783784,
+            "realized_pnl": 208292.41700000016
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 11,
+            "rate": 0.14864864864864866,
+            "realized_pnl": -182032.72000000003
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 27,
+            "rate": 0.36486486486486486,
+            "realized_pnl": -141720.4679999999
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 7,
+            "rate": 0.0945945945945946,
+            "realized_pnl": 263771.95199999993
+          }
+        },
+        "positive_pnl": 472064.3690000001,
+        "positive_pnl_hhi": 0.05982813578961177,
+        "profit_factor_pnl": 1.3520168178956204,
+        "realized_pnl": 122908.67600000015,
+        "return_distribution": {
+          "count": 74,
+          "mean": 0.01660141512056686,
+          "median": -0.003165204690642856,
+          "p10": -0.1186817212480809,
+          "p25": -0.06716054526632148,
+          "p75": 0.06247705002158293,
+          "p90": 0.1829987039856982
+        },
+        "severe_loss_rate_le_neg10": 0.16216216216216217,
+        "super_winner_rate_ge_50": 0.0,
+        "top10_positive_pnl_share": 0.6913452834649333,
+        "top20_positive_pnl_share": 0.9174582460384759,
+        "top5_positive_pnl_share": 0.4347532656081483,
+        "top_winner_rate_ge_20": 0.0945945945945946,
+        "trade_count": 74,
+        "win_rate": 0.47297297297297297
+      }
+    },
+    "2021": {
+      "baseline_block": "EXTENDED_2018_2021",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2020-12",
+          "mean_return": 0.06638236509597391,
+          "median_return": 0.06638236509597391,
+          "realized_pnl": 7851.584000000017,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2021-01",
+          "mean_return": 0.018716945323353815,
+          "median_return": 0.018716945323353815,
+          "realized_pnl": 4680.226999999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2021-02",
+          "mean_return": -0.07312989386423518,
+          "median_return": -0.07312989386423518,
+          "realized_pnl": -9218.896000000008,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2021-03",
+          "mean_return": 0.1498683135046771,
+          "median_return": 0.1498683135046771,
+          "realized_pnl": 18317.219999999998,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2021-04",
+          "mean_return": -0.030181148474207577,
+          "median_return": -0.04716143170793636,
+          "realized_pnl": -55455.35899999998,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 14,
+          "win_rate": 0.2857142857142857
+        },
+        {
+          "cohort": "2021-05",
+          "mean_return": 0.3620963872992046,
+          "median_return": 0.08673254079404996,
+          "realized_pnl": 475395.99079000007,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 4,
+          "trade_count": 10,
+          "win_rate": 0.9
+        },
+        {
+          "cohort": "2021-06",
+          "mean_return": 0.5982207543698203,
+          "median_return": 0.5982207543698203,
+          "realized_pnl": 95109.81899999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2021-07",
+          "mean_return": -0.01722264346777258,
+          "median_return": -0.02606004787405488,
+          "realized_pnl": -14246.447999999975,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.4
+        },
+        {
+          "cohort": "2021-08",
+          "mean_return": 0.09003972211994,
+          "median_return": 0.0313836917996608,
+          "realized_pnl": 63898.19499999997,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 4,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2021-09",
+          "mean_return": -0.04694137694240852,
+          "median_return": -0.04694137694240852,
+          "realized_pnl": -17204.785000000033,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2021-10",
+          "mean_return": -0.14171828171828169,
+          "median_return": -0.14171828171828169,
+          "realized_pnl": -25719.217999999993,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2021-11",
+          "mean_return": -0.051437481450388484,
+          "median_return": -0.061179976319073175,
+          "realized_pnl": -118174.90500000012,
+          "severe_loss_count_le_neg10": 3,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 13,
+          "win_rate": 0.15384615384615385
+        },
+        {
+          "cohort": "2021-12",
+          "mean_return": -0.02241344215341157,
+          "median_return": -0.021275513836203037,
+          "realized_pnl": -26232.144,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 7,
+          "win_rate": 0.2857142857142857
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.03962160081035415,
+          "median_holding_days": 9.0,
+          "median_mae": -0.07915993537964461,
+          "median_mfe": 0.06515058389674233,
+          "median_return": -0.05628757809228608,
+          "realized_pnl": -106365.4832099999,
+          "trade_count": 17,
+          "win_rate": 0.29411764705882354
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": 0.08585852709979937,
+          "median_holding_days": 7.0,
+          "median_mae": -0.05263157894736836,
+          "median_mfe": 0.05215419501133778,
+          "median_return": 0.0016666320215891432,
+          "realized_pnl": 505366.7639999998,
+          "trade_count": 45,
+          "win_rate": 0.5111111111111111
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2021-02",
+          "mean_return": 0.007671590469611589,
+          "median_return": 0.018716945323353815,
+          "realized_pnl": 3312.915000000008,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.75
+        },
+        {
+          "cohort": "2021-04",
+          "mean_return": -0.009387426234229109,
+          "median_return": -0.03803528532358664,
+          "realized_pnl": -9687.95199999998,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 7,
+          "win_rate": 0.2857142857142857
+        },
+        {
+          "cohort": "2021-05",
+          "mean_return": -0.02586947268682815,
+          "median_return": -0.05138534174642114,
+          "realized_pnl": -27450.187000000005,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 8,
+          "win_rate": 0.375
+        },
+        {
+          "cohort": "2021-07",
+          "mean_return": 0.25831696312643776,
+          "median_return": 0.06223341513648624,
+          "realized_pnl": 556259.3617900001,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 5,
+          "trade_count": 16,
+          "win_rate": 0.75
+        },
+        {
+          "cohort": "2021-08",
+          "mean_return": 0.09003972211994,
+          "median_return": 0.0313836917996608,
+          "realized_pnl": 63898.19499999997,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 4,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2021-09",
+          "mean_return": -0.04694137694240852,
+          "median_return": -0.04694137694240852,
+          "realized_pnl": -17204.785000000033,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2021-10",
+          "mean_return": -0.14171828171828169,
+          "median_return": -0.14171828171828169,
+          "realized_pnl": -25719.217999999993,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2021-11",
+          "mean_return": -0.09225104900261526,
+          "median_return": -0.07846765240615898,
+          "realized_pnl": -50912.399000000005,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2021-12",
+          "mean_return": -0.032284012171828566,
+          "median_return": -0.04880293685134832,
+          "realized_pnl": -93494.65000000011,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 17,
+          "win_rate": 0.23529411764705882
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 3.292181069958848,
+        "average_invested_ratio": 0.3282503249564327,
+        "average_nav": 1523474.1875760902,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 37,
+        "drawdown_window_realized_pnl": 388931.6709999998,
+        "drawdown_window_severe_loss_pnl": -98287.67499999999,
+        "end_nav": 1648223.7267899993,
+        "filled_notional": 19369164.8,
+        "flat_session_fraction": 0.3497942386831276,
+        "full_position_fraction": 0.16049382716049382,
+        "market_entry_permission_fraction": 0.6255144032921811,
+        "max_drawdown": -0.11731685902673672,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.10420175193671659,
+        "peak_date": "2021-07-22",
+        "portfolio_return": 0.31776904262665284,
+        "portfolio_return_per_average_invested_ratio": 0.9680692400497365,
+        "portfolio_return_per_turnover": 0.02499400149935592,
+        "sessions": 243,
+        "start_nav": 1250768.2859999998,
+        "trough_date": "2021-12-21",
+        "turnover_total_filled_notional_over_average_nav": 12.713812257506728
+      },
+      "trade_metrics": {
+        "average_loser": -0.06291249397058439,
+        "average_winner": 0.19032468931124358,
+        "days_to_mfe_distribution": {
+          "count": 62,
+          "mean": 7.338709677419355,
+          "median": 2.0,
+          "p10": 0.0,
+          "p25": 0.25,
+          "p75": 9.5,
+          "p90": 23.599999999999994
+        },
+        "ex_best10_pnl_return": -0.5237511514582807,
+        "ex_best10_portfolio_return": -0.20598210883162782,
+        "ex_best20_pnl_return": -0.5815657599668306,
+        "ex_best20_portfolio_return": -0.26379671734017773,
+        "ex_best5_pnl_return": -0.42103000363410237,
+        "ex_best5_portfolio_return": -0.10326096100744953,
+        "extreme_loss_rate_le_neg20": 0.0,
+        "giveback_distribution": {
+          "count": 62,
+          "mean": 0.09115508960887517,
+          "median": 0.06428017314380952,
+          "p10": 0.002669168002192646,
+          "p25": 0.029401041880568926,
+          "p75": 0.11729962240844315,
+          "p90": 0.16916505459322853
+        },
+        "holding_distribution": {
+          "count": 62,
+          "mean": 12.919354838709678,
+          "median": 8.5,
+          "p10": 3.1000000000000005,
+          "p25": 4.25,
+          "p75": 16.0,
+          "p90": 36.599999999999994
+        },
+        "mae_distribution": {
+          "count": 62,
+          "mean": -0.06041803123312733,
+          "median": -0.05522506268774924,
+          "p10": -0.10956485031033239,
+          "p25": -0.08114604018222168,
+          "p75": -0.027054156096985388,
+          "p90": -0.008809556588573634
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 61,
+          "mean": -2.307612788644189,
+          "median": -0.15576128019906288,
+          "p10": -5.463821892393386,
+          "p25": -1.868663251641968,
+          "p75": 0.3579589183854595,
+          "p90": 0.7211074462777067
+        },
+        "mfe_distribution": {
+          "count": 62,
+          "mean": 0.17902450167486256,
+          "median": 0.06104606012929514,
+          "p10": 0.009315882246804198,
+          "p25": 0.026272696060071044,
+          "p75": 0.14760556915544681,
+          "p90": 0.36108978826051996
+        },
+        "mfe_ge_20_rate": 0.20967741935483872,
+        "mfe_ge_50_rate": 0.08064516129032258,
+        "negative_pnl": -344594.97100000014,
+        "payoff_ratio": 3.02522881067523,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 22,
+            "rate": 0.3548387096774194,
+            "realized_pnl": 167331.0327900001
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 6,
+            "rate": 0.0967741935483871,
+            "realized_pnl": -129740.46600000001
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 28,
+            "rate": 0.45161290322580644,
+            "realized_pnl": -214854.50500000015
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 5,
+            "rate": 0.08064516129032258,
+            "realized_pnl": 526610.9759999999
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 1,
+            "rate": 0.016129032258064516,
+            "realized_pnl": 49654.24299999998
+          }
+        },
+        "positive_pnl": 743596.25179,
+        "positive_pnl_hhi": 0.11895996304754325,
+        "profit_factor_pnl": 2.1578848049700636,
+        "realized_pnl": 399001.2807899999,
+        "return_distribution": {
+          "count": 62,
+          "mean": 0.051452685576047597,
+          "median": -0.009992365398249037,
+          "p10": -0.09431361564693785,
+          "p25": -0.05837907553868218,
+          "p75": 0.04207681475546106,
+          "p90": 0.1782740499791779
+        },
+        "severe_loss_rate_le_neg10": 0.0967741935483871,
+        "super_winner_rate_ge_50": 0.08064516129032258,
+        "top10_positive_pnl_share": 0.8809771813979035,
+        "top20_positive_pnl_share": 0.9782244155198178,
+        "top5_positive_pnl_share": 0.7081947693151105,
+        "top_winner_rate_ge_20": 0.0967741935483871,
+        "trade_count": 62,
+        "win_rate": 0.45161290322580644
+      }
+    },
+    "2022": {
+      "baseline_block": "HOLDOUT_O0_2022_2023",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2022-05",
+          "mean_return": -0.03317514743289428,
+          "median_return": -0.03317514743289428,
+          "realized_pnl": -6470.792999999991,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.5
+        },
+        {
+          "cohort": "2022-06",
+          "mean_return": -0.03765856333008979,
+          "median_return": -0.046305849323090564,
+          "realized_pnl": -28127.75056999999,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 7,
+          "win_rate": 0.14285714285714285
+        },
+        {
+          "cohort": "2022-07",
+          "mean_return": -0.04801529234819671,
+          "median_return": -0.0511826974306892,
+          "realized_pnl": -52264.74899999996,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 11,
+          "win_rate": 0.18181818181818182
+        },
+        {
+          "cohort": "2022-08",
+          "mean_return": -0.06888744730640302,
+          "median_return": -0.06918333265124647,
+          "realized_pnl": -75734.71000000005,
+          "severe_loss_count_le_neg10": 3,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 12,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2022-10",
+          "mean_return": 0.026213399577087616,
+          "median_return": 0.026213399577087616,
+          "realized_pnl": 2074.6349999999948,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2022-11",
+          "mean_return": -0.04654825133172533,
+          "median_return": -0.04654825133172533,
+          "realized_pnl": -7654.728000000017,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2022-12",
+          "mean_return": -0.028627524876938128,
+          "median_return": -0.028627524876938128,
+          "realized_pnl": -4735.580000000002,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.07774487854651366,
+          "median_holding_days": 8.0,
+          "median_mae": -0.08994464944649438,
+          "median_mfe": 0.016143911439114422,
+          "median_return": -0.08986869183161435,
+          "realized_pnl": -71203.08099999998,
+          "trade_count": 9,
+          "win_rate": 0.1111111111111111
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": -0.03961471670017976,
+          "median_holding_days": 5.5,
+          "median_mae": -0.06778160293243518,
+          "median_mfe": 0.04098060775689716,
+          "median_return": -0.04932438863898756,
+          "realized_pnl": -101710.59457000003,
+          "trade_count": 28,
+          "win_rate": 0.14285714285714285
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2022-06",
+          "mean_return": -0.10760050160511861,
+          "median_return": -0.10760050160511861,
+          "realized_pnl": -22310.104000000007,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2022-07",
+          "mean_return": -0.03571819171090798,
+          "median_return": -0.0479138779939271,
+          "realized_pnl": -64553.18856999993,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 18,
+          "win_rate": 0.2222222222222222
+        },
+        {
+          "cohort": "2022-08",
+          "mean_return": -0.06888744730640302,
+          "median_return": -0.06918333265124647,
+          "realized_pnl": -75734.71000000005,
+          "severe_loss_count_le_neg10": 3,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 12,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2022-11",
+          "mean_return": -0.022294367695454346,
+          "median_return": -0.033410523902327266,
+          "realized_pnl": -5580.093000000023,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2022-12",
+          "mean_return": -0.028627524876938128,
+          "median_return": -0.028627524876938128,
+          "realized_pnl": -4735.580000000002,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 1.0867768595041323,
+        "average_invested_ratio": 0.10744679010178616,
+        "average_nav": 928562.9181836774,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 33,
+        "drawdown_window_realized_pnl": -145867.99157,
+        "drawdown_window_severe_loss_pnl": -49205.28899999999,
+        "end_nav": 827086.3244299993,
+        "filled_notional": 6756665.76,
+        "flat_session_fraction": 0.6942148760330579,
+        "full_position_fraction": 0.02066115702479339,
+        "market_entry_permission_fraction": 0.43388429752066116,
+        "max_drawdown": -0.17960903025081754,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.0,
+        "peak_date": "2022-06-30",
+        "portfolio_return": -0.1729136755700007,
+        "portfolio_return_per_average_invested_ratio": -1.609295870134386,
+        "portfolio_return_per_turnover": -0.023763381656627263,
+        "sessions": 242,
+        "start_nav": 1000000.0,
+        "trough_date": "2022-12-06",
+        "turnover_total_filled_notional_over_average_nav": 7.27647596914211
+      },
+      "trade_metrics": {
+        "average_loser": -0.06428401991392971,
+        "average_winner": 0.04963453254441884,
+        "days_to_mfe_distribution": {
+          "count": 37,
+          "mean": 1.837837837837838,
+          "median": 0.0,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 2.0,
+          "p90": 4.399999999999999
+        },
+        "ex_best10_pnl_return": -0.014462285430000001,
+        "ex_best10_portfolio_return": -0.1873759610000007,
+        "ex_best20_pnl_return": 0.02456858857,
+        "ex_best20_portfolio_return": -0.1483450870000007,
+        "ex_best5_pnl_return": -0.023549996430000032,
+        "ex_best5_portfolio_return": -0.19646367200000073,
+        "extreme_loss_rate_le_neg20": 0.0,
+        "giveback_distribution": {
+          "count": 37,
+          "mean": 0.06225315309779253,
+          "median": 0.05764437944406542,
+          "p10": 0.020692132459236044,
+          "p25": 0.03367441806748187,
+          "p75": 0.08786315854919689,
+          "p90": 0.10261495607161436
+        },
+        "holding_distribution": {
+          "count": 37,
+          "mean": 7.108108108108108,
+          "median": 6.0,
+          "p10": 2.6,
+          "p25": 3.0,
+          "p75": 8.0,
+          "p90": 10.0
+        },
+        "mae_distribution": {
+          "count": 37,
+          "mean": -0.07429814214783632,
+          "median": -0.06950934579439261,
+          "p10": -0.12672163080407703,
+          "p25": -0.09514747859181727,
+          "p75": -0.042887029288702916,
+          "p90": -0.035399548532731355
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 36,
+          "mean": -14.510095325877346,
+          "median": -1.737079587079585,
+          "p10": -72.6578321945607,
+          "p25": -5.946558844654183,
+          "p75": -0.38893403914979935,
+          "p90": 0.09508356596589963
+        },
+        "mfe_distribution": {
+          "count": 37,
+          "mean": 0.047277366092690516,
+          "median": 0.03347280334728042,
+          "p10": 0.0012814908152682049,
+          "p25": 0.010426249616682037,
+          "p75": 0.06997742663656892,
+          "p90": 0.10166531565897387
+        },
+        "mfe_ge_20_rate": 0.02702702702702703,
+        "mfe_ge_50_rate": 0.0,
+        "negative_pnl": -196463.67200000005,
+        "payoff_ratio": 0.7721130789716455,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 5,
+            "rate": 0.13513513513513514,
+            "realized_pnl": 23549.996430000032
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 5,
+            "rate": 0.13513513513513514,
+            "realized_pnl": -61791.681
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 27,
+            "rate": 0.7297297297297297,
+            "realized_pnl": -134671.99100000004
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          }
+        },
+        "positive_pnl": 23549.996430000032,
+        "positive_pnl_hhi": 0.35326682490209316,
+        "profit_factor_pnl": 0.1198694709829104,
+        "realized_pnl": -172913.67557000002,
+        "return_distribution": {
+          "count": 37,
+          "mean": -0.048889620933071795,
+          "median": -0.0511826974306892,
+          "p10": -0.11086021186091634,
+          "p25": -0.08015939438924949,
+          "p75": -0.026553807366448568,
+          "p90": 0.01070151638713362
+        },
+        "severe_loss_rate_le_neg10": 0.13513513513513514,
+        "super_winner_rate_ge_50": 0.0,
+        "top10_positive_pnl_share": 1.0,
+        "top20_positive_pnl_share": 1.0,
+        "top5_positive_pnl_share": 1.0,
+        "top_winner_rate_ge_20": 0.0,
+        "trade_count": 37,
+        "win_rate": 0.13513513513513514
+      }
+    },
+    "2023": {
+      "baseline_block": "HOLDOUT_O0_2022_2023",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2023-01",
+          "mean_return": 0.047135341151863595,
+          "median_return": 0.024547605134456023,
+          "realized_pnl": 40055.379,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 10,
+          "win_rate": 0.6
+        },
+        {
+          "cohort": "2023-02",
+          "mean_return": -0.054477932879991996,
+          "median_return": -0.053987983914049034,
+          "realized_pnl": -14053.872999999992,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2023-03",
+          "mean_return": 0.03925167467324313,
+          "median_return": -0.034201700362119856,
+          "realized_pnl": 30798.631000000016,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 2,
+          "trade_count": 10,
+          "win_rate": 0.2
+        },
+        {
+          "cohort": "2023-04",
+          "mean_return": -0.03928247594324544,
+          "median_return": -0.03928247594324544,
+          "realized_pnl": -6915.139999999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.5
+        },
+        {
+          "cohort": "2023-05",
+          "mean_return": -0.030796801403199504,
+          "median_return": -0.030796801403199504,
+          "realized_pnl": -5324.641000000003,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2023-06",
+          "mean_return": -0.05083216844983547,
+          "median_return": -0.0852100099791572,
+          "realized_pnl": -22376.459000000003,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.2
+        },
+        {
+          "cohort": "2023-07",
+          "mean_return": -0.023816715205539456,
+          "median_return": -0.024522592925033525,
+          "realized_pnl": -14236.746,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 7,
+          "win_rate": 0.14285714285714285
+        },
+        {
+          "cohort": "2023-08",
+          "mean_return": -0.00638083699592772,
+          "median_return": -0.007368854237738799,
+          "realized_pnl": -1662.1700000000128,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2023-10",
+          "mean_return": -0.022667383724345107,
+          "median_return": -0.019506808980493118,
+          "realized_pnl": -9404.66899999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.2
+        },
+        {
+          "cohort": "2023-11",
+          "mean_return": 0.024609519973446455,
+          "median_return": 0.005383290744874961,
+          "realized_pnl": 20812.78900000002,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 10,
+          "win_rate": 0.6
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.05122751263570273,
+          "median_holding_days": 17.0,
+          "median_mae": -0.06477272727272732,
+          "median_mfe": 0.06732544250190031,
+          "median_return": -0.05424615225412035,
+          "realized_pnl": -57939.92400000001,
+          "trade_count": 13,
+          "win_rate": 0.07692307692307693
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": 0.020885758877712254,
+          "median_holding_days": 5.0,
+          "median_mae": -0.03671034674432011,
+          "median_mfe": 0.03021248602823212,
+          "median_return": -0.013048168154317684,
+          "realized_pnl": 75633.02500000004,
+          "trade_count": 44,
+          "win_rate": 0.4090909090909091
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2023-02",
+          "mean_return": 0.02368612406758923,
+          "median_return": -0.026362659614377195,
+          "realized_pnl": 26001.50600000001,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 13,
+          "win_rate": 0.46153846153846156
+        },
+        {
+          "cohort": "2023-04",
+          "mean_return": 0.026162649570495033,
+          "median_return": -0.034201700362119856,
+          "realized_pnl": 23883.491000000016,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 2,
+          "trade_count": 12,
+          "win_rate": 0.25
+        },
+        {
+          "cohort": "2023-05",
+          "mean_return": -0.009729194426122892,
+          "median_return": -0.009729194426122892,
+          "realized_pnl": -788.2489999999962,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2023-06",
+          "mean_return": -0.033656017473773905,
+          "median_return": -0.03756355585673486,
+          "realized_pnl": -11699.041000000012,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.25
+        },
+        {
+          "cohort": "2023-07",
+          "mean_return": -0.04329961015642388,
+          "median_return": -0.037295106482872105,
+          "realized_pnl": -26542.34299999998,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 7,
+          "win_rate": 0.14285714285714285
+        },
+        {
+          "cohort": "2023-08",
+          "mean_return": -0.010832685413190001,
+          "median_return": -0.01597629610186976,
+          "realized_pnl": -4570.383000000031,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.2
+        },
+        {
+          "cohort": "2023-10",
+          "mean_return": -0.010056059015578002,
+          "median_return": -0.013754570037292507,
+          "realized_pnl": -2530.325000000008,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 0.3333333333333333
+        },
+        {
+          "cohort": "2023-11",
+          "mean_return": 0.013577204846622752,
+          "median_return": -0.0021097533949051227,
+          "realized_pnl": 13938.445000000036,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 12,
+          "win_rate": 0.5
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 2.512396694214876,
+        "average_invested_ratio": 0.2492621920367773,
+        "average_nav": 852241.2010333053,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 34,
+        "drawdown_window_realized_pnl": -33406.41200000002,
+        "drawdown_window_severe_loss_pnl": 0,
+        "end_nav": 844779.4254299996,
+        "filled_notional": 9781899.0,
+        "flat_session_fraction": 0.5867768595041323,
+        "full_position_fraction": 0.16115702479338842,
+        "market_entry_permission_fraction": 0.4049586776859504,
+        "max_drawdown": -0.15071167723949774,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.0,
+        "peak_date": "2023-04-12",
+        "portfolio_return": 0.021392085054959376,
+        "portfolio_return_per_average_invested_ratio": 0.0858216197176148,
+        "portfolio_return_per_turnover": 0.0018637706502433933,
+        "sessions": 242,
+        "start_nav": 827086.3244299993,
+        "trough_date": "2023-11-24",
+        "turnover_total_filled_notional_over_average_nav": 11.477852734812485
+      },
+      "trade_metrics": {
+        "average_loser": -0.04298494769576509,
+        "average_winner": 0.09928651256811984,
+        "days_to_mfe_distribution": {
+          "count": 57,
+          "mean": 4.12280701754386,
+          "median": 1.0,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 7.0,
+          "p90": 12.399999999999999
+        },
+        "ex_best10_pnl_return": -0.18141339974809254,
+        "ex_best10_portfolio_return": -0.16002131469313316,
+        "ex_best20_pnl_return": -0.19215574155397736,
+        "ex_best20_portfolio_return": -0.17076365649901798,
+        "ex_best5_pnl_return": -0.14778211099577293,
+        "ex_best5_portfolio_return": -0.12639002594081356,
+        "extreme_loss_rate_le_neg20": 0.0,
+        "giveback_distribution": {
+          "count": 57,
+          "mean": 0.061923138086460536,
+          "median": 0.05754139549968898,
+          "p10": 0.00337163379515632,
+          "p25": 0.019741848240006354,
+          "p75": 0.09411121466172662,
+          "p90": 0.14832895834942608
+        },
+        "holding_distribution": {
+          "count": 57,
+          "mean": 10.666666666666666,
+          "median": 12.0,
+          "p10": 2.0,
+          "p25": 3.0,
+          "p75": 16.0,
+          "p90": 20.0
+        },
+        "mae_distribution": {
+          "count": 57,
+          "mean": -0.0463394071972317,
+          "median": -0.04185920086980155,
+          "p10": -0.08160828097509658,
+          "p25": -0.06477272727272732,
+          "p75": -0.02615028136378683,
+          "p90": -0.013860828859621345
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 56,
+          "mean": -2.5902608677785826,
+          "median": -0.43899156728854916,
+          "p10": -7.039039103376563,
+          "p25": -1.8956500647263768,
+          "p75": 0.2110964063917949,
+          "p90": 0.5021618441327858
+        },
+        "mfe_distribution": {
+          "count": 57,
+          "mean": 0.09809669632314083,
+          "median": 0.04865938430983108,
+          "p10": 0.006040429178503405,
+          "p25": 0.012499999999999956,
+          "p75": 0.125810635538262,
+          "p90": 0.2585552985378026
+        },
+        "mfe_ge_20_rate": 0.15789473684210525,
+        "mfe_ge_50_rate": 0.05263157894736842,
+        "negative_pnl": -141734.987,
+        "payoff_ratio": 2.3097972171756678,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 15,
+            "rate": 0.2631578947368421,
+            "realized_pnl": 50586.48500000002
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 1,
+            "rate": 0.017543859649122806,
+            "realized_pnl": -8517.87599999999
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 37,
+            "rate": 0.6491228070175439,
+            "realized_pnl": -133217.111
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 4,
+            "rate": 0.07017543859649122,
+            "realized_pnl": 108841.60300000002
+          }
+        },
+        "positive_pnl": 159428.08800000005,
+        "positive_pnl_hhi": 0.13378081491120983,
+        "profit_factor_pnl": 1.1248322758868285,
+        "realized_pnl": 17693.101000000053,
+        "return_distribution": {
+          "count": 57,
+          "mean": 0.004438872392196555,
+          "median": -0.020964993123327523,
+          "p10": -0.07787562815048037,
+          "p25": -0.04791546481687322,
+          "p75": 0.011101285916708357,
+          "p90": 0.09710927371870531
+        },
+        "severe_loss_rate_le_neg10": 0.017543859649122806,
+        "super_winner_rate_ge_50": 0.0,
+        "top10_positive_pnl_share": 0.9411424541452192,
+        "top20_positive_pnl_share": 1.0,
+        "top5_positive_pnl_share": 0.7666689385373547,
+        "top_winner_rate_ge_20": 0.07017543859649122,
+        "trade_count": 57,
+        "win_rate": 0.3333333333333333
+      }
+    },
+    "2024": {
+      "baseline_block": "DEVELOPMENT_2024_2025",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2024-03",
+          "mean_return": -0.03333474519551494,
+          "median_return": -0.03333474519551494,
+          "realized_pnl": -6166.845000000016,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2024-04",
+          "mean_return": 0.0002782265809278536,
+          "median_return": -0.012575144328340565,
+          "realized_pnl": -489.24624999998014,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 5,
+          "win_rate": 0.2
+        },
+        {
+          "cohort": "2024-05",
+          "mean_return": -0.048248887975226216,
+          "median_return": -0.05552016451167633,
+          "realized_pnl": -30013.27900000002,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 6,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2024-08",
+          "mean_return": -0.05022858182709481,
+          "median_return": -0.05022858182709481,
+          "realized_pnl": -4841.949999999997,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2024-09",
+          "mean_return": 0.71963971877627,
+          "median_return": 0.5269876881028801,
+          "realized_pnl": 706394.406,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 9,
+          "trade_count": 10,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2024-12",
+          "mean_return": -0.07496473783732553,
+          "median_return": -0.07960293284875833,
+          "realized_pnl": -174388.89800000007,
+          "severe_loss_count_le_neg10": 5,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 14,
+          "win_rate": 0.07142857142857142
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.040894356171339005,
+          "median_holding_days": 7.0,
+          "median_mae": -0.07906437806467342,
+          "median_mfe": 0.011994569757727613,
+          "median_return": -0.07776735436532094,
+          "realized_pnl": -18602.420000000042,
+          "trade_count": 4,
+          "win_rate": 0.25
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": 0.173690235751784,
+          "median_holding_days": 12.0,
+          "median_mae": -0.055492713401324945,
+          "median_mfe": 0.06611339568886743,
+          "median_return": -0.014536210318468763,
+          "realized_pnl": 509096.6077499999,
+          "trade_count": 34,
+          "win_rate": 0.3235294117647059
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2024-03",
+          "mean_return": -0.03333474519551494,
+          "median_return": -0.03333474519551494,
+          "realized_pnl": -6166.845000000016,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2024-05",
+          "mean_return": -0.02619110863151982,
+          "median_return": -0.05231059324415922,
+          "realized_pnl": -30502.525250000002,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 11,
+          "win_rate": 0.09090909090909091
+        },
+        {
+          "cohort": "2024-09",
+          "mean_return": -0.05022858182709481,
+          "median_return": -0.05022858182709481,
+          "realized_pnl": -4841.949999999997,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2024-10",
+          "mean_return": 0.10813263344043093,
+          "median_return": 0.10813263344043093,
+          "realized_pnl": 9969.623999999996,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2024-11",
+          "mean_return": 0.7875849504802521,
+          "median_return": 0.5362502665873453,
+          "realized_pnl": 696424.782,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 9,
+          "trade_count": 9,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2024-12",
+          "mean_return": -0.07496473783732553,
+          "median_return": -0.07960293284875833,
+          "realized_pnl": -174388.89800000007,
+          "severe_loss_count_le_neg10": 5,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 14,
+          "win_rate": 0.07142857142857142
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 2.3636363636363638,
+        "average_invested_ratio": 0.23588404552500603,
+        "average_nav": 1141147.9765247933,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 23,
+        "drawdown_window_realized_pnl": 522035.8839999999,
+        "drawdown_window_severe_loss_pnl": -113606.791,
+        "end_nav": 1490494.1877500005,
+        "filled_notional": 9972549.0,
+        "flat_session_fraction": 0.6735537190082644,
+        "full_position_fraction": 0.128099173553719,
+        "market_entry_permission_fraction": 0.3884297520661157,
+        "max_drawdown": -0.23542285793100215,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.0,
+        "peak_date": "2024-11-07",
+        "portfolio_return": 0.4904941877500004,
+        "portfolio_return_per_average_invested_ratio": 2.079386872725155,
+        "portfolio_return_per_turnover": 0.05612671843959704,
+        "sessions": 242,
+        "start_nav": 1000000.0,
+        "trough_date": "2024-12-25",
+        "turnover_total_filled_notional_over_average_nav": 8.739049803488243
+      },
+      "trade_metrics": {
+        "average_loser": -0.06412272367638233,
+        "average_winner": 0.6174234505384367,
+        "days_to_mfe_distribution": {
+          "count": 38,
+          "mean": 6.078947368421052,
+          "median": 2.0,
+          "p10": 0.0,
+          "p25": 0.0,
+          "p75": 6.0,
+          "p90": 25.300000000000004
+        },
+        "ex_best10_pnl_return": -0.7181717397499999,
+        "ex_best10_portfolio_return": -0.2276775519999995,
+        "ex_best20_pnl_return": -0.7196738257499999,
+        "ex_best20_portfolio_return": -0.22917963799999952,
+        "ex_best5_pnl_return": -0.564832994,
+        "ex_best5_portfolio_return": -0.07433880624999956,
+        "extreme_loss_rate_le_neg20": 0.0,
+        "giveback_distribution": {
+          "count": 38,
+          "mean": 0.18346968697443936,
+          "median": 0.09685058778143493,
+          "p10": 0.025695658600483024,
+          "p25": 0.06287463867394777,
+          "p75": 0.2823275874483805,
+          "p90": 0.4047563672858977
+        },
+        "holding_distribution": {
+          "count": 38,
+          "mean": 15.052631578947368,
+          "median": 11.5,
+          "p10": 2.0,
+          "p25": 7.0,
+          "p75": 20.0,
+          "p90": 34.0
+        },
+        "mae_distribution": {
+          "count": 38,
+          "mean": -0.060046189244483496,
+          "median": -0.055492713401324945,
+          "p10": -0.13587390108826153,
+          "p25": -0.09510606060606058,
+          "p75": -0.010347860940005005,
+          "p90": -0.004447204589727337
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 38,
+          "mean": -2.1725666139975277,
+          "median": -0.4292027435080687,
+          "p10": -7.028076954824818,
+          "p25": -3.4533217668323717,
+          "p75": 0.3201788736341223,
+          "p90": 0.5486805896273353
+        },
+        "mfe_distribution": {
+          "count": 38,
+          "mean": 0.39789670750304706,
+          "median": 0.06365811840800872,
+          "p10": 0.009275666644087677,
+          "p25": 0.02885413204121806,
+          "p75": 0.5485034364214063,
+          "p90": 1.1816325507979883
+        },
+        "mfe_ge_20_rate": 0.2894736842105263,
+        "mfe_ge_50_rate": 0.2894736842105263,
+        "negative_pnl": -238964.83300000007,
+        "payoff_ratio": 9.628777680350561,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 0,
+            "rate": 0.0,
+            "realized_pnl": 0
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 2,
+            "rate": 0.05263157894736842,
+            "realized_pnl": 11287.280999999974
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 7,
+            "rate": 0.18421052631578946,
+            "realized_pnl": -137587.404
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 19,
+            "rate": 0.5,
+            "realized_pnl": -101377.42900000008
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 6,
+            "rate": 0.15789473684210525,
+            "realized_pnl": 614377.009
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 4,
+            "rate": 0.10526315789473684,
+            "realized_pnl": 103794.73074999997
+          }
+        },
+        "positive_pnl": 729459.0207499999,
+        "positive_pnl_hhi": 0.15943014391828847,
+        "profit_factor_pnl": 3.0525789572978703,
+        "realized_pnl": 490494.1877499998,
+        "return_distribution": {
+          "count": 38,
+          "mean": 0.15110238397040263,
+          "median": -0.02620211325063075,
+          "p10": -0.1106595453440521,
+          "p25": -0.07539977802989674,
+          "p75": 0.17991434872698958,
+          "p90": 0.6410690137420961
+        },
+        "severe_loss_rate_le_neg10": 0.18421052631578946,
+        "super_winner_rate_ge_50": 0.15789473684210525,
+        "top10_positive_pnl_share": 0.9845265043286533,
+        "top20_positive_pnl_share": 1.0,
+        "top5_positive_pnl_share": 0.774317649015104,
+        "top_winner_rate_ge_20": 0.2631578947368421,
+        "trade_count": 38,
+        "win_rate": 0.3157894736842105
+      }
+    },
+    "2025": {
+      "baseline_block": "DEVELOPMENT_2024_2025",
+      "entry_month_cohorts": [
+        {
+          "cohort": "2025-01",
+          "mean_return": 0.13387577570596276,
+          "median_return": 0.13387577570596276,
+          "realized_pnl": 20133.073999999982,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2025-02",
+          "mean_return": 0.03899356268821565,
+          "median_return": 0.006906763733088701,
+          "realized_pnl": 57137.40000000009,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 10,
+          "win_rate": 0.5
+        },
+        {
+          "cohort": "2025-03",
+          "mean_return": -0.05442788561759819,
+          "median_return": -0.05994424538490668,
+          "realized_pnl": -34094.34400000001,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.25
+        },
+        {
+          "cohort": "2025-04",
+          "mean_return": 0.018718028292328055,
+          "median_return": 0.018718028292328055,
+          "realized_pnl": 2841.5400000000045,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 1,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2025-05",
+          "mean_return": -0.07463462484922968,
+          "median_return": -0.06106117333993417,
+          "realized_pnl": -60236.59799999995,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2025-06",
+          "mean_return": 0.03760542755416247,
+          "median_return": -0.032818471361718574,
+          "realized_pnl": 130748.4883000001,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 3,
+          "trade_count": 21,
+          "win_rate": 0.42857142857142855
+        },
+        {
+          "cohort": "2025-07",
+          "mean_return": 0.06365521538336444,
+          "median_return": 0.027682230986636996,
+          "realized_pnl": 47979.076000000015,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.8
+        },
+        {
+          "cohort": "2025-08",
+          "mean_return": 0.05046944973121108,
+          "median_return": 0.0624912347879587,
+          "realized_pnl": 42138.91500000003,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 5,
+          "win_rate": 0.6
+        },
+        {
+          "cohort": "2025-09",
+          "mean_return": 0.006781229044449305,
+          "median_return": 0.009705462770841444,
+          "realized_pnl": 6939.8539999999475,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 8,
+          "win_rate": 0.5
+        },
+        {
+          "cohort": "2025-10",
+          "mean_return": 0.07873690168527075,
+          "median_return": 0.07479767769612566,
+          "realized_pnl": 40273.87899999999,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2025-11",
+          "mean_return": 0.15679380020772643,
+          "median_return": 0.017133655061597416,
+          "realized_pnl": 199152.8479999999,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 2,
+          "trade_count": 8,
+          "win_rate": 0.625
+        },
+        {
+          "cohort": "2025-12",
+          "mean_return": -0.008516984222073514,
+          "median_return": -0.008516984222073514,
+          "realized_pnl": -4355.719000000012,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.5
+        }
+      ],
+      "exit_lineage": {
+        "INDIVIDUAL_MA30_X2_AND_SET_REMOVAL": {
+          "mean_return": -0.014036433742536212,
+          "median_holding_days": 17.5,
+          "median_mae": -0.06058965368220487,
+          "median_mfe": 0.06651005346350525,
+          "median_return": -0.05050812786470027,
+          "realized_pnl": -93221.9739999998,
+          "trade_count": 30,
+          "win_rate": 0.36666666666666664
+        },
+        "MARKET_MA20_X2": {
+          "mean_return": 0.07583376863440355,
+          "median_holding_days": 9.0,
+          "median_mae": -0.03698630136986292,
+          "median_mfe": 0.1103053435114505,
+          "median_return": 0.018718028292328055,
+          "realized_pnl": 541880.3873,
+          "trade_count": 43,
+          "win_rate": 0.6046511627906976
+        }
+      },
+      "exit_month_cohorts": [
+        {
+          "cohort": "2025-02",
+          "mean_return": -0.10667883652078003,
+          "median_return": -0.10667883652078003,
+          "realized_pnl": -33974.80599999998,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.0
+        },
+        {
+          "cohort": "2025-03",
+          "mean_return": 0.03995827178148358,
+          "median_return": 0.0048272396296711595,
+          "realized_pnl": 77150.93600000005,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 13,
+          "win_rate": 0.5384615384615384
+        },
+        {
+          "cohort": "2025-05",
+          "mean_return": -0.05916144449517058,
+          "median_return": -0.059597201044569496,
+          "realized_pnl": -38308.522,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 4,
+          "win_rate": 0.25
+        },
+        {
+          "cohort": "2025-06",
+          "mean_return": -0.026143378346372093,
+          "median_return": -0.0532844642362475,
+          "realized_pnl": -57208.146999999895,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 1,
+          "trade_count": 13,
+          "win_rate": 0.15384615384615385
+        },
+        {
+          "cohort": "2025-07",
+          "mean_return": -0.020368470695319447,
+          "median_return": -0.032818471361718574,
+          "realized_pnl": -14562.782999999932,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 5,
+          "win_rate": 0.4
+        },
+        {
+          "cohort": "2025-08",
+          "mean_return": 0.07305638664991428,
+          "median_return": 0.061592993490077304,
+          "realized_pnl": 35070.185000000034,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 3,
+          "win_rate": 1.0
+        },
+        {
+          "cohort": "2025-09",
+          "mean_return": -0.008119650287579482,
+          "median_return": -0.05314612537015199,
+          "realized_pnl": -23524.71400000009,
+          "severe_loss_count_le_neg10": 2,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 9,
+          "win_rate": 0.4444444444444444
+        },
+        {
+          "cohort": "2025-10",
+          "mean_return": 0.1447628893827866,
+          "median_return": 0.0624912347879587,
+          "realized_pnl": 268945.25630000007,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 4,
+          "trade_count": 11,
+          "win_rate": 0.8181818181818182
+        },
+        {
+          "cohort": "2025-11",
+          "mean_return": 0.1355055551561476,
+          "median_return": 0.02720286492027061,
+          "realized_pnl": 239426.7269999999,
+          "severe_loss_count_le_neg10": 1,
+          "top_winner_count_ge_20": 2,
+          "trade_count": 11,
+          "win_rate": 0.7272727272727273
+        },
+        {
+          "cohort": "2025-12",
+          "mean_return": -0.008516984222073514,
+          "median_return": -0.008516984222073514,
+          "realized_pnl": -4355.719000000012,
+          "severe_loss_count_le_neg10": 0,
+          "top_winner_count_ge_20": 0,
+          "trade_count": 2,
+          "win_rate": 0.5
+        }
+      ],
+      "nav_metrics": {
+        "average_holdings": 5.732510288065844,
+        "average_invested_ratio": 0.5712539735590276,
+        "average_nav": 1626033.493765638,
+        "drawdown_attribution_status": "PARTIAL_REALIZED_EXIT_PNL_ONLY; unrealized position marks also drive NAV drawdown",
+        "drawdown_window_exit_trade_count": 27,
+        "drawdown_window_realized_pnl": 11093.073000000099,
+        "drawdown_window_severe_loss_pnl": -80316.565,
+        "end_nav": 2052422.1580500002,
+        "filled_notional": 26499729.7,
+        "flat_session_fraction": 0.2716049382716049,
+        "full_position_fraction": 0.4444444444444444,
+        "market_entry_permission_fraction": 0.7078189300411523,
+        "max_drawdown": -0.10176871214757299,
+        "max_holdings": 10,
+        "median_invested_ratio": 0.8036649941379742,
+        "peak_date": "2025-03-18",
+        "portfolio_return": 0.377007823927356,
+        "portfolio_return_per_average_invested_ratio": 0.6599653418225192,
+        "portfolio_return_per_turnover": 0.023133343473974347,
+        "sessions": 243,
+        "start_nav": 1490494.1877500005,
+        "trough_date": "2025-06-23",
+        "turnover_total_filled_notional_over_average_nav": 16.297161037335577
+      },
+      "trade_metrics": {
+        "average_loser": -0.0739846350000948,
+        "average_winner": 0.1487352945677481,
+        "days_to_mfe_distribution": {
+          "count": 73,
+          "mean": 8.89041095890411,
+          "median": 4.0,
+          "p10": 0.0,
+          "p25": 1.0,
+          "p75": 11.0,
+          "p90": 25.999999999999986
+        },
+        "ex_best10_pnl_return": -0.4372411040956773,
+        "ex_best10_portfolio_return": -0.0602332801683213,
+        "ex_best20_pnl_return": -0.5589212263602131,
+        "ex_best20_portfolio_return": -0.18191340243285714,
+        "ex_best5_pnl_return": -0.30199636066980684,
+        "ex_best5_portfolio_return": 0.07501146325754915,
+        "extreme_loss_rate_le_neg20": 0.0136986301369863,
+        "giveback_distribution": {
+          "count": 73,
+          "mean": 0.10483112884420082,
+          "median": 0.08581707666157891,
+          "p10": 0.015095994523676493,
+          "p25": 0.05202505646963262,
+          "p75": 0.14741339200384668,
+          "p90": 0.21112147780245646
+        },
+        "holding_distribution": {
+          "count": 73,
+          "mean": 17.424657534246574,
+          "median": 13.0,
+          "p10": 5.0,
+          "p25": 8.0,
+          "p75": 23.0,
+          "p90": 31.799999999999997
+        },
+        "mae_distribution": {
+          "count": 73,
+          "mean": -0.0567672928935466,
+          "median": -0.0407303370786517,
+          "p10": -0.11786703617767802,
+          "p25": -0.07970832285642449,
+          "p75": -0.017073170731707332,
+          "p90": -0.01124264480914961
+        },
+        "mfe_capture_ratio_distribution": {
+          "count": 72,
+          "mean": -2.120869638030071,
+          "median": 0.06347385636643364,
+          "p10": -6.090195603970858,
+          "p25": -1.1087074967246904,
+          "p75": 0.35972292978577897,
+          "p90": 0.5896162739230294
+        },
+        "mfe_distribution": {
+          "count": 73,
+          "mean": 0.18526798402903813,
+          "median": 0.10882016036655195,
+          "p10": 0.017392322706571362,
+          "p25": 0.05243445692883908,
+          "p75": 0.22374429223744308,
+          "p90": 0.463838071907364
+        },
+        "mfe_ge_20_rate": 0.273972602739726,
+        "mfe_ge_50_rate": 0.0958904109589041,
+        "negative_pnl": -453104.0829999998,
+        "payoff_ratio": 2.01035383316492,
+        "pnl_buckets": {
+          "EXTREME_LOSS_LE_NEG20": {
+            "count": 1,
+            "rate": 0.0136986301369863,
+            "realized_pnl": -51462.69299999997
+          },
+          "ORDINARY_WINNER_0_TO_20": {
+            "count": 29,
+            "rate": 0.3972602739726027,
+            "realized_pnl": 309152.82499999995
+          },
+          "SEVERE_LOSS_NEG10_TO_NEG20": {
+            "count": 8,
+            "rate": 0.1095890410958904,
+            "realized_pnl": -161801.427
+          },
+          "SMALL_LOSS_0_TO_NEG10": {
+            "count": 27,
+            "rate": 0.3698630136986301,
+            "realized_pnl": -239839.96299999984
+          },
+          "SUPER_WINNER_GE_50": {
+            "count": 2,
+            "rate": 0.0273972602739726,
+            "realized_pnl": 238988.82899999997
+          },
+          "TOP_WINNER_20_TO_50": {
+            "count": 6,
+            "rate": 0.0821917808219178,
+            "realized_pnl": 353620.84229999996
+          }
+        },
+        "positive_pnl": 901762.4962999999,
+        "positive_pnl_hhi": 0.06905169275637857,
+        "profit_factor_pnl": 1.9901884139499142,
+        "realized_pnl": 448658.4133000001,
+        "return_distribution": {
+          "count": 73,
+          "mean": 0.03890080875346941,
+          "median": 0.0048272396296711595,
+          "p10": -0.10115310021593663,
+          "p25": -0.06106117333993417,
+          "p75": 0.0624912347879587,
+          "p90": 0.2276874805901958
+        },
+        "severe_loss_rate_le_neg10": 0.1232876712328767,
+        "super_winner_rate_ge_50": 0.0273972602739726,
+        "top10_positive_pnl_share": 0.7227017390654374,
+        "top20_positive_pnl_share": 0.9238228942966078,
+        "top5_positive_pnl_share": 0.4991600583822151,
+        "top_winner_rate_ge_20": 0.1095890410958904,
+        "trade_count": 73,
+        "win_rate": 0.5068493150684932
+      }
+    }
+  }
+}

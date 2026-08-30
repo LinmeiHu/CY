@@ -1,0 +1,75 @@
+# Data audit
+
+## Status at research start
+
+The repository safety gate passed on 2026-08-30:
+
+- repository: `/Users/linmei/Documents/CY-supermind-v6`;
+- branch: `research/chinext-v1`;
+- starting HEAD: `e361aa9fb9`;
+- worktree: clean;
+- no branch switch, reset, clean, checkout overwrite, rebase, deletion, or replay
+  mutation was performed.
+
+## Authoritative artifacts found
+
+| Period | Data/universe grade | Baseline output | Frozen result summary |
+|---|---|---|---|
+| 2018-2021 | bounded effective-state PIT-B; not strict PIT-A | `output/chinext_v1_extended_2018_2021/` | `reports/chinext_v1_extended_replay_summary.json` |
+| 2022-2023 | CY-028 bounded reconstructed PIT-B; not strict PIT-A | `output/chinext_v1_phase9b_oos/O0_BASELINE/` | `reports/chinext_v1_phase9b_oos_validation_summary.json` |
+| 2024-2025 | CY-027 bounded reconstructed PIT-B; not strict PIT-A | `output/chinext_v1_pit_replay/` | `reports/chinext_v1_pit_replay_summary.json` |
+
+All three bind the same authoritative strategy SHA-256
+`dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a`.
+
+## Frozen ledger hashes verified at start
+
+| Block | Daily NAV | Event ledger | Execution ledger |
+|---|---|---|---|
+| 2018-2021 | `4794fe7877adb4ac912e8def90d8b46cc4e3d213c1c40cc567860e98a799901a` | `9fb92730ca1c30e448b32b07b6c5ab369b178c820821daf21f3b69b90b0dfc86` | `878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249` |
+| 2022-2023 O0 | `1ff55ee194bbdc5fcb4c6041d99dbe5335548a22f05877aa17dc79fbe7152aa8` | `ea2200e87ada0bc9a2b5ddcf7b9426c7bdfba20befc9cf58a802233fa5cef50c` | `c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf` |
+| 2024-2025 | `a1b8399c7f199a76ae6e891bbd690de16a3312d2cc548c77d552f2531adcc071` | `721bdaa57e701ce40a9be37c29b6f0a13427efaf9074682bfc79255a4e62f655` | `f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5` |
+
+## Known limitations that remain active
+
+1. All membership blocks are PIT-B, not strict archival PIT-A. BaoStock historical
+   record-level `available_at` and supplier revision-vintage chains are unavailable.
+2. Existing 2018-2025 outcomes have already been viewed; there is no untouched
+   historical OOS block for a newly invented V1-R.
+3. The three NAV blocks start independently. They support yearly and blockwise
+   comparisons, not a silently chained eight-year portfolio claim.
+4. CY-006 `is_st` coverage is incomplete for some earlier CY-027/CY-028 contracts;
+   the exact bounded validation/authorization limitations remain in force.
+5. Execution is a partial research model: open-limit/trading-state/T+1 checks are
+   enforced, but order-book queue, impact, and realized slippage are not modeled.
+6. Existing breadth is available for 2022-2025 from exact PIT membership, with a
+   95% coverage rule and substantial warmup-related invalidity for MA60/B60 early
+   in the sample. No silent imputation is allowed.
+7. Industry/style classification inputs require exact registered PIT lineage.
+   Existing reports classify industry incrementality as unresolved/inconclusive;
+   no current classification may be backfilled.
+8. Exact 399102.SZ is the only regime anchor permitted. Its completed-bar
+   availability convention must be preserved and never turned into same-day fill.
+
+## Completed lineage and coverage audit
+
+- Phase 0 verified all nine authoritative NAV/event/execution hashes and all six
+  frozen identity/economic gates for each independently bounded block without a
+  formal baseline replay.
+- Phase 2 built 93 outcome-blind daily features on all 1,942 sessions. Exact
+  `basic_eligible` counts match authoritative ledgers on 1,942/1,942 dates. The
+  deterministic feature artifact SHA-256 is
+  `5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6`.
+- Cross-sectional features require at least 100 contemporaneously eligible names
+  and fail closed on 184 sessions. For deployable raw MA20 breadth, valid coverage
+  is only 53.5% in 2018 and 75.6% in 2022; no value was imputed.
+- Trend, index volatility, and observed relative-index features have complete
+  daily coverage. Growth/value, true PIT market-cap style, fund flow/sentiment,
+  and governed cyclical classifications are `UNAVAILABLE`, not proxy-substituted.
+- CY-030/CY-031/CY-032 are narrowly bounded Phase 7 research assets for the exact
+  existing PIT-B artifacts and frozen candidate code. They authorize neither
+  current-survivor fallback, strict PIT-A claims, optimization, nor production.
+- The Phase 7 candidate outputs are isolated from authoritative V1. A frozen
+  identity manifest rehashes all 15 arm ledgers; the Phase 8/9 audit found zero
+  same-day fills, timestamp/first-applicable failures, missing-input candidate
+  buys, target-weight mismatches, or signal/rank/exit changes.

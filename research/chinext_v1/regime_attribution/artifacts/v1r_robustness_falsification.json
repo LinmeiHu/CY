@@ -1,0 +1,1084 @@
+{
+  "beta_timing": {
+    "blocks": [
+      {
+        "active_annualized_linear_alpha": -0.026212884443498296,
+        "active_beta": -0.031827637450698304,
+        "active_daily_alpha": -0.00010401938271229482,
+        "block": "EXTENDED_2018_2021",
+        "candidate_annualized_linear_alpha": 0.06770567708238284,
+        "candidate_beta": 0.27369734719476285,
+        "candidate_daily_alpha": 0.00026867332175548747,
+        "control_annualized_linear_alpha": 0.09391856152588106,
+        "control_beta": 0.3055249846454611,
+        "control_daily_alpha": 0.000372692704467782,
+        "day_count": 972,
+        "down_index_day_count": 465,
+        "mean_active_return_down_index_days": 0.0002722596538771361,
+        "mean_active_return_up_index_days": -0.0004896929451956871,
+        "up_index_day_count": 507
+      },
+      {
+        "active_annualized_linear_alpha": 0.0009901473185600453,
+        "active_beta": -4.828580358981827e-05,
+        "active_daily_alpha": 3.929156026031926e-06,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_annualized_linear_alpha": -0.05609399420918937,
+        "candidate_beta": 0.1502913144434386,
+        "candidate_daily_alpha": -0.00022259521511583082,
+        "control_annualized_linear_alpha": -0.057084141527749425,
+        "control_beta": 0.15033960024702844,
+        "control_daily_alpha": -0.0002265243711418628,
+        "day_count": 483,
+        "down_index_day_count": 243,
+        "mean_active_return_down_index_days": 6.681107112243779e-06,
+        "mean_active_return_up_index_days": 1.2044642023256723e-06,
+        "up_index_day_count": 240
+      },
+      {
+        "active_annualized_linear_alpha": -0.008756775241469924,
+        "active_beta": -0.002952536556573953,
+        "active_daily_alpha": -3.4749108101071127e-05,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_annualized_linear_alpha": 0.25438004376445084,
+        "candidate_beta": 0.5364615001376498,
+        "candidate_daily_alpha": 0.0010094446181129002,
+        "control_annualized_linear_alpha": 0.2631368190059208,
+        "control_beta": 0.5394140366942237,
+        "control_daily_alpha": 0.0010441937262139715,
+        "day_count": 484,
+        "down_index_day_count": 232,
+        "mean_active_return_down_index_days": -3.4300765444461206e-05,
+        "mean_active_return_up_index_days": -4.166957437498135e-05,
+        "up_index_day_count": 252
+      }
+    ],
+    "method": "OLS_DAILY_PORTFOLIO_RETURN_ON_SAME_DAY_399102_RETURN_WITH_INTERCEPT; descriptive beta diagnostic, not a regime input",
+    "pooled": {
+      "active_annualized_linear_alpha": -0.016093363174366757,
+      "active_beta": -0.01607540540538627,
+      "active_daily_alpha": -6.386255227923316e-05,
+      "block": "POOLED_DAILY_WITH_BLOCK_LINEAGE",
+      "candidate_annualized_linear_alpha": 0.0980578514144307,
+      "candidate_beta": 0.35354464855980516,
+      "candidate_daily_alpha": 0.0003891184579937726,
+      "control_annualized_linear_alpha": 0.1141512145887975,
+      "control_beta": 0.36962005396519143,
+      "control_daily_alpha": 0.00045298101027300595,
+      "day_count": 1939,
+      "down_index_day_count": 940,
+      "mean_active_return_down_index_days": 0.00012794305372130694,
+      "mean_active_return_up_index_days": -0.00025874472927742793,
+      "up_index_day_count": 999
+    }
+  },
+  "cost_sensitivity": {
+    "method": "NON_ENDOGENOUS_LEDGER_NOTIONAL_SENSITIVITY; no share/cash-path replay and no exact counterfactual claim",
+    "passes_all_rates_two_of_three_positive_blocks": false,
+    "rows": [
+      {
+        "active_return": -0.19270378215999984,
+        "block": "EXTENDED_2018_2021",
+        "candidate_adjusted_return": 0.5067106234299993,
+        "control_adjusted_return": 0.6994144055899991,
+        "cost_bps_per_filled_side": 0,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": 0.001454999999999984,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_adjusted_return": -0.1372270098100003,
+        "control_adjusted_return": -0.13868200981000028,
+        "cost_bps_per_filled_side": 0,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.03478400000000015,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_adjusted_return": 1.05411043675,
+        "control_adjusted_return": 1.0888944367500002,
+        "cost_bps_per_filled_side": 0,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.18136993707999988,
+        "block": "EXTENDED_2018_2021",
+        "candidate_adjusted_return": 0.4668537897099993,
+        "control_adjusted_return": 0.6482237267899992,
+        "cost_bps_per_filled_side": 10,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": 0.0016182670000000066,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_adjusted_return": -0.1536023075700003,
+        "control_adjusted_return": -0.1552205745700003,
+        "cost_bps_per_filled_side": 10,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.03362476900000022,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_adjusted_return": 1.01879738905,
+        "control_adjusted_return": 1.0524221580500002,
+        "cost_bps_per_filled_side": 10,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.1643691694599999,
+        "block": "EXTENDED_2018_2021",
+        "candidate_adjusted_return": 0.4070685391299993,
+        "control_adjusted_return": 0.5714377085899992,
+        "cost_bps_per_filled_side": 25,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": 0.0018631675000000125,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_adjusted_return": -0.1781652542100003,
+        "control_adjusted_return": -0.1800284217100003,
+        "cost_bps_per_filled_side": 25,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.03188592250000022,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_adjusted_return": 0.9658278174999999,
+        "control_adjusted_return": 0.9977137400000001,
+        "cost_bps_per_filled_side": 25,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.13603455675999987,
+        "block": "EXTENDED_2018_2021",
+        "candidate_adjusted_return": 0.3074264548299993,
+        "control_adjusted_return": 0.4434610115899992,
+        "cost_bps_per_filled_side": 50,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": 0.002271335000000041,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_adjusted_return": -0.21910349861000028,
+        "control_adjusted_return": -0.22137483361000032,
+        "cost_bps_per_filled_side": 50,
+        "positive_block_count_at_cost": 1
+      },
+      {
+        "active_return": -0.02898784500000018,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_adjusted_return": 0.87754519825,
+        "control_adjusted_return": 0.9065330432500002,
+        "cost_bps_per_filled_side": 50,
+        "positive_block_count_at_cost": 1
+      }
+    ]
+  },
+  "decision": {
+    "candidate_verdict": "REJECT_V1R_KEEP_FROZEN_V1",
+    "hypothesis_h010": "SUPPORTED_EXPLANATORY_ONLY",
+    "production_authorized": false,
+    "robustness_verdict": "FAIL_NOT_ROBUST"
+  },
+  "evidence_grade": "OUTCOME_CONSUMED_RESAMPLING_AND_FALSIFICATION_NO_UNTOUCHED_OOS",
+  "experiment_id": "EXP-P8P9-001",
+  "falsification_challenges": [
+    {
+      "challenge": "Is apparent value only market-beta timing?",
+      "evidence": {
+        "active_annualized_linear_alpha": -0.016093363174366757,
+        "active_beta": -0.01607540540538627,
+        "active_down_day_mean": 0.00012794305372130694,
+        "active_up_day_mean": -0.00025874472927742793
+      },
+      "id": 1,
+      "verdict": "NON_BETA_VALUE_NOT_ESTABLISHED"
+    },
+    {
+      "challenge": "Is lower drawdown merely lower exposure?",
+      "evidence": {
+        "exposure_normalization_passes": false,
+        "lower_exposure_all_blocks": true
+      },
+      "id": 2,
+      "verdict": "EXPOSURE_REDUCTION_CONFOUND_PRESENT"
+    },
+    {
+      "challenge": "Does it sacrifice future true winners?",
+      "evidence": {
+        "right_tail_gate_passes": true,
+        "top20_positive_pnl_capture": 0.9063877877778895,
+        "winner20_entry_retention": 0.9487179487179487
+      },
+      "id": 3,
+      "verdict": "LIMITED_BUT_NONZERO_RIGHT_TAIL_SACRIFICE"
+    },
+    {
+      "challenge": "Do only one or two years support it?",
+      "evidence": {
+        "negative_year_count": 3,
+        "neutral_year_count": 2,
+        "passes": false,
+        "positive_year_count": 3
+      },
+      "id": 4,
+      "verdict": "TEMPORAL_STABILITY_REJECTED"
+    },
+    {
+      "challenge": "Is it threshold mining?",
+      "evidence": {
+        "neighbor_stability_passes": false,
+        "thresholds_optimized": 0
+      },
+      "id": 5,
+      "verdict": "PRIMARY_WAS_PREREGISTERED_BUT_RELATION_IS_THRESHOLD_SENSITIVE"
+    },
+    {
+      "challenge": "Does it depend on a few extreme trades?",
+      "evidence": {
+        "exbest_improvement_block_counts": {
+          "10": 1,
+          "20": 2,
+          "5": 1
+        },
+        "top20_positive_pnl_capture": 0.9063877877778895
+      },
+      "id": 6,
+      "verdict": "V1_REMAINS_EXTREME_TRADE_DEPENDENT_AND_OVERLAY_DOES_NOT_RESOLVE_IT"
+    },
+    {
+      "challenge": "Is the regime stably identifiable?",
+      "evidence": {
+        "passes": false,
+        "year_count": 8
+      },
+      "id": 7,
+      "verdict": "STATE_IDENTIFICATION_LIMITED"
+    },
+    {
+      "challenge": "Is there a realistic PIT implementation problem?",
+      "evidence": {
+        "passes": true
+      },
+      "id": 8,
+      "verdict": "NO_LEDGER_LEVEL_PIT_OR_EXECUTION_DEFECT_FOUND"
+    },
+    {
+      "challenge": "Does a neighboring definition erase the relation?",
+      "evidence": {
+        "passes": false
+      },
+      "id": 9,
+      "verdict": "YES_NEIGHBORING_ROBUSTNESS_FAILS"
+    },
+    {
+      "challenge": "Does complexity exceed practical benefit?",
+      "evidence": {
+        "feature_count": 1,
+        "multiplier_count": 1,
+        "phase7_promoted": false,
+        "phase8_robust": false,
+        "threshold_count": 1
+      },
+      "id": 10,
+      "verdict": "RULE_IS_SIMPLE_BUT_BENEFIT_IS_INSUFFICIENT"
+    }
+  ],
+  "implementation_audit": {
+    "block_arm_records": [
+      {
+        "arm": "C0_ALL_ONE_CONTROL",
+        "block": "EXTENDED_2018_2021",
+        "filled_new_buy_count": 194,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "A40_HALF_PRIMARY",
+        "block": "EXTENDED_2018_2021",
+        "filled_new_buy_count": 175,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "N30_HALF_NEIGHBOR",
+        "block": "EXTENDED_2018_2021",
+        "filled_new_buy_count": 175,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "N50_HALF_NEIGHBOR",
+        "block": "EXTENDED_2018_2021",
+        "filled_new_buy_count": 175,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "Z40_ZERO_SEVERITY",
+        "block": "EXTENDED_2018_2021",
+        "filled_new_buy_count": 156,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "C0_ALL_ONE_CONTROL",
+        "block": "HOLDOUT_O0_2022_2023",
+        "filled_new_buy_count": 94,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "A40_HALF_PRIMARY",
+        "block": "HOLDOUT_O0_2022_2023",
+        "filled_new_buy_count": 94,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "N30_HALF_NEIGHBOR",
+        "block": "HOLDOUT_O0_2022_2023",
+        "filled_new_buy_count": 94,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "N50_HALF_NEIGHBOR",
+        "block": "HOLDOUT_O0_2022_2023",
+        "filled_new_buy_count": 94,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "Z40_ZERO_SEVERITY",
+        "block": "HOLDOUT_O0_2022_2023",
+        "filled_new_buy_count": 92,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "C0_ALL_ONE_CONTROL",
+        "block": "DEVELOPMENT_2024_2025",
+        "filled_new_buy_count": 121,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "A40_HALF_PRIMARY",
+        "block": "DEVELOPMENT_2024_2025",
+        "filled_new_buy_count": 121,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "N30_HALF_NEIGHBOR",
+        "block": "DEVELOPMENT_2024_2025",
+        "filled_new_buy_count": 121,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "N50_HALF_NEIGHBOR",
+        "block": "DEVELOPMENT_2024_2025",
+        "filled_new_buy_count": 121,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      },
+      {
+        "arm": "Z40_ZERO_SEVERITY",
+        "block": "DEVELOPMENT_2024_2025",
+        "filled_new_buy_count": 111,
+        "overlay_identity_exact": true,
+        "same_day_fill_count": 0,
+        "target_weight_mismatch_count": 0
+      }
+    ],
+    "checks": {
+      "all_three_control_identity_gates_pass": true,
+      "entry_signal_changes": 0,
+      "exit_changes": 0,
+      "feature_timestamp_failure_count": 0,
+      "filled_execution_count": 6797,
+      "filled_new_buy_count": 1938,
+      "first_applicable_execution_failure_count": 0,
+      "missing_feature_candidate_new_buy_count": 0,
+      "new_buy_target_weight_mismatch_count": 0,
+      "overlay_identity_failure_count": 0,
+      "rank_changes": 0,
+      "same_day_fill_count": 0
+    },
+    "passes": true
+  },
+  "input_manifest_sha256": "4cfcb8a339f43d096b18c01e267762f8070c5326d85c6a1955774876bbbb9fe5",
+  "naive_nav_chaining": false,
+  "neighbor_selected_as_primary": false,
+  "neighbor_sensitivity": {
+    "passes": false,
+    "phase7_neighbor_gate": {
+      "N30_HALF_NEIGHBOR": {
+        "improves_2022_return": false,
+        "nonworse_block_drawdown_count": 3,
+        "passes": false
+      },
+      "N50_HALF_NEIGHBOR": {
+        "improves_2022_return": true,
+        "nonworse_block_drawdown_count": 2,
+        "passes": true
+      }
+    },
+    "post_result_neighbor_substitution_permitted": false,
+    "rows": [
+      {
+        "arm": "A40_HALF_PRIMARY",
+        "mean_year_active_return": -0.019724428913070906,
+        "negative_year_count": 3,
+        "neutral_year_count": 2,
+        "positive_year_count": 3,
+        "primary_nonzero_comparable_year_count": 6,
+        "primary_nonzero_sign_agreement_count": 6
+      },
+      {
+        "arm": "N30_HALF_NEIGHBOR",
+        "mean_year_active_return": -0.011377378452637294,
+        "negative_year_count": 1,
+        "neutral_year_count": 3,
+        "positive_year_count": 4,
+        "primary_nonzero_comparable_year_count": 6,
+        "primary_nonzero_sign_agreement_count": 3
+      },
+      {
+        "arm": "N50_HALF_NEIGHBOR",
+        "mean_year_active_return": -0.02088425942723943,
+        "negative_year_count": 4,
+        "neutral_year_count": 0,
+        "positive_year_count": 4,
+        "primary_nonzero_comparable_year_count": 6,
+        "primary_nonzero_sign_agreement_count": 5
+      },
+      {
+        "arm": "Z40_ZERO_SEVERITY",
+        "mean_year_active_return": -0.03220714323116894,
+        "negative_year_count": 4,
+        "neutral_year_count": 2,
+        "positive_year_count": 2,
+        "primary_nonzero_comparable_year_count": 6,
+        "primary_nonzero_sign_agreement_count": 5
+      }
+    ]
+  },
+  "regime_frequency": [
+    {
+      "block": "DEVELOPMENT_2024_2025",
+      "missing_count": 0,
+      "normal_count": 110,
+      "normal_fraction_of_valid": 0.45454545454545453,
+      "session_count": 242,
+      "valid_count": 242,
+      "valid_fraction": 1.0,
+      "weak_count": 132,
+      "weak_fraction_of_valid": 0.5454545454545454,
+      "year": 2024
+    },
+    {
+      "block": "DEVELOPMENT_2024_2025",
+      "missing_count": 0,
+      "normal_count": 169,
+      "normal_fraction_of_valid": 0.6954732510288066,
+      "session_count": 243,
+      "valid_count": 243,
+      "valid_fraction": 1.0,
+      "weak_count": 74,
+      "weak_fraction_of_valid": 0.3045267489711934,
+      "year": 2025
+    },
+    {
+      "block": "EXTENDED_2018_2021",
+      "missing_count": 113,
+      "normal_count": 69,
+      "normal_fraction_of_valid": 0.5307692307692308,
+      "session_count": 243,
+      "valid_count": 130,
+      "valid_fraction": 0.5349794238683128,
+      "weak_count": 61,
+      "weak_fraction_of_valid": 0.46923076923076923,
+      "year": 2018
+    },
+    {
+      "block": "EXTENDED_2018_2021",
+      "missing_count": 12,
+      "normal_count": 154,
+      "normal_fraction_of_valid": 0.6637931034482759,
+      "session_count": 244,
+      "valid_count": 232,
+      "valid_fraction": 0.9508196721311475,
+      "weak_count": 78,
+      "weak_fraction_of_valid": 0.33620689655172414,
+      "year": 2019
+    },
+    {
+      "block": "EXTENDED_2018_2021",
+      "missing_count": 0,
+      "normal_count": 161,
+      "normal_fraction_of_valid": 0.6625514403292181,
+      "session_count": 243,
+      "valid_count": 243,
+      "valid_fraction": 1.0,
+      "weak_count": 82,
+      "weak_fraction_of_valid": 0.3374485596707819,
+      "year": 2020
+    },
+    {
+      "block": "EXTENDED_2018_2021",
+      "missing_count": 0,
+      "normal_count": 179,
+      "normal_fraction_of_valid": 0.7366255144032922,
+      "session_count": 243,
+      "valid_count": 243,
+      "valid_fraction": 1.0,
+      "weak_count": 64,
+      "weak_fraction_of_valid": 0.26337448559670784,
+      "year": 2021
+    },
+    {
+      "block": "HOLDOUT_O0_2022_2023",
+      "missing_count": 59,
+      "normal_count": 112,
+      "normal_fraction_of_valid": 0.6120218579234973,
+      "session_count": 242,
+      "valid_count": 183,
+      "valid_fraction": 0.756198347107438,
+      "weak_count": 71,
+      "weak_fraction_of_valid": 0.3879781420765027,
+      "year": 2022
+    },
+    {
+      "block": "HOLDOUT_O0_2022_2023",
+      "missing_count": 0,
+      "normal_count": 149,
+      "normal_fraction_of_valid": 0.6157024793388429,
+      "session_count": 242,
+      "valid_count": 242,
+      "valid_fraction": 1.0,
+      "weak_count": 93,
+      "weak_fraction_of_valid": 0.384297520661157,
+      "year": 2023
+    }
+  ],
+  "robustness_gates": {
+    "components": {
+      "cost_sensitivity": {
+        "passes": false
+      },
+      "expanding_prefix": {
+        "passes": false,
+        "positive_prefix_count": 2,
+        "prefix_count": 8
+      },
+      "exposure_normalization": {
+        "nonworse_block_count": 2,
+        "passes": false
+      },
+      "loyo_no_refit": {
+        "panel_count": 8,
+        "passes": false
+      },
+      "neighboring_definitions": {
+        "passes": false
+      },
+      "pit_execution_implementation": {
+        "passes": true
+      },
+      "regime_frequency": {
+        "passes": false,
+        "year_count": 8
+      },
+      "right_tail_retention": {
+        "passes": true
+      },
+      "rolling": {
+        "block_window_passes": {
+          "126": {
+            "DEVELOPMENT_2024_2025": false,
+            "EXTENDED_2018_2021": false,
+            "HOLDOUT_O0_2022_2023": false
+          },
+          "252": {
+            "DEVELOPMENT_2024_2025": false,
+            "EXTENDED_2018_2021": false,
+            "HOLDOUT_O0_2022_2023": false
+          }
+        },
+        "passes": false
+      },
+      "yearly": {
+        "negative_year_count": 3,
+        "neutral_year_count": 2,
+        "passes": false,
+        "positive_year_count": 3
+      }
+    },
+    "passes_all_required": false,
+    "required_components": [
+      "yearly",
+      "rolling",
+      "expanding_prefix",
+      "loyo_no_refit",
+      "regime_frequency",
+      "neighboring_definitions",
+      "exposure_normalization",
+      "right_tail_retention",
+      "pit_execution_implementation"
+    ]
+  },
+  "rolling": {
+    "summary": [
+      {
+        "block": "DEVELOPMENT_2024_2025",
+        "maximum_active_return": 0.0030897996428278507,
+        "mean_active_return": -0.0006540913914160405,
+        "median_active_return": 0.0,
+        "minimum_active_return": -0.03185795119755719,
+        "p10_active_return": 0.0,
+        "p90_active_return": 0.0006546327907918315,
+        "positive_fraction": 0.13649025069637882,
+        "window_count": 359,
+        "window_sessions": 126
+      },
+      {
+        "block": "DEVELOPMENT_2024_2025",
+        "maximum_active_return": 0.004943964493389741,
+        "mean_active_return": -0.0013810981030219444,
+        "median_active_return": 0.0,
+        "minimum_active_return": -0.03545077042641398,
+        "p10_active_return": -0.006230369875673868,
+        "p90_active_return": 0.002190455324247866,
+        "positive_fraction": 0.21030042918454936,
+        "window_count": 233,
+        "window_sessions": 252
+      },
+      {
+        "block": "EXTENDED_2018_2021",
+        "maximum_active_return": 0.029771956002134226,
+        "mean_active_return": -0.021565597879288082,
+        "median_active_return": -0.002207122979395848,
+        "minimum_active_return": -0.15506441382081793,
+        "p10_active_return": -0.13342897021892708,
+        "p90_active_return": 0.013060637909015904,
+        "positive_fraction": 0.46989374262101535,
+        "window_count": 847,
+        "window_sessions": 126
+      },
+      {
+        "block": "EXTENDED_2018_2021",
+        "maximum_active_return": 0.030215498139963937,
+        "mean_active_return": -0.05587242277188418,
+        "median_active_return": -0.037831671235881936,
+        "minimum_active_return": -0.15832091384834368,
+        "p10_active_return": -0.13738445655110687,
+        "p90_active_return": 0.007605766046716811,
+        "positive_fraction": 0.24687933425797504,
+        "window_count": 721,
+        "window_sessions": 252
+      },
+      {
+        "block": "HOLDOUT_O0_2022_2023",
+        "maximum_active_return": 0.001871945508725159,
+        "mean_active_return": 0.0004959665062824983,
+        "median_active_return": 0.0,
+        "minimum_active_return": 0.0,
+        "p10_active_return": 0.0,
+        "p90_active_return": 0.001726108317894881,
+        "positive_fraction": 0.2877094972067039,
+        "window_count": 358,
+        "window_sessions": 126
+      },
+      {
+        "block": "HOLDOUT_O0_2022_2023",
+        "maximum_active_return": 0.0019573247704169905,
+        "mean_active_return": 0.000783402689221142,
+        "median_active_return": 0.0,
+        "minimum_active_return": 0.0,
+        "p10_active_return": 0.0,
+        "p90_active_return": 0.0019239955438957292,
+        "positive_fraction": 0.44396551724137934,
+        "window_count": 232,
+        "window_sessions": 252
+      }
+    ]
+  },
+  "spec_sha256": "7083adc542e4505c19f0fe33c8f9b26688c8a72eac9f497802cd254ac36306a7",
+  "strategy_replay_count": 0,
+  "tail_exposure": {
+    "blocks": [
+      {
+        "average_invested_fraction_delta": -0.03156170734384828,
+        "block": "EXTENDED_2018_2021",
+        "drawdown_delta_positive_is_better": -0.009116768393239494,
+        "exposure_normalized_return_delta": -0.4562475548623497,
+        "filled_side_cost_delta": -11333.84508,
+        "return_delta": -0.18136993707999988,
+        "return_ex_best10_delta": -0.05002205007999999,
+        "return_ex_best20_delta": 0.022788662920000036,
+        "return_ex_best5_delta": -0.11438009807999991,
+        "severe_loss_rate_delta": 0.006597938144329893,
+        "turnover_delta": -6.6711555014124215,
+        "winner20_count_delta": -2,
+        "winner50_count_delta": -1
+      },
+      {
+        "average_invested_fraction_delta": -0.0004358478739489857,
+        "block": "HOLDOUT_O0_2022_2023",
+        "drawdown_delta_positive_is_better": 0.0014438545361936117,
+        "exposure_normalized_return_delta": 0.006963586531499422,
+        "filled_side_cost_delta": -163.26700000000164,
+        "return_delta": 0.0016182670000000066,
+        "return_ex_best10_delta": 0.0014674179999999981,
+        "return_ex_best20_delta": 0.0014674179999999981,
+        "return_ex_best5_delta": 0.0014694160000000012,
+        "severe_loss_rate_delta": 0.0,
+        "turnover_delta": -0.18997331067649625,
+        "winner20_count_delta": 0,
+        "winner50_count_delta": 0
+      },
+      {
+        "average_invested_fraction_delta": -0.01327249956192017,
+        "block": "DEVELOPMENT_2024_2025",
+        "drawdown_delta_positive_is_better": 0.0,
+        "exposure_normalized_return_delta": 0.0024509905590504033,
+        "filled_side_cost_delta": -1159.2309999999998,
+        "return_delta": -0.03362476900000022,
+        "return_ex_best10_delta": -0.0307286930000004,
+        "return_ex_best20_delta": -0.030360238000000372,
+        "return_ex_best5_delta": -0.030101321000000292,
+        "severe_loss_rate_delta": 0.0,
+        "turnover_delta": -0.8239386422876755,
+        "winner20_count_delta": 0,
+        "winner50_count_delta": 0
+      }
+    ],
+    "exbest_improvement_block_counts": {
+      "10": 1,
+      "20": 2,
+      "5": 1
+    },
+    "exposure_normalized_nonworse_block_count": 2,
+    "right_tail_gate_passes": true,
+    "top20_positive_pnl_capture": 0.9063877877778895,
+    "winner20_entry_retention": 0.9487179487179487
+  },
+  "temporal": {
+    "records": [
+      {
+        "active_return": 0.026193384999999896,
+        "block": "EXTENDED_2018_2021",
+        "candidate_average_invested_fraction": 0.0086215530602122,
+        "candidate_max_drawdown": -0.0172682672158283,
+        "candidate_return": -0.011641785,
+        "candidate_severe_loss_rate": 0.0,
+        "candidate_winner20_count": 0,
+        "control_average_invested_fraction": 0.0287549915358265,
+        "control_max_drawdown": -0.0465352734271771,
+        "control_return": -0.0378351699999999,
+        "control_severe_loss_rate": 0.0909090909090909,
+        "control_winner20_count": 0,
+        "drawdown_delta_positive_is_better": 0.0292670062113488,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2018
+      },
+      {
+        "active_return": -0.1496989095804531,
+        "block": "EXTENDED_2018_2021",
+        "candidate_average_invested_fraction": 0.2366203012245488,
+        "candidate_max_drawdown": -0.1020852761551628,
+        "candidate_return": 0.0852079213000724,
+        "candidate_severe_loss_rate": 0.081081081081081,
+        "candidate_winner20_count": 2,
+        "control_average_invested_fraction": 0.3013226459326235,
+        "control_max_drawdown": -0.102053470706877,
+        "control_return": 0.2349068308805255,
+        "control_severe_loss_rate": 0.0638297872340425,
+        "control_winner20_count": 4,
+        "drawdown_delta_positive_is_better": -3.1805448285807114e-05,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2019
+      },
+      {
+        "active_return": -0.0191103630296163,
+        "block": "EXTENDED_2018_2021",
+        "candidate_average_invested_fraction": 0.3132985283067463,
+        "candidate_max_drawdown": -0.2117636096377245,
+        "candidate_return": 0.0335619243948153,
+        "candidate_severe_loss_rate": 0.1643835616438356,
+        "candidate_winner20_count": 7,
+        "control_average_invested_fraction": 0.3374376298279092,
+        "control_max_drawdown": -0.2076267947078265,
+        "control_return": 0.0526722874244316,
+        "control_severe_loss_rate": 0.1621621621621621,
+        "control_winner20_count": 7,
+        "drawdown_delta_positive_is_better": -0.004136814929898008,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2020
+      },
+      {
+        "active_return": 0.005423345286993009,
+        "block": "EXTENDED_2018_2021",
+        "candidate_average_invested_fraction": 0.3111147615096127,
+        "candidate_max_drawdown": -0.1116879500464068,
+        "candidate_return": 0.3231923879136458,
+        "candidate_severe_loss_rate": 0.0983606557377049,
+        "candidate_winner20_count": 6,
+        "control_average_invested_fraction": 0.3282503249564326,
+        "control_max_drawdown": -0.1173168590267367,
+        "control_return": 0.3177690426266528,
+        "control_severe_loss_rate": 0.096774193548387,
+        "control_winner20_count": 6,
+        "drawdown_delta_positive_is_better": 0.0056289089803299025,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2021
+      },
+      {
+        "active_return": 0.0,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_average_invested_fraction": 0.1074467901017861,
+        "candidate_max_drawdown": -0.1796090302508175,
+        "candidate_return": -0.1729136755700007,
+        "candidate_severe_loss_rate": 0.1351351351351351,
+        "candidate_winner20_count": 0,
+        "control_average_invested_fraction": 0.1074467901017861,
+        "control_max_drawdown": -0.1796090302508175,
+        "control_return": -0.1729136755700007,
+        "control_severe_loss_rate": 0.1351351351351351,
+        "control_winner20_count": 0,
+        "drawdown_delta_positive_is_better": 0.0,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2022
+      },
+      {
+        "active_return": 0.0019565877855801,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_average_invested_fraction": 0.2483904962888793,
+        "candidate_max_drawdown": -0.149191383290647,
+        "candidate_return": 0.0233486728405394,
+        "candidate_severe_loss_rate": 0.0175438596491228,
+        "candidate_winner20_count": 4,
+        "control_average_invested_fraction": 0.2492621920367773,
+        "control_max_drawdown": -0.1507116772394977,
+        "control_return": 0.0213920850549593,
+        "control_severe_loss_rate": 0.0175438596491228,
+        "control_winner20_count": 4,
+        "drawdown_delta_positive_is_better": 0.0015202939488506984,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2023
+      },
+      {
+        "active_return": 0.0,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_average_invested_fraction": 0.235884045525006,
+        "candidate_max_drawdown": -0.2354228579310021,
+        "candidate_return": 0.4904941877500004,
+        "candidate_severe_loss_rate": 0.1842105263157894,
+        "candidate_winner20_count": 10,
+        "control_average_invested_fraction": 0.235884045525006,
+        "control_max_drawdown": -0.2354228579310021,
+        "control_return": 0.4904941877500004,
+        "control_severe_loss_rate": 0.1842105263157894,
+        "control_winner20_count": 10,
+        "drawdown_delta_positive_is_better": 0.0,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2024
+      },
+      {
+        "active_return": -0.022559476767070874,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_average_invested_fraction": 0.5447635937749482,
+        "candidate_max_drawdown": -0.1017687121475729,
+        "candidate_return": 0.354448347160285,
+        "candidate_severe_loss_rate": 0.1232876712328767,
+        "candidate_winner20_count": 8,
+        "control_average_invested_fraction": 0.5712539735590276,
+        "control_max_drawdown": -0.1017687121475729,
+        "control_return": 0.3770078239273559,
+        "control_severe_loss_rate": 0.1232876712328767,
+        "control_winner20_count": 8,
+        "drawdown_delta_positive_is_better": 0.0,
+        "record_type": "CALENDAR_YEAR",
+        "year": 2025
+      },
+      {
+        "active_return": 0.026193384999999902,
+        "block": "EXTENDED_2018_2021",
+        "candidate_max_drawdown": -0.017268267215828303,
+        "candidate_return": -0.011641785000000016,
+        "control_max_drawdown": -0.046535273427177115,
+        "control_return": -0.03783516999999992,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2018
+      },
+      {
+        "active_return": -0.11560975699999942,
+        "block": "EXTENDED_2018_2021",
+        "candidate_max_drawdown": -0.10208527615516283,
+        "candidate_return": 0.07257416400000016,
+        "control_max_drawdown": -0.10205347070687709,
+        "control_return": 0.1881839209999996,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2019
+      },
+      {
+        "active_return": -0.1421964689999995,
+        "block": "EXTENDED_2018_2021",
+        "candidate_max_drawdown": -0.21176360963772456,
+        "candidate_return": 0.10857181700000029,
+        "control_max_drawdown": -0.20762679470782652,
+        "control_return": 0.2507682859999998,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2020
+      },
+      {
+        "active_return": -0.18136993707999993,
+        "block": "EXTENDED_2018_2021",
+        "candidate_max_drawdown": -0.21674356310106602,
+        "candidate_return": 0.46685378970999936,
+        "control_max_drawdown": -0.20762679470782652,
+        "control_return": 0.6482237267899993,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2021
+      },
+      {
+        "active_return": 0.0,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_max_drawdown": -0.17960903025081754,
+        "candidate_return": -0.1729136755700007,
+        "control_max_drawdown": -0.17960903025081754,
+        "control_return": -0.1729136755700007,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2022
+      },
+      {
+        "active_return": 0.0016182670000000066,
+        "block": "HOLDOUT_O0_2022_2023",
+        "candidate_max_drawdown": -0.19196949932134932,
+        "candidate_return": -0.15360230757000037,
+        "control_max_drawdown": -0.193413353857543,
+        "control_return": -0.15522057457000038,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2023
+      },
+      {
+        "active_return": 0.0,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_max_drawdown": -0.23542285793100215,
+        "candidate_return": 0.4904941877500004,
+        "control_max_drawdown": -0.23542285793100215,
+        "control_return": 0.4904941877500004,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2024
+      },
+      {
+        "active_return": -0.03362476900000022,
+        "block": "DEVELOPMENT_2024_2025",
+        "candidate_max_drawdown": -0.2622719258789836,
+        "candidate_return": 1.01879738905,
+        "control_max_drawdown": -0.2622719258789836,
+        "control_return": 1.0524221580500002,
+        "record_type": "EXPANDING_BLOCK_PREFIX",
+        "year": 2025
+      },
+      {
+        "mean_active_return": -0.026284116614938163,
+        "median_active_return": 0.0,
+        "negative_year_count": 3,
+        "neutral_year_count": 2,
+        "omitted_year": 2018,
+        "positive_year_count": 2,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.0011566459605877387,
+        "median_active_return": 0.0,
+        "negative_year_count": 2,
+        "neutral_year_count": 2,
+        "omitted_year": 2019,
+        "positive_year_count": 3,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.019812152610707283,
+        "median_active_return": 0.0,
+        "negative_year_count": 2,
+        "neutral_year_count": 2,
+        "omitted_year": 2020,
+        "positive_year_count": 3,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.02331696808450861,
+        "median_active_return": 0.0,
+        "negative_year_count": 3,
+        "neutral_year_count": 2,
+        "omitted_year": 2021,
+        "positive_year_count": 2,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.022542204472081034,
+        "median_active_return": 0.0,
+        "negative_year_count": 3,
+        "neutral_year_count": 1,
+        "omitted_year": 2022,
+        "positive_year_count": 3,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.022821717012878193,
+        "median_active_return": 0.0,
+        "negative_year_count": 3,
+        "neutral_year_count": 2,
+        "omitted_year": 2023,
+        "positive_year_count": 2,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.022542204472081034,
+        "median_active_return": 0.0,
+        "negative_year_count": 3,
+        "neutral_year_count": 1,
+        "omitted_year": 2024,
+        "positive_year_count": 3,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      },
+      {
+        "mean_active_return": -0.019319422076785196,
+        "median_active_return": 0.0,
+        "negative_year_count": 2,
+        "neutral_year_count": 2,
+        "omitted_year": 2025,
+        "positive_year_count": 3,
+        "record_type": "LOYO_ARITHMETIC_YEAR_DELTA_NO_REFIT",
+        "remaining_year_count": 7
+      }
+    ]
+  },
+  "threshold_fit_count": 0
+}

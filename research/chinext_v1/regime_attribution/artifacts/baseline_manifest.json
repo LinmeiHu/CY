@@ -1,0 +1,75 @@
+{
+  "artifact_id": "CHINEXT-V1-REGIME-ATTRIBUTION-BASELINE-V1",
+  "created_on": "2026-08-30",
+  "strategy": {
+    "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+    "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+  },
+  "blocks": {
+    "EXTENDED_2018_2021": {
+      "date_range": ["2018-01-02", "2021-12-31"],
+      "pit_class": "BOUNDED_EFFECTIVE_STATE_PIT_B_NOT_STRICT_PIT_A",
+      "summary_path": "research/chinext_v1/reports/chinext_v1_extended_replay_summary.json",
+      "summary_sha256": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094",
+      "daily_nav_sha256": "4794fe7877adb4ac912e8def90d8b46cc4e3d213c1c40cc567860e98a799901a",
+      "event_ledger_sha256": "9fb92730ca1c30e448b32b07b6c5ab369b178c820821daf21f3b69b90b0dfc86",
+      "execution_ledger_sha256": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249",
+      "total_return": 0.6482237267899993,
+      "max_drawdown": -0.20762679470782652,
+      "completed_round_trips": 194,
+      "win_rate": 0.4536082474226804,
+      "mean_trade_return": 0.030455684400042576,
+      "median_trade_return": -0.00970512426371722,
+      "top20_positive_pnl_concentration": 0.7351787051890619,
+      "return_ex_best20": -0.5015728892100006
+    },
+    "HOLDOUT_O0_2022_2023": {
+      "date_range": ["2022-01-04", "2023-12-29"],
+      "pit_class": "BOUNDED_RECONSTRUCTED_PIT_B_NOT_STRICT_PIT_A",
+      "summary_path": "research/chinext_v1/reports/chinext_v1_phase9b_oos_validation_summary.json",
+      "summary_sha256": "1b3d7540db3e9a403f6f820da4e6e3d0afde33d31979d789c198bb93a5e207e4",
+      "engine_summary_sha256": "107c74c0dfe1d5ea31fb1de007c23a12736cb981cc11f2843df4988c8df3d86a",
+      "daily_nav_sha256": "1ff55ee194bbdc5fcb4c6041d99dbe5335548a22f05877aa17dc79fbe7152aa8",
+      "event_ledger_sha256": "ea2200e87ada0bc9a2b5ddcf7b9426c7bdfba20befc9cf58a802233fa5cef50c",
+      "execution_ledger_sha256": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf",
+      "total_return": -0.15522057457000038,
+      "max_drawdown": -0.193413353857543,
+      "completed_round_trips": 94,
+      "win_rate": 0.2553191489361702,
+      "mean_trade_return": -0.016552130299664392,
+      "median_trade_return": -0.033237367977433055,
+      "top20_positive_pnl_concentration": 0.9958255765854177,
+      "return_ex_best20": -0.33743483100000043
+    },
+    "DEVELOPMENT_2024_2025": {
+      "date_range": ["2024-01-02", "2025-12-31"],
+      "pit_class": "BOUNDED_RECONSTRUCTED_PIT_B_NOT_STRICT_PIT_A",
+      "summary_path": "research/chinext_v1/reports/chinext_v1_pit_replay_summary.json",
+      "summary_sha256": "10c9a10860dfaef5ee621a5e98741a9b0f881be247e8115cd524d9098a66d6af",
+      "daily_nav_sha256": "a1b8399c7f199a76ae6e891bbd690de16a3312d2cc548c77d552f2531adcc071",
+      "event_ledger_sha256": "721bdaa57e701ce40a9be37c29b6f0a13427efaf9074682bfc79255a4e62f655",
+      "execution_ledger_sha256": "f3a83a9e974776f34477c952b1bf4c26f22a5ef00879adfc77cd6188f9eec9d5",
+      "total_return": 1.0524221580500002,
+      "max_drawdown": -0.2622719258789836,
+      "completed_round_trips": 111,
+      "win_rate": 0.44144144144144143,
+      "mean_trade_return": 0.07731215882773483,
+      "median_trade_return": -0.01074995073617439,
+      "top20_positive_pnl_concentration": 0.8425435214865872,
+      "return_ex_best20": -0.3219529632499998
+    }
+  },
+  "reconciliation": {
+    "configuration_objects_equal": true,
+    "transaction_cost_bps_per_filled_side": 10.0,
+    "board_lot": 100,
+    "rank_replacement": "OFF",
+    "same_or_earlier_bar_fill_count_by_block": {
+      "EXTENDED_2018_2021": 0,
+      "HOLDOUT_O0_2022_2023": 0,
+      "DEVELOPMENT_2024_2025": 0
+    },
+    "nav_blocks_are_independent": true,
+    "naive_nav_chaining_forbidden": true
+  }
+}
