@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-005",
+  "hypothesis_id": "H-OBL-004",
+  "status": "FROZEN_BEFORE_FEATURE_MATERIALIZATION",
+  "evidence_grade": "EXPLORATORY_OUTCOME_BLIND_FEATURE_FREEZE_BOUNDED_PIT_B",
+  "outcome_access": false,
+  "question": "Can repeated approaches to the canonical prior-60 close resistance be measured as stable, distinct test episodes before outcomes are joined?",
+  "mechanism": "Repeated returns to a narrow resistance zone may consume overhead supply. Distinct entries into the zone are more faithful to repeated testing than raw days spent continuously near the high.",
+  "population": {
+    "events": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "event_key": ["baseline_block", "symbol", "entry_signal_date"],
+    "outcome_projection": "FORBIDDEN"
+  },
+  "reference": {
+    "definition": "maximum action-safe adjusted close over t-60..t-1",
+    "canonical_predicate": "signal close t strictly exceeds the reference",
+    "available_at": "signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "T+1 open or later"
+  },
+  "primary_feature": {
+    "name": "test_episode_count_2pct",
+    "zone": "prior close >= 98% of the reference",
+    "episode": "the first in-zone session or an in-zone session immediately preceded by an out-of-zone session",
+    "interpretation": "one continuous stay counts once; leaving and later returning creates another episode",
+    "missing_data": "no imputation; incomplete or invalid action coordinates fail the experiment"
+  },
+  "neighbors": {
+    "test_episode_count_1pct": "identical episode definition with prior close >=99% of reference",
+    "test_episode_count_3pct": "identical episode definition with prior close >=97% of reference"
+  },
+  "descriptive_context_not_alternatives": [
+    "zone-day counts at 1%, 2%, and 3%",
+    "maximum continuous zone run at 1%, 2%, and 3%",
+    "sessions since the latest exact reference close",
+    "t-1 distance below reference",
+    "signal breakout margin"
+  ],
+  "construction_gates": {
+    "minimum_primary_unique_values": 3,
+    "minimum_primary_unique_values_per_year": 2,
+    "minimum_neighbor_spearman": 0.65
+  },
+  "decision": {
+    "FREEZE_FEATURE": "all identity, PIT, exact-reconciliation, variation, neighboring-definition, and outcome-prohibition gates pass",
+    "REFINE": "an outcome-blind definition defect is diagnosed and a new experiment identity is justified",
+    "REJECT": "episode topology lacks variation or neighboring-definition stability"
+  },
+  "forbidden": [
+    "future return, MFE, MAE, false-breakout, holding, exit, winner, or loser data",
+    "choosing 1%, 2%, or 3% from outcomes",
+    "threshold sweep",
+    "visual support/resistance line",
+    "V1 modification",
+    "CY-011 access"
+  ],
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_resistance_test_feature_freeze.py",
+      "sha256": "98a4d0cb568804e51ed8c987bf9b6555e2ddca4694dfdfcfcb2f3194734beb65"
+    },
+    "base_outcome_blind_runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_outcome_blind_lineage_freeze.py",
+      "sha256": "d6bea6233ff1db8ec7004e1b438d87ebf95f6c7d7088c8800220ecb840002d7e"
+    },
+    "base_outcome_blind_spec": {
+      "path": "research/chinext_v1/original_breakout_lineage/experiments/EXP-OBL-003_spec.json",
+      "sha256": "11e5573312961cecb85d0f7756c9ef6fd6dc3a0ef359ab612ba1b11a181fe907"
+    },
+    "identity_projection_source": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "frozen_formation_features": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/formation_features_v3.csv",
+      "sha256": "a1e1d36e266df4cbfc3ab45b9843ffaab6833d429adf15e18f2baeb0c5b12ee0"
+    },
+    "phase2_outcome_blind_helper": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_frozen_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    },
+    "extended_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "canonical_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  },
+  "output_contract": {
+    "feature_table": "research/chinext_v1/original_breakout_lineage/artifacts/resistance_test_features.csv",
+    "audit": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-005_audit.json",
+    "feature_freeze": "research/chinext_v1/original_breakout_lineage/feature_freezes/FEATURE-OBL-005.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-005_resistance_test_feature_freeze.md"
+  }
+}

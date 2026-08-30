@@ -49,10 +49,11 @@ forbidden outcome columns. H-OBL-002 decision: `FREEZE_LINEAGE`.
 ## Current frontier
 
 The next independent question is repeated objective resistance testing. Freeze a
-new outcome-blind artifact counting prior-60 closes within 2% of the canonical
-reference, with 1%/3% neighbors, before any new association. Reference age,
-prebreakout distance, box width, V1 entry state, market state, and H-004 breadth
-are controls, not new search dimensions. No candidate rule exists.
+new outcome-blind artifact counting distinct prior-60 entries into the 2% zone
+below the canonical reference, with 1%/3% neighbors, before any new association.
+Zone duration, reference age, prebreakout distance, box width, V1 entry state,
+market state, and H-004 breadth are controls, not new search dimensions. EXP-
+OBL-005 is frozen before feature materialization. No candidate rule exists.
 
 ## Governance
 
