@@ -1,0 +1,88 @@
+{
+  "experiment_id": "MKT-MIN-PATH-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Can interpretable five-day ordinal progression, signed reversal, and curvature shapes form stable market-wide intraday trajectories after exact OLS5 slopes failed?",
+  "research_role": "outcome-blind non-slope trajectory representation and redundancy compression only",
+  "usefulness_boundary": "No supply exhaustion, demand strengthening, accumulation/distribution, support, acceptance, forecast, habitat, timing, or strategy claim is permitted.",
+  "inputs": {
+    "daily_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+      "sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701",
+      "allowed_suffixes": ["__median", "__p40", "__p60"],
+      "rows": 11656
+    },
+    "trajectory_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_trajectory_panel.parquet",
+      "sha256": "89d3e33bfc3eb64d91fe05e6f66f988af1890bf6e04c13b14f933dbf75eeb626",
+      "allowed_suffixes": ["__day_m5", "__day_m4", "__day_m3", "__day_m2", "__day_m1"],
+      "rows": 11624
+    },
+    "source_result_sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe",
+    "source_adapter_contract": "frozen required-scale MKT-MIN-001 exact PIT/session/reconciliation contract",
+    "raw_minute_rescan": "PROHIBITED"
+  },
+  "descriptors": {
+    "selling_pressure_recovery": ["downside_excursion", "down_minute_volume_share", "longest_below_vwap_fraction", "recovery_speed_30bar"],
+    "demand_acceptance": ["late_vwap_acceptance_fraction", "close_location", "positive_minute_fraction", "new_intraday_high_fraction"],
+    "volatility_contraction_expansion": ["intraday_log_range", "minute_realized_volatility", "vwap_deviation_std"],
+    "volume_path": ["minute_volume_concentration"]
+  },
+  "operators": {
+    "ordinal_progression": {
+      "primary": "mean sign of four adjacent changes",
+      "neighbors": ["mean sign of all ten ordered day pairs", "rank correlation of day order and values"]
+    },
+    "signed_reversal": {
+      "primary": "opposite early-two-change and late-two-change mean signs, emitting late sign",
+      "neighbors": ["opposite first/last adjacent-change signs", "opposite early-half-to-middle and middle-to-late-half signs"]
+    },
+    "curvature": {
+      "primary": "late-two-change mean minus early-two-change mean",
+      "neighbors": ["last adjacent change minus first adjacent change", "day_m1 - 2*day_m3 + day_m5"]
+    }
+  },
+  "forbidden_fields": [
+    "all __ols_slope5, __ols_slope3, __endpoint_change5, and __endpoint_slope5 fields",
+    "precomputed signed_monotonic_fraction, slope_acceleration, and reversal_shape fields",
+    "raw minute rows",
+    "strategy membership, signal, trade, fill, return outcome, MFE, MAE, exit, or outcome class",
+    "future return or post-decision path",
+    "CY-011"
+  ],
+  "population": {
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "trajectory_rows_per_group": 1453,
+    "decision_at": "fifth completed close at 15:00 Asia/Shanghai",
+    "no_strategy_conditioning": true
+  },
+  "coordinates": {
+    "absolute": "raw non-slope operator value on median daily descriptor",
+    "pit": "causal expanding/trailing-756 percentile and robust z after 504 observations",
+    "relative": "same-date view minus ALL_A and rank across governed views",
+    "aggregation_neighbors": "same operator on daily p40 and p60 descriptor series"
+  },
+  "gates": {
+    "raw_coverage": 0.95,
+    "worst_median_operator_neighbor_spearman": 0.7,
+    "worst_median_aggregation_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "reversal_both_nonzero_signs_each_eligible_cell": true,
+    "pit_and_relative_expected_coverage": 0.95,
+    "same_session_level_redundancy_absolute_spearman": 0.85,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "descriptor_priority": ["downside_excursion", "down_minute_volume_share", "longest_below_vwap_fraction", "recovery_speed_30bar", "late_vwap_acceptance_fraction", "close_location", "positive_minute_fraction", "new_intraday_high_fraction", "intraday_log_range", "minute_realized_volatility", "vwap_deviation_std", "minute_volume_concentration"],
+    "operator_priority": ["ordinal_progression", "signed_reversal", "curvature"],
+    "no_rescue": "A failed descriptor/operator is not replaced by a favorable definition, aggregation, view, year, endpoint, OLS field, or another descriptor."
+  },
+  "engineering": {"deterministic_reruns_required": 2, "raw_minute_rows_read": 0},
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-001_nonslope_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-PATH-001_nonslope_trajectory.md"
+  ]
+}

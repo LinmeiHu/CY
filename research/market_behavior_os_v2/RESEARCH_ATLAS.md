@@ -20,6 +20,7 @@
 | `VOLATILITY_REPRESENTATION_MAP.md` | Outcome-blind multidimensional volatility concept map |
 | `MARKET_INTRADAY_SAMPLING_CONTRACT.md` | Strategy-independent bounded minute readiness sampling and PIT contract |
 | `MARKET_INTRADAY_REPRESENTATION_MAP.md` | Required-scale same-session and five-day minute representation semantics |
+| `MARKET_INTRADAY_NONSLOPE_PROCESS_MAP.md` | Fixed five-day ordinal progression, signed reversal, and curvature semantics after OLS failure |
 | `DATA_CAPABILITY_MATRIX.md` | Governed available/unavailable research data capabilities |
 | `DATA_GAP_BACKLOG.md` | Missing data and scientifically valid resolution paths |
 | `RESOURCE_BUDGETS.md` | Frozen and measured large-job envelopes |

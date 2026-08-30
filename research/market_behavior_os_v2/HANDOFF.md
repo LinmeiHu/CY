@@ -214,3 +214,10 @@ five-day intraday Process Map before construction. Reuse the exact required-
 scale trajectory artifact, avoid a raw-minute rescan, and test monotonicity,
 reversal, and curvature shapes without promoting endpoint/OLS3 neighbors as an
 OLS5 rescue. Outcomes, strategy fields, and CY-011 remain prohibited.
+
+MKT-MIN-PATH-001 is frozen before construction under spec `bf7e05dc...`. It
+binds exact daily hash `bdbb3cb9...` and trajectory hash `89d3e33b...`, selects
+12 descriptors and three operators before testing, and forbids raw-minute
+rescans plus every OLS/endpoint/precomputed-shape field. Execute twice and keep
+all 36 attempts in the ledger; no favorable descriptor/operator may rescue
+another.

@@ -8,7 +8,7 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-010_COMPLETE_MKT-MIN-PATH-001_NEXT`
+- `CURRENT_PHASE`: `MKT-MIN-PATH-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: structurally distinct non-slope five-day market intraday trajectories
 - `SUPPORTING_FRONTIER`: frozen same-session intraday levels and rejected exact OLS/directional-stress processes
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -246,3 +246,9 @@ shapes. It may not promote endpoint change, OLS3, or any favorable old neighbor
 as a replacement for the rejected OLS5 primary; must preserve absolute/PIT/
 relative coordinates, test definition/view/year/denominator stability and
 redundancy with same-session levels; and may read no outcomes or strategy fields.
+
+The MKT-MIN-PATH-001 map and spec `bf7e05dc...` are now frozen before
+construction. Twelve descriptors and three non-slope operators produce exactly
+36 primaries. Only Day -5..Day -1 and daily median/p40/p60 values are allowed;
+old OLS, endpoint, precomputed-shape, raw-minute, outcome, and strategy fields
+are prohibited.
