@@ -549,5 +549,7 @@ byte-consistent with one another.
 - Confounds: PIT-B rather than strict PIT-A; already-consumed outcomes; only four
   discovery years; chip features are available at signal-day 15:30 and cannot
   fill inside that bar.
-- Status: `PREREGISTERED_UNRESOLVED`. No chip/outcome association has been
-  executed. No threshold, filter, signal, replay, or strategy action is allowed.
+- Status: `UNRESOLVED_AFTER_INVALID_EXP-CBC-001`. CBC-001 raised on a missing
+  explicit empty controlled-estimator argument; no result was output, inspected,
+  or accepted. Continue only with fresh CBC-002 identity/output paths and
+  unchanged science. No threshold, filter, signal, replay, or action is allowed.

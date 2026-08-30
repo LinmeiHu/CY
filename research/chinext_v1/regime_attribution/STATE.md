@@ -2,9 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-CBC-001_PREREGISTERED — H-025 freezes one chip-base coherence composite before
-its first chip/outcome association. The 220-row PIT-B discovery sample is exact;
-2024-2026 locked validation remains unopened.
+EXP-CBC-001_INVALID — H-025 remains unresolved. CBC-001 failed on a missing
+explicit empty controlled-estimator argument; no estimate was output/inspected
+and no artifact exists. Fresh CBC-002 identity is required. Locked 2024-2026
+validation remains unopened.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -946,6 +947,19 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Spec SHA `e919e3b8303a59b79bd1f0a5f4690c75bace18328a4b31324499c0b183ebdeed`;
   runner SHA `ecb68f642260ca2193fc06326d2aa195471b1e92606edb3c48d34863d6d8ba0d`.
   Status is frozen before the first chip/outcome association.
+
+## AUTONOMOUS_CYCLE_EXP_CBC_001_INVALIDATION
+
+- The frozen runner calculated an unprinted raw packet in memory, then raised
+  `TypeError` because `controlled_loyo` was called without the required
+  keyword-only `extra_controls` argument.
+- No estimate was printed or inspected. The controlled estimate, gates, decision,
+  and all four output writes were never reached; all output paths remain absent.
+- EXP-CBC-001 spec/runner are permanently frozen and invalid. H-025 science is
+  unchanged and unresolved.
+- A clean re-execution requires fresh EXP-CBC-002 identity and output paths. The
+  only permitted engineering correction is explicit `extra_controls=()` in the
+  already-intended controlled call.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
