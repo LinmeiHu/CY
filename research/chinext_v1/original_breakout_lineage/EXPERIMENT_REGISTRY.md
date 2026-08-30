@@ -10,6 +10,7 @@
 | EXP-OBL-005 | H-OBL-004 | Freeze distinct prior-60 resistance-test episodes at 2%, with 1%/3% neighbors, before a new endpoint join. | REJECTED_CONSTRUCTION_ROBUSTNESS; no output | NONE |
 | EXP-OBL-006 | H-OBL-005 | Freeze parameter-free T-1 prebreakout positioning distance with T-3/T-5 temporal neighbors. | REJECTED_CONSTRUCTION_ROBUSTNESS; no output | NONE |
 | EXP-OBL-007 | H-OBL-006 | Test exact canonical-reference age as a supply-turnover formation mechanism. | COMPLETE_REJECTED | VALID_REVEAL; no rule |
-| AUDIT-OBL-002 | H-OBL-007 | Audit reconstruction feasibility for outcome-blind cross-sectional signal competition and rank margin. | PLANNED | NONE |
+| AUDIT-OBL-002 | H-OBL-007 | Audit reconstruction feasibility for outcome-blind cross-sectional signal competition and rank margin. | COMPLETE_FEASIBLE_BOUNDED | NONE |
+| EXP-OBL-008 | H-OBL-007 | Freeze exact contested/uncontested selection lineage and continuous competition context from fresh event-only replays. | PLANNED_NOT_PREREGISTERED | FORBIDDEN |
 
 Invalid or failed attempts will remain as separate immutable rows and identities.

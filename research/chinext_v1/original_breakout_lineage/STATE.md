@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_007_COMPLETE_REJECTED_NEXT_FEASIBILITY_AUDIT_SELECTED`
+`AUDIT_OBL_002_COMPLETE_SELECTION_LINEAGE_FREEZE_PLANNED`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -96,10 +96,17 @@ families are now null or outcome-blind unstable. The next independent mechanism
 is whether accepted signals form different PIT selection-competition lineages
 under cross-sectional RS ranking and finite portfolio capacity.
 
+AUDIT-OBL-002 finds this reconstruction feasible. The exact frozen engine emits
+same-session evaluated-signal RS/min-volume state and previous/desired portfolio
+sets. All three bounded block inputs remain available. Original source-worktree
+ledgers are missing from the autonomous tree and were not opened; fresh replays
+must be temporary and the feature runner may read only their event ledgers.
+
 ## Exact next action
 
-Run AUDIT-OBL-002 without outcomes. Determine whether the complete daily PIT
-eligible candidate set, frozen RS ordering, vacancy count, selection boundary,
-and accepted trade mapping can be reconstructed exactly inside the autonomous
-workspace. If not, record the data gap and pivot. Do not use outputs from the
-original source worktree and do not open CY-011.
+Preregister EXP-OBL-008 before running any replay. Freeze the exact canonical
+`CONTESTED` versus `UNCONTESTED` capacity lineage plus candidate count,
+vacancies, selection pressure, normalized rank, and contested cutoff margin.
+Run unchanged engines only in temporary directories, read event ledgers only,
+join identity-only 399-cycle keys, and fail on any mapping discrepancy. Do not
+open CY-011.

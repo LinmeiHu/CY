@@ -99,6 +99,14 @@ accepted mapping using only autonomous-workspace code and registered PIT data.
 Do not bind or consume the original source worktree's output ledgers. CY-011
 remains locked.
 
+AUDIT-OBL-002 concludes this is feasible. The unchanged engine hash matches its
+frozen contract and records evaluated-signal RS/min-volume state plus
+previous/desired sets. EXP-OBL-008 should run all three bounded baseline blocks
+in fresh temporary directories, read event ledgers only, project the 399-cycle
+identity columns, and freeze exact contested/uncontested selection lineage plus
+continuous pressure/rank context. Generated performance/execution/NAV files
+must remain unread and temporary. No candidate rule exists.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

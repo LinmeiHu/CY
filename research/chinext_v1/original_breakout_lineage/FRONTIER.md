@@ -104,6 +104,14 @@ rank order, portfolio vacancies, and selected boundary can be reproduced inside
 this autonomous workspace without outcomes or reliance on the original
 worktree's output directory.
 
+AUDIT-OBL-002 resolves feasibility positively. The new representation will use
+the exact capacity boundary: a selected signal is `CONTESTED` only when the
+same-session eligible candidate count exceeds vacancies before selection;
+otherwise it is `UNCONTESTED`. Candidate count, vacancies, pressure, normalized
+RS rank, and cutoff margin are context, not selectable thresholds. EXP-OBL-008
+must freeze coverage, class presence, deterministic replay identity, and the
+outcome prohibition before any economic reveal.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
