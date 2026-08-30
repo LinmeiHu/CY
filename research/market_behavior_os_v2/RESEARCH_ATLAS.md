@@ -109,6 +109,8 @@
 | `experiments/MKT-SUPPORT-DYN-DATA-002_spec.json` | Frozen 2-GiB-memory/10-GiB-spill execution correction |
 | `OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT_V3.md` | Exact five-session batching and reference-equivalence correction |
 | `experiments/MKT-SUPPORT-DYN-DATA-003_spec.json` | Frozen 2,307,575-row block-batched retry before complete scale |
+| `OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT_V4.md` | Final measured 1.5-GiB daily-memory correction with no further rescue |
+| `experiments/MKT-SUPPORT-DYN-DATA-004_spec.json` | Frozen final exact block-batch resource retry |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

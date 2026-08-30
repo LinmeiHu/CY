@@ -279,3 +279,8 @@ independent date/symbol filters read a Cartesian superset. MKT-SUPPORT-DYN-DATA-
 003 is frozen under `e8045eb3...` and batches only by the preexisting five-day
 block. First-block exact reference equivalence is mandatory; failure cannot be
 rescued by dropping sessions or raising RSS.
+
+MKT-SUPPORT-DYN-DATA-003 still lacks lifetime RSS margin under its inherited
+2-GiB daily setting. MKT-SUPPORT-DYN-DATA-004 is frozen under `63c8a1f8...` and
+changes only that engine memory limit to the measured-safe 1.5 GiB. This is the
+final resource retry; failure triggers synthesis rather than another relaxation.

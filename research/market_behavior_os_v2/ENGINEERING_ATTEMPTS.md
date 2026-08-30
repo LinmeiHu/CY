@@ -273,6 +273,18 @@ measurement plus that annual table peaks at 4,344,119,296 bytes. The 003 retry
 must batch by the already frozen five-session block and prove reference
 equivalence before complete scale; it may not shrink or replace the sample.
 
+## MKT-SUPPORT-DYN-DATA-003 — invalid block-batch lifetime RSS margin
+
+The block-batched retry still inherits a 2-GiB daily-coordinate memory limit.
+Its daily lifetime peak plus the first reference/block allocation breaches the
+unchanged 3-GiB RSS guard. No complete output or adequacy count is accepted.
+
+A same-SQL 1.5-GiB daily-memory measurement plus the exact first block peaks at
+2,144,124,928 bytes RSS, preserves 12,700,811,264 bytes available memory, and
+uses 9,155,805,184 bytes live spill, all within existing ceilings. The 004 retry
+changes only that engine memory setting. Further in-experiment resource rescue
+is prohibited.
+
 ## MKT-STYLE-001 — invalid cumulative size-rank denominator
 
 The first implementation used an ordered window for both row number and count.

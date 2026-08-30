@@ -1020,3 +1020,15 @@ It retains every 001/002 scientific and resource value and changes only the
 minute read to exact five-session `(year, block_id)` batches. It requires
 2,307,575 total raw rows and exact canonical-frame equivalence between parent
 and candidate readers on 2018 block 1 before complete scale. Execute twice.
+
+MKT-SUPPORT-DYN-DATA-003 still fails the 3-GiB lifetime RSS guard because the
+inherited 2-GiB daily phase leaves too little margin for a block allocation. It
+produces no complete output or accepted count. The exact 1.5-GiB measurement
+plus first block records 2,144,124,928 bytes peak RSS, 12,700,811,264 bytes
+available memory, and 9,155,805,184 bytes live spill.
+
+MKT-SUPPORT-DYN-DATA-004 is frozen under SHA-256
+`63c8a1f86dcf1e05e8f4284df3c1d9d2454c50dbc1f56e670b4a83090c35e6e2`.
+It changes only the daily DuckDB memory limit from 2 to 1.5 GiB and inherits all
+003 batching/reference and 001/002 scientific/resource gates. No further
+resource rescue is allowed. Execute twice if the first complete run passes.

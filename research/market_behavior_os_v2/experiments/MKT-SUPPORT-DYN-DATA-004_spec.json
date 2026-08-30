@@ -1,0 +1,48 @@
+{
+  "experiment_id": "MKT-SUPPORT-DYN-DATA-004",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_FINAL_EXACT_RESOURCE_RETRY_BEFORE_COMPLETE_MINUTE_AUDIT",
+  "question": "Can the unchanged block-batched temporal-sample audit complete under the measured 1.5-GiB daily-coordinate memory setting?",
+  "outcome_access": false,
+  "inputs": {
+    "resource_contract_v4": {"path": "research/market_behavior_os_v2/OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT_V4.md", "sha256": "4d2a37653ac4572583c5770f7d6d83b72aa509e6c969d2e1e2d3cd5f05720b39"},
+    "parent_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DYN-DATA-003_spec.json", "sha256": "e8045eb3953f17c08e8e7324f0ea1f10e11c4c4206c16c591f65fca129824a68"},
+    "parent_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_dyn_data_003.py", "sha256": "9926fe8cdcea2f17020e6594c6e49d39637248b99419e158aeb02b2531431b00"}
+  },
+  "invalid_parent": {
+    "experiment_id": "MKT-SUPPORT-DYN-DATA-003",
+    "outputs_accepted": false,
+    "failure": "2-GiB daily-phase lifetime RSS plus first reference/block allocation exceeds 3 GiB",
+    "adequacy_counts_inspected_or_accepted": false
+  },
+  "exact_inheritance": {
+    "all_001_scientific_and_sample_fields": true,
+    "all_002_spill_and_resource_ceilings": true,
+    "all_003_block_batch_and_reference_equivalence_fields": true,
+    "underlying_input_and_partition_identities": true,
+    "outcome_and_claim_boundaries": true
+  },
+  "only_change": {
+    "duckdb_daily_coordinate_memory_limit_gib_from": 2,
+    "duckdb_daily_coordinate_memory_limit_gib_to": 1.5,
+    "output_experiment_id": "MKT-SUPPORT-DYN-DATA-004"
+  },
+  "measured_gate": {
+    "peak_rss_bytes": 2144124928,
+    "available_memory_bytes": 12700811264,
+    "live_spill_bytes": 9155805184,
+    "reference_block_cohort_rows": 200,
+    "reference_block_unique_sessions": 200
+  },
+  "no_rescue": "No further resource relaxation or any calendar, sample, coordinate, descriptor, adequacy, outcome, or claim change is allowed inside 004.",
+  "claim_boundary": "Passing establishes only bounded PIT-B data and sample adequacy for a later objective-recovery temporal representation map; it establishes no support, defense, strengthening, weakening, failure process, prediction, habitat, timing, execution, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_sample.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_coordinate_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_population_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_support_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-DYN-DATA-004_audit.md"
+  ]
+}

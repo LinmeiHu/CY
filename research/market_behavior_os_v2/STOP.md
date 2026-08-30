@@ -30,3 +30,7 @@ The 002 annual minute batch then breaches RSS through a diagnosed Cartesian
 over-read. MKT-SUPPORT-DYN-DATA-003 is separately frozen to use the existing
 five-session blocks, with exact reference equivalence before scale. This remains
 a bounded engineering retry rather than an S1--S12 STOP.
+The 003 first block still exceeds lifetime RSS under the inherited 2-GiB daily
+cap. A 1.5-GiB same-SQL measurement passes every existing ceiling, so 004 is
+frozen as the final exact correction. Failure after 004's measured configuration
+requires synthesis; no ceiling or sample relaxation is authorized.

@@ -63,6 +63,12 @@ memory/10-GiB disposable-spill settings and batches raw minutes by the frozen
 five-session block. Its exact complete raw-row budget is 2,307,575, and every
 block table must be released before the next.
 
+The inherited 2-GiB daily setting still leaves insufficient lifetime peak
+margin in 003. The final 004 setting is 1.5 GiB: measured daily plus first-block
+peak 2,144,124,928 bytes, available memory 12,700,811,264 bytes, and live spill
+9,155,805,184 bytes. The existing 3-GiB RSS, 8-GiB headroom, and 10-GiB spill
+ceilings do not change.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

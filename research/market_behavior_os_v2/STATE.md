@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-003_FROZEN_BLOCK_BATCH_RETRY_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-004_FROZEN_FINAL_RESOURCE_RETRY_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -1023,6 +1023,18 @@ science and resource values and changes only minute batching to the already
 frozen `(year, block_id)` five-session units, releasing every batch before the
 next. Complete raw-row conservation is exactly 2,307,575. Exact reference/
 candidate equivalence on 2018 block 1 must pass before all 48 blocks execute.
+
+MKT-SUPPORT-DYN-DATA-003 remains invalid before complete output: its inherited
+2-GiB daily memory setting leaves insufficient lifetime-RSS margin for the
+first reference/block allocation. No adequacy count is accepted. A same-SQL
+1.5-GiB measurement plus the exact 200-row first block peaks at 2,144,124,928
+bytes, preserves 12,700,811,264 bytes available, and spills 9,155,805,184 bytes,
+passing the existing 3/8/10-GiB gates.
+
+MKT-SUPPORT-DYN-DATA-004 is frozen under SHA-256 `63c8a1f8...` and changes only
+the daily DuckDB memory limit from 2 to 1.5 GiB. All block batching, reference
+equivalence, science, sample, adequacy, and claim fields are inherited exactly.
+No further resource relaxation is allowed inside 004.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from
