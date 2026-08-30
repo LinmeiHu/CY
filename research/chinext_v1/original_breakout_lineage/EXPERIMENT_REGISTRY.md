@@ -13,6 +13,6 @@
 | AUDIT-OBL-002 | H-OBL-007 | Audit reconstruction feasibility for outcome-blind cross-sectional signal competition and rank margin. | COMPLETE_FEASIBLE_BOUNDED | NONE |
 | EXP-OBL-008 | H-OBL-007 | Freeze exact contested/uncontested selection lineage and continuous competition context from fresh event-only replays. | REFINE_CONSTRUCTION_GATE_FAILED; no output | NONE |
 | EXP-OBL-009 | H-OBL-007 | Clean feasibility refinement preserving the exact selection boundary/assignments and changing only balance gates to 40/90%. | COMPLETE_FREEZE_LINEAGE | NONE; freeze only |
-| EXP-OBL-010 | H-OBL-008 | Reveal MFE/non-false-breakout outcomes against the frozen contested selection lineage. | PLANNED_NOT_PREREGISTERED | FORBIDDEN until freeze commit |
+| EXP-OBL-010 | H-OBL-008 | Reveal MFE/non-false-breakout outcomes against the frozen contested selection lineage. | FROZEN_BEFORE_FIRST_OUTCOME_JOIN | VALID only after this commit |
 
 Invalid or failed attempts will remain as separate immutable rows and identities.

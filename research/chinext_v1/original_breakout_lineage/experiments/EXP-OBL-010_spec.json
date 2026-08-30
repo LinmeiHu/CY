@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-010",
+  "hypothesis_id": "H-OBL-008",
+  "status": "FROZEN_BEFORE_FIRST_OUTCOME_JOIN",
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "question": "Does winning a capacity-contested same-session RS tournament distinguish subsequent opportunity and false-breakout behavior?",
+  "mechanism": "When candidates exceed canonical vacancies, accepted signals are the exact top-ranked survivors of a real cross-sectional tournament; this selection pressure should add quality information beyond their absolute RS score.",
+  "lineage_freeze": {
+    "lineage_freeze_id": "LINEAGE-OBL-009-2BECCEFAF46C1140",
+    "feature_sha256": "2beccefaf46c1140c4cb243e5c26999fb1d1f63afb6aa25c9db4a7901122c848",
+    "freeze_manifest_sha256": "b18fccf51defbde8e8422328940e177d4dfd877a0575e8c3b302c5bbd2b1e5d6",
+    "modification_after_reveal": "FORBIDDEN"
+  },
+  "population": {
+    "events": 399,
+    "lineage_counts": {"L_CONTESTED": 48, "L_UNCONTESTED": 351},
+    "expected_outcome_counts": {
+      "opportunity20": 84,
+      "false_breakout": 213,
+      "extreme_winner": 15,
+      "severe_loss": 44
+    },
+    "controlled_minimum_complete_rows": 380,
+    "qualification": "Historically outcome-consumed bounded PIT-B; CY-011 remains locked."
+  },
+  "primary_predictor": {
+    "name": "contested_selection",
+    "mapping": {"L_CONTESTED": 1, "L_UNCONTESTED": 0},
+    "expected_direction": "positive"
+  },
+  "primary_outcomes": {
+    "mfe": {"definition": "accepted holding-path MFE", "expected_direction": "positive"},
+    "non_false_breakout": {"definition": "one minus accepted false_breakout", "expected_direction": "positive"}
+  },
+  "primary_metrics": {
+    "raw": "Spearman association over 399 events",
+    "controlled": "partial rank after fixed controls and entry-year effects",
+    "loyo": "all eight leave-one-year-out omissions",
+    "temporal_blocks": "three frozen blocks",
+    "multiple_testing": "BH over exactly two raw co-primary p-values"
+  },
+  "fixed_controls": [
+    "entry_rs_score",
+    "entry_mom20",
+    "entry_box_width",
+    "entry_minvol_location",
+    "entry_breakout_volume_ratio",
+    "index_return_20d",
+    "index_realized_vol20",
+    "breadth_composite",
+    "entry_beta60",
+    "entry_log_amount20",
+    "entry-year fixed effects"
+  ],
+  "falsification": {
+    "candidate_context": "add candidate_count, vacancies_before_selection, and selected_rank_percentile",
+    "temporal": ["LOYO", "three blocks", "remove 2025", "post-2021 only"],
+    "tails": ["remove top-1% absolute PnL", "remove extreme winners", "remove severe losses"],
+    "post_entry": "holding duration and exit reason sensitivity only",
+    "concentration": ["leave one security out", "leave one PIT industry out"],
+    "rs_reconciliation": "event selected_rs_score must equal accepted entry_rs_score within 1e-12"
+  },
+  "secondary_not_decision_rescuing": [
+    "selection pressure",
+    "selected rank percentile",
+    "contested cutoff margin",
+    "terminal return",
+    "extreme-winner frequency"
+  ],
+  "decision_gates": {
+    "raw_minimum_rho": 0.1,
+    "raw_minimum_positive_loyo": 7,
+    "maximum_bh_qvalue": 0.1,
+    "controlled_minimum_rho": 0.08,
+    "controlled_minimum_positive_loyo": 6,
+    "minimum_positive_blocks": 2,
+    "minimum_block_rho_exclusive": -0.05,
+    "attack_minimum_rho_exclusive": 0.0,
+    "minimum_leave_group_positive_fraction": 0.85,
+    "leave_group_minimum_rho_exclusive": -0.02
+  },
+  "decision": {
+    "VALIDATE": "both endpoints pass raw, controlled, temporal, and falsification gates",
+    "SUPPORTED_WEAK": "both pass raw, controlled, and temporal but falsification fails",
+    "REFINE": "at least one endpoint passes raw and controlled magnitude gates",
+    "REJECTED": "neither endpoint passes raw and controlled magnitude gates"
+  },
+  "interpretation_boundary": {
+    "available_at_timestamp": "signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "T+1 open or later",
+    "forbidden": [
+      "lineage redefinition",
+      "pressure/rank/margin threshold search",
+      "same-session action",
+      "entry, exit, sizing, overlay, or production rule",
+      "CY-011 access"
+    ]
+  },
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_selection_lineage_outcome_reveal.py",
+      "sha256": "0c02af8c04a28af8649835bbff247d04b030af2527284ebfe11e21982f94d22c"
+    },
+    "analysis_helper": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py",
+      "sha256": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f"
+    },
+    "selection_features": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/selection_competition_features_v2.csv",
+      "sha256": "2beccefaf46c1140c4cb243e5c26999fb1d1f63afb6aa25c9db4a7901122c848"
+    },
+    "selection_freeze_manifest": {
+      "path": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-009.json",
+      "sha256": "b18fccf51defbde8e8422328940e177d4dfd877a0575e8c3b302c5bbd2b1e5d6"
+    },
+    "selection_audit": {
+      "path": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-009_audit.json",
+      "sha256": "571ca5fee39f6d7f70b43beeee26f3f5e88f2a4094400c37c4468dc41b585187"
+    },
+    "accepted_outcomes": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv",
+      "sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41"
+    },
+    "accepted_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_trade_paths": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    }
+  },
+  "output_contract": {
+    "table": "research/chinext_v1/original_breakout_lineage/artifacts/selection_lineage_outcome_reveal.csv",
+    "result": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-010_result.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-010_selection_lineage_outcome_reveal.md",
+    "evidence_packet": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-010_evidence_packet.md"
+  }
+}

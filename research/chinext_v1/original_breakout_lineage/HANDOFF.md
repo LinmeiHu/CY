@@ -135,6 +135,12 @@ RS, V1 entry state, market/breadth, year, candidate/vacancy context, tails,
 duration/exit, security/industry, and the late concentration of contested events
 must be attacks or controls. CY-011 remains locked.
 
+EXP-OBL-010 is committed before outcome access with contested-positive direction
+for both MFE and non-false-breakout. Its primary controls include absolute RS and
+the fixed V1/market/breadth state; its attacks include candidate/vacancy/rank,
+2025 concentration, post-2021, tails, duration/exit, security, and industry.
+Execute unchanged and apply the frozen gates literally.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

@@ -135,6 +135,10 @@ information beyond absolute RS and the fixed V1/market/breadth state. A separate
 reveal must retain the frozen positive direction and treat temporal imbalance as
 a falsification attack.
 
+EXP-OBL-010 freezes that reveal before its first outcome join. Continuous
+pressure, rank, margin, terminal return, and right-tail evidence are explicitly
+non-rescuing; the contested binary must support both co-primary endpoints.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

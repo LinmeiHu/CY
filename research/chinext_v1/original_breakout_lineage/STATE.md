@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_009_COMPLETE_SELECTION_LINEAGE_FROZEN`
+`EXP_OBL_010_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -116,8 +116,7 @@ identical. No outcome or temporary performance file was read.
 
 ## Exact next action
 
-Commit the EXP-OBL-009 lineage freeze, then preregister a separate EXP-OBL-010
-outcome reveal. Predict contested positive versus uncontested on both MFE and
-non-false-breakout; control absolute RS, V1 entry state, market/breadth, and year.
-Treat the low early-year contested incidence as a temporal falsification risk,
-not a reason to reweight or redefine the lineage. Do not open CY-011.
+Execute committed EXP-OBL-010 without changing the positive prediction, two
+co-primary endpoints, controls, or gates. Apply absolute-RS reconciliation,
+LOYO/blocks, 2025 removal, post-2021, candidate/vacancy/rank, tails,
+duration/exit, security, and industry attacks. Do not open CY-011.
