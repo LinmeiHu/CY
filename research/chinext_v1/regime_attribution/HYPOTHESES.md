@@ -518,5 +518,10 @@ byte-consistent with one another.
 - Confounds: actual-path residual failure remains survivor-conditioned and does
   not identify the counterfactual return from an earlier exit. AVAILABLE_AT is
   Day-3 15:30; no stop, hold, exit, threshold, replay, or action is authorized.
-- Status: `PREREGISTERED_UNRESOLVED`. EXP-SLP-001 is frozen before its first
-  residual-failure association.
+- Result: raw/within-year rhos are 0.025/0.017 with 8/8 positive raw LOYO, but
+  the effect is far below the frozen 0.10 gate. Controlled rho is 0.005 with 4/8
+  positive LOYO. Day2/Day5/beta neighbors are 0.018/-0.033/0.008; block rhos are
+  0.030/0.045/-0.090. Duration/exit is -0.182 and ex-severe is -0.058.
+- Status: `REJECTED` by valid EXP-SLP-001. All five gates fail. H-023 remains
+  descriptive Day-3 localization only; no stop, exit, hold, threshold, replay,
+  or V1 action is supported.

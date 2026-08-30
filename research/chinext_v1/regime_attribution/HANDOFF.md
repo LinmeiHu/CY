@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-SLP-001_PREREGISTERED` on 2026-08-30.
+`EXP-SLP-001_COMPLETE_REJECTED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -72,6 +72,13 @@ neighbors, H-014 non-persistence, market/entry state, LOYO, blocks,
 duration/exit, tails, securities, and industries are fixed attacks. All sample
 counts and return-domain invariants reconcile, and fresh outputs are absent.
 Execute without changing any definition or creating a stop/exit rule.
+
+EXP-SLP-001 validly rejects H-024. Raw/controlled residual-failure rhos are
+0.025/0.005; Day2/Day5/beta neighbors are 0.018/-0.033/0.008; blocks are
+0.030/0.045/-0.090; duration/exit is -0.182. All five gates fail and two runs
+are byte-identical. H-023 remains descriptive Day-3 localization only. The next
+frontier is a read-only CY-011 chip-state governance/coverage audit restricted to
+authorized 2020-2023 discovery; do not open 2024-2026 locked validation.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

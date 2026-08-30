@@ -64,6 +64,11 @@ Updated 2026-08-30 after resume integrity reconciliation.
   beta-adjusted neighbor is weak and HOLDOUT has no extreme-winner variation.
   Do not search beta estimators, alternate market proxies, or day landmarks to
   force a clean attribution from this consumed sample.
+- H-024 rejects persistence after H-023's Day-3 adverse state. Once Day-3 return
+  is removed multiplicatively, raw/controlled future-failure rhos are only
+  0.025/0.005, Day-5 is negative, HOLDOUT is negative, and all five gates fail.
+  Do not search alternate early landmarks, residual identities, stop thresholds,
+  or exit rules. H-023 is retained only as descriptive loss localization.
 
 ## Invalid rather than rejected
 

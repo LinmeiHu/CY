@@ -2,9 +2,8 @@
 
 ## CURRENT_PHASE
 
-EXP-SLP-001_PREREGISTERED — H-024 is frozen before its first residual-failure
-association. H-023 locates stable severe-loss separation by Day 3, but remains
-outcome-overlapping and cannot support a stop or exit rule.
+EXP-SLP-001_COMPLETE_REJECTED — H-024 finds no stable additional failure after
+Day 3. H-023 remains descriptive Day-3 localization, not a stop or exit signal.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -882,6 +881,25 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Spec SHA `a3de22a582dc54de12838b0e07c59937d6e0fe2c4041d6f3c28d12386fc6c30b`;
   runner SHA `b5c37bf09428aee650a4f85dce3c5150c1176a477ae1b569fc3e96dcfe1962e0`.
   Status is frozen before the first residual-failure test.
+
+## AUTONOMOUS_CYCLE_EXP_SLP_001_RESULT
+
+- The frozen Day-3 adverse state has raw/within-year future-failure rhos
+  0.025/0.017. Raw LOYO signs are 8/8 positive, but magnitude is far below the
+  preregistered 0.10 gate.
+- Concurrent-market and fixed-entry controlled rho is 0.005 with 4/8 positive
+  LOYO. Day-2 all-cycle, Day-5 survivor, and beta-adjusted neighbors are
+  0.018/-0.033/0.008 with 7/8, 2/8, and 7/8 positive LOYO.
+- DEVELOPMENT/EXTENDED/HOLDOUT block rhos are 0.030/0.045/-0.090. Duration/exit
+  partial rho is -0.182; ex-Bottom4 is 0.014 and ex-severe is -0.058. Security
+  and industry omission signs are stable but cannot rescue failed primary gates.
+- Every frozen raw, controlled, neighbor, temporal, and falsification gate fails.
+  Decision: `REJECT` / `NO_STABLE_POST_DAY3_FAILURE_PERSISTENCE`.
+- Two executions are byte-identical. Output hashes: table `0ef1a2ef...`, JSON
+  `a6eb692f...`, report `a4f895bd...`, packet `d753983e...`.
+- H-023 therefore locates realized severe-loss topology by Day 3 but does not
+  explain additional failure afterward. No stop, exit, hold, threshold, replay,
+  or V1 modification is authorized.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

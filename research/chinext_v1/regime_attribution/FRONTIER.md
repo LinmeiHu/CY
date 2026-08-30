@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`EXECUTE_PREREGISTERED_H024_POST_DAY3_RESIDUAL_FAILURE_FALSIFICATION`.
+`PIVOT_TO_GOVERNED_CHIP_STATE_AVAILABILITY_AUDIT`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,27 +49,25 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-The supplemental intraday audit finds exact hard-valid coverage for all 399
-entry-signal sessions: 96,159 frozen QD-004 bars, 399 CY-008 daily gates, and
-2,394 opening five-minute windows. This supports a minimum-sufficient test of
-whether persistent price acceptance is visible on the completed entry-signal
-session, before the T+1 entry and earlier than H-019's descriptive day-5 boundary.
+EXP-SLP-001 rejects H-024. After multiplicatively removing Day-3 return, the
+frozen H-023 adverse state has raw/controlled future-failure rhos 0.025/0.005;
+Day-5 and HOLDOUT signs are negative and every gate fails. Early held-path
+localization is now repeatedly descriptive rather than incrementally predictive.
 
-H-021/EXP-IBQ-002 is complete and rejected. The valid 84-opportunity/213-false
-primary has raw/controlled rhos 0.012/-0.009, conflicting block signs, and zero
-passing gates. Five-minute and auction neighbors agree. The descriptive VWAP-time
-component cannot be selected after the failed composite.
-
-The actual earlier lifecycle `breakout_at` and support are not retained for all
-accepted cycles. The experiment is explicitly the entry-signal/retest-confirmation
-session available at 15:30 and applicable only at T+1 or later.
+The highest-value independent executable question is whether a small,
+mechanistically fixed pre-entry chip/supply-demand state can be supported by an
+already registered causal feature table. CY-011 is registered for conditional
+2020-2023 discovery with strict availability and mass-conservation gates, while
+2024-2026 is locked validation and must not be opened. Before any hypothesis or
+outcome join, audit exact registry authorization, immutable identities, entry-date
+coverage, `available_at`, `snapshot_id`, `hard_valid`, company-action semantics,
+and feature meanings. If those cannot be established without broadening the
+authorized protocol, fail closed and return to the frontier.
 
 ## Exact next action
 
-Execute frozen EXP-SLP-001 under spec SHA `a3de22a5...`. It removes the accepted
-Day-3 return multiplicatively and tests whether the unchanged H-023 adverse path
-explains additional subsequent failure after Day 3 and fixed entry state. The
-356-survivor population, feature, controls, timing, gates, and explanatory-only
-boundary are frozen; accepted H-014 Day-5 non-persistence is a bound attack. Do
-not change the landmark, search a stop threshold, retest H-019, or create an exit
-rule.
+Perform a read-only CY-011 chip-state data-governance and entry-coverage audit.
+Do not inspect chip/outcome associations, do not access the locked 2024-2026
+validation partition, and do not expand registry authorization. Persist whether
+a minimum-sufficient 2020-2023 discovery experiment is scientifically possible;
+only then rank and, if justified, preregister one mechanistic hypothesis.
