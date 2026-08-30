@@ -213,3 +213,55 @@ opportunity formation and payoff shape. It must preserve BASELINE/A/B/A+B,
 right-tail and severe-failure decomposition, continuous effects, temporal
 stability, and exploratory wording. Do not optimize boundaries, add minute state
 as a third mechanism, or open CY-011.
+
+## SYNTH-MKT-007 — after CHINEXT direction/discovery habitat association
+
+### What was learned?
+
+HAB-CHX-001 reconciles 1,337 valid state dates, 819 evaluated events, 638
+admissible candidates, and 280 selected/completed cycles with zero same-bar
+fills. Direction and discovery each associate with evaluated, candidate, and
+selected daily counts. Their distinct partial association and the fixed A+B
+increment survive for evaluated/candidate counts only.
+
+Selected rate per event/candidate declines as state strength and opportunity
+density rise. This is consistent with a finite-vacancy, maximum-ten-position
+architecture; it does not show that favorable states reject demand or that a
+new gate would improve returns.
+
+Payoff evidence is narrow and does not support a rule. Direction associates
+with more-negative MAE. Discovery associates with MFE>=20% opportunity, but its
+strict B-given-A and conversion20 gates fail. No absolute primary passes for
+completed return, winner20/50, false breakout, severe/extreme loss, or
+conversion. Every A+B payoff gate fails.
+
+### What market behavior are we still not studying?
+
+We still lack a recurring market-wide correlation/liquidity shock process with
+separate onset, stress, recovery, and impairment states. We also lack non-slope
+intraday transitions, action-safe support/acceptance, accumulation/distribution
+falsification, risk-appetite tails, and multi-strategy habitat portability.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Opportunity density plus finite-vacancy pressure is an attribution of the
+existing V1 breakout architecture. It has no new trigger, veto, exit, payoff
+asymmetry, or independent opportunity process. The panic/oversold-reversal
+archetype remains a search-space hypothesis because shock recovery is unbuilt.
+
+### Parallel-track awareness
+
+- **Market research:** correlation, synchronization, and liquidity levels are
+  frozen, but high state is not yet a shock and change-window rescue is banned.
+- **Existing-strategy archaeology:** HAB-CHX-001 is complete and remains consumed
+  exploratory association; CHINEXT does not receive a new rule.
+- **Strategy invention:** no family crosses the preliminary-mechanism threshold.
+
+### Research Director decision
+
+`EXPLORE` MKT-SHOCK-001 and `DEPRIORITIZE` further CHINEXT habitat slicing.
+Build a deep outcome-blind correlation/liquidity Shock-and-Recovery
+Representation Map first. Freeze economically distinct event/shape definitions,
+absolute/PIT/relative coordinates, neighboring-shape gates, cross-view/year
+coverage, and redundancy against volatility. Do not tune the rejected raw
+five-session liquidity-change window or read strategy/future-return outcomes.

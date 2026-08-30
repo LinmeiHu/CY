@@ -78,3 +78,17 @@ All 34 exact five-day OLS trajectories fail because their fixed last-three-
 session neighbor is unstable even though p40/p50/p60 aggregation is stable. No
 trajectory role may be rescued with the best horizon. Non-slope shapes and the
 broader minute families remain underexplored.
+
+## HAB-CHX-001 boundary
+
+The engine's direction and discovery coordinates now have one exploratory
+association study against an existing strategy. They describe denser observed
+CHINEXT V1 opportunity formation, including distinct partial association for
+evaluated/candidate counts. This does not convert either representation into a
+general trading signal or strategy-habitat predictor.
+
+The A+B interaction survives only for daily formation counts, not admissions or
+payoff. Direction's payoff association is more-negative MAE; discovery's is
+MFE>=20% opportunity without strict incremental or conversion support. Final
+return, right-tail, false-breakout, and severe-loss primaries fail. Discrete
+habitats remain unfrozen.

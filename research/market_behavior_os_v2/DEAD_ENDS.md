@@ -25,6 +25,9 @@
 | Market minute selloff-duration level using p40/median/p60 cross-section | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.545 | Do not choose a favorable quantile; broader duration family remains open |
 | Market auction-to-continuous-open level using p40/median/p60 cross-section | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.474 | Do not choose a favorable quantile; auction state remains underexplored |
 | Five-day OLS slopes for all 34 market minute descriptors | REPRESENTATION_NOT_FROZEN: fixed endpoint/last-three-session worst correlations 0.288-0.514 | Do not select the best horizon or descriptor; require a structurally different non-slope trajectory hypothesis |
+| HAB-CHX-001 A+B payoff interaction | EXPLORATORY_INCREMENTALITY_FAIL: every payoff endpoint misses the frozen cross-block A+B gate | Do not optimize a habitat boundary or link function; formation-count synergy is not payoff synergy |
+| HAB-CHX-001 final return/right-tail/failure primaries | EXPLORATORY_ASSOCIATION_FAIL: no absolute A or B primary passes for return, winner20/50, false breakout, severe loss, or extreme loss | Do not promote direction/discovery into a V1 gate; independent future time is required for any new confirmation |
+| HAB-CHX-001 MFE opportunity conversion | OPPORTUNITY_WITHOUT_CONVERSION: B associates with MFE>=20%, but B-given-A and conversion20 gates fail | Do not equate excursion opportunity with harvested edge or tune a discovery cutoff |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

@@ -137,16 +137,24 @@ trajectory role, selling-exhaustion mechanism, demand-strengthening mechanism,
 or strategy is frozen. The broader intraday and non-slope trajectory families
 remain underexplored.
 
-SYNTH-MKT-006 selects HAB-CHX-001 next: a strictly exploratory Strategy x Market
-Habitat study using only frozen trend direction and breadth discovery as the two
-initial mechanisms. It must report baseline/A/B/A+B, right-tail and severe-loss
-behavior, temporal stability, and continuous effects without optimizing a rule.
+HAB-CHX-001 then completed on 1,337 common state dates, 819 evaluated events,
+638 admissible candidates, and 280 selected/completed cycles with zero same-bar
+fills. Two runs are byte-identical: panel `922920fd...`, result `5bb39c2a...`,
+report `7b0c05b5...`.
 
-Do not populate strategy x habitat outcomes from MKT-GEO-001, and do not return
-automatically to CHINEXT minute-feature screening.
+A and B associate with opportunity density; partial A/B and fixed A+B evidence
+survive only for evaluated/candidate counts. Falling selected rates reflect
+finite vacancies under denser flow. Direction associates with more-negative
+MAE. Discovery associates with MFE>=20% opportunity, but not strict B-given-A or
+conversion. Final return, right-tail, false-breakout, severe-loss, and every A+B
+payoff primary fail. No rule, predictor, causal mechanism, or archetype freezes.
+
+SYNTH-MKT-007 selects MKT-SHOCK-001 next. Build the outcome-blind correlation/
+liquidity shock-and-recovery Representation Map and frozen spec before testing.
+Do not tune the rejected five-session liquidity-change window, read strategy
+outcomes, or open CY-011.
 
 ## Human decision required?
 
-No. Continue with the preregistered HAB-CHX-001 association study. CHINEXT
-outcomes are already consumed and must remain exploratory; CY-011 remains
+No. Continue with MKT-SHOCK-001 map-first representation research. CY-011 remains
 unopened.

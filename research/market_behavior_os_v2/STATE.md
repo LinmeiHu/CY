@@ -8,9 +8,9 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `HAB-CHX-001_SPEC_FROZEN_OUTCOME_JOIN_NEXT`
-- `CURRENT_PRIMARY_FRONTIER`: CHINEXT V1 market-habitat association
-- `SUPPORTING_FRONTIER`: frozen trend direction and breadth discovery coordinates
+- `CURRENT_PHASE`: `SYNTH-MKT-007_COMPLETE_MKT-SHOCK-001_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: correlation/liquidity shock-and-recovery representation
+- `SUPPORTING_FRONTIER`: completed CHINEXT habitat association and frozen correlation/liquidity levels
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -107,6 +107,22 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   strong p40/p50/p60 aggregation stability. No five-day trajectory role is
   frozen. This rejects the exact slope construction, not intraday families or
   non-slope multi-day shapes.
+- HAB-CHX-001 joins 1,337 completed-close state dates to 819 evaluated V1
+  events, 638 candidates, 280 selected admissions, and 280 completed cycles;
+  every entry fills strictly later and two runs are byte-identical.
+- Trend direction and breadth discovery each associate with daily opportunity
+  density. Their distinct partial association and fixed A+B increment survive
+  for evaluated/candidate counts, but not for selected counts or payoff.
+- Per-event selected rates decline with stronger A/B states because dense
+  opportunity flow meets finite vacancies/max-ten holdings. This is capacity
+  pressure, not market rejection or evidence that a gate would improve returns.
+- Payoff evidence is narrow. Direction associates with more-negative MAE.
+  Discovery associates with MFE>=20% opportunity, but its strict B-given-A and
+  conversion gates fail. No absolute primary passes for completed return,
+  winner20/50, false breakout, severe/extreme loss, or conversion20. No A+B
+  payoff synergy exists.
+- HAB-CHX-001 remains consumed exploratory association. It establishes no
+  causal mechanism, general habitat predictor, trading rule, or new archetype.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
@@ -151,17 +167,19 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
 - The required daily panel SHA-256 is `bdbb3cb9...`; the compressed trajectory
   panel is `89d3e33b...`. Strict causal PIT percentiles/z-scores have complete
   post-504 coverage, and absolute/relative coordinates are preserved separately.
+- HAB-CHX-001 binds frozen spec `c17f8ea8...`, trend panel `fd933284...`,
+  breadth panel `60ca6bf5...`, completed cycles `77f28da5...`, and two exact
+  event ledgers. Two successful runs have panel `922920fd...`, result
+  `5bb39c2a...`, and report `7b0c05b5...`. CY-011 remains unopened.
 
 ## Current frontier
 
-SYNTH-MKT-006 deprioritizes the failed exact five-day slope construction while
-leaving the broader minute family underexplored. The next highest-information
-question moves beyond representation: whether the already-frozen, nonredundant
-market direction and breadth-discovery mechanisms describe CHINEXT V1
-opportunity/payoff habitats. HAB-CHX-001 must use continuous/preregistered state
-coordinates, baseline/A/B/A+B comparisons, right-tail and failure decomposition,
-and exploratory wording because CHINEXT outcomes are already consumed. It may
-not optimize a trading rule or read CY-011. Its exact input hashes, 1,337-date
-calendar denominator, 819 evaluated events, 638 admissible candidates, 280
-selected admissions, endpoints, temporal blocks, bootstrap, nested models, and
-no-rescue gates are now frozen before the market-state/outcome join.
+SYNTH-MKT-007 completes HAB-CHX-001 without promoting a rule. The most important
+unstudied behavior is now a recurring market-wide shock-and-recovery process:
+whether frozen correlation synchronization and liquidity state can represent
+onset, stress, recovery, and impairment without reviving the failed raw
+five-session liquidity-change window. MKT-SHOCK-001 is the next outcome-blind
+primary frontier. It must build a Representation Map, preserve continuous
+absolute/PIT/relative coordinates, predeclare event and neighboring-shape
+definitions, separate shock from high level, and test redundancy against frozen
+volatility before any future-path or strategy outcome is read.

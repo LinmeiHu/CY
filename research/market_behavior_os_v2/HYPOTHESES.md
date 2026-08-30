@@ -82,9 +82,20 @@
 
 ## HAB-H-001 — CHINEXT V1 direction/discovery habitat association
 
-- Status: `SPEC_FROZEN_OUTCOME_JOIN_NOT_RUN`.
+- Status: `EXPLORATORY_ASSOCIATION_PARTIAL_NO_RULE`.
 - Claim: frozen market direction and new-high/new-low discovery may describe
   variation in the observed V1 opportunity process or completed-cycle payoff.
 - Experiment: HAB-CHX-001, 2018-07-03..2023-12-29, two mechanisms only.
+- Result: direction and discovery each associate with evaluated, candidate, and
+  selected daily counts. Partial A/B evidence survives for evaluated/candidate
+  counts; the fixed A+B interaction passes only those two formation endpoints.
+- Result: event/candidate selected rates fall as opportunity density rises,
+  consistent with finite vacancies rather than market rejection. Direction
+  associates with more-negative MAE. Discovery associates with MFE>=20%
+  opportunity, but not incrementally after direction under the strict gate;
+  within-opportunity conversion fails.
+- Rejections: no absolute primary gate passes for completed-cycle return,
+  winner20/50, false breakout, severe/extreme loss, or conversion20. No A+B
+  payoff synergy exists.
 - Boundary: all outcomes are consumed; this is exploratory association and can
   neither establish causality nor authorize a strategy rule or archetype.

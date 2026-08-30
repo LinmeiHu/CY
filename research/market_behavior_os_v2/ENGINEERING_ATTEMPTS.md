@@ -112,3 +112,13 @@ have panel hash `fcc04aec73da783328926ff882491a4a7ac4efffea06acb6cb7a106d338dc0b
 and opening hash `9093a928e0bb47d0548e4b8b855e7f30c91837875035d1267efb7598553ab360`.
 Required scale then passes at 2,896,543,744 bytes peak RSS and 407.55 seconds. No
 ceiling was relaxed.
+
+## HAB-CHX-001-A — invalid combined-panel serialization
+
+The frozen association calculations completed in memory, but the first output
+attempt renamed `entry_signal_date` while retaining the state join's existing
+`trade_date`, creating duplicate labels in the completed-cycle projection.
+Pandas stopped at concatenation and no result was accepted. The projection now
+selects `entry_signal_date` before renaming it. A regression test asserts unique
+panel columns and the unchanged 1,337 + 819 + 280 row decomposition. No input,
+sample, endpoint, gate, or estimate changed.

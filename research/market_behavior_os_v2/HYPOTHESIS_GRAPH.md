@@ -45,6 +45,14 @@ MKT-H-007 market-wide five-day minute state
   -> all exact five-day OLS trajectories fail shape-neighbor stability
   -> no minute mechanism/usefulness claim
 
+HAB-H-001 CHINEXT direction/discovery association
+  -> A and B opportunity-density associations pass
+  -> fixed A+B incrementality only for evaluated/candidate daily counts
+  -> finite-vacancy pressure separates formation density from selected rate
+  -> narrow payoff associations: adverse MAE and MFE>=20% opportunity
+  -> final return/right tail/failure/conversion primaries fail
+  -> no trading rule, predictor, causal mechanism, or new archetype
+
 CHINEXT five-day minute feasibility
   -> strategy-conditioned descriptors only
   -> requires market-date sampling before a general minute mechanism

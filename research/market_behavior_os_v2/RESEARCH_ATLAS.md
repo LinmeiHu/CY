@@ -27,6 +27,8 @@
 | `STRATEGY_LIBRARY.md` | Living registry of actual strategy families |
 | `STRATEGY_FRONTIER.md` | Strategy research allocation, separate from hypotheses |
 | `MARKET_HABITAT_MATRIX.md` | Evidence contract for strategy x market-state cells |
+| `experiments/HAB-CHX-001_spec.json` | Frozen two-coordinate CHINEXT habitat association contract |
+| `reports/HAB-CHX-001_chinext_market_habitat.md` | Opportunity-density, payoff, temporal, and falsification result |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |
