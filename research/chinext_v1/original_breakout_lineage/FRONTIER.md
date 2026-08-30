@@ -139,6 +139,17 @@ EXP-OBL-010 freezes that reveal before its first outcome join. Continuous
 pressure, rank, margin, terminal return, and right-tail evidence are explicitly
 non-rescuing; the contested binary must support both co-primary endpoints.
 
+EXP-OBL-010 passes aggregate magnitude/control attacks but fails temporally:
+2022-2023 is negative or null and removing 2025 nearly erases both effects. The
+binary lineage is therefore not a candidate.
+
+One bounded follow-up has high information value: the continuous frozen
+candidate/vacancy pressure ratio was a preregistered non-rescuing secondary and
+shows stronger raw MFE association. EXP-OBL-011 may test whether it represents
+participation intensity beyond breadth and absolute RS. It must be labeled
+post-secondary exploratory, use no threshold, and face the same temporal failure
+directly; it cannot retroactively rescue EXP-OBL-010.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

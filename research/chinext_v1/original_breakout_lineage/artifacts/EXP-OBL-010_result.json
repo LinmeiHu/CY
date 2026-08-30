@@ -1,0 +1,377 @@
+{
+  "attacks": {
+    "candidate_vacancy_rank_control": {
+      "mfe": {
+        "n": 383,
+        "partial_rank_rho": 0.048295658740305836,
+        "pvalue": 0.34587251996983415
+      },
+      "non_false_breakout": {
+        "n": 383,
+        "partial_rank_rho": 0.06726939001361223,
+        "pvalue": 0.1889561846509204
+      }
+    },
+    "ex_2025": {
+      "mfe": {
+        "n": 326,
+        "pvalue": 0.7753402394186909,
+        "rho": 0.01586661172546036
+      },
+      "non_false_breakout": {
+        "n": 326,
+        "pvalue": 0.7431770174842929,
+        "rho": 0.018215265085833095
+      }
+    },
+    "ex_extreme_winners": {
+      "mfe": {
+        "n": 384,
+        "pvalue": 0.003506597975954468,
+        "rho": 0.1486382485523505
+      },
+      "non_false_breakout": {
+        "n": 384,
+        "pvalue": 0.017429092444462398,
+        "rho": 0.12127497781790389
+      }
+    },
+    "ex_severe_losses": {
+      "mfe": {
+        "n": 355,
+        "pvalue": 0.004923263981830543,
+        "rho": 0.14893811030460896
+      },
+      "non_false_breakout": {
+        "n": 355,
+        "pvalue": 0.01734700747477829,
+        "rho": 0.1262182306894211
+      }
+    },
+    "ex_top1pct_absolute_pnl": {
+      "mfe": {
+        "n": 395,
+        "pvalue": 0.0067274871868810955,
+        "rho": 0.136152939063701
+      },
+      "non_false_breakout": {
+        "n": 395,
+        "pvalue": 0.022015925031762956,
+        "rho": 0.11520827715311789
+      }
+    },
+    "holding_duration_exit_control": {
+      "mfe": {
+        "n": 383,
+        "partial_rank_rho": 0.11169413858058204,
+        "pvalue": 0.028845202958586925
+      },
+      "non_false_breakout": {
+        "n": 383,
+        "partial_rank_rho": 0.08514102773375468,
+        "pvalue": 0.09614865406296781
+      }
+    },
+    "industry_leave_one_out": {
+      "mfe": {
+        "groups": 68,
+        "maximum": 0.1760359061745771,
+        "minimum": 0.11884436447724725,
+        "positive_fraction": 1.0
+      },
+      "non_false_breakout": {
+        "groups": 68,
+        "maximum": 0.14132202409830205,
+        "minimum": 0.09894428962445996,
+        "positive_fraction": 1.0
+      }
+    },
+    "post_2021": {
+      "mfe": {
+        "n": 205,
+        "pvalue": 0.033241920194840874,
+        "rho": 0.1487873056283053
+      },
+      "non_false_breakout": {
+        "n": 205,
+        "pvalue": 0.01964966486290736,
+        "rho": 0.16284833187188047
+      }
+    },
+    "security_leave_one_out": {
+      "mfe": {
+        "groups": 281,
+        "maximum": 0.15378847977062737,
+        "minimum": 0.12977049370399452,
+        "positive_fraction": 1.0
+      },
+      "non_false_breakout": {
+        "groups": 281,
+        "maximum": 0.127771168835487,
+        "minimum": 0.11066238251716386,
+        "positive_fraction": 1.0
+      }
+    }
+  },
+  "decision": "REFINE",
+  "endpoint_support": {
+    "mfe": true,
+    "non_false_breakout": true
+  },
+  "evidence_grade": "EXPLORATORY_REVEAL_ON_HISTORICALLY_CONSUMED_BOUNDED_PIT_B",
+  "experiment_id": "EXP-OBL-010",
+  "gates": {
+    "controlled_both_endpoints": true,
+    "falsification": true,
+    "raw_both_endpoints": true,
+    "temporal_both_endpoints": false
+  },
+  "hypothesis_id": "H-OBL-008",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-009_audit.json": "571ca5fee39f6d7f70b43beeee26f3f5e88f2a4094400c37c4468dc41b585187",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/artifacts/selection_competition_features_v2.csv": "2beccefaf46c1140c4cb243e5c26999fb1d1f63afb6aa25c9db4a7901122c848",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-009.json": "b18fccf51defbde8e8422328940e177d4dfd877a0575e8c3b302c5bbd2b1e5d6",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_lineage_outcome_reveal.py": "6f308df6596cf7389f4c8ccb945b279d3ad7e711016a1f3a8d4fbf7a477cc97f",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_selection_lineage_outcome_reveal.py": "0c02af8c04a28af8649835bbff247d04b030af2527284ebfe11e21982f94d22c",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/trade_mechanism_attribution.csv": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+  },
+  "interpretation_boundary": "Selection lineage was frozen without outcomes and is available at signal close for T+1 or later only. This reveal authorizes no entry, exit, size, overlay, production change, or CY-011 access.",
+  "lineage_freeze_id": "LINEAGE-OBL-009-2BECCEFAF46C1140",
+  "lineage_summary": [
+    {
+      "extreme_winner_rate": 0.041666666666666664,
+      "mean_mfe": 0.20560844773157894,
+      "mean_terminal_return": 0.050920163066423184,
+      "median_mfe": 0.12726222564497486,
+      "n": 48,
+      "non_false_rate": 0.625,
+      "selection_lineage_id": "L_CONTESTED",
+      "severe_loss_rate": 0.125
+    },
+    {
+      "extreme_winner_rate": 0.037037037037037035,
+      "mean_mfe": 0.15973723900378922,
+      "mean_terminal_return": 0.02988599523683779,
+      "median_mfe": 0.06068515497553,
+      "n": 351,
+      "non_false_rate": 0.4444444444444444,
+      "selection_lineage_id": "L_UNCONTESTED",
+      "severe_loss_rate": 0.10826210826210826
+    }
+  ],
+  "maximum_selection_rs_reconciliation_difference": 4.988232049640828e-13,
+  "output_table_sha256": "bafa0dfd660ec8348a216f5aefe368e2fcbdb49a3b1b48d79187cc34224514ab",
+  "population": {
+    "contested": 48,
+    "controlled_complete": 383,
+    "events": 399,
+    "uncontested": 351
+  },
+  "primary": {
+    "mfe": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.027014670193178922,
+          "rho": 0.20991969547671596
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.012073488124355748,
+          "rho": 0.17989665411589803
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.5213210305203905,
+          "rho": -0.0669678292176346
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.09616591144384942,
+        "pvalue": 0.06007916861137153
+      },
+      "controlled_loyo": {
+        "maximum": 0.15020705986347954,
+        "minimum": 0.010129308092741405,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.09641882714719176,
+          "2019": 0.09614115808063003,
+          "2020": 0.08800640916912991,
+          "2021": 0.08767858884804382,
+          "2022": 0.09150454718619148,
+          "2023": 0.15020705986347954,
+          "2024": 0.11849783836860113,
+          "2025": 0.010129308092741405
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.005337875206567132,
+        "rho": 0.13922655207303958
+      },
+      "raw_bh_qvalue": 0.010675750413134264,
+      "raw_loyo": {
+        "maximum": 0.19206726174986485,
+        "minimum": 0.01586661172546036,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.13348550176140467,
+          "2019": 0.15544106446701622,
+          "2020": 0.13976018767884107,
+          "2021": 0.1307506652783528,
+          "2022": 0.15021673690304824,
+          "2023": 0.19206726174986485,
+          "2024": 0.16011194294991046,
+          "2025": 0.01586661172546036
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.04788625675784893,
+        "rho": 0.09910967578335907
+      }
+    },
+    "non_false_breakout": {
+      "blocks": {
+        "DEVELOPMENT_2024_2025": {
+          "n": 111,
+          "pvalue": 0.014743490218855177,
+          "rho": 0.2309397726594631
+        },
+        "EXTENDED_2018_2021": {
+          "n": 194,
+          "pvalue": 0.06203094946187863,
+          "rho": 0.13423682881306442
+        },
+        "HOLDOUT_O0_2022_2023": {
+          "n": 94,
+          "pvalue": 0.9563220813921551,
+          "rho": -0.005725607905748963
+        }
+      },
+      "controlled": {
+        "n": 383,
+        "partial_rank_rho": 0.08680862100372144,
+        "pvalue": 0.08978572051460364
+      },
+      "controlled_loyo": {
+        "maximum": 0.11492434412193778,
+        "minimum": 0.007440729979450368,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.08800448568126497,
+          "2019": 0.09325321834603909,
+          "2020": 0.09007179319961343,
+          "2021": 0.08516388531514196,
+          "2022": 0.081756398736224,
+          "2023": 0.11399904026882551,
+          "2024": 0.11492434412193778,
+          "2025": 0.007440729979450368
+        }
+      },
+      "raw": {
+        "n": 399,
+        "pvalue": 0.01863541387448902,
+        "rho": 0.11774399278452315
+      },
+      "raw_bh_qvalue": 0.01863541387448902,
+      "raw_loyo": {
+        "maximum": 0.13884283009246673,
+        "minimum": 0.018215265085833095,
+        "positive": 8,
+        "total": 8,
+        "values": {
+          "2018": 0.11345222851074571,
+          "2019": 0.13862703207136756,
+          "2020": 0.1257495515003744,
+          "2021": 0.11334300959491876,
+          "2022": 0.13213914096860901,
+          "2023": 0.13884283009246673,
+          "2024": 0.13229647315499352,
+          "2025": 0.018215265085833095
+        }
+      },
+      "within_year": {
+        "n": 399,
+        "pvalue": 0.9896449884491839,
+        "rho": -0.0006517798103315023
+      }
+    }
+  },
+  "secondary_not_decision_rescuing": {
+    "selected_margin_to_cutoff": {
+      "extreme_winner": {
+        "n": 48,
+        "pvalue": 0.5759007740764399,
+        "rho": 0.08278324105930611
+      },
+      "mfe": {
+        "n": 48,
+        "pvalue": 0.059292826705230936,
+        "rho": 0.2742075553625705
+      },
+      "non_false_breakout": {
+        "n": 48,
+        "pvalue": 0.07685645122451347,
+        "rho": 0.25782490506397954
+      },
+      "round_trip_return": {
+        "n": 48,
+        "pvalue": 0.1817248566816152,
+        "rho": 0.196048632218845
+      }
+    },
+    "selected_rank_percentile": {
+      "extreme_winner": {
+        "n": 399,
+        "pvalue": 0.8094634632960943,
+        "rho": -0.012108557364180367
+      },
+      "mfe": {
+        "n": 399,
+        "pvalue": 0.12869574447163298,
+        "rho": -0.07618684046286009
+      },
+      "non_false_breakout": {
+        "n": 399,
+        "pvalue": 0.6983236437252252,
+        "rho": -0.019462711029386535
+      },
+      "round_trip_return": {
+        "n": 399,
+        "pvalue": 0.15444007760368875,
+        "rho": -0.07142328076986039
+      }
+    },
+    "selection_pressure": {
+      "extreme_winner": {
+        "n": 399,
+        "pvalue": 0.012354403522876764,
+        "rho": 0.12514932826531466
+      },
+      "mfe": {
+        "n": 399,
+        "pvalue": 2.962136749040391e-06,
+        "rho": 0.23150443408168506
+      },
+      "non_false_breakout": {
+        "n": 399,
+        "pvalue": 0.012032447123596792,
+        "rho": 0.125612588549796
+      },
+      "round_trip_return": {
+        "n": 399,
+        "pvalue": 0.15724995625049817,
+        "rho": 0.07094096396218581
+      }
+    }
+  },
+  "verdict": "CONTESTED_SELECTION_MECHANISM_IS_ENDPOINT_SPECIFIC"
+}

@@ -141,6 +141,17 @@ the fixed V1/market/breadth state; its attacks include candidate/vacancy/rank,
 2025 concentration, post-2021, tails, duration/exit, security, and industry.
 Execute unchanged and apply the frozen gates literally.
 
+EXP-OBL-010 completes as `REFINE_TEMPORAL_INSTABILITY`. Aggregate MFE and
+non-false raw/controlled rhos are 0.139/0.096 and 0.118/0.087, but the holdout
+block is negative/null and ex-2025 rhos are only 0.016/0.018. No binary lineage
+rule or candidate is supported.
+
+The exact next question is the already frozen continuous selection-pressure
+ratio, explicitly labeled a post-secondary exploratory follow-up. Test it
+without bins or thresholds against both co-primary endpoints, controlling
+absolute RS, breadth, V1/market state, and year, with full temporal/tail/
+concentration attacks. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

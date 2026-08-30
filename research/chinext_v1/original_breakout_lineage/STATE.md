@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_010_FROZEN_BEFORE_FIRST_OUTCOME_JOIN`
+`EXP_OBL_010_COMPLETE_REFINE_TEMPORAL_INSTABILITY`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -114,9 +114,16 @@ boundary, cutoff missingness, and PIT timing pass; contested events occur in
 seven years. Two full three-block executions and all accepted outputs are byte-
 identical. No outcome or temporary performance file was read.
 
+EXP-OBL-010 finds aggregate contested separation but fails the frozen temporal
+gate. MFE raw/controlled rhos are 0.139/0.096 and non-false-breakout rhos are
+0.118/0.087; raw, controlled, and falsification gates pass. The 2022-2023 block
+is negative/null and removing 2025 leaves only 0.016/0.018, so no stable binary
+lineage claim or rule is allowed. Two executions are byte-identical.
+
 ## Exact next action
 
-Execute committed EXP-OBL-010 without changing the positive prediction, two
-co-primary endpoints, controls, or gates. Apply absolute-RS reconciliation,
-LOYO/blocks, 2025 removal, post-2021, candidate/vacancy/rank, tails,
-duration/exit, security, and industry attacks. Do not open CY-011.
+Preregister EXP-OBL-011 as an explicitly post-secondary exploratory follow-up on
+the already frozen continuous selection-pressure ratio. Preserve positive
+direction and both co-primary endpoints; require raw/controlled incrementality,
+LOYO/blocks, 2025 removal, tails, duration/exit, and concentration. Do not bin or
+threshold pressure, and do not open CY-011.
