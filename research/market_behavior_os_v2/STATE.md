@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-VOL-STATE-001_FROZEN_BEFORE_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: outcome-blind state geometry and recurrence of the distinct minute-volatility path
+- `CURRENT_PHASE`: `MKT-MIN-VOL-RESP-001_MAP_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent future-volatility response to the continuous minute-volatility path
 - `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -316,3 +316,18 @@ variation, and fixed 20/80 daily-volatility-level geometry are preregistered.
 Later dwell/transition observations are explicitly post-state attribution, not
 entry predictors. No future return, strategy outcome, raw minute row, failed
 path role, or CY-011 may be read.
+
+MKT-MIN-VOL-STATE-001 is complete and the exact state architecture fails. The
+primary sign states recur and completed-run/dwell gates pass, but all-pairs and
+rank-time neighbor agreement is only kappa 0.425/0.275 and macro-Jaccard
+0.423/0.305, below 0.60. Transition total variation is 0.469/0.611, above 0.20.
+The daily-level expanding-PIT context separately has zero 2019 and 107 2020
+observations/group, plus sparse later 20/80 cells. Two runs are byte-identical:
+panel `d2b23700...`, result `296170ee...`, report `49a884b5...`; five tests pass.
+
+The continuous path remains frozen and externally distinct; no discrete
+rising/falling/flat process or contraction/expansion state is accepted.
+SYNTH-MKT-013 selects a preregistered continuous temporal-response study using
+future minute-volatility levels only, with explicit 1/3/5-session horizons,
+incremental controls, and untouched confirmation time. It is not a return or
+strategy test.

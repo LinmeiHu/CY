@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 25% | The minute-volatility path is externally distinct; recurrence and transition semantics are unresolved | Build MKT-MIN-VOL-STATE-001 map without future outcomes |
+| EXPLORE | 20% | Exact states fail, but the continuous distinct path has no temporal meaning yet | Freeze continuous future-volatility response with 1/3/5 horizons |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No new family yet meets preliminary-evidence threshold | Map executable implications only after a mechanism survives |
-| REPLICATE | 15% | HAB and state constructions are reproducible; habitat outcomes are consumed | Future independent-time replication remains required |
+| REPLICATE | 20% | Temporal response has not consumed the reserved 2022-2023 confirmation block | Freeze discovery/confirmation split before constructing forward responses |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 25% | A continuous survivor can still fail as a discrete recurrent state | Require neighbor state agreement, year/view recurrence, dwell, and transition support before labels |
+| FALSIFY | 25% | Continuous distinctness may have no forward volatility meaning | Require fixed controls, sign portability, neighboring horizons, and untouched confirmation; no state rescue |
 
 Mandatory checkpoint questions:
 

@@ -280,3 +280,16 @@ sign/zero states are tested against both accepted ordinal definitions, with
 fixed recurrence, agreement, run/dwell, transition-matrix, and daily-level
 context gates. Dwell and transitions are post-state attribution only. Execute
 twice; do not relabel a favorable subset as contraction/expansion.
+
+MKT-MIN-VOL-STATE-001 fails exactly. Primary state recurrence and dwell support
+pass, but definition-neighbor kappa is 0.425/0.275, macro-Jaccard 0.423/0.305,
+and transition total variation 0.469/0.611. The fixed expanding-PIT level
+context is also warm-up-limited in 2019-2020 and occupancy-sparse later. Two
+runs are byte-identical: panel `d2b23700...`, result `296170ee...`, report
+`49a884b5...`; five targeted tests pass.
+
+Keep the continuous path; reject exact sign states and all discrete process/
+contraction labels. Next freeze MKT-MIN-VOL-RESP-001: a strategy-independent,
+continuous association with future 1/3/5-session minute-volatility change,
+incremental to fixed current volatility controls and with confirmation time
+untouched before specification. No market-return or strategy outcome is needed.

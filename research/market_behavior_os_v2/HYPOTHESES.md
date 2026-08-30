@@ -185,3 +185,17 @@
 - Boundary: distinctness does not establish contraction/expansion, recurrence,
   transition stability, prediction, strategy usefulness, habitat, or causality.
   Those claims require separate frozen tests.
+
+## MKT-H-013 — exact minute-volatility ordinal states
+
+- Status: `EXACT_DISCRETE_STATE_ARCHITECTURE_FAIL`.
+- Result: primary rising/falling/flat states recur in every required group/year
+  and completed-run/dwell gates pass. However all-pairs/rank-time neighbor state
+  agreement is only kappa 0.425/0.275 and macro-Jaccard 0.423/0.305; transition
+  total variation is 0.469/0.611. All fail their fixed gates.
+- Context limitation: the daily realized-volatility expanding percentile has no
+  2019 coverage, only 107 observations/group in 2020, and sparse 20/80 cells in
+  later years, so the nine-cell path-by-level geometry also fails.
+- Boundary: the continuous path representation and its external distinctness
+  remain valid. No exact sign state, dwell process, transition process,
+  contraction/expansion label, usefulness, habitat, or strategy rule freezes.

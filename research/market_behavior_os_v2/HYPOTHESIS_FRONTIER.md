@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does the distinct minute-volatility path form stable recurrent rising/falling/flat states across accepted ordinal definitions, views, and years? | High | High | Exact frozen path and level coordinates exist | High | Medium/discrete-state risk | ACTIVE_MKT_MIN_VOL_STATE_001_MAP_FIRST |
+| 1 | Does the continuous distinct minute-volatility path associate with future 1/3/5-session minute-volatility change after fixed current-volatility controls? | High | High | Frozen daily minute-volatility levels; no raw rescan | High | Medium/temporal-validation risk | ACTIVE_MKT_MIN_VOL_RESP_001_MAP_FIRST |
 | 2 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 3 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 4 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -26,3 +26,8 @@ MKT-MIN-VOL-GEO-002 finds the survivor externally distinct from five frozen
 volatility controls. The active queue now tests whether exact sign states and
 their recurrence/dwell/transitions survive the two already-accepted ordinal
 definitions. No outcome or optimized state threshold is allowed.
+
+MKT-MIN-VOL-STATE-001 rejects exact sign states and transitions. The continuous
+coordinate remains defensible, so the active queue moves to a preregistered
+strategy-independent temporal response with fixed 1/3/5 horizons and untouched
+confirmation time. No discrete-state rescue or future market return is allowed.

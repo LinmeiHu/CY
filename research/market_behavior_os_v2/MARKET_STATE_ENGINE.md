@@ -154,3 +154,10 @@ is 0.195 median/0.223 maximum. The engine may retain the path as a separate
 continuous coordinate. It may not yet emit discrete contraction/expansion
 states: definition-neighbor state agreement, recurrence, dwell, and transition
 support remain untested.
+
+MKT-MIN-VOL-STATE-001 then rejects exact discrete states. Although primary
+rising/falling/flat labels recur and have completed-run support, the two
+accepted ordinal definitions produce low state agreement and transition
+matrices separated by total variation 0.469/0.611. The daily-level context is
+also early-year warm-up-limited and later-cell sparse. The engine retains only
+the continuous path coordinate and emits no volatility path state or process.

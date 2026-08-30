@@ -7,7 +7,7 @@ strategy.
 |---|---|---|---|---|
 | Trend | direction, strength, quality, age, alignment, transition | MKT-TRND-001 freezes direction across six indices; five fixed roles fail stability/coverage | FAMILY_UNDEREXPLORED | Independent non-window-clone representations after breadth diversification |
 | Breadth | level, depth, acceleration, divergence, diffusion, concentration | MKT-BRTH-002 freezes new-high/new-low discovery and leadership concentration; seven exact representations fail stability | PARTIAL_REPRESENTATION_SUPPORT | Mechanism/usefulness deferred; structurally different representations only |
-| Volatility | level, term structure, contraction, expansion, downside asymmetry | Four daily roles plus a distinct five-day minute-volatility ordinal path freeze; term structure/asymmetry fail | PARTIAL_LEVEL_AND_PATH_SUPPORT | Path recurrence/state geometry, then conditional process/usefulness |
+| Volatility | level, term structure, contraction, expansion, downside asymmetry | Four daily roles plus a distinct continuous minute-volatility ordinal path freeze; exact path states/transitions and term structure/asymmetry fail | PARTIAL_CONTINUOUS_SUPPORT_DISCRETE_PROCESS_FAIL | Continuous future-volatility response before any usefulness claim |
 | Dispersion | return dispersion, breadth dispersion, cross-industry dispersion | Partial frozen features, no mechanism closure | FAMILY_UNDEREXPLORED | Absolute/PIT state and tail behavior |
 | Correlation | market co-movement, industry clustering, panic synchronization | Direction-neutral scores freeze; exact shock episode and MKT-DSTRESS weakest-link directional scores/processes fail | PARTIAL_CONTINUOUS_SUPPORT_DIRECTIONAL_PROCESS_UNDEREXPLORED | Structurally different direction/process onset only; no aggregation/threshold rescue |
 | Liquidity | amount, turnover, dry-up, shock, recovery | Stable levels/joint score; raw change and exact 0.90/0.50 episode/dry-up fail | PARTIAL_CONTINUOUS_SUPPORT_EPISODE_UNDEREXPLORED | No raw-window or threshold rescue; broader recovery family open |
@@ -19,7 +19,7 @@ strategy.
 | Accumulation/distribution | repeated absorption/selling, close/low/high progression | Traditional labels unvalidated | FAMILY_UNDEREXPLORED | Falsifiable representation study |
 | Pullback/reversal/panic | depth, duration, recovery, liquidity/correlation shock | No independent process program | FAMILY_UNDEREXPLORED | Market event definitions before strategy design |
 | Intraday/multi-day minute | path, VWAP, volume, volatility, support, acceptance | 32 same-session levels and one externally distinct minute-volatility ordinal path freeze; all other fixed paths fail | PARTIAL_LEVEL_ONE_DISTINCT_PATH_ROLE | State recurrence before usefulness; support still requires action-safe levels |
-| State transitions | persistence, onset, deterioration, reversal, dwell time | No frozen independent engine | FAMILY_UNDEREXPLORED | Trend axis first, then multiaxis transitions |
+| State transitions | persistence, onset, deterioration, reversal, dwell time | Shock, directional-stress, leader, and minute-volatility exact processes fail; continuous coordinates remain | FAMILY_UNDEREXPLORED | Structurally different processes only; no threshold/state rescue |
 
 No broad family is closed. Exact rejected representations retain their rejection;
 they do not close the encompassing market family.

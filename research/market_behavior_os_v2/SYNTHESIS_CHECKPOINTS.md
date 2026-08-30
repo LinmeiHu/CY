@@ -505,3 +505,49 @@ labels. Freeze exact sign states for the primary and its two accepted ordinal
 neighbors, fixed daily-volatility-level context, recurrence, state agreement,
 dwell, and transition gates. Read no future returns, strategy outcomes, raw
 minute rows, failed path roles, or CY-011.
+
+## SYNTH-MKT-013 — after exact minute-volatility state falsification
+
+### What was learned?
+
+Primary rising/falling/flat labels recur across all required groups/years, and
+completed-run/dwell support passes. That is insufficient for a state
+representation. Exact labels agree poorly with the accepted all-pairs and
+rank-time ordinal definitions: median kappa is 0.425/0.275 and macro-Jaccard is
+0.423/0.305 versus 0.60. Transition-matrix total variation is 0.469/0.611 versus
+the 0.20 gate. The daily-level context separately fails causal warm-up coverage
+and cross-year 20/80 cell recurrence.
+
+The continuous ordinal path remains stable and externally distinct. The exact
+discrete state/process architecture does not.
+
+### What market behavior are we still not studying?
+
+We have not tested whether the continuous path precedes persistence or reversal
+in future market-wide minute volatility, incrementally beyond current minute
+and daily volatility controls. Objective support/acceptance remains blocked,
+and accumulation/distribution, industry/leader transitions, market-return
+meaning, and multi-strategy portability remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The attempted discrete mechanism failed, and the continuous coordinate has
+no temporal response evidence. There is no basis for a volatility-breakout,
+mean-reversion, entry-timing, or risk-veto archetype.
+
+### Parallel-track awareness
+
+- **Market research:** preserve the continuous coordinate; test only continuous
+  future-volatility response next.
+- **Existing-strategy archaeology:** no strategy outcome/trade field was read
+  and no rule changes.
+- **Strategy invention:** no archetype reaches preliminary mechanism support.
+
+### Research Director decision
+
+`EXPLORE` MKT-MIN-VOL-RESP-001 and `REJECT` any exact-state rescue. Freeze a
+strategy-independent temporal-response design using continuous path values,
+future log change in the already-frozen minute-volatility level at 1/3/5
+sessions, fixed current-volatility controls, and a predeclared discovery versus
+untouched confirmation split. Do not read market returns, strategy outcomes,
+raw minutes, failed path fields, or CY-011.
