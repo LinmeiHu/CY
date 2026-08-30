@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-VOL-TRANS-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-VOL-TRANS-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent daily volatility contraction/expansion transition architecture conditional on accepted direction and discovery breadth
 - `SUPPORTING_FRONTIER`: four frozen daily-volatility roles plus accepted direction/discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -531,3 +531,18 @@ concentration process, or coupled process freezes. SYNTH-MKT-019 finds marginal
 information in further industry-window rescue too low and pivots to the
 strategy-independent daily-volatility transition frontier. No S1-S12 STOP is
 active.
+
+The continuous volatility-transition map and spec `21145136...` are frozen
+before future-state construction. Current five-session RV20 change has complete
+source span t-25..t; the t+25 response spans t..t+25, sharing only endpoint t
+and no return interval. The baseline partial-rank edge controls current RV20
+level, range, and volatility concentration across raw/PIT/relative coordinates;
+its sign is discovered in block A and must replicate unchanged.
+
+Direction and discovery modification use causal-PIT habitats only. Primary
+halves (<=0.50 versus >0.50) and 40/60 shape neighbors are fixed. Direction is
+summarized across all six indices without selecting an index; discovery uses all
+eight matching view/denominator groups. Baseline, direction modification, and
+discovery modification stand separately. Both blocks remain reused exploratory
+evidence, not confirmation. Execute without price returns, strategies, failed
+roles, post-2023 data, or CY-011.

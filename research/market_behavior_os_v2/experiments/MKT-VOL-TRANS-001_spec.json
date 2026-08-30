@@ -1,0 +1,138 @@
+{
+  "experiment_id": "MKT-VOL-TRANS-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_VOLATILITY_STATE_CONSTRUCTION",
+  "question": "Does continuous volatility change recur or reverse after a nonoverlapping source span, and is that transition modified by accepted direction or discovery breadth?",
+  "research_role": "strategy-independent continuous volatility transition and state-modifier discovery",
+  "inputs": {
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc"
+    },
+    "volatility_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+      "sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"
+    },
+    "breadth_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+      "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"
+    },
+    "trend_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_trend_panel.csv",
+      "sha256": "fd933284bec590b5dee15549b176db973bebc07c8ee71edab64249c9b2e26e5a"
+    },
+    "trend_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_result.json",
+      "sha256": "784db3a54046e569c55912c5fff0afed7bf45b6c33573fcb13d23a6bca5cc7d5"
+    }
+  },
+  "prerequisite": {
+    "accepted_volatility_roles": ["realized_volatility", "intraday_range", "volatility_concentration", "volatility_change"],
+    "accepted_breadth_role": "new_high_low",
+    "accepted_trend_representation": "direction",
+    "trend_semantic_boundary": "representation stability only; no strategy or habitat usefulness"
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "base_rows": 10696,
+    "rows_per_base_group": 1337,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "direction_indices": ["csi000300", "csi000852", "csi000905", "sh000001", "sz399001", "sz399006"],
+    "future_shift_sessions": 25,
+    "phase_stride": 25
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date close at 15:00 Asia/Shanghai",
+    "response_available_at": "completed t+25 exchange-session close at 15:00 Asia/Shanghai",
+    "source_span_rule": "current t-25..t and response t..t+25 share only endpoint t and no return interval",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "fields": {
+    "volatility_change": "realized_volatility_change5",
+    "realized_volatility_level": "realized_volatility_median20",
+    "intraday_range_level": "intraday_range_median_smooth5",
+    "volatility_concentration": "volatility_mass_share_top10",
+    "direction": "direction_return_60",
+    "discovery": "breadth_net_new_high_low60"
+  },
+  "response": "future_volatility_change5_t25",
+  "coordinates": {
+    "raw": "<field>",
+    "pit": "<field>_pit_3y_pct",
+    "relative_to_all": "<field>_relative_to_all",
+    "relative_rank": "<field>_relative_view_rank_pct"
+  },
+  "baseline_edge": {
+    "predictor": "volatility_change",
+    "response": "future_volatility_change5_t25",
+    "controls": ["realized_volatility_level", "intraday_range_level", "volatility_concentration"],
+    "sign": "discovered in block A then required unchanged elsewhere"
+  },
+  "habitat_modifiers": {
+    "direction": {
+      "habitat_field": "direction_pit",
+      "groups": "six indices, each aggregating eight volatility view/denominator estimates",
+      "sign_support_minimum": 4
+    },
+    "discovery": {
+      "habitat_field": "discovery_pit",
+      "groups": "eight matching view/denominator estimates",
+      "sign_support_minimum": 6
+    }
+  },
+  "habitat_splits": {
+    "primary": {"low_maximum": 0.50, "high_minimum_exclusive": 0.50, "minimum_cell_observations": 150},
+    "shape_neighbor": {"low_maximum": 0.40, "high_minimum": 0.60, "minimum_cell_observations": 120},
+    "estimand": "partial_rho_high_minus_partial_rho_low"
+  },
+  "temporal_blocks": {
+    "block_a_reused": {"start": "2019-01-01", "end": "2021-12-31"},
+    "block_b_reused": {"start": "2022-01-01", "end": "2023-12-31"},
+    "membership_rule": "predictor and response dates both inside block",
+    "evidence_label": "REUSED_PRE2024_EXPLORATORY_REPLICATION_NOT_CONFIRMATION"
+  },
+  "gates": {
+    "raw_group_block_minimum_observations": 150,
+    "pit_group_block_minimum_observations": 150,
+    "relative_to_all_denominator_block_minimum_observations": 450,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "baseline_raw_median_absolute_partial_rho_minimum": 0.10,
+    "baseline_group_sign_support_minimum_of_8": 6,
+    "baseline_block_b_to_block_a_magnitude_ratio_minimum": 0.50,
+    "baseline_phase_median_absolute_partial_rho_minimum": 0.08,
+    "baseline_pit_median_absolute_partial_rho_minimum": 0.08,
+    "baseline_relative_median_absolute_partial_rho_minimum": 0.05,
+    "baseline_relative_sign_support_minimum_of_2": 2,
+    "modifier_primary_raw_median_absolute_difference_minimum": 0.10,
+    "modifier_primary_pit_median_absolute_difference_minimum": 0.08,
+    "modifier_neighbor_raw_and_pit_median_absolute_difference_minimum": 0.08,
+    "modifier_block_b_to_block_a_magnitude_ratio_minimum": 0.50,
+    "no_rescue": "Baseline, direction modifier, and discovery modifier stand separately. No sign, coordinate, block, phase, split, index, view, denominator, control deletion, favorable subset, future return, strategy outcome, or failed role can replace a failed exact claim."
+  },
+  "classification": {
+    "baseline_transition_dynamic": "baseline edge passes all gates",
+    "direction_modifier": "direction primary/neighbor raw/PIT modifier gates pass",
+    "discovery_modifier": "discovery primary/neighbor raw/PIT modifier gates pass"
+  },
+  "prohibited_fields": [
+    "future market, industry, or stock price return",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "failed volatility, breadth, or trend roles",
+    "post-2023 partitions",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes reused-time exploratory continuous volatility transition dynamics or modifiers only; independent future time remains required and no return, timing, strategy-habitat usefulness, causality, execution, capacity, or rule claim is permitted.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-VOL-TRANS-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-VOL-TRANS-001_dynamics.md"
+  ]
+}

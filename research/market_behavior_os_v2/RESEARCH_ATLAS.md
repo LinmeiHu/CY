@@ -18,6 +18,7 @@
 | `DIRECTIONAL_STRESS_PROCESS_MAP.md` | Outcome-blind upside/downside synchronization, elevated-process, dwell, relief, and activity-modifier semantics |
 | `LEADER_FAILURE_REPRESENTATION_MAP.md` | Separates concentration/discovery level from transition/failure claims |
 | `VOLATILITY_REPRESENTATION_MAP.md` | Outcome-blind multidimensional volatility concept map |
+| `VOLATILITY_TRANSITION_HABITAT_MAP.md` | Continuous t+25 volatility transition and direction/discovery modifier contract |
 | `INDUSTRY_RELATIVE_STRENGTH_REPRESENTATION_MAP.md` | Outcome-blind equal-industry leadership, diffusion, rotation, and stock/industry residual concept map |
 | `INDUSTRY_RELATIVE_STRENGTH_DATA_CONTRACT.md` | Exact causal membership, action-aware return, group coverage, and leave-one-out semantics |
 | `INDUSTRY_ENGINE_GEOMETRY_MAP.md` | Role-specific external redundancy and joint reconstruction map for accepted industry/relative-strength roles |
@@ -53,6 +54,7 @@
 | `reports/MKT-INDRS-ROT-001_falsification.md` | Delayed non-shared-endpoint failure and adjacent Kendall/displacement passes |
 | `experiments/MKT-INDRS-TAIL-DYN-001_spec.json` | Frozen t+20 residual-leadership state-dynamics contract |
 | `reports/MKT-INDRS-TAIL-DYN-001_dynamics.md` | Zero-of-four nonoverlapping residual-tail temporal result |
+| `experiments/MKT-VOL-TRANS-001_spec.json` | Frozen baseline and state-modifier volatility-transition contract |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

@@ -519,3 +519,17 @@ strength archetype. Next map MKT-VOL-TRANS-001: continuous daily-volatility
 contraction/expansion transition architecture conditional on accepted direction
 and discovery breadth, outcome-blind and before any strategy study. CY-011
 remains locked.
+
+MKT-VOL-TRANS-001 is now frozen under SHA-256
+`21145136eeb09369b755aad7fca591dcd280e3577159d7c65c5c1362bdacbb43`
+before shifting future volatility state. Use exactly the t+25 response; its
+complete source span shares no return interval with the current transition.
+Estimate the baseline after three fixed current-volatility controls in all four
+coordinate systems.
+
+Test direction and discovery modifiers only through the frozen causal-PIT
+50/50 primary split and 40/60 shape neighbor, in raw and PIT transition
+coordinates. Preserve all six direction indices and all eight discovery groups;
+do not select a favorable habitat. Baseline and modifiers stand independently.
+Both blocks are reused exploratory evidence, never confirmation. Future price
+returns, strategy fields, failed roles, post-2023 data, and CY-011 are forbidden.
