@@ -1,0 +1,157 @@
+{
+  "experiment_id": "MKT-STYLE-PART-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION",
+  "question": "Does current circulating-size positive-participation balance precede the future accepted five-session leadership transition after fixed current-state controls?",
+  "research_role": "single outcome-blind precursor edge after transition self-process falsification",
+  "inputs": {
+    "style_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_panel.csv",
+      "sha256": "5ed526187d71cb0c719a98ba99fcba368ea6dc53b6ad097efbebb5bb1f2863ad"
+    },
+    "style_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_result.json",
+      "sha256": "134dc2053c0558a5a63c70bfd09edf1b5579d4e4af4e6c16a94e32b9883614ad"
+    },
+    "style_geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-GEO-002_result.json",
+      "sha256": "4294a7bd5f625e950b04e39c57050755fd8219e986354f255dd618eb46e19908"
+    },
+    "risk_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1"
+    },
+    "risk_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json",
+      "sha256": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe"
+    },
+    "failed_self_process_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-DYN-001_result.json",
+      "sha256": "9405263f3376dc5fb4f8b39fb7f5ce12f60fafa538e06821d003ddd95c4d84b1"
+    }
+  },
+  "required_direct_engine_coordinates": [
+    "positive_participation_balance",
+    "size_curve_divergence",
+    "leadership_transition"
+  ],
+  "population": {
+    "keys": [
+      "trade_date",
+      "market_view",
+      "denominator"
+    ],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "views": [
+      "ALL_A",
+      "SH_A",
+      "SZ_A",
+      "CHINEXT_BOARD"
+    ],
+    "denominators": [
+      "ALL_STATUS",
+      "NON_ST"
+    ]
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date close at 15:00 Asia/Shanghai",
+    "response_available_at": "completed t+5 exchange-session close at 15:00 Asia/Shanghai",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "fields": {
+    "primary_predictor": "size_positive_participation_small30_large30",
+    "predictor_neighbors": [
+      "size_positive_participation_small20_large20",
+      "size_positive_participation_small40_large40"
+    ],
+    "response": "size_leadership_transition5",
+    "controls": {
+      "current_leadership_transition": {
+        "source": "style",
+        "field": "size_leadership_transition5"
+      },
+      "size_curve_divergence": {
+        "source": "style",
+        "field": "size_bucket_return_std5"
+      },
+      "central_direction": {
+        "source": "risk",
+        "field": "median_signed_limit_utilization"
+      }
+    }
+  },
+  "coordinates": {
+    "style_raw": "<field>",
+    "style_pit": "<field>__pit_3y_pct",
+    "style_relative_to_all": "<field>__relative_to_all",
+    "style_relative_rank": "<field>__relative_view_rank_pct",
+    "risk_raw": "<field>",
+    "risk_pit": "<field>_pit_3y_pct",
+    "risk_relative_to_all": "<field>_relative_to_all",
+    "risk_relative_rank": "<field>_relative_view_rank_pct"
+  },
+  "response_construction": {
+    "primary": "the accepted response coordinate shifted exactly five sessions earlier within view/denominator",
+    "same_block_rule": "predictor and response dates must both fall inside the temporal block",
+    "nonoverlap_identity": "the predictor's same-session t return is absent from both daily size-return blocks in T5(t+5)=L20(t+5)-L20(t)"
+  },
+  "temporal_blocks": {
+    "block_a_reused": {
+      "start": "2021-01-01",
+      "end": "2021-12-31"
+    },
+    "block_b_reused": {
+      "start": "2022-01-01",
+      "end": "2023-12-31"
+    },
+    "evidence_label": "both blocks reuse pre-2024 time and are exploratory, not untouched confirmation"
+  },
+  "estimation": {
+    "time_series_coordinates": "partial Spearman by rank-residualizing predictor and response on exactly three fixed current-date controls with intercept within each view/denominator/block",
+    "relative_rank_coordinate": "within each denominator/block, pool matched four-view ranks, remove date fixed effects, then correlate predictor/response residuals after both are regressed on three demeaned controls",
+    "relative_to_all_groups": "six non-ALL_A view/denominator groups",
+    "relative_rank_groups": "two denominators across matched four-view dates",
+    "phase_zero": "every fifth valid primary predictor row within original view/denominator and block",
+    "sign": "learned from block-A primary raw median and required in every other gate",
+    "raw_unadjusted": "diagnostic only and cannot rescue the fixed partial estimator"
+  },
+  "gates": {
+    "ordinary_group_block_minimum_observations": 150,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "phase_zero_group_block_minimum_observations": 40,
+    "primary_raw_median_absolute_partial_rho_minimum": 0.10,
+    "primary_raw_group_sign_support_minimum_of_8": 6,
+    "block_b_to_block_a_absolute_magnitude_ratio_minimum": 0.50,
+    "phase_zero_raw_median_absolute_partial_rho_minimum": 0.08,
+    "phase_zero_raw_group_sign_support_minimum_of_8": 6,
+    "primary_pit_median_absolute_partial_rho_minimum": 0.08,
+    "primary_pit_group_sign_support_minimum_of_8": 6,
+    "primary_relative_to_all_median_absolute_partial_rho_minimum": 0.05,
+    "primary_relative_to_all_group_sign_support_minimum_of_6": 5,
+    "primary_relative_rank_absolute_partial_rho_minimum": 0.05,
+    "primary_relative_rank_sign_support_minimum_of_2": 2,
+    "neighbor_raw_median_absolute_partial_rho_minimum": 0.06,
+    "neighbor_raw_group_sign_support_minimum_of_8": 6,
+    "all_required": true,
+    "no_rescue": "No sign, tail definition, horizon, block, coordinate, phase, view, denominator, control deletion, additional edge, failed role, or favorable subset can replace a failed primary or neighbor gate."
+  },
+  "prohibited_fields": [
+    "future market, industry, stock, or strategy return",
+    "future size-bucket security selection or named-stock outcome",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "size structure, one-day leadership, twenty-day leadership level, or any failed/redundant size role as predictor or control",
+    "winner diffusion, positive-mass concentration, or any additional temporal edge",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a replicating outcome-blind size-participation precursor to a future accepted size state; it does not establish a small-cap premium, market payoff prediction, stock selection, risk appetite, habitat fitness, timing, execution, capacity, causality, or a strategy rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-PART-DYN-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-PART-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-STYLE-PART-DYN-001_dynamics.md"
+  ]
+}

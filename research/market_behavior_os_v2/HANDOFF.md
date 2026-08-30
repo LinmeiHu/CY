@@ -810,3 +810,16 @@ SYNTH-MKT-027 selects one bounded map-first precursor edge before leaving the
 style frontier: accepted current positive-participation balance to future
 accepted T5, controlling current T5 and fixed current market/size state. Do not
 add another edge or interpret the failed self-process as a size-rotation rule.
+
+MKT-STYLE-PART-DYN-001 is frozen under SHA-256
+`5cffae1f3e2a74ae3eb1db53041a4bf93f0ea79ef17ec52c31f5984c95d9fc42`
+before response construction. The single primary is current accepted small30-
+minus-large30 positive participation to future accepted T5. Small20/large20 and
+small40/large40 are raw predictor-definition challenges only.
+
+Control exactly current T5, current size-curve divergence, and current broad
+central direction. Preserve reused 2021 versus 2022--2023 blocks, all four
+primary coordinates, corrected date-fixed-effect rank estimation, phase-zero
+sampling, and the frozen effect/sign/support architecture. Execute twice. Do not
+add diffusion/concentration edges, read payoff or strategy outcomes, use post-
+2023 data, or open CY-011.

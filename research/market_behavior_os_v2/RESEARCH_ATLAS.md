@@ -82,6 +82,8 @@
 | `MARKET_SIZE_STYLE_TRANSITION_DYNAMICS_MAP.md` | Frozen nonoverlapping 3/5/10-session size-leadership transition process architecture |
 | `experiments/MKT-STYLE-DYN-001_spec.json` | Frozen future accepted size-state response, controls, reused blocks, and no-rescue gates |
 | `reports/MKT-STYLE-DYN-001_dynamics.md` | Failed 3/5/10-session leadership-transition self-process and phase reversal |
+| `MARKET_SIZE_PARTICIPATION_PRECURSOR_MAP.md` | Frozen single size-participation-to-future-transition edge and neighbor/control architecture |
+| `experiments/MKT-STYLE-PART-DYN-001_spec.json` | Frozen precursor response, reused blocks, corrected rank estimator, and no-rescue gates |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

@@ -413,3 +413,15 @@
 - Boundary: this rejects only the exact transition self-process. It preserves
   same-session representations and establishes no size premium, habitat,
   timing, payoff, or strategy.
+
+## MKT-H-027 — size participation as leadership-transition precursor
+
+- Status: `FROZEN_RESULT_PENDING`.
+- Primary: accepted small30-minus-large30 positive participation at t to
+  accepted T5 at t+5, after current T5, size-curve divergence, and broad central
+  direction.
+- Challenges: raw small20/large20 and small40/large40 predictors, four primary
+  coordinates, two reused blocks, phase-zero, group signs, and the full no-
+  rescue architecture.
+- Boundary: passing would establish only an outcome-blind precursor to a future
+  accepted size state, not payoff, a size premium, habitat, timing, or strategy.

@@ -185,3 +185,9 @@ distinct precursor mechanism remains worth a bounded test before diversification
 MKT-STYLE-PART-DYN-001 asks whether current positive-participation balance leads
 future accepted T5 after its current state and fixed broad controls. Map first;
 do not add another edge or optimize a horizon.
+
+MKT-STYLE-PART-DYN-001 is frozen under spec `5cffae1f...`. One edge, two raw
+tail-definition neighbors, current T5/curve/central-direction controls, four
+primary coordinates, reused blocks, phase-zero sampling, and all support/effect/
+sign gates are fixed. Execute twice; failure closes this style precursor branch
+without a diffusion/concentration or horizon search.

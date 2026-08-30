@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Transition self-dynamics fail; one distinct participation-to-transition edge remains untested | Map one fixed precursor edge before diversification |
+| EXPLORE | 30% | Transition self-dynamics fail; one distinct participation-to-transition edge remains untested | Execute the frozen single precursor edge |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 5% | Distinct size states exist but no temporal mechanism or payoff does | Keep small-cap/style-rotation archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |

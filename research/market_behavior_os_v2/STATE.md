@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-PART-DYN-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-PART-DYN-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: whether distinct circulating-size participation breadth precedes a nonoverlapping future leadership transition
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -807,3 +807,15 @@ coordinates or broader style family. SYNTH-MKT-027 permits one map-first cross-
 mechanism edge: current accepted positive participation balance to future
 accepted T5 after current-state controls. No payoff, habitat, or archetype is
 established, and no S1--S12 STOP is active.
+
+The size-participation precursor map and MKT-STYLE-PART-DYN-001 spec
+`5cffae1f...` are frozen before shifting the response. The only edge is current
+accepted small30-minus-large30 positive participation to future accepted T5.
+Raw small20/large20 and small40/large40 predictors are fixed neighbors, not
+alternative primaries.
+
+Exactly three current controls are fixed: T5, size-curve divergence, and broad
+central direction. Raw/PIT/relative-to-ALL_A/corrected-rank, reused block,
+phase-zero, support, effect, sign, and no-rescue gates mirror the prior rigorous
+process boundary. Diffusion/concentration edges, future payoff, strategy
+outcomes, post-2023 data, and CY-011 are prohibited. Execute twice.
