@@ -447,3 +447,7 @@
   17 failures are short listing histories and 20 are invalid action histories.
   The exact reused-sample design is invalid. It does not reject the coordinate
   or support-defense hypothesis family.
+- Retry: MKT-SUPPORT-DATA-002 spec `79ec5129...` freezes a new CY-006-only
+  complete-sequence estimand while preserving all coordinate and minute gates.
+  Status remains unresolved until the audit passes; the retry itself establishes
+  no representation or mechanism.

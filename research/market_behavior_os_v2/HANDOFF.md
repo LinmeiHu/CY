@@ -872,3 +872,11 @@ support-defense family. The exact retry must preselect complete five-session
 cohorts from CY-006 coordinate eligibility only, preserving fixed dates/views,
 hash ordering, action challenges, full-population gates, and all no-rescue
 boundaries before any minute access.
+
+MKT-SUPPORT-DATA-002 is now frozen under SHA-256
+`79ec5129deddb2add59731a44bfa40b95bcbad827022bc61440f1b778b7ff689`.
+It preserves the six exact date blocks/four views and preselects ten complete
+five-session symbol sequences per year/view using only CY-006 eligibility and a
+fixed hash. It preserves the independent five-action/year challenge and every
+coordinate, minute, lineage, population, availability, no-rescue, prohibited-
+input, and claim gate. Execute before constructing a support representation.

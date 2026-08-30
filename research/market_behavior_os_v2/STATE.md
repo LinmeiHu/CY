@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-001_INVALID_SAMPLE_CONTRACT_SYNTHESIS`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-002_FROZEN_AUDIT_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -839,6 +839,18 @@ not the causal action coordinate, objective support representation, or broader
 support-defense family. SYNTH-MKT-029 requires a map-first semantic retry whose
 fixed five-session sample is selected from CY-006 coordinate eligibility alone,
 before and without minute behavior.
+
+MKT-SUPPORT-DATA-002 is frozen under SHA-256 `79ec5129...`. It retains the six
+exact five-session June blocks and selects ten symbols per year/view only from
+symbols coordinate-eligible on all five dates, ordered by
+`SHA256(MKT-SUPPORT-DATA-002|MARKET|year|view|symbol)`. The 1,200 market rows
+are therefore a new estimand, not replacement rows inside invalid 001.
+
+The separate 30-row action challenge, 10/20/40 prior levels, causal cash/share
+bridge, exact 241-bar grid, daily/minute close identity, CY-008 lineage, positive
+finite limit prices, full daily population floors, 15:30 availability, and all
+no-rescue/claim boundaries remain conjunctive. Execute twice if it passes; no
+minute behavior may influence selection and no support/usefulness claim exists.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

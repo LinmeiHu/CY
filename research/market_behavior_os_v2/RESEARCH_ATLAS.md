@@ -88,6 +88,8 @@
 | `OBJECTIVE_SUPPORT_DATA_CONTRACT.md` | Frozen prior-level/current-minute PIT and corporate-action coordinate semantics |
 | `experiments/MKT-SUPPORT-DATA-001_spec.json` | Frozen bounded raw-minute/action audit and full daily population gates |
 | `scripts/run_mkt_support_data_001.py` | Invalid reused-sample attempt retained; stops before minute access on 37 coordinate-ineligible sessions |
+| `OBJECTIVE_SUPPORT_DATA_CONTRACT_V2.md` | Frozen eligibility-aware five-session sample correction with unchanged coordinate/minute gates |
+| `experiments/MKT-SUPPORT-DATA-002_spec.json` | Frozen exact sample-semantic retry before new raw-minute access |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

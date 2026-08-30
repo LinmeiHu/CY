@@ -212,3 +212,9 @@ population cells pass. Do not replace rows inside 001 or weaken the gate. The
 active refinement is a separately frozen retry that retains the six fixed
 five-session date blocks and four views but hash-selects only CY-006-complete
 coordinate sequences before any minute behavior is read.
+
+MKT-SUPPORT-DATA-002 is frozen under spec `79ec5129...`. It selects ten complete
+five-session sequences per year/view and five independent supported action rows
+per year using only CY-006 and frozen hashes. All causal-coordinate, minute,
+lineage, limit, population, availability, and claim gates remain unchanged.
+Execute twice if complete; no failed row may be replaced inside 002.
