@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-SLF-001_PREREGISTERED` on 2026-08-30.
+`EXP-SLF-001_COMPLETE_SUPPORTED_WITH_QUALIFICATION` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -49,18 +49,23 @@ HOLDOUT `rho=None` without imputation, and consequently fails the unchanged
 three-block temporal gate. It validly returns `REFINE`: stock-specific raw/control
 0.223/0.283 and market raw/control 0.190/0.159 pass, but beta-adjusted 0.055/0.132
 and HOLDOUT temporal evidence fail. Two runs are byte-identical. No hold/exit or
-strategy action follows. Next audit early severe-loss formation coverage; do not
-historically deepen H-022 by alternate beta, index, horizon, or threshold.
+strategy action follows. Do not historically deepen H-022 by alternate beta,
+index, horizon, or threshold.
 
-EXP-SLF-001 now freezes H-023 before the first early-path/outcome association.
+EXP-SLF-001 froze H-023 before the first early-path/outcome association.
 The exact Day-3 sample is 356 survivors with 42/44 severe losses and 342 complete
 controls; all blocks/years retain endpoint variation. A 1,744-row action-safe
 reconstruction covers fixed Day-2/3/5 paths, five corporate-action cycles, and
-all exact 399102 landmarks; Day-5 reconciliation error is <=`2.55e-16`. Execute
-spec SHA `592f4289...` without changing landmark, endpoint, controls, gates, or
-neighbors. The result is explanatory only and cannot authorize a stop or exit.
+all exact 399102 landmarks; Day-5 reconciliation error is <=`2.55e-16`.
 
-EXP-IBQ-002 is the latest completed valid experiment. EXP-WLA-001's fixed
+EXP-SLF-001 validly passes every gate. Day-3 adverse stock-specific raw/control
+rhos are 0.321/0.337 with 8/8 LOYO; Day2/Day5/beta neighbors are
+0.235/0.340/0.320; blocks are 0.449/0.248/0.272; duration/exit, Bottom-4,
+security, and industry attacks pass. Two runs are byte-identical. This locates
+severe-loss separation but is embedded in terminal loss. Next preregister a
+multiplicative post-Day3 residual-failure falsification; do not create a stop.
+
+EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete
 cycles, 2,793 hard-valid trajectory rows, two byte-identical runs, and the full
 preregistered falsification set. EXP-P7-003 is invalidated, and Phase 8/9 plus

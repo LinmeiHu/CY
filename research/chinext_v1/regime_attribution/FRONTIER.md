@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`EXECUTE_EXP_SLF_001_EARLY_SEVERE_LOSS_FORMATION`.
+`DEEPEN_H023_WITH_POST_DAY3_RESIDUAL_FAILURE_FALSIFICATION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,9 +66,10 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Execute EXP-SLF-001 exactly under spec SHA `592f4289...`. The Day-3 primary has
-356 survivors/42 severe losses, 342 complete controls, endpoint variation in all
-three blocks and years, and 1,744 exact action-safe path rows. Apply the frozen
-Day-2/Day-5/beta neighbors and all temporal/mechanical/concentration gates. Do
-not inspect a result and change the landmark, mine beta definitions, reinterpret
-the path as a stop signal, revisit H-018/H-019/H-021/H-022, or create an exit rule.
+Preregister the minimum-sufficient post-Day3 residual-failure falsification.
+Remove the accepted Day-3 return multiplicatively from terminal return and test
+whether the frozen H-023 adverse path explains additional subsequent failure
+after Day-3 and fixed entry state. Preserve the 356 survivors, Day-3 feature,
+controls, timing, and explanatory-only boundary. Bind the already-known Day-5
+non-persistence result as a fixed attack. Do not change the landmark, search a
+stop threshold, retest H-019, or create an exit rule.

@@ -2,9 +2,8 @@
 
 ## CURRENT_PHASE
 
-EXP-SLF-001_PREREGISTERED — H-023 freezes one action-safe Day-3 stock-specific
-adverse-path test against accepted severe losses. No early-path/outcome
-association has been calculated or inspected.
+EXP-SLF-001_COMPLETE_SUPPORTED — H-023 locates stable severe-loss separation by
+Day 3, but remains outcome-overlapping and cannot support a stop or exit rule.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -838,6 +837,27 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Spec SHA `592f428988839b59a2f7232bc81088c8fe18ede318d90df406a064ea2b332e5d`;
   runner SHA `77a738c58cce11da0a9e25b616101621ef5a68b76e3b3029df9adb575a9179d4`.
   Status is frozen before the first early-path/outcome association.
+
+## AUTONOMOUS_CYCLE_EXP_SLF_001_RESULT
+
+- The fixed Day-3 stock-specific adverse return has raw/within-year rhos
+  0.321/0.236 with 8/8 positive LOYO. After concurrent market plus fixed
+  pre-entry controls, partial rho is 0.337 with 8/8.
+- Day-3 beta-adjusted, Day-2 all-cycle, and Day-5 survivor neighbors are
+  0.320/0.235/0.340, each with 8/8 positive LOYO.
+- DEVELOPMENT/EXTENDED/HOLDOUT block rhos are 0.449/0.248/0.272. All blocks are
+  estimable and positive.
+- Duration/exit partial rho is 0.251; ex-Bottom4 P&L rho is 0.288; all 41
+  leave-severe-security and all 67 leave-industry omissions are positive.
+- Secondary extreme-loss20 association is only 0.112, while false-breakout and
+  terminal-return associations are 0.481 and -0.517. These remain descriptive.
+- Every frozen raw, controlled, neighbor, temporal, and falsification gate passes.
+  Decision: `DEEPEN` / `SEVERE_LOSS_PATH_SEPARATES_BY_DAY3_WITH_QUALIFICATION`.
+- Two executions are byte-identical. Output hashes: table `87f2313f...`, JSON
+  `daf34cb6...`, report `aff78100...`, packet `4555f3b6...`.
+- Because Day-3 return is embedded in terminal loss and conditions on survival,
+  the next high-value falsification removes the Day-3 arithmetic contribution
+  and tests additional post-Day3 failure. No stop/exit or strategy rule follows.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 

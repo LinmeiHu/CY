@@ -483,6 +483,13 @@ byte-consistent with one another.
 - Confounds: Day-3 return is post-entry, survivor-conditioned, and embedded in
   terminal loss. AVAILABLE_AT is Day-3 15:30 and any potential action is next
   valid session or later, but this experiment authorizes no action.
-- Status: `PREREGISTERED` as EXP-SLF-001 before the first early-path/outcome
-  association. No alternate landmark, loss/stop threshold, exit rule, replay, or
-  V1 modification is authorized.
+- Result: the Day-3 adverse stock-specific rho is 0.321 raw and 0.337 after
+  concurrent-market and fixed entry controls, both with 8/8 positive LOYO.
+  Day-2 all-cycle, Day-5 survivor, and beta-adjusted rhos are 0.235/0.340/0.320,
+  all 8/8. Block rhos are 0.449/0.248/0.272; duration/exit, ex-Bottom4,
+  security, and industry attacks all pass.
+- Status: `SUPPORTED_WITH_QUALIFICATION` / `DEEPEN` by EXP-SLF-001. Severe-loss
+  paths are distinguishable by Day 3, but the feature is outcome-overlapping and
+  survivor-conditioned. The next required falsification is whether it explains
+  additional post-Day3 failure after removing the Day-3 arithmetic contribution.
+  No stop, exit, threshold, replay, or V1 modification is authorized.
