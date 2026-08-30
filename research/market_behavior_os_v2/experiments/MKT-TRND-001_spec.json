@@ -1,0 +1,88 @@
+{
+  "experiment_id": "MKT-TRND-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "question": "Can economically distinct trend direction, strength, quality, age, alignment, and transition representations be constructed stably across six broad-market indices in absolute, causal PIT-normalized, and contemporaneous relative coordinates?",
+  "research_role": "strategy-independent Market State Engine construction and falsification",
+  "outcome_policy": {
+    "strategy_outcomes": "PROHIBITED",
+    "future_returns": "PROHIBITED",
+    "trade_or_fill_fields": "PROHIBITED",
+    "mfe_mae_exit_duration_labels": "PROHIBITED",
+    "selection_rule": "construction coverage, same-role neighboring-horizon stability, nondegeneracy, and cross-role redundancy only"
+  },
+  "input": {
+    "asset_id": "QD-003",
+    "registry_path": "configs/data_asset_registry.json",
+    "source_root": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/QD-003-20260820.json",
+    "manifest_sha256": "d847419443b2563c1904790f986ef8980dc37d688318fadb3858b3251d84972f",
+    "file_sha256": {
+      "csi000300.parquet": "6d93a34f308fec0390a184a68a4d7856f566c917248b886b6a4e7dffcf9dda63",
+      "csi000852.parquet": "6c9396cac11e5ad54b48fd88966bdf848d54bd8024fd8babb0cca47cba678838",
+      "csi000905.parquet": "51797f1f6f73e7e0e55b7b798786039ac1647e9d37cb848af33ee74a3c1fd564",
+      "sh000001.parquet": "0df70494b107920dd3cc12e524eb27ab6681a0cd6a85040f563bc8283884b818",
+      "sz399001.parquet": "1131ec4943b21f9c25caf312a93b74a5a043b68c0bba98c42b19ec90d82daae4",
+      "sz399006.parquet": "0d0f8dbb573f1016eaa94f11aa847ea2bf2be296691caa591f93320ddd640c2c"
+    },
+    "research_start": "2010-06-01",
+    "research_end": "2023-12-31",
+    "history_before_start": "permitted only for causal rolling construction",
+    "post_2023": "excluded before feature construction and absent from all outputs"
+  },
+  "pit_semantics": {
+    "bar_timestamp": "official trade_date daily bar",
+    "decision_at": "completed official close at 15:00 Asia/Shanghai",
+    "available_at": "completed official close at 15:00 Asia/Shanghai under QD-003 available_at_from_completed_bar semantics",
+    "first_actionable_time": "next valid trading session; this experiment creates no action",
+    "snapshot_id": "QD-003 manifest SHA-256",
+    "unknown_or_invalid": "missing and fail closed"
+  },
+  "fixed_representations": {
+    "direction": {
+      "primary": "log(close_t / close_t-60)",
+      "neighbors": ["40-session log return", "80-session log return"]
+    },
+    "strength": {
+      "primary": "abs(close / MA60 - 1)",
+      "neighbors": ["abs(close / MA40 - 1)", "abs(close / MA80 - 1)"]
+    },
+    "quality": {
+      "primary": "abs(60-session log return) / sum(abs(daily log return), 60)",
+      "neighbors": ["40-session directional efficiency", "80-session directional efficiency"]
+    },
+    "age": {
+      "primary": "consecutive completed sessions on the same side of MA60",
+      "neighbors": ["same-side age versus MA40", "same-side age versus MA80"]
+    },
+    "alignment": {
+      "primary": "mean sign of MA20-MA60, MA20-MA120, and MA60-MA120",
+      "neighbors": ["MA10/MA40/MA120 alignment", "MA20/MA80/MA160 alignment"]
+    },
+    "transition": {
+      "primary": "20-session log return minus one third of 60-session log return",
+      "neighbors": ["10-session log return minus one sixth of 60-session log return", "30-session log return minus one half of 60-session log return"]
+    }
+  },
+  "coordinates": {
+    "absolute": "raw primary and neighboring representations",
+    "pit_expanding_percentile": "within-index causal percentile including the completed current observation; minimum 504 observations",
+    "pit_3y_percentile": "within-index trailing 756-session causal percentile including current; minimum 504 observations",
+    "pit_3y_robust_z": "within-index trailing 756-session median/MAD z; minimum 504 observations; zero MAD is missing",
+    "relative": "same-date cross-index percentile of the absolute primary when at least four indices are available"
+  },
+  "construction_gates": {
+    "raw_coverage": ">= 0.98 after 160 within-index observations",
+    "same_role_neighbor_stability": "minimum median within-index Spearman rho across the two neighbors >= 0.70",
+    "index_year_nondegeneracy": "all index-year cells with at least 150 observations have finite nonzero standard deviation",
+    "coordinate_coverage": "all expected causal-PIT observations are populated unless MAD is exactly zero; relative coordinate requires >=4 indices",
+    "minimal_panel_priority": ["direction", "quality", "age", "transition", "strength", "alignment"],
+    "cross_role_redundancy": "a passing role enters the minimal panel only when absolute pooled Spearman rho with every earlier accepted role is <= 0.85",
+    "no_rescue": "a failed primary role is not replaced by the better-looking neighbor inside this experiment"
+  },
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-TRND-001_trend_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-TRND-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-TRND-001_trend_state_freeze.md"
+  ]
+}
