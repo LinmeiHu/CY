@@ -1,0 +1,151 @@
+{
+  "experiment_id": "MKT-STYLE-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FUTURE_STATE_CONSTRUCTION",
+  "question": "Does the externally distinct five-session circulating-size leadership-transition coordinate have a replicating nonoverlapping future state dynamic?",
+  "research_role": "outcome-blind temporal process after representation and external compression",
+  "inputs": {
+    "style_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_panel.csv",
+      "sha256": "5ed526187d71cb0c719a98ba99fcba368ea6dc53b6ad097efbebb5bb1f2863ad"
+    },
+    "style_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_result.json",
+      "sha256": "134dc2053c0558a5a63c70bfd09edf1b5579d4e4af4e6c16a94e32b9883614ad"
+    },
+    "style_geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-GEO-002_result.json",
+      "sha256": "4294a7bd5f625e950b04e39c57050755fd8219e986354f255dd618eb46e19908"
+    },
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc"
+    },
+    "volatility_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+      "sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"
+    }
+  },
+  "required_direct_engine_coordinate": "leadership_transition",
+  "population": {
+    "keys": [
+      "trade_date",
+      "market_view",
+      "denominator"
+    ],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "views": [
+      "ALL_A",
+      "SH_A",
+      "SZ_A",
+      "CHINEXT_BOARD"
+    ],
+    "denominators": [
+      "ALL_STATUS",
+      "NON_ST"
+    ]
+  },
+  "availability": {
+    "predictor_available_at": "completed decision-date close at 15:00 Asia/Shanghai",
+    "response_available_at": "completed t+h exchange-session close at 15:00 Asia/Shanghai",
+    "entry_predictor_use": "forbidden; this experiment creates no action"
+  },
+  "fields": {
+    "primary_transition": "size_leadership_transition5",
+    "neighbor_transitions": {
+      "3": "size_leadership_transition3",
+      "10": "size_leadership_transition10"
+    },
+    "controls": {
+      "positive_participation_balance": {
+        "source": "style",
+        "field": "size_positive_participation_small30_large30"
+      },
+      "size_curve_divergence": {
+        "source": "style",
+        "field": "size_bucket_return_std5"
+      },
+      "realized_volatility_change": {
+        "source": "volatility",
+        "field": "realized_volatility_change5"
+      }
+    }
+  },
+  "coordinates": {
+    "style_raw": "<field>",
+    "style_pit": "<field>__pit_3y_pct",
+    "style_relative_to_all": "<field>__relative_to_all",
+    "style_relative_rank": "<field>__relative_view_rank_pct",
+    "volatility_raw": "<field>",
+    "volatility_pit": "<field>_pit_3y_pct",
+    "volatility_relative_to_all": "<field>_relative_to_all",
+    "volatility_relative_rank": "<field>_relative_view_rank_pct"
+  },
+  "responses": {
+    "primary": "the same primary transition coordinate shifted exactly five sessions earlier within view/denominator; T5(t+5)=L20(t+5)-L20(t)",
+    "neighbors": {
+      "3": "the raw three-session transition shifted exactly three sessions earlier within view/denominator",
+      "10": "the raw ten-session transition shifted exactly ten sessions earlier within view/denominator"
+    },
+    "same_block_rule": "predictor and response dates must both fall inside the temporal block",
+    "nonoverlap_identity": "for every horizon h in 3,5,10, Th(t)=L20(t)-L20(t-h) and Th(t+h)=L20(t+h)-L20(t) share no daily size-return component"
+  },
+  "temporal_blocks": {
+    "block_a_reused": {
+      "start": "2021-01-01",
+      "end": "2021-12-31"
+    },
+    "block_b_reused": {
+      "start": "2022-01-01",
+      "end": "2023-12-31"
+    },
+    "evidence_label": "both blocks reuse pre-2024 time and are exploratory, not untouched confirmation"
+  },
+  "estimation": {
+    "time_series_coordinates": "partial Spearman by rank-residualizing predictor and response on exactly three fixed current-date controls with intercept within each view/denominator/block",
+    "relative_rank_coordinate": "within each denominator/block, pool four-view ranks, remove date fixed effects from predictor, response, and controls, then correlate predictor/response residuals after both are regressed on the three demeaned controls",
+    "relative_to_all_groups": "six non-ALL_A view/denominator groups",
+    "relative_rank_groups": "two denominators across matched four-view dates",
+    "phase_zero": "every fifth valid primary predictor row within original view/denominator and block",
+    "sign": "learned from block-A primary raw median and required in every other gate",
+    "raw_unadjusted": "diagnostic only and cannot rescue the fixed partial estimator"
+  },
+  "gates": {
+    "ordinary_group_block_minimum_observations": 150,
+    "relative_rank_denominator_block_minimum_observations": 600,
+    "phase_zero_group_block_minimum_observations": 40,
+    "primary_raw_median_absolute_partial_rho_minimum": 0.10,
+    "primary_raw_group_sign_support_minimum_of_8": 6,
+    "block_b_to_block_a_absolute_magnitude_ratio_minimum": 0.50,
+    "phase_zero_raw_median_absolute_partial_rho_minimum": 0.08,
+    "phase_zero_raw_group_sign_support_minimum_of_8": 6,
+    "primary_pit_median_absolute_partial_rho_minimum": 0.08,
+    "primary_pit_group_sign_support_minimum_of_8": 6,
+    "primary_relative_to_all_median_absolute_partial_rho_minimum": 0.05,
+    "primary_relative_to_all_group_sign_support_minimum_of_6": 5,
+    "primary_relative_rank_absolute_partial_rho_minimum": 0.05,
+    "primary_relative_rank_sign_support_minimum_of_2": 2,
+    "neighbor_raw_median_absolute_partial_rho_minimum": 0.06,
+    "neighbor_raw_group_sign_support_minimum_of_8": 6,
+    "all_required": true,
+    "no_rescue": "No sign, horizon, block, coordinate, phase, view, denominator, control deletion, failed role, or favorable subset can replace a failed primary or neighboring-definition gate."
+  },
+  "prohibited_fields": [
+    "future market, industry, stock, or strategy return",
+    "future size-bucket security selection or named-stock outcome",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "size structure, one-day leadership, twenty-day leadership level, or any failed/redundant size role as predictor or control",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only a replicating outcome-blind circulating-size leadership-transition state dynamic; it does not establish a small-cap premium, market return prediction, stock selection, risk appetite, habitat fitness, timing, execution, capacity, causality, or a strategy rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-DYN-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-STYLE-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-STYLE-DYN-001_dynamics.md"
+  ]
+}

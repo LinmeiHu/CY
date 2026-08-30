@@ -172,3 +172,9 @@ the other five pass every pairwise and joint gate. The next frontier is
 MKT-STYLE-DYN-001 map-first: test the distinct five-session leadership-
 transition role against its next nonoverlapping state, with 3/10-session shape
 neighbors and no future return or strategy outcome.
+
+MKT-STYLE-DYN-001 is frozen under spec `150de73b...`. The t-to-t+5 transition
+uses disjoint daily size-return components; raw 3/10 definitions, three current
+controls, reused blocks, phase-zero sampling, all four primary coordinates, and
+all effect/sign/support gates are immutable. Execute twice; no payoff or size-
+rotation strategy claim is permitted.

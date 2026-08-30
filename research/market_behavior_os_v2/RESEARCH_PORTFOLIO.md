@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Five circulating-size roles survive external compression; their temporal meaning is unknown | Map nonoverlapping leadership-transition dynamics |
+| EXPLORE | 35% | Five circulating-size roles survive external compression; their temporal meaning is unknown | Execute frozen nonoverlapping leadership-transition dynamics |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 5% | Distinct size states exist but no temporal mechanism or payoff does | Keep small-cap/style-rotation archetypes inactive |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 25% | Size structure is externally redundant and twenty-day leadership unstable | Test only the accepted transition coordinate with fixed nonoverlapping neighbors |
+| FALSIFY | 25% | Size structure is externally redundant and twenty-day leadership unstable | Require the accepted transition to survive 3/10 definitions and phase-zero sampling |
 
 Mandatory checkpoint questions:
 

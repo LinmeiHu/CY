@@ -398,3 +398,16 @@
   raw/PIT/relative-to-ALL_A geometry cannot rescue it.
 - Boundary: external distinctness is contemporaneous only. It establishes no
   temporal dynamics, size premium, economic usefulness, habitat, or strategy.
+
+## MKT-H-026 — circulating-size leadership-transition dynamics
+
+- Status: `FROZEN_RESULT_PENDING`.
+- Primary: accepted `T5(t)` versus the same accepted transition at t+5. Their
+  daily size-return components are disjoint; passing sign will determine
+  persistence versus reversal.
+- Challenges: raw 3/10-session definitions, three fixed current controls,
+  reused 2021 and 2022--2023 blocks, phase-zero sampling, raw/PIT/relative-to-
+  ALL_A/corrected-rank coordinates, and group-sign replication are conjunctive.
+- Boundary: no future market payoff, stock-selection result, strategy outcome,
+  post-2023 data, or CY-011 may enter. Passing would establish a state process,
+  not a size premium, habitat, or strategy.

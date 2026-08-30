@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-STYLE-DYN-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-STYLE-DYN-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: nonoverlapping temporal meaning of the distinct circulating-size leadership-transition coordinate
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -775,3 +775,17 @@ contemporaneous representation compression. SYNTH-MKT-026 selects map-first
 nonoverlapping temporal falsification of the distinct leadership-transition
 coordinate; it does not authorize a size premium, habitat, or strategy. No
 S1--S12 STOP is active.
+
+The size-transition dynamics map and MKT-STYLE-DYN-001 spec `150de73b...` are
+frozen before shifting a future state. The primary compares accepted
+`T5(t)=L20(t)-L20(t-5)` with `T5(t+5)=L20(t+5)-L20(t)`; their daily size-return
+components do not overlap. Raw 3/10-session transitions are fixed definition
+neighbors and cannot rescue the primary.
+
+Exactly three current controls are fixed: positive participation balance, size-
+curve divergence, and broad realized-volatility change. Raw, causal-PIT,
+relative-to-ALL_A, corrected cross-view-rank, block replication, group signs,
+phase-zero nonoverlap, and no-rescue gates are conjunctive. Both 2021 and
+2022--2023 blocks are reused exploratory evidence. Future market payoff,
+strategy outcomes, failed size roles, post-2023 data, and CY-011 remain
+prohibited. Execute twice.

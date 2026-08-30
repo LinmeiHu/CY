@@ -778,3 +778,16 @@ transition coordinate has a replicating nonoverlapping future state dynamic,
 with 3/10-session definitions as fixed neighbors. Freeze all responses,
 controls, blocks, phase samples, coordinates, and gates before shifting a future
 state. Do not read market payoff or form a size-rotation rule.
+
+MKT-STYLE-DYN-001 is frozen under SHA-256
+`150de73b4a6c3c56027d61e63791636ede2c75e9e57785f7981263290a53a3e7`
+before any future-state shift. The accepted five-session transition and its
+t+5 response use disjoint daily size-return components. Three/ten-session raw
+transition definitions are fixed non-rescuing neighbors.
+
+Partial-rank estimators use only current positive participation, size-curve
+divergence, and realized-volatility change. Preserve raw/PIT/relative-to-ALL_A,
+corrected date-fixed-effect four-view ranks, reused 2021 versus 2022--2023
+blocks, phase-zero sampling, effect/sign/support gates, and the all-required
+rule. Execute twice without future market payoff, stock selection, strategy
+outcomes, failed size roles, post-2023 data, or CY-011.

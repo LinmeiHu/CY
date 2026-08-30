@@ -79,6 +79,8 @@
 | `MARKET_SIZE_STYLE_EXTERNAL_GEOMETRY_MAP_V2.md` | Same-date cross-view relative-rank estimand correction; all scientific controls and gates retained |
 | `experiments/MKT-STYLE-GEO-002_spec.json` | Frozen exact semantic retry after relative-rank support audit |
 | `reports/MKT-STYLE-GEO-002_geometry.md` | Five direct size coordinates and one externally redundant structure manifestation |
+| `MARKET_SIZE_STYLE_TRANSITION_DYNAMICS_MAP.md` | Frozen nonoverlapping 3/5/10-session size-leadership transition process architecture |
+| `experiments/MKT-STYLE-DYN-001_spec.json` | Frozen future accepted size-state response, controls, reused blocks, and no-rescue gates |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |
