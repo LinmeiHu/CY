@@ -216,6 +216,22 @@ output. This is a scientific sample-contract mismatch, not an adapter or action-
 coordinate implementation defect. Do not alter 001; freeze any eligibility-
 aware sample as a new semantic experiment.
 
+## MKT-SUPPORT-DATA-002 — invalid source-close equality
+
+The eligibility-aware sample, partition hashes, population, coordinate, and
+limit gates passed. The first QD-004 row then stopped at exact equality:
+`000090.SZ`/2018-06-08 has 8.520000457763672 versus CY-006 8.52. No output was
+written. A read-only complete-target diagnostic found 1,161 bitwise mismatches
+and 39 integer-cent mismatches among 1,225 unique sessions; all 39 are 2018
+Shanghai and the maximum difference is seven cents.
+
+The registered CY-008 build validates internal minute OHLC, units, session
+completeness, and volume/amount reconciliation; it never promises equality of
+the minute final bar to CY-006 official daily close. This is a scientific source-
+role error, not floating tolerance trouble alone. A corrected implementation
+must preserve QD-004 prices and use CY-006 only to obtain the causal coordinate
+scale. It must report exact close differences and never force equality.
+
 ## MKT-STYLE-001 — invalid cumulative size-rank denominator
 
 The first implementation used an ordered window for both row number and count.

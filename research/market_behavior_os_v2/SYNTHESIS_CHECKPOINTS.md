@@ -1274,3 +1274,47 @@ fixed five-session June blocks and four governed views, but select ten complete
 CY-006 coordinate-eligible symbol sequences per year/view by frozen hash before
 any QD-004 behavior. Preserve the independent five-action/year challenge, full
 population audit, exact coordinate/minute/lineage gates, and claim boundaries.
+
+## SYNTH-MKT-030 — after cross-source close-equality invalidation
+
+### What was learned?
+
+Eligibility-aware sampling resolves 001's mismatch, but exact equality between
+QD-004's final minute bar and CY-006's official daily close is not a registered
+CY-008 semantic. The first binary mismatch is 8.520000457763672 versus 8.52.
+Across 1,225 unique targets, 1,161 differ bitwise and 39 differ in integer cents;
+all tick-level differences are 2018 Shanghai, with a seven-cent maximum.
+
+The causal coordinate does not require those source observations to be equal.
+`coordinate_close(t)/CY-006_close(t)` is the exact daily scale. Multiplying each
+observed QD-004 OHLC by that scale maps the minute path into the same coordinate
+while preserving its own final close. Source disagreement must be reported, not
+removed by tolerance or substitution.
+
+### What market behavior are we still not studying?
+
+Objective support/resistance behavior is still absent because no valid
+coordinate audit has completed. Repeated tests, penetration, recovery speed and
+volume, strengthening/weakening, and support-to-resistance transitions remain
+open. Accumulation/distribution and cross-asset state remain unstudied.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Neither a sample correction nor a source-role correction is market-behavior
+evidence. Pullback and reversal remain inactive research possibilities.
+
+### Parallel-track awareness
+
+- **Market research:** correct only source roles and exact scale identities.
+- **Existing-strategy archaeology:** no strategy field or outcome was read.
+- **Strategy invention:** no archetype promotion; support remains pre-
+  representation.
+
+### Research Director decision
+
+`REFINE_SOURCE_ROLE_CONTRACT` via MKT-SUPPORT-DATA-003 map-first. Inherit the
+exact 002 sample algorithm and every coordinate/minute/population gate except
+cross-source close equality. Freeze CY-006 as the causal scale source and QD-004
+as the observed minute-price source. Require exact scale multiplication,
+positive finite outputs, complete source-disagreement diagnostics, and no
+tolerance, substitution, resampling, support claim, or outcome access.

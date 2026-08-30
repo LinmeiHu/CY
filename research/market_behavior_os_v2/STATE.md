@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-002_FROZEN_AUDIT_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-002_INVALID_SOURCE_EQUALITY_SYNTHESIS`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -851,6 +851,27 @@ bridge, exact 241-bar grid, daily/minute close identity, CY-008 lineage, positiv
 finite limit prices, full daily population floors, 15:30 availability, and all
 no-rescue/claim boundaries remain conjunctive. Execute twice if it passes; no
 minute behavior may influence selection and no support/usefulness claim exists.
+
+MKT-SUPPORT-DATA-002 passed hashes, population, sample eligibility, limit-price,
+and target-coordinate gates, then stopped on its first exact daily/minute close
+comparison: `000090.SZ` on 2018-06-08 is stored as 8.520000457763672 in QD-004
+and 8.52 in CY-006. No output artifact was accepted.
+
+The first-difference audit across all 1,225 unique frozen targets found 1,161
+bitwise mismatches and 39 exact-cent mismatches. All 39 tick-level differences
+are 2018 Shanghai sessions; the largest is seven cents. CY-008 never declares
+daily/minute close equality: its hard-valid contract covers the minute grid,
+internal OHLC, units, and volume/amount reconciliation against CY-006. Therefore
+the 002 equality gate is an inapplicable source-equivalence assumption, not
+evidence that the minute path or daily causal coordinate is invalid.
+
+The shared coordinate scale is already well-defined as
+`coordinate_close(t)/CY-006 daily_close(t)`. Applying that scale to each observed
+QD-004 minute OHLC maps the raw path into the same causal coordinate without
+replacing either source; the final transformed minute close need not equal the
+separate official daily close. SYNTH-MKT-030 requires a separately frozen 003
+source-role correction with exact scale arithmetic and full close-disagreement
+diagnostics, not a tolerance or favorable-sample rescue.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

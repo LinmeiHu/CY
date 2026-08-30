@@ -449,5 +449,8 @@
   or support-defense hypothesis family.
 - Retry: MKT-SUPPORT-DATA-002 spec `79ec5129...` freezes a new CY-006-only
   complete-sequence estimand while preserving all coordinate and minute gates.
-  Status remains unresolved until the audit passes; the retry itself establishes
-  no representation or mechanism.
+  It is invalid at its exact source-close equality gate: 1,161/1,225 target
+  closes differ bitwise and 39 differ in cents. Equality is not provided by
+  CY-008 and is unnecessary for applying the causal daily coordinate scale to
+  observed minute OHLC. Status remains unresolved pending a source-role-correct
+  retry; no representation or mechanism is established.

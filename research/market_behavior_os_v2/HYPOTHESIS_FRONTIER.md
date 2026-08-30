@@ -218,3 +218,11 @@ five-session sequences per year/view and five independent supported action rows
 per year using only CY-006 and frozen hashes. All causal-coordinate, minute,
 lineage, limit, population, availability, and claim gates remain unchanged.
 Execute twice if complete; no failed row may be replaced inside 002.
+
+MKT-SUPPORT-DATA-002 is invalid before output because exact daily/minute final-
+close equality is not a governed CY-008 semantic. The first binary difference is
+8.520000457763672 versus 8.52; 39/1,225 targets differ in exact cents, all in
+2018 Shanghai. Do not introduce a tolerance or choose a new sample. The next
+map must retain the sample and define the distinct source roles: CY-006 supplies
+the causal scale, while QD-004 supplies every observed minute OHLC, including
+its final bar. Record disagreement rather than forcing identity.

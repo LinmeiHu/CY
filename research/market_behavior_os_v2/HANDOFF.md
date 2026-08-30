@@ -880,3 +880,17 @@ five-session symbol sequences per year/view using only CY-006 eligibility and a
 fixed hash. It preserves the independent five-action/year challenge and every
 coordinate, minute, lineage, population, availability, no-rescue, prohibited-
 input, and claim gate. Execute before constructing a support representation.
+
+MKT-SUPPORT-DATA-002 is invalid at the first source-close equality gate. The
+first row is `000090.SZ`/2018-06-08: QD-004 stores 8.520000457763672 while CY-006
+stores 8.52. A complete target diagnostic found 1,161 bitwise and 39 exact-cent
+differences among 1,225 unique sessions; all cent differences are 2018 Shanghai,
+with a seven-cent maximum. No 002 output exists.
+
+This is not a minute-grid, action-coordinate, or lineage failure. CY-008 does
+not promise equality between the independent minute final bar and official
+daily close; it promises internal minute OHLC and volume/amount reconciliation.
+The causal scale `coordinate_close/daily_close` can map every observed QD-004
+bar without substituting its final close. Freeze that source-role correction as
+003, retain disagreement diagnostics, and do not add a tolerance or replace a
+sample row.

@@ -13,7 +13,8 @@ Required-scale minute representation and the later signed/directional-process
 tests completed without an active blocker. MKT-INDRS-001 also completed with
 seven minimal representation roles and no correctness disagreement. No result
 establishes economic usefulness or authorizes a strategy rule or CY-011.
-MKT-SUPPORT-DATA-001 failed its reused-sample gate before minute access, which is
-an ordinary invalid experiment rather than an S1-S12 condition. Continue with a
-separately frozen MKT-SUPPORT-DATA-002 CY-006-eligible five-session sample audit;
+MKT-SUPPORT-DATA-001 failed its reused-sample gate and 002 failed an inapplicable
+cross-source close-equality assumption. Both are ordinary invalid experiments,
+not S1-S12 conditions. Freeze a 003 source-role correction that retains the 002
+sample and maps observed QD-004 OHLC by the CY-006 causal coordinate scale;
 reinstate a STOP only if an S1-S12 boundary is actually encountered.
