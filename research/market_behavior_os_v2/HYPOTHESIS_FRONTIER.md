@@ -284,3 +284,11 @@ MKT-SUPPORT-DYN-DATA-003 still lacks lifetime RSS margin under its inherited
 2-GiB daily setting. MKT-SUPPORT-DYN-DATA-004 is frozen under `63c8a1f8...` and
 changes only that engine memory limit to the measured-safe 1.5 GiB. This is the
 final resource retry; failure triggers synthesis rather than another relaxation.
+
+MKT-SUPPORT-DYN-DATA-004 passes twice with byte-identical outputs. The exact
+calendar/CY-006-selected sample supplies 315 repeated-tested and 269 twice-
+recovered sequences, with every fixed block/year count gate passing. This is
+sample adequacy, not temporal behavior. The next action is to freeze
+MKT-SUPPORT-DYN-001 map-first for recovery-speed and recovery-activity
+progression, coupling, and recovered/failed/restored transitions. No estimate
+may be constructed before that map and experiment contract are immutable.

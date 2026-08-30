@@ -245,3 +245,10 @@ have no causal historical normalization and the existing sample supplies only
 29 repeated-tested sequences. The engine therefore emits no support-defense,
 recovery-progression, failure, habitat, timing, or strategy state. A larger
 calendar/CY-006-selected sample must be frozen before minute outcomes are read.
+
+MKT-SUPPORT-DYN-DATA-004 replaces that support limitation with an exact,
+outcome-blind calendar/CY-006-selected sample: 315 sequences have repeated tests
+and 269 have at least two completed recoveries, with every fixed year/block floor
+passing. This changes feasibility only. The engine still emits no recovery
+direction, defense, deterioration, transition, habitat, timing, or strategy
+state until a separately frozen temporal map survives its process gates.

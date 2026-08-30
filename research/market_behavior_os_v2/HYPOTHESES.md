@@ -493,3 +493,17 @@
   sample must be frozen from calendar and daily eligibility before any minute
   recovery outcome is observed; no payoff, habitat, timing, or strategy claim
   exists.
+
+## MKT-H-031 — objective-recovery temporal sample adequacy
+
+- Status: `SAMPLE_ADEQUATE_PROCESS_UNESTIMATED`.
+- Exact calendar/CY-006-only selection produces 1,920 sequences and 9,575
+  unique sessions. First-block reference equivalence passes exactly and all
+  resource, action, lineage, population, and raw-row gates complete.
+- 315 sequences have tests on at least two days; fixed blocks contain 133/182
+  and every year contains at least 33. 269 sequences have at least two recovered
+  days with recovery speed and recovery-volume intensity; blocks contain
+  107/162 and every year at least 30.
+- Boundary: counts establish only that a temporal representation can be frozen.
+  They do not reveal progression direction, repeated defense, failure dynamics,
+  future return, habitat, timing, execution, or strategy usefulness.

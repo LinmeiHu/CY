@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-DATA-004_FROZEN_FINAL_RESOURCE_RETRY_REQUIRED`
+- `CURRENT_PHASE`: `SYNTH-MKT-034_COMPLETE_MKT-SUPPORT-DYN-001_MAP_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -1035,6 +1035,25 @@ MKT-SUPPORT-DYN-DATA-004 is frozen under SHA-256 `63c8a1f8...` and changes only
 the daily DuckDB memory limit from 2 to 1.5 GiB. All block batching, reference
 equivalence, science, sample, adequacy, and claim fields are inherited exactly.
 No further resource relaxation is allowed inside 004.
+
+MKT-SUPPORT-DYN-DATA-004 completes the exact count-only audit. First-block
+reference and candidate rows are exactly equal at canonical hash `5e0eaeba...`.
+All 2,307,575 complete raw rows, 9,600 cohort rows, 9,575 unique sessions, 38
+selected supported actions, and 11,336 population cells pass without a resource
+or coordinate failure.
+
+The frozen adequacy gates pass: 315 sequences have at least two L20 tested days
+(133 in 2018--2020, 182 in 2021--2023; annual counts 60/33/40/49/75/58), and 269
+have at least two recovered tested days with both distinct roles defined (107/
+162; annual 40/30/37/39/70/53). No progression, transition direction, process,
+future value, or outcome was estimated.
+
+Two complete runs are byte-identical: sample `5a2ac522...`, coordinate audit
+`fb881921...`, population `823aebae...`, support counts `d00f1ec0...`, result
+`604f8640...`, report `48f5eb5b...`; 30 focused tests pass. Source disagreement
+remains explicit on 9,038 binary and 191 cent-level sessions, with 0.17 CNY
+maximum difference. SYNTH-MKT-034 permits a map-first temporal representation
+of recovery speed, recovery activity, coupling, and recovered/failed transitions.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

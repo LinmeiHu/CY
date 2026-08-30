@@ -1462,3 +1462,47 @@ five-session blocks and coordinate-eligible symbols using only the governed
 calendar and CY-006 history. Freeze resource, action, source-role, coverage, and
 minimum repeated-test support gates. Do not select dates/symbols from QD-004,
 lower the existing recovery floor, add a near-touch band, or read payoff.
+
+## SYNTH-MKT-034 — after objective-recovery temporal sample adequacy
+
+### What was learned?
+
+The final exact resource retry passes without changing the scientific sample.
+It conserves 2,307,575 raw minute rows for 1,920 five-session sequences and
+passes all population, coordinate, source-role, resource, and determinism gates.
+There are 315 sequences tested on at least two days and 269 with recovery speed
+and recovery-volume intensity on at least two days. Every frozen block and year
+floor passes. These are adequacy counts only; no direction or process was read.
+
+### What market behavior are we still not studying?
+
+We still do not know whether objective-level recoveries become faster or slower,
+whether recovery-period activity rises or falls, whether those changes couple,
+or whether an initially recovered level later fails or is restored. Same-day
+episode dynamics, causal historical normalization, resistance symmetry,
+support-to-resistance transition, breakout acceptance, accumulation/distribution,
+industry diffusion, future outcome, and execution remain unstudied.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. An adequate sample is not a market mechanism. Pullback continuation,
+reversal, and support-defense archetypes remain inactive; no prototype or
+CHINEXT modification is authorized.
+
+### Parallel-track awareness
+
+- **Market research:** the primary frontier deepens from sample feasibility to
+  objective-recovery temporal representation.
+- **Existing-strategy archaeology:** no strategy membership, outcome, candidate,
+  or execution field was read.
+- **Strategy invention:** no active archetype; the two observations remain
+  candidates for falsification as one recovery process.
+
+### Research Director decision
+
+`DEEPEN_OBJECTIVE_RECOVERY_TEMPORAL_REPRESENTATION_MAP`. Freeze
+MKT-SUPPORT-DYN-001 before reconstructing minute paths. Distinguish recovery-
+speed progression, recovery-volume-intensity progression, their coupling, and
+recovered/failed/restored transitions. Require fixed L10/L20/L40, auction,
+shape, block, year, support, generic-path, and no-rescue gates. Do not infer
+buyer identity from OHLCV or read return, payoff, timing, strategy, or CY-011.

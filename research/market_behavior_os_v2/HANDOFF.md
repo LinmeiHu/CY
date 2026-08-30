@@ -1032,3 +1032,22 @@ MKT-SUPPORT-DYN-DATA-004 is frozen under SHA-256
 It changes only the daily DuckDB memory limit from 2 to 1.5 GiB and inherits all
 003 batching/reference and 001/002 scientific/resource gates. No further
 resource rescue is allowed. Execute twice if the first complete run passes.
+
+MKT-SUPPORT-DYN-DATA-004 passes. Reference and candidate calculations on the
+first 2018 block are exactly equal at hash `5e0eaeba...`; all 48 blocks then
+conserve exactly 2,307,575 raw rows. The audit covers 1,920 sequences, 9,600
+cohort rows, 9,575 unique sessions, 38 naturally selected supported actions,
+and 11,336/11,336 population cells.
+
+Count-only adequacy passes with 315 repeated-tested sequences (133/182 fixed
+blocks and 60/33/40/49/75/58 by year) and 269 twice-recovered sequences
+(107/162 and 40/30/37/39/70/53). No trajectory/process estimate was built.
+Two runs are byte-identical: sample `5a2ac522...`, coordinate `fb881921...`,
+population `823aebae...`, counts `d00f1ec0...`, result `604f8640...`, report
+`48f5eb5b...`; 30 focused tests pass.
+
+SYNTH-MKT-034 selects MKT-SUPPORT-DYN-001 map-first. It must distinguish
+recovery-speed progression, recovery-volume-intensity progression, their
+within-sequence coupling, and recovered-to-failed/restored transitions. Freeze
+L10/L20/L40, auction, shape, block, support, and no-rescue gates before
+reconstructing raw minutes. No return, payoff, timing, strategy, or CY-011.

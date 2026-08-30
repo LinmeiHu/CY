@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Recovery speed and recovery-volume intensity survive external geometry; larger sample is frozen outcome-blind | Execute MKT-SUPPORT-DYN-DATA-001 count-only adequacy audit twice |
+| EXPLORE | 35% | Recovery speed and recovery-volume intensity survive external geometry; the outcome-blind temporal sample is adequate | Freeze MKT-SUPPORT-DYN-001 progression/coupling/transition map before any estimate |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | Two recovery observations could diversify pullback/reversal mechanisms only if a repeated process survives | Keep archetypes inactive until temporal recurrence/failure evidence |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Three objective-level roles collapse into ordinary daily/minute geometry | Preserve compression; challenge the two survivors with repeated-test temporal definitions |
+| FALSIFY | 20% | Three objective-level roles collapse into ordinary daily/minute geometry | Preserve compression; require block/year/neighbor stability before calling either survivor a repeated process |
 
 Mandatory checkpoint questions:
 

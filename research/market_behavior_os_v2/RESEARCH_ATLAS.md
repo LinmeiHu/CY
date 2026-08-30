@@ -111,6 +111,8 @@
 | `experiments/MKT-SUPPORT-DYN-DATA-003_spec.json` | Frozen 2,307,575-row block-batched retry before complete scale |
 | `OBJECTIVE_SUPPORT_TEMPORAL_SAMPLE_CONTRACT_V4.md` | Final measured 1.5-GiB daily-memory correction with no further rescue |
 | `experiments/MKT-SUPPORT-DYN-DATA-004_spec.json` | Frozen final exact block-batch resource retry |
+| `scripts/run_mkt_support_dyn_data_004.py` | Passing exact block-batched temporal sample and count-adequacy audit |
+| `reports/MKT-SUPPORT-DYN-DATA-004_audit.md` | Reproducible 315/269 repeated-test/recovery adequacy result; no process estimate |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

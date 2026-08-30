@@ -68,6 +68,12 @@ process, failure transition, payoff, trigger, or execution evidence. Pullback
 continuation and reversal remain `WAIT_FOR_MARKET_MECHANISM`; no prototype is
 authorized while a larger unbiased temporal sample is being established.
 
+MKT-SUPPORT-DYN-DATA-004 establishes that the larger unbiased sample is adequate,
+not that repeated defense exists. No direction, failure transition, outcome,
+trigger, habitat, or execution result has been estimated. Pullback continuation,
+reversal, and support defense remain `WAIT_FOR_MARKET_MECHANISM` while temporal
+representations are frozen and falsified.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

@@ -69,6 +69,12 @@ peak 2,144,124,928 bytes, available memory 12,700,811,264 bytes, and live spill
 9,155,805,184 bytes. The existing 3-GiB RSS, 8-GiB headroom, and 10-GiB spill
 ceilings do not change.
 
+MKT-SUPPORT-DYN-DATA-004 completes all 48 blocks twice without exceeding those
+ceilings. It reads exactly 2,307,575 complete raw rows and produces byte-identical
+durable artifacts. Any temporal representation that reuses this sample must
+retain the 1.5-GiB daily limit, exact block batching, reference-equivalence gate,
+and release-between-block behavior; it may not expand the raw data envelope.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

@@ -34,3 +34,10 @@ The 003 first block still exceeds lifetime RSS under the inherited 2-GiB daily
 cap. A 1.5-GiB same-SQL measurement passes every existing ceiling, so 004 is
 frozen as the final exact correction. Failure after 004's measured configuration
 requires synthesis; no ceiling or sample relaxation is authorized.
+
+MKT-SUPPORT-DYN-DATA-004 completes twice with byte-identical outputs inside the
+unchanged ceilings. Its 315 repeated-tested and 269 twice-recovered sequences
+pass every fixed year/block count floor. No S1--S12 condition is active. Continue
+with a separately frozen outcome-blind temporal representation map; the sample
+pass itself is not a recovery process, support-defense state, or usefulness
+result.
