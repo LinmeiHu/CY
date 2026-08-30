@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-034_COMPLETE_MKT-SUPPORT-DYN-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DYN-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -1054,6 +1054,20 @@ Two complete runs are byte-identical: sample `5a2ac522...`, coordinate audit
 remains explicit on 9,038 binary and 191 cent-level sessions, with 0.17 CNY
 maximum difference. SYNTH-MKT-034 permits a map-first temporal representation
 of recovery speed, recovery activity, coupling, and recovered/failed transitions.
+
+MKT-SUPPORT-DYN-001 is frozen under spec SHA-256 `2abeaff2...` and map SHA-256
+`8d50cd08...` before any progression direction is read. Its primary units are
+endpoint rates over actual recovered-day gaps, with OLS/Theil--Sen, L10/L40,
+auction, fixed generic-path, A/B, six-year, manual scalar, and exact support
+challenges. Completion state uses a separately supported first-to-last R/F risk
+difference and adjacent-pair challenge.
+
+The map explicitly distinguishes a stable temporal coordinate from a common
+directional process, coupling, and completion-state dependence. It also records
+that rolling Lh semantics do not imply one unchanged physical level, OHLCV does
+not identify buyer/seller initiative, PIT historical normalization is absent,
+and the ten-symbol conditional cells cannot support a promoted relative state.
+Execute without future/outcome/strategy fields or CY-011; no gate may be rescued.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

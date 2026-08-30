@@ -1051,3 +1051,15 @@ recovery-speed progression, recovery-volume-intensity progression, their
 within-sequence coupling, and recovered-to-failed/restored transitions. Freeze
 L10/L20/L40, auction, shape, block, support, and no-rescue gates before
 reconstructing raw minutes. No return, payoff, timing, strategy, or CY-011.
+
+MKT-SUPPORT-DYN-001 is now frozen under spec `2abeaff2...` and representation
+map `8d50cd08...`, before any temporal estimate. Endpoint rate is primary;
+OLS/Theil--Sen, L10/L40, auction, generic-path controls, blocks/years, and five
+independent scalar cases are fixed challenges. Recovery completion is a separate
+R/F endpoint-state relation with strict arm support.
+
+Execute next. Passing representation quality is not common directional behavior;
+passing a process gate is not support defense, usefulness, habitat, or a rule.
+Rolling prior-low definitions are not claimed to be one unchanged price level.
+PIT historical and promotable relative coordinates remain unavailable, and
+OHLCV cannot support buyer/seller or absorption language.

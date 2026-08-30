@@ -507,3 +507,21 @@
 - Boundary: counts establish only that a temporal representation can be frozen.
   They do not reveal progression direction, repeated defense, failure dynamics,
   future return, habitat, timing, execution, or strategy usefulness.
+
+## MKT-H-032 — objective-recovery temporal dynamics
+
+- Status: `FROZEN_UNTESTED`.
+- Hypothesis: within an adequate outcome-blind sample, recovery-speed and/or
+  recovery-period activity endpoint rates may form stable absolute temporal
+  coordinates across shapes, neighboring levels, auction treatment, blocks,
+  and years after fixed generic path compression.
+- Stronger, separately gated hypotheses ask whether either coordinate has a
+  common population direction, whether their residual changes couple, and
+  whether first recovery completion predicts last completion state.
+- Falsifiers: any representation gate failure rejects that exact temporal role;
+  unstable/raw-only coupling rejects a shared process; inadequate R/F arms fail
+  closed; source, sample, resource, lineage, or manual disagreement invalidates
+  execution.
+- Boundary: rolling objective levels are not one fixed price; activity is not
+  buyer initiative. No future value, support defense, accumulation, prediction,
+  habitat, timing, execution, strategy usefulness, or CY-011 enters.

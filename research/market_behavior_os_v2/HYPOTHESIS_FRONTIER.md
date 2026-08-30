@@ -292,3 +292,9 @@ sample adequacy, not temporal behavior. The next action is to freeze
 MKT-SUPPORT-DYN-001 map-first for recovery-speed and recovery-activity
 progression, coupling, and recovered/failed/restored transitions. No estimate
 may be constructed before that map and experiment contract are immutable.
+
+MKT-SUPPORT-DYN-001 is frozen under `2abeaff2...`. Execute the fixed endpoint-
+rate primary, OLS/Theil--Sen shapes, L10/L40 and auction neighbors, generic-path
+compression, directional/coupling gates, and separately supported R/F endpoint
+transition. Do not call rolling levels the same physical support, use sparse
+relative cells, fabricate PIT history, or read any future/outcome field.

@@ -1,0 +1,191 @@
+{
+  "experiment_id": "MKT-SUPPORT-DYN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_TEMPORAL_ESTIMATES",
+  "question": "Do objective trailing-low tests exhibit stable recovery-timing progression, recovery-period activity progression, coupling, or recovery-completion state dependence across five completed sessions?",
+  "research_role": "outcome-blind temporal representation and process falsification",
+  "outcome_access": false,
+  "inputs": {
+    "representation_map": {"path": "research/market_behavior_os_v2/OBJECTIVE_SUPPORT_TEMPORAL_DYNAMICS_MAP.md", "sha256": "8d50cd0801dbb62c85e6cb489b0a0b5ed1339f1e5e266ffaf269f92e5b0ba3b7"},
+    "data004_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DYN-DATA-004_spec.json", "sha256": "63c8a1f86dcf1e05e8f4284df3c1d9d2454c50dbc1f56e670b4a83090c35e6e2"},
+    "data004_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_dyn_data_004.py", "sha256": "65082bd6804d9e539a8983f1f882e590d062a911315cd5530935fd3820640735"},
+    "data004_sample": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_sample.csv", "sha256": "5a2ac52218f947579295fdd4ad0be431a125fb84db63bdd50fc9d7a02b37fc78"},
+    "data004_coordinate_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_coordinate_audit.csv", "sha256": "fb881921e75ab5a091251ea5730af46358958cadc926077b0d6a4818f67d8864"},
+    "data004_support_count_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_support_count_audit.csv", "sha256": "d00f1ec0c9eadc4f20c2645462ecabfed4ad105c96c64b1f5b5e8bc4febce93f"},
+    "data004_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-DATA-004_result.json", "sha256": "604f864053f4fb1b373452e0f5640f185c161397a83201afa80b53aa4e6cea27"},
+    "support_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_001.py", "sha256": "45d483250191d1bb86531d936487c521cf117dcc20430bea0a10f55f25cd4205"},
+    "geometry_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-GEO-001_result.json", "sha256": "ba3fbfd377379fe01e32189abf836ff41b4290262df808ef9773cba239efd8e4"}
+  },
+  "sample": {
+    "exact_sequences": 1920,
+    "exact_cohort_rows": 9600,
+    "exact_unique_security_sessions": 9575,
+    "exact_raw_minute_rows": 2307575,
+    "relative_days": [-5, -4, -3, -2, -1],
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "primary_repeated_test_sequences": 315,
+    "primary_repeated_test_by_block": {"A": 133, "B": 182},
+    "primary_repeated_test_by_year": {"2018": 60, "2019": 33, "2020": 40, "2021": 49, "2022": 75, "2023": 58},
+    "primary_recovered_sequences": 269,
+    "primary_recovered_by_block": {"A": 107, "B": 162},
+    "primary_recovered_by_year": {"2018": 40, "2019": 30, "2020": 37, "2021": 39, "2022": 70, "2023": 53},
+    "temporal_blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "cohort_identity_preserved": true,
+    "physical_sequence_deduplication": "non-promotional sensitivity only; keep lexicographically first sequence_id per target_year/block_id/symbol"
+  },
+  "coordinate_and_minute_contract": {
+    "primary_level_previous_sessions": 20,
+    "fixed_level_neighbors": [10, 40],
+    "primary_path": "240 continuous bars at 09:31..11:30 and 13:01..15:00",
+    "auction_neighbor": "exact 241-bar path including separate 09:30 auction",
+    "primary_test": "minimum mapped low <= causal prior Lh",
+    "recovery_completion": "a close at or above Lh at or after the first tested bar",
+    "unrecovered_speed_policy": "missing and explicit F state; never impute 240",
+    "daily_source_role": "CY-006 causal coordinate scale inherited through DATA-004",
+    "minute_source_role": "QD-004 observed raw OHLCV/amount inherited through DATA-004",
+    "descriptor_available_at": "t 15:30 Asia/Shanghai",
+    "trajectory_available_at": "fifth completed session 15:30 Asia/Shanghai",
+    "same_session_action": false,
+    "rolling_level_identity_claim": false,
+    "missing_policy": "FAIL_CLOSED_NO_REPLACEMENT"
+  },
+  "target_roles": {
+    "recovery_speed_progression": {
+      "unit": "bars per elapsed session index",
+      "negative_sign": "faster later recovery",
+      "positive_sign": "slower later recovery"
+    },
+    "recovery_volume_intensity_progression": {
+      "unit": "dimensionless activity-intensity units per elapsed session index",
+      "negative_sign": "lower later relative recovery-period activity",
+      "positive_sign": "higher later relative recovery-period activity",
+      "buyer_or_seller_interpretation": false
+    }
+  },
+  "trajectory_operators": {
+    "primary": "endpoint rate (last-first)/(last relative day-first relative day)",
+    "neighbors": ["OLS slope on all available recovered-day indices", "Theil-Sen median pairwise slope"],
+    "minimum_recovered_days": 2,
+    "three_or_more_day_support_reported_separately": true,
+    "matched_days_for_target_and_controls": true
+  },
+  "fixed_generic_controls": {
+    "recovery_speed_progression": ["first_test_position", "time_of_low", "close_location", "minute_realized_volatility", "signed_test_geometry"],
+    "recovery_volume_intensity_progression": ["volume_herfindahl", "opening_30_volume_share", "closing_30_volume_share", "first_test_position", "recovery_speed"]
+  },
+  "transition": {
+    "states": {"R": "tested and recovered", "F": "tested and unrecovered"},
+    "categories": ["R_TO_R", "R_TO_F", "F_TO_R", "F_TO_F"],
+    "primary": "P(last=R|first=R)-P(last=R|first=F)",
+    "neighbor": "adjacent-tested-pair risk difference clustered by sequence",
+    "endpoint_relation_not_per_day_probability": true
+  },
+  "representation_gates": {
+    "exact_primary_recovery_population": true,
+    "minimum_recovery_trajectories_each_year": 30,
+    "shape_global_spearman_minimum": 0.70,
+    "shape_each_block_spearman_minimum": 0.60,
+    "shape_global_sign_agreement_minimum": 0.75,
+    "shape_each_block_sign_agreement_minimum": 0.70,
+    "level_neighbor_minimum_intersection_total": 100,
+    "level_neighbor_minimum_intersection_each_block": 35,
+    "level_neighbor_global_spearman_minimum": 0.50,
+    "level_neighbor_each_block_spearman_minimum": 0.30,
+    "level_neighbor_global_sign_agreement_minimum": 0.60,
+    "auction_minimum_intersection_total": 150,
+    "auction_minimum_intersection_each_block": 60,
+    "auction_global_spearman_minimum": 0.70,
+    "auction_each_block_spearman_minimum": 0.60,
+    "auction_global_sign_agreement_minimum": 0.75,
+    "external_pairwise_absolute_spearman_maximum_exclusive": 0.85,
+    "external_joint_adjusted_rank_r2_global_maximum_exclusive": 0.70,
+    "external_joint_adjusted_rank_r2_each_block_maximum_exclusive": 0.85,
+    "all_gates_required_for_retained_role": true
+  },
+  "directional_process_gates": {
+    "both_block_medians_same_nonzero_sign": true,
+    "nonzero_sign_fraction_each_block_minimum": 0.55,
+    "calendar_block_bootstrap_resamples": 5000,
+    "calendar_block_bootstrap_seed": 20260831,
+    "bootstrap_interval": [0.025, 0.975],
+    "bootstrap_median_interval_excludes_zero_each_block": true,
+    "minimum_year_medians_same_sign": 5,
+    "representation_must_first_pass": true
+  },
+  "coupling_gates": {
+    "global_absolute_spearman_minimum": 0.15,
+    "each_block_absolute_spearman_minimum": 0.10,
+    "both_blocks_same_sign": true,
+    "minimum_years_same_sign": 5,
+    "ols_and_theil_sen_global_absolute_spearman_minimum": 0.10,
+    "ols_and_theil_sen_same_sign": true,
+    "residual_after_full_fixed_controls_must_repeat_raw_gates": true,
+    "both_individual_representations_must_first_pass": true
+  },
+  "transition_gates": {
+    "minimum_first_R_total": 50,
+    "minimum_first_F_total": 50,
+    "minimum_each_arm_each_block": 20,
+    "minimum_each_arm_each_year": 5,
+    "minimum_absolute_risk_difference_each_block": 0.10,
+    "both_blocks_same_sign": true,
+    "calendar_block_bootstrap_resamples": 5000,
+    "calendar_block_bootstrap_seed": 20260831,
+    "bootstrap_interval_excludes_zero_global_and_each_block": true,
+    "minimum_years_same_sign": 5,
+    "adjacent_pair_same_sign": true,
+    "adjacent_pair_absolute_difference_from_primary_maximum": 0.15,
+    "unsupported_status": "INSUFFICIENT_TRANSITION_SUPPORT",
+    "no_smoothing_or_pooling": true
+  },
+  "coordinate_systems": {
+    "absolute": "primary; unchanged natural units and semantics across 2018-2023",
+    "pit_historical": "UNAVAILABLE_FROM_ISOLATED_BLOCKS_NO_SUBSTITUTION",
+    "relative": "CELL_SUPPORT_AUDIT_ONLY_NOT_PROMOTABLE_FROM_CONDITIONAL_TEN_SYMBOL_SAMPLE"
+  },
+  "replication": {
+    "manual_sequence_cases": 5,
+    "case_selection": "smallest SHA256(MKT-SUPPORT-DYN-001|sequence_id) among primary recovered sequences",
+    "implementation": "independent scalar reconstruction may not call vectorized session descriptor",
+    "exact_session_and_trajectory_equality_required": true,
+    "two_byte_identical_runs_required": true
+  },
+  "resource_budget": {
+    "compressed_read_ceiling_gib": 20,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "temporary_disk_ceiling_gib": 10,
+    "durable_output_ceiling_mib": 100,
+    "wall_clock_ceiling_minutes": 10,
+    "duckdb_daily_coordinate_memory_limit_gib": 1.5,
+    "minute_batch_keys": ["target_year", "block_id"],
+    "single_process": true,
+    "raw_materialization": false
+  },
+  "gates": {
+    "exact_bound_input_and_partition_identities": true,
+    "exact_sample_coordinate_and_raw_row_conservation": true,
+    "zero_grid_lineage_action_or_nonfinite_failures": true,
+    "source_disagreement_diagnostics_preserved": true,
+    "all_fixed_year_block_view_level_path_shape_control_and_support_results_reported": true,
+    "no_rescue": "No level, near-touch band, path, window, shape, control, block, view, support floor, direction threshold, coupling threshold, transition arm, missing-value policy, outcome, or sample change may rescue a result."
+  },
+  "prohibited_inputs": [
+    "future market, industry, stock, or strategy return",
+    "strategy membership, signal, admission, candidate, rank, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "adjusted vendor minute prices or future-adjusted daily prices",
+    "unregistered fallback data",
+    "post-2023 partitions",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing representation gates establishes only an absolute completed-history temporal coordinate. Passing directional, coupling, or transition gates establishes only exploratory recurring market-process evidence. No result establishes unchanged physical-level defense, buyer/seller identity, absorption, accumulation, prediction, payoff, timing, habitat, execution, synergy, or a strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_session_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_trajectory_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_transition_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_stability_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DYN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-DYN-001_dynamics.md"
+  ]
+}
