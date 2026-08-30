@@ -226,3 +226,8 @@ close equality is not a governed CY-008 semantic. The first binary difference is
 map must retain the sample and define the distinct source roles: CY-006 supplies
 the causal scale, while QD-004 supplies every observed minute OHLC, including
 its final bar. Record disagreement rather than forcing identity.
+
+MKT-SUPPORT-DATA-003 is frozen under spec `7a734dd9...`. It changes only that
+source-role assumption, requires complete disagreement/scale diagnostics, and
+inherits every other 002 sample, coordinate, minute, population, lineage, and
+no-rescue gate. Execute twice if complete; no support claim follows from a pass.

@@ -894,3 +894,11 @@ The causal scale `coordinate_close/daily_close` can map every observed QD-004
 bar without substituting its final close. Freeze that source-role correction as
 003, retain disagreement diagnostics, and do not add a tolerance or replace a
 sample row.
+
+MKT-SUPPORT-DATA-003 is frozen under SHA-256
+`7a734dd94bd61f2bc52578c6a8706edde637b23d3f5636b4877b7e13ca931b6f`.
+It inherits the exact 002 sample and every non-equality gate. CY-006 supplies
+`coordinate_close/daily_close`; every QD-004 OHLC is multiplied by that scale
+without substitution, rounding, clipping, or a forced final-close identity.
+Complete binary/cent/raw-difference diagnostics are mandatory but do not select
+or alter rows. Execute twice before any support representation claim.

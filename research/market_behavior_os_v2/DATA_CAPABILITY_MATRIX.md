@@ -9,7 +9,7 @@
 | Opening-window reconciliation | CY-008 execution_5m | PASS for six 5-minute opening windows | Execution rows do not represent the full intraday path |
 | Exact market calendar | QD-002 calendar binding | PASS | Frozen exchange-session dates only |
 | Same-session dimensionless descriptors | QD-004 + CY-008 | PASS on AUDIT-MKT-MIN-001; required-scale adapter pending | Available at session date 15:30; no same-bar use |
-| Cross-day objective support/resistance | CY-006 causal action chain + QD-004/CY-008 raw minute path | 001 SAMPLE INVALID; 002 SOURCE-EQUALITY INVALID; COORDINATE UNRESOLVED | CY-008 does not promise final-close equality; a source-role-correct retry must use CY-006 only for causal scale and QD-004 for observed minute OHLC, with disagreement audited and no tolerance/substitution |
+| Cross-day objective support/resistance | CY-006 causal action chain + QD-004/CY-008 raw minute path | 001 SAMPLE INVALID; 002 SOURCE-EQUALITY INVALID; 003 SOURCE-ROLE AUDIT FROZEN | MKT-SUPPORT-DATA-003 uses CY-006 only for causal scale and QD-004 for observed minute OHLC, with complete disagreement diagnostics and no tolerance/substitution; no support claim before it passes |
 | Order-flow aggressor, queue, cancellation, hidden liquidity, participant identity | none | UNAVAILABLE | OHLCV/amount cannot support these claims |
 | Historical constituent-index minute breadth | none | UNAVAILABLE | Current constituent lists may not substitute; use governed ALL_A/SH_A/SZ_A/CHINEXT_BOARD views |
 | Strict archival PIT-A | none for the active minute source | UNAVAILABLE | All active minute conclusions remain bounded PIT-B |

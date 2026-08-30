@@ -1,0 +1,84 @@
+{
+  "experiment_id": "MKT-SUPPORT-DATA-003",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_RAW_MINUTE_ACCESS",
+  "question": "Can observed QD-004 minute OHLC be mapped into the CY-006 causal action coordinate without assuming equality between independent final-close observations?",
+  "research_role": "source-role and coordinate feasibility only",
+  "invalid_parent": {
+    "experiment_id": "MKT-SUPPORT-DATA-002",
+    "spec_path": "research/market_behavior_os_v2/experiments/MKT-SUPPORT-DATA-002_spec.json",
+    "spec_sha256": "79ec5129deddb2add59731a44bfa40b95bcbad827022bc61440f1b778b7ff689",
+    "runner_path": "research/market_behavior_os_v2/scripts/run_mkt_support_data_002.py",
+    "runner_sha256": "afef0ee03e89eed417dc501dad0db4b9f55a170332d85bef9cbc6716e9f095e7",
+    "outputs_accepted": false,
+    "invalid_reason": "exact CY-006/QD-004 final-close equality is not a governed CY-008 semantic"
+  },
+  "inheritance": {
+    "unchanged": [
+      "all registered input and partition identities",
+      "date range and six fixed five-session blocks",
+      "four-view CY-006-only complete-sequence sample and hash ordering",
+      "independent five-action-per-year challenge and hash ordering",
+      "causal cash/share action coordinate and complete 40-step history",
+      "strictly prior 10/20/40 daily-low candidates",
+      "241-bar grid, raw adjustment, units, CY-008 lineage and reconciliation",
+      "positive finite limit-price gate",
+      "full daily population floors",
+      "availability, prohibited-input, no-rescue, and claim boundaries"
+    ],
+    "sole_semantic_correction": "cross-source final-close equality becomes a complete disagreement diagnostic; CY-006 supplies scale and QD-004 supplies observed minute OHLC"
+  },
+  "source_roles": {
+    "daily_scale_source": "CY-006 causal coordinate_close(t) / CY-006 raw daily close(t)",
+    "minute_price_source": "QD-004 raw adjust=none OHLC without daily-close substitution",
+    "mapped_minute_formula": "QD-004 raw minute OHLC * daily coordinate scale",
+    "daily_minute_close_equality_required": false,
+    "numeric_tolerance": null,
+    "rounding_or_clipping_of_mapped_prices": false,
+    "mapped_final_close_forced_to_daily_coordinate_close": false
+  },
+  "diagnostics": {
+    "per_session_fields": [
+      "daily_raw_close",
+      "minute_raw_close",
+      "binary_close_equal",
+      "daily_close_integer_cents",
+      "minute_close_integer_cents",
+      "integer_cent_difference",
+      "raw_close_signed_difference",
+      "raw_close_absolute_difference",
+      "coordinate_scale",
+      "mapped_minute_close"
+    ],
+    "positive_price_integer_cents": "floor(price * 100 + 0.5)",
+    "integer_cent_diagnostic_is_gate": false,
+    "all_target_diagnostics_required": true
+  },
+  "gates": {
+    "inherited_002_gates_except_close_equality": true,
+    "all_daily_raw_closes_positive_finite": true,
+    "all_coordinate_closes_positive_finite": true,
+    "all_coordinate_scales_positive_finite": true,
+    "all_raw_minute_ohlc_positive_finite": true,
+    "all_mapped_minute_ohlc_positive_finite": true,
+    "all_source_disagreement_diagnostics_present": true,
+    "no_rescue": "No resampling, tolerance, rounding/clipping of mapped prices, source substitution, forced close identity, chain repair, imputation, favorable mismatch selection, or gate relaxation."
+  },
+  "prohibited_inputs": [
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "future market, industry, stock, or strategy return",
+    "minute completeness or support behavior during selection",
+    "adjusted vendor minute prices or future-adjusted daily prices",
+    "post-2023 partitions",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes only PIT-B source-role and coordinate feasibility for a later objective support-defense representation map; it does not validate support, defense, recovery, accumulation, prediction, habitat, timing, execution, or a strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_sample.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_coordinate_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_population_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-SUPPORT-DATA-003_result.json",
+    "research/market_behavior_os_v2/reports/MKT-SUPPORT-DATA-003_audit.md"
+  ]
+}

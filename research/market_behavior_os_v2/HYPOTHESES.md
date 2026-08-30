@@ -454,3 +454,5 @@
   CY-008 and is unnecessary for applying the causal daily coordinate scale to
   observed minute OHLC. Status remains unresolved pending a source-role-correct
   retry; no representation or mechanism is established.
+- MKT-SUPPORT-DATA-003 spec `7a734dd9...` freezes that correction by exact 002
+  inheritance. Passing would establish coordinate feasibility only.

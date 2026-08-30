@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-002_INVALID_SOURCE_EQUALITY_SYNTHESIS`
+- `CURRENT_PHASE`: `MKT-SUPPORT-DATA-003_FROZEN_AUDIT_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -872,6 +872,19 @@ replacing either source; the final transformed minute close need not equal the
 separate official daily close. SYNTH-MKT-030 requires a separately frozen 003
 source-role correction with exact scale arithmetic and full close-disagreement
 diagnostics, not a tolerance or favorable-sample rescue.
+
+MKT-SUPPORT-DATA-003 is frozen under SHA-256 `7a734dd9...` by exact inheritance
+from 002. The sole correction assigns CY-006 as causal scale source and QD-004
+as observed minute-OHLC source. Mapped OHLC is exactly raw minute OHLC times
+`coordinate_close/daily_close`; mapped final close is never forced to the
+independent daily coordinate close.
+
+Every target must retain bitwise equality, deterministic integer-cent, signed/
+absolute raw difference, scale, and mapped-close diagnostics. Integer cents are
+descriptive only; no tolerance, rounding/clipping of mapped prices, source
+substitution, resampling, or gate relaxation is permitted. All other 002 gates
+and all claim/prohibited-input boundaries are inherited unchanged. Execute twice
+if complete.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from
