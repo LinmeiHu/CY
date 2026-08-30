@@ -91,6 +91,13 @@ exactly 2,307,575 complete raw rows, preserves the 3-GiB RSS/8-GiB headroom/
 ten-minute ceilings, and writes 4,742,204 bytes. Two full executions complete
 inside the envelope with byte-identical outputs; no raw dataset is materialized.
 
+MKT-BREAKOUT-DIFF-DATA-001 reads only the six registered CY-006 daily
+partitions and materializes no security-level durable output. The accepted staged
+coordinate plan completes twice in about 30 seconds with peak RSS below 2.51 GB,
+temporary usage below 2.33 GB, and 41,230 bytes of durable output. The fixed
+1.5-GiB DuckDB, 3-GiB RSS, 8-GiB headroom, 10-GiB temporary, 20-GiB read,
+100-MiB output, and ten-minute ceilings all pass.
+
 ## Representative measurement and approval
 
 The two frozen 2020-02-03..2020-02-28 runs each processed 18,201,043 raw rows in

@@ -1,0 +1,174 @@
+{
+  "experiment_id": "MKT-BREAKOUT-DIFF-DATA-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_FULL_MARKET_COORDINATE_OR_CROSSING_COUNTS",
+  "question": "Does the full governed CY-006 market population provide adequate PIT-valid objective prior-high crossing, closing-state, industry-diffusion, and event-concentration domains for a later representation-quality experiment?",
+  "research_role": "full-market coordinate, lineage, resource, and count-domain feasibility only",
+  "outcome_access": false,
+  "inputs": {
+    "representation_map": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DIFFUSION_REPRESENTATION_MAP.md",
+      "sha256": "c7c307e0a8ae1666045f68464e017c323c9a9c6b9a4b707006d6675e79965817"
+    },
+    "data_contract": {
+      "path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DIFFUSION_DATA_CONTRACT.md",
+      "sha256": "bc6cc64ef92b82bc077a950f9360a38616cfc320bc523d71dd923caa720b0db2"
+    },
+    "registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "protected_breakout_coordinate_audit": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_coordinate_event_audit.csv",
+      "sha256": "1eaeed29c1c45fae7f0090eee3720d39f20928cc3930bf7bfa95e7ac49b5d897"
+    },
+    "accepted_breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"
+    },
+    "accepted_breadth_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+      "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"
+    }
+  },
+  "required_partitions": {
+    "cy006": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    }
+  },
+  "source_audit": {
+    "expected_rows": 6155390,
+    "expected_first_date": "2018-01-02",
+    "expected_last_date": "2023-12-29",
+    "expected_exchange_dates": 1457,
+    "duplicate_keys": 0,
+    "time_travel_rows": 0,
+    "hard_valid_ohlc_failures": 0
+  },
+  "coordinate": {
+    "continuous_close": "exact CY-006 causal supported-action chain accepted by MKT-SUPPORT-DATA-003",
+    "mapped_daily_high": "coordinate_close * raw_daily_high / raw_daily_close",
+    "lookbacks": [10, 20, 40],
+    "primary_lookback": 20,
+    "window": "strictly prior completed consecutive valid exchange sessions; current excluded",
+    "current_core": "41 consecutive rows and 40 valid coordinate steps",
+    "crossing": "current mapped daily high strictly greater than prior-high level",
+    "closing_states": ["CROSS_CLOSE_ABOVE", "CROSS_CLOSE_EQUAL", "CROSS_CLOSE_BELOW"],
+    "equality_reassignment": false,
+    "rounding_clipping_tolerance": null,
+    "available_at": "completed official close at t 15:00 Asia/Shanghai",
+    "same_session_action": false
+  },
+  "population": {
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_post_warmup_dates": 1417,
+    "expected_date_view_denominator_cells": 11336,
+    "minimum_counts": {
+      "ALL_A": 1000,
+      "SH_A": 400,
+      "SZ_A": 400,
+      "CHINEXT_BOARD": 200
+    },
+    "industry_mapping_minimum": 0.8,
+    "industry_member_minimum": 5,
+    "industry_count_minimum": 10,
+    "formation_event_industry_minimum": 5,
+    "acceptance_event_industry_minimum": 5
+  },
+  "count_gates": {
+    "valid_date_coverage_each_horizon_view_denominator": 0.95,
+    "view_year_minimum_valid_cells": 150,
+    "l20_view_year_minimum_crossings": 2000,
+    "l20_view_year_minimum_close_above": 500,
+    "l20_view_year_minimum_close_below": 500,
+    "nonindustry_role_date_coverage_each_horizon_view_denominator": 0.95,
+    "industry_mapping_date_coverage_each_view_denominator": 0.9,
+    "formation_distribution_date_coverage_each_horizon_view_denominator": 0.9,
+    "acceptance_distribution_date_coverage_each_horizon_view_denominator": 0.85,
+    "view_year_minimum_defined_industry_role_observations": 150,
+    "neighbors_cannot_rescue_primary": true
+  },
+  "protected_coordinate_replication": {
+    "expected_unique_targets": 9575,
+    "exact_float_fields": [
+      "daily_raw_close",
+      "coordinate_close",
+      "coordinate_scale",
+      "resistance_high10",
+      "resistance_high20",
+      "resistance_high40"
+    ],
+    "exact_identity_fields": ["daily_snapshot_id"],
+    "minute_event_fields_compared": false
+  },
+  "scalar_reconstruction": {
+    "cases": 5,
+    "selection": "smallest SHA256(MKT-BREAKOUT-DIFF-DATA-001|symbol|trade_date) among unique full-market L20 daily crossings",
+    "reconstruct_prior_rows": 40,
+    "must_not_call_aggregate_event_helper": true,
+    "exact_fields": [
+      "resistance_high10",
+      "resistance_high20",
+      "resistance_high40",
+      "mapped_current_high",
+      "mapped_current_close",
+      "crossing",
+      "closing_state",
+      "formation_depth",
+      "closing_rejection_depth"
+    ]
+  },
+  "resource_budget": {
+    "single_process": true,
+    "duckdb_threads": 1,
+    "daily_memory_limit_gib": 1.5,
+    "temporary_spill_ceiling_gib": 10,
+    "compressed_read_ceiling_gib": 20,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "filesystem_headroom_fraction": 0.25,
+    "wall_clock_ceiling_minutes": 10,
+    "durable_output_ceiling_mib": 100,
+    "full_security_event_output": false,
+    "raw_materialization": false
+  },
+  "prohibited_computations": [
+    "daily representation correlations, neighbor stability, redundancy, latent components, or role promotion",
+    "PIT percentile, robust z, relative view rank, trajectory, momentum, acceleration, transition, or state threshold",
+    "future market, industry, stock, volatility, or strategy outcome",
+    "strategy membership, signal, candidate, admission, trade, fill, P&L, MFE, MAE, exit, duration, or outcome class",
+    "minute crossing time, continuous-auction classification, entry timing, or execution inference",
+    "post-2023 partition, QD-004, CY-008, or CY-011 access",
+    "horizon, threshold, industry-floor, denominator, date, population, or count-floor rescue"
+  ],
+  "gates": {
+    "exact_input_and_partition_hashes": true,
+    "registry_asset_identity_and_activation": true,
+    "exact_source_audit": true,
+    "exact_protected_coordinate_replication": true,
+    "exact_event_state_conservation": true,
+    "view_and_denominator_nesting": true,
+    "five_scalar_cases_exact": true,
+    "resource_contract_pass": true,
+    "two_byte_identical_runs": true,
+    "no_rescue": "No lookback, crossing comparison, close state, industry definition, member/event floor, denominator, date, view, population, tolerance, resource science, or count gate may change after the first full-market count is observed."
+  },
+  "claim_boundary": "Passing establishes only bounded PIT-B full-market prior-high coordinate, event-count, and industry-domain feasibility. It establishes no stable representation, recurring process, demand, acceptance quality, prediction, habitat, timing, execution, payoff, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DATA-001_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-DATA-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-BREAKOUT-DIFF-DATA-001_audit.md"
+  ]
+}

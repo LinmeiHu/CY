@@ -69,3 +69,10 @@ joint increments with complete support. These are ordinary negative scientific
 results, not S1--S12 conditions. No STOP is active. Continue map-first with the
 distinct full-market objective-crossing opportunity diffusion representation;
 do not estimate market breadth from the bounded 10-symbol cohort.
+
+MKT-BREAKOUT-DIFF-DATA-001 completes the full-market coordinate/count audit
+inside the frozen envelope. Its exact L40 CHINEXT acceptance-industry domain
+misses the 0.85 coverage floor, while all formation-side and nonindustry domains
+pass. This is an ordinary role-specific data-adequacy failure, not S1--S12.
+No STOP is active. Preserve the failed acceptance-industry roles and continue
+with a separately frozen representation experiment for only the supported roles.

@@ -73,6 +73,7 @@
 | Unconditional five-session direction of objective-breakout roles | COMMON_DIRECTION_FAIL: all seven stable rates fail block median/interval/sign-fraction/year gates; rejection reverses and several roles have zero medians | Preserve the temporal coordinates; do not select VWAP's later negative block, choose years/views, flip signs, lower fractions, or call the paths strengthening/weakening |
 | Residual rejection-depth/below-level-dwell compression | FROZEN_BOUNDARY_FAIL: residual rho is -0.693 globally versus 0.70 required, despite -0.682/-0.657 blocks | Retain both roles; do not round the correlation, lower the global boundary, delete controls, or construct a latent rejection score |
 | Prior-close trend/breadth conditioning of sampled breakout paths | PORTABLE_STATE_RESPONSE_FAIL: zero of 21 primitive edges and zero of seven joint increments pass raw/PIT/relative and both blocks despite complete support | Do not select a favorable index, view, role, coordinate, year, or block; do not lower 0.10/0.02 gates or relabel a subset as strategy habitat |
+| Full-neighbor objective-breakout acceptance industry diffusion/concentration | DATA_DOMAIN_FAIL: L40 CHINEXT_BOARD acceptance-industry coverage is 0.814 ALL_STATUS and 0.811 NON_ST versus the frozen 0.85 floor | Do not lower the floor, pool ST, select L20, drop CHINEXT portability, or change the five-industry event minimum; retain the broader acceptance-diffusion family as data-limited |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

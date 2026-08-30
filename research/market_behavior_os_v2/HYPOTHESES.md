@@ -625,3 +625,24 @@
 - Boundary: this rejects the exact prior-day continuous conditioning
   architecture on the consumed sample, not trend/breadth representation,
   breakout behavior broadly, or all possible market habitat research.
+
+## MKT-H-038 — full-market objective breakout formation and diffusion
+
+- Status: `PARTIAL_DATA_ADEQUACY_FORMATION_ROLES_ADVANCE_ACCEPTANCE_INDUSTRY_ROLES_DEFER`.
+- Hypothesis: objective prior-high crossing participation, conditional crossing
+  depth, closing acceptance/rejection, equal-industry formation, event diffusion,
+  formation concentration, and stock/industry divergence may form a stable
+  market-state representation distinct from close-based discovery breadth and
+  positive-return leadership concentration.
+- Design: all 5,550,255 eligible pre-2024 CY-006 A-share security-dates; completed
+  daily-high strict L20 crossing with L10/L40 neighbors; four views, both ST
+  denominators, causal industries, absolute/PIT/relative coordinates, and fixed
+  internal/external compression. No strategy or outcome field.
+- Data result: all coordinate, annual, closing-arm, formation-industry, and
+  resource gates pass. L40 CHINEXT acceptance-industry domain covers only
+  81.37%/81.09% versus 85%; exact acceptance diffusion and acceptance
+  concentration therefore do not advance under the full neighbor set.
+- Boundary: retain those failures without lowering floors. Freeze a separate
+  level-representation experiment only for the supported formation, depth,
+  closing-state, and formation-industry roles. Data support is not representation
+  stability, a recurring process, habitat usefulness, or a strategy.

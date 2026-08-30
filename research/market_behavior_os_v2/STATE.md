@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-040_COMPLETE_MARKET_WIDE_BREAKOUT_DIFFUSION_MAP_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: full-market objective breakout opportunity participation, industry diffusion, acceptance, and concentration representation
+- `CURRENT_PHASE`: `SYNTH-MKT-041_FREEZE_SUPPORTED_BREAKOUT_DIFFUSION_LEVEL_REPRESENTATIONS`
+- `CURRENT_PRIMARY_FRONTIER`: full-market objective breakout formation, closing-state, and formation-industry representation quality
 - `SUPPORTING_FRONTIER`: accepted discovery breadth and leadership concentration as fixed redundancy controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -1310,3 +1310,41 @@ opportunities themselves diffuse broadly across securities/industries or
 concentrate in narrow leadership, and whether those representations add
 anything beyond accepted new-high/new-low breadth and leadership concentration.
 Build the full-market daily representation/data map before construction.
+
+The objective-breakout diffusion map `c7c307e0...`, data contract
+`bc6cc64e...`, and MKT-BREAKOUT-DIFF-DATA-001 spec `c659f60d...` were frozen
+before any full-market crossing count. They define strict mapped daily-high
+crossing of strictly prior L10/L20/L40 highs, neutral close states, four views,
+both ST denominators, causal industry domains, and absolute/PIT/relative
+coordinates. Accepted discovery breadth and leadership concentration are fixed
+future redundancy controls; the bounded 10-symbol cohort is never a breadth
+estimator.
+
+The first execution failed closed before artifacts because a fused DuckDB CTE
+changed the accepted cumulative action coordinate by one ULP. The first
+disagreement was `000020.SZ` on 2019-08-29, `0.7990230286113049` versus
+`0.799023028611305`. Preserving the accepted materialization boundaries fixes
+the numerical plan without a tolerance, rounding, row change, or semantic
+change. All 9,575 protected targets then match exactly.
+
+MKT-BREAKOUT-DIFF-DATA-001 completes twice as a partial domain result. The
+full population contains 5,550,255 eligible A-share security-dates over 1,417
+completed dates and 538,891 L20 crossings: 265,003 close above, 6,461 equal,
+and 267,427 below. Every coordinate, annual count, closing-arm, formation-side
+industry, view/denominator nesting, scalar, and resource gate passes.
+
+The exact acceptance-industry role does not advance under the full neighbor
+set. L40 CHINEXT_BOARD acceptance-domain coverage is 0.8137 ALL_STATUS and
+0.8109 NON_ST versus the frozen 0.85 floor. Do not lower the floor, drop L40,
+pool ST, select L20, or remove board portability. This defers acceptance
+diffusion and acceptance concentration; it does not invalidate formation
+participation/depth, closing acceptance/rejection, equal-industry formation,
+formation diffusion/concentration, or stock/industry divergence domains.
+
+Two final executions are byte-identical: count `f94d2a38...`, result
+`e7c6dd8d...`, report `884cf7e5...`; three focused tests pass and lint is clean.
+Peak RSS stays below 2.51 GB and disposable space below 2.33 GB. QD-004,
+CY-008, outcomes, strategy fields, post-2023 data, and CY-011 were not read.
+SYNTH-MKT-041 requires a separately frozen representation experiment for only
+the supported roles. Data adequacy is not representation stability, a process,
+usefulness, habitat evidence, or a strategy.

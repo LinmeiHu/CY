@@ -345,3 +345,12 @@ threshold or subset rescue. The frontier moves upstream to full-market event
 formation: map crossing participation, industry diffusion, acceptance/rejection
 breadth, and leadership concentration, then test redundancy against accepted
 breadth. The bounded event cohort is prohibited as a market-breadth estimator.
+
+MKT-BREAKOUT-DIFF-DATA-001 completes the full-market count audit with exact
+protected coordinates and ample formation/closing support. The exact L40
+CHINEXT acceptance-industry domain fails at 0.814/0.811 against 0.85, so
+acceptance diffusion/concentration are deferred without threshold or horizon
+rescue. All formation-side and nonindustry roles retain their frozen domains.
+The primary frontier is a separately frozen level-representation experiment for
+those supported roles, with L10/L20/L40, absolute/PIT/relative, denominator,
+cross-year, and accepted-breadth redundancy gates unchanged.

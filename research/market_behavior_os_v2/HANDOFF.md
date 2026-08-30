@@ -1220,3 +1220,39 @@ closing acceptance/rejection, and concentration must be constructed before
 economic testing and compressed against accepted breadth/concentration. Do not
 reuse the 10-symbol sample as a market breadth estimator, read payoff, tune a
 lookback, modify CHINEXT, or open CY-011.
+
+The full-market representation map/data contract were frozen under
+`c7c307e0...`/`bc6cc64e...`, followed by count-only
+MKT-BREAKOUT-DIFF-DATA-001 spec `c659f60d...`. The design uses the exact causal
+action coordinate, strict daily-high crossing of strictly prior L10/L20/L40
+highs, neutral close states, causal industries, four views, both denominators,
+and later absolute/PIT/relative coordinates. It is distinct from MKT-BRTH-002's
+inclusive close-based net new-high/new-low breadth and binds that discovery role
+plus positive-return leadership concentration as external controls.
+
+The first engineering execution stopped before artifacts at the first exact
+coordinate difference, `000020.SZ` on 2019-08-29: a fused window plan returned
+`0.7990230286113049` versus accepted `0.799023028611305`. The accepted staged
+materialization order removes that one-ULP divergence. No tolerance, rounding,
+coordinate formula, row, gate, or scientific role changed; all 9,575 protected
+targets then match exactly.
+
+The count audit covers 5,550,255 eligible A-share security-dates and 1,417
+completed dates. L20 has 538,891 crossings, split 265,003/6,461/267,427 close
+above/equal/below. All annual/view/denominator counts, formation-side industry
+domains, coordinate/scalar checks, and resources pass. Five hash-selected daily
+events reproduce all level, mapped-price, closing-state, and depth facts exactly.
+
+The whole preregistered domain result is `COMPLETE_FULL_MARKET_DOMAIN_ADEQUACY_FAIL`
+only because L40 CHINEXT acceptance-industry coverage is 0.8137/0.8109 versus
+0.85. Preserve that failure: acceptance diffusion/concentration cannot advance
+under the required neighbor set. The other supported roles may enter a separate
+frozen representation experiment; this is a role-specific narrowing, not a
+threshold, horizon, or population rescue.
+
+Two runs are byte-identical: count `f94d2a38...`, result `e7c6dd8d...`, report
+`884cf7e5...`. Three focused tests and lint pass; peak RSS is below 2.51 GB and
+temporary use below 2.33 GB. No minute, outcome, strategy, post-2023, or CY-011
+input was read. Next freeze and execute supported level representation quality,
+including cross-year/definition/denominator stability and compression against
+accepted breadth; do not estimate transitions or usefulness yet.

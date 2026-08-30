@@ -384,3 +384,18 @@ The adapter now derives that exact label immediately after the primary L20
 projection. A focused regression requires both A and B. No event, prior-state
 date, role, coordinate, control, support floor, estimator, threshold, or claim
 changed; no invalid-run output was accepted.
+
+## MKT-BREAKOUT-DIFF-DATA-001-A — invalid fused-coordinate execution
+
+The first full-market runner used one fused CTE for the protected cumulative
+action coordinate. It stopped before any count artifact was accepted at the
+first exact disagreement: `000020.SZ` on 2019-08-29 produced
+`0.7990230286113049` instead of accepted `0.799023028611305`.
+
+A direct diagnostic found that formulas and step log returns were identical,
+but DuckDB's fused and accepted materialized window plans differed by one ULP
+in the full cross-section. No tolerance, rounding, or coordinate change was
+allowed. The runner now preserves the accepted materialization boundaries
+(`base -> stepped -> chained -> continuous`) before the prior-high window,
+then drops disposable stages. All 9,575 protected targets reproduce exactly;
+the final two count runs are byte-identical and stay below every resource ceiling.

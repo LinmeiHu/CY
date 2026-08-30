@@ -1818,3 +1818,51 @@ absolute/PIT/relative coordinates and compress against accepted discovery
 breadth and leadership concentration before any usefulness question. Do not
 estimate from the bounded 10-symbol cohort, optimize lookbacks, read outcomes,
 or open CY-011.
+
+## SYNTH-MKT-041 — after full-market breakout-diffusion domain audit
+
+### What was learned?
+
+The strategy-independent daily population is large and coordinate-safe:
+5,550,255 eligible A-share security-dates over 1,417 completed dates. L20 has
+538,891 crossings with 265,003/6,461/267,427 close above/equal/below. All annual
+counts, formation-side industry domains, view/denominator nesting, five scalar
+cases, resources, and 9,575 protected coordinates pass exactly.
+
+The exact acceptance-industry branch is not portable across all required
+neighbors. L40 CHINEXT acceptance-domain coverage is 0.8137/0.8109 against
+0.85. That failure is retained without selecting L20, lowering the floor,
+pooling ST, or dropping the board view. Formation-side and nonindustry roles
+remain adequately supported but have not yet passed representation gates.
+
+### What market behavior are we still not studying?
+
+We still lack stable full-market objective-crossing level roles, their causal
+historical/relative coordinates, internal/external latent compression, formation
+momentum/acceleration/transitions, resistance role reversal, full-market minute
+acceptance, order flow, accumulation/distribution, outcomes, execution, and
+capacity. Acceptance diffusion/concentration specifically remains data-limited
+under the exact full-neighbor domain.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Large event counts establish neither a recurring mechanism nor usefulness.
+Breakout continuation and failed-breakout reversal remain inactive. CHINEXT V1
+is unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** proceed only with supported full-market formation and
+  closing-state level roles, then compress against accepted breadth.
+- **Existing-strategy archaeology:** no new outcome access or rule change.
+- **Strategy invention:** none active; the frontier remains representation-first.
+
+### Research Director decision
+
+`REFINE_BY_ROLE_AND_FREEZE_SUPPORTED_LEVEL_REPRESENTATIONS`. Record acceptance
+diffusion/concentration as data-inadequate under L10/L20/L40 portability. Freeze
+one separate outcome-blind experiment for formation participation/depth, closing
+acceptance/rejection, equal-industry formation, formation diffusion/concentration,
+and stock/industry divergence. Require absolute/PIT/relative coordinates,
+cross-year and denominator stability, and fixed redundancy against MKT-BRTH-002.
+Do not estimate transitions, outcomes, habitat, or a strategy.

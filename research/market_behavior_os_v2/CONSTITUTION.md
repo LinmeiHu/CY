@@ -24,10 +24,10 @@ This constitution governs the active autonomous program from checkpoint
 
 ## Active frontier
 
-- Primary: strategy-independent objective prior-high breakout acceptance and
-  rejection same-session representation quality.
-- Supporting: fixed generic daily/minute path controls required to determine
-  whether post-cross roles add a distinct observation.
+- Primary: strategy-independent full-market objective prior-high formation,
+  closing-state, and formation-industry representation quality.
+- Supporting: accepted close-based discovery breadth and positive-return
+  leadership concentration as fixed external redundancy controls.
 - Outcome access: prohibited until representation quality and any recurring
   process are separately frozen and a later experiment preregisters usefulness.
 
