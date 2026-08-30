@@ -41,6 +41,8 @@
 | MKT-INDRS-001 top-set leadership persistence | REPRESENTATION_NOT_FROZEN: weakest top3/5/10 neighbor rho 0.540 and ALL_STATUS/NON_ST median rho 0.895 | Do not tune top-k, lag, denominator, view, or year; rank rotation is separate and remains valid |
 | MKT-INDRS-001 equal-industry return depth as a separate mechanism | REDUNDANT_REPRESENTATION: absolute Spearman 0.980 with equal-industry positive participation | Retain the simpler participation role in the minimal panel; do not count depth as independent evidence |
 | MKT-INDRS-GEO-001 general raw/PIT/relative year lists | INVALID_BEFORE_GEOMETRY: accepted leadership/discovery imbalance is itself a post-504 causal-percentile role; raw/relative are incomplete before 2021 and its nested PIT coordinate before 2023 | Use MKT-INDRS-GEO-002 control-specific eligibility; never lower coverage/cell gates, delete the fixed control, or cite a nonexistent 001 geometry result |
+| Equal-industry positive participation as a direct engine dimension | EXTERNALLY_REDUNDANT: median raw/PIT rho 0.978/0.976 with signed central direction; joint adjusted rank R2 0.958/0.952 | Preserve as a participation manifestation, but do not count it as an independent industry mechanism or combine it with central direction |
+| Stock/industry residual dispersion as a direct engine dimension | JOINTLY_RECONSTRUCTABLE: fixed co-movement/volatility controls explain median PIT/relative adjusted rank R2 0.773/0.757 | Preserve the leave-one-out representation evidence; do not promote its near-edge pairwise rho or remove controls to claim distinctness |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

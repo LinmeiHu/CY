@@ -43,6 +43,7 @@
 | `reports/MKT-INDRS-001_representation.md` | Eight stable roles, seven-role compression, three exact failures, and no-usefulness boundary |
 | `experiments/MKT-INDRS-GEO-001_spec.json` | Frozen outcome-blind engine-geometry contract for seven industry roles |
 | `experiments/MKT-INDRS-GEO-002_spec.json` | Exact semantic retry after nested causal-PIT warm-up audit |
+| `reports/MKT-INDRS-GEO-002_geometry.md` | Five direct engine coordinates and two compressed industry manifestations |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

@@ -241,3 +241,23 @@
   habitat fitness, strategy usefulness, or industry-rotation archetype is
   established. Broader failed families remain open only under structurally
   different definitions.
+
+## MKT-H-016 — external engine geometry of industry/relative-strength roles
+
+- Status: `FIVE_DISTINCT_ENGINE_COORDINATES`.
+- Result: equal-industry positive participation is a broad central-direction
+  manifestation: median raw/PIT absolute Spearman with signed limit utilization
+  is 0.978/0.976, and joint adjusted rank R2 is 0.958/0.952. It is removed from
+  the direct engine panel but remains valid participation evidence.
+- Result: leave-one-out stock/industry residual dispersion is not pairwise over
+  the 0.85 edge, but its fixed co-movement/volatility controls jointly explain
+  0.773 median adjusted rank R2 in PIT space and 0.757 in relative-to-ALL_A
+  space. It is jointly reconstructable, not a separate mechanism.
+- Result: industry return dispersion, winner-industry diffusion, rank rotation,
+  residual tail balance, and residual positive-mass concentration pass every
+  raw/PIT/relative pairwise and joint gate. Their largest pairwise median
+  absolute rhos are 0.568, 0.193, 0.203, 0.485, and 0.345 respectively.
+- Boundary: contemporaneous distinctness establishes no future transition,
+  persistence, market return, selection alpha, habitat, timing, causality, or
+  strategy. The five roles require temporal-process evidence before any
+  relative-strength or industry-rotation archetype decision.

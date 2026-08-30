@@ -12,7 +12,7 @@ return. Initial dimensions are:
 | Dispersion/correlation | leave-one-out 20-session co-movement and 5-session directional synchronization frozen | causal percentiles and robust z | governed-view contrasts | TWO_ROLES_FROZEN_PANIC_PROCESS_UNTESTED |
 | Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
 | Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_EXTERNALLY_DISTINCT_ROLE_USEFULNESS_UNTESTED |
-| Industry/relative strength | equal-industry participation, industry return dispersion, winner-industry diffusion, rank rotation, and three leave-one-out stock/industry residual-shape roles frozen; exact depth/concentration/persistence roles fail or compress | causal expanding/trailing percentiles and robust z | governed-view contrasts and exact stock-versus-industry residuals | SEVEN_PROVISIONAL_ROLES_EXTERNAL_ENGINE_GEOMETRY_PENDING |
+| Industry/relative strength | industry return dispersion, winner-industry diffusion, rank rotation, stock/industry residual tail balance, and residual concentration are externally distinct; participation and residual dispersion compress into existing dimensions | causal expanding/trailing percentiles and robust z | governed-view contrasts and exact stock-versus-industry residuals | FIVE_DIRECT_ENGINE_ROLES_TEMPORAL_MEANING_UNTESTED |
 | Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
 
@@ -186,3 +186,11 @@ seven survivors remain provisional engine dimensions until role-specific
 geometry against accepted direction, breadth, correlation/liquidity,
 volatility, risk-appetite, and leadership controls is frozen. No temporal or
 strategy interpretation is attached.
+
+MKT-INDRS-GEO-002 completes that compression. Equal-industry participation is
+pairwise redundant with broad central direction, while stock/industry residual
+dispersion is jointly reconstructable from co-movement and volatility. The
+engine retains five direct coordinates: industry return dispersion, winner-
+industry diffusion, rank rotation, residual tail balance, and residual
+concentration. No transition or future annotation is attached; representation
+distinctness is not temporal meaning.

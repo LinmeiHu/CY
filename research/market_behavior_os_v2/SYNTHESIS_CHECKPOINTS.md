@@ -657,3 +657,55 @@ from breadth, risk appetite, correlation/liquidity, volatility, and leadership.
 Test pairwise redundancy and conservative joint rank reconstruction before any
 future response or strategy association. Do not import rejected industry roles,
 future returns, strategy fields, failed MA20 diffusion fields, or CY-011.
+
+## SYNTH-MKT-016 — after external industry-engine compression
+
+### What was learned?
+
+Five of seven internally minimal industry roles remain direct Market State
+Engine coordinates. Equal-industry participation is not an industry-specific
+mechanism: central signed direction has median raw/PIT rho 0.978/0.976 and the
+three risk-appetite controls jointly reconstruct 0.958/0.952 adjusted rank R2.
+Leave-one-out stock/industry residual dispersion is jointly reconstructable from
+co-movement and volatility, reaching 0.773 PIT and 0.757 relative adjusted rank
+R2 even though its pairwise medians stay just below 0.85.
+
+Industry return dispersion, winner-industry diffusion, rank rotation, residual
+tail balance, and residual concentration survive every fixed raw/PIT/relative
+pairwise and joint gate. The nested leadership-imbalance control required a
+pre-result semantic retry, not a relaxed gate. Two final runs are byte-identical.
+
+### What market behavior are we still not studying?
+
+We do not know whether winner diffusion and rank rotation form a recurring
+leadership process: current broad diffusion may precede continued rotation,
+rotation may broaden or narrow the winner set, or both may simply be descriptive
+noise. Residual tail balance/concentration also lack temporal meaning. Size/style
+leadership, objective support/acceptance, accumulation/distribution, and
+portable multi-strategy habitats remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Five distinct coordinates still provide no direction of future leadership,
+trigger, holding horizon, exit, execution, capacity, or return evidence. An
+industry-rotation or relative-strength-leadership archetype remains speculative
+until a replicating temporal process exists and later survives strategy-level
+tests.
+
+### Parallel-track awareness
+
+- **Market research:** deepen the same frontier with outcome-blind future state
+  dynamics for winner diffusion and rank rotation.
+- **Existing-strategy archaeology:** no strategy field was read and no V1 or
+  SuperMind change is authorized.
+- **Strategy invention:** retain rotation/relative strength in search space;
+  activate no archetype.
+
+### Research Director decision
+
+`DEEPEN` with MKT-INDRS-DYN-001 map-first. Test a small fixed set of directional
+temporal edges between current winner-industry diffusion, current rank rotation,
+and their next nonoverlapping five-session state, incremental to role-specific
+current controls. Freeze temporal blocks, overlap handling, effect/sign gates,
+and response availability before constructing future values. Do not access
+market returns, stock selection, strategy outcomes, failed roles, or CY-011.

@@ -396,7 +396,39 @@ change: raw/relative 2021-2023 and PIT 2023, with winner-diffusion joint models
 using the fixed-control intersection. No gate is lowered and no control is
 dropped. Execute the retry twice.
 
+MKT-INDRS-GEO-002 completed on the unchanged 10,696-row population. Five roles
+remain direct engine coordinates: industry return dispersion, winner-industry
+diffusion, rank rotation, stock/industry residual tail balance, and residual
+positive-mass concentration. Their largest pairwise median absolute rhos are
+0.568, 0.193, 0.203, 0.485, and 0.345; their largest joint median adjusted rank
+R2 values are 0.350, 0.038, 0.045, 0.294, and 0.188.
+
+Equal-industry participation is a central-direction manifestation (raw/PIT rho
+0.978/0.976; joint adjusted rank R2 0.958/0.952). Leave-one-out residual
+dispersion is jointly reconstructable from co-movement and volatility (PIT
+0.773; relative-to-ALL_A 0.757). Preserve both as representation evidence but
+do not count them as direct mechanisms or remove controls to promote them.
+
+Two final runs are byte-identical: panel `7954dc81...`, result `9b3eaa0d...`,
+report `bba6a6ae...`; sixteen focused tests pass. No future value, market
+return, strategy outcome, failed industry role, failed MA field, or CY-011 was
+read. This establishes contemporaneous engine compression only.
+
+SYNTH-MKT-016 again answers the mandatory questions. Recurring temporal
+leadership migration, future residual-tail meaning, size/style leadership,
+support/acceptance, accumulation/distribution, and portable multi-strategy
+habitats remain unstudied. No new archetype emerges: distinct winner diffusion
+and rank rotation still lack future direction, trigger, execution, exit,
+capacity, and return evidence.
+
+Next freeze MKT-INDRS-DYN-001. Its narrow outcome-blind temporal graph should
+test current winner diffusion and rank rotation against next nonoverlapping
+five-session leadership states after fixed current controls, with discovery and
+untouched-confirmation blocks, purged overlap handling, response availability,
+effect/sign replication, and no-rescue rules declared before future values are
+constructed.
+
 ## Human decision required?
 
-No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-GEO-001
+No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-DYN-001
 map-first; CY-011 remains locked and unopened.

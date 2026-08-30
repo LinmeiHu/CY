@@ -70,3 +70,11 @@ underexplored, but these exact definitions retain their rejection.
 The seven-role minimal panel is provisional at the full Market State Engine
 level. MKT-INDRS-GEO-001 must test economically matched external controls before
 any temporal response, habitat, or strategy research.
+
+MKT-INDRS-GEO-002 completes that external step. Equal-industry participation
+collapses into central direction, and stock/industry residual dispersion is
+jointly reconstructable from co-movement and volatility. Five direct engine
+coordinates remain: industry return dispersion, winner-industry diffusion,
+rank rotation, residual tail balance, and residual concentration. This does not
+alter any MKT-INDRS-001 representation pass/fail; it changes only engine-level
+compression. Temporal meaning remains untested.

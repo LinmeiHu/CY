@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-GEO-002_FROZEN_BEFORE_GEOMETRY_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: outcome-blind external geometry of the seven accepted industry/relative-strength roles against the frozen Market State Engine
-- `SUPPORTING_FRONTIER`: role-specific accepted breadth, risk-appetite, correlation/liquidity, volatility, and leadership controls
+- `CURRENT_PHASE`: `MKT-INDRS-DYN-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: outcome-blind temporal dynamics of externally distinct winner-industry diffusion and rank rotation
+- `SUPPORTING_FRONTIER`: fixed current breadth, leadership, correlation, and volatility controls for incremental next-state tests
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -160,6 +160,11 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
 - The accepted industry roles are representation-stable only. They have not
   established future leadership persistence, stock-selection alpha, market-
   return meaning, habitat usefulness, timing, or a strategy/archetype.
+- MKT-INDRS-GEO-002 removes equal-industry participation as central-direction
+  redundant and residual dispersion as jointly volatility/co-movement
+  reconstructable. Five direct engine roles remain: industry return dispersion,
+  winner diffusion, rank rotation, residual tail balance, and residual
+  concentration. This remains contemporaneous evidence only.
 
 ## Data/governance status
 
@@ -232,6 +237,12 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   ten focused breadth/industry tests pass. Exact leave-one-out reconstruction
   covers 1,988 rows with zero difference. Failed MA industry fields, outcomes,
   strategy fields, and CY-011 remain unread.
+- MKT-INDRS-GEO-002 binds control spec `7b91844c...`, scientific design
+  `33b0f114...`, and six exact frozen panels/results. Two runs are byte-
+  identical: panel `7954dc81...`, result `9b3eaa0d...`, report `bba6a6ae...`;
+  sixteen focused breadth/industry/geometry tests pass. It reads no future
+  value, market return, strategy outcome, failed role, failed MA field, or
+  CY-011.
 
 ## Current frontier
 
@@ -420,3 +431,17 @@ MKT-INDRS-GEO-002 control spec `7b91844c...` is frozen. It changes only that
 control's coordinate-specific years and the fixed joint-model intersection,
 retaining every target, control, input hash, common row, threshold, prohibition,
 and claim boundary. Execute the exact retry twice.
+
+MKT-INDRS-GEO-002 is complete. Five roles pass every fixed external pairwise
+and joint gate. Equal-industry participation is pairwise redundant with central
+direction at raw rho 0.978; residual dispersion is jointly reconstructable at
+PIT adjusted rank R2 0.773. No favorable near-edge pair or control deletion
+rescues either role. Two runs are byte-identical.
+
+SYNTH-MKT-016 selects MKT-INDRS-DYN-001 map-first. Deepen the same frontier by
+testing a small fixed temporal graph between current winner diffusion, current
+rank rotation, and next nonoverlapping five-session leadership states. Freeze
+responses, availability, discovery/untouched-confirmation blocks, overlap,
+controls, sign/effect gates, and no-rescue rules before constructing future
+values. Market returns, selection outcomes, strategies, failed roles, and
+CY-011 remain prohibited. No S1-S12 STOP is active.

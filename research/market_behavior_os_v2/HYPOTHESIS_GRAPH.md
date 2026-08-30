@@ -61,6 +61,16 @@ MKT-H-015 industry leadership/rotation/relative-strength construction
   -> broader-engine redundancy remains incompletely tested
   -> no temporal meaning, strategy usefulness, or industry-rotation archetype
 
+MKT-H-016 external industry-engine geometry
+  -> equal-industry participation collapses into broad central direction
+  -> stock/industry residual dispersion is jointly volatility/co-movement reconstructable
+  -> industry return dispersion remains distinct
+  -> winner-industry diffusion remains distinct
+  -> industry rank rotation remains distinct
+  -> residual tail balance and concentration remain distinct
+  -> temporal leadership dynamics are now permitted outcome-blind
+  -> strategy usefulness remains prohibited/unestablished
+
 MKT-H-009 directional-tail/risk-appetite construction
   -> all eleven exact representations pass their own gates
   -> central direction absorbs ordinary participation/depth/concentration/diffusion

@@ -9,7 +9,7 @@ the independent Market State Engine and opportunity definitions exist.
 | 2 | CHINEXT V1 archaeology | Qualified participation/right-tail/path evidence | Low-medium: existing breakout seed | Strong bounded PIT-B | Low / capacity known | High with current program | Supporting frontier only |
 | 3 | Pullback continuation | No direct support yet; coherent trend/pullback/exhaustion process | High | Daily plus minute feasible | Medium / unknown | Potentially distinct from breakout | WAIT_FOR_MARKET_MECHANISM |
 | 4 | Panic/oversold reversal | No direct support yet | Very high | Correlation/liquidity/minute states exist, recovery absent | Medium-high / unknown | Low versus breakout | WAIT_FOR_MARKET_MECHANISM |
-| 5 | Relative-strength leadership / industry rotation | Seven state coordinates freeze, including rank rotation, winner diffusion, and leave-one-out residual shape; no temporal or outcome mechanism | Medium-high if distinct | Daily comparison feasible | Medium / potentially scalable | External engine geometry pending | WAIT_FOR_MARKET_GEOMETRY_AND_TEMPORAL_MEANING |
+| 5 | Relative-strength leadership / industry rotation | Winner diffusion, rank rotation, residual tail balance/concentration remain externally distinct; no temporal or outcome mechanism | Medium-high if temporal process survives | Daily comparison feasible | Medium / potentially scalable | Participation/residual dispersion already compress | WAIT_FOR_TEMPORAL_MEANING |
 | 6 | Failed-breakout reversal | Completed-path ordering supported, not actionable | High | Daily/minute feasible | Medium / unknown | Distinct trigger, related formation | RESEARCH_ONLY |
 | 7 | SuperMind V6 archaeology | Methodology inspected, program evidence absent | Medium | Replay audit required | High | Related breakout mechanism | DEFER |
 
@@ -29,6 +29,10 @@ MKT-INDRS-001 does not promote relative-strength leadership or industry
 rotation. Its seven minimal roles establish only same-session representation
 quality; broader-engine redundancy, future leadership behavior, triggers,
 execution, exits, capacity, and habitat effects remain untested.
+
+MKT-INDRS-GEO-002 still does not promote an archetype. It compresses seven
+industry roles to five direct coordinates but supplies no future leadership
+direction, stock-selection result, trigger, exit, capacity, or habitat evidence.
 
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.

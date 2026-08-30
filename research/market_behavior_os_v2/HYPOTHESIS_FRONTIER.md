@@ -2,8 +2,8 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Which of the seven frozen industry/relative-strength coordinates add a distinct dimension beyond the accepted Market State Engine? | Very high | High | Frozen panels only; nested-control years corrected before geometry | High | Low-medium | ACTIVE_MKT_INDRS_GEO_002_FROZEN |
-| 2 | Do distinct industry rotation/diffusion/residual coordinates have replicating temporal meaning after state controls? | Very high | Very high | Future market/industry state can be built after geometry | High | Medium; confirmation must be untouched before spec | WAIT_FOR_GEOMETRY |
+| 1 | Do winner-industry diffusion and rank rotation form replicating next-block leadership dynamics after current-state controls? | Very high | Very high | Frozen 10,696-row panel; future state only | High | Medium; confirmation must be untouched before spec | ACTIVE_MKT_INDRS_DYN_001_MAP_FIRST |
+| 2 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | High | High | Frozen panel and controls | High | Medium | QUEUED_AFTER_LEADERSHIP_DYNAMICS |
 | 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
 | 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
 | 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
@@ -49,3 +49,9 @@ entered incomplete nested causal-control warm-ups. MKT-INDRS-GEO-002 retains
 the scientific design and changes only that control's raw/relative/PIT eligible
 years. The next action remains the exact outcome-blind geometry, not a new
 frontier or control substitution.
+
+MKT-INDRS-GEO-002 leaves five direct engine coordinates. The highest-EIV next
+question stays within the same deep frontier: freeze a small outcome-blind
+temporal graph for winner diffusion and rank rotation before constructing any
+future state. Equal-industry participation and residual dispersion are removed
+as direct predictors; strategy outcomes remain prohibited.
