@@ -1,0 +1,108 @@
+{
+  "experiment_id": "EXP-FBB-001",
+  "spec_id": "CHINEXT-V1-FALSE-BREAKOUT-BOUNDARY-FALSIFICATION-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_BOUNDARY_OUTCOME_TEST",
+  "created_on": "2026-08-30",
+  "evidence_grade": "EXPLORATORY_PATH_MECHANICS_FALSIFICATION",
+  "hypothesis_id": "H-016",
+  "question": "Does the H-015 false-breakout excursion-order relationship survive explicit removal and control of entry/exit extremum boundaries?",
+  "mechanism": "A genuine deterioration sequence should remain when MFE-at-entry and MAE-at-exit mechanics are controlled and when paths exhibiting those two directional boundary patterns are excluded.",
+  "prediction": "MFE-before-MAE ordering remains positively associated with false breakouts in the boundary-clean sample and after full-sample MFE-at-entry/MAE-at-exit controls.",
+  "interpretation_boundary": "Even boundary-clean ordering uses the completed frozen path and cannot establish a causal or actionable exit state.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_false_breakout_boundary_falsification.py",
+      "sha256": "7d4d48d255a68f4f5564c2b5c173017c13843985b4e75d692910e186bed8a5c9"
+    },
+    "accepted_excursion_table": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/excursion_order_attribution.csv",
+      "sha256": "9c31f5e63749324a7afa6762096cf84f4f9520a8ebadac497772ad218d149848"
+    },
+    "accepted_excursion_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/excursion_order_sequence.json",
+      "sha256": "d18d91337312f155da0fb0b9ae305df9f78972e05f0bdcd71adae8ec19b395f7"
+    },
+    "accepted_preentry_controls": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/pre_entry_transitions.csv",
+      "sha256": "d18be1dfff3090028658063a696cc8a2f0f0c676d8a1ae7c8e66aa562dbd9e53"
+    },
+    "accepted_excursion_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_excursion_order_sequence.py",
+      "sha256": "68a2783dbec2c86c51ffbcff369a47e1ac5747fc8e3b18c021030842fa366798"
+    },
+    "accepted_partial_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_entry_landmark_emergence.py",
+      "sha256": "b95179c18b83e7ef4504dad8bc30a691f659a3fe2210d2f20896f1ba5495a750"
+    },
+    "accepted_control_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    }
+  },
+  "sample": {
+    "all_completed_cycles": 399,
+    "expected_boundary_counts": {
+      "mfe_at_entry": 121,
+      "mae_at_entry": 88,
+      "mfe_at_exit": 3,
+      "mae_at_exit": 24,
+      "boundary_clean": 265,
+      "strict_interior": 179
+    },
+    "boundary_clean": "exclude days_to_mfe == 0 and days_to_mae == holding_trading_days",
+    "strict_interior": "require both extrema strictly after entry and strictly before exit",
+    "minimum_boundary_clean_false_breakouts": 60,
+    "missingness": "fail closed; no imputation, post-exit extension, coordinate substitution, or replay"
+  },
+  "primary_endpoint": "false_breakout = mfe < 0.10 and round_trip_return <= 0",
+  "primary_predictor": "negative normalized excursion order, so positive means MFE occurs before MAE",
+  "required_tests": {
+    "full_boundary_control": "partial rank in all 399 cycles adding MFE-at-entry and MAE-at-exit to the H-015 controls",
+    "boundary_clean_raw": "raw/within-year/LOYO association in the fixed 265-cycle boundary-clean sample",
+    "boundary_clean_controlled": "H-015 magnitude/duration/pre-entry/year/exit partial rank in the boundary-clean sample",
+    "strict_interior_neighbor": "raw association in the fixed 179-cycle strict-interior sample"
+  },
+  "fixed_neighbors": [
+    "boundary-clean unscaled days-to-MAE minus days-to-MFE",
+    "boundary-clean signed ordering in {-1, 0, 1}",
+    "strict-interior normalized ordering"
+  ],
+  "gates": {
+    "full_boundary_control": "partial-rank rho >= 0.10 and >=7/8 positive LOYO",
+    "boundary_clean_raw": "rho >= 0.15, positive within-year rank rho, and >=7/8 positive LOYO",
+    "boundary_clean_controlled": "partial-rank rho >= 0.10 and >=7/8 positive LOYO",
+    "neighbors": "all three fixed neighbors have positive rho and >=6/8 positive LOYO",
+    "falsification": "boundary-clean ex-global-Bottom-4 P&L and holding>=5 rhos each >=0.05; >=80% positive leave-one-security and leave-one-industry omissions; >=2/3 positive baseline blocks",
+    "decision": {
+      "DEEPEN": "all five gates pass",
+      "REFINE": "full boundary control and boundary-clean raw pass but at least one remaining gate fails",
+      "PIVOT": "boundary-clean raw passes but full boundary control fails",
+      "REJECT": "boundary-clean raw gate fails"
+    }
+  },
+  "falsification": [
+    "exact outcome-blind boundary counts fixed before the first outcome join",
+    "full-sample MFE-at-entry and MAE-at-exit controls",
+    "boundary-clean and strict-interior fixed samples",
+    "MFE, adverse-excursion magnitude, duration, pre-entry state, year, and exit controls",
+    "within-year ranks and eight LOYO omissions",
+    "global Bottom-4 realized-PnL removal",
+    "holding duration >=5 sensitivity",
+    "leave-one-security and leave-one-industry omissions",
+    "three independent baseline blocks",
+    "zero post-exit rows, replays, counterfactual paths, or strategy rules"
+  ],
+  "forbidden": [
+    "calling completed-path boundary-clean order an actionable state",
+    "testing any entry, hold, exit, stop, ranking, sizing, or production change",
+    "changing boundary exclusions, controls, sample, neighbors, or gates after results",
+    "adding boundary definitions to rescue a failed primary",
+    "breadth historical redesign or invalid Phase 7/8/9 use",
+    "untouched OOS or PIT-A claim"
+  ],
+  "outputs": [
+    "artifacts/false_breakout_boundary_attribution.csv",
+    "artifacts/false_breakout_boundary_falsification.json",
+    "reports/false_breakout_boundary_falsification.md"
+  ]
+}

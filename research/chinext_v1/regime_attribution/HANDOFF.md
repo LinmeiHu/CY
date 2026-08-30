@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-EOS-001_COMPLETE_REFINE` on 2026-08-30.
+`EXP-FBB-001_COMPLETE_DEEPEN` on 2026-08-30.
 
 EXP-WLA-001 is the latest completed valid experiment. Its fixed pre-entry
 demand/compression mechanism is rejected after 399 complete cycles, 2,793
@@ -40,6 +40,15 @@ EXP-EOS-001 is complete. False-breakout order passes all gates (actual raw rho
 -0.709; controlled oriented 0.323; 8/8 LOYO), while extreme-winner controlled
 rho 0.076 fails its magnitude gate. The decision is `REFINE`, limited to
 false-breakout path topology with full-path/exit conditioning.
+
+EXP-FBB-001 is frozen before endpoint testing. Outcome-blind boundary counts
+leave 265 boundary-clean and 179 strict-interior cycles. The seven-input aggregate
+is `a5530d25...`; no entry, exit, or other strategy rule is authorized.
+
+EXP-FBB-001 is complete and passes all gates. Boundary-clean raw/controlled rhos
+are 0.600/0.183; strict-interior rho is 0.543; temporal, block, Bottom-4,
+holding>=5, security, and industry attacks survive. This supports completed-path
+false-breakout topology only, not an exit signal.
 
 ## Recovered autonomous environment
 
@@ -165,9 +174,10 @@ mechanisms.
 
 ## Required next action
 
-Checkpoint EXP-EOS-001, then freeze the boundary-mechanics falsification: add
-MFE-at-entry/MAE-at-exit controls and require a boundary-clean false-breakout
-sample. It cannot authorize an exit, filter, or strategy change.
+Checkpoint EXP-FBB-001, then outcome-blind audit exact accepted fills and
+signal-session closes for one continuous entry-execution-premium mechanism. Do
+not proceed if exact baseline-ledger identity or PIT/action-safe close semantics
+cannot be established.
 
 Human authorization remains necessary only if anyone proposes to investigate or
 replace EXP-P7-003. It must not be repaired in place.

@@ -250,3 +250,26 @@ byte-consistent with one another.
 - Status: `SUPPORTED_FOR_FALSE_BREAKOUT_ONLY_WITH_FULL_PATH_QUALIFICATION` by
   EXP-EOS-001. The extreme-winner mechanism is rejected after controls; the
   false-breakout mechanism requires entry/exit-boundary falsification.
+
+### H-016 — false-breakout boundary-mechanics falsification
+
+- Question: does the H-015 false-breakout order survive explicit entry/exit
+  extremum controls and removal?
+- Mechanism: a genuine deterioration sequence should remain after controlling
+  MFE-at-entry/MAE-at-exit and excluding both directional boundary patterns.
+- Prediction: MFE-before-MAE order remains positively associated with false
+  breakouts in the boundary-clean sample and the full boundary-controlled model.
+- Required data: accepted H-015 path table/result and accepted controls.
+- Primary tests: full-sample boundary-controlled partial rank plus fixed
+  boundary-clean raw and controlled association.
+- Falsification: strict-interior, raw-day/sign neighbors, LOYO, blocks, Bottom-4
+  loss removal, holding>=5, security, industry, and exact boundary counts.
+- Metrics: oriented raw and partial-rank association with false breakout; gates
+  frozen in `EXP-FBB-001_spec.json`.
+- Confounds: all samples still use completed paths conditioned on actual exits.
+- Result: full boundary-controlled rho 0.281 (8/8 LOYO); boundary-clean raw and
+  controlled rhos 0.600/0.183; strict-interior rho 0.543. Every temporal,
+  neighbor, block, loss-tail, security, and industry gate passes.
+- Status: `SUPPORTED_WITH_COMPLETED_PATH_QUALIFICATION` by EXP-FBB-001. The
+  opportunity-before-adversity false-breakout topology is not an entry or exit
+  signal and now motivates an independent entry-execution attribution.

@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`REFINE_H015_TEST_BOUNDARY_MECHANICS`.
+`DEEPEN_FALSE_BREAKOUT_AUDIT_ENTRY_EXECUTION_PREMIUM`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -49,14 +49,15 @@ production change is authorized.
 
 ## Highest-information unresolved question
 
-EXP-EOS-001 finds stable excursion ordering only for false breakouts. The urgent
-falsification is whether this is an internally meaningful deterioration sequence
-or a boundary artifact caused by MFE at entry and MAE at the strategy's exit.
-This remains completed-path attribution, not an exit rule.
+EXP-FBB-001 establishes that opportunity-before-adversity order survives entry/
+exit-boundary removal and controls. The next unresolved question is whether
+false-breakout topology begins with an adverse entry execution premium relative
+to the signal close, or whether it emerges only after a normal T+1 fill.
 
 ## Exact next action
 
-Checkpoint EXP-EOS-001, audit outcome-blind entry/exit-boundary counts, then
-freeze one false-breakout-only experiment requiring both full-sample boundary
-controls and a boundary-clean sample. EXP-P7-003 must never be silently repaired,
-rerun, or overwritten.
+Checkpoint EXP-FBB-001, then audit availability and exact hashes of accepted
+execution fills and signal-session closes without reading outcomes. If all three
+baseline ledgers and PIT/action-safe closes can be bound, freeze one continuous
+entry-premium attribution; otherwise record the data blocker and pivot.
+EXP-P7-003 must never be silently repaired, rerun, or overwritten.

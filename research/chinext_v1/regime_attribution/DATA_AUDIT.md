@@ -112,3 +112,9 @@ canonical exit reason. Phase 1 constructs zero-based coordinates over the held
 path from entry execution through exit execution inclusive; Python max/min over
 chronological tuples retains the first occurrence on an exact tie. No excursion
 order was calculated before its primary orientation and gates were frozen.
+
+EXP-FBB-001's outcome-blind boundary audit finds 121 MFE-at-entry, 88
+MAE-at-entry, 3 MFE-at-exit, and 24 MAE-at-exit paths. The frozen directional
+boundary-clean rule (exclude MFE-at-entry and MAE-at-exit) admits 265/399 cycles;
+requiring both extrema strictly inside the path admits 179/399. These counts were
+frozen without reading the false-breakout endpoint.

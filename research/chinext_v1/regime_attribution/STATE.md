@@ -2,10 +2,10 @@
 
 ## CURRENT_PHASE
 
-EXP-EOS-001_COMPLETE_REFINE — full-path excursion order survives only for false
-breakouts, not as an incremental extreme-winner mechanism. H-004 remains frozen
-for prospective validation; EXP-P7-003 and all Phase 8/9/final strategy
-conclusions remain invalid. No strategy or production change is authorized.
+EXP-FBB-001_COMPLETE_DEEPEN — false-breakout opportunity-before-adversity order
+survives explicit entry/exit-boundary falsification. H-004 remains frozen for
+prospective validation; EXP-P7-003 and all Phase 8/9/final strategy conclusions
+remain invalid. No strategy or production change is authorized.
 
 ## AUTONOMOUS_WORKSPACE_OWNERSHIP
 
@@ -489,6 +489,36 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Output hashes: table `9c31f5e6...`, JSON `d18d9133...`, report `1a4faefb...`.
 - Next falsification: determine whether the false-breakout association is induced
   by MFE at the entry boundary and MAE at the exit boundary.
+
+## AUTONOMOUS_CYCLE_EXP_FBB_001_PREREGISTRATION
+
+- H-016 requires false-breakout order to survive both full-sample MFE-at-entry/
+  MAE-at-exit controls and the 265-cycle boundary-clean sample.
+- Boundary-clean excludes the two directional mechanical patterns only; the
+  179-cycle strict-interior sample is a fixed neighbor. Counts were audited
+  without the endpoint.
+- Fixed controls, orientation, raw-day/sign neighbors, Bottom-4 loss removal,
+  holding>=5, LOYO, blocks, securities, and industries cannot be changed.
+- The completed-path result remains unavailable at entry and cannot authorize a
+  strategy action. Spec SHA `bddb9950...`; seven-input aggregate `a5530d25...`.
+- Status: frozen before the first boundary/outcome test.
+
+## AUTONOMOUS_CYCLE_EXP_FBB_001_RESULT
+
+- Boundary-clean/strict-interior samples contain 265/179 cycles and 89/87 false
+  breakouts. No post-exit row, replay, counterfactual path, or rule was used.
+- Full-sample boundary-controlled oriented rho is 0.281 with 8/8 LOYO.
+- Boundary-clean raw rho is 0.600, within-year 0.525, 8/8 LOYO; fixed controlled
+  rho is 0.183 with 7/7 estimable positive LOYO (the 2025 omission has 198 rows,
+  below the preregistered model's 200-row minimum).
+- Strict-interior rho is 0.543 with 8/8 LOYO. Raw-day/sign neighbors, three
+  blocks, Bottom-4 loss removal, holding>=5, security, and industry tests pass.
+- All five gates pass; decision `DEEPEN`. Opportunity-before-adversity is a
+  robust completed-path false-breakout topology, not an actionable signal.
+- Two runs are byte-identical. Output hashes: table `b09dc954...`, JSON
+  `19f3002d...`, report `0c795980...`.
+- Next highest-value question: whether entry execution premium/gap contributes
+  to the supported false-breakout topology using exact accepted fill lineage.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
