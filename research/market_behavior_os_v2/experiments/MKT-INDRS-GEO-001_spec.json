@@ -1,0 +1,148 @@
+{
+  "experiment_id": "MKT-INDRS-GEO-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_GEOMETRY_RESULT",
+  "question": "Which accepted industry and stock/industry relative-strength roles remain distinct from economically relevant accepted Market State Engine coordinates?",
+  "research_role": "outcome-blind external redundancy and latent-mechanism compression before temporal meaning",
+  "inputs": {
+    "industry": {
+      "panel_path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_panel.csv",
+      "panel_sha256": "c9e8d44935261256c1f3a6246026ba2ff0a02d3373386771fe58182ad3baeaf4",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_result.json",
+      "result_sha256": "578d9dbaa16bc1da2aaee790309c56475cc102de9fc592a72aaae1bd43c41085"
+    },
+    "breadth": {
+      "panel_path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "panel_sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+      "result_sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"
+    },
+    "correlation_liquidity": {
+      "panel_path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_correlation_liquidity_panel.csv",
+      "panel_sha256": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_result.json",
+      "result_sha256": "9ada5db39ba531e6a41b3f26ceef106233c8871c0fe60a9d971df293bac24eb2"
+    },
+    "leadership": {
+      "panel_path": "research/market_behavior_os_v2/artifacts/MKT-LDR-001_leader_deterioration_panel.csv",
+      "panel_sha256": "67fb4aee780db8c9b15861dd2d16be83c9f7ea31696d1a8985547024825be8dd",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-LDR-001_result.json",
+      "result_sha256": "e7894be5cc2d4e220999587ac6c69996bed7f9304f5accfd188224527aa0a4f3"
+    },
+    "volatility": {
+      "panel_path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "panel_sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+      "result_sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"
+    },
+    "risk_appetite": {
+      "panel_path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "panel_sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json",
+      "result_sha256": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe"
+    }
+  },
+  "source_role_expectations": {
+    "industry": [
+      "industry_positive_participation_1d",
+      "industry_return_dispersion_1d",
+      "winner_industry_diffusion20",
+      "industry_rank_rotation20",
+      "stock_industry_rs_dispersion20",
+      "stock_industry_rs_tail_balance20",
+      "stock_industry_rs_concentration20"
+    ],
+    "breadth": ["new_high_low", "leadership_concentration"],
+    "correlation_liquidity": ["co_movement", "directional_synchronization", "liquidity_activity", "turnover_level", "liquidity_concentration"],
+    "leadership": ["leadership_discovery_imbalance"],
+    "volatility": ["realized_volatility", "intraday_range", "volatility_concentration", "volatility_change"],
+    "risk_appetite": ["central_direction", "upside_extreme_participation", "downside_extreme_participation"]
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-07-03",
+    "date_end": "2023-12-29",
+    "expected_rows": 10696,
+    "expected_rows_per_group": 1337,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "raw_cell_years": [2019, 2020, 2021, 2022, 2023],
+    "pit_cell_and_geometry_years": [2021, 2022, 2023],
+    "relative_cell_and_geometry_years": [2019, 2020, 2021, 2022, 2023]
+  },
+  "availability": {
+    "source_available_at": "completed same-date close at 15:00 Asia/Shanghai",
+    "geometry_decision_at": "same-date 15:00 Asia/Shanghai",
+    "first_actionable_time": "later causally valid session; experiment creates no action"
+  },
+  "targets": {
+    "industry_positive_participation_1d": "industry_positive_participation_median",
+    "industry_return_dispersion_1d": "industry_return_dispersion_iqr",
+    "winner_industry_diffusion20": "winner_industry_entropy_top10",
+    "industry_rank_rotation20": "industry_rank_rotation_spearman_lag5",
+    "stock_industry_rs_dispersion20": "stock_industry_rs_dispersion_iqr",
+    "stock_industry_rs_tail_balance20": "stock_industry_rs_tail_balance_p90_p10",
+    "stock_industry_rs_concentration20": "stock_industry_rs_positive_mass_top10"
+  },
+  "controls": {
+    "risk_central_direction": {"source": "risk_appetite", "raw": "median_signed_limit_utilization"},
+    "risk_upside_extreme": {"source": "risk_appetite", "raw": "upside_extreme_participation_70"},
+    "risk_downside_extreme": {"source": "risk_appetite", "raw": "downside_extreme_participation_70"},
+    "vol_realized_level": {"source": "volatility", "raw": "realized_volatility_median20"},
+    "vol_intraday_range": {"source": "volatility", "raw": "intraday_range_median_smooth5"},
+    "vol_change": {"source": "volatility", "raw": "realized_volatility_change5"},
+    "vol_concentration": {"source": "volatility", "raw": "volatility_mass_share_top10"},
+    "clq_co_movement": {"source": "correlation_liquidity", "raw": "correlation_median20"},
+    "clq_amount_concentration": {"source": "correlation_liquidity", "raw": "liquidity_amount_share_top10"},
+    "breadth_discovery": {"source": "breadth", "raw": "breadth_net_new_high_low60"},
+    "breadth_leadership_concentration": {"source": "breadth", "raw": "leadership_positive_mass_top10"},
+    "leadership_discovery_imbalance": {"source": "leadership", "raw": "leadership_discovery_imbalance_top10_h60"}
+  },
+  "role_control_sets": {
+    "industry_positive_participation_1d": ["risk_central_direction", "risk_upside_extreme", "risk_downside_extreme"],
+    "industry_return_dispersion_1d": ["vol_realized_level", "vol_intraday_range", "clq_co_movement"],
+    "winner_industry_diffusion20": ["breadth_discovery", "breadth_leadership_concentration", "leadership_discovery_imbalance"],
+    "industry_rank_rotation20": ["breadth_leadership_concentration", "clq_co_movement", "vol_change"],
+    "stock_industry_rs_dispersion20": ["clq_co_movement", "vol_realized_level", "vol_intraday_range"],
+    "stock_industry_rs_tail_balance20": ["risk_central_direction", "risk_upside_extreme", "risk_downside_extreme"],
+    "stock_industry_rs_concentration20": ["breadth_leadership_concentration", "clq_amount_concentration", "vol_concentration"]
+  },
+  "coordinates": {
+    "raw": "exact source field",
+    "pit": "<raw>_pit_3y_pct",
+    "relative_to_all": "<raw>_relative_to_all; exclude ALL_A from this geometry",
+    "relative_rank": "<raw>_relative_view_rank_pct",
+    "joint_transform": "within-analysis rank percentile for target and every fixed control, then OLS with intercept"
+  },
+  "gates": {
+    "exact_groups": 8,
+    "group_year_minimum_observations": 150,
+    "expected_coordinate_coverage": 0.95,
+    "pairwise_median_absolute_spearman_strictly_below": 0.85,
+    "joint_rank_adjusted_r2_median_strictly_below": 0.70,
+    "joint_rank_adjusted_r2_maximum_strictly_below": 0.85,
+    "no_rescue": "No target, control, coordinate, view, denominator, year, or favorable subset can replace a failed frozen role/control geometry."
+  },
+  "classification": {
+    "distinct": "all pairwise coordinate gates and all joint reconstruction gates pass",
+    "pairwise_redundant": "at least one fixed accepted control crosses the 0.85 median absolute Spearman edge",
+    "jointly_reconstructable": "pairwise gates pass but a fixed-control joint reconstruction gate fails",
+    "invalid": "input identity, source-role identity, PIT, availability, key-set, coverage, cell support, or numeric validity fails"
+  },
+  "prohibited_fields": [
+    "future market, industry, or stock values",
+    "market return response or strategy outcome",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "MKT-INDRS-001 failed roles or redundant industry_return_depth role",
+    "MKT-BRTH failed MA industry-diffusion/divergence fields",
+    "unregistered industry/index/style membership",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes contemporaneous engine-coordinate distinctness only, not temporal persistence, prediction, selection alpha, habitat fitness, causality, timing, or a strategy rule.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-INDRS-GEO-001_geometry.md"
+  ]
+}

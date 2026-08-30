@@ -375,6 +375,15 @@ and spec before construction, then test pairwise redundancy and conservative
 joint rank reconstruction. Temporal outcomes, strategy fields, failed industry
 roles, failed MA20 fields, and CY-011 remain prohibited.
 
+That map and spec are now frozen under SHA-256 `33b0f114...`. The seven control
+sets contain at most three accepted economic alternatives each and are not a
+search pool. Raw/relative cells use 2019-2023; complete causal-PIT cells use
+2021-2023; all keep the 150-observation gate and the full 10,696-row key set.
+Pairwise median absolute Spearman must remain below 0.85, while fixed-control
+joint rank reconstruction must remain below 0.70 median and 0.85 maximum
+adjusted R2 in every eligible coordinate family. Execute twice and preserve any
+redundancy as latent-mechanism evidence rather than a failed source role.
+
 ## Human decision required?
 
 No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-GEO-001
