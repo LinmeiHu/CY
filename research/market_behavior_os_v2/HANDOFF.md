@@ -580,3 +580,16 @@ tune the transition horizon or habitat split. Next map MKT-MIN-SUPACC-001 using
 only frozen same-session market minute levels to represent objective support
 defense, VWAP acceptance, and accumulation/demand. Do not reuse rejected OLS,
 ordinal, reversal, or curvature paths; do not read outcomes or CY-011.
+
+MKT-MIN-SUPACC-001 is now frozen under SHA-256
+`fcdc9d359a153ba473543ee7ccfabb6f7ed68a4c37fca34a5a2b3e4f60be9435`
+before constructing mechanism scores. Use only the 12 fixed accepted components
+and three controls from the required-scale daily panel. Preserve 15:30 derived
+availability, causal 756/504 percentiles, fixed signs, mean primary,
+median/geometric and four leave-one-out neighbors, p40/p60 definitions, PIT/
+relative coordinates, and external/joint redundancy gates.
+
+Do not read raw minutes, future values, outcomes, failed level/path fields, or
+CY-011. Do not call these cross-day support/resistance or participant
+accumulation. Execute twice and compress redundant passing mechanisms only in
+the frozen priority order.

@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-SUPACC-001_MAP_REQUIRED`
+- `CURRENT_PHASE`: `MKT-MIN-SUPACC-001_FROZEN_EXECUTION_REQUIRED`
 - `CURRENT_PRIMARY_FRONTIER`: market-wide intraday support defense, VWAP acceptance, and accumulation/demand mechanism representation
 - `SUPPORTING_FRONTIER`: frozen same-session minute levels without failed five-day path operators
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -597,3 +597,17 @@ or direction/discovery modifier freezes. SYNTH-MKT-020 pivots to an unstudied
 minute family: objective support defense, VWAP acceptance, and accumulation/
 demand mechanisms from already-frozen same-session levels, explicitly excluding
 failed five-day path operators. No S1-S12 STOP is active.
+
+The same-session intraday mechanism map and spec `fcdc9d35...` are frozen before
+score construction. Three exact four-component roles test VWAP defense/recovery,
+late VWAP acceptance, and price-volume demand balance. Raw p40/median/p60
+component vectors remain separate; causal aligned percentiles use equal mean as
+primary, median/geometric aggregation and all leave-one-out means as fixed shape
+neighbors. p40/p60, denominator, year-cell, PIT, and relative gates are fixed.
+
+Open-to-close return, downside minute volatility, and minute-volume
+concentration are fixed external alternatives so a score cannot pass merely by
+rediscovering daily return or generic volatility/volume concentration. The
+derived panel remains available at 15:30, not 15:00. Cross-day support,
+participant accumulation, future values, outcomes, failed path operators, raw
+minutes, and CY-011 remain prohibited.

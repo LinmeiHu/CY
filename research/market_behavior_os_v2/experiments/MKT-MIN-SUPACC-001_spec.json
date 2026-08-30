@@ -1,0 +1,96 @@
+{
+  "experiment_id": "MKT-MIN-SUPACC-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_MECHANISM_SCORE_CONSTRUCTION",
+  "question": "Do accepted same-session market minute levels form coherent and distinct VWAP-defense, late-acceptance, or price-volume-demand representations?",
+  "research_role": "strategy-independent same-session intraday latent-mechanism representation",
+  "inputs": {
+    "minute_daily_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+      "sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701"
+    },
+    "minute_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+      "sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe"
+    }
+  },
+  "population": {
+    "keys": ["trade_date", "market_view", "denominator"],
+    "date_start": "2018-01-02",
+    "date_end": "2023-12-29",
+    "expected_rows": 11656,
+    "expected_rows_per_group": 1457,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"]
+  },
+  "availability": {
+    "last_included_minute": "completed 15:00 bar",
+    "derived_artifact_available_at": "15:30 Asia/Shanghai",
+    "same_bar_action": "forbidden"
+  },
+  "cross_section_definitions": ["median", "p40", "p60"],
+  "mechanisms": {
+    "vwap_defense_recovery": {
+      "positive": ["vwap_recovery_count", "recovery_speed_30bar"],
+      "negative": ["longest_below_vwap_fraction", "downside_excursion"]
+    },
+    "late_vwap_acceptance": {
+      "positive": ["late_vwap_acceptance_fraction", "time_above_vwap_fraction", "volume_above_vwap_fraction", "final30_log_return"],
+      "negative": []
+    },
+    "price_volume_demand_balance": {
+      "positive": ["positive_minute_fraction", "up_minute_volume_share", "upside_excursion"],
+      "negative": ["down_minute_volume_share"]
+    }
+  },
+  "external_controls": ["open_close_log_return", "downside_realized_volatility", "minute_volume_concentration"],
+  "causal_normalization": {
+    "window_sessions": 756,
+    "minimum_valid_observations": 504,
+    "current_observation_included": true,
+    "negative_alignment": "one minus causal percentile"
+  },
+  "aggregation": {
+    "primary": "equal arithmetic mean of four aligned component causal percentiles",
+    "shape_neighbors": ["median", "geometric_mean"],
+    "component_neighbors": "four leave-one-component-out arithmetic means",
+    "cross_section_neighbors": ["p40", "p60"],
+    "weight_optimization": "forbidden"
+  },
+  "relative_coordinates": {
+    "relative_to_all": "mechanism score minus same-date/denominator ALL_A score",
+    "relative_rank": "same-date/denominator governed-view percentile rank of mechanism score"
+  },
+  "gates": {
+    "minimum_source_raw_coverage": 0.95,
+    "minimum_shape_neighbor_median_spearman": 0.70,
+    "minimum_leave_one_component_out_median_spearman": 0.70,
+    "minimum_cross_section_neighbor_median_spearman": 0.70,
+    "minimum_denominator_median_spearman": 0.90,
+    "eligible_years": [2021, 2022, 2023],
+    "minimum_group_year_observations": 150,
+    "pairwise_external_redundancy_absolute_spearman": 0.85,
+    "joint_rank_reconstruction_median_adjusted_r2_maximum": 0.70,
+    "joint_rank_reconstruction_maximum_adjusted_r2": 0.85,
+    "mechanism_pairwise_compression_absolute_spearman": 0.85,
+    "no_rescue": "No component, sign, weight, aggregator, cross-section definition, view, denominator, year, control deletion, failed path operator, or favorable subset can replace a failed exact mechanism representation."
+  },
+  "compression_priority": ["vwap_defense_recovery", "late_vwap_acceptance", "price_volume_demand_balance"],
+  "prohibited_fields": [
+    "future market, industry, stock, or volatility state",
+    "strategy membership, signal, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "selloff_duration_fraction or auction_to_continuous_open_log_return",
+    "failed/redundant MKT-MIN path or level roles outside the fixed components/controls",
+    "OLS slope, ordinal progression, signed reversal, or curvature fields",
+    "raw minute rows",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes same-session latent representation and compression only; it does not establish cross-day support/resistance, order-flow identity, accumulation by participants, prediction, timing, habitat, causality, execution, or strategy usefulness.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-SUPACC-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-MIN-SUPACC-001_representation.md"
+  ]
+}

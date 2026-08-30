@@ -31,6 +31,7 @@
 | `RESIDUAL_LEADERSHIP_TAIL_DYNAMICS_MAP.md` | Nonoverlapping residual tail-balance/concentration temporal graph and contamination boundary |
 | `MARKET_INTRADAY_SAMPLING_CONTRACT.md` | Strategy-independent bounded minute readiness sampling and PIT contract |
 | `MARKET_INTRADAY_REPRESENTATION_MAP.md` | Required-scale same-session and five-day minute representation semantics |
+| `MARKET_INTRADAY_MECHANISM_MAP.md` | Same-session VWAP defense, late acceptance, and price-volume demand latent-mechanism map |
 | `MARKET_INTRADAY_NONSLOPE_PROCESS_MAP.md` | Fixed five-day ordinal progression, signed reversal, and curvature semantics after OLS failure |
 | `MARKET_INTRADAY_NONSLOPE_PROCESS_MAP_V2.md` | Exact 15:30 derived-trajectory availability correction; all scientific fields inherited |
 | `DATA_CAPABILITY_MATRIX.md` | Governed available/unavailable research data capabilities |
@@ -62,6 +63,7 @@
 | `experiments/MKT-VOL-TRANS-003_spec.json` | Frozen final coverage-correct control spec |
 | `experiments/MKT-VOL-TRANS-004_spec.json` | Frozen hash-alias/output-identity retry spec |
 | `reports/MKT-VOL-TRANS-004_dynamics.md` | Zero-of-three nonoverlapping transition/modifier result |
+| `experiments/MKT-MIN-SUPACC-001_spec.json` | Frozen same-session minute mechanism construction contract |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |
