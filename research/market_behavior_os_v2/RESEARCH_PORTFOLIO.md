@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | One same-session VWAP defense/recovery coordinate is distinct, but its temporal meaning is unknown | Execute the frozen outcome-blind state-dynamics test |
+| EXPLORE | 35% | Intraday state dynamics fail; size/style leadership remains unrepresented | Audit PIT size/style inputs and build a strategy-independent representation map |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 5% | Representation passes, but no future process or payoff evidence exists | Keep defense/recovery as a state hypothesis, not an archetype |
+| INVENT | 5% | No intraday future process survives | Retire defense/recovery as an active archetype; keep size/style invention closed pending representation |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 25% | Two plausible minute composites are externally redundant | Challenge the sole distinct survivor with frozen temporal controls and blocks |
+| FALSIFY | 25% | The sole distinct minute survivor also fails temporal falsification | Preserve the no-rescue boundary; do not search another horizon or shape |
 
 Mandatory checkpoint questions:
 

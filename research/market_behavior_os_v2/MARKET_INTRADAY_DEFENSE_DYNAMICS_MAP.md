@@ -83,3 +83,15 @@ accumulation, causality, price-return prediction, volatility prediction, habitat
 fitness, entry timing, execution, exit, capacity, or a strategy archetype.
 Future price/volatility/industry/stock states, strategy fields, failed roles,
 raw minutes, post-2023 data, and CY-011 are prohibited.
+
+## MKT-MIN-DEF-DYN-001 result
+
+The all-required dynamic fails. h=1 partial rho is -0.035 in reused block A and
++0.005 in reused block B. h=3 is +0.004/-0.058 and h=5 is +0.024/+0.046. The
+fixed shape challenges fail their effect/sign architecture and both relative
+views are near zero. Every support and nondegeneracy audit passed first.
+
+Two executions are byte-identical: panel `bfb22ae1...`, result `77812c79...`,
+report `823bc6bd...`. Preserve the same-session representation, but do not infer
+simple persistence, reversal, cross-day support, accumulation, prediction, or
+strategy usefulness.

@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-DEF-DYN-001_FROZEN_EXECUTION_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: outcome-blind temporal meaning of the distinct same-session VWAP defense/recovery coordinate
-- `SUPPORTING_FRONTIER`: stable same-session minute mechanisms with late acceptance and demand balance compressed into daily-return geometry
+- `CURRENT_PHASE`: `MKT-STYLE-001_DATA_CONTRACT_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent size/style leadership and diffusion representation
+- `SUPPORTING_FRONTIER`: one stable same-session VWAP defense/recovery coordinate with no tested 1/3/5-session state dynamic
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -648,3 +648,21 @@ The inherited completed-bar grid and 15:30 availability remain unchanged. The
 response is a future dimensionless state value, not a cross-day price level.
 Future price return, volatility, industry/stock state, strategy fields, raw
 minutes, failed roles, post-2023 data, and CY-011 are prohibited.
+
+MKT-MIN-DEF-DYN-001 is complete and the all-required state dynamic fails. The
+h=1 primary partial rho is -0.035 in reused block A and +0.005 in reused block
+B, versus unadjusted -0.044/-0.016. Both effects miss 0.10, block sign reverses,
+and block-B magnitude is only 0.014 on the median-absolute summary.
+
+The natural neighbors do not establish delayed recurrence or reversal: h=3 is
+0.004/-0.058 and h=5 is 0.024/0.046 partial rho. Aggregation/cross-section
+challenges are all below their 0.08 effect floor in at least one block and often
+reverse. Relative-to-ALL_A is 0.008/-0.009; relative rank is -0.004/-0.007.
+Every support and nondegeneracy audit passed before estimation.
+
+Two runs are byte-identical: panel `bfb22ae1...`, result `77812c79...`, report
+`823bc6bd...`; six focused tests pass. The same-session representation remains
+valid, but no simple 1/3/5-session persistence, reversal, future price process,
+strategy usefulness, or archetype is established. SYNTH-MKT-022 diversifies to
+the still-unrepresented size/style leadership frontier, beginning with a PIT
+data-contract and representation map. No S1-S12 STOP is active.

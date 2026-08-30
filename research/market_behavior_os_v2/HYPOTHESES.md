@@ -352,3 +352,18 @@
 - Boundary: the survivor is a 15:30-available same-session representation. It
   is not evidence of cross-day support, participant accumulation, future
   recurrence, price return, strategy usefulness, entry timing, or an archetype.
+
+## MKT-H-022 — same-session VWAP defense/recovery state dynamics
+
+- Status: `STATE_DYNAMIC_FAIL`.
+- h=1: partial rho is -0.035 in reused block A and +0.005 in reused block B;
+  unadjusted rho is -0.044/-0.016. Effect, sign, magnitude, and sign-support
+  gates fail.
+- h=3 is 0.004/-0.058; h=5 is 0.024/0.046. They are non-rescuing neighbors and
+  do not establish delayed persistence or reversal.
+- Every aggregation/cross-section challenge misses the 0.08 floor in at least
+  one block. Relative-to-ALL_A is 0.008/-0.009 and governed-view relative rank
+  is -0.004/-0.007.
+- Boundary: this rejects the exact simple 1/3/5-session self-dynamic. It does
+  not invalidate the same-session representation or the broader intraday
+  research family, and establishes no return, habitat, timing, or strategy.

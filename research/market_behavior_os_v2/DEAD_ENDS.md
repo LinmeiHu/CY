@@ -50,6 +50,7 @@
 | T+25 daily-volatility transition and direction/discovery modifiers | TEMPORAL_PROCESS_FAIL: baseline raw 0.051/0.094 conflicts with relative/phase signs; direction modifier 0.004/0.340 and discovery 0.194/0.064 fail block replication | Preserve the four volatility representations; do not tune horizon, habitat split, choose a favorable block/coordinate/neighbor, or relabel a modifier as strategy habitat |
 | Same-session late VWAP acceptance as an independent engine dimension | JOINTLY_RECONSTRUCTABLE: internally stable, but fixed daily controls explain median PIT adjusted rank R2 0.701 at the preregistered boundary | Preserve as a descriptive manifestation; do not remove a control, relax the boundary, or call it an independent acceptance mechanism |
 | Same-session price-volume demand balance as an independent engine dimension | RETURN_REDUNDANT: PIT rho 0.914 with open-to-close return and median PIT joint adjusted rank R2 0.916 | Preserve the stable score only as a return-linked manifestation; do not promote it as accumulation, participant demand, or independent evidence |
+| VWAP defense/recovery 1/3/5-session state dynamic | TEMPORAL_PROCESS_FAIL: h=1 partial rho -0.035/+0.005; h=3 0.004/-0.058; h=5 0.024/0.046; shape and relative gates also fail | Preserve same-session representation evidence; do not tune horizon, select an aggregator/view/block, remove controls, or infer cross-day support or accumulation |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

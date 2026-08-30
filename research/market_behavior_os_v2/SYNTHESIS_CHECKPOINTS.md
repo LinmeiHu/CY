@@ -941,3 +941,45 @@ nonoverlapping future-market-state response, current-state controls, natural
 horizons, temporal blocks, coordinate/neighbor gates, and no-rescue rules before
 shifting the accepted score. Do not read future price return, strategy outcomes,
 raw minute rows, failed roles, post-2023 data, or CY-011.
+
+## SYNTH-MKT-022 — after VWAP defense/recovery temporal falsification
+
+### What was learned?
+
+The distinct same-session VWAP defense/recovery score has no simple repeatable
+1/3/5-session self-dynamic after fixed current return, downside-volatility, and
+volume-concentration controls. h=1 is weak and reverses sign across reused
+blocks. Neighbor horizons, aggregation/cross-section definitions, and relative
+coordinates all fail the conjunctive architecture. Representation quality and
+temporal process evidence remain separate.
+
+### What market behavior are we still not studying?
+
+Size/style participation, leadership concentration, diffusion, divergence, and
+transition remain unrepresented. Objective cross-day price-level defense is
+still data-contract-limited. Cross-asset state and portable multi-strategy
+habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The minute coordinate has no replicating future state direction, much less
+payoff, trigger, execution, exit, capacity, or habitat evidence. No intraday
+defense/recovery archetype advances.
+
+### Parallel-track awareness
+
+- **Market research:** diversify from exhausted exact intraday state dynamics
+  to size/style state representation.
+- **Existing-strategy archaeology:** no price return or strategy outcome was
+  read; seed strategies remain unchanged.
+- **Strategy invention:** no archetype is active; style rotation remains only a
+  hypothesis family until PIT representation quality exists.
+
+### Research Director decision
+
+`DIVERSIFY_TO_SIZE_STYLE_STATE` via MKT-STYLE-001 data-contract/map-first.
+Identify registered, PIT-valid size/free-float/style inputs and freeze distinct
+participation, leadership, diffusion, divergence, and transition semantics
+before construction. Fail closed on unclear lineage or adjustment semantics.
+Do not combine with Trend/Breadth, read strategy outcomes, or form a trading
+rule before representation stability and redundancy compression.

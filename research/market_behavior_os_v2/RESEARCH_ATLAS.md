@@ -67,6 +67,7 @@
 | `reports/MKT-MIN-SUPACC-001_representation.md` | One distinct same-session VWAP defense/recovery coordinate; two externally compressed manifestations |
 | `MARKET_INTRADAY_DEFENSE_DYNAMICS_MAP.md` | Frozen outcome-blind temporal-meaning architecture for the distinct minute coordinate |
 | `experiments/MKT-MIN-DEF-DYN-001_spec.json` | Frozen t+1 primary and t+3/t+5 neighboring state-dynamics contract |
+| `reports/MKT-MIN-DEF-DYN-001_dynamics.md` | Failed 1/3/5-session VWAP defense/recovery state dynamic |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

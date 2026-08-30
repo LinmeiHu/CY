@@ -127,3 +127,9 @@ edge, h=3/h=5 neighbors, h=1 aggregation/cross-section challenges, absolute and
 relative coordinates, reused blocks, and all-required no-rescue logic are fixed.
 Execute twice without reading any future price, volatility, industry, stock, or
 strategy outcome.
+
+MKT-MIN-DEF-DYN-001 finds no repeatable state process. h=1 reverses its weak
+partial sign across reused blocks; h=3/h=5 and every shape/relative challenge
+fail the conjunctive architecture. The minute representation remains valid,
+but horizon/shape rescue is closed. The active frontier diversifies to
+MKT-STYLE-001 data-contract/map-first strategy-independent size/style state.

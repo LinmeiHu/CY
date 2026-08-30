@@ -636,3 +636,26 @@ The source minute/PIT contract and 15:30 availability remain inherited. Read
 only future values of the accepted dimensionless defense/recovery state. Future
 price return, future volatility/industry/stock state, strategy fields, failed
 roles, raw minutes, post-2023 data, and CY-011 remain forbidden. Execute twice.
+
+MKT-MIN-DEF-DYN-001 completes with `COMPLETE_STATE_DYNAMIC_FAIL`. The h=1
+primary is -0.035 partial rho in reused 2020-2021 and +0.005 in reused
+2022-2023; its unadjusted values are -0.044/-0.016. The effect, sign,
+cross-block magnitude, and sign-support gates fail.
+
+h=3 is 0.004/-0.058 and h=5 is 0.024/0.046. Neither can rescue h=1 and neither
+forms an all-block delayed dynamic. All four h=1 aggregation/cross-section
+challenges miss the fixed effect gate in at least one block; relative-to-ALL_A
+is 0.008/-0.009 and relative rank -0.004/-0.007. All support/nondegeneracy audits
+passed before correlations.
+
+Two executions are byte-identical: panel `bfb22ae1...`, result `77812c79...`,
+report `823bc6bd...`; six focused tests pass. Preserve VWAP defense/recovery as
+a same-session representation only. Do not tune horizon, choose a shape, infer
+cross-day support/accumulation, or construct a signal.
+
+SYNTH-MKT-022 selects MKT-STYLE-001 data-contract/map-first. Determine whether
+registered PIT daily data can support strategy-independent size/style
+participation, leadership concentration, diffusion, divergence, and transition
+representations. Fail closed on unclear market-cap/free-float/industry lineage.
+Do not combine style with Trend/Breadth or read strategy outcomes before a
+defensible representation exists.
