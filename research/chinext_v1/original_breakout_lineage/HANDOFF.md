@@ -119,6 +119,11 @@ and maximum-share 85% fail. No outcome/performance file was read. A fresh EXP-
 OBL-009 may preserve all assignments and relax only the outcome-blind feasibility
 gate to 40/90%; do not alter the capacity boundary or context fields.
 
+EXP-OBL-009 is committed with fresh paths and runner hash. It preserves all
+EXP-OBL-008 scientific definitions and changes only minimum class size 50 to 40
+and maximum class share 85% to 90%. Execute from a clean tree, then repeat the
+full three-block replay for byte identity before any outcome reveal.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

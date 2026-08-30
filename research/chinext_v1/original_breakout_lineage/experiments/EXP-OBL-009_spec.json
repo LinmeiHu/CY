@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-009",
+  "hypothesis_id": "H-OBL-007",
+  "status": "FROZEN_BEFORE_EVENT_REPLAY",
+  "evidence_grade": "EXPLORATORY_OUTCOME_BLIND_LINEAGE_FREEZE_BOUNDED_PIT_B",
+  "outcome_access": false,
+  "clean_reexecution_of": "EXP-OBL-008",
+  "scientific_definitions_changed": false,
+  "question": "Do accepted original V1 breakouts have distinct outcome-blind canonical selection lineages under sparse versus capacity-contested signal competition?",
+  "mechanism": "V1's finite-capacity RS tournament creates structurally different accepted events: unopposed signals fit within available vacancies, while contested signals displace same-session candidates below the exact selection cutoff.",
+  "population": {
+    "events": 399,
+    "blocks": [
+      "EXTENDED_2018_2021",
+      "HOLDOUT_O0_2022_2023",
+      "DEVELOPMENT_2024_2025"
+    ],
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "identity_projection": ["baseline_block", "trade_id", "symbol", "entry_signal_date"],
+    "outcome_projection": "FORBIDDEN"
+  },
+  "replay_contract": {
+    "engine": "unchanged frozen V1 baseline engine",
+    "execution": "fresh subprocesses in temporary directories",
+    "parent_files_allowed": ["event_ledger.jsonl"],
+    "parent_files_forbidden": [
+      "execution_ledger.jsonl",
+      "daily_nav.jsonl",
+      "engine_summary.json",
+      "engine_report.md"
+    ],
+    "source_worktree_ledgers": "FORBIDDEN",
+    "temporary_outputs": "deleted when the outcome-blind freeze process exits"
+  },
+  "lineage_definition": {
+    "L_CONTESTED": "same-session candidate_count is strictly greater than vacancies_before_selection",
+    "L_UNCONTESTED": "same-session candidate_count is less than or equal to vacancies_before_selection",
+    "threshold_status": "the boundary is exact canonical capacity, not a selected parameter",
+    "outcome_meaning": "NONE"
+  },
+  "continuous_context": {
+    "candidate_count": "minimum-volume-passing, RS-eligible, noncommitted, non-forced-exit candidates on the signal close",
+    "vacancies_before_selection": "10 minus surviving previous desired members",
+    "selection_pressure": "candidate_count / vacancies_before_selection",
+    "selected_rank": "one-based rank under score descending, mom60 descending, symbol ascending",
+    "selected_rank_percentile": "(candidate_count-selected_rank)/(candidate_count-1), or 1 for a singleton",
+    "selected_margin_to_cutoff": "selected RS score minus first excluded RS score; structurally missing for unopposed sessions"
+  },
+  "timing": {
+    "available_at_timestamp": "completed signal session 15:30 Asia/Shanghai",
+    "potential_action_timestamp": "T+1 open or later",
+    "same_session_action": "FORBIDDEN"
+  },
+  "construction_gates": {
+    "minimum_lineage_size": 40,
+    "maximum_lineage_fraction": 0.9,
+    "minimum_years_each_lineage": 6
+  },
+  "gate_change_from_exp_obl_008": {
+    "minimum_lineage_size": [50, 40],
+    "maximum_lineage_fraction": [0.85, 0.9],
+    "rationale": "EXP-OBL-008 observed a genuine 48-event structural class with seven-year presence before any outcome access; all scientific definitions and assignments remain unchanged"
+  },
+  "decision": {
+    "FREEZE_LINEAGE": "all 399 accepted identities map exactly, both neutral classes satisfy size/time gates, capacity/rank/cutoff invariants pass, and no outcome/performance file is read",
+    "REFINE": "a new outcome-blind engineering defect is diagnosed under a fresh identity",
+    "REJECT": "mapping, revised class feasibility, temporal presence, deterministic reconstruction, or outcome prohibition fails"
+  },
+  "forbidden": [
+    "future return, MFE, MAE, false-breakout, holding, exit, winner, or loser fields",
+    "reading NAV, execution, summary, or report outputs from temporary replays",
+    "using source-worktree event ledgers",
+    "changing max holdings or the strict candidate-vacancy boundary",
+    "changing any EXP-OBL-008 assignment",
+    "candidate-count, pressure, rank, or margin threshold search",
+    "assigning favorable or unfavorable lineage meaning",
+    "V1 modification",
+    "CY-011 access"
+  ],
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_selection_competition_feature_freeze_v2.py",
+      "sha256": "a3454c3911566f4d6d6abec5ff5e94d863efd7e949e250b9072d9d4da80d5bb4"
+    },
+    "base_construction_runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_selection_competition_feature_freeze.py",
+      "sha256": "f65f356de839783412a73a0123d8b22246f65f124de31b724ecc22cbc4a4f468"
+    },
+    "block_helper": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_selection_block_engine.py",
+      "sha256": "ae76d609edbcef9e513084bbcf20ba755651e701477cb4beccb8f46cd0011b83"
+    },
+    "canonical_engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "extended_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "extended_replay_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_extended_replay_preregistration.json",
+      "sha256": "1a42cd187f47f93086424d5fce975b50ab89106a4d48011490ce0e6d483a00cd"
+    },
+    "canonical_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "identity_projection_source": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "market_anchor": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "outcome_blind_daily_helper": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_outcome_blind_lineage_freeze.py",
+      "sha256": "d6bea6233ff1db8ec7004e1b438d87ebf95f6c7d7088c8800220ecb840002d7e"
+    },
+    "phase2_outcome_blind_helper": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_frozen_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    }
+  },
+  "output_contract": {
+    "feature_table": "research/chinext_v1/original_breakout_lineage/artifacts/selection_competition_features_v2.csv",
+    "audit": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-009_audit.json",
+    "lineage_freeze": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-009.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-009_selection_competition_freeze.md"
+  }
+}

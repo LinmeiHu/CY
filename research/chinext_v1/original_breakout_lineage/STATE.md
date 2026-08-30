@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_008_GATE_FAILED_CLEAN_REFINEMENT_SELECTED`
+`EXP_OBL_009_FROZEN_BEFORE_EVENT_REPLAY`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -110,8 +110,8 @@ failure, not economic evidence.
 
 ## Exact next action
 
-Create and commit fresh EXP-OBL-009 with fresh paths. Preserve the exact engine,
-population, event-only access, capacity boundary, assignments, and continuous
-context. Change only the outcome-blind feasibility gates to minimum 40 and
-maximum 90%, retaining six-year minimum presence. Reexecute and reproduce before
-any outcome reveal. Do not open CY-011.
+Execute fresh EXP-OBL-009 with the exact engine, population, event-only access,
+capacity boundary, assignments, and continuous context. Only the outcome-blind
+feasibility gates are 40/90%, with six-year minimum presence unchanged. If all
+gates pass, reproduce byte-for-byte and commit the lineage freeze before any
+outcome reveal. Do not open CY-011.

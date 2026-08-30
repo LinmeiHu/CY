@@ -123,6 +123,10 @@ outcome was read. EXP-OBL-009 may therefore preserve every scientific and
 engineering definition and change only minimum size 50 to 40 and maximum share
 85% to 90%. The exact contested boundary cannot change.
 
+EXP-OBL-009 is frozen under fresh runner/output identities. It changes no
+scientific definition or assignment and will be the only accepted freeze if the
+40/90% feasibility gates pass reproducibly.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,
