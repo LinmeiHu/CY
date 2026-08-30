@@ -175,3 +175,11 @@ representations freeze.
 
 No. Continue with MKT-RISK-001 map-first representation research. CY-011 remains
 unopened.
+
+MKT-RISK-001 is now frozen before construction under spec `7b5303c3...`. Its
+map keeps positive and negative participation/tails separate; uses actual
+registered 5%/10%/20% limit geometry rather than a fixed raw-return cutoff;
+preserves absolute, causal PIT, and governed-view relative coordinates; and
+binds only the accepted frozen breadth/volatility roles as redundancy controls.
+Invalid limit geometry fails closed without clipping or tolerance. Run the
+frozen construction twice and accept no non-byte-identical result.

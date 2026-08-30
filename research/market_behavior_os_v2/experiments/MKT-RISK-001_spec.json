@@ -1,0 +1,118 @@
+{
+  "experiment_id": "MKT-RISK-001",
+  "frozen_at": "2026-08-30",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CONSTRUCTION_RESULT",
+  "question": "Can positive/negative participation, signed tail depth, limit-relative extreme participation, directional industry diffusion, same-day tail concentration, and risk-appetite asymmetry be represented stably as strategy-independent market state?",
+  "research_role": "outcome-blind representation construction and redundancy compression only",
+  "usefulness_boundary": "No panic, capitulation, speculation, continuation, reversal, forecast, habitat, interaction, or strategy claim is permitted.",
+  "input": {
+    "asset_id": "CY-006",
+    "registry_path": "configs/data_asset_registry.json",
+    "source_root": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "selected_partition_sha256": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "source_start": "2018-01-02",
+    "source_end": "2023-12-29",
+    "outcome_blind_audit_rows": 6155390,
+    "outcome_blind_audit_duplicate_keys": 0,
+    "outcome_blind_audit_time_travel_rows": 0,
+    "outcome_blind_audit_hard_valid_ohlc_failures": 0
+  },
+  "pit": {
+    "decision_at": "completed official close at 15:00 Asia/Shanghai",
+    "record_gate": "available_at <= decision_at",
+    "first_actionable_time": "later causally valid session; this experiment creates no action",
+    "pit_grade": "bounded PIT-B",
+    "unknown_required_fact": "missing and fail closed"
+  },
+  "universe": {
+    "primary": "same causal 120-session strategy-independent A-share core as MKT-BRTH-002; ST retained",
+    "sensitivity": "same core with current is_st=false",
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "minimum_counts": {"ALL_A": 1000, "SH_A": 400, "SZ_A": 400, "CHINEXT_BOARD": 200},
+    "limit_eligible_fraction_minimum": 0.99,
+    "industry_mapping_minimum": 0.8,
+    "industry_member_minimum": 5,
+    "industry_count_minimum": 10,
+    "no_strategy_membership": true
+  },
+  "security_coordinate": {
+    "name": "signed_limit_utilization",
+    "positive": "(close-preclose)/(up_limit_price-preclose)",
+    "negative": "-(preclose-close)/(preclose-down_limit_price)",
+    "registered_limit_pct": [0.05, 0.1, 0.2],
+    "valid_range": [-1.0, 1.0],
+    "no_clipping_or_tolerance": true
+  },
+  "representations": {
+    "central_direction": {"primary": "median_signed_limit_utilization", "neighbors": ["q40_signed_limit_utilization", "q60_signed_limit_utilization"]},
+    "upside_participation": {"primary": "upside_participation_gt0", "neighbors": ["upside_participation_gt05", "upside_participation_gt10"]},
+    "downside_participation": {"primary": "downside_participation_lt0", "neighbors": ["downside_participation_lt05", "downside_participation_lt10"]},
+    "upside_tail_depth": {"primary": "upside_tail_depth_q90", "neighbors": ["upside_tail_depth_q80", "upside_tail_depth_q95"]},
+    "downside_tail_depth": {"primary": "downside_tail_depth_q10", "neighbors": ["downside_tail_depth_q20", "downside_tail_depth_q05"]},
+    "upside_extreme_participation": {"primary": "upside_extreme_participation_70", "neighbors": ["upside_extreme_participation_50", "upside_extreme_participation_90"]},
+    "downside_extreme_participation": {"primary": "downside_extreme_participation_70", "neighbors": ["downside_extreme_participation_50", "downside_extreme_participation_90"]},
+    "upside_leadership_concentration": {"primary": "upside_mass_share_top10", "neighbors": ["upside_mass_share_top05", "upside_mass_share_top20"]},
+    "downside_pressure_concentration": {"primary": "downside_mass_share_worst10", "neighbors": ["downside_mass_share_worst05", "downside_mass_share_worst20"]},
+    "directional_industry_diffusion": {"primary": "industry_positive_median_fraction", "neighbors": ["industry_positive_mean_fraction", "industry_positive_participation_fraction"]},
+    "tail_risk_appetite_balance": {"primary": "tail_risk_appetite_balance_70", "neighbors": ["tail_risk_appetite_balance_50", "tail_risk_appetite_balance_90"]}
+  },
+  "coordinates": {
+    "absolute": "raw fraction, signed/positive-valued depth, mass share, or equal-industry fraction",
+    "pit_expanding_percentile": "causal within-view/denominator expanding percentile including current; minimum 504 observations",
+    "pit_3y_percentile": "causal trailing 756-session percentile including current; minimum 504 observations",
+    "pit_3y_robust_z": "causal trailing 756-session median/MAD z; minimum 504; zero MAD missing",
+    "relative": "same-date view minus ALL_A and rank across at least three governed views"
+  },
+  "frozen_external_controls": {
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "columns": ["breadth_net_new_high_low60", "leadership_positive_mass_top10"]
+    },
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc",
+      "columns": ["realized_volatility_median20", "intraday_range_median_smooth5", "volatility_mass_share_top10", "realized_volatility_change5"]
+    },
+    "excluded_until_later": ["MKT-SHOCK-001 joint score", "strategy outcomes", "future returns"]
+  },
+  "gates": {
+    "daily_limit_eligible_fraction": 0.99,
+    "raw_coverage": 0.95,
+    "worst_median_neighbor_spearman": 0.7,
+    "all_status_vs_non_st_median_spearman": 0.9,
+    "view_year_minimum_observations": 150,
+    "all_eligible_view_year_cells_nondegenerate": true,
+    "pit_and_relative_expected_coverage": 0.95,
+    "latent_component_edge_absolute_spearman": 0.85,
+    "external_redundancy_edge_median_absolute_spearman": 0.85,
+    "minimal_panel_priority": ["central_direction", "upside_participation", "downside_participation", "upside_tail_depth", "downside_tail_depth", "upside_extreme_participation", "downside_extreme_participation", "upside_leadership_concentration", "downside_pressure_concentration", "directional_industry_diffusion", "tail_risk_appetite_balance"],
+    "signed_pair_rule": "Upside and downside counterparts remain separately reported and are not collapsed solely because of high negative correlation.",
+    "no_rescue": "A failed primary is not replaced by a favorable threshold, quantile, denominator, view, or year."
+  },
+  "forbidden_inputs": [
+    "strategy membership, signal, trade, return outcome, MFE, MAE, exit, or outcome class",
+    "future return or post-decision path",
+    "current constituent or survivor lists",
+    "unregistered participant identity, fund flow, sentiment, or market-rule repair",
+    "MKT-SHOCK-001 score before MKT-RISK-001 roles freeze",
+    "CY-011",
+    "CY-006 partitions after 2023"
+  ],
+  "engineering": {"duckdb_threads": 1, "deterministic_reruns_required": 2},
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-RISK-001_risk_appetite_representation.md"
+  ]
+}

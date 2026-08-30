@@ -114,3 +114,16 @@
   forecast, habitat, or strategy claim freezes. Do not lower the threshold or
   replace the primary with the permissive neighbor. The broader process family
   remains open under structurally different representations.
+
+## MKT-H-009 — directional-tail and risk-appetite state
+
+- Status: `FROZEN_BEFORE_REPRESENTATION_CONSTRUCTION`.
+- Claim: same-session positive/negative participation, signed tail depth,
+  limit-relative extreme participation, directional industry diffusion, tail
+  concentration, and asymmetry can be represented independently of strategy
+  outcomes.
+- Contract: MKT-RISK-001 uses actual registered date-effective limit geometry,
+  fixed symmetric thresholds/quantiles, causal PIT and governed-view relative
+  coordinates, and frozen breadth/volatility redundancy controls.
+- Boundary: no panic, forecast, habitat, interaction, or strategy claim; no
+  MKT-SHOCK-001 score enters construction.

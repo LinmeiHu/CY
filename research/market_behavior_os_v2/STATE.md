@@ -8,7 +8,7 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-008_COMPLETE_MKT-RISK-001_NEXT`
+- `CURRENT_PHASE`: `MKT-RISK-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
 - `CURRENT_PRIMARY_FRONTIER`: strategy-independent directional tail/risk-appetite representation
 - `SUPPORTING_FRONTIER`: frozen direction-neutral stress scores and failed exact episode
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -195,3 +195,11 @@ limit-relative extreme participation, upside/downside asymmetry, industry
 diffusion, and leadership concentration where registered data permits; preserve
 absolute/PIT/relative coordinates; test neighboring definitions and redundancy
 with breadth/volatility; and read no future return or strategy outcome.
+
+The MKT-RISK-001 Representation Map, data contract, symmetric limit-relative
+definitions, representation gates, and frozen external breadth/volatility
+controls are preregistered under spec `7b5303c3...`. Construction has not yet
+run. The security coordinate uses registered date-effective upward/downward
+price-limit distance and fails closed—without clipping or tolerance—when the
+registered geometry is invalid. The direction-neutral MKT-SHOCK-001 score
+remains excluded.
