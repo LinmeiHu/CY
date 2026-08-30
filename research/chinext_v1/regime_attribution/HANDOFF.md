@@ -2,7 +2,7 @@
 
 ## Status
 
-`EXP-SLF-001_COMPLETE_SUPPORTED_WITH_QUALIFICATION` on 2026-08-30.
+`EXP-SLP-001_PREREGISTERED` on 2026-08-30.
 
 H-020 was cleanly rejected by EXP-RTD-002. The supplemental intraday frontier was
 integrated, ranked first, and tested as H-021. EXP-IBQ-001 preserved one frozen
@@ -64,6 +64,14 @@ rhos are 0.321/0.337 with 8/8 LOYO; Day2/Day5/beta neighbors are
 security, and industry attacks pass. Two runs are byte-identical. This locates
 severe-loss separation but is embedded in terminal loss. Next preregister a
 multiplicative post-Day3 residual-failure falsification; do not create a stop.
+
+EXP-SLP-001 now freezes that falsification under spec SHA `a3de22a5...`. The
+primary is the unchanged H-023 Day-3 adverse feature against multiplicatively
+residual future failure in the same 356 actual survivors. Day2/Day5/beta
+neighbors, H-014 non-persistence, market/entry state, LOYO, blocks,
+duration/exit, tails, securities, and industries are fixed attacks. All sample
+counts and return-domain invariants reconcile, and fresh outputs are absent.
+Execute without changing any definition or creating a stop/exit rule.
 
 EXP-SLF-001 is the latest completed valid experiment. EXP-WLA-001's fixed
 pre-entry demand/compression mechanism remains rejected after 399 complete

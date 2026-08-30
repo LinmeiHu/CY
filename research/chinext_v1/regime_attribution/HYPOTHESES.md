@@ -493,3 +493,30 @@ byte-consistent with one another.
   survivor-conditioned. The next required falsification is whether it explains
   additional post-Day3 failure after removing the Day-3 arithmetic contribution.
   No stop, exit, threshold, replay, or V1 modification is authorized.
+
+### H-024 — post-Day-3 residual failure persistence
+
+- Question: after removing the accepted Day-3 return multiplicatively from
+  terminal return, does frozen H-023 adversity precede additional subsequent
+  failure?
+- Mechanism: if H-023 identifies persistent demand failure rather than merely
+  loss already realized by Day 3, greater stock-specific Day-3 adversity should
+  be followed by worse residual return under the frozen subsequent path.
+- Prediction: `adverse_stock_specific_3d` has positive raw, controlled, temporal,
+  and LOYO association with `future_failure_after_3d`; fixed Day-2, Day-5, and
+  beta-adjusted attacks retain the direction.
+- Required data: accepted H-023 table/result, frozen H-023 feature and controls,
+  accepted H-014 Day-5 non-persistence, and the actual frozen terminal exit path.
+- Primary test: one multiplicative identity,
+  `future_failure_after_3d = -((1 + round_trip_return) / (1 + return_3d) - 1)`,
+  among the fixed 356 actual Day-3 survivors.
+- Falsification: within-year ranks, eight LOYO omissions, three blocks,
+  market/pre-entry and duration/exit controls, Day-2/Day-5/beta neighbors,
+  Bottom-4 and severe-loss removals, securities, and industries.
+- Metrics: raw and partial-rank associations with fixed gates in
+  `EXP-SLP-001_spec.json` SHA `a3de22a5...`.
+- Confounds: actual-path residual failure remains survivor-conditioned and does
+  not identify the counterfactual return from an earlier exit. AVAILABLE_AT is
+  Day-3 15:30; no stop, hold, exit, threshold, replay, or action is authorized.
+- Status: `PREREGISTERED_UNRESOLVED`. EXP-SLP-001 is frozen before its first
+  residual-failure association.

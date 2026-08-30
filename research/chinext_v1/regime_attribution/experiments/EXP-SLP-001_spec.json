@@ -1,0 +1,129 @@
+{
+  "experiment_id": "EXP-SLP-001",
+  "spec_id": "CHINEXT-V1-POST-DAY3-RESIDUAL-FAILURE-2018-2025-V1",
+  "status": "FROZEN_BEFORE_FIRST_RESIDUAL_FAILURE_TEST",
+  "created_on": "2026-08-30",
+  "hypothesis_id": "H-024",
+  "evidence_grade": "EXPLORATORY_HOLDING_PATH_FALSIFICATION",
+  "question": "After removing the accepted Day-3 return multiplicatively from terminal return, does the frozen H-023 adverse state precede additional post-Day-3 failure?",
+  "mechanism": "If H-023 identifies an adverse state that persists rather than merely the arithmetic portion of loss already realized by Day 3, greater stock-specific Day-3 adversity should be followed by worse residual return under the frozen subsequent holding and exit path.",
+  "prediction": "Frozen adverse_stock_specific_3d is positively and stably associated with future_failure_after_3d, raw and after concurrent market plus frozen pre-entry controls. Day-2, Day-5, and beta-adjusted definitions retain the same direction as fixed attacks.",
+  "interpretation_boundary": "Residual failure is observed under the actual frozen exit path and is survivor-conditioned at each landmark. Association can distinguish localization from persistence but cannot establish counterfactual benefit or authorize a stop, hold, exit, threshold, replay, or production rule.",
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_post_day3_residual_failure.py",
+      "sha256": "b5c37bf09428aee650a4f85dce3c5150c1176a477ae1b569fc3e96dcfe1962e0"
+    },
+    "runner_test": {
+      "path": "research/chinext_v1/regime_attribution/tests/test_post_day3_residual_failure.py",
+      "sha256": "8425458f53df9ecf44952e4bde8cc2714b84761573e058a1ef2bee0446573190"
+    },
+    "accepted_h023_table": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/early_severe_loss_formation.csv",
+      "sha256": "87f2313f01a5ffce8724cbc8a5fa99df6f075a7674c9eee4eb053c7a342a1327"
+    },
+    "accepted_h023_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/early_severe_loss_formation.json",
+      "sha256": "daf34cb63907202b4acf75d8e426cc3e4fbdfc9c99bb723cfd54eac3b2816343"
+    },
+    "accepted_h023_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-SLF-001_spec.json",
+      "sha256": "592f428988839b59a2f7232bc81088c8fe18ede318d90df406a064ea2b332e5d"
+    },
+    "accepted_h023_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_early_severe_loss_formation.py",
+      "sha256": "77a738c58cce11da0a9e25b616101621ef5a68b76e3b3029df9adb575a9179d4"
+    },
+    "accepted_h014_result": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/post_landmark_persistence.json",
+      "sha256": "5fb7c974c637d116a4cebf99c110cd9ffc14214d894d386a442a0762fee303f5"
+    },
+    "accepted_h014_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-PLP-001_spec.json",
+      "sha256": "9b7b1c9b8bb8ad7af7bf8a8c7fa8a8f8f38079486db3662754f23d419d70bf76"
+    },
+    "accepted_partial_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_day5_market_stock_decomposition.py",
+      "sha256": "8a68d68d87b764f214aa0ccf03e5eb9f31ecd932d0ccc925c77d97711c8e908a"
+    },
+    "accepted_rank_runner": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_winner_loser_trajectory_archaeology.py",
+      "sha256": "7806faed2bb6b558e4862f5e04ff5b5b710db893961703ad1330cbc8fd4194c2"
+    }
+  },
+  "sample": {
+    "cycles": 399,
+    "day2_residuals": 399,
+    "day3_residuals": 356,
+    "day5_residuals": 295,
+    "day3_fixed_control_complete": 342,
+    "day3_severe_losses": 42,
+    "eligibility": "Primary requires an actually observed third held-session close under frozen V1. Day-2 and Day-5 neighbors use their fixed actual-survivor populations. No post-exit extension, counterfactual survival, or imputation."
+  },
+  "return_identity": "residual_return_after_d = (1 + round_trip_return) / (1 + return_d) - 1; future_failure_after_d = -residual_return_after_d",
+  "primary_feature": "frozen H-023 adverse_stock_specific_3d",
+  "primary_endpoint": "multiplicatively residual future failure after Day 3 under the actual frozen exit path",
+  "fixed_neighbors": {
+    "day2_all_cycles": "adverse_stock_specific_2d versus future_failure_after_2d in all 399 cycles",
+    "day5_survivors": "adverse_stock_specific_5d versus future_failure_after_5d in 295 actual survivors; fixed against accepted H-014 Day-5 non-persistence",
+    "day3_beta_adjusted": "adverse_beta_adjusted_3d versus future_failure_after_3d"
+  },
+  "fixed_controls": {
+    "continuous_ranked": [
+      "market_day3_log_return",
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_box_width",
+      "entry_minvol_location",
+      "entry_breakout_volume_ratio",
+      "index_return_20d",
+      "index_realized_vol20",
+      "breadth_composite",
+      "entry_beta60",
+      "entry_log_amount20"
+    ],
+    "categorical": ["entry_year"],
+    "post_outcome_sensitivity_only": ["holding_trading_days", "canonical_exit_reason"]
+  },
+  "gates": {
+    "raw": "Day-3 rho >=0.10, positive within-year rank rho, and >=7/8 positive LOYO estimates",
+    "controlled": "partial-rank rho >=0.10 after concurrent market and frozen pre-entry controls, with >=7/8 positive LOYO estimates",
+    "neighbors": "Day-2, Day-5, and beta-adjusted Day-3 rhos positive with >=6/8 positive LOYO estimates",
+    "temporal": "all three block rhos estimable, >=2/3 positive, and none negative",
+    "falsification": "holding-duration/exit partial rho >=0.08; ex-Bottom-4-PnL and ex-severe-loss rhos positive; >=80% positive leave-one-security and leave-one-industry omissions",
+    "decision": {
+      "DEEPEN": "all five gates pass",
+      "REFINE": "raw and controlled pass but a neighbor, temporal, or falsification gate fails",
+      "PIVOT": "raw passes but controlled fails",
+      "REJECT": "raw gate fails"
+    }
+  },
+  "available_at_timestamp": "DAY3_SESSION_15:30_ASIA_SHANGHAI",
+  "potential_action_timestamp": "NEXT_VALID_SESSION_OR_LATER_ONLY; EXPLANATORY_TEST_AUTHORIZES_NO_ACTION",
+  "falsification": [
+    "exact multiplicative decomposition, with every observed terminal and landmark return strictly greater than -100%",
+    "eight LOYO omissions and within-year ranks",
+    "three pre-audited endpoint-varying temporal blocks",
+    "Day-2 all-cycle, Day-5 survivor, and beta-adjusted Day-3 neighboring definitions",
+    "accepted H-014 Day-5 non-persistence bound as a fixed prior attack",
+    "concurrent market and frozen pre-entry V1/market/breadth/beta/liquidity controls",
+    "holding-duration and exit-reason mechanical sensitivity",
+    "Bottom-4 PnL removal and removal of all fixed severe-loss outcomes",
+    "security and industry concentration",
+    "zero post-exit prices, counterfactual returns, imputation, strategy replay, or rule testing"
+  ],
+  "forbidden": [
+    "changing the Day-3 landmark, residual identity, feature, endpoint, controls, gates, or population after results",
+    "searching alternate horizons, return thresholds, stop levels, or timing rules",
+    "calling actual-path residual association a causal or deployable exit signal",
+    "stop, hold, exit, ranking, sizing, exposure, replay, or production modification",
+    "revisiting H-018, H-019, H-021, H-022, or H-023 definitions",
+    "invalid Phase 7/8/9 use"
+  ],
+  "outputs": [
+    "artifacts/post_day3_residual_failure.csv",
+    "artifacts/post_day3_residual_failure.json",
+    "reports/post_day3_residual_failure.md",
+    "reports/post_day3_residual_failure_evidence_packet.md"
+  ]
+}

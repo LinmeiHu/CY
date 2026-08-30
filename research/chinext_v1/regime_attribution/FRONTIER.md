@@ -38,7 +38,7 @@ independent STOP condition.
 
 ## Current decision
 
-`DEEPEN_H023_WITH_POST_DAY3_RESIDUAL_FAILURE_FALSIFICATION`.
+`EXECUTE_PREREGISTERED_H024_POST_DAY3_RESIDUAL_FAILURE_FALSIFICATION`.
 
 Breadth historical optimization is closed and H-004 is
 `PROSPECTIVE_VALIDATION_PENDING`. EXP-WLA-001 rejects the stock-level
@@ -66,10 +66,10 @@ session available at 15:30 and applicable only at T+1 or later.
 
 ## Exact next action
 
-Preregister the minimum-sufficient post-Day3 residual-failure falsification.
-Remove the accepted Day-3 return multiplicatively from terminal return and test
-whether the frozen H-023 adverse path explains additional subsequent failure
-after Day-3 and fixed entry state. Preserve the 356 survivors, Day-3 feature,
-controls, timing, and explanatory-only boundary. Bind the already-known Day-5
-non-persistence result as a fixed attack. Do not change the landmark, search a
-stop threshold, retest H-019, or create an exit rule.
+Execute frozen EXP-SLP-001 under spec SHA `a3de22a5...`. It removes the accepted
+Day-3 return multiplicatively and tests whether the unchanged H-023 adverse path
+explains additional subsequent failure after Day 3 and fixed entry state. The
+356-survivor population, feature, controls, timing, gates, and explanatory-only
+boundary are frozen; accepted H-014 Day-5 non-persistence is a bound attack. Do
+not change the landmark, search a stop threshold, retest H-019, or create an exit
+rule.

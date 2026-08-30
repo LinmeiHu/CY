@@ -2,8 +2,9 @@
 
 ## CURRENT_PHASE
 
-EXP-SLF-001_COMPLETE_SUPPORTED — H-023 locates stable severe-loss separation by
-Day 3, but remains outcome-overlapping and cannot support a stop or exit rule.
+EXP-SLP-001_PREREGISTERED — H-024 is frozen before its first residual-failure
+association. H-023 locates stable severe-loss separation by Day 3, but remains
+outcome-overlapping and cannot support a stop or exit rule.
 EXP-D5D-003 refined H-022 without a trading action.
 EXP-IBQ-002 rejected H-021; EXP-IBQ-001 remains invalid with no estimate.
 EXP-RTD-002 rejected H-020; EXP-RTD-001 remains invalid.
@@ -858,6 +859,29 @@ authorization, a new experiment ID, and fresh isolated outputs.
 - Because Day-3 return is embedded in terminal loss and conditions on survival,
   the next high-value falsification removes the Day-3 arithmetic contribution
   and tests additional post-Day3 failure. No stop/exit or strategy rule follows.
+
+## AUTONOMOUS_CYCLE_EXP_SLP_001_PREREGISTRATION
+
+- H-024 freezes the multiplicative residual identity before any association:
+  `future_failure_after_3d = -((1 + round_trip_return) / (1 + return_3d) - 1)`.
+- The unchanged primary feature is H-023's `adverse_stock_specific_3d`; the
+  primary population remains the 356 actual Day-3 survivors, including 42 severe
+  losses and 342 complete-control rows.
+- Day-2 all-cycle (399), Day-5 actual-survivor (295), and Day-3 beta-adjusted
+  definitions are fixed neighbors. Accepted H-014 Day-5 non-persistence is bound
+  as a prior attack, not reopened.
+- All terminal and eligible landmark returns are strictly greater than -100%; the
+  multiplicative identity is therefore defined. Trade IDs are unique, all sample
+  counts match H-023, and all fresh outputs are absent before execution.
+- Frozen controls and attacks cover concurrent 399102 return, entry state, years,
+  LOYO, blocks, duration/exit, Bottom-4 PnL, ex-severe losses, securities, and
+  industries. No post-exit price, counterfactual survival, imputation, replay,
+  threshold, or action is permitted.
+- AVAILABLE_AT is Day-3 15:30 Asia/Shanghai; potential action is next valid
+  session or later, but the experiment authorizes no action.
+- Spec SHA `a3de22a582dc54de12838b0e07c59937d6e0fe2c4041d6f3c28d12386fc6c30b`;
+  runner SHA `b5c37bf09428aee650a4f85dce3c5150c1176a477ae1b569fc3e96dcfe1962e0`.
+  Status is frozen before the first residual-failure test.
 
 ## DO_NOT_REVISIT_WITHOUT_NEW_EVIDENCE
 
