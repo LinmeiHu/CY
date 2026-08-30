@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "EXP-OBL-001",
+  "hypothesis_id": "H-OBL-002",
+  "status": "FROZEN_BEFORE_OUTCOME_REVEAL",
+  "evidence_grade": "EXPLORATORY_OUTCOME_BLIND_LINEAGE_CONSTRUCTION_BOUNDED_PIT_B",
+  "question": "Can a compact, interpretable set of canonical V1 breakout-formation lineages be constructed reproducibly without post-entry outcomes?",
+  "mechanism": "The original V1 breakout event may arrive through different combinations of base repair/compression and price acceptance above its objective prior-60 close reference. These structures are defined without asserting which one will perform better.",
+  "outcome_access": false,
+  "outcome_prohibition": [
+    "future return",
+    "MFE",
+    "MAE",
+    "future false-breakout status",
+    "holding result or duration",
+    "exit result or reason",
+    "winner or loser class",
+    "future drawdown or continuation"
+  ],
+  "population": {
+    "identity_source": "accepted 399 unique completed-cycle entry identities only; source columns are projected with pandas usecols",
+    "expected_events": 399,
+    "years": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "event_key": ["baseline_block", "symbol", "entry_signal_date"],
+    "qualification": "Population is conditioned on accepted completed V1 entries and is bounded PIT-B, not strict archival PIT-A. Completion does not enter feature values or lineage assignment."
+  },
+  "canonical_event": {
+    "reference": "maximum adjusted-coordinate close over t-60..t-1, converted exactly to signal-session raw-price coordinates",
+    "predicate": "signal adjusted close strictly exceeds the prior-60 close reference",
+    "decision_at": "entry_signal_date 15:30:00 Asia/Shanghai",
+    "potential_action_timestamp": "entry_execution_date open or later",
+    "same_session_action": "FORBIDDEN"
+  },
+  "daily_representation": {
+    "history": "80 contiguous critical-valid sessions ending on signal t with every action-coordinate step valid",
+    "base_window": "t-20..t-1, divided into fixed first and last ten-session halves",
+    "support_shift20": "log(min adjusted low in last ten / min adjusted low in first ten)",
+    "resistance_shift20": "log(max adjusted high in last ten / max adjusted high in first ten), descriptive only",
+    "range_contraction20": "log(first-ten normalized range width / last-ten normalized range width)",
+    "volatility_contraction20": "sample standard deviation of first-half action-safe log returns minus last-half standard deviation",
+    "downside_amount_contraction20": "first-half fraction of amount on negative-return sessions minus last-half fraction, descriptive only",
+    "reference_context": "fixed 2% prior-close test count, sessions since latest reference close, and t-1 distance from reference are descriptive only"
+  },
+  "intraday_representation": {
+    "primary_grid": "240 continuous one-minute bars; 09:30 auction is audited but excluded from primary path",
+    "first_cross": "first continuous bar with high strictly above the canonical raw reference",
+    "time_above_reference": "fraction of post-cross closes above reference plus half weight for exact equality",
+    "close_reference_retention": "(final close - reference) / (post-cross session high - reference)",
+    "below_reference_resilience": "one minus post-cross fraction of closes at or below reference",
+    "descriptive": [
+      "post-cross volume fraction above reference",
+      "reference loss count",
+      "longest below-reference run",
+      "post-cross maximum drawdown"
+    ],
+    "neighbor": "the identical path construction on deterministic session-aware five-minute aggregation"
+  },
+  "lineage_algorithm": {
+    "method": "fixed rule-based 2x2 neutral hierarchy",
+    "normalization": "average-tie percentile ranks computed separately within each entry year",
+    "base_repair_score": "equal-weight mean of support_shift20, range_contraction20, and volatility_contraction20 percentile ranks",
+    "breakout_acceptance_score": "equal-weight mean of time_above_reference, close_reference_retention, and below_reference_resilience percentile ranks",
+    "fixed_split": 0.5,
+    "tie_rule": "score equal to 0.50 is HIGH",
+    "lineage_ids": [
+      "L00_BASE_LOW_ACCEPTANCE_LOW",
+      "L01_BASE_LOW_ACCEPTANCE_HIGH",
+      "L10_BASE_HIGH_ACCEPTANCE_LOW",
+      "L11_BASE_HIGH_ACCEPTANCE_HIGH"
+    ],
+    "missing_data": "no imputation; any missing critical feature fails the experiment",
+    "lineage_meaning": "neutral structure only; IDs contain no favorable or unfavorable outcome claim"
+  },
+  "construction_falsification": {
+    "neighbor_base": "remove volatility_contraction20 from the base score",
+    "neighbor_intraday": "replace one-minute reference path with exact five-minute aggregation",
+    "temporal": "all four lineages must occur in every entry year",
+    "concentration": "no lineage may dominate the population",
+    "determinism": "a second full run must produce byte-identical feature, assignment, audit, and freeze files"
+  },
+  "construction_gates": {
+    "minimum_lineage_size": 30,
+    "maximum_lineage_fraction": 0.45,
+    "minimum_lineage_count_per_year": 2,
+    "minimum_neighbor_assignment_agreement": 0.65
+  },
+  "decision": {
+    "FREEZE_LINEAGE": "all construction, PIT, coverage, class-balance, temporal-presence, neighboring-assignment, and determinism gates pass",
+    "REFINE": "a clearly diagnosed outcome-blind definition or stability problem is repairable without any outcome access under a new identity",
+    "REJECT": "the fixed taxonomy collapses or is unstable and no minimum-sufficient outcome-blind refinement is justified"
+  },
+  "immutable_scientific_elements": [
+    "population",
+    "event and reference definition",
+    "daily and intraday feature formulas",
+    "outcome prohibition",
+    "normalization",
+    "four lineage IDs",
+    "fixed split and tie rule",
+    "missing-data policy",
+    "neighbor definitions",
+    "construction gates",
+    "timing and interpretation boundaries"
+  ],
+  "input_bindings": {
+    "runner": {
+      "path": "research/chinext_v1/original_breakout_lineage/scripts/run_outcome_blind_lineage_freeze.py",
+      "sha256": "d6bea6233ff1db8ec7004e1b438d87ebf95f6c7d7088c8800220ecb840002d7e"
+    },
+    "canonical_strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "canonical_replay": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "canonical_policy": {
+      "path": "research/chinext_v1/scripts/chinext_v1_ablation.py",
+      "sha256": "12fe1b6b9f4577540079f602bc7df73d88a435a9d1f1fbe336d2b18a3d8e1fda"
+    },
+    "identity_projection_source": {
+      "path": "research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv",
+      "sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb"
+    },
+    "phase2_outcome_blind_helper": {
+      "path": "research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py",
+      "sha256": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50"
+    },
+    "phase2_frozen_spec": {
+      "path": "research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json",
+      "sha256": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7"
+    },
+    "extended_materializer": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3bb3dd4943c3ead1ee0e"
+    },
+    "development_membership": {
+      "path": "research/chinext_v1/data/pit_2024_2025/daily_membership.parquet",
+      "sha256": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "qd004_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+      "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+    },
+    "cy008_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+      "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"
+    },
+    "cy008_cross_year_audit": {
+      "path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json",
+      "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"
+    }
+  },
+  "output_contract": {
+    "feature_table": "research/chinext_v1/original_breakout_lineage/artifacts/formation_features.csv",
+    "assignment_table": "research/chinext_v1/original_breakout_lineage/artifacts/lineage_assignments.csv",
+    "audit": "research/chinext_v1/original_breakout_lineage/artifacts/EXP-OBL-001_audit.json",
+    "lineage_freeze": "research/chinext_v1/original_breakout_lineage/lineage_freezes/LINEAGE-OBL-001.json",
+    "report": "research/chinext_v1/original_breakout_lineage/reports/EXP-OBL-001_outcome_blind_lineage_freeze.md"
+  }
+}
