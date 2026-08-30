@@ -953,3 +953,28 @@ relative geometry are required for unconditional roles; conditional roles use
 raw full plus 2018--2020/2021--2023 blocks with 30-row floors. Pairwise rho
 0.85 and joint adjusted-rank R2 0.70 full/0.85 maximum are strict boundaries.
 Execute twice without deleting controls or reading future/payoff fields.
+
+MKT-SUPPORT-GEO-001 completes and retains only recovery speed and recovery-
+volume intensity as externally distinct conditional observations. Their full
+adjusted rank R2 values against all fixed generic controls are -0.029 and 0.152;
+maximum fixed-block values are -0.004 and 0.373. All pairwise gates pass.
+
+Signed test geometry and its five-day slope collapse almost exactly into
+official daily-low distance and its slope. Closing-state slope collapses into
+official daily-close-distance slope. Recovery amplitude is jointly reconstructed
+by daily range, minute close location, and minute return (full/block adjusted R2
+0.903/0.921/0.892). Do not delete controls or count these as direct minute
+support mechanisms.
+
+Two complete content-verified runs are byte-identical: session `6b44079e...`,
+trajectory `34348e11...`, result `ba3fbfd3...`, report `b60512eb...`; ten focused
+support/geometry tests pass. This establishes fixed-control external geometry
+only. It does not establish defense, temporal recurrence, prediction, payoff,
+timing, habitat, or a strategy, and no future field or CY-011 was read.
+
+SYNTH-MKT-033 deepens only the two surviving recovery roles. The next action is
+map-first MKT-SUPPORT-DYN-DATA-001: freeze a larger calendar-distributed sample
+selected from CY-006 coordinate eligibility only, before minute behavior is
+read. It must support a falsifiable repeated-test/recovery dynamic without using
+the current 29-sequence shortfall, near-touch bands, favorable dates, strategy
+events, or outcome selection.

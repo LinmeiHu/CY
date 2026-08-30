@@ -474,3 +474,22 @@
   recovery strengthening/weakening remains `NOT_ESTIMABLE_SUPPORT` at 29<30.
 - Boundary: no role has external distinctness, PIT historical normalization,
   temporal meaning, support-defense truth, prediction, habitat, or usefulness.
+
+## MKT-H-030 — objective-recovery external geometry
+
+- Status: `TWO_CONDITIONAL_ROLES_EXTERNALLY_DISTINCT_TEMPORAL_MEANING_UNTESTED`.
+- Recovery speed passes against minute time of low, close location, and realized
+  volatility: adjusted rank R2 is -0.029 full and -0.034/-0.004 in fixed blocks.
+- Recovery-volume intensity passes against minute-volume Herfindahl, opening/
+  closing volume shares, and time of low: adjusted rank R2 is 0.152 full and
+  0.076/0.373 in fixed blocks.
+- Signed test geometry is almost identical to official daily-low distance; its
+  five-day slope is likewise redundant. Closing-state slope is almost identical
+  to daily-close-distance slope. Recovery amplitude is jointly reconstructed
+  by generic range/close-location/return geometry at adjusted R2 0.903 full and
+  0.921/0.892 by block.
+- Boundary: external distinctness is not support defense or a recurring process.
+  The current conditional trajectory has only 29 qualifying sequences. A new
+  sample must be frozen from calendar and daily eligibility before any minute
+  recovery outcome is observed; no payoff, habitat, timing, or strategy claim
+  exists.

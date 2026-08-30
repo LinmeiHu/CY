@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Four objective-level/recovery roles survive internal gates; support-specific distinctness is unknown | Execute frozen MKT-SUPPORT-GEO-001 fixed-control geometry |
+| EXPLORE | 35% | Recovery speed and recovery-volume intensity survive external geometry, but the temporal sample is inadequate | Freeze a larger calendar-distributed eligibility-only sample contract before minute recovery analysis |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 10% | Objective support defense could diversify pullback/reversal mechanisms if representation exists | Keep archetypes inactive until PIT representation and temporal meaning |
+| INVENT | 10% | Two recovery observations could diversify pullback/reversal mechanisms only if a repeated process survives | Keep archetypes inactive until temporal recurrence/failure evidence |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Style self/precursor processes both fail without rescue | Preserve closures; require objective-level semantics before any support claim |
+| FALSIFY | 20% | Three objective-level roles collapse into ordinary daily/minute geometry | Preserve compression; challenge the two survivors with repeated-test temporal definitions |
 
 Mandatory checkpoint questions:
 

@@ -61,6 +61,13 @@ estimable at its frozen support floor. Pullback/reversal remain inactive until
 external geometry and temporal evidence distinguish support behavior from
 ordinary daily/minute path.
 
+MKT-SUPPORT-GEO-001 retains recovery speed and recovery-volume intensity but
+compresses signed geometry, recovery amplitude, and both level slopes into
+ordinary daily/minute path. The two survivors still have no repeated temporal
+process, failure transition, payoff, trigger, or execution evidence. Pullback
+continuation and reversal remain `WAIT_FOR_MARKET_MECHANISM`; no prototype is
+authorized while a larger unbiased temporal sample is being established.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

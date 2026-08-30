@@ -99,6 +99,15 @@ MKT-H-024 circulating-size representation
   -> exact style temporal branch closes without more edges/horizons
   -> no size premium, habitat, timing, or strategy claim
 
+MKT-H-028 objective-support coordinate
+  -> CY-006 causal scale x QD-004 observed minute OHLC passes exact source-role audit
+  -> MKT-H-029 freezes four session roles and two stable shapes internally
+  -> time-below/recurrence fail definition support; recovery trajectory has 29<30 sequences
+  -> MKT-H-030 external geometry retains recovery speed and recovery-volume intensity
+  -> signed geometry/slopes and recovery amplitude compress into ordinary path geometry
+  -> larger calendar-distributed eligibility-only sample required before temporal process
+  -> no support defense, return, habitat, timing, or strategy claim
+
 HAB-H-001 CHINEXT direction/discovery association
   -> A and B opportunity-density associations pass
   -> fixed A+B incrementality only for evaluated/candidate daily counts

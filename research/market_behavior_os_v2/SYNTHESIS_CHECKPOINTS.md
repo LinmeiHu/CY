@@ -1413,3 +1413,52 @@ realized volatility, and volume concentration/intensity. Use role-specific
 controls, fixed pairwise/joint redundancy gates, and the existing support
 domains. Do not delete a control, pool unsupported conditional trajectories, or
 read future payoff.
+
+## SYNTH-MKT-033 — after objective-support external geometry
+
+### What was learned?
+
+The objective-level family compresses sharply. Signed test geometry and its
+five-day slope are essentially official daily-low distance; closing-state slope
+is official daily-close-distance; recovery amplitude is jointly ordinary range,
+close-location, and return geometry. Those exact roles are not incremental
+minute-support dimensions.
+
+Recovery speed and recovery-volume intensity remain distinct from every fixed
+generic alternative in both 2018--2020 and 2021--2023. Their maximum block joint
+adjusted rank R2 values are -0.004 and 0.373. This is external representation
+geometry only. It does not show repeated defense, strengthening, prediction, or
+economic value.
+
+### What market behavior are we still not studying?
+
+We still do not observe whether successive objective-level tests recover faster
+or with different recovery-period activity, whether later tests weaken and fail,
+whether these patterns recur across calendar periods and views, or whether
+resistance and support-to-resistance transitions behave symmetrically. PIT
+historical normalization, industry diffusion of recovery, breakout acceptance,
+accumulation/distribution, and executable outcomes remain absent.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Recovery timing and recovery-period volume are observations, not a recurring
+market process. Pullback continuation, reversal, and support-defense archetypes
+remain inactive. No CHINEXT modification or new prototype is authorized.
+
+### Parallel-track awareness
+
+- **Market research:** deepen the two distinct recovery roles through an
+  unbiased larger temporal sample and repeated-test falsification.
+- **Existing-strategy archaeology:** no strategy membership or outcome was read;
+  no CHINEXT rule changes.
+- **Strategy invention:** no active prototype; preserve pullback/reversal as
+  hypotheses until a portable temporal process exists.
+
+### Research Director decision
+
+`DEEPEN_OBJECTIVE_RECOVERY_TEMPORAL_SAMPLE`. Freeze MKT-SUPPORT-DYN-DATA-001
+before minute access. Select multiple calendar-distributed nonoverlapping
+five-session blocks and coordinate-eligible symbols using only the governed
+calendar and CY-006 history. Freeze resource, action, source-role, coverage, and
+minimum repeated-test support gates. Do not select dates/symbols from QD-004,
+lower the existing recovery floor, add a near-touch band, or read payoff.

@@ -1,0 +1,383 @@
+{
+  "cy011_read": false,
+  "direct_roles": [
+    "recovery_speed",
+    "recovery_volume_intensity"
+  ],
+  "experiment_id": "MKT-SUPPORT-GEO-001",
+  "external_distinctness_claim": "FIXED_CONTROL_GEOMETRY_ONLY",
+  "future_fields_read": [],
+  "hashes": {
+    "bound_inputs": {
+      "cy006_inventory": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "data_runner": "91dde0e182fa3418fae653e93f3e9a1e6058e5fdf5c48245190fd49388f01597",
+      "qd004_inventory": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c",
+      "registry": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+      "session_panel": "501194a74e30c523d100ac76edc8a4984821523a23063e89a441834e4194b23e",
+      "support_result": "cbb3f3a6e101757c5ef7e6d59e28b380a0e6044ce7cccf20815ef85e6c5cd06c",
+      "support_runner": "45d483250191d1bb86531d936487c521cf117dcc20430bea0a10f55f25cd4205",
+      "support_spec": "4c58431daa1a21268eedcb8d6ebc306aadfb4aac89f8c9218e956fc91e36bef4",
+      "trajectory_panel": "668005f76c383a4dc8ae9e9735f25c328a54a7ebf950482a82c430e0291bfae0"
+    },
+    "session_panel_sha256": "6b44079e7be07d39ae6ae902096351536fed364d0f0244487d83acedbfb90cc9",
+    "spec_sha256": "c828ed0e73a652ff6979067712fbd293e43f553e4dd3683e358db06504552ba1",
+    "trajectory_panel_sha256": "34348e118782d259e77778926ee8257fb27b83dfa29a3644f39195e8248ff94a"
+  },
+  "partition_content_hashes_verified": true,
+  "pit_historical_coordinate": "UNAVAILABLE_NOT_FABRICATED",
+  "post_2023_data_read": false,
+  "roles": {
+    "closing_level_state_trajectory": {
+      "controls": [
+        "daily_close_level_distance__slope5",
+        "daily_low_level_distance__slope5",
+        "minute_open_to_close_return__slope5"
+      ],
+      "coordinates": {
+        "raw": {
+          "coordinate": "raw",
+          "joint_adjusted_rank_r2_full": 0.9999321412266845,
+          "joint_adjusted_rank_r2_max_cell": 1.0,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_close_level_distance__slope5": {
+              "global_spearman": 0.9999661452308829,
+              "median_cell_absolute_spearman": 0.9999999999999999,
+              "pass": false
+            },
+            "daily_low_level_distance__slope5": {
+              "global_spearman": 0.8597874354534953,
+              "median_cell_absolute_spearman": 0.8727272727272726,
+              "pass": false
+            },
+            "minute_open_to_close_return__slope5": {
+              "global_spearman": 0.12567628156577437,
+              "median_cell_absolute_spearman": 0.36363636363636365,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 240
+        },
+        "relative_rank": {
+          "coordinate": "relative_rank",
+          "joint_adjusted_rank_r2_full": 1.0,
+          "joint_adjusted_rank_r2_max_cell": 1.0,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_close_level_distance__slope5": {
+              "global_spearman": 0.9999999999999998,
+              "median_cell_absolute_spearman": 0.9999999999999999,
+              "pass": false
+            },
+            "daily_low_level_distance__slope5": {
+              "global_spearman": 0.8272727272727272,
+              "median_cell_absolute_spearman": 0.8727272727272726,
+              "pass": false
+            },
+            "minute_open_to_close_return__slope5": {
+              "global_spearman": 0.3515151515151515,
+              "median_cell_absolute_spearman": 0.36363636363636365,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 240
+        }
+      },
+      "domain": "all_market_sequences",
+      "pass": false,
+      "target": "h20_closing_level_state__slope5"
+    },
+    "recovery_amplitude": {
+      "controls": [
+        "daily_range",
+        "minute_close_location",
+        "minute_open_to_close_return"
+      ],
+      "coordinates": {
+        "raw": {
+          "block_rows": {
+            "A": 72,
+            "B": 45
+          },
+          "coordinate": "raw",
+          "joint_adjusted_rank_r2_blocks": {
+            "A": 0.9214375279169191,
+            "B": 0.891620036262538
+          },
+          "joint_adjusted_rank_r2_full": 0.9031554656661785,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_range": {
+              "A": 0.22090190681798993,
+              "B": 0.6210803689064558,
+              "full": 0.3671080756055902,
+              "pass": true
+            },
+            "minute_close_location": {
+              "A": 0.8856529472369363,
+              "B": 0.6775160691483083,
+              "full": 0.8108368389785446,
+              "pass": false
+            },
+            "minute_open_to_close_return": {
+              "A": 0.4869193307370475,
+              "B": 0.6035573122529643,
+              "full": 0.5192527083786415,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 117
+        }
+      },
+      "domain": "tested_sessions",
+      "pass": false,
+      "target": "h20_cont_recovery_amplitude"
+    },
+    "recovery_speed": {
+      "controls": [
+        "minute_time_of_low",
+        "minute_close_location",
+        "minute_realized_volatility"
+      ],
+      "coordinates": {
+        "raw": {
+          "block_rows": {
+            "A": 64,
+            "B": 40
+          },
+          "coordinate": "raw",
+          "joint_adjusted_rank_r2_blocks": {
+            "A": -0.03371205808740574,
+            "B": -0.004179407424905968
+          },
+          "joint_adjusted_rank_r2_full": -0.028516856407213798,
+          "joint_pass": true,
+          "pairwise": {
+            "minute_close_location": {
+              "A": 0.04119914541819834,
+              "B": -0.14455672318300808,
+              "full": -0.035322534256788704,
+              "pass": true
+            },
+            "minute_realized_volatility": {
+              "A": 0.0767561551484348,
+              "B": -0.1328104039587355,
+              "full": 0.011184101826084161,
+              "pass": true
+            },
+            "minute_time_of_low": {
+              "A": -0.10054593340998154,
+              "B": 0.21961430260036355,
+              "full": 0.028598931526272225,
+              "pass": true
+            }
+          },
+          "pairwise_pass": true,
+          "pass": true,
+          "rows": 104
+        }
+      },
+      "domain": "tested_recovered_sessions",
+      "pass": true,
+      "target": "h20_cont_recovery_speed"
+    },
+    "recovery_volume_intensity": {
+      "controls": [
+        "minute_volume_herfindahl",
+        "minute_opening30_volume_share",
+        "minute_closing30_volume_share",
+        "minute_time_of_low"
+      ],
+      "coordinates": {
+        "raw": {
+          "block_rows": {
+            "A": 64,
+            "B": 40
+          },
+          "coordinate": "raw",
+          "joint_adjusted_rank_r2_blocks": {
+            "A": 0.07557062210235921,
+            "B": 0.37297789059027153
+          },
+          "joint_adjusted_rank_r2_full": 0.15224442537859706,
+          "joint_pass": true,
+          "pairwise": {
+            "minute_closing30_volume_share": {
+              "A": 0.04633699633699634,
+              "B": -0.1277673545966229,
+              "full": -0.04161954550304065,
+              "pass": true
+            },
+            "minute_opening30_volume_share": {
+              "A": 0.2889652014652014,
+              "B": 0.45909943714821777,
+              "full": 0.35817774458551166,
+              "pass": true
+            },
+            "minute_time_of_low": {
+              "A": -0.12846820968932354,
+              "B": -0.5891804899067697,
+              "full": -0.29145756758008123,
+              "pass": true
+            },
+            "minute_volume_herfindahl": {
+              "A": 0.27678571428571425,
+              "B": 0.18911819887429648,
+              "full": 0.22942494398805083,
+              "pass": true
+            }
+          },
+          "pairwise_pass": true,
+          "pass": true,
+          "rows": 104
+        }
+      },
+      "domain": "tested_recovered_sessions",
+      "pass": true,
+      "target": "h20_cont_recovery_volume_intensity"
+    },
+    "signed_test_geometry": {
+      "controls": [
+        "daily_low_level_distance",
+        "daily_close_level_distance",
+        "minute_time_of_low"
+      ],
+      "coordinates": {
+        "raw": {
+          "coordinate": "raw",
+          "joint_adjusted_rank_r2_full": 0.9997697043183169,
+          "joint_adjusted_rank_r2_max_cell": 1.0,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_close_level_distance": {
+              "global_spearman": 0.9470022689672162,
+              "median_cell_absolute_spearman": 0.9040530167934594,
+              "pass": false
+            },
+            "daily_low_level_distance": {
+              "global_spearman": 0.9998803523144496,
+              "median_cell_absolute_spearman": 0.9998799436212139,
+              "pass": false
+            },
+            "minute_time_of_low": {
+              "global_spearman": -0.04911911517431172,
+              "median_cell_absolute_spearman": 0.06856046911342244,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 1200
+        },
+        "relative_rank": {
+          "coordinate": "relative_rank",
+          "joint_adjusted_rank_r2_full": 0.9962846216017796,
+          "joint_adjusted_rank_r2_max_cell": 1.0,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_close_level_distance": {
+              "global_spearman": 0.9124242424242424,
+              "median_cell_absolute_spearman": 0.9175757575757576,
+              "pass": false
+            },
+            "daily_low_level_distance": {
+              "global_spearman": 0.998080808080808,
+              "median_cell_absolute_spearman": 1.0,
+              "pass": false
+            },
+            "minute_time_of_low": {
+              "global_spearman": -0.09879597396328872,
+              "median_cell_absolute_spearman": 0.1227846446101769,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 1200
+        }
+      },
+      "domain": "all_market_sessions",
+      "pass": false,
+      "target": "h20_cont_signed_test_geometry"
+    },
+    "signed_test_geometry_trajectory": {
+      "controls": [
+        "daily_low_level_distance__slope5",
+        "daily_close_level_distance__slope5",
+        "minute_intraday_range__slope5"
+      ],
+      "coordinates": {
+        "raw": {
+          "coordinate": "raw",
+          "joint_adjusted_rank_r2_full": 0.9996838520625422,
+          "joint_adjusted_rank_r2_max_cell": 1.0,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_close_level_distance__slope5": {
+              "global_spearman": 0.8616520519679386,
+              "median_cell_absolute_spearman": 0.8727272727272726,
+              "pass": false
+            },
+            "daily_low_level_distance__slope5": {
+              "global_spearman": 0.9998324622964211,
+              "median_cell_absolute_spearman": 0.9999999999999999,
+              "pass": false
+            },
+            "minute_intraday_range__slope5": {
+              "global_spearman": -0.11491827762560008,
+              "median_cell_absolute_spearman": 0.3878787878787879,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 240
+        },
+        "relative_rank": {
+          "coordinate": "relative_rank",
+          "joint_adjusted_rank_r2_full": 0.9900026033626479,
+          "joint_adjusted_rank_r2_max_cell": 1.0,
+          "joint_pass": false,
+          "pairwise": {
+            "daily_close_level_distance__slope5": {
+              "global_spearman": 0.8287878787878787,
+              "median_cell_absolute_spearman": 0.8727272727272726,
+              "pass": false
+            },
+            "daily_low_level_distance__slope5": {
+              "global_spearman": 0.9949494949494949,
+              "median_cell_absolute_spearman": 0.9999999999999999,
+              "pass": false
+            },
+            "minute_intraday_range__slope5": {
+              "global_spearman": -0.11414141414141414,
+              "median_cell_absolute_spearman": 0.3878787878787879,
+              "pass": true
+            }
+          },
+          "pairwise_pass": false,
+          "pass": false,
+          "rows": 240
+        }
+      },
+      "domain": "all_market_sequences",
+      "pass": false,
+      "target": "h20_signed_test_geometry__slope5"
+    }
+  },
+  "sample_counts": {
+    "session_rows": 1200,
+    "trajectory_rows": 240
+  },
+  "status": "COMPLETE_EXTERNAL_GEOMETRY",
+  "strategy_or_outcome_fields_read": [],
+  "support_defense_claim": "NONE",
+  "temporal_claim": "NONE",
+  "usefulness_claim": "NONE"
+}

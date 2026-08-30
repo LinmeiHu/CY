@@ -9,7 +9,7 @@
 | Opening-window reconciliation | CY-008 execution_5m | PASS for six 5-minute opening windows | Execution rows do not represent the full intraday path |
 | Exact market calendar | QD-002 calendar binding | PASS | Frozen exchange-session dates only |
 | Same-session dimensionless descriptors | QD-004 + CY-008 | PASS on AUDIT-MKT-MIN-001; required-scale adapter pending | Available at session date 15:30; no same-bar use |
-| Cross-day objective support/resistance | CY-006 causal action chain + QD-004/CY-008 raw minute path | COORDINATE PASS; FOUR SESSION/TWO TRAJECTORY ROLES, EXTERNAL DISTINCTNESS PENDING | Signed geometry and three conditional recovery roles pass internal gates; recurrence/time-below fail and PIT history is unavailable from isolated weeks. No support/usefulness claim before external geometry and temporal evidence |
+| Cross-day objective support/resistance | CY-006 causal action chain + QD-004/CY-008 raw minute path | COORDINATE PASS; RECOVERY SPEED/VOLUME INTENSITY EXTERNALLY DISTINCT | Signed geometry/slopes and recovery amplitude compress into ordinary daily/minute path; two conditional recovery observations remain distinct. Current 29 qualifying trajectories are inadequate; no support/usefulness claim before a separately frozen temporal sample/process |
 | Order-flow aggressor, queue, cancellation, hidden liquidity, participant identity | none | UNAVAILABLE | OHLCV/amount cannot support these claims |
 | Historical constituent-index minute breadth | none | UNAVAILABLE | Current constituent lists may not substitute; use governed ALL_A/SH_A/SZ_A/CHINEXT_BOARD views |
 | Strict archival PIT-A | none for the active minute source | UNAVAILABLE | All active minute conclusions remain bounded PIT-B |

@@ -101,6 +101,8 @@
 | `reports/MKT-SUPPORT-001_representation.md` | Four session roles, two trajectory shapes, exact failures, and no usefulness claim |
 | `OBJECTIVE_SUPPORT_EXTERNAL_GEOMETRY_MAP.md` | Frozen role-specific daily/minute alternatives and external distinctness gates |
 | `experiments/MKT-SUPPORT-GEO-001_spec.json` | Frozen raw/relative/conditional-block geometry before control construction |
+| `scripts/run_mkt_support_geo_001.py` | Content-verified fixed-control geometry and deterministic output construction |
+| `reports/MKT-SUPPORT-GEO-001_geometry.md` | Two distinct conditional recovery observations and four externally compressed roles |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

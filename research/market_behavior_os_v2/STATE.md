@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SUPPORT-GEO-001_FROZEN_EXTERNAL_GEOMETRY_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: PIT and corporate-action feasibility of objective cross-day price-level support defense from market-wide minute data
+- `CURRENT_PHASE`: `SYNTH-MKT-033_COMPLETE_MKT-SUPPORT-DYN-DATA-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: unbiased larger-sample feasibility for temporal objective-level recovery dynamics after external compression
 - `SUPPORTING_FRONTIER`: five externally distinct circulating-size participation, diffusion, concentration, divergence, and transition representations
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -959,6 +959,28 @@ rank geometry; conditional tested/recovered roles remain raw-only with fixed
 stay below 0.85 and joint adjusted rank R2 below 0.70 full/0.85 maximum cell or
 block. Every coordinate and block is required. No control deletion, sparse rank,
 future value, outcome, post-2023 data, or CY-011 is allowed. Execute twice.
+
+MKT-SUPPORT-GEO-001 completes with exactly two externally distinct conditional
+roles: recovery speed and recovery-volume intensity. Recovery speed has full/
+block adjusted rank R2 of -0.029, -0.034, and -0.004 against time of low, close
+location, and realized volatility. Recovery-volume intensity has full/block R2
+of 0.152, 0.076, and 0.373 against generic volume concentration, opening/
+closing volume shares, and time of low. Both fixed blocks exceed 30 rows.
+
+Signed test geometry is ordinary daily-low distance (raw rho 0.9999; relative
+rho 0.9981), and its five-day slope is likewise reconstructable. Closing-level-
+state slope is essentially daily-close-distance slope (rho 0.99997 raw and 1.0
+relative). Recovery amplitude is jointly generic range/close-location/return
+geometry (full adjusted R2 0.903; blocks 0.921/0.892). Those exact roles fail
+external distinctness and cannot be rescued by deleting controls.
+
+Two content-verified executions are byte-identical: session panel `6b44079e...`,
+trajectory panel `34348e11...`, result `ba3fbfd3...`, and report `b60512eb...`;
+ten directly related tests pass. No future field, outcome, post-2023 row, or
+CY-011 was read. The survivors remain sparse completed-session observations,
+not support defense, temporal recurrence, prediction, timing, or usefulness.
+SYNTH-MKT-033 selects a separately frozen calendar-distributed, eligibility-only
+larger sample contract before any repeated-test/recovery dynamic is estimated.
 
 MKT-STYLE-DYN-001 finds no portable transition self-process. Primary raw partial
 rho falls from 0.179 in reused block A to 0.053 in block B; causal PIT falls from

@@ -252,3 +252,12 @@ MKT-SUPPORT-GEO-001 is frozen under spec `c828ed0e...`. Construct only the fixed
 official-daily and generic-minute controls, audit complete domains first, and
 apply all pairwise/joint gates in raw/relative or fixed conditional blocks. Do
 not delete an explanatory control to preserve a support label.
+
+MKT-SUPPORT-GEO-001 retains recovery speed and recovery-volume intensity only.
+Signed geometry and both five-day slopes are daily level geometry; recovery
+amplitude is generic path reconstruction. The active frontier remains deep but
+must not infer a process from 104 recovered sessions or the known 29 qualifying
+sequences. Freeze MKT-SUPPORT-DYN-DATA-001 map-first: calendar-distributed date
+blocks and symbols must be selected from calendar/CY-006 eligibility alone,
+with fixed scale, resource, action, and support gates before QD-004 behavior is
+read. Only then may repeated-test recovery dynamics be represented.

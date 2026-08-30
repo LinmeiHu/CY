@@ -14,6 +14,7 @@ return. Initial dimensions are:
 | Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_EXTERNALLY_DISTINCT_ROLE_USEFULNESS_UNTESTED |
 | Industry/relative strength | industry return dispersion, winner-industry diffusion, rank rotation, stock/industry residual tail balance, and residual concentration are externally distinct; participation and residual dispersion compress into existing dimensions | causal expanding/trailing percentiles and robust z | governed-view contrasts and exact stock-versus-industry residuals | FIVE_DIRECT_ENGINE_ROLES_TEMPORAL_MEANING_UNTESTED |
 | Circulating size/style | positive participation balance, winner diffusion, positive-mass concentration, size-curve divergence, and leadership transition are externally distinct; size structure compresses into activity/risk ordering | causal trailing percentiles and robust z | relative-to-ALL_A plus corrected same-date four-view ranks | FIVE_DIRECT_ENGINE_ROLES_TEMPORAL_MEANING_UNTESTED |
+| Objective-level recovery | conditional recovery speed and recovery-volume intensity survive fixed generic daily/minute controls; signed level geometry, recovery amplitude, and level slopes compress | unavailable from isolated sampled weeks | raw conditional observations only; sparse within-date ranks prohibited | TWO_CONDITIONAL_OBSERVATIONS_DISTINCT_TEMPORAL_PROCESS_UNTESTED |
 | Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
 
@@ -230,3 +231,17 @@ zero full-sample partial association with future accepted T5 and reverses across
 reused blocks; both tail definitions and both relative views fail. A favorable
 phase-only sample is not a state process. The engine closes this exact style
 temporal branch and retains contemporaneous size roles without future meaning.
+
+## MKT-SUPPORT-001 and MKT-SUPPORT-GEO-001 boundary
+
+The causal prior-low/minute coordinate passes, but external compression retains
+only conditional recovery speed and recovery-volume intensity as distinct from
+fixed generic daily and minute path/activity controls. Signed geometry and its
+slope are daily-low-distance manifestations; closing-state slope is daily-close
+geometry; recovery amplitude is jointly generic range/close-location/return.
+
+The two survivors are completed-session observations available at 15:30. They
+have no causal historical normalization and the existing sample supplies only
+29 repeated-tested sequences. The engine therefore emits no support-defense,
+recovery-progression, failure, habitat, timing, or strategy state. A larger
+calendar/CY-006-selected sample must be frozen before minute outcomes are read.
