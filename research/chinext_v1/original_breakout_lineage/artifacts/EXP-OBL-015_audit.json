@@ -1,0 +1,108 @@
+{
+  "assignment_table_sha256": "65fa3d5627e3182f7422effbaf133a9eddc9f5d5e45db72faad07be0641eaece",
+  "counts": {
+    "L_SUPPORT_BROKEN": 267,
+    "L_SUPPORT_HELD": 132
+  },
+  "counts_by_block": {
+    "DEVELOPMENT_2024_2025": {
+      "L_SUPPORT_BROKEN": 75,
+      "L_SUPPORT_HELD": 36
+    },
+    "EXTENDED_2018_2021": {
+      "L_SUPPORT_BROKEN": 125,
+      "L_SUPPORT_HELD": 69
+    },
+    "HOLDOUT_O0_2022_2023": {
+      "L_SUPPORT_BROKEN": 67,
+      "L_SUPPORT_HELD": 27
+    }
+  },
+  "counts_by_year": {
+    "2018": {
+      "L_SUPPORT_BROKEN": 7,
+      "L_SUPPORT_HELD": 4
+    },
+    "2019": {
+      "L_SUPPORT_BROKEN": 44,
+      "L_SUPPORT_HELD": 13
+    },
+    "2020": {
+      "L_SUPPORT_BROKEN": 36,
+      "L_SUPPORT_HELD": 29
+    },
+    "2021": {
+      "L_SUPPORT_BROKEN": 38,
+      "L_SUPPORT_HELD": 23
+    },
+    "2022": {
+      "L_SUPPORT_BROKEN": 24,
+      "L_SUPPORT_HELD": 13
+    },
+    "2023": {
+      "L_SUPPORT_BROKEN": 43,
+      "L_SUPPORT_HELD": 14
+    },
+    "2024": {
+      "L_SUPPORT_BROKEN": 28,
+      "L_SUPPORT_HELD": 10
+    },
+    "2025": {
+      "L_SUPPORT_BROKEN": 47,
+      "L_SUPPORT_HELD": 26
+    }
+  },
+  "decision": "FREEZE_LINEAGE",
+  "events_with_tied_minimum_volume": 0,
+  "experiment_id": "EXP-OBL-015",
+  "feature_table_sha256": "2db425b4e79c9ef6d51ca083d9e55bac097582099ff7aef68718cda2cf889b49",
+  "fractions": {
+    "L_SUPPORT_BROKEN": 0.6691729323308271,
+    "L_SUPPORT_HELD": 0.3308270676691729
+  },
+  "gates": {
+    "both_lineages": true,
+    "canonical_minvol_passed_all": true,
+    "complete_coverage": true,
+    "every_lineage_in_every_year": true,
+    "maximum_lineage_fraction": true,
+    "minimum_lineage_size": true,
+    "neighbor_assignment_agreement": true,
+    "no_outcome_columns": true
+  },
+  "history_audit": {
+    "panel_counts": {
+      "DEVELOPMENT_2024_2025": 971167,
+      "EXTENDED_2018_2021": 924453,
+      "HOLDOUT_O0_2022_2023": 715513
+    },
+    "transient_canonical_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+    "transient_membership_sha256": "c4e89c4ee2e416e5e9cd8d699269595243e8fcb27f5c7b11f6f336348d872d81"
+  },
+  "hypothesis_id": "H-OBL-011",
+  "input_identities": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/configs/data_asset_registry.json": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_2024_2025/daily_membership.parquet": "9a6a0a071916b2af99a0f3f16b887672716b78428d28b4368f09bdd32d208c3d",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_minvol_anchor_lineage_freeze.py": "83bf5456d8624af37ff2de228c7a6c6afd03187e5f3126f51754872657265d75",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_minvol_anchor_lineage_freeze_v2.py": "735198a1f136f50d5cfca5cb8408e57abe5ae0e3f369e58545fc4fae57b4ce60",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_minvol_support_lineage_freeze.py": "e8cfd11e54a934a7dd7c1a74b688c1497504ef42f2658968b5736bedda87b687",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/scripts/run_outcome_blind_lineage_freeze.py": "d6bea6233ff1db8ec7004e1b438d87ebf95f6c7d7088c8800220ecb840002d7e",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/artifacts/yearly_trades.csv": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/experiments/EXP-P2-001_spec.json": "b6dd24d0d9c1f60b3aa86b92b891fe2887fd4bad2cc9a9a735e8c0221f059bd7",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/regime_attribution/scripts/run_phase2_feature_library.py": "ba0f4a3568757276539a855a6cce15d5bb987deb363d2777fd8285e88cdc5e50",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/scripts/run_chinext_v1_extended_replay.py": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae",
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/strategy/chinext_v1_exploratory.py": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a",
+    "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+  },
+  "lineage_freeze_id": "LINEAGE-OBL-015-65FA3D5627E3182F",
+  "neighbor_assignment_agreement": 0.7619047619047619,
+  "outcome_access": false,
+  "outcome_blind_refinement_of": "EXP-OBL-014",
+  "refinement": "remove structurally collapsed recovery axis; preserve canonical anchor and support definitions",
+  "rejected_recovery_axis_counts": {
+    "False": 7,
+    "True": 392
+  }
+}

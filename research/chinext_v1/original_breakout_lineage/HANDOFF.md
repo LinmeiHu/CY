@@ -213,6 +213,16 @@ collapsed recovery axis. It preserves the exact anchor and support definitions;
 binary size/concentration/year and 65% neighbor gates are frozen. Execute and
 repeat for byte identity if it passes. CY-011 remains locked.
 
+EXP-OBL-015 passes twice byte-identically and freezes
+`LINEAGE-OBL-015-65FA3D5627E3182F`: 267 support-broken / 132 support-held, both
+in every year, with 76.19% low/close-support neighbor agreement. All 399 canonical
+MINVOL and PIT gates pass; no outcome was read.
+
+Next preregister EXP-OBL-016 as a separate reveal. Predict support-held positive
+for MFE and non-false-breakout, control minvol location/ratio, anchor age,
+V1/market/breadth/year state, and attack the close-support neighbor plus full
+temporal/tail/concentration/duration set. CY-011 remains locked.
+
 ## Governance
 
 H-004 remains prospective-validation pending; H-023 preserved; H-024/H-025

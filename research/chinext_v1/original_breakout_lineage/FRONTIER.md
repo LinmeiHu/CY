@@ -213,6 +213,12 @@ outcomes: 392/399 recover above the anchor close. The low-support axis remains
 only recovery and freezes the unchanged binary support construction under fresh
 balance/year gates. This refinement uses no economic outcome.
 
+EXP-OBL-015 now freezes `LINEAGE-OBL-015-65FA3D5627E3182F` reproducibly: 267
+support-broken and 132 support-held, every-year presence, and 76.19% fixed-neighbor
+agreement. The next question is economic only after this freeze: whether held
+minimum-volume support predicts greater opportunity and fewer false breakouts
+beyond minvol level/ratio, support age, V1 state, market state, and breadth.
+
 ## Forbidden shortcuts
 
 No threshold grid, supervised label, return-guided cluster count, CY-011 access,

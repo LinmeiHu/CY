@@ -4,7 +4,7 @@ Updated 2026-08-30.
 
 ## Status
 
-`EXP_OBL_015_FROZEN_OUTCOME_BLIND_FEASIBILITY_REFINEMENT`
+`EXP_OBL_015_COMPLETE_FREEZE_LINEAGE`
 
 The independent program is authorized. The dedicated worktree was validated at
 HEAD `5309f2ef8a5ee6a57c7b63934acff77897faf1b3` with a clean tree before any
@@ -169,9 +169,16 @@ collapsed recovery assignment axis and preserve the anchor/support definitions.
 The binary classes require 50 minimum size, 75% maximum share, every-year
 presence, and the unchanged 65% low/close-support agreement gate.
 
+EXP-OBL-015 passes twice byte-identically and freezes
+`LINEAGE-OBL-015-65FA3D5627E3182F`. Counts are 267 support-broken and 132
+support-held, both present in all eight years and three blocks. Low/close-support
+neighbor agreement is 76.19%; all 399 canonical MINVOL, PIT, coverage, balance,
+and outcome-prohibition gates pass. No outcomes were read.
+
 ## Exact next action
 
-Execute committed EXP-OBL-015 without outcomes. If every construction gate
-passes, rerun for byte identity and freeze the assignments; otherwise reject
-without changing support semantics, class gates, or tie handling. Do not revisit
-pivot radii, modify V1, or open CY-011.
+Preregister a separate EXP-OBL-016 reveal with support-held positive direction
+for both MFE and non-false-breakout. Control canonical minvol location/ratio,
+support age, V1/market/breadth/year state; attack the fixed close-support neighbor,
+LOYO/blocks, tails, duration/exit, security/industry, and PIT timing. Do not alter
+the freeze, modify V1, or open CY-011.
