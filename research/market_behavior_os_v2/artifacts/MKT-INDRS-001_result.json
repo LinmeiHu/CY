@@ -1,0 +1,1708 @@
+{
+  "cy011_read": false,
+  "experiment_id": "MKT-INDRS-001",
+  "external_redundancy": {
+    "industry_leadership_concentration20": {
+      "maximum_median_absolute_spearman": 0.9679070612143006,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.561889259878082,
+        "leadership_positive_mass_top10": 0.9679070612143006
+      },
+      "nonredundant": false
+    },
+    "industry_leadership_persistence20": {
+      "maximum_median_absolute_spearman": 0.1098539540178591,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.01731811489764759,
+        "leadership_positive_mass_top10": 0.1098539540178591
+      },
+      "nonredundant": true
+    },
+    "industry_market_rs_depth20": {
+      "maximum_median_absolute_spearman": 0.1841213332690363,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.1263914348980967,
+        "leadership_positive_mass_top10": 0.1841213332690363
+      },
+      "nonredundant": true
+    },
+    "industry_positive_participation_1d": {
+      "maximum_median_absolute_spearman": 0.43870366314135806,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.43870366314135806,
+        "leadership_positive_mass_top10": 0.1661383413201865
+      },
+      "nonredundant": true
+    },
+    "industry_rank_rotation20": {
+      "maximum_median_absolute_spearman": 0.08889922511634132,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.08889922511634132,
+        "leadership_positive_mass_top10": 0.046268633443065095
+      },
+      "nonredundant": true
+    },
+    "industry_return_depth_1d": {
+      "maximum_median_absolute_spearman": 0.42225669982931857,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.42225669982931857,
+        "leadership_positive_mass_top10": 0.1531341636739183
+      },
+      "nonredundant": true
+    },
+    "industry_return_dispersion_1d": {
+      "maximum_median_absolute_spearman": 0.06258138912365908,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.06258138912365908,
+        "leadership_positive_mass_top10": 0.01746267397718041
+      },
+      "nonredundant": true
+    },
+    "stock_industry_rs_concentration20": {
+      "maximum_median_absolute_spearman": 0.42664090217202644,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.42664090217202644,
+        "leadership_positive_mass_top10": 0.2643016733085376
+      },
+      "nonredundant": true
+    },
+    "stock_industry_rs_dispersion20": {
+      "maximum_median_absolute_spearman": 0.25677764510776013,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.25677764510776013,
+        "leadership_positive_mass_top10": 0.12824579418757834
+      },
+      "nonredundant": true
+    },
+    "stock_industry_rs_tail_balance20": {
+      "maximum_median_absolute_spearman": 0.409301860680345,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.409301860680345,
+        "leadership_positive_mass_top10": 0.13850458045986297
+      },
+      "nonredundant": true
+    },
+    "winner_industry_diffusion20": {
+      "maximum_median_absolute_spearman": 0.11839946869157571,
+      "median_absolute_spearman": {
+        "breadth_net_new_high_low60": 0.11839946869157571,
+        "leadership_positive_mass_top10": 0.1171077601409723
+      },
+      "nonredundant": true
+    }
+  },
+  "failed_ma_industry_fields_read": [],
+  "hashes": {
+    "external_breadth_panel_sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "panel_sha256": "c9e8d44935261256c1f3a6246026ba2ff0a02d3373386771fe58182ad3baeaf4",
+    "source_partitions": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "spec_sha256": "e49f209806c25cafb1c78c5730fbfe07b0c83690fc14bc1a677c8d303d38836d"
+  },
+  "input_audit": {
+    "duplicate_keys": 0,
+    "first_date": "2018-01-02",
+    "hard_valid_close_failures": 0,
+    "hard_valid_ohlc_failures": 0,
+    "last_date": "2023-12-29",
+    "rows": 6155390,
+    "snapshot_count": 1,
+    "time_travel_rows": 0
+  },
+  "latent_components": [
+    [
+      "industry_leadership_concentration20"
+    ],
+    [
+      "industry_leadership_persistence20"
+    ],
+    [
+      "industry_market_rs_depth20"
+    ],
+    [
+      "industry_positive_participation_1d",
+      "industry_return_depth_1d"
+    ],
+    [
+      "industry_rank_rotation20"
+    ],
+    [
+      "industry_return_dispersion_1d"
+    ],
+    [
+      "stock_industry_rs_concentration20"
+    ],
+    [
+      "stock_industry_rs_dispersion20"
+    ],
+    [
+      "stock_industry_rs_tail_balance20"
+    ],
+    [
+      "winner_industry_diffusion20"
+    ]
+  ],
+  "leave_one_out_audit": {
+    "maximum_absolute_difference": 0.0,
+    "rows_checked": 1988
+  },
+  "minimal_panel": {
+    "accepted_roles": [
+      "industry_positive_participation_1d",
+      "industry_return_dispersion_1d",
+      "winner_industry_diffusion20",
+      "industry_rank_rotation20",
+      "stock_industry_rs_dispersion20",
+      "stock_industry_rs_tail_balance20",
+      "stock_industry_rs_concentration20"
+    ],
+    "excluded_roles": {
+      "industry_leadership_concentration20": "representation_gate_failed",
+      "industry_leadership_persistence20": "representation_gate_failed",
+      "industry_market_rs_depth20": "representation_gate_failed",
+      "industry_return_depth_1d": "redundant_with:industry_positive_participation_1d"
+    },
+    "priority": [
+      "industry_positive_participation_1d",
+      "industry_return_depth_1d",
+      "industry_return_dispersion_1d",
+      "industry_market_rs_depth20",
+      "industry_leadership_concentration20",
+      "winner_industry_diffusion20",
+      "industry_leadership_persistence20",
+      "industry_rank_rotation20",
+      "stock_industry_rs_dispersion20",
+      "stock_industry_rs_tail_balance20",
+      "stock_industry_rs_concentration20"
+    ]
+  },
+  "population": {
+    "first_date": "2018-07-03",
+    "groups": 8,
+    "last_date": "2023-12-29",
+    "minimum_included_industries": 37,
+    "minimum_industry_mapping_coverage": 1.0,
+    "rows": 10696
+  },
+  "primary_role_spearman_all_a": {
+    "industry_leadership_concentration20": {
+      "industry_leadership_concentration20": 1.0,
+      "industry_leadership_persistence20": 0.15091818597376797,
+      "industry_market_rs_depth20": 0.12512150266675887,
+      "industry_positive_participation_1d": -0.15947796052055513,
+      "industry_rank_rotation20": 0.006527095582202866,
+      "industry_return_depth_1d": -0.13753823187865724,
+      "industry_return_dispersion_1d": -0.00567462879901363,
+      "stock_industry_rs_concentration20": -0.32697763733552787,
+      "stock_industry_rs_dispersion20": -0.09595453149556386,
+      "stock_industry_rs_tail_balance20": -0.128194006780215,
+      "winner_industry_diffusion20": 0.1491855270658821
+    },
+    "industry_leadership_persistence20": {
+      "industry_leadership_concentration20": 0.15091818597376797,
+      "industry_leadership_persistence20": 1.0,
+      "industry_market_rs_depth20": 0.021965667945530964,
+      "industry_positive_participation_1d": 0.05855293453882953,
+      "industry_rank_rotation20": -0.29458854293718256,
+      "industry_return_depth_1d": 0.04834406282517452,
+      "industry_return_dispersion_1d": 0.020692595977007643,
+      "stock_industry_rs_concentration20": -0.02747845647812831,
+      "stock_industry_rs_dispersion20": 0.13372247897635486,
+      "stock_industry_rs_tail_balance20": 0.045102935478016616,
+      "winner_industry_diffusion20": 0.0068312983799562925
+    },
+    "industry_market_rs_depth20": {
+      "industry_leadership_concentration20": 0.12512150266675887,
+      "industry_leadership_persistence20": 0.021965667945530964,
+      "industry_market_rs_depth20": 1.0,
+      "industry_positive_participation_1d": -0.0920158424630314,
+      "industry_rank_rotation20": -0.006536126030026143,
+      "industry_return_depth_1d": -0.09575552029192431,
+      "industry_return_dispersion_1d": 0.07876478535744962,
+      "stock_industry_rs_concentration20": -0.3302929175756686,
+      "stock_industry_rs_dispersion20": 0.010701852350294291,
+      "stock_industry_rs_tail_balance20": -0.19264886211080592,
+      "winner_industry_diffusion20": 0.5231073058683589
+    },
+    "industry_positive_participation_1d": {
+      "industry_leadership_concentration20": -0.15947796052055513,
+      "industry_leadership_persistence20": 0.05855293453882953,
+      "industry_market_rs_depth20": -0.0920158424630314,
+      "industry_positive_participation_1d": 1.0,
+      "industry_rank_rotation20": -0.016657493129355067,
+      "industry_return_depth_1d": 0.9798500442307962,
+      "industry_return_dispersion_1d": -0.13998854696787771,
+      "stock_industry_rs_concentration20": 0.049633667697315295,
+      "stock_industry_rs_dispersion20": 0.03764839399360407,
+      "stock_industry_rs_tail_balance20": 0.07680620977607426,
+      "winner_industry_diffusion20": -0.06822940471175151
+    },
+    "industry_rank_rotation20": {
+      "industry_leadership_concentration20": 0.006527095582202866,
+      "industry_leadership_persistence20": -0.29458854293718256,
+      "industry_market_rs_depth20": -0.006536126030026143,
+      "industry_positive_participation_1d": -0.016657493129355067,
+      "industry_rank_rotation20": 1.0,
+      "industry_return_depth_1d": -0.0062395109138522154,
+      "industry_return_dispersion_1d": -0.1211073148236785,
+      "stock_industry_rs_concentration20": -0.043016861295493376,
+      "stock_industry_rs_dispersion20": -0.20603673723382604,
+      "stock_industry_rs_tail_balance20": -0.017228049111360142,
+      "winner_industry_diffusion20": 0.21745098390424708
+    },
+    "industry_return_depth_1d": {
+      "industry_leadership_concentration20": -0.13753823187865724,
+      "industry_leadership_persistence20": 0.04834406282517452,
+      "industry_market_rs_depth20": -0.09575552029192431,
+      "industry_positive_participation_1d": 0.9798500442307962,
+      "industry_rank_rotation20": -0.0062395109138522154,
+      "industry_return_depth_1d": 1.0,
+      "industry_return_dispersion_1d": -0.1753189937999388,
+      "stock_industry_rs_concentration20": 0.04023160140590433,
+      "stock_industry_rs_dispersion20": 0.007817914640635994,
+      "stock_industry_rs_tail_balance20": 0.055167142548295495,
+      "winner_industry_diffusion20": -0.06566370432291077
+    },
+    "industry_return_dispersion_1d": {
+      "industry_leadership_concentration20": -0.00567462879901363,
+      "industry_leadership_persistence20": 0.020692595977007643,
+      "industry_market_rs_depth20": 0.07876478535744962,
+      "industry_positive_participation_1d": -0.13998854696787771,
+      "industry_rank_rotation20": -0.1211073148236785,
+      "industry_return_depth_1d": -0.1753189937999388,
+      "industry_return_dispersion_1d": 1.0,
+      "stock_industry_rs_concentration20": 0.12998604753926782,
+      "stock_industry_rs_dispersion20": 0.376848184891725,
+      "stock_industry_rs_tail_balance20": 0.22892395861703882,
+      "winner_industry_diffusion20": -0.12685481758760786
+    },
+    "stock_industry_rs_concentration20": {
+      "industry_leadership_concentration20": -0.32697763733552787,
+      "industry_leadership_persistence20": -0.02747845647812831,
+      "industry_market_rs_depth20": -0.3302929175756686,
+      "industry_positive_participation_1d": 0.049633667697315295,
+      "industry_rank_rotation20": -0.043016861295493376,
+      "industry_return_depth_1d": 0.04023160140590433,
+      "industry_return_dispersion_1d": 0.12998604753926782,
+      "stock_industry_rs_concentration20": 1.0,
+      "stock_industry_rs_dispersion20": -0.16764803619883403,
+      "stock_industry_rs_tail_balance20": 0.33765555981489664,
+      "winner_industry_diffusion20": -0.3723678917107007
+    },
+    "stock_industry_rs_dispersion20": {
+      "industry_leadership_concentration20": -0.09595453149556386,
+      "industry_leadership_persistence20": 0.13372247897635486,
+      "industry_market_rs_depth20": 0.010701852350294291,
+      "industry_positive_participation_1d": 0.03764839399360407,
+      "industry_rank_rotation20": -0.20603673723382604,
+      "industry_return_depth_1d": 0.007817914640635994,
+      "industry_return_dispersion_1d": 0.376848184891725,
+      "stock_industry_rs_concentration20": -0.16764803619883403,
+      "stock_industry_rs_dispersion20": 1.0,
+      "stock_industry_rs_tail_balance20": 0.49137536144175786,
+      "winner_industry_diffusion20": 0.0700751650637501
+    },
+    "stock_industry_rs_tail_balance20": {
+      "industry_leadership_concentration20": -0.128194006780215,
+      "industry_leadership_persistence20": 0.045102935478016616,
+      "industry_market_rs_depth20": -0.19264886211080592,
+      "industry_positive_participation_1d": 0.07680620977607426,
+      "industry_rank_rotation20": -0.017228049111360142,
+      "industry_return_depth_1d": 0.055167142548295495,
+      "industry_return_dispersion_1d": 0.22892395861703882,
+      "stock_industry_rs_concentration20": 0.33765555981489664,
+      "stock_industry_rs_dispersion20": 0.49137536144175786,
+      "stock_industry_rs_tail_balance20": 1.0,
+      "winner_industry_diffusion20": -0.007470916005125964
+    },
+    "winner_industry_diffusion20": {
+      "industry_leadership_concentration20": 0.1491855270658821,
+      "industry_leadership_persistence20": 0.0068312983799562925,
+      "industry_market_rs_depth20": 0.5231073058683589,
+      "industry_positive_participation_1d": -0.06822940471175151,
+      "industry_rank_rotation20": 0.21745098390424708,
+      "industry_return_depth_1d": -0.06566370432291077,
+      "industry_return_dispersion_1d": -0.12685481758760786,
+      "stock_industry_rs_concentration20": -0.3723678917107007,
+      "stock_industry_rs_dispersion20": 0.0700751650637501,
+      "stock_industry_rs_tail_balance20": -0.007470916005125964,
+      "winner_industry_diffusion20": 1.0
+    }
+  },
+  "role_diagnostics": {
+    "industry_leadership_concentration20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9988583117530678,
+        "CHINEXT_BOARD": 0.9991790815541443,
+        "SH_A": 0.9966177166237373,
+        "SZ_A": 0.9977349661679147
+      },
+      "all_status_vs_non_st_median": 0.9982966389604913,
+      "coverage_by_view": {
+        "ALL_A": 0.9977238239757208,
+        "CHINEXT_BOARD": 0.9446130500758725,
+        "SH_A": 0.9931714719271624,
+        "SZ_A": 0.9908952959028832
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 0.9446130500758725,
+      "neighbors": {
+        "industry_leadership_positive_mass_top10": {
+          "by_view": {
+            "ALL_A": 0.9921484956689451,
+            "CHINEXT_BOARD": 0.9768588176813129,
+            "SH_A": 0.9905309880580171,
+            "SZ_A": 0.9902207599161496
+          },
+          "median_across_views": 0.9903758739870834
+        },
+        "industry_leadership_positive_mass_top5": {
+          "by_view": {
+            "ALL_A": 0.998302782407005,
+            "CHINEXT_BOARD": 0.9939683999210134,
+            "SH_A": 0.9978195049648614,
+            "SZ_A": 0.9978733274742019
+          },
+          "median_across_views": 0.9978464162195316
+        }
+      },
+      "pit_expected_coverage": 0.9904674046740467,
+      "primary": "industry_leadership_positive_mass_top3",
+      "relative_expected_coverage": 0.9971830985915493,
+      "representation_gate_pass": false,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 242,
+          "nunique": 228
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 240
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 241,
+          "nunique": 226
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 235
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 225,
+          "nunique": 209
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 239,
+          "nunique": 222
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 229
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 220,
+          "nunique": 188
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 238,
+          "nunique": 229
+        },
+        "SH_A:2019": {
+          "n": 236,
+          "nunique": 214
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 239
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 225
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 238
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 226
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 237
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 238,
+          "nunique": 223
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 232
+        }
+      }
+    },
+    "industry_leadership_persistence20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9006419045455687,
+        "CHINEXT_BOARD": 0.9686170947986538,
+        "SH_A": 0.8421460110470833,
+        "SZ_A": 0.8882939598662245
+      },
+      "all_status_vs_non_st_median": 0.8944679322058966,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "industry_leadership_jaccard_top10_lag5": {
+          "by_view": {
+            "ALL_A": 0.567605052016004,
+            "CHINEXT_BOARD": 0.4380777884297285,
+            "SH_A": 0.5462116543072416,
+            "SZ_A": 0.5337431462856932
+          },
+          "median_across_views": 0.5399774002964675
+        },
+        "industry_leadership_jaccard_top3_lag5": {
+          "by_view": {
+            "ALL_A": 0.6420774519210347,
+            "CHINEXT_BOARD": 0.5992324032621754,
+            "SH_A": 0.6032496139228314,
+            "SZ_A": 0.6444057815310806
+          },
+          "median_across_views": 0.622663532921933
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "industry_leadership_jaccard_top5_lag5",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": false,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 5
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 6
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 6
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 6
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 6
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 6
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 6
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 6
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 6
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 6
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 6
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 6
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 6
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 6
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 6
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 6
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 6
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 6
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 6
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 6
+        }
+      }
+    },
+    "industry_market_rs_depth20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9653365771584603,
+        "CHINEXT_BOARD": 0.9796807449239501,
+        "SH_A": 0.9059853338989086,
+        "SZ_A": 0.9686346037695764
+      },
+      "all_status_vs_non_st_median": 0.9669855904640183,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "industry_market_rs_depth_mean": {
+          "by_view": {
+            "ALL_A": 0.8237957852275221,
+            "CHINEXT_BOARD": 0.4670019971431432,
+            "SH_A": 0.4971859017685082,
+            "SZ_A": 0.8404793007971667
+          },
+          "median_across_views": 0.6604908434980151
+        },
+        "industry_market_rs_depth_p60": {
+          "by_view": {
+            "ALL_A": 0.8229647099355129,
+            "CHINEXT_BOARD": 0.5994621659371449,
+            "SH_A": 0.674129333262377,
+            "SZ_A": 0.8446734943233061
+          },
+          "median_across_views": 0.7485470215989449
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "industry_market_rs_depth_median",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": false,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 243
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    },
+    "industry_positive_participation_1d": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9993246900906452,
+        "CHINEXT_BOARD": 0.9996961449123541,
+        "SH_A": 0.9990584050513465,
+        "SZ_A": 0.9991802818600733
+      },
+      "all_status_vs_non_st_median": 0.9992524859753593,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "industry_positive_participation_majority": {
+          "by_view": {
+            "ALL_A": 0.9990174973616905,
+            "CHINEXT_BOARD": 0.9975704436927633,
+            "SH_A": 0.9984347202355243,
+            "SZ_A": 0.9985539245674709
+          },
+          "median_across_views": 0.9984943224014976
+        },
+        "industry_positive_participation_mean": {
+          "by_view": {
+            "ALL_A": 0.9885314651638205,
+            "CHINEXT_BOARD": 0.9851338756891614,
+            "SH_A": 0.9869643784903154,
+            "SZ_A": 0.9881535390647473
+          },
+          "median_across_views": 0.9875589587775313
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "industry_positive_participation_median",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 150
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 141
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 137
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 136
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 133
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 78
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 120
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 148
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 161
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 118
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 171
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 165
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 185
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 194
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 194
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 156
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 149
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 178
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 149
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 191
+        }
+      }
+    },
+    "industry_rank_rotation20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9930424650590829,
+        "CHINEXT_BOARD": 0.995231507027943,
+        "SH_A": 0.9798851612252967,
+        "SZ_A": 0.987660511324861
+      },
+      "all_status_vs_non_st_median": 0.9903514881919719,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "industry_rank_rotation_displacement_lag5": {
+          "by_view": {
+            "ALL_A": 0.9871463908197995,
+            "CHINEXT_BOARD": 0.9793484716284275,
+            "SH_A": 0.9839636705910796,
+            "SZ_A": 0.9854387814198325
+          },
+          "median_across_views": 0.9847012260054561
+        },
+        "industry_rank_rotation_kendall_lag5": {
+          "by_view": {
+            "ALL_A": 0.9965193906908383,
+            "CHINEXT_BOARD": 0.9929609331171717,
+            "SH_A": 0.9954535772542854,
+            "SZ_A": 0.9962833263951811
+          },
+          "median_across_views": 0.9958684518247333
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "industry_rank_rotation_spearman_lag5",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 241
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 236
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 235
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 241
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    },
+    "industry_return_depth_1d": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9995382762811383,
+        "CHINEXT_BOARD": 0.999801369997043,
+        "SH_A": 0.999281238407272,
+        "SZ_A": 0.9994593362529439
+      },
+      "all_status_vs_non_st_median": 0.9994988062670411,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "industry_return_depth_mean_of_medians": {
+          "by_view": {
+            "ALL_A": 0.9916137815785949,
+            "CHINEXT_BOARD": 0.9911888617011609,
+            "SH_A": 0.9892891680871092,
+            "SZ_A": 0.9920593511815091
+          },
+          "median_across_views": 0.9914013216398779
+        },
+        "industry_return_depth_median_of_means": {
+          "by_view": {
+            "ALL_A": 0.9908647624174337,
+            "CHINEXT_BOARD": 0.9896694315180973,
+            "SH_A": 0.9906664719477657,
+            "SZ_A": 0.9911872896642148
+          },
+          "median_across_views": 0.9907656171825997
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "industry_return_depth_median_of_medians",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 227
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 228
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 232
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 240
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 233
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 237
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 240
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 240
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 241
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 239
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 232
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 228
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 235
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 237
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 229
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 230
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 233
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 236
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 238
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 239
+        }
+      }
+    },
+    "industry_return_dispersion_1d": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9899749036059914,
+        "CHINEXT_BOARD": 0.9950002879021816,
+        "SH_A": 0.9859263670261443,
+        "SZ_A": 0.9876573111277839
+      },
+      "all_status_vs_non_st_median": 0.9888161073668876,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "industry_return_dispersion_mad": {
+          "by_view": {
+            "ALL_A": 0.981186215030655,
+            "CHINEXT_BOARD": 0.9630508027148643,
+            "SH_A": 0.9787645868582161,
+            "SZ_A": 0.9802395621300037
+          },
+          "median_across_views": 0.9795020744941099
+        },
+        "industry_return_dispersion_p90_p10": {
+          "by_view": {
+            "ALL_A": 0.8991648265998399,
+            "CHINEXT_BOARD": 0.8414445312714489,
+            "SH_A": 0.8891236792940858,
+            "SZ_A": 0.8982668770678973
+          },
+          "median_across_views": 0.8936952781809915
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "industry_return_dispersion_iqr",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    },
+    "stock_industry_rs_concentration20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9973144159139553,
+        "CHINEXT_BOARD": 0.9981765659594141,
+        "SH_A": 0.9891911057325632,
+        "SZ_A": 0.9958558454194844
+      },
+      "all_status_vs_non_st_median": 0.9965851306667198,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "stock_industry_rs_positive_mass_top20": {
+          "by_view": {
+            "ALL_A": 0.9443728800603528,
+            "CHINEXT_BOARD": 0.9484416900273798,
+            "SH_A": 0.941185510689566,
+            "SZ_A": 0.9524385043651373
+          },
+          "median_across_views": 0.9464072850438663
+        },
+        "stock_industry_rs_positive_mass_top5": {
+          "by_view": {
+            "ALL_A": 0.9667492110104479,
+            "CHINEXT_BOARD": 0.9639955928371865,
+            "SH_A": 0.9555579752147854,
+            "SZ_A": 0.9713068672332311
+          },
+          "median_across_views": 0.9653724019238172
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "stock_industry_rs_positive_mass_top10",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    },
+    "stock_industry_rs_dispersion20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9989068202530579,
+        "CHINEXT_BOARD": 0.9995623324491145,
+        "SH_A": 0.9969992147410255,
+        "SZ_A": 0.9985564421934093
+      },
+      "all_status_vs_non_st_median": 0.9987316312232336,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "stock_industry_rs_dispersion_mad": {
+          "by_view": {
+            "ALL_A": 0.997028913754006,
+            "CHINEXT_BOARD": 0.9950464205363769,
+            "SH_A": 0.9973383006484858,
+            "SZ_A": 0.9969868430811804
+          },
+          "median_across_views": 0.9970078784175932
+        },
+        "stock_industry_rs_dispersion_p90_p10": {
+          "by_view": {
+            "ALL_A": 0.9683946618537161,
+            "CHINEXT_BOARD": 0.9477297773219723,
+            "SH_A": 0.9529856189295394,
+            "SZ_A": 0.9691627039363188
+          },
+          "median_across_views": 0.9606901403916277
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "stock_industry_rs_dispersion_iqr",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    },
+    "stock_industry_rs_tail_balance20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9956702805637387,
+        "CHINEXT_BOARD": 0.9972405072966986,
+        "SH_A": 0.9918917225903516,
+        "SZ_A": 0.9921018700948804
+      },
+      "all_status_vs_non_st_median": 0.9938860753293095,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "stock_industry_rs_tail_balance_p80_p20": {
+          "by_view": {
+            "ALL_A": 0.9570081255495322,
+            "CHINEXT_BOARD": 0.8195822267208291,
+            "SH_A": 0.9085798404967688,
+            "SZ_A": 0.9320536792663654
+          },
+          "median_across_views": 0.9203167598815671
+        },
+        "stock_industry_rs_tail_balance_p95_p05": {
+          "by_view": {
+            "ALL_A": 0.9699161249663771,
+            "CHINEXT_BOARD": 0.888077775845487,
+            "SH_A": 0.9428477265377948,
+            "SZ_A": 0.9519418053187975
+          },
+          "median_across_views": 0.9473947659282962
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "stock_industry_rs_tail_balance_p90_p10",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    },
+    "winner_industry_diffusion20": {
+      "all_eligible_cells_nondegenerate": true,
+      "all_status_vs_non_st_by_view": {
+        "ALL_A": 0.9938790560190566,
+        "CHINEXT_BOARD": 0.9959976475168183,
+        "SH_A": 0.9828888922891985,
+        "SZ_A": 0.9897738591125419
+      },
+      "all_status_vs_non_st_median": 0.9918264575657992,
+      "coverage_by_view": {
+        "ALL_A": 1.0,
+        "CHINEXT_BOARD": 1.0,
+        "SH_A": 1.0,
+        "SZ_A": 1.0
+      },
+      "eligible_view_year_cells": 20,
+      "minimum_raw_coverage": 1.0,
+      "neighbors": {
+        "winner_industry_entropy_top20": {
+          "by_view": {
+            "ALL_A": 0.9278551225209056,
+            "CHINEXT_BOARD": 0.7831150541648617,
+            "SH_A": 0.8631474287713576,
+            "SZ_A": 0.9042599973003271
+          },
+          "median_across_views": 0.8837037130358424
+        },
+        "winner_industry_entropy_top5": {
+          "by_view": {
+            "ALL_A": 0.9110401991178484,
+            "CHINEXT_BOARD": 0.7324223171195967,
+            "SH_A": 0.810783926116768,
+            "SZ_A": 0.8637508358951023
+          },
+          "median_across_views": 0.8372673810059351
+        }
+      },
+      "pit_expected_coverage": 1.0,
+      "primary": "winner_industry_entropy_top10",
+      "relative_expected_coverage": 1.0,
+      "representation_gate_pass": true,
+      "year_support": {
+        "ALL_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "ALL_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "ALL_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "ALL_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2019": {
+          "n": 244,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "CHINEXT_BOARD:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "CHINEXT_BOARD:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SH_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SH_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SH_A:2023": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2019": {
+          "n": 244,
+          "nunique": 244
+        },
+        "SZ_A:2020": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2021": {
+          "n": 243,
+          "nunique": 243
+        },
+        "SZ_A:2022": {
+          "n": 242,
+          "nunique": 242
+        },
+        "SZ_A:2023": {
+          "n": 242,
+          "nunique": 242
+        }
+      }
+    }
+  },
+  "status": "COMPLETE_8_OF_11_ROLES_PASS_7_MINIMAL",
+  "strategy_or_outcome_fields_read": [],
+  "usefulness_claim": "NONE"
+}

@@ -213,3 +213,31 @@
 - Boundary: no volatility continuation/reversal mechanism, forecast, market-
   return meaning, strategy usefulness, or archetype. The continuous coordinate
   remains descriptive and exact states remain rejected.
+
+## MKT-H-015 — industry leadership, rotation, and relative-strength state
+
+- Status: `EIGHT_REPRESENTATIONS_SUPPORTED_SEVEN_MINIMAL`.
+- Contract: MKT-INDRS-001 uses the exact action-aware 120-session CY-006 core,
+  causal industry labels, five-member groups, 80% mapping and ten-industry
+  gates, equal-industry aggregation, exact other-member medians, fixed
+  neighbors, absolute/PIT/relative coordinates, and serial execution. It reads
+  neither the failed MA20 industry fields nor outcomes, strategy fields, or
+  CY-011.
+- Result: equal-industry positive participation, equal-industry return depth,
+  industry return dispersion, winner-industry diffusion, rank rotation, and
+  all three leave-one-out stock/industry residual roles pass. Return depth is
+  redundant with positive participation at absolute Spearman 0.980, leaving
+  seven minimal coordinates.
+- Rejections: industry-vs-market depth fails its neighbor gate at 0.660;
+  positive-mass leadership concentration misses raw coverage at 0.945 because
+  the positive-mass denominator is sometimes zero; top-set persistence fails
+  neighbor stability at 0.540 and denominator stability at 0.895. Definitions,
+  thresholds, views, and favorable subsets do not rescue them.
+- Audit: all valid view/date rows have 100% causal industry mapping, at least 37
+  included industries, and exact leave-one-out reconstruction on 1,988 sampled
+  rows with zero difference. Two full serial runs are byte-identical.
+- Boundary: these are same-session state representations. No future leadership
+  persistence, rotation timing, stock-selection alpha, market-return meaning,
+  habitat fitness, strategy usefulness, or industry-rotation archetype is
+  established. Broader failed families remain open only under structurally
+  different definitions.

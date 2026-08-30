@@ -3,6 +3,7 @@
 | Scientific need | Governed asset | Current capability | Boundary |
 |---|---|---|---|
 | Strategy-independent daily state and eligibility | CY-006 | PASS, bounded PIT-B, immutable 2018-2026 inventory | Construction remains pre-2024; `available_at <= decision_at` and `hard_valid` required |
+| Causal daily industry membership and stock/industry relative return | CY-006 | PASS for pre-2024 MKT-INDRS-001; 100% mapped coverage on valid output rows and exact other-member context | Source-notice date must be no later than trade date; five-member/80%/ten-industry gates and action-aware coordinates remain mandatory |
 | Raw one-minute price/volume path | QD-004 | PASS CONDITIONAL, raw/unadjusted 1m bars, immutable target inventory | No record-level archival availability; completed-bar availability and frozen snapshot only |
 | Minute causal daily/session gate | CY-008 daily | PASS, exact daily hard-valid/session/unit/reconciliation lineage | Must bind the matching CY-006/QD-004 snapshots; no hard-invalid state |
 | Opening-window reconciliation | CY-008 execution_5m | PASS for six 5-minute opening windows | Execution rows do not represent the full intraday path |

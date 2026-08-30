@@ -36,6 +36,10 @@
 | MKT-MIN-VOL-STATE-001 exact rising/falling/flat state/process | REPRESENTATION_NOT_FROZEN: neighbor kappa 0.425/0.275, macro-Jaccard 0.423/0.305, transition TV 0.469/0.611; daily-level geometry coverage/cells fail | Retain the continuous coordinate only; do not tune sign/zero boundaries, select a neighbor/view/year, or relabel states as contraction/expansion |
 | MKT-MIN-VOL-RESP-001 undeclared zero log domain | INVALID_BEFORE_RESPONSE: valid 2020-02-03 minute-volatility level is exactly zero in all groups | Use RESP-002 exact missing-domain rule; never add epsilon, clip, or cite a nonexistent RESP-001 result |
 | MKT-MIN-VOL-RESP-002 future-volatility continuation/reversal | TEMPORAL_RESPONSE_FAIL: h=5 partial rho -0.017/-0.015, nonoverlap -0.005/-0.019, h=1 sign flip, h=3 weak | Do not promote raw negative association, select horizon/group/block, remove controls, or revive exact states |
+| MKT-INDRS-001 industry-vs-market return depth | REPRESENTATION_NOT_FROZEN: weakest median neighbor rho 0.660 | Do not select mean/p60, a favorable view, or retune the 20-session horizon; the broader relative-depth family remains open under different semantics |
+| MKT-INDRS-001 positive-mass industry leadership concentration | REPRESENTATION_NOT_FROZEN: minimum raw coverage 0.945 because total positive industry mass can be zero | Preserve undefined zero-denominator dates; do not add epsilon, impute, switch to signed mass, or select top3/5/10 after results |
+| MKT-INDRS-001 top-set leadership persistence | REPRESENTATION_NOT_FROZEN: weakest top3/5/10 neighbor rho 0.540 and ALL_STATUS/NON_ST median rho 0.895 | Do not tune top-k, lag, denominator, view, or year; rank rotation is separate and remains valid |
+| MKT-INDRS-001 equal-industry return depth as a separate mechanism | REDUNDANT_REPRESENTATION: absolute Spearman 0.980 with equal-industry positive participation | Retain the simpler participation role in the minimal panel; do not count depth as independent evidence |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

@@ -598,3 +598,62 @@ distinct same-session industry leadership/diffusion, persistence/rotation,
 industry-vs-market RS, and stock-vs-industry RS representations. Do not recreate
 the failed MA20 industry-diffusion role, optimize horizons, read outcomes, or
 open CY-011.
+
+## SYNTH-MKT-015 — after industry/relative-strength representation construction
+
+### What was learned?
+
+Eight of eleven exact roles pass their frozen representation gates across four
+views, two denominators, and five full years. Equal-industry positive
+participation and equal-industry return depth are one latent participation
+manifestation at absolute Spearman 0.980, so only participation is retained.
+Industry return dispersion, winner-industry diffusion, rank rotation, and the
+three exact leave-one-out stock/industry residual shape roles remain mutually
+distinct at the 0.85 internal edge and below 0.85 against the two frozen breadth
+controls.
+
+Three exact representations fail. Industry-vs-market depth has a 0.660 weakest
+neighbor. Positive-mass leadership concentration is definable on only 94.5% of
+the minimum-coverage view because all-industry positive mass can be zero.
+Top-set persistence has 0.540 weakest-neighbor and 0.895 ALL_STATUS/NON_ST
+stability. No threshold, denominator, view, year, or favorable neighbor rescues
+them. The exact other-member industry median independently reconstructs 1,988
+sampled rows with zero difference.
+
+### What market behavior are we still not studying?
+
+We still do not know whether the seven retained coordinates add state dimensions
+beyond accepted central direction, co-movement, volatility, liquidity, and
+leadership coordinates; the first construction controls only two breadth roles.
+Nor do we know whether rank rotation or winner diffusion precedes future
+leadership persistence, whether stock/industry residual shape has temporal
+meaning, or whether any role matters to a strategy. Size/style leadership,
+objective support/acceptance, accumulation/distribution, and portable
+multi-strategy habitats also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Stable rank rotation and stock/industry residual-state coordinates are
+necessary observations, not evidence of a recurring profitable rotation or
+relative-strength process. They provide no trigger, future response, execution,
+exit, capacity, or habitat evidence, so industry rotation and relative-strength
+leadership remain search-space archetypes only.
+
+### Parallel-track awareness
+
+- **Market research:** retain seven provisional engine coordinates and test
+  role-specific redundancy against the already-frozen engine before temporal
+  research.
+- **Existing-strategy archaeology:** no strategy outcome or candidate field was
+  read; CHINEXT and SuperMind semantics remain unchanged.
+- **Strategy invention:** no archetype is active; relative-strength leadership
+  remains a hypothesis generator only.
+
+### Research Director decision
+
+`COMBINE` only at outcome-blind representation geometry. Freeze
+MKT-INDRS-GEO-001 with role-specific, economically relevant accepted controls
+from breadth, risk appetite, correlation/liquidity, volatility, and leadership.
+Test pairwise redundancy and conservative joint rank reconstruction before any
+future response or strategy association. Do not import rejected industry roles,
+future returns, strategy fields, failed MA20 diffusion fields, or CY-011.

@@ -51,6 +51,16 @@ MKT-H-007 market-wide five-day minute state
   -> recurrent sign-state/dwell/transition stability remains untested
   -> no minute usefulness claim
 
+MKT-H-015 industry leadership/rotation/relative-strength construction
+  -> eight of eleven exact primary representations freeze
+  -> equal-industry return depth collapses into equal-industry participation
+  -> seven internally nonredundant coordinates remain
+  -> industry-vs-market depth fails fixed neighboring definitions
+  -> positive-mass leadership concentration fails definable coverage
+  -> top-set persistence fails neighbor and denominator stability
+  -> broader-engine redundancy remains incompletely tested
+  -> no temporal meaning, strategy usefulness, or industry-rotation archetype
+
 MKT-H-009 directional-tail/risk-appetite construction
   -> all eleven exact representations pass their own gates
   -> central direction absorbs ordinary participation/depth/concentration/diffusion

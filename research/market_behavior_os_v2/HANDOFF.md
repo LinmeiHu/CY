@@ -328,3 +328,54 @@ industry membership, five-member/80%/ten-industry gates, eleven distinct roles,
 exact leave-one-out industry medians, fixed neighbors, three coordinate
 families, external breadth controls, and serial determinism. No MA20 diffusion
 clone, outcome, strategy field, or CY-011 may enter.
+
+## Industry/relative-strength result
+
+MKT-INDRS-001 completed on 10,696 view/denominator/date rows from 2018-07-03 to
+2023-12-29. Valid output rows have 100% causal industry mapping and at least 37
+included industries. An independent bounded audit reconstructs 1,988 exact
+other-member medians with maximum difference zero. Two complete serial runs are
+byte-identical: panel `c9e8d449...`, result `578d9dba...`, and report
+`60ed7ef7...`; ten focused breadth/industry tests pass.
+
+Eight roles pass: equal-industry positive participation, equal-industry return
+depth, industry return dispersion, winner-industry diffusion, rank rotation,
+and three leave-one-out stock/industry residual roles (dispersion, tail balance,
+and positive-mass concentration). Return depth correlates 0.980 with positive
+participation, so the minimal panel retains participation and six other roles.
+
+Three exact roles fail without rescue. Industry-vs-market depth has a weakest
+neighbor rho of 0.660. Positive-mass industry leadership concentration has only
+0.945 minimum definable coverage because an all-nonpositive industry cross-
+section has zero positive-mass denominator. Top-set persistence has weakest
+neighbor rho 0.540 and ALL_STATUS/NON_ST median rho 0.895. Do not select a
+favorable mean/quantile, top-k, lag, denominator, view, or year; do not impute a
+zero denominator.
+
+Absolute coordinates retain same-session economic meaning across years. Causal
+expanding/trailing percentiles and robust z-scores are constructed only after
+the frozen 504-observation history. Relative coordinates preserve governed-view
+differences/ranks separately; stock-versus-industry residuals use exact leave-
+one-out medians, never inclusive industry context. These are state
+representations, not temporal persistence, alpha, timing, habitat, or strategy
+evidence.
+
+SYNTH-MKT-015 answers both mandatory questions. Major unstudied behavior still
+includes broader-engine redundancy of the seven roles, their future temporal
+meaning, size/style leadership, objective support/acceptance, accumulation/
+distribution, and portable multi-strategy habitats. No genuinely new archetype
+emerged: industry rotation and relative-strength leadership remain search-space
+candidates because no future process, trigger, execution, exit, capacity, or
+outcome evidence exists.
+
+The highest-information-value next question is MKT-INDRS-GEO-001: outcome-blind,
+role-specific geometry against accepted direction, breadth, correlation/
+liquidity, volatility, risk-appetite, and leadership controls. Freeze that map
+and spec before construction, then test pairwise redundancy and conservative
+joint rank reconstruction. Temporal outcomes, strategy fields, failed industry
+roles, failed MA20 fields, and CY-011 remain prohibited.
+
+## Human decision required?
+
+No. No S1-S12 STOP is active. Continue autonomously with MKT-INDRS-GEO-001
+map-first; CY-011 remains locked and unopened.

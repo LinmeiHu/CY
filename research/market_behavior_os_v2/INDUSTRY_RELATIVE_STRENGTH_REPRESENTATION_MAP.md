@@ -51,3 +51,22 @@ Passing establishes a portable industry/relative-strength state coordinate,
 not persistence into future returns, stock selection alpha, a sector-rotation
 strategy, habitat fitness, causality, or usefulness. Those require separate
 outcome and execution contracts after representation quality and compression.
+
+## MKT-INDRS-001 result
+
+Eight exact primaries pass: equal-industry positive participation and return
+depth, industry return dispersion, winner-industry diffusion, broad rank
+rotation, and the three leave-one-out residual-shape roles. Return depth and
+participation form one 0.980-Spearman component, so the simpler participation
+role represents that latent mechanism. The other six passing roles remain
+separate under the frozen internal 0.85 graph and two external breadth controls.
+
+Three exact primaries fail without replacement: industry-vs-market depth
+(weakest neighbor 0.660), positive-mass industry leadership concentration
+(minimum definable coverage 0.945), and top-set leadership persistence
+(weakest neighbor 0.540; denominator rho 0.895). The broader families remain
+underexplored, but these exact definitions retain their rejection.
+
+The seven-role minimal panel is provisional at the full Market State Engine
+level. MKT-INDRS-GEO-001 must test economically matched external controls before
+any temporal response, habitat, or strategy research.

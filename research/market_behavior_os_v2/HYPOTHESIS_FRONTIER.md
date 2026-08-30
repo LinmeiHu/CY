@@ -2,11 +2,11 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Can industry leadership, diffusion, persistence, rotation, stock-vs-industry RS, and industry-vs-market RS be represented as distinct portable market state? | Very high | Very high | Registered CY-006 industry labels and daily facts; contract audit required | High | Medium | ACTIVE_MKT_INDRS_001_MAP_FIRST |
-| 2 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
-| 3 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
-| 4 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
-| 5 | How do leadership concentration, diffusion, and failure evolve across industry states? | High | High | Coverage/industry governance needed | High | Medium | QUEUED |
+| 1 | Which of the seven frozen industry/relative-strength coordinates add a distinct dimension beyond the accepted Market State Engine? | Very high | High | Frozen panels only; no raw rebuild | High | Low-medium | ACTIVE_MKT_INDRS_GEO_001_MAP_FIRST |
+| 2 | Do distinct industry rotation/diffusion/residual coordinates have replicating temporal meaning after state controls? | Very high | Very high | Future market/industry state can be built after geometry | High | Medium; confirmation must be untouched before spec | WAIT_FOR_GEOMETRY |
+| 3 | Can frozen synchronization pressure be split into stable upside/downside directional processes under a structurally different architecture? | High | High | Weakest-link continuous/process design fails | High | Extreme rescue risk | DEPRIORITIZE_NO_AGGREGATION_OR_THRESHOLD_RESCUE |
+| 4 | Can leader failure be represented by a structurally different transition family? | High | High | Current change definitions fail; level imbalance exists | High | High rescue risk | DEFER_NO_WINDOW_RESCUE |
+| 5 | Do volatility contraction/expansion transitions differ conditional on accepted direction and breadth? | High | High | Four volatility roles exist | High | Medium | QUEUED |
 | 6 | Can trend strength/alignment be replicated from an independent source, and can quality/age/transition be represented without window clones? | High | Medium | Current QD-003 has 21 strict OHLC failures | High | Medium; rescue/mining risk | DEFER_DIVERSIFY_FIRST |
 | 7 | Can the exact correlation/liquidity 0.90/0.50 shock episode be rescued? | Low after falsification | Low | Exact episode is sparse/unstable | Low without new structure | Extreme rescue risk | REJECT_RESCUE_BROADER_FAMILY_OPEN |
 
@@ -36,3 +36,10 @@ MKT-MIN-VOL-RESP-002 finds no incremental future-volatility response. The
 minute path is deprioritized after representation, state, and temporal-response
 closure. The active queue diversifies to industry leadership/rotation and
 relative strength, explicitly excluding the failed MA20 diffusion clone.
+
+MKT-INDRS-001 freezes eight exact roles and compresses them to seven internally
+nonredundant coordinates. Three exact roles fail without rescue. Because the
+first construction tested external redundancy against only discovery and broad
+leadership concentration, the next question is outcome-blind role-specific
+geometry against the accepted Market State Engine. Temporal outcomes remain
+untouched until that compression is frozen.

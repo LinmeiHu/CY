@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Minute path has no state/temporal closure; industry leadership and relative strength remain major unrepresented dimensions | Build MKT-INDRS-001 data contract and map |
+| EXPLORE | 30% | Seven industry/relative-strength coordinates freeze internally, but broader-engine distinctness is unresolved | Freeze role-specific MKT-INDRS-GEO-001 geometry before temporal meaning |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 10% | No new family yet meets preliminary-evidence threshold | Map executable implications only after a mechanism survives |
+| INVENT | 10% | Rotation/relative-strength representations exist but no recurring temporal process survives | Keep industry rotation and RS leadership in search space only |
 | REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 25% | Industry work could reproduce failed MA20 diffusion or stock leadership under new names | Freeze distinct industry roles, membership/coverage semantics, neighbors, and redundancy first |
+| FALSIFY | 25% | The seven internally distinct industry roles may duplicate accepted direction, correlation, volatility, liquidity, or leadership states | Use fixed role-specific external controls and conservative joint reconstruction; no outcome access |
 
 Mandatory checkpoint questions:
 

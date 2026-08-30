@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-INDRS-001_FROZEN_BEFORE_CONSTRUCTION_RESULT`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent industry leadership, rotation, and relative-strength representation
-- `SUPPORTING_FRONTIER`: frozen same-session/daily volatility states and rejected exact OLS/reversal/curvature paths
+- `CURRENT_PHASE`: `MKT-INDRS-GEO-001_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: outcome-blind external geometry of the seven accepted industry/relative-strength roles against the frozen Market State Engine
+- `SUPPORTING_FRONTIER`: role-specific accepted breadth, risk-appetite, correlation/liquidity, volatility, and leadership controls
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -148,6 +148,18 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   one year and 0-8 upside onsets across at most two years; strict/state/dwell/
   activity gates fail. No panic, speculation, or process role freezes.
 - No new strategy archetype meets the implementation threshold.
+- MKT-INDRS-001 freezes eight of eleven exact industry/relative-strength roles.
+  Equal-industry return depth is redundant with positive participation at
+  absolute Spearman 0.980, leaving seven internally nonredundant coordinates:
+  participation, industry return dispersion, winner-industry diffusion, rank
+  rotation, and three leave-one-out stock/industry residual-shape roles.
+- Industry-vs-market depth fails its fixed neighbor gate at 0.660. Positive-
+  mass industry leadership concentration misses raw coverage at 0.945 because
+  its denominator can be exactly zero. Top-set persistence fails fixed neighbor
+  and denominator gates at 0.540 and 0.895. None is rescued.
+- The accepted industry roles are representation-stable only. They have not
+  established future leadership persistence, stock-selection alpha, market-
+  return meaning, habitat usefulness, timing, or a strategy/archetype.
 
 ## Data/governance status
 
@@ -214,6 +226,12 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   `a21b56ea...`, report `f6ef7331...`; four targeted tests pass. It reads no
   raw minute row, OLS/endpoint/precomputed-shape field, outcome, strategy field,
   or CY-011.
+- MKT-INDRS-001 binds frozen spec `e49f2098...`, the six immutable CY-006
+  partitions, and breadth panel `60ca6bf5...`. Two serial runs are byte-
+  identical: panel `c9e8d449...`, result `578d9dba...`, report `60ed7ef7...`;
+  ten focused breadth/industry tests pass. Exact leave-one-out reconstruction
+  covers 1,988 rows with zero difference. Failed MA industry fields, outcomes,
+  strategy fields, and CY-011 remain unread.
 
 ## Current frontier
 
@@ -372,3 +390,16 @@ exact leave-one-out stock/industry residual roles. The rejected MA20 industry
 diffusion/divergence fields are prohibited. PIT membership, five-member/80%/
 ten-industry gates, common-label rotation, absolute/PIT/relative coordinates,
 neighbors, redundancy, compression, and no-usefulness boundaries are fixed.
+
+MKT-INDRS-001 is complete. Eight exact roles pass and seven survive internal/
+breadth-control compression. Three exact roles fail without rescue as recorded
+above. This is materially deeper than the rejected MA20 diffusion clone: it
+uses equal-industry states, winner diffusion, common-label rank rotation, and
+exact other-member stock/industry residual geometry.
+
+SYNTH-MKT-015 selects MKT-INDRS-GEO-001 next. Before any temporal or strategy
+research, freeze role-specific external controls from accepted Market State
+Engine dimensions and test pairwise redundancy plus conservative joint rank
+reconstruction. Do not import failed industry roles, optimize control sets,
+read future returns or strategy outcomes, reopen failed MA20 fields, or access
+CY-011. No S1-S12 STOP is active.

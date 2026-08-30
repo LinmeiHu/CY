@@ -12,7 +12,7 @@ return. Initial dimensions are:
 | Dispersion/correlation | leave-one-out 20-session co-movement and 5-session directional synchronization frozen | causal percentiles and robust z | governed-view contrasts | TWO_ROLES_FROZEN_PANIC_PROCESS_UNTESTED |
 | Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
 | Five-day intraday trajectory | minute realized-volatility ordinal progression freezes; all exact OLS slopes and the other 35 non-slope roles fail | survivor has causal expanding/trailing percentiles and robust z | governed-view contrasts | ONE_EXTERNALLY_DISTINCT_ROLE_USEFULNESS_UNTESTED |
-| Leadership/style | concentration, persistence, diffusion, failure | causal history | industry/index contrasts | CONSTRUCTION_PENDING |
+| Industry/relative strength | equal-industry participation, industry return dispersion, winner-industry diffusion, rank rotation, and three leave-one-out stock/industry residual-shape roles frozen; exact depth/concentration/persistence roles fail or compress | causal expanding/trailing percentiles and robust z | governed-view contrasts and exact stock-versus-industry residuals | SEVEN_PROVISIONAL_ROLES_EXTERNAL_ENGINE_GEOMETRY_PENDING |
 | Risk appetite | signed limit-relative central direction plus separate upside/downside extreme participation frozen; seven manifestations redundant and tail balance deterministic | causal expanding/trailing percentiles and robust z | governed-view contrasts | THREE_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
 
@@ -168,3 +168,21 @@ blocks and fixed non-overlap is also near zero; one-session response flips sign
 and three-session response weakens. Raw negative association is explained by
 current-volatility controls. The engine retains a descriptive coordinate only,
 with no continuation/reversal or usefulness annotation.
+
+## MKT-INDRS-001 boundary
+
+Eight of eleven industry/relative-strength primaries pass their frozen gates.
+Equal-industry return depth is a redundant participation manifestation, leaving
+seven internally nonredundant roles: equal-industry positive participation,
+industry return dispersion, winner-industry diffusion, rank rotation, and
+leave-one-out stock/industry residual dispersion, tail balance, and positive-
+mass concentration.
+
+Industry-vs-market depth fails its fixed neighboring definitions; industry
+positive-mass leadership concentration lacks the required definable coverage;
+and top-set persistence fails neighbor and denominator stability. The engine
+does not substitute a favorable threshold, view, year, or denominator. The
+seven survivors remain provisional engine dimensions until role-specific
+geometry against accepted direction, breadth, correlation/liquidity,
+volatility, risk-appetite, and leadership controls is frozen. No temporal or
+strategy interpretation is attached.
