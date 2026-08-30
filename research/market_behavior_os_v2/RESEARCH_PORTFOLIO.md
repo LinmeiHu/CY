@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | HAB association is formation-heavy; shock/recovery remains an independent process gap | Build MKT-SHOCK-001 map without outcome labels or window rescue |
+| EXPLORE | 30% | Continuous stress freezes but downside/upside direction and risk appetite remain missing | Build MKT-RISK-001 map without future outcomes |
 | EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
 | INVENT | 10% | No new family yet meets preliminary-evidence threshold | Map executable implications only after a mechanism survives |
 | REPLICATE | 15% | HAB and state constructions are reproducible; habitat outcomes are consumed | Future independent-time replication remains required |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Opportunity density can be mistaken for payoff usefulness; high levels can be mistaken for shocks | Separate shock/onset/recovery from level and test volatility redundancy |
+| FALSIFY | 20% | Continuous stress can be mistaken for panic and tail breadth can collapse into volatility | Require direction, neighbors, portability, and breadth/volatility redundancy tests |
 
 Mandatory checkpoint questions:
 

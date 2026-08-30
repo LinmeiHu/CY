@@ -99,3 +99,18 @@
   payoff synergy exists.
 - Boundary: all outcomes are consumed; this is exploratory association and can
   neither establish causality nor authorize a strategy rule or archetype.
+
+## MKT-H-008 — correlation/liquidity shock-and-relief process
+
+- Status: `CONTINUOUS_SCORES_SUPPORTED_EXACT_EPISODE_FAIL`.
+- Result: direction-neutral synchronization pressure and joint synchronization/
+  activity stress score pass fixed aggregation/activity-horizon, denominator,
+  coverage, year, and volatility-redundancy gates.
+- Result: the exact 0.90 onset / 0.50 reset state machine fails. It produces
+  zero or one onset per group, no activity-dry-up observations, zero strict-
+  threshold onset match, and unstable/undefined stress, relief, dwell, and
+  impairment neighbors.
+- Boundary: no onset, dwell, relief, impairment, panic, price recovery,
+  forecast, habitat, or strategy claim freezes. Do not lower the threshold or
+  replace the primary with the permissive neighbor. The broader process family
+  remains open under structurally different representations.

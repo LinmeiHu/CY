@@ -59,6 +59,17 @@ redundancy edge. The exact liquidity-change representation is horizon-unstable.
 No combination is a panic state, recovery process, impairment marker, habitat,
 or signal.
 
+MKT-SHOCK-001 subsequently freezes two direction-neutral continuous
+coordinates: synchronization pressure and joint synchronization/activity stress.
+They are stable across fixed smooth/weakest-link shapes, 10/20/60 activity
+levels, denominators, views/years, and are nonredundant with frozen volatility.
+
+The exact episode does not freeze. A 0.90 all-component onset occurs zero or one
+time per group; strict-neighbor event match is zero, episode-state overlap is
+unstable, and no activity-dry-up event occurs. High continuous stress is not a
+shock onset, `RELIEF` is not price recovery, and panic remains unrepresented
+without a negative-direction coordinate.
+
 ## MKT-LDR-001, MKT-VOL-001, and minute boundary
 
 The fixed concentration-decay and discovery-deterioration transitions do not

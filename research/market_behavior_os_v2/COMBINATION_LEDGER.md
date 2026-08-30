@@ -8,7 +8,7 @@ association. No combination is confirmed or authorized as a rule.
 | trend direction x new-high/new-low discovery x leadership concentration | slow direction x price discovery x concentration | GEOMETRY_SUPPORTED_USEFULNESS_UNTESTED | MKT-GEO-001 shows all three roles are contemporaneously nonredundant; no future return or strategy outcome read |
 | trend direction x new-high/new-low discovery for CHINEXT V1 | slow direction x price discovery | FORMATION_COUNT_SYNERGY_ONLY_PAYOFF_SYNERGY_FAIL | A+B adjusted-R2 increment passes only evaluated/candidate daily counts; selected counts and every payoff endpoint fail. This is consumed exploratory association, not a rule. |
 | trend habitat x five-day supply/demand | slow environment x recent trajectory | WAIT | Same-session minute levels freeze but every exact five-day OLS trajectory primary fails; no supply/demand trajectory mechanism exists |
-| correlation state x liquidity state | synchronization/co-movement x activity/turnover/concentration | COMPONENT_REPRESENTATIONS_SUPPORTED_INTERACTION_UNTESTED | MKT-CLQ-001 freezes five nonredundant roles; no panic, shock, recovery, or usefulness interaction tested |
+| correlation state x liquidity activity | synchronization/co-movement x activity | CONTINUOUS_JOINT_STRESS_SUPPORTED_EXACT_EPISODE_FAIL | MKT-SHOCK-001 freezes a nonvolatility-redundant continuous weakest-link score; exact onset/dwell/relief/dry-up fails sparse/stability gates. No panic/usefulness claim. |
 
 No synergy claim is permitted without frozen `BASELINE`, `A`, `B`, and `A+B`
 comparisons and temporal evidence.

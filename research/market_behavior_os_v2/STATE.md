@@ -8,9 +8,9 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-SHOCK-001_SPEC_FROZEN_CONSTRUCTION_NEXT`
-- `CURRENT_PRIMARY_FRONTIER`: correlation/liquidity shock-and-recovery representation
-- `SUPPORTING_FRONTIER`: completed CHINEXT habitat association and frozen correlation/liquidity levels
+- `CURRENT_PHASE`: `SYNTH-MKT-008_COMPLETE_MKT-RISK-001_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: strategy-independent directional tail/risk-appetite representation
+- `SUPPORTING_FRONTIER`: frozen direction-neutral stress scores and failed exact episode
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -123,6 +123,14 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   payoff synergy exists.
 - HAB-CHX-001 remains consumed exploratory association. It establishes no
   causal mechanism, general habitat predictor, trading rule, or new archetype.
+- MKT-SHOCK-001 freezes synchronization pressure and joint synchronization/
+  activity stress as two continuous, direction-neutral, nonvolatility-redundant
+  coordinates. Joint-score neighbor rhos are 0.794-0.954, denominator rho is
+  0.999, and every group has 815 normalized observations.
+- Its exact episode fails: the primary all-three-above-0.90 state yields zero or
+  one onset per group, strict onset match is zero, stress/relief states are
+  unstable, dwell/relief neighbor correlations are unavailable, and no
+  activity-dry-up observation occurs. No onset/dwell/relief/impairment freezes.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
@@ -171,18 +179,19 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   breadth panel `60ca6bf5...`, completed cycles `77f28da5...`, and two exact
   event ledgers. Two successful runs have panel `922920fd...`, result
   `5bb39c2a...`, and report `7b0c05b5...`. CY-011 remains unopened.
+- MKT-SHOCK-001 binds CLQ panel `d45993ce...`, volatility panel `f7361284...`,
+  and frozen spec `9fb559c5...`. Two runs are byte-identical: panel
+  `bba55a5a...`, result `29eb55a5...`, report `9b51ec9c...`. It reads no raw
+  liquidity-change field, future return, strategy field, or CY-011.
 
 ## Current frontier
 
-SYNTH-MKT-007 completes HAB-CHX-001 without promoting a rule. The most important
-unstudied behavior is now a recurring market-wide shock-and-recovery process:
-whether frozen correlation synchronization and liquidity state can represent
-onset, stress, recovery, and impairment without reviving the failed raw
-five-session liquidity-change window. MKT-SHOCK-001 is the next outcome-blind
-primary frontier. It must build a Representation Map, preserve continuous
-absolute/PIT/relative coordinates, predeclare event and neighboring-shape
-definitions, separate shock from high level, and test redundancy against frozen
-volatility before any future-path or strategy outcome is read. The map, causal
-state machine, fixed 0.85/0.90/0.95 threshold neighbors, aggregation/activity-
-horizon neighbors, coverage/event/state/relief gates, and volatility-redundancy
-tests are now frozen under spec `9fb559c5...` before construction.
+SYNTH-MKT-008 preserves the two continuous stress coordinates and rejects the
+exact sparse episode without threshold rescue. The missing prerequisite is a
+strategy-independent directional-tail/risk-appetite representation: the current
+stress score cannot distinguish synchronized rallies from downside stress.
+MKT-RISK-001 is next. It must map positive/negative participation, tail depth,
+limit-relative extreme participation, upside/downside asymmetry, industry
+diffusion, and leadership concentration where registered data permits; preserve
+absolute/PIT/relative coordinates; test neighboring definitions and redundancy
+with breadth/volatility; and read no future return or strategy outcome.

@@ -265,3 +265,51 @@ Representation Map first. Freeze economically distinct event/shape definitions,
 absolute/PIT/relative coordinates, neighboring-shape gates, cross-view/year
 coverage, and redundancy against volatility. Do not tune the rejected raw
 five-session liquidity-change window or read strategy/future-return outcomes.
+
+## SYNTH-MKT-008 — after direction-neutral stress/episode representation
+
+### What was learned?
+
+MKT-SHOCK-001 freezes synchronization pressure and a weakest-link joint
+correlation/synchronization/activity stress score. The joint score has 815
+normalized observations in every group, fixed-neighbor median rhos from 0.794
+to 0.954, ALL_STATUS/NON_ST median rho 0.999, nondegenerate view-year cells,
+and no 0.85 redundancy with frozen volatility.
+
+The exact episode is rejected. Requiring all three components above their 0.90
+causal percentiles yields zero or one onset per group, not the frozen minimum of
+eight across three years. Strict-threshold onset match is zero, STRESS/RELIEF
+state overlap is unstable, dwell/relief correlations are undefined, and no
+activity-dry-up observation exists. No permissive threshold replaces it.
+
+### What market behavior are we still not studying?
+
+Direction-neutral synchronization cannot distinguish a synchronized rally from
+downside stress. We still lack market-wide positive/negative participation,
+tail depth, limit-relative extreme participation, upside/downside tail
+asymmetry, directional industry diffusion, and speculative risk appetite. We
+also still lack a defensible episode onset, non-slope intraday process, and
+action-safe support/acceptance.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A stable continuous stress coordinate without direction, onset, or future
+path cannot imply panic reversal, defensive timing, or any trigger/exit. The
+oversold/panic archetype remains search space only.
+
+### Parallel-track awareness
+
+- **Market research:** continuous state breadth expands; exact shock episodes
+  and downside direction remain missing.
+- **Existing-strategy archaeology:** no strategy field or outcome was read; the
+  result need not improve CHINEXT or SuperMind.
+- **Strategy invention:** no family crosses the preliminary-mechanism gate.
+
+### Research Director decision
+
+`EXPLORE` MKT-RISK-001 and `DEPRIORITIZE` the exact 0.90/0.50 episode. Build a
+deep strategy-independent directional-tail/risk-appetite Representation Map
+using registered causal return, limit, industry, activity, and view facts. Keep
+positive and negative tails separate, preserve absolute/PIT/relative views,
+test neighboring definitions and redundancy with breadth/volatility, and do not
+combine the result with stress or read outcomes until its own roles freeze.

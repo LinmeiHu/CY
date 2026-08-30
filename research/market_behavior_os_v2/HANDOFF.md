@@ -154,7 +154,24 @@ liquidity shock-and-recovery Representation Map and frozen spec before testing.
 Do not tune the rejected five-session liquidity-change window, read strategy
 outcomes, or open CY-011.
 
+MKT-SHOCK-001 is now complete. Synchronization pressure and the continuous
+weakest-link joint stress score freeze; joint-score neighbor rhos are
+0.794-0.954, ALL_STATUS/NON_ST median rho is 0.999, and the roles are not
+volatility-redundant. Two runs are byte-identical: panel `bba55a5a...`, result
+`29eb55a5...`, report `9b51ec9c...`.
+
+The exact episode fails without rescue. It has zero or one onset per group,
+strict onset match zero, unstable/undefined stress-relief/dwell neighbors, and
+zero activity-dry-up observations. It establishes no onset, recovery, panic,
+reversal, or usefulness claim.
+
+SYNTH-MKT-008 selects MKT-RISK-001 next: a strategy-independent directional
+tail/risk-appetite Representation Map. Use registered return/limit/industry
+facts, preserve absolute/PIT/relative coordinates, and test redundancy against
+breadth/volatility. Do not combine it with stress or read outcomes until its own
+representations freeze.
+
 ## Human decision required?
 
-No. Continue with MKT-SHOCK-001 map-first representation research. CY-011 remains
+No. Continue with MKT-RISK-001 map-first representation research. CY-011 remains
 unopened.

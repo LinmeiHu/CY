@@ -18,7 +18,9 @@ MKT-H-002 breadth construction
 MKT-H-003 correlation/liquidity panic construction
   -> five descriptor roles frozen
   -> liquidity change horizon-unstable
-  -> panic interaction/recovery still untested
+  -> MKT-H-008 synchronization and joint stress scores freeze
+  -> exact 0.90/0.50 episode onset/dwell/relief/dry-up fails sparse/stability gates
+  -> direction still absent; panic interaction/recovery remains unformed
   -> if a separately frozen process is stable and distinct from volatility
        -> panic-process archaeology
        -> only after mechanism evidence: reversal archetype decision
