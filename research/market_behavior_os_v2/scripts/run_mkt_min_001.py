@@ -94,16 +94,10 @@ def _load_year_context(
         "amount_reconciled",
         "daily_hard_valid",
         "hard_valid",
-        "snapshot_id",
         "daily_snapshot_id",
     ]
     cy6 = pq.read_table(cy006_path, columns=cy6_columns, use_threads=False).to_pandas()
-    cy8 = pq.read_table(cy008_daily_path, columns=cy8_columns, use_threads=False).to_pandas()
     cy6["trade_date"] = pd.to_datetime(cy6.trade_date, errors="raise")
-    cy8["trade_date"] = pd.to_datetime(cy8.trade_date, errors="raise")
-    if cy6.duplicated(key_columns).any() or cy8.duplicated(key_columns).any():
-        raise MarketMinuteConstructionError("duplicate daily causal context key")
-
     cy6 = cy6.rename(
         columns={
             "available_at": "cy6_available_at",
@@ -111,13 +105,70 @@ def _load_year_context(
             "hard_valid": "cy6_hard_valid",
         }
     )
+    if cy6.duplicated(key_columns).any():
+        raise MarketMinuteConstructionError("duplicate CY-006 context key")
+    cy6["daily_eligible"] = (
+        _true(cy6.cy6_hard_valid)
+        & _true(cy6.bar_valid)
+        & _true(cy6.trading_state_valid)
+        & _true(cy6.corporate_action_valid)
+        & _true(cy6.market_rule_valid)
+        & _true(cy6.historical_identity_valid)
+        & ~_true(cy6.corporate_action_blocking)
+        & (
+            pd.to_datetime(cy6.cy6_available_at, utc=True)
+            <= pd.to_datetime(cy6.decision_at, utc=True)
+        )
+        & pd.to_numeric(cy6.close, errors="coerce").gt(0)
+        & pd.to_numeric(cy6.volume, errors="coerce").gt(0)
+        & pd.to_numeric(cy6.trade_status, errors="coerce").eq(1)
+        & _true(cy6.current_day_data_tradable)
+    )
+    cy006_rows = len(cy6)
+    daily_eligible_rows = int(cy6.daily_eligible.sum())
+    cy6["symbol"] = cy6.symbol.astype("string[pyarrow]")
+    cy6["cy6_snapshot_id"] = cy6.cy6_snapshot_id.astype("string[pyarrow]")
+    cy6 = cy6[
+        [*key_columns, "is_st", "cy6_snapshot_id", "daily_eligible"]
+    ].copy()
+    gc.collect()
+
+    cy8 = pq.read_table(cy008_daily_path, columns=cy8_columns, use_threads=False).to_pandas()
+    cy8["trade_date"] = pd.to_datetime(cy8.trade_date, errors="raise")
+    if cy8.duplicated(key_columns).any():
+        raise MarketMinuteConstructionError("duplicate CY-008 context key")
     cy8 = cy8.rename(
         columns={
             "available_at": "cy8_available_at",
-            "snapshot_id": "cy8_snapshot_id",
             "hard_valid": "cy8_hard_valid",
         }
     )
+    expected_available = cy8.trade_date + pd.Timedelta(hours=15, minutes=30)
+    cy8["minute_base_eligible"] = (
+        pd.to_datetime(cy8.cy8_available_at).eq(expected_available)
+        & pd.to_numeric(cy8.minute_count, errors="coerce").eq(241)
+        & pd.to_numeric(cy8.distinct_minute_count, errors="coerce").eq(241)
+        & pd.to_numeric(cy8.source_resolution_minutes, errors="coerce").eq(1)
+        & _true(cy8.session_complete)
+        & _true(cy8.ohlc_valid)
+        & _true(cy8.unit_valid)
+        & _true(cy8.volume_reconciled)
+        & _true(cy8.amount_reconciled)
+        & _true(cy8.daily_hard_valid)
+        & _true(cy8.cy8_hard_valid)
+    )
+    cy008_rows = len(cy8)
+    cy8["symbol"] = cy8.symbol.astype("string[pyarrow]")
+    cy8["daily_snapshot_id"] = cy8.daily_snapshot_id.astype("string[pyarrow]")
+    cy8 = cy8[
+        [
+            *key_columns,
+            "daily_snapshot_id",
+            "minute_base_eligible",
+        ]
+    ].copy()
+    gc.collect()
+
     context = cy6.merge(
         cy8, on=key_columns, how="left", validate="one_to_one", indicator=True
     )
@@ -125,47 +176,20 @@ def _load_year_context(
     snapshot_match = context.daily_snapshot_id.eq(context.cy6_snapshot_id)
     if not snapshot_match.loc[matched].all():
         raise MarketMinuteConstructionError("CY-006/CY-008 snapshot binding failed")
-
-    context["daily_eligible"] = (
-        _true(context.cy6_hard_valid)
-        & _true(context.bar_valid)
-        & _true(context.trading_state_valid)
-        & _true(context.corporate_action_valid)
-        & _true(context.market_rule_valid)
-        & _true(context.historical_identity_valid)
-        & ~_true(context.corporate_action_blocking)
-        & (
-            pd.to_datetime(context.cy6_available_at, utc=True)
-            <= pd.to_datetime(context.decision_at, utc=True)
-        )
-        & pd.to_numeric(context.close, errors="coerce").gt(0)
-        & pd.to_numeric(context.volume, errors="coerce").gt(0)
-        & pd.to_numeric(context.trade_status, errors="coerce").eq(1)
-        & _true(context.current_day_data_tradable)
-    )
-    expected_available = context.trade_date + pd.Timedelta(hours=15, minutes=30)
     context["minute_eligible"] = (
         matched
-        & pd.to_datetime(context.cy8_available_at).eq(expected_available)
-        & pd.to_numeric(context.minute_count, errors="coerce").eq(241)
-        & pd.to_numeric(context.distinct_minute_count, errors="coerce").eq(241)
-        & pd.to_numeric(context.source_resolution_minutes, errors="coerce").eq(1)
-        & _true(context.session_complete)
-        & _true(context.ohlc_valid)
-        & _true(context.unit_valid)
-        & _true(context.volume_reconciled)
-        & _true(context.amount_reconciled)
-        & _true(context.daily_hard_valid)
-        & _true(context.cy8_hard_valid)
+        & _true(context.minute_base_eligible)
         & snapshot_match.fillna(False)
     )
-    context = context.drop(columns=["_merge"])
+    context = context.drop(
+        columns=["_merge", "daily_snapshot_id", "minute_base_eligible"]
+    )
     context = context.sort_values(key_columns).reset_index(drop=True)
     audit = {
-        "cy006_rows": int(len(cy6)),
-        "cy008_rows": int(len(cy8)),
+        "cy006_rows": int(cy006_rows),
+        "cy008_rows": int(cy008_rows),
         "matched_rows": int(matched.sum()),
-        "daily_eligible_rows": int(context.daily_eligible.sum()),
+        "daily_eligible_rows": daily_eligible_rows,
         "minute_eligible_rows": int(context.minute_eligible.sum()),
     }
     return context, audit
@@ -182,6 +206,15 @@ def _view_masks(symbols: pd.Series) -> dict[str, np.ndarray]:
 def _lineage_hash(values: pd.Series) -> str:
     payload = "\n".join(sorted(values.dropna().astype(str))).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
+
+
+def _selection_hash(frame: pd.DataFrame) -> str:
+    values = (
+        frame.symbol.astype(str)
+        + "|"
+        + pd.to_datetime(frame.trade_date).dt.strftime("%Y-%m-%d")
+    )
+    return hashlib.sha256("\n".join(sorted(values)).encode("utf-8")).hexdigest()
 
 
 def aggregate_market_date(
@@ -235,8 +268,8 @@ def aggregate_market_date(
                 "cy6_snapshot_sha256": _lineage_hash(
                     merged.loc[final_mask, "cy6_snapshot_id"]
                 ),
-                "cy8_snapshot_sha256": _lineage_hash(
-                    merged.loc[final_mask, "cy8_snapshot_id"]
+                "cy8_snapshot_selection_sha256": _selection_hash(
+                    merged.loc[final_mask, ["symbol", "trade_date"]]
                 ),
             }
             if hard_valid:

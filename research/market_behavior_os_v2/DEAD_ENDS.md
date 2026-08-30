@@ -22,6 +22,9 @@
 | 5-session discovery deterioration across 40/60/80 and 3/5/10 horizons | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.500 | No joint leader-failure geometry; broader family remains open |
 | Volatility term structure RV10/RV40 with adjacent ratios | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.634 | Do not optimize the short/long pair |
 | Five-session downside squared-return-mass share with 3/10 neighbors | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.694 | Do not tune smoothing horizon; broader asymmetry family remains open |
+| Market minute selloff-duration level using p40/median/p60 cross-section | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.545 | Do not choose a favorable quantile; broader duration family remains open |
+| Market auction-to-continuous-open level using p40/median/p60 cross-section | REPRESENTATION_NOT_FROZEN: worst neighbor rho 0.474 | Do not choose a favorable quantile; auction state remains underexplored |
+| Five-day OLS slopes for all 34 market minute descriptors | REPRESENTATION_NOT_FROZEN: fixed endpoint/last-three-session worst correlations 0.288-0.514 | Do not select the best horizon or descriptor; require a structurally different non-slope trajectory hypothesis |
 
 Seed-program dead ends remain authoritative in their own ledgers and are not
 duplicated here.

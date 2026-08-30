@@ -8,9 +8,9 @@ Updated 2026-08-30.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-MIN-001_REQUIRED_SCALE_APPROVED`
-- `CURRENT_PRIMARY_FRONTIER`: strategy-independent five-day market intraday representation
-- `SUPPORTING_FRONTIER`: vectorized governed minute aggregation only
+- `CURRENT_PHASE`: `SYNTH-MKT-006_COMPLETE_HAB-CHX-001_NEXT`
+- `CURRENT_PRIMARY_FRONTIER`: CHINEXT V1 market-habitat association
+- `SUPPORTING_FRONTIER`: frozen trend direction and breadth discovery coordinates
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -88,9 +88,25 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   scale. All 34 optimized descriptors match the frozen NumPy reference across
   1,200 sessions within `5.0e-13`; opening-window differences and exact five-
   minute volume/amount conservation are zero. The frozen 20-date full-market
-  test processed 18,201,043 raw rows and 71,481 eligible sessions, and two runs
-  produced the same panel hash `ee274ca0...` and opening hash `9093a928...`.
-  This resolves the engineering STOP but freezes no minute representation yet.
+  test processed 18,201,043 raw rows and 71,481 eligible sessions. After the
+  memory-only context reduction, two runs produced the same current panel hash
+  `fcc04aec...` and opening hash `9093a928...`. This resolved the engineering
+  STOP; representation evidence was established only by the subsequent
+  required-scale analysis below.
+- Required-scale MKT-MIN-001 then processed 1,473,342,173 SH/SZ raw rows,
+  6,060,257 complete sessions, and 5,814,290 causal descriptor sessions into
+  11,656 daily and 11,624 five-day market rows. Exact conservation remained
+  zero; peak RSS was 2,896,543,744 bytes and minimum descriptor coverage 0.9669.
+- Thirty-two of 34 same-session minute level representations pass. Exact
+  selloff-duration and auction-gap levels fail cross-sectional-definition
+  stability. Outcome-blind redundancy leaves 23 direct nonredundant level roles
+  at 0.85, including separate price-path, VWAP, selling, buying, volatility, and
+  volume-path manifestations.
+- Every exact five-day OLS-slope representation fails its fixed 3-day/endpoint
+  shape-neighbor gate; worst correlations range from 0.288 to 0.514 despite
+  strong p40/p50/p60 aggregation stability. No five-day trajectory role is
+  frozen. This rejects the exact slope construction, not intraday families or
+  non-slope multi-day shapes.
 - No new strategy archetype meets the implementation threshold.
 
 ## Data/governance status
@@ -132,11 +148,17 @@ MKT-TRND-001 established representation stability, not strategy usefulness.
   peak RSS was below the frozen 3 GiB ceiling and measured throughput exceeded
   2.25 million raw rows/second. The required 1,486,577,999-row scan is approved
   under the unchanged 90-minute/3-GiB envelope.
+- The required daily panel SHA-256 is `bdbb3cb9...`; the compressed trajectory
+  panel is `89d3e33b...`. Strict causal PIT percentiles/z-scores have complete
+  post-504 coverage, and absolute/relative coordinates are preserved separately.
 
 ## Current frontier
 
-The highest-information task remains MKT-MIN-001. The unsafe rowwise approach is
-retired; the frozen vectorized adapter and measured resource envelope approve the
-required 2018-2023 full-cross-section construction. Next, run required scale,
-construct the five-day trajectory/PIT/relative coordinates, test representation
-quality and redundancy, and synthesize before any outcome or habitat access.
+SYNTH-MKT-006 deprioritizes the failed exact five-day slope construction while
+leaving the broader minute family underexplored. The next highest-information
+question moves beyond representation: whether the already-frozen, nonredundant
+market direction and breadth-discovery mechanisms describe CHINEXT V1
+opportunity/payoff habitats. HAB-CHX-001 must use continuous/preregistered state
+coordinates, baseline/A/B/A+B comparisons, right-tail and failure decomposition,
+and exploratory wording because CHINEXT outcomes are already consumed. It may
+not optimize a trading rule or read CY-011.

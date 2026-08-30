@@ -53,6 +53,18 @@
     "representative": ["2020-02-03", "2020-02-04", "2020-02-05", "2020-02-06", "2020-02-07", "2020-02-10", "2020-02-11", "2020-02-12", "2020-02-13", "2020-02-14", "2020-02-17", "2020-02-18", "2020-02-19", "2020-02-20", "2020-02-21", "2020-02-24", "2020-02-25", "2020-02-26", "2020-02-27", "2020-02-28"],
     "required": "all 1457 2018-2023 exchange dates"
   },
+  "required_scale_input": {
+    "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+    "sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701",
+    "daily_rows": 11656,
+    "raw_rows": 1473342173,
+    "raw_descriptor_sessions": 6060257,
+    "final_descriptor_sessions": 5814290,
+    "minimum_descriptor_coverage": 0.9669421487603306,
+    "peak_rss_bytes": 2896543744,
+    "wall_seconds": 407.5470519999508,
+    "construction_spec_sha256": "fab33b9ebe52ab2c07a21ed4afc4737050502ddcf8ed9bf9a32f4cfbeb2f9130"
+  },
   "equivalence_gates": {
     "exact": ["session keys", "row counts", "distinct timestamps", "expected grid", "opening window count", "lunch boundary", "volume and amount conservation", "PIT cutoff", "missing rejection", "raw adjustment semantics", "deterministic ordering"],
     "floating": "all 34 descriptors must match the accepted NumPy reference at rtol=1e-12 and atol=1e-12; no scientific scaling after disagreement",
@@ -65,6 +77,7 @@
     "view_year_minimum_observations": 150,
     "latent_component_edge_absolute_spearman": 0.85,
     "pit_minimum_observations": 504,
+    "minimal_panel_priority": ["open_close_log_return", "morning_log_return", "afternoon_log_return", "final30_log_return", "high_time_fraction", "low_time_fraction", "close_location", "signed_directional_efficiency", "path_r2", "close_vs_vwap_log", "time_above_vwap_fraction", "volume_above_vwap_fraction", "vwap_halfday_log_slope", "vwap_recovery_count", "longest_below_vwap_fraction", "late_vwap_acceptance_fraction", "downside_excursion", "downside_realized_volatility", "down_minute_volume_share", "selloff_duration_fraction", "recovery_speed_30bar", "upside_excursion", "up_minute_volume_share", "positive_minute_fraction", "new_intraday_high_fraction", "intraday_log_range", "minute_realized_volatility", "vwap_deviation_std", "vwap_crossing_fraction", "opening30_volume_share", "afternoon_volume_share", "closing30_volume_share", "minute_volume_concentration", "auction_to_continuous_open_log_return"],
     "no_rescue": "A failed primary is not replaced by a favorable aggregation, horizon, window, or view."
   },
   "resource_contract": "research/market_behavior_os_v2/RESOURCE_BUDGETS.md",
@@ -79,7 +92,7 @@
   ],
   "outputs": [
     "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
-    "research/market_behavior_os_v2/artifacts/MKT-MIN-001_trajectory_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-MIN-001_trajectory_panel.parquet",
     "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
     "research/market_behavior_os_v2/reports/MKT-MIN-001_market_intraday_representation.md"
   ]

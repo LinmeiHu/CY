@@ -164,3 +164,52 @@ million raw one-minute rows and conflicts with the frozen no-full-market-build
 scale policy. Stop under `unsafe resource use` until a reviewed vectorized,
 partition-pruned adapter and frozen resource budget/sample contract exist. Do
 not weaken the 504 gate, reduce to favorable dates, or substitute CHINEXT events.
+
+## SYNTH-MKT-006 — after required-scale market intraday representation
+
+### What was learned?
+
+The vector adapter resolves the scale STOP without weakening science. Required
+scale covers 1,473,342,173 SH/SZ minute rows, 5,814,290 causal security-sessions,
+1,457 market dates, four views, and two denominators. Exact five-minute volume
+and amount conservation remains zero; every view/denominator has 1,453 complete
+five-day states and complete causal normalization after observation 504.
+
+Thirty-two same-session levels pass neighboring cross-sectional definitions,
+ST sensitivity, portability, and year cells. Selloff duration and the auction
+gap fail. All exact five-day OLS slopes fail their fixed endpoint/last-three-
+session shape neighbors, with worst correlations only 0.288-0.514. This rejects
+the exact slope representations, not the broader path, VWAP, selling/buying,
+volatility, volume, or non-slope trajectory families.
+
+### What market behavior are we still not studying?
+
+We still lack economic usefulness for every stable market coordinate; recurring
+non-slope intraday transitions; objective support/acceptance under an action-safe
+level; correlation/liquidity shock recovery; accumulation/distribution
+falsification; and strategy opportunity/payoff behavior conditional on market
+state. The most consequential immediate gap is Strategy x Market Habitat.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Stable same-session levels and failed exact trajectories establish neither
+an opportunity process nor trigger, veto, exit, payoff asymmetry, or capacity.
+No intraday, pullback, reversal, or defensive archetype is promoted.
+
+### Parallel-track awareness
+
+- **Market research:** daily continuous coordinates are broad enough for one
+  carefully frozen association study; exact minute slopes are deprioritized.
+- **Existing-strategy archaeology:** CHINEXT V1 has timestamp-reconciled and
+  already-consumed exploratory outcomes suitable for habitat falsification.
+- **Strategy invention:** no new family crosses the preliminary-mechanism gate.
+
+### Research Director decision
+
+`VALIDATE` one strategy-habitat question and `DEPRIORITIZE` the exact five-day
+OLS construction. HAB-CHX-001 will test frozen trend direction and breadth
+discovery as at most two distinct market mechanisms against CHINEXT V1
+opportunity formation and payoff shape. It must preserve BASELINE/A/B/A+B,
+right-tail and severe-failure decomposition, continuous effects, temporal
+stability, and exploratory wording. Do not optimize boundaries, add minute state
+as a third mechanism, or open CY-011.

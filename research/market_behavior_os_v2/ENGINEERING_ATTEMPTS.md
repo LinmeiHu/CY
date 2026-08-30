@@ -93,3 +93,22 @@ two opening hashes are
 `9093a928e0bb47d0548e4b8b855e7f30c91837875035d1267efb7598553ab360`.
 Peak RSS remains below the 3 GiB hard ceiling. This is the accepted architecture
 for required scale; it is not scientific representation evidence.
+
+## MKT-MIN-001-B — invalid required attempt at the exact RAM guard
+
+The first required run stopped before accepting an output when process peak RSS
+reached 3,227,631,616 bytes, exactly 6,406,144 bytes above the 3 GiB ceiling.
+The first differing resource state was annual causal context retained with
+audit-only columns after its daily/minute eligibility flags were already known.
+The scientific input, population, descriptors, and gates were unchanged.
+
+## MKT-MIN-001-C — memory-reduced exact retry
+
+CY-006 and CY-008 eligibility is now computed before their join; only symbol,
+date, ST status, eligibility, and bound selection lineage survive into the
+annual context. A repeated representative run preserves the same descriptor and
+opening values while lowering peak RSS below 1.9 GiB. Two reduced-context runs
+have panel hash `fcc04aec73da783328926ff882491a4a7ac4efffea06acb6cb7a106d338dc0b0`
+and opening hash `9093a928e0bb47d0548e4b8b855e7f30c91837875035d1267efb7598553ab360`.
+Required scale then passes at 2,896,543,744 bytes peak RSS and 407.55 seconds. No
+ceiling was relaxed.

@@ -15,7 +15,11 @@
 | `LEADER_FAILURE_REPRESENTATION_MAP.md` | Separates concentration/discovery level from transition/failure claims |
 | `VOLATILITY_REPRESENTATION_MAP.md` | Outcome-blind multidimensional volatility concept map |
 | `MARKET_INTRADAY_SAMPLING_CONTRACT.md` | Strategy-independent bounded minute readiness sampling and PIT contract |
-| `STOP.md` | Current genuine unsafe-resource stop and exact resume condition |
+| `MARKET_INTRADAY_REPRESENTATION_MAP.md` | Required-scale same-session and five-day minute representation semantics |
+| `DATA_CAPABILITY_MATRIX.md` | Governed available/unavailable research data capabilities |
+| `DATA_GAP_BACKLOG.md` | Missing data and scientifically valid resolution paths |
+| `RESOURCE_BUDGETS.md` | Frozen and measured large-job envelopes |
+| `STOP.md` | Current S1-S12 stop status and prior resolved stop |
 | `HYPOTHESIS_FRONTIER.md` | Ranked market questions |
 | `HYPOTHESES.md` | Persistent market-hypothesis evidence ledger |
 | `HYPOTHESIS_GRAPH.md` | Prerequisite and dependency map |

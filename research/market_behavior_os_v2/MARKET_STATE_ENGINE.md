@@ -10,6 +10,8 @@ return. Initial dimensions are:
 | Volatility | realized level, intraday range, squared-return-mass concentration, and change frozen; downside level/dispersion redundant; term structure/asymmetry unstable | causal percentiles and robust z | governed-view contrasts | FOUR_ROLES_FROZEN_USEFULNESS_UNTESTED |
 | Liquidity | own-history-relative activity, turnover level, and amount concentration frozen; participation/diffusion compressed into activity; fixed change unstable | causal percentiles and robust z | governed-view contrasts with audited units | THREE_ROLES_FROZEN_TRANSITION_NOT_FROZEN |
 | Dispersion/correlation | leave-one-out 20-session co-movement and 5-session directional synchronization frozen | causal percentiles and robust z | governed-view contrasts | TWO_ROLES_FROZEN_PANIC_PROCESS_UNTESTED |
+| Intraday level | 32 same-session path/VWAP/pressure/volatility/volume representations pass; 23 direct nonredundant roles at 0.85 | causal expanding/trailing percentiles and robust z after 504 observations | ALL_A/SH_A/SZ_A/CHINEXT_BOARD contrasts | LEVELS_FROZEN_USEFULNESS_UNTESTED |
+| Five-day intraday trajectory | exact Day -5..Day -1 OLS slopes with endpoint/3-day neighbors | causal coordinates constructed but primary gates fail | governed-view contrasts constructed | EXACT_SLOPE_REPRESENTATIONS_NOT_FROZEN |
 | Leadership/style | concentration, persistence, diffusion, failure | causal history | industry/index contrasts | CONSTRUCTION_PENDING |
 | Risk appetite | observable tail participation and speculative demand proxies | causal history | segment contrasts | REPRESENTATION_PENDING |
 | State transition | onset, acceleration, deterioration, reversal, dwell time | causal transition rarity | synchronized versus idiosyncratic transition | CONSTRUCTION_PENDING |
@@ -67,6 +69,12 @@ Realized volatility, intraday range, volatility concentration, and volatility
 change freeze as nonredundant roles. This does not establish contraction,
 expansion, panic, or payoff behavior.
 
-Market-wide five-day minute data pass a bounded cross-year/view readiness audit.
-No minute market-state role is frozen because the readiness sample has only six
-market dates and cannot supply 504 causal historical observations per view.
+MKT-MIN-001 required scale covers 1,457 dates and full governed cross-sections.
+Thirty-two same-session descriptor levels pass exact coverage, definition,
+denominator, portability, and year-cell gates; selloff duration and the auction
+gap fail. These are market-state levels, not demand/supply mechanisms.
+
+All 34 exact five-day OLS trajectories fail because their fixed last-three-
+session neighbor is unstable even though p40/p50/p60 aggregation is stable. No
+trajectory role may be rescued with the best horizon. Non-slope shapes and the
+broader minute families remain underexplored.

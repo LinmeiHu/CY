@@ -73,3 +73,12 @@ Role compression respects economic families before testing combinations.
 Supply exhaustion, demand strengthening, accumulation/distribution, volatility
 contraction, and intraday trend quality remain falsifiable interpretations until
 the surviving representations and later path evidence support them.
+
+The exact outcome-blind minimal-panel priority is the pre-existing accepted
+`DESCRIPTOR_COLUMNS` order: price path, VWAP structure, selling pressure, buying
+pressure, volatility/oscillation, volume path, then auction relation, preserving
+the within-family order in the frozen reference implementation. A passing role
+is accepted only when its absolute trajectory Spearman correlation with every
+earlier accepted role is at most 0.85. Serialization uses compressed Parquet for
+the wide trajectory panel to remain inside the durable-output budget; this does
+not change any scientific value.

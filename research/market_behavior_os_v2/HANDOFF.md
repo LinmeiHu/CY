@@ -116,18 +116,37 @@ opening hash `0a8d4586...`.
 The predeclared 2020-02-03..2020-02-28 full-market stage processed 18,201,043
 raw rows, 75,442 complete raw sessions, and 71,481 final causal sessions in about
 eight seconds. Its minimum view cross-section is 753 and minimum descriptor
-coverage 0.99933. Two runs have identical market panel `ee274ca0...` and opening
-`9093a928...` hashes. Peak RSS is about 2.54 GiB, below the 3 GiB hard ceiling;
-required scale projects safely inside 90 minutes.
+coverage 0.99933. The first required attempt correctly stopped 6.4 MB above the
+3 GiB peak-RSS ceiling. Removing audit-only annual context columns without
+changing scientific values reduced representative RSS below 1.9 GiB; two current
+panel hashes are `fcc04aec...` and opening hashes remain `9093a928...`.
 
-No minute representation or mechanism has been frozen yet. Required scale and
-the outcome-blind stability/redundancy analysis remain next.
+Required scale then passed in 407.55 seconds at 2,896,543,744 bytes peak RSS. It
+processed 1,473,342,173 SH/SZ raw rows, 6,060,257 complete sessions, and
+5,814,290 final causal sessions into 11,656 daily and 11,624 five-day market
+rows. Minimum descriptor coverage is 0.9669; exact conservation remains zero.
+
+Thirty-two same-session level representations freeze. Selloff-duration and
+auction-gap levels fail cross-sectional-neighbor stability. Redundancy at 0.85
+leaves 23 direct nonredundant level roles across price path, VWAP, selling,
+buying, volatility, and volume path. These are state descriptors only.
+
+All exact five-day OLS-slope representations fail their fixed last-three/
+endpoint shape-neighbor gate; worst correlations range 0.288-0.514. No five-day
+trajectory role, selling-exhaustion mechanism, demand-strengthening mechanism,
+or strategy is frozen. The broader intraday and non-slope trajectory families
+remain underexplored.
+
+SYNTH-MKT-006 selects HAB-CHX-001 next: a strictly exploratory Strategy x Market
+Habitat study using only frozen trend direction and breadth discovery as the two
+initial mechanisms. It must report baseline/A/B/A+B, right-tail and severe-loss
+behavior, temporal stability, and continuous effects without optimizing a rule.
 
 Do not populate strategy x habitat outcomes from MKT-GEO-001, and do not return
 automatically to CHINEXT minute-feature screening.
 
 ## Human decision required?
 
-No. The V2.1 prompt authorized resolving this engineering blocker and the frozen
-measured envelope now passes. Continue with required scale; CY-011 and all
-outcomes remain unopened.
+No. Continue with the preregistered HAB-CHX-001 association study. CHINEXT
+outcomes are already consumed and must remain exploratory; CY-011 remains
+unopened.

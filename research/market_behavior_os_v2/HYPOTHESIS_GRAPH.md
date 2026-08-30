@@ -40,7 +40,10 @@ MKT-H-007 market-wide five-day minute state
   -> optimized 1,200-session equivalence PASS
   -> 20-date full-market resource/determinism gate PASS
   -> required 2018-2023 scale approved
-  -> no PIT-normalized state freeze yet
+  -> 32 same-session levels freeze
+  -> selloff-duration and auction-gap levels fail
+  -> all exact five-day OLS trajectories fail shape-neighbor stability
+  -> no minute mechanism/usefulness claim
 
 CHINEXT five-day minute feasibility
   -> strategy-conditioned descriptors only

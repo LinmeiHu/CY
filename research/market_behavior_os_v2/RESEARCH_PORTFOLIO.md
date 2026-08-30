@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Market-wide five-day minute roles are the highest-diversification gap | STOP until vectorized adapter/resource contract; then freeze roles outcome-blind |
-| EXPLOIT | 15% | Direction, breadth, correlation/liquidity, and volatility roles are frozen | Preserve for later process tests; do not optimize now |
+| EXPLORE | 25% | Exact minute slopes failed; stable levels and non-slope families remain open | Deprioritize horizon clones; preserve structurally different process questions |
+| EXPLOIT | 25% | Direction, breadth, correlation/liquidity, volatility, and minute levels are frozen | Use only preregistered simple mechanisms in habitat association |
 | INVENT | 10% | No new family yet meets preliminary-evidence threshold | Map executable implications only after a mechanism survives |
 | REPLICATE | 15% | All completed constructions and the minute audit are reproducible; usefulness is untouched | Future independent-time replication remains required |
 | TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 15% | Feasibility can be mistaken for representation or usefulness | Preserve the six-date/504-history distinction and no-archetype boundary |
+| FALSIFY | 15% | Stable state can be mistaken for habitat usefulness | HAB-CHX-001 must preserve baseline, right tail, failures, and no-confirmation wording |
 
 Mandatory checkpoint questions:
 

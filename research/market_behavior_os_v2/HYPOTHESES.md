@@ -71,9 +71,11 @@
 
 ## MKT-H-007 — market-wide five-day intraday state
 
-- Status: `REQUIRED_SCALE_APPROVED_REPRESENTATION_PENDING`.
+- Status: `LEVEL_REPRESENTATIONS_SUPPORTED_EXACT_TRAJECTORIES_FAIL`.
 - Result: AUDIT-MKT-MIN-001 passes exact PIT/session/reconciliation/descriptor
   readiness on 240 trajectories and 1,200 sessions across 2018-2023/four views.
-- Boundary: no 504-observation PIT-normalized market state or minute mechanism is
-  frozen yet. Tiny/small/reference/20-date full-market vector gates pass, so the
-  required 2018-2023 scale is approved under the frozen resource envelope.
+- Result: required scale freezes 32 same-session levels; selloff-duration and
+  auction-gap levels fail. All exact five-day OLS slopes fail fixed 3-day/
+  endpoint shape-neighbor stability, so no five-day trajectory role freezes.
+- Boundary: representation support is not a supply/demand mechanism, usefulness,
+  habitat, or signal. The broader trajectory family remains open.

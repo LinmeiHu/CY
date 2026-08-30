@@ -1,8 +1,9 @@
 # Strategy x Market Habitat Matrix contract
 
 The target estimand is `P(strategy behavior | market state)` for multiple
-archetypes. The matrix is deliberately empty until the Market State Engine has
-frozen dimensions and a strategy has timestamp-reconciled opportunities.
+archetypes. Trend direction and breadth discovery are now representation-stable,
+so one exploratory CHINEXT study may populate only those two coordinates after
+its definitions are frozen. Other cells remain empty.
 
 Each populated cell must report:
 
@@ -22,5 +23,10 @@ claiming habitat diversification.
 
 | Strategy | Trend state | Breadth state | Volatility/liquidity state | Leadership state | Evidence status |
 |---|---|---|---|---|---|
-| STRAT-CHINEXT-V1 | UNPOPULATED | Qualified participation clue only | UNPOPULATED | UNPOPULATED | ENGINE_NOT_FROZEN |
+| STRAT-CHINEXT-V1 | HAB-CHX-001 PREREGISTRATION PENDING | HAB-CHX-001 PREREGISTRATION PENDING | UNPOPULATED | UNPOPULATED | TWO_DIMENSION_EXPLORATORY_ASSOCIATION_SELECTED |
 | STRAT-SUPERMIND-V6 | UNPOPULATED | UNPOPULATED | UNPOPULATED | UNPOPULATED | PROGRAM_REPLAY_NOT_DONE |
+
+HAB-CHX-001 must freeze exact source fields, decision timestamps, opportunity
+denominator, continuous estimands, diagnostic state boundaries, BASELINE/A/B/A+B,
+right-tail and severe-loss definitions, uncertainty, and temporal blocks before
+reading joined outcomes. MKT-GEO-001 is not itself habitat evidence.
