@@ -570,3 +570,25 @@
 - Boundary: this is data/event support only. It establishes no stable acceptance
   representation, continuation/rejection process, supply depletion, demand,
   future outcome, habitat, timing, execution, or strategy.
+
+## MKT-H-035 — objective prior-high same-session path representation
+
+- Status: `SEVEN_OBSERVABLES_STABLE_TEMPORAL_PROCESS_UNTESTED`.
+- Hypothesis: post-cross continuation, rejection, level dwell, loss/reacquisition,
+  VWAP acceptance, activity, and episode descriptions can be represented stably
+  across fixed level/clock/shape neighbors and compressed against generic daily
+  and minute path geometry without using outcomes.
+- Primary: L20 continuous with 60 completed later bars; closing and conditional
+  reacquisition domains remain separate. L10/L40 continuous and L20 auction are
+  fixed challenges; +5/+15/+30/+60 values are attribution only.
+- Falsifiers: any frozen coverage, block/year, nondegeneracy, neighbor, shape,
+  generic-control, role-redundancy, scalar, resource, or determinism gate fails.
+  No role, clock, horizon, control, cell, or threshold may be selected after
+  reveal.
+- Result: all ten roles pass internal gates. Follow-through excursion is daily-
+  high redundant, closing margin is jointly daily-close reconstructable, and
+  above-level episode count compresses into loss episodes. Seven minimal
+  observables remain on 899 full-horizon events, with reacquisition on 641.
+- Boundary: the seven observations are not seven latent mechanisms. The result
+  establishes no temporal process, common direction, future value, habitat,
+  trigger, execution edge, breakout strategy, or failed-breakout strategy.

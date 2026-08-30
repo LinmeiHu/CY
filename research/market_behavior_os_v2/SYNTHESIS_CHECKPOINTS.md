@@ -1661,3 +1661,53 @@ continuous, L10/L40 and auction challenges, 5/15/30/60 censoring, neutral
 closing states, conditional reacquisition, fixed generic daily/minute controls,
 scalar reconstruction, and no-rescue gates must be immutable. No future value,
 outcome, strategy field, post-2023 partition, or CY-011 may enter.
+
+## SYNTH-MKT-038 — after objective prior-high same-session representation
+
+### What was learned?
+
+All ten frozen post-cross roles are internally stable across the fixed L10/L40,
+auction, and shape challenges. Fixed generic geometry then removes three
+manifestations: follow-through excursion is nearly official daily-high margin,
+closing acceptance margin is reconstructed by daily close geometry, and above-
+level episodes mirror loss episodes. Seven completed-session observables remain
+distinct on 899 full-horizon events, with conditional reacquisition on 641.
+
+This is representation evidence only. The result does not show that continuation
+is favorable, rejection is informative, VWAP acceptance reflects initiative,
+activity reflects demand, or the observations form a common process. Post-cross
+bars are attribution and cannot predict an entry at the first-cross timestamp.
+
+### What market behavior are we still not studying?
+
+Multi-session progression or reversal of the seven retained observations,
+their residual coupling, repeated-event transition order, resistance role
+reversal, five-day acceptance/rejection trajectories, causal historical
+normalization, full contemporaneous relative state, industry diffusion,
+accumulation/distribution, future outcomes, execution, habitat, and capacity
+remain unstudied. Order flow, aggressor side, and hidden liquidity remain
+unidentifiable from OHLCV.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Stable post-cross observables do not authorize either breakout continuation
+or failed-breakout reversal. No CHINEXT rule changes, prototype, or CY-011 use
+are justified.
+
+### Parallel-track awareness
+
+- **Market research:** deepen only through a frozen repeated-event temporal map;
+  do not score or combine the seven observations yet.
+- **Existing-strategy archaeology:** preserve the consumed V1 breakout-lineage
+  rejection and keep all strategy outcomes unread.
+- **Strategy invention:** both breakout and failed-breakout archetypes remain
+  inactive pending a portable process and later usefulness evidence.
+
+### Research Director decision
+
+`DEEPEN_BREAKOUT_REPEATED_EVENT_TEMPORAL_REPRESENTATION`. Build the temporal
+Representation Map and freeze role-specific sequence support, actual event-day
+gaps, endpoint and robust shape challenges, generic controls, block/year
+portability, coupling, transition, and no-rescue gates before estimating any
+direction. Do not revive compressed roles, flatten raw minutes, optimize windows,
+read outcomes, change CHINEXT V1, or open CY-011.

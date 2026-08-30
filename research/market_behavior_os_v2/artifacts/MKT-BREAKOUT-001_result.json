@@ -1,0 +1,698 @@
+{
+  "coordinate_systems": {
+    "absolute": "primary; fixed dimensionless ratios, fractions, log returns, and bar counts across 2018-2023",
+    "pit_historical": "not constructible from 48 isolated blocks; no sampled-block percentile or year rank",
+    "relative": "ten-symbol view samples are not a contemporaneous eligible cross-section; descriptive view portability only"
+  },
+  "cy011_read": false,
+  "experiment_id": "MKT-BREAKOUT-001",
+  "future_fields_read": [],
+  "hashes": {
+    "bound_inputs": {
+      "cy006_inventory": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "cy008_inventory": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+      "data_contract": "721517cdec1d11c78768422000a103a5a76ce30323580275553a86b9d7422a28",
+      "data_coordinate_event_audit": "1eaeed29c1c45fae7f0090eee3720d39f20928cc3930bf7bfa95e7ac49b5d897",
+      "data_count_audit": "59e74964172b8aafdae09d54f8d9536dd372dec1b6a8c61cd9cc97df51a1f561",
+      "data_result": "b21244e9f2e047d8d4585c6e1826cdeecd1752f4e8bf74cd69dc7e1ae22d2e45",
+      "data_runner": "097b521928d81342030ab68dda56eda4d6aa3e1d2ea57028c77b5c38c5ce5bfd",
+      "data_spec": "db3d0cfa1ea7c6d8ca89fe553c0b4803ac36080b02a57160c41e9391b5040b79",
+      "minute_adapter": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8",
+      "qd004_inventory": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c",
+      "qd010_inventory": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8",
+      "registry": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+      "representation_map": "0b3363e43e7eee1ef3d222abe8c4017d93784e545ddbf82683e90f15b7666c47",
+      "source_role_runner": "91dde0e182fa3418fae653e93f3e9a1e6058e5fdf5c48245190fd49388f01597"
+    },
+    "geometry_sha256": "56cf578c147b34944ae95d3906aff0c84a632dac9073a9ef5e5919bafd2c3f01",
+    "panel_sha256": "e67ac766ac8ad63b6f95309e08a70cf5d0daca3450159adc45de99ef2faa1b99",
+    "runner_sha256": "ce1ea4e67f7cda80541c4d8b3a34d056ecb83d564dba5ff2809a239a9a3891d6",
+    "spec_sha256": "f314165c8cfaefe9cb0ba761dc8ced6884abd192d36481a8d740f2c0a592821f",
+    "stability_sha256": "044fb279f9fc9386b069cae9f59ec23ec0592bf94330b693909f8907cfe515af"
+  },
+  "partition_content_hashes_verified": true,
+  "population": {
+    "input_cohort_rows": 9600,
+    "input_unique_sessions": 9575,
+    "panel_rows": 3957,
+    "primary_crossings": 964,
+    "primary_matched60": 899,
+    "primary_reacquisitions": 641,
+    "raw_minute_rows_read": 2307575
+  },
+  "post_2023_data_read": false,
+  "prediction_or_usefulness_claim": "NONE",
+  "process_claim": "NONE",
+  "representation_summary": {
+    "externally_distinct_before_role_compression": [
+      "continuation30_log_return",
+      "rejection_depth",
+      "below_level_close_fraction",
+      "loss_episode_count",
+      "reacquisition_bars",
+      "post_cross_cumulative_vwap_acceptance_fraction",
+      "post_cross_activity_ratio",
+      "above_level_close_episode_count"
+    ],
+    "internally_stable_roles": [
+      "continuation30_log_return",
+      "follow_through_excursion",
+      "rejection_depth",
+      "below_level_close_fraction",
+      "loss_episode_count",
+      "reacquisition_bars",
+      "closing_acceptance_margin",
+      "post_cross_cumulative_vwap_acceptance_fraction",
+      "post_cross_activity_ratio",
+      "above_level_close_episode_count"
+    ],
+    "minimal_roles": [
+      "continuation30_log_return",
+      "rejection_depth",
+      "below_level_close_fraction",
+      "loss_episode_count",
+      "reacquisition_bars",
+      "post_cross_cumulative_vwap_acceptance_fraction",
+      "post_cross_activity_ratio"
+    ],
+    "role_compression": {
+      "above_level_close_episode_count": "loss_episode_count"
+    },
+    "roles": {
+      "above_level_close_episode_count": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 2.0,
+            "n": 146,
+            "q25": 1.0,
+            "q75": 5.75,
+            "unique": 15
+          },
+          "2019": {
+            "median": 2.0,
+            "n": 126,
+            "q25": 1.0,
+            "q75": 4.0,
+            "unique": 14
+          },
+          "2020": {
+            "median": 2.0,
+            "n": 160,
+            "q25": 1.0,
+            "q75": 6.0,
+            "unique": 15
+          },
+          "2021": {
+            "median": 3.0,
+            "n": 176,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 16
+          },
+          "2022": {
+            "median": 2.0,
+            "n": 149,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 17
+          },
+          "2023": {
+            "median": 2.0,
+            "n": 142,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 16
+          }
+        },
+        "compressed_to": "loss_episode_count",
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_ROLE_REDUNDANT"
+      },
+      "below_level_close_fraction": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 0.5604166666666667,
+            "n": 146,
+            "q25": 0.0657852564102564,
+            "q75": 0.9489583333333333,
+            "unique": 111
+          },
+          "2019": {
+            "median": 0.5791666666666667,
+            "n": 126,
+            "q25": 0.008333333333333333,
+            "q75": 0.9299660852713179,
+            "unique": 82
+          },
+          "2020": {
+            "median": 0.49257425742574257,
+            "n": 160,
+            "q25": 0.032911685529857876,
+            "q75": 0.9120850763296572,
+            "unique": 129
+          },
+          "2021": {
+            "median": 0.7580532212885154,
+            "n": 176,
+            "q25": 0.07373251748251748,
+            "q75": 0.9705259255336052,
+            "unique": 134
+          },
+          "2022": {
+            "median": 0.4585152838427948,
+            "n": 149,
+            "q25": 0.06666666666666667,
+            "q75": 0.9623430962343096,
+            "unique": 116
+          },
+          "2023": {
+            "median": 0.5653021442495126,
+            "n": 142,
+            "q25": 0.03048752095362265,
+            "q75": 0.9488636363636364,
+            "unique": 107
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      },
+      "closing_acceptance_margin": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": -9.905363751450125e-09,
+            "n": 162,
+            "q25": -0.016444911966270653,
+            "q75": 0.011766765662094836,
+            "unique": 162
+          },
+          "2019": {
+            "median": -0.0005565339748101472,
+            "n": 137,
+            "q25": -0.011582015344550167,
+            "q75": 0.020142139416735594,
+            "unique": 134
+          },
+          "2020": {
+            "median": 0.0028248587570622874,
+            "n": 175,
+            "q25": -0.011940313815820836,
+            "q75": 0.01877301661605857,
+            "unique": 171
+          },
+          "2021": {
+            "median": -0.002588049417457272,
+            "n": 184,
+            "q25": -0.014921645143074064,
+            "q75": 0.014457441892382017,
+            "unique": 184
+          },
+          "2022": {
+            "median": -0.0015788256036798898,
+            "n": 158,
+            "q25": -0.01877674787834721,
+            "q75": 0.019976758846163956,
+            "unique": 158
+          },
+          "2023": {
+            "median": -0.0017457350155366536,
+            "n": 148,
+            "q25": -0.010862735074040036,
+            "q75": 0.012656418868956854,
+            "unique": 148
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 964,
+        "external_pass": false,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_EXTERNAL_REDUNDANT"
+      },
+      "continuation30_log_return": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": -0.0029945549123619026,
+            "n": 146,
+            "q25": -0.01110169883001141,
+            "q75": 0.005760064245150875,
+            "unique": 138
+          },
+          "2019": {
+            "median": 0.0,
+            "n": 126,
+            "q25": -0.009898616573613751,
+            "q75": 0.007756402112769596,
+            "unique": 111
+          },
+          "2020": {
+            "median": -0.001981418980345095,
+            "n": 160,
+            "q25": -0.010554332439629539,
+            "q75": 0.006760710177432733,
+            "unique": 148
+          },
+          "2021": {
+            "median": -0.00456984737915624,
+            "n": 176,
+            "q25": -0.014713709398642784,
+            "q75": 0.006660492571085476,
+            "unique": 168
+          },
+          "2022": {
+            "median": -0.00401609772641523,
+            "n": 149,
+            "q25": -0.011676558055424318,
+            "q75": 0.005557294591574019,
+            "unique": 143
+          },
+          "2023": {
+            "median": -0.0006967043028250569,
+            "n": 142,
+            "q25": -0.00864562791327974,
+            "q75": 0.009040046642262694,
+            "unique": 141
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      },
+      "follow_through_excursion": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 0.016599038444327974,
+            "n": 146,
+            "q25": 0.0068424463800377255,
+            "q75": 0.0336944420332807,
+            "unique": 143
+          },
+          "2019": {
+            "median": 0.01767127596547835,
+            "n": 126,
+            "q25": 0.008805826752184831,
+            "q75": 0.04811556392520572,
+            "unique": 123
+          },
+          "2020": {
+            "median": 0.021826232872117712,
+            "n": 160,
+            "q25": 0.009714537423177572,
+            "q75": 0.05052785571788382,
+            "unique": 157
+          },
+          "2021": {
+            "median": 0.01903630610748619,
+            "n": 176,
+            "q25": 0.006173533772246331,
+            "q75": 0.04377426216641345,
+            "unique": 175
+          },
+          "2022": {
+            "median": 0.021168536800736604,
+            "n": 149,
+            "q25": 0.008333365122477288,
+            "q75": 0.04138813165895128,
+            "unique": 149
+          },
+          "2023": {
+            "median": 0.0159324497779868,
+            "n": 142,
+            "q25": 0.0050834872430939315,
+            "q75": 0.04044797530179134,
+            "unique": 142
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": false,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_EXTERNAL_REDUNDANT"
+      },
+      "loss_episode_count": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 2.0,
+            "n": 146,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 15
+          },
+          "2019": {
+            "median": 1.0,
+            "n": 126,
+            "q25": 0.0,
+            "q75": 4.0,
+            "unique": 14
+          },
+          "2020": {
+            "median": 2.0,
+            "n": 160,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 13
+          },
+          "2021": {
+            "median": 2.0,
+            "n": 176,
+            "q25": 0.75,
+            "q75": 5.0,
+            "unique": 15
+          },
+          "2022": {
+            "median": 2.0,
+            "n": 149,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 16
+          },
+          "2023": {
+            "median": 2.0,
+            "n": 142,
+            "q25": 1.0,
+            "q75": 4.0,
+            "unique": 16
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      },
+      "post_cross_activity_ratio": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 0.9867760235280129,
+            "n": 146,
+            "q25": 0.913952405610337,
+            "q75": 1.0,
+            "unique": 109
+          },
+          "2019": {
+            "median": 0.9931561926825254,
+            "n": 126,
+            "q25": 0.899249368704835,
+            "q75": 1.0,
+            "unique": 83
+          },
+          "2020": {
+            "median": 0.9484207029434808,
+            "n": 160,
+            "q25": 0.8575363462703455,
+            "q75": 1.0,
+            "unique": 118
+          },
+          "2021": {
+            "median": 0.9715796171228376,
+            "n": 176,
+            "q25": 0.8972875270736901,
+            "q75": 1.0,
+            "unique": 126
+          },
+          "2022": {
+            "median": 0.9833525264529314,
+            "n": 149,
+            "q25": 0.8807209493230014,
+            "q75": 1.0,
+            "unique": 104
+          },
+          "2023": {
+            "median": 0.9910246647713089,
+            "n": 142,
+            "q25": 0.8860744093011805,
+            "q75": 1.0,
+            "unique": 98
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      },
+      "post_cross_cumulative_vwap_acceptance_fraction": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 0.6105158143659474,
+            "n": 146,
+            "q25": 0.2834569904938558,
+            "q75": 0.9463541666666666,
+            "unique": 117
+          },
+          "2019": {
+            "median": 0.6298986486486486,
+            "n": 126,
+            "q25": 0.24357142857142855,
+            "q75": 0.9905311158798283,
+            "unique": 93
+          },
+          "2020": {
+            "median": 0.75625,
+            "n": 160,
+            "q25": 0.39572072072072073,
+            "q75": 1.0,
+            "unique": 108
+          },
+          "2021": {
+            "median": 0.6067577282530554,
+            "n": 176,
+            "q25": 0.25087209302325586,
+            "q75": 0.9608759124087591,
+            "unique": 134
+          },
+          "2022": {
+            "median": 0.5502183406113537,
+            "n": 149,
+            "q25": 0.20276497695852536,
+            "q75": 0.9951690821256038,
+            "unique": 108
+          },
+          "2023": {
+            "median": 0.6359519865768924,
+            "n": 142,
+            "q25": 0.24853429203539823,
+            "q75": 0.9489583333333333,
+            "unique": 110
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      },
+      "reacquisition_bars": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": 4.0,
+            "n": 107,
+            "q25": 1.0,
+            "q75": 12.0,
+            "unique": 32
+          },
+          "2019": {
+            "median": 2.0,
+            "n": 77,
+            "q25": 1.0,
+            "q75": 5.0,
+            "unique": 18
+          },
+          "2020": {
+            "median": 2.0,
+            "n": 128,
+            "q25": 1.0,
+            "q75": 11.5,
+            "unique": 37
+          },
+          "2021": {
+            "median": 3.0,
+            "n": 118,
+            "q25": 1.0,
+            "q75": 9.0,
+            "unique": 34
+          },
+          "2022": {
+            "median": 3.0,
+            "n": 112,
+            "q25": 1.0,
+            "q75": 9.0,
+            "unique": 32
+          },
+          "2023": {
+            "median": 4.0,
+            "n": 99,
+            "q25": 1.0,
+            "q75": 12.0,
+            "unique": 32
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 641,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      },
+      "rejection_depth": {
+        "annual_absolute_distribution": {
+          "2018": {
+            "median": -0.013531797405285761,
+            "n": 146,
+            "q25": -0.025785617588929693,
+            "q75": -0.005567617573874667,
+            "unique": 146
+          },
+          "2019": {
+            "median": -0.01292148248942021,
+            "n": 126,
+            "q25": -0.025326367873280825,
+            "q75": -0.002663687737171766,
+            "unique": 123
+          },
+          "2020": {
+            "median": -0.016189891245701415,
+            "n": 160,
+            "q25": -0.026880115617284456,
+            "q75": -0.005165135331758636,
+            "unique": 157
+          },
+          "2021": {
+            "median": -0.017192770386216805,
+            "n": 176,
+            "q25": -0.030282395595980477,
+            "q75": -0.00616630818073069,
+            "unique": 176
+          },
+          "2022": {
+            "median": -0.016119267818701544,
+            "n": 149,
+            "q25": -0.027794173030300406,
+            "q75": -0.007288638078784326,
+            "unique": 149
+          },
+          "2023": {
+            "median": -0.010797534753651361,
+            "n": 142,
+            "q25": -0.020899705898716092,
+            "q75": -0.004052219550013697,
+            "unique": 142
+          }
+        },
+        "definition_passes": {
+          "L10_CONTINUOUS": true,
+          "L20_AUCTION": true,
+          "L40_CONTINUOUS": true
+        },
+        "domain_rows": 899,
+        "external_pass": true,
+        "internal_pass": true,
+        "nondegenerate": true,
+        "shape_pass": true,
+        "status": "REPRESENTATION_PASS_DISTINCT"
+      }
+    }
+  },
+  "resource_checks": {
+    "memory_headroom_above_floor": true,
+    "peak_rss_below_ceiling": true,
+    "raw_rows_exact": true,
+    "wall_clock_below_ceiling": true
+  },
+  "scalar_reconstruction": {
+    "cases": [
+      {
+        "exact_fields_match": true,
+        "selection_hash": "00301d533c50a2b1946d00ae6c986601c92c05a13705e2fd0d85e92dcb6650d2",
+        "symbol": "300092.SZ",
+        "trade_date": "2018-11-14"
+      },
+      {
+        "exact_fields_match": true,
+        "selection_hash": "004efd9ff3c1fd67ff0cc00502c63cd369f739307b068cc0232783218d5c702f",
+        "symbol": "300568.SZ",
+        "trade_date": "2021-06-23"
+      },
+      {
+        "exact_fields_match": true,
+        "selection_hash": "006078fe9c6be9ec463acea3c5f85b1c3e273490231821058caadc94b180131c",
+        "symbol": "000506.SZ",
+        "trade_date": "2022-07-29"
+      },
+      {
+        "exact_fields_match": true,
+        "selection_hash": "00d55dfcb4a8b5d4cc1027e395003ac0e5c287d5a845f300f8683f051c1371f1",
+        "symbol": "300069.SZ",
+        "trade_date": "2021-06-25"
+      },
+      {
+        "exact_fields_match": true,
+        "selection_hash": "00d753f2ced578c106b6b5692285765e8896c243868ca00a66e43452fa91c4d2",
+        "symbol": "600259.SH",
+        "trade_date": "2021-08-30"
+      }
+    ],
+    "maximum_aggregate_absolute_difference": 8.673617379884035e-19
+  },
+  "status": "COMPLETE_REPRESENTATION_PASS",
+  "strategy_or_outcome_fields_read": []
+}

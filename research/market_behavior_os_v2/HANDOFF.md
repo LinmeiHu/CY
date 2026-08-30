@@ -1126,3 +1126,33 @@ activity, trajectory, outcome, strategy, post-2023 partition, or CY-011 was
 read. Next freeze MKT-BREAKOUT-001 for same-session representation stability,
 L10/L40 and auction portability, generic-path compression, and scalar
 replication before constructing any post-cross magnitude.
+
+MKT-BREAKOUT-001 is now complete under frozen spec `f314165c...`. Every one of
+the ten predeclared roles passes its internal definition and shape gates. Fixed
+external controls remove follow-through excursion (daily-high-margin rho
+0.980) and closing acceptance margin (daily close-geometry adjusted R2 0.772).
+Above-level close episodes compress into loss episodes at rho 0.963.
+
+The retained minimal set is 30-bar continuation, rejection depth, below-level
+dwell, loss episodes, conditional reacquisition speed, cumulative-VWAP
+acceptance, and post-cross activity. Treat these as seven distinct observables,
+not seven proven mechanisms. Domains are 899 full-60-bar events and 641
+reacquisitions. Five scalar cases reproduce with maximum aggregate difference
+`8.67e-19`; two runs are byte-identical: panel `e67ac766...`, stability
+`044fb279...`, geometry `56cf578c...`, result `c56d57af...`, report
+`6d74b504...`. Three focused tests and lint pass.
+
+The first construction attempt was invalid before artifact acceptance because
+the runner treated a valid leading zero-volume auction as if cumulative VWAP
+had to exist before the event. The first case was `000972.SZ` on 2018-03-16;
+crossing occurs at 09:37 after positive volume begins at 09:31. The corrected
+adapter requires positive cumulative volume only from first crossing onward
+and leaves earlier VWAP undefined. No row, event, formula, gate, or estimate
+changed.
+
+SYNTH-MKT-038 selects a map-first temporal study of the retained observations.
+Freeze role-specific repeated-event support, actual inter-event gaps, temporal
+operators, generic controls, blocks/years, and no-rescue gates before estimating
+direction or coupling. Do not infer a breakout/failed-breakout process, revive
+the three compressed roles, use post-cross values as first-cross predictors,
+read outcomes, modify CHINEXT V1, or open CY-011.

@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Can same-session market minute levels form stable support-defense, VWAP-acceptance, and accumulation/demand mechanisms without failed path operators? | Very high | Very high | Frozen 11,656-row daily minute panel | Very high | Medium | ACTIVE_MKT_MIN_SUPACC_001_FROZEN_EXECUTION |
+| 1 | Do the seven stable objective prior-high post-cross observables form portable repeated-event trajectories or a smaller residual process? | Very high | Very high | 275 sequences have two or more L20 crossing days; role-specific support not yet frozen | Very high | Medium | ACTIVE_MAP_FIRST_MKT_BREAKOUT_DYN_001 |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -324,3 +324,10 @@ full 60-bar opportunities, 641 reacquisitions, and all fixed year/block/view/
 neighbor/auction gates. Freeze MKT-BREAKOUT-001 next for same-session role
 representation and generic-path compression. Do not infer favorable acceptance,
 read outcomes, or reproduce the rejected V1 ranked acceptance composite.
+
+MKT-BREAKOUT-001 retains seven same-session observables after all fixed internal
+and external gates. Follow-through excursion, closing margin, and mirrored
+above-level episodes are compressed. The active frontier remains breakout
+representation, but now at the repeated-event temporal layer. Build and freeze
+the map before inspecting role-specific sequence directions or correlations;
+do not turn the seven observables into a score or read future payoff.

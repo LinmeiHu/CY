@@ -1,0 +1,221 @@
+{
+  "experiment_id": "MKT-BREAKOUT-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_POST_CROSS_MAGNITUDE_CONSTRUCTION",
+  "question": "Which objective prior-high post-cross path roles are stable across fixed level/clock definitions and remain distinct from ordinary completed-session price, volatility, VWAP-defense, and activity geometry?",
+  "research_role": "strategy-independent same-session breakout acceptance/rejection representation and latent compression",
+  "outcome_access": false,
+  "inputs": {
+    "representation_map": {"path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_ACCEPTANCE_REPRESENTATION_MAP.md", "sha256": "0b3363e43e7eee1ef3d222abe8c4017d93784e545ddbf82683e90f15b7666c47"},
+    "data_contract": {"path": "research/market_behavior_os_v2/OBJECTIVE_BREAKOUT_DATA_CONTRACT.md", "sha256": "721517cdec1d11c78768422000a103a5a76ce30323580275553a86b9d7422a28"},
+    "data_spec": {"path": "research/market_behavior_os_v2/experiments/MKT-BREAKOUT-DATA-001_spec.json", "sha256": "db3d0cfa1ea7c6d8ca89fe553c0b4803ac36080b02a57160c41e9391b5040b79"},
+    "data_coordinate_event_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_coordinate_event_audit.csv", "sha256": "1eaeed29c1c45fae7f0090eee3720d39f20928cc3930bf7bfa95e7ac49b5d897"},
+    "data_count_audit": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_count_audit.csv", "sha256": "59e74964172b8aafdae09d54f8d9536dd372dec1b6a8c61cd9cc97df51a1f561"},
+    "data_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DATA-001_result.json", "sha256": "b21244e9f2e047d8d4585c6e1826cdeecd1752f4e8bf74cd69dc7e1ae22d2e45"},
+    "data_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_breakout_data_001.py", "sha256": "097b521928d81342030ab68dda56eda4d6aa3e1d2ea57028c77b5c38c5ce5bfd"},
+    "source_role_runner": {"path": "research/market_behavior_os_v2/scripts/run_mkt_support_data_003.py", "sha256": "91dde0e182fa3418fae653e93f3e9a1e6058e5fdf5c48245190fd49388f01597"},
+    "minute_adapter": {"path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py", "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"},
+    "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "qd004_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "cy006_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "qd010_inventory": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json", "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"}
+  },
+  "required_partitions": {
+    "qd004": ["bars/2018_day_parquet_none.parquet", "bars/2019_day_parquet_none.parquet", "bars/2020_day_parquet_none.parquet", "bars/2021_day_parquet_none.parquet", "bars/2022_day_parquet_none.parquet", "bars/2023_day_parquet_none.parquet"],
+    "cy006": ["partition_year=2018/data_0.parquet", "partition_year=2019/data_0.parquet", "partition_year=2020/data_0.parquet", "partition_year=2021/data_0.parquet", "partition_year=2022/data_0.parquet", "partition_year=2023/data_0.parquet"],
+    "cy008_daily": ["daily/partition_year=2018/data_0.parquet", "daily/partition_year=2019/data_0.parquet", "daily/partition_year=2020/data_0.parquet", "daily/partition_year=2021/data_0.parquet", "daily/partition_year=2022/data_0.parquet", "daily/partition_year=2023/data_0.parquet"]
+  },
+  "population": {
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "temporal_blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "market_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "expected_sequences": 1920,
+    "expected_cohort_rows": 9600,
+    "expected_unique_sessions": 9575,
+    "expected_raw_minute_rows": 2307575,
+    "primary_crossings": 964,
+    "primary_remaining60": 899,
+    "primary_reacquisitions": 641
+  },
+  "definitions": {
+    "primary": "L20_CONTINUOUS",
+    "level_neighbors": ["L10_CONTINUOUS", "L40_CONTINUOUS"],
+    "clock_challenge": "L20_AUCTION",
+    "strict_crossing": true,
+    "post_cross_includes_crossing_bar_for_dwell_activity": true,
+    "strictly_after_crossing_bar_for_follow_through_and_rejection": true,
+    "matched_main_domain": "crossing and at least 60 bars strictly after crossing",
+    "closing_domain": "all crossings",
+    "reacquisition_domain": "all crossings with a below-level close followed later by a strictly above-level close"
+  },
+  "roles": {
+    "continuation30_log_return": {
+      "domain": "matched_main_domain",
+      "formula": "log(close[first_cross+30] / close[first_cross])",
+      "signed": true,
+      "kind": "continuous",
+      "shape_challenges": ["continuation5_log_return", "continuation15_log_return", "continuation60_log_return"],
+      "controls": ["first_cross_fraction", "open_close_log_return", "daily_high_margin", "minute_realized_volatility"]
+    },
+    "follow_through_excursion": {
+      "domain": "matched_main_domain",
+      "formula": "max(high strictly after crossing) / level - 1",
+      "signed": true,
+      "kind": "continuous",
+      "controls": ["daily_high_margin", "first_cross_fraction", "intraday_log_range"]
+    },
+    "rejection_depth": {
+      "domain": "matched_main_domain",
+      "formula": "min(low strictly after crossing) / level - 1",
+      "signed": true,
+      "kind": "continuous",
+      "controls": ["intraday_log_range", "close_location", "open_close_log_return", "first_cross_fraction"]
+    },
+    "below_level_close_fraction": {
+      "domain": "matched_main_domain",
+      "formula": "fraction of closes from crossing bar through close strictly below level",
+      "signed": false,
+      "kind": "continuous",
+      "shape_challenges": ["longest_below_level_run_fraction"],
+      "controls": ["close_location", "open_close_log_return", "first_cross_fraction", "minute_realized_volatility"]
+    },
+    "loss_episode_count": {
+      "domain": "matched_main_domain",
+      "formula": "count transitions from close at/above level to a later close below level",
+      "signed": false,
+      "kind": "discrete",
+      "controls": ["minute_realized_volatility", "intraday_log_range", "first_cross_fraction"]
+    },
+    "reacquisition_bars": {
+      "domain": "reacquisition_domain",
+      "formula": "bars from first below-level close to first later strictly above-level close",
+      "signed": false,
+      "kind": "continuous",
+      "controls": ["first_cross_fraction", "high_time_fraction", "minute_realized_volatility", "close_location"]
+    },
+    "closing_acceptance_margin": {
+      "domain": "closing_domain",
+      "formula": "final close / level - 1",
+      "signed": true,
+      "kind": "continuous",
+      "controls": ["open_close_log_return", "daily_high_margin", "close_location"]
+    },
+    "post_cross_cumulative_vwap_acceptance_fraction": {
+      "domain": "matched_main_domain",
+      "formula": "fraction of post-cross closes above causal cumulative continuous-session VWAP",
+      "signed": false,
+      "kind": "continuous",
+      "shape_challenges": ["final_session_vwap_margin"],
+      "controls": ["open_close_log_return", "session_vwap_recovery_count", "session_longest_below_vwap_fraction", "session_downside_excursion", "session_recovery_speed_30bar"]
+    },
+    "post_cross_activity_ratio": {
+      "domain": "matched_main_domain",
+      "formula": "post-cross session-volume share divided by post-cross bar share",
+      "signed": false,
+      "kind": "continuous",
+      "controls": ["minute_volume_concentration", "closing30_volume_share", "first_cross_fraction"]
+    },
+    "above_level_close_episode_count": {
+      "domain": "matched_main_domain",
+      "formula": "number of starts of strictly-above-level close runs after first crossing",
+      "signed": false,
+      "kind": "discrete",
+      "controls": ["minute_realized_volatility", "intraday_log_range", "first_cross_fraction"]
+    }
+  },
+  "secondary_nonpromotional_observations": [
+    "continuation5_log_return",
+    "continuation15_log_return",
+    "continuation60_log_return",
+    "longest_below_level_run_fraction",
+    "final_session_vwap_margin",
+    "crossing_bar_activity_ratio"
+  ],
+  "controls": {
+    "first_cross_fraction": "first crossing index / (path bars - 1)",
+    "open_close_log_return": "log(final continuous close / first continuous open)",
+    "daily_high_margin": "continuous maximum high / level - 1",
+    "close_location": "(final close - session low) / (session high - session low)",
+    "high_time_fraction": "(first maximum-high index + 1) / 240",
+    "minute_realized_volatility": "sample standard deviation of 240 open/previous-close minute log returns",
+    "intraday_log_range": "log(session high / session low)",
+    "minute_volume_concentration": "sum squared continuous minute-volume shares",
+    "closing30_volume_share": "last-30 continuous volume / continuous session volume",
+    "session_vwap_recovery_count": "full-session close transitions from at/below final session VWAP to above it",
+    "session_longest_below_vwap_fraction": "longest strict below-final-session-VWAP close run / 240",
+    "session_downside_excursion": "max(0,-log(session low / first continuous open))",
+    "session_recovery_speed_30bar": "log(final close/session low)*30/max(1,239-first-low-index)"
+  },
+  "representation_gates": {
+    "continuous_nondegeneracy": {"minimum_unique_global": 10, "minimum_unique_each_year": 5},
+    "discrete_nondegeneracy": {"minimum_unique_global": 3, "minimum_unique_each_block": 2},
+    "definition_support": {"main_total": 400, "main_each_block": 170, "reacquisition_total": 180, "reacquisition_each_block": 70},
+    "level_neighbor": {"minimum_global_spearman": 0.50, "minimum_each_block_spearman": 0.30, "minimum_signed_global_agreement": 0.60, "minimum_signed_each_block_agreement": 0.55},
+    "auction_challenge": {"minimum_global_spearman": 0.85, "minimum_each_block_spearman": 0.75, "minimum_signed_global_agreement": 0.90, "minimum_signed_each_block_agreement": 0.85},
+    "view_portability": {"minimum_supported_view_intersection": 50, "minimum_level_neighbor_spearman": 0.20, "minimum_auction_spearman": 0.75, "conditional_reacquisition_minimum_supported_views": 3},
+    "discrete_neighbor": {"minimum_global_spearman": 0.35, "minimum_each_block_spearman": 0.20, "minimum_within_one_global": 0.75, "minimum_within_one_each_block": 0.65, "minimum_auction_exact_global": 0.90, "minimum_auction_exact_each_block": 0.85},
+    "continuation_shape": {"horizon5_minimum_global_spearman": 0.40, "horizon5_minimum_each_block_spearman": 0.25, "horizon15_60_minimum_global_spearman": 0.45, "horizon15_60_minimum_each_block_spearman": 0.25, "minimum_sign_agreement": 0.55},
+    "dwell_shape": {"minimum_global_spearman": 0.65, "minimum_each_block_spearman": 0.45},
+    "vwap_shape": {"minimum_global_spearman": 0.45, "minimum_each_block_spearman": 0.25},
+    "external_pairwise_absolute_spearman_maximum": 0.85,
+    "external_joint_rank_adjusted_r2_global_maximum": 0.70,
+    "external_joint_rank_adjusted_r2_each_block_maximum": 0.85,
+    "role_compression_absolute_spearman": 0.85,
+    "role_compression_minimum_intersection": 180,
+    "all_definition_shape_and_external_gates_required_per_role": true
+  },
+  "compression_priority": [
+    "continuation30_log_return",
+    "rejection_depth",
+    "below_level_close_fraction",
+    "loss_episode_count",
+    "reacquisition_bars",
+    "post_cross_cumulative_vwap_acceptance_fraction",
+    "post_cross_activity_ratio",
+    "above_level_close_episode_count",
+    "follow_through_excursion",
+    "closing_acceptance_margin"
+  ],
+  "coordinate_systems": {
+    "absolute": "primary; fixed dimensionless ratios, fractions, log returns, and bar counts across 2018-2023",
+    "pit_historical": "not constructible from 48 isolated blocks; no sampled-block percentile or year rank",
+    "relative": "ten-symbol view samples are not a contemporaneous eligible cross-section; descriptive view portability only"
+  },
+  "scalar_reconstruction": {
+    "cases": 5,
+    "selection": "smallest SHA256(MKT-BREAKOUT-001|symbol|trade_date) among unique L20 continuous remaining60 reacquisition events",
+    "must_not_call_vector_descriptor": true,
+    "exact_index_count_and_extreme_fields": true,
+    "maximum_aggregate_absolute_difference": 1e-12
+  },
+  "resource_budget": {
+    "single_process": true,
+    "batch_keys": ["target_year", "block_id"],
+    "planned_raw_minute_rows": 2307575,
+    "compressed_read_ceiling_gib": 20,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 10,
+    "durable_output_ceiling_mib": 100,
+    "raw_materialization": false
+  },
+  "prohibited_inputs_or_actions": [
+    "future market, industry, stock, volatility, or strategy value",
+    "strategy membership, signal, candidate, admission, trade, P&L, MFE, MAE, exit, duration, or outcome class",
+    "within-year rank, favorable acceptance label, equal-weight acceptance composite, threshold or minute-window search",
+    "using +5/+15/+30/+60 or end-of-session bars as predictors at the first-cross timestamp",
+    "dropping a generic control or choosing a favorable level/clock/view/year after construction",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "claim_boundary": "Passing establishes a stable externally distinct completed-path representation only. It does not establish supply depletion, demand, accumulation, breakout quality, recurrence, prediction, habitat, timing, execution, payoff, or a strategy archetype.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_session_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_stability_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_geometry_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-BREAKOUT-001_representation.md"
+  ]
+}

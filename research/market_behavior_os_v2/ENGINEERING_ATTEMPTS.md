@@ -322,3 +322,19 @@ The correction uses pandas `float_precision="round_trip"` for the immutable
 session and preserves `2 * scale > L20`. No price tolerance, rounding, level,
 test rule, row, or scientific gate changed. Five focused tests and two complete
 final executions pass byte-identically.
+
+## MKT-BREAKOUT-001-A — invalid leading-auction VWAP requirement
+
+The first full construction stopped before accepting an artifact at
+`000972.SZ` on 2018-03-16 under `L20_AUCTION`. The 09:30 auction bar has zero
+volume and amount, positive cumulative volume begins at 09:31, and the first
+strict auction-inclusive crossing occurs at 09:37. Post-cross cumulative VWAP
+is therefore fully defined, but the adapter incorrectly required positive
+cumulative volume on every earlier path bar.
+
+The corrected adapter leaves cumulative VWAP undefined while cumulative volume
+is zero and requires positive cumulative volume only from the first crossing
+onward. This is fail-closed and does not impute a price. The event population,
+crossing clock, post-cross formula, sample, thresholds, gates, and claims are
+unchanged. A focused regression covers the leading zero-volume case; three
+tests and both final deterministic executions pass.

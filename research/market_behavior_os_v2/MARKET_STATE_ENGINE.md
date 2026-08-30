@@ -285,3 +285,19 @@ The engine therefore emits no continuation, rejection, acceptance, demand,
 overhead-supply, transition, habitat, timing, or strategy coordinate from this
 audit. A separately frozen same-session experiment must first survive
 definition stability and generic-path compression.
+
+## MKT-BREAKOUT-001 boundary
+
+The engine retains seven completed-session objective prior-high observables:
+30-bar continuation, rejection depth, below-level dwell, loss episodes,
+conditional reacquisition speed, cumulative-VWAP acceptance, and post-cross
+activity. All survive fixed L10/L40, auction, shape, block/year, and generic-
+path gates. Follow-through excursion and closing margin are external daily-path
+manifestations; above-level episodes are loss-episode redundant.
+
+These absolute coordinates are first available only after their defining bars,
+with the complete session artifact at 15:30. The isolated sample cannot support
+causal historical normalization or a full contemporaneous relative rank. The
+engine emits no latent breakout state, temporal direction, resistance-role
+reversal, predictor, habitat, usefulness, or strategy annotation until a
+separately frozen repeated-event process survives.

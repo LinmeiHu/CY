@@ -92,6 +92,13 @@ estimable. No post-cross role, recurring process, future outcome, trigger,
 execution, capacity, or habitat effect has survived. Keep every prototype
 inactive while same-session role stability and redundancy are tested.
 
+MKT-BREAKOUT-001 still activates no prototype. Seven post-cross observations
+survive representation and generic-path compression, but no repeated-event
+direction, latent mechanism, future outcome, entry-time predictor, habitat,
+execution, or capacity evidence exists. Breakout continuation and failed-
+breakout reversal remain `WAIT_FOR_MARKET_MECHANISM` while the repeated-event
+temporal map is frozen and falsified.
+
 MKT-LDR-001 and MKT-VOL-001 add no prototype. Failed leader transitions prohibit
 a leader-failure rule, while stable volatility roles have no outcome meaning.
 MKT-MIN-001 freezes state levels but no trajectory mechanism. HAB-CHX-001 is a

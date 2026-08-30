@@ -126,6 +126,9 @@
 | `experiments/MKT-BREAKOUT-DATA-001_spec.json` | Frozen coordinate/event-domain feasibility gates before construction |
 | `scripts/run_mkt_breakout_data_001.py` | Exact parent-coordinate equivalence, block-batched crossing counts, and scalar reconstruction |
 | `reports/MKT-BREAKOUT-DATA-001_audit.md` | 964 primary crossings with both closing arms and every fixed support gate passing |
+| `experiments/MKT-BREAKOUT-001_spec.json` | Frozen ten-role same-session representation, shape, external-geometry, scalar, and no-rescue contract |
+| `scripts/run_mkt_breakout_001.py` | Exact post-cross path construction, fixed-definition stability, generic-path compression, and deterministic output |
+| `reports/MKT-BREAKOUT-001_representation.md` | Seven retained observables, three compressed manifestations, and explicit no-usefulness boundary |
 | `RESEARCH_PORTFOLIO.md` | EXPLOIT/EXPLORE/INVENT/REPLICATE/TRANSFER/FALSIFY allocation |
 | `EXPERIMENT_REGISTRY.md` | Market-program experiments, including failures |
 | `COMBINATION_LEDGER.md` | Tested/proposed cross-mechanism combinations |

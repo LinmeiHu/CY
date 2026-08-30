@@ -8,9 +8,9 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-037_COMPLETE_BREAKOUT_REPRESENTATION_FREEZE_REQUIRED`
-- `CURRENT_PRIMARY_FRONTIER`: objective prior-high breakout acceptance/rejection same-session representation quality
-- `SUPPORTING_FRONTIER`: fixed generic daily/minute path controls needed for breakout-role compression
+- `CURRENT_PHASE`: `SYNTH-MKT-038_COMPLETE_BREAKOUT_TEMPORAL_MAP_REQUIRED`
+- `CURRENT_PRIMARY_FRONTIER`: multi-session dynamics of the seven retained objective prior-high post-cross observables
+- `SUPPORTING_FRONTIER`: fixed event-day support and generic path controls needed before any temporal-process claim
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -1191,3 +1191,35 @@ central direction. Raw/PIT/relative-to-ALL_A/corrected-rank, reused block,
 phase-zero, support, effect, sign, and no-rescue gates mirror the prior rigorous
 process boundary. Diffusion/concentration edges, future payoff, strategy
 outcomes, post-2023 data, and CY-011 are prohibited. Execute twice.
+
+MKT-BREAKOUT-001 is complete as `COMPLETE_REPRESENTATION_PASS`. All ten
+predeclared same-session roles pass internal L10/L20/L40, continuous/auction,
+shape, year, and block gates. External generic-path compression removes
+follow-through excursion, which is almost the same as official daily-high
+margin (global Spearman 0.980), and closing acceptance margin, which is jointly
+reconstructable from daily close geometry (global adjusted R2 0.772). Above-
+level episode count is internally redundant with loss episodes at rho 0.963.
+
+Seven absolute completed-session observables remain: 30-bar continuation,
+rejection depth, below-level close fraction, loss-episode count, conditional
+reacquisition bars, cumulative-VWAP acceptance fraction, and post-cross
+activity ratio. Their primary domains contain 899 full-horizon events except
+conditional reacquisition at 641. These are observables, not seven established
+latent mechanisms, and none has causal PIT historical normalization or a full
+contemporaneous relative rank in the isolated-block sample.
+
+The final panel contains 3,957 event-view rows from 964 primary crossings and
+the same 2,307,575 raw minute rows. Five independent scalar cases match exactly;
+maximum aggregate absolute difference is `8.67e-19`. Two complete runs are
+byte-identical: panel `e67ac766...`, stability `044fb279...`, geometry
+`56cf578c...`, result `c56d57af...`, and report `6d74b504...`; three focused
+tests pass and lint is clean. No future value, outcome, strategy field,
+post-2023 partition, or CY-011 was read.
+
+SYNTH-MKT-038 permits only a map-first temporal study of these retained roles.
+The existing 275 sequences with at least two L20 crossing days establish broad
+event support, not role-specific trajectory adequacy or a process. The next
+contract must freeze role-specific support floors, actual event-day gaps,
+shape alternatives, generic controls, block/year portability, and no-rescue
+rules before inspecting temporal direction. No breakout, failed-breakout,
+resistance-role-reversal, usefulness, habitat, or strategy claim exists.
