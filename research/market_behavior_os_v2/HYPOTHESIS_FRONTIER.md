@@ -449,3 +449,20 @@ remains inside formation-depth mechanism attribution: freeze whether the adverse
 path is shared date-wide after own-security overshoot control or concentrated in
 industry/size/liquidity/state subgroups. Do not search trough offsets, cutoffs,
 horizons, or promote future timing as a predictor.
+
+MKT-FORMDEPTH-OWN-001 rejects a broad shared-date depth channel and retains only
+own-security overshoot ordering. MKT-FORMDEPTH-OWNCTRL-001 then rejects the
+stronger objective-specificity claim: raw h3 within-date rho -0.2722 contracts to
+-0.02175 after the five frozen same-day security controls, both blocks miss the
+-0.05 gate, and 2023 reverses slightly positive. Negative cells, neighbors,
+phases, leave-one-year-out estimates, and tail gap are diagnostics only and do
+not rescue the all-required PROMOTE classification.
+
+The surviving market question is no longer whether to select a security
+subgroup. It is which process generates the generic daily geometry: transient
+minute price impact/rejection, sustained accepted demand followed by exhaustion,
+or a multi-session buildup visible before the crossing day. The single highest-
+information next experiment is a bounded event-day plus recent-five-session
+minute-path discriminator using broad economically fixed segments and the
+accepted PIT minute semantics. Do not brute-force windows, build a strategy,
+claim true liquidity, or reopen objective specificity by deleting controls.

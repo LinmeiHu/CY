@@ -1,0 +1,99 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-OWNCTRL-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "research_level": "PROMOTE",
+  "status": "FROZEN_BEFORE_SECURITY_LEVEL_OBJECTIVE_SPECIFICITY_ESTIMATES",
+  "question": "Does own objective-prior-high overshoot retain an adverse-path association beyond generic same-day security geometry?",
+  "outcome_access": "EXISTING_PRE2024_EXACT_CROSSER_H1_H3_H5_ADVERSE_RESPONSE_ONLY",
+  "inputs": {
+    "accepted_own_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-001_result.json",
+      "sha256": "b3a86ff1862dd66c9d79b7da196696d6ce064f57f419caf2972680cfa1a0ade5"
+    },
+    "accepted_data_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-005_spec.json",
+      "sha256": "595f35a63984bc6fe2933821d54c3b07889fcb5cda959bc681532d86a5596f1c"
+    },
+    "accepted_data_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_result.json",
+      "sha256": "05a5412f04c55230f84c59db499e0b6a1f971fc066d24a6d99b177521257a069"
+    },
+    "accepted_data_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_own_data_001.py",
+      "sha256": "40808c1514ffcd19bb81857a3d5425067da90a0fce3ca8f02e7240df6199f025"
+    }
+  },
+  "activation": {
+    "required_own_classification": "OWN_OVERSHOOT_CHANNEL_ONLY",
+    "required_data_status": "COMPLETE_OWN_SHARED_STRATUM_RESPONSE_DOMAIN_ADEQUACY",
+    "minimum_anchor_crossers_each_date_cell": 25,
+    "minimum_complete_security_rows_each_date_cell": 20,
+    "minimum_complete_security_retention_each_date_cell": 0.75,
+    "minimum_supported_dates_each_cell_year": 100,
+    "cells": 8,
+    "joint_available_at": "15:30 Asia/Shanghai",
+    "response_begins": "next exchange session"
+  },
+  "target": "coordinate_high / resistance_high20 - 1 among exact cross20 securities",
+  "fixed_same_day_controls": {
+    "action_coordinate_close_return": "log(coordinate_close_t / coordinate_close_t_minus_1) on consecutive exchange sessions",
+    "intraday_log_range": "log(raw_high_t / raw_low_t)",
+    "close_location": "(raw_close_t - raw_low_t) / (raw_high_t - raw_low_t), requiring high > low",
+    "turnover_fraction": "registered CY-006 turnover_fraction, finite and positive",
+    "log_traded_value": "log(raw amount CNY), finite and positive",
+    "true_liquidity_claim": false,
+    "variable_selection": false
+  },
+  "blocks": {
+    "A": [2018, 2019, 2020],
+    "B": [2021, 2022, 2023]
+  },
+  "years": [2018, 2019, 2020, 2021, 2022, 2023],
+  "response": {
+    "primary_horizon": 3,
+    "neighbors": [1, 5],
+    "terminal_return_read": false
+  },
+  "gates": {
+    "maximum_median_h3_within_date_partial_rho": -0.10,
+    "minimum_negative_cell_medians": 6,
+    "maximum_each_block_median_h3_partial_rho": -0.05,
+    "all_year_and_leave_one_year_out_medians_negative": true,
+    "h1_h5_medians_negative": true,
+    "minimum_negative_h3_phases": 2,
+    "minimum_negative_h5_phases": 4,
+    "maximum_median_h3_controlled_tail_gap": -0.0025
+  },
+  "classification": {
+    "pass": "OBJECTIVE_SPECIFIC_OWN_OVERSHOOT_DOWNSIDE",
+    "fail": "OWN_EFFECT_NOT_INCREMENTAL_TO_FIXED_DAILY_GEOMETRY",
+    "support_fail": "SECURITY_LEVEL_OBJECTIVE_SPECIFICITY_NOT_ESTIMABLE"
+  },
+  "resource_budget": {
+    "single_process": true,
+    "threads": 1,
+    "duckdb_memory_limit_gib": 1.5,
+    "peak_rss_ceiling_gib": 3.0,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 10,
+    "durable_output_ceiling_mib": 20,
+    "security_level_durable_output": false
+  },
+  "lean_validation": {
+    "focused_tests": true,
+    "cross_year_neighbor_and_phase_gates": true,
+    "byte_identical_rerun_required": false
+  },
+  "prohibited_computations": [
+    "control deletion/substitution, alternate return/range/close-location/turnover/traded-value definition, industry, size bucket, liquidity claim, subgroup, threshold, or variable selection",
+    "alternate objective, horizon, response, block, year, phase, tail, effect direction, or classification rescue",
+    "terminal return, minute data, strategy outcome, entry, exit, fill, veto, P&L, habitat, post-2023 data, or CY-011"
+  ],
+  "claim_boundary": "Pre-2024 within-date security-level association specificity only; no causal supply, liquidity, prediction, execution, payoff, habitat, or strategy claim.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWNCTRL-001_date_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWNCTRL-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-OWNCTRL-001_specificity.md"
+  ]
+}

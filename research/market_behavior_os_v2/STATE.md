@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `LEAN_PROMOTE_FORMATION_DEPTH_OBJECTIVE_SPECIFICITY`
-- `CURRENT_PRIMARY_FRONTIER`: distinguish objective-prior-high own overshoot from generic same-day security extension/range/liquidity geometry; subgroup search remains closed
+- `CURRENT_PHASE`: `LEAN_EXPLORE_FORMATION_DEPTH_CROSS_SCALE_MECHANISM`
+- `CURRENT_PRIMARY_FRONTIER`: distinguish transient minute price impact/rejection from sustained accepted demand and prior multi-day buildup within the generic same-day geometry that explains most own-overshoot ordering; subgroup search remains closed
 - `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,7 +19,7 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `5b68cbb7f2249d85c16b4fecca17368def71afda`
-- `CURRENT_SCIENTIFIC_LAYER`: `FORMATION_DEPTH_DOWNSIDE_PATH_RESOLVED_MIXED; NO_STABLE_TROUGH_IMMEDIACY_SHIFT; MECHANISM_ATTRIBUTION_REMAINS_OPEN; NO_STRATEGY`
+- `CURRENT_SCIENTIFIC_LAYER`: `FORMATION_DEPTH_DOWNSIDE_PATH_RESOLVED_MIXED; OWN_OBJECTIVE_SPECIFICITY_NOT_PROMOTED; GENERIC_DAILY_GEOMETRY_DOMINANT; MINUTE_MECHANISM_OPEN; NO_STRATEGY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,8 +29,8 @@ Updated 2026-08-31.
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date; a broad disjoint shared-date depth channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does own overshoot retain adverse-path ordering after fixed security-level same-day return, range, close location, turnover, and liquidity controls, or is it generic extension/price-impact geometry?
+- `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: within exact crossers, does event-day and recent five-session minute structure support transient price impact/rejection, sustained accepted demand, or a persistent buildup mechanism after respecting the accepted daily-geometry result?
 
 ## Research OS V2.3 resource and worker state
 
@@ -42,8 +42,9 @@ Updated 2026-08-31.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: none; MKT-FORMDEPTH-OWN-DATA-005 completed the reusable
-  response domain, but no own/shared association has yet been computed.
+- `ACTIVE_EXPERIMENT`: none; MKT-FORMDEPTH-OWNCTRL-001 completed the promoted
+  objective-specificity test and the next minute-scale discriminator is not yet
+  frozen.
 - `ACTIVE_RESOURCE_BLOCKER`: high baseline swap occupancy prevents promotion
   above two heavy workers until stability telemetry passes.
 - `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
@@ -65,6 +66,33 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### MKT-FORMDEPTH-OWNCTRL-001 objective specificity
+
+The PROMOTE experiment classifies
+`OWN_EFFECT_NOT_INCREMENTAL_TO_FIXED_DAILY_GEOMETRY`. It reconstructs 2,328,785
+exact-crosser security/date rows without persisting a security panel and retains
+10,720 supported h=3 date/cells, at least 115 dates per cell/year, and minimum
+0.82 complete-row retention. The run stays within its fixed resource envelope at
+2.63 GiB peak RSS.
+
+Median raw within-date h=3 Spearman is -0.2722, but rank residualization on the
+five frozen t-day controls reduces it to -0.02175 versus the preregistered -0.10
+gate. The controls explain median 0.5118 of own-depth rank variance. Both block
+medians miss -0.05 and 2023 is +0.00552, so the primary, block, and all-year
+gates fail. Eight of eight cell medians, h=1/h=5 neighbors, all h=3/h=5 phases,
+all leave-one-year-out estimates, and the controlled tail gap remain negative;
+these diagnostics cannot rescue the failed all-required classification.
+
+What is rejected is an objective-prior-high overshoot channel that remains
+large and portable beyond this fixed daily geometry. Formation depth itself is
+not rejected as a broad descriptive tail-risk state, and the result does not
+establish causal mean reversion or true liquidity. The strongest competing
+mechanisms are generic daily overextension, transient intraday price impact,
+sustained accepted demand followed by exhaustion, and structural
+industry/size/liquidity concentration. The highest-information next question is
+the event-day plus recent-five-session minute-path discriminator; structural
+subgroup selection remains closed. No habitat or strategy is activated.
 
 ### MKT-FORMDEPTH-OWN-001 own versus shared attribution
 
