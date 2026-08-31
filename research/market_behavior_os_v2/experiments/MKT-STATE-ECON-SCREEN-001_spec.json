@@ -1,0 +1,144 @@
+{
+  "experiment_id": "MKT-STATE-ECON-SCREEN-001",
+  "research_level": "EXPLORE",
+  "status": "POST_DISCOVERY_FIXED_CHEAP_SCREEN",
+  "frozen_at": "2026-08-31",
+  "question": "Which already-frozen, strategy-independent market-state roles show economically material and definition-stable associations with a small set of future market response shapes?",
+  "honesty_boundary": "The candidate role-response pairs were inspected in an ad hoc cheap screen before this contract was written. This experiment is a disclosed reproduction and ranking pass, not confirmation, validation, or strategy evidence.",
+  "funnel_purpose": "Rank existing representations by economic magnitude, broad stability, implementability, and next-test cost before authorizing deeper research.",
+  "decision_semantics": {
+    "state_available_at": "completed official trade_date close at 15:00 Asia/Shanghai",
+    "response_begins": "strictly later exchange sessions",
+    "earliest_hypothetical_fill": "t+1 or later; this screen constructs no fills",
+    "maximum_predictor_date": "2023-12-29",
+    "post_2023_read": false,
+    "cy011_read": false
+  },
+  "inputs": {
+    "risk_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1"
+    },
+    "risk_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json",
+      "sha256": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe"
+    },
+    "correlation_liquidity_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_correlation_liquidity_panel.csv",
+      "sha256": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573"
+    },
+    "correlation_liquidity_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_result.json",
+      "sha256": "9ada5db39ba531e6a41b3f26ceef106233c8871c0fe60a9d971df293bac24eb2"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"
+    },
+    "breadth_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_result.json",
+      "sha256": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070"
+    },
+    "response_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-DATA-001_panel.csv",
+      "sha256": "aaf67e128f490e0594a529a296f23bd3e0207e7e47a3a42f9a0ec988f2c4fbbe"
+    },
+    "response_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-DATA-001_result.json",
+      "sha256": "2bae2c9ac472168dbac2e6ef38f22bdb1ba6a629953a811dd0ec2a0a9d82ae36"
+    }
+  },
+  "population": {
+    "views": ["ALL_A", "CHINEXT_BOARD", "SH_A", "SZ_A"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_complete_rows": 10656,
+    "expected_complete_dates": 1332,
+    "expected_first_date": "2018-07-03",
+    "expected_last_complete_date": "2023-12-22",
+    "minimum_pit_rows_per_cell": 800
+  },
+  "fixed_candidates": [
+    {
+      "candidate_id": "LIQUIDITY_TURNOVER__OPPORTUNITY_WIDTH",
+      "family": "liquidity_turnover",
+      "source": "correlation_liquidity_panel",
+      "primary": "liquidity_turnover_median",
+      "neighbors": ["liquidity_turnover_q40", "liquidity_turnover_q60"],
+      "response": "opportunity_spread_h3",
+      "expected_sign": 1,
+      "economic_role": "relative-value opportunity habitat"
+    },
+    {
+      "candidate_id": "CO_MOVEMENT__OPPORTUNITY_COMPRESSION",
+      "family": "co_movement",
+      "source": "correlation_liquidity_panel",
+      "primary": "correlation_median20",
+      "neighbors": ["correlation_median10", "correlation_median40"],
+      "response": "opportunity_spread_h3",
+      "expected_sign": -1,
+      "economic_role": "relative-value opportunity compression"
+    },
+    {
+      "candidate_id": "DOWNSIDE_EXTREMES__FIVE_DAY_REVERSAL",
+      "family": "risk_appetite",
+      "source": "risk_panel",
+      "primary": "downside_extreme_participation_70",
+      "neighbors": ["downside_extreme_participation_50", "downside_extreme_participation_90"],
+      "response": "terminal_mean_log_return_h5",
+      "expected_sign": 1,
+      "economic_role": "panic/reversal exposure"
+    },
+    {
+      "candidate_id": "LIQUIDITY_ACTIVITY__FIVE_DAY_CONTINUATION",
+      "family": "liquidity_activity",
+      "source": "correlation_liquidity_panel",
+      "primary": "liquidity_median_amount_ratio20",
+      "neighbors": ["liquidity_median_amount_ratio10", "liquidity_median_amount_ratio60"],
+      "response": "terminal_mean_log_return_h5",
+      "expected_sign": 1,
+      "economic_role": "directional continuation exposure"
+    },
+    {
+      "candidate_id": "NEW_HIGH_LOW__FIVE_DAY_EXHAUSTION",
+      "family": "breadth_new_high_low",
+      "source": "breadth_panel",
+      "primary": "breadth_net_new_high_low60",
+      "neighbors": ["breadth_net_new_high_low40", "breadth_net_new_high_low80"],
+      "response": "terminal_mean_log_return_h5",
+      "expected_sign": -1,
+      "economic_role": "breadth exhaustion / mean reversion"
+    },
+    {
+      "candidate_id": "LEADERSHIP_CONCENTRATION__FRAGILITY",
+      "family": "breadth_leadership_concentration",
+      "source": "breadth_panel",
+      "primary": "leadership_positive_mass_top10",
+      "neighbors": ["leadership_positive_mass_top5", "leadership_positive_mass_top20"],
+      "response": "adverse_mean_log_excursion_h3",
+      "expected_sign": -1,
+      "economic_role": "failure veto / downside fragility"
+    }
+  ],
+  "coordinates": {
+    "primary": "causal trailing-three-year PIT percentile",
+    "robustness": ["absolute primary", "PIT expanding percentile", "two frozen neighboring definitions"],
+    "fixed_tail_gap": "mean response at PIT percentile >=0.8 minus mean response at <=0.2, computed within each governed cell"
+  },
+  "cheap_screen": {
+    "minimum_absolute_median_cell_pit_rho": 0.05,
+    "required_same_sign_cells": 8,
+    "minimum_same_sign_pit_years": 3,
+    "required_same_sign_coordinate_views": 3,
+    "required_same_sign_neighbor_definitions": 2,
+    "ranking": "descending absolute median PIT rho; economic tail gap and implementability reported separately, not collapsed into a fitted score"
+  },
+  "prohibited_computations": [
+    "threshold, horizon, role, response, view, or denominator optimization",
+    "variable selection after reproduction",
+    "security ranking, portfolio construction, transaction costs, capacity, or PnL",
+    "strategy outcome or CHINEXT V1 rule modification",
+    "same-bar execution",
+    "post-2023 data",
+    "CY-011"
+  ]
+}

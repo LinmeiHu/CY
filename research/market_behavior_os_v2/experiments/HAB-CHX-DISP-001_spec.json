@@ -1,0 +1,57 @@
+{
+  "experiment_id": "HAB-CHX-DISP-001",
+  "research_level": "EXPLORE",
+  "status": "POST_DISCOVERY_REPRODUCTION_CONTRACT",
+  "frozen_at": "2026-08-31",
+  "question": "Does the accepted industry-dispersion state transfer to the already-consumed CHINEXT V1 setup funnel or payoff shape after trend, breadth, volatility, and co-movement controls?",
+  "honesty_boundary": "Associations were inspected before this compact reproduction contract. Results are descriptive exploratory archaeology and cannot change CHINEXT V1.",
+  "inputs": {
+    "habitat_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-001_panel.csv",
+      "sha256": "922920fdd0f1d81391825b2084971b22b044536754604590c62a2b4d98f9afde"
+    },
+    "habitat_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-001_result.json",
+      "sha256": "5bb39c2a66f70a0a3c616d2c1d168fa5f8d85a1fc5989a4258e8decff4e7c7aa"
+    },
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+      "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json",
+      "sha256": "9b3eaa0da0e9adba67f61df81d25412ae0277cff37ecf63074738d622989a346"
+    }
+  },
+  "state": "industry_return_dispersion_iqr_pit_3y_pct",
+  "fixed_controls": [
+    "A_trend_pit_3y_pct",
+    "B_breadth_pit_3y_pct",
+    "realized_volatility_median20_pit_3y_pct",
+    "correlation_median20_pit_3y_pct"
+  ],
+  "expected_complete_rows": {
+    "DAILY_PROCESS": 815,
+    "EVALUATED_EVENT": 515,
+    "COMPLETED_CYCLE": 192
+  },
+  "endpoints": {
+    "daily_setup": ["evaluated_count", "candidate_count", "selected_count"],
+    "event_conversion": ["admissible_candidate", "selected_admission"],
+    "cycle": ["mfe", "mae", "round_trip_return", "winner20", "false_breakout", "severe_loss10"]
+  },
+  "descriptive_boundaries": {
+    "setup_transfer_minimum_absolute_partial_rho": 0.10,
+    "payoff_hint_minimum_absolute_partial_rho": 0.10,
+    "cluster_bootstrap_draws": 1000,
+    "cluster_bootstrap_seed": 20260831,
+    "payoff_support_requires_interval_excluding_zero": true
+  },
+  "prohibited": [
+    "threshold, endpoint, or subgroup selection",
+    "CHINEXT V1 rule, exposure, or execution change",
+    "new strategy outcome",
+    "post-2023 data",
+    "CY-011"
+  ]
+}

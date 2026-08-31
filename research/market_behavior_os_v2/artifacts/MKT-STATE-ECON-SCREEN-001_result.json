@@ -1,0 +1,981 @@
+{
+  "claim_boundary": {
+    "causality": false,
+    "confirmation": false,
+    "cost_capacity_estimated": false,
+    "cy011_read": false,
+    "future_response_used_as_predictor": false,
+    "pnl_estimated": false,
+    "post_2023_read": false,
+    "same_bar_fill_assumed": false,
+    "strategy_fields_read": false,
+    "strategy_supported": false
+  },
+  "classification": "MULTIPLE_PROMISING_LEADS_REQUIRE_CHEAP_INCREMENTAL_ROBUSTNESS",
+  "experiment_id": "MKT-STATE-ECON-SCREEN-001",
+  "hashes": {
+    "candidate_audit_sha256": "15da608e8cbffceb7aa1ee4dce1f709c3825925aa16375b2a5036e57c24777ab",
+    "inputs": {
+      "breadth_panel": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "breadth_result": "4e0ceabea8131cc517b64dca334717e4fa97f17e23a27c4172f99405a09e3070",
+      "correlation_liquidity_panel": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573",
+      "correlation_liquidity_result": "9ada5db39ba531e6a41b3f26ceef106233c8871c0fe60a9d971df293bac24eb2",
+      "response_panel": "aaf67e128f490e0594a529a296f23bd3e0207e7e47a3a42f9a0ec988f2c4fbbe",
+      "response_result": "2bae2c9ac472168dbac2e6ef38f22bdb1ba6a629953a811dd0ec2a0a9d82ae36",
+      "risk_panel": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1",
+      "risk_result": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe"
+    },
+    "report_sha256": "2f00c1c57b47bf999579c489eeee2bfbcdc1206209bacc7fb980f0a3bfaed53a",
+    "spec_sha256": "667ce3dee02af1f04ac7e1a1cb4c2ec10ba9f602e1c4a9c50dbef8d378fc0203"
+  },
+  "honesty_boundary": "The candidate role-response pairs were inspected in an ad hoc cheap screen before this contract was written. This experiment is a disclosed reproduction and ranking pass, not confirmation, validation, or strategy evidence.",
+  "next_stage": "Test the top distinct channels against obvious same-family and current-state controls; translate only surviving directional channels to t+1 executable rules.",
+  "passing_candidate_ids": [
+    "LIQUIDITY_TURNOVER__OPPORTUNITY_WIDTH",
+    "LEADERSHIP_CONCENTRATION__FRAGILITY",
+    "DOWNSIDE_EXTREMES__FIVE_DAY_REVERSAL",
+    "LIQUIDITY_ACTIVITY__FIVE_DAY_CONTINUATION",
+    "NEW_HIGH_LOW__FIVE_DAY_EXHAUSTION"
+  ],
+  "ranked_candidates": [
+    {
+      "candidate_id": "LIQUIDITY_TURNOVER__OPPORTUNITY_WIDTH",
+      "cheap_screen_pass": true,
+      "checks": {
+        "all_cells_same_sign": true,
+        "coordinate_views_same_sign": true,
+        "economic_tail_gap_same_sign": true,
+        "neighbor_definitions_same_sign": true,
+        "pit_magnitude": true,
+        "pit_years_same_sign": true
+      },
+      "coordinate_summary": {
+        "absolute": {
+          "cell_rhos": [
+            0.5206989403451742,
+            0.5237618215242786,
+            0.5176366888034474,
+            0.5182782892912904,
+            0.5712515961751824,
+            0.5691340393528337,
+            0.4722035891026485,
+            0.4784783724105331
+          ],
+          "median_cell_rho": 0.5194886148182323,
+          "predictor": "liquidity_turnover_median",
+          "same_sign_cells": 8
+        },
+        "pit_3y": {
+          "cell_rhos": [
+            0.4914529454570434,
+            0.4908443566121148,
+            0.5117483482818861,
+            0.5130629427109848,
+            0.5432895362073916,
+            0.5372506354154999,
+            0.4242892136533889,
+            0.42931240187897973
+          ],
+          "median_cell_rho": 0.5016006468694647,
+          "predictor": "liquidity_turnover_median_pit_3y_pct",
+          "same_sign_cells": 8
+        },
+        "pit_expanding": {
+          "cell_rhos": [
+            0.4502648133837074,
+            0.4534465491213982,
+            0.48662760596393867,
+            0.4876506495410636,
+            0.5134139037579695,
+            0.508610768663367,
+            0.3746690247362189,
+            0.38233945859326185
+          ],
+          "median_cell_rho": 0.47003707754266844,
+          "predictor": "liquidity_turnover_median_pit_expanding_pct",
+          "same_sign_cells": 8
+        }
+      },
+      "economic_role": "relative-value opportunity habitat",
+      "expected_sign": 1,
+      "family": "liquidity_turnover",
+      "fixed_tail_cells": [
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.02670437458787288,
+          "high_count": 113,
+          "low_count": 97,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.02662763554482893,
+          "high_count": 106,
+          "low_count": 105,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.042747366267063186,
+          "high_count": 92,
+          "low_count": 142,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.04254345932133188,
+          "high_count": 95,
+          "low_count": 140,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.028767399768012902,
+          "high_count": 131,
+          "low_count": 106,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.02777001608983283,
+          "high_count": 130,
+          "low_count": 114,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.027020581369664884,
+          "high_count": 117,
+          "low_count": 86,
+          "market_view": "SZ_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.02714281162125344,
+          "high_count": 114,
+          "low_count": 87,
+          "market_view": "SZ_A"
+        }
+      ],
+      "funnel_status": "PROMISING",
+      "maximum_pit_rows_per_cell": 829,
+      "median_fixed_tail_gap": 0.027456413855543135,
+      "minimum_pit_rows_per_cell": 829,
+      "neighbor_summary": {
+        "liquidity_turnover_q40": {
+          "median_cell_rho": 0.5216269902958104,
+          "same_sign_cells": 8
+        },
+        "liquidity_turnover_q60": {
+          "median_cell_rho": 0.5088186757230051,
+          "same_sign_cells": 8
+        }
+      },
+      "pit_rows": 6632,
+      "pit_years": {
+        "2020": {
+          "median_cell_rho": 0.40850134211093475,
+          "same_sign_cells": 8
+        },
+        "2021": {
+          "median_cell_rho": 0.3185499970581791,
+          "same_sign_cells": 8
+        },
+        "2022": {
+          "median_cell_rho": 0.2734735250226878,
+          "same_sign_cells": 8
+        },
+        "2023": {
+          "median_cell_rho": 0.13806458994350596,
+          "same_sign_cells": 8
+        }
+      },
+      "rank_by_absolute_pit_rho": 1,
+      "response": "opportunity_spread_h3"
+    },
+    {
+      "candidate_id": "CO_MOVEMENT__OPPORTUNITY_COMPRESSION",
+      "cheap_screen_pass": false,
+      "checks": {
+        "all_cells_same_sign": true,
+        "coordinate_views_same_sign": true,
+        "economic_tail_gap_same_sign": true,
+        "neighbor_definitions_same_sign": true,
+        "pit_magnitude": true,
+        "pit_years_same_sign": false
+      },
+      "coordinate_summary": {
+        "absolute": {
+          "cell_rhos": [
+            -0.1699476467346547,
+            -0.16496748527303318,
+            -0.20819864167274624,
+            -0.2072743336041692,
+            -0.21816696434864902,
+            -0.21951080616555835,
+            -0.146662434272675,
+            -0.13701611091870708
+          ],
+          "median_cell_rho": -0.18861099016941196,
+          "predictor": "correlation_median20",
+          "same_sign_cells": 8
+        },
+        "pit_3y": {
+          "cell_rhos": [
+            -0.3518729323396875,
+            -0.3403351943403997,
+            -0.4611705721822635,
+            -0.45995752487154534,
+            -0.29569913217200283,
+            -0.28867259108151144,
+            -0.37699276177940927,
+            -0.36336437598049603
+          ],
+          "median_cell_rho": -0.35761865416009175,
+          "predictor": "correlation_median20_pit_3y_pct",
+          "same_sign_cells": 8
+        },
+        "pit_expanding": {
+          "cell_rhos": [
+            -0.2737533923079099,
+            -0.26133742497723456,
+            -0.3807641264607067,
+            -0.3798466292834184,
+            -0.22699872842133448,
+            -0.21900350560246887,
+            -0.29780331698372264,
+            -0.28118731855789836
+          ],
+          "median_cell_rho": -0.2774703554329041,
+          "predictor": "correlation_median20_pit_expanding_pct",
+          "same_sign_cells": 8
+        }
+      },
+      "economic_role": "relative-value opportunity compression",
+      "expected_sign": -1,
+      "family": "co_movement",
+      "fixed_tail_cells": [
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.013293962864698167,
+          "high_count": 98,
+          "low_count": 290,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.012808531700511439,
+          "high_count": 96,
+          "low_count": 294,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.023097399309953665,
+          "high_count": 101,
+          "low_count": 279,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.023199294848565186,
+          "high_count": 104,
+          "low_count": 279,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.00992451930397531,
+          "high_count": 88,
+          "low_count": 297,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.009970834452747962,
+          "high_count": 89,
+          "low_count": 302,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.015934448529250203,
+          "high_count": 98,
+          "low_count": 275,
+          "market_view": "SZ_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.015541050231787215,
+          "high_count": 98,
+          "low_count": 278,
+          "market_view": "SZ_A"
+        }
+      ],
+      "funnel_status": "PARKED",
+      "maximum_pit_rows_per_cell": 810,
+      "median_fixed_tail_gap": -0.014417506548242691,
+      "minimum_pit_rows_per_cell": 810,
+      "neighbor_summary": {
+        "correlation_median10": {
+          "median_cell_rho": -0.17125921826575483,
+          "same_sign_cells": 8
+        },
+        "correlation_median40": {
+          "median_cell_rho": -0.20374149845281175,
+          "same_sign_cells": 8
+        }
+      },
+      "pit_rows": 6480,
+      "pit_years": {
+        "2020": {
+          "median_cell_rho": -0.21956782078827802,
+          "same_sign_cells": 6
+        },
+        "2021": {
+          "median_cell_rho": 0.10221266799582267,
+          "same_sign_cells": 0
+        },
+        "2022": {
+          "median_cell_rho": 0.0573829937435436,
+          "same_sign_cells": 2
+        },
+        "2023": {
+          "median_cell_rho": -0.348289111011301,
+          "same_sign_cells": 8
+        }
+      },
+      "rank_by_absolute_pit_rho": 2,
+      "response": "opportunity_spread_h3"
+    },
+    {
+      "candidate_id": "LEADERSHIP_CONCENTRATION__FRAGILITY",
+      "cheap_screen_pass": true,
+      "checks": {
+        "all_cells_same_sign": true,
+        "coordinate_views_same_sign": true,
+        "economic_tail_gap_same_sign": true,
+        "neighbor_definitions_same_sign": true,
+        "pit_magnitude": true,
+        "pit_years_same_sign": true
+      },
+      "coordinate_summary": {
+        "absolute": {
+          "cell_rhos": [
+            -0.062033936584246184,
+            -0.061170001535015256,
+            -0.06201836717113646,
+            -0.06219829560635052,
+            -0.04425322135404898,
+            -0.04296498351372959,
+            -0.06933860178329196,
+            -0.06758545935937393
+          ],
+          "median_cell_rho": -0.062026151877691324,
+          "predictor": "leadership_positive_mass_top10",
+          "same_sign_cells": 8
+        },
+        "pit_3y": {
+          "cell_rhos": [
+            -0.11816493087338192,
+            -0.11757996964665865,
+            -0.11809645093973233,
+            -0.11876662474894502,
+            -0.0952868133061437,
+            -0.0948841019735868,
+            -0.12333998067308989,
+            -0.12183767282636762
+          ],
+          "median_cell_rho": -0.11813069090655712,
+          "predictor": "leadership_positive_mass_top10_pit_3y_pct",
+          "same_sign_cells": 8
+        },
+        "pit_expanding": {
+          "cell_rhos": [
+            -0.11936115068509366,
+            -0.11831032354751411,
+            -0.11408514607154394,
+            -0.11476116936809581,
+            -0.09673661868326086,
+            -0.09611984464906274,
+            -0.12261305210674898,
+            -0.12125360077621443
+          ],
+          "median_cell_rho": -0.11653574645780496,
+          "predictor": "leadership_positive_mass_top10_pit_expanding_pct",
+          "same_sign_cells": 8
+        }
+      },
+      "economic_role": "failure veto / downside fragility",
+      "expected_sign": -1,
+      "family": "breadth_leadership_concentration",
+      "fixed_tail_cells": [
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.0066273955297951985,
+          "high_count": 142,
+          "low_count": 119,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.0068214437415604345,
+          "high_count": 141,
+          "low_count": 117,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.010716032003563414,
+          "high_count": 177,
+          "low_count": 120,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.010471640026101021,
+          "high_count": 178,
+          "low_count": 121,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.0056679391236222065,
+          "high_count": 134,
+          "low_count": 120,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.005592234337774619,
+          "high_count": 137,
+          "low_count": 119,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.008861619616438457,
+          "high_count": 153,
+          "low_count": 119,
+          "market_view": "SZ_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.008268889706879577,
+          "high_count": 154,
+          "low_count": 119,
+          "market_view": "SZ_A"
+        }
+      ],
+      "funnel_status": "PROMISING",
+      "maximum_pit_rows_per_cell": 829,
+      "median_fixed_tail_gap": -0.007545166724220006,
+      "minimum_pit_rows_per_cell": 829,
+      "neighbor_summary": {
+        "leadership_positive_mass_top20": {
+          "median_cell_rho": -0.060035546064816536,
+          "same_sign_cells": 8
+        },
+        "leadership_positive_mass_top5": {
+          "median_cell_rho": -0.06629605173981237,
+          "same_sign_cells": 8
+        }
+      },
+      "pit_rows": 6632,
+      "pit_years": {
+        "2020": {
+          "median_cell_rho": -0.016237583024745785,
+          "same_sign_cells": 4
+        },
+        "2021": {
+          "median_cell_rho": -0.03436695062008911,
+          "same_sign_cells": 8
+        },
+        "2022": {
+          "median_cell_rho": -0.09951011267604006,
+          "same_sign_cells": 8
+        },
+        "2023": {
+          "median_cell_rho": -0.22665758059103694,
+          "same_sign_cells": 8
+        }
+      },
+      "rank_by_absolute_pit_rho": 3,
+      "response": "adverse_mean_log_excursion_h3"
+    },
+    {
+      "candidate_id": "DOWNSIDE_EXTREMES__FIVE_DAY_REVERSAL",
+      "cheap_screen_pass": true,
+      "checks": {
+        "all_cells_same_sign": true,
+        "coordinate_views_same_sign": true,
+        "economic_tail_gap_same_sign": true,
+        "neighbor_definitions_same_sign": true,
+        "pit_magnitude": true,
+        "pit_years_same_sign": true
+      },
+      "coordinate_summary": {
+        "absolute": {
+          "cell_rhos": [
+            0.0914788279689598,
+            0.08547936579530684,
+            0.06949205903039693,
+            0.06588254927357104,
+            0.07779632560517719,
+            0.07192443720587055,
+            0.09677888171578433,
+            0.09086493681109606
+          ],
+          "median_cell_rho": 0.08163784570024202,
+          "predictor": "downside_extreme_participation_70",
+          "same_sign_cells": 8
+        },
+        "pit_3y": {
+          "cell_rhos": [
+            0.10299161254116695,
+            0.09728329492769805,
+            0.08536813748720364,
+            0.0518984341434123,
+            0.0634882079638239,
+            0.05918241789115453,
+            0.12669459390171683,
+            0.12382600955170625
+          ],
+          "median_cell_rho": 0.09132571620745084,
+          "predictor": "downside_extreme_participation_70_pit_3y_pct",
+          "same_sign_cells": 8
+        },
+        "pit_expanding": {
+          "cell_rhos": [
+            0.10550445399105446,
+            0.09769885647377889,
+            0.08169288651434742,
+            0.06147769343488182,
+            0.0664899808311232,
+            0.06018851753680963,
+            0.12772788595464118,
+            0.12181225095384554
+          ],
+          "median_cell_rho": 0.08969587149406316,
+          "predictor": "downside_extreme_participation_70_pit_expanding_pct",
+          "same_sign_cells": 8
+        }
+      },
+      "economic_role": "panic/reversal exposure",
+      "expected_sign": 1,
+      "family": "risk_appetite",
+      "fixed_tail_cells": [
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.008553340720102363,
+          "high_count": 109,
+          "low_count": 202,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.007612502043906386,
+          "high_count": 114,
+          "low_count": 172,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.013808149595112557,
+          "high_count": 36,
+          "low_count": 309,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.012881214315854672,
+          "high_count": 41,
+          "low_count": 287,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.005722839004045997,
+          "high_count": 137,
+          "low_count": 199,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.0032790050140032233,
+          "high_count": 148,
+          "low_count": 151,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.010268503000660638,
+          "high_count": 95,
+          "low_count": 219,
+          "market_view": "SZ_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.011578121236283385,
+          "high_count": 109,
+          "low_count": 201,
+          "market_view": "SZ_A"
+        }
+      ],
+      "funnel_status": "PROMISING",
+      "maximum_pit_rows_per_cell": 829,
+      "median_fixed_tail_gap": 0.009410921860381501,
+      "minimum_pit_rows_per_cell": 828,
+      "neighbor_summary": {
+        "downside_extreme_participation_50": {
+          "median_cell_rho": 0.06750780328359574,
+          "same_sign_cells": 8
+        },
+        "downside_extreme_participation_90": {
+          "median_cell_rho": 0.07952394554840969,
+          "same_sign_cells": 8
+        }
+      },
+      "pit_rows": 6631,
+      "pit_years": {
+        "2020": {
+          "median_cell_rho": 0.25383530241579966,
+          "same_sign_cells": 8
+        },
+        "2021": {
+          "median_cell_rho": 0.08536190172374797,
+          "same_sign_cells": 8
+        },
+        "2022": {
+          "median_cell_rho": 0.013976032036576075,
+          "same_sign_cells": 7
+        },
+        "2023": {
+          "median_cell_rho": 0.10859691368894045,
+          "same_sign_cells": 8
+        }
+      },
+      "rank_by_absolute_pit_rho": 4,
+      "response": "terminal_mean_log_return_h5"
+    },
+    {
+      "candidate_id": "LIQUIDITY_ACTIVITY__FIVE_DAY_CONTINUATION",
+      "cheap_screen_pass": true,
+      "checks": {
+        "all_cells_same_sign": true,
+        "coordinate_views_same_sign": true,
+        "economic_tail_gap_same_sign": true,
+        "neighbor_definitions_same_sign": true,
+        "pit_magnitude": true,
+        "pit_years_same_sign": true
+      },
+      "coordinate_summary": {
+        "absolute": {
+          "cell_rhos": [
+            0.08341121668420436,
+            0.0809273480065145,
+            0.09074770570929733,
+            0.09062289025461637,
+            0.08475546709692022,
+            0.08349821327445897,
+            0.07955115873004436,
+            0.07627570384788614
+          ],
+          "median_cell_rho": 0.08345471497933166,
+          "predictor": "liquidity_median_amount_ratio20",
+          "same_sign_cells": 8
+        },
+        "pit_3y": {
+          "cell_rhos": [
+            0.08002176264786391,
+            0.07805119537954508,
+            0.10455987026000711,
+            0.10430849490756186,
+            0.09090288739477194,
+            0.09115056839427199,
+            0.06991399632913861,
+            0.06881275460700927
+          ],
+          "median_cell_rho": 0.08546232502131793,
+          "predictor": "liquidity_median_amount_ratio20_pit_3y_pct",
+          "same_sign_cells": 8
+        },
+        "pit_expanding": {
+          "cell_rhos": [
+            0.07876354800359563,
+            0.07719172740256526,
+            0.10381913825890132,
+            0.10388172668460163,
+            0.08947164426807397,
+            0.08953559219382577,
+            0.06774390827980674,
+            0.06604564864635706
+          ],
+          "median_cell_rho": 0.0841175961358348,
+          "predictor": "liquidity_median_amount_ratio20_pit_expanding_pct",
+          "same_sign_cells": 8
+        }
+      },
+      "economic_role": "directional continuation exposure",
+      "expected_sign": 1,
+      "family": "liquidity_activity",
+      "fixed_tail_cells": [
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.004885637237268191,
+          "high_count": 121,
+          "low_count": 128,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.005012753297264453,
+          "high_count": 122,
+          "low_count": 132,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.009398634092030574,
+          "high_count": 131,
+          "low_count": 139,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.009460720971517624,
+          "high_count": 132,
+          "low_count": 140,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.00835444080553428,
+          "high_count": 116,
+          "low_count": 125,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.008398928652488999,
+          "high_count": 115,
+          "low_count": 123,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": 0.006344018242807082,
+          "high_count": 116,
+          "low_count": 135,
+          "market_view": "SZ_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": 0.007205562117659143,
+          "high_count": 116,
+          "low_count": 135,
+          "market_view": "SZ_A"
+        }
+      ],
+      "funnel_status": "PROMISING",
+      "maximum_pit_rows_per_cell": 829,
+      "median_fixed_tail_gap": 0.007780001461596711,
+      "minimum_pit_rows_per_cell": 829,
+      "neighbor_summary": {
+        "liquidity_median_amount_ratio10": {
+          "median_cell_rho": 0.05895741860414846,
+          "same_sign_cells": 8
+        },
+        "liquidity_median_amount_ratio60": {
+          "median_cell_rho": 0.038125617155705255,
+          "same_sign_cells": 8
+        }
+      },
+      "pit_rows": 6632,
+      "pit_years": {
+        "2020": {
+          "median_cell_rho": -0.10479241364446797,
+          "same_sign_cells": 2
+        },
+        "2021": {
+          "median_cell_rho": 0.004922774775250597,
+          "same_sign_cells": 4
+        },
+        "2022": {
+          "median_cell_rho": 0.0917759030754257,
+          "same_sign_cells": 8
+        },
+        "2023": {
+          "median_cell_rho": 0.17532253711675563,
+          "same_sign_cells": 8
+        }
+      },
+      "rank_by_absolute_pit_rho": 5,
+      "response": "terminal_mean_log_return_h5"
+    },
+    {
+      "candidate_id": "NEW_HIGH_LOW__FIVE_DAY_EXHAUSTION",
+      "cheap_screen_pass": true,
+      "checks": {
+        "all_cells_same_sign": true,
+        "coordinate_views_same_sign": true,
+        "economic_tail_gap_same_sign": true,
+        "neighbor_definitions_same_sign": true,
+        "pit_magnitude": true,
+        "pit_years_same_sign": true
+      },
+      "coordinate_summary": {
+        "absolute": {
+          "cell_rhos": [
+            -0.04059941009783982,
+            -0.038997969736242116,
+            -0.012031368385231908,
+            -0.012504675988051443,
+            -0.05382236352522462,
+            -0.04329372292585811,
+            -0.025428885829004114,
+            -0.030851362746282262
+          ],
+          "median_cell_rho": -0.03492466624126219,
+          "predictor": "breadth_net_new_high_low60",
+          "same_sign_cells": 8
+        },
+        "pit_3y": {
+          "cell_rhos": [
+            -0.07293933324056008,
+            -0.06912373332690866,
+            -0.004934058755313924,
+            -0.004938670630720897,
+            -0.09510433353463947,
+            -0.09588805833002507,
+            -0.04160510449605578,
+            -0.03940491162348063
+          ],
+          "median_cell_rho": -0.05536441891148222,
+          "predictor": "breadth_net_new_high_low60_pit_3y_pct",
+          "same_sign_cells": 8
+        },
+        "pit_expanding": {
+          "cell_rhos": [
+            -0.07368909251991494,
+            -0.06952574660406581,
+            0.00881942847941978,
+            0.00675140912684576,
+            -0.09536947962884443,
+            -0.0949927690516908,
+            -0.0423104390321599,
+            -0.038444374420812874
+          ],
+          "median_cell_rho": -0.05591809281811286,
+          "predictor": "breadth_net_new_high_low60_pit_expanding_pct",
+          "same_sign_cells": 6
+        }
+      },
+      "economic_role": "breadth exhaustion / mean reversion",
+      "expected_sign": -1,
+      "family": "breadth_new_high_low",
+      "fixed_tail_cells": [
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.009742557001704118,
+          "high_count": 92,
+          "low_count": 159,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.008426825541676218,
+          "high_count": 103,
+          "low_count": 169,
+          "market_view": "ALL_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.005492426361474238,
+          "high_count": 46,
+          "low_count": 173,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.004674930315353166,
+          "high_count": 46,
+          "low_count": 176,
+          "market_view": "CHINEXT_BOARD"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.008780491616346444,
+          "high_count": 112,
+          "low_count": 171,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.007991058008433886,
+          "high_count": 109,
+          "low_count": 171,
+          "market_view": "SH_A"
+        },
+        {
+          "denominator": "ALL_STATUS",
+          "gap": -0.007895289345216876,
+          "high_count": 81,
+          "low_count": 156,
+          "market_view": "SZ_A"
+        },
+        {
+          "denominator": "NON_ST",
+          "gap": -0.008584065870430601,
+          "high_count": 82,
+          "low_count": 167,
+          "market_view": "SZ_A"
+        }
+      ],
+      "funnel_status": "PROMISING",
+      "maximum_pit_rows_per_cell": 829,
+      "median_fixed_tail_gap": -0.008208941775055052,
+      "minimum_pit_rows_per_cell": 829,
+      "neighbor_summary": {
+        "breadth_net_new_high_low40": {
+          "median_cell_rho": -0.02449771064128064,
+          "same_sign_cells": 8
+        },
+        "breadth_net_new_high_low80": {
+          "median_cell_rho": -0.037499405003855936,
+          "same_sign_cells": 8
+        }
+      },
+      "pit_rows": 6632,
+      "pit_years": {
+        "2020": {
+          "median_cell_rho": -0.1052675405082388,
+          "same_sign_cells": 6
+        },
+        "2021": {
+          "median_cell_rho": -0.11973808254911911,
+          "same_sign_cells": 6
+        },
+        "2022": {
+          "median_cell_rho": -0.07997283375777534,
+          "same_sign_cells": 6
+        },
+        "2023": {
+          "median_cell_rho": -0.10336845719633286,
+          "same_sign_cells": 8
+        }
+      },
+      "rank_by_absolute_pit_rho": 6,
+      "response": "terminal_mean_log_return_h5"
+    }
+  ],
+  "research_level": "EXPLORE",
+  "status": "COMPLETE_DISCLOSED_CHEAP_MARKET_STATE_ECONOMIC_SCREEN",
+  "support": {
+    "cells": 8,
+    "complete_dates": 1332,
+    "complete_rows": 10656,
+    "first_date": "2018-07-03",
+    "last_date": "2023-12-22"
+  }
+}

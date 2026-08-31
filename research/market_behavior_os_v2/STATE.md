@@ -7,19 +7,19 @@ Updated 2026-08-31.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `STOP_RESOURCE_HEADROOM_MKT_FORMDEPTH_MINX_001`
-- `CURRENT_PRIMARY_FRONTIER`: distinguish transient minute price impact/rejection from sustained accepted demand and prior multi-day buildup within the generic same-day geometry that explains most own-overshoot ordering; subgroup search remains closed
-- `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
-- `CURRENT_STRATEGY_CANDIDATE`: `NONE`
+- `CURRENT_BASELINE`: `9f52808dd836a56c84df5a531ef5f59b9aa9cf02`
+- `CURRENT_PHASE`: `EXPLORATION_BATCH_CHECKPOINT`
+- `CURRENT_PRIMARY_FRONTIER`: ranked multi-family pool led by turnover/dispersion opportunity width; industry-rank translation is resource-parked after two exact implementations failed different frozen guards
+- `SUPPORTING_FRONTIER`: five market-response leads remain promising, but no further CHINEXT admission-veto threshold rescue is authorized; `MKT-FORMDEPTH-MINX-001` remains a low-priority waiting-resource job
+- `CURRENT_STRATEGY_CANDIDATE`: `NONE`; cross-sectional dispersion/relative value is a research archetype only, and both executable admission-veto translations failed their fixed promotion rules
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `5b68cbb7f2249d85c16b4fecca17368def71afda`
-- `CURRENT_SCIENTIFIC_LAYER`: `FORMATION_DEPTH_DOWNSIDE_PATH_RESOLVED_MIXED; OWN_OBJECTIVE_SPECIFICITY_NOT_PROMOTED; GENERIC_DAILY_GEOMETRY_DOMINANT; MINUTE_MECHANISM_OPEN; NO_STRATEGY`
+- `CURRENT_HEAD_AT_RESUME`: `9f52808dd836a56c84df5a531ef5f59b9aa9cf02`
+- `CURRENT_SCIENTIFIC_LAYER`: `MULTI_FAMILY_ECONOMIC_SCREEN_COMPLETE; TWO_EXECUTABLE_TRANSLATIONS_COMPLETE_NO_STRATEGY_CANDIDATE; DISPERSION_RANK_PARKED_RESOURCE`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -28,9 +28,9 @@ Updated 2026-08-31.
 - `PLACEBO_RESULTS`: formation-depth level-family BH q=0.008706; closing-rejection q also passes but its fixed-control gate fails
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
-- `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
+- `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: within exact crossers, does event-day and recent five-session minute structure support transient price impact/rejection, sustained accepted demand, or a persistent buildup mechanism after respecting the accepted daily-geometry result?
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: which cheap, economically distinct strategy decision can translate liquidity activity, leadership fragility, or breadth exhaustion without reusing the failed generic CHINEXT admission-veto form? Industry-rank direction remains valuable but needs a materially different bounded resource plan.
 
 ## Research OS V2.3 resource and worker state
 
@@ -42,12 +42,14 @@ Updated 2026-08-31.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: MKT-FORMDEPTH-MINX-001 is frozen and its outcome-blind
-  serial sample stage completes, but no minute association estimate is accepted.
-- `ACTIVE_RESOURCE_BLOCKER`: external application pressure leaves only
-  8.26--8.35 GiB available before launch; a fresh 465-MiB minute process reaches
-  7.81 GiB and fails closed below the immutable 8-GiB floor. Resume only after
-  pre-launch available memory reaches at least 9 GiB; do not terminate user apps.
+- `ACTIVE_EXPERIMENT`: none at this checkpoint. See `DISCOVERY_MAP.md` for the
+  ranked next pool.
+- `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
+  ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
+  no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
+  7.21-GiB reading was system-available RAM, not disk; it remains separately
+  `WAITING_RESOURCE` under the 9/8-GiB RAM floors. Repository disk free was about
+  347 GiB at reconciliation.
 - `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
   data remain locked; all current construction stays through 2023-12-31.
 - `FORMATION_QA`: `PASS_ORTHOGONAL_REPLICATION`; WORKER-QA-001 independently
@@ -67,6 +69,68 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Exploration-first multi-family batch
+
+`MKT-STATE-ECON-SCREEN-001` cheaply screened six distinct accepted market-state
+roles. `MKT-STATE-ROBUST-001` retained five after obvious fixed controls and two
+broad chronological blocks: turnover-to-opportunity-width partial rho 0.21285,
+liquidity-activity continuation 0.14657, leadership fragility -0.13208,
+new-high/new-low exhaustion -0.13149, and downside-extreme reversal 0.08235.
+Co-movement compression is parked because its large raw relationship did not
+survive the coarse chronological gate. These are sequentially inspected
+exploration results, not validated signals.
+
+A cheap CHINEXT completed-cycle screen rejected or parked leadership, breadth
+exhaustion, realized-volatility level, size participation, VWAP defense, and
+joint stress as generic admission gates. It promoted two fixed executable tests:
+
+- `HAB-CHX-DOWNREV-STRAT-001` blocks new admissions at t close when downside-
+  extreme participation PIT is <=0.20. It improves the consumed 2022-2023 block
+  by 10.23 percentage points but reduces 2018-2021 return by 11.30 points, so it
+  fails the both-block return rule and is `PARKED_REGIME_DEPENDENT` without
+  rescue.
+- `HAB-CHX-MINVOLPATH-STRAT-001` blocks new admissions using a state available
+  at t 15:30 when five-day minute-volatility progression PIT is >=0.80. Returns
+  improve by 18.05 and 0.87 percentage points and drawdown improves in both
+  blocks, but later severe-loss incidence rises from 6.38% to 6.74% and
+  concentration worsens. It fails the fixed all-required rule and is a parked
+  near-miss, not a strategy candidate.
+
+Both runs retain the existing next-session-open engine, T+1 sellability,
+trading-status/limit/corporate-action semantics, costs, exits, and allowed-date
+ranking, with zero same-day fills. Both periods are consumed development history
+for these newly discovered rules. Post-2023 and CY-011 remain unread.
+
+`MKT-DISP-RANK-001` and exact year-batched `002` produced no scientific result:
+001 breached the 12-GiB temporary-spill ceiling and 002 breached the 1.5-GiB
+peak-RSS ceiling. Their output panels/results are absent. Do not launch a third
+implementation in this discovery batch or weaken the resource/scientific
+contract.
+
+### MKT-DISP-ECON-001 dispersion opportunity persistence
+
+The post-discovery `EXPLORE` reproduction classifies
+`EXPLORE_CANDIDATE_DISPERSION_OPPORTUNITY_PERSISTENCE`. It joins only accepted
+PIT state/geometry panels to the existing pre-2024 future-response domain. The
+10,656 complete rows cover eight governed view/denominator cells; 6,479 rows
+have all causal PIT controls. Two executions are byte-identical.
+
+Current one-session cross-industry return dispersion precedes a wider future
+security-return distribution. At h=3 the median eight-cell PIT Spearman is
+0.48442 and the partial rho after realized volatility, co-movement, central
+direction, and discovery breadth is 0.22278. All eight cells, all six raw years,
+all four PIT-supported years, all leave-one-year-out estimates, h=1/h=5, both
+neighboring dispersion definitions, and all h=3 nonoverlap phases are positive.
+The median high-80%-minus-low-20% opportunity-width gap is 0.02803 log-return
+units.
+
+The controlled p90/p10 contributions are +0.06514/-0.05458, while the future
+market-mean association is -0.000014. This is a candidate two-sided opportunity-
+set mechanism, not market timing. It does not estimate a realizable long-short
+return, ranking direction, execution, costs, capacity, or strategy payoff. The
+primary association was inspected before the reproduction contract, so it
+cannot be promoted without a separately frozen test or independent time.
 
 ### MKT-FORMDEPTH-OWNCTRL-001 objective specificity
 

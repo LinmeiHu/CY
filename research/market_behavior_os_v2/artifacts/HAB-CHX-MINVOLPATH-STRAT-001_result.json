@@ -1,0 +1,189 @@
+{
+  "checks": {
+    "at_least_60pct_baseline_trades_both_blocks": true,
+    "severe_loss_incidence_lower_both_blocks": false,
+    "total_return_improves_both_blocks": true,
+    "zero_same_day_fills": true
+  },
+  "claim_boundary": {
+    "cy011_read": false,
+    "existing_execution_engine_changed_on_disk": false,
+    "post_2023_read": false,
+    "same_bar_fill_assumed": false,
+    "state_used_before_available_at": false,
+    "threshold_optimized": false,
+    "untouched_validation": false
+  },
+  "classification": "PARKED_OR_REJECTED_MINUTE_VOLATILITY_PATH_ADMISSION_VETO",
+  "combined_compounded_return": {
+    "baseline": 0.3923854928977484,
+    "candidate": 0.5607375977537787,
+    "candidate_minus_baseline": 0.16835210485603036
+  },
+  "comparisons": {
+    "consumed_2022_2023": {
+      "baseline": {
+        "annualized_return": -0.08168328625996357,
+        "average_invested_fraction": 0.17835449106928172,
+        "max_drawdown": -0.193413353857543,
+        "mean_trade_return": -0.016552130299664392,
+        "median_trade_return": -0.033237367977433055,
+        "severe_loss_rate": 0.06382978723404255,
+        "sharpe_rf0": -0.6815090306324758,
+        "top20_positive_pnl_concentration": 0.9958255765854177,
+        "total_return": -0.15522057457000038,
+        "trade_count": 94,
+        "turnover": null,
+        "win_rate": 0.2553191489361702
+      },
+      "candidate": {
+        "annualized_return": -0.07693235264640919,
+        "average_invested_fraction": 0.17110759378795307,
+        "failed_open_executions": 0,
+        "max_drawdown": -0.1810942895923715,
+        "mean_trade_return": -0.01630631946314744,
+        "median_trade_return": -0.026553807366448568,
+        "same_day_fills": 0,
+        "severe_loss_rate": 0.06741573033707865,
+        "sharpe_rf0": -0.6618167724637734,
+        "t1_blocked_exits": 8,
+        "top20_positive_pnl_concentration": 0.9983953658409072,
+        "total_return": -0.14654724057000057,
+        "trade_count": 89,
+        "turnover": 17.649354325168563,
+        "win_rate": 0.24719101123595505
+      },
+      "candidate_minus_baseline": {
+        "annualized_return": 0.004750933613554387,
+        "average_invested_fraction": -0.007246897281328657,
+        "max_drawdown": 0.012319064265171487,
+        "mean_trade_return": 0.000245810836516952,
+        "median_trade_return": 0.006683560610984487,
+        "severe_loss_rate": 0.0035859431030361016,
+        "sharpe_rf0": 0.01969225816870246,
+        "top20_positive_pnl_concentration": 0.002569789255489452,
+        "total_return": 0.00867333399999981,
+        "trade_count": -5,
+        "win_rate": -0.008128137700215143
+      }
+    },
+    "development_2018_2021": {
+      "baseline": {
+        "annualized_return": 0.1336456034770972,
+        "average_invested_fraction": 0.24899523285031974,
+        "max_drawdown": -0.20762679470782652,
+        "mean_trade_return": 0.030455684400042576,
+        "median_trade_return": -0.00970512426371722,
+        "severe_loss_rate": 0.1134020618556701,
+        "sharpe_rf0": 0.8105918094948501,
+        "top20_positive_pnl_concentration": 0.7351787051890619,
+        "total_return": 0.6482237267899993,
+        "trade_count": 194,
+        "turnover": 41.93811294680673,
+        "win_rate": 0.4536082474226804
+      },
+      "candidate": {
+        "annualized_return": 0.16360962107727772,
+        "average_invested_fraction": 0.22204801079826306,
+        "failed_open_executions": 8,
+        "max_drawdown": -0.1562593832495376,
+        "mean_trade_return": 0.040994407482034326,
+        "median_trade_return": -0.003132330797371445,
+        "same_day_fills": 0,
+        "severe_loss_rate": 0.08641975308641975,
+        "sharpe_rf0": 1.0324838356670814,
+        "t1_blocked_exits": 7,
+        "top20_positive_pnl_concentration": 0.743431981127137,
+        "total_return": 0.828733436629999,
+        "trade_count": 162,
+        "turnover": 35.6029820648858,
+        "win_rate": 0.4876543209876543
+      },
+      "candidate_minus_baseline": {
+        "annualized_return": 0.029964017600180526,
+        "average_invested_fraction": -0.026947222052056685,
+        "max_drawdown": 0.051367411458288936,
+        "mean_trade_return": 0.01053872308199175,
+        "median_trade_return": 0.006572793466345776,
+        "severe_loss_rate": -0.026982308769250354,
+        "sharpe_rf0": 0.22189202617223125,
+        "top20_positive_pnl_concentration": 0.008253275938075122,
+        "total_return": 0.1805097098399997,
+        "trade_count": -32,
+        "win_rate": 0.03404607356497391
+      }
+    }
+  },
+  "experiment_id": "HAB-CHX-MINVOLPATH-STRAT-001",
+  "gate_audit": {
+    "consumed_2022_2023": {
+      "active_session_count": 232,
+      "input_manifest_sha256": null,
+      "missing_state_session_count": 0,
+      "veto_session_count": 51,
+      "vetoed_candidate_session_count": 25,
+      "vetoed_ranked_candidate_count": 61
+    },
+    "development_2018_2021": {
+      "active_session_count": 325,
+      "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+      "missing_state_session_count": 0,
+      "veto_session_count": 99,
+      "vetoed_candidate_session_count": 50,
+      "vetoed_ranked_candidate_count": 89
+    }
+  },
+  "hashes": {
+    "consumed_2022_2023": {
+      "daily_nav.jsonl": "8bbc49382f390bbedaad54681ad518f19ccea66aac6abae8f276584a1fa97b5c",
+      "engine_summary.json": "e67cc2df7206f6cf7f2301bbbe3878607b56991f7bfce1ebe31b192df41768d5",
+      "event_ledger.jsonl": "609119c6b02b25a1720394b10f2ce62787c93a1fd91513c55ff6f6932b790295",
+      "execution_ledger.jsonl": "27b1dde4b584338046497e9ed85a62002dfb4d63fd6dddbff9cd1e1438970ffb"
+    },
+    "development_2018_2021": {
+      "daily_nav.jsonl": "3cf61f0f27fd05f9c5db421b0b870fcbce38ac9d30abeda706b6d455b53fd9bf",
+      "engine_summary.json": "0e7cf3eb8b385641149f14ed43f500548ca55819f8335ad6aaca73d54c9a670f",
+      "event_ledger.jsonl": "71b3ed647a9d7838c5d2ea0e98292435ce6072277bccb64883540fb6e34971ef",
+      "execution_ledger.jsonl": "a81869d513fc455e91f3f860fe39109f16955b4b0523053e22a7d73c3f771e76"
+    },
+    "inputs": {
+      "calendar": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+      "development_baseline": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094",
+      "development_builder": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae",
+      "development_execution_ledger": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249",
+      "development_gate_d": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c",
+      "development_replay_spec": "1a42cd187f47f93086424d5fce975b50ab89106a4d48011490ce0e6d483a00cd",
+      "engine": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797",
+      "holdout_baseline": "1b3d7540db3e9a403f6f820da4e6e3d0afde33d31979d789c198bb93a5e207e4",
+      "holdout_execution_ledger": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf",
+      "holdout_manifest": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+      "holdout_membership": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+      "market_anchor": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779",
+      "shared_strategy_runner": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e",
+      "state_panel": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0",
+      "state_result": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc",
+      "strategy": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "report_sha256": "74d6116a3e7cb2aa4a2e9d4c4db052b5c3ab19ce816857c9b15bf91f9ee58b0a",
+    "spec_sha256": "7d39ed3c2e1d84a5720fd474fdaaa4a3208c5ad5098f8ff538039572466c648f"
+  },
+  "honesty_boundary": "The high-state trade-return and severe-loss differences, including their coarse temporal split, were inspected before this simple-rule contract was written. This is development-history strategy exploration, not untouched validation.",
+  "research_level": "EXPLORE_STRATEGY_TRANSLATION",
+  "rule": {
+    "activation_date": "2020-02-07",
+    "before_activation": "preserve baseline because the causal PIT coordinate does not yet exist",
+    "block_new_admissions_when": "coordinate >= 0.80",
+    "coordinate": "minute_realized_volatility__ordinal_progression__pit_3y_pct",
+    "existing_positions": "unchanged",
+    "exits": "unchanged",
+    "market_gate_decision_timestamp": "15:30 Asia/Shanghai",
+    "missing_after_activation": "fail closed",
+    "ranking_on_allowed_dates": "unchanged",
+    "selector": "market_view == CHINEXT_BOARD and denominator == ALL_STATUS",
+    "state_timestamp": "completed trade_date five-day minute-path state available at 15:30 Asia/Shanghai",
+    "stock_signal_timestamp": "existing CHINEXT stock signal at completed trade_date close 15:00 Asia/Shanghai",
+    "threshold_search": false
+  },
+  "status": "COMPLETE_SIMPLE_EXECUTABLE_STRATEGY_TRANSLATION",
+  "strategy_candidate": false
+}

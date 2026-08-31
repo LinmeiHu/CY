@@ -1,0 +1,110 @@
+{
+  "experiment_id": "HAB-CHX-DOWNREV-STRAT-001",
+  "research_level": "EXPLORE_STRATEGY_TRANSLATION",
+  "status": "POST_DISCOVERY_FIXED_SIMPLE_RULE",
+  "frozen_at": "2026-08-31",
+  "question": "Does a simple t-close market-state veto improve the already-executable CHINEXT V1 portfolio when new admissions are blocked during the lowest quintile of downside-extreme participation?",
+  "honesty_boundary": "The low-state trade-return and severe-loss differences were inspected before this simple-rule contract was written. This is development-history strategy exploration, not untouched validation.",
+  "selection_history": "The rule is the only strategy translation promoted from a fixed low/mid/high screen of turnover, liquidity activity, downside extremes, new-high/new-low breadth, leadership concentration, and co-movement. No threshold or direction search follows this freeze.",
+  "inputs": {
+    "state_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1"
+    },
+    "strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "development_builder": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "development_replay_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_extended_replay_preregistration.json",
+      "sha256": "1a42cd187f47f93086424d5fce975b50ab89106a4d48011490ce0e6d483a00cd"
+    },
+    "development_gate_d": {
+      "path": "research/chinext_v1/reports/chinext_v1_gate_d_result.json",
+      "sha256": "4898342825f147cd2c88ce5fcb5f63def844e20bb483286b2b9aeec39553164c"
+    },
+    "development_baseline": {
+      "path": "research/chinext_v1/reports/chinext_v1_extended_replay_summary.json",
+      "sha256": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "holdout_manifest": {
+      "path": "research/chinext_v1/reports/chinext_v1_pit_holdout_2022_2023_master_manifest.json",
+      "sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43"
+    },
+    "holdout_baseline": {
+      "path": "research/chinext_v1/reports/chinext_v1_phase9b_oos_validation_summary.json",
+      "sha256": "1b3d7540db3e9a403f6f820da4e6e3d0afde33d31979d789c198bb93a5e207e4"
+    },
+    "market_anchor": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "state_rule": {
+    "selector": "market_view == CHINEXT_BOARD and denominator == ALL_STATUS",
+    "coordinate": "downside_extreme_participation_70_pit_3y_pct",
+    "activation_date": "2020-07-28",
+    "block_new_admissions_when": "coordinate <= 0.20",
+    "state_timestamp": "completed trade_date close at 15:00 Asia/Shanghai",
+    "missing_after_activation": "fail closed",
+    "before_activation": "preserve baseline because the causal PIT coordinate does not yet exist",
+    "existing_positions": "unchanged",
+    "exits": "unchanged",
+    "ranking_on_allowed_dates": "unchanged",
+    "threshold_search": false
+  },
+  "execution_contract": {
+    "signal": "state at t completed close only",
+    "earliest_entry": "existing CHINEXT V1 next-session open execution",
+    "same_bar_fill": false,
+    "t_plus_one_sellability": "unchanged engine ledger",
+    "limits_suspensions_corporate_actions": "unchanged engine fail-closed semantics",
+    "transaction_cost_bps_per_side": 10,
+    "slippage_and_stamp_duty": "unchanged baseline limitations",
+    "maximum_holdings": 10,
+    "rank_replacement": "OFF"
+  },
+  "blocks": {
+    "development": ["2018-01-02", "2021-12-31"],
+    "consumed_temporal_block": ["2022-01-04", "2023-12-29"],
+    "interpretation": "Both blocks are repeatedly inspected development history for this new rule; neither is untouched OOS."
+  },
+  "economic_screen": {
+    "report": [
+      "total and annualized return",
+      "maximum drawdown",
+      "Sharpe at zero risk-free rate",
+      "completed trades and win rate",
+      "mean and median trade return",
+      "severe-loss incidence",
+      "average invested fraction",
+      "turnover and top-20 positive-PnL concentration"
+    ],
+    "promising_if": "total return improves in both blocks, severe-loss incidence falls in both blocks, and each block retains at least 60% of baseline trades",
+    "otherwise": "PARKED_OR_REJECTED_NO_RESCUE"
+  },
+  "prohibited": [
+    "threshold, state, block, or rule-direction optimization after the run",
+    "same-bar fill",
+    "new exit logic or ranking changes",
+    "post-2023 data",
+    "CY-011",
+    "calling 2022-2023 untouched OOS"
+  ]
+}

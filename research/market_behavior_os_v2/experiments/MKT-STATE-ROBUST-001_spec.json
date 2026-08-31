@@ -1,0 +1,150 @@
+{
+  "experiment_id": "MKT-STATE-ROBUST-001",
+  "research_level": "EXPLORE_ROBUSTNESS",
+  "status": "FROZEN_BEFORE_INCREMENTAL_ESTIMATION",
+  "frozen_at": "2026-08-31",
+  "question": "Do the five cheap-screen survivors retain their economic response after a fixed small set of obvious contemporaneous state controls?",
+  "selection_boundary": "Candidates were selected only because they passed MKT-STATE-ECON-SCREEN-001. This is sequential exploratory robustness, not independent confirmation or final validation.",
+  "decision_semantics": {
+    "state_available_at": "completed official trade_date close at 15:00 Asia/Shanghai",
+    "response_begins": "strictly later exchange sessions",
+    "earliest_hypothetical_fill": "t+1 or later; this experiment constructs no fills",
+    "maximum_predictor_date": "2023-12-29",
+    "post_2023_read": false,
+    "cy011_read": false
+  },
+  "inputs": {
+    "screen_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STATE-ECON-SCREEN-001_result.json",
+      "sha256": "b0a12843fb2b8e87c1eae7ca01dab210859248559f57347e7038ba2f80fab9c9"
+    },
+    "risk_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1"
+    },
+    "correlation_liquidity_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_correlation_liquidity_panel.csv",
+      "sha256": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573"
+    },
+    "breadth_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BRTH-002_breadth_panel.csv",
+      "sha256": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a"
+    },
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+      "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"
+    },
+    "response_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-DATA-001_panel.csv",
+      "sha256": "aaf67e128f490e0594a529a296f23bd3e0207e7e47a3a42f9a0ec988f2c4fbbe"
+    }
+  },
+  "population": {
+    "views": ["ALL_A", "CHINEXT_BOARD", "SH_A", "SZ_A"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_complete_rows": 10656,
+    "expected_complete_dates": 1332,
+    "expected_pit_rows": 6479,
+    "minimum_pit_rows_per_cell": 809,
+    "expected_first_date": "2018-07-03",
+    "expected_last_complete_date": "2023-12-22",
+    "expected_first_pit_date": "2020-08-24"
+  },
+  "fixed_candidates": [
+    {
+      "candidate_id": "LIQUIDITY_TURNOVER__OPPORTUNITY_WIDTH",
+      "predictor": "liquidity_turnover_median_pit_3y_pct",
+      "response": "opportunity_spread_h3",
+      "horizon": 3,
+      "expected_sign": 1,
+      "controls": [
+        "industry_return_dispersion_iqr_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "median_signed_limit_utilization_pit_3y_pct",
+        "breadth_net_new_high_low60_pit_3y_pct"
+      ]
+    },
+    {
+      "candidate_id": "LEADERSHIP_CONCENTRATION__FRAGILITY",
+      "predictor": "leadership_positive_mass_top10_pit_3y_pct",
+      "response": "adverse_mean_log_excursion_h3",
+      "horizon": 3,
+      "expected_sign": -1,
+      "controls": [
+        "breadth_net_new_high_low60_pit_3y_pct",
+        "median_signed_limit_utilization_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "liquidity_turnover_median_pit_3y_pct"
+      ]
+    },
+    {
+      "candidate_id": "DOWNSIDE_EXTREMES__FIVE_DAY_REVERSAL",
+      "predictor": "downside_extreme_participation_70_pit_3y_pct",
+      "response": "terminal_mean_log_return_h5",
+      "horizon": 5,
+      "expected_sign": 1,
+      "controls": [
+        "median_signed_limit_utilization_pit_3y_pct",
+        "upside_extreme_participation_70_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "liquidity_turnover_median_pit_3y_pct",
+        "breadth_net_new_high_low60_pit_3y_pct"
+      ]
+    },
+    {
+      "candidate_id": "LIQUIDITY_ACTIVITY__FIVE_DAY_CONTINUATION",
+      "predictor": "liquidity_median_amount_ratio20_pit_3y_pct",
+      "response": "terminal_mean_log_return_h5",
+      "horizon": 5,
+      "expected_sign": 1,
+      "controls": [
+        "liquidity_turnover_median_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "median_signed_limit_utilization_pit_3y_pct",
+        "breadth_net_new_high_low60_pit_3y_pct"
+      ]
+    },
+    {
+      "candidate_id": "NEW_HIGH_LOW__FIVE_DAY_EXHAUSTION",
+      "predictor": "breadth_net_new_high_low60_pit_3y_pct",
+      "response": "terminal_mean_log_return_h5",
+      "horizon": 5,
+      "expected_sign": -1,
+      "controls": [
+        "median_signed_limit_utilization_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "liquidity_turnover_median_pit_3y_pct",
+        "leadership_positive_mass_top10_pit_3y_pct"
+      ]
+    }
+  ],
+  "estimator": {
+    "primary": "within-cell partial Spearman after ranking predictor, response, and fixed controls",
+    "temporal_blocks": {
+      "early": [2020, 2021],
+      "late": [2022, 2023]
+    },
+    "nonoverlap_phases": "session ordinal modulo fixed response horizon",
+    "no_variable_selection": true
+  },
+  "survival_gate": {
+    "minimum_absolute_median_cell_partial_rho": 0.03,
+    "minimum_same_sign_cells": 6,
+    "both_temporal_blocks_same_sign": true,
+    "minimum_same_sign_nonoverlap_phases_h3": 2,
+    "minimum_same_sign_nonoverlap_phases_h5": 4
+  },
+  "prohibited_computations": [
+    "control, threshold, horizon, candidate, view, denominator, or phase selection",
+    "security ranking, portfolio construction, transaction costs, capacity, or PnL",
+    "strategy outcome or CHINEXT V1 rule modification",
+    "same-bar execution",
+    "post-2023 data",
+    "CY-011"
+  ]
+}

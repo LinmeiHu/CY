@@ -1,0 +1,213 @@
+{
+  "claim_boundary": {
+    "cy011_read": false,
+    "future_response_used_as_predictor": false,
+    "independent_confirmation": false,
+    "pnl_estimated": false,
+    "post_2023_read": false,
+    "same_bar_fill_assumed": false,
+    "strategy_supported": false
+  },
+  "classification": "SURVIVORS_REQUIRE_EXECUTABLE_TRANSLATION_OR_DISTINCTNESS_TEST",
+  "experiment_id": "MKT-STATE-ROBUST-001",
+  "hashes": {
+    "inputs": {
+      "breadth_panel": "60ca6bf5a69c8054d9d4c9543d6eea6aa3bfbc2835fc8f8efa63d1d09c03374a",
+      "correlation_liquidity_panel": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573",
+      "geometry_panel": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a",
+      "response_panel": "aaf67e128f490e0594a529a296f23bd3e0207e7e47a3a42f9a0ec988f2c4fbbe",
+      "risk_panel": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1",
+      "screen_result": "b0a12843fb2b8e87c1eae7ca01dab210859248559f57347e7038ba2f80fab9c9"
+    },
+    "partial_audit_sha256": "3164b6bc4534ede670992cb7e40c458a163a9e78772a616b2bcbbce6176f88b1",
+    "report_sha256": "14f77b4a2146801a0f358d12cda78d5e89a44d49ed7a546e4621d2e5f5b5fa22",
+    "spec_sha256": "65f1014b2ce6ca4dcff49e5f6618dc378b05cf1f03f9ca652a1c59e2ca974f0e"
+  },
+  "next_stage": "For directional survivors, freeze the simplest t+1 executable broad-market translation. For opportunity-habitat survivors, test distinctness from current dispersion before resource-gated security ranking.",
+  "ranked_candidates": [
+    {
+      "block_partial_rhos": {
+        "early": 0.21564108181461045,
+        "late": 0.1790855004508735
+      },
+      "candidate_id": "LIQUIDITY_TURNOVER__OPPORTUNITY_WIDTH",
+      "checks": {
+        "both_blocks_same_sign": true,
+        "cell_sign": true,
+        "nonoverlap_phase_sign": true,
+        "partial_magnitude": true
+      },
+      "controls": [
+        "industry_return_dispersion_iqr_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "median_signed_limit_utilization_pit_3y_pct",
+        "breadth_net_new_high_low60_pit_3y_pct"
+      ],
+      "funnel_status": "ROBUSTNESS",
+      "median_cell_partial_rho": 0.21284705678977517,
+      "nonoverlap_phase_partial_rhos": {
+        "0": 0.22457732021095247,
+        "1": 0.17950058272514144,
+        "2": 0.21758805251272642
+      },
+      "predictor": "liquidity_turnover_median_pit_3y_pct",
+      "rank_by_absolute_partial_rho": 1,
+      "response": "opportunity_spread_h3",
+      "same_sign_cells": 8,
+      "survives_incremental_robustness": true
+    },
+    {
+      "block_partial_rhos": {
+        "early": 0.09326762317859877,
+        "late": 0.16258187746391273
+      },
+      "candidate_id": "LIQUIDITY_ACTIVITY__FIVE_DAY_CONTINUATION",
+      "checks": {
+        "both_blocks_same_sign": true,
+        "cell_sign": true,
+        "nonoverlap_phase_sign": true,
+        "partial_magnitude": true
+      },
+      "controls": [
+        "liquidity_turnover_median_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "median_signed_limit_utilization_pit_3y_pct",
+        "breadth_net_new_high_low60_pit_3y_pct"
+      ],
+      "funnel_status": "ROBUSTNESS",
+      "median_cell_partial_rho": 0.14656847845766974,
+      "nonoverlap_phase_partial_rhos": {
+        "0": 0.1320466989499913,
+        "1": 0.14850045041667786,
+        "2": 0.1814989923957368,
+        "3": 0.12312029273105712,
+        "4": 0.11462361385483341
+      },
+      "predictor": "liquidity_median_amount_ratio20_pit_3y_pct",
+      "rank_by_absolute_partial_rho": 2,
+      "response": "terminal_mean_log_return_h5",
+      "same_sign_cells": 8,
+      "survives_incremental_robustness": true
+    },
+    {
+      "block_partial_rhos": {
+        "early": -0.06601809200288822,
+        "late": -0.1754647609286346
+      },
+      "candidate_id": "LEADERSHIP_CONCENTRATION__FRAGILITY",
+      "checks": {
+        "both_blocks_same_sign": true,
+        "cell_sign": true,
+        "nonoverlap_phase_sign": true,
+        "partial_magnitude": true
+      },
+      "controls": [
+        "breadth_net_new_high_low60_pit_3y_pct",
+        "median_signed_limit_utilization_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "liquidity_turnover_median_pit_3y_pct"
+      ],
+      "funnel_status": "ROBUSTNESS",
+      "median_cell_partial_rho": -0.13207940917023725,
+      "nonoverlap_phase_partial_rhos": {
+        "0": -0.08343525633477489,
+        "1": -0.15352336294946725,
+        "2": -0.17217955106669824
+      },
+      "predictor": "leadership_positive_mass_top10_pit_3y_pct",
+      "rank_by_absolute_partial_rho": 3,
+      "response": "adverse_mean_log_excursion_h3",
+      "same_sign_cells": 8,
+      "survives_incremental_robustness": true
+    },
+    {
+      "block_partial_rhos": {
+        "early": -0.06892655370240985,
+        "late": -0.14893001831735592
+      },
+      "candidate_id": "NEW_HIGH_LOW__FIVE_DAY_EXHAUSTION",
+      "checks": {
+        "both_blocks_same_sign": true,
+        "cell_sign": true,
+        "nonoverlap_phase_sign": true,
+        "partial_magnitude": true
+      },
+      "controls": [
+        "median_signed_limit_utilization_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "liquidity_turnover_median_pit_3y_pct",
+        "leadership_positive_mass_top10_pit_3y_pct"
+      ],
+      "funnel_status": "ROBUSTNESS",
+      "median_cell_partial_rho": -0.13149154023915394,
+      "nonoverlap_phase_partial_rhos": {
+        "0": -0.12073889467160778,
+        "1": -0.1265244890268392,
+        "2": -0.12991198518134064,
+        "3": -0.15919034051304157,
+        "4": -0.0793041589748418
+      },
+      "predictor": "breadth_net_new_high_low60_pit_3y_pct",
+      "rank_by_absolute_partial_rho": 4,
+      "response": "terminal_mean_log_return_h5",
+      "same_sign_cells": 8,
+      "survives_incremental_robustness": true
+    },
+    {
+      "block_partial_rhos": {
+        "early": 0.13067635361634172,
+        "late": 0.05668429888351398
+      },
+      "candidate_id": "DOWNSIDE_EXTREMES__FIVE_DAY_REVERSAL",
+      "checks": {
+        "both_blocks_same_sign": true,
+        "cell_sign": true,
+        "nonoverlap_phase_sign": true,
+        "partial_magnitude": true
+      },
+      "controls": [
+        "median_signed_limit_utilization_pit_3y_pct",
+        "upside_extreme_participation_70_pit_3y_pct",
+        "realized_volatility_median20_pit_3y_pct",
+        "correlation_median20_pit_3y_pct",
+        "liquidity_turnover_median_pit_3y_pct",
+        "breadth_net_new_high_low60_pit_3y_pct"
+      ],
+      "funnel_status": "ROBUSTNESS",
+      "median_cell_partial_rho": 0.08234798316187758,
+      "nonoverlap_phase_partial_rhos": {
+        "0": 0.1020077366588218,
+        "1": 0.10121108880616334,
+        "2": 0.10719240414310728,
+        "3": -0.03494673459738635,
+        "4": 0.11164451958811047
+      },
+      "predictor": "downside_extreme_participation_70_pit_3y_pct",
+      "rank_by_absolute_partial_rho": 5,
+      "response": "terminal_mean_log_return_h5",
+      "same_sign_cells": 8,
+      "survives_incremental_robustness": true
+    }
+  ],
+  "research_level": "EXPLORE_ROBUSTNESS",
+  "selection_boundary": "Candidates were selected only because they passed MKT-STATE-ECON-SCREEN-001. This is sequential exploratory robustness, not independent confirmation or final validation.",
+  "status": "COMPLETE_CHEAP_INCREMENTAL_ROBUSTNESS",
+  "support": {
+    "cells": 8,
+    "complete_rows": 10656,
+    "first_pit_date": "2020-08-24",
+    "last_complete_date": "2023-12-22",
+    "pit_rows": 6479
+  },
+  "survivor_ids": [
+    "LIQUIDITY_TURNOVER__OPPORTUNITY_WIDTH",
+    "LIQUIDITY_ACTIVITY__FIVE_DAY_CONTINUATION",
+    "LEADERSHIP_CONCENTRATION__FRAGILITY",
+    "NEW_HIGH_LOW__FIVE_DAY_EXHAUSTION",
+    "DOWNSIDE_EXTREMES__FIVE_DAY_REVERSAL"
+  ]
+}

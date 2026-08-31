@@ -2,6 +2,105 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: exploration-first multi-family strategy funnel
+
+The meaningful batch is complete. Six accepted market-state families were
+screened cheaply; five survived an obvious-control/two-block market-response
+check, several additional accepted states were killed on support or block
+instability, and two fixed CHINEXT admission-veto translations reached the
+existing executable engine. No simple strategy candidate passed its frozen
+promotion rule.
+
+The ranked family pool is in `DISCOVERY_MAP.md`. Turnover/dispersion opportunity
+width remains first: turnover partial rho 0.21285 and the independently reproduced
+dispersion h3 partial rho 0.22278. Liquidity continuation, leadership fragility,
+breadth exhaustion, and downside reversal remain promising market behaviors,
+but their direct CHINEXT admission-gate evidence is mixed, contradictory, or
+negative. Co-movement is parked for chronological instability.
+
+`HAB-CHX-DOWNREV-STRAT-001` used the fixed t-close rule
+`downside_extreme_participation_70_pit_3y_pct <= 0.20`. Development return fell
+64.82% to 53.52%, while consumed 2022-2023 improved -15.52% to -5.29%.
+Drawdown and severe-loss incidence improved, but the rule failed the required
+return improvement in both blocks. Candidate-management status:
+`PARKED_REGIME_DEPENDENT`, no threshold rescue; the immutable result retains its
+original combined `PARKED_OR_REJECTED` classification string. Result
+`6fb6c404...`, report `331218e1...`.
+
+`HAB-CHX-MINVOLPATH-STRAT-001` used the true t 15:30 availability of
+`minute_realized_volatility__ordinal_progression__pit_3y_pct` and the fixed
+`>=0.80` veto for next-session-open admissions. Return improved 64.82% to 82.87%
+and -15.52% to -14.65%, with drawdown improvement in both blocks. It still fails
+because later severe-loss incidence rises 6.38% to 6.74%; win rate and top-20
+positive-PnL concentration also worsen slightly. Classification:
+`PARKED_NEAR_MISS`, not a strategy candidate, and no threshold rescue. Result
+`6a582c6f...`, report `74d6116a...`.
+
+Both translations have zero same-day fills and preserve the existing CHINEXT
+engine's next-open execution, T+1, status/limit, corporate-action, cost, exit,
+and allowed-date ranking semantics. Existing 2018-2023 blocks are consumed
+development history for these new rules, not untouched OOS. No post-2023 or
+CY-011 field was read.
+
+The unchanged `MKT-DISP-RANK-001` retry passed the prelaunch RAM gate and then
+failed closed at its 12-GiB temporary-spill ceiling. Exact year-batched
+`MKT-DISP-RANK-002` failed closed at the unchanged 1.5-GiB peak-RSS ceiling.
+Neither panel/result/report exists. After two bounded implementations failed
+different guards, this translation is `PARKED_RESOURCE`; do not attempt a third
+rescue or weaken the contract in the current batch.
+
+Resource semantics are now explicit: the historical 7.21/7.32-GiB numbers were
+`psutil.virtual_memory().available`, meaning system-available RAM, not disk.
+Repository, outputs, and scratch are on `/dev/disk3s5` mounted at
+`/System/Volumes/Data`; reconciliation showed about 347 GiB filesystem free.
+`MKT-FORMDEPTH-MINX-001` remains a low-priority separate waiting-RAM job.
+
+MKT-TRND-001's semantic boundary remains unchanged: trend direction passed only
+the tested neighboring-horizon representation-stability gate. Current quality,
+age, and transition definitions failed that gate without rejecting those broader
+families; strength/alignment remain data-contract-limited. No trend coordinate
+is an established signal or strategy-habitat predictor.
+
+At this checkpoint there is no active experiment. The next batch should start
+from a new economically distinct strategy decision—not another CHINEXT veto—or
+from a materially different bounded plan for the PIT industry-rank translation.
+
+What market behavior are we still not studying? Security/industry rank direction
+inside widening dispersion, broad exposure sizing under liquidity activity,
+entry/exit and holding-period mismatch, true order flow, and broader stable trend
+quality/age/transition representations.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? The
+dispersion mechanism still implies a cross-sectional relative-value research
+archetype, but no executable candidate. Neither new admission veto qualifies.
+
+## Latest checkpoint: MKT-DISP-ECON-001 lean discovery
+
+The active program is not stopped. `MKT-FORMDEPTH-MINX-001` is a supporting
+`WAITING_RESOURCE` job: an exact retry failed closed before its first batch at
+7.21 GiB system-available RAM, below the immutable 8-GiB RAM floor, and produced no estimate.
+Resume only at >=9 GiB pre-launch availability; do not lower the floor, change
+the frozen sample, or terminate user applications.
+
+The independent primary frontier moved to cross-industry dispersion. The
+post-discovery EXPLORE reproduction binds accepted MKT-INDRS/MKT-INDRS-GEO state
+to the existing pre-2024 response domain. It covers 10,656 complete rows and
+6,479 all-control PIT rows. H3 median PIT rho is 0.48442 and the fixed four-
+control partial rho is 0.22278; all eight cells, supported years/LOYO, h1/h5,
+neighboring dispersion definitions, and h3 phases are positive. Two runs are
+byte-identical: cell audit `3048929c...`, result `f130db89...`, report
+`05983f2e...`.
+
+The future distribution widens on both sides while controlled mean return is
+flat. Preserve classification
+`EXPLORE_CANDIDATE_DISPERSION_OPPORTUNITY_PERSISTENCE`: this is a candidate
+opportunity-set mechanism, not market timing or realizable long-short PnL. The
+primary association was seen before the reproduction contract. Next freeze a
+PIT industry/security ranking that distinguishes continuation, reversal, and
+directionless widening; only a surviving ranking mechanism may reach a later
+cost/capacity PROMOTE design. No strategy, post-2023 data, or CY-011 is
+authorized. Use `DISCOVERY_MAP.md` as the compact outcome/validation map.
+
 ## Latest checkpoint: MKT-FORMDEPTH-OWN-DATA-005
 
 The own-versus-shared formation-depth map fixes five same-date own-overshoot

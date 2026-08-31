@@ -1,0 +1,101 @@
+{
+  "experiment_id": "MKT-DISP-ECON-001",
+  "research_level": "EXPLORE",
+  "status": "POST_DISCOVERY_REPRODUCTION_CONTRACT",
+  "frozen_at": "2026-08-31",
+  "question": "Does a strategy-independent current cross-industry return-dispersion state precede a wider future cross-sectional security-return opportunity set after ordinary volatility, co-movement, direction, and breadth controls?",
+  "honesty_boundary": "The primary association was inspected before this reproduction contract was written. Every result is exploratory and requires a separately frozen PROMOTE test or independent future confirmation before signal, habitat, or strategy use.",
+  "decision_semantics": {
+    "state_available_at": "trade_date 15:00 Asia/Shanghai from accepted PIT panels",
+    "response_begins": "next exchange session; no response field is a predictor",
+    "entry_claim": "NONE; any later executable design must fill no earlier than t+1",
+    "maximum_predictor_date": "2023-12-29",
+    "post_2023_read": false,
+    "cy011_read": false
+  },
+  "inputs": {
+    "industry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_panel.csv",
+      "sha256": "c9e8d44935261256c1f3a6246026ba2ff0a02d3373386771fe58182ad3baeaf4"
+    },
+    "industry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_result.json",
+      "sha256": "578d9dbaa16bc1da2aaee790309c56475cc102de9fc592a72aaae1bd43c41085"
+    },
+    "geometry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_panel.csv",
+      "sha256": "7954dc814647fa45bc8508e38511a9d4074acc4370798377724aa45f6a7df13a"
+    },
+    "geometry_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-GEO-002_result.json",
+      "sha256": "9b3eaa0da0e9adba67f61df81d25412ae0277cff37ecf63074738d622989a346"
+    },
+    "response_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-DATA-001_panel.csv",
+      "sha256": "aaf67e128f490e0594a529a296f23bd3e0207e7e47a3a42f9a0ec988f2c4fbbe"
+    },
+    "response_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-DATA-001_result.json",
+      "sha256": "2bae2c9ac472168dbac2e6ef38f22bdb1ba6a629953a811dd0ec2a0a9d82ae36"
+    }
+  },
+  "population": {
+    "views": ["ALL_A", "CHINEXT_BOARD", "SH_A", "SZ_A"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "expected_complete_rows": 10656,
+    "expected_complete_dates": 1332,
+    "expected_pit_rows": 6479,
+    "minimum_expected_pit_rows_per_cell": 809,
+    "maximum_expected_pit_rows_per_cell": 810,
+    "expected_first_date": "2018-07-03",
+    "expected_last_complete_date": "2023-12-22",
+    "expected_first_pit_date": "2020-08-24"
+  },
+  "state": {
+    "primary_absolute": "industry_return_dispersion_iqr",
+    "primary_pit": "industry_return_dispersion_iqr_pit_3y_pct",
+    "neighboring_absolute_definitions": [
+      "industry_return_dispersion_p90_p10",
+      "industry_return_dispersion_mad"
+    ],
+    "semantic_unit": "same-session cross-industry dispersion of industry median one-session security log returns",
+    "fixed_controls": [
+      "realized_volatility_median20_pit_3y_pct",
+      "correlation_median20_pit_3y_pct",
+      "median_signed_limit_utilization_pit_3y_pct",
+      "breadth_net_new_high_low60_pit_3y_pct"
+    ],
+    "variable_selection": false
+  },
+  "responses": {
+    "primary": "terminal_p90_log_return_h3 - terminal_p10_log_return_h3",
+    "neighbor_horizons": [1, 5],
+    "tail_decomposition_h3": [
+      "terminal_p90_log_return_h3",
+      "terminal_p10_log_return_h3"
+    ],
+    "directional_diagnostics_h3": [
+      "terminal_mean_log_return_h3",
+      "terminal_positive_fraction_h3"
+    ],
+    "fragility_diagnostic_h3": "adverse_mean_log_excursion_h3",
+    "claim_boundary": "Future cross-sectional opportunity width is an observable distribution, not a realizable long-short return, ranking rule, capacity result, or trading payoff."
+  },
+  "exploratory_candidate_screen": {
+    "minimum_positive_primary_cells": 8,
+    "minimum_median_primary_partial_rho": 0.10,
+    "all_four_pit_supported_year_medians_positive": true,
+    "h1_and_h5_median_partial_rho_positive": true,
+    "both_neighbor_definition_median_raw_rhos_positive": true,
+    "all_h3_nonoverlap_phase_median_partial_rhos_positive": true,
+    "interpretation": "A passing screen admits only a PROMOTE candidate; it is not confirmation because the screen was recorded after primary outcome inspection."
+  },
+  "prohibited_computations": [
+    "candidate threshold optimization or dispersion bin search",
+    "security selection, ranking, long-short portfolio construction, or PnL",
+    "strategy outcome or CHINEXT V1 rule modification",
+    "same-bar execution",
+    "post-2023 data",
+    "CY-011"
+  ]
+}

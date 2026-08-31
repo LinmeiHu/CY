@@ -1,6 +1,23 @@
 # Current autonomous STOP
 
-Status: `STOP_RESOURCE_HEADROOM_MKT_FORMDEPTH_MINX_001`.
+Status: `NO_ACTIVE_STOP`.
+
+`MKT-FORMDEPTH-MINX-001` is `WAITING_RESOURCE`, not a program STOP. The lean
+research loop continues on scientifically independent daily/PIT work. Its exact
+analysis was retried once and failed closed before the first minute batch at
+7.21 GiB system-available RAM, below the immutable 8-GiB RAM floor; no estimate
+was accepted. This was `psutil.virtual_memory().available`, not disk space.
+
+The exploration-first batch has reached a meaningful checkpoint, not a global
+STOP. `MKT-DISP-RANK-001` failed its 12-GiB temporary-spill ceiling and exact
+year-batched `MKT-DISP-RANK-002` failed the unchanged 1.5-GiB peak-RSS ceiling;
+both produced no accepted output and are `PARKED_RESOURCE` after two bounded
+implementations. Repository/output/scratch disk had about 347 GiB free on
+`/dev/disk3s5` at reconciliation, so neither failure is a filesystem-capacity
+STOP. Two completed fixed CHINEXT translations also failed their promotion
+rules without rescue. There is no active experiment and no authorized strategy
+candidate at this handoff; a future batch should choose a new distinct economic
+decision or a materially different bounded rank-build plan.
 
 MKT-FORMDEPTH-MINX-001 is frozen and implementation-ready, but no minute
 association estimate has been accepted. The deterministic outcome-blind sample
@@ -16,12 +33,12 @@ at only 8.26--8.35 GiB before launching the process. No research process is left
 running. No future outcome, strategy field, post-2023 partition, CY-011 field,
 or accepted minute estimate was read or produced.
 
-Resume only when pre-launch available memory is at least 9 GiB and the existing
+Resume that supporting job only when pre-launch available memory is at least 9 GiB and the existing
 8 GiB in-run floor can be preserved. Rebuild the serial sample handoff if its
 temporary directory is absent, then run the exact `sample` followed by
 `analyze` stages. Do not lower the floor, shrink/resample the cohort, change the
 five-session window or descriptors, publish a partial result, or terminate user
-applications. This is a current resource STOP, not a scientific rejection of
+applications. This is a waiting-resource condition, not a scientific rejection of
 the cross-scale formation-depth mechanism question.
 
 The prior `STOP_UNSAFE_MARKET_MINUTE_REPRESENTATION_SCALE` is resolved by the

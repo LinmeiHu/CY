@@ -1,0 +1,42 @@
+{
+  "experiment_id": "MKT-DISP-RANK-002",
+  "research_level": "EXPLORE",
+  "status": "FROZEN_EXACT_YEAR_BATCHED_ENGINEERING_RETRY",
+  "frozen_at": "2026-08-31",
+  "inherits_scientific_spec": {
+    "path": "research/market_behavior_os_v2/experiments/MKT-DISP-RANK-001_spec.json",
+    "sha256": "502d5db1779fad76f73b45a4f6587c79398fb198a7a19f6404a6e2f7e92ac57c"
+  },
+  "supersedes_execution": "MKT-DISP-RANK-001_INVALID_RESOURCE_GUARD",
+  "scientific_changes": "NONE",
+  "engineering_change": {
+    "method": "Build the unchanged action-aware security state separately for each anchor calendar year using the exact previous/current/next annual partitions needed for 120-session history and t+5 response, then retain only that anchor year before the unchanged cell aggregation.",
+    "year_context": {
+      "2018": [2018, 2019],
+      "2019": [2018, 2019, 2020],
+      "2020": [2019, 2020, 2021],
+      "2021": [2020, 2021, 2022],
+      "2022": [2021, 2022, 2023],
+      "2023": [2022, 2023]
+    },
+    "anchor_filter_timing": "after exact calendar, action-coordinate, history, and rolling-window construction; before future-response join",
+    "full_six_partition_source_audit": true,
+    "cross_batch_duplicate_key_gate": true,
+    "resource_contract": "inherits every MKT-DISP-RANK-001 floor and ceiling unchanged"
+  },
+  "equivalence_invariants": [
+    "same exact CY-006 partitions and hashes",
+    "same 120-step action-aware anchor eligibility",
+    "same causal t industry membership",
+    "same consecutive t+1 through t+5 action-coordinate response",
+    "same views, denominators, member and retention gates",
+    "same daily rank IC and top-bottom attribution formulas",
+    "same dispersion habitat, classification, support, and prohibition gates",
+    "no post-2023 data and no CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-002_result.json",
+    "research/market_behavior_os_v2/reports/MKT-DISP-RANK-002_industry_rank.md"
+  ]
+}

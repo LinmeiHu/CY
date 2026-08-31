@@ -1,5 +1,50 @@
 # Research synthesis checkpoints
 
+## SYNTH-EXPLORE-001 — exploration-first multi-family strategy funnel
+
+### What was learned?
+
+Six accepted market-state families received a cheap economic response screen;
+five survived an obvious-control/two-block check. Turnover/dispersion opportunity
+width ranks first, followed by liquidity continuation, leadership fragility,
+breadth exhaustion, and downside reversal. Co-movement is parked for
+chronological instability. Additional CHINEXT screens killed or parked VWAP
+defense, joint stress, realized-volatility level, and size participation.
+
+Two fixed rules reached the existing executable CHINEXT engine. The low
+downside-participation veto improves only the later block and is parked as a
+potentially regime-dependent translation, not rescued as a generic admission
+gate. The high five-day minute-volatility-path veto, available
+at t 15:30, improves return and drawdown in both blocks but raises later severe-
+loss incidence and concentration; it is a parked near-miss under its all-required
+rule. No threshold rescue is permitted. Both retain exact next-open/T+1/status/
+limit/corporate-action semantics and have zero same-day fills.
+
+The dispersion rank translation remains scientifically unanswered. The unchanged
+build failed at 12 GiB spill and exact year batching failed at 1.5 GiB peak RSS;
+neither produced an output. Two bounded implementations have failed different
+guards, so the family is resource-parked rather than scientifically rejected.
+
+### What market behavior are we still not studying?
+
+Security/industry rank direction inside widening dispersion, broad exposure
+sizing under liquidity activity, entry/exit and holding-period mismatch, true
+order flow, and defensible broader trend quality/age/transition representations.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+Dispersion persistence implies a cross-sectional relative-value research
+archetype. It is not an executable candidate because rank direction, costs,
+capacity, and portfolio payoff remain unknown. Neither admission veto promotes.
+
+### Allocation decision
+
+End this coherent batch with no active strategy candidate. Start a future batch
+only from a new economically distinct decision (for example broad exposure
+sizing rather than another V1 veto) or a materially different bounded plan for
+the frozen rank question. Keep Formation Depth and Day-3/Day-5 translation work
+parked. Do not open post-2023 or CY-011 data.
+
 ## SYNTH-MKT-002 — after deterministic breadth construction
 
 ### What was learned?
@@ -2480,3 +2525,35 @@ primary scientific frontier and map own-security/shared-date/subgroup formation-
 depth attribution before outcome estimation. Do not rescue trough timing, pivot
 to an unrelated family merely for novelty, or permit workers to write Director
 state.
+
+## SYNTH-MKT-054 — lean dispersion opportunity discovery
+
+### What was learned?
+
+The resource-blocked minute job is `WAITING_RESOURCE`, not a program STOP.
+Independent EXPLORE work finds that high current cross-industry return dispersion
+precedes a wider h=1/3/5 future security-return distribution. H3 median PIT rho
+is 0.48442 and four-control partial rho 0.22278; all cells, supported years/LOYO,
+neighbor definitions, and nonoverlap phases are positive. Both tails widen while
+controlled mean return is flat. Because the primary was inspected before the
+reproduction contract, this is a candidate, not confirmation.
+
+### What market behavior are we still not studying?
+
+We do not know whether the widened opportunity set contains persistent or
+reversing PIT rank information, whether widening is chiefly between or within
+industries, or whether any spread survives execution costs and capacity. Panic
+recovery, true order flow, and causal accumulation also remain open.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+Yes. A cross-sectional dispersion/relative-value family enters the discovery
+funnel independently of CHINEXT. It has a habitat-like opportunity-density
+candidate but no security ranking, payoff, trigger, exit, or authorization.
+
+### Research Director decision
+
+`ADVANCE_MKT_DISP_RANK_001_MAP_FIRST`. Freeze one PIT ranking question that
+distinguishes continuation, reversal, and directionless widening before any
+portfolio construction. Keep MINX waiting for >=9 GiB; do not unlock post-2023
+or CY-011, and do not translate opportunity width into assumed long-short PnL.
