@@ -2156,3 +2156,47 @@ depth state, signal-time join, consumed evidence grade, direct candidate/cycle
 endpoints, minimum trend/breadth/volatility controls, temporal portability, and
 no-rule gate before inspecting strategy associations. If no incremental habitat
 survives, return to the next market-behavior frontier without threshold rescue.
+
+## SYNTH-MKT-048 — after formation-depth x CHINEXT V1 habitat
+
+### What was learned?
+
+The broad formation-depth downside state does not transfer into a defensible
+CHINEXT V1 habitat under the fixed incremental design. No evaluated-event or
+completed-cycle opportunity, adverse-path, failure, realization, conversion, or
+right-tail endpoint passes the full control/uncertainty/portability/PIT/effect/FDR
+gate.
+
+Daily evaluated and candidate opportunity counts are lower at greater formation
+depth in the full/late sample, but effects are only -0.072/-0.056, early-block
+effects are near zero, and leave-one-year-out fails. This is not a stock-setup
+habitat and is not a trade-veto rationale.
+
+### What market behavior are we still not studying?
+
+The formation-depth market response has not been attributed against same-day
+central direction, generic open-close return, or intraday range. It may represent
+objective formation intensity, a generic positive price shock followed by adverse
+path, or another same-day risk manifestation. We also do not know whether it
+transfers to other strategy archetypes or independent future time.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Failure to transfer to V1 blocks the immediate market-risk veto and multi-scale
+V1 combination sequence. No failed-breakout, reversal, or defensive archetype is
+created. Formation depth remains a market state, not a strategy component.
+
+### Parallel-track awareness
+
+- **Market research:** attribute the tail-risk state against distinct same-day
+  direction/return/range alternatives.
+- **Existing-strategy archaeology:** close formation-depth x V1 without rescue.
+- **Strategy invention:** no prototype; wait for an attributed mechanism and a
+  direct setup interaction.
+
+### Research Director decision
+
+`MAP_FORMATION_DEPTH_TAIL_RISK_MECHANISM_ATTRIBUTION`. Use only compact frozen
+panels and the existing h=3 downside response. Fix central direction, same-day
+open-close return, and intraday range as mandatory alternatives before residual
+estimation. Do not reopen habitat outcomes, add a strategy, or tune a state tail.

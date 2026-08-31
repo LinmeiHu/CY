@@ -1,0 +1,265 @@
+{
+  "experiment_id": "HAB-CHX-FORMDEPTH-001",
+  "frozen_at": "2026-08-31",
+  "track": "STRATEGY_X_MARKET_HABITAT",
+  "status": "FROZEN_BEFORE_FORMATION_DEPTH_STRATEGY_OUTCOME_JOIN",
+  "question": "Does the supported formation-depth broad downside state incrementally alter CHINEXT V1 opportunity, failure, realization, or right-tail outcomes?",
+  "evidence_grade": "EXPLORATORY_ASSOCIATION_ONLY_ALL_2018_2023_CHINEXT_OUTCOMES_ALREADY_CONSUMED",
+  "inputs": {
+    "habitat_map": {
+      "path": "research/market_behavior_os_v2/FORMATION_DEPTH_CHINEXT_HABITAT_MAP.md",
+      "sha256": "87735951a845a3ed19a11ba402b651cf3b5e446e3a38ca73ffacb8d5018a535f"
+    },
+    "data_contract": {
+      "path": "research/market_behavior_os_v2/FORMATION_DEPTH_CHINEXT_HABITAT_DATA_CONTRACT.md",
+      "sha256": "b7dc846e9209cf3aa58e72c4517bd0da6f97425bb89ee08e84b0d8960b33777d"
+    },
+    "formation_state_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_panel.csv",
+      "sha256": "99fd26ee6973c338e8df803e44434bc0ad6498dfefee518d9c51bc4c605d4d11"
+    },
+    "economic_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-001_result.json",
+      "sha256": "0aa68e75635d0f143a46c17b696ebbf9ab78c3d9eddfe20bcaf19698410eab85"
+    },
+    "strategy_habitat_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-001_panel.csv",
+      "sha256": "922920fdd0f1d81391825b2084971b22b044536754604590c62a2b4d98f9afde"
+    },
+    "strategy_habitat_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-001_result.json",
+      "sha256": "5bb39c2a66f70a0a3c616d2c1d168fa5f8d85a1fc5989a4258e8decff4e7c7aa"
+    },
+    "volatility_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_volatility_panel.csv",
+      "sha256": "f736128419bdd632444c70e12233b08823130ffccffffcd68a9f69f7330040dc"
+    },
+    "volatility_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-VOL-001_result.json",
+      "sha256": "ed3b6cea544e7693eaee6695174e77b982acca1a879cb73279f54a7227c3f11c"
+    }
+  },
+  "activation": {
+    "required_economic_role": "formation_depth",
+    "required_economic_status": "TAIL_RISK_RESPONSE",
+    "expected_rows": 2436,
+    "expected_sample_counts": {
+      "DAILY_PROCESS": 1337,
+      "EVALUATED_EVENT": 819,
+      "COMPLETED_CYCLE": 280
+    },
+    "expected_pit_counts": {
+      "DAILY_PROCESS": 914,
+      "EVALUATED_EVENT": 645,
+      "COMPLETED_CYCLE": 211
+    },
+    "expected_first_date": "2018-07-03",
+    "expected_last_date": "2023-12-29"
+  },
+  "state": {
+    "view": "CHINEXT_BOARD",
+    "denominator": "ALL_STATUS",
+    "absolute": "breakout_formation_depth20",
+    "pit": "breakout_formation_depth20_pit_3y_pct",
+    "pit_low_maximum": 0.2,
+    "pit_high_minimum": 0.8,
+    "relative_coordinate_used": false,
+    "transition_used": false
+  },
+  "controls": {
+    "trend": "A_trend_direction",
+    "discovery": "B_breadth_discovery",
+    "volatility": "realized_volatility_median20",
+    "estimator": "partial rank correlation of state and endpoint after intercept plus all three ranked controls",
+    "variable_selection": false
+  },
+  "endpoints": {
+    "daily_evaluated_count": {
+      "family": "opportunity",
+      "sample_type": "DAILY_PROCESS",
+      "field": "evaluated_count",
+      "filter": "ALL",
+      "kind": "daily_count",
+      "tail_residual_gap_floor": 0.25,
+      "direct_habitat_endpoint": false
+    },
+    "daily_candidate_count": {
+      "family": "opportunity",
+      "sample_type": "DAILY_PROCESS",
+      "field": "candidate_count",
+      "filter": "ALL",
+      "kind": "daily_count",
+      "tail_residual_gap_floor": 0.25,
+      "direct_habitat_endpoint": false
+    },
+    "admissible_candidate": {
+      "family": "opportunity",
+      "sample_type": "EVALUATED_EVENT",
+      "field": "admissible_candidate",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "selected_among_candidate": {
+      "family": "opportunity",
+      "sample_type": "EVALUATED_EVENT",
+      "field": "selected_admission",
+      "filter": "admissible_candidate == 1",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "mfe": {
+      "family": "opportunity",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "mfe",
+      "filter": "ALL",
+      "kind": "continuous_percentage",
+      "tail_residual_gap_floor": 0.05,
+      "direct_habitat_endpoint": true
+    },
+    "opportunity20": {
+      "family": "opportunity",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "opportunity20",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "mae": {
+      "family": "failure",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "mae",
+      "filter": "ALL",
+      "kind": "continuous_percentage",
+      "tail_residual_gap_floor": 0.05,
+      "direct_habitat_endpoint": true
+    },
+    "false_breakout": {
+      "family": "failure",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "false_breakout",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "severe_loss10": {
+      "family": "failure",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "severe_loss10",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "extreme_loss20": {
+      "family": "failure",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "extreme_loss20",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "round_trip_return": {
+      "family": "realization",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "round_trip_return",
+      "filter": "ALL",
+      "kind": "continuous_percentage",
+      "tail_residual_gap_floor": 0.05,
+      "direct_habitat_endpoint": true
+    },
+    "giveback_from_peak": {
+      "family": "realization",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "giveback_from_peak",
+      "filter": "ALL",
+      "kind": "continuous_percentage",
+      "tail_residual_gap_floor": 0.05,
+      "direct_habitat_endpoint": true
+    },
+    "conversion20": {
+      "family": "realization",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "conversion20",
+      "filter": "opportunity20 == 1",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "winner20": {
+      "family": "right_tail",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "winner20",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    },
+    "winner50": {
+      "family": "right_tail",
+      "sample_type": "COMPLETED_CYCLE",
+      "field": "winner50",
+      "filter": "ALL",
+      "kind": "binary",
+      "tail_residual_gap_floor": 0.1,
+      "direct_habitat_endpoint": true
+    }
+  },
+  "estimation": {
+    "minimum_n": 30,
+    "minimum_year_n": 20,
+    "primary_coordinate": "absolute",
+    "pit_sensitivity": true,
+    "cluster": "trade_date",
+    "bootstrap_replicates": 2000,
+    "minimum_valid_bootstrap_fraction": 0.9,
+    "bootstrap_interval": 0.9,
+    "bootstrap_seed": "SHA256(HAB-CHX-FORMDEPTH-001|endpoint|replicate)",
+    "early_block": [2018, 2019, 2020],
+    "late_block": [2021, 2022, 2023],
+    "leave_one_year_out": true
+  },
+  "gates": {
+    "minimum_absolute_partial_rho": 0.1,
+    "bootstrap_interval_excludes_zero": true,
+    "minimum_absolute_block_rho": 0.05,
+    "both_blocks_same_sign": true,
+    "minimum_same_sign_eligible_years": 4,
+    "all_eligible_leave_one_year_out_same_sign": true,
+    "minimum_absolute_pit_partial_rho": 0.05,
+    "pit_same_sign": true,
+    "tail_residual_gap_same_sign_and_floor": true,
+    "family_bh_q": 0.1,
+    "habitat_requires_direct_endpoint": true,
+    "daily_count_only_cannot_open_mechanism": true,
+    "no_rescue": "No state coordinate, threshold, endpoint, family, sample filter, control, block, year, bootstrap, effect floor, or strategy subset may change after estimates are observed."
+  },
+  "resource_budget": {
+    "single_process": true,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 5,
+    "durable_output_ceiling_mib": 100,
+    "raw_data_read": false,
+    "two_byte_identical_runs": true
+  },
+  "prohibited_computations": [
+    "state threshold optimization, trade suppression, exposure change, ranking overlay, entry veto, exit change, portfolio CAGR, Sharpe, or strategy modification",
+    "alternate setup score, size, industry, liquidity proxy, state interaction, combined mechanism, minute structure, or new archetype",
+    "post-2023 data, source ledger reopening, QD-004, CY-008, or CY-011 access",
+    "failed endpoint, family, year, block, coordinate, bootstrap, control, or effect-floor rescue"
+  ],
+  "claim_boundary": "Passing establishes only an exploratory habitat association in already-consumed pre-2024 evidence. It does not establish causality, an executable habitat boundary, improved strategy performance, or authorization to change CHINEXT V1.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/HAB-CHX-FORMDEPTH-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/HAB-CHX-FORMDEPTH-001_endpoint_audit.csv",
+    "research/market_behavior_os_v2/artifacts/HAB-CHX-FORMDEPTH-001_bootstrap_audit.csv",
+    "research/market_behavior_os_v2/artifacts/HAB-CHX-FORMDEPTH-001_result.json",
+    "research/market_behavior_os_v2/reports/HAB-CHX-FORMDEPTH-001_habitat.md"
+  ]
+}

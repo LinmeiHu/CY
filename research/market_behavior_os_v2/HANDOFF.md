@@ -2,6 +2,27 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: HAB-CHX-FORMDEPTH-001
+
+The habitat map `87735951...`, data contract `b7dc846e...`, and frozen spec
+`3a0fc799...` bind only CHINEXT_BOARD/ALL_STATUS formation depth to the already-
+consumed HAB-CHX-001 process/outcome panel. Trend, discovery, and realized
+volatility are mandatory controls; no setup proxy or threshold is invented.
+
+The experiment completes twice byte-identically: panel `40b215dd...`, endpoint
+audit `c302d3e5...`, bootstrap `f31a7ff7...`, result `ff4f8b15...`, report
+`1b58af41...`. No direct endpoint passes. Daily evaluated/candidate density has
+negative partial rho and FDR q below 0.10, but misses the primary magnitude,
+early-block, and leave-one-year-out gates and could not define a direct habitat.
+All candidate, holding-path, failure, realization, conversion, and right-tail
+outcomes fail the complete fixed gate.
+
+Close this CHINEXT transfer branch without selecting a favorable endpoint or
+state tail. Formation depth remains a valid broad downside state, but it is not a
+V1 habitat under this evidence. The next market frontier should attribute the
+tail-risk response against same-day central direction and ordinary return/range
+geometry before inventing another strategy use. CY-011 remains locked.
+
 ## Latest checkpoint: MKT-BREAKOUT-ECON-001
 
 The frozen economic estimator completes twice with identical panel `314a5d39...`,

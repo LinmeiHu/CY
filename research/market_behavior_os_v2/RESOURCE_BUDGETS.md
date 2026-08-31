@@ -149,3 +149,9 @@ response cells. Fixed level/year/phase, event/match, 200-shift placebo, and
 two-control residual audits complete in under the five-minute ceiling and below
 3 GiB RSS. Nine durable files remain under 100 MiB and reproduce byte-identically.
 No raw security/minute data, strategy outcome, post-2023 row, or CY-011 is read.
+
+HAB-CHX-FORMDEPTH-001 reads three compact bound panels and reuses all 2,436
+HAB-CHX-001 rows. Fifteen fixed endpoint estimators and 30,000 deterministic
+signal-date cluster bootstrap replicates complete well inside five minutes and
+3 GiB RSS. Five durable outputs reproduce byte-identically under 100 MiB. No
+source ledger, raw partition, post-2023 data, or CY-011 is opened.

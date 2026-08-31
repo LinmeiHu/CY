@@ -10,7 +10,7 @@ Only actual strategy families belong here. Search-space concepts remain in
 | STRATEGY_ID | `STRAT-CHINEXT-V1` |
 | ARCHETYPE | Breakout / relative-strength selection |
 | CORE MARKET MECHANISM | Hypothesized breakout continuation under favorable broad-market permission; actual economics depend heavily on rare right-tail outcomes |
-| MARKET HABITAT HYPOTHESIS | Frozen direction/discovery describe denser opportunity formation without payoff synergy. Formation depth is now a supported broad downside state, but its incremental effect on V1 setup opportunity/failure/right-tail behavior is not yet tested; no complete habitat is established. |
+| MARKET HABITAT HYPOTHESIS | Frozen direction/discovery describe denser opportunity formation without payoff synergy. Formation depth is a supported broad downside state but HAB-CHX-FORMDEPTH-001 finds no incremental V1 candidate/cycle habitat transfer. No complete habitat is established. |
 | SETUP | Frozen CHINEXT V1 pre-entry architecture |
 | CONFIRMATION | Frozen V1 confirmation rules; no Research OS V2 addition |
 | TRIGGER | Frozen signal close with causally later T+1 execution |

@@ -5,7 +5,7 @@ the independent Market State Engine and opportunity definitions exist.
 
 | Rank | Strategy family | Mechanism evidence | Novelty/habitat diversification | Data/PIT | Cost/capacity | Redundancy | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | CHINEXT V1 x formation-depth tail-risk state | Broad downside state passes market-behavior gate; setup-level transfer not tested | Medium: existing breakout seed under a new risk dimension | Strong bounded PIT-B; outcomes consumed; CY-011 locked | Low / finite-vacancy pressure identified | Fixed trend/breadth/volatility controls required | ACTIVE_MAP_FIRST_NO_RULE |
+| 1 | CHINEXT V1 x formation-depth tail-risk state | Broad downside state passes, but zero direct habitat endpoints transfer | Medium: existing breakout seed under a new risk dimension | Strong bounded PIT-B; outcomes consumed; CY-011 locked | Low / finite-vacancy pressure identified | Fixed trend/breadth/volatility controls applied | COMPLETE_NO_HABITAT_NO_RULE |
 | 2 | CHINEXT V1 archaeology | Qualified participation/right-tail/path evidence | Low-medium: existing breakout seed | Strong bounded PIT-B | Low / capacity known | High with current program | Supporting frontier only |
 | 3 | Pullback continuation | No direct support yet; coherent trend/pullback/exhaustion process | High | Daily plus minute feasible | Medium / unknown | Potentially distinct from breakout | WAIT_FOR_MARKET_MECHANISM |
 | 4 | Panic/oversold reversal | No direct support yet | Very high | Correlation/liquidity/minute states exist, recovery absent | Medium-high / unknown | Low versus breakout | WAIT_FOR_MARKET_MECHANISM |
@@ -123,3 +123,9 @@ controls; it has no terminal-return or crossing claim. Test its incremental
 association with fixed CHINEXT opportunity/failure/realization/right-tail outcomes
 before any threshold, veto, exposure, or multi-scale combination. No prototype is
 authorized and CY-011 remains locked.
+
+HAB-CHX-FORMDEPTH-001 closes that bounded question. No direct candidate/cycle
+endpoint survives; late opportunity-density hints fail magnitude, early-block,
+and leave-one-year-out. Do not convert the broad downside state into a V1 veto,
+exposure rule, threshold, or minute-scale combination. The strategy frontier
+returns to supporting status while market-mechanism attribution continues.

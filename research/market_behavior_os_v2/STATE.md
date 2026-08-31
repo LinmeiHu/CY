@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MAP_HAB-CHX-FORMDEPTH-001_STRATEGY_HABITAT_CONTRACT`
-- `CURRENT_PRIMARY_FRONTIER`: formation-depth tail-risk market state x CHINEXT V1 opportunity/failure/realization/right-tail outcomes under fixed incremental controls
+- `CURRENT_PHASE`: `SYNTH-MKT-048_MAP_FORMATION_DEPTH_TAIL_RISK_MECHANISM_ATTRIBUTION`
+- `CURRENT_PRIMARY_FRONTIER`: determine whether formation-depth tail risk is incremental beyond contemporaneous central direction and ordinary same-day return/range geometry
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,7 +19,7 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `97b381e41f4af0b6d49be8d143e14c5ca7459b3d`
-- `CURRENT_SCIENTIFIC_LAYER`: `ECONOMIC_MARKET_BEHAVIOR_PASSED_ONE_TAIL_RISK_STATE; STRATEGY_HABITAT_NOT_YET_TESTED`
+- `CURRENT_SCIENTIFIC_LAYER`: `ECONOMIC_MARKET_BEHAVIOR_PASSED_ONE_TAIL_RISK_STATE; CHINEXT_V1_HABITAT_TRANSFER_FAILED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_RESPONSE_SUPPORTED; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -28,9 +28,9 @@ Updated 2026-08-31.
 - `PLACEBO_RESULTS`: formation-depth level-family BH q=0.008706; closing-rejection q also passes but its fixed-control gate fails
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a downside/tail-risk level only
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
-- `STRATEGY_HABITAT_STATUS`: `OPEN_FOR_SEPARATELY_FROZEN_FORMATION_DEPTH_X_CHINEXT_V1_TEST; NOT_ESTABLISHED`
+- `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep same-day broad objective-prior-high formation precedes worse broad constituent downside; no return or transition mechanism established
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does the formation-depth tail-risk state incrementally change otherwise comparable CHINEXT V1 opportunity, failure, realization, or right-tail behavior?
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is formation-depth downside response an independent objective-formation mechanism or a manifestation of same-day broad direction/return/range stress?
 
 ## Scope correction installed
 
@@ -88,6 +88,23 @@ fixed episode floors. This is not evidence of zero transition effect.
 The supported formation-depth state opens a separately preregistered CHINEXT V1
 habitat question only. It does not authorize a threshold gate, exposure change,
 entry veto, strategy rule, post-2023 access, or CY-011.
+
+### HAB-CHX-FORMDEPTH-001 habitat transfer
+
+The separately frozen habitat study joins all 2,436 inherited HAB-CHX-001 rows
+(1,337 daily, 819 evaluated events, 280 completed cycles) to exact CHINEXT_BOARD/
+ALL_STATUS formation depth and realized volatility. Two executions are
+byte-identical. Zero of 13 direct candidate/cycle endpoints and zero of two daily
+opportunity-density endpoints pass all fixed gates.
+
+Daily evaluated/candidate counts have partial rho -0.072/-0.056 and FDR q
+0.048/0.075, but fail the 0.10 magnitude floor, the early block, and leave-one-
+year-out. They cannot establish a setup habitat. MFE, MAE, candidate/admission,
+false-breakout, severe-loss, realization, conversion, and right-tail endpoints
+all fail their fixed uncertainty/portability/effect/FDR combination. Formation
+depth therefore remains a broad-market downside state with
+`NO_CHINEXT_V1_HABITAT_TRANSFER`. V1 is unchanged; no rule, post-2023 row, raw
+ledger, or CY-011 field was accessed.
 
 ### MKT-TRND-001 semantic boundary
 

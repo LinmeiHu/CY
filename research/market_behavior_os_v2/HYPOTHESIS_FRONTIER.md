@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does the supported formation-depth tail-risk state incrementally alter CHINEXT V1 opportunity, failure, realization, or right-tail outcomes for the same frozen strategy process? | Very high | Medium | Reuse consumed HAB-CHX-001 candidate/cycle outcomes and exact CHINEXT_BOARD state; CY-011 locked | Very high | Medium | ACTIVE_MAP_HAB_CHX_FORMDEPTH_001 |
+| 1 | Is the supported formation-depth downside response incremental beyond same-day central direction and ordinary return/range geometry? | Very high | High | Compact accepted risk/minute panels plus frozen response panel; no new outcomes | Very high | Low-medium | ACTIVE_MAP_FORMATION_DEPTH_TAIL_MECHANISM |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -402,3 +402,9 @@ terminal-return claim, and its up/down crossings are not estimable at the frozen
 episode floor. The active frontier therefore moves—without a rule—to a separately
 frozen formation-depth x CHINEXT V1 habitat test. Use direct candidate/cycle
 outcomes and minimum continuous controls; do not infer a 0.50/0.80 strategy gate.
+
+HAB-CHX-FORMDEPTH-001 finds no direct V1 habitat transfer. Daily opportunity
+density is suggestive only in the late block and cannot rescue the failed direct
+endpoints. The frontier returns to market behavior: test whether the supported
+downside state survives central direction and ordinary same-day return/range
+geometry. Do not search another strategy subset or combine market states.
