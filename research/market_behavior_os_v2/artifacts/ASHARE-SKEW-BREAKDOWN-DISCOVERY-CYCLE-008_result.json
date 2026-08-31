@@ -1,0 +1,504 @@
+{
+  "decision_dates": 67,
+  "eligible_rows": 156198,
+  "eligible_symbols": 4785,
+  "experiment_id": "ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008",
+  "future_path_rows_read": 227480,
+  "hashes": {
+    "equity_sha256": "59bd54efaf89ab34e9db715841279f8b3a98111dc15c23072ece64421d944055",
+    "panel_sha256": "f18a7f8fd2d1e696c9a129cb5a4f8a1b5722474a0ae6458f68be3a59a0eb08d4",
+    "redundancy_sha256": "b623bb44b7a4c6d53858e3e9d0a0b3559a5650ee6bb79e645470b6f6a67a1880",
+    "risk_exits_sha256": "50628fbd1be0d0fd4fd20db0f5f69aaf12f19fa42eaae941d78eb2311dfe9fea",
+    "spec_sha256": "eef33288ea86418af7ae2d1b23987a9d95112f1754d437569e899ef6c5a2f1fe",
+    "summary_sha256": "3e99c1193c31fd223d4ddd90dc1ed04a82146e0dc0319774ce2c151eac6c2983"
+  },
+  "honesty_boundary": "All 2018-2023 history is consumed development research; post-2023 outcomes and CY-011 remain unread and no result is independent confirmation.",
+  "input_audit": {
+    "chinext_breakdown_coverage_rows": 1304663,
+    "chinext_breakdown_rows": 85089,
+    "first": "2018-01-02",
+    "last": "2023-12-29",
+    "lineage_failures": 0,
+    "rows": 6155390,
+    "symbols": 5262,
+    "time_travel": 0
+  },
+  "preserved_portfolio": {
+    "chinext_rs_veto": "UNCHANGED",
+    "dispersion": "PARKED_RESOURCE_UNCHANGED",
+    "industry_diffusion": "PROMISING_BUT_MIXED_UNCHANGED",
+    "industry_diffusion_acceleration": "PROMISING_BUT_MIXED_UNCHANGED",
+    "industry_leadership_acceleration": "COMPLEMENTARY_UNCHANGED",
+    "low_idio": "PROMISING_BUT_MIXED_COMPARATOR_ONLY",
+    "minute_volatility_overlay": "COST_SENSITIVE_UNCHANGED",
+    "pit_fundamentals": "DATA_BLOCKED_PARKED",
+    "quiet_vwap": "WEAK_COMPLEMENTARY_REPLAY_BLOCKED_UNCHANGED"
+  },
+  "questions": {
+    "new_strategy_archetype_implied": null,
+    "what_market_behavior_are_we_still_not_studying": "Order-book and queue pressure, borrow-feasible short legs, immutable-vintage fundamentals, and independent post-development confirmation."
+  },
+  "status": "COMPLETE_ALL_BOUNDED_TRACKS",
+  "track_a": {
+    "classification": "COMPLEMENTARY_DEFENSIVE_INFORMATION",
+    "definition": {
+      "authorized_translation_if_distinct": {
+        "cost_per_side": 0.002,
+        "entry": "next executable open",
+        "holding_sessions": 5,
+        "names": 10,
+        "no_search": true,
+        "rebalance_sessions": 20,
+        "weights": "equal"
+      },
+      "decision_frequency_sessions": 20,
+      "low_idio": "negative 20-session standard deviation of stock causal return minus each date's cross-sectional median causal return",
+      "low_skewness": "negative 60-session skewness of accepted causal daily log returns",
+      "natural_horizon_sessions": 5,
+      "redundancy": {
+        "coarse_blocks": [
+          [
+            2018,
+            2020
+          ],
+          [
+            2021,
+            2023
+          ]
+        ],
+        "conditional_tertiles_both_directions": true,
+        "distinct_if_absolute_median_rank_correlation_lt": 0.5,
+        "incremental_required": "residual top-20 net excess positive full and in both blocks",
+        "mostly_redundant_if_absolute_median_rank_correlation_gte": 0.7,
+        "residual_rank_diagnostic": "same-date OLS residual of low-skew percentile rank on low-idio percentile rank",
+        "same_date_rank_correlation": true
+      }
+    },
+    "evidence": {
+      "low_idio_within_low_skew_tertiles": {
+        "high": {
+          "early": 0.006047995578485121,
+          "full": -0.00041295101979355617,
+          "late": -0.00598428188339965
+        },
+        "low": {
+          "early": 0.004023315773542705,
+          "full": 0.0006464286137783903,
+          "late": -0.002261446440463103
+        },
+        "middle": {
+          "early": 0.006018081980481164,
+          "full": 0.0030867155905759023,
+          "late": 0.0005665547636990195
+        }
+      },
+      "low_skew_within_low_idio_tertiles": {
+        "high": {
+          "early": 0.0006471965710084508,
+          "full": -0.001124571707798124,
+          "late": -0.002650261058992674
+        },
+        "low": {
+          "early": -0.0008245073644645772,
+          "full": 0.00034696822852754526,
+          "late": 0.0013520224977241313
+        },
+        "middle": {
+          "early": 0.003984974671887865,
+          "full": 0.005801127854783846,
+          "late": 0.007366864373185811
+        }
+      },
+      "relationship": {
+        "dates": 67,
+        "early_median": 0.18140539826871677,
+        "late_median": 0.176673086370205,
+        "maximum": 0.7046934500752764,
+        "median_same_date_rank_correlation": 0.1772642623620249,
+        "minimum": -0.32719225463361146
+      },
+      "residual": {
+        "early": -0.008060823084339615,
+        "full": -0.0008459287456113199,
+        "late": 0.005384202856076066,
+        "passes": false
+      }
+    },
+    "final_status": "COMPLEMENTARY_ONLY_NO_STANDALONE_REPLAY",
+    "replay": null
+  },
+  "track_b": {
+    "action": "remove only breakdown symbols from that date's new candidate list",
+    "alternative_exit_role": "PROHIBITED_UNOPENED",
+    "alternative_exit_role_opened": false,
+    "baseline_reason": "CHINEXT V1 is the repository's canonical existing candidate lifecycle; the frozen stock-specific breakdown state is known before its next-open admission and can filter new candidates without selecting a weak preserved mixed strategy or changing ranking, exits, or holdings.",
+    "checks": {
+      "drawdown_no_worse_both_blocks": true,
+      "return_improves_both_blocks": false,
+      "severe_loss_no_worse_both_blocks": true,
+      "sharpe_improves_both_blocks": false,
+      "zero_same_day_fills": true
+    },
+    "classification": "PARKED_NO_AFFECTED_DECISIONS",
+    "comparisons": {
+      "consumed_2022_2023": {
+        "audit": {
+          "candidate_count": 266,
+          "candidate_sessions": 106,
+          "covered_candidate_count": 266,
+          "out_of_domain_candidate_count": 0,
+          "vetoed_candidate_count": 0,
+          "vetoed_candidate_sessions": 0
+        },
+        "baseline": {
+          "annualized_return": -0.08168328625996357,
+          "average_invested_fraction": 0.17835449106928172,
+          "max_drawdown": -0.193413353857543,
+          "mean_trade_return": -0.016552130299664392,
+          "median_trade_return": -0.033237367977433055,
+          "severe_loss_rate": null,
+          "sharpe_rf0": -0.6815090306324758,
+          "top20_positive_pnl_concentration": 0.9958255765854177,
+          "total_return": -0.15522057457000038,
+          "trade_count": 94,
+          "turnover": null,
+          "win_rate": 0.2553191489361702
+        },
+        "candidate": {
+          "annualized_return": -0.08168328625996357,
+          "average_invested_fraction": 0.17835449106928172,
+          "failed_open_executions": 0,
+          "max_drawdown": -0.193413353857543,
+          "mean_trade_return": -0.016552130299664392,
+          "median_trade_return": -0.033237367977433055,
+          "same_day_fills": 0,
+          "severe_loss_rate": 0.06382978723404255,
+          "sharpe_rf0": -0.6815090306324758,
+          "t1_blocked_exits": 8,
+          "top20_positive_pnl_concentration": 0.9958255765854177,
+          "total_return": -0.15522057457000038,
+          "trade_count": 94,
+          "turnover": 18.574266065008864,
+          "win_rate": 0.2553191489361702
+        },
+        "candidate_minus_baseline": {
+          "annualized_return": 0.0,
+          "average_invested_fraction": 0.0,
+          "max_drawdown": 0.0,
+          "mean_trade_return": 0.0,
+          "median_trade_return": 0.0,
+          "sharpe_rf0": 0.0,
+          "top20_positive_pnl_concentration": 0.0,
+          "total_return": 0.0,
+          "trade_count": 0,
+          "win_rate": 0.0
+        }
+      },
+      "development_2018_2021": {
+        "audit": {
+          "candidate_count": 380,
+          "candidate_sessions": 208,
+          "covered_candidate_count": 379,
+          "out_of_domain_candidate_count": 1,
+          "vetoed_candidate_count": 0,
+          "vetoed_candidate_sessions": 0
+        },
+        "baseline": {
+          "annualized_return": 0.1336456034770972,
+          "average_invested_fraction": 0.24899523285031974,
+          "max_drawdown": -0.20762679470782652,
+          "mean_trade_return": 0.030455684400042576,
+          "median_trade_return": -0.00970512426371722,
+          "severe_loss_rate": null,
+          "sharpe_rf0": 0.8105918094948501,
+          "top20_positive_pnl_concentration": 0.7351787051890619,
+          "total_return": 0.6482237267899993,
+          "trade_count": 194,
+          "turnover": 41.93811294680673,
+          "win_rate": 0.4536082474226804
+        },
+        "candidate": {
+          "annualized_return": 0.1336456034770972,
+          "average_invested_fraction": 0.24899523285031974,
+          "failed_open_executions": 3,
+          "max_drawdown": -0.20762679470782652,
+          "mean_trade_return": 0.030455684400042572,
+          "median_trade_return": -0.00970512426371722,
+          "same_day_fills": 0,
+          "severe_loss_rate": 0.1134020618556701,
+          "sharpe_rf0": 0.8105918094948501,
+          "t1_blocked_exits": 10,
+          "top20_positive_pnl_concentration": 0.7351787051890619,
+          "total_return": 0.6482237267899993,
+          "trade_count": 194,
+          "turnover": 41.93811294680673,
+          "win_rate": 0.4536082474226804
+        },
+        "candidate_minus_baseline": {
+          "annualized_return": 0.0,
+          "average_invested_fraction": 0.0,
+          "max_drawdown": 0.0,
+          "mean_trade_return": -3.469446951953614e-18,
+          "median_trade_return": 0.0,
+          "sharpe_rf0": 0.0,
+          "top20_positive_pnl_concentration": 0.0,
+          "total_return": 0.0,
+          "trade_count": 0,
+          "win_rate": 0.0
+        }
+      }
+    },
+    "condition": "event-date causal-coordinate close strictly below the minimum causal-coordinate low of the previous 20 completed sessions",
+    "costs_and_execution": "unchanged CHINEXT V1 engine including T+1, limits, suspensions, and corporate-action semantics",
+    "decision_at": "15:30 Asia/Shanghai after the completed event session",
+    "domain": "candidate has 20 consecutive prior hard-valid causal-coordinate sessions; candidates outside this representable domain remain under baseline admission, are audited separately, and are never labeled breakdown or non-breakdown evidence",
+    "earliest_fill": "unchanged next-session open",
+    "existing_positions": "unchanged",
+    "ranking_and_exits": "unchanged",
+    "role": "CHINEXT_V1_NEW_ADMISSION_AVOIDANCE"
+  },
+  "track_c": {
+    "combination": null,
+    "decisions": [
+      {
+        "classification": "CHRONOLOGICALLY_MIXED",
+        "complete_positions": 1319,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 154464583.9055,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 1034,
+          "track": "track_c"
+        },
+        "early_excess": -0.006712657300273845,
+        "family": "close_location_persistence_20",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": true,
+          "severe_loss": false
+        },
+        "late_excess": 0.012366581640574956,
+        "natural_horizon": 5,
+        "net_excess": 0.0035429760652013636,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.06612962878040267,
+        "signal_dates": 67
+      },
+      {
+        "classification": "ADVERSE",
+        "complete_positions": 1308,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 247491398.94550002,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 702,
+          "track": "track_c"
+        },
+        "early_excess": -0.016882284038324858,
+        "family": "down_up_residual_asymmetry_60",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": false,
+          "severe_loss": false
+        },
+        "late_excess": -0.006960489730903305,
+        "natural_horizon": 20,
+        "net_excess": -0.011617968098454402,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.07801380129965352,
+        "signal_dates": 66
+      },
+      {
+        "classification": "STANDALONE_ALPHA",
+        "complete_positions": 1313,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 145702935.62025,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 372,
+          "track": "track_c"
+        },
+        "early_excess": 0.0027385760016238833,
+        "family": "low_volatility_of_volatility_60",
+        "gates": {
+          "both_blocks": true,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": true,
+          "severe_loss": true
+        },
+        "late_excess": 0.01321109810039251,
+        "natural_horizon": 20,
+        "net_excess": 0.008313818154738332,
+        "passes_all_screen_gates": true,
+        "replay_decision": "PROMOTE_EXECUTABLE",
+        "severe_loss_disadvantage": -0.15600393710086263,
+        "signal_dates": 66
+      },
+      {
+        "classification": "CHRONOLOGICALLY_MIXED",
+        "complete_positions": 1332,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 132766861.58275,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 926,
+          "track": "track_c"
+        },
+        "early_excess": -0.004757809294870174,
+        "family": "negative_gap_absorption_rate_60",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": true,
+          "severe_loss": true
+        },
+        "late_excess": 0.010275331112224315,
+        "natural_horizon": 5,
+        "net_excess": 0.0033456402639089875,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.018221599447051123,
+        "signal_dates": 67
+      },
+      {
+        "classification": "ECONOMICALLY_NULL",
+        "complete_positions": 1297,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 221041217.01,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 942,
+          "track": "track_c"
+        },
+        "early_excess": 0.003057911190731365,
+        "family": "residual_sharpe_60",
+        "gates": {
+          "both_blocks": true,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": true,
+          "severe_loss": false
+        },
+        "late_excess": 0.0014779003260119096,
+        "natural_horizon": 20,
+        "net_excess": 0.0022222231003708828,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.09249617535033267,
+        "signal_dates": 66
+      }
+    ],
+    "hypotheses": [
+      {
+        "horizon": 20,
+        "id": "residual_sharpe_60",
+        "mechanism": "persistent stock-specific return quality per unit residual risk",
+        "score": "60-session mean residual return divided by its standard deviation"
+      },
+      {
+        "horizon": 20,
+        "id": "down_up_residual_asymmetry_60",
+        "mechanism": "stock-specific resilience on market-down days relative to market-up days",
+        "score": "mean residual return on negative-market sessions minus mean residual return on nonnegative-market sessions"
+      },
+      {
+        "horizon": 20,
+        "id": "low_volatility_of_volatility_60",
+        "mechanism": "stable rather than episodic realized risk may indicate higher-quality risk",
+        "score": "negative 60-session standard deviation of rolling five-session realized volatility"
+      },
+      {
+        "horizon": 5,
+        "id": "negative_gap_absorption_rate_60",
+        "mechanism": "repeated absorption of negative overnight discontinuities rather than one gap event",
+        "score": "fraction of negative-gap sessions closing above their open, requiring at least ten negative gaps"
+      },
+      {
+        "horizon": 5,
+        "id": "close_location_persistence_20",
+        "mechanism": "persistent close-in-range strength as repeated intraday demand quality",
+        "score": "20-session mean close location within the daily high-low range"
+      }
+    ],
+    "replays": [
+      {
+        "annualized_return": 0.008195199674084108,
+        "calmar": 0.0403405918560148,
+        "classification": "PROMISING_BUT_MIXED",
+        "completed_trades": 657,
+        "control_family": "date_control",
+        "control_metrics": {
+          "annualized_return": -0.06169986827250895,
+          "calmar": -0.11332373244287454,
+          "completed_trades": 657,
+          "daily_sharpe": -0.10898657259246995,
+          "end_date": "2023-12-08",
+          "entries": 657,
+          "entry_execution_fraction": 0.9954545454545455,
+          "family": "date_control",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 5,
+          "maximum_drawdown": -0.5444567253696069,
+          "mean_industries": 9.408024224072673,
+          "mean_industry_hhi_invested_days": 0.11195183920266245,
+          "mean_positions": 9.907645722937168,
+          "median_capacity_cny_at_5pct_amount": 59773171.035000004,
+          "p10_capacity_cny_at_5pct_amount": 22026130.923000004,
+          "planned_entries": 660,
+          "risk_blocked_entries": 1,
+          "severe_trade_fraction": 0.1491628614916286,
+          "start_date": "2018-07-04",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": -0.28383376668554705,
+          "turnover_multiple_initial_capital": 135.10666426920397
+        },
+        "daily_sharpe": 0.12821405775315195,
+        "end_date": "2023-12-08",
+        "entries": 657,
+        "entry_execution_fraction": 0.9954545454545455,
+        "family": "low_volatility_of_volatility_60",
+        "forced_exit_pending_days": 0,
+        "forced_pre_effective_exits": 4,
+        "maximum_drawdown": -0.20315020918222348,
+        "mean_industries": 4.913701741105223,
+        "mean_industry_hhi_invested_days": 0.419485834622877,
+        "mean_positions": 9.928841786525359,
+        "median_capacity_cny_at_5pct_amount": 89706809.93,
+        "p10_capacity_cny_at_5pct_amount": 25105241.938,
+        "planned_entries": 660,
+        "risk_blocked_entries": 3,
+        "severe_trade_fraction": 0.0106544901065449,
+        "start_date": "2018-07-04",
+        "status": "COMPLETE",
+        "terminal_open_lots": 0,
+        "total_return": 0.043713139384842226,
+        "total_return_excess_vs_control": 0.3275469060703893,
+        "turnover_multiple_initial_capital": 140.81422051031288
+      }
+    ]
+  }
+}

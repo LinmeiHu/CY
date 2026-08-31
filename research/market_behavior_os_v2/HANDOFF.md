@@ -1,6 +1,44 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-08-31.
+Updated 2026-09-01.
+
+## Latest checkpoint: low-skew independence, breakdown translation, and discovery
+
+Resume after the commit containing `ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008`;
+its starting checkpoint is `15215df615`. Do not rerun or tune the Low-Skew,
+Low-Idio, breakdown, or five Track-C definitions. All 2018--2023 evidence is
+consumed development history; post-2023 outcomes and CY-011 remain unread.
+
+Low Skewness has low same-date correlation with Low Idio (median 0.177;
+0.181/0.177 by block) but fails residual portability: -0.085% h5 residual
+excess, -0.806%/+0.538% by block. Its favorable information is concentrated in
+the middle Low-Idio tertile. Preserve it as `COMPLEMENTARY_DEFENSIVE_INFORMATION`;
+no standalone portfolio replay is authorized.
+
+Confirmed Breakdown was mapped only to CHINEXT V1 new-admission avoidance. The
+baseline was chosen before replay because it is the canonical existing candidate
+lifecycle and the 15:30 state precedes its next-open admission. The rule affected
+zero of 645 candidates, so every portfolio metric and upside opportunity is
+unchanged. Classification is `PARKED_NO_AFFECTED_DECISIONS`; the exit role was
+not opened and must not be tried as a rescue.
+
+Low 60-session volatility-of-volatility is the sole Track-C promotion. Its
+screen is +0.831% h20 excess, +0.274%/+1.321% by block, with -15.600 pp severe
+disadvantage. The fixed Top-10 replay returns +4.37% total (+0.82% annualized),
+with -20.32% drawdown, 0.128 Sharpe, 0.040 Calmar, 1.07% severe trades, 140.81x
+turnover, 657 trades, 99.55% entry coverage, 4.91 mean industries, HHI 0.419,
+and CNY 25.1m p10 capacity. It beats a weak matched random control by 32.75 pp
+but remains `PROMISING_BUT_MIXED` because absolute return and Sharpe are low and
+industry concentration is high.
+
+Close-location persistence and negative-gap absorption are mixed; residual
+Sharpe is small-return/high-severe-loss; down/up residual asymmetry is adverse.
+No combination is tested. All previously preserved assets remain unchanged.
+
+Next capital should not automatically return to skewness or support. The highest
+bounded information question is whether low volatility-of-volatility is distinct
+from Low Idio and the frozen minute-volatility path, including whether industry
+concentration explains the apparent advantage without parameter tuning.
 
 ## Latest checkpoint: objective stock-level support/recovery
 

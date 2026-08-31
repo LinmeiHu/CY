@@ -41,3 +41,19 @@ replication evidence rather than independent confirmation.
 These are data-readiness outcomes, not adverse or null alpha results. No external
 fundamental performance claim, A-share return estimate, or conservative-lag
 adaptation exists for cycle 006.
+
+## Cycle-008 long-only-compatible prior/internal batch
+
+| Family | Mechanism | Screen evidence | Executable evidence | Classification |
+|---|---|---|---|---|
+| Low return skewness 60 | Avoid lottery-like positive skew | Original +0.127% h5; same-date rho with Low Idio 0.177; residual -0.085%, -0.806%/+0.538% | No standalone replay authorized | `COMPLEMENTARY_DEFENSIVE_INFORMATION` |
+| Confirmed L20 breakdown | Avoid new admissions already below objective prior support | Prior -0.344% h5 downside relation | CHINEXT admission veto affected 0/645 candidates; all metrics unchanged | `PARKED_NO_AFFECTED_DECISIONS` |
+| Low volatility-of-volatility 60 | Prefer stable rather than episodic realized risk | +0.831% h20; +0.274%/+1.321%; -15.600 pp severe disadvantage | +4.37% total, -20.32% DD, 0.128 Sharpe, 1.07% severe, HHI 0.419 | `PROMISING_BUT_MIXED` |
+| Residual Sharpe 60 | Stock-specific return quality per unit residual risk | +0.222% both blocks; +9.250 pp severe losses | No replay | `ECONOMICALLY_NULL` |
+| Down/up residual asymmetry 60 | Resilience on market-down versus up days | -1.162%, adverse both blocks | No replay | `ADVERSE` |
+| Negative-gap absorption rate 60 | Repeated absorption of negative gaps | +0.335%, -0.476%/+1.028%; +1.822 pp severe | No replay | `CHRONOLOGICALLY_MIXED` |
+| Close-location persistence 20 | Repeated close-in-range strength | +0.354%, -0.671%/+1.237%; +6.613 pp severe | No replay | `CHRONOLOGICALLY_MIXED` |
+
+No combination, neighboring definition, second breakdown role, post-2023 data,
+or CY-011 input was used. These are consumed-history discovery results, not
+independent confirmation.

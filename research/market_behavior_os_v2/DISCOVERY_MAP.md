@@ -196,6 +196,28 @@ and independent post-development confirmation.
 
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 
+## Cycle 008: survivor independence and continued discovery
+
+| Rank | Family | Evidence | Current decision |
+|---:|---|---|---|
+| 1 | Low volatility-of-volatility 60 | +0.831% h20 screen excess in both blocks; fixed replay +4.37% total, -20.32% DD, 0.128 Sharpe, 1.07% severe, HHI 0.419 | `PROMISING_BUT_MIXED`; challenge defensive-risk redundancy and concentration once, without tuning |
+| 2 | Low return skewness 60 | Low-Idio rank rho 0.177 but residual -0.085% and block reversal; strongest only in middle Low-Idio tertile | `COMPLEMENTARY_DEFENSIVE_INFORMATION`; no standalone replay |
+| 3 | Confirmed L20 breakdown | Prior broad downside relation, but exact CHINEXT admission mapping affected 0/645 candidates | `PARKED_NO_AFFECTED_DECISIONS`; exit role remains unopened |
+| 4 | Residual Sharpe 60 | +0.222% h20 in both blocks but +9.250 pp severe losses | `ECONOMICALLY_NULL`; no replay |
+| 5 | Negative-gap absorption / close-location persistence | Positive full samples but reverse early/late and worsen severe losses | `CHRONOLOGICALLY_MIXED`; no replay |
+| 6 | Down/up residual asymmetry | -1.162% h20, adverse in both blocks | `ADVERSE` |
+
+The next high-information question is not another skewness or support cycle.
+It is a bounded distinctness/concentration audit for low volatility-of-volatility
+against Low Idio and the frozen minute-volatility representation, followed by
+reallocation unless the representation clearly remains distinct.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+borrow-feasible short legs, immutable-vintage fundamentals, and independent
+post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Objective support/recovery cycle 007
 
 The frozen broad-stock economic screen uses strictly prior causal-coordinate

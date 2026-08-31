@@ -1,0 +1,72 @@
+{
+  "experiment_id": "ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008",
+  "status": "FROZEN_ALL_TRACKS_BEFORE_NEW_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "15215df615",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "honesty_boundary": "All 2018-2023 history is consumed development research; post-2023 outcomes and CY-011 remain unread and no result is independent confirmation.",
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cycle007_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_support_recovery_cycle_007.py", "sha256": "31a941a3a2849e27f35845758f2341d74ab1f884e7ac18ef84103a9d4e5e85d6"},
+    "cycle007_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-SUPPORT-RECOVERY-CYCLE-007_result.json", "sha256": "ca7696fe4823a3bbf3ebb0f0370bcad88c9dae60cae7bfd12e0df02cf164f590"},
+    "low_idio_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_diversified_cycle_002.py", "sha256": "a64c3e198f168917445f3df20feb11df5e5bf1eb9d287e655fbf57234862c12d"},
+    "low_idio_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-DIVERSIFIED-CYCLE-002_spec.json", "sha256": "f35d9c0b660bcbfb92a68ea5efa7305f3d87aa324f50f14566de96945cabb658"},
+    "chinext_shared_runner": {"path": "research/market_behavior_os_v2/scripts/run_hab_chx_downrev_strat_001.py", "sha256": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e"},
+    "chinext_shared_spec": {"path": "research/market_behavior_os_v2/experiments/HAB-CHX-DOWNREV-STRAT-001_spec.json", "sha256": "0a7c3c2ee8908a13fa0b9913a8e7d1be7a8804709f6fdef1c128fdeb3f4a8df6"}
+  },
+  "track_a": {
+    "low_skewness": "negative 60-session skewness of accepted causal daily log returns",
+    "low_idio": "negative 20-session standard deviation of stock causal return minus each date's cross-sectional median causal return",
+    "decision_frequency_sessions": 20,
+    "natural_horizon_sessions": 5,
+    "redundancy": {
+      "same_date_rank_correlation": true,
+      "coarse_blocks": [[2018, 2020], [2021, 2023]],
+      "conditional_tertiles_both_directions": true,
+      "residual_rank_diagnostic": "same-date OLS residual of low-skew percentile rank on low-idio percentile rank",
+      "mostly_redundant_if_absolute_median_rank_correlation_gte": 0.70,
+      "distinct_if_absolute_median_rank_correlation_lt": 0.50,
+      "incremental_required": "residual top-20 net excess positive full and in both blocks"
+    },
+    "authorized_translation_if_distinct": {
+      "names": 10,
+      "weights": "equal",
+      "rebalance_sessions": 20,
+      "holding_sessions": 5,
+      "cost_per_side": 0.002,
+      "entry": "next executable open",
+      "no_search": true
+    }
+  },
+  "track_b": {
+    "role": "CHINEXT_V1_NEW_ADMISSION_AVOIDANCE",
+    "baseline_reason": "CHINEXT V1 is the repository's canonical existing candidate lifecycle; the frozen stock-specific breakdown state is known before its next-open admission and can filter new candidates without selecting a weak preserved mixed strategy or changing ranking, exits, or holdings.",
+    "condition": "event-date causal-coordinate close strictly below the minimum causal-coordinate low of the previous 20 completed sessions",
+    "domain": "candidate has 20 consecutive prior hard-valid causal-coordinate sessions; candidates outside this representable domain remain under baseline admission, are audited separately, and are never labeled breakdown or non-breakdown evidence",
+    "decision_at": "15:30 Asia/Shanghai after the completed event session",
+    "action": "remove only breakdown symbols from that date's new candidate list",
+    "earliest_fill": "unchanged next-session open",
+    "existing_positions": "unchanged",
+    "ranking_and_exits": "unchanged",
+    "alternative_exit_role": "PROHIBITED_UNOPENED",
+    "costs_and_execution": "unchanged CHINEXT V1 engine including T+1, limits, suspensions, and corporate-action semantics"
+  },
+  "track_c": [
+    {"id": "residual_sharpe_60", "mechanism": "persistent stock-specific return quality per unit residual risk", "score": "60-session mean residual return divided by its standard deviation", "horizon": 20},
+    {"id": "down_up_residual_asymmetry_60", "mechanism": "stock-specific resilience on market-down days relative to market-up days", "score": "mean residual return on negative-market sessions minus mean residual return on nonnegative-market sessions", "horizon": 20},
+    {"id": "low_volatility_of_volatility_60", "mechanism": "stable rather than episodic realized risk may indicate higher-quality risk", "score": "negative 60-session standard deviation of rolling five-session realized volatility", "horizon": 20},
+    {"id": "negative_gap_absorption_rate_60", "mechanism": "repeated absorption of negative overnight discontinuities rather than one gap event", "score": "fraction of negative-gap sessions closing above their open, requiring at least ten negative gaps", "horizon": 5},
+    {"id": "close_location_persistence_20", "mechanism": "persistent close-in-range strength as repeated intraday demand quality", "score": "20-session mean close location within the daily high-low range", "horizon": 5}
+  ],
+  "track_c_screen": {
+    "decision_frequency_sessions": 20,
+    "top_names": 20,
+    "date_control_names": 20,
+    "cost_per_side": 0.002,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {"complete_positions_min": 300, "dates_each_block_min": 20, "execution_fraction_min": 0.90, "full_excess_positive": true, "both_block_excess_nonnegative": true, "severe_loss_disadvantage_max": 0.02, "median_breadth_min": 20},
+    "maximum_replays": 2,
+    "maximum_combination": 1
+  },
+  "prohibited": ["post-2023 outcomes", "CY-011", "independent-confirmation language", "skewness or idio definition change", "support-window or threshold variants", "breakdown exit-role test", "baseline shopping", "preserved-strategy rescue", "parameter grids", "model zoo", "fundamental-source search", "large data acquisition"]
+}

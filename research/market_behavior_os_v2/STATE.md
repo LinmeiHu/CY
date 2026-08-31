@@ -1,17 +1,17 @@
 # Market Behavior Research OS V2 state
 
-Updated 2026-08-31.
+Updated 2026-09-01.
 
 ## Program identity
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `95d465131e` (start of frozen support/recovery cycle 007)
-- `CURRENT_PHASE`: `OBJECTIVE_SUPPORT_RECOVERY_SCREEN_COMPLETE_DOWNSIDE_ONLY_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: one natural, separately preregistered translation of confirmed objective breakdown as avoidance/exit information; low-return-skewness is a secondary small-alpha translation question, while all evidence remains consumed development history
+- `CURRENT_BASELINE`: `15215df615` (start of frozen skew/breakdown/discovery cycle 008)
+- `CURRENT_PHASE`: `LOW_SKEW_COMPLEMENTARY_BREAKDOWN_NO_OPPORTUNITY_LOW_VOL_OF_VOL_MIXED`
+- `CURRENT_PRIMARY_FRONTIER`: determine whether low volatility-of-volatility is incremental to existing defensive risk representations and whether its high industry concentration can be understood without tuning; all evidence remains consumed development history
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new executable strategy candidate. Confirmed objective breakdown is a broad stock-level `DOWNSIDE_PREDICTOR`; low 60-session return skewness is a small independent `STANDALONE_ALPHA` screen result. Neither is independent confirmation or a frozen portfolio rule
+- `CURRENT_STRATEGY_CANDIDATE`: low volatility-of-volatility is `PROMISING_BUT_MIXED`, not a strategy candidate: +4.37% total, 0.82% annualized, -20.32% drawdown, 0.128 Sharpe, 1.07% severe trades, and high industry HHI 0.419. Low Skewness is complementary-only; Confirmed Breakdown remains downside information but its sole admission mapping affected zero decisions
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can confirmed objective breakdown earn a separately preregistered natural avoidance/exit translation without using a frozen lead as a rescue baseline; independently, can low-return-skewness survive a canonical long-only translation or redundancy challenge?
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is low volatility-of-volatility distinct from Low Idio and the frozen minute-volatility path, or is its apparent advantage another concentrated defensive-risk manifestation? Do not reopen skewness or support automatically.
 
 ## Research OS V2.3 resource and worker state
 
@@ -2264,3 +2264,50 @@ Has any discovered mechanism implied a genuinely new strategy archetype? No.
 Confirmed breakdown naturally maps to avoidance/exit information, while the
 low-skew result is an existing lottery-preference archetype requiring separate
 translation.
+
+## 2026-09-01 low-skew independence, breakdown translation, and discovery checkpoint
+
+`ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008` starts from `15215df615` and binds
+156,198 eligible rows, 4,785 symbols, and 67 decision dates. All tracks use
+consumed 2018--2023 development history. Post-2023 outcomes and CY-011 remain
+unread; PIT fundamentals remain `DATA_BLOCKED_PARKED`.
+
+Low 60-session return skewness is not a simple Low-Idio duplicate: median
+same-date rank correlation is 0.177, with 0.181/0.177 early/late. It nevertheless
+fails incremental portability. Residual h5 excess is -0.085% full,
+-0.806%/+0.538% by block. Low Skewness works primarily inside the middle
+Low-Idio tertile (+0.580%, +0.398%/+0.737%) and reverses inside the high
+Low-Idio tertile. Classification becomes `COMPLEMENTARY_DEFENSIVE_INFORMATION`;
+no standalone replay is authorized.
+
+Confirmed Breakdown is frozen as one CHINEXT V1 new-admission veto because the
+existing candidate lifecycle is available before next-open entry and requires
+no ranking, exit, holding, or preserved-mixed-strategy change. The exact rule
+affects zero of 645 candidate observations across both blocks; one early
+candidate is outside the representable L20 domain and remains baseline-unclassified.
+Portfolio return, drawdown, Sharpe, severe loss, turnover, and upside are
+therefore unchanged. Classification: `PARKED_NO_AFFECTED_DECISIONS`. The exit
+role remains unopened.
+
+Of five new Track-C families, only low 60-session volatility-of-volatility
+passes every cheap screen gate: +0.831% h20 excess, +0.274%/+1.321% by block,
+and -15.600 pp severe-loss disadvantage. Its fixed Top-10, equal-weight,
+20-session-rebalance/h20 replay completes 657 trades: +4.37% total, +0.82%
+annualized, -20.32% maximum drawdown, 0.128 Sharpe, 0.040 Calmar, 1.07% severe
+trades, 140.81x turnover, 99.55% entry coverage, 9.93 mean positions, 4.91 mean
+industries, industry HHI 0.419, and CNY 25.1m p10 capacity. The matched random
+control loses 28.38%, so excess is +32.75 pp, but low absolute return, low
+Sharpe, and concentration limit it to `PROMISING_BUT_MIXED`.
+
+Close-location persistence (+0.354%) and repeated negative-gap absorption
+(+0.335%) reverse by block and worsen severe losses. Residual Sharpe is small
+and stable (+0.222%) but adds +9.250 pp severe losses. Down/up residual asymmetry
+is adverse (-1.162%). No combination is tested.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+borrow-feasible short legs, immutable-vintage fundamentals, and independent
+post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Low volatility-of-volatility is a risk-quality selection representation within
+an existing defensive archetype, not a new archetype or validated strategy.
