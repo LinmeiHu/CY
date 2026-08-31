@@ -1,0 +1,56 @@
+{
+  "manifest_id": "FUNDAMENTAL-READINESS-CYCLE-006",
+  "status": "PIT_FUNDAMENTAL_DATA_BLOCKED",
+  "audit_date": "2026-08-31",
+  "external_storage": {
+    "verified_volume": "/Volumes/quant",
+    "device": "/dev/disk9s1",
+    "size": "3.6TiB",
+    "available": "3.6TiB",
+    "writable_owner": "linmei",
+    "research_root_created": false,
+    "bytes_written": 0
+  },
+  "registered_candidate": {
+    "asset_id": "QD-011",
+    "physical_state": "CANDIDATE_NOT_MATERIALIZED",
+    "location": null,
+    "record_available_at": false,
+    "record_snapshot_id": false,
+    "revision_id": false,
+    "alpha_authorized": false
+  },
+  "legacy_local_candidate": {
+    "source_label": "Eastmoney yjbb_em current snapshot",
+    "root": "/Users/linmei/Downloads/workspace/quant/data/processed/fundamentals/yjbb_em",
+    "allowlisted_report_period_end": "2023-09-30",
+    "files": 79,
+    "bytes": 22449485,
+    "file_inventory_sha256": "215995cd166172bd961cd456f7268db631bec3c730f984047b0f52d121fcb1d5",
+    "rows": 370639,
+    "distinct_symbols": 11604,
+    "report_periods": 79,
+    "first_report_period": "2004-03-31",
+    "last_report_period": "2023-09-30",
+    "null_notice_dates": 61,
+    "notice_after_2023_12_31": 1247,
+    "historical_revision_chain": false,
+    "immutable_source_snapshot_manifest": false,
+    "alpha_authorized": false
+  },
+  "bound_registry": {
+    "path": "configs/data_asset_registry.json",
+    "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+  },
+  "acquisition": {
+    "performed": false,
+    "reason": "A bounded current-provider download cannot reconstruct historical statement revisions; official filing extraction would exceed the minimum-sufficient scope."
+  },
+  "prohibited": [
+    "alpha from current/restated values paired with historical notice dates",
+    "fixed-lag substitution for missing publication lineage",
+    "post-2023 market outcomes",
+    "CY-011 access",
+    "large filing warehouse construction"
+  ]
+}

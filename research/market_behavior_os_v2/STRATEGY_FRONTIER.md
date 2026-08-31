@@ -269,3 +269,19 @@ MAX, the three chip scores, and both equal-rank combinations. The 52-week-high,
 industry-momentum, and five-day intraday-reversal long legs are chronologically
 mixed and receive no replay. No cycle-005 candidate adds standalone alpha,
 defensive/risk value, execution capability, or incremental portfolio value.
+
+## Post-cycle-006 frontier correction
+
+Fundamental value, profitability, investment, quality, accrual, and growth are
+`PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED`, not rejected priors. No standalone
+fundamental alpha, defensive role, or combination enters the strategy frontier.
+
+Left-tail stability contributes a descriptive severe-loss advantage but has
+negative full excess, opposite block signs, and no cross-bucket ordering; it is
+not a risk overlay or executable candidate. Overnight information stability is
+weakly positive in both blocks but unordered, and trading continuity is mixed.
+All three remain closed exact fallback screens with no replay.
+
+The candidate ordering otherwise remains unchanged. A bounded licensed/versioned
+fundamental source can reopen canonical replication; a cross-market official-
+filing warehouse is not authorized by this checkpoint.

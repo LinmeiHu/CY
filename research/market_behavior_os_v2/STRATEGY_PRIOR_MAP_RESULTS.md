@@ -23,3 +23,21 @@ No result above establishes that the published prior is false. Long-only local
 screens omit canonical short legs where disclosed, industry momentum substitutes
 equal weighting for value weighting, and the five-test screen is development
 replication evidence rather than independent confirmation.
+
+## Cycle-006 fundamental prior readiness
+
+| Prior family | Canonical data requirement | Readiness decision | Economic classification |
+|---|---|---|---|
+| Book-to-market | Historically published book equity plus causal market capitalization | No revision-aware book-equity history | `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED` |
+| Earnings yield | Historically published earnings plus causal market capitalization | Current/restated EPS snapshot cannot establish original values | `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED` |
+| Cash-flow yield | Historically published operating cash flow plus causal capitalization | Current/restated OCF snapshot cannot establish original values | `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED` |
+| Profitability | Publication-aware gross/operating profitability with consistent periods | ROE/margin fields lack revision and period-unit lineage | `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED` |
+| Investment / asset growth | Comparable statement assets from consecutive causal vintages | Balance-sheet values unavailable | `DATA_UNAVAILABLE_NOT_TESTED` |
+| Small quality | Profitability, cash quality, and leverage from the same causal statement vintage | Leverage absent and remaining fields not revision-aware | `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED` |
+| Accruals | Comparable balance-sheet/income/cash-flow statements from causal vintages | Required statements unavailable | `DATA_UNAVAILABLE_NOT_TESTED` |
+| Fundamental growth / improvement | Comparable original-release values across causal report vintages | Current snapshot does not preserve original releases | `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED` |
+| Quality + value | Standalone quality and value evidence first | Neither standalone component is lawfully testable | `COMBINATION_NOT_AUTHORIZED` |
+
+These are data-readiness outcomes, not adverse or null alpha results. No external
+fundamental performance claim, A-share return estimate, or conservative-lag
+adaptation exists for cycle 006.

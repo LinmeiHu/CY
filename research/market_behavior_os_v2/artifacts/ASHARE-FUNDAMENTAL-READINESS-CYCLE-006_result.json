@@ -1,0 +1,195 @@
+{
+  "acquisition": {
+    "bytes_written": 0,
+    "external_volume": "/Volumes/quant",
+    "performed": false,
+    "research_root_created": false
+  },
+  "action_audit": {
+    "not_run": true
+  },
+  "combinations": [],
+  "decision_dates": 59,
+  "decisions": [
+    {
+      "bottom_mean_net": -0.0052187530649764995,
+      "classification": "CHRONOLOGICALLY_MIXED",
+      "complete_positions": 1175,
+      "diagnostics": {
+        "decision_dates": 59,
+        "eligible_rows": 133780,
+        "median_avg_amount20_cny": 146229518.5135,
+        "median_candidates": 2385.0,
+        "median_date_rank_correlation_with_low_vol": 0.613326708794339
+      },
+      "early_excess": -0.01435092457347344,
+      "entry_executable_fraction": 0.997457627118644,
+      "family": "left_tail_stability_60",
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_positions": true,
+        "decision_dates_each_block": true,
+        "entry_execution_fraction": true,
+        "full_excess": false,
+        "nonredundant_with_low_vol": true,
+        "severe_loss": true,
+        "top_middle_bottom_ordered": false
+      },
+      "gross_excess": -0.004286434120065794,
+      "late_excess": 0.0026284702834983523,
+      "middle_mean_net": 0.0167123573178816,
+      "net_excess": -0.004264441500991475,
+      "passes_all_screen_gates": false,
+      "replay_decision": "NO_REPLAY",
+      "severe_loss_disadvantage": -0.1597424412094065,
+      "top_mean_net": 0.0023193980004642075
+    },
+    {
+      "bottom_mean_net": 0.009120790680180495,
+      "classification": "ECONOMICALLY_NULL",
+      "complete_positions": 1177,
+      "diagnostics": {
+        "decision_dates": 59,
+        "eligible_rows": 133780,
+        "median_avg_amount20_cny": 146229518.5135,
+        "median_candidates": 2385.0,
+        "median_date_rank_correlation_with_low_vol": 0.08255797654460591
+      },
+      "early_excess": 0.002021920462931874,
+      "entry_executable_fraction": 1.0,
+      "family": "overnight_information_stability_60",
+      "gate_results": {
+        "both_block_excess": true,
+        "candidate_breadth": true,
+        "complete_top_positions": true,
+        "decision_dates_each_block": true,
+        "entry_execution_fraction": true,
+        "full_excess": true,
+        "nonredundant_with_low_vol": true,
+        "severe_loss": true,
+        "top_middle_bottom_ordered": false
+      },
+      "gross_excess": 0.0008379619718737657,
+      "late_excess": 1.8988986201840134e-05,
+      "middle_mean_net": 0.013185817455554607,
+      "net_excess": 0.0008341157299178024,
+      "passes_all_screen_gates": false,
+      "replay_decision": "NO_REPLAY",
+      "severe_loss_disadvantage": 0.003655591825783705,
+      "top_mean_net": 0.007544413210115968
+    },
+    {
+      "bottom_mean_net": 0.002911348505006328,
+      "classification": "CHRONOLOGICALLY_MIXED",
+      "complete_positions": 1173,
+      "diagnostics": {
+        "decision_dates": 59,
+        "eligible_rows": 133780,
+        "median_avg_amount20_cny": 146229518.5135,
+        "median_candidates": 2385.0,
+        "median_date_rank_correlation_with_low_vol": 0.05620383486592112
+      },
+      "early_excess": 0.00555119191560227,
+      "entry_executable_fraction": 0.9949152542372881,
+      "family": "trading_continuity_60",
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_positions": true,
+        "decision_dates_each_block": true,
+        "entry_execution_fraction": true,
+        "full_excess": false,
+        "nonredundant_with_low_vol": true,
+        "severe_loss": true,
+        "top_middle_bottom_ordered": false
+      },
+      "gross_excess": -0.00040042554024743917,
+      "late_excess": -0.004504636648550679,
+      "middle_mean_net": 0.012983469231002114,
+      "net_excess": -0.0003982923329247099,
+      "passes_all_screen_gates": false,
+      "replay_decision": "NO_REPLAY",
+      "severe_loss_disadvantage": -0.024218154080854287,
+      "top_mean_net": 0.006415475288215692
+    }
+  ],
+  "diagnostics": [
+    {
+      "decision_dates": 59,
+      "eligible_rows": 133780,
+      "family": "left_tail_stability_60",
+      "median_avg_amount20_cny": 146229518.5135,
+      "median_candidates": 2385.0,
+      "median_date_rank_correlation_with_low_vol": 0.613326708794339
+    },
+    {
+      "decision_dates": 59,
+      "eligible_rows": 133780,
+      "family": "overnight_information_stability_60",
+      "median_avg_amount20_cny": 146229518.5135,
+      "median_candidates": 2385.0,
+      "median_date_rank_correlation_with_low_vol": 0.08255797654460591
+    },
+    {
+      "decision_dates": 59,
+      "eligible_rows": 133780,
+      "family": "trading_continuity_60",
+      "median_avg_amount20_cny": 146229518.5135,
+      "median_candidates": 2385.0,
+      "median_date_rank_correlation_with_low_vol": 0.05620383486592112
+    }
+  ],
+  "eligible_rows": 133780,
+  "eligible_symbols": 4534,
+  "experiment_id": "ASHARE-FUNDAMENTAL-READINESS-CYCLE-006",
+  "fundamental_track": {
+    "blocked_priors": [
+      "book_to_market",
+      "earnings_yield",
+      "cashflow_yield",
+      "profitability",
+      "investment_asset_growth",
+      "quality",
+      "accruals",
+      "fundamental_growth",
+      "quality_value"
+    ],
+    "reason": "No registered statement source preserves historically available values and revisions; minimum current-snapshot acquisition cannot repair archival PIT semantics.",
+    "status": "PIT_FUNDAMENTAL_DATA_BLOCKED",
+    "tested_priors": []
+  },
+  "future_path_rows_read": 236000,
+  "hashes": {
+    "equity_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "panel_sha256": "903d7b0e4bc1abe093928e55d8985cab9e454446e19df740f4c144b3b2f67225",
+    "readiness_manifest_sha256": "b54d5de420d8da7b99740514caff207b8218b693f6a0e2d39f5ed7ef8c62462e",
+    "risk_exits_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "spec_sha256": "4758aea50fe102c2f038cc5817e4809e2309b4baf91073c88e53f31f44b64b25",
+    "summary_sha256": "63da826b8ed793ee71c526dd4bdf09ca49ff600a2784ddbd99a636f3d96b19e9"
+  },
+  "input_audit": {
+    "first": "2018-01-02",
+    "last": "2023-12-29",
+    "lineage_failures": 0,
+    "rows": 6155390,
+    "symbols": 5262,
+    "time_travel": 0
+  },
+  "preserved_status": {
+    "chinext_rs_veto": "FROZEN",
+    "dispersion_relative_value": "PARKED_RESOURCE",
+    "industry_diffusion": "PROMISING_BUT_MIXED",
+    "industry_diffusion_acceleration": "PROMISING_BUT_MIXED",
+    "industry_leadership_acceleration": "COMPLEMENTARY_INFORMATION",
+    "low_idiosyncratic_volatility": "PROMISING_BUT_MIXED",
+    "quiet_vwap_acceptance": "WEAK_COMPLEMENTARY_REPLAY_BLOCKED"
+  },
+  "promoted_families": [],
+  "questions": {
+    "new_strategy_archetype_implied": null,
+    "what_market_behavior_are_we_still_not_studying": "Archival PIT fundamentals, borrow-feasible relative value, order-book flow, and independent post-development confirmation."
+  },
+  "replays": [],
+  "status": "PIT_FUNDAMENTAL_DATA_BLOCKED_INTERNAL_FALLBACK_COMPLETE"
+}

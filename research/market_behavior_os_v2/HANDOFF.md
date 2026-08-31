@@ -2,6 +2,53 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: PIT fundamental readiness and bounded fallback
+
+Resume after the commit containing `ASHARE-FUNDAMENTAL-READINESS-CYCLE-006`;
+its starting checkpoint is `18a3282ebc`. Do not treat this as a failed economic
+replication: no fundamental prior was legally opened. `QD-011` remains a
+non-materialized discovery candidate without historical revision identity, and
+the legacy Eastmoney report snapshot is blocked from alpha because current or
+restated values may be paired with earlier notice dates.
+
+The read-only storage audit verifies `/Volumes/quant` as the single 3.6-TiB
+external research volume. No `CY_quant_research` root was created, no download
+was performed, and zero bytes were written. Reopening fundamentals requires a
+licensed/versioned historical statement source or a separately authorized
+official-filing extraction project. Do not use conservative fixed lags, current
+provider values, or the old `yjbb_em` files as historical statement truth.
+
+The three frozen existing-data fallback screens also do not promote. Left-tail
+stability is -0.426% h20 net excess, mixed by block, and unordered, despite a
+-15.974 pp severe-loss disadvantage (advantage). Overnight information stability
+is +0.083%, positive in both coarse blocks, but its middle and bottom buckets
+beat the top. Trading continuity is -0.040% and mixed. No executable replay,
+combination, action-event load, portfolio return, turnover, or capacity claim is
+authorized.
+
+The valid domain contains 133,780 eligible rows, 4,534 symbols, and 59 month-
+ends. All signals use daily information available by 15:00 and enter no earlier
+than the next legal open with fixed 20 bps/side. Two final runs have identical
+result SHA-256 `45936fc42beeee1b6a7e1793d16f36155eaa8a744dbbd19d9709f074dd41da34`.
+Post-2023 market outcomes and CY-011 remain unread.
+
+Preserve unchanged: Industry Diffusion, Low Idiosyncratic Volatility, and
+Industry Diffusion Acceleration remain `PROMISING_BUT_MIXED`; Industry Leadership
+Acceleration is complementary; quiet VWAP acceptance remains replay-blocked;
+the CHINEXT RS veto is frozen; dispersion relative value is resource-parked.
+
+Next research capital first seeks genuinely independent confirmation for the
+three mixed broad-A-share leads. A bounded licensed/versioned PIT fundamental
+source is next only if it avoids a warehouse project. Otherwise prioritize a
+borrow-feasible relative-value contract or representation-first objective
+support/recovery, not another price/volume factor enumeration.
+
+What market behavior are we still not studying? Archival PIT fundamentals,
+borrow-feasible relative value, order-book flow, and independent post-development
+confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Latest checkpoint: external-prior replication and internal discovery
 
 Resume after the commit containing `ASHARE-EXTERNAL-PRIOR-CYCLE-005`; its

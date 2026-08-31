@@ -7,11 +7,11 @@ Updated 2026-08-31.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `356c0f37c1` (start of frozen external-prior/internal cycle 005)
-- `CURRENT_PHASE`: `EXTERNAL_PRIOR_REPLICATION_AND_INTERNAL_DISCOVERY_CHECKPOINT`
+- `CURRENT_BASELINE`: `18a3282ebc` (start of frozen fundamental-readiness cycle 006)
+- `CURRENT_PHASE`: `PIT_FUNDAMENTAL_DATA_BLOCKED_INTERNAL_FALLBACK_CHECKPOINT`
 - `CURRENT_PRIMARY_FRONTIER`: independently confirm the mixed Industry Diffusion level, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration leads; unavailable because 2018--2023 is consumed, post-2023 is quarantined, and CY-011 remains locked
-- `SUPPORTING_FRONTIER`: obtain new registered PIT inputs for a genuinely distinct prior (fundamental quality/value or borrow-feasible relative value); do not adapt deferred canonical definitions merely to use existing data
-- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Cycle 005 promotes no external, internal, or combination family. Quiet VWAP acceptance remains contract-blocked; Industry Diffusion, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration remain `PROMISING_BUT_MIXED`. The pre-existing RS veto remains `PROMISING_ADMISSION_COMPONENT`
+- `SUPPORTING_FRONTIER`: archival PIT fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project; current-provider snapshots and fixed-lag proxies are prohibited
+- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Cycle 006 tests no fundamental prior and promotes none of three daily fallback mechanisms. Quiet VWAP acceptance remains contract-blocked; Industry Diffusion, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration remain `PROMISING_BUT_MIXED`. The pre-existing RS veto remains `PROMISING_ADMISSION_COMPONENT`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can genuinely independent data confirm any of the three complete mixed broad-A-share leads? If not, can a registered PIT fundamental or borrow-feasible relative-value input open a genuinely distinct canonical prior without adapting it to current data?
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can genuinely independent data confirm any of the three complete mixed broad-A-share leads? If not, can a bounded licensed/versioned PIT fundamental source be obtained without building a filing warehouse; otherwise shift to borrow-feasible relative value or representation-first objective support/recovery.
 
 ## Research OS V2.3 resource and worker state
 
@@ -2182,3 +2182,46 @@ post-development confirmation block.
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 External priors did not survive local gates, internal chip mechanisms were
 adverse, and both cross-mechanism combinations failed incremental-value rules.
+
+## 2026-08-31 PIT fundamental-readiness checkpoint
+
+`ASHARE-FUNDAMENTAL-READINESS-CYCLE-006` starts from `18a3282ebc`. The read-only
+storage audit identifies `/Volumes/quant` as the sole plausible external research
+volume (3.6 TiB total and available), but no data root is created and zero bytes
+are written because storage does not repair missing revision semantics.
+
+Registered `QD-011` is `CANDIDATE_NOT_MATERIALIZED` and blocks alpha use. A
+legacy 79-file Eastmoney current snapshot contains 370,639 rows through report
+period 2023-09-30 and useful notice/earnings/book/ROE/cash-flow/margin/growth
+fields, but it has no historical snapshot or revision chain. There are 61 null
+notice dates and 1,247 rows with notice dates after 2023-12-31. Current/restated
+values therefore cannot be attached to historical announcement dates as facts.
+Official filing extraction would require a cross-market versioned filing parser
+and is outside the minimum-sufficient cycle. Status: `PIT_FUNDAMENTAL_DATA_BLOCKED`.
+
+Accordingly, book-to-market, earnings/cash-flow yield, profitability, investment,
+quality, accrual, growth, and quality-value priors are not screened. No fixed lag,
+null fill, current-value proxy, download, or fundamental combination is used.
+
+The frozen daily fallback uses 133,780 eligible rows, 4,534 symbols, and 59
+month-ends with next-open h20 outcomes and 20 bps per side. Left-tail stability
+is -0.426% net excess (-1.435% early / +0.263% late), with a 15.974 pp severe-
+loss advantage but no ordered Top/Middle/Bottom return. Overnight information
+stability is +0.083% (+0.202% / +0.002%) but the middle and bottom buckets both
+beat the top, so it is `ECONOMICALLY_NULL`. Trading continuity is -0.040%
+(+0.555% / -0.450%) and mixed. No family passes all gates; no full replay or
+combination is authorized.
+
+Two final serial runs reproduce byte-identical result JSON
+`45936fc42beeee1b6a7e1793d16f36155eaa8a744dbbd19d9709f074dd41da34`;
+panel `903d7b0e...` and summary `63da826b...` also match. Empty equity and risk-
+exit ledgers record the unopened replay stage. Post-2023 market outcomes and
+CY-011 remain unread.
+
+What market behavior are we still not studying? Archival PIT fundamentals,
+borrow-feasible relative value, order-book flow, and independent post-development
+confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Left-tail stability is defensive diagnostic information only; the other fallback
+mechanisms are null or mixed, and no fundamental result exists.

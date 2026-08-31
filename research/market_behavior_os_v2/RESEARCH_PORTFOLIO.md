@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 25% | Cycle-005 chip formulations are adverse, while objective support/recovery remains broader and untested | Build a representation map before any new economic screen |
-| EXPLOIT | 5% | Three broad-A-share leads remain mixed and all current history is consumed | Preserve rules unchanged; use only genuinely independent confirmation |
-| INVENT | 15% | Current inputs cannot implement fundamental or borrow-feasible relative-value priors canonically | Establish a governed PIT data contract before inventing a translation |
-| REPLICATE | 20% | Five external long-leg implementations all fail at least one local gate | Source a genuinely distinct canonical prior; do not adapt deferred definitions |
-| TRANSFER | 10% | No cycle-005 prior or internal mechanism earns habitat/strategy transfer | Keep CHINEXT and existing candidates unchanged |
-| FALSIFY | 25% | Industry momentum and diffusion-plus-low-idio show positive full means but fail chronology/risk/incrementality | Preserve negative/mixed classifications; no rescue search |
+| EXPLORE | 20% | Objective support/recovery remains broader than the rejected chip proxies | Build a representation map before another economic screen |
+| EXPLOIT | 10% | Three broad-A-share leads remain mixed and all current history is consumed | Preserve rules unchanged; use only genuinely independent confirmation |
+| INVENT | 20% | Archival fundamentals and borrow-feasible relative value remain the largest unstudied data mechanisms | Seek a bounded licensed/versioned contract; do not build a warehouse |
+| REPLICATE | 15% | Fundamental canonical priors are not testable from current-provider snapshots | Resume only after original-release/revision history is demonstrably available |
+| TRANSFER | 5% | No cycle-006 fallback mechanism earns strategy or habitat transfer | Keep CHINEXT and existing candidates unchanged |
+| FALSIFY | 30% | Left-tail stability is defensive but return-mixed; overnight stability is weak and unordered | Preserve exact classifications; no window, threshold, or combination rescue |
 
 Mandatory checkpoint questions:
 

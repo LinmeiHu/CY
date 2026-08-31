@@ -195,3 +195,26 @@ borrow-feasible short legs and relative-value execution, true order-book flow,
 and independent post-development confirmation.
 
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
+## PIT fundamental readiness and fallback cycle 006
+
+Fundamental alpha remains unopened rather than rejected. The only local broad
+statement candidate is a current-provider snapshot without historical revisions;
+registered `QD-011` explicitly blocks alpha. Canonical value, profitability,
+investment, quality, accrual, growth, and quality-value families therefore have
+status `PIT_FUNDAMENTAL_DATA_BLOCKED_NOT_TESTED`.
+
+| Frozen fallback family | Gross / net h20 excess | Early / late | Severe disadvantage | Ordering | Decision |
+|---|---:|---:|---:|---|---|
+| Left-tail stability 60 | -0.429% / -0.426% | -1.435% / +0.263% | -15.974 pp | Top 0.232%, middle 1.671%, bottom -0.522% | `CHRONOLOGICALLY_MIXED`; defensive diagnostic only |
+| Overnight information stability 60 | +0.084% / +0.083% | +0.202% / +0.002% | +0.366 pp | Top 0.754%, middle 1.319%, bottom 0.912% | `ECONOMICALLY_NULL`; no monotonic ordering |
+| Trading continuity 60 | -0.040% / -0.040% | +0.555% / -0.450% | -2.422 pp | Top 0.642%, middle 1.298%, bottom 0.291% | `CHRONOLOGICALLY_MIXED` |
+
+No family reaches replay, no combination is legal, and no portfolio economics
+are inferred.
+
+What market behavior are we still not studying? Archival PIT fundamentals,
+borrow-feasible relative value, order-book flow, and independent post-development
+confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.

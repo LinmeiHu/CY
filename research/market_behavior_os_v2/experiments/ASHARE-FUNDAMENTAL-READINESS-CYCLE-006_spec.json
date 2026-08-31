@@ -1,0 +1,41 @@
+{
+  "experiment_id": "ASHARE-FUNDAMENTAL-READINESS-CYCLE-006",
+  "status": "FROZEN_BEFORE_INTERNAL_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "18a3282ebc",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "fundamental_track": {
+    "status": "PIT_FUNDAMENTAL_DATA_BLOCKED",
+    "tested_priors": [],
+    "blocked_priors": ["book_to_market", "earnings_yield", "cashflow_yield", "profitability", "investment_asset_growth", "quality", "accruals", "fundamental_growth", "quality_value"],
+    "reason": "No registered statement source preserves historically available values and revisions; minimum current-snapshot acquisition cannot repair archival PIT semantics."
+  },
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "fundamental_readiness_manifest": {"path": "research/market_behavior_os_v2/FUNDAMENTAL_DATA_MANIFEST.json", "sha256": "b54d5de420d8da7b99740514caff207b8218b693f6a0e2d39f5ed7ef8c62462e"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cycle005_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_external_prior_cycle_005.py", "sha256": "55e525030a917387ee551c656cc85e4db00e1a02bbb323ac244504a58c73a362"}
+  },
+  "internal_tests": [
+    {"id": "left_tail_stability_60", "mechanism": "Persistent exposure to extreme downside days indicates fragile risk absorption.", "score": "higher rolling 10th percentile of 60 causal action-coordinate daily returns", "rebalance_sessions": 20, "horizon_sessions": 20},
+    {"id": "overnight_information_stability_60", "mechanism": "A high overnight share of realized variation indicates discontinuous information assimilation and execution risk.", "score": "negative rolling non-action overnight squared-return share of total squared return", "rebalance_sessions": 20, "horizon_sessions": 20},
+    {"id": "trading_continuity_60", "mechanism": "Repeated unavailable trading sessions reveal latent liquidity and exit risk not captured by current-day liquidity.", "score": "negative rolling fraction of nontradable or zero-amount sessions", "rebalance_sessions": 20, "horizon_sessions": 20}
+  ],
+  "screen": {
+    "decision_frequency": "calendar month-end",
+    "top_middle_bottom_names": 20,
+    "date_control_names": 20,
+    "control_seed": "006",
+    "cost_per_side": 0.002,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {"complete_top_positions_min": 300, "decision_dates_each_block_min": 20, "entry_execution_fraction_min": 0.90, "full_excess_strictly_positive": true, "both_block_excess_nonnegative": true, "top_middle_bottom_ordered": true, "severe_loss_disadvantage_max": 0.02, "median_candidate_breadth_min": 20, "absolute_median_date_rank_correlation_with_low_idio_max": 0.80},
+    "maximum_full_replays": 1
+  },
+  "replay": {
+    "selected_names": 10,
+    "equal_weight_monthly_cohorts": true,
+    "candidate_all_required": {"complete": true, "entry_execution_fraction_min": 0.90, "total_return_strictly_positive": true, "sharpe_min": 0.50, "maximum_drawdown_min": -0.35, "severe_trade_fraction_max": 0.10, "terminal_positions": 0},
+    "mixed_all_required": {"complete": true, "total_return_strictly_positive": true, "sharpe_strictly_positive": true, "maximum_drawdown_min": -0.50, "terminal_positions": 0}
+  },
+  "combinations": {"maximum": 0, "reason": "No PIT-valid fundamental standalone component exists."},
+  "prohibited": ["post-2023 outcomes", "CY-011", "fundamental current-snapshot alpha", "fixed accounting lags", "threshold or horizon search", "habitat rescue", "tuning preserved candidates", "large data warehouse"]
+}
