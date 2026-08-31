@@ -161,3 +161,14 @@ results. The 11,296-row join, 288 geometry rows, and 200 response-audit rows
 complete in under two seconds and remain well below 3 GiB RSS, 8 GiB system
 headroom, and 50 MiB durable output. Five artifacts reproduce byte-identically.
 No raw security/minute data, strategy field, post-2023 row, or CY-011 is read.
+
+MKT-FORMDEPTH-PROP-DATA-002 reuses the same six governed CY-006 partitions and
+accepted action-coordinate builder under the inherited 1.5-GiB DuckDB, 3-GiB RSS,
+8-GiB headroom, 10-GiB spill, 20-GiB read, 20-minute, and 100-MiB output ceilings.
+The invalid 001 path writes no accepted arm artifact. Two corrected full runs
+produce byte-identical compact artifacts and no security-level durable table.
+
+MKT-FORMDEPTH-PROP-001 reads only the 11,336-row topology panel and 6,631-row
+complete five-control join. Its 648-row response audit completes in about one
+second below 3 GiB RSS and 50 MiB output; four artifacts reproduce byte-identically.
+No raw data, strategy field, post-2023 row, or CY-011 is read.

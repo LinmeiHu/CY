@@ -128,6 +128,16 @@ MKT-H-036 objective formation-depth economic mechanism
   -> crossing-security versus noncrossing-market propagation topology remains unknown
   -> no causal, signal, threshold, habitat, execution, or strategy claim
 
+MKT-H-037 formation-depth membership response topology
+  -> exact t cross20 and noncrossing complement exhaust the accepted fixed cohort
+  -> crossing adverse channel passes all fixed five-control response gates
+  -> crossing-minus-noncrossing paired localization passes strongly
+  -> noncrossing channel is adverse but misses primary magnitude at -0.09770 versus -0.10
+  -> terminal-return diagnostics remain weak and cannot promote
+  -> localized crossing-security adverse-path topology retained
+  -> closing acceptance versus rejection within crossers remains unknown
+  -> no reversal, trigger, habitat, execution, or strategy claim
+
 HAB-H-001 CHINEXT direction/discovery association
   -> A and B opportunity-density associations pass
   -> fixed A+B incrementality only for evaluated/candidate daily counts

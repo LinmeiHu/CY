@@ -1,0 +1,138 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-PROP-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_MEMBERSHIP_RESOLVED_RESPONSE_ESTIMATES",
+  "question": "Is attributed formation-depth downside localized in same-day crossing securities or propagated to the exact noncrossing cohort?",
+  "outcome_access": "EXISTING_PRE2024_MEMBERSHIP_RESOLVED_H1_H3_H5_RESPONSE_ONLY",
+  "inputs": {
+    "topology_map": {
+      "path": "research/market_behavior_os_v2/FORMATION_DEPTH_PROPAGATION_TOPOLOGY_MAP.md",
+      "sha256": "49a7aca15e228ec05fb214d39a2bbfb46c373d2bc86c7206a2b0593ab54b53cc"
+    },
+    "topology_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-DATA-002_panel.csv",
+      "sha256": "871f0ccf5747853a00916c86ac627e031ab1d5935f3419df6879504da66e9e87"
+    },
+    "topology_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-DATA-002_result.json",
+      "sha256": "49e80f3452b91def77b1a1a8c4bf873db82992cd336f9906b6ed067e5ad3be1e"
+    },
+    "attribution_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+      "sha256": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d"
+    },
+    "attribution_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+      "sha256": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231"
+    },
+    "accepted_attribution_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+      "sha256": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6"
+    }
+  },
+  "activation": {
+    "required_topology_status": "COMPLETE_MEMBERSHIP_RESPONSE_DOMAIN_ADEQUACY",
+    "required_attribution_classification": "INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK",
+    "expected_topology_rows": 11336,
+    "expected_topology_complete_rows": 11289,
+    "minimum_complete_five_control_rows": 6000,
+    "minimum_complete_five_control_rows_per_cell": 750,
+    "expected_complete_five_control_rows": 6631,
+    "expected_groups": 8,
+    "joint_available_at": "15:30 Asia/Shanghai",
+    "response_begins": "next exchange session"
+  },
+  "state": {
+    "absolute": "breakout_formation_depth20",
+    "pit": "breakout_formation_depth20_pit_3y_pct",
+    "pit_low_maximum": 0.2,
+    "pit_high_minimum": 0.8
+  },
+  "controls": [
+    "breadth_net_new_high_low60_pit_3y_pct",
+    "realized_volatility_median20_pit_3y_pct",
+    "median_signed_limit_utilization",
+    "open_close_log_return__median",
+    "intraday_log_range__median"
+  ],
+  "channels": {
+    "CROSSER_DOWNSIDE": "crossing_adverse_log_excursion_h{h}_mean",
+    "NONCROSSER_DOWNSIDE": "noncrossing_adverse_log_excursion_h{h}_mean",
+    "CROSSER_MINUS_NONCROSSER": "crossing adverse mean minus noncrossing adverse mean at the same date/horizon"
+  },
+  "response": {
+    "primary_horizon": 3,
+    "neighbor_horizons": [1, 5],
+    "adverse_only_for_classification": true,
+    "terminal_diagnostic_fields": {
+      "crossing": "crossing_terminal_log_return_h{h}_mean",
+      "noncrossing": "noncrossing_terminal_log_return_h{h}_mean"
+    },
+    "terminal_cannot_rescue": true
+  },
+  "scopes": {
+    "blocks": {
+      "A": [2018, 2019, 2020],
+      "B": [2021, 2022, 2023]
+    },
+    "pit_supported_years": [2020, 2021, 2022, 2023],
+    "leave_one_supported_year_out": true,
+    "nonoverlap_h3_phases": 3,
+    "nonoverlap_h5_phases": 5
+  },
+  "arm_channel_gates": {
+    "maximum_median_h3_partial_rho": -0.1,
+    "minimum_negative_cells": 6,
+    "maximum_each_block_partial_rho": -0.05,
+    "all_supported_years_negative": true,
+    "all_leave_one_year_out_negative": true,
+    "h1_h5_negative": true,
+    "minimum_negative_h3_phases": 2,
+    "minimum_negative_h5_phases": 4,
+    "maximum_median_tail_residual_gap": -0.0025
+  },
+  "paired_localization_gates": {
+    "maximum_median_h3_partial_rho": -0.05,
+    "minimum_negative_cells": 6,
+    "both_block_medians_negative": true,
+    "h1_h5_nonpositive": true,
+    "maximum_median_tail_residual_gap": -0.001
+  },
+  "classification_order": [
+    "CROSSER_AND_NONCROSSER_DOWNSIDE_PROPAGATION",
+    "LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY",
+    "NONCROSSER_DOWNSIDE_PROPAGATION_ONLY",
+    "CROSSER_CHANNEL_WITHOUT_LOCALIZATION",
+    "AGGREGATE_RESPONSE_NOT_MEMBERSHIP_RESOLVED"
+  ],
+  "classification_logic": {
+    "CROSSER_AND_NONCROSSER_DOWNSIDE_PROPAGATION": "crossing arm passes and noncrossing arm passes; paired result is descriptive only",
+    "LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY": "crossing arm and paired localization pass while noncrossing arm fails",
+    "NONCROSSER_DOWNSIDE_PROPAGATION_ONLY": "noncrossing arm passes while crossing arm fails",
+    "CROSSER_CHANNEL_WITHOUT_LOCALIZATION": "crossing arm passes, noncrossing arm fails, and paired localization fails",
+    "AGGREGATE_RESPONSE_NOT_MEMBERSHIP_RESOLVED": "neither arm passes"
+  },
+  "resource_budget": {
+    "single_process": true,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 2,
+    "durable_output_ceiling_mib": 50,
+    "raw_data_read": false,
+    "two_byte_identical_runs": true
+  },
+  "prohibited_computations": [
+    "alternate membership, state, PIT tail, response, horizon, arm, pairing, control, block, year, phase, gate, or classification",
+    "secondary quantile, terminal-return promotion, variable selection, state combination, placebo reuse, new null, or favorable subset",
+    "entry predictor, signal, threshold, veto, exposure, trade, fill, execution, P&L, habitat, or strategy rule",
+    "raw security/minute data, post-2023 data, QD-004, CY-008, strategy outcome, or CY-011 access"
+  ],
+  "claim_boundary": "Membership-resolved market association topology only; no causal, predictive, executable, habitat, or strategy claim.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_response_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-PROP-001_topology.md"
+  ]
+}

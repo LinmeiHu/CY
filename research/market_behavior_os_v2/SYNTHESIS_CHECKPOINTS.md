@@ -2254,3 +2254,59 @@ noncrossing comparator, fixed-cohort action coordinate, censoring, 1/3/5 termina
 and adverse responses, same-date decomposition, controls, blocks, and no-strategy
 claim before constructing any membership-resolved outcome. Do not infer a
 localized reversal or broad spillover from the aggregate association.
+
+## SYNTH-MKT-050 — after formation-depth propagation topology
+
+### What was learned?
+
+The exact crossing arm, not the broad noncrossing cohort, carries the accepted
+formation-depth downside topology under the frozen classification. Crossing h=3
+partial rho is -0.38395 with all cells, blocks, supported years, leave-one-year-
+out estimates, neighbors, and phases adverse; its controlled tail residual gap is
+-0.01695. The paired crossing-minus-noncrossing contrast is stronger at rho
+-0.46177 and gap -0.01251.
+
+Noncrossers are not neutral: every fixed sign challenge is adverse and their tail
+gap is -0.00461. But h=3 median partial rho is -0.09770, which misses the exact
+<=-0.10 promotion boundary. This one-gate failure is preserved without rounding
+or rescue. The scientific classification is
+`LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY`, not zero noncrosser response.
+
+DATA-001's -9.02e-17 cross-query binary aggregation mismatch is an invalid audit,
+not a market result. DATA-002 binds the byte-identical authoritative broad panel,
+conserves arm counts exactly, reconstructs ten scalar cases, and reproduces its
+new arm ledgers twice byte-identically without a tolerance.
+
+### What market behavior are we still not studying?
+
+The crossing arm mixes securities that close above the crossed L20 objective with
+those that close back below it. We therefore do not know whether localized future
+adverse path is merely an extension of same-day rejection, or whether even
+objectively accepted crossings exhibit the formation-depth response. We also lack
+terminal-reversal evidence, independent future time, intraday post-close order
+flow, and execution/capacity consequences.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+It makes failed-breakout reversal a sharper falsifiable research candidate, but
+not an authorized archetype. Crossing-arm terminal partial rhos are only
+-0.0289/-0.0466/-0.0526 at h=1/3/5, and closing rejection has not yet been shown
+to carry the response. There is no trigger, exit, executable timing, setup
+interaction, capacity result, or independent confirmation. V1 remains closed.
+
+### Parallel-track awareness
+
+- **Market research:** split exact crossers by closing acceptance/rejection and
+  retain the paired adverse topology under the same controls.
+- **Existing-strategy archaeology:** no V1 reopening; its direct habitat transfer
+  already failed.
+- **Strategy invention:** failed-breakout reversal remains map-only until a
+  rejection-specific economic mechanism and executable architecture survive.
+
+### Research Director decision
+
+`MAP_CROSSER_CLOSING_STATE_TOPOLOGY`. Freeze exact `above20`/`below20` membership,
+treatment of equality, complete-response cohort, h=1/3/5 adverse primary and
+terminal diagnostic roles, paired contrast, support floors, controls, blocks,
+and no-strategy gate before constructing subgroup outcomes. Do not select the
+rejected arm because its story is attractive.

@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Is attributed formation-depth downside localized in the securities making same-day objective crossings, or does it propagate to the exact noncrossing market cohort? | Very high | High | Governed CY-006 daily/action coordinates; requires new membership-resolved response domain but no strategy outcomes | Very high | Medium-high | ACTIVE_MAP_FORMATION_DEPTH_PROPAGATION_TOPOLOGY |
+| 1 | Within the localized crossing-security downside channel, is adverse path confined to objective closing rejection or does it survive among closing-accepted crossings? | Very high | High | Exact accepted/rejected `cross20` membership exists in governed CY-006 response builder; no strategy outcomes | Very high | Medium-high | ACTIVE_MAP_CROSSER_CLOSING_STATE_TOPOLOGY |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -416,3 +416,10 @@ all fixed challenges. The active frontier now asks where that downside resides:
 same-day crossing securities, exact noncrossers, or both. Freeze cohort membership
 and response semantics before reading the decomposition; do not infer reversal,
 spillover, or a strategy from the aggregate result.
+
+MKT-FORMDEPTH-PROP-001 resolves the aggregate response toward the crossing arm.
+Crossing and paired-localization channels pass strongly; noncrossers miss the
+fixed primary rho floor at -0.09770 despite otherwise consistent signs. The next
+question stays market-only and partitions crossers by their exact same-day close
+relative to the crossed objective level. Do not call the adverse-path result a
+terminal reversal or failed-breakout strategy before that topology is known.

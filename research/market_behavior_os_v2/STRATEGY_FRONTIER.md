@@ -11,7 +11,7 @@ the independent Market State Engine and opportunity definitions exist.
 | 4 | Panic/oversold reversal | No direct support yet | Very high | Correlation/liquidity/minute states exist, recovery absent | Medium-high / unknown | Low versus breakout | WAIT_FOR_MARKET_MECHANISM |
 | 5 | Relative-strength leadership / industry rotation | Immediate rank-rotation persistence replicates; both winner-diffusion cross-edges fail; shared-endpoint/definition falsification pending | Medium-high if process survives falsification | Daily comparison feasible | Medium / potentially scalable | Participation/residual dispersion already compress | WAIT_FOR_ROTATION_FALSIFICATION |
 | 6 | Size/style rotation | Five direct states, but transition self-process and participation precursor both fail | Low until a structurally new mechanism or independent time exists | Daily PIT representation feasible | Medium / broad capacity unknown | Size structure already compresses into activity/risk | RESEARCH_ONLY_NO_PROCESS |
-| 7 | Failed-breakout reversal | Completed-path ordering supported, not actionable | High | Daily/minute feasible | Medium / unknown | Distinct trigger, related formation | RESEARCH_ONLY |
+| 7 | Failed-breakout reversal | Formation-depth downside localizes to crossing securities, but closing rejection versus acceptance and terminal reversal are unresolved | High | Exact market membership response is feasible | Medium / unknown | Distinct trigger, related formation | WAIT_FOR_CLOSING_STATE_TOPOLOGY |
 | 8 | SuperMind V6 archaeology | Methodology inspected, program evidence absent | Medium | Replay audit required | High | Related breakout mechanism | DEFER |
 
 No new prototype is authorized. CHINEXT is not automatically ranked first for
@@ -136,3 +136,9 @@ still does not reopen V1: the direct V1 transfer result is already negative. No
 new strategy archetype is authorized until a membership-resolved market study
 distinguishes same-security reversal from broad noncrosser propagation and a
 separately frozen setup interaction later survives.
+
+MKT-FORMDEPTH-PROP-001 still does not activate a prototype. It localizes adverse
+path to same-day objective crossers, but terminal-return diagnostics are weak and
+the crossing arm mixes accepted and rejected closes. A failed-breakout reversal
+requires a rejected-close-specific mechanism and later executable trigger/exit
+evidence; a generic breakout risk veto requires a separate setup interaction.

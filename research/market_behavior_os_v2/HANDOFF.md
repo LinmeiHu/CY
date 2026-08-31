@@ -2,6 +2,34 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-FORMDEPTH-PROP-DATA-002 / PROP-001
+
+The propagation map `49a7aca1...` freezes exact t crossing membership versus its
+noncrossing complement under the accepted action-coordinate h=1/3/5 response.
+DATA-001 is invalid before artifacts: combined-process broad floating aggregation
+differs from the immutable first h1 mean by -9.02e-17 solely from summation order.
+The authoritative broad builder independently remains byte-identical.
+
+The corrected V2 contract `eded68b5...` does not use a tolerance. DATA-002 binds
+the broad panel by hash and enforces exact integer arm exhaustion, deterministic
+arm ledgers, and scalar reconstruction. It passes twice byte-identically: panel
+`871f0ccf...`, count `309ba60d...`, scalar `81aa5d41...`, result `49e80f34...`,
+report `4a8115bd...`. There are 11,289 topology-complete cells, minimum 202 dates
+per cell-year, ten exact cases, and no arm estimate in this data experiment.
+
+MKT-FORMDEPTH-PROP-001 then uses 6,631 fixed five-control rows. The crossing arm
+passes every gate (h3 rho -0.38395; tail residual gap -0.01695) and the paired
+crossing-minus-noncrossing contrast passes (rho -0.46177; gap -0.01251). The
+noncrossing arm is directionally negative everywhere but misses the exact primary
+rho boundary at -0.09770 versus -0.10. Classification is
+`LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY`. Two runs are byte-identical: panel
+`f9914e41...`, response `ae552219...`, result `ac7ad6e2...`, report `11018a72...`.
+
+Do not call this a failed-breakout reversal: crossing-arm terminal diagnostics
+are weak and cannot promote. The next market frontier should split the exact
+crossing arm by objective closing acceptance versus rejection before any new
+archetype or strategy interaction. V1 remains closed; CY-011 remains locked.
+
 ## Latest checkpoint: MKT-FORMDEPTH-ATTR-001
 
 The frozen attribution map `e4dedc5c...` and spec `676032c5...` bind the exact

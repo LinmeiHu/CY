@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-049_MAP_FORMATION_DEPTH_PROPAGATION_TOPOLOGY`
-- `CURRENT_PRIMARY_FRONTIER`: determine whether attributed formation-depth tail risk is localized in same-day crossing securities or propagates to the noncrossing market cohort
+- `CURRENT_PHASE`: `SYNTH-MKT-050_MAP_CROSSER_CLOSING_STATE_TOPOLOGY`
+- `CURRENT_PRIMARY_FRONTIER`: determine whether localized crossing-security downside resides in same-day closing rejection or also survives among objectively accepted crossings
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,18 +19,18 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `97b381e41f4af0b6d49be8d143e14c5ca7459b3d`
-- `CURRENT_SCIENTIFIC_LAYER`: `INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK_ATTRIBUTED; CHINEXT_V1_HABITAT_TRANSFER_FAILED`
+- `CURRENT_SCIENTIFIC_LAYER`: `LOCALIZED_CROSSING_SECURITY_DOWNSIDE_TOPOLOGY; NO_TERMINAL_REVERSAL_OR_STRATEGY_HABITAT`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
-- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_RESPONSE_SUPPORTED_AFTER_FIVE_FIXED_CONTROLS; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
+- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSING_ARM; NONCROSSING_ARM_MISSES_PRIMARY_MAGNITUDE; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
 - `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
-- `YEAR_BY_YEAR_RESULTS`: formation-depth downside sign is negative in all six raw years and all four PIT-supported years; all raw/PIT leave-one-year-out signs negative
+- `YEAR_BY_YEAR_RESULTS`: aggregate and crossing-arm formation-depth downside signs are negative in every PIT-supported year and leave-one-year-out estimate; noncrossing signs are also negative but its aggregate magnitude misses the frozen primary floor
 - `PLACEBO_RESULTS`: formation-depth level-family BH q=0.008706; closing-rejection q also passes but its fixed-control gate fails
-- `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level only
+- `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep same-day broad objective-prior-high formation precedes worse broad constituent downside after discovery, volatility, central direction, open-close return, and intraday-range controls; no terminal-return, transition, propagation, or strategy mechanism established
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is subsequent downside localized in the securities forming the deep crossings, or does it persist in an exact noncrossing market cohort?
+- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes materially worse future adverse path among the securities making those crossings; paired localization is strong, while noncrossers narrowly miss the primary magnitude floor and terminal return remains diagnostic/weak
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: within the localized crossing arm, is adverse path confined to crossings that already close rejected below the objective level, or does it also survive among crossings that close objectively accepted?
 
 ## Scope correction installed
 
@@ -129,6 +129,43 @@ This is market-state association/mechanism attribution at a 15:30 information
 clock, with response beginning t+1. It is not causal, an entry predictor, a
 threshold, a habitat, or a strategy rule. The already-complete V1 transfer
 failure is unchanged. No strategy field, post-2023 row, or CY-011 field was read.
+
+### MKT-FORMDEPTH-PROP-DATA-001/002 membership response domain
+
+DATA-001 is invalid before any accepted arm artifact or arm/state estimate. Its
+combined broad-plus-membership process reproduced the first broad h=1 terminal
+mean with a -9.02e-17 binary summation-order difference. A fresh authoritative
+MKT-BREAKOUT-ECON-DATA-001 execution remained byte-identical, proving the bound
+broad domain intact. DATA-002 therefore binds the immutable broad panel by hash
+and requires exact integer arm exhaustion plus byte-identical arm ledgers; it
+adds no tolerance, rounding, normalization, or scientific change.
+
+DATA-002 passes twice byte-identically. It retains 11,289 topology-complete cells
+from 11,296 broad-complete cells, with minimum 202 dates per view/denominator/year,
+minimum crossing retention 0.90, exact anchor/crossing/response arm counts, and
+ten exact arm-balanced scalar cases across 16 fields. The later five-control
+domain has 6,631 rows and minimum 828/cell. No arm association, strategy field,
+post-2023 row, or CY-011 field is read in the data build.
+
+### MKT-FORMDEPTH-PROP-001 response topology
+
+The crossing arm passes every fixed downside gate: h=3 median PIT partial rho is
+-0.38395, all eight cells are negative, block medians are -0.2413/-0.4035, all
+supported years and leave-one-year-out estimates are negative, h=1/h=5 are
+-0.3789/-0.3734, all phases are negative, and the controlled PIT-tail residual
+gap is -0.01695.
+
+The paired crossing-minus-noncrossing contrast also passes strongly at h=3 rho
+-0.46177 and residual gap -0.01251. The noncrossing arm is negative in all cells,
+years, leave-one-year-out estimates, neighbors, and phases, but its h=3 median rho
+is -0.09770 versus the frozen <=-0.10 primary floor; it fails classification on
+that one gate and cannot be rounded or rescued. The result is
+`LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY`.
+
+Crossing-arm terminal partial rhos are only -0.0289/-0.0466/-0.0526 at h=1/3/5
+and are diagnostic-only. The result does not establish terminal reversal,
+causality, an entry predictor, a failed-breakout rule, or a habitat. V1 remains
+closed and unchanged; post-2023 data, strategy outcomes, and CY-011 remain unread.
 
 ### MKT-TRND-001 semantic boundary
 

@@ -107,3 +107,11 @@ gates twice byte-identically. This is positive market-mechanism evidence, not a
 terminal condition or strategy authorization. No S1--S12 boundary is active.
 Continue map-first with a membership-resolved crossing/noncrossing propagation
 study before inferring same-security reversal, broad spillover, or a strategy.
+
+MKT-FORMDEPTH-PROP-DATA-001 is an ordinary invalid binary-aggregation identity
+audit, not a scientific or PIT blocker. DATA-002 corrects the audit without a
+tolerance and passes exact arm-domain gates twice. MKT-FORMDEPTH-PROP-001 then
+finds localized crossing-security adverse path. This is positive mechanism
+evidence, not a terminal condition or strategy authorization. No S1--S12 STOP is
+active. Continue map-first with exact closing-accepted versus closing-rejected
+crossing topology before inferring failed-breakout reversal.
