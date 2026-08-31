@@ -1620,3 +1620,36 @@ Next build a data contract before any future-response estimate for the seven
 stable objective-crossing levels: exact causal-coordinate 1/3/5-session broad
 cross-sectional return/downside responses, nonoverlap, fixed controls/blocks,
 and no trading claim. Do not use strategy outcomes or CY-011.
+
+## 2026-08-31 lean formation-depth continuation and resource STOP
+
+The Lean Override is active from `9d697dfe...`. MKT-FORMDEPTH-OWN-001 first
+classifies `OWN_OVERSHOOT_CHANNEL_ONLY`: own-security depth orders future adverse
+paths, while the disjoint broad shared-date channel does not pass its four-of-
+five gate. MKT-FORMDEPTH-OWNCTRL-001 then rejects the stronger objective-
+specificity claim. Median raw h3 within-date rho is -0.2722 but falls to -0.02175
+after five frozen t-day daily-geometry controls; the controls explain median
+0.5118 of depth-rank variance, both blocks miss their gate, and 2023 is slightly
+positive. Formation depth remains a broad descriptive tail-risk state, not an
+objective-specific direct security channel or strategy habitat.
+
+The highest-information next question is cross-scale: among exact crossers, do
+event-day and recent-five-session minute paths favor transient price impact/
+rejection, sustained accepted demand, or persistent pre-event buildup?
+MKT-FORMDEPTH-MINX-001 freezes two views, hash sampling capped at 40/date/view,
+t-4..t, ten event roles, four pre-event slopes, four event jumps, and the same
+five daily-geometry controls. It reads no future outcome or strategy field.
+
+The serial outcome-blind sample stage succeeds with 103,172 events, 2,627
+date/views, and 513,133 session links; sample/target hashes are
+`76de6e55...`/`33ace6ad...`, and peak RSS is 2.65 GiB. No minute estimate is
+accepted. A fresh analyze stage at roughly 465 MiB current RSS sees only 7.81
+GiB system-available memory and stops under the immutable 8-GiB floor; a reclaim
+audit stays near 8.3 GiB before launch because of user-application pressure.
+
+Current STOP is `STOP_RESOURCE_HEADROOM_MKT_FORMDEPTH_MINX_001`. Resume only
+when pre-launch available memory is at least 9 GiB. Rebuild the temporary serial
+handoff if needed, run exact `--stage sample` then `--stage analyze`, and preserve
+the frozen sample, window, descriptors, controls, and floor. Do not kill user
+applications, weaken resource/PIT gates, publish partial minute evidence, open
+post-2023 data or CY-011, or infer a strategy.

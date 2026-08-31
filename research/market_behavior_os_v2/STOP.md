@@ -1,6 +1,28 @@
 # Current autonomous STOP
 
-Status: `NO_ACTIVE_STOP`.
+Status: `STOP_RESOURCE_HEADROOM_MKT_FORMDEPTH_MINX_001`.
+
+MKT-FORMDEPTH-MINX-001 is frozen and implementation-ready, but no minute
+association estimate has been accepted. The deterministic outcome-blind sample
+stage completes with 103,172 selected exact-crosser events, 2,627 date/views,
+and 513,133 t-4..t session links. Its serialized sample/target hashes are
+`76de6e55...`/`33ace6ad...`; peak RSS is 2.65 GiB. Four focused tests and lint
+pass.
+
+The fresh serial minute stage uses only about 465 MiB current RSS, yet external
+application pressure leaves 7.81 GiB available at the first batch guard, below
+the immutable 8 GiB system-headroom floor. A 30-second reclaim audit stabilizes
+at only 8.26--8.35 GiB before launching the process. No research process is left
+running. No future outcome, strategy field, post-2023 partition, CY-011 field,
+or accepted minute estimate was read or produced.
+
+Resume only when pre-launch available memory is at least 9 GiB and the existing
+8 GiB in-run floor can be preserved. Rebuild the serial sample handoff if its
+temporary directory is absent, then run the exact `sample` followed by
+`analyze` stages. Do not lower the floor, shrink/resample the cohort, change the
+five-session window or descriptors, publish a partial result, or terminate user
+applications. This is a current resource STOP, not a scientific rejection of
+the cross-scale formation-depth mechanism question.
 
 The prior `STOP_UNSAFE_MARKET_MINUTE_REPRESENTATION_SCALE` is resolved by the
 frozen vectorized, partition/date-pruned, column-pruned, one-date-batched adapter

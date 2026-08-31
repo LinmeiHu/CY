@@ -8,7 +8,7 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `LEAN_EXPLORE_FORMATION_DEPTH_CROSS_SCALE_MECHANISM`
+- `CURRENT_PHASE`: `STOP_RESOURCE_HEADROOM_MKT_FORMDEPTH_MINX_001`
 - `CURRENT_PRIMARY_FRONTIER`: distinguish transient minute price impact/rejection from sustained accepted demand and prior multi-day buildup within the generic same-day geometry that explains most own-overshoot ordering; subgroup search remains closed
 - `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -42,11 +42,12 @@ Updated 2026-08-31.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: none; MKT-FORMDEPTH-OWNCTRL-001 completed the promoted
-  objective-specificity test and the next minute-scale discriminator is not yet
-  frozen.
-- `ACTIVE_RESOURCE_BLOCKER`: high baseline swap occupancy prevents promotion
-  above two heavy workers until stability telemetry passes.
+- `ACTIVE_EXPERIMENT`: MKT-FORMDEPTH-MINX-001 is frozen and its outcome-blind
+  serial sample stage completes, but no minute association estimate is accepted.
+- `ACTIVE_RESOURCE_BLOCKER`: external application pressure leaves only
+  8.26--8.35 GiB available before launch; a fresh 465-MiB minute process reaches
+  7.81 GiB and fails closed below the immutable 8-GiB floor. Resume only after
+  pre-launch available memory reaches at least 9 GiB; do not terminate user apps.
 - `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
   data remain locked; all current construction stays through 2023-12-31.
 - `FORMATION_QA`: `PASS_ORTHOGONAL_REPLICATION`; WORKER-QA-001 independently

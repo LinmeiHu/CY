@@ -1,0 +1,150 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-MINX-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "research_level": "EXPLORE",
+  "status": "FROZEN_BEFORE_SAMPLED_MINUTE_VALUE_ACCESS",
+  "question": "Does exact-crosser event-day and recent five-session minute structure favor transient price impact/rejection, sustained accepted demand, or persistent pre-event buildup?",
+  "outcome_access": false,
+  "inputs": {
+    "accepted_specificity_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWNCTRL-001_result.json",
+      "sha256": "e1b29aee7b7dbc3ac2a1f01ca38e43626a52223f755ce40f71b730c84d9557eb"
+    },
+    "accepted_own_data_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-005_spec.json",
+      "sha256": "595f35a63984bc6fe2933821d54c3b07889fcb5cda959bc681532d86a5596f1c"
+    },
+    "accepted_own_data_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_own_data_001.py",
+      "sha256": "40808c1514ffcd19bb81857a3d5425067da90a0fce3ca8f02e7240df6199f025"
+    },
+    "accepted_minute_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-MIN-001_spec.json",
+      "sha256": "358e358f3daef94bd8e2f42d60f38672f4f450db368494e0291465cb384bde9a"
+    },
+    "accepted_minute_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+      "sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe"
+    },
+    "accepted_minute_adapter": {
+      "path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py",
+      "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"
+    },
+    "accepted_minute_context_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_min_001.py",
+      "sha256": "62f862e57a23d0a028131861fa6ae0efc99a9b5945df229b8a609255032e11c5"
+    }
+  },
+  "activation": {
+    "required_specificity_classification": "OWN_EFFECT_NOT_INCREMENTAL_TO_FIXED_DAILY_GEOMETRY",
+    "required_minute_decision": "COMPLETE_LEVEL_REPRESENTATIONS_FROZEN_FIVE_DAY_TRAJECTORY_PRIMARIES_FAIL",
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "market_views": ["ALL_A", "CHINEXT_BOARD"],
+    "denominator": "ALL_STATUS",
+    "minimum_anchor_crossers": 25,
+    "maximum_hash_sample_each_date_view": 40,
+    "selection_seed": "MKT-FORMDEPTH-MINX-001|EXACT_CROSSER_SAMPLE_V1",
+    "selection_reads_minute_values": false,
+    "selection_reads_future_values": false
+  },
+  "minute_contract": {
+    "bar_timestamp": "completed naive Asia/Shanghai bar end",
+    "grid": "09:30 auction plus 09:31..11:30 and 13:01..15:00 continuous",
+    "price_basis": "raw unadjusted within-session ratios only",
+    "volume_unit": "shares",
+    "amount_unit": "CNY",
+    "feature_available_at": "15:30 Asia/Shanghai",
+    "event_offsets": [-4, -3, -2, -1, 0],
+    "same_bar_or_session_fill_claim": false,
+    "cross_day_raw_price_comparison": false,
+    "missing_policy": "retain selected key in audit; exclude incomplete five-session trajectory without replacement"
+  },
+  "fixed_event_day_roles": {
+    "event_high_time": "high_time_fraction",
+    "event_final30_return": "final30_log_return",
+    "event_late_vwap_acceptance": "late_vwap_acceptance_fraction",
+    "event_time_above_vwap": "time_above_vwap_fraction",
+    "event_directional_efficiency": "signed_directional_efficiency",
+    "event_vwap_crossing": "vwap_crossing_fraction",
+    "event_new_high_fraction": "new_intraday_high_fraction",
+    "event_volume_concentration": "minute_volume_concentration",
+    "event_closing_volume": "closing30_volume_share",
+    "event_volume_asymmetry": "up_minute_volume_share minus down_minute_volume_share"
+  },
+  "fixed_trajectory_bases": [
+    "time_above_vwap_fraction",
+    "late_vwap_acceptance_fraction",
+    "down_minute_volume_share",
+    "minute_realized_volatility"
+  ],
+  "fixed_trajectory_coordinates": {
+    "pre_event_slope4": "OLS slope across offsets -4,-3,-2,-1",
+    "event_jump_from_prior4": "offset 0 minus mean offsets -4,-3,-2,-1"
+  },
+  "fixed_same_day_controls": [
+    "action_coordinate_close_return",
+    "intraday_log_range",
+    "close_location",
+    "turnover_fraction",
+    "log_traded_value"
+  ],
+  "estimation": {
+    "primary": "median within-date/view Spearman between own_depth and each fixed minute coordinate",
+    "incremental_diagnostic": "within-date/view partial Spearman after the same five fixed daily-geometry rank controls",
+    "blocks": {"A": [2018, 2019, 2020], "B": [2021, 2022, 2023]},
+    "minimum_complete_rows_each_date_view": 20,
+    "minimum_complete_retention_each_date_view": 0.70,
+    "minimum_supported_dates_each_view_year": 90,
+    "exploratory_role_effect_floor": 0.10,
+    "exploratory_partial_effect_floor": 0.05,
+    "minimum_same_sign_years": 5,
+    "both_blocks_and_views_must_share_sign": true
+  },
+  "mechanism_sign_map": {
+    "transient_impact_rejection": {
+      "event_final30_return": -1,
+      "event_late_vwap_acceptance": -1,
+      "event_vwap_crossing": 1,
+      "event_volume_concentration": 1,
+      "event_closing_volume": 1
+    },
+    "sustained_accepted_demand": {
+      "event_final30_return": 1,
+      "event_late_vwap_acceptance": 1,
+      "event_time_above_vwap": 1,
+      "event_directional_efficiency": 1,
+      "event_volume_asymmetry": 1,
+      "event_new_high_fraction": 1
+    },
+    "persistent_pre_event_buildup": {
+      "pre_slope4_time_above_vwap_fraction": 1,
+      "pre_slope4_late_vwap_acceptance_fraction": 1,
+      "pre_slope4_down_minute_volume_share": -1,
+      "pre_slope4_minute_realized_volatility": -1
+    }
+  },
+  "resource_budget": {
+    "single_process": true,
+    "threads": 1,
+    "peak_rss_ceiling_gib": 4.0,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 15,
+    "durable_output_ceiling_mib": 30,
+    "publish_minute_cache": false,
+    "durable_security_minute_descriptors": false
+  },
+  "prohibited_computations": [
+    "alternate view, denominator, sample size, seed, descriptor, trajectory window, coordinate, control, effect floor, sign map, or mechanism rescue",
+    "future response, terminal return, strategy membership, signal, trade, fill, P&L, MFE, MAE, outcome class, habitat, entry, exit, or veto",
+    "adjusted vendor minute price, cross-session raw price comparison, daily/minute close substitution, imputation, replacement security, rounding, clipping, or tolerance",
+    "post-2023 partitions or CY-011"
+  ],
+  "claim_boundary": "Consumed pre-2024 sampled cross-scale mechanism exploration only; no causal price-impact, demand, supply, participant, prediction, payoff, habitat, execution, or strategy claim.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-MINX-001_sample_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-MINX-001_date_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-MINX-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-MINX-001_cross_scale.md"
+  ]
+}
