@@ -2,6 +2,41 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: defensive independence and new-alpha screen
+
+Resume after the commit containing `ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009`;
+its starting checkpoint is `a04fd0da98`. Do not rerun or tune the frozen Low
+Vol-of-Vol/Low-Idio audit or its six Track-B definitions. All 2018--2023 evidence
+is consumed development history; post-2023 outcomes and CY-011 remain unread.
+
+Low Vol-of-Vol has median same-date rank correlation 0.624 with Low Idio
+(0.610/0.630 by block). Its residual h20 excess is -0.194% full and reverses
+from +1.395% early to -1.599% late, so the independence gate fails. The simple
+within-industry high-minus-low comparison remains favorable: +1.198% full,
++1.730%/+0.833% by block, with -12.681 pp severe-loss spread across 14,516
+complete observations. Preserve the stock-level effect as
+`COMPLEMENTARY_LOW_RISK_INFORMATION`, but park it: the predeclared defensive
+ranking refinement was not authorized and no replay exists.
+
+The frozen market minute-volatility overlap statistic is non-identifying. A
+same-date cross-sectional percentile median is invariant by construction while
+the market state is constant within date. No raw-score substitution, combined
+rule, or duplication conclusion is permitted.
+
+Six distinct return-engine screens produced no promotion. FIP continuity
+(-0.786%), one-year same-month seasonality (-1.841%), market-relative rank
+acceleration (-1.260%), and industry-follower acceleration (-0.835%) are adverse.
+Overnight/daytime tug-of-war is flat and chronologically mixed (-0.002%;
++0.522%/-0.468%). Low turnover is a tiny mixed defensive result (+0.076%;
+-0.011%/+0.153%) with -16.247 pp severe-loss spread, but does not earn replay.
+No executable candidate, combination, or new archetype exists.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible short legs, immutable-vintage
+fundamentals, and independent post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Latest checkpoint: low-skew independence, breakdown translation, and discovery
 
 Resume after the commit containing `ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008`;

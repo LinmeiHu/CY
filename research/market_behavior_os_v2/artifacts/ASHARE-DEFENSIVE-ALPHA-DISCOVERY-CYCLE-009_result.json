@@ -1,0 +1,379 @@
+{
+  "decision_dates": 67,
+  "eligible_rows": 156198,
+  "eligible_symbols": 4785,
+  "experiment_id": "ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009",
+  "future_path_rows_read": 1136912,
+  "hashes": {
+    "equity_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "panel_sha256": "4777b1429b0bec9f76c8be6c204ef087247913cc51055c9a2055be921b21097c",
+    "risk_exits_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "spec_sha256": "6b061236608b4e24b6bd01908c16c5a203d5a9ebc6c33c4f4b864c05bcf9619f",
+    "summary_sha256": "0fe4caf8e8df157ad0032cabb427167b1da940422e04d4b010597d1b06fd13ae"
+  },
+  "honesty_boundary": "All 2018-2023 history is consumed development research; post-2023 outcomes and CY-011 remain unread and no result is independent confirmation.",
+  "input_audit": {
+    "chinext_breakdown_coverage_rows": 1304663,
+    "chinext_breakdown_rows": 85089,
+    "first": "2018-01-02",
+    "last": "2023-12-29",
+    "lineage_failures": 0,
+    "rows": 6155390,
+    "symbols": 5262,
+    "time_travel": 0
+  },
+  "preserved_portfolio": {
+    "chinext_rs_veto": "PROMISING_ADMISSION_COMPONENT_UNCHANGED",
+    "confirmed_breakdown": "PARKED_NO_AFFECTED_DECISIONS_UNCHANGED",
+    "industry_diffusion_family": "UNCHANGED",
+    "low_idio": "PROMISING_BUT_MIXED_UNCHANGED",
+    "low_skewness": "COMPLEMENTARY_DEFENSIVE_UNCHANGED",
+    "minute_volatility_overlay": "COST_SENSITIVE_UNCHANGED",
+    "pit_fundamentals": "DATA_BLOCKED_PARKED"
+  },
+  "questions": {
+    "new_strategy_archetype_implied": null,
+    "what_market_behavior_are_we_still_not_studying": "Order-book/queue pressure, borrow-feasible short legs, immutable-vintage fundamentals, investor-flow identity, and independent post-development confirmation."
+  },
+  "replays": [],
+  "status": "COMPLETE_BOUNDED_AUDIT_AND_ALPHA_SCREEN",
+  "track_a": {
+    "classification": "COMPLEMENTARY_LOW_RISK_INFORMATION",
+    "definition": {
+      "authorized_translation_only_if_both_gates_pass": {
+        "baseline": "exact Low-Idio top 20 on each 20-session decision date",
+        "cost_per_side": 0.002,
+        "entry": "next executable open",
+        "holding_sessions": 20,
+        "rebalance_sessions": 20,
+        "role": "DEFENSIVE_RANKING_REFINEMENT",
+        "rule": "choose the 10 highest Low-Vol-of-Vol scores within that frozen Low-Idio top-20 candidate set",
+        "weights": "equal"
+      },
+      "conditional_strata": 3,
+      "correlation_blocks": {
+        "early": [
+          2018,
+          2020
+        ],
+        "late": [
+          2021,
+          2023
+        ]
+      },
+      "decision_frequency_sessions": 20,
+      "distinct_gate": "absolute median rank correlation below 0.50 and residual top-20 net excess positive full and in both blocks",
+      "industry_gate": "within-industry high-minus-low matched payoff spread positive full and in both blocks, with full severe-loss spread nonpositive",
+      "low_idio": "negative 20-session standard deviation of stock causal return minus each date's cross-sectional median causal return",
+      "low_volatility_of_volatility": "negative 60-session standard deviation of rolling five-session realized volatility",
+      "minute_overlap": "date-level median Low-Vol-of-Vol percentile rank associated only with ALL_A/NON_ST minute-realized-volatility ordinal progression PIT percentile; descriptive, no conditioning or rule",
+      "natural_horizon_sessions": 20,
+      "residual": "same-date OLS residual of Low Vol-of-Vol percentile rank on Low-Idio percentile rank"
+    },
+    "final_status": "PARKED_AUDIT_GATE",
+    "independence_gate": false,
+    "industry_gate": true,
+    "industry_neutral": {
+      "coverage": 14516,
+      "dates": 66,
+      "early_payoff_spread": 0.017297771641282208,
+      "full_payoff_spread": 0.011983064121645666,
+      "full_severe_loss_spread": -0.12680976315519538,
+      "late_payoff_spread": 0.008329125471200361
+    },
+    "low_idio_within_low_vov_tertiles": {
+      "high": {
+        "early": -0.010332679644299958,
+        "full": -0.003865288793985188,
+        "late": 0.001861914262302138
+      },
+      "low": {
+        "early": 0.00877473831595297,
+        "full": 0.008368907581106923,
+        "late": 0.008010171816923525
+      },
+      "middle": {
+        "early": 0.0009312529420847978,
+        "full": 0.0030750349969489157,
+        "late": 0.004973111372172449
+      }
+    },
+    "low_vov_within_low_idio_tertiles": {
+      "high": {
+        "early": 0.005537778796008975,
+        "full": 0.0014138920322885734,
+        "late": -0.0022085206614515223
+      },
+      "low": {
+        "early": 0.008646648092988055,
+        "full": 0.004205164516746536,
+        "late": 0.0002478542954732036
+      },
+      "middle": {
+        "early": 0.012624231745543649,
+        "full": 0.00364144848634146,
+        "late": -0.004331742418080078
+      }
+    },
+    "minute_overlap": {
+      "classification": "NON_IDENTIFYING_INVARIANT_CROSS_SECTIONAL_MEDIAN",
+      "dates": 67,
+      "interpretation_boundary": "the frozen cross-sectional percentile median is invariant by construction while the market state is constant within date; neither a temporal nor stock-level cross-sectional association is identified, and no combined rule was constructed",
+      "median_low_idio_rank_time_series_std": 7.994758510345142e-05,
+      "median_low_vov_rank_time_series_std": 7.994758510345142e-05,
+      "spearman_median_low_idio_rank_vs_market_minute_path": null,
+      "spearman_median_low_vov_rank_vs_market_minute_path": null
+    },
+    "relationship": {
+      "dates": 67,
+      "early_median": 0.6102092703662086,
+      "late_median": 0.6301350467342066,
+      "median_same_date_rank_correlation": 0.6238302697208293
+    },
+    "replay": null,
+    "residual": {
+      "early": 0.013952692789250548,
+      "full": -0.0019415283639834398,
+      "late": -0.015985991020935883
+    },
+    "translation_authorized": false
+  },
+  "track_b": {
+    "decisions": [
+      {
+        "classification": "ADVERSE",
+        "complete_positions": 1307,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 177898363.64174998,
+          "median_candidates": 1917.0,
+          "selected_rows": 1340,
+          "symbols": 914,
+          "track": "track_b"
+        },
+        "early_excess": -0.0017250919264758155,
+        "family": "fip_continuous_good_news_60",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": false,
+          "severe_loss": false
+        },
+        "late_excess": -0.013337514090887724,
+        "mechanism": "gradual positive information attracts less attention than isolated jumps and may continue",
+        "net_excess": -0.007864482680575765,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.03965867754173641,
+        "signal_dates": 66,
+        "source": "Da, Gurun, and Warachka (2014), Frog in the Pan"
+      },
+      {
+        "classification": "ADVERSE",
+        "complete_positions": 1174,
+        "diagnostics": {
+          "decision_dates": 60,
+          "median_avg_amount20_cny": 167636913.1875,
+          "median_candidates": 2475.5,
+          "selected_rows": 1200,
+          "symbols": 968,
+          "track": "track_b"
+        },
+        "early_excess": -0.020725038405868305,
+        "family": "same_month_seasonality_1y",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": false,
+          "severe_loss": false
+        },
+        "late_excess": -0.016824744308357648,
+        "mechanism": "stock-specific return rankings recur in the same calendar month",
+        "net_excess": -0.018412768651296398,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.03274531288229818,
+        "signal_dates": 59,
+        "source": "Heston and Sadka (2008), Seasonality in the Cross-Section of Stock Returns"
+      },
+      {
+        "classification": "ADVERSE",
+        "complete_positions": 1289,
+        "diagnostics": {
+          "decision_dates": 66,
+          "median_avg_amount20_cny": 252236903.31475002,
+          "median_candidates": 2191.0,
+          "selected_rows": 1320,
+          "symbols": 1032,
+          "track": "track_b"
+        },
+        "early_excess": -0.003369903543784202,
+        "family": "market_relative_rank_acceleration_20",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": false,
+          "severe_loss": false
+        },
+        "late_excess": -0.02054674734351625,
+        "mechanism": "improvement in peer-relative rank may reveal emerging demand before absolute leadership",
+        "net_excess": -0.012604622514470242,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.12293432752376854,
+        "signal_dates": 65,
+        "source": "internal distinct rank-change hypothesis"
+      },
+      {
+        "classification": "ADVERSE",
+        "complete_positions": 1286,
+        "diagnostics": {
+          "decision_dates": 66,
+          "median_avg_amount20_cny": 220841731.92299998,
+          "median_candidates": 979.0,
+          "selected_rows": 1320,
+          "symbols": 1059,
+          "track": "track_b"
+        },
+        "early_excess": -0.004379333809523394,
+        "family": "industry_follower_rank_acceleration_20",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": false,
+          "severe_loss": false
+        },
+        "late_excess": -0.01173217031336478,
+        "mechanism": "followers whose within-industry rank improves may capture diffusion from established leaders",
+        "net_excess": -0.008347349776604203,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": 0.08168567129032056,
+        "signal_dates": 65,
+        "source": "internal leader/follower convergence hypothesis"
+      },
+      {
+        "classification": "CHRONOLOGICALLY_MIXED",
+        "complete_positions": 1313,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 118664814.96275,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 984,
+          "track": "track_b"
+        },
+        "early_excess": 0.005222477565796157,
+        "family": "overnight_daytime_tug_of_war_20",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": false,
+          "severe_loss": true
+        },
+        "late_excess": -0.004676585044354011,
+        "mechanism": "repeated positive overnight moves reversed intraday may reflect arbitrageurs overcorrecting informative overnight demand",
+        "net_excess": -1.7315666537710506e-05,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": -0.0436620787584831,
+        "signal_dates": 66,
+        "source": "Lou, Polk, and Skouras (2022), Overnight Returns, Daytime Reversals, and Future Stock Returns"
+      },
+      {
+        "classification": "CHRONOLOGICALLY_MIXED",
+        "complete_positions": 1313,
+        "diagnostics": {
+          "decision_dates": 67,
+          "median_avg_amount20_cny": 217762573.33499998,
+          "median_candidates": 2470.0,
+          "selected_rows": 1340,
+          "symbols": 92,
+          "track": "track_b"
+        },
+        "early_excess": -0.00011222011781572714,
+        "family": "low_turnover_attention_60",
+        "gates": {
+          "both_blocks": false,
+          "breadth": true,
+          "complete_positions": true,
+          "dates_each_block": true,
+          "execution": true,
+          "full_excess": true,
+          "severe_loss": true
+        },
+        "late_excess": 0.0015335339348860827,
+        "mechanism": "low past turnover may identify neglected/value-like stocks with higher subsequent returns",
+        "net_excess": 0.0007589139771025953,
+        "passes_all_screen_gates": false,
+        "replay_decision": "NO_REPLAY",
+        "severe_loss_disadvantage": -0.1624739599466019,
+        "signal_dates": 66,
+        "source": "Lee and Swaminathan (2000), Price Momentum and Trading Volume"
+      }
+    ],
+    "hypotheses": [
+      {
+        "horizon": 20,
+        "id": "fip_continuous_good_news_60",
+        "mechanism": "gradual positive information attracts less attention than isolated jumps and may continue",
+        "score": "negative information discreteness sign(sum residual return) times (negative-day fraction minus positive-day fraction), restricted to positive 60-session cumulative residual return",
+        "source": "Da, Gurun, and Warachka (2014), Frog in the Pan",
+        "source_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2370931"
+      },
+      {
+        "horizon": 20,
+        "id": "same_month_seasonality_1y",
+        "mechanism": "stock-specific return rankings recur in the same calendar month",
+        "score": "causal total log return in the same completed calendar month one year earlier",
+        "source": "Heston and Sadka (2008), Seasonality in the Cross-Section of Stock Returns",
+        "source_url": "https://doi.org/10.1016/j.jfineco.2007.02.003"
+      },
+      {
+        "horizon": 20,
+        "id": "market_relative_rank_acceleration_20",
+        "mechanism": "improvement in peer-relative rank may reveal emerging demand before absolute leadership",
+        "score": "same-date percentile rank of trailing-20 residual return minus its value 20 sessions earlier",
+        "source": "internal distinct rank-change hypothesis"
+      },
+      {
+        "horizon": 20,
+        "id": "industry_follower_rank_acceleration_20",
+        "mechanism": "followers whose within-industry rank improves may capture diffusion from established leaders",
+        "score": "within-PIT-industry percentile rank of trailing-20 return minus its value 20 sessions earlier, restricted to prior below-industry-median rank",
+        "source": "internal leader/follower convergence hypothesis"
+      },
+      {
+        "horizon": 20,
+        "id": "overnight_daytime_tug_of_war_20",
+        "mechanism": "repeated positive overnight moves reversed intraday may reflect arbitrageurs overcorrecting informative overnight demand",
+        "score": "fraction of prior 20 sessions with positive causal overnight return and negative open-to-close return",
+        "source": "Lou, Polk, and Skouras (2022), Overnight Returns, Daytime Reversals, and Future Stock Returns",
+        "source_url": "https://doi.org/10.1016/j.jfineco.2021.09.019"
+      },
+      {
+        "horizon": 20,
+        "id": "low_turnover_attention_60",
+        "mechanism": "low past turnover may identify neglected/value-like stocks with higher subsequent returns",
+        "score": "negative mean registered turnover_fraction over the prior 60 sessions",
+        "source": "Lee and Swaminathan (2000), Price Momentum and Trading Volume",
+        "source_url": "https://doi.org/10.1111/0022-1082.00280"
+      }
+    ]
+  }
+}

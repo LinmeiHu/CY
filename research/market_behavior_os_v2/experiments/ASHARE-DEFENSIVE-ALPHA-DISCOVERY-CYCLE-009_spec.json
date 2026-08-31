@@ -1,0 +1,96 @@
+{
+  "experiment_id": "ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009",
+  "status": "FROZEN_BEFORE_CYCLE_009_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "a04fd0da98",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "honesty_boundary": "All 2018-2023 history is consumed development research; post-2023 outcomes and CY-011 remain unread and no result is independent confirmation.",
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cycle008_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_skew_breakdown_discovery_cycle_008.py", "sha256": "771bf8a7f2f81d9df68429ace1bbeda2f508fe8f4355ed1fe150ddd04e73d4c4"},
+    "cycle008_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008_spec.json", "sha256": "eef33288ea86418af7ae2d1b23987a9d95112f1754d437569e899ef6c5a2f1fe"},
+    "cycle008_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-SKEW-BREAKDOWN-DISCOVERY-CYCLE-008_result.json", "sha256": "8b8bc213f4cbfa2781794edd44f1a003d1341ee4bbc4120c5a7bec78beacd947"},
+    "minute_path_panel": {"path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_nonslope_panel.csv", "sha256": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0"},
+    "minute_path_result": {"path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_result.json", "sha256": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc"}
+  },
+  "track_a": {
+    "low_volatility_of_volatility": "negative 60-session standard deviation of rolling five-session realized volatility",
+    "low_idio": "negative 20-session standard deviation of stock causal return minus each date's cross-sectional median causal return",
+    "decision_frequency_sessions": 20,
+    "natural_horizon_sessions": 20,
+    "correlation_blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "conditional_strata": 3,
+    "residual": "same-date OLS residual of Low Vol-of-Vol percentile rank on Low-Idio percentile rank",
+    "distinct_gate": "absolute median rank correlation below 0.50 and residual top-20 net excess positive full and in both blocks",
+    "industry_gate": "within-industry high-minus-low matched payoff spread positive full and in both blocks, with full severe-loss spread nonpositive",
+    "minute_overlap": "date-level median Low-Vol-of-Vol percentile rank associated only with ALL_A/NON_ST minute-realized-volatility ordinal progression PIT percentile; descriptive, no conditioning or rule",
+    "authorized_translation_only_if_both_gates_pass": {
+      "role": "DEFENSIVE_RANKING_REFINEMENT",
+      "baseline": "exact Low-Idio top 20 on each 20-session decision date",
+      "rule": "choose the 10 highest Low-Vol-of-Vol scores within that frozen Low-Idio top-20 candidate set",
+      "weights": "equal",
+      "rebalance_sessions": 20,
+      "holding_sessions": 20,
+      "cost_per_side": 0.002,
+      "entry": "next executable open"
+    }
+  },
+  "track_b": [
+    {
+      "id": "fip_continuous_good_news_60",
+      "source": "Da, Gurun, and Warachka (2014), Frog in the Pan",
+      "source_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2370931",
+      "mechanism": "gradual positive information attracts less attention than isolated jumps and may continue",
+      "score": "negative information discreteness sign(sum residual return) times (negative-day fraction minus positive-day fraction), restricted to positive 60-session cumulative residual return",
+      "horizon": 20
+    },
+    {
+      "id": "same_month_seasonality_1y",
+      "source": "Heston and Sadka (2008), Seasonality in the Cross-Section of Stock Returns",
+      "source_url": "https://doi.org/10.1016/j.jfineco.2007.02.003",
+      "mechanism": "stock-specific return rankings recur in the same calendar month",
+      "score": "causal total log return in the same completed calendar month one year earlier",
+      "horizon": 20
+    },
+    {
+      "id": "market_relative_rank_acceleration_20",
+      "source": "internal distinct rank-change hypothesis",
+      "mechanism": "improvement in peer-relative rank may reveal emerging demand before absolute leadership",
+      "score": "same-date percentile rank of trailing-20 residual return minus its value 20 sessions earlier",
+      "horizon": 20
+    },
+    {
+      "id": "industry_follower_rank_acceleration_20",
+      "source": "internal leader/follower convergence hypothesis",
+      "mechanism": "followers whose within-industry rank improves may capture diffusion from established leaders",
+      "score": "within-PIT-industry percentile rank of trailing-20 return minus its value 20 sessions earlier, restricted to prior below-industry-median rank",
+      "horizon": 20
+    },
+    {
+      "id": "overnight_daytime_tug_of_war_20",
+      "source": "Lou, Polk, and Skouras (2022), Overnight Returns, Daytime Reversals, and Future Stock Returns",
+      "source_url": "https://doi.org/10.1016/j.jfineco.2021.09.019",
+      "mechanism": "repeated positive overnight moves reversed intraday may reflect arbitrageurs overcorrecting informative overnight demand",
+      "score": "fraction of prior 20 sessions with positive causal overnight return and negative open-to-close return",
+      "horizon": 20
+    },
+    {
+      "id": "low_turnover_attention_60",
+      "source": "Lee and Swaminathan (2000), Price Momentum and Trading Volume",
+      "source_url": "https://doi.org/10.1111/0022-1082.00280",
+      "mechanism": "low past turnover may identify neglected/value-like stocks with higher subsequent returns",
+      "score": "negative mean registered turnover_fraction over the prior 60 sessions",
+      "horizon": 20
+    }
+  ],
+  "track_b_screen": {
+    "decision_frequency_sessions": 20,
+    "top_names": 20,
+    "date_control_names": 20,
+    "cost_per_side": 0.002,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {"complete_positions_min": 300, "dates_each_block_min": 20, "execution_fraction_min": 0.90, "full_excess_positive": true, "both_block_excess_nonnegative": true, "severe_loss_disadvantage_max": 0.02, "median_breadth_min": 20},
+    "maximum_replays": 3,
+    "replay": {"names": 10, "weights": "equal", "rebalance_sessions": 20, "holding_sessions": 20, "entry": "next executable open", "cost_per_side": 0.002}
+  },
+  "prohibited": ["post-2023 outcomes", "CY-011", "independent-confirmation language", "Low-Vol-of-Vol or Low-Idio definition changes", "industry optimizer", "Track-A combined strategy unless both gates pass", "parameter grids", "threshold rescue", "habitat rescue", "preserved-component tuning", "fundamental-source search", "large data acquisition"]
+}

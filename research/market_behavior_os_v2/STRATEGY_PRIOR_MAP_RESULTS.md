@@ -57,3 +57,22 @@ adaptation exists for cycle 006.
 No combination, neighboring definition, second breakdown role, post-2023 data,
 or CY-011 input was used. These are consumed-history discovery results, not
 independent confirmation.
+
+## Cycle-009 defensive audit and return-engine batch
+
+| Family | Source/mechanism | Complete / dates | Net excess | Early / late | Severe disadvantage | Classification |
+|---|---|---:|---:|---:|---:|---|
+| Low Vol-of-Vol residual to Low Idio | Frozen defensive distinctness audit | broad top-20 / 66 | -0.194% | +1.395% / -1.599% | diagnostic | `COMPLEMENTARY_LOW_RISK_INFORMATION`; park, no replay |
+| FIP continuous good news 60 | Da, Gurun, Warachka continuous information | 1,307 / 66 | -0.786% | -0.173% / -1.334% | +3.966 pp | `ADVERSE` |
+| Same-month seasonality 1y | Heston-Sadka recurring calendar-month return | 1,174 / 59 | -1.841% | -2.073% / -1.682% | +3.275 pp | `ADVERSE` |
+| Market-relative rank acceleration 20 | Emerging peer-relative demand | 1,289 / 65 | -1.260% | -0.337% / -2.055% | +12.293 pp | `ADVERSE` |
+| Industry-follower acceleration 20 | Leader/follower diffusion | 1,286 / 65 | -0.835% | -0.438% / -1.173% | +8.169 pp | `ADVERSE` |
+| Overnight/daytime tug-of-war 20 | Repeated positive night / negative day reversals | 1,313 / 66 | -0.002% | +0.522% / -0.468% | -4.366 pp | `CHRONOLOGICALLY_MIXED` |
+| Low turnover attention 60 | Lee-Swaminathan neglected/value-like attention | 1,313 / 66 | +0.076% | -0.011% / +0.153% | -16.247 pp | `CHRONOLOGICALLY_MIXED` |
+
+The within-industry Low Vol-of-Vol high-minus-low diagnostic is +1.198% full,
++1.730%/+0.833% by block, with -12.681 pp severe-loss spread. That establishes
+a stock-level low-risk manifestation after controlling industry composition,
+not independence from Low Idio or strategy usefulness. No Track-B family is
+promoted and no executable replay is run. The frozen minute-overlap statistic
+is non-identifying; it is not replaced after outcomes.

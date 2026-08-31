@@ -196,6 +196,30 @@ and independent post-development confirmation.
 
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 
+## Cycle 009: defensive independence and return-engine discovery
+
+| Rank | Family | Evidence | Decision |
+|---:|---|---|---|
+| 1 | Low Vol-of-Vol within industry | +1.198% h20 high-minus-low; +1.730%/+0.833%; -12.681 pp severe spread | Stock-level effect survives industry composition, but overall factor is `COMPLEMENTARY_LOW_RISK_INFORMATION` because residual independence fails |
+| 2 | Low turnover attention 60 | +0.076%; -0.011%/+0.153%; -16.247 pp severe spread | `CHRONOLOGICALLY_MIXED`; no replay or defensive rescue |
+| 3 | Overnight/daytime tug-of-war 20 | -0.002%; +0.522%/-0.468%; -4.366 pp severe spread | `CHRONOLOGICALLY_MIXED`; economically flat |
+| 4 | FIP continuous good news 60 | -0.786%; -0.173%/-1.334% | `ADVERSE`; exact frozen long formulation closed |
+| 5 | Industry-follower / market-relative rank acceleration | -0.835% / -1.260%; adverse in both blocks | Exact rank-change formulations closed |
+| 6 | One-year same-month seasonality | -1.841%; -2.073%/-1.682% | `ADVERSE`; exact one-year long formulation closed |
+
+Low Vol-of-Vol versus Low Idio rank correlation is 0.624 (0.610/0.630 by
+block); residual excess is -0.194%, +1.395%/-1.599%. The independence gate
+fails, so the frozen Low-Idio-candidate ranking refinement receives no replay.
+The frozen market-minute overlap statistic is non-identifying because the
+cross-sectional percentile median is invariant; no post-outcome raw-score
+replacement is used. No Track-B family passes all promotion gates.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible short legs, immutable-vintage
+fundamentals, and independent post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Cycle 008: survivor independence and continued discovery
 
 | Rank | Family | Evidence | Current decision |
