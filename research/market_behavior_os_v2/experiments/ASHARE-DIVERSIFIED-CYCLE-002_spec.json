@@ -1,0 +1,171 @@
+{
+  "experiment_id": "ASHARE-DIVERSIFIED-CYCLE-002",
+  "status": "FROZEN_BOTH_TRACKS_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "claim_boundary": "EXPLORE_ONLY_CONSUMED_2018_2023_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "starting_checkpoint": "f5096766db",
+  "inputs": {
+    "prior_funnel_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDEP-FUNNEL-001_spec.json",
+      "sha256": "5155f8fede9e5a5025bc087ae09746de1bee4cdf1c5d6e7427fecdea89b0c4b6"
+    },
+    "prior_funnel_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDEP-FUNNEL-001_result.json",
+      "sha256": "453866ecd223ebade76ae4cd3cc5efeb11b7189ca44842db9a2405276d072312"
+    },
+    "prior_funnel_script": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_indep_funnel_001.py",
+      "sha256": "75754df176343a084889863f8826f6176bcec1f1c72d22da5fe93eaf87232e31"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  },
+  "shared_contract": {
+    "research_start": "2018-01-02",
+    "research_end": "2023-12-29",
+    "blocks": {
+      "early_2018_2020": ["2018-01-02", "2020-12-31"],
+      "late_2021_2023": ["2021-01-01", "2023-12-29"]
+    },
+    "decision_schedule": "unchanged every-fifth CY-006 market session after 120 causal steps",
+    "decision_at": "completed trade-date close at 15:00 Asia/Shanghai",
+    "entry": "immediately following market-session open; blocked or invalid names skipped",
+    "screen_cost_per_side_bps": 20,
+    "universe": "unchanged historical CY-006 .SH/.SZ hard-valid, non-ST, tradable signal rows with 120 causal action-coordinate steps and prior-20 mean amount >= 50m CNY",
+    "response_horizons_sessions": [5, 20],
+    "screen_selection": "top 20 per family/date; bottom 20 only for full cross-sectional definitions; twenty deterministic date controls",
+    "corporate_actions": "unchanged causal visible-action coordinate and fail-closed path accounting from ASHARE-INDEP-FUNNEL-001"
+  },
+  "track_a": {
+    "question": "Does fixed cross-industry diversification retain the accepted industry-leadership effect while removing its severe-loss disadvantage?",
+    "alpha_frozen": {
+      "state": "leave-one-out industry mean 20-session causal action-coordinate return",
+      "clock": "unchanged weekly close",
+      "holding_sessions": 20,
+      "cost_per_side_bps": 20
+    },
+    "single_translation": {
+      "leading_industries": 3,
+      "securities_per_industry": 5,
+      "industry_selection": "three highest equal-weight industry mean r20 states, ties by industry label",
+      "security_selection": "five highest prior-20 mean-amount eligible securities within each selected industry, ties by symbol",
+      "weights": "one third per industry and one fifteenth per security",
+      "cohort_allocation": "one quarter of current NAV each weekly entry because four h20 vintages overlap",
+      "exit": "first sell-executable open after the twentieth holding-session close",
+      "initial_capital_cny": 10000000
+    },
+    "matched_concentration_control": {
+      "purpose": "diagnostic isolation of concentration risk, not a second candidate",
+      "industries": 1,
+      "securities": 15,
+      "selection": "highest industry state then fifteen highest prior-20 mean-amount securities",
+      "weights": "equal security weights",
+      "all_other_semantics": "identical to diversified translation"
+    },
+    "promotion_all_required": {
+      "minimum_complete_cohorts": 150,
+      "minimum_entry_executable_fraction": 0.90,
+      "minimum_full_cohort_net_excess_vs_date_control": 0.0025,
+      "minimum_each_block_cohort_net_excess_vs_date_control": 0.0,
+      "minimum_positive_calendar_years": 4,
+      "maximum_cohort_severe_loss_disadvantage_vs_control": 0.02,
+      "maximum_diversified_industry_hhi": 0.34,
+      "minimum_drawdown_improvement_vs_concentrated": 0.02,
+      "minimum_sharpe_difference_vs_concentrated": 0.0,
+      "minimum_total_return": 0.0
+    },
+    "status_choices": ["STRATEGY_CANDIDATE", "PARKED", "REJECTED"],
+    "no_rescue": true
+  },
+  "track_b_families": {
+    "stock_industry_residual_strength_20": {
+      "mechanism": "stock-specific strength after removing contemporaneous PIT-industry leadership",
+      "score": "stock r20 minus leave-one-out industry mean r20",
+      "event_filter": "known PIT industry with at least five other eligible constituents",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "bottom"
+    },
+    "industry_diffusion_20": {
+      "mechanism": "broad internal industry participation rather than leadership-return level",
+      "score": "leave-one-out fraction of eligible industry constituents with positive r20",
+      "event_filter": "known PIT industry with at least five other eligible constituents",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "bottom"
+    },
+    "negative_gap_recovery": {
+      "mechanism": "overnight supply shock absorbed by same-session recovery",
+      "score": "negative causal gap depth plus open-to-close recovery",
+      "event_filter": "causal coordinate open below prior coordinate close and close above open",
+      "natural_horizon_sessions": 5,
+      "diagnostic_leg": "none"
+    },
+    "limit_up_aftermath": {
+      "mechanism": "persistent demand after an objectively closed limit-up session",
+      "score": "prior-20 mean amount for capacity-first selection among exact limit-up closes",
+      "event_filter": "raw close equals registered up-limit price",
+      "natural_horizon_sessions": 5,
+      "diagnostic_leg": "none"
+    },
+    "price_volume_disagreement": {
+      "mechanism": "positive signed-volume pressure without positive 20-session price response",
+      "score": "20-session signed-volume share minus r20",
+      "event_filter": "signed-volume share positive and r20 nonpositive",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "none"
+    },
+    "low_idiosyncratic_volatility_20": {
+      "mechanism": "low stock-specific risk after removing each date's cross-sectional median return",
+      "score": "negative 20-session standard deviation of stock return minus daily market median",
+      "event_filter": "twenty complete residual-return observations",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "bottom"
+    },
+    "lower_wick_demand_rejection": {
+      "mechanism": "same-session rejection of downside excursion without requiring an objective support break",
+      "score": "lower-wick share of daily range",
+      "event_filter": "positive open-to-close session and lower wick exceeds upper wick",
+      "natural_horizon_sessions": 5,
+      "diagnostic_leg": "none"
+    }
+  },
+  "track_b_promotion": {
+    "maximum_families": 2,
+    "ranking_key": "minimum early/late natural-horizon net mean excess, then full excess",
+    "all_required": {
+      "minimum_complete_top_outcomes": 500,
+      "minimum_signal_dates_each_block": 40,
+      "minimum_entry_executable_fraction": 0.90,
+      "minimum_full_natural_net_excess": 0.0025,
+      "minimum_each_block_natural_net_excess": 0.0,
+      "minimum_positive_calendar_years": 4,
+      "maximum_severe_loss_disadvantage_vs_control": 0.02,
+      "minimum_median_event_candidates_per_date": 20
+    },
+    "executable_translation": {
+      "selected_names_per_signal": 10,
+      "initial_capital_cny": 10000000,
+      "cost_per_side_bps": 20,
+      "cohort_allocation": "min(cash, NAV / ceil(natural_horizon_sessions/5))",
+      "exit": "first sell-executable open after natural holding close",
+      "weights": "equal within cohort"
+    },
+    "no_post_result_search": true
+  },
+  "prohibited": [
+    "no post-2023 data or metadata",
+    "no CY-011 access",
+    "no rerun or cosmetic modification of the seven prior exact formulations",
+    "no Industry Rotation horizon, signal, threshold, cost, habitat, weight, or diversification-count search",
+    "no Track-B neighboring parameter substitutes for prior rejected formulations",
+    "no habitat or regime rescue",
+    "no CHINEXT tuning, validation, or combination",
+    "no same-bar fill",
+    "no strict PIT-A, OOS, validation, live, or causal-mechanism claim",
+    "no second Track-A experiment and no rescue of a failed Track-B executable translation"
+  ]
+}

@@ -196,3 +196,12 @@ requires a separately quarantined block. Do not substitute the contaminated
 material, unlock CY-011, tune either rule, combine the arms, or call the
 development candidates validated. Existing MKT-DISP-RANK resource parking and
 MKT-FORMDEPTH-MINX waiting-resource conditions are unchanged.
+
+ASHARE-DIVERSIFIED-CYCLE-002 reaches an ordinary bounded-cycle STOP. Track A is
+economically parked with no rescue. Track B yields two promising screens but no
+valid executable economics because the frozen CY-006-only replay cannot act on
+announcement-known, future-effective blocking actions. This is not permission
+to bypass `hard_valid`, infer an adjustment, drop affected holdings, or quote
+partial equity. A next cycle requires a separately frozen QD-010 announcement
+and risk-exit contract; otherwise these mechanisms remain parked and capital
+moves to a different frontier. No global program STOP is asserted.

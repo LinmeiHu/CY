@@ -1900,3 +1900,27 @@ current severe-loss failure comes from concentrated implementation, but may not
 search thresholds, horizons, habitats, or claim confirmation. The fixed
 CHINEXT RS veto remains `PROMISING_ADMISSION_COMPONENT`; the minute-volatility
 overlay remains `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`.
+
+## Latest authoritative handoff — diversified cycle 002
+
+Resume after the commit containing ASHARE-DIVERSIFIED-CYCLE-002; its starting
+checkpoint is `f5096766db`. Do not rerun or rescue Track A. The frozen 3x5
+industry translation is `PARKED`: -0.335% full excess, -1.039% late excess, two
+positive years, and +8.365 pp severe-loss disadvantage. Its exact replay is
+also data-contract blocked; partial equity is not strategy performance.
+
+Track B screened seven new formulations. Preserve two promising screen leads:
+industry diffusion h20 (+1.254% full excess, positive both blocks) and low
+idiosyncratic volatility h20 (+0.794%, positive both blocks). Both passed all
+cheap gates, but both portfolio replays stopped on blocking corporate actions.
+They are not executable candidates and have no valid portfolio economics.
+
+The next allocation should not continue Industry Rotation. Highest value is a
+separately preregistered compact contract repair binding registered QD-010
+`known_at` announcements and predeclared risk-reducing exits before effective
+dates, then replaying the two frozen rules without changing alpha. If that
+cannot be established without lookahead, park both and move to stock-level
+intraday mechanisms. Do not change counts, horizons, gates, weights, or costs.
+
+All 2018--2023 data are consumed development history. Post-2023 and CY-011 stay
+quarantined/unread. Frozen CHINEXT components remain unchanged.

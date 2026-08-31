@@ -209,3 +209,15 @@ null; compression reverses by block; the other four exact independent families
 are negative. The cheapest next decision is one frozen cross-industry-
 diversified translation designed to test concentration risk—not a threshold,
 horizon, habitat, or CHINEXT combination search.
+
+## Independent batch 002 portfolio ranking
+
+| Rank | Asset/frontier | Classification | Research-capital decision |
+|---:|---|---|---|
+| 1 | Industry diffusion h20 | Promising screen; execution contract blocked | Repair contract once; no alpha search |
+| 2 | Low idiosyncratic volatility h20 | Promising defensive screen; execution blocked | Share contract work, separate economics |
+| 3 | CHINEXT RS acceleration veto | Existing promising admission component | Preserve; confirmation unavailable |
+| 4 | Dispersion relative value | Resource-parked new archetype | Revisit only with cheaper method/resources |
+| 5 | Stock-level intraday discovery | Unopened high-information frontier | Start if contract repair is not compact |
+| 6 | Minute-volatility half-gross | Cost-sensitive risk overlay | No promotion without new evidence |
+| 7 | Industry Rotation fixed 3x5 | `PARKED` economic failure | Close; no rescue |

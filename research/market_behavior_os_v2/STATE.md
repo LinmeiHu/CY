@@ -2003,3 +2003,44 @@ temporal confirmation.
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 Industry rotation was already in the archetype map; this cycle supplies the
 first positive standalone stock-selection screen but fails its frozen risk gate.
+
+## 2026-08-31 industry translation and second independent batch checkpoint
+
+ASHARE-DIVERSIFIED-CYCLE-002 starts from `f5096766db`, binds the same six
+2018--2023 CY-006 partitions, and reads neither post-2023 data nor CY-011. Track
+A changes portfolio construction only: three leading PIT industries, five
+prior-liquidity names per industry, equal one-third industry weights, four
+overlapping h20 vintages, and 20 bps per side. The matched diagnostic is one
+industry with 15 names.
+
+Track A is `PARKED`, with no rescue. Even its exact cohort screen fails the
+economic gates: full/early/late excess is -0.335%/+0.478%/-1.039%, only two of
+six years are positive, and severe-loss disadvantage is +8.365 percentage
+points. Exact portfolio economics are unavailable: the diversified replay
+stops on `601515.SH / 2019-04-23` at a blocking `share_timing_unresolved`
+action; the concentrated control stops earlier on `002017.SZ / 2019-02-28` at
+a blocking rights action. Partial equity is explicitly not strategy economics.
+
+Track B cheaply screens seven new formulations over 267 weekly dates. Industry
+diffusion h20 (+1.254% full excess; +1.035%/+1.444% by block; four positive
+years) and low idiosyncratic volatility h20 (+0.794%; +0.389%/+1.144%; five
+positive years) pass every frozen promotion gate. The other five exact
+formulations fail. Both promoted portfolio translations then stop fail-closed
+on unresolved share-timing actions (`603517.SH / 2019-06-03` and `601200.SH /
+2019-05-06`). They are promising screen mechanisms, not executable strategy
+candidates, because portfolio economics cannot be established.
+
+CY-006 exposes the blocking action only on its effective row. QD-010 contains
+earlier `known_at`, but it was not bound by this experiment. Adding a
+pre-effective risk exit after observing results would be a semantic rescue, so
+it was not done. A future, separately frozen replay may bind QD-010 and
+predeclare risk-off exits.
+
+What market behavior are we still not studying? Announcement-to-effective-date
+corporate-action risk control, stock-level intraday supply/demand and breakout
+acceptance, fundamental revisions, order-book pressure, and feasible short legs.
+
+Has any discovered mechanism implied a genuinely new strategy archetype?
+Industry diffusion is a new participation-within-leadership lead; low
+idiosyncratic volatility is a distinct defensive cross-sectional lead. Neither
+is executable until a data-contract-safe complete portfolio replay exists.

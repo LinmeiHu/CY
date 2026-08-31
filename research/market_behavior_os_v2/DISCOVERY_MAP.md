@@ -118,3 +118,20 @@ shared PIT panel. All years are consumed development history.
 No family passes every promotion gate, so there is no executable replay. The
 next frontier is risk-first industry diversification under a separately frozen
 translation, not threshold/horizon/habitat rescue.
+
+## Industry translation plus independent batch 002
+
+| Family | Cheap-screen result | Executable decision |
+|---|---|---|
+| Fixed 3x5 industry rotation | -0.335% full; -1.039% late; +8.365 pp severe disadvantage | `PARKED`; replay also contract-blocked |
+| Industry diffusion h20 | +1.254% full; +1.035%/+1.444% blocks; 4 positive years | `PROMISING_SCREEN_MECHANISM`; replay blocked |
+| Low idiosyncratic volatility h20 | +0.794% full; +0.389%/+1.144% blocks; 5 positive years | `PROMISING_SCREEN_MECHANISM`; replay blocked |
+| Stock-industry residual strength | -3.598% full and worse severe loss | Reject exact formulation |
+| Negative-gap recovery | -0.812% full h5, both blocks negative | Reject exact formulation |
+| Limit-up aftermath | -0.881% full h5, both blocks negative | Reject exact formulation |
+| Price-volume disagreement | -0.084% full, early negative, severe gate fails | Park null/mixed formulation |
+| Lower-wick demand rejection | -0.321% full h5, both blocks negative | Reject exact formulation |
+
+Industry diffusion and low idiosyncratic volatility are distinct roles:
+within-industry participation and stock-specific defensive risk. Their cheap
+effects survive chronology; executability is unresolved rather than failed.

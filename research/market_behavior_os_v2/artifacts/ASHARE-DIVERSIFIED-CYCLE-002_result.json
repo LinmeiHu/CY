@@ -1,0 +1,403 @@
+{
+  "boundaries": {
+    "chinext_changed": false,
+    "cy011_read": false,
+    "live_claim": false,
+    "oos_claim": false,
+    "post_2023_read": false,
+    "prior_formulations_rerun": false,
+    "validation_claim": false
+  },
+  "claim_boundary": "EXPLORE_ONLY_CONSUMED_2018_2023_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "domain": {
+    "decision_dates": 267,
+    "execution_market_rows": 261975,
+    "screen_path_rows": 1288060,
+    "selected_top_rows": 44021,
+    "track_b_families": 7
+  },
+  "experiment_id": "ASHARE-DIVERSIFIED-CYCLE-002",
+  "hashes": {
+    "equity_sha256": "292146a7ebf712c6f7fdc7c35a2b464ac2f453beff48108271aaa971e3481ec4",
+    "panel_sha256": "422b1110c6ff1c43ebdcf73198a04b2266558fcf4779917e57047e2bc88d0ca2",
+    "report_sha256": "23fcbeb0eebc9f62d5d4916b58fce8d9e6ecb945c1366ce8e91873c903946719",
+    "spec_sha256": "f35d9c0b660bcbfb92a68ea5efa7305f3d87aa324f50f14566de96945cabb658",
+    "summary_sha256": "fa8214f33f08c402569244451b357ce8e495fe9b470d0095ea949e3528aec2cd"
+  },
+  "input_audit": {
+    "first_date": "2018-01-02",
+    "hard_valid_lineage_failures": 0,
+    "last_date": "2023-12-29",
+    "post_2023_rows_read": 0,
+    "rows": 6155390,
+    "symbols": 5262,
+    "time_travel_rows": 0
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "portfolio_synthesis": "Track A receives no rescue. The highest expected-information next unit is one separately frozen, shared execution-contract study binding registered QD-010 announcement timing and pre-effective risk exits, while leaving both promoted alphas unchanged. If that cannot be made PIT-safe compactly, park both leads and allocate to independent stock-level intraday mechanisms. Frozen CHINEXT components remain unchanged.",
+  "status": "COMPLETE_EXPLORE_ONLY",
+  "track_a": {
+    "cohort_economics": {
+      "complete_cohorts": 263,
+      "control_severe_loss_fraction": 0.057034220532319393,
+      "early_excess": 0.004777544288507984,
+      "entry_executable_fraction": 0.9800249687890137,
+      "full_excess": -0.003353026294872512,
+      "full_mean_net_return": -0.00569529969202256,
+      "late_excess": -0.010387988076237196,
+      "mean_industries": 3.0,
+      "mean_names": 14.863117870722434,
+      "positive_years": 2,
+      "severe_loss_disadvantage": 0.08365019011406845,
+      "severe_loss_fraction": 0.14068441064638784
+    },
+    "concentrated_control": {
+      "blocker": {
+        "corporate_action_available_date": "2019-02-16",
+        "corporate_action_blocking": true,
+        "corporate_action_ids": "cninfo:rights:b233a60edc861cd67637ee391b4499c1",
+        "corporate_action_problems": "None",
+        "corporate_action_snapshot_id": "QD-010-CNINFO-CURRENT-HISTORY-20260820",
+        "hard_valid": false,
+        "industry": "\u901a\u4fe1\u8bbe\u5907",
+        "invalid_reasons": "blocking_corporate_action",
+        "reason": "UNRESOLVED_CORPORATE_ACTION",
+        "symbol": "002017.SZ",
+        "trade_date": "2019-02-28"
+      },
+      "completed_trades_before_block": 326,
+      "cost_per_side_bps": 20,
+      "entries_before_block": 379,
+      "family": "track_a_concentrated",
+      "partial_equity_is_not_strategy_economics": true,
+      "planned_entries_before_block": 380,
+      "status": "BLOCKED_DATA_CONTRACT",
+      "terminal_open_lots": 53
+    },
+    "diversified_portfolio": {
+      "blocker": {
+        "corporate_action_available_date": "2019-04-18",
+        "corporate_action_blocking": true,
+        "corporate_action_ids": "cninfo:distribution:b0fce666c5eaf676819fce517fb8684b",
+        "corporate_action_problems": "share_timing_unresolved",
+        "corporate_action_snapshot_id": "QD-010-CNINFO-CURRENT-HISTORY-20260820",
+        "hard_valid": false,
+        "industry": "\u5305\u88c5\u5370\u5237",
+        "invalid_reasons": "blocking_corporate_action",
+        "reason": "UNRESOLVED_CORPORATE_ACTION",
+        "symbol": "601515.SH",
+        "trade_date": "2019-04-23"
+      },
+      "completed_trades_before_block": 525,
+      "cost_per_side_bps": 20,
+      "entries_before_block": 584,
+      "family": "track_a_diversified",
+      "partial_equity_is_not_strategy_economics": true,
+      "planned_entries_before_block": 585,
+      "status": "BLOCKED_DATA_CONTRACT",
+      "terminal_open_lots": 59
+    },
+    "drawdown_improvement": null,
+    "gate_results": {
+      "complete_executable_replay": false
+    },
+    "reason": "EXECUTABLE_TRANSLATION_BLOCKED_BY_FROZEN_DATA_CONTRACT",
+    "sharpe_difference": null,
+    "status": "PARKED"
+  },
+  "track_b_decisions": [
+    {
+      "classification": "SCREEN_ONLY_NO_PROMOTION",
+      "complete_top_outcomes": 5103,
+      "family": "stock_industry_residual_strength_20",
+      "full_excess": -0.03598336170073779,
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": false,
+        "positive_years": false,
+        "severe_loss": false,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": -0.03856156552104662,
+      "natural_horizon": 20,
+      "positive_years": 0,
+      "severe_loss_disadvantage": 0.26476513018423353
+    },
+    {
+      "classification": "PROMOTE_EXECUTABLE_TRANSLATION",
+      "complete_top_outcomes": 5231,
+      "family": "industry_diffusion_20",
+      "full_excess": 0.01254243059113851,
+      "gate_results": {
+        "both_block_excess": true,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": true,
+        "positive_years": true,
+        "severe_loss": true,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": 0.010351900767116678,
+      "natural_horizon": 20,
+      "positive_years": 4,
+      "severe_loss_disadvantage": -0.006535093054929247
+    },
+    {
+      "classification": "SCREEN_ONLY_NO_PROMOTION",
+      "complete_top_outcomes": 5167,
+      "family": "negative_gap_recovery",
+      "full_excess": -0.008116966471485675,
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": false,
+        "positive_years": false,
+        "severe_loss": false,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": -0.009954252884344547,
+      "natural_horizon": 5,
+      "positive_years": 0,
+      "severe_loss_disadvantage": 0.11865582319097756
+    },
+    {
+      "classification": "SCREEN_ONLY_NO_PROMOTION",
+      "complete_top_outcomes": 4475,
+      "family": "limit_up_aftermath",
+      "full_excess": -0.00880685163305647,
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": false,
+        "positive_years": false,
+        "severe_loss": false,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": -0.011084149186263305,
+      "natural_horizon": 5,
+      "positive_years": 1,
+      "severe_loss_disadvantage": 0.14801900358049289
+    },
+    {
+      "classification": "SCREEN_ONLY_NO_PROMOTION",
+      "complete_top_outcomes": 5204,
+      "family": "price_volume_disagreement",
+      "full_excess": -0.000835352832627421,
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": false,
+        "positive_years": false,
+        "severe_loss": false,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": -0.0025260347150138163,
+      "natural_horizon": 20,
+      "positive_years": 3,
+      "severe_loss_disadvantage": 0.02366405672486016
+    },
+    {
+      "classification": "PROMOTE_EXECUTABLE_TRANSLATION",
+      "complete_top_outcomes": 5244,
+      "family": "low_idiosyncratic_volatility_20",
+      "full_excess": 0.007942504629523865,
+      "gate_results": {
+        "both_block_excess": true,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": true,
+        "positive_years": true,
+        "severe_loss": true,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": 0.003894152495225087,
+      "natural_horizon": 20,
+      "positive_years": 5,
+      "severe_loss_disadvantage": -0.1340108175577283
+    },
+    {
+      "classification": "SCREEN_ONLY_NO_PROMOTION",
+      "complete_top_outcomes": 5224,
+      "family": "lower_wick_demand_rejection",
+      "full_excess": -0.0032085104093650487,
+      "gate_results": {
+        "both_block_excess": false,
+        "candidate_breadth": true,
+        "complete_top_outcomes": true,
+        "entry_executability": true,
+        "full_excess": false,
+        "positive_years": false,
+        "severe_loss": true,
+        "signal_dates_each_block": true
+      },
+      "minimum_block_excess": -0.005700720827817796,
+      "natural_horizon": 5,
+      "positive_years": 1,
+      "severe_loss_disadvantage": 0.008985578135404883
+    }
+  ],
+  "track_b_details": {
+    "industry_diffusion_20": {
+      "early_excess": 0.010351900767116678,
+      "entry_executable_fraction": 0.9835205992509364,
+      "late_excess": 0.01444135883615958,
+      "median_avg_amount20_cny": 179147638.21275002,
+      "median_candidate_count": 2396.0
+    },
+    "limit_up_aftermath": {
+      "early_excess": -0.011084149186263305,
+      "entry_executable_fraction": 0.9237270665842094,
+      "late_excess": -0.007083008019949762,
+      "median_avg_amount20_cny": 294775625.8565,
+      "median_candidate_count": 32.0
+    },
+    "low_idiosyncratic_volatility_20": {
+      "early_excess": 0.003894152495225087,
+      "entry_executable_fraction": 0.9848314606741573,
+      "late_excess": 0.011441098315439375,
+      "median_avg_amount20_cny": 77953137.9655,
+      "median_candidate_count": 2475.0
+    },
+    "lower_wick_demand_rejection": {
+      "early_excess": -0.005700720827817796,
+      "entry_executable_fraction": 0.9805243445692884,
+      "late_excess": -0.0010493070278902678,
+      "median_avg_amount20_cny": 130500597.3,
+      "median_candidate_count": 401.0
+    },
+    "negative_gap_recovery": {
+      "early_excess": -0.009954252884344547,
+      "entry_executable_fraction": 0.968902210565755,
+      "late_excess": -0.006523367848116937,
+      "median_avg_amount20_cny": 179871773.66000003,
+      "median_candidate_count": 546.0
+    },
+    "price_volume_disagreement": {
+      "early_excess": -0.0025260347150138163,
+      "entry_executable_fraction": 0.982344102178813,
+      "late_excess": 0.0006240936472986785,
+      "median_avg_amount20_cny": 170177052.9815,
+      "median_candidate_count": 339.0
+    },
+    "stock_industry_residual_strength_20": {
+      "early_excess": -0.03301962192583351,
+      "entry_executable_fraction": 0.9608614232209738,
+      "late_excess": -0.03856156552104662,
+      "median_avg_amount20_cny": 328645354.86074996,
+      "median_candidate_count": 2396.0
+    }
+  },
+  "track_b_promoted": [
+    "industry_diffusion_20",
+    "low_idiosyncratic_volatility_20"
+  ],
+  "track_b_ranked_frontier": [
+    "industry_diffusion_20",
+    "low_idiosyncratic_volatility_20",
+    "price_volume_disagreement",
+    "lower_wick_demand_rejection",
+    "negative_gap_recovery",
+    "limit_up_aftermath",
+    "stock_industry_residual_strength_20"
+  ],
+  "track_b_replays": [
+    {
+      "blocker": {
+        "corporate_action_available_date": "2019-05-29",
+        "corporate_action_blocking": true,
+        "corporate_action_ids": "cninfo:distribution:d0eee38e477dd3beb15f52cef370a094",
+        "corporate_action_problems": "share_timing_unresolved",
+        "corporate_action_snapshot_id": "QD-010-CNINFO-CURRENT-HISTORY-20260820",
+        "hard_valid": false,
+        "industry": "\u4f11\u95f2\u98df\u54c1",
+        "invalid_reasons": "blocking_corporate_action",
+        "reason": "UNRESOLVED_CORPORATE_ACTION",
+        "symbol": "603517.SH",
+        "trade_date": "2019-06-03"
+      },
+      "completed_trades_before_block": 399,
+      "cost_per_side_bps": 20,
+      "entries_before_block": 439,
+      "family": "industry_diffusion_20",
+      "partial_equity_is_not_strategy_economics": true,
+      "planned_entries_before_block": 440,
+      "status": "BLOCKED_DATA_CONTRACT",
+      "terminal_open_lots": 40
+    },
+    {
+      "blocker": {
+        "corporate_action_available_date": "2019-04-26",
+        "corporate_action_blocking": true,
+        "corporate_action_ids": "cninfo:distribution:0e3773103683385e9f8bc0814ca35ed0",
+        "corporate_action_problems": "share_timing_unresolved",
+        "corporate_action_snapshot_id": "QD-010-CNINFO-CURRENT-HISTORY-20260820",
+        "hard_valid": false,
+        "industry": "\u73af\u5883\u6cbb\u7406",
+        "invalid_reasons": "blocking_corporate_action",
+        "reason": "UNRESOLVED_CORPORATE_ACTION",
+        "symbol": "601200.SH",
+        "trade_date": "2019-05-06"
+      },
+      "completed_trades_before_block": 360,
+      "cost_per_side_bps": 20,
+      "entries_before_block": 400,
+      "family": "low_idiosyncratic_volatility_20",
+      "partial_equity_is_not_strategy_economics": true,
+      "planned_entries_before_block": 400,
+      "status": "BLOCKED_DATA_CONTRACT",
+      "terminal_open_lots": 40
+    }
+  ]
+}

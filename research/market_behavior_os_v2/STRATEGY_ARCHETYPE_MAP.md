@@ -40,3 +40,15 @@ genuinely new research archetype and stays resource-parked.
 
 No genuinely new archetype is created. Industry rotation was already mapped and
 now has positive standalone evidence, but it fails the preregistered risk gate.
+
+## Independent batch 002 overlay
+
+| Archetype | New evidence | Map status |
+|---|---|---|
+| Industry participation/diffusion | Within-industry positive-r20 diffusion has +1.254% h20 excess and passes all cheap gates | `PROMISING_SCREEN_MECHANISM_EXECUTION_BLOCKED` |
+| Defensive low idiosyncratic risk | Lowest idiosyncratic-volatility names have +0.794% h20 excess and pass all cheap gates | `PROMISING_SCREEN_MECHANISM_EXECUTION_BLOCKED` |
+| Industry rotation | Fixed 3x5 translation loses -0.335% versus control and has +8.365 pp severe disadvantage | `PARKED_NO_RESCUE` |
+
+The first two are distinct candidate archetypes but not executable strategies:
+their portfolio replays stop on frozen corporate-action blockers, so partial
+equity supplies no return, drawdown, Sharpe, turnover, or capacity evidence.

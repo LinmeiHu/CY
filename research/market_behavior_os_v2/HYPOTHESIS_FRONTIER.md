@@ -475,3 +475,14 @@ than concentrated in one leadership cluster. Freeze one economically natural
 cross-industry allocation, the same 20-session state and weekly clock, and the
 same costs before replay. Do not search the number of industries, add a habitat,
 change horizon, or call the consumed-period result confirmation.
+
+## Frontier after ASHARE-DIVERSIFIED-CYCLE-002
+
+1. `INDUSTRY_DIFFUSION_EXECUTION_CONTRACT`: freeze QD-010 announcement
+   semantics and risk exits; alpha, horizon, count, and cost stay unchanged.
+2. `LOW_IDIOVOL_EXECUTION_CONTRACT`: share the contract work but retain a
+   separate economic replay for this defensive mechanism.
+3. `STOCK_INTRADAY_INDEPENDENT_MECHANISMS`: supply exhaustion, demand strength,
+   support defense, and acceptance after controlling daily setup.
+4. `FUNDAMENTAL_REVISION_PIT`: potentially high value, currently data-blocked.
+5. `INDUSTRY_ROTATION_3X5`: closed and parked; no rescue allocation.
