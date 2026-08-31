@@ -7,11 +7,11 @@ Updated 2026-08-31.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `addd74cc96` (`research: add selection and risk candidates`)
-- `CURRENT_PHASE`: `STOCK_SELECTION_EXIT_COST_CYCLE_CHECKPOINT`
-- `CURRENT_PRIMARY_FRONTIER`: independently confirm the fixed RS-acceleration admission component on a separately quarantined block; unavailable at this checkpoint because post-2023 is contaminated and CY-011 remains locked
-- `SUPPORTING_FRONTIER`: bounded security/industry-relative direction inside widening dispersion, but its prior industry-rank implementation is resource-parked; stock-level intraday selection mechanisms require a separate PIT data contract
-- `CURRENT_STRATEGY_CANDIDATE`: `PROMISING_ADMISSION_COMPONENT_RS_ACCEL_OVEREXTENSION_VETO`; no validated strategy. The minute-volatility half-gross rule is `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`
+- `CURRENT_BASELINE`: `94c07abb07` (start of frozen intraday/independent cycle 004)
+- `CURRENT_PHASE`: `STOCK_INTRADAY_AND_THIRD_INDEPENDENT_BATCH_CHECKPOINT`
+- `CURRENT_PRIMARY_FRONTIER`: independently confirm the mixed Industry Diffusion level, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration leads; unavailable because 2018--2023 is consumed, post-2023 is quarantined, and CY-011 remains locked
+- `SUPPORTING_FRONTIER`: resolve the quiet-VWAP portfolio's prolonged-suspension path coverage only through a separately frozen execution-contract extension; do not alter its alpha, screen, or gate
+- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Quiet VWAP acceptance passes its cheap screen but its replay is contract-blocked; Industry Diffusion Acceleration is `PROMISING_BUT_MIXED`. The pre-existing RS veto remains `PROMISING_ADMISSION_COMPONENT`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can the fixed RS-acceleration admission component survive a genuinely independent, separately quarantined confirmation block? Until such a block exists, the highest open discovery value is a resource-bounded industry/security-relative direction contract inside widening dispersion, not another CHINEXT threshold search.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can genuinely independent data confirm any of the three complete mixed broad-A-share leads? If no independent block becomes available, a bounded objective stock-support/acceptance representation audit has higher information value than tuning the weak intraday families or reopening closed strategies.
 
 ## Research OS V2.3 resource and worker state
 
@@ -2086,3 +2086,52 @@ Has any discovered mechanism implied a genuinely new strategy archetype? Yes,
 industry participation and defensive low-idiosyncratic-risk now have complete
 executable exploratory paths, but both remain mixed candidates rather than
 validated or live-authorized strategies.
+
+## 2026-08-31 stock-level intraday and third independent batch checkpoint
+
+ASHARE-INTRADAY-INDEP-CYCLE-004 starts from `94c07abb07`, freezes both tracks
+before future-outcome access, and binds exact 2018--2023 CY-006/CY-008
+partitions. CY008's completed-session summaries are available at 15:30, so all
+signals enter no earlier than the next market open. The joined universe contains
+624,918 eligible rows, 4,820 symbols, and 267 weekly decisions. Post-2023 and
+CY-011 remain unread.
+
+Track A residualizes every intraday score, independently by date, against fixed
+cross-sectional ranks of causal daily return, daily range, and r20. Six of
+seven exact mechanisms are negative in both blocks and fail downside gates.
+Quiet VWAP acceptance alone passes: h5 excess is +0.0886% full, +0.1067% early,
+and +0.0729% late; severe-loss disadvantage is -0.288 percentage points and
+maximum raw-control correlation is 0.475. Its frozen portfolio replay fails
+closed on a prolonged suspension path for `000538.SZ` at 2018-11-01. This is a
+screen survivor with unresolved executable economics, not a strategy candidate.
+
+Track B promotes Industry Diffusion Acceleration. Its h20 excess is +0.9662%
+full, +0.7287% early, and +1.1705% late, with a -3.483 percentage-point
+severe-loss advantage. The QD-010-aware replay completes 2,617 trades with
++13.10% total return, -32.66% maximum drawdown, 0.217 Sharpe, 16.20% severe
+trades, 150.55x turnover, 39.4 mean positions, 9.4 mean industries, and CNY
+101.6m p10 capacity. It is `PROMISING_BUT_MIXED`, failing the fixed Sharpe and
+severe-loss candidate gates. Industry Leadership Acceleration is complementary
+screen information (+0.5363% full, positive both blocks) but its +1.525-point
+severe-loss disadvantage fails promotion. Residual mean reversion is
+chronologically mixed; liquidity recovery and down-market resilience fail.
+
+Two final serial runs are byte-identical across panel `0380e4b6...`, summary
+`4a48668e...`, equity `3f9e6d17...`, risk exits `04a0b53a...`, result
+`8c598305...`, and report `b6da64bc...`. The serial setting follows an observed
+1e-16 parallel industry-sum difference; no tolerance or rounding was added.
+
+Existing portfolio statuses do not change: Industry Diffusion and Low
+Idiosyncratic Volatility remain `PROMISING_BUT_MIXED`; the CHINEXT RS veto is
+frozen; the minute-volatility overlay stays downgraded; Industry Rotation stays
+closed; dispersion remains resource-parked.
+
+What market behavior are we still not studying? Objective stock-level support
+tests and recovery, auction microstructure, order-flow imbalance, order-book
+liquidity, fundamental revisions, feasible short legs, and independent temporal
+confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Quiet VWAP acceptance is a weak incremental entry-state lead with blocked
+economics; Industry Diffusion Acceleration is a new formulation inside the
+existing participation/diffusion archetype and remains mixed.

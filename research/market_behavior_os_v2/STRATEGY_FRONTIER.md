@@ -233,3 +233,20 @@ horizon, habitat, or CHINEXT combination search.
 | 5 | Dispersion relative value | New archetype but resource-parked | Wait for cheaper method/resources |
 | 6 | Corporate-action execution contract | Sufficient for both replays | Close engineering line |
 | 7 | Industry Rotation 3x5 | Economic and downside failure | Closed |
+
+## Post-cycle-004 candidate research portfolio
+
+| Rank | Asset | Current evidence | Research-capital decision |
+|---:|---|---|---|
+| 1 | Industry Diffusion h20 | +54.64%, 0.440 Sharpe; mixed downside | Independent confirmation only; no tune |
+| 2 | Low Idiosyncratic Volatility h20 | +15.73%, defensive severe profile, 0.239 Sharpe | Independent confirmation only; no combine |
+| 3 | Industry Diffusion Acceleration h20 | +13.10%, -32.66% DD, 0.217 Sharpe, 16.20% severe | `PROMISING_BUT_MIXED`; independent confirmation only |
+| 4 | Quiet VWAP acceptance h5 | Positive incremental screen in both blocks; replay blocked by long suspension | Separately freeze path extension or leave unresolved; no alpha change |
+| 5 | CHINEXT RS acceleration veto | Preserved admission component | Hold frozen; confirmation unavailable |
+| 6 | Dispersion relative value | Distinct archetype, resource-parked | Revisit only with cheaper bounded method/resources |
+| 7 | Objective stock support/recovery | Unmapped with accepted inputs | Next representation-first frontier if no independent data |
+
+The expected-information-value ranking favors independent confirmation when a
+lawful untouched block exists. Without one, objective support/recovery mapping
+offers more information per research cost than additional intraday composites,
+industry-leadership tuning, or another execution repair.

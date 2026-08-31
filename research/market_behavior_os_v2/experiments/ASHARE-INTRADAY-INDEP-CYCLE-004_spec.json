@@ -1,0 +1,79 @@
+{
+  "experiment_id": "ASHARE-INTRADAY-INDEP-CYCLE-004",
+  "status": "FROZEN_BOTH_TRACKS_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "frozen_at_checkpoint": "94c07abb07",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "allocation": {"track_a_intraday": 0.65, "track_b_independent": 0.35},
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "ca_contract_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
+    "ca_contract_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-CA-REPLAY-003_result.json", "sha256": "ed46bef9a546ab03c5ad56bf9447be8aec2bf21c85e21395395126df806b9ec0"},
+    "ca_contract_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py", "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"}
+  },
+  "pit_contract": {
+    "decision_time": "15:30:00 Asia/Shanghai after the completed daily minute summary is available",
+    "earliest_entry": "next market-session open; never signal-bar or same-session fill",
+    "required": ["hard_valid=true", "available_at<=decision_at", "snapshot_id present", "CY006 and CY008 symbol/trade_date identity"],
+    "corporate_actions": "reuse ASHARE-CA-REPLAY-003 unchanged",
+    "screen_cost_per_side": 0.002
+  },
+  "universe": {
+    "frequency": "every fifth market session after 120 causal sessions",
+    "minimum_prior_20_session_average_amount_cny": 50000000,
+    "required": ["non-ST", "currently tradable", "120 consecutive valid causal steps", "valid PIT industry"]
+  },
+  "track_a": {
+    "fixed_daily_controls": ["same-date cross-sectional rank of causal daily return", "same-date cross-sectional rank of (high-low)/preclose", "same-date cross-sectional rank of r20"],
+    "marginalization": "each raw intraday score is cross-sectionally ranked and residualized by OLS against the three fixed daily-control ranks independently on each decision date; selection uses the residual only",
+    "families": [
+      {"id": "vwap_acceptance", "mechanism": "completed-session demand acceptance above VWAP", "raw_score": "close_vs_vwap", "horizon": 5},
+      {"id": "closing_acceptance", "mechanism": "late-session demand", "raw_score": "closing_30m_return", "horizon": 5},
+      {"id": "opening_weakness_recovery", "mechanism": "early supply absorbed by the close", "raw_score": "closing_30m_return-opening_30m_return, conditional on opening<0 and closing>0", "horizon": 5},
+      {"id": "late_volume_confirmed_demand", "mechanism": "late demand confirmed by participation", "raw_score": "mean ranks(close_vs_vwap, closing_30m_return, last_hour_volume_share)", "horizon": 5},
+      {"id": "intraday_volatility_contraction", "mechanism": "recent supply/demand conflict contraction", "raw_score": "-log(realized_volatility / prior-five-session mean realized_volatility)", "horizon": 5},
+      {"id": "relative_intraday_strength", "mechanism": "stock demand versus same-industry peers", "raw_score": "close_vs_vwap minus same-date industry leave-one-out mean, industry n>=6", "horizon": 5},
+      {"id": "quiet_vwap_acceptance", "mechanism": "VWAP acceptance without high intraday conflict", "raw_score": "mean ranks(close_vs_vwap, -realized_volatility)", "horizon": 5}
+    ],
+    "maximum_executable_promotions": 2
+  },
+  "track_b": {
+    "families": [
+      {"id": "industry_leadership_acceleration", "mechanism": "improving industry leadership", "raw_score": "industry leave-one-out r20 minus its five-session lag", "horizon": 20},
+      {"id": "industry_diffusion_acceleration", "mechanism": "broadening industry participation", "raw_score": "industry leave-one-out positive-r20 fraction minus its five-session lag", "horizon": 20},
+      {"id": "residual_mean_reversion_5", "mechanism": "short-lived stock underperformance versus peers", "raw_score": "-(stock r5 - industry leave-one-out r5)", "horizon": 5},
+      {"id": "liquidity_recovery", "mechanism": "turnover withdrawal followed by positive demand recovery", "raw_score": "current amount/prior-five mean minus prior-five mean/prior-twenty mean, conditional on daily return>0", "horizon": 5},
+      {"id": "down_market_resilience", "mechanism": "relative demand on adverse market days", "raw_score": "stock daily return minus market median, conditional on market median<0", "horizon": 5}
+    ],
+    "maximum_executable_promotions": 1
+  },
+  "screen": {
+    "names_per_family_date": 20,
+    "date_control_names": 20,
+    "date_control_seed": "004",
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {
+      "complete_positions_min": 500,
+      "decision_dates_each_block_min": 40,
+      "entry_executable_fraction_min": 0.90,
+      "full_mean_excess_strictly_positive": true,
+      "early_mean_excess_nonnegative": true,
+      "late_mean_excess_nonnegative": true,
+      "severe_loss_disadvantage_max": 0.01,
+      "median_candidates_per_date_min": 20,
+      "track_a_max_absolute_raw_daily_control_correlation": 0.80
+    },
+    "promotion_order": ["minimum of early and late excess descending", "full excess descending", "severe-loss advantage descending", "family id ascending"]
+  },
+  "executable_replay": {
+    "names_per_signal": 10,
+    "entry": "next executable market open",
+    "exit": "natural horizon under unchanged ASHARE-CA-REPLAY-003 risk-event contract",
+    "cost_per_side": 0.002,
+    "candidate_all_required": {"replay_complete": true, "entry_executable_fraction_min": 0.90, "total_return_strictly_positive": true, "sharpe_min": 0.50, "max_drawdown_min": -0.35, "severe_loss_fraction_max": 0.10, "terminal_positions": 0},
+    "promising_but_mixed_all_required": {"replay_complete": true, "total_return_strictly_positive": true, "sharpe_strictly_positive": true, "max_drawdown_min": -0.50, "terminal_positions": 0}
+  },
+  "information_roles": ["STANDALONE_ALPHA", "COMPLEMENTARY_INFORMATION", "RISK_INFORMATION", "CONDITIONAL_INFORMATION", "REDUNDANT_WITH_DAILY", "NO_USEFUL_EVIDENCE"],
+  "prohibited": ["post-2023 outcomes", "CY-011", "same-bar fills", "raw minute sequence models", "exact-minute window search", "large feature factory", "tuning preserved Industry Diffusion", "tuning or combining preserved Low Idiosyncratic Volatility", "reopening CHINEXT RS veto", "reopening minute-volatility overlay", "reopening Industry Rotation"]
+}

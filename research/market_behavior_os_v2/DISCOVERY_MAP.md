@@ -145,3 +145,25 @@ effects survive chronology; executability is unresolved rather than failed.
 
 The execution blocker is resolved for these paths. Neither mixed result permits
 parameter rescue or a strategy-candidate claim.
+
+## Stock-level intraday plus independent batch 004
+
+| Family | Frozen cheap-screen result | Final decision |
+|---|---|---|
+| Quiet VWAP acceptance | +0.0886% h5 full; +0.1067%/+0.0729% blocks; severe advantage 0.288 pp | Screen survivor; portfolio `BLOCKED_DATA_CONTRACT` on prolonged suspension |
+| VWAP acceptance | -0.2175% h5; both blocks negative; severe disadvantage +5.114 pp | Reject exact formulation |
+| Closing acceptance | -0.4178% h5; both blocks negative | Reject exact formulation |
+| Opening-weakness recovery | -0.2869% h5; both blocks negative | Reject exact formulation |
+| Late-volume-confirmed demand | -0.4629% h5; both blocks negative | Reject exact formulation |
+| Intraday-volatility contraction | -0.2821% h5; both blocks negative | Reject exact formulation; does not reopen overlay |
+| Relative intraday strength | -0.2774% h5; both blocks negative | Reject exact formulation |
+| Industry Diffusion Acceleration | +0.9662% h20; +0.7287%/+1.1705% blocks; severe advantage 3.483 pp | `PROMISING_BUT_MIXED`; replay +13.10%, -32.66% DD, 0.217 Sharpe, 16.20% severe |
+| Industry Leadership Acceleration | +0.5363% h20; +0.6126%/+0.4709% blocks; severe disadvantage 1.525 pp | `COMPLEMENTARY_INFORMATION`; no replay |
+| Residual mean reversion h5 | +0.0402%; -0.2059%/+0.2531% blocks; downside fails | `CONDITIONAL_INFORMATION`; no replay |
+| Liquidity recovery | -0.1119% h5; both blocks negative | Reject exact formulation |
+| Down-market resilience | -0.8385% h5; both blocks negative; severe disadvantage +14.329 pp | Reject exact formulation |
+
+The six negative Track-A results apply only to their frozen CY008 summary
+representations after fixed daily controls; they do not reject broader support,
+absorption, or acceptance research families. No raw minute sequence or exact
+minute-window search was run.

@@ -1947,3 +1947,41 @@ Rotation. Preserve both mixed leads for genuinely independent confirmation,
 which is currently unavailable: 2018--2023 is consumed, post-2023 remains
 quarantined/unread, and CY-011 remains unread. Frozen CHINEXT components do not
 change.
+
+## Latest authoritative handoff — intraday and independent cycle 004
+
+Resume after the commit containing ASHARE-INTRADAY-INDEP-CYCLE-004; its starting
+checkpoint is `94c07abb07`. Do not restart or tune its 12-family screen. Exact
+CY-006/CY-008 2018--2023 inputs are bound; 624,918 eligible rows across 267
+weekly dates were used. CY008 signals are available at 15:30 and enter at the
+next market open. Post-2023 and CY-011 remain unread.
+
+Quiet VWAP acceptance is the only intraday survivor after same-date
+residualization against daily return, daily range, and r20: +0.0886% h5 full
+excess, positive in both blocks, with slightly better severe-loss incidence.
+Its portfolio replay is `BLOCKED_DATA_CONTRACT` because a selected `000538.SZ`
+lot remains suspended beyond the unchanged bounded market-row path at
+2018-11-01. Do not treat partial economics as performance, relax the contract,
+or replace the name. A future attempt must separately freeze a general
+long-suspension path extension while holding the alpha and portfolio rule fixed.
+
+Industry Diffusion Acceleration is `PROMISING_BUT_MIXED`: +13.10% total,
+-32.66% maximum drawdown, 0.217 Sharpe, 16.20% severe trades, and 150.55x
+turnover after 14 pre-effective QD-010 exits. It fails the fixed Sharpe and
+severe-loss candidate gates. Industry Leadership Acceleration is complementary
+screen information but fails the severe-loss screen gate; residual mean
+reversion is mixed by chronology. All other exact cycle-004 formulations fail.
+
+Reproduction hashes are panel `0380e4b6...`, summary `4a48668e...`, equity
+`3f9e6d17...`, risk exits `04a0b53a...`, result `8c598305...`, and report
+`b6da64bc...`, identical on two final serial runs. Parallel construction was
+rejected after the first differing raw score was localized to a 1e-16 industry
+aggregation-order difference; no scientific value or rank changed.
+
+Preserve Industry Diffusion and Low Idiosyncratic Volatility as unchanged mixed
+leads. Preserve the CHINEXT RS veto, downgraded minute-volatility overlay,
+closed Industry Rotation line, and resource-parked dispersion. No combination,
+habitat, threshold, horizon, or weighting rescue is authorized. Highest value
+is genuinely independent confirmation if lawful data becomes available;
+otherwise map objective stock-level support/recovery semantics before testing
+usefulness.
