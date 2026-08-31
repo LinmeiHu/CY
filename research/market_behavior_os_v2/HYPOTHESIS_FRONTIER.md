@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Do the seven stable full-market objective-crossing levels have portable economic return/downside meaning, and do de-clustered up/down crossings add information beyond current level? | Very high | Very high | Frozen 11,296-cell PIT/action-coordinate response domain; exact event and null contract | Very high | Medium-high | ACTIVE_MKT_BREAKOUT_ECON_001 |
+| 1 | Does the supported formation-depth tail-risk state incrementally alter CHINEXT V1 opportunity, failure, realization, or right-tail outcomes for the same frozen strategy process? | Very high | Medium | Reuse consumed HAB-CHX-001 candidate/cycle outcomes and exact CHINEXT_BOARD state; CY-011 locked | Very high | Medium | ACTIVE_MAP_HAB_CHX_FORMDEPTH_001 |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -395,3 +395,10 @@ effects, then de-clustered up/down event increments beyond 0.05-caliper current-
 level controls, then only qualifying candidates receive fixed confound and
 placebo audits. No threshold, horizon, direction, match, or score rescue is
 permitted. Strategy-habitat research remains closed until an economic gate passes.
+
+MKT-BREAKOUT-ECON-001 passes exactly one economic gate: formation depth is a
+portable downside/tail-risk level after fixed controls and placebo. It has no
+terminal-return claim, and its up/down crossings are not estimable at the frozen
+episode floor. The active frontier therefore moves—without a rule—to a separately
+frozen formation-depth x CHINEXT V1 habitat test. Use direct candidate/cycle
+outcomes and minimum continuous controls; do not infer a 0.50/0.80 strategy gate.

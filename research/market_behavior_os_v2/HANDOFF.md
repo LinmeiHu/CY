@@ -2,6 +2,31 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-BREAKOUT-ECON-001
+
+The frozen economic estimator completes twice with identical panel `314a5d39...`,
+level audit `658542de...`, year audit `dd03d9e7...`, episode audit `1f34aedf...`,
+transition audit `ec31207b...`, placebo `3174f37d...`, conditional audit
+`e573e4b0...`, result `0aa68e75...`, and report `2015cbf6...`.
+
+Formation depth is the sole supported market state, specifically a downside/
+tail-risk level. Its h=3 high-minus-low adverse-excursion effect is -0.011116;
+PIT/raw rho are -0.1805/-0.1838. All cells, raw/PIT years, leave-one-year-out,
+neighbor horizons, and nonoverlap phases retain the negative sign. Placebo q is
+0.008706 and fixed-control partial rho is -0.1399 in the same direction in all
+eight cells and both blocks. Terminal return does not pass.
+
+Closing rejection depth is not promoted: its unconditioned downside result is
+portable but control-adjusted rho falls to -0.0652 below the frozen floor. The
+other five roles miss economic size/rho. All up/down transition effects remain
+not estimable under the original episode support floor, not zero.
+
+The next action is a new, separately frozen formation-depth x CHINEXT V1 habitat
+study using already-consumed pre-2024 strategy evidence. Test opportunity,
+failure, realization, and right-tail endpoints incrementally at candidate/trade
+level where possible. Do not optimize CAGR, choose a state threshold, modify V1,
+read post-2023 data, or open CY-011.
+
 ## Latest checkpoint: MKT-BREAKOUT-ECON-DATA-001
 
 The next-frontier economic-response map `ef8ccea2...` and final data contract

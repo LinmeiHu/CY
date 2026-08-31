@@ -2107,3 +2107,52 @@ CHINEXT V1 remains unchanged and CY-011 remains locked.
 labels, 0.50 transition boundary, five-opposite-session episode, 0.05 local match,
 1/3/5 horizon family, annual/block/leave-one-year-out/nonoverlap gates, and fixed
 null. Do not inspect CHINEXT or strategy outcomes unless a role passes.
+
+## SYNTH-MKT-047 — after objective-crossing economic response
+
+### What was learned?
+
+Formation depth is the sole supported economic market state and only for downside
+path. A high versus low causal-PIT state precedes 0.011116 worse mean constituent
+adverse log excursion over three sessions. Continuous PIT/raw rho are
+-0.1805/-0.1838. Every fixed cell, block, year, leave-one-year-out, neighbor, and
+nonoverlap sign gate passes; placebo q is 0.008706. The relation remains after
+discovery-breadth and volatility controls at median partial rho -0.1399.
+
+Closing rejection depth is a useful negative control on promotion discipline: its
+unconditioned downside result is portable and non-null, but fixed-control rho
+falls to -0.0652 and it remains descriptive. Five other roles have no accepted
+economic response. Transition incrementality is not estimable under the frozen
+episode support rule and is not interpreted as absent.
+
+### What market behavior are we still not studying?
+
+We do not know whether formation depth changes the behavior of a fixed stock setup,
+whether it predicts opportunity scarcity or only adverse holding path, whether it
+changes false-breakout/severe-loss versus right-tail opportunity, or whether the
+broad downside response transfers outside CHINEXT. We still lack order flow,
+execution/capacity consequences, and independent post-2023 confirmation.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+Not yet. The state suggests a possible risk habitat or failure-veto role, but no
+stock-setup interaction, executable threshold, or strategy payoff difference has
+been established. It does not yet justify a defensive overlay or failed-breakout
+strategy. CHINEXT V1 remains unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** formation depth is a supported tail-risk state; the other
+  six levels remain descriptive and transition meaning is unresolved.
+- **Existing-strategy archaeology:** open one bounded incremental formation-depth
+  x CHINEXT V1 habitat study using already-consumed outcomes.
+- **Strategy invention:** risk-veto and reversal concepts remain inactive until a
+  setup-level failure mechanism survives.
+
+### Research Director decision
+
+`MAP_HAB_CHX_FORMDEPTH_001`. Freeze the exact CHINEXT_BOARD/ALL_STATUS formation-
+depth state, signal-time join, consumed evidence grade, direct candidate/cycle
+endpoints, minimum trend/breadth/volatility controls, temporal portability, and
+no-rule gate before inspecting strategy associations. If no incremental habitat
+survives, return to the next market-behavior frontier without threshold rescue.

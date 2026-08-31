@@ -143,3 +143,9 @@ and drops each security response table after aggregation. Both complete runs sta
 inside the frozen 1.5-GiB DuckDB, 3-GiB RSS, 8-GiB headroom, 10-GiB spill,
 20-GiB read, 20-minute, and 100-MiB durable-output ceilings. Durable artifacts are
 compact and byte-identical; no security-level response table is retained.
+
+MKT-BREAKOUT-ECON-001 reads only four compact bound panels totaling 11,296 joined
+response cells. Fixed level/year/phase, event/match, 200-shift placebo, and
+two-control residual audits complete in under the five-minute ceiling and below
+3 GiB RSS. Nine durable files remain under 100 MiB and reproduce byte-identically.
+No raw security/minute data, strategy outcome, post-2023 row, or CY-011 is read.

@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `MKT-BREAKOUT-ECON-001_FROZEN_READY_FOR_ECONOMIC_ESTIMATION`
-- `CURRENT_PRIMARY_FRONTIER`: preregistered level-versus-transition 1/3/5-session broad-market return/downside response to seven stable objective-crossing levels
+- `CURRENT_PHASE`: `MAP_HAB-CHX-FORMDEPTH-001_STRATEGY_HABITAT_CONTRACT`
+- `CURRENT_PRIMARY_FRONTIER`: formation-depth tail-risk market state x CHINEXT V1 opportunity/failure/realization/right-tail outcomes under fixed incremental controls
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,18 +19,18 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `97b381e41f4af0b6d49be8d143e14c5ca7459b3d`
-- `CURRENT_SCIENTIFIC_LAYER`: `ECONOMIC_MARKET_BEHAVIOR_DATA_DOMAIN_COMPLETE; ESTIMATION_NOT_YET_RUN`
+- `CURRENT_SCIENTIFIC_LAYER`: `ECONOMIC_MARKET_BEHAVIOR_PASSED_ONE_TAIL_RISK_STATE; STRATEGY_HABITAT_NOT_YET_TESTED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
-- `ECONOMIC_RESPONSE_STATUS`: `NOT_YET_ESTIMATED`
-- `LEVEL_VS_TRANSITION_STATUS`: `FROZEN_NOT_YET_ESTIMATED`
+- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_RESPONSE_SUPPORTED; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
+- `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
 - `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
-- `YEAR_BY_YEAR_RESULTS`: `NONE_YET`
-- `PLACEBO_RESULTS`: `NONE_YET`
-- `SUPPORTED_MARKET_STATES`: `NONE_YET`
-- `DESCRIPTIVE_ONLY_STATES`: seven parent levels retain descriptive status pending the economic gate
-- `STRATEGY_HABITAT_STATUS`: `NOT_OPEN; ECONOMIC_GATE_REQUIRED`
-- `CURRENT_MECHANISMS`: no economic mechanism established; seven stable descriptive state coordinates only
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does a fixed state level or a de-clustered crossing have portable return/downside meaning beyond current level?
+- `YEAR_BY_YEAR_RESULTS`: formation-depth downside sign is negative in all six raw years and all four PIT-supported years; all raw/PIT leave-one-year-out signs negative
+- `PLACEBO_RESULTS`: formation-depth level-family BH q=0.008706; closing-rejection q also passes but its fixed-control gate fails
+- `SUPPORTED_MARKET_STATES`: `formation_depth` as a downside/tail-risk level only
+- `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
+- `STRATEGY_HABITAT_STATUS`: `OPEN_FOR_SEPARATELY_FROZEN_FORMATION_DEPTH_X_CHINEXT_V1_TEST; NOT_ESTABLISHED`
+- `CURRENT_MECHANISMS`: unusually deep same-day broad objective-prior-high formation precedes worse broad constituent downside; no return or transition mechanism established
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does the formation-depth tail-risk state incrementally change otherwise comparable CHINEXT V1 opportunity, failure, realization, or right-tail behavior?
 
 ## Scope correction installed
 
@@ -64,6 +64,30 @@ the final five 2023 event dates are ineligible; maximum response date is
 2023-12-29. Five scalar cases and 15 fields are exact. No state/outcome
 association, direction, role classification, strategy field, post-2023 row, or
 CY-011 field has been estimated or read.
+
+### MKT-BREAKOUT-ECON-001 economic response
+
+MKT-BREAKOUT-ECON-001 completes twice byte-identically and promotes exactly one
+of seven parent levels. High versus low formation depth has median session-3
+downside-response difference -0.011116, median PIT/raw Spearman -0.1805/-0.1838,
+the same negative sign in all eight cells, both blocks, all six raw years, all
+four PIT-supported years, every leave-one-year-out estimate, both neighboring
+horizons, and all nonoverlap phases. The level-family placebo BH q is 0.008706.
+After fixed discovery-breadth and realized-volatility controls, median partial
+rho remains -0.1399 with the negative sign in all eight cells and both blocks.
+It is a `TAIL_RISK_RESPONSE`, not a terminal-return state.
+
+Closing rejection depth has a -0.006791 downside tail contrast and passes the
+unconditioned portability/null gates, but its fixed-control partial rho is only
+-0.0652 versus the frozen 0.10 floor. It is `UNSTABLE_ECONOMIC_RESPONSE` and
+remains descriptive. The other five roles do not pass the economic-size/rho
+gate. Every up/down transition is `TRANSITION_NOT_ESTIMABLE_FIXED_SUPPORT`;
+causal PIT begins after the 504-observation warm-up and no direction reaches the
+fixed episode floors. This is not evidence of zero transition effect.
+
+The supported formation-depth state opens a separately preregistered CHINEXT V1
+habitat question only. It does not authorize a threshold gate, exposure change,
+entry veto, strategy rule, post-2023 access, or CY-011.
 
 ### MKT-TRND-001 semantic boundary
 
