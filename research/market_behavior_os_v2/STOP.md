@@ -130,3 +130,10 @@ Recovery and terminal remain diagnostic-only. This is positive mixed-path
 attribution, not an S1--S12 condition or strategy authorization. No STOP is
 active. Continue map-first with the compact exact trough-immediacy question;
 future trough fields remain prohibited as predictors.
+
+MKT-FORMDEPTH-IMMED-001 then finds no stable first-session trough-share shift.
+Its primary, block, supported-year, neighbor, and h5-phase gates fail. This is an
+ordinary negative timing result, not an S1--S12 condition and not a rejection of
+the accepted formation-depth downside family. No STOP is active. Close the exact
+timing branch and continue mechanism attribution after the resource-aware V2.3
+transition; future trough fields remain prohibited as predictors.

@@ -157,3 +157,10 @@ mechanical post-trough diagnostic and terminal response remains weak. The future
 trough and recovery cannot be known at the 15:30 decision clock. Do not infer a
 gap trade, buy-the-dip/recovery capture, stop placement, holding-period rule, or
 V1 modification from this attribution.
+
+MKT-FORMDEPTH-IMMED-001 also activates no prototype. The exact first-session
+trough share has no stable magnitude or time portability, and every trough field
+is future attribution. Do not infer imminent acceleration, an early-stop rule,
+an entry delay, a recovery trade, or any V1 modification. The formation-depth
+family remains market-mechanism research only while subgroup/shared-environment
+attribution is mapped.

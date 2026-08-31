@@ -2425,3 +2425,58 @@ semantics, h=3 primary/h=5 sole neighbor, two-sided direction/effect gates,
 accepted/rejected robustness, controls, blocks, phases, and no-predictor boundary
 before estimating association. Do not choose an offset, direction, horizon, or
 arm after results.
+
+## SYNTH-MKT-053 — after formation-depth trough immediacy
+
+### What was learned?
+
+Formation depth does not stably shift the adverse trough toward or away from the
+first future session under the exact frozen representation. H3 median PIT partial
+rho is -0.05435 versus the 0.10 absolute floor and h5 is -0.04016 versus 0.05.
+Although all eight cells, both closing arms, and the controlled tail-share gap
+are negative, the early block is +0.00719 and the late block -0.06406. Supported
+years split positive in 2020/2021 and negative in 2022/2023; only three of five
+h5 phases retain the primary sign.
+
+The result is `NO_STABLE_TROUGH_IMMEDIACY_SHIFT`. It closes only the exact
+first-session-versus-later timing representation. It does not weaken the accepted
+mixed pre-open and trough-session intraday depth mechanisms, reject the broader
+formation-depth family, or establish that timing has zero effect. Two runs are
+byte-identical and no raw, strategy, post-2023, or CY-011 data were read.
+
+### What market behavior are we still not studying?
+
+We still do not know whether formation-depth downside is a property of each
+crossing security's own overshoot, a shared date-wide crossing environment, or a
+concentration in industry, size, liquidity, and other same-day market-state
+subgroups. Repeated overnight weakening and early-versus-late trough-session
+intraday pressure remain economically meaningful but require separately frozen,
+non-mined definitions. Independent future time, minute-level post-close order
+flow, causal intervention, execution, and capacity also remain absent.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The exact timing result fails, the future trough is unknowable at decision
+time, terminal response remains weak, and closing rejection did not localize the
+effect. There is no imminent-acceleration signal, gap rule, delayed entry, stop,
+recovery capture, or V1 modification. Failed-breakout reversal and dip-recovery
+remain inactive.
+
+### Parallel-track awareness
+
+- **Market research:** continue formation-depth mechanism attribution as the sole
+  primary frontier after resource profiling and exact subgroup/domain mapping.
+- **Existing-strategy archaeology:** no V1 reopening; only already-consumed
+  pre-2024 evidence may be used in its separate lane.
+- **Strategy invention:** no archetype follows; retain a candidate funnel without
+  consuming new strategy outcomes.
+
+### Research Director decision
+
+`TRANSITION_TO_RESOURCE_AWARE_PARALLEL_OS_V2_3`. Push this exact clean checkpoint,
+profile the host, reconstruct the authoritative portfolio, and create isolated
+worker lanes from the resulting Director commit. Lane A must remain the only
+primary scientific frontier and map own-security/shared-date/subgroup formation-
+depth attribution before outcome estimation. Do not rescue trough timing, pivot
+to an unrelated family merely for novelty, or permit workers to write Director
+state.

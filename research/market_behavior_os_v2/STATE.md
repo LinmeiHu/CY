@@ -6,10 +6,10 @@ Updated 2026-08-31.
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
-- `RESEARCH_OS_VERSION`: `2.1`
+- `RESEARCH_OS_VERSION`: `2.3_TRANSITION_PENDING_CLEAN_CHECKPOINT`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-052_MAP_FORMATION_DEPTH_TROUGH_IMMEDIACY`
-- `CURRENT_PRIMARY_FRONTIER`: determine whether deeper formation shifts the fixed-horizon adverse trough toward the first future session or delays it within the accepted three/five-session path
+- `CURRENT_PHASE`: `SYNTH-MKT-053_TRANSITION_TO_RESOURCE_AWARE_PARALLEL_OS_V2_3`
+- `CURRENT_PRIMARY_FRONTIER`: after the clean MKT-FORMDEPTH-IMMED-001 checkpoint, continue formation-depth mechanism attribution by separating own-security/subgroup structure from shared-date environment without arbitrary feature mining
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,7 +19,7 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `5b68cbb7f2249d85c16b4fecca17368def71afda`
-- `CURRENT_SCIENTIFIC_LAYER`: `FORMATION_DEPTH_DOWNSIDE_HAS_MIXED_PREOPEN_AND_TROUGH_SESSION_INTRADAY_PATH; RECOVERY_AND_TERMINAL_DIAGNOSTIC_ONLY`
+- `CURRENT_SCIENTIFIC_LAYER`: `FORMATION_DEPTH_DOWNSIDE_PATH_RESOLVED_MIXED; NO_STABLE_TROUGH_IMMEDIACY_SHIFT; MECHANISM_ATTRIBUTION_REMAINS_OPEN; NO_STRATEGY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,8 +29,8 @@ Updated 2026-08-31.
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes worse cumulative pre-open path to the trough and worse trough-session open-to-low movement among crossing securities; both closing arms pass, low-to-horizon recovery rises mechanically, and terminal return remains weak
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does deeper formation make the adverse trough more likely to occur on the first future session rather than later within h=3/h=5?
+- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes worse cumulative pre-open and trough-session intraday paths among crossers; exact trough timing does not stably shift, recovery is mechanical, terminal response is weak, and no strategy archetype follows
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is the formation-depth adverse path broad across crossing securities after individual overshoot control, or concentrated by industry, size, liquidity, and other same-day market-state absorption?
 
 ## Scope correction installed
 
@@ -228,6 +228,26 @@ recovery has h=3 rho +0.39099 and gap +0.01258 but is mechanically complementary
 and diagnostic-only. Terminal rhos remain -0.02886/-0.04663/-0.05263. The result
 does not establish a tradable gap, recovery capture, execution, causality,
 habitat, or strategy rule.
+
+### MKT-FORMDEPTH-IMMED-001 trough immediacy
+
+The compact two-sided map freezes only first-session trough share at h=3 with
+h=5 as the sole neighbor. No offset, direction, cutoff, mean timing, or favorable
+arm can be selected after results. The response is derived from exact bound
+counts and remains future attribution only.
+
+The result is `NO_STABLE_TROUGH_IMMEDIACY_SHIFT`. H3 median PIT partial rho is
+-0.05435 versus the frozen absolute 0.10 floor; h5 is -0.04016 versus 0.05.
+All eight cells and both closing arms are negative, and the tail share gap is
+-0.03357, but the early block is +0.00719 while the late block is -0.06406.
+2020/2021 year medians are positive and 2022/2023 negative; only three of five
+h5 phases share the primary sign. Primary, blocks, years, neighbor, and h5 phase
+gates fail. Two runs are byte-identical.
+
+This closes exact first-session-versus-later trough timing without testing other
+offsets or thresholds. Formation depth relates to depth through mixed daily-bar
+routes, not a stable advance/delay of the trough under this design. There is no
+imminent-acceleration, prediction, execution, habitat, or strategy claim.
 
 ### MKT-TRND-001 semantic boundary
 

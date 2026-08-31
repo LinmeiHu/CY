@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does deeper formation shift the earliest adverse trough to the first future session rather than later within the fixed h=3/h=5 path? | High | High | Exact first-offset trough counts already exist in the bound path panel; compact data only and no strategy outcomes | Very high | Medium; direction must be two-sided and h=3/h=5 fixed before estimates | ACTIVE_MAP_FORMATION_DEPTH_TROUGH_IMMEDIACY |
+| 1 | Is formation-depth downside broad across crossers after own-security overshoot control, or concentrated by industry, size, liquidity, and other same-day state absorption? | High | High | Governed pre-2024 crosser coordinate and same-day controls exist; exact subgroup/domain audit required before response | Very high | Medium-high; groups and controls must be frozen before outcomes and sparse cells must fail closed | ACTIVE_V2_3_MECHANISM_MAP_AFTER_CLEAN_CHECKPOINT |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -440,3 +440,12 @@ terminal response remains weak. The next bounded question is trough immediacy,
 not another component split: test exact first-session trough share at h=3 with
 h=5 as its sole neighbor under a two-sided preregistered direction. Do not call
 the known future trough an entry or exit signal.
+
+MKT-FORMDEPTH-IMMED-001 closes that exact timing question. H3 and h5 partial rhos
+are only -0.05435 and -0.04016, the time blocks disagree, 2020/2021 oppose
+2022/2023, and h5 phase stability fails. Consistently negative cells, closing
+arms, and tail gap cannot rescue the all-required gate. The next primary frontier
+remains inside formation-depth mechanism attribution: freeze whether the adverse
+path is shared date-wide after own-security overshoot control or concentrated in
+industry/size/liquidity/state subgroups. Do not search trough offsets, cutoffs,
+horizons, or promote future timing as a predictor.

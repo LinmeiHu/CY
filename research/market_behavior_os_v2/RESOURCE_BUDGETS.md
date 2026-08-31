@@ -195,3 +195,9 @@ MKT-FORMDEPTH-PATH-001 reads only the bound 11,336-row component panel and
 6,627-row fixed-control join. It completes in about one second under 3 GiB RSS
 and 50 MiB output; four artifacts reproduce byte-identically. No raw data,
 strategy field, post-2023 row, or CY-011 is read.
+
+MKT-FORMDEPTH-IMMED-001 reads only the bound 11,336-row component panel,
+attribution controls, and immutable predecessor results. It completes in seconds
+under the frozen single-process 3-GiB RSS, 8-GiB headroom, two-minute, and 25-MiB
+output ceilings. Four artifacts reproduce byte-identically. No raw data,
+strategy field, post-2023 row, or CY-011 is read.

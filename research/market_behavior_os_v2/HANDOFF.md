@@ -2,7 +2,33 @@
 
 Updated 2026-08-31.
 
-## Latest checkpoint: MKT-FORMDEPTH-PATH-DATA-001 / PATH-001
+## Latest checkpoint: MKT-FORMDEPTH-IMMED-001
+
+The frozen trough-immediacy map `f065fb49...` and spec `912021f6...` use only
+first-session trough share at h=3 with h=5 as the sole neighbor. Direction is
+two-sided; no alternative offset, cutoff, mean timing, arm, or horizon was
+inspected. Future trough timing is response attribution only and is unavailable
+at the 15:30 decision clock.
+
+Two runs reproduce byte-identically: panel `53dea212...`, response audit
+`b85ef8a4...`, result `5024f847...`, and report `d7de8cfa...`. Classification is
+`NO_STABLE_TROUGH_IMMEDIACY_SHIFT`. H3 median PIT partial rho is -0.05435 versus
+the frozen 0.10 absolute floor; h5 is -0.04016 versus 0.05. All eight cells and
+both closing arms are negative and the controlled tail-share gap is -0.03357,
+but the early block is +0.00719, the late block -0.06406, 2020/2021 are positive,
+2022/2023 negative, and only three of five h5 phases share the primary sign.
+
+Close the exact first-session-versus-later timing branch without rescue. The
+accepted mixed pre-open/intraday depth result remains intact: it is depth, not a
+stable advance or delay of the trough under this design. No acceleration,
+prediction, execution, habitat, V1 modification, or new strategy follows.
+
+After this clean checkpoint, activate Research OS V2.3 from its exact Director
+commit. First profile the host and reconstruct the authoritative portfolio, then
+continue formation-depth mechanism attribution as the sole primary scientific
+frontier. Worker lanes must remain isolated and cannot write Director state.
+
+## Prior checkpoint: MKT-FORMDEPTH-PATH-DATA-001 / PATH-001
 
 The frozen timing map `35943f76...` and data contract `82cc985a...` decompose the
 earliest fixed-horizon trough into pre-open path, trough-session intraday move,
