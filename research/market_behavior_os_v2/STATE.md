@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-051_MAP_FORMATION_DEPTH_ADVERSE_PATH_TIMING`
-- `CURRENT_PRIMARY_FRONTIER`: determine whether the accepted formation-depth adverse path arrives through next-session overnight gaps, post-open intraday downside, or temporary low excursions followed by recovery
+- `CURRENT_PHASE`: `SYNTH-MKT-052_MAP_FORMATION_DEPTH_TROUGH_IMMEDIACY`
+- `CURRENT_PRIMARY_FRONTIER`: determine whether deeper formation shifts the fixed-horizon adverse trough toward the first future session or delays it within the accepted three/five-session path
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,9 +19,9 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `5b68cbb7f2249d85c16b4fecca17368def71afda`
-- `CURRENT_SCIENTIFIC_LAYER`: `CROSSING_SECURITY_FORMATION_DEPTH_DOWNSIDE_SURVIVES_BOTH_CLOSING_STATES; NO_REJECTION_LOCALIZATION_OR_TERMINAL_REVERSAL`
+- `CURRENT_SCIENTIFIC_LAYER`: `FORMATION_DEPTH_DOWNSIDE_HAS_MIXED_PREOPEN_AND_TROUGH_SESSION_INTRADAY_PATH; RECOVERY_AND_TERMINAL_DIAGNOSTIC_ONLY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
-- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSING_ARM_BUT_NOT_TO_CLOSING_REJECTION; ACCEPTED_AND_REJECTED_ARMS_PASS; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
+- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
 - `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
 - `YEAR_BY_YEAR_RESULTS`: aggregate and crossing-arm formation-depth downside signs are negative in every PIT-supported year and leave-one-year-out estimate; noncrossing signs are also negative but its aggregate magnitude misses the frozen primary floor
@@ -29,8 +29,8 @@ Updated 2026-08-31.
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes materially worse future adverse path among crossing securities whether they close above or below the crossed level; closing rejection does not explain the topology, while terminal return remains diagnostic/weak
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does the formation-depth adverse path arrive as an overnight gap, post-open intraday downside, or a temporary low excursion that largely recovers by close?
+- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes worse cumulative pre-open path to the trough and worse trough-session open-to-low movement among crossing securities; both closing arms pass, low-to-horizon recovery rises mechanically, and terminal return remains weak
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does deeper formation make the adverse trough more likely to occur on the first future session rather than later within h=3/h=5?
 
 ## Scope correction installed
 
@@ -198,6 +198,36 @@ split; it does not prove the arms identical or causal. Terminal rhos remain weak
 (-0.0182/-0.0216/-0.0351 accepted and -0.0531/-0.0650/-0.0545 rejected) and
 diagnostic-only. No failed-breakout reversal, habitat, predictor, or rule is
 established; V1 remains closed.
+
+### MKT-FORMDEPTH-PATH-DATA-001 / PATH-001 adverse-path timing
+
+The timing map freezes an exact daily-bar trough decomposition before mapped
+future opens are constructed. For each h in {1,3,5}, the earliest minimum-low
+session is selected. The adverse excursion is decomposed into the cumulative
+pre-open path to that session plus its open-to-low residual; low-to-horizon-close
+recovery is terminal minus adverse. Only h=1 pre-open path is a literal overnight
+gap. Every future component is post-decision attribution, never a predictor.
+
+The data build passes twice byte-identically: 11,272 path-topology-complete cells,
+minimum 196 dates/cell-year, exact bound crossing/accepted/rejected/equality
+counts, finite components, and 15 scalar cases across 37 exact fields. The fixed
+economic domain remains 6,627 rows and minimum 826/cell. No component association,
+strategy field, post-2023 row, or CY-011 is read in the data build.
+
+PATH-001 classifies `MIXED_PREOPEN_AND_INTRADAY_DOWNSIDE_PATH`. The pre-open path
+passes at h=3 median PIT partial rho -0.26338, eight negative cells, block medians
+-0.19275/-0.27871, negative supported years/leave-one-year-out/neighbors/phases,
+tail residual gap -0.00957, and accepted/rejected h3 medians -0.18489/-0.27023.
+Its h=1 literal next-session gap association is weaker at -0.08187 but retains
+the required negative neighboring sign.
+
+The trough-session intraday component passes more strongly: h=3 rho -0.40643,
+eight negative cells, block medians -0.17703/-0.42772, every fixed sign challenge,
+tail gap -0.00729, and accepted/rejected medians -0.36426/-0.34708. Post-trough
+recovery has h=3 rho +0.39099 and gap +0.01258 but is mechanically complementary
+and diagnostic-only. Terminal rhos remain -0.02886/-0.04663/-0.05263. The result
+does not establish a tradable gap, recovery capture, execution, causality,
+habitat, or strategy rule.
 
 ### MKT-TRND-001 semantic boundary
 

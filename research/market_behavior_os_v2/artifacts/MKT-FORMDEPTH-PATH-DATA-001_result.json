@@ -1,0 +1,91 @@
+{
+  "claim": "Adverse-path response-component domain adequacy only; no timing mechanism, causality, prediction, execution, payoff, habitat, or strategy.",
+  "component_association_computed": false,
+  "cy011_read": false,
+  "experiment_id": "MKT-FORMDEPTH-PATH-DATA-001",
+  "future_components_used_as_predictors": false,
+  "hashes": {
+    "count_audit_sha256": "e02c952d788a53a6772edefbf00f16af7cfcb12c588ca4c452462830bfa40a16",
+    "panel_sha256": "3aa479dbb1a9e54957bad40a79b8113ba98b7f07c1a7a6f5b6395709ec0f530b",
+    "runner_sha256": "f2d2ca0d6a61a873c90f9f9e52fa650a879b71a545f360048f18f548bf4f3ccc",
+    "scalar_audit_sha256": "163f92d71ff1f46d8a857ca250c80640eb3b32900e306c94090cf92c6a2bb2c4",
+    "spec_sha256": "8c222329448443ce2079df9a8b7fe25016fcf321abd61e8354adfb8f199e2854"
+  },
+  "outcome_access": "FUTURE_PRE2024_CROSSER_OPEN_LOW_CLOSE_COMPONENT_CONSTRUCTION_ONLY",
+  "population": {
+    "count_audit_rows": 48,
+    "panel_rows": 11336
+  },
+  "post_2023_read": false,
+  "predictor_audit": {
+    "dates": 1417,
+    "denominators": [
+      "ALL_STATUS",
+      "NON_ST"
+    ],
+    "duplicate_keys": 0,
+    "first_date": "2018-03-06",
+    "last_date": "2023-12-29",
+    "rows": 11336,
+    "snapshot_ids": [
+      "CY-006:de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    ],
+    "views": [
+      "ALL_A",
+      "CHINEXT_BOARD",
+      "SH_A",
+      "SZ_A"
+    ]
+  },
+  "resource_contract": {
+    "compressed_read_ceiling_gib": 20,
+    "daily_memory_limit_gib": 1.5,
+    "duckdb_threads": 1,
+    "durable_output_ceiling_mib": 100,
+    "filesystem_headroom_fraction": 0.25,
+    "peak_rss_ceiling_gib": 3,
+    "security_level_durable_output": false,
+    "single_process": true,
+    "system_memory_headroom_floor_gib": 8,
+    "temporary_spill_ceiling_gib": 10,
+    "two_byte_identical_runs": true,
+    "wall_clock_ceiling_minutes": 20
+  },
+  "response_domain": {
+    "component_fields_finite": true,
+    "exact_bound_arm_counts_and_exhaustion": true,
+    "minimum_dates_gate": true,
+    "minimum_path_complete_dates_per_cell_year": 196,
+    "path_topology_complete_cells": 11272
+  },
+  "scalar_reconstruction": {
+    "all_exact": true,
+    "cases": 15,
+    "cases_per_arm": {
+      "accepted": 5,
+      "equal": 5,
+      "rejected": 5
+    },
+    "fields": 37
+  },
+  "source_audit": {
+    "duplicate_keys": 0,
+    "exchange_dates": 1457,
+    "first_date": "2018-01-02",
+    "hard_valid_ohlc_failures": 0,
+    "last_date": "2023-12-29",
+    "rows": 6155390,
+    "time_travel_rows": 0
+  },
+  "source_partitions": {
+    "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+    "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+    "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+    "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+    "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+    "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+  },
+  "status": "COMPLETE_ADVERSE_PATH_COMPONENT_DOMAIN_ADEQUACY",
+  "strategy_fields_read": false,
+  "timing_classification_computed": false
+}

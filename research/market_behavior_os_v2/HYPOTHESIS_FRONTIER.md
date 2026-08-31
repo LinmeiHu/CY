@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Does accepted formation-depth adverse path arrive through next-session overnight gaps, post-open intraday downside, or temporary low excursions followed by close recovery? | Very high | High | Exact governed CY-006 future open/low/close action coordinates exist; reuse the accepted crossing cohorts and no strategy outcomes | Very high | Medium; component identities must be frozen before estimates | ACTIVE_MAP_FORMATION_DEPTH_ADVERSE_PATH_TIMING |
+| 1 | Does deeper formation shift the earliest adverse trough to the first future session rather than later within the fixed h=3/h=5 path? | High | High | Exact first-offset trough counts already exist in the bound path panel; compact data only and no strategy outcomes | Very high | Medium; direction must be two-sided and h=3/h=5 fixed before estimates | ACTIVE_MAP_FORMATION_DEPTH_TROUGH_IMMEDIACY |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -432,3 +432,11 @@ market-only and decomposes the accepted response in time: overnight gap,
 post-open intraday downside, and low-to-close recovery. Freeze component
 identities and conservation before estimates; do not choose a favorable path
 component or infer executability from a future low.
+
+MKT-FORMDEPTH-PATH-001 finds a mixed path: cumulative pre-open-to-trough and
+trough-session intraday downside both pass across all fixed challenges and both
+closing arms. Recovery is strongly positive but mechanically diagnostic, and
+terminal response remains weak. The next bounded question is trough immediacy,
+not another component split: test exact first-session trough share at h=3 with
+h=5 as its sole neighbor under a two-sided preregistered direction. Do not call
+the known future trough an entry or exit signal.

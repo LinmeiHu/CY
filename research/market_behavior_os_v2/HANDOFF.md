@@ -2,6 +2,34 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-FORMDEPTH-PATH-DATA-001 / PATH-001
+
+The frozen timing map `35943f76...` and data contract `82cc985a...` decompose the
+earliest fixed-horizon trough into pre-open path, trough-session intraday move,
+and post-trough recovery under the accepted action coordinate. Future components
+are attribution only. At h=1 the pre-open component is a literal next-session
+gap; at h=3/5 it is a cumulative path to the trough session.
+
+The outcome-blind data build passes twice byte-identically: panel `3aa479db...`,
+count `e02c952d...`, scalar `163f92d7...`, result `bb44ed06...`, report
+`727b180a...`. It retains 11,272 complete cells, minimum 196 dates/cell-year,
+exact bound arm conservation, and 15 cases across 37 exact fields. The later
+fixed-control join remains 6,627 rows, minimum 826/cell.
+
+PATH-001 also reproduces twice: panel `fa5e1aa0...`, audit `67aec4ff...`, result
+`2656aace...`, report `5bf50b88...`. Classification is
+`MIXED_PREOPEN_AND_INTRADAY_DOWNSIDE_PATH`. Pre-open h3 rho/gap are
+-0.26338/-0.00957; trough-session intraday are -0.40643/-0.00729. Both pass every
+gate and remain negative within accepted and rejected closing arms. The h=1
+literal overnight-gap rho is only -0.08187 but satisfies the frozen sign-only
+neighbor rule.
+
+Recovery h3 rho is +0.39099 and terminal h3 remains -0.04663; both are
+diagnostic-only and cannot promote. Do not infer recovery capture, tradable gap,
+entry/exit timing, or a strategy. The next market-only question should test
+trough immediacy using the already-bound first-offset counts at h=3 with h=5 as
+the fixed neighbor. V1 remains closed; CY-011 stays locked.
+
 ## Latest checkpoint: MKT-FORMDEPTH-CLOSE-DATA-001 / CLOSE-001
 
 The frozen closing-state map `4a5fd599...` and data contract `50b3c48e...`

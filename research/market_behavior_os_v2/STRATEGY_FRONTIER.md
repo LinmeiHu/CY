@@ -150,3 +150,10 @@ associations remain weak. Failed-breakout reversal is therefore not promoted to
 an active archetype, and rejected closes may not be selected as a trigger from
 this evidence. The adverse-path timing decomposition is market attribution only;
 it cannot authorize an entry, exit, veto, exposure rule, or V1 reopening.
+
+MKT-FORMDEPTH-PATH-001 also activates no prototype. Both cumulative pre-open and
+trough-session intraday components pass, while strong low-to-close recovery is a
+mechanical post-trough diagnostic and terminal response remains weak. The future
+trough and recovery cannot be known at the 15:30 decision clock. Do not infer a
+gap trade, buy-the-dip/recovery capture, stop placement, holding-period rule, or
+V1 modification from this attribution.

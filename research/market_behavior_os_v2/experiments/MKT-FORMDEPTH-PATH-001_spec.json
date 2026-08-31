@@ -1,0 +1,170 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-PATH-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_ADVERSE_PATH_TIMING_ESTIMATES",
+  "question": "Is accepted formation-depth adverse path carried by the pre-open path to the trough session, the trough-session intraday move, or both?",
+  "outcome_access": "EXISTING_PRE2024_CROSSER_PATH_COMPONENTS_ONLY",
+  "inputs": {
+    "timing_map": {
+      "path": "research/market_behavior_os_v2/FORMATION_DEPTH_ADVERSE_PATH_TIMING_MAP.md",
+      "sha256": "35943f76b0342fe47b6aaf9116a8a81fc6870052dcc595111298808e2c61c089"
+    },
+    "path_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-DATA-001_panel.csv",
+      "sha256": "3aa479dbb1a9e54957bad40a79b8113ba98b7f07c1a7a6f5b6395709ec0f530b"
+    },
+    "path_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-DATA-001_result.json",
+      "sha256": "bb44ed06fd4c03fcf56b329874e74efabc836eef2ce087ac67cc673a5c25a528"
+    },
+    "attribution_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+      "sha256": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d"
+    },
+    "attribution_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+      "sha256": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231"
+    },
+    "accepted_attribution_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+      "sha256": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6"
+    },
+    "accepted_topology_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_prop_001.py",
+      "sha256": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c"
+    },
+    "closing_topology_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-001_result.json",
+      "sha256": "5de99cf62334578b258d5a2be6cfa092f5161e491892795e3a43502b06bae2f9"
+    }
+  },
+  "activation": {
+    "required_path_status": "COMPLETE_ADVERSE_PATH_COMPONENT_DOMAIN_ADEQUACY",
+    "required_attribution_classification": "INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK",
+    "required_closing_classification": "ACCEPTED_AND_REJECTED_CROSSER_DOWNSIDE",
+    "expected_path_panel_rows": 11336,
+    "expected_path_topology_complete_rows": 11272,
+    "expected_complete_five_control_rows": 6627,
+    "minimum_complete_five_control_rows": 6000,
+    "minimum_complete_five_control_rows_per_cell": 826,
+    "expected_groups": 8,
+    "joint_available_at": "15:30 Asia/Shanghai",
+    "response_begins": "next exchange session"
+  },
+  "state": {
+    "absolute": "breakout_formation_depth20",
+    "pit": "breakout_formation_depth20_pit_3y_pct",
+    "pit_low_maximum": 0.2,
+    "pit_high_minimum": 0.8
+  },
+  "controls": [
+    "breadth_net_new_high_low60_pit_3y_pct",
+    "realized_volatility_median20_pit_3y_pct",
+    "median_signed_limit_utilization",
+    "open_close_log_return__median",
+    "intraday_log_range__median"
+  ],
+  "channels": {
+    "PREOPEN_PATH_DOWNSIDE": "crossing_preopen_path_to_trough_h{h}_mean",
+    "TROUGH_SESSION_INTRADAY_DOWNSIDE": "crossing_trough_session_intraday_h{h}_mean",
+    "POST_TROUGH_RECOVERY_DIAGNOSTIC": "crossing_post_trough_recovery_h{h}_mean"
+  },
+  "closing_arm_robustness": {
+    "arms": [
+      "accepted",
+      "rejected"
+    ],
+    "components": [
+      "preopen_path_to_trough",
+      "trough_session_intraday"
+    ],
+    "horizon": 3,
+    "required_sign": "negative median PIT partial rho in each arm"
+  },
+  "response": {
+    "primary_horizon": 3,
+    "neighbor_horizons": [
+      1,
+      5
+    ],
+    "classifying_channels": [
+      "PREOPEN_PATH_DOWNSIDE",
+      "TROUGH_SESSION_INTRADAY_DOWNSIDE"
+    ],
+    "diagnostic_channels": [
+      "POST_TROUGH_RECOVERY_DIAGNOSTIC",
+      "crossing_terminal_log_return"
+    ],
+    "diagnostics_cannot_rescue": true
+  },
+  "scopes": {
+    "blocks": {
+      "A": [
+        2018,
+        2019,
+        2020
+      ],
+      "B": [
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "pit_supported_years": [
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "leave_one_supported_year_out": true,
+    "nonoverlap_h3_phases": 3,
+    "nonoverlap_h5_phases": 5
+  },
+  "component_gates": {
+    "maximum_median_h3_partial_rho": -0.1,
+    "minimum_negative_cells": 6,
+    "maximum_each_block_partial_rho": -0.05,
+    "all_supported_years_negative": true,
+    "all_leave_one_year_out_negative": true,
+    "h1_h5_negative": true,
+    "minimum_negative_h3_phases": 2,
+    "minimum_negative_h5_phases": 4,
+    "maximum_median_tail_residual_gap": -0.0025,
+    "accepted_and_rejected_h3_medians_negative": true
+  },
+  "classification_order": [
+    "MIXED_PREOPEN_AND_INTRADAY_DOWNSIDE_PATH",
+    "PREOPEN_PATH_LOCALIZED_DOWNSIDE",
+    "TROUGH_SESSION_INTRADAY_LOCALIZED_DOWNSIDE",
+    "ADVERSE_PATH_TIMING_NOT_RESOLVED"
+  ],
+  "classification_logic": {
+    "MIXED_PREOPEN_AND_INTRADAY_DOWNSIDE_PATH": "both classifying component channels pass",
+    "PREOPEN_PATH_LOCALIZED_DOWNSIDE": "only pre-open-path channel passes",
+    "TROUGH_SESSION_INTRADAY_LOCALIZED_DOWNSIDE": "only trough-session intraday channel passes",
+    "ADVERSE_PATH_TIMING_NOT_RESOLVED": "neither classifying component channel passes"
+  },
+  "resource_budget": {
+    "single_process": true,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 2,
+    "durable_output_ceiling_mib": 50,
+    "raw_data_read": false,
+    "two_byte_identical_runs": true
+  },
+  "prohibited_computations": [
+    "alternate trough tie, component identity, residual definition, state, PIT tail, response horizon, arm, control, block, year, phase, gate, or classification",
+    "secondary quantile, component selection, recovery or terminal promotion, variable selection, state combination, placebo reuse, new null, or favorable subset",
+    "entry predictor, signal, threshold, veto, exposure, trade, fill, execution, P&L, habitat, reversal strategy, or strategy rule",
+    "raw security/minute data, post-2023 data, QD-004, CY-008, strategy outcome, or CY-011 access"
+  ],
+  "claim_boundary": "Adverse-path timing association decomposition only; no causal, predictive, executable, recovery, habitat, or strategy claim.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_response_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-PATH-001_timing.md"
+  ]
+}

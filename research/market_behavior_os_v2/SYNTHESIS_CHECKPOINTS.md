@@ -2368,3 +2368,60 @@ freeze exact action-coordinate open/low/close semantics, component identities,
 h=1/3/5 aggregation, arm use, controls, conservation/reconstruction, and the
 diagnostic-versus-classifying roles. Do not optimize a session, choose a favorable
 component, backdate future prices, or infer tradability from post-decision lows.
+
+## SYNTH-MKT-052 — after formation-depth adverse-path timing
+
+### What was learned?
+
+Formation-depth adverse path is mixed rather than localized to one daily-bar
+route. The cumulative pre-open path to the earliest h=3 trough passes at median
+PIT partial rho -0.26338 and controlled tail gap -0.00957. The trough-session
+open-to-low component passes more strongly at rho -0.40643 and gap -0.00729.
+Each has eight negative cells, both blocks, every supported year and leave-one-
+year-out estimate, both fixed neighbors, all required phases, and negative h=3
+medians inside accepted and rejected closing arms.
+
+The literal next-session gap is only the h=1 pre-open neighbor and has rho
+-0.08187; it was not promoted through a new magnitude gate. Post-trough recovery
+has rho +0.39099 and gap +0.01258, consistent with its mechanical identity as
+terminal minus adverse. It is diagnostic-only. Terminal rhos remain weak at
+-0.02886/-0.04663/-0.05263.
+
+The component data domain conserves the bound response arms exactly, retains
+11,272 complete cells and 6,627 fixed-control rows, reconstructs 15 cases across
+37 fields, and reproduces twice. Every future field remains post-decision
+attribution and is never used as a predictor.
+
+### What market behavior are we still not studying?
+
+We do not know whether the adverse trough becomes more immediate as formation
+depth rises or merely becomes deeper wherever it occurs. Exact first-session
+trough counts exist for h=3/h=5, but their association has not been estimated.
+We also still lack security-level own-depth versus shared-date decomposition,
+independent future time, minute-level future path attribution, and execution/
+capacity evidence.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. Mixed pre-open and intraday association plus strong mechanical recovery is
+not a tradable dip-recovery architecture. The future trough is unknowable at t,
+the literal h=1 gap is below the primary magnitude boundary, terminal response
+is weak, and no executable entry/exit or independent setup interaction exists.
+Failed-breakout reversal remains unactivated and V1 remains closed.
+
+### Parallel-track awareness
+
+- **Market research:** test two-sided trough immediacy using exact first-offset
+  share at h=3 and fixed h=5 neighboring confirmation.
+- **Existing-strategy archaeology:** no V1 reopening and no selection of future
+  low/recovery fields as vetoes or exits.
+- **Strategy invention:** no dip-recovery or gap strategy is active; the timing
+  response is attribution, not foresight.
+
+### Research Director decision
+
+`MAP_FORMATION_DEPTH_TROUGH_IMMEDIACY`. Freeze first-session-versus-later trough
+semantics, h=3 primary/h=5 sole neighbor, two-sided direction/effect gates,
+accepted/rejected robustness, controls, blocks, phases, and no-predictor boundary
+before estimating association. Do not choose an offset, direction, horizon, or
+arm after results.

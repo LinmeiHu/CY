@@ -123,3 +123,10 @@ support failed-breakout reversal. This is an ordinary mechanism-localization
 result, not an S1--S12 condition. No STOP is active. Continue map-first with
 formation-depth adverse-path timing decomposition before any execution or
 strategy-archetype inference.
+
+MKT-FORMDEPTH-PATH-DATA-001 passes exact component-domain gates and PATH-001
+finds both cumulative pre-open and trough-session intraday downside channels.
+Recovery and terminal remain diagnostic-only. This is positive mixed-path
+attribution, not an S1--S12 condition or strategy authorization. No STOP is
+active. Continue map-first with the compact exact trough-immediacy question;
+future trough fields remain prohibited as predictors.
