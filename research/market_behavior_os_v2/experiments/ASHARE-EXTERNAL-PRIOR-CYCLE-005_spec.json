@@ -1,0 +1,71 @@
+{
+  "experiment_id": "ASHARE-EXTERNAL-PRIOR-CYCLE-005",
+  "status": "FROZEN_ALL_TRACKS_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "356c0f37c1",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "inputs": {
+    "strategy_prior_map": {"path": "research/market_behavior_os_v2/STRATEGY_PRIOR_MAP.md", "sha256": "ee8122ddb0eb0d944a77f9f6f341ce13ed9ed5e73eb24daaf9c9194776088e2e"},
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "cycle004_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-INTRADAY-INDEP-CYCLE-004_result.json", "sha256": "8c5983051601d08a4a5b99282d0ba0e3f0284177106b2d90684c98b95ae68d2f"},
+    "ca_contract_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py", "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"}
+  },
+  "pit_execution_contract": {
+    "daily_decision_time": "15:00 Asia/Shanghai",
+    "minute_or_chip_decision_time": "15:30 Asia/Shanghai",
+    "earliest_entry": "next legal market-session open",
+    "required": ["hard_valid", "available_at<=decision_at", "snapshot_id", "next-bar execution", "T+1", "historical price limits", "suspensions", "QD-010 pre-effective exits", "20 bps each side"]
+  },
+  "common_universe": {
+    "minimum_prior_20_session_average_amount_cny": 50000000,
+    "required": ["non-ST", "currently tradable", "at least 252 consecutive causal sessions where the prior requires it", "valid PIT industry"]
+  },
+  "external_tests": [
+    {"id": "jt_momentum_12_1", "source_prior": "EXT-JT-MOM-001", "score": "causal r240 minus most recent r20", "rebalance_sessions": 20, "horizon_sessions": 120},
+    {"id": "gh_52_week_high", "source_prior": "EXT-GH-52W-001", "score": "current action-coordinate close divided by maximum action-coordinate high over prior 252 sessions", "rebalance_sessions": 20, "horizon_sessions": 120},
+    {"id": "industry_momentum_120", "source_prior": "EXT-MG-INDMOM-001", "score": "same-date PIT-industry leave-one-out mean causal r120", "rebalance_sessions": 20, "horizon_sessions": 120},
+    {"id": "max_lottery_20", "source_prior": "EXT-BCW-MAX-001", "score": "negative maximum causal daily stock return over prior 20 sessions", "rebalance_sessions": 20, "horizon_sessions": 20},
+    {"id": "intraday_reversal_5", "source_prior": "EXT-MIWA-INTRAREV-001", "score": "negative sum of causal open-to-close returns over five sessions", "rebalance_sessions": 5, "horizon_sessions": 5}
+  ],
+  "external_not_newly_tested": [
+    {"id": "amihud_illiquidity", "classification": "CANONICAL_REPLICATION_DEFERRED_NOT_SILENTLY_ADAPTED"},
+    {"id": "betting_against_beta", "classification": "A_SHARE_IMPLEMENTATION_CONFLICT"},
+    {"id": "pairs_trading", "classification": "A_SHARE_IMPLEMENTATION_CONFLICT"},
+    {"id": "residual_momentum", "classification": "DATA_UNAVAILABLE"},
+    {"id": "price_limit_delayed_discovery", "classification": "EXISTING_EXACT_FORMULATION_ADVERSE_NO_RERUN"}
+  ],
+  "internal_tests": [
+    {"id": "chip_overhang_clearance", "score": "negative chip mass strictly above current close divided by total chip mass", "rebalance_sessions": 5, "horizon_sessions": 20},
+    {"id": "chip_support_density", "score": "chip mass between 97 percent of current close and current close divided by total chip mass", "rebalance_sessions": 5, "horizon_sessions": 20},
+    {"id": "chip_cost_concentration", "score": "negative chip-volume-weighted standard deviation of log chip price divided by close", "rebalance_sessions": 5, "horizon_sessions": 20}
+  ],
+  "combination_tests": [
+    {"id": "max_lottery_plus_low_idio", "inputs": ["max_lottery_20", "low_idio_20"], "method": "equal average of same-date cross-sectional ranks", "rebalance_sessions": 20, "horizon_sessions": 20},
+    {"id": "diffusion_accel_plus_low_idio", "inputs": ["industry_diffusion_acceleration", "low_idio_20"], "method": "equal average of same-date cross-sectional ranks", "rebalance_sessions": 5, "horizon_sessions": 20}
+  ],
+  "screen": {
+    "top_names": 20,
+    "date_control_names": 20,
+    "control_seed": "005",
+    "cost_per_side": 0.002,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {"complete_positions_min_weekly": 500, "complete_positions_min_monthly": 300, "decision_dates_each_block_min_weekly": 40, "decision_dates_each_block_min_monthly": 20, "entry_executable_fraction_min": 0.90, "full_excess_strictly_positive": true, "both_block_excess_nonnegative": true, "severe_loss_disadvantage_max": 0.02, "median_candidate_breadth_min": 20},
+    "external_maximum_replays": 3,
+    "internal_maximum_replays": 1
+  },
+  "combination_incremental_gate": {
+    "full_excess_over_best_input_min": 0.001,
+    "minimum_block_excess_not_below_best_input": true,
+    "and_one_of": {"full_excess_over_best_input_min_strong": 0.002, "severe_loss_disadvantage_improvement_min": 0.01},
+    "maximum_full_replays": 1
+  },
+  "replay": {
+    "selected_names": 10,
+    "equal_weight_cohorts": true,
+    "cohort_capital": "NAV divided by ceiling(horizon/rebalance_sessions)",
+    "candidate_all_required": {"complete": true, "entry_execution_fraction_min": 0.90, "total_return_strictly_positive": true, "sharpe_min": 0.50, "maximum_drawdown_min": -0.35, "severe_trade_fraction_max": 0.10, "terminal_positions": 0},
+    "mixed_all_required": {"complete": true, "total_return_strictly_positive": true, "sharpe_strictly_positive": true, "maximum_drawdown_min": -0.50, "terminal_positions": 0}
+  },
+  "prohibited": ["post-2023 outcomes", "CY-011", "habitat rescue", "neighboring lookback or horizon search", "short-leg return inference where shorting is unavailable", "fundamental proxy substitution", "industry super-factor", "model zoo", "feature subset search", "quiet-VWAP-only suspension repair", "tuning preserved candidates"]
+}

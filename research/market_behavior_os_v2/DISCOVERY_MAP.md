@@ -167,3 +167,31 @@ The six negative Track-A results apply only to their frozen CY008 summary
 representations after fixed daily controls; they do not reject broader support,
 absorption, or acceptance research families. No raw minute sequence or exact
 minute-window search was run.
+
+## External-prior and internal cycle 005
+
+| Track | Frozen family | Full net excess | Chronology | Decision |
+|---|---|---:|---|---|
+| External | JT 12-1 momentum | -5.183% h120 | -0.588% / -8.919% | `ADVERSE_LONG_LEG_FORMULATION` |
+| External | 52-week high | -4.597% h120 | +0.381% / -8.661% | `CHRONOLOGICALLY_MIXED` |
+| External | Industry momentum | +0.250% h120 | +0.919% / -0.303% | `CHRONOLOGICALLY_MIXED`; severe +26.161 pp |
+| External | Negative prior-month MAX | -1.185% h20 | -2.229% / -0.474% | `ADVERSE_LONG_LEG_FORMULATION` |
+| External | Five-day intraday reversal | -0.070% h5 | -0.192% / +0.011% | `CHRONOLOGICALLY_MIXED` |
+| Internal | Chip cost concentration | -1.023% h20 | -1.734% / -0.546% | `ADVERSE_EXACT_FORMULATION` |
+| Internal | Chip overhang clearance | -1.955% h20 | -2.336% / -1.691% | `ADVERSE_EXACT_FORMULATION` |
+| Internal | Chip support density | -0.729% h20 | -1.455% / -0.239% | `ADVERSE_EXACT_FORMULATION` |
+| Combination | MAX + low idio | -0.822% h20 | -2.181% / +0.108% | `COMPLEXITY_NOT_EARNED` |
+| Combination | Diffusion acceleration + low idio | +0.341% h20 | -0.226% / +0.717% | `COMPLEXITY_NOT_EARNED`; worse than baseline |
+
+All exact screen families have broad coverage and at least 90% next-open
+executability, but none passes every economic/risk/chronology gate. Therefore no
+full replay is run and gross/net portfolio performance, turnover, and capacity
+are not inferred. Amihud, BAB, pairs, residual momentum, and price-limit delayed
+discovery retain their explicit deferred/conflict/unavailable/already-adverse
+statuses rather than being silently adapted.
+
+What market behavior are we still not studying? Registered PIT fundamentals,
+borrow-feasible short legs and relative-value execution, true order-book flow,
+and independent post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.

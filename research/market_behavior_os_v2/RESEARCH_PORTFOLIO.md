@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 25% | Formation-depth downside localizes to both accepted/rejected crossers through mixed pre-open/intraday paths; exact trough immediacy fails | Map own-security/shared-date/subgroup attribution before another response estimate |
-| EXPLOIT | 5% | Direct V1 habitat transfer failed despite the attributed market state | Preserve V1 unchanged; no threshold, veto, or endpoint rescue |
-| INVENT | 5% | Closing rejection and trough timing do not support failed-breakout reversal or dip recovery | Keep all new archetypes inactive |
-| REPLICATE | 30% | Accepted formation-depth results remain inside consumed pre-2024 time and need orthogonal correctness checks | Run compact-panel independent replication and manual cases in Lane D |
-| TRANSFER | 10% | V1 transfer failed and no independent universe mechanism exists | Keep strategy/universe transfer closed during mechanism attribution |
-| FALSIFY | 25% | Shared date conditions, own overshoot, or subgroup concentration may explain apparent formation depth | Freeze subgroup/control geometry and require no-rescue classifications |
+| EXPLORE | 25% | Cycle-005 chip formulations are adverse, while objective support/recovery remains broader and untested | Build a representation map before any new economic screen |
+| EXPLOIT | 5% | Three broad-A-share leads remain mixed and all current history is consumed | Preserve rules unchanged; use only genuinely independent confirmation |
+| INVENT | 15% | Current inputs cannot implement fundamental or borrow-feasible relative-value priors canonically | Establish a governed PIT data contract before inventing a translation |
+| REPLICATE | 20% | Five external long-leg implementations all fail at least one local gate | Source a genuinely distinct canonical prior; do not adapt deferred definitions |
+| TRANSFER | 10% | No cycle-005 prior or internal mechanism earns habitat/strategy transfer | Keep CHINEXT and existing candidates unchanged |
+| FALSIFY | 25% | Industry momentum and diffusion-plus-low-idio show positive full means but fail chronology/risk/incrementality | Preserve negative/mixed classifications; no rescue search |
 
 Mandatory checkpoint questions:
 

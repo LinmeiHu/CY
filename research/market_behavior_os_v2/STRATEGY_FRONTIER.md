@@ -250,3 +250,22 @@ The expected-information-value ranking favors independent confirmation when a
 lawful untouched block exists. Without one, objective support/recovery mapping
 offers more information per research cost than additional intraday composites,
 industry-leadership tuning, or another execution repair.
+
+## Post-cycle-005 candidate research portfolio
+
+| Rank | Role | Asset | Evidence / status | Research-capital decision |
+|---:|---|---|---|---|
+| 1 | Standalone alpha | Industry Diffusion h20 | +54.64%, 0.440 Sharpe; mixed downside | Independent confirmation only; frozen |
+| 2 | Defensive alpha | Low Idiosyncratic Volatility h20 | +15.73%, 0.239 Sharpe; low severe incidence | Independent confirmation only; frozen |
+| 3 | Standalone alpha | Industry Diffusion Acceleration h20 | +13.10%, 0.217 Sharpe; severe gate fails | Independent confirmation only; frozen |
+| 4 | Complementary entry information | Quiet VWAP acceptance h5 | Positive two-block residual screen; replay contract-blocked | Leave unresolved unless a general frozen path extension is independently justified |
+| 5 | Frozen strategy component | CHINEXT RS acceleration veto | Preserved admission component | No tuning or combination |
+| 6 | New-data frontier | PIT fundamentals / borrow-feasible relative value | Canonical priors unavailable under current registered inputs | Highest new discovery value if governed data can be registered |
+| 7 | Representation frontier | Objective support/recovery | Broader family not rejected by adverse chip proxies | Map before testing economics |
+| 8 | Resource-parked archetype | Dispersion relative value | Distinct but prior builders exceeded frozen resource gates | Revisit only under a new bounded contract |
+
+Rejected exact cycle-005 formulations are JT 12-1 long-leg momentum, negative
+MAX, the three chip scores, and both equal-rank combinations. The 52-week-high,
+industry-momentum, and five-day intraday-reversal long legs are chronologically
+mixed and receive no replay. No cycle-005 candidate adds standalone alpha,
+defensive/risk value, execution capability, or incremental portfolio value.

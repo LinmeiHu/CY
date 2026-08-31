@@ -2,6 +2,52 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: external-prior replication and internal discovery
+
+Resume after the commit containing `ASHARE-EXTERNAL-PRIOR-CYCLE-005`; its
+starting checkpoint is `356c0f37c1`. Do not rerun or tune its five external,
+three internal, or two combination screens. The exact prior definitions remain
+in the immutable frozen `STRATEGY_PRIOR_MAP.md`; checkpoint classifications are
+in `STRATEGY_PRIOR_MAP_RESULTS.md`.
+
+No family reaches full executable replay. External results are: JT 12-1
+momentum -5.183% h120 excess (`ADVERSE`); 52-week high -4.597% and industry
+momentum +0.250% (`CHRONOLOGICALLY_MIXED`); negative-MAX -1.185% (`ADVERSE`);
+five-day intraday reversal -0.070% (`CHRONOLOGICALLY_MIXED`). These are A-share
+long-leg implementations with disclosed differences, not claims that the source
+papers fail in their original markets or long-short forms.
+
+The three chip hypotheses are exact-formulation rejections: concentration
+-1.023%, overhead clearance -1.955%, and support density -0.729% h20 excess,
+all negative in both blocks with worse severe losses. Do not reject the broader
+chip/support families. MAX plus low idio remains negative and Diffusion
+Acceleration plus low idio weakens its named baseline; neither earns complexity.
+
+The valid domain has 654,459 eligible rows, 4,586 symbols, 241 weekly anchors,
+and 59 calendar month-ends. It binds consumed CY-006/CY-008 2018--2023 data,
+next-open execution, causal corporate-action coordinates, 20 bps/side, and fixed
+date controls. Post-2023 and CY-011 remain unread. Two final serial runs have
+identical result SHA-256 `a93b0068807c4e18d8ba98d32a9cd9a57bcd9a079ec4bf4ce9b0d33ecf487c32`.
+
+Preserve unchanged: Industry Diffusion, Low Idiosyncratic Volatility, and
+Industry Diffusion Acceleration are `PROMISING_BUT_MIXED`; quiet VWAP acceptance
+is `WEAK_COMPLEMENTARY_REPLAY_BLOCKED`; the CHINEXT RS veto is frozen; the
+minute-volatility overlay is downgraded; Industry Rotation is closed.
+
+Next capital first seeks genuinely independent confirmation for the three mixed
+broad-A-share leads. If no lawful block exists, prioritize a registered PIT
+fundamental or borrow-feasible relative-value data contract before another
+canonical prior; objective support/recovery mapping remains a lower-cost
+representation-first alternative. Do not reopen exact cycle-005 failures through
+habitats, neighboring horizons, thresholds, or alternative weights.
+
+What market behavior are we still not studying? Registered PIT fundamentals,
+borrow-feasible short/relative-value legs, order-book flow, and independent
+post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+No external, internal, or combination family passed the frozen promotion gates.
+
 ## Latest checkpoint: stock selection, exit, and matched-cost economics
 
 Resume from the checkpoint commit containing this section; the cycle started at

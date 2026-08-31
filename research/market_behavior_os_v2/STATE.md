@@ -7,11 +7,11 @@ Updated 2026-08-31.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `94c07abb07` (start of frozen intraday/independent cycle 004)
-- `CURRENT_PHASE`: `STOCK_INTRADAY_AND_THIRD_INDEPENDENT_BATCH_CHECKPOINT`
+- `CURRENT_BASELINE`: `356c0f37c1` (start of frozen external-prior/internal cycle 005)
+- `CURRENT_PHASE`: `EXTERNAL_PRIOR_REPLICATION_AND_INTERNAL_DISCOVERY_CHECKPOINT`
 - `CURRENT_PRIMARY_FRONTIER`: independently confirm the mixed Industry Diffusion level, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration leads; unavailable because 2018--2023 is consumed, post-2023 is quarantined, and CY-011 remains locked
-- `SUPPORTING_FRONTIER`: resolve the quiet-VWAP portfolio's prolonged-suspension path coverage only through a separately frozen execution-contract extension; do not alter its alpha, screen, or gate
-- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Quiet VWAP acceptance passes its cheap screen but its replay is contract-blocked; Industry Diffusion Acceleration is `PROMISING_BUT_MIXED`. The pre-existing RS veto remains `PROMISING_ADMISSION_COMPONENT`
+- `SUPPORTING_FRONTIER`: obtain new registered PIT inputs for a genuinely distinct prior (fundamental quality/value or borrow-feasible relative value); do not adapt deferred canonical definitions merely to use existing data
+- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Cycle 005 promotes no external, internal, or combination family. Quiet VWAP acceptance remains contract-blocked; Industry Diffusion, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration remain `PROMISING_BUT_MIXED`. The pre-existing RS veto remains `PROMISING_ADMISSION_COMPONENT`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can genuinely independent data confirm any of the three complete mixed broad-A-share leads? If no independent block becomes available, a bounded objective stock-support/acceptance representation audit has higher information value than tuning the weak intraday families or reopening closed strategies.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can genuinely independent data confirm any of the three complete mixed broad-A-share leads? If not, can a registered PIT fundamental or borrow-feasible relative-value input open a genuinely distinct canonical prior without adapting it to current data?
 
 ## Research OS V2.3 resource and worker state
 
@@ -2135,3 +2135,50 @@ Has any discovered mechanism implied a genuinely new strategy archetype? No.
 Quiet VWAP acceptance is a weak incremental entry-state lead with blocked
 economics; Industry Diffusion Acceleration is a new formulation inside the
 existing participation/diffusion archetype and remains mixed.
+
+## 2026-08-31 external-prior and internal-discovery checkpoint
+
+`ASHARE-EXTERNAL-PRIOR-CYCLE-005` starts from `356c0f37c1`. The ten-prior map
+was frozen before forward-outcome construction; five canonical/minimum long-leg
+implementations were screened, while Amihud illiquidity, BAB, pairs, residual
+momentum, and price-limit continuation were explicitly deferred, conflicted,
+unavailable, or already adverse. Exact A-share differences are not presented as
+canonical replications.
+
+The shared PIT domain contains 654,459 eligible rows, 4,586 symbols, and 286
+union decision dates (241 weekly anchors and 59 month-ends, with overlap). The
+screen uses next-session executable opens, action-coordinate paths, 20 bps per
+side, same-date controls, and fixed 2018--2020 / 2021--2023 blocks. Post-2023
+outcomes and CY-011 remain unread.
+
+No external prior clears every frozen gate. JT 12-1 momentum is adverse at
+-5.183% h120 full excess. The 52-week-high long leg is chronologically mixed at
+-4.597% full (+0.381% early / -8.661% late). Equal-weight leave-one-out industry
+momentum is +0.250% full but mixed (+0.919% / -0.303%) with +26.161 pp severe-
+loss disadvantage. Negative-MAX is -1.185% h20, and five-day intraday reversal
+is -0.070% h5 with a sign reversal. No full executable external replay is
+authorized.
+
+All three new chip hypotheses are adverse: cost concentration -1.023%, overhang
+clearance -1.955%, and support density -0.729% h20 full excess, each negative in
+both blocks and worse on severe losses. These exact formulations are rejected;
+the broader chip/support families are not rejected.
+
+Neither equal-rank combination earns complexity. MAX plus low-idiosyncratic
+volatility remains negative (-0.822%) despite a +0.363 pp relative improvement.
+Diffusion Acceleration plus low idiosyncratic volatility is +0.341% full but
+negative early, adds -0.625 pp versus its named baseline, and worsens severe-loss
+disadvantage by 6.918 pp. No combination replay or portfolio is run.
+
+Two final serial runs reproduce byte-identical result JSON
+`a93b0068807c4e18d8ba98d32a9cd9a57bcd9a079ec4bf4ce9b0d33ecf487c32`;
+panel `12db1a7f...` and summary `1f26005a...` also match. Empty equity and risk-
+exit ledgers correctly record that no family reached full replay.
+
+What market behavior are we still not studying? Registered PIT fundamentals,
+borrow-feasible short/relative-value legs, order-book flow, and an independent
+post-development confirmation block.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+External priors did not survive local gates, internal chip mechanisms were
+adverse, and both cross-mechanism combinations failed incremental-value rules.
