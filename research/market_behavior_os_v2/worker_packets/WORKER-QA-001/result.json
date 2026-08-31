@@ -1,0 +1,2091 @@
+{
+  "base_commit": "fc665b016e2df01e11047a64e88f53905ccdcfdf",
+  "conclusion": "The accepted formation-depth chain is independently reproduced from compact bound artifacts.",
+  "experiments": {
+    "ATTR": {
+      "aggregate_comparison": {
+        "checks": [
+          {
+            "absolute_error": 1.3877787807814457e-17,
+            "pass": true,
+            "path": "response.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "response.same_sign_cells"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "response.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "response.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "response.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 1.3877787807814457e-17,
+            "pass": true,
+            "path": "response.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "response.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 3.469446951953614e-18,
+            "pass": true,
+            "path": "response.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "response.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 8.326672684688674e-17,
+            "pass": true,
+            "path": "response.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 1.3877787807814457e-17,
+            "pass": true,
+            "path": "response.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "response.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "response.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.3877787807814457e-17,
+            "pass": true,
+            "path": "response.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "response.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "response.phase_signs.5"
+          },
+          {
+            "absolute_error": 4.336808689942018e-18,
+            "pass": true,
+            "path": "response.median_tail_residual_gap"
+          }
+        ],
+        "mismatch_count": 0
+      },
+      "authoritative_classification": "INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK",
+      "clock_and_support": {
+        "eight_groups": true,
+        "exact_1530_available_at": true,
+        "groups": 8,
+        "joint_information_clock_1530": true,
+        "maximum_event_year": 2023,
+        "post_2023_absent": true,
+        "response_begins_next_exchange_session": true,
+        "unique_date_view_denominator_key": true
+      },
+      "geometry_replay": {
+        "maximum_absolute_error": 2.220446049250313e-16,
+        "mismatch_count": 0,
+        "rows_reconstructed": 288,
+        "sha256": "921d4a34246729d67f9c9c22450b58c1517cb3cee762e29a0d69f791b7357b32"
+      },
+      "hash_audit": {
+        "mismatch_count": 0,
+        "rows": [
+          {
+            "actual": "e4dedc5c562187e77c26979b54c5d5ffd4cd5da6251327e4add3b5145181071a",
+            "expected": "e4dedc5c562187e77c26979b54c5d5ffd4cd5da6251327e4add3b5145181071a",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/FORMATION_DEPTH_TAIL_RISK_ATTRIBUTION_MAP.md",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_map"
+          },
+          {
+            "actual": "314a5d3996bd4d9fa3919fdb39f4a72cc0c2859103ba5252edeeefd8ec6fde5a",
+            "expected": "314a5d3996bd4d9fa3919fdb39f4a72cc0c2859103ba5252edeeefd8ec6fde5a",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:economic_panel"
+          },
+          {
+            "actual": "0aa68e75635d0f143a46c17b696ebbf9ab78c3d9eddfe20bcaf19698410eab85",
+            "expected": "0aa68e75635d0f143a46c17b696ebbf9ab78c3d9eddfe20bcaf19698410eab85",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:economic_result"
+          },
+          {
+            "actual": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1",
+            "expected": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+            "physical_root": "director_artifact_store",
+            "role": "spec_input:risk_panel"
+          },
+          {
+            "actual": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe",
+            "expected": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json",
+            "physical_root": "director_artifact_store",
+            "role": "spec_input:risk_result"
+          },
+          {
+            "actual": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701",
+            "expected": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+            "physical_root": "director_artifact_store",
+            "role": "spec_input:minute_panel"
+          },
+          {
+            "actual": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe",
+            "expected": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+            "physical_root": "director_artifact_store",
+            "role": "spec_input:minute_result"
+          },
+          {
+            "actual": "676032c509384ae63b237141d5dbbf395c051c04100529ee02dcafe4989cdce7",
+            "expected": "676032c509384ae63b237141d5dbbf395c051c04100529ee02dcafe4989cdce7",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-ATTR-001_spec.json",
+            "role": "result_binding:spec_sha256"
+          },
+          {
+            "actual": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "expected": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+            "role": "result_binding:panel_sha256"
+          },
+          {
+            "actual": "8e694b4f8d6cea704461b8ea58e04c3279be73654e1889cb37321da52137878a",
+            "expected": "8e694b4f8d6cea704461b8ea58e04c3279be73654e1889cb37321da52137878a",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_response_audit.csv",
+            "role": "result_binding:response_audit_sha256"
+          },
+          {
+            "actual": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "expected": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+            "role": "result_binding:runner_sha256"
+          },
+          {
+            "actual": "e4dedc5c562187e77c26979b54c5d5ffd4cd5da6251327e4add3b5145181071a",
+            "expected": "e4dedc5c562187e77c26979b54c5d5ffd4cd5da6251327e4add3b5145181071a",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/FORMATION_DEPTH_TAIL_RISK_ATTRIBUTION_MAP.md",
+            "role": "result_binding:map_sha256"
+          },
+          {
+            "actual": "921d4a34246729d67f9c9c22450b58c1517cb3cee762e29a0d69f791b7357b32",
+            "expected": "921d4a34246729d67f9c9c22450b58c1517cb3cee762e29a0d69f791b7357b32",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_geometry_audit.csv",
+            "role": "result_binding:geometry_audit_sha256"
+          },
+          {
+            "actual": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+            "role": "result_file"
+          },
+          {
+            "actual": "24acba88340c3aa14259c76f1771f7892a29553f34bf0677b90b8ea986817849",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-ATTR-001_attribution.md",
+            "role": "report_file"
+          }
+        ]
+      },
+      "independent_classification": "INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK",
+      "independent_key_evaluation": {
+        "geometry_pass": true,
+        "response": {
+          "block_median_partial_rho": {
+            "A": -0.1538790177290923,
+            "B": -0.11920159210991477
+          },
+          "leave_one_year_out_median_partial_rho": {
+            "2020": -0.11920159210991477,
+            "2021": -0.13579341105536136,
+            "2022": -0.15772515604603576,
+            "2023": -0.03676770818081905
+          },
+          "median_h3_partial_rho": -0.11052966433718799,
+          "median_tail_residual_gap": -0.0050261267844068655,
+          "neighbor_median_partial_rho": {
+            "1": -0.09017224854946201,
+            "5": -0.11752456364896197
+          },
+          "phase_signs": {
+            "3": [
+              -1,
+              -1,
+              -1
+            ],
+            "5": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ]
+          },
+          "same_sign_cells": 8,
+          "year_median_partial_rho": {
+            "2020": -0.1538790177290923,
+            "2021": -0.016485628300425645,
+            "2022": -0.07312259034441934,
+            "2023": -0.2456466929286873
+          }
+        },
+        "response_pass": true
+      },
+      "pass": true,
+      "response_replay": {
+        "maximum_absolute_error": 3.3306690738754696e-16,
+        "mismatch_count": 0,
+        "rows_reconstructed": 200,
+        "selected_scalar_case": {
+          "absolute_error": 4.163336342344337e-17,
+          "audit_type": "partial_rank",
+          "authoritative_value": -0.1242856828647862,
+          "channel": null,
+          "closing_arm": null,
+          "coordinate": "pit",
+          "denominator": "ALL_STATUS",
+          "horizon": 3,
+          "independent_value": -0.12428568286478624,
+          "market_view": "ALL_A",
+          "n": 829,
+          "pass": true,
+          "scope": "cell",
+          "scope_value": "ALL_A:ALL_STATUS",
+          "source_row": 20
+        }
+      }
+    },
+    "CLOSE": {
+      "aggregate_comparison": {
+        "checks": [
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.negative_cells"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.phase_signs.5"
+          },
+          {
+            "absolute_error": 6.938893903907228e-18,
+            "pass": true,
+            "path": "channels.ACCEPTED_CROSSER_DOWNSIDE.median_tail_residual_gap"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.negative_cells"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.phase_signs.5"
+          },
+          {
+            "absolute_error": 1.0408340855860843e-17,
+            "pass": true,
+            "path": "channels.REJECTED_CROSSER_DOWNSIDE.median_tail_residual_gap"
+          },
+          {
+            "absolute_error": 6.071532165918825e-18,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.negative_cells"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 1.734723475976807e-17,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 8.673617379884035e-19,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 3.903127820947816e-18,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 8.673617379884035e-19,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 2.6020852139652106e-17,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.phase_signs.5"
+          },
+          {
+            "absolute_error": 8.863352760068999e-18,
+            "pass": true,
+            "path": "channels.REJECTED_MINUS_ACCEPTED.median_tail_residual_gap"
+          }
+        ],
+        "mismatch_count": 0
+      },
+      "authoritative_classification": "ACCEPTED_AND_REJECTED_CROSSER_DOWNSIDE",
+      "clock_and_support": {
+        "eight_groups": true,
+        "exact_1530_available_at": true,
+        "groups": 8,
+        "joint_information_clock_1530": true,
+        "maximum_event_year": 2023,
+        "post_2023_absent": true,
+        "response_begins_next_exchange_session": true,
+        "unique_date_view_denominator_key": true
+      },
+      "geometry_replay": null,
+      "hash_audit": {
+        "mismatch_count": 0,
+        "rows": [
+          {
+            "actual": "4a5fd599dd939b3e20a49448168083b8f9a805e595fecbd95bbd2aae43d4cc44",
+            "expected": "4a5fd599dd939b3e20a49448168083b8f9a805e595fecbd95bbd2aae43d4cc44",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/CROSSER_CLOSING_STATE_TOPOLOGY_MAP.md",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:topology_map"
+          },
+          {
+            "actual": "89063c4886636cd518bab988df4e0fcdae05fef363a602605f8222ebd5a6fae6",
+            "expected": "89063c4886636cd518bab988df4e0fcdae05fef363a602605f8222ebd5a6fae6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-DATA-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:closing_panel"
+          },
+          {
+            "actual": "edb2b9c3721aeb1c65e01f94a013937b3bba1d2259c13f85ca63dc752e8c8d44",
+            "expected": "edb2b9c3721aeb1c65e01f94a013937b3bba1d2259c13f85ca63dc752e8c8d44",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-DATA-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:closing_result"
+          },
+          {
+            "actual": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "expected": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_panel"
+          },
+          {
+            "actual": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "expected": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_result"
+          },
+          {
+            "actual": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "expected": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:accepted_attribution_runner"
+          },
+          {
+            "actual": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c",
+            "expected": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_prop_001.py",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:accepted_topology_runner"
+          },
+          {
+            "actual": "ac7ad6e254d92b088f37120df02e699808269eb549ff0917d3495e52751ef899",
+            "expected": "ac7ad6e254d92b088f37120df02e699808269eb549ff0917d3495e52751ef899",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:propagation_result"
+          },
+          {
+            "actual": "f260e1feb25bba18a82e68598ff2c3da92f1d22b93afa040d408802e6ded9c7e",
+            "expected": "f260e1feb25bba18a82e68598ff2c3da92f1d22b93afa040d408802e6ded9c7e",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-CLOSE-001_spec.json",
+            "role": "result_binding:spec_sha256"
+          },
+          {
+            "actual": "3c75b73bc0e53c2ffd7df12902b9c3430fbcdf059bb32dc100e0acf7ad5ed6fd",
+            "expected": "3c75b73bc0e53c2ffd7df12902b9c3430fbcdf059bb32dc100e0acf7ad5ed6fd",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-001_panel.csv",
+            "role": "result_binding:panel_sha256"
+          },
+          {
+            "actual": "d33405eb273a60786990a0308cf7fefe718c5319115ae677f826286486f50498",
+            "expected": "d33405eb273a60786990a0308cf7fefe718c5319115ae677f826286486f50498",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-001_response_audit.csv",
+            "role": "result_binding:response_audit_sha256"
+          },
+          {
+            "actual": "3d2eecf66d7a3bc42e29732fa9e5039145823c30354de9c547f1c3c898b6b040",
+            "expected": "3d2eecf66d7a3bc42e29732fa9e5039145823c30354de9c547f1c3c898b6b040",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_close_001.py",
+            "role": "result_binding:runner_sha256"
+          },
+          {
+            "actual": "5de99cf62334578b258d5a2be6cfa092f5161e491892795e3a43502b06bae2f9",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-001_result.json",
+            "role": "result_file"
+          },
+          {
+            "actual": "b03c2e0c1c01b942b29c18bd246b043817bd76c1404f4759bbb8e51663f095dd",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-CLOSE-001_topology.md",
+            "role": "report_file"
+          }
+        ]
+      },
+      "independent_classification": "ACCEPTED_AND_REJECTED_CROSSER_DOWNSIDE",
+      "independent_key_evaluation": {
+        "channels": {
+          "ACCEPTED_CROSSER_DOWNSIDE": {
+            "block_median_partial_rho": {
+              "A": -0.17860646152738596,
+              "B": -0.33569652093972535
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.33569652093972535,
+              "2021": -0.3791146542722467,
+              "2022": -0.3395371529202148,
+              "2023": -0.21222488011535198
+            },
+            "median_h3_partial_rho": -0.32086039186976745,
+            "median_tail_residual_gap": -0.016226215549473337,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.2600898406766821,
+              "5": -0.33035800652508085
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.17860646152738596,
+              "2021": -0.14534101647036562,
+              "2022": -0.3179976632387152,
+              "2023": -0.5167118469317429
+            }
+          },
+          "REJECTED_CROSSER_DOWNSIDE": {
+            "block_median_partial_rho": {
+              "A": -0.22784639852652694,
+              "B": -0.37949881023609666
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.37949881023609666,
+              "2021": -0.39838678810517536,
+              "2022": -0.3850451015849652,
+              "2023": -0.26393710139851767
+            },
+            "median_h3_partial_rho": -0.3557137286622708,
+            "median_tail_residual_gap": -0.015775138885781585,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.38724534179731307,
+              "5": -0.3415129681727072
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.22784639852652694,
+              "2021": -0.21809582184450654,
+              "2022": -0.33713551548159454,
+              "2023": -0.5354305909877846
+            }
+          },
+          "REJECTED_MINUS_ACCEPTED": {
+            "block_median_partial_rho": {
+              "A": -0.08577701888248424,
+              "B": -0.003895695806612004
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.003895695806612004,
+              "2021": 0.05145124149796412,
+              "2022": 0.0012973579852394376,
+              "2023": -0.06680635574156052
+            },
+            "median_h3_partial_rho": -0.0070559226227885396,
+            "median_tail_residual_gap": 0.0001378220256269241,
+            "negative_cells": 4,
+            "neighbor_median_partial_rho": {
+              "1": -0.0985327986014326,
+              "5": 0.024062592398534186
+            },
+            "phase_signs": {
+              "3": [
+                1,
+                -1,
+                -1
+              ],
+              "5": [
+                1,
+                -1,
+                1,
+                1,
+                1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.08577701888248424,
+              "2021": -0.11327149037653797,
+              "2022": 0.0034035380401601294,
+              "2023": 0.12204955155064805
+            }
+          }
+        },
+        "passes": {
+          "ACCEPTED_CROSSER_DOWNSIDE": true,
+          "REJECTED_CROSSER_DOWNSIDE": true,
+          "REJECTED_MINUS_ACCEPTED": false
+        }
+      },
+      "pass": true,
+      "response_replay": {
+        "maximum_absolute_error": 6.661338147750939e-16,
+        "mismatch_count": 0,
+        "rows_reconstructed": 648,
+        "selected_scalar_case": {
+          "absolute_error": 0.0,
+          "audit_type": "partial_rank",
+          "authoritative_value": -0.389531256797908,
+          "channel": "REJECTED_CROSSER_DOWNSIDE",
+          "closing_arm": null,
+          "coordinate": "pit",
+          "denominator": "ALL_STATUS",
+          "horizon": 3,
+          "independent_value": -0.389531256797908,
+          "market_view": "ALL_A",
+          "n": 829,
+          "pass": true,
+          "scope": "cell",
+          "scope_value": "ALL_A:ALL_STATUS",
+          "source_row": 20
+        }
+      }
+    },
+    "IMMED": {
+      "aggregate_comparison": {
+        "checks": [
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "pass"
+          }
+        ],
+        "mismatch_count": 0
+      },
+      "authoritative_classification": "NO_STABLE_TROUGH_IMMEDIACY_SHIFT",
+      "clock_and_support": {
+        "eight_groups": true,
+        "exact_1530_available_at": true,
+        "groups": 8,
+        "joint_information_clock_1530": true,
+        "maximum_event_year": 2023,
+        "post_2023_absent": true,
+        "response_begins_next_exchange_session": true,
+        "unique_date_view_denominator_key": true
+      },
+      "geometry_replay": null,
+      "hash_audit": {
+        "mismatch_count": 0,
+        "rows": [
+          {
+            "actual": "f065fb49d12f861cd8f7b333d85814296b372eff9a992d08eef2e8f02436f389",
+            "expected": "f065fb49d12f861cd8f7b333d85814296b372eff9a992d08eef2e8f02436f389",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/FORMATION_DEPTH_TROUGH_IMMEDIACY_MAP.md",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:immediacy_map"
+          },
+          {
+            "actual": "3aa479dbb1a9e54957bad40a79b8113ba98b7f07c1a7a6f5b6395709ec0f530b",
+            "expected": "3aa479dbb1a9e54957bad40a79b8113ba98b7f07c1a7a6f5b6395709ec0f530b",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-DATA-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:path_panel"
+          },
+          {
+            "actual": "bb44ed06fd4c03fcf56b329874e74efabc836eef2ce087ac67cc673a5c25a528",
+            "expected": "bb44ed06fd4c03fcf56b329874e74efabc836eef2ce087ac67cc673a5c25a528",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-DATA-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:path_data_result"
+          },
+          {
+            "actual": "2656aace2f69dcc497f6225432a7f3e1f2af29db44454bd9be748801ce23b9c0",
+            "expected": "2656aace2f69dcc497f6225432a7f3e1f2af29db44454bd9be748801ce23b9c0",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:path_result"
+          },
+          {
+            "actual": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "expected": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_panel"
+          },
+          {
+            "actual": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "expected": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_result"
+          },
+          {
+            "actual": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "expected": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:accepted_attribution_runner"
+          },
+          {
+            "actual": "912021f6df1351dea1a1b69bc3977dfd824b72ab4894f3f2a03821813e30ed2b",
+            "expected": "912021f6df1351dea1a1b69bc3977dfd824b72ab4894f3f2a03821813e30ed2b",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-IMMED-001_spec.json",
+            "role": "result_binding:spec_sha256"
+          },
+          {
+            "actual": "53dea21219ff4a911639c764bd4d27a9b90cf50db5c7306be8f6c86cedc3f8d3",
+            "expected": "53dea21219ff4a911639c764bd4d27a9b90cf50db5c7306be8f6c86cedc3f8d3",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-IMMED-001_panel.csv",
+            "role": "result_binding:panel_sha256"
+          },
+          {
+            "actual": "b85ef8a4adc58322baa5674484c696aea61b8e5cea0411a32fdf10a8b59fcc86",
+            "expected": "b85ef8a4adc58322baa5674484c696aea61b8e5cea0411a32fdf10a8b59fcc86",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-IMMED-001_response_audit.csv",
+            "role": "result_binding:response_audit_sha256"
+          },
+          {
+            "actual": "6445a46f21016caa375f4c888a56aeadfc2574a13dfa4f60fe1e76a097353b3c",
+            "expected": "6445a46f21016caa375f4c888a56aeadfc2574a13dfa4f60fe1e76a097353b3c",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_immed_001.py",
+            "role": "result_binding:runner_sha256"
+          },
+          {
+            "actual": "5024f847a2a1b7b8921f05700ebd23cbbe779b53cd66dcc00e3bb40576b4e7a9",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-IMMED-001_result.json",
+            "role": "result_file"
+          },
+          {
+            "actual": "d7de8cfa8e2e1ea45720777c6d20142afe028ee021740e70786edf73ee731fa7",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-IMMED-001_timing.md",
+            "role": "report_file"
+          }
+        ]
+      },
+      "independent_classification": "NO_STABLE_TROUGH_IMMEDIACY_SHIFT",
+      "independent_key_evaluation": {
+        "pass": false,
+        "summary": {
+          "block_median_partial_rho": {
+            "A": 0.007194574188045286,
+            "B": -0.0640593086916818
+          },
+          "closing_arm_h3_median_partial_rho": {
+            "accepted": -0.06128366172260326,
+            "rejected": -0.03589368870009539
+          },
+          "direction": -1,
+          "h5_median_partial_rho": -0.040156365196544,
+          "leave_one_year_out_median_partial_rho": {
+            "2020": -0.0640593086916818,
+            "2021": -0.10393302219641465,
+            "2022": -0.06001416798071006,
+            "2023": -0.004225725891512128
+          },
+          "median_h3_partial_rho": -0.05435161783833677,
+          "median_tail_residual_gap": -0.03356819620739782,
+          "phase_signs": {
+            "3": [
+              -1,
+              -1,
+              -1
+            ],
+            "5": [
+              1,
+              -1,
+              -1,
+              1,
+              -1
+            ]
+          },
+          "same_direction_cells": 8,
+          "year_median_partial_rho": {
+            "2020": 0.007194574188045286,
+            "2021": 0.0454543629117618,
+            "2022": -0.11638405812438357,
+            "2023": -0.13945673346972692
+          }
+        }
+      },
+      "pass": true,
+      "response_replay": {
+        "maximum_absolute_error": 3.3306690738754696e-16,
+        "mismatch_count": 0,
+        "rows_reconstructed": 184,
+        "selected_scalar_case": {
+          "absolute_error": 2.7755575615628914e-17,
+          "audit_type": "partial_rank",
+          "authoritative_value": -0.0521113074493521,
+          "channel": null,
+          "closing_arm": null,
+          "coordinate": "pit",
+          "denominator": "ALL_STATUS",
+          "horizon": 3,
+          "independent_value": -0.05211130744935213,
+          "market_view": "ALL_A",
+          "n": 829,
+          "pass": true,
+          "scope": "cell",
+          "scope_value": "ALL_A:ALL_STATUS",
+          "source_row": 32
+        }
+      }
+    },
+    "PATH": {
+      "aggregate_comparison": {
+        "checks": [
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.negative_cells"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.3877787807814457e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.phase_signs.5"
+          },
+          {
+            "absolute_error": 5.204170427930421e-18,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.median_tail_residual_gap"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.closing_arm_h3_median_partial_rho.accepted"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.PREOPEN_PATH_DOWNSIDE.closing_arm_h3_median_partial_rho.rejected"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.negative_cells"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.phase_signs.5"
+          },
+          {
+            "absolute_error": 5.204170427930421e-18,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.median_tail_residual_gap"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.closing_arm_h3_median_partial_rho.accepted"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.TROUGH_SESSION_INTRADAY_DOWNSIDE.closing_arm_h3_median_partial_rho.rejected"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.negative_cells"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.phase_signs.5"
+          },
+          {
+            "absolute_error": 3.469446951953614e-18,
+            "pass": true,
+            "path": "channels.POST_TROUGH_RECOVERY_DIAGNOSTIC.median_tail_residual_gap"
+          }
+        ],
+        "mismatch_count": 0
+      },
+      "authoritative_classification": "MIXED_PREOPEN_AND_INTRADAY_DOWNSIDE_PATH",
+      "clock_and_support": {
+        "eight_groups": true,
+        "exact_1530_available_at": true,
+        "groups": 8,
+        "joint_information_clock_1530": true,
+        "maximum_event_year": 2023,
+        "post_2023_absent": true,
+        "response_begins_next_exchange_session": true,
+        "unique_date_view_denominator_key": true
+      },
+      "geometry_replay": null,
+      "hash_audit": {
+        "mismatch_count": 0,
+        "rows": [
+          {
+            "actual": "35943f76b0342fe47b6aaf9116a8a81fc6870052dcc595111298808e2c61c089",
+            "expected": "35943f76b0342fe47b6aaf9116a8a81fc6870052dcc595111298808e2c61c089",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/FORMATION_DEPTH_ADVERSE_PATH_TIMING_MAP.md",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:timing_map"
+          },
+          {
+            "actual": "3aa479dbb1a9e54957bad40a79b8113ba98b7f07c1a7a6f5b6395709ec0f530b",
+            "expected": "3aa479dbb1a9e54957bad40a79b8113ba98b7f07c1a7a6f5b6395709ec0f530b",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-DATA-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:path_panel"
+          },
+          {
+            "actual": "bb44ed06fd4c03fcf56b329874e74efabc836eef2ce087ac67cc673a5c25a528",
+            "expected": "bb44ed06fd4c03fcf56b329874e74efabc836eef2ce087ac67cc673a5c25a528",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-DATA-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:path_result"
+          },
+          {
+            "actual": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "expected": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_panel"
+          },
+          {
+            "actual": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "expected": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_result"
+          },
+          {
+            "actual": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "expected": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:accepted_attribution_runner"
+          },
+          {
+            "actual": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c",
+            "expected": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_prop_001.py",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:accepted_topology_runner"
+          },
+          {
+            "actual": "5de99cf62334578b258d5a2be6cfa092f5161e491892795e3a43502b06bae2f9",
+            "expected": "5de99cf62334578b258d5a2be6cfa092f5161e491892795e3a43502b06bae2f9",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:closing_topology_result"
+          },
+          {
+            "actual": "740b38a0be82258329c7c722ae78433e80833b1b7189b98ed3d9b1efc6bbbfd6",
+            "expected": "740b38a0be82258329c7c722ae78433e80833b1b7189b98ed3d9b1efc6bbbfd6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-PATH-001_spec.json",
+            "role": "result_binding:spec_sha256"
+          },
+          {
+            "actual": "fa5e1aa0c03e91068ecd9a78c93d228b909e4cc36736ed8b3546ff929c6fe89d",
+            "expected": "fa5e1aa0c03e91068ecd9a78c93d228b909e4cc36736ed8b3546ff929c6fe89d",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_panel.csv",
+            "role": "result_binding:panel_sha256"
+          },
+          {
+            "actual": "67aec4ff8f4e31c2c77025e2ab896f06a98217289139ff3b4e1a079965330386",
+            "expected": "67aec4ff8f4e31c2c77025e2ab896f06a98217289139ff3b4e1a079965330386",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_response_audit.csv",
+            "role": "result_binding:response_audit_sha256"
+          },
+          {
+            "actual": "5687a2cfd44633eeadb4106333f60a012f79f0629e025ac6a326c27c336f43ab",
+            "expected": "5687a2cfd44633eeadb4106333f60a012f79f0629e025ac6a326c27c336f43ab",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_path_001.py",
+            "role": "result_binding:runner_sha256"
+          },
+          {
+            "actual": "2656aace2f69dcc497f6225432a7f3e1f2af29db44454bd9be748801ce23b9c0",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PATH-001_result.json",
+            "role": "result_file"
+          },
+          {
+            "actual": "5bf50b885e26c86d83ec5a14678df1b2eb3629058d547f254d5926973589e66b",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-PATH-001_timing.md",
+            "role": "report_file"
+          }
+        ]
+      },
+      "independent_classification": "MIXED_PREOPEN_AND_INTRADAY_DOWNSIDE_PATH",
+      "independent_key_evaluation": {
+        "channels": {
+          "POST_TROUGH_RECOVERY_DIAGNOSTIC": {
+            "block_median_partial_rho": {
+              "A": 0.3064008792516897,
+              "B": 0.3964507069605395
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": 0.3964507069605395,
+              "2021": 0.385010307918428,
+              "2022": 0.4021132648218594,
+              "2023": 0.34633681273565636
+            },
+            "median_h3_partial_rho": 0.390991439674798,
+            "median_tail_residual_gap": 0.012580694505007447,
+            "negative_cells": 0,
+            "neighbor_median_partial_rho": {
+              "1": 0.3355723100371209,
+              "5": 0.35413479051682895
+            },
+            "phase_signs": {
+              "3": [
+                1,
+                1,
+                1
+              ],
+              "5": [
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": 0.3064008792516897,
+              "2021": 0.292277387347193,
+              "2022": 0.29184123031587106,
+              "2023": 0.36015102749986994
+            }
+          },
+          "PREOPEN_PATH_DOWNSIDE": {
+            "block_median_partial_rho": {
+              "A": -0.19274546457224284,
+              "B": -0.2787102126378983
+            },
+            "closing_arm_h3_median_partial_rho": {
+              "accepted": -0.1848886215167114,
+              "rejected": -0.2702329544789098
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.2787102126378983,
+              "2021": -0.3222689584689726,
+              "2022": -0.2768073518234886,
+              "2023": -0.18750699903505405
+            },
+            "median_h3_partial_rho": -0.263378558307372,
+            "median_tail_residual_gap": -0.009570002778751507,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.0818700656565357,
+              "5": -0.290958999357142
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.19274546457224284,
+              "2021": -0.08990380511180308,
+              "2022": -0.2798535765325201,
+              "2023": -0.4576971845202437
+            }
+          },
+          "TROUGH_SESSION_INTRADAY_DOWNSIDE": {
+            "block_median_partial_rho": {
+              "A": -0.17702932539983116,
+              "B": -0.4277225796389571
+            },
+            "closing_arm_h3_median_partial_rho": {
+              "accepted": -0.36425696665754204,
+              "rejected": -0.3470825437489823
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.4277225796389571,
+              "2021": -0.4419202668619754,
+              "2022": -0.4448279646771731,
+              "2023": -0.3028657070351223
+            },
+            "median_h3_partial_rho": -0.4064330440614112,
+            "median_tail_residual_gap": -0.0072886770305792044,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.40829618264932627,
+              "5": -0.4146960569800059
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.17702932539983116,
+              "2021": -0.32602452734404974,
+              "2022": -0.3566931344922214,
+              "2023": -0.5822744144078951
+            }
+          }
+        },
+        "passes": {
+          "PREOPEN_PATH_DOWNSIDE": true,
+          "TROUGH_SESSION_INTRADAY_DOWNSIDE": true
+        }
+      },
+      "pass": true,
+      "response_replay": {
+        "maximum_absolute_error": 9.992007221626409e-16,
+        "mismatch_count": 0,
+        "rows_reconstructed": 680,
+        "selected_scalar_case": {
+          "absolute_error": 5.551115123125783e-17,
+          "audit_type": "arm_robustness",
+          "authoritative_value": -0.1830963440307225,
+          "channel": "PREOPEN_PATH_DOWNSIDE",
+          "closing_arm": "accepted",
+          "coordinate": "pit",
+          "denominator": "ALL_STATUS",
+          "horizon": 3,
+          "independent_value": -0.18309634403072256,
+          "market_view": "ALL_A",
+          "n": 829,
+          "pass": true,
+          "scope": "cell",
+          "scope_value": "ALL_A:ALL_STATUS:accepted",
+          "source_row": 0
+        }
+      }
+    },
+    "PROP": {
+      "aggregate_comparison": {
+        "checks": [
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.negative_cells"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 8.326672684688674e-17,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 8.326672684688674e-17,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 8.326672684688674e-17,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.phase_signs.5"
+          },
+          {
+            "absolute_error": 6.938893903907228e-18,
+            "pass": true,
+            "path": "channels.CROSSER_DOWNSIDE.median_tail_residual_gap"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.negative_cells"
+          },
+          {
+            "absolute_error": 1.3877787807814457e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 1.214306433183765e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 4.163336342344337e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 2.7755575615628914e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 2.42861286636753e-17,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.phase_signs.5"
+          },
+          {
+            "absolute_error": 8.673617379884035e-19,
+            "pass": true,
+            "path": "channels.NONCROSSER_DOWNSIDE.median_tail_residual_gap"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.median_h3_partial_rho"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.negative_cells"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.neighbor_median_partial_rho.1"
+          },
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.neighbor_median_partial_rho.5"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.block_median_partial_rho.A"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.block_median_partial_rho.B"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.year_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.year_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 2.220446049250313e-16,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.year_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.1102230246251565e-16,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.year_median_partial_rho.2023"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.leave_one_year_out_median_partial_rho.2020"
+          },
+          {
+            "absolute_error": 0.0,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.leave_one_year_out_median_partial_rho.2021"
+          },
+          {
+            "absolute_error": 5.551115123125783e-17,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.leave_one_year_out_median_partial_rho.2022"
+          },
+          {
+            "absolute_error": 1.6653345369377348e-16,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.leave_one_year_out_median_partial_rho.2023"
+          },
+          {
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.phase_signs.3"
+          },
+          {
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.phase_signs.5"
+          },
+          {
+            "absolute_error": 3.469446951953614e-18,
+            "pass": true,
+            "path": "channels.CROSSER_MINUS_NONCROSSER.median_tail_residual_gap"
+          }
+        ],
+        "mismatch_count": 0
+      },
+      "authoritative_classification": "LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY",
+      "clock_and_support": {
+        "eight_groups": true,
+        "exact_1530_available_at": true,
+        "groups": 8,
+        "joint_information_clock_1530": true,
+        "maximum_event_year": 2023,
+        "post_2023_absent": true,
+        "response_begins_next_exchange_session": true,
+        "unique_date_view_denominator_key": true
+      },
+      "geometry_replay": null,
+      "hash_audit": {
+        "mismatch_count": 0,
+        "rows": [
+          {
+            "actual": "49a7aca15e228ec05fb214d39a2bbfb46c373d2bc86c7206a2b0593ab54b53cc",
+            "expected": "49a7aca15e228ec05fb214d39a2bbfb46c373d2bc86c7206a2b0593ab54b53cc",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/FORMATION_DEPTH_PROPAGATION_TOPOLOGY_MAP.md",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:topology_map"
+          },
+          {
+            "actual": "871f0ccf5747853a00916c86ac627e031ab1d5935f3419df6879504da66e9e87",
+            "expected": "871f0ccf5747853a00916c86ac627e031ab1d5935f3419df6879504da66e9e87",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-DATA-002_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:topology_panel"
+          },
+          {
+            "actual": "49e80f3452b91def77b1a1a8c4bf873db82992cd336f9906b6ed067e5ad3be1e",
+            "expected": "49e80f3452b91def77b1a1a8c4bf873db82992cd336f9906b6ed067e5ad3be1e",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-DATA-002_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:topology_result"
+          },
+          {
+            "actual": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "expected": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_panel"
+          },
+          {
+            "actual": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "expected": "3694468895c02ad4b1f020ad6dfbab29cf5107b10d08e736e626060fe0cf6231",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:attribution_result"
+          },
+          {
+            "actual": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "expected": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_attr_001.py",
+            "physical_root": "worker_worktree",
+            "role": "spec_input:accepted_attribution_runner"
+          },
+          {
+            "actual": "26f9cdcb8c8fdaeb00f102e4f8c31d9174d0ca2180da0de8955eff4e81b1c27e",
+            "expected": "26f9cdcb8c8fdaeb00f102e4f8c31d9174d0ca2180da0de8955eff4e81b1c27e",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-PROP-001_spec.json",
+            "role": "result_binding:spec_sha256"
+          },
+          {
+            "actual": "f9914e41cd47d4e092f0b9740b310dab6f6b9d08354e4bfb96b43538fd00f9e5",
+            "expected": "f9914e41cd47d4e092f0b9740b310dab6f6b9d08354e4bfb96b43538fd00f9e5",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_panel.csv",
+            "role": "result_binding:panel_sha256"
+          },
+          {
+            "actual": "ae5522197e3d84f7c29f2f1204128d972acf3ce9e79919b33705707a9ce177c5",
+            "expected": "ae5522197e3d84f7c29f2f1204128d972acf3ce9e79919b33705707a9ce177c5",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_response_audit.csv",
+            "role": "result_binding:response_audit_sha256"
+          },
+          {
+            "actual": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c",
+            "expected": "fc8f3c4a7e06a39fcce159a36aa8c81a5df567dc478403dfc1f69c9f2b37ea7c",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_prop_001.py",
+            "role": "result_binding:runner_sha256"
+          },
+          {
+            "actual": "ac7ad6e254d92b088f37120df02e699808269eb549ff0917d3495e52751ef899",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_result.json",
+            "role": "result_file"
+          },
+          {
+            "actual": "11018a72d119a68ec3201181177c3de7eea17f717fea6716b30fedb6ce67c656",
+            "pass": true,
+            "path": "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-PROP-001_topology.md",
+            "role": "report_file"
+          }
+        ]
+      },
+      "independent_classification": "LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY",
+      "independent_key_evaluation": {
+        "channels": {
+          "CROSSER_DOWNSIDE": {
+            "block_median_partial_rho": {
+              "A": -0.2413428451706231,
+              "B": -0.40352673411178774
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.40352673411178774,
+              "2021": -0.4378060618619155,
+              "2022": -0.40974788021128805,
+              "2023": -0.281700176285282
+            },
+            "median_h3_partial_rho": -0.3839483302630369,
+            "median_tail_residual_gap": -0.016952100121343565,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.37891299467489326,
+              "5": -0.37339795355079897
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.2413428451706231,
+              "2021": -0.21316601374975577,
+              "2022": -0.36769883074831955,
+              "2023": -0.5899259337455636
+            }
+          },
+          "CROSSER_MINUS_NONCROSSER": {
+            "block_median_partial_rho": {
+              "A": -0.1838068412594362,
+              "B": -0.48263776329572916
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.48263776329572916,
+              "2021": -0.5141441209909983,
+              "2022": -0.438032478304761,
+              "2023": -0.39725754993197376
+            },
+            "median_h3_partial_rho": -0.46176668995520753,
+            "median_tail_residual_gap": -0.012508936686838293,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.3874603369031885,
+              "5": -0.46437626413734745
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.1838068412594362,
+              "2021": -0.30109752016248775,
+              "2022": -0.4930794682306313,
+              "2023": -0.6259492449666254
+            }
+          },
+          "NONCROSSER_DOWNSIDE": {
+            "block_median_partial_rho": {
+              "A": -0.1439209908563186,
+              "B": -0.09945955613035917
+            },
+            "leave_one_year_out_median_partial_rho": {
+              "2020": -0.09945955613035917,
+              "2021": -0.12065962373462649,
+              "2022": -0.13537635082616142,
+              "2023": -0.02911603764019147
+            },
+            "median_h3_partial_rho": -0.09769573179095836,
+            "median_tail_residual_gap": -0.004610182574627634,
+            "negative_cells": 8,
+            "neighbor_median_partial_rho": {
+              "1": -0.07855871081849966,
+              "5": -0.10617045242168277
+            },
+            "phase_signs": {
+              "3": [
+                -1,
+                -1,
+                -1
+              ],
+              "5": [
+                -1,
+                -1,
+                -1,
+                -1,
+                -1
+              ]
+            },
+            "year_median_partial_rho": {
+              "2020": -0.1439209908563186,
+              "2021": -0.009246625275573276,
+              "2022": -0.07018389403860759,
+              "2023": -0.21921467756704277
+            }
+          }
+        },
+        "passes": {
+          "CROSSER_DOWNSIDE": true,
+          "CROSSER_MINUS_NONCROSSER": true,
+          "NONCROSSER_DOWNSIDE": false
+        }
+      },
+      "pass": true,
+      "response_replay": {
+        "maximum_absolute_error": 7.771561172376096e-16,
+        "mismatch_count": 0,
+        "rows_reconstructed": 648,
+        "selected_scalar_case": {
+          "absolute_error": 5.551115123125783e-17,
+          "audit_type": "partial_rank",
+          "authoritative_value": -0.4072546553961859,
+          "channel": "CROSSER_DOWNSIDE",
+          "closing_arm": null,
+          "coordinate": "pit",
+          "denominator": "ALL_STATUS",
+          "horizon": 3,
+          "independent_value": -0.4072546553961858,
+          "market_view": "ALL_A",
+          "n": 829,
+          "pass": true,
+          "scope": "cell",
+          "scope_value": "ALL_A:ALL_STATUS",
+          "source_row": 20
+        }
+      }
+    }
+  },
+  "method": "independent compact-panel rank residualization; no primary runner import or invocation",
+  "prohibited_data_read": {
+    "cy008": false,
+    "cy011": false,
+    "post_2023": false,
+    "raw_qd004": false,
+    "strategy_outcomes": false
+  },
+  "status": "PASS_ORTHOGONAL_REPLICATION",
+  "tolerance": 5e-12,
+  "worker_id": "WORKER-QA-001"
+}

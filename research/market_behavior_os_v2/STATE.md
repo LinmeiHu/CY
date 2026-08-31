@@ -6,9 +6,9 @@ Updated 2026-08-31.
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
-- `RESEARCH_OS_VERSION`: `2.3`
+- `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `FORMATION_DEPTH_OWN_SHARED_RESPONSE_DOMAIN_READY`
+- `CURRENT_PHASE`: `LEAN_PROMOTE_FORMATION_DEPTH_OWN_SHARED`
 - `CURRENT_PRIMARY_FRONTIER`: distinguish own-security overshoot from broad shared-date formation depth using the fixed five-stratum decomposition; subgroup search remains closed
 - `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
@@ -39,14 +39,20 @@ Updated 2026-08-31.
   disk, memory-pressure free 62--63%, swap 2.409/3.0 GiB used.
 - `INITIAL_HEAVY_CONCURRENCY`: 2 at <=1.5 GiB RSS each; one raw-minute reader;
   eight aggregate research threads maximum; 8 GiB system-headroom floor.
-- `CACHE_STATUS`: no cache published; preferred external root absent; 80-GiB
-  planning ceiling subject to manifest and 25% free-disk floor.
+- `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
+  all-key session ledger plus lossless raw array241 primitive table, projected
+  8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
 - `ACTIVE_EXPERIMENT`: none; MKT-FORMDEPTH-OWN-DATA-005 completed the reusable
   response domain, but no own/shared association has yet been computed.
 - `ACTIVE_RESOURCE_BLOCKER`: high baseline swap occupancy prevents promotion
   above two heavy workers until stability telemetry passes.
 - `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
   data remain locked; all current construction stays through 2023-12-31.
+- `FORMATION_QA`: `PASS_ORTHOGONAL_REPLICATION`; WORKER-QA-001 independently
+  matched 2,360 response rows, 288 geometry rows, and all five accepted
+  ATTR/PROP/CLOSE/PATH/IMMED classifications with no quarantine trigger.
+- `LEAN_OVERRIDE_ACTIVE_FROM`: `9d697dfece282695f67bd6a3af6252a2e9e92287`;
+  EXPLORE/PROMOTE/CONFIRM validation and minimal state maintenance now govern.
 
 ## Scope correction installed
 

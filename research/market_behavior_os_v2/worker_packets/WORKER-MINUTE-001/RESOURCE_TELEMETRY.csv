@@ -1,0 +1,4 @@
+stage,resource_class,processes,threads,source_rows,selected_sessions,wall_seconds,peak_rss_bytes,swap_used_mib,disk_free_gib,note
+inspection,METADATA_LIGHT,1,1,0,0,0.4,,2451.31,346.87,"Parquet metadata, manifests, process snapshot"
+tiny_layout_benchmark,BOUNDED_RAW_MINUTE_IO,1,1,907365,128,1.8,754417664,2451.31,346.87,"One frozen date; no cache publication; no swap delta measured"
+planned_pre2024_build,RAW_MINUTE_IO_HEAVY_SINGLE_WRITER,1,1,1486577999,5814333,"600-900 planning interval",4294967296,2451.31,346.87,"Not executed; abort on Director RAM/swap/disk guard"
