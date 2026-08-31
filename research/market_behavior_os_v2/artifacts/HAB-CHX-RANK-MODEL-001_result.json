@@ -1,0 +1,834 @@
+{
+  "claim_boundary": {
+    "cy011_read": false,
+    "future_fields_used_as_predictors": false,
+    "hyperparameter_search": false,
+    "portfolio_replay": false,
+    "post_2023_rows_read": false,
+    "untouched_validation": false
+  },
+  "counts": {
+    "candidate_rows": 398,
+    "complete_multi_candidate_dates": 74,
+    "complete_outcomes": 397,
+    "scored_model_end": "2023-12-31",
+    "scored_model_start": "2020-01-01"
+  },
+  "decision": "NO_RANKING_MODEL_CLEARED_PREDECLARED_REPLAY_GATE",
+  "engine_replay_shortlist": [],
+  "evaluations": {
+    "BASELINE_RS_SCORE": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.026798698213809882,
+          "median": -0.024200806334380348,
+          "n": 18,
+          "severe_loss_rate": 0.2222222222222222,
+          "win_rate": 0.4444444444444444,
+          "winner20_rate": 0.2222222222222222
+        },
+        "2021": {
+          "mean": 0.04458459400809852,
+          "median": 0.08255840052521041,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.6666666666666666,
+          "winner20_rate": 0.0
+        },
+        "2022": {
+          "mean": -0.1508677650761101,
+          "median": -0.161835690389008,
+          "n": 6,
+          "severe_loss_rate": 0.5,
+          "win_rate": 0.16666666666666666,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.010058819266880266,
+          "median": -0.0591580900994987,
+          "n": 33,
+          "severe_loss_rate": 0.21212121212121213,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.09090909090909091
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.031245172162382043,
+            "median": 0.00253106184899965,
+            "n": 24,
+            "severe_loss_rate": 0.16666666666666666,
+            "win_rate": 0.5,
+            "winner20_rate": 0.16666666666666666
+          },
+          "top1_mae": {
+            "mean": -0.10990712448629036,
+            "median": -0.1036796374315996,
+            "n": 24,
+            "severe_loss_rate": 0.5416666666666666,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.08030405196143431,
+            "median": 0.03024462328380363,
+            "n": 8,
+            "severe_loss_rate": 0.125,
+            "win_rate": 0.5,
+            "winner20_rate": 0.125
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.03172173400676178,
+            "median": -0.0621716518775341,
+            "n": 39,
+            "severe_loss_rate": 0.2564102564102564,
+            "win_rate": 0.3076923076923077,
+            "winner20_rate": 0.07692307692307693
+          },
+          "top1_mae": {
+            "mean": -0.11558215367326082,
+            "median": -0.0995846259004151,
+            "n": 39,
+            "severe_loss_rate": 0.46153846153846156,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.04444878889176056,
+            "median": -0.039839166719574846,
+            "n": 14,
+            "severe_loss_rate": 0.2857142857142857,
+            "win_rate": 0.35714285714285715,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "EQ_BALANCED_FIVE": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.02242231197245176,
+          "median": 0.0046567491051027,
+          "n": 18,
+          "severe_loss_rate": 0.2777777777777778,
+          "win_rate": 0.5,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2021": {
+          "mean": 0.04458459400809852,
+          "median": 0.08255840052521041,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.6666666666666666,
+          "winner20_rate": 0.0
+        },
+        "2022": {
+          "mean": -0.11757904195071707,
+          "median": -0.08076984095059225,
+          "n": 6,
+          "severe_loss_rate": 0.3333333333333333,
+          "win_rate": 0.0,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.003347323532415767,
+          "median": -0.0591580900994987,
+          "n": 33,
+          "severe_loss_rate": 0.21212121212121213,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.09090909090909091
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.027962882481363447,
+            "median": 0.0408719312723889,
+            "n": 24,
+            "severe_loss_rate": 0.20833333333333334,
+            "win_rate": 0.5416666666666666,
+            "winner20_rate": 0.125
+          },
+          "top1_mae": {
+            "mean": -0.10882306436511675,
+            "median": -0.09159204231726076,
+            "n": 24,
+            "severe_loss_rate": 0.4166666666666667,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.027617112349701784,
+            "median": 0.0005297694098908359,
+            "n": 8,
+            "severe_loss_rate": 0.0,
+            "win_rate": 0.5,
+            "winner20_rate": 0.0
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.020921434058308274,
+            "median": -0.0621716518775341,
+            "n": 39,
+            "severe_loss_rate": 0.23076923076923078,
+            "win_rate": 0.28205128205128205,
+            "winner20_rate": 0.07692307692307693
+          },
+          "top1_mae": {
+            "mean": -0.1080932746543854,
+            "median": -0.1032333534551812,
+            "n": 39,
+            "severe_loss_rate": 0.5128205128205128,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.037967970910524895,
+            "median": -0.03672119135614572,
+            "n": 14,
+            "severe_loss_rate": 0.2857142857142857,
+            "win_rate": 0.2857142857142857,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "EQ_BREAKOUT_ACCEPTANCE": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.07167418291089105,
+          "median": -0.0220751190782773,
+          "n": 18,
+          "severe_loss_rate": 0.2777777777777778,
+          "win_rate": 0.4444444444444444,
+          "winner20_rate": 0.2777777777777778
+        },
+        "2021": {
+          "mean": 0.10172203070264886,
+          "median": 0.08255840052521041,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.6666666666666666,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2022": {
+          "mean": -0.1180635107965759,
+          "median": -0.11813221138476035,
+          "n": 6,
+          "severe_loss_rate": 0.5,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.015788398260041928,
+          "median": -0.0630624011340945,
+          "n": 33,
+          "severe_loss_rate": 0.24242424242424243,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.09090909090909091
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.0791861448588305,
+            "median": 0.0064197004612860506,
+            "n": 24,
+            "severe_loss_rate": 0.20833333333333334,
+            "win_rate": 0.5,
+            "winner20_rate": 0.25
+          },
+          "top1_mae": {
+            "mean": -0.10804504182950248,
+            "median": -0.11008084939903104,
+            "n": 24,
+            "severe_loss_rate": 0.5416666666666666,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.06511390271394775,
+            "median": 0.037981658034162785,
+            "n": 8,
+            "severe_loss_rate": 0.0,
+            "win_rate": 0.75,
+            "winner20_rate": 0.125
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.03152303095797023,
+            "median": -0.0630624011340945,
+            "n": 39,
+            "severe_loss_rate": 0.28205128205128205,
+            "win_rate": 0.3333333333333333,
+            "winner20_rate": 0.07692307692307693
+          },
+          "top1_mae": {
+            "mean": -0.11102645765088624,
+            "median": -0.0976551612734514,
+            "n": 39,
+            "severe_loss_rate": 0.4358974358974359,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.04350202184620017,
+            "median": -0.04729425201437355,
+            "n": 14,
+            "severe_loss_rate": 0.21428571428571427,
+            "win_rate": 0.2857142857142857,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "EQ_COMPRESSION_DEFENSE": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.023506829649474516,
+          "median": 0.0046567491051027,
+          "n": 18,
+          "severe_loss_rate": 0.2777777777777778,
+          "win_rate": 0.5,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2021": {
+          "mean": 0.08282553602820951,
+          "median": 0.0622473478891519,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.6666666666666666,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2022": {
+          "mean": -0.1508677650761101,
+          "median": -0.161835690389008,
+          "n": 6,
+          "severe_loss_rate": 0.5,
+          "win_rate": 0.16666666666666666,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.04011995677643582,
+          "median": -0.0626531600082527,
+          "n": 33,
+          "severe_loss_rate": 0.30303030303030304,
+          "win_rate": 0.2727272727272727,
+          "winner20_rate": 0.030303030303030304
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.03833650624415827,
+            "median": 0.01289655459504975,
+            "n": 24,
+            "severe_loss_rate": 0.20833333333333334,
+            "win_rate": 0.5416666666666666,
+            "winner20_rate": 0.16666666666666666
+          },
+          "top1_mae": {
+            "mean": -0.10701523162810549,
+            "median": -0.10299569814412904,
+            "n": 24,
+            "severe_loss_rate": 0.5,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.08675216518894543,
+            "median": 0.054742476353742915,
+            "n": 8,
+            "severe_loss_rate": 0.0,
+            "win_rate": 0.75,
+            "winner20_rate": 0.125
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.05715808113023188,
+            "median": -0.0650486697418105,
+            "n": 39,
+            "severe_loss_rate": 0.3333333333333333,
+            "win_rate": 0.2564102564102564,
+            "winner20_rate": 0.02564102564102564
+          },
+          "top1_mae": {
+            "mean": -0.11503454483291693,
+            "median": -0.0995846259004151,
+            "n": 39,
+            "severe_loss_rate": 0.48717948717948717,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.0348510351111381,
+            "median": -0.0343000460279768,
+            "n": 14,
+            "severe_loss_rate": 0.21428571428571427,
+            "win_rate": 0.2857142857142857,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "EQ_PATIENT_SUPPLY": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.023763109119391647,
+          "median": 0.00253106184899965,
+          "n": 18,
+          "severe_loss_rate": 0.2222222222222222,
+          "win_rate": 0.5,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2021": {
+          "mean": 0.03748247915624477,
+          "median": 0.04094039705361035,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.6666666666666666,
+          "winner20_rate": 0.0
+        },
+        "2022": {
+          "mean": -0.06112162753696362,
+          "median": -0.013923166691423398,
+          "n": 6,
+          "severe_loss_rate": 0.3333333333333333,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": 0.008322627969783412,
+          "median": -0.0206273726273725,
+          "n": 33,
+          "severe_loss_rate": 0.21212121212121213,
+          "win_rate": 0.36363636363636365,
+          "winner20_rate": 0.09090909090909091
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.027192951628604925,
+            "median": 0.0061800817157503995,
+            "n": 24,
+            "severe_loss_rate": 0.16666666666666666,
+            "win_rate": 0.5416666666666666,
+            "winner20_rate": 0.125
+          },
+          "top1_mae": {
+            "mean": -0.10537839037662562,
+            "median": -0.0973811304616169,
+            "n": 24,
+            "severe_loss_rate": 0.4166666666666667,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.053055824724071554,
+            "median": 0.04871579647464875,
+            "n": 8,
+            "severe_loss_rate": 0.0,
+            "win_rate": 0.75,
+            "winner20_rate": 0.0
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.0023611036466392107,
+            "median": -0.0206273726273725,
+            "n": 39,
+            "severe_loss_rate": 0.23076923076923078,
+            "win_rate": 0.358974358974359,
+            "winner20_rate": 0.07692307692307693
+          },
+          "top1_mae": {
+            "mean": -0.0965722695707968,
+            "median": -0.0778452316913854,
+            "n": 39,
+            "severe_loss_rate": 0.358974358974359,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.04382015699414945,
+            "median": -0.039839166719574846,
+            "n": 14,
+            "severe_loss_rate": 0.2857142857142857,
+            "win_rate": 0.35714285714285715,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "RIDGE_ALPHA_10": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.07501291045185227,
+          "median": -0.0012621169155039476,
+          "n": 18,
+          "severe_loss_rate": 0.2777777777777778,
+          "win_rate": 0.5,
+          "winner20_rate": 0.2222222222222222
+        },
+        "2021": {
+          "mean": 0.06847506292542206,
+          "median": -0.0060476081833305,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.5,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2022": {
+          "mean": -0.14024078265761772,
+          "median": -0.13579141465481956,
+          "n": 6,
+          "severe_loss_rate": 0.5,
+          "win_rate": 0.0,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.0010204844743294137,
+          "median": -0.0059662007972147,
+          "n": 33,
+          "severe_loss_rate": 0.06060606060606061,
+          "win_rate": 0.48484848484848486,
+          "winner20_rate": 0.030303030303030304
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.07337844857024471,
+            "median": -0.0060476081833305,
+            "n": 24,
+            "severe_loss_rate": 0.20833333333333334,
+            "win_rate": 0.5,
+            "winner20_rate": 0.20833333333333334
+          },
+          "top1_mae": {
+            "mean": -0.1029143732313151,
+            "median": -0.11014219934478785,
+            "n": 24,
+            "severe_loss_rate": 0.5416666666666666,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.03285051051524476,
+            "median": -0.029676870626988067,
+            "n": 8,
+            "severe_loss_rate": 0.125,
+            "win_rate": 0.5,
+            "winner20_rate": 0.125
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.022438991887143,
+            "median": -0.0373185603228857,
+            "n": 39,
+            "severe_loss_rate": 0.1282051282051282,
+            "win_rate": 0.41025641025641024,
+            "winner20_rate": 0.02564102564102564
+          },
+          "top1_mae": {
+            "mean": -0.08398906665859962,
+            "median": -0.0769325686190293,
+            "n": 39,
+            "severe_loss_rate": 0.3076923076923077,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.03608276438219017,
+            "median": -0.005816686366857131,
+            "n": 14,
+            "severe_loss_rate": 0.21428571428571427,
+            "win_rate": 0.5,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "SINGLE_MINVOL_LOCATION": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.06777722688026658,
+          "median": -0.013835313588330247,
+          "n": 18,
+          "severe_loss_rate": 0.2777777777777778,
+          "win_rate": 0.5,
+          "winner20_rate": 0.2777777777777778
+        },
+        "2021": {
+          "mean": 0.08282553602820951,
+          "median": 0.0622473478891519,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.6666666666666666,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2022": {
+          "mean": -0.1065169756378516,
+          "median": -0.11813221138476035,
+          "n": 6,
+          "severe_loss_rate": 0.5,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.023060649833695577,
+          "median": -0.0581010438492622,
+          "n": 33,
+          "severe_loss_rate": 0.12121212121212122,
+          "win_rate": 0.3333333333333333,
+          "winner20_rate": 0.030303030303030304
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.07153930416725231,
+            "median": 0.01524148410163335,
+            "n": 24,
+            "severe_loss_rate": 0.20833333333333334,
+            "win_rate": 0.5416666666666666,
+            "winner20_rate": 0.25
+          },
+          "top1_mae": {
+            "mean": -0.11036003465968501,
+            "median": -0.11203546053962285,
+            "n": 24,
+            "severe_loss_rate": 0.625,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.05201303856224327,
+            "median": 0.03312462959278899,
+            "n": 8,
+            "severe_loss_rate": 0.0,
+            "win_rate": 0.625,
+            "winner20_rate": 0.125
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.0359000845727965,
+            "median": -0.0581010438492622,
+            "n": 39,
+            "severe_loss_rate": 0.1794871794871795,
+            "win_rate": 0.3333333333333333,
+            "winner20_rate": 0.02564102564102564
+          },
+          "top1_mae": {
+            "mean": -0.10073053124974496,
+            "median": -0.0961419532848102,
+            "n": 39,
+            "severe_loss_rate": 0.41025641025641024,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.035119870438743025,
+            "median": -0.0343000460279768,
+            "n": 14,
+            "severe_loss_rate": 0.14285714285714285,
+            "win_rate": 0.42857142857142855,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    },
+    "TREE_DEPTH_2": {
+      "annual_top1": {
+        "2020": {
+          "mean": 0.026798698213809882,
+          "median": -0.024200806334380348,
+          "n": 18,
+          "severe_loss_rate": 0.2222222222222222,
+          "win_rate": 0.4444444444444444,
+          "winner20_rate": 0.2222222222222222
+        },
+        "2021": {
+          "mean": 0.06006075276404215,
+          "median": -0.0060476081833305,
+          "n": 6,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.5,
+          "winner20_rate": 0.16666666666666666
+        },
+        "2022": {
+          "mean": -0.13383822786884012,
+          "median": -0.1185749595232351,
+          "n": 6,
+          "severe_loss_rate": 0.5,
+          "win_rate": 0.0,
+          "winner20_rate": 0.0
+        },
+        "2023": {
+          "mean": -0.024799161661076794,
+          "median": -0.0535077825400406,
+          "n": 33,
+          "severe_loss_rate": 0.09090909090909091,
+          "win_rate": 0.30303030303030304,
+          "winner20_rate": 0.030303030303030304
+        }
+      },
+      "blocks": {
+        "chronological_development_2020_2021": {
+          "top1": {
+            "mean": 0.035114211851367955,
+            "median": -0.00969662805008125,
+            "n": 24,
+            "severe_loss_rate": 0.16666666666666666,
+            "win_rate": 0.4583333333333333,
+            "winner20_rate": 0.20833333333333334
+          },
+          "top1_mae": {
+            "mean": -0.10702395090486223,
+            "median": -0.1036796374315996,
+            "n": 24,
+            "severe_loss_rate": 0.5416666666666666,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": 0.08408723760898959,
+            "median": 0.04537736587402472,
+            "n": 8,
+            "severe_loss_rate": 0.125,
+            "win_rate": 0.625,
+            "winner20_rate": 0.125
+          }
+        },
+        "consumed_2022_2023": {
+          "top1": {
+            "mean": -0.04157440261611729,
+            "median": -0.0662760967845713,
+            "n": 39,
+            "severe_loss_rate": 0.15384615384615385,
+            "win_rate": 0.2564102564102564,
+            "winner20_rate": 0.02564102564102564
+          },
+          "top1_mae": {
+            "mean": -0.09733050004901132,
+            "median": -0.094417033348331,
+            "n": 39,
+            "severe_loss_rate": 0.41025641025641024,
+            "win_rate": 0.0,
+            "winner20_rate": 0.0
+          },
+          "top3_date_mean": {
+            "mean": -0.03857678635866484,
+            "median": -0.01844095673720748,
+            "n": 14,
+            "severe_loss_rate": 0.2857142857142857,
+            "win_rate": 0.35714285714285715,
+            "winner20_rate": 0.0
+          }
+        }
+      }
+    }
+  },
+  "experiment_id": "HAB-CHX-RANK-MODEL-001",
+  "hashes": {
+    "inputs": {
+      "candidate_panel": "b9983c4645cab9bf6afe555178f1bb961281e24898ded522ffe2d5bb9ee4cbfc",
+      "information_result": "27171bdcdbe90388f4ab51b3f8d702302444b7959fc92a3c601560fd8a6a44fd",
+      "information_spec": "0ec65815558aab2373dc8f2e93c329cc61ee521275191aee2cf3308d8e9bac10"
+    },
+    "report_sha256": "cab7b0fa677c7cf98f5127c9a7f2c7f7eacbe1211a0ab421c4cec0dd1d69c305",
+    "spec_sha256": "db236b45011a372c6e186fc01c35861cae610fc6ca66f53db8e8f1e6d7d4f247"
+  },
+  "honesty_boundary": "The four bundles, two fixed model classes, input set, fitting schedule, target, and decision rules are frozen after HAB-CHX-RANK-INFO-001 and before any multivariate estimate is accepted. All 2018-2023 rows remain consumed development history.",
+  "information_roles": {
+    "BASELINE_RS_SCORE": "CURRENT_BASELINE",
+    "EQ_BALANCED_FIVE": "NO_ENGINE_REPLAY",
+    "EQ_BREAKOUT_ACCEPTANCE": "NO_ENGINE_REPLAY",
+    "EQ_COMPRESSION_DEFENSE": "NO_ENGINE_REPLAY",
+    "EQ_PATIENT_SUPPLY": "NO_ENGINE_REPLAY",
+    "RIDGE_ALPHA_10": "NO_ENGINE_REPLAY",
+    "SINGLE_MINVOL_LOCATION": "NO_ENGINE_REPLAY",
+    "TREE_DEPTH_2": "NO_ENGINE_REPLAY"
+  },
+  "model_artifacts": {
+    "2020": {
+      "ridge_coefficients": {
+        "box_width": -0.03231927828461908,
+        "breakout_volume_ratio": -0.022828704653712107,
+        "minvol_location": 0.0066257233708650175,
+        "r120": -0.043582390316130724,
+        "rs_acceleration": -0.011107939162283103,
+        "rs_score": -0.030450794750383037,
+        "vol_ratio": -0.019929608766511855
+      },
+      "ridge_intercept": 0.19148255216059262,
+      "training_end": "2019-12-30",
+      "training_rows": 63,
+      "tree_depth": 0,
+      "tree_node_count": 1,
+      "tree_rules": "|--- value: [0.06]"
+    },
+    "2021": {
+      "ridge_coefficients": {
+        "box_width": 0.028820737622286742,
+        "breakout_volume_ratio": -0.008606524852842721,
+        "minvol_location": 0.024538173547162773,
+        "r120": -0.030489137111432356,
+        "rs_acceleration": -0.004079945090254467,
+        "rs_score": -0.010096263896209857,
+        "vol_ratio": -0.005728033148052392
+      },
+      "ridge_intercept": 0.05191403674499895,
+      "training_end": "2020-12-30",
+      "training_rows": 175,
+      "tree_depth": 2,
+      "tree_node_count": 7,
+      "tree_rules": "|--- r120 <= 0.72\n|   |--- box_width <= 0.73\n|   |   |--- value: [0.03]\n|   |--- box_width >  0.73\n|   |   |--- value: [0.16]\n|--- r120 >  0.72\n|   |--- rs_acceleration <= 0.95\n|   |   |--- value: [0.01]\n|   |--- rs_acceleration >  0.95\n|   |   |--- value: [0.04]"
+    },
+    "2022": {
+      "ridge_coefficients": {
+        "box_width": 0.027887358481795913,
+        "breakout_volume_ratio": -0.0010199766510873682,
+        "minvol_location": 0.028293196569865592,
+        "r120": -0.028570726875548135,
+        "rs_acceleration": -0.01308181314665105,
+        "rs_score": -0.008033670720873609,
+        "vol_ratio": -0.0053977364186009475
+      },
+      "ridge_intercept": 0.046274587040030284,
+      "training_end": "2021-12-16",
+      "training_rows": 227,
+      "tree_depth": 2,
+      "tree_node_count": 7,
+      "tree_rules": "|--- r120 <= 0.72\n|   |--- minvol_location <= 0.95\n|   |   |--- value: [0.03]\n|   |--- minvol_location >  0.95\n|   |   |--- value: [0.16]\n|--- r120 >  0.72\n|   |--- vol_ratio <= 0.95\n|   |   |--- value: [0.01]\n|   |--- vol_ratio >  0.95\n|   |   |--- value: [0.04]"
+    },
+    "2023": {
+      "ridge_coefficients": {
+        "box_width": 0.01810604325216404,
+        "breakout_volume_ratio": 0.010883429238207105,
+        "minvol_location": 0.02825773723418054,
+        "r120": -0.015348924461857318,
+        "rs_acceleration": -0.0077085762431803985,
+        "rs_score": -0.009679070736491739,
+        "vol_ratio": -0.004327428158495309
+      },
+      "ridge_intercept": 0.013113176822708714,
+      "training_end": "2022-12-13",
+      "training_rows": 258,
+      "tree_depth": 2,
+      "tree_node_count": 7,
+      "tree_rules": "|--- minvol_location <= 0.83\n|   |--- box_width <= 0.81\n|   |   |--- value: [-0.03]\n|   |--- box_width >  0.81\n|   |   |--- value: [0.05]\n|--- minvol_location >  0.83\n|   |--- r120 <= 0.73\n|   |   |--- value: [0.11]\n|   |--- r120 >  0.73\n|   |   |--- value: [0.03]"
+    }
+  },
+  "research_level": "LEVEL_1_CHRONOLOGICAL_CANDIDATE_RANKING",
+  "status": "COMPLETE_CHRONOLOGICAL_MODEL_COMPARISON"
+}

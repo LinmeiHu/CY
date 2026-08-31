@@ -1,0 +1,91 @@
+{
+  "experiment_id": "HAB-CHX-RANK-INFO-001",
+  "research_level": "LEVEL_1_CANDIDATE_INFORMATION_SCAN",
+  "status": "FROZEN_PANEL_AND_MARGINAL_SCAN_BEFORE_ACCEPTED_ESTIMATES",
+  "frozen_at": "2026-08-31",
+  "question": "Within the actual PIT CHINEXT candidates that pass the frozen RS-acceleration veto, which economically distinct descriptors may improve same-date capital allocation?",
+  "honesty_boundary": "The candidate domain, 15 descriptors, economic orientations, outcome construction, and marginal diagnostics are fixed before this script's accepted panel and scan are viewed. All 2018-2023 rows are consumed development history.",
+  "candidate_domain": {
+    "source": "ENTRY_SIGNAL_EVALUATED rows from the accepted RS-veto engine replays",
+    "baseline_admission": "price structure passed, minvol.passed is true, and rs is present",
+    "frozen_component": "exclude r20-r120 >= 0.20 using exact decimal comparison",
+    "decision_at": "completed trade_date close, 15:00 Asia/Shanghai",
+    "baseline_rank": "descending existing rs.score, then mom60, then symbol",
+    "selected_status": "exact new-position fills in the accepted RS-veto execution ledgers"
+  },
+  "outcome_contract": {
+    "primary": "20th trading-session close total return from next-session raw open, net 10 bps at entry and hypothetical mark-to-exit",
+    "neighbor": "5th trading-session close return under the same construction",
+    "path": ["20-session MFE", "20-session MAE"],
+    "next_open": "requires hard_valid, tradable, finite positive raw open, and buy_blocked_open is false",
+    "corporate_actions": "apply visible valid cash/share actions before the effective-session bar; fail closed on rights, blocking, invalid, or unavailable action",
+    "missing_or_invalid": "outcome unavailable; never substitute",
+    "predictor_boundary": "all outcome/path fields are attribution targets and never model inputs"
+  },
+  "descriptors": {
+    "trend_relative_strength": ["rs_score", "r20", "r60", "r120", "rs_acceleration", "mom20", "mom60", "mom120"],
+    "supply_demand": ["vol_ratio", "minvol_location", "minvol_ratio", "breakout_volume_ratio"],
+    "risk_path_setup": ["box_width", "ma_dispersion", "direction_efficiency"],
+    "relative_quality": ["same-date percentile of every descriptor", "baseline candidate rank"]
+  },
+  "economic_orientation": {
+    "higher_is_better": ["rs_score", "r20", "r60", "r120", "mom20", "mom60", "mom120", "breakout_volume_ratio"],
+    "lower_is_better": ["rs_acceleration", "box_width", "ma_dispersion", "direction_efficiency", "vol_ratio", "minvol_location", "minvol_ratio"]
+  },
+  "diagnostics": [
+    "coverage",
+    "overall and two-block Spearman rank association",
+    "oriented top/middle/bottom thirds with mean, median, win, winner-20 and severe-loss rates",
+    "same-date Top-1 economics on dates with at least two candidates",
+    "comparison to existing rs.score Top-1",
+    "pairwise redundancy against existing rs.score and other descriptors"
+  ],
+  "inputs": {
+    "parent_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001_result.json",
+      "sha256": "8b019d174bae80f4fd8eba2c01a6f19f8101e9e3070addff4a1ff5b643644f46"
+    },
+    "development_event_ledger": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/development_2018_2021/event_ledger.jsonl",
+      "sha256": "7fff940e7b9cd18b1cc6f695174d90f5eb599791136d1d7ced45b87fb70c4dfa"
+    },
+    "development_execution_ledger": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/development_2018_2021/execution_ledger.jsonl",
+      "sha256": "04784200246d46990e9c5a2888f781bbafe1774177d8ec19ad62e9f776961dd1"
+    },
+    "consumed_event_ledger": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/consumed_2022_2023/event_ledger.jsonl",
+      "sha256": "39cdce061d104978416c7b0bcf9e7bfab0271791bca30d817cb4d1129f7fdb6f"
+    },
+    "consumed_execution_ledger": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/consumed_2022_2023/execution_ledger.jsonl",
+      "sha256": "0b989d8057db365d48553b5af99551d12f83cfd8ee755e3a32dab1707b4e13c5"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_audit": {
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/audit.json",
+      "sha256": "4adab25ede8b1cb5fa2db3af3ec75340ac6392e60fd83609f87d807a85ba859b"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "prohibited": [
+    "post-2023 rows or outcomes",
+    "CY-011",
+    "changing or retesting the 0.20 veto threshold",
+    "outcome or future-path fields as predictors",
+    "random-shuffle validation",
+    "broad-universe prediction outside the actual candidate set",
+    "automatic feature combinations or threshold search",
+    "calling any block untouched OOS"
+  ]
+}

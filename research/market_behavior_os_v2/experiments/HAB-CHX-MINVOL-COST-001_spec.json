@@ -1,0 +1,76 @@
+{
+  "experiment_id": "HAB-CHX-MINVOL-COST-001",
+  "research_level": "LEVEL_2_BOUNDED_IMPLEMENTATION_COST_STRESS",
+  "status": "FROZEN_BEFORE_HIGHER_COST_REPLAYS",
+  "frozen_at": "2026-08-31",
+  "question": "Does the frozen minute-volatility half-gross risk overlay retain economic value against a same-cost baseline under modestly higher trading friction?",
+  "honesty_boundary": "The overlay signal, 0.80 state threshold, 10%/5% exposures, two cost levels, same-cost controls, metrics, and decision gate are frozen before higher-cost replay results. All periods are consumed research.",
+  "frozen_overlay": {
+    "state": "minute_realized_volatility__ordinal_progression__pit_3y_pct",
+    "activation_date": "2020-02-07",
+    "rule": "target 5% per selected holding when state >= 0.80; otherwise 10%",
+    "threshold_search": false,
+    "exposure_search": false,
+    "stock_selection_changed": false,
+    "exit_changed": false
+  },
+  "cost_stress": {
+    "baseline_cost_bps_per_side": 10.0,
+    "stressed_cost_bps_per_side": [20.0, 30.0],
+    "comparison": "at each cost and in each block, compare the overlay with a fresh baseline replay at exactly the same cost",
+    "reason": "the overlay increased development turnover from 41.94 to 53.39 and therefore requires matched-cost economics"
+  },
+  "blocks": ["development_2018_2021", "consumed_2022_2023"],
+  "decision_gate": {
+    "required_at_every_cost_and_block": [
+      "overlay total return exceeds same-cost baseline",
+      "overlay Sharpe exceeds same-cost baseline",
+      "overlay max drawdown is no worse",
+      "zero same-day fills"
+    ],
+    "economic_materiality": "overlay total-return benefit remains at least 0.5 percentage points in every cost/block comparison",
+    "pass": "PROMISING_RISK_OVERLAY",
+    "fail": "DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY"
+  },
+  "inputs": {
+    "parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/HAB-CHX-DECISION-BATCH-001_spec.json",
+      "sha256": "777c8a5675bb8fd98bf4b88184c1a5801f775be998a1527e82c1ef6eb3fd6918"
+    },
+    "parent_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001_result.json",
+      "sha256": "8b019d174bae80f4fd8eba2c01a6f19f8101e9e3070addff4a1ff5b643644f46"
+    },
+    "decision_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_hab_chx_decision_batch_001.py",
+      "sha256": "84bba5988818631a3a71b59a4b3c1e3d2f6b3d1744f99bf366168b83a2bb6880"
+    },
+    "shared_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_hab_chx_downrev_strat_001.py",
+      "sha256": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e"
+    },
+    "engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "minute_state_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_nonslope_panel.csv",
+      "sha256": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0"
+    },
+    "minute_state_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_result.json",
+      "sha256": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc"
+    }
+  },
+  "prohibited": [
+    "post-2023 rows or outcomes",
+    "CY-011",
+    "changing the 0.80 signal threshold",
+    "searching exposure levels",
+    "changing selection, entry, or exit logic",
+    "unmatched cost comparison",
+    "additional cost levels after results",
+    "same-bar fills",
+    "calling any block untouched OOS"
+  ]
+}

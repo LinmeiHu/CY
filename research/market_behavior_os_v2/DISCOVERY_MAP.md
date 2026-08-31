@@ -8,18 +8,19 @@ engine ledgers.
 
 | Rank | Family | Economic role and current effect | Funnel status | Cheapest useful next decision |
 |---:|---|---|---|---|
-| 1 | Stock-level RS acceleration overextension | Excluding new candidates with PIT `r20-r120 >= 0.20` improves return by 1.95/6.79 pp, drawdown by 2.05/6.15 pp, and Sharpe by 0.127/0.337 across the two consumed blocks | `DEVELOPMENT_STRATEGY_CANDIDATE`; all fixed replay gates pass | Independent, separately quarantined confirmation; no threshold neighbor or combination search |
-| 2 | Five-day minute-volatility progression | High state is useful as a risk budget rather than an admission veto. Fixed 15:30 5%-versus-10% target weights improve return by 1.76/6.19 pp and drawdown by 5.30/5.74 pp while retaining all cycles | `DEVELOPMENT_RISK_CANDIDATE`; all fixed replay gates pass | Independent confirmation plus turnover/cost stress; keep the earlier admission veto parked |
-| 3 | Turnover / cross-industry dispersion | Opportunity-width habitat. Turnover-to-width PIT rho 0.5016 and fixed-control partial rho 0.2128; dispersion h3 partial rho 0.2228 and high-low width gap 2.80 percentage points | `ROBUSTNESS`, ranking translation `PARKED_RESOURCE` | Run the already-frozen PIT industry-rank test only under a materially different bounded implementation/resource envelope; do not infer PnL from width |
-| 4 | Downside-extreme participation / reversal | Market h5 reversal partial rho 0.0823. Fixed low-state CHINEXT admission veto improved the later block but reduced 2018-2021 return by 11.30 percentage points | `PARKED_REGIME_DEPENDENT_CHINEXT_TRANSLATION`; market family remains `PROMISING` | Test only as habitat for an independently discovered reversal strategy, not another V1 threshold |
-| 5 | Liquidity activity / continuation | h5 continuation partial rho 0.1466, 8/8 cells, positive in both blocks; CHINEXT trade screen had higher mean but materially worse severe-loss incidence in the high state | `PROMISING_MARKET_BEHAVIOR`, `PARKED_CHINEXT_TRANSLATION` | Revisit only for an independently motivated exposure or liquidity-capacity decision |
+| 1 | Stock-level RS acceleration overextension | Excluding new candidates with PIT `r20-r120 >= 0.20` improves return by 1.95/6.79 pp, drawdown by 2.05/6.15 pp, and Sharpe by 0.127/0.337 across the two consumed blocks | `PROMISING_ADMISSION_COMPONENT`; fixed and unchanged, but not independently confirmed | Separately quarantined confirmation only; no threshold, lookback, or combination search |
+| 2 | Turnover / cross-industry dispersion | Opportunity-width habitat. Turnover-to-width PIT rho 0.5016 and fixed-control partial rho 0.2128; dispersion h3 partial rho 0.2228 and high-low width gap 2.80 percentage points | `ROBUSTNESS`, ranking translation `PARKED_RESOURCE` | Use only a materially different bounded implementation/resource contract; do not rescue either failed builder or infer PnL from width |
+| 3 | Liquidity activity / continuation | h5 continuation partial rho 0.1466, 8/8 cells, positive in both blocks; CHINEXT trade screen had higher mean but materially worse severe-loss incidence in the high state | `PROMISING_MARKET_BEHAVIOR`, `PARKED_CHINEXT_TRANSLATION` | Revisit only for an independently motivated exposure or liquidity-capacity decision |
+| 4 | Five-day minute-volatility progression | High state reduces drawdown and improves Sharpe as a 5%-versus-10% risk budget, but its matched-cost development return benefit is only +0.27 pp at 20 bps/side and -2.41 pp at 30 bps/side | `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`; not a current strategy candidate | Preserve the mechanism as risk-control evidence; do not optimize threshold/exposure or repeat cost stress |
+| 5 | Downside-extreme participation / reversal | Market h5 reversal partial rho 0.0823. Fixed low-state CHINEXT admission veto improved the later block but reduced 2018-2021 return by 11.30 percentage points | `PARKED_REGIME_DEPENDENT_CHINEXT_TRANSLATION`; market family remains `PROMISING` | Test only as habitat for an independently discovered reversal strategy, not another V1 threshold |
 | 6 | Leadership concentration / fragility | h3 downside partial rho -0.1321 in the market screen; the CHINEXT trade screen had the opposite favorable return ordering | `PROMISING_MARKET_BEHAVIOR`, `REJECTED_AS_CHINEXT_VETO` | Test a portfolio-concentration/capacity role rather than a generic admission veto |
 | 7 | New-high/new-low breadth / exhaustion | h5 partial rho -0.1315 after fixed controls; CHINEXT high-state veto reversed across coarse blocks | `PROMISING_MARKET_BEHAVIOR`, `REJECTED_AS_CHINEXT_VETO` | Leave parked until a distinct exhaustion/mean-reversion archetype exists |
 
-There are now two simple executable **development candidates**, not validated
-strategies. Both passed their fixed economic replay gates on repeatedly consumed
-2018--2023 history. The external post-2023 boundary is contaminated by an
-inventory incident, so neither candidate may be called confirmed or tested on
+There is now one fixed executable **promising admission component**, not a
+validated strategy: the RS-acceleration overextension veto. The minute-volatility
+half-gross overlay is downgraded after its predeclared matched-cost stress. Both
+use repeatedly consumed 2018--2023 history. The external post-2023 boundary is
+contaminated by an inventory incident, so neither mechanism may be confirmed on
 that material.
 
 ## Fast-screen casualties
@@ -37,6 +38,8 @@ that material.
 | Box width and direction efficiency | Rejected/mixed across coarse blocks |
 | Minimum-volume location and ratio | Rejected as mixed or weak |
 | Exit reason / realized holding duration | Descriptive attribution only; no PIT exit predictor or rule was promoted |
+| Current-candidate multivariate ranking | Four equal-weight bundles, fixed ridge, and a depth-2 tree all failed the two-block replay gate. Ridge cut 2022--2023 Top-1 severe losses from 25.6% to 12.8% but worsened the development severe-loss rate from 16.7% to 20.8% |
+| Coarse individual-exit variants | MA20x2, MA30x1, MA20x1, and MA40x1 were screened on 53/28 exact two-leg cycles. None improved mean return by the fixed amount in both blocks; no exit replay was run |
 
 ## Executable translations
 
@@ -46,8 +49,11 @@ that material.
 | `HAB-CHX-MINVOLPATH-STRAT-001` | At t 15:30, block next-open admissions when five-day minute-volatility progression PIT >= 0.80 | +18.05 pp | +0.87 pp | Failed severe-loss reduction in both blocks; `PARKED_NEAR_MISS` |
 | `HAB-CHX-DECISION-BATCH-001 / RS_ACCEL_OVEREXTENSION_VETO` | At t close, exclude a new candidate when PIT `r20-r120 >= 0.20` | +1.95 pp | +6.79 pp | Passed every fixed gate; `DEVELOPMENT_STRATEGY_CANDIDATE` |
 | `HAB-CHX-DECISION-BATCH-001 / MINVOL_HIGH_HALF_GROSS` | At t 15:30, target 5% per selected holding when minute-volatility progression PIT >= 0.80, otherwise 10% | +1.76 pp | +6.19 pp | Passed every fixed gate; `DEVELOPMENT_RISK_CANDIDATE` |
+| `HAB-CHX-RANK-MODEL-001` | Same-date Top-1 allocation using four fixed bundles, ridge alpha 10, or a depth-2 tree | no candidate passed | no candidate passed | `NO_RANKING_MODEL_CLEARED_PREDECLARED_REPLAY_GATE`; no portfolio replay |
+| `HAB-CHX-EXIT-SCREEN-001` | Earlier individual exits from four fixed MA/confirmation rules | screen only | screen only | `EXIT_REMAINS_UNRESOLVED`; no portfolio replay |
+| `HAB-CHX-MINVOL-COST-001` | Re-run baseline and half-gross overlay at matched 20/30 bps per side | +0.27/-2.41 pp | +5.71/+4.81 pp | `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY` because development benefit is immaterial then negative |
 
-All four translations preserve existing next-session-open execution, T+1
+All executable translations and matched-cost controls preserve next-session-open execution, T+1
 sellability, trading status, price limits, corporate actions, and costs. The new
 selection arm preserves ranking among admitted candidates and all existing
 positions/exits; the exposure arm preserves exact completed-cycle identity and
@@ -82,13 +88,14 @@ temporary paths are on `/dev/disk3s5` at `/System/Volumes/Data`, with about
   capacity, and portfolio payoff are unresolved.
 
 What market behavior are we still not studying? Independent stability of the
-stock-level overextension effect, interactions between rank acceleration and
-market participation, executable exit/holding-period mismatch, security- and
-industry-level rank direction inside widening dispersion, true order flow, and
-stable representations of broader trend quality/age/transition.
+stock-level overextension effect; security/industry-relative direction inside
+widening dispersion; signal-time stock-level intraday supply, demand, support,
+and acceptance mechanisms beyond daily engine summaries; full rebalanced-position
+exit paths; true order flow; and stable broader trend quality/age/transition.
 
-Has any discovered mechanism implied a genuinely new strategy archetype? The
-dispersion/relative-value family remains genuinely new but resource-parked. The
-RS-acceleration result is a new stock-selection mechanism inside the existing
-breakout seed, while minute-volatility progression now supports a defensive
-exposure overlay. Neither is independently validated or authorized for live use.
+Has any discovered mechanism implied a genuinely new strategy archetype? No new
+archetype emerged in this cycle. Dispersion/relative value remains the only
+genuinely new, resource-parked archetype. RS acceleration remains a selection
+mechanism inside the existing breakout seed; minute-volatility progression is
+useful risk-state evidence but its fixed sizing translation is cost-sensitive.
+Neither is independently validated or authorized for live use.

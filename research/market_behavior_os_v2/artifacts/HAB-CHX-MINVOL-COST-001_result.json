@@ -1,0 +1,385 @@
+{
+  "all_predeclared_checks_pass": false,
+  "claim_boundary": {
+    "cost_level_search": false,
+    "cy011_read": false,
+    "existing_engine_changed_on_disk": false,
+    "post_2023_rows_read": false,
+    "same_bar_fill_assumed": false,
+    "selection_entry_or_exit_changed": false,
+    "signal_or_exposure_changed": false,
+    "untouched_validation": false
+  },
+  "decision": "DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY",
+  "experiment_id": "HAB-CHX-MINVOL-COST-001",
+  "hashes": {
+    "engine_outputs": {
+      "20": {
+        "MINVOL_HIGH_HALF_GROSS": {
+          "consumed_2022_2023": {
+            "daily_nav.jsonl": "dbc8b0b0ac56ef4de10f675d6fa44a5ef37c75559f07af788783a238623e2816",
+            "engine_summary.json": "a731cd45b0231ced5ce4c981003860df222147bb2e5c2eb8c782ae4ae963074f",
+            "event_ledger.jsonl": "e262e7dacdae7e91d2854b5229f7d5ed953a1409f1ca5c8490ef9654b1f59e62",
+            "execution_ledger.jsonl": "a1d29290a55491515f8a61c4f5eacf775c6bbd934a809949ad303623c2106f01"
+          },
+          "development_2018_2021": {
+            "daily_nav.jsonl": "a13e55481398a4c483ba55d39cd8c9674a77d52ee3ad90c4bfaab137778ff751",
+            "engine_summary.json": "814078f0676136556a2b012fc73fef98d49ef0dcb5eaf7aab65da239c9ce2be2",
+            "event_ledger.jsonl": "88bd771c4f29d482e4daea2ce950e73aff52e65a481976669d9acc7cfd55a3f5",
+            "execution_ledger.jsonl": "ad0f6038555e64ab510e9928204a515480ce6bb80633b6bf8a2ba7d11510b3f7"
+          }
+        },
+        "SAME_COST_BASELINE": {
+          "consumed_2022_2023": {
+            "daily_nav.jsonl": "c904429d786eb5c7bab1f49b626a09b036d8e0d04e2f9e68a99afa6cf5cc5e31",
+            "engine_summary.json": "06b7294a4e5aa6cff39e28f293d97bbe0164b3e076b038379effaba4ce80f807",
+            "event_ledger.jsonl": "ea2200e87ada0bc9a2b5ddcf7b9426c7bdfba20befc9cf58a802233fa5cef50c",
+            "execution_ledger.jsonl": "3f7ff818ff746a8e3e5b1323a0d2a48bc622c3cb523450917020d66f4dcf80b7"
+          },
+          "development_2018_2021": {
+            "daily_nav.jsonl": "e97fee56293c78a8379e9d9173a2d24def0bf76a7275db6ee1d8905d1dfb97d2",
+            "engine_summary.json": "11f3b0c64ca388d0af66eb06ba94e91b3d11b30c4dc833c5e885a44657c1a997",
+            "event_ledger.jsonl": "f2c40779927348409d40b08e865dc9b6a84d8537f2fefd20a4f97821a0cddcd8",
+            "execution_ledger.jsonl": "764d4effe8dbb807615b8cc21b7730a46b229970221cdde1faf3b9d3f16449e4"
+          }
+        }
+      },
+      "30": {
+        "MINVOL_HIGH_HALF_GROSS": {
+          "consumed_2022_2023": {
+            "daily_nav.jsonl": "bd37138a684844d725f3054ab1ab4a37b884b064e19bed8b34b7383b6a81ef42",
+            "engine_summary.json": "0a9de50ac04aa499778dedca38cc7e9a94c273f822e649ea70bcc65b2a5d4122",
+            "event_ledger.jsonl": "286920f203d56f3cb724ce95731606115952226d825e4836986ef6bd11ae427e",
+            "execution_ledger.jsonl": "b223e6aa35265f84a063ccc5af17947bf0fd54101a4ae2f0454cb870debf311a"
+          },
+          "development_2018_2021": {
+            "daily_nav.jsonl": "44356bd1827238d6549d185f5d7009e9e5912359abe5b52581b689a8eb16c62c",
+            "engine_summary.json": "bcc8edb3eb945ba224bf98c0ad2617892b4ee13998674771f174f389212e23f8",
+            "event_ledger.jsonl": "88bd771c4f29d482e4daea2ce950e73aff52e65a481976669d9acc7cfd55a3f5",
+            "execution_ledger.jsonl": "47db8c7236987eda50f768dbe0300d518d1bc64b46ed3e0fd6a77ea977ce4c99"
+          }
+        },
+        "SAME_COST_BASELINE": {
+          "consumed_2022_2023": {
+            "daily_nav.jsonl": "d057ff6dc84c34b9aadcad4dcfa89b0eb6cd3f3346696a16432f0b6c04db8ebe",
+            "engine_summary.json": "7eced2e22a6800f6ae30ad8f5c4e6b2745d7493e6efe194743465b87295a66ab",
+            "event_ledger.jsonl": "d78db482f73d3d78792457849616e2da9ceadcfb457b589e3fa718aee9dc4da8",
+            "execution_ledger.jsonl": "ddb32e65d649b53d7c96095ef871f0ca89833165198e053cd0d4538e423f8616"
+          },
+          "development_2018_2021": {
+            "daily_nav.jsonl": "45617fe60578401c9ade844a6a1f7c941dad53d6d8773844dcb925dd6b294be4",
+            "engine_summary.json": "feedfe97f83f734aab7895ba4850d10fd99b1f48405ec666df35cb69e93d3e62",
+            "event_ledger.jsonl": "c8c9c8e600d5b02a175c56525c6390111f6c4017fd7211c57285958a246de25c",
+            "execution_ledger.jsonl": "66f29b7f2a8bbb40214c9694bca59ef45f798edf79a8af14294c1157a45dbe3b"
+          }
+        }
+      }
+    },
+    "inputs": {
+      "decision_runner": "84bba5988818631a3a71b59a4b3c1e3d2f6b3d1744f99bf366168b83a2bb6880",
+      "engine": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797",
+      "minute_state_panel": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0",
+      "minute_state_result": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc",
+      "parent_result": "8b019d174bae80f4fd8eba2c01a6f19f8101e9e3070addff4a1ff5b643644f46",
+      "parent_spec": "777c8a5675bb8fd98bf4b88184c1a5801f775be998a1527e82c1ef6eb3fd6918",
+      "shared_runner": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e"
+    },
+    "report_sha256": "f6f674f3ffed636c468725242eec8ec7f31fb5b0637a667577d4627a85000e38",
+    "spec_sha256": "250bad9d15570490ca54632fa86781d94c164a9a1cd7ca6aefe36a91f51c321d"
+  },
+  "honesty_boundary": "The overlay signal, 0.80 state threshold, 10%/5% exposures, two cost levels, same-cost controls, metrics, and decision gate are frozen before higher-cost replay results. All periods are consumed research.",
+  "research_level": "LEVEL_2_BOUNDED_IMPLEMENTATION_COST_STRESS",
+  "status": "COMPLETE_MATCHED_COST_STRESS",
+  "stress_results": {
+    "20": {
+      "audits": {
+        "MINVOL_HIGH_HALF_GROSS": {
+          "consumed_2022_2023": {
+            "active_session_count": 232,
+            "exposure_transition_session_count": 38,
+            "high_state_session_count": 51,
+            "input_manifest_sha256": null,
+            "target_order_count": 538
+          },
+          "development_2018_2021": {
+            "active_session_count": 325,
+            "exposure_transition_session_count": 67,
+            "high_state_session_count": 99,
+            "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+            "target_order_count": 1101
+          }
+        },
+        "SAME_COST_BASELINE": {
+          "consumed_2022_2023": {
+            "input_manifest_sha256": null
+          },
+          "development_2018_2021": {
+            "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a"
+          }
+        }
+      },
+      "comparisons": {
+        "consumed_2022_2023": {
+          "baseline": {
+            "annualized_return": -0.091149320632957,
+            "average_invested_fraction": 0.17842784202772463,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.20828795221804974,
+            "mean_trade_return": -0.018529926211101118,
+            "median_trade_return": -0.03516896550714349,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.06382978723404255,
+            "sharpe_rf0": -0.7692039347996759,
+            "t1_blocked_exits": 8,
+            "top20_positive_pnl_concentration": 0.9983506554972538,
+            "total_return": -0.17237112333000004,
+            "trade_count": 94,
+            "turnover": 18.52398611349037,
+            "win_rate": 0.23404255319148937
+          },
+          "checks": {
+            "material_total_return_benefit": true,
+            "max_drawdown_no_worse": true,
+            "sharpe_improves": true,
+            "total_return_improves": true,
+            "zero_same_day_fills": true
+          },
+          "overlay": {
+            "annualized_return": -0.06001852225138249,
+            "average_invested_fraction": 0.1521714316811543,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.1488043256675874,
+            "mean_trade_return": -0.015662764175852502,
+            "median_trade_return": -0.022188555062183944,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.02127659574468085,
+            "sharpe_rf0": -0.6014592913887786,
+            "t1_blocked_exits": 5,
+            "top20_positive_pnl_concentration": 0.9843085402438673,
+            "total_return": -0.11531344733000026,
+            "trade_count": 94,
+            "turnover": 24.362797211473158,
+            "win_rate": 0.2872340425531915
+          },
+          "overlay_minus_baseline": {
+            "annualized_return": 0.03113079838157451,
+            "average_invested_fraction": -0.026256410346570336,
+            "max_drawdown": 0.059483626550462354,
+            "mean_trade_return": 0.002867162035248616,
+            "median_trade_return": 0.012980410444959546,
+            "severe_loss_rate": -0.042553191489361694,
+            "sharpe_rf0": 0.16774464341089723,
+            "top20_positive_pnl_concentration": -0.0140421152533865,
+            "total_return": 0.05705767599999978,
+            "trade_count": 0,
+            "turnover": 5.838811097982788,
+            "win_rate": 0.05319148936170215
+          }
+        },
+        "development_2018_2021": {
+          "baseline": {
+            "annualized_return": 0.12259037264141726,
+            "average_invested_fraction": 0.2492352321792881,
+            "failed_open_executions": 3,
+            "max_drawdown": -0.21094139234516052,
+            "mean_trade_return": 0.028429462584352996,
+            "median_trade_return": -0.011440374084180947,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.1134020618556701,
+            "sharpe_rf0": 0.7538209240732844,
+            "t1_blocked_exits": 11,
+            "top20_positive_pnl_concentration": 0.7408146480168113,
+            "total_return": 0.5851192979700011,
+            "trade_count": 194,
+            "turnover": 41.72561730217191,
+            "win_rate": 0.4381443298969072
+          },
+          "checks": {
+            "material_total_return_benefit": false,
+            "max_drawdown_no_worse": true,
+            "sharpe_improves": true,
+            "total_return_improves": true,
+            "zero_same_day_fills": true
+          },
+          "overlay": {
+            "annualized_return": 0.12306827380700325,
+            "average_invested_fraction": 0.2192118031080081,
+            "failed_open_executions": 9,
+            "max_drawdown": -0.15761684125634168,
+            "mean_trade_return": 0.010906295903840754,
+            "median_trade_return": -0.007169529730587976,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.061855670103092786,
+            "sharpe_rf0": 0.860355602260627,
+            "t1_blocked_exits": 11,
+            "top20_positive_pnl_concentration": 0.7290190298684134,
+            "total_return": 0.58780916598,
+            "trade_count": 194,
+            "turnover": 53.035175586010745,
+            "win_rate": 0.42783505154639173
+          },
+          "overlay_minus_baseline": {
+            "annualized_return": 0.00047790116558599216,
+            "average_invested_fraction": -0.03002342907128,
+            "max_drawdown": 0.05332455108881884,
+            "mean_trade_return": -0.017523166680512244,
+            "median_trade_return": 0.00427084435359297,
+            "severe_loss_rate": -0.05154639175257732,
+            "sharpe_rf0": 0.10653467818734264,
+            "top20_positive_pnl_concentration": -0.011795618148397913,
+            "total_return": 0.0026898680099989303,
+            "trade_count": 0,
+            "turnover": 11.309558283838832,
+            "win_rate": -0.010309278350515483
+          }
+        }
+      },
+      "cost_bps_per_side": 20.0
+    },
+    "30": {
+      "audits": {
+        "MINVOL_HIGH_HALF_GROSS": {
+          "consumed_2022_2023": {
+            "active_session_count": 232,
+            "exposure_transition_session_count": 38,
+            "high_state_session_count": 51,
+            "input_manifest_sha256": null,
+            "target_order_count": 538
+          },
+          "development_2018_2021": {
+            "active_session_count": 325,
+            "exposure_transition_session_count": 67,
+            "high_state_session_count": 99,
+            "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+            "target_order_count": 1101
+          }
+        },
+        "SAME_COST_BASELINE": {
+          "consumed_2022_2023": {
+            "input_manifest_sha256": null
+          },
+          "development_2018_2021": {
+            "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a"
+          }
+        }
+      },
+      "comparisons": {
+        "consumed_2022_2023": {
+          "baseline": {
+            "annualized_return": -0.0987261156733551,
+            "average_invested_fraction": 0.17828481852306713,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.2198619111473784,
+            "mean_trade_return": -0.020587768564176188,
+            "median_trade_return": -0.037096711396714915,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.07446808510638298,
+            "sharpe_rf0": -0.840323220830718,
+            "t1_blocked_exits": 9,
+            "top20_positive_pnl_concentration": 0.999757297184754,
+            "total_return": -0.18597331909000003,
+            "trade_count": 94,
+            "turnover": 18.54686812631496,
+            "win_rate": 0.22340425531914893
+          },
+          "checks": {
+            "material_total_return_benefit": true,
+            "max_drawdown_no_worse": true,
+            "sharpe_improves": true,
+            "total_return_improves": true,
+            "zero_same_day_fills": true
+          },
+          "overlay": {
+            "annualized_return": -0.07220005254508866,
+            "average_invested_fraction": 0.1523810673552338,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.1669035558868317,
+            "mean_trade_return": -0.017724542662840334,
+            "median_trade_return": -0.02413394280730193,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.02127659574468085,
+            "sharpe_rf0": -0.738071312210017,
+            "t1_blocked_exits": 6,
+            "top20_positive_pnl_concentration": 0.991238957504889,
+            "total_return": -0.13786434508999967,
+            "trade_count": 94,
+            "turnover": 24.354408033634975,
+            "win_rate": 0.2553191489361702
+          },
+          "overlay_minus_baseline": {
+            "annualized_return": 0.02652606312826644,
+            "average_invested_fraction": -0.025903751167833333,
+            "max_drawdown": 0.05295835526054671,
+            "mean_trade_return": 0.0028632259013358537,
+            "median_trade_return": 0.012962768589412987,
+            "severe_loss_rate": -0.05319148936170212,
+            "sharpe_rf0": 0.102251908620701,
+            "top20_positive_pnl_concentration": -0.008518339679865039,
+            "total_return": 0.04810897400000036,
+            "trade_count": 0,
+            "turnover": 5.807539907320017,
+            "win_rate": 0.03191489361702127
+          }
+        },
+        "development_2018_2021": {
+          "baseline": {
+            "annualized_return": 0.11190910407596877,
+            "average_invested_fraction": 0.2489279318251219,
+            "failed_open_executions": 3,
+            "max_drawdown": -0.21471953332478066,
+            "mean_trade_return": 0.026342467425476166,
+            "median_trade_return": -0.013396551553871906,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.11855670103092783,
+            "sharpe_rf0": 0.6984090649248335,
+            "t1_blocked_exits": 10,
+            "top20_positive_pnl_concentration": 0.748083111889783,
+            "total_return": 0.5258853747300005,
+            "trade_count": 194,
+            "turnover": 41.509818053909406,
+            "win_rate": 0.42783505154639173
+          },
+          "checks": {
+            "material_total_return_benefit": false,
+            "max_drawdown_no_worse": true,
+            "sharpe_improves": true,
+            "total_return_improves": false,
+            "zero_same_day_fills": true
+          },
+          "overlay": {
+            "annualized_return": 0.10748057506371822,
+            "average_invested_fraction": 0.21879268203938784,
+            "failed_open_executions": 9,
+            "max_drawdown": -0.1619075192442072,
+            "mean_trade_return": 0.008646381301568385,
+            "median_trade_return": -0.009153020250167287,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.06701030927835051,
+            "sharpe_rf0": 0.7670567259632813,
+            "t1_blocked_exits": 11,
+            "top20_positive_pnl_concentration": 0.7361769859099029,
+            "total_return": 0.5018191872499995,
+            "trade_count": 194,
+            "turnover": 52.35692066084497,
+            "win_rate": 0.4175257731958763
+          },
+          "overlay_minus_baseline": {
+            "annualized_return": -0.004428529012250548,
+            "average_invested_fraction": -0.030135249785734064,
+            "max_drawdown": 0.052812014080573455,
+            "mean_trade_return": -0.01769608612390778,
+            "median_trade_return": 0.004243531303704619,
+            "severe_loss_rate": -0.05154639175257732,
+            "sharpe_rf0": 0.06864766103844788,
+            "top20_positive_pnl_concentration": -0.011906125979880167,
+            "total_return": -0.024066187480001,
+            "trade_count": 0,
+            "turnover": 10.847102606935564,
+            "win_rate": -0.010309278350515427
+          }
+        }
+      },
+      "cost_bps_per_side": 30.0
+    }
+  }
+}

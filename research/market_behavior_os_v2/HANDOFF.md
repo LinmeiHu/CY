@@ -2,7 +2,87 @@
 
 Updated 2026-08-31.
 
-## Latest checkpoint: exploration-first multi-family strategy funnel
+## Latest checkpoint: stock selection, exit, and matched-cost economics
+
+Resume from the checkpoint commit containing this section; the cycle started at
+`addd74cc96` on branch `research/chinext-v1-research-os-v2`. Do not restart the
+candidate panel, four-bundle model comparison, exit screen, or matched-cost
+stress. All 2018--2023 outcomes are consumed research. Post-2023 remains
+quarantined after the earlier inventory/summary incident, and CY-011 is unread.
+
+HAB-CHX-RANK-INFO-001 builds the common current-candidate domain after the fixed
+RS-acceleration veto: 398 candidates, 225 dates, 397 complete next-open-to-h20
+outcomes, 75 multi-candidate dates, and a maximum of 11 candidates on one date.
+The 15 signal-time descriptors span relative strength/trend, supply/demand, and
+risk/path setup. R60 is redundant with RS score (rho 0.903). Vol-ratio ordering
+is weakly positive in both blocks; r120 and minimum-volume location are
+complementary but not stable standalone replacements. Breakout-volume ratio has
+near-zero marginal rho but changes same-date Top-1 choices, so it remains only a
+combination diagnostic.
+
+HAB-CHX-RANK-MODEL-001 compares the current RS rank, the strongest single
+minimum-volume-location descriptor, four frozen equal-weight bundles, fixed
+ridge alpha 10, and one depth-2/min-leaf-20 tree. No ranker passes the
+predeclared two-block engine-replay gate. Ridge is the strongest unresolved risk
+result: on 2020--2021 Top-1 dates its mean is 7.34% versus 3.12% baseline but
+severe losses worsen 16.7% to 20.8%; on 2022--2023 mean improves -3.17% to
+-2.24% and severe losses fall 25.6% to 12.8%. No stock-ranking portfolio replay
+was authorized or run.
+
+HAB-CHX-EXIT-SCREEN-001 evaluates MA20x2, MA30x1, MA20x1, and MA40x1 with causal
+completed-close signals and later executable opens. It restricts the screen to
+53/28 exact two-leg cycles and excludes 86/46 path-dependent rebalanced cycles
+rather than inventing counterfactual cash flows. MA20x1 has the largest later
+mean improvement (+0.65 pp), but only +0.04 pp in development and a lower
+development win rate. All four miss the fixed two-block gate. Exit remains
+unresolved; no exit replay was run.
+
+HAB-CHX-MINVOL-COST-001 is the sole authorized overlay stress. At 20 bps/side,
+the matched overlay-minus-baseline return is +0.27 pp in development and +5.71
+pp later. At 30 bps/side it is -2.41 pp and +4.81 pp. Drawdown and Sharpe improve
+in all four cells, but the frozen 0.5-pp materiality/all-cells rule fails and the
+development return reverses at 30 bps. Final status:
+`DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`; do not tune threshold/exposure or run
+another cost grid.
+
+The unchanged PIT `r20-r120 >= 0.20` exclusion remains
+`PROMISING_ADMISSION_COMPONENT`: its prior +1.95/+6.79 pp return, +2.05/+6.15
+pp drawdown, and +0.127/+0.337 Sharpe improvements remain valid consumed-history
+evidence. It is not a strategy, independently confirmed signal, or habitat
+predictor. Do not change its threshold or lookbacks, combine it with the
+downgraded overlay, or use quarantined post-2023 material.
+
+Next-frontier ranking by expected economic value times evidence quality divided
+by research cost:
+
+1. Obtain a genuinely independent, separately quarantined confirmation block
+   for the fixed RS veto; this is currently externally blocked.
+2. Reframe industry/security-relative direction inside widening dispersion
+   under a materially different bounded resource contract; do not rescue the
+   two failed rank builders under their old envelopes.
+3. If governed stock-level minute data is available, construct a PIT
+   supply/demand/support/acceptance representation map before another selection
+   model; daily summaries left only 75 competitive dates and weak instability.
+4. Full rebalanced-position exit research is lower priority after the weak
+   simple-cycle screen and requires exact counterfactual portfolio accounting.
+
+What market behavior are we still not studying? Independent overextension
+stability, security/industry-relative direction inside dispersion, stock-level
+intraday supply/demand/support/acceptance, full rebalanced exit paths, true order
+flow, and stable broader trend quality/age/transition.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No new
+archetype emerged in this cycle. Dispersion/relative value remains the only new,
+resource-parked archetype. RS acceleration is a component inside the existing
+breakout seed, and the minute-volatility sizing translation is cost-sensitive.
+
+MKT-TRND-001 still establishes representation stability only: tested trend
+direction passed neighboring-horizon stability; tested quality, age, and
+transition representations failed without rejecting their broader families;
+strength/alignment remain data-contract-limited; no trend state is a trading
+signal or strategy-habitat predictor.
+
+## Previous checkpoint: exploration-first multi-family strategy funnel
 
 The meaningful batch is complete. Six accepted market-state families were
 screened cheaply; five survived an obvious-control/two-block market-response
@@ -1753,7 +1833,7 @@ the frozen sample, window, descriptors, controls, and floor. Do not kill user
 applications, weaken resource/PIT gates, publish partial minute evidence, open
 post-2023 data or CY-011, or infer a strategy.
 
-## 2026-08-31 handoff — diversified decision batch
+## Prior 2026-08-31 handoff — diversified decision batch
 
 Resume from checkpoint `744d2cfd46` plus the final commit containing
 HAB-CHX-SELECTION-SCREEN-001 and HAB-CHX-DECISION-BATCH-001. Do not restart the
@@ -1773,10 +1853,10 @@ The one authorized minute-path translation is a risk-budget rule, not another
 admission veto: at t 15:30, use 5% selected-position targets in the fixed high
 state and 10% otherwise, with existing next-open orders. It improves return by
 1.76/6.19 pp and DD by 5.30/5.74 pp, improves Sharpe and severe-loss incidence,
-and preserves all completed-cycle identities. Development turnover rises 11.45,
-so independent cost/turnover stress is mandatory.
+and preserves all completed-cycle identities. Development turnover rises 11.45;
+the mandatory cost/turnover stress is completed in the latest checkpoint above.
 
-Both are development candidates only. They use repeatedly consumed 2018--2023
+Both were development candidates at this prior checkpoint. They use repeatedly consumed 2018--2023
 history, not untouched OOS. A recursive inventory and phase-summary read
 accidentally exposed unrelated post-2023 metadata/performance. Quarantine all
 post-2023 material from future confirmation; do not cite the exposed values.
@@ -1789,8 +1869,6 @@ match baseline exactly; 12/12 ledger hashes and 4/4 path-normalized summaries
 reproduce. Engine directories are durable but ignored; the compact result JSON,
 specs, runners, tests, reports, and OS state are the commit surface.
 
-Next decision: obtain a separately quarantined confirmation block or stop at
-the confirmation boundary. Do not inspect the contaminated post-2023 summaries,
-search thresholds/exposure fractions, combine both passing arms, or reopen the
-parked downside/minute admission vetoes. MKT-DISP-RANK remains resource-parked;
-MKT-FORMDEPTH-MINX remains waiting for its unchanged RAM condition.
+This prior next decision is superseded by the latest checkpoint at the top of
+this file. MKT-DISP-RANK remains resource-parked; MKT-FORMDEPTH-MINX remains
+waiting for its unchanged RAM condition.

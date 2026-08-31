@@ -1,0 +1,93 @@
+{
+  "experiment_id": "HAB-CHX-EXIT-SCREEN-001",
+  "research_level": "LEVEL_1_EXECUTABLE_EXIT_SCREEN",
+  "status": "FROZEN_BEFORE_COUNTERFACTUAL_EXIT_ESTIMATES",
+  "frozen_at": "2026-08-31",
+  "question": "Does a coarse, earlier individual trend-deterioration exit improve the fixed RS-veto system's completed trade economics consistently enough to justify one portfolio replay?",
+  "honesty_boundary": "Four coarse MA/confirmation alternatives, the simple-cycle population, counterfactual semantics, and promotion gate are fixed before accepted estimates. This is consumed 2018-2023 research.",
+  "population": {
+    "source": "completed RS_ACCEL_OVEREXTENSION_VETO cycles",
+    "simple_cycle": "exactly one filled new-position buy and one filled completed-round-trip sell, with no intervening filled rebalance leg",
+    "reason": "preserves exact entry capital and avoids inventing counterfactual cash flows for path-dependent rebalances",
+    "coverage_policy": "report exclusions; do not generalize screen estimates to complex rebalanced cycles",
+    "blocks": ["development_2018_2021", "consumed_2022_2023"]
+  },
+  "rules": {
+    "MA20_X2": {"ma_sessions": 20, "confirmation_closes": 2},
+    "MA30_X1": {"ma_sessions": 30, "confirmation_closes": 1},
+    "MA20_X1": {"ma_sessions": 20, "confirmation_closes": 1},
+    "MA40_X1": {"ma_sessions": 40, "confirmation_closes": 1}
+  },
+  "counterfactual_contract": {
+    "signal": "at completed close t, every required trailing close is below its own trailing MA; histories reproduce the engine's corporate-action rebasing and contiguous hard-valid bar requirement",
+    "execution": "full exit at the first executable open after signal t; never fill inside signal bar t",
+    "t1": "signal cannot execute before the session after acquisition",
+    "failed_open": "pending exit advances to the next executable sell open before the current actual exit; otherwise preserve actual exit",
+    "corporate_actions": "apply only visible valid non-rights share/cash actions; fail closed on blocking, invalid, unavailable, or rights actions",
+    "price_and_cost": "raw open with the frozen 10 bps sell cost; actual entry notional plus entry cost is the denominator",
+    "baseline": "actual completed round-trip return",
+    "non_early_signal": "preserve actual completed return because existing market, set-change, and individual exits remain active"
+  },
+  "diagnostics": [
+    "coverage and fail-closed exclusions",
+    "earlier-exit activation count and trading-session lead",
+    "mean and median completed return",
+    "win rate",
+    "severe-loss rate at or below -10%",
+    "winner rate at or above 20%",
+    "paired mean change by block"
+  ],
+  "promotion_gate": {
+    "minimum_evaluable_cycles_each_block": 20,
+    "minimum_earlier_exits_each_block": 5,
+    "strong": "mean return improves by at least 1 percentage point in both blocks and severe-loss rate is no worse in either",
+    "risk": "severe-loss rate improves by at least 5 percentage points in both blocks, while mean return is no worse by more than 1 percentage point in either",
+    "portfolio_replay_limit": 1,
+    "failure": "if no rule passes, exit remains unresolved and no replay is run"
+  },
+  "inputs": {
+    "parent_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001_result.json",
+      "sha256": "8b019d174bae80f4fd8eba2c01a6f19f8101e9e3070addff4a1ff5b643644f46"
+    },
+    "development_execution_ledger": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/development_2018_2021/execution_ledger.jsonl",
+      "sha256": "04784200246d46990e9c5a2888f781bbafe1774177d8ec19ad62e9f776961dd1"
+    },
+    "consumed_execution_ledger": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/consumed_2022_2023/execution_ledger.jsonl",
+      "sha256": "0b989d8057db365d48553b5af99551d12f83cfd8ee755e3a32dab1707b4e13c5"
+    },
+    "strategy_source": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "engine_source": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "prohibited": [
+    "post-2023 rows or outcomes",
+    "CY-011",
+    "same-bar exit fill",
+    "using future path information to form an exit signal",
+    "changing thresholds after the screen",
+    "screening additional MA or confirmation combinations",
+    "counterfactual modeling of rebalanced cycles",
+    "more than one executable exit replay",
+    "calling any block untouched OOS"
+  ]
+}

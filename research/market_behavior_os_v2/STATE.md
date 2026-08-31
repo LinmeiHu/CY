@@ -7,19 +7,19 @@ Updated 2026-08-31.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `9f52808dd836a56c84df5a531ef5f59b9aa9cf02`
-- `CURRENT_PHASE`: `EXPLORATION_BATCH_CHECKPOINT`
-- `CURRENT_PRIMARY_FRONTIER`: ranked multi-family pool led by turnover/dispersion opportunity width; industry-rank translation is resource-parked after two exact implementations failed different frozen guards
-- `SUPPORTING_FRONTIER`: five market-response leads remain promising, but no further CHINEXT admission-veto threshold rescue is authorized; `MKT-FORMDEPTH-MINX-001` remains a low-priority waiting-resource job
-- `CURRENT_STRATEGY_CANDIDATE`: `NONE`; cross-sectional dispersion/relative value is a research archetype only, and both executable admission-veto translations failed their fixed promotion rules
+- `CURRENT_BASELINE`: `addd74cc96` (`research: add selection and risk candidates`)
+- `CURRENT_PHASE`: `STOCK_SELECTION_EXIT_COST_CYCLE_CHECKPOINT`
+- `CURRENT_PRIMARY_FRONTIER`: independently confirm the fixed RS-acceleration admission component on a separately quarantined block; unavailable at this checkpoint because post-2023 is contaminated and CY-011 remains locked
+- `SUPPORTING_FRONTIER`: bounded security/industry-relative direction inside widening dispersion, but its prior industry-rank implementation is resource-parked; stock-level intraday selection mechanisms require a separate PIT data contract
+- `CURRENT_STRATEGY_CANDIDATE`: `PROMISING_ADMISSION_COMPONENT_RS_ACCEL_OVEREXTENSION_VETO`; no validated strategy. The minute-volatility half-gross rule is `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `9f52808dd836a56c84df5a531ef5f59b9aa9cf02`
-- `CURRENT_SCIENTIFIC_LAYER`: `MULTI_FAMILY_ECONOMIC_SCREEN_COMPLETE; TWO_EXECUTABLE_TRANSLATIONS_COMPLETE_NO_STRATEGY_CANDIDATE; DISPERSION_RANK_PARKED_RESOURCE`
+- `CURRENT_HEAD_AT_RESUME`: `addd74cc96`
+- `CURRENT_SCIENTIFIC_LAYER`: `CURRENT_CANDIDATE_INFORMATION_AND_SMALL_MODEL_COMPARISON_COMPLETE; NO_RANKING_OR_EXIT_REPLAY; MATCHED_COST_STRESS_DOWNGRADES_MINUTE_VOL_OVERLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: which cheap, economically distinct strategy decision can translate liquidity activity, leadership fragility, or breadth exhaustion without reusing the failed generic CHINEXT admission-veto form? Industry-rank direction remains valuable but needs a materially different bounded resource plan.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can the fixed RS-acceleration admission component survive a genuinely independent, separately quarantined confirmation block? Until such a block exists, the highest open discovery value is a resource-bounded industry/security-relative direction contract inside widening dispersion, not another CHINEXT threshold search.
 
 ## Research OS V2.3 resource and worker state
 
@@ -1916,8 +1916,42 @@ interpret either experiment, and no post-2023 row entered their inputs. However,
 post-2023 is no longer an untouched confirmation block for this agent/lane and
 must remain quarantined. CY-011 remains unread.
 
-Current frontier: independently confirm the two candidates on a separately
-quarantined block, with turnover/cost stress for the exposure overlay. Do not
-search neighboring thresholds, combine the arms, rescue rejected screens, or
-use the contaminated post-2023 material. The resource-parked dispersion ranking
-and waiting formation-depth minute job remain unchanged.
+That checkpoint's next action was a turnover/cost stress; it is now complete
+below. Do not search neighboring thresholds, combine the arms, rescue rejected
+screens, or use the contaminated post-2023 material. The resource-parked
+dispersion ranking and waiting formation-depth minute job remain unchanged.
+
+## 2026-08-31 stock-selection, exit, and matched-cost checkpoint
+
+This cycle resumes from `addd74cc96` without changing the fixed RS veto or the
+minute-volatility state/exposure rule. HAB-CHX-RANK-INFO-001 constructs one exact
+current-candidate panel: 398 events on 225 dates, 397 complete next-open-to-h20
+outcomes, and only 75 dates with ranking competition. Fifteen signal-time
+descriptors span relative strength, supply/demand, and risk/path setup. Several
+daily descriptors are complementary, but most reverse or weaken across the two
+consumed blocks; r60 is redundant with existing RS score at rho 0.903.
+
+HAB-CHX-RANK-MODEL-001 compares the existing rank, minimum-volume location,
+four fixed equal-weight mechanism bundles, ridge alpha 10, and one depth-2 tree.
+No candidate clears the fixed two-block mean/severe-loss gate, so no ranking
+portfolio replay is run. Ridge is the strongest unresolved risk result: later
+Top-1 mean improves from -3.17% to -2.24% and severe losses fall from 25.6% to
+12.8%, but development severe losses worsen from 16.7% to 20.8%.
+
+HAB-CHX-EXIT-SCREEN-001 tests MA20x2, MA30x1, MA20x1, and MA40x1 using exact
+next-open semantics on 53/28 two-leg cycles. Complex rebalanced cycles are
+excluded rather than assigned counterfactual cash flows. No rule reaches the
+fixed return/risk gate in both blocks; exit remains unresolved and no exit replay
+is run.
+
+HAB-CHX-MINVOL-COST-001 replays both the baseline and frozen half-gross overlay
+at matched 20 and 30 bps per side. The overlay continues to improve drawdown and
+Sharpe in every comparison. Its development total-return benefit is only +0.27
+percentage points at 20 bps and becomes -2.41 points at 30 bps, while later
+benefits remain +5.71/+4.81 points. The predeclared materiality/all-cells gate
+therefore downgrades it to `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`.
+
+The fixed RS-acceleration veto remains `PROMISING_ADMISSION_COMPONENT`, not a
+validated strategy or habitat predictor. No threshold, lookback, exposure, or
+model search is authorized. No post-2023 or CY-011 row entered this cycle; both
+periods remain consumed development history.

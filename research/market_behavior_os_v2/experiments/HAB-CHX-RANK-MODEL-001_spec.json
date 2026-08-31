@@ -1,0 +1,97 @@
+{
+  "experiment_id": "HAB-CHX-RANK-MODEL-001",
+  "research_level": "LEVEL_1_CHRONOLOGICAL_CANDIDATE_RANKING",
+  "status": "FROZEN_AFTER_MARGINAL_SCAN_BEFORE_MULTIVARIATE_ESTIMATES",
+  "frozen_at": "2026-08-31",
+  "question": "Can a few economically distinct signal-time mechanisms improve same-date allocation among the frozen current CHINEXT candidates?",
+  "honesty_boundary": "The four bundles, two fixed model classes, input set, fitting schedule, target, and decision rules are frozen after HAB-CHX-RANK-INFO-001 and before any multivariate estimate is accepted. All 2018-2023 rows remain consumed development history.",
+  "candidate_contract": {
+    "panel": "exact HAB-CHX-RANK-INFO-001 current-candidate panel",
+    "decision_at": "completed signal-date close, 15:00 Asia/Shanghai",
+    "baseline": "existing rs_score rank with mom60 then symbol tie break",
+    "primary_domain": "dates with at least two candidates and a complete executable 20-session outcome",
+    "primary_action": "select Top-1 within the contemporaneous candidate set",
+    "secondary_action": "Top-3 mean where at least four candidates exist",
+    "outcome": "next-open to 20th-session close total return net 10 bps per side",
+    "risk_targets": ["severe loss at or below -10%", "20-session MAE", "winner at or above 20%"]
+  },
+  "rank_inputs": {
+    "transform": "same-date oriented percentile rank computed only across candidates visible at the same decision_at",
+    "higher_is_better": ["rs_score", "r120", "breakout_volume_ratio"],
+    "lower_is_better": ["rs_acceleration", "box_width", "minvol_location", "vol_ratio"]
+  },
+  "equal_weight_bundles": {
+    "EQ_COMPRESSION_DEFENSE": {
+      "mechanism": "relative strength plus compressed structure and a less extended minimum-volume location",
+      "inputs": ["rs_score", "box_width", "minvol_location"]
+    },
+    "EQ_PATIENT_SUPPLY": {
+      "mechanism": "long-horizon relative strength without short-horizon acceleration and with supply dry-up",
+      "inputs": ["r120", "rs_acceleration", "vol_ratio"]
+    },
+    "EQ_BREAKOUT_ACCEPTANCE": {
+      "mechanism": "relative strength confirmed by breakout participation while avoiding an extended minimum-volume location",
+      "inputs": ["rs_score", "breakout_volume_ratio", "minvol_location"]
+    },
+    "EQ_BALANCED_FIVE": {
+      "mechanism": "balanced trend, compression, supply, and trigger confirmation",
+      "inputs": ["rs_score", "r120", "box_width", "vol_ratio", "breakout_volume_ratio"]
+    }
+  },
+  "fixed_models": {
+    "RIDGE_ALPHA_10": {
+      "class": "sklearn.linear_model.Ridge",
+      "alpha": 10.0,
+      "fit_intercept": true
+    },
+    "TREE_DEPTH_2": {
+      "class": "sklearn.tree.DecisionTreeRegressor",
+      "max_depth": 2,
+      "min_samples_leaf": 20,
+      "random_state": 0
+    }
+  },
+  "model_inputs": ["rs_score", "r120", "rs_acceleration", "box_width", "minvol_location", "vol_ratio", "breakout_volume_ratio"],
+  "model_target": "forward_return_20 clipped once at [-0.25, 0.50] to limit single-trade leverage on fit; unclipped returns used for evaluation",
+  "chronology": {
+    "first_scored_year": 2020,
+    "last_scored_year": 2023,
+    "fit_rule": "for score year Y, fit once on all complete candidates dated before January 1 of Y",
+    "minimum_training_rows": 50,
+    "selection": "no hyperparameter, feature, threshold, or fold search",
+    "comparison_blocks": {
+      "chronological_development_2020_2021": [2020, 2021],
+      "consumed_2022_2023": [2022, 2023]
+    }
+  },
+  "decision_rules": {
+    "strong_candidate": "higher Top-1 mean than baseline in both comparison blocks, no worse severe-loss rate in either, and at least 20 decisions per block",
+    "risk_candidate": "severe-loss rate improves by at least five percentage points in both blocks without reducing mean by more than one percentage point in either",
+    "engine_replay_limit": "replay no more than the strongest two candidates; one is preferred when evidence is close",
+    "failure": "do not replay if no candidate passes either rule"
+  },
+  "inputs": {
+    "information_spec": {
+      "path": "research/market_behavior_os_v2/experiments/HAB-CHX-RANK-INFO-001_spec.json",
+      "sha256": "0ec65815558aab2373dc8f2e93c329cc61ee521275191aee2cf3308d8e9bac10"
+    },
+    "candidate_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-RANK-INFO-001_candidate_panel.csv",
+      "sha256": "b9983c4645cab9bf6afe555178f1bb961281e24898ded522ffe2d5bb9ee4cbfc"
+    },
+    "information_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-RANK-INFO-001_result.json",
+      "sha256": "27171bdcdbe90388f4ab51b3f8d702302444b7959fc92a3c601560fd8a6a44fd"
+    }
+  },
+  "prohibited": [
+    "post-2023 rows or outcomes",
+    "CY-011",
+    "changing or retesting the frozen 0.20 RS-acceleration veto",
+    "future outcome, MFE, MAE, actual selection, or trade-return fields as predictors",
+    "random or shuffled validation",
+    "feature, threshold, model, or hyperparameter search",
+    "automatic bundle generation",
+    "claiming any block is untouched OOS"
+  ]
+}

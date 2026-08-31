@@ -182,3 +182,20 @@ Both candidates stop at the independent-confirmation boundary. Do not combine
 them, search thresholds/exposure fractions, use contaminated post-2023 material,
 or unlock CY-011. A separately quarantined block and cost/turnover stress are
 required before either can move beyond development-candidate status.
+
+HAB-CHX-RANK-INFO-001 and HAB-CHX-RANK-MODEL-001 close the current daily-feature
+ranking cycle without an executable candidate. Only 75 complete dates have
+same-day ranking competition. The fixed ridge has meaningful later severe-loss
+avoidance but fails the same risk test in development; four mechanism bundles
+and the shallow tree also miss. Do not replay, add models, or search weights.
+
+HAB-CHX-EXIT-SCREEN-001 closes the coarse earlier-MA exit batch without a replay.
+The exact two-leg screen does not justify changing MA horizon or confirmation,
+and its exclusion of rebalanced cycles prevents a stronger portfolio claim.
+
+HAB-CHX-MINVOL-COST-001 completes the required matched-cost stress and downgrades
+the half-gross translation. It remains useful risk-state evidence because
+drawdown and Sharpe improve at both costs, but the development return benefit is
+immaterial at 20 bps and negative at 30 bps. Do not tune it. The unchanged RS
+overextension veto is the sole `PROMISING_ADMISSION_COMPONENT`, still inside the
+existing breakout seed and still blocked at independent confirmation.
