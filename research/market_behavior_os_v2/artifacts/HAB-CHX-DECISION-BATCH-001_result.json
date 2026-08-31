@@ -1,0 +1,318 @@
+{
+  "arms": {
+    "MINVOL_HIGH_HALF_GROSS": {
+      "arm": "MINVOL_HIGH_HALF_GROSS",
+      "audit": {
+        "consumed_2022_2023": {
+          "active_session_count": 232,
+          "exposure_transition_session_count": 38,
+          "high_state_session_count": 51,
+          "input_manifest_sha256": null,
+          "target_order_count": 538
+        },
+        "development_2018_2021": {
+          "active_session_count": 325,
+          "exposure_transition_session_count": 67,
+          "high_state_session_count": 99,
+          "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+          "target_order_count": 1101
+        }
+      },
+      "checks": {
+        "at_least_60pct_baseline_cycles_both_blocks": true,
+        "max_drawdown_no_worse_both_blocks": true,
+        "severe_loss_no_higher_both_blocks": true,
+        "sharpe_improves_both_blocks": true,
+        "total_return_improves_both_blocks": true,
+        "zero_same_day_fills": true
+      },
+      "classification": "STRATEGY_CANDIDATE_MINVOL_HIGH_HALF_GROSS",
+      "comparisons": {
+        "consumed_2022_2023": {
+          "baseline": {
+            "annualized_return": -0.08168328625996357,
+            "average_invested_fraction": 0.17835449106928172,
+            "max_drawdown": -0.193413353857543,
+            "mean_trade_return": -0.016552130299664392,
+            "median_trade_return": -0.033237367977433055,
+            "severe_loss_rate": 0.06382978723404255,
+            "sharpe_rf0": -0.6815090306324758,
+            "top20_positive_pnl_concentration": 0.9958255765854177,
+            "total_return": -0.15522057457000038,
+            "trade_count": 94,
+            "turnover": null,
+            "win_rate": 0.2553191489361702
+          },
+          "candidate": {
+            "annualized_return": -0.04827100511335547,
+            "average_invested_fraction": 0.15214548581899412,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.13600525201167413,
+            "mean_trade_return": -0.013678628313334086,
+            "median_trade_return": -0.02001576460515822,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.02127659574468085,
+            "sharpe_rf0": -0.47066392276517754,
+            "t1_blocked_exits": 5,
+            "top20_positive_pnl_concentration": 0.9770974540381717,
+            "total_return": -0.0932931385700001,
+            "trade_count": 94,
+            "turnover": 24.433922480741685,
+            "win_rate": 0.2978723404255319
+          },
+          "candidate_minus_baseline": {
+            "annualized_return": 0.0334122811466081,
+            "average_invested_fraction": -0.026209005250287604,
+            "max_drawdown": 0.057408101845868864,
+            "mean_trade_return": 0.002873501986330306,
+            "median_trade_return": 0.013221603372274834,
+            "severe_loss_rate": -0.042553191489361694,
+            "sharpe_rf0": 0.21084510786729826,
+            "top20_positive_pnl_concentration": -0.018728122547245984,
+            "total_return": 0.06192743600000028,
+            "trade_count": 0,
+            "turnover": null,
+            "win_rate": 0.04255319148936171
+          }
+        },
+        "development_2018_2021": {
+          "baseline": {
+            "annualized_return": 0.1336456034770972,
+            "average_invested_fraction": 0.24899523285031974,
+            "max_drawdown": -0.20762679470782652,
+            "mean_trade_return": 0.030455684400042576,
+            "median_trade_return": -0.00970512426371722,
+            "severe_loss_rate": 0.1134020618556701,
+            "sharpe_rf0": 0.8105918094948501,
+            "top20_positive_pnl_concentration": 0.7351787051890619,
+            "total_return": 0.6482237267899993,
+            "trade_count": 194,
+            "turnover": 41.93811294680673,
+            "win_rate": 0.4536082474226804
+          },
+          "candidate": {
+            "annualized_return": 0.13667223063730893,
+            "average_invested_fraction": 0.21908892200119987,
+            "failed_open_executions": 9,
+            "max_drawdown": -0.15462119470906033,
+            "mean_trade_return": 0.012882667337311594,
+            "median_trade_return": -0.005442890485160901,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.061855670103092786,
+            "sharpe_rf0": 0.9427621600230709,
+            "t1_blocked_exits": 10,
+            "top20_positive_pnl_concentration": 0.7221190610055915,
+            "total_return": 0.6658233573599996,
+            "trade_count": 194,
+            "turnover": 53.39236904191995,
+            "win_rate": 0.4329896907216495
+          },
+          "candidate_minus_baseline": {
+            "annualized_return": 0.0030266271602117367,
+            "average_invested_fraction": -0.029906310849119877,
+            "max_drawdown": 0.053005599998766195,
+            "mean_trade_return": -0.017573017062730983,
+            "median_trade_return": 0.00426223377855632,
+            "severe_loss_rate": -0.05154639175257732,
+            "sharpe_rf0": 0.1321703505282208,
+            "top20_positive_pnl_concentration": -0.013059644183470387,
+            "total_return": 0.017599630570000357,
+            "trade_count": 0,
+            "turnover": 11.454256095113216,
+            "win_rate": -0.02061855670103091
+          }
+        }
+      },
+      "passes_promotion_rule": true,
+      "role": "portfolio_risk_budget"
+    },
+    "RS_ACCEL_OVEREXTENSION_VETO": {
+      "arm": "RS_ACCEL_OVEREXTENSION_VETO",
+      "audit": {
+        "consumed_2022_2023": {
+          "candidate_count": 274,
+          "candidate_session_count": 110,
+          "input_manifest_sha256": null,
+          "vetoed_candidate_count": 104
+        },
+        "development_2018_2021": {
+          "candidate_count": 377,
+          "candidate_session_count": 207,
+          "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+          "vetoed_candidate_count": 149
+        }
+      },
+      "checks": {
+        "at_least_60pct_baseline_cycles_both_blocks": true,
+        "max_drawdown_no_worse_both_blocks": true,
+        "severe_loss_no_higher_both_blocks": true,
+        "sharpe_improves_both_blocks": true,
+        "total_return_improves_both_blocks": true,
+        "zero_same_day_fills": true
+      },
+      "classification": "STRATEGY_CANDIDATE_RS_ACCEL_OVEREXTENSION_VETO",
+      "comparisons": {
+        "consumed_2022_2023": {
+          "baseline": {
+            "annualized_return": -0.08168328625996357,
+            "average_invested_fraction": 0.17835449106928172,
+            "max_drawdown": -0.193413353857543,
+            "mean_trade_return": -0.016552130299664392,
+            "median_trade_return": -0.033237367977433055,
+            "severe_loss_rate": 0.06382978723404255,
+            "sharpe_rf0": -0.6815090306324758,
+            "top20_positive_pnl_concentration": 0.9958255765854177,
+            "total_return": -0.15522057457000038,
+            "trade_count": 94,
+            "turnover": null,
+            "win_rate": 0.2553191489361702
+          },
+          "candidate": {
+            "annualized_return": -0.045120014120111906,
+            "average_invested_fraction": 0.15250458975279402,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.13191357708658402,
+            "mean_trade_return": -0.011160764039360711,
+            "median_trade_return": -0.03443322530010452,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.05405405405405406,
+            "sharpe_rf0": -0.3440872016435327,
+            "t1_blocked_exits": 6,
+            "top20_positive_pnl_concentration": 1.0,
+            "total_return": -0.08734115557000088,
+            "trade_count": 74,
+            "turnover": 14.776108439672011,
+            "win_rate": 0.24324324324324326
+          },
+          "candidate_minus_baseline": {
+            "annualized_return": 0.036563272139851666,
+            "average_invested_fraction": -0.025849901316487706,
+            "max_drawdown": 0.06149977677095897,
+            "mean_trade_return": 0.005391366260303681,
+            "median_trade_return": -0.0011958573226714675,
+            "severe_loss_rate": -0.009775733179988491,
+            "sharpe_rf0": 0.33742182898894313,
+            "top20_positive_pnl_concentration": 0.004174423414582296,
+            "total_return": 0.0678794189999995,
+            "trade_count": -20,
+            "turnover": null,
+            "win_rate": -0.012075905692926936
+          }
+        },
+        "development_2018_2021": {
+          "baseline": {
+            "annualized_return": 0.1336456034770972,
+            "average_invested_fraction": 0.24899523285031974,
+            "max_drawdown": -0.20762679470782652,
+            "mean_trade_return": 0.030455684400042576,
+            "median_trade_return": -0.00970512426371722,
+            "severe_loss_rate": 0.1134020618556701,
+            "sharpe_rf0": 0.8105918094948501,
+            "top20_positive_pnl_concentration": 0.7351787051890619,
+            "total_return": 0.6482237267899993,
+            "trade_count": 194,
+            "turnover": 41.93811294680673,
+            "win_rate": 0.4536082474226804
+          },
+          "candidate": {
+            "annualized_return": 0.1370054137147101,
+            "average_invested_fraction": 0.20207132324859733,
+            "failed_open_executions": 7,
+            "max_drawdown": -0.18716726963437036,
+            "mean_trade_return": 0.04002372763094005,
+            "median_trade_return": -0.0030920025439071528,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.10071942446043165,
+            "sharpe_rf0": 0.9374440167906946,
+            "t1_blocked_exits": 4,
+            "top20_positive_pnl_concentration": 0.7715957932959169,
+            "total_return": 0.6677693579799995,
+            "trade_count": 139,
+            "turnover": 30.35896311505818,
+            "win_rate": 0.4892086330935252
+          },
+          "candidate_minus_baseline": {
+            "annualized_return": 0.0033598102376128924,
+            "average_invested_fraction": -0.04692390960172241,
+            "max_drawdown": 0.020459525073456164,
+            "mean_trade_return": 0.009568043230897477,
+            "median_trade_return": 0.006613121719810068,
+            "severe_loss_rate": -0.01268263739523845,
+            "sharpe_rf0": 0.12685220729584445,
+            "top20_positive_pnl_concentration": 0.036417088106854956,
+            "total_return": 0.01954563119000019,
+            "trade_count": -55,
+            "turnover": -11.579149831748552,
+            "win_rate": 0.03560038567084478
+          }
+        }
+      },
+      "passes_promotion_rule": true,
+      "role": "stock_selection_admission_veto"
+    }
+  },
+  "boundary_incident": "A recursive inventory and an indiscriminate read exposed post-2023 phase-summary metadata elsewhere in the repository. No post-2023 row or exposed outcome is an input here. Future confirmation must exclude that material and use a separately quarantined block.",
+  "claim_boundary": {
+    "cy011_read": false,
+    "existing_engine_changed_on_disk": false,
+    "post_2023_external_boundary_contaminated": true,
+    "post_2023_rows_read_by_experiment": false,
+    "same_bar_fill_assumed": false,
+    "threshold_or_exposure_optimized": false,
+    "untouched_validation": false
+  },
+  "experiment_id": "HAB-CHX-DECISION-BATCH-001",
+  "hashes": {
+    "MINVOL_HIGH_HALF_GROSS": {
+      "consumed_2022_2023": {
+        "daily_nav.jsonl": "2728ca935d6777d32c8f0c4b2d84417b4e7bd93a350718317a5a59f9739e2d72",
+        "engine_summary.json": "5524455efdffd2eb7657b4b0aabee07e80010097c857ab623d53f74034892cf1",
+        "event_ledger.jsonl": "e262e7dacdae7e91d2854b5229f7d5ed953a1409f1ca5c8490ef9654b1f59e62",
+        "execution_ledger.jsonl": "5b7410c6591a10b6386b593e98b81766c945f664ebd6e5a9dec30706fc15888c"
+      },
+      "development_2018_2021": {
+        "daily_nav.jsonl": "f5d607da170f4777e8373a9221b2f9c20b55887d39ea3b0727505bca554310c2",
+        "engine_summary.json": "adc729e7d08a24bd05bfa76ff01db859f7897b3cfbcbe72d1a1fed86f5d49e79",
+        "event_ledger.jsonl": "1be2ef725fbbb6ec3cbe33f4ebc142d104f0db2a7108336b09017b17829f0a0c",
+        "execution_ledger.jsonl": "b263408f6ef01f61c415b1be6ca37912c53117c2f02c67bdd0d952dc942c4476"
+      }
+    },
+    "RS_ACCEL_OVEREXTENSION_VETO": {
+      "consumed_2022_2023": {
+        "daily_nav.jsonl": "2d5a9d14169af6e4dad1193814f5f157918b64e9eb53e2a0b429f937548a2608",
+        "engine_summary.json": "bc2c86a3a504ca7e26c7c252f5a59dd56cd94293985b5004741223fd6123e32c",
+        "event_ledger.jsonl": "39cdce061d104978416c7b0bcf9e7bfab0271791bca30d817cb4d1129f7fdb6f",
+        "execution_ledger.jsonl": "0b989d8057db365d48553b5af99551d12f83cfd8ee755e3a32dab1707b4e13c5"
+      },
+      "development_2018_2021": {
+        "daily_nav.jsonl": "337ce4a8357caaf525272c3fb6156c8eb25415166c7dd5dde4e728f9cb176fe4",
+        "engine_summary.json": "a6cd872685a491e3efc5514e501788a123c2f154425b20a2e049daa62d653bff",
+        "event_ledger.jsonl": "7fff940e7b9cd18b1cc6f695174d90f5eb599791136d1d7ced45b87fb70c4dfa",
+        "execution_ledger.jsonl": "04784200246d46990e9c5a2888f781bbafe1774177d8ec19ad62e9f776961dd1"
+      }
+    },
+    "inputs": {
+      "calendar": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae",
+      "development_baseline": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094",
+      "development_builder": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae",
+      "development_execution_ledger": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249",
+      "development_replay_spec": "1a42cd187f47f93086424d5fce975b50ab89106a4d48011490ce0e6d483a00cd",
+      "engine": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797",
+      "holdout_baseline": "1b3d7540db3e9a403f6f820da4e6e3d0afde33d31979d789c198bb93a5e207e4",
+      "holdout_execution_ledger": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf",
+      "holdout_manifest": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43",
+      "holdout_membership": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e",
+      "market_anchor": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779",
+      "minute_state_panel": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0",
+      "minute_state_result": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc",
+      "selection_screen_result": "c0e293efd5ea4fcbfbbaf737d60192fbd0f9f67e92bf4952b0fea0e7f35f1a02",
+      "shared_strategy_runner": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e",
+      "strategy": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "report_sha256": "a9397af8b021471f2e2adc7068783e2da4aaef785339c277fcceaeb113184c1c",
+    "spec_sha256": "777c8a5675bb8fd98bf4b88184c1a5801f775be998a1527e82c1ef6eb3fd6918"
+  },
+  "honesty_boundary": "All 2018-2023 stock-screen outcomes and the prior minute-path admission-veto result were inspected before this contract. Both replay blocks are consumed exploration, not untouched OOS. The two rules and promotion gates below are fixed before these engine replays.",
+  "research_level": "LEVEL_2_SIMPLE_ENGINE_REPLAY",
+  "status": "COMPLETE_TWO_ARM_REPLAY"
+}

@@ -1868,3 +1868,56 @@ crossing levels. Before estimating usefulness, freeze exact causal action-
 coordinate forward 1/3/5-session cross-sectional return and downside-response
 semantics, nonoverlap, controls, blocks, and no-trading claim. Do not use the
 rally score as a direct predictor, read strategy outcomes, or open CY-011.
+
+## 2026-08-31 professional discovery batch checkpoint
+
+The preceding lean exploration batch is durably checkpointed at `744d2cfd46`.
+This continuation did not restart or alter its findings. MKT-TRND-001 still
+means representation stability only: tested trend direction passed its
+neighboring-horizon stability gate; the tested current quality, age, and
+transition representations failed; the broader families remain open;
+strength/alignment remain data-contract-limited; no trend state is an
+established signal or strategy-habitat predictor.
+
+HAB-CHX-SELECTION-SCREEN-001 joined seven fixed signal-time descriptors to 194
+completed 2018--2021 and 94 completed 2022--2023 CHINEXT V1 cycles. Breakout
+volume, box width, direction efficiency, minimum-volume location, and
+minimum-volume ratio do not advance. RS score is promising but parked because
+the low-tail episode ordering is not stable enough. High PIT RS acceleration
+(`r20-r120 >= 0.20`) is adverse in both coarse blocks and in 10 of 11 supported
+half-years; the sole reversal contains one high-subgroup cycle. Exit-reason and
+holding-duration summaries are attribution only and establish no exit rule.
+
+HAB-CHX-DECISION-BATCH-001 freezes two distinct decisions before engine replay.
+The RS-acceleration arm excludes overextended new candidates but leaves existing
+positions, exits, and baseline ranking among admitted candidates unchanged. It
+improves total return by 1.95/6.79 percentage points, maximum drawdown by
+2.05/6.15 points, and Sharpe by 0.127/0.337 in the two blocks; completed cycles
+are 139/194 and 74/94, and severe-loss incidence falls in both.
+
+The minute-path arm uses the already accepted t-15:30 coordinate as a broad
+risk budget: 5% target per selected holding when PIT progression is at least
+0.80, otherwise 10%. It improves return by 1.76/6.19 points, drawdown by
+5.30/5.74 points, and Sharpe by 0.132/0.211 while preserving exact identity for
+all 194 and 94 completed cycles. Severe-loss incidence falls from 11.34% to
+6.19% and 6.38% to 2.13%. Turnover rises by 11.45 in the development block, so
+cost/capacity stress remains a confirmation requirement.
+
+Both arms pass every frozen development promotion gate and are classified as
+development candidates, not validated strategies. Eight focused tests pass;
+all filled orders execute after their signal date; the selection ledger contains
+no vetoed new entry; exposure targets are only 0/5/10%; 12/12 replay-ledger
+hashes and 4/4 path-normalized engine summaries reproduce.
+
+Boundary correction: a recursive repository inventory exposed post-2023 event
+counts/date ranges, and a subsequent indiscriminate phase-summary read exposed
+post-2023 performance metadata. Those values were not used to select, run, or
+interpret either experiment, and no post-2023 row entered their inputs. However,
+post-2023 is no longer an untouched confirmation block for this agent/lane and
+must remain quarantined. CY-011 remains unread.
+
+Current frontier: independently confirm the two candidates on a separately
+quarantined block, with turnover/cost stress for the exposure overlay. Do not
+search neighboring thresholds, combine the arms, rescue rejected screens, or
+use the contaminated post-2023 material. The resource-parked dispersion ranking
+and waiting formation-depth minute job remain unchanged.

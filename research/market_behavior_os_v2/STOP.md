@@ -176,3 +176,16 @@ ordinary negative timing result, not an S1--S12 condition and not a rejection of
 the accepted formation-depth downside family. No STOP is active. Close the exact
 timing branch and continue mechanism attribution after the resource-aware V2.3
 transition; future trough fields remain prohibited as predictors.
+
+HAB-CHX-SELECTION-SCREEN-001 and HAB-CHX-DECISION-BATCH-001 complete the
+authorized diversified batch. Both fixed executable arms pass their development
+gates; this is positive exploratory evidence, not an S1--S12 terminal condition
+or live authorization. No global program STOP is active.
+
+The current lane nevertheless stops at an independent-confirmation boundary:
+2018--2023 is consumed, and an inventory/summary-read incident makes post-2023
+unavailable as untouched confirmation for this agent. Continuing confirmation
+requires a separately quarantined block. Do not substitute the contaminated
+material, unlock CY-011, tune either rule, combine the arms, or call the
+development candidates validated. Existing MKT-DISP-RANK resource parking and
+MKT-FORMDEPTH-MINX waiting-resource conditions are unchanged.

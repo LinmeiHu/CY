@@ -1,0 +1,136 @@
+{
+  "experiment_id": "HAB-CHX-DECISION-BATCH-001",
+  "research_level": "LEVEL_2_SIMPLE_ENGINE_REPLAY",
+  "status": "POST_SCREEN_FIXED_TWO_ARM_CONTRACT",
+  "frozen_at": "2026-08-31",
+  "question": "Do one stable stock-selection mechanism and one broad market-risk translation improve the existing executable CHINEXT V1 portfolio without changing its exits, rank formula, or execution semantics?",
+  "honesty_boundary": "All 2018-2023 stock-screen outcomes and the prior minute-path admission-veto result were inspected before this contract. Both replay blocks are consumed exploration, not untouched OOS. The two rules and promotion gates below are fixed before these engine replays.",
+  "boundary_incident": "A recursive inventory and an indiscriminate read exposed post-2023 phase-summary metadata elsewhere in the repository. No post-2023 row or exposed outcome is an input here. Future confirmation must exclude that material and use a separately quarantined block.",
+  "selection_history": "Seven economically distinct signal-time stock descriptors were screened at fixed cutoffs. Only high relative-strength acceleration had coherent adverse ordering in both coarse blocks and 10 of 11 supported half-year episodes. The sole reversal contained one high-subgroup trade. No neighboring threshold is authorized.",
+  "inputs": {
+    "selection_screen_result": {
+      "path": "research/market_behavior_os_v2/artifacts/HAB-CHX-SELECTION-SCREEN-001_result.json",
+      "sha256": "c0e293efd5ea4fcbfbbaf737d60192fbd0f9f67e92bf4952b0fea0e7f35f1a02"
+    },
+    "minute_state_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_nonslope_panel.csv",
+      "sha256": "d0a396a9d3788074b483522f81b1f24ea4d6eab339c058f6839e86bb7a589ec0"
+    },
+    "minute_state_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-PATH-002_result.json",
+      "sha256": "a21b56ea2832c62c6746f085b6f06c8c84210a988783d3846a1113846936b6fc"
+    },
+    "shared_strategy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_hab_chx_downrev_strat_001.py",
+      "sha256": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e"
+    },
+    "strategy": {
+      "path": "research/chinext_v1/strategy/chinext_v1_exploratory.py",
+      "sha256": "dd6198c5169c631c39e906cd6c5f0d9463036e09c15eca69a813df743edfc84a"
+    },
+    "engine": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_smoke.py",
+      "sha256": "9993b4ab03a437007eb056e530f786bff2e0fc7f90276aaac9db42cfced30797"
+    },
+    "development_builder": {
+      "path": "research/chinext_v1/scripts/run_chinext_v1_extended_replay.py",
+      "sha256": "17123bf4570638f81bc9d2a185926d8ac81cb2cf76f6dbafc4bf06fb63a3b2ae"
+    },
+    "development_replay_spec": {
+      "path": "research/chinext_v1/specs/chinext_v1_extended_replay_preregistration.json",
+      "sha256": "1a42cd187f47f93086424d5fce975b50ab89106a4d48011490ce0e6d483a00cd"
+    },
+    "development_baseline": {
+      "path": "research/chinext_v1/reports/chinext_v1_extended_replay_summary.json",
+      "sha256": "7595b008ea82744c419248a29d068e8b37f803f36f11ee7816ba9cc6c3757094"
+    },
+    "development_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/extended_execution_ledger.jsonl",
+      "sha256": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"
+    },
+    "holdout_membership": {
+      "path": "research/chinext_v1/data/pit_holdout_2022_2023/daily_membership.parquet",
+      "sha256": "1af3577941081fb8354dae5112c08a89ca24c7d7c78f3fb3dd4943c3ead1ee0e"
+    },
+    "holdout_manifest": {
+      "path": "research/chinext_v1/reports/chinext_v1_pit_holdout_2022_2023_master_manifest.json",
+      "sha256": "4763562dac0538961b8fa5435b7a9475d92bc6e6562faca259b6429ff86bcb43"
+    },
+    "holdout_baseline": {
+      "path": "research/chinext_v1/reports/chinext_v1_phase9b_oos_validation_summary.json",
+      "sha256": "1b3d7540db3e9a403f6f820da4e6e3d0afde33d31979d789c198bb93a5e207e4"
+    },
+    "holdout_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/holdout_execution_ledger.jsonl",
+      "sha256": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"
+    },
+    "market_anchor": {
+      "path": "research/chinext_v1/data/smoke/399102_daily.csv",
+      "sha256": "e096e4d50d0b6ac5062d4940bf0c17c0165dd1c44d5f49ce12d0e3754daa8779"
+    },
+    "calendar": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta/trade_calendar.parquet",
+      "sha256": "1ccd72b98ead430557f214917ca161dd2f92c26c605262bcd9fe7bc3db2c64ae"
+    }
+  },
+  "arms": {
+    "RS_ACCEL_OVEREXTENSION_VETO": {
+      "role": "stock_selection_admission_veto",
+      "signal_fields": ["rs.r20", "rs.r120"],
+      "rule": "exclude a new candidate when r20 - r120 >= 0.20",
+      "decision_timestamp": "completed trade_date close at 15:00 Asia/Shanghai",
+      "ranking": "unchanged baseline score and tie breaks among remaining candidates",
+      "existing_positions": "unchanged",
+      "threshold_search": false
+    },
+    "MINVOL_HIGH_HALF_GROSS": {
+      "role": "portfolio_risk_budget",
+      "coordinate": "minute_realized_volatility__ordinal_progression__pit_3y_pct",
+      "selector": "market_view == CHINEXT_BOARD and denominator == ALL_STATUS",
+      "activation_date": "2020-02-07",
+      "decision_timestamp": "completed trade_date state available exactly at 15:30 Asia/Shanghai",
+      "rule": "target 5% per selected holding when coordinate >= 0.80; otherwise baseline 10%",
+      "transition_execution": "rebalance selected holdings only through existing next-session-open pending orders",
+      "before_activation": "baseline 10% target",
+      "missing_after_activation": "fail closed",
+      "holdings_selection_ranking_exits": "unchanged",
+      "threshold_search": false,
+      "exposure_search": false
+    }
+  },
+  "execution_contract": {
+    "same_bar_fill": false,
+    "earliest_execution": "existing CHINEXT V1 next-session open",
+    "t_plus_one_sellability": "unchanged engine ledger",
+    "limits_suspensions_corporate_actions": "unchanged engine fail-closed semantics",
+    "transaction_cost_bps_per_side": 10,
+    "slippage_and_stamp_duty": "unchanged baseline limitations",
+    "maximum_holdings": 10,
+    "rank_replacement": "OFF"
+  },
+  "blocks": {
+    "development": ["2018-01-02", "2021-12-31"],
+    "consumed_temporal_block": ["2022-01-04", "2023-12-29"],
+    "interpretation": "Both blocks are repeatedly inspected development history for these new rules; neither is untouched OOS."
+  },
+  "promotion_rule": {
+    "required_both_blocks": [
+      "total return improves",
+      "maximum drawdown is no worse",
+      "Sharpe at zero risk-free rate improves",
+      "severe-loss incidence is no higher",
+      "at least 60% of baseline completed position cycles remain",
+      "zero same-day fills"
+    ],
+    "otherwise": "PARK_OR_REJECT_NO_RESCUE"
+  },
+  "prohibited": [
+    "threshold, state, subgroup, block, or exposure search after the run",
+    "same-bar fill",
+    "changing exit logic, rank score, replacement, market gate, or stock setup",
+    "post-2023 rows or outcomes",
+    "CY-011",
+    "calling 2022-2023 untouched OOS",
+    "rescuing either failed arm in this batch"
+  ]
+}

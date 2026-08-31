@@ -1,0 +1,47 @@
+{
+  "experiment_id": "HAB-CHX-SELECTION-SCREEN-001",
+  "research_level": "LEVEL_1_CHEAP_BATCH_SCREEN",
+  "status": "FIXED_BEFORE_OUTCOME_SCREEN",
+  "frozen_at": "2026-08-31",
+  "question": "Which economically distinct signal-time stock descriptors separate completed CHINEXT V1 trades consistently enough to justify one executable replay?",
+  "honesty_boundary": "The seven descriptors and their coarse economic cutoffs were declared before trade outcomes were joined. The resulting 2018-2023 comparisons are consumed exploration, not confirmation or untouched OOS.",
+  "boundary_incident": "A recursive inventory and an indiscriminate read exposed post-2023 phase-summary metadata elsewhere in the repository. No post-2023 row or exposed outcome is an input to this experiment; future confirmation must use a separately quarantined data block.",
+  "inputs": {
+    "development_event_ledger": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/chinext_v1/output/chinext_v1_extended_2018_2021/event_ledger.jsonl",
+      "sha256": "9fb92730ca1c30e448b32b07b6c5ab369b178c820821daf21f3b69b90b0dfc86"
+    },
+    "development_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/extended_execution_ledger.jsonl",
+      "sha256": "878e5d52661323507d62ae5d72bcf8f050d005f8c64a631ab6fb5ae59b7bd249"
+    },
+    "consumed_event_ledger": {
+      "path": "research/chinext_v1/regime_attribution/output/phase7_v1r/HOLDOUT_O0_2022_2023/A40_HALF_PRIMARY/event_ledger.jsonl",
+      "sha256": "5d989ef8d3b220e526c8435711c180b7ab1aa3b89196cd9a93cb5ec68d0e3f4b"
+    },
+    "consumed_execution_ledger": {
+      "path": "research/chinext_v1/data/execution_ledgers/holdout_execution_ledger.jsonl",
+      "sha256": "c83f6199984a30876bd6efc1b8cf3056b9073bfa4fce0380dab9d75235bdf0bf"
+    }
+  },
+  "screens": {
+    "breakout_volume": {"field": "breakout_volume.passed", "groups": "fail/pass"},
+    "relative_strength_score": {"field": "rs.score", "groups": "low <= 0.50; mid; high >= 0.70"},
+    "relative_strength_acceleration": {"field": "rs.r20 - rs.r120", "groups": "low <= -0.20; mid; high >= 0.20"},
+    "box_width": {"field": "full40.box_width", "groups": "low <= 0.15; mid; high >= 0.18"},
+    "direction_efficiency": {"field": "full40.direction_efficiency", "groups": "low <= 0.05; mid; high >= 0.15"},
+    "minimum_volume_location": {"field": "minvol.location", "groups": "low <= 0.10; mid; high >= 0.30"},
+    "minimum_volume_ratio": {"field": "minvol.minimum_volume_ratio", "groups": "low <= 0.40; mid; high >= 0.50"}
+  },
+  "episode_check": "Half-calendar-year high-versus-nonhigh mean-return gaps for relative-strength acceleration; report all supported episodes without optimizing the boundary.",
+  "exit_diagnostic": "Exit reason and coarse realized holding-duration summaries are attribution only. They are not signal-time predictors and cannot promote an exit rule.",
+  "promotion_rule": "At most one descriptor advances: same adverse/favorable direction in both coarse blocks and at least 8 adverse supported half-year episodes, with an interpretable non-tail subgroup and no threshold search.",
+  "prohibited": [
+    "post-2023 rows or outcomes",
+    "CY-011",
+    "future path fields as entry predictors",
+    "threshold or subgroup search after outcome inspection",
+    "calling 2022-2023 untouched OOS",
+    "promoting the descriptive exit attribution into a rule"
+  ]
+}

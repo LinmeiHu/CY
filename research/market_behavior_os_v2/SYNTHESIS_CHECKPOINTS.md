@@ -2557,3 +2557,43 @@ candidate but no security ranking, payoff, trigger, exit, or authorization.
 distinguishes continuation, reversal, and directionless widening before any
 portfolio construction. Keep MINX waiting for >=9 GiB; do not unlock post-2023
 or CY-011, and do not translate opportunity width into assumed long-short PnL.
+
+## SYNTH-MKT-055 — professional stock-selection and risk-budget batch
+
+### What was learned?
+
+Among seven fixed stock-level signal-time screens, only extreme short-versus-
+long relative-strength acceleration has coherent adverse episode structure:
+both coarse blocks and 10/11 supported half-years. Its fixed executable veto
+passes every predeclared development gate. Separately, the same accepted
+five-day minute-volatility progression that failed as an admission veto becomes
+useful in a distinct role: fixed half-gross sizing in the high state passes all
+return, drawdown, Sharpe, severe-loss, retention, and timing gates.
+
+These results demonstrate role specificity. A state that is a poor admission
+gate can still be a useful portfolio risk budget. They do not establish causal
+overextension, validated alpha, or live strategy usefulness because all
+2018--2023 outcomes are consumed discovery history.
+
+### What market behavior are we still not studying?
+
+We still lack independent temporal stability for the stock-level acceleration
+effect, interaction geometry between security overextension and market
+participation, realistic higher-cost/capacity stress for frequent exposure
+transitions, executable exit/holding mismatch, true order flow, and the rank
+direction inside widening industry dispersion.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+The RS veto is a new selection mechanism within the existing breakout seed,
+not a wholly new archetype. The minute-path rule activates a defensive exposure
+overlay candidate. Dispersion/relative value remains the genuinely new archetype
+but has no executable rank result. None is authorized for live implementation.
+
+### Research Director decision
+
+`STOP_AT_INDEPENDENT_CONFIRMATION_BOUNDARY`. Preserve both passing fixed rules
+without combination or neighbor search. Future work requires separately
+quarantined data and must include turnover/cost stress for the exposure arm.
+Post-2023 is contaminated by an inventory/summary-read incident and cannot serve
+as untouched confirmation; CY-011 remains unread.

@@ -1752,3 +1752,45 @@ handoff if needed, run exact `--stage sample` then `--stage analyze`, and preser
 the frozen sample, window, descriptors, controls, and floor. Do not kill user
 applications, weaken resource/PIT gates, publish partial minute evidence, open
 post-2023 data or CY-011, or infer a strategy.
+
+## 2026-08-31 handoff — diversified decision batch
+
+Resume from checkpoint `744d2cfd46` plus the final commit containing
+HAB-CHX-SELECTION-SCREEN-001 and HAB-CHX-DECISION-BATCH-001. Do not restart the
+earlier funnel. Preserve the semantic correction that MKT-TRND-001 established
+only neighboring-horizon stability for tested trend direction, not usefulness;
+tested quality/age/transition representations failed without rejecting their
+broader families, strength/alignment remain unresolved, and no trend signal or
+habitat predictor exists.
+
+The selection screen fixes seven signal-time concepts and promotes only PIT
+`r20-r120 >= 0.20` overextension as a veto candidate. It is adverse in both
+consumed blocks and 10/11 supported half-years. The fixed engine replay improves
+return by 1.95/6.79 pp, DD by 2.05/6.15 pp, Sharpe by 0.127/0.337, and severe
+loss incidence in both blocks while retaining 139/194 and 74/94 cycles.
+
+The one authorized minute-path translation is a risk-budget rule, not another
+admission veto: at t 15:30, use 5% selected-position targets in the fixed high
+state and 10% otherwise, with existing next-open orders. It improves return by
+1.76/6.19 pp and DD by 5.30/5.74 pp, improves Sharpe and severe-loss incidence,
+and preserves all completed-cycle identities. Development turnover rises 11.45,
+so independent cost/turnover stress is mandatory.
+
+Both are development candidates only. They use repeatedly consumed 2018--2023
+history, not untouched OOS. A recursive inventory and phase-summary read
+accidentally exposed unrelated post-2023 metadata/performance. Quarantine all
+post-2023 material from future confirmation; do not cite the exposed values.
+No post-2023 row entered the experiments and CY-011 remains unread.
+
+Reproduction/QA: eight focused tests pass; all fills are later than signals;
+the selection output admits no candidate at or above the frozen acceleration
+ceiling; exposure targets are only 0/5/10%; exposure completed-cycle identities
+match baseline exactly; 12/12 ledger hashes and 4/4 path-normalized summaries
+reproduce. Engine directories are durable but ignored; the compact result JSON,
+specs, runners, tests, reports, and OS state are the commit surface.
+
+Next decision: obtain a separately quarantined confirmation block or stop at
+the confirmation boundary. Do not inspect the contaminated post-2023 summaries,
+search thresholds/exposure fractions, combine both passing arms, or reopen the
+parked downside/minute admission vetoes. MKT-DISP-RANK remains resource-parked;
+MKT-FORMDEPTH-MINX remains waiting for its unchanged RAM condition.

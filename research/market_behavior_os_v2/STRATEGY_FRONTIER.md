@@ -164,3 +164,21 @@ is future attribution. Do not infer imminent acceleration, an early-stop rule,
 an entry delay, a recovery trade, or any V1 modification. The formation-depth
 family remains market-mechanism research only while subgroup/shared-environment
 attribution is mapped.
+
+HAB-CHX-SELECTION-SCREEN-001 opens one stock-selection candidate and rejects or
+parks six alternatives. The fixed PIT RS-acceleration overextension veto then
+passes every HAB-CHX-DECISION-BATCH-001 development replay gate: return,
+drawdown, Sharpe, severe loss, retention, and next-open timing improve or comply
+in both consumed blocks. This is a candidate inside the existing breakout seed,
+not independent confirmation or live authorization.
+
+The accepted five-day minute-volatility progression also opens a defensive
+exposure candidate in a genuinely different decision role. Fixed 5%-versus-10%
+selected-position targets pass the same gates and preserve exact cycle identity,
+although development turnover rises. The earlier high-state admission veto
+remains parked; the risk-budget result does not rescue it.
+
+Both candidates stop at the independent-confirmation boundary. Do not combine
+them, search thresholds/exposure fractions, use contaminated post-2023 material,
+or unlock CY-011. A separately quarantined block and cost/turnover stress are
+required before either can move beyond development-candidate status.
