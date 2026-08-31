@@ -1,0 +1,56 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-OWN-DATA-005",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_EXACT_INCOMPLETE_CONTROL_CLOCK_RETRY_BEFORE_OUTPUT",
+  "question": "Does the unchanged own/shared domain complete when the joint-control clock is required only on analytically complete rows?",
+  "outcome_access": "FUTURE_PRE2024_CROSSER_STRATUM_RESPONSE_CONSTRUCTION_ONLY",
+  "inputs": {
+    "scientific_parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-001_spec.json",
+      "sha256": "ec153f32588ad6a1be034da074575981e30614aca05c0c16a3cf2293ab841854"
+    },
+    "corrected_parent_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_own_data_001.py",
+      "sha256": "40808c1514ffcd19bb81857a3d5425067da90a0fce3ca8f02e7240df6199f025"
+    },
+    "invalid_004_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-004_spec.json",
+      "sha256": "bb9b3b8854a282de1f6ac5cf97b2de9351077410b51f185dea0a1dcc9d6e8bce"
+    }
+  },
+  "invalid_parent": {
+    "experiment_id": "MKT-FORMDEPTH-OWN-DATA-004",
+    "outputs_accepted": false,
+    "association_or_adequacy_inspected": false,
+    "failure": "the runner incorrectly required attribution-control clocks on structurally right-censored incomplete rows"
+  },
+  "diagnosed_domain": {
+    "right_censored_cells_without_control_clock": 36,
+    "right_censored_stratum_rows_without_control_clock": 180,
+    "complete_cells_without_control_clock": 0,
+    "own_anchor_available_at": "15:30 Asia/Shanghai",
+    "joint_control_clock_required_when_complete": "15:30 Asia/Shanghai"
+  },
+  "only_changes": {
+    "implementation": "Require an exact 15:30 joint-control clock on complete rows. Preserve missing controls on 36 structurally right-censored cells and record their already-frozen own anchor-state availability at 15:30.",
+    "output_experiment_id": "MKT-FORMDEPTH-OWN-DATA-005"
+  },
+  "exact_inheritance": {
+    "all_001_scientific_definitions_and_input_hashes": true,
+    "all_001_membership_response_pit_support_scalar_and_claim_rules": true,
+    "all_002_resource_limits_including_3_gib_peak_rss": true,
+    "all_004_structural_right_censor_conservation": true,
+    "incomplete_rows_enter_support_or_association": false
+  },
+  "no_rescue": "Any incomplete-domain count change, missing or non-15:30 complete-row control clock, or further scientific/resource change fails closed.",
+  "claim_boundary": "Own/shared stratum response-domain adequacy only; no mechanism direction, causality, prediction, execution, payoff, habitat, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_scalar_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_result.json",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_resource_telemetry.csv",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-OWN-DATA-005_audit.md"
+  ]
+}

@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `OS-V2.3_RESOURCE_GOVERNANCE_AND_PARALLEL_LANE_ACTIVATION`
-- `CURRENT_PRIMARY_FRONTIER`: continue formation-depth mechanism attribution by separating own-security/shared-date/subgroup structure without arbitrary feature mining
+- `CURRENT_PHASE`: `FORMATION_DEPTH_OWN_SHARED_RESPONSE_DOMAIN_READY`
+- `CURRENT_PRIMARY_FRONTIER`: distinguish own-security overshoot from broad shared-date formation depth using the fixed five-stratum decomposition; subgroup search remains closed
 - `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes worse cumulative pre-open and trough-session intraday paths among crossers; exact trough timing does not stably shift, recovery is mechanical, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is the formation-depth adverse path broad across crossing securities after individual overshoot control, or concentrated by industry, size, liquidity, and other same-day market-state absorption?
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: after controlling each depth stratum's own overshoot and the five accepted controls, does downside vary broadly with the disjoint other-four-strata formation environment, with own overshoot, or both?
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-08-31.
   eight aggregate research threads maximum; 8 GiB system-headroom floor.
 - `CACHE_STATUS`: no cache published; preferred external root absent; 80-GiB
   planning ceiling subject to manifest and 25% free-disk floor.
-- `ACTIVE_EXPERIMENT`: none; A-FORMDEPTH-SUBGROUP-MAP-001 is map-first and no
-  response outcome is authorized before a new frozen contract.
+- `ACTIVE_EXPERIMENT`: none; MKT-FORMDEPTH-OWN-DATA-005 completed the reusable
+  response domain, but no own/shared association has yet been computed.
 - `ACTIVE_RESOURCE_BLOCKER`: high baseline swap occupancy prevents promotion
   above two heavy workers until stability telemetry passes.
 - `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
@@ -59,6 +59,28 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### MKT-FORMDEPTH-OWN-DATA-005 own/shared response domain
+
+The fixed decomposition ranks every exact same-date crosser by its own L20 high
+overshoot into five deterministic strata before any future response is joined.
+For each stratum, the shared-date coordinate is the disjoint mean overshoot of
+the other four strata. The h=1/3/5 adverse and terminal responses remain future
+attribution only; no response is used as a predictor.
+
+The final data build passes twice byte-identically after four rejected
+implementation/resource attempts recorded in `ENGINEERING_ATTEMPTS.md`. It
+contains 53,820 stratum rows, of which 53,550 are complete, with exact anchor and
+response conservation, 36 structural right-censor cells retained but excluded,
+minimum 116 complete dates per cell/year/stratum, and 31,695 later PIT-plus-six-
+control rows (minimum 6,338 per stratum). All 25 security cases across ten fields
+reconstruct exactly. Panel/result hashes are `ebae0328...`/`05a5412f...`.
+
+This establishes response-domain adequacy only. It does not establish an own or
+shared channel, direction, causality, usefulness, habitat, or strategy. The next
+primary experiment may estimate only the already-defined own-versus-broad-shared
+decomposition; industry, size, liquidity, closing-arm, threshold, and strategy
+search remain closed.
 
 ### MKT-BREAKOUT-ECON-DATA-001 response domain
 

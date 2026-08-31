@@ -2,6 +2,28 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-FORMDEPTH-OWN-DATA-005
+
+The own-versus-shared formation-depth map fixes five same-date own-overshoot
+strata before future response. Each stratum's shared-date coordinate excludes
+that stratum and uses the other four strata only. DATA-005 completes twice
+byte-identically with panel `ebae0328...`, count `4e4eede3...`, scalar
+`51f78586...`, result `05a5412f...`, and report `9b7e5a7b...`.
+
+The response domain has 53,820 rows, 53,550 complete rows, minimum 116 complete
+dates per cell/year/stratum, and 31,695 later PIT-plus-control rows. Exact anchor
+and response conservation pass. Thirty-six right-censored late-2023 cells are
+retained as incomplete and cannot enter analysis; all 25 scalar cases are exact.
+Attempts 001--004 are invalid and accepted no output or association.
+
+No own/shared effect has been estimated. The next high-information question is
+the fixed two-channel decomposition: own-stratum gradient versus the disjoint
+other-four-strata shared environment after own-depth and five accepted controls.
+Do not open subgroup, threshold, industry, size, liquidity, strategy, post-2023,
+or CY-011 search. After this checkpoint, apply the user's Lean Autonomous
+Research Override: proportional EXPLORE/PROMOTE/CONFIRM validation, one primary
+frontier, and minimal authoritative state maintenance.
+
 ## Research OS V2.3 activation
 
 Parallel Research OS begins from clean pushed checkpoint

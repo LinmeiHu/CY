@@ -1,0 +1,65 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-OWN-DATA-003",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_EXACT_RIGHT_CENSORING_IMPLEMENTATION_RETRY_BEFORE_OUTPUT",
+  "question": "Does the unchanged own/shared data domain pass after fail-closed binding to the accepted complete-h5 date/cell domain?",
+  "outcome_access": "FUTURE_PRE2024_CROSSER_STRATUM_RESPONSE_CONSTRUCTION_ONLY",
+  "inputs": {
+    "scientific_parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-001_spec.json",
+      "sha256": "ec153f32588ad6a1be034da074575981e30614aca05c0c16a3cf2293ab841854"
+    },
+    "corrected_parent_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_own_data_001.py",
+      "sha256": "b99c30031c36854fc329cfdf0e4c114d1b8c7f55ec986f077b7391d21fdcb284"
+    },
+    "invalid_resource_retry_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-002_spec.json",
+      "sha256": "d200a440976b6ae70aa6091887853071af0e1c76718d491cff1c6437260a8d4a"
+    }
+  },
+  "invalid_parent": {
+    "experiment_id": "MKT-FORMDEPTH-OWN-DATA-002",
+    "outputs_accepted": false,
+    "association_or_adequacy_inspected": false,
+    "failure": "36 zero-response late-2023 anchor cells were outside the bound complete-h5 path-panel key domain"
+  },
+  "diagnosed_first_difference": {
+    "trade_date": "2023-12-25",
+    "market_view": "ALL_A",
+    "denominator": "ALL_STATUS",
+    "anchor_sum": 107,
+    "anchor_expected": 107,
+    "strata": 5,
+    "stratum_response_sum": 0,
+    "bound_response_count": null,
+    "unbound_right_censored_date_cells": 36,
+    "anchor_count_failed_cells": 0,
+    "stratum_count_failed_cells": 0,
+    "other_response_failed_cells": 0
+  },
+  "only_changes": {
+    "implementation": "After response-independent anchor stratum construction, bind final rows to the accepted path-panel key domain. Permit an unbound cell only when all five strata exist, all response counts are zero, its date is strictly later than the maximum bound date, and the diagnosed unbound-cell count remains 36.",
+    "output_experiment_id": "MKT-FORMDEPTH-OWN-DATA-003"
+  },
+  "exact_inheritance": {
+    "all_001_scientific_definitions_and_input_hashes": true,
+    "all_001_membership_and_stratum_rules": true,
+    "all_001_response_pit_support_and_scalar_rules": true,
+    "all_001_prohibited_computations_and_claim_boundary": true,
+    "all_002_resource_limits_including_3_gib_peak_rss": true,
+    "anchor_strata_still_constructed_before_future_response": true,
+    "strata_recomputed_after_response": false
+  },
+  "no_rescue": "Any earlier, responding, malformed, or count-changed unbound cell fails closed. No further resource, domain, membership, response, PIT, support, scalar, outcome, or claim change is allowed inside 003.",
+  "claim_boundary": "Own/shared stratum response-domain adequacy only; no mechanism direction, causality, prediction, execution, payoff, habitat, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-003_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-003_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-003_scalar_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-003_result.json",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-003_resource_telemetry.csv",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-OWN-DATA-003_audit.md"
+  ]
+}

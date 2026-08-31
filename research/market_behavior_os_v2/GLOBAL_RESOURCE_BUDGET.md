@@ -46,3 +46,21 @@ Promote from two to three heavy workloads only when a telemetry interval shows:
 Reduce concurrency immediately on memory-pressure deterioration, swap growth,
 disk contention, or worse aggregate throughput. A scientific job that breaches
 its frozen envelope fails closed; global capacity cannot rescue it.
+
+## Measured single-job exception: formation-depth stratum construction
+
+After both initial workers exited, the unchanged
+`MKT-FORMDEPTH-OWN-DATA-001` attempt measured 2,628,616,192 bytes maximum RSS,
+34.40 seconds wall time, and zero swaps. Memory-pressure free percentage was
+65%, disk free was 347 GiB, and baseline swap occupancy was flat. This does not
+validate or rescue 001. It permits a separately frozen 002 retry with:
+
+- one heavy process total;
+- one DuckDB and aggregate numerical thread;
+- unchanged 1.5-GiB DuckDB memory limit;
+- 3.0-GiB process peak-RSS ceiling;
+- unchanged 8-GiB system-headroom and 25% disk-headroom floors;
+- no simultaneous raw-minute scanner or other heavy worker.
+
+The exception expires with that exact retry family and does not raise the
+default worker ceiling or authorize a third heavy workload.

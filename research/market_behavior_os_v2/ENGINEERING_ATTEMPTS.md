@@ -1,5 +1,78 @@
 # Engineering-attempt ledger
 
+## MKT-FORMDEPTH-OWN-DATA-001 — invalid frozen RSS envelope
+
+The frozen own-versus-shared stratum-domain builder stopped after the first
+annual batch because its lifetime peak exceeded the 1.5-GiB RSS ceiling. No
+panel, count audit, scalar audit, result, report, association, or adequacy count
+was written or accepted. A second measurement of the unchanged attempt used
+one DuckDB/BLAS thread and reported 2,628,616,192 bytes maximum RSS,
+1,983,744,520 bytes peak memory footprint, 34.40 seconds wall time, and zero
+swaps.
+
+MKT-FORMDEPTH-OWN-DATA-002 may change only the declared peak-RSS ceiling to
+3.0 GiB and output identity. The 1.5-GiB DuckDB limit, exact inputs, anchor
+membership, strata, future responses, PIT coordinates, support gates, scalar
+audit, scientific prohibitions, and claim boundary remain unchanged. The 001
+attempt remains invalid and cannot be promoted retrospectively.
+
+## MKT-FORMDEPTH-OWN-DATA-002 — invalid unbound right-censored tail
+
+The measured-resource retry conserved anchor counts in every constructed cell
+and produced five strata in every cell, but stopped before output on response
+exhaustion. The first differing key was `2023-12-25 / ALL_A / ALL_STATUS`:
+107 stratum anchors exactly matched 107 expected anchors, while both the
+stratum response sum and bound response were respectively zero and absent.
+
+Diagnosis found 36 such date/view/denominator cells, zero anchor-count failures,
+zero stratum-count failures, and no other response failures. Every mismatch was
+strictly after the bound complete-h5 path panel's last date and had zero
+security responses. No output, adequacy count, or association was accepted.
+
+MKT-FORMDEPTH-OWN-DATA-003 changes only the implementation bind and output
+identity: immutable anchor strata are still formed before responses, but final
+data-domain output is inner-bound to the accepted path-panel date/cell domain.
+An unbound cell may be removed only when all five strata exist, every response
+count is zero, its date is strictly after the maximum bound date, and exactly
+36 such cells exist. Any earlier, responding, malformed, or count-changed
+unbound cell fails closed. No anchor is reranked and no response, PIT, support,
+effect, or strategy definition changes.
+
+## MKT-FORMDEPTH-OWN-DATA-003 — invalid missing-versus-unbound distinction
+
+The 003 guard stopped before output because it expected 36 unbound keys but
+found zero. Exact diagnosis showed that all 36 late-2023 keys are present in the
+accepted path panel. Their bound crossing-response count is structurally
+missing because a full h=5 response is unavailable, while their constructed
+security-response sum is exactly zero. The proposed inner bind would therefore
+have deleted valid immutable anchor strata and is rejected.
+
+MKT-FORMDEPTH-OWN-DATA-004 preserves every bound anchor-stratum key. Response
+conservation passes either by exact integer equality when a bound response count
+exists, or only by the exact pair `bound count missing / constructed count zero`
+for a structurally right-censored incomplete cell. `path_topology_complete`
+remains false, so these rows cannot enter support or later association. Any
+unbound key or nonzero response under a missing bound count fails closed. No
+output, adequacy result, or association from 003 is accepted.
+
+## MKT-FORMDEPTH-OWN-DATA-004 — invalid incomplete-row control-clock gate
+
+The 004 response conservation passed and retained the 36 structurally
+right-censored cells, then stopped before output because the attribution-control
+panel has no rows for those incomplete dates. An input-key audit found 40 such
+cells in the full path panel and exactly the same 36 among the at-least-25-anchor
+domain; all have missing bound response counts and
+`path_topology_complete=false`. No complete analytical cell lacks a control
+clock.
+
+MKT-FORMDEPTH-OWN-DATA-005 requires exact 15:30 control clocks on every complete
+analytical row, preserves missing controls on the 36 incomplete cells, and
+records their own anchor-state availability at the already-frozen session close
+of 15:30. Those rows remain excluded from support and association. Any missing
+or non-15:30 clock on a complete row, or any change from 36 cells / 180 stratum
+rows, fails closed. No output, adequacy result, or association from 004 is
+accepted.
+
 ## MKT-TRND-001-A — invalid before feature construction
 
 - Frozen QD-003 manifest and all six source-file hashes passed.

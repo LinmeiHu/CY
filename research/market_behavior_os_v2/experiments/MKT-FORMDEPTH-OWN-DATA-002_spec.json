@@ -1,0 +1,65 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-OWN-DATA-002",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_EXACT_RESOURCE_RETRY_BEFORE_OWN_SHARED_STRATUM_RESPONSE_CONSTRUCTION",
+  "question": "Can the unchanged own/shared stratum response-domain construction complete under the measured single-job RSS envelope?",
+  "outcome_access": "FUTURE_PRE2024_CROSSER_STRATUM_RESPONSE_CONSTRUCTION_ONLY",
+  "inputs": {
+    "parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-001_spec.json",
+      "sha256": "ec153f32588ad6a1be034da074575981e30614aca05c0c16a3cf2293ab841854"
+    },
+    "parent_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_own_data_001.py",
+      "sha256": "d7cb8997524930640fe80822cb01c9f45a74b59e04ac9fd19309286ef45b61e9"
+    }
+  },
+  "invalid_parent": {
+    "experiment_id": "MKT-FORMDEPTH-OWN-DATA-001",
+    "outputs_accepted": false,
+    "association_or_adequacy_inspected": false,
+    "failure": "measured 2628616192-byte maximum RSS exceeded frozen 1.5-GiB peak-RSS ceiling"
+  },
+  "exact_inheritance": {
+    "all_scientific_definitions": true,
+    "all_source_and_parent_hashes": true,
+    "all_membership_and_stratum_rules": true,
+    "all_response_and_pit_rules": true,
+    "all_support_and_scalar_gates": true,
+    "all_prohibited_computations": true,
+    "all_non_rss_resource_limits": true,
+    "claim_boundary": true
+  },
+  "only_changes": {
+    "peak_rss_ceiling_gib_from": 1.5,
+    "peak_rss_ceiling_gib_to": 3.0,
+    "output_experiment_id": "MKT-FORMDEPTH-OWN-DATA-002"
+  },
+  "measured_parent": {
+    "maximum_resident_set_size_bytes": 2628616192,
+    "peak_memory_footprint_bytes": 1983744520,
+    "wall_clock_seconds": 34.40,
+    "swaps": 0
+  },
+  "global_admission": {
+    "heavy_processes": 1,
+    "aggregate_numerical_threads": 1,
+    "duckdb_memory_limit_gib": 1.5,
+    "memory_pressure_free_percentage": 65,
+    "swap_used_mib": 2435.31,
+    "disk_free_gib": 347,
+    "system_memory_headroom_floor_gib": 8,
+    "raw_minute_scanner_concurrent": false
+  },
+  "no_rescue": "No further resource relaxation or scientific, membership, response, PIT, support, scalar, outcome, or claim change is allowed inside 002.",
+  "claim_boundary": "Own/shared stratum response-domain adequacy only; no mechanism direction, causality, prediction, execution, payoff, habitat, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-002_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-002_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-002_scalar_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-002_result.json",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-002_resource_telemetry.csv",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-OWN-DATA-002_audit.md"
+  ]
+}

@@ -93,3 +93,15 @@ External user processes are not terminated or modified by Research OS.
 The 80-GiB cache allowance is a planning ceiling, not authorization to build a
 large cache. Every generation requires a separate manifest, one writer, temporary
 write, validation, and atomic publish.
+
+## Adaptive observation after initial workers
+
+Both initial worker processes had exited before the Director measured the
+formation-depth stratum builder. The unchanged one-thread attempt reported
+2,628,616,192 bytes maximum RSS, 1,983,744,520 bytes peak memory footprint,
+34.40 seconds wall time, and zero swaps. At admission, memory-pressure free
+percentage was 65%, swap used was 2,435.31 MiB, and disk free was 347 GiB.
+
+The 1.5-GiB attempt remains invalid. These measurements support only the
+single-job, separately frozen 3.0-GiB retry described in
+`GLOBAL_RESOURCE_BUDGET.md`; they do not change the default two-worker policy.

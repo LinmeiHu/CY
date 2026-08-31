@@ -1,0 +1,58 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-OWN-DATA-004",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_EXACT_STRUCTURAL_RIGHT_CENSOR_RETRY_BEFORE_OUTPUT",
+  "question": "Does the unchanged own/shared domain conserve responses while retaining bound anchor cells whose h=5 response is structurally unavailable?",
+  "outcome_access": "FUTURE_PRE2024_CROSSER_STRATUM_RESPONSE_CONSTRUCTION_ONLY",
+  "inputs": {
+    "scientific_parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-001_spec.json",
+      "sha256": "ec153f32588ad6a1be034da074575981e30614aca05c0c16a3cf2293ab841854"
+    },
+    "corrected_parent_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_own_data_001.py",
+      "sha256": "3b48e3a3491e5587a26776787bf278ed2f01b46dc55fc2b57dde5fec97bffbf9"
+    },
+    "invalid_003_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-003_spec.json",
+      "sha256": "16e86ab7e0df9463e8027d6c5ebb17a21f21769a9464288491a3895d026726d5"
+    }
+  },
+  "invalid_parent": {
+    "experiment_id": "MKT-FORMDEPTH-OWN-DATA-003",
+    "outputs_accepted": false,
+    "association_or_adequacy_inspected": false,
+    "failure": "all diagnosed late-2023 keys were bound but carried structurally missing h=5 response counts; the proposed unbound-key filter was invalid"
+  },
+  "diagnosed_domain": {
+    "structurally_right_censored_date_cells": 36,
+    "unbound_date_cells": 0,
+    "anchor_count_failed_cells": 0,
+    "stratum_count_failed_cells": 0,
+    "constructed_response_sum_each_right_censored_cell": 0,
+    "path_topology_complete_each_right_censored_cell": false
+  },
+  "only_changes": {
+    "implementation": "Retain every bound anchor-stratum key. Response conservation is exact integer equality when the bound count exists, or the exact missing-bound/zero-constructed pair for the 36 structurally right-censored incomplete cells.",
+    "output_experiment_id": "MKT-FORMDEPTH-OWN-DATA-004"
+  },
+  "exact_inheritance": {
+    "all_001_scientific_definitions_and_input_hashes": true,
+    "all_001_membership_response_pit_support_scalar_and_claim_rules": true,
+    "all_002_resource_limits_including_3_gib_peak_rss": true,
+    "anchor_strata_still_constructed_before_future_response": true,
+    "bound_anchor_cells_deleted": false,
+    "strata_recomputed_after_response": false
+  },
+  "no_rescue": "Any absent bound key, nonzero constructed response under a missing bound count, count change, or further scientific/resource change fails closed.",
+  "claim_boundary": "Own/shared stratum response-domain adequacy only; no mechanism direction, causality, prediction, execution, payoff, habitat, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-004_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-004_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-004_scalar_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-004_result.json",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-004_resource_telemetry.csv",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-OWN-DATA-004_audit.md"
+  ]
+}
