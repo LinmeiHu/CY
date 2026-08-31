@@ -142,3 +142,11 @@ path to same-day objective crossers, but terminal-return diagnostics are weak an
 the crossing arm mixes accepted and rejected closes. A failed-breakout reversal
 requires a rejected-close-specific mechanism and later executable trigger/exit
 evidence; a generic breakout risk veto requires a separate setup interaction.
+
+MKT-FORMDEPTH-CLOSE-001 closes the rejected-close-specific premise under the
+frozen design. Formation-depth downside passes among both closing-accepted and
+closing-rejected crossers, while rejected-minus-accepted fails; terminal
+associations remain weak. Failed-breakout reversal is therefore not promoted to
+an active archetype, and rejected closes may not be selected as a trigger from
+this evidence. The adverse-path timing decomposition is market attribution only;
+it cannot authorize an entry, exit, veto, exposure rule, or V1 reopening.

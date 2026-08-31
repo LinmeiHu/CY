@@ -1,0 +1,135 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-CLOSE-DATA-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_CLOSING_ARM_RESPONSE_CONSTRUCTION",
+  "question": "Can the localized objective-crossing response arm be conserved into exact closing-accepted, closing-rejected, and equality cohorts?",
+  "outcome_access": "FUTURE_PRE2024_CROSSER_CLOSING_ARM_RESPONSE_CONSTRUCTION_ONLY",
+  "inputs": {
+    "topology_map": {
+      "path": "research/market_behavior_os_v2/CROSSER_CLOSING_STATE_TOPOLOGY_MAP.md",
+      "sha256": "4a5fd599dd939b3e20a49448168083b8f9a805e595fecbd95bbd2aae43d4cc44"
+    },
+    "data_contract": {
+      "path": "research/market_behavior_os_v2/CROSSER_CLOSING_STATE_DATA_CONTRACT.md",
+      "sha256": "50b3c48ebf86414a747188822b2506960267b093860a07727831c721a3a234a7"
+    },
+    "inherited_data_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-PROP-DATA-001_spec.json",
+      "sha256": "3017753a1a25d37946bfb383dc6a8b3f8c0a4219e5b943d6067d4278db326b58"
+    },
+    "inherited_data_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_formdepth_prop_data_001.py",
+      "sha256": "f0e2aace6d1ae506d72ae0ef02a53e3f3bb5b9c800e4dec71e7a6cb6a4a45775"
+    },
+    "crossing_response_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-DATA-002_panel.csv",
+      "sha256": "871f0ccf5747853a00916c86ac627e031ab1d5935f3419df6879504da66e9e87"
+    },
+    "crossing_response_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-DATA-002_result.json",
+      "sha256": "49e80f3452b91def77b1a1a8c4bf873db82992cd336f9906b6ed067e5ad3be1e"
+    },
+    "propagation_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-PROP-001_result.json",
+      "sha256": "ac7ad6e254d92b088f37120df02e699808269eb549ff0917d3495e52751ef899"
+    },
+    "predictor_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-DIFF-001_panel.csv",
+      "sha256": "99fd26ee6973c338e8df803e44434bc0ad6498dfefee518d9c51bc4c605d4d11"
+    }
+  },
+  "activation": {
+    "required_crossing_domain_status": "COMPLETE_MEMBERSHIP_RESPONSE_DOMAIN_ADEQUACY",
+    "required_propagation_classification": "LOCALIZED_CROSSER_DOWNSIDE_TOPOLOGY",
+    "expected_crossing_panel_rows": 11336,
+    "expected_crossing_topology_complete_rows": 11289,
+    "expected_views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "expected_denominators": ["ALL_STATUS", "NON_ST"]
+  },
+  "membership": {
+    "accepted": "cross20 and coordinate_close_t > resistance_high20",
+    "rejected": "cross20 and coordinate_close_t < resistance_high20",
+    "equal": "cross20 and coordinate_close_t == resistance_high20",
+    "arms_disjoint_and_exhaust_crossing": true,
+    "membership_fixed_at_t": true,
+    "future_status_or_membership_selection": false
+  },
+  "response": {
+    "horizons": [1, 3, 5],
+    "metrics": ["terminal_log_return", "adverse_log_excursion"],
+    "statistics": ["count", "sum", "mean"],
+    "complete_future_steps": 5,
+    "response_begins": "next exchange session",
+    "last_consumed_date": "2023-12-29"
+  },
+  "support": {
+    "minimum_arm_retention": 0.9,
+    "minimum_accepted_response_count": {
+      "ALL_A": 5,
+      "SH_A": 2,
+      "SZ_A": 3,
+      "CHINEXT_BOARD": 1
+    },
+    "minimum_rejected_response_count": {
+      "ALL_A": 8,
+      "SH_A": 1,
+      "SZ_A": 3,
+      "CHINEXT_BOARD": 1
+    },
+    "minimum_complete_dates_per_view_denominator_year": 150,
+    "minimum_later_five_control_rows": 6000,
+    "minimum_later_rows_per_cell": 750
+  },
+  "scalar_reconstruction": {
+    "cases_per_arm": 5,
+    "arms": ["accepted", "rejected", "equal"],
+    "selection": "smallest SHA256(MKT-FORMDEPTH-CLOSE-DATA-001|arm|symbol|trade_date) among complete response crossers",
+    "exact_fields": [
+      "closing_arm",
+      "coordinate_close_t",
+      "resistance_high20",
+      "coordinate_close_t1",
+      "coordinate_close_t3",
+      "coordinate_close_t5",
+      "mapped_low_t1",
+      "mapped_low_t2",
+      "mapped_low_t3",
+      "mapped_low_t4",
+      "mapped_low_t5",
+      "terminal_log_return_h1",
+      "terminal_log_return_h3",
+      "terminal_log_return_h5",
+      "adverse_log_excursion_h1",
+      "adverse_log_excursion_h3",
+      "adverse_log_excursion_h5"
+    ]
+  },
+  "resource_budget": {
+    "single_process": true,
+    "duckdb_threads": 1,
+    "daily_memory_limit_gib": 1.5,
+    "temporary_spill_ceiling_gib": 10,
+    "compressed_read_ceiling_gib": 20,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "filesystem_headroom_fraction": 0.25,
+    "wall_clock_ceiling_minutes": 20,
+    "durable_output_ceiling_mib": 100,
+    "security_level_durable_output": false,
+    "two_byte_identical_runs": true
+  },
+  "prohibited_computations": [
+    "state/closing-arm response association, regression, high-low contrast, paired effect, favorable arm, or classification",
+    "alternate closing boundary, equality reassignment, membership, lookback, horizon, response, support floor, view, denominator, date, or tolerance",
+    "strategy outcome, habitat, signal, trigger, entry, trade, fill, P&L, exit, execution, QD-004, CY-008, post-2023 data, or CY-011 access"
+  ],
+  "claim_boundary": "Closing-arm response-domain adequacy only; no closing-state mechanism, reversal, prediction, causality, habitat, execution, payoff, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-DATA-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-DATA-001_count_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-DATA-001_scalar_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-CLOSE-DATA-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-CLOSE-DATA-001_audit.md"
+  ]
+}

@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-050_MAP_CROSSER_CLOSING_STATE_TOPOLOGY`
-- `CURRENT_PRIMARY_FRONTIER`: determine whether localized crossing-security downside resides in same-day closing rejection or also survives among objectively accepted crossings
+- `CURRENT_PHASE`: `SYNTH-MKT-051_MAP_FORMATION_DEPTH_ADVERSE_PATH_TIMING`
+- `CURRENT_PRIMARY_FRONTIER`: determine whether the accepted formation-depth adverse path arrives through next-session overnight gaps, post-open intraday downside, or temporary low excursions followed by recovery
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -18,10 +18,10 @@ Updated 2026-08-31.
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `97b381e41f4af0b6d49be8d143e14c5ca7459b3d`
-- `CURRENT_SCIENTIFIC_LAYER`: `LOCALIZED_CROSSING_SECURITY_DOWNSIDE_TOPOLOGY; NO_TERMINAL_REVERSAL_OR_STRATEGY_HABITAT`
+- `CURRENT_HEAD_AT_RESUME`: `5b68cbb7f2249d85c16b4fecca17368def71afda`
+- `CURRENT_SCIENTIFIC_LAYER`: `CROSSING_SECURITY_FORMATION_DEPTH_DOWNSIDE_SURVIVES_BOTH_CLOSING_STATES; NO_REJECTION_LOCALIZATION_OR_TERMINAL_REVERSAL`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
-- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSING_ARM; NONCROSSING_ARM_MISSES_PRIMARY_MAGNITUDE; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
+- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSING_ARM_BUT_NOT_TO_CLOSING_REJECTION; ACCEPTED_AND_REJECTED_ARMS_PASS; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
 - `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
 - `YEAR_BY_YEAR_RESULTS`: aggregate and crossing-arm formation-depth downside signs are negative in every PIT-supported year and leave-one-year-out estimate; noncrossing signs are also negative but its aggregate magnitude misses the frozen primary floor
@@ -29,8 +29,8 @@ Updated 2026-08-31.
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes materially worse future adverse path among the securities making those crossings; paired localization is strong, while noncrossers narrowly miss the primary magnitude floor and terminal return remains diagnostic/weak
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: within the localized crossing arm, is adverse path confined to crossings that already close rejected below the objective level, or does it also survive among crossings that close objectively accepted?
+- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes materially worse future adverse path among crossing securities whether they close above or below the crossed level; closing rejection does not explain the topology, while terminal return remains diagnostic/weak
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does the formation-depth adverse path arrive as an overnight gap, post-open intraday downside, or a temporary low excursion that largely recovers by close?
 
 ## Scope correction installed
 
@@ -166,6 +166,38 @@ Crossing-arm terminal partial rhos are only -0.0289/-0.0466/-0.0526 at h=1/3/5
 and are diagnostic-only. The result does not establish terminal reversal,
 causality, an entry predictor, a failed-breakout rule, or a habitat. V1 remains
 closed and unchanged; post-2023 data, strategy outcomes, and CY-011 remain unread.
+
+### MKT-FORMDEPTH-CLOSE-DATA-001 / CLOSE-001 closing-state topology
+
+The closing-state map and data contract were frozen before constructing any
+accepted/rejected future response. Exact t crossing securities are partitioned
+into close-above, close-below, and exact-equality arms relative to the same
+strictly prior L20 objective. Integer counts exhaust the crossing arm without
+reassignment, normalization, rounding, clipping, or tolerance.
+
+The data gate passes twice byte-identically. It retains 11,272 closing-topology-
+complete cells, minimum 196 dates per view/denominator/year, accepted and rejected
+retention at least 0.90, exact anchor/response arm conservation, and 15 exact
+arm-balanced scalar cases across 17 fields. The later fixed-control domain has
+6,627 rows and minimum 826/cell. Equality is conserved but not economically
+estimated. No association, classification, strategy field, post-2023 row, or
+CY-011 field is read by the data build.
+
+Both economic arms pass every fixed downside gate. Closing-accepted crossings
+have h=3 median PIT partial rho -0.32086, eight negative cells, block medians
+-0.17861/-0.33570, negative supported-year/leave-one-year-out/neighbor/phase
+results, and tail residual gap -0.01623. Closing-rejected crossings have h=3 rho
+-0.35571, block medians -0.22785/-0.37950, the same complete sign robustness,
+and gap -0.01578.
+
+Rejected-minus-accepted does not localize the response: h=3 rho is -0.00706,
+only four cells are negative, h=5 is positive, and the residual gap is +0.00014.
+The classification is `ACCEPTED_AND_REJECTED_CROSSER_DOWNSIDE`. This means the
+accepted formation-depth adverse-path topology survives the exact closing-state
+split; it does not prove the arms identical or causal. Terminal rhos remain weak
+(-0.0182/-0.0216/-0.0351 accepted and -0.0531/-0.0650/-0.0545 rejected) and
+diagnostic-only. No failed-breakout reversal, habitat, predictor, or rule is
+established; V1 remains closed.
 
 ### MKT-TRND-001 semantic boundary
 

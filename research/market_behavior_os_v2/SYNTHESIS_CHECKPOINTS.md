@@ -2310,3 +2310,61 @@ treatment of equality, complete-response cohort, h=1/3/5 adverse primary and
 terminal diagnostic roles, paired contrast, support floors, controls, blocks,
 and no-strategy gate before constructing subgroup outcomes. Do not select the
 rejected arm because its story is attractive.
+
+## SYNTH-MKT-051 — after crosser closing-state topology
+
+### What was learned?
+
+The exact closing-state split does not localize formation-depth downside.
+Accepted crossers pass every fixed gate at h=3 median PIT partial rho -0.32086
+and controlled tail gap -0.01623. Rejected crossers also pass every gate at rho
+-0.35571 and gap -0.01578. Both have eight negative cells, negative block,
+supported-year, leave-one-year-out, neighboring-horizon, and nonoverlap-phase
+results.
+
+Rejected-minus-accepted fails at h=3 rho -0.00706, only four negative cells,
+h=5 +0.02406, and tail gap +0.00014. The classification is
+`ACCEPTED_AND_REJECTED_CROSSER_DOWNSIDE`. This is not evidence that the arms are
+identical; it is evidence against exact close-below rejection as the localization
+mechanism under the frozen gates.
+
+The outcome-blind domain conserves accepted, rejected, and equality arms exactly,
+retains 11,272 topology-complete cells and 6,627 fixed-control rows, and
+reconstructs 15 cases across 17 fields. Both data and economic artifacts
+reproduce byte-identically. Equality is not economically estimated.
+
+### What market behavior are we still not studying?
+
+We still do not know when or how the adverse path is delivered. A future-low
+excursion can arise through an overnight gap before the next open, new downside
+after the open, or a temporary intraday low that recovers by the close. The
+current response mixes those economically different paths. Independent future
+time, minute-level post-close attribution, security-level overextension versus
+shared-date environment, and execution/capacity remain unresolved.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. The specific failed-breakout reversal premise is weakened rather than
+activated: accepted crossings carry the same classified downside family, the
+rejected-minus-accepted channel fails, and terminal rhos remain only
+-0.0182 to -0.0650 across arms/horizons. There is no rejected-close-specific
+mechanism, terminal reversal, executable trigger/exit, setup interaction, or
+independent confirmation. V1 remains closed.
+
+### Parallel-track awareness
+
+- **Market research:** decompose the accepted crossing adverse path into exact
+  overnight, post-open downside, and close-recovery components without changing
+  predictor membership or horizons.
+- **Existing-strategy archaeology:** no V1 reopening; the completed direct
+  formation-depth transfer remains negative.
+- **Strategy invention:** failed-breakout reversal remains unactivated; no new
+  archetype follows from a future-low-only response.
+
+### Research Director decision
+
+`MAP_FORMATION_DEPTH_ADVERSE_PATH_TIMING`. Before inspecting component outcomes,
+freeze exact action-coordinate open/low/close semantics, component identities,
+h=1/3/5 aggregation, arm use, controls, conservation/reconstruction, and the
+diagnostic-versus-classifying roles. Do not optimize a session, choose a favorable
+component, backdate future prices, or infer tradability from post-decision lows.

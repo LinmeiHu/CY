@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Within the localized crossing-security downside channel, is adverse path confined to objective closing rejection or does it survive among closing-accepted crossings? | Very high | High | Exact accepted/rejected `cross20` membership exists in governed CY-006 response builder; no strategy outcomes | Very high | Medium-high | ACTIVE_MAP_CROSSER_CLOSING_STATE_TOPOLOGY |
+| 1 | Does accepted formation-depth adverse path arrive through next-session overnight gaps, post-open intraday downside, or temporary low excursions followed by close recovery? | Very high | High | Exact governed CY-006 future open/low/close action coordinates exist; reuse the accepted crossing cohorts and no strategy outcomes | Very high | Medium; component identities must be frozen before estimates | ACTIVE_MAP_FORMATION_DEPTH_ADVERSE_PATH_TIMING |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -423,3 +423,12 @@ fixed primary rho floor at -0.09770 despite otherwise consistent signs. The next
 question stays market-only and partitions crossers by their exact same-day close
 relative to the crossed objective level. Do not call the adverse-path result a
 terminal reversal or failed-breakout strategy before that topology is known.
+
+MKT-FORMDEPTH-CLOSE-001 shows that exact closing state does not localize the
+downside: accepted and rejected arms each pass every adverse-path gate, while
+rejected-minus-accepted fails. Closing rejection therefore cannot be selected as
+the mechanism or a failed-breakout reversal trigger. The next frontier remains
+market-only and decomposes the accepted response in time: overnight gap,
+post-open intraday downside, and low-to-close recovery. Freeze component
+identities and conservation before estimates; do not choose a favorable path
+component or infer executability from a future low.

@@ -2,6 +2,34 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-FORMDEPTH-CLOSE-DATA-001 / CLOSE-001
+
+The frozen closing-state map `4a5fd599...` and data contract `50b3c48e...`
+partition exact `cross20` securities at t into close-above accepted, close-below
+rejected, and exact-equality arms relative to the same strictly prior L20 level.
+The arms exhaust crossing counts exactly; equality is never reassigned.
+
+The outcome-blind data build passes twice byte-identically: panel `89063c48...`,
+count `7d5208ae...`, scalar `fac802b8...`, result `edb2b9c3...`, report
+`fa6811a9...`. There are 11,272 closing-topology-complete cells, minimum 196
+dates/cell-year, at least 0.90 accepted/rejected retention, and 15 exact cases
+across 17 fields. The subsequent five-control join has 6,627 rows, minimum
+826/cell. No state/response estimate occurs in the data build.
+
+MKT-FORMDEPTH-CLOSE-001 also passes two byte-identical runs: panel `3c75b73b...`,
+response `d33405eb...`, result `5de99cf6...`, report `b03c2e0c...`. Both arms pass
+every fixed adverse-path gate. Accepted h3 rho/gap are -0.32086/-0.01623;
+rejected are -0.35571/-0.01578. Rejected-minus-accepted fails at rho -0.00706,
+four negative cells, positive h5, and gap +0.00014. Classification is
+`ACCEPTED_AND_REJECTED_CROSSER_DOWNSIDE`.
+
+Do not infer identical arms, causality, or a failed-breakout reversal. Terminal
+diagnostics remain weak and cannot promote; exact closing rejection does not
+localize the accepted downside topology. V1 remains closed and CY-011 locked.
+The next market-only frontier should decompose the already-accepted adverse path
+into overnight-gap, post-open intraday-downside, and close-recovery components
+under the same action coordinate before any executable or archetype claim.
+
 ## Latest checkpoint: MKT-FORMDEPTH-PROP-DATA-002 / PROP-001
 
 The propagation map `49a7aca1...` freezes exact t crossing membership versus its

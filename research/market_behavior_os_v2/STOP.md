@@ -115,3 +115,11 @@ finds localized crossing-security adverse path. This is positive mechanism
 evidence, not a terminal condition or strategy authorization. No S1--S12 STOP is
 active. Continue map-first with exact closing-accepted versus closing-rejected
 crossing topology before inferring failed-breakout reversal.
+
+MKT-FORMDEPTH-CLOSE-DATA-001 passes exact closing-arm conservation and support,
+and MKT-FORMDEPTH-CLOSE-001 finds the adverse topology in both accepted and
+rejected closing arms. Rejected-minus-accepted and terminal diagnostics do not
+support failed-breakout reversal. This is an ordinary mechanism-localization
+result, not an S1--S12 condition. No STOP is active. Continue map-first with
+formation-depth adverse-path timing decomposition before any execution or
+strategy-archetype inference.

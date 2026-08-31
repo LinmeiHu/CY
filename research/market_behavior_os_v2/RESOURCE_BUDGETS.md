@@ -172,3 +172,15 @@ MKT-FORMDEPTH-PROP-001 reads only the 11,336-row topology panel and 6,631-row
 complete five-control join. Its 648-row response audit completes in about one
 second below 3 GiB RSS and 50 MiB output; four artifacts reproduce byte-identically.
 No raw data, strategy field, post-2023 row, or CY-011 is read.
+
+MKT-FORMDEPTH-CLOSE-DATA-001 reuses the same six governed CY-006 partitions and
+accepted action-coordinate builder under the inherited 1.5-GiB DuckDB, 3-GiB
+RSS, 8-GiB headroom, 10-GiB spill, 20-GiB read, 20-minute, and 100-MiB output
+ceilings. Each full build completes in about 42 seconds. The 11,336-row panel,
+48-row count audit, and 255-row scalar audit reproduce byte-identically; no
+security-level durable table is retained.
+
+MKT-FORMDEPTH-CLOSE-001 reads only the 11,336-row bound closing panel and
+6,627-row fixed-control join. Its compact response audit completes in about one
+second below 3 GiB RSS and 50 MiB output; all four artifacts reproduce
+byte-identically. No raw data, strategy field, post-2023 row, or CY-011 is read.
