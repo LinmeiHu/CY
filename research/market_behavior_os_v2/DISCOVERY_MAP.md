@@ -196,6 +196,31 @@ and independent post-development confirmation.
 
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 
+## Objective support/recovery cycle 007
+
+The frozen broad-stock economic screen uses strictly prior causal-coordinate
+L20 lows and prior-H60 breakout levels. It does not reuse chip support density,
+future pivots, same-session fills, or subjective chart annotation.
+
+| Rank | Exact family | h5 excess | Early / late | Decision |
+|---:|---|---:|---:|---|
+| 1 | Confirmed L20 breakdown | -0.344% | -0.711% / -0.127% | `DOWNSIDE_PREDICTOR`; preserve for one separately preregistered natural avoidance/exit question |
+| 2 | Low 60-session return skewness | +0.127% | +0.122% / +0.131% | `STANDALONE_ALPHA_SCREEN`; small Track-B survivor, no replay or confirmation |
+| 3 | Break-and-reclaim | -0.058% | +0.047% / -0.126% | `CHRONOLOGICALLY_MIXED`; no rescue |
+| 4 | Prior-low hold / quiet hold / relative hold | -0.267% / -0.214% / -0.395% | all adverse in both blocks | Exact positive-support formulations rejected |
+| 5 | Frozen breakout-level retest | -1.031% | -0.768% / -1.244% | `ADVERSE`, with +11.062 pp severe-loss disadvantage |
+| 6 | Low downside beta | -0.453% | -0.524% / -0.392% | Exact Track-B formulation rejected |
+
+No support bundle or executable replay was earned. `PIT_FUNDAMENTALS` is
+`DATA_BLOCKED_PARKED` after final bounded reconnaissance found no turnkey
+immutable-vintage/revision source.
+
+What market behavior are we still not studying? Versioned PIT fundamentals,
+order-book/queue pressure, borrow-feasible short legs, and independent
+post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## PIT fundamental readiness and fallback cycle 006
 
 Fundamental alpha remains unopened rather than rejected. The only local broad

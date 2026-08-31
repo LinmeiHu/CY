@@ -7,11 +7,11 @@ Updated 2026-08-31.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `18a3282ebc` (start of frozen fundamental-readiness cycle 006)
-- `CURRENT_PHASE`: `PIT_FUNDAMENTAL_DATA_BLOCKED_INTERNAL_FALLBACK_CHECKPOINT`
-- `CURRENT_PRIMARY_FRONTIER`: independently confirm the mixed Industry Diffusion level, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration leads; unavailable because 2018--2023 is consumed, post-2023 is quarantined, and CY-011 remains locked
-- `SUPPORTING_FRONTIER`: archival PIT fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project; current-provider snapshots and fixed-lag proxies are prohibited
-- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Cycle 006 tests no fundamental prior and promotes none of three daily fallback mechanisms. Quiet VWAP acceptance remains contract-blocked; Industry Diffusion, Low Idiosyncratic Volatility, and Industry Diffusion Acceleration remain `PROMISING_BUT_MIXED`. The pre-existing RS veto remains `PROMISING_ADMISSION_COMPONENT`
+- `CURRENT_BASELINE`: `95d465131e` (start of frozen support/recovery cycle 007)
+- `CURRENT_PHASE`: `OBJECTIVE_SUPPORT_RECOVERY_SCREEN_COMPLETE_DOWNSIDE_ONLY_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: one natural, separately preregistered translation of confirmed objective breakdown as avoidance/exit information; low-return-skewness is a secondary small-alpha translation question, while all evidence remains consumed development history
+- `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
+- `CURRENT_STRATEGY_CANDIDATE`: no new executable strategy candidate. Confirmed objective breakdown is a broad stock-level `DOWNSIDE_PREDICTOR`; low 60-session return skewness is a small independent `STANDALONE_ALPHA` screen result. Neither is independent confirmation or a frozen portfolio rule
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
@@ -30,7 +30,7 @@ Updated 2026-08-31.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can genuinely independent data confirm any of the three complete mixed broad-A-share leads? If not, can a bounded licensed/versioned PIT fundamental source be obtained without building a filing warehouse; otherwise shift to borrow-feasible relative value or representation-first objective support/recovery.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can confirmed objective breakdown earn a separately preregistered natural avoidance/exit translation without using a frozen lead as a rescue baseline; independently, can low-return-skewness survive a canonical long-only translation or redundancy challenge?
 
 ## Research OS V2.3 resource and worker state
 
@@ -2225,3 +2225,42 @@ confirmation.
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 Left-tail stability is defensive diagnostic information only; the other fallback
 mechanisms are null or mixed, and no fundamental result exists.
+
+## 2026-08-31 objective stock-level support/recovery checkpoint
+
+`ASHARE-SUPPORT-RECOVERY-CYCLE-007` starts from `95d465131e` and freezes all
+levels, behavior definitions, directions, timing, horizon, and gates before
+opening forward outcomes. The broad PIT domain contains 627,420 eligible
+security-dates, 4,821 symbols, and 268 five-session anchors. Every level is
+strictly prior: causal-coordinate L20 or the frozen prior-H60 breakout level.
+Completed event behavior is available at 15:30 and enters no earlier than the
+next executable open; h5 response applies 20 bps per side.
+
+Confirmed close-below-L20 breakdown is the only support-family survivor. Its
+4,079 complete observations across 260 dates underperform date controls by
+-0.344%, with -0.711%/-0.127% early/late excess and +0.774 pp severe-loss
+disadvantage. It is `DOWNSIDE_PREDICTOR`, not an inverted long alpha. No natural
+standalone long replay exists, and combining it with a preserved lead would
+violate this cycle's no-rescue boundary.
+
+All positive support interpretations fail. Break-and-reclaim is mixed
+(-0.058%; +0.047%/-0.126%). Prior-low hold (-0.267%), quiet hold (-0.214%),
+relative hold (-0.395%), and frozen breakout-level retest (-1.031%) are adverse
+in both blocks; breakout retest also adds +11.062 pp severe losses. These reject
+only the frozen formulations. No support bundle or portfolio replay is run.
+
+Track B finds low 60-session causal-return skewness at +0.127% h5 excess in
+both blocks (+0.122%/+0.131%) with -1.562 pp severe-loss disadvantage; classify
+`STANDALONE_ALPHA_SCREEN`, not a validated strategy. Low downside beta is
+adverse (-0.453%). Fundamental reconnaissance finds no newly available immutable
+vintage/revision source, performs no acquisition, and parks the lane as
+`PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`.
+
+What market behavior are we still not studying? Versioned PIT fundamentals,
+order-book/queue pressure, borrow-feasible short legs, and independent
+post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Confirmed breakdown naturally maps to avoidance/exit information, while the
+low-skew result is an existing lottery-preference archetype requiring separate
+translation.

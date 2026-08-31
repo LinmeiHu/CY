@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 20% | Objective support/recovery remains broader than the rejected chip proxies | Build a representation map before another economic screen |
+| EXPLORE | 25% | Confirmed objective breakdown is broad downside information; low skewness is a small independent survivor | Freeze one natural translation question at a time; no role search |
 | EXPLOIT | 10% | Three broad-A-share leads remain mixed and all current history is consumed | Preserve rules unchanged; use only genuinely independent confirmation |
-| INVENT | 20% | Archival fundamentals and borrow-feasible relative value remain the largest unstudied data mechanisms | Seek a bounded licensed/versioned contract; do not build a warehouse |
-| REPLICATE | 15% | Fundamental canonical priors are not testable from current-provider snapshots | Resume only after original-release/revision history is demonstrably available |
-| TRANSFER | 5% | No cycle-006 fallback mechanism earns strategy or habitat transfer | Keep CHINEXT and existing candidates unchanged |
-| FALSIFY | 30% | Left-tail stability is defensive but return-mixed; overnight stability is weak and unordered | Preserve exact classifications; no window, threshold, or combination rescue |
+| INVENT | 20% | Borrow-feasible relative value and order-book/queue information remain unstudied | Prefer a bounded data contract over another price-path variant |
+| REPLICATE | 5% | PIT fundamentals are now explicitly data-blocked and parked | Resume only when immutable original-release/revision history already exists |
+| TRANSFER | 10% | Breakdown may naturally serve avoidance/exit, but no baseline is authorized yet | Preregister a decision role before any executable comparison |
+| FALSIFY | 30% | Every positive support interpretation was mixed/adverse; low-skew magnitude is small | Preserve exact failures and challenge low-skew redundancy/portfolio economics |
 
 Mandatory checkpoint questions:
 

@@ -1,0 +1,51 @@
+{
+  "experiment_id": "ASHARE-SUPPORT-RECOVERY-CYCLE-007",
+  "status": "FROZEN_ALL_HYPOTHESES_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "95d465131e",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "fundamental_reconnaissance": {
+    "status": "DATA_BLOCKED_PARKED",
+    "checks": ["registered QD-011", "legacy current snapshot", "bounded local CY filename reconnaissance", "bounded /Volumes/quant filename reconnaissance"],
+    "decision": "No local source exposes immutable historical statement vintages, availability timestamps, revision identity, and security identity; no acquisition or integration is authorized."
+  },
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "fundamental_readiness_manifest": {"path": "research/market_behavior_os_v2/FUNDAMENTAL_DATA_MANIFEST.json", "sha256": "b54d5de420d8da7b99740514caff207b8218b693f6a0e2d39f5ed7ef8c62462e"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cycle005_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_external_prior_cycle_005.py", "sha256": "55e525030a917387ee551c656cc85e4db00e1a02bbb323ac244504a58c73a362"}
+  },
+  "level_contract": {
+    "primary_prior_low_sessions": 20,
+    "prior_breakout_high_sessions": 60,
+    "breakout_memory_sessions": 20,
+    "near_level_band": 0.01,
+    "level_availability": "previous session 15:00 Asia/Shanghai",
+    "behavior_availability": "event session 15:00; signal decision 15:30",
+    "earliest_entry": "next executable session open",
+    "corporate_action_coordinate": "CY-006 accepted causal cumulative log-return coordinate",
+    "natural_horizon_sessions": 5
+  },
+  "support_hypotheses": [
+    {"id": "prior_low_hold", "event": "low remains at or above frozen L20 and within 1% of L20; close at or above L20", "direction": "positive"},
+    {"id": "prior_low_break_reclaim", "event": "low breaches frozen L20 and close finishes at or above L20", "direction": "positive"},
+    {"id": "confirmed_breakdown", "event": "close finishes below frozen L20", "direction": "negative_downside_predictor"},
+    {"id": "quiet_support_hold", "event": "prior_low_hold or reclaim with event volume no greater than prior-20 mean", "direction": "positive"},
+    {"id": "relative_support_hold", "event": "prior_low_hold or reclaim while same-day market median causal return is negative", "direction": "positive"},
+    {"id": "breakout_level_retest", "event": "within 20 sessions after an objective close above frozen prior-60 high, low reaches within 1% of that frozen breakout level and close remains above it", "direction": "positive"}
+  ],
+  "track_b_hypotheses": [
+    {"id": "low_downside_beta_120", "mechanism": "low sensitivity on market-down days may reveal stock-specific resilience", "score": "negative 120-session conditional downside beta", "direction": "positive"},
+    {"id": "low_return_skewness_60", "mechanism": "lottery-like positive return skew may be overpriced in a long-only market", "score": "negative 60-session causal-return skewness", "direction": "positive"}
+  ],
+  "screen": {
+    "decision_frequency": "every fifth exchange session for support events; every twentieth exchange session for Track B",
+    "event_names_per_date_max": 20,
+    "control_names_per_date": 20,
+    "cost_per_side": 0.002,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {"complete_positions_min": 300, "signal_dates_each_block_min": 20, "entry_execution_fraction_min": 0.90, "expected_direction_full": true, "expected_direction_both_blocks": true, "severe_loss_disadvantage_max": 0.02, "median_event_breadth_min": 3},
+    "maximum_support_replays": 2,
+    "maximum_bundle": 1
+  },
+  "prohibited": ["post-2023 outcomes", "CY-011", "future extrema defining levels", "same-session fills", "subjective support", "support-density relabeling", "threshold grids", "horizon search", "sign inversion after outcomes", "preserved-candidate tuning", "large data acquisition"]
+}

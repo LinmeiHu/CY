@@ -2,6 +2,38 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: objective stock-level support/recovery
+
+Resume after the commit containing `ASHARE-SUPPORT-RECOVERY-CYCLE-007`; its
+starting checkpoint is `95d465131e`. Do not rerun or tune its 1% approach band,
+L20/H60 levels, five-session horizon, event frequency, or directions. The
+627,420-row eligible domain spans 4,821 symbols and 268 anchors. Signals are
+available at 15:30 and fill no earlier than the next executable open with fixed
+20 bps/side and accepted corporate-action handling.
+
+Confirmed breakdown is a broad `DOWNSIDE_PREDICTOR`: 4,079 complete observations,
+260 dates, -0.344% h5 excess, -0.711%/-0.127% by block, and +0.774 pp severe-loss
+disadvantage. It is not a sign-mined inverse strategy. A later translation must
+preregister one natural avoidance or exit role and must not rescue a frozen lead.
+
+Break-and-reclaim is mixed. Prior-low hold, quiet hold, relative hold, and
+frozen breakout-level retest are adverse in both blocks. No bundle and no
+support replay was earned. Track B low return skewness is a small two-block
+screen survivor (+0.127%, +0.122%/+0.131%, -1.562 pp severe disadvantage), but
+has no portfolio replay or independent confirmation. Low downside beta is
+adverse.
+
+Final bounded reconnaissance found no turnkey immutable-vintage statement
+source. `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; no acquisition, integration,
+or external-drive write occurred. Post-2023 market outcomes and CY-011 remain
+unread.
+
+What market behavior are we still not studying? Versioned PIT fundamentals,
+order-book/queue pressure, borrow-feasible short legs, and independent
+post-development confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Latest checkpoint: PIT fundamental readiness and bounded fallback
 
 Resume after the commit containing `ASHARE-FUNDAMENTAL-READINESS-CYCLE-006`;
