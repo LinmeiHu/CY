@@ -1,4 +1,4 @@
-# Market Behavior & Strategy Research OS V2.1 constitution
+# Market Behavior & Strategy Research OS V2.3 constitution
 
 This constitution governs the active autonomous program from checkpoint
 `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`.
@@ -24,12 +24,24 @@ This constitution governs the active autonomous program from checkpoint
 
 ## Active frontier
 
-- Primary: strategy-independent temporal dynamics of full-market objective
-  prior-high formation, closing-state, and formation-industry coordinates.
-- Supporting: accepted close-based discovery breadth and positive-return
-  leadership concentration as fixed external redundancy controls.
-- Outcome access: prohibited until representation quality and any recurring
-  process are separately frozen and a later experiment preregisters usefulness.
+- Primary: formation-depth mechanism attribution after accepted crosser
+  localization, mixed pre-open/intraday adverse path, and failed exact trough
+  immediacy. Separate own-security/shared-date/subgroup structure before any
+  further economic response estimate.
+- Supporting scientific frontier: none at activation. Minute primitive work is
+  infrastructure; consumed archaeology is hypothesis generation; QA is
+  replication.
+- Outcome access: only the exact pre-2024 market-response fields permitted by a
+  separately frozen experiment. Strategy outcomes, post-2023 locked data, and
+  CY-011 remain closed.
+
+## Parallel governance
+
+Scientific decisions remain centralized in the Director. Each writing worker
+uses an isolated branch/worktree and writes only its worker-packet namespace.
+Only the Director changes authoritative state. Resource allocation follows the
+measured `RESOURCE_PROFILE.md` and `GLOBAL_RESOURCE_BUDGET.md`; parallelism may
+increase throughput but may not multiply hypothesis search.
 
 ## Durability and stop boundary
 

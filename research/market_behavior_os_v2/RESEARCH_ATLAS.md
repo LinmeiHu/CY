@@ -37,6 +37,11 @@
 | `DATA_CAPABILITY_MATRIX.md` | Governed available/unavailable research data capabilities |
 | `DATA_GAP_BACKLOG.md` | Missing data and scientifically valid resolution paths |
 | `RESOURCE_BUDGETS.md` | Frozen and measured large-job envelopes |
+| `RESOURCE_PROFILE.md` | Measured V2.3 Mac CPU/RAM/swap/disk/process/minute-layout profile |
+| `GLOBAL_RESOURCE_BUDGET.md` | Dynamic concurrency, thread, swap, headroom, I/O, and disk rules |
+| `PARALLEL_QUEUE.md` | Director-authorized lane tasks and resource/status ledger |
+| `WORKER_REGISTRY.md` | Isolated worker branch/worktree ownership and integration state |
+| `CACHE_MANIFESTS.md` | Shared derived-cache generation index and provenance requirement |
 | `STOP.md` | Current S1-S12 stop status and prior resolved stop |
 | `HYPOTHESIS_FRONTIER.md` | Ranked market questions |
 | `HYPOTHESES.md` | Persistent market-hypothesis evidence ledger |

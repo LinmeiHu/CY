@@ -2,6 +2,31 @@
 
 Updated 2026-08-31.
 
+## Research OS V2.3 activation
+
+Parallel Research OS begins from clean pushed checkpoint
+`1229079ed63ecc3a88ee4bb0ccb2c8e3d55557cc`, after the trough-immediacy branch
+closed without rescue. The measured Mac has 10 logical/physical cores, 32 GiB
+RAM, and 348 GiB free disk. Baseline CPU was about 34% busy/66% idle. Swap was
+already 2.409/3.0 GiB used, primarily alongside a 7.74-GiB Parallels VM, so the
+initial scheduler permits two heavy jobs at <=1.5 GiB RSS each, eight aggregate
+research threads, and only one raw-minute reader. Promotion requires stable swap,
+8 GiB headroom, unsaturated SSD, and improved total throughput.
+
+QD-004 is a 40-GiB annual-Parquet raw minute lake; CY-008 is a 3.1-GiB,
+27-file annual PIT-B daily/execution table; CY-006 daily context is 439 MiB.
+All three immutable inventory hashes match the registry. The preferred external
+cache root does not yet exist and no cache has been published. Lane B must first
+produce a schema/partition benchmark and manifest packet; one writer then uses
+temporary validation and atomic publish.
+
+The sole primary scientific frontier remains formation-depth mechanism
+attribution. The next map separates own-security/shared-date/subgroup structure
+before any response estimate. Lane B is minute infrastructure, Lane C is consumed
+archaeology only, and Lane D is independent QA. Isolated worker worktrees will be
+created from the exact next clean Director governance checkpoint; workers cannot
+write this file or any other central state.
+
 ## Latest checkpoint: MKT-FORMDEPTH-IMMED-001
 
 The frozen trough-immediacy map `f065fb49...` and spec `912021f6...` use only

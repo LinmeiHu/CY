@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 25% | Formation-depth downside localizes to crossers, but accepted versus rejected closing-state topology is unknown | Freeze exact closing arms before estimating their responses |
-| EXPLOIT | 10% | Direct V1 habitat transfer failed despite the attributed market state | Preserve V1 unchanged; no threshold, veto, or endpoint rescue |
-| INVENT | 10% | Failed-breakout reversal is now a falsifiable candidate mechanism, not a prototype | Require rejection-specific adverse/terminal evidence and later executable architecture |
-| REPLICATE | 20% | Every accepted formation-depth result remains inside consumed pre-2024 time | Preserve all fixed time challenges; require independent time for confirmation |
-| TRANSFER | 20% | V1 transfer failed and localized crosser risk has no setup interaction | Keep strategy transfer closed during closing-state mechanism work |
-| FALSIFY | 15% | Localized crosser downside may be only same-day rejection rather than formation depth | Require exact accepted/rejected arm and paired challenges |
+| EXPLORE | 25% | Formation-depth downside localizes to both accepted/rejected crossers through mixed pre-open/intraday paths; exact trough immediacy fails | Map own-security/shared-date/subgroup attribution before another response estimate |
+| EXPLOIT | 5% | Direct V1 habitat transfer failed despite the attributed market state | Preserve V1 unchanged; no threshold, veto, or endpoint rescue |
+| INVENT | 5% | Closing rejection and trough timing do not support failed-breakout reversal or dip recovery | Keep all new archetypes inactive |
+| REPLICATE | 30% | Accepted formation-depth results remain inside consumed pre-2024 time and need orthogonal correctness checks | Run compact-panel independent replication and manual cases in Lane D |
+| TRANSFER | 10% | V1 transfer failed and no independent universe mechanism exists | Keep strategy/universe transfer closed during mechanism attribution |
+| FALSIFY | 25% | Shared date conditions, own overshoot, or subgroup concentration may explain apparent formation depth | Freeze subgroup/control geometry and require no-rescue classifications |
 
 Mandatory checkpoint questions:
 

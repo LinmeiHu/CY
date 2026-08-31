@@ -1,5 +1,14 @@
 # Frozen resource budgets
 
+## V2.3 global scheduler
+
+The measured 2026-08-31 host profile and new-job envelope are authoritative in
+`RESOURCE_PROFILE.md` and `GLOBAL_RESOURCE_BUDGET.md`. The host has 10 cores,
+32 GiB RAM, and 348 GiB free disk, but swap is already 2.409/3.0 GiB used.
+Start with two heavy workloads capped at 1.5 GiB RSS each, one raw-minute reader,
+eight aggregate research threads, at least 8 GiB system headroom, and no sustained
+swap growth. Existing experiment contracts below remain unchanged when stricter.
+
 ## Host envelope at MKT-MIN-001 preregistration
 
 - Host: 10 logical/physical CPUs, 32.0 GiB physical RAM.

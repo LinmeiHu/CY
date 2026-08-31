@@ -6,11 +6,11 @@ Updated 2026-08-31.
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
-- `RESEARCH_OS_VERSION`: `2.3_TRANSITION_PENDING_CLEAN_CHECKPOINT`
+- `RESEARCH_OS_VERSION`: `2.3`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-053_TRANSITION_TO_RESOURCE_AWARE_PARALLEL_OS_V2_3`
-- `CURRENT_PRIMARY_FRONTIER`: after the clean MKT-FORMDEPTH-IMMED-001 checkpoint, continue formation-depth mechanism attribution by separating own-security/subgroup structure from shared-date environment without arbitrary feature mining
-- `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
+- `CURRENT_PHASE`: `OS-V2.3_RESOURCE_GOVERNANCE_AND_PARALLEL_LANE_ACTIVATION`
+- `CURRENT_PRIMARY_FRONTIER`: continue formation-depth mechanism attribution by separating own-security/shared-date/subgroup structure without arbitrary feature mining
+- `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
@@ -31,6 +31,22 @@ Updated 2026-08-31.
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes worse cumulative pre-open and trough-session intraday paths among crossers; exact trough timing does not stably shift, recovery is mechanical, terminal response is weak, and no strategy archetype follows
 - `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is the formation-depth adverse path broad across crossing securities after individual overshoot control, or concentrated by industry, size, liquidity, and other same-day market-state absorption?
+
+## Research OS V2.3 resource and worker state
+
+- `PARALLEL_OS_BASE_COMMIT`: `1229079ed63ecc3a88ee4bb0ccb2c8e3d55557cc`
+- `RESOURCE_PROFILE`: 10 logical/physical CPUs, 32 GiB RAM, 348 GiB free
+  disk, memory-pressure free 62--63%, swap 2.409/3.0 GiB used.
+- `INITIAL_HEAVY_CONCURRENCY`: 2 at <=1.5 GiB RSS each; one raw-minute reader;
+  eight aggregate research threads maximum; 8 GiB system-headroom floor.
+- `CACHE_STATUS`: no cache published; preferred external root absent; 80-GiB
+  planning ceiling subject to manifest and 25% free-disk floor.
+- `ACTIVE_EXPERIMENT`: none; A-FORMDEPTH-SUBGROUP-MAP-001 is map-first and no
+  response outcome is authorized before a new frozen contract.
+- `ACTIVE_RESOURCE_BLOCKER`: high baseline swap occupancy prevents promotion
+  above two heavy workers until stability telemetry passes.
+- `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
+  data remain locked; all current construction stays through 2023-12-31.
 
 ## Scope correction installed
 
