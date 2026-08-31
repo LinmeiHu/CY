@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Is formation-depth downside an own-security overshoot channel, a broad shared-date formation environment, or both? | High | High | DATA-005 supplies fixed five-stratum own/shared responses and 31,695 later controlled rows | Very high | Medium; two fixed channels, no subgroup or threshold search | ACTIVE_PROMOTE_OWN_VS_SHARED_DECOMPOSITION |
+| 1 | Is the own-security depth channel objective-prior-high-specific, or generic same-day extension/range/liquidity geometry? | High | High | Exact crossers and CY-006 security-level t controls/responses are reconstructable; within-date design | Very high | Medium; fixed controls, no subgroup or threshold search | ACTIVE_LEAN_PROMOTE_OBJECTIVE_SPECIFICITY |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |

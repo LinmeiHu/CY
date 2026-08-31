@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `LEAN_PROMOTE_FORMATION_DEPTH_OWN_SHARED`
-- `CURRENT_PRIMARY_FRONTIER`: distinguish own-security overshoot from broad shared-date formation depth using the fixed five-stratum decomposition; subgroup search remains closed
+- `CURRENT_PHASE`: `LEAN_PROMOTE_FORMATION_DEPTH_OBJECTIVE_SPECIFICITY`
+- `CURRENT_PRIMARY_FRONTIER`: distinguish objective-prior-high own overshoot from generic same-day security extension/range/liquidity geometry; subgroup search remains closed
 - `SUPPORTING_FRONTIER`: `NONE_SCIENTIFIC`; Lane B minute primitives are infrastructure, Lane C consumed archaeology is hypothesis generation, and Lane D is QA
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -29,8 +29,8 @@ Updated 2026-08-31.
 - `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep same-day objective-prior-high formation precedes worse cumulative pre-open and trough-session intraday paths among crossers; exact trough timing does not stably shift, recovery is mechanical, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: after controlling each depth stratum's own overshoot and the five accepted controls, does downside vary broadly with the disjoint other-four-strata formation environment, with own overshoot, or both?
+- `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date; a broad disjoint shared-date depth channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does own overshoot retain adverse-path ordering after fixed security-level same-day return, range, close location, turnover, and liquidity controls, or is it generic extension/price-impact geometry?
 
 ## Research OS V2.3 resource and worker state
 
@@ -65,6 +65,26 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### MKT-FORMDEPTH-OWN-001 own versus shared attribution
+
+The PROMOTE experiment classifies `OWN_OVERSHOOT_CHANNEL_ONLY`. Across 10,682
+complete five-stratum date/cells, median h=3 within-date Spearman is -0.90; all
+eight cell medians, both blocks, every supported year/leave-one-year-out view,
+and h=1/h=5 neighbors are negative. Every own-channel gate passes.
+
+The disjoint shared-date channel is not broad. Only strata 1 and 2 pass all
+fixed controlled PIT gates; strata 3--5 fail combinations of primary magnitude,
+year, block, phase, or residual-tail requirements. Two of five is below the
+fixed four-of-five broad gate and no favorable stratum may be selected.
+
+The broad shared-depth-only explanation is rejected, but objective overextension,
+generic same-day extension/range, temporary price impact, and structural
+industry/size/liquidity concentration remain competing mechanisms. The next
+highest-information experiment tests objective specificity against fixed
+security-level t-day controls. If that survives, the minute-scale prediction is
+late-session rejection/acceptance or price-impact asymmetry. No strategy process
+or habitat is activated.
 
 ### MKT-FORMDEPTH-OWN-DATA-005 own/shared response domain
 

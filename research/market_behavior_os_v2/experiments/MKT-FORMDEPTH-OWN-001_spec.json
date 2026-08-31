@@ -1,0 +1,108 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-OWN-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "research_level": "PROMOTE",
+  "status": "FROZEN_BEFORE_OWN_SHARED_ASSOCIATION_ESTIMATES",
+  "question": "Is formation-depth downside an own-security overshoot channel, a broad shared-date formation environment, or both?",
+  "outcome_access": "EXISTING_PRE2024_FIXED_STRATUM_H1_H3_H5_ADVERSE_RESPONSE_ONLY",
+  "inputs": {
+    "own_shared_map": {
+      "path": "research/market_behavior_os_v2/FORMATION_DEPTH_OWN_SHARED_ATTRIBUTION_MAP.md",
+      "sha256": "b38cb9d01b5f65416ed93c55f334da39a74e244a0506937ec4af407e5a397be8"
+    },
+    "data_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-FORMDEPTH-OWN-DATA-005_spec.json",
+      "sha256": "595f35a63984bc6fe2933821d54c3b07889fcb5cda959bc681532d86a5596f1c"
+    },
+    "data_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_panel.csv",
+      "sha256": "ebae032885cd5fa5421db0c2085a6e8794380da4271f3ab4ede34fa35f7a797c"
+    },
+    "data_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-DATA-005_result.json",
+      "sha256": "05a5412f04c55230f84c59db499e0b6a1f971fc066d24a6d99b177521257a069"
+    },
+    "attribution_panel_for_session_ordinal": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+      "sha256": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d"
+    }
+  },
+  "activation": {
+    "required_data_status": "COMPLETE_OWN_SHARED_STRATUM_RESPONSE_DOMAIN_ADEQUACY",
+    "expected_panel_rows": 53820,
+    "expected_complete_stratum_rows": 53550,
+    "expected_complete_five_stratum_date_cells": 10682,
+    "expected_complete_five_stratum_rows": 53410,
+    "minimum_complete_five_stratum_dates_each_cell_year": 116,
+    "expected_later_rows": 31695,
+    "strata": 5,
+    "cells": 8,
+    "joint_available_at": "15:30 Asia/Shanghai",
+    "response_begins": "next exchange session"
+  },
+  "blocks": {
+    "A": [2018, 2019, 2020],
+    "B": [2021, 2022, 2023]
+  },
+  "pit_supported_years": [2020, 2021, 2022, 2023],
+  "response": {
+    "primary_horizon": 3,
+    "neighbors": [1, 5],
+    "terminal_return_read": false
+  },
+  "own_channel": {
+    "date_level_statistic": "Spearman across all five fixed strata between own-depth mean and stratum adverse-response mean",
+    "maximum_median_h3_rho": -0.30,
+    "minimum_negative_cell_medians": 6,
+    "maximum_each_block_median_h3_rho": -0.10,
+    "all_supported_year_and_leave_one_year_out_medians_negative": true,
+    "h1_h5_medians_negative": true
+  },
+  "shared_channel": {
+    "target": "other_strata_depth_pit_3y_pct",
+    "controls": [
+      "stratum_own_depth_pit_3y_pct",
+      "breadth_net_new_high_low60_pit_3y_pct",
+      "realized_volatility_median20_pit_3y_pct",
+      "median_signed_limit_utilization",
+      "open_close_log_return__median",
+      "intraday_log_range__median"
+    ],
+    "pit_low_maximum": 0.20,
+    "pit_high_minimum": 0.80,
+    "maximum_median_h3_partial_rho": -0.10,
+    "minimum_negative_cells": 6,
+    "maximum_each_block_median_h3_partial_rho": -0.05,
+    "all_supported_year_and_leave_one_year_out_medians_negative": true,
+    "h1_h5_medians_negative": true,
+    "minimum_negative_h3_phases": 2,
+    "minimum_negative_h5_phases": 4,
+    "maximum_median_tail_residual_gap": -0.0025,
+    "minimum_passing_strata_for_broad_channel": 4
+  },
+  "classification": {
+    "own_and_broad_shared": "OWN_AND_BROAD_SHARED_FORMATION_DOWNSIDE",
+    "broad_shared_only": "BROAD_SHARED_FORMATION_ENVIRONMENT_ONLY",
+    "own_only": "OWN_OVERSHOOT_CHANNEL_ONLY",
+    "neither": "OWN_SHARED_ATTRIBUTION_NOT_RESOLVED"
+  },
+  "lean_validation": {
+    "focused_tests": true,
+    "cross_year_and_neighbor_gates": true,
+    "byte_identical_rerun_required": false,
+    "reason": "PROMOTE mechanism discrimination on a byte-stable reusable parent panel; rerun only if output nondeterminism or a material correctness concern appears"
+  },
+  "prohibited_computations": [
+    "alternate strata, membership, target, control, block, year, phase, horizon, threshold, direction, tail, classification, or favorable stratum selection",
+    "industry, size, liquidity, closing-arm, market-state interaction, terminal return, subgroup, variable selection, or mechanism rescue",
+    "strategy outcome, entry, exit, fill, veto, P&L, habitat, post-2023 data, raw minute data, or CY-011"
+  ],
+  "claim_boundary": "Pre-2024 market-response association topology only; no causality, prediction, execution, payoff, habitat, or strategy.",
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-001_own_gradient_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-001_shared_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-OWN-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-OWN-001_attribution.md"
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "claim": "Pre-2024 market-response association topology only; no causality, prediction, execution, payoff, habitat, or strategy.",
+  "classification": "OWN_OVERSHOOT_CHANNEL_ONLY",
+  "cy011_read": false,
+  "experiment_id": "MKT-FORMDEPTH-OWN-001",
+  "future_response_used_as_predictor": false,
+  "hashes": {
+    "own_gradient_audit_sha256": "5c4ee4d403f287ad8be242fbdcc4cf8ea3027728f893a706ff7c352143053165",
+    "runner_sha256": "e4b2842c2d08fde0ada7155c2002ca26388e55fd8bded73f59369b2e66e15a2e",
+    "shared_audit_sha256": "89ceb68602f1cc181369d4806accce099858a4bbe2742f8c3069a640a86373f8",
+    "spec_sha256": "8b01cde195d4458331615d684fcbe45ca6ec943cbf26a41802950c928743afd5"
+  },
+  "lean_validation": {
+    "byte_identical_rerun_required": false,
+    "cross_year_and_neighbor_gates": true,
+    "focused_tests": true,
+    "reason": "PROMOTE mechanism discrimination on a byte-stable reusable parent panel; rerun only if output nondeterminism or a material correctness concern appears"
+  },
+  "own_channel": {
+    "block_median_h3_rho": {
+      "A": -0.7999999999999999,
+      "B": -0.8999999999999998
+    },
+    "cell_median_h3_rho": {
+      "ALL_A:ALL_STATUS": -0.8999999999999998,
+      "ALL_A:NON_ST": -0.8999999999999998,
+      "CHINEXT_BOARD:ALL_STATUS": -0.7,
+      "CHINEXT_BOARD:NON_ST": -0.7,
+      "SH_A:ALL_STATUS": -0.8999999999999998,
+      "SH_A:NON_ST": -0.8999999999999998,
+      "SZ_A:ALL_STATUS": -0.8999999999999998,
+      "SZ_A:NON_ST": -0.8999999999999998
+    },
+    "checks": {
+      "blocks": true,
+      "cells": true,
+      "leave_one_year_out": true,
+      "neighbors": true,
+      "primary": true,
+      "years": true
+    },
+    "leave_one_year_out_median_h3_rho": {
+      "2020": -0.8999999999999998,
+      "2021": -0.8999999999999998,
+      "2022": -0.8999999999999998,
+      "2023": -0.8999999999999998
+    },
+    "median_h3_date_gradient_rho": -0.8999999999999998,
+    "negative_cell_medians": 8,
+    "neighbor_median_rho": {
+      "1": -0.7999999999999999,
+      "5": -0.8999999999999998
+    },
+    "pass": true,
+    "year_median_h3_rho": {
+      "2020": -0.7999999999999999,
+      "2021": -0.8999999999999998,
+      "2022": -0.8999999999999998,
+      "2023": -0.8999999999999998
+    }
+  },
+  "population": {
+    "complete_date_cells": 10682,
+    "complete_stratum_rows": 53410,
+    "later_shared_rows": 31695,
+    "own_date_gradient_rows": 32046,
+    "shared_audit_rows": 880
+  },
+  "post_2023_read": false,
+  "research_level": "PROMOTE",
+  "shared_channel": {
+    "broad_pass": false,
+    "passing_strata": [
+      1,
+      2
+    ],
+    "passing_strata_count": 2,
+    "strata": {
+      "1": {
+        "block_median_h3_partial_rho": {
+          "A": -0.15447293246377536,
+          "B": -0.20397528017252597
+        },
+        "checks": {
+          "blocks": true,
+          "cells": true,
+          "h3_phases": true,
+          "h5_phases": true,
+          "leave_one_year_out": true,
+          "neighbors": true,
+          "primary": true,
+          "tail_residual_gap": true,
+          "years": true
+        },
+        "leave_one_year_out_median_h3_partial_rho": {
+          "2020": -0.20397528017252597,
+          "2021": -0.22044105154124893,
+          "2022": -0.2164246699640427,
+          "2023": -0.13639317794724115
+        },
+        "median_h3_partial_rho": -0.19103756317444198,
+        "median_tail_residual_gap": -0.007009582432466535,
+        "negative_cells": 8,
+        "neighbor_median_partial_rho": {
+          "1": -0.17450782294089834,
+          "5": -0.19323054044947574
+        },
+        "pass": true,
+        "phase_signs": {
+          "3": [
+            -1,
+            -1,
+            -1
+          ],
+          "5": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        "year_median_h3_partial_rho": {
+          "2020": -0.15447293246377536,
+          "2021": -0.10428409187985396,
+          "2022": -0.18976720631815808,
+          "2023": -0.3017727980738949
+        }
+      },
+      "2": {
+        "block_median_h3_partial_rho": {
+          "A": -0.08328098539688915,
+          "B": -0.10030461494115475
+        },
+        "checks": {
+          "blocks": true,
+          "cells": true,
+          "h3_phases": true,
+          "h5_phases": true,
+          "leave_one_year_out": true,
+          "neighbors": true,
+          "primary": true,
+          "tail_residual_gap": true,
+          "years": true
+        },
+        "leave_one_year_out_median_h3_partial_rho": {
+          "2020": -0.10030461494115475,
+          "2021": -0.13386167942201643,
+          "2022": -0.1458512278994799,
+          "2023": -0.046757379912136535
+        },
+        "median_h3_partial_rho": -0.10522003185815651,
+        "median_tail_residual_gap": -0.0035474322215037967,
+        "negative_cells": 8,
+        "neighbor_median_partial_rho": {
+          "1": -0.08904663899836959,
+          "5": -0.08708903978383437
+        },
+        "pass": true,
+        "phase_signs": {
+          "3": [
+            -1,
+            -1,
+            -1
+          ],
+          "5": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        "year_median_h3_partial_rho": {
+          "2020": -0.08328098539688915,
+          "2021": -0.04255744807669881,
+          "2022": -0.0693123813858823,
+          "2023": -0.24955100260243065
+        }
+      },
+      "3": {
+        "block_median_h3_partial_rho": {
+          "A": -0.11189433153187923,
+          "B": -0.05104840623192955
+        },
+        "checks": {
+          "blocks": true,
+          "cells": true,
+          "h3_phases": true,
+          "h5_phases": true,
+          "leave_one_year_out": true,
+          "neighbors": true,
+          "primary": false,
+          "tail_residual_gap": false,
+          "years": false
+        },
+        "leave_one_year_out_median_h3_partial_rho": {
+          "2020": -0.05104840623192955,
+          "2021": -0.07098900462746877,
+          "2022": -0.11729134487918191,
+          "2023": -0.026841721161743378
+        },
+        "median_h3_partial_rho": -0.05776029647013259,
+        "median_tail_residual_gap": -0.002214445858580286,
+        "negative_cells": 8,
+        "neighbor_median_partial_rho": {
+          "1": -0.04660340982178325,
+          "5": -0.0587764954638034
+        },
+        "pass": false,
+        "phase_signs": {
+          "3": [
+            -1,
+            -1,
+            -1
+          ],
+          "5": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        "year_median_h3_partial_rho": {
+          "2020": -0.11189433153187923,
+          "2021": 0.009268839007107638,
+          "2022": -0.015258040019096128,
+          "2023": -0.19534617161270454
+        }
+      },
+      "4": {
+        "block_median_h3_partial_rho": {
+          "A": -0.12302057194850305,
+          "B": -0.01525828118544173
+        },
+        "checks": {
+          "blocks": false,
+          "cells": true,
+          "h3_phases": true,
+          "h5_phases": false,
+          "leave_one_year_out": true,
+          "neighbors": true,
+          "primary": false,
+          "tail_residual_gap": false,
+          "years": false
+        },
+        "leave_one_year_out_median_h3_partial_rho": {
+          "2020": -0.01525828118544173,
+          "2021": -0.05540564942324108,
+          "2022": -0.03608341444684901,
+          "2023": -0.0014359727675495332
+        },
+        "median_h3_partial_rho": -0.0333114150768633,
+        "median_tail_residual_gap": -0.0020553033429532965,
+        "negative_cells": 8,
+        "neighbor_median_partial_rho": {
+          "1": -0.02012260538927005,
+          "5": -0.02485202671290472
+        },
+        "pass": false,
+        "phase_signs": {
+          "3": [
+            -1,
+            -1,
+            -1
+          ],
+          "5": [
+            1,
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        "year_median_h3_partial_rho": {
+          "2020": -0.12302057194850305,
+          "2021": 0.009666267181242735,
+          "2022": -0.044015555180969626,
+          "2023": -0.09682938697154347
+        }
+      },
+      "5": {
+        "block_median_h3_partial_rho": {
+          "A": -0.001906937280005441,
+          "B": -0.06882349416855435
+        },
+        "checks": {
+          "blocks": false,
+          "cells": true,
+          "h3_phases": true,
+          "h5_phases": true,
+          "leave_one_year_out": true,
+          "neighbors": true,
+          "primary": false,
+          "tail_residual_gap": true,
+          "years": false
+        },
+        "leave_one_year_out_median_h3_partial_rho": {
+          "2020": -0.06882349416855435,
+          "2021": -0.083708891269884,
+          "2022": -0.021355690460110766,
+          "2023": -0.08157592849675552
+        },
+        "median_h3_partial_rho": -0.06452817723168447,
+        "median_tail_residual_gap": -0.004528469946146613,
+        "negative_cells": 6,
+        "neighbor_median_partial_rho": {
+          "1": -0.011917000345731295,
+          "5": -0.0680655463468661
+        },
+        "pass": false,
+        "phase_signs": {
+          "3": [
+            -1,
+            -1,
+            -1
+          ],
+          "5": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        "year_median_h3_partial_rho": {
+          "2020": -0.001906937280005441,
+          "2021": -0.008796682992022709,
+          "2022": -0.17504608711909425,
+          "2023": 0.025899828678603028
+        }
+      }
+    }
+  },
+  "strategy_fields_read": false,
+  "terminal_return_read": false
+}
