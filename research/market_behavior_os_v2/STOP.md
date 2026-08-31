@@ -205,3 +205,11 @@ to bypass `hard_valid`, infer an adjustment, drop affected holdings, or quote
 partial equity. A next cycle requires a separately frozen QD-010 announcement
 and risk-exit contract; otherwise these mechanisms remain parked and capital
 moves to a different frontier. No global program STOP is asserted.
+
+ASHARE-CA-REPLAY-003 resolves the bounded execution blocker and reaches its
+cycle STOP. Both frozen portfolios complete with zero terminal lots, but both
+are `PROMISING_BUT_MIXED`, not strategy candidates. No parameter, habitat,
+combination, or infrastructure continuation is authorized. Independent
+confirmation is unavailable under the current temporal quarantine, so the next
+research allocation moves to a distinct stock-level intraday mechanism family.
+No global program STOP is asserted.

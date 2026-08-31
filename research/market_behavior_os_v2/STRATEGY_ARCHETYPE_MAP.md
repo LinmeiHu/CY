@@ -52,3 +52,13 @@ now has positive standalone evidence, but it fails the preregistered risk gate.
 The first two are distinct candidate archetypes but not executable strategies:
 their portfolio replays stop on frozen corporate-action blockers, so partial
 equity supplies no return, drawdown, Sharpe, turnover, or capacity evidence.
+
+## Post-repair archetype status
+
+| Archetype | Complete exploratory economics | Status |
+|---|---|---|
+| Industry participation/diffusion | +54.64% total, 0.440 Sharpe, -29.10% DD, 18.46% severe | `PROMISING_BUT_MIXED` |
+| Defensive low idiosyncratic risk | +15.73% total, 0.239 Sharpe, -29.11% DD, 6.09% severe | `PROMISING_BUT_MIXED` |
+
+Both are now executable exploratory archetypes, but neither passes the frozen
+strategy-candidate gate or has independent confirmation.

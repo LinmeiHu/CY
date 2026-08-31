@@ -135,3 +135,13 @@ translation, not threshold/horizon/habitat rescue.
 Industry diffusion and low idiosyncratic volatility are distinct roles:
 within-industry participation and stock-specific defensive risk. Their cheap
 effects survive chronology; executability is unresolved rather than failed.
+
+## Corporate-action-repaired frozen replays
+
+| Family | Full portfolio economics | Final status |
+|---|---|---|
+| Industry diffusion h20 | +54.64% total; -29.10% DD; 0.440 Sharpe; 18.46% severe; 165.52x turnover | `PROMISING_BUT_MIXED`; return survives, risk gates fail |
+| Low idiosyncratic volatility h20 | +15.73% total; -29.11% DD; 0.239 Sharpe; 6.09% severe; 142.22x turnover | `PROMISING_BUT_MIXED`; defensive role survives, Sharpe gate fails |
+
+The execution blocker is resolved for these paths. Neither mixed result permits
+parameter rescue or a strategy-candidate claim.

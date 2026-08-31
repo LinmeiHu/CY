@@ -2044,3 +2044,45 @@ Has any discovered mechanism implied a genuinely new strategy archetype?
 Industry diffusion is a new participation-within-leadership lead; low
 idiosyncratic volatility is a distinct defensive cross-sectional lead. Neither
 is executable until a data-contract-safe complete portfolio replay exists.
+
+## 2026-08-31 minimum corporate-action repair and frozen replay checkpoint
+
+ASHARE-CA-REPLAY-003 starts from `1246d80a05` and freezes one compact shared
+contract before portfolio outcomes. Explicit QD-010 share distributions and
+rights events become known at conservative `known_at`. Existing positions issue
+a close decision on the first market session when known and must fill at a
+later legal open strictly before `effective_date`; known pending events block
+new risk. Cash-only actions keep exact ledger treatment. Registered suspensions
+permit no fill or new risk, apply exact cash entitlement, and carry the official
+close. Unknown timing, no pre-effective fill, or an unresolved effective row
+still fails closed. This is bounded PIT-B research, not strict PIT-A.
+
+All four prior action blockers have causal exit windows. The final domain has
+2,904 explicit 2018--2023 risk events (2,844 share distributions and 60 rights),
+zero without a pre-effective decision session, and 26 actual forced lot exits;
+every fill is strictly pre-effective. Two runs reproduce byte-identical equity,
+risk-exit, result, and report artifacts.
+
+The frozen Industry Diffusion portfolio completes 2,627 trades with 99.89%
+entry coverage. Total/annualized return is +54.64%/+8.60%, maximum drawdown
+-29.10%, Sharpe 0.440, Calmar 0.296, severe trades 18.46%, turnover 165.52x,
+mean breadth 39.4 positions/12.4 industries, p10 capacity CNY 111.6m, and 15
+forced exits. It is `PROMISING_BUT_MIXED`, not a strategy candidate: the frozen
+Sharpe and severe-loss gates fail.
+
+The frozen Low Idiosyncratic Volatility portfolio completes 2,628 trades with
+99.92% entry coverage. Total/annualized return is +15.73%/+2.80%, maximum
+drawdown -29.11%, Sharpe 0.239, Calmar 0.096, severe trades 6.09%, turnover
+142.22x, mean breadth 39.4 positions/18.4 industries, p10 capacity CNY 76.8m,
+and 11 forced exits. It is independently `PROMISING_BUT_MIXED`: defensive loss
+behavior passes, but the frozen Sharpe candidate gate fails. Daily return
+correlation between the two portfolios is 0.671; no combination is tested.
+
+What market behavior are we still not studying? Stock-level intraday supply,
+demand, support, and acceptance as independent alpha; fundamental revisions;
+order flow; and genuinely independent temporal confirmation of both mixed leads.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? Yes,
+industry participation and defensive low-idiosyncratic-risk now have complete
+executable exploratory paths, but both remain mixed candidates rather than
+validated or live-authorized strategies.

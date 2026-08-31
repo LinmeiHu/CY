@@ -1,0 +1,165 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "boundaries": {
+    "alpha_changed": false,
+    "combined_portfolio": false,
+    "cy011_read": false,
+    "live_claim": false,
+    "oos_claim": false,
+    "post_2023_read": false,
+    "validation_claim": false
+  },
+  "claim_boundary": "EXPLORE_ONLY_CONSUMED_2018_2023_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "comparison": {
+    "daily_return_correlation": 0.6710995673615968
+  },
+  "domain": {
+    "families": [
+      "industry_diffusion_20",
+      "low_idiosyncratic_volatility_20"
+    ],
+    "market_rows": 142102,
+    "plans": 5260
+  },
+  "execution_contract": {
+    "cash_only_actions": "unchanged exact visible-action ledger using cash_per_share and share_multiplier=1",
+    "effective_boundary": "effective_date is the raw-price/share-coordinate boundary and may never be used before known_at",
+    "existing_position_rule": "on the first market-session close D with known_at<=D 15:00 and D<effective_date, create a risk-reducing exit; fill at the first later legal open strictly before effective_date",
+    "fail_closed": [
+      "missing known_at or effective_date",
+      "known_at date is not strictly before effective_date",
+      "duplicate or conflicting event identity",
+      "incomplete distribution source terms",
+      "no legal sell fill strictly before effective_date",
+      "position reaches an unresolved effective-date row",
+      "unknown or invalid holding row"
+    ],
+    "fill": "raw next-open price less unchanged 20 bps sell cost; keep pending through suspensions and pinned lower limits only while fill_date<effective_date",
+    "knowledge_time": "known_at is conservatively the next local calendar day after the date-only announcement and is usable at that date's 15:00 completed-close decision",
+    "new_risk_rule": "block entry when the event is known by the signal decision and the proposed entry date is on or before effective_date",
+    "revision_boundary": "QD-010 is bounded PIT-B current-history evidence; no strict PIT-A or historical-absence claim",
+    "risk_events": [
+      "distribution with source_terms_complete=true and declared share_multiplier>1",
+      "every explicitly present rights_issue"
+    ],
+    "scope": "minimum research-only handling for explicitly present QD-010 share distributions and rights events",
+    "share_transform": "no share transformation is performed for a risk event because the position must exit before effective_date",
+    "suspension_valuation": "when registered trade_status=0, current_day_data_tradable=false, the only invalid reason is invalid_daily_bar, prices are finite/positive, and no action blocker exists: allow no fill or new risk, apply any exact cash-only action, and carry the registered close for NAV until trading resumes",
+    "t_plus_one": "same-session exit is forbidden; a same-day entry cannot be sold until a later market session"
+  },
+  "experiment_id": "ASHARE-CA-REPLAY-003",
+  "hashes": {
+    "equity_sha256": "b6bb0d84bf772907da000ae51f323525cf0c8d69ec4e0a006a5b04d9bb2fb3c1",
+    "report_sha256": "0172eb75bfa3c39b1fecd1813f70763450a4d5ce333bec91cd4b00d616e4e3a7",
+    "risk_exits_sha256": "0d4d6e86ff017e52d775ba4cad8f743c78f9b8222c01bfc6af3ea584e5a2cbd8",
+    "spec_sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "replays": [
+    {
+      "annualized_return": 0.08603279772944128,
+      "calmar": 0.2956790778460636,
+      "classification": "PROMISING_BUT_MIXED",
+      "completed_trades": 2627,
+      "daily_sharpe": 0.4404116288004328,
+      "end_date": "2023-12-28",
+      "entries": 2627,
+      "entry_execution_fraction": 0.9988593155893536,
+      "excess_return_vs_cash": 0.5463696279481551,
+      "family": "industry_diffusion_20",
+      "forced_exit_pending_days": 0,
+      "forced_pre_effective_exits": 15,
+      "maximum_drawdown": -0.29096680886644155,
+      "mean_industries": 12.368144252441773,
+      "mean_industry_hhi_invested_days": 0.17450937459963,
+      "mean_positions": 39.40195341848234,
+      "median_capacity_cny_at_5pct_amount": 406266653.38,
+      "p10_capacity_cny_at_5pct_amount": 111580499.97600003,
+      "planned_entries": 2630,
+      "risk_blocked_entries": 0,
+      "severe_trade_fraction": 0.18462124095926913,
+      "start_date": "2018-07-10",
+      "status": "COMPLETE",
+      "terminal_open_lots": 0,
+      "total_return": 0.5463696279481551,
+      "turnover_multiple_initial_capital": 165.52185637440297
+    },
+    {
+      "annualized_return": 0.02804710851532355,
+      "calmar": 0.09636349409521024,
+      "classification": "PROMISING_BUT_MIXED",
+      "completed_trades": 2628,
+      "daily_sharpe": 0.23898914163670976,
+      "end_date": "2023-12-28",
+      "entries": 2628,
+      "entry_execution_fraction": 0.9992395437262357,
+      "excess_return_vs_cash": 0.15730998247391903,
+      "family": "low_idiosyncratic_volatility_20",
+      "forced_exit_pending_days": 0,
+      "forced_pre_effective_exits": 11,
+      "maximum_drawdown": -0.2910553293928103,
+      "mean_industries": 18.432757325319308,
+      "mean_industry_hhi_invested_days": 0.09562759649680436,
+      "mean_positions": 39.406461307287756,
+      "median_capacity_cny_at_5pct_amount": 153460146.9,
+      "p10_capacity_cny_at_5pct_amount": 76842618.92,
+      "planned_entries": 2630,
+      "risk_blocked_entries": 2,
+      "severe_trade_fraction": 0.060882800608828,
+      "start_date": "2018-07-10",
+      "status": "COMPLETE",
+      "terminal_open_lots": 0,
+      "total_return": 0.15730998247391903,
+      "turnover_multiple_initial_capital": 142.2203724655258
+    }
+  ],
+  "status": "COMPLETE_EXPLORE_ONLY"
+}

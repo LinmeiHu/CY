@@ -486,3 +486,15 @@ change horizon, or call the consumed-period result confirmation.
    support defense, and acceptance after controlling daily setup.
 4. `FUNDAMENTAL_REVISION_PIT`: potentially high value, currently data-blocked.
 5. `INDUSTRY_ROTATION_3X5`: closed and parked; no rescue allocation.
+
+## Frontier after ASHARE-CA-REPLAY-003
+
+1. `STOCK_INTRADAY_INDEPENDENT_MECHANISMS`: highest new information per cost;
+   use existing accepted minute data and control daily setup.
+2. `INDUSTRY_DIFFUSION_INDEPENDENT_CONFIRMATION`: preserved mixed lead; blocked
+   by lack of untouched time, not by execution.
+3. `LOW_IDIOVOL_INDEPENDENT_CONFIRMATION`: preserved defensive mixed lead with
+   the same confirmation boundary.
+4. `CHINEXT_RS_VETO`: retain existing promising component without tuning.
+5. `DISPERSION_RELATIVE_VALUE`: remain resource-parked.
+6. `CORPORATE_ACTION_REPAIR`: complete; no further platform allocation.

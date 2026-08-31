@@ -1,0 +1,114 @@
+{
+  "experiment_id": "ASHARE-CA-REPLAY-003",
+  "status": "FROZEN_EXECUTION_CONTRACT_AND_STRATEGY_GATES_BEFORE_REPLAY_OUTCOMES",
+  "claim_boundary": "EXPLORE_ONLY_CONSUMED_2018_2023_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "starting_checkpoint": "1246d80a05",
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "blocked_cycle_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-DIVERSIFIED-CYCLE-002_spec.json",
+      "sha256": "f35d9c0b660bcbfb92a68ea5efa7305f3d87aa324f50f14566de96945cabb658"
+    },
+    "blocked_cycle_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-DIVERSIFIED-CYCLE-002_result.json",
+      "sha256": "d87549fa881bb7f38c738da29e28d6abc057297d57eabefba37fbc373e875c53"
+    },
+    "blocked_cycle_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_diversified_cycle_002.py",
+      "sha256": "a64c3e198f168917445f3df20feb11df5e5bf1eb9d287e655fbf57234862c12d"
+    },
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "qd010_source_manifest": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+      "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+    },
+    "qd010_distributions": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+    },
+    "qd010_rights": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+    }
+  },
+  "execution_contract": {
+    "scope": "minimum research-only handling for explicitly present QD-010 share distributions and rights events",
+    "knowledge_time": "known_at is conservatively the next local calendar day after the date-only announcement and is usable at that date's 15:00 completed-close decision",
+    "effective_boundary": "effective_date is the raw-price/share-coordinate boundary and may never be used before known_at",
+    "risk_events": [
+      "distribution with source_terms_complete=true and declared share_multiplier>1",
+      "every explicitly present rights_issue"
+    ],
+    "existing_position_rule": "on the first market-session close D with known_at<=D 15:00 and D<effective_date, create a risk-reducing exit; fill at the first later legal open strictly before effective_date",
+    "new_risk_rule": "block entry when the event is known by the signal decision and the proposed entry date is on or before effective_date",
+    "fill": "raw next-open price less unchanged 20 bps sell cost; keep pending through suspensions and pinned lower limits only while fill_date<effective_date",
+    "suspension_valuation": "when registered trade_status=0, current_day_data_tradable=false, the only invalid reason is invalid_daily_bar, prices are finite/positive, and no action blocker exists: allow no fill or new risk, apply any exact cash-only action, and carry the registered close for NAV until trading resumes",
+    "t_plus_one": "same-session exit is forbidden; a same-day entry cannot be sold until a later market session",
+    "cash_only_actions": "unchanged exact visible-action ledger using cash_per_share and share_multiplier=1",
+    "share_transform": "no share transformation is performed for a risk event because the position must exit before effective_date",
+    "fail_closed": [
+      "missing known_at or effective_date",
+      "known_at date is not strictly before effective_date",
+      "duplicate or conflicting event identity",
+      "incomplete distribution source terms",
+      "no legal sell fill strictly before effective_date",
+      "position reaches an unresolved effective-date row",
+      "unknown or invalid holding row"
+    ],
+    "revision_boundary": "QD-010 is bounded PIT-B current-history evidence; no strict PIT-A or historical-absence claim"
+  },
+  "frozen_replays": {
+    "industry_diffusion_20": {
+      "signal": "unchanged leave-one-out fraction of eligible PIT-industry constituents with positive r20",
+      "selection": "unchanged top 10 each weekly signal date",
+      "holding_sessions": 20,
+      "weights": "unchanged equal cohort weights",
+      "cost_per_side_bps": 20
+    },
+    "low_idiosyncratic_volatility_20": {
+      "signal": "unchanged negative 20-session standard deviation of stock return minus daily market median",
+      "selection": "unchanged top 10 each weekly signal date",
+      "holding_sessions": 20,
+      "weights": "unchanged equal cohort weights",
+      "cost_per_side_bps": 20
+    }
+  },
+  "classification": {
+    "STRATEGY_CANDIDATE_all_required": {
+      "replay_complete": true,
+      "minimum_entry_execution_fraction": 0.90,
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.50,
+      "minimum_maximum_drawdown": -0.35,
+      "maximum_severe_trade_fraction": 0.10,
+      "terminal_open_lots": 0
+    },
+    "PROMISING_BUT_MIXED_all_required": {
+      "replay_complete": true,
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.0,
+      "minimum_maximum_drawdown": -0.50,
+      "terminal_open_lots": 0
+    },
+    "PARKED": "complete replay with at least one positive return, Sharpe, or drawdown-quality dimension but failure of the mixed gate",
+    "REJECTED": "complete replay with nonpositive total return and Sharpe and maximum drawdown worse than -50%",
+    "REPLAY_BLOCKED": "execution contract fails closed before full liquidation"
+  },
+  "prohibited": [
+    "no post-2023 data or metadata",
+    "no CY-011 access",
+    "no alpha, horizon, universe, clock, threshold, ranking, sizing, breadth, weight, or cost change",
+    "no habitat, regime, Formation Depth, calendar-year, or neighboring-parameter conditioning",
+    "no effective-date result used before known_at",
+    "no inferred corporate-action terms from price",
+    "no dropping blocked holdings or quoting partial equity as economics",
+    "no combined portfolio",
+    "no strict PIT-A, OOS, validation, live, or production claim"
+  ]
+}

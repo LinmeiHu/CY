@@ -1924,3 +1924,26 @@ intraday mechanisms. Do not change counts, horizons, gates, weights, or costs.
 
 All 2018--2023 data are consumed development history. Post-2023 and CY-011 stay
 quarantined/unread. Frozen CHINEXT components remain unchanged.
+
+## Latest authoritative handoff — corporate-action replay 003
+
+Resume after the commit containing ASHARE-CA-REPLAY-003; starting checkpoint is
+`1246d80a05`. The minimum QD-010 contract is complete: announced share/rights
+risk blocks new entries and forces a later legal open exit strictly before the
+effective date; cash-only actions and registered suspension carries are exact.
+Do not generalize this into a corporate-action platform or weaken fail-closed
+cases. All 26 forced lot exits precede effectiveness; terminal lots are zero.
+
+Industry Diffusion is `PROMISING_BUT_MIXED`: +54.64% total, -29.10% maximum
+drawdown, 0.440 Sharpe, 18.46% severe trades, and 165.52x turnover. Low
+Idiosyncratic Volatility is independently `PROMISING_BUT_MIXED`: +15.73%,
+-29.11%, 0.239, 6.09%, and 142.22x. Do not rescue either with thresholds,
+habitats, neighboring horizons, breadth, or weights. Their daily correlation is
+0.671; no combined portfolio was run.
+
+The next highest-information allocation is a small independent stock-level
+intraday mechanism cycle, not more execution engineering and not Industry
+Rotation. Preserve both mixed leads for genuinely independent confirmation,
+which is currently unavailable: 2018--2023 is consumed, post-2023 remains
+quarantined/unread, and CY-011 remains unread. Frozen CHINEXT components do not
+change.

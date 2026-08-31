@@ -221,3 +221,15 @@ horizon, habitat, or CHINEXT combination search.
 | 5 | Stock-level intraday discovery | Unopened high-information frontier | Start if contract repair is not compact |
 | 6 | Minute-volatility half-gross | Cost-sensitive risk overlay | No promotion without new evidence |
 | 7 | Industry Rotation fixed 3x5 | `PARKED` economic failure | Close; no rescue |
+
+## Post-repair executable portfolio ranking
+
+| Rank | Asset | Current evidence | Decision |
+|---:|---|---|---|
+| 1 | Industry diffusion h20 | Strong return, moderate DD, but high severe incidence and Sharpe 0.440 | `PROMISING_BUT_MIXED`; independent confirmation only |
+| 2 | Low idiosyncratic volatility h20 | Defensive severe-loss profile, positive return, low Sharpe 0.239 | `PROMISING_BUT_MIXED`; independent confirmation only |
+| 3 | CHINEXT RS acceleration veto | Existing development admission component | Preserve unchanged |
+| 4 | Stock-level intraday alpha | Unopened, high-information independent frontier | Next research allocation |
+| 5 | Dispersion relative value | New archetype but resource-parked | Wait for cheaper method/resources |
+| 6 | Corporate-action execution contract | Sufficient for both replays | Close engineering line |
+| 7 | Industry Rotation 3x5 | Economic and downside failure | Closed |
