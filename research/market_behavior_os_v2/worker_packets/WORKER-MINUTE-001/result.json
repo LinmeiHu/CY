@@ -1,0 +1,63 @@
+{
+  "worker_id": "WORKER-MINUTE-001",
+  "lane": "B_MINUTE_INFRASTRUCTURE",
+  "base_commit": "fc665b016e2df01e11047a64e88f53905ccdcfdf",
+  "decision": "ACCEPT_ARRAY241_PLUS_EXPLICIT_SESSION_LEDGER_FOR_DIRECTOR_REVIEW",
+  "cache_published": false,
+  "outcome_access": false,
+  "recommended_schema": {
+    "tables": [
+      "session_ledger_all_in_scope_keys",
+      "session_primitives_hard_valid_keys_only"
+    ],
+    "primitive_grain": "one security-session row",
+    "arrays": "six fixed_size_list<double>[241] raw OHLCVA arrays",
+    "grid_id": "CN_A_1M_END_V1_241",
+    "available_at": "trade_date 15:30 Asia/Shanghai",
+    "price_basis": "raw_unadjusted",
+    "partition": "year/month; sort trade_date,symbol; row groups aligned to dates and capped near 4096 sessions"
+  },
+  "physical_layout": {
+    "qd004_size": "40 GiB",
+    "cy006_size": "439 MiB",
+    "cy008_size": "3.1 GiB",
+    "pre2024_qd004_rows": 1486577999,
+    "pre2024_qd004_row_groups": 12800,
+    "pre2024_cy008_daily_rows": 6114413,
+    "pre2024_cy008_hard_valid_rows": 5814333
+  },
+  "benchmark": {
+    "date": "2020-02-03",
+    "source_predicate_rows": 907365,
+    "selected_sessions": 128,
+    "selected_raw_rows": 30848,
+    "invalid_grid_or_numeric_sessions": 0,
+    "peak_rss_bytes": 754417664,
+    "array241_bytes_per_session": 1386.78125,
+    "long241_bytes_per_session": 1566.8125,
+    "segmented240_bytes_per_session": 1420.46875,
+    "array241_sha256": "2fbd4a6529e58b162fcb027ff01ab1338cf3dda7852686b51e42286412f83579",
+    "benchmark_result_sha256": "bcab408347bf469616336ea48e507afc25db03ec3d7c6750a6f55d45da8d0cfb"
+  },
+  "resource_plan": {
+    "class": "RAW_MINUTE_IO_HEAVY_SINGLE_WRITER",
+    "processes": 1,
+    "arrow_threads": 1,
+    "thread_library_caps": 1,
+    "expected_peak_rss_gib": "less than 4",
+    "pre2024_expected_cache_gib": 8.5,
+    "all_activated_expected_cache_gib": 12.8,
+    "pre2024_build_budget_minutes": "10-15 planning interval; full build not measured",
+    "raw_rows_avoided_per_pre2024_reuse": 1486577999
+  },
+  "source_hashes": {
+    "registry": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+    "qd004_inventory": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c",
+    "cy006_inventory": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "cy008_inventory": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+    "vector_adapter": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8",
+    "minute_spec": "358e358f3daef94bd8e2f42d60f38672f4f450db368494e0291465cb384bde9a",
+    "benchmark_code": "5842cc5505c443ad8353fa568e9a80b13f6a5f78a9dae5b90adb619b05c4fc23"
+  },
+  "claim_boundary": "Infrastructure feasibility only; no descriptor, trajectory, economic mechanism, predictor, habitat, execution, or strategy claim."
+}

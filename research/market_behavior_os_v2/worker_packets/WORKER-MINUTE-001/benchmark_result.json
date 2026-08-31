@@ -1,0 +1,47 @@
+{
+  "audit": {
+    "invalid_grid_or_numeric_sessions": 0,
+    "qd004_partition_sha256": "67d6b958f2b4113750df8f1a98d6e48d93ef00e04cab0fbf0cf0661b1600d45e",
+    "sample_sessions": 128,
+    "selected_raw_rows": 30848,
+    "source_predicate_rows": 907365,
+    "source_read_seconds": 0.18202312500216067,
+    "source_sessions_before_selection": 3765,
+    "valid_grid_sessions_before_context": 3765
+  },
+  "candidates": {
+    "array241": {
+      "bytes": 177508,
+      "bytes_per_session": 1386.78125,
+      "columns": 16,
+      "read_seconds": 0.0015631669666618109,
+      "rows": 128,
+      "sha256": "2fbd4a6529e58b162fcb027ff01ab1338cf3dda7852686b51e42286412f83579",
+      "write_seconds": 0.004160207929089665
+    },
+    "long241": {
+      "bytes": 200552,
+      "bytes_per_session": 1566.8125,
+      "columns": 10,
+      "read_seconds": 0.002348792040720582,
+      "rows": 30848,
+      "sha256": "821da0da31ade7a814ee1eecf4778cc1b74991faece24cc2c06cd3e28a05e3d9",
+      "write_seconds": 0.006745625054463744
+    },
+    "segmented240": {
+      "bytes": 181820,
+      "bytes_per_session": 1420.46875,
+      "columns": 22,
+      "read_seconds": 0.0013766251504421234,
+      "rows": 128,
+      "sha256": "e82872b5155289db468d34cfaeb74053ab901ac26706e28c5b2770ec39143f18",
+      "write_seconds": 0.0038660410791635513
+    }
+  },
+  "decision": "BENCHMARK_COMPLETE_NO_CACHE_PUBLISHED",
+  "outcome_access": false,
+  "peak_rss_bytes": 754417664,
+  "sample_date": "2020-02-03",
+  "sample_selection": "first 128 SHA256(WORKER-MINUTE-001|date|symbol) hard-valid sessions",
+  "thread_contract": "OMP/MKL/OPENBLAS/VECLIB/NUMEXPR=1; pyarrow use_threads=false"
+}
