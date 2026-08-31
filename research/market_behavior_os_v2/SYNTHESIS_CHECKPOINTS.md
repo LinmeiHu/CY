@@ -2200,3 +2200,57 @@ created. Formation depth remains a market state, not a strategy component.
 panels and the existing h=3 downside response. Fix central direction, same-day
 open-close return, and intraday range as mandatory alternatives before residual
 estimation. Do not reopen habitat outcomes, add a strategy, or tune a state tail.
+
+## SYNTH-MKT-049 — after formation-depth mechanism attribution
+
+### What was learned?
+
+Formation depth survives the mandatory same-day alternatives. Across 6,631
+complete fixed-control rows, its maximum same-cell pairwise absolute Spearman is
+0.5342 and median five-control adjusted rank R2 is 0.2566, so the directness gates
+pass. The h=3 downside partial rho is -0.1105 after discovery, volatility, central
+direction, open-close return, and intraday range, with the adverse sign in all
+eight cells, both blocks, all supported years and leave-one-year-out estimates,
+both neighboring horizons, and every fixed nonoverlap phase. The controlled
+high-minus-low PIT-tail residual gap is -0.005026. This establishes an incremental
+objective-formation tail-risk association, not causality.
+
+The drafted 10,000 complete-row activation floor was corrected to 6,500 before
+any estimate because the two mandatory causal controls have later warm-ups than
+the raw panels. The actual support is 6,631, minimum 828/cell. No scientific gate,
+control, horizon, response, or classification was changed.
+
+### What market behavior are we still not studying?
+
+The aggregate response does not reveal transmission topology. We do not know
+whether future adverse excursion is concentrated in the securities that made the
+same-day prior-high crossings, whether an exact noncrossing cohort also weakens,
+or whether both channels coexist. That distinction separates localized reversal
+from broad market propagation. Duration beyond the frozen five-session neighbor,
+independent post-2023 confirmation, order flow, and causal transmission remain
+unresolved.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No implementable archetype. A localized result would motivate later research on
+a failed-breakout/reversal family; a noncrossing result would motivate later
+broad defensive-habitat transfer. Neither channel has been measured, and the
+already-failed V1 habitat cannot be reopened. No trigger, threshold, executable
+timing, exit, or capacity result exists.
+
+### Parallel-track awareness
+
+- **Market research:** resolve crossing versus noncrossing response topology with
+  exact fixed cohorts and the existing 1/3/5 response semantics.
+- **Existing-strategy archaeology:** V1 formation-depth transfer remains closed;
+  no endpoint or state-tail rescue.
+- **Strategy invention:** reversal and defensive archetypes remain hypotheses
+  until the market transmission channel and a separate setup interaction pass.
+
+### Research Director decision
+
+`MAP_FORMATION_DEPTH_PROPAGATION_TOPOLOGY`. Freeze the exact crossing membership,
+noncrossing comparator, fixed-cohort action coordinate, censoring, 1/3/5 terminal
+and adverse responses, same-date decomposition, controls, blocks, and no-strategy
+claim before constructing any membership-resolved outcome. Do not infer a
+localized reversal or broad spillover from the aggregate association.

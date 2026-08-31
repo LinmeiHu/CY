@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Seven objective-crossing levels are stable, but their strategy-independent future market response is unknown | Freeze response data contract before usefulness estimates |
-| EXPLOIT | 15% | Direction/discovery habitat evidence is complete but too narrow for a rule | Preserve opportunity-density/capacity finding; do not optimize CHINEXT |
-| INVENT | 10% | No repeated recovery process or supported completion transition survives | Keep pullback/reversal/support-defense archetypes inactive |
-| REPLICATE | 10% | Minute response consumed and failed untouched confirmation | Preserve result; require new independent time for any minute response revival |
-| TRANSFER | 10% | Exact index membership is unavailable | Preserve exchange/board portability and fail closed on constituent-index claims |
-| FALSIFY | 20% | Rally distribution fails direct-dimension geometry; breakout levels still lack economic challenge | Require nonoverlap, controls, both blocks, and neighboring response horizons |
+| EXPLORE | 25% | Formation depth is an attributed broad tail-risk state, but its propagation topology is unknown | Freeze crossing/noncrossing membership and response decomposition before estimates |
+| EXPLOIT | 10% | Direct V1 habitat transfer failed despite the attributed market state | Preserve V1 unchanged; no threshold, veto, or endpoint rescue |
+| INVENT | 10% | Reversal and defensive concepts depend on whether risk is localized or broad | Keep prototypes inactive until propagation and setup interaction exist |
+| REPLICATE | 20% | Every accepted formation-depth result remains inside consumed pre-2024 time | Preserve all fixed time challenges; require independent time for confirmation |
+| TRANSFER | 20% | Exchange/board cells replicate, but constituent-level transmission and other strategy families are unknown | Resolve market propagation before any new strategy transfer |
+| FALSIFY | 15% | Aggregate downside may be driven only by the securities that formed the state | Require exact noncrossing-cohort challenge and fixed 1/3/5 neighbors |
 
 Mandatory checkpoint questions:
 

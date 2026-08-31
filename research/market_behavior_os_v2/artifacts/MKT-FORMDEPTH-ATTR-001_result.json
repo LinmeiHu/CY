@@ -1,0 +1,111 @@
+{
+  "claim": "Association/mechanism attribution only; no strategy or causal claim",
+  "classification": "INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK",
+  "cy011_read": false,
+  "evaluation": {
+    "geometry": {
+      "block_median_joint_adjusted_rank_r2": {
+        "A": 0.3337505382460562,
+        "B": 0.2467617737294187
+      },
+      "maximum_absolute_pairwise_spearman": 0.5341709355140379,
+      "maximum_pairwise_gate": 0.85,
+      "median_joint_adjusted_rank_r2": 0.2565957283747629,
+      "median_joint_gate": 0.7,
+      "pass": true
+    },
+    "response": {
+      "block_median_partial_rho": {
+        "A": -0.15387901772909232,
+        "B": -0.11920159210991478
+      },
+      "checks": {
+        "blocks": true,
+        "h3_phases": true,
+        "h5_phases": true,
+        "leave_one_year_out": true,
+        "neighbors": true,
+        "primary_size_and_sign": true,
+        "same_sign_cells": true,
+        "tail_residual_gap": true,
+        "years": true
+      },
+      "leave_one_year_out_median_partial_rho": {
+        "2020": -0.11920159210991478,
+        "2021": -0.13579341105536136,
+        "2022": -0.15772515604603587,
+        "2023": -0.036767708180819036
+      },
+      "median_h3_partial_rho": -0.110529664337188,
+      "median_tail_residual_gap": -0.005026126784406861,
+      "neighbor_median_partial_rho": {
+        "1": -0.09017224854946201,
+        "5": -0.11752456364896197
+      },
+      "pass": true,
+      "phase_signs": {
+        "3": [
+          -1,
+          -1,
+          -1
+        ],
+        "5": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ]
+      },
+      "same_sign_cells": 8,
+      "year_median_partial_rho": {
+        "2020": -0.15387901772909232,
+        "2021": -0.01648562830042564,
+        "2022": -0.07312259034441937,
+        "2023": -0.24564669292868738
+      }
+    }
+  },
+  "experiment_id": "MKT-FORMDEPTH-ATTR-001",
+  "habitat_action": "NONE",
+  "hashes": {
+    "geometry_audit_sha256": "921d4a34246729d67f9c9c22450b58c1517cb3cee762e29a0d69f791b7357b32",
+    "map_sha256": "e4dedc5c562187e77c26979b54c5d5ffd4cd5da6251327e4add3b5145181071a",
+    "panel_sha256": "384b027edbbf2aa349e426360c0d19dd6d6f95d688aedb4d93cf1ffdd1f4777d",
+    "response_audit_sha256": "8e694b4f8d6cea704461b8ea58e04c3279be73654e1889cb37321da52137878a",
+    "runner_sha256": "54f0fd374fa09659b730f9cb7d3a7f06388e4da5741511611d669774c4b252d6",
+    "spec_sha256": "676032c509384ae63b237141d5dbbf395c051c04100529ee02dcafe4989cdce7"
+  },
+  "joint_information_clock": "15:30 Asia/Shanghai",
+  "outcome_access": "EXISTING_PRE2024_H1_H3_H5_DOWNSIDE_RESPONSE_ONLY",
+  "post_2023_read": false,
+  "resource_contract": {
+    "durable_output_ceiling_mib": 50,
+    "peak_rss_ceiling_gib": 3,
+    "raw_data_read": false,
+    "single_process": true,
+    "system_memory_headroom_floor_gib": 8,
+    "two_byte_identical_runs": true,
+    "wall_clock_ceiling_minutes": 2
+  },
+  "response_begins": "next exchange session",
+  "status": "COMPLETE_MARKET_MECHANISM_ATTRIBUTION",
+  "strategy_fields_read": false,
+  "support": {
+    "complete_primary_rows": 6631,
+    "economic_rows": 11296,
+    "groups": 8,
+    "joined_rows": 11296,
+    "joint_available_at": "15:30 Asia/Shanghai",
+    "minimum_complete_rows_per_cell": 828,
+    "response_begins": "next exchange session",
+    "years": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ]
+  }
+}

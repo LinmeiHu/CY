@@ -101,3 +101,9 @@ early-block joint PIT reconstruction. This is an ordinary geometry result, not
 an S1--S12 condition. No active STOP exists. Continue with a map/data-contract-
 first future broad-market response study of the seven stable objective-crossing
 levels; strategy outcomes and CY-011 remain prohibited.
+
+MKT-FORMDEPTH-ATTR-001 passes its fixed directness and extended-control response
+gates twice byte-identically. This is positive market-mechanism evidence, not a
+terminal condition or strategy authorization. No S1--S12 boundary is active.
+Continue map-first with a membership-resolved crossing/noncrossing propagation
+study before inferring same-security reversal, broad spillover, or a strategy.

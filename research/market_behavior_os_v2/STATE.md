@@ -8,8 +8,8 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-048_MAP_FORMATION_DEPTH_TAIL_RISK_MECHANISM_ATTRIBUTION`
-- `CURRENT_PRIMARY_FRONTIER`: determine whether formation-depth tail risk is incremental beyond contemporaneous central direction and ordinary same-day return/range geometry
+- `CURRENT_PHASE`: `SYNTH-MKT-049_MAP_FORMATION_DEPTH_PROPAGATION_TOPOLOGY`
+- `CURRENT_PRIMARY_FRONTIER`: determine whether attributed formation-depth tail risk is localized in same-day crossing securities or propagates to the noncrossing market cohort
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -19,18 +19,18 @@ Updated 2026-08-31.
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `97b381e41f4af0b6d49be8d143e14c5ca7459b3d`
-- `CURRENT_SCIENTIFIC_LAYER`: `ECONOMIC_MARKET_BEHAVIOR_PASSED_ONE_TAIL_RISK_STATE; CHINEXT_V1_HABITAT_TRANSFER_FAILED`
+- `CURRENT_SCIENTIFIC_LAYER`: `INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK_ATTRIBUTED; CHINEXT_V1_HABITAT_TRANSFER_FAILED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
-- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_RESPONSE_SUPPORTED; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
+- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_RESPONSE_SUPPORTED_AFTER_FIVE_FIXED_CONTROLS; SIX_OTHER_ROLES_DESCRIPTIVE_ONLY`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
 - `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
 - `YEAR_BY_YEAR_RESULTS`: formation-depth downside sign is negative in all six raw years and all four PIT-supported years; all raw/PIT leave-one-year-out signs negative
 - `PLACEBO_RESULTS`: formation-depth level-family BH q=0.008706; closing-rejection q also passes but its fixed-control gate fails
-- `SUPPORTED_MARKET_STATES`: `formation_depth` as a downside/tail-risk level only
+- `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level only
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_X_CHINEXT_V1_COMPLETE_NO_TRANSFER; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep same-day broad objective-prior-high formation precedes worse broad constituent downside; no return or transition mechanism established
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is formation-depth downside response an independent objective-formation mechanism or a manifestation of same-day broad direction/return/range stress?
+- `CURRENT_MECHANISMS`: unusually deep same-day broad objective-prior-high formation precedes worse broad constituent downside after discovery, volatility, central direction, open-close return, and intraday-range controls; no terminal-return, transition, propagation, or strategy mechanism established
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: is subsequent downside localized in the securities forming the deep crossings, or does it persist in an exact noncrossing market cohort?
 
 ## Scope correction installed
 
@@ -105,6 +105,30 @@ all fail their fixed uncertainty/portability/effect/FDR combination. Formation
 depth therefore remains a broad-market downside state with
 `NO_CHINEXT_V1_HABITAT_TRANSFER`. V1 is unchanged; no rule, post-2023 row, raw
 ledger, or CY-011 field was accessed.
+
+### MKT-FORMDEPTH-ATTR-001 mechanism attribution
+
+The mechanism-attribution map and spec were frozen before the extended-control
+response estimates. A pre-estimate support audit corrected only the drafted
+complete-row floor from 10,000 to 6,500: the raw joins exceed 10,000 rows, but the
+mandatory causal discovery and volatility controls leave 6,631 complete rows.
+No control, horizon, response, gate, or classification changed.
+
+Two complete executions are byte-identical. Formation depth passes directness:
+maximum same-cell pairwise absolute Spearman is 0.5342 against the fixed controls
+and median joint adjusted rank R2 is 0.2566, below the 0.85/0.70 boundaries. Its
+h=3 PIT partial rho is -0.1105 after discovery, volatility, central direction,
+same-day open-close return, and intraday range; all eight cells are negative.
+Both block medians (-0.1539/-0.1192), every 2020-2023 year and leave-one-year-out,
+h=1/h=5 neighbors, and all h=3/h=5 nonoverlap phases retain the adverse sign.
+The controlled PIT high-minus-low downside residual gap is -0.005026 versus the
+fixed -0.0025 boundary. Classification is
+`INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK`.
+
+This is market-state association/mechanism attribution at a 15:30 information
+clock, with response beginning t+1. It is not causal, an entry predictor, a
+threshold, a habitat, or a strategy rule. The already-complete V1 transfer
+failure is unchanged. No strategy field, post-2023 row, or CY-011 field was read.
 
 ### MKT-TRND-001 semantic boundary
 

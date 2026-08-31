@@ -1,0 +1,124 @@
+{
+  "experiment_id": "MKT-FORMDEPTH-ATTR-001",
+  "frozen_at": "2026-08-31",
+  "track": "MARKET",
+  "status": "FROZEN_BEFORE_EXTENDED_CONTROL_RESPONSE_ESTIMATES",
+  "question": "Is formation-depth downside response incremental beyond central direction and ordinary same-day return/range geometry?",
+  "outcome_access": "EXISTING_PRE2024_H1_H3_H5_DOWNSIDE_RESPONSE_ONLY",
+  "inputs": {
+    "attribution_map": {
+      "path": "research/market_behavior_os_v2/FORMATION_DEPTH_TAIL_RISK_ATTRIBUTION_MAP.md",
+      "sha256": "e4dedc5c562187e77c26979b54c5d5ffd4cd5da6251327e4add3b5145181071a"
+    },
+    "economic_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-001_panel.csv",
+      "sha256": "314a5d3996bd4d9fa3919fdb39f4a72cc0c2859103ba5252edeeefd8ec6fde5a"
+    },
+    "economic_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-BREAKOUT-ECON-001_result.json",
+      "sha256": "0aa68e75635d0f143a46c17b696ebbf9ab78c3d9eddfe20bcaf19698410eab85"
+    },
+    "risk_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_risk_appetite_panel.csv",
+      "sha256": "fe7436e26d616455c7ce897eb70d53749e9185285082453549d338afe53009b1"
+    },
+    "risk_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-RISK-001_result.json",
+      "sha256": "4fdfd600640c158f30893fed347dee85ec8fd7aac58ff2f259a6b516d89de2fe"
+    },
+    "minute_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_daily_market_panel.csv",
+      "sha256": "bdbb3cb9b603514f4fab5783fb6c807f42c91e15388d2f6bb6f9418be6c4a701"
+    },
+    "minute_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-MIN-001_result.json",
+      "sha256": "ad42e74281dce9cf7f3c0de8e57a283c38a3a91ae00538d26ed7e563184cf0fe"
+    }
+  },
+  "activation": {
+    "required_role": "formation_depth",
+    "required_status": "TAIL_RISK_RESPONSE",
+    "expected_economic_rows": 11296,
+    "minimum_complete_joint_rows": 6500,
+    "expected_groups": 8,
+    "joint_available_at": "15:30 Asia/Shanghai",
+    "response_begins": "next exchange session"
+  },
+  "target": {
+    "absolute": "breakout_formation_depth20",
+    "pit": "breakout_formation_depth20_pit_3y_pct",
+    "pit_low_maximum": 0.2,
+    "pit_high_minimum": 0.8
+  },
+  "controls": {
+    "original_discovery": "breadth_net_new_high_low60_pit_3y_pct",
+    "original_volatility": "realized_volatility_median20_pit_3y_pct",
+    "central_direction": "median_signed_limit_utilization",
+    "central_direction_pit": "median_signed_limit_utilization_pit_3y_pct",
+    "open_close_return": "open_close_log_return__median",
+    "intraday_range": "intraday_log_range__median",
+    "all_five_primary": [
+      "breadth_net_new_high_low60_pit_3y_pct",
+      "realized_volatility_median20_pit_3y_pct",
+      "median_signed_limit_utilization",
+      "open_close_log_return__median",
+      "intraday_log_range__median"
+    ],
+    "variable_selection": false
+  },
+  "response": {
+    "primary": "adverse_mean_log_excursion_h3",
+    "neighbors": ["adverse_mean_log_excursion_h1", "adverse_mean_log_excursion_h5"],
+    "terminal_return_read": false,
+    "other_roles_read": "state fields may remain in immutable panel but are never estimated"
+  },
+  "geometry_gates": {
+    "maximum_absolute_pairwise_spearman": 0.85,
+    "maximum_median_joint_adjusted_rank_r2": 0.7,
+    "blocks": {
+      "A": [2018, 2019, 2020],
+      "B": [2021, 2022, 2023]
+    }
+  },
+  "response_gates": {
+    "minimum_absolute_median_h3_partial_rho": 0.1,
+    "required_sign": -1,
+    "minimum_same_sign_cells": 6,
+    "minimum_absolute_block_partial_rho": 0.05,
+    "both_blocks_same_sign": true,
+    "pit_supported_years": [2020, 2021, 2022, 2023],
+    "all_pit_years_same_sign": true,
+    "all_pit_leave_one_year_out_same_sign": true,
+    "h1_h5_same_sign": true,
+    "h3_phase_same_sign_minimum": 2,
+    "h5_phase_same_sign_minimum": 4,
+    "maximum_median_tail_residual_gap": -0.0025
+  },
+  "classification": {
+    "pass": "INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK",
+    "response_fail": "GENERIC_SAME_DAY_RISK_MANIFESTATION_UNDER_EXTENDED_CONTROLS",
+    "directness_fail": "ECONOMIC_RESPONSE_NOT_DISTINCT_COORDINATE",
+    "claim_boundary": "Association/mechanism attribution only; no strategy or causal claim"
+  },
+  "resource_budget": {
+    "single_process": true,
+    "peak_rss_ceiling_gib": 3,
+    "system_memory_headroom_floor_gib": 8,
+    "wall_clock_ceiling_minutes": 2,
+    "durable_output_ceiling_mib": 50,
+    "raw_data_read": false,
+    "two_byte_identical_runs": true
+  },
+  "prohibited_computations": [
+    "terminal return, another horizon, another objective role, another minute descriptor, control deletion, threshold change, state combination, or strategy outcome",
+    "entry predictor backdating from 15:30, signal, trade, fill, exposure, veto, P&L, habitat, or strategy rule",
+    "raw data, post-2023 data, QD-004, CY-008, or CY-011 access"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_geometry_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_response_audit.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-FORMDEPTH-ATTR-001_result.json",
+    "research/market_behavior_os_v2/reports/MKT-FORMDEPTH-ATTR-001_attribution.md"
+  ]
+}

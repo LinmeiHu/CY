@@ -5,7 +5,7 @@ the independent Market State Engine and opportunity definitions exist.
 
 | Rank | Strategy family | Mechanism evidence | Novelty/habitat diversification | Data/PIT | Cost/capacity | Redundancy | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | CHINEXT V1 x formation-depth tail-risk state | Broad downside state passes, but zero direct habitat endpoints transfer | Medium: existing breakout seed under a new risk dimension | Strong bounded PIT-B; outcomes consumed; CY-011 locked | Low / finite-vacancy pressure identified | Fixed trend/breadth/volatility controls applied | COMPLETE_NO_HABITAT_NO_RULE |
+| 1 | CHINEXT V1 x formation-depth tail-risk state | Broad downside state survives five-control mechanism attribution, but zero direct V1 habitat endpoints transfer | Medium: existing breakout seed under a distinct market-risk dimension | Strong bounded PIT-B; outcomes consumed; CY-011 locked | Low / finite-vacancy pressure identified | Fixed trend/breadth/volatility plus separate market-attribution controls applied | COMPLETE_NO_HABITAT_NO_RULE |
 | 2 | CHINEXT V1 archaeology | Qualified participation/right-tail/path evidence | Low-medium: existing breakout seed | Strong bounded PIT-B | Low / capacity known | High with current program | Supporting frontier only |
 | 3 | Pullback continuation | No direct support yet; coherent trend/pullback/exhaustion process | High | Daily plus minute feasible | Medium / unknown | Potentially distinct from breakout | WAIT_FOR_MARKET_MECHANISM |
 | 4 | Panic/oversold reversal | No direct support yet | Very high | Correlation/liquidity/minute states exist, recovery absent | Medium-high / unknown | Low versus breakout | WAIT_FOR_MARKET_MECHANISM |
@@ -129,3 +129,10 @@ endpoint survives; late opportunity-density hints fail magnitude, early-block,
 and leave-one-year-out. Do not convert the broad downside state into a V1 veto,
 exposure rule, threshold, or minute-scale combination. The strategy frontier
 returns to supporting status while market-mechanism attribution continues.
+
+MKT-FORMDEPTH-ATTR-001 establishes that the broad downside association is not
+absorbed by central direction or ordinary same-day return/range geometry. It
+still does not reopen V1: the direct V1 transfer result is already negative. No
+new strategy archetype is authorized until a membership-resolved market study
+distinguishes same-security reversal from broad noncrosser propagation and a
+separately frozen setup interaction later survives.

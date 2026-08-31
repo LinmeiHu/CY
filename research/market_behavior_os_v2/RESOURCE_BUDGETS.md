@@ -155,3 +155,9 @@ HAB-CHX-001 rows. Fifteen fixed endpoint estimators and 30,000 deterministic
 signal-date cluster bootstrap replicates complete well inside five minutes and
 3 GiB RSS. Five durable outputs reproduce byte-identically under 100 MiB. No
 source ledger, raw partition, post-2023 data, or CY-011 is opened.
+
+MKT-FORMDEPTH-ATTR-001 reads only three compact bound panels plus their frozen
+results. The 11,296-row join, 288 geometry rows, and 200 response-audit rows
+complete in under two seconds and remain well below 3 GiB RSS, 8 GiB system
+headroom, and 50 MiB durable output. Five artifacts reproduce byte-identically.
+No raw security/minute data, strategy field, post-2023 row, or CY-011 is read.

@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Is the supported formation-depth downside response incremental beyond same-day central direction and ordinary return/range geometry? | Very high | High | Compact accepted risk/minute panels plus frozen response panel; no new outcomes | Very high | Low-medium | ACTIVE_MAP_FORMATION_DEPTH_TAIL_MECHANISM |
+| 1 | Is attributed formation-depth downside localized in the securities making same-day objective crossings, or does it propagate to the exact noncrossing market cohort? | Very high | High | Governed CY-006 daily/action coordinates; requires new membership-resolved response domain but no strategy outcomes | Very high | Medium-high | ACTIVE_MAP_FORMATION_DEPTH_PROPAGATION_TOPOLOGY |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -408,3 +408,11 @@ density is suggestive only in the late block and cannot rescue the failed direct
 endpoints. The frontier returns to market behavior: test whether the supported
 downside state survives central direction and ordinary same-day return/range
 geometry. Do not search another strategy subset or combine market states.
+
+MKT-FORMDEPTH-ATTR-001 passes the five-control directness and response gates.
+Formation depth is not reconstructed by discovery, volatility, central direction,
+same-day return, or intraday range, and its future downside association survives
+all fixed challenges. The active frontier now asks where that downside resides:
+same-day crossing securities, exact noncrossers, or both. Freeze cohort membership
+and response semantics before reading the decomposition; do not infer reversal,
+spillover, or a strategy from the aggregate result.

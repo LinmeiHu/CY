@@ -2,6 +2,34 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-FORMDEPTH-ATTR-001
+
+The frozen attribution map `e4dedc5c...` and spec `676032c5...` bind the exact
+accepted formation-depth downside response to five mandatory controls: discovery
+breadth, realized volatility, central direction, market open-close return, and
+intraday range. The joint information clock is 15:30 and response starts t+1.
+
+A support-only correction changed the drafted complete-row floor from 10,000 to
+6,500 before any response estimate: mandatory causal control warm-ups leave
+6,631 complete rows (minimum 828/cell) even though the raw panel join has 11,296.
+Nothing else in the scientific contract changed.
+
+The experiment completes twice byte-identically: panel `384b027e...`, geometry
+`921d4a34...`, response `8e694b4f...`, result `36944688...`, and report
+`24acba88...`. Directness passes at maximum pairwise |rho| 0.5342 and median joint
+adjusted rank R2 0.2566. Extended-control h=3 partial rho is -0.1105 with all
+eight cells negative; both blocks, all supported years/leave-one-year-out views,
+h=1/h=5, and every nonoverlap phase retain the adverse sign. Median controlled
+PIT-tail residual gap is -0.005026. Classification is
+`INCREMENTAL_OBJECTIVE_FORMATION_TAIL_RISK`.
+
+Do not turn this into a V1 veto: HAB-CHX-FORMDEPTH-001 already found no direct V1
+transfer. The next market-only question is propagation topology—whether future
+downside is localized in the same-day crossing securities or remains in an exact
+noncrossing cohort. Freeze membership, fixed-cohort, matching, action-coordinate,
+and 1/3/5-session semantics before constructing that decomposition. CY-011 stays
+locked.
+
 ## Latest checkpoint: HAB-CHX-FORMDEPTH-001
 
 The habitat map `87735951...`, data contract `b7dc846e...`, and frozen spec

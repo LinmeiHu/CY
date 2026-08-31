@@ -117,6 +117,17 @@ MKT-H-034 objective prior-high breakout event feasibility
   -> same-session continuation/rejection/acceptance representation may be frozen
   -> no process, outcome, habitat, timing, execution, or strategy claim
 
+MKT-H-036 objective formation-depth economic mechanism
+  -> seven stable full-market objective-crossing levels receive fixed 1/3/5 broad responses
+  -> formation depth alone passes terminal/downside family, portability, null, and fixed discovery/volatility controls
+  -> formation-depth x CHINEXT V1 direct habitat transfer fails without rescue
+  -> five-control attribution adds central direction, open-close return, and intraday range
+  -> directness passes: maximum pairwise |rho| 0.534 and median joint adjusted rank R2 0.257
+  -> h3 downside partial rho -0.111 with all cells/blocks/years/LOYO/neighbors/phases adverse
+  -> incremental objective-formation tail-risk association retained
+  -> crossing-security versus noncrossing-market propagation topology remains unknown
+  -> no causal, signal, threshold, habitat, execution, or strategy claim
+
 HAB-H-001 CHINEXT direction/discovery association
   -> A and B opportunity-density associations pass
   -> fixed A+B incrementality only for evaluated/candidate daily counts
