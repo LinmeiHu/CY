@@ -99,3 +99,22 @@ genuinely new, resource-parked archetype. RS acceleration remains a selection
 mechanism inside the existing breakout seed; minute-volatility progression is
 useful risk-state evidence but its fixed sizing translation is cost-sensitive.
 Neither is independently validated or authorized for live use.
+
+## Independent A-share family batch
+
+ASHARE-INDEP-FUNNEL-001 screened seven frozen standalone families on one
+shared PIT panel. All years are consumed development history.
+
+| Rank | Exact family | Natural response | Full net excess vs date control | Chronology | Current decision |
+|---:|---|---:|---:|---|---|
+| 1 | PIT industry rotation | h20 | +1.003% | +1.396% / +0.661%; 4/6 years positive | `NEAR_MISS_RISK_GATE`; severe disadvantage +2.497 pp vs +2.000 pp maximum |
+| 2 | Failed-breakdown recovery | h5 | +0.004% | -0.025% / +0.023% | `NULL_STANDALONE_SCREEN` |
+| 3 | Short reversal | h5 | -0.275% | negative in both blocks | `REJECT_EXACT_FORMULATION` |
+| 4 | Compression breakout | h20 | -0.048% | -0.506% / +0.276% | `PARK_MIXED_CHRONOLOGY` |
+| 5 | Positive demand-volume shock | h5 | -0.840% | negative in both blocks | `REJECT_EXACT_FORMULATION` |
+| 6 | Medium momentum | h20 | -2.259% | negative in both blocks | `REJECT_EXACT_FORMULATION` |
+| 7 | Objective breakout continuation | h20 | -2.710% | negative in both blocks | `REJECT_EXACT_FORMULATION` |
+
+No family passes every promotion gate, so there is no executable replay. The
+next frontier is risk-first industry diversification under a separately frozen
+translation, not threshold/horizon/habitat rescue.

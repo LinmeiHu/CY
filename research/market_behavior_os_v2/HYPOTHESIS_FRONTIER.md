@@ -466,3 +466,12 @@ information next experiment is a bounded event-day plus recent-five-session
 minute-path discriminator using broad economically fixed segments and the
 accepted PIT minute semantics. Do not brute-force windows, build a strategy,
 claim true liquidity, or reopen objective specificity by deleting controls.
+
+ASHARE-INDEP-FUNNEL-001 makes PIT industry rotation the highest-information
+strategy frontier without promoting it. The next hypothesis is narrow and
+risk-first: the positive top-industry return ordering may be capturable only if
+exposure is distributed across several independently ranked industries rather
+than concentrated in one leadership cluster. Freeze one economically natural
+cross-industry allocation, the same 20-session state and weekly clock, and the
+same costs before replay. Do not search the number of industries, add a habitat,
+change horizon, or call the consumed-period result confirmation.

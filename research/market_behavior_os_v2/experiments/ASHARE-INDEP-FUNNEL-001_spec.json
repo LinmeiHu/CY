@@ -1,0 +1,168 @@
+{
+  "experiment_id": "ASHARE-INDEP-FUNNEL-001",
+  "status": "FROZEN_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "purpose": "Cheap, strategy-independent discovery screen across economically distinct long-only A-share families, followed by executable translation only for families that pass fixed promotion gates.",
+  "claim_boundary": "EXPLORE_ONLY_CONSUMED_2018_2023_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  },
+  "research_window": {
+    "start": "2018-01-02",
+    "end": "2023-12-29",
+    "blocks": {
+      "early_2018_2020": ["2018-01-02", "2020-12-31"],
+      "late_2021_2023": ["2021-01-01", "2023-12-29"]
+    },
+    "confirmation_status": "ALL_YEARS_CONSUMED_DEVELOPMENT",
+    "decision_schedule": "Every fifth CY-006 market session after the first 120 sessions; completed 15:00 close only.",
+    "signal_clock": "trade_date 15:00 Asia/Shanghai",
+    "entry_clock": "immediately following market session open; skip when that open is not executable"
+  },
+  "population": {
+    "security_scope": "All .SH/.SZ securities present in exact CY-006 history; no current-survivor list.",
+    "eligibility": [
+      "hard_valid and all required component validity flags",
+      "available_at <= decision_at on the completed signal session",
+      "trade_status=1 and current_day_data_tradable=true on signal session",
+      "is_st=false",
+      "no blocking corporate action and rights_ratio=0",
+      "120 consecutive causal action-coordinate steps",
+      "prior-20-session mean amount >= 50000000 CNY"
+    ],
+    "cross_sectional_selection": "Top 20 signal scores per decision date; bottom 20 retained as diagnostic where the score has full cross-sectional support.",
+    "matched_control": "Twenty deterministic hash-ranked eligible securities on each decision date.",
+    "capacity_participation_fraction": 0.05
+  },
+  "coordinate_contract": {
+    "price_basis": "raw unadjusted CY-006 OHLC mapped through the existing causal corporate-action coordinate",
+    "ordinary_step": "ln(close_t/close_t-1)",
+    "visible_action_step": "ln(close_t / ((close_t-1-cash_per_share_t)/share_multiplier_t))",
+    "action_requirements": "action known by trade_date, rights_ratio=0, positive multiplier and adjusted prior close; otherwise fail closed",
+    "signal_features": "use only rows through the signal close",
+    "screen_response": "next-session executable open to h5/h20 completed-session close, with visible cash/share actions and fixed round-trip costs",
+    "executable_exit": "time exit decided after the natural holding-session close and filled at the following first sell-executable open"
+  },
+  "families": {
+    "momentum_60": {
+      "mechanism": "medium-horizon price persistence",
+      "score": "causal action-coordinate log return over 60 sessions",
+      "event_filter": "none",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "bottom"
+    },
+    "short_reversal_5": {
+      "mechanism": "short displacement mean reversion",
+      "score": "negative causal action-coordinate log return over 5 sessions",
+      "event_filter": "none",
+      "natural_horizon_sessions": 5,
+      "diagnostic_leg": "bottom"
+    },
+    "breakout_60": {
+      "mechanism": "objective resistance clearance and continuation",
+      "score": "coordinate close divided by prior-60-session coordinate high minus one",
+      "event_filter": "score > 0",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "none"
+    },
+    "failed_breakdown_20": {
+      "mechanism": "downside level penetration followed by same-session recovery",
+      "score": "penetration below prior-20 low plus closing recovery above that low",
+      "event_filter": "coordinate low < prior-20 low and coordinate close > prior-20 low",
+      "natural_horizon_sessions": 5,
+      "diagnostic_leg": "none"
+    },
+    "demand_volume_shock": {
+      "mechanism": "positive price response confirmed by unusual activity",
+      "score": "one-session action-coordinate return multiplied by ln(volume/prior-20 mean volume)",
+      "event_filter": "one-session return > 0 and volume > prior-20 mean volume",
+      "natural_horizon_sessions": 5,
+      "diagnostic_leg": "none"
+    },
+    "compression_breakout": {
+      "mechanism": "range compression followed by objective expansion",
+      "score": "negative prior-20 coordinate range plus close clearance over prior-20 high",
+      "event_filter": "prior-20 range cross-sectional percentile <= 0.20 and coordinate close > prior-20 high",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "none"
+    },
+    "industry_rotation_20": {
+      "mechanism": "PIT industry leadership persistence",
+      "score": "leave-one-out industry mean 20-session action-coordinate return",
+      "event_filter": "known valid PIT industry with at least five other eligible constituents",
+      "natural_horizon_sessions": 20,
+      "diagnostic_leg": "bottom"
+    }
+  },
+  "screen": {
+    "response_horizons_sessions": [5, 20],
+    "costs_per_side_bps": [20],
+    "reported_periods": ["full", "early_2018_2020", "late_2021_2023", "calendar_year"],
+    "metrics": [
+      "count",
+      "mean_return",
+      "median_return",
+      "positive_fraction",
+      "p10",
+      "p90",
+      "severe_loss_fraction_le_minus_10pct",
+      "mean_adverse_excursion",
+      "mean_excess_vs_date_control",
+      "signal_dates",
+      "candidate_breadth",
+      "entry_executability",
+      "liquidity_and_capacity"
+    ]
+  },
+  "promotion": {
+    "maximum_families": 3,
+    "ranking_key": "minimum early/late natural-horizon net mean excess versus date control, then full excess",
+    "all_required": {
+      "minimum_complete_top_outcomes": 500,
+      "minimum_signal_dates_each_block": 40,
+      "minimum_entry_executable_fraction": 0.90,
+      "minimum_full_natural_net_excess": 0.0025,
+      "minimum_each_block_natural_net_excess": 0.0,
+      "minimum_positive_calendar_years": 4,
+      "maximum_severe_loss_disadvantage_vs_control": 0.02,
+      "minimum_median_event_candidates_per_date": 20
+    }
+  },
+  "executable_translation": {
+    "selected_names_per_signal": 10,
+    "initial_capital_cny": 10000000,
+    "costs_per_side_bps": [20, 30],
+    "cohort_allocation": "min(cash, NAV / ceil(natural_horizon_sessions/5))",
+    "same_open_order": "apply visible actions, then eligible exits, then next-open entries",
+    "entry": "next market open only; blocked or invalid names are skipped and cohort capital is redistributed across executable names",
+    "exit": "first sell-executable open after natural holding close; blocked exits wait without lookahead",
+    "position_model": "cohort and symbol lots remain separate; no leverage and no shorting",
+    "reported_metrics": [
+      "total_return",
+      "annualized_return",
+      "maximum_drawdown",
+      "daily_sharpe",
+      "turnover",
+      "entries",
+      "blocked_exit_delays",
+      "invested_fraction",
+      "capacity_at_5pct_amount"
+    ]
+  },
+  "prohibited": [
+    "no post-2023 data or metadata",
+    "no CY-011 access",
+    "no threshold, horizon, family, bundle, or cost search after outcomes",
+    "no habitat or regime rescue",
+    "no CHINEXT RS-veto or minute-volatility-overlay tuning, validation, or combination",
+    "no same-bar fill",
+    "no strict PIT-A, OOS, validation, live, or causal-mechanism claim",
+    "no promotion of a family that misses any frozen gate"
+  ]
+}

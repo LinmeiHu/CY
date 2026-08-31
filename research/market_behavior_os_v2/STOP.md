@@ -2,6 +2,13 @@
 
 Status: `NO_ACTIVE_STOP`.
 
+ASHARE-INDEP-FUNNEL-001 is a completed meaningful-batch checkpoint, not a
+global STOP. Seven independent families were screened and none passed every
+frozen executable-promotion gate. PIT industry rotation is a risk-gate near
+miss; the other exact formulations are killed or parked. No experiment is left
+running, no Stage-2 replay is owed under the frozen contract, and the next
+research unit must be separately specified.
+
 `MKT-FORMDEPTH-MINX-001` is `WAITING_RESOURCE`, not a program STOP. The lean
 research loop continues on scientifically independent daily/PIT work. Its exact
 analysis was retried once and failed closed before the first minute batch at

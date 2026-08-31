@@ -27,3 +27,16 @@ now pass fixed executable replay gates: an RS-acceleration selection veto inside
 the breakout seed and a minute-volatility defensive exposure overlay. Neither
 has independent confirmation. Dispersion/relative value remains the sole
 genuinely new research archetype and stays resource-parked.
+
+## Independent-funnel status overlay
+
+| Archetype | New standalone evidence | Updated map status |
+|---|---|---|
+| Industry rotation | Top PIT industry leadership produces +1.003% full h20 net excess, positive in both blocks and 4/6 years, but severe losses are +2.497 pp worse than control | `EXPLORE_NEAR_PROMOTION_RISK_FAIL`; no executable rule |
+| Mean reversion | Fixed five-session reversal is -0.275% versus control in both blocks; failed-breakdown recovery is null | `EXACT_SCREENS_REJECTED_BROADER_FAMILY_OPEN` |
+| Breakout / trend continuation | Fixed objective breakout and 60-session momentum are -2.710%/-2.259% with materially worse downside | `INDEPENDENT_EXACT_SCREENS_REJECTED`; existing CHINEXT seed semantics unchanged |
+| Compression to expansion | Full effect is -0.048% and changes from -0.506% early to +0.276% late | `PARKED_MIXED_CHRONOLOGY` |
+| Demand / activity shock | Fixed positive return-volume confirmation is -0.840% with worse downside | `EXACT_SCREEN_REJECTED_BROADER_FAMILY_OPEN` |
+
+No genuinely new archetype is created. Industry rotation was already mapped and
+now has positive standalone evidence, but it fails the preregistered risk gate.

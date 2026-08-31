@@ -1872,3 +1872,31 @@ specs, runners, tests, reports, and OS state are the commit surface.
 This prior next decision is superseded by the latest checkpoint at the top of
 this file. MKT-DISP-RANK remains resource-parked; MKT-FORMDEPTH-MINX remains
 waiting for its unchanged RAM condition.
+
+## Latest authoritative handoff — independent A-share funnel
+
+Resume after the commit containing ASHARE-INDEP-FUNNEL-001; its starting
+checkpoint was `e9fba2b030`. Do not restart its seven-family 2018--2023 screen.
+The exact CY-006 manifest is `de8795f2...`; post-2023 and CY-011 remain unread.
+
+The one shared weekly panel covers 267 decision dates and 34,637 top candidates.
+Industry rotation is the only positive two-block family (+1.003% full h20 net
+excess, +1.396% early, +0.661% late, four positive years), but its severe-loss
+disadvantage is +2.497 points versus the frozen +2.000-point maximum. It is a
+near miss, not a promoted strategy. No family passed every gate and therefore
+no executable translation was run. Do not change that by loosening the gate,
+choosing a neighboring horizon, or adding a habitat after the result.
+
+Failed breakdown is null; compression breakout reverses by block; short
+reversal is negative; demand-volume shock, medium momentum, and breakout
+continuation are negative with worse downside. Preserve these as exact-screen
+decisions while leaving broader families open. The panel/summary hashes are
+`e4661dd7...`/`e3aa5935...` on both completed runs. Three focused tests and lint
+pass.
+
+The next highest-value unit is a separately frozen risk-first industry-rotation
+translation with fixed cross-industry diversification. It may test whether the
+current severe-loss failure comes from concentrated implementation, but may not
+search thresholds, horizons, habitats, or claim confirmation. The fixed
+CHINEXT RS veto remains `PROMISING_ADMISSION_COMPONENT`; the minute-volatility
+overlay remains `DOWNGRADED_COST_SENSITIVE_RISK_OVERLAY`.

@@ -1955,3 +1955,51 @@ The fixed RS-acceleration veto remains `PROMISING_ADMISSION_COMPONENT`, not a
 validated strategy or habitat predictor. No threshold, lookback, exposure, or
 model search is authorized. No post-2023 or CY-011 row entered this cycle; both
 periods remain consumed development history.
+
+## 2026-08-31 independent A-share strategy-family discovery checkpoint
+
+ASHARE-INDEP-FUNNEL-001 starts from `e9fba2b030` and leaves both frozen CHINEXT
+components unchanged. One hash-bound CY-006 panel screens seven economically
+distinct long-only A-share families on 267 weekly decision dates from
+2018-07-09 through 2023-12-27. Signal features use completed 15:00 data only;
+responses enter at the following executable open, preserve causal corporate
+actions, and apply 20 bps per side. All 2018--2023 years are consumed
+development history, not OOS or validation.
+
+PIT industry-rotation persistence is the sole positive standalone lead. Its
+top-20 h20 net excess versus same-date controls is +1.003% full, +1.396% in
+2018--2020, and +0.661% in 2021--2023, with four of six positive years and a
++1.268% top-minus-bottom spread. It nevertheless increases severe-loss
+incidence by 2.497 percentage points versus the fixed allowed maximum of 2.000
+points. Preserve the near miss: `SCREEN_ONLY_NO_PROMOTION`. Do not loosen the
+risk gate or call the result an executable strategy.
+
+The other exact screens do not advance. Failed-breakdown recovery is
+economically null (+0.004% full h5 excess); compression-breakout reverses from
+-0.506% early to +0.276% late; short reversal is negative in both blocks;
+demand-volume shock, medium momentum, and objective breakout continuation are
+materially negative and have worse downside. These decisions reject only the
+frozen formulations, not every broader reversal, compression, demand, trend,
+or breakout mechanism.
+
+No family passes all fixed promotion gates, so no Stage-2 executable replay is
+run. This is an affirmative governance result, not missing work. The shared
+candidate panel (`e4661dd7...`) and summary (`e3aa5935...`) reproduce exactly;
+three focused tests and lint pass. The compact panel contains 34,637 selected
+top rows backed by 1,102,800 exact future-path joins. CY-011 and post-2023 data
+remain unread, and no CHINEXT rule changes.
+
+The ranked next frontier is a separately frozen, risk-first industry-rotation
+translation question: determine whether fixed cross-industry diversification,
+rather than a looser signal threshold or a habitat filter, can preserve the
+two-block leadership effect without the severe-loss disadvantage. It must not
+be called independent confirmation because no untouched time remains.
+
+What market behavior are we still not studying? Signal-time intraday supply and
+demand within independent stock families, non-price fundamental revision,
+order-book pressure, borrow-feasible short legs, and genuinely untouched
+temporal confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Industry rotation was already in the archetype map; this cycle supplies the
+first positive standalone stock-selection screen but fails its frozen risk gate.

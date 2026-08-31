@@ -199,3 +199,13 @@ drawdown and Sharpe improve at both costs, but the development return benefit is
 immaterial at 20 bps and negative at 30 bps. Do not tune it. The unchanged RS
 overextension veto is the sole `PROMISING_ADMISSION_COMPONENT`, still inside the
 existing breakout seed and still blocked at independent confirmation.
+
+ASHARE-INDEP-FUNNEL-001 reallocates the active independent frontier to PIT
+industry rotation, but only at `EXPLORE_NEAR_PROMOTION_RISK_FAIL`. Its h20 net
+excess is positive in both consumed blocks and its top-minus-bottom spread is
++1.268%, while the +2.497-point severe-loss disadvantage misses the fixed
++2.000-point gate. No executable replay is authorized. Failed breakdown is
+null; compression reverses by block; the other four exact independent families
+are negative. The cheapest next decision is one frozen cross-industry-
+diversified translation designed to test concentration risk—not a threshold,
+horizon, habitat, or CHINEXT combination search.
