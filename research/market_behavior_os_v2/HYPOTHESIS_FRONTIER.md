@@ -2,7 +2,7 @@
 
 | Rank | Market question | Mechanism value | Novelty/diversification | PIT/data feasibility | Falsifiability | Cost/mining risk | Decision |
 |---:|---|---|---|---|---|---|---|
-| 1 | Can full-market objective prior-high crossing opportunity be represented as participation, industry diffusion, closing acceptance breadth, and concentration distinct from existing breadth? | Very high | Very high | Governed CY-006 daily universe/action facts; full-population coordinate architecture required | Very high | Medium-high | ACTIVE_MAP_FIRST_MKT_BREAKOUT_DIFF_001 |
+| 1 | Do the seven stable full-market objective-crossing levels have portable economic return/downside meaning, and do de-clustered up/down crossings add information beyond current level? | Very high | Very high | Frozen 11,296-cell PIT/action-coordinate response domain; exact event and null contract | Very high | Medium-high | ACTIVE_MKT_BREAKOUT_ECON_001 |
 | 2 | Do volatility contraction/expansion transitions differ conditional on accepted direction and discovery breadth? | Low after temporal closure | High | Four volatility roles and direction/discovery freeze | Complete | Extreme rescue risk | CLOSED_ZERO_OF_THREE_NO_HORIZON_OR_HABITAT_RESCUE |
 | 3 | Do residual tail balance and concentration have replicating temporal meaning beyond broad risk/concentration state? | Low after temporal closure | High | Frozen panel and controls | Complete | Extreme rescue risk | CLOSED_ZERO_OF_FOUR_NO_HORIZON_RESCUE |
 | 4 | Does immediate rank-rotation persistence survive delayed non-shared-endpoint and Kendall/displacement replication? | Low after falsification | High | Frozen panels; state responses only | Complete | Extreme rescue risk | CLOSED_EXACT_MECHANISM_FAIL_NO_HORIZON_RESCUE |
@@ -388,3 +388,10 @@ to resistance. The active frontier is a map/data-contract-first future broad-
 market response study of the seven stable objective-crossing levels, with exact
 1/3/5-session causal return/downside semantics, nonoverlap, fixed controls, and
 no strategy outcome access.
+
+MKT-BREAKOUT-ECON-DATA-001 passes that frozen response domain twice. The active
+experiment is MKT-BREAKOUT-ECON-001: first estimate fixed PIT/raw state level
+effects, then de-clustered up/down event increments beyond 0.05-caliper current-
+level controls, then only qualifying candidates receive fixed confound and
+placebo audits. No threshold, horizon, direction, match, or score rescue is
+permitted. Strategy-habitat research remains closed until an economic gate passes.

@@ -134,3 +134,12 @@ Conservatively applying 2.0 million rows/second to 1,486,577,999 rows yields
 serialization, and analysis retain a large margin inside the 90-minute ceiling.
 The required scale is approved with the one-date batch, 8 GiB system-headroom,
 and 3 GiB hard-RSS rules unchanged.
+
+MKT-BREAKOUT-ECON-DATA-001 reads the same six governed CY-006 partitions and the
+bound 11,336-row predictor panel. The simultaneous five-way future join correctly
+failed at the unchanged 1.5-GiB DuckDB limit. The accepted plan retains and
+narrows the exact coordinate table, joins one future step at a time by event year,
+and drops each security response table after aggregation. Both complete runs stay
+inside the frozen 1.5-GiB DuckDB, 3-GiB RSS, 8-GiB headroom, 10-GiB spill,
+20-GiB read, 20-minute, and 100-MiB durable-output ceilings. Durable artifacts are
+compact and byte-identical; no security-level response table is retained.

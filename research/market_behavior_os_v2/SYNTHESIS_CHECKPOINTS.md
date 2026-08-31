@@ -2062,3 +2062,48 @@ downside responses, response availability, nonoverlap phases, current trend/
 breadth/volatility controls, reused blocks, and neighboring-horizon no-rescue
 gates before reading any response. This is market behavior, not a trading
 backtest. Strategy outcomes, fills, post-2023 data, and CY-011 remain prohibited.
+
+## SYNTH-MKT-046 — after objective-crossing response-domain construction
+
+### What was learned?
+
+The seven parent state series can be joined to a strict fixed-cohort 1/3/5-session
+action-coordinate market response without post-2023 data, outcome imputation, or
+resource relaxation. All domain gates pass twice. This is response feasibility,
+not evidence that any level or crossing is economically meaningful.
+
+The exact numerical audit also learned a reusable coordinate fact: evaluating
+mapped low as `C * (low / close)` preserves an exact raw low/close equality,
+whereas `(C * low) / close` can overshoot by one ULP. The correction was frozen
+before any state/outcome estimator and uses neither clipping nor tolerance.
+
+### What market behavior are we still not studying?
+
+We still do not know whether objective formation participation, depth, closing
+acceptance/rejection, diffusion, concentration, or stock/industry divergence
+precedes broad return or downside. We do not know whether crossing causal PIT
+0.50 adds information beyond merely occupying the same current level, whether
+up and down differ, or whether any effect ports across years. Order flow,
+stock-setup interaction, execution, and capacity also remain unstudied here.
+
+### Has any discovered mechanism implied a genuinely new strategy archetype?
+
+No. A valid response domain is not an economic mechanism. Breakout continuation,
+failed-breakout reversal, and market-risk veto archetypes remain inactive.
+CHINEXT V1 remains unchanged and CY-011 remains locked.
+
+### Parallel-track awareness
+
+- **Market research:** execute the frozen unconditioned level-versus-transition
+  economic-response study, then apply fixed controls and placebo only as specified.
+- **Existing-strategy archaeology:** remains closed until a market state passes
+  the independent economic gate.
+- **Strategy invention:** no archetype promotion from descriptive levels or data
+  feasibility.
+
+### Research Director decision
+
+`EXECUTE_MKT_BREAKOUT_ECON_001`. Preserve the exact seven roles, raw/PIT semantic
+labels, 0.50 transition boundary, five-opposite-session episode, 0.05 local match,
+1/3/5 horizon family, annual/block/leave-one-year-out/nonoverlap gates, and fixed
+null. Do not inspect CHINEXT or strategy outcomes unless a role passes.

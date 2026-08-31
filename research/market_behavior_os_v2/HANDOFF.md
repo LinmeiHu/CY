@@ -2,6 +2,37 @@
 
 Updated 2026-08-31.
 
+## Latest checkpoint: MKT-BREAKOUT-ECON-DATA-001
+
+The next-frontier economic-response map `ef8ccea2...` and final data contract
+`1b3a058a...` are frozen. They fix all seven parent L20 roles, causal PIT-3y 0.50
+up/down crossings, a five-opposite-session episode rule, PIT 0.20/0.80 level
+tails, same-level local matching, 1/3/5 horizons with h=3 primary, annual/block/
+leave-one-year-out/nonoverlap evaluation, two fixed controls, and a 200-shift
+temporal null. No threshold, direction, horizon, caliper, or null may change after
+outcomes are seen.
+
+MKT-BREAKOUT-ECON-DATA-001 passes the exact response-domain gates twice with
+byte-identical panel `aaf67e12...`, count audit `5770d29d...`, scalar audit
+`9c961c92...`, result `2bae2c9a...`, and report `ea877c8a...`. The panel has
+11,296 complete cells, minimum cohort retention 0.973090, 203 minimum dates per
+view/denominator/year, and no response after 2023-12-29. Five scalar cases across
+15 coordinate/response fields are exact.
+
+The first implementation correctly stopped on a dropped temporary coordinate
+table, then on a 1.5-GiB five-way-join plan. The final runner retains the exact
+accepted coordinate table, narrows it, and processes one future step and one event
+year at a time without changing science. A later conservation diagnostic found
+only 2.8e-16 mapped-low ULP violations when raw low equaled close. Before any
+economic estimate, the formula was made operationally exact as
+`C * (low / close)` and independently scalar-reconstructed; no clipping or
+tolerance was introduced.
+
+No relationship between a state and a response has yet been measured. The next
+action is the separately frozen MKT-BREAKOUT-ECON-001 estimator. Do not inspect a
+favorable direction informally, change the fixed gate, use strategy outcomes, or
+open CY-011.
+
 ## V2.1 resume identity
 
 - Exact starting checkpoint: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`.

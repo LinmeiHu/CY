@@ -8,13 +8,29 @@ Updated 2026-08-31.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.1`
 - `CURRENT_BASELINE`: `6ee0fb87cf611db8a5f79eb581e23ce92f82cff8`
-- `CURRENT_PHASE`: `SYNTH-MKT-045_MAP_OBJECTIVE_BREAKOUT_FUTURE_MARKET_RESPONSE_CONTRACT`
-- `CURRENT_PRIMARY_FRONTIER`: data-contract-first strategy-independent future broad-market response to seven stable objective-crossing levels
+- `CURRENT_PHASE`: `MKT-BREAKOUT-ECON-001_FROZEN_READY_FOR_ECONOMIC_ESTIMATION`
+- `CURRENT_PRIMARY_FRONTIER`: preregistered level-versus-transition 1/3/5-session broad-market return/downside response to seven stable objective-crossing levels
 - `SUPPORTING_FRONTIER`: rally-effort distribution is preserved as a stable manifestation but not a direct engine dimension; no strategy outcome or CY-011 access
 - `CURRENT_STRATEGY_CANDIDATE`: `NONE`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
+
+## Current continuation state
+
+- `CURRENT_HEAD_AT_RESUME`: `97b381e41f4af0b6d49be8d143e14c5ca7459b3d`
+- `CURRENT_SCIENTIFIC_LAYER`: `ECONOMIC_MARKET_BEHAVIOR_DATA_DOMAIN_COMPLETE; ESTIMATION_NOT_YET_RUN`
+- `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
+- `ECONOMIC_RESPONSE_STATUS`: `NOT_YET_ESTIMATED`
+- `LEVEL_VS_TRANSITION_STATUS`: `FROZEN_NOT_YET_ESTIMATED`
+- `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
+- `YEAR_BY_YEAR_RESULTS`: `NONE_YET`
+- `PLACEBO_RESULTS`: `NONE_YET`
+- `SUPPORTED_MARKET_STATES`: `NONE_YET`
+- `DESCRIPTIVE_ONLY_STATES`: seven parent levels retain descriptive status pending the economic gate
+- `STRATEGY_HABITAT_STATUS`: `NOT_OPEN; ECONOMIC_GATE_REQUIRED`
+- `CURRENT_MECHANISMS`: no economic mechanism established; seven stable descriptive state coordinates only
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does a fixed state level or a de-clustered crossing have portable return/downside meaning beyond current level?
 
 ## Scope correction installed
 
@@ -27,6 +43,27 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### MKT-BREAKOUT-ECON-DATA-001 response domain
+
+The economic-response map and data contract were frozen before any future
+state/outcome estimate. The seven raw ratios are absolute cross-year-comparable;
+causal trailing-756-session PIT percentiles are separately labeled historical
+normalizations; relative coordinates are audit-only. The sole transition boundary
+is PIT 0.50, with up/down directions separate and a five-opposite-session episode
+rule. Session 3 is primary; sessions 1 and 5 are mandatory neighbors. Current-level
+matching, annual/leave-one-year-out/nonoverlap tests, fixed breadth/volatility
+controls, and a 200-shift temporal null are preregistered.
+
+The response-domain build passes twice byte-identically. It binds the exact CY-006
+supported-action cohort to 1/3/5-session equal-weight terminal mean log return and
+mean constituent adverse log excursion. There are 11,296 complete cells from
+11,336 predictor cells, 5,516,705 ALL_A/ALL_STATUS response security-dates, minimum
+cohort retention 0.973090, and at least 203 dates per view/denominator/year. Only
+the final five 2023 event dates are ineligible; maximum response date is
+2023-12-29. Five scalar cases and 15 fields are exact. No state/outcome
+association, direction, role classification, strategy field, post-2023 row, or
+CY-011 field has been estimated or read.
 
 ### MKT-TRND-001 semantic boundary
 

@@ -1,0 +1,104 @@
+{
+  "claim": "RESPONSE_DOMAIN_ONLY",
+  "crossing_or_episode_estimates_computed": false,
+  "cy011_read": false,
+  "experiment_id": "MKT-BREAKOUT-ECON-DATA-001",
+  "hashes": {
+    "count_audit_sha256": "5770d29df64fa9590e0f505a77f9cd5906135d4b2800c9385af607180f39c2cc",
+    "panel_sha256": "aaf67e128f490e0594a529a296f23bd3e0207e7e47a3a42f9a0ec988f2c4fbbe",
+    "runner_sha256": "7c6f6ea7a4da037a494186490e6352b4a1959872b60723564518e3e6031bd796",
+    "scalar_audit_sha256": "9c961c9264c871bd89b4cc3e51a4d76d4a321baf64dfeddc99d3c31814c5e868",
+    "source_partitions": {
+      "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+    },
+    "spec_sha256": "251c9e3a386857ce61d7720e2d7f51554f916a3cf8dec782c9624f413ec6dbf0"
+  },
+  "population": {
+    "complete_response_cells": 11296,
+    "panel_rows": 11336,
+    "response_security_rows_all_a_all_status": 5516705
+  },
+  "post_2023_read": false,
+  "predictor_audit": {
+    "available_after_decision": 0,
+    "dates": 1417,
+    "denominators": [
+      "ALL_STATUS",
+      "NON_ST"
+    ],
+    "duplicate_keys": 0,
+    "first_date": "2018-03-06",
+    "last_date": "2023-12-29",
+    "rows": 11336,
+    "snapshot_ids": [
+      "CY-006:de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    ],
+    "views": [
+      "ALL_A",
+      "CHINEXT_BOARD",
+      "SH_A",
+      "SZ_A"
+    ]
+  },
+  "resource_contract": {
+    "dynamic_measurements_serialized": false,
+    "memory_limit_gib": 1.5,
+    "peak_rss_ceiling_gib": 3,
+    "status": "PASS",
+    "temporary_spill_ceiling_gib": 10,
+    "wall_clock_ceiling_minutes": 20
+  },
+  "response_domain": {
+    "all_pass": true,
+    "gates": {
+      "exact_five_ineligible_terminal_dates": true,
+      "finite_response_metrics": true,
+      "minimum_dates_each_view_denominator_year": true,
+      "minimum_response_retention": true,
+      "minimum_view_population": true,
+      "no_post_2023_consumption": true,
+      "only_terminal_dates_incomplete": true,
+      "ordered_quantiles_and_downside": true
+    },
+    "ineligible_terminal_dates": [
+      "2023-12-25",
+      "2023-12-26",
+      "2023-12-27",
+      "2023-12-28",
+      "2023-12-29"
+    ],
+    "max_consumed_date": "2023-12-29",
+    "minimum_response_dates_per_cell_year": 203,
+    "minimum_retention": 0.9730902777777778
+  },
+  "scalar_reconstruction": {
+    "all_exact": true,
+    "cases": 5,
+    "fields": 15
+  },
+  "source_audit": {
+    "duplicate_keys": 0,
+    "exchange_dates": 1457,
+    "first_date": "2018-01-02",
+    "hard_valid_ohlc_failures": 0,
+    "last_date": "2023-12-29",
+    "rows": 6155390,
+    "time_travel_rows": 0
+  },
+  "source_partitions": {
+    "partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+    "partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+    "partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+    "partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+    "partition_year=2022/data_0.parquet": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+    "partition_year=2023/data_0.parquet": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"
+  },
+  "state_outcome_estimates_computed": false,
+  "status": "COMPLETE_RESPONSE_DOMAIN_ADEQUACY",
+  "strategy_fields_read": []
+}
