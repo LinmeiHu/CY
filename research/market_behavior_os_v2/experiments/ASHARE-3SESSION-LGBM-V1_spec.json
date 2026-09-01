@@ -1,0 +1,22 @@
+{
+  "experiment_id": "ASHARE-3SESSION-LGBM-V1",
+  "status": "FROZEN_BEFORE_H3_OUTCOME_ACCESS",
+  "question": "Does the exact frozen 14:25 59-feature PIT state contain executable long-only cross-sectional alpha over three next-open-to-open intervals?",
+  "chronology": {"warmup": ["2013-01-04", "2013-12-31"], "development": ["2014-01-02", "2021-12-31"], "walk_forward_prediction_years": [2018, 2019, 2020, 2021], "validation_locked": ["2022-01-04", "2023-12-29"], "final_oos_locked_unread": ["2024-01-02", "2026-08-11"]},
+  "feature_contract": {"manifest": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_feature_manifest.json", "sha256": "a1d33981620289dd9090210cca281500ea09584abd797cdc556a515b8f78858e", "count": 59, "cutoff": "completed t 14:25 bar"},
+  "execution": {"entry": "exact t+1 legal buy open", "horizons": {"H1": "first legal sell open at or after entry open plus 1 trading interval", "H2": "first legal sell open at or after entry open plus 2 trading intervals", "H3": "first legal sell open at or after entry open plus 3 trading intervals"}, "cost_per_side": 0.002, "entry_failure": "cash; no replacement", "actions": "cash-only known actions accrue; share/rights/blocking paths fail closed", "portfolio": "Top-10 daily H3 LightGBM cohort, 1/30 NAV target per entry, overlapping lots, no replacement"},
+  "models": {"ridge": {"alpha": 10.0}, "lightgbm": {"objective": "regression_l2", "profile_source": "Tail-to-Open V1 medium", "num_leaves": 15, "max_depth": 4, "min_data_in_leaf": 300, "lambda_l1": 1.0, "lambda_l2": 10.0, "learning_rate": 0.03, "n_estimators_max": 2000, "feature_fraction": 0.8, "bagging_fraction": 0.8, "bagging_freq": 1, "seed": 20260901, "deterministic": true}, "prohibited": ["L1 objective", "profile search", "Optuna", "new model families", "ensembles"]},
+  "folds": [{"train_end": "2017-12-29", "predict_year": 2018}, {"train_end": "2018-12-28", "predict_year": 2019}, {"train_end": "2019-12-31", "predict_year": 2020}, {"train_end": "2020-12-31", "predict_year": 2021}],
+  "transparent_baselines": ["ret_prevclose_to_1425", "ret_1301_1425", "cutoff_vs_vwap_1425", "residual_vs_industry_1425", "ridge"],
+  "gate_audit": [
+    {"item": "PIT 14:25 feature manifest identity", "class": "HARD_VALIDITY", "basis": "prevents changed information set or later clock"},
+    {"item": "exact next-open buy and legal sell states", "class": "HARD_VALIDITY", "basis": "prevents same-bar/synthetic fills"},
+    {"item": "cash-only corporate-action lineage", "class": "HARD_VALIDITY", "basis": "share and rights coordinate changes are unsupported"},
+    {"item": "training outcome exits strictly before prediction block and final train signal embargo", "class": "HARD_VALIDITY", "basis": "prevents label overlap"},
+    {"item": "unchanged 20 bp per-side cost", "class": "ECONOMIC_PROMOTION", "basis": "existing canonical friction, not tuned"},
+    {"item": "H3 net portfolio economics and chronology", "class": "ECONOMIC_PROMOTION", "basis": "the stated economic target; no numerical IC/coverage/severe-loss threshold is introduced"},
+    {"item": "H1/H2 decay, IC, tails, severe loss, concentration and capital utilization", "class": "MECHANISM_DIAGNOSTIC", "basis": "describes realization/risk and does not choose a new rule"},
+    {"item": "feature completeness, label counts, legal-entry coverage and deterministic hashes", "class": "ENGINEERING_COVERAGE", "basis": "identifies implementation failures rather than economic gates"}
+  ],
+  "boundaries": {"validation_opened": false, "final_oos_opened": false, "h3_labels_for_2021_signals_may_read_only_their_natural_early_2022_exit_path": true, "no_2022_or_2023_signal_rows_or_predictions": true}
+}
