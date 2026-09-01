@@ -2,6 +2,44 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: multi-timescale Industry Diffusion and daily alpha
+
+Resume after the commit containing
+`ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015`; its starting checkpoint is
+`2a2d307ec5`. The frozen weekly Industry Diffusion state and exact weekly
+Low-MAX strategy remain authoritative. Do not tune Low-MAX frequency, lookback,
+replacement threshold, holding life, industry allocation, or costs. All
+evidence is consumed 2018--2023 development history; post-2023 outcomes and
+CY-011 remain unread.
+
+The daily architecture preserves weekly industry states/counts and refreshes
+only exact prior-20-session Low-MAX preferences after completed closes. It uses
+slot-preserving next-open replacements; blocked replacements retain incumbents,
+and missing quality cross-sections never introduce quality-missing new names.
+The causal panel has 3,009,296 rows; the schedule has 52,600 rows and reproduces
+all comparable weekly initial selections.
+
+Daily ranks have mean/median one-session rho 0.947/1.000 and 87.60% selection
+overlap. They still request 4,898 replacements, while replacement-minus-rejected
+h1/h3/h5 is +0.001%/-0.063%/+0.052% and reverses across broad blocks. At 20 bps,
+daily refresh returns +49.24% versus +122.43% weekly, adds 278.30x turnover,
+and loses 0.299 Sharpe. At 40 bps it returns -29.22% with -0.144 Sharpe.
+Severe-loss incidence improves materially, but the frozen return, Sharpe,
+Calmar, high-cost, and alpha-per-turnover gates fail. Final Track-A status:
+`DAILY_REFRESH_DEGRADES_STRATEGY`. Preserve weekly refresh; do not rescue daily.
+
+Track B tests five distinct daily h1--h5 path hypotheses over 225,897 matched
+pairs. Compression-release acceptance is the strongest return diagnostic at
++0.254% h3 in both blocks, but improves h5 severe-loss incidence only 0.252 pp
+versus the required 1.00 pp. Gapless range, overnight/intraday alignment, and
+industry-shock recovery are weak information; broad-industry nonleader
+acceptance is mixed. Zero hypotheses promote and no replay or combination runs.
+
+Next capital should move away from summary-OHLCV neighboring definitions toward
+one bounded multi-family data contract or genuinely independent confirmation.
+Unopened behaviors remain order-book/queue pressure, investor-flow identity,
+borrow-feasible relative value, and immutable-vintage PIT fundamentals.
+
 ## Latest checkpoint: price-limit lifecycle and liquidity transitions
 
 Resume after the commit containing `ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014`;

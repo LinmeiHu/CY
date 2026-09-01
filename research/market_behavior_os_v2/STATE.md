@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `cedbb7bbf1` (start of frozen price-limit lifecycle and liquidity-transition cycle 014)
-- `CURRENT_PHASE`: `PRICE_LIMIT_LIFECYCLE_AND_LIQUIDITY_TRANSITION_STOPPED_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: The exact close-known price-limit lifecycle taxonomy is `NO_USEFUL_LIFECYCLE_INFORMATION`: stable acceptance is materially worse than failed acceptance, reopen/reseal, and late acceptance after bounded matching in both development blocks. The three frozen liquidity-transition hypotheses yield one weak sub-gate information result, one sign-adverse result, and one chronological reversal. No early proxy or executable replay is authorized
+- `CURRENT_BASELINE`: `2a2d307ec5` (start of frozen multi-timescale Industry Diffusion and daily-alpha cycle 015)
+- `CURRENT_PHASE`: `MULTISCALE_DIFFUSION_DAILY_REFRESH_REJECTED_DAILY_ALPHA_NO_PROMOTION`
+- `CURRENT_PRIMARY_FRONTIER`: Daily Low-MAX refresh inside the exact frozen weekly Industry Diffusion state is `DAILY_REFRESH_DEGRADES_STRATEGY`: it adds 278.30x initial-capital turnover at 20 bps, loses 73.19 percentage points of total return versus weekly Low-MAX, and becomes negative at 40 bps. Five distinct daily h1--h5 screens produce weak information but zero frozen-gate promotions and no replay
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Cycle 014 authorizes no price-limit or liquidity-transition strategy, early proxy, sign inversion, or combination. All preserved components remain unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Preserve weekly Industry Diffusion plus weekly Low-MAX unchanged; daily Low-MAX refresh, all five Cycle-015 daily paths, Cycle-014 lifecycle/liquidity, and Cycle-013 propagation authorize no new strategy
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `cedbb7bbf1`
-- `CURRENT_SCIENTIFIC_LAYER`: `PRICE_LIMIT_LIFECYCLE_COMPLETE; LIQUIDITY_TRANSITION_SCREEN_COMPLETE; EARLY_PROXY_AND_REPLAYS_LOCKED`
+- `CURRENT_HEAD_AT_RESUME`: `2a2d307ec5`
+- `CURRENT_SCIENTIFIC_LAYER`: `MULTISCALE_REFRESH_COMPLETE; DAILY_ALPHA_SCREEN_COMPLETE; NO_DAILY_REPLAY_AUTHORIZED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: the registered-data price-limit lifecycle and liquidity-transition frontiers are now closed in their exact forms. Prioritize lawful independent confirmation or a bounded data contract that unlocks several genuinely new mechanisms (order-book/queue, investor-flow identity, borrow-feasible relative value, or immutable-vintage fundamentals), not neighboring lifecycle/transition thresholds.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: registered daily summary-price/volume neighbors now have low incremental headroom. Prioritize lawful independent confirmation or one bounded data contract that unlocks several genuinely new mechanisms (order-book/queue, investor-flow identity, borrow-feasible relative value, or immutable-vintage fundamentals), not another Low-MAX frequency, daily path threshold, or lifecycle taxonomy.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,32 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-015 multi-timescale Industry Diffusion and daily alpha
+
+The exact weekly Industry Diffusion state, industry counts, prior-20-session
+Low-MAX definition, and 20-session lifecycle were held fixed. The only new
+architecture refreshed Low-MAX stock preferences after each completed close,
+with slot-preserving next-open replacements and no full liquidation or weight
+rebalance. Its 3,009,296-row causal daily panel and 52,600-row schedule preserve
+the initial weekly selections for every executable cohort.
+
+Low-MAX ranks are persistent (mean one-session rho 0.947; 87.60% selection
+overlap), but 4,898 preferred replacements are requested. The new-minus-rejected
+half-life is +0.001%/-0.063%/+0.052% at h1/h3/h5 and reverses across broad
+blocks: `NONPORTABLE_DAILY_CHURN`.
+
+At 20 bps per side, daily refresh returns +49.24% versus +122.43% weekly,
+Sharpe falls 0.299, and turnover rises 278.30x initial capital. At 40 bps it
+returns -29.22% with -0.144 Sharpe. Tail incidence improves, concentration is
+unchanged, and p10 capacity retains 77.95%, but every return-quality/complexity
+gate fails. Classification: `DAILY_REFRESH_DEGRADES_STRATEGY`.
+
+Five daily h1--h5 path hypotheses screen 225,897 matched pairs. Four show weak
+positive information and one is mixed, but none meets the frozen return,
+chronology, and severe-loss promotion gate. No daily replay or combination is
+authorized. All evidence is consumed 2018--2023 development history; post-2023
+outcomes and CY-011 remain unread.
 
 ### Cycle-014 price-limit lifecycle and liquidity transitions
 

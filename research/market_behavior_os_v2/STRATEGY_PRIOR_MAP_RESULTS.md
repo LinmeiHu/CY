@@ -1,5 +1,20 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Cycle-015 multi-timescale Industry Diffusion and daily alpha
+
+| Family | Frozen mechanism | Evidence | Executable evidence | Classification |
+|---|---|---|---|---|
+| Weekly Industry Diffusion + daily Low-MAX | Preserve weekly industry state/counts; refresh exact prior-20 MAX ascending after each close with slot-preserving next-open replacement | 4,898 requested changes; rank rho 0.947; replacement h3 -0.063%, negative both blocks | 20 bps +49.24% vs weekly +122.43%, 488.82x turnover; 40 bps -29.22%, -0.144 Sharpe | `DAILY_REFRESH_DEGRADES_STRATEGY`; close |
+| Gapless range acceptance | Positive gapless expanded range closing near high | +0.111% h3, +0.029%/+0.153%; +0.573 pp h5 severe quality | No replay; frozen gate fails | `PROMISING_DAILY_INFORMATION` only |
+| Compression-release acceptance | Strong accepted expansion after prior five-session compression | +0.254% h3, +0.193%/+0.293%; +0.252 pp h5 severe quality | No replay; tail gate fails | `PROMISING_DAILY_INFORMATION` only |
+| Overnight/intraday alignment | Positive gap and positive intraday continuation with accepted close | +0.138% h3, +0.273%/+0.004%; severe quality -0.664 pp | No replay | `PROMISING_DAILY_INFORMATION` only |
+| Broad-industry nonleader acceptance | Broad strong industry with positive nonleader acceptance | -0.056% h3, -0.208%/+0.058% | No replay | `CHRONOLOGICALLY_MIXED` |
+| Industry-shock recovery confirmation | Stock-specific lag inside strong industry followed by accepted close | +0.113% h3, +0.196%/+0.054%; +0.951 pp h5 severe quality | No replay; return floor fails | `PROMISING_DAILY_INFORMATION` only |
+
+No daily family promotes, no combination runs, and no result is independent
+confirmation. Preserve the exact weekly Low-MAX construction; do not interpret
+weak screen information as a daily strategy.
+
 This outcome ledger updates the research status of the immutable pre-outcome
 definitions in `STRATEGY_PRIOR_MAP.md`. The frozen map remains byte-stable
 because the experiment specification binds its SHA-256. External source

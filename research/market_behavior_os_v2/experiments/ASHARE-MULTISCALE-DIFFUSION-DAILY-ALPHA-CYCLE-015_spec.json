@@ -1,0 +1,101 @@
+{
+  "experiment_id": "ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015",
+  "status": "FROZEN_ARCHITECTURES_CHURN_HALFLIFE_AND_DAILY_HYPOTHESES_BEFORE_FORWARD_OUTCOMES",
+  "starting_checkpoint": "2a2d307ec5",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "construction_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_spec.json", "sha256": "0d9f809a9e19bd000f559c4c64cb73e7f6010883b82ebc4f625c9ba845c11ac0"},
+    "construction_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_result.json", "sha256": "cbe122ec339c7b9524fdef1bb01fb77b44f536ff8355d9a9ef9b8cfac7765283"},
+    "construction_panel": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_candidate_attribution.csv", "sha256": "91eb1c43b96d2edb4342ddf7757a5b7c4d244f7b40cf18c5946690d6138af097"},
+    "construction_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py", "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"},
+    "low_max_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_spec.json", "sha256": "f4681932f50b8b54bbbe03ca334c94098afc7a9f84b4ddd25233b1d5cca830a3"},
+    "low_max_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json", "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"},
+    "low_max_equity": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_cost_equity.csv", "sha256": "fad6414f337e38bef8ee6336e308bef9039360b7853496f7a0930bcd9f317510"},
+    "low_max_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_low_max_confirmation_cycle_012.py", "sha256": "c848c9c20695238267f26d2c2f349db366dd2faddaf8dac75fdf40da09ebf21e"},
+    "execution_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
+    "execution_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py", "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"}
+  },
+  "common": {
+    "sample": "2018-01-02 through 2023-12-29 only",
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "decision_at": "completed day t close, 15:00 Asia/Shanghai; daily row available_at must be no later than decision_at",
+    "first_order": "next legal session open only; no same-close execution",
+    "cost_per_side": [0.002, 0.003, 0.004],
+    "severe_loss": -0.10,
+    "capacity": "accepted 5 percent of opening-day traded amount semantics",
+    "execution": "T+1, buy/sell price-limit blocks, suspensions, hard-valid rows, and QD-010 pre-effective exits preserved"
+  },
+  "track_a": {
+    "architecture_a": "exact frozen weekly Industry Diffusion plus weekly Low-MAX replay at each matched cost",
+    "architecture_b": {
+      "industry_clock": "each exact weekly cohort retains its frozen signal-date PIT industry counts and original 20-session expiry; industry state is never recomputed between weekly dates",
+      "quality": "exact maximum causal corporate-action-coordinate daily log return over the 20 sessions ending at completed day t close; lower is better",
+      "daily_preference": "within each active cohort and frozen industry count, select the lowest exact Low-MAX names from the day-t eligible PIT industry universe; existing selected names win only exact-score ties by symbol",
+      "transition": "at next open retain every incumbent still preferred; pair removed incumbents and newly preferred names deterministically by symbol; replace only when the incumbent is legally sellable and the target legally buyable at that same open",
+      "blocked_replacement": "retain incumbent and reconsider from the next completed close using the latest desired set; never sell first and leave an avoidable empty slot",
+      "insufficient_quality_universe": "if fewer quality-valid daily alternatives exist than a frozen industry slot count, retain prior preferred incumbents for the unfilled slots; never introduce a quality-missing new name and never alter the industry count",
+      "t_plus_one": "a day-t-close replacement fills no earlier than t+1 open; a lot bought at t+1 open cannot be selected for sale before the t+1 close decision and therefore cannot fill before t+2 open",
+      "initial_entry": "same weekly Low-MAX selection and next-open cohort-capital rule as Architecture A; unexecutable initial slots are not later backfilled",
+      "forced_exit": "accepted QD-010 pre-effective forced exits permanently close the slot and are not refilled",
+      "expiry": "original cohort due open permanently closes every remaining lot; no replacement fills at or after expiry",
+      "weights": "slot value rolls from incumbent proceeds into replacement after matched sell/buy costs; no daily full liquidation or weight rebalance"
+    },
+    "churn": ["same-cohort-industry consecutive-day Low-MAX Spearman rank correlation", "desired-set overlap", "changed preferred fraction", "days with no desired change", "desired-selection episode duration", "executable replacement frequency", "pre-cost requested turnover"],
+    "half_life": {
+      "event": "a stock newly enters a cohort-industry preferred set while a prior preferred stock leaves",
+      "comparison": "newly preferred minus newly rejected next-legal-open net return",
+      "horizons": [1, 3, 5],
+      "classification": {"FAST_DECAY": "h1 positive and h3/h5 no larger", "MULTI_DAY_PERSISTENT": "h1/h3/h5 positive with h3 or h5 at least h1", "SLOW": "h1 nonpositive and h5 positive", "NONPORTABLE_DAILY_CHURN": "no coherent positive full/block path"}
+    },
+    "complexity_gate": {
+      "minimum_20bps_total_return_delta": 0.05,
+      "minimum_20bps_sharpe_delta": 0.05,
+      "minimum_20bps_calmar_delta": 0.05,
+      "minimum_20bps_drawdown_delta": -0.02,
+      "minimum_20bps_severe_improvement": 0.0,
+      "minimum_40bps_total_return_delta": 0.0,
+      "minimum_40bps_sharpe_delta": 0.0,
+      "minimum_total_return_delta_per_incremental_turnover": 0.001,
+      "maximum_industry_hhi_increase": 0.03,
+      "minimum_capacity_ratio": 0.70
+    },
+    "classification": ["DAILY_QUALITY_REFRESH_EARNS_COMPLEXITY", "WEEKLY_REFRESH_SUFFICIENT", "DAILY_REFRESH_COST_FRAGILE", "DAILY_REFRESH_DEGRADES_STRATEGY"]
+  },
+  "track_b": {
+    "hypotheses": {
+      "GAPLESS_RANGE_ACCEPTANCE": {
+        "event": "absolute overnight coordinate gap <=0.5%; current range / prior-20 median range >=2; daily return 1%-8%; close location >=0.80; no upper-limit touch",
+        "control": "same return/close/no-limit state with current range ratio 0.8-1.2",
+        "mechanism": "large intraday information assimilation without an overnight discontinuity"
+      },
+      "COMPRESSION_RELEASE_ACCEPTANCE": {
+        "event": "prior-5 median range / prior-20 median range <=0.65; current range ratio >=1.5; daily return 1%-8%; close location >=0.75; no upper-limit touch",
+        "control": "same current release/return/close state with prior compression ratio 0.9-1.1",
+        "mechanism": "directional release after objectively quiet price discovery"
+      },
+      "OVERNIGHT_INTRADAY_ALIGNMENT": {
+        "event": "positive overnight coordinate gap 1%-5%; open-to-close return >=1%; daily return 1%-8%; close location >=0.75; no upper-limit touch",
+        "control": "same daily return/close state with absolute overnight gap <=0.2% and positive open-to-close return",
+        "mechanism": "overnight information receives same-direction regular-session confirmation"
+      },
+      "BROAD_INDUSTRY_NONLEADER_ACCEPTANCE": {
+        "event": "leave-one-out industry mean return >=1%, positive-return breadth >=70%, stock return 0.2% through the leave-one-out mean, close location >=0.75, no limit touch",
+        "control": "same industry-date accepted positive stock with return at least one percentage point above the leave-one-out mean",
+        "mechanism": "broad industry demand may leave accepted nonleaders with short-lived catch-up"
+      },
+      "INDUSTRY_SHOCK_RECOVERY_CONFIRMATION": {
+        "event": "leave-one-out industry mean return >=1%, stock-minus-industry return <=-2%, close location >=0.60, no limit touch",
+        "control": "same industry-relative downside shock with close location <=0.30",
+        "mechanism": "close recovery independently confirms mean reversion after a one-day industry-relative shock"
+      }
+    },
+    "matching": "same decision date; exact PIT industry pool when nonempty then same-date fallback, nearest on daily return, log prior-20 amount, r20, and current range ratio using fixed scales [0.03,1,0.10,1]; outcomes excluded; deterministic symbol tie break; controls may be reused",
+    "outcomes": "next legal open to legal open h1/h3/h5, 20 bps per side, with unresolved corporate actions fail closed",
+    "promotion_all_required": {"minimum_complete_pairs": 1000, "minimum_dates_each_block": 100, "minimum_entry_coverage": 0.90, "minimum_h3_delta": 0.0025, "minimum_h3_delta_each_block": 0.0, "minimum_severe_improvement": 0.01},
+    "replay": "at most one passing family; daily top 10 events by frozen event-strength ordering, equal-weight cohort, next legal open, fixed h3 expiry; no alternative rule",
+    "classification": ["DAILY_STRATEGY_CANDIDATE", "PROMISING_DAILY_INFORMATION", "CHRONOLOGICALLY_MIXED", "ECONOMICALLY_NULL", "ADVERSE"]
+  },
+  "prohibited": ["post-2023 outcomes or metadata", "CY-011 access", "Industry Diffusion signal, weekly clock, industry allocation, horizon, or exposure change", "Low-MAX lookback, definition, orientation, tie break, or threshold change", "2-day, 3-day, twice-weekly, weekday, or other frequency test", "daily full liquidation or weight rebalance", "Low Idio, Low Vol-of-Vol, Low Skewness, revised momentum, VWAP, support, leader/follower minute, price-limit lifecycle, or liquidity-transition combination", "Track-B parameter, horizon, sign, control, Top-N, or action search", "Track-B replay before every frozen promotion gate", "PIT fundamentals, order-book, borrow, or investor-flow data", "OOS, independent-confirmation, validation, live, or production claim"]
+}

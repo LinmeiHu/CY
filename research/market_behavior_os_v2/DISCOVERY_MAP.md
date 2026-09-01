@@ -4,6 +4,29 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Cycle-015 multi-timescale and daily-alpha conclusions
+
+- Exact weekly Industry Diffusion plus weekly Low-MAX remains preferred. Daily
+  Low-MAX refresh is `DAILY_REFRESH_DEGRADES_STRATEGY`: +49.24% versus +122.43%
+  total return at 20 bps, -29.22% versus +71.34% at 40 bps, and 278.30x extra
+  turnover at 20 bps.
+- Daily rank persistence is high (rho 0.947; overlap 87.60%), but 4,898 desired
+  replacements have no portable h1/h3/h5 edge. The h3 replacement advantage is
+  -0.063% full and negative in both blocks.
+- Gapless range, compression release, overnight/intraday alignment, and
+  industry-shock recovery contain weak descriptive information; broad-industry
+  nonleader acceptance is mixed. None clears the frozen return/chronology/tail
+  gate, so no replay or combination is authorized.
+- Close the exact daily-refresh architecture and five exact daily screens. Do
+  not search neighboring frequencies, thresholds, holds, or portfolio roles.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Cycle 015 reinforces slow weekly selection and adds no new candidate.
+
 ## Ranked candidate pool
 
 | Rank | Family | Economic role and current effect | Funnel status | Cheapest useful next decision |
