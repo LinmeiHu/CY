@@ -1,0 +1,682 @@
+{
+  "boundaries": {
+    "final_oos_opened": false,
+    "lightgbm_refit": false,
+    "new_model_scoring": false,
+    "new_strategy_replay": false,
+    "ridge_refit": false,
+    "threshold_optimization": false,
+    "validation_opened": false
+  },
+  "classification": "ABSOLUTE_SCORE_RANKING_ONLY",
+  "input_identity": {
+    "date_range": [
+      "2018-01-02",
+      "2021-12-31"
+    ],
+    "label": {
+      "buy_cost_per_side": 0.002,
+      "corporate_actions": "reuse ASHARE-CA-REPLAY-003 known_at/effective_date rules; block known new risk, carry exact supported cash-only actions, require pre-effective risk exit for share/rights events, and fail closed on unresolved terms",
+      "cost_interpretation": "canonical all-in repository convention including applicable commission/tax/slippage allowance",
+      "formula": "(economic exit proceeds after sell cost)/(14:56 entry VWAP after buy cost)-1",
+      "gross_diagnostic": "economic exit proceeds before costs / entry VWAP - 1",
+      "lot_size": 100,
+      "name": "tail_to_first_legal_open_net_return",
+      "price_limit_and_suspension": "if the next session is suspended or sell_blocked_open, carry without fill to the first later legal open; unknown holding rows fail closed",
+      "sell_cost_per_side": 0.002,
+      "severe_loss10": "minimum cost-aware executable-coordinate low-mark return from entry through exit <= -0.10",
+      "t_plus_one": true
+    },
+    "models": [
+      "moderately_richer",
+      "ridge"
+    ],
+    "prediction_path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/stage_b_predictions.parquet",
+    "prediction_sha256": "d99f0771bb104535607b3c489c252eb0a80c6489f7aa68edc33d01a9b9ce4c19",
+    "rows": 3821904,
+    "unit_audit": {
+      "conclusion": "DIRECT_NET_EXECUTABLE_RETURN_UNITS",
+      "consistent_walk_forward_units": true,
+      "fit_target": "label_net",
+      "prediction_assignment": "direct LightGBM prediction; no post-prediction transform",
+      "prediction_is_rank": false,
+      "prediction_is_standardized_or_z_scored": false,
+      "un-inverted_target_transformation": false
+    },
+    "years": [
+      2018,
+      2019,
+      2020,
+      2021
+    ]
+  },
+  "lightgbm": {
+    "absolute_economic_bins": {
+      "0_to_plus_10bp": {
+        "entry_coverage": 0.9973928157589803,
+        "fraction_all_oof_observations": 0.0018064294655229436,
+        "mean_predicted_net_return": 0.0004624965287857561,
+        "mean_realized_gross_return": -0.006880295026879437,
+        "mean_realized_net_return": -0.010844774557281627,
+        "median_realized_net_return": -0.005783718293818629,
+        "observations": 3452,
+        "realized_win_rate": 0.33604414754574496,
+        "sparse": false,
+        "unique_dates": 48,
+        "unique_securities": 2113,
+        "yearly_realized_net_return": {
+          "2018": 0.0015591844388988907,
+          "2019": -0.007317434577550809,
+          "2020": -0.014789792899808104,
+          "2021": 0.002502910577372751
+        }
+      },
+      "gt_plus_40bp": {
+        "entry_coverage": 0.9976525821596244,
+        "fraction_all_oof_observations": 0.00044585107318237193,
+        "mean_predicted_net_return": 0.005826101297393317,
+        "mean_realized_gross_return": 0.0012925016667226822,
+        "mean_realized_net_return": -0.002704616321549998,
+        "median_realized_net_return": 0.0025266144317586114,
+        "observations": 852,
+        "realized_win_rate": 0.6094117647058823,
+        "sparse": false,
+        "unique_dates": 8,
+        "unique_securities": 782,
+        "yearly_realized_net_return": {
+          "2018": -0.011038771801098413,
+          "2019": -0.0026730038004796983,
+          "2020": -0.007742557254738325,
+          "2021": null
+        }
+      },
+      "le_minus_100bp": {
+        "entry_coverage": 0.8299974900498405,
+        "fraction_all_oof_observations": 0.07297148227689654,
+        "mean_predicted_net_return": -0.01575279481168919,
+        "mean_realized_gross_return": -0.011688889950703028,
+        "mean_realized_net_return": -0.015634199585260487,
+        "median_realized_net_return": -0.013531439760229524,
+        "observations": 139445,
+        "realized_win_rate": 0.21731654844088855,
+        "sparse": false,
+        "unique_dates": 973,
+        "unique_securities": 4083,
+        "yearly_realized_net_return": {
+          "2018": -0.018966163516738157,
+          "2019": -0.016440935465632547,
+          "2020": -0.015566746149821724,
+          "2021": -0.013555999854137206
+        }
+      },
+      "minus_100_to_minus_50bp": {
+        "entry_coverage": 0.987544279382036,
+        "fraction_all_oof_observations": 0.2821577936023511,
+        "mean_predicted_net_return": -0.006477253437589885,
+        "mean_realized_gross_return": -0.001712837194983409,
+        "mean_realized_net_return": -0.005697946472658922,
+        "median_realized_net_return": -0.005208712228322976,
+        "observations": 539190,
+        "realized_win_rate": 0.2691154873289588,
+        "sparse": false,
+        "unique_dates": 973,
+        "unique_securities": 4225,
+        "yearly_realized_net_return": {
+          "2018": -0.006874129759098431,
+          "2019": -0.005038331025870728,
+          "2020": -0.005651627307066216,
+          "2021": -0.005557251192352642
+        }
+      },
+      "minus_20_to_0bp": {
+        "entry_coverage": 0.9977003429996881,
+        "fraction_all_oof_observations": 0.013425768936111426,
+        "mean_predicted_net_return": -0.0013368480822694502,
+        "mean_realized_gross_return": -0.0003560293959728561,
+        "mean_realized_net_return": -0.004346559604890376,
+        "median_realized_net_return": -0.002727642301825206,
+        "observations": 25656,
+        "realized_win_rate": 0.3625424854475134,
+        "sparse": false,
+        "unique_dates": 236,
+        "unique_securities": 3712,
+        "yearly_realized_net_return": {
+          "2018": -0.005262547040037889,
+          "2019": -0.0044303738352704635,
+          "2020": -0.004614572639933305,
+          "2021": -0.002774889661024099
+        }
+      },
+      "minus_50_to_minus_20bp": {
+        "entry_coverage": 0.998876276077361,
+        "fraction_all_oof_observations": 0.6272753057114988,
+        "mean_predicted_net_return": -0.0038907921554569964,
+        "mean_realized_gross_return": 0.00024086737097147286,
+        "mean_realized_net_return": -0.0037520238033844754,
+        "median_realized_net_return": -0.0037905113571890525,
+        "observations": 1198693,
+        "realized_win_rate": 0.25926173386807155,
+        "sparse": false,
+        "unique_dates": 971,
+        "unique_securities": 4238,
+        "yearly_realized_net_return": {
+          "2018": -0.004750668167540521,
+          "2019": -0.003036456715062729,
+          "2020": -0.0035040369269054724,
+          "2021": -0.003938166587085675
+        }
+      },
+      "plus_10_to_plus_20bp": {
+        "entry_coverage": 0.9969403365629781,
+        "fraction_all_oof_observations": 0.0010261900874537926,
+        "mean_predicted_net_return": 0.001453401915174941,
+        "mean_realized_gross_return": -0.011600501233166145,
+        "mean_realized_net_return": -0.015546173461074722,
+        "median_realized_net_return": -0.01864177256884436,
+        "observations": 1961,
+        "realized_win_rate": 0.30179028132992325,
+        "sparse": false,
+        "unique_dates": 28,
+        "unique_securities": 1520,
+        "yearly_realized_net_return": {
+          "2018": 5.338750858572272e-05,
+          "2019": -0.011826853487409854,
+          "2020": -0.023178965558297678,
+          "2021": 0.011575531729050792
+        }
+      },
+      "plus_20_to_plus_40bp": {
+        "entry_coverage": 0.9958896065766295,
+        "fraction_all_oof_observations": 0.0008911788469830745,
+        "mean_predicted_net_return": 0.002834176985122408,
+        "mean_realized_gross_return": -0.014229160101382187,
+        "mean_realized_net_return": -0.018164280166491794,
+        "median_realized_net_return": -0.019628983388937038,
+        "observations": 1703,
+        "realized_win_rate": 0.3071933962264151,
+        "sparse": false,
+        "unique_dates": 18,
+        "unique_securities": 1358,
+        "yearly_realized_net_return": {
+          "2018": 0.009155056040798337,
+          "2019": -0.017680117066448446,
+          "2020": -0.024928821111688086,
+          "2021": -0.023416370349808147
+        }
+      }
+    },
+    "calibration_regression": {
+      "pooled": {
+        "intercept": 0.0006858996718808361,
+        "observations": 1879100,
+        "r_squared": 0.06595525591814966,
+        "slope": 1.092768285042704
+      },
+      "prediction_deciles": {
+        "1": {
+          "mean_predicted_net_return": -0.013008490618363717,
+          "mean_realized_net_return": -0.012500423389890606,
+          "observations": 187910
+        },
+        "10": {
+          "mean_predicted_net_return": -0.002402812619162119,
+          "mean_realized_net_return": -0.003184356140441134,
+          "observations": 187910
+        },
+        "2": {
+          "mean_predicted_net_return": -0.00692749159735854,
+          "mean_realized_net_return": -0.00593857074345247,
+          "observations": 187910
+        },
+        "3": {
+          "mean_predicted_net_return": -0.005637790318646487,
+          "mean_realized_net_return": -0.005152284153341784,
+          "observations": 187910
+        },
+        "4": {
+          "mean_predicted_net_return": -0.004982977613652199,
+          "mean_realized_net_return": -0.00475326889062822,
+          "observations": 187910
+        },
+        "5": {
+          "mean_predicted_net_return": -0.004553879120024013,
+          "mean_realized_net_return": -0.004364534208580275,
+          "observations": 187910
+        },
+        "6": {
+          "mean_predicted_net_return": -0.004228390690750614,
+          "mean_realized_net_return": -0.0042114040484536675,
+          "observations": 187910
+        },
+        "7": {
+          "mean_predicted_net_return": -0.00395254895795431,
+          "mean_realized_net_return": -0.0038676327907664057,
+          "observations": 187910
+        },
+        "8": {
+          "mean_predicted_net_return": -0.003694607776831311,
+          "mean_realized_net_return": -0.0035700206706007127,
+          "observations": 187910
+        },
+        "9": {
+          "mean_predicted_net_return": -0.003386043714156959,
+          "mean_realized_net_return": -0.003269390578912729,
+          "observations": 187910
+        }
+      },
+      "yearly": {
+        "2018": {
+          "intercept": 0.001157639745542333,
+          "observations": 305032,
+          "r_squared": 0.06424101536774907,
+          "slope": 1.3991900538560436
+        },
+        "2019": {
+          "intercept": 0.0013522635139345263,
+          "observations": 424397,
+          "r_squared": 0.08644656074360624,
+          "slope": 1.13526546433897
+        },
+        "2020": {
+          "intercept": 0.0009143546974568042,
+          "observations": 558649,
+          "r_squared": 0.062409063611323035,
+          "slope": 1.1021356509910567
+        },
+        "2021": {
+          "intercept": -8.6151696235253e-06,
+          "observations": 591022,
+          "r_squared": 0.05976280221796049,
+          "slope": 0.9403062533231371
+        }
+      }
+    },
+    "canonical_zero_threshold": {
+      "active_dates": 55,
+      "concentration": {
+        "industry_hhi": 0.01569670345997004,
+        "max_industry_share": 0.042799597180261835,
+        "max_security_share": 0.0010070493454179255,
+        "security_hhi": 0.000428477692285069
+      },
+      "entry_coverage": 0.9969879518072289,
+      "fraction_all_dates_active": 0.0565262076053443,
+      "mean_predicted_net_return": 0.0017867847495066584,
+      "mean_realized_gross_return": -0.008736387815158059,
+      "mean_realized_net_return": -0.012693463110877304,
+      "median_realized_net_return": -0.0067948998549720585,
+      "observations": 7968,
+      "observations_per_active_day": 144.87272727272727,
+      "realized_win_rate": 0.3507049345417925,
+      "unique_dates": 55,
+      "unique_securities": 2884,
+      "yearly_realized_net_return": {
+        "2018": 0.0017011968950593444,
+        "2019": -0.010646293658193837,
+        "2020": -0.017550912324541486,
+        "2021": 0.002996777419255192
+      }
+    },
+    "daily_opportunity_count": {
+      "canonical_gt_0bp_day_categories": {
+        "four_to_ten": 8,
+        "greater_than_ten": 15,
+        "one": 25,
+        "two_to_three": 7,
+        "zero": 918
+      },
+      "count_distribution": {
+        "gt_0bp": {
+          "maximum": 1910,
+          "mean": 8.189105858170606,
+          "median": 0.0,
+          "p95": 1.0
+        },
+        "gt_10bp": {
+          "maximum": 1543,
+          "mean": 4.641315519013361,
+          "median": 0.0,
+          "p95": 0.0
+        },
+        "gt_20bp": {
+          "maximum": 1207,
+          "mean": 2.6258992805755397,
+          "median": 0.0,
+          "p95": 0.0
+        },
+        "gt_40bp": {
+          "maximum": 698,
+          "mean": 0.8756423432682425,
+          "median": 0.0,
+          "p95": 0.0
+        }
+      }
+    },
+    "fixed_thresholds": {
+      "gt_10bp": {
+        "active_dates": 30,
+        "concentration": {
+          "industry_hhi": 0.016258797756118378,
+          "max_industry_share": 0.047100644301266384,
+          "max_security_share": 0.001110864252388358,
+          "security_hhi": 0.0005110321086414873
+        },
+        "entry_coverage": 0.9966784765279008,
+        "fraction_all_dates_active": 0.030832476875642344,
+        "mean_predicted_net_return": 0.002799061750819448,
+        "mean_realized_gross_return": -0.010156189519233442,
+        "mean_realized_net_return": -0.014107601011350513,
+        "median_realized_net_return": -0.009121427443500751,
+        "observations": 4516,
+        "observations_per_active_day": 150.53333333333333,
+        "realized_win_rate": 0.3619195734281271,
+        "unique_dates": 30,
+        "unique_securities": 2362,
+        "yearly_realized_net_return": {
+          "2018": 0.001997056178726956,
+          "2019": -0.012200421538418308,
+          "2020": -0.023431009091826296,
+          "2021": 0.004577151313279004
+        }
+      },
+      "gt_20bp": {
+        "active_dates": 19,
+        "concentration": {
+          "industry_hhi": 0.01656095015886787,
+          "max_industry_share": 0.046347211311861744,
+          "max_security_share": 0.0015710919088766694,
+          "security_hhi": 0.0006790992324111448
+        },
+        "entry_coverage": 0.9964774951076321,
+        "fraction_all_dates_active": 0.019527235354573486,
+        "mean_predicted_net_return": 0.003831875425065583,
+        "mean_realized_gross_return": -0.009047144192941836,
+        "mean_realized_net_return": -0.013002962700584281,
+        "median_realized_net_return": -0.003760518322084294,
+        "observations": 2555,
+        "observations_per_active_day": 134.47368421052633,
+        "realized_win_rate": 0.40809112333071484,
+        "unique_dates": 19,
+        "unique_securities": 1716,
+        "yearly_realized_net_return": {
+          "2018": 0.0033853909431135515,
+          "2019": -0.012401107576631577,
+          "2020": -0.02467038105368884,
+          "2021": -0.023416370349808147
+        }
+      },
+      "gt_40bp": {
+        "active_dates": 8,
+        "concentration": {
+          "industry_hhi": 0.01730380622837371,
+          "max_industry_share": 0.04941176470588235,
+          "max_security_share": 0.002352941176470588,
+          "security_hhi": 0.0013702422145328718
+        },
+        "entry_coverage": 0.9976525821596244,
+        "fraction_all_dates_active": 0.008221993833504625,
+        "mean_predicted_net_return": 0.005826101297393317,
+        "mean_realized_gross_return": 0.0012925016667226822,
+        "mean_realized_net_return": -0.002704616321549998,
+        "median_realized_net_return": 0.0025266144317586114,
+        "observations": 852,
+        "observations_per_active_day": 106.5,
+        "realized_win_rate": 0.6094117647058823,
+        "unique_dates": 8,
+        "unique_securities": 782,
+        "yearly_realized_net_return": {
+          "2018": -0.011038771801098413,
+          "2019": -0.0026730038004796983,
+          "2020": -0.007742557254738325,
+          "2021": null
+        }
+      }
+    },
+    "opportunity_count_economics": {
+      "four_to_ten": {
+        "average_predicted_positive_pool_net_return": -0.009964445227082636,
+        "dates": 8,
+        "highest_prediction_net_return": -0.0059642647099840546,
+        "highest_ten_net_return": null,
+        "highest_three_net_return": -0.01218142060007773,
+        "observations": 44
+      },
+      "greater_than_ten": {
+        "average_predicted_positive_pool_net_return": -0.005900519880569995,
+        "dates": 15,
+        "highest_prediction_net_return": -0.006179529353227327,
+        "highest_ten_net_return": -0.00633222461926768,
+        "highest_three_net_return": -0.008307141264350993,
+        "observations": 7881
+      },
+      "one": {
+        "average_predicted_positive_pool_net_return": 0.005731471501517177,
+        "dates": 25,
+        "highest_prediction_net_return": 0.005731471501517177,
+        "highest_ten_net_return": null,
+        "highest_three_net_return": null,
+        "observations": 25
+      },
+      "two_to_three": {
+        "average_predicted_positive_pool_net_return": 0.0030377977048211997,
+        "dates": 7,
+        "highest_prediction_net_return": 0.0026670560428777895,
+        "highest_ten_net_return": null,
+        "highest_three_net_return": 0.0034140356680581003,
+        "observations": 18
+      }
+    },
+    "prediction_distribution": {
+      "2018": {
+        "maximum": 0.006948749693693132,
+        "mean": -0.0053057638025988,
+        "median": -0.004531191845358719,
+        "p1": -0.017606485752179404,
+        "p25": -0.00569790457883606,
+        "p5": -0.010628263122249133,
+        "p75": -0.003789664551709728,
+        "p95": -0.002975491475735291,
+        "p99": -0.0021971618637071757,
+        "standard_deviation": 0.0028491859832843426
+      },
+      "2019": {
+        "maximum": 0.010500450220674484,
+        "mean": -0.005401901205857651,
+        "median": -0.004467401355587851,
+        "p1": -0.0217311022387048,
+        "p25": -0.005852626502027131,
+        "p5": -0.011985971063951405,
+        "p75": -0.0036860783272324215,
+        "p95": -0.002345080199336369,
+        "p99": 0.0006014770084180732,
+        "standard_deviation": 0.0038855703214985397
+      },
+      "2020": {
+        "maximum": 0.004269051639519707,
+        "mean": -0.005614827568485185,
+        "median": -0.004461923448345615,
+        "p1": -0.02330111189446929,
+        "p25": -0.005894856081749429,
+        "p5": -0.013100081814826135,
+        "p75": -0.003680628454737224,
+        "p95": -0.0026679785721245497,
+        "p99": -0.000951400526199478,
+        "standard_deviation": 0.004167966180829197
+      },
+      "2021": {
+        "maximum": 0.0021920677265901524,
+        "mean": -0.005333262280751488,
+        "median": -0.0042552616901931056,
+        "p1": -0.02095507550843387,
+        "p25": -0.005456853537820879,
+        "p5": -0.011668281472935273,
+        "p75": -0.0036993406498255924,
+        "p95": -0.003089143330883478,
+        "p99": -0.002293099804403127,
+        "standard_deviation": 0.003540940876305557
+      },
+      "pooled": {
+        "maximum": 0.010500450220674484,
+        "mean": -0.005428208112106393,
+        "median": -0.004405742425238904,
+        "p1": -0.021392835950127018,
+        "p25": -0.005715286943403173,
+        "p5": -0.011989107236187634,
+        "p75": -0.003706190201866011,
+        "p95": -0.00278417922212672,
+        "p99": -0.0013901207976667843,
+        "standard_deviation": 0.0037226683209654666
+      }
+    },
+    "relative_daily_top_1pct": {
+      "active_dates": 973,
+      "entry_coverage": 0.9986734693877551,
+      "mean_predicted_net_return": -0.002891106317357079,
+      "mean_realized_gross_return": 0.0005863943286511149,
+      "mean_realized_net_return": -0.0034078643604596977,
+      "median_realized_net_return": -0.0032724589890110733,
+      "observations": 19600,
+      "realized_win_rate": 0.3035148666598549,
+      "unique_dates": 973,
+      "unique_securities": 3578,
+      "yearly_realized_net_return": {
+        "2018": -0.004260405855172459,
+        "2019": -0.0026611103514768294,
+        "2020": -0.003521188529524804,
+        "2021": -0.0033975061021759775
+      }
+    },
+    "zero_by_year": {
+      "2018": {
+        "active_dates": 12,
+        "concentration": {
+          "industry_hhi": 0.04601899196493793,
+          "max_industry_share": 0.10810810810810811,
+          "max_security_share": 0.05405405405405406,
+          "security_hhi": 0.031409788166544925
+        },
+        "entry_coverage": 1.0,
+        "fraction_all_dates_active": 0.04938271604938271,
+        "mean_predicted_net_return": 0.001136037920754385,
+        "mean_realized_gross_return": 0.00571603135155255,
+        "mean_realized_net_return": 0.0017011968950593444,
+        "median_realized_net_return": -0.0017641524385444418,
+        "observations": 37,
+        "observations_per_active_day": 3.0833333333333335,
+        "realized_win_rate": 0.4594594594594595,
+        "unique_dates": 12,
+        "unique_securities": 34,
+        "yearly_realized_net_return": {
+          "2018": 0.0017011968950593444,
+          "2019": null,
+          "2020": null,
+          "2021": null
+        }
+      },
+      "2019": {
+        "active_dates": 21,
+        "concentration": {
+          "industry_hhi": 0.015588632962458441,
+          "max_industry_share": 0.0427807486631016,
+          "max_security_share": 0.0011063986723215931,
+          "security_hhi": 0.0004834246089002425
+        },
+        "entry_coverage": 0.9957767168564083,
+        "fraction_all_dates_active": 0.0860655737704918,
+        "mean_predicted_net_return": 0.0022336341807139433,
+        "mean_realized_gross_return": -0.006681028209155764,
+        "mean_realized_net_return": -0.010646293658193837,
+        "median_realized_net_return": -0.0020951271162249485,
+        "observations": 5446,
+        "observations_per_active_day": 259.3333333333333,
+        "realized_win_rate": 0.43167988198414164,
+        "unique_dates": 21,
+        "unique_securities": 2424,
+        "yearly_realized_net_return": {
+          "2018": null,
+          "2019": -0.010646293658193837,
+          "2020": null,
+          "2021": null
+        }
+      },
+      "2020": {
+        "active_dates": 10,
+        "concentration": {
+          "industry_hhi": 0.01706605714225429,
+          "max_industry_share": 0.04263093788063337,
+          "max_security_share": 0.0016240357287860333,
+          "security_hhi": 0.0006308551293203563
+        },
+        "entry_coverage": 0.9995941558441559,
+        "fraction_all_dates_active": 0.0411522633744856,
+        "mean_predicted_net_return": 0.0008196002772464802,
+        "mean_realized_gross_return": -0.013613274413974757,
+        "mean_realized_net_return": -0.017550912324541486,
+        "median_realized_net_return": -0.020277831948658398,
+        "observations": 2464,
+        "observations_per_active_day": 246.4,
+        "realized_win_rate": 0.16889971579374746,
+        "unique_dates": 10,
+        "unique_securities": 1867,
+        "yearly_realized_net_return": {
+          "2018": null,
+          "2019": null,
+          "2020": -0.017550912324541486,
+          "2021": null
+        }
+      },
+      "2021": {
+        "active_dates": 12,
+        "concentration": {
+          "industry_hhi": 0.07029478458049886,
+          "max_industry_share": 0.14285714285714285,
+          "max_security_share": 0.047619047619047616,
+          "security_hhi": 0.0476190476190476
+        },
+        "entry_coverage": 1.0,
+        "fraction_all_dates_active": 0.04938271604938271,
+        "mean_predicted_net_return": 0.0005333642713180488,
+        "mean_realized_gross_return": 0.007016804583260213,
+        "mean_realized_net_return": 0.002996777419255192,
+        "median_realized_net_return": 0.0049791613314087435,
+        "observations": 21,
+        "observations_per_active_day": 1.75,
+        "realized_win_rate": 0.5714285714285714,
+        "unique_dates": 12,
+        "unique_securities": 21,
+        "yearly_realized_net_return": {
+          "2018": null,
+          "2019": null,
+          "2020": null,
+          "2021": 0.002996777419255192
+        }
+      }
+    }
+  },
+  "ridge_zero_threshold": {
+    "active_dates": 846,
+    "concentration": {
+      "industry_hhi": 0.015714189085500267,
+      "max_industry_share": 0.0415216511533792,
+      "max_security_share": 0.008862808579522461,
+      "security_hhi": 0.000773099070218173
+    },
+    "entry_coverage": 0.9982225094934152,
+    "fraction_all_dates_active": 0.869475847893114,
+    "mean_predicted_net_return": 0.0007875903649558996,
+    "mean_realized_gross_return": 0.0014791678411170128,
+    "mean_realized_net_return": -0.0025186966970152007,
+    "median_realized_net_return": -0.00292837381767036,
+    "observations": 24754,
+    "observations_per_active_day": 29.260047281323878,
+    "realized_win_rate": 0.3174828004856333,
+    "unique_dates": 846,
+    "unique_securities": 3489,
+    "yearly_realized_net_return": {
+      "2018": -0.003140232765296755,
+      "2019": -0.0024933833086256373,
+      "2020": -0.0010903830707363615,
+      "2021": -0.0030302100313278455
+    }
+  }
+}
