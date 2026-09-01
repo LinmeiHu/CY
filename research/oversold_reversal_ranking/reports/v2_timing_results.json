@@ -1,0 +1,715 @@
+{
+  "research_version": "oversold-reversal-ranking-v2-timing",
+  "verdict": "RISK_FILTER_ONLY",
+  "single_next_step": "Test one frozen staged-entry risk overlay: partial immediate exposure at t0 and the remaining exposure only after the unchanged primary reversal trigger, judged on common-horizon return and downside after costs.",
+  "input_identities": {
+    "registry": {
+      "path": "/Users/linmei/Documents/CY-oversold-reversal-ranking/configs/data_asset_registry.json",
+      "sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2"
+    },
+    "activation_manifest": {
+      "path": "/Users/linmei/Documents/CY-oversold-reversal-ranking/research/volume_exhaustion_bottom/configs/input_snapshot_v1.json",
+      "sha256": "863d0ddb01765cf2769ebefcab4fe158002ab1d431c78a068b76837526a46bcc"
+    },
+    "inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "data_files": [
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "size": 42011064,
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "size": 43320252,
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "size": 46073783,
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "size": 52153081,
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "size": 56255217,
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "size": 59157938,
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2024/data_0.parquet",
+        "size": 59881763,
+        "sha256": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2025/data_0.parquet",
+        "size": 61756440,
+        "sha256": "846ca46ce65dd9bd1e9c89df5b26c143af8e8829365671c6f7e43b801cb09d9a",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2026/data_0.parquet",
+        "size": 39367384,
+        "sha256": "91a7d7fccee2e07fd602c77e16914ea8a9224242ad7f887225aaeb07d60ae3d0",
+        "content_hash_verified": true
+      }
+    ],
+    "snapshot_id": "CYQ-PIT-B-DAILY-2018-2026-V2",
+    "pit_grade": "B",
+    "strict_archive_ready": false,
+    "authorization": {
+      "operation": "BACKTEST",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "registry_sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2",
+      "manifest_id": "VOLUME-EXHAUSTION-BOTTOM-V1-CY006-20260901",
+      "manifest_sha256": "863d0ddb01765cf2769ebefcab4fe158002ab1d431c78a068b76837526a46bcc",
+      "purpose": "CAUSAL_RESEARCH",
+      "hard_valid": true,
+      "scope_start": "2018-01-01",
+      "scope_end": "2026-08-12"
+    }
+  },
+  "definitions": {
+    "v1_verdict": "DEPTH_ONLY",
+    "v1_q5_research_reference": "drawdown_60 <= -0.3066666666666664; ex-post feature-percentile reference only",
+    "causal_carrier": "exact V1 LOW plus drawdown_60 <= -0.3",
+    "event_deduplication": "first causal deep-carrier observation after no deep-carrier observation in the prior 20 trading rows",
+    "primary_trigger": "first session t0+1..t0+5 with close > preclose and CLV=(close-low)/(high-low) >= 0.7; zero-range days fail closed",
+    "waiting_window_sessions": 5,
+    "immediate_policy": "enter next listed legal open after t0 close",
+    "fixed_delay_policy": "observe t0+1 session, enter next listed legal open after that close regardless of price pattern",
+    "reversal_policy": "enter next listed legal open after first primary trigger; cash at 0% if no trigger or rejected entry",
+    "common_event_endpoint": "adjusted close 20 trading sessions after original t0 for every policy",
+    "entry_anchored_horizons": "5/10/20 trading sessions from each policy's actual legal entry open",
+    "severe_downside": "Ret20 <= -10% or MAE20 <= -10%"
+  },
+  "checks": {
+    "carrier_inversion": 0,
+    "time_travel": 0,
+    "non_t_plus_one_immediate": 0,
+    "common_endpoint_misaligned": 0,
+    "invalid_25_path": 0,
+    "dedup_violation": 0,
+    "fixed_delay_misaligned": 0,
+    "fixed_non_t_plus_one": 0,
+    "trigger_lag_invalid": 0,
+    "noncausal_trigger_date": 0,
+    "trigger_formula_invalid": 0,
+    "trigger_non_t_plus_one": 0,
+    "no_trigger_nonzero_policy_return": 0,
+    "nonexecuted_nonzero_policy_return": 0,
+    "fixed_nonexecuted_nonzero_policy_return": 0,
+    "trigger_reconciliation": 0
+  },
+  "sample_profile": {
+    "raw_deep_observations": 201673,
+    "raw_deep_events": 24179,
+    "valid_deep_observations": 184816,
+    "valid_deep_events": 22543,
+    "valid_securities": 4836,
+    "event_securities": 4836,
+    "first_event_date": "2020-01-02",
+    "last_event_date": "2026-07-08",
+    "q5_reference_observations": 168408,
+    "q5_reference_events": 16468,
+    "event_industries": 128
+  },
+  "primary_entry_anchored": [
+    {
+      "policy": "FIXED_DELAY_1",
+      "opportunities": 22543,
+      "n_trades": 22516,
+      "participation_rate": 0.9988022889588786,
+      "mean_ret_5": 0.01616876696953253,
+      "median_ret_5": 0.012836434962709031,
+      "positive_rate_5": 0.5739474151714337,
+      "mean_ret_10": 0.0252286482831733,
+      "median_ret_10": 0.01867614890255309,
+      "positive_rate_10": 0.5787440042636347,
+      "mean_ret_20": 0.04531638892368928,
+      "median_ret_20": 0.028987505166564342,
+      "positive_rate_20": 0.5844288505951324,
+      "mean_mfe_20": 0.15400148219726933,
+      "mean_mae_20": -0.10321791157966753,
+      "q10_ret_20": -0.13089465922083932,
+      "severe_mae_rate_20": 0.39678450879374666
+    },
+    {
+      "policy": "IMMEDIATE",
+      "opportunities": 22543,
+      "n_trades": 22543,
+      "participation_rate": 1.0,
+      "mean_ret_5": 0.011322056552087196,
+      "median_ret_5": 0.010794473229706059,
+      "positive_rate_5": 0.5639001020272368,
+      "mean_ret_10": 0.022759823042675948,
+      "median_ret_10": 0.016080675933497046,
+      "positive_rate_10": 0.5684247881825844,
+      "mean_ret_20": 0.04412832744073999,
+      "median_ret_20": 0.02780612244897962,
+      "positive_rate_20": 0.5832409173579381,
+      "mean_mfe_20": 0.15022054960104586,
+      "mean_mae_20": -0.10830306629621805,
+      "q10_ret_20": -0.12737918245585741,
+      "severe_mae_rate_20": 0.4208845317837023
+    },
+    {
+      "policy": "REVERSAL_WAIT",
+      "opportunities": 22543,
+      "n_trades": 19338,
+      "participation_rate": 0.8578272634520694,
+      "mean_ret_5": 0.0222932371895916,
+      "median_ret_5": 0.015186654834541735,
+      "positive_rate_5": 0.5964939497362706,
+      "mean_ret_10": 0.02261145925427631,
+      "median_ret_10": 0.01964937337654682,
+      "positive_rate_10": 0.580773606370876,
+      "mean_ret_20": 0.0517768301795979,
+      "median_ret_20": 0.035665711225848606,
+      "positive_rate_20": 0.5969593546385356,
+      "mean_mfe_20": 0.15550726940773707,
+      "mean_mae_20": -0.08995957121609986,
+      "q10_ret_20": -0.12864479119193836,
+      "severe_mae_rate_20": 0.340107560244079
+    }
+  ],
+  "primary_event_anchored": [
+    {
+      "policy": "FIXED_DELAY_1",
+      "opportunities": 22543,
+      "n_trades": 22516,
+      "participation_rate": 0.9988022889588786,
+      "mean_event_ret_20": 0.0454580723879455,
+      "median_event_ret_20": 0.028146230993206123,
+      "positive_event_rate_20": 0.5839063123807834,
+      "q10_event_ret_20": -0.12371527570344737,
+      "q25_event_ret_20": -0.05439872525852535,
+      "q75_event_ret_20": 0.12755712363427973,
+      "mean_event_mae_20": -0.10135334356440784,
+      "severe_mae_rate_20": 0.387304262964113,
+      "severe_return_rate_20": 0.14305992991172425,
+      "mean_entry_lag": 1.0,
+      "median_entry_lag": 1.0
+    },
+    {
+      "policy": "IMMEDIATE",
+      "opportunities": 22543,
+      "n_trades": 22543,
+      "participation_rate": 1.0,
+      "mean_event_ret_20": 0.04412832744073999,
+      "median_event_ret_20": 0.02780612244897962,
+      "positive_event_rate_20": 0.5832409173579381,
+      "q10_event_ret_20": -0.12737918245585741,
+      "q25_event_ret_20": -0.057073736124399865,
+      "q75_event_ret_20": 0.12676738328507398,
+      "mean_event_mae_20": -0.10830306629621805,
+      "severe_mae_rate_20": 0.4208845317837023,
+      "severe_return_rate_20": 0.14891540611276227,
+      "mean_entry_lag": 0.0,
+      "median_entry_lag": 0.0
+    },
+    {
+      "policy": "REVERSAL_WAIT",
+      "opportunities": 22543,
+      "n_trades": 19338,
+      "participation_rate": 0.8578272634520694,
+      "mean_event_ret_20": 0.03856130008478231,
+      "median_event_ret_20": 0.004280821917808764,
+      "positive_event_rate_20": 0.509914385840394,
+      "q10_event_ret_20": -0.10945394736842108,
+      "q25_event_ret_20": -0.037280701754385914,
+      "q75_event_ret_20": 0.10813430909083643,
+      "mean_event_mae_20": -0.07355701215690406,
+      "severe_mae_rate_20": 0.27006165993878367,
+      "severe_return_rate_20": 0.11586745331144924,
+      "mean_entry_lag": 2.288344192781053,
+      "median_entry_lag": 2.0
+    }
+  ],
+  "primary_waiting_summary": {
+    "opportunities": 22543,
+    "trigger_signals": 19375,
+    "trigger_rate": 0.8594685711750876,
+    "executed_triggers": 19338,
+    "participation_rate": 0.8578272634520694,
+    "no_trigger_events": 3168,
+    "no_trigger_rate": 0.1405314288249124,
+    "rejected_trigger_entries": 37,
+    "mean_trigger_lag": 2.2886193548387097,
+    "median_trigger_lag": 2.0,
+    "mean_pre_entry_price_move": 0.012782525456033502,
+    "median_pre_entry_price_move": 0.016813512394555752,
+    "q25_pre_entry_price_move": -0.008581182114076963,
+    "q75_pre_entry_price_move": 0.04113078692793137,
+    "mean_immediate_mfe_before_delayed_entry": 0.036716715244216866,
+    "positive_pre_entry_move_rate": 0.6851277277898439,
+    "pre_entry_mfe_ge_5_rate": 0.2519391870927707,
+    "no_trigger_immediate_ret20_ge_10_rate": 0.11616161616161616,
+    "no_trigger_immediate_mfe20_ge_10_rate": 0.2809343434343434
+  },
+  "primary_trigger_curve": [
+    {
+      "session": 1,
+      "cumulative_triggered": 6823,
+      "cumulative_executed": 6810,
+      "cumulative_trigger_rate": 0.30266601605819987
+    },
+    {
+      "session": 2,
+      "cumulative_triggered": 12330,
+      "cumulative_executed": 12309,
+      "cumulative_trigger_rate": 0.5469547087787784
+    },
+    {
+      "session": 3,
+      "cumulative_triggered": 15480,
+      "cumulative_executed": 15453,
+      "cumulative_trigger_rate": 0.6866876635762764
+    },
+    {
+      "session": 4,
+      "cumulative_triggered": 17900,
+      "cumulative_executed": 17866,
+      "cumulative_trigger_rate": 0.7940380605953068
+    },
+    {
+      "session": 5,
+      "cumulative_triggered": 19375,
+      "cumulative_executed": 19338,
+      "cumulative_trigger_rate": 0.8594685711750876
+    }
+  ],
+  "primary_lag_distribution": [
+    {
+      "trigger_lag": 1,
+      "trigger_signals": 6823,
+      "executed_triggers": 6810,
+      "cohort_fraction": 0.30266601605819987
+    },
+    {
+      "trigger_lag": 2,
+      "trigger_signals": 5507,
+      "executed_triggers": 5499,
+      "cohort_fraction": 0.24428869272057846
+    },
+    {
+      "trigger_lag": 3,
+      "trigger_signals": 3150,
+      "executed_triggers": 3144,
+      "cohort_fraction": 0.13973295479749812
+    },
+    {
+      "trigger_lag": 4,
+      "trigger_signals": 2420,
+      "executed_triggers": 2413,
+      "cohort_fraction": 0.10735039701903029
+    },
+    {
+      "trigger_lag": 5,
+      "trigger_signals": 1475,
+      "executed_triggers": 1472,
+      "cohort_fraction": 0.06543051057978086
+    }
+  ],
+  "primary_immediate_counterfactuals": [
+    {
+      "cohort": "NO_TRIGGER",
+      "n": 3168,
+      "mean_ret_5": -0.07748363493199326,
+      "median_ret_5": -0.05327504082119161,
+      "positive_rate_5": 0.15056818181818182,
+      "mean_ret_10": -0.04906555504635168,
+      "median_ret_10": -0.05196463517883665,
+      "positive_rate_10": 0.25220959595959597,
+      "mean_ret_20": -0.03642426572093686,
+      "median_ret_20": -0.04832196563928043,
+      "positive_rate_20": 0.3371212121212121,
+      "mean_mfe_20": 0.08648650412749977,
+      "mean_mae_20": -0.16470988386330707,
+      "q10_ret_20": -0.17620218579234956,
+      "severe_mae_rate_20": 0.6916035353535354
+    },
+    {
+      "cohort": "TRIGGERED_ENTRY_REJECTED",
+      "n": 37,
+      "mean_ret_5": 0.13530810236163998,
+      "median_ret_5": 0.1134903640256959,
+      "positive_rate_5": 0.7837837837837838,
+      "mean_ret_10": 0.17031711399319704,
+      "median_ret_10": 0.1258278145695364,
+      "positive_rate_10": 0.7837837837837838,
+      "mean_ret_20": 0.20329737722680466,
+      "median_ret_20": 0.1571428571428568,
+      "positive_rate_20": 0.8108108108108109,
+      "mean_mfe_20": 0.38539432635254534,
+      "mean_mae_20": -0.11831999770871408,
+      "q10_ret_20": -0.0656351691263127,
+      "severe_mae_rate_20": 0.4594594594594595
+    },
+    {
+      "cohort": "TRIGGERED_EXECUTED",
+      "n": 19338,
+      "mean_ret_5": 0.025633202840566492,
+      "median_ret_5": 0.021175295528091165,
+      "positive_rate_5": 0.6311924707829145,
+      "mean_ret_10": 0.03424411190506452,
+      "median_ret_10": 0.02645948367392914,
+      "positive_rate_10": 0.6198159065053263,
+      "mean_ret_20": 0.05702011357654038,
+      "median_ret_20": 0.04103821455442591,
+      "positive_rate_20": 0.6231254524769884,
+      "mean_mfe_20": 0.16021165655731784,
+      "mean_mae_20": -0.09904319327342341,
+      "q10_ret_20": -0.11459153543307055,
+      "severe_mae_rate_20": 0.37646085427655396
+    }
+  ],
+  "depth_interaction": [
+    {
+      "depth_group": "DEEP_30_TO_40",
+      "opportunities": 21232,
+      "trigger_rate": 0.8583741522230596,
+      "participation_rate": 0.8568669932177845,
+      "reversal_minus_immediate_event_ret_20": -0.004474686534947956,
+      "reversal_minus_fixed_event_ret_20": -0.00632033096394426,
+      "median_event_ret_20_difference": -0.023063728483255552,
+      "entry_ret_20_difference": 0.008827509119048497,
+      "entry_mae_20_difference": 0.018868067295853566,
+      "event_mae_20_difference": 0.035306958592896544,
+      "severe_mae_rate_difference": -0.1517991710625471,
+      "mean_pre_entry_price_move": 0.011940215766697229
+    },
+    {
+      "depth_group": "EXTREME_LE_40",
+      "opportunities": 1311,
+      "trigger_rate": 0.8771929824561403,
+      "participation_rate": 0.8733790999237223,
+      "reversal_minus_immediate_event_ret_20": -0.02325778274244267,
+      "reversal_minus_fixed_event_ret_20": -0.016232395883863684,
+      "median_event_ret_20_difference": -0.03813926868526596,
+      "entry_ret_20_difference": -0.011712457995966055,
+      "entry_mae_20_difference": 0.009921190078430092,
+      "event_mae_20_difference": 0.02566205462866267,
+      "severe_mae_rate_difference": -0.13501144164759726,
+      "mean_pre_entry_price_move": 0.026166053995854484
+    }
+  ],
+  "time_stability": [
+    {
+      "time_block": "2020",
+      "opportunities": 2342,
+      "trigger_rate": 0.8548249359521777,
+      "participation_rate": 0.8518360375747225,
+      "reversal_minus_immediate_event_ret_20": -0.010854281707564882,
+      "reversal_minus_fixed_event_ret_20": -0.006097383681219356,
+      "median_event_ret_20_difference": -0.008146315958815986,
+      "entry_ret_20_difference": 0.0017552118726561726,
+      "entry_mae_20_difference": -0.00016595636029538563,
+      "event_mae_20_difference": 0.016065488905542616,
+      "severe_mae_rate_difference": -0.0708795900939368,
+      "mean_pre_entry_price_move": 0.021821150373690697
+    },
+    {
+      "time_block": "2021-2023",
+      "opportunities": 9183,
+      "trigger_rate": 0.8549493629532833,
+      "participation_rate": 0.8536426004573668,
+      "reversal_minus_immediate_event_ret_20": -0.008206590204860593,
+      "reversal_minus_fixed_event_ret_20": -0.00842126826652252,
+      "median_event_ret_20_difference": -0.022857142857142687,
+      "entry_ret_20_difference": -0.0014455876468012982,
+      "entry_mae_20_difference": 0.004339515888071188,
+      "event_mae_20_difference": 0.020779553514882265,
+      "severe_mae_rate_difference": -0.09561145595121423,
+      "mean_pre_entry_price_move": 0.013946824214574018
+    },
+    {
+      "time_block": "2024-2026",
+      "opportunities": 11018,
+      "trigger_rate": 0.8642221818841895,
+      "participation_rate": 0.8625884915592666,
+      "reversal_minus_immediate_event_ret_20": -0.00224320675939421,
+      "reversal_minus_fixed_event_ret_20": -0.005796093570277512,
+      "median_event_ret_20_difference": -0.018565599772280228,
+      "entry_ret_20_difference": 0.016228793800255756,
+      "entry_mae_20_difference": 0.03402035639181737,
+      "event_mae_20_difference": 0.05035725935002824,
+      "severe_mae_rate_difference": -0.21383191141768015,
+      "mean_pre_entry_price_move": 0.009924887127022058
+    }
+  ],
+  "liquidity_sanity": [
+    {
+      "liquidity_tercile": 1,
+      "opportunities": 7310,
+      "trigger_rate": 0.866484268125855,
+      "participation_rate": 0.8641586867305061,
+      "reversal_minus_immediate_event_ret_20": 0.00216248742016369,
+      "reversal_minus_fixed_event_ret_20": -0.004819313179171314,
+      "median_event_ret_20_difference": -0.015403398369826515,
+      "entry_ret_20_difference": 0.020386944970874066,
+      "entry_mae_20_difference": 0.03464177302354893,
+      "event_mae_20_difference": 0.04875445958097967,
+      "severe_mae_rate_difference": -0.1902872777017784,
+      "mean_pre_entry_price_move": 0.004182712985244745
+    },
+    {
+      "liquidity_tercile": 2,
+      "opportunities": 7155,
+      "trigger_rate": 0.8686233403214535,
+      "participation_rate": 0.8676450034940602,
+      "reversal_minus_immediate_event_ret_20": -0.008291618551780715,
+      "reversal_minus_fixed_event_ret_20": -0.007826814660564136,
+      "median_event_ret_20_difference": -0.024390439511400297,
+      "entry_ret_20_difference": 0.0030125517722944875,
+      "entry_mae_20_difference": 0.013627166537952692,
+      "event_mae_20_difference": 0.029522242089972662,
+      "severe_mae_rate_difference": -0.13612858141160028,
+      "mean_pre_entry_price_move": 0.015246618057562894
+    },
+    {
+      "liquidity_tercile": 3,
+      "opportunities": 8078,
+      "trigger_rate": 0.8450111413716267,
+      "participation_rate": 0.8434018321366675,
+      "reversal_minus_immediate_event_ret_20": -0.010148396879024807,
+      "reversal_minus_fixed_event_ret_20": -0.007952946248345003,
+      "median_event_ret_20_difference": -0.020769968190335164,
+      "entry_ret_20_difference": -0.00012493517870085236,
+      "entry_mae_20_difference": 0.00765962915007086,
+      "event_mae_20_difference": 0.026696404651131562,
+      "severe_mae_rate_difference": -0.12812577370636297,
+      "mean_pre_entry_price_move": 0.01851097525900992
+    }
+  ],
+  "industry_sanity": {
+    "industries": 128,
+    "industries_n_ge_50": 98,
+    "largest_industry_share": 0.04640021292640731,
+    "positive_policy_improvement_fraction_n_ge_50": 0.23469387755102042,
+    "top_industries": [
+      {
+        "industry": "\u6c7d\u8f66\u96f6\u90e8\u4ef6",
+        "n": 1046,
+        "trigger_rate": 0.8269598470363289,
+        "reversal_minus_immediate_event_ret_20": -0.001708720758392907,
+        "event_mae_20_difference": 0.04246009586712041
+      },
+      {
+        "industry": "\u901a\u7528\u8bbe\u5907",
+        "n": 954,
+        "trigger_rate": 0.8825995807127882,
+        "reversal_minus_immediate_event_ret_20": -0.008423159820165749,
+        "event_mae_20_difference": 0.0391271936892947
+      },
+      {
+        "industry": "\u8f6f\u4ef6\u5f00\u53d1",
+        "n": 823,
+        "trigger_rate": 0.8602673147023087,
+        "reversal_minus_immediate_event_ret_20": -0.006314628257241315,
+        "event_mae_20_difference": 0.029000597998580215
+      },
+      {
+        "industry": "\u534a\u5bfc\u4f53",
+        "n": 764,
+        "trigger_rate": 0.8429319371727748,
+        "reversal_minus_immediate_event_ret_20": -0.017021004164169105,
+        "event_mae_20_difference": 0.03263515262326275
+      },
+      {
+        "industry": "\u4e13\u7528\u8bbe\u5907",
+        "n": 755,
+        "trigger_rate": 0.8529801324503311,
+        "reversal_minus_immediate_event_ret_20": -0.0017690913898722627,
+        "event_mae_20_difference": 0.04304750239419476
+      },
+      {
+        "industry": "IT\u670d\u52a1\u2161",
+        "n": 738,
+        "trigger_rate": 0.8875338753387534,
+        "reversal_minus_immediate_event_ret_20": -0.00630645716425432,
+        "event_mae_20_difference": 0.02455908484354316
+      },
+      {
+        "industry": "\u5316\u5b66\u5236\u54c1",
+        "n": 675,
+        "trigger_rate": 0.8770370370370371,
+        "reversal_minus_immediate_event_ret_20": -0.0032960993556633775,
+        "event_mae_20_difference": 0.0370964278868213
+      },
+      {
+        "industry": "\u5316\u5b66\u5236\u836f",
+        "n": 627,
+        "trigger_rate": 0.8149920255183413,
+        "reversal_minus_immediate_event_ret_20": 0.002935659193391074,
+        "event_mae_20_difference": 0.04556772636423879
+      },
+      {
+        "industry": "\u7535\u6c60",
+        "n": 623,
+        "trigger_rate": 0.8459069020866774,
+        "reversal_minus_immediate_event_ret_20": -0.00781092670525847,
+        "event_mae_20_difference": 0.03222562705690985
+      },
+      {
+        "industry": "\u533b\u7597\u5668\u68b0",
+        "n": 578,
+        "trigger_rate": 0.8373702422145328,
+        "reversal_minus_immediate_event_ret_20": -0.0038705088904594505,
+        "event_mae_20_difference": 0.03524190093042683
+      }
+    ]
+  },
+  "all_observation_support": {
+    "entry_anchored": [
+      {
+        "policy": "FIXED_DELAY_1",
+        "opportunities": 184816,
+        "n_trades": 184654,
+        "participation_rate": 0.9991234525149337,
+        "mean_ret_5": 0.01152956348723687,
+        "median_ret_5": 0.004608294930875667,
+        "positive_rate_5": 0.5274242637581639,
+        "mean_ret_10": 0.01986479090204603,
+        "median_ret_10": 0.007117437722419684,
+        "positive_rate_10": 0.5296933724695918,
+        "mean_ret_20": 0.03678027978682254,
+        "median_ret_20": 0.01532824338657468,
+        "positive_rate_20": 0.546486943147725,
+        "mean_mfe_20": 0.15160703129021963,
+        "mean_mae_20": -0.10312780385018272,
+        "q10_ret_20": -0.1362031478765853,
+        "severe_mae_rate_20": 0.4237330358400035
+      },
+      {
+        "policy": "IMMEDIATE",
+        "opportunities": 184816,
+        "n_trades": 184816,
+        "participation_rate": 1.0,
+        "mean_ret_5": 0.008458317126903054,
+        "median_ret_5": 0.002937285343630025,
+        "positive_rate_5": 0.5165353649034715,
+        "mean_ret_10": 0.018347752930634027,
+        "median_ret_10": 0.005158440531581654,
+        "positive_rate_10": 0.5219623842091594,
+        "mean_ret_20": 0.03360785543802942,
+        "median_ret_20": 0.013029315960911725,
+        "positive_rate_20": 0.5397043546013333,
+        "mean_mfe_20": 0.14881289296110756,
+        "mean_mae_20": -0.1064932262893269,
+        "q10_ret_20": -0.13654618473895624,
+        "severe_mae_rate_20": 0.43681824084494847
+      },
+      {
+        "policy": "REVERSAL_WAIT",
+        "opportunities": 184816,
+        "n_trades": 152857,
+        "participation_rate": 0.8270766600294347,
+        "mean_ret_5": 0.01831563206116887,
+        "median_ret_5": 0.007692307692307887,
+        "positive_rate_5": 0.5475706052061731,
+        "mean_ret_10": 0.019870582075276772,
+        "median_ret_10": 0.00950020652622885,
+        "positive_rate_10": 0.5386079800074579,
+        "mean_ret_20": 0.044027689652915654,
+        "median_ret_20": 0.021077283372365585,
+        "positive_rate_20": 0.5610930477505119,
+        "mean_mfe_20": 0.15548908165864073,
+        "mean_mae_20": -0.0947891651906047,
+        "q10_ret_20": -0.13625304136253014,
+        "severe_mae_rate_20": 0.38434615359453606
+      }
+    ],
+    "event_anchored": [
+      {
+        "policy": "FIXED_DELAY_1",
+        "opportunities": 184816,
+        "n_trades": 184654,
+        "participation_rate": 0.9991234525149337,
+        "mean_event_ret_20": 0.0340576983240641,
+        "median_event_ret_20": 0.013791463754570521,
+        "positive_event_rate_20": 0.5416089516059216,
+        "q10_event_ret_20": -0.1334136190945739,
+        "q25_event_ret_20": -0.06839476680656409,
+        "q75_event_ret_20": 0.10900276658570451,
+        "mean_event_mae_20": -0.10106572943612538,
+        "severe_mae_rate_20": 0.4129512596312008,
+        "severe_return_rate_20": 0.16839451129772315,
+        "mean_entry_lag": 1.0,
+        "median_entry_lag": 1.0
+      },
+      {
+        "policy": "IMMEDIATE",
+        "opportunities": 184816,
+        "n_trades": 184816,
+        "participation_rate": 1.0,
+        "mean_event_ret_20": 0.03360785543802942,
+        "median_event_ret_20": 0.013029315960911725,
+        "positive_event_rate_20": 0.5397043546013333,
+        "q10_event_ret_20": -0.13654618473895624,
+        "q25_event_ret_20": -0.07036070143937997,
+        "q75_event_ret_20": 0.10923617167094829,
+        "mean_event_mae_20": -0.1064932262893269,
+        "severe_mae_rate_20": 0.43681824084494847,
+        "severe_return_rate_20": 0.17375660116007272,
+        "mean_entry_lag": 0.0,
+        "median_entry_lag": 0.0
+      },
+      {
+        "policy": "REVERSAL_WAIT",
+        "opportunities": 184816,
+        "n_trades": 152857,
+        "participation_rate": 0.8270766600294347,
+        "mean_event_ret_20": 0.02888996647700697,
+        "median_event_ret_20": 0.0,
+        "positive_event_rate_20": 0.45262856029780973,
+        "q10_event_ret_20": -0.12003876591437868,
+        "q25_event_ret_20": -0.04926192638981819,
+        "q75_event_ret_20": 0.08688774842341157,
+        "mean_event_mae_20": -0.07456342139474842,
+        "severe_mae_rate_20": 0.2965652324474071,
+        "severe_return_rate_20": 0.13622738291057052,
+        "mean_entry_lag": 2.347632100590748,
+        "median_entry_lag": 2.0
+      }
+    ],
+    "waiting_summary": {
+      "opportunities": 184816,
+      "trigger_signals": 153102,
+      "trigger_rate": 0.8284023028309238,
+      "executed_triggers": 152857,
+      "participation_rate": 0.8270766600294347,
+      "no_trigger_events": 31714,
+      "no_trigger_rate": 0.17159769716907627,
+      "rejected_trigger_entries": 245,
+      "mean_trigger_lag": 2.34784000209011,
+      "median_trigger_lag": 2.0,
+      "mean_pre_entry_price_move": 0.012288065266044684,
+      "median_pre_entry_price_move": 0.014995313964386137,
+      "q25_pre_entry_price_move": -0.008885850991114164,
+      "q75_pre_entry_price_move": 0.037352555701179346,
+      "mean_immediate_mfe_before_delayed_entry": 0.034881479089077246,
+      "positive_pre_entry_move_rate": 0.6780782038114054,
+      "pre_entry_mfe_ge_5_rate": 0.22725815631603394,
+      "no_trigger_immediate_ret20_ge_10_rate": 0.12716781232263355,
+      "no_trigger_immediate_mfe20_ge_10_rate": 0.2916377625023649
+    }
+  }
+}
