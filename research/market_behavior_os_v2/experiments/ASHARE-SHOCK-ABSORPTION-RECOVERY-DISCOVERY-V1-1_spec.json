@@ -1,0 +1,152 @@
+{
+  "experiment_id": "ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1.1",
+  "status": "FROZEN_BEFORE_V1_1_GRID_OUTCOME_ACCESS_AFTER_V1_RESULT_KNOWN",
+  "starting_checkpoint": "c81935dbaeaa1e55c23a9578bc2a1456048c1d81",
+  "required_ancestor": "574aaa4abf2293a76c7d7e0d8d5bd755bab95430",
+  "branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_AND_CONDITIONAL_DEVELOPMENT_WALK_FORWARD_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "provenance_boundary": "The exact V1 -5%/-3%/W3 negative result was known before this contract arrived. None of the 18 V1.1 cells uses that exact parameter point. This spec is frozen before opening any V1.1 cell outcome and makes no pristine-family preregistration claim.",
+  "scientific_question": "Does downside shock followed by observable absorption or stabilization produce favorable future return across a coherent neighboring parameter region rather than at one lucky definition?",
+  "universe": {
+    "source": "exact causal daily feature panel frozen by ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015",
+    "eligibility": "hard-valid, PIT-lineage-valid, corporate-action-valid, current tradable non-ST rows with 120 consecutive valid stock sessions, prior-20 average amount at least CNY 50 million, and at least six same-date PIT-industry peers",
+    "industry": "historical PIT industry; leave-one-out equal-weight eligible-peer log-return representation",
+    "price_coordinate": "accepted CY-006/QD-010 causal corporate-action coordinate",
+    "fail_closed": "unknown lineage, invalid action coordinate, missing required consecutive session, or unresolved execution is unusable"
+  },
+  "parameter_grid": {
+    "absolute_simple_return_thresholds": [-0.04, -0.06, -0.08],
+    "industry_relative_simple_return_thresholds": [-0.02, -0.04],
+    "absorption_windows_sessions": [2, 3, 5],
+    "total_cells": 18,
+    "cell_id": "ABS_m04|ABS_m06|ABS_m08 joined to REL_m02|REL_m04 and W2|W3|W5",
+    "additional_cells": false,
+    "removal_after_outcomes": false
+  },
+  "event": {
+    "shock_session": "completed session s",
+    "qualification": "stock causal simple return at s is at or below the cell absolute threshold AND stock simple return minus PIT-industry leave-one-out simple return is at or below the cell relative threshold",
+    "overlap": "within each cell accept the first qualifying shock, suppress the same symbol through s+W, and permit a new event at s+W+1; suppression precedes observation-completeness inspection",
+    "shock_loss": "causal-coordinate close(s-1)-close(s), strictly positive",
+    "observation": "exactly the cell's W completed consecutive valid sessions s+1 through s+W",
+    "signal_known_at": "after completed close s+W, decision_at 15:30 Asia/Shanghai",
+    "earliest_entry": "first accepted buyable legal open strictly after s+W, scanning at most 20 market sessions",
+    "same_close_fill": false
+  },
+  "representations": {
+    "primary": "RECOVERY_FRACTION_W=[C(s+W)-C(s)]/[C(s-1)-C(s)]; higher is stronger recovery",
+    "stabilization": "FURTHER_DRAWDOWN_RATIO_W=max(0,C(s)-min(C(s+1:s+W)))/ShockLoss; rank its negative so higher rank is stronger stabilization",
+    "industry_relative_recovery": "sum over s+1:s+W of stock causal step log return minus same-session PIT-industry leave-one-out mean log return; diagnostic only",
+    "winsorization_or_cap": false,
+    "optimized_combination": false
+  },
+  "ranking": {
+    "buckets": 5,
+    "assignment": "within cell and signal-confirmation date using deterministic average percentile rank and ceil(5*pct_rank), clipped to Q1..Q5",
+    "minimum_events_per_cell_confirmation_date": 5,
+    "small_dates": "retain for coverage but exclude from Q1..Q5 economics"
+  },
+  "outcomes": {
+    "horizons_sessions": [1, 3, 5, 10, 20],
+    "cost": "20 bps per side embedded in net return",
+    "absolute": "accepted causal-coordinate return from legal entry open through each entry-relative close",
+    "industry_relative": "stock net outcome minus same cell, confirmation-date, initial-PIT-industry mean net outcome",
+    "broad_relative": "stock net outcome minus same cell and confirmation-date mean net outcome",
+    "severe_loss": "net h20 <= -10%",
+    "mae": "minimum accepted causal-coordinate low from entry through h20 relative to entry cost",
+    "maximum_outcome_date": "2023-12-31"
+  },
+  "surface": {
+    "primary_horizons": [5, 10, 20],
+    "adjacency": "Manhattan distance one on ordered absolute-threshold, relative-threshold, and window axes",
+    "adequate_cell_support": "at least 200 complete Q1 and 200 complete Q5 outcomes at each of h5/h10/h20 and at least 60 distinct confirmation dates",
+    "full_period_favorable_cell": "adequate support; mean industry-relative Q5-Q1 across h5/h10/h20 >= +0.002; at least two of three industry-relative spreads positive; mean absolute Q5-Q1 across h5/h10/h20 > 0",
+    "chronologically_coherent_cell": "full-period favorable; early and late mean industry-relative h5/h10/h20 spread each > 0; at least four of six annual mean industry-relative h5/h10/h20 spreads > 0",
+    "stable_region": "a connected component of at least four chronologically coherent cells spanning at least two absolute thresholds, both relative thresholds, and at least two windows",
+    "region_choice": "largest cell count; ties prefer a component containing ABS_m06/REL_m04/W3; remaining ties use lexicographically sorted cell-id tuple",
+    "region_center": "cell minimizing total Manhattan distance to all component cells; ties minimize distance to ABS_m06/REL_m04/W3, then use fixed grid order",
+    "isolated_optimum": "at least one full-period favorable cell exists but the largest favorable connected component has at most two cells",
+    "mixed_surface": "no stable region and at least half of adequate cells reverse the sign of their mean h5/h10/h20 industry-relative spread between early and late blocks",
+    "broad_null_or_adverse": "at least 12 of 18 cells have nonpositive full-period mean h5/h10/h20 industry-relative spread"
+  },
+  "controls": {
+    "fixed_anchor_when_no_region": "ABS_m06/REL_m04/W3",
+    "control_target_when_region_exists": "frozen region-center cell",
+    "shock_severity": "within target, fixed absolute-loss bins [threshold,8%),[8%,10%),[10%,infinity) with the first empty when threshold is 8%, and relative-loss bins [threshold,6%),[6%,8%),[8%,infinity); supported at 20 Q1 and 20 Q5; at least half of supported cells must have positive mean h5/h10/h20 industry-relative ordering",
+    "generic_recovery": "for ABS_m06/REL_m04 separately at W2/W3/W5, one deterministic eligible negative-return nonshock match per complete shock: same date and PIT industry first, nearest causal stock return then symbol; same-date fallback; matched cell is generic only when its mean h5/h10/h20 industry-relative recovery spread is positive and at least 75% of the corresponding shock spread",
+    "pre_shock_trend": "causal prior-20 stock log return, fixed within-date terciles on target",
+    "realized_volatility": "causal prior-20 sample standard deviation, fixed within-date terciles on target",
+    "liquidity": "authoritative prior-20 average amount, fixed within-date terciles on target",
+    "coarse_control_pass": "for each control at least two of three terciles have positive mean h5/h10/h20 industry-relative Q5-Q1"
+  },
+  "chronology": {
+    "early": [2018, 2021],
+    "late": [2022, 2023],
+    "annual_years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "labels": "consumed development only"
+  },
+  "walk_forward_gate": {
+    "requires": [
+      "stable_region exists",
+      "control target shock-severity pass",
+      "control target pre-shock-trend pass",
+      "control target realized-volatility pass",
+      "control target liquidity pass",
+      "corresponding generic recovery is not similar",
+      "control target next-open actionability >= 0.90"
+    ],
+    "if_fail": "stop before walk-forward and Strategy-B replay"
+  },
+  "walk_forward_selection": {
+    "runs_only_if_gate_passes": true,
+    "selection_cutoffs": ["2020-12-31", "2021-12-31", "2022-12-31"],
+    "application_years": [2021, 2022, 2023],
+    "training_rows": "only observations whose h20 outcome date is at or before the selection cutoff",
+    "training_favorable_cell": "at least 100 complete Q1 and Q5 observations per h5/h10/h20 and 30 dates; mean industry-relative h5/h10/h20 Q5-Q1 >= +0.002; at least two horizons positive; mean absolute spread > 0",
+    "training_region": "connected component of at least four training-favorable cells spanning two absolute thresholds, both relative thresholds, and two windows",
+    "region_choice": "same largest-component, anchor-containment, lexicographic rule as full surface",
+    "selected_cell": "same deterministic Manhattan center rule as full surface; never maximum return",
+    "no_region": "NO_SIGNAL for that future year",
+    "application_rows": "selected-cell signals in the application year with each reported horizon outcome completed no later than that year end",
+    "aggregate": "pool only the mechanically selected future-year cell observations across 2021-2023",
+    "pass": "a signal is selected in at least two of three years; aggregate industry-relative Q5-Q1 mean across h5/h10/h20 >= +0.002 with at least two horizons positive; no selected application year has mean h5/h10/h20 industry-relative Q5-Q1 <= -0.002; Manhattan distance between successive non-NO_SIGNAL selected cells is at most two",
+    "claim": "DEVELOPMENT WALK-FORWARD, not OOS"
+  },
+  "strategy_a_independence": {
+    "timing": "after standalone surface and gate",
+    "target": "region center when a region exists, otherwise fixed anchor",
+    "diagnostics": ["same-date rank correlation with exact signal-date Low-MAX", "exact Champion overlap", "economics after removing Champion selections"],
+    "strategy_change_or_combination": false
+  },
+  "classification": {
+    "allowed": ["PROMISING_STABLE_SHOCK_ABSORPTION_FAMILY", "PROMISING_REGION_WALKFORWARD_WEAK", "PARAMETER_REGION_EXISTS_BUT_NOT_SELECTABLE", "ISOLATED_PARAMETER_OPTIMUM_ONLY", "GENERIC_SHORT_TERM_PRICE_PATH_ONLY", "SHOCK_SEVERITY_ONLY", "DEFENSIVE_INFORMATION_ONLY", "CHRONOLOGICALLY_UNSTABLE", "NULL"],
+    "priority": "stable-region and gate result first; if gate passes, walk-forward decides promising stable versus weak/not-selectable; if no region, isolated then chronological then broad null/adverse",
+    "no_sign_inversion": true,
+    "no_parameter_rescue": true,
+    "portfolio_replay": false
+  },
+  "actionability": {
+    "immediate": "first session after confirmation has accepted buyable open",
+    "delayed": "later accepted buyable open within 20 sessions",
+    "blocked_reasons": ["suspension_or_nontrading", "price_limit", "invalid_or_unavailable_open", "unresolved_lineage_or_corporate_action"]
+  },
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "causal_daily_panel": {"path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet", "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"},
+    "cycle_015_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015_spec.json", "sha256": "b53c054c64072fda8269532200e51e6b90b868070e468c57f789bd038ad05bb2"},
+    "execution_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_downside_resilience_discovery_v1.py", "sha256": "928cd486d392f01296b0a7ec79907b054e97a115f00c470a5f80a6291e81ef26"},
+    "v1_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1_spec.json", "sha256": "f0656e4357ceb2eb46831d6616b5a08ce290dc99047c36b29068f30e5839e5e9"},
+    "v1_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_shock_absorption_recovery_discovery_v1.py", "sha256": "827d6a8ee9bd360315d8aca005d38dbd52da59ec35d61406056930f893fe6678"},
+    "v1_result_provenance_only": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1_result.json", "sha256": "62c2ffe709dea19f1df5e129e6e4446fb704b0d9507e637478e23b0d1af68f8c"},
+    "champion_attribution": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_candidate_attribution.csv", "sha256": "91eb1c43b96d2edb4342ddf7757a5b7c4d244f7b40cf18c5946690d6138af097"}
+  },
+  "outputs": {
+    "external_root": "/Volumes/quant/CY_quant_research/shock_absorption_recovery_discovery_v1_1",
+    "evaluation_panel": "/Volumes/quant/CY_quant_research/shock_absorption_recovery_discovery_v1_1/evaluation_panel.parquet",
+    "surface_table": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_surface.csv",
+    "compact_result": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_result.json",
+    "report": "research/market_behavior_os_v2/reports/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_report.md"
+  },
+  "prohibited": ["post-2023 outcomes or indirect use", "CY-011 access", "Downside Resilience input, inversion, tuning, or rescue", "absolute thresholds other than -4%/-6%/-8%", "relative thresholds other than -2%/-4%", "windows other than 2/3/5", "intraday, VWAP, candlestick, volume composite, RSI, moving average, support, reclaim, gap, limit-down, industry-specific, market-cap-specific, hand-picked-year, sign-inversion, or machine-learning rescue", "full-period best-return or best-Sharpe cell selection", "Strategy-A modification, A+B combination, Champion replay, Strategy-B portfolio replay, Top-N, cutoff, holding, weight, exit, turnover, or capacity optimization", "OOS, independent-confirmation, validation, live, or production claim"]
+}

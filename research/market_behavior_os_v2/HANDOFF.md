@@ -2,6 +2,35 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: bounded shock-absorption neighborhood closed null
+
+Resume after the commit containing
+`ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1`; its clean starting checkpoint
+is `c81935dbaeaa1e55c23a9578bc2a1456048c1d81`. Preserve Industry Diffusion plus
+weekly Low-MAX unchanged. All evidence is consumed 2018--2023 development
+history; post-2023 outcomes and CY-011 remain unread.
+
+V1.1 freezes exactly 18 definitions before their outcomes: absolute simple
+shock <= -4%/-6%/-8%, stock-minus-leave-one-out-PIT-industry shock <= -2%/-4%,
+and exactly W=2/3/5 completed sessions. The earlier V1 -5%/-3%/W3 result was
+already known and is not one of these cells. Same-symbol overlap is suppressed
+through s+W within each cell. Recovery is ranked only after s+W close; entry is
+the first later accepted legal open.
+
+Coverage is 709,981 ranked event instances, 1,308 confirmation dates, 4,344
+securities, and 119 industries; individual cells contain 14,472--94,404 events.
+All 18 cells have negative absolute and industry-relative Recovery-Fraction
+Q5-Q1 at h5/h10/h20. There are no favorable or coherent cells, no stable region,
+and no isolated optimum. Severity, trend, volatility, liquidity, and generic-
+recovery gates do not establish the intended incremental mechanism.
+
+The full discovery gate fails, so the conditional 2021--2023 development
+walk-forward is not run. Final classification is `NULL`. Do not invert the
+ordering, add cells, condition on another feature, change windows, or construct
+Strategy B. Low-MAX rho is 0.031 and Champion overlap 0.05%, so Strategy A is
+unchanged. Resume the previously resource-failed frozen Cross-Sectional
+Dispersion science with a bounded external-disk plan.
+
 ## Latest checkpoint: shock absorption / recovery family closed null
 
 Resume after the commit containing

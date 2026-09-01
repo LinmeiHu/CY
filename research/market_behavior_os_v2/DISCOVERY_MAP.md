@@ -4,6 +4,31 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Shock Absorption / Recovery Discovery V1.1 conclusions
+
+- Exact frozen neighborhood: absolute shock <= -4%/-6%/-8%,
+  stock-minus-leave-one-out-PIT-industry shock <= -2%/-4%, and exact W=2/3/5;
+  18 cells only. The known V1 -5%/-3%/W3 point is outside this grid.
+- Coverage is 709,981 ranked event instances on 1,308 confirmation dates, 4,344
+  securities, and 119 industries, with 14,472--94,404 events per cell.
+- All 18 cells have adverse Q5-Q1 net and industry-relative recovery spreads at
+  h5/h10/h20. No favorable, coherent, sign-reversal, or isolated-optimum cell
+  exists; stable-region selection returns none.
+- Severity passes only 2/9 supported cells. Pre-shock trend, volatility, and
+  liquidity controls fail, while matched generic recovery stays near zero.
+- The frozen walk-forward gate fails, so no development walk-forward or
+  Strategy-B replay is run. Low-MAX rho is 0.031 and Champion Q5 overlap 0.05%.
+- Final classification is `NULL`. Close the whole bounded shock-absorption
+  family without inversion, extra cells, conditional rescue, or replay.
+
+What market behavior are we still not studying? The frozen Cross-Sectional
+Dispersion opportunity/ranking lane, order-book/queue pressure, investor-flow
+identity, borrow-feasible relative value, and immutable-vintage fundamentals.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No;
+the intended `shock -> absorption` structure is adverse throughout its bounded
+parameter neighborhood.
+
 ## Shock Absorption / Recovery Discovery V1 conclusions
 
 - Exact frozen event: causal stock return <= -5% and stock-minus-PIT-industry

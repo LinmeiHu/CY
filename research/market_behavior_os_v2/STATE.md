@@ -7,29 +7,29 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `574aaa4abf2293a76c7d7e0d8d5bd755bab95430` (clean start of Shock Absorption / Recovery Discovery V1)
-- `CURRENT_PHASE`: `SHOCK_ABSORPTION_RECOVERY_FAMILY_CLOSED_NULL_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`: exact three-session daily shock absorption is adverse in the intended strong-recovery orientation at every h1/h3/h5/h10/h20 horizon and every 2018--2023 h20 year. The exact V1 family closes without sign inversion or portfolio replay; the previously resource-failed Dispersion lane remains scientifically unresolved
+- `CURRENT_BASELINE`: `c81935dbaeaa1e55c23a9578bc2a1456048c1d81` (clean start of bounded Shock Absorption / Recovery Discovery V1.1)
+- `CURRENT_PHASE`: `SHOCK_ABSORPTION_RECOVERY_NEIGHBORHOOD_CLOSED_NULL_NO_WALK_FORWARD_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`: the exact 18-cell V1.1 neighborhood is adverse in the intended strong-recovery orientation at h5/h10/h20 in every cell. No favorable cell or stable region exists, so the conditional development walk-forward is not run. The family closes without inversion or rescue; the previously resource-failed Dispersion lane remains scientifically unresolved
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `574aaa4abf2293a76c7d7e0d8d5bd755bab95430`
+- `STARTING_HEAD`: `c81935dbaeaa1e55c23a9578bc2a1456048c1d81`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `574aaa4abf2293a76c7d7e0d8d5bd755bab95430`
-- `CURRENT_SCIENTIFIC_LAYER`: `INDEPENDENT_SHOCK_ABSORPTION_EVENT_SEQUENCE_DISCOVERY; NULL_ADVERSE_ORIENTATION; NO_STRATEGY_B_REPLAY`
-- `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
-- `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
-- `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
-- `EVENT_EPISODE_RULES`: causal PIT-3y 0.50 up/down boundary; first crossing after five complete opposite-side sessions; directions separate
-- `YEAR_BY_YEAR_RESULTS`: aggregate and crossing-arm formation-depth downside signs are negative in every PIT-supported year and leave-one-year-out estimate; noncrossing signs are also negative but its aggregate magnitude misses the frozen primary floor
-- `PLACEBO_RESULTS`: formation-depth level-family BH q=0.008706; closing-rejection q also passes but its fixed-control gate fails
-- `SUPPORTED_MARKET_STATES`: `formation_depth` as a distinct, incremental downside/tail-risk level with localized crossing-security adverse-path topology
-- `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
-- `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
-- `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
+- `CURRENT_HEAD_AT_RESUME`: `c81935dbaeaa1e55c23a9578bc2a1456048c1d81`
+- `CURRENT_SCIENTIFIC_LAYER`: `BOUNDED_SHOCK_ABSORPTION_PARAMETER_NEIGHBORHOOD; NULL_ADVERSE_ORIENTATION; WALK_FORWARD_GATE_FAILED; NO_STRATEGY_B_REPLAY`
+- `REPRESENTATIONS_TESTED`: exact 18-cell absolute-shock x PIT-industry-relative-shock x 2/3/5-session recovery neighborhood; Recovery Fraction primary and Further Drawdown Ratio diagnostic
+- `ECONOMIC_RESPONSE_STATUS`: `ALL_EIGHTEEN_RECOVERY_CELLS_ADVERSE_H5_H10_H20; NULL_NO_STABLE_REGION`
+- `LEVEL_VS_TRANSITION_STATUS`: `NO_FAVORABLE_OR_COHERENT_PARAMETER_REGION; CONDITIONAL_WALK_FORWARD_NOT_AUTHORIZED`
+- `EVENT_EPISODE_RULES`: objective completed daily joint shock; within-cell same-symbol suppression through s+W; exact s+1:s+W observation; next legal open only
+- `YEAR_BY_YEAR_RESULTS`: every full-sample h5/h10/h20 cell spread is adverse; no cell passes the frozen early/late plus four-of-six-year coherence gate
+- `PLACEBO_RESULTS`: deterministic matched generic recovery stays near zero; severity, prior trend, volatility, and liquidity controls fail the mechanism gate
+- `SUPPORTED_MARKET_STATES`: none from Shock Absorption / Recovery V1.1
+- `DESCRIPTIVE_ONLY_STATES`: recovery fraction, further-drawdown stabilization, and industry-relative recovery after objective shocks
+- `STRATEGY_HABITAT_STATUS`: `NO_STRATEGY_A_TRANSFER_OR_CHANGE; NO_STRATEGY_B_REPLAY; FROZEN_CHAMPION_UNCHANGED`
+- `CURRENT_MECHANISMS`: the intended `shock -> absorption -> favorable payoff` ordering is adverse throughout the bounded neighborhood; it is neither incremental Alpha nor defensive information in the frozen orientation
 - `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: complete the previously resource-failed frozen Cross-Sectional Dispersion science with a bounded external-disk execution plan. The failure was engineering, not scientific. Do not retune daily shock/recovery, invert its adverse ordering, or substitute a neighboring event definition.
 
 ## Research OS V2.3 resource and worker state
@@ -69,6 +69,38 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Shock Absorption / Recovery Discovery V1.1
+
+`ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1.1` freezes an exact 3 x 2 x 3
+neighborhood before opening any of its 18 cell outcomes: absolute shock <=
+-4%/-6%/-8%, stock-minus-leave-one-out-PIT-industry shock <= -2%/-4%, and
+exact completed recovery windows W=2/3/5. The earlier V1 -5%/-3%/W3 result was
+already known and is outside this exact grid. Same-symbol shocks are suppressed
+through s+W within each cell; the signal exists after s+W close and evaluation
+begins at the first later accepted legal open.
+
+The compact surface contains 709,981 ranked event instances over 1,308
+confirmation dates, 4,344 securities, and 119 industries. Per-cell coverage is
+14,472--94,404. Next-open actionability is 99.886% over the complete shock and
+generic-control sample; the control target is 99.895% actionable. Evaluation
+starts 2018-08-02 and the latest outcome read is 2023-12-29.
+
+Every cell has adverse Recovery-Fraction Q5 minus Q1 net and industry-relative
+spreads at h5, h10, and h20. Industry-relative spreads range from -0.080% to
+-0.292% at h5, -0.088% to -0.499% at h10, and -0.203% to -0.814% at h20.
+There are zero favorable cells, zero coherent cells, zero sign-reversal cells,
+and no stable region or isolated optimum. The severity gate passes only 2/9
+supported cells; pre-shock trend, volatility, and liquidity controls all fail.
+Matched generic recovery is near zero, while shock recovery remains adverse.
+
+The frozen walk-forward gate fails and the development walk-forward is not run.
+Low-MAX same-date rho is 0.031, Champion Q5 overlap is 0.05%, and removing
+Champion selections leaves the adverse ordering. No Strategy-A rule changes.
+Final classification is `NULL`: `shock -> absorption` is not supported as an
+incremental mechanism in this bounded neighborhood. No sign inversion, extra
+cell, conditional filter, Strategy-B replay, post-2023 outcome, or CY-011 input
+is used. Close the family and resume the frozen Cross-Sectional Dispersion lane.
 
 ### Shock Absorption / Recovery Discovery V1
 

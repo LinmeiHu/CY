@@ -1,5 +1,19 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Shock Absorption / Recovery Discovery V1.1
+
+| Family | Frozen definition | Evidence | Decision |
+|---|---|---|---|
+| Bounded recovery neighborhood | Absolute shock <= -4%/-6%/-8% x stock-minus-PIT-industry shock <= -2%/-4% x W=2/3/5 completed sessions; 18 exact cells | All 18 absolute and industry-relative Q5-Q1 spreads are negative at h5/h10/h20; 14,472--94,404 events/cell | `NULL`; no favorable/coherent cell or stable region |
+| Severity / generic path / coarse controls | Frozen target cell severity bins, deterministic matched non-shock recovery, and prior-trend/volatility/liquidity terciles | 2/9 supported severity cells positive; generic recovery near zero; every coarse-control gate fails | No incremental absorption mechanism |
+| Conditional walk-forward | Past-only largest-region/center selection for 2021, 2022, and 2023, run only after the full discovery gate | Full gate fails before selection | Not run; no historical cell selection or replay |
+| Strategy-A independence | Exact Low-MAX relationship, Champion overlap, and Champion-removed economics | Low-MAX rho 0.031; Q5 Champion overlap 0.05%; adverse ordering remains after removal | Distinct null, not a Strategy-A duplicate |
+
+Coverage is 709,981 ranked cell-event instances on 1,308 dates with 99.886%
+all-sample actionability. No extra cell, sign inversion, conditional rescue,
+Strategy-B replay, Strategy-A modification, post-2023 outcome, or CY-011 access
+occurs. Close the bounded family and move research capital to frozen Dispersion.
+
 ## Shock Absorption / Recovery Discovery V1
 
 | Family | Frozen definition | Evidence | Decision |
