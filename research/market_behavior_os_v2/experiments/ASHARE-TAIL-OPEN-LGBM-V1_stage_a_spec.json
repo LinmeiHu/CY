@@ -1,14 +1,29 @@
 {
   "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
   "stage": "A",
-  "status": "FROZEN_METHODOLOGY_BEFORE_FORWARD_OUTCOME_READ",
+  "status": "AMENDED_OUTCOME_BLIND_CHRONOLOGY_BEFORE_VALID_MODEL_OUTCOME",
   "claim_boundary": "PIT_B_RESEARCH_ONLY_NOT_LIVE_NOT_PRODUCTION",
   "starting_checkpoint": "fc57419216",
+  "chronology_amendment": {
+    "base_stage_a_checkpoint": "28726ddc82",
+    "authorized_at": "2026-09-01",
+    "reason": "Extend the same frozen V1 contract backward after certified pre-2018 data became available.",
+    "valid_model_outcome_observed_before_change": false,
+    "invalid_partial_fit_accepted_as_evidence": false,
+    "feature_label_execution_or_model_semantics_changed": false,
+    "chronology_extension_audit": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_chronology_extension_audit.json",
+      "sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f"
+    }
+  },
   "mission": "Rank eligible Shanghai/Shenzhen A-shares at 14:25, enter only the fixed one-minute bar ending 14:56, and exit at the first later legal open.",
   "input_contracts": {
     "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
     "research_contract": {"path": "research/market_behavior_os_v2/RESEARCH_CONTRACT.md", "sha256": "2de645be3b2d5a2dc5bccced9a05f5eae9f366fce7ed0eb6e5298a276faf14ff"},
     "feature_manifest": {"path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_feature_manifest.json", "sha256": "a1d33981620289dd9090210cca281500ea09584abd797cdc556a515b8f78858e"},
+    "QD-004-2013-2023": {"manifest": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_qd004_2013_2023_inventory.json", "sha256": "c4d2906dbced341fbf48089aea7239c1c61cfbb57c665fe084495d46487e6655"},
+    "daily_prep_2013_2023": {"manifest": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_daily_prep_2013_2023_input_manifest.json", "sha256": "4746a5873b351a0c925bc21ca005b02d4f759a9b38c473702f58130ccfa20394"},
+    "chronology_extension_audit": {"path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_chronology_extension_audit.json", "sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f"},
     "corporate_action_contract": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
     "CY-006": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
     "CY-008": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
@@ -28,7 +43,7 @@
   },
   "universe": {
     "scope": "historically identified Shanghai/Shenzhen common A-shares only; Beijing and unsupported identifiers are excluded",
-    "signal_history_start": "2018-04-02 after 60 complete registered sessions",
+    "signal_history_start": "2014-01-02 after the 2013 warm-up and at least 60 complete registered sessions per eligible symbol",
     "listing_history_min_valid_sessions": 60,
     "prior_20_average_amount_cny_min": 50000000,
     "signal_requirements": [
@@ -62,17 +77,19 @@
     "t_plus_one": true
   },
   "chronology": {
-    "registered_causal_range": ["2018-01-02", "2026-08-12"],
-    "warmup_only": ["2018-01-02", "2018-03-30"],
-    "development": ["2018-04-02", "2021-12-31"],
+    "registered_causal_range": ["2013-01-04", "2026-08-12"],
+    "warmup_only": ["2013-01-04", "2013-12-31"],
+    "development": ["2014-01-02", "2021-12-31"],
     "development_walk_forward": [
-      {"train": ["2018-04-02", "2019-12-31"], "predict": ["2020-01-02", "2020-12-31"]},
-      {"train": ["2018-04-02", "2020-12-31"], "predict": ["2021-01-04", "2021-12-31"]}
+      {"train": ["2014-01-02", "2017-12-29"], "predict": ["2018-01-02", "2018-12-28"]},
+      {"train": ["2014-01-02", "2018-12-28"], "predict": ["2019-01-02", "2019-12-31"]},
+      {"train": ["2014-01-02", "2019-12-31"], "predict": ["2020-01-02", "2020-12-31"]},
+      {"train": ["2014-01-02", "2020-12-31"], "predict": ["2021-01-04", "2021-12-31"]}
     ],
     "validation": ["2022-01-04", "2023-12-29"],
     "final_locked_oos": ["2024-01-02", "2026-08-11"],
     "final_oos_last_exit_metadata": "2026-08-12",
-    "contamination_note": "2018-2023 broad-market outcomes are consumed development evidence; post-2023 broad-market security outcomes remain unread. Only calendar/schema metadata may be inspected before Stage C.",
+    "contamination_note": "The 2013-2023 contract and model panel were materialized outcome-blind. No valid Ridge or LightGBM performance was generated or inspected before this chronology amendment. Post-2023 broad-market security outcomes remain unread; only calendar/schema metadata may be inspected before Stage C.",
     "purge": "for every prediction block, remove every training sample whose actual legal exit date is on or after the first prediction date",
     "embargo": "also remove the final signal session immediately before each prediction block even when its exit is earlier; no training sample may cross the overnight boundary into prediction time"
   },
@@ -101,7 +118,7 @@
       {"name": "moderately_richer", "num_leaves": 31, "max_depth": 6, "min_data_in_leaf": 200, "lambda_l1": 2.0, "lambda_l2": 20.0}
     ],
     "early_stopping": "inside each training span only: the final 126 training sessions form an inner chronological early-stopping block after purge; refit on the full outer training span using the selected iteration count",
-    "profile_selection": "highest mean daily Spearman IC across 2020/2021 walk-forward predictions; differences <=0.001 break toward lower complexity, then higher Top-10 net mean",
+    "profile_selection": "highest mean daily Spearman IC across 2018/2019/2020/2021 walk-forward predictions; differences <=0.001 break toward lower complexity, then higher Top-10 net mean",
     "prohibited": ["random split", "Optuna", "Bayesian or random search", "XGBoost", "CatBoost", "neural networks", "random forests", "ensembles"]
   },
   "baselines": [
@@ -124,7 +141,7 @@
   "development_gate_before_validation": {
     "all_required": [
       "selected LightGBM mean daily rank IC > 0",
-      "2020 and 2021 annual rank IC are each >= 0",
+      "2018, 2019, 2020, and 2021 annual rank IC are each >= 0",
       "selected LightGBM Top-10 mean net return > 0",
       "selected LightGBM Top-10 net return exceeds eligible-universe net return",
       "entry execution fraction >= 0.90"
@@ -153,8 +170,8 @@
   },
   "resource_contract": {
     "external_root": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1",
-    "source_scan": "one raw QD-004 year at a time, one reader, projected 1.49 billion pre-2024 rows, column- and time-pruned through 14:56",
-    "development_materialization": "2018-2023 only during Stage B; 2024-2026 shards are forbidden before Stage C",
+    "source_scan": "one raw QD-004 year at a time, one reader, 2,281,031,106 registered 2013-2023 rows, column- and time-pruned through 14:56",
+    "development_materialization": "2013 warm-up plus 2014-2023 development/validation only; 2024-2026 shards are forbidden before Stage C",
     "duckdb_memory_limit_gib": 6,
     "temporary_spill_limit_gib": 100,
     "system_headroom_floor_gib": 8,
@@ -172,6 +189,8 @@
   ],
   "stage_a_boundaries": {
     "forward_outcomes_read": false,
+    "valid_model_outcome_observed": false,
+    "invalid_partial_fit_outputs_rejected": true,
     "post_2023_security_rows_read": false,
     "post_2023_calendar_metadata_read": true,
     "model_fit": false,

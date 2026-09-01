@@ -7,18 +7,18 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `fc57419216` (outcome-blind start of A-share Tail-to-Open LightGBM V1)
-- `CURRENT_PHASE`: `ASHARE_TAIL_OPEN_LGBM_V1_STAGE_A_COMPLETE_OUTCOME_BLIND`
-- `CURRENT_PRIMARY_FRONTIER`: A distinct 14:25-information, fixed-14:56-entry, first-legal-next-open ML lane is frozen before outcomes. The 59-feature dictionary, Ridge baseline, three LightGBM profiles, Top-10 portfolio, development/validation chronology, purge/embargo, costs, and continuation gates are fixed. Stage B may read only 2018--2023; 2024--2026 security rows remain locked
+- `CURRENT_BASELINE`: `28726ddc82` (original outcome-blind Tail-to-Open Stage-A checkpoint)
+- `CURRENT_PHASE`: `ASHARE_TAIL_OPEN_LGBM_V1_CHRONOLOGY_EXTENSION_CERTIFIED_AWAITING_MODEL_AUTHORIZATION`
+- `CURRENT_PRIMARY_FRONTIER`: The unchanged 14:25-information, fixed-14:56-entry, first-legal-next-open ML contract is certified across 2014--2023 after a 2013 warm-up. Development is 2014--2021, validation is 2022--2023, and final OOS 2024--2026 remains locked/unread. The chronology amendment occurred before any valid model outcome; Ridge and LightGBM fitting remain unauthorized pending the chronology report
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: none. Stage A contains no forward outcome, model fit, or replay. Cycle 014 remains stopped with zero promotions and Cycle 013 remains closed unchanged
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `fc57419216`
+- `STARTING_HEAD`: `28726ddc82`
 
 ## Current continuation state
 
 - `CURRENT_HEAD_AT_RESUME`: `fc57419216`
-- `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_FROZEN; OUTCOME_BLIND; FINAL_OOS_LOCKED`
+- `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: under the frozen Stage-A contract, can chronological 2020--2021 development predictions establish positive cross-sectional and after-cost Top-10 value sufficient to open 2022--2023 validation? Do not open post-2023 final OOS unless every validation continuation gate passes and a separate freeze artifact is committed.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: after explicit model-fit authorization, can the frozen four-fold 2018--2021 development predictions establish positive cross-sectional and after-cost Top-10 value sufficient to open 2022--2023 validation? Do not fit before authorization or open post-2023 final OOS unless every validation continuation gate passes and a separate freeze artifact is committed.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-01.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-TAIL-OPEN-LGBM-V1` Stage B is authorized only
-  under the frozen Stage-A contract; final OOS remains locked.
+- `ACTIVE_EXPERIMENT`: `ASHARE-TAIL-OPEN-LGBM-V1` chronology construction is
+  complete; valid Stage-B model fitting is not yet authorized. Final OOS remains locked.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -69,20 +69,21 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
 
-### A-share Tail-to-Open LightGBM V1 Stage A
+### A-share Tail-to-Open LightGBM V1 amended Stage A
 
-Stage A completes outcome-blind. It freezes 59 features whose latest timestamp
-is the completed 14:25 bar, a single entry VWAP from the bar ending 14:56, and
-the first later legal open under T+1, limits, suspensions, 100-share lots,
-20-bps-per-side costs, and the accepted QD-010 action contract. Ridge and exactly
-three LightGBM complexity profiles are allowed; Top-10 is fixed.
+The outcome-blind chronology extension is certified. The unchanged contract has
+59 features no later than the completed 14:25 bar, one entry VWAP from the bar
+ending 14:56, and the first later legal open under T+1, limits, suspensions,
+100-share lots, 20-bps-per-side costs, and accepted QD-010 handling. Exact
+cash-only actions are carried and unsupported share/rights paths fail closed.
 
-Development is 2018-04-02 through 2021-12-31 with true annual expanding
-predictions for 2020 and 2021. Validation is 2022--2023. The final OOS is
-2024-01-02 through 2026-08-11 and remains `LOCKED_UNREAD`; only calendar and
-schema metadata were inspected. Two Stage-A regenerations are byte-identical:
-result `973802d8...`, report `f8bc8d81...`. No forward return, model fit,
-portfolio replay, or post-2023 security row was read.
+Warm-up is 2013; first eligibility is 2014-01-02; development is 2014--2021 with
+four expanding annual prediction folds in 2018--2021; validation is 2022--2023.
+The final OOS remains 2024-01-02--2026-08-11 `LOCKED_UNREAD`. The verified
+build-only panel has 4,709,398 eligible rows, 4,932 symbols, zero eligible PIT/
+snapshot/clock/market-rule failures, and hashes `824d6637...` panel and
+`952d1d30...` build audit. No valid model fit, model metric, portfolio replay,
+post-2023 security row, or CY-011 row was read.
 
 ### Cycle-013 industry minute leader/follower propagation
 

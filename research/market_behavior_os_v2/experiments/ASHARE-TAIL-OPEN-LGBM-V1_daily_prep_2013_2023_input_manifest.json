@@ -1,0 +1,80 @@
+{
+  "manifest_id": "ASHARE-TAIL-OPEN-LGBM-V1-DAILY-PREP-2013-2023",
+  "registry_id": "CYQ-DATA-BASELINE-20260820",
+  "registry_sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5",
+  "purpose": "DATA_PREPARATION",
+  "hard_valid": false,
+  "scope": {
+    "start": "2013-01-01",
+    "end": "2023-12-31"
+  },
+  "bindings": [
+    {
+      "role": "daily_bars",
+      "asset_id": "QD-001",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_daily",
+      "source": "quant local lake; eligible unadjusted *.none.parquet only",
+      "snapshot_id": "QD-001-NONE-20260820",
+      "available_at_policy": "Attach after each completed daily bar; no record-level strict PIT claim.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-001-none-20260820.json",
+      "inventory_sha256": "bbb6c2972165ec4edb99d024fef9a3c4d1a8efc753e7d4ae90fb76d1a71da3f3"
+    },
+    {
+      "role": "trading_state",
+      "asset_id": "QD-002",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_state_daily",
+      "source": "quant local lake",
+      "snapshot_id": "QD-002-20260820",
+      "available_at_policy": "Attach from the causal effective date; missing state remains unknown.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-002-20260820.json",
+      "inventory_sha256": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982"
+    },
+    {
+      "role": "index_daily",
+      "asset_id": "QD-003",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/index_daily",
+      "source": "quant local lake",
+      "snapshot_id": "QD-003-20260820",
+      "available_at_policy": "Attach after each completed index daily bar.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-003-20260820.json",
+      "inventory_sha256": "d847419443b2563c1904790f986ef8980dc37d688318fadb3858b3251d84972f"
+    },
+    {
+      "role": "industry_membership",
+      "asset_id": "QD-008",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta",
+      "source": "QD-008 Eastmoney disclosure chronology",
+      "snapshot_id": "QD-008-EASTMONEY-PIT-20260820",
+      "available_at_policy": "Require source_notice_date strictly before trade_date; UNKNOWN fails closed.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-008-eastmoney-pit-20260820.json",
+      "inventory_sha256": "b9246df9746f8b97484032dce69dc51bcf3937ece8c93b13a5c3ce2330b2038b"
+    },
+    {
+      "role": "circulating_shares",
+      "asset_id": "QD-009",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/meta",
+      "source": "quant QMT xtdata Capital history",
+      "snapshot_id": "QD-009-QMT-CAPITAL-20260820",
+      "available_at_policy": "Require effective and announcement dates no later than trade_date; nonpositive values fail closed.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-009-qmt-capital-20260820.json",
+      "inventory_sha256": "f92d2b5c2de1d046d8a4ddeac5e910fa96ce74f770627c92b1c702ed6dfd8468"
+    },
+    {
+      "role": "corporate_actions",
+      "asset_id": "QD-010",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5",
+      "source": "quant frozen official CNINFO current historical snapshot; PIT-B research only",
+      "snapshot_id": "QD-010-CNINFO-CURRENT-HISTORY-20260820",
+      "available_at_policy": "Use conservative known_at; late, incomplete, unsupported, or unresolved actions block new risk.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "inventory_sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    }
+  ],
+  "audits": {
+    "coverage": {"status": "NOT_RUN", "evidence": ""},
+    "duplicates": {"status": "NOT_RUN", "evidence": ""},
+    "time_travel": {"status": "NOT_RUN", "evidence": ""},
+    "consistency": {"status": "NOT_RUN", "evidence": ""},
+    "cross_table": {"status": "NOT_RUN", "evidence": ""}
+  }
+}

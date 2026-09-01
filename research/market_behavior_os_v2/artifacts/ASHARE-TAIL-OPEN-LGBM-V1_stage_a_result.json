@@ -1,176 +1,65 @@
 {
-  "boundaries": {
-    "final_oos_opened": false,
-    "forward_outcomes_read": false,
-    "model_fit": false,
-    "portfolio_replay": false,
-    "post_2023_calendar_metadata_read": true,
-    "post_2023_security_rows_read": false
-  },
-  "calendar_audit": {
-    "first_signal_after_60_session_warmup": "2018-04-02",
-    "security_columns_read_post_2023": false,
-    "years": {
-      "2018": {
-        "first": "2018-01-02",
-        "last": "2018-12-28",
-        "sessions": 243
-      },
-      "2019": {
-        "first": "2019-01-02",
-        "last": "2019-12-31",
-        "sessions": 244
-      },
-      "2020": {
-        "first": "2020-01-02",
-        "last": "2020-12-31",
-        "sessions": 243
-      },
-      "2021": {
-        "first": "2021-01-04",
-        "last": "2021-12-31",
-        "sessions": 243
-      },
-      "2022": {
-        "first": "2022-01-04",
-        "last": "2022-12-30",
-        "sessions": 242
-      },
-      "2023": {
-        "first": "2023-01-03",
-        "last": "2023-12-29",
-        "sessions": 242
-      },
-      "2024": {
-        "first": "2024-01-02",
-        "last": "2024-12-31",
-        "sessions": 242
-      },
-      "2025": {
-        "first": "2025-01-02",
-        "last": "2025-12-31",
-        "sessions": 243
-      },
-      "2026": {
-        "first": "2026-01-05",
-        "last": "2026-08-12",
-        "sessions": 147
-      }
-    }
+  "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
+  "stage": "A_CHRONOLOGY_AMENDMENT",
+  "status": "STAGE_A_AMENDED_OUTCOME_BLIND_BUILD_CERTIFIED",
+  "environment_valid": true,
+  "amendment": {
+    "authorized_before_valid_model_outcome": true,
+    "invalid_partial_model_run_rejected": true,
+    "model_performance_observed": false,
+    "scientific_contract_changed": false,
+    "chronology_changed": true
   },
   "chronology": {
-    "contamination_note": "2018-2023 broad-market outcomes are consumed development evidence; post-2023 broad-market security outcomes remain unread. Only calendar/schema metadata may be inspected before Stage C.",
-    "development": [
-      "2018-04-02",
-      "2021-12-31"
-    ],
-    "development_walk_forward": [
-      {
-        "predict": [
-          "2020-01-02",
-          "2020-12-31"
-        ],
-        "train": [
-          "2018-04-02",
-          "2019-12-31"
-        ]
-      },
-      {
-        "predict": [
-          "2021-01-04",
-          "2021-12-31"
-        ],
-        "train": [
-          "2018-04-02",
-          "2020-12-31"
-        ]
-      }
-    ],
-    "embargo": "also remove the final signal session immediately before each prediction block even when its exit is earlier; no training sample may cross the overnight boundary into prediction time",
-    "final_locked_oos": [
-      "2024-01-02",
-      "2026-08-11"
-    ],
-    "final_oos_last_exit_metadata": "2026-08-12",
-    "purge": "for every prediction block, remove every training sample whose actual legal exit date is on or after the first prediction date",
-    "registered_causal_range": [
-      "2018-01-02",
-      "2026-08-12"
-    ],
-    "validation": [
-      "2022-01-04",
-      "2023-12-29"
-    ],
-    "warmup_only": [
-      "2018-01-02",
-      "2018-03-30"
-    ]
+    "warmup_only": ["2013-01-04", "2013-12-31"],
+    "first_signal_eligible_date": "2014-01-02",
+    "development": ["2014-01-02", "2021-12-31"],
+    "validation": ["2022-01-04", "2023-12-29"],
+    "final_locked_oos": ["2024-01-02", "2026-08-11"]
   },
-  "environment_valid": true,
-  "execution_contract": {
-    "buy_cost_per_side": 0.002,
-    "corporate_actions": "reuse ASHARE-CA-REPLAY-003 known_at/effective_date rules; block known new risk, carry exact supported cash-only actions, require pre-effective risk exit for share/rights events, and fail closed on unresolved terms",
-    "cost_interpretation": "canonical all-in repository convention including applicable commission/tax/slippage allowance",
-    "entry_bar_end_time": "14:56:00",
-    "entry_interpretation": "one-minute VWAP of the bar ending 14:56, representing an order released just after 14:55; no earlier or later entry clock is compared",
-    "entry_price": "raw unadjusted amount/volume of the 14:56 bar",
-    "exit": "first legal raw open on a later market session; same-session sale is forbidden",
-    "feature_cutoff": "14:25:00",
-    "forbidden_feature_interval": "(14:25:00, 15:00:00]",
-    "formula": "(economic exit proceeds after sell cost)/(14:56 entry VWAP after buy cost)-1",
-    "gross_diagnostic": "economic exit proceeds before costs / entry VWAP - 1",
-    "lot_size": 100,
-    "name": "tail_to_first_legal_open_net_return",
-    "price_limit_and_suspension": "if the next session is suspended or sell_blocked_open, carry without fill to the first later legal open; unknown holding rows fail closed",
-    "sell_cost_per_side": 0.002,
-    "severe_loss10": "minimum cost-aware executable-coordinate low-mark return from entry through exit <= -0.10",
-    "signal_timestamp": "14:25:00 after the bar ending 14:25 is complete",
-    "t_plus_one": true,
-    "timezone": "Asia/Shanghai"
+  "coverage": {
+    "daily_rows": 9542406,
+    "raw_valid_sessions": 9409920,
+    "panel_rows": 8166072,
+    "eligible_rows": 4709398,
+    "eligible_symbols": 4932,
+    "eligible_dates": 2434
   },
-  "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
   "feature_audit": {
     "feature_count": 59,
-    "unique_names": 59
+    "unique_names": 59,
+    "feature_cutoff": "14:25:00",
+    "entry_bar_end_time": "14:56:00"
+  },
+  "contract_audit": {
+    "same_frozen_v1_contract_valid_2014_2023": true,
+    "daily_pit_gate": "PASS",
+    "eligible_snapshot_binding_failures": 0,
+    "eligible_industry_pit_failures": 0,
+    "eligible_market_rule_failures": 0,
+    "eligible_same_clock_failures": 0,
+    "eligible_missing_1456_bar_failures": 0,
+    "non_tplus1_exits": 0,
+    "eligible_cash_only_holding_paths": 12892,
+    "eligible_unsupported_action_paths_failed_closed": 3131
+  },
+  "boundaries": {
+    "ridge_fit": false,
+    "lightgbm_fit": false,
+    "model_performance_read": false,
+    "portfolio_replay": false,
+    "post_2023_security_rows_read": false,
+    "final_oos_opened": false,
+    "cy011_read": false
   },
   "hashes": {
+    "spec_sha256": "fa551965e2d3a51d55b5c8543da2f7bb9babfd1cbefe4002b5c207785759ad67",
     "feature_manifest_sha256": "a1d33981620289dd9090210cca281500ea09584abd797cdc556a515b8f78858e",
-    "spec_sha256": "e6010d586231286dcc34066cdaa97a99f7c8252afbd1721338b67658b9a948cc"
+    "chronology_extension_audit_sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f",
+    "build_only_audit_sha256": "952d1d307283e8a20af3b53bd67f11fc610b0dad9e61d6432b043bf728f13e2c",
+    "daily_contract_sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df",
+    "raw_enriched_sha256": "dc8ed5c22ec8861624d388fbfaccd50b48f2cf5cf74585b783413e39e273e1a4",
+    "panel_sha256": "824d663781d0e45f91ea7741fc63076fd2dfaad7fb16c38f2d72174e8ef461fd"
   },
-  "resource_audit": {
-    "external_free_gib_floor_hundreds": 3700,
-    "external_free_gib_minimum_required": 500,
-    "external_root_created": false,
-    "external_volume": "/Volumes/quant",
-    "lightgbm_available": true
-  },
-  "schema_audit": {
-    "daily": {
-      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
-      "required_columns_present": true
-    },
-    "execution": {
-      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2/execution_5m/partition_year=2018/data_0.parquet",
-      "required_columns_present": true
-    },
-    "minute_daily": {
-      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
-      "required_columns_present": true
-    },
-    "raw": {
-      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2018_day_parquet_none.parquet",
-      "required_columns_present": true
-    }
-  },
-  "stage": "A",
-  "status": "STAGE_A_COMPLETE_OUTCOME_BLIND",
-  "versions": {
-    "duckdb": "1.5.2",
-    "lightgbm": "4.6.0",
-    "numpy": "2.1.3",
-    "pandas": "2.2.3",
-    "pyarrow": "19.0.0",
-    "python": "3.13.5",
-    "sklearn": "1.6.1"
-  }
+  "next_action": "Await explicit authorization before any valid Ridge or LightGBM fit."
 }

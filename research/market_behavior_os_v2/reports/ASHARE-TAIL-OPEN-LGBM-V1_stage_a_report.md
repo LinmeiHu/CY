@@ -1,35 +1,34 @@
-# A-share Tail-to-Open LightGBM V1 — Stage A
+# A-share Tail-to-Open LightGBM V1 — amended Stage A
 
 ## CONCLUSION
 
-`STAGE_A_COMPLETE_OUTCOME_BLIND`
+`STAGE_A_AMENDED_OUTCOME_BLIND_BUILD_CERTIFIED`
 
-The fixed lane uses 59 features available no later than 14:25, a single raw
-one-minute entry bar ending 14:56, and the first later legal open. No forward
-return, model fit, portfolio result, or post-2023 security row was read.
+The same frozen 59-feature Tail-to-Open V1 contract is constructible and valid
+from the first eligible signal date `2014-01-02` through `2023-12-29`. The
+chronology amendment was authorized before any valid Ridge or LightGBM outcome
+was generated or inspected. The interrupted partial fit is rejected evidence.
 
-## CHRONOLOGY
+## AMENDED CHRONOLOGY
 
-- Development: `2018-04-02` through `2021-12-31`.
+- Warm-up: `2013-01-04` through `2013-12-31`.
+- Development: `2014-01-02` through `2021-12-31`.
 - Validation: `2022-01-04` through `2023-12-29`.
-- Final locked OOS: `2024-01-02` through `2026-08-11`.
-- Final OOS remains `LOCKED_UNREAD`; only calendar/schema metadata was inspected.
+- Final locked OOS: `2024-01-02` through `2026-08-11`, unchanged and unread.
 
-## EXECUTION
+## CONTRACT CERTIFICATION
 
-The signal is formed after the completed 14:25 bar. The order is represented
-by the VWAP of the bar ending 14:56 and is unfilled when pinned at the upper
-limit. Exit is the first later legal open under T+1, suspension, limit, lot,
-and frozen QD-010 corporate-action handling. Canonical cost is 20 bps per side.
+The panel contains 4,709,398 eligible rows across 4,932 symbols and 2,434
+signal dates. Eligible rows have zero daily/execution hard-valid failures,
+snapshot-binding failures, late-state failures, PIT-industry failures,
+market-rule failures, same-clock history failures, or missing 14:56 bars.
 
-## MODELS AND DECISION
+The daily and execution schemas for 2013–2017 exactly match accepted CY-006 and
+CY-008. Historical 5%, 10%, and 20% price-limit rule identities are preserved.
+Exit is always a later legal open under T+1. Exact cash-only actions are carried;
+3,131 unsupported action paths fail closed.
 
-Ridge and exactly three preregistered LightGBM profiles are allowed. Top-10 is
-fixed. Development walk-forward must pass before validation is opened; final
-OOS requires every validation continuation gate and a separate committed freeze.
+## BOUNDARY
 
-## RESOURCES
-
-The mounted external volume has at least 3700 GiB free.
-Stage B may scan and materialize only 2018-2023 yearly shards. No 2024-2026
-feature or label shard may be created before Stage C authorization.
+No Ridge or LightGBM fit, prediction, model metric, portfolio replay, CY-011
+read, or 2024–2026 security read occurred. Model fitting remains unauthorized.

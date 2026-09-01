@@ -2,35 +2,35 @@
 
 Updated 2026-09-01.
 
-## Latest checkpoint: A-share Tail-to-Open LightGBM V1 Stage A
+## Latest checkpoint: A-share Tail-to-Open LightGBM V1 amended Stage A
 
-Resume from the Stage-A checkpoint after `fc57419216` on
-`research/ashare-ultrashort-v1`. The environment was reconciled from an
-unrelated checked-out branch, restored cleanly, and audited before research.
-An unrelated concurrent `ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015`
-untracked spec was preserved and is outside this lane.
+Resume from the chronology-extension checkpoint based on `28726ddc82` on
+`research/ashare-ultrashort-v1`. The amendment was authorized before any valid
+Ridge or LightGBM outcome was generated or inspected. The interrupted partial
+fit is rejected scientific evidence. Unrelated Cycle-015 work remains outside
+this lane and was not incorporated.
 
-Stage A is `STAGE_A_COMPLETE_OUTCOME_BLIND`. The feature manifest freezes 59
-economically named predictors from prior completed CY-006 rows, QD-004 bars no
-later than 14:25, and causal PIT market/leave-one-out-industry context. The
-signal forms at 14:25. Entry is only the raw one-minute VWAP of the bar ending
-14:56, representing an order released just after 14:55; upper-limit-pinned or
-otherwise invalid orders remain unfilled and are not replaced. Exit is the
-first later legal open with T+1, limits, suspension, lots, 20 bps per side, and
-the frozen QD-010 corporate-action contract.
+Stage A is `STAGE_A_AMENDED_OUTCOME_BLIND_BUILD_CERTIFIED`. The unchanged
+feature manifest freezes 59 predictors no later than 14:25. Entry remains only
+the raw one-minute VWAP of the bar ending 14:56, with no replacement for
+upper-limit-pinned or otherwise invalid orders. Exit remains the first later
+legal open under T+1, limits, suspension, 100-share lots, 20 bps per side, and
+the frozen QD-010 contract. Exact cash-only actions are carried; unsupported
+share/rights paths fail closed.
 
-Development runs 2018-04-02--2021-12-31 with expanding annual predictions in
-2020 and 2021. Validation is 2022--2023 and may be opened only after the frozen
-development gate. Final OOS is 2024-01-02--2026-08-11 and remains locked until
-Stage B passes every continuation gate and a separate machine-readable Stage-C
-freeze is committed. Only post-2023 calendar/schema metadata has been read.
+Warm-up is 2013-01-04--2013-12-31. The exact first eligible date is 2014-01-02.
+Development is 2014-01-02--2021-12-31 with four expanding annual predictions
+in 2018, 2019, 2020, and 2021. Validation remains 2022--2023. Final OOS remains
+2024-01-02--2026-08-11 and `LOCKED_UNREAD`; CY-011 is unread.
 
-Models are limited to Ridge alpha 10 and three fixed LightGBM profiles. Top-10
-is fixed; no Top-N, cutoff, entry, feature-family, horizon, regime, or parameter
-search is permitted. Stage A tests pass 4/4. Two audit regenerations are
-byte-identical: result `973802d8...`, report `f8bc8d81...`. Stage B must build
-only 2018--2023 yearly shards on `/Volumes/quant`; no 2024--2026 feature or
-label materialization is authorized.
+The verified build-only panel has 8,166,072 rows, 4,709,398 eligible rows,
+4,932 eligible symbols, and 2,434 eligible dates. Eligible lineage, PIT industry,
+snapshot binding, 14:25 availability, same-clock history, market rule, 14:56
+bar, and T+1 audits have zero failures. Panel hash is `824d6637...`; build-only
+audit is `952d1d30...`. Tests pass 18/18 and lint passes. No Ridge/LightGBM fit,
+prediction, model metric, portfolio replay, post-2023 security read, or CY-011
+read is authorized or completed. Report this checkpoint before requesting fit
+authorization.
 
 ## Latest checkpoint: first A-share ultra-short discovery batch
 

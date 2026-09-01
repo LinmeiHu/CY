@@ -1,0 +1,134 @@
+{
+  "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
+  "stage": "OUTCOME_BLIND_CHRONOLOGY_EXTENSION",
+  "status": "CERTIFIED_BUILD_ONLY_NO_VALID_MODEL_OUTCOME_OBSERVED",
+  "as_of": "2026-09-01",
+  "authorization": {
+    "reason": "More pre-2018 history was found to be constructible under the frozen V1 semantics.",
+    "timing": "The amendment was authorized before any valid Ridge or LightGBM outcome was generated or inspected.",
+    "invalid_partial_fit": "Rejected as invalid scientific evidence; no model performance was accepted or inspected.",
+    "scientific_contract_changed": false,
+    "chronology_changed": true
+  },
+  "sealed_boundaries": {
+    "ridge_fit": false,
+    "lightgbm_fit": false,
+    "model_performance_read": false,
+    "post_2023_security_rows_read": false,
+    "final_oos_opened": false,
+    "cy011_read": false
+  },
+  "chronology": {
+    "warmup_only": ["2013-01-04", "2013-12-31"],
+    "first_signal_eligible_date": "2014-01-02",
+    "development": ["2014-01-02", "2021-12-31"],
+    "development_walk_forward": [
+      {"train": ["2014-01-02", "2017-12-29"], "predict": ["2018-01-02", "2018-12-28"]},
+      {"train": ["2014-01-02", "2018-12-28"], "predict": ["2019-01-02", "2019-12-31"]},
+      {"train": ["2014-01-02", "2019-12-31"], "predict": ["2020-01-02", "2020-12-31"]},
+      {"train": ["2014-01-02", "2020-12-31"], "predict": ["2021-01-04", "2021-12-31"]}
+    ],
+    "validation": ["2022-01-04", "2023-12-29"],
+    "final_locked_oos": ["2024-01-02", "2026-08-11"],
+    "final_oos_last_exit_metadata": "2026-08-12"
+  },
+  "qd004_pre_2018_content_freeze": {
+    "manifest": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_qd004_2013_2023_inventory.json",
+    "manifest_sha256": "c4d2906dbced341fbf48089aea7239c1c61cfbb57c665fe084495d46487e6655",
+    "source_manifest_sha256": "b1a6c88996e5015a23544d63398b49d5dd269d50c71567dc03344fbb83e69e8e",
+    "files": [
+      {"year": 2013, "bytes": 1363004393, "sha256": "d176d3941fb42277dcc4889a333d0210b8f5219d5b394f36d2f5b7975a62348a"},
+      {"year": 2014, "bytes": 1430954280, "sha256": "8e2e873623124b323a91c5c367c003859b184ac471dc842d572f30f256d567b8"},
+      {"year": 2015, "bytes": 1729797841, "sha256": "36c99e02c4c391f03740e255a274c521da9733b507abb90158e0767a7dcca965"},
+      {"year": 2016, "bytes": 1770631831, "sha256": "a7c0b062a9de260c4798922aa998ca3471bdbe2690c754b732ebc7fc9272faf8"},
+      {"year": 2017, "bytes": 1902152442, "sha256": "3bb9d8d1df8795e9cc45cb04631b796de7153798f815d629c420156e47a448d7"}
+    ]
+  },
+  "annual_coverage": [
+    {"year": 2013, "role": "WARMUP", "calendar_dates": 238, "raw_exact_241_sessions": 586610, "raw_invalid_grid_sessions": 12, "daily_rows": 589203, "daily_hard_valid_rows": 535561, "execution_window0_rows": 586622, "eligible_rows": 0, "eligible_symbols": 0},
+    {"year": 2014, "role": "DEVELOPMENT", "calendar_dates": 245, "raw_exact_241_sessions": 618938, "raw_invalid_grid_sessions": 7, "daily_rows": 622028, "daily_hard_valid_rows": 565727, "execution_window0_rows": 618945, "eligible_rows": 236564, "eligible_symbols": 2163},
+    {"year": 2015, "role": "DEVELOPMENT", "calendar_dates": 244, "raw_exact_241_sessions": 596246, "raw_invalid_grid_sessions": 0, "daily_rows": 667135, "daily_hard_valid_rows": 610140, "execution_window0_rows": 596246, "eligible_rows": 322341, "eligible_symbols": 2470},
+    {"year": 2016, "role": "DEVELOPMENT", "calendar_dates": 244, "raw_exact_241_sessions": 696590, "raw_invalid_grid_sessions": 0, "daily_rows": 706406, "daily_hard_valid_rows": 648883, "execution_window0_rows": 696541, "eligible_rows": 420472, "eligible_symbols": 2654},
+    {"year": 2017, "role": "DEVELOPMENT", "calendar_dates": 244, "raw_exact_241_sessions": 798083, "raw_invalid_grid_sessions": 0, "daily_rows": 802244, "daily_hard_valid_rows": 743908, "execution_window0_rows": 798083, "eligible_rows": 377703, "eligible_symbols": 2980},
+    {"year": 2018, "role": "DEVELOPMENT", "calendar_dates": 243, "raw_exact_241_sessions": 856033, "raw_invalid_grid_sessions": 0, "daily_rows": 860450, "daily_hard_valid_rows": 802042, "execution_window0_rows": 856033, "eligible_rows": 308696, "eligible_symbols": 2775},
+    {"year": 2019, "role": "DEVELOPMENT", "calendar_dates": 244, "raw_exact_241_sessions": 887882, "raw_invalid_grid_sessions": 0, "daily_rows": 894370, "daily_hard_valid_rows": 837138, "execution_window0_rows": 887882, "eligible_rows": 431838, "eligible_symbols": 3258},
+    {"year": 2020, "role": "DEVELOPMENT", "calendar_dates": 243, "raw_exact_241_sessions": 948565, "raw_invalid_grid_sessions": 0, "daily_rows": 957562, "daily_hard_valid_rows": 902180, "execution_window0_rows": 948808, "eligible_rows": 569263, "eligible_symbols": 3604},
+    {"year": 2021, "role": "DEVELOPMENT", "calendar_dates": 243, "raw_exact_241_sessions": 1060559, "raw_invalid_grid_sessions": 0, "daily_rows": 1068725, "daily_hard_valid_rows": 1017199, "execution_window0_rows": 1060802, "eligible_rows": 601155, "eligible_symbols": 3990},
+    {"year": 2022, "role": "VALIDATION", "calendar_dates": 242, "raw_exact_241_sessions": 1148747, "raw_invalid_grid_sessions": 0, "daily_rows": 1155795, "daily_hard_valid_rows": 1110664, "execution_window0_rows": 1148989, "eligible_rows": 714030, "eligible_symbols": 4448},
+    {"year": 2023, "role": "VALIDATION", "calendar_dates": 242, "raw_exact_241_sessions": 1211667, "raw_invalid_grid_sessions": 0, "daily_rows": 1218488, "daily_hard_valid_rows": 1184214, "execution_window0_rows": 1211899, "eligible_rows": 727336, "eligible_symbols": 4688}
+  ],
+  "source_exclusions": {
+    "2013_in_scope_invalid_grids": 12,
+    "2014_in_scope_invalid_grids": 7,
+    "2016_exact_minute_sessions_without_daily_identity_or_execution_projection": 49,
+    "2022_unsupported_beijing_sessions": 13249,
+    "2023_unsupported_beijing_sessions": 36249,
+    "interpretation": "All exclusions fail closed. Beijing rows are outside the frozen Shanghai/Shenzhen universe and are not schema or clock repairs."
+  },
+  "contract_audits": {
+    "daily_pit_gate": "PASS",
+    "daily_rows": 9542406,
+    "daily_hard_valid_rows": 8957656,
+    "daily_hard_invalid_rows": 584750,
+    "daily_time_travel_issues": 0,
+    "daily_duplicate_keys": 0,
+    "execution_duplicate_keys": 0,
+    "execution_bad_windows": 0,
+    "execution_bad_available_at_clocks": 0,
+    "eligible_rows": 4709398,
+    "eligible_symbols": 4932,
+    "eligible_dates": 2434,
+    "eligible_daily_hard_valid_failures": 0,
+    "eligible_execution_hard_valid_failures": 0,
+    "eligible_snapshot_binding_failures": 0,
+    "eligible_late_state_failures": 0,
+    "eligible_industry_pit_failures": 0,
+    "eligible_market_rule_failures": 0,
+    "eligible_signal_action_blockers": 0,
+    "eligible_same_clock_history_failures": 0,
+    "eligible_missing_1456_bar_failures": 0,
+    "eligible_signal_trading_state_failures": 0,
+    "eligible_cash_only_holding_paths": 12892,
+    "eligible_unsupported_action_holding_paths_failed_closed": 3131,
+    "non_tplus1_exits": 0,
+    "invalid_exit_opens": 0,
+    "post_2023_security_rows": 0,
+    "post_2023_exit_rows": 0
+  },
+  "historical_market_rules": [
+    "CN_A_SHARE_MAIN_10_T1_LOT100_V1",
+    "CN_A_SHARE_ST_5_T1_LOT100_V1",
+    "CN_A_SHARE_REG_20_T1_LOT100_V1"
+  ],
+  "schema_audit": {
+    "daily_2013_2017_vs_accepted_cy006": "EXACT_73_COLUMNS_AND_TYPES",
+    "execution_2013_2017_vs_accepted_cy008": "EXACT_30_COLUMNS_AND_TYPES",
+    "semantic_differences": [],
+    "resolved_nonsemantic_differences": [
+      "Removed a redundant physical year column introduced by Hive shard consolidation.",
+      "Use accepted CY-006 daily with accepted CY-008 execution for 2018-2023 so daily_snapshot_id remains exactly bound.",
+      "The regenerated but unused 2018-2023 daily extension maps invalid industry UNKNOWN to null; hard_valid, component validity, market rules, actions, and notice dates are unchanged."
+    ]
+  },
+  "artifacts": {
+    "daily_pit_audit": {"path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/audit.json", "bytes": 6499, "sha256": "8071fdae37f38f9ef8bca18815c3ddc1ddd9a89a83df6761aec015818249c752"},
+    "daily_contract": {"path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/daily_contract_2013_2023.parquet", "bytes": 1005184029, "sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df"},
+    "same_clock_raw_features": {"path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/raw_features_2013_2023.parquet", "bytes": 1941396809, "sha256": "dc8ed5c22ec8861624d388fbfaccd50b48f2cf5cf74585b783413e39e273e1a4"},
+    "model_panel": {"path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/model_panel_2013_2023.parquet", "bytes": 3241919344, "sha256": "824d663781d0e45f91ea7741fc63076fd2dfaad7fb16c38f2d72174e8ef461fd"},
+    "feature_manifest_sha256": "a1d33981620289dd9090210cca281500ea09584abd797cdc556a515b8f78858e",
+    "external_storage_observed": "approximately 11 GiB including resumable date shards and compact annual products"
+  },
+  "pre_2018_generated_contract_hashes": [
+    {"year": 2013, "daily_sha256": "b2448fc39365121d5b5a282f4b31b98a23bb8ab21a805f2385f4c2b309a35f1d", "execution_sha256": "c7e3554dd962d493bd0f11a090522431c2efcf217ad9fb91fd3056ae8fa62829", "raw_features_sha256": "83d677cb31b1f353eea12d306b860cb6d10e40e0737d17ff672bcd3856885d04"},
+    {"year": 2014, "daily_sha256": "de8839c9612f76ba190bfc1e729639ee723dfc6e3ea7a15d3fb77048808e0c81", "execution_sha256": "0733be9b270a3918817fc1df54745a7f67dfd068d437babd2ec5509ada7609d9", "raw_features_sha256": "f21c3907b2b9d4e03255d0416fd2012c9a06073693054bedbdd0fd5e731898f3"},
+    {"year": 2015, "daily_sha256": "9f581bbc0fec380f893d5cf520784798df5c0305e76d01283650bd861ce1aab0", "execution_sha256": "5bb0966bc66f92523d2229dd162b52f3a625d65fa8ed5bd9430b3c28e9ee3d74", "raw_features_sha256": "993c10f40e0fb695f7f649779e64754a23f0db517b82cc352838b67cc48a2fac"},
+    {"year": 2016, "daily_sha256": "e1d7f7481766b413b63e7e13cb6c30c1aeed96400459f4d84c2c728b3b705d22", "execution_sha256": "00f5bdb2d32bd74cc18f2a362d5258d5ea76a7c80bc309e648eee22ac7546a9b", "raw_features_sha256": "471417e4b7d6c498638809b6b8406cf8b9464b35984887235595b904b22ee094"},
+    {"year": 2017, "daily_sha256": "5a8d7b0d48d4ff3b9323c53a812539115bb62a2cfe197369ef3b5f5499816f88", "execution_sha256": "54caa32a367b0254ea2a247765403772598724d829efcf2ccf097737e9666c6f", "raw_features_sha256": "65e4daafac284e9db02dd3e82beeb0afae694dc21199ed68320ea5b089db7a5e"}
+  ],
+  "scientific_conclusion": {
+    "same_frozen_v1_contract_valid_2014_2023": true,
+    "method_change_required": false,
+    "model_fit_authorized": false,
+    "next_action": "Report chronology certification and await explicit authorization before any Ridge or LightGBM fit."
+  }
+}

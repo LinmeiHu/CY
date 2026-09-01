@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Tail-to-Open LightGBM V1 Stage A is frozen outcome-blind as a distinct 14:25 cross-sectional aggregation lane; Cycle 014 remains closed with zero promotion | Run only the fixed 2018--2023 development/validation sequence; stop without final OOS if its gates fail |
+| EXPLORE | 30% | Tail-to-Open LightGBM V1 is outcome-blind and chronology-certified across 2014--2023; Cycle 014 remains closed with zero promotion | Await explicit fit authorization, then run only the fixed 2018--2021 development folds and gated 2022--2023 validation; final OOS stays sealed |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 45% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
