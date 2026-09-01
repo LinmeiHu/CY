@@ -1,0 +1,138 @@
+{
+  "experiment_id": "ASHARE-POST-SHOCK-STRONG-RECOVERY-AVOIDANCE-ANATOMY-V1",
+  "status": "FROZEN_BEFORE_NEW_Q5_POST_HOC_OUTCOME_AGGREGATION",
+  "starting_checkpoint": "832edcbd7033fcbe5c9c5e886a35fb7ab6e71d70",
+  "required_branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "POST_HOC_DEVELOPMENT_ANATOMY_GENERATED_BY_V1_1_AND_ADVERSE_RECOVERY_ANATOMY_NOT_CONFIRMATION_NOT_OOS_NOT_STRATEGY",
+  "provenance": "The Q5 avoidance direction was generated after observing the frozen V1.1 adverse recovery surface and the subsequent Q1-Q5 decomposition. This experiment can freeze a future negative-selection hypothesis but cannot confirm Alpha.",
+  "inputs": {
+    "evaluation_panel": {
+      "path": "/Volumes/quant/CY_quant_research/shock_absorption_recovery_discovery_v1_1/evaluation_panel.parquet",
+      "sha256": "90ff065f2449fc75702cf6bcdbf6f9076ed67546380300cc85dd45f0f31ffcce"
+    },
+    "v1_1_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_spec.json",
+      "sha256": "b6318619dcf9c483c32be8fcd8a2e0df9897ba5338ca2dc23bdd9ecda6c1bc87"
+    },
+    "v1_1_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_result.json",
+      "sha256": "85c948329c05ec840d40140dcd8a21ea53671b84dc8c65797a78c2994c76f966"
+    },
+    "v1_1_surface": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_surface.csv",
+      "sha256": "1721a0995f8cd1c92fda2506ec0b6c00e3fc286e08097666c4255d65fa04e392"
+    },
+    "adverse_recovery_anatomy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-POST-SHOCK-ADVERSE-RECOVERY-ANATOMY-V1_result.json",
+      "sha256": "e0137cab454949d5c3a332066079b01620dba373c33b58051fc53cf19f5962e4"
+    }
+  },
+  "sample": {
+    "sample_type": "SHOCK only; frozen GENERIC_W2/W3/W5 matched non-shock rows are reused only for the generic comparison",
+    "parameter_cells": 18,
+    "absolute_simple_return_thresholds": [-0.04, -0.06, -0.08],
+    "industry_relative_simple_return_thresholds": [-0.02, -0.04],
+    "absorption_windows_sessions": [2, 3, 5],
+    "selected_bucket": 5,
+    "selected_bucket_meaning": "strongest Recovery Fraction quintile within the exact frozen V1.1 cell/date cross-section",
+    "horizons_sessions": [1, 3, 5, 10, 20],
+    "primary_horizons_sessions": [5, 10, 20],
+    "blocks": {
+      "early": [2018, 2019, 2020, 2021],
+      "late": [2022, 2023]
+    },
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "maximum_outcome_date": "2023-12-31",
+    "severe_loss_threshold": -0.10,
+    "minimum_supported_control_observations": 100
+  },
+  "q5_metrics": [
+    "N",
+    "absolute_forward_mean",
+    "absolute_forward_median",
+    "absolute_positive_return_rate",
+    "industry_relative_forward_mean",
+    "industry_relative_forward_median",
+    "severe_loss_incidence at h20 only using MAE <= -10%; null at shorter horizons",
+    "mean MAE at h20 only; null at shorter horizons"
+  ],
+  "baseline_decomposition": {
+    "event_sample": "all complete Q1-Q5 shock events in the same frozen cell/horizon",
+    "q5_minus_event_absolute": "Q5 absolute mean minus event-sample absolute mean",
+    "q5_minus_event_industry_relative": "Q5 industry-relative mean minus event-sample industry-relative mean",
+    "q5_weakness_share": "negative Q5-minus-event absolute contribution divided by the positive Q1-Q5 absolute spread when that spread is positive",
+    "aggregation": "equal-weight across the 18 cells; nested cell counts cannot select the family conclusion"
+  },
+  "family_counts": {
+    "negative_absolute_cell": "Q5 absolute mean < 0",
+    "negative_industry_relative_cell": "Q5 industry-relative mean < 0",
+    "both_negative_cell": "both means < 0",
+    "negative_absolute_median_cell": "Q5 absolute median < 0",
+    "sub_50_positive_rate_cell": "Q5 absolute positive-return rate < 0.50",
+    "q5_below_event_cell": "Q5-minus-event mean < 0 in the named coordinate"
+  },
+  "chronology": {
+    "block_metrics": "Q5 metrics and negative-cell counts for 2018-2021 and 2022-2023",
+    "year_metrics": "Q5 metrics and negative-cell counts for each 2018 through 2023 calendar year",
+    "stable_block_direction": "equal-cell Q5 absolute and industry-relative means are both < 0 in both blocks at h5/h10/h20",
+    "stable_year_breadth": "at each h5/h10/h20 at least four of six years have equal-cell Q5 absolute and industry-relative means both < 0"
+  },
+  "controls": {
+    "target": "ABS_m06_REL_m04_W3",
+    "shock_severity": "reuse the V1.1 absolute bins [threshold,8%), [8%,10%), [10%,infinity) crossed with relative bins [threshold,6%), [6%,8%), [8%,infinity)",
+    "pre_shock_trend": "reuse causal prior-20 log-return within-date terciles",
+    "realized_volatility": "reuse causal prior-20 sample-volatility within-date terciles",
+    "liquidity": "reuse prior-20 average-amount within-date terciles",
+    "adverse_supported_group": "at least 100 Q5 observations and Q5 absolute and industry-relative means are both < 0 at h5/h10/h20",
+    "control_survival": "at least half of supported severity groups and at least two of three trend, volatility, and liquidity terciles are adverse supported groups"
+  },
+  "generic_recovery": {
+    "samples": "frozen ABS_m06_REL_m04_W2/W3/W5 shocks versus the already matched GENERIC_W2/W3/W5 non-shocks",
+    "metrics": "Q5 absolute/industry-relative means and Q5-minus-event means at h5/h10/h20",
+    "comparable_generic_window": "generic Q5-minus-event absolute mean is negative at h5/h10/h20, its mean primary-horizon absolute magnitude is at least 75% of the paired shock magnitude, and generic Q5-minus-event industry-relative mean is negative at h5/h10/h20",
+    "generic_recovery_chasing_risk": "at least two of three windows are comparable generic windows"
+  },
+  "risk_anatomy": {
+    "broad_q5_weakness": "at every primary horizon at least 12/18 cells have a negative Q5 absolute median and at least 12/18 have positive-return rate below 50%",
+    "tail_comparison": "at h20 compare Q5 severe-loss incidence and mean MAE with the full event sample in each cell",
+    "mean_only": "Q5 mean weakness passes but broad Q5 weakness fails at at least two primary horizons"
+  },
+  "classification_order": [
+    "CHRONOLOGICALLY_UNSTABLE",
+    "GENERIC_RECOVERY_CHASING_RISK",
+    "POST_HOC_STRONG_RECOVERY_AVOIDANCE_CANDIDATE",
+    "RELATIVE_AVOIDANCE_ONLY",
+    "MEAN_ONLY_Q5_WEAKNESS",
+    "NO_ACTIONABLE_AVOIDANCE_INFORMATION"
+  ],
+  "classification_gates": {
+    "chronologically_unstable": "Q5 absolute or industry-relative equal-cell mean changes sign between early and late in at least two of h5/h10/h20",
+    "mean_weakness": "at every h5/h10/h20 at least 12/18 cells have negative Q5 absolute mean, negative Q5 industry-relative mean, both means negative, and Q5-minus-event means negative in both coordinates",
+    "material_event_underperformance": "Q5-minus-event means are negative in both coordinates at h5/h10/h20 and the equal-weight average absolute Q5-minus-event mean over h5/h10/h20 is <= -0.20%",
+    "post_hoc_strong_recovery_avoidance_candidate": "mean weakness, material event underperformance, broad Q5 weakness, stable block direction, stable year breadth, and control survival all pass, while generic recovery chasing risk does not",
+    "relative_avoidance_only": "at every h5/h10/h20 at least 12/18 cells have negative Q5 industry-relative mean and Q5-minus-event industry-relative mean, both development blocks are negative industry-relative at all primary horizons, and the absolute mean-weakness gate fails",
+    "mean_only_q5_weakness": "mean weakness and material event underperformance pass but broad Q5 weakness fails at at least two primary horizons",
+    "no_actionable_avoidance_information": "none of the preceding categories applies"
+  },
+  "strategy_a_independence": {
+    "analysis": "reuse V1.1 and prior anatomy overlap/correlation/exclusion evidence only",
+    "strategy_a_replay": false,
+    "a_plus_b_portfolio": false
+  },
+  "execution": {
+    "portfolio_replay": false,
+    "admission_veto_replay": false,
+    "transaction_cost_study": false,
+    "walk_forward": false,
+    "new_holding_or_frequency_search": false
+  },
+  "prohibited": [
+    "post-2023 outcome access",
+    "CY-011 access",
+    "Q4 plus Q5, top percentiles, continuous cutoff, or alternative avoidance score",
+    "new shock, recovery, control, or parameter definitions",
+    "threshold, horizon, bucket, execution, or portfolio optimization",
+    "Strategy-A modification, replay, or combination",
+    "nonlinear models or transformation search"
+  ]
+}

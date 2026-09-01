@@ -1,8 +1,38 @@
 # Lean discovery map
 
-Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
+Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
+
+## Post-Shock Strong-Recovery Avoidance Anatomy V1 conclusions
+
+- This is Q5-only post-hoc consumed-development anatomy generated after the
+  adverse surface was known. It is not confirmation, OOS evidence, or a veto
+  replay.
+- Q5 absolute mean is -0.253%/-0.791%/-1.545% and industry-relative mean is
+  -0.179%/-0.289%/-0.525% at h5/h10/h20. Q5 minus all shock events is
+  -0.257%/-0.564%/-1.046%.
+- Negative absolute cells are 13/18, 18/18, and 18/18; negative relative cells,
+  negative medians, and sub-50% win rates are 18/18 throughout. H20 severe-loss
+  incidence is 57.681% versus 51.046% for all shock events; MAE is -13.120%
+  versus -11.501%.
+- Harm accumulates rather than appearing immediately. Early h5 absolute Q5 is
+  slightly positive (+0.028%) while late h5 is -0.699%; h10/h20 are adverse in
+  both blocks. Both coordinates are negative in 4/6, 5/6, and 6/6 years.
+- Frozen controls are mixed: severity 4/9, trend 3/3, volatility 2/3, liquidity
+  3/3. Generic Q5 has comparable absolute weakness but near-zero relative
+  effect; 0/3 windows pass the frozen generic-risk gate.
+- Final classification: `NO_ACTIONABLE_AVOIDANCE_INFORMATION`. Close the entire
+  shock/recovery family with no bucket, cutoff, score, control, or execution
+  rescue. Strategy A is unchanged.
+
+What market behavior are we still not studying? Frozen Cross-Sectional
+Dispersion as an executable independent opportunity/ranking mechanism remains
+the highest-value registered gap.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Q5 delayed weakness is informative anatomy but does not clear the frozen
+stability/control standard for an admission-veto hypothesis.
 
 ## Post-Shock Adverse-Recovery Anatomy V1 conclusions
 

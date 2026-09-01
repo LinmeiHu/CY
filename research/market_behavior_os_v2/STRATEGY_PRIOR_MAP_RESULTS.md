@@ -1,5 +1,21 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Post-Shock Strong-Recovery Avoidance Anatomy V1
+
+| Anatomy | Frozen evidence | Result | Decision |
+|---|---|---|---|
+| Q5 negative-selection leg | Exact inherited Recovery-Fraction Q5 in all 18 V1.1 cells | Absolute -0.253%/-0.791%/-1.545% and industry-relative -0.179%/-0.289%/-0.525% at h5/h10/h20; negative absolute cells 13/18, 18/18, 18/18 | Broad delayed weakness, but not sufficient alone |
+| Event baseline and risk | Q5 versus all complete shock events in each cell/horizon | Q5-event -0.257%/-0.564%/-1.046%; every primary median/win-rate cell adverse; h20 severe 57.681% vs 51.046%, MAE -13.120% vs -11.501% | Economically material and broad, not mean-only |
+| Chronology | Frozen 2018--2021 / 2022--2023 blocks and six years | Early h5 absolute +0.028% versus late -0.699%; both coordinates negative in 4/6, 5/6, 6/6 years at h5/h10/h20 | Fails all-primary block stability gate |
+| Existing controls / generic path | Frozen severity cells, trend/volatility/liquidity terciles, matched non-shock Q5 | Severity 4/9, trend 3/3, volatility 2/3, liquidity 3/3; generic absolute weakness but near-zero relative effect | Control-survival gate fails; not frozen generic-risk classification |
+
+This is post-hoc consumed-development anatomy. Final classification is
+`NO_ACTIONABLE_AVOIDANCE_INFORMATION`; status is
+`POST_HOC_DEVELOPMENT_ANATOMY_NO_CANDIDATE_NOT_CONFIRMED_ALPHA`. No Q4,
+percentile, score, control, admission-veto, portfolio, Strategy-A, post-2023,
+or CY-011 experiment occurs. Close the entire local shock/recovery family and
+resume frozen Dispersion.
+
 ## Post-Shock Adverse-Recovery Anatomy V1
 
 | Anatomy | Frozen evidence | Result | Decision |

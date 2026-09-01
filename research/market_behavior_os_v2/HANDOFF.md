@@ -1,6 +1,43 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-09-01.
+Updated 2026-09-02.
+
+## Latest checkpoint: strong-recovery Q5 avoidance anatomy closes nonactionable
+
+Resume after the commit containing
+`ASHARE-POST-SHOCK-STRONG-RECOVERY-AVOIDANCE-ANATOMY-V1`; its clean starting
+checkpoint is `832edcbd7033fcbe5c9c5e886a35fb7ab6e71d70`. Preserve Industry
+Diffusion plus weekly Low-MAX unchanged. This is Q5-only post-hoc 2018--2023
+development anatomy, not confirmation, OOS evidence, or a strategy test.
+Post-2023 outcomes and CY-011 remain unread.
+
+The anatomy reuses all 18 V1.1 cells and the existing panel without rebuilding
+market data. There are 149,152 Q5 cell-events. Q5 absolute return is
+-0.087%/-0.076%/-0.253%/-0.791%/-1.545% at h1/h3/h5/h10/h20;
+industry-relative return is +0.000%/-0.079%/-0.179%/-0.289%/-0.525%.
+Q5 underperforms the all-shock event mean by +0.037%/-0.079%/-0.257%/
+-0.564%/-1.046%. Harm is delayed and accumulates.
+
+The primary-horizon cross-cell evidence is broad: negative absolute cells are
+13/18, 18/18, and 18/18 at h5/h10/h20; negative industry-relative cells,
+negative medians, and sub-50% win rates are 18/18 throughout. At h20, severe
+loss incidence rises from 51.046% for all shock events to 57.681% for Q5 and
+mean MAE worsens from -11.501% to -13.120%, in all 18 cells.
+
+The frozen candidate gate fails for two reasons. Early h5 absolute Q5 is
++0.028%, versus -0.699% late, so early/late absolute weakness is not present at
+every primary horizon. Only 4/9 supported severity groups stay adverse in both
+absolute and industry-relative coordinates at h5/h10/h20, below the frozen
+half-group requirement. Trend, volatility, and liquidity survive 3/3, 2/3, and
+3/3 terciles. Year breadth is 4/6, 5/6, and 6/6 both-negative years. Generic
+matched non-shock Q5 has similar absolute weakness but near-zero relative
+effect, so 0/3 windows meet the exact generic-risk gate.
+
+Final classification: `NO_ACTIONABLE_AVOIDANCE_INFORMATION`. Do not test Q4,
+Q4+Q5, percentiles, alternative recovery variables, new controls, admission
+vetoes, or portfolio execution. Low-MAX rho remains 0.031 and Champion overlap
+is only 3 observations, so Strategy A is unchanged. Close the entire local
+shock/recovery family and resume frozen Cross-Sectional Dispersion science.
 
 ## Latest checkpoint: adverse-recovery anatomy closes long-reversal inference
 
