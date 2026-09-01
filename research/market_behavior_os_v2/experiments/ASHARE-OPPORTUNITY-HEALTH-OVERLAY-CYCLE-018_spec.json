@@ -1,0 +1,98 @@
+{
+  "experiment_id": "ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018",
+  "status": "FROZEN_BEFORE_OPPORTUNITY_STATE_OR_OVERLAY_OUTCOMES",
+  "starting_checkpoint": "3455f5ee30",
+  "branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "champion": {
+    "name": "Industry Diffusion + Weekly Low-MAX",
+    "cost_per_side": 0.002,
+    "clock": "exact frozen weekly decision close and next-legal-open entry",
+    "breadth": "exact frozen Top-10 selections",
+    "holding": "exact frozen 20-session lifecycle and QD-010 execution",
+    "selection_changes_authorized": false
+  },
+  "inputs": {
+    "cycle_017_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-FAILURE-ANATOMY-CYCLE-017_spec.json",
+      "sha256": "b88512e612e8c36347c99f5b0ad2999d74ffd18c4c9ab3ae0e0aad25c9b17448"
+    },
+    "cycle_017_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_failure_anatomy_cycle_017.py",
+      "sha256": "2f0ac559fb86e2c7a519f34733fd8a4e1f8851bf8947afaff3139166b0b9b65d"
+    },
+    "cycle_017_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-FAILURE-ANATOMY-CYCLE-017_result.json",
+      "sha256": "59764fd9d54b5d794bca8da3b0102d940221118355a27cf20361b82300afc650"
+    },
+    "cycle_017_industry_path": {
+      "path": "/Volumes/quant/CY_quant_research/champion_failure_anatomy_cycle_017/industry_path_panel.parquet",
+      "sha256": "53a89a19835960b989e50579c09a73f25160362c5bcb46fa95761622deb8db52"
+    },
+    "cycle_016_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "construction_equity": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_equity.csv",
+      "sha256": "03de3938883a78f1edb3344ae88fe579e504e1dad9b134e441d5ce8d49c7c0d1"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    }
+  },
+  "positive_industry_breadth": {
+    "name": "POSITIVE_INDUSTRY_BREADTH",
+    "industry_universe": "industries represented by at least one PIT-valid causal daily row at the frozen decision close",
+    "industry_return": "equal-weight mean causal stock step_return within each date's PIT industry membership, compounded over the 20 completed sessions ending at the decision close",
+    "horizon_sessions": 20,
+    "timestamp": "frozen weekly decision close; no subsequent bar enters",
+    "missing": "exclude an industry from numerator and denominator unless all 20 industry daily returns are finite; fail the decision if fewer than 50 complete industries",
+    "normalization": "none; absolute fraction of complete industries with strictly positive compounded return"
+  },
+  "states": {
+    "threshold_method": "fixed economic thirds frozen before outcomes",
+    "LOW": "breadth < 1/3",
+    "MEDIUM": "1/3 <= breadth < 2/3",
+    "HIGH": "breadth >= 2/3"
+  },
+  "phase_a_gate_all_required": {
+    "minimum_dates_each_state": 20,
+    "minimum_high_minus_low_cohort_payoff": 0.005,
+    "monotonic_full": "LOW < MEDIUM < HIGH mean cohort net payoff",
+    "low_worse_than_high_both_blocks": true,
+    "high_positive_full_and_both_blocks": true,
+    "low_worse_than_nonlow_in_at_least_four_years": true,
+    "minimum_2023_medium_high_fraction": 0.25
+  },
+  "overlay": {
+    "authorization": "run only if every Phase-A gate passes",
+    "scope": "scale only new cohort capital using the state known at its frozen signal close; existing cohorts retain their original capital and lifecycle",
+    "exposure_mapping": {
+      "LOW": 0.5,
+      "MEDIUM": 0.75,
+      "HIGH": 1.0
+    },
+    "cash": "unallocated capital remains cash",
+    "selection": "identical frozen stocks, weights within each invested cohort, lifecycle, and execution",
+    "primary_cost_per_side": 0.002
+  },
+  "classification": {
+    "OPPORTUNITY_HEALTH_NOT_USEFUL": "Phase A fails; no overlay replay",
+    "CHRONOLOGICALLY_UNSTABLE": "Phase A relationship reverses across broad blocks",
+    "OPPORTUNITY_HEALTH_OVERLAY_EARNS_COMPLEXITY": "Phase A passes, losing-year arithmetic return improves at least 3 pp, maximum drawdown improves at least 2 pp, Sharpe or Calmar improves at least 0.05, and profitable-year sacrifice per 1 pp loss avoided is at most 1.5",
+    "USEFUL_BUT_TOO_COSTLY_IN_UPSIDE": "Phase A passes and losing-year return plus drawdown improve, but the risk-adjusted or opportunity-cost gate fails",
+    "OVERLAY_DEGRADES_CHAMPION": "Phase A passes but losing-year return or maximum drawdown does not improve"
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 access",
+    "2018, 2022, known losing dates, future strategy returns, or hindsight labels in feature construction",
+    "market MA, volatility, stock breadth, dispersion, index, macro, candidate breadth, or Low-MAX feature",
+    "threshold, horizon, exposure mapping, or allocation grid search",
+    "admission veto, Top-N change, exit change, stock-selection change, or total-existing-exposure rewrite",
+    "second overlay rescue experiment",
+    "OOS, independent-validation, live, or production claim"
+  ]
+}

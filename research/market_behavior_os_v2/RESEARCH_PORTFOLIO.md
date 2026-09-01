@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Failure anatomy shows demand for independent lower-beta return sources, while champion neighbors are closed | Screen genuinely distinct cross-sectional, relative, or non-continuation mechanisms using registered data |
+| EXPLORE | 35% | Positive Industry Breadth fails before overlay replay, further reducing champion-wrapper headroom | Screen genuinely distinct cross-sectional, relative, or non-continuation Alpha using registered data |
 | EXPLOIT | 5% | Champion remains cost-resilient and Low-MAX helpful in both losing years, but no modification is authorized | Freeze exact rules; seek only genuinely independent confirmation |
-| INVENT | 45% | Relative-value, investor-flow identity, PIT factors, and order-book/queue information directly address the diagnosed diversification gap | Prefer one bounded multi-family contract only when acquisition is separately justified |
+| INVENT | 40% | Relative-value, investor-flow identity, PIT factors, and order-book/queue information directly address the diversification gap | Prefer one bounded multi-family contract only when acquisition is separately justified |
 | REPLICATE | 15% | Canonical IVOL/residual momentum and PIT fundamentals are blocked; lawful independent confirmation is also unavailable | Resume only with a source-ready factor/history contract or genuinely independent data |
 | TRANSFER | 5% | The sole Confirmed-Breakdown admission mapping affected zero decisions | Park the translation; do not open the exit role as a rescue |
-| FALSIFY | 5% | Losing-year attribution retains relative selection and rejects execution/Low-MAX as common causes | Close regime-filter and champion-repair inference from Cycle 017 |
+| FALSIFY | 5% | The exact single-feature opportunity-health hypothesis is nonmonotonic and reverses by block | Close Positive Industry Breadth threshold/mapping rescue and champion overlay inference |
 
 Mandatory checkpoint questions:
 

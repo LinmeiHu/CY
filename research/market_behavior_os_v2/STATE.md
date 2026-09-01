@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `c5a38ef68a` (start of frozen champion failure-anatomy cycle 017)
-- `CURRENT_PHASE`: `CHAMPION_FAILURE_ANATOMY_COMPLETE_NO_REPAIR_AUTHORIZED`
-- `CURRENT_PRIMARY_FRONTIER`: 2018 and 2022 are `COMMON_MARKET_BETA_FAILURE`: selected stocks retain relative value and Low-MAX improves the losing Industry Diffusion baseline, but absolute market/selected-industry continuation is negative. The years differ in P&L shape and entry observability, so no champion regime filter or repair is authorized
+- `CURRENT_BASELINE`: `3455f5ee30` (start of single-feature opportunity-health overlay cycle 018)
+- `CURRENT_PHASE`: `POSITIVE_INDUSTRY_BREADTH_REJECTED_PHASE_A_NO_OVERLAY_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: exact 20-session `POSITIVE_INDUSTRY_BREADTH` is `OPPORTUNITY_HEALTH_NOT_USEFUL`: fixed LOW/MEDIUM/HIGH states are nonmonotonic, HIGH minus LOW cohort payoff is -0.342 pp, the ordering reverses across broad blocks, and HIGH is negative late. Phase B did not run; capital returns to a second independent Alpha engine
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 017 authorizes no repair or filter; Cycle 016 authorizes no construction modification; daily Low-MAX refresh, all five Cycle-015 daily paths, Cycle-014 lifecycle/liquidity, and Cycle-013 propagation remain closed
+- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 018 rejects the exact Positive Industry Breadth overlay before replay; Cycle 017 authorizes no repair/filter and Cycle 016 no construction modification. Daily refresh and prior closed families remain closed
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `c5a38ef68a`
-- `CURRENT_SCIENTIFIC_LAYER`: `FROZEN_CHAMPION_FAILURE_ANATOMY_COMPLETE; SECOND_INDEPENDENT_ALPHA_DIRECTION_PRIORITIZED`
+- `CURRENT_HEAD_AT_RESUME`: `3455f5ee30`
+- `CURRENT_SCIENTIFIC_LAYER`: `SINGLE_OPPORTUNITY_HEALTH_FEATURE_FALSIFIED; NO_EXPOSURE_OVERLAY; INDEPENDENT_ALPHA_PRIORITIZED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -69,6 +69,39 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-018 Positive Industry Breadth opportunity-health overlay
+
+The sole feature was frozen before state outcomes: at each weekly decision close,
+`POSITIVE_INDUSTRY_BREADTH` is the fraction of at least 50 PIT-valid industries
+whose equal-weight absolute return over the 20 completed sessions ending at that
+close is positive. Fixed economic states are LOW below one-third, MEDIUM from
+one-third to below two-thirds, and HIGH from two-thirds. No normalization,
+rolling quantile, auxiliary regime feature, or threshold search is used.
+
+Across 263 decisions, LOW/MEDIUM/HIGH contain 94/77/92 dates. Mean champion
+cohort payoff is +1.38%/+2.12%/+1.04%; pooled trade return is
++1.53%/+1.44%/+0.58%. HIGH minus LOW cohort payoff is -0.342 pp rather than the
+required +0.50 pp. LOW/MEDIUM/HIGH winner rates are 50.37%/50.13%/46.62%, and
+severe-loss rates are 13.42%/14.71%/14.38%.
+
+Chronology also fails. LOW versus HIGH cohort payoff is +0.85%/+2.36% in the
+early block but +1.99%/-0.12% late. HIGH is not positive in both blocks, and LOW
+is worse than non-LOW in only three of six years. The exact state distribution
+does not distinguish 2022 from 2023: LOW/MEDIUM/HIGH counts are 20/12/17 versus
+17/15/12, despite selected-industry d20 return of -0.89% versus +0.28%.
+
+Every preregistered Phase-A economic gate except state sample size and the 2023
+nonmechanical-low safeguard fails. Classification:
+`OPPORTUNITY_HEALTH_NOT_USEFUL`. Phase B did not run, no exposure was scaled,
+and no annual overlay or hypothetical improvement exists. Do not rescue this
+exact family with new thresholds, horizons, mappings, or regime features.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation. Has this mechanism implied a
+genuinely new strategy archetype? No. The failed overlay strengthens the case
+for a second independent Alpha engine instead of a champion exposure wrapper.
 
 ### Cycle-017 champion failure-mode anatomy
 

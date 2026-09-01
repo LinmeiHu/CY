@@ -2,6 +2,39 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: Positive Industry Breadth overlay stopped at Phase A
+
+Resume after the commit containing `ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018`;
+its starting checkpoint is `3455f5ee30`. Preserve Industry Diffusion plus weekly
+Low-MAX exactly. Do not rerun the overlay with another breadth horizon,
+threshold, exposure mapping, market feature, or state combination. All evidence
+is consumed 2018--2023 history; post-2023 outcomes and CY-011 remain unread.
+
+The single PIT feature compounds equal-weight industry daily returns over the 20
+completed sessions ending at each frozen weekly decision close, then measures
+the fraction positive. Fixed LOW/MEDIUM/HIGH cutoffs are below 1/3, 1/3--2/3,
+and at least 2/3. The raw PIT partitions supply the necessary pre-start 2018
+history; the truncated Cycle 015 feature panel is not used to shorten or change
+the frozen horizon.
+
+LOW/MEDIUM/HIGH contain 94/77/92 dates and earn +1.38%/+2.12%/+1.04% mean
+cohort payoff. HIGH minus LOW is -0.342 pp. The early ordering favors HIGH
+(+2.36% versus LOW +0.85%), but the late ordering reverses (HIGH -0.12% versus
+LOW +1.99%). HIGH fails the positive-both-blocks gate, the full ordering is
+nonmonotonic, and only three of six yearly LOW-versus-non-LOW comparisons have
+the intended sign.
+
+2022 has 20/12/17 LOW/MEDIUM/HIGH decisions; 2023 has 17/15/12. Their state
+distributions are similar even though subsequent selected-industry d20 return is
+-0.89%/+0.28%. The feature therefore does not distinguish synchronized weakness
+from weak-index but richer opportunity.
+
+Final classification: `OPPORTUNITY_HEALTH_NOT_USEFUL`. Phase B was not
+authorized; no exposure replay, annual overlay, turnover change, or risk/reward
+attribution exists. Reject without rescue and return capital to a genuinely
+independent lower-beta, relative-value, event-asymmetry, or downside-aware Alpha
+engine.
+
 ## Latest checkpoint: champion failure-mode anatomy
 
 Resume after the commit containing `ASHARE-CHAMPION-FAILURE-ANATOMY-CYCLE-017`;

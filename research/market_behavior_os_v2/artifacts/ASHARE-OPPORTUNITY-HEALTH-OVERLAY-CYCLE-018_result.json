@@ -1,0 +1,429 @@
+{
+  "annual_attribution": [],
+  "artifacts": {
+    "ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_phase_a.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_phase_a.csv",
+      "sha256": "ed7b48e8a2e65e410f568a2e217257857b88a387a6ad58f5aa9420d6d0e2f142"
+    },
+    "ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_report.md": {
+      "path": "research/market_behavior_os_v2/reports/ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_report.md",
+      "sha256": "2036af8055cb9607eb5f2afbea9872c011adddb855b187db7afdbab0ece122d5"
+    },
+    "ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_states.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_states.csv",
+      "sha256": "b96c67168715f6bad1887a571c6c486f1cdfc32264a28822e7265648c2fc9162"
+    }
+  },
+  "boundaries": {
+    "champion_selection_changed": false,
+    "cy011_read": false,
+    "existing_cohorts_rescaled": false,
+    "exposure_grid_search": false,
+    "oos_claim": false,
+    "post_2023_read": false,
+    "second_overlay_tested": false,
+    "threshold_search": false
+  },
+  "champion": {
+    "annualized_return": 0.16341938323652916,
+    "average_cash_fraction": 0.021730451350834734,
+    "average_gross_exposure": 0.9782695486491653,
+    "calmar": 0.6340569751278342,
+    "daily_sharpe": 0.7314535150695061,
+    "entry_execution_fraction": 0.9980988593155894,
+    "maximum_drawdown": -0.25773611780484185,
+    "p10_capacity_cny_at_5pct_amount": 111124306.08000001,
+    "severe_trade_fraction": 0.14133333333333334,
+    "total_return": 1.2243463719999998,
+    "turnover_multiple_initial_capital": 210.51756581592423
+  },
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "classification": "OPPORTUNITY_HEALTH_NOT_USEFUL",
+  "cycle_017_context": {
+    "common_failure": "COMMON_MARKET_BETA_FAILURE",
+    "used_in_feature_construction": false
+  },
+  "domain": {
+    "daily_rows": 3009296,
+    "decision_dates": 263,
+    "phase_a_rows": 9,
+    "trades": 2625
+  },
+  "executive_conclusion": "Positive Industry Breadth does not pass the preregistered repeated-state diagnostic, so exposure scaling was not run. The frozen champion remains unchanged and research capital returns to independent Alpha discovery.",
+  "experiment_id": "ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018",
+  "external_artifacts": {},
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "overlay": null,
+  "phase_a": {
+    "authorized": false,
+    "gate": {
+      "2023_not_mechanically_low": true,
+      "both_blocks": false,
+      "four_years": false,
+      "high_minus_low": false,
+      "high_positive": false,
+      "minimum_dates": true,
+      "monotonic_full": false
+    },
+    "high_minus_low_cohort_payoff": -0.0034239898165842695,
+    "rows": [
+      {
+        "broad_proxy_return": -0.05363867494563817,
+        "cohorts": 92,
+        "decision_dates": 92,
+        "mean_cohort_payoff": 0.010399325254078388,
+        "period": "full",
+        "pooled_absolute_return": 0.005834013484304375,
+        "selected_industry_return": -0.0007978124982793563,
+        "severe_fraction": 0.1437908496732026,
+        "state": "HIGH",
+        "trades": 918,
+        "winner_fraction": 0.4662309368191721
+      },
+      {
+        "broad_proxy_return": -0.053151658468423325,
+        "cohorts": 43,
+        "decision_dates": 43,
+        "mean_cohort_payoff": 0.023562803889649583,
+        "period": "early",
+        "pooled_absolute_return": 0.021836061898127767,
+        "selected_industry_return": 0.003576607879005206,
+        "severe_fraction": 0.19158878504672897,
+        "state": "HIGH",
+        "trades": 428,
+        "winner_fraction": 0.5070093457943925
+      },
+      {
+        "broad_proxy_return": -0.05406605675217363,
+        "cohorts": 49,
+        "decision_dates": 49,
+        "mean_cohort_payoff": -0.0011522988546881687,
+        "period": "late",
+        "pooled_absolute_return": -0.0026827683410163812,
+        "selected_industry_return": -0.004636589564059687,
+        "severe_fraction": 0.10204081632653061,
+        "state": "HIGH",
+        "trades": 490,
+        "winner_fraction": 0.4306122448979592
+      },
+      {
+        "broad_proxy_return": -0.04025182934372484,
+        "cohorts": 94,
+        "decision_dates": 94,
+        "mean_cohort_payoff": 0.013823315070662657,
+        "period": "full",
+        "pooled_absolute_return": 0.015302414840455426,
+        "selected_industry_return": -0.006998101694496546,
+        "severe_fraction": 0.134185303514377,
+        "state": "LOW",
+        "trades": 939,
+        "winner_fraction": 0.503727369542066
+      },
+      {
+        "broad_proxy_return": -0.041924000709038595,
+        "cohorts": 50,
+        "decision_dates": 50,
+        "mean_cohort_payoff": 0.008469475898178947,
+        "period": "early",
+        "pooled_absolute_return": 0.011492601160996624,
+        "selected_industry_return": -0.010935308510285435,
+        "severe_fraction": 0.142,
+        "state": "LOW",
+        "trades": 500,
+        "winner_fraction": 0.492
+      },
+      {
+        "broad_proxy_return": -0.03835163461041374,
+        "cohorts": 44,
+        "decision_dates": 44,
+        "mean_cohort_payoff": 0.019907223221212324,
+        "period": "late",
+        "pooled_absolute_return": 0.017594081790256087,
+        "selected_industry_return": -0.0025240030401909937,
+        "severe_fraction": 0.1252847380410023,
+        "state": "LOW",
+        "trades": 439,
+        "winner_fraction": 0.5170842824601367
+      },
+      {
+        "broad_proxy_return": -0.049537350611925345,
+        "cohorts": 77,
+        "decision_dates": 77,
+        "mean_cohort_payoff": 0.021245002014261972,
+        "period": "full",
+        "pooled_absolute_return": 0.014392897992031391,
+        "selected_industry_return": 0.01520547264526355,
+        "severe_fraction": 0.14713541666666666,
+        "state": "MEDIUM",
+        "trades": 768,
+        "winner_fraction": 0.5013020833333334
+      },
+      {
+        "broad_proxy_return": -0.04713977265170709,
+        "cohorts": 29,
+        "decision_dates": 29,
+        "mean_cohort_payoff": 0.040331231955295775,
+        "period": "early",
+        "pooled_absolute_return": 0.03182326919729298,
+        "selected_industry_return": 0.034767976294832706,
+        "severe_fraction": 0.13793103448275862,
+        "state": "MEDIUM",
+        "trades": 290,
+        "winner_fraction": 0.5379310344827586
+      },
+      {
+        "broad_proxy_return": -0.05098588729622388,
+        "cohorts": 48,
+        "decision_dates": 48,
+        "mean_cohort_payoff": 0.009713738091554047,
+        "period": "late",
+        "pooled_absolute_return": 0.007634422409384643,
+        "selected_industry_return": 0.0033864600236488524,
+        "severe_fraction": 0.15271966527196654,
+        "state": "MEDIUM",
+        "trades": 478,
+        "winner_fraction": 0.4790794979079498
+      }
+    ],
+    "year_state_rows": [
+      {
+        "decision_dates": 5,
+        "mean_cohort_payoff": -0.030226743022704478,
+        "state": "HIGH",
+        "year": 2018
+      },
+      {
+        "decision_dates": 18,
+        "mean_cohort_payoff": -0.034759491731455844,
+        "state": "LOW",
+        "year": 2018
+      },
+      {
+        "decision_dates": 1,
+        "mean_cohort_payoff": -0.02538731230236334,
+        "state": "MEDIUM",
+        "year": 2018
+      },
+      {
+        "decision_dates": 19,
+        "mean_cohort_payoff": 0.03342117057719043,
+        "state": "HIGH",
+        "year": 2019
+      },
+      {
+        "decision_dates": 19,
+        "mean_cohort_payoff": 0.02047116938603429,
+        "state": "LOW",
+        "year": 2019
+      },
+      {
+        "decision_dates": 11,
+        "mean_cohort_payoff": 0.06158668200476647,
+        "state": "MEDIUM",
+        "year": 2019
+      },
+      {
+        "decision_dates": 19,
+        "mean_cohort_payoff": 0.027859581126412427,
+        "state": "HIGH",
+        "year": 2020
+      },
+      {
+        "decision_dates": 13,
+        "mean_cohort_payoff": 0.05078403290311546,
+        "state": "LOW",
+        "year": 2020
+      },
+      {
+        "decision_dates": 17,
+        "mean_cohort_payoff": 0.03044350217373586,
+        "state": "MEDIUM",
+        "year": 2020
+      },
+      {
+        "decision_dates": 20,
+        "mean_cohort_payoff": -0.0062752675187746024,
+        "state": "HIGH",
+        "year": 2021
+      },
+      {
+        "decision_dates": 7,
+        "mean_cohort_payoff": 0.011184236189701408,
+        "state": "LOW",
+        "year": 2021
+      },
+      {
+        "decision_dates": 21,
+        "mean_cohort_payoff": 0.0382451502378695,
+        "state": "MEDIUM",
+        "year": 2021
+      },
+      {
+        "decision_dates": 17,
+        "mean_cohort_payoff": 0.008821222852521056,
+        "state": "HIGH",
+        "year": 2022
+      },
+      {
+        "decision_dates": 20,
+        "mean_cohort_payoff": 0.007059557378392904,
+        "state": "LOW",
+        "year": 2022
+      },
+      {
+        "decision_dates": 12,
+        "mean_cohort_payoff": -0.030159536416875656,
+        "state": "MEDIUM",
+        "year": 2022
+      },
+      {
+        "decision_dates": 12,
+        "mean_cohort_payoff": -0.006743173499757178,
+        "state": "HIGH",
+        "year": 2023
+      },
+      {
+        "decision_dates": 17,
+        "mean_cohort_payoff": 0.03861394240221026,
+        "state": "LOW",
+        "year": 2023
+      },
+      {
+        "decision_dates": 15,
+        "mean_cohort_payoff": 0.0016683806934561735,
+        "state": "MEDIUM",
+        "year": 2023
+      }
+    ],
+    "yearly_state_distribution": [
+      {
+        "high_dates": 5,
+        "low_dates": 18,
+        "low_mean_payoff": -0.03475949173145584,
+        "low_worse": true,
+        "medium_dates": 1,
+        "nonlow_mean_payoff": -0.029420171235980952,
+        "year": 2018
+      },
+      {
+        "high_dates": 19,
+        "low_dates": 19,
+        "low_mean_payoff": 0.02047116938603429,
+        "low_worse": true,
+        "medium_dates": 11,
+        "nonlow_mean_payoff": 0.04374852476730164,
+        "year": 2019
+      },
+      {
+        "high_dates": 19,
+        "low_dates": 13,
+        "low_mean_payoff": 0.05078403290311547,
+        "low_worse": false,
+        "medium_dates": 17,
+        "nonlow_mean_payoff": 0.02907976606542627,
+        "year": 2020
+      },
+      {
+        "high_dates": 20,
+        "low_dates": 7,
+        "low_mean_payoff": 0.01118423618970141,
+        "low_worse": true,
+        "medium_dates": 21,
+        "nonlow_mean_payoff": 0.01652787328340896,
+        "year": 2021
+      },
+      {
+        "high_dates": 17,
+        "low_dates": 20,
+        "low_mean_payoff": 0.007059557378392903,
+        "low_worse": false,
+        "medium_dates": 12,
+        "nonlow_mean_payoff": -0.007308746500332755,
+        "year": 2022
+      },
+      {
+        "high_dates": 12,
+        "low_dates": 17,
+        "low_mean_payoff": 0.038613942402210256,
+        "low_worse": false,
+        "medium_dates": 15,
+        "nonlow_mean_payoff": -0.0020700878368608722,
+        "year": 2023
+      }
+    ]
+  },
+  "positive_industry_breadth": {
+    "horizon_sessions": 20,
+    "industry_return": "equal-weight mean causal stock step_return within each date's PIT industry membership, compounded over the 20 completed sessions ending at the decision close",
+    "industry_universe": "industries represented by at least one PIT-valid causal daily row at the frozen decision close",
+    "missing": "exclude an industry from numerator and denominator unless all 20 industry daily returns are finite; fail the decision if fewer than 50 complete industries",
+    "name": "POSITIVE_INDUSTRY_BREADTH",
+    "normalization": "none; absolute fraction of complete industries with strictly positive compounded return",
+    "timestamp": "frozen weekly decision close; no subsequent bar enters"
+  },
+  "research_implication": "Reject this exact opportunity-health overlay. Do not rescue it with new thresholds or regime features; prioritize a second independent Alpha engine.",
+  "starting_checkpoint": "3455f5ee30",
+  "state_definition": {
+    "HIGH": "breadth >= 2/3",
+    "LOW": "breadth < 1/3",
+    "MEDIUM": "1/3 <= breadth < 2/3",
+    "threshold_method": "fixed economic thirds frozen before outcomes"
+  },
+  "year_contrast": {
+    "2022": {
+      "high_fraction": 0.3469387755102041,
+      "low_fraction": 0.40816326530612246,
+      "mean_new_cohort_scale": 0.7346938775510204,
+      "medium_fraction": 0.24489795918367346,
+      "selected_industry_d20": -0.008947432552078183
+    },
+    "2023": {
+      "high_fraction": 0.2727272727272727,
+      "low_fraction": 0.38636363636363635,
+      "mean_new_cohort_scale": 0.7215909090909091,
+      "medium_fraction": 0.3409090909090909,
+      "selected_industry_d20": 0.002786183906708077
+    }
+  }
+}

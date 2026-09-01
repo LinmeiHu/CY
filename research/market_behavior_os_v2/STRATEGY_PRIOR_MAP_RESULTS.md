@@ -1,5 +1,18 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Cycle-018 opportunity-health risk overlay
+
+| State | Decisions | Mean cohort payoff | Early / late | Selected-industry d20 | Classification |
+|---|---:|---:|---:|---:|---|
+| LOW | 94 | +1.38% | +0.85% / +1.99% | -0.70% | Intended weak state not supported |
+| MEDIUM | 77 | +2.12% | +4.03% / +0.97% | +1.52% | Strongest full-sample state |
+| HIGH | 92 | +1.04% | +2.36% / -0.12% | -0.08% | Negative late; intended strong state fails |
+
+HIGH minus LOW is -0.342 pp, full ordering is nonmonotonic, and only three of
+six yearly LOW-versus-non-LOW comparisons have the intended sign. Final status:
+`OPPORTUNITY_HEALTH_NOT_USEFUL`. Phase B was not authorized and no overlay replay
+or exposure change occurred. Do not search neighboring thresholds or features.
+
 ## Cycle-017 champion failure-mode anatomy
 
 | Year | Market exposure | Strategy layer | P&L shape | Opportunity | Tail mechanism |

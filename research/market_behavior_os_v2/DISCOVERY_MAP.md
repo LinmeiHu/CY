@@ -4,6 +4,27 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Cycle-018 opportunity-health conclusions
+
+- Exact PIT 20-session Positive Industry Breadth produces 94/77/92 fixed
+  LOW/MEDIUM/HIGH decisions with +1.38%/+2.12%/+1.04% cohort payoff. HIGH minus
+  LOW is -0.342 pp: the intended ordering fails.
+- Early HIGH beats LOW +2.36%/+0.85%, but late HIGH loses to LOW
+  -0.12%/+1.99%. HIGH is not positive in both blocks and only three of six years
+  show LOW worse than non-LOW: chronologically unstable state information.
+- 2022 and 2023 state distributions are similar despite -0.89%/+0.28% selected-
+  industry d20 paths. The feature does not identify the desired opportunity
+  distinction.
+- Classification `OPPORTUNITY_HEALTH_NOT_USEFUL`; Phase B did not run. No
+  exposure mapping, annual overlay, or strategy change exists. Do not rescue.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No;
+seek a second independent Alpha engine rather than another champion overlay.
+
 ## Cycle-017 champion failure-mode conclusions
 
 - 2018/2022 champion return is -20.88%/-6.06%; baseline return is
