@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "research_family": "A-SHARE DEEP OVERSOLD",
+  "alpha_discovery_status": "CLOSED",
+  "portfolio_capitalization_status": "CLOSED",
+  "capitalization_lane": "CLOSED",
+  "final_portfolio_verdict": "EPISODE_STRUCTURE_EXISTS_BUT_NOT_INVESTABLE",
+  "no_v8": true,
+  "rescue_tests_allowed": false,
+  "evidence_status": "FROZEN",
+  "repository": "/Users/linmei/Documents/CY-oversold-reversal-ranking",
+  "branch": "research/oversold-reversal-ranking-v1",
+  "authoritative_v7_endpoint": "a698067f9f3d0600e1336e6b7065f12d657d3497",
+  "closure_report": "research/oversold_reversal_ranking/reports/OVERSOLD_RESEARCH_CLOSURE.md",
+  "original_hypothesis": {
+    "name": "volume exhaustion marks a bottom",
+    "status": "REJECTED_AND_CLOSED",
+    "v1_report": "research/volume_exhaustion_bottom/reports/REPORT.md",
+    "v2_report": "research/volume_exhaustion_bottom/reports/V2_REPORT.md"
+  },
+  "oversold_stages": [
+    {
+      "version": "V1",
+      "commit": "bdd2c58d66dea7c4a5245031fd5a6002ccc2a047",
+      "verdict": "DEPTH_ONLY",
+      "report": "research/oversold_reversal_ranking/reports/REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/results.json"
+    },
+    {
+      "version": "V2",
+      "commit": "7fad7e716a051f96abb75c278d3f35b5195b4175",
+      "verdict": "RISK_FILTER_ONLY",
+      "report": "research/oversold_reversal_ranking/reports/V2_TIMING_REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/v2_timing_results.json"
+    },
+    {
+      "version": "V3",
+      "commit": "98b7a383f4f51f2f84093e2ff41bfeef9d21d0b0",
+      "verdict": "SIZING_SIGNAL_ONLY",
+      "report": "research/oversold_reversal_ranking/reports/V3_RISK_REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/v3_risk_results.json"
+    },
+    {
+      "version": "V4",
+      "commit": "29906643e7ea9c0426d3c4ca7faf23e94fbd02d8",
+      "verdict": "SIZING_SURVIVES",
+      "report": "research/oversold_reversal_ranking/reports/V4_SIZING_REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/v4_sizing_results.json"
+    },
+    {
+      "version": "V5",
+      "commit": "0850fbc8cc3bdcdb0fdd5acc1abe23117084185b",
+      "verdict": "EVENT_ALPHA_COLLAPSES",
+      "report": "research/oversold_reversal_ranking/reports/V5_PORTFOLIO_REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/v5_portfolio_results.json"
+    },
+    {
+      "version": "V6",
+      "commit": "5219e5bf7b592be0c4b2fcf868e8779e71e64140",
+      "verdict": "CLUSTER_SIGNAL_EXISTS_BUT_CAPITAL_TRANSLATION_FAILS",
+      "report": "research/oversold_reversal_ranking/reports/V6_CLUSTER_REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/v6_cluster_results.json"
+    },
+    {
+      "version": "V7",
+      "commit": "a698067f9f3d0600e1336e6b7065f12d657d3497",
+      "verdict": "EPISODE_STRUCTURE_EXISTS_BUT_NOT_INVESTABLE",
+      "report": "research/oversold_reversal_ranking/reports/V7_EPISODE_REPORT.md",
+      "results": "research/oversold_reversal_ranking/reports/v7_episode_results.json"
+    }
+  ],
+  "authoritative_bridge": {
+    "executable_event_mean_return": 0.043190832287508786,
+    "equal_weight_active_date_mean_return": 0.0026370826939681553,
+    "v5_equal_gross_ending_nav": 1.0016248464593533,
+    "v6_count_aware_gross_ending_nav": 1.0195803468609994,
+    "v7_episode_gross_ending_nav": 1.1611851190229434,
+    "v7_episode_gross_cagr": 0.023861428735991064,
+    "v7_episode_max_drawdown": -0.3391787654507624,
+    "v7_episode_win_rate": 0.4915254237288136,
+    "v7_high_intensity_signal_allocation_rate": 0.5469977835986298
+  },
+  "closed_rescue_directions": [
+    "drawdown threshold variants",
+    "holding-period variants",
+    "count-threshold variants",
+    "episode-length variants",
+    "top-N selection",
+    "leverage or borrowing",
+    "volume or technical-indicator rescue",
+    "V3-plus-episode combinations",
+    "new oversold factors",
+    "machine-learning rescue"
+  ],
+  "reusable_evidence": [
+    "causal deep-drawdown event stream",
+    "V3 falling-knife risk score as a research feature",
+    "cluster-intensity measurement",
+    "causal episode construction",
+    "portfolio accounting infrastructure",
+    "V5-V7 event-to-NAV reconciliation methodology"
+  ],
+  "future_program_constraint": "Begin from a genuinely independent economic hypothesis with its own frozen pre-outcome design; do not continue the oversold rescue lane."
+}
