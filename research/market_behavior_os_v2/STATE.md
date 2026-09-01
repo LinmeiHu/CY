@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `27bc05617c` (clean start of Downside Resilience Discovery V1)
-- `CURRENT_PHASE`: `DOWNSIDE_RESILIENCE_FAMILY_CLOSED_NULL_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: `SECOND_INDEPENDENT_ALPHA_DISCOVERY`: exact 20-session stock-minus-PIT-industry resilience on industry-down days is adverse in the frozen long orientation at every h1/h3/h5/h10/h20 horizon and in every 2018--2023 calendar year. It survives as no Alpha family, is not inverted, and receives no portfolio replay
+- `CURRENT_BASELINE`: `574aaa4abf2293a76c7d7e0d8d5bd755bab95430` (clean start of Shock Absorption / Recovery Discovery V1)
+- `CURRENT_PHASE`: `SHOCK_ABSORPTION_RECOVERY_FAMILY_CLOSED_NULL_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`: exact three-session daily shock absorption is adverse in the intended strong-recovery orientation at every h1/h3/h5/h10/h20 horizon and every 2018--2023 h20 year. The exact V1 family closes without sign inversion or portfolio replay; the previously resource-failed Dispersion lane remains scientifically unresolved
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
+- `STARTING_HEAD`: `574aaa4abf2293a76c7d7e0d8d5bd755bab95430`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `27bc05617c`
-- `CURRENT_SCIENTIFIC_LAYER`: `INDEPENDENT_DOWNSIDE_RESILIENCE_FAMILY_DISCOVERY; NULL; NO_STRATEGY_B_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `574aaa4abf2293a76c7d7e0d8d5bd755bab95430`
+- `CURRENT_SCIENTIFIC_LAYER`: `INDEPENDENT_SHOCK_ABSORPTION_EVENT_SEQUENCE_DISCOVERY; NULL_ADVERSE_ORIENTATION; NO_STRATEGY_B_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: registered daily summary-price/volume neighbors now have low incremental headroom, and downside-specific industry residual resilience also fails. Prioritize one genuinely different event/asymmetry mechanism or a bounded multi-family data contract for order-book/queue, investor-flow identity, borrow-feasible relative value, or immutable-vintage fundamentals; do not invert or retune the failed resilience family.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: complete the previously resource-failed frozen Cross-Sectional Dispersion science with a bounded external-disk execution plan. The failure was engineering, not scientific. Do not retune daily shock/recovery, invert its adverse ordering, or substitute a neighboring event definition.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,48 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Shock Absorption / Recovery Discovery V1
+
+`ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1` starts from
+`574aaa4abf2293a76c7d7e0d8d5bd755bab95430` and freezes all event, control, and
+classification semantics before forward outcomes. A shock at completed day s
+requires causal simple stock return <= -5% and stock-minus-leave-one-out
+PIT-industry return <= -3%. After accepting one event, same-symbol shocks through
+s+3 are suppressed. Exactly s+1:s+3 are observed; the signal is known only after
+s+3 close, and entry is the first later accepted legal open.
+
+There are 62,094 qualifying shocks, 50,939 accepted non-overlapping shocks,
+50,522 complete observation paths, and 50,201 ranked shock events on 1,139 dates,
+covering 4,176 securities and 118 industries. Actionability is 99.890%: 50,030
+immediate, 116 delayed, and 55 unusable. The evaluation begins 2018-08-03 and no
+outcome later than 2023-12-29 is read.
+
+The intended absorption orientation fails throughout. Recovery Q5 minus Q1 net
+return is -0.010%/-0.129%/-0.277%/-0.699%/-1.089% at h1/h3/h5/h10/h20;
+industry-relative spread is -0.017%/-0.176%/-0.342%/-0.551%/-0.986%. The h20
+industry-relative spread is negative in every 2018--2023 year and in both frozen
+blocks (-0.768%/-1.344%). Q5 also raises h20 severe-loss incidence by 6.651
+points and worsens MAE by 1.789 points. Stronger stabilization is likewise
+adverse (-0.263%/-0.678% industry-relative at h5/h20).
+
+Only 2/9 supported shock-severity cells are positive. Every pre-shock-trend,
+volatility, liquidity, and Low-MAX tercile remains negative at h20. Matched
+non-shock recovery is also adverse (-0.049%/-0.578% at h5/h20), but materially
+smaller than the shock-event failure; this does not establish generic recovery
+Alpha. Low-MAX rank correlation is 0.038, Champion Q5 overlap is 0.06%, and
+removing Champion selections leaves h20 at -0.983%.
+
+Final classification is `NULL`, with adverse frozen strong-recovery orientation.
+It is neither Alpha nor defensive information. No sign inversion, event/window
+neighbor, portfolio replay, Strategy-A change, post-2023 outcome, or CY-011
+access occurs. The exact daily V1 family is closed.
+
+What market behavior are we still not studying? Cross-sectional dispersion as
+an executable independent stock-opportunity/ranking mechanism, order-book/queue
+pressure, investor-flow identity, borrow-feasible relative value, and
+immutable-vintage fundamentals. Has this mechanism implied a genuinely new
+strategy archetype? No; its predeclared long recovery orientation fails broadly.
 
 ### Downside Resilience Discovery V1
 

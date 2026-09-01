@@ -1,5 +1,19 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Shock Absorption / Recovery Discovery V1
+
+| Family | Frozen definition | Evidence | Decision |
+|---|---|---|---|
+| Three-session shock recovery | Joint stock <= -5% and stock-minus-PIT-industry <= -3% shock at s; suppress overlap through s+3; rank exact s+1:s+3 Recovery Fraction after s+3 close | Industry-relative Q5-Q1 -0.017%/-0.176%/-0.342%/-0.551%/-0.986% at h1/h3/h5/h10/h20; both blocks and all six h20 years negative; severe losses +6.651 pp | `NULL`; adverse frozen orientation, no inversion/replay |
+| Three-session stabilization | Lower Further Drawdown Ratio ranked as stronger stabilization over the same fixed events | Industry-relative Q5-Q1 -0.263%/-0.678% at h5/h20 | Diagnostic is adverse and does not rescue recovery |
+| Severity / generic path / coarse controls | Fixed 3x3 shock-severity cells, deterministic matched non-shock path, and trend/volatility/liquidity terciles | 2/9 supported severity cells positive; matched non-shock recovery also adverse but smaller; every coarse-control h20 tercile negative | No incremental absorption Alpha or defensive role |
+| Strategy-A independence | Exact Low-MAX correlation, Champion overlap, and Champion-removed economics | Low-MAX rho 0.038; Q5 overlap 0.06%; Champion-removed h20 -0.983% | Distinct failure, not a Strategy-A duplicate |
+
+Coverage is 50,201 ranked shock events on 1,139 dates with 99.890%
+actionability. No Strategy-A modification, sign inversion, parameter/window
+rescue, Strategy-B replay, post-2023 outcome, or CY-011 access occurs. The exact
+daily V1 family is closed.
+
 ## Downside Resilience Discovery V1
 
 | Family | Frozen definition | Evidence | Decision |

@@ -2,7 +2,45 @@
 
 Updated 2026-09-01.
 
-## Latest checkpoint: downside resilience family closed null
+## Latest checkpoint: shock absorption / recovery family closed null
+
+Resume after the commit containing
+`ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1`; its clean starting checkpoint
+is `574aaa4abf2293a76c7d7e0d8d5bd755bab95430`. Preserve Industry Diffusion plus
+weekly Low-MAX exactly. All evidence is consumed 2018--2023 development history;
+post-2023 outcomes and CY-011 remain unread.
+
+The frozen event requires causal simple stock return <= -5% and
+stock-minus-leave-one-out-PIT-industry return <= -3% on completed day s. A
+same-symbol shock cannot restart through s+3. Recovery is observed over exactly
+s+1:s+3 and measured as `[C(s+3)-C(s)]/[C(s-1)-C(s)]`; stabilization is
+`max(0,C(s)-min(C(s+1:s+3)))/ShockLoss`. The signal exists only after s+3 close,
+and entry starts at the first later accepted legal open.
+
+The complete audit has 62,094 qualifying shocks, 50,939 accepted non-overlapping
+events, 50,522 complete paths, and 50,201 ranked events across 1,139 dates, 4,176
+securities, and 118 industries. Next-open actionability is 99.890%, including
+116 delayed and 55 unusable events.
+
+The intended strong-recovery Q5 is worse than deterioration Q1 at every horizon.
+Net Q5-Q1 is -0.010%/-0.129%/-0.277%/-0.699%/-1.089% and industry-relative
+Q5-Q1 is -0.017%/-0.176%/-0.342%/-0.551%/-0.986% at h1/h3/h5/h10/h20. Both
+blocks and every h20 calendar year are negative. Q5 has 6.651 points more h20
+severe losses and 1.789 points worse MAE; stabilization is also adverse.
+
+Only 2/9 supported severity cells have positive h20 ordering. Every pre-shock
+trend, volatility, liquidity, and Low-MAX tercile is negative. Matched non-shock
+recovery is adverse but smaller. Low-MAX rho is 0.038, Champion Q5 overlap is
+0.06%, and Champion removal leaves h20 industry-relative Q5-Q1 at -0.983%.
+
+Final classification is `NULL`, adverse in the frozen intended orientation. Do
+not invert Q1, change the shock threshold, change the three-session window, add
+intraday/support/volume filters, or build Strategy B. Close this exact daily V1
+family. The next recommended lane is the previously resource-failed frozen
+Cross-Sectional Dispersion science; its prior failure was engineering, not a
+scientific rejection.
+
+## Prior checkpoint: downside resilience family closed null
 
 Resume after the commit containing `ASHARE-DOWNSIDE-RESILIENCE-DISCOVERY-V1`;
 its clean starting checkpoint is `27bc05617c`. Preserve Industry Diffusion plus

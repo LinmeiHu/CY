@@ -4,6 +4,33 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Shock Absorption / Recovery Discovery V1 conclusions
+
+- Exact frozen event: causal stock return <= -5% and stock-minus-PIT-industry
+  return <= -3% at s; suppress same-symbol shocks through s+3; observe exactly
+  s+1:s+3; signal only after s+3 close; first later accepted legal open.
+- Coverage is 50,201 ranked shock events on 1,139 dates, 4,176 securities, and
+  118 industries. Actionability is 99.890%; 116 entries delay and 55 are unusable.
+- Strong-recovery Q5 is adverse at every horizon: industry-relative Q5-Q1 is
+  -0.017%/-0.176%/-0.342%/-0.551%/-0.986% at h1/h3/h5/h10/h20.
+- Both blocks and all six h20 years are negative. Q5 has 6.651 points more h20
+  severe losses and 1.789 points worse MAE; strong stabilization is also adverse.
+- Only 2/9 supported severity cells are positive; every trend, volatility,
+  liquidity, and Low-MAX tercile is negative. Matched non-shock recovery is
+  adverse but smaller.
+- Low-MAX rho is 0.038 and Champion Q5 overlap is 0.06%. Removing Champion
+  selections leaves h20 at -0.983%; the failure is not Strategy-A duplication.
+- Final `NULL`, adverse in the frozen intended orientation. No inversion,
+  parameter/window rescue, Strategy-B replay, Strategy-A change, post-2023
+  outcome, or CY-011 access.
+
+What market behavior are we still not studying? The frozen Cross-Sectional
+Dispersion opportunity/ranking lane, order-book/queue pressure, investor-flow
+identity, borrow-feasible relative value, and immutable-vintage fundamentals.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No;
+this exact daily shock-absorption family closes without translation.
+
 ## Downside Resilience Discovery V1 conclusions
 
 - Exact frozen primary: prior-20-session stock-minus-PIT-industry residual mean
