@@ -1,0 +1,879 @@
+{
+  "research_version": "oversold-reversal-ranking-v4-sizing",
+  "verdict": "SIZING_SURVIVES",
+  "single_next_step": "Freeze the carrier, V3 risk score, and V4 sizing map, then run the first true overlapping-position portfolio backtest with realistic capital competition and transaction costs.",
+  "definitions": {
+    "v1_verdict": "DEPTH_ONLY",
+    "v2_verdict": "RISK_FILTER_ONLY",
+    "v3_verdict": "SIZING_SIGNAL_ONLY",
+    "carrier": "exact V1 LOW plus causal drawdown_60 <= -30%; exact V3 event cohort",
+    "score_reuse": "imports and executes V3 create_risk_tables unchanged; equal average of four same-date causal danger ranks; higher is more dangerous",
+    "primary_mapping": "raw risk_q weights Q1-Q5 = 1.25/1.125/1.0/0.875/0.75, divided by exact cohort-weighted raw mean",
+    "conservative_mapping": "risk_q weights Q1-Q5 = 1.0/0.95/0.90/0.80/0.70 without normalization",
+    "simple_baseline": "V3 close_location_q with the same normalized primary weight schedule",
+    "capital_outcomes": "position weight multiplied by inherited immediate-entry Ret5/10/20, MFE20, and MAE20",
+    "underlying_severe": "unchanged stock-path label MAE20 <= -0.1",
+    "capital_severe": "position_weight * MAE20 <= -0.1",
+    "return_downside_efficiency": "mean weighted Ret20 / abs(mean capital MAE20)",
+    "large_winner": "inherited immediate Ret20 >= 0.1",
+    "deployability": "V3 continuous score is causal at t0 close; pooled V3 quintile boundaries are descriptive full-sample assignments, not production thresholds"
+  },
+  "sample_profile": {
+    "events": 22357,
+    "securities": 4835,
+    "first_event_date": "2020-01-02",
+    "last_event_date": "2026-07-08",
+    "industries": 128,
+    "event_dates": 1228,
+    "quintile_weights": [
+      {
+        "risk_q": 1,
+        "n": 4472,
+        "primary_raw_weight": 1.25,
+        "primary_weight": 1.2499790337640262,
+        "conservative_weight": 1.0
+      },
+      {
+        "risk_q": 2,
+        "n": 4472,
+        "primary_raw_weight": 1.125,
+        "primary_weight": 1.1249811303876236,
+        "conservative_weight": 0.95
+      },
+      {
+        "risk_q": 3,
+        "n": 4471,
+        "primary_raw_weight": 1.0,
+        "primary_weight": 0.999983227011221,
+        "conservative_weight": 0.9
+      },
+      {
+        "risk_q": 4,
+        "n": 4471,
+        "primary_raw_weight": 0.875,
+        "primary_weight": 0.8749853236348184,
+        "conservative_weight": 0.8
+      },
+      {
+        "risk_q": 5,
+        "n": 4471,
+        "primary_raw_weight": 0.75,
+        "primary_weight": 0.7499874202584158,
+        "conservative_weight": 0.7
+      }
+    ],
+    "equal_mean_weight": 1.0,
+    "primary_mean_weight": 1.0000000000001283,
+    "conservative_mean_weight": 0.870009393031366,
+    "clv_primary_mean_weight": 0.9999999999999707,
+    "primary_min_weight": 0.7499874202584158,
+    "primary_max_weight": 1.2499790337640262
+  },
+  "checks": {
+    "cohort_count_difference": 0,
+    "duplicate_weights": 0,
+    "primary_mean_weight_not_one": 0,
+    "clv_mean_weight_not_one": 0,
+    "nonpositive_weight": 0,
+    "primary_nonmonotone": 0,
+    "conservative_nonmonotone": 0,
+    "weighted_return_formula": 0,
+    "capital_mae_formula": 0,
+    "capital_mfe_formula": 0,
+    "underlying_severe_label_mismatch": 0,
+    "non_t_plus_one_entry": 0,
+    "dedup_violation": 0,
+    "policy_row_difference": 0,
+    "future_columns_in_weights": 0,
+    "v3_time_travel": 0,
+    "v3_carrier_inversion": 0,
+    "v3_clv_bounds": 0,
+    "v3_persistence_bounds": 0,
+    "v3_rank_bounds": 0,
+    "v3_equal_weight_formula": 0,
+    "v3_score_bounds": 0,
+    "v3_close_location_formula": 0,
+    "v3_current_day_loss_formula": 0,
+    "v3_adverse_gap_formula": 0,
+    "v3_bucket_bounds": 0,
+    "v3_duplicate_events": 0,
+    "v3_severe_label_mismatch": 0,
+    "v3_non_t_plus_one_entry": 0,
+    "v3_dedup_violation": 0,
+    "v3_future_columns_in_score": 0
+  },
+  "policy_metrics": [
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "n": 22357,
+      "total_weight": 22356.99999999928,
+      "mean_position_weight": 0.9999999999999678,
+      "min_position_weight": 0.7499874202584158,
+      "max_position_weight": 1.2499790337640262,
+      "mean_weighted_ret_5": 0.010158816269398938,
+      "mean_weighted_ret_10": 0.020732895401641544,
+      "mean_weighted_ret_20": 0.041072013706784385,
+      "total_weighted_ret_20": 918.2470104425785,
+      "median_weighted_ret_20": 0.026334598516754886,
+      "mean_capital_mae_20": -0.10896299265375713,
+      "median_capital_mae_20": -0.08045319599135735,
+      "q10_capital_mae_20": -0.24564688008189514,
+      "q25_capital_mae_20": -0.15315058431703396,
+      "mean_capital_mfe_20": 0.14760667175982367,
+      "underlying_severe_event_rate": 0.42143400277318066,
+      "capital_severe_loss_rate": 0.4136064767187011,
+      "return_downside_efficiency": 0.37693544116666833
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "n": 22357,
+      "total_weight": 19450.800000001243,
+      "mean_position_weight": 0.870009393031321,
+      "min_position_weight": 0.7,
+      "max_position_weight": 1.0,
+      "mean_weighted_ret_5": 0.010041915968198128,
+      "mean_weighted_ret_10": 0.020598471299960504,
+      "mean_weighted_ret_20": 0.03965418027849555,
+      "total_weighted_ret_20": 886.5485084863251,
+      "median_weighted_ret_20": 0.023233695652174067,
+      "mean_capital_mae_20": -0.09405467363624544,
+      "median_capital_mae_20": -0.07175925925925908,
+      "q10_capital_mae_20": -0.20986398127617625,
+      "q25_capital_mae_20": -0.128769230769231,
+      "mean_capital_mfe_20": 0.130861810573829,
+      "underlying_severe_event_rate": 0.42143400277318066,
+      "capital_severe_loss_rate": 0.35420673614527887,
+      "return_downside_efficiency": 0.4216077600976778
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "n": 22357,
+      "total_weight": 22357.0,
+      "mean_position_weight": 1.0,
+      "min_position_weight": 1.0,
+      "max_position_weight": 1.0,
+      "mean_weighted_ret_5": 0.01080291598335639,
+      "mean_weighted_ret_10": 0.022217400748481893,
+      "mean_weighted_ret_20": 0.043663574717421126,
+      "total_weighted_ret_20": 976.1865399573842,
+      "median_weighted_ret_20": 0.027315123251165696,
+      "mean_capital_mae_20": -0.10850377306460098,
+      "median_capital_mae_20": -0.08333333333333326,
+      "q10_capital_mae_20": -0.24183418746900306,
+      "q25_capital_mae_20": -0.15038759689922465,
+      "mean_capital_mfe_20": 0.14948776262692945,
+      "underlying_severe_event_rate": 0.42143400277318066,
+      "capital_severe_loss_rate": 0.42143400277318066,
+      "return_downside_efficiency": 0.40241526616244677
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 22357,
+      "total_weight": 22357.00000000187,
+      "mean_position_weight": 1.0000000000000837,
+      "min_position_weight": 0.7499874202584158,
+      "max_position_weight": 1.2499790337640262,
+      "mean_weighted_ret_5": 0.01190611052642086,
+      "mean_weighted_ret_10": 0.02430203822218307,
+      "mean_weighted_ret_20": 0.04639788795391731,
+      "total_weighted_ret_20": 1037.3175809857294,
+      "median_weighted_ret_20": 0.02619905550566006,
+      "mean_capital_mae_20": -0.1079473100950527,
+      "median_capital_mae_20": -0.08129234275528303,
+      "q10_capital_mae_20": -0.24008260611025084,
+      "q25_capital_mae_20": -0.1467366691809944,
+      "mean_capital_mfe_20": 0.150814031192203,
+      "underlying_severe_event_rate": 0.42143400277318066,
+      "capital_severe_loss_rate": 0.4107885673390884,
+      "return_downside_efficiency": 0.4298197695992775
+    }
+  ],
+  "primary_equal_capital_comparison": {
+    "mean_exposure_difference": 8.37108160567368e-14,
+    "mean_weighted_ret_5_difference": 0.0011031945430644684,
+    "mean_weighted_ret_10_difference": 0.002084637473701176,
+    "mean_weighted_ret_20_difference": 0.002734313236496186,
+    "median_weighted_ret_20_difference": -0.0011160677455056348,
+    "mean_capital_mae_20_difference": 0.0005564629695482687,
+    "median_capital_mae_20_difference": 0.002040990578050225,
+    "q10_capital_mae_20_difference": 0.0017515813587522244,
+    "q25_capital_mae_20_difference": 0.0036509277182302513,
+    "mean_capital_mfe_20_difference": 0.0013262685652735418,
+    "capital_severe_loss_rate_difference": -0.010645435434092243,
+    "return_downside_efficiency_difference": 0.027404503436830707,
+    "return_downside_efficiency_ratio": 1.068100059170638
+  },
+  "capital_allocation": [
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "label": "LARGE_WINNER_RET20_GE_10",
+      "events": 6780,
+      "allocated_weight": 6615.514036196197,
+      "mean_group_weight": 0.9757395333622709,
+      "capital_share": 0.2959034770405873,
+      "capital_retention_vs_equal": 0.9757395333622709
+    },
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "label": "LOSING_RET20",
+      "events": 9340,
+      "allocated_weight": 9494.34074885838,
+      "mean_group_weight": 1.0165247054452227,
+      "capital_share": 0.4246697118959917,
+      "capital_retention_vs_equal": 1.0165247054452227
+    },
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "label": "POSITIVE_RET20",
+      "events": 13017,
+      "allocated_weight": 12862.65925114272,
+      "mean_group_weight": 0.9881431398281263,
+      "capital_share": 0.5753302881040898,
+      "capital_retention_vs_equal": 0.9881431398281263
+    },
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "label": "UNDERLYING_NON_SEVERE",
+      "events": 12935,
+      "allocated_weight": 12829.784802554732,
+      "mean_group_weight": 0.9918658525361215,
+      "capital_share": 0.573859856087809,
+      "capital_retention_vs_equal": 0.9918658525361215
+    },
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "label": "UNDERLYING_SEVERE",
+      "events": 9422,
+      "allocated_weight": 9527.215197446369,
+      "mean_group_weight": 1.0111669706480968,
+      "capital_share": 0.42614014391227245,
+      "capital_retention_vs_equal": 1.0111669706480968
+    },
+    {
+      "policy": "CLV_ONLY_CAPITAL_PRESERVING",
+      "label": "V2_NO_TRIGGER",
+      "events": 3139,
+      "allocated_weight": 3144.3222594333893,
+      "mean_group_weight": 1.001695527057467,
+      "capital_share": 0.14064151091083288,
+      "capital_retention_vs_equal": 1.001695527057467
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "label": "LARGE_WINNER_RET20_GE_10",
+      "events": 6780,
+      "allocated_weight": 5990.300000000045,
+      "mean_group_weight": 0.8835250737463193,
+      "capital_share": 0.3079719086104254,
+      "capital_retention_vs_equal": 0.8835250737463193
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "label": "LOSING_RET20",
+      "events": 9340,
+      "allocated_weight": 8025.350000000052,
+      "mean_group_weight": 0.8592451820128536,
+      "capital_share": 0.41259742529867866,
+      "capital_retention_vs_equal": 0.8592451820128536
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "label": "POSITIVE_RET20",
+      "events": 13017,
+      "allocated_weight": 11425.449999999746,
+      "mean_group_weight": 0.8777329645847542,
+      "capital_share": 0.587402574701247,
+      "capital_retention_vs_equal": 0.8777329645847542
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "label": "UNDERLYING_NON_SEVERE",
+      "events": 12935,
+      "allocated_weight": 11323.349999999735,
+      "mean_group_weight": 0.875403942790857,
+      "capital_share": 0.5821534332777578,
+      "capital_retention_vs_equal": 0.875403942790857
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "label": "UNDERLYING_SEVERE",
+      "events": 9422,
+      "allocated_weight": 8127.450000000048,
+      "mean_group_weight": 0.8626034812141847,
+      "capital_share": 0.41784656672216713,
+      "capital_retention_vs_equal": 0.8626034812141847
+    },
+    {
+      "policy": "CONSERVATIVE_OVERLAY",
+      "label": "V2_NO_TRIGGER",
+      "events": 3139,
+      "allocated_weight": 2660.950000000016,
+      "mean_group_weight": 0.8477062758840447,
+      "capital_share": 0.13680414173195168,
+      "capital_retention_vs_equal": 0.8477062758840447
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "label": "LARGE_WINNER_RET20_GE_10",
+      "events": 6780,
+      "allocated_weight": 6780.0,
+      "mean_group_weight": 1.0,
+      "capital_share": 0.3032607237106946,
+      "capital_retention_vs_equal": 1.0
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "label": "LOSING_RET20",
+      "events": 9340,
+      "allocated_weight": 9340.0,
+      "mean_group_weight": 1.0,
+      "capital_share": 0.4177662477076531,
+      "capital_retention_vs_equal": 1.0
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "label": "POSITIVE_RET20",
+      "events": 13017,
+      "allocated_weight": 13017.0,
+      "mean_group_weight": 1.0,
+      "capital_share": 0.5822337522923469,
+      "capital_retention_vs_equal": 1.0
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "label": "UNDERLYING_NON_SEVERE",
+      "events": 12935,
+      "allocated_weight": 12935.0,
+      "mean_group_weight": 1.0,
+      "capital_share": 0.5785659972268193,
+      "capital_retention_vs_equal": 1.0
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "label": "UNDERLYING_SEVERE",
+      "events": 9422,
+      "allocated_weight": 9422.0,
+      "mean_group_weight": 1.0,
+      "capital_share": 0.42143400277318066,
+      "capital_retention_vs_equal": 1.0
+    },
+    {
+      "policy": "EQUAL_SIZE",
+      "label": "V2_NO_TRIGGER",
+      "events": 3139,
+      "allocated_weight": 3139.0,
+      "mean_group_weight": 1.0,
+      "capital_share": 0.14040345305720803,
+      "capital_retention_vs_equal": 1.0
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "label": "LARGE_WINNER_RET20_GE_10",
+      "events": 6780,
+      "allocated_weight": 6933.758698192537,
+      "mean_group_weight": 1.0226782740696958,
+      "capital_share": 0.3101381535175541,
+      "capital_retention_vs_equal": 1.0226782740696958
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "label": "LOSING_RET20",
+      "events": 9340,
+      "allocated_weight": 9174.096120407881,
+      "mean_group_weight": 0.9822372719922785,
+      "capital_share": 0.4103455794787813,
+      "capital_retention_vs_equal": 0.9822372719922785
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "label": "POSITIVE_RET20",
+      "events": 13017,
+      "allocated_weight": 13182.903879593021,
+      "mean_group_weight": 1.0127451701308305,
+      "capital_share": 0.5896544205211754,
+      "capital_retention_vs_equal": 1.0127451701308305
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "label": "UNDERLYING_NON_SEVERE",
+      "events": 12935,
+      "allocated_weight": 13051.906076854524,
+      "mean_group_weight": 1.0090379649674932,
+      "capital_share": 0.5837950564410893,
+      "capital_retention_vs_equal": 1.0090379649674932
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "label": "UNDERLYING_SEVERE",
+      "events": 9422,
+      "allocated_weight": 9305.093923146364,
+      "mean_group_weight": 0.9875922227920149,
+      "capital_share": 0.41620494355886684,
+      "capital_retention_vs_equal": 0.9875922227920149
+    },
+    {
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "label": "V2_NO_TRIGGER",
+      "events": 3139,
+      "allocated_weight": 3027.074226066333,
+      "mean_group_weight": 0.9643434934903895,
+      "capital_share": 0.1353971564192906,
+      "capital_retention_vs_equal": 0.9643434934903895
+    }
+  ],
+  "capital_allocation_comparison": {
+    "UNDERLYING_SEVERE": {
+      "equal_capital_share": 0.42143400277318066,
+      "primary_capital_share": 0.41620494355886684,
+      "capital_share_difference": -0.005229059214313825,
+      "primary_mean_group_weight": 0.9875922227920149
+    },
+    "UNDERLYING_NON_SEVERE": {
+      "equal_capital_share": 0.5785659972268193,
+      "primary_capital_share": 0.5837950564410893,
+      "capital_share_difference": 0.005229059214269971,
+      "primary_mean_group_weight": 1.0090379649674932
+    },
+    "V2_NO_TRIGGER": {
+      "equal_capital_share": 0.14040345305720803,
+      "primary_capital_share": 0.1353971564192906,
+      "capital_share_difference": -0.0050062966379174345,
+      "primary_mean_group_weight": 0.9643434934903895
+    },
+    "POSITIVE_RET20": {
+      "equal_capital_share": 0.5822337522923469,
+      "primary_capital_share": 0.5896544205211754,
+      "capital_share_difference": 0.007420668228828586,
+      "primary_mean_group_weight": 1.0127451701308305
+    },
+    "LARGE_WINNER_RET20_GE_10": {
+      "equal_capital_share": 0.3032607237106946,
+      "primary_capital_share": 0.3101381535175541,
+      "capital_share_difference": 0.006877429806859459,
+      "primary_mean_group_weight": 1.0226782740696958
+    },
+    "LOSING_RET20": {
+      "equal_capital_share": 0.4177662477076531,
+      "primary_capital_share": 0.4103455794787813,
+      "capital_share_difference": -0.007420668228871774,
+      "primary_mean_group_weight": 0.9822372719922785
+    }
+  },
+  "quintile_contributions": [
+    {
+      "risk_q": 1,
+      "n": 4472,
+      "raw_mean_ret_20": 0.06473405963533381,
+      "raw_mean_mae_20": -0.10487587114270082,
+      "raw_severe_mae_rate": 0.37902504472271914,
+      "primary_weight": 1.2499790337640262,
+      "cohort_capital_share": 0.25002935273039073,
+      "weighted_ret_20_contribution": 0.016185415030231243,
+      "capital_mae_20_contribution": -0.02622204617884246,
+      "capital_mfe_20_contribution": 0.03986962460004054
+    },
+    {
+      "risk_q": 2,
+      "n": 4472,
+      "raw_mean_ret_20": 0.053618328244459626,
+      "raw_mean_mae_20": -0.10570595263451499,
+      "raw_severe_mae_rate": 0.4000447227191413,
+      "primary_weight": 1.1249811303876236,
+      "cohort_capital_share": 0.2250264174573484,
+      "weighted_ret_20_contribution": 0.012065540314901724,
+      "capital_mae_20_contribution": -0.023786631825258787,
+      "capital_mfe_20_contribution": 0.03488770985954188
+    },
+    {
+      "risk_q": 3,
+      "n": 4471,
+      "raw_mean_ret_20": 0.0476717374776758,
+      "raw_mean_mae_20": -0.10689527570462373,
+      "raw_severe_mae_rate": 0.41825095057034223,
+      "primary_weight": 0.999983227011221,
+      "cohort_capital_share": 0.1999787542142293,
+      "weighted_ret_20_contribution": 0.009533334672012637,
+      "capital_mae_20_contribution": -0.02137678406679553,
+      "capital_mfe_20_contribution": 0.03017368632539301
+    },
+    {
+      "risk_q": 4,
+      "n": 4471,
+      "raw_mean_ret_20": 0.030859667813802037,
+      "raw_mean_mae_20": -0.11237007626105909,
+      "raw_severe_mae_rate": 0.4524714828897338,
+      "primary_weight": 0.8749853236348184,
+      "cohort_capital_share": 0.1749814099374487,
+      "weighted_ret_20_contribution": 0.005399868184260013,
+      "capital_mae_20_contribution": -0.019662674378937373,
+      "capital_mfe_20_contribution": 0.025057071887521175
+    },
+    {
+      "risk_q": 5,
+      "n": 4471,
+      "raw_mean_ret_20": 0.021427141199003248,
+      "raw_mean_mae_20": -0.11267312678036652,
+      "raw_severe_mae_rate": 0.45739208230820844,
+      "primary_weight": 0.7499874202584158,
+      "cohort_capital_share": 0.1499840656606655,
+      "weighted_ret_20_contribution": 0.003213729752511544,
+      "capital_mae_20_contribution": -0.016899173645218417,
+      "capital_mfe_20_contribution": 0.02082593851970641
+    }
+  ],
+  "conservative_overlay_attribution": {
+    "matched_mean_exposure": 0.870009393031321,
+    "uniform_mean_weighted_ret_20": 0.037987720137481286,
+    "uniform_mean_capital_mae_20": -0.09439930174554169,
+    "uniform_q10_capital_mae_20": -0.21039801465413005,
+    "uniform_mean_capital_mfe_20": 0.1300557576286651,
+    "uniform_return_downside_efficiency": 0.40241526616244677,
+    "conservative_minus_uniform_ret_20": 0.0016664601410142643,
+    "conservative_minus_uniform_mean_capital_mae_20": 0.0003446281092962522,
+    "conservative_minus_uniform_efficiency": 0.019192493935231036,
+    "return_retained_vs_equal": 0.9081753048193306,
+    "clv_minus_equal_ret_20": -0.0025915610106367407,
+    "clv_minus_equal_mean_capital_mae_20": -0.00045921958915615124,
+    "clv_minus_equal_efficiency": -0.025479824995778444
+  },
+  "time_stability": [
+    {
+      "v4_time_block": "2018-2020",
+      "policy": "EQUAL_SIZE",
+      "n": 2242,
+      "mean_position_weight": 1.0,
+      "mean_weighted_ret_20": 0.01020881713961337,
+      "mean_capital_mae_20": -0.08613209218497703,
+      "q10_capital_mae_20": -0.1853707620196164,
+      "return_downside_efficiency": 0.11852512670525805,
+      "severe_event_capital_share": 0.3559322033898305,
+      "severe_event_mean_weight": 1.0,
+      "no_trigger_capital_share": 0.1462979482604817
+    },
+    {
+      "v4_time_block": "2018-2020",
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 2242,
+      "mean_position_weight": 0.9853759787129835,
+      "mean_weighted_ret_20": 0.010822718773201243,
+      "mean_capital_mae_20": -0.08393218721423382,
+      "q10_capital_mae_20": -0.1816452913013435,
+      "return_downside_efficiency": 0.12894598761708248,
+      "severe_event_capital_share": 0.35102410320244676,
+      "severe_event_mean_weight": 0.9717882112120257,
+      "no_trigger_capital_share": 0.1441665723661898
+    },
+    {
+      "v4_time_block": "2021-2023",
+      "policy": "EQUAL_SIZE",
+      "n": 9145,
+      "mean_position_weight": 1.0,
+      "mean_weighted_ret_20": 0.03452513405486603,
+      "mean_capital_mae_20": -0.08758395365065764,
+      "q10_capital_mae_20": -0.18034229123599838,
+      "return_downside_efficiency": 0.3941947424818814,
+      "severe_event_capital_share": 0.3580098414434117,
+      "severe_event_mean_weight": 1.0,
+      "no_trigger_capital_share": 0.14499726626571896
+    },
+    {
+      "v4_time_block": "2021-2023",
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 9145,
+      "mean_position_weight": 0.9797949379695835,
+      "mean_weighted_ret_20": 0.03487973583965417,
+      "mean_capital_mae_20": -0.08497699059756507,
+      "q10_capital_mae_20": -0.17622423354972172,
+      "return_downside_efficiency": 0.4104609447142932,
+      "severe_event_capital_share": 0.3517430911094382,
+      "severe_event_mean_weight": 0.9626442076153818,
+      "no_trigger_capital_share": 0.13960074215641932
+    },
+    {
+      "v4_time_block": "2024-2026",
+      "policy": "EQUAL_SIZE",
+      "n": 10970,
+      "mean_position_weight": 1.0,
+      "mean_weighted_ret_20": 0.05811905387407591,
+      "mean_capital_mae_20": -0.1305155376108755,
+      "q10_capital_mae_20": -0.30168412766523245,
+      "return_downside_efficiency": 0.44530371584841105,
+      "severe_event_capital_share": 0.487693710118505,
+      "severe_event_mean_weight": 1.0,
+      "no_trigger_capital_share": 0.13536918869644485
+    },
+    {
+      "v4_time_block": "2024-2026",
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 10970,
+      "mean_position_weight": 1.019832483864758,
+      "mean_weighted_ret_20": 0.06327054341317866,
+      "mean_capital_mae_20": -0.13200432716919153,
+      "q10_capital_mae_20": -0.3002667128607718,
+      "return_downside_efficiency": 0.47930658615519506,
+      "severe_event_capital_share": 0.48070434180239313,
+      "severe_event_mean_weight": 1.0052167840872603,
+      "no_trigger_capital_share": 0.13029876427340323
+    }
+  ],
+  "liquidity_sanity": [
+    {
+      "liquidity_tercile": 1,
+      "policy": "EQUAL_SIZE",
+      "n": 7257,
+      "mean_position_weight": 1.0,
+      "mean_weighted_ret_20": 0.04918332799450808,
+      "mean_capital_mae_20": -0.11722422550642232,
+      "return_downside_efficiency": 0.4195662439400249,
+      "severe_event_capital_share": 0.429240733085297
+    },
+    {
+      "liquidity_tercile": 1,
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 7257,
+      "mean_position_weight": 1.0315556614730967,
+      "mean_weighted_ret_20": 0.05298587974755258,
+      "mean_capital_mae_20": -0.12043164115739703,
+      "return_downside_efficiency": 0.4399664343883114,
+      "severe_event_capital_share": 0.4248025513867017
+    },
+    {
+      "liquidity_tercile": 2,
+      "policy": "EQUAL_SIZE",
+      "n": 7086,
+      "mean_position_weight": 1.0,
+      "mean_weighted_ret_20": 0.04614868677611353,
+      "mean_capital_mae_20": -0.10601289270061887,
+      "return_downside_efficiency": 0.43531202291062593,
+      "severe_event_capital_share": 0.4136325148179509
+    },
+    {
+      "liquidity_tercile": 2,
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 7086,
+      "mean_position_weight": 1.012684114737982,
+      "mean_weighted_ret_20": 0.049663916839590205,
+      "mean_capital_mae_20": -0.10670832637034709,
+      "return_downside_efficiency": 0.46541744706241767,
+      "severe_event_capital_share": 0.408949972129289
+    },
+    {
+      "liquidity_tercile": 3,
+      "policy": "EQUAL_SIZE",
+      "n": 8014,
+      "mean_position_weight": 1.0,
+      "mean_weighted_ret_20": 0.036467872997964855,
+      "mean_capital_mae_20": -0.1028094949124786,
+      "return_downside_efficiency": 0.35471308393266443,
+      "severe_event_capital_share": 0.4212627901172947
+    },
+    {
+      "liquidity_tercile": 3,
+      "policy": "RISK_AWARE_CAPITAL_PRESERVING",
+      "n": 8014,
+      "mean_position_weight": 0.9602097488968068,
+      "mean_weighted_ret_20": 0.03754436447871254,
+      "mean_capital_mae_20": -0.0977377578307444,
+      "return_downside_efficiency": 0.3841336788565307,
+      "severe_event_capital_share": 0.4146064130469802
+    }
+  ],
+  "industry_sanity": {
+    "industries": 128,
+    "industries_n_ge_50": 96,
+    "largest_industry_share": 0.046249496801896495,
+    "positive_return_difference_fraction_n_ge_50": 0.84375,
+    "improved_capital_mae_fraction_n_ge_50": 0.5625,
+    "improved_efficiency_fraction_n_ge_50": 0.8333333333333334,
+    "reduced_severe_capital_share_fraction_n_ge_50": 0.75,
+    "top_industries": [
+      {
+        "industry": "\u6c7d\u8f66\u96f6\u90e8\u4ef6",
+        "n": 1034,
+        "ret_20_difference": 0.0010908681587821004,
+        "capital_mae_difference": -0.0019557572247611565,
+        "efficiency_difference": 0.003953801201569684,
+        "severe_capital_share_difference": 0.0011902811902821941
+      },
+      {
+        "industry": "\u901a\u7528\u8bbe\u5907",
+        "n": 951,
+        "ret_20_difference": 0.004657213055598498,
+        "capital_mae_difference": -0.0014181578682100765,
+        "efficiency_difference": 0.032320931485768256,
+        "severe_capital_share_difference": -0.00593767022396996
+      },
+      {
+        "industry": "\u8f6f\u4ef6\u5f00\u53d1",
+        "n": 817,
+        "ret_20_difference": 0.0044417599878815925,
+        "capital_mae_difference": -0.0009865903008038357,
+        "efficiency_difference": 0.03516145559607042,
+        "severe_capital_share_difference": -0.007674518779659467
+      },
+      {
+        "industry": "\u534a\u5bfc\u4f53",
+        "n": 764,
+        "ret_20_difference": -0.001654219467396592,
+        "capital_mae_difference": 0.002572007388445957,
+        "efficiency_difference": -0.000585471167378393,
+        "severe_capital_share_difference": -0.0015646829708855226
+      },
+      {
+        "industry": "\u4e13\u7528\u8bbe\u5907",
+        "n": 750,
+        "ret_20_difference": 0.004590249376392477,
+        "capital_mae_difference": 9.522240509736435e-05,
+        "efficiency_difference": 0.0391182427200959,
+        "severe_capital_share_difference": -0.008067669587258575
+      },
+      {
+        "industry": "IT\u670d\u52a1\u2161",
+        "n": 732,
+        "ret_20_difference": 0.002515493164320641,
+        "capital_mae_difference": 0.0010049437564031982,
+        "efficiency_difference": 0.02428207149600503,
+        "severe_capital_share_difference": -0.00954651711637966
+      },
+      {
+        "industry": "\u5316\u5b66\u5236\u54c1",
+        "n": 669,
+        "ret_20_difference": 0.0038807818309695916,
+        "capital_mae_difference": 4.277081829152929e-05,
+        "efficiency_difference": 0.03602668018526989,
+        "severe_capital_share_difference": -0.006801333963289469
+      },
+      {
+        "industry": "\u5316\u5b66\u5236\u836f",
+        "n": 625,
+        "ret_20_difference": 0.0023151264193553116,
+        "capital_mae_difference": 0.0017239937958209994,
+        "efficiency_difference": 0.024913345854967295,
+        "severe_capital_share_difference": -0.006857646823009433
+      },
+      {
+        "industry": "\u7535\u6c60",
+        "n": 623,
+        "ret_20_difference": 0.001722893164137835,
+        "capital_mae_difference": 0.005548510092437467,
+        "efficiency_difference": 0.031230702434083712,
+        "severe_capital_share_difference": -0.012661342743057968
+      },
+      {
+        "industry": "\u533b\u7597\u5668\u68b0",
+        "n": 575,
+        "ret_20_difference": -0.0011311130759745353,
+        "capital_mae_difference": -0.00016084976658208017,
+        "efficiency_difference": -0.011030240275085312,
+        "severe_capital_share_difference": 0.008555232641787924
+      }
+    ]
+  },
+  "consistency_checks": {
+    "policy_n_differences": {
+      "CLV_ONLY_CAPITAL_PRESERVING": 0,
+      "CONSERVATIVE_OVERLAY": 0,
+      "EQUAL_SIZE": 0,
+      "RISK_AWARE_CAPITAL_PRESERVING": 0
+    },
+    "quintile_count_difference": 0,
+    "weighted_ret_contribution_difference": -1.5265566588595902e-16,
+    "capital_mae_contribution_difference": 1.3877787807814457e-16,
+    "period_policy_count_differences": {
+      "EQUAL_SIZE": 0,
+      "RISK_AWARE_CAPITAL_PRESERVING": 0
+    },
+    "severe_nonsevere_share_differences": {
+      "EQUAL_SIZE": 0.0,
+      "RISK_AWARE_CAPITAL_PRESERVING": -4.3853809472693683e-14
+    },
+    "winner_loser_share_differences": {
+      "EQUAL_SIZE": 0.0,
+      "RISK_AWARE_CAPITAL_PRESERVING": -4.3298697960381105e-14
+    }
+  },
+  "input_identities": {
+    "registry": {
+      "path": "/Users/linmei/Documents/CY-oversold-reversal-ranking/configs/data_asset_registry.json",
+      "sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2"
+    },
+    "activation_manifest": {
+      "path": "/Users/linmei/Documents/CY-oversold-reversal-ranking/research/volume_exhaustion_bottom/configs/input_snapshot_v1.json",
+      "sha256": "863d0ddb01765cf2769ebefcab4fe158002ab1d431c78a068b76837526a46bcc"
+    },
+    "inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "data_files": [
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "size": 42011064,
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "size": 43320252,
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "size": 46073783,
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "size": 52153081,
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "size": 56255217,
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "size": 59157938,
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2024/data_0.parquet",
+        "size": 59881763,
+        "sha256": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2025/data_0.parquet",
+        "size": 61756440,
+        "sha256": "846ca46ce65dd9bd1e9c89df5b26c143af8e8829365671c6f7e43b801cb09d9a",
+        "content_hash_verified": true
+      },
+      {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2026/data_0.parquet",
+        "size": 39367384,
+        "sha256": "91a7d7fccee2e07fd602c77e16914ea8a9224242ad7f887225aaeb07d60ae3d0",
+        "content_hash_verified": true
+      }
+    ],
+    "snapshot_id": "CYQ-PIT-B-DAILY-2018-2026-V2",
+    "pit_grade": "B",
+    "strict_archive_ready": false,
+    "authorization": {
+      "operation": "BACKTEST",
+      "registry_id": "CYQ-DATA-BASELINE-20260820",
+      "registry_sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2",
+      "manifest_id": "VOLUME-EXHAUSTION-BOTTOM-V1-CY006-20260901",
+      "manifest_sha256": "863d0ddb01765cf2769ebefcab4fe158002ab1d431c78a068b76837526a46bcc",
+      "purpose": "CAUSAL_RESEARCH",
+      "hard_valid": true,
+      "scope_start": "2018-01-01",
+      "scope_end": "2026-08-12"
+    }
+  }
+}
