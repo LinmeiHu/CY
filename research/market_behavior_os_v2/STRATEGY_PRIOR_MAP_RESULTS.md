@@ -1,5 +1,19 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Cycle-016 frozen champion anatomy
+
+| Diagnostic | Frozen evidence | Decision |
+|---|---|---|
+| Holding lifecycle | Mean payoff -0.18%/+0.23%/+0.67%/+1.08%/+1.48% at d1/d5/d10/d15/d20; positive post-d10 accrual in both blocks | `FULL_HORIZON_PERSISTENT`; no shorter-hold inference |
+| Selection depth | Ranks 6--10 +1.24% full, +1.48%/+1.04% by block, 43.24% net-PnL share | `BREADTH_ECONOMICALLY_SUPPORTED`; no Top-N replay |
+| Opportunity richness | Sparse/normal/rich +1.47%/+2.14%/+0.83%; rich-minus-sparse reverses by block | No adaptive-breadth experiment |
+| Industry-thesis persistence | Persistence 30.03% d5 and 19.16% d10; faded subsequent payoff +1.01%/+0.79%; d10 gap +0.27% | No state-linked exit experiment |
+| Contribution structure | Top-5 industries 58.84%, top-10 dates 69.14%, top-20 securities 66.18%; leave-one-largest tests all profitable | `CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL` |
+
+The exact 20-bps champion identity is reproduced and no strategy setting is
+changed. Structural decision: `NO_CHAMPION_MODIFICATION_RETURN_TO_INDEPENDENT_ALPHA`.
+This is consumed 2018--2023 anatomy, not independent confirmation.
+
 ## Cycle-015 multi-timescale Industry Diffusion and daily alpha
 
 | Family | Frozen mechanism | Evidence | Executable evidence | Classification |

@@ -2,6 +2,40 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: frozen champion anatomy
+
+Resume after the commit containing `ASHARE-CHAMPION-ANATOMY-CYCLE-016`; its
+starting checkpoint is `d676c7a622`. Preserve exact Industry Diffusion plus
+weekly Low-MAX unchanged. Do not reinterpret this diagnostic cycle as a Top-N,
+holding-horizon, opportunity-sizing, or exit test. All evidence is consumed
+2018--2023 development history; post-2023 outcomes and CY-011 remain unread.
+
+The 20-bps champion is reconstructed exactly at +122.43% total return, +16.34%
+annualized, -25.77% drawdown, 0.731 Sharpe, 0.634 Calmar, 14.13% severe losses,
+210.52x turnover, and 2,625 completed trades. Mean trade payoff progresses from
+-0.18% at d1 to +0.23% d5, +0.67% d10, +1.08% d15, and +1.48% d20. Both broad
+blocks continue earning after d10; lifecycle is `FULL_HORIZON_PERSISTENT`.
+
+Frozen ranks 6--10 contribute 43.24% of net trade PnL and earn +1.48%/+1.04%
+in the early/late blocks, so the selected tail is not an obvious dilution and
+no adaptive Top-N work is earned. Sparse/normal/rich opportunity cohorts earn
++1.47%/+2.14%/+0.83%; richness is nonmonotonic and its ordering reverses across
+blocks. The opportunity gate fails.
+
+Original Industry Diffusion state persistence is 30.03%/19.16%/10.35%/5.73%
+at d5/d10/d15/d20. Persistent cohorts have higher subsequent payoff, but faded
+cohorts remain positive and the d10 gap is only +0.27%; the exit gate fails.
+PnL is concentrated in dates and securities, yet four of six years are positive
+and all three cheap leave-one-largest tests remain strongly profitable. Final
+classification: `CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL`. Exact decision:
+`NO_CHAMPION_MODIFICATION_RETURN_TO_INDEPENDENT_ALPHA`.
+
+External diagnostic panels are under
+`/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/`; compact hashes
+and lineage are recorded in the result artifact. The next allocation should be
+independent Alpha discovery or a bounded multi-family data contract, not another
+champion construction neighbor.
+
 ## Latest checkpoint: multi-timescale Industry Diffusion and daily alpha
 
 Resume after the commit containing

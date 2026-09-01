@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `2a2d307ec5` (start of frozen multi-timescale Industry Diffusion and daily-alpha cycle 015)
-- `CURRENT_PHASE`: `MULTISCALE_DIFFUSION_DAILY_REFRESH_REJECTED_DAILY_ALPHA_NO_PROMOTION`
-- `CURRENT_PRIMARY_FRONTIER`: Daily Low-MAX refresh inside the exact frozen weekly Industry Diffusion state is `DAILY_REFRESH_DEGRADES_STRATEGY`: it adds 278.30x initial-capital turnover at 20 bps, loses 73.19 percentage points of total return versus weekly Low-MAX, and becomes negative at 40 bps. Five distinct daily h1--h5 screens produce weak information but zero frozen-gate promotions and no replay
+- `CURRENT_BASELINE`: `d676c7a622` (start of frozen champion-anatomy cycle 016)
+- `CURRENT_PHASE`: `CHAMPION_ANATOMY_COMPLETE_NO_MODIFICATION_AUTHORIZED`
+- `CURRENT_PRIMARY_FRONTIER`: exact Industry Diffusion plus weekly Low-MAX anatomy is `CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL`: payoff persists through d20, ranks 6--10 contribute 43.24% of net trade PnL, opportunity richness is nonmonotonic, and faded industry theses remain profitable. Neither adaptive breadth nor state-linked exit earned a construction experiment
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Preserve weekly Industry Diffusion plus weekly Low-MAX unchanged; daily Low-MAX refresh, all five Cycle-015 daily paths, Cycle-014 lifecycle/liquidity, and Cycle-013 propagation authorize no new strategy
+- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 016 authorizes no modification; daily Low-MAX refresh, all five Cycle-015 daily paths, Cycle-014 lifecycle/liquidity, and Cycle-013 propagation remain closed
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `2a2d307ec5`
-- `CURRENT_SCIENTIFIC_LAYER`: `MULTISCALE_REFRESH_COMPLETE; DAILY_ALPHA_SCREEN_COMPLETE; NO_DAILY_REPLAY_AUTHORIZED`
+- `CURRENT_HEAD_AT_RESUME`: `d676c7a622`
+- `CURRENT_SCIENTIFIC_LAYER`: `FROZEN_CHAMPION_ANATOMY_COMPLETE; NO_CONSTRUCTION_EXPERIMENT_AUTHORIZED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -69,6 +69,39 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-016 frozen champion anatomy
+
+The exact 20-bps Industry Diffusion plus weekly Low-MAX replay is reproduced to
+machine precision: +122.43% total return, +16.34% annualized, -25.77% drawdown,
+0.731 Sharpe, 0.634 Calmar, 14.13% severe-loss incidence, 210.52x turnover, and
+2,625 completed trades. No strategy parameter, cohort, fill, or cost changed.
+
+Mean checkpoint payoff is -0.18%/+0.07%/+0.23%/+0.67%/+1.08%/+1.48% at
+d1/d3/d5/d10/d15/d20. Another +0.81 percentage point accrues after d10, with
+positive d10-to-d20 progression in both broad blocks, so the lifecycle is
+`FULL_HORIZON_PERSISTENT`, not an early Alpha that obviously earns a shorter
+hold.
+
+Exact emitted ranks 6--10 earn +1.24% mean payoff, remain positive in both
+blocks, and contribute 43.24% of net trade PnL; `BREADTH_ECONOMICALLY_SUPPORTED`.
+Sparse/normal/rich cohorts earn +1.47%/+2.14%/+0.83%, with rich-minus-sparse
+reversing across blocks; no adaptive breadth gate passes. Industry-thesis
+persistence falls from 30.03% at d5 to 5.73% at d20. Persistence is associated
+with better subsequent payoff, but faded cohorts still earn +1.01% after d5 and
++0.79% after d10, while the d10 gap is only +0.27%; no exit gate passes.
+
+Top-five industries, top-ten dates, and top-twenty securities contribute
+58.84%, 69.14%, and 66.18% of net trade PnL. Four of six years are positive and
+leave-largest-industry/year/date total returns remain +102.41%/+67.21%/+106.23%.
+Final anatomy: `CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL`. Structural decision:
+`NO_CHAMPION_MODIFICATION_RETURN_TO_INDEPENDENT_ALPHA`.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and lawful independent confirmation. Has this mechanism implied a
+genuinely new strategy archetype? No; it supports the existing slow-rotation
+industry-state plus stock-quality archetype and authorizes no new construction.
 
 ### Cycle-015 multi-timescale Industry Diffusion and daily alpha
 

@@ -4,6 +4,28 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Cycle-016 frozen champion-anatomy conclusions
+
+- Exact 20-bps Industry Diffusion plus weekly Low-MAX identity reproduces. Mean
+  trade payoff is -0.18%/+0.23%/+0.67%/+1.08%/+1.48% at d1/d5/d10/d15/d20;
+  both blocks retain positive d10--d20 accrual: `FULL_HORIZON_PERSISTENT`.
+- Frozen ranks 6--10 earn +1.24%, remain positive in both blocks, and supply
+  43.24% of net PnL: `BREADTH_ECONOMICALLY_SUPPORTED`. No Top-N experiment.
+- Sparse/normal/rich opportunity cohorts earn +1.47%/+2.14%/+0.83%, and the
+  rich-minus-sparse ordering reverses across blocks. No adaptive breadth gate.
+- Original-industry persistence identifies stronger cohorts, but faded cohorts
+  remain positive and the d10 subsequent-payoff gap is only +0.27%. No exit gate.
+- Date/security contribution is concentrated, while four of six years and all
+  leave-one-largest checks remain profitable. Final status:
+  `CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL`; preserve champion unchanged and
+  return research capital to independent Alpha discovery.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Cycle-015 multi-timescale and daily-alpha conclusions
 
 - Exact weekly Industry Diffusion plus weekly Low-MAX remains preferred. Daily

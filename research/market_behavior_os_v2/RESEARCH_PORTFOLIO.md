@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 20% | Five new daily summary-path screens produced weak information but no promotion; Cycle 014 and Cycle 013 are also closed | Use only a genuinely distinct registered-data mechanism, not daily/frequency neighbors |
-| EXPLOIT | 10% | Weekly Industry Diffusion plus weekly Low-MAX is cost-resilient; daily refresh decisively degrades it and all current history is consumed | Preserve the weekly rules unchanged; seek only genuinely independent confirmation |
-| INVENT | 45% | Borrow-feasible relative value, investor-flow identity, PIT factors, and order-book/queue information have more headroom than another summary-OHLCV transformation | Prefer one bounded, multi-family data contract when acquisition is separately justified |
+| EXPLORE | 25% | Champion anatomy rejects nearby breadth/exit construction; Cycle 015 daily paths, Cycle 014, and Cycle 013 are closed | Search only genuinely distinct registered-data mechanisms, not champion neighbors |
+| EXPLOIT | 5% | Weekly Industry Diffusion plus weekly Low-MAX is cost-resilient and anatomically meaningful, but all evidence is consumed and no modification gate passes | Freeze exact rules; seek only genuinely independent confirmation |
+| INVENT | 50% | Borrow-feasible relative value, investor-flow identity, PIT factors, and order-book/queue information have more headroom than another summary-OHLCV or champion transformation | Prefer one bounded, multi-family data contract when acquisition is separately justified |
 | REPLICATE | 15% | Canonical IVOL/residual momentum and PIT fundamentals are blocked; lawful independent confirmation is also unavailable | Resume only with a source-ready factor/history contract or genuinely independent data |
 | TRANSFER | 5% | The sole Confirmed-Breakdown admission mapping affected zero decisions | Park the translation; do not open the exit role as a rescue |
-| FALSIFY | 5% | Low-MAX survives 40 bps only at weekly refresh; daily refresh loses at 40 bps and has nonportable replacement half-life | Close frequency/refresh rescue and preserve Low-MAX as weekly Industry-Diffusion-specific information |
+| FALSIFY | 5% | Champion payoff persists through d20, lower ranks contribute, and opportunity/state gates fail | Close Top-N, shorter-hold, adaptive-breadth, and state-exit inference from Cycle 016 |
 
 Mandatory checkpoint questions:
 

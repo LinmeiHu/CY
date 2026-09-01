@@ -1,0 +1,145 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-ANATOMY-CYCLE-016",
+  "status": "FROZEN_DIAGNOSTIC_ANATOMY_BEFORE_TRADE_PATH_OUTCOMES",
+  "starting_checkpoint": "d676c7a622",
+  "branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "champion": {
+    "name": "Industry Diffusion + Weekly Low-MAX",
+    "family": "industry_diffusion_low_max",
+    "cost_per_side": 0.002,
+    "weekly_clock": "exact frozen cal_idx modulo 5 equals 4",
+    "breadth": "exact frozen Top-10 Industry Diffusion allocation followed by within-industry prior-20-session MAX ascending",
+    "holding": "exact frozen next-open entry and 20-session cohort due-open exit with QD-010 pre-effective exits and legal-fill delays",
+    "changes_authorized": false
+  },
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "construction_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_spec.json",
+      "sha256": "0d9f809a9e19bd000f559c4c64cb73e7f6010883b82ebc4f625c9ba845c11ac0"
+    },
+    "construction_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py",
+      "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"
+    },
+    "construction_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_candidate_attribution.csv",
+      "sha256": "91eb1c43b96d2edb4342ddf7757a5b7c4d244f7b40cf18c5946690d6138af097"
+    },
+    "low_max_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_spec.json",
+      "sha256": "f4681932f50b8b54bbbe03ca334c94098afc7a9f84b4ddd25233b1d5cca830a3"
+    },
+    "low_max_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_low_max_confirmation_cycle_012.py",
+      "sha256": "c848c9c20695238267f26d2c2f349db366dd2faddaf8dac75fdf40da09ebf21e"
+    },
+    "low_max_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json",
+      "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"
+    },
+    "cycle_015_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015_spec.json",
+      "sha256": "b53c054c64072fda8269532200e51e6b90b868070e468c57f789bd038ad05bb2"
+    },
+    "cycle_015_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_multiscale_diffusion_daily_alpha_cycle_015.py",
+      "sha256": "d276ea990982228637b1304e6d803a9ed7467d23483d612f4cf5b86f9dd45144"
+    },
+    "cycle_015_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-MULTISCALE-DIFFUSION-DAILY-ALPHA-CYCLE-015_result.json",
+      "sha256": "7ff3850ab451881c0f922c9dee1ef3b3cbdc881449a3074f155987a6bb7b1fb9"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    }
+  },
+  "track_a_lifecycle": {
+    "checkpoints": [1, 3, 5, 10, 15, 20],
+    "checkpoint_value": "actual lot value at checkpoint-session open after entry, including visible action cash and hypothetical 20-bps sell cost; a previously forced-exited lot carries its realized payoff",
+    "day_20": "actual frozen legal exit payoff, including forced exits and any due-open legal-fill delay",
+    "intervals": [[1, 3], [3, 5], [5, 10], [10, 15], [15, 20]],
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "control": "no new control; report only the already-authoritative Cycle-011 h20 Low-MAX-minus-baseline candidate excess",
+    "classification": {
+      "CHRONOLOGICALLY_UNSTABLE": "d20 mean payoff signs differ across blocks",
+      "LATE_DECAY_OR_GIVEBACK": "d20 is at least 25 bps below d10 in full, early, and late",
+      "EARLY_CONCENTRATED": "d5 captures at least 75% of positive d20 mean in full, early, and late",
+      "FULL_HORIZON_PERSISTENT": "d20 minus d10 is at least 25 bps in full, early, and late",
+      "MID_HORIZON_PERSISTENT": "otherwise d10 minus d5 is at least 25 bps and d20 minus d10 exceeds minus 25 bps in full, early, and late",
+      "fallback": "CHRONOLOGICALLY_UNSTABLE"
+    }
+  },
+  "track_b_rank": {
+    "rank_source": "exact frozen emitted champion signal_rank; no reranking or new score",
+    "buckets": {"ranks_1_2": [1, 2], "ranks_3_5": [3, 5], "ranks_6_10": [6, 10]},
+    "classification": {
+      "BREADTH_ECONOMICALLY_SUPPORTED": "all bucket mean payoffs are positive full and ranks 6-10 are positive in both blocks",
+      "LOWER_RANKS_WEAK_BUT_POSITIVE": "ranks 6-10 are positive full but nonpositive in at least one block",
+      "LOWER_RANKS_DILUTIVE": "ranks 6-10 are nonpositive full and in both blocks",
+      "otherwise": "RANK_EFFECT_UNSTABLE"
+    }
+  },
+  "track_c_opportunity": {
+    "primary_richness": "count of quality-valid eligible stocks in the entry-date industries and exact counts selected by frozen Industry Diffusion",
+    "secondary_descriptors": ["eligible industries", "all eligible stocks", "mean candidates per selected industry", "diffusion-score margin between frozen ranks 10 and 11"],
+    "buckets": "stable equal-count thirds after sorting decision dates by primary richness then decision date; full-sample ex-ante covariates only, no outcomes",
+    "labels": ["sparse", "normal", "rich"],
+    "adaptive_breadth_gate_all_required": {
+      "rank_classification": "LOWER_RANKS_DILUTIVE",
+      "minimum_dates_each_regime": 50,
+      "minimum_rich_minus_sparse_cohort_payoff": 0.005,
+      "minimum_rich_minus_sparse_each_block": 0.0,
+      "maximum_sparse_cohort_payoff": 0.0,
+      "require_monotonic_sparse_normal_rich": true
+    }
+  },
+  "track_d_concentration": {
+    "contribution": "actual realized trade proceeds minus invested cost; sums exactly to final NAV minus initial capital",
+    "groups": ["industry", "decision date", "entry year", "security"],
+    "diagnostics": ["top-5 industry net-PnL share", "top-10 date net-PnL share", "top-20 security net-PnL share", "gross-positive-PnL HHI", "positive and negative year contributions"],
+    "leave_one_out": ["largest net-PnL industry", "largest net-PnL entry year", "largest net-PnL decision date"],
+    "fragility": "STRUCTURALLY_FRAGILE_DEVELOPMENT_ALPHA only if removing the largest industry or largest year makes residual total net PnL nonpositive",
+    "concentrated": "CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL if top-5 industries, top-10 dates, or top-20 securities exceed 60% of net PnL while leave-one-out remains positive"
+  },
+  "track_e_persistence": {
+    "checkpoints": [5, 10, 15, 20],
+    "state": "the original selected industry is represented in the contemporaneous top-10 eligible stocks ranked by the exact frozen diffusion_score descending then symbol at the completed checkpoint date",
+    "diagnostic_only": true,
+    "early_fade": "first nonpersistent checkpoint is day 5 or day 10",
+    "subsequent_payoff": "actual final net payoff minus checkpoint cumulative net payoff; no hypothetical exit is executed",
+    "state_exit_gate_all_required": {
+      "minimum_early_fade_fraction": 0.25,
+      "minimum_groups_each_state_at_d5_and_d10": 100,
+      "minimum_persistent_minus_faded_subsequent_payoff": 0.005,
+      "minimum_persistent_minus_faded_each_block": 0.0,
+      "maximum_faded_subsequent_payoff": 0.0
+    }
+  },
+  "decision": {
+    "priority": ["adaptive_breadth_gate", "state_exit_gate"],
+    "if_neither": "NO_CHAMPION_MODIFICATION_RETURN_TO_INDEPENDENT_ALPHA",
+    "only_one_structural_experiment_may_be_recommended": true,
+    "final_classification_order": ["OPPORTUNITY_BREADTH_MISMATCH", "HOLDING_LIFECYCLE_MISMATCH", "STRUCTURALLY_FRAGILE_DEVELOPMENT_ALPHA", "CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL", "BROADLY_DISTRIBUTED_ROBUST_DEVELOPMENT_ALPHA"]
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 access",
+    "Top-N, horizon, weekly clock, industry definition, Low-MAX, weighting, allocation, exit, cost, or universe change",
+    "Top-5/8/12/15 replay or h10/h15/h25 strategy replay",
+    "daily refresh or alternative weekday",
+    "opportunity-adaptive breadth implementation",
+    "state-linked exit implementation",
+    "new price-volume Alpha discovery",
+    "OOS, independent-validation, live, or production claim"
+  ]
+}
