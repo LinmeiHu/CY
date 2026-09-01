@@ -4,6 +4,30 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Cycle-020 confirmed-breakdown exit conclusions
+
+- Exact semantics remain prior-L20 causal-coordinate support and completed-close
+  confirmation at 15:30; the earliest faithful fill is the next legal open.
+  Minute crossing and event-day intraday execution were not substituted.
+- Incidence is broad: 1,071/2,625 lots, 582 securities, 230 cohorts, six years,
+  102 industries, and 95.24% actionable coverage. T+1, partial inventory, delayed
+  execution, and overlapping cohorts are explicitly audited.
+- Original post-signal continuation is positive: +0.400%/+0.669%/+0.686% at
+  h1/h3/h5 and +1.572% through the frozen exit. Early/late remaining payoff is
+  +1.562%/+1.586%.
+- The matched remaining gap is -0.187% full but reverses from -0.611% early to
+  +0.447% late. The predeclared Phase-B gate fails; no modified champion replay
+  is run.
+- Final `BREAKDOWN_NOT_USEFUL_AS_EXIT`. Close the exact exit role without rescue;
+  the population downside screen does not transfer to this champion lifecycle.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No;
+the natural confirmed-breakdown exit translation failed.
+
 ## Cycle-019 champion applicability conclusions
 
 - Revised-scope provenance: the later contract arrived after original outcomes

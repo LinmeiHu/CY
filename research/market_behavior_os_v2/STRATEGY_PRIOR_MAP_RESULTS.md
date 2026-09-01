@@ -1,5 +1,15 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Cycle-020 confirmed-breakdown exit translation
+
+| Prior | Frozen translation | Champion evidence | Decision |
+|---|---|---|---|
+| Confirmed prior-L20 breakdown | Completed causal-coordinate close below the previous 20-session causal-coordinate low; 15:30 signal, earliest next legal open, lot-level T+1 | 1,071 affected lots; actionable h5 +0.686% and remaining frozen payoff +1.572%; early/late remaining +1.562%/+1.586%; matched gap -0.611%/+0.447% | `BREAKDOWN_NOT_USEFUL_AS_EXIT`; Phase C not authorized, no replay or rescue |
+
+The prior population result remains `DOWNSIDE_PREDICTOR`, but this bounded
+natural translation does not identify adverse remaining economics inside the
+frozen champion. The exact exit role is closed.
+
 ## Cycle-019 champion market-structure applicability map
 
 | Dimension | LOW / MEDIUM / HIGH dates | LOW / MEDIUM / HIGH payoff | Early / late favorable spread | Classification |

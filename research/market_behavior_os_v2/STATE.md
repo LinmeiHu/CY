@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `a113a1bb9d` (actual start of revised-scope Cycle-019 reconciliation; original diagnostic started at `3e28f50b68`)
-- `CURRENT_PHASE`: `REVISED_CHAMPION_APPLICABILITY_SCOPE_RECONCILED_NO_DEPLOYMENT_AUTHORIZED`
-- `CURRENT_PRIMARY_FRONTIER`: `PARTIALLY_IDENTIFIABLE_HABITAT`: causal prior absolute market state separates HIGH from LOW by +1.316 pp in both broad blocks and lower stock-sign synchronization adds weak repeated information. Under the revised contract, Absolute State × Synchronization is the sole authorized 2D map; dispersion's reversal blocks the conditional second map. 2018 remains unexplained by 2022's adverse structure, so deployment is not authorized
+- `CURRENT_BASELINE`: `fdbd974c04` (clean start of Cycle-020 confirmed-breakdown exit study)
+- `CURRENT_PHASE`: `CONFIRMED_BREAKDOWN_EXIT_CLOSED_AT_PHASE_B_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: `SECOND_INDEPENDENT_ALPHA_DISCOVERY`: confirmed L20 breakdown has broad incidence inside the champion but continuing from the earliest legal next-open opportunity earns +0.686% h5 and +1.572% through the frozen exit; both blocks have positive remaining payoff and the matched gap reverses. The exit role is `BREAKDOWN_NOT_USEFUL_AS_EXIT` and is closed without replay
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 019 is diagnostic only and authorizes no deployment rule; Cycle 018's Positive Industry Breadth rejection and all prior construction closures remain unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `a113a1bb9d`
-- `CURRENT_SCIENTIFIC_LAYER`: `POST_OUTCOME_REVISED_SCOPE_RECONCILIATION; PARTIALLY_IDENTIFIABLE_HABITAT; NO_FILTER_OR_EXPOSURE_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `fdbd974c04`
+- `CURRENT_SCIENTIFIC_LAYER`: `EXACT_CONFIRMED_BREAKDOWN_EXIT_DIAGNOSIS; PHASE_B_STOP; NO_MODIFIED_CHAMPION_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -69,6 +69,47 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-020 champion confirmed-breakdown dynamic exit
+
+`ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020` starts from `fdbd974c04`. The exact
+repository signal is recovered before champion-conditioned outcomes: the
+completed event-session causal-coordinate close is strictly below the minimum
+causal-coordinate low of the previous 20 completed valid transitions. Support
+updates daily from prior information. Confirmation is at the completed close,
+recorded at 15:30; consequently the faithful earliest fill is the next legal
+session open. No minute low/crossing, event-day intraday fill, reclaim,
+penetration threshold, or alternative support is used.
+
+Incidence is ample. First breakdown affects 1,071/2,625 frozen lots (40.80%),
+582 securities, 230 cohorts, 391 event dates, all six years, and 102 industries.
+The holding-age counts are 36 day-0, 257 days 1--5, 276 days 6--10, 275 days
+11--15, and 227 days 16--20. Actionable next-open coverage is 95.24%; 25 lots
+have delayed fills, 51 have no incremental headroom, and zero remain
+unexecuted before the frozen exit. Confirmation-time inventory states include
+831 fully sellable, two partial, and 34 fully locked symbol-events; lot-level
+T+1 and exit-before-entry ordering are explicit.
+
+The predeclared Phase-B economics reject the exit. Across 1,020 actionable
+lots, original continuation is +0.400%/+0.669%/+0.686% at h1/h3/h5 and +1.572%
+through the frozen exit, with median +0.243% and 51.57% positive recovery. The
+remaining payoff is +1.562% in 2018--2021 and +1.586% in 2022--2023, so neither
+block has the required adverse orientation. The matched remaining-payoff gap
+is -0.187% full but reverses from -0.611% early to +0.447% late. The apparent
+winner-giveback subgroup has only three lots; 1,017 events occur while marked
+P&L is nonpositive, yet their subsequent frozen payoff is still +1.572%.
+
+Final classification: `BREAKDOWN_NOT_USEFUL_AS_EXIT`. Phase C is not authorized:
+no modified champion, annual portfolio comparison, 40-bps stress, re-entry,
+or rescue rule is run. The prior broad `DOWNSIDE_PREDICTOR` screen remains a
+valid population-level result, but it does not transfer to the champion's
+remaining lifecycle. Allocate next capital to a second independent Alpha
+engine rather than another champion exit.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation. Has this mechanism implied a
+new strategy archetype? No; the natural exit translation fails.
 
 ### Cycle-019 champion market-structure applicability map
 

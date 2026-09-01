@@ -1,0 +1,1369 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "artifacts": {
+    "ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_incidence.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_incidence.csv",
+      "sha256": "34f7995e8455dd1842b11bfc00572d23775105ad5bec0f12c632f29f3e18b638"
+    },
+    "ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_path.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_path.csv",
+      "sha256": "60010b8d9b8668d4edc7f447b07407738996e7dd8f1c061c22f5be2a56a2ad2e"
+    },
+    "ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_report.md": {
+      "path": "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_report.md",
+      "sha256": "345025a450004ead5236b087e3a08fe33632939e0aeac274b8264951ad2787d2"
+    },
+    "ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_year.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020_year.csv",
+      "sha256": "5453b36c093cd7507a9800217e19bef43e9c432e7b09a2bb74198c69be2f532d"
+    }
+  },
+  "boundaries": {
+    "cost_grid_run": false,
+    "cy011_read": false,
+    "entry_engine_changed": false,
+    "event_day_intraday_fill": false,
+    "minute_crossing_used": false,
+    "oos_claim": false,
+    "post_2023_read": false,
+    "reentry_rule_added": false,
+    "support_definition_changed": false
+  },
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "experiment_id": "ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020",
+  "external_artifacts": {
+    "breakdown_event_panel.parquet": {
+      "bytes": 47345,
+      "path": "/Volumes/quant/CY_quant_research/champion_breakdown_exit_cycle_020/breakdown_event_panel.parquet",
+      "rows": 1071,
+      "sha256": "d7fda1e4044d95ede8b41e94ff63b2f0de2da0644efc62b0e4240f0af39b2fbe"
+    }
+  },
+  "final_classification": "BREAKDOWN_NOT_USEFUL_AS_EXIT",
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "next_action": "SECOND_INDEPENDENT_ALPHA_DISCOVERY",
+  "phase_a": {
+    "checks": {
+      "actionable_fill_fraction": true,
+      "affected_lots": true,
+      "calendar_years": true,
+      "cohort_dates": true,
+      "events_each_block": true,
+      "industries": true,
+      "unique_securities": true
+    },
+    "passes": true,
+    "summary": {
+      "actionable_fill_fraction": 0.9523809523809523,
+      "affected_lots": 1071,
+      "champion_positions": 2625,
+      "cohort_dates": 230,
+      "delayed_fill_lots": 25,
+      "early_events": 646,
+      "event_dates": 391,
+      "event_frequency": 0.408,
+      "fully_locked_events": 34,
+      "fully_sellable_events": 831,
+      "holding_age_counts": {
+        "day_0": 36,
+        "days_11_15": 275,
+        "days_16_20": 227,
+        "days_1_5": 257,
+        "days_6_10": 276
+      },
+      "industries": 102,
+      "industry_counts": {
+        "IT\u670d\u52a1\u2161": 2,
+        "\u4e00\u822c\u96f6\u552e": 5,
+        "\u4e13\u4e1a\u5de5\u7a0b": 6,
+        "\u4e13\u4e1a\u670d\u52a1": 2,
+        "\u4e2a\u62a4\u7528\u54c1": 3,
+        "\u4e2d\u836f\u2161": 5,
+        "\u4e58\u7528\u8f66": 15,
+        "\u4e92\u8054\u7f51\u7535\u5546": 6,
+        "\u4f11\u95f2\u98df\u54c1": 1,
+        "\u5143\u4ef6": 10,
+        "\u5149\u4f0f\u8bbe\u5907": 7,
+        "\u5149\u5b66\u5149\u7535\u5b50": 3,
+        "\u5176\u4ed6\u7535\u5b50\u2161": 4,
+        "\u517b\u6b96\u4e1a": 17,
+        "\u519b\u5de5\u7535\u5b50\u2161": 4,
+        "\u519c\u4ea7\u54c1\u52a0\u5de5": 3,
+        "\u519c\u5316\u5236\u54c1": 1,
+        "\u51b6\u94a2\u539f\u6599": 7,
+        "\u51fa\u7248": 22,
+        "\u52a8\u7269\u4fdd\u5065\u2161": 1,
+        "\u5316\u5986\u54c1": 4,
+        "\u5316\u5b66\u5236\u836f": 10,
+        "\u5316\u5b66\u539f\u6599": 2,
+        "\u5316\u5b66\u7ea4\u7ef4": 15,
+        "\u533b\u7597\u5668\u68b0": 7,
+        "\u533b\u7597\u670d\u52a1": 2,
+        "\u533b\u836f\u5546\u4e1a": 14,
+        "\u534a\u5bfc\u4f53": 11,
+        "\u5546\u7528\u8f66": 9,
+        "\u5730\u9762\u5175\u88c5\u2161": 26,
+        "\u57fa\u7840\u5efa\u8bbe": 2,
+        "\u591a\u5143\u91d1\u878d": 3,
+        "\u5bb6\u7535\u96f6\u90e8\u4ef6\u2161": 3,
+        "\u5c0f\u5bb6\u7535": 4,
+        "\u5c0f\u91d1\u5c5e": 22,
+        "\u5de5\u4e1a\u91d1\u5c5e": 6,
+        "\u5de5\u7a0b\u54a8\u8be2\u670d\u52a1\u2161": 1,
+        "\u5de5\u7a0b\u673a\u68b0": 33,
+        "\u5e7f\u544a\u8425\u9500": 9,
+        "\u5f71\u89c6\u9662\u7ebf": 6,
+        "\u623f\u5730\u4ea7\u5f00\u53d1": 16,
+        "\u623f\u5730\u4ea7\u670d\u52a1": 18,
+        "\u623f\u5c4b\u5efa\u8bbe\u2161": 5,
+        "\u6559\u80b2": 3,
+        "\u6570\u5b57\u5a92\u4f53": 5,
+        "\u6587\u5a31\u7528\u54c1": 2,
+        "\u65c5\u6e38\u53ca\u666f\u533a": 30,
+        "\u666e\u94a2": 43,
+        "\u670d\u88c5\u5bb6\u7eba": 1,
+        "\u6a61\u80f6": 2,
+        "\u6c34\u6ce5": 18,
+        "\u6cb9\u670d\u5de5\u7a0b": 24,
+        "\u6d88\u8d39\u7535\u5b50": 2,
+        "\u6e14\u4e1a": 15,
+        "\u6e38\u620f\u2161": 9,
+        "\u70bc\u5316\u53ca\u8d38\u6613": 5,
+        "\u7126\u70ad\u2161": 4,
+        "\u7164\u70ad\u5f00\u91c7": 43,
+        "\u71c3\u6c14\u2161": 22,
+        "\u7279\u94a2\u2161": 4,
+        "\u73af\u4fdd\u8bbe\u5907\u2161": 5,
+        "\u73af\u5883\u6cbb\u7406": 1,
+        "\u73bb\u7483\u73bb\u7ea4": 4,
+        "\u751f\u7269\u5236\u54c1": 5,
+        "\u7535\u5b50\u5316\u5b66\u54c1\u2161": 5,
+        "\u7535\u673a\u2161": 4,
+        "\u7535\u6c60": 1,
+        "\u7535\u7f51\u8bbe\u5907": 1,
+        "\u7535\u89c6\u5e7f\u64ad\u2161": 15,
+        "\u767d\u8272\u5bb6\u7535": 35,
+        "\u767d\u9152\u2161": 45,
+        "\u79cd\u690d\u4e1a": 22,
+        "\u7eba\u7ec7\u5236\u9020": 5,
+        "\u7efc\u5408\u2161": 16,
+        "\u80fd\u6e90\u91d1\u5c5e": 24,
+        "\u822a\u5929\u88c5\u5907\u2161": 9,
+        "\u822a\u6d77\u88c5\u5907\u2161": 6,
+        "\u822a\u7a7a\u673a\u573a": 22,
+        "\u822a\u7a7a\u88c5\u5907\u2161": 22,
+        "\u822a\u8fd0\u6e2f\u53e3": 22,
+        "\u88c5\u4fee\u5efa\u6750": 9,
+        "\u88c5\u4fee\u88c5\u9970\u2161": 1,
+        "\u8bc1\u5238\u2161": 32,
+        "\u8c03\u5473\u53d1\u9175\u54c1\u2161": 7,
+        "\u8d35\u91d1\u5c5e": 35,
+        "\u8d38\u6613\u2161": 5,
+        "\u8f68\u4ea4\u8bbe\u5907\u2161": 4,
+        "\u8f6f\u4ef6\u5f00\u53d1": 1,
+        "\u901a\u4fe1\u670d\u52a1": 1,
+        "\u901a\u4fe1\u8bbe\u5907": 8,
+        "\u9020\u7eb8": 5,
+        "\u9152\u5e97\u9910\u996e": 19,
+        "\u91d1\u5c5e\u65b0\u6750\u6599": 9,
+        "\u94c1\u8def\u516c\u8def": 7,
+        "\u94f6\u884c\u2161": 22,
+        "\u975e\u767d\u9152": 15,
+        "\u98ce\u7535\u8bbe\u5907": 3,
+        "\u98df\u54c1\u52a0\u5de5": 6,
+        "\u996e\u6599\u4e73\u54c1": 3,
+        "\u9970\u54c1": 12,
+        "\u9972\u6599": 11,
+        "\u9ed1\u8272\u5bb6\u7535": 3
+      },
+      "late_events": 425,
+      "no_incremental_headroom_lots": 51,
+      "overlapping_symbol_event_groups": 166,
+      "partially_sellable_events": 2,
+      "sellable_inventory_fraction_at_breakdown": 0.9663865546218487,
+      "unexecuted_before_frozen_exit_lots": 0,
+      "unique_securities": 582,
+      "year_counts": {
+        "2018": 116,
+        "2019": 174,
+        "2020": 176,
+        "2021": 180,
+        "2022": 205,
+        "2023": 220
+      },
+      "years": 6
+    }
+  },
+  "phase_b": {
+    "checks": {
+      "actionable_fill_fraction": true,
+      "matched_difference_same_orientation_blocks": false,
+      "matched_holdings_materially_better": false,
+      "not_one_industry": true,
+      "not_one_year": true,
+      "remaining_payoff_materially_adverse": false,
+      "remaining_payoff_same_orientation_blocks": false,
+      "unique_securities": true
+    },
+    "passes": false,
+    "summary": {
+      "by_industry": {
+        "IT\u670d\u52a1\u2161": {
+          "count": 2,
+          "matched_remaining_gap": 0.03372868148664754,
+          "remaining_mean": 0.08972486606633978
+        },
+        "\u4e00\u822c\u96f6\u552e": {
+          "count": 5,
+          "matched_remaining_gap": 0.009765043037415854,
+          "remaining_mean": -0.006810591003179667
+        },
+        "\u4e13\u4e1a\u5de5\u7a0b": {
+          "count": 6,
+          "matched_remaining_gap": -0.03734170483538559,
+          "remaining_mean": -0.02724523603348992
+        },
+        "\u4e13\u4e1a\u670d\u52a1": {
+          "count": 2,
+          "matched_remaining_gap": -0.07970679640086087,
+          "remaining_mean": 0.027497771836007212
+        },
+        "\u4e2a\u62a4\u7528\u54c1": {
+          "count": 3,
+          "matched_remaining_gap": 0.02694483571281932,
+          "remaining_mean": 0.0293330570176763
+        },
+        "\u4e2d\u836f\u2161": {
+          "count": 5,
+          "matched_remaining_gap": 0.0063205555176370385,
+          "remaining_mean": -0.028044309825076975
+        },
+        "\u4e58\u7528\u8f66": {
+          "count": 14,
+          "matched_remaining_gap": -0.01538162201489959,
+          "remaining_mean": 0.05295949178039431
+        },
+        "\u4e92\u8054\u7f51\u7535\u5546": {
+          "count": 6,
+          "matched_remaining_gap": 0.03619582719359262,
+          "remaining_mean": 0.012476408091012062
+        },
+        "\u4f11\u95f2\u98df\u54c1": {
+          "count": 1,
+          "matched_remaining_gap": 0.052491672520403876,
+          "remaining_mean": 0.060778965338083246
+        },
+        "\u5143\u4ef6": {
+          "count": 9,
+          "matched_remaining_gap": -0.08862798174100686,
+          "remaining_mean": 0.029498666845794743
+        },
+        "\u5149\u4f0f\u8bbe\u5907": {
+          "count": 7,
+          "matched_remaining_gap": -0.044719815984826404,
+          "remaining_mean": 0.008233940463417268
+        },
+        "\u5149\u5b66\u5149\u7535\u5b50": {
+          "count": 2,
+          "matched_remaining_gap": -0.032820808362967635,
+          "remaining_mean": -0.005617618895627174
+        },
+        "\u5176\u4ed6\u7535\u5b50\u2161": {
+          "count": 3,
+          "matched_remaining_gap": -0.13812400654103718,
+          "remaining_mean": 0.19014454134609715
+        },
+        "\u517b\u6b96\u4e1a": {
+          "count": 16,
+          "matched_remaining_gap": 0.0036690734854352564,
+          "remaining_mean": -0.0040881214181155145
+        },
+        "\u519b\u5de5\u7535\u5b50\u2161": {
+          "count": 4,
+          "matched_remaining_gap": 0.021767721167822145,
+          "remaining_mean": -0.015065280151899951
+        },
+        "\u519c\u4ea7\u54c1\u52a0\u5de5": {
+          "count": 2,
+          "matched_remaining_gap": 0.17244551843087946,
+          "remaining_mean": 0.12900245627451012
+        },
+        "\u519c\u5316\u5236\u54c1": {
+          "count": 1,
+          "matched_remaining_gap": null,
+          "remaining_mean": 0.15000000000000036
+        },
+        "\u51b6\u94a2\u539f\u6599": {
+          "count": 7,
+          "matched_remaining_gap": 0.015805324610784273,
+          "remaining_mean": 0.008785402501312609
+        },
+        "\u51fa\u7248": {
+          "count": 22,
+          "matched_remaining_gap": -0.007652504065301834,
+          "remaining_mean": 0.024536696910569034
+        },
+        "\u52a8\u7269\u4fdd\u5065\u2161": {
+          "count": 1,
+          "matched_remaining_gap": 0.15106887168519256,
+          "remaining_mean": 0.02859696157283298
+        },
+        "\u5316\u5986\u54c1": {
+          "count": 4,
+          "matched_remaining_gap": -0.07635097827963921,
+          "remaining_mean": 0.03754507748466285
+        },
+        "\u5316\u5b66\u5236\u836f": {
+          "count": 10,
+          "matched_remaining_gap": 0.019333343011549577,
+          "remaining_mean": 0.058141033700752895
+        },
+        "\u5316\u5b66\u539f\u6599": {
+          "count": 2,
+          "matched_remaining_gap": -0.02386422750033107,
+          "remaining_mean": -0.017008532519636188
+        },
+        "\u5316\u5b66\u7ea4\u7ef4": {
+          "count": 15,
+          "matched_remaining_gap": -0.021614885340680155,
+          "remaining_mean": -0.01471136525209847
+        },
+        "\u533b\u7597\u5668\u68b0": {
+          "count": 6,
+          "matched_remaining_gap": 0.041391361448823105,
+          "remaining_mean": 0.011849242109704264
+        },
+        "\u533b\u7597\u670d\u52a1": {
+          "count": 2,
+          "matched_remaining_gap": -0.02428339060723106,
+          "remaining_mean": -0.01542121334059221
+        },
+        "\u533b\u836f\u5546\u4e1a": {
+          "count": 14,
+          "matched_remaining_gap": 0.012165670826972555,
+          "remaining_mean": -0.0059852707974579755
+        },
+        "\u534a\u5bfc\u4f53": {
+          "count": 11,
+          "matched_remaining_gap": -0.00244781761346396,
+          "remaining_mean": 0.059886672316562646
+        },
+        "\u5546\u7528\u8f66": {
+          "count": 8,
+          "matched_remaining_gap": -0.01782149324889963,
+          "remaining_mean": -0.02544187532666989
+        },
+        "\u5730\u9762\u5175\u88c5\u2161": {
+          "count": 24,
+          "matched_remaining_gap": -0.012890521962924844,
+          "remaining_mean": 0.017205604263064323
+        },
+        "\u57fa\u7840\u5efa\u8bbe": {
+          "count": 2,
+          "matched_remaining_gap": -0.17669957092532423,
+          "remaining_mean": -0.030262705266778933
+        },
+        "\u591a\u5143\u91d1\u878d": {
+          "count": 3,
+          "matched_remaining_gap": 0.031130011414493303,
+          "remaining_mean": 0.04054580896686155
+        },
+        "\u5bb6\u7535\u96f6\u90e8\u4ef6\u2161": {
+          "count": 3,
+          "matched_remaining_gap": 0.05670360550270951,
+          "remaining_mean": 0.02093915427459292
+        },
+        "\u5c0f\u5bb6\u7535": {
+          "count": 4,
+          "matched_remaining_gap": 0.030727859341960345,
+          "remaining_mean": 0.07168608312227001
+        },
+        "\u5c0f\u91d1\u5c5e": {
+          "count": 22,
+          "matched_remaining_gap": -0.008752203768032752,
+          "remaining_mean": 0.03669186820868097
+        },
+        "\u5de5\u4e1a\u91d1\u5c5e": {
+          "count": 6,
+          "matched_remaining_gap": 0.025665078813586345,
+          "remaining_mean": 0.043409591474140585
+        },
+        "\u5de5\u7a0b\u54a8\u8be2\u670d\u52a1\u2161": {
+          "count": 1,
+          "matched_remaining_gap": -0.14787894862931672,
+          "remaining_mean": -0.018442622950819776
+        },
+        "\u5de5\u7a0b\u673a\u68b0": {
+          "count": 33,
+          "matched_remaining_gap": 0.008951355932998948,
+          "remaining_mean": 0.00235915069877126
+        },
+        "\u5e7f\u544a\u8425\u9500": {
+          "count": 9,
+          "matched_remaining_gap": -0.026692779536408164,
+          "remaining_mean": 0.022563983739056066
+        },
+        "\u5f71\u89c6\u9662\u7ebf": {
+          "count": 6,
+          "matched_remaining_gap": -0.02598692022107622,
+          "remaining_mean": 0.014326487468577601
+        },
+        "\u623f\u5730\u4ea7\u5f00\u53d1": {
+          "count": 16,
+          "matched_remaining_gap": 0.016630310665418903,
+          "remaining_mean": -0.02087679327681384
+        },
+        "\u623f\u5730\u4ea7\u670d\u52a1": {
+          "count": 17,
+          "matched_remaining_gap": 0.08904341215390209,
+          "remaining_mean": 0.005724207085225893
+        },
+        "\u623f\u5c4b\u5efa\u8bbe\u2161": {
+          "count": 5,
+          "matched_remaining_gap": -0.017037234045013873,
+          "remaining_mean": -0.00575927997400214
+        },
+        "\u6559\u80b2": {
+          "count": 3,
+          "matched_remaining_gap": 0.009618771832870854,
+          "remaining_mean": -0.013421844857566626
+        },
+        "\u6570\u5b57\u5a92\u4f53": {
+          "count": 5,
+          "matched_remaining_gap": -0.00746369324542423,
+          "remaining_mean": -0.006333493606690865
+        },
+        "\u6587\u5a31\u7528\u54c1": {
+          "count": 2,
+          "matched_remaining_gap": 0.025159240047312625,
+          "remaining_mean": 0.08427579292465315
+        },
+        "\u65c5\u6e38\u53ca\u666f\u533a": {
+          "count": 30,
+          "matched_remaining_gap": -0.02078487270739565,
+          "remaining_mean": 0.014916412029792825
+        },
+        "\u666e\u94a2": {
+          "count": 40,
+          "matched_remaining_gap": -0.022048720259651874,
+          "remaining_mean": -0.02926823532242162
+        },
+        "\u670d\u88c5\u5bb6\u7eba": {
+          "count": 1,
+          "matched_remaining_gap": 0.004872298391993546,
+          "remaining_mean": 0.0025412960609911828
+        },
+        "\u6a61\u80f6": {
+          "count": 2,
+          "matched_remaining_gap": 0.22459734203247333,
+          "remaining_mean": 0.11487719177275402
+        },
+        "\u6c34\u6ce5": {
+          "count": 17,
+          "matched_remaining_gap": 0.008491452753982913,
+          "remaining_mean": 0.021670349685270943
+        },
+        "\u6cb9\u670d\u5de5\u7a0b": {
+          "count": 23,
+          "matched_remaining_gap": 0.004869766622302606,
+          "remaining_mean": -0.025915876749540535
+        },
+        "\u6d88\u8d39\u7535\u5b50": {
+          "count": 1,
+          "matched_remaining_gap": 0.04626375586608433,
+          "remaining_mean": 0.1279683377308709
+        },
+        "\u6e14\u4e1a": {
+          "count": 15,
+          "matched_remaining_gap": -0.055464746752805535,
+          "remaining_mean": -0.04446769386363878
+        },
+        "\u6e38\u620f\u2161": {
+          "count": 9,
+          "matched_remaining_gap": 0.05244492669187363,
+          "remaining_mean": 0.06260244892648495
+        },
+        "\u70bc\u5316\u53ca\u8d38\u6613": {
+          "count": 5,
+          "matched_remaining_gap": 0.034412936600007146,
+          "remaining_mean": -0.016482903809496997
+        },
+        "\u7126\u70ad\u2161": {
+          "count": 4,
+          "matched_remaining_gap": -0.05901314104632599,
+          "remaining_mean": -0.0046872385681600015
+        },
+        "\u7164\u70ad\u5f00\u91c7": {
+          "count": 38,
+          "matched_remaining_gap": -0.02330030840545258,
+          "remaining_mean": 0.0430509303061198
+        },
+        "\u71c3\u6c14\u2161": {
+          "count": 18,
+          "matched_remaining_gap": -0.004950731422264703,
+          "remaining_mean": -0.0031920128355856104
+        },
+        "\u7279\u94a2\u2161": {
+          "count": 4,
+          "matched_remaining_gap": 0.037311790176108306,
+          "remaining_mean": -0.004773706986404391
+        },
+        "\u73af\u4fdd\u8bbe\u5907\u2161": {
+          "count": 4,
+          "matched_remaining_gap": 0.029994169955210204,
+          "remaining_mean": 0.03543920221740787
+        },
+        "\u73af\u5883\u6cbb\u7406": {
+          "count": 1,
+          "matched_remaining_gap": -0.06485853477299663,
+          "remaining_mean": -0.038714743923323525
+        },
+        "\u73bb\u7483\u73bb\u7ea4": {
+          "count": 4,
+          "matched_remaining_gap": -0.07983017522452954,
+          "remaining_mean": -0.038136070477465506
+        },
+        "\u751f\u7269\u5236\u54c1": {
+          "count": 5,
+          "matched_remaining_gap": -0.01402749663954117,
+          "remaining_mean": -0.011038004832133241
+        },
+        "\u7535\u5b50\u5316\u5b66\u54c1\u2161": {
+          "count": 5,
+          "matched_remaining_gap": -0.03647429410223566,
+          "remaining_mean": -0.0063908537229738546
+        },
+        "\u7535\u673a\u2161": {
+          "count": 4,
+          "matched_remaining_gap": -0.0030191540969021213,
+          "remaining_mean": -0.018555791865514176
+        },
+        "\u7535\u6c60": {
+          "count": 1,
+          "matched_remaining_gap": 0.037181639057140226,
+          "remaining_mean": 0.17098445595854894
+        },
+        "\u7535\u7f51\u8bbe\u5907": {
+          "count": 1,
+          "matched_remaining_gap": 0.036279809220985726,
+          "remaining_mean": 0.11411764705882343
+        },
+        "\u7535\u89c6\u5e7f\u64ad\u2161": {
+          "count": 13,
+          "matched_remaining_gap": -0.03287371403715064,
+          "remaining_mean": 0.06562428082569645
+        },
+        "\u767d\u8272\u5bb6\u7535": {
+          "count": 35,
+          "matched_remaining_gap": -0.060544590998727506,
+          "remaining_mean": 0.03926844906429697
+        },
+        "\u767d\u9152\u2161": {
+          "count": 45,
+          "matched_remaining_gap": -0.001956874287028549,
+          "remaining_mean": 0.016237220898106385
+        },
+        "\u79cd\u690d\u4e1a": {
+          "count": 21,
+          "matched_remaining_gap": 0.014159170202957141,
+          "remaining_mean": -0.044760125093926004
+        },
+        "\u7eba\u7ec7\u5236\u9020": {
+          "count": 5,
+          "matched_remaining_gap": 0.011776066322109369,
+          "remaining_mean": -0.006040403033419284
+        },
+        "\u7efc\u5408\u2161": {
+          "count": 14,
+          "matched_remaining_gap": -0.015193825139117045,
+          "remaining_mean": 0.037335534738059895
+        },
+        "\u80fd\u6e90\u91d1\u5c5e": {
+          "count": 21,
+          "matched_remaining_gap": -0.00837260864875513,
+          "remaining_mean": -0.0009976167596215113
+        },
+        "\u822a\u5929\u88c5\u5907\u2161": {
+          "count": 9,
+          "matched_remaining_gap": 0.009760093001204014,
+          "remaining_mean": -0.0003308401144280277
+        },
+        "\u822a\u6d77\u88c5\u5907\u2161": {
+          "count": 6,
+          "matched_remaining_gap": 0.003065488271057182,
+          "remaining_mean": 0.008887339548424633
+        },
+        "\u822a\u7a7a\u673a\u573a": {
+          "count": 21,
+          "matched_remaining_gap": 0.008495270340287409,
+          "remaining_mean": 0.01872276135966971
+        },
+        "\u822a\u7a7a\u88c5\u5907\u2161": {
+          "count": 19,
+          "matched_remaining_gap": 0.005373394503354091,
+          "remaining_mean": -0.04418692362413196
+        },
+        "\u822a\u8fd0\u6e2f\u53e3": {
+          "count": 21,
+          "matched_remaining_gap": 0.052311943931351475,
+          "remaining_mean": 0.08999343112333813
+        },
+        "\u88c5\u4fee\u5efa\u6750": {
+          "count": 9,
+          "matched_remaining_gap": -0.00014408573608589345,
+          "remaining_mean": 0.007010315659606797
+        },
+        "\u88c5\u4fee\u88c5\u9970\u2161": {
+          "count": 1,
+          "matched_remaining_gap": 0.10333541720295691,
+          "remaining_mean": 0.05633802816901423
+        },
+        "\u8bc1\u5238\u2161": {
+          "count": 32,
+          "matched_remaining_gap": 0.0282166379071301,
+          "remaining_mean": 0.001989126533734887
+        },
+        "\u8c03\u5473\u53d1\u9175\u54c1\u2161": {
+          "count": 7,
+          "matched_remaining_gap": 0.06601153335654207,
+          "remaining_mean": 0.023577214733909946
+        },
+        "\u8d35\u91d1\u5c5e": {
+          "count": 32,
+          "matched_remaining_gap": 0.03160893732742791,
+          "remaining_mean": 0.04563127390054508
+        },
+        "\u8d38\u6613\u2161": {
+          "count": 5,
+          "matched_remaining_gap": -0.061526849961560395,
+          "remaining_mean": 0.1258933288110804
+        },
+        "\u8f68\u4ea4\u8bbe\u5907\u2161": {
+          "count": 4,
+          "matched_remaining_gap": -0.005224180136097517,
+          "remaining_mean": -0.0062422337563944885
+        },
+        "\u8f6f\u4ef6\u5f00\u53d1": {
+          "count": 1,
+          "matched_remaining_gap": 0.05309302543884353,
+          "remaining_mean": -0.012578616352201366
+        },
+        "\u901a\u4fe1\u670d\u52a1": {
+          "count": 1,
+          "matched_remaining_gap": 0.06019576578970631,
+          "remaining_mean": 0.1383647798742138
+        },
+        "\u901a\u4fe1\u8bbe\u5907": {
+          "count": 8,
+          "matched_remaining_gap": 0.025638557114011213,
+          "remaining_mean": 0.03943741259525768
+        },
+        "\u9020\u7eb8": {
+          "count": 4,
+          "matched_remaining_gap": 0.08612132462996627,
+          "remaining_mean": 0.07382798413044858
+        },
+        "\u9152\u5e97\u9910\u996e": {
+          "count": 19,
+          "matched_remaining_gap": 0.01254531205136373,
+          "remaining_mean": 0.047078844694256806
+        },
+        "\u91d1\u5c5e\u65b0\u6750\u6599": {
+          "count": 8,
+          "matched_remaining_gap": 0.013025588297989193,
+          "remaining_mean": 0.0545619828571364
+        },
+        "\u94c1\u8def\u516c\u8def": {
+          "count": 5,
+          "matched_remaining_gap": 0.026244706544028728,
+          "remaining_mean": 0.032503779349744
+        },
+        "\u94f6\u884c\u2161": {
+          "count": 21,
+          "matched_remaining_gap": -0.024239021085037966,
+          "remaining_mean": 0.005731113361657923
+        },
+        "\u975e\u767d\u9152": {
+          "count": 13,
+          "matched_remaining_gap": 0.05026431161948744,
+          "remaining_mean": 0.028641042519490657
+        },
+        "\u98ce\u7535\u8bbe\u5907": {
+          "count": 3,
+          "matched_remaining_gap": -0.07828470954653115,
+          "remaining_mean": 0.017032155857748015
+        },
+        "\u98df\u54c1\u52a0\u5de5": {
+          "count": 6,
+          "matched_remaining_gap": -0.019772765716341883,
+          "remaining_mean": -0.0283154444840308
+        },
+        "\u996e\u6599\u4e73\u54c1": {
+          "count": 3,
+          "matched_remaining_gap": -0.27600799629555584,
+          "remaining_mean": 0.019210715732557764
+        },
+        "\u9970\u54c1": {
+          "count": 11,
+          "matched_remaining_gap": -0.0031450276919998935,
+          "remaining_mean": -0.007034939743130953
+        },
+        "\u9972\u6599": {
+          "count": 11,
+          "matched_remaining_gap": 0.023336797970764732,
+          "remaining_mean": 0.04468678538619717
+        },
+        "\u9ed1\u8272\u5bb6\u7535": {
+          "count": 3,
+          "matched_remaining_gap": -0.05907937617136372,
+          "remaining_mean": 0.03507345231674893
+        }
+      },
+      "by_year": {
+        "2018": {
+          "count": 111,
+          "h1": {
+            "mean": 0.0002703292582626361,
+            "median": -0.0010172939979653517,
+            "severe_loss_fraction": 0.009009009009009009,
+            "winner_rate": 0.4594594594594595
+          },
+          "h3": {
+            "mean": -0.0011391014230150236,
+            "median": 0.0015174506828528056,
+            "severe_loss_fraction": 0.04504504504504504,
+            "winner_rate": 0.5045045045045045
+          },
+          "h5": {
+            "mean": -0.008911546338057469,
+            "median": -0.006756756756756799,
+            "severe_loss_fraction": 0.07207207207207207,
+            "winner_rate": 0.4144144144144144
+          },
+          "matched_count": 105,
+          "matched_diff_h1": {
+            "mean": 0.0022934450477482492,
+            "median": -0.0006349479415516113
+          },
+          "matched_diff_h3": {
+            "mean": 0.005949472278764287,
+            "median": 0.005073561126730519
+          },
+          "matched_diff_h5": {
+            "mean": 0.007301654989736488,
+            "median": 0.002468040994990983
+          },
+          "matched_diff_remaining_payoff": {
+            "mean": 0.009956333855574344,
+            "median": 0.006031588861786785
+          },
+          "matched_same_cohort_fraction": 1.0,
+          "matched_same_industry_fraction": 0.8095238095238095,
+          "remaining_payoff": {
+            "mean": 0.002519151543496047,
+            "median": -0.003389830508474523,
+            "severe_loss_fraction": 0.09009009009009009,
+            "winner_rate": 0.4594594594594595
+          },
+          "subsequent_mae": {
+            "mean": -0.06588472633831431,
+            "median": -0.05168776371308015,
+            "severe_loss_fraction": 0.22522522522522523,
+            "winner_rate": 0.0
+          }
+        },
+        "2019": {
+          "count": 164,
+          "h1": {
+            "mean": 0.0007213018381449384,
+            "median": 0.0,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.49390243902439024
+          },
+          "h3": {
+            "mean": -0.0006164877178344514,
+            "median": 0.001404612774004721,
+            "severe_loss_fraction": 0.006097560975609756,
+            "winner_rate": 0.5060975609756098
+          },
+          "h5": {
+            "mean": -0.00015491133345714347,
+            "median": 0.0030637138979183742,
+            "severe_loss_fraction": 0.024390243902439025,
+            "winner_rate": 0.573170731707317
+          },
+          "matched_count": 162,
+          "matched_diff_h1": {
+            "mean": 0.0006303449450943691,
+            "median": 0.00140193134430594
+          },
+          "matched_diff_h3": {
+            "mean": -1.1659405128848105e-05,
+            "median": -0.0008383758900785687
+          },
+          "matched_diff_h5": {
+            "mean": 0.0019032003992549603,
+            "median": 0.0011172079295216353
+          },
+          "matched_diff_remaining_payoff": {
+            "mean": -0.004957819797981859,
+            "median": 0.002308329367582518
+          },
+          "matched_same_cohort_fraction": 1.0,
+          "matched_same_industry_fraction": 0.654320987654321,
+          "remaining_payoff": {
+            "mean": 0.005717516474692953,
+            "median": 0.0036934724780028905,
+            "severe_loss_fraction": 0.054878048780487805,
+            "winner_rate": 0.5182926829268293
+          },
+          "subsequent_mae": {
+            "mean": -0.049449591211802583,
+            "median": -0.037362637362637396,
+            "severe_loss_fraction": 0.12804878048780488,
+            "winner_rate": 0.0
+          }
+        },
+        "2020": {
+          "count": 171,
+          "h1": {
+            "mean": 0.008856421136732722,
+            "median": 0.004322766570605152,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.5672514619883041
+          },
+          "h3": {
+            "mean": 0.01146205711661231,
+            "median": 0.009167303284950412,
+            "severe_loss_fraction": 0.017543859649122806,
+            "winner_rate": 0.5789473684210527
+          },
+          "h5": {
+            "mean": 0.015371231241602492,
+            "median": 0.014527845036319764,
+            "severe_loss_fraction": 0.011695906432748537,
+            "winner_rate": 0.6081871345029239
+          },
+          "matched_count": 160,
+          "matched_diff_h1": {
+            "mean": -0.0029238909558084044,
+            "median": -0.0016013383114231727
+          },
+          "matched_diff_h3": {
+            "mean": -0.02086341837923717,
+            "median": -0.0058903880313362356
+          },
+          "matched_diff_h5": {
+            "mean": -0.02598308514177754,
+            "median": -0.008469039303904358
+          },
+          "matched_diff_remaining_payoff": {
+            "mean": -0.030235694646393908,
+            "median": -0.002925277161789086
+          },
+          "matched_same_cohort_fraction": 1.0,
+          "matched_same_industry_fraction": 0.53125,
+          "remaining_payoff": {
+            "mean": 0.03791850799345359,
+            "median": 0.016985138004246503,
+            "severe_loss_fraction": 0.023391812865497075,
+            "winner_rate": 0.5964912280701754
+          },
+          "subsequent_mae": {
+            "mean": -0.04336110870055339,
+            "median": -0.030817858553931043,
+            "severe_loss_fraction": 0.09941520467836257,
+            "winner_rate": 0.0
+          }
+        },
+        "2021": {
+          "count": 169,
+          "h1": {
+            "mean": 0.006076910198081734,
+            "median": 0.004909983633387682,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.6331360946745562
+          },
+          "h3": {
+            "mean": 0.010995868163557389,
+            "median": 0.0029999999999998916,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.5384615384615384
+          },
+          "h5": {
+            "mean": 0.009730543956333325,
+            "median": 0.0,
+            "severe_loss_fraction": 0.023668639053254437,
+            "winner_rate": 0.4911242603550296
+          },
+          "matched_count": 166,
+          "matched_diff_h1": {
+            "mean": 0.0001635712969559293,
+            "median": 0.0016395883706307735
+          },
+          "matched_diff_h3": {
+            "mean": 0.0008378177799268872,
+            "median": 0.004364480691792405
+          },
+          "matched_diff_h5": {
+            "mean": -0.00032616884842348695,
+            "median": 0.0006033903440217925
+          },
+          "matched_diff_remaining_payoff": {
+            "mean": 0.0058538159534971095,
+            "median": 0.00621620967696479
+          },
+          "matched_same_cohort_fraction": 1.0,
+          "matched_same_industry_fraction": 0.6325301204819277,
+          "remaining_payoff": {
+            "mean": 0.011288870723009435,
+            "median": -1.1102230246251565e-16,
+            "severe_loss_fraction": 0.029585798816568046,
+            "winner_rate": 0.4970414201183432
+          },
+          "subsequent_mae": {
+            "mean": -0.04565811154550876,
+            "median": -0.03125,
+            "severe_loss_fraction": 0.11242603550295859,
+            "winner_rate": 0.0
+          }
+        },
+        "2022": {
+          "count": 194,
+          "h1": {
+            "mean": 0.0028997087744867546,
+            "median": 0.0005717552887365418,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.5
+          },
+          "h3": {
+            "mean": 0.011829024674413564,
+            "median": 0.003516993490368492,
+            "severe_loss_fraction": 0.03608247422680412,
+            "winner_rate": 0.5360824742268041
+          },
+          "h5": {
+            "mean": 0.011418822151135882,
+            "median": 0.003975044563279906,
+            "severe_loss_fraction": 0.03608247422680412,
+            "winner_rate": 0.5360824742268041
+          },
+          "matched_count": 190,
+          "matched_diff_h1": {
+            "mean": 0.000653422812904504,
+            "median": 0.0021840627561807713
+          },
+          "matched_diff_h3": {
+            "mean": 0.0010279223278289778,
+            "median": 0.00249990922338017
+          },
+          "matched_diff_h5": {
+            "mean": 0.0017449647719385852,
+            "median": 0.002337098827204287
+          },
+          "matched_diff_remaining_payoff": {
+            "mean": 0.00019997483339382921,
+            "median": 9.589602091730764e-05
+          },
+          "matched_same_cohort_fraction": 1.0,
+          "matched_same_industry_fraction": 0.6210526315789474,
+          "remaining_payoff": {
+            "mean": 0.019088417483005122,
+            "median": 0.0032161205695078188,
+            "severe_loss_fraction": 0.02577319587628866,
+            "winner_rate": 0.5154639175257731
+          },
+          "subsequent_mae": {
+            "mean": -0.05530425239820075,
+            "median": -0.04366582753262366,
+            "severe_loss_fraction": 0.15463917525773196,
+            "winner_rate": 0.0
+          }
+        },
+        "2023": {
+          "count": 211,
+          "h1": {
+            "mean": 0.003909665185016243,
+            "median": 0.0017543859649122862,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.5118483412322274
+          },
+          "h3": {
+            "mean": 0.004453154884091811,
+            "median": -0.0008673026886383273,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.4597156398104265
+          },
+          "h5": {
+            "mean": 0.007217981785048056,
+            "median": -0.0009606147934677622,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.47393364928909953
+          },
+          "matched_count": 206,
+          "matched_diff_h1": {
+            "mean": 0.0009839809822209137,
+            "median": 0.0016196492808999152
+          },
+          "matched_diff_h3": {
+            "mean": 0.004171352946677775,
+            "median": 0.0016241871441655675
+          },
+          "matched_diff_h5": {
+            "mean": 0.007351574025002357,
+            "median": 0.0025239189619308267
+          },
+          "matched_diff_remaining_payoff": {
+            "mean": 0.008408072039789006,
+            "median": 0.004923686892597701
+          },
+          "matched_same_cohort_fraction": 1.0,
+          "matched_same_industry_fraction": 0.6456310679611651,
+          "remaining_payoff": {
+            "mean": 0.012886623196743658,
+            "median": 0.0,
+            "severe_loss_fraction": 0.0,
+            "winner_rate": 0.4928909952606635
+          },
+          "subsequent_mae": {
+            "mean": -0.034249296022791316,
+            "median": -0.02646180110968832,
+            "severe_loss_fraction": 0.02843601895734597,
+            "winner_rate": 0.0
+          }
+        }
+      },
+      "early_2018_2021": {
+        "count": 615,
+        "h1": {
+          "mean": 0.00437357054793501,
+          "median": 0.0028011204481792618,
+          "severe_loss_fraction": 0.0016260162601626016,
+          "winner_rate": 0.5463414634146342
+        },
+        "h3": {
+          "mean": 0.0058386491754510335,
+          "median": 0.0029999999999998916,
+          "severe_loss_fraction": 0.014634146341463415,
+          "winner_rate": 0.5349593495934959
+        },
+        "h5": {
+          "mean": 0.005298138810931719,
+          "median": 0.0031055900621117516,
+          "severe_loss_fraction": 0.02926829268292683,
+          "winner_rate": 0.5317073170731708
+        },
+        "matched_count": 593,
+        "matched_diff_h1": {
+          "mean": -0.00016482648653593003,
+          "median": 0.0002718789036663116
+        },
+        "matched_diff_h3": {
+          "mean": -0.004344457712598158,
+          "median": 0.001143213469133153
+        },
+        "matched_diff_h5": {
+          "mean": -0.005289115367489157,
+          "median": -0.0006467110125649711
+        },
+        "matched_diff_remaining_payoff": {
+          "mean": -0.006110842238752549,
+          "median": 0.0030803339399952945
+        },
+        "matched_same_cohort_fraction": 1.0,
+        "matched_same_industry_fraction": 0.642495784148398,
+        "remaining_payoff": {
+          "mean": 0.015624687060564005,
+          "median": 0.0037037037037035425,
+          "severe_loss_fraction": 0.04552845528455285,
+          "winner_rate": 0.5235772357723577
+        },
+        "subsequent_mae": {
+          "mean": -0.04968115125410426,
+          "median": -0.03626943005181338,
+          "severe_loss_fraction": 0.13333333333333333,
+          "winner_rate": 0.0
+        }
+      },
+      "full": {
+        "count": 1020,
+        "h1": {
+          "mean": 0.0039972830816361665,
+          "median": 0.002088265170439918,
+          "severe_loss_fraction": 0.000980392156862745,
+          "winner_rate": 0.5303921568627451
+        },
+        "h3": {
+          "mean": 0.006691387951256854,
+          "median": 0.002109704641350185,
+          "severe_loss_fraction": 0.01568627450980392,
+          "winner_rate": 0.5196078431372549
+        },
+        "h5": {
+          "mean": 0.006859412767341675,
+          "median": 0.0023437857633327175,
+          "severe_loss_fraction": 0.024509803921568627,
+          "winner_rate": 0.5205882352941177
+        },
+        "matched_count": 989,
+        "matched_diff_h1": {
+          "mean": 0.000231656532126954,
+          "median": 0.0011308076450439186
+        },
+        "matched_diff_h3": {
+          "mean": -0.0015385838971360773,
+          "median": 0.0017542351019004254
+        },
+        "matched_diff_h5": {
+          "mean": -0.0013048309980811467,
+          "median": 0.0004769076305222164
+        },
+        "matched_diff_remaining_payoff": {
+          "mean": -0.001874288563234478,
+          "median": 0.0025335287489232083
+        },
+        "matched_same_cohort_fraction": 1.0,
+        "matched_same_industry_fraction": 0.6390293225480284,
+        "remaining_payoff": {
+          "mean": 0.015717071596532125,
+          "median": 0.0024264705882353077,
+          "severe_loss_fraction": 0.03235294117647059,
+          "winner_rate": 0.515686274509804
+        },
+        "subsequent_mae": {
+          "mean": -0.04755836710522945,
+          "median": -0.03548795944233191,
+          "severe_loss_fraction": 0.11568627450980393,
+          "winner_rate": 0.0
+        }
+      },
+      "largest_industry_share": 0.04201680672268908,
+      "largest_year_share": 0.20541549953314658,
+      "late_2022_2023": {
+        "count": 405,
+        "h1": {
+          "mean": 0.0034258835957749574,
+          "median": 0.0014265335235377208,
+          "severe_loss_fraction": 0.0,
+          "winner_rate": 0.5061728395061729
+        },
+        "h3": {
+          "mean": 0.007986287573776799,
+          "median": 0.0,
+          "severe_loss_fraction": 0.01728395061728395,
+          "winner_rate": 0.4962962962962963
+        },
+        "h5": {
+          "mean": 0.009230236182630868,
+          "median": 0.0009233610341643494,
+          "severe_loss_fraction": 0.01728395061728395,
+          "winner_rate": 0.5037037037037037
+        },
+        "matched_count": 396,
+        "matched_diff_h1": {
+          "mean": 0.0008253798403771818,
+          "median": 0.0017634723497710891
+        },
+        "matched_diff_h3": {
+          "mean": 0.0026631412861190086,
+          "median": 0.0018813568271046632
+        },
+        "matched_diff_h5": {
+          "mean": 0.004661534231865698,
+          "median": 0.0024131961779271793
+        },
+        "matched_diff_remaining_payoff": {
+          "mean": 0.004469843582175158,
+          "median": 0.002413196177927124
+        },
+        "matched_same_cohort_fraction": 1.0,
+        "matched_same_industry_fraction": 0.6338383838383839,
+        "remaining_payoff": {
+          "mean": 0.01585735922522446,
+          "median": 0.0013477088948785632,
+          "severe_loss_fraction": 0.012345679012345678,
+          "winner_rate": 0.5037037037037037
+        },
+        "subsequent_mae": {
+          "mean": -0.04433488006434547,
+          "median": -0.034517766497461855,
+          "severe_loss_fraction": 0.08888888888888889,
+          "winner_rate": 0.0
+        }
+      },
+      "loser_continuation": {
+        "count": 1017,
+        "h1": {
+          "mean": 0.003986283669518061,
+          "median": 0.002123142250530785,
+          "severe_loss_fraction": 0.0009832841691248771,
+          "winner_rate": 0.5309734513274337
+        },
+        "h3": {
+          "mean": 0.006731893697116876,
+          "median": 0.0021097046413502962,
+          "severe_loss_fraction": 0.015732546705998034,
+          "winner_rate": 0.52015732546706
+        },
+        "h5": {
+          "mean": 0.006976480656817793,
+          "median": 0.002601908065914982,
+          "severe_loss_fraction": 0.024582104228121928,
+          "winner_rate": 0.5221238938053098
+        },
+        "matched_count": 986,
+        "matched_diff_h1": {
+          "mean": 0.0002232418692047545,
+          "median": 0.0010550351589275198
+        },
+        "matched_diff_h3": {
+          "mean": -0.0014891411425291907,
+          "median": 0.0017542351019004254
+        },
+        "matched_diff_h5": {
+          "mean": -0.001225004480963785,
+          "median": 0.0005317035172666129
+        },
+        "matched_diff_remaining_payoff": {
+          "mean": -0.001997795408559763,
+          "median": 0.0025007848719570958
+        },
+        "matched_same_cohort_fraction": 1.0,
+        "matched_same_industry_fraction": 0.6379310344827587,
+        "remaining_payoff": {
+          "mean": 0.015716902391800514,
+          "median": 0.0024999999999999467,
+          "severe_loss_fraction": 0.032448377581120944,
+          "winner_rate": 0.5162241887905604
+        },
+        "subsequent_mae": {
+          "mean": -0.047492943517051904,
+          "median": -0.03542673107890493,
+          "severe_loss_fraction": 0.11504424778761062,
+          "winner_rate": 0.0
+        }
+      },
+      "matched_coverage": 0.9696078431372549,
+      "recovery_fraction": 0.515686274509804,
+      "winner_giveback": {
+        "count": 3,
+        "h1": {
+          "mean": 0.007726083789673617,
+          "median": 0.0,
+          "severe_loss_fraction": 0.0,
+          "winner_rate": 0.3333333333333333
+        },
+        "h3": {
+          "mean": -0.007040059895291069,
+          "median": -0.00691244239631339,
+          "severe_loss_fraction": 0.0,
+          "winner_rate": 0.3333333333333333
+        },
+        "h5": {
+          "mean": -0.032826601765062434,
+          "median": -0.028455284552845517,
+          "severe_loss_fraction": 0.0,
+          "winner_rate": 0.0
+        },
+        "matched_count": 3,
+        "matched_diff_h1": {
+          "mean": 0.0029972757458898527,
+          "median": 0.007936507936507797
+        },
+        "matched_diff_h3": {
+          "mean": -0.01778876924459945,
+          "median": -0.020926123327633217
+        },
+        "matched_diff_h5": {
+          "mean": -0.02754114629065396,
+          "median": -0.03676070405611187
+        },
+        "matched_diff_remaining_payoff": {
+          "mean": 0.03871829460034296,
+          "median": 0.0411327316563187
+        },
+        "matched_same_cohort_fraction": 1.0,
+        "matched_same_industry_fraction": 1.0,
+        "remaining_payoff": {
+          "mean": 0.015774432000549177,
+          "median": -0.039170506912442504,
+          "severe_loss_fraction": 0.0,
+          "winner_rate": 0.3333333333333333
+        },
+        "subsequent_mae": {
+          "mean": -0.06973696349741358,
+          "median": -0.0714285714285714,
+          "severe_loss_fraction": 0.3333333333333333,
+          "winner_rate": 0.0
+        }
+      }
+    }
+  },
+  "phase_c": {
+    "authorized": false
+  },
+  "recovered_confirmed_breakdown": {
+    "breakdown_condition": "event-date causal-coordinate close strictly below the frozen prior-L20 support",
+    "confirmation": "the completed event-session close; no low-only, intraday-close, reclaim, penetration, or threshold condition",
+    "domain": "event date and all previous 20 sessions must be consecutive and history-valid; current event row must be current-valid; unresolved lineage or corporate action fails closed",
+    "gaps": "a gap below support is not confirmed until the event-session close remains strictly below support",
+    "minute_semantic_reconciliation": "the exact prior signal uses the completed daily close, not a minute crossing; therefore an event-day intraday fill would change the signal and is prohibited",
+    "price_coordinate": "CY-006 accepted causal cumulative log-return coordinate; raw event-day OHLC is mapped by that day's causal close-coordinate scale",
+    "prior_evidence": "DOWNSIDE_PREDICTOR: 4,079 complete observations/260 dates, h5 excess -0.344%, early 2018-2020 -0.711%, late 2021-2023 -0.127%",
+    "signal_known_at": "event session 15:00 close; accepted decision timestamp 15:30 Asia/Shanghai",
+    "source_experiment": "ASHARE-SUPPORT-RECOVERY-CYCLE-007",
+    "support_availability": "previous session 15:00 Asia/Shanghai",
+    "support_level": "minimum causal-coordinate low of the previous 20 completed, consecutive, hard-valid sessions for the same security",
+    "support_updates": "recomputed independently each session from that session's previous 20 completed sessions; never frozen at champion entry and never uses the event or future session"
+  },
+  "starting_checkpoint": "fdbd974c04",
+  "status": "COMPLETE_PHASE_B_STOP_NO_REPLAY"
+}

@@ -2,6 +2,41 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: confirmed-breakdown exit closed before replay
+
+Resume after the commit containing
+`ASHARE-CHAMPION-BREAKDOWN-EXIT-CYCLE-020`; its clean starting checkpoint is
+`fdbd974c04`. Preserve Industry Diffusion plus weekly Low-MAX exactly. All
+evidence is consumed 2018--2023 development history; post-2023 outcomes and
+CY-011 remain unread.
+
+The exact recovered signal is a completed daily causal-coordinate close below
+the minimum causal-coordinate low of the previous 20 completed valid
+transitions. It is close-confirmed at 15:00 and recorded at 15:30, so the
+earliest faithful action is the next legal session open. Do not relabel a minute
+low/crossing or event-day intraday fill as this signal.
+
+Incidence clears every frozen Phase-A gate: 1,071/2,625 lots, 582 securities,
+230 cohorts, 391 event dates, six years, 102 industries, and 95.24% actionable
+fill coverage. Confirmation-time lot handling finds 831 fully sellable, two
+partially sellable, and 34 fully locked symbol-events; 25 lots are delayed, 51
+have no earlier-than-normal headroom, and none remain unexecuted. Multiple
+cohorts and T+1 are handled at lot level with exits before same-open frozen
+entries.
+
+Phase B fails. Among 1,020 actionable lots, original continuation is +0.400%,
++0.669%, and +0.686% over h1/h3/h5 and +1.572% through the frozen exit. Early
+and late remaining payoff is +1.562%/+1.586%. The matched gap is only -0.187%
+full and reverses from -0.611% to +0.447%. Winner giveback has only three lots;
+the 1,017 nonpositive-mark events still recover +1.572% on average.
+
+Classification is `BREAKDOWN_NOT_USEFUL_AS_EXIT`. The hard gate prevents Phase
+C, so no changed champion replay, annual portfolio delta, higher-cost stress,
+or re-entry exists. Do not try another support window, an intraday proxy, or a
+different exit mapping. The next highest-value direction is a second
+independent Alpha engine; unresolved dispersion science remains parked and
+market hedging requires a separately justified feasibility contract.
+
 ## Latest checkpoint: partial champion applicability map, no deployment
 
 The authoritative scope is now the post-outcome revised-contract
