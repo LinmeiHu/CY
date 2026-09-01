@@ -22,7 +22,7 @@ Run the focused checks:
   research/volume_exhaustion_bottom/tests/test_v1_semantics.py
 ```
 
-The quantitative conclusion is in [`reports/REPORT.md`](reports/REPORT.md). Exact signal
-and outcome semantics are in [`methodology.md`](methodology.md); machine-readable results
-are in [`reports/results.json`](reports/results.json).
-
+The V1 quantitative conclusion is in [`reports/REPORT.md`](reports/REPORT.md). The V2
+continuous dry-up falsification is in [`reports/V2_REPORT.md`](reports/V2_REPORT.md), with
+machine-readable results in [`reports/v2_results.json`](reports/v2_results.json). Exact
+signal and outcome semantics are in [`methodology.md`](methodology.md).

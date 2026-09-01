@@ -127,7 +127,7 @@ def create_analysis_tables(con: duckdb.DuckDBPyConnection, config: dict[str, Any
         CREATE TEMP TABLE raw_ordered AS
         SELECT
             trade_date, symbol, open, high, low, close, preclose, volume, amount,
-            turnover_fraction, trade_status, is_st, buy_blocked_open,
+            turnover_fraction, trade_status, is_st, industry, buy_blocked_open,
             current_day_data_tradable, hard_valid, bar_valid, trading_state_valid,
             corporate_action_valid, available_at, decision_at, snapshot_id,
             sum(CASE WHEN NOT hard_valid THEN 1 ELSE 0 END) OVER w AS bad_cum,
@@ -195,6 +195,8 @@ def create_analysis_tables(con: duckdb.DuckDBPyConnection, config: dict[str, Any
             adjusted_close / min(adjusted_low) OVER w60 - 1.0 AS distance_from_low_60,
             amount_mean_5 / amount_median_20 AS dryup_ratio,
             adjusted_close / lag(adjusted_close, 3) OVER w - 1.0 AS return_3,
+            adjusted_close / lag(adjusted_close, 20) OVER w - 1.0 AS return_20,
+            stddev_samp(bar_return) OVER w20 AS volatility_20,
             min(adjusted_low) OVER w3 AS low_3,
             min(adjusted_low) OVER wprev3 AS prior_low_3,
             downside_return_3 / nullif(turnover_sum_3, 0.0) AS downside_impact_3,
@@ -224,6 +226,7 @@ def create_analysis_tables(con: duckdb.DuckDBPyConnection, config: dict[str, Any
             w3 AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW),
             wprev3 AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 5 PRECEDING AND 3 PRECEDING),
             wprev5 AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING),
+            w20 AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 19 PRECEDING AND CURRENT ROW),
             wfirst AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 40 PRECEDING AND 10 PRECEDING),
             wf5 AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 1 FOLLOWING AND 5 FOLLOWING),
             wf10 AS (PARTITION BY symbol ORDER BY trade_date ROWS BETWEEN 1 FOLLOWING AND 10 FOLLOWING),
