@@ -1,0 +1,38 @@
+{
+  "experiment_id": "ASHARE-TAIL-OPEN-ML-RISK-FILTER-V1",
+  "status": "FROZEN_DEVELOPMENT_ONLY_INCREMENTAL_RISK_DIAGNOSTIC",
+  "baseline_selection": {
+    "id": "CHINEXT_V1_RS_ACCEL_OVEREXTENSION_VETO",
+    "selection_reason": "The only selected baseline is an existing positive 2018-2021 executable candidate with recoverable per-security admissions after the 14:25 score cutoff. Industry Diffusion is excluded because its OS contract prohibits another modifier/rescue.",
+    "decision_timestamp": "completed trade_date close at 15:00 Asia/Shanghai",
+    "execution": "unchanged next-session-open engine; no same-day fill; existing 10 bp per side costs, limits, suspensions, T+1, and corporate-action handling"
+  },
+  "development_dates": ["2018-01-02", "2021-12-31"],
+  "model": {
+    "profile": "moderately_richer",
+    "prediction_path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/stage_b_predictions.parquet",
+    "prediction_sha256": "d99f0771bb104535607b3c489c252eb0a80c6489f7aa68edc33d01a9b9ce4c19",
+    "same_date_full_eligible_universe_rank": "Deterministic ascending score rank by (score, symbol), split into five equal-frequency buckets; Q1 is the bottom 20% risk bucket and Q5 is the top 20% safe bucket."
+  },
+  "existing_baseline_inputs": {
+    "decision_batch_result": {"path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001_result.json", "sha256": "8b019d174bae80f4fd8eba2c01a6f19f8101e9e3070addff4a1ff5b643644f46"},
+    "development_event_ledger": {"path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/development_2018_2021/event_ledger.jsonl", "sha256": "7fff940e7b9cd18b1cc6f695174d90f5eb599791136d1d7ced45b87fb70c4dfa"},
+    "development_execution_ledger": {"path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001/RS_ACCEL_OVEREXTENSION_VETO/development_2018_2021/execution_ledger.jsonl", "sha256": "04784200246d46990e9c5a2888f781bbafe1774177d8ec19ad62e9f776961dd1"},
+    "shared_strategy_runner": {"path": "research/market_behavior_os_v2/scripts/run_hab_chx_downrev_strat_001.py", "sha256": "0fd5c4f03bf12676f19a66d42a75986b7f47b8f4045496a070d21ab3f5b2208e"}
+  },
+  "screen": {
+    "outcomes": "Existing baseline completed native position cycles only; no counterfactual labels and no new model scoring.",
+    "predeclared_dimensions": ["mean_completed_return", "win_rate", "severe_loss_rate"],
+    "minimum_q1_completed_cycles": 10,
+    "persistence": "At least two calendar years show Q1 worse than Q2-Q5 on either mean completed return or severe-loss rate.",
+    "concentration": "Q1 adverse result must not have more than 50% of Q1 cycles from one signal date or more than 30% from one security.",
+    "replay_authorization": "Q1 must be worse than Q2-Q5 on at least one predeclared dimension, meet persistence and concentration checks, and the Q1-excluded cycles must not have a better mean completed return than Q2-Q5."
+  },
+  "translation": {
+    "rule": "For an otherwise RS-admitted new CHINEXT V1 candidate, reject the new admission if its same-date frozen moderately_richer Tail-to-Open score is in full-eligible-universe Q1.",
+    "unknown_score_policy": "NO_SCORE_NO_NEW_VETO: a candidate without a frozen OOF score is passed unchanged and recorded; no score is imputed and no substitute model is used.",
+    "replacement": "OFF; all existing ranking, exits, sizing, costs, market gate, limits, suspensions, T+1 and corporate-action semantics remain unchanged.",
+    "expected_candidate_retention": "approximately 80% by construction among scored candidates; realized retention is diagnostic only"
+  },
+  "prohibited": ["Ridge or LightGBM refit", "new model scoring", "new features", "threshold search", "additional veto cut", "combination rule", "2022-2023 Validation", "2024-2026 Final OOS", "standalone Tail-to-Open replay", "baseline rescue"]
+}

@@ -1,0 +1,249 @@
+{
+  "baseline": {
+    "decision_timestamp": "completed trade_date close at 15:00 Asia/Shanghai",
+    "execution": "unchanged next-session-open engine; no same-day fill; existing 10 bp per side costs, limits, suspensions, T+1, and corporate-action handling",
+    "id": "CHINEXT_V1_RS_ACCEL_OVEREXTENSION_VETO",
+    "selection_reason": "The only selected baseline is an existing positive 2018-2021 executable candidate with recoverable per-security admissions after the 14:25 score cutoff. Industry Diffusion is excluded because its OS contract prohibits another modifier/rescue."
+  },
+  "candidate_coverage_by_year": [
+    {
+      "pre_rs_candidates": 11,
+      "q1_rs_admitted": 5,
+      "rs_admitted_candidates": 8,
+      "scored_rs_admitted": 8,
+      "year": "2018"
+    },
+    {
+      "pre_rs_candidates": 90,
+      "q1_rs_admitted": 19,
+      "rs_admitted_candidates": 55,
+      "scored_rs_admitted": 55,
+      "year": "2019"
+    },
+    {
+      "pre_rs_candidates": 175,
+      "q1_rs_admitted": 34,
+      "rs_admitted_candidates": 113,
+      "scored_rs_admitted": 113,
+      "year": "2020"
+    },
+    {
+      "pre_rs_candidates": 101,
+      "q1_rs_admitted": 26,
+      "rs_admitted_candidates": 52,
+      "scored_rs_admitted": 50,
+      "year": "2021"
+    }
+  ],
+  "candidate_score_coverage": {
+    "pre_rs_candidates": 377,
+    "q1_fraction_scored_rs_admitted": 0.37168141592920356,
+    "q1_rs_admitted": 84,
+    "rs_admitted": 228,
+    "scored_rs_admitted": 226,
+    "unscored_rs_admitted": 2
+  },
+  "claim_boundary": {
+    "development_only": true,
+    "final_oos_2024_2026_read": false,
+    "model_refit": false,
+    "new_model_scoring": false,
+    "strategy_replay": false,
+    "validation_2022_2023_read": false
+  },
+  "classification": "ML_RISK_NOT_INCREMENTAL",
+  "completed_cycle_score_coverage": {
+    "completed_cycles": 139,
+    "scored": 137,
+    "unscored": 2
+  },
+  "existing_rs_filter_overlap": {
+    "q1_fraction_within_rs_rejected": 0.5503355704697986,
+    "q1_within_rs_rejected": 82,
+    "rs_rejected_scored_candidates": 149
+  },
+  "experiment_id": "ASHARE-TAIL-OPEN-ML-RISK-FILTER-V1",
+  "hashes": {
+    "completed_cycle_panel_sha256": "6602cc98b9dfb2379b68361bad68bbd41344f177c13a46d5f79c56a7a4369623",
+    "spec_sha256": "3d38b56fa65f4182efaf698512881d40bf0d4a5eea6d4e6a0dcab2259127afe0"
+  },
+  "q1_to_q5_completed_cycle_metrics": {
+    "Q1": {
+      "completed_cycles": 58,
+      "mean_calendar_holding_days": 19.344827586206897,
+      "mean_completed_return": 0.029825432636029853,
+      "mean_realized_pnl_cny": 4079.5445944827557,
+      "median_completed_return": -0.02024497628185477,
+      "severe_loss_rate": 0.13793103448275862,
+      "win_rate": 0.41379310344827586
+    },
+    "Q2": {
+      "completed_cycles": 42,
+      "mean_calendar_holding_days": 20.166666666666668,
+      "mean_completed_return": 0.018331551165955685,
+      "mean_realized_pnl_cny": 2032.4467976190472,
+      "median_completed_return": -0.0039248450311509175,
+      "severe_loss_rate": 0.11904761904761904,
+      "win_rate": 0.47619047619047616
+    },
+    "Q3": {
+      "completed_cycles": 17,
+      "mean_calendar_holding_days": 29.647058823529413,
+      "mean_completed_return": 0.14134423888998354,
+      "mean_realized_pnl_cny": 15462.252470588239,
+      "median_completed_return": 0.057441805344580175,
+      "severe_loss_rate": 0.0,
+      "win_rate": 0.6470588235294118
+    },
+    "Q4": {
+      "completed_cycles": 10,
+      "mean_calendar_holding_days": 20.9,
+      "mean_completed_return": -0.01579212290918892,
+      "mean_realized_pnl_cny": -2799.391699999998,
+      "median_completed_return": -0.02564225765849849,
+      "severe_loss_rate": 0.1,
+      "win_rate": 0.4
+    },
+    "Q5": {
+      "completed_cycles": 10,
+      "mean_calendar_holding_days": 26.8,
+      "mean_completed_return": 0.08771608584687944,
+      "mean_realized_pnl_cny": 12029.313099999994,
+      "median_completed_return": 0.06493502925246347,
+      "severe_loss_rate": 0.0,
+      "win_rate": 0.8
+    }
+  },
+  "q1_vs_q2_to_q5": {
+    "adverse_years": [
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+    ],
+    "annual": {
+      "2018": {
+        "q1": {
+          "completed_cycles": 5,
+          "mean_calendar_holding_days": 8.8,
+          "mean_completed_return": -0.02636291942995066,
+          "mean_realized_pnl_cny": -2734.8571999999986,
+          "median_completed_return": -0.019669200950819758,
+          "severe_loss_rate": 0.2,
+          "win_rate": 0.2
+        },
+        "q2_to_q5": {
+          "completed_cycles": 3,
+          "mean_calendar_holding_days": 11.333333333333334,
+          "mean_completed_return": -0.03501061550112686,
+          "mean_realized_pnl_cny": -3463.239333333331,
+          "median_completed_return": -0.03501739895791935,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.0
+        }
+      },
+      "2019": {
+        "q1": {
+          "completed_cycles": 15,
+          "mean_calendar_holding_days": 21.2,
+          "mean_completed_return": -0.006036439689195634,
+          "mean_realized_pnl_cny": -907.7358000000052,
+          "median_completed_return": -0.020820751612889783,
+          "severe_loss_rate": 0.06666666666666667,
+          "win_rate": 0.4666666666666667
+        },
+        "q2_to_q5": {
+          "completed_cycles": 29,
+          "mean_calendar_holding_days": 32.41379310344828,
+          "mean_completed_return": 0.11042696391770036,
+          "mean_realized_pnl_cny": 11856.544137931038,
+          "median_completed_return": 0.04679222129211417,
+          "severe_loss_rate": 0.034482758620689655,
+          "win_rate": 0.8275862068965517
+        }
+      },
+      "2020": {
+        "q1": {
+          "completed_cycles": 17,
+          "mean_calendar_holding_days": 16.0,
+          "mean_completed_return": 0.019025297556573458,
+          "mean_realized_pnl_cny": 1693.786941176471,
+          "median_completed_return": -0.019651347734217926,
+          "severe_loss_rate": 0.17647058823529413,
+          "win_rate": 0.47058823529411764
+        },
+        "q2_to_q5": {
+          "completed_cycles": 26,
+          "mean_calendar_holding_days": 19.153846153846153,
+          "mean_completed_return": 0.01937277545903587,
+          "mean_realized_pnl_cny": 2047.2965769230761,
+          "median_completed_return": -0.0032681921245792077,
+          "severe_loss_rate": 0.19230769230769232,
+          "win_rate": 0.46153846153846156
+        }
+      },
+      "2021": {
+        "q1": {
+          "completed_cycles": 21,
+          "mean_calendar_holding_days": 23.238095238095237,
+          "mean_completed_return": 0.07756220128169862,
+          "mean_realized_pnl_cny": 11195.691975238089,
+          "median_completed_return": -0.04880293685134826,
+          "severe_loss_rate": 0.14285714285714285,
+          "win_rate": 0.38095238095238093
+        },
+        "q2_to_q5": {
+          "completed_cycles": 21,
+          "mean_calendar_holding_days": 16.952380952380953,
+          "mean_completed_return": 0.01385593192532862,
+          "mean_realized_pnl_cny": 2563.833261904759,
+          "median_completed_return": -0.030009001480794013,
+          "severe_loss_rate": 0.0,
+          "win_rate": 0.3333333333333333
+        }
+      }
+    },
+    "q1": {
+      "completed_cycles": 58,
+      "mean_calendar_holding_days": 19.344827586206897,
+      "mean_completed_return": 0.029825432636029853,
+      "mean_realized_pnl_cny": 4079.5445944827557,
+      "median_completed_return": -0.02024497628185477,
+      "severe_loss_rate": 0.13793103448275862,
+      "win_rate": 0.41379310344827586
+    },
+    "q1_max_date_share": 0.034482758620689655,
+    "q1_max_security_share": 0.034482758620689655,
+    "q2_to_q5": {
+      "completed_cycles": 79,
+      "mean_calendar_holding_days": 23.139240506329113,
+      "mean_completed_return": 0.04926603594274384,
+      "mean_realized_pnl_cny": 5576.205968354431,
+      "median_completed_return": 0.006024522101692434,
+      "severe_loss_rate": 0.0759493670886076,
+      "win_rate": 0.5443037974683544
+    }
+  },
+  "replay": {
+    "reason": "The fixed Q1 veto does not retain approximately 80% of scored RS-admitted candidates; no alternative threshold, conditioning, or rescue is authorized.",
+    "run": false
+  },
+  "replay_authorization_gates": {
+    "approximately_80pct_candidate_retention": false,
+    "multi_year_adverse": true,
+    "not_date_or_security_concentrated": true,
+    "q1_minimum_completed_cycles": true,
+    "q1_pooled_worse": true,
+    "vetoed_full_trade_nonadverse": true
+  },
+  "score_identity": {
+    "dates": [
+      "2018-01-02",
+      "2021-12-31"
+    ],
+    "model": "moderately_richer",
+    "prediction_sha256": "d99f0771bb104535607b3c489c252eb0a80c6489f7aa68edc33d01a9b9ce4c19",
+    "validation_or_oos_rows": 0
+  },
+  "status": "COMPLETE_SCREEN_NO_REPLAY"
+}
