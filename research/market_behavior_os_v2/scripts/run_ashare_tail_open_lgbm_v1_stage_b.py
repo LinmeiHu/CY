@@ -25,7 +25,7 @@ import pandas as pd
 import psutil
 import pyarrow as pa
 import pyarrow.parquet as pq
-from scipy.stats import spearmanr
+from scipy.stats import pearsonr, spearmanr
 
 ROOT = Path(__file__).resolve().parents[3]
 PROGRAM = ROOT / "research/market_behavior_os_v2"
@@ -35,6 +35,7 @@ RESULT_PATH = PROGRAM / "artifacts/ASHARE-TAIL-OPEN-LGBM-V1_stage_b_result.json"
 BUILD_AUDIT_PATH = PROGRAM / "artifacts/ASHARE-TAIL-OPEN-LGBM-V1_build_only_audit.json"
 SUMMARY_PATH = PROGRAM / "artifacts/ASHARE-TAIL-OPEN-LGBM-V1_stage_b_summary.csv"
 REPORT_PATH = PROGRAM / "reports/ASHARE-TAIL-OPEN-LGBM-V1_stage_b_report.md"
+PREFIT_AUDIT_PATH = PROGRAM / "artifacts/ASHARE-TAIL-OPEN-LGBM-V1_prefit_feature_audit.json"
 EXTERNAL_ROOT = Path("/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1")
 RAW_ROOT = EXTERNAL_ROOT / "raw_features"
 EXTENDED_DAILY_ROOT = EXTERNAL_ROOT / "pit_daily_2013_2023_cy006" / "daily"
@@ -92,6 +93,59 @@ def _all_null_columns(
         f"SELECT {expressions} FROM read_parquet(?)", [str(path)]
     ).fetchone()
     return [column for column, count in zip(columns, counts, strict=True) if count == 0]
+
+
+def feature_preflight_audit(features: list[str]) -> dict[str, Any]:
+    """Fail closed before fitting when a frozen feature has no usable variation."""
+    if len(features) != 59 or len(set(features)) != 59:
+        raise StageBError("duplicate or changed frozen feature names")
+    connection = duckdb.connect(":memory:")
+    connection.execute("SET memory_limit='6GB'")
+    expressions: list[str] = []
+    for index, feature in enumerate(features):
+        quoted = f'"{feature}"'
+        expressions.extend(
+            [
+                f"count({quoted}) AS n_{index}",
+                f"min({quoted}) AS min_{index}",
+                f"max({quoted}) AS max_{index}",
+            ]
+        )
+    row = connection.execute(
+        "SELECT " + ",".join(expressions)
+        + " FROM read_parquet(?) WHERE signal_eligible",
+        [str(PANEL_PATH)],
+    ).fetchone()
+    total = connection.execute(
+        "SELECT count(*) FROM read_parquet(?) WHERE signal_eligible", [str(PANEL_PATH)]
+    ).fetchone()[0]
+    connection.close()
+    coverage: dict[str, Any] = {}
+    invalid: list[str] = []
+    for index, feature in enumerate(features):
+        count, minimum, maximum = row[3 * index : 3 * index + 3]
+        item = {
+            "non_null_rows": int(count),
+            "coverage": float(count / total) if total else 0.0,
+            "minimum": float(minimum) if minimum is not None else None,
+            "maximum": float(maximum) if maximum is not None else None,
+            "non_degenerate": bool(count and minimum is not None and maximum is not None and minimum != maximum),
+        }
+        coverage[feature] = item
+        if not item["non_degenerate"]:
+            invalid.append(feature)
+    audit = {
+        "scope": "signal_eligible_2013_2023_only",
+        "frozen_feature_count": len(features),
+        "duplicate_feature_names": False,
+        "signal_eligible_rows": int(total),
+        "invalid_features": invalid,
+        "passed": not invalid,
+        "features": coverage,
+    }
+    if invalid:
+        raise StageBError(f"pre-fit feature audit failed: {invalid}")
+    return audit
 
 
 def sha256_file(path: Path) -> str:
@@ -654,6 +708,16 @@ def _daily_ic(frame: pd.DataFrame, score: str) -> pd.Series:
     return frame.groupby("trade_date", sort=True).apply(correlation, include_groups=False).dropna()
 
 
+def _daily_pearson_ic(frame: pd.DataFrame, score: str) -> pd.Series:
+    def correlation(group: pd.DataFrame) -> float:
+        valid = group[[score, "label_net"]].dropna()
+        if len(valid) < 20 or valid[score].nunique() < 2 or valid.label_net.nunique() < 2:
+            return np.nan
+        return float(pearsonr(valid[score], valid.label_net).statistic)
+
+    return frame.groupby("trade_date", sort=True).apply(correlation, include_groups=False).dropna()
+
+
 def _top10_daily(frame: pd.DataFrame, score: str) -> pd.DataFrame:
     rows: list[dict[str, Any]] = []
     for trade_date, group in frame.groupby("trade_date", sort=True):
@@ -669,6 +733,9 @@ def _top10_daily(frame: pd.DataFrame, score: str) -> pd.DataFrame:
                 "planned": len(ranked),
                 "executed": int(ranked.label_valid.sum()),
                 "net_return": float(np.sum(returns) / 10),
+                "executable_net_return": float(ranked.loc[ranked.label_valid, "label_net"].mean())
+                if ranked.label_valid.any()
+                else np.nan,
                 "gross_return": float(
                     np.sum(np.where(ranked.label_valid, ranked.label_gross.fillna(0.0), 0.0)) / 10
                 ),
@@ -677,25 +744,147 @@ def _top10_daily(frame: pd.DataFrame, score: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _top10_selection(frame: pd.DataFrame, score: str) -> pd.DataFrame:
+    selected: list[pd.DataFrame] = []
+    for _, group in frame.groupby("trade_date", sort=True):
+        selected.append(
+            group.loc[group[score].notna()]
+            .sort_values([score, "symbol"], ascending=[False, True])
+            .head(10)
+        )
+    return pd.concat(selected, ignore_index=True) if selected else pd.DataFrame()
+
+
+def _severe_loss10(frame: pd.DataFrame, score: str) -> dict[str, Any]:
+    """Use every intraholding daily low and accrued supported cash actions."""
+    selected = _top10_selection(frame, score).loc[lambda value: value.label_valid].copy()
+    if selected.empty:
+        return {"severe_loss10": None, "severe_loss10_trade_count": 0}
+    selected["selection_id"] = np.arange(len(selected), dtype=np.int64)
+    selected["trade_date"] = pd.to_datetime(selected.trade_date).dt.date
+    selected["exit_date"] = pd.to_datetime(selected.exit_date).dt.date
+    connection = duckdb.connect(":memory:")
+    connection.register("selected", selected[["selection_id", "symbol", "trade_date", "exit_date", "entry_vwap", "post_entry_tail_low"]])
+    values = connection.execute(
+        """
+        WITH future_lows AS (
+          SELECT s.selection_id,p.trade_date,p.low,
+            sum(CASE WHEN p.corporate_action_count > 0 THEN coalesce(p.cash_per_share,0) ELSE 0 END)
+              OVER (PARTITION BY s.selection_id ORDER BY p.trade_date) AS accrued_cash
+          FROM selected s JOIN read_parquet(?) p
+            ON p.symbol=s.symbol AND p.trade_date>s.trade_date AND p.trade_date<=s.exit_date
+        ), marks AS (
+          SELECT selection_id,post_entry_tail_low AS low_mark,0.0 AS accrued_cash FROM selected
+          UNION ALL SELECT selection_id,low,accrued_cash FROM future_lows
+        )
+        SELECT s.selection_id,min((m.low_mark*(1-0.002)+m.accrued_cash)/(s.entry_vwap*(1+0.002))-1) AS adverse_return
+        FROM selected s JOIN marks m USING(selection_id) GROUP BY s.selection_id
+        """,
+        [str(PANEL_PATH)],
+    ).fetchdf()
+    connection.close()
+    if len(values) != len(selected) or values.adverse_return.isna().any():
+        raise StageBError("severe-loss path is incomplete")
+    return {
+        "severe_loss10": float((values.adverse_return <= -0.10).mean()),
+        "severe_loss10_trade_count": int(len(values)),
+    }
+
+
+def _return_economics(returns: pd.Series) -> dict[str, Any]:
+    values = pd.to_numeric(returns, errors="coerce").dropna().to_numpy(dtype=float)
+    if not len(values):
+        return {"mean_daily_return": None, "total_return": None, "sharpe": None, "max_drawdown": None, "win_rate": None}
+    equity = np.cumprod(1.0 + values)
+    drawdown = equity / np.maximum.accumulate(equity) - 1.0
+    standard_deviation = float(values.std(ddof=1)) if len(values) > 1 else 0.0
+    return {
+        "mean_daily_return": float(values.mean()),
+        "total_return": float(equity[-1] - 1.0),
+        "sharpe": float(np.sqrt(252.0) * values.mean() / standard_deviation)
+        if standard_deviation > 0
+        else None,
+        "max_drawdown": float(drawdown.min()),
+        "win_rate": float((values > 0).mean()),
+    }
+
+
+def _top_decile_diagnostics(frame: pd.DataFrame, score: str) -> dict[str, Any]:
+    records: list[dict[str, Any]] = []
+    for trade_date, group in frame.loc[frame.label_valid & frame[score].notna()].groupby("trade_date", sort=True):
+        ranked = group.sort_values([score, "symbol"], ascending=[False, True])
+        count = max(1, int(math.ceil(len(ranked) / 10)))
+        top = ranked.head(count).label_net.mean()
+        bottom = ranked.tail(count).label_net.mean()
+        universe = ranked.label_net.mean()
+        records.append({"trade_date": trade_date, "top": top, "bottom": bottom, "universe": universe})
+    daily = pd.DataFrame(records)
+    if daily.empty:
+        return {"top_decile_executable_net_return": None, "top_minus_universe": None, "top_minus_bottom": None}
+    return {
+        "top_decile_executable_net_return": float(daily.top.mean()),
+        "top_minus_universe": float((daily.top - daily.universe).mean()),
+        "top_minus_bottom": float((daily.top - daily.bottom).mean()),
+    }
+
+
+def _concentration(frame: pd.DataFrame, score: str) -> dict[str, Any]:
+    choices = _top10_selection(frame, score)
+    executed = choices.loc[choices.label_valid] if not choices.empty else choices
+    if executed.empty:
+        return {"number_of_trades": 0, "opportunity_coverage": 0.0, "max_security_share": None, "max_industry_share": None, "security_hhi": None, "industry_hhi": None}
+    security = executed.symbol.value_counts(normalize=True)
+    industry = executed.industry.value_counts(normalize=True)
+    return {
+        "number_of_trades": int(len(executed)),
+        "opportunity_coverage": float(len(executed) / len(choices)) if len(choices) else 0.0,
+        "max_security_share": float(security.iloc[0]),
+        "max_industry_share": float(industry.iloc[0]),
+        "security_hhi": float(np.square(security).sum()),
+        "industry_hhi": float(np.square(industry).sum()),
+    }
+
+
 def _metrics(frame: pd.DataFrame, score: str, label: str) -> dict[str, Any]:
     ic = _daily_ic(frame.loc[frame.label_valid], score)
+    pearson_ic = _daily_pearson_ic(frame.loc[frame.label_valid], score)
     top = _top10_daily(frame, score)
     annual_ic = {str(year): float(values.mean()) for year, values in ic.groupby(ic.index.year)}
     annual_net = {
         str(year): float(values.net_return.mean())
         for year, values in top.groupby(pd.to_datetime(top.trade_date).dt.year)
     }
+    annual: dict[str, Any] = {}
+    for year, values in top.groupby(pd.to_datetime(top.trade_date).dt.year):
+        year_frame = frame.loc[pd.to_datetime(frame.trade_date).dt.year.eq(year)]
+        year_ic = ic.loc[ic.index.year == year]
+        year_pearson = pearson_ic.loc[pearson_ic.index.year == year]
+        annual[str(year)] = {
+            "spearman_rank_ic": float(year_ic.mean()) if len(year_ic) else None,
+            "pearson_ic": float(year_pearson.mean()) if len(year_pearson) else None,
+            "top10": _return_economics(values.net_return),
+            **_severe_loss10(year_frame, score),
+            **_top_decile_diagnostics(year_frame, score),
+            **_concentration(year_frame, score),
+        }
     return {
         "model": label,
         "decision_dates": int(frame.trade_date.nunique()),
         "label_rows": int(frame.label_valid.sum()),
         "mean_daily_rank_ic": float(ic.mean()),
         "median_daily_rank_ic": float(ic.median()),
+        "mean_daily_pearson_ic": float(pearson_ic.mean()),
         "annual_rank_ic": annual_ic,
         "top10_mean_net_return": float(top.net_return.mean()),
         "top10_mean_gross_return": float(top.gross_return.mean()),
         "top10_entry_execution_fraction": float(top.executed.sum() / top.planned.sum()),
         "annual_top10_net_return": annual_net,
+        "top10_strategy_economics": _return_economics(top.net_return),
+        "top10_executable_net_return": float(top.executable_net_return.mean()),
+        **_severe_loss10(frame, score),
+        **_top_decile_diagnostics(frame, score),
+        **_concentration(frame, score),
+        "annual": annual,
     }
 
 
@@ -727,6 +916,8 @@ def run_models(spec: dict[str, Any], features: list[str]) -> dict[str, Any]:
         "label_valid",
         "label_net",
         "label_gross",
+        "entry_vwap",
+        "post_entry_tail_low",
         "ret_prevclose_to_1425",
         "ret_1301_1425",
         "cutoff_vs_vwap_1425",
@@ -771,6 +962,8 @@ def run_models(spec: dict[str, Any], features: list[str]) -> dict[str, Any]:
                 "label_valid",
                 "label_net",
                 "label_gross",
+                "entry_vwap",
+                "post_entry_tail_low",
             ]
         ].copy()
         ridge_frame["score"] = ridge.predict(predict[features])
@@ -800,6 +993,8 @@ def run_models(spec: dict[str, Any], features: list[str]) -> dict[str, Any]:
                     "label_valid",
                     "label_net",
                     "label_gross",
+                    "entry_vwap",
+                    "post_entry_tail_low",
                 ]
             ].copy()
             predicted["score"] = model.predict(predict[features])
@@ -836,11 +1031,15 @@ def run_models(spec: dict[str, Any], features: list[str]) -> dict[str, Any]:
     }
 
     lightgbm_metrics = [row for row in profile_metrics if row["model"] != "ridge"]
+    best_rank_ic = max(row["mean_daily_rank_ic"] for row in lightgbm_metrics)
+    within_frozen_tie = [
+        row for row in lightgbm_metrics if best_rank_ic - row["mean_daily_rank_ic"] <= 0.001
+    ]
     selected = sorted(
-        lightgbm_metrics,
+        within_frozen_tie,
         key=lambda row: (
-            -row["mean_daily_rank_ic"],
             [p["name"] for p in profiles].index(row["model"]),
+            -row["top10_mean_net_return"],
         ),
     )[0]
     selected_name = selected["model"]
@@ -884,6 +1083,8 @@ def run_models(spec: dict[str, Any], features: list[str]) -> dict[str, Any]:
                 "label_valid",
                 "label_net",
                 "label_gross",
+                "entry_vwap",
+                "post_entry_tail_low",
             ]
         ].copy()
         validation_prediction["score"] = model.predict(validation[features])
@@ -1131,6 +1332,8 @@ def run(build: bool, verify: bool) -> dict[str, Any]:
         if not path.is_file():
             raise StageBError(f"required Stage-B materialization missing: {path}")
     verify_frozen_materializations(spec)
+    prefit_audit = _clean(feature_preflight_audit(features))
+    _atomic_write(PREFIT_AUDIT_PATH, json.dumps(prefit_audit, indent=2, sort_keys=True) + "\n")
     modeling = run_models(spec, features)
     result = {
         "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
@@ -1138,6 +1341,7 @@ def run(build: bool, verify: bool) -> dict[str, Any]:
         "classification": modeling["classification"],
         "source_hashes": source_hashes,
         "build_audit": build_audit,
+        "prefit_feature_audit": prefit_audit,
         "modeling": modeling,
         "boundaries": {
             "post_2023_security_rows_read": False,

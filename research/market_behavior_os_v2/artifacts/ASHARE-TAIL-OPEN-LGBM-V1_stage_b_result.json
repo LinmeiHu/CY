@@ -1,0 +1,1533 @@
+{
+  "boundaries": {
+    "final_oos_authorized": false,
+    "final_oos_opened": false,
+    "post_2023_security_rows_read": false,
+    "prior_families_reopened": false
+  },
+  "build_audit": {},
+  "classification": "ML_EXECUTION_FAILURE",
+  "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
+  "hashes": {
+    "daily_contract_sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df",
+    "feature_manifest_sha256": "a1d33981620289dd9090210cca281500ea09584abd797cdc556a515b8f78858e",
+    "panel_sha256": "824d663781d0e45f91ea7741fc63076fd2dfaad7fb16c38f2d72174e8ef461fd",
+    "raw_enriched_sha256": "dc8ed5c22ec8861624d388fbfaccd50b48f2cf5cf74585b783413e39e273e1a4",
+    "spec_sha256": "fa551965e2d3a51d55b5c8543da2f7bb9babfd1cbefe4002b5c207785759ad67"
+  },
+  "modeling": {
+    "classification": "ML_EXECUTION_FAILURE",
+    "development": {
+      "eligible_universe": {
+        "decision_dates": 973,
+        "mean_net_return": -0.00517773189043068,
+        "model": "eligible_universe_equal_weight"
+      },
+      "gates": {
+        "entry_execution_fraction": true,
+        "nonnegative_each_2018_2021_rank_ic": true,
+        "positive_mean_rank_ic": true,
+        "positive_top10_net": false,
+        "top10_beats_universe": true
+      },
+      "passed": false,
+      "profile_metrics": [
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.016482205164467474,
+              "max_industry_share": 0.038810900082576386,
+              "max_security_share": 0.005780346820809248,
+              "number_of_trades": 2422,
+              "opportunity_coverage": 0.9967078189300411,
+              "pearson_ic": 0.22992144097484815,
+              "security_hhi": 0.001442870576009481,
+              "severe_loss10": 0.012386457473162676,
+              "severe_loss10_trade_count": 2422,
+              "spearman_rank_ic": 0.1709122638615946,
+              "top10": {
+                "max_drawdown": -0.6954973092551439,
+                "mean_daily_return": -0.004818476273398996,
+                "sharpe": -9.003605753413288,
+                "total_return": -0.6935422350140126,
+                "win_rate": 0.15637860082304528
+              },
+              "top_decile_executable_net_return": -0.004596593243245737,
+              "top_minus_bottom": 0.0077720293023963325,
+              "top_minus_universe": 0.0015862227629450945
+            },
+            "2019": {
+              "industry_hhi": 0.016785573388242978,
+              "max_industry_share": 0.046368485843249894,
+              "max_security_share": 0.023389413212966764,
+              "number_of_trades": 2437,
+              "opportunity_coverage": 0.9987704918032787,
+              "pearson_ic": 0.24820146754981529,
+              "security_hhi": 0.00259590511417049,
+              "severe_loss10": 0.008617152236356175,
+              "severe_loss10_trade_count": 2437,
+              "spearman_rank_ic": 0.16409161159063926,
+              "top10": {
+                "max_drawdown": -0.5318476624000201,
+                "mean_daily_return": -0.0030951666205962266,
+                "sharpe": -8.226930415095056,
+                "total_return": -0.5326956811310526,
+                "win_rate": 0.19262295081967212
+              },
+              "top_decile_executable_net_return": -0.0029988568113680837,
+              "top_minus_bottom": 0.008281997819822905,
+              "top_minus_universe": 0.0015004464999600344
+            },
+            "2020": {
+              "industry_hhi": 0.019481432670847072,
+              "max_industry_share": 0.06391752577319587,
+              "max_security_share": 0.03216494845360825,
+              "number_of_trades": 2425,
+              "opportunity_coverage": 0.9979423868312757,
+              "pearson_ic": 0.2457472609852271,
+              "security_hhi": 0.0030250185992135195,
+              "severe_loss10": 0.010309278350515464,
+              "severe_loss10_trade_count": 2425,
+              "spearman_rank_ic": 0.14831281966131832,
+              "top10": {
+                "max_drawdown": -0.6002780009842544,
+                "mean_daily_return": -0.0037003343665729634,
+                "sharpe": -4.998322870273242,
+                "total_return": -0.6010681616216531,
+                "win_rate": 0.24691358024691357
+              },
+              "top_decile_executable_net_return": -0.0036006091805137167,
+              "top_minus_bottom": 0.008252928161424816,
+              "top_minus_universe": 0.0015229070501283448
+            },
+            "2021": {
+              "industry_hhi": 0.01916820321754774,
+              "max_industry_share": 0.043693322341302555,
+              "max_security_share": 0.021434460016488046,
+              "number_of_trades": 2426,
+              "opportunity_coverage": 0.9983539094650206,
+              "pearson_ic": 0.2088934960267651,
+              "security_hhi": 0.0023100935251456297,
+              "severe_loss10": 0.00741962077493817,
+              "severe_loss10_trade_count": 2426,
+              "spearman_rank_ic": 0.14044487806144737,
+              "top10": {
+                "max_drawdown": -0.576547146887513,
+                "mean_daily_return": -0.00355099875023117,
+                "sharpe": -12.261242633195746,
+                "total_return": -0.5797946876126949,
+                "win_rate": 0.14814814814814814
+              },
+              "top_decile_executable_net_return": -0.003651694242493635,
+              "top_minus_bottom": 0.006734292363786354,
+              "top_minus_universe": 0.0012563896582248753
+            }
+          },
+          "annual_rank_ic": {
+            "2018": 0.1709122638615946,
+            "2019": 0.16409161159063926,
+            "2020": 0.14831281966131832,
+            "2021": 0.14044487806144737
+          },
+          "annual_top10_net_return": {
+            "2018": -0.004818476273398996,
+            "2019": -0.0030951666205962266,
+            "2020": -0.0037003343665729634,
+            "2021": -0.00355099875023117
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.016547753014559193,
+          "label_rows": 1879100,
+          "max_industry_share": 0.04335736354273945,
+          "max_security_share": 0.020700308959835222,
+          "mean_daily_pearson_ic": 0.23320634346655408,
+          "mean_daily_rank_ic": 0.15594877070207147,
+          "median_daily_rank_ic": 0.158303020437322,
+          "model": "ridge",
+          "number_of_trades": 9710,
+          "opportunity_coverage": 0.9979445015416238,
+          "security_hhi": 0.0015328353349080067,
+          "severe_loss10": 0.009680741503604531,
+          "severe_loss10_trade_count": 9710,
+          "top10_entry_execution_fraction": 0.9979445015416238,
+          "top10_executable_net_return": -0.003794630465857987,
+          "top10_mean_gross_return": 0.00019398127868650586,
+          "top10_mean_net_return": -0.003790528609706927,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9759805306589072,
+            "mean_daily_return": -0.003790528609706927,
+            "sharpe": -7.354722189356137,
+            "total_return": -0.9759933997002282,
+            "win_rate": 0.18602261048304214
+          },
+          "top_decile_executable_net_return": -0.0037112055003836724,
+          "top_minus_bottom": 0.007760848074147391,
+          "top_minus_universe": 0.0014665263900470078
+        },
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.015086384715936558,
+              "max_industry_share": 0.03509496284062758,
+              "max_security_share": 0.004128819157720892,
+              "number_of_trades": 2422,
+              "opportunity_coverage": 0.9967078189300411,
+              "pearson_ic": 0.30300148419523076,
+              "security_hhi": 0.0011172700561396663,
+              "severe_loss10": 0.009083402146985962,
+              "severe_loss10_trade_count": 2422,
+              "spearman_rank_ic": 0.19608456084890333,
+              "top10": {
+                "max_drawdown": -0.653950637232556,
+                "mean_daily_return": -0.004290663740408734,
+                "sharpe": -9.300759610035263,
+                "total_return": -0.6505719794393384,
+                "win_rate": 0.19753086419753085
+              },
+              "top_decile_executable_net_return": -0.004390363203767998,
+              "top_minus_bottom": 0.00952252961593386,
+              "top_minus_universe": 0.001792452802422834
+            },
+            "2019": {
+              "industry_hhi": 0.014991996085515852,
+              "max_industry_share": 0.0344686089454247,
+              "max_security_share": 0.005334427574887156,
+              "number_of_trades": 2437,
+              "opportunity_coverage": 0.9987704918032787,
+              "pearson_ic": 0.32375042126225856,
+              "security_hhi": 0.001101032856039491,
+              "severe_loss10": 0.008206811653672548,
+              "severe_loss10_trade_count": 2437,
+              "spearman_rank_ic": 0.1872529183476541,
+              "top10": {
+                "max_drawdown": -0.49812206979548546,
+                "mean_daily_return": -0.002794575972833656,
+                "sharpe": -7.110884367211994,
+                "total_return": -0.49722050379438576,
+                "win_rate": 0.22131147540983606
+              },
+              "top_decile_executable_net_return": -0.003065669969584788,
+              "top_minus_bottom": 0.009263206450112681,
+              "top_minus_universe": 0.0014336333417433302
+            },
+            "2020": {
+              "industry_hhi": 0.014738471267393858,
+              "max_industry_share": 0.033360790774299834,
+              "max_security_share": 0.0032948929159802307,
+              "number_of_trades": 2428,
+              "opportunity_coverage": 0.9991769547325103,
+              "pearson_ic": 0.2894095645267932,
+              "security_hhi": 0.000966890940130113,
+              "severe_loss10": 0.006177924217462933,
+              "severe_loss10_trade_count": 2428,
+              "spearman_rank_ic": 0.15027357394687701,
+              "top10": {
+                "max_drawdown": -0.6136639896882667,
+                "mean_daily_return": -0.0038506134044302815,
+                "sharpe": -5.58920056510256,
+                "total_return": -0.6143873527128301,
+                "win_rate": 0.25925925925925924
+              },
+              "top_decile_executable_net_return": -0.0038965431379142652,
+              "top_minus_bottom": 0.0080282341500199,
+              "top_minus_universe": 0.0012269730927277952
+            },
+            "2021": {
+              "industry_hhi": 0.015613281331434815,
+              "max_industry_share": 0.03911074516261836,
+              "max_security_share": 0.0032935364347468094,
+              "number_of_trades": 2429,
+              "opportunity_coverage": 0.9995884773662551,
+              "pearson_ic": 0.24992390250616434,
+              "security_hhi": 0.0009038920238011904,
+              "severe_loss10": 0.007410456978180321,
+              "severe_loss10_trade_count": 2429,
+              "spearman_rank_ic": 0.164189112986194,
+              "top10": {
+                "max_drawdown": -0.5711984105021082,
+                "mean_daily_return": -0.003471850321924492,
+                "sharpe": -11.052756964703494,
+                "total_return": -0.5717961779939978,
+                "win_rate": 0.14814814814814814
+              },
+              "top_decile_executable_net_return": -0.0034621741742090293,
+              "top_minus_bottom": 0.007322774153132184,
+              "top_minus_universe": 0.0014459097265094804
+            }
+          },
+          "annual_rank_ic": {
+            "2018": 0.19608456084890333,
+            "2019": 0.1872529183476541,
+            "2020": 0.15027357394687701,
+            "2021": 0.164189112986194
+          },
+          "annual_top10_net_return": {
+            "2018": -0.004290663740408734,
+            "2019": -0.002794575972833656,
+            "2020": -0.0038506134044302815,
+            "2021": -0.003471850321924492
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.014183524317881857,
+          "label_rows": 1879100,
+          "max_industry_share": 0.03468505557842733,
+          "max_security_share": 0.002573075339645945,
+          "mean_daily_pearson_ic": 0.2915544665328272,
+          "mean_daily_rank_ic": 0.17446319967918536,
+          "median_daily_rank_ic": 0.17773487519267225,
+          "model": "shallow",
+          "number_of_trades": 9716,
+          "opportunity_coverage": 0.9985611510791367,
+          "security_hhi": 0.0006033644511961865,
+          "severe_loss10": 0.007719226018937835,
+          "severe_loss10_trade_count": 9716,
+          "top10_entry_execution_fraction": 0.9985611510791367,
+          "top10_executable_net_return": -0.003610199219523816,
+          "top10_mean_gross_return": 0.0003866362880360084,
+          "top10_mean_net_return": -0.003601096106675174,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9710498918864314,
+            "mean_daily_return": -0.003601096106675174,
+            "sharpe": -7.420090123478931,
+            "total_return": -0.9709907102914844,
+            "win_rate": 0.2065775950668037
+          },
+          "top_decile_executable_net_return": -0.0037030318992191903,
+          "top_minus_bottom": 0.008534935342410462,
+          "top_minus_universe": 0.0014746999912114895
+        },
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.016105275156492432,
+              "max_industry_share": 0.0434063662670525,
+              "max_security_share": 0.004960727573377429,
+              "number_of_trades": 2419,
+              "opportunity_coverage": 0.9954732510288066,
+              "pearson_ic": 0.3249003545997434,
+              "security_hhi": 0.0010938961415594916,
+              "severe_loss10": 0.01364200082678793,
+              "severe_loss10_trade_count": 2419,
+              "spearman_rank_ic": 0.19956363649742676,
+              "top10": {
+                "max_drawdown": -0.6544204789180745,
+                "mean_daily_return": -0.004260764047567462,
+                "sharpe": -8.674002957942403,
+                "total_return": -0.6483154819802154,
+                "win_rate": 0.18518518518518517
+              },
+              "top_decile_executable_net_return": -0.004348364111638363,
+              "top_minus_bottom": 0.009748012689917549,
+              "top_minus_universe": 0.0018344518945524694
+            },
+            "2019": {
+              "industry_hhi": 0.01526260855064475,
+              "max_industry_share": 0.036490364903649035,
+              "max_security_share": 0.006150061500615006,
+              "number_of_trades": 2439,
+              "opportunity_coverage": 0.9995901639344262,
+              "pearson_ic": 0.3418340401810983,
+              "security_hhi": 0.0010951934037585556,
+              "severe_loss10": 0.00943009430094301,
+              "severe_loss10_trade_count": 2439,
+              "spearman_rank_ic": 0.1890635957541114,
+              "top10": {
+                "max_drawdown": -0.535959876409365,
+                "mean_daily_return": -0.003109462759550263,
+                "sharpe": -7.674411151803166,
+                "total_return": -0.5346514378694873,
+                "win_rate": 0.22131147540983606
+              },
+              "top_decile_executable_net_return": -0.0029975447172341466,
+              "top_minus_bottom": 0.009381839926516502,
+              "top_minus_universe": 0.0015017585940939712
+            },
+            "2020": {
+              "industry_hhi": 0.014958858043087763,
+              "max_industry_share": 0.03503709810387469,
+              "max_security_share": 0.0032976092333058533,
+              "number_of_trades": 2426,
+              "opportunity_coverage": 0.9983539094650206,
+              "pearson_ic": 0.2955088122799973,
+              "security_hhi": 0.0009008617144985387,
+              "severe_loss10": 0.009068425391591096,
+              "severe_loss10_trade_count": 2426,
+              "spearman_rank_ic": 0.14930138416063984,
+              "top10": {
+                "max_drawdown": -0.6253439547279174,
+                "mean_daily_return": -0.003960007285633446,
+                "sharpe": -5.032749085433422,
+                "total_return": -0.6263607521317189,
+                "win_rate": 0.26337448559670784
+              },
+              "top_decile_executable_net_return": -0.00393312475524578,
+              "top_minus_bottom": 0.007971525873925195,
+              "top_minus_universe": 0.0011903914753962823
+            },
+            "2021": {
+              "industry_hhi": 0.015997125789457965,
+              "max_industry_share": 0.035831960461285006,
+              "max_security_share": 0.002883031301482702,
+              "number_of_trades": 2428,
+              "opportunity_coverage": 0.9991769547325103,
+              "pearson_ic": 0.2542754862737962,
+              "security_hhi": 0.0008956463445415784,
+              "severe_loss10": 0.011943986820428337,
+              "severe_loss10_trade_count": 2428,
+              "spearman_rank_ic": 0.16463407994785628,
+              "top10": {
+                "max_drawdown": -0.5917042565444355,
+                "mean_daily_return": -0.0036750811837883064,
+                "sharpe": -11.54124853718024,
+                "total_return": -0.5925371086175975,
+                "win_rate": 0.1440329218106996
+              },
+              "top_decile_executable_net_return": -0.003467696411415154,
+              "top_minus_bottom": 0.007374370295637961,
+              "top_minus_universe": 0.0014403874893033563
+            }
+          },
+          "annual_rank_ic": {
+            "2018": 0.19956363649742676,
+            "2019": 0.1890635957541114,
+            "2020": 0.14930138416063984,
+            "2021": 0.16463407994785628
+          },
+          "annual_top10_net_return": {
+            "2018": -0.004260764047567462,
+            "2019": -0.003109462759550263,
+            "2020": -0.003960007285633446,
+            "2021": -0.0036750811837883064
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.014775620235093594,
+          "label_rows": 1879100,
+          "max_industry_share": 0.03655271828665568,
+          "max_security_share": 0.0031919275123558485,
+          "mean_daily_pearson_ic": 0.3041684239676233,
+          "mean_daily_rank_ic": 0.17565446948740232,
+          "median_daily_rank_ic": 0.17998034333969304,
+          "model": "medium",
+          "number_of_trades": 9712,
+          "opportunity_coverage": 0.9981500513874615,
+          "security_hhi": 0.0005638288813377157,
+          "severe_loss10": 0.011017298187808897,
+          "severe_loss10_trade_count": 9712,
+          "top10_entry_execution_fraction": 0.9981500513874615,
+          "top10_executable_net_return": -0.003771085671488,
+          "top10_mean_gross_return": 0.00023481725800947076,
+          "top10_mean_net_return": -0.003750669141786889,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9751604976323412,
+            "mean_daily_return": -0.003750669141786889,
+            "sharpe": -7.0726770720032865,
+            "total_return": -0.9750843524847356,
+            "win_rate": 0.20349434737923947
+          },
+          "top_decile_executable_net_return": -0.0036859742380594657,
+          "top_minus_bottom": 0.008619721269192021,
+          "top_minus_universe": 0.001491757652371214
+        },
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.016005313550492124,
+              "max_industry_share": 0.0375877736472532,
+              "max_security_share": 0.004543577034283354,
+              "number_of_trades": 2421,
+              "opportunity_coverage": 0.9962962962962963,
+              "pearson_ic": 0.31058075970499976,
+              "security_hhi": 0.0011006201587684245,
+              "severe_loss10": 0.01486988847583643,
+              "severe_loss10_trade_count": 2421,
+              "spearman_rank_ic": 0.19645585688320907,
+              "top10": {
+                "max_drawdown": -0.653756546056006,
+                "mean_daily_return": -0.004268792705237188,
+                "sharpe": -8.804101666728377,
+                "total_return": -0.6489400694027914,
+                "win_rate": 0.18518518518518517
+              },
+              "top_decile_executable_net_return": -0.004446954352805201,
+              "top_minus_bottom": 0.009550379036914497,
+              "top_minus_universe": 0.0017358616533856297
+            },
+            "2019": {
+              "industry_hhi": 0.015281693126535618,
+              "max_industry_share": 0.03937653814602133,
+              "max_security_share": 0.0036915504511894994,
+              "number_of_trades": 2438,
+              "opportunity_coverage": 0.9991803278688525,
+              "pearson_ic": 0.3412703706355544,
+              "security_hhi": 0.0010326650564853317,
+              "severe_loss10": 0.009433962264150943,
+              "severe_loss10_trade_count": 2438,
+              "spearman_rank_ic": 0.1910820959130558,
+              "top10": {
+                "max_drawdown": -0.5043994044418835,
+                "mean_daily_return": -0.0028476761945834283,
+                "sharpe": -6.8836631308362355,
+                "total_return": -0.5039766228698819,
+                "win_rate": 0.26639344262295084
+              },
+              "top_decile_executable_net_return": -0.002955505054939847,
+              "top_minus_bottom": 0.009421856704810674,
+              "top_minus_universe": 0.0015437982563882705
+            },
+            "2020": {
+              "industry_hhi": 0.014602410153999885,
+              "max_industry_share": 0.03543469303667079,
+              "max_security_share": 0.004532344458178822,
+              "number_of_trades": 2427,
+              "opportunity_coverage": 0.9987654320987654,
+              "pearson_ic": 0.3118369534484758,
+              "security_hhi": 0.0009698948904212313,
+              "severe_loss10": 0.010712814173877214,
+              "severe_loss10_trade_count": 2427,
+              "spearman_rank_ic": 0.16083400171761722,
+              "top10": {
+                "max_drawdown": -0.5680155922024546,
+                "mean_daily_return": -0.003368733739369646,
+                "sharpe": -4.226144009326002,
+                "total_return": -0.5686354588972165,
+                "win_rate": 0.30864197530864196
+              },
+              "top_decile_executable_net_return": -0.003621290845598555,
+              "top_minus_bottom": 0.008475857218083018,
+              "top_minus_universe": 0.0015022253850435065
+            },
+            "2021": {
+              "industry_hhi": 0.016635647108215013,
+              "max_industry_share": 0.037463976945244955,
+              "max_security_share": 0.0037052284890901604,
+              "number_of_trades": 2429,
+              "opportunity_coverage": 0.9995884773662551,
+              "pearson_ic": 0.25540349509724963,
+              "security_hhi": 0.000947959514179647,
+              "severe_loss10": 0.015644298065047343,
+              "severe_loss10_trade_count": 2429,
+              "spearman_rank_ic": 0.16663125391921998,
+              "top10": {
+                "max_drawdown": -0.5969041800278312,
+                "mean_daily_return": -0.003734056042002796,
+                "sharpe": -10.003175045438486,
+                "total_return": -0.5988327814649351,
+                "win_rate": 0.17695473251028807
+              },
+              "top_decile_executable_net_return": -0.0034497661120653916,
+              "top_minus_bottom": 0.007440828490065362,
+              "top_minus_universe": 0.0014583177886531178
+            }
+          },
+          "annual_rank_ic": {
+            "2018": 0.19645585688320907,
+            "2019": 0.1910820959130558,
+            "2020": 0.16083400171761722,
+            "2021": 0.16663125391921998
+          },
+          "annual_top10_net_return": {
+            "2018": -0.004268792705237188,
+            "2019": -0.0028476761945834283,
+            "2020": -0.003368733739369646,
+            "2021": -0.003734056042002796
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.014732453409033421,
+          "label_rows": 1879100,
+          "max_industry_share": 0.03674729799279465,
+          "max_security_share": 0.0024704065877509005,
+          "mean_daily_pearson_ic": 0.3048104049743078,
+          "mean_daily_rank_ic": 0.17876347558597827,
+          "median_daily_rank_ic": 0.18414569914184756,
+          "model": "moderately_richer",
+          "number_of_trades": 9715,
+          "opportunity_coverage": 0.9984583761562179,
+          "security_hhi": 0.0005631522583013729,
+          "severe_loss10": 0.012660833762223366,
+          "severe_loss10_trade_count": 9715,
+          "top10_entry_execution_fraction": 0.9984583761562179,
+          "top10_executable_net_return": -0.0035618495812724097,
+          "top10_mean_gross_return": 0.00043340925030229945,
+          "top10_mean_net_return": -0.003554087909274919,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9698784466493575,
+            "mean_daily_return": -0.003554087909274919,
+            "sharpe": -6.5405759106439785,
+            "total_return": -0.9698662426144241,
+            "win_rate": 0.2343268242548818
+          },
+          "top_decile_executable_net_return": -0.003617697823072278,
+          "top_minus_bottom": 0.00872294940290245,
+          "top_minus_universe": 0.0015600340673584028
+        }
+      ],
+      "selected_profile": "moderately_richer",
+      "simple_baselines": [
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.01897472138446786,
+              "max_industry_share": 0.04918032786885246,
+              "max_security_share": 0.007285974499089253,
+              "number_of_trades": 549,
+              "opportunity_coverage": 0.22592592592592592,
+              "pearson_ic": 0.010647505165321688,
+              "security_hhi": 0.0026974031273950642,
+              "severe_loss10": 0.0947176684881603,
+              "severe_loss10_trade_count": 549,
+              "spearman_rank_ic": -0.03513501480165126,
+              "top10": {
+                "max_drawdown": -0.6365883312277045,
+                "mean_daily_return": -0.00411036835889125,
+                "sharpe": -9.750527822121226,
+                "total_return": -0.6344621158308841,
+                "win_rate": 0.07407407407407407
+              },
+              "top_decile_executable_net_return": -0.00868708921577424,
+              "top_minus_bottom": 0.0006372787349096603,
+              "top_minus_universe": -0.0025042732095834092
+            },
+            "2019": {
+              "industry_hhi": 0.023273818164223165,
+              "max_industry_share": 0.060240963855421686,
+              "max_security_share": 0.012048192771084338,
+              "number_of_trades": 249,
+              "opportunity_coverage": 0.10204918032786885,
+              "pearson_ic": 0.016567605199421437,
+              "security_hhi": 0.005145078305188624,
+              "severe_loss10": 0.14457831325301204,
+              "severe_loss10_trade_count": 249,
+              "spearman_rank_ic": -0.029134515387435105,
+              "top10": {
+                "max_drawdown": -0.41372075724303703,
+                "mean_daily_return": -0.0021703505362449913,
+                "sharpe": -6.220082453246269,
+                "total_return": -0.41372075724303703,
+                "win_rate": 0.06557377049180328
+              },
+              "top_decile_executable_net_return": -0.0070833028491707715,
+              "top_minus_bottom": 0.0006967099601329414,
+              "top_minus_universe": -0.002583999537842653
+            },
+            "2020": {
+              "industry_hhi": 0.037471569735622615,
+              "max_industry_share": 0.08955223880597014,
+              "max_security_share": 0.026533996683250415,
+              "number_of_trades": 603,
+              "opportunity_coverage": 0.24814814814814815,
+              "pearson_ic": 0.03694498930788572,
+              "security_hhi": 0.004788110305300474,
+              "severe_loss10": 0.11276948590381426,
+              "severe_loss10_trade_count": 603,
+              "spearman_rank_ic": 0.0006566459898710497,
+              "top10": {
+                "max_drawdown": -0.6432791120676765,
+                "mean_daily_return": -0.004184039295192529,
+                "sharpe": -8.56767649075993,
+                "total_return": -0.6416458654411277,
+                "win_rate": 0.1440329218106996
+              },
+              "top_decile_executable_net_return": -0.006312805469374442,
+              "top_minus_bottom": 0.0022767148229417733,
+              "top_minus_universe": -0.001189289238732382
+            },
+            "2021": {
+              "industry_hhi": 0.030616720358536093,
+              "max_industry_share": 0.0632688927943761,
+              "max_security_share": 0.007029876977152899,
+              "number_of_trades": 1138,
+              "opportunity_coverage": 0.4683127572016461,
+              "pearson_ic": -0.0011454969487249933,
+              "security_hhi": 0.0022532052964995782,
+              "severe_loss10": 0.08084358523725835,
+              "severe_loss10_trade_count": 1138,
+              "spearman_rank_ic": -0.02648433175948835,
+              "top10": {
+                "max_drawdown": -0.8232413903707412,
+                "mean_daily_return": -0.007086873927984759,
+                "sharpe": -14.578312949351364,
+                "total_return": -0.8237011791345389,
+                "win_rate": 0.12757201646090535
+              },
+              "top_decile_executable_net_return": -0.006739774845042498,
+              "top_minus_bottom": 0.00016680600225765392,
+              "top_minus_universe": -0.0018316909443239888
+            }
+          },
+          "annual_rank_ic": {
+            "2018": -0.03513501480165126,
+            "2019": -0.029134515387435105,
+            "2020": 0.0006566459898710497,
+            "2021": -0.02648433175948835
+          },
+          "annual_top10_net_return": {
+            "2018": -0.00411036835889125,
+            "2019": -0.0021703505362449913,
+            "2020": -0.004184039295192529,
+            "2021": -0.007086873927984759
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.0249944117144736,
+          "label_rows": 1879100,
+          "max_industry_share": 0.05868452146514376,
+          "max_security_share": 0.00866482867270579,
+          "mean_daily_pearson_ic": 0.01575448722210489,
+          "mean_daily_rank_ic": -0.022531097629344733,
+          "median_daily_rank_ic": -0.03116591196960322,
+          "model": "rank_ret_prevclose_to_1425",
+          "number_of_trades": 2539,
+          "opportunity_coverage": 0.260945529290853,
+          "security_hhi": 0.0012792946769272914,
+          "severe_loss10": 0.09767625049231982,
+          "severe_loss10_trade_count": 2539,
+          "top10_entry_execution_fraction": 0.260945529290853,
+          "top10_executable_net_return": -0.017828811910874938,
+          "top10_mean_gross_return": -0.0033573376626389187,
+          "top10_mean_net_return": -0.004385628936573929,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9864595134087093,
+            "mean_daily_return": -0.004385628936573929,
+            "sharpe": -9.68300287590968,
+            "total_return": -0.9864606211942933,
+            "win_rate": 0.10277492291880781
+          },
+          "top_decile_executable_net_return": -0.00720561725697238,
+          "top_minus_bottom": 0.0009441228400605818,
+          "top_minus_universe": -0.0020278853665417
+        },
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.01838701134899238,
+              "max_industry_share": 0.0436612309310889,
+              "max_security_share": 0.004734350341925302,
+              "number_of_trades": 1901,
+              "opportunity_coverage": 0.7823045267489712,
+              "pearson_ic": -0.050114882283716904,
+              "security_hhi": 0.0013334989945489525,
+              "severe_loss10": 0.04313519200420831,
+              "severe_loss10_trade_count": 1901,
+              "spearman_rank_ic": -0.05898938361306327,
+              "top10": {
+                "max_drawdown": -0.9579695861014356,
+                "mean_daily_return": -0.012934678416167165,
+                "sharpe": -22.687134810527716,
+                "total_return": -0.9581570106730483,
+                "win_rate": 0.03292181069958848
+              },
+              "top_decile_executable_net_return": -0.008674892632265483,
+              "top_minus_bottom": -0.0013913670469795254,
+              "top_minus_universe": -0.0024920766260746515
+            },
+            "2019": {
+              "industry_hhi": 0.017876104857025173,
+              "max_industry_share": 0.04938271604938271,
+              "max_security_share": 0.003928170594837262,
+              "number_of_trades": 1782,
+              "opportunity_coverage": 0.730327868852459,
+              "pearson_ic": -0.042207500482474444,
+              "security_hhi": 0.0012709713420525244,
+              "severe_loss10": 0.04713804713804714,
+              "severe_loss10_trade_count": 1782,
+              "spearman_rank_ic": -0.04148263409233331,
+              "top10": {
+                "max_drawdown": -0.9463006787702659,
+                "mean_daily_return": -0.011825299791900817,
+                "sharpe": -20.795411906507923,
+                "total_return": -0.9456724615115297,
+                "win_rate": 0.06147540983606557
+              },
+              "top_decile_executable_net_return": -0.006732813017486116,
+              "top_minus_bottom": -0.0007341994432033009,
+              "top_minus_universe": -0.002233509706157998
+            },
+            "2020": {
+              "industry_hhi": 0.018761930892577345,
+              "max_industry_share": 0.04496300512236767,
+              "max_security_share": 0.00398406374501992,
+              "number_of_trades": 1757,
+              "opportunity_coverage": 0.723045267489712,
+              "pearson_ic": -0.01050613085768829,
+              "security_hhi": 0.0011885136905828186,
+              "severe_loss10": 0.07455890722822994,
+              "severe_loss10_trade_count": 1757,
+              "spearman_rank_ic": -0.018597942157198188,
+              "top10": {
+                "max_drawdown": -0.9074208428421686,
+                "mean_daily_return": -0.009686846676040639,
+                "sharpe": -13.535608650235226,
+                "total_return": -0.9075747029076737,
+                "win_rate": 0.1111111111111111
+              },
+              "top_decile_executable_net_return": -0.006163736579450749,
+              "top_minus_bottom": 0.0006555039259084084,
+              "top_minus_universe": -0.0010402203488086876
+            },
+            "2021": {
+              "industry_hhi": 0.01986024489795918,
+              "max_industry_share": 0.04914285714285714,
+              "max_security_share": 0.004,
+              "number_of_trades": 1750,
+              "opportunity_coverage": 0.720164609053498,
+              "pearson_ic": -0.031651101480022946,
+              "security_hhi": 0.0011578775510204084,
+              "severe_loss10": 0.05771428571428571,
+              "severe_loss10_trade_count": 1750,
+              "spearman_rank_ic": -0.027698902228037902,
+              "top10": {
+                "max_drawdown": -0.9419713742565369,
+                "mean_daily_return": -0.011629631530188358,
+                "sharpe": -22.926791743576583,
+                "total_return": -0.9421896008027891,
+                "win_rate": 0.053497942386831275
+              },
+              "top_decile_executable_net_return": -0.006642517941894994,
+              "top_minus_bottom": -0.0006013152293762597,
+              "top_minus_universe": -0.001734434041176484
+            }
+          },
+          "annual_rank_ic": {
+            "2018": -0.05898938361306327,
+            "2019": -0.04148263409233331,
+            "2020": -0.018597942157198188,
+            "2021": -0.027698902228037902
+          },
+          "annual_top10_net_return": {
+            "2018": -0.012934678416167165,
+            "2019": -0.011825299791900817,
+            "2020": -0.009686846676040639,
+            "2021": -0.011629631530188358
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.01717893612864414,
+          "label_rows": 1879100,
+          "max_industry_share": 0.04659248956884562,
+          "max_security_share": 0.002086230876216968,
+          "mean_daily_pearson_ic": -0.03362872967187133,
+          "mean_daily_rank_ic": -0.036697138871650645,
+          "median_daily_rank_ic": -0.036625129850232946,
+          "model": "rank_ret_1301_1425",
+          "number_of_trades": 7190,
+          "opportunity_coverage": 0.7389516957862282,
+          "security_hhi": 0.0005676250239379759,
+          "severe_loss10": 0.05535465924895688,
+          "severe_loss10_trade_count": 7190,
+          "top10_entry_execution_fraction": 0.7389516957862282,
+          "top10_executable_net_return": -0.01572614474869642,
+          "top10_mean_gross_return": -0.008603892878495827,
+          "top10_mean_net_return": -0.01151942878567941,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9999879128855707,
+            "mean_daily_return": -0.01151942878567941,
+            "sharpe": -19.231978540292214,
+            "total_return": -0.9999878538244054,
+            "win_rate": 0.06474820143884892
+          },
+          "top_decile_executable_net_return": -0.007053160467208777,
+          "top_minus_bottom": -0.0005180668070917965,
+          "top_minus_universe": -0.0018754285767780975
+        },
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.019120833890339056,
+              "max_industry_share": 0.050397877984084884,
+              "max_security_share": 0.005305039787798408,
+              "number_of_trades": 1508,
+              "opportunity_coverage": 0.6205761316872428,
+              "pearson_ic": -0.032714289997024276,
+              "security_hhi": 0.0016138507975149334,
+              "severe_loss10": 0.058355437665782495,
+              "severe_loss10_trade_count": 1508,
+              "spearman_rank_ic": -0.06808605398891977,
+              "top10": {
+                "max_drawdown": -0.9302893252229333,
+                "mean_daily_return": -0.010847279755745589,
+                "sharpe": -19.89404784501005,
+                "total_return": -0.93002490042801,
+                "win_rate": 0.06172839506172839
+              },
+              "top_decile_executable_net_return": -0.008769445219828647,
+              "top_minus_bottom": -0.0007593644972338657,
+              "top_minus_universe": -0.0025866292136378158
+            },
+            "2019": {
+              "industry_hhi": 0.018321098817605432,
+              "max_industry_share": 0.04531490015360983,
+              "max_security_share": 0.0069124423963133645,
+              "number_of_trades": 1302,
+              "opportunity_coverage": 0.5336065573770492,
+              "pearson_ic": -0.02687639736674791,
+              "security_hhi": 0.0016269428340187969,
+              "severe_loss10": 0.0706605222734255,
+              "severe_loss10_trade_count": 1302,
+              "spearman_rank_ic": -0.057427056135092115,
+              "top10": {
+                "max_drawdown": -0.9184616315223482,
+                "mean_daily_return": -0.010168971285709438,
+                "sharpe": -19.945851659830748,
+                "total_return": -0.9180873505753628,
+                "win_rate": 0.05327868852459016
+              },
+              "top_decile_executable_net_return": -0.007142374161700052,
+              "top_minus_bottom": -0.0006838022418280171,
+              "top_minus_universe": -0.0026430708503719347
+            },
+            "2020": {
+              "industry_hhi": 0.019197435128830046,
+              "max_industry_share": 0.049819494584837545,
+              "max_security_share": 0.005776173285198556,
+              "number_of_trades": 1385,
+              "opportunity_coverage": 0.5699588477366255,
+              "pearson_ic": 0.005341473643083076,
+              "security_hhi": 0.001618683939579559,
+              "severe_loss10": 0.10541516245487365,
+              "severe_loss10_trade_count": 1385,
+              "spearman_rank_ic": -0.023102618885262917,
+              "top10": {
+                "max_drawdown": -0.9053247883120855,
+                "mean_daily_return": -0.009603513625010406,
+                "sharpe": -14.249767688202482,
+                "total_return": -0.9054908572596934,
+                "win_rate": 0.09876543209876543
+              },
+              "top_decile_executable_net_return": -0.006473557759781343,
+              "top_minus_bottom": 0.0008742580936734405,
+              "top_minus_universe": -0.001350041529139282
+            },
+            "2021": {
+              "industry_hhi": 0.0222430952137691,
+              "max_industry_share": 0.04658151765589782,
+              "max_security_share": 0.006010518407212622,
+              "number_of_trades": 1331,
+              "opportunity_coverage": 0.5477366255144033,
+              "pearson_ic": -0.017975827393420737,
+              "security_hhi": 0.0015968967481221363,
+              "severe_loss10": 0.10743801652892562,
+              "severe_loss10_trade_count": 1331,
+              "spearman_rank_ic": -0.027106319017075095,
+              "top10": {
+                "max_drawdown": -0.9306907495236646,
+                "mean_daily_return": -0.01092904447821834,
+                "sharpe": -19.92222642055107,
+                "total_return": -0.9314221350543332,
+                "win_rate": 0.06172839506172839
+              },
+              "top_decile_executable_net_return": -0.006969188775284114,
+              "top_minus_bottom": -0.00035073755050621163,
+              "top_minus_universe": -0.0020611048745656046
+            }
+          },
+          "annual_rank_ic": {
+            "2018": -0.06808605398891977,
+            "2019": -0.057427056135092115,
+            "2020": -0.023102618885262917,
+            "2021": -0.027106319017075095
+          },
+          "annual_top10_net_return": {
+            "2018": -0.010847279755745589,
+            "2019": -0.010168971285709438,
+            "2020": -0.009603513625010406,
+            "2021": -0.01092904447821834
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.017708214214277943,
+          "label_rows": 1879100,
+          "max_industry_share": 0.04071661237785016,
+          "max_security_share": 0.002171552660152009,
+          "mean_daily_pearson_ic": -0.018065325167621212,
+          "mean_daily_rank_ic": -0.04394438306941225,
+          "median_daily_rank_ic": -0.047513373776131906,
+          "model": "rank_cutoff_vs_vwap_1425",
+          "number_of_trades": 5526,
+          "opportunity_coverage": 0.5679342240493319,
+          "security_hhi": 0.0006699484907918596,
+          "severe_loss10": 0.08487151646760767,
+          "severe_loss10_trade_count": 5526,
+          "top10_entry_execution_fraction": 0.5679342240493319,
+          "top10_executable_net_return": -0.018790990958551686,
+          "top10_mean_gross_return": -0.008152340496750466,
+          "top10_mean_net_return": -0.010386977999428434,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9999628700754625,
+            "mean_daily_return": -0.010386977999428434,
+            "sharpe": -18.131819341344293,
+            "total_return": -0.9999628505590874,
+            "win_rate": 0.06885919835560124
+          },
+          "top_decile_executable_net_return": -0.007338439765564316,
+          "top_minus_bottom": -0.00023037803478338022,
+          "top_minus_universe": -0.0021607078751336374
+        },
+        {
+          "annual": {
+            "2018": {
+              "industry_hhi": 0.016539016183303962,
+              "max_industry_share": 0.04430379746835443,
+              "max_security_share": 0.007594936708860759,
+              "number_of_trades": 790,
+              "opportunity_coverage": 0.32510288065843623,
+              "pearson_ic": 0.015643399520981538,
+              "security_hhi": 0.002224002563691716,
+              "severe_loss10": 0.0810126582278481,
+              "severe_loss10_trade_count": 790,
+              "spearman_rank_ic": -0.021333783504657512,
+              "top10": {
+                "max_drawdown": -0.7442221478855661,
+                "mean_daily_return": -0.005532680212269052,
+                "sharpe": -12.014775331071787,
+                "total_return": -0.7419939148270012,
+                "win_rate": 0.11522633744855967
+              },
+              "top_decile_executable_net_return": -0.008396266816202763,
+              "top_minus_bottom": 0.000544624551994857,
+              "top_minus_universe": -0.002213450810011931
+            },
+            "2019": {
+              "industry_hhi": 0.017547934007134357,
+              "max_industry_share": 0.04310344827586207,
+              "max_security_share": 0.008620689655172414,
+              "number_of_trades": 464,
+              "opportunity_coverage": 0.1901639344262295,
+              "pearson_ic": 0.020784145889041313,
+              "security_hhi": 0.003009809750297264,
+              "severe_loss10": 0.08405172413793104,
+              "severe_loss10_trade_count": 464,
+              "spearman_rank_ic": -0.020709196854545562,
+              "top10": {
+                "max_drawdown": -0.5175537573905701,
+                "mean_daily_return": -0.0028428830172662995,
+                "sharpe": -7.965834421054392,
+                "total_return": -0.5027170967623592,
+                "win_rate": 0.15163934426229508
+              },
+              "top_decile_executable_net_return": -0.006837543432997247,
+              "top_minus_bottom": 0.0006546302441252998,
+              "top_minus_universe": -0.002338240121669129
+            },
+            "2020": {
+              "industry_hhi": 0.02290141983643072,
+              "max_industry_share": 0.05865102639296188,
+              "max_security_share": 0.010263929618768328,
+              "number_of_trades": 682,
+              "opportunity_coverage": 0.2806584362139918,
+              "pearson_ic": 0.03752539662280606,
+              "security_hhi": 0.0027003551741041102,
+              "severe_loss10": 0.1158357771260997,
+              "severe_loss10_trade_count": 682,
+              "spearman_rank_ic": 0.0025507759761852406,
+              "top10": {
+                "max_drawdown": -0.6965687836792194,
+                "mean_daily_return": -0.00480728512034325,
+                "sharpe": -9.936868198821957,
+                "total_return": -0.6921767081436743,
+                "win_rate": 0.1728395061728395
+              },
+              "top_decile_executable_net_return": -0.006281359882642919,
+              "top_minus_bottom": 0.0018827944620279367,
+              "top_minus_universe": -0.0011578436520008578
+            },
+            "2021": {
+              "industry_hhi": 0.027189090488465857,
+              "max_industry_share": 0.06300813008130081,
+              "max_security_share": 0.008130081300813009,
+              "number_of_trades": 984,
+              "opportunity_coverage": 0.4049382716049383,
+              "pearson_ic": -0.0019422814278338121,
+              "security_hhi": 0.002253536254874744,
+              "severe_loss10": 0.09857723577235772,
+              "severe_loss10_trade_count": 984,
+              "spearman_rank_ic": -0.022061676080015944,
+              "top10": {
+                "max_drawdown": -0.8191719204418135,
+                "mean_daily_return": -0.007002093005395101,
+                "sharpe": -15.57180009589329,
+                "total_return": -0.8198145448869859,
+                "win_rate": 0.09465020576131687
+              },
+              "top_decile_executable_net_return": -0.006641814589064356,
+              "top_minus_bottom": -3.1118163675040666e-05,
+              "top_minus_universe": -0.0017337306883458466
+            }
+          },
+          "annual_rank_ic": {
+            "2018": -0.021333783504657512,
+            "2019": -0.020709196854545562,
+            "2020": 0.0025507759761852406,
+            "2021": -0.022061676080015944
+          },
+          "annual_top10_net_return": {
+            "2018": -0.005532680212269052,
+            "2019": -0.0028428830172662995,
+            "2020": -0.00480728512034325,
+            "2021": -0.007002093005395101
+          },
+          "decision_dates": 973,
+          "industry_hhi": 0.01908214486770501,
+          "label_rows": 1879100,
+          "max_industry_share": 0.053767123287671234,
+          "max_security_share": 0.004452054794520548,
+          "mean_daily_pearson_ic": 0.018005523815933046,
+          "mean_daily_rank_ic": -0.015393938488562952,
+          "median_daily_rank_ic": -0.021354750468132906,
+          "model": "rank_residual_vs_industry_1425",
+          "number_of_trades": 2920,
+          "opportunity_coverage": 0.3001027749229188,
+          "security_hhi": 0.0009333364608744604,
+          "severe_loss10": 0.09554794520547945,
+          "severe_loss10_trade_count": 2920,
+          "top10_entry_execution_fraction": 0.3001027749229188,
+          "top10_executable_net_return": -0.016699401271929964,
+          "top10_mean_gross_return": -0.003861376978659288,
+          "top10_mean_net_return": -0.005043970845168321,
+          "top10_strategy_economics": {
+            "max_drawdown": -0.9929198005407365,
+            "mean_daily_return": -0.005043970845168321,
+            "sharpe": -11.217943958309318,
+            "total_return": -0.9928836928166072,
+            "win_rate": 0.13360739979445016
+          },
+          "top_decile_executable_net_return": -0.007039038880383831,
+          "top_minus_bottom": 0.0007626216713269036,
+          "top_minus_universe": -0.0018613069899531508
+        }
+      ]
+    },
+    "final_oos_authorized": false,
+    "prediction_sha256": "d99f0771bb104535607b3c489c252eb0a80c6489f7aa68edc33d01a9b9ce4c19",
+    "validation": null
+  },
+  "prefit_feature_audit": {
+    "duplicate_feature_names": false,
+    "features": {
+      "activity_acceleration_1425": {
+        "coverage": 0.999380175555347,
+        "maximum": 723.9655172413793,
+        "minimum": -1.0,
+        "non_degenerate": true,
+        "non_null_rows": 4706479
+      },
+      "afternoon_amount_fraction_1425": {
+        "coverage": 0.999999787658635,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709397
+      },
+      "afternoon_close_vs_vwap_1425": {
+        "coverage": 0.9995852973140091,
+        "maximum": 0.15018418118151736,
+        "minimum": -0.15734331330858428,
+        "non_degenerate": true,
+        "non_null_rows": 4707445
+      },
+      "amount_concentration_1425": {
+        "coverage": 0.999999787658635,
+        "maximum": 0.8700476763641158,
+        "minimum": 0.005282998995163527,
+        "non_degenerate": true,
+        "non_null_rows": 4709397
+      },
+      "amount_surprise_1425": {
+        "coverage": 1.0,
+        "maximum": 74.39585195538768,
+        "minimum": -1.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "close_location_1425": {
+        "coverage": 1.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "cutoff_vs_high": {
+        "coverage": 1.0,
+        "maximum": 0.0,
+        "minimum": -0.29616235829530135,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "cutoff_vs_low": {
+        "coverage": 1.0,
+        "maximum": 0.32916074417705915,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "cutoff_vs_vwap_1425": {
+        "coverage": 0.999999787658635,
+        "maximum": 0.201917520384594,
+        "minimum": -0.17527169816081875,
+        "non_degenerate": true,
+        "non_null_rows": 4709397
+      },
+      "downside_semivol_1425": {
+        "coverage": 1.0,
+        "maximum": 0.22061462373729335,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "fraction_above_vwap_1425": {
+        "coverage": 1.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "industry_breadth_1425": {
+        "coverage": 1.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "industry_dispersion_1425": {
+        "coverage": 1.0,
+        "maximum": 0.696788073121801,
+        "minimum": 9.512466526590557e-11,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "industry_return_1425": {
+        "coverage": 1.0,
+        "maximum": 0.16978805971155275,
+        "minimum": -0.4862081007987893,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "log_amount_1425": {
+        "coverage": 1.0,
+        "maximum": 24.428085949811532,
+        "minimum": null,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "market_activity_surprise_1425": {
+        "coverage": 1.0,
+        "maximum": 1.6174292896295452,
+        "minimum": -0.7833927923461742,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "market_breadth_1425": {
+        "coverage": 1.0,
+        "maximum": 0.9993861264579497,
+        "minimum": 0.0028968713789107765,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "market_dispersion_1425": {
+        "coverage": 1.0,
+        "maximum": 0.07531589923548714,
+        "minimum": 0.010880770454683,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "market_return_1425": {
+        "coverage": 1.0,
+        "maximum": 0.09395065314142519,
+        "minimum": -0.10340921510467946,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "max_1m_return_1425": {
+        "coverage": 1.0,
+        "maximum": 0.20127658635087728,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "max_drawdown_1425": {
+        "coverage": 1.0,
+        "maximum": 0.0,
+        "minimum": -0.3530241172587159,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "max_recovery_1425": {
+        "coverage": 1.0,
+        "maximum": 0.32916074417705915,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "min_1m_return_1425": {
+        "coverage": 1.0,
+        "maximum": 0.0,
+        "minimum": -0.2163054232659873,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "morning_close_vs_vwap": {
+        "coverage": 0.9999927803935874,
+        "maximum": 0.16344029925070444,
+        "minimum": -0.16004770361997367,
+        "non_degenerate": true,
+        "non_null_rows": 4709364
+      },
+      "open_gap": {
+        "coverage": 1.0,
+        "maximum": 0.182929632782477,
+        "minimum": -1.4205200187631284,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "path_efficiency_1425": {
+        "coverage": 1.0,
+        "maximum": 1.000000000000065,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "positive_minute_fraction_1425": {
+        "coverage": 1.0,
+        "maximum": 0.6829268292682927,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "price_impact_abs_1425": {
+        "coverage": 0.999999787658635,
+        "maximum": 10.537107885935404,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709397
+      },
+      "prior_amount_ratio_5_20": {
+        "coverage": 1.0,
+        "maximum": 2.846884125743219,
+        "minimum": -0.9890511616147123,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_downside_vol_20": {
+        "coverage": 1.0,
+        "maximum": 0.09214959233652723,
+        "minimum": 0.00020398979467033666,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_log_amount_mean_20": {
+        "coverage": 1.0,
+        "maximum": 24.013513531792874,
+        "minimum": 17.72753387839237,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_max_ret_20": {
+        "coverage": 1.0,
+        "maximum": 0.18392283816092841,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_min_ret_20": {
+        "coverage": 1.0,
+        "maximum": -0.0009122700951981941,
+        "minimum": -0.3489854343059969,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_ret_1": {
+        "coverage": 1.0,
+        "maximum": 0.1836382126787016,
+        "minimum": -0.3489854343059969,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_ret_10": {
+        "coverage": 1.0,
+        "maximum": 1.2131844964986462,
+        "minimum": -1.0540316952371516,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_ret_20": {
+        "coverage": 1.0,
+        "maximum": 1.4697577848938348,
+        "minimum": -1.5237243941600704,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_ret_5": {
+        "coverage": 1.0,
+        "maximum": 0.9116963579359572,
+        "minimum": -0.750892534989011,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_ret_60": {
+        "coverage": 1.0,
+        "maximum": 2.930138581983879,
+        "minimum": -2.1468018756284932,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_skew_20": {
+        "coverage": 1.0,
+        "maximum": 4.1861517223270335,
+        "minimum": -4.303362952168257,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_turnover_mean_20": {
+        "coverage": 1.0,
+        "maximum": 0.6200902302133071,
+        "minimum": 6.133580567785895e-05,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_vol_20": {
+        "coverage": 1.0,
+        "maximum": 0.13337436051669535,
+        "minimum": 0.00200716630094736,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_vol_5": {
+        "coverage": 1.0,
+        "maximum": 0.20420672471097334,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "prior_vol_60": {
+        "coverage": 1.0,
+        "maximum": 0.132437024656135,
+        "minimum": 0.003454704277619344,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "range_to_1425": {
+        "coverage": 1.0,
+        "maximum": 0.35302411725871596,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "rank_return_1425": {
+        "coverage": 1.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "rank_vwap_position_1425": {
+        "coverage": 1.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "realized_vol_1425": {
+        "coverage": 1.0,
+        "maximum": 0.29687220140158666,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "residual_vs_industry_1425": {
+        "coverage": 1.0,
+        "maximum": 0.4833304092161971,
+        "minimum": -1.479253184283438,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "residual_vs_market_1425": {
+        "coverage": 1.0,
+        "maximum": 0.2738385556611522,
+        "minimum": -1.457922815131997,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_0931_1000": {
+        "coverage": 1.0,
+        "maximum": 0.22772093728855872,
+        "minimum": -0.23272710231388416,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_1000_1130": {
+        "coverage": 1.0,
+        "maximum": 0.22457833257380266,
+        "minimum": -0.21827194611709866,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_1301_1400": {
+        "coverage": 1.0,
+        "maximum": 0.25785142703937464,
+        "minimum": -0.2055366752279947,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_1301_1425": {
+        "coverage": 1.0,
+        "maximum": 0.25785142703937464,
+        "minimum": -0.2261810623813428,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_1400_1425": {
+        "coverage": 1.0,
+        "maximum": 0.17331253832519425,
+        "minimum": -0.17427650703292102,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_open_to_1425": {
+        "coverage": 1.0,
+        "maximum": 0.25907367208521553,
+        "minimum": -0.29616235829530135,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "ret_prevclose_to_1425": {
+        "coverage": 1.0,
+        "maximum": 0.18356457391871603,
+        "minimum": -1.4614742825388205,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "sign_flip_rate_1425": {
+        "coverage": 1.0,
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "upside_semivol_1425": {
+        "coverage": 1.0,
+        "maximum": 0.23452037018555014,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      },
+      "vwap_crossing_rate_1425": {
+        "coverage": 1.0,
+        "maximum": 0.5686274509803921,
+        "minimum": 0.0,
+        "non_degenerate": true,
+        "non_null_rows": 4709398
+      }
+    },
+    "frozen_feature_count": 59,
+    "invalid_features": [],
+    "passed": true,
+    "scope": "signal_eligible_2013_2023_only",
+    "signal_eligible_rows": 4709398
+  },
+  "resources": {
+    "peak_rss_bytes": 8925315072
+  },
+  "source_hashes": {
+    "CY-008": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+    "QD-004": "c4d2906dbced341fbf48089aea7239c1c61cfbb57c665fe084495d46487e6655",
+    "chronology_extension_audit": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f",
+    "extended_daily_audit": "8071fdae37f38f9ef8bca18815c3ddc1ddd9a89a83df6761aec015818249c752"
+  },
+  "stage": "B"
+}
