@@ -49,6 +49,23 @@ that material.
 - Industry allocations are identical by construction; Arm 3 is not authorized.
   Do not open another Industry Diffusion modifier or turnover rescue.
 
+## Cycle-012 Low-MAX final-depth conclusions
+
+- Low-MAX is `COST_RESILIENT`: at 40 bps per side it returns +71.34% versus
+  +19.17% for the matched Industry Diffusion baseline, retaining +52.17 pp
+  total-return advantage, +0.275 Sharpe, +4.19 pp drawdown quality, and +4.52 pp
+  severe-loss quality.
+- The extra turnover is structural stock-identity replacement, not a few dates:
+  63.63% of cohort identities change across all 267 dates; the ten busiest
+  dates contain 5.89% of replacements and forced exits differ by only five.
+- CHINEXT candidate attribution is positive on 75 multi-candidate dates and
+  earns one replay, but executable evidence reverses: -4.94 pp return and worse
+  drawdown/Sharpe in 2018--2021 versus +3.14 pp and better risk in 2022--2023.
+  Final portability status is `PORTABILITY_FAILED`.
+- Preserve Low-MAX as `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`, not
+  reusable stock quality. No further Low-MAX cost, baseline, role, or tuning
+  experiment is authorized without independent evidence.
+
 ## Fast-screen casualties
 
 | Candidate | Decision |

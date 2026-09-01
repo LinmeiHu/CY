@@ -107,3 +107,17 @@ preserved unchanged.
 The full construction classification is `STRATEGY_CONSTRUCTION_NOT_IMPROVED`.
 This does not reject Low-MAX or the upper-limit correction as mechanisms; it
 closes their exact mapping into the frozen Industry Diffusion strategy.
+
+## Cycle-012 final Low-MAX value confirmation
+
+| Question | Frozen test | Evidence | Classification |
+|---|---|---|---|
+| Friction resilience | Exact Industry Diffusion baseline and Low-MAX at matched 20/30/40 bps per side | At 40 bps Low-MAX +71.34% versus baseline +19.17%; +52.17 pp return, +0.275 Sharpe, +4.19 pp DD, +4.52 pp severe quality | `COST_RESILIENT` |
+| Turnover source | Exact selection and executed-turnover attribution, no reduction rule | 63.63% identities changed, 45.00x incremental turnover; all 267 dates affected, top ten only 5.89%, forced exits +5 | Broad identity replacement, not localized artifact |
+| CHINEXT candidate portability | Low-MAX Top-1 versus existing RS rank on exact RS-veto candidates | +1.783% h20 full, +2.269%/+1.334% blocks; 59/75 selections changed; +4.00 pp full severe quality | Candidate gate passes; one replay authorized |
+| CHINEXT executable portability | Replace only rank inside exact RS-veto lifecycle | -4.94 pp return/-1.67 pp DD/-0.056 Sharpe early; +3.14 pp/+0.53 pp/+0.148 later; severe slightly worse both | `PORTABILITY_FAILED` |
+
+Final decision is `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`. Cycle
+011 remains `STRATEGY_CONSTRUCTION_NOT_IMPROVED`; no reusable stock-quality
+component is admitted and no further Low-MAX research is authorized without
+independent evidence.

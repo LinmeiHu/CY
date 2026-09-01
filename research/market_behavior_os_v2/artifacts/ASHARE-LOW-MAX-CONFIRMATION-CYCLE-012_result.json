@@ -1,0 +1,529 @@
+{
+  "boundaries": {
+    "cy011_data_read": false,
+    "further_low_max_research_authorized": false,
+    "industry_diffusion_changed": false,
+    "low_max_changed": false,
+    "new_alpha_outcomes_read": false,
+    "new_large_data_acquired": false,
+    "oos_claim": false,
+    "post_2023_read": false
+  },
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "experiment_id": "ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012",
+  "final_low_max_decision": "STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION",
+  "hashes": {
+    "cost_equity_sha256": "fad6414f337e38bef8ee6336e308bef9039360b7853496f7a0930bcd9f317510",
+    "portability_panel_sha256": "152fc8d631efe22787f84ba1b1f43a03e0741ee4d832b46e0fd3bda35de91c50",
+    "report_sha256": "5d98c73fd14303653c665b075a28bf48b14bbe3301697d2eb6e1f69ce86deefe",
+    "spec_sha256": "f4681932f50b8b54bbbe03ca334c94098afc7a9f84b4ddd25233b1d5cca830a3"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "next_frontier": [
+    {
+      "family": "Price-limit event lifecycle and post-event acceptance",
+      "rationale": "Highest information value: existing limit and minute contracts support a bounded event-path test distinct from another momentum lookback."
+    },
+    {
+      "family": "Industry leader-follower convergence and leadership turnover",
+      "rationale": "Broad registered industry coverage can test a distinct propagation mechanism beyond frozen diffusion levels and acceleration."
+    },
+    {
+      "family": "Liquidity-transition shock assimilation",
+      "rationale": "Existing price-volume data make causal state transitions inexpensive to test, though the mechanism is closer to previously explored activity signals."
+    }
+  ],
+  "starting_checkpoint": "729064eeb9",
+  "track_a": {
+    "action_audit": {
+      "events_without_pre_effective_decision_session": 0,
+      "first_effective_date": "2018-02-09",
+      "last_effective_date": "2023-12-29",
+      "rights_events": 60,
+      "risk_events_2018_2023": 2904,
+      "share_distribution_events": 2844
+    },
+    "classification": "COST_RESILIENT",
+    "matched_cost_comparisons": {
+      "20bps": {
+        "baseline": {
+          "annualized_return": 0.08603279772944128,
+          "calmar": 0.2956790778460636,
+          "completed_trades": 2627,
+          "daily_sharpe": 0.4404116288004328,
+          "end_date": "2023-12-28",
+          "entries": 2627,
+          "entry_execution_fraction": 0.9988593155893536,
+          "excess_return_vs_cash": 0.5463696279481551,
+          "family": "industry_diffusion_baseline",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 15,
+          "maximum_drawdown": -0.29096680886644155,
+          "mean_industries": 12.368144252441773,
+          "mean_industry_hhi_invested_days": 0.17450937459963,
+          "mean_positions": 39.40195341848234,
+          "median_capacity_cny_at_5pct_amount": 406266653.38,
+          "p10_capacity_cny_at_5pct_amount": 111580499.97600003,
+          "planned_entries": 2630,
+          "risk_blocked_entries": 0,
+          "severe_trade_fraction": 0.18462124095926913,
+          "start_date": "2018-07-10",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": 0.5463696279481551,
+          "turnover_multiple_initial_capital": 165.52185637440297
+        },
+        "cost_per_side": 0.002,
+        "delta": {
+          "annualized_return": 0.07738658545932875,
+          "calmar": 0.33837789731263357,
+          "capacity": -456193.89600001276,
+          "completed_trades": -2,
+          "daily_sharpe": 0.2910418857867176,
+          "industry_hhi": 0.00024087727309504703,
+          "maximum_drawdown": 0.033230691149468194,
+          "severe_loss_improvement": 0.04328790762593579,
+          "total_return": 0.6779767435695638,
+          "turnover": 44.99570944152126
+        },
+        "low_max": {
+          "annualized_return": 0.16341938318877003,
+          "calmar": 0.6340569751586972,
+          "completed_trades": 2625,
+          "daily_sharpe": 0.7314535145871504,
+          "end_date": "2023-12-28",
+          "entries": 2625,
+          "entry_execution_fraction": 0.9980988593155894,
+          "excess_return_vs_cash": 1.224346371517719,
+          "family": "industry_diffusion_low_max",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 20,
+          "maximum_drawdown": -0.25773611771697336,
+          "mean_industries": 12.377160030052591,
+          "mean_industry_hhi_invested_days": 0.17475025187272505,
+          "mean_positions": 39.325319308790384,
+          "median_capacity_cny_at_5pct_amount": 329817784.0,
+          "p10_capacity_cny_at_5pct_amount": 111124306.08000001,
+          "planned_entries": 2630,
+          "risk_blocked_entries": 3,
+          "severe_trade_fraction": 0.14133333333333334,
+          "start_date": "2018-07-10",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": 1.224346371517719,
+          "turnover_multiple_initial_capital": 210.51756581592423
+        }
+      },
+      "30bps": {
+        "baseline": {
+          "annualized_return": 0.059575350744010436,
+          "calmar": 0.20221647763852318,
+          "completed_trades": 2627,
+          "daily_sharpe": 0.3494500575018586,
+          "end_date": "2023-12-28",
+          "entries": 2627,
+          "entry_execution_fraction": 0.9988593155893536,
+          "excess_return_vs_cash": 0.35750060269225914,
+          "family": "industry_diffusion_baseline",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 15,
+          "maximum_drawdown": -0.2946117519191772,
+          "mean_industries": 12.368144252441773,
+          "mean_industry_hhi_invested_days": 0.17451105874151224,
+          "mean_positions": 39.40195341848234,
+          "median_capacity_cny_at_5pct_amount": 406266653.38,
+          "p10_capacity_cny_at_5pct_amount": 111580499.97600003,
+          "planned_entries": 2630,
+          "risk_blocked_entries": 0,
+          "severe_trade_fraction": 0.1914731633041492,
+          "start_date": "2018-07-10",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": 0.35750060269225914,
+          "turnover_multiple_initial_capital": 154.02580025921736
+        },
+        "cost_per_side": 0.003,
+        "delta": {
+          "annualized_return": 0.07545339026403708,
+          "calmar": 0.31399400480744505,
+          "capacity": -456193.89600001276,
+          "completed_trades": -2,
+          "daily_sharpe": 0.2829395178249858,
+          "industry_hhi": 0.00024109279874770517,
+          "maximum_drawdown": 0.033034845599416496,
+          "severe_loss_improvement": 0.04709221092319682,
+          "total_return": 0.5947351326197252,
+          "turnover": 41.23176262203032
+        },
+        "low_max": {
+          "annualized_return": 0.13502874100804751,
+          "calmar": 0.5162104824459682,
+          "completed_trades": 2625,
+          "daily_sharpe": 0.6323895753268444,
+          "end_date": "2023-12-28",
+          "entries": 2625,
+          "entry_execution_fraction": 0.9980988593155894,
+          "excess_return_vs_cash": 0.9522357353119844,
+          "family": "industry_diffusion_low_max",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 20,
+          "maximum_drawdown": -0.2615769063197607,
+          "mean_industries": 12.377160030052591,
+          "mean_industry_hhi_invested_days": 0.17475215154025994,
+          "mean_positions": 39.325319308790384,
+          "median_capacity_cny_at_5pct_amount": 329817784.0,
+          "p10_capacity_cny_at_5pct_amount": 111124306.08000001,
+          "planned_entries": 2630,
+          "risk_blocked_entries": 3,
+          "severe_trade_fraction": 0.1443809523809524,
+          "start_date": "2018-07-10",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": 0.9522357353119844,
+          "turnover_multiple_initial_capital": 195.25756288124768
+        }
+      },
+      "40bps": {
+        "baseline": {
+          "annualized_return": 0.033759775911556655,
+          "calmar": 0.10986262264060348,
+          "completed_trades": 2627,
+          "daily_sharpe": 0.25854810982885845,
+          "end_date": "2023-12-28",
+          "entries": 2627,
+          "entry_execution_fraction": 0.9988593155893536,
+          "excess_return_vs_cash": 0.19168321191935278,
+          "family": "industry_diffusion_baseline",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 15,
+          "maximum_drawdown": -0.30729082466924085,
+          "mean_industries": 12.368144252441773,
+          "mean_industry_hhi_invested_days": 0.1745120592178774,
+          "mean_positions": 39.40195341848234,
+          "median_capacity_cny_at_5pct_amount": 406266653.38,
+          "p10_capacity_cny_at_5pct_amount": 111580499.97600003,
+          "planned_entries": 2630,
+          "risk_blocked_entries": 0,
+          "severe_trade_fraction": 0.19642177388656262,
+          "start_date": "2018-07-10",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": 0.19168321191935278,
+          "turnover_multiple_initial_capital": 143.513352411021
+        },
+        "cost_per_side": 0.004,
+        "delta": {
+          "annualized_return": 0.07357318876509944,
+          "calmar": 0.29457028419789255,
+          "capacity": -456193.89600001276,
+          "completed_trades": -2,
+          "daily_sharpe": 0.27479631207156696,
+          "industry_hhi": 0.00024224779143780517,
+          "maximum_drawdown": 0.04189954996884204,
+          "severe_loss_improvement": 0.045183678648467396,
+          "total_return": 0.5217467593772225,
+          "turnover": 37.82648396720009
+        },
+        "low_max": {
+          "annualized_return": 0.1073329646766561,
+          "calmar": 0.40443290683849603,
+          "completed_trades": 2625,
+          "daily_sharpe": 0.5333444219004254,
+          "end_date": "2023-12-28",
+          "entries": 2625,
+          "entry_execution_fraction": 0.9980988593155894,
+          "excess_return_vs_cash": 0.7134299712965753,
+          "family": "industry_diffusion_low_max",
+          "forced_exit_pending_days": 0,
+          "forced_pre_effective_exits": 20,
+          "maximum_drawdown": -0.2653912747003988,
+          "mean_industries": 12.377160030052591,
+          "mean_industry_hhi_invested_days": 0.1747543070093152,
+          "mean_positions": 39.325319308790384,
+          "median_capacity_cny_at_5pct_amount": 329817784.0,
+          "p10_capacity_cny_at_5pct_amount": 111124306.08000001,
+          "planned_entries": 2630,
+          "risk_blocked_entries": 3,
+          "severe_trade_fraction": 0.15123809523809523,
+          "start_date": "2018-07-10",
+          "status": "COMPLETE",
+          "terminal_open_lots": 0,
+          "total_return": 0.7134299712965753,
+          "turnover_multiple_initial_capital": 181.3398363782211
+        }
+      }
+    },
+    "source_audit": {
+      "first": "2018-01-02",
+      "last": "2023-12-29",
+      "limit_rule_failures": 0,
+      "lineage_failures": 0,
+      "rows": 6155390,
+      "symbols": 5262,
+      "time_travel": 0
+    },
+    "turnover_attribution": {
+      "baseline_forced_corporate_action_exits": 15,
+      "changed_stock_identities": 1699,
+      "dates_with_any_replacement": 267,
+      "decision_dates": 267,
+      "forced_exit_count_delta": 5,
+      "incremental_executed_turnover_multiple_initial_capital": 44.99570944152126,
+      "incremental_turnover_fraction_of_low_max_turnover": 0.21373850332691638,
+      "low_max_forced_corporate_action_exits": 20,
+      "maximum_replacements_on_one_date": 10,
+      "mean_holding_overlap_fraction": 0.3636704119850187,
+      "selection_replacement_fraction": 0.6363295880149813,
+      "top_ten_replacement_dates_share": 0.05885815185403178
+    }
+  },
+  "track_b": {
+    "candidate_level": {
+      "baseline_industry_hhi": 0.059911111111111116,
+      "baseline_largest_industry_share": 0.14666666666666667,
+      "changed_fraction": 0.7866666666666666,
+      "changed_selections": 59,
+      "complete_comparison_dates": 75,
+      "eligible_decision_dates": 225,
+      "industry_hhi_increase": 0.0007111111111111137,
+      "largest_industry_share_increase": -0.013333333333333336,
+      "low_max_industry_hhi": 0.06062222222222223,
+      "low_max_largest_industry_share": 0.13333333333333333,
+      "median_same_date_candidate_breadth": 1.0,
+      "multi_candidate_dates": 75,
+      "overlap_fraction": 0.21333333333333337,
+      "periods": {
+        "consumed_2022_2023": {
+          "baseline_mean_net_return": -0.03172173400676178,
+          "baseline_severe_loss_fraction": 0.2564102564102564,
+          "baseline_winner_fraction": 0.3076923076923077,
+          "dates": 39,
+          "low_max_mean_net_return": -0.018384161069416986,
+          "low_max_severe_loss_fraction": 0.15384615384615385,
+          "low_max_winner_fraction": 0.38461538461538464,
+          "mean_net_improvement": 0.013337572937344798,
+          "severe_loss_improvement": 0.10256410256410253,
+          "winner_capture_improvement": 0.07692307692307693
+        },
+        "development_2018_2021": {
+          "baseline_mean_net_return": 0.05167749711953315,
+          "baseline_severe_loss_fraction": 0.1111111111111111,
+          "baseline_winner_fraction": 0.5833333333333334,
+          "dates": 36,
+          "low_max_mean_net_return": 0.07437158028416606,
+          "low_max_severe_loss_fraction": 0.1388888888888889,
+          "low_max_winner_fraction": 0.6388888888888888,
+          "mean_net_improvement": 0.022694083164632926,
+          "severe_loss_improvement": -0.02777777777777779,
+          "winner_capture_improvement": 0.05555555555555547
+        },
+        "full": {
+          "baseline_mean_net_return": 0.008309896933859777,
+          "baseline_severe_loss_fraction": 0.18666666666666668,
+          "baseline_winner_fraction": 0.44,
+          "dates": 75,
+          "low_max_mean_net_return": 0.026138594780302882,
+          "low_max_severe_loss_fraction": 0.14666666666666667,
+          "low_max_winner_fraction": 0.5066666666666667,
+          "mean_net_improvement": 0.0178286978464431,
+          "severe_loss_improvement": 0.04000000000000001,
+          "winner_capture_improvement": 0.06666666666666671
+        }
+      },
+      "quality_coverage": 0.9974874371859297,
+      "replay_gate": {
+        "authorized": true,
+        "checks": {
+          "changed_fraction": true,
+          "changed_selections": true,
+          "development_improvement": true,
+          "full_improvement": true,
+          "industry_hhi": true,
+          "largest_industry_share": true,
+          "later_improvement": true,
+          "multi_candidate_dates": true,
+          "quality_coverage": true,
+          "severe_loss": true
+        }
+      }
+    },
+    "classification": "PORTABILITY_FAILED",
+    "feature_audit": {
+      "future_predictor_columns": 0,
+      "quality_available": 397,
+      "quality_coverage": 0.9974874371859297,
+      "target_candidates": 398,
+      "target_dates": 225,
+      "target_symbols": 242
+    },
+    "full_replay": {
+      "blocks": {
+        "consumed_2022_2023": {
+          "audit": {
+            "candidate_count": 269,
+            "candidate_session_count": 77,
+            "input_manifest_sha256": null,
+            "quality_missing_count": 0,
+            "rank_changed_session_count": 35,
+            "vetoed_candidate_count": 104
+          },
+          "baseline": {
+            "annualized_return": -0.045120014120111906,
+            "average_invested_fraction": 0.15250458975279402,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.13191357708658402,
+            "mean_trade_return": -0.011160764039360711,
+            "median_trade_return": -0.03443322530010452,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.05405405405405406,
+            "sharpe_rf0": -0.3440872016435327,
+            "t1_blocked_exits": 6,
+            "top20_positive_pnl_concentration": 1.0,
+            "total_return": -0.08734115557000088,
+            "trade_count": 74,
+            "turnover": 14.776108439672011,
+            "win_rate": 0.24324324324324326
+          },
+          "delta": {
+            "annualized_return": 0.016448616012494144,
+            "average_invested_fraction": 0.0003676278978780312,
+            "max_drawdown": 0.005348120449100824,
+            "mean_trade_return": 0.004074999051252459,
+            "median_trade_return": 0.008526765026953403,
+            "severe_loss_rate": 0.0015015015015014954,
+            "sharpe_rf0": 0.14821094070808238,
+            "top20_positive_pnl_concentration": -0.0007590916787495461,
+            "total_return": 0.03138299900000041,
+            "trade_count": -2,
+            "turnover": -0.37270283542767757,
+            "win_rate": 0.062312312312312323
+          },
+          "low_max": {
+            "annualized_return": -0.028671398107617763,
+            "average_invested_fraction": 0.15287221765067205,
+            "failed_open_executions": 0,
+            "max_drawdown": -0.1265654566374832,
+            "mean_trade_return": -0.007085764988108252,
+            "median_trade_return": -0.02590646027315112,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.05555555555555555,
+            "sharpe_rf0": -0.1958762609354503,
+            "t1_blocked_exits": 5,
+            "top20_positive_pnl_concentration": 0.9992409083212505,
+            "total_return": -0.05595815657000047,
+            "trade_count": 72,
+            "turnover": 14.403405604244334,
+            "win_rate": 0.3055555555555556
+          }
+        },
+        "development_2018_2021": {
+          "audit": {
+            "candidate_count": 378,
+            "candidate_session_count": 146,
+            "input_manifest_sha256": "07b2f8ea6796f24a3e655b157307aadf07f1b2b7390121776fb36c9db2ee6f7a",
+            "quality_missing_count": 2,
+            "rank_changed_session_count": 27,
+            "vetoed_candidate_count": 149
+          },
+          "baseline": {
+            "annualized_return": 0.1370054137147101,
+            "average_invested_fraction": 0.20207132324859733,
+            "failed_open_executions": 7,
+            "max_drawdown": -0.18716726963437036,
+            "mean_trade_return": 0.04002372763094005,
+            "median_trade_return": -0.0030920025439071528,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.10071942446043165,
+            "sharpe_rf0": 0.9374440167906946,
+            "t1_blocked_exits": 4,
+            "top20_positive_pnl_concentration": 0.7715957932959169,
+            "total_return": 0.6677693579799995,
+            "trade_count": 139,
+            "turnover": 30.35896311505818,
+            "win_rate": 0.4892086330935252
+          },
+          "delta": {
+            "annualized_return": -0.008549479327720988,
+            "average_invested_fraction": -0.00046704316732085194,
+            "max_drawdown": -0.016715294107098932,
+            "mean_trade_return": -0.002698647390216212,
+            "median_trade_return": -0.0008044015180813649,
+            "severe_loss_rate": 0.000729850901887194,
+            "sharpe_rf0": -0.05557295728550027,
+            "top20_positive_pnl_concentration": 0.006435131179042375,
+            "total_return": -0.049398625780000316,
+            "trade_count": -1,
+            "turnover": -0.2642339417722006,
+            "win_rate": -0.01819414033990202
+          },
+          "low_max": {
+            "annualized_return": 0.1284559343869891,
+            "average_invested_fraction": 0.20160428008127648,
+            "failed_open_executions": 7,
+            "max_drawdown": -0.2038825637414693,
+            "mean_trade_return": 0.03732508024072384,
+            "median_trade_return": -0.0038964040619885176,
+            "same_day_fills": 0,
+            "severe_loss_rate": 0.10144927536231885,
+            "sharpe_rf0": 0.8818710595051943,
+            "t1_blocked_exits": 1,
+            "top20_positive_pnl_concentration": 0.7780309244749593,
+            "total_return": 0.6183707321999992,
+            "trade_count": 138,
+            "turnover": 30.09472917328598,
+            "win_rate": 0.47101449275362317
+          }
+        }
+      },
+      "status": "COMPLETE_ONE_AUTHORIZED_REPLAY"
+    },
+    "selected_baseline": {
+      "baseline_rank": "existing rs_score descending, then mom60 descending, then symbol",
+      "candidate_domain": "exact HAB-CHX-RANK-INFO-001 current RS-acceleration-veto candidate panel",
+      "name": "CHINEXT_V1_RS_ACCEL_VETO_CANDIDATE_LIFECYCLE",
+      "portfolio": "exact accepted RS_ACCEL_OVEREXTENSION_VETO strategy lifecycle",
+      "selection_reason_frozen_before_low_max_outcomes": "It predates Cycle 012, is a breakout and relative-strength opportunity generator rather than industry breadth, has accepted PIT next-open execution, and exposes 398 candidates on 225 dates including 75 same-date ranking competitions."
+    }
+  }
+}

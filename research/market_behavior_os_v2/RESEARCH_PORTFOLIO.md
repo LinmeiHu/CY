@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 35% | Cycle 011 closes Industry Diffusion construction; three distinct Price-Volume-Path family questions remain | Rank price-limit lifecycle, leader-follower convergence, and liquidity-transition assimilation without another broad feature batch |
-| EXPLOIT | 10% | Three broad-A-share leads remain mixed and all current history is consumed | Preserve rules unchanged; use only genuinely independent confirmation |
-| INVENT | 35% | Borrow-feasible relative value, investor-flow identity, PIT factors, and order-book/queue information remain unstudied but are outside the current registered-data lane | Prefer one bounded, multi-family data contract when acquisition is separately justified |
+| EXPLORE | 45% | Cycle 012 closes Low-MAX depth; three distinct Price-Volume-Path family questions remain | Test price-limit lifecycle first, then leader-follower convergence and liquidity-transition assimilation without another Low-MAX or broad feature batch |
+| EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
+| INVENT | 30% | Borrow-feasible relative value, investor-flow identity, PIT factors, and order-book/queue information remain unstudied but are outside the current registered-data lane | Prefer one bounded, multi-family data contract when acquisition is separately justified |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
 | TRANSFER | 5% | The sole Confirmed-Breakdown admission mapping affected zero decisions | Park the translation; do not open the exit role as a rescue |
-| FALSIFY | 10% | Conditional Low-MAX clears candidate and risk-quality evidence but fails the frozen turnover ceiling; upper-limit-clean selection reverses late | Preserve exact evidence and stop Industry Diffusion construction without a turnover-definition rescue |
+| FALSIFY | 5% | Low-MAX survives 40 bps friction but fails the one distinct CHINEXT portability replay | Preserve it as Industry-Diffusion-specific conditional information and close further Low-MAX research |
 
 Mandatory checkpoint questions:
 

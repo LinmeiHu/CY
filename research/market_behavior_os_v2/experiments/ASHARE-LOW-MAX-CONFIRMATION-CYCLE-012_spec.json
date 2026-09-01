@@ -1,0 +1,112 @@
+{
+  "experiment_id": "ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012",
+  "status": "FROZEN_COST_AND_PORTABILITY_CONTRACT_BEFORE_CYCLE_012_OUTCOMES",
+  "starting_checkpoint": "729064eeb9",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "construction_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_spec.json", "sha256": "0d9f809a9e19bd000f559c4c64cb73e7f6010883b82ebc4f625c9ba845c11ac0"},
+    "construction_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_result.json", "sha256": "cbe122ec339c7b9524fdef1bb01fb77b44f536ff8355d9a9ef9b8cfac7765283"},
+    "construction_panel": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_candidate_attribution.csv", "sha256": "91eb1c43b96d2edb4342ddf7757a5b7c4d244f7b40cf18c5946690d6138af097"},
+    "construction_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py", "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"},
+    "chinext_rank_spec": {"path": "research/market_behavior_os_v2/experiments/HAB-CHX-RANK-INFO-001_spec.json", "sha256": "0ec65815558aab2373dc8f2e93c329cc61ee521275191aee2cf3308d8e9bac10"},
+    "chinext_candidate_panel": {"path": "research/market_behavior_os_v2/artifacts/HAB-CHX-RANK-INFO-001_candidate_panel.csv", "sha256": "b9983c4645cab9bf6afe555178f1bb961281e24898ded522ffe2d5bb9ee4cbfc"},
+    "chinext_rank_result": {"path": "research/market_behavior_os_v2/artifacts/HAB-CHX-RANK-INFO-001_result.json", "sha256": "27171bdcdbe90388f4ab51b3f8d702302444b7959fc92a3c601560fd8a6a44fd"},
+    "chinext_decision_spec": {"path": "research/market_behavior_os_v2/experiments/HAB-CHX-DECISION-BATCH-001_spec.json", "sha256": "777c8a5675bb8fd98bf4b88184c1a5801f775be998a1527e82c1ef6eb3fd6918"},
+    "chinext_decision_result": {"path": "research/market_behavior_os_v2/artifacts/HAB-CHX-DECISION-BATCH-001_result.json", "sha256": "8b019d174bae80f4fd8eba2c01a6f19f8101e9e3070addff4a1ff5b643644f46"},
+    "chinext_decision_runner": {"path": "research/market_behavior_os_v2/scripts/run_hab_chx_decision_batch_001.py", "sha256": "84bba5988818631a3a71b59a4b3c1e3d2f6b3d1744f99bf366168b83a2bb6880"},
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"}
+  },
+  "frozen_low_max": {
+    "definition": "maximum causal corporate-action-coordinate daily log return over the 20 sessions ending at the completed decision close",
+    "orientation": "lower is better",
+    "lookback_sessions": 20,
+    "missing": "fail closed for the affected candidate",
+    "parameter_search": false
+  },
+  "track_a": {
+    "arms": ["industry_diffusion_baseline", "industry_diffusion_low_max"],
+    "cost_per_side": [0.002, 0.003, 0.004],
+    "matched_semantics": "signal, industry allocations, ranking, horizon, weekly clock, breadth, weights, exits, QD-010 handling, and execution are unchanged within every matched cost pair",
+    "turnover_attribution": [
+      "selection replacement rate and overlap",
+      "incremental executed turnover at 20 bps",
+      "share of changed identities on the ten highest-replacement dates",
+      "forced corporate-action exit counts"
+    ],
+    "classification": {
+      "COST_RESILIENT_all_required": {
+        "cost_points": [0.003, 0.004],
+        "minimum_total_return_delta": 0.0,
+        "minimum_annualized_return_delta": 0.0,
+        "minimum_sharpe_delta": 0.10,
+        "minimum_drawdown_delta": 0.0,
+        "minimum_severe_loss_improvement": 0.0,
+        "minimum_40bps_total_return_advantage_retention_vs_20bps": 0.50
+      },
+      "COST_SENSITIVE_BUT_USEFUL_all_required_at_40bps": {
+        "minimum_total_return_delta": 0.0,
+        "minimum_annualized_return_delta": 0.0,
+        "minimum_sharpe_delta": 0.0,
+        "minimum_drawdown_delta": 0.0,
+        "minimum_severe_loss_improvement": 0.0
+      },
+      "otherwise": "COST_FRAGILE"
+    }
+  },
+  "track_b": {
+    "baseline": {
+      "name": "CHINEXT_V1_RS_ACCEL_VETO_CANDIDATE_LIFECYCLE",
+      "selection_reason_frozen_before_low_max_outcomes": "It predates Cycle 012, is a breakout and relative-strength opportunity generator rather than industry breadth, has accepted PIT next-open execution, and exposes 398 candidates on 225 dates including 75 same-date ranking competitions.",
+      "candidate_domain": "exact HAB-CHX-RANK-INFO-001 current RS-acceleration-veto candidate panel",
+      "baseline_rank": "existing rs_score descending, then mom60 descending, then symbol",
+      "portfolio": "exact accepted RS_ACCEL_OVEREXTENSION_VETO strategy lifecycle"
+    },
+    "candidate_comparison": {
+      "unit": "same-date Top-1 among dates with at least two complete candidates",
+      "low_max_rank": "max_return20 ascending, then existing baseline rank, then symbol",
+      "natural_outcome": "existing PIT next-open-to-h20 net return at the CHINEXT baseline 10 bps per-side contract",
+      "blocks": {"development_2018_2021": [2018, 2021], "consumed_2022_2023": [2022, 2023]},
+      "winner_threshold": 0.0,
+      "severe_loss_threshold": -0.10
+    },
+    "replay_authorization_all_required": {
+      "minimum_quality_coverage": 0.95,
+      "minimum_multi_candidate_dates": 50,
+      "minimum_changed_selections": 20,
+      "minimum_changed_fraction_of_multi_candidate_dates": 0.20,
+      "minimum_full_mean_net_improvement": 0.001,
+      "minimum_each_block_mean_net_improvement": 0.0,
+      "minimum_severe_loss_improvement": 0.0,
+      "maximum_industry_hhi_increase": 0.05,
+      "maximum_largest_industry_share_increase": 0.10
+    },
+    "full_replay": {
+      "authorization": "one replay only if every candidate gate passes",
+      "change": "replace only candidate ranking with frozen Low-MAX ascending after the exact RS-acceleration veto",
+      "preserve": "opportunity generation, timing, holding and exit lifecycle, exposure, 10 bps per-side cost, T+1, limits, suspensions, corporate actions, and capacity semantics"
+    }
+  },
+  "final_decision": {
+    "REUSABLE_STOCK_QUALITY_COMPONENT": "Track A is COST_RESILIENT and Track B is REUSABLE_CONDITIONAL_STOCK_QUALITY",
+    "STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION": "Track A is COST_RESILIENT but Track B does not establish executable portability",
+    "PROMISING_BUT_COST_SENSITIVE": "Track A is COST_SENSITIVE_BUT_USEFUL regardless of portability",
+    "PARKED": "Track A is COST_FRAGILE"
+  },
+  "next_frontier_planning_only": [
+    "price-limit event lifecycle and post-event acceptance",
+    "industry leader-follower convergence and leadership turnover",
+    "liquidity-transition shock assimilation"
+  ],
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 data access",
+    "Low-MAX lookback, sign, ranking, threshold, holding, rebalance, breadth, weight, exit, exposure, or state change",
+    "Low Idio, Low Vol-of-Vol, Low Skewness, revised momentum, VWAP, volume confirmation, or third modifier",
+    "portability baseline selection after Low-MAX conditional outcome inspection",
+    "portability replay unless every candidate gate passes",
+    "turnover-reduction rule or rescue experiment",
+    "new Alpha outcome screen or large data acquisition",
+    "OOS, independent-confirmation, validation, live, or production claim"
+  ]
+}

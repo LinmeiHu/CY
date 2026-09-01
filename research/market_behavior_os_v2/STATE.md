@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `04d7b7f9f6` (start of frozen Industry Diffusion construction cycle 011)
-- `CURRENT_PHASE`: `INDUSTRY_DIFFUSION_CONDITIONAL_LOW_MAX_VALUE_STRONG_BUT_FROZEN_TURNOVER_GATE_FAIL`
-- `CURRENT_PRIMARY_FRONTIER`: Low-MAX materially improves stock selection conditional on the exact Industry Diffusion opportunity set, but its executable arm increases frozen turnover-per-initial-capital by 27.18% versus the preregistered 10% ceiling. No permanent modifier is admitted; close this construction path and rank distinct Price-Volume-Path families
+- `CURRENT_BASELINE`: `729064eeb9` (start of frozen Low-MAX confirmation cycle 012)
+- `CURRENT_PHASE`: `LOW_MAX_COST_RESILIENT_BUT_PORTABILITY_FAILED_FINAL_DEPTH_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: Frozen Low-MAX remains strongly useful inside Industry Diffusion through matched 40 bps-per-side friction, but its one preregistered CHINEXT portability replay reverses across the two consumed blocks. Preserve it as `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`, authorize no further Low-MAX work without independent evidence, and move to distinct Price-Volume-Path families
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new permanent strategy component. Industry Diffusion remains `PROMISING_BUT_MIXED`; conditional Low-MAX selection is strong but the frozen construction decision is `STRATEGY_CONSTRUCTION_NOT_IMPROVED`. Upper-limit-clean quality is late-block adverse and no combined arm was authorized
+- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Industry Diffusion remains `PROMISING_BUT_MIXED`; Low-MAX is `COST_RESILIENT` and `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`, not portable stock-quality Alpha. Historical Cycle 011 remains `STRATEGY_CONSTRUCTION_NOT_IMPROVED`
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `04d7b7f9f6`
-- `CURRENT_SCIENTIFIC_LAYER`: `CONTROLLED_STRATEGY_CONSTRUCTION_COMPLETE; BASELINE_EXACT; LOW_MAX_CONDITIONAL_SELECTION_PASSES; FULL_REPLAY_TURNOVER_GATE_FAIL; NO_PERMANENT_MODIFIER`
+- `CURRENT_HEAD_AT_RESUME`: `729064eeb9`
+- `CURRENT_SCIENTIFIC_LAYER`: `FINAL_LOW_MAX_DEPTH_COMPLETE; MATCHED_COST_STRESS_RESILIENT; ONE_DISTINCT_PORTABILITY_REPLAY_FAILED; INDUSTRY_DIFFUSION_CONDITIONAL_ONLY; NO_FURTHER_LOW_MAX_BUDGET`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance, (2) industry leader-follower convergence and leadership turnover, and (3) liquidity-transition shock assimilation. Do not open another Industry Diffusion refinement or retune Low-MAX.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance, (2) industry leader-follower convergence and leadership turnover, and (3) liquidity-transition shock assimilation. Do not open another Industry Diffusion refinement, friction test, portability baseline, or Low-MAX translation.
 
 ## Research OS V2.3 resource and worker state
 
@@ -2311,3 +2311,45 @@ post-development confirmation.
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 Low volatility-of-volatility is a risk-quality selection representation within
 an existing defensive archetype, not a new archetype or validated strategy.
+
+## Cycle-012 final Low-MAX depth allocation
+
+`ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012` starts from `729064eeb9` and freezes
+the exact prior-20-session MAX orientation, both Industry Diffusion arms, the
+20/30/40 bps matched-cost grid, the CHINEXT portability baseline, and all
+interpretation gates before the new outcomes. The prior Cycle-011 turnover-gate
+failure remains historically valid and is not rewritten.
+
+Track A is `COST_RESILIENT`. At 20/30/40 bps per side, Low-MAX total return is
++122.43%/+95.22%/+71.34% versus +54.64%/+35.75%/+19.17% for the exact matched
+Industry Diffusion baseline. At 40 bps the Low-MAX advantage remains +52.17 pp
+total return, +7.36 pp annualized, +0.275 Sharpe, +4.19 pp drawdown quality, and
++4.52 pp severe-loss quality. Capacity and industry HHI remain effectively
+unchanged. Low-MAX replaces 63.63% of cohort identities and adds 45.00x initial
+capital of executed turnover at 20 bps. Replacements occur on every decision
+date; the ten busiest dates contain only 5.89% of changes. Forced
+corporate-action exits are 15 baseline versus 20 Low-MAX, so the turnover is a
+broad consequence of different stock identities rather than a few dates or
+corporate actions.
+
+Track B preselects the frozen CHINEXT V1 RS-acceleration-veto lifecycle before
+Low-MAX outcomes because it is a distinct breakout/relative-strength generator
+with accepted PIT execution. Low-MAX quality covers 397/398 candidates. Among
+75 complete multi-candidate dates, it changes 59 Top-1 choices and improves h20
+net payoff +1.783% full, +2.269% in 2018--2021, and +1.334% in 2022--2023. Full
+severe-loss incidence improves 4.00 pp and industry concentration is unchanged;
+the preregistered candidate gate therefore authorizes exactly one engine replay.
+
+The replay fails portability. Relative to the exact RS-veto lifecycle, Low-MAX
+changes 2018--2021 return by -4.94 pp, drawdown by -1.67 pp, and Sharpe by
+-0.056. It improves 2022--2023 return by +3.14 pp, drawdown by +0.53 pp, and
+Sharpe by +0.148. Severe-loss rates are slightly worse in both engine blocks.
+The candidate-level ordering therefore does not survive the actual position
+lifecycle consistently. Classification is `PORTABILITY_FAILED` and final
+decision is `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`.
+
+No further Low-MAX research is authorized without genuinely new independent
+evidence or untouched confirmation data. No post-2023 outcome, CY-011 row, new
+Alpha outcome, or large acquisition entered Cycle 012. The two serial runs are
+byte-identical. Planning remains: price-limit lifecycle/acceptance first,
+leader-follower convergence second, and liquidity-transition assimilation third.

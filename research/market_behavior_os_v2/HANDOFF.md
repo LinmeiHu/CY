@@ -2,6 +2,43 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: final Low-MAX cost and portability depth
+
+Resume after the commit containing `ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012`;
+its starting checkpoint is `729064eeb9`. The exact Low-MAX signal is now closed
+for further research absent genuinely independent evidence or untouched
+confirmation data. Do not add cost points, modify turnover, select another
+portability baseline, or try another strategy role. All 2018--2023 evidence is
+consumed development history; post-2023 outcomes and CY-011 remain unread.
+
+Matched Industry Diffusion cost stress classifies Low-MAX as `COST_RESILIENT`.
+At 20/30/40 bps per side, baseline total return is +54.64%/+35.75%/+19.17%
+while Low-MAX is +122.43%/+95.22%/+71.34%. At 40 bps the construction retains
++52.17 pp total-return advantage, +0.275 Sharpe, +4.19 pp drawdown quality, and
++4.52 pp severe-loss quality. Low-MAX replaces 63.63% of weekly identities and
+adds 45.00x executed turnover at the 20 bps reference. Changes are diffuse: all
+267 dates change, the ten busiest dates contain 5.89% of replacements, and
+forced corporate-action exits differ by only five.
+
+The sole portability baseline was frozen before Low-MAX outcomes: exact CHINEXT
+V1 RS-acceleration-veto candidates and execution. Low-MAX covers 397/398
+candidates and, on 75 complete multi-candidate dates, changes 59 Top-1 choices.
+Candidate h20 payoff improves +1.783% full, +2.269%/+1.334% by block, with +4.00
+pp full severe-loss quality and no industry-concentration artifact. This passes
+the preregistered gate and authorizes one replay.
+
+The engine replay reverses across blocks. Low-MAX changes 2018--2021 return by
+-4.94 pp, drawdown by -1.67 pp, and Sharpe by -0.056; it changes 2022--2023
+return by +3.14 pp, drawdown by +0.53 pp, and Sharpe by +0.148. Severe-loss
+rates worsen slightly in both blocks. Classification is `PORTABILITY_FAILED`.
+
+Final decision: `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`. This does
+not rewrite Cycle 011's `STRATEGY_CONSTRUCTION_NOT_IMPROVED` decision and does
+not establish a reusable stock-quality component. Next planning-only order is
+(1) price-limit event lifecycle/acceptance, (2) industry leader-follower
+convergence/turnover, and (3) liquidity-transition shock assimilation. Both
+Cycle-012 serial runs are byte-identical.
+
 ## Latest checkpoint: Industry Diffusion stock-quality construction
 
 Resume after the commit containing `ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011`;
