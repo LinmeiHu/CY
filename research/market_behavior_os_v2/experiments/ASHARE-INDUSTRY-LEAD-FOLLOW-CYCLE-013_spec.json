@@ -1,0 +1,88 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013",
+  "status": "FROZEN_PHASE_A_BEFORE_FOLLOWER_OUTCOME_ACCESS_PHASE_B_C_LOCKED",
+  "starting_checkpoint": "b6122310f4",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "accepted_minute_contract": {"path": "research/market_behavior_os_v2/experiments/MKT-MIN-001_spec.json", "sha256": "358e358f3daef94bd8e2f42d60f38672f4f450db368494e0291465cb384bde9a"},
+    "minute_adapter": {"path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py", "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "qd004_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "cy008_cross_year_gate": {"path": "/Users/linmei/Documents/CY/data/audit/CY-008-minute-pit-b-cross-year-gate.json", "sha256": "fefac612c3ad7467a87fad3c01b8fccce9b1dd6d5269d74c109d037d79f59d5d"}
+  },
+  "minute_contract": {
+    "timestamp": "completed Asia/Shanghai bar end",
+    "grid": "09:30 auction plus 09:31-11:30 and 13:01-15:00 continuous minutes",
+    "price_coordinate": "raw/unadjusted within-session prices only",
+    "signal_available": "after completed minute t",
+    "earliest_action": "next completed bar open; never inside signal bar t",
+    "same_minute_order": "unresolved; multiple triggers are simultaneous clusters excluded from strict leadership",
+    "missing_or_abnormal_session": "fail closed via exact 241-bar CY-008 hard-valid snapshot binding"
+  },
+  "universe": {
+    "boards": "broad SH/SZ A-share",
+    "daily_requirements": ["CY-006 hard_valid", "trade_status=1", "current_day_data_tradable", "not ST", "industry_valid", "no blocking corporate action"],
+    "minute_requirements": ["CY-008 hard_valid", "241 distinct expected bars", "15:30 availability", "CY-006 daily_snapshot_id identity"],
+    "minimum_industry_constituents": 6,
+    "liquidity": "prior 20 stock-session mean daily amount >= CNY 50,000,000 with all 20 observations",
+    "event_minutes": ["09:36-11:20", "13:06-14:50"],
+    "reason_for_event_minutes": "five completed prior continuous minutes and ten future continuous minutes without crossing lunch or close"
+  },
+  "phase_a": {
+    "stock_minute_return": "log(close_t / close_t-1), where 09:31 uses the completed 09:30 auction close",
+    "abnormal_move": "stock minute return minus equal-weight mean return of all other eligible PIT-industry constituents at the same minute",
+    "leader_event": {
+      "threshold": 0.01,
+      "requirements": ["positive stock minute return", "unique industry maximum", "exactly one constituent at or above threshold", "leader close at least one CNY0.01 tick below historical upper-limit price", "all universe gates"],
+      "overlap": "the first threshold occurrence in an industry-day must be strict; a preceding simultaneous cluster disqualifies that industry-day",
+      "sensitivity": "none"
+    },
+    "simultaneous_cluster": "two or more constituents at or above the same frozen threshold in the same minute; excluded from strict event and control pools",
+    "follower_windows": {
+      "w1_3": "minutes t+1 through t+3",
+      "w4_10": "minutes t+4 through t+10",
+      "remainder": "minutes t+1 through session close"
+    },
+    "peer_metrics": ["median and mean cumulative peer return minus cumulative cross-sectional market-median minute return", "fraction of peers with positive cumulative raw return", "positive-minute breadth expansion versus minute t", "fraction of peers with any later abnormal-minute trigger at the frozen 1% threshold", "median worst cumulative abnormal return"],
+    "matched_control": {
+      "candidate": "same PIT industry and exact minute index on one of the prior 60 market sessions, with zero threshold triggers at or before that minute on the control industry-day; exclude the contemporaneous maximum-abnormal pseudo-leader",
+      "state": ["market median minute return", "industry mean minute return", "peer positive-return breadth", "log industry-median prior-20 amount"],
+      "distance": "equal-weight squared standardized distance; scales estimated only from that strictly historical candidate pool with floors [0.0005,0.0005,0.05,0.25] in listed state order; ties prefer the most recent prior date then pseudo-leader symbol",
+      "minimum_candidates": 20,
+      "future_outcomes_not_used_for_match": true
+    },
+    "negative_control": "matched event-minus-control peer abnormal return during t-3 through t-1; the primary future effect must exceed this reverse-time association",
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "classification_gate": {
+      "PROPAGATION_CONFIRMED_all_required": {
+        "minimum_matched_events": 1000,
+        "minimum_industries": 20,
+        "minimum_decision_dates_each_block": 100,
+        "minimum_match_coverage": 0.8,
+        "minimum_w1_3_median_abnormal_return_delta": 0.0002,
+        "minimum_w1_3_breadth_expansion_delta": 0.01,
+        "minimum_w1_3_new_trigger_fraction_delta": 0.005,
+        "minimum_each_block_w1_3_return_delta": 0.0,
+        "minimum_future_over_reverse_delta": 0.0001,
+        "later_window_positive_any": true
+      },
+      "WEAK_PROPAGATION_all_required": {"minimum_matched_events": 500, "positive_full_and_each_block_w1_3_return_delta": true, "future_exceeds_reverse": true},
+      "phase_b_c_authorization": "PROPAGATION_CONFIRMED only"
+    }
+  },
+  "phase_b_locked": {
+    "authorization": "only after PROPAGATION_CONFIRMED",
+    "characteristics": ["prior-20 liquidity rank", "abnormal-move magnitude", "three-minute pre-event abnormal persistence", "same-minute volume surge versus prior-20 same-clock median", "distance to historical upper limit", "strictly historical leadership frequency"],
+    "maximum_bundle": "one equal-rank bundle only if at least two individual characteristics add independently"
+  },
+  "phase_c_locked": {
+    "authorization": "only after PROPAGATION_CONFIRMED",
+    "candidate_actions": ["leader continuation", "non-triggered follower catch-up"],
+    "portfolio_replays": "at most one action after frozen candidate gate",
+    "execution": "earliest next-bar open, historical limit/suspension rules, transaction costs, and T+1; classify implementation conflict if signal half-life is shorter than legal holding"
+  },
+  "family_classification": ["LEADER_FOLLOWER_STRATEGY_CANDIDATE", "PROPAGATION_CONFIRMED_LONG_ACTION_WEAK", "PROPAGATION_CONFIRMED_FOLLOWER_ACTION_PROMISING", "PROPAGATION_CONFIRMED_IMPLEMENTATION_CONFLICT", "SIMULTANEOUS_COMOVEMENT_ONLY", "CHRONOLOGICALLY_UNSTABLE", "NO_PROPAGATION"],
+  "prohibited": ["post-2023 outcomes or metadata", "CY-011 access", "same-minute leadership claims", "same-bar execution", "future industry breadth or end-of-day winner leader definition", "threshold, horizon, control, or sign search", "Low-MAX or any frozen-component combination", "Phase B/C access without Phase-A authorization", "OOS, independent-confirmation, validation, live, or production claims"]
+}

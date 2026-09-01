@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `729064eeb9` (start of frozen Low-MAX confirmation cycle 012)
-- `CURRENT_PHASE`: `LOW_MAX_COST_RESILIENT_BUT_PORTABILITY_FAILED_FINAL_DEPTH_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: Frozen Low-MAX remains strongly useful inside Industry Diffusion through matched 40 bps-per-side friction, but its one preregistered CHINEXT portability replay reverses across the two consumed blocks. Preserve it as `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`, authorize no further Low-MAX work without independent evidence, and move to distinct Price-Volume-Path families
+- `CURRENT_BASELINE`: `b6122310f4` (start of frozen industry minute leader/follower cycle 013)
+- `CURRENT_PHASE`: `INDUSTRY_MINUTE_LEAD_FOLLOW_STOPPED_SIMULTANEOUS_COMOVEMENT_ONLY`
+- `CURRENT_PRIMARY_FRONTIER`: Strict stock-specific industry first-occurrence events show positive t+1--t+3 peer return and breadth response, but the return effect is smaller than the reverse-time association, new-peer-trigger expansion misses its frozen gate, and matching covers only 21.73% versus the 80% gate. Phase B/C are locked and the exact family is closed as `SIMULTANEOUS_COMOVEMENT_ONLY`
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Industry Diffusion remains `PROMISING_BUT_MIXED`; Low-MAX is `COST_RESILIENT` and `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`, not portable stock-quality Alpha. Historical Cycle 011 remains `STRATEGY_CONSTRUCTION_NOT_IMPROVED`
+- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Cycle 013 authorizes no leader score, leader/follower action test, strategy replay, or Industry Diffusion combination/timing claim. Existing Industry Diffusion and conditional Low-MAX statuses are unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `729064eeb9`
-- `CURRENT_SCIENTIFIC_LAYER`: `FINAL_LOW_MAX_DEPTH_COMPLETE; MATCHED_COST_STRESS_RESILIENT; ONE_DISTINCT_PORTABILITY_REPLAY_FAILED; INDUSTRY_DIFFUSION_CONDITIONAL_ONLY; NO_FURTHER_LOW_MAX_BUDGET`
+- `CURRENT_HEAD_AT_RESUME`: `b6122310f4`
+- `CURRENT_SCIENTIFIC_LAYER`: `MINUTE_LEAD_LAG_EXISTENCE_TEST_COMPLETE; REVERSE_TIME_FALSIFICATION_FAILED; PHASE_B_C_LOCKED; NO_STRATEGY_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance, (2) industry leader-follower convergence and leadership turnover, and (3) liquidity-transition shock assimilation. Do not open another Industry Diffusion refinement, friction test, portability baseline, or Low-MAX translation.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance and (2) liquidity-transition shock assimilation. Do not rescue the closed minute leader/follower definition, open leader identity scoring, or reopen Industry Diffusion/Low-MAX refinement.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,40 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-013 industry minute leader/follower propagation
+
+The frozen broad-A-share event requires one stock alone to be the first
+industry-day name with leave-one-out industry-abnormal one-minute return at
+least 1%, positive raw return, unique industry maximum, and at least one tick
+of upper-limit headroom. Same-minute multi-name triggers are unresolved
+clusters, not leaders. Every event uses a PIT industry, exact 241-bar CY-008
+session binding, prior-20 liquidity, and a completed-minute signal clock.
+
+Across 3,544,114 eligible stock sessions and 144,597 eligible industry-days,
+there are 16,224 strict first-occurrence events, 211 first-occurrence
+simultaneous-cluster industry-days, and 3,526 matched events spanning 81
+industries and 1,136 dates. Another 116,251 industry-days are disqualified
+because their first threshold occurrence lies outside the preregistered event
+clock; they are never relabeled using a later mover. Controls use the
+same PIT industry and clock minute from only the prior 60 sessions and match
+market return, industry return, breadth, and liquidity without future outcomes.
+
+The t+1--t+3 matched peer abnormal-return delta is +0.0294%, positive in both
+blocks (+0.0329%/+0.0251%). Breadth expansion is +6.304 pp and new-trigger
+participation +0.295 pp. These do not establish propagation: the reverse
+t-3--t-1 return delta is larger at +0.0403%, so future minus reverse is
+-0.0110%; the frozen +0.500 pp new-trigger and 80% match-coverage gates also
+fail. t+4--t+10 is +0.0075% and remainder is +0.0668%, but these descriptive
+later responses cannot override the all-required causal gate. Classification is
+`SIMULTANEOUS_COMOVEMENT_ONLY`. Phase B leader identity, Phase C tradable action,
+portfolio replay, and Industry Diffusion timing/combination are locked.
+
+What market behavior are we still not studying? The highest-value registered
+gaps are objective price-limit event lifecycle/acceptance and liquidity-transition
+shock assimilation. Has this mechanism implied a genuinely new strategy
+archetype? No: the frozen temporal falsification rejects promotion from
+synchronous industry state to tradable lead-lag.
 
 ### Exploration-first multi-family batch
 

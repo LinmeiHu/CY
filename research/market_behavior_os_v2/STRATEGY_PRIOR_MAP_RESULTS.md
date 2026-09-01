@@ -121,3 +121,19 @@ Final decision is `STRONG_INDUSTRY_DIFFUSION_CONDITIONAL_INFORMATION`. Cycle
 011 remains `STRATEGY_CONSTRUCTION_NOT_IMPROVED`; no reusable stock-quality
 component is admitted and no further Low-MAX research is authorized without
 independent evidence.
+
+## Cycle-013 industry minute leader/follower propagation
+
+| Question | Frozen test | Evidence | Classification |
+|---|---|---|---|
+| Propagation existence | First unique >=1% leave-one-out industry-abnormal minute mover; later non-triggered peers versus prior-60-session same-industry/same-clock matched controls | 3,526 matched / 16,224 strict events, 81 industries; t+1--t+3 return +0.0294%, breadth +6.304 pp, new triggers +0.295 pp | Return/breadth pass; new triggers and 21.73% coverage fail |
+| Chronology falsification | Compare later t+1--t+3 matched return with already-completed t-3--t-1 association | future +0.0294% versus reverse +0.0403%; margin -0.0110% | `SIMULTANEOUS_COMOVEMENT_ONLY` |
+| Persistence | Preregistered t+4--t+10 and remainder windows | +0.0075% and +0.0668%; descriptive only because causal all-required gate fails | No authorized propagation claim |
+| Leader identity / action / strategy | Locked unless `PROPAGATION_CONFIRMED` | Not accessed; no leader/follower candidate, replay, or diffusion combination | `NOT_AUTHORIZED` |
+
+This closes the exact event/control representation, not every conceivable
+industry information-transmission mechanism. Minute bars cannot order names
+inside the same bar, and no second/tick, order-book, queue, or aggressive-flow
+claim is made. The implementation disqualifies 116,251 industry-days whose
+first threshold occurrence is outside the eligible event clock; no later mover
+is relabeled as leader.

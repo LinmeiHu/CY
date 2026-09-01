@@ -1,0 +1,64 @@
+{
+  "artifacts": {
+    "summary": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013_summary.csv",
+      "sha256": "414f5a7a796d6bf5d502a7068f12437d9579796275457e19f1ddcc2213fb4475"
+    }
+  },
+  "calendar_sessions": 1437,
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "experiment_id": "ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013",
+  "external_panel": "/Volumes/quant/CY_quant_research/industry_lead_follow_cycle_013/event_panel.parquet",
+  "external_panel_bytes": 3375628,
+  "external_panel_rows": 16224,
+  "external_panel_sha256": "22de762d16160cbb7934da076458ed3026e2ababd4cb41eb146e5459a42bb542",
+  "family_status": "SIMULTANEOUS_COMOVEMENT_ONLY",
+  "industry_diffusion_relation": "LOCKED_BY_PHASE_A",
+  "phase_a": {
+    "audit": {
+      "eligible_industry_days": 144597,
+      "eligible_stock_sessions": 3544114,
+      "industry_minute_control_states": 3291833,
+      "out_of_window_first_trigger_industry_days": 116251,
+      "simultaneous_cluster_industry_days": 211,
+      "strict_events": 16224,
+      "unbuyable_first_trigger_industry_days": 26
+    },
+    "classification": "SIMULTANEOUS_COMOVEMENT_ONLY",
+    "confirmed_checks": {
+      "decision_dates_early": true,
+      "decision_dates_late": true,
+      "early_positive": true,
+      "future_over_reverse": false,
+      "industries": true,
+      "late_positive": true,
+      "later_window_positive": true,
+      "match_coverage": false,
+      "matched_events": true,
+      "w1_3_breadth_delta": true,
+      "w1_3_return_delta": true,
+      "w1_3_trigger_delta": false
+    },
+    "decision_dates": 1136,
+    "future_over_reverse_delta": -0.00010965901745601056,
+    "industries": 81,
+    "match_coverage": 0.21733234714003946,
+    "matched_events": 3526,
+    "phase_b_c_authorized": false,
+    "strict_events": 16224,
+    "weak_checks": {
+      "early_positive": true,
+      "full_positive": true,
+      "future_exceeds_reverse": false,
+      "late_positive": true,
+      "matched_events": true
+    }
+  },
+  "phase_b": {
+    "status": "LOCKED_BY_PHASE_A"
+  },
+  "phase_c": {
+    "status": "LOCKED_BY_PHASE_A"
+  },
+  "source_content_hashes_verified": true
+}

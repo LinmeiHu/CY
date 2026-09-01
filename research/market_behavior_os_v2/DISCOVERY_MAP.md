@@ -66,6 +66,22 @@ that material.
   reusable stock quality. No further Low-MAX cost, baseline, role, or tuning
   experiment is authorized without independent evidence.
 
+## Cycle-013 leader/follower conclusions
+
+- The corrected broad PIT minute test finds 16,224 strict unique first
+  occurrences and 3,526 matched events. t+1--t+3 peer return (+0.0294%), breadth
+  (+6.304 pp), and new triggers (+0.295 pp) exceed controls, with return positive
+  in both blocks.
+- The causal gate fails: reverse-time association is larger (+0.0403%), future
+  minus reverse is -0.0110%, new triggers miss the +0.500 pp floor, and coverage
+  is only 21.73%. Positive later windows remain descriptive. Status is
+  `SIMULTANEOUS_COMOVEMENT_ONLY`.
+- No leader score, leader continuation, follower catch-up, executable replay,
+  or Industry Diffusion timing/combination is authorized. Do not rescue this
+  exact family with neighboring thresholds or horizons.
+- Reallocate distinct Price-Volume-Path capital to price-limit event
+  lifecycle/acceptance first, then liquidity-transition shock assimilation.
+
 ## Fast-screen casualties
 
 | Candidate | Decision |

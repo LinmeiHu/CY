@@ -2,6 +2,49 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: industry minute leader/follower existence gate
+
+Resume after the commit containing `ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013`;
+its starting checkpoint is `b6122310f4`. The exact frozen event/control design
+is closed as `SIMULTANEOUS_COMOVEMENT_ONLY`. Do not change the 1% event
+threshold, follower windows, same-minute exclusion, control pool, matching
+state, or reverse-time test. All evidence is consumed 2018--2023 development
+history; post-2023 outcomes and CY-011 remain unread.
+
+The event requires the first threshold occurrence in an industry-day to be one
+unique stock with leave-one-out industry-abnormal one-minute return >=1%,
+positive raw return, unique contemporaneous maximum, prior-20 average amount
+>=CNY50m, and at least one tick below the historical upper limit. Same-minute
+multi-name triggers are unresolved clusters. The completed event minute is not
+an execution bar.
+
+The broad PIT universe supplies 3,544,114 eligible stock sessions, 144,597
+industry-days, and 16,224 strict first-occurrence events. Of these, 3,526 match
+to same-industry, same-clock controls drawn only from the prior 60 sessions,
+spanning 81 industries and 1,136 dates. Match coverage is 21.73% versus the
+frozen 80% gate. The corrected implementation disqualifies 116,251 industry-days
+whose first threshold occurrence is outside the event clock; it never calls a
+later mover the leader.
+
+Future t+1--t+3 event-minus-control peer abnormal return is +0.0294%, with
++6.304 pp breadth expansion and +0.295 pp new-trigger participation. Return is
+positive in both blocks (+0.0329%/+0.0251%) and clears the return floor, but
+new-trigger expansion misses its +0.500 pp floor. More importantly, the reverse
+t-3--t-1 delta is +0.0403%; future minus reverse is -0.0110%. t+4--t+10 is
++0.0075% and remainder is +0.0668%; those descriptive responses cannot override
+the failed all-required causal gate. This is synchronous
+industry co-movement with weak residual continuation, not confirmed temporal
+propagation.
+
+Per the frozen stop, Phase B leader characteristics, historical leader identity,
+leader continuation, follower catch-up, executable replay, and Industry
+Diffusion timing/combination were not accessed. The full 16,224-row panel is
+external at `/Volumes/quant/CY_quant_research/industry_lead_follow_cycle_013/event_panel.parquet`,
+SHA-256 `22de762d16160cbb7934da076458ed3026e2ababd4cb41eb146e5459a42bb542`.
+All frozen source partition content hashes and five focused causal-order tests
+pass. Next highest-value registered families are price-limit event
+lifecycle/acceptance and liquidity-transition shock assimilation.
+
 ## Latest checkpoint: final Low-MAX cost and portability depth
 
 Resume after the commit containing `ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012`;
