@@ -1,0 +1,58 @@
+{
+  "experiment_id": "ASHARE-EVIDENCE-DEPTH-CYCLE-010",
+  "status": "FROZEN_BEFORE_CYCLE_010_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "56db89be7c",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "honesty_boundary": "All 2018-2023 history is consumed development research; post-2023 outcomes and CY-011 remain unread and no result is independent confirmation.",
+  "inputs": {
+    "source_method": {"path": "research/market_behavior_os_v2/A_SHARE_DEPTH_CYCLE_010_SOURCE_METHOD.md", "sha256": "1807829cfa8482397e6f58a747226ef748b6465fc55732f81e983a4d68969eb7"},
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cycle008_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_skew_breakdown_discovery_cycle_008.py", "sha256": "771bf8a7f2f81d9df68429ace1bbeda2f508fe8f4355ed1fe150ddd04e73d4c4"},
+    "cycle005_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_external_prior_cycle_005.py", "sha256": "55e525030a917387ee551c656cc85e4db00e1a02bbb323ac244504a58c73a362"},
+    "cycle009_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009_result.json", "sha256": "177aefcc60132e0c3ce7e4566ea5dcc50d396c4b4a2733c91714faf7b82a1cc2"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"}
+  },
+  "common_contract": {
+    "decision_time": "15:00 Asia/Shanghai on completed month-end session",
+    "earliest_entry": "next legal market-session open",
+    "cost_per_side": 0.002,
+    "minimum_prior_20_session_average_amount_cny": 50000000,
+    "required": ["hard_valid", "available_at<=decision_at", "snapshot_id", "non-ST", "currently tradable", "historical limit rule", "corporate-action-safe causal return", "next-bar execution", "T+1"],
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]}
+  },
+  "revised_momentum": {
+    "primary": {"id": "revised_momentum_12m_1m", "formation_sessions": 240, "holding_sessions": 20},
+    "paper_specified_sensitivities": [
+      {"id": "revised_momentum_6m_1m", "formation_sessions": 120, "holding_sessions": 20},
+      {"id": "revised_momentum_9m_1m", "formation_sessions": 180, "holding_sessions": 20}
+    ],
+    "formation": "sum causal daily log returns over the inclusive trailing formation window; no extra skip month",
+    "revised_exclusion": "exclude every repository-authoritative upper-limit close and the next stock trading session; consecutive runs therefore exclude the run plus its first following session",
+    "universe_additions": ["close>=5 CNY", "preceding ten stock trading sessions have valid causal prices"],
+    "sort": "same-date equal-count deciles, equal-weight diagnostics",
+    "matched_comparison": "conventional versus revised on identical eligible rows",
+    "promotion_all_required": {
+      "revised_top_minus_bottom_positive": true,
+      "revised_long_excess_positive": true,
+      "revised_long_excess_nonnegative_both_blocks": true,
+      "top_minus_bottom_improvement_vs_conventional_min": 0.002,
+      "severe_loss_disadvantage_max": 0.02,
+      "entry_execution_fraction_min": 0.90,
+      "decision_dates_each_block_min": 20
+    },
+    "authorized_replay": {"family": "revised_momentum_12m_1m_high", "names": 10, "weights": "equal", "rebalance_sessions": 20, "holding_sessions": 20}
+  },
+  "low_risk": {
+    "canonical_ivol": "CANONICAL_IVOL_DATA_LIMITED",
+    "reason": "Wan (2018) requires PIT-safe RMRF, SMB, HML, and WML histories; no registered panel exists and QD-011 is not materialized/alpha-authorized.",
+    "standalone_source_tests": [
+      {"id": "wan_max_1m", "score": "maximum causal daily log return over prior 20 sessions", "sort": "quintiles", "holding_sessions": 20},
+      {"id": "wan_min_1m", "score": "minimum causal daily log return over prior 20 sessions", "sort": "quintiles", "holding_sessions": 20}
+    ],
+    "prohibited_due_to_missing_canonical_ivol": ["IVOL x MAX two-way sort", "IVOL x MIN two-way sort", "mapping internal Low Idio/Low Vol-of-Vol/Low Skew to canonical IVOL"],
+    "authorized_replay_only_if_all": {"family": "wan_low_max_1m", "long_excess_positive": true, "long_excess_nonnegative_both_blocks": true, "severe_loss_disadvantage_max": 0, "entry_execution_fraction_min": 0.90, "decision_dates_each_block_min": 20, "names": 10, "weights": "equal"}
+  },
+  "optional_third_family": "NOT_AUTHORIZED_EXACT_METHOD_NOT_RECOVERED",
+  "residual_momentum": "DATA_BLOCKED_FOR_CANONICAL_REPLICATION",
+  "prohibited": ["post-2023 outcomes", "CY-011", "independent-confirmation language", "unregistered factor substitution", "main-table method invention", "horizon grids beyond frozen cells", "threshold rescue", "portfolio rescue", "short-leg deployability claims", "defensive ensemble", "broad feature screening"]
+}

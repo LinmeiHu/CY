@@ -76,3 +76,21 @@ a stock-level low-risk manifestation after controlling industry composition,
 not independence from Low Idio or strategy usefulness. No Track-B family is
 promoted and no executable replay is run. The frozen minute-overlap statistic
 is non-identifying; it is not replaced after outcomes.
+
+## Cycle-010 evidence-backed depth
+
+| Family | Source-faithful local definition | Full net ordering | Early / late | Long-leg economics | Classification |
+|---|---|---:|---:|---|---|
+| Revised momentum 12m/1m | Sum causal log returns excluding historical upper-limit closes and their next stock session; monthly deciles | revised top-minus-bottom +0.353% vs conventional -0.393%; correction +0.747 pp | revised +3.230% / -1.178% | top +0.029% net, -0.218% excess, severe disadvantage +5.236 pp | `CHRONOLOGICALLY_UNSTABLE`; mechanism improvement replicated, no replay |
+| Revised momentum 6m/1m | Same correction, paper-specified representative sensitivity | +0.319% vs -1.330%; correction +1.648 pp | +3.265% / -1.252% | full top +0.116% | confirms construction effect, not chronology |
+| Revised momentum 9m/1m | Same correction, paper-specified representative sensitivity | +0.012% vs -1.341%; correction +1.353 pp | +2.993% / -1.576% | full top -0.183% | confirms construction effect, not chronology |
+| Wan MAX | Prior-20-session maximum causal daily return; monthly quintiles | Low-minus-High +0.637% | +0.501% / +0.711% | Low leg +0.238% net, -0.020% excess, -4.911 pp severe disadvantage | `MECHANISM_CONFIRMED_LONG_LEG_WEAK`; defensive tail benefit, no replay |
+| Wan MIN | Prior-20-session minimum causal daily return; monthly quintiles | Low-minus-High +0.041% | -0.072% / +0.099% | Low leg +0.227% net, -0.038% excess | `CHRONOLOGICALLY_UNSTABLE`; no replay |
+| Wan canonical IVOL × MAX/MIN | Four-factor residual volatility using PIT RMRF/SMB/HML/WML | Not run | Not run | Not run | `DATA_BLOCKED`; existing Low Idio is not substituted |
+| Residual momentum / left-tail reversal | Exact source factor residual / exact published tail construction | Not run | Not run | Not run | `DATA_BLOCKED`; no invented proxy |
+
+The unique paper main-table horizon/weighting was not exposed by accessible
+original-source text. The 12m/1m equal-weight cell is therefore labeled a
+paper-specified representative primary design, not falsely asserted as the
+paper's unique main cell. Existing adverse JT Top-20 and MAX Top-20 results are
+preserved unchanged.

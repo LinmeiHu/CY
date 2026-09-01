@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `a04fd0da98` (start of frozen defensive-independence/alpha cycle 009)
-- `CURRENT_PHASE`: `LOW_VOL_OF_VOL_COMPLEMENTARY_PARKED_NO_NEW_ALPHA_PROMOTION`
-- `CURRENT_PRIMARY_FRONTIER`: reallocate away from defensive-factor refinement after Low Vol-of-Vol failed the frozen Low-Idio independence gate and six distinct return-engine screens produced no promotion; all evidence remains consumed development history
+- `CURRENT_BASELINE`: `56db89be7c` (start of frozen evidence-backed depth cycle 010)
+- `CURRENT_PHASE`: `REVISED_MOMENTUM_MECHANISM_REPLICATED_BUT_CHRONOLOGICALLY_UNSTABLE; CANONICAL_IVOL_DATA_BLOCKED`
+- `CURRENT_PRIMARY_FRONTIER`: revised momentum's upper-limit contamination mechanism is real in the consumed sample, but its long leg is not stable or promotable; low-MAX has a stable diagnostic spread but weak long-only economics. Stop both depth families and reallocate to a genuinely different return mechanism or a bounded multi-family data contract
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Low Vol-of-Vol is now `COMPLEMENTARY_LOW_RISK_INFORMATION` and `PARKED_AUDIT_GATE`: it survives within-industry comparison but does not retain portable residual value beyond Low Idio. Low Skewness is complementary-only; Confirmed Breakdown remains parked with zero affected admissions
+- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Revised momentum is `CHRONOLOGICALLY_UNSTABLE`; MAX is `MECHANISM_CONFIRMED_LONG_LEG_WEAK`; canonical IVOL is `DATA_BLOCKED`. Existing mixed/defensive leads remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `addd74cc96`
-- `CURRENT_SCIENTIFIC_LAYER`: `CURRENT_CANDIDATE_INFORMATION_AND_SMALL_MODEL_COMPARISON_COMPLETE; NO_RANKING_OR_EXIT_REPLAY; MATCHED_COST_STRESS_DOWNGRADES_MINUTE_VOL_OVERLAY`
+- `CURRENT_HEAD_AT_RESUME`: `56db89be7c`
+- `CURRENT_SCIENTIFIC_LAYER`: `EVIDENCE_BACKED_DEPTH_COMPLETE; UPPER_LIMIT_CONTAMINATION_REPLICATED; MOMENTUM_CHRONOLOGICALLY_UNSTABLE; CANONICAL_IVOL_DATA_BLOCKED; NO_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: what genuinely return-generating long-only mechanism is still representable with registered data without another price-path or defensive-factor variant? Prioritize event/information-flow or bounded new data contracts over Low Vol-of-Vol, skewness, support, and the six closed cycle-009 formulations.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: what genuinely return-generating long-only mechanism remains representable without another momentum, extreme-return, support, or defensive-risk variant? Highest value is a bounded data contract that unlocks several families (PIT factors/fundamentals, investor flow, or order/queue information), or an independently specified event/information-flow prior using current data.
 
 ## Research OS V2.3 resource and worker state
 

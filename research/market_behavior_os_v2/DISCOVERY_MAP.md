@@ -1,6 +1,6 @@
 # Lean discovery map
 
-Updated 2026-08-31. This is the compact exploration-funnel view. Detailed
+Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
@@ -22,6 +22,18 @@ half-gross overlay is downgraded after its predeclared matched-cost stress. Both
 use repeatedly consumed 2018--2023 history. The external post-2023 boundary is
 contaminated by an inventory incident, so neither mechanism may be confirmed on
 that material.
+
+## Cycle-010 depth conclusions
+
+- Upper-limit-event removal improves conventional momentum ranking in every
+  frozen 6/9/12-month construction, but the revised top-minus-bottom spread is
+  positive in 2018--2020 and negative in 2021--2023. Preserve as
+  `CHRONOLOGICALLY_UNSTABLE` mechanism evidence; no candidate or replay.
+- Low-MAX minus High-MAX is positive in both blocks and improves severe-loss
+  incidence, but the Low-MAX long leg has no full-sample excess. Preserve as
+  `MECHANISM_CONFIRMED_LONG_LEG_WEAK`; no candidate or replay.
+- Canonical IVOL, residual momentum, and the optional third family are data
+  blocked. No internal proxy is promoted into the canonical mechanism map.
 
 ## Fast-screen casualties
 

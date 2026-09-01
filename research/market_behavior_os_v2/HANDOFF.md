@@ -2,6 +2,45 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: evidence-backed revised momentum and low-risk depth
+
+Resume after the commit containing `ASHARE-EVIDENCE-DEPTH-CYCLE-010`; its
+starting checkpoint is `56db89be7c`. Do not rerun or tune the frozen 6/9/12-month
+revised-momentum cells, Wan MAX/MIN sorts, or their portfolio conventions. All
+2018--2023 evidence is consumed development history; post-2023 outcomes and
+CY-011 remain unread.
+
+The earlier JT-style Top-20 12-minus-1 result remains adverse for that exact
+implementation. The deeper Liu-Wu-Zhu mechanism test uses causal historical
+`up_limit_price` rules and removes every upper-limit close plus its next stock
+session. For 12 months, conventional/revised top-minus-bottom net returns are
+-0.393%/+0.353% full; revised is +3.230% early and -1.178% late. The correction
+improves the spread by +0.747 pp full and also improves all frozen 6/9-month
+cells. Conventional-only winners subsequently return -0.887% versus +0.026%
+for revised-only winners, while mean upper-limit counts fall from 8.20 to 1.30.
+This confirms contamination removal but not portable momentum. The revised long
+leg has only +0.029% net, -0.218% excess versus date control, and +5.236 pp
+severe-loss disadvantage; classification is `CHRONOLOGICALLY_UNSTABLE`. No replay.
+
+Wan canonical IVOL requires PIT RMRF/SMB/HML/WML histories. They are not
+registered and QD-011 is not alpha-authorized, so
+`CANONICAL_IVOL_DATA_LIMITED`; no proxy two-way sort or internal defensive-lead
+mapping was run. Source-defined Low-MAX beats High-MAX by +0.637% full and in
+both blocks. The Low-MAX leg improves severe-loss incidence by 4.911 pp, but
+has -0.020% excess and negative excess in the early block:
+`MECHANISM_CONFIRMED_LONG_LEG_WEAK`, no replay. MIN is
+`CHRONOLOGICALLY_UNSTABLE`. Exact left-tail reversal was not recovered and
+canonical residual momentum remains factor-data blocked; no third family ran.
+
+What market behavior are we still not studying? Canonical PIT factor-residual
+risk, immutable-vintage fundamentals, investor-flow identity, order-book/queue
+pressure, borrow-feasible short legs, and independent post-development
+confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The institutional momentum correction is useful mechanism evidence, not a
+deployable long-only archetype in this sample.
+
 ## Latest checkpoint: defensive independence and new-alpha screen
 
 Resume after the commit containing `ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009`;
