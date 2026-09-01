@@ -4,6 +4,24 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Down-Gap First-Reclaim V1
+
+- Exact tested family: eligible >=5% down gap, lifetime first upward entry at
+  `gap_open x 1.01`, same-day allowed, 20 bps per side, fixed T+1-open/T+1-close/
+  T+2-close/T+3-close outcomes. Do not duplicate or rescue this family through
+  thresholds, windows, gap age, board, ST, historical limit state, or exit.
+- 41,541 gaps produce 40,468 exact minute first crossings, 40,075 executable
+  gap events, and 40,031 unique fundable stock/timestamp entries. All admitted
+  sessions have 241 bars; Validation 2022--2023 and Final OOS remain unread.
+- Pooled T+1-open is +0.210% net, but five of eight years are negative and the
+  equal-event-day mean is -1.526%. The top 1% crowded dates contain 42.13% of
+  signals and 64.22% of positive-return mass. Classification:
+  `OUTLIER_OR_CLUSTER_DRIVEN`; no Validation and no V2.
+- Lower completed-session dry-up, low same-clock intraday activity, price
+  stabilization, larger gaps, and fresh gaps are useful descriptive
+  representations only. Pooled dry-up ordering is supported in just 2/8 years
+  under the frozen annual comparison and is not a proven strategy condition.
+
 ## Tail-to-Open LightGBM V1 amended Stage A
 
 - A distinct cross-sectional ML lane is chronology-certified without reading model outcomes. It

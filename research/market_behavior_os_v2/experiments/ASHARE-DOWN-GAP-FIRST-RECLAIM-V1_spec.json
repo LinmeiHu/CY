@@ -1,0 +1,12 @@
+{
+  "experiment_id": "ASHARE-DOWN-GAP-FIRST-RECLAIM-V1",
+  "status": "FROZEN_BEFORE_EVENT_OUTCOME_ACCESS",
+  "development": ["2014-01-01", "2021-12-31"],
+  "gap": {"minimum_pct": 0.05, "trigger_multiple": 1.01, "first_reclaim_only": true, "same_day_allowed": true},
+  "execution": {"cost_per_side": 0.002, "stop_entry": "crossing minute open below trigger uses trigger; gap-through minute open at/above trigger uses actual minute open", "invalid": "limits, suspension, corporate-action uncertainty, and nontradable rows fail closed"},
+  "dryup": {"completed_session_ratio": "median(last 3 completed sessions turnover_fraction) / median(preceding 17)", "intraday": "cumulative amount before crossing minute / median same-clock cumulative amount over prior 20 completed eligible sessions", "trend": "median(last 2 completed sessions turnover_fraction) / median(previous 3)", "price_resistance": "median(last 3 completed-session closes) >= median(preceding 3 completed-session closes)", "bins": [0.3,0.5,0.7,1.0]},
+  "exclude_industries": ["煤炭开采","油气开采Ⅱ","油服工程","炼化及贸易","普钢","特钢Ⅱ","冶钢原料","工业金属","小金属","贵金属","能源金属","金属新材料","化学原料","化学制品","农化制品","化学纤维","电子化学品Ⅱ","水泥","玻璃玻纤","非金属材料Ⅱ","电力","燃气Ⅱ"],
+  "universe": {"boards": ["Shanghai Main Board","Shenzhen Main Board","ChiNext"], "st_included": true, "star_and_bse_excluded": true},
+  "outcomes": ["T1_legal_open","T1_close","T2_close","T3_close"],
+  "sealed": {"validation_opened": false, "final_oos_opened": false, "post_2021_outcome_read": false}
+}

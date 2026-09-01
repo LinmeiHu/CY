@@ -2,6 +2,37 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: Down-Gap First-Reclaim V1 Development closure
+
+Resume after the commit containing `ASHARE-DOWN-GAP-FIRST-RECLAIM-V1`; its
+starting checkpoint is `2b172ebe29` on `research/ashare-ultrashort-v1`.
+Development is complete through 2021. Validation 2022--2023 and Final OOS 2024
+onward remain sealed and unread.
+
+The frozen universe contains 41,541 qualifying >=5% down gaps and 40,717
+daily-path candidate reclaims. Exact QD-004 minute chronology confirms 40,468
+first crossings; 40,075 gap events are executable and collapse to 40,031 unique
+stock/timestamp entries. Every admitted event has the exact 241-bar session,
+PIT industry/rule/action state, one lifetime signal per gap, no same-bar
+execution fiction, and no post-trigger volume in dry-up. Another 390 crossings
+are fail-closed because an intervening action invalidated the old raw-price gap
+coordinate.
+
+Pooled T+1 legal-open return is +0.612% gross and +0.210% net after 20 bps per
+side, but the median is -0.066% and only 2015, 2016, and 2020 are net positive.
+Equal-weighted event-day net mean is -1.526%. The 19 most crowded dates contain
+42.13% of entries and 64.22% of positive-return mass; their signed contribution
+is more than five times the small pooled signed sum. Individual winner-tail
+concentration is not the main failure.
+
+Lower Dryup_3_20, low intraday activity, price stabilization, larger gaps, and
+fresh gap ages show pooled descriptive ordering, but positive low-dryup
+superiority appears in only two of eight years. Final classification is
+`OUTLIER_OR_CLUSTER_DRIVEN`. Close this exact V1 without opening Validation and
+without threshold/window/age/board/ST/limit-state/exit rescue. Retain dry-up,
+stabilization, and crowding only as unproven representations; they do not
+authorize V2 from this evidence.
+
 ## Latest checkpoint: A-share Tail-to-Open LightGBM V1 amended Stage A
 
 Resume from the chronology-extension checkpoint based on `28726ddc82` on

@@ -7,17 +7,17 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `28726ddc82` (original outcome-blind Tail-to-Open Stage-A checkpoint)
-- `CURRENT_PHASE`: `ASHARE_TAIL_OPEN_LGBM_V1_CHRONOLOGY_EXTENSION_CERTIFIED_AWAITING_MODEL_AUTHORIZATION`
-- `CURRENT_PRIMARY_FRONTIER`: The unchanged 14:25-information, fixed-14:56-entry, first-legal-next-open ML contract is certified across 2014--2023 after a 2013 warm-up. Development is 2014--2021, validation is 2022--2023, and final OOS 2024--2026 remains locked/unread. The chronology amendment occurred before any valid model outcome; Ridge and LightGBM fitting remain unauthorized pending the chronology report
+- `CURRENT_BASELINE`: `2b172ebe29` (Down-Gap First-Reclaim V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_DOWN_GAP_FIRST_RECLAIM_V1_DEVELOPMENT_COMPLETE_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: The exact lifetime first reclaim of a >=5% down gap at gap-open x1.01 is `OUTLIER_OR_CLUSTER_DRIVEN`. Pooled T+1-open net is +0.210%, but only 3/8 Development years are positive; the top 1% crowded dates contain 42.13% of signals and 64.22% of positive-return mass. Validation 2022--2023 and Final OOS remain sealed/unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Stage A contains no forward outcome, model fit, or replay. Cycle 014 remains stopped with zero promotions and Cycle 013 remains closed unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: none. Down-Gap First-Reclaim V1 is closed without Validation; pooled dry-up/stabilization structure is representation evidence only and does not authorize V2
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `28726ddc82`
+- `STARTING_HEAD`: `2b172ebe29`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `fc57419216`
+- `CURRENT_HEAD_AT_RESUME`: `2b172ebe29`
 - `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: after explicit model-fit authorization, can the frozen four-fold 2018--2021 development predictions establish positive cross-sectional and after-cost Top-10 value sufficient to open 2022--2023 validation? Do not fit before authorization or open post-2023 final OOS unless every validation continuation gate passes and a separate freeze artifact is committed.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move away from the exact down-gap/open-x1.01 lifetime first-reclaim family. Do not rescue it with gap, reclaim, dry-up, age, board, ST, limit-state, or exit thresholds. Dry-up, stabilization, and market-wide crowding may be reused only as unproven representations in a genuinely independent preregistered lane.
 
 ## Research OS V2.3 resource and worker state
 

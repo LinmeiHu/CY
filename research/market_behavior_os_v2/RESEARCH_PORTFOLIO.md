@@ -6,9 +6,9 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 30% | Tail-to-Open LightGBM V1 is outcome-blind and chronology-certified across 2014--2023; Cycle 014 remains closed with zero promotion | Await explicit fit authorization, then run only the fixed 2018--2021 development folds and gated 2022--2023 validation; final OOS stays sealed |
+| EXPLORE | 20% | Down-Gap First-Reclaim V1 is closed as cluster-driven: pooled positive economics occur in only 3/8 years and do not authorize Validation or V2 | Move to a genuinely independent event/information lane; preserve dry-up, stabilization, and crowding only as unproven representations |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
-| INVENT | 45% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
+| INVENT | 55% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
 | TRANSFER | 5% | The sole Confirmed-Breakdown admission mapping affected zero decisions | Park the translation; do not open the exit role as a rescue |
 | FALSIFY | 5% | Low-MAX survives 40 bps friction but fails the one distinct CHINEXT portability replay | Preserve it as Industry-Diffusion-specific conditional information and close further Low-MAX research |
