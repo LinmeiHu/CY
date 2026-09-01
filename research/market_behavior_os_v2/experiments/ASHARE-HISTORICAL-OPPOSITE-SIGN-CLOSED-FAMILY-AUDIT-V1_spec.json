@@ -1,0 +1,95 @@
+{
+  "experiment_id": "ASHARE-HISTORICAL-OPPOSITE-SIGN-CLOSED-FAMILY-AUDIT-V1",
+  "status": "FROZEN_BEFORE_FAMILY_LEVEL_OPPOSITE_SIGN_CLASSIFICATION",
+  "starting_checkpoint": "b6fb8974f38e3606633e23c7caed25428a45819b",
+  "required_branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "HISTORICAL_RESEARCH_GOVERNANCE_AUDIT_OF_CONSUMED_ARTIFACTS_NOT_NEW_OUTCOME_RESEARCH_NOT_ALPHA_CONFIRMATION",
+  "source_snapshot": {
+    "commit": "b6fb8974f38e3606633e23c7caed25428a45819b",
+    "artifact_precedence": [
+      "frozen experiment result JSON or compact result table",
+      "final experiment report",
+      "frozen specification and experiment manifest",
+      "EXPERIMENT_REGISTRY.md",
+      "STRATEGY_PRIOR_MAP_RESULTS.md",
+      "DISCOVERY_MAP.md",
+      "STATE.md and HANDOFF.md",
+      "conversation memory only as a locator, never as final evidence"
+    ],
+    "snapshot_rule": "Mutable authoritative summaries are read from starting_checkpoint with git show; detailed tracked artifacts must have their blob identity recorded in the evidence manifest."
+  },
+  "scope": {
+    "include": [
+      "completed pre-2024 A-share outcome-bearing experiments with explicit closure, null, mixed, unstable, defensive, failed-transfer, or no-useful-information decisions",
+      "named price-limit lifecycle and reopen-reseal acceptance states",
+      "named Low Idio, Low Vol-of-Vol, Low Skewness defensive families",
+      "named RS Acceleration veto and Champion Confirmed-Breakdown exit translation",
+      "named minute leader-follower propagation family",
+      "scientifically incomplete Cross-Sectional Dispersion translation as an unresolved control",
+      "other family-level closed results with sufficient compact artifacts and a recoverable original direction"
+    ],
+    "exclude": [
+      "outcome-blind representation construction without an economic-response claim",
+      "pure engineering attempts superseded by a completed scientific retry",
+      "current frozen Strategy A construction and successful components except as already-used controls",
+      "the fully audited Downside Resilience and Shock Absorption/Recovery sequence except as a methodological reference",
+      "post-2023 outcomes and CY-011",
+      "raw-panel recomputation, full-market rebuilds, strategy replay, and new parameter or outcome research"
+    ],
+    "family_consolidation": "Multiple experiments testing the same mechanism and decision role are consolidated into one family row; materially different mechanisms inside a batch may receive separate rows when the authoritative artifacts provide separate directional conclusions.",
+    "inventory_count_rule": "TOTAL_EXPERIMENTS_INVENTORIED counts distinct experiment IDs inspected, including reference-only and unresolved experiments; TOTAL_FAMILIES_AUDITED counts consolidated rows assigned one of the six audit classes."
+  },
+  "audit_classifications": {
+    "TRUE_NULL": "Economically tiny, noisy, incoherent across horizons/periods/definitions, or without reliable opposite structure.",
+    "CHRONOLOGICALLY_UNSTABLE": "Meaningful effect reverses materially across fixed chronological blocks or years and neither leg has a separately stable interpretable structure.",
+    "STABLE_ADVERSE_ALREADY_USED": "The original direction failed or exposed adverse information, and that information was already incorporated into an accepted decision, preserved component, explicit non-action, or frozen lifecycle interpretation.",
+    "STABLE_ADVERSE_LONG_CANDIDATE_NEEDS_ANATOMY": "Existing artifacts suggest the opposite long leg itself may have positive absolute or relative payoff, but its standalone leg/baseline decomposition has not been completed.",
+    "STABLE_ADVERSE_AVOIDANCE_CANDIDATE_NEEDS_ANATOMY": "The originally favored group appears intrinsically and stably adverse enough to justify a later negative-leg anatomy, but no strategy or veto is authorized.",
+    "SCIENTIFICALLY_UNRESOLVED": "Resource, data-contract, pipeline, sample, or pre-outcome failure prevented a scientific conclusion."
+  },
+  "stable_adverse_criteria": {
+    "required": [
+      "economically meaningful adverse magnitude at the family's natural horizon or decision role",
+      "same adverse direction across both fixed development blocks when block evidence exists",
+      "broad horizon, parameter, year, or distribution support when those diagnostics exist",
+      "a comparison against zero, event/sample baseline, PIT industry, broad market, matched control, or executable baseline",
+      "the adverse interpretation is not already invalidated by an available leg decomposition"
+    ],
+    "minimum_evidence_rule": "At least three independent consistency dimensions among horizon, parameter, chronology, year, distribution, and baseline must support the adverse interpretation; chronology is mandatory when reported.",
+    "economic_materiality_guide": "As a guide rather than a search threshold: at least 20 bp at a natural short/medium return horizon, at least 2 percentage points in a severe-loss/risk diagnostic, or a material executable portfolio delta. Tiny effects remain null even with repeated signs.",
+    "missing_diagnostic_rule": "Unavailable diagnostics are marked UNKNOWN, never imputed as favorable evidence."
+  },
+  "spread_decomposition": {
+    "true_opposite_long": "Opposite leg is itself positive in absolute and/or PIT-relative terms, not merely above the original leg.",
+    "avoidance_only": "Originally favored leg is materially negative versus zero/baseline while the opposite leg is ordinary or unknown.",
+    "less_bad_only": "Both legs are weak/negative and the opposite leg only loses less.",
+    "relative_only": "A stable spread exists without a usable absolute long leg.",
+    "unknown": "Existing compact artifacts do not identify the legs; candidate status must say NEEDS_ANATOMY and may not claim Alpha."
+  },
+  "already_used_rule": "Includes accepted or preserved veto/admission/ranking/defensive information and a scientifically justified retain/no-exit decision. An already-used finding is not a new candidate.",
+  "candidate_priority": {
+    "formula": "Evidence Strength x Economic Magnitude x Stability x New Information / Follow-up Cost",
+    "levels": ["HIGH", "MEDIUM", "LOW", "NONE"],
+    "high": "Broad material adverse evidence, chronological agreement, genuinely unexploited decision information, and low-cost anatomy from existing compact artifacts or panels.",
+    "medium": "Credible adverse topology with one important missing decomposition/stability diagnostic or moderate follow-up cost.",
+    "low": "Weak magnitude, incomplete stability, relative-only potential, or limited decision headroom.",
+    "followup_cap": 3
+  },
+  "governance": {
+    "post_2023_outcome_read": false,
+    "cy011_read": false,
+    "new_outcome_research_run": false,
+    "raw_panel_read": false,
+    "full_strategy_replay": false,
+    "parameter_rescue": false,
+    "opposite_sign_is_confirmation": false,
+    "candidate_label": "POST_HOC_HYPOTHESIS_GENERATED_FROM_CONSUMED_DEVELOPMENT_HISTORY"
+  },
+  "required_outputs": [
+    "authoritative experiment ledger",
+    "consolidated six-class family audit table",
+    "compact candidate table capped at three",
+    "methodology and decision report",
+    "Research OS state and portfolio updates"
+  ]
+}

@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 55% | Q5 has broad delayed h10/h20 weakness, but the frozen avoidance gate fails early-h5 block stability and severity-control breadth; frozen Dispersion remains unresolved only because of engineering failure | Complete frozen Cross-Sectional Dispersion with a bounded external-disk plan; close shock/recovery without bucket, cutoff, control, or execution rescue |
+| EXPLORE | 55% | The artifact audit found eight stable adverse avoidance questions but no opposite long Alpha; only Price-limit stable acceptance has enough evidence and low enough cost for one immediate anatomy | Run one frozen Price-Limit Cycle-014 negative-leg/event-baseline anatomy; if it is merely less bad, resume frozen Cross-Sectional Dispersion |
 | EXPLOIT | 5% | Champion remains cost-resilient and Low-MAX helpful in both losing years, but no modification is authorized | Freeze exact rules; seek only genuinely independent confirmation |
 | INVENT | 20% | Relative-value, investor-flow identity, PIT factors, and order-book/queue information directly address the diversification gap | Prefer one bounded multi-family contract only when acquisition is separately justified |
 | REPLICATE | 15% | Canonical IVOL/residual momentum and PIT fundamentals are blocked; lawful independent confirmation is also unavailable | Resume only with a source-ready factor/history contract or genuinely independent data |
@@ -17,3 +17,23 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## Historical opposite-sign audit allocation
+
+The audit inventories 35 experiment IDs and consolidates 28 families: 4 true
+nulls, 7 chronologically unstable, 5 stable adverse already used, 8 stable
+adverse avoidance candidates needing anatomy, no adverse long candidate, and 4
+scientifically unresolved. It creates no Alpha claim and authorizes no strategy
+change.
+
+Immediate capital is limited to one low-cost Price-limit stable/early acceptance
+leg decomposition. Relative-rank acceleration and same-month seasonality are
+reserve anatomies within the frozen cap of three. The other adverse rows stay
+ledgered but unopened. If the first anatomy does not establish an intrinsically
+bad favored leg beyond relative less-bad comparisons, frozen Cross-Sectional
+Dispersion regains the next allocation.
+
+The method correction is permanent: expected-sign failure is not an economic
+null until both legs are reported versus zero and a date/event baseline. Stable
+adverse information may justify an avoidance anatomy; it does not justify an
+inverted strategy or an opposite-sign Alpha claim.

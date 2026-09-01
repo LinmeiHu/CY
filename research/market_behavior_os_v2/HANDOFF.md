@@ -2,6 +2,42 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: historical opposite-sign closed-family audit
+
+Resume after the commit containing
+`ASHARE-HISTORICAL-OPPOSITE-SIGN-CLOSED-FAMILY-AUDIT-V1`; its clean starting
+checkpoint is `b6fb8974f38e3606633e23c7caed25428a45819b`. Preserve Industry
+Diffusion plus Weekly Low-MAX unchanged. This is a historical artifact audit,
+not new outcome research, validation, confirmation, or a strategy experiment.
+Post-2023 outcomes and CY-011 remain unread.
+
+The frozen audit specification hash is
+`3c24431eb14105e28e8b98272dcc1a45b988db962c61d9e98237243af6f87fb2`.
+The audit inventories 35 distinct experiment IDs and consolidates 28 families:
+4 true nulls, 7 chronologically unstable, 5 stable adverse already used, 8
+stable adverse avoidance candidates needing anatomy, zero adverse long
+candidates, and 4 scientifically unresolved.
+
+No opposite-sign Alpha was found. The three capped post-hoc follow-up candidates
+are Price-limit stable/early acceptance, market-relative/industry-follower rank
+acceleration, and same-calendar-month seasonality. Each is
+`POST_HOC_HYPOTHESIS_GENERATED_FROM_CONSUMED_DEVELOPMENT_HISTORY`; current
+compact artifacts do not establish a positive opposite long leg.
+
+Allocate exactly one bounded next anatomy to the frozen Price-Limit Cycle-014
+stable/early acceptance states: compare each leg with zero and the all-event
+baseline across existing horizons/years, with no new threshold, state,
+parameter, or replay. If this shows only relative less-bad structure, stop and
+resume frozen Cross-Sectional Dispersion science. Do not automatically cascade
+through the other seven ledgered adverse families.
+
+Keep closed: minute leader/follower, price-limit transition/reopen-reseal,
+residual Sharpe, rank models, revised momentum, mixed published technical
+priors, overnight/daytime, gap/close-location, industry rotation, liquidity
+recovery, downside-participation veto, and the fully audited downside/shock
+sequence. Dispersion remains `SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`, not
+null.
+
 ## Latest checkpoint: strong-recovery Q5 avoidance anatomy closes nonactionable
 
 Resume after the commit containing

@@ -4,6 +4,36 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Historical Opposite-Sign Closed-Family Audit V1 conclusions
+
+- Artifact-only audit of 35 experiment IDs consolidated into 28 economic
+  families; no raw outcome panels, new outcome aggregation, post-2023 outcome,
+  CY-011 input, strategy replay, or parameter rescue.
+- Classification: 4 `TRUE_NULL`, 7 `CHRONOLOGICALLY_UNSTABLE`, 5
+  `STABLE_ADVERSE_ALREADY_USED`, 8
+  `STABLE_ADVERSE_AVOIDANCE_CANDIDATE_NEEDS_ANATOMY`, zero adverse long
+  candidates, and 4 `SCIENTIFICALLY_UNRESOLVED`.
+- No opposite-sign Alpha exists in the audited artifacts. The eight adverse
+  rows identify missing negative-leg anatomy, not profitable inversions.
+- Follow-up cap is three: Price-limit stable/early acceptance, relative-rank
+  acceleration, and same-month seasonality. All are
+  `POST_HOC_HYPOTHESIS_GENERATED_FROM_CONSUMED_DEVELOPMENT_HISTORY`.
+- Only Price-limit stable/early acceptance receives an immediate bounded
+  leg-versus-event-baseline anatomy. If it is merely less bad, resume frozen
+  Dispersion instead of cascading through the ledger.
+- Minute leader/follower is a true null. Low-risk defensive information, the
+  RS veto, breakdown/no-exit lifecycle, minute-volatility overlay, and
+  breakout formation-depth tail risk were already properly used. Dispersion
+  remains `SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`.
+
+What market behavior are we still not studying? A completed executable
+Cross-Sectional Dispersion opportunity/ranking mechanism, versioned PIT
+fundamentals, order-book/queue pressure, and borrow-feasible relative value.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The audit recovered post-hoc avoidance questions only; it did not establish a
+new long Alpha engine.
+
 ## Post-Shock Strong-Recovery Avoidance Anatomy V1 conclusions
 
 - This is Q5-only post-hoc consumed-development anatomy generated after the

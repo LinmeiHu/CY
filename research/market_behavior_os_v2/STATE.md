@@ -7,30 +7,30 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `832edcbd7033fcbe5c9c5e886a35fb7ab6e71d70` (clean start of Post-Shock Strong-Recovery Avoidance Anatomy V1)
-- `CURRENT_PHASE`: `POST_HOC_STRONG_RECOVERY_AVOIDANCE_ANATOMY_CLOSED_NO_ACTIONABLE_AVOIDANCE_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`: Q5 is broadly adverse at h10/h20, but the frozen avoidance gate fails because early h5 absolute return is slightly positive and only 4/9 severity groups remain adverse at every primary horizon. The entire local shock/recovery family is closed without cutoff, control, bucket, or execution rescue; frozen Dispersion remains scientifically unresolved
+- `CURRENT_BASELINE`: `b6fb8974f38e3606633e23c7caed25428a45819b` (clean start of Historical Opposite-Sign Closed-Family Audit V1)
+- `CURRENT_PHASE`: `HISTORICAL_OPPOSITE_SIGN_AUDIT_COMPLETE_NO_ALPHA_CONFIRMATION`
+- `CURRENT_PRIMARY_FRONTIER`: `ONE_BOUNDED_PRICE_LIMIT_STABLE_ACCEPTANCE_NEGATIVE_LEG_ANATOMY`: the artifact audit found broad adverse lifecycle evidence but no demonstrated opposite long leg. Run one frozen leg-versus-event-baseline anatomy only; if it is merely less bad, resume `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`, which remains `SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `832edcbd7033fcbe5c9c5e886a35fb7ab6e71d70`
+- `STARTING_HEAD`: `b6fb8974f38e3606633e23c7caed25428a45819b`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `832edcbd7033fcbe5c9c5e886a35fb7ab6e71d70`
-- `CURRENT_SCIENTIFIC_LAYER`: `POST_HOC_Q5_AVOIDANCE_ANATOMY; DELAYED_BROAD_WEAKNESS; FROZEN_STABILITY_AND_SEVERITY_GATE_FAIL; NO_ACTIONABLE_CANDIDATE; NO_REPLAY`
-- `REPRESENTATIONS_TESTED`: exact inherited 18-cell Q5-only zero/event/PIT-industry baselines, h1/h3/h5/h10/h20 magnitude and downside anatomy, fixed blocks/years, inherited severity/trend/volatility/liquidity controls, and frozen generic non-shock comparison
-- `ECONOMIC_RESPONSE_STATUS`: `Q5_H10_H20_ABSOLUTE_AND_RELATIVE_WEAKNESS; H5_EARLY_ABSOLUTE_NOT_ADVERSE; SEVERITY_CONTROL_INCOMPLETE; NO_ACTIONABLE_AVOIDANCE_INFORMATION`
-- `LEVEL_VS_TRANSITION_STATUS`: `CONTINUOUS_RECOVERY_RHO_NEGATIVE_BUT_BUCKET_PATH_NONMONOTONIC_AND_Q1_NOT_PROFITABLE`
-- `EVENT_EPISODE_RULES`: objective completed daily joint shock; within-cell same-symbol suppression through s+W; exact s+1:s+W observation; next legal open only
-- `YEAR_BY_YEAR_RESULTS`: Q5 absolute and industry-relative means are both negative in 4/6, 5/6, and 6/6 years at h5/h10/h20. The early block is +0.028% absolute at h5 but negative at h10/h20; the late block is negative at every primary horizon
-- `PLACEBO_RESULTS`: Q5 remains adverse at all primary horizons in 4/9 supported severity groups, 3/3 trend terciles, 2/3 volatility terciles, and 3/3 liquidity terciles. Generic Q5 has comparable absolute event underperformance but near-zero industry-relative effect, so 0/3 windows pass the frozen generic-risk definition
-- `SUPPORTED_MARKET_STATES`: none from Shock Absorption / Recovery V1.1
-- `DESCRIPTIVE_ONLY_STATES`: weak continuous adverse-recovery rho and reversal-consistent further-drawdown rho; neither overcomes negative Q1 absolute/median economics or nonmonotonic buckets
+- `CURRENT_HEAD_AT_RESUME`: `b6fb8974f38e3606633e23c7caed25428a45819b`
+- `CURRENT_SCIENTIFIC_LAYER`: `ARTIFACT_ONLY_RESEARCH_GOVERNANCE_AUDIT; FAILED_EXPECTED_SIGN_SEPARATED_FROM_SCIENTIFIC_NULL; NO_NEW_OUTCOME_RESEARCH; NO_REPLAY`
+- `REPRESENTATIONS_TESTED`: none newly; the audit consolidated prior outcome-bearing strategy/factor families from tracked reports, results, specs, and registries under one frozen six-class governance contract
+- `ECONOMIC_RESPONSE_STATUS`: `NO_NEW_RESPONSE_ESTIMATE; FOUR_TRUE_NULL; SEVEN_CHRONOLOGICALLY_UNSTABLE; FIVE_STABLE_ADVERSE_ALREADY_USED; EIGHT_POST_HOC_AVOIDANCE_ANATOMY_QUESTIONS; ZERO_OPPOSITE_LONG_CANDIDATES; FOUR_UNRESOLVED`
+- `LEVEL_VS_TRANSITION_STATUS`: `LEG_VERSUS_ZERO_AND_EVENT_DATE_BASELINE_DECOMPOSITION_NOW_REQUIRED_BEFORE_ECONOMIC_NULL_CLOSURE`
+- `EVENT_EPISODE_RULES`: inherited exact experiment definitions only; no event, score, threshold, horizon, state, or action was changed or recomputed
+- `YEAR_BY_YEAR_RESULTS`: no new yearly outcome aggregation; existing year evidence was cited only where present in compact tracked artifacts and missing year diagnostics remain unknown
+- `PLACEBO_RESULTS`: no new controls/placebos; existing control evidence was cited without recomputation
+- `SUPPORTED_MARKET_STATES`: none newly established by this audit
+- `DESCRIPTIVE_ONLY_STATES`: eight stable adverse rows identify post-hoc avoidance questions only; none establishes a profitable opposite leg
 - `STRATEGY_HABITAT_STATUS`: `NO_STRATEGY_A_TRANSFER_OR_CHANGE; NO_STRATEGY_B_REPLAY; FROZEN_CHAMPION_UNCHANGED`
-- `CURRENT_MECHANISMS`: extreme recovery after a frozen shock is associated with accumulating h10/h20 weakness, broad negative medians/win rates, and worse h20 downside. It nevertheless fails the pre-frozen actionability standard because the earliest primary horizon and severity controls are incomplete. This is descriptive post-hoc negative-selection anatomy, not a veto candidate
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: complete the previously resource-failed frozen Cross-Sectional Dispersion science with a bounded external-disk execution plan. Do not test Q4, Q4+Q5, percentiles, alternative recovery scores, new controls, or a portfolio veto.
+- `CURRENT_MECHANISMS`: Price-limit stable/early acceptance has the broadest under-analyzed adverse lifecycle topology. Relative-rank acceleration and same-month seasonality are reserve negative-leg anatomies. All remain consumed-development hypotheses, not Alpha or strategy components
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: in the frozen Price-Limit Cycle-014 lifecycle only, is stable/early acceptance intrinsically adverse versus the all-event baseline across horizons/years, or merely less bad than other negative states? This is one post-hoc anatomy, not a veto or strategy. If it fails, resume frozen Dispersion rather than cascading through every ledgered adverse family.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,42 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Historical Opposite-Sign Closed-Family Audit V1
+
+`ASHARE-HISTORICAL-OPPOSITE-SIGN-CLOSED-FAMILY-AUDIT-V1` is an artifact-only
+governance audit at starting checkpoint
+`b6fb8974f38e3606633e23c7caed25428a45819b`. It reads tracked compact reports,
+specifications, and results only: no raw outcome panel, post-2023 outcome,
+CY-011 input, new outcome aggregation, parameter rescue, or strategy replay.
+
+The frozen classification contract has SHA-256
+`3c24431eb14105e28e8b98272dcc1a45b988db962c61d9e98237243af6f87fb2`.
+It inventories 35 experiment IDs and consolidates 28 economic families: 4
+`TRUE_NULL`, 7 `CHRONOLOGICALLY_UNSTABLE`, 5
+`STABLE_ADVERSE_ALREADY_USED`, 8
+`STABLE_ADVERSE_AVOIDANCE_CANDIDATE_NEEDS_ANATOMY`, zero adverse long
+candidates, and 4 `SCIENTIFICALLY_UNRESOLVED`.
+
+No opposite-sign Alpha is established. The eight under-analyzed rows contain
+post-hoc avoidance questions only. Immediate follow-up is capped at three:
+Price-limit stable/early acceptance, relative-rank acceleration, and
+same-calendar-month seasonality. Only the first receives the next unit of
+research capital. Low-priority FIP, residual asymmetry, objective retest,
+intraday demand/acceptance, and chip-structure rows remain ledgered without an
+authorization to reopen their families.
+
+Low Idio/Low Vol-of-Vol/Low Skewness/Low-MAX, the RS-acceleration veto,
+Confirmed Breakdown lifecycle, minute-volatility risk overlay, and breakout
+formation-depth tail-risk information were already properly used. Minute
+leader/follower propagation is a true null. Dispersion remains
+`SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`; PIT fundamentals and canonical
+IVOL remain data blocked, while Quiet VWAP execution remains incomplete.
+
+The governance correction is now explicit: failure of the expected direction
+is not an economic null until each leg has been compared with zero and the
+event/date baseline. Stable adverse information may justify an avoidance
+anatomy, but it never establishes a profitable opposite leg.
 
 ### Post-Shock Strong-Recovery Avoidance Anatomy V1
 
