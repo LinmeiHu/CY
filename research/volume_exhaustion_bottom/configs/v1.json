@@ -1,0 +1,42 @@
+{
+  "research_version": "volume-exhaustion-bottom-v1",
+  "data": {
+    "asset_id": "CY-006",
+    "parquet_glob": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=*/data_0.parquet",
+    "registry_path": "configs/data_asset_registry.json",
+    "registry_sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2",
+    "activation_manifest_path": "research/volume_exhaustion_bottom/configs/input_snapshot_v1.json",
+    "activation_manifest_sha256": "863d0ddb01765cf2769ebefcab4fe158002ab1d431c78a068b76837526a46bcc",
+    "inventory_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "inventory_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "snapshot_id": "CYQ-PIT-B-DAILY-2018-2026-V2"
+  },
+  "sample": {
+    "warmup_start": "2018-01-01",
+    "signal_start": "2020-01-02",
+    "signal_end": "2026-08-12",
+    "minimum_listing_sessions": 120,
+    "minimum_median_amount_20": 10000000.0
+  },
+  "definitions": {
+    "drawdown_60_max": -0.15,
+    "distance_from_low_60_max": 0.05,
+    "amount_5_to_median_20_max": 0.55,
+    "stabilization_return_3_min": -0.02,
+    "stabilization_low_tolerance": -0.01,
+    "confirmation_lookback": 5,
+    "recent_setup_sessions": 5,
+    "event_cooldown_sessions": 5,
+    "second_low_lookback_min": 10,
+    "second_low_lookback_max": 40,
+    "second_low_price_ratio_min": 0.97,
+    "second_low_price_ratio_max": 1.05,
+    "second_low_rebound_min": 0.08,
+    "second_low_contraction_max": 0.60,
+    "second_low_no_contraction_min": 0.80
+  },
+  "runtime": {
+    "threads": 4,
+    "memory_limit": "8GB"
+  }
+}

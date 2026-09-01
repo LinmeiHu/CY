@@ -1,0 +1,45 @@
+{
+  "manifest_id": "VOLUME-EXHAUSTION-BOTTOM-V1-CY006-20260901",
+  "registry_id": "CYQ-DATA-BASELINE-20260820",
+  "registry_sha256": "033bb5f404ed15dfeffb258bdfaaadb4f9ba8cf1bfc0c2cfc3603eec1e4cd0a2",
+  "purpose": "CAUSAL_RESEARCH",
+  "hard_valid": true,
+  "scope": {
+    "start": "2018-01-01",
+    "end": "2026-08-12"
+  },
+  "bindings": [
+    {
+      "role": "daily_pit_b",
+      "asset_id": "CY-006",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+      "source": "CY daily-pit-b-v2 deterministic causal join",
+      "snapshot_id": "CYQ-PIT-B-DAILY-2018-2026-V2",
+      "available_at_policy": "Every component and aggregate available_at must be no later than decision_at; hard_valid=false blocks signal formation and entry.",
+      "inventory_manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "inventory_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  ],
+  "audits": {
+    "coverage": {
+      "status": "PASS",
+      "evidence": "CY-006 audit reports 9,421,907 output rows across nine annual partitions; missing domains remain explicit hard_valid=false."
+    },
+    "duplicates": {
+      "status": "PASS",
+      "evidence": "CY-006 audit reports zero duplicate output keys and zero duplicate source keys."
+    },
+    "time_travel": {
+      "status": "PASS",
+      "evidence": "CY-006 audit reports zero aggregate, action, float, or industry availability violations."
+    },
+    "consistency": {
+      "status": "PASS",
+      "evidence": "CY-006 audit reports zero consistency issues, including turnover-unit mismatch and invalid rows without reasons."
+    },
+    "cross_table": {
+      "status": "PASS",
+      "evidence": "CY-006 audit reports zero join amplification and zero missing or blocking facts that failed to close."
+    }
+  }
+}
