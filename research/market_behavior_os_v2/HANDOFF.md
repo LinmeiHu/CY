@@ -1,6 +1,41 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-09-01.
+Updated 2026-09-02.
+
+## Latest checkpoint: Former-Leader Pre-Break Suffocation V4 closure
+
+Resume after the commit containing `ASHARE-FORMER-LEADER-PREBREAK-SUFFOCATION-V4`;
+its starting checkpoint is `9326f542e1a434aa4025f506cfc254b2c2f0fdb6` on
+`research/ashare-ultrashort-v1`. V4 is an internal chronological pseudo-OOS
+mechanism diagnostic designed after prior 2014--2021 research. Validation
+2022--2023 and Final OOS 2024+ remain sealed and unread.
+
+The semantic correction is complete. `PreBreakDryup_3_20` uses the median
+turnover of the final three completed valid sessions strictly before reclaim
+over the median of the immediately preceding 17. All 3,746 V3 gap events have
+valid history; 12 duplicate entry identities collapse outcome-blind to 3,734
+fundable events. Same-day reclaims account for 3,257 events and correctly use
+completed sessions before the gap/reclaim date.
+
+The <=0.30 versus >1.00 T+1-open contrast is +2.066 pp event-weighted but
+-1.327 pp date-equal. Main same-date evidence is positive on 57 dates/2,211
+events: mean Spearman +0.104 and low-third minus high-third +1.022 pp. ChiNext
+conflicts on 33 dates/616 events: mean Spearman -0.037 and spread -0.196 pp.
+The frozen within-date controls leave near-zero, conflicting Dryup directions.
+The secondary compression measure is also cross-board inconsistent.
+
+The fixed K20 causal allocation comparison worsens Main by 0.220 pp total
+return, 0.217 pp drawdown, and 0.025 Sharpe. It improves ChiNext by only 0.149
+pp return and 0.011 Sharpe, with essentially unchanged drawdown. The combined
+increment is negative and arises almost entirely in 2020 slot competition.
+Final verdict: `PREBREAK_SUFFOCATION_DESCRIPTIVE_ONLY`. Do not launch V5, open
+Validation, or rescue with neighboring windows, means, cutoffs, boards, V3
+champions, exits, K, breadth, or ST filters.
+
+All required causal-volume, same-date, board-isolation, chronology, position,
+cash, and sealed-boundary audits are zero. Two final runs reproduce exact
+feature/NAV/result hashes; 12 V4 tests and 43 related V1--V4 tests pass. Large
+features remain under `/Volumes/quant/CY_quant_research/ashare_former_leader_prebreak_suffocation_v4`.
 
 ## Latest checkpoint: Former-Leader Deep-Drawdown Strict-Gap Reclaim V3 closure
 

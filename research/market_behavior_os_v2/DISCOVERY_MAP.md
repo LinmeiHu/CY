@@ -1,8 +1,25 @@
 # Lean discovery map
 
-Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
+Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
+
+## Former-Leader Pre-Break Suffocation V4
+
+- Exact tested representation: median turnover of the final three completed
+  valid sessions strictly before first reclaim divided by the median of the
+  immediately preceding 17. Same-day reclaims use T-1/T-2/T-3. Do not duplicate
+  through neighboring windows, means, optimized cutoffs, or board-specific rules.
+- All 3,746 V3 gap events have valid Dryup and Compression history; 12 duplicate
+  entry identities collapse outcome-blind to 3,734 fundable signals. There are
+  3,257 same-day and 477 later reclaims.
+- Extreme low Dryup beats >1.00 by +2.066 pp event-weighted but loses by
+  -1.327 pp date-equal. Main same-date low-minus-high is +1.022 pp with mean rho
+  +0.104; ChiNext is -0.196 pp with rho -0.037. Frozen controls are near-zero
+  and directionally conflicting.
+- Fixed K20 ranking changes Main -0.220 pp and ChiNext +0.149 pp; the combined
+  increment is negative. Progressive Compression also conflicts by board.
+  Classification: `PREBREAK_SUFFOCATION_DESCRIPTIVE_ONLY`; no V5 or Validation.
 
 ## Former-Leader Deep-Drawdown Strict-Gap Reclaim V3
 

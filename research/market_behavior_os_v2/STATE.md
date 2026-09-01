@@ -1,23 +1,23 @@
 # Market Behavior Research OS V2 state
 
-Updated 2026-09-01.
+Updated 2026-09-02.
 
 ## Program identity
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `2f4cb6a397c356be3063a348c290412b64a00b9a` (Former-Leader Strict-Gap Reclaim V3 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_FORMER_LEADER_DEEP_DRAWDOWN_STRICT_GAP_RECLAIM_V3_DEVELOPMENT_COMPLETE_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: V3 is `MARGINAL_FORMER_LEADER_EDGE`, not a Validation candidate. Main loses 1.173% with four losing years. ChiNext gains 7.597%, but 2020 supplies essentially all economics, 2018 selection is blocked by the frozen support gate, and removing its best five days makes it negative. Fixed 50/50 gains 3.212% at 0.325 Sharpe. Validation 2022--2023 and Final OOS remain sealed/unread
+- `CURRENT_BASELINE`: `9326f542e1a434aa4025f506cfc254b2c2f0fdb6` (Pre-Break Suffocation V4 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_FORMER_LEADER_PREBREAK_SUFFOCATION_V4_DEVELOPMENT_COMPLETE_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: V4 is `PREBREAK_SUFFOCATION_DESCRIPTIVE_ONLY`, not a Validation candidate. Extreme low Dryup is +2.066 pp event-weighted but -1.327 pp date-equal versus >1.00. Main same-date low-minus-high is +1.022 pp with mean rho +0.104; ChiNext is -0.196 pp with rho -0.037. Fixed K20 allocation changes Main -0.220 pp and ChiNext +0.149 pp, a negative combined increment. Validation 2022--2023 and Final OOS remain sealed/unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Former-leader, prior-run-up, deep-drawdown, and strict-gap filters do not produce broad chronological portfolio economics. Post-gap and intraday dry-up filters never survive selection; the ChiNext gain is panic/rebound clustered
+- `CURRENT_STRATEGY_CANDIDATE`: none. Corrected completed-session pre-breakout suffocation has partial Main-board same-date information but fails pooled date-equal, cross-board, controlled-direction, and combined chronological allocation portability. No V5 is justified
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `2f4cb6a397c356be3063a348c290412b64a00b9a`
+- `STARTING_HEAD`: `9326f542e1a434aa4025f506cfc254b2c2f0fdb6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `2f4cb6a397c356be3063a348c290412b64a00b9a`
+- `CURRENT_HEAD_AT_RESUME`: `9326f542e1a434aa4025f506cfc254b2c2f0fdb6`
 - `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: close V3 without opening Validation. Do not rescue former-leader strict-gap reclaim through neighboring leader/run-up/drawdown/gap/age/dry-up thresholds, board choice, K, ranking, exit, ST exclusion, or panic breadth. Order-book/queue state and investor-flow identity remain materially less studied than another OHLCV event refinement.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: close V4 without opening Validation or launching V5. Do not rescue pre-break suffocation through 2/10, 5/20, 3/30, mean turnover, board-specific cutoffs, or V3 parameter conditioning. Order-book/queue state and investor-flow identity remain materially less studied than another OHLCV volume-window refinement.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-01.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-FORMER-LEADER-DEEP-DRAWDOWN-STRICT-GAP-RECLAIM-V3`
-  is Development-complete and closed without Validation. Final OOS remains locked.
+- `ACTIVE_EXPERIMENT`: `ASHARE-FORMER-LEADER-PREBREAK-SUFFOCATION-V4` is
+  Development-complete and closed without Validation or V5. Final OOS remains locked.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,31 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Former-Leader Pre-Break Suffocation V4
+
+V4 corrects V3's volume semantic without changing its first-reclaim lifecycle,
+entry, outcomes, costs, structural population, or sealed boundaries. All 3,746
+V3 gap events have exact 20-session completed turnover history; 12 simultaneous
+gap identities collapse outcome-blind to 3,734 fundable entries. Of these,
+3,257 reclaim on the gap date and now correctly use T-1/T-2/T-3 in Recent3.
+
+The fixed `median(Recent3)/median(Reference17)` extreme contrast is +2.066 pp
+event-weighted but -1.327 pp after equal weighting across dates. Same-date Main
+Board evidence is positive: 57 dates/2,211 events, mean/median Spearman
++0.104/+0.083 and date-equal low-minus-high +1.022 pp. ChiNext conflicts:
+33 dates/616 events, mean Spearman -0.037 and low-minus-high -0.196 pp. After
+the seven frozen within-date controls, Dryup coefficients are near zero and
+opposite to the raw rank directions. Progressive compression also conflicts by
+board and does not add stable information.
+
+The fixed K20 T+1-open replay does not rescue the mechanism. Main changes from
+-24.580% to -24.800% (-0.220 pp, -0.025 Sharpe); ChiNext changes from -2.631%
+to -2.481% (+0.149 pp, +0.011 Sharpe). Their summed increment is negative.
+Classification: `PREBREAK_SUFFOCATION_DESCRIPTIVE_ONLY`; no V5 and no
+2022--2023 Validation. All causal, same-date, board, fold, position, cash, and
+sealed-period audits are zero. Two runs are byte-identical and 12 V4-focused
+tests pass.
 
 ### Former-Leader Deep-Drawdown Strict-Gap Reclaim V3
 
