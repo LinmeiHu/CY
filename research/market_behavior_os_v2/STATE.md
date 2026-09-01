@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `3455f5ee30` (start of single-feature opportunity-health overlay cycle 018)
-- `CURRENT_PHASE`: `POSITIVE_INDUSTRY_BREADTH_REJECTED_PHASE_A_NO_OVERLAY_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: exact 20-session `POSITIVE_INDUSTRY_BREADTH` is `OPPORTUNITY_HEALTH_NOT_USEFUL`: fixed LOW/MEDIUM/HIGH states are nonmonotonic, HIGH minus LOW cohort payoff is -0.342 pp, the ordering reverses across broad blocks, and HIGH is negative late. Phase B did not run; capital returns to a second independent Alpha engine
+- `CURRENT_BASELINE`: `3e28f50b68` (start of diagnostic champion applicability-map cycle 019)
+- `CURRENT_PHASE`: `CHAMPION_APPLICABILITY_MAP_COMPLETE_NO_DEPLOYMENT_AUTHORIZED`
+- `CURRENT_PRIMARY_FRONTIER`: `PARTIAL_HABITAT_INFORMATION`: causal prior absolute market state separates HIGH from LOW by +1.316 pp with the intended sign in both broad blocks, and lower stock-sign synchronization adds weak repeated information. Dispersion reverses, persistence fails, and 2018 does not share 2022's adverse structure; no exposure/filter experiment is authorized
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 018 rejects the exact Positive Industry Breadth overlay before replay; Cycle 017 authorizes no repair/filter and Cycle 016 no construction modification. Daily refresh and prior closed families remain closed
+- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 019 is diagnostic only and authorizes no deployment rule; Cycle 018's Positive Industry Breadth rejection and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `3455f5ee30`
-- `CURRENT_SCIENTIFIC_LAYER`: `SINGLE_OPPORTUNITY_HEALTH_FEATURE_FALSIFIED; NO_EXPOSURE_OVERLAY; INDEPENDENT_ALPHA_PRIORITIZED`
+- `CURRENT_HEAD_AT_RESUME`: `3e28f50b68`
+- `CURRENT_SCIENTIFIC_LAYER`: `PARTIAL_CAUSAL_APPLICABILITY_MAP; NO_FILTER_OR_EXPOSURE_REPLAY; INDEPENDENT_ALPHA_PRIORITIZED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -69,6 +69,49 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-019 champion market-structure applicability map
+
+Four definitions were frozen before conditional outcomes: prior-20-session
+cross-sectional median market return, stock-return P90--P10 dispersion, stock
+sign synchronization, and week-to-week PIT-industry rank persistence. Expanding
+terciles use only earlier scheduled observations, seeded by 21 pre-strategy
+dates. All 263 frozen weekly decisions and 2,625 trades are covered.
+
+Absolute market LOW/MEDIUM/HIGH states contain 74/96/93 dates with
++0.29%/+2.27%/+1.61% cohort payoff. HIGH minus LOW is +1.316 pp and remains
++1.522 pp/+1.186 pp early/late: `STRONG_APPLICABILITY_INFORMATION`, though the
+MEDIUM state is strongest. Synchronization LOW/MEDIUM/HIGH earns
++2.16%/+0.96%/+1.05%; LOW minus HIGH is +1.106 pp and positive in both blocks:
+`WEAK_APPLICABILITY_INFORMATION`. Dispersion is
+`CHRONOLOGICALLY_UNSTABLE` (+1.468 pp/-1.037 pp), while industry persistence is
+`NO_USEFUL_INFORMATION`.
+
+The primary absolute-state × dispersion map has support in all nine cells. Its
+weakest cell is LOW × MEDIUM at -1.50% across 25 dates and five years, but
+dispersion does not provide a monotonic or stable standalone mechanism. The
+absolute-state × synchronization map has seven supported cells; the two missing
+cells remain explicitly insufficient.
+
+2022 is dominated by LOW absolute state, MEDIUM dispersion, HIGH
+synchronization, and HIGH persistence; 2023 by HIGH absolute state, LOW
+dispersion, LOW synchronization, and LOW persistence. This explains part of
+their contrast. 2018 instead has dominant MEDIUM absolute state and prevents a
+common losing-period habitat. Negative cohort dates retain +0.36 pp relative to
+selected industries and +2.82 pp relative to the broad proxy, so relative
+selection survives while absolute long economics fail.
+
+Final classification: `PARTIAL_HABITAT_INFORMATION`. The map is observable
+before entry but incomplete and does not earn deployment. No champion replay,
+filter, exposure scaling, hypothetical return, Positive Industry Breadth rescue,
+or Dispersion Alpha completion occurred. Prioritize a second independent Alpha
+engine and strategy diversification.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation. Has this mechanism implied a
+new strategy archetype? No; it describes partial applicability rather than a new
+return source.
 
 ### Cycle-018 Positive Industry Breadth opportunity-health overlay
 

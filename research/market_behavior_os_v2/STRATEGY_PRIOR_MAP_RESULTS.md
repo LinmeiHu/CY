@@ -1,5 +1,20 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Cycle-019 champion market-structure applicability map
+
+| Dimension | LOW / MEDIUM / HIGH dates | LOW / MEDIUM / HIGH payoff | Early / late favorable spread | Classification |
+|---|---:|---:|---:|---|
+| Absolute market state | 74 / 96 / 93 | +0.29% / +2.27% / +1.61% | +1.52% / +1.19% | `STRONG_APPLICABILITY_INFORMATION` |
+| Cross-sectional dispersion | 82 / 66 / 115 | +1.47% / +1.16% / +1.67% | +1.47% / -1.04% | `CHRONOLOGICALLY_UNSTABLE` |
+| Synchronization | 109 / 87 / 67 | +2.16% / +0.96% / +1.05% | +1.02% / +1.31% | `WEAK_APPLICABILITY_INFORMATION` |
+| Industry persistence | 84 / 89 / 90 | +1.74% / +1.60% / +1.12% | -0.21% / -1.00% | `NO_USEFUL_INFORMATION` |
+
+The map partly distinguishes 2022 from 2023 through absolute state and
+synchronization, but not 2018 from the profitable controls. Final status:
+`PARTIAL_HABITAT_INFORMATION`. No strategy modification or deployment replay is
+authorized. Dispersion remains a descriptive state here, not a completed Alpha
+family.
+
 ## Cycle-018 opportunity-health risk overlay
 
 | State | Decisions | Mean cohort payoff | Early / late | Selected-industry d20 | Classification |

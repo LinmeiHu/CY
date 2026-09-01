@@ -1,0 +1,133 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019",
+  "status": "FROZEN_BEFORE_MARKET_STRUCTURE_OR_CHAMPION_CONDITIONAL_OUTCOMES",
+  "starting_checkpoint": "3e28f50b68",
+  "branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "champion": {
+    "name": "Industry Diffusion + Weekly Low-MAX",
+    "cost_per_side": 0.002,
+    "clock": "exact frozen weekly decision close and next-legal-open entry",
+    "breadth": "exact frozen Top-10 selections",
+    "holding": "exact frozen 20-session lifecycle and QD-010 execution",
+    "changes_authorized": false
+  },
+  "inputs": {
+    "cycle_018_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_spec.json",
+      "sha256": "a26a8be426c8cc9bb270170ec231b14c0ffb8554b0e932960c0df5b4c57b2aa7"
+    },
+    "cycle_018_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_opportunity_health_overlay_cycle_018.py",
+      "sha256": "bc8cb4ade507e54ea6f68c8a23d0417ea79d0a715aff5901e957d732321aefad"
+    },
+    "cycle_018_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018_result.json",
+      "sha256": "0cf1a498a2ccc7f21b884ebc000673ceb4d6bda54aa110b81d18f88a0f347741"
+    },
+    "cycle_017_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-FAILURE-ANATOMY-CYCLE-017_result.json",
+      "sha256": "59764fd9d54b5d794bca8da3b0102d940221118355a27cf20361b82300afc650"
+    },
+    "cycle_017_industry_path": {
+      "path": "/Volumes/quant/CY_quant_research/champion_failure_anatomy_cycle_017/industry_path_panel.parquet",
+      "sha256": "53a89a19835960b989e50579c09a73f25160362c5bcb46fa95761622deb8db52"
+    },
+    "cycle_016_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    }
+  },
+  "feature_history": {
+    "schedule": "every fifth PIT trading session stepped backward from the first frozen champion signal and then the exact frozen champion signal dates",
+    "threshold_history": "strictly earlier scheduled observations only; current and future observations excluded",
+    "minimum_prior_observations": 20,
+    "state_method": "expanding prior-history terciles; LOW <= prior q1, MEDIUM between prior q1 and q2, HIGH > prior q2",
+    "minimum_valid_stocks": 500,
+    "minimum_valid_industries": 50
+  },
+  "dimensions": {
+    "ABSOLUTE_MARKET_STATE": {
+      "definition": "compound the daily cross-sectional median PIT-valid stock step return over the 20 completed sessions ending at the decision close",
+      "horizon_sessions": 20,
+      "economic_orientation": "HIGH favorable"
+    },
+    "CROSS_SECTIONAL_DISPERSION": {
+      "definition": "P90 minus P10 of PIT-valid individual-stock compounded returns over the same 20 completed sessions ending at the decision close",
+      "horizon_sessions": 20,
+      "economic_orientation": "HIGH favorable differentiation hypothesis"
+    },
+    "SYNCHRONIZATION": {
+      "definition": "absolute sign imbalance abs(2 * fraction of PIT-valid stock 20-session returns above zero - 1)",
+      "horizon_sessions": 20,
+      "economic_orientation": "LOW favorable differentiation hypothesis"
+    },
+    "INDUSTRY_PERSISTENCE": {
+      "definition": "Spearman correlation of PIT-industry 20-session return ranks between the current and immediately preceding scheduled weekly observation",
+      "horizon_sessions": 20,
+      "economic_orientation": "HIGH favorable"
+    }
+  },
+  "single_dimension_classification": {
+    "minimum_dates_each_state": 20,
+    "strong_minimum_favorable_minus_unfavorable_payoff": 0.01,
+    "weak_minimum_favorable_minus_unfavorable_payoff": 0.005,
+    "strong_minimum_years_same_direction": 4,
+    "weak_minimum_years_same_direction": 3,
+    "strong_requires_same_direction_both_blocks": true,
+    "weak_requires_same_direction_both_blocks": true,
+    "labels": [
+      "STRONG_APPLICABILITY_INFORMATION",
+      "WEAK_APPLICABILITY_INFORMATION",
+      "NONMONOTONIC_BUT_INTERPRETABLE",
+      "CHRONOLOGICALLY_UNSTABLE",
+      "NO_USEFUL_INFORMATION"
+    ]
+  },
+  "maps": [
+    ["ABSOLUTE_MARKET_STATE", "CROSS_SECTIONAL_DISPERSION"],
+    ["ABSOLUTE_MARKET_STATE", "SYNCHRONIZATION"],
+    ["CROSS_SECTIONAL_DISPERSION", "INDUSTRY_PERSISTENCE"]
+  ],
+  "cell_support": {
+    "minimum_decision_dates": 12,
+    "minimum_calendar_years": 2,
+    "minimum_early_dates": 4,
+    "minimum_late_dates": 4,
+    "insufficient_label": "INSUFFICIENT_SUPPORT"
+  },
+  "outcomes": {
+    "cohort_payoff": "mean frozen trade final_net_return by signal date",
+    "absolute_trade_return": "pooled frozen trade final_net_return",
+    "relative_selection": "cohort payoff minus subsequent broad and selected-industry 20-session proxies",
+    "winner": "final_net_return > 0",
+    "severe_loss": "final_net_return <= -0.10",
+    "construction_use": "outcomes are joined only after every feature and causal state is frozen"
+  },
+  "final_classifications": [
+    "CLEAR_EX_ANTE_HABITAT",
+    "PARTIAL_HABITAT_INFORMATION",
+    "RELATIVE_ALPHA_STABLE_ABSOLUTE_REGIME_UNPREDICTABLE",
+    "NO_STABLE_APPLICABILITY_MAP",
+    "CHRONOLOGICALLY_UNSTABLE"
+  ],
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 access",
+    "Positive Industry Breadth rescue or active use",
+    "champion modification, exposure scaling, admission veto, filter, hedge, exit, or hypothetical improved return",
+    "Top-N, holding, Low-MAX, Industry Diffusion, cost, clock, or execution change",
+    "regression, clustering, classifier, tree, model, feature zoo, threshold search, or return-maximizing combination",
+    "more than the three frozen two-dimensional maps or any three/four-dimensional map",
+    "Cross-Sectional Dispersion Alpha completion",
+    "OOS, independent-validation, live, or production claim"
+  ]
+}

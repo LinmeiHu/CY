@@ -4,6 +4,26 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Cycle-019 champion applicability conclusions
+
+- Prior absolute market state is strong but nonmonotonic applicability
+  information: LOW/MEDIUM/HIGH payoff is +0.29%/+2.27%/+1.61%; HIGH minus LOW
+  is +1.316 pp and positive in both blocks.
+- Lower stock-sign synchronization is weak repeated information. Dispersion
+  reverses across blocks; industry persistence is null/adverse.
+- 2022 is dominated by LOW absolute state and HIGH synchronization, unlike 2023
+  (HIGH/LOW), but 2018 is dominated by MEDIUM absolute state. There is no common
+  losing-period habitat.
+- Negative cohorts retain relative value versus industry/broad proxies. Final
+  classification `PARTIAL_HABITAT_INFORMATION`; no deployment/filter replay.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No;
+the map reinforces the need for a second independent Alpha engine.
+
 ## Cycle-018 opportunity-health conclusions
 
 - Exact PIT 20-session Positive Industry Breadth produces 94/77/92 fixed

@@ -2,6 +2,38 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: partial champion applicability map, no deployment
+
+Resume after the commit containing `ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019`;
+its starting checkpoint is `3e28f50b68`. Preserve the frozen Industry Diffusion
+plus weekly Low-MAX champion. Cycle 019 is diagnostic only: do not translate any
+cell into exposure, filters, admissions, exits, hedging, or hypothetical returns.
+Post-2023 outcomes and CY-011 remain unread.
+
+All four causal dimensions use the 20 completed sessions ending at the frozen
+weekly close and expanding prior-only terciles seeded by 21 pre-strategy weekly
+observations. Absolute market state is the compounded daily cross-sectional
+median return; dispersion is the stock-return P90--P10 spread; synchronization
+is stock-return sign imbalance; persistence is the Spearman correlation of PIT-
+industry return ranks with the immediately preceding scheduled week.
+
+Absolute market LOW/MEDIUM/HIGH contains 74/96/93 dates and earns
++0.29%/+2.27%/+1.61%. HIGH minus LOW is +1.316 pp, with +1.522 pp/+1.186 pp
+early/late: strong applicability information but nonmonotonic because MEDIUM is
+best. Lower synchronization is weak repeated information: LOW minus HIGH is
++1.106 pp, positive in both blocks. Dispersion reverses (+1.468 pp/-1.037 pp),
+and industry persistence has the adverse sign.
+
+2022 is dominated by LOW absolute state and HIGH synchronization; 2023 by HIGH
+absolute state and LOW synchronization. 2018 instead is dominated by MEDIUM
+absolute state, so the map does not cover both losing periods. Final status:
+`PARTIAL_HABITAT_INFORMATION`. A future deployment experiment is not justified.
+The prior Dispersion Alpha lane remains unresolved and was not completed here.
+
+Negative cohort dates still outperform selected-industry/broad proxies by
++0.36 pp/+2.82 pp on average. The main diversification need remains a second
+return source structurally different from broad long continuation.
+
 ## Latest checkpoint: Positive Industry Breadth overlay stopped at Phase A
 
 Resume after the commit containing `ASHARE-OPPORTUNITY-HEALTH-OVERLAY-CYCLE-018`;
