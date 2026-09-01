@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 55% | Exact downside resilience and all 18 bounded shock-absorption definitions are adverse; the frozen Dispersion science remains unresolved only because of engineering failure | Complete the frozen Cross-Sectional Dispersion lane with a bounded external-disk resource plan; do not reopen either failed downside family |
+| EXPLORE | 55% | Post-hoc anatomy shows Q1 is not an attractive long leg and Q5 weakness dominates an unstable/nonmonotonic spread; frozen Dispersion remains unresolved only because of engineering failure | Complete frozen Cross-Sectional Dispersion with a bounded external-disk plan; close shock/recovery without bucket or parameter rescue |
 | EXPLOIT | 5% | Champion remains cost-resilient and Low-MAX helpful in both losing years, but no modification is authorized | Freeze exact rules; seek only genuinely independent confirmation |
 | INVENT | 20% | Relative-value, investor-flow identity, PIT factors, and order-book/queue information directly address the diversification gap | Prefer one bounded multi-family contract only when acquisition is separately justified |
 | REPLICATE | 15% | Canonical IVOL/residual momentum and PIT fundamentals are blocked; lawful independent confirmation is also unavailable | Resume only with a source-ready factor/history contract or genuinely independent data |

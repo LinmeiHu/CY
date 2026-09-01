@@ -7,29 +7,29 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `c81935dbaeaa1e55c23a9578bc2a1456048c1d81` (clean start of bounded Shock Absorption / Recovery Discovery V1.1)
-- `CURRENT_PHASE`: `SHOCK_ABSORPTION_RECOVERY_NEIGHBORHOOD_CLOSED_NULL_NO_WALK_FORWARD_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`: the exact 18-cell V1.1 neighborhood is adverse in the intended strong-recovery orientation at h5/h10/h20 in every cell. No favorable cell or stable region exists, so the conditional development walk-forward is not run. The family closes without inversion or rescue; the previously resource-failed Dispersion lane remains scientifically unresolved
+- `CURRENT_BASELINE`: `64a67572f49217b46adcfcb7b73c6c8a81522928` (clean start of Post-Shock Adverse-Recovery Anatomy V1)
+- `CURRENT_PHASE`: `POST_HOC_ADVERSE_RECOVERY_ANATOMY_CLOSED_CHRONOLOGICALLY_UNSTABLE_NO_LONG_CANDIDATE_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`: post-hoc anatomy finds Q1 absolute means and medians unattractive, only 0/3/1 of 18 cells broadly monotonic at h5/h10/h20, and material block/year instability. Q5 weakness carries about 92% of the primary-horizon spread. The local shock/recovery family is closed; frozen Dispersion remains scientifically unresolved
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `c81935dbaeaa1e55c23a9578bc2a1456048c1d81`
+- `STARTING_HEAD`: `64a67572f49217b46adcfcb7b73c6c8a81522928`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `c81935dbaeaa1e55c23a9578bc2a1456048c1d81`
-- `CURRENT_SCIENTIFIC_LAYER`: `BOUNDED_SHOCK_ABSORPTION_PARAMETER_NEIGHBORHOOD; NULL_ADVERSE_ORIENTATION; WALK_FORWARD_GATE_FAILED; NO_STRATEGY_B_REPLAY`
-- `REPRESENTATIONS_TESTED`: exact 18-cell absolute-shock x PIT-industry-relative-shock x 2/3/5-session recovery neighborhood; Recovery Fraction primary and Further Drawdown Ratio diagnostic
-- `ECONOMIC_RESPONSE_STATUS`: `ALL_EIGHTEEN_RECOVERY_CELLS_ADVERSE_H5_H10_H20; NULL_NO_STABLE_REGION`
-- `LEVEL_VS_TRANSITION_STATUS`: `NO_FAVORABLE_OR_COHERENT_PARAMETER_REGION; CONDITIONAL_WALK_FORWARD_NOT_AUTHORIZED`
+- `CURRENT_HEAD_AT_RESUME`: `64a67572f49217b46adcfcb7b73c6c8a81522928`
+- `CURRENT_SCIENTIFIC_LAYER`: `POST_HOC_Q1_Q5_ANATOMY; CHRONOLOGICALLY_UNSTABLE; SECONDARY_AVOIDANCE_LIKE; NO_LONG_CANDIDATE; NO_REPLAY`
+- `REPRESENTATIONS_TESTED`: exact inherited 18-cell Q1--Q5 long-leg, event-baseline, bucket-monotonicity, continuous-recovery, further-drawdown, chronology, and frozen-control anatomy
+- `ECONOMIC_RESPONSE_STATUS`: `Q1_ABSOLUTE_LONG_UNATTRACTIVE; Q5_WEAKNESS_DOMINATES_SPREAD; NO_CONFIRMED_OR_POST_HOC_LONG_CANDIDATE`
+- `LEVEL_VS_TRANSITION_STATUS`: `CONTINUOUS_RECOVERY_RHO_NEGATIVE_BUT_BUCKET_PATH_NONMONOTONIC_AND_Q1_NOT_PROFITABLE`
 - `EVENT_EPISODE_RULES`: objective completed daily joint shock; within-cell same-symbol suppression through s+W; exact s+1:s+W observation; next legal open only
-- `YEAR_BY_YEAR_RESULTS`: every full-sample h5/h10/h20 cell spread is adverse; no cell passes the frozen early/late plus four-of-six-year coherence gate
-- `PLACEBO_RESULTS`: deterministic matched generic recovery stays near zero; severity, prior trend, volatility, and liquidity controls fail the mechanism gate
+- `YEAR_BY_YEAR_RESULTS`: Q1 absolute primary-horizon economics are positive throughout only in 2021; signs vary materially across years and the frozen early/late sign-reversal gate triggers at two primary horizons
+- `PLACEBO_RESULTS`: no Q1 severity cell passes; only 1/3 trend, volatility, and liquidity terciles pass. Generic Q1 does not establish shock-specific reversal
 - `SUPPORTED_MARKET_STATES`: none from Shock Absorption / Recovery V1.1
-- `DESCRIPTIVE_ONLY_STATES`: recovery fraction, further-drawdown stabilization, and industry-relative recovery after objective shocks
+- `DESCRIPTIVE_ONLY_STATES`: weak continuous adverse-recovery rho and reversal-consistent further-drawdown rho; neither overcomes negative Q1 absolute/median economics or nonmonotonic buckets
 - `STRATEGY_HABITAT_STATUS`: `NO_STRATEGY_A_TRANSFER_OR_CHANGE; NO_STRATEGY_B_REPLAY; FROZEN_CHAMPION_UNCHANGED`
-- `CURRENT_MECHANISMS`: the intended `shock -> absorption -> favorable payoff` ordering is adverse throughout the bounded neighborhood; it is neither incremental Alpha nor defensive information in the frozen orientation
+- `CURRENT_MECHANISMS`: stronger recovery continuously associates with weaker payoff, but the tradable-looking reversal side is not attractive. Q5 collapse, not Q1 strength, carries most separation; the result is avoidance-like and chronologically unstable, not long-reversal Alpha
 - `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: complete the previously resource-failed frozen Cross-Sectional Dispersion science with a bounded external-disk execution plan. The failure was engineering, not scientific. Do not retune daily shock/recovery, invert its adverse ordering, or substitute a neighboring event definition.
 
 ## Research OS V2.3 resource and worker state
@@ -69,6 +69,40 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Post-Shock Adverse-Recovery Anatomy V1
+
+`ASHARE-POST-SHOCK-ADVERSE-RECOVERY-ANATOMY-V1` is explicitly post-hoc. Its
+direction was generated after V1.1 revealed adverse recovery ordering. The spec
+freezes the inherited 18 cells, Q1--Q5 decomposition, event baselines,
+monotonicity, chronology, existing controls, and classification order before
+new anatomy aggregation. It reuses the exact 709,981 shock cell-events and reads
+no post-2023 outcome or CY-011 input.
+
+Q1 is not a credible absolute long leg. Equal-cell Q1 absolute mean is
+-0.002%/-0.165%/-0.493% at h5/h10/h20; its absolute median is
+-0.752%/-1.580%/-2.705%, and win rate is 45.30%/43.06%/41.84%. Positive
+absolute cells fall from 9/18 to 3/18 to 1/18, while positive-industry-relative
+cells are 14/18, 13/18, and 8/18. Both-positive cells are only 8/18, 2/18, and
+0/18.
+
+The spread is mainly Q5 weakness. Q1 minus event mean is
+-0.006%/+0.062%/+0.006% at h5/h10/h20, versus Q5 minus event mean
+-0.257%/-0.564%/-1.046%. Frozen Q1-strength contribution shares are only
+7.88%/11.56%/5.72%, averaging 8.38%. Both-coordinate bucket monotonicity passes
+0/18, 3/18, and 1/18 cells. Continuous Recovery Fraction rho is negative in
+108/108 primary coordinates but small (-0.030 absolute/-0.022 relative); Further
+Drawdown is positive in 96/108 and also small (+0.012/+0.009).
+
+Chronology is unstable. Early Q1 absolute h5 is +0.047% versus late -0.077%;
+early h20 industry-relative is -0.066% versus late +0.083%. Only 2021 is
+positive in both coordinates at all three primary horizons. No severity cell
+passes and only 1/3 trend, volatility, and liquidity terciles pass. The frozen
+classification is `CHRONOLOGICALLY_UNSTABLE`; the secondary decomposition is
+avoidance-like. Status is
+`POST_HOC_DEVELOPMENT_ANATOMY_NO_CANDIDATE_NOT_CONFIRMED_ALPHA`. No strategy,
+portfolio, parameter rescue, or Strategy-A change occurs. Close this local
+family and resume frozen Cross-Sectional Dispersion science.
 
 ### Shock Absorption / Recovery Discovery V1.1
 

@@ -2,6 +2,34 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: adverse-recovery anatomy closes long-reversal inference
+
+Resume after the commit containing
+`ASHARE-POST-SHOCK-ADVERSE-RECOVERY-ANATOMY-V1`; its clean starting checkpoint
+is `64a67572f49217b46adcfcb7b73c6c8a81522928`. Preserve Industry Diffusion plus
+weekly Low-MAX unchanged. This is post-hoc 2018--2023 development anatomy, not
+confirmation. Post-2023 outcomes and CY-011 remain unread.
+
+The anatomy reuses all 18 V1.1 cells and 709,981 shock cell-events. Q1 absolute
+mean is -0.002%/-0.165%/-0.493% at h5/h10/h20; medians are
+-0.752%/-1.580%/-2.705%, and win rates 45.30%/43.06%/41.84%. Only 9/3/1 cells
+have positive Q1 absolute means and 14/13/8 positive industry-relative means.
+Both-positive counts are 8/2/0.
+
+Q1 contributes little to the spread: Q1 minus event mean is
+-0.006%/+0.062%/+0.006%, while Q5 minus event mean is
+-0.257%/-0.564%/-1.046%. Mean primary Q1-strength share is 8.38%. Full bucket
+ordering is not broadly monotonic: only 0/3/1 cells pass both coordinates.
+Continuous recovery rho is consistently negative but small, and the
+further-drawdown relation is also small.
+
+The early/late frozen sign gate triggers at two primary horizons and yearly Q1
+economics are mixed. Final classification is `CHRONOLOGICALLY_UNSTABLE`; a
+secondary avoidance-only gate passes because Q5 weakness dominates. This does
+not authorize buying Q1 or using Q5 as a portfolio veto. Close the local family
+without Q2/percentile/parameter rescue and resume frozen Cross-Sectional
+Dispersion science.
+
 ## Latest checkpoint: bounded shock-absorption neighborhood closed null
 
 Resume after the commit containing

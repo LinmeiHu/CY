@@ -1,5 +1,19 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Post-Shock Adverse-Recovery Anatomy V1
+
+| Anatomy | Frozen evidence | Result | Decision |
+|---|---|---|---|
+| Q1 long leg | Exact inherited Q1 in all 18 cells | Absolute mean -0.002%/-0.165%/-0.493%, median -0.752%/-1.580%/-2.705%, positive cells 9/3/1 at h5/h10/h20 | No long reversal candidate |
+| Spread decomposition | Q1/Q5 versus equal-observation cell event mean | Q1 strength share 7.88%/11.56%/5.72%; Q5-event -0.257%/-0.564%/-1.046% | Primarily Q5 weakness / avoidance-like |
+| Bucket and continuous structure | Frozen adjacent-step/rho gates plus same-date continuous rho | Both-coordinate monotonic cells 0/3/1; continuous recovery rho negative 108/108 but small | Extremes do not yield a coherent bucket-long mechanism |
+| Chronology and controls | Frozen blocks/years and reused severity/trend/volatility/liquidity | Two primary block-sign reversals; mixed years; severity 0/9 and each coarse control 1/3 pass | `CHRONOLOGICALLY_UNSTABLE` |
+
+This is post-hoc consumed-development anatomy generated after V1.1's sign was
+known. Status is `POST_HOC_DEVELOPMENT_ANATOMY_NO_CANDIDATE_NOT_CONFIRMED_ALPHA`.
+No Q1 strategy, Q5 veto, parameter rescue, portfolio replay, Strategy-A change,
+post-2023 outcome, or CY-011 access occurs. Close the local family.
+
 ## Shock Absorption / Recovery Discovery V1.1
 
 | Family | Frozen definition | Evidence | Decision |

@@ -1,0 +1,124 @@
+{
+  "experiment_id": "ASHARE-POST-SHOCK-ADVERSE-RECOVERY-ANATOMY-V1",
+  "status": "FROZEN_BEFORE_NEW_POST_HOC_ANATOMY_OUTCOME_AGGREGATION",
+  "starting_checkpoint": "64a67572f49217b46adcfcb7b73c6c8a81522928",
+  "required_branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "POST_HOC_DEVELOPMENT_ANATOMY_GENERATED_BY_V1_1_REVERSED_SIGN_NOT_CONFIRMATION_NOT_OOS_NOT_STRATEGY",
+  "provenance": "The hypothesis direction was generated after observing that all 18 frozen V1.1 cells had negative recovery Q5-Q1 spreads at h5/h10/h20. This anatomy may generate a future hypothesis but cannot confirm Alpha.",
+  "inputs": {
+    "evaluation_panel": {
+      "path": "/Volumes/quant/CY_quant_research/shock_absorption_recovery_discovery_v1_1/evaluation_panel.parquet",
+      "sha256": "90ff065f2449fc75702cf6bcdbf6f9076ed67546380300cc85dd45f0f31ffcce"
+    },
+    "v1_1_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_spec.json",
+      "sha256": "b6318619dcf9c483c32be8fcd8a2e0df9897ba5338ca2dc23bdd9ecda6c1bc87"
+    },
+    "v1_1_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_result.json",
+      "sha256": "85c948329c05ec840d40140dcd8a21ea53671b84dc8c65797a78c2994c76f966"
+    },
+    "v1_1_surface": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-SHOCK-ABSORPTION-RECOVERY-DISCOVERY-V1-1_surface.csv",
+      "sha256": "1721a0995f8cd1c92fda2506ec0b6c00e3fc286e08097666c4255d65fa04e392"
+    }
+  },
+  "sample": {
+    "sample_type": "SHOCK only; GENERIC_W2/W3/W5 are reused only for the frozen generic comparison",
+    "parameter_cells": 18,
+    "absolute_simple_return_thresholds": [-0.04, -0.06, -0.08],
+    "industry_relative_simple_return_thresholds": [-0.02, -0.04],
+    "absorption_windows_sessions": [2, 3, 5],
+    "horizons_sessions": [1, 3, 5, 10, 20],
+    "buckets": [1, 2, 3, 4, 5],
+    "bucket_orientation": "Q1 weakest recovery/continued deterioration; Q5 strongest recovery",
+    "blocks": {
+      "early": [2018, 2019, 2020, 2021],
+      "late": [2022, 2023]
+    },
+    "years": [2018, 2019, 2020, 2021, 2022, 2023],
+    "maximum_outcome_date": "2023-12-31",
+    "severe_loss_threshold": -0.10
+  },
+  "bucket_metrics": [
+    "N",
+    "absolute_forward_mean",
+    "absolute_forward_median",
+    "absolute_positive_return_rate",
+    "industry_relative_forward_mean",
+    "industry_relative_forward_median",
+    "severe_loss_incidence at h20 only from the accepted MAE <= -10% convention; null at shorter horizons"
+  ],
+  "baseline_decomposition": {
+    "event_mean": "equal-observation mean over all complete Q1-Q5 shock events within the same cell and horizon",
+    "q1_strength": "Q1 mean minus all-event mean",
+    "q5_weakness": "Q5 mean minus all-event mean",
+    "spread_identity": "Q1-Q5 = q1_strength - q5_weakness",
+    "contribution_share": "positive Q1-strength contribution divided by Q1-Q5 when Q1-Q5 is positive; Q5 weakness is the residual"
+  },
+  "monotonicity": {
+    "adjacent_favorable_step": "bucket mean at Qk is greater than bucket mean at Q(k+1)",
+    "adjacent_steps": 4,
+    "bucket_spearman": "Spearman rho of bucket numbers 1..5 with bucket mean return",
+    "broadly_monotonic_cell_horizon": "at least 3 of 4 favorable adjacent steps and rho <= -0.70",
+    "report_coordinates": ["absolute", "industry_relative"]
+  },
+  "continuous_diagnostics": {
+    "recovery_fraction": "mean same-date cross-sectional Spearman rho within cell, minimum five complete observations/date",
+    "further_drawdown_ratio": "mean same-date cross-sectional Spearman rho within cell, minimum five complete observations/date",
+    "transformations": "none",
+    "models": "none"
+  },
+  "controls": {
+    "target": "ABS_m06_REL_m04_W3",
+    "shock_severity": "reuse V1.1 absolute bins [threshold,8%),[8%,10%),[10%,infinity) and relative bins [threshold,6%),[6%,8%),[8%,infinity)",
+    "pre_shock_trend": "reuse causal prior-20 log-return within-date terciles",
+    "realized_volatility": "reuse causal prior-20 sample-volatility within-date terciles",
+    "liquidity": "reuse prior-20 average-amount within-date terciles",
+    "q1_positive_control_cell": "supported at least 100 complete observations; Q1 absolute and industry-relative mean both > 0",
+    "generic_recovery": "compare exact GENERIC_W2/W3/W5 Q1 long means with ABS_m06_REL_m04 at the same W; no new matching"
+  },
+  "family_counts": {
+    "primary_horizons": [5, 10, 20],
+    "family_aggregate": "equal-weight mean of the 18 cell-level statistics so nested cell event counts do not choose the family conclusion",
+    "positive_cell": "strict mean > 0",
+    "both_positive": "absolute mean > 0 and industry-relative mean > 0",
+    "positive_median": "absolute median > 0",
+    "monotonic_cell": "absolute and industry-relative both satisfy broadly_monotonic_cell_horizon"
+  },
+  "classification_order": [
+    "CHRONOLOGICALLY_UNSTABLE",
+    "POST_HOC_LONG_REVERSAL_CANDIDATE",
+    "RELATIVE_REVERSAL_ONLY",
+    "STRONG_RECOVERY_AVOIDANCE_ONLY",
+    "DEFENSIVE_LESS_BAD_ONLY",
+    "NONMONOTONIC_BUCKET_EFFECT",
+    "NO_LONG_REVERSAL_ALPHA"
+  ],
+  "classification_gates": {
+    "chronologically_unstable": "aggregate Q1 absolute or industry-relative mean changes sign between early and late in at least two of h5/h10/h20",
+    "post_hoc_long_reversal_candidate": "at each h5/h10/h20 at least 12/18 cells have Q1 absolute mean > 0, Q1 industry-relative mean > 0, both > 0, absolute median > 0, and both-coordinate monotonicity; aggregate Q1 absolute and industry-relative means are > 0 in both blocks at all three horizons; mean Q1-strength contribution share across h5/h10/h20 is at least 0.25",
+    "relative_reversal_only": "at each h5/h10/h20 at least 12/18 cells have Q1 industry-relative mean > 0 and both blocks have positive aggregate Q1 industry-relative means, while the absolute-long candidate gate fails",
+    "strong_recovery_avoidance_only": "at each h5/h10/h20 fewer than 12/18 cells have both Q1 means positive, at least 12/18 cells have Q5 absolute and industry-relative means below their event means, and mean Q1-strength contribution share is below 0.25",
+    "defensive_less_bad_only": "the prior categories fail, aggregate Q1 absolute mean is not positive across all primary horizons, and at least 12/18 cells have lower Q1 severe-loss incidence than the event sample at h20",
+    "nonmonotonic_bucket_effect": "the prior categories fail and fewer than 9/18 cells are broadly monotonic in both coordinates at each of at least two primary horizons",
+    "no_long_reversal_alpha": "none of the preceding categories applies"
+  },
+  "execution": {
+    "portfolio_replay": false,
+    "new_transaction_cost_analysis": false,
+    "new_holding_or_frequency_search": false,
+    "strategy_a_replay": false,
+    "walk_forward": false
+  },
+  "prohibited": [
+    "post-2023 outcome access",
+    "CY-011 access",
+    "new parameter cells or reordered grid",
+    "new shock, recovery, or further-drawdown definitions",
+    "Q2/bottom-percentile rescue",
+    "portfolio construction or replay",
+    "Strategy-A modification or combination",
+    "nonlinear models or transformation search"
+  ]
+}
