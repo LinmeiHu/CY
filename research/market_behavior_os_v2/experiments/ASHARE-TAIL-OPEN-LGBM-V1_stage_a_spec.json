@@ -1,0 +1,181 @@
+{
+  "experiment_id": "ASHARE-TAIL-OPEN-LGBM-V1",
+  "stage": "A",
+  "status": "FROZEN_METHODOLOGY_BEFORE_FORWARD_OUTCOME_READ",
+  "claim_boundary": "PIT_B_RESEARCH_ONLY_NOT_LIVE_NOT_PRODUCTION",
+  "starting_checkpoint": "fc57419216",
+  "mission": "Rank eligible Shanghai/Shenzhen A-shares at 14:25, enter only the fixed one-minute bar ending 14:56, and exit at the first later legal open.",
+  "input_contracts": {
+    "registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "research_contract": {"path": "research/market_behavior_os_v2/RESEARCH_CONTRACT.md", "sha256": "2de645be3b2d5a2dc5bccced9a05f5eae9f366fce7ed0eb6e5298a276faf14ff"},
+    "feature_manifest": {"path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_feature_manifest.json", "sha256": "a1d33981620289dd9090210cca281500ea09584abd797cdc556a515b8f78858e"},
+    "corporate_action_contract": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
+    "CY-006": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "CY-008": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "QD-004": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "QD-008": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-008-eastmoney-pit-20260820.json", "sha256": "b9246df9746f8b97484032dce69dc51bcf3937ece8c93b13a5c3ce2330b2038b"},
+    "QD-010": {"manifest": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json", "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"}
+  },
+  "clock": {
+    "timezone": "Asia/Shanghai",
+    "feature_cutoff": "14:25:00",
+    "signal_timestamp": "14:25:00 after the bar ending 14:25 is complete",
+    "forbidden_feature_interval": "(14:25:00, 15:00:00]",
+    "entry_bar_end_time": "14:56:00",
+    "entry_interpretation": "one-minute VWAP of the bar ending 14:56, representing an order released just after 14:55; no earlier or later entry clock is compared",
+    "entry_price": "raw unadjusted amount/volume of the 14:56 bar",
+    "exit": "first legal raw open on a later market session; same-session sale is forbidden"
+  },
+  "universe": {
+    "scope": "historically identified Shanghai/Shenzhen common A-shares only; Beijing and unsupported identifiers are excluded",
+    "signal_history_start": "2018-04-02 after 60 complete registered sessions",
+    "listing_history_min_valid_sessions": 60,
+    "prior_20_average_amount_cny_min": 50000000,
+    "signal_requirements": [
+      "prior-session CY-006 hard_valid and available_at<=decision_at",
+      "current-day CY-008 execution window 0 hard_valid with available_at<=14:25 and bound daily_snapshot_id",
+      "current-day QD-004 minute grid complete from 09:30 through 14:25",
+      "trade_status=1 and is_st=false from the causal CY-008 window",
+      "QD-008 PIT industry known with notice_date<trade_date",
+      "no QD-010 new-risk blocker known by 14:25",
+      "all required lineage and snapshots exact"
+    ],
+    "entry_requirements": [
+      "14:56 raw bar exists with finite positive OHLC, volume, and amount",
+      "entry VWAP is finite and positive",
+      "14:56 bar trades at least one cent below the registered upper limit; an upper-limit-pinned bar is unfilled",
+      "no suspension, unknown rule, action blocker, or hard-invalid execution state",
+      "unfilled Top-10 orders are not replaced"
+    ]
+  },
+  "label": {
+    "name": "tail_to_first_legal_open_net_return",
+    "formula": "(economic exit proceeds after sell cost)/(14:56 entry VWAP after buy cost)-1",
+    "buy_cost_per_side": 0.002,
+    "sell_cost_per_side": 0.002,
+    "cost_interpretation": "canonical all-in repository convention including applicable commission/tax/slippage allowance",
+    "gross_diagnostic": "economic exit proceeds before costs / entry VWAP - 1",
+    "severe_loss10": "minimum cost-aware executable-coordinate low-mark return from entry through exit <= -0.10",
+    "price_limit_and_suspension": "if the next session is suspended or sell_blocked_open, carry without fill to the first later legal open; unknown holding rows fail closed",
+    "corporate_actions": "reuse ASHARE-CA-REPLAY-003 known_at/effective_date rules; block known new risk, carry exact supported cash-only actions, require pre-effective risk exit for share/rights events, and fail closed on unresolved terms",
+    "lot_size": 100,
+    "t_plus_one": true
+  },
+  "chronology": {
+    "registered_causal_range": ["2018-01-02", "2026-08-12"],
+    "warmup_only": ["2018-01-02", "2018-03-30"],
+    "development": ["2018-04-02", "2021-12-31"],
+    "development_walk_forward": [
+      {"train": ["2018-04-02", "2019-12-31"], "predict": ["2020-01-02", "2020-12-31"]},
+      {"train": ["2018-04-02", "2020-12-31"], "predict": ["2021-01-04", "2021-12-31"]}
+    ],
+    "validation": ["2022-01-04", "2023-12-29"],
+    "final_locked_oos": ["2024-01-02", "2026-08-11"],
+    "final_oos_last_exit_metadata": "2026-08-12",
+    "contamination_note": "2018-2023 broad-market outcomes are consumed development evidence; post-2023 broad-market security outcomes remain unread. Only calendar/schema metadata may be inspected before Stage C.",
+    "purge": "for every prediction block, remove every training sample whose actual legal exit date is on or after the first prediction date",
+    "embargo": "also remove the final signal session immediately before each prediction block even when its exit is earlier; no training sample may cross the overnight boundary into prediction time"
+  },
+  "models": {
+    "random_seed": 20260901,
+    "ridge": {
+      "alpha": 10.0,
+      "fit_intercept": true,
+      "preprocessing": "training-fold median imputation then training-fold StandardScaler; no parameter is fit on prediction rows"
+    },
+    "lightgbm_common": {
+      "objective": "regression_l1",
+      "learning_rate": 0.03,
+      "n_estimators_max": 2000,
+      "feature_fraction": 0.8,
+      "bagging_fraction": 0.8,
+      "bagging_freq": 1,
+      "deterministic": true,
+      "force_col_wise": true,
+      "num_threads": 4,
+      "verbosity": -1
+    },
+    "lightgbm_profiles": [
+      {"name": "shallow", "num_leaves": 7, "max_depth": 3, "min_data_in_leaf": 500, "lambda_l1": 1.0, "lambda_l2": 10.0},
+      {"name": "medium", "num_leaves": 15, "max_depth": 4, "min_data_in_leaf": 300, "lambda_l1": 1.0, "lambda_l2": 10.0},
+      {"name": "moderately_richer", "num_leaves": 31, "max_depth": 6, "min_data_in_leaf": 200, "lambda_l1": 2.0, "lambda_l2": 20.0}
+    ],
+    "early_stopping": "inside each training span only: the final 126 training sessions form an inner chronological early-stopping block after purge; refit on the full outer training span using the selected iteration count",
+    "profile_selection": "highest mean daily Spearman IC across 2020/2021 walk-forward predictions; differences <=0.001 break toward lower complexity, then higher Top-10 net mean",
+    "prohibited": ["random split", "Optuna", "Bayesian or random search", "XGBoost", "CatBoost", "neural networks", "random forests", "ensembles"]
+  },
+  "baselines": [
+    "eligible_universe_equal_weight",
+    "rank_ret_prevclose_to_1425",
+    "rank_ret_1301_1425",
+    "rank_cutoff_vs_vwap_1425",
+    "rank_residual_vs_industry_1425",
+    "ridge_prediction"
+  ],
+  "portfolio": {
+    "selection": "daily highest model scores",
+    "top_n": 10,
+    "weighting": "equal target capital across the frozen Top-10; 100-share lots rounded down",
+    "initial_capital_cny": 1000000,
+    "cash_rule": "exits are processed before same-day tail entries; delayed holdings remain in the ledger and only free cash may fund new lots",
+    "no_replacement": true,
+    "prohibited": ["Top-N search", "regime filter", "stop-loss", "take-profit", "holding extension by choice", "sector selection", "entry-time search"]
+  },
+  "development_gate_before_validation": {
+    "all_required": [
+      "selected LightGBM mean daily rank IC > 0",
+      "2020 and 2021 annual rank IC are each >= 0",
+      "selected LightGBM Top-10 mean net return > 0",
+      "selected LightGBM Top-10 net return exceeds eligible-universe net return",
+      "entry execution fraction >= 0.90"
+    ],
+    "failure_action": "stop without opening validation"
+  },
+  "validation_continuation_gate": {
+    "all_required": [
+      "LightGBM mean daily rank IC >= 0.01",
+      "2022 and 2023 annual rank IC are each >= 0",
+      "LightGBM mean daily rank IC exceeds Ridge by >= 0.005",
+      "LightGBM mean daily rank IC exceeds the best simple rank baseline by >= 0.005",
+      "LightGBM Top-10 mean net return > 0",
+      "LightGBM Top-10 mean net return exceeds eligible-universe, Ridge, and best simple baseline by >= 0.0005 per decision date",
+      "LightGBM Top-10 mean net return is >= 0 in both 2022 and 2023",
+      "entry execution fraction >= 0.90",
+      "no single security, industry, or ten decision dates provide a majority of cumulative positive trade PnL"
+    ],
+    "failure_action": "classify using the frozen ML failure vocabulary and do not open final OOS"
+  },
+  "final_oos_governance": {
+    "status": "LOCKED_UNREAD",
+    "opening_condition": "Stage B passes every validation continuation gate and a separate machine-readable Stage C freeze artifact is committed",
+    "run_count": 1,
+    "forbidden_before_open": ["feature materialization", "labels", "predictions", "model metrics", "portfolio economics", "security-level sampling or previews for 2024-2026"]
+  },
+  "resource_contract": {
+    "external_root": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1",
+    "source_scan": "one raw QD-004 year at a time, one reader, projected 1.49 billion pre-2024 rows, column- and time-pruned through 14:56",
+    "development_materialization": "2018-2023 only during Stage B; 2024-2026 shards are forbidden before Stage C",
+    "duckdb_memory_limit_gib": 6,
+    "temporary_spill_limit_gib": 100,
+    "system_headroom_floor_gib": 8,
+    "git_policy": "only code, specs, hashes, compact metrics/reports/manifests; no large panels or model matrices"
+  },
+  "classification_vocabulary": [
+    "ML_NO_CROSS_SECTIONAL_SIGNAL",
+    "ML_NO_INCREMENTAL_VALUE",
+    "ML_CHRONOLOGICALLY_UNSTABLE",
+    "ML_VALIDATION_FAILURE",
+    "ML_EXECUTION_FAILURE",
+    "ML_PROMISING_BUT_MIXED",
+    "ML_OOS_FAILURE",
+    "ML_STRATEGY_CANDIDATE"
+  ],
+  "stage_a_boundaries": {
+    "forward_outcomes_read": false,
+    "post_2023_security_rows_read": false,
+    "post_2023_calendar_metadata_read": true,
+    "model_fit": false,
+    "portfolio_replay": false,
+    "final_oos_opened": false
+  }
+}

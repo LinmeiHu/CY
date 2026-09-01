@@ -2,6 +2,7 @@
 
 | Experiment | Track | Question | Outcome access | Status | Evidence |
 |---|---|---|---|---|---|
+| ASHARE-TAIL-OPEN-LGBM-V1-STAGE-A | INVENTION / ML governance | Can a fixed 14:25 information set, 14:56 tail entry, and first-legal-next-open label be evaluated without leakage or holdout contamination? | NONE; POST-2023 CALENDAR/SCHEMA METADATA ONLY | STAGE_A_COMPLETE_OUTCOME_BLIND | 59-feature manifest, Ridge plus three LightGBM profiles, Top-10, development 2018-2021, validation 2022-2023, final OOS 2024-2026 locked. Four focused tests pass; two runs byte-identical: result `973802d8...`, report `f8bc8d81...`. |
 | MIGRATION-AUDIT-001 | Governance | Preserve seed evidence while moving the active frontier to market behavior | None | COMPLETE | Scope contract, atlas, family/archetype/library/frontier artifacts |
 | MKT-TRND-001-A | MARKET engineering attempt | Execute frozen MKT-TRND-001 through pandas/pyarrow dataset reader | PROHIBITED | INVALID_BEFORE_FEATURE_CONSTRUCTION | Immutable hashes passed; reader raised `OSError: Repetition level histogram size mismatch` on the first source file; no feature, estimate, or output was produced |
 | MKT-TRND-001-B | MARKET input-audit attempt | Execute frozen design through DuckDB adapter | PROHIBITED | INVALID_BEFORE_FEATURE_ACCEPTANCE | Reader passed; audit found `csi000852` 2016-08-11 close 8531.691 below recorded low 8532.329 and stopped; no feature accepted |

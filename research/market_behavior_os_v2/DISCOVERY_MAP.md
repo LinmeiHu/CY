@@ -4,6 +4,18 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Tail-to-Open LightGBM V1 Stage A
+
+- A distinct cross-sectional ML lane is frozen without reading outcomes. It
+  uses 59 features available by the completed 14:25 bar, one 14:56-bar VWAP
+  entry, first-legal-next-open exit, canonical 20 bps per side, and fixed Top-10.
+- Ridge and exactly three LightGBM profiles are allowed. Development walk-forward
+  predicts 2020 and 2021; validation is 2022--2023.
+- Final OOS 2024-01-02--2026-08-11 is `LOCKED_UNREAD`. Stage B failure stops the
+  lane; Stage C requires a separate committed freeze and one OOS run.
+- This is feature aggregation/modeling, not a rescue or relabeling of any prior
+  ultra-short family. Existing representations are inputs only, not proven alpha.
+
 ## Ranked candidate pool
 
 | Rank | Family | Economic role and current effect | Funnel status | Cheapest useful next decision |

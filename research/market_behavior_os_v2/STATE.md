@@ -7,18 +7,18 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `cedbb7bbf1` (start of frozen A-share ultra-short discovery cycle 014)
-- `CURRENT_PHASE`: `ASHARE_ULTRASHORT_CYCLE_014_COMPLETE_NO_NEW_STRATEGY_CANDIDATE`
-- `CURRENT_PRIMARY_FRONTIER`: Two genuinely distinct next-open, fixed-h2 long-only families were frozen after a gate-design audit. Reopen--reseal price-limit acceptance has +1.077 pp event-minus-simple-seal excess and 4.413 pp lower severe-path incidence, but its own after-cost h2 mean is -0.629% in both coarse blocks. Liquidity-shock price assimilation is -0.696% net and -0.302 pp versus control. Both are `NO_SIGNAL`; no replay is authorized
+- `CURRENT_BASELINE`: `fc57419216` (outcome-blind start of A-share Tail-to-Open LightGBM V1)
+- `CURRENT_PHASE`: `ASHARE_TAIL_OPEN_LGBM_V1_STAGE_A_COMPLETE_OUTCOME_BLIND`
+- `CURRENT_PRIMARY_FRONTIER`: A distinct 14:25-information, fixed-14:56-entry, first-legal-next-open ML lane is frozen before outcomes. The 59-feature dictionary, Ridge baseline, three LightGBM profiles, Top-10 portfolio, development/validation chronology, purge/embargo, costs, and continuation gates are fixed. Stage B may read only 2018--2023; 2024--2026 security rows remain locked
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Cycle 014 promotes zero families and runs zero portfolio replays. The exact tested limit-lifecycle long leg and liquidity-shock assimilation formulation are stopped without threshold, horizon, control, or selection rescue. Cycle 013 remains closed unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: none. Stage A contains no forward outcome, model fit, or replay. Cycle 014 remains stopped with zero promotions and Cycle 013 remains closed unchanged
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `cedbb7bbf1`
+- `STARTING_HEAD`: `fc57419216`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `cedbb7bbf1`
-- `CURRENT_SCIENTIFIC_LAYER`: `ULTRASHORT_GATE_AUDIT_FROZEN; TWO_DISTINCT_FAMILIES_SCREENED; ZERO_PROMOTIONS; NO_PORTFOLIO_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `fc57419216`
+- `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_FROZEN; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move to a genuinely independent ultra-short information lane, preferably a separately governed order-book/queue or investor-flow data contract. Do not deepen the stopped Cycle-014 formulations, rescue Cycle 013, or reopen Industry Diffusion/Low-MAX refinement.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: under the frozen Stage-A contract, can chronological 2020--2021 development predictions establish positive cross-sectional and after-cost Top-10 value sufficient to open 2022--2023 validation? Do not open post-2023 final OOS unless every validation continuation gate passes and a separate freeze artifact is committed.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-01.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: none at this checkpoint. See `DISCOVERY_MAP.md` for the
-  ranked next pool.
+- `ACTIVE_EXPERIMENT`: `ASHARE-TAIL-OPEN-LGBM-V1` Stage B is authorized only
+  under the frozen Stage-A contract; final OOS remains locked.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,21 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### A-share Tail-to-Open LightGBM V1 Stage A
+
+Stage A completes outcome-blind. It freezes 59 features whose latest timestamp
+is the completed 14:25 bar, a single entry VWAP from the bar ending 14:56, and
+the first later legal open under T+1, limits, suspensions, 100-share lots,
+20-bps-per-side costs, and the accepted QD-010 action contract. Ridge and exactly
+three LightGBM complexity profiles are allowed; Top-10 is fixed.
+
+Development is 2018-04-02 through 2021-12-31 with true annual expanding
+predictions for 2020 and 2021. Validation is 2022--2023. The final OOS is
+2024-01-02 through 2026-08-11 and remains `LOCKED_UNREAD`; only calendar and
+schema metadata were inspected. Two Stage-A regenerations are byte-identical:
+result `973802d8...`, report `f8bc8d81...`. No forward return, model fit,
+portfolio replay, or post-2023 security row was read.
 
 ### Cycle-013 industry minute leader/follower propagation
 
