@@ -6,6 +6,10 @@ engine ledgers.
 
 ## Cycle-019 champion applicability conclusions
 
+- Revised-scope provenance: the later contract arrived after original outcomes
+  were inspected. The reconciliation is post-outcome, preserves immutable
+  original evidence, and makes no preregistration claim.
+
 - Prior absolute market state is strong but nonmonotonic applicability
   information: LOW/MEDIUM/HIGH payoff is +0.29%/+2.27%/+1.61%; HIGH minus LOW
   is +1.316 pp and positive in both blocks.
@@ -14,8 +18,11 @@ engine ledgers.
 - 2022 is dominated by LOW absolute state and HIGH synchronization, unlike 2023
   (HIGH/LOW), but 2018 is dominated by MEDIUM absolute state. There is no common
   losing-period habitat.
+- The revised gate authorizes only Absolute State × Synchronization. Dispersion
+  reverses and therefore blocks the conditional second map; the original third
+  map is retired from inference.
 - Negative cohorts retain relative value versus industry/broad proxies. Final
-  classification `PARTIAL_HABITAT_INFORMATION`; no deployment/filter replay.
+  classification `PARTIALLY_IDENTIFIABLE_HABITAT`; no deployment/filter replay.
 
 What market behavior are we still not studying? Borrow-feasible relative value,
 investor-flow identity, order-book/queue pressure, immutable-vintage

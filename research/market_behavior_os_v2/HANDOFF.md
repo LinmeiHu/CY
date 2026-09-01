@@ -4,8 +4,14 @@ Updated 2026-09-01.
 
 ## Latest checkpoint: partial champion applicability map, no deployment
 
-Resume after the commit containing `ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019`;
-its starting checkpoint is `3e28f50b68`. Preserve the frozen Industry Diffusion
+The authoritative scope is now the post-outcome revised-contract
+reconciliation. The revised request arrived after original Cycle-019 outcomes
+were committed at `a113a1bb9d`; do not represent the reconciliation as
+preregistered or independent. Original evidence remains immutable.
+
+Resume after the commit containing the Cycle-019 reconciliation; its actual
+starting checkpoint is `a113a1bb9d` and the original diagnostic started at
+`3e28f50b68`. Preserve the frozen Industry Diffusion
 plus weekly Low-MAX champion. Cycle 019 is diagnostic only: do not translate any
 cell into exposure, filters, admissions, exits, hedging, or hypothetical returns.
 Post-2023 outcomes and CY-011 remain unread.
@@ -26,9 +32,15 @@ and industry persistence has the adverse sign.
 
 2022 is dominated by LOW absolute state and HIGH synchronization; 2023 by HIGH
 absolute state and LOW synchronization. 2018 instead is dominated by MEDIUM
-absolute state, so the map does not cover both losing periods. Final status:
-`PARTIAL_HABITAT_INFORMATION`. A future deployment experiment is not justified.
-The prior Dispersion Alpha lane remains unresolved and was not completed here.
+absolute state, so the map does not cover both losing periods. Final revised
+status: `PARTIALLY_IDENTIFIABLE_HABITAT`. A future deployment experiment is not
+justified. The prior Dispersion Alpha lane remains unresolved and was not
+completed here.
+
+Under the revised map gate, Absolute State × Synchronization is the sole
+decision-relevant 2D map. Dispersion's chronological reversal blocks Absolute
+State × Dispersion; the originally inspected Dispersion × Persistence map is
+retained only for audit. No feature, threshold, outcome, or strategy was rerun.
 
 Negative cohort dates still outperform selected-industry/broad proxies by
 +0.36 pp/+2.82 pp on average. The main diversification need remains a second

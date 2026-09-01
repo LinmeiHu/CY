@@ -1,0 +1,62 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019-RECONCILIATION",
+  "status": "POST_OUTCOME_SCOPE_RECONCILIATION_NOT_PREREGISTRATION",
+  "starting_checkpoint_expected_by_revision": "3e28f50b68",
+  "actual_reconciliation_checkpoint": "a113a1bb9d",
+  "branch": "research/chinext-v1-research-os-v2",
+  "revised_user_contract_sha256": "1d2866bde1022c7fb7b68a1b6bf63a9c1833d541c4c256226952b49bf7efb7e4",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_POST_OUTCOME_SCOPE_RECONCILIATION_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "bound_original_evidence": {
+    "original_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_spec.json",
+      "sha256": "96490dee5f4777f4ad27d1a6a7520dd61099afac8d148e4cbec0b6018fe0a567"
+    },
+    "original_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_result.json",
+      "sha256": "32a31192392600003a5234d700022e96f4022f6d7cb68afd2454abd29a752fe5"
+    },
+    "original_report": {
+      "path": "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_report.md",
+      "sha256": "e918ebafaa4a48602aaa299523038d9691dd79f76b39578e8461983f5a97923c"
+    },
+    "original_placement": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_placement.csv",
+      "sha256": "ae55fa5806199c4549b25a8a59acca5dd0de87b74f32132afb4353b024ec89ce"
+    }
+  },
+  "revised_scope": {
+    "dimensions": [
+      "ABSOLUTE_MARKET_STATE",
+      "CROSS_SECTIONAL_DISPERSION",
+      "SYNCHRONIZATION",
+      "INDUSTRY_PERSISTENCE"
+    ],
+    "map_gate": "open two-dimensional analysis only because at least two standalone dimensions are coherent",
+    "authorized_map": ["ABSOLUTE_MARKET_STATE", "SYNCHRONIZATION"],
+    "conditional_map_not_authorized": [
+      "ABSOLUTE_MARKET_STATE",
+      "CROSS_SECTIONAL_DISPERSION"
+    ],
+    "conditional_map_reason": "dispersion is CHRONOLOGICALLY_UNSTABLE, so the revised contract's coherence gate fails",
+    "retired_original_map": [
+      "CROSS_SECTIONAL_DISPERSION",
+      "INDUSTRY_PERSISTENCE"
+    ],
+    "retired_map_treatment": "retain in immutable original evidence for audit, but exclude from revised inference and recommendations"
+  },
+  "taxonomy_translation": {
+    "PARTIAL_HABITAT_INFORMATION": "PARTIALLY_IDENTIFIABLE_HABITAT",
+    "NO_USEFUL_INFORMATION": "NULL",
+    "NONMONOTONIC_BUT_INTERPRETABLE": "NONMONOTONIC"
+  },
+  "final_classification": "PARTIALLY_IDENTIFIABLE_HABITAT",
+  "scientific_boundary": {
+    "original_outcomes_already_inspected": true,
+    "new_feature_or_outcome_computation": false,
+    "new_threshold_or_map_search": false,
+    "original_frozen_spec_modified": false,
+    "original_evidence_modified": false,
+    "deployment_rule_authorized": false,
+    "champion_change_authorized": false
+  }
+}

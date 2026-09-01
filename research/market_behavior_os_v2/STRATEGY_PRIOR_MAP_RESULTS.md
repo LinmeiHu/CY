@@ -9,11 +9,13 @@
 | Synchronization | 109 / 87 / 67 | +2.16% / +0.96% / +1.05% | +1.02% / +1.31% | `WEAK_APPLICABILITY_INFORMATION` |
 | Industry persistence | 84 / 89 / 90 | +1.74% / +1.60% / +1.12% | -0.21% / -1.00% | `NO_USEFUL_INFORMATION` |
 
-The map partly distinguishes 2022 from 2023 through absolute state and
-synchronization, but not 2018 from the profitable controls. Final status:
-`PARTIAL_HABITAT_INFORMATION`. No strategy modification or deployment replay is
-authorized. Dispersion remains a descriptive state here, not a completed Alpha
-family.
+The revised contract arrived after original outcome inspection. Its post-outcome
+scope reconciliation authorizes only Absolute State × Synchronization because
+dispersion fails coherence; other previously inspected maps are audit-only. The
+map partly distinguishes 2022 from 2023, but not 2018 from profitable controls.
+Final revised status: `PARTIALLY_IDENTIFIABLE_HABITAT`. No strategy modification
+or deployment replay is authorized. Dispersion remains a descriptive state
+here, not a completed Alpha family.
 
 ## Cycle-018 opportunity-health risk overlay
 

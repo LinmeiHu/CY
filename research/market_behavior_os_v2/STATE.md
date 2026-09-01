@@ -7,9 +7,9 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `3e28f50b68` (start of diagnostic champion applicability-map cycle 019)
-- `CURRENT_PHASE`: `CHAMPION_APPLICABILITY_MAP_COMPLETE_NO_DEPLOYMENT_AUTHORIZED`
-- `CURRENT_PRIMARY_FRONTIER`: `PARTIAL_HABITAT_INFORMATION`: causal prior absolute market state separates HIGH from LOW by +1.316 pp with the intended sign in both broad blocks, and lower stock-sign synchronization adds weak repeated information. Dispersion reverses, persistence fails, and 2018 does not share 2022's adverse structure; no exposure/filter experiment is authorized
+- `CURRENT_BASELINE`: `a113a1bb9d` (actual start of revised-scope Cycle-019 reconciliation; original diagnostic started at `3e28f50b68`)
+- `CURRENT_PHASE`: `REVISED_CHAMPION_APPLICABILITY_SCOPE_RECONCILED_NO_DEPLOYMENT_AUTHORIZED`
+- `CURRENT_PRIMARY_FRONTIER`: `PARTIALLY_IDENTIFIABLE_HABITAT`: causal prior absolute market state separates HIGH from LOW by +1.316 pp in both broad blocks and lower stock-sign synchronization adds weak repeated information. Under the revised contract, Absolute State × Synchronization is the sole authorized 2D map; dispersion's reversal blocks the conditional second map. 2018 remains unexplained by 2022's adverse structure, so deployment is not authorized
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 019 is diagnostic only and authorizes no deployment rule; Cycle 018's Positive Industry Breadth rejection and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -18,8 +18,8 @@ Updated 2026-09-01.
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `3e28f50b68`
-- `CURRENT_SCIENTIFIC_LAYER`: `PARTIAL_CAUSAL_APPLICABILITY_MAP; NO_FILTER_OR_EXPOSURE_REPLAY; INDEPENDENT_ALPHA_PRIORITIZED`
+- `CURRENT_HEAD_AT_RESUME`: `a113a1bb9d`
+- `CURRENT_SCIENTIFIC_LAYER`: `POST_OUTCOME_REVISED_SCOPE_RECONCILIATION; PARTIALLY_IDENTIFIABLE_HABITAT; NO_FILTER_OR_EXPOSURE_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -72,6 +72,12 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ### Cycle-019 champion market-structure applicability map
 
+The revised user contract arrived after the original Cycle-019 evidence was
+already inspected and committed at `a113a1bb9d`. The original spec/result/report
+remain immutable. A lineage-bound post-outcome reconciliation—not a new
+preregistration—applies the revised two-map gate and taxonomy without
+recomputing any feature, threshold, outcome, or strategy.
+
 Four definitions were frozen before conditional outcomes: prior-20-session
 cross-sectional median market return, stock-return P90--P10 dispersion, stock
 sign synchronization, and week-to-week PIT-industry rank persistence. Expanding
@@ -87,11 +93,12 @@ MEDIUM state is strongest. Synchronization LOW/MEDIUM/HIGH earns
 `CHRONOLOGICALLY_UNSTABLE` (+1.468 pp/-1.037 pp), while industry persistence is
 `NO_USEFUL_INFORMATION`.
 
-The primary absolute-state × dispersion map has support in all nine cells. Its
-weakest cell is LOW × MEDIUM at -1.50% across 25 dates and five years, but
-dispersion does not provide a monotonic or stable standalone mechanism. The
-absolute-state × synchronization map has seven supported cells; the two missing
-cells remain explicitly insufficient.
+Under the revised gate, only Absolute State × Synchronization is authorized for
+2D inference because two standalone dimensions are coherent. It has seven
+supported cells; two sparse cells remain explicitly insufficient. Dispersion's
+early/late reversal prohibits the conditional Absolute State × Dispersion map.
+The two dispersion maps inspected under the earlier contract remain auditable
+but are retired from revised inference and recommendations.
 
 2022 is dominated by LOW absolute state, MEDIUM dispersion, HIGH
 synchronization, and HIGH persistence; 2023 by HIGH absolute state, LOW
@@ -101,8 +108,8 @@ common losing-period habitat. Negative cohort dates retain +0.36 pp relative to
 selected industries and +2.82 pp relative to the broad proxy, so relative
 selection survives while absolute long economics fail.
 
-Final classification: `PARTIAL_HABITAT_INFORMATION`. The map is observable
-before entry but incomplete and does not earn deployment. No champion replay,
+Final revised classification: `PARTIALLY_IDENTIFIABLE_HABITAT`. The map is
+observable before entry but incomplete and does not earn deployment. No champion replay,
 filter, exposure scaling, hypothetical return, Positive Industry Breadth rescue,
 or Dispersion Alpha completion occurred. Prioritize a second independent Alpha
 engine and strategy diversification.
