@@ -1,0 +1,97 @@
+{
+  "experiment_id": "ASHARE-ULTRASHORT-DISCOVERY-CYCLE-014",
+  "status": "FROZEN_GATE_AUDIT_AND_FAMILIES_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "starting_checkpoint": "cedbb7bbf1",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "research_window": ["2018-01-02", "2023-12-29"],
+  "gate_design_audit": "research/market_behavior_os_v2/GATE_DESIGN_AUDIT_ASHARE_ULTRASHORT_CYCLE_014.md",
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "accepted_minute_contract": {"path": "research/market_behavior_os_v2/experiments/MKT-MIN-001_spec.json", "sha256": "358e358f3daef94bd8e2f42d60f38672f4f450db368494e0291465cb384bde9a"},
+    "minute_adapter": {"path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py", "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "qd004_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"},
+    "ca_contract_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
+    "ca_contract_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-CA-REPLAY-003_result.json", "sha256": "ed46bef9a546ab03c5ad56bf9447be8aec2bf21c85e21395395126df806b9ec0"},
+    "ca_contract_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py", "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"}
+  },
+  "deduplication": [
+    {"slot": "A", "family": "price_limit_reopen_reseal_acceptance", "classification": "NEW_DISTINCT", "reason": "uses within-session upper-limit seal, one-tick reopen, later reseal, and final-seal persistence; it is not simple limit-up ranking or Cycle-010 contamination removal"},
+    {"slot": "B", "family": "liquidity_shock_price_assimilation", "classification": "NEW_DISTINCT", "reason": "conditions price acceptance on an own-history unusual traded-amount transition instead of treating volume itself as bullish"},
+    {"slot": "C", "family": "late_session_acceptance_rejection", "classification": "NEIGHBOR_OF_PRIOR", "reason": "CY008 close/VWAP/late-volume/volatility formulations were directly screened in Cycle 004; no economically distinct registered summary remains without a window rescue"},
+    {"slot": "D", "family": "event_driven_reclaim_failure", "classification": "NEIGHBOR_OF_PRIOR", "reason": "objective support/recovery, failed breakdown, opening-weakness recovery, closing acceptance, and CHINEXT breakout already cover the registered formulations"},
+    {"slot": "E", "family": "optional_independent_family", "classification": "DEFERRED", "reason": "no additional registered-data family is both distinct and higher-information than A/B; the slot is not filled for quota"},
+    {"slot": "CYCLE_013", "family": "industry_minute_leader_follower", "classification": "ALREADY_TESTED", "reason": "exact family remains closed as SIMULTANEOUS_COMOVEMENT_ONLY; no rescue or selective follower is permitted"}
+  ],
+  "pit_execution_contract": {
+    "decision_at": "15:30:00 Asia/Shanghai after completed session summaries and raw minute lifecycle are available",
+    "earliest_entry": "next legal market-session open",
+    "holding_horizon_definition": "hN enters at t+1 legal open and exits at the first legal open on or after t+1+N market sessions; h1/h2/h3 are independently estimable",
+    "primary_horizon_sessions": 2,
+    "diagnostic_horizons_sessions": [1, 3],
+    "cost_per_side": 0.002,
+    "severe_loss10": "minimum cost-aware low-mark return during the natural holding path <= -0.10",
+    "required": ["hard_valid=true", "available_at<=decision_at", "snapshot identity", "PIT industry", "next-open", "T+1", "historical limits", "suspensions", "lots", "corporate actions", "no replacement"]
+  },
+  "universe": {
+    "boards": "broad SH/SZ A-share",
+    "minimum_prior_20_session_average_amount_cny": 50000000,
+    "history": "at least 252 causal market-session rows and 120 prior finite amount-shock observations where required",
+    "required": ["non-ST", "current-data-tradable", "valid PIT industry", "no blocking corporate action", "CY006/CY008 snapshot identity"]
+  },
+  "families": {
+    "price_limit_reopen_reseal_acceptance": {
+      "hypothesis": "after an upper-limit close is broken by at least one tick, a later reseal that persists into the close identifies accepted demand and favorable next-open-to-h2 economics",
+      "sources": ["CY-006", "CY-008", "QD-004"],
+      "representation": "continuous-session minute closes equal the historical upper-limit price; after first seal require a later close at least CNY0.01 below the limit, a subsequent reseal, and final close at the limit",
+      "score": "final consecutive upper-limit minutes divided by continuous minutes from first seal through close",
+      "direction": "higher acceptance score is favorable; all valid reopen-reseal events are signals, ordered by score then prior-20 amount then symbol",
+      "control": "same-date simple-seal upper-limit closers with no one-tick reopen after first seal, ordered by deterministic SHA-256; controls never enter signal selection",
+      "primary_horizon": 2,
+      "portfolio_translation": "up to 10 highest-score signals per date, equal capital, next legal open entry, fixed two-session hold"
+    },
+    "liquidity_shock_price_assimilation": {
+      "hypothesis": "when traded amount is unusually high relative to a security's own causal history, close/VWAP and close-location acceptance separates assimilated demand from activity without acceptance",
+      "sources": ["CY-006", "CY-008"],
+      "amount_shock": "log(current amount / median amount over the prior 20 valid security sessions)",
+      "shock_eligibility": "current amount shock is at or above the causal trailing-252-session 90th percentile with at least 120 prior finite shocks",
+      "raw_score": "equal mean of same-date percentile ranks of close_vs_vwap and (close-low)/(high-low)",
+      "signal_score": "same-date residual of raw_score on an intercept and ranks of current action-safe return, daily range/preclose, and r20",
+      "direction": "higher residual acceptance is favorable",
+      "control": "same-date shock-eligible names outside the selected top 20, ordered by deterministic SHA-256 with equal control count",
+      "primary_horizon": 2,
+      "portfolio_translation": "up to 10 highest-score signals per date, equal capital, next legal open entry, fixed two-session hold"
+    }
+  },
+  "screen": {
+    "selected_names_per_date": 20,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "promotion_all_required": {
+      "hard_validity": true,
+      "complete_selected_outcomes_min": 100,
+      "complete_matched_outcomes_min": 100,
+      "decision_dates_each_block_min": 30,
+      "matched_decision_dates_each_block_min": 30,
+      "unique_securities_min": 20,
+      "unique_industries_min": 5,
+      "next_open_entry_executable_fraction_min": 0.90,
+      "full_net_return_strictly_positive": true,
+      "full_event_minus_control_excess_strictly_positive": true,
+      "early_net_and_excess_nonnegative": true,
+      "late_net_and_excess_nonnegative": true
+    },
+    "diagnostic_only": ["h1", "h3", "severe_loss10", "severe_loss10_control", "annual signs", "raw redundancy", "mechanism geometry", "concentration"]
+  },
+  "replay": {
+    "maximum_promotions": 2,
+    "names_per_signal": 10,
+    "initial_capital_cny": 1000000,
+    "cohort_capital": "up to one half of pre-entry NAV per signal date, bounded by cash, so a fixed two-session daily strategy supports two overlapping cohorts",
+    "entry": "next legal open",
+    "exit": "first legal open on or after the fixed two-session due date under unchanged ASHARE-CA-REPLAY-003 risk-event handling",
+    "cost_per_side": 0.002,
+    "strategy_candidate_all_required": ["complete ledger", "zero terminal lots", "positive total return", "total return exceeds named control", "early and late returns each exceed named control", "Sharpe exceeds named control"]
+  },
+  "prohibited": ["post-2023 or CY-011 reads", "Cycle-013 threshold/window/matching/leader/follower rescue", "same-session or same-open fill", "threshold grid", "holding-period search", "top-N search", "stop-loss or take-profit search", "combination screen", "unregistered input", "retrospective replacement"]
+}

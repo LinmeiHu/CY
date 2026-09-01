@@ -23,6 +23,26 @@ use repeatedly consumed 2018--2023 history. The external post-2023 boundary is
 contaminated by an inventory incident, so neither mechanism may be confirmed on
 that material.
 
+## Cycle-014 A-share ultra-short conclusions
+
+- A gate-design audit was frozen before outcomes. Numeric AND-gates are limited
+  to validity, after-cost break-even, chronology, effective sample/usability,
+  and next-open executability; severe loss and mechanism geometry remain
+  diagnostics rather than arbitrary vetoes.
+- Deduplication leaves two `NEW_DISTINCT` families. Late-session acceptance and
+  event-driven reclaim/failure are `NEIGHBOR_OF_PRIOR`; no fifth family is
+  manufactured. Cycle 013 remains closed unchanged.
+- Price-limit reopen--reseal acceptance has h2 net -0.629% but +1.077 pp versus
+  same-date simple-seal controls, positive excess in both blocks, and 4.413 pp
+  better severe-path incidence. This is a relative failure-quality diagnostic,
+  not a profitable long leg: `NO_SIGNAL`, no replay, no rescue.
+- Liquidity-shock price assimilation has h2 net -0.696%, excess -0.302 pp,
+  adverse excess in both blocks, and 0.775 pp worse severe paths. h1/h3 are also
+  negative: `NO_SIGNAL`, no replay, no rescue.
+- Zero families promote and no combination or portfolio replay is authorized.
+  The next budget should move to a genuinely independent information lane,
+  preferably governed order-book/queue or investor-flow data.
+
 ## Cycle-010 depth conclusions
 
 - Upper-limit-event removal improves conventional momentum ranking in every

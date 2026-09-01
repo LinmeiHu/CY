@@ -7,19 +7,18 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `b6122310f4` (start of frozen industry minute leader/follower cycle 013)
-- `CURRENT_PHASE`: `INDUSTRY_MINUTE_LEAD_FOLLOW_STOPPED_SIMULTANEOUS_COMOVEMENT_ONLY`
-- `CURRENT_PRIMARY_FRONTIER`: Strict stock-specific industry first-occurrence events show positive t+1--t+3 peer return and breadth response, but the return effect is smaller than the reverse-time association, new-peer-trigger expansion misses its frozen gate, and matching covers only 21.73% versus the 80% gate. Phase B/C are locked and the exact family is closed as `SIMULTANEOUS_COMOVEMENT_ONLY`
+- `CURRENT_BASELINE`: `cedbb7bbf1` (start of frozen A-share ultra-short discovery cycle 014)
+- `CURRENT_PHASE`: `ASHARE_ULTRASHORT_CYCLE_014_COMPLETE_NO_NEW_STRATEGY_CANDIDATE`
+- `CURRENT_PRIMARY_FRONTIER`: Two genuinely distinct next-open, fixed-h2 long-only families were frozen after a gate-design audit. Reopen--reseal price-limit acceptance has +1.077 pp event-minus-simple-seal excess and 4.413 pp lower severe-path incidence, but its own after-cost h2 mean is -0.629% in both coarse blocks. Liquidity-shock price assimilation is -0.696% net and -0.302 pp versus control. Both are `NO_SIGNAL`; no replay is authorized
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Cycle 013 authorizes no leader score, leader/follower action test, strategy replay, or Industry Diffusion combination/timing claim. Existing Industry Diffusion and conditional Low-MAX statuses are unchanged
-- `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
-  workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
+- `CURRENT_STRATEGY_CANDIDATE`: none. Cycle 014 promotes zero families and runs zero portfolio replays. The exact tested limit-lifecycle long leg and liquidity-shock assimilation formulation are stopped without threshold, horizon, control, or selection rescue. Cycle 013 remains closed unchanged
+- `BRANCH`: `research/ashare-ultrashort-v1`
+- `STARTING_HEAD`: `cedbb7bbf1`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `b6122310f4`
-- `CURRENT_SCIENTIFIC_LAYER`: `MINUTE_LEAD_LAG_EXISTENCE_TEST_COMPLETE; REVERSE_TIME_FALSIFICATION_FAILED; PHASE_B_C_LOCKED; NO_STRATEGY_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `cedbb7bbf1`
+- `CURRENT_SCIENTIFIC_LAYER`: `ULTRASHORT_GATE_AUDIT_FROZEN; TWO_DISTINCT_FAMILIES_SCREENED; ZERO_PROMOTIONS; NO_PORTFOLIO_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance and (2) liquidity-transition shock assimilation. Do not rescue the closed minute leader/follower definition, open leader identity scoring, or reopen Industry Diffusion/Low-MAX refinement.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move to a genuinely independent ultra-short information lane, preferably a separately governed order-book/queue or investor-flow data contract. Do not deepen the stopped Cycle-014 formulations, rescue Cycle 013, or reopen Industry Diffusion/Low-MAX refinement.
 
 ## Research OS V2.3 resource and worker state
 

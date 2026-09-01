@@ -2,6 +2,52 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: first A-share ultra-short discovery batch
+
+Resume after the commit containing `ASHARE-ULTRASHORT-DISCOVERY-CYCLE-014`;
+its starting checkpoint is `cedbb7bbf1` on
+`research/ashare-ultrashort-v1`. The gate-design audit, deduplication map, two
+family definitions, natural h1/h2/h3 paths, controls, and simplest possible
+fixed-h2 translations were frozen before Cycle-014 forward outcomes.
+
+Only two families were genuinely new. Price-limit reopen--reseal acceptance
+uses exact cent-tick raw-minute lifecycle state and is distinct from simple
+limit-up ranking and Cycle-010 contamination removal. Liquidity-shock price
+assimilation conditions residual close/VWAP and close-location acceptance on a
+causal own-history 90th-percentile traded-amount shock. Late-session acceptance
+and reclaim/failure were classified `NEIGHBOR_OF_PRIOR`; the optional fifth
+slot was left unfilled. Cycle 013 remains closed unchanged as
+`SIMULTANEOUS_COMOVEMENT_ONLY`.
+
+The governed shared domain contains 2,928,177 eligible security-dates, 19,875
+reopen--reseal events, 23,656 simple-seal controls, and 289,620 liquidity-shock
+rows. The compact screen panel has 79,012 selected/control rows across 4,376
+securities, 128 PIT industries, and 1,205 dates. h1/h2/h3 are independently
+constructed from next-open entry; 20 bps per side, limits, suspension, T+1,
+actions, and no replacement remain binding.
+
+Price-limit reopen--reseal acceptance is positive only relative to a much worse
+same-date simple-seal control: h2 excess is +1.077 pp, positive early/late at
++1.137/+1.041 pp, and severe paths improve 4.413 pp. Its own h2 net mean is
+-0.629% (-0.627%/-0.631% by block), while h1/h3 are -0.446%/-0.843%.
+It therefore fails standalone break-even and is `NO_SIGNAL`, not a long-only
+candidate. Liquidity-shock assimilation is adverse: h2 net -0.696%, excess
+-0.302 pp, early/late excess -0.426/-0.220 pp, with 0.775 pp worse severe paths;
+h1/h3 are also negative. It is `NO_SIGNAL`.
+
+Zero families promote, zero portfolio replays run, and no combination is
+authorized. Two complete executions are byte-identical: external panel
+`f287a43c...`, summary `a11413b...`, result `c7ddccc7...`, and report
+`f48ffd94...`. All evidence is
+consumed 2018--2023 development history; post-2023 and CY-011 remain unread.
+
+Do not rescue either exact Cycle-014 family through threshold, shock percentile,
+acceptance formula, holding horizon, top-N, or control changes. The strongest
+remaining headroom is a genuinely independent information lane, preferably a
+separately authorized order-book/queue or investor-flow contract. Within the
+current registered summary data, no further first-batch family is both new and
+higher-information.
+
 ## Latest checkpoint: industry minute leader/follower existence gate
 
 Resume after the commit containing `ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013`;

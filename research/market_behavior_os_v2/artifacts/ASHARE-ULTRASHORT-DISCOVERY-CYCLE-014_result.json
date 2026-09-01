@@ -1,0 +1,120 @@
+{
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "classification": "NO_NEW_ULTRA_SHORT_STRATEGY_CANDIDATE",
+  "corporate_action_audit": {},
+  "experiment_id": "ASHARE-ULTRASHORT-DISCOVERY-CYCLE-014",
+  "hashes": {
+    "equity_sha256": null,
+    "gate_audit_sha256": "c2cba3f5957ad50cf5a242515b90d8172c5c3cfab38e1845e3c3e5584e32286f",
+    "panel_sha256": "f287a43c3e09d959cb71c43940151f4c16fdf9b1ee5930cfb66f380a620d175d",
+    "spec_sha256": "e35ed20d28b599ae279eeab5aad3af5836ce483fdfead3153cf040df2f4d4eb7",
+    "summary_sha256": "a11413b41871539734d54a186b7db2137c8e38ccc56ad1678b3e9fc32c06b4e9"
+  },
+  "lifecycle_audit": {
+    "daily_limit_close_candidates": 43531,
+    "decision_dates": 1205,
+    "raw_rows": 10490971,
+    "reopen_reseal_events": 19875,
+    "simple_seal_controls": 23656
+  },
+  "panel": {
+    "decision_dates": 1205,
+    "industries": 128,
+    "rows": 79012,
+    "securities": 4376
+  },
+  "promoted_families": [],
+  "replays": [],
+  "representation_diagnostics": {
+    "liquidity_shock_price_assimilation": {
+      "control_rows": 24100,
+      "decision_dates": 1205,
+      "selected_rows": 24100,
+      "shock_eligible_rows": 289620,
+      "signal_control_correlations": {
+        "control_r20": -7.239019249054039e-17,
+        "control_range": -5.304553873143654e-17,
+        "control_return": 1.6268222694416779e-18
+      }
+    },
+    "price_limit_reopen_reseal_acceptance": {
+      "control_rows": 14905,
+      "eligible_events": 19875,
+      "event_dates": 1204,
+      "median_acceptance_score": 0.5353982300884956,
+      "median_final_limit_run_minutes": 67.0,
+      "selected_rows": 15907
+    }
+  },
+  "screen_decisions": [
+    {
+      "classification": "NO_SIGNAL",
+      "early_excess": 0.011372950898191467,
+      "early_net": -0.0062698688046518535,
+      "family": "price_limit_reopen_reseal_acceptance",
+      "gate_results": {
+        "complete_matched": true,
+        "complete_selected": true,
+        "decision_dates_each_block": true,
+        "early_net_and_excess": false,
+        "entry_executability": true,
+        "full_excess": true,
+        "full_net": false,
+        "industry_breadth": true,
+        "late_net_and_excess": false,
+        "matched_dates_each_block": true,
+        "security_breadth": true
+      },
+      "late_excess": 0.010406557247426246,
+      "late_net": -0.006309839257675125,
+      "primary_full_excess": 0.010772477642894279,
+      "primary_full_net": -0.006294673398356307,
+      "promoted": false,
+      "severe_loss10": 0.17170847951280863,
+      "severe_loss10_disadvantage": -0.04412903735220998
+    },
+    {
+      "classification": "NO_SIGNAL",
+      "early_excess": -0.004263567673811092,
+      "early_net": -0.006564922146108669,
+      "family": "liquidity_shock_price_assimilation",
+      "gate_results": {
+        "complete_matched": true,
+        "complete_selected": true,
+        "decision_dates_each_block": true,
+        "early_net_and_excess": false,
+        "entry_executability": true,
+        "full_excess": false,
+        "full_net": false,
+        "industry_breadth": true,
+        "late_net_and_excess": false,
+        "matched_dates_each_block": true,
+        "security_breadth": true
+      },
+      "late_excess": -0.0022015358050425167,
+      "late_net": -0.0072113913178316795,
+      "primary_full_excess": -0.0030175853717193347,
+      "primary_full_net": -0.006955551000596655,
+      "promoted": false,
+      "severe_loss10": 0.06458657036072733,
+      "severe_loss10_disadvantage": 0.007750946532835219
+    }
+  ],
+  "source_audit": {
+    "daily_first": "2018-01-02",
+    "daily_last": "2023-12-29",
+    "daily_lineage_failures": 0,
+    "daily_rows": 6155390,
+    "daily_symbols": 5262,
+    "daily_time_travel": 0,
+    "eligible_dates": 1205,
+    "eligible_rows": 2928177,
+    "eligible_symbols": 4646,
+    "minute_first": "2018-01-02",
+    "minute_last": "2023-12-29",
+    "minute_lineage_failures": 0,
+    "minute_non_1530_hard_valid": 0,
+    "minute_rows": 6114413,
+    "minute_symbols": 5235
+  }
+}
