@@ -23,6 +23,26 @@ use repeatedly consumed 2018--2023 history. The external post-2023 boundary is
 contaminated by an inventory incident, so neither mechanism may be confirmed on
 that material.
 
+## Cycle-014 price-limit lifecycle and liquidity-transition conclusions
+
+- Exact historical 5%/10%/20% limit semantics and raw-minute touch validation
+  yield 107,133 events. Stable acceptance is worse than failed acceptance by
+  -1.884 pp h3 and -12.723 pp h5 severe quality; early acceptance is worse than
+  late by -1.261 pp and stable is worse than reopen/reseal by -1.102 pp. Every
+  contrast is adverse in both blocks: `NO_USEFUL_LIFECYCLE_INFORMATION`.
+- Dormant-to-active constructive has only +0.04 pp matched h3 and worse severe
+  losses: sub-gate `PROMISING_INFORMATION`. Activity-shock rejection is positive
+  when its frozen hypothesis expects adverse: `ADVERSE`, no inversion. Liquidity
+  recovery reverses +0.20/-0.11 pp across blocks: `CHRONOLOGICALLY_MIXED`.
+- No early proxy, executable replay, avoidance remapping, or Track-A/B bundle is
+  authorized. The exact definitions are closed without neighboring rescue.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+
 ## Cycle-010 depth conclusions
 
 - Upper-limit-event removal improves conventional momentum ranking in every

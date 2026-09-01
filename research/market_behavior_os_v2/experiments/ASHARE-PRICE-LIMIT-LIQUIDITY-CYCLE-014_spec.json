@@ -1,0 +1,116 @@
+{
+  "experiment_id": "ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014",
+  "status": "FROZEN_BOTH_TRACKS_BEFORE_FORWARD_OUTCOME_ACCESS_REPLAY_LOCKED",
+  "starting_checkpoint": "cedbb7bbf1",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "accepted_minute_contract": {"path": "research/market_behavior_os_v2/experiments/MKT-MIN-001_spec.json", "sha256": "358e358f3daef94bd8e2f42d60f38672f4f450db368494e0291465cb384bde9a"},
+    "minute_adapter": {"path": "research/market_behavior_os_v2/scripts/vectorized_market_minute_adapter.py", "sha256": "efa234bc76f3f04671284344be7ea10ca3938082cfd6975ba76a44bb950c37c8"},
+    "accepted_execution_contract": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
+    "prior_binary_limit_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-DIVERSIFIED-CYCLE-002_result.json", "sha256": "d87549fa881bb7f38c738da29e28d6abc057297d57eabefba37fbc373e875c53"},
+    "cycle013_minute_contract": {"path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013_spec.json", "sha256": "80549c71352cd312d8169a61242116c2126bc63a2b3ced0313787fc18bd1a41c"},
+    "cycle013_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_industry_lead_follow_cycle_013.py", "sha256": "2b14487b94828f1758994c08ab8d78cdc1672cb2ea77535edec0b4c00d8f27c6"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    "cy008_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json", "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"},
+    "qd004_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json", "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"}
+  },
+  "common_contract": {
+    "sample": "2018-01-02 through 2023-12-29 only",
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "decision_at": "15:30 Asia/Shanghai after the exact completed minute session and daily reconciliation",
+    "entry": "first legal raw open in the next three market sessions; expire if none",
+    "buy_legal": "hard-valid tradable row, finite positive open, not buy_blocked_open, no unresolved corporate action",
+    "exit": "first legal raw open on or after 1/3/5 market sessions from actual entry, searched for three sessions",
+    "sell_legal": "hard-valid tradable row, finite positive open, not sell_blocked_open, no unresolved corporate action",
+    "t_plus_one": "h1 exits no earlier than the market session after entry",
+    "cost_per_side": 0.002,
+    "severe_loss": -0.10,
+    "corporate_actions": "fail closed if any corporate-action row or coordinate change occurs between signal and exit",
+    "capacity": "one percent of prior-20 mean daily amount; report P10 and median"
+  },
+  "track_a": {
+    "historical_limit_semantics": "repository-authoritative up_limit_price and limit_pct by security, board, ST state, and date; null/unresolved limits fail closed; no universal percentage",
+    "event_universe": "broad hard-valid SH/SZ stock-days with exact CY-008 241-bar binding, current tradability, prior-20 mean amount >= CNY20m, and raw high touching the registered upper limit",
+    "minute_state": {
+      "touch": "completed bar high >= up_limit_price minus max(CNY0.001,abs(limit)*1e-6)",
+      "accepted": "completed bar close within the same tolerance of up_limit_price",
+      "reopen": "an accepted completed minute followed by a completed minute close below tolerance",
+      "reseal": "a later completed minute returns to accepted after reopen",
+      "within_minute": "high/close state only; transition order inside one bar is unresolved"
+    },
+    "taxonomy": {
+      "EARLY_STABLE_ACCEPTANCE": "closes accepted; first accepted bar end <=11:00; no completed-minute reopen after first acceptance",
+      "MID_STABLE_ACCEPTANCE": "closes accepted; first accepted bar end >11:00 and <14:00; no completed-minute reopen",
+      "LATE_STABLE_ACCEPTANCE": "closes accepted; first accepted bar end >=14:00; no completed-minute reopen",
+      "REOPEN_SUCCESSFUL_RESEAL": "accepted, later reopens below limit, later reseals, and closes accepted",
+      "FAILED_ACCEPTANCE": "touches the registered limit but closes below accepted tolerance, including touch-without-completed-acceptance"
+    },
+    "path_descriptors": ["first 98%-of-limit-coordinate approach bar", "first touch bar", "first accepted bar", "accepted fraction of completed bars remaining after first touch", "completed-minute reopen episodes", "cumulative distance below limit after first touch", "closing distance from limit", "post-touch versus pre-touch volume ratio"],
+    "primary_horizons": [1, 3, 5],
+    "direct_contrasts": {
+      "STABLE_VS_FAILED": "three no-reopen stable classes versus FAILED_ACCEPTANCE",
+      "STABLE_VS_RESEAL": "three no-reopen stable classes versus REOPEN_SUCCESSFUL_RESEAL",
+      "EARLY_VS_LATE": "EARLY_STABLE_ACCEPTANCE versus LATE_STABLE_ACCEPTANCE"
+    },
+    "matching": "same signal date and exact registered limit_pct; nearest prior-r20, log prior-20 amount, daily raw return, and turnover ratio after division by fixed scales [0.05,1.0,0.05,1.0], with exact-industry pool when nonempty and same-date fallback otherwise; outcomes excluded; deterministic symbol tie break",
+    "information_gate": {
+      "minimum_matched_pairs": 500,
+      "minimum_events_each_block": 100,
+      "minimum_entry_coverage": 0.80,
+      "minimum_h3_net_delta": 0.0025,
+      "minimum_each_block_h3_delta": 0.0,
+      "minimum_severe_loss_improvement": 0.01,
+      "minimum_winner_improvement": 0.02
+    },
+    "standalone_strategy_gate": {
+      "minimum_complete_entries": 500,
+      "minimum_entry_coverage": 0.80,
+      "minimum_full_h3_net": 0.005,
+      "minimum_each_block_h3_net": 0.0,
+      "maximum_severe_loss_fraction": 0.10
+    },
+    "early_proxy": {
+      "authorization": "only if a close-known lifecycle class passes the information or standalone strategy gate",
+      "definition": "by completed 14:00 bar, stock is accepted, first accepted no later than 11:00, and has no completed-minute reopen through 14:00",
+      "minimum_final_class_precision": 0.80,
+      "minimum_final_class_recall": 0.50
+    },
+    "replay": "at most one close-known continuation state, next legal open, equal-weight daily cohorts, fixed h3 open-to-open holding; only after standalone strategy gate",
+    "classification": ["PRICE_LIMIT_STRATEGY_CANDIDATE", "PRICE_LIMIT_ACCEPTANCE_INFORMATION_ONLY", "FAILED_ACCEPTANCE_DOWNSIDE_INFORMATION", "IMPLEMENTATION_CONFLICT", "CHRONOLOGICALLY_MIXED", "NO_USEFUL_LIFECYCLE_INFORMATION"]
+  },
+  "track_b": {
+    "common_universe": "hard-valid daily SH/SZ rows with 60 causal stock-session observations, registered limit coordinates, prior-20 mean amount >=CNY20m, and no current corporate action blocker",
+    "hypotheses": {
+      "DORMANT_ACTIVE_CONSTRUCTIVE": {
+        "event": "prior-5 mean amount / prior-60 median amount <=0.65; current amount / prior-20 median in [2,5]; raw daily return >0; close location >=0.75; close limit-coordinate <0.90",
+        "control": "same liquidity transition and limit-coordinate exclusion, but event price-acceptance condition is false",
+        "mechanism": "new non-extreme participation whose price gain remains accepted"
+      },
+      "ACTIVITY_SHOCK_REJECTION": {
+        "event": "current amount / prior-20 median >=3 and (raw daily return <=0 or close location <=0.25), excluding limit touches",
+        "control": "same activity shock with raw return >0 and close location >=0.50, excluding limit touches",
+        "mechanism": "heavy activity without price acceptance as distribution/exhaustion"
+      },
+      "LIQUIDITY_RECOVERY_AFTER_WITHDRAWAL": {
+        "event": "prior session amount / its causal prior-20 median <=0.50; current amount / prior-20 median in [0.8,1.5]; abs(raw return)<=0.02; close location>=0.50",
+        "control": "same prior withdrawal but current amount / prior-20 median <=0.60",
+        "mechanism": "normalization and price stabilization after temporary activity withdrawal"
+      }
+    },
+    "matching": "same date event-to-designated-control nearest on prior-r20, log prior-20 amount, and current activity ratio after division by fixed scales [0.05,1.0,1.0], using exact-industry pool when nonempty and same-date fallback otherwise; outcomes excluded; deterministic symbol tie break",
+    "horizons": [1, 3, 5],
+    "promotion_all_required": {
+      "minimum_complete_events": 1000,
+      "minimum_decision_dates_each_block": 100,
+      "minimum_entry_coverage": 0.90,
+      "minimum_full_h3_net_delta": 0.0025,
+      "minimum_each_block_h3_delta": 0.0,
+      "minimum_severe_loss_improvement": 0.01
+    },
+    "replay": "at most one hypothesis, equal-weight daily event cohort, next legal open, fixed h3 open-to-open holding; no rescue",
+    "classification": ["LIQUIDITY_TRANSITION_STRATEGY_CANDIDATE", "PROMISING_INFORMATION", "CHRONOLOGICALLY_MIXED", "ECONOMICALLY_NULL", "ADVERSE"]
+  },
+  "cross_mechanism": "descriptive event overlap only; no signal combination, conditioning, or rescue",
+  "prohibited": ["post-2023 outcomes or metadata", "CY-011 access", "universal price-limit assumption", "within-minute transition order", "same-day execution from close-known state", "threshold, clock, horizon, taxonomy, sign, matching, Top-N, or exit search", "automatic inversion or short strategy", "Low-MAX, Industry Diffusion, RS veto, low-risk, revised momentum, MAX/MIN, confirmed breakdown, or leader/follower combination", "early proxy before close-known authorization", "replay before frozen promotion gate", "OOS, independent-confirmation, validation, live, or production claims"]
+}

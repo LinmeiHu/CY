@@ -137,3 +137,15 @@ inside the same bar, and no second/tick, order-book, queue, or aggressive-flow
 claim is made. The implementation disqualifies 116,251 industry-days whose
 first threshold occurrence is outside the eligible event clock; no later mover
 is relabeled as leader.
+
+## Cycle-014 price-limit lifecycle and liquidity transitions
+
+| Family | Frozen test | Evidence | Classification |
+|---|---|---|---|
+| Price-limit acceptance lifecycle | Exact stock-date historical limit; completed-minute early/mid/late stable, reopen/reseal, and failed states; next-legal-open h1/h3/h5 | 107,133 events. Stable-minus-failed h3 -1.884 pp and h5 severe quality -12.723 pp; early-minus-late -1.261 pp; stable-minus-reseal -1.102 pp; all block signs adverse | `NO_USEFUL_LIFECYCLE_INFORMATION`; no inversion/replay |
+| Dormant-to-active constructive | Prior activity dormancy, bounded participation expansion, positive price acceptance | 6,708 complete matched pairs; h3 +0.04 pp, +0.02/+0.05 pp blocks, but severe quality -1.03 pp | `PROMISING_INFORMATION`, below promotion gates |
+| Activity-shock rejection | Activity shock plus weak price acceptance; preregistered adverse orientation | 90,394 complete pairs; h3 +0.30 pp, +0.40/+0.24 pp blocks, opposite expected sign | `ADVERSE`; no post-result sign inversion |
+| Liquidity recovery after withdrawal | Low-activity withdrawal followed by normalization and price stabilization | 8,137 complete pairs; h3 +0.05 pp but +0.20/-0.11 pp by block | `CHRONOLOGICALLY_MIXED` |
+
+No early-state proxy, price-limit strategy, liquidity replay, or combination is
+authorized. All results consume 2018--2023 development history only.

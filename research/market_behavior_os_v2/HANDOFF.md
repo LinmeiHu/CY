@@ -2,6 +2,44 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: price-limit lifecycle and liquidity transitions
+
+Resume after the commit containing `ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014`;
+its starting checkpoint is `cedbb7bbf1`. The exact lifecycle taxonomy and three
+liquidity-transition definitions are closed. Do not tune clock cutoffs,
+thresholds, horizons, matching, or signs. All evidence is consumed 2018--2023
+development history; post-2023 outcomes and CY-011 remain unread.
+
+The stock-date historical limit fields preserve 5% ST, 10%, and 20% regimes.
+The exact raw-minute touch gate retains 107,133 events and excludes 546 daily-
+high candidates whose bound raw session never touches the registered limit.
+Lifecycle counts are early stable 24,537, middle stable 8,422, late stable
+6,588, reopen/reseal 32,016, and failed 35,570. The full lifecycle is known at
+15:30 and the earliest legal entry is the next tradable open.
+
+Stable-minus-failed matched h3 is -1.884 pp with -12.723 pp h5 severe quality;
+early-minus-late is -1.261 pp and stable-minus-reseal -1.102 pp. Every primary
+contrast is adverse in both broad blocks. Track A is
+`NO_USEFUL_LIFECYCLE_INFORMATION`; no early proxy, continuation replay,
+avoidance remapping, or sign inversion is authorized.
+
+Liquidity matched h3 is +0.04 pp for dormant-to-active constructive but with
+worse severe losses; this is sub-gate `PROMISING_INFORMATION`. The explicitly
+adverse activity-shock-rejection prior instead produces +0.30 pp in both blocks,
+so it is `ADVERSE`, not a mined opposite-sign strategy. Liquidity recovery is
++0.20/-0.11 pp early/late and `CHRONOLOGICALLY_MIXED`. No replay or Track-A/B
+combination is authorized.
+
+External panels are `/Volumes/quant/CY_quant_research/price_limit_liquidity_cycle_014/price_limit_event_panel.parquet`
+(107,133 rows, SHA-256 `b9347d60...faf713`) and
+`liquidity_transition_panel.parquet` (165,927 rows, SHA-256
+`69e59311...e0e6a`). The temporary directory is empty. Source hashes and four
+focused causal taxonomy/matching tests pass.
+
+Next capital should not automatically remain in limit events. Prefer lawful
+independent confirmation or a bounded multi-family data contract for genuinely
+unopened mechanisms.
+
 ## Latest checkpoint: industry minute leader/follower existence gate
 
 Resume after the commit containing `ASHARE-INDUSTRY-LEAD-FOLLOW-CYCLE-013`;

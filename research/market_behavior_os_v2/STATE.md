@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `b6122310f4` (start of frozen industry minute leader/follower cycle 013)
-- `CURRENT_PHASE`: `INDUSTRY_MINUTE_LEAD_FOLLOW_STOPPED_SIMULTANEOUS_COMOVEMENT_ONLY`
-- `CURRENT_PRIMARY_FRONTIER`: Strict stock-specific industry first-occurrence events show positive t+1--t+3 peer return and breadth response, but the return effect is smaller than the reverse-time association, new-peer-trigger expansion misses its frozen gate, and matching covers only 21.73% versus the 80% gate. Phase B/C are locked and the exact family is closed as `SIMULTANEOUS_COMOVEMENT_ONLY`
+- `CURRENT_BASELINE`: `cedbb7bbf1` (start of frozen price-limit lifecycle and liquidity-transition cycle 014)
+- `CURRENT_PHASE`: `PRICE_LIMIT_LIFECYCLE_AND_LIQUIDITY_TRANSITION_STOPPED_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: The exact close-known price-limit lifecycle taxonomy is `NO_USEFUL_LIFECYCLE_INFORMATION`: stable acceptance is materially worse than failed acceptance, reopen/reseal, and late acceptance after bounded matching in both development blocks. The three frozen liquidity-transition hypotheses yield one weak sub-gate information result, one sign-adverse result, and one chronological reversal. No early proxy or executable replay is authorized
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Cycle 013 authorizes no leader score, leader/follower action test, strategy replay, or Industry Diffusion combination/timing claim. Existing Industry Diffusion and conditional Low-MAX statuses are unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: no new reusable component. Cycle 014 authorizes no price-limit or liquidity-transition strategy, early proxy, sign inversion, or combination. All preserved components remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `b6122310f4`
-- `CURRENT_SCIENTIFIC_LAYER`: `MINUTE_LEAD_LAG_EXISTENCE_TEST_COMPLETE; REVERSE_TIME_FALSIFICATION_FAILED; PHASE_B_C_LOCKED; NO_STRATEGY_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `cedbb7bbf1`
+- `CURRENT_SCIENTIFIC_LAYER`: `PRICE_LIMIT_LIFECYCLE_COMPLETE; LIQUIDITY_TRANSITION_SCREEN_COMPLETE; EARLY_PROXY_AND_REPLAYS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance and (2) liquidity-transition shock assimilation. Do not rescue the closed minute leader/follower definition, open leader identity scoring, or reopen Industry Diffusion/Low-MAX refinement.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: the registered-data price-limit lifecycle and liquidity-transition frontiers are now closed in their exact forms. Prioritize lawful independent confirmation or a bounded data contract that unlocks several genuinely new mechanisms (order-book/queue, investor-flow identity, borrow-feasible relative value, or immutable-vintage fundamentals), not neighboring lifecycle/transition thresholds.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,35 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-014 price-limit lifecycle and liquidity transitions
+
+The frozen historical-limit screen uses stock-date `up_limit_price` and
+`limit_pct`, exact CY-008 241-bar raw sessions, and completed-minute chronology.
+It contains 10,583 5%, 91,542 10%, and 5,008 20% valid events; 546 daily-high
+candidates without an exact raw-minute touch are excluded. A close-known signal
+is available at 15:30 and can enter only at the next legal open.
+
+The 107,133 lifecycle rows split into early stable 24,537, middle stable 8,422,
+late stable 6,588, reopen/reseal 32,016, and failed acceptance 35,570. Matched
+stable-minus-failed h3 is -1.884 pp in both blocks, winner quality is -8.149 pp,
+and h5 severe quality is -12.723 pp. Early-minus-late h3 is -1.261 pp; stable-
+minus-reseal is -1.102 pp. Early stable net h1/h3/h5 is -2.181%/-2.732%/-3.144%
+and next-open blockage is 21.975%. Classification is
+`NO_USEFUL_LIFECYCLE_INFORMATION`; the adverse intended ordering is not inverted.
+
+Liquidity-transition matched h3 effects are +0.04 pp for dormant-to-active
+constructive (`PROMISING_INFORMATION`, below gates), +0.30 pp for the
+preregistered adverse activity-shock-rejection hypothesis (`ADVERSE`, wrong
+sign), and +0.05 pp for liquidity recovery with +0.20/-0.11 pp early/late
+(`CHRONOLOGICALLY_MIXED`). No Track-B replay is authorized. The transition
+families exclude limit-touch days, so zero overlap is by construction, not an
+independence result. Post-2023 outcomes and CY-011 remain unread.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and lawful independent confirmation. Has this mechanism implied a
+genuinely new strategy archetype? No.
 
 ### Cycle-013 industry minute leader/follower propagation
 

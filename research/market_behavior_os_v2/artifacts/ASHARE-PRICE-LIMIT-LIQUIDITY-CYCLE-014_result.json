@@ -1,0 +1,73 @@
+{
+  "artifacts": {
+    "ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014_contrast_summary.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014_contrast_summary.csv",
+      "sha256": "81db02a043ba121f4c1a95b087fee6d7877b5b224d5aa9fa8fed8270673b0149"
+    },
+    "ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014_lifecycle_summary.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014_lifecycle_summary.csv",
+      "sha256": "0bfaaa87e0b99928ab0c12d0ed51a2df14fbac873cbd70cd719b7009ec8fff28"
+    },
+    "ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014_liquidity_summary.csv": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014_liquidity_summary.csv",
+      "sha256": "1a4e6dd1cda0e1d1ce511bace506f8c1208a7b4e51476d04d79e7ecf679d2191"
+    }
+  },
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "cross_mechanism": {
+    "overlap_fraction_of_lifecycle": 0.0,
+    "overlap_rows": 0
+  },
+  "experiment_id": "ASHARE-PRICE-LIMIT-LIQUIDITY-CYCLE-014",
+  "external_panels": {
+    "lifecycle": {
+      "bytes": 13506026,
+      "path": "/Volumes/quant/CY_quant_research/price_limit_liquidity_cycle_014/price_limit_event_panel.parquet",
+      "rows": 107133,
+      "sha256": "b9347d60db60b884e65a2b7a2e4a72639415fe44f81c8d11bb22557d04faf713"
+    },
+    "liquidity": {
+      "bytes": 16770128,
+      "path": "/Volumes/quant/CY_quant_research/price_limit_liquidity_cycle_014/liquidity_transition_panel.parquet",
+      "rows": 165927,
+      "sha256": "69e59311870f8859db9caf3bbf0290b334ac098e01d7b6571f096a489a8e0e6a"
+    }
+  },
+  "gates": {
+    "track_a_information_checks": {
+      "coverage": true,
+      "early": false,
+      "h3_delta": false,
+      "late": false,
+      "pairs": true,
+      "severe": false,
+      "winner": false
+    },
+    "track_a_standalone": false,
+    "track_b_promotions": []
+  },
+  "protocol_audit": {
+    "initial_early_proxy_diagnostic_quarantined_not_used": true
+  },
+  "source_content_hashes_verified": true,
+  "track_a": {
+    "classification": "NO_USEFUL_LIFECYCLE_INFORMATION",
+    "early_proxy_status": "NOT_AUTHORIZED",
+    "event_audit": {
+      "daily_touch_candidates": 107679,
+      "invalid_matching_state_excluded": 0,
+      "raw_touch_mismatches_excluded": 546
+    },
+    "proxy_precision": null,
+    "proxy_recall": null,
+    "replay_status": "NOT_AUTHORIZED"
+  },
+  "track_b": {
+    "classifications": {
+      "ACTIVITY_SHOCK_REJECTION": "ADVERSE",
+      "DORMANT_ACTIVE_CONSTRUCTIVE": "PROMISING_INFORMATION",
+      "LIQUIDITY_RECOVERY_AFTER_WITHDRAWAL": "CHRONOLOGICALLY_MIXED"
+    },
+    "replay_status": "NOT_AUTHORIZED"
+  }
+}
