@@ -1,5 +1,18 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Downside Resilience Discovery V1
+
+| Family | Frozen definition | Evidence | Decision |
+|---|---|---|---|
+| Industry-down resilience 20 | Mean stock-minus-leave-one-out-PIT-industry residual on industry-down observations in t-19..t, minimum five; weekly close, next legal open | Industry-pressure Q5-Q1 industry-relative -0.039%/-0.246%/-0.406%/-0.628%/-1.027% at h1/h3/h5/h10/h20; both blocks and every year negative | `NULL`; adverse frozen orientation, no inversion/replay |
+| Industry downside asymmetry 20 | Down-session residual mean minus nondown-session residual mean, minimum five observations on each side | Negative return ordering at every horizon; h20 industry-relative -0.276%, despite a defensive severe-loss difference | Diagnostic does not rescue primary family |
+| Generic RS / volatility / liquidity / Low-MAX controls | Fixed within-date/context terciles after raw evaluation | Every h20 tercile Q5-Q1 industry-relative spread remains negative | Incremental Alpha gate fails |
+| Strategy-A independence | Low-MAX correlation, exact Champion overlap, Champion-removed economics | Low-MAX rho -0.059; Q5 overlap 0.28%; Champion-removed h20 -1.031% | Distinct failure, not a Strategy-A duplicate |
+
+Coverage is 492,332 broad PIT-eligible stock-dates on 264 dates with 99.993%
+actionability. No Strategy-A modification, sign inversion, parameter rescue,
+Strategy-B replay, post-2023 outcome, or CY-011 access occurs.
+
 ## Cycle-020 confirmed-breakdown exit translation
 
 | Prior | Frozen translation | Champion evidence | Decision |

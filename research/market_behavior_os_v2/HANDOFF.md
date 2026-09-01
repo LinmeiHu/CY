@@ -2,6 +2,40 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: downside resilience family closed null
+
+Resume after the commit containing `ASHARE-DOWNSIDE-RESILIENCE-DISCOVERY-V1`;
+its clean starting checkpoint is `27bc05617c`. Preserve Industry Diffusion plus
+weekly Low-MAX exactly. All evidence is consumed 2018--2023 development history;
+post-2023 outcomes and CY-011 remain unread.
+
+The frozen primary is `IND_DOWN_RESILIENCE_20`: over the 20 completed sessions
+ending at weekly close t, average stock-minus-leave-one-out-PIT-industry daily
+residual only where the daily industry return is negative, requiring at least
+five such observations. The primary context is the same PIT industry's fixed
+five-session return below zero. Signal availability is 15:30; earliest entry is
+the first later accepted legal open. The asymmetry representation and generic
+relative-strength comparator are diagnostics only.
+
+Coverage is 492,332 stock-dates, 264 dates, 4,649 securities, and 119 industries.
+Next-open actionability is 99.993%, including 945 delayed entries and 35 unusable
+observations. Under industry pressure, Q5 minus Q1 industry-relative return is
+-0.039%/-0.246%/-0.406%/-0.628%/-1.027% over h1/h3/h5/h10/h20. Both blocks are
+negative at h5/h20; every 2018--2023 year is negative at h20.
+
+The adverse ordering remains in all coarse generic-RS, realized-volatility,
+liquidity, and Low-MAX terciles. Resilience rank correlation is 0.566 with
+ordinary industry-relative strength and -0.059 with Low-MAX. Only 0.28% of Q5
+pressure observations overlap Champion selections; removing all Champion
+observations leaves the h20 spread at -1.031%.
+
+Final classification: `NULL`, with explicitly adverse frozen long orientation.
+Do not invert the sign, change the 20-session window, change the five-session
+pressure context, search thresholds, or construct Strategy B from this family.
+No Strategy-A modification or portfolio replay occurred. Re-rank capital toward
+a genuinely distinct event/asymmetry lane or a separately justified bounded
+data contract that unlocks multiple new mechanisms.
+
 ## Latest checkpoint: confirmed-breakdown exit closed before replay
 
 Resume after the commit containing

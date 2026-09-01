@@ -4,6 +4,31 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Downside Resilience Discovery V1 conclusions
+
+- Exact frozen primary: prior-20-session stock-minus-PIT-industry residual mean
+  on industry-down days, at least five down observations; industry pressure is
+  fixed prior-five-session PIT-industry return below zero.
+- Broad weekly coverage is 492,332 stock-dates, 264 dates, 4,649 securities, and
+  119 industries. Actionability is 99.993%; 945 entries delay and 35 are unusable.
+- The intended strong-resilience orientation is adverse at every horizon:
+  industry-pressure Q5-Q1 industry-relative return is -0.039%/-0.246%/-0.406%/
+  -0.628%/-1.027% at h1/h3/h5/h10/h20.
+- Both frozen blocks and all six years are negative at h20. Every generic-RS,
+  volatility, liquidity, and Low-MAX tercile remains negative.
+- Rank correlation is 0.566 to generic industry RS and -0.059 to Low-MAX;
+  Champion Q5 overlap is only 0.28%. The failed result is not a Strategy-A
+  duplicate, and removing Champion observations does not change it.
+- Final `NULL`, adverse in the frozen long orientation. No inversion, rescue,
+  Strategy-B replay, Strategy-A change, post-2023 outcome, or CY-011 access.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and genuinely different event asymmetry.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No;
+this exact downside-resilience family closes without translation.
+
 ## Cycle-020 confirmed-breakdown exit conclusions
 
 - Exact semantics remain prior-L20 causal-coordinate support and completed-close

@@ -7,9 +7,9 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `fdbd974c04` (clean start of Cycle-020 confirmed-breakdown exit study)
-- `CURRENT_PHASE`: `CONFIRMED_BREAKDOWN_EXIT_CLOSED_AT_PHASE_B_NO_REPLAY`
-- `CURRENT_PRIMARY_FRONTIER`: `SECOND_INDEPENDENT_ALPHA_DISCOVERY`: confirmed L20 breakdown has broad incidence inside the champion but continuing from the earliest legal next-open opportunity earns +0.686% h5 and +1.572% through the frozen exit; both blocks have positive remaining payoff and the matched gap reverses. The exit role is `BREAKDOWN_NOT_USEFUL_AS_EXIT` and is closed without replay
+- `CURRENT_BASELINE`: `27bc05617c` (clean start of Downside Resilience Discovery V1)
+- `CURRENT_PHASE`: `DOWNSIDE_RESILIENCE_FAMILY_CLOSED_NULL_NO_REPLAY`
+- `CURRENT_PRIMARY_FRONTIER`: `SECOND_INDEPENDENT_ALPHA_DISCOVERY`: exact 20-session stock-minus-PIT-industry resilience on industry-down days is adverse in the frozen long orientation at every h1/h3/h5/h10/h20 horizon and in every 2018--2023 calendar year. It survives as no Alpha family, is not inverted, and receives no portfolio replay
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -18,8 +18,8 @@ Updated 2026-09-01.
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `fdbd974c04`
-- `CURRENT_SCIENTIFIC_LAYER`: `EXACT_CONFIRMED_BREAKDOWN_EXIT_DIAGNOSIS; PHASE_B_STOP; NO_MODIFIED_CHAMPION_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `27bc05617c`
+- `CURRENT_SCIENTIFIC_LAYER`: `INDEPENDENT_DOWNSIDE_RESILIENCE_FAMILY_DISCOVERY; NULL; NO_STRATEGY_B_REPLAY`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: registered daily summary-price/volume neighbors now have low incremental headroom. Prioritize lawful independent confirmation or one bounded data contract that unlocks several genuinely new mechanisms (order-book/queue, investor-flow identity, borrow-feasible relative value, or immutable-vintage fundamentals), not another Low-MAX frequency, daily path threshold, or lifecycle taxonomy.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: registered daily summary-price/volume neighbors now have low incremental headroom, and downside-specific industry residual resilience also fails. Prioritize one genuinely different event/asymmetry mechanism or a bounded multi-family data contract for order-book/queue, investor-flow identity, borrow-feasible relative value, or immutable-vintage fundamentals; do not invert or retune the failed resilience family.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,36 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Downside Resilience Discovery V1
+
+`ASHARE-DOWNSIDE-RESILIENCE-DISCOVERY-V1` starts from `27bc05617c` and freezes
+before outcomes. On 264 established weekly dates it evaluates 492,332 broad
+PIT-eligible stock-date signals, 4,649 securities, and 119 industries. The
+primary is the mean stock-minus-leave-one-out-PIT-industry daily residual on at
+least five industry-down observations in the 20 completed sessions ending at
+the close. Primary industry pressure is the fixed prior-five-session industry
+return below zero. Entry is strictly later, at the first accepted legal open.
+
+The intended strong-resilience orientation is adverse at every horizon. Under
+industry pressure Q5 minus Q1 industry-relative return is -0.039%/-0.246%/
+-0.406%/-0.628%/-1.027% at h1/h3/h5/h10/h20. The h20 spread is negative in
+every year 2018--2023 and in both frozen blocks (-0.760%/-1.331%). Every
+generic-RS, realized-volatility, liquidity, and Low-MAX tercile also remains
+negative. The same-date rank relation is 0.566 to ordinary industry-relative
+strength but only -0.059 to Low-MAX; Champion overlap is 0.28%, and removing
+Champion observations leaves h20 at -1.031%.
+
+Actionability is 99.993%: 491,352 immediate, 945 delayed, and 35 unusable
+observations. Execution therefore does not explain the failure. Final
+classification is `NULL`, with adverse frozen orientation. No sign inversion,
+neighboring lookback, pressure threshold, Strategy-A modification, Strategy-B
+portfolio replay, post-2023 outcome, or CY-011 access occurs.
+
+What market behavior are we still not studying? Order-book/queue pressure,
+investor-flow identity, borrow-feasible relative value, immutable-vintage
+fundamentals, and genuinely new event asymmetry. Has this mechanism implied a
+new strategy archetype? No; the predeclared long-only orientation fails broadly.
 
 ### Cycle-020 champion confirmed-breakdown dynamic exit
 
