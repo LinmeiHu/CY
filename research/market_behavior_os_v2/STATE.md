@@ -7,17 +7,17 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `4555e7aca9` (Down-Gap Reclaim Walk-Forward V2 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_DOWN_GAP_RECLAIM_WALKFORWARD_V2_DEVELOPMENT_COMPLETE_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: Frozen board-specific expanding selection is `MARGINAL_WALK_FORWARD_EDGE`, not a Validation candidate. Main earns +1.483% total at 0.293% CAGR, -5.058% drawdown, and 0.118 Sharpe with four losing years; ChiNext earns -1.472%; fixed 50/50 is +0.006% with -7.436% drawdown. Both sleeves profit only in 2020. Validation 2022--2023 and Final OOS remain sealed/unread
+- `CURRENT_BASELINE`: `2f4cb6a397c356be3063a348c290412b64a00b9a` (Former-Leader Strict-Gap Reclaim V3 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_FORMER_LEADER_DEEP_DRAWDOWN_STRICT_GAP_RECLAIM_V3_DEVELOPMENT_COMPLETE_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: V3 is `MARGINAL_FORMER_LEADER_EDGE`, not a Validation candidate. Main loses 1.173% with four losing years. ChiNext gains 7.597%, but 2020 supplies essentially all economics, 2018 selection is blocked by the frozen support gate, and removing its best five days makes it negative. Fixed 50/50 gains 3.212% at 0.325 Sharpe. Validation 2022--2023 and Final OOS remain sealed/unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Walk-forward optimization materially beats the unconditional losing baselines but does not reliably translate into next-year profitability. Main's nominal gain disappears without its best day and is concentrated in the 2020 panic cluster
+- `CURRENT_STRATEGY_CANDIDATE`: none. Former-leader, prior-run-up, deep-drawdown, and strict-gap filters do not produce broad chronological portfolio economics. Post-gap and intraday dry-up filters never survive selection; the ChiNext gain is panic/rebound clustered
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `4555e7aca9`
+- `STARTING_HEAD`: `2f4cb6a397c356be3063a348c290412b64a00b9a`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `4555e7aca9`
+- `CURRENT_HEAD_AT_RESUME`: `2f4cb6a397c356be3063a348c290412b64a00b9a`
 - `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: close the exact Down-Gap Reclaim V1/V2 strategy-development lane. Do not open Validation or rescue through thresholds, windows, board choice, ST removal, K, ranking, breadth, exits, or new models. Fresh large gaps, dry-up, and opening panic breadth remain unproven representations usable only in a genuinely independent lane.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: close V3 without opening Validation. Do not rescue former-leader strict-gap reclaim through neighboring leader/run-up/drawdown/gap/age/dry-up thresholds, board choice, K, ranking, exit, ST exclusion, or panic breadth. Order-book/queue state and investor-flow identity remain materially less studied than another OHLCV event refinement.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-01.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-TAIL-OPEN-LGBM-V1` chronology construction is
-  complete; valid Stage-B model fitting is not yet authorized. Final OOS remains locked.
+- `ACTIVE_EXPERIMENT`: `ASHARE-FORMER-LEADER-DEEP-DRAWDOWN-STRICT-GAP-RECLAIM-V3`
+  is Development-complete and closed without Validation. Final OOS remains locked.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,31 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Former-Leader Deep-Drawdown Strict-Gap Reclaim V3
+
+The frozen 52,488-configuration family was evaluated independently by board in
+five expanding 2017--2021 folds. V3 starts from 40,468 minute-confirmed V1 gap
+events and 40,075 executable events; one STAR Market event is outside V3's
+frozen board universe, leaving 40,074 feature-path rows. The strict former-
+leader/run-up/drawdown/gap contract yields 3,746 candidate events, 2,826 Main
+and 920 ChiNext. V1 had already excluded 4,769 corporate-action false gaps; V3
+admits none.
+
+Main returns -1.173% total, -0.234% CAGR, -2.081% maximum drawdown, -0.218
+Sharpe, and -0.113 Calmar on 113 trades, with only 2020 positive. ChiNext returns
++7.597%, +1.474% CAGR, -5.470% drawdown, 0.438 Sharpe, and 0.268 Calmar on 71
+trades. Its 2018 selection is blocked, 2020 contributes +7.749%, and return
+excluding the best five days is -5.162%. Fixed 50/50 returns +3.212%, but four
+of five years are negative and 2020 contributes +4.480%.
+
+Former leadership, large run-up, deep drawdown, and true-gap width remain in
+selected rules, but no selected fold uses PostGapDryup or IntradayDryup as an
+eligibility filter. Main is negative; ChiNext economics are panic-breadth and
+best-day clustered. Classification is `MARGINAL_FORMER_LEADER_EDGE`; no
+2022--2023 Validation. The 16 focused tests and all causal, lifecycle, board,
+portfolio, and sealed-period invariants pass. Two artifact-generation runs
+reproduce the same selections, NAVs, and compact/full hashes.
 
 ### Down-Gap Reclaim Walk-Forward V2
 

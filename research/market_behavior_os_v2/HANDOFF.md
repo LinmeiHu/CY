@@ -2,6 +2,44 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: Former-Leader Deep-Drawdown Strict-Gap Reclaim V3 closure
+
+Resume after the commit containing
+`ASHARE-FORMER-LEADER-DEEP-DRAWDOWN-STRICT-GAP-RECLAIM-V3`; its starting
+checkpoint is `2f4cb6a397c356be3063a348c290412b64a00b9a` on
+`research/ashare-ultrashort-v1`. V3 is an internal chronological pseudo-OOS
+test designed after V1/V2 Development research, not pristine external OOS.
+Validation 2022--2023 and Final OOS 2024+ remain sealed and unread.
+
+The frozen population reconciles 40,468 V1 minute-confirmed events and 40,075
+executable events. One executable STAR Market event (`689009.SH`, 2021-11-15)
+is outside the frozen V3 universe, leaving 40,074 feature-path rows. The
+former-leader, >=30% deep-drawdown, strict no-trade gap, and trigger-containment
+contract yields 3,746 candidate events: 2,826 Main, 920 ChiNext, 107 ST, and
+3,639 non-ST. The V1 lineage excluded 4,769 corporate-action false gaps and V3
+admits zero such gaps.
+
+Main Board is negative: -1.173% total, -0.234% CAGR, -2.081% maximum drawdown,
+-0.218 Sharpe, -0.113 Calmar, 113 trades, and one positive year. ChiNext gains
+7.597% total at 1.474% CAGR, -5.470% drawdown, 0.438 Sharpe, and 0.268 Calmar
+on 71 trades, but its 2018 selection is support-blocked, nearly all profit is
+from 2020, and excluding its best five days changes return to -5.162%. Fixed
+50/50 gains 3.212% with 0.325 Sharpe, while four of five years lose.
+
+Every Main champion uses Top-5 leadership, >=9% gaps, K=50, and T+1-open exit.
+ChiNext parameters are less stable. Neither sleeve selects PostGapDryup or
+IntradayDryup eligibility in any fold. Positive PnL is dominated by Q90 opening-
+panic breadth. Final verdict: `MARGINAL_FORMER_LEADER_EDGE`; Main `NO_EDGE`,
+ChiNext `MARGINAL_PANIC_CLUSTERED_EDGE`. Do not open Validation and do not
+rescue this exact family through neighboring thresholds, board/ST selection,
+ranking, K, exit, breadth, or added models.
+
+The search contains 524,880 exact rows. All required PIT, peak/run-up/drawdown,
+strict-gap, lifecycle, dry-up-clock, board-isolation, fold, position, cash, and
+sealed-period audits pass; 16 focused tests pass. Reproduction reruns preserve
+all scientific artifact hashes. Large daily-state, full-feature, and full-search
+artifacts remain under `/Volumes/quant/CY_quant_research/ashare_former_leader_deep_drawdown_strict_gap_reclaim_v3`.
+
 ## Latest checkpoint: Down-Gap Reclaim Walk-Forward V2 Development closure
 
 Resume after the commit containing `ASHARE-DOWN-GAP-RECLAIM-WALKFORWARD-V2`;

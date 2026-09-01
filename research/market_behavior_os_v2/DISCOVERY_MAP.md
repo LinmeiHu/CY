@@ -4,6 +4,26 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Former-Leader Deep-Drawdown Strict-Gap Reclaim V3
+
+- Exact tested family: a 120-session pre-gap adjusted peak, fixed 60-session
+  run-up into that peak, same-board PIT Top-10/Top-5 leader rank, 30/40/50%
+  deep drawdown, strict adjacent-session no-trade down gap containing the fixed
+  `gap_open x 1.01` first-reclaim trigger, causal dry-up, four exits, and fixed
+  K/rankers. Do not duplicate or rescue this exact family.
+- 40,468 minute-confirmed V1 source events reconcile to 40,075 executable
+  events. One STAR event is outside V3's frozen universe. The final 3,746 V3
+  candidates split 2,826 Main and 920 ChiNext; 4,769 V1 corporate-action false
+  gaps remain excluded and none enter V3.
+- Main is -1.173% on 113 trades with four losing years. ChiNext is +7.597% on
+  71 trades, but 2018 is selection-blocked, 2020 supplies +7.749%, and excluding
+  its best five days produces -5.162%. Fixed 50/50 is +3.212% with four losing
+  years and 0.325 Sharpe.
+- Former leadership, large run-up, drawdown, and gap width survive optimizer
+  selection. Post-gap and intraday dry-up eligibility never do. Positive results
+  remain Q90 panic/rebound clustered. Classification:
+  `MARGINAL_FORMER_LEADER_EDGE`; no 2022--2023 Validation.
+
 ## Down-Gap First-Reclaim V1
 
 - Exact tested family: eligible >=5% down gap, lifetime first upward entry at
