@@ -22,6 +22,24 @@ engine ledgers.
   representations only. Pooled dry-up ordering is supported in just 2/8 years
   under the frozen annual comparison and is not a proven strategy condition.
 
+## Down-Gap Reclaim Walk-Forward V2
+
+- V2 tests the frozen strategy-development question without changing V1 event
+  semantics: 8,748 configurations per board, independent Main/ChiNext expanding
+  selection, board-specific opening-gap breadth, realistic K-slot capital, and
+  40-bp round-trip costs across unseen 2017--2021 test years.
+- Main is nominally positive at +1.483% total but has only one positive year,
+  0.118 Sharpe, 0.058 Calmar, and -3.300% return excluding its best day.
+  ChiNext is -1.472%; fixed 50/50 is +0.006% with -7.436% drawdown. Both sleeves
+  make money only in 2020.
+- Main always selects Dryup <=0.50, usually <=3-day gaps, and mostly Q90 panic
+  breadth. ChiNext always selects >=9% gaps and mostly Q90 breadth. Compression
+  is never selected. Top-10 neighborhoods fail next-year translation outside
+  2020, so these are unproven panic-repair representations rather than a rule.
+- Classification: `MARGINAL_WALK_FORWARD_EDGE`; no 2022--2023 Validation. Close
+  the exact V1/V2 family without post-walk-forward threshold, board, ST, K,
+  ranking, breadth, exit, stop, or model rescue.
+
 ## Tail-to-Open LightGBM V1 amended Stage A
 
 - A distinct cross-sectional ML lane is chronology-certified without reading model outcomes. It

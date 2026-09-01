@@ -7,17 +7,17 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `2b172ebe29` (Down-Gap First-Reclaim V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_DOWN_GAP_FIRST_RECLAIM_V1_DEVELOPMENT_COMPLETE_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: The exact lifetime first reclaim of a >=5% down gap at gap-open x1.01 is `OUTLIER_OR_CLUSTER_DRIVEN`. Pooled T+1-open net is +0.210%, but only 3/8 Development years are positive; the top 1% crowded dates contain 42.13% of signals and 64.22% of positive-return mass. Validation 2022--2023 and Final OOS remain sealed/unread
+- `CURRENT_BASELINE`: `4555e7aca9` (Down-Gap Reclaim Walk-Forward V2 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_DOWN_GAP_RECLAIM_WALKFORWARD_V2_DEVELOPMENT_COMPLETE_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: Frozen board-specific expanding selection is `MARGINAL_WALK_FORWARD_EDGE`, not a Validation candidate. Main earns +1.483% total at 0.293% CAGR, -5.058% drawdown, and 0.118 Sharpe with four losing years; ChiNext earns -1.472%; fixed 50/50 is +0.006% with -7.436% drawdown. Both sleeves profit only in 2020. Validation 2022--2023 and Final OOS remain sealed/unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Down-Gap First-Reclaim V1 is closed without Validation; pooled dry-up/stabilization structure is representation evidence only and does not authorize V2
+- `CURRENT_STRATEGY_CANDIDATE`: none. Walk-forward optimization materially beats the unconditional losing baselines but does not reliably translate into next-year profitability. Main's nominal gain disappears without its best day and is concentrated in the 2020 panic cluster
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `2b172ebe29`
+- `STARTING_HEAD`: `4555e7aca9`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `2b172ebe29`
+- `CURRENT_HEAD_AT_RESUME`: `4555e7aca9`
 - `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move away from the exact down-gap/open-x1.01 lifetime first-reclaim family. Do not rescue it with gap, reclaim, dry-up, age, board, ST, limit-state, or exit thresholds. Dry-up, stabilization, and market-wide crowding may be reused only as unproven representations in a genuinely independent preregistered lane.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: close the exact Down-Gap Reclaim V1/V2 strategy-development lane. Do not open Validation or rescue through thresholds, windows, board choice, ST removal, K, ranking, breadth, exits, or new models. Fresh large gaps, dry-up, and opening panic breadth remain unproven representations usable only in a genuinely independent lane.
 
 ## Research OS V2.3 resource and worker state
 
@@ -68,6 +68,25 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Down-Gap Reclaim Walk-Forward V2
+
+The frozen 8,748-configuration parameter family was selected independently for
+Main Board and ChiNext across five expanding folds (2014--2016 to 2017 through
+2014--2020 to 2021). Training selection used only board-specific history and
+board-specific opening-gap breadth. The 2017--2021 Main sleeve ends at 1.014830
+with 224 trades; ChiNext ends at 0.985284 with 482 trades; fixed 50/50 ends at
+1.000057. Both sleeves are profitable only in 2020, and every fold's top-10
+neighborhood is losing in 2017--2019. Main loses 3.30% after removing its best
+PnL day and 7.50% after its best five; ChiNext loses 5.27%/12.70% on the same
+diagnostics.
+
+Selected parameters repeatedly prefer large gaps and opening Q90 panic states.
+Main also always selects Dryup <=0.50 and usually gap age <=3; Compression is
+never selected. These are mechanism representations, not strategy evidence.
+All chronology, cross-board, leakage, position-cap, duplicate, cash/leverage,
+and sealed-period audits are zero. Classification is
+`MARGINAL_WALK_FORWARD_EDGE`; 2022--2023 Validation is not authorized.
 
 ### A-share Tail-to-Open LightGBM V1 amended Stage A
 

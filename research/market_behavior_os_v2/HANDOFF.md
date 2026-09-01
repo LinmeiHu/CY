@@ -2,6 +2,36 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: Down-Gap Reclaim Walk-Forward V2 Development closure
+
+Resume after the commit containing `ASHARE-DOWN-GAP-RECLAIM-WALKFORWARD-V2`;
+its starting checkpoint is `4555e7aca9` on
+`research/ashare-ultrashort-v1`. The 8,748-configuration family, two independent
+board sleeves, five expanding folds, board-specific training breadth, realistic
+K-slot simulator, 40-bp round-trip costs, selector, and year-end censoring were
+frozen before V2 outcomes. V1 event/outcome identities reconcile exactly; the
+minute first-reclaim reconstruction was not repeated.
+
+The final Development verdict is `MARGINAL_WALK_FORWARD_EDGE`, with no
+Validation recommendation. Main Board returns +1.483% total, +0.293% CAGR,
+-5.058% maximum drawdown, 0.118 Sharpe, and 0.058 Calmar on 224 trades. Its
+yearly returns are -0.952%, -3.847%, -0.203%, +7.201%, and -0.398%: four of five
+years lose, and excluding the best day changes cumulative return to -3.300%.
+ChiNext returns -1.472%, -0.294% CAGR, -9.842% drawdown, and -0.081 Sharpe on
+482 trades; its only profitable year is also 2020. Fixed 50/50 is +0.006% total
+with -7.436% drawdown and 0.013 Sharpe.
+
+The top-10 neighborhoods are uniformly losing for both boards in 2017--2019,
+uniformly profitable only in 2020, and nonpositive in 2021. Main repeatedly
+selects Dryup <=0.50, fresh gaps, and Q90 panic breadth; both boards prefer
+large gaps and panic states; Compression is never selected. Preserve these only
+as unproven representations. Do not rescue V2 through neighboring thresholds,
+board selection, ST removal, K/ranker/exit changes, stops, or models.
+
+All required causal and portfolio invariants are zero. Validation 2022--2023
+and Final OOS 2024+ remain sealed and unread. Close this strategy-development
+lane and move to a genuinely independent event/information family.
+
 ## Latest checkpoint: Down-Gap First-Reclaim V1 Development closure
 
 Resume after the commit containing `ASHARE-DOWN-GAP-FIRST-RECLAIM-V1`; its
