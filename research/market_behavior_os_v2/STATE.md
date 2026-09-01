@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `d676c7a622` (start of frozen champion-anatomy cycle 016)
-- `CURRENT_PHASE`: `CHAMPION_ANATOMY_COMPLETE_NO_MODIFICATION_AUTHORIZED`
-- `CURRENT_PRIMARY_FRONTIER`: exact Industry Diffusion plus weekly Low-MAX anatomy is `CONCENTRATED_BUT_ECONOMICALLY_MEANINGFUL`: payoff persists through d20, ranks 6--10 contribute 43.24% of net trade PnL, opportunity richness is nonmonotonic, and faded industry theses remain profitable. Neither adaptive breadth nor state-linked exit earned a construction experiment
+- `CURRENT_BASELINE`: `c5a38ef68a` (start of frozen champion failure-anatomy cycle 017)
+- `CURRENT_PHASE`: `CHAMPION_FAILURE_ANATOMY_COMPLETE_NO_REPAIR_AUTHORIZED`
+- `CURRENT_PRIMARY_FRONTIER`: 2018 and 2022 are `COMMON_MARKET_BETA_FAILURE`: selected stocks retain relative value and Low-MAX improves the losing Industry Diffusion baseline, but absolute market/selected-industry continuation is negative. The years differ in P&L shape and entry observability, so no champion regime filter or repair is authorized
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 016 authorizes no modification; daily Low-MAX refresh, all five Cycle-015 daily paths, Cycle-014 lifecycle/liquidity, and Cycle-013 propagation remain closed
+- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 017 authorizes no repair or filter; Cycle 016 authorizes no construction modification; daily Low-MAX refresh, all five Cycle-015 daily paths, Cycle-014 lifecycle/liquidity, and Cycle-013 propagation remain closed
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `d676c7a622`
-- `CURRENT_SCIENTIFIC_LAYER`: `FROZEN_CHAMPION_ANATOMY_COMPLETE; NO_CONSTRUCTION_EXPERIMENT_AUTHORIZED`
+- `CURRENT_HEAD_AT_RESUME`: `c5a38ef68a`
+- `CURRENT_SCIENTIFIC_LAYER`: `FROZEN_CHAMPION_FAILURE_ANATOMY_COMPLETE; SECOND_INDEPENDENT_ALPHA_DIRECTION_PRIORITIZED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -69,6 +69,49 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Cycle-017 champion failure-mode anatomy
+
+The exact frozen annual NAV chronology is -20.88%/+47.88%/+46.01%/+17.83%/
+-6.06%/+17.63% for 2018--2023. The 2018 loss spans five of six observed months,
+with -12.83% in October and a -25.77% annual drawdown. The 2022 loss spans eight
+of twelve months, with -15.86% in April and a -24.25% drawdown.
+
+Both losing years retain relative selection value. At the trade-aligned d20
+comparison, selected payoff versus broad/PIT-industry proxy is -3.11% versus
+-6.42%/-4.91% in 2018 and +0.00% versus -5.88%/-0.93% in 2022. The Industry
+Diffusion baseline loses -27.04%/-8.34%, while the champion loses less at
+-20.88%/-6.06%. Low-MAX adds +6.16/+2.28 percentage points of annual return and
+improves severe/winner candidate quality in both years. Strategy-layer status:
+`UPSTREAM_INDUSTRY_FAILURE_LOWMAX_STILL_HELPFUL`, not Low-MAX failure.
+
+Original industries remain relatively stronger than the broad proxy, but their
+absolute d20 paths are -5.75% in 2018 and -0.89% in 2022 versus positive values
+in every profitable year. Neither losing year rotates unusually fast. 2018 is
+`BROAD_FAILURE`: the worst 10% of trades explain only 36.66% of gross loss and
+the residual stays negative. 2022 is `MIXED`: the worst 10% explains 46.10% and
+removing it diagnostically leaves positive residual entry-year trade PnL. Both combine
+winner collapse and loser expansion relative to profitable-year controls.
+
+Entry anatomy differs. 2018 has the sparsest opportunity set, lower diffusion,
+and fewer selected industries than the profitable-year range, so part of its
+vulnerability is descriptively visible at entry. 2022 has the richest candidate
+pool and normal diffusion/industry breadth; its failure is predominantly
+post-entry. Execution coverage is 100.00%/99.80%, neither year has delayed exits,
+and later profitable years carry greater turnover/cost drag. Execution is not
+the cause.
+
+Final cross-year classification: `COMMON_MARKET_BETA_FAILURE`, with important
+within-class differences. No information discovered here modified, filtered,
+or improved the champion. Research capital moves toward independent
+cross-sectional/relative-value, non-continuation mean-reversion/event, and
+downside-aware Alpha engines rather than a champion regime veto.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation. Has this mechanism implied a
+genuinely new strategy archetype? It motivates a second independent, lower-beta
+Alpha engine; none was implemented or established in this cycle.
 
 ### Cycle-016 frozen champion anatomy
 

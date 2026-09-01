@@ -4,6 +4,28 @@ Updated 2026-09-01. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Cycle-017 champion failure-mode conclusions
+
+- 2018/2022 champion return is -20.88%/-6.06%; baseline return is
+  -27.04%/-8.34%. Low-MAX improves annual return +6.16/+2.28 points and candidate
+  tail/winner quality in both: `UPSTREAM_INDUSTRY_FAILURE_LOWMAX_STILL_HELPFUL`.
+- Selected d20 payoff beats broad and PIT-industry proxies in both losing years,
+  but absolute selected-industry continuation is negative. Both years are
+  `BETA_DOMINATED`; common conclusion `COMMON_MARKET_BETA_FAILURE`.
+- 2018 is broad/persistent with sparse/weaker entry opportunity. 2022 is mixed,
+  more episodic, and ex-ante normal-to-rich. Neither exhibits unusually fast
+  industry rotation; execution is not the cause.
+- No champion filter, repair, or hypothetical improved replay is authorized.
+  Prioritize an independent lower-beta return engine rather than another
+  Industry Diffusion/Low-MAX neighbor.
+
+What market behavior are we still not studying? Borrow-feasible relative value,
+investor-flow identity, order-book/queue pressure, immutable-vintage
+fundamentals, and lawful independent confirmation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? It
+motivates, but does not establish, a second independent lower-beta Alpha engine.
+
 ## Cycle-016 frozen champion-anatomy conclusions
 
 - Exact 20-bps Industry Diffusion plus weekly Low-MAX identity reproduces. Mean

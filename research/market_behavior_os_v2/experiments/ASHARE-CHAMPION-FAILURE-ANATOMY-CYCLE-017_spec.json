@@ -1,0 +1,121 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-FAILURE-ANATOMY-CYCLE-017",
+  "status": "FROZEN_DIAGNOSTIC_FAILURE_ANATOMY_BEFORE_CYCLE_017_OUTCOMES",
+  "starting_checkpoint": "c5a38ef68a",
+  "branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "champion": {
+    "name": "Industry Diffusion + Weekly Low-MAX",
+    "cost_per_side": 0.002,
+    "clock": "exact frozen weekly clock",
+    "breadth": "exact frozen Top-10 construction",
+    "holding": "exact frozen 20-session lifecycle and QD-010 execution",
+    "changes_authorized": false
+  },
+  "bound_inputs": {
+    "cycle_016_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-ANATOMY-CYCLE-016_spec.json",
+      "sha256": "59ecfed283bee0becd2c146f3c350db2679a292cbb275cfdfd2f43732033fe43"
+    },
+    "cycle_016_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_anatomy_cycle_016.py",
+      "sha256": "cb01e2cfc43acd3f11b0de1edb23ecf9308f2674edaab7e04fdb6cd341bb91da"
+    },
+    "cycle_016_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    },
+    "cycle_016_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "cycle_016_opportunity_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/cohort_opportunity_panel.parquet",
+      "sha256": "5409b2e348df26ff3659fe87b0376c2ca5b15faa9b5ecbdf3322bc547ce19d5f"
+    },
+    "cycle_016_persistence_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/industry_persistence_panel.parquet",
+      "sha256": "640a16bad31d6a7a299ac69a481154cfb876c6a570842f4dfe9baeeb19918f81"
+    },
+    "construction_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_result.json",
+      "sha256": "cbe122ec339c7b9524fdef1bb01fb77b44f536ff8355d9a9ef9b8cfac7765283"
+    },
+    "construction_equity": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_equity.csv",
+      "sha256": "03de3938883a78f1edb3344ae88fe579e504e1dad9b134e441d5ce8d49c7c0d1"
+    },
+    "construction_candidates": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_candidate_attribution.csv",
+      "sha256": "91eb1c43b96d2edb4342ddf7757a5b7c4d244f7b40cf18c5946690d6138af097"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    }
+  },
+  "chronology": {
+    "annual_return": "compound exact replay daily NAV returns within calendar year; 2018 starts from frozen initial capital",
+    "monthly_return": "compound exact replay daily NAV returns within calendar month",
+    "trade_year": "frozen signal-date year",
+    "losing_years": [2018, 2022],
+    "profitable_years": [2019, 2020, 2021, 2023]
+  },
+  "market_alpha": {
+    "broad_proxy": "daily cross-sectional median causal step_return compounded over the same post-signal 20-session descriptive window",
+    "industry_proxy": "daily equal-weight mean causal step_return in the PIT industry compounded over the same post-signal 20-session descriptive window",
+    "classification": {
+      "BETA_DOMINATED": "year is absolutely negative while mean selected net payoff exceeds both broad and industry proxies",
+      "RELATIVE_ALPHA_FAILED": "mean selected net payoff is no better than both broad and industry proxies",
+      "MIXED": "otherwise"
+    }
+  },
+  "strategy_layer": {
+    "baseline": "exact frozen Industry Diffusion replay",
+    "champion": "exact frozen Industry Diffusion plus weekly Low-MAX replay",
+    "increment": "champion annual return minus baseline annual return; descriptive arithmetic difference",
+    "classifications": [
+      "UPSTREAM_INDUSTRY_FAILURE_LOWMAX_STILL_HELPFUL",
+      "LOWMAX_SELECTION_FAILURE",
+      "BOTH_LAYERS_WEAK",
+      "MIXED"
+    ]
+  },
+  "continuation_rotation": {
+    "checkpoints": [5, 10, 15, 20],
+    "industry_path": "compound PIT-industry equal-weight return and broad-relative return after signal",
+    "opportunity_persistence": "fraction of original selected industries still in top-10 industries by frozen diffusion_score at checkpoint",
+    "rank_quality": "cross-sectional percentile rank of original selected industry diffusion_score at checkpoint",
+    "control": "each losing year versus individual and pooled profitable years"
+  },
+  "loss_concentration": {
+    "worst_cohorts": [5, 10],
+    "worst_securities": 10,
+    "worst_trade_fraction": 0.10,
+    "tail_concentrated": "worst 10 percent of trades explain at least 60 percent of gross negative trade PnL",
+    "broad": "worst 10 percent explain at most 40 percent and residual annual trade PnL remains negative",
+    "otherwise": "MIXED",
+    "removal_is_attribution_only": true
+  },
+  "winner_loser": {
+    "winner_collapse": "winner rate or mean winner is below the minimum profitable-year observation",
+    "loser_expansion": "severe-loss incidence exceeds the maximum profitable-year observation or mean loser is below the minimum profitable-year observation",
+    "classification": ["WINNER_COLLAPSE", "LOSER_EXPANSION", "BOTH"]
+  },
+  "execution": {
+    "turnover_proxy": "entry-year realized round-trip notional divided by frozen initial capital; diagnostic, not accounting-year engine turnover",
+    "coverage": "executed frozen trades divided by planned frozen selections by signal year",
+    "cost_drag": "20 bps each side applied to realized entry and exit notionals",
+    "no_cost_grid": true
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 access",
+    "champion modification, repair, filter, sizing, or hypothetical improved return",
+    "market, volatility, breadth, dispersion, or regime veto",
+    "Top-N, holding, stop, exit, Low-MAX, Industry Diffusion, cost, or clock change",
+    "classifier, clustering, regression, LightGBM, tree, or parameter search",
+    "new Alpha implementation",
+    "OOS, independent-validation, live, or production claim"
+  ]
+}

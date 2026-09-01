@@ -2,6 +2,41 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: champion failure-mode anatomy
+
+Resume after the commit containing `ASHARE-CHAMPION-FAILURE-ANATOMY-CYCLE-017`;
+its starting checkpoint is `c5a38ef68a`. Preserve Industry Diffusion plus weekly
+Low-MAX exactly. This cycle diagnoses 2018 and 2022 but authorizes no filter,
+repair, exposure change, exit, or hypothetical improved replay. All evidence is
+consumed 2018--2023 history; post-2023 outcomes and CY-011 remain unread.
+
+Annual champion return is -20.88% in 2018 and -6.06% in 2022. Both are
+`BETA_DOMINATED` in the frozen descriptive tree: selected stocks outperform the
+causal broad and PIT-industry proxies, but absolute market and selected-industry
+paths are negative. The baseline returns -27.04%/-8.34%, while Low-MAX improves
+annual return by +6.16/+2.28 points and candidate tail/winner quality in both.
+Both strategy-layer decisions are
+`UPSTREAM_INDUSTRY_FAILURE_LOWMAX_STILL_HELPFUL`.
+
+They are not identical failure episodes. 2018 is `BROAD_FAILURE`, with only one
+positive observed month, weak/sparse entry opportunity, 35.42% winners, and
+20.00% severe losses. 2022 is `MIXED`, with eight negative months but meaningful
+recovery episodes, normal-to-rich entry opportunity, 48.06% winners, and 15.95%
+severe losses. Neither has unusually fast opportunity rotation. Execution is
+not causal: coverage is essentially complete, delayed exits are zero, and
+capacity is usable.
+
+Cross-year conclusion: `COMMON_MARKET_BETA_FAILURE`, qualified by different P&L
+shape and entry observability. Do not convert this into a champion regime filter.
+Next research capital should target a genuinely independent lower-beta
+cross-sectional/relative-value engine, a non-continuation mean-reversion/event
+engine, or downside-aware Alpha independent of Low-MAX.
+
+The external path panel is under
+`/Volumes/quant/CY_quant_research/champion_failure_anatomy_cycle_017/`; compact
+lineage, annual/monthly chronology, contributors, and hashes are in the Cycle
+017 result and report artifacts.
+
 ## Latest checkpoint: frozen champion anatomy
 
 Resume after the commit containing `ASHARE-CHAMPION-ANATOMY-CYCLE-016`; its

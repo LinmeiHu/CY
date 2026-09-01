@@ -1,5 +1,19 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Cycle-017 champion failure-mode anatomy
+
+| Year | Market exposure | Strategy layer | P&L shape | Opportunity | Tail mechanism |
+|---:|---|---|---|---|---|
+| 2018 | `BETA_DOMINATED` | `UPSTREAM_INDUSTRY_FAILURE_LOWMAX_STILL_HELPFUL` | `BROAD_FAILURE` | `CONTINUATION_FAILURE` | `BOTH` |
+| 2022 | `BETA_DOMINATED` | `UPSTREAM_INDUSTRY_FAILURE_LOWMAX_STILL_HELPFUL` | `MIXED` | `CONTINUATION_FAILURE` | `BOTH` |
+
+Low-MAX adds +6.16/+2.28 points of actual annual return versus the exact
+Industry Diffusion baseline and improves candidate severe/winner quality in both
+years. Selected stocks also beat broad and PIT-industry descriptive alternatives.
+The shared failure is negative absolute market/industry continuation, not
+stock-selection or execution. Cross-year conclusion:
+`COMMON_MARKET_BETA_FAILURE`. No strategy repair or filter was tested.
+
 ## Cycle-016 frozen champion anatomy
 
 | Diagnostic | Frozen evidence | Decision |
