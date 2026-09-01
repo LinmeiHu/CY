@@ -94,3 +94,16 @@ original-source text. The 12m/1m equal-weight cell is therefore labeled a
 paper-specified representative primary design, not falsely asserted as the
 paper's unique main cell. Existing adverse JT Top-20 and MAX Top-20 results are
 preserved unchanged.
+
+## Cycle-011 conditional strategy construction
+
+| Arm | Frozen role | Candidate evidence | Executable evidence | Decision |
+|---|---|---|---|---|
+| Industry Diffusion baseline | Unchanged Top-10 weekly Alpha engine | Exact prior identity | +54.64% total, -29.10% DD, 0.440 Sharpe, 18.46% severe, 165.52x turnover | `PROMISING_BUT_MIXED`, unchanged |
+| Upper-limit-clean quality | Revised-240 ranking within exact baseline industries/counts | +0.416% h20, +0.818 pp severe quality, but +1.083%/-0.159% by block | Not authorized | Late reversal; no permanent role |
+| Low-MAX quality | Prior-20 MAX ascending within exact baseline industries/counts | +0.397% h20, +0.594%/+0.226% by block, +4.439 pp severe quality | +122.43% total, -25.77% DD, 0.731 Sharpe, 14.13% severe; turnover +27.18% versus 10% ceiling | Strong conditional information; frozen materiality fails, no permanent role |
+| Equal-rank combination | Conditional only if both individual arms pass | Not authorized because Arm 1 fails | Not run | No combination |
+
+The full construction classification is `STRATEGY_CONSTRUCTION_NOT_IMPROVED`.
+This does not reject Low-MAX or the upper-limit correction as mechanisms; it
+closes their exact mapping into the frozen Industry Diffusion strategy.

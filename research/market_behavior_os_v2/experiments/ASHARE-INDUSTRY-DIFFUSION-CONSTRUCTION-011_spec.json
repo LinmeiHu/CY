@@ -1,0 +1,125 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011",
+  "status": "FROZEN_CONSTRUCTION_AND_MATERIALITY_BEFORE_NEW_ARM_OUTCOMES",
+  "starting_checkpoint": "04d7b7f9f6",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "baseline_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json", "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"},
+    "baseline_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-CA-REPLAY-003_result.json", "sha256": "ed46bef9a546ab03c5ad56bf9447be8aec2bf21c85e21395395126df806b9ec0"},
+    "baseline_equity": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-CA-REPLAY-003_equity.csv", "sha256": "b6bb0d84bf772907da000ae51f323525cf0c8d69ec4e0a006a5b04d9bb2fb3c1"},
+    "baseline_risk_exits": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-CA-REPLAY-003_risk_exits.csv", "sha256": "0d4d6e86ff017e52d775ba4cad8f743c78f9b8222c01bfc6af3ea584e5a2cbd8"},
+    "baseline_candidate_panel": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-DIVERSIFIED-CYCLE-002_candidate_panel.csv", "sha256": "422b1110c6ff1c43ebdcf73198a04b2266558fcf4779917e57047e2bc88d0ca2"},
+    "baseline_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py", "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"},
+    "depth_spec": {"path": "research/market_behavior_os_v2/experiments/ASHARE-EVIDENCE-DEPTH-CYCLE-010_spec.json", "sha256": "d3ebd67b4d597f06e00a510d103cf437a80b5d43ee24c10dab851ac9718ba44b"},
+    "depth_result": {"path": "research/market_behavior_os_v2/artifacts/ASHARE-EVIDENCE-DEPTH-CYCLE-010_result.json", "sha256": "11bb97a847469e3cdf805bf87558b0f58b9cc958daba8e2a909db9861da81f3f"},
+    "depth_runner": {"path": "research/market_behavior_os_v2/scripts/run_ashare_evidence_depth_cycle_010.py", "sha256": "fa768947b6241b64f1dbb9ac5aad91081c9caaa494360a6f0c13936cdd95ef90"},
+    "data_asset_registry": {"path": "configs/data_asset_registry.json", "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"},
+    "cy006_manifest": {"path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"}
+  },
+  "baseline": {
+    "family": "industry_diffusion_20",
+    "signal": "leave-one-out fraction of eligible PIT-industry constituents with positive causal r20",
+    "schedule": "every fifth CY-006 market session after causal warm-up",
+    "decision_at": "completed trade-date close at 15:00 Asia/Shanghai",
+    "selection": "top 10 by signal descending then symbol",
+    "holding_sessions": 20,
+    "weights": "equal within each weekly cohort; four overlapping cohorts",
+    "cost_per_side": 0.002,
+    "execution": "unchanged ASHARE-CA-REPLAY-003 QD-010-aware next-open contract",
+    "identity_required": {
+      "total_return": 0.5464,
+      "maximum_drawdown": -0.2910,
+      "daily_sharpe": 0.440,
+      "completed_trades": 2627,
+      "entry_execution_fraction": 0.9989
+    },
+    "identity_tolerance": {"return_drawdown": 0.0001, "sharpe": 0.0005, "entry_fraction": 0.0001}
+  },
+  "opportunity_set": {
+    "definition": "for each baseline signal date, hold the baseline Top-10 industry allocation counts fixed; eligible alternatives are frozen CY-006 eligible names in those exact PIT industries",
+    "position_count": 10,
+    "industry_allocation": "exact baseline selected-name count per industry and date",
+    "fallback": "if fewer modifier-valid alternatives exist than the fixed industry count, retain baseline names in baseline order for unfilled slots",
+    "purpose": "change stock identity only; do not change the industry alpha or industry allocation"
+  },
+  "arms": {
+    "arm0_baseline": {"ranking": "unchanged baseline signal descending then symbol"},
+    "arm1_upper_limit_clean": {
+      "ranking": "revised_240 descending then symbol within each fixed date-industry allocation",
+      "revised_240": "sum causal log returns over trailing 240 stock sessions after excluding every historical upper-limit close and its next stock session",
+      "historical_limit_semantics": "repository-authoritative up_limit_price/limit_pct by board, status, and date",
+      "missing_quality": "use frozen baseline fallback only; never change formation horizon or exclusion window"
+    },
+    "arm2_low_max": {
+      "ranking": "max_return20 ascending then symbol within each fixed date-industry allocation",
+      "max_return20": "maximum causal daily log return over the prior 20 sessions",
+      "missing_quality": "use frozen baseline fallback only; never change lookback or threshold"
+    },
+    "arm3_optional_equal_rank": {
+      "authorization": "only if arm1 and arm2 each pass every candidate-level gate before any full replay",
+      "ranking": "equal average of same-date-within-opportunity percentile quality ranks; higher is better",
+      "weights": [0.5, 0.5]
+    }
+  },
+  "candidate_attribution": {
+    "horizon_sessions": 20,
+    "net_cost_per_side": 0.002,
+    "winner_threshold": 0.0,
+    "severe_loss_threshold": -0.10,
+    "blocks": {"early": [2018, 2020], "late": [2021, 2023]},
+    "authorization_all_required": {
+      "minimum_complete_selections": 1000,
+      "minimum_decision_dates_each_block": 40,
+      "minimum_quality_available_fraction": 0.75,
+      "minimum_changed_fraction": 0.10,
+      "maximum_changed_fraction": 0.90,
+      "minimum_full_mean_net_improvement": 0.001,
+      "minimum_each_block_mean_net_improvement": 0.0,
+      "minimum_severe_loss_improvement": 0.005,
+      "maximum_industry_allocation_difference": 0.0
+    }
+  },
+  "portfolio_materiality": {
+    "all_required": {
+      "minimum_entry_execution_fraction": 0.90,
+      "minimum_total_return_delta": -0.05,
+      "minimum_changed_fraction": 0.10,
+      "maximum_changed_fraction": 0.90,
+      "maximum_turnover_increase_fraction": 0.10,
+      "maximum_industry_hhi_increase": 0.05,
+      "minimum_capacity_ratio": 0.80,
+      "risk_improvement_any": {
+        "minimum_sharpe_improvement": 0.10,
+        "minimum_drawdown_improvement": 0.02,
+        "minimum_severe_trade_fraction_improvement": 0.02
+      }
+    },
+    "absolute_strategy_candidate_all_required": {
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.50,
+      "minimum_maximum_drawdown": -0.35,
+      "maximum_severe_trade_fraction": 0.10,
+      "terminal_open_lots": 0
+    }
+  },
+  "classification": [
+    "INDUSTRY_DIFFUSION_STRATEGY_CANDIDATE",
+    "PROMISING_BUT_MIXED",
+    "STRATEGY_CONSTRUCTION_NOT_IMPROVED"
+  ],
+  "parallel_planning_only": {
+    "maximum_questions": 3,
+    "scope": "rank existing Price-Volume-Path family-level gaps without new factors or outcomes"
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 data access",
+    "Industry Diffusion signal, clock, horizon, breadth, weight, exposure, exit, cost, or execution change",
+    "modifier horizon, threshold, exclusion-window, sign, or weight search",
+    "Low Idio, Low Vol-of-Vol, Low Skewness, Quiet VWAP, habitat, regime, or exposure rescue",
+    "full replay of a candidate-level-failing arm",
+    "optional arm 3 unless both individual arms pass every frozen attribution gate",
+    "new factor discovery or large data acquisition",
+    "OOS, independent-confirmation, validation, live, or production claims"
+  ]
+}

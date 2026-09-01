@@ -1,0 +1,413 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "baseline_reproduced_exactly": true,
+  "boundaries": {
+    "cy011_data_read": false,
+    "exposure_or_exit_changed": false,
+    "industry_signal_changed": false,
+    "new_factor_discovery": false,
+    "oos_claim": false,
+    "post_2023_read": false
+  },
+  "candidate_attribution": {
+    "arm1_upper_limit_clean": {
+      "authorization_gates": {
+        "both_blocks": false,
+        "changed_lower": true,
+        "changed_upper": true,
+        "complete_selections": true,
+        "dates_each_block": true,
+        "full_payoff": true,
+        "industry_allocation": true,
+        "quality_available": true,
+        "severe_loss": true
+      },
+      "authorized_replay": false,
+      "changed_selection_attribution": {
+        "arm_only_complete": 1678,
+        "baseline_only_complete": 1687,
+        "positive_upside_sacrificed_net": -7.633876028385771,
+        "severe_losers_avoided_net": 23,
+        "winners_captured_net": 57
+      },
+      "headroom": {
+        "changed_fraction": 0.6471910112359551,
+        "changed_selections": 1728,
+        "decision_dates": 267,
+        "industry_allocation_max_difference": 0.0,
+        "median_eligible_stocks_per_date": 56.0,
+        "median_industries_per_date": 4.0,
+        "overlap_fraction": 0.3528089887640449,
+        "quality_available_fraction": 0.8800906258850184
+      },
+      "periods": {
+        "early": {
+          "arm": {
+            "complete_selections": 1208,
+            "decision_dates": 122,
+            "entry_execution_fraction": 0.9975409836065574,
+            "mean_net_return": 0.024884722880316946,
+            "median_net_return": 0.008434700261631511,
+            "severe_loss_fraction": 0.16887417218543047,
+            "winner_fraction": 0.5306291390728477
+          },
+          "baseline": {
+            "complete_selections": 1213,
+            "decision_dates": 122,
+            "entry_execution_fraction": 0.9983606557377049,
+            "mean_net_return": 0.014052101132965624,
+            "median_net_return": -0.007379798226675893,
+            "severe_loss_fraction": 0.21269579554822754,
+            "winner_fraction": 0.4699093157460841
+          },
+          "mean_net_improvement": 0.010832621747351322,
+          "severe_loss_improvement": 0.043821623362797074,
+          "winner_capture_improvement": 0.06071982332676362
+        },
+        "full": {
+          "arm": {
+            "complete_selections": 2608,
+            "decision_dates": 263,
+            "entry_execution_fraction": 0.9823970037453184,
+            "mean_net_return": 0.015005294506906663,
+            "median_net_return": -0.003418537707242486,
+            "severe_loss_fraction": 0.1767638036809816,
+            "winner_fraction": 0.49118098159509205
+          },
+          "baseline": {
+            "complete_selections": 2617,
+            "decision_dates": 263,
+            "entry_execution_fraction": 0.9838951310861423,
+            "mean_net_return": 0.010843903021869354,
+            "median_net_return": -0.008550404911002008,
+            "severe_loss_fraction": 0.18494459304547192,
+            "winner_fraction": 0.46771111960259837
+          },
+          "mean_net_improvement": 0.004161391485037309,
+          "severe_loss_improvement": 0.00818078936449032,
+          "winner_capture_improvement": 0.02346986199249368
+        },
+        "late": {
+          "arm": {
+            "complete_selections": 1400,
+            "decision_dates": 141,
+            "entry_execution_fraction": 0.9696551724137931,
+            "mean_net_return": 0.006480759167564077,
+            "median_net_return": -0.010875915845786732,
+            "severe_loss_fraction": 0.18357142857142858,
+            "winner_fraction": 0.45714285714285713
+          },
+          "baseline": {
+            "complete_selections": 1404,
+            "decision_dates": 141,
+            "entry_execution_fraction": 0.9717241379310345,
+            "mean_net_return": 0.008072147816199995,
+            "median_net_return": -0.009460628046474961,
+            "severe_loss_fraction": 0.16096866096866097,
+            "winner_fraction": 0.4658119658119658
+          },
+          "mean_net_improvement": -0.0015913886486359176,
+          "severe_loss_improvement": -0.02260276760276761,
+          "winner_capture_improvement": -0.008669108669108694
+        }
+      }
+    },
+    "arm2_low_max": {
+      "authorization_gates": {
+        "both_blocks": true,
+        "changed_lower": true,
+        "changed_upper": true,
+        "complete_selections": true,
+        "dates_each_block": true,
+        "full_payoff": true,
+        "industry_allocation": true,
+        "quality_available": true,
+        "severe_loss": true
+      },
+      "authorized_replay": true,
+      "changed_selection_attribution": {
+        "arm_only_complete": 1657,
+        "baseline_only_complete": 1663,
+        "positive_upside_sacrificed_net": 9.00938279339978,
+        "severe_losers_avoided_net": 117,
+        "winners_captured_net": 59
+      },
+      "headroom": {
+        "changed_fraction": 0.6363295880149812,
+        "changed_selections": 1699,
+        "decision_dates": 267,
+        "industry_allocation_max_difference": 0.0,
+        "median_eligible_stocks_per_date": 56.0,
+        "median_industries_per_date": 4.0,
+        "overlap_fraction": 0.3636704119850188,
+        "quality_available_fraction": 1.0
+      },
+      "periods": {
+        "early": {
+          "arm": {
+            "complete_selections": 1212,
+            "decision_dates": 122,
+            "entry_execution_fraction": 1.0,
+            "mean_net_return": 0.019993773679913673,
+            "median_net_return": 0.0018654026492880282,
+            "severe_loss_fraction": 0.15759075907590758,
+            "winner_fraction": 0.5066006600660066
+          },
+          "baseline": {
+            "complete_selections": 1213,
+            "decision_dates": 122,
+            "entry_execution_fraction": 0.9983606557377049,
+            "mean_net_return": 0.014052101132965624,
+            "median_net_return": -0.007379798226675893,
+            "severe_loss_fraction": 0.21269579554822754,
+            "winner_fraction": 0.4699093157460841
+          },
+          "mean_net_improvement": 0.00594167254694805,
+          "severe_loss_improvement": 0.05510503647231996,
+          "winner_capture_improvement": 0.03669134431992249
+        },
+        "full": {
+          "arm": {
+            "complete_selections": 2611,
+            "decision_dates": 263,
+            "entry_execution_fraction": 0.9842696629213483,
+            "mean_net_return": 0.01481613924713018,
+            "median_net_return": -0.002244633539937757,
+            "severe_loss_fraction": 0.1405591727307545,
+            "winner_fraction": 0.49138261202604366
+          },
+          "baseline": {
+            "complete_selections": 2617,
+            "decision_dates": 263,
+            "entry_execution_fraction": 0.9838951310861423,
+            "mean_net_return": 0.010843903021869354,
+            "median_net_return": -0.008550404911002008,
+            "severe_loss_fraction": 0.18494459304547192,
+            "winner_fraction": 0.46771111960259837
+          },
+          "mean_net_improvement": 0.003972236225260826,
+          "severe_loss_improvement": 0.04438542031471743,
+          "winner_capture_improvement": 0.023671492423445295
+        },
+        "late": {
+          "arm": {
+            "complete_selections": 1399,
+            "decision_dates": 141,
+            "entry_execution_fraction": 0.9710344827586207,
+            "mean_net_return": 0.010330583183846699,
+            "median_net_return": -0.003992015968063867,
+            "severe_loss_fraction": 0.12580414581844174,
+            "winner_fraction": 0.4781987133666905
+          },
+          "baseline": {
+            "complete_selections": 1404,
+            "decision_dates": 141,
+            "entry_execution_fraction": 0.9717241379310345,
+            "mean_net_return": 0.008072147816199995,
+            "median_net_return": -0.009460628046474961,
+            "severe_loss_fraction": 0.16096866096866097,
+            "winner_fraction": 0.4658119658119658
+          },
+          "mean_net_improvement": 0.0022584353676467044,
+          "severe_loss_improvement": 0.03516451515021923,
+          "winner_capture_improvement": 0.012386747554724686
+        }
+      }
+    }
+  },
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_ONLY_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "classification": "STRATEGY_CONSTRUCTION_NOT_IMPROVED",
+  "complexity_decision": "Neither frozen stock-quality mechanism earned a permanent place. Preserve the baseline Industry Diffusion result as mixed and park further construction refinement absent new independent evidence.",
+  "domain": {
+    "decision_dates": 267,
+    "opportunity_rows": 601341,
+    "outcome_path_rows": 157800,
+    "symbols": 4793
+  },
+  "experiment_id": "ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011",
+  "hashes": {
+    "candidate_panel_sha256": "91eb1c43b96d2edb4342ddf7757a5b7c4d244f7b40cf18c5946690d6138af097",
+    "equity_sha256": "03de3938883a78f1edb3344ae88fe579e504e1dad9b134e441d5ce8d49c7c0d1",
+    "report_sha256": "b90c6f2cf306b0ac7c2ede826f4c41ef4faf96dd6894b8473ae5a95d9931275d",
+    "risk_exits_sha256": "59d2c56ea4d5c9dae3ef36ca2c5fbc826e91452daabb9e1c0b840f6df07b1271",
+    "spec_sha256": "0d9f809a9e19bd000f559c4c64cb73e7f6010883b82ebc4f625c9ba845c11ac0"
+  },
+  "input_audit": {
+    "first": "2018-01-02",
+    "last": "2023-12-29",
+    "limit_rule_failures": 0,
+    "lineage_failures": 0,
+    "rows": 6155390,
+    "symbols": 5262,
+    "time_travel": 0
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "next_frontier": [
+    {
+      "family": "Price-limit event lifecycle and acceptance",
+      "question": "After an objectively known limit-state event, which predeclared acceptance/rejection paths separate durable demand from temporary attention?",
+      "rationale": "High economic value and existing historical-limit/minute data; materially different from another momentum lookback or limit-event count."
+    },
+    {
+      "family": "Industry leader\u2013follower convergence and leadership turnover",
+      "question": "Does causal convergence between leaders and followers forecast continuation or industry reversal beyond frozen diffusion level and acceleration?",
+      "rationale": "Uses registered industry structure while asking a distinct mechanism question with broad opportunity breadth."
+    },
+    {
+      "family": "Liquidity-transition shock assimilation",
+      "question": "Do predeclared turnover/liquidity state transitions distinguish informed continuation from temporary attention without repeating low-turnover levels?",
+      "rationale": "Price-volume information remains underexploited at the transition layer and is cheap to test with existing data."
+    }
+  ],
+  "optional_arm3_authorized": false,
+  "portfolio_comparisons": {
+    "arm2_low_max": {
+      "absolute_candidate_checks": {
+        "drawdown": true,
+        "liquidated": true,
+        "return": true,
+        "severe_loss": false,
+        "sharpe": true
+      },
+      "absolute_candidate_pass": false,
+      "deltas": {
+        "annualized_return": 0.07738658545932875,
+        "calmar": 0.33837789731263357,
+        "capacity_ratio": 0.9959115266906123,
+        "daily_sharpe": 0.2910418857867176,
+        "industry_hhi": 0.00024087727309504703,
+        "maximum_drawdown_improvement": 0.033230691149468194,
+        "mean_industries": 0.009015777610818176,
+        "mean_positions": -0.07663410969195894,
+        "severe_trade_fraction_improvement": 0.04328790762593579,
+        "total_return": 0.6779767435695638,
+        "turnover_increase_fraction": 0.2718414983199742
+      },
+      "materiality_checks": {
+        "capacity": true,
+        "changed_lower": true,
+        "changed_upper": true,
+        "execution": true,
+        "industry_hhi": true,
+        "return_preservation": true,
+        "risk_improvement": true,
+        "turnover": false
+      },
+      "materiality_pass": false,
+      "risk_improvement_checks": {
+        "drawdown": true,
+        "severe_loss": true,
+        "sharpe": true
+      }
+    }
+  },
+  "portfolio_replays": [
+    {
+      "annualized_return": 0.08603279772944128,
+      "calmar": 0.2956790778460636,
+      "completed_trades": 2627,
+      "daily_sharpe": 0.4404116288004328,
+      "end_date": "2023-12-28",
+      "entries": 2627,
+      "entry_execution_fraction": 0.9988593155893536,
+      "excess_return_vs_cash": 0.5463696279481551,
+      "family": "arm0_baseline",
+      "forced_exit_pending_days": 0,
+      "forced_pre_effective_exits": 15,
+      "maximum_drawdown": -0.29096680886644155,
+      "mean_industries": 12.368144252441773,
+      "mean_industry_hhi_invested_days": 0.17450937459963,
+      "mean_positions": 39.40195341848234,
+      "median_capacity_cny_at_5pct_amount": 406266653.38,
+      "p10_capacity_cny_at_5pct_amount": 111580499.97600003,
+      "planned_entries": 2630,
+      "risk_blocked_entries": 0,
+      "severe_trade_fraction": 0.18462124095926913,
+      "start_date": "2018-07-10",
+      "status": "COMPLETE",
+      "terminal_open_lots": 0,
+      "total_return": 0.5463696279481551,
+      "turnover_multiple_initial_capital": 165.52185637440297
+    },
+    {
+      "annualized_return": 0.16341938318877003,
+      "calmar": 0.6340569751586972,
+      "completed_trades": 2625,
+      "daily_sharpe": 0.7314535145871504,
+      "end_date": "2023-12-28",
+      "entries": 2625,
+      "entry_execution_fraction": 0.9980988593155894,
+      "excess_return_vs_cash": 1.224346371517719,
+      "family": "arm2_low_max",
+      "forced_exit_pending_days": 0,
+      "forced_pre_effective_exits": 20,
+      "maximum_drawdown": -0.25773611771697336,
+      "mean_industries": 12.377160030052591,
+      "mean_industry_hhi_invested_days": 0.17475025187272505,
+      "mean_positions": 39.325319308790384,
+      "median_capacity_cny_at_5pct_amount": 329817784.0,
+      "p10_capacity_cny_at_5pct_amount": 111124306.08000001,
+      "planned_entries": 2630,
+      "risk_blocked_entries": 3,
+      "severe_trade_fraction": 0.14133333333333334,
+      "start_date": "2018-07-10",
+      "status": "COMPLETE",
+      "terminal_open_lots": 0,
+      "total_return": 1.224346371517719,
+      "turnover_multiple_initial_capital": 210.51756581592423
+    }
+  ],
+  "questions": {
+    "new_strategy_archetype_implied": false,
+    "what_market_behavior_are_we_still_not_studying": "Event-lifecycle acceptance, leader-follower convergence, and liquidity-transition shock assimilation within registered Price-Volume-Path data."
+  },
+  "starting_checkpoint": "04d7b7f9f6"
+}

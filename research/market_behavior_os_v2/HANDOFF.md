@@ -2,6 +2,51 @@
 
 Updated 2026-09-01.
 
+## Latest checkpoint: Industry Diffusion stock-quality construction
+
+Resume after the commit containing `ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011`;
+its starting checkpoint is `04d7b7f9f6`. Do not rerun or tune either quality
+arm, the within-industry allocation rule, candidate gates, or portfolio
+materiality rule. All 2018--2023 evidence is consumed development history;
+post-2023 outcomes and CY-011 data remain unread.
+
+The frozen `industry_diffusion_20` QD-010 replay reproduces exactly: +54.64%
+total, +8.60% annualized, -29.10% maximum drawdown, 0.440 Sharpe, 0.296
+Calmar, 18.46% severe trades, 165.52x turnover, and 2,627 completed trades.
+Every modifier holds the baseline Top-10 industry allocation counts fixed and
+changes stock identity only inside those same PIT industries.
+
+Upper-limit-clean quality changes 64.72% of selections and improves full h20
+net payoff by +0.416%, severe losses by 0.818 pp, and winner incidence by 2.347
+pp. Its early/late payoff delta is +1.083%/-0.159%, so the frozen both-block
+gate fails and no replay is permitted.
+
+Low-MAX changes 63.63% of selections. Candidate payoff improves +0.397% full,
++0.594% early, and +0.226% late; severe losses fall 4.439 pp, 117 net severe
+losers are avoided, and 59 net winners are captured. It passes every candidate
+gate. Its only authorized replay returns +122.43% total/+16.34% annualized with
+-25.77% drawdown, 0.731 Sharpe, 0.634 Calmar, 14.13% severe trades, 2,625
+completed trades, 0.175 industry HHI, and CNY 111.1m P10 capacity. Relative to
+baseline it adds +67.80 pp return, +0.291 Sharpe, +3.32 pp drawdown quality, and
++4.33 pp severe-loss quality. However, frozen turnover per initial capital rises
+27.18% versus the preregistered 10% maximum. The all-required materiality gate
+therefore fails; no alternative turnover convention or rescue is allowed.
+
+Arm 3 was not authorized because both individual arms did not pass candidate
+gates. Final construction classification is
+`STRATEGY_CONSTRUCTION_NOT_IMPROVED`; preserve Industry Diffusion as
+`PROMISING_BUT_MIXED`, conditional Low-MAX as strong but unadmitted information,
+and stop further refinement absent new independent evidence.
+
+What market behavior are we still not studying? Within registered data:
+price-limit event lifecycle/acceptance, industry leader-follower convergence
+and leadership turnover, and liquidity-transition shock assimilation.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No
+permanent archetype. Conditional Low-MAX stock selection materially improves
+the Alpha engine, but the frozen implementation-complexity gate prevents
+admission.
+
 ## Latest checkpoint: evidence-backed revised momentum and low-risk depth
 
 Resume after the commit containing `ASHARE-EVIDENCE-DEPTH-CYCLE-010`; its

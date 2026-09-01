@@ -7,19 +7,19 @@ Updated 2026-09-01.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `56db89be7c` (start of frozen evidence-backed depth cycle 010)
-- `CURRENT_PHASE`: `REVISED_MOMENTUM_MECHANISM_REPLICATED_BUT_CHRONOLOGICALLY_UNSTABLE; CANONICAL_IVOL_DATA_BLOCKED`
-- `CURRENT_PRIMARY_FRONTIER`: revised momentum's upper-limit contamination mechanism is real in the consumed sample, but its long leg is not stable or promotable; low-MAX has a stable diagnostic spread but weak long-only economics. Stop both depth families and reallocate to a genuinely different return mechanism or a bounded multi-family data contract
+- `CURRENT_BASELINE`: `04d7b7f9f6` (start of frozen Industry Diffusion construction cycle 011)
+- `CURRENT_PHASE`: `INDUSTRY_DIFFUSION_CONDITIONAL_LOW_MAX_VALUE_STRONG_BUT_FROZEN_TURNOVER_GATE_FAIL`
+- `CURRENT_PRIMARY_FRONTIER`: Low-MAX materially improves stock selection conditional on the exact Industry Diffusion opportunity set, but its executable arm increases frozen turnover-per-initial-capital by 27.18% versus the preregistered 10% ceiling. No permanent modifier is admitted; close this construction path and rank distinct Price-Volume-Path families
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new strategy candidate. Revised momentum is `CHRONOLOGICALLY_UNSTABLE`; MAX is `MECHANISM_CONFIRMED_LONG_LEG_WEAK`; canonical IVOL is `DATA_BLOCKED`. Existing mixed/defensive leads remain unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: no new permanent strategy component. Industry Diffusion remains `PROMISING_BUT_MIXED`; conditional Low-MAX selection is strong but the frozen construction decision is `STRATEGY_CONSTRUCTION_NOT_IMPROVED`. Upper-limit-clean quality is late-block adverse and no combined arm was authorized
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
 - `STARTING_HEAD`: `e34d8b88dfc47db375b458779c4cca87272cb8e6`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `56db89be7c`
-- `CURRENT_SCIENTIFIC_LAYER`: `EVIDENCE_BACKED_DEPTH_COMPLETE; UPPER_LIMIT_CONTAMINATION_REPLICATED; MOMENTUM_CHRONOLOGICALLY_UNSTABLE; CANONICAL_IVOL_DATA_BLOCKED; NO_REPLAY`
+- `CURRENT_HEAD_AT_RESUME`: `04d7b7f9f6`
+- `CURRENT_SCIENTIFIC_LAYER`: `CONTROLLED_STRATEGY_CONSTRUCTION_COMPLETE; BASELINE_EXACT; LOW_MAX_CONDITIONAL_SELECTION_PASSES; FULL_REPLAY_TURNOVER_GATE_FAIL; NO_PERMANENT_MODIFIER`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -30,7 +30,7 @@ Updated 2026-09-01.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: what genuinely return-generating long-only mechanism remains representable without another momentum, extreme-return, support, or defensive-risk variant? Highest value is a bounded data contract that unlocks several families (PIT factors/fundamentals, investor flow, or order/queue information), or an independently specified event/information-flow prior using current data.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: among registered Price-Volume-Path data, prioritize (1) price-limit event lifecycle/acceptance, (2) industry leader-follower convergence and leadership turnover, and (3) liquidity-transition shock assimilation. Do not open another Industry Diffusion refinement or retune Low-MAX.
 
 ## Research OS V2.3 resource and worker state
 

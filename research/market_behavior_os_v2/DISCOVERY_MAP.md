@@ -35,6 +35,20 @@ that material.
 - Canonical IVOL, residual momentum, and the optional third family are data
   blocked. No internal proxy is promoted into the canonical mechanism map.
 
+## Cycle-011 Industry Diffusion construction conclusions
+
+- The QD-010-aware baseline reproduces exactly at +54.64% total return,
+  -29.10% drawdown, 0.440 Sharpe, and 18.46% severe trades.
+- Upper-limit-clean quality improves full candidate payoff and tail quality but
+  reverses in 2021--2023; no replay.
+- Conditional Low-MAX passes every candidate gate and its one replay improves
+  total return by +67.80 pp, drawdown by +3.32 pp, Sharpe by +0.291, and severe
+  losses by +4.33 pp. Frozen turnover per initial capital rises 27.18% versus a
+  10% ceiling, so it is not admitted. Final construction status:
+  `STRATEGY_CONSTRUCTION_NOT_IMPROVED`.
+- Industry allocations are identical by construction; Arm 3 is not authorized.
+  Do not open another Industry Diffusion modifier or turnover rescue.
+
 ## Fast-screen casualties
 
 | Candidate | Decision |

@@ -6,12 +6,12 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 15% | Cycle 010 closed the revised-momentum and MAX/MIN depth cells without a promotable long leg | Seek event/information-flow mechanisms, not neighboring momentum/extreme-return transforms |
+| EXPLORE | 35% | Cycle 011 closes Industry Diffusion construction; three distinct Price-Volume-Path family questions remain | Rank price-limit lifecycle, leader-follower convergence, and liquidity-transition assimilation without another broad feature batch |
 | EXPLOIT | 10% | Three broad-A-share leads remain mixed and all current history is consumed | Preserve rules unchanged; use only genuinely independent confirmation |
-| INVENT | 45% | Borrow-feasible relative value, investor-flow identity, PIT factors, and order-book/queue information remain unstudied | Prefer one bounded, multi-family data contract over another price-path variant |
+| INVENT | 35% | Borrow-feasible relative value, investor-flow identity, PIT factors, and order-book/queue information remain unstudied but are outside the current registered-data lane | Prefer one bounded, multi-family data contract when acquisition is separately justified |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
 | TRANSFER | 5% | The sole Confirmed-Breakdown admission mapping affected zero decisions | Park the translation; do not open the exit role as a rescue |
-| FALSIFY | 20% | Upper-limit removal improves momentum construction, but the revised spread reverses across broad blocks; Low-MAX's spread has no useful long leg | Preserve mechanism evidence; stop both depth families without translation rescue |
+| FALSIFY | 10% | Conditional Low-MAX clears candidate and risk-quality evidence but fails the frozen turnover ceiling; upper-limit-clean selection reverses late | Preserve exact evidence and stop Industry Diffusion construction without a turnover-definition rescue |
 
 Mandatory checkpoint questions:
 
