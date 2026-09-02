@@ -7,17 +7,17 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `a792e79663093aea8a246f0db8b1273433c7fc5c` (Formation-Panic V5 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_FORMER_LEADER_FORMATION_PANIC_STRICT_GAP_RECLAIM_V5_DEVELOPMENT_COMPLETE_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: V5 is `NO_FORMATION_PANIC_INTERACTION_EDGE`. Panic is correctly anchored to `gap_date`, but Main selects no panic in four folds and loses 0.648%; ChiNext gains 3.777% almost entirely in 2020 and selects panic only for a zero-trade 2021 test. Fixed 50/50 gains 1.564% but loses 0.852% excluding 2020. Validation 2022--2023 and Final OOS remain sealed/unread
+- `CURRENT_BASELINE`: `94192f4d4b0002b705eeb7506235b99c5ffbc9c7` (Market Panic-to-Repair V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_MARKET_PANIC_REPAIR_TRANSITION_V1_DEVELOPMENT_COMPLETE_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: `NO_PANIC_REPAIR_TRANSITION_EDGE`. The frozen market-level confirmation improves pure-panic replays in 8/10 board-years but does not create positive long economics: Main loses 22.915%, ChiNext loses 0.357%, fixed 50/50 loses 11.636%, and non-2020 returns are -20.241%/-11.963%/-16.044%. Validation 2022--2023 and Final OOS 2024+ remain sealed/unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Correct formation-time panic does not add stable next-year economics and specific former-leader structure does not improve the same panic habitat. Close the exact former-leader + deep-drawdown + strict-gap + first-reclaim stock-level family
+- `CURRENT_STRATEGY_CANDIDATE`: none. Repair confirmation avoids some of the worst pure-panic sessions but the frozen long leg remains negative and unstable. Close this exact market Panic-to-Repair transition representation without threshold, checkpoint, feature, exit, or stock-selection rescue
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `a792e79663093aea8a246f0db8b1273433c7fc5c`
+- `STARTING_HEAD`: `94192f4d4b0002b705eeb7506235b99c5ffbc9c7`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `a792e79663093aea8a246f0db8b1273433c7fc5c`
+- `CURRENT_HEAD_AT_RESUME`: `94192f4d4b0002b705eeb7506235b99c5ffbc9c7`
 - `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: `MARKET PANIC → REPAIR TRANSITION TIMING`. Do not rescue the closed stock-level gap-reclaim family with Q80/Q85/Q92, new gap/run-up thresholds, Dryup, exits, K, ST removal, board exclusions, or ML.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: a genuinely independent information lane, preferably a governed order-book/queue or investor-flow data contract. Do not rescue either the closed stock-level gap-reclaim family or the closed market Panic-to-Repair transition with neighboring quantiles, checkpoints, indicators, exits, stock filters, or ML.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,7 +41,7 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-FORMER-LEADER-FORMATION-PANIC-STRICT-GAP-RECLAIM-V5` is
+- `ACTIVE_EXPERIMENT`: `ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1` is
   Development-complete and closed without Validation. Final OOS remains locked.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
@@ -68,6 +68,36 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Market Panic-to-Repair Transition V1
+
+The independent market-level experiment separates Main Board and ChiNext and
+uses 1,950 Development dates from 2014--2021. Opening panic is an equal-weight,
+own-board TRAIN empirical-CDF score of 5% down-gap breadth, inverted median open
+return, and registered lower-limit stress. Q75/Q90 panic rules are frozen before
+each test year. Repair is observed only at completed 09:45, 10:00, or 10:30
+checkpoints from median price repair, panic-stock reclaim breadth, limit release,
+and breadth improvement; the entry is the first minute strictly afterward.
+
+The 36 configurations per board/fold produce exactly 360 search rows across five
+2017--2021 folds. Main loses 22.915% with -28.916% maximum drawdown, -0.437
+Sharpe, and 91 trades; every test year is negative and return excluding 2020 is
+-20.241%. ChiNext loses 0.357% with -20.279% drawdown, 0.024 Sharpe, and 32
+trades; its +13.183% 2020 year does not survive outside that episode, where it
+loses 11.963%. Fixed 50/50 loses 11.636%, with -21.383% drawdown, -0.319 Sharpe,
+and -16.044% excluding 2020.
+
+Repair confirmation beats the corresponding forced `PANIC_ONLY` replay in
+8/10 board-years and at every selected checkpoint in aggregate, but the full
+long strategy is still negative. This is useful avoidance/transition
+description, not executable positive alpha. Top-five neighborhoods are mixed,
+ordinary-day repair is not conditionally dominated, and the only strong
+ChiNext profit is the 2020 episode. Verdict:
+`NO_PANIC_REPAIR_TRANSITION_EDGE`. Close this exact representation; do not add
+indicator or stock-selection rescue. The 241-minute, PIT, registered-limit,
+action, board-isolation, fold-calibration, cash/position, and sealed-period
+audits pass; five focused tests pass. Validation 2022--2023 and Final OOS remain
+unread.
 
 ### Former-Leader Formation-Panic Strict-Gap Reclaim V5
 

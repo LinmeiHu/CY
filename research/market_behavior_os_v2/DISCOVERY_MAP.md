@@ -4,6 +4,25 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Market Panic-to-Repair Transition V1
+
+- Exact tested representation: separate Main/ChiNext TRAIN-ranked opening panic
+  from down-gap breadth, inverted median open return, and registered lower-limit
+  stress; TRAIN Q75/Q90; completed 09:45/10:00/10:30 repair from four fixed
+  market-internal features; first-minute-after-checkpoint entry; three fixed
+  exits; 40 bps round trip. Do not duplicate through neighboring thresholds,
+  checkpoints, indicators, exits, board pooling, stock selection, or ML.
+- Exactly 360 TRAIN search rows select five frozen next-year champions per
+  board. Main loses 22.915% on 91 trades and every year is negative. ChiNext
+  loses 0.357% on 32 trades; its +13.183% 2020 result reverses to -11.963%
+  outside 2020. Fixed 50/50 loses 11.636% and 16.044% outside 2020.
+- Repair confirmation beats forced `PANIC_ONLY` in 8/10 board-years but mostly
+  avoids worse panic entries; it does not establish positive absolute long
+  economics. Neighborhood and ordinary-day diagnostics do not show a stable
+  conditional transition. Verdict: `NO_PANIC_REPAIR_TRANSITION_EDGE`.
+- Validation 2022--2023 and Final OOS remain unread. Move to a genuinely
+  independent information lane rather than rescuing this market-state family.
+
 ## Former-Leader Formation-Panic Strict-Gap Reclaim V5
 
 - Exact tested representation: V3 former-leader/deep-drawdown/strict-gap first

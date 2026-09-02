@@ -1,0 +1,3859 @@
+{
+  "experiment_id": "ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1",
+  "start_checkpoint": "94192f4d4b0002b705eeb7506235b99c5ffbc9c7",
+  "spec_sha256": "e1840146bba1bbadd57b410f73ad1fe223a01c0650fe9dd8d1a58e327290c117",
+  "evidence_class": "INTERNAL_CHRONOLOGICAL_PSEUDO_OOS_NOT_PRISTINE_EXTERNAL_OOS",
+  "development": [
+    "2014-01-01",
+    "2021-12-31"
+  ],
+  "validation_opened": false,
+  "final_oos_opened": false,
+  "input_hashes": {
+    "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1_spec.json": "e1840146bba1bbadd57b410f73ad1fe223a01c0650fe9dd8d1a58e327290c117",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/daily/partition_year=2014/data_0.parquet": "de8839c9612f76ba190bfc1e729639ee723dfc6e3ea7a15d3fb77048808e0c81",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/daily/partition_year=2015/data_0.parquet": "9f581bbc0fec380f893d5cf520784798df5c0305e76d01283650bd861ce1aab0",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/daily/partition_year=2016/data_0.parquet": "e1d7f7481766b413b63e7e13cb6c30c1aeed96400459f4d84c2c728b3b705d22",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/daily/partition_year=2017/data_0.parquet": "5a8d7b0d48d4ff3b9323c53a812539115bb62a2cfe197369ef3b5f5499816f88",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_execution_2013_2017_cy006/execution_5m/partition_year=2014/data_0.parquet": "0733be9b270a3918817fc1df54745a7f67dfd068d437babd2ec5509ada7609d9",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_execution_2013_2017_cy006/execution_5m/partition_year=2015/data_0.parquet": "5bb0966bc66f92523d2229dd162b52f3a625d65fa8ed5bd9430b3c28e9ee3d74",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_execution_2013_2017_cy006/execution_5m/partition_year=2016/data_0.parquet": "00f5bdb2d32bd74cc18f2a362d5258d5ea76a7c80bc309e648eee22ac7546a9b",
+    "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_execution_2013_2017_cy006/execution_5m/partition_year=2017/data_0.parquet": "54caa32a367b0254ea2a247765403772598724d829efcf2ccf097737e9666c6f",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2/execution_5m/partition_year=2018/data_0.parquet": "0b5f3a090a79d31fa723228132f080582d015a197b0fd2496fadfdde43502cf4",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2/execution_5m/partition_year=2019/data_0.parquet": "8a34ee395a18a200dd50df728c4448531ff99a20c6b2148f16666daa38a1790f",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2/execution_5m/partition_year=2020/data_0.parquet": "292b15641bf374ab27e9c4a812b77f4142223858f31b16dfea34a669a3305036",
+    "/Users/linmei/Documents/CY/data/processed/pit_b_minute_2018_2026_v2/execution_5m/partition_year=2021/data_0.parquet": "b0ef29775404a15680ca176b15c46c0590e0424c0eaf052f0c65b73369458a7d",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2014_day_parquet_none.parquet": "8e2e873623124b323a91c5c367c003859b184ac471dc842d572f30f256d567b8",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2015_day_parquet_none.parquet": "36c99e02c4c391f03740e255a274c521da9733b507abb90158e0767a7dcca965",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2016_day_parquet_none.parquet": "a7c0b062a9de260c4798922aa998ca3471bdbe2690c754b732ebc7fc9272faf8",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2017_day_parquet_none.parquet": "3bb9d8d1df8795e9cc45cb04631b796de7153798f815d629c420156e47a448d7",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2018_day_parquet_none.parquet": "83fbb3e0fda4b278e1072836a9695b7d9a6dfa396a07248e40f85db0d2ba0812",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2019_day_parquet_none.parquet": "b31fccebb8f2319099b412233263dbc99f965a091b0995e62d275997b411130c",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2020_day_parquet_none.parquet": "67d6b958f2b4113750df8f1a98d6e48d93ef00e04cab0fbf0cf0661b1600d45e",
+    "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2021_day_parquet_none.parquet": "efd3b1a4bf60c47ba36b83792c97fc08d600aa8cde58014ff44e3c005eebac61"
+  },
+  "population": {
+    "MAIN": {
+      "dates": 1950,
+      "panic_dates": {
+        "Q75": 488,
+        "Q90": 196
+      },
+      "open_panic_distribution": {
+        "n": 1950,
+        "min": 0.11982905982905984,
+        "q10": 0.31196581196581197,
+        "q25": 0.3848717948717949,
+        "median": 0.5152991452991452,
+        "q75": 0.6822649572649573,
+        "q90": 0.8165811965811965,
+        "max": 1.0
+      },
+      "opening_feature_distributions": {
+        "down_gap_breadth_5": {
+          "n": 1950,
+          "min": 0.0,
+          "q10": 0.00043815456133722774,
+          "q25": 0.001024852879361076,
+          "median": 0.002275830678197542,
+          "q75": 0.004666901725725255,
+          "q90": 0.00887518754371289,
+          "max": 0.981359649122807
+        },
+        "open_median_return": {
+          "n": 1950,
+          "min": -0.0999446251944327,
+          "q10": -0.004765893337631898,
+          "q25": -0.0016160073064257069,
+          "median": 0.0,
+          "q75": 0.0,
+          "q90": 0.0024677649065886877,
+          "max": 0.09955849674476636
+        },
+        "limit_stress_breadth": {
+          "n": 1950,
+          "min": 0.0,
+          "q10": 0.0,
+          "q25": 0.0,
+          "median": 0.0009031384520015252,
+          "q75": 0.0020576148004465217,
+          "q90": 0.004307951817844785,
+          "max": 0.9298245614035088
+        }
+      },
+      "repair_feature_distributions": {
+        "0945": {
+          "median_price_repair": {
+            "n": 1950,
+            "min": -0.05957448874497562,
+            "q10": -0.00500421756455881,
+            "q25": -0.00231449024002503,
+            "median": 0.0,
+            "q75": 0.0021940393572371653,
+            "q90": 0.004936148221380147,
+            "max": 0.04826270401106636
+          },
+          "panic_stock_reclaim_breadth": {
+            "n": 1770,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.2,
+            "median": 0.4,
+            "q75": 0.5833333333333334,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "limit_release": {
+            "n": 1446,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.19999999999999996,
+            "q75": 0.5,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "breadth_improvement": {
+            "n": 1950,
+            "min": 0.01304631441617743,
+            "q10": 0.29096311111526496,
+            "q25": 0.38616175783076206,
+            "median": 0.4973700922193385,
+            "q75": 0.6159085949082261,
+            "q90": 0.7234820898273496,
+            "max": 0.9812138728323699
+          },
+          "repair_score": {
+            "n": 1950,
+            "min": 0.01512820512820513,
+            "q10": 0.2558998036213733,
+            "q25": 0.3724051986237267,
+            "median": 0.5297479131389744,
+            "q75": 0.6872369739117576,
+            "q90": 0.8070584771910463,
+            "max": 0.9994871794871795
+          }
+        },
+        "1000": {
+          "median_price_repair": {
+            "n": 1950,
+            "min": -0.07782669459495595,
+            "q10": -0.006337069942284062,
+            "q25": -0.0029586775551186245,
+            "median": -5.785386864021191e-09,
+            "q75": 0.0026696059622289825,
+            "q90": 0.006138154101301112,
+            "max": 0.09408338826102725
+          },
+          "panic_stock_reclaim_breadth": {
+            "n": 1770,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.2,
+            "median": 0.4,
+            "q75": 0.6,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "limit_release": {
+            "n": 1446,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.19999999999999996,
+            "q75": 0.5,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "breadth_improvement": {
+            "n": 1950,
+            "min": 0.005870841487279843,
+            "q10": 0.28090537304247737,
+            "q25": 0.37131011220217813,
+            "median": 0.49367102490010395,
+            "q75": 0.6216234546703296,
+            "q90": 0.751111090100269,
+            "max": 0.9869366427171783
+          },
+          "repair_score": {
+            "n": 1950,
+            "min": 0.01564102564102564,
+            "q10": 0.2421594670186695,
+            "q25": 0.36912854279485197,
+            "median": 0.527613089023174,
+            "q75": 0.6877934949805335,
+            "q90": 0.8082779361670283,
+            "max": 0.9980769230769231
+          }
+        },
+        "1030": {
+          "median_price_repair": {
+            "n": 1950,
+            "min": -0.07782669459495595,
+            "q10": -0.00784602836937336,
+            "q25": -0.003209129895159729,
+            "median": -5.467579167195424e-09,
+            "q75": 0.003361780593707342,
+            "q90": 0.00769851457761471,
+            "max": 0.12238805685470355
+          },
+          "panic_stock_reclaim_breadth": {
+            "n": 1770,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.23809523809523808,
+            "median": 0.42857142857142855,
+            "q75": 0.6666666666666666,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "limit_release": {
+            "n": 1446,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.25,
+            "q75": 0.5,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "breadth_improvement": {
+            "n": 1950,
+            "min": 0.005870841487279843,
+            "q10": 0.26399385526227265,
+            "q25": 0.37413039846451435,
+            "median": 0.4933205279562792,
+            "q75": 0.6379493151017251,
+            "q90": 0.7707461362588358,
+            "max": 0.9928245270711024
+          },
+          "repair_score": {
+            "n": 1950,
+            "min": 0.01871794871794872,
+            "q10": 0.2399474781846608,
+            "q25": 0.3608781632016388,
+            "median": 0.5284977711296369,
+            "q75": 0.6909149143165249,
+            "q90": 0.8160412677631892,
+            "max": 0.9974358974358974
+          }
+        }
+      },
+      "full_development_calibration": {
+        "train_end": 2021,
+        "train_dates": 1950,
+        "panic_q75": 0.6822649572649573,
+        "panic_q90": 0.8165811965811965,
+        "repair": {
+          "0|0945": {
+            "sample_dates": 488,
+            "q33": 0.42318126053799454,
+            "q67": 0.6540711826537623,
+            "q80": 0.7303177150111533
+          },
+          "0|1000": {
+            "sample_dates": 488,
+            "q33": 0.416535755967548,
+            "q67": 0.6550366206466249,
+            "q80": 0.7352332794148675
+          },
+          "0|1030": {
+            "sample_dates": 488,
+            "q33": 0.4159502648136026,
+            "q67": 0.6624480753451953,
+            "q80": 0.7485997771129638
+          },
+          "1|0945": {
+            "sample_dates": 196,
+            "q33": 0.43033662749913904,
+            "q67": 0.7103485928001716,
+            "q80": 0.7831967428918691
+          },
+          "1|1000": {
+            "sample_dates": 196,
+            "q33": 0.45563963530198853,
+            "q67": 0.7196037105461995,
+            "q80": 0.7874759485772918
+          },
+          "1|1030": {
+            "sample_dates": 196,
+            "q33": 0.44376325375400566,
+            "q67": 0.7261890874615222,
+            "q80": 0.7998563496657597
+          }
+        }
+      }
+    },
+    "CHINEXT": {
+      "dates": 1950,
+      "panic_dates": {
+        "Q75": 489,
+        "Q90": 195
+      },
+      "open_panic_distribution": {
+        "n": 1950,
+        "min": 0.3251282051282051,
+        "q10": 0.3982393162393163,
+        "q25": 0.48940170940170935,
+        "median": 0.5876923076923077,
+        "q75": 0.698974358974359,
+        "q90": 0.823692307692308,
+        "max": 1.0
+      },
+      "opening_feature_distributions": {
+        "down_gap_breadth_5": {
+          "n": 1950,
+          "min": 0.0,
+          "q10": 0.0,
+          "q25": 0.0,
+          "median": 0.003095982650995052,
+          "q75": 0.006673342234089898,
+          "q90": 0.013794161201607787,
+          "max": 0.9835164835164835
+        },
+        "open_median_return": {
+          "n": 1950,
+          "min": -0.09999999999999987,
+          "q10": -0.006309519604857983,
+          "q25": -0.002223204002079815,
+          "median": 0.0,
+          "q75": 9.26380245730718e-05,
+          "q90": 0.003482569051384047,
+          "max": 0.09997183891861461
+        },
+        "limit_stress_breadth": {
+          "n": 1950,
+          "min": 0.0,
+          "q10": 0.0,
+          "q25": 0.0,
+          "median": 0.0,
+          "q75": 0.0015698587127158557,
+          "q90": 0.0036363636363636364,
+          "max": 0.9725274725274725
+        }
+      },
+      "repair_feature_distributions": {
+        "0945": {
+          "median_price_repair": {
+            "n": 1950,
+            "min": -0.0825024817852264,
+            "q10": -0.006928134195761632,
+            "q25": -0.0028354910684165457,
+            "median": 0.000219183348052987,
+            "q75": 0.0037319389762764388,
+            "q90": 0.007592943249312508,
+            "max": 0.04157668394927194
+          },
+          "panic_stock_reclaim_breadth": {
+            "n": 1413,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.4444444444444444,
+            "q75": 0.6818181818181818,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "limit_release": {
+            "n": 604,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.0,
+            "q75": 0.5,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "breadth_improvement": {
+            "n": 1950,
+            "min": 0.007874015748031496,
+            "q10": 0.2689118978391595,
+            "q25": 0.3823285194056068,
+            "median": 0.5220403849436108,
+            "q75": 0.6565135895032802,
+            "q90": 0.7762146590639107,
+            "max": 1.0
+          },
+          "repair_score": {
+            "n": 1950,
+            "min": 0.001282051282051282,
+            "q10": 0.22988177713748217,
+            "q25": 0.3446153846153846,
+            "median": 0.5271794871794873,
+            "q75": 0.7173728156132615,
+            "q90": 0.8447915159214038,
+            "max": 1.0
+          }
+        },
+        "1000": {
+          "median_price_repair": {
+            "n": 1950,
+            "min": -0.0809316400473517,
+            "q10": -0.009256014014815562,
+            "q25": -0.004036697514984505,
+            "median": 0.0002834691451819027,
+            "q75": 0.004916302534104966,
+            "q90": 0.009982235054710348,
+            "max": 0.09845791564434592
+          },
+          "panic_stock_reclaim_breadth": {
+            "n": 1413,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.5,
+            "q75": 0.75,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "limit_release": {
+            "n": 604,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.0,
+            "q75": 0.5,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "breadth_improvement": {
+            "n": 1950,
+            "min": 0.005319148936170213,
+            "q10": 0.2442641245117709,
+            "q25": 0.36429955703211514,
+            "median": 0.5221277668981069,
+            "q75": 0.68071760727119,
+            "q90": 0.8081758382801221,
+            "max": 1.0
+          },
+          "repair_score": {
+            "n": 1950,
+            "min": 0.0028205128205128207,
+            "q10": 0.21870858313333108,
+            "q25": 0.3482116609505145,
+            "median": 0.5301282051282051,
+            "q75": 0.7141804399165885,
+            "q90": 0.8434102564102565,
+            "max": 0.9997435897435898
+          }
+        },
+        "1030": {
+          "median_price_repair": {
+            "n": 1950,
+            "min": -0.0757936559697634,
+            "q10": -0.01131699257927411,
+            "q25": -0.004888527426226835,
+            "median": 0.0005460266290382432,
+            "q75": 0.006263603551944913,
+            "q90": 0.012242912405208143,
+            "max": 0.11619050162179123
+          },
+          "panic_stock_reclaim_breadth": {
+            "n": 1413,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.5,
+            "q75": 0.8333333333333334,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "limit_release": {
+            "n": 604,
+            "min": 0.0,
+            "q10": 0.0,
+            "q25": 0.0,
+            "median": 0.0,
+            "q75": 0.60625,
+            "q90": 1.0,
+            "max": 1.0
+          },
+          "breadth_improvement": {
+            "n": 1950,
+            "min": 0.013227513227513227,
+            "q10": 0.23015223417069383,
+            "q25": 0.3560819829811458,
+            "median": 0.5211203400732723,
+            "q75": 0.6982910783055198,
+            "q90": 0.8318259789423874,
+            "max": 0.9973544973544973
+          },
+          "repair_score": {
+            "n": 1950,
+            "min": 0.005384615384615385,
+            "q10": 0.21128297630365583,
+            "q25": 0.33900395844892717,
+            "median": 0.5270709672645283,
+            "q75": 0.7188888888888888,
+            "q90": 0.8570803527682509,
+            "max": 0.9994871794871795
+          }
+        }
+      },
+      "full_development_calibration": {
+        "train_end": 2021,
+        "train_dates": 1950,
+        "panic_q75": 0.698974358974359,
+        "panic_q90": 0.823692307692308,
+        "repair": {
+          "0|0945": {
+            "sample_dates": 489,
+            "q33": 0.39570116213406387,
+            "q67": 0.6923295298838853,
+            "q80": 0.7821729479446188
+          },
+          "0|1000": {
+            "sample_dates": 489,
+            "q33": 0.4141311084143709,
+            "q67": 0.6787486526212642,
+            "q80": 0.7738996136594949
+          },
+          "0|1030": {
+            "sample_dates": 489,
+            "q33": 0.4018764094344092,
+            "q67": 0.6814701420006858,
+            "q80": 0.7847536873177613
+          },
+          "1|0945": {
+            "sample_dates": 195,
+            "q33": 0.4533636487149564,
+            "q67": 0.7559454788859292,
+            "q80": 0.8215564375843407
+          },
+          "1|1000": {
+            "sample_dates": 195,
+            "q33": 0.45710226773151846,
+            "q67": 0.7561987101493218,
+            "q80": 0.8185311354538799
+          },
+          "1|1030": {
+            "sample_dates": 195,
+            "q33": 0.4314181146684289,
+            "q67": 0.7457428848416153,
+            "q80": 0.823305385657307
+          }
+        }
+      }
+    }
+  },
+  "boards": {
+    "MAIN": {
+      "sleeve": "MAIN",
+      "folds": [
+        {
+          "selection_blocked": false,
+          "test_year": 2017,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "1000",
+            "repair_code": 0,
+            "exit_code": 2,
+            "key": "pQ75|t1000|rQ67|xT1_CLOSE",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.6552978626648477,
+          "panic_q90": 0.8193724420190995,
+          "panic_threshold": 0.6552978626648477,
+          "repair_threshold": 0.6842559240355516,
+          "repair_calibration_dates": 185,
+          "train": {
+            "total_return": 0.8938299682723945,
+            "cagr": 0.23470766715739,
+            "max_drawdown": -0.15452084108302255,
+            "sharpe": 1.2169313673809627,
+            "calmar": 1.5189385814388872,
+            "trade_count": 55,
+            "recent_year_trade_count": 14,
+            "median_year_return": 0.13969273435683993,
+            "top5_day_contribution": 0.21061163538046107
+          },
+          "full": {
+            "total_return": -0.013321796277563691,
+            "cagr": -0.013213325852813762,
+            "max_drawdown": -0.06310208355328284,
+            "sharpe": -0.31922488000039323,
+            "calmar": -0.20939603114145267,
+            "trade_count": 12,
+            "recent_year_trade_count": 12,
+            "win_rate": 0.6666666666666666,
+            "median_year_return": -0.013321796277563691,
+            "yearly_returns": {
+              "2017": -0.013321796277563691
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 5,
+            "top1_day_contribution": 0.17764031635040947,
+            "top5_day_contribution": 0.7000868904836077,
+            "top1pct_day_contribution": 0.4829265590653527,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.21546112440989895,
+            "cagr": -0.21389911625953129,
+            "max_drawdown": -0.21668319728435292,
+            "sharpe": -1.9263394286072113,
+            "calmar": -0.987151375557893,
+            "trade_count": 40,
+            "recent_year_trade_count": 40,
+            "win_rate": 0.45,
+            "median_year_return": -0.21546112440989895,
+            "yearly_returns": {
+              "2017": -0.21546112440989895
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 2,
+            "top1_day_contribution": 0.10648841175412026,
+            "top5_day_contribution": 0.37740031319652073,
+            "top1pct_day_contribution": 0.273654884159093,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.20213932813233526,
+          "ordinary_repair_diagnostic": {
+            "total_return": -0.06408132532413202,
+            "cagr": -0.0635731316801652,
+            "max_drawdown": -0.0761446162017213,
+            "sharpe": -1.1652941375293078,
+            "calmar": -0.8348998898588984,
+            "trade_count": 30,
+            "recent_year_trade_count": 30,
+            "win_rate": 0.4,
+            "median_year_return": -0.06408132532413202,
+            "yearly_returns": {
+              "2017": -0.06408132532413202
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.09115583167960896,
+            "top5_day_contribution": 0.39560944585221847,
+            "top1pct_day_contribution": 0.2535178960349397,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": -0.013321796277563691,
+            "best_return": 0.02788759509898897,
+            "worst_return": -0.051353146547808426,
+            "fraction_profitable": 0.2,
+            "returns": [
+              -0.013321796277563691,
+              0.02788759509898897,
+              -0.051353146547808426,
+              0.0,
+              -0.013456771203861129
+            ]
+          },
+          "trajectory": {
+            "trades": 12,
+            "profitable": {
+              "n": 8,
+              "open_panic_score_state": 0.7185084129149615,
+              "repair_0945": 0.7249151220044487,
+              "repair_1000": 0.7287698689144758,
+              "repair_1030": 0.6882645401323414,
+              "same_close_gross_state": 0.0075941237423502485,
+              "t1_open_gross_state": 0.005530760222864193
+            },
+            "losing": {
+              "n": 4,
+              "open_panic_score_state": 0.7294224647567076,
+              "repair_0945": 0.6982588527550533,
+              "repair_1000": 0.7169084210448,
+              "repair_1030": 0.5923322698587914,
+              "same_close_gross_state": -0.0047119491453483445,
+              "t1_open_gross_state": -0.005033235225000981
+            }
+          },
+          "panic_only_trades": 40,
+          "ordinary_repair_trades": 30
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2018,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "1000",
+            "repair_code": 0,
+            "exit_code": 2,
+            "key": "pQ75|t1000|rQ67|xT1_CLOSE",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.6601842374616173,
+          "panic_q90": 0.8150119413169566,
+          "panic_threshold": 0.6601842374616173,
+          "repair_threshold": 0.6730581141805925,
+          "repair_calibration_dates": 245,
+          "train": {
+            "total_return": 0.9663354562180944,
+            "cagr": 0.18232839124449285,
+            "max_drawdown": -0.15452084108302278,
+            "sharpe": 1.0881469052671442,
+            "calmar": 1.1799598679800696,
+            "trade_count": 74,
+            "recent_year_trade_count": 14,
+            "median_year_return": 0.13270203207982323,
+            "top5_day_contribution": 0.1903773235346999
+          },
+          "full": {
+            "total_return": -0.11192301886374079,
+            "cagr": -0.11148911890999591,
+            "max_drawdown": -0.24810103598792266,
+            "sharpe": -0.7073087861080347,
+            "calmar": -0.44936982413657917,
+            "trade_count": 35,
+            "recent_year_trade_count": 35,
+            "win_rate": 0.5714285714285714,
+            "median_year_return": -0.11192301886374079,
+            "yearly_returns": {
+              "2018": -0.11192301886374079
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.12488767439946168,
+            "top5_day_contribution": 0.38380949216486054,
+            "top1pct_day_contribution": 0.2621582156819867,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.4811511365988633,
+            "cagr": -0.4797482604582125,
+            "max_drawdown": -0.4846742444005475,
+            "sharpe": -3.036639087705249,
+            "calmar": -0.9898365056545814,
+            "trade_count": 89,
+            "recent_year_trade_count": 89,
+            "win_rate": 0.42696629213483145,
+            "median_year_return": -0.4811511365988633,
+            "yearly_returns": {
+              "2018": -0.4811511365988633
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 1,
+            "top1_day_contribution": 0.04124408455427344,
+            "top5_day_contribution": 0.19066425100932916,
+            "top1pct_day_contribution": 0.11870663016473837,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.36922811773512254,
+          "ordinary_repair_diagnostic": {
+            "total_return": -0.09085874868212562,
+            "cagr": -0.09050229992439263,
+            "max_drawdown": -0.15144103379956808,
+            "sharpe": -0.9753075999232584,
+            "calmar": -0.5976075153064013,
+            "trade_count": 27,
+            "recent_year_trade_count": 27,
+            "win_rate": 0.48148148148148145,
+            "median_year_return": -0.09085874868212562,
+            "yearly_returns": {
+              "2018": -0.09085874868212562
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.128773968401174,
+            "top5_day_contribution": 0.46714563322229924,
+            "top1pct_day_contribution": 0.3207771546277288,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": -0.040103353820095444,
+            "best_return": 0.09852979540107332,
+            "worst_return": -0.11192301886374079,
+            "fraction_profitable": 0.4,
+            "returns": [
+              -0.11192301886374079,
+              -0.06963546933779263,
+              0.09852979540107332,
+              -0.040103353820095444,
+              0.035879516901351494
+            ]
+          },
+          "trajectory": {
+            "trades": 35,
+            "profitable": {
+              "n": 20,
+              "open_panic_score_state": 0.7910269532582737,
+              "repair_0945": 0.7090773990295137,
+              "repair_1000": 0.7504507136033757,
+              "repair_1030": 0.7380281349989923,
+              "same_close_gross_state": 0.013090143872732106,
+              "t1_open_gross_state": 0.012785846222295796
+            },
+            "losing": {
+              "n": 15,
+              "open_panic_score_state": 0.7737973387922211,
+              "repair_0945": 0.703955199838403,
+              "repair_1000": 0.7435633238928117,
+              "repair_1030": 0.6798757785079362,
+              "same_close_gross_state": -0.0007963761526792423,
+              "t1_open_gross_state": -0.0030976687312064765
+            }
+          },
+          "panic_only_trades": 89,
+          "ordinary_repair_trades": 27
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2019,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "1000",
+            "repair_code": 0,
+            "exit_code": 2,
+            "key": "pQ75|t1000|rQ67|xT1_CLOSE",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.6728825136612021,
+          "panic_q90": 0.8123224043715848,
+          "panic_threshold": 0.6728825136612021,
+          "repair_threshold": 0.6730456699745667,
+          "repair_calibration_dates": 305,
+          "train": {
+            "total_return": 0.6539550918149084,
+            "cagr": 0.10495987384935868,
+            "max_drawdown": -0.26843538776914877,
+            "sharpe": 0.7154753806857727,
+            "calmar": 0.3910060991646262,
+            "trade_count": 94,
+            "recent_year_trade_count": 27,
+            "median_year_return": 0.10097951458992172,
+            "top5_day_contribution": 0.17244569239639979
+          },
+          "full": {
+            "total_return": -0.08321994926170284,
+            "cagr": -0.08256679126288868,
+            "max_drawdown": -0.15732244599817902,
+            "sharpe": -0.7658245889282344,
+            "calmar": -0.5248252449866205,
+            "trade_count": 18,
+            "recent_year_trade_count": 18,
+            "win_rate": 0.4444444444444444,
+            "median_year_return": -0.08321994926170284,
+            "yearly_returns": {
+              "2019": -0.08321994926170284
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.1526431561642453,
+            "top5_day_contribution": 0.644153600198204,
+            "top1pct_day_contribution": 0.42899618932637884,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.12589083977440996,
+            "cagr": -0.12492628011508078,
+            "max_drawdown": -0.1835789321283503,
+            "sharpe": -0.9143218156877049,
+            "calmar": -0.6805044493217655,
+            "trade_count": 40,
+            "recent_year_trade_count": 40,
+            "win_rate": 0.375,
+            "median_year_return": -0.12589083977440996,
+            "yearly_returns": {
+              "2019": -0.12589083977440996
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 5,
+            "top1_day_contribution": 0.09637958549483742,
+            "top5_day_contribution": 0.3472965341539124,
+            "top1pct_day_contribution": 0.2249649493186288,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.042670890512707116,
+          "ordinary_repair_diagnostic": {
+            "total_return": -0.08074803029815425,
+            "cagr": -0.08011341433877284,
+            "max_drawdown": -0.2026686033657893,
+            "sharpe": -0.6903964467876579,
+            "calmar": -0.39529267488057346,
+            "trade_count": 44,
+            "recent_year_trade_count": 44,
+            "win_rate": 0.4318181818181818,
+            "median_year_return": -0.08074803029815425,
+            "yearly_returns": {
+              "2019": -0.08074803029815425
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.09847492498302506,
+            "top5_day_contribution": 0.38287977599022277,
+            "top1pct_day_contribution": 0.2453714533253187,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": -0.08321994926170306,
+            "best_return": -0.04587828697780161,
+            "worst_return": -0.10282583921012645,
+            "fraction_profitable": 0.0,
+            "returns": [
+              -0.08321994926170306,
+              -0.0689315169068282,
+              -0.08751793732322422,
+              -0.04587828697780161,
+              -0.10282583921012645
+            ]
+          },
+          "trajectory": {
+            "trades": 18,
+            "profitable": {
+              "n": 8,
+              "open_panic_score_state": 0.8472677595628415,
+              "repair_0945": 0.7708763523689004,
+              "repair_1000": 0.7226423706479849,
+              "repair_1030": 0.7641912690307411,
+              "same_close_gross_state": 0.011467386830270272,
+              "t1_open_gross_state": 0.014085809433942258
+            },
+            "losing": {
+              "n": 10,
+              "open_panic_score_state": 0.8168032786885246,
+              "repair_0945": 0.7002630562857584,
+              "repair_1000": 0.7596632906318584,
+              "repair_1030": 0.7753331529226857,
+              "same_close_gross_state": 0.0018340813410616984,
+              "t1_open_gross_state": -0.0012827455133143531
+            }
+          },
+          "panic_only_trades": 40,
+          "ordinary_repair_trades": 44
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2020,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "1000",
+            "repair_code": 0,
+            "exit_code": 2,
+            "key": "pQ75|t1000|rQ67|xT1_CLOSE",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.6752049180327869,
+          "panic_q90": 0.8151411657559198,
+          "panic_threshold": 0.6752049180327869,
+          "repair_threshold": 0.6725230045468386,
+          "repair_calibration_dates": 366,
+          "train": {
+            "total_return": 0.537733060177479,
+            "cagr": 0.07372118841972508,
+            "max_drawdown": -0.246859095419246,
+            "sharpe": 0.5517008864374647,
+            "calmar": 0.2986367113373839,
+            "trade_count": 110,
+            "recent_year_trade_count": 18,
+            "median_year_return": 0.0470798671196509,
+            "top5_day_contribution": 0.15763899314513302
+          },
+          "full": {
+            "total_return": -0.03351564610980251,
+            "cagr": -0.033380049706310366,
+            "max_drawdown": -0.12893782979234691,
+            "sharpe": -0.18222705174270812,
+            "calmar": -0.2588848420984641,
+            "trade_count": 14,
+            "recent_year_trade_count": 14,
+            "win_rate": 0.5714285714285714,
+            "median_year_return": -0.03351564610980251,
+            "yearly_returns": {
+              "2020": -0.03351564610980251
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.1465728697517324,
+            "top5_day_contribution": 0.5617742967695275,
+            "top1pct_day_contribution": 0.3696852077422219,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.0977914772612355,
+            "cagr": -0.09740931434918298,
+            "max_drawdown": -0.1290076732784693,
+            "sharpe": -0.6792278083396092,
+            "calmar": -0.7550660505202684,
+            "trade_count": 52,
+            "recent_year_trade_count": 52,
+            "win_rate": 0.5,
+            "median_year_return": -0.0977914772612355,
+            "yearly_returns": {
+              "2020": -0.0977914772612355
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 5,
+            "top1_day_contribution": 0.08023681562585737,
+            "top5_day_contribution": 0.2675988954847003,
+            "top1pct_day_contribution": 0.19195548185918943,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.06427583115143298,
+          "ordinary_repair_diagnostic": {
+            "total_return": 0.11708900052066618,
+            "cagr": 0.11658009995214802,
+            "max_drawdown": -0.13086551555065773,
+            "sharpe": 1.110456378216644,
+            "calmar": 0.8908389613688577,
+            "trade_count": 31,
+            "recent_year_trade_count": 31,
+            "win_rate": 0.6451612903225806,
+            "median_year_return": 0.11708900052066618,
+            "yearly_returns": {
+              "2020": 0.11708900052066618
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 8,
+            "top1_day_contribution": 0.08183599723813653,
+            "top5_day_contribution": 0.3498423366753071,
+            "top1pct_day_contribution": 0.2274865002097494,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": 0.04724196872479025,
+            "best_return": 0.0681842044168659,
+            "worst_return": -0.03351564610980273,
+            "fraction_profitable": 0.8,
+            "returns": [
+              -0.03351564610980273,
+              0.04724196872479025,
+              0.0681842044168659,
+              0.03435711042530998,
+              0.057147718886729315
+            ]
+          },
+          "trajectory": {
+            "trades": 14,
+            "profitable": {
+              "n": 8,
+              "open_panic_score_state": 0.9129098360655736,
+              "repair_0945": 0.8001732008803439,
+              "repair_1000": 0.7962775570925402,
+              "repair_1030": 0.7746140550343086,
+              "same_close_gross_state": 0.007109637746188394,
+              "t1_open_gross_state": 0.012025748332468564
+            },
+            "losing": {
+              "n": 6,
+              "open_panic_score_state": 0.9106329690346084,
+              "repair_0945": 0.7597546642743949,
+              "repair_1000": 0.7708977978531153,
+              "repair_1030": 0.6622021726186762,
+              "same_close_gross_state": 0.0023244521107579487,
+              "t1_open_gross_state": -0.0002064085979554302
+            }
+          },
+          "panic_only_trades": 52,
+          "ordinary_repair_trades": 31
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2021,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "1030",
+            "repair_code": 0,
+            "exit_code": 2,
+            "key": "pQ75|t1030|rQ67|xT1_CLOSE",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.6729154462019137,
+          "panic_q90": 0.8147236867799258,
+          "panic_threshold": 0.6729154462019137,
+          "repair_threshold": 0.6671291455029028,
+          "repair_calibration_dates": 427,
+          "train": {
+            "total_return": 0.592963293958181,
+            "cagr": 0.06823437014963485,
+            "max_drawdown": -0.2696769296899775,
+            "sharpe": 0.5387453368723429,
+            "calmar": 0.2530226453856382,
+            "trade_count": 125,
+            "recent_year_trade_count": 18,
+            "median_year_return": 0.04622919385429114,
+            "top5_day_contribution": 0.14217594106681244
+          },
+          "full": {
+            "total_return": -0.007143460471914387,
+            "cagr": -0.007114168332059134,
+            "max_drawdown": -0.03549332005841377,
+            "sharpe": -0.1379947114543212,
+            "calmar": -0.20043682361500317,
+            "trade_count": 12,
+            "recent_year_trade_count": 12,
+            "win_rate": 0.5,
+            "median_year_return": -0.007143460471914387,
+            "yearly_returns": {
+              "2021": -0.007143460471914387
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.2117644148597841,
+            "top5_day_contribution": 0.6763687582556086,
+            "top1pct_day_contribution": 0.4616294432499421,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.1676145397961829,
+            "cagr": -0.16698586980714458,
+            "max_drawdown": -0.17288218561273738,
+            "sharpe": -2.273578009502053,
+            "calmar": -0.9658940232349863,
+            "trade_count": 46,
+            "recent_year_trade_count": 46,
+            "win_rate": 0.391304347826087,
+            "median_year_return": -0.1676145397961829,
+            "yearly_returns": {
+              "2021": -0.1676145397961829
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.09181464560906004,
+            "top5_day_contribution": 0.3778073715580337,
+            "top1pct_day_contribution": 0.24273339512630793,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.16047107932426852,
+          "ordinary_repair_diagnostic": {
+            "total_return": 0.0105904121642717,
+            "cagr": 0.01054660120589146,
+            "max_drawdown": -0.07806415006604517,
+            "sharpe": 0.19369447901078135,
+            "calmar": 0.13510172335148263,
+            "trade_count": 33,
+            "recent_year_trade_count": 33,
+            "win_rate": 0.5757575757575758,
+            "median_year_return": 0.0105904121642717,
+            "yearly_returns": {
+              "2021": 0.0105904121642717
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 7,
+            "top1_day_contribution": 0.11752343531819297,
+            "top5_day_contribution": 0.3978853319826817,
+            "top1pct_day_contribution": 0.27939909027954185,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": -0.008774218347863072,
+            "best_return": 0.028882390220683174,
+            "worst_return": -0.010647577444540257,
+            "fraction_profitable": 0.2,
+            "returns": [
+              -0.007143460471914831,
+              -0.008774218347863072,
+              0.028882390220683174,
+              -0.010583195032130122,
+              -0.010647577444540257
+            ]
+          },
+          "trajectory": {
+            "trades": 12,
+            "profitable": {
+              "n": 6,
+              "open_panic_score_state": 0.7245655145479399,
+              "repair_0945": 0.747623499685258,
+              "repair_1000": 0.7465983891907668,
+              "repair_1030": 0.7760940612427376,
+              "same_close_gross_state": 0.005382365844968952,
+              "t1_open_gross_state": 0.007767214570987601
+            },
+            "losing": {
+              "n": 6,
+              "open_panic_score_state": 0.7534661198984572,
+              "repair_0945": 0.6382423790628559,
+              "repair_1000": 0.68205073235333,
+              "repair_1030": 0.7434465753175961,
+              "same_close_gross_state": 0.005558351297658944,
+              "t1_open_gross_state": 0.00723111874924148
+            }
+          },
+          "panic_only_trades": 46,
+          "ordinary_repair_trades": 33
+        }
+      ],
+      "stitched": {
+        "total_return": -0.22914511187108344,
+        "cagr": -0.050435326181884954,
+        "max_drawdown": -0.289158607230089,
+        "sharpe": -0.43734037675521736,
+        "calmar": -0.1744209749279661,
+        "trade_count": 91,
+        "recent_year_trade_count": 12,
+        "win_rate": 0.5494505494505495,
+        "median_year_return": -0.03351564610980251,
+        "yearly_returns": {
+          "2017": -0.013321796277563691,
+          "2018": -0.11192301886374079,
+          "2019": -0.08321994926170284,
+          "2020": -0.03351564610980251,
+          "2021": -0.007143460471914387
+        },
+        "positive_years": 0,
+        "negative_years": 5,
+        "flat_years": 0,
+        "positive_months": 20,
+        "top1_day_contribution": 0.051566688290774446,
+        "top5_day_contribution": 0.17235913564890346,
+        "top1pct_day_contribution": 0.3736763741634683,
+        "duplicate_board_position_count": 0,
+        "negative_cash_or_leverage_count": 0
+      },
+      "return_ex_2020": -0.20241348447479124,
+      "return_ex_best_day": -0.26486671977946075,
+      "return_ex_best_5_days": -0.3486255902516251,
+      "repair_bins": [
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 30,
+          "same_close_gross": -0.001525800831295464,
+          "t1_open_gross": -0.003981223880856252,
+          "t1_close_gross": -0.004449011259036641
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 22,
+          "same_close_gross": 0.003190441938583892,
+          "t1_open_gross": 0.002422054500423688,
+          "t1_close_gross": 0.002469543823025155
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 12,
+          "same_close_gross": 0.0009019471291556127,
+          "t1_open_gross": 0.0005693000769452415,
+          "t1_close_gross": -0.00030943634505718596
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 22,
+          "same_close_gross": -0.0010071195768847434,
+          "t1_open_gross": -0.00345161168680337,
+          "t1_close_gross": -0.003597110192931988
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 30,
+          "same_close_gross": 0.0011532986695737084,
+          "t1_open_gross": 0.00016735592256594877,
+          "t1_close_gross": -0.0016538020458769023
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 12,
+          "same_close_gross": 0.0010873450841489354,
+          "t1_open_gross": 0.00012966059168971716,
+          "t1_close_gross": 0.0029716771863237614
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 34,
+          "same_close_gross": -0.0009605542315779344,
+          "t1_open_gross": -0.003162520992727123,
+          "t1_close_gross": -0.0026858139208995246
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 23,
+          "same_close_gross": 0.0009383491842945488,
+          "t1_open_gross": -0.00042536327435717543,
+          "t1_close_gross": -0.0026375136672635966
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 7,
+          "same_close_gross": 0.004849127996653833,
+          "t1_open_gross": 0.0064513467959724366,
+          "t1_close_gross": 0.007973457974828327
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 6,
+          "same_close_gross": 0.006220716902298331,
+          "t1_open_gross": 0.004487216621161485,
+          "t1_close_gross": 0.00859781833690675
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 1,
+          "same_close_gross": 0.010012559652118553,
+          "t1_open_gross": 0.009699088043531192,
+          "t1_close_gross": -0.008504610843914117
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 1,
+          "same_close_gross": 0.00757473803558272,
+          "t1_open_gross": 0.0051002488691828385,
+          "t1_close_gross": 0.021566105378633717
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 5,
+          "same_close_gross": 0.0005739830224879353,
+          "t1_open_gross": -0.001755965350296175,
+          "t1_close_gross": -0.002214185291093988
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 3,
+          "same_close_gross": 0.009122032007991205,
+          "t1_open_gross": 0.008594648132967809,
+          "t1_close_gross": 0.016899180791450457
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 7,
+          "same_close_gross": 0.00574255880643139,
+          "t1_open_gross": 0.0041464961143767185,
+          "t1_close_gross": 0.0057068610912896145
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 1,
+          "same_close_gross": 0.006652126716595819,
+          "t1_open_gross": 0.004511386262750955,
+          "t1_close_gross": 0.016067220541006337
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 52,
+          "same_close_gross": -0.0032959082096841153,
+          "t1_open_gross": -0.006115424749451172,
+          "t1_close_gross": -0.005284991411486793
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 63,
+          "same_close_gross": -0.0020713436731365654,
+          "t1_open_gross": -0.004786512926570682,
+          "t1_close_gross": -0.0026860815607911634
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 32,
+          "same_close_gross": 0.005182974197844805,
+          "t1_open_gross": 0.002400938198848128,
+          "t1_close_gross": 0.004089230310950461
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 45,
+          "same_close_gross": -0.003910490004781271,
+          "t1_open_gross": -0.006661531035530164,
+          "t1_close_gross": -0.006254371782946365
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 63,
+          "same_close_gross": -0.001647158081676555,
+          "t1_open_gross": -0.004218693453949284,
+          "t1_close_gross": -0.002062627897337047
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 39,
+          "same_close_gross": 0.002385131235287302,
+          "t1_open_gross": -0.00073019290163311,
+          "t1_close_gross": 0.00116981273995001
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 57,
+          "same_close_gross": -0.0041308380619617556,
+          "t1_open_gross": -0.006907817662068668,
+          "t1_close_gross": -0.004870034652902507
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 62,
+          "same_close_gross": -0.0012643161773072183,
+          "t1_open_gross": -0.004747215704535967,
+          "t1_close_gross": -0.003493906942804474
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 28,
+          "same_close_gross": 0.004274468057631281,
+          "t1_open_gross": 0.00307513313346059,
+          "t1_close_gross": 0.004256292907520269
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 15,
+          "same_close_gross": -0.0014804933414800292,
+          "t1_open_gross": -0.00470587843548192,
+          "t1_close_gross": 0.0023387425548532905
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 25,
+          "same_close_gross": -0.00877530754933436,
+          "t1_open_gross": -0.010400470707271656,
+          "t1_close_gross": -0.009700191176106513
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 6,
+          "same_close_gross": 0.01615354140151458,
+          "t1_open_gross": 0.015013385044901227,
+          "t1_close_gross": 0.011675294385883833
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 13,
+          "same_close_gross": -0.007073820043114058,
+          "t1_open_gross": -0.011664686974671469,
+          "t1_close_gross": -0.007581898278155589
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 26,
+          "same_close_gross": -0.007065201773497809,
+          "t1_open_gross": -0.00950652927296557,
+          "t1_close_gross": -0.007968500927327983
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 7,
+          "same_close_gross": 0.01426381282997895,
+          "t1_open_gross": 0.018133933183592597,
+          "t1_close_gross": 0.019475233512861307
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 19,
+          "same_close_gross": -0.009415253670473045,
+          "t1_open_gross": -0.013217263881077378,
+          "t1_close_gross": -0.008202830873088792
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 21,
+          "same_close_gross": -0.00135140225731849,
+          "t1_open_gross": -0.003253746155181117,
+          "t1_close_gross": -0.006970091567318199
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 6,
+          "same_close_gross": 0.0065396763222596846,
+          "t1_open_gross": 0.009141577983854914,
+          "t1_close_gross": 0.023169711340382898
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 22,
+          "same_close_gross": -0.004391063029775357,
+          "t1_open_gross": -0.0053031661755931015,
+          "t1_close_gross": -0.0018393724055335342
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 12,
+          "same_close_gross": -0.0001304848133179175,
+          "t1_open_gross": 0.0007388033994011001,
+          "t1_close_gross": 0.002590223362901832
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 22,
+          "same_close_gross": 0.001065468563853769,
+          "t1_open_gross": 0.0009593023123852401,
+          "t1_close_gross": 0.0018860467820429826
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 20,
+          "same_close_gross": -0.0013479179000296438,
+          "t1_open_gross": -0.0007662554732403382,
+          "t1_close_gross": 0.0028076784844780407
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 14,
+          "same_close_gross": -0.011350438001034083,
+          "t1_open_gross": -0.010983767995574304,
+          "t1_close_gross": -0.006600719138349283
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 22,
+          "same_close_gross": 0.0034019446536441953,
+          "t1_open_gross": 0.0020947159945754797,
+          "t1_close_gross": 0.0014761822785887015
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 21,
+          "same_close_gross": -0.001790110774470406,
+          "t1_open_gross": -0.002150782006620404,
+          "t1_close_gross": 0.0019187581093020984
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 14,
+          "same_close_gross": -0.004245172446113885,
+          "t1_open_gross": -0.004558214532783368,
+          "t1_close_gross": -0.0027792406000140507
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 21,
+          "same_close_gross": 0.00024177263934387874,
+          "t1_open_gross": 0.0002329219096963116,
+          "t1_close_gross": 0.0006224117550506068
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 7,
+          "same_close_gross": -0.012405229132624785,
+          "t1_open_gross": -0.015373891364486688,
+          "t1_close_gross": -0.011592528000790265
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 9,
+          "same_close_gross": -0.0026821795831762727,
+          "t1_open_gross": -0.0023315972552806086,
+          "t1_close_gross": 0.005608157403470166
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 6,
+          "same_close_gross": 0.0020213442353370667,
+          "t1_open_gross": -0.0002537572738564913,
+          "t1_close_gross": 0.0004903048762805005
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 5,
+          "same_close_gross": -0.011525911944694687,
+          "t1_open_gross": -0.014338471909301992,
+          "t1_close_gross": -0.012017372299872072
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 11,
+          "same_close_gross": -0.010007037008099712,
+          "t1_open_gross": -0.009726426293030617,
+          "t1_close_gross": 0.0010461879596421178
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 6,
+          "same_close_gross": 0.004936331823277014,
+          "t1_open_gross": 0.0015694978699280244,
+          "t1_close_gross": -0.0030559654632098987
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 5,
+          "same_close_gross": -0.009627560439277446,
+          "t1_open_gross": -0.011874623537143794,
+          "t1_close_gross": -0.0048625685024141566
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 10,
+          "same_close_gross": -0.0050144684680495655,
+          "t1_open_gross": -0.005544949432925948,
+          "t1_close_gross": 0.0005442823000831838
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 7,
+          "same_close_gross": -0.004937173352347988,
+          "t1_open_gross": -0.007064877851925834,
+          "t1_close_gross": -0.006168188011540995
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 29,
+          "same_close_gross": 0.0024636894397137826,
+          "t1_open_gross": 0.0002214709634311077,
+          "t1_close_gross": 0.00037892309915703694
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 26,
+          "same_close_gross": -0.0014431372188157343,
+          "t1_open_gross": -0.0033111965396072224,
+          "t1_close_gross": 0.00025368822217118104
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 16,
+          "same_close_gross": 0.0026392450347463795,
+          "t1_open_gross": 0.0014919989242079728,
+          "t1_close_gross": 0.0052431986731438385
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 24,
+          "same_close_gross": 0.0026207662239102025,
+          "t1_open_gross": 0.0024112336863668163,
+          "t1_close_gross": -0.00040976396243698276
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 32,
+          "same_close_gross": 0.0006202812452336722,
+          "t1_open_gross": -0.0013695562817838318,
+          "t1_close_gross": 0.0027181604245325353
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 15,
+          "same_close_gross": -0.0005611787199223261,
+          "t1_open_gross": -0.004821198354461892,
+          "t1_close_gross": 0.0014215235076118734
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 29,
+          "same_close_gross": -0.0013198192912830507,
+          "t1_open_gross": -0.003689010788830497,
+          "t1_close_gross": -0.00152177484309098
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 24,
+          "same_close_gross": 0.0010975155377810724,
+          "t1_open_gross": -0.003122910494884751,
+          "t1_close_gross": -0.0006837717603526827
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 18,
+          "same_close_gross": 0.0033742718744540663,
+          "t1_open_gross": 0.0054241143353004825,
+          "t1_close_gross": 0.007407321980759807
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 7,
+          "same_close_gross": 0.004436480589384659,
+          "t1_open_gross": -0.00595154307622561,
+          "t1_close_gross": 0.002088453606054317
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 9,
+          "same_close_gross": 0.0008272361416296857,
+          "t1_open_gross": -0.00951003139080319,
+          "t1_close_gross": -0.006594369656106222
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 8,
+          "same_close_gross": 0.009109753538535346,
+          "t1_open_gross": 0.012383469468688662,
+          "t1_close_gross": 0.014250369205302408
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 3,
+          "same_close_gross": 0.004544680357901574,
+          "t1_open_gross": 0.0012445538853261412,
+          "t1_close_gross": -0.001177437367106358
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 12,
+          "same_close_gross": 0.001081956765496265,
+          "t1_open_gross": -0.012216229812030287,
+          "t1_close_gross": -0.004995610624994476
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 9,
+          "same_close_gross": 0.00474788858665255,
+          "t1_open_gross": 0.0080654220737379,
+          "t1_close_gross": 0.010007014766983652
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 5,
+          "same_close_gross": -0.004362092061276594,
+          "t1_open_gross": -0.010637850097051451,
+          "t1_close_gross": -0.001038338113133429
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 14,
+          "same_close_gross": 0.003368774635893776,
+          "t1_open_gross": -0.0053269559865078905,
+          "t1_close_gross": -8.158040003756965e-05
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 5,
+          "same_close_gross": 0.008206058836011738,
+          "t1_open_gross": 0.010862005041853702,
+          "t1_close_gross": 0.006135128013013978
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 32,
+          "same_close_gross": 0.001172595436363465,
+          "t1_open_gross": 0.00011176675042613965,
+          "t1_close_gross": 0.0014560325044524237
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 23,
+          "same_close_gross": 0.0014950937312892226,
+          "t1_open_gross": 0.00048128847577413034,
+          "t1_close_gross": 0.00038119447977114773
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 16,
+          "same_close_gross": 0.002983886811496397,
+          "t1_open_gross": 0.0023823375250776155,
+          "t1_close_gross": 0.0023592962711577346
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 24,
+          "same_close_gross": -0.0017221998909058437,
+          "t1_open_gross": -0.0025577348187669573,
+          "t1_close_gross": -6.105847123117081e-05
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 33,
+          "same_close_gross": 0.0024140891038465007,
+          "t1_open_gross": 0.0011564741887420478,
+          "t1_close_gross": 0.00047704308908877186
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 14,
+          "same_close_gross": 0.003559742131292465,
+          "t1_open_gross": 0.003126187384858104,
+          "t1_close_gross": 0.0033031678641621846
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 27,
+          "same_close_gross": -0.0011729272650426485,
+          "t1_open_gross": -0.002455983864366978,
+          "t1_close_gross": -0.0012974532360709495
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 30,
+          "same_close_gross": 0.0013596715398132605,
+          "t1_open_gross": 0.00034577405838956914,
+          "t1_close_gross": 0.00019299422023399208
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 14,
+          "same_close_gross": 0.002684064832658217,
+          "t1_open_gross": 0.0024707689706651823,
+          "t1_close_gross": 0.003411975829535887
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 8,
+          "same_close_gross": 0.0056700197313801545,
+          "t1_open_gross": 0.0047742020931592945,
+          "t1_close_gross": 0.005879299933712193
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 2,
+          "same_close_gross": -0.00988459952134478,
+          "t1_open_gross": -0.009650281497331818,
+          "t1_close_gross": -0.015536761069360418
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 2,
+          "same_close_gross": 0.004368733764112566,
+          "t1_open_gross": 0.006083330364900655,
+          "t1_close_gross": 0.00015260512558516954
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 6,
+          "same_close_gross": 0.0015632767850111851,
+          "t1_open_gross": 0.0014477055087796025,
+          "t1_close_gross": 0.0055538147869202345
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 5,
+          "same_close_gross": 0.00028603733767260835,
+          "t1_open_gross": -0.0011253750261431153,
+          "t1_close_gross": -0.00562388724329131
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 1,
+          "same_close_gross": 0.00803031841891582,
+          "t1_open_gross": 0.012216192289750573,
+          "t1_close_gross": -0.004801369523606025
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 6,
+          "same_close_gross": 0.0010824947914240403,
+          "t1_open_gross": 0.0009391016717079742,
+          "t1_close_gross": 0.00503611921323493
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 4,
+          "same_close_gross": 0.0002815554596174094,
+          "t1_open_gross": -0.0012542720793249466,
+          "t1_close_gross": -0.0021438071556516914
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 2,
+          "same_close_gross": 0.002798268536915627,
+          "t1_open_gross": 0.004446463650322507,
+          "t1_close_gross": -0.013437927938897379
+        }
+      ],
+      "selection_blocked_folds": 0,
+      "board_verdict": {
+        "credible": false,
+        "marginal": false,
+        "positive_increment_folds": 5,
+        "classification": "NO_PANIC_REPAIR_TRANSITION_EDGE"
+      }
+    },
+    "CHINEXT": {
+      "sleeve": "CHINEXT",
+      "folds": [
+        {
+          "selection_blocked": false,
+          "test_year": 2017,
+          "selected": {
+            "panic_code": 1,
+            "checkpoint": "0945",
+            "repair_code": 1,
+            "exit_code": 2,
+            "key": "pQ90|t0945|rQ80|xT1_CLOSE",
+            "panic_rule": "Q90",
+            "repair_rule": "Q80",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.7094133697135062,
+          "panic_q90": 0.8340154615734426,
+          "panic_threshold": 0.8340154615734426,
+          "repair_threshold": 0.8185475793389512,
+          "repair_calibration_dates": 74,
+          "train": {
+            "total_return": 0.5522103587650156,
+            "cagr": 0.1562249751312832,
+            "max_drawdown": -0.14974405033330807,
+            "sharpe": 1.0525494867161007,
+            "calmar": 1.0432800153565338,
+            "trade_count": 15,
+            "recent_year_trade_count": 5,
+            "median_year_return": 0.1039938982829498,
+            "top5_day_contribution": 0.48848317075485054
+          },
+          "full": {
+            "total_return": 0.0,
+            "cagr": 0.0,
+            "max_drawdown": 0.0,
+            "sharpe": 0.0,
+            "calmar": 0.0,
+            "trade_count": 0,
+            "recent_year_trade_count": 0,
+            "win_rate": null,
+            "median_year_return": 0.0,
+            "yearly_returns": {
+              "2017": 0.0
+            },
+            "positive_years": 0,
+            "negative_years": 0,
+            "flat_years": 1,
+            "positive_months": 0,
+            "top1_day_contribution": 0.0,
+            "top5_day_contribution": 0.0,
+            "top1pct_day_contribution": 0.0,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.0033592290566282212,
+            "cagr": -0.003331740312642606,
+            "max_drawdown": -0.025487484606152133,
+            "sharpe": -0.05098865515195857,
+            "calmar": -0.13072064050755308,
+            "trade_count": 3,
+            "recent_year_trade_count": 3,
+            "win_rate": 0.3333333333333333,
+            "median_year_return": -0.0033592290566282212,
+            "yearly_returns": {
+              "2017": -0.0033592290566282212
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 1,
+            "top1_day_contribution": 0.6625269974693363,
+            "top5_day_contribution": 1.0,
+            "top1pct_day_contribution": 1.0,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.0033592290566282212,
+          "ordinary_repair_diagnostic": {
+            "total_return": -0.02357172813383923,
+            "cagr": -0.023380793845266257,
+            "max_drawdown": -0.05105083813320144,
+            "sharpe": -0.3126932175470411,
+            "calmar": -0.4579904013380011,
+            "trade_count": 12,
+            "recent_year_trade_count": 12,
+            "win_rate": 0.5,
+            "median_year_return": -0.02357172813383923,
+            "yearly_returns": {
+              "2017": -0.02357172813383923
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.14865450635357966,
+            "top5_day_contribution": 0.6130319375448994,
+            "top1pct_day_contribution": 0.41854504634185924,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": 0.016797392815106615,
+            "best_return": 0.04741430349225717,
+            "worst_return": 0.0,
+            "fraction_profitable": 0.8,
+            "returns": [
+              0.0,
+              0.02713229205724832,
+              0.04741430349225717,
+              0.016797392815106615,
+              0.0164943312038075
+            ]
+          },
+          "trajectory": {
+            "trades": 0
+          },
+          "panic_only_trades": 3,
+          "ordinary_repair_trades": 12
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2018,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "0945",
+            "repair_code": 0,
+            "exit_code": 1,
+            "key": "pQ75|t0945|rQ67|xT1_LEGAL_OPEN",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_LEGAL_OPEN"
+          },
+          "panic_q75": 0.7014670760832481,
+          "panic_q90": 0.830228590924599,
+          "panic_threshold": 0.7014670760832481,
+          "repair_threshold": 0.7089062426830166,
+          "repair_calibration_dates": 245,
+          "train": {
+            "total_return": 0.18722844550168993,
+            "cagr": 0.04342664640567029,
+            "max_drawdown": -0.02711625953130914,
+            "sharpe": 0.841409247851121,
+            "calmar": 1.6014984056163333,
+            "trade_count": 19,
+            "recent_year_trade_count": 5,
+            "median_year_return": 0.024040858980867164,
+            "top5_day_contribution": 0.6961021209458023
+          },
+          "full": {
+            "total_return": -0.043715002916977386,
+            "cagr": -0.04353908029114839,
+            "max_drawdown": -0.06112677472156747,
+            "sharpe": -0.9074575762674895,
+            "calmar": -0.7122751116751858,
+            "trade_count": 8,
+            "recent_year_trade_count": 8,
+            "win_rate": 0.625,
+            "median_year_return": -0.043715002916977386,
+            "yearly_returns": {
+              "2018": -0.043715002916977386
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 1,
+            "top1_day_contribution": 0.3884319554305937,
+            "top5_day_contribution": 0.9551432840972268,
+            "top1pct_day_contribution": 0.7679820928431524,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.09694123365142004,
+            "cagr": -0.09656221265716647,
+            "max_drawdown": -0.12206337195798944,
+            "sharpe": -1.7853890036858469,
+            "calmar": -0.7910826246091276,
+            "trade_count": 11,
+            "recent_year_trade_count": 11,
+            "win_rate": 0.36363636363636365,
+            "median_year_return": -0.09694123365142004,
+            "yearly_returns": {
+              "2018": -0.09694123365142004
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 1,
+            "top1_day_contribution": 0.35816928892172334,
+            "top5_day_contribution": 1.0,
+            "top1pct_day_contribution": 0.7910893487764463,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.05322623073444266,
+          "ordinary_repair_diagnostic": {
+            "total_return": 0.01749156820625486,
+            "cagr": 0.01741896313645941,
+            "max_drawdown": -0.04167721178602646,
+            "sharpe": 0.29347182069446853,
+            "calmar": 0.41794933945892326,
+            "trade_count": 21,
+            "recent_year_trade_count": 21,
+            "win_rate": 0.42857142857142855,
+            "median_year_return": 0.01749156820625486,
+            "yearly_returns": {
+              "2018": 0.01749156820625486
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 6,
+            "top1_day_contribution": 0.1622250754657157,
+            "top5_day_contribution": 0.5774577048079946,
+            "top1pct_day_contribution": 0.3887450458500589,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": -0.07525778766574376,
+            "best_return": -0.02547598481127611,
+            "worst_return": -0.18711100226618105,
+            "fraction_profitable": 0.0,
+            "returns": [
+              -0.043715002916977386,
+              -0.02547598481127611,
+              -0.07525778766574376,
+              -0.13956484989857088,
+              -0.18711100226618105
+            ]
+          },
+          "trajectory": {
+            "trades": 8,
+            "profitable": {
+              "n": 5,
+              "open_panic_score_state": 0.7376322074377346,
+              "repair_0945": 0.7847834758263592,
+              "repair_1000": 0.8136670065928111,
+              "repair_1030": 0.7407666463463585,
+              "same_close_gross_state": 0.009084631910882691,
+              "t1_open_gross_state": 0.007212734498347491
+            },
+            "losing": {
+              "n": 3,
+              "open_panic_score_state": 0.7434322756738315,
+              "repair_0945": 0.8864165324522849,
+              "repair_1000": 0.882633913340157,
+              "repair_1030": 0.7130653310454171,
+              "same_close_gross_state": -0.013473368063018484,
+              "t1_open_gross_state": -0.010898797910221086
+            }
+          },
+          "panic_only_trades": 11,
+          "ordinary_repair_trades": 21
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2019,
+          "selected": {
+            "panic_code": 0,
+            "checkpoint": "1000",
+            "repair_code": 0,
+            "exit_code": 2,
+            "key": "pQ75|t1000|rQ67|xT1_CLOSE",
+            "panic_rule": "Q75",
+            "repair_rule": "Q67",
+            "exit": "T1_CLOSE"
+          },
+          "panic_q75": 0.6916666666666667,
+          "panic_q90": 0.8217759562841533,
+          "panic_threshold": 0.6916666666666667,
+          "repair_threshold": 0.6670494691660663,
+          "repair_calibration_dates": 305,
+          "train": {
+            "total_return": 1.1664114472014933,
+            "cagr": 0.16572951741805797,
+            "max_drawdown": -0.23849643228337047,
+            "sharpe": 0.9542431410918063,
+            "calmar": 0.6948930675036086,
+            "trade_count": 89,
+            "recent_year_trade_count": 25,
+            "median_year_return": 0.15892448602869647,
+            "top5_day_contribution": 0.1583228423270768
+          },
+          "full": {
+            "total_return": -0.08892462083476294,
+            "cagr": -0.08822887889448583,
+            "max_drawdown": -0.2001973224405723,
+            "sharpe": -0.6327279551271042,
+            "calmar": -0.4407095850179324,
+            "trade_count": 15,
+            "recent_year_trade_count": 15,
+            "win_rate": 0.6,
+            "median_year_return": -0.08892462083476294,
+            "yearly_returns": {
+              "2019": -0.08892462083476294
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.24812073854209088,
+            "top5_day_contribution": 0.7550161318775758,
+            "top1pct_day_contribution": 0.5292153573790443,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.06368162459487015,
+            "cagr": -0.06317649262633807,
+            "max_drawdown": -0.18742448681817248,
+            "sharpe": -0.3351785166132436,
+            "calmar": -0.3370770473957757,
+            "trade_count": 37,
+            "recent_year_trade_count": 37,
+            "win_rate": 0.43243243243243246,
+            "median_year_return": -0.06368162459487015,
+            "yearly_returns": {
+              "2019": -0.06368162459487015
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 6,
+            "top1_day_contribution": 0.1159244351345737,
+            "top5_day_contribution": 0.4007907615749533,
+            "top1pct_day_contribution": 0.26357885527092767,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": -0.02524299623989279,
+          "ordinary_repair_diagnostic": {
+            "total_return": 0.11679871576546486,
+            "cagr": 0.11578795519560581,
+            "max_drawdown": -0.11483754458855822,
+            "sharpe": 0.8944796136706573,
+            "calmar": 1.0082761313858872,
+            "trade_count": 49,
+            "recent_year_trade_count": 49,
+            "win_rate": 0.5102040816326531,
+            "median_year_return": 0.11679871576546486,
+            "yearly_returns": {
+              "2019": 0.11679871576546486
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 7,
+            "top1_day_contribution": 0.06781760620849223,
+            "top5_day_contribution": 0.3053150203817946,
+            "top1pct_day_contribution": 0.19523061365580233,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": 0.00867495894111614,
+            "best_return": 0.09910202685793257,
+            "worst_return": -0.08892462083476316,
+            "fraction_profitable": 0.8,
+            "returns": [
+              -0.08892462083476316,
+              0.0019903610970770647,
+              0.09910202685793257,
+              0.00867495894111614,
+              0.05693851695672536
+            ]
+          },
+          "trajectory": {
+            "trades": 15,
+            "profitable": {
+              "n": 9,
+              "open_panic_score_state": 0.8551912568306012,
+              "repair_0945": 0.7779577487484691,
+              "repair_1000": 0.7896407623058247,
+              "repair_1030": 0.7927740106632982,
+              "same_close_gross_state": 0.006057414378255328,
+              "t1_open_gross_state": 0.012022537000728223
+            },
+            "losing": {
+              "n": 6,
+              "open_panic_score_state": 0.8118852459016392,
+              "repair_0945": 0.7075946967854302,
+              "repair_1000": 0.7418002175948204,
+              "repair_1030": 0.6787870234828495,
+              "same_close_gross_state": -0.001368786088487206,
+              "t1_open_gross_state": -0.007974994056175166
+            }
+          },
+          "panic_only_trades": 37,
+          "ordinary_repair_trades": 49
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2020,
+          "selected": {
+            "panic_code": 1,
+            "checkpoint": "0945",
+            "repair_code": 0,
+            "exit_code": 1,
+            "key": "pQ90|t0945|rQ67|xT1_LEGAL_OPEN",
+            "panic_rule": "Q90",
+            "repair_rule": "Q67",
+            "exit": "T1_LEGAL_OPEN"
+          },
+          "panic_q75": 0.6889799635701275,
+          "panic_q90": 0.8246357012750456,
+          "panic_threshold": 0.8246357012750456,
+          "repair_threshold": 0.7573552347157034,
+          "repair_calibration_dates": 147,
+          "train": {
+            "total_return": 0.36672019065791805,
+            "cagr": 0.052998890842860025,
+            "max_drawdown": -0.05088567942543454,
+            "sharpe": 0.9909142346438665,
+            "calmar": 1.0415286076807146,
+            "trade_count": 26,
+            "recent_year_trade_count": 6,
+            "median_year_return": 0.06897090176488418,
+            "top5_day_contribution": 0.44301351157146573
+          },
+          "full": {
+            "total_return": 0.13182957865760137,
+            "cagr": 0.13125293304799834,
+            "max_drawdown": -0.017385149393231658,
+            "sharpe": 2.2321581874306573,
+            "calmar": 7.54971556926036,
+            "trade_count": 7,
+            "recent_year_trade_count": 7,
+            "win_rate": 0.8571428571428571,
+            "median_year_return": 0.13182957865760137,
+            "yearly_returns": {
+              "2020": 0.13182957865760137
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 5,
+            "top1_day_contribution": 0.1867396777936085,
+            "top5_day_contribution": 0.7806291974322593,
+            "top1pct_day_contribution": 0.5373307208566472,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": -0.06414228477919104,
+            "cagr": -0.06388694246811899,
+            "max_drawdown": -0.13745663585613344,
+            "sharpe": -0.671815655343881,
+            "calmar": -0.46477888877613105,
+            "trade_count": 15,
+            "recent_year_trade_count": 15,
+            "win_rate": 0.5333333333333333,
+            "median_year_return": -0.06414228477919104,
+            "yearly_returns": {
+              "2020": -0.06414228477919104
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 4,
+            "top1_day_contribution": 0.1757141137167216,
+            "top5_day_contribution": 0.6956213892014265,
+            "top1pct_day_contribution": 0.4873697232922318,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.1959718634367924,
+          "ordinary_repair_diagnostic": {
+            "total_return": 0.1687915812635754,
+            "cagr": 0.16804162910741782,
+            "max_drawdown": -0.04590431537921291,
+            "sharpe": 2.086383050576721,
+            "calmar": 3.660693503851121,
+            "trade_count": 26,
+            "recent_year_trade_count": 26,
+            "win_rate": 0.6538461538461539,
+            "median_year_return": 0.1687915812635754,
+            "yearly_returns": {
+              "2020": 0.1687915812635754
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 9,
+            "top1_day_contribution": 0.1000606659823037,
+            "top5_day_contribution": 0.44104781387363856,
+            "top1pct_day_contribution": 0.27798157800022066,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": 0.0328315931508929,
+            "best_return": 0.13182957865760092,
+            "worst_return": -0.06005509689651978,
+            "fraction_profitable": 0.6,
+            "returns": [
+              0.13182957865760092,
+              -0.03885803503457397,
+              0.0958565928805486,
+              0.0328315931508929,
+              -0.06005509689651978
+            ]
+          },
+          "trajectory": {
+            "trades": 7,
+            "profitable": {
+              "n": 6,
+              "open_panic_score_state": 0.8721539162112932,
+              "repair_0945": 0.8735757631700931,
+              "repair_1000": 0.8877467976460958,
+              "repair_1030": 0.8785848710968374,
+              "same_close_gross_state": 0.025076402236022116,
+              "t1_open_gross_state": 0.03055821222108069
+            },
+            "losing": {
+              "n": 1,
+              "open_panic_score_state": 0.9098360655737704,
+              "repair_0945": 0.8792382252137483,
+              "repair_1000": 0.750804907763358,
+              "repair_1030": 0.7673743120418244,
+              "same_close_gross_state": 0.009703349102587022,
+              "t1_open_gross_state": -0.005862218902212257
+            }
+          },
+          "panic_only_trades": 15,
+          "ordinary_repair_trades": 26
+        },
+        {
+          "selection_blocked": false,
+          "test_year": 2021,
+          "selected": {
+            "panic_code": 1,
+            "checkpoint": "0945",
+            "repair_code": 0,
+            "exit_code": 1,
+            "key": "pQ90|t0945|rQ67|xT1_LEGAL_OPEN",
+            "panic_rule": "Q90",
+            "repair_rule": "Q67",
+            "exit": "T1_LEGAL_OPEN"
+          },
+          "panic_q75": 0.6931263425112282,
+          "panic_q90": 0.8265182581527046,
+          "panic_threshold": 0.8265182581527046,
+          "repair_threshold": 0.755903083667718,
+          "repair_calibration_dates": 171,
+          "train": {
+            "total_return": 0.5472482691933456,
+            "cagr": 0.06383375853603002,
+            "max_drawdown": -0.05088567942543454,
+            "sharpe": 1.1743642236625813,
+            "calmar": 1.2544542837355446,
+            "trade_count": 32,
+            "recent_year_trade_count": 7,
+            "median_year_return": 0.07632687502663194,
+            "top5_day_contribution": 0.3251569840228456
+          },
+          "full": {
+            "total_return": 0.010471791127312224,
+            "cagr": 0.010428473414094697,
+            "max_drawdown": 0.0,
+            "sharpe": 1.6973758587871848,
+            "calmar": 1000000.0,
+            "trade_count": 2,
+            "recent_year_trade_count": 2,
+            "win_rate": 1.0,
+            "median_year_return": 0.010471791127312224,
+            "yearly_returns": {
+              "2021": 0.010471791127312224
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.5142750268445897,
+            "top5_day_contribution": 1.0,
+            "top1pct_day_contribution": 0.90411779006602,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "panic_only": {
+            "total_return": 0.010471791127312224,
+            "cagr": 0.010428473414094697,
+            "max_drawdown": 0.0,
+            "sharpe": 1.6973758587871848,
+            "calmar": 1000000.0,
+            "trade_count": 2,
+            "recent_year_trade_count": 2,
+            "win_rate": 1.0,
+            "median_year_return": 0.010471791127312224,
+            "yearly_returns": {
+              "2021": 0.010471791127312224
+            },
+            "positive_years": 1,
+            "negative_years": 0,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.5142750268445917,
+            "top5_day_contribution": 1.0,
+            "top1pct_day_contribution": 0.9041177900660186,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "repair_confirmation_increment": 0.0,
+          "ordinary_repair_diagnostic": {
+            "total_return": -0.14126274462559374,
+            "cagr": -0.14072439054821473,
+            "max_drawdown": -0.14344916280609,
+            "sharpe": -2.0729482821669754,
+            "calmar": -0.9810053108392237,
+            "trade_count": 43,
+            "recent_year_trade_count": 43,
+            "win_rate": 0.4418604651162791,
+            "median_year_return": -0.14126274462559374,
+            "yearly_returns": {
+              "2021": -0.14126274462559374
+            },
+            "positive_years": 0,
+            "negative_years": 1,
+            "flat_years": 0,
+            "positive_months": 3,
+            "top1_day_contribution": 0.09482747119868568,
+            "top5_day_contribution": 0.3932357641753011,
+            "top1pct_day_contribution": 0.25885729943763947,
+            "duplicate_board_position_count": 0,
+            "negative_cash_or_leverage_count": 0
+          },
+          "top5_neighbor_oos": {
+            "median_return": 0.010471791127312224,
+            "best_return": 0.03542856239915304,
+            "worst_return": -0.04898844048508544,
+            "fraction_profitable": 0.6,
+            "returns": [
+              0.010471791127312224,
+              0.03542856239915304,
+              -0.04898844048508544,
+              0.010471791127312224,
+              -0.004797237765936435
+            ]
+          },
+          "trajectory": {
+            "trades": 2,
+            "profitable": {
+              "n": 2,
+              "open_panic_score_state": 0.838215192345245,
+              "repair_0945": 0.8754908063411511,
+              "repair_1000": 0.8699953929776831,
+              "repair_1030": 0.8365448785213554,
+              "same_close_gross_state": 0.005192753210289842,
+              "t1_open_gross_state": 0.009253446584788867
+            },
+            "losing": {
+              "n": 0,
+              "open_panic_score_state": null,
+              "repair_0945": null,
+              "repair_1000": null,
+              "repair_1030": null,
+              "same_close_gross_state": null,
+              "t1_open_gross_state": null
+            }
+          },
+          "panic_only_trades": 2,
+          "ordinary_repair_trades": 43
+        }
+      ],
+      "stitched": {
+        "total_return": -0.003569789901354037,
+        "cagr": -0.0007108686485748361,
+        "max_drawdown": -0.20278995854916548,
+        "sharpe": 0.023924728187634775,
+        "calmar": -0.003505443038997857,
+        "trade_count": 32,
+        "recent_year_trade_count": 2,
+        "win_rate": 0.6875,
+        "median_year_return": 0.0,
+        "yearly_returns": {
+          "2017": 0.0,
+          "2018": -0.043715002916977386,
+          "2019": -0.08892462083476294,
+          "2020": 0.13182957865760137,
+          "2021": 0.010471791127312224
+        },
+        "positive_years": 2,
+        "negative_years": 2,
+        "flat_years": 1,
+        "positive_months": 13,
+        "top1_day_contribution": 0.12090964414358776,
+        "top5_day_contribution": 0.38831185765190673,
+        "top1pct_day_contribution": 0.76457799892426,
+        "duplicate_board_position_count": 0,
+        "negative_cash_or_leverage_count": 0
+      },
+      "return_ex_2020": -0.11962875958723895,
+      "return_ex_best_day": -0.05008623397905332,
+      "return_ex_best_5_days": -0.15050034045050975,
+      "repair_bins": [
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 22,
+          "same_close_gross": -0.003655862506773412,
+          "t1_open_gross": -0.0057082930944456845,
+          "t1_close_gross": -0.00547739366095556
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 13,
+          "same_close_gross": 0.004287296840250872,
+          "t1_open_gross": 0.0037242706575622104,
+          "t1_close_gross": 0.001214750105116989
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 5,
+          "same_close_gross": 0.006303436406088464,
+          "t1_open_gross": 0.0059337699828477825,
+          "t1_close_gross": 0.013583368794842223
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 25,
+          "same_close_gross": -0.003180453278842638,
+          "t1_open_gross": -0.005287727212937957,
+          "t1_close_gross": -0.005472279150100235
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 11,
+          "same_close_gross": 0.005699346852764135,
+          "t1_open_gross": 0.005350032147671775,
+          "t1_close_gross": 0.00668010089962332
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 4,
+          "same_close_gross": 0.01030187048317159,
+          "t1_open_gross": 0.010666434569237396,
+          "t1_close_gross": 0.01082520234116733
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 25,
+          "same_close_gross": -0.002400987043868241,
+          "t1_open_gross": -0.004439181028858796,
+          "t1_close_gross": -0.001544357464222342
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 10,
+          "same_close_gross": 0.0046393717928073595,
+          "t1_open_gross": 0.004455511107738039,
+          "t1_close_gross": -0.003290512385903741
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 5,
+          "same_close_gross": 0.0048539859424155864,
+          "t1_open_gross": 0.004291516919029005,
+          "t1_close_gross": 0.007461927905648228
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 3,
+          "same_close_gross": 0.0010926398536775736,
+          "t1_open_gross": 0.0009506215586492077,
+          "t1_close_gross": 0.0033902693884824164
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 1,
+          "same_close_gross": 0.00704397894010765,
+          "t1_open_gross": 0.003571388979975075,
+          "t1_close_gross": 0.010898915963681586
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 2,
+          "same_close_gross": -0.020041066510431107,
+          "t1_open_gross": -0.023740947946881905,
+          "t1_close_gross": -0.02424716135580218
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 2,
+          "same_close_gross": 0.018279629187029675,
+          "t1_open_gross": 0.019930524656139342,
+          "t1_close_gross": 0.027737230483943862
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 3,
+          "same_close_gross": -0.007398446360788169,
+          "t1_open_gross": -0.011031542613029856,
+          "t1_close_gross": -0.008942755739603769
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 1,
+          "same_close_gross": 0.02720177024337731,
+          "t1_open_gross": 0.03406779735720371,
+          "t1_close_gross": 0.04232759191708928
+        },
+        {
+          "test_year": 2017,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 21,
+          "same_close_gross": -0.0014905635429052376,
+          "t1_open_gross": -0.004602840260337501,
+          "t1_close_gross": -0.002794640268165821
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 52,
+          "same_close_gross": -0.007050508952850669,
+          "t1_open_gross": -0.007682009908809689,
+          "t1_close_gross": -0.0031259666196375765
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 26,
+          "same_close_gross": 0.007032414606856311,
+          "t1_open_gross": 0.006507612475651312,
+          "t1_close_gross": 0.0023539559464233395
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 22,
+          "same_close_gross": -0.000561629670556679,
+          "t1_open_gross": -0.0024018720085195056,
+          "t1_close_gross": -0.0010604417065346982
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 47,
+          "same_close_gross": -0.009053189568743411,
+          "t1_open_gross": -0.011107864929077116,
+          "t1_close_gross": -0.009861038332690008
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 30,
+          "same_close_gross": 0.003240741917611881,
+          "t1_open_gross": 0.004054620002195975,
+          "t1_close_gross": 0.006627720831453107
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 23,
+          "same_close_gross": -0.004341637090056294,
+          "t1_open_gross": -0.006303523330565207,
+          "t1_close_gross": -0.004063507105419819
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 46,
+          "same_close_gross": -0.0077345085160290825,
+          "t1_open_gross": -0.007994479696730158,
+          "t1_close_gross": -0.003501225386221359
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 30,
+          "same_close_gross": 0.002274305342537833,
+          "t1_open_gross": 0.0004300731482849796,
+          "t1_close_gross": -0.002710991203035598
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 7,
+          "same_close_gross": -0.008453860846024158,
+          "t1_open_gross": -0.014140801338539096,
+          "t1_close_gross": -0.008944742276408362
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 18,
+          "same_close_gross": -0.00737202098019844,
+          "t1_open_gross": -0.006643820597881752,
+          "t1_close_gross": -0.008667611778710047
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 8,
+          "same_close_gross": 0.015197272991639513,
+          "t1_open_gross": 0.019472337067157165,
+          "t1_close_gross": 0.025369671698656428
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 5,
+          "same_close_gross": -0.008139557474506346,
+          "t1_open_gross": -0.012767635835209026,
+          "t1_close_gross": -0.012224002922588748
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 15,
+          "same_close_gross": -0.013303256021939729,
+          "t1_open_gross": -0.014240495309614638,
+          "t1_close_gross": -0.014708736887303429
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 13,
+          "same_close_gross": 0.008257577494834153,
+          "t1_open_gross": 0.011660606615189138,
+          "t1_close_gross": 0.015519052445156275
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 8,
+          "same_close_gross": -0.011550943963908933,
+          "t1_open_gross": -0.013353470435592638,
+          "t1_close_gross": -0.012391506610068596
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 13,
+          "same_close_gross": -0.010462273642097869,
+          "t1_open_gross": -0.011886443285052013,
+          "t1_close_gross": -0.015170536373712675
+        },
+        {
+          "test_year": 2018,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 12,
+          "same_close_gross": 0.0038961800399014306,
+          "t1_open_gross": 0.007243070379125925,
+          "t1_close_gross": 0.013869937670621987
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 13,
+          "same_close_gross": -0.0028231518450020786,
+          "t1_open_gross": -0.0027375281729470607,
+          "t1_close_gross": -0.002277894756350007
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 14,
+          "same_close_gross": 0.0007322446963950942,
+          "t1_open_gross": 0.005527988924857989,
+          "t1_close_gross": 0.002210958235553257
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 16,
+          "same_close_gross": 0.003137422145214758,
+          "t1_open_gross": 0.0035036510871577498,
+          "t1_close_gross": 0.007974137075278016
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 13,
+          "same_close_gross": 5.0604068243852374e-05,
+          "t1_open_gross": 0.0009068361955931108,
+          "t1_close_gross": -0.001482900567514867
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 13,
+          "same_close_gross": -0.0019249384496411227,
+          "t1_open_gross": 0.002108250255245807,
+          "t1_close_gross": 0.00501707586485339
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 17,
+          "same_close_gross": -0.000422349556387917,
+          "t1_open_gross": 0.00020184408710116324,
+          "t1_close_gross": 0.0016454861463835995
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 15,
+          "same_close_gross": -0.0018180046970597845,
+          "t1_open_gross": -0.00013420426651210768,
+          "t1_close_gross": -0.001234806287458794
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 16,
+          "same_close_gross": 0.0010660888432231855,
+          "t1_open_gross": 0.0024190057105932094,
+          "t1_close_gross": 0.002487821702352192
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 12,
+          "same_close_gross": -0.001385806442426408,
+          "t1_open_gross": 0.0008564549247333437,
+          "t1_close_gross": 0.004684297120579597
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 6,
+          "same_close_gross": -0.004346655751079394,
+          "t1_open_gross": -0.0033144543386383705,
+          "t1_close_gross": -0.009282385960300276
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 6,
+          "same_close_gross": -0.005773331270038539,
+          "t1_open_gross": -0.004754983269956037,
+          "t1_close_gross": 0.000684931350198793
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 5,
+          "same_close_gross": 0.011600491985561392,
+          "t1_open_gross": 0.015328758183405466,
+          "t1_close_gross": 0.02335160027450033
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 5,
+          "same_close_gross": -0.0005486905979059269,
+          "t1_open_gross": -0.00047060377517344035,
+          "t1_close_gross": -0.005308310615759365
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 5,
+          "same_close_gross": -0.015044499684649446,
+          "t1_open_gross": -0.013575336851875341,
+          "t1_close_gross": -0.01275541487423632
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 7,
+          "same_close_gross": 0.005725561441569246,
+          "t1_open_gross": 0.009013294484059525,
+          "t1_close_gross": 0.01711022022233421
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 6,
+          "same_close_gross": -0.0006921874485429862,
+          "t1_open_gross": 0.0015765847107801446,
+          "t1_close_gross": -0.004711295920657541
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 4,
+          "same_close_gross": -0.0012883045325232194,
+          "t1_open_gross": -0.00267759344839692,
+          "t1_close_gross": 0.0016255181693074542
+        },
+        {
+          "test_year": 2019,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 7,
+          "same_close_gross": -0.0007326354072529866,
+          "t1_open_gross": 0.0025243281580537014,
+          "t1_close_gross": 0.010565657863066026
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 22,
+          "same_close_gross": -0.002326042192014985,
+          "t1_open_gross": -0.004881403393233948,
+          "t1_close_gross": -0.0003048697294026803
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 16,
+          "same_close_gross": 0.0036061874899186953,
+          "t1_open_gross": 0.0018319331901727421,
+          "t1_close_gross": 0.003836736961057758
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 21,
+          "same_close_gross": 0.0060848365081478326,
+          "t1_open_gross": 0.0004560660279932325,
+          "t1_close_gross": 0.000627922704734465
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 21,
+          "same_close_gross": 0.00015139471195661284,
+          "t1_open_gross": -0.0013324805990427406,
+          "t1_close_gross": -0.002076301989965914
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 16,
+          "same_close_gross": -0.0023936329259714446,
+          "t1_open_gross": -0.008556283792868718,
+          "t1_close_gross": -0.00037431087322861993
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 22,
+          "same_close_gross": 0.00527617187267742,
+          "t1_open_gross": 0.001943463178592881,
+          "t1_close_gross": 0.0028207660011434622
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 19,
+          "same_close_gross": -0.0018556561284001612,
+          "t1_open_gross": -0.0035265574994475662,
+          "t1_close_gross": -0.0024058740252856418
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 19,
+          "same_close_gross": -0.002121143004515873,
+          "t1_open_gross": -0.012709628806740902,
+          "t1_close_gross": -0.0035184562103442473
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 21,
+          "same_close_gross": 0.005501395860912198,
+          "t1_open_gross": 0.006904959845515328,
+          "t1_close_gross": 0.004018595938990454
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 4,
+          "same_close_gross": 0.0016325109678979612,
+          "t1_open_gross": -0.0006157833701221764,
+          "t1_close_gross": 0.00423413226021663
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 10,
+          "same_close_gross": -0.006396851389279583,
+          "t1_open_gross": -0.023295597134837774,
+          "t1_close_gross": -0.020445545384711997
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 8,
+          "same_close_gross": 0.012511476451120777,
+          "t1_open_gross": 0.015947151803036137,
+          "t1_close_gross": 0.013853215671685784
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 4,
+          "same_close_gross": -2.3508197226238155e-05,
+          "t1_open_gross": 0.0010420358929539523,
+          "t1_close_gross": -0.02414381220887369
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 9,
+          "same_close_gross": -0.008858683441820522,
+          "t1_open_gross": -0.029709745335416024,
+          "t1_close_gross": -0.01396510142512312
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 9,
+          "same_close_gross": 0.005716520515748933,
+          "t1_open_gross": 0.009346915699115829,
+          "t1_close_gross": 0.008046539106575021
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 6,
+          "same_close_gross": -0.008604045404743911,
+          "t1_open_gross": -0.002492048163081994,
+          "t1_close_gross": -0.016870547146166728
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 9,
+          "same_close_gross": -0.003742108782486865,
+          "t1_open_gross": -0.026424534688250872,
+          "t1_close_gross": -0.011267136035312875
+        },
+        {
+          "test_year": 2020,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 7,
+          "same_close_gross": 0.011310039659110236,
+          "t1_open_gross": 0.013674304368195297,
+          "t1_close_gross": 0.010790103775411885
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 18,
+          "same_close_gross": -0.00030402392835104214,
+          "t1_open_gross": -0.0016791132791903727,
+          "t1_close_gross": 0.00013016568367550972
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 19,
+          "same_close_gross": 0.0007034003092599938,
+          "t1_open_gross": -0.00031016604632960927,
+          "t1_close_gross": -0.0018911376713549803
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 18,
+          "same_close_gross": -0.0015661199000300177,
+          "t1_open_gross": -0.0004821598457658668,
+          "t1_close_gross": 0.0054684753366949605
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 20,
+          "same_close_gross": -0.0027974014892730706,
+          "t1_open_gross": -0.003109839564348913,
+          "t1_close_gross": -0.0029110611976405675
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 21,
+          "same_close_gross": 0.0019228321592088286,
+          "t1_open_gross": 0.0003507690310852247,
+          "t1_close_gross": 0.004308962305286794
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 14,
+          "same_close_gross": -0.00026127634765386415,
+          "t1_open_gross": 0.0007366723488382741,
+          "t1_close_gross": 0.0023018819933761517
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 16,
+          "same_close_gross": -0.0032415849302808233,
+          "t1_open_gross": -0.0035284391432204194,
+          "t1_close_gross": -0.00011507805676197339
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 29,
+          "same_close_gross": 0.0013495861985825944,
+          "t1_open_gross": 0.00014259551384316344,
+          "t1_close_gross": 0.0012308547499790183
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q75",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 10,
+          "same_close_gross": -0.0037346806671918033,
+          "t1_open_gross": -0.002302778009589176,
+          "t1_close_gross": -8.979538727735982e-05
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "LOW",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "MID",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "0945",
+          "repair_bin": "HIGH",
+          "dates": 2,
+          "same_close_gross": 0.005192753210289842,
+          "t1_open_gross": 0.009253446584788867,
+          "t1_close_gross": 0.022623824197016584
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "LOW",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "MID",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1000",
+          "repair_bin": "HIGH",
+          "dates": 2,
+          "same_close_gross": 0.004243241755572327,
+          "t1_open_gross": 0.008285529917477078,
+          "t1_close_gross": 0.021669424385368456
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "LOW",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "MID",
+          "dates": 0,
+          "same_close_gross": null,
+          "t1_open_gross": null,
+          "t1_close_gross": null
+        },
+        {
+          "test_year": 2021,
+          "panic_rule": "Q90",
+          "checkpoint": "1030",
+          "repair_bin": "HIGH",
+          "dates": 2,
+          "same_close_gross": -0.0004571061262974886,
+          "t1_open_gross": 0.0035604484106397005,
+          "t1_close_gross": 0.016843479489311083
+        }
+      ],
+      "selection_blocked_folds": 0,
+      "board_verdict": {
+        "credible": false,
+        "marginal": false,
+        "positive_increment_folds": 3,
+        "classification": "NO_PANIC_REPAIR_TRANSITION_EDGE"
+      }
+    }
+  },
+  "combined": {
+    "total_return": -0.11635745088621874,
+    "cagr": -0.024298156124024195,
+    "max_drawdown": -0.21382646021051777,
+    "sharpe": -0.3189133509250808,
+    "calmar": -0.11363493601354117,
+    "trade_count": 0,
+    "recent_year_trade_count": 0,
+    "win_rate": null,
+    "median_year_return": -0.006660898138781901,
+    "yearly_returns": {
+      "2017": -0.006660898138781901,
+      "2018": -0.07759032430910062,
+      "2019": -0.08619686547778393,
+      "2020": 0.052510266630065416,
+      "2021": 0.0027120966979150563
+    },
+    "positive_years": 2,
+    "negative_years": 3,
+    "flat_years": 0,
+    "positive_months": 23,
+    "top1_day_contribution": 0.04137145426280314,
+    "top5_day_contribution": 0.19347832291482212,
+    "top1pct_day_contribution": 0.3825306960506766,
+    "duplicate_board_position_count": 0,
+    "negative_cash_or_leverage_count": 0,
+    "return_ex_2020": -0.16044282214649108,
+    "return_ex_best_day": -0.1407747409121637,
+    "return_ex_best_5_days": -0.2206197668879737
+  },
+  "mechanism": {
+    "repair_confirmation_positive_fold_count": 8,
+    "repair_confirmation_total_fold_count": 10,
+    "repair_confirmation_mean_increment": 0.10660995738438368,
+    "repair_confirmation_beats_panic_only": true,
+    "board_specific": false,
+    "checkpoint_increment": {
+      "0945": {
+        "folds": 4,
+        "mean": 0.06313933080696582,
+        "positive": 3
+      },
+      "1000": {
+        "folds": 5,
+        "mean": 0.130614234258341,
+        "positive": 4
+      },
+      "1030": {
+        "folds": 1,
+        "mean": 0.16047107932426852,
+        "positive": 1
+      }
+    },
+    "checkpoint_stable": true,
+    "episode_concentrated": true
+  },
+  "audit": {
+    "state_rows": 11700,
+    "state_dates": 1950,
+    "search_rows": 360,
+    "expected_search_rows": 360,
+    "opening_state_checkpoint_mismatch_count": 0,
+    "minimum_entry_coverage": 0.9964285714285714,
+    "minimum_observed_names": 163,
+    "minimum_repair_component_count": 2,
+    "open_panic_uses_post_open_data_count": 0,
+    "repair_score_uses_post_checkpoint_data_count": 0,
+    "test_year_used_in_own_parameter_selection_count": 0,
+    "test_year_used_to_calibrate_own_panic_count": 0,
+    "test_year_used_to_calibrate_own_repair_threshold_count": 0,
+    "cross_board_state_contamination_count": 0,
+    "pit_industry_identity_failure_count": 0,
+    "post_2021_outcome_read_count": 0,
+    "duplicate_board_position_count": 0,
+    "negative_cash_or_leverage_count": 0,
+    "validation_opened": false,
+    "final_oos_opened": false
+  },
+  "verdict": "NO_PANIC_REPAIR_TRANSITION_EDGE",
+  "interpretation": "The frozen early market internals do not identify a sufficiently stable executable Panic-to-Repair transition. Close this exact transition representation rather than adding rescue indicators.",
+  "alternative_index_proxy": {
+    "available": false,
+    "reason": "No frozen board-specific index instrument was present in the certified experiment inputs."
+  }
+}

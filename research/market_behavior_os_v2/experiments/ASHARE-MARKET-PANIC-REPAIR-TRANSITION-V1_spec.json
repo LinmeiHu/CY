@@ -1,0 +1,114 @@
+{
+  "experiment_id": "ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1",
+  "status": "ADAPTER_AMENDED_BEFORE_ANY_VALID_MARKET_STATE_OR_OUTCOME_OBSERVED",
+  "evidence_class": "INTERNAL_CHRONOLOGICAL_PSEUDO_OOS_NOT_PRISTINE_EXTERNAL_OOS",
+  "start_checkpoint": "94192f4d4b0002b705eeb7506235b99c5ffbc9c7",
+  "development": ["2014-01-01", "2021-12-31"],
+  "folds": [
+    {"train": [2014, 2016], "test": 2017},
+    {"train": [2014, 2017], "test": 2018},
+    {"train": [2014, 2018], "test": 2019},
+    {"train": [2014, 2019], "test": 2020},
+    {"train": [2014, 2020], "test": 2021}
+  ],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "final_oos_start": "2024-01-01",
+    "final_oos_opened": false
+  },
+  "semantic_contract": {
+    "economic_sequence": "market-wide opening panic -> forced selling/dislocation -> opening panic absorption -> improving internals -> observable repair confirmation -> trade after confirmation -> continuation outcome",
+    "causal_background": "opening market panic",
+    "state_variables": ["opening breadth", "down-gap breadth", "near/exact-limit-down breadth", "median stock opening return", "intraday median-price and breadth state"],
+    "event_formation_time": "09:30 opening print",
+    "confirmation_trigger": "market-wide repair score observed at a completed fixed checkpoint",
+    "entry_time": "open of the first continuous five-minute execution window after checkpoint, equal to the first minute after checkpoint",
+    "outcome_start_time": "strictly after checkpoint",
+    "prohibited": ["former-leader", "deep-drawdown", "strict-gap", "gap-age", "Dryup", "stock first-reclaim", "ML", "individual-stock optimization"]
+  },
+  "time_anchors": {
+    "completed_checkpoints": ["09:45", "10:00", "10:30"],
+    "checkpoint_execution_windows": {
+      "09:45": {"feature_window_index": 2, "entry_window_index": 3, "entry_clock": "09:46"},
+      "10:00": {"feature_window_index": 5, "entry_window_index": 6, "entry_clock": "10:01"},
+      "10:30": {"feature_window_index": 11, "entry_window_index": 12, "entry_clock": "10:31"}
+    },
+    "same_day_close_window_index": 47,
+    "source_clock": "immutable QD-004 completed one-minute bars on exact 241-row sessions; 09:45 close, 09:46 open, and 10:00 close must reconcile exactly to overlapping certified PIT-B five-minute windows"
+  },
+  "universe": {
+    "boards": {"MAIN": ["Shanghai Main", "Shenzhen Main"], "CHINEXT": ["ChiNext"]},
+    "stock_patterns": ["60*.SH excluding 688*.SH", "00*.SZ", "30*.SZ"],
+    "industry_exclusions": "exact V1-V5 cyclical/resource/traditional-energy mapping",
+    "st_included": true,
+    "daily_gates": ["hard_valid", "current_day_data_tradable", "trade_status=1", "corporate_action_valid", "not corporate_action_blocking", "corporate_action_count=0"],
+    "boards_constructed_separately": true
+  },
+  "opening_panic": {
+    "down_gap_breadth_5": "fraction of opening-eligible board names with open/preclose-1 <= -0.05",
+    "open_median_return": "cross-sectional median open/preclose-1; sign reversed for score",
+    "near_or_exact_lower_limit": "0 <= observed price - registered down_limit_price <= CNY 0.015, retaining the authoritative V1 exact/near tick convention",
+    "limit_stress_breadth": "fraction of opening-eligible names near or at registered lower limit at open",
+    "score": "equal mean of board/fold TRAIN empirical-CDF ranks of down_gap_breadth_5, negative open_median_return, and limit_stress_breadth",
+    "panic_rules": ["TRAIN_Q75", "TRAIN_Q90"],
+    "test_application": "all component transforms and score thresholds frozen from own-board TRAIN"
+  },
+  "repair_features": {
+    "median_price_repair": "median checkpoint_price/open-1 among opening-eligible names with hard-valid checkpoint and entry windows",
+    "panic_stock_reclaim_breadth": "among checkpoint-observed names opening <=-5%, fraction checkpoint_price >= open*1.01; unavailable when denominator is zero",
+    "limit_release": "one minus still-near-lower-limit checkpoint fraction among opening-near-lower-limit checkpoint-observed names; unavailable when denominator zero",
+    "breadth_improvement": "fraction checkpoint_price > open among checkpoint-observed names",
+    "score": "equal mean of own-board/fold TRAIN empirical-CDF ranks; omit unavailable limit_release or panic-stock-reclaim component and retain equal weights over available components",
+    "component_rank_history": "all own-board TRAIN dates at the same checkpoint",
+    "repair_threshold_history": "own-board TRAIN panic sessions under the selected panic rule",
+    "repair_thresholds": [0.67, 0.80],
+    "transparent_bins": "TRAIN Q33/Q67 within each panic rule, diagnostic only"
+  },
+  "basket_outcomes": {
+    "primary": "equal-weight return across opening-eligible names with valid checkpoint/entry and corresponding action-safe outcome",
+    "entry": "raw open of first five-minute window after checkpoint; 20 bp entry cost",
+    "exits": ["same-day 15:00 raw close", "first later legal action-safe open", "next-board-session action-safe close"],
+    "exit_cost": 0.002,
+    "round_trip_cost": 0.004,
+    "missing_leg_policy": "report coverage and exclude only the unavailable leg from that outcome aggregate; no signal or parameter depends on future leg availability",
+    "portfolio": "one synthetic board basket per sleeve, full available sleeve NAV, no leverage; skip signal while prior same-board basket remains active",
+    "marking": "entry-day checkpoint-to-close basket mark; terminal outcome on frozen exit date; carry the last basket mark between dates when a first-legal-open leg delays the synthetic terminal date",
+    "year_boundary": "do not admit a basket whose frozen terminal date is after replay end"
+  },
+  "adapter_amendment": {
+    "timing": "before any valid repair feature, basket outcome, search row, or performance result existed",
+    "failed_attempt": "certified execution_5m contains only windows 0 through 5 ending at 10:00, so later checkpoints, next-minute entries, and 15:00 close were all unavailable and the attempted state panel had zero valid minute observations",
+    "scientific_contract_changed": false,
+    "replacement": "read exact bars from the already frozen immutable QD-004 annual files, require exactly 241 unique completed minute timestamps per security/session, and reconcile every overlapping early value to PIT-B execution_5m",
+    "post_2021_read": false
+  },
+  "parameter_grid": {
+    "panic_rule": ["Q75", "Q90"],
+    "checkpoint": ["0945", "1000", "1030"],
+    "repair_threshold": ["Q67", "Q80"],
+    "exit": ["SAME_CLOSE", "T1_LEGAL_OPEN", "T1_CLOSE"],
+    "configurations_per_board": 36,
+    "total_board_fold_rows": 360
+  },
+  "selection": {
+    "minimum_completed_train_trades": 15,
+    "minimum_completed_trades_in_most_recent_train_year": 3,
+    "objective": "maximum TRAIN Calmar",
+    "tie_breaks": ["higher Sharpe", "higher median calendar-year return", "higher CAGR", "lower Top-5 positive-PnL-day concentration", "earlier checkpoint", "lexical config key"],
+    "blocked_action": "cash in test year",
+    "neighborhood": "top five TRAIN configurations replayed unchanged next year"
+  },
+  "counterfactuals": {
+    "PANIC_ONLY": "same panic rule, checkpoint, exit and opening-state transforms; remove only repair threshold",
+    "REPAIR_WITHOUT_SEVERE_PANIC": "same checkpoint and repair threshold applied to dates below the champion panic threshold; diagnostic only"
+  },
+  "verdict_taxonomy": [
+    "PANIC_REPAIR_TRANSITION_EDGE_READY_FOR_VALIDATION",
+    "BOARD_SPECIFIC_PANIC_REPAIR_EDGE",
+    "PANIC_REPAIR_EDGE_BUT_EPISODE_CONCENTRATED",
+    "MARGINAL_PANIC_REPAIR_EDGE",
+    "NO_PANIC_REPAIR_TRANSITION_EDGE",
+    "IMPLEMENTATION_BLOCKED"
+  ]
+}

@@ -2,6 +2,45 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Market Panic-to-Repair Transition V1 closure
+
+Resume after the commit containing `ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1`;
+its starting checkpoint is `94192f4d4b0002b705eeb7506235b99c5ffbc9c7` on
+`research/ashare-ultrashort-v1`. This is Development-only internal chronological
+pseudo-OOS. Validation 2022--2023 and Final OOS 2024+ remain sealed and unread.
+
+The frozen market state is independent of the closed former-leader/gap-reclaim
+family. Main Board and ChiNext are separate. Opening panic uses board/TRAIN-only
+empirical CDFs of down-gap breadth, inverted median opening return, and
+registered lower-limit stress; panic is TRAIN Q75 or Q90. Repair uses only
+completed 09:45, 10:00, or 10:30 information and enters at 09:46, 10:01, or
+10:31. Equal-weight board baskets exit at same close, first later legal open, or
+T+1 close with 20 bps per side. The exact 36-grid and five folds produce 360
+search rows.
+
+Main returns -22.915%, -28.916% drawdown, -0.437 Sharpe, and 91 trades; all five
+years lose and return excluding 2020 is -20.241%. ChiNext returns -0.357%,
+-20.279% drawdown, 0.024 Sharpe, and 32 trades; it gains +13.183% in 2020 but
+loses 11.963% outside 2020. Fixed 50/50 returns -11.636%, with -21.383%
+drawdown, -0.319 Sharpe, and -16.044% outside 2020.
+
+Repair confirmation improves `PANIC_ONLY` in 8/10 board-years, so it has
+descriptive avoidance value, but it does not produce positive absolute long
+economics. Main never has a positive test year; ChiNext is episode-dependent;
+top-five neighborhoods are not stable. Final verdict:
+`NO_PANIC_REPAIR_TRANSITION_EDGE`. Close the exact opening-score, checkpoint,
+repair-score, and exit representation. Do not rescue it with nearby quantiles,
+new indicators, checkpoints, exits, board pooling, stock selection, or ML. Five
+focused tests pass and all hard audits are zero. Large resumable state/search
+shards remain under `/Volumes/quant/CY_quant_research/ashare_market_panic_repair_transition_v1`.
+Two final executions are byte-identical: states `6efa7f45...`, search
+`e2e64804...`, NAV `860549a9...`, result `998ae1a3...`, and report
+`6fc75933...`. The frozen spec hash is `e1840146...`.
+
+The next useful allocation is a genuinely independent information source, not
+another OHLCV panic-repair variation—prefer a governed order-book/queue or
+investor-flow data contract if separately authorized.
+
 ## Latest checkpoint: Formation-Panic Strict-Gap Reclaim V5 closure
 
 Resume after the commit containing
