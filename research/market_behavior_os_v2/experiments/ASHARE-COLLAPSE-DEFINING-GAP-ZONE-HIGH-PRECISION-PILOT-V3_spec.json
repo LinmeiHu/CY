@@ -1,0 +1,157 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-DEFINING-GAP-ZONE-HIGH-PRECISION-PILOT-V3",
+  "status": "SEMANTIC_PREFLIGHT_FROZEN_BEFORE_DETECTOR_IMPLEMENTATION",
+  "research_type": "OUTCOME_BLIND_COLLAPSE_FIRST_HUMAN_PATTERN_PRECISION_PILOT",
+  "start_checkpoint": "d331b039c8fd1c60b937286b7631a192ed8164df",
+  "development": ["2014-01-01", "2021-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false,
+    "post_2021_outcome_read_count": 0
+  },
+  "semantic_preflight": {
+    "economic_sequence": "prior strong or leader stock -> impulsive or clearly dominant run-up -> peak -> collapse or liquidation -> economically meaningful downward discontinuity primitives during the main peak-to-trough collapse leg -> unresolved overhead collapse gap zone -> materially lower independent trading regime -> post-collapse low and settling phase -> later approach from below -> first return to the lowest meaningful unresolved collapse-defining layer",
+    "causal_background": "prior speculative or leadership demand followed by liquidation severe enough to create one or more economically important no-trade discontinuities that remain as overhead structure while price establishes a separate lower regime",
+    "state_variables": [
+      "absolute prior run-up",
+      "board-relative or impulsive prior strength",
+      "peak identity and time",
+      "peak-to-zone and peak-to-trough collapse depth",
+      "strict-gap primitive width and collapse contribution",
+      "meaningful primitive lineage",
+      "layer timing and durable-recovery state",
+      "unresolved duration",
+      "fully-below run length",
+      "post-zone depth",
+      "below-zone rolling-median separation",
+      "post-trough base duration and geometry",
+      "turnover context",
+      "prior partial-entry count"
+    ],
+    "event_formation_time": "the final meaningful collapse-defining primitive in a provisionally grouped stack, after the collapse episode and its peak-to-trough interval have first been identified independently of gaps",
+    "confirmation_trigger": "first later upward trade reaching the lower boundary of the lowest meaningful unresolved collapse-defining layer, conditional on all persistence, lower-regime, post-trough settling, and zero-prior-partial-entry requirements",
+    "entry_time": "NOT_DEFINED; the marker is a human semantic-review anchor only",
+    "outcome_start_time": "NOT_APPLICABLE; outcomes are prohibited",
+    "possible_semantic_ambiguities": [
+      "whether a 250-session rolling peak is the visually dominant peak",
+      "whether 90 percent peak recovery should terminate the collapse episode",
+      "whether three closes adequately represent durable recovery between layers",
+      "whether width versus collapse contribution best captures economic gap significance",
+      "whether multiple meaningful primitives belong to one visual zone",
+      "whether the lowest meaningful layer is always the human-selected layer",
+      "whether ten sessions adequately captures 留下",
+      "whether five fully-below sessions establish an independent regime",
+      "whether a rolling-median separation is visually sufficient",
+      "whether five post-trough sessions constitute a base",
+      "whether an opening jump into the boundary should count as upward return",
+      "whether ST and normal stocks share the same visual semantics"
+    ],
+    "chosen_time_anchors": {
+      "collapse_episode_start": "objective prior 250-session peak carried by the daily causal state; the episode is admitted only after a later 30 percent drawdown exists",
+      "collapse_episode_end": "earlier of 250 sessions after peak or the first durable recovery defined by three consecutive completed closes at or above 90 percent of peak after the first 30 percent breach",
+      "postcollapse_trough": "lowest comparable-coordinate low between the first 30 percent breach and collapse-episode end",
+      "primitive_eligibility_clock": "strict primitive date must be strictly after peak and no later than the postcollapse trough",
+      "zone_formation": "date of the final meaningful primitive in the frozen stack",
+      "persistence_clock": "formation session excluded; at least ten completed intervening sessions before return",
+      "below_zone_clock": "at least five consecutive completed sessions with high below the lowest meaningful lower boundary",
+      "base_clock": "at least five completed sessions strictly after postcollapse trough and before first return",
+      "first_return": "earliest post-formation session with an intraday upward crossing from an open below the lower boundary; any earlier lower-boundary touch is a prior partial entry and rejects the candidate",
+      "blind_chart_end": "exact completed one-minute first-return bar, with no later minute or session"
+    }
+  },
+  "scientific_distinctions": {
+    "strict_gap_primitive": "mathematical adjacent-session no-trade interval Open_t < Low_t_minus_1",
+    "collapse_defining_gap": "strict primitive satisfying absolute-or-collapse-contribution significance plus post-zone depth inside a pre-existing collapse episode",
+    "collapse_gap_zone": "one or more retained collapse-defining primitives provisionally grouped without destroying primitive lineage",
+    "human_visual_discontinuity_zone": "unfrozen human semantic object tested only through blind review"
+  },
+  "universe": {
+    "included": ["Shanghai Main Board", "Shenzhen Main Board", "ChiNext", "normal", "ST", "*ST"],
+    "excluded": ["STAR Market", "Beijing Stock Exchange", "ETF", "fund", "index", "non-equity"],
+    "industry_exclusions": "unchanged frozen cyclical/resource/traditional-energy exclusions",
+    "pit_and_lineage": "fail closed"
+  },
+  "collapse_first_detector": {
+    "peak_lookback_sessions": 250,
+    "material_peak_to_trough_decline_min": 0.30,
+    "maximum_episode_sessions_after_peak": 250,
+    "durable_peak_recovery_fraction": 0.90,
+    "durable_recovery_consecutive_closes": 3,
+    "gap_search_order": "collapse episode first; primitives joined only after episode certification"
+  },
+  "former_strength_retrieval": {
+    "absolute_strength_any": {
+      "max_runup_from_60_low_min": 0.50,
+      "max_runup_from_120_low_min": 0.70
+    },
+    "relative_or_impulsive_any": {
+      "board_relative_60_return_percentile_min": 0.90,
+      "return20_into_peak_min": 0.30,
+      "registered_large_up_or_limit_like_sessions_min": 2
+    },
+    "interpretation": "retrieval only, not a strategy parameter"
+  },
+  "collapse_defining_primitive": {
+    "absolute_significance_any": {
+      "width_pct_previous_close_min": 0.025,
+      "width_share_of_peak_to_trough_decline_min": 0.08
+    },
+    "post_zone_low_fraction_of_lower_max": 0.875,
+    "must_be_between_peak_and_trough": true,
+    "interpretation": "retrieval only, not a strategy parameter"
+  },
+  "layer_stack": {
+    "maximum_sessions_between_consecutive_meaningful_primitives": 15,
+    "durable_recovery_between_layers": "three consecutive completed closes at or above the earlier primitive upper boundary",
+    "retain_every_primitive_separately": true,
+    "true_layers_chart_color": "orange",
+    "stack_envelope_chart_color": "light gray",
+    "stack_envelope_label": "STACK ENVELOPE — MAY CONTAIN TRADED PRICE REGIONS"
+  },
+  "lifecycle_retrieval": {
+    "minimum_completed_intervening_sessions": 10,
+    "minimum_consecutive_fully_below_sessions": 5,
+    "post_zone_low_fraction_of_lower_max": 0.875,
+    "rolling_close_window_sessions": 5,
+    "rolling_median_close_fraction_of_lower_max": 0.925,
+    "minimum_completed_post_trough_base_sessions": 5,
+    "candidate_session_open_below_boundary": true,
+    "prior_partial_entry_count_required": 0,
+    "full_fill_before_return_allowed": false,
+    "reentry_references_postcollapse_local_gap_count_required": 0
+  },
+  "sample": {
+    "total": 20,
+    "main": 13,
+    "chinext": 7,
+    "multilayer_preference_min": 8,
+    "single_layer_preference_min": 8,
+    "known_near_miss_controls": 0,
+    "selection": "deterministic outcome-blind round-robin over board, single-versus-multilayer, persistence, former-strength structure, and formation year",
+    "identity_blind": true,
+    "calendar_blind": true,
+    "post_entry_hidden": true
+  },
+  "forbidden": [
+    "post-entry return",
+    "T+1 or T+3 return",
+    "MFE or MAE",
+    "future winner status",
+    "later delisting",
+    "later market capitalization",
+    "CAGR, Sharpe, or Calmar",
+    "portfolio replay",
+    "walk-forward",
+    "parameter optimization",
+    "2022-2023 repository data",
+    "2024+ repository data",
+    "return-trained model"
+  ],
+  "normal_completion": {
+    "pilot_package_complete": true,
+    "human_review_required": true,
+    "return_analysis_run": false,
+    "strategy_backtest_run": false
+  }
+}

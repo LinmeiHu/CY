@@ -7,17 +7,17 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643` (Collapse Gap-Zone High-Precision Pilot V2 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_HIGH_PRECISION_PILOT_V2_HUMAN_GATE`
-- `CURRENT_PRIMARY_FRONTIER`: `HIGH_PRECISION_PILOT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`. The V1 120-chart workflow is stopped after human-reported low semantic precision. A new 30-chart outcome-blind pilot uses a corrected unresolved-zone clock and stricter visual retrieval; no return outcome, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
+- `CURRENT_BASELINE`: `d331b039c8fd1c60b937286b7631a192ed8164df` (Collapse-Defining Gap-Zone High-Precision Pilot V3 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_DEFINING_GAP_ZONE_HIGH_PRECISION_PILOT_V3_HUMAN_GATE`
+- `CURRENT_PRIMARY_FRONTIER`: `PILOT_PACKAGE_COMPLETE; HUMAN_REVIEW_REQUIRED`. V3 detects the prior-strength/peak/collapse episode first and only then joins strict no-trade primitives formed on the main peak-to-trough collapse leg. Its 20-chart outcome-blind pilot is complete; no return outcome, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: none. This is a semantic-fidelity audit only; no strategy claim is permitted before blind human labels freeze the actual zone, persistence, and re-entry semantics
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643`
+- `STARTING_HEAD`: `d331b039c8fd1c60b937286b7631a192ed8164df`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643`
+- `CURRENT_HEAD_AT_RESUME`: `d331b039c8fd1c60b937286b7631a192ed8164df`
 - `CURRENT_SCIENTIFIC_LAYER`: `OUTCOME_BLIND_HUMAN_PATTERN_FIDELITY; DEVELOPMENT_2014_2021_ONLY; VALIDATION_AND_POST_2023_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: whether blinded human review recognizes the intended collapse gap-zone pattern in the 30-case V2 high-precision pilot. Do not finish V1 and do not inspect returns.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: whether blinded human review recognizes the intended collapse-defining gap-zone pattern in the 20-case V3 pilot. Do not inspect returns.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-HIGH-PRECISION-PILOT-V2`
-  is package-complete at its intentional 30-chart human gate. No backtest has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-DEFINING-GAP-ZONE-HIGH-PRECISION-PILOT-V3`
+  is package-complete at its intentional 20-chart human gate. No backtest has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,33 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse-Defining Gap-Zone High-Precision Pilot V3
+
+V3 is a fresh outcome-blind detector, not a threshold rescue of V2. It first
+detects causal prior-strength/peak/material-collapse episodes and only afterward
+joins strict adjacent-session no-trade gaps formed between that peak and the
+post-collapse low. A primitive is provisionally meaningful when its width is at
+least 2.5% of prior close or 8% of the peak-to-low decline, and price later moves
+at least 12.5% below it. Layers within 15 sessions remain separate primitives;
+the gray envelope is never represented as a no-trade gap.
+
+The later first-return lifecycle requires 10 completed intervening sessions,
+five consecutive completed sessions whose highs remain below the lowest layer,
+a five-session median close at least 7.5% below that boundary, five completed
+post-trough settling sessions, and no prior partial or full upward re-entry. The
+marker is the first completed minute whose high crosses the lowest meaningful
+unresolved boundary from an open below it.
+
+The detector covers 3,379 symbols, 40,623 collapse episodes, 448,483 strict
+primitives, 24,367 meaningful collapse primitives, 16,536 meaningful stacks,
+and 4,759 multilayer stacks. The full lifecycle leaves 617 candidate stacks.
+The deterministic blind package has 20 unique securities: 13 Main, 7 ChiNext,
+1 ST, and 10 each multilayer/single-layer, spanning candidate years 2014--2021.
+Identity leaks, post-marker bars, outcome-selected rows, and nonblank initial
+labels are zero. Five focused tests pass. Status: `PILOT_PACKAGE_COMPLETE;
+HUMAN_REVIEW_REQUIRED`. Every numeric gate is retrieval-only, not an alpha
+parameter. No returns, Validation, or repository 2024+ data opened.
 
 ### Collapse Gap-Zone High-Precision Pilot V2
 

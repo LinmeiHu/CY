@@ -4,6 +4,25 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse-Defining Gap-Zone High-Precision Pilot V3
+
+- Detect prior strength, peak, first 30% breach, collapse endpoint, and
+  post-collapse low before joining any gap. Only strict no-trade primitives on
+  the resulting peak-to-low leg may define the zone; later local or sideways
+  gaps are excluded by construction.
+- Meaningful layers pass a fixed width/collapse-contribution gate and subsequent
+  12.5% depth. Layers within 15 sessions remain individually visible; the gray
+  stack envelope is explicitly allowed to contain traded-price regions.
+- First return requires 10 completed intervening sessions, five consecutive
+  fully-below highs, a separated five-session median-close regime, five
+  post-trough settling sessions, and no earlier partial/full re-entry. The
+  marker is the first completed minute crossing the lowest layer from below.
+- The detector yields 617 complete candidates. The 20-chart blind pilot is
+  13 Main/7 ChiNext, 1 ST, 10 multilayer/10 single-layer, and covers every
+  candidate year 2014--2021. Numeric gates are retrieval-only.
+- Status: `PILOT_PACKAGE_COMPLETE; HUMAN_REVIEW_REQUIRED`. No outcomes,
+  replay, Validation, or repository 2024+ data were opened.
+
 ## Collapse Gap-Zone High-Precision Pilot V2
 
 - V1's 120-chart human workflow is stopped incomplete for reported low semantic

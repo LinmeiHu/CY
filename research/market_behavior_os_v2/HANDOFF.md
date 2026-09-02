@@ -2,6 +2,38 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse-Defining Gap-Zone High-Precision Pilot V3 human gate
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-DEFINING-GAP-ZONE-HIGH-PRECISION-PILOT-V3`; its starting
+checkpoint is `d331b039c8fd1c60b937286b7631a192ed8164df` on
+`research/ashare-ultrashort-v1`. This is an outcome-blind semantic-precision
+pilot. Do not run any return analysis, Validation 2022--2023, or repository
+2024+ research.
+
+V3 detects the broad prior-strength/peak/collapse episode before considering
+strict gap primitives. Only strict adjacent-session no-trade gaps on the main
+peak-to-post-collapse-low leg may become meaningful layers. Each retained layer
+remains explicit; the light-gray stack envelope may contain traded prices and
+is never a synthetic gap. The lifecycle requires 10 completed intervening
+sessions, five consecutive fully-below sessions, 12.5% post-zone depth, a
+five-session median-close lower regime, five post-trough settling sessions, and
+zero prior partial/full re-entry. The marker is the first completed minute that
+crosses the lowest meaningful unresolved layer from below.
+
+The detector finds 40,623 collapse episodes, 24,367 meaningful primitives,
+16,536 stacks, 4,759 multilayer stacks, and 617 full-lifecycle candidates. The
+20-chart sample contains 13 Main/7 ChiNext, 1 ST, and 10 multilayer/10 single-
+layer cases across every year from 2014 through 2021. Identity leaks,
+post-marker bars, outcome selection, and initial human labels are zero. Five
+focused tests pass. Blind charts are under
+`/Volumes/quant/CY_quant_research/ashare_collapse_defining_gap_zone_high_precision_pilot_v3/blind_charts`.
+
+Stop for human review of these 20 V3 charts. All numeric gates are provisional
+retrieval rules, not strategy parameters. If precision is high, use only the
+human labels to freeze the visual semantics; if low, revise the detector again.
+Do not run returns until semantic alignment is satisfactory.
+
 ## Latest checkpoint: Collapse Gap-Zone High-Precision Pilot V2 human gate
 
 Resume from the commit containing
