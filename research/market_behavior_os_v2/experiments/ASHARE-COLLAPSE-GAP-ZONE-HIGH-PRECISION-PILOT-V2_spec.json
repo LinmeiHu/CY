@@ -1,0 +1,123 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-HIGH-PRECISION-PILOT-V2",
+  "status": "SEMANTIC_PREFLIGHT_SUPPORT_AMENDED_BEFORE_PILOT_CHARTS_OR_OUTCOMES",
+  "research_type": "OUTCOME_BLIND_HIGH_PRECISION_HUMAN_PATTERN_PILOT",
+  "start_checkpoint": "3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643",
+  "supersedes_review_workflow": {
+    "experiment": "ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1",
+    "reason": "human-reported very low semantic precision",
+    "v1_review_status": "STOPPED_INCOMPLETE_BY_AUTHORIZATION",
+    "finish_v1_review_requested": false,
+    "v1_partial_labels_read_or_summarized": false,
+    "v1_artifacts_preserved": true
+  },
+  "development": ["2014-01-01", "2021-12-31"],
+  "warmup": ["2013-01-01", "2013-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false,
+    "post_2021_outcome_read_count": 0
+  },
+  "target_visual_sequence": [
+    "genuine former strong or leader stock",
+    "impulsive prior run-up",
+    "major collapse",
+    "meaningful strict-gap or layered strict-gap zone created during the main collapse leg",
+    "zone fully unresolved for at least five completed sessions",
+    "price moves materially below the lowest meaningful zone boundary",
+    "only later makes its first upward return to that boundary"
+  ],
+  "inherited_invariants": {
+    "strict_gap": "Open_t < Low_t_minus_1 on adjacent corporate-action-comparable sessions",
+    "primitive_interval": "[Open_t, Low_t_minus_1]",
+    "universe": "Main Board and ChiNext, including ST and *ST; STAR/BSE/funds/indices excluded",
+    "pit_industry_and_lineage": "fail closed",
+    "candidate_clock": "after persistence and material-depth qualification, exact first completed one-minute bar touching the lower boundary from below",
+    "blind_chart_end": "candidate bar; no later minute or session",
+    "outcome_use": "prohibited"
+  },
+  "high_precision_retrieval_rules": {
+    "board_relative_return_percentile_min": 0.90,
+    "max_runup_from_60_low_min": 0.50,
+    "return60_into_peak_min": 0.30,
+    "main_rise_duration_sessions_min": 5,
+    "main_rise_duration_sessions_max": 80,
+    "rise_speed_per_session_min": 0.01,
+    "large_up_sessions_min": 3,
+    "collapse_decline_to_gap_min": 0.30,
+    "peak_to_gap_sessions_min": 1,
+    "peak_to_gap_sessions_max": 40,
+    "five_session_return_into_gap_max": -0.08,
+    "chosen_strict_gap_width_vs_previous_close_min": 0.02,
+    "additional_meaningful_layer_width_min": 0.015,
+    "completed_sessions_without_full_fill_min": 5,
+    "first_reentry_session_lag_from_final_layer_min": 6,
+    "first_reentry_session_lag_from_final_layer_max": 250,
+    "minimum_depth_below_zone": 0.125,
+    "candidate_session_open_below_boundary": true,
+    "same_day_reentry": "EXCLUDED",
+    "next_day_reentry": "EXCLUDED",
+    "tiny_or_local_gap": "EXCLUDED",
+    "gap_outside_main_collapse_leg": "EXCLUDED",
+    "ordinary_sideways_gap": "EXCLUDED_BY_LEADER_RUNUP_COLLAPSE_AND_IMPULSE_GATES",
+    "interpretation": "all numeric values are outcome-blind audit-retrieval rules only, never strategy parameters"
+  },
+  "support_feasibility_amendment": {
+    "timing": "before any pilot chart, human pilot judgment, or outcome access",
+    "observed_support_under_initial_wording": 0,
+    "initial_misinterpretation": "required five completed sessions whose entire traded range stayed below the lower boundary",
+    "corrected_semantics": "fully unresolved means no full fill of the strict-gap interval through its upper boundary; lower-boundary touches before material-depth qualification do not count as the later return event",
+    "support_after_semantic_correction_was_below_30": true,
+    "support_only_threshold_amendment": "collapse decline floor changed from 35 percent to 30 percent; 30 percent remains a major-collapse retrieval floor and the other formation, gap-width, minimum-persistence, depth, and re-entry rules are unchanged",
+    "chart_context_guard": "a 250-session maximum re-entry lag was added during pre-review visual QA so every chart preserves the prior peak/run-up context and excludes multi-year stale zones; this is outcome-blind and does not use human pilot labels",
+    "threshold_change": true,
+    "outcome_informed": false
+  },
+  "meaningful_layer_rule": "Within the inherited provisional episode, display only strict primitives satisfying the 1.5 percent width floor, the 1-to-40-session post-peak main-collapse clock, at least 25 percent decline from peak, and at most -5 percent five-session return into formation. The candidate boundary itself must satisfy the stricter 2 percent width and full high-precision gates.",
+  "semantic_retrieval_score": {
+    "use": "outcome-blind ordering within fixed sampling strata only",
+    "formula": "unweighted mean of eight components, each clipped to [0,1]",
+    "components": {
+      "leader_percentile": "(board_relative_return_percentile - 0.90) / 0.10",
+      "runup60": "(max_runup_from_60_low - 0.50) / 1.00",
+      "return60": "(return60_into_peak - 0.30) / 0.70",
+      "rise_speed": "(rise_speed - 0.01) / 0.04",
+      "collapse_depth": "(decline_to_gap - 0.30) / 0.40",
+      "gap_width": "(width_vs_previous_close - 0.02) / 0.06",
+      "depth_below_zone": "(depth_below_zone - 0.125) / 0.275",
+      "persistence": "(candidate_session_lag_from_final_layer - 6) / 54"
+    },
+    "economic_or_return_interpretation": "none"
+  },
+  "sample": {
+    "total": 30,
+    "main": 20,
+    "chinext": 10,
+    "unique_security_preference": true,
+    "selection": "deterministic outcome-blind round-robin by board, formation year, and single-versus-layered meaningful zone; within strata order by frozen semantic retrieval score then stable identity hash",
+    "identity_blind": true,
+    "calendar_blind": true,
+    "post_reentry_hidden": true
+  },
+  "forbidden": [
+    "reading or summarizing incomplete V1 human labels",
+    "post-reentry return",
+    "T+1 or T+3 return",
+    "MFE or MAE",
+    "future winner or loser status",
+    "CAGR, Sharpe, or Calmar",
+    "return-based threshold selection",
+    "strategy replay",
+    "2022-2023 repository data",
+    "2024+ repository data",
+    "return-trained ML"
+  ],
+  "normal_completion": {
+    "pilot_package_complete": true,
+    "human_pattern_review_required": true,
+    "v1_review_workflow_stopped": true,
+    "strategy_backtest_run": false,
+    "return_outcome_analysis_run": false
+  }
+}

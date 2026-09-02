@@ -4,6 +4,21 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone High-Precision Pilot V2
+
+- V1's 120-chart human workflow is stopped incomplete for reported low semantic
+  precision. Its broad detector must not be resumed or summarized.
+- V2 corrects “unresolved”: the strict-gap upper boundary must remain unfilled
+  for five completed sessions. After price reaches at least 12.5% below the
+  lowest meaningful layer, the marker is the first later intraday upward touch
+  of that lower boundary. Same/next-day, tiny/local, late-formation, sideways,
+  and multi-year stale cases are excluded.
+- High-precision outcome-blind gates produce 34 unique candidates. The exact
+  pilot has 30 unique securities: 20 Main, 10 ChiNext, and 18 layered zones.
+  All numeric rules are visual audit retrieval, never strategy parameters.
+- Status: `HIGH_PRECISION_PILOT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`.
+  No outcomes, replay, Validation, or repository 2024+ data were opened.
+
 ## Collapse Gap-Zone Pattern Fidelity Audit V1
 
 - Outcome-blind semantic retrieval only: strict `Open_t < Low_t-1` primitives
@@ -16,9 +31,9 @@ engine ledgers.
 - The 120-case deterministic package preserves Main/ChiNext, ST, single versus
   multilayer, same-day through very-long persistence, provisional leader
   strength, 80 broad positives, 20 immediate/fast cases, and 20 near misses.
-- Status: `AUDIT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`. No return
-  outcomes, backtest, Validation, or repository 2024+ data were opened. This is
-  neither positive nor negative strategy evidence.
+- Status: `STOPPED_LOW_SEMANTIC_PRECISION; SUPERSEDED_BY_V2`. Do not finish or
+  summarize the 120-chart workflow. No return outcomes, backtest, Validation,
+  or repository 2024+ data were opened.
 
 ## Market Panic-to-Repair Transition V1
 

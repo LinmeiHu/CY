@@ -1,5 +1,10 @@
 # ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1
 
+> Superseded 2026-09-02: the human reported very low semantic precision. Stop
+> the incomplete 120-chart workflow; do not request remaining labels and do not
+> run return analysis. Continue only with the separate outcome-blind 30-chart
+> `ASHARE-COLLAPSE-GAP-ZONE-HIGH-PRECISION-PILOT-V2` package.
+
 Status: `AUDIT_PACKAGE_COMPLETE`; `HUMAN_PATTERN_REVIEW_REQUIRED`.
 
 This is an outcome-blind semantic-fidelity audit, not a backtest or alpha test. Candidate generation and charts use only 2014–2021, with 2013 used only for warm-up. Validation 2022–2023 and repository 2024+ data remain unopened.
@@ -49,4 +54,4 @@ No precision, recall, strategy edge, or economic significance can be computed be
 
 ## Next action
 
-The human reviewer opens `/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_pattern_fidelity_audit_v1/blind_charts`, labels `/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/reports/ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1_review.csv`, and returns the completed CSV. Only then should the prepared label-summary script be run to freeze actual zone, persistence, and re-entry semantics before any return study.
+Do not continue this review. Use the separate V2 high-precision pilot package; no return study is authorized.

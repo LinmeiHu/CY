@@ -7,17 +7,17 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `fa817a732a378d87c6700a8005fe37a3346c3d9d` (Collapse Gap-Zone Pattern Fidelity Audit V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_PATTERN_FIDELITY_AUDIT_V1_HUMAN_GATE`
-- `CURRENT_PRIMARY_FRONTIER`: `AUDIT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`. The strict-gap/collapse/stack detector and deterministic 120-case blind package are complete. No return outcome, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
+- `CURRENT_BASELINE`: `3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643` (Collapse Gap-Zone High-Precision Pilot V2 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_HIGH_PRECISION_PILOT_V2_HUMAN_GATE`
+- `CURRENT_PRIMARY_FRONTIER`: `HIGH_PRECISION_PILOT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`. The V1 120-chart workflow is stopped after human-reported low semantic precision. A new 30-chart outcome-blind pilot uses a corrected unresolved-zone clock and stricter visual retrieval; no return outcome, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: none. This is a semantic-fidelity audit only; no strategy claim is permitted before blind human labels freeze the actual zone, persistence, and re-entry semantics
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `fa817a732a378d87c6700a8005fe37a3346c3d9d`
+- `STARTING_HEAD`: `3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `fa817a732a378d87c6700a8005fe37a3346c3d9d`
+- `CURRENT_HEAD_AT_RESUME`: `3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643`
 - `CURRENT_SCIENTIFIC_LAYER`: `OUTCOME_BLIND_HUMAN_PATTERN_FIDELITY; DEVELOPMENT_2014_2021_ONLY; VALIDATION_AND_POST_2023_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: whether blinded human review recognizes the intended collapse gap-zone pattern, and which retained persistence/re-entry semantics match it. Do not inspect returns until labels are complete and summarized.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: whether blinded human review recognizes the intended collapse gap-zone pattern in the 30-case V2 high-precision pilot. Do not finish V1 and do not inspect returns.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1`
-  is package-complete at its intentional human gate. No backtest has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-HIGH-PRECISION-PILOT-V2`
+  is package-complete at its intentional 30-chart human gate. No backtest has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -69,6 +69,26 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
 
+### Collapse Gap-Zone High-Precision Pilot V2
+
+The V1 120-chart review is stopped incomplete after the human reported very low
+semantic precision; no remaining labels are requested and no partial-label
+summary is used. V2 corrects the key clock: unresolved means the gap upper
+boundary has not been filled, not that every traded range stays below the lower
+boundary. After five completed unfilled sessions and at least 12.5% depth below
+the lowest meaningful layer, the marker is the first later intraday upward
+lower-boundary touch from below.
+
+Outcome-blind gates require a board-relative former leader, strong/impulsive
+60-session run-up, at least 30% collapse, main-leg gap formation within 40
+sessions of the peak, negative five-session collapse momentum, at least 2% gap
+width, and a 6--250-session return clock. The pool has 34 unique securities:
+24 Main, 10 ChiNext, and 20 meaningful layered zones. The deterministic sample
+has 30 unique securities, 20 Main/10 ChiNext, and 18 layered zones. Identity,
+date, post-marker, and outcome-selection leaks are zero. Six tests and lint pass;
+compact artifacts reproduce exactly. Status: `HIGH_PRECISION_PILOT_PACKAGE_COMPLETE;
+HUMAN_PATTERN_REVIEW_REQUIRED`. No returns, Validation, or post-2023 data opened.
+
 ### Collapse Gap-Zone Pattern Fidelity Audit V1
 
 The pre-detector semantic contract distinguishes strict adjacent-session no-trade
@@ -82,7 +102,7 @@ ChiNext, 21 ST, 73 multilayer, 14 same-day, and 20 hidden near-miss controls.
 Blind charts expose neither identity/calendar date nor post-re-entry bars and
 use no outcome for selection. All charts stop at the exact completed one-minute
 review-marker bar. Seven focused tests and lint pass. Status:
-`AUDIT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`; no strategy backtest or
+`STOPPED_LOW_SEMANTIC_PRECISION; SUPERSEDED_BY_V2`; no strategy backtest or
 return analysis has run. Validation 2022--2023 and repository 2024+ remain unread.
 
 ### Market Panic-to-Repair Transition V1

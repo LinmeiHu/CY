@@ -1,5 +1,10 @@
 # ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1 review instructions
 
+> **WORKFLOW STOPPED.** Do not finish this 120-chart review and do not run its
+> label-summary script. The human reported very low semantic precision. The
+> incomplete material is preserved as audit history and has been superseded by
+> `ASHARE-COLLAPSE-GAP-ZONE-HIGH-PRECISION-PILOT-V2`.
+
 Review the blind charts at `/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_pattern_fidelity_audit_v1/blind_charts` and fill `/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/reports/ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1_review.csv`.
 
 1. Do not predict whether the stock later rose. Judge only whether the visible shape matches the intended setup.

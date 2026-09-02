@@ -2,6 +2,32 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone High-Precision Pilot V2 human gate
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-HIGH-PRECISION-PILOT-V2`; its starting checkpoint is
+`3f24b1b8a8e1071e83bf7cfc4e1257ec277b7643` on
+`research/ashare-ultrashort-v1`. The V1 120-chart review is stopped incomplete
+after human-reported low semantic precision. Do not request its remaining labels
+and do not run its summary or any return analysis.
+
+V2 is a new outcome-blind 30-chart pilot. It preserves strict adjacent-session
+`Open_t < Low_t-1` primitives but corrects the lifecycle: a zone is unresolved
+until its upper boundary is filled. It requires five completed unfilled sessions,
+at least 12.5% depth below the lowest meaningful layer, then the first later
+intraday upward lower-boundary touch. Former-leader, impulsive-run-up, 30% major-
+collapse, main-collapse-leg, five-session selloff, 2% gap-width, and 250-session
+staleness gates are retrieval rules only.
+
+The pool contains 34 unique securities: 24 Main, 10 ChiNext, and 20 layered.
+The deterministic pilot has 30 unique charts: 20 Main, 10 ChiNext, and 18
+layered. Identity/date leaks, post-marker bars, outcome-selected rows, and
+nonblank initial labels are all zero. Six focused tests and lint pass. Blind
+charts are under `/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_high_precision_pilot_v2/blind_charts`.
+
+Stop for human review of these 30 V2 charts only. Validation 2022--2023 and
+repository 2024+ remain sealed/unread; no strategy or return claim exists.
+
 ## Latest checkpoint: Collapse Gap-Zone Pattern Fidelity Audit V1 human gate
 
 Resume from the commit containing
@@ -25,10 +51,9 @@ provisional stacks, and 84,368 retrieval-eligible collapse episodes. The exact
 sample rows are all zero. Blind and diagnostic charts are under
 `/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_pattern_fidelity_audit_v1`.
 
-Stop at the human gate. The reviewer must fill the blank review CSV. Only after
-all labels are returned should the prepared summary script freeze the human
-zone/persistence/re-entry semantics. No return study, strategy replay, or
-automatic inference is authorized before then.
+This V1 workflow is stopped incomplete after human-reported low semantic
+precision and is superseded by V2. Do not request remaining V1 labels or run
+its summary. No return study, strategy replay, or automatic inference occurred.
 
 ## Latest checkpoint: Market Panic-to-Repair Transition V1 closure
 
