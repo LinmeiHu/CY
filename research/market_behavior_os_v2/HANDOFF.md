@@ -2,6 +2,38 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Outcome Discovery V1 closure
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-OUTCOME-DISCOVERY-V1`; its starting checkpoint is
+`69e2703703a235ff5a2fb246e0c072e14ff1d8a1` on
+`research/ashare-ultrashort-v1`. The user informally accepted the V3 pilot, but
+the CSV was not exhaustively labelled; never claim a measured precision rate.
+
+All 617 V3 event and lowest-layer identities remain frozen. The economic anchor
+is exact V3 first touch; executable acceptance is the first completed minute
+close at/above L and entry is the next legal minute open. Of 617 events, 611
+accept, 598 enter, 13 jump through U, and 6 are censored. Structural full fill is
+60.10% by five sessions, 68.41% by ten, and 80.23% by twenty; date-equal 5/10
+rates are 59.72%/67.21%. Median fill time is one session and re-entry-date
+concentration is low.
+
+That traversal is not a stable conservative-entry long edge. Fast/daily
+rejection before fill reaches 88.46%/63.55%. T+5 net is -1.02% event-weighted
+and -1.22% date-equal; T+10 is +0.34% but -0.14% date-equal. Main and ChiNext
+both lose at T+5. T+20 is positive but was not part of the frozen primary
+monetizability gate and remains a late-path diagnostic. Verdict:
+`ZONE_TRAVERSAL_EXISTS_BUT_NOT_MONETIZABLE`.
+
+Do not start low-dimensional parameter development, Strategy Development V1,
+or Validation. Do not select the favorable predeclared persistence/width/depth
+strata after seeing outcomes. Close rescue via panic, Dryup, technicals, ML,
+entry/exit variants, or detector changes. Development uses 2014--2021 only;
+2022--2023 Validation and repository 2024+ remain sealed. Seven focused tests
+and every causal, action-coordinate, T+1, duplicate, and sealed-period audit
+pass. Large path intermediates remain under
+`/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_outcome_discovery_v1`.
+
 ## Latest checkpoint: Collapse-Defining Gap-Zone High-Precision Pilot V3 human gate
 
 Resume from the commit containing

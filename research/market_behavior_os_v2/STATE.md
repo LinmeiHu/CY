@@ -7,18 +7,18 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `d331b039c8fd1c60b937286b7631a192ed8164df` (Collapse-Defining Gap-Zone High-Precision Pilot V3 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_DEFINING_GAP_ZONE_HIGH_PRECISION_PILOT_V3_HUMAN_GATE`
-- `CURRENT_PRIMARY_FRONTIER`: `PILOT_PACKAGE_COMPLETE; HUMAN_REVIEW_REQUIRED`. V3 detects the prior-strength/peak/collapse episode first and only then joins strict no-trade primitives formed on the main peak-to-trough collapse leg. Its 20-chart outcome-blind pilot is complete; no return outcome, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
+- `CURRENT_BASELINE`: `69e2703703a235ff5a2fb246e0c072e14ff1d8a1` (Collapse Gap-Zone Outcome Discovery V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_OUTCOME_DISCOVERY_V1_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: `ZONE_TRAVERSAL_EXISTS_BUT_NOT_MONETIZABLE`. The corrected V3 zone object has broad structural traversal, but conservative completed-close/next-legal-minute entry does not retain positive T+5/T+10 economics under 40 bp and date-equal weighting. No parameter development, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. This is a semantic-fidelity audit only; no strategy claim is permitted before blind human labels freeze the actual zone, persistence, and re-entry semantics
+- `CURRENT_STRATEGY_CANDIDATE`: none. Outcome Discovery V1 does not justify Strategy Development V1 or Validation; preserve zone traversal as a structural price-path representation only
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `d331b039c8fd1c60b937286b7631a192ed8164df`
+- `STARTING_HEAD`: `69e2703703a235ff5a2fb246e0c072e14ff1d8a1`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `d331b039c8fd1c60b937286b7631a192ed8164df`
-- `CURRENT_SCIENTIFIC_LAYER`: `OUTCOME_BLIND_HUMAN_PATTERN_FIDELITY; DEVELOPMENT_2014_2021_ONLY; VALIDATION_AND_POST_2023_UNREAD`
+- `CURRENT_HEAD_AT_RESUME`: `69e2703703a235ff5a2fb246e0c072e14ff1d8a1`
+- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_ZONE_STRUCTURE_AND_EXECUTABLE_OUTCOME_DISCOVERY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: whether blinded human review recognizes the intended collapse-defining gap-zone pattern in the 20-case V3 pilot. Do not inspect returns.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move to a genuinely independent mechanism. Do not rescue the corrected zone lane through persistence, width, collapse, board, entry, exit, technical, panic, Dryup, or ML selection; do not open Validation.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-DEFINING-GAP-ZONE-HIGH-PRECISION-PILOT-V3`
-  is package-complete at its intentional 20-chart human gate. No backtest has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-OUTCOME-DISCOVERY-V1`
+  is complete with structural but non-monetizable Development evidence. No strategy replay has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,31 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone Outcome Discovery V1
+
+The user informally accepted V3 semantic alignment; no formal 20-chart precision
+rate is claimed. Outcome Discovery V1 binds all 617 V3 event/primary-layer
+identities by hash before reading paths. It uses the V3 first lower-boundary
+return as the economic anchor, the first completed minute close at or above L
+as acceptance, and the next legal minute open as entry. There are 611 acceptance
+bars, 598 executable entries, 13 jump-through diagnostics, and 6 censored cases.
+
+Structural traversal is broad: full fill reaches 40.84%/60.10%/68.41%/80.23%
+by 1/5/10/20 sessions, with date-equal 5/10-session rates of 59.72%/67.21%.
+Median full-fill time is one session. This is not date clustered: the top five
+re-entry dates contribute 4.93% of day-20 fills. Multilayer next-layer reach,
+next-layer fill, and full-stack repair are 76.60%, 50.00%, and 37.23%.
+
+Executable translation fails at the frozen primary horizons. Fast rejection
+before fill reaches 88.46%; daily rejection reaches 63.55%. T+5 net is -1.02%
+event-weighted and -1.22% date-equal. T+10 is +0.34% event-weighted but -0.14%
+date-equal. Both boards have negative T+5. T+20 is +2.49%/+2.23% event/date-
+equal but is retained only as a late-path diagnostic; the frozen T+5/T+10 gate
+is not revised after outcomes. Classification:
+`ZONE_TRAVERSAL_EXISTS_BUT_NOT_MONETIZABLE`. Seven focused tests, lint, all
+lineage/entry/T+1/sealed-period audits, and byte-identical reruns pass. Do not
+start Strategy Development V1 or Validation.
 
 ### Collapse-Defining Gap-Zone High-Precision Pilot V3
 

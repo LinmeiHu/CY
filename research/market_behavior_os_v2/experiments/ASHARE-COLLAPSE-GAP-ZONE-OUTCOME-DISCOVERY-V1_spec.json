@@ -1,0 +1,179 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-OUTCOME-DISCOVERY-V1",
+  "status": "SEMANTIC_AND_OUTCOME_MENU_FROZEN_BEFORE_OUTCOME_READ",
+  "research_type": "DEVELOPMENT_ONLY_STRUCTURAL_AND_EXECUTABLE_ZONE_OUTCOME_DISCOVERY",
+  "start_checkpoint": "69e2703703a235ff5a2fb246e0c072e14ff1d8a1",
+  "human_semantic_alignment_status": "INFORMAL_USER_ACCEPTANCE_OF_V3_PILOT",
+  "development": ["2014-01-01", "2021-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false,
+    "post_2021_outcome_read_count": 0,
+    "user_2026_screenshots_influenced_semantics": true,
+    "post_2023_not_pristine_hypothesis_formation_oos": true
+  },
+  "source_identity": {
+    "detector_experiment": "ASHARE-COLLAPSE-DEFINING-GAP-ZONE-HIGH-PRECISION-PILOT-V3",
+    "detector_spec_sha256": "6b8c946efa5d1cd8f99103180859d43fabff28583d73a794632b9faeb4c18b16",
+    "detector_candidates_sha256": "5920df21aec93aa5c16b63f3ed03b7e32bd76d38c8860052ebabcb3df4b05fa3",
+    "detector_result_sha256": "d177c81220f5e7ecc61159de504df69c4d57ff19919f5732040e327ea1836b5f",
+    "detector_runner_sha256": "b34d59df3d160471c8d836a6db442e5cefcfebf93ff1d84c3ab4a9e2074de308",
+    "full_lifecycle_candidates": 617,
+    "detector_change_after_outcome_open_allowed": false
+  },
+  "semantic_preflight": {
+    "economic_sequence": "prior strong or leader-like stock -> impulsive run-up -> peak -> main collapse or liquidation -> meaningful collapse-defining strict-gap layers -> persistent unresolved overhead zone -> material move below zone -> distinct lower trading regime and settling -> later first approach from below -> first upward return to the lowest meaningful unresolved collapse layer -> zone traversal or repair outcome",
+    "causal_background": "collapse-induced price discontinuity in a previously strong stock",
+    "state_variables": [
+      "prior strength",
+      "collapse depth",
+      "meaningful gap layer geometry",
+      "zone persistence",
+      "below-zone regime",
+      "base or settling state",
+      "explicit layer structure and lineage"
+    ],
+    "event_formation_time": "meaningful collapse gap-zone formation during the main collapse leg",
+    "confirmation_trigger": "first later upward return to the lower boundary of the lowest meaningful unresolved collapse-defining layer",
+    "entry_time": "first completed one-minute bar with close at or above the relevant lowest-layer lower boundary, followed by the next legal one-minute open",
+    "outcome_start_time": "strictly after executable entry",
+    "possible_semantic_ambiguities": [
+      "first lower-boundary touch versus confirmed close inside",
+      "lowest layer versus whole stack",
+      "same-day target fill under A-share T+1",
+      "partial traversal versus full fill",
+      "failure definition after first entry"
+    ],
+    "chosen_time_anchors": {
+      "economic_event_anchor": "V3 first lower-boundary return",
+      "executable_confirmation": "first completed one-minute close at or above the lowest meaningful layer lower boundary",
+      "execution": "next legal one-minute open strictly after confirmation",
+      "primary_target": "upper boundary of the same frozen lowest meaningful layer"
+    }
+  },
+  "universe": {
+    "included": ["Shanghai Main Board", "Shenzhen Main Board", "ChiNext", "normal", "ST", "*ST"],
+    "excluded": ["STAR Market", "Beijing Stock Exchange", "ETF", "fund", "index", "other non-equity"],
+    "industry_exclusions": "reuse frozen cyclical/resource/traditional-energy exclusions",
+    "subgroup_filters_added": false
+  },
+  "primary_zone_object": {
+    "primary_layer_id": "frozen V3 target_primitive_id: lowest meaningful unresolved collapse-defining layer",
+    "lower_boundary": "L = frozen V3 zone_lower_boundary",
+    "upper_boundary": "U = frozen V3 zone_upper_boundary",
+    "width": "W = U-L and W must be strictly positive",
+    "later_local_gap_replacement_allowed": false,
+    "primitive_lineage_retained": true
+  },
+  "event_and_execution": {
+    "first_lower_return_time": "exact V3 candidate_reentry_time",
+    "zone_acceptance_bar": "first completed one-minute bar at or after FIRST_LOWER_RETURN_TIME whose close is at or above L; no upper cap is imposed because an acceptance bar may itself traverse the layer",
+    "entry": "first subsequent legal one-minute open strictly after the acceptance bar; legal requires a registered complete market minute, positive finite open, valid daily PIT/action lineage, trade_status=1, current_day_data_tradable, market_rule_valid, and open below the registered upper limit",
+    "jumped_through_primary_layer": "entry comparable-coordinate price strictly greater than U; exclude from executable return population and retain structurally",
+    "duplicate_identity": "one row per frozen zone_stack_id",
+    "costs": {"entry_bps": 20, "exit_bps": 20, "round_trip_bps": 40},
+    "same_day_sell_allowed": false
+  },
+  "session_clock": {
+    "event_session": 0,
+    "within_h_sessions": "from the anchor through the close of the h-th subsequent valid trading session; same-session is separately reported",
+    "fixed_terminal_horizon": "close of the h-th subsequent valid trading session after executable entry session",
+    "t1_open": "first legal open on the first subsequent valid trading session after entry session",
+    "intraday_path_start": "strictly after executable entry timestamp for executable outcomes",
+    "maximum_horizon_sessions": 20,
+    "right_censoring": "metric-specific fail closed when the required subsequent valid session or minute path is unavailable by 2021-12-31"
+  },
+  "structural_outcomes": {
+    "full_fill": "future comparable-coordinate high at or above U",
+    "full_fill_horizons_sessions": [0, 1, 3, 5, 10, 20],
+    "time_to_full_fill": ["p25", "median", "p75", "p90", "unresolved_by_20"],
+    "max_traversal_horizons_sessions": [1, 3, 5, 10, 20],
+    "max_traversal": "(maximum future comparable-coordinate high-L)/(U-L), raw and clipped to [0,1]",
+    "terminal_traversal": "(terminal comparable-coordinate close-L)/(U-L), raw and clipped to [0,1]",
+    "partial_milestones": [0.10, 0.25, 0.50, 0.75, 1.00],
+    "multi_layer_progression": [
+      "primary layer full fill",
+      "reach next meaningful layer",
+      "next meaningful layer full fill",
+      "number of meaningful layers reached by 20 sessions",
+      "full stack repair by 20 sessions"
+    ]
+  },
+  "failure_outcomes": {
+    "fast_rejection": "first completed one-minute close strictly below L after executable entry and before primary-layer full fill",
+    "daily_rejection": "first completed daily close strictly below L after executable entry and before primary-layer full fill",
+    "horizons_sessions": [1, 3, 5, 10, 20],
+    "order_diagnostics": ["full fill before fast rejection", "full fill before daily rejection"]
+  },
+  "executable_outcomes": {
+    "mfe_mae_horizons_sessions": [1, 3, 5, 10, 20],
+    "mfe": "maximum strictly post-entry comparable-coordinate high divided by entry comparable-coordinate price minus one",
+    "mae": "minimum strictly post-entry comparable-coordinate low divided by entry comparable-coordinate price minus one",
+    "fixed_returns": ["T1_OPEN", "T1_CLOSE", "T3_CLOSE", "T5_CLOSE", "T10_CLOSE", "T20_CLOSE"],
+    "return_summary": ["gross_mean", "gross_median", "net_mean", "net_median", "positive_rate_net", "p10_net", "p25_net", "p75_net", "p90_net"],
+    "same_day_structural_fill_is_sellable": false,
+    "same_day_fill_followups": ["T1_OPEN", "T1_CLOSE"]
+  },
+  "weighting_and_concentration": {
+    "major_metrics": ["EVENT_WEIGHTED", "REENTRY_DATE_EQUAL_WEIGHTED"],
+    "date_equal_method": "aggregate event outcomes within re-entry date, then equally weight dates",
+    "date_equal_minimum": ["net fixed-horizon returns", "full-fill probability", "50-percent traversal probability", "full-fill-before-daily-rejection"],
+    "formation_date": ["unique dates", "maximum events", "top one-percent date event share", "top five dates contribution to successful full fills"],
+    "reentry_date": ["unique dates", "maximum entries", "top one-percent date entry share", "top five dates contribution to positive T5 net return", "top five dates contribution to full fills"]
+  },
+  "fixed_descriptive_views": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+    "boards": ["MAIN", "CHINEXT"],
+    "st": ["ST", "NON_ST"],
+    "layer_structure": ["SINGLE_LAYER", "MULTILAYER"],
+    "persistence_sessions": ["10_20", "21_60", "61_120", "GT_120"],
+    "collapse_depth": ["30_40_PCT", "40_50_PCT", "GE_50_PCT"],
+    "outcome_blind_terciles": ["primary layer width percent", "total meaningful strict-gap width", "board-relative prior strength", "run-up speed"]
+  },
+  "forbidden": [
+    "detector modification after outcome read",
+    "best-horizon selection",
+    "best-board selection",
+    "threshold optimization",
+    "entry or exit variant optimization",
+    "walk-forward selection",
+    "Validation 2022-2023",
+    "repository 2024+ data",
+    "formation or reclaim panic",
+    "PreBreakDryup, PostGapDryup, IntradayDryup, or CompressionTrend",
+    "RSI, MACD, RS, or ML",
+    "strategy replay"
+  ],
+  "verdicts": [
+    "COLLAPSE_GAP_ZONE_TRAVERSAL_EDGE",
+    "ZONE_TRAVERSAL_EXISTS_BUT_NOT_MONETIZABLE",
+    "ZONE_TRAVERSAL_EPISODE_CLUSTERED",
+    "WEAK_OR_UNSTABLE_ZONE_TRAVERSAL",
+    "NO_COLLAPSE_GAP_ZONE_EFFECT",
+    "IMPLEMENTATION_BLOCKED"
+  ],
+  "verdict_rule_frozen_before_outcomes": {
+    "structural_traversal_supported": "event-weighted full-fill by 10 sessions is at least 50 percent and re-entry-date-equal full-fill by 10 sessions is at least 45 percent",
+    "executable_return_supported": "at least one of T5-close or T10-close has strictly positive mean net return under both event weighting and re-entry-date-equal weighting",
+    "year_stability_supported": "the supported executable horizon has positive annual mean net return in at least four of eight Development years",
+    "episode_clustered": "top five re-entry dates contribute more than 50 percent of successful 20-session full fills or more than 50 percent of positive T5 net-return mass",
+    "edge": "structural, executable, and year-stability support all pass and episode clustering does not",
+    "not_monetizable": "structural support passes but executable-return support fails",
+    "clustered": "otherwise favorable structural or executable evidence meets the episode-clustered condition",
+    "weak_or_unstable": "some structural or executable evidence exists but the edge rule fails for breadth or chronology",
+    "no_effect": "neither structural traversal nor executable-return support passes",
+    "interpretation": "discovery classification only; none of these gates is a strategy parameter"
+  },
+  "required_zero_audits": [
+    "detector_changed_after_outcome_open_count",
+    "detector_uses_post_reentry_data_count",
+    "entry_uses_future_bar_count",
+    "post_2021_outcome_read_count",
+    "primary_layer_changed_after_outcome_count",
+    "postcollapse_local_gap_used_as_primary_layer_count",
+    "duplicate_zone_entry_count",
+    "corporate_action_coordinate_violation_count",
+    "t1_same_day_sell_violation_count"
+  ]
+}

@@ -4,6 +4,24 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Outcome Discovery V1
+
+- Informal user acceptance advances V3 to first outcome discovery without
+  claiming a measured human-label precision rate. All 617 V3 detector and
+  primary-layer identities are frozen before outcomes.
+- Exact executable translation: first V3 touch; first completed minute close
+  at/above L; next legal minute open; exclude entry above U. This yields 611
+  acceptances, 598 entries, 13 jump-throughs, and 6 censored cases.
+- Structural fill is 60.10% by 5d, 68.41% by 10d, and 80.23% by 20d; median
+  time is one session. Date-equal fill supports the shape and top-five re-entry
+  dates contribute only 4.93% of fills.
+- Translation fails: 88.46% fast rejection and 63.55% daily rejection before
+  fill; T+5 net -1.02% event/-1.22% date-equal; T+10 +0.34%/-0.14%.
+  T+20 is positive but remains late-path diagnostic under the frozen gate.
+- Verdict: `ZONE_TRAVERSAL_EXISTS_BUT_NOT_MONETIZABLE`. No Strategy Development
+  V1 or Validation. Do not select favorable strata or rescue with new detector,
+  entry/exit, panic, Dryup, technical, or ML rules.
+
 ## Collapse-Defining Gap-Zone High-Precision Pilot V3
 
 - Detect prior strength, peak, first 30% breach, collapse endpoint, and
