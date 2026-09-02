@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | V1 Open-Zone remains independent historical evidence; True-Gap V3 now has a frozen primary hierarchy but still awaits the new 20-chart human semantic gate | Review V3's 14 CORE/6 BOUNDARY charts; do not open outcomes or inherit V1 alpha/execution rules |
+| EXPLORE | 10% | True-Gap V4 repairs the hindsight clock but retains only 41.51% of V3 candidates and exposes declining coherence with leg duration | Review 20 causal charts plus 20 protracted-leg diagnostics; do not open outcomes, cap duration, or inherit V1 rules |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -35,6 +35,15 @@ cannot become active primary layers; persistence requires 10 completed sessions
 and a five-session fully-below run. The 20-chart pilot is outcome blind and no
 post-event bar is shown. Allocation remains semantic-review only: no strategy
 capital or outcome budget is authorized before human acceptance.
+
+## Collapse True-Gap Causal Formation Semantic V4
+
+V4 causally freezes the original leg and primary only at confirmation and never
+resets a preconfirmation touch. CORE/BORDER retention is 37.81%/70.02%; the
+large CORE reduction is a semantic correction, not an economic failure.
+Retention falls monotonically with leg duration, reaching 12.94% for >90-session
+legs. Portfolio allocation remains semantic-review only. Any duration repair is
+a separate V5 question after human review; no outcome budget is authorized.
 
 ## Collapse-gap-zone Dual Fresh Capitalization V1
 

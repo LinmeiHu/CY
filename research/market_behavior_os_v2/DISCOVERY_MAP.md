@@ -4,6 +4,22 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse True-Gap Causal Formation Semantic V4
+
+- Freeze original-collapse state and the lowest unresolved in-leg M/S primary
+  only at the 10th stabilization-session close. Any earlier upward touch rejects
+  the event; the clock cannot reset.
+- Retained: CORE 1,445/3,822 (37.81%), BOUNDARY 348/497 (70.02%). Exclusive
+  rejects: no primary 817, primary changed 290, before-leg 174,
+  end-to-confirmation 361, other preconfirm touch 884.
+- All seven requested TG3 regressions have explicit causal dispositions;
+  TG3-008/013 do not survive, while only TG3-019 is retained.
+- Duration retention falls 47.88% -> 12.94% from <=20 to >90 sessions. Long-leg
+  coherence is suspect enough for 20 blind diagnostics, but V4 adds no cap or
+  segmentation rule.
+- New causal pilot: 20 charts, 14 CORE/6 BOUNDARY, 13 Main/7 ChiNext. Verdict
+  `TRUE_GAP_CAUSAL_FORMATION_PARTIALLY_ALIGNED`; human review required, no outcomes.
+
 ## Collapse True-Gap Primary Hierarchy Semantic V3
 
 - V2 human review accepted the true-gap primitive but found primary hierarchy,

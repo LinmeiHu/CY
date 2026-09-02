@@ -1,0 +1,193 @@
+{
+  "artifacts": {
+    "blind_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_causal_formation_semantic_v4/blind_chart_index.csv",
+      "sha256": "deef68c4cae9801808f024b5b2a7309e717269b187b39270ad91289f1f59073e"
+    },
+    "candidates": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4_candidates.parquet",
+      "sha256": "68df3a3faf517fe36632580987399a2f743c95de61b74cdb0669c15b94057ab7"
+    },
+    "causal_primary": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_causal_formation_semantic_v4/causally_frozen_primary_gaps.parquet",
+      "sha256": "fdb42a463e4ac1c7d9338f7f6efb1ed5446c1d342ae2409eb3447c06991516dd"
+    },
+    "crosswalk": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4_crosswalk.parquet",
+      "sha256": "5bd922f0449db173d5e70bf9198f07dada119a1dff756ee85f80be9f3ca74514"
+    },
+    "duration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4_duration_diagnostic.parquet",
+      "sha256": "57690ba87f983a5f435282561babf86a871924d70b869b57fa38ccf4c08ec658"
+    },
+    "protracted_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_causal_formation_semantic_v4/protracted_collapse_chart_index.csv",
+      "sha256": "347d407166e110dc893aed91e64d7712ddb2a1e76b3c3f429be3be8c90097dfb"
+    },
+    "regressions": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4_regressions.parquet",
+      "sha256": "5336c67abc5f8d4192dae02c75339df958eb74fe7f55c53381f5742acd7847ef"
+    },
+    "review": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4_review.csv",
+      "sha256": "7de68aeea2844e287585a3e6172b8eff5b84b03b77d3ce8375be8eff19a83bd1"
+    }
+  },
+  "audit": {
+    "future_depth_used_to_define_gap_identity_count": 0,
+    "preconfirm_touch_reset_as_new_first_return_count": 0,
+    "primary_gap_frozen_before_leg_confirmation_count": 0,
+    "repository_2024_plus_data_opened": "NO",
+    "retained_first_return_at_or_before_leg_confirmation_count": 0,
+    "return_analysis_run": "NO",
+    "strategy_backtest_run": "NO",
+    "true_gap_primitive_changed_count": 0
+  },
+  "causal_crosswalk": {
+    "causal_retention_rate_boundary": 0.7002012072434608,
+    "causal_retention_rate_core": 0.3780743066457352,
+    "diagnostic_flag_any_preconfirm_primary_touch": 1559,
+    "diagnostic_flag_return_before_leg_end": 754,
+    "diagnostic_flag_return_end_to_confirmation": 848,
+    "no_causal_primary": 817,
+    "primary_changed_at_causal_freeze": 290,
+    "rejected_before_leg_end": 174,
+    "rejected_end_to_confirmation": 361,
+    "rejected_preconfirm_touch": 884,
+    "retained_boundary_causal": 348,
+    "retained_core_causal": 1445,
+    "source_boundary": 497,
+    "source_core": 3822
+  },
+  "experiment": "ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4",
+  "frozen_spec_hash": "c63405a2f104eff0c09b00d107d655ddf395f0b740e2f1dc949af84c8c588eab",
+  "human_review_required": true,
+  "leg_duration": [
+    {
+      "causal_candidate_retention_rate": 0.47876106194690266,
+      "duration_group": "<=20",
+      "episode_count": 2260,
+      "major_gaps_in_leg": 3165,
+      "retained_causal_candidate_count": 1082,
+      "secondary_gaps_in_leg": 1542,
+      "source_candidate_count": 2260,
+      "true_gaps_in_leg": 5588
+    },
+    {
+      "causal_candidate_retention_rate": 0.4502118644067797,
+      "duration_group": "21-40",
+      "episode_count": 944,
+      "major_gaps_in_leg": 1011,
+      "retained_causal_candidate_count": 425,
+      "secondary_gaps_in_leg": 865,
+      "source_candidate_count": 944,
+      "true_gaps_in_leg": 2517
+    },
+    {
+      "causal_candidate_retention_rate": 0.36939313984168864,
+      "duration_group": "41-60",
+      "episode_count": 379,
+      "major_gaps_in_leg": 308,
+      "retained_causal_candidate_count": 140,
+      "secondary_gaps_in_leg": 361,
+      "source_candidate_count": 379,
+      "true_gaps_in_leg": 1015
+    },
+    {
+      "causal_candidate_retention_rate": 0.2777777777777778,
+      "duration_group": "61-90",
+      "episode_count": 342,
+      "major_gaps_in_leg": 216,
+      "retained_causal_candidate_count": 95,
+      "secondary_gaps_in_leg": 390,
+      "source_candidate_count": 342,
+      "true_gaps_in_leg": 1036
+    },
+    {
+      "causal_candidate_retention_rate": 0.12944162436548223,
+      "duration_group": ">90",
+      "episode_count": 394,
+      "major_gaps_in_leg": 278,
+      "retained_causal_candidate_count": 51,
+      "secondary_gaps_in_leg": 485,
+      "source_candidate_count": 394,
+      "true_gaps_in_leg": 1520
+    }
+  ],
+  "new_pilot": {
+    "blind_chart_count": 20,
+    "blind_chart_index": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_causal_formation_semantic_v4/blind_chart_index.csv",
+    "boundary_count": 6,
+    "chinext_count": 7,
+    "core_count": 14,
+    "main_count": 13,
+    "protracted_collapse_chart_index": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_causal_formation_semantic_v4/protracted_collapse_chart_index.csv",
+    "review_csv": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4_review.csv"
+  },
+  "regressions": {
+    "TG3-008": {
+      "causal_primary_gap_id": null,
+      "final_disposition": "NO_CAUSAL_PRIMARY",
+      "leg_confirmation_time": "2018-07-04 15:00:00",
+      "leg_end_time": "2018-06-20 15:00:00",
+      "preconfirm_first_touch_time": null,
+      "v3_first_return_time": "2018-05-21 09:30:00",
+      "v3_primary_gap_id": "300648.SZ|2018-04-09"
+    },
+    "TG3-009": {
+      "causal_primary_gap_id": "300291.SZ|2015-06-26",
+      "final_disposition": "REJECTED_RETURN_AFTER_END_BEFORE_CONFIRMATION",
+      "leg_confirmation_time": "2015-07-30 15:00:00",
+      "leg_end_time": "2015-07-16 15:00:00",
+      "preconfirm_first_touch_time": "2015-07-14 09:45:00",
+      "v3_first_return_time": "2015-07-24 09:31:00",
+      "v3_primary_gap_id": "300291.SZ|2015-06-26"
+    },
+    "TG3-013": {
+      "causal_primary_gap_id": null,
+      "final_disposition": "NO_CAUSAL_PRIMARY",
+      "leg_confirmation_time": "2023-06-08 15:00:00",
+      "leg_end_time": "2023-05-25 15:00:00",
+      "preconfirm_first_touch_time": null,
+      "v3_first_return_time": "2023-04-13 09:30:00",
+      "v3_primary_gap_id": "001330.SZ|2023-01-30"
+    },
+    "TG3-014": {
+      "causal_primary_gap_id": "002786.SZ|2019-10-15",
+      "final_disposition": "PRIMARY_CHANGED_AT_CAUSAL_FREEZE",
+      "leg_confirmation_time": "2019-11-26 15:00:00",
+      "leg_end_time": "2019-11-12 15:00:00",
+      "preconfirm_first_touch_time": "2019-11-19 09:44:00",
+      "v3_first_return_time": "2019-11-15 13:26:00",
+      "v3_primary_gap_id": "002786.SZ|2019-10-16"
+    },
+    "TG3-017": {
+      "causal_primary_gap_id": null,
+      "final_disposition": "NO_CAUSAL_PRIMARY",
+      "leg_confirmation_time": "2016-06-01 15:00:00",
+      "leg_end_time": "2016-05-18 15:00:00",
+      "preconfirm_first_touch_time": null,
+      "v3_first_return_time": "2016-06-01 09:55:00",
+      "v3_primary_gap_id": "002546.SZ|2016-05-09"
+    },
+    "TG3-019": {
+      "causal_primary_gap_id": "600136.SH|2018-06-19",
+      "final_disposition": "RETAINED_CAUSAL_FIRST_RETURN",
+      "leg_confirmation_time": "2018-07-05 15:00:00",
+      "leg_end_time": "2018-06-21 15:00:00",
+      "preconfirm_first_touch_time": null,
+      "v3_first_return_time": "2018-07-11 09:46:00",
+      "v3_primary_gap_id": "600136.SH|2018-06-19"
+    },
+    "TG3-020": {
+      "causal_primary_gap_id": "002210.SZ|2020-08-12",
+      "final_disposition": "REJECTED_RETURN_AFTER_END_BEFORE_CONFIRMATION",
+      "leg_confirmation_time": "2020-09-03 15:00:00",
+      "leg_end_time": "2020-08-20 15:00:00",
+      "preconfirm_first_touch_time": "2020-08-13 10:45:00",
+      "v3_first_return_time": "2020-08-28 09:34:00",
+      "v3_primary_gap_id": "002210.SZ|2020-08-12"
+    }
+  },
+  "verdict": "TRUE_GAP_CAUSAL_FORMATION_PARTIALLY_ALIGNED"
+}

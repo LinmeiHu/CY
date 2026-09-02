@@ -2,6 +2,32 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: True-Gap Causal Formation Semantic V4
+
+V4 repairs the V3 hindsight clock without changing the true-gap primitive,
+significance, original-leg segmentation, primary exclusions, persistence, or
+memory bands. The original collapse and primary hierarchy become authoritative
+only at the 10th stabilization-session close. Primary is frozen from information
+available then; a prior upward touch rejects the event and is never reset.
+
+Source CORE/BOUNDARY is 3,822/497. Retained causal CORE/BOUNDARY is 1,445/348,
+or 37.81%/70.02%. Exclusive final rejects: 174 before leg end, 361 after end but
+before confirmation, 884 other preconfirm touches, 290 primary changes, and 817
+with no causal primary. All 1,793 retained first returns are strictly after
+confirmation; all hard audits are zero.
+
+TG3-008 and 013 no longer survive and have no causal primary. TG3-009 and 020
+are rejected end-to-confirmation; 014 changes primary at freeze; 017 has no
+causal primary; 019 survives. Duration retention declines across <=20,
+21--40, 41--60, 61--90 and >90 groups: 47.88%, 45.02%, 36.94%, 27.78%, 12.94%.
+This is outcome-blind evidence that long legs may be semantically over-broad,
+not authority to add a duration rule.
+
+Exactly 20 new causal blind charts and 20 protracted-collapse diagnostics are
+ready. Verdict `TRUE_GAP_CAUSAL_FORMATION_PARTIALLY_ALIGNED`; stop for human
+review. Do not open outcomes, alter segmentation, add a duration cap, or read
+repository 2024+.
+
 ## Latest checkpoint: True-Gap Primary Hierarchy Semantic V3
 
 The user reviewed all 30 V2 charts and accepted the true-gap primitive as

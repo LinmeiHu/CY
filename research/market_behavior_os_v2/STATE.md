@@ -8,10 +8,10 @@ Updated 2026-09-02.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `af174fd0840b96759edd5e9ebe804e742250aaab` (V1 semantic-audit checkpoint, superseded by the precise governance reconciliation below)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_PRIMARY_HIERARCHY_SEMANTIC_V3_HUMAN_REVIEW`
-- `CURRENT_PRIMARY_FRONTIER`: True-Gap identity is frozen as `High_t < Low_t-1`, `[High_t, Low_t-1]`. V3 independently segments the original impulsive collapse leg, excludes post-collapse local and MINOR gaps from primary competition, enforces 10-session/5-below persistence, and classifies <=60/61--90/>90-session memory as CORE/BOUNDARY/STALE. Machine audits pass; semantic alignment remains unconfirmed until the new 20-chart human review
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_CAUSAL_FORMATION_SEMANTIC_V4_HUMAN_REVIEW`
+- `CURRENT_PRIMARY_FRONTIER`: True-Gap identity and V3 segmentation/hierarchy/persistence/memory are unchanged. V4 freezes the primary only at the 10th stabilization-session close, rejects any prior touch instead of resetting the clock, and retains 1,793/4,319 V3 candidates. Causal timing is machine-valid; semantic alignment and protracted-leg coherence remain human-review questions
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen with historical Development and mixed Validation evidence. Independent True-Gap V3 is semantic only; no entry, outcome, portfolio, or V1 alpha rule transfers
+- `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen historical evidence. True-Gap V4 is semantic only; no entry, outcome, portfolio, or V1 alpha rule transfers
 - `BRANCH`: `research/ashare-ultrashort-v1`
 - `STARTING_HEAD`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do the 20 new V3 blind charts show reliable original-leg segmentation, local-gap exclusion, primary hierarchy, persistence, and memory semantics? Only human review may answer; outcome discovery remains unauthorized.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do the 20 new causal-first-return charts and 20 protracted-collapse diagnostics support V4 timing and a coherent single original leg? Only human review may answer; outcome discovery remains unauthorized.
 
 ## Research OS V2.3 resource and worker state
 
@@ -122,6 +122,33 @@ The new blind package contains exactly 20 charts: 14 CORE/6 BOUNDARY and
 `TRUE_GAP_PRIMARY_HIERARCHY_PARTIALLY_ALIGNED`; human review is mandatory.
 No return, PnL, strategy replay, V1 alpha inheritance, or repository 2024+ data
 was opened.
+
+### Collapse True-Gap Causal Formation Semantic V4
+
+The V3 chronology audit showed 1,586/3,822 CORE events before causal leg
+confirmation. V4 preserves every V3 semantic threshold but makes the close of
+the 10th stabilization session the first timestamp at which the original leg
+and primary hierarchy exist. The primary is then the lowest unresolved in-leg
+MAJOR/SECONDARY gap. Any upward touch from below by confirmation rejects the
+later-first-return semantic; no second/third touch resets the clock.
+
+Of 3,822 CORE and 497 BOUNDARY sources, 1,445 CORE (37.81%) and 348 BOUNDARY
+(70.02%) survive. Mutually exclusive final rejects are 817 no causal primary,
+290 primary changed at freeze, 174 before leg end, 361 end-to-confirmation, and
+884 other preconfirmation touches. Raw overlapping flags are 754 before leg,
+848 end-to-confirmation and 1,559 any preconfirmation primary touch.
+
+Required TG3 dispositions: 008/013/017 no causal primary; 009/020 rejected
+end-to-confirmation; 014 primary changed; 019 retained. Duration-group causal
+retention declines monotonically from 47.88% at <=20 sessions to 12.94% at >90,
+which makes long-leg coherence a human-review concern but does not install a
+duration cap or segmentation change.
+
+The new package contains 20 causal blind charts (14 CORE/6 BOUNDARY,
+13 Main/7 ChiNext) and 20 protracted-collapse diagnostics (5/5/10 from
+41--60/61--90/>90). Verdict:
+`TRUE_GAP_CAUSAL_FORMATION_PARTIALLY_ALIGNED`. No return, PnL, strategy replay,
+threshold optimization or repository 2024+ data was opened.
 
 ### Historical True-Gap damage audit V1 lineage
 

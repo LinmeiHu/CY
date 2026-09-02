@@ -1,0 +1,79 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-TRUE-GAP-CAUSAL-FORMATION-SEMANTIC-V4",
+  "authoritative_start_head": "87cd3ab2516ae7691801dc7358a18b3d01efe5a9",
+  "stage": "OUTCOME_BLIND_CAUSAL_TIMING_SEMANTIC_REPAIR",
+  "outcome_access": "NONE",
+  "strategy_backtest": false,
+  "hard_freezes": {
+    "true_gap": "High_t < Low_t_minus_1",
+    "true_gap_interval": "[High_t, Low_t_minus_1]",
+    "significance": "V3_FROZEN_MAJOR_SECONDARY_MINOR",
+    "minor_primary_eligible": false,
+    "post_collapse_local_primary_eligible": false,
+    "memory": {"CORE": "age<=60", "BOUNDARY": "61<=age<=90", "STALE": "age>90"},
+    "persistence": ">=10 completed sessions and >=5 consecutive completed sessions with High<L"
+  },
+  "causal_time_anchors": {
+    "peak_time": "peak session close",
+    "leg_end_time": "V3 frozen candidate trough session close",
+    "leg_confirmation_time": "close of the 10th completed comparable session after leg end",
+    "original_collapse_confirmed_before_leg_confirmation": false
+  },
+  "primary_gap_freeze": {
+    "time": "LEG_CONFIRMATION_TIME",
+    "information_cutoff": "no later than LEG_CONFIRMATION_TIME",
+    "universe": "all true gaps formed inside the confirmed original impulsive collapse leg",
+    "eligible_significance": ["MAJOR", "SECONDARY"],
+    "resolved_gap_excluded": true,
+    "selection": "lowest coordinate-price eligible unresolved gap",
+    "name": "CAUSALLY_FROZEN_PRIMARY_GAP"
+  },
+  "preconfirmation_touch": {
+    "definition": "any upward interaction from below with price>=TRUE_GAP_LOWER after formation and at or before LEG_CONFIRMATION_TIME",
+    "eligible_if_present": false,
+    "disposition": "REJECTED_PRECONFIRM_PRIMARY_TOUCH",
+    "reset_as_later_first_return": false
+  },
+  "causal_first_return": {
+    "definition": "earliest upward minute interaction from below strictly after max(LEG_CONFIRMATION_TIME,persistence_eligibility_time)",
+    "requires_no_preconfirmation_touch": true,
+    "event_marker_only": true
+  },
+  "crosswalk_final_disposition_priority": [
+    "NO_CAUSAL_PRIMARY",
+    "PRIMARY_CHANGED_AT_CAUSAL_FREEZE",
+    "REJECTED_RETURN_BEFORE_LEG_END",
+    "REJECTED_RETURN_AFTER_END_BEFORE_CONFIRMATION",
+    "REJECTED_PRECONFIRM_PRIMARY_TOUCH",
+    "RETAINED_CAUSAL_FIRST_RETURN"
+  ],
+  "duration_diagnostic": {
+    "groups": ["<=20", "21-40", "41-60", "61-90", ">90"],
+    "segmentation_changed": false,
+    "maximum_duration_rule_added": false
+  },
+  "protracted_collapse_pilot": {
+    "sample": {"41-60": 5, "61-90": 5, ">90": 10},
+    "selection": "deterministic outcome-blind diversity",
+    "major_interim_rebounds": "up to three largest causal 3-session local close peaks ranked by rebound from the running coordinate low; descriptive only",
+    "segmentation_parameter": false
+  },
+  "new_causal_blind_pilot": {
+    "charts": 20,
+    "core": 14,
+    "boundary": 6,
+    "target_main": 13,
+    "target_chinext": 7,
+    "exclude_tg3_source_episodes": true,
+    "selection": "deterministic outcome-blind diversity",
+    "post_event_bars": 0
+  },
+  "forbidden": [
+    "RETURN_ANALYSIS",
+    "PNL",
+    "STRATEGY_BACKTEST",
+    "SEMANTIC_THRESHOLD_OPTIMIZATION",
+    "MAXIMUM_LEG_DURATION_RULE",
+    "REPOSITORY_2024_PLUS"
+  ]
+}
