@@ -7,18 +7,18 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `5b0220dfac1e9ec9a7925270a50321198d32a9a5` (Resolution State Discovery V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_RESOLUTION_STATE_DISCOVERY_V1_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: `ZONE_TAIL_RISK_ONLY_DETECTABLE_AFTER_DAMAGE`. Simple causal path state orders the non-resolution tail, especially low progress plus distance below L, but the cleanest state first appears after median -13.98% damage. Earlier FS2 captures more tail with 48%--55% resolver contamination and sacrifices 27%--29% eventual winners at D5/D10. No stop replay, entry search, Validation 2022--2023, or repository 2024+ outcome was opened
+- `CURRENT_BASELINE`: `3efa648f553148bc8e99063e62ec4f0ad66ef23f` (Entry Quality Discovery V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_ENTRY_QUALITY_DISCOVERY_V1_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: `ENTRY_QUALITY_PRIMARILY_FRESHNESS_DRIVEN`. Younger/lower-cumulative-turnover zones have materially better clean-resolution and lower severe-tail outcomes before frozen E1 entry. Recent10 efficiency and pullback burden do not support the expected clean-approach hypothesis. Age and cumulative turnover are highly entangled (rho 0.851), so time decay and capital rotation are not separately identified. No admission replay, Validation 2022--2023, or repository 2024+ outcome was opened
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Failure-exit development is not justified. A separately frozen pre-entry quality discovery question is the only zone-adjacent next step supported by this result
+- `CURRENT_STRATEGY_CANDIDATE`: none yet. One bounded Entry Admission Development V1 is justified with at most 2--3 frozen freshness translations; recent10/contact rescue and Validation remain unauthorized
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `5b0220dfac1e9ec9a7925270a50321198d32a9a5`
+- `STARTING_HEAD`: `3efa648f553148bc8e99063e62ec4f0ad66ef23f`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `5b0220dfac1e9ec9a7925270a50321198d32a9a5`
-- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_CAUSAL_POST_ENTRY_RESOLUTION_STATE_DISCOVERY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
+- `CURRENT_HEAD_AT_RESUME`: `3efa648f553148bc8e99063e62ec4f0ad66ef23f`
+- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_CAUSAL_PREENTRY_FRESHNESS_AND_APPROACH_DISCOVERY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: if the zone object receives more budget, preregister one independent pre-entry approach-state study; do not develop an FS stop, tune these state thresholds, mix post-entry labels into entry selection, or open Validation.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: freeze at most 2--3 simple freshness admission translations before expanding walk-forward execution. Do not optimize age/turnover thresholds, add recent10/contact conditions, develop an FS stop, or open Validation.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,9 +41,9 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-RESOLUTION-STATE-DISCOVERY-V1`
-  is complete. Simple state orders risk but only the late/narrow state is clean;
-  no failure-exit replay or Validation has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-ENTRY-QUALITY-DISCOVERY-V1`
+  is complete. Freshness/memory ranks entry quality; recent approach cleanliness
+  does not. No admission replay or Validation has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -69,6 +69,39 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone Entry Quality Discovery V1
+
+The study freezes all 617 V3 identities, 598 executable E1 entries, primary
+layer/U, signal and execution clocks, PIT/QD-010 semantics, and the 538-event
+complete common 60D cohort. Exact terciles are frozen in an outcome-free feature
+panel before Anatomy labels are attached. All 538 events have global/recent10
+path, age, and authoritative cumulative-turnover features; seven zero-range
+signal bars lack contact close location. No future float is reconstructed.
+
+Base CLEAN_RESOLVE_20/CLEAN_RESOLVE_40 is 66.73%/67.66%; U-before-loss10 is
+67.84%; legal D60 resolution is 87.92%; unresolved/severe unresolved is
+12.08%/10.59%. Younger AGE_A/B versus AGE_D/E improves clean20 +17.39 pp,
+U-before-loss10 +19.16 pp, unresolved +11.04 pp, and severe unresolved
++12.51 pp in quality direction. LOW versus HIGH cumulative turnover improves
+the same metrics +25.99/+27.67/+13.85/+15.53 pp. Both relations pass frozen
+year, board, date-equal, target-distance, and layer controls.
+
+This does not validate the proposed recent-attack cleanliness mechanism.
+Recent10 high efficiency is -7.61 pp clean20 versus LOW and fails chronology,
+board, date, and control gates; low pullback burden is also adverse. Global path
+efficiency is favorable (+8.89 pp clean20) but only 3/7 supported years and is
+descriptive under the preregistered gate. Contact penetration/return do not add
+primary evidence.
+
+Age and cumulative turnover are strongly collinear (Spearman 0.851); neither
+passes the frozen within-other-proxy distinctness test. Verdict:
+`ENTRY_QUALITY_PRIMARILY_FRESHNESS_DRIVEN`, meaning a broad memory-decay axis,
+not separately identified time and capital-rotation effects. One bounded
+Entry Admission Development V1 with at most 2--3 frozen freshness translations
+is justified; no recent10/contact rescue or Validation.
+Feature/freeze/result/report hashes are `9aaddc51...`/`ce0efcd9...`/
+`10efd494...`/`b4c96b80...`; nine focused tests and byte-identical serial runs pass.
 
 ### Collapse Gap-Zone Resolution State Discovery V1
 

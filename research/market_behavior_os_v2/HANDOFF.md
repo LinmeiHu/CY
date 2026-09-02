@@ -2,6 +2,44 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Entry Quality Discovery V1
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-ENTRY-QUALITY-DISCOVERY-V1`; its starting checkpoint
+is `3efa648f553148bc8e99063e62ec4f0ad66ef23f` on
+`research/ashare-ultrashort-v1`. Frozen spec hash:
+`0408fdad2249106c78a0cd55ef6cf04890ea1824e3d16eef2d2e673d8e00cc80`.
+
+This is Development-only pre-entry discovery. The outcome-blind 538-event
+feature panel and exact terciles were frozen before Anatomy outcomes were read;
+feature-freeze hash is `ce0efcd910...`. All events have authoritative PIT
+cumulative turnover with no future-float reconstruction. V3, primary layer,
+E1, U, execution and QD-010 identities remain exact. Validation 2022--2023 and
+repository 2024+ are unread.
+
+Base CLEAN20/CLEAN40 is 66.73%/67.66%; U-before-loss10 67.84%; legal D60
+resolution 87.92%; unresolved/severe unresolved 12.08%/10.59%. AGE_A/B versus
+AGE_D/E improves clean20 +17.39 pp and U-before-loss10 +19.16 pp while reducing
+unresolved/severe tail by 11.04/12.51 pp. LOW versus HIGH cumulative turnover
+improves the same four metrics by 25.99/27.67/13.85/15.53 pp. Both survive
+year, Main/ChiNext, date-equal, target-distance, and layer controls.
+
+Do not interpret this as proof of the proposed clean-final-attack mechanism.
+Recent10 high efficiency is -7.61 pp clean20 versus LOW; low pullback burden is
+also adverse. Global efficiency is favorable but only 3/7 supported years.
+Contact variables do not add primary evidence. Age and turnover have Spearman
+0.851 and neither adds robustly within the other, so the evidence identifies a
+broad freshness/memory axis, not separate time-decay and capital-rotation
+mechanisms. Verdict: `ENTRY_QUALITY_PRIMARILY_FRESHNESS_DRIVEN`.
+
+One future `ASHARE-COLLAPSE-GAP-ZONE-ENTRY-ADMISSION-DEVELOPMENT-V1` is
+justified with at most 2--3 pre-frozen freshness translations. Do not tune
+age/turnover thresholds, add recent10/contact filters, revisit failure exits,
+or open Validation. Feature/result/report hashes are `9aaddc51...`/
+`10efd494...`/`b4c96b80...`; nine focused tests and byte-identical runs pass.
+Large pre-entry paths remain under
+`/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_entry_quality_discovery_v1`.
+
 ## Latest checkpoint: Collapse Gap-Zone Resolution State Discovery V1
 
 Resume from the commit containing

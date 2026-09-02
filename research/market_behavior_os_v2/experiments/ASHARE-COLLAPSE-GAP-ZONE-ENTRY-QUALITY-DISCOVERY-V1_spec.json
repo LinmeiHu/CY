@@ -1,0 +1,105 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-ENTRY-QUALITY-DISCOVERY-V1",
+  "status": "FROZEN_BEFORE_PREENTRY_FEATURE_CONSTRUCTION_AND_OUTCOME_ATTACHMENT",
+  "start_checkpoint": "3efa648f553148bc8e99063e62ec4f0ad66ef23f",
+  "development": ["2014-01-01", "2021-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false
+  },
+  "source_identity": {
+    "v3_detector_spec_sha256": "6b8c946efa5d1cd8f99103180859d43fabff28583d73a794632b9faeb4c18b16",
+    "v3_candidates_sha256": "5920df21aec93aa5c16b63f3ed03b7e32bd76d38c8860052ebabcb3df4b05fa3",
+    "outcome_blind_source_events_sha256": "53fdac69d95307330c3a5929320bd363d7c580fcf5149b38f841ad5154124195",
+    "outcome_v1_events_sha256": "b27c2366fdef62e9592bb1c1ebec6a2f1e7c66d7b27312394dd17b65f74e8610",
+    "e1_acceptance_sha256": "61551825fadd75b211fd7550612389a4a8d9732b72ac0a5b9a43393a69612652",
+    "e1_entries_sha256": "d7d970824e3ecfdf7784544dc481b8d5f97fde7f0cceefbaefd50c247417ef6d",
+    "anatomy_v1_events_sha256": "96307f172a5ae9cc939576cda3b35833700edc9b7dd8986ab928763e613648ac",
+    "anatomy_v1_source_sha256": "2dcf24b5548e60690b8606997b4efcbb2873df0842eaf6c6af848724bbe60780",
+    "pit_daily_2013_2021_sha256": "ff90f4a2f122de40e72bdbfec3925a187090437dd3f3f7b3faf140634f597ee8",
+    "qd010_trade_candidates_sha256": "da34442580dbedb3c0fcd0d14ee89b3e96bd18f3382c0ce00d7315a1b5c0f3dc",
+    "frozen_executable_e1_entries": 598,
+    "known_qd010_risk_blocked_entries": 4,
+    "complete_common_60d_analysis_cohort": 538
+  },
+  "semantic_contract": {
+    "economic_sequence": "frozen V3 collapse zone -> lower regime -> causal pre-entry approach -> frozen first return and E1 completed signal bar -> next legal minute E1 entry -> clean legal U resolution or unresolved severe tail",
+    "mission": "rank future E1 trade quality using only zone relevance, capital memory, approach cleanliness, and first-contact information known no later than E1 signal-bar close",
+    "global_approach_start": "frozen postcollapse_low_cal_idx; no hindsight local-low finder",
+    "daily_feature_cutoff": "completed sessions with cal_idx strictly less than E1 acceptance cal_idx",
+    "contact_cutoff": "frozen completed E1 acceptance bar, inclusive",
+    "entry_clock": "unchanged next legal executable minute open strictly after acceptance bar"
+  },
+  "feature_dictionary": {
+    "global_path_efficiency": "(last pre-signal coordinate close - global-start coordinate close) / sum absolute coordinate close changes from global start through last pre-signal session; null if denominator<=0",
+    "recent10_path_efficiency": "same net/path formula over exactly the last 10 completed pre-signal sessions",
+    "recent10_pullback_burden": "maximum peak-to-subsequent-trough coordinate-close drawdown in recent10 divided by (L/minimum recent10 coordinate close-1); null if denominator<=0",
+    "down_day_share_10": "negative coordinate-close transitions divided by nine recent10 transitions",
+    "higher_low_state": "minimum coordinate low in last five recent10 sessions versus minimum in first five; exact stored-coordinate comparison",
+    "zone_age_sessions": "E1 signal cal_idx - primary zone formation cal_idx",
+    "global_approach_speed": "(L/global-start coordinate close-1) divided by number of sessions from global start through last pre-signal session",
+    "late_acceleration": "recent five-session coordinate-close return minus preceding five-session return, using the first/middle/last closes of recent10",
+    "cum_turnover_since_zone": "sum authoritative PIT turnover_fraction from formation_cal_idx+1 through signal_cal_idx-1; no volume or future-float reconstruction",
+    "turnover_per_session": "cum_turnover_since_zone / zone_age_sessions",
+    "contact_penetration": "(acceptance coordinate close-L)/W",
+    "contact_close_location": "(acceptance raw close-raw low)/(raw high-raw low); null for zero range",
+    "contact_bar_return": "acceptance raw close/acceptance raw open-1"
+  },
+  "outcome_blind_bins": {
+    "fixed_age": {"AGE_A": "10-20", "AGE_B": "21-40", "AGE_C": "41-60", "AGE_D": "61-90", "AGE_E": ">90"},
+    "tercile_features": [
+      "global_path_efficiency", "recent10_path_efficiency", "recent10_pullback_burden",
+      "global_approach_speed", "late_acceleration", "cum_turnover_since_zone",
+      "turnover_per_session", "contact_penetration", "contact_close_location", "contact_bar_return"
+    ],
+    "tercile_rule": "33.333333% and 66.666667% empirical quantiles over feature-complete 538-event Development population, computed and hashed before any outcome column is read",
+    "target_distance_control": "reuse anatomy outcome-blind LOW/MID/HIGH target_net_distance terciles"
+  },
+  "outcomes": {
+    "clean_resolve_20": "legal_full_fill_20d and u_before_loss10_20d",
+    "clean_resolve_40": "legal_full_fill_40d and u_before_loss10_40d",
+    "legal_resolve_60": "legal_full_fill_60d",
+    "unresolved_d60": "not legal_full_fill_60d",
+    "severe_unresolved_d60": "unresolved_d60 and (full_or_h60_net<=-10% or mae_60d<=-20%)",
+    "u_before_loss5": "u_before_loss5_60d",
+    "u_before_loss10": "u_before_loss10_60d",
+    "u_before_loss20": "u_before_loss20_60d"
+  },
+  "primary_surfaces": [
+    "zone_age_bucket x recent10_path_efficiency_bin",
+    "cum_turnover_since_zone_bin x recent10_path_efficiency_bin",
+    "zone_age_bucket x cum_turnover_since_zone_bin",
+    "recent10_path_efficiency_bin x recent10_pullback_burden_bin"
+  ],
+  "weighting": ["event", "reentry_date_equal", "formation_date_equal"],
+  "robustness": ["2014-2021 year", "MAIN/CHINEXT", "target-distance tercile", "SINGLE_LAYER/MULTILAYER"],
+  "directional_contrasts": {
+    "approach_efficiency": "HIGH minus LOW",
+    "pullback_burden": "LOW minus HIGH",
+    "zone_age": "AGE_A_OR_B minus AGE_D_OR_E",
+    "cumulative_turnover": "LOW minus HIGH",
+    "quality_outcomes": ["clean_resolve_20", "u_before_loss10"],
+    "risk_outcome": "negative of unresolved_d60 and severe_unresolved_d60 differences so positive always means better"
+  },
+  "verdict_implementation": {
+    "material_dimension": "at least two of: clean_resolve_20 quality contrast>=5 percentage points, u_before_loss10 quality contrast>=5 points, unresolved_d60 quality contrast>=3 points, severe_unresolved_d60 quality contrast>=3 points",
+    "date_robust": "reentry-date-equal and formation-date-equal clean20/u-before10/unresolved contrasts preserve expected sign for at least two of three metrics and at least 50% of the event-weighted absolute contrast in aggregate",
+    "year_stable": "expected sign on at least two of clean20/u-before10/unresolved in at least five Development years with both comparison groups N>=3; at least six supported years required",
+    "board_stable": "expected sign on at least two of clean20/u-before10/unresolved for both MAIN and CHINEXT with each comparison group N>=10",
+    "control_robust": "expected sign on at least two of clean20/u-before10/unresolved in at least two target-distance terciles and in both layer structures where comparison groups N>=10",
+    "approach_supported": "recent10 efficiency or pullback burden is material and passes date, year, board, and control robustness",
+    "memory_supported": "zone age or cumulative turnover is material and passes date, year, board, and control robustness",
+    "structure_present": "approach_supported and memory_supported, or one supported dimension plus another material dimension and a supported primary surface with severe-unresolved improvement",
+    "primarily_approach": "approach_supported, memory not supported, and no contradictory primary surface",
+    "primarily_freshness": "memory_supported, approach not supported, and no contradictory primary surface",
+    "weak_or_unstable": "at least one material pooled dimension or primary surface exists but no supported verdict above",
+    "no_structure": "no material pooled dimension and no primary surface with >=8 percentage-point clean20 or u-before10 contrast plus >=3-point severe improvement",
+    "verdict_order": ["IMPLEMENTATION_BLOCKED", "ENTRY_QUALITY_STRUCTURE_PRESENT", "ENTRY_QUALITY_PRIMARILY_FRESHNESS_DRIVEN", "ENTRY_QUALITY_PRIMARILY_APPROACH_DRIVEN", "ENTRY_QUALITY_WEAK_OR_UNSTABLE", "NO_PREENTRY_ENTRY_QUALITY_STRUCTURE"]
+  },
+  "forbidden": [
+    "entry/target/detector/exit change", "threshold search", "portfolio replay", "best-bin rule",
+    "post-entry feature", "technical/VWAP/breadth/panic/Dryup/ML expansion",
+    "manual future-chart engineering", "Validation 2022-2023", "repository 2024+ data"
+  ]
+}

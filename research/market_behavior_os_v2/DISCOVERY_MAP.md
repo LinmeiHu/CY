@@ -4,6 +4,23 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Entry Quality Discovery V1
+
+- Freeze a 538-event outcome-blind pre-entry feature panel before attaching
+  Anatomy outcomes; V3/E1/U/execution/QD-010 remain unchanged.
+- AGE_A/B versus AGE_D/E improves clean20/U-before-loss10 by +17.39/+19.16 pp
+  and lowers unresolved/severe tail by 11.04/12.51 pp. LOW versus HIGH cumulative
+  turnover improves the four metrics by +25.99/+27.67/+13.85/+15.53 pp.
+- Both memory proxies survive year, board, date-equal, target-distance, and layer
+  controls, but are highly entangled (rho 0.851) and do not add distinctly within
+  each other. Treat them as one broad freshness/memory axis.
+- Recent10 efficiency and low pullback burden fail the expected clean-approach
+  hypothesis. Global efficiency is pooled-positive but chronologically unstable;
+  contact quality adds no primary evidence.
+- Verdict: `ENTRY_QUALITY_PRIMARILY_FRESHNESS_DRIVEN`. One bounded admission
+  development with 2--3 frozen freshness translations is justified; no threshold,
+  recent10/contact rescue, failure exit, or Validation.
+
 ## Collapse Gap-Zone Resolution State Discovery V1
 
 - Freeze V3 event/layer, E1 entry, U target, costs, PIT/T+1/action semantics and

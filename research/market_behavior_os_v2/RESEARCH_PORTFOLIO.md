@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Frozen E1/U state discovery finds real tail ordering, but the clean FS3 signal is late and earlier FS2 sacrifices 27%--29% of eventual winners | No failure-exit development or Validation; only a separately preregistered pre-entry quality question is scientifically distinct enough to consider |
+| EXPLORE | 10% | Frozen pre-entry discovery finds a robust freshness/memory axis: younger/lower-turnover zones materially improve clean resolution, while recent10 cleanliness fails | Allocate one bounded admission-development test with 2--3 frozen freshness translations; no threshold, contact/recent10 rescue, failure exit, or Validation |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,20 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## Collapse-gap-zone Entry Quality Discovery V1
+
+Freshness/memory, not final-attack cleanliness, is the surviving pre-entry
+representation. AGE_A/B and LOW cumulative turnover materially improve clean20,
+U-before-loss10, and severe-tail quality across chronology, boards, date-equal,
+target-distance, and layer controls. Age and turnover remain one entangled axis
+(rho 0.851), not separately identified mechanisms. Recent10 efficiency and low
+pullback burden fail; global efficiency is chronologically unstable.
+
+Portfolio implication: one small admission-development allocation is earned,
+limited to 2--3 frozen freshness translations under expanding walk-forward.
+Do not search an age cutoff, combine recent10/contact diagnostics, reopen failure
+exits, or consume Validation.
 
 ## Collapse-gap-zone Resolution State Discovery V1
 
