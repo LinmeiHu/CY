@@ -2,6 +2,27 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: True-Gap Semantic Audit V1
+
+The collapse-gap-zone V1 lane is retired as `V1_SEMANTIC_CONTRACT_INVALID`.
+The detector called `[Open_t, Low_{t-1}]` a strict no-trade gap; the intended
+interval is `[High_t, Low_{t-1}]`. It also used future 12.5% post-zone depth to
+erase otherwise significant lower gap identity. This is a scientific-contract
+failure, not an execution-ledger arithmetic failure.
+
+The outcome-blind damage audit reads identity and entry columns only. Of 207
+Development trades, 32 remain semantically valid; of 94 Validation trades, 10
+remain valid; combined validity is 42/301 (13.95%). There are 25 legacy targets
+that are not true gaps, 238 entries below the corrected target and 46 events
+with a lower significant true layer. Audit result/rows/report hashes are
+`0c60d0ad...`/`7ed597a8...`/`453b1d50...`; two focused tests pass.
+
+Do not repair or replay V1, compare post-depth thresholds by return, or preserve
+its freshness/K10/Validation status. A successor is V2 and must restart with a
+blind true-gap semantic pilot. 2022--2023 is already observed and cannot be
+called first external Validation again; 2024+ security paths have also been
+opened for the user-authorized chart books.
+
 ## Latest checkpoint: Collapse Gap-Zone Dual Fresh Capitalization V1
 
 Resume from the commit containing

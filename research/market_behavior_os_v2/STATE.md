@@ -7,11 +7,11 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `e1adc2889d038256be660f39a3f1cf8db27bcff5` (Dual Fresh Capitalization V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_DUAL_FRESH_CAPITALIZATION_V1_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: `DUAL_FRESH_K10_PREFERRED`. Frozen Dual Fresh has sparse natural concurrency, making K20 structurally underutilized. Fixed K10 doubles position weight with zero capacity skips and lifts combined CAGR from 3.31% to 6.68% at -3.46% MaxDD. K5 reaches 12.37% CAGR but fails preregistered concentration gates with a -4.27% worst day and -6.83% MaxDD. Validation 2022--2023 and repository 2024+ remain unread
+- `CURRENT_BASELINE`: `5b2bf920ed7bd7b5bac73a0f0703bcd49f8348e8` (first frozen V1 Validation checkpoint; now semantically retired)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_TRUE_GAP_SEMANTIC_AUDIT_V1_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: `V1_SEMANTIC_CONTRACT_INVALID`. V1 used `[Open_t, Low_{t-1}]` rather than the intended no-trade interval `[High_t, Low_{t-1}]`, and future 12.5% post-zone depth erased otherwise significant lower layers. Only 42/301 frozen Development/Validation trades preserve target, true entry, and lowest-layer identity. All prior V1 economics remain reproducible for the implemented rule but no longer support the intended strict-gap claim
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: freeze Dual Fresh with K10 per board, 10% sleeve-NAV initial positions and fixed 50/50 sleeves for one separately authorized Validation. K5 is rejected for concentration; K20 remains the exact baseline. No K, threshold, feature, ranking, entry/exit, or board-allocation rescue is authorized
+- `CURRENT_STRATEGY_CANDIDATE`: none. Retire V1 without rescue. Any successor must be a fresh V2 beginning with outcome-blind true-gap identity and blind semantic fidelity; no V1 admission, K, target, or Validation claim transfers automatically
 - `BRANCH`: `research/ashare-ultrashort-v1`
 - `STARTING_HEAD`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: if separately authorized, freeze exact Dual Fresh K10 for 2022--2023 Validation with unchanged board sleeves and 50/50 combination. Do not retest K, promote K5, select Turnover-only, tune alpha/ranking, or open repository 2024+.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can an outcome-blind V2 built on `[High_t, Low_{t-1}]`, with gap identity independent of future depth, recover the intended visual pattern before any new economics are generated? V1 thresholds, freshness admission, K10 and target-hit evidence are not inherited proof.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,25 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone True-Gap Semantic Audit V1
+
+The audit projects only frozen identity and entry columns for the 207
+Development L3 Dual Fresh trades and 94 Validation trades. It reads no exit,
+return, PnL, NAV or winner field and performs no corrected replay or threshold
+selection. The intended no-trade primitive is fixed as `High_t < Low_t-1` with
+interval `[High_t, Low_t-1]`; future post-zone depth is retained only as a
+lifecycle attribute and cannot erase gap identity.
+
+Only 32/207 Development and 10/94 Validation trades preserve all three required
+semantics: the selected target remains a significant true gap, entry actually
+reaches that true interval, and no lower significant true layer appears within
+the legacy 15-session layer clock. Combined, 25 selected targets are not true
+gaps, 238 entries do not reach their true target, 46 events contain a lower
+significant true layer, and only 42/301 (13.95%) remain semantically valid.
+Classification: `V1_SEMANTIC_CONTRACT_INVALID`. All downstream V1 Development,
+freshness, capitalization and Validation strategy claims are retired rather
+than reinterpreted.
 
 ### Collapse Gap-Zone Dual Fresh Capitalization V1
 

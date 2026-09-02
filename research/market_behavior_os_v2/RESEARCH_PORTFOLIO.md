@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Fixed capitalization shows Dual Fresh K20 was structurally underutilized; K10 improves CAGR with no sample loss while K5 fails concentration gates | Preserve exact Dual Fresh K10 for one separately authorized Validation; no K, alpha, ranking, board-allocation, or K5 rescue |
+| EXPLORE | 10% | The collapse-gap-zone V1 lane has a central semantic-contract failure; only 42/301 frozen trades preserve true-gap/entry/lower-layer identity | Retire V1; if continued, restart as blind true-gap V2 pattern fidelity with no inherited freshness, K or Validation claim |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,15 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## Collapse-gap-zone True-Gap Semantic Audit V1
+
+V1 tested `[Open_t, Low_{t-1}]`, not the intended no-trade interval
+`[High_t, Low_{t-1}]`. An identity/entry-only audit leaves 32/207 Development
+and 10/94 Validation trades semantically valid. The prior Dual Fresh and K10
+economics are therefore retired as evidence for the intended pattern. Portfolio
+allocation is zero until a new outcome-blind V2 passes blind semantic fidelity;
+no V1 parameter or portfolio choice transfers by default.
 
 ## Collapse-gap-zone Dual Fresh Capitalization V1
 

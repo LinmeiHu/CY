@@ -1,0 +1,33 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-TRUE-GAP-SEMANTIC-AUDIT-V1",
+  "stage": "OUTCOME_BLIND_SEMANTIC_DAMAGE_AUDIT",
+  "created_after_v1_validation_outcomes_were_observed": true,
+  "purpose": "Determine whether frozen V1 trades actually returned to the lowest meaningful unresolved no-trade gap; do not evaluate or optimize returns.",
+  "governance": {
+    "v1_artifacts_are_immutable": true,
+    "outcome_columns_read": false,
+    "return_analysis": false,
+    "threshold_selection": false,
+    "corrected_strategy_replay": false,
+    "validation_claim_allowed": false
+  },
+  "semantic_correction": {
+    "true_strict_down_gap": "High_t < Low_t_minus_1 on adjacent corporate-action-comparable sessions",
+    "true_gap_interval": "[High_t, Low_t_minus_1]",
+    "legacy_v1_gap": "Open_t < Low_t_minus_1 with interval [Open_t, Low_t_minus_1]",
+    "gap_identity_depends_on_future_post_zone_depth": false,
+    "significant_true_layer": "true width >= 2.5% of previous close OR true width >= 8% of the already-observed peak-to-postcollapse-low decline",
+    "post_zone_depth": "reported as a lifecycle attribute only; never used to erase a gap identity"
+  },
+  "damage_tests": {
+    "selected_target_survives": "legacy target date is a significant true strict gap",
+    "entry_reached_true_target": "entry coordinate price is at or above the true lower boundary and no higher than the unchanged upper boundary",
+    "lower_significant_true_layer": "a lower significant true gap exists later in the same collapse episode within 15 sessions of the legacy target",
+    "legacy_trade_semantically_valid": "selected target survives AND entry reached true target AND no lower significant true layer exists"
+  },
+  "periods": {
+    "development": "frozen L3_DUAL_FRESH executed identities, 2017-2021",
+    "validation": "frozen K10 Validation executed identities, 2022-2023",
+    "2024_plus_security_outcomes": "not used"
+  }
+}

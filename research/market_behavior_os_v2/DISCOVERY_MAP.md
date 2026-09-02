@@ -4,7 +4,22 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone True-Gap Semantic Audit V1
+
+- Correct strict no-trade identity is `High_t < Low_t-1`, interval
+  `[High_t, Low_t-1]`; V1 used the opening price as the lower boundary.
+- Future post-zone depth is a lifecycle attribute, not permission to erase an
+  otherwise significant collapse-leg gap.
+- Identity/entry-only audit: Development 32/207 valid, Validation 10/94 valid,
+  combined 42/301 (13.95%). Twenty-five targets are not true gaps, 238 entries
+  do not reach the corrected target and 46 events have a lower true layer.
+- Verdict: `V1_SEMANTIC_CONTRACT_INVALID`. Restart from blind V2 pattern
+  fidelity or close; no V1 economic result, admission rule or K choice transfers.
+
 ## Collapse Gap-Zone Dual Fresh Capitalization V1
+
+> Superseded as strategy evidence by `V1_SEMANTIC_CONTRACT_INVALID`; retained
+> below only as reproducible archaeology for the implemented non-true-gap rule.
 
 - Bind the 207 Dual Fresh identities and exact H40 execution outcomes; vary only
   fixed per-board K5/K10/K20 and corresponding 1/K sleeve-NAV entry weight.
