@@ -4,6 +4,21 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Dual Fresh Capitalization V1
+
+- Bind the 207 Dual Fresh identities and exact H40 execution outcomes; vary only
+  fixed per-board K5/K10/K20 and corresponding 1/K sleeve-NAV entry weight.
+- Natural concurrency is sparse: Main mean/max 1.56/8, ChiNext 0.49/6. Combined
+  K20 utilization is only 4.39%, confirming material undercapitalization.
+- K10 has zero capacity skips, 36.66% total return, 6.68% CAGR, -3.46% MaxDD,
+  1.494 Sharpe, 1.930 Calmar, and five positive years.
+- K5 reaches 12.37% CAGR but fails frozen concentration gates at -4.27% worst
+  day and -6.83% MaxDD; 12 skipped signals average +4.78%, so sample selection
+  does not explain the return increase.
+- Verdict: `DUAL_FRESH_K10_PREFERRED`. Preserve exact K10 for one separately
+  authorized Validation; no K search, K5 rescue, alpha/ranking change, or 2024+
+  access.
+
 ## Collapse Gap-Zone Entry Admission Development V1
 
 - Freeze V3/E1/U/F2/H40, 40 bp costs, strict T+1/PIT/QD-010, K20 per board,

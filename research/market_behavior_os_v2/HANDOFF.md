@@ -2,6 +2,33 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Dual Fresh Capitalization V1
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-DUAL-FRESH-CAPITALIZATION-V1`; its starting checkpoint
+is `e1adc2889d038256be660f39a3f1cf8db27bcff5` on
+`research/ashare-ultrashort-v1`. Frozen spec hash:
+`5c5e4ab7aa9f3737dc581b67700701178ff9984f395243b6f07b692cf930d31c`.
+
+This is Development-only capitalization, not new alpha discovery. The exact 207
+Dual Fresh signals, board/fold TRAIN-only cutoffs, V3/E1/U/F2/H40, costs, T+1,
+QD-010, ranking and 50/50 sleeves remain frozen. K20 reproduces the predecessor
+trade identities, quantities and daily NAV exactly. Validation 2022--2023 and
+repository 2024+ remain unread.
+
+Natural concurrency is 1.56 mean/8 max Main and 0.49/6 ChiNext. Combined K20
+utilization/CAGR/MaxDD is 4.39%/3.31%/-1.74%. K10 has zero capacity skips and
+reaches 8.70%/6.68%/-3.46%, with 36.66% total return, 1.494 Sharpe, 1.930
+Calmar and five positive years. Main/ChiNext CAGR is 7.21%/6.15%.
+
+K5 reaches 12.37% CAGR but skips 12 signals and fails frozen concentration
+gates: worst day -4.27%, MaxDD -6.83%. The skipped cohort averages +4.78%, so
+capacity does not improve trade quality. Exact verdict: `DUAL_FRESH_K10_PREFERRED`.
+Freeze K10 only if a separate Validation task is authorized; do not retest K,
+promote K5, change alpha/ranking, or switch to Turnover-only. Result/report
+hashes are `63b8b57f...`/`e83d8870...`; seven tests and byte-identical rebuilds
+pass.
+
 ## Latest checkpoint: Collapse Gap-Zone Entry Admission Development V1
 
 Resume from the commit containing

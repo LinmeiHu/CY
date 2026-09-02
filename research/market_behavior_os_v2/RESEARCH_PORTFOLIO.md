@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Frozen admission development converts freshness into better H40 economics, but only ChiNext clears exact board-support gates | Preserve L3 as one board-specific candidate for separately authorized Validation; no threshold, lane-by-CAGR, feature, stop, or horizon rescue |
+| EXPLORE | 10% | Fixed capitalization shows Dual Fresh K20 was structurally underutilized; K10 improves CAGR with no sample loss while K5 fails concentration gates | Preserve exact Dual Fresh K10 for one separately authorized Validation; no K, alpha, ranking, board-allocation, or K5 rescue |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,19 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## Collapse-gap-zone Dual Fresh Capitalization V1
+
+Natural concurrency is far below K20: mean active positions are 1.56 Main and
+0.49 ChiNext. K10 executes all 207 signals, doubles combined utilization from
+4.39% to 8.70%, and lifts CAGR 3.31% to 6.68% with -3.46% MaxDD and five positive
+years. It changes capital density, not sample composition.
+
+K5 produces 12.37% CAGR but fails the frozen concentration standard with a
+-4.27% worst day and -6.83% MaxDD. Twelve signals are skipped, and their +4.78%
+mean outcome shows capacity ordering did not manufacture better alpha. Portfolio
+implication: K10 is the sole remaining Development capitalization candidate for
+separately authorized Validation. K5 and further K search are closed.
 
 ## Collapse-gap-zone Entry Admission Development V1
 

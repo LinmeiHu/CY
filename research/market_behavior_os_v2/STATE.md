@@ -7,18 +7,18 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `f5456e5cc06dee5f4d9654ab61adc498bbd2621a` (Entry Admission Development V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_ENTRY_ADMISSION_DEVELOPMENT_V1_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: `FRESHNESS_EDGE_BOARD_SPECIFIC`. Under frozen V3/E1/U/F2/H40 and K20, all three fixed freshness lanes improve combined CAGR and left-tail risk versus baseline, but only ChiNext clears the preregistered board-level trade-return and CAGR gates. L3 clears combined trade and portfolio materiality; L2 has the best combined CAGR but misses the combined median-trade materiality floor. Validation 2022--2023 and repository 2024+ remain unread
+- `CURRENT_BASELINE`: `e1adc2889d038256be660f39a3f1cf8db27bcff5` (Dual Fresh Capitalization V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_DUAL_FRESH_CAPITALIZATION_V1_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: `DUAL_FRESH_K10_PREFERRED`. Frozen Dual Fresh has sparse natural concurrency, making K20 structurally underutilized. Fixed K10 doubles position weight with zero capacity skips and lifts combined CAGR from 3.31% to 6.68% at -3.46% MaxDD. K5 reaches 12.37% CAGR but fails preregistered concentration gates with a -4.27% worst day and -6.83% MaxDD. Validation 2022--2023 and repository 2024+ remain unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: frozen L3 dual-fresh admission is large enough for later, separately authorized Validation consideration as a board-specific Development candidate; L2 is retained as a higher-CAGR but non-material-median diagnostic. No threshold, feature, entry/exit, or board rescue is authorized
+- `CURRENT_STRATEGY_CANDIDATE`: freeze Dual Fresh with K10 per board, 10% sleeve-NAV initial positions and fixed 50/50 sleeves for one separately authorized Validation. K5 is rejected for concentration; K20 remains the exact baseline. No K, threshold, feature, ranking, entry/exit, or board-allocation rescue is authorized
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `f5456e5cc06dee5f4d9654ab61adc498bbd2621a`
+- `STARTING_HEAD`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `f5456e5cc06dee5f4d9654ab61adc498bbd2621a`
-- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_EXPANDING_WALK_FORWARD_ENTRY_ADMISSION; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
+- `CURRENT_HEAD_AT_RESUME`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
+- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_FIXED_CAPITALIZATION_AND_POSITION_DENSITY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: if separately authorized, freeze exactly one Validation contract for the Development-qualified L3 dual-fresh candidate while preserving board-separated reporting and fixed 50/50 combination. Do not tune age/turnover thresholds, select L2 by its higher observed CAGR, add features/stops, or open repository 2024+.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: if separately authorized, freeze exact Dual Fresh K10 for 2022--2023 Validation with unchanged board sleeves and 50/50 combination. Do not retest K, promote K5, select Turnover-only, tune alpha/ranking, or open repository 2024+.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,9 +41,9 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-ENTRY-ADMISSION-DEVELOPMENT-V1`
-  is complete. Freshness improves H40 trade/portfolio economics, but the exact
-  verdict is board-specific. No Validation has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-DUAL-FRESH-CAPITALIZATION-V1`
+  is complete. K10 resolves material K20 underutilization without changing the
+  signal sample; K5 fails concentration gates. No Validation has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -69,6 +69,29 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone Dual Fresh Capitalization V1
+
+The experiment binds all 207 frozen Dual Fresh signals and predecessor H40
+outcomes by hash. V3, age<=90, expanding board/fold TRAIN-only turnover q66.67,
+E1, U, no failure stop, H40, 40 bp costs, T+1, QD-010, deterministic ranking,
+one-active-symbol, and fixed 50/50 sleeves are unchanged. K20 reproduces the
+predecessor's accepted identities, quantities, and daily NAV within 1e-12.
+
+Natural end-of-day concurrency averages only 1.56 Main and 0.49 ChiNext, with
+maxima 8 and 6. K20 combined utilization is 4.39%. K10 executes all 207 signals,
+raises utilization to 8.70%, total return to 36.66%, CAGR to 6.68%, and retains
+-3.46% MaxDD, 1.494 Sharpe, 1.930 Calmar and five positive years. Both board
+sleeves have positive stitched returns and every year is positive.
+
+K5 utilization is still only 16.63% and CAGR reaches 12.37%, but Main supplies
+11 of 12 capacity skips. Combined worst day is -4.27% and MaxDD -6.83%, failing
+the preregistered -3% day and relative-drawdown gates. Skipped signals average
++4.78%; K5 executed mean/median fall slightly below all eligible, so the higher
+return is position-weight scaling rather than favorable sample selection.
+Verdict: `DUAL_FRESH_K10_PREFERRED`. Spec/result/report hashes are
+`5c5e4ab7...`/`63b8b57f...`/`e83d8870...`; seven focused tests and two
+byte-identical final rebuilds pass. Validation and repository 2024+ are sealed.
 
 ### Collapse Gap-Zone Entry Admission Development V1
 

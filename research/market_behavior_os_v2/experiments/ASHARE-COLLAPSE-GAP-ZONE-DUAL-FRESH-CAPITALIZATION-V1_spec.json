@@ -1,0 +1,97 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-DUAL-FRESH-CAPITALIZATION-V1",
+  "status": "FROZEN_BEFORE_K5_K10_CAPITALIZATION_OUTCOMES",
+  "start_checkpoint": "e1adc2889d038256be660f39a3f1cf8db27bcff5",
+  "development_features": ["2014-01-01", "2021-12-31"],
+  "portfolio_evaluation": ["2017-01-01", "2021-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false
+  },
+  "input_identity": {
+    "predecessor_spec_sha256": "b91917559a02c31f361c0dd6d38b7a3f6913b83e59de6cb4a0a71d4d651f82ad",
+    "predecessor_admission_panel_sha256": "daa5e8ab0e8c571a103a43e94558ce56153adc67e45adfc0eaf7d731df124e81",
+    "predecessor_h40_candidates_sha256": "10fabb9785fad580d3a67c0f24b19d08b4e5560d6c5b41b1dd25073359195c46",
+    "predecessor_executed_trades_sha256": "0c8c98af3167f43e0abf8166b88970ab397924e26b5c9897b9e54a1125cb1cdc",
+    "predecessor_nav_sha256": "a9fb660026357d7370617061d023023fd313159d9beb41ccc95317c157779b20",
+    "predecessor_result_sha256": "3b5b6660b0b29e0ed01d9b52f4ba18a5886b18c6906502fcc8fc5c7019db0fd7",
+    "daily_execution_ledger_sha256": "a4eb64cb51c1c820d55d01fc30306273a616ab7a171126bbbda716392f43d4d5"
+  },
+  "alpha_contract": {
+    "pattern": "frozen V3",
+    "admission": "L3_DUAL_FRESH only: age<=90 and cumulative turnover<=same board/fold expanding TRAIN-only q66.67",
+    "entry": "frozen E1 executable entry",
+    "target": "frozen primary-layer U legal T+1-or-later fill",
+    "failure_stop": "none",
+    "time_stop": "frozen H40",
+    "cost": "20 bp entry plus 20 bp exit",
+    "one_active_position_per_symbol": true,
+    "same_time_ranking": [
+      "entry_time ascending",
+      "primary_layer_width_pct descending",
+      "board_relative_return_percentile descending",
+      "peak_to_low_decline descending",
+      "persistence_sessions descending",
+      "symbol ascending"
+    ]
+  },
+  "capitalization_lanes": {
+    "CAP_K5": {"max_positions_per_board": 5, "new_position_fraction_of_current_sleeve_nav": 0.2},
+    "CAP_K10": {"max_positions_per_board": 10, "new_position_fraction_of_current_sleeve_nav": 0.1},
+    "CAP_K20": {"max_positions_per_board": 20, "new_position_fraction_of_current_sleeve_nav": 0.05}
+  },
+  "portfolio": {
+    "boards": ["MAIN", "CHINEXT"],
+    "unused_capacity": "cash",
+    "dynamic_redistribution": false,
+    "leverage": false,
+    "pyramiding": false,
+    "combined": "fixed 50% Main sleeve plus 50% ChiNext sleeve with no capital transfer",
+    "adaptive_k_selection": false
+  },
+  "metric_semantics": {
+    "signals": "all frozen Dual Fresh candidates before duplicate-position/capacity handling",
+    "executed_trades": "positions admitted into the sleeve, including positions still active at 2021-12-31",
+    "trade_return_metrics": "completed executed positions only",
+    "capacity_skip": "otherwise admissible signal rejected solely because active positions already equal K",
+    "natural_concurrency": "unlimited-slot chronological replay with one-active-symbol rule; daily positions are end-of-day active counts",
+    "utilization": "daily marked gross exposure divided by same-sleeve NAV",
+    "top_pnl_contribution": "share of total positive daily or completed-trade PnL contributed by the largest positive observations",
+    "max_drawdown_duration": "sessions from the prior NAV peak through the MaxDD trough",
+    "cagr": "stitched daily NAV CAGR only"
+  },
+  "development_decision": {
+    "material_cagr_improvement": "candidate combined CAGR minus K20 combined CAGR >= 1.00 percentage point",
+    "acceptable_drawdown": "combined MaxDD no worse than -10% and no more than 5.00 points worse than K20",
+    "no_catastrophic_day": "largest combined one-day NAV loss no worse than -3%",
+    "population_preservation": "combined capacity skip rate <=10%",
+    "chronology": "at least four of five combined calendar years positive",
+    "board_interpretability": "Main and ChiNext stitched total returns both positive",
+    "qualified": "all six conditions above",
+    "k5_preferred": "K5 qualifies, exceeds K10 CAGR by >=0.50 point, and MaxDD is no more than 2.00 points worse than K10",
+    "k10_preferred": "K10 qualifies and K5 does not satisfy k5_preferred",
+    "capitalization_ready": "K5 and K10 both qualify, their CAGR difference is <0.50 point, and K10 is retained as the less concentrated freeze",
+    "concentration_too_high": "a candidate clears material CAGR but fails acceptable drawdown or no-catastrophic-day",
+    "does_not_solve": "neither K5 nor K10 clears material CAGR",
+    "verdict_order": [
+      "IMPLEMENTATION_BLOCKED",
+      "DUAL_FRESH_K5_PREFERRED",
+      "DUAL_FRESH_CAPITALIZATION_READY",
+      "DUAL_FRESH_K10_PREFERRED",
+      "CAPITALIZATION_IMPROVES_RETURN_BUT_CONCENTRATION_TOO_HIGH",
+      "CAPITALIZATION_DOES_NOT_SOLVE_LOW_CAGR"
+    ]
+  },
+  "forbidden": [
+    "non-Dual freshness lane comparison",
+    "new feature or threshold",
+    "K outside 5/10/20",
+    "adaptive K",
+    "ranking optimization",
+    "entry/target/H40/cost/board-allocation change",
+    "risk targeting or cash redeployment",
+    "Validation 2022-2023",
+    "repository 2024+ data"
+  ]
+}
