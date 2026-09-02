@@ -2613,3 +2613,38 @@ evidence or untouched confirmation data. No post-2023 outcome, CY-011 row, new
 Alpha outcome, or large acquisition entered Cycle 012. The two serial runs are
 byte-identical. Planning remains: price-limit lifecycle/acceptance first,
 leader-follower convergence second, and liquidity-transition assimilation third.
+
+## Collapse-gap-zone Strategy Development V1
+
+`ASHARE-COLLAPSE-GAP-ZONE-STRATEGY-DEVELOPMENT-V1` starts from `185240baeea`
+and leaves the 617-event corrected V3 detector unchanged. It freezes 48 trading
+translations per board and performs five independent expanding walk-forward
+selections for Main Board and ChiNext over 2014--2021. Validation 2022--2023 and
+repository 2024+ outcomes remain unopened.
+
+The first execution attempt was invalid before any accepted strategy evidence:
+it stopped two selected test replays on corporate-action lineage instead of
+recovering the repository-authoritative QD-010 contract. The amended frozen
+spec (`e0846c...`) records this error and binds the already accepted
+announcement-known pre-effective risk exit plus exact cash-only action ledger;
+no detector, signal, parameter, selector, cost, board, K, or chronology changed.
+All 58 forced-exit candidate rows exit strictly before effectiveness; selected
+portfolios contain three forced exits and zero unresolved actions.
+
+Main stitched walk-forward return is -3.98%, CAGR -0.84%, maximum drawdown
+-12.83%, Sharpe -0.145, and Calmar -0.065 across 314 completed trades. ChiNext
+is +7.57%, +1.52%, -5.38%, 0.405, and 0.283 across 161 trades; its 2017 sleeve
+remains cash because no configuration clears the unchanged train sample gate.
+The fixed 50/50 portfolio is +1.79% total, +0.37% CAGR, -7.45% maximum drawdown,
+0.122 Sharpe, and 0.049 Calmar. Main/ChiNext fixed E1-FULL-F1-T10 baselines are
+-16.72%/-12.00%, so selection improves translation but does not establish a
+robust edge. Top-five next-year neighborhoods have median returns -0.46%/+0.07%
+and profitable fractions 44%/55%.
+
+Every eligible fold selects F2 no-failure and T20; FULL is selected in eight of
+nine folds. SECOND_RECLAIM is frequent but mixed next year and does not robustly
+solve first-entry rejection. Final classification is
+`MARGINAL_ZONE_STRATEGY_EDGE`, not ready for Validation. Do not open 2022--2023,
+rescue the detector, add translations, or select a board/year after this result.
+All required chronology, cross-board, T+1, duplicate-position, K20, leverage,
+and post-2021 audit counts are zero. Two serial runs are byte-identical.

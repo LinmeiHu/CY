@@ -1,0 +1,199 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-STRATEGY-DEVELOPMENT-V1",
+  "status": "EXECUTION_CONTRACT_CORRECTED_AFTER_INVALID_BLOCKED_RUN_BEFORE_ANY_ACCEPTED_STRATEGY_EVIDENCE",
+  "start_checkpoint": "185240baeea518d3330ed34555ecd69f9ca0c48f",
+  "development": ["2014-01-01", "2021-12-31"],
+  "walk_forward": [
+    {"train": [2014, 2016], "test": 2017},
+    {"train": [2014, 2017], "test": 2018},
+    {"train": [2014, 2018], "test": 2019},
+    {"train": [2014, 2019], "test": 2020},
+    {"train": [2014, 2020], "test": 2021}
+  ],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false,
+    "post_2021_outcome_read_count": 0
+  },
+  "source_identity": {
+    "v3_spec_sha256": "6b8c946efa5d1cd8f99103180859d43fabff28583d73a794632b9faeb4c18b16",
+    "v3_candidates_sha256": "5920df21aec93aa5c16b63f3ed03b7e32bd76d38c8860052ebabcb3df4b05fa3",
+    "outcome_v1_spec_sha256": "e3da3093faf50da92544abf338ac1d1cae3aadd7e42672f998bd8facd7bf2f7c",
+    "outcome_v1_events_sha256": "b27c2366fdef62e9592bb1c1ebec6a2f1e7c66d7b27312394dd17b65f74e8610",
+    "outcome_v1_result_sha256": "721f39ffa8e7bebeef7b6c0751c664769a6b12e42d3eadfde334a223880f61d4",
+    "qd010_distributions_sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387",
+    "qd010_rights_sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb",
+    "full_lifecycle_candidates": 617,
+    "pattern_detector_change_allowed": false
+  },
+  "semantic_contract": {
+    "economic_sequence": "frozen corrected collapse-gap-zone pattern -> first return to lowest meaningful unresolved layer -> rejection or acceptance process -> entry after observable confirmation -> primary-layer traversal -> success, failure, or time-stop exit",
+    "causal_background": "structural traversal is broad but immediate first acceptance is commonly rejected, so a compact translation family tests deeper acceptance and second reclaim without altering pattern semantics",
+    "frozen_state": ["all V3 detector state", "primary layer L and U", "W=U-L", "first lower-return timestamp"],
+    "confirmation_trigger": "one of four preregistered completed-minute entry confirmations",
+    "entry_time": "first subsequent legal one-minute open strictly after selected confirmation",
+    "outcome": "chronological K20 sleeve NAV after target, failure, or time-stop exits and 20 bp per-side costs"
+  },
+  "boards": {
+    "MAIN": ["Shanghai Main Board", "Shenzhen Main Board"],
+    "CHINEXT": ["ChiNext"],
+    "selection_shared": false,
+    "candidate_parameter_family_identical": true
+  },
+  "entries": {
+    "E1_FIRST_ACCEPT": "first completed minute close >= L after V3 first return",
+    "E2_QUARTER_ACCEPT": "first completed minute close >= L+0.25W after V3 first return",
+    "E3_HALF_ACCEPT": "first completed minute close >= L+0.50W after V3 first return",
+    "E4_SECOND_RECLAIM": "after first completed minute close < L following V3 first return, first later completed minute close >= L",
+    "fill": "next legal minute open strictly after confirmation",
+    "legal_buy": "same frozen PIT/action lineage, hard/current/history valid, trade_status=1, current-day tradable, market-rule valid, no blocking action, positive finite open strictly below registered upper limit",
+    "confirmation_wait_cap": "none before 2021-12-31; absence is censored",
+    "future_bar_use_allowed": false
+  },
+  "targets": {
+    "P75": "L+0.75W",
+    "FULL": "U",
+    "target_specific_nonentry": "if legal entry price is already at or above the selected target, do not enter that target configuration because traversal completed before fill",
+    "fill_after_t1": "on a sellable day, first legal minute open at or above target fills at that open; otherwise first later minute high reaching target fills exactly at target"
+  },
+  "t1": {
+    "same_day_sale_allowed": false,
+    "same_day_target_hit": "record diagnostic only and do not latch success; from T+1 onward target must be executable again",
+    "sellable_from": "first trading session strictly after entry session"
+  },
+  "failures": {
+    "F1_DAILY_LOSS_OF_ZONE": "completed daily close < L; exit at first subsequent legal sell minute/open",
+    "F2_NO_FAILURE_STOP": "no price failure exit"
+  },
+  "time_stops": {
+    "sessions": [5, 10, 20],
+    "clock": "entry session counts as session one, so stop session cal_idx=entry_cal_idx+N-1",
+    "exit": "sell at stop-session close when legally executable; if blocked or absent, first later legal sell minute/open",
+    "same_day_priority": "on T+1 or later target execution has priority intraday; time-stop close has priority over a failure signal formed at that same close"
+  },
+  "action_handling": {
+    "coordinate_rule": "L/U comparisons use the V3 coordinate factor; supported cash-only action resets preserve invalid_step_cum and coordinate continuity",
+    "accepted_contract": "the already accepted ASHARE-CA-REPLAY-003 minimum QD-010 contract is binding",
+    "risk_events": "source-complete share distributions with share_multiplier>1 and every explicitly registered rights issue",
+    "known_position_rule": "at the first completed market-session close with known_at<=close and close date<effective_date, force a later legal open exit strictly before effective_date",
+    "known_new_risk_rule": "block an entry when a risk event was known by its confirmation decision and the proposed entry is on or before effective_date",
+    "cash_only_actions": "source-complete share_multiplier=1 cash_per_share_gross is credited exactly on effective_date for positions entered before that date",
+    "fail_closed": "unknown timing, no pre-effective legal exit, unresolved effective row, rights participation, or unsupported action semantics block the replay",
+    "pit_grade": "bounded PIT-B current-history research; no strict PIT-A claim"
+  },
+  "execution_correction_audit": {
+    "invalid_prior_spec_sha256": "b41b39b1e1e726aa0fcfcc83c5498135d4aeee3688509a3d975f4d58aba81f3c",
+    "invalid_prior_run_classification": "IMPLEMENTATION_BLOCKED",
+    "reason": "the first implementation invented action-lineage stopping instead of recovering the repository-authoritative accepted QD-010 risk-exit and exact-cash contract",
+    "accepted_strategy_evidence_observed_before_correction": false,
+    "alpha_or_parameter_change": false,
+    "detector_change": false
+  },
+  "parameter_space": {
+    "entries": 4,
+    "targets": 2,
+    "failures": 2,
+    "time_stops": 3,
+    "configurations_per_board": 48,
+    "boards": 2,
+    "folds": 5,
+    "search_rows": 480
+  },
+  "portfolio": {
+    "K": 20,
+    "new_position_target_fraction_current_nav": 0.05,
+    "allocation_nav_mark": "cash plus active positions at latest completed daily close; approximately one twentieth",
+    "unused_slots": "cash",
+    "leverage": false,
+    "pyramiding": false,
+    "one_active_position_per_symbol": true,
+    "fractional_units": true,
+    "entry_competition_rank": [
+      "larger primary_layer_width_pct",
+      "stronger board_relative_return_percentile",
+      "deeper peak_to_low_decline",
+      "longer persistence_sessions",
+      "earlier signal time",
+      "symbol lexical order"
+    ],
+    "cost_bps_per_side": 20
+  },
+  "period_boundary": {
+    "train_or_test_starts_cash": true,
+    "signals": "entry timestamp must fall inside period",
+    "period_end": "positions still open at period end are marked to the final valid close but are not counted as completed trades",
+    "stitched_walk_forward": "multiply independent cash-start test-year sleeve returns; no old-rule position carry across January selection boundaries"
+  },
+  "training_gate": {
+    "completed_trades_total_min": 30,
+    "completed_trades_most_recent_train_year_min": 5,
+    "applied_separately_by_board": true,
+    "no_eligible_action": "SELECTION_BLOCKED and test sleeve remains cash"
+  },
+  "selector": {
+    "primary": "maximum net CAGR/abs(MaxDD)",
+    "tie_breaks": [
+      "higher daily Sharpe",
+      "higher median calendar-year return",
+      "higher CAGR",
+      "lower top-five PnL-day concentration",
+      "entry simplicity E1 then E2 then E3 then E4",
+      "shorter time stop",
+      "lexical parameter key"
+    ],
+    "manual_override": false
+  },
+  "baseline": {
+    "entry": "E1_FIRST_ACCEPT",
+    "target": "FULL",
+    "failure": "F1_DAILY_LOSS_OF_ZONE",
+    "time_stop": 10,
+    "K": 20
+  },
+  "fixed_combined": {"MAIN": 0.5, "CHINEXT": 0.5, "cross_sleeve_transfer": false},
+  "parameter_stability_classification": {
+    "STABLE": "at most two distinct full configurations across five folds and the modal full configuration is selected in at least three folds",
+    "MODERATELY_ADAPTIVE": "three distinct full configurations across five folds",
+    "HIGHLY_UNSTABLE": "four or five distinct full configurations across five folds"
+  },
+  "verdict_policy": {
+    "allowed": [
+      "ZONE_STRATEGY_READY_FOR_VALIDATION",
+      "ZONE_STRATEGY_EDGE_BUT_ENTRY_UNSTABLE",
+      "ZONE_STRATEGY_EDGE_BUT_CONCENTRATED",
+      "MARGINAL_ZONE_STRATEGY_EDGE",
+      "NO_ZONE_STRATEGY_EDGE",
+      "IMPLEMENTATION_BLOCKED"
+    ],
+    "deterministic_order": [
+      "IMPLEMENTATION_BLOCKED if a selected replay violates required lineage or correctness invariants",
+      "NO_ZONE_STRATEGY_EDGE if fixed 50/50 stitched total return is non-positive",
+      "MARGINAL_ZONE_STRATEGY_EDGE if the fixed 50/50 result does not exceed the simple average of the two continuous-board baseline total returns, has non-positive Calmar, or fewer than half of unblocked top-five neighborhood tests are profitable",
+      "ZONE_STRATEGY_EDGE_BUT_CONCENTRATED if otherwise qualifying positive edge turns non-positive after excluding 2020 or the best five PnL days in either positive-return sleeve",
+      "ZONE_STRATEGY_EDGE_BUT_ENTRY_UNSTABLE if otherwise qualifying entry-family sequence is HIGHLY_UNSTABLE on either board",
+      "ZONE_STRATEGY_READY_FOR_VALIDATION otherwise"
+    ],
+    "ready_evidence": "positive stitched walk-forward economics, improvement over fixed E1 baseline, positive Calmar, at least half-profitable top-five neighborhood support, no 2020 or best-five-day domination, and entry-family stability; no requirement that all five years be positive",
+    "no_post_result_threshold_invention": true
+  },
+  "diagnostics": [
+    "top five TRAIN configurations replayed unchanged next year",
+    "entry, target, failure, and time-stop selection frequency",
+    "parameter stability",
+    "return excluding 2020 and best one/five days",
+    "formation-date and strategy-entry-date clustering",
+    "semantic postmortem after verdict"
+  ],
+  "forbidden": [
+    "detector modification",
+    "cross-board parameter sharing",
+    "K optimization",
+    "ranking optimization",
+    "daily-close entry",
+    "new targets, stops, or horizons",
+    "panic, Dryup, Compression, RSI, MACD, RS, ML, ST exclusion, or new industry filters",
+    "Validation 2022-2023",
+    "repository 2024+ data"
+  ]
+}

@@ -469,6 +469,29 @@ and independent post-development confirmation.
 
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 
+## Collapse-gap-zone Strategy Development V1
+
+The corrected 617-event V3 pattern remains structurally informative, but its
+small predeclared trading-translation search yields only
+`MARGINAL_ZONE_STRATEGY_EDGE`. Main Board walk-forward loses 3.98%; ChiNext
+earns 7.57%; fixed 50/50 earns 1.79% with 0.122 Sharpe. The selected rules beat
+the exact first-accept/full-fill/daily-loss/T10 baseline, yet Main remains
+negative and the top-five neighborhoods are not jointly reliable.
+
+The useful semantic representation is narrower: every eligible fold selects no
+daily-loss failure and T20, and eight of nine choose full fill. That supports
+the distinction between common immediate rejection and slower structural zone
+traversal. SECOND_RECLAIM is selected repeatedly but has mixed next-year signs,
+so it is not a proven entry solution. No 2022--2023 Validation, detector rescue,
+new threshold, or favorable board/year selection is authorized.
+
+What remains valid from old work? Eventual zone traversal, immediate rejection,
+PIT/T+1 execution constraints, and the corrected former-leader/collapse-layer
+representation. What must not be generalized? Failures of local single gaps,
+Open×1.01 returns, same-day reclaims, fixed T+1/T+3 exits, or the first
+conservative entry do not prove all corrected zone translations fail; this V1
+now supplies the bounded strategy-level result.
+
 ## Cycle 009: defensive independence and return-engine discovery
 
 | Rank | Family | Evidence | Decision |

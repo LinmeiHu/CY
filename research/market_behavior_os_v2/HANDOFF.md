@@ -2744,3 +2744,30 @@ habitat, threshold, horizon, or weighting rescue is authorized. Highest value
 is genuinely independent confirmation if lawful data becomes available;
 otherwise map objective stock-level support/recovery semantics before testing
 usefulness.
+
+## Latest authoritative handoff — collapse-gap-zone Strategy Development V1
+
+Resume after the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-STRATEGY-DEVELOPMENT-V1`; starting checkpoint is
+`185240baeea`. The corrected V3 detector and 617 Outcome Discovery events are
+unchanged. The final amended spec hash is `e0846c4464f82b65...`; it transparently
+invalidates an initial blocked implementation that failed to recover the
+already accepted QD-010 execution contract. The valid replay uses known-at
+pre-effective risk exits and exact cash-only ledgers with no alpha or parameter
+change.
+
+The 48-config-per-board, five-fold walk-forward finishes
+`MARGINAL_ZONE_STRATEGY_EDGE`. Main is -3.98% total, -12.83% maximum drawdown,
+and -0.145 Sharpe; ChiNext is +7.57%, -5.38%, and 0.405; fixed 50/50 is +1.79%,
+-7.45%, and 0.122. Both boards improve substantially over the exact E1-FULL-
+F1-T10 baseline, but Main remains negative and neighborhood support is weak
+(44% profitable Main, 55% ChiNext). F2 no-failure and T20 win every eligible
+fold; FULL wins eight of nine. SECOND_RECLAIM is recurrent but chronologically
+mixed, not a solved entry mechanism.
+
+Do not open 2022--2023 Validation. Do not tune entry, target, failure, stop,
+ranking, K, costs, detector, board allocation, or QD-010 handling. Preserve this
+as a marginal translation result and allocate the next lane to a genuinely
+independent mechanism rather than zone rescue. Repository 2024+ and CY-011 were
+not opened. Search/result/report hashes are `c001fa38...`/`45975c46...`/
+`49b3f4f9...`; focused tests pass and two final serial runs are byte-identical.
