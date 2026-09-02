@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | True-Gap V5's single fixed recovery probe is causal but under-segments the authoritative long-leg concerns | Review the 20 new blind charts and exact V4 protracted comparison; close this exact probe if visual review agrees, with no threshold sweep or outcomes |
+| EXPLORE | 10% | True-Gap V6 has a causal cluster representation but its complete fixed long-only translation fails economically | Preserve the representation only; no stop/filter/board/horizon/K rescue of the exact V6 strategy family |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,16 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## True-Gap Causal Cluster V6
+
+The causal semantic gate passes and the cluster representation is deterministic,
+but strategy capital is zero. Structural U fill reaches 81%--90% across fixed
+horizons while negative unresolved tails drive every K10 Development lane to a
+negative mean and CAGR. Main and ChiNext both fail, and lower utilization at K20
+only reduces loss rather than creating edge. T40 is descriptive only. The exact
+E1/U/no-failure/T10-T20-T40/K5-K10-K20 family is closed; the cluster state may
+only re-enter under a separately preregistered independent representation test.
 
 ## Collapse Open-Zone V1 and True-Gap V2
 

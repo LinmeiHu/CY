@@ -1,8 +1,22 @@
 # Lean discovery map
 
-Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
+Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
+
+## True-Gap Causal Cluster V6 one-shot discovery
+
+- Formation-time-causal significance and local clustering pass the Stage-A
+  machine gate: 120,038 true gaps, 12,671 clusters, 4,454 causal first returns;
+  all causal audits are zero and the frozen hash is `2705011d...162`.
+- CORE+BOUNDARY structural U fill is high (81.29% T10, 86.64% T20, 89.59%
+  T40), confirming a repair structure rather than an executable payoff.
+- Every fixed K10 Development lane has negative mean trade return and CAGR.
+  CORE+BOUNDARY is -0.72%/-0.55%/-0.50% mean and -11.34%/-9.03%/-7.83%
+  CAGR at T10/T20/T40; both boards and all K sensitivities fail.
+- The 2022--2023 post-observation diagnostic is also negative and is explicitly
+  not Validation. Verdict `V6_CAUSAL_TRUE_GAP_STRUCTURE_ONLY`; exact strategy
+  translation closed, representation retained, repository 2024+ unopened.
 
 ## Collapse True-Gap Impulsive-Leg Segmentation V5
 

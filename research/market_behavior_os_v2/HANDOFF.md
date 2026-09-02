@@ -1,6 +1,27 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-09-02.
+Updated 2026-09-03.
+
+## Latest checkpoint: True-Gap Causal Cluster V6 one-shot discovery
+
+Stage A froze a formation-time-causal significant-gap clustering contract before
+any outcome access. It found 120,038 true gaps, 12,671 clusters and 4,454 causal
+first returns: CORE 3,615, BOUNDARY 344 and STALE 495. Frozen spec hash is
+`2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162`.
+All future-information, freeze, touch-reset and 2024+ audits are zero.
+
+Stage B opened only the predetermined 2014--2021 Development snapshot plus the
+explicitly descriptive 2022--2023 post-observation diagnostic. CORE+BOUNDARY
+K10 U full-fill reaches 81.29%/86.64%/89.59% at T10/T20/T40, but mean trade
+returns are -0.72%/-0.55%/-0.50% and CAGR -11.34%/-9.03%/-7.83%. Main and
+ChiNext both fail; all K5/K10/K20 lanes remain negative. T40 is only the least
+bad descriptive horizon, never a selected rule. Final verdict is
+`V6_CAUSAL_TRUE_GAP_STRUCTURE_ONLY`.
+
+Do not rescue this exact family with a stop, filter, board split, neighboring
+horizon, capacity setting, or 2024+ data. Retain the causal cluster/repair state
+only as a possible representation for a separately preregistered independent
+hypothesis.
 
 ## Latest checkpoint: True-Gap Impulsive-Leg Segmentation V5
 

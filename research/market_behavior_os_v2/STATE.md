@@ -1,19 +1,19 @@
 # Market Behavior Research OS V2 state
 
-Updated 2026-09-02.
+Updated 2026-09-03.
 
 ## Program identity
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `af174fd0840b96759edd5e9ebe804e742250aaab` (V1 semantic-audit checkpoint, superseded by the precise governance reconciliation below)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_IMPULSIVE_LEG_SEGMENTATION_V5_HUMAN_REVIEW`
-- `CURRENT_PRIMARY_FRONTIER`: True-Gap identity, hierarchy, persistence, memory and V4 causal no-reset timing remain unchanged. V5 tests one frozen forward recovery-regime termination rule. It is causal and deterministic but leaves TG4-016/017/019 unchanged, retains 1,792/1,793 V4 causal candidates and is classified `RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES`
+- `CURRENT_BASELINE`: `e33da497699d37408f4c7b2a4d6f298fe9b1f931` (V6 one-shot start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_CAUSAL_CLUSTER_V6_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: V6 replaces retrospective collapse-leg identity with one formation-time-causal significant-gap cluster. The semantic gate passes, but all six fixed K10 Development lanes have negative mean trade return and negative CAGR; verdict `V6_CAUSAL_TRUE_GAP_STRUCTURE_ONLY`
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen historical evidence. True-Gap V4 is semantic only; no entry, outcome, portfolio, or V1 alpha rule transfers
+- `CURRENT_STRATEGY_CANDIDATE`: none. V6 establishes a causal True-Gap repair representation, not an executable long-only strategy. The exact E1/U/no-failure/T10-T20-T40/K5-K10-K20 family is closed without stop, filter, board, horizon, or capacity rescue
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
+- `STARTING_HEAD`: `e33da497699d37408f4c7b2a4d6f298fe9b1f931`
 
 ## Current continuation state
 
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do the 20 new V5 blind charts and exact 20-case V4 protracted comparison confirm that the fixed recovery probe under-segments economically separate collapses? Human review is required; no threshold search or outcome discovery is authorized.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: outside this closed translation, can the V6 causal cluster/repair state contribute as a risk or market-structure representation to a separately preregistered strategy? No local parameter rescue or 2024+ access is authorized.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,22 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### True-Gap Causal Cluster V6 one-shot discovery
+
+V6 freezes one formation-time-causal cluster process before opening outcomes.
+It ledgers 120,038 true gaps, 12,671 significant-gap clusters and 4,454 causal
+first returns (3,615 CORE, 344 BOUNDARY, 495 STALE). The frozen Stage-A spec
+hash is `2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162`;
+all causal audits are zero and deterministic reconstruction is byte-identical.
+
+Structural repair is common: CORE+BOUNDARY U full-fill is 81.29% by T10,
+86.64% by T20 and 89.59% by T40. It is not monetizable under the frozen
+long-only translation. K10 CORE+BOUNDARY mean trade returns are -0.72%/-0.55%/
+-0.50% and CAGR is -11.34%/-9.03%/-7.83% for T10/T20/T40. Positive medians
+and 70.45%--79.12% win rates coexist with severe unresolved left tails. Both
+boards fail, K5/K10/K20 all fail, and the post-observation 2022--2023 diagnostic
+also fails. Verdict `V6_CAUSAL_TRUE_GAP_STRUCTURE_ONLY`; this is not Validation.
 
 ### Collapse Open-Zone V1 governance reconciliation
 

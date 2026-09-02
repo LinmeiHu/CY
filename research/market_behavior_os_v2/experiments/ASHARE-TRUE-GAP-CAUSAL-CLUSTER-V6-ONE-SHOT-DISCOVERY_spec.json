@@ -1,0 +1,104 @@
+{
+  "experiment_id": "ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY",
+  "authoritative_start_head": "e33da497699d37408f4c7b2a4d6f298fe9b1f931",
+  "stage_order": [
+    "STAGE_A_SEMANTIC_CAUSAL_FREEZE",
+    "STAGE_B_OUTCOME_AND_FIXED_TRADING_SNAPSHOT"
+  ],
+  "data_boundaries": {
+    "development": ["2014-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus": "SEALED"
+  },
+  "true_gap": {
+    "condition": "High_t < Low_t_minus_1",
+    "interval": "[High_t, Low_t_minus_1]",
+    "coordinate": "QD-010-comparable daily coordinate",
+    "all_gaps_retained": true
+  },
+  "causal_reference_strength": {
+    "reference_high": "highest comparable High in the 120 completed sessions strictly before the first eligible cluster gap",
+    "reference_time": "date of that highest High, earliest date on ties",
+    "absolute_strength_any": [
+      "reference_high / trailing_60_low_at_reference - 1 >= 0.50",
+      "reference_high / trailing_120_low_at_reference - 1 >= 0.70"
+    ],
+    "relative_or_impulsive_any": [
+      "board_ret60_percentile_at_reference >= 0.90",
+      "ret20_at_reference >= 0.30",
+      "large_up_days120_at_reference >= 2",
+      "limit_up_days120_at_reference >= 2"
+    ],
+    "required": "at least one absolute-strength condition AND at least one relative-or-impulsive condition",
+    "future_confirmed_peak": false
+  },
+  "material_local_selloff": {
+    "condition_by_cluster_freeze": "1 - running_low / causal_reference_high >= 0.30",
+    "interpretation": "semantic retrieval, not alpha optimization"
+  },
+  "causal_gap_significance": {
+    "width_pct": "(Low_t_minus_1 - High_t) / Close_t_minus_1",
+    "causal_observed_decline": "causal_reference_high - completed gap-day coordinate Low",
+    "causal_width_share": "coordinate gap width / causal_observed_decline",
+    "MAJOR": "width_pct >= 0.025 OR causal_width_share >= 0.08",
+    "SECONDARY": "width_pct >= 0.01 OR causal_width_share >= 0.03",
+    "MINOR": "otherwise",
+    "future_final_trough_used": false
+  },
+  "cluster_state": {
+    "start": "first causal MAJOR/SECONDARY true gap satisfying frozen causal strength context",
+    "extension": "each later causal MAJOR/SECONDARY true gap while provisional cluster is open",
+    "provisional_primary": "lowest-price currently unresolved eligible gap",
+    "freeze_a": "10 completed sessions since last eligible gap with no new eligible gap",
+    "freeze_b": "most recent 5 completed sessions all have High below provisional primary lower",
+    "freeze_materiality": "material local selloff condition is true",
+    "frozen_primary": "lowest unresolved eligible gap at cluster freeze",
+    "pre_freeze_touch": "any upward touch from below after primary formation and at or before freeze rejects exact first-return event",
+    "touch_clock_reset": false
+  },
+  "supersession": {
+    "condition": "after freeze and before first return, a newly formed MAJOR/SECONDARY true gap has a lower boundary below the frozen primary lower",
+    "disposition": "SUPERSEDED_BY_NEW_LOWER_CLUSTER",
+    "later_gap_merged_backward": false,
+    "new_cluster_starts_forward": true
+  },
+  "causal_first_return": {
+    "definition": "earliest later minute upward interaction from below with price at or above frozen primary lower, strictly after cluster freeze",
+    "memory": {
+      "CORE": "age_sessions <= 60",
+      "BOUNDARY": "61 <= age_sessions <= 90",
+      "STALE": "age_sessions > 90"
+    },
+    "stale_active_strategy_eligible": false
+  },
+  "stage_b_frozen_translation": {
+    "signal": "V6 causal first return",
+    "entry_confirmation": "first completed 1-minute bar after signal with Close >= true-gap lower",
+    "entry": "next legal executable 1-minute Open strictly after confirmation bar",
+    "same_bar_entry": false,
+    "profit_target": "true-gap upper U",
+    "t_plus_one": true,
+    "failure_stop": "NONE",
+    "time_stop_lanes": [10, 20, 40],
+    "cost_entry_bps": 20,
+    "cost_exit_bps": 20,
+    "portfolio": {
+      "main_sleeve": 0.5,
+      "chinext_sleeve": 0.5,
+      "k_sensitivity_per_sleeve": [5, 10, 20],
+      "primary_k": 10,
+      "one_active_position_per_symbol": true,
+      "unused_capital": "CASH",
+      "leverage": false,
+      "cross_sleeve_transfer": false,
+      "collision_order": "entry time, larger causal gap width, larger material drawdown, earlier cluster freeze, symbol"
+    }
+  },
+  "governance": {
+    "stage_b_requires_persisted_semantic_artifacts_and_frozen_spec_hash": true,
+    "semantic_change_after_outcome_open_allowed": false,
+    "threshold_search": false,
+    "post_outcome_rescue": false,
+    "repository_2024_plus_opened": false
+  }
+}
