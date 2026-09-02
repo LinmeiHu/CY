@@ -4,6 +4,23 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Monetization Anatomy V1
+
+- Freeze exact V3 pattern/layer identity and the conservative Outcome V1 E1
+  entry; study only U target capture under T+1, 40 bp round-trip costs, PIT,
+  price-limit/tradability, and QD-010 action semantics through 60 sessions.
+- The common cohort is 538 of 594 eligible entries; 56 are censored before any
+  40D/60D outcome attachment. Median net target distance is 3.08%.
+- Legal fill reaches 79.00%/85.87%/87.92% at 20D/40D/60D versus 88.48%
+  structural 60D fill. FULL_OR_H60 mean/median is +1.47%/+3.11%, date-equal
+  mean is +1.49%, and six of eight annual means are positive.
+- Severe-loss10 is 31.97%, above the outcome-blind 30% positive-gate ceiling;
+  U-before-loss10 is 67.84%. Verdict: `NO_ZONE_MONETIZATION_STRUCTURE` under
+  the frozen joint gate. This is a narrow risk failure, not a traversal failure.
+- No Trading Semantics V2, favorable subgroup/horizon selection, Validation,
+  or repository 2024+ outcome access. Close the exact lane and retain only the
+  legal-resolution/duration/risk representations.
+
 ## Collapse Gap-Zone Outcome Discovery V1
 
 - Informal user acceptance advances V3 to first outcome discovery without

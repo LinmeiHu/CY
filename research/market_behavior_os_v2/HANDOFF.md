@@ -2,6 +2,37 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Monetization Anatomy V1 closure
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-MONETIZATION-ANATOMY-V1`; its starting checkpoint is
+`14e0be9e27ea0f8d8ca2a410cee0dd4fd099cac1` on
+`research/ashare-ultrashort-v1`. The frozen spec hash is
+`35447ac8f0437e6e099166452447f400927bc1bfab0af50b7ec3666b34963d0a`.
+
+The study changes no detector, layer, entry, target, execution, cost, or action
+semantic. It uses 538 common-cohort frozen E1 entries observable for 60 sessions
+by 2021-12-31; 56 of 594 otherwise eligible entries are censored outcome-blind.
+Median net distance to U is 3.08%. Legal full fill reaches 79.00%/85.87%/87.92%
+at 20D/40D/60D, close to 88.48% structural 60D fill. The 110 same-day structural
+fills revisit U legally by 60D in 97.27% of cases, so T+1 is not the dominant
+eventual monetization loss.
+
+Fixed event-weighted FULL_OR_H20/H40/H60 mean net payoffs are +0.69%/+1.38%/
++1.47%; H60 median is +3.11% and date-equal mean is +1.49%. Six of eight years
+have positive H60 means, with negative 2017 and 2020. However, severe-loss10 is
+31.97% by 60D versus the frozen 30% positive-gate ceiling; U-before-loss10 is
+67.84%. The machine verdict is `NO_ZONE_MONETIZATION_STRUCTURE`, a narrow
+joint-gate failure rather than absence of structural traversal.
+
+Do not authorize Trading Semantics V2, select the favorable multilayer/
+short-persistence/high-distance strata, choose H40/H60, or open Validation.
+Close the exact V3 + E1 + U anatomy lane and move to an independent mechanism.
+Eight focused tests and byte-identical reruns pass; all detector/layer/entry,
+future-bar, T+1, impossible-fill, action-coordinate, and sealed-boundary audits
+are zero. Large 60-session daily/minute paths remain under
+`/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_monetization_anatomy_v1`.
+
 ## Latest checkpoint: Collapse Gap-Zone Outcome Discovery V1 closure
 
 Resume from the commit containing

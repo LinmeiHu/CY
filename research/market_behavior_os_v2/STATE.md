@@ -7,18 +7,18 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `69e2703703a235ff5a2fb246e0c072e14ff1d8a1` (Collapse Gap-Zone Outcome Discovery V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_OUTCOME_DISCOVERY_V1_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: `ZONE_TRAVERSAL_EXISTS_BUT_NOT_MONETIZABLE`. The corrected V3 zone object has broad structural traversal, but conservative completed-close/next-legal-minute entry does not retain positive T+5/T+10 economics under 40 bp and date-equal weighting. No parameter development, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
+- `CURRENT_BASELINE`: `14e0be9e27ea0f8d8ca2a410cee0dd4fd099cac1` (Collapse Gap-Zone Monetization Anatomy V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_MONETIZATION_ANATOMY_V1_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: `NO_ZONE_MONETIZATION_STRUCTURE` under the outcome-blind frozen joint gate. The corrected V3/E1/U object has 87.92% legally monetizable 60D full fill and positive fixed H60 event/date-equal mean payoff, but 31.97% severe-loss10 breaches the preregistered 30% ceiling. This is a narrow risk-gate failure, not absence of structural traversal. No V2 translation, Validation 2022--2023, or repository 2024+ outcome was opened
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Outcome Discovery V1 does not justify Strategy Development V1 or Validation; preserve zone traversal as a structural price-path representation only
+- `CURRENT_STRATEGY_CANDIDATE`: none. Monetization Anatomy V1 does not authorize a V2 translation or Validation; preserve legal-fill, duration, and risk geometry as descriptive representations only
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `69e2703703a235ff5a2fb246e0c072e14ff1d8a1`
+- `STARTING_HEAD`: `14e0be9e27ea0f8d8ca2a410cee0dd4fd099cac1`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `69e2703703a235ff5a2fb246e0c072e14ff1d8a1`
-- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_ZONE_STRUCTURE_AND_EXECUTABLE_OUTCOME_DISCOVERY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
+- `CURRENT_HEAD_AT_RESUME`: `14e0be9e27ea0f8d8ca2a410cee0dd4fd099cac1`
+- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_FROZEN_E1_U_MONETIZATION_ANATOMY_THROUGH_60_SESSIONS; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move to a genuinely independent mechanism. Do not rescue the corrected zone lane through persistence, width, collapse, board, entry, exit, technical, panic, Dryup, or ML selection; do not open Validation.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: move to a genuinely independent mechanism. Do not rescue the exact corrected zone lane through favorable persistence, distance, layer, board, horizon, entry, exit, technical, panic, Dryup, or ML selection; do not open Validation.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-OUTCOME-DISCOVERY-V1`
-  is complete with structural but non-monetizable Development evidence. No strategy replay has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-MONETIZATION-ANATOMY-V1`
+  is complete with high legal resolution, positive fixed payoff, but a frozen severe-loss gate failure. No V2 or Validation has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,31 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone Monetization Anatomy V1
+
+The experiment freezes V3 event/primary-layer identity, the exact Outcome V1
+conservative E1 entry, primary-layer U target, 20 bp per-side costs, T+1, PIT
+lineage, historical price-limit/tradability rules, and QD-010 actions before
+attaching new 40D/60D outcomes. Of 617 source events, 598 have frozen executable
+E1 entries, four are known-action risk blocked, and 594 remain eligible. The
+common complete-60D cohort is 538; 56 are censored outcome-blind at 2021-12-31.
+
+Median net target distance is 3.08%. Legal fill is 37.17%/57.99%/66.36%/
+79.00%/85.87%/87.92% at T+1/5D/10D/20D/40D/60D. Structural 60D fill is
+88.48%, so T+1 removes little eventual capture even though 110 events fill
+structurally on D0. Event-weighted FULL_OR_H20/H40/H60 means are +0.69%/
++1.38%/+1.47%; H60 median is +3.11% and date-equal H60 mean is +1.49%.
+Six of eight annual H60 means are positive; 2017 and 2020 are negative.
+
+Risk remains material: severe-loss10 is 31.97% by 60D and U-before-loss10 is
+67.84%. The frozen positive gate required severe-loss10 no greater than 30%,
+alongside the otherwise satisfied fill, target-distance, payoff, date-equal,
+and chronology conditions. The exact machine verdict is therefore
+`NO_ZONE_MONETIZATION_STRUCTURE`. Treat this as a narrow preregistered risk-gate
+failure, not as evidence that zone repair is absent. Eight focused tests, all
+execution/lineage/action/sealed-boundary audits, and byte-identical reruns pass.
+No V2, Validation 2022--2023, or repository 2024+ outcomes are authorized.
 
 ### Collapse Gap-Zone Outcome Discovery V1
 
