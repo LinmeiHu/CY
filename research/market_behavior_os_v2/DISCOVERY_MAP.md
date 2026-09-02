@@ -4,6 +4,21 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Entry Admission Development V1
+
+- Freeze V3/E1/U/F2/H40, 40 bp costs, strict T+1/PIT/QD-010, K20 per board,
+  fixed 50/50 sleeves, and exactly four admission lanes before replay outcomes.
+- Board/fold TRAIN-only turnover q66.67 cutoffs use zero test-year rows. All 538
+  prior Anatomy H40 event outcomes reproduce within the exact semantic anchor.
+- Combined baseline/L1/L2/L3 CAGR is 1.57%/3.37%/3.74%/3.31%; retained signals
+  are 100%/45.0%/55.4%/41.7%. Every filtered lane beats baseline in 4/5 years.
+- L3 raises mean/median trade return +216.06/+36.64 bp and cuts severe-loss10
+  10.25% to 2.50%. L2 has best CAGR but only +15.79 bp median improvement.
+- Verdict: `FRESHNESS_EDGE_BOARD_SPECIFIC`. Main misses exact board support;
+  ChiNext supports L2/L3. Preserve frozen L3 for at most one separately
+  authorized Validation; no lane-by-CAGR choice, threshold/feature/stop rescue,
+  or repository 2024+ access.
+
 ## Collapse Gap-Zone Entry Quality Discovery V1
 
 - Freeze a 538-event outcome-blind pre-entry feature panel before attaching

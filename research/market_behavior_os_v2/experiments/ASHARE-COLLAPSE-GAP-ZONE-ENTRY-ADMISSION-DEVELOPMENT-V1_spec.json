@@ -1,0 +1,74 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-ENTRY-ADMISSION-DEVELOPMENT-V1",
+  "status": "FROZEN_BEFORE_H40_TRADE_AND_PORTFOLIO_OUTCOMES",
+  "start_checkpoint": "f5456e5cc06dee5f4d9654ab61adc498bbd2621a",
+  "development": ["2014-01-01", "2021-12-31"],
+  "pseudo_oos_folds": [[2014, 2016, 2017], [2014, 2017, 2018], [2014, 2018, 2019], [2014, 2019, 2020], [2014, 2020, 2021]],
+  "sealed": {"validation": ["2022-01-01", "2023-12-31"], "validation_opened": false, "repository_2024_plus_data_opened": false},
+  "input_identity": {
+    "entry_quality_spec_sha256": "0408fdad2249106c78a0cd55ef6cf04890ea1824e3d16eef2d2e673d8e00cc80",
+    "entry_quality_features_sha256": "9aaddc51762308d920fb979fa027081ebcfa46a248788adc76b804af601613c9",
+    "entry_quality_feature_freeze_sha256": "ce0efcd910aad91747109e5e6bfc1b1015714303a0c3404752e268fb5261e7ba",
+    "anatomy_events_sha256": "96307f172a5ae9cc939576cda3b35833700edc9b7dd8986ab928763e613648ac",
+    "resolution_state_source_sha256": "d45e85739dd7ba0c7bd400a9ee2ed58aa1265e43982ea1cfc5a5a2de66a792e2",
+    "resolution_state_daily_paths_sha256": "a0c798465f4b1c63171f395c5de59b7339311c1fd5b1c63e1c3a3c6c773a8d8c",
+    "resolution_state_minute_paths_sha256": "d82ed48514d719c671d477a01a62c2a53039e8a54f2ba40269a08543e17fc13e",
+    "strategy_trade_candidates_sha256": "da34442580dbedb3c0fcd0d14ee89b3e96bd18f3382c0ce00d7315a1b5c0f3dc",
+    "strategy_daily_sha256": "a4eb64cb51c1c820d55d01fc30306273a616ab7a171126bbbda716392f43d4d5",
+    "legal_opens_sha256": "590925aa247fe4d2551f18f561149edf9bc52a85b6925903a2dd0afdc94601e1",
+    "qd010_actions_sha256": "a349851232f7867b31e6ae9fae208861f74a0998e12643b4155650c8b7bce0f1"
+  },
+  "semantic_contract": {
+    "pattern": "frozen V3",
+    "entry": "frozen E1 next legal executable minute open",
+    "target": "frozen primary-layer U; first legal T+1-or-later execution",
+    "failure_stop": "none",
+    "time_stop": "entry_cal_idx+40 completed-session close when legal, otherwise first later legal open; QD-010 known pre-effective risk exit may preempt",
+    "cost": "20 bp entry plus 20 bp exit",
+    "h40_interpretation": "newly frozen Development translation motivated by prior 20-40D incremental resolution; not an independently validated optimum",
+    "h40_reproduction_anchor": "all 538 prior anatomy events must exactly reproduce full_or_h40 validity and exit kind, and reproduce dividend-aware net return within 1e-12, before any portfolio outcome is accepted"
+  },
+  "lanes": {
+    "L0_BASELINE": "all otherwise-valid frozen E1 signals",
+    "L1_AGE_FRESH": "zone_age_sessions<=90",
+    "L2_TURNOVER_FRESH": "cum_turnover_since_zone<=board-and-fold TRAIN-only 66.666667th percentile",
+    "L3_DUAL_FRESH": "zone_age_sessions<=90 and cum_turnover_since_zone<=the same board-and-fold TRAIN-only cutoff"
+  },
+  "turnover_cutoff": {
+    "population": "otherwise-valid frozen E1 feature observations for the same board and TRAIN years, irrespective of portfolio execution or outcome",
+    "estimator": "pandas Series.quantile(2/3, interpolation='linear')",
+    "test_year_rows_used": false,
+    "pooled_2014_2021_cutoff_used": false
+  },
+  "portfolio": {
+    "boards": ["MAIN", "CHINEXT"],
+    "capacity": 20,
+    "new_position_target": "min(5% current sleeve NAV, available cash)",
+    "leverage": false,
+    "unused_capacity": "cash",
+    "single_active_position_per_symbol": true,
+    "same_time_ranking": ["entry_time ascending", "primary_layer_width_pct descending", "board_relative_return_percentile descending", "peak_to_low_decline descending", "persistence_sessions descending", "symbol ascending"],
+    "combined": "fixed 50% independently replayed Main sleeve plus 50% independently replayed ChiNext sleeve; no capital transfer",
+    "lane_selection": "none; all four fixed lanes carried through every fold"
+  },
+  "metrics": {
+    "signal_count": "admitted valid signals before capacity and duplicate-position constraints",
+    "executed_trade_count": "positions actually admitted into the K20 portfolio, whether or not H40 exit is observable before 2021-12-31",
+    "completed_trade_count": "executed positions with a frozen target/time/action exit observed by period end; trade-return statistics use completed trades",
+    "cagr": "chronological stitched NAV CAGR only; never mean trade return times frequency",
+    "severe_loss10": "completed net trade return<=-10%",
+    "concentration": "compound daily NAV returns after removing the best one or five daily returns"
+  },
+  "verdict_implementation": {
+    "material_trade_improvement": "versus board-matched baseline, mean and median completed net trade return each improve by at least 25 bp",
+    "material_combined_portfolio_improvement": "combined CAGR improves by at least 1.00 percentage point, total return improves, MaxDD is not worse by more than 2.00 points, and the lane beats baseline combined calendar return in at least three of five test years",
+    "board_support": "on that board, mean and median trade return each improve at least 25 bp and CAGR improves at least 1.00 point",
+    "freshness_admission_edge": "one lane has material trade and combined-portfolio improvement and board support on both Main and ChiNext",
+    "board_specific": "one lane has board support on exactly one board and improves combined CAGR by at least 0.50 point",
+    "trades_but_not_portfolio": "one lane has material trade improvement on combined completed trades but combined CAGR improvement is below 0.50 point or nonpositive",
+    "marginal": "one lane improves combined CAGR by 0.50 to less than 1.00 point with nonnegative mean and median trade-return changes, or otherwise narrowly misses one material gate",
+    "no_edge": "none of the above",
+    "order": ["IMPLEMENTATION_BLOCKED", "FRESHNESS_ADMISSION_EDGE", "FRESHNESS_EDGE_BOARD_SPECIFIC", "FRESHNESS_IMPROVES_TRADES_BUT_NOT_PORTFOLIO", "MARGINAL_FRESHNESS_ADMISSION_EDGE", "NO_FRESHNESS_ADMISSION_EDGE"]
+  },
+  "forbidden": ["new feature", "lane selection", "age or turnover threshold search", "recent10/acceleration/contact/higher-low", "failure exit", "H40/U/E1 change", "ML", "Validation 2022-2023", "repository 2024+ data"]
+}

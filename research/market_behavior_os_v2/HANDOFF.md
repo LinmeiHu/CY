@@ -2,6 +2,34 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Entry Admission Development V1
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-ENTRY-ADMISSION-DEVELOPMENT-V1`; its starting
+checkpoint is `f5456e5cc06dee5f4d9654ab61adc498bbd2621a` on
+`research/ashare-ultrashort-v1`. Frozen spec hash is `b91917559a02c31f361c0dd6d38b7a3f6913b83e59de6cb4a0a71d4d651f82ad`.
+
+This is Development-only expanding walk-forward execution. V3/E1/U/F2/H40,
+40 bp round-trip costs, PIT/T+1/QD-010, K20 per board, and 50/50 combined sleeves
+are fixed. L0/L1 age<=90/L2 board-fold TRAIN q66.67 turnover/L3 dual were all
+carried unchanged through 2017--2021. The 538-event prior H40 anchor reproduces
+exact validity, exit kind, and net return; all execution and sealed-period audits
+are zero.
+
+Combined baseline/L1/L2/L3 CAGR is 1.57%/3.37%/3.74%/3.31%; MaxDD is
+-7.00%/-1.94%/-1.77%/-1.74%. The lanes retain 100%/45.0%/55.4%/41.7% of 496
+signals and beat baseline annual return in four of five years. L3 improves mean
+and median trades by +216.06/+36.64 bp and cuts severe-loss10 from 10.25% to
+2.50%. L2 has the highest CAGR but improves median trade only +15.79 bp, below
+the frozen materiality floor.
+
+Main improves economically but fails the exact board-support median gate;
+ChiNext supports L2 and L3. Exact verdict: `FRESHNESS_EDGE_BOARD_SPECIFIC`.
+For any later Validation consideration, freeze L3 rather than selecting L2 by
+observed CAGR. Do not tune thresholds, add recent10/contact/stop logic, change
+H40/U/E1, or open repository 2024+. Result/report hashes are `3b5b6660...`/
+`260b4a02...`; five focused tests and byte-identical serial rebuilds pass.
+
 ## Latest checkpoint: Collapse Gap-Zone Entry Quality Discovery V1
 
 Resume from the commit containing

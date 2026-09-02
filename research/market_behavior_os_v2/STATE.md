@@ -7,18 +7,18 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `3efa648f553148bc8e99063e62ec4f0ad66ef23f` (Entry Quality Discovery V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_ENTRY_QUALITY_DISCOVERY_V1_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: `ENTRY_QUALITY_PRIMARILY_FRESHNESS_DRIVEN`. Younger/lower-cumulative-turnover zones have materially better clean-resolution and lower severe-tail outcomes before frozen E1 entry. Recent10 efficiency and pullback burden do not support the expected clean-approach hypothesis. Age and cumulative turnover are highly entangled (rho 0.851), so time decay and capital rotation are not separately identified. No admission replay, Validation 2022--2023, or repository 2024+ outcome was opened
+- `CURRENT_BASELINE`: `f5456e5cc06dee5f4d9654ab61adc498bbd2621a` (Entry Admission Development V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_ENTRY_ADMISSION_DEVELOPMENT_V1_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: `FRESHNESS_EDGE_BOARD_SPECIFIC`. Under frozen V3/E1/U/F2/H40 and K20, all three fixed freshness lanes improve combined CAGR and left-tail risk versus baseline, but only ChiNext clears the preregistered board-level trade-return and CAGR gates. L3 clears combined trade and portfolio materiality; L2 has the best combined CAGR but misses the combined median-trade materiality floor. Validation 2022--2023 and repository 2024+ remain unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none yet. One bounded Entry Admission Development V1 is justified with at most 2--3 frozen freshness translations; recent10/contact rescue and Validation remain unauthorized
+- `CURRENT_STRATEGY_CANDIDATE`: frozen L3 dual-fresh admission is large enough for later, separately authorized Validation consideration as a board-specific Development candidate; L2 is retained as a higher-CAGR but non-material-median diagnostic. No threshold, feature, entry/exit, or board rescue is authorized
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `3efa648f553148bc8e99063e62ec4f0ad66ef23f`
+- `STARTING_HEAD`: `f5456e5cc06dee5f4d9654ab61adc498bbd2621a`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `3efa648f553148bc8e99063e62ec4f0ad66ef23f`
-- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_CAUSAL_PREENTRY_FRESHNESS_AND_APPROACH_DISCOVERY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
+- `CURRENT_HEAD_AT_RESUME`: `f5456e5cc06dee5f4d9654ab61adc498bbd2621a`
+- `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_EXPANDING_WALK_FORWARD_ENTRY_ADMISSION; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: freeze at most 2--3 simple freshness admission translations before expanding walk-forward execution. Do not optimize age/turnover thresholds, add recent10/contact conditions, develop an FS stop, or open Validation.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: if separately authorized, freeze exactly one Validation contract for the Development-qualified L3 dual-fresh candidate while preserving board-separated reporting and fixed 50/50 combination. Do not tune age/turnover thresholds, select L2 by its higher observed CAGR, add features/stops, or open repository 2024+.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,9 +41,9 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-ENTRY-QUALITY-DISCOVERY-V1`
-  is complete. Freshness/memory ranks entry quality; recent approach cleanliness
-  does not. No admission replay or Validation has run.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-ENTRY-ADMISSION-DEVELOPMENT-V1`
+  is complete. Freshness improves H40 trade/portfolio economics, but the exact
+  verdict is board-specific. No Validation has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -69,6 +69,31 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone Entry Admission Development V1
+
+The study freezes V3, E1, primary-layer U, no failure stop, H40, 40 bp costs,
+strict T+1/PIT/QD-010 execution, K20 per board, and four lanes before portfolio
+outcomes. Turnover cutoffs are computed separately by board from expanding
+TRAIN-only features for each 2017--2021 test year. All 538 prior Anatomy H40
+events reproduce exit validity/kind and dividend-aware net return within 1e-12.
+
+Combined baseline has 496 signals, 495 executions, +1.35% mean trade, +2.97%
+median trade, +7.81% total return, 1.57% CAGR, and -7.00% MaxDD. L1 age-fresh
+retains 45.0% of signals and reaches 3.37% CAGR; L2 turnover-fresh retains 55.4%
+and reaches the best 3.74% CAGR; L3 dual-fresh retains 41.7%, reaches +3.51% mean
+and +3.34% median trade, 3.31% CAGR, and -1.74% MaxDD. Every freshness lane beats
+baseline combined return in four of five years.
+
+The improvement is strongly left-tail related: combined severe-loss10 falls
+from 10.25% to 3.24%/4.55%/2.50% for L1/L2/L3, while positive-trade and U-hit
+rates also rise. Ordinary winner quality improves modestly: L3 median gains
+36.64 bp; L2 gains only 15.79 bp and misses the frozen 25 bp materiality floor.
+Main portfolio economics improve but no lane clears all board-support trade
+gates; ChiNext supports L2 and L3. Verdict: `FRESHNESS_EDGE_BOARD_SPECIFIC`.
+Validation 2022--2023 and repository 2024+ remain sealed. Spec/result/report
+hashes are `b9191755...`/`3b5b6660...`/`260b4a02...`; five focused tests and two
+byte-identical serial rebuilds pass.
 
 ### Collapse Gap-Zone Entry Quality Discovery V1
 

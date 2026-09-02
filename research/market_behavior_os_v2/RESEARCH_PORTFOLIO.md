@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Frozen pre-entry discovery finds a robust freshness/memory axis: younger/lower-turnover zones materially improve clean resolution, while recent10 cleanliness fails | Allocate one bounded admission-development test with 2--3 frozen freshness translations; no threshold, contact/recent10 rescue, failure exit, or Validation |
+| EXPLORE | 10% | Frozen admission development converts freshness into better H40 economics, but only ChiNext clears exact board-support gates | Preserve L3 as one board-specific candidate for separately authorized Validation; no threshold, lane-by-CAGR, feature, stop, or horizon rescue |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,21 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## Collapse-gap-zone Entry Admission Development V1
+
+Four fixed lanes were replayed with board/fold expanding TRAIN-only cutoffs,
+frozen E1/U/F2/H40, K20 per board, and fixed 50/50 sleeves. Combined CAGR rises
+from 1.57% baseline to 3.37% age-fresh, 3.74% turnover-fresh, and 3.31% dual;
+all three beat baseline in four of five years and reduce MaxDD materially.
+
+This is not a broad-board strategy claim. Main misses the exact board-support
+trade gate, while ChiNext supports turnover-fresh and dual. L3 is the clean
+Development candidate because it clears combined mean/median trade and
+portfolio materiality; L2's higher CAGR is diagnostic because its median-trade
+gain misses the frozen floor. Portfolio implication: reserve only one later
+Validation allocation for frozen L3 if authorized. Do not select on observed
+CAGR, tune cutoffs, add features/stops, or open 2024+.
 
 ## Collapse-gap-zone Entry Quality Discovery V1
 
