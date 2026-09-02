@@ -2929,3 +2929,19 @@ as a marginal translation result and allocate the next lane to a genuinely
 independent mechanism rather than zone rescue. Repository 2024+ and CY-011 were
 not opened. Search/result/report hashes are `c001fa38...`/`45975c46...`/
 `49b3f4f9...`; focused tests pass and two final serial runs are byte-identical.
+
+## Latest authoritative handoff — Dual Fresh K10 Validation V1
+
+Resume after the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-DUAL-FRESH-K10-VALIDATION-V1`; starting checkpoint
+is `5d13bcf685`. Frozen spec hash is `59fcb4e98c1a...`. Exactly 2022--2023 was
+opened in one predetermined run; repository 2024+ was not opened. The admission
+hash is `6d833418...`, and 2023 cutoff outcome use is zero.
+
+Final classification is `DUAL_FRESH_K10_VALIDATION_MIXED`. Combined 94 signals
+produce +6.22% total, +3.19% CAGR, -4.69% MaxDD and 0.690 Sharpe, but ChiNext is
+negative in both years and loses 5.53% overall with 17.65% severe-loss10. Do not
+select Main after Validation or rescue through K5, turnover-only, age-only,
+changed 90/Q66.67/H40/E1/U, stops, filters, cleanliness or ML. Result/report
+hashes are `6983ea8c...`/`8b037f8b...`; focused conservation validation passes
+and trade/NAV artifacts reproduce byte-for-byte.

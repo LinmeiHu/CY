@@ -1,0 +1,101 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-DUAL-FRESH-K10-VALIDATION-V1",
+  "stage": "FIRST_EXTERNAL_VALIDATION",
+  "authoritative_start_head": "5d13bcf685130bff1f1169b6d4ea05a2f192042b",
+  "frozen_before_validation_outcomes": true,
+  "validation_period": ["2022-01-01", "2023-12-31"],
+  "repository_2024_plus": "SEALED",
+  "inputs": {
+    "development_capitalization_spec_sha256": "5c5e4ab7aa9f3737dc581b67700701178ff9984f395243b6f07b692cf930d31c",
+    "development_capitalization_result_sha256": "63b8b57f9bc33209987b275cee2feac20560fb685a061155be6e42b1ec8ffac1",
+    "daily_contract_2013_2023_sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df",
+    "qd004_inventory_sha256": "c4d2906dbced341fbf48089aea7239c1c61cfbb57c665fe084495d46487e6655",
+    "qd004_2022_sha256": "32a6ff7b4d64bdb4da6a572dc9384c12f381689937c50cc3166dcec473cc4cbe",
+    "qd004_2023_sha256": "411402b8ad198ad2b8787dec803dce4cb2131055fabcc0539b6428e046d19dc5",
+    "qd010_distributions_sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387",
+    "qd010_rights_sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+  },
+  "strategy": {
+    "pattern": "EXACT_V3_COLLAPSE_DEFINING_GAP_ZONE_DETECTOR",
+    "primary_layer": "LOWEST_MEANINGFUL_UNRESOLVED_COLLAPSE_DEFINING_LAYER",
+    "admission": {
+      "name": "DUAL_FRESH",
+      "zone_age_sessions_max": 90,
+      "cum_turnover_rule": "BOARD_SPECIFIC_EXPANDING_HISTORY_Q66_67",
+      "quantile": 0.6666666666666666,
+      "interpolation": "linear",
+      "2022_history_end": "2021-12-31",
+      "2023_history_end": "2022-12-31",
+      "outcomes_used": false
+    },
+    "entry": "E1_FIRST_COMPLETED_1M_CLOSE_GE_L_THEN_NEXT_LEGAL_EXECUTABLE_1M_OPEN",
+    "target": "PRIMARY_LAYER_U",
+    "failure_stop": "NONE",
+    "time_stop_sessions": 40,
+    "entry_cost": 0.002,
+    "exit_cost": 0.002,
+    "t_plus_one": true,
+    "corporate_actions": "QD-010_UNCHANGED",
+    "portfolio": {
+      "main_sleeve": 0.5,
+      "chinext_sleeve": 0.5,
+      "k_per_sleeve": 10,
+      "new_position_fraction_of_current_sleeve_nav": 0.1,
+      "unused_capital": "CASH",
+      "cross_sleeve_transfer": false,
+      "one_active_position_per_symbol": true,
+      "collision_ranking": [
+        "entry_time_ascending",
+        "primary_layer_width_pct_descending",
+        "board_relative_return_percentile_descending",
+        "peak_to_low_decline_descending",
+        "persistence_sessions_descending",
+        "symbol_ascending"
+      ]
+    }
+  },
+  "validation_execution": {
+    "years_opened_together": [2022, 2023],
+    "intermediate_strategy_decision_allowed": false,
+    "parameter_selection_count": 0,
+    "development_rule_change_allowed": false,
+    "late_2023_h40_paths": "RIGHT_CENSORED_AT_2023-12-29_WITH_OPEN_POSITIONS_MARKED_TO_PERIOD_END"
+  },
+  "verdict_policy": {
+    "validated_all": {
+      "combined_total_return_gt": 0.0,
+      "combined_mean_net_trade_gt": 0.0,
+      "combined_median_net_trade_gt": 0.0,
+      "each_year_mean_net_trade_gt": 0.0,
+      "each_year_portfolio_return_gt": -0.03,
+      "positive_portfolio_years_min": 1,
+      "u_target_hit_rate_min": 0.8,
+      "severe_loss10_rate_max": 0.1,
+      "maxdd_inflation_max": 3.0,
+      "return_excluding_best_day_gt": 0.0,
+      "return_excluding_best_five_days_gt": -0.02,
+      "top5_trade_positive_pnl_contribution_max": 0.5,
+      "each_board_total_return_gt": 0.0
+    },
+    "failed_any": {
+      "combined_total_return_lte": 0.0,
+      "combined_mean_net_trade_lte": 0.0,
+      "combined_median_net_trade_lte": 0.0,
+      "absolute_max_drawdown_gt": 0.2,
+      "severe_loss10_rate_gt": 0.2
+    },
+    "mixed": "Neither validated_all nor failed_any; no parameter rescue is permitted."
+  },
+  "development_reference": {
+    "signals": 207,
+    "trades": 207,
+    "mean_net_trade_return": 0.0351,
+    "median_net_trade_return": 0.0334,
+    "u_target_hit_rate": 0.93,
+    "severe_loss10_rate": 0.025,
+    "cagr": 0.0668,
+    "max_drawdown": -0.0346,
+    "sharpe": 1.494,
+    "calmar": 1.93
+  }
+}

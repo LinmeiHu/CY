@@ -549,6 +549,15 @@ and independent post-development confirmation.
 
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 
+## Dual Fresh K10 external Validation
+
+The corrected collapse-gap-zone representation retains strong Main and positive
+combined 2022--2023 economics under the frozen contract, but does not transfer
+across boards: ChiNext is negative in both years and its severe-loss tail
+deteriorates. This is `DUAL_FRESH_K10_VALIDATION_MIXED`, not a validated new
+archetype. Zone freshness remains a useful representation; selecting Main after
+seeing Validation would be prohibited post-selection.
+
 ## Collapse-gap-zone Strategy Development V1
 
 The corrected 617-event V3 pattern remains structurally informative, but its

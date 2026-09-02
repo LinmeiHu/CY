@@ -86,3 +86,12 @@ trading lane. Do not promote multilayer, shorter-persistence, high-distance, or
 favorable-board diagnostics into filters, and do not open Validation. Retain
 zone-fill duration and interim-loss geometry as descriptive representations;
 reallocate discovery to an independent economic mechanism.
+
+## Dual Fresh K10 external Validation
+
+The pending Validation allocation is consumed. Combined and Main economics
+survive 2022--2023, but ChiNext fails both years; the frozen verdict is
+`DUAL_FRESH_K10_VALIDATION_MIXED`. Allocate no further budget to parameter
+rescue or post-Validation board selection. Preserve the mixed evidence and
+return the allocation to independent mechanism invention. Repository 2024+
+stays sealed.

@@ -2781,3 +2781,20 @@ solve first-entry rejection. Final classification is
 rescue the detector, add translations, or select a board/year after this result.
 All required chronology, cross-board, T+1, duplicate-position, K20, leverage,
 and post-2021 audit counts are zero. Two serial runs are byte-identical.
+
+## Collapse-gap-zone Dual Fresh K10 Validation V1
+
+The first external Validation opened exactly 2022--2023 in one predetermined
+run under frozen V3/E1/U/F2/H40/Dual-Fresh/K10 semantics. The outcome-blind
+freeze admitted 97 observations; three next-legal-open entries had already
+crossed U and were excluded by the unchanged execution rule, leaving 94
+signals. The 2023 Q66.67 cutoff uses 2022 features and zero outcome rows.
+
+Combined Validation is +6.22% total, +3.19% CAGR, -4.69% MaxDD and 0.690
+Sharpe; completed-trade mean/median are +2.36%/+2.97%, U hit is 90.80% and
+severe-loss10 is 6.90%. Both years are positive and concentration passes. Main
+is strong (+17.98%, 1.235 Sharpe), but ChiNext loses 5.53%, has -0.538 Sharpe
+and 17.65% severe-loss10. Classification is
+`DUAL_FRESH_K10_VALIDATION_MIXED`, not externally validated. No K5,
+single-board, admission, stop, entry, target, filter or ML rescue is authorized.
+Repository 2024+ remains unopened.
