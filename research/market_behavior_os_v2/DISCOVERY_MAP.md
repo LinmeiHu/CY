@@ -4,6 +4,22 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse True-Gap Primary Hierarchy Semantic V3
+
+- V2 human review accepted the true-gap primitive but found primary hierarchy,
+  original-leg membership, persistence and staleness too loose.
+- V3 freezes the original leg end at the first >=30% drawdown trough stabilized
+  for 10 sessions with no >5% lower low and no new MAJOR true gap. Later local
+  and MINOR gaps remain visible but cannot be primary.
+- 67,970 gaps remain: 31,914 in original legs, 35,838 post-collapse local, and
+  218 retained unsegmented. CORE/BOUNDARY candidates are 3,822/497.
+- Regression: 7/9 positive references survive; all 13 known negatives are
+  rejected. TG2-010 remains a valid CORE multi-gap episode only after replacing
+  its persistence-ineligible old primary; TG2-022 fails the frozen leg boundary.
+- New pilot: 20 outcome-blind charts, 14 CORE/6 BOUNDARY, 13 Main/7 ChiNext.
+  Verdict `TRUE_GAP_PRIMARY_HIERARCHY_PARTIALLY_ALIGNED`; human review required.
+  No outcome or strategy work.
+
 ## Collapse Open-Zone V1 governance reconciliation
 
 - Canonical descriptive alias: `ASHARE-FORMER-LEADER-COLLAPSE-OPEN-ZONE-RECLAIM-V1`.

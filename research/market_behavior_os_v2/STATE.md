@@ -8,10 +8,10 @@ Updated 2026-09-02.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `af174fd0840b96759edd5e9ebe804e742250aaab` (V1 semantic-audit checkpoint, superseded by the precise governance reconciliation below)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_ZONE_SEMANTIC_FIDELITY_V2_HUMAN_REVIEW`
-- `CURRENT_PRIMARY_FRONTIER`: V1 remains a valid, reproducible programmatic family under the canonical descriptive alias `ASHARE-FORMER-LEADER-COLLAPSE-OPEN-ZONE-RECLAIM-V1`. It tested `[Open_t, Low_{t-1}]`, not the intended true no-trade interval `[High_t, Low_{t-1}]`. The historical label `V1_SEMANTIC_CONTRACT_INVALID` is retained only as lineage for the failed strict-gap interpretation; it must not be used to imply that V1's Open-Zone trades, execution audits, returns, or mixed Validation are invalid
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_PRIMARY_HIERARCHY_SEMANTIC_V3_HUMAN_REVIEW`
+- `CURRENT_PRIMARY_FRONTIER`: True-Gap identity is frozen as `High_t < Low_t-1`, `[High_t, Low_t-1]`. V3 independently segments the original impulsive collapse leg, excludes post-collapse local and MINOR gaps from primary competition, enforces 10-session/5-below persistence, and classifies <=60/61--90/>90-session memory as CORE/BOUNDARY/STALE. Machine audits pass; semantic alignment remains unconfirmed until the new 20-chart human review
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen with historical Development and mixed Validation evidence. Independent True-Gap V2 is at an outcome-blind 30-chart human semantic gate; no V1 admission, entry, target, horizon, K, or Validation claim transfers
+- `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen with historical Development and mixed Validation evidence. Independent True-Gap V3 is semantic only; no entry, outcome, portfolio, or V1 alpha rule transfers
 - `BRANCH`: `research/ashare-ultrashort-v1`
 - `STARTING_HEAD`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does the frozen 30-chart outcome-blind V2 pilot correctly reconstruct all original-collapse true gaps and select the lowest relevant unresolved layer? Only human semantic review may answer; no outcome discovery is authorized yet.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do the 20 new V3 blind charts show reliable original-leg segmentation, local-gap exclusion, primary hierarchy, persistence, and memory semantics? Only human review may answer; outcome discovery remains unauthorized.
 
 ## Research OS V2.3 resource and worker state
 
@@ -94,6 +94,34 @@ For 600250.SH, 2022-04-26/27/28 all remain in the ledger. The selected lowest
 relevant layer is 2022-04-27 `[4.99,5.29]`, and the first semantic return is
 2022-05-11 10:02. Price 5.31 is below the 2022-04-26 true-gap lower boundary
 5.45 and therefore cannot count as entering that true gap.
+
+### Collapse True-Gap Primary Hierarchy Semantic V3
+
+The authoritative V2 human review accepted the primitive as basically correct
+but rejected primary selection, collapse-leg membership, persistence and
+staleness as reliable. V3 leaves all 67,970 true gaps untouched and adds three
+separate layers: identity, original-collapse eligibility, and active repair.
+
+The original impulsive leg ends at the first >=30% drawdown trough whose next
+10 completed sessions neither fall more than 5% below it nor form a new MAJOR
+true gap. Of 67,970 gaps, 31,914 are in original legs, 35,838 are post-collapse
+local, and 218 belong to 189 episodes that cannot be segmented before the
+sealed boundary; every gap remains in the ledger. In-leg MAJOR/SECONDARY/MINOR
+counts are 8,811/8,007/15,096.
+
+Active primary candidates require MAJOR/SECONDARY, original-leg membership,
+no prior full resolution, at least 10 completed sessions, a prior five-session
+`High<L` run, and a minute return from below. CORE/BOUNDARY candidates are
+3,822/497. The frozen TG2 regression retains 7/9 positive references and rejects
+13/13 known negative references. TG2-010's old layer fails persistence but its
+multi-gap episode remains CORE under an earlier V3 primary; TG2-022 is rejected
+because its old layer forms after the original leg end.
+
+The new blind package contains exactly 20 charts: 14 CORE/6 BOUNDARY and
+13 Main/7 ChiNext. Verdict is
+`TRUE_GAP_PRIMARY_HIERARCHY_PARTIALLY_ALIGNED`; human review is mandatory.
+No return, PnL, strategy replay, V1 alpha inheritance, or repository 2024+ data
+was opened.
 
 ### Historical True-Gap damage audit V1 lineage
 

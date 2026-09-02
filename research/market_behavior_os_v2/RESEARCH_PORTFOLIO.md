@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | V1 Open-Zone is valid historical programmatic evidence but supplies no True-Gap evidence; independent V2 implementation is awaiting blind human semantic review | Review the 30 V2 charts; do not open outcomes or inherit V1 freshness, K, entry, target, or Validation claims |
+| EXPLORE | 10% | V1 Open-Zone remains independent historical evidence; True-Gap V3 now has a frozen primary hierarchy but still awaits the new 20-chart human semantic gate | Review V3's 14 CORE/6 BOUNDARY charts; do not open outcomes or inherit V1 alpha/execution rules |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -26,6 +26,15 @@ mixed Validation remain valid for the independently named Open-Zone family,
 but they supply no True-Gap evidence. Independent outcome-blind V2 ledgers
 67,970 true gaps and has a 30-chart human semantic gate. No V1 parameter or
 portfolio choice transfers; no V2 outcome work is authorized before review.
+
+## Collapse True-Gap Primary Hierarchy Semantic V3
+
+V3 retains every V2 true-gap identity but separates original-collapse
+eligibility and active repair state. Post-collapse local, MINOR, and STALE gaps
+cannot become active primary layers; persistence requires 10 completed sessions
+and a five-session fully-below run. The 20-chart pilot is outcome blind and no
+post-event bar is shown. Allocation remains semantic-review only: no strategy
+capital or outcome budget is authorized before human acceptance.
 
 ## Collapse-gap-zone Dual Fresh Capitalization V1
 

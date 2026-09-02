@@ -1,0 +1,84 @@
+{
+  "artifacts": {
+    "blind_chart_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_primary_hierarchy_semantic_v3/blind_chart_index.csv",
+      "sha256": "322c77b61c04ff5e7f942d2c321d6259a034bb2323712f5a24b5f39ca6e5ef31"
+    },
+    "candidates": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3_candidates.parquet",
+      "sha256": "118fd1f26edf7b2689b53b7ed7530d6f90015124f61f5b2cfc37bb46a92d75b4"
+    },
+    "diagnostic_chart_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_primary_hierarchy_semantic_v3/diagnostic_chart_index.csv",
+      "sha256": "8d34222b730738c4746fe827721d58328e019260a4fcb4c68e46f631c1cb344c"
+    },
+    "gap_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_primary_hierarchy_semantic_v3/ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3_gap_ledger.parquet",
+      "sha256": "d9912703bdacb8a94bbf8a1328b2e320f2efc53bed546e32eb47d0063c04eff1"
+    },
+    "mapping": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3_mapping.parquet",
+      "sha256": "94572658f297f4a29d247c48e4d755afefb258022801c2970df4642c84f5656d"
+    },
+    "regression_30": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3_regression_30.parquet",
+      "sha256": "01a032476a87b5527bde936b260eeae118ffe416769e87b6a75e44771146d7a8"
+    },
+    "review": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3_review.csv",
+      "sha256": "6796dbd3110b59bd5774dbdcf61e823908d24b60981b9b70edd71e5c7b795497"
+    }
+  },
+  "audit": {
+    "first_return_below_true_gap_count": 0,
+    "future_depth_used_to_define_gap_identity_count": 0,
+    "minor_gap_used_as_primary_count": 0,
+    "open_based_true_gap_count": 0,
+    "post_collapse_local_gap_used_as_primary_count": 0,
+    "repository_2024_plus_data_opened": "NO",
+    "return_analysis_run": "NO",
+    "stale_gap_used_as_core_primary_count": 0,
+    "strategy_backtest_run": "NO",
+    "true_gap_primitive_changed_count": 0
+  },
+  "experiment": "ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3",
+  "frozen_spec_hash": "938f39487820cdd35cc77891c1f770bbacc0807a78bc8f73f71b5aa34fda8c2a",
+  "human_review_required": true,
+  "new_pilot": {
+    "blind_chart_count": 20,
+    "blind_chart_index": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_primary_hierarchy_semantic_v3/blind_chart_index.csv",
+    "boundary_count": 6,
+    "chinext_count": 7,
+    "core_count": 14,
+    "diagnostic_chart_index": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_primary_hierarchy_semantic_v3/diagnostic_chart_index.csv",
+    "main_count": 13,
+    "review_csv": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3_review.csv"
+  },
+  "population": {
+    "boundary_candidates": 497,
+    "core_active_candidates": 3822,
+    "insufficient_persistence_rejected": 4680,
+    "major_in_leg": 8811,
+    "minor_in_leg": 15096,
+    "minor_primary_rejected": 4673,
+    "no_eligible_primary": 34738,
+    "post_collapse_local_gaps": 35838,
+    "secondary_in_leg": 8007,
+    "stale_rejected": 1620,
+    "true_gaps_in_original_collapse_leg": 31914,
+    "true_gaps_total": 67970,
+    "unsegmented_episodes": 189,
+    "unsegmented_gaps": 218
+  },
+  "regression_30": {
+    "TG2_010_STATUS": "REJECTED_INSUFFICIENT_PERSISTENCE",
+    "TG2_015_STATUS": "REJECTED_POST_COLLAPSE_LOCAL",
+    "TG2_018_STATUS": "REJECTED_STALE",
+    "TG2_024_STATUS": "CORE_CANDIDATE",
+    "negative_regression_rejected": 13,
+    "negative_regression_total": 13,
+    "positive_regression_survived": 7,
+    "positive_regression_total": 9
+  },
+  "verdict": "TRUE_GAP_PRIMARY_HIERARCHY_PARTIALLY_ALIGNED"
+}

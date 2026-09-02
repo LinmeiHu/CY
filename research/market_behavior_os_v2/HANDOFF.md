@@ -2,6 +2,32 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: True-Gap Primary Hierarchy Semantic V3
+
+The user reviewed all 30 V2 charts and accepted the true-gap primitive as
+basically correct, while finding primary selection, original-collapse
+membership, persistence and staleness unreliable. V3 changes none of the
+67,970 true-gap identities and opens no outcomes.
+
+The original impulsive leg uses the frozen first >=30% drawdown trough followed
+by 10 completed sessions with no >5% lower low and no new MAJOR true gap.
+Post-leg gaps remain visible as local gaps but cannot be primary; MINOR gaps
+also remain visible but cannot be primary. Active events require >=10 sessions,
+a prior five-session `High<L` run, unresolved U, and exact minute return from
+below. Memory is CORE <=60, BOUNDARY 61--90, STALE >90.
+
+Population: 31,914 in-leg gaps (8,811 MAJOR/8,007 SECONDARY/15,096 MINOR),
+35,838 post-collapse local, and 218 retained but unsegmented gaps. There are
+3,822 CORE and 497 BOUNDARY candidates. The TG2 regression retains 7/9 positive
+references and rejects 13/13 known negatives. TG2-010's old primary fails
+persistence, but its multi-gap episode remains CORE with a different earlier
+primary; TG2-015 is post-local, TG2-018 stale, and TG2-024 CORE.
+
+Exactly 20 new blind charts were generated: 14 CORE/6 BOUNDARY and 13 Main/
+7 ChiNext. Current verdict is `TRUE_GAP_PRIMARY_HIERARCHY_PARTIALLY_ALIGNED`.
+Stop for human review. Do not open outcomes or 2024+, inherit V1 rules, or start
+Outcome Discovery until the user explicitly accepts V3 semantic precision.
+
 ## Latest checkpoint: Open-Zone V1 reconciliation and independent True-Gap V2
 
 The historical V1 lane is retained as the valid, reproducible programmatic
