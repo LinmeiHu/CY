@@ -1,0 +1,100 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-RESOLUTION-STATE-DISCOVERY-V1",
+  "status": "FROZEN_BEFORE_CHECKPOINT_FORWARD_OUTCOMES",
+  "start_checkpoint": "5b0220dfac1e9ec9a7925270a50321198d32a9a5",
+  "development": ["2014-01-01", "2021-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false
+  },
+  "source_identity": {
+    "anatomy_v1_spec_sha256": "35447ac8f0437e6e099166452447f400927bc1bfab0af50b7ec3666b34963d0a",
+    "anatomy_v1_events_sha256": "96307f172a5ae9cc939576cda3b35833700edc9b7dd8986ab928763e613648ac",
+    "anatomy_v1_result_sha256": "6adb6a530d77389e7f2b494e0083216c26771c21da04dc7280e2c279628ecba2",
+    "outcome_v1_spec_sha256": "e3da3093faf50da92544abf338ac1d1cae3aadd7e42672f998bd8facd7bf2f7c",
+    "outcome_v1_events_sha256": "b27c2366fdef62e9592bb1c1ebec6a2f1e7c66d7b27312394dd17b65f74e8610",
+    "outcome_v1_entries_sha256": "d7d970824e3ecfdf7784544dc481b8d5f97fde7f0cceefbaefd50c247417ef6d",
+    "qd010_trade_candidates_v2_sha256": "da34442580dbedb3c0fcd0d14ee89b3e96bd18f3382c0ce00d7315a1b5c0f3dc",
+    "qd010_action_events_sha256": "a349851232f7867b31e6ae9fae208861f74a0998e12643b4155650c8b7bce0f1",
+    "legal_opens_sha256": "590925aa247fe4d2551f18f561149edf9bc52a85b6925903a2dd0afdc94601e1",
+    "pit_daily_2014_2021_sha256": "a4eb64cb51c1c820d55d01fc30306273a616ab7a171126bbbda716392f43d4d5",
+    "frozen_executable_e1_entries": 598,
+    "known_qd010_risk_blocked_entries": 4
+  },
+  "semantic_contract": {
+    "economic_sequence": "frozen V3 collapse-gap-zone -> frozen E1 executable entry -> legally unresolved checkpoint state -> normal rejection/oscillation or failure-to-resolve process -> future legal U resolution or unresolved severe tail",
+    "mission": "estimate whether the frozen zone-resolution hypothesis remains alive at completed checkpoint close; not generic return prediction and not a stop replay",
+    "frozen_identity": ["symbol", "zone_stack_id", "primary_layer_id", "L", "U", "W", "first_lower_return_time", "E1 confirmation time", "E1 entry time", "E1 entry raw and coordinate price"],
+    "entry_session": "D0; E1 occurs intraday",
+    "checkpoint_sessions": [1, 3, 5, 10, 20],
+    "checkpoint_clock": "completed daily close at entry_cal_idx+C",
+    "extrema_clock": "exact one-minute bars from E1 entry_time through checkpoint close, inclusive; no pre-entry portion of D0",
+    "completed_close_clock": "D0 close through checkpoint close inclusive for close-share and rejection diagnostics",
+    "hypothetical_action_clock": "no earlier than the next legal session after checkpoint; no action is replayed in V1"
+  },
+  "dynamic_cohort": {
+    "active_unresolved": "frozen E1 exists; no legal U execution by checkpoint close; checkpoint states observable under original lineage; no QD-010 censor/risk exit by checkpoint",
+    "horizon_label_eligibility": "C<H and either legal U is observed by H before Development ends, or entry_cal_idx+H is observable no later than 2021-12-31; any QD-010 censor before target/H makes that horizon label ineligible",
+    "no_common_60d_substitution": true
+  },
+  "outcomes": {
+    "resolve_by": [20, 40, 60],
+    "unresolved_d60": "no legal U execution through D60",
+    "severe_unresolved_d60": "UNRESOLVED_D60 and (terminal net at D60 <= -10% or MAE through D60 <= -20%)",
+    "future_loss10_before_u": "strictly after checkpoint and strictly before legal U/D60, coordinate low <= 90% of entry coordinate price",
+    "future_loss20_before_u": "strictly after checkpoint and strictly before legal U/D60, coordinate low <= 80% of entry coordinate price",
+    "same_target_bar_adverse_order": "unknown; target bar is excluded from future-loss and future-MAE-before-U calculations"
+  },
+  "state_dictionary": {
+    "max_progress_raw": "(maximum coordinate high from E1 entry through C - L)/W",
+    "progress_bins": {"P0": "x<0.25", "P1": "0.25<=x<0.75", "P2": "0.75<=x<1", "P3": "x>=1 while legally unresolved"},
+    "current_zone_position": "(coordinate close C-L)/W",
+    "distance_below_l_w": "max(0,(L-coordinate close C)/W)",
+    "distance_bins": {"Z0": "close>=L", "Z1": "0<distance<=1", "Z2": "distance>1"},
+    "mae_entry_to_c": "minimum coordinate low from E1 entry through C divided by entry coordinate price minus one",
+    "adverse_reward_ratio": "abs(min(MAE,0))/(U/entry_coordinate_price-1)",
+    "arr_bins": {"A0": "x<1", "A1": "1<=x<2", "A2": "x>=2"},
+    "recovery_to_l": "1 when post-entry low>=L, otherwise (close C-post-entry low)/(L-post-entry low)",
+    "recovery_bins": {"R0": "x<1/3", "R1": "1/3<=x<2/3", "R2": "x>=2/3"},
+    "underwater_share": "D0..C completed closes below entry coordinate price divided by C+1",
+    "below_l_share": "D0..C completed closes below L divided by C+1",
+    "share_bins": {"LOW": "x<1/3", "MID": "1/3<=x<=2/3", "HIGH": "x>2/3"},
+    "recovery_3d_w": "(close C-close C-3)/W for C>=3",
+    "recovery_3d_states": {"UP": "x>0.25", "FLAT": "-0.25<=x<=0.25", "DOWN": "x<-0.25"},
+    "low_structure": "for C>=5 compare minimum exact post-entry session low over C-2..C with C-5..C-3 using absolute coordinate tolerance 1e-10",
+    "rejection_episodes": "distinct transitions into completed close below L from D0 through C; diagnostic only"
+  },
+  "surfaces": [
+    "progress_bin x arr_bin",
+    "progress_bin x distance_bin",
+    "distance_bin Z1/Z2 x recovery_bin for close below L"
+  ],
+  "failure_states": {
+    "FS1_STALLED_AND_DAMAGED": "max_progress_raw<0.25 and adverse_reward_ratio>=2",
+    "FS2_FAR_BELOW_AND_NOT_RECOVERING": "distance_below_l_w>1 and recovery_to_l<1/3",
+    "FS3_STALLED_DAMAGED_DOWN": "FS1 and recovery_3d_w<-0.25"
+  },
+  "weighting": ["event", "reentry_date_equal", "formation_date_equal"],
+  "robustness": ["2014-2021 year", "MAIN/CHINEXT", "frozen persistence stratum", "outcome-blind target-distance tercile"],
+  "verdict_implementation": {
+    "material_candidate": "at D5 or D10: unresolved lift>=2, precision minus base>=10 percentage points, tail capture>=20%, resolver contamination<=50%, winners sacrificed<=15%",
+    "timely_candidate": "median gross mark-to-market loss at first frozen-checkpoint trigger>-10% and at least 50% of first triggers occur before -10%",
+    "checkpoint_stable": "lift>=1.5 at two or more applicable checkpoints including D5 or D10",
+    "year_stable": "among at least four years with state N>=3, lift>1 in at least 60% of supported years and at least three years",
+    "board_stable": "state N>=10 and lift>1 in both MAIN and CHINEXT at D5 or D10",
+    "date_robust": "reentry-date-equal and formation-date-equal lift>1.25 at the same qualifying checkpoint",
+    "not_age_only": "at least one persistence group <=120 sessions has state N>=10 and lift>1.25",
+    "not_target_distance_only": "at least two target-distance terciles have state N>=10 and lift>1",
+    "separable": "one candidate satisfies material, timely, checkpoint, year, board, date, age, and target-distance conditions",
+    "only_after_damage": "a candidate is material or weakly informative but fails timing because median first-trigger loss<=-10% or fewer than 50% trigger before -10%",
+    "weakly_separable": "no separable candidate, but one candidate at D5 or D10 has lift>=1.5, precision minus base>=5 percentage points, tail capture>=10%, and either material or checkpoint-stable evidence",
+    "not_separable": "none of the above",
+    "order": ["IMPLEMENTATION_BLOCKED", "ZONE_TAIL_RISK_STATE_SEPARABLE", "ZONE_TAIL_RISK_ONLY_DETECTABLE_AFTER_DAMAGE", "ZONE_TAIL_RISK_STATE_WEAKLY_SEPARABLE", "ZONE_TAIL_RISK_NOT_SEPARABLE_WITH_SIMPLE_STATE"]
+  },
+  "forbidden": [
+    "stop replay", "entry change", "detector change", "new threshold", "new checkpoint",
+    "volume/VWAP/technical/market/ML feature", "portfolio NAV/CAGR/Sharpe/Calmar",
+    "best cell/checkpoint selection", "Validation 2022-2023", "repository 2024+ outcomes"
+  ]
+}

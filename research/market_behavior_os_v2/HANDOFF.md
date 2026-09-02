@@ -2,6 +2,40 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Resolution State Discovery V1
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-RESOLUTION-STATE-DISCOVERY-V1`; its starting
+checkpoint is `5b0220dfac1e9ec9a7925270a50321198d32a9a5` on
+`research/ashare-ultrashort-v1`. Frozen spec hash:
+`42467094e75b5d44c7714dd090a4a171cd7e306d143420dc81bc93188a2b1017`.
+
+This is causal Development-only path-state discovery, not strategy replay. The
+detector, primary layer, E1 entry, U target, costs, execution, PIT lineage, and
+QD-010 semantics remain unchanged. Of 598 E1 entries, four are known-risk
+blocked and 594 enter the dynamic checkpoint denominator. Active unresolved
+D1/D3/D5/D10/D20 cohorts are 375/301/248/195/120, with D60-labeled counts
+354/281/229/179/108 and unresolved base rates 16.95%/21.35%/26.20%/33.52%/
+55.56%. Each checkpoint reconciles exactly to 594 through legal resolution,
+action censoring, boundary/data censoring, and active state.
+
+Low progress plus large distance below L is the strongest simple interaction:
+P0×Z2 reaches 58.33% unresolved at D5 (2.23x) and 73.68% at D10 (2.20x).
+However, the clean high-precision FS3 state first appears after median -13.98%
+damage and captures only 13.33% of failures at D5/D10. Earlier FS2 captures
+63.33% but contaminates 54.76%/47.95% resolvers and sacrifices 27.22%/29.41%
+of eventual winners. Machine verdict:
+`ZONE_TAIL_RISK_ONLY_DETECTABLE_AFTER_DAMAGE`.
+
+Do not develop a failure-exit rule, optimize FS thresholds, rerun entries, or
+open Validation. If the zone pattern receives more budget, the only supported
+next question is a separately frozen pre-entry approach-state experiment,
+`ASHARE-COLLAPSE-GAP-ZONE-ENTRY-QUALITY-DISCOVERY-V1`. Eight focused tests and
+two byte-identical runs pass; state/result/report hashes are `fe4a5b0a...`/
+`e85f838b...`/`7662dcac...`. Validation 2022--2023 and repository 2024+ remain
+unread. Large disposable paths remain at
+`/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_resolution_state_discovery_v1`.
+
 ## Latest checkpoint: Collapse Gap-Zone Monetization Anatomy V1 closure
 
 Resume from the commit containing

@@ -4,6 +4,22 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Resolution State Discovery V1
+
+- Freeze V3 event/layer, E1 entry, U target, costs, PIT/T+1/action semantics and
+  inspect only causal D1/D3/D5/D10/D20 path states while U remains unresolved.
+- The dynamic active cohorts are 375/301/248/195/120. Every checkpoint closes
+  exactly to the 594 post-QD-010 eligible entries; D60 unresolved base rises
+  from 16.95% at D1 to 55.56% among D20 survivors.
+- Low progress, greater distance below L, and weak recovery order failure. The
+  P0×Z2 surface is 2.23x base at D5 and 2.20x at D10.
+- The clean FS3 signal is late (median first detection -13.98%) and narrow
+  (13.33% tail capture at D5/D10). Earlier FS2 captures 63.33% but sacrifices
+  27%--29% of eventual winners.
+- Verdict: `ZONE_TAIL_RISK_ONLY_DETECTABLE_AFTER_DAMAGE`. No stop replay or
+  Validation. If continued, ask a separately frozen pre-entry quality question;
+  do not tune the post-entry state family.
+
 ## Collapse Gap-Zone Monetization Anatomy V1
 
 - Freeze exact V3 pattern/layer identity and the conservative Outcome V1 E1
