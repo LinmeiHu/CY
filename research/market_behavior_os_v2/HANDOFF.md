@@ -2,6 +2,30 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: True-Gap Impulsive-Leg Segmentation V5
+
+V5 tests one frozen outcome-blind causal recovery probe without changing the
+true-gap primitive or any V4 hierarchy, persistence, memory, freeze, touch, or
+no-reset rule. After the broad 30% decline, recovery confirms only when close
+reaches 1.15 times the running low and ten consecutive completed sessions each
+close at least 1.10 times that day's running low. A later renewed 30% decline
+is a new forward episode and cannot alter the closed episode backward.
+
+The full 4,319-episode crosswalk contains 315 earlier recovery terminations and
+11 later new-decline episodes. V5 retains 1,792/1,793 V4 causal candidates; the
+single loss is 603879.SH|2020-01-08, whose causally frozen primary changes and
+has a pre-freeze touch that cannot be reset. All required causal audits are zero.
+
+The probe does not solve the authoritative concern cases: TG4-016, TG4-017 and
+TG4-019 all remain unchanged, while all eight positive continuity regressions
+survive. Earlier termination is least common, not most common, in long V4 legs;
+391 >90-session legs remain and maximum duration is 265. Verdict:
+`RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES`.
+
+Exactly 20 new blind charts and the exact 20 V4 protracted cases are ready for
+human review. Do not search neighboring recovery thresholds, open outcomes,
+replay a strategy, or read repository 2024+.
+
 ## Latest checkpoint: True-Gap Causal Formation Semantic V4
 
 V4 repairs the V3 hindsight clock without changing the true-gap primitive,

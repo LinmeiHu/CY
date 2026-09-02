@@ -8,8 +8,8 @@ Updated 2026-09-02.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `af174fd0840b96759edd5e9ebe804e742250aaab` (V1 semantic-audit checkpoint, superseded by the precise governance reconciliation below)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_CAUSAL_FORMATION_SEMANTIC_V4_HUMAN_REVIEW`
-- `CURRENT_PRIMARY_FRONTIER`: True-Gap identity and V3 segmentation/hierarchy/persistence/memory are unchanged. V4 freezes the primary only at the 10th stabilization-session close, rejects any prior touch instead of resetting the clock, and retains 1,793/4,319 V3 candidates. Causal timing is machine-valid; semantic alignment and protracted-leg coherence remain human-review questions
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_IMPULSIVE_LEG_SEGMENTATION_V5_HUMAN_REVIEW`
+- `CURRENT_PRIMARY_FRONTIER`: True-Gap identity, hierarchy, persistence, memory and V4 causal no-reset timing remain unchanged. V5 tests one frozen forward recovery-regime termination rule. It is causal and deterministic but leaves TG4-016/017/019 unchanged, retains 1,792/1,793 V4 causal candidates and is classified `RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES`
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen historical evidence. True-Gap V4 is semantic only; no entry, outcome, portfolio, or V1 alpha rule transfers
 - `BRANCH`: `research/ashare-ultrashort-v1`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do the 20 new causal-first-return charts and 20 protracted-collapse diagnostics support V4 timing and a coherent single original leg? Only human review may answer; outcome discovery remains unauthorized.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do the 20 new V5 blind charts and exact 20-case V4 protracted comparison confirm that the fixed recovery probe under-segments economically separate collapses? Human review is required; no threshold search or outcome discovery is authorized.
 
 ## Research OS V2.3 resource and worker state
 
@@ -149,6 +149,30 @@ The new package contains 20 causal blind charts (14 CORE/6 BOUNDARY,
 41--60/61--90/>90). Verdict:
 `TRUE_GAP_CAUSAL_FORMATION_PARTIALLY_ALIGNED`. No return, PnL, strategy replay,
 threshold optimization or repository 2024+ data was opened.
+
+### Collapse True-Gap Impulsive-Leg Segmentation V5
+
+V5 leaves the true-gap primitive and all V4 hierarchy, persistence, memory,
+causal-freeze and no-reset rules unchanged. It tests exactly one outcome-blind
+forward recovery probe after the broad 30% decline: close reaches 1.15 times
+the running low and ten consecutive completed sessions each close at least
+1.10 times that day's running low. The original episode becomes knowable at
+the earlier of this recovery confirmation and the V4 stabilization confirmation;
+a later renewed 30% decline starts a new episode and is never merged backward.
+
+Across all 4,319 V4 episodes, the probe terminates 315 earlier and identifies
+11 later new-decline episodes. It does not preferentially repair long legs:
+earlier-termination rates are 10.58%, 5.93%, 1.58%, 1.75% and 2.03% across
+<=20, 21--40, 41--60, 61--90 and >90-session V4 legs. V5 still has 391
+>90-session legs and a maximum of 265 sessions.
+
+Of 1,793 V4 causal candidates, 1,792 survive. Eight of eight positive TG4
+continuity regressions survive, but all three authoritative segmentation
+concerns TG4-016/017/019 remain unchanged; TG4-005/006 also remain unchanged
+and justify a separate future former-strength retrieval audit. The exact verdict
+is `RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES`. Twenty new blind charts and the
+exact twenty V4 protracted cases are packaged for review. No return, PnL,
+strategy replay, threshold search, or repository 2024+ data was opened.
 
 ### Historical True-Gap damage audit V1 lineage
 

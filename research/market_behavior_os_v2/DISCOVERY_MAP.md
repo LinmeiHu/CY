@@ -4,6 +4,20 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse True-Gap Impulsive-Leg Segmentation V5
+
+- One frozen forward recovery probe tests whether a 15% rebound plus ten
+  consecutive closes at least 10% above the running low can causally terminate
+  a broad V4 collapse episode earlier. No threshold neighbor was searched.
+- Across 4,319 episodes, 315 terminate earlier and 11 later renewed 30% declines
+  become separate forward episodes. V5 retains 1,792/1,793 V4 causal candidates.
+- Earlier termination rates decline from 10.58% for <=20-session legs to about
+  2% for legs beyond 40 sessions. V5 leaves 391 >90-session legs, maximum 265.
+- All eight positive TG4 continuity cases survive, but TG4-016/017/019 remain
+  unchanged. Verdict `RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES`.
+- New review package: 20 blind charts plus the exact 20 V4 protracted cases.
+  Human review is required; no outcomes, strategy replay, or 2024+ data opened.
+
 ## Collapse True-Gap Causal Formation Semantic V4
 
 - Freeze original-collapse state and the lowest unresolved in-leg M/S primary

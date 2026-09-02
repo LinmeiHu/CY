@@ -1,0 +1,358 @@
+{
+  "artifacts": {
+    "blind_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/blind_chart_index.csv",
+      "sha256": "1b5ed2d29c6d6a5ad82ff8446502f2ee38a379e764c87d0b883bfffe57a6c372"
+    },
+    "candidates": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5_candidates.parquet",
+      "sha256": "9376df4fb76340eef16eef58613194b8c461f1e5dd9eec26bc0bae550cab1da8"
+    },
+    "crosswalk": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5_crosswalk.parquet",
+      "sha256": "89a50569e8de3eccad85423def1f919c7dce5098639055ec67bb19f7d4d152d5"
+    },
+    "duration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5_duration_diagnostic.parquet",
+      "sha256": "70d032f76081b3e6c5d633fc720753d7f3b3bee34bfda0d8ee203832627b1a7d"
+    },
+    "primary": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/v5_causally_frozen_primary_gaps.parquet",
+      "sha256": "b88a6d49560b2f09da9bf8b5617118e8e4ea65344e665e50067abd9b062a7591"
+    },
+    "protracted_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/protracted_comparison_index.csv",
+      "sha256": "b9fc1faa94b5858dc506ac6daa1d348f30af2ae36548023fc903a2f67174b480"
+    },
+    "regressions": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5_tg4_regressions.parquet",
+      "sha256": "b5636a4e5f92ace0dea421a18d4e3fdc1635ea60b6ea18e7466d16f39ed13cc8"
+    },
+    "review": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5_review.csv",
+      "sha256": "57cb2c19b097772e6b08808f20103b74a18d07620909d1cbe72d53d5b2b401c5"
+    },
+    "segmentation": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/v5_episode_segmentation.parquet",
+      "sha256": "8fba0a5c0519fd4639b5e1b600cbf94577ec4ae2a640c6ec07a92abd37a62f62"
+    },
+    "tg4_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/tg4_regression_chart_index.csv",
+      "sha256": "a228ab1f120dc9812cbf01e3e155dabe01edaaa2d9f50ad7f08e9fda0357df19"
+    }
+  },
+  "audit": {
+    "minor_gap_used_as_primary_count": 0,
+    "post_collapse_local_gap_used_as_original_primary_count": 0,
+    "pre_freeze_touch_reset_as_new_first_return_count": 0,
+    "primary_frozen_before_segmentation_known_count": 0,
+    "repository_2024_plus_data_opened": "NO",
+    "retained_first_return_before_primary_freeze_count": 0,
+    "retroactive_segmentation_count": 0,
+    "return_analysis_run": "NO",
+    "strategy_backtest_run": "NO",
+    "true_gap_primitive_changed_count": 0
+  },
+  "duration": {
+    "early_termination_rates_by_v4_group": {
+      "21-40": 0.059322033898305086,
+      "41-60": 0.0158311345646438,
+      "61-90": 0.017543859649122806,
+      "<=20": 0.10575221238938053,
+      ">90": 0.02030456852791878
+    },
+    "v4": {
+      "buckets": {
+        "21-40": 944,
+        "41-60": 379,
+        "61-90": 342,
+        "<=20": 2260,
+        ">90": 394
+      },
+      "max": 265,
+      "mean": 35.01736513081732,
+      "median": 19.0,
+      "p75": 42.0,
+      "p90": 85.0,
+      "p95": 127.0
+    },
+    "v5": {
+      "buckets": {
+        "21-40": 932,
+        "41-60": 377,
+        "61-90": 341,
+        "<=20": 2278,
+        ">90": 391
+      },
+      "max": 265,
+      "mean": 34.83375781430887,
+      "median": 19.0,
+      "p75": 41.0,
+      "p90": 85.0,
+      "p95": 126.09999999999945
+    }
+  },
+  "experiment": "ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5",
+  "frozen_spec_hash": "531b6d7ca21faa3dd94b1961c142b046312ddb64d4e61770dd022beeafc6cca1",
+  "human_review_required": true,
+  "new_pilot": {
+    "blind_chart_count": 20,
+    "blind_chart_index": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/blind_chart_index.csv",
+    "chinext_count": 7,
+    "duration_mix": {
+      "21-40": 5,
+      "41-60": 4,
+      "61-90": 3,
+      "<=20": 5,
+      ">90": 3
+    },
+    "main_count": 13,
+    "protracted_comparison_index": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_impulsive_leg_segmentation_v5/protracted_comparison_index.csv",
+    "review_csv": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5_review.csv"
+  },
+  "population": {
+    "all_episode_diagnostics": {
+      "no_v5_primary": 783,
+      "pre_freeze_primary_touch": 1577,
+      "primary_changed_after_segmentation": 61,
+      "v4_episodes": 4319
+    },
+    "early_recovery_terminated_episodes": 315,
+    "no_v5_primary": 0,
+    "primary_changed_after_segmentation": 1,
+    "rejected_pre_freeze_touch": 1,
+    "source_v4_causal_candidates": 1793,
+    "split_multiple_decline_episodes": 11,
+    "v5_retained_candidates": 1792
+  },
+  "regression": {
+    "concern_cases_materially_changed": 0,
+    "concern_cases_total": 3,
+    "former_strength_retrieval_future_audit_justified": "YES",
+    "positive_survival": 8,
+    "positive_total": 8,
+    "tg4": {
+      "TG4-001": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2020-05-15 15:00:00",
+        "v4_leg_end": "2020-04-28 15:00:00",
+        "v4_primary": "300352.SZ|2020-03-30",
+        "v5_causal_first_return": "2020-07-07 11:23:00",
+        "v5_leg_end": "2020-04-28 15:00:00",
+        "v5_primary": "300352.SZ|2020-03-30",
+        "v5_segmentation_known_time": "2020-05-15 15:00:00"
+      },
+      "TG4-002": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2020-06-05 15:00:00",
+        "v4_leg_end": "2020-05-22 15:00:00",
+        "v4_primary": "300026.SZ|2020-04-27",
+        "v5_causal_first_return": "2020-09-03 09:58:00",
+        "v5_leg_end": "2020-05-22 15:00:00",
+        "v5_primary": "300026.SZ|2020-04-27",
+        "v5_segmentation_known_time": "2020-06-05 15:00:00"
+      },
+      "TG4-003": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2021-10-19 15:00:00",
+        "v4_leg_end": "2021-09-28 15:00:00",
+        "v4_primary": "000815.SZ|2021-09-06",
+        "v5_causal_first_return": "2022-01-19 10:03:00",
+        "v5_leg_end": "2021-09-28 15:00:00",
+        "v5_primary": "000815.SZ|2021-09-06",
+        "v5_segmentation_known_time": "2021-10-19 15:00:00"
+      },
+      "TG4-004": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2022-02-17 15:00:00",
+        "v4_leg_end": "2022-01-27 15:00:00",
+        "v4_primary": "002782.SZ|2022-01-21",
+        "v5_causal_first_return": "2022-05-30 11:01:00",
+        "v5_leg_end": "2022-01-27 15:00:00",
+        "v5_primary": "002782.SZ|2022-01-21",
+        "v5_segmentation_known_time": "2022-02-17 15:00:00"
+      },
+      "TG4-005": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2019-01-15 15:00:00",
+        "v4_leg_end": "2018-12-28 15:00:00",
+        "v4_primary": "603058.SH|2018-11-20",
+        "v5_causal_first_return": "2019-03-07 09:32:00",
+        "v5_leg_end": "2018-12-28 15:00:00",
+        "v5_primary": "603058.SH|2018-11-20",
+        "v5_segmentation_known_time": "2019-01-15 15:00:00"
+      },
+      "TG4-006": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2020-05-15 15:00:00",
+        "v4_leg_end": "2020-04-28 15:00:00",
+        "v4_primary": "002234.SZ|2020-04-21",
+        "v5_causal_first_return": "2020-08-24 09:57:00",
+        "v5_leg_end": "2020-04-28 15:00:00",
+        "v5_primary": "002234.SZ|2020-04-21",
+        "v5_segmentation_known_time": "2020-05-15 15:00:00"
+      },
+      "TG4-007": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": "2015-07-22 15:00:00",
+        "v4_leg_confirmation": "2015-07-22 15:00:00",
+        "v4_leg_end": "2015-07-08 15:00:00",
+        "v4_primary": "300451.SZ|2015-06-26",
+        "v5_causal_first_return": "2015-07-24 09:34:00",
+        "v5_leg_end": "2015-07-08 15:00:00",
+        "v5_primary": "300451.SZ|2015-06-26",
+        "v5_segmentation_known_time": "2015-07-22 15:00:00"
+      },
+      "TG4-008": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2020-09-24 15:00:00",
+        "v4_leg_end": "2020-09-10 15:00:00",
+        "v4_primary": "300457.SZ|2020-09-09",
+        "v5_causal_first_return": "2020-10-27 09:30:00",
+        "v5_leg_end": "2020-09-10 15:00:00",
+        "v5_primary": "300457.SZ|2020-09-09",
+        "v5_segmentation_known_time": "2020-09-24 15:00:00"
+      },
+      "TG4-009": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2018-02-27 15:00:00",
+        "v4_leg_end": "2018-02-06 15:00:00",
+        "v4_primary": "300122.SZ|2018-01-30",
+        "v5_causal_first_return": "2018-03-02 09:47:00",
+        "v5_leg_end": "2018-02-06 15:00:00",
+        "v5_primary": "300122.SZ|2018-01-30",
+        "v5_segmentation_known_time": "2018-02-27 15:00:00"
+      },
+      "TG4-010": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2014-04-14 15:00:00",
+        "v4_leg_end": "2014-03-28 15:00:00",
+        "v4_primary": "300044.SZ|2014-03-11",
+        "v5_causal_first_return": "2014-05-26 09:43:00",
+        "v5_leg_end": "2014-03-28 15:00:00",
+        "v5_primary": "300044.SZ|2014-03-11",
+        "v5_segmentation_known_time": "2014-04-14 15:00:00"
+      },
+      "TG4-011": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2017-12-19 15:00:00",
+        "v4_leg_end": "2017-12-05 15:00:00",
+        "v4_primary": "300707.SZ|2017-12-04",
+        "v5_causal_first_return": "2017-12-27 14:10:00",
+        "v5_leg_end": "2017-12-05 15:00:00",
+        "v5_primary": "300707.SZ|2017-12-04",
+        "v5_segmentation_known_time": "2017-12-19 15:00:00"
+      },
+      "TG4-012": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2022-03-14 15:00:00",
+        "v4_leg_end": "2022-02-28 15:00:00",
+        "v4_primary": "002116.SZ|2022-02-24",
+        "v5_causal_first_return": "2022-03-31 09:31:00",
+        "v5_leg_end": "2022-02-28 15:00:00",
+        "v5_primary": "002116.SZ|2022-02-24",
+        "v5_segmentation_known_time": "2022-03-14 15:00:00"
+      },
+      "TG4-013": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2015-09-29 15:00:00",
+        "v4_leg_end": "2015-09-15 15:00:00",
+        "v4_primary": "600416.SH|2015-09-01",
+        "v5_causal_first_return": "2015-10-08 09:39:00",
+        "v5_leg_end": "2015-09-15 15:00:00",
+        "v5_primary": "600416.SH|2015-09-01",
+        "v5_segmentation_known_time": "2015-09-29 15:00:00"
+      },
+      "TG4-014": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2021-06-01 15:00:00",
+        "v4_leg_end": "2021-05-18 15:00:00",
+        "v4_primary": "603680.SH|2021-05-18",
+        "v5_causal_first_return": "2021-06-18 09:30:00",
+        "v5_leg_end": "2021-05-18 15:00:00",
+        "v5_primary": "603680.SH|2021-05-18",
+        "v5_segmentation_known_time": "2021-06-01 15:00:00"
+      },
+      "TG4-015": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2016-02-17 15:00:00",
+        "v4_leg_end": "2016-01-27 15:00:00",
+        "v4_primary": "002769.SZ|2016-01-05",
+        "v5_causal_first_return": "2016-03-31 09:42:00",
+        "v5_leg_end": "2016-01-27 15:00:00",
+        "v5_primary": "002769.SZ|2016-01-05",
+        "v5_segmentation_known_time": "2016-02-17 15:00:00"
+      },
+      "TG4-016": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2018-10-31 15:00:00",
+        "v4_leg_end": "2018-10-17 15:00:00",
+        "v4_primary": "603026.SH|2018-10-11",
+        "v5_causal_first_return": "2018-12-06 09:50:00",
+        "v5_leg_end": "2018-10-17 15:00:00",
+        "v5_primary": "603026.SH|2018-10-11",
+        "v5_segmentation_known_time": "2018-10-31 15:00:00"
+      },
+      "TG4-017": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2019-08-20 15:00:00",
+        "v4_leg_end": "2019-08-06 15:00:00",
+        "v4_primary": "002066.SZ|2019-08-02",
+        "v5_causal_first_return": "2019-09-05 09:52:00",
+        "v5_leg_end": "2019-08-06 15:00:00",
+        "v5_primary": "002066.SZ|2019-08-02",
+        "v5_segmentation_known_time": "2019-08-20 15:00:00"
+      },
+      "TG4-018": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2023-08-07 15:00:00",
+        "v4_leg_end": "2023-07-24 15:00:00",
+        "v4_primary": "603042.SH|2023-07-05",
+        "v5_causal_first_return": "2023-09-25 09:40:00",
+        "v5_leg_end": "2023-07-24 15:00:00",
+        "v5_primary": "603042.SH|2023-07-05",
+        "v5_segmentation_known_time": "2023-08-07 15:00:00"
+      },
+      "TG4-019": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2017-02-06 15:00:00",
+        "v4_leg_end": "2017-01-16 15:00:00",
+        "v4_primary": "002248.SZ|2017-01-16",
+        "v5_causal_first_return": "2017-02-09 09:56:00",
+        "v5_leg_end": "2017-01-16 15:00:00",
+        "v5_primary": "002248.SZ|2017-01-16",
+        "v5_segmentation_known_time": "2017-02-06 15:00:00"
+      },
+      "TG4-020": {
+        "final_disposition": "RETAINED_UNCHANGED",
+        "recovery_regime_confirmation_time": null,
+        "v4_leg_confirmation": "2019-12-17 15:00:00",
+        "v4_leg_end": "2019-12-03 15:00:00",
+        "v4_primary": "600571.SH|2019-10-30",
+        "v5_causal_first_return": "2020-01-09 09:36:00",
+        "v5_leg_end": "2019-12-03 15:00:00",
+        "v5_primary": "600571.SH|2019-10-30",
+        "v5_segmentation_known_time": "2019-12-17 15:00:00"
+      }
+    }
+  },
+  "verdict": "RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES"
+}

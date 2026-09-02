@@ -1,0 +1,75 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-TRUE-GAP-IMPULSIVE-LEG-SEGMENTATION-V5",
+  "authoritative_start_head": "d476c92f1e857cf12c62b81cb284e8c5d0a6f3e3",
+  "stage": "OUTCOME_BLIND_CAUSAL_IMPULSIVE_LEG_SEGMENTATION",
+  "human_review": {
+    "v4_a_like": ["TG4-001", "TG4-002", "TG4-003", "TG4-004", "TG4-007", "TG4-008", "TG4-009", "TG4-010", "TG4-011", "TG4-012", "TG4-013", "TG4-014", "TG4-015", "TG4-018", "TG4-020"],
+    "v4_borderline": ["TG4-005", "TG4-006"],
+    "v4_segmentation_concerns": ["TG4-016", "TG4-017", "TG4-019"]
+  },
+  "economic_sequence": "former strong stock -> major peak -> one coherent liquidation/repricing episode -> true collapse gaps -> running trough -> causally confirmed recovery/stabilization -> original episode closes -> primary hierarchy freezes -> later first return",
+  "hard_freezes": {
+    "true_gap": "High_t < Low_t_minus_1",
+    "true_gap_interval": "[High_t, Low_t_minus_1]",
+    "significance": "V3_FROZEN_MAJOR_SECONDARY_MINOR",
+    "minor_primary_eligible": false,
+    "post_collapse_local_primary_eligible": false,
+    "material_collapse_activation": "existing broad 30 percent semantic retrieval condition",
+    "persistence": ">=10 completed sessions and >=5 consecutive completed sessions with High<L",
+    "memory": {"CORE": "age<=60", "BOUNDARY": "61<=age<=90", "STALE": "age>90"},
+    "pre_freeze_touch_clock_reset": false
+  },
+  "intermediate_recovery_regime": {
+    "activation": "after first completed session whose running post-peak low is at least 30 percent below the frozen peak",
+    "condition_a": "completed daily close >= current running post-peak low times 1.15",
+    "condition_b": "10 consecutive completed trading sessions each with close >= that session's running post-peak low times 1.10",
+    "confirmation": "earliest completed session satisfying A and B simultaneously",
+    "threshold_search": false
+  },
+  "causal_termination": {
+    "known_time": "earlier of V4 leg confirmation and intermediate recovery regime confirmation",
+    "historical_leg_end_when_recovery_first": "running trough at the recovery confirmation",
+    "historical_leg_end_when_v4_first": "V4 original leg end",
+    "later_material_decline": "forward-only new episode after closure; 30 percent breach from post-closure running high",
+    "retroactive_merge_allowed": false,
+    "duration_cap": false
+  },
+  "primary_freeze": {
+    "time": "V5_SEGMENTATION_KNOWN_TIME",
+    "universe": "true gaps formed no later than the V5 historical leg end",
+    "eligible": ["MAJOR", "SECONDARY"],
+    "selection": "lowest unresolved eligible true gap",
+    "minor_allowed": false
+  },
+  "first_return": {
+    "pre_freeze_touch": "any upward interaction from below after formation and at or before primary freeze rejects the event",
+    "causal_first_return": "earliest frozen-persistence-qualified upward interaction strictly after primary freeze",
+    "clock_reset": false
+  },
+  "population": {
+    "v4_episodes": 4319,
+    "v4_retained_causal_candidates": 1793,
+    "apply_segmentation_to_all_v4_episodes": true
+  },
+  "new_blind_pilot": {
+    "count": 20,
+    "target_main": 13,
+    "target_chinext": 7,
+    "duration_targets": {"<=20": 5, "21-40": 5, "41-60": 4, "61-90": 3, ">90": 3},
+    "exclude_prior_samples": ["TG2", "TG3", "TG4"],
+    "post_event_bars": 0
+  },
+  "protracted_comparison": {
+    "reuse_exact_v4_sample": true,
+    "sample_count": 20
+  },
+  "forbidden": [
+    "RETURN_ANALYSIS",
+    "PNL",
+    "STRATEGY_BACKTEST",
+    "SEMANTIC_THRESHOLD_SEARCH",
+    "LEG_DURATION_CAP",
+    "V1_ALPHA_INHERITANCE",
+    "REPOSITORY_2024_PLUS"
+  ]
+}

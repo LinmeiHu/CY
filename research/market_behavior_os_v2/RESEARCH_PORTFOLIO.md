@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | True-Gap V4 repairs the hindsight clock but retains only 41.51% of V3 candidates and exposes declining coherence with leg duration | Review 20 causal charts plus 20 protracted-leg diagnostics; do not open outcomes, cap duration, or inherit V1 rules |
+| EXPLORE | 10% | True-Gap V5's single fixed recovery probe is causal but under-segments the authoritative long-leg concerns | Review the 20 new blind charts and exact V4 protracted comparison; close this exact probe if visual review agrees, with no threshold sweep or outcomes |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -44,6 +44,16 @@ large CORE reduction is a semantic correction, not an economic failure.
 Retention falls monotonically with leg duration, reaching 12.94% for >90-session
 legs. Portfolio allocation remains semantic-review only. Any duration repair is
 a separate V5 question after human review; no outcome budget is authorized.
+
+## Collapse True-Gap Impulsive-Leg Segmentation V5
+
+The exact 15% recovery plus ten-session 10%-above-running-low probe is causal,
+but it terminates only 315/4,319 episodes earlier and does not concentrate its
+changes in long V4 legs. It preserves 1,792/1,793 V4 causal candidates and all
+eight positive continuity regressions, while leaving TG4-016/017/019 unchanged.
+This is `RECOVERY_REGIME_UNDERSEGMENTS_COLLAPSES`, not an invitation to tune the
+recovery thresholds. Allocation remains outcome-blind human semantic review.
+No True-Gap outcome-discovery or strategy budget is authorized.
 
 ## Collapse-gap-zone Dual Fresh Capitalization V1
 
