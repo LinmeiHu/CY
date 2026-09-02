@@ -1,0 +1,94 @@
+{
+  "600250": {
+    "diagnostic_chart": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_zone_semantic_fidelity_v2/charts/diagnostic/TG2-REG-600250.png",
+    "first_return_time": "2022-05-11 10:02:00",
+    "old_price_5_31_enters_2022_04_26_true_gap": false,
+    "primary_true_gap_id": "600250.SH|2022-04-27",
+    "true_gaps": [
+      {
+        "date": "2022-04-26",
+        "high_t": 5.45,
+        "importance": "MAJOR",
+        "low_t_minus_1": 5.88,
+        "true_lower": 5.45,
+        "true_upper": 5.88,
+        "width": 0.4299999999999997,
+        "width_pct": 0.07312925170068023
+      },
+      {
+        "date": "2022-04-27",
+        "high_t": 4.99,
+        "importance": "MAJOR",
+        "low_t_minus_1": 5.29,
+        "true_lower": 4.99,
+        "true_upper": 5.29,
+        "width": 0.2999999999999998,
+        "width_pct": 0.056710775047258945
+      },
+      {
+        "date": "2022-04-28",
+        "high_t": 4.73,
+        "importance": "MINOR",
+        "low_t_minus_1": 4.76,
+        "true_lower": 4.73,
+        "true_upper": 4.76,
+        "width": 0.02999999999999936,
+        "width_pct": 0.006302521008403227
+      }
+    ]
+  },
+  "artifacts": {
+    "blind_dir": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_zone_semantic_fidelity_v2/charts/blind",
+    "candidates": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2_candidates.parquet",
+      "sha256": "1cd3c2406ea170995fdd929ff3c6af4b560737d3c93e757850604ea4c3b9fb4c"
+    },
+    "crosswalk": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2_crosswalk.parquet",
+      "sha256": "ea32b60f8e8d5b78abaeab2dcb88625588a632716796614f8e40a1589fd53718"
+    },
+    "diagnostic_dir": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_zone_semantic_fidelity_v2/charts/diagnostic",
+    "gap_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_true_gap_zone_semantic_fidelity_v2/ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2_gap_ledger.parquet",
+      "sha256": "bbbd625fd05a7eb5b8c8b82516c4e18202298ad54ebc1daaadcb1f0badcede96"
+    },
+    "review": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2_review.csv",
+      "sha256": "e2eb49ae955352a21ccf2c66d74bd4f946433db6d277683f42cb695500ffbc98"
+    }
+  },
+  "audit": {
+    "first_return_below_true_gap_count": 0,
+    "future_depth_used_to_define_gap_identity_count": 0,
+    "hidden_true_collapse_gap_count": 0,
+    "open_based_true_gap_count": 0,
+    "repository_2024_plus_data_opened": "NO",
+    "return_analysis_run": "NO",
+    "strategy_backtest_run": "NO",
+    "true_gap_uses_high_t_count": 67970,
+    "v1_capitalization_reused_count": 0,
+    "v1_entry_reused_count": 0,
+    "v1_freshness_reused_as_filter_count": 0,
+    "v1_historical_return_artifact_changed_count": 0,
+    "v1_historical_trade_changed_count": 0,
+    "v1_programmatic_evidence_deleted_count": 0
+  },
+  "counts": {
+    "blind_charts": 30,
+    "chinext_charts": 10,
+    "collapse_episodes": 53028,
+    "crosswalk_rows": 5114,
+    "main_charts": 20,
+    "major": 14538,
+    "minor": 37384,
+    "multigap": 3736,
+    "secondary": 16048,
+    "single_gap": 1046,
+    "true_gap_primitives": 67970,
+    "v2_candidates": 4782
+  },
+  "experiment": "ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2",
+  "frozen_spec_hash": "8ca6207d9d6458d4a0cf9c5037d930975823e50ab90428fa3f34c80af1fa1b1a",
+  "human_review_required": true,
+  "semantic_verdict": "TRUE_GAP_SEMANTICS_PARTIALLY_ALIGNED"
+}

@@ -2,9 +2,33 @@
 
 Updated 2026-09-02.
 
-## Latest checkpoint: True-Gap Semantic Audit V1
+## Latest checkpoint: Open-Zone V1 reconciliation and independent True-Gap V2
 
-The collapse-gap-zone V1 lane is retired as `V1_SEMANTIC_CONTRACT_INVALID`.
+The historical V1 lane is retained as the valid, reproducible programmatic
+family `ASHARE-FORMER-LEADER-COLLAPSE-OPEN-ZONE-RECLAIM-V1`. It tested the
+collapse Open-Zone `[Open_t, Low_t-1]`; its Development evidence and
+`DUAL_FRESH_K10_VALIDATION_MIXED` result remain valid only for that rule. The
+strict no-trade-gap interpretation is invalid. The old shorthand
+`V1_SEMANTIC_CONTRACT_INVALID` is lineage, not a claim that historical V1 trades,
+execution, returns, or Validation arithmetic are invalid.
+
+Independent `ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2` defines a true
+gap as `High_t < Low_t-1`, `[High_t, Low_t-1]`, and uses no V1 trading rule. It
+contains 67,970 true-gap primitives from 53,028 collapse episodes, 4,782
+semantic candidates, and a deterministic 30-chart blind pilot (20 Main,
+10 ChiNext). All gaps remain in the ledger; future depth is descriptive only.
+No return analysis, backtest, or 2024+ repository data was opened.
+
+600250.SH contains the 2022-04-26 `[5.45,5.88]`, 2022-04-27 `[4.99,5.29]`,
+and 2022-04-28 `[4.73,4.76]` true gaps. V2 selects the lowest relevant 4/27
+layer and marks 2022-05-11 10:02 as its first return. Current verdict is
+`TRUE_GAP_SEMANTICS_PARTIALLY_ALIGNED`; stop for human review. Only after human
+acceptance may a separately frozen outcome-discovery V2 be proposed.
+
+## Historical checkpoint: True-Gap Semantic Audit V1
+
+The collapse-gap-zone V1 strict-gap interpretation was classified as
+`V1_SEMANTIC_CONTRACT_INVALID`.
 The detector called `[Open_t, Low_{t-1}]` a strict no-trade gap; the intended
 interval is `[High_t, Low_{t-1}]`. It also used future 12.5% post-zone depth to
 erase otherwise significant lower gap identity. This is a scientific-contract
@@ -17,11 +41,12 @@ that are not true gaps, 238 entries below the corrected target and 46 events
 with a lower significant true layer. Audit result/rows/report hashes are
 `0c60d0ad...`/`7ed597a8...`/`453b1d50...`; two focused tests pass.
 
-Do not repair or replay V1, compare post-depth thresholds by return, or preserve
-its freshness/K10/Validation status. A successor is V2 and must restart with a
-blind true-gap semantic pilot. 2022--2023 is already observed and cannot be
-called first external Validation again; 2024+ security paths have also been
-opened for the user-authorized chart books.
+Do not repair or replay V1 or compare post-depth thresholds by return. Preserve
+its freshness/K10/mixed-Validation status only as Open-Zone evidence. A True-Gap
+successor is independent and must restart with blind semantics. 2022--2023 is
+already observed and cannot be called first external Validation again; 2024+
+security paths were previously opened for user-authorized chart books, though
+this V2 task does not open them.
 
 ## Latest checkpoint: Collapse Gap-Zone Dual Fresh Capitalization V1
 

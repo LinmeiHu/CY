@@ -7,11 +7,11 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `5b2bf920ed7bd7b5bac73a0f0703bcd49f8348e8` (first frozen V1 Validation checkpoint; now semantically retired)
-- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_TRUE_GAP_SEMANTIC_AUDIT_V1_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: `V1_SEMANTIC_CONTRACT_INVALID`. V1 used `[Open_t, Low_{t-1}]` rather than the intended no-trade interval `[High_t, Low_{t-1}]`, and future 12.5% post-zone depth erased otherwise significant lower layers. Only 42/301 frozen Development/Validation trades preserve target, true entry, and lowest-layer identity. All prior V1 economics remain reproducible for the implemented rule but no longer support the intended strict-gap claim
+- `CURRENT_BASELINE`: `af174fd0840b96759edd5e9ebe804e742250aaab` (V1 semantic-audit checkpoint, superseded by the precise governance reconciliation below)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_TRUE_GAP_ZONE_SEMANTIC_FIDELITY_V2_HUMAN_REVIEW`
+- `CURRENT_PRIMARY_FRONTIER`: V1 remains a valid, reproducible programmatic family under the canonical descriptive alias `ASHARE-FORMER-LEADER-COLLAPSE-OPEN-ZONE-RECLAIM-V1`. It tested `[Open_t, Low_{t-1}]`, not the intended true no-trade interval `[High_t, Low_{t-1}]`. The historical label `V1_SEMANTIC_CONTRACT_INVALID` is retained only as lineage for the failed strict-gap interpretation; it must not be used to imply that V1's Open-Zone trades, execution audits, returns, or mixed Validation are invalid
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Retire V1 without rescue. Any successor must be a fresh V2 beginning with outcome-blind true-gap identity and blind semantic fidelity; no V1 admission, K, target, or Validation claim transfers automatically
+- `CURRENT_STRATEGY_CANDIDATE`: no new True-Gap strategy candidate. V1 Open-Zone remains frozen with historical Development and mixed Validation evidence. Independent True-Gap V2 is at an outcome-blind 30-chart human semantic gate; no V1 admission, entry, target, horizon, K, or Validation claim transfers
 - `BRANCH`: `research/ashare-ultrashort-v1`
 - `STARTING_HEAD`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: can an outcome-blind V2 built on `[High_t, Low_{t-1}]`, with gap identity independent of future depth, recover the intended visual pattern before any new economics are generated? V1 thresholds, freshness admission, K10 and target-hit evidence are not inherited proof.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: does the frozen 30-chart outcome-blind V2 pilot correctly reconstruct all original-collapse true gaps and select the lowest relevant unresolved layer? Only human semantic review may answer; no outcome discovery is authorized yet.
 
 ## Research OS V2.3 resource and worker state
 
@@ -70,7 +70,32 @@ Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
 
-### Collapse Gap-Zone True-Gap Semantic Audit V1
+### Collapse Open-Zone V1 governance reconciliation
+
+Historical V1 is programmatically and economically reproducible for the exact
+rule it implemented. Its authoritative descriptive alias is
+`ASHARE-FORMER-LEADER-COLLAPSE-OPEN-ZONE-RECLAIM-V1`; the price region is
+`[Open_t, Low_t-1]` and must be called a collapse Open-Zone, not a strict or
+no-trade gap. Development Dual Fresh/E1/U/H40/K10 evidence and the
+`DUAL_FRESH_K10_VALIDATION_MIXED` 2022--2023 result remain historical evidence
+for that independent Open-Zone family. They provide no True-Gap alpha evidence.
+
+### Collapse True-Gap Zone Semantic Fidelity V2
+
+The independent outcome-blind reconstruction defines a true downward gap iff
+`High_t < Low_t-1`, interval `[High_t, Low_t-1]`. It ledgers all 67,970 true
+gaps from 53,028 original collapse episodes without future-depth deletion,
+yielding 4,782 semantic first-return candidates. The 30-chart blind pilot has
+20 Main and 10 ChiNext cases; no return, PnL, strategy replay, or 2024+ data was
+opened. Current machine verdict is `TRUE_GAP_SEMANTICS_PARTIALLY_ALIGNED` because
+implementation audits pass but human semantic review remains mandatory.
+
+For 600250.SH, 2022-04-26/27/28 all remain in the ledger. The selected lowest
+relevant layer is 2022-04-27 `[4.99,5.29]`, and the first semantic return is
+2022-05-11 10:02. Price 5.31 is below the 2022-04-26 true-gap lower boundary
+5.45 and therefore cannot count as entering that true gap.
+
+### Historical True-Gap damage audit V1 lineage
 
 The audit projects only frozen identity and entry columns for the 207
 Development L3 Dual Fresh trades and 94 Validation trades. It reads no exit,
@@ -85,9 +110,10 @@ reaches that true interval, and no lower significant true layer appears within
 the legacy 15-session layer clock. Combined, 25 selected targets are not true
 gaps, 238 entries do not reach their true target, 46 events contain a lower
 significant true layer, and only 42/301 (13.95%) remain semantically valid.
-Classification: `V1_SEMANTIC_CONTRACT_INVALID`. All downstream V1 Development,
-freshness, capitalization and Validation strategy claims are retired rather
-than reinterpreted.
+The historical classification `V1_SEMANTIC_CONTRACT_INVALID` applies only to
+the intended strict-gap interpretation. It is superseded as a governance
+shorthand: V1 Open-Zone programmatic evidence remains valid and reproducible,
+while all True-Gap claims and any transfer of V1 rules into V2 remain invalid.
 
 ### Collapse Gap-Zone Dual Fresh Capitalization V1
 

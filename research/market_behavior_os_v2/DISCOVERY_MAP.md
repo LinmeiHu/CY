@@ -4,7 +4,30 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
-## Collapse Gap-Zone True-Gap Semantic Audit V1
+## Collapse Open-Zone V1 governance reconciliation
+
+- Canonical descriptive alias: `ASHARE-FORMER-LEADER-COLLAPSE-OPEN-ZONE-RECLAIM-V1`.
+- Historical V1 tested `[Open_t, Low_t-1]`. Its trades, PIT/execution audits,
+  Development economics, and mixed Validation remain valid and reproducible
+  for that Open-Zone rule.
+- V1 did not test the no-trade interval `[High_t, Low_t-1]`; therefore it supplies
+  no True-Gap alpha evidence. The old `V1_SEMANTIC_CONTRACT_INVALID` label is
+  retained only as strict-gap interpretation lineage.
+
+## Collapse True-Gap Zone Semantic Fidelity V2
+
+- Independent outcome-blind representation: `High_t < Low_t-1`, interval
+  `[High_t, Low_t-1]`; all original-collapse gaps are retained regardless of
+  later 5/8/10/12.5/15% depth descriptors.
+- 53,028 collapse episodes produce 67,970 true gaps and 4,782 semantic event
+  markers. The blind pilot is 30 charts (20 Main/10 ChiNext), with no post-event
+  bars and all collapse-leg gaps displayed.
+- 600250.SH correctly retains 4/26, 4/27 and 4/28; primary is the 4/27
+  `[4.99,5.29]` layer, first return 2022-05-11 10:02.
+- Verdict: `TRUE_GAP_SEMANTICS_PARTIALLY_ALIGNED`; human review required, no
+  outcome discovery or strategy claim yet.
+
+## Historical Collapse Gap-Zone True-Gap Semantic Audit V1
 
 - Correct strict no-trade identity is `High_t < Low_t-1`, interval
   `[High_t, Low_t-1]`; V1 used the opening price as the lower boundary.
@@ -13,13 +36,14 @@ engine ledgers.
 - Identity/entry-only audit: Development 32/207 valid, Validation 10/94 valid,
   combined 42/301 (13.95%). Twenty-five targets are not true gaps, 238 entries
   do not reach the corrected target and 46 events have a lower true layer.
-- Verdict: `V1_SEMANTIC_CONTRACT_INVALID`. Restart from blind V2 pattern
-  fidelity or close; no V1 economic result, admission rule or K choice transfers.
+- Historical verdict: `V1_SEMANTIC_CONTRACT_INVALID` for strict-gap semantics.
+  Superseded as broad shorthand: V1 Open-Zone evidence remains; no V1 economic
+  result, admission rule or K choice transfers to True-Gap V2.
 
 ## Collapse Gap-Zone Dual Fresh Capitalization V1
 
-> Superseded as strategy evidence by `V1_SEMANTIC_CONTRACT_INVALID`; retained
-> below only as reproducible archaeology for the implemented non-true-gap rule.
+> Retained as valid historical evidence for the independently named V1
+> Open-Zone family; not evidence for True-Gap V2.
 
 - Bind the 207 Dual Fresh identities and exact H40 execution outcomes; vary only
   fixed per-board K5/K10/K20 and corresponding 1/K sleeve-NAV entry weight.
