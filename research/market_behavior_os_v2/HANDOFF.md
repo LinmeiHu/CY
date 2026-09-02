@@ -2,6 +2,37 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Formation-Panic Strict-Gap Reclaim V5 closure
+
+Resume after the commit containing
+`ASHARE-FORMER-LEADER-FORMATION-PANIC-STRICT-GAP-RECLAIM-V5`; its starting
+checkpoint is `a792e79663093aea8a246f0db8b1273433c7fc5c` on
+`research/ashare-ultrashort-v1`. The 2017--2021 folds are internal chronological
+pseudo-OOS. Validation 2022--2023 and Final OOS 2024+ remain sealed and unread.
+
+The corrected semantic is permanent: formation panic is board-specific opening
+gap breadth attached at `gap_date`, never reclaim date. Q75/Q90 are independently
+calibrated from unique Main or ChiNext source-population formation dates in TRAIN
+only. The 576-configuration grid per board and all five folds completed, producing
+5,760 search rows. The source remains 3,734 outcome-blind collapsed V3 entries:
+2,821 Main and 913 ChiNext.
+
+Main returns -0.648%, with -1.427% drawdown, -0.204 Sharpe, and 71 trades. It
+selects no formation-panic filter in four folds; its sole Q75 test in 2021 admits
+one losing trade and underperforms broad stock structure in the same habitat.
+ChiNext returns +3.777% with 0.371 Sharpe on 53 trades, but is blocked in 2018,
+selects no panic filter through the 2020 test, and its 2021 Q90 champion admits
+zero trades. ChiNext loses 0.622% excluding 2020. Fixed 50/50 gains 1.564% but
+loses 0.852% excluding 2020; ChiNext's top five positive PnL days contribute
+78.55% of positive PnL.
+
+Final verdict: `NO_FORMATION_PANIC_INTERACTION_EDGE`. Close the exact former-
+leader + deep-drawdown + strict-gap + first-reclaim stock-level family. Do not
+rescue it with neighboring panic quantiles, stock thresholds, Dryup, exits, K,
+ST/board exclusions, or ML. The next frontier is `MARKET PANIC → REPAIR
+TRANSITION TIMING`. All hard audits are zero; five focused tests pass. Large
+resumable search shards remain under `/Volumes/quant/CY_quant_research/ashare_former_leader_formation_panic_strict_gap_reclaim_v5`.
+
 ## Latest checkpoint: Former-Leader Pre-Break Suffocation V4 closure
 
 Resume after the commit containing `ASHARE-FORMER-LEADER-PREBREAK-SUFFOCATION-V4`;

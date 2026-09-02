@@ -1,0 +1,148 @@
+{
+  "experiment_id": "ASHARE-FORMER-LEADER-FORMATION-PANIC-STRICT-GAP-RECLAIM-V5",
+  "status": "FROZEN_BEFORE_V5_FORWARD_OUTCOME_SEARCH",
+  "evidence_class": "INTERNAL_CHRONOLOGICAL_PSEUDO_OOS_NOT_PRISTINE_EXTERNAL_OOS",
+  "development": ["2014-01-01", "2021-12-31"],
+  "folds": [
+    {"train": [2014, 2016], "test": 2017},
+    {"train": [2014, 2017], "test": 2018},
+    {"train": [2014, 2018], "test": 2019},
+    {"train": [2014, 2019], "test": 2020},
+    {"train": [2014, 2020], "test": 2021}
+  ],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "final_oos_start": "2024-01-01",
+    "final_oos_opened": false
+  },
+  "source_contract": {
+    "start_checkpoint": "a792e79663093aea8a246f0db8b1273433c7fc5c",
+    "v3_spec_sha256": "e755ac13309dc96f86ad86dbf26b8b5da6267d46ec414217090faf6084050d64",
+    "v3_result_sha256": "31e2cc27b26f4c0526e0b019ce24576eb165474901e490c7229afd4bb9f5f5cf",
+    "v3_full_features_sha256": "a7e4dca16726df3f03b75ad3b06b7cc5731f7676bd6583de402df3b0522e3ec8",
+    "v3_daily_state_sha256": "524448ab35a817d5be0a0de5dfa312aad122ab675af92f306e04aa76fdf4f687",
+    "v4_spec_sha256": "3384572cadab08b2b00e47edd07ff78dfe5b8e5857bdfdf8b67e6926c30f979b",
+    "v4_result_sha256": "4f6da89f9587d9b31deced508fa5b55aa67fda11f5080d6e72b3c826e9329b95",
+    "v4_compact_features_sha256": "98c97f58fe318b7ce73f19b4f712cf6fb5e90cfbed46b24a56b5d0539ddef961",
+    "v1_outcomes_sha256": "daa9ce35c11598392f825912d6c715e320c98f88448618bca62cd6bd83d73a49",
+    "opening_breadth_sha256": "71f0946a32db24f8af3175c2e1ee5a12e15e4b1db87192bb4a2a9791414fee96",
+    "minute_reconstruction": "REUSE_ONLY"
+  },
+  "population": {
+    "source": "V3 v3_final_candidate gap-level rows",
+    "minimum_structure": {
+      "leader_percentile_min": 0.9,
+      "prior_runup_min": 0.5,
+      "deep_drawdown_min": 0.3,
+      "strict_gap_required": true,
+      "trigger_inside_gap_required": true,
+      "historical_first_reclaim_required": true,
+      "legal_executable_entry_required": true
+    },
+    "analysis_unit": "one fundable entry_id",
+    "duplicate_entry_collapse": "choose larger strict_gap_width_pct then lexical gap_id without outcomes",
+    "boards": {"MAIN": ["Shanghai Main Board", "Shenzhen Main Board"], "CHINEXT": ["ChiNext"]},
+    "boards_separate": true,
+    "st_included": true,
+    "industry_exclusions": "exact frozen V1-V4 mapping"
+  },
+  "formation_panic": {
+    "event_attribute": "formation_down_gap_breadth",
+    "anchor": "gap_date",
+    "formula": "eligible same-board stocks opening at least 5 percent below comparable prior close divided by eligible same-board opening universe",
+    "information_clock": "gap-date opening",
+    "corporate_action_coordinates": "PIT comparable and corporate-action-safe",
+    "permanent_for_gap_id": true,
+    "calibration_unit": "unique gap_date represented in the board-specific V5 source population",
+    "calibration_weighting": "one equal observation per unique gap_date",
+    "calibration_window": "TRAIN only and board specific",
+    "quantile_method": "pandas linear",
+    "rules": ["NONE", "Q75", "Q90"],
+    "reclaim_date_breadth": "diagnostic only; prohibited from eligibility and selection"
+  },
+  "parameter_grid": {
+    "leader_percentile_min": [0.9, 0.95],
+    "prior_runup_min": [0.5, 0.8],
+    "deep_drawdown_min": [0.3, 0.4],
+    "overnight_gap_min": [0.07, 0.09],
+    "gap_age_max": [3, null],
+    "formation_panic_rule": ["NONE", "Q75", "Q90"],
+    "exit": ["T1_LEGAL_OPEN", "T1_CLOSE", "T3_CLOSE"],
+    "k": [20, 50],
+    "configurations_per_board": 576,
+    "total_board_fold_rows": 5760
+  },
+  "ranking": [
+    "larger strict_gap_width_pct",
+    "stronger leader_percentile",
+    "larger prior_runup",
+    "deeper deep_drawdown",
+    "younger gap_age_trading_days",
+    "earlier first_cross_time",
+    "lexical symbol"
+  ],
+  "portfolio": {
+    "start_nav": 1.0,
+    "entry_cost": 0.002,
+    "exit_cost": 0.002,
+    "no_leverage": true,
+    "one_active_position_per_symbol": true,
+    "slot_principal": "approximately current sleeve NAV divided by K, limited by available cash",
+    "unused_slots": "cash",
+    "daily_mark_to_market": true,
+    "year_boundary": "do not admit an event whose selected legal exit is after the replay end"
+  },
+  "selection": {
+    "minimum_completed_train_trades": 60,
+    "minimum_completed_trades_in_most_recent_train_year": 10,
+    "objective": "maximum training Calmar",
+    "tie_breaks": [
+      "higher Sharpe",
+      "higher median calendar-year return",
+      "higher CAGR",
+      "lower Top-5 positive-PnL-day concentration",
+      "fewer active filters",
+      "lexical parameter key"
+    ],
+    "blocked_action": "cash in test year"
+  },
+  "counterfactuals": {
+    "NO_FORMATION_PANIC": "change only formation_panic_rule to NONE without reoptimization",
+    "BROAD_STRUCTURE_SAME_FORMATION_PANIC": {
+      "applicable": "selected rule is Q75 or Q90",
+      "leader_percentile_min": 0.9,
+      "prior_runup_min": 0.5,
+      "deep_drawdown_min": 0.3,
+      "overnight_gap_min": 0.07,
+      "gap_age_max": null,
+      "unchanged": ["numerical formation threshold", "exit", "K", "ranking"]
+    }
+  },
+  "baseline": {
+    "leader_percentile_min": 0.9,
+    "prior_runup_min": 0.5,
+    "deep_drawdown_min": 0.3,
+    "overnight_gap_min": 0.07,
+    "gap_age_max": null,
+    "formation_panic_rule": "NONE",
+    "exit": "T1_LEGAL_OPEN",
+    "k": 20
+  },
+  "diagnostics": {
+    "top10_neighborhood": "top ten TRAIN configurations replayed unchanged next year; never ensembled or retrospectively selected",
+    "return_ex_best_days": "compound official daily returns after setting the largest one or five daily returns to zero",
+    "date_pnl_concentration": "share of all positive selected-trade PnL contributed by the largest positive formation/reclaim date groups",
+    "formation_and_reclaim_percentiles": "empirical less-than-or-equal percentile against the same board/fold TRAIN formation-date breadth sample",
+    "prebreak_dryup": "V4 corrected value, diagnostic only",
+    "st_status": "diagnostic only"
+  },
+  "verdict_taxonomy": [
+    "FORMATION_PANIC_INTERACTION_EDGE_READY_FOR_VALIDATION",
+    "FORMATION_PANIC_EDGE_BUT_CLUSTER_DEPENDENT",
+    "BOARD_SPECIFIC_FORMATION_PANIC_EDGE",
+    "MARGINAL_FORMATION_PANIC_EDGE",
+    "NO_FORMATION_PANIC_INTERACTION_EDGE",
+    "IMPLEMENTATION_BLOCKED"
+  ]
+}

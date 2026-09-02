@@ -4,6 +4,24 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Former-Leader Formation-Panic Strict-Gap Reclaim V5
+
+- Exact tested representation: V3 former-leader/deep-drawdown/strict-gap first
+  reclaim, with permanent board-specific ≥5% opening-gap breadth measured at
+  `gap_date`. Independent TRAIN-only Q75/Q90 formation filters are tested with
+  the exact frozen structural, exit, and K grid. Reclaim breadth and V4 Dryup
+  are diagnostics only.
+- Main is -0.648% on 71 trades and selects no panic filter in four of five folds.
+  ChiNext is +3.777% on 53 trades but loses 0.622% excluding 2020; its final Q90
+  test has zero trades. Fixed 50/50 is +1.564% but -0.852% excluding 2020.
+- Formation panic adds no repeatable next-year increment. The only nonempty
+  panic-filter test admits one losing Main trade and specific stock structure
+  underperforms broad structure in the same formation habitat. Verdict:
+  `NO_FORMATION_PANIC_INTERACTION_EDGE`.
+- Close the exact stock-level gap-reclaim family. Do not duplicate through
+  neighboring panic quantiles, thresholds, Dryup, exit/K, ST/board exclusions,
+  or ML. The distinct open frontier is market-level panic→repair transition timing.
+
 ## Former-Leader Pre-Break Suffocation V4
 
 - Exact tested representation: median turnover of the final three completed

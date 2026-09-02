@@ -7,17 +7,17 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `9326f542e1a434aa4025f506cfc254b2c2f0fdb6` (Pre-Break Suffocation V4 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_FORMER_LEADER_PREBREAK_SUFFOCATION_V4_DEVELOPMENT_COMPLETE_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: V4 is `PREBREAK_SUFFOCATION_DESCRIPTIVE_ONLY`, not a Validation candidate. Extreme low Dryup is +2.066 pp event-weighted but -1.327 pp date-equal versus >1.00. Main same-date low-minus-high is +1.022 pp with mean rho +0.104; ChiNext is -0.196 pp with rho -0.037. Fixed K20 allocation changes Main -0.220 pp and ChiNext +0.149 pp, a negative combined increment. Validation 2022--2023 and Final OOS remain sealed/unread
+- `CURRENT_BASELINE`: `a792e79663093aea8a246f0db8b1273433c7fc5c` (Formation-Panic V5 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_FORMER_LEADER_FORMATION_PANIC_STRICT_GAP_RECLAIM_V5_DEVELOPMENT_COMPLETE_CLOSED`
+- `CURRENT_PRIMARY_FRONTIER`: V5 is `NO_FORMATION_PANIC_INTERACTION_EDGE`. Panic is correctly anchored to `gap_date`, but Main selects no panic in four folds and loses 0.648%; ChiNext gains 3.777% almost entirely in 2020 and selects panic only for a zero-trade 2021 test. Fixed 50/50 gains 1.564% but loses 0.852% excluding 2020. Validation 2022--2023 and Final OOS remain sealed/unread
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Corrected completed-session pre-breakout suffocation has partial Main-board same-date information but fails pooled date-equal, cross-board, controlled-direction, and combined chronological allocation portability. No V5 is justified
+- `CURRENT_STRATEGY_CANDIDATE`: none. Correct formation-time panic does not add stable next-year economics and specific former-leader structure does not improve the same panic habitat. Close the exact former-leader + deep-drawdown + strict-gap + first-reclaim stock-level family
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `9326f542e1a434aa4025f506cfc254b2c2f0fdb6`
+- `STARTING_HEAD`: `a792e79663093aea8a246f0db8b1273433c7fc5c`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `9326f542e1a434aa4025f506cfc254b2c2f0fdb6`
+- `CURRENT_HEAD_AT_RESUME`: `a792e79663093aea8a246f0db8b1273433c7fc5c`
 - `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: close V4 without opening Validation or launching V5. Do not rescue pre-break suffocation through 2/10, 5/20, 3/30, mean turnover, board-specific cutoffs, or V3 parameter conditioning. Order-book/queue state and investor-flow identity remain materially less studied than another OHLCV volume-window refinement.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: `MARKET PANIC → REPAIR TRANSITION TIMING`. Do not rescue the closed stock-level gap-reclaim family with Q80/Q85/Q92, new gap/run-up thresholds, Dryup, exits, K, ST removal, board exclusions, or ML.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-FORMER-LEADER-PREBREAK-SUFFOCATION-V4` is
-  Development-complete and closed without Validation or V5. Final OOS remains locked.
+- `ACTIVE_EXPERIMENT`: `ASHARE-FORMER-LEADER-FORMATION-PANIC-STRICT-GAP-RECLAIM-V5` is
+  Development-complete and closed without Validation. Final OOS remains locked.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,30 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Former-Leader Formation-Panic Strict-Gap Reclaim V5
+
+V5 corrects the central market-state clock: independent Main/ChiNext opening-gap
+breadth is attached permanently at each `gap_date`; reclaim-date breadth is
+diagnostic only. TRAIN-only Q75/Q90 calibration uses unique source-population
+formation dates. The exact 576-config grid per board and five folds produce
+5,760 search rows under the frozen 60-total/10-recent trade gate.
+
+Main selects `NONE` in 2017--2020 and Q75 only in 2021. Its stitched result is
+-0.648%, -1.427% maximum drawdown, -0.204 Sharpe, and 71 trades; excluding 2020
+is -1.081%. ChiNext is selection-blocked in 2018, selects `NONE` in 2017/2019/
+2020, and Q90 for a zero-trade 2021 test. It gains 3.777% with 0.371 Sharpe on
+53 trades, but 2020 contributes +4.426% and excluding 2020 is -0.622%. Fixed
+50/50 gains 1.564%, with -0.852% outside 2020. Main/ChiNext top-five positive
+PnL-day contributions are 37.90%/78.55%.
+
+Formation panic is therefore neither repeatedly selected nor incrementally
+profitable in subsequent years. The lone Main panic test admits one losing
+trade and loses to broad structure in the same panic habitat; the lone ChiNext
+panic test admits no trades. Verdict: `NO_FORMATION_PANIC_INTERACTION_EDGE`.
+Close the exact former-leader + deep-drawdown + strict-gap + first-reclaim
+stock-level family. All chronology, board isolation, strict-gap, lifecycle,
+portfolio, cash, and sealed-period audits are zero; five focused tests pass.
 
 ### Former-Leader Pre-Break Suffocation V4
 
