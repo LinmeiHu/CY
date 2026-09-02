@@ -4,6 +4,22 @@ Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Collapse Gap-Zone Pattern Fidelity Audit V1
+
+- Outcome-blind semantic retrieval only: strict `Open_t < Low_t-1` primitives
+  are retained separately from broader collapse regions, provisional stacks,
+  and the human visual zone concept. The 20-session grouping and 20% broad
+  collapse threshold are high-recall retrieval rules, not strategy parameters.
+- The first upward lower-boundary touch after trading below is only a chart
+  anchor. Lower close, 10%/50% penetration, full fill, and layer-hierarchy
+  alternatives remain unresolved until blind human review.
+- The 120-case deterministic package preserves Main/ChiNext, ST, single versus
+  multilayer, same-day through very-long persistence, provisional leader
+  strength, 80 broad positives, 20 immediate/fast cases, and 20 near misses.
+- Status: `AUDIT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`. No return
+  outcomes, backtest, Validation, or repository 2024+ data were opened. This is
+  neither positive nor negative strategy evidence.
+
 ## Market Panic-to-Repair Transition V1
 
 - Exact tested representation: separate Main/ChiNext TRAIN-ranked opening panic

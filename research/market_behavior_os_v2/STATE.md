@@ -7,18 +7,18 @@ Updated 2026-09-02.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `94192f4d4b0002b705eeb7506235b99c5ffbc9c7` (Market Panic-to-Repair V1 starting checkpoint)
-- `CURRENT_PHASE`: `ASHARE_MARKET_PANIC_REPAIR_TRANSITION_V1_DEVELOPMENT_COMPLETE_CLOSED`
-- `CURRENT_PRIMARY_FRONTIER`: `NO_PANIC_REPAIR_TRANSITION_EDGE`. The frozen market-level confirmation improves pure-panic replays in 8/10 board-years but does not create positive long economics: Main loses 22.915%, ChiNext loses 0.357%, fixed 50/50 loses 11.636%, and non-2020 returns are -20.241%/-11.963%/-16.044%. Validation 2022--2023 and Final OOS 2024+ remain sealed/unread
+- `CURRENT_BASELINE`: `fa817a732a378d87c6700a8005fe37a3346c3d9d` (Collapse Gap-Zone Pattern Fidelity Audit V1 starting checkpoint)
+- `CURRENT_PHASE`: `ASHARE_COLLAPSE_GAP_ZONE_PATTERN_FIDELITY_AUDIT_V1_HUMAN_GATE`
+- `CURRENT_PRIMARY_FRONTIER`: `AUDIT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`. The strict-gap/collapse/stack detector and deterministic 120-case blind package are complete. No return outcome, strategy replay, Validation 2022--2023, or repository 2024+ data was opened
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. Repair confirmation avoids some of the worst pure-panic sessions but the frozen long leg remains negative and unstable. Close this exact market Panic-to-Repair transition representation without threshold, checkpoint, feature, exit, or stock-selection rescue
+- `CURRENT_STRATEGY_CANDIDATE`: none. This is a semantic-fidelity audit only; no strategy claim is permitted before blind human labels freeze the actual zone, persistence, and re-entry semantics
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `94192f4d4b0002b705eeb7506235b99c5ffbc9c7`
+- `STARTING_HEAD`: `fa817a732a378d87c6700a8005fe37a3346c3d9d`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `94192f4d4b0002b705eeb7506235b99c5ffbc9c7`
-- `CURRENT_SCIENTIFIC_LAYER`: `TAIL_OPEN_ML_STAGE_A_CHRONOLOGY_AMENDED; BUILD_ONLY_CERTIFIED; OUTCOME_BLIND; FINAL_OOS_LOCKED`
+- `CURRENT_HEAD_AT_RESUME`: `fa817a732a378d87c6700a8005fe37a3346c3d9d`
+- `CURRENT_SCIENTIFIC_LAYER`: `OUTCOME_BLIND_HUMAN_PATTERN_FIDELITY; DEVELOPMENT_2014_2021_ONLY; VALIDATION_AND_POST_2023_UNREAD`
 - `REPRESENTATIONS_TESTED`: seven exact MKT-BREAKOUT-DIFF-001 direct L20 levels; no failed temporal or rally-distribution role enters
 - `ECONOMIC_RESPONSE_STATUS`: `FORMATION_DEPTH_TAIL_RISK_LOCALIZED_TO_CROSSERS_NOT_CLOSING_STATE; PREOPEN_AND_INTRADAY_COMPONENTS_PASS; RECOVERY_MECHANICALLY_POSITIVE_DIAGNOSTIC`
 - `LEVEL_VS_TRANSITION_STATUS`: `FORMATION_DEPTH_LEVEL_RESPONSE_SUPPORTED; ALL_TRANSITIONS_NOT_ESTIMABLE_FIXED_SUPPORT`
@@ -29,7 +29,7 @@ Updated 2026-09-02.
 - `DESCRIPTIVE_ONLY_STATES`: formation participation, closing acceptance, closing rejection depth, formation diffusion, formation leadership concentration, stock/industry divergence
 - `STRATEGY_HABITAT_STATUS`: `FORMATION_DEPTH_AND_DISPERSION_NO_CHINEXT_TRANSFER; DOWNSIDE_REVERSAL_VETO_REJECTED; MINUTE_VOLATILITY_PATH_VETO_PARKED_NEAR_MISS; NO_RULE`
 - `CURRENT_MECHANISMS`: unusually deep own-security objective-prior-high overshoot orders worse future adverse paths within date, but most ordering is explained by fixed same-day return/range/close-location/turnover/traded-value geometry; a broad disjoint shared-date channel fails, the path remains mixed pre-open/intraday, exact trough timing is unstable, terminal response is weak, and no strategy archetype follows
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: a genuinely independent information lane, preferably a governed order-book/queue or investor-flow data contract. Do not rescue either the closed stock-level gap-reclaim family or the closed market Panic-to-Repair transition with neighboring quantiles, checkpoints, indicators, exits, stock filters, or ML.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: whether blinded human review recognizes the intended collapse gap-zone pattern, and which retained persistence/re-entry semantics match it. Do not inspect returns until labels are complete and summarized.
 
 ## Research OS V2.3 resource and worker state
 
@@ -41,8 +41,8 @@ Updated 2026-09-02.
 - `CACHE_STATUS`: no cache published; WORKER-MINUTE-001 supports a minimal
   all-key session ledger plus lossless raw array241 primitive table, projected
   8.5 GiB pre-2024. Build remains lazy until active reuse justifies one scan.
-- `ACTIVE_EXPERIMENT`: `ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1` is
-  Development-complete and closed without Validation. Final OOS remains locked.
+- `ACTIVE_EXPERIMENT`: `ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1`
+  is package-complete at its intentional human gate. No backtest has run.
 - `ACTIVE_RESOURCE_BLOCKER`: MKT-DISP-RANK-001 breached its frozen 12-GiB spill
   ceiling and exact year-batched 002 breached the unchanged 1.5-GiB RSS ceiling;
   no result exists and the translation is `PARKED_RESOURCE`. The earlier MINX
@@ -68,6 +68,22 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Collapse Gap-Zone Pattern Fidelity Audit V1
+
+The pre-detector semantic contract distinguishes strict adjacent-session no-trade
+gaps from broader collapse regions, provisional multi-gap stacks, and the still
+unfrozen human visual “断层带”. Development retrieval uses 2014--2021 only, with
+2013 warm-up. It finds 448,483 strict primitives, 145,888 provisional stacks,
+and 84,368 broad retrieval-eligible collapse episodes across 3,373 symbols.
+
+The deterministic blind package contains exactly 120 charts: 72 Main Board, 48
+ChiNext, 21 ST, 73 multilayer, 14 same-day, and 20 hidden near-miss controls.
+Blind charts expose neither identity/calendar date nor post-re-entry bars and
+use no outcome for selection. All charts stop at the exact completed one-minute
+review-marker bar. Seven focused tests and lint pass. Status:
+`AUDIT_PACKAGE_COMPLETE; HUMAN_PATTERN_REVIEW_REQUIRED`; no strategy backtest or
+return analysis has run. Validation 2022--2023 and repository 2024+ remain unread.
 
 ### Market Panic-to-Repair Transition V1
 

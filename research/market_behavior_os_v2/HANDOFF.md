@@ -2,6 +2,34 @@
 
 Updated 2026-09-02.
 
+## Latest checkpoint: Collapse Gap-Zone Pattern Fidelity Audit V1 human gate
+
+Resume from the commit containing
+`ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1`; its starting checkpoint is
+`fa817a732a378d87c6700a8005fe37a3346c3d9d` on
+`research/ashare-ultrashort-v1`. This is an outcome-blind semantic audit, not a
+backtest. It reads 2013 warm-up and 2014--2021 candidate data only. Validation
+2022--2023 and repository 2024+ data remain sealed/unread.
+
+The exact strict primitive is `Open_t < Low_t-1` in a corporate-action-safe
+comparable coordinate. A provisional episode may retain multiple primitives
+formed within 20 sessions without substantial peak recovery. The displayed
+candidate is the first minute-level upward lower-boundary touch after price has
+first moved below that boundary; six alternative persistence/re-entry semantics
+remain diagnostics for human adjudication and are not selected rules.
+
+The source has 3,373 eligible symbols, 448,483 strict primitives, 145,888
+provisional stacks, and 84,368 retrieval-eligible collapse episodes. The exact
+120-case package has 72 Main, 48 ChiNext, 21 ST, 73 multilayer, 14 same-day, and
+20 hidden near-miss cases. Identity leaks, post-marker data, and outcome-selected
+sample rows are all zero. Blind and diagnostic charts are under
+`/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_pattern_fidelity_audit_v1`.
+
+Stop at the human gate. The reviewer must fill the blank review CSV. Only after
+all labels are returned should the prepared summary script freeze the human
+zone/persistence/re-entry semantics. No return study, strategy replay, or
+automatic inference is authorized before then.
+
 ## Latest checkpoint: Market Panic-to-Repair Transition V1 closure
 
 Resume after the commit containing `ASHARE-MARKET-PANIC-REPAIR-TRANSITION-V1`;

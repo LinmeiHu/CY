@@ -1,0 +1,138 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-GAP-ZONE-PATTERN-FIDELITY-AUDIT-V1",
+  "status": "SEMANTIC_PREFLIGHT_FROZEN_BEFORE_DETECTOR_IMPLEMENTATION",
+  "research_type": "OUTCOME_BLIND_HUMAN_PATTERN_FIDELITY_AUDIT",
+  "start_checkpoint": "fa817a732a378d87c6700a8005fe37a3346c3d9d",
+  "development": ["2014-01-01", "2021-12-31"],
+  "warmup": ["2013-01-01", "2013-12-31"],
+  "sealed": {
+    "validation": ["2022-01-01", "2023-12-31"],
+    "validation_opened": false,
+    "repository_2024_plus_data_opened": false,
+    "post_2021_outcome_read_count": 0
+  },
+  "governance_note": {
+    "user_2026_examples_influenced_semantic_formulation": true,
+    "examples_ingested_from_repository": false,
+    "qualitative_lessons_only": [
+      "former strong or leader stock",
+      "major collapse",
+      "one or more visible overhead discontinuity layers",
+      "zone remains above price",
+      "price later approaches or re-enters the old zone",
+      "the concept may be layered rather than one single gap",
+      "same-day gap bounce may not represent the intended persistent discontinuity"
+    ],
+    "future_2024_plus_pristine_hypothesis_formation_oos": false,
+    "validation_2022_2023_still_untouched": true
+  },
+  "semantic_preflight": {
+    "economic_sequence": "prior strong-stock or leader phase -> major run-up -> peak -> collapse or liquidation -> one or more true downward price discontinuities during collapse -> unresolved overhead gap primitives or stack -> time below -> later approach from below -> candidate first upward re-entry for human semantic review",
+    "causal_background": "prior speculative or leadership demand followed by liquidation and collapse",
+    "state_variables": [
+      "prior leadership",
+      "prior run-up",
+      "drawdown depth",
+      "collapse geometry",
+      "strict-gap primitives",
+      "zone persistence",
+      "zone layering",
+      "time spent below the zone",
+      "volume and turnover context"
+    ],
+    "event_formation_time": "the collapse phase in which one or more adjacent-session strict downward gap primitives are created",
+    "confirmation_trigger": "NOT_FROZEN; lower touch, lower close, 10 percent penetration, 50 percent penetration, full fill, nearest-layer entry, and next-layer entry are retained for blind semantic adjudication",
+    "entry_time": "NOT_DEFINED_IN_THIS_AUDIT",
+    "outcome_start_time": "NOT_APPLICABLE",
+    "possible_semantic_ambiguities": [
+      "single strict gap versus multi-gap collapse zone",
+      "whether adjacent gap primitives should be merged",
+      "how much traded-price overlap is allowed inside a broader collapse zone",
+      "whether same-day re-entry counts",
+      "the minimum persistence implied by 留下",
+      "whether one completed session below the zone is enough",
+      "whether multiple sessions completely below the zone are required",
+      "whether the relevant trigger is the lower boundary of the nearest unresolved layer",
+      "whether layered zones are independent or hierarchical",
+      "whether board-relative return ranking adequately represents a former leader",
+      "whether the main rise must be fast or impulsive rather than merely large",
+      "whether a bottom or base phase is required",
+      "whether declining turnover is essential or secondary"
+    ],
+    "chosen_time_anchors": {
+      "strict_gap_formation": "current session raw open versus immediately previous comparable session raw low",
+      "primitive_interval": "[Open_t, Low_t_minus_1] in a corporate-action-safe comparable coordinate",
+      "reentry_clock_start": "after price first moves strictly below the primitive lower boundary; the formation opening print itself is not a re-entry",
+      "blind_chart_review_marker": "first upward lower-boundary touch of the lowest unresolved primitive, used only as a high-recall display anchor",
+      "blind_chart_end": "exact completed one-minute re-entry bar; no later minute or session is shown",
+      "daily_context_end": "the chosen review-marker session, with its last candle rebuilt only from minutes available through the marker"
+    }
+  },
+  "scientific_distinctions": {
+    "strict_gap_primitive": "actual adjacent-session no-trade interval only",
+    "collapse_region": "broader decline containing traded and possibly untraded prices",
+    "zone_stack": "multiple retained strict-gap primitives provisionally grouped within one collapse",
+    "visual_discontinuity_zone": "unfrozen human concept to be learned from blind labels"
+  },
+  "universe": {
+    "included": ["Shanghai Main Board", "Shenzhen Main Board", "ChiNext", "normal", "ST", "*ST"],
+    "excluded": ["STAR Market", "Beijing Stock Exchange", "ETF", "fund", "index", "non-equity"],
+    "symbol_patterns": ["60*.SH excluding 688*.SH", "00*.SZ", "30*.SZ"],
+    "industry_exclusions": "exact previously frozen cyclical/resource/traditional-energy mapping",
+    "pit_and_lineage_fail_closed": true
+  },
+  "retrieval_contract": {
+    "strict_gap": "Open_t < Low_t_minus_1 on adjacent comparable sessions; no Open times 1.01 condition",
+    "peak_search_max_sessions": 250,
+    "broad_collapse_min_decline": 0.20,
+    "provisional_stack_max_gap_sessions": 20,
+    "substantial_peak_recovery_fraction": 0.90,
+    "former_leader_hard_filter": false,
+    "threshold_interpretation": "high-recall audit retrieval only; not economic or strategy thresholds"
+  },
+  "persistence_buckets": {
+    "SAME_DAY": 0,
+    "NEXT_DAY": 1,
+    "SHORT_PERSISTENCE": [2, 3],
+    "MEDIUM_PERSISTENCE": [4, 10],
+    "LONG_PERSISTENCE": [11, 30],
+    "VERY_LONG": ">30"
+  },
+  "reentry_variants": [
+    "REENTRY_A_LOWER_TOUCH",
+    "REENTRY_B_LOWER_CLOSE",
+    "REENTRY_C_ZONE_10PCT",
+    "REENTRY_D_ZONE_50PCT",
+    "REENTRY_E_FULL_FILL",
+    "NEAREST_LAYER_ENTRY",
+    "NEXT_LAYER_ENTRY"
+  ],
+  "sample": {
+    "total": 120,
+    "main": 72,
+    "chinext": 48,
+    "broad_machine_positive": 80,
+    "immediate_or_fast": 20,
+    "near_miss_control": 20,
+    "selection": "deterministic outcome-blind round-robin over board, ST, single/multilayer, persistence, and provisional leadership strata",
+    "identity_blind": true,
+    "post_reentry_hidden": true
+  },
+  "forbidden": [
+    "post-reentry return",
+    "T+1 or T+3 return",
+    "MFE or MAE",
+    "future winner or loser status",
+    "CAGR, Sharpe, or Calmar",
+    "return-based parameter selection",
+    "2022-2023 repository data",
+    "2024+ repository data",
+    "return-trained ML"
+  ],
+  "normal_completion": {
+    "audit_package_complete": true,
+    "human_pattern_review_required": true,
+    "strategy_backtest_run": false,
+    "return_outcome_analysis_run": false
+  }
+}

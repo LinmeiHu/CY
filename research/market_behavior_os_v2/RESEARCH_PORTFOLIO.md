@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Frozen market Panic-to-Repair confirmation improves pure-panic avoidance but Main loses every test year, ChiNext is 2020-dependent, and fixed 50/50 loses 11.64% | Close the exact transition representation; do not run threshold, checkpoint, feature, exit, board-pooling, stock-selection, or ML rescue |
+| EXPLORE | 10% | Collapse gap-zone semantic audit package is complete without outcomes; actual visual zone, persistence, and re-entry semantics remain unresolved | Human reviews the 120 blind charts and returns the completed label CSV; only then run the prepared outcome-free summary |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
