@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | True-Gap V6 has a causal cluster representation but its complete fixed long-only translation fails economically | Preserve the representation only; no stop/filter/board/horizon/K rescue of the exact V6 strategy family |
+| EXPLORE | 10% | The full V6 tree finds environment/ranking/loss-control information but no chronologically stable complete strategy | Preserve representations only; no new threshold/model/board rescue of this consumed family |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -19,6 +19,14 @@ Mandatory checkpoint questions:
 2. What important market behavior or archetype is not being studied at all?
 
 ## True-Gap Causal Cluster V6
+
+The later full strategy study exhausts the bounded translation budget. Across
+35 entries, 163 features, two models, five admissions, X0--X8 and three holding
+horizons, every expanding Development board-fold selects cash. Fixed entries
+can show positive pooled CAGR but only 3/5 positive years with deep drawdowns;
+the best TRAIN-OOF fixed Main configurations admit zero TEST signals and the
+ChiNext set has only 28 trades. Strategy allocation remains zero. Environment
+repair, B5 ranking and loss-control effects remain non-strategy representations.
 
 The causal semantic gate passes and the cluster representation is deterministic,
 but strategy capital is zero. Structural U fill reaches 81%--90% across fixed

@@ -4,6 +4,23 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## True-Gap V6 full signal and strategy research
+
+- Feature contract `99f1ba1d...b4b52a`: 163 causal F1--F7 features, 75,050
+  executable model rows after QD-010 entry blocking; no L2 approximation.
+- The complete 35-entry, B1--B5, M1/M2, five-admission, X0--X8, H10/H20/H40
+  hierarchy is evaluated independently in ten Main/ChiNext outer folds.
+- Every final fold selects cash. K10 L0 baseline is -0.72% CAGR/-28.99% MaxDD;
+  loss control improves to +0.62%/-22.67%, but is board/year unstable. Minute
+  admission has +3.71% mean but only ten completed trades.
+- Best fixed entry `ABS_0P5+C4_HOLD15` is +4.55% CAGR but 3/5 positive years,
+  -21.15% worst year and -29.41% MaxDD. The 1% C4 form ranks sixth.
+- Environment repair and B5 minute information survive as representations;
+  no complete strategy survives. Verdict `V6_PARAMETER_FAMILY_UNSTABLE`.
+- All hard execution/portfolio audits are zero; 264 impossible pre-effective
+  action exits are null/fail-closed. 2022--2023 selects cash but is governance-
+  compromised by early technical materialization. Repository 2024+ is unread.
+
 ## True-Gap Causal Cluster V6 one-shot discovery
 
 - Formation-time-causal significance and local clustering pass the Stage-A

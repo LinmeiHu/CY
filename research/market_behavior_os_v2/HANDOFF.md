@@ -2,6 +2,29 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: True-Gap V6 full signal and strategy research
+
+Resume from the commit containing
+`ASHARE-TRUE-GAP-V6-FULL-SIGNAL-AND-STRATEGY-RESEARCH-V1`. Starting checkpoint
+is `c68623ea2c408bb2e7ce60b529bf7c82c1982888`; V6 semantic hash remains
+`2705011d...162` and feature contract is `99f1ba1d...b4b52a`.
+
+The complete bounded tree is finished: 35 entry translations; 163 frozen F1--
+F7 features; B1--B5; M1/M2; five admissions; all X0--X8 and three horizons;
+five expanding Development folds per board; K5/K10/K20; and the predetermined
+2022--2023 diagnostic. Every strict Development board-fold selects cash. Fixed
+entry `ABS_0P5+C4_HOLD15` has +4.55% CAGR but only 3/5 positive years and
+-29.41% MaxDD. L3 loss control improves combined K10 from -0.72% to +0.62%
+CAGR, but MaxDD remains -22.67% and Main remains negative. L2 has only ten
+trades. Verdict: `V6_PARAMETER_FAMILY_UNSTABLE`; no strategy candidate.
+
+Do not rescue with new levels, confirmations, features, admissions, stops,
+horizons, model tuning, board deletion or 2024+ access. Preserve environment
+repair, B5 ranking and loss control only as representations. QD-010 audits are
+fail-closed; 264 unexecutable action paths have null outcomes. The 2022--2023
+cash diagnostic is governance-compromised by early technical materialization,
+despite no performance inspection or rule change. Repository 2024+ is unread.
+
 ## Latest checkpoint: True-Gap Causal Cluster V6 one-shot discovery
 
 Stage A froze a formation-time-causal significant-gap clustering contract before

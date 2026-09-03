@@ -7,15 +7,31 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `e33da497699d37408f4c7b2a4d6f298fe9b1f931` (V6 one-shot start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_CAUSAL_CLUSTER_V6_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: V6 replaces retrospective collapse-leg identity with one formation-time-causal significant-gap cluster. The semantic gate passes, but all six fixed K10 Development lanes have negative mean trade return and negative CAGR; verdict `V6_CAUSAL_TRUE_GAP_STRUCTURE_ONLY`
+- `CURRENT_BASELINE`: `c68623ea2c408bb2e7ce60b529bf7c82c1982888` (V6 full-strategy start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_V6_FULL_SIGNAL_STRATEGY_RESEARCH_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: the complete frozen V6 strategy tree finishes `V6_PARAMETER_FAMILY_UNSTABLE`. All ten Development board-folds select cash; fixed entries and loss control show pockets of payoff but fail chronology/sample stability
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. V6 establishes a causal True-Gap repair representation, not an executable long-only strategy. The exact E1/U/no-failure/T10-T20-T40/K5-K10-K20 family is closed without stop, filter, board, horizon, or capacity rescue
+- `CURRENT_STRATEGY_CANDIDATE`: none. V6 True-Gap identity, environment-repair state, B5 ranking information and loss-control diagnostics remain representations only. No frozen complete configuration passes the final selector
 - `BRANCH`: `research/ashare-ultrashort-v1`
 - `STARTING_HEAD`: `e33da497699d37408f4c7b2a4d6f298fe9b1f931`
 
 ## Current continuation state
+
+### V6 full signal and strategy research
+
+The 163-feature contract hash is `99f1ba1d527aa1c084d9ccde2580cdb5da093f2c194104d965623319c9b4b52a`.
+All 35 entries, B1--B5, M1/M2, A100/A70/A50/A30/A20, X0--X8,
+H10/H20/H40 and K5/K10/K20 are complete. The strict final selector chooses
+cash in every 2017--2021 Main/ChiNext fold. Combined K10 L0/L1/L2/L3 CAGR is
+-0.72%/-0.13%/+0.37%/+0.62%; L2 has only ten trades and L3 retains -22.67%
+MaxDD. No strategy advances. Repository 2024+ remains unopened.
+
+QD-010 repair blocks 576 entry-grid rows and forces 17,484 policy-path exits;
+264 paths with no legal pre-effective exit are explicitly unresolved/return-null.
+All required execution and portfolio violation counts are zero. The
+2022--2023 diagnostic selected cash in all four board-folds, but is governance-
+compromised because those rows were technically materialized before the
+Development procedure freeze; no performance was inspected and no rule changed.
 
 - `CURRENT_HEAD_AT_RESUME`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 - `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_FIXED_CAPITALIZATION_AND_POSITION_DENSITY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`

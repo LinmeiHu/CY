@@ -1,0 +1,820 @@
+{
+  "feature_uses_post_decision_information_count": 0,
+  "features": {
+    "afternoon_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "afternoon_volume_share": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "approach_price_progress_per_turnover_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "approach_price_progress_per_turnover_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "approach_price_progress_per_turnover_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_close_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_cum_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "board_down_breadth": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_open_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_relative_approach_return_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_relative_approach_return_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_relative_approach_return_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_relative_return_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_relative_return_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_relative_return_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily/industry"
+    },
+    "board_return_since_freeze": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "board_return_since_gap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "board_true_gap_breadth": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "breadth_recovery": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "close_location_trend_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "close_location_trend_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "close_location_trend_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "cum_negative_residual": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "cum_turnover_since_cluster": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "cum_turnover_since_primary": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "current_close_vs_vwap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "current_penetration": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "decision_bar_body_ratio": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "decision_bar_close_location": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "decision_bar_price_impact_per_volume": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "decision_bar_upper_wick_ratio": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "decision_bar_volume_surprise": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "distance_from_causal_reference_high": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "down_bar_volume_share": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "entry_day_board_return_to_clock": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "entry_day_industry_return_to_clock": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "entry_day_market_return_to_clock": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "exact_locked_limit_flag": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "failed_intraday_rebound_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "failed_new_high_count_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "failed_recovery_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "failed_test_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "gap_day_close_location": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "gap_day_close_residual": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "gap_day_close_vs_vwap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "gap_day_open_residual": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "gap_day_price_progress_per_volume": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "gap_day_turnover_zscore": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "high_turnover_down_day_share_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "high_turnover_down_day_share_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "high_turnover_negative_residual_day_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "high_volume_stall_count_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "higher_low_share_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "higher_low_share_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "higher_low_share_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_close_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_cum_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "industry_down_breadth": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_median_return_recovery": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "industry_open_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_relative_approach_return_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_relative_approach_return_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_relative_approach_return_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_relative_return_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_relative_return_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_relative_return_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_return_since_freeze": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "industry_return_since_gap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "industry_true_gap_breadth": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "industry_up_stock_down_day_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "late_acceleration_5_vs_previous5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily"
+    },
+    "late_day_recovery": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "local_high_break_after_retest": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "lower_limit_stress": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "lower_limit_stress_recovery": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "lower_low_share_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "lower_low_share_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "lower_low_share_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "market_close_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "market_down_breadth": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "market_median_return_recovery": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "market_open_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "market_return_since_freeze": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "market_return_since_gap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "market_true_gap_breadth": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "market_up_stock_down_day_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "max_distance_below_l": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "max_pullback_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "max_pullback_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "max_pullback_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "max_pullback_to_contact": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "max_rebound_from_low": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "maximum_penetration": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "minimum_close_distance_from_l": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "near_limit_stress": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "near_lower_limit_flag": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "net_advance_toward_l_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "net_advance_toward_l_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "net_advance_toward_l_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "new_lower_cluster_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "new_lower_major_secondary_gap_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "opening_15m_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "opening_30m_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "opening_5m_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "opening_jump_flag": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "ordinary_gap_flag": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "partially_released_limit_flag": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "path_efficiency_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "path_efficiency_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "path_efficiency_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "path_efficiency_to_contact": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "peers_with_comparable_shock": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation close",
+      "pit_source": "PIT daily/industry"
+    },
+    "penetration_gain_per_volume": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "penetration_into_gap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "pre10_turnover_vs_prior60": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "pre15_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "pre20_cum_turnover": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "pre30_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "pre5_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "pre5_turnover_vs_prior60": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "pre60_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "price_advance_per_turnover_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "price_progress_per_volume": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "pullback_burden_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "pullback_burden_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "pullback_burden_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "range_compression_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "range_compression_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "range_compression_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "rebound_giveback_to_close": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "reclaim_count": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "rejection_depth_below_l": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "return_deceleration_5_vs_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "return_to_contact": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "share_closes_at_or_above_l": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "signed_volume_proxy": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "stock_cum_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "stock_intraday_residual_to_clock": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "stock_minus_board_intraday_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "stock_minus_board_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "stock_minus_industry_intraday_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "stock_minus_industry_return": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "time_above_intraday_vwap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "time_below_l": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    "time_below_vwap": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "time_of_day": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "turnover_on_down_days_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "turnover_on_down_days_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "turnover_on_down_days_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "turnover_on_up_days_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "turnover_on_up_days_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "turnover_on_up_days_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "turnover_surprise": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "up_bar_volume_share": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed gap-formation session",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    "up_session_share_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "up_session_share_20": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "up_session_share_5": {
+      "known_by_decision": "YES",
+      "latest_observable": "prior completed session before decision",
+      "pit_source": "PIT daily/industry"
+    },
+    "up_vs_down_minute_volume": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "up_vs_down_turnover_asymmetry": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "upper_shadow_pressure_10": {
+      "known_by_decision": "YES",
+      "latest_observable": "gap formation previous completed session",
+      "pit_source": "PIT daily"
+    },
+    "volatility_normalization": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed decision bar",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    "volume_surprise_same_clock": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    "vwap_hold_share": {
+      "known_by_decision": "YES",
+      "latest_observable": "completed entry confirmation bar",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    }
+  }
+}
