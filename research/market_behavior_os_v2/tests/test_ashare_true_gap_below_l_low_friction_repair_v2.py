@@ -129,3 +129,18 @@ def test_development_checkpoint_meets_frozen_design_targets() -> None:
     assert payload["audit"]["entry_at_or_before_signal_count"] == 0
     assert payload["audit"]["t1_violation_count"] == 0
     assert payload["audit"]["repository_2024_plus_data_opened"] == "NO"
+
+
+def test_secondary_replication_preserves_freeze_and_records_failure() -> None:
+    freeze = json.loads(runner.VALIDATION_FREEZE.read_text(encoding="utf-8"))
+    result = json.loads(runner.VALIDATION_RESULT.read_text(encoding="utf-8"))
+    assert result["fixed_threshold"] == freeze[
+        "fixed_recovery_per_turnover_threshold"
+    ]
+    assert result["label"] == "SECONDARY_FORWARD_REPLICATION_2022_2023"
+    assert result["verdict"] == "LOW_FRICTION_REPAIR_SECONDARY_REPLICATION_FAILED"
+    assert result["validation_checks"]["mean_net"]
+    assert not result["validation_checks"]["both_years_positive"]
+    assert not result["validation_checks"]["both_boards_positive"]
+    assert result["audit"]["validation_rule_changed_count"] == 0
+    assert result["audit"]["repository_2024_plus_data_opened"] == "NO"
