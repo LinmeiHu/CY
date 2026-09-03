@@ -2,6 +2,37 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: all-governed-universe pre-2021 low-inventory true gaps
+
+Resume from the commit containing
+`ASHARE-ALL-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V2`. Its start
+checkpoint is `bdb06a475db936a70865705fc0693514c299a0d1`. This experiment directly
+reconstructs strict downward true gaps from hard-valid, same-lineage PIT daily
+data and does **not** use V6 CORE, V6 collapse clusters, primary-gap hierarchy,
+or memory classes as source gates.
+
+The frozen 2014--2020 funnel is 88,785 direct true gaps -> 37,459 at least 1%
+wide -> 22,709 with exact daily history -> 3,151 daily/VAP eligible with exact
+120 x 241-minute history -> 2,209 pristine-first-return low-inventory mother
+events (1,446 symbols). Mother structural U fill is
+75.33%/82.48%/88.28%/91.22% at 5/10/20/40 sessions.
+
+The same-sample descriptive summary uses only two conditions: 1% <= gap width
+<=1.7857%, and pre-gap exact-gap turnover density <=10.24% of local
+per-price-width density. It retains 305 events/296 symbols and reaches
+85.25%/90.16%/95.74%/97.38% structural fill. This is not a predictor: 163
+events fill U on the return date, 192 matches are from 2018, the largest single
+formation date contributes 120 events, and narrower gaps are mechanically
+easier to fill.
+
+Review the complete 306-page chart book next; it contains every match, not a
+sample. Contract/spec/stage-A/discovery/PDF hashes are `656a8350...f995`,
+`bf1b593d...5f4f`, `5b12cb59...be3`, `b89ab4e4...ac15`, and
+`940b8ddb...59d6`. No return, PnL, trade replay, model, strategy, prediction,
+2021+ data, or repository 2024+ data was used. Do not optimize from the observed
+fill labels; human review should identify semantic false positives before any
+separately frozen out-of-sample design.
+
 ## Latest checkpoint: pre-2021 low-inventory true-gap fill patterns
 
 Resume from the commit containing

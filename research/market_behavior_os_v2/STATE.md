@@ -7,19 +7,47 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `014390855b2e7610aaee6f15fefbf411f700c8d4` (pre-2021 low-inventory fill-pattern discovery start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_LOW_INVENTORY_FILL_PATTERN_HUMAN_REVIEW`
-- `CURRENT_PRIMARY_FRONTIER`: a broad outcome-blind low-inventory mother population is followed by pre-2021 structural U-fill description only. Low post-gap corridor turnover and an orderly higher-low approach form a two-condition in-sample summary; its 40-chart book is ready for human review, but no prediction or strategy claim exists
+- `CURRENT_BASELINE`: `bdb06a475db936a70865705fc0693514c299a0d1` (all-governed-Main/ChiNext true-gap discovery start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_ALL_TRUE_GAP_LOW_INVENTORY_FILL_PATTERN_HUMAN_REVIEW`
+- `CURRENT_PRIMARY_FRONTIER`: direct PIT reconstruction of every governed Main/ChiNext downward true gap replaces V6 CORE as the source universe. The 2,209-event outcome-blind low-inventory mother population and its 305-event two-condition same-sample description are ready for human chart review; no predictive, executable, or strategy claim exists
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. The new 2014--2020 result is descriptive pattern discovery only; 2021 and later remain unused for a later independently frozen test
+- `CURRENT_STRATEGY_CANDIDATE`: none. The new 2014--2020 result is descriptive structural discovery only; 2021 and later remain unused for a later independently frozen test
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `014390855b2e7610aaee6f15fefbf411f700c8d4`
+- `STARTING_HEAD`: `bdb06a475db936a70865705fc0693514c299a0d1`
 
 ## Current continuation state
 
-### Pre-2021 low-inventory true-gap fill-pattern discovery
+### All-governed-universe pre-2021 low-inventory true-gap discovery V2
 
-The outcome-blind mother screen preserves V6 CORE true-gap and causal-first-
+V2 no longer conditions retrieval on V6 CORE or any V6 collapse cluster,
+primary-gap hierarchy, or memory class. It reconstructs 88,785 strict
+`High_t < Low_{t-1}` gaps directly from hard-valid, same-lineage PIT daily data
+for the governed Main/ChiNext universe in 2014--2020. The frozen outcome-blind
+funnel is 37,459 gaps at least 1% wide, 22,709 with exact 120-session daily
+history, 3,151 daily/VAP-eligible gaps with exact 120 x 241-minute history, and
+2,209 pristine-first-return low-inventory events covering 1,446 symbols.
+
+The mother population structurally reaches U in 75.33%/82.48%/88.28%/91.22%
+at 5/10/20/40 sessions. A bounded same-sample descriptive selector retains two
+conditions: gap width no more than 1.7857% (the mother floor remains 1%) and
+pre-gap exact-gap turnover density no more than 10.24% of local per-price-width
+density. The 305 matches/296 symbols reach 85.25%/90.16%/95.74%/97.38% at the
+same horizons, but 163 fill on the first-return date, 192 matches are from 2018,
+and 120 share the 2018-10-11 formation date. The smaller-gap condition is partly
+mechanical fill geometry. This is therefore in-sample structural description,
+not predictive evidence.
+
+The 306-page PDF contains a summary and every one of the 305 matches. All pages
+show the lifecycle, local first-return view, exact gap/corridor and 120-session
+pre-gap VAP. Contract/spec/stage-A/discovery/PDF hashes are
+`656a8350...f995`, `bf1b593d...5f4f`, `5b12cb59...be3`,
+`b89ab4e4...ac15`, and `940b8ddb...59d6`. No return, PnL, trade, model,
+strategy, predictive validation, 2021+ data, or repository 2024+ data was used.
+Stop for human review.
+
+### Conditional V6 CORE pre-2021 fill-pattern predecessor V1
+
+The superseded source-universe experiment preserves V6 CORE true-gap and causal-first-
 return identity, requires exact 120-session PIT minute history, and retains only
 events whose raw VAP density is no higher than local average both inside
 `[L,U]` and in `[L-0.5W,U+0.5W)`, with at most 12/20 pre-gap intersecting

@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | The pre-2021 low-inventory mother population shows common structural U repair and a two-condition in-sample description, but no predictive or trading evidence | Review the 40 marked signal charts; keep 2021+ unused until a later separately frozen test |
+| EXPLORE | 10% | Direct all-governed-Main/ChiNext reconstruction yields 2,209 low-inventory pristine-return events and 305 same-sample descriptive matches, but chronology is concentrated and no predictive or trading evidence exists | Review all 305 marked signal charts; keep 2021+ unused until a later separately frozen test |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -18,7 +18,24 @@ Mandatory checkpoint questions:
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
 
-## Pre-2021 low-inventory fill-pattern review
+## All-governed-universe pre-2021 low-inventory fill-pattern review V2
+
+This lane receives descriptive human-review budget and zero strategy capital.
+It directly reconstructs all 88,785 hard-valid same-lineage true gaps in the
+governed Main/ChiNext universe rather than conditioning on V6 CORE. Exact
+history, persistence, permanent rejection of any early touch, and low
+per-price-width inventory reduce this to a 2,209-event mother population with
+88.28% 20D structural U fill.
+
+Two same-sample conditions retain 305 events: gap width 1%--1.7857% and
+exact-gap historical density <=10.24% of local density. Their 20D fill is
+95.74%, but 2018 supplies 192 events, one formation date supplies 120, and
+53.44% fill on the first-return date. The result is descriptive and partly
+mechanical, not a predictor. Human review of all 305 charts is binding before
+new semantic work; 2021+ remains reserved and no trade, return, PnL, model, or
+strategy replay is authorized.
+
+## Conditional V6 CORE pre-2021 predecessor V1
 
 This lane receives descriptive human-review budget and zero strategy capital.
 The 427-event broad mother population is selected without outcomes from exact

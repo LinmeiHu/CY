@@ -1,0 +1,134 @@
+{
+  "authoritative_start_head": "bdb06a475db936a70865705fc0693514c299a0d1",
+  "contract": {
+    "charts": {
+      "outcome_visible": true,
+      "returns_visible": false,
+      "selection": "every final simple-condition match",
+      "views": [
+        "full gap-to-return lifecycle",
+        "local first-return window",
+        "pre-gap turnover-at-price profile"
+      ]
+    },
+    "chronology": {
+      "2021_and_later_used": false,
+      "discovery_end": "2020-12-31",
+      "discovery_start": "2014-01-01",
+      "required_complete_structural_horizon_sessions": 40
+    },
+    "descriptive_conditions": {
+      "candidate_features": {
+        "approach_path_efficiency_10d": "HIGH",
+        "approach_return_10d": "HIGH",
+        "gap_age_sessions": "HIGH",
+        "gap_width_pct": "LOW",
+        "higher_low_share_10d": "HIGH",
+        "max_depth_below_l_before_return": "HIGH",
+        "post_gap_lower_corridor_touch_sessions": "LOW",
+        "post_gap_lower_corridor_turnover": "LOW",
+        "pre_gap_corridor_density_relative_local": "LOW",
+        "pre_gap_corridor_touch_sessions": "LOW",
+        "pre_gap_drawdown_from_120d_peak": "HIGH",
+        "pre_gap_inside_density_relative_local": "LOW",
+        "pre_gap_inside_touch_sessions": "LOW",
+        "pre_gap_max_runup_20d": "LOW",
+        "pre_gap_max_runup_60d": "LOW",
+        "pre_gap_return_20d": "LOW",
+        "pre_gap_return_60d": "LOW",
+        "pre_peak_to_gap_sessions": "HIGH"
+      },
+      "interpretation": "same-sample descriptive regularity only",
+      "selection": "greedy at most 3; each addition retains >=100 events and >=6 years, improves pooled 20D fill by >=2%, and has positive median calendar-year uplift",
+      "selector_order": "positive-lift years, median annual lift, pooled lift, support, deterministic name",
+      "thresholds": "full-discovery q30/q50/q70 in the frozen economic direction; no arbitrary threshold search"
+    },
+    "experiment": "ASHARE-ALL-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V2",
+    "governance": {
+      "2021_plus_data_used": false,
+      "prediction_analysis_run": false,
+      "repository_2024_plus_data_opened": false,
+      "return_analysis_run": false,
+      "strategy_backtest_run": false
+    },
+    "outcome_blind_low_inventory_mother": {
+      "bin_width": "0.10W",
+      "corridor_density": {
+        "definition": "turnover mass per unit width in z=[-0.5,1.5), divided by local-reference mass per unit width",
+        "maximum": 1.0
+      },
+      "history": "exactly 120 completed same-lineage hard-valid sessions, each with exactly 241 one-minute bars, before gap formation",
+      "inside_density": {
+        "definition": "turnover mass per unit width in z=[0,1), divided by local-reference mass per unit width",
+        "maximum": 1.0
+      },
+      "local_reference": "z in [-2,3)",
+      "maximum_pre_gap_sessions_intersecting_corridor": 20,
+      "maximum_pre_gap_sessions_intersecting_exact_gap": 12,
+      "minute_price": "amount/volume when volume>0, otherwise zero-weight typical price",
+      "minute_weight": "PIT daily float-turnover multiplied by minute share of daily volume",
+      "missing_policy": "FAIL_CLOSED",
+      "z": "(QD-010 comparable minute price - L) / W"
+    },
+    "pristine_first_return": {
+      "attack_2_allowed": false,
+      "departure": "first 5 completed post-gap stock sessions all have High < L",
+      "first_return": "earliest later completed 1-minute bar whose high reaches L from below",
+      "minimum_fully_below_sessions": 5,
+      "pre_departure_touch_policy": "reject the gap permanently; never reset a later interaction as first return",
+      "same_lineage_required": true
+    },
+    "scientific_status": "PRE_2021_IN_SAMPLE_STRUCTURAL_PATTERN_DISCOVERY_NOT_PREDICTION_NOT_STRATEGY",
+    "source_population": {
+      "boards": [
+        "MAIN",
+        "CHINEXT"
+      ],
+      "collapse_leg_required": false,
+      "construction": "directly from governed PIT daily rows; no V6/V8 candidate input",
+      "formation_gate": "completed current and previous rows are hard-valid, adjacent, corporate-action-safe, and in the same QD-010 lineage",
+      "interval": "[High_t, Low_t_minus_1] = [L,U]",
+      "memory_class_required": false,
+      "minimum_width_pct_of_previous_close": 0.01,
+      "primary_gap_hierarchy_required": false,
+      "true_gap": "High_t < Low_t_minus_1",
+      "v6_core_required": false
+    },
+    "stage_b_structural_outcome": {
+      "execution_or_trading_claim": false,
+      "primary": "structural U full-fill within 20 completed stock sessions after pristine first return",
+      "return_or_pnl_opened": false,
+      "same-day_fill_included": true,
+      "secondary_horizons_sessions": [
+        5,
+        10,
+        20,
+        40
+      ]
+    }
+  },
+  "contract_sha256": "656a83509afee5926df07f426efb617b6d20791dbde89308a8a0157525d8f995",
+  "experiment_id": "ASHARE-ALL-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V2",
+  "mission": "Search the full governed pre-2021 Main/ChiNext true-gap universe for pristine low-inventory gaps, then describe structural U-fill regularities with at most three simple conditions and render every final match.",
+  "prohibited": [
+    "V6 CORE candidate gate",
+    "collapse-cluster gate",
+    "return",
+    "PnL",
+    "trade replay",
+    "entry/exit optimization",
+    "predictive claim",
+    "2021+ data",
+    "2024+ data"
+  ],
+  "stage_order": [
+    "RECONSTRUCT_ALL_TRUE_GAPS_DIRECTLY_FROM_PIT_DAILY",
+    "ESTABLISH_PRISTINE_FIRST_RETURN",
+    "CALCULATE_CAUSAL_MINUTE_VAP",
+    "FREEZE_LOW_INVENTORY_MOTHER_POPULATION",
+    "OPEN_STRUCTURAL_U_FILL_ONLY",
+    "SUMMARIZE_SIMPLE_CONDITIONS",
+    "RENDER_ALL_FINAL_MATCHES",
+    "STOP_FOR_HUMAN_REVIEW"
+  ]
+}

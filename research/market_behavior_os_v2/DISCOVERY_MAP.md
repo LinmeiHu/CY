@@ -4,7 +4,23 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
-## Pre-2021 low-inventory true-gap fill-pattern discovery
+## All-governed-universe pre-2021 low-inventory true gaps V2
+
+- V2 directly reconstructs 88,785 governed Main/ChiNext strict downward true
+  gaps from PIT daily data. It does not source from V6 CORE, collapse clusters,
+  primary-gap hierarchy, or memory classes.
+- The outcome-blind funnel retains 2,209 pristine-first-return events with exact
+  120-session x 241-minute history and low raw VAP inside `[L,U]` and its local
+  corridor. Mother U fill is 75.33%/82.48%/88.28%/91.22% at 5/10/20/40D.
+- A bounded same-sample description retains 305 events using gap width
+  1%--1.7857% and exact-gap density <=10.24% of local per-price-width density;
+  20D/40D fill is 95.74%/97.38%.
+- This is not stable predictive evidence: 192/305 events are from 2018,
+  120/305 share one formation date, 163 fill U on the return date, and the
+  width condition is partly mechanical geometry. The 306-page review book
+  contains every match. No trades, returns, strategy, 2021+, or 2024+ data.
+
+## Conditional V6 CORE pre-2021 fill-pattern predecessor V1
 
 - A broad, outcome-blind mother screen keeps 427 V6 CORE events with exact
   120-session PIT minute history and low raw VAP per price width both in
