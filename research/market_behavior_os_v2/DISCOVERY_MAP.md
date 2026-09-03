@@ -4,6 +4,25 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## True-Gap V8 clean-fracture first-return semantic pilot
+
+- V8 addresses the human-identified semantic mismatch without using outcomes:
+  V7's broad attack population is not treated as the requested clean-fracture
+  pattern and none of its strategy rules transfers.
+- Frozen retrieval requires >=60 completed sessions from causal peak to gap, a
+  coherent 60--120-session main decline, >=30% drawdown, >=12.5% later depth
+  below L, exact 120-session/241-minute lineage, low raw exact-gap/corridor VAP,
+  <=4/<=8 pre-gap touch sessions, and zero completed post-gap corridor approach.
+  Missing history fails closed; turnover decay and ATTACK_2 are excluded.
+- Of 3,063 2014--2021 CORE events, 17 pass (13 Main/4 ChiNext). The blind package
+  contains all 17 plus 13 isolated rejection controls, randomized across 30
+  pages with identity/category sealed externally.
+- Every chart marks the exact gap date, L/U, local peak/trough, V6 freeze and
+  causal first return, with raw and post-gap VAP. Event-day and post-event bars
+  are absent. Two builds are byte-identical and five focused tests pass.
+- Status `STOPPED_FOR_HUMAN_BLIND_REVIEW`. No payoff, strategy, post-2021 or
+  2024+ evidence has been opened; only human semantic scoring may proceed.
+
 ## True-Gap V7 overhang / attack-episode simple-rule Development
 
 - V6 event identity is unchanged. Outcome-blind Stage A builds price-inventory

@@ -1,0 +1,91 @@
+{
+  "audit": {
+    "EVENT_AT_OR_BEFORE_FREEZE_RETAINED_COUNT": 0,
+    "MISSING_REQUIRED_HISTORY_PASSED_COUNT": 0,
+    "POST_2021_DATA_USED": "NO",
+    "POST_EVENT_CHART_BAR_COUNT": 0,
+    "PRIOR_NEAR_TOUCH_PASSED_COUNT": 0,
+    "REPOSITORY_2024_PLUS_DATA_OPENED": "NO",
+    "RETURN_ANALYSIS_RUN": "NO",
+    "STRATEGY_BACKTEST_RUN": "NO",
+    "TURNOVER_DECAY_USED_FOR_CLEAN_FRACTURE_COUNT": 0,
+    "V6_EVENT_IDENTITY_CHANGED_COUNT": 0
+  },
+  "blind_pilot": {
+    "board_counts": {
+      "CHINEXT": 10,
+      "MAIN": 20
+    },
+    "category_board_counts": [
+      {
+        "blind_pool": "REJECTED_ACUTE_RISE_FALL",
+        "board": "CHINEXT",
+        "count": 3
+      },
+      {
+        "blind_pool": "REJECTED_ACUTE_RISE_FALL",
+        "board": "MAIN",
+        "count": 1
+      },
+      {
+        "blind_pool": "REJECTED_CROWDED_CORRIDOR",
+        "board": "CHINEXT",
+        "count": 3
+      },
+      {
+        "blind_pool": "REJECTED_CROWDED_CORRIDOR",
+        "board": "MAIN",
+        "count": 2
+      },
+      {
+        "blind_pool": "REJECTED_PRIOR_NEAR_TOUCH",
+        "board": "MAIN",
+        "count": 4
+      },
+      {
+        "blind_pool": "RETAINED_CLEAN_FRACTURE",
+        "board": "CHINEXT",
+        "count": 4
+      },
+      {
+        "blind_pool": "RETAINED_CLEAN_FRACTURE",
+        "board": "MAIN",
+        "count": 13
+      }
+    ],
+    "chart_count": 30,
+    "chart_directory": "/Volumes/quant/CY_quant_research/ashare_true_gap_clean_fracture_first_return_semantic_v8/blind_charts",
+    "duplicate_symbol_count": 0,
+    "pdf": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/output/pdf/ASHARE-TRUE-GAP-CLEAN-FRACTURE-FIRST-RETURN-SEMANTIC-V8_blind_pilot_30.pdf",
+    "review_csv": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-CLEAN-FRACTURE-FIRST-RETURN-SEMANTIC-V8_review.csv",
+    "sealed_key": "/Volumes/quant/CY_quant_research/ashare_true_gap_clean_fracture_first_return_semantic_v8/blind_sample_sealed_key.parquet"
+  },
+  "coverage": {
+    "blind_pool_counts": {
+      "NOT_SAMPLED": 3013,
+      "REJECTED_ACUTE_RISE_FALL": 17,
+      "REJECTED_CROWDED_CORRIDOR": 8,
+      "REJECTED_PRIOR_NEAR_TOUCH": 8,
+      "RETAINED_CLEAN_FRACTURE": 17
+    },
+    "end": "2021-12-31 09:31:00",
+    "retained_clean_fracture": 17,
+    "source_core_candidates": 3063,
+    "start": "2014-02-10 13:48:00",
+    "symbols": 1868
+  },
+  "experiment": "ASHARE-TRUE-GAP-CLEAN-FRACTURE-FIRST-RETURN-SEMANTIC-V8",
+  "hashes": {
+    "blind_index_sha256": "e6b6b8db113d50976d0053a7b9e20b37633e819cf3af1ee253d767b57946b798",
+    "pdf_sha256": "b3aa2c05f44e071e7a00f3e4d50071a233f2856568fca55a037230007ea41ea2",
+    "review_csv_sha256": "abdea0e6f3bcc77477b7340c7bfc4414a664bd93d84b94d8e3f47e90e14fd3ba",
+    "sealed_key_sha256": "7b19f485ed0167a8d2eb78acef5a52ac0658a44e19998d1547d60b95738eb0a7",
+    "semantic_contract_sha256": "665ab076b0ce055e8e459b018397463c5ddf633704c374e2a796e8f310962b52",
+    "semantic_ledger_sha256": "47a1eb7c2a4dc16b70683b51041ea81332b69edb3c66360abd7ee87f24eb0801",
+    "spec_sha256": "271172965f85c3a7ecf4b3087ebe1aa7ba611e89b03f87e4b7a5749011dbb916"
+  },
+  "source": "ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY",
+  "source_spec_sha256": "2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162",
+  "status": "STOPPED_FOR_HUMAN_BLIND_REVIEW",
+  "verdict": "HUMAN_SEMANTIC_REVIEW_REQUIRED"
+}

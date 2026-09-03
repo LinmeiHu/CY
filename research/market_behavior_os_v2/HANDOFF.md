@@ -2,6 +2,36 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: V8 clean-fracture first-return semantic pilot
+
+Resume from the commit containing
+`ASHARE-TRUE-GAP-CLEAN-FRACTURE-FIRST-RETURN-SEMANTIC-V8`. Its start checkpoint
+is `865bfa9ffb9e281438e10a60ca7f57dd3945658e`; the immutable V6 source hash is
+`2705011d...162`. V8 contract/spec hashes are `665ab076...2b52` and
+`27117296...b916`.
+
+This is an outcome-blind semantic repair, not a V7 strategy rescue. It requires
+at least 60 completed sessions from the primary gap's causal reference high to
+gap formation, a coherent 60--120-session decline, >=30% collapse, >=12.5%
+subsequent displacement below L, low raw exact-gap and corridor VAP, no more
+than 4/8 pre-gap sessions intersecting the exact gap/corridor, and no completed
+post-gap corridor approach before the unchanged V6 causal first return. Exact
+120-session, 241-minute, same-lineage history is mandatory. Turnover decay,
+ATTACK_2, entry, exit, model and portfolio rules do not participate.
+
+The 2014--2021 CORE source has 3,063 candidates. Seventeen (13 Main/4 ChiNext)
+pass all gates. A deterministic 30-page blind package contains those 17 and 13
+isolated controls, totaling 20 Main/10 ChiNext. Identity/category are sealed
+externally. The event-day candle is excluded because it contains data after the
+intraday marker; all pages therefore have zero post-event bars. Ledger/key/PDF
+hashes are `47a1eb7c...0801`, `7b19f485...0a7`, `b3aa2c05...1ea2`; two builds
+match byte-for-byte and five focused tests pass.
+
+Stop for human review. Do not decode the key during scoring, attach returns,
+run a strategy, treat thresholds as deployable parameters, use 2022--2023, or
+open 2024+. Required audit state: return analysis `NO`, strategy backtest `NO`,
+post-2021 data used `NO`, repository 2024+ opened `NO`.
+
 ## Latest checkpoint: True-Gap V7 overhang / attack-episode simple-rule Development
 
 Resume from the commit containing

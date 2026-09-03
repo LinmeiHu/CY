@@ -1,0 +1,93 @@
+{
+  "blind_sample": {
+    "chart_window": "120 completed sessions before gap through causal first return; no post-event bar",
+    "outcomes_shown": false,
+    "pages": 30,
+    "quotas": {
+      "REJECTED_ACUTE_RISE_FALL": {
+        "CHINEXT": 3,
+        "MAIN": 1
+      },
+      "REJECTED_CROWDED_CORRIDOR": {
+        "CHINEXT": 3,
+        "MAIN": 2
+      },
+      "REJECTED_PRIOR_NEAR_TOUCH": {
+        "CHINEXT": 0,
+        "MAIN": 4
+      },
+      "RETAINED_CLEAN_FRACTURE": {
+        "CHINEXT": 4,
+        "MAIN": 13
+      }
+    },
+    "randomization": "deterministic SHA256 order; category and identity sealed outside Git"
+  },
+  "causal_clock": {
+    "event": "unchanged V6 causal_first_return",
+    "gap_and_daily": "completed PIT daily sessions only",
+    "post_event_bars": 0,
+    "primary_freeze": "unchanged V6 cluster_freeze_time"
+  },
+  "experiment": "ASHARE-TRUE-GAP-CLEAN-FRACTURE-FIRST-RETURN-SEMANTIC-V8",
+  "governance": {
+    "human_review_required_before_outcome_research": true,
+    "numeric_thresholds_are_strategy_parameters": false,
+    "repository_2024_plus_data_opened": false,
+    "return_analysis_run": false,
+    "strategy_backtest_run": false
+  },
+  "period": {
+    "end": "2021-12-31",
+    "start": "2014-01-01"
+  },
+  "retrieval_contract": {
+    "main_collapse_leg": {
+      "duration_sessions_inclusive_bounds": [
+        60,
+        120
+      ],
+      "gap_must_form_no_later_than_trough": true,
+      "maximum_interim_close_rebound_fraction_of_peak_trough_drop": 0.5,
+      "minimum_close_path_efficiency": 0.3,
+      "minimum_peak_to_gap_sessions": 60,
+      "minimum_peak_to_trough_drawdown": 0.3,
+      "peak": "the frozen primary gap's own causal 120-session reference_high/reference_high_date",
+      "trough": "earliest minimum QD-010 coordinate Low from that peak through V6 cluster freeze"
+    },
+    "memory": "CORE",
+    "pre_gap_history": "exactly 120 same-lineage hard-valid 241-minute sessions",
+    "pristine_return": {
+      "allowed_prior_near_touch_count": 0,
+      "attack_2": "NOT_PART_OF_THIS_SEMANTIC_PILOT",
+      "clock_reset": false,
+      "post_gap_corridor_approach": "zero completed sessions strictly after gap formation and before event day with High >= L-0.5W",
+      "prior_completed_session_near_touch": "High >= L - 0.25W on any completed session strictly after gap formation and before event day"
+    },
+    "raw_inventory": {
+      "bin_width": "0.10W",
+      "corridor": "z=[-0.5,1.5), maximum relative per-bin density 0.80",
+      "corridor_session_occupancy": "no more than 8 of 120 pre-gap completed sessions have a daily range intersecting [L-0.5W,U+0.5W)",
+      "inside_gap": "z=[0,1), maximum relative per-bin density 0.65",
+      "inside_gap_session_occupancy": "no more than 4 of 120 pre-gap completed sessions have a daily range intersecting [L,U]",
+      "local_normalizer": "raw volume in z=[-2,+3), normalized per price bin",
+      "missing_policy": "FAIL_CLOSED",
+      "post_gap_through_freeze_corridor": "allocated PIT free-float turnover <= 1.0%",
+      "price_source": "frozen V7 outcome-blind QD-010 minute VAP bins",
+      "turnover_decay_used": false
+    },
+    "subsequent_displacement": {
+      "minimum_depth_below_L_before_event": 0.125,
+      "signal_day_daily_low_excluded": true
+    }
+  },
+  "scientific_status": "OUTCOME_BLIND_SEMANTIC_RETRIEVAL_PILOT_NOT_A_STRATEGY",
+  "source": {
+    "experiment": "ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY",
+    "population": "V6 CORE causal first-return candidates",
+    "source_identity_changed": false,
+    "spec_sha256": "2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162",
+    "true_gap_interval": "[High_t, Low_t_minus_1]",
+    "true_gap_primitive": "High_t < Low_t_minus_1"
+  }
+}

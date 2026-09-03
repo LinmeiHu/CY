@@ -7,15 +7,45 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `df739d01617d1537dcfd395ac040ce24844262f6` (V7 overhang/attack Development start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_V7_OVERHANG_ATTACK_SIMPLE_RULE_DEVELOPMENT_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: the outcome-blind turnover-decayed inventory proxy and causal ATTACK_1/ATTACK_2 contract are complete, but the frozen low-overhang Vacuum Repair hypothesis finishes `V7_NO_SIMPLE_EDGE`; no simple rule, acceptance, failure exit, or retry translation creates stable positive long economics
+- `CURRENT_BASELINE`: `865bfa9ffb9e281438e10a60ca7f57dd3945658e` (V8 clean-fracture semantic-repair start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_V8_CLEAN_FRACTURE_BLIND_REVIEW_PENDING`
+- `CURRENT_PRIMARY_FRONTIER`: V7 is not evidence against the intended clean-fracture pattern because its population admits short rise/fall collapses, historical corridor occupancy, and later attacks. V8 now freezes an outcome-blind high-precision retrieval contract and a 30-chart blind review package; no payoff or strategy claim exists before human review
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. V6/V7 True-Gap identity, turnover-decayed inventory, attack-episode state, environment repair and loss-control diagnostics remain representations only. V7 is not stable enough for a sealed 2024+ challenge
+- `CURRENT_STRATEGY_CANDIDATE`: none. V8 is a semantic candidate set only; V6/V7 True-Gap identity, inventory, attack-episode state, environment repair and loss-control diagnostics remain representations. No outcome stage or sealed challenge is authorized
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `df739d01617d1537dcfd395ac040ce24844262f6`
+- `STARTING_HEAD`: `865bfa9ffb9e281438e10a60ca7f57dd3945658e`
 
 ## Current continuation state
+
+### V8 clean-fracture first-return semantic pilot
+
+V8 preserves the frozen V6 CORE true-gap and causal-first-return identities but
+does not inherit V7 admission, attack retry, entry, exit, model, or portfolio
+rules. It adds only outcome-blind semantic-retrieval gates for the pattern the
+human actually described: at least 60 completed sessions from the primary
+gap's own causal reference high to gap formation; a coherent 60--120-session
+peak-to-trough decline; at least 30% drawdown and 12.5% later displacement below
+L; low raw occupancy inside `[L,U]` and `[L-0.5W,U+0.5W)`; no more than 4/8
+pre-gap sessions intersecting those regions; and no completed-session corridor
+approach after gap formation before the exact first return. Missing 120-session
+241-minute lineage fails closed. Turnover decay is not used as a cleanliness
+substitute and the clock never resets into ATTACK_2.
+
+Among 3,063 2014--2021 CORE source candidates, 17 satisfy every frozen retrieval
+gate (13 Main, 4 ChiNext; 17 symbols). The 30-page blind package contains all 17
+plus 13 isolated controls: four prior-approach, four acute rise/fall, and five
+crowded-corridor cases, with total board mix 20 Main/10 ChiNext. Chart identity
+and category remain in an external sealed key. Every page shows 120 completed
+pre-gap sessions, exact gap date and L/U, local peak/trough, V6 freeze, raw VAP,
+post-gap-through-freeze turnover VAP and the intraday first-return marker; the
+event-day candle and all post-event bars are omitted.
+
+Contract/spec hashes are `665ab076...2b52` / `27117296...b916`; semantic ledger,
+sealed key and PDF hashes are `47a1eb7c...0801`, `7b19f485...0a7` and
+`b3aa2c05...1ea2`. Two serial builds are byte-identical and five focused tests
+pass. `RETURN_ANALYSIS_RUN=NO`, `STRATEGY_BACKTEST_RUN=NO`, post-2021 data used
+`NO`, and repository 2024+ opened `NO`. Status is
+`STOPPED_FOR_HUMAN_BLIND_REVIEW`; do not attach outcomes before review.
 
 ### V7 overhang / attack-episode simple-rule Development
 
