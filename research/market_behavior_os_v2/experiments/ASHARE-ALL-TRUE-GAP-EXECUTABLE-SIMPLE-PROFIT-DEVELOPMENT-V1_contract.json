@@ -1,0 +1,153 @@
+{
+  "admission_templates": {
+    "A0_NONE": [],
+    "A10_HUMAN_LOW_CHIP": [
+      "PEAK_TO_GAP_GE60",
+      "INSIDE_DENSITY_LE_TRAIN_Q30",
+      "POST_GAP_NEAR_TOUCH_EQ0"
+    ],
+    "A11_LOW_PRE_GAP_OCCUPANCY": [
+      "PEAK_TO_GAP_GE60",
+      "PRE_GAP_INSIDE_TOUCH_LE4"
+    ],
+    "A1_LONG_DECLINE": [
+      "PEAK_TO_GAP_GE60"
+    ],
+    "A2_LONG_DEEP": [
+      "PEAK_TO_GAP_GE60",
+      "DRAWDOWN_GE30"
+    ],
+    "A3_NO_NEAR_TOUCH": [
+      "POST_GAP_NEAR_TOUCH_EQ0"
+    ],
+    "A4_LONG_NO_NEAR_TOUCH": [
+      "PEAK_TO_GAP_GE60",
+      "POST_GAP_NEAR_TOUCH_EQ0"
+    ],
+    "A5_LONG_NOT_ACUTE": [
+      "PEAK_TO_GAP_GE60",
+      "MAX_RUNUP20_LE_TRAIN_Q50"
+    ],
+    "A6_DEEP_NOT_ACUTE": [
+      "DRAWDOWN_GE30",
+      "MAX_RUNUP20_LE_TRAIN_Q50"
+    ],
+    "A7_CLEAN_EXACT": [
+      "INSIDE_DENSITY_LE_TRAIN_Q30"
+    ],
+    "A8_LONG_CLEAN_EXACT": [
+      "PEAK_TO_GAP_GE60",
+      "INSIDE_DENSITY_LE_TRAIN_Q30"
+    ],
+    "A9_HUMAN_CLEAN_COLLAPSE": [
+      "PEAK_TO_GAP_GE60",
+      "DRAWDOWN_GE30",
+      "POST_GAP_NEAR_TOUCH_EQ0"
+    ]
+  },
+  "chronology": {
+    "development": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "expanding_train": true,
+    "outer_test_years": [
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "purge_sessions": 20,
+    "reserved_2021_plus": "UNREAD"
+  },
+  "costs": {
+    "entry": 0.002,
+    "exit": 0.002
+  },
+  "entry": {
+    "E1_CLOSE_L": "first completed one-minute close >= L on the pristine first-return date",
+    "E2_HOLD3OF5_L": "first completed close >= L with at least 3 of the latest 5 completed closes >= L on that date",
+    "E3_CLOSE_Z25": "first completed close >= L+0.25W on that date",
+    "execution": "next legal one-minute open strictly after trigger; IOC buy limit enforces frozen minimum net target headroom",
+    "forms": [
+      "E1_CLOSE_L",
+      "E2_HOLD3OF5_L",
+      "E3_CLOSE_Z25"
+    ],
+    "minimum_net_headroom_candidates": [
+      0.01,
+      0.015,
+      0.02,
+      0.03
+    ],
+    "missed_fast_repair": "no trigger/entry after U has already traded"
+  },
+  "experiment": "ASHARE-ALL-TRUE-GAP-EXECUTABLE-SIMPLE-PROFIT-DEVELOPMENT-V1",
+  "failure_exits": {
+    "X0_NO_FAILURE": "U or time stop",
+    "X1_CLOSE_BELOW_L": "first completed sellable-session daily close below L; exit next legal open",
+    "X2_D3_NO_PROGRESS": "at D3 max progress <0.25W and close<L; exit next legal open"
+  },
+  "fixed_human_rule": {
+    "conditions": [
+      "PEAK_TO_GAP_GE60",
+      "POST_GAP_NEAR_TOUCH_EQ0"
+    ],
+    "profile": [
+      "E1_CLOSE_L",
+      0.015,
+      10,
+      "X1_CLOSE_BELOW_L"
+    ],
+    "total_admission_conditions_including_headroom": 3
+  },
+  "governance": {
+    "repository_2024_plus_opened": false,
+    "return_analysis_before_stage_a_freeze": false,
+    "strategy_outcomes_2021_plus": false
+  },
+  "portfolio": {
+    "chinext_sleeve": 0.5,
+    "k_per_sleeve": 10,
+    "leverage": false,
+    "main_sleeve": 0.5,
+    "one_position_per_symbol": true,
+    "unused_cash": true
+  },
+  "selection": {
+    "deployment_gate": [
+      "mean>0",
+      "median>0",
+      "date_equal_mean>0",
+      "utility>0",
+      "at_least_60pct_positive_train_years",
+      "severe10<15pct"
+    ],
+    "hierarchy": [
+      "execution profile under A0",
+      "one frozen admission template"
+    ],
+    "minimum_latest_train_year_trades": 10,
+    "minimum_train_trades": 60,
+    "one_standard_error": true,
+    "utility": "0.5*(event mean net + entry-date-equal mean net) - 0.20*abs(CVaR5)"
+  },
+  "source": {
+    "all_true_gap_ledger": "/Volumes/quant/CY_quant_research/ashare_all_true_gap_low_inventory_fill_pattern_discovery_v2/all_true_gap_primitives_2014_2020.parquet",
+    "all_true_gap_ledger_sha256": "afdb8b05b2166d71466fa7d8413030ac9b3fafe141e7f0326718d89fddd9b288",
+    "experiment": "ASHARE-ALL-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V2",
+    "raw_tick_causal_mother_rebuilt_before_returns": true,
+    "raw_tick_interaction": "round(raw_high*100) >= round((coordinate_boundary/coordinate_factor)*100)",
+    "source_is_outcome_blind": true,
+    "source_population_count": 88785,
+    "v2_305_outcome_selected_rows_used": false,
+    "v6_core_gate_used": false
+  },
+  "start_head": "45f1312680a597e9ac00e48432ec6ff761140242",
+  "target": "standing sell limit at corporate-action-consistent U, executable only from the first T+1 session",
+  "time_stops": {
+    "10": "exit next legal open after the completed horizon-session close",
+    "20": "exit next legal open after the completed horizon-session close",
+    "5": "exit next legal open after the completed horizon-session close"
+  }
+}

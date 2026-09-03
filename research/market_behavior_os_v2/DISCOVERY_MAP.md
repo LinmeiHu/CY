@@ -4,7 +4,34 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## All-true-gap executable simple-profit Development V1
+
+- Source is all 88,785 governed 2014--2020 Main/ChiNext true gaps, not V6 CORE
+  and not V2's selected 305 rows. A pre-outcome audit found V2 exact interaction
+  was measured in adjusted-coordinate cents; the repaired lane maps L/U into
+  contemporaneous raw price and compares integer fen ticks.
+- Corrected outcome-blind funnel: 37,459 width>=1%, 22,709 exact daily history,
+  12,474 pristine raw-tick returns, 3,346 exact daily/VAP plus 120x241-minute
+  history, 2,382 broad low-inventory candidates, and 2,361 exact-minute mothers.
+  The 1% floor is retrieval only.
+- Every expanding 2017--2020 fold chooses E1 close>=L, next legal minute open
+  with >=1.5% net U headroom after 40 bp, U target, X1 next-open failure exit and
+  H10. Admissions are none in 2017--2018 and deep-not-acute in 2019--2020.
+  Every TRAIN deployment gate is false.
+- Forced K10 has 355 signals/330 trades: +0.45% mean, +1.68% median, 57.58% win,
+  56.97% U hit, +1.80% CAGR, -4.82% MaxDD and 0.554 Sharpe. Return excluding
+  best five days is -0.62%; the fixed long/no-near-touch lane has -0.27% mean
+  and -0.40% CAGR.
+- The complete 356-page book includes all signals. Visual review confirms the
+  broad density<=local-average mother still includes acute cliffs, recent
+  shocks and occupied corridors. Verdict `SIMPLE_RULE_MARGINAL`; no profitable
+  simple strategy, Validation, 2021+, or 2024+ evidence.
+
 ## All-governed-universe pre-2021 low-inventory true gaps V2
+
+- The 2,209 mother, 305 selected rows and U-fill rates below are superseded by
+  the raw-price-tick repair above and are not scientific evidence. Only the
+  88,785 outcome-blind primitive ledger remains reusable.
 
 - V2 directly reconstructs 88,785 governed Main/ChiNext strict downward true
   gaps from PIT daily data. It does not source from V6 CORE, collapse clusters,

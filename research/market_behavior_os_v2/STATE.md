@@ -7,17 +7,64 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `bdb06a475db936a70865705fc0693514c299a0d1` (all-governed-Main/ChiNext true-gap discovery start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_ALL_TRUE_GAP_LOW_INVENTORY_FILL_PATTERN_HUMAN_REVIEW`
-- `CURRENT_PRIMARY_FRONTIER`: direct PIT reconstruction of every governed Main/ChiNext downward true gap replaces V6 CORE as the source universe. The 2,209-event outcome-blind low-inventory mother population and its 305-event two-condition same-sample description are ready for human chart review; no predictive, executable, or strategy claim exists
+- `CURRENT_BASELINE`: `45f1312680a597e9ac00e48432ec6ff761140242` (corrected all-governed-Main/ChiNext executable Development start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_ALL_TRUE_GAP_EXECUTABLE_SIMPLE_PROFIT_DEVELOPMENT_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: direct PIT reconstruction of every governed Main/ChiNext downward true gap replaces V6 CORE as the source universe. A raw-tick-corrected 2014--2020 mother, bounded executable translations and expanding 2017--2020 walk-forward are complete. The best forced-choice path is positive but fails every TRAIN deployment gate and loses its full return after removing the best five days; it is `SIMPLE_RULE_MARGINAL`, not a strategy
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. The new 2014--2020 result is descriptive structural discovery only; 2021 and later remain unused for a later independently frozen test
+- `CURRENT_STRATEGY_CANDIDATE`: none. The forced-choice diagnostic has +0.45% mean trade and +1.80% CAGR, but all four TRAIN deployment decisions are cash and the literal long-decline/no-near-touch rule is negative. No Validation is authorized; 2021 and later remain unread
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `bdb06a475db936a70865705fc0693514c299a0d1`
+- `STARTING_HEAD`: `45f1312680a597e9ac00e48432ec6ff761140242`
 
 ## Current continuation state
 
+### All-true-gap executable simple-profit Development V1
+
+This experiment starts from all 88,785 governed 2014--2020 Main/ChiNext true
+gaps, not V6 CORE and not V2's outcome-selected 305 rows. Before any valid
+performance was observed it found that V2 had compared adjusted-coordinate
+cents for exact touch/fill. A raw high of 4.45 could therefore be treated as
+touching a raw 4.48 boundary after adjustment. The mother, every L/U
+interaction, entry and outcome were rebuilt using integer raw 0.01-yuan ticks
+after mapping the QD-010 coordinate boundary through the contemporaneous
+factor. V2's 2,209/305 exact first-return and fill result is superseded; its
+88,785 primitive ledger remains the valid outcome-blind starting inventory.
+
+The corrected Stage-A funnel is 88,785 gaps -> 37,459 at least 1% wide ->
+22,709 exact daily histories -> 12,474 raw-tick pristine returns -> 3,346
+daily/VAP and exact 120 x 241-minute histories -> 2,382 broad low-inventory
+rows -> 2,361 exact-minute mothers. The 1% width floor is retrieval/data
+quality only. It is not the trading rule. Every tested entry must still leave
+1.0%/1.5%/2.0%/3.0% net distance to U after 40 bp round-trip costs.
+
+Expanding 2017--2020 selection chooses the same executable translation in all
+four years: first completed one-minute close at or above L, next legal minute
+open with at least 1.5% net U headroom, U target, next legal open after the
+first sellable-session daily close below L, and H10. Admission is none in
+2017--2018 and `drawdown>=30%` plus TRAIN-median 20-day run-up veto in
+2019--2020. Every TRAIN deployment gate is false. Forced K10 has 355 OOF
+signals, 330 completed trades and 25 capacity skips: +0.45% mean, +1.68%
+median, 57.58% wins, 56.97% U hit, 2.12% severe-loss10, +7.39% total, +1.80%
+CAGR, -4.82% MaxDD and 0.554 Sharpe. All four portfolio years are positive,
+but 2018/2019 supply nearly all return and excluding the best five days is
+-0.62%. The fixed human-readable long-decline plus no-near-touch lane has 114
+trades, -0.27% mean and -0.40% CAGR.
+
+The 356-page book contains a cover plus all 355 OOF signals, including gap,
+VAP, buy, sell and net result. Full-page render QA found no missing signal,
+gap band or trade marker. Visual review also confirms the broad mother is not
+yet the requested pure clean fracture: density merely no higher than local
+average still admits acute rise/fall cliffs, recent shocks and visibly occupied
+corridors. Verdict `SIMPLE_RULE_MARGINAL`; no profitable deployable simple rule
+has been created. Keep 2021+ unread. Any next experiment must first freeze a
+stricter outcome-blind corridor-empty/long-decline semantic contract, rather
+than tune this marginal payoff.
+
 ### All-governed-universe pre-2021 low-inventory true-gap discovery V2
+
+The exact first-return/fill and 305-row description below are historical and
+superseded by the raw-tick repair above. They must not be used as scientific
+evidence or as a source subset. Only the 88,785 outcome-blind true-gap primitive
+ledger remains reusable.
 
 V2 no longer conditions retrieval on V6 CORE or any V6 collapse cluster,
 primary-gap hierarchy, or memory class. It reconstructs 88,785 strict

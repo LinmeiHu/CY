@@ -1,0 +1,82 @@
+{
+  "experiment": "ASHARE-ALL-TRUE-GAP-EXECUTABLE-SIMPLE-PROFIT-DEVELOPMENT-V1",
+  "repairs": [
+    {
+      "change": "Preserve the authoritative legal-open schema when a symbol has no legal-open rows.",
+      "classification": "IMPLEMENTATION_ONLY_EMPTY_TABLE_SCHEMA",
+      "failure_stage": "STAGE_B_BEFORE_POLICY_OUTCOME_OR_RETURN_CONSTRUCTION",
+      "performance_observed_before_repair": false,
+      "research_contract_changed": false,
+      "entry_semantics_changed": false,
+      "exit_semantics_changed": false,
+      "rule_space_changed": false,
+      "threshold_space_changed": false
+    },
+    {
+      "change": "Rebuild the outcome-blind source mother and all L/U interactions using raw-price 0.01-yuan tick comparisons after mapping QD-010 coordinates through the contemporaneous coordinate factor.",
+      "classification": "PRE_VALID_OUTCOME_CAUSAL_PRICE_TICK_REPAIR",
+      "evidence": "For 000009.SZ|2018-10-11, adjusted-coordinate cent rounding treated raw high 4.45 as reaching raw U 4.48; the established semantic-fidelity implementation compares raw prices after coordinate conversion.",
+      "failure_stage": "STAGE_B_TARGET_EXECUTION_ASSERTION_BEFORE_POLICY_OUTCOME_FILE_OR_RETURN_SUMMARY",
+      "policy_outcome_file_created_before_repair": false,
+      "performance_observed_before_repair": false,
+      "scientific_source_rebuilt": true,
+      "v6_core_gate_added": false,
+      "v2_305_outcome_selected_rows_used": false,
+      "entry_rule_family_changed": false,
+      "exit_rule_family_changed": false,
+      "threshold_space_changed": false
+    },
+    {
+      "change": "Canonicalize mapped target boundaries and observed prices to integer 0.01-yuan ticks before target execution, eliminating binary-float disagreement for the same legal price tick.",
+      "classification": "IMPLEMENTATION_ONLY_RAW_TICK_FLOAT_CANONICALIZATION",
+      "evidence": "For 000009.SZ|2018-03-23, the observed raw high and mapped U are both the legal 6.27-yuan tick, while their binary-float representations differed by approximately 1.9e-8.",
+      "failure_stage": "STAGE_B_TARGET_EXECUTION_ASSERTION_BEFORE_POLICY_OUTCOME_FILE_OR_RETURN_SUMMARY",
+      "policy_outcome_file_created_before_repair": false,
+      "performance_observed_before_repair": false,
+      "research_contract_changed": false,
+      "entry_semantics_changed": false,
+      "exit_semantics_changed": false,
+      "rule_space_changed": false,
+      "threshold_space_changed": false
+    },
+    {
+      "change": "Exclude the bounded maximum-rule-complexity diagnostic from the set of audit counters required to equal zero, while retaining its explicit <=3 fail-closed bound.",
+      "classification": "IMPLEMENTATION_ONLY_AUDIT_PREDICATE",
+      "evidence": "All violation counters were zero; maximum_rule_condition_count=2 is a bounded diagnostic rather than a violation counter.",
+      "failure_stage": "STAGE_B_FINAL_AUDIT_AFTER_OUTPUT_COMPUTATION_BUT_BEFORE_RESULT_WRITE",
+      "policy_outcome_file_created_before_repair": true,
+      "portfolio_summary_file_created_before_repair": true,
+      "performance_observed_before_repair": false,
+      "research_contract_changed": false,
+      "entry_semantics_changed": false,
+      "exit_semantics_changed": false,
+      "rule_space_changed": false,
+      "threshold_space_changed": false
+    },
+    {
+      "change": "Derive each VAP bar's z midpoint from the stored integer z_bin instead of referencing a nonexistent bin_mid_z column.",
+      "classification": "IMPLEMENTATION_ONLY_CHART_RENDER_FIELD",
+      "failure_stage": "FINALIZE_CHART_RENDER_AFTER_VALID_DEVELOPMENT_RESULT",
+      "performance_observed_before_repair": true,
+      "signal_identity_changed": false,
+      "research_contract_changed": false,
+      "entry_semantics_changed": false,
+      "exit_semantics_changed": false,
+      "rule_space_changed": false,
+      "threshold_space_changed": false
+    },
+    {
+      "change": "Split long chart metadata across bounded lines and add explicit BUY/SELL markers and legend to each local panel.",
+      "classification": "IMPLEMENTATION_ONLY_PDF_LAYOUT_QA",
+      "evidence": "High-resolution render review found long metadata clipping and insufficiently explicit trade markers on dense pages.",
+      "failure_stage": "POST_RENDER_VISUAL_QA_AFTER_VALID_DEVELOPMENT_RESULT",
+      "performance_observed_before_repair": true,
+      "signal_identity_changed": false,
+      "research_contract_changed": false,
+      "entry_semantics_changed": false,
+      "exit_semantics_changed": false,
+      "rule_space_changed": false,
+      "threshold_space_changed": false
+    }
+  ]
+}

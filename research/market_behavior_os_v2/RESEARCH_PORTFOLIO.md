@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Direct all-governed-Main/ChiNext reconstruction yields 2,209 low-inventory pristine-return events and 305 same-sample descriptive matches, but chronology is concentrated and no predictive or trading evidence exists | Review all 305 marked signal charts; keep 2021+ unused until a later separately frozen test |
+| EXPLORE | 10% | Raw-tick-corrected all-governed-Main/ChiNext Development yields a positive forced-choice diagnostic, but every TRAIN deployment gate is false, best-five-day exclusion is negative, and the visually intended clean-fracture semantics remain too broad | Review all 355 marked OOF signals; if continuing, freeze a stricter outcome-blind corridor-empty/long-decline mother before any new payoff test; keep 2021+ unused |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -18,7 +18,37 @@ Mandatory checkpoint questions:
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
 
+## All-true-gap executable simple-profit Development V1
+
+This lane receives no strategy capital. It correctly starts from every governed
+2014--2020 Main/ChiNext true gap and rebuilds first-return/target interactions in
+raw fen after discovering that the predecessor's adjusted-coordinate cent
+comparison could falsely credit exact touches. The old V2 2,209/305 event and
+fill evidence is superseded; only its 88,785 outcome-blind primitive ledger is
+reusable.
+
+The stable execution translation across all four outer years is simple: first
+completed one-minute close >=L, buy at the next legal minute open only if U
+still leaves at least 1.5% net after 40 bp costs, target U, exit at the next
+legal open after a sellable-session close below L, and H10. This answers why
+“narrow gap” cannot stand alone: an overly narrow or jumped-through gap offers
+no executable profit headroom and is rejected.
+
+Forced K10 is positive but marginal: 330 trades, +0.45% mean, +1.68% median,
+57.58% wins, +1.80% CAGR, -4.82% MaxDD and 0.554 Sharpe. Every TRAIN deployment
+gate is false, 2018--2019 provide almost all return, and excluding the best five
+days is -0.62%. The literal long-decline/no-near-touch rule loses money. Visual
+review of all 355 signal pages confirms that the broad density<=local-average
+mother still admits acute rise/fall and occupied-corridor false positives.
+Classification is `SIMPLE_RULE_MARGINAL`, not a profitable strategy. Any next
+budget is semantic repair, not Validation or payoff tuning; 2021+ stays unread.
+
 ## All-governed-universe pre-2021 low-inventory fill-pattern review V2
+
+This predecessor's 2,209 mother, 305 condition matches and fill rates are
+superseded by the raw-tick interaction repair. They receive zero evidentiary or
+strategy weight. Its 88,785 outcome-blind true-gap primitive ledger remains a
+reusable source inventory.
 
 This lane receives descriptive human-review budget and zero strategy capital.
 It directly reconstructs all 88,785 hard-valid same-lineage true gaps in the

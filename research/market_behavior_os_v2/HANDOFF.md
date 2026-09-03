@@ -2,7 +2,54 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: all-true-gap executable simple-profit Development V1
+
+Resume from the commit containing
+`ASHARE-ALL-TRUE-GAP-EXECUTABLE-SIMPLE-PROFIT-DEVELOPMENT-V1`. Its start
+checkpoint is `45f1312680a597e9ac00e48432ec6ff761140242`. The experiment sources
+all 88,785 governed 2014--2020 Main/ChiNext true-gap primitives directly; it
+does not use V6 CORE or V2's selected 305 rows. No 2021+ or repository 2024+
+outcome is open.
+
+Before any valid return result existed, exact price-tick auditing found that V2
+used adjusted-coordinate cent rounding for exact L/U interaction. This could
+credit raw 4.45 as touching a raw 4.48 boundary after adjustment. The new
+experiment rebuilt the mother and all interaction/execution clocks using
+integer raw-fen comparisons after mapping QD-010 coordinates through the PIT
+factor. V2's 2,209 mother, 305 description and structural-fill evidence are
+superseded. Its 88,785 outcome-blind primitive ledger remains valid input.
+
+Corrected Stage A retains 2,361 mothers after exact 120-session x 241-minute
+lineage and broad low-inventory gates. The 1% gap-width floor is retrieval only.
+Profit translation instead requires the executable buy to retain at least
+1.5% net distance to U after 40 bp costs. Every 2017--2020 fold selects first
+completed one-minute close >=L, next legal minute open, U target,
+X1 first-sellable daily close below L, and H10. 2017--2018 select no admission;
+2019--2020 select only prior drawdown >=30% and a TRAIN-median recent-run-up
+veto. All four TRAIN deployment gates reject trading.
+
+The forced-choice diagnostic has 355 OOF signals, 330 K10 trades and 25
+capacity skips: +0.45% mean, +1.68% median, 57.58% win, 56.97% U hit, 2.12%
+severe-loss10, +7.39% total, +1.80% CAGR, -4.82% MaxDD and 0.554 Sharpe.
+Returns are positive in 2017--2020 but weak in 2017/2020; excluding the best
+five days changes total return to -0.62%. The fixed long-decline/no-near-touch
+lane loses 1.57% total with -0.27% mean and -0.40% CAGR. Verdict is
+`SIMPLE_RULE_MARGINAL`; `IS_PROFITABLE_SIMPLE_RULE_CREATED=NO`.
+
+Review the complete 356-page chart book. It contains all 355 forced-choice OOF
+signals and marks gap L/U, VAP, buy, sell and net result. Render QA covers every
+page. Visual review shows the current low-inventory gate remains semantically
+too broad: “density <= local average” still permits acute rise/fall cliffs,
+recent shocks and visible corridor inventory. Do not validate or tune the
+marginal result. If research continues, first preregister an outcome-blind
+clean-corridor/long-decline semantic repair, then derive a new chronological
+Development procedure from scratch. Keep 2021+ sealed.
+
 ## Latest checkpoint: all-governed-universe pre-2021 low-inventory true gaps
+
+This predecessor's exact first-return and U-fill identities are superseded by
+the raw-price-tick repair above. Do not reuse its 2,209 mother or 305 selected
+rows; only its 88,785 outcome-blind primitive ledger remains reusable.
 
 Resume from the commit containing
 `ASHARE-ALL-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V2`. Its start
