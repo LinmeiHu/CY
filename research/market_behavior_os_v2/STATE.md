@@ -29,9 +29,10 @@ MaxDD. No strategy advances. Repository 2024+ remains unopened.
 QD-010 repair blocks 576 entry-grid rows and forces 17,484 policy-path exits;
 264 paths with no legal pre-effective exit are explicitly unresolved/return-null.
 All required execution and portfolio violation counts are zero. The
-2022--2023 diagnostic selected cash in all four board-folds, but is governance-
-compromised because those rows were technically materialized before the
-Development procedure freeze; no performance was inspected and no rule changed.
+2022--2023 later selected cash in all four board-folds, but no diagnostic
+evidence is accepted: an all-years pooled X0 outcome summary including those
+years was displayed before the Development freeze. It was not used for
+selection and no rule changed, but the required chronology was breached.
 
 - `CURRENT_HEAD_AT_RESUME`: `e1adc2889d038256be660f39a3f1cf8db27bcff5`
 - `CURRENT_SCIENTIFIC_LAYER`: `DEVELOPMENT_ONLY_FIXED_CAPITALIZATION_AND_POSITION_DENSITY; VALIDATION_AND_POST_2021_OUTCOMES_UNREAD`

@@ -136,7 +136,7 @@ All 35 entry translations with raw/eligible/executable/missed/no-confirmation/de
 
 ## 2022–2023
 
-The exact procedure selected CASH for MAIN and ChiNext in both years: signals 0, trades 0, CAGR 0%, MaxDD 0%. This is **governance-compromised** because the rows were technically materialized before the Development procedure freeze, although no performance was inspected and no rule changed between years.
+The exact procedure later selected CASH for Main and ChiNext in both years, but **no 2022–2023 scientific evidence is accepted**. Before the Development procedure freeze, an all-years pooled X0 outcome summary that included 2022–2023 was displayed. No year-specific result was then inspected, no selection used those rows, and no rule changed, but the required chronology was nonetheless breached; the later 2022–2023 run is invalid as a post-observation robustness diagnostic.
 
 ## Audit
 
@@ -152,7 +152,7 @@ The exact procedure selected CASH for MAIN and ChiNext in both years: signals 0,
   "max_k_violation_count": 0,
   "negative_cash_or_leverage_count": 0,
   "post_entry_model_uses_post_checkpoint_information_count": 0,
-  "post_observation_opened_before_development_freeze": "YES_TECHNICAL_READ_NO_PERFORMANCE_INSPECTION",
+  "post_observation_opened_before_development_freeze": "YES_POOLED_X0_OUTCOME_SUMMARY_DISPLAYED_NO_SELECTION_USE",
   "procedure_changed_between_2022_2023_count": 0,
   "repository_2024_plus_data_opened": "NO",
   "risk_blocked_entry_rows": 576,

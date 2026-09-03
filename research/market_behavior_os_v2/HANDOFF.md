@@ -22,8 +22,9 @@ Do not rescue with new levels, confirmations, features, admissions, stops,
 horizons, model tuning, board deletion or 2024+ access. Preserve environment
 repair, B5 ranking and loss control only as representations. QD-010 audits are
 fail-closed; 264 unexecutable action paths have null outcomes. The 2022--2023
-cash diagnostic is governance-compromised by early technical materialization,
-despite no performance inspection or rule change. Repository 2024+ is unread.
+cash diagnostic is invalid as scientific evidence because an all-years pooled
+X0 outcome summary including 2022--2023 was displayed before the Development
+freeze. It was not used for selection and no rule changed. Repository 2024+ is unread.
 
 ## Latest checkpoint: True-Gap Causal Cluster V6 one-shot discovery
 

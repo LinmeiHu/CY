@@ -18,8 +18,9 @@ engine ledgers.
 - Environment repair and B5 minute information survive as representations;
   no complete strategy survives. Verdict `V6_PARAMETER_FAMILY_UNSTABLE`.
 - All hard execution/portfolio audits are zero; 264 impossible pre-effective
-  action exits are null/fail-closed. 2022--2023 selects cash but is governance-
-  compromised by early technical materialization. Repository 2024+ is unread.
+  action exits are null/fail-closed. No 2022--2023 evidence is accepted because
+  a pooled all-years X0 outcome was displayed before Development froze; the
+  rows were not used for selection. Repository 2024+ is unread.
 
 ## True-Gap Causal Cluster V6 one-shot discovery
 
