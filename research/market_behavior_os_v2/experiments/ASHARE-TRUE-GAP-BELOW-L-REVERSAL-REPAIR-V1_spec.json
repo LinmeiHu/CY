@@ -1,0 +1,97 @@
+{
+  "contract": {
+    "costs": {
+      "entry": 0.002,
+      "exit": 0.002
+    },
+    "development": [
+      "2017-01-01",
+      "2021-12-31"
+    ],
+    "economic_hypothesis": "A low-inventory downward true gap is overhead repair space. After price overshoots below L and forms a causal bottom reversal, buy below L and exit before first contact with the gap.",
+    "entry": {
+      "minimum_net_headroom_to_L": 0.05,
+      "signal_expires_if_first_legal_open_fails_headroom": true,
+      "time": "first legal one-minute open strictly after trigger close"
+    },
+    "exit": {
+      "failure_stop": "NONE",
+      "profit_target": "entry + 0.67*(L-entry)",
+      "target_requires_T_plus_1": true,
+      "time_stop": "H20 close information then next legal open"
+    },
+    "experiment": "ASHARE-TRUE-GAP-BELOW-L-REVERSAL-REPAIR-V1",
+    "formation_gate": "20-session pre-gap coordinate return <= 0",
+    "inventory_gate": {
+      "bin_width": "0.10W",
+      "corridor": "[L-0.5W,U+0.5W]",
+      "corridor_density_relative_local_max": 1.0,
+      "inside_gap_density_relative_local_max": 1.0,
+      "local_window": "[-2W,+3W] from L",
+      "minute_sessions": 120,
+      "missing_policy": "FAIL_CLOSED",
+      "price": "amount/volume else typical price proxy",
+      "required_minutes_per_session": 241
+    },
+    "portfolio": {
+      "K_per_board": 20,
+      "chinext_weight": 0.5,
+      "collision_order": [
+        "higher net L headroom",
+        "lower inside-gap density",
+        "symbol",
+        "gap_id"
+      ],
+      "leverage": false,
+      "main_weight": 0.5,
+      "one_active_position_per_symbol": true,
+      "position_fraction_of_sleeve_nav": 0.05,
+      "unused_cash": true
+    },
+    "repository_2024_plus": "SEALED",
+    "source_population": {
+      "boards": [
+        "MAIN",
+        "CHINEXT"
+      ],
+      "interval": "[L,U]=[High_t,Low_t_minus_1] in QD-010 coordinate",
+      "maximum_corridor_touch_sessions": 20,
+      "maximum_inside_touch_sessions": 12,
+      "maximum_signal_age_sessions": 180,
+      "minimum_gap_width_pct": 0.01,
+      "pre_gap_history_sessions": 120,
+      "same_symbol_same_signal_day_hierarchy": "lowest L first",
+      "true_gap": "High_t < Low_t_minus_1"
+    },
+    "state": {
+      "current_depth_below_L": 0.05,
+      "minimum_depth_below_L": 0.1,
+      "minimum_fully_below_sessions": 10,
+      "minimum_recovery_from_20d_low": 0.03,
+      "no_prior_raw_tick_touch_of_L": true,
+      "sessions_since_20d_low": [
+        2,
+        10
+      ]
+    },
+    "trigger": "first completed daily close reclaiming trailing MA5",
+    "validation": [
+      "2022-01-01",
+      "2023-12-31"
+    ],
+    "validation_success": {
+      "both_boards_mean_net_positive": true,
+      "both_calendar_year_portfolio_returns_positive": true,
+      "completed_portfolio_trades_two_years_max": 150,
+      "completed_portfolio_trades_two_years_min": 70,
+      "max_drawdown_floor": -0.15,
+      "mean_net_trade_min": 0.03,
+      "median_net_trade_min": 0.0,
+      "return_excluding_best_five_days_positive": true,
+      "severe_loss10_max": 0.15
+    }
+  },
+  "design_disclosure": "Rule designed using already-consumed 2014-2021 Development. Only exact unchanged 2022-2023 replication may inform validation.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-REVERSAL-REPAIR-V1",
+  "status": "FIXED_BEFORE_2022_2023_OPEN"
+}
