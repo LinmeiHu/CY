@@ -10,9 +10,13 @@ Buy below L only after a true-gap decline has washed out and then recovered at l
 - K20 trades / mean / median: 242 / 4.56% / 6.52%
 - Severe10 / CAGR / MaxDD / Sharpe: 8.26% / 5.62% / -4.93% / 1.343
 
-## 2022-2023 diagnostic
+## 2022-2023 post-observation robustness diagnostic
 
-Not opened.
+This period is not pristine OOS because earlier V1/V2 aggregate outcomes were already observed.
+- Signals / complete outcomes: 103 / 66
+- K20 trades / mean / median: 66 / 3.62% / 5.67%
+- Severe10 / total return / MaxDD: 12.12% / 6.05% / -3.07%
+- Verdict: CAPITULATION_REPAIR_POST_OBSERVATION_DIAGNOSTIC_FAILED
 
 ## Governance
 

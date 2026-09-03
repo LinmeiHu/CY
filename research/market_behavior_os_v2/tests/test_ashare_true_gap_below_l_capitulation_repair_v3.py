@@ -92,3 +92,22 @@ def test_development_checkpoint_meets_preregistered_targets() -> None:
     assert payload["audit"]["target_at_or_above_L_count"] == 0
     assert payload["audit"]["t1_violation_count"] == 0
     assert payload["audit"]["repository_2024_plus_data_opened"] == "NO"
+
+
+def test_post_observation_diagnostic_preserves_frozen_rule() -> None:
+    freeze = json.loads(runner.VALIDATION_FREEZE.read_text(encoding="utf-8"))
+    result = json.loads(runner.VALIDATION_RESULT.read_text(encoding="utf-8"))
+    assert result["fixed_contract"] == {
+        "minimum_recovery": freeze["fixed_minimum_recovery"],
+        "target_fraction": freeze["fixed_target_fraction"],
+        "time_stop": freeze["fixed_time_stop"],
+    }
+    assert result["validation_checks"]["mean_net"]
+    assert result["validation_checks"]["both_years_positive"]
+    assert result["validation_checks"]["both_boards_positive"]
+    assert not result["validation_checks"]["trade_count"]
+    assert result["verdict"] == (
+        "CAPITULATION_REPAIR_POST_OBSERVATION_DIAGNOSTIC_FAILED"
+    )
+    assert result["audit"]["validation_rule_changed_count"] == 0
+    assert result["audit"]["repository_2024_plus_data_opened"] == "NO"
