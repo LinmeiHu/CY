@@ -1,0 +1,38 @@
+{
+  "execution": {
+    "actual_gap_through_execution": true,
+    "corporate_actions": "QD-010 known-at pre-effective risk exit and cash entitlements",
+    "cost_per_side": 0.002,
+    "delayed_failure_or_time_exit": "first row in the authoritative sell-legal open ledger strictly after completed trigger; may occur after H20 because of suspension/limit constraints, but never reads 2024+",
+    "suspension_and_limits": true,
+    "t_plus_one": true
+  },
+  "failure_exits": {
+    "X0_NO_FAILURE_EXIT": "U within current attack or time stop",
+    "X1_INTRADAY_REJECTION": "only after the position is T+1 sellable, two consecutive completed standard exchange-clock 15-minute closes below L and current z<=-0.25; morning blocks anchor at 09:30 and afternoon blocks at 13:00; next legal minute open",
+    "X2_ZONE_DAMAGE_05W": "completed daily close<=L-0.50W; next legal open",
+    "X3_ZONE_DAMAGE_10W": "completed daily close<=L-1.00W; next legal open",
+    "X4_NO_PROGRESS_D3": "at D3, U unresolved, max progress<0.25W, daily close<L; next legal open",
+    "X4_NO_PROGRESS_D5": "same at D5",
+    "X5_STRUCTURAL_BREAK": "new lower MAJOR/SECONDARY true gap or lower causal cluster; first legal execution after known",
+    "X6_HYBRID_D3": "earliest X1, X4_D3, X5",
+    "X6_HYBRID_D5": "earliest X1, X4_D5, X5"
+  },
+  "loss_statistics": {
+    "CLEAN_SUCCESS_10": "current-attack legal U within ten completed sessions before an 8% adverse mark",
+    "CLEAN_SUCCESS_5": "current-attack legal U within five completed sessions before a 5% adverse mark",
+    "MAE": "minimum same-lineage coordinate mark from entry through the actual exit",
+    "MFE": "maximum same-lineage coordinate mark from entry through the actual exit",
+    "SEVERE_LOSS5_8_10_20": "realized NET_RETURN <= -5%/-8%/-10%/-20%; MAE is reported separately"
+  },
+  "profit_target": "legal U realization before the current attack's own reset; later U never credits the earlier attack",
+  "retry": {
+    "R0_NO_RETRY": "ATTACK_1 only",
+    "R1_ONE_RETRY": "ATTACK_2 independently passes the same frozen admission after ATTACK_1 ends and prior position closes"
+  },
+  "time_stops_sessions": [
+    5,
+    10,
+    20
+  ]
+}

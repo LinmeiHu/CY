@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | The full V6 tree finds environment/ranking/loss-control information but no chronologically stable complete strategy | Preserve representations only; no new threshold/model/board rescue of this consumed family |
+| EXPLORE | 10% | V7 adds causal inventory and separate attack episodes, but low-overhang Vacuum Repair remains negative and unstable | Preserve the inventory/attack representations only; no neighboring threshold, retry, model, board, or 2024+ rescue |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,30 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## True-Gap V7 overhang / attack episodes
+
+V7 receives zero strategy capital. Its outcome-blind Stage A contributes useful
+infrastructure: a QD-010-consistent turnover-decayed inventory proxy, explicit
+overhang/support geometry, and separate causal ATTACK_1/ATTACK_2 clocks with no
+later success credited backward. These are representations, not validated
+trading signals.
+
+The primary low-overhang hypothesis fails directly and chronologically. Forced
+K10 L5 has 89 trades, -2.87% mean, -2.59% CAGR and only one positive half-year;
+deployment-gated L5 has 64 trades, -2.39% mean and -1.55% CAGR. Main/ChiNext and
+K5/K10/K20 all fail. Vacuum Score orders returns in the wrong direction, matched
+low-overhang effects do not improve success or tail loss, acceptance reduces
+coverage without improving absolute economics, and one retry remains sparse and
+negative. Failure exits modestly reduce severe-loss incidence but worsen
+portfolio return. The model ceiling also has negative top-tail utility.
+
+The 2022--2023 exact-procedure result is post-observation and scientifically
+inadmissible; it has only four Main trades and zero ChiNext trades. High-overhang
+behavior does not clear the frozen separate-lane diagnostic. Classification is
+`V7_NO_SIMPLE_EDGE`. The primary Vacuum Repair lane is closed, 2024+ remains
+sealed, and further work requires genuinely independent economic information,
+not another V6/V7 translation grid.
 
 ## True-Gap Causal Cluster V6
 

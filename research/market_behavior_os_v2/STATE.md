@@ -7,15 +7,51 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `c68623ea2c408bb2e7ce60b529bf7c82c1982888` (V6 full-strategy start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_V6_FULL_SIGNAL_STRATEGY_RESEARCH_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: the complete frozen V6 strategy tree finishes `V6_PARAMETER_FAMILY_UNSTABLE`. All ten Development board-folds select cash; fixed entries and loss control show pockets of payoff but fail chronology/sample stability
+- `CURRENT_BASELINE`: `df739d01617d1537dcfd395ac040ce24844262f6` (V7 overhang/attack Development start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_V7_OVERHANG_ATTACK_SIMPLE_RULE_DEVELOPMENT_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: the outcome-blind turnover-decayed inventory proxy and causal ATTACK_1/ATTACK_2 contract are complete, but the frozen low-overhang Vacuum Repair hypothesis finishes `V7_NO_SIMPLE_EDGE`; no simple rule, acceptance, failure exit, or retry translation creates stable positive long economics
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. V6 True-Gap identity, environment-repair state, B5 ranking information and loss-control diagnostics remain representations only. No frozen complete configuration passes the final selector
+- `CURRENT_STRATEGY_CANDIDATE`: none. V6/V7 True-Gap identity, turnover-decayed inventory, attack-episode state, environment repair and loss-control diagnostics remain representations only. V7 is not stable enough for a sealed 2024+ challenge
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `e33da497699d37408f4c7b2a4d6f298fe9b1f931`
+- `STARTING_HEAD`: `df739d01617d1537dcfd395ac040ce24844262f6`
 
 ## Current continuation state
+
+### V7 overhang / attack-episode simple-rule Development
+
+V7 preserves the exact V6 event identity and freezes causal price-inventory,
+attack/reset, bounded entry, exit and retry contracts before opening outcomes.
+It reconstructs 3,959 frozen gaps and 4,757 attacks (3,959 ATTACK_1 and 798
+ATTACK_2). The final contract hashes are spec `1206bab1...45ae1`, feature
+`b5dfa996...1c683`, attack `e02edd57...ad5f`, rule `3da4275a...dcfa` and exit
+`01da840b...656d`. All feature/PIT/next-bar/T+1/action/fold/portfolio audits are
+zero, and no repository 2024+ row was opened.
+
+The purged expanding 2017-H1--2021-H2 forced-choice K10 full simple rule has 89
+completed trades, -2.87% mean and +1.58% median net trade return, 57.30% win,
+43.82% U hit, 23.60% severe-loss10, -2.59% CAGR and -12.70% MaxDD. Only one of
+ten half-years and none of five calendar years is positive. The deployment-gated
+path has 64 trades, -2.39% mean, -1.55% CAGR and -7.94% MaxDD. Main and ChiNext
+both have negative mean/CAGR. K5/K10/K20 only scale exposure; all remain
+negative.
+
+Low-overhang selection does not sort the desired payoff. Outer-test Vacuum Score
+quintile mean return declines from +0.81% in Q1 to -1.42% in Q5, and matched
+analysis does not support higher success, lower tail loss, or positive net return
+after controls. Attack acceptance shrinks coverage to 80 trades and worsens mean
+to -3.01%. Failure exits reduce severe-loss10 from 20.33% to 18.81% but do not
+create portfolio edge. ATTACK_2 contributes only nine forced trades and remains
+negative. The LightGBM ceiling and all simple models retain negative Top-30
+economic utility.
+
+The exact 2022--2023 frozen-procedure run is labeled only
+`POST-OBSERVATION ROBUSTNESS DIAGNOSTIC`: four Main trades, zero ChiNext trades,
+zero U hits and +3.70% combined return. It is too sparse, was not used in the
+verdict, and accepts no post-2021 scientific evidence. High-overhang behavior is
+kept separate and does not meet the frozen test for a new absorption-breakout
+lane. Final verdict is `V7_NO_SIMPLE_EDGE`; do not open 2024+, tune neighboring
+inventory/attack thresholds, add ATTACK_3, or rescue by board deletion/model
+expansion.
 
 ### V6 full signal and strategy research
 

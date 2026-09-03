@@ -1,0 +1,41 @@
+{
+  "end_earliest": {
+    "BELOW_ZONE_RESET": "close of the second consecutive completed session with coordinate High < L",
+    "HARD_STRUCTURAL_RESET": "new causally known lower MAJOR/SECONDARY true gap at formation close or lower causal cluster at its freeze",
+    "SUCCESS": "current attack reaches U on same-lineage hard-valid price path",
+    "TIME_RESET": "close of calendar index ATTACK_START_CAL_IDX + 10 without earlier U/reset"
+  },
+  "freshness": "attack start gap age <= 90 completed sessions",
+  "later_attack": "strictly after ended attack and a new causal upward contact from below",
+  "later_success_credit": "never credited to an earlier failed/timed-out attack",
+  "maximum_attacks_per_gap": 2,
+  "memory_at_attack_start": {
+    "BOUNDARY": "61-90",
+    "CORE": "<=60",
+    "STALE": ">90 excluded"
+  },
+  "outcomes": {
+    "ATTACK_SUCCESS": "U before own reset",
+    "CLEAN_ATTACK_SUCCESS_10": "U within 10 sessions before 8% adverse mark",
+    "CLEAN_ATTACK_SUCCESS_5": "U within 5 sessions before 5% adverse mark",
+    "EVENTUAL_U_AFTER_FAILED_ATTACK": "U in a later attack/history; diagnostic only",
+    "FAILED_ATTACK": "hard structural or below-zone reset before U",
+    "ROUGH_ATTACK_SUCCESS": "U before reset but not CLEAN_ATTACK_SUCCESS_10",
+    "TIMED_OUT_ATTACK": "10-session reset before U"
+  },
+  "source": "ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY",
+  "source_hash": "2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162",
+  "start": "previous completed minute coordinate close < L and current completed minute coordinate high >= L; ATTACK_1 is the frozen V6 causal first return",
+  "tie_priority": [
+    "SUCCESS",
+    "HARD_STRUCTURAL_RESET",
+    "BELOW_ZONE_RESET",
+    "TIME_RESET"
+  ],
+  "time_availability": {
+    "entry": "strictly later legal minute open",
+    "gap_and_daily": "15:00 after completed session",
+    "minute": "bar_end_time after completed minute"
+  },
+  "unit": "ATTACK_EPISODE"
+}

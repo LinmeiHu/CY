@@ -4,6 +4,27 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## True-Gap V7 overhang / attack-episode simple-rule Development
+
+- V6 event identity is unchanged. Outcome-blind Stage A builds price-inventory
+  proxies for 3,959 gaps and 4,757 separate causal attacks; all contract/future-
+  information audits are zero.
+- Forced-choice K10 L5 has 89 trades, -2.87% mean, +1.58% median, 23.60%
+  severe-loss10, -2.59% CAGR and -12.70% MaxDD. Only 1/10 half-years and 0/5
+  years are positive. Deployment gating retains 64 trades and remains negative.
+- Low-overhang L1 worsens the unfiltered baseline; outer-test Vacuum Score Q1
+  through Q5 mean return falls from +0.81% to -1.42%. Matched effects do not
+  show higher attack success or lower severe loss after controls.
+- Acceptance retains only 80 trades and worsens mean return to -3.01%. Failure
+  exits lower severe-loss10 to 18.81% but do not improve return. ATTACK_2 is
+  sparse and negative; K5/K10/K20, Main and ChiNext all fail.
+- LightGBM is diagnostic only and has negative Top-30 utility. High-overhang
+  cases do not justify a separate absorption-breakout lane under the frozen
+  criterion.
+- The 2022--2023 exact-procedure diagnostic has four Main trades, zero ChiNext
+  trades and zero U hits; it is post-observation and not scientific evidence.
+  Verdict `V7_NO_SIMPLE_EDGE`; no 2024+ challenge or local rescue.
+
 ## True-Gap V6 full signal and strategy research
 
 - Feature contract `99f1ba1d...b4b52a`: 163 causal F1--F7 features, 75,050

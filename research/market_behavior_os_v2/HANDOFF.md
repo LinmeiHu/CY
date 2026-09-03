@@ -2,6 +2,41 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: True-Gap V7 overhang / attack-episode simple-rule Development
+
+Resume from the commit containing
+`ASHARE-TRUE-GAP-V7-OVERHANG-ATTACK-EPISODE-SIMPLE-RULE-DEVELOPMENT-V1`.
+Its start checkpoint is `df739d01617d1537dcfd395ac040ce24844262f6`; the
+immutable V6 semantic source remains `2705011d...162`. V7 hashes are spec
+`1206bab1...45ae1`, feature `b5dfa996...1c683`, attack `e02edd57...ad5f`, rule
+`3da4275a...dcfa` and exit `01da840b...656d`.
+
+Stage A is outcome blind and deterministic. It constructs turnover-decayed
+price-inventory/VAP proxies for 3,959 frozen gaps and separates 4,757 causal
+attacks: 3,959 ATTACK_1 plus 798 ATTACK_2. Stage B completes all ten purged
+expanding half-year folds, hierarchical simple-rule/entry/exit/retry selection,
+forced-choice and deployment-gated K5/K10/K20 portfolios, direct/matched/model-
+ceiling diagnostics, and 89 representative charts. All hard causality,
+execution, QD-010, fold-isolation and portfolio audits are zero.
+
+The primary forced-choice K10 L5 path has 89 trades, -2.87% mean, +1.58% median,
+57.30% wins, 43.82% U hit, 23.60% severe-loss10, -2.59% CAGR and -12.70% MaxDD.
+Only 2020-H2 is positive among ten half-years; no full year is positive. The
+deployment gate leaves 64 trades with -2.39% mean and -1.55% CAGR. Main and
+ChiNext both fail. Low-overhang L1 is worse than the unfiltered baseline; the
+Vacuum Score gradient runs opposite the hypothesis, from +0.81% Q1 to -1.42%
+Q5. Acceptance and retry do not rescue economics, while failure exits improve
+tail incidence slightly but not return. All fixed K values remain negative.
+Verdict: `V7_NO_SIMPLE_EDGE`.
+
+The predetermined 2022--2023 run is only a
+`POST-OBSERVATION ROBUSTNESS DIAGNOSTIC`: four Main trades, no ChiNext trade,
+zero U hits and +3.70% combined return. It did not influence selection or the
+verdict. High-overhang cases remain a separate descriptive state and do not
+justify an absorption-breakout lane under this freeze. Repository 2024+ remains
+unopened. Do not rescue V7 with neighboring VAP windows, attack/reset rules,
+ATTACK_3, thresholds, entries, exits, models, board deletion, or 2024+ access.
+
 ## Latest checkpoint: True-Gap V6 full signal and strategy research
 
 Resume from the commit containing

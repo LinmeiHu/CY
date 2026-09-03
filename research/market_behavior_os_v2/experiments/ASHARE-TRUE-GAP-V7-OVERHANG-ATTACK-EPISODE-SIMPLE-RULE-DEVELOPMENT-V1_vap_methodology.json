@@ -1,0 +1,48 @@
+{
+  "bin_width_z": 0.1,
+  "clipping": {
+    "exponent_only": 50.0,
+    "reason": "numerical underflow protection only",
+    "turnover_input": "NO_CLIP; negative or missing required turnover fails the affected feature"
+  },
+  "covered_z": [
+    -2.0,
+    3.0
+  ],
+  "float_turnover_allocation": "completed-session turnover_fraction multiplied by minute volume / completed-session volume",
+  "historical_windows_sessions_before_gap": [
+    20,
+    60,
+    120
+  ],
+  "locked_limit_interpretation": "volume is retained as observed trading; low volume is never called absence of supply",
+  "missing_windows": "an N-session variable is null unless N valid, same-lineage, exact-241 sessions exist; no shorter-window substitution",
+  "name": "TURNOVER-DECAYED INVENTORY PROXY",
+  "not_exact_shareholder_identity": true,
+  "price": {
+    "coordinate": "minute price multiplied by the same-day QD-010 coordinate_factor",
+    "fallback": "(high + low + close) / 3 when amount/volume is unavailable",
+    "primary": "minute amount / minute volume",
+    "vap_price_is_proxy": true
+  },
+  "regions": {
+    "above_u": "1 <= z < 2",
+    "inside_gap": "0 <= z < 1",
+    "local_normalizer": "-2 <= z < 3",
+    "support_below_l": "-1 <= z < 0"
+  },
+  "same_day_partial_turnover": "cumulative minute volume divided by prior completed session implied free-float shares; never uses current full-day volume",
+  "survival_weight": "exp(-min(cumulative completed PIT turnover after origin and through attack clock, 50))",
+  "vacuum_score": {
+    "calibration": "board-specific expanding ECDF using strictly earlier attack dates",
+    "components": [
+      "low decayed inventory inside gap",
+      "low decayed inventory above U",
+      "high GAP_LVN_SCORE",
+      "low OVERHANG_SUPPORT_RATIO"
+    ],
+    "minimum_prior_attacks": 30,
+    "weights": "equal"
+  },
+  "z": "(coordinate_price - L) / W"
+}

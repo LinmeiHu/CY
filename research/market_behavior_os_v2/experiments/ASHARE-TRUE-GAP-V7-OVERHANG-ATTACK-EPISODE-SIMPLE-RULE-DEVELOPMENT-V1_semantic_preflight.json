@@ -1,0 +1,61 @@
+{
+  "cause": "gap-birth systematic or idiosyncratic shock",
+  "chosen_time_anchors": {
+    "entry": "next legal minute open strictly after the trigger bar",
+    "environment_daily_state": "completed sessions strictly before attack date",
+    "exit": "next legal execution after completed failure information",
+    "feature_rule": "no feature may use a bar after its own decision timestamp",
+    "gap_inventory_history": "completed QD-004 bars no later than ATTACK_START_TIME for admission-state features",
+    "minute_attack_state": "completed minutes no later than each candidate decision timestamp"
+  },
+  "economic_sequence": [
+    "former strong / leader-like stock",
+    "causal local true-gap cluster forms",
+    "historical inventory may or may not exist around [L,U]",
+    "post-gap turnover may preserve or replace that inventory",
+    "market / board / industry environment repairs or remains weak",
+    "stock approaches L",
+    "a distinct attack episode begins",
+    "the market accepts or rejects price inside the gap",
+    "causal completed-bar trigger",
+    "next legal one-minute-open entry",
+    "current attack reaches U, causally resets, or times out",
+    "position exits under its frozen policy",
+    "a later independent attack may create at most one retry signal"
+  ],
+  "entry_time": "next legal one-minute open strictly after completed trigger information",
+  "experiment": "ASHARE-TRUE-GAP-V7-OVERHANG-ATTACK-EPISODE-SIMPLE-RULE-DEVELOPMENT-V1",
+  "outcome": [
+    "current-attack U success",
+    "current-attack failure",
+    "timeout"
+  ],
+  "outcome_start_time": "strictly after executable entry",
+  "outcomes_opened": "NO",
+  "possible_ambiguities": [
+    "historical volume is not identical to currently surviving inventory",
+    "turnover may replace old holders",
+    "low volume under a locked limit state is not absence of supply",
+    "high attack volume may indicate demand or supply absorption",
+    "a later successful attack must not validate an earlier failed attack",
+    "high-overhang U breakout is a different strategy from gap repair",
+    "old horizontal trading may be support, resistance, or both",
+    "absolute percentage penetration and gap-width penetration differ"
+  ],
+  "research_correction": {
+    "attack_episode": "primary trading unit; later attacks never relabel earlier attacks",
+    "attack_success": "U before the current attack's own causal reset",
+    "high_overhang": "separate absorption-breakout mechanism and excluded from primary returns",
+    "overhead_inventory": "historical turnover/volume proxy, not observed actual selling",
+    "price_true_gap": "establishes no trades only on the gap-formation transition"
+  },
+  "state": [
+    "surviving overhead inventory proxy",
+    "support inventory below L proxy",
+    "environment repair",
+    "stock relative recovery",
+    "base / approach quality",
+    "prior attack history"
+  ],
+  "trigger": "causal completed-bar acceptance inside the current attack"
+}
