@@ -11,9 +11,13 @@ A causally untouched downward true gap is treated as overhead repair space, not 
 - K20 portfolio trades / mean / median: 317 / 3.27% / 5.38%
 - CAGR / MaxDD / Sharpe: 5.25% / -4.33% / 1.164
 
-## Validation
+## External time replication (2022-2023)
 
-Not opened.
+- Fixed-rule signals / complete outcomes: 136 / 93
+- Event mean / median: 2.62% / 4.63%
+- K20 portfolio trades / mean / median: 93 / 2.62% / 4.63%
+- CAGR / MaxDD / Sharpe: 3.06% / -3.10% / 1.160
+- Verdict: BELOW_L_REVERSAL_REPAIR_VALIDATION_FAILED
 
 ## Governance
 
