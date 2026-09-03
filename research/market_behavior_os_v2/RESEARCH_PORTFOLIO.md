@@ -6,7 +6,7 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | V8 isolates the intended clean-fracture pattern from V7's broader attack population, but remains outcome-blind and unreviewed | Complete the 30-chart human semantic review only; no return attachment, strategy replay, threshold rescue, or 2024+ access |
+| EXPLORE | 10% | The pre-2021 low-inventory mother population shows common structural U repair and a two-condition in-sample description, but no predictive or trading evidence | Review the 40 marked signal charts; keep 2021+ unused until a later separately frozen test |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
 | INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
@@ -17,6 +17,20 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## Pre-2021 low-inventory fill-pattern review
+
+This lane receives descriptive human-review budget and zero strategy capital.
+The 427-event broad mother population is selected without outcomes from exact
+V6 CORE true gaps, complete PIT history and low raw inventory around `[L,U]`.
+Structural 20D U fill is 88.06%. Low gap-through-freeze corridor turnover plus
+an orderly higher-low approach describes 119 events with 97.48% 20D fill across
+all seven discovery years.
+
+The two conditions were discovered and measured on the same 2014--2020 sample.
+They are not a predictor. Human review of 40 charts, including the three
+condition-match failures, is binding before any semantics are adjusted. 2021+
+remains reserved; no trade, return, PnL or strategy replay is authorized here.
 
 ## True-Gap V8 clean-fracture semantic review
 

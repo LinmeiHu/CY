@@ -7,15 +7,41 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `865bfa9ffb9e281438e10a60ca7f57dd3945658e` (V8 clean-fracture semantic-repair start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_V8_CLEAN_FRACTURE_BLIND_REVIEW_PENDING`
-- `CURRENT_PRIMARY_FRONTIER`: V7 is not evidence against the intended clean-fracture pattern because its population admits short rise/fall collapses, historical corridor occupancy, and later attacks. V8 now freezes an outcome-blind high-precision retrieval contract and a 30-chart blind review package; no payoff or strategy claim exists before human review
+- `CURRENT_BASELINE`: `014390855b2e7610aaee6f15fefbf411f700c8d4` (pre-2021 low-inventory fill-pattern discovery start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_TRUE_GAP_LOW_INVENTORY_FILL_PATTERN_HUMAN_REVIEW`
+- `CURRENT_PRIMARY_FRONTIER`: a broad outcome-blind low-inventory mother population is followed by pre-2021 structural U-fill description only. Low post-gap corridor turnover and an orderly higher-low approach form a two-condition in-sample summary; its 40-chart book is ready for human review, but no prediction or strategy claim exists
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. V8 is a semantic candidate set only; V6/V7 True-Gap identity, inventory, attack-episode state, environment repair and loss-control diagnostics remain representations. No outcome stage or sealed challenge is authorized
+- `CURRENT_STRATEGY_CANDIDATE`: none. The new 2014--2020 result is descriptive pattern discovery only; 2021 and later remain unused for a later independently frozen test
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `865bfa9ffb9e281438e10a60ca7f57dd3945658e`
+- `STARTING_HEAD`: `014390855b2e7610aaee6f15fefbf411f700c8d4`
 
 ## Current continuation state
+
+### Pre-2021 low-inventory true-gap fill-pattern discovery
+
+The outcome-blind mother screen preserves V6 CORE true-gap and causal-first-
+return identity, requires exact 120-session PIT minute history, and retains only
+events whose raw VAP density is no higher than local average both inside
+`[L,U]` and in `[L-0.5W,U+0.5W)`, with at most 12/20 pre-gap intersecting
+sessions. It deliberately does not pre-gate collapse duration, depth, prior
+near-touch, or approach shape. All 40-session structural paths finish by
+2020-12-31.
+
+The screen yields 427 events/391 symbols across 2014--2020. Frozen structural U
+fill is 76.35%/83.14%/88.06%/89.70% at 5/10/20/40 sessions. A chronology-first
+descriptive selector reduces the sample to two simple observations: post-gap-
+through-freeze corridor float turnover <=0.1271%, then at least six of the nine
+last-10-session low-to-low changes are higher. The 119 matching events have
+86.55%/92.44%/97.48%/97.48% structural fill and span all seven years. This is
+in-sample description, not predictive validation.
+
+The 41-page PDF contains one summary page and 40 deterministic examples, with
+all three available non-fills included. Every page marks gap formation, L/U,
+V6 freeze, causal first return, pre-gap raw VAP, and first U fill when present.
+Contract/spec/ledger/PDF hashes are `59921238...e3b`, `41395d3c...1299`,
+`8a19cc62...c35`, and `bab73dff...cf4b`. No return, PnL, trade, strategy,
+predictive validation, 2021+ data, post-H40 path, or repository 2024+ data was
+used. Stop for human chart review; any optimization must be a later task.
 
 ### V8 clean-fracture first-return semantic pilot
 

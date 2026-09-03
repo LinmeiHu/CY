@@ -1,0 +1,105 @@
+{
+  "charts": {
+    "count": 40,
+    "marks": [
+      "gap formation",
+      "V6 freeze",
+      "causal first return",
+      "L",
+      "U",
+      "first U fill if within 40 sessions"
+    ],
+    "outcome_visible": true,
+    "returns_visible": false,
+    "selection": "deterministic representative sample from simple-rule matches, preserving successes and failures where available",
+    "window": "90 completed sessions before gap through max(90 sessions after gap, 40 after causal first return)"
+  },
+  "chronology": {
+    "2021_and_later_used": false,
+    "discovery_end": "2020-12-31",
+    "discovery_start": "2014-01-01",
+    "required_complete_structural_horizon_sessions": 40
+  },
+  "descriptive_conditions": {
+    "candidate_features": {
+      "approach_path_efficiency_10d": "HIGH",
+      "approach_return_10d": "HIGH",
+      "collapse_drawdown": "HIGH",
+      "collapse_leg_duration_sessions": "HIGH",
+      "decline_path_efficiency": "HIGH",
+      "gap_age_sessions": "HIGH",
+      "higher_low_share_10d": "HIGH",
+      "max_depth_below_l_before_event": "HIGH",
+      "max_interim_rebound_fraction": "LOW",
+      "peak_to_gap_sessions": "HIGH",
+      "post_gap_corridor_approach_sessions": "LOW",
+      "post_gap_freeze_corridor_float_turnover": "LOW",
+      "pre_gap_corridor_density_relative_local": "LOW",
+      "pre_gap_corridor_touch_sessions": "LOW",
+      "pre_gap_inside_density_relative_local": "LOW",
+      "pre_gap_inside_touch_sessions": "LOW",
+      "prior_completed_session_near_touch_count": "LOW",
+      "settling_sessions_after_trough": "HIGH",
+      "true_gap_width_pct": "HIGH"
+    },
+    "interpretation": "in-sample descriptive regularity only; no out-of-sample or predictive claim",
+    "selection": "greedy at most 3 conditions; each addition must improve pooled U_FILL_20 by >=2 percentage points, have positive median calendar-year uplift, retain >=40 events and >=5 represented years",
+    "selector_order": "more calendar years with positive uplift; then median calendar-year uplift; then pooled uplift; then support; then deterministic feature name",
+    "thresholds": "full-discovery q30/q50/q70 in the predeclared economic direction; count features additionally permit natural zero"
+  },
+  "experiment": "ASHARE-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V1",
+  "governance": {
+    "2021_plus_data_used": false,
+    "prediction_analysis_run": false,
+    "repository_2024_plus_data_opened": false,
+    "return_analysis_run": false,
+    "strategy_backtest_run": false
+  },
+  "scientific_status": "PRE_2021_IN_SAMPLE_DESCRIPTIVE_PATTERN_DISCOVERY_NOT_PREDICTION_NOT_STRATEGY",
+  "source": {
+    "experiment": "ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY",
+    "identity_changed": false,
+    "interval": "[High_t, Low_t_minus_1] = [L,U]",
+    "population": "unchanged V6 CORE causal-first-return candidates",
+    "spec_sha256": "2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162",
+    "true_gap": "High_t < Low_t_minus_1"
+  },
+  "stage_a_outcome_blind_mother_population": {
+    "corridor_density": {
+      "definition": "raw VAP per 0.1W bin inside z=[-0.5,1.5), divided by raw VAP per 0.1W bin in z=[-2,3)",
+      "maximum": 1.0
+    },
+    "history": "exactly 120 completed same-lineage hard-valid PIT sessions with 241 one-minute bars before gap formation",
+    "inside_gap_density": {
+      "definition": "raw VAP per 0.1W bin inside z=[0,1), divided by raw VAP per 0.1W bin in z=[-2,3)",
+      "maximum": 1.0
+    },
+    "maximum_pre_gap_sessions_intersecting_corridor": 20,
+    "maximum_pre_gap_sessions_intersecting_exact_gap": 12,
+    "memory": "CORE",
+    "missing_policy": "FAIL_CLOSED",
+    "not_hard_gated": [
+      "collapse duration",
+      "peak-to-gap duration",
+      "collapse depth",
+      "prior near-touch",
+      "post-gap approach",
+      "entry",
+      "return",
+      "PnL"
+    ]
+  },
+  "stage_b_structural_outcome": {
+    "execution_or_trading_claim": false,
+    "primary": "frozen structural U full-fill within 20 completed trading sessions after V6 causal first return",
+    "return_or_pnl_opened": false,
+    "same_day_structural_fill_included": true,
+    "secondary_horizons_sessions": [
+      5,
+      10,
+      20,
+      40
+    ],
+    "source": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY_structural_outcomes.parquet"
+  }
+}

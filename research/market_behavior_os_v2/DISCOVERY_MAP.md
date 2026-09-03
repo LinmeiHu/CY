@@ -4,6 +4,22 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Pre-2021 low-inventory true-gap fill-pattern discovery
+
+- A broad, outcome-blind mother screen keeps 427 V6 CORE events with exact
+  120-session PIT minute history and low raw VAP per price width both in
+  `[L,U]` and the surrounding corridor. Long-decline, depth and approach-shape
+  rules are not assumed up front.
+- Structural U fill is already common: 76.35%/83.14%/88.06%/89.70% at
+  5/10/20/40 sessions after causal first return.
+- The compact in-sample description is: very low post-gap-through-freeze
+  corridor float turnover (<=0.1271%) plus an orderly last-10-session approach
+  (higher lows on >=2/3 transitions). It retains 119 events across all seven
+  years and reaches 97.48% 20D fill.
+- This does not establish prediction, tradability, or profitability. One summary
+  page plus 40 marked signal charts, including all three non-fills, is the
+  current human-review artifact. 2021+ remains unused.
+
 ## True-Gap V8 clean-fracture first-return semantic pilot
 
 - V8 addresses the human-identified semantic mismatch without using outcomes:

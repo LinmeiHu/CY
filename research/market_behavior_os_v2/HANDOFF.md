@@ -2,6 +2,34 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: pre-2021 low-inventory true-gap fill patterns
+
+Resume from the commit containing
+`ASHARE-TRUE-GAP-LOW-INVENTORY-FILL-PATTERN-DISCOVERY-V1`. It starts at
+`014390855b2e7610aaee6f15fefbf411f700c8d4` and preserves V6 semantic hash
+`2705011d...162`.
+
+Stage A is outcome blind: V6 CORE causal-first-return identity, exact 120-session
+PIT minute history, raw VAP density <= local average inside the true gap and its
+`[L-0.5W,U+0.5W)` corridor, and <=12/<=20 pre-gap intersecting sessions. It
+does not preselect long declines, deep collapses, pristine approaches, entries,
+or returns. Complete H40 paths must end by 2020-12-31.
+
+The 2014--2020 mother population contains 427 events/391 symbols. Structural U
+fill reaches 76.35%/83.14%/88.06%/89.70% at 5/10/20/40 sessions. Two compact
+in-sample descriptive conditions survive the chronology-first summary: corridor
+float turnover from gap through V6 freeze <=0.1271%, and higher lows on at least
+6/9 last-10-session transitions. They retain 119 events across all seven years,
+with 86.55%/92.44%/97.48%/97.48% fill. These are descriptive observations, not
+a predictor or strategy.
+
+Review the 41-page chart book next. It has 40 signals and includes all three
+available condition-match non-fills. Contract/spec/discovery-ledger/PDF hashes
+are `59921238...e3b`, `41395d3c...1299`, `8a19cc62...c35`, and
+`bab73dff...cf4b`. Returns, PnL, trade replay and prediction were not run;
+2021+, post-H40 paths and repository 2024+ were not used. Do not optimize until
+the human has reviewed the charts.
+
 ## Latest checkpoint: V8 clean-fracture first-return semantic pilot
 
 Resume from the commit containing
