@@ -1,6 +1,34 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-09-02.
+Updated 2026-09-03.
+
+## Latest checkpoint: champion candlestick rules do not improve return
+
+Resume after the commit containing
+`ASHARE-CHAMPION-CANDLESTICK-RULE-DISCOVERY-V1-V3`; its clean starting
+checkpoint is `1b467df2ee60a24a44d21d38bfa204b45666f5a5`. Preserve Industry
+Diffusion plus Weekly Low-MAX unchanged. This was post-hoc visual discovery on
+consumed 2018--2023 development history, not independent confirmation.
+Post-2023 outcomes and CY-011 remain unread.
+
+All 730 champion charts from 2018--2019 and all 478 from 2020 were individually
+reviewed: 1,208 charts on 63 atlas sheets. Three frozen iterations tested 12
+economically distinct translations: entry admission, d3/d5 exits, d10/d15
+failure/profit-giveback exits, and one d5/d10 cohort-synchronous exit.
+
+No rule survived. Entry-candle distinctions were weak or reversed in 2020.
+Individual exits repeatedly improved severe-loss incidence but lowered mean
+payoff by cutting rebound paths. The cohort rule was nearly flat in 2018--2019
+(+0.009 pp per trade) and adverse in 2020--2021 (-0.323 pp). Its generation
+gate failed, so 2022--2023 validation and full portfolio replay were not opened.
+
+Final classification:
+`NO_CANDLESTICK_RULE_EARNED_ANNUALIZED_RETURN_IMPROVEMENT`. Strategy A remains
+at its authoritative 16.34% annualized development return, 122.43% total
+return, -25.77% maximum drawdown, and 0.731 Sharpe. Add no buy/sell rule. Do not
+retest nearby moving-average, loss, giveback, checkpoint, or cohort thresholds.
+Return research capital to frozen Cross-Sectional Dispersion science when its
+resource contract is safe, or to a genuinely independent Alpha family.
 
 ## Latest checkpoint: historical opposite-sign closed-family audit
 

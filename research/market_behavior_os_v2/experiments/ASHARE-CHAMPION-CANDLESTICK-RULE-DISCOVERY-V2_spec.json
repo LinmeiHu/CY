@@ -1,0 +1,113 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-CANDLESTICK-RULE-DISCOVERY-V2",
+  "status": "FROZEN_AFTER_2018_2020_CHART_REVIEW_BEFORE_D10_D15_RULE_OUTCOMES",
+  "research_status": "POST_HOC_CANDLESTICK_GENERATED_DEVELOPMENT_HYPOTHESIS",
+  "input_contract": {
+    "v1_spec_sha256": "0ea60b648d19b9e81efa894752561c7d2cafe63f2e689ad3493948af7d3557d7",
+    "trade_panel_sha256": "195e6882346010a7a6347d98438aac33e51cf021ca7faf081c796d6bbc459392",
+    "v1_feature_panel_sha256": "89da00a69f8616d80da43b7653b85d07ee60dea8de85cbc68d73132fa72abfc9"
+  },
+  "chart_review": {
+    "years": [2018, 2019, 2020],
+    "trades_reviewed_individually": 1208,
+    "round1_sheets": 37,
+    "round2_sheets": 26
+  },
+  "scientific_split": {
+    "rule_generation": [2018, 2019, 2020],
+    "pruning": [2021],
+    "fixed_validation": [2022, 2023],
+    "all_periods_are_consumed_development_history": true,
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "boundary_purge": {
+    "pruning": "signal_date and exit_date must both lie in calendar year 2021",
+    "fixed_validation": "signal_date must be on or after 2022-01-01 and exit_date must be on or before 2023-12-31",
+    "purpose": "Prevent adjacent-stage lifecycle overlap."
+  },
+  "rules": [
+    {
+      "rule_id": "CND2-X01-D10-NO-PROGRESS-BELOW-MA10",
+      "role": "D10_EXIT",
+      "decision_at": "d10_checkpoint_close",
+      "action_at": "next_legal_open",
+      "definition": "d10_close_from_entry <= 0 AND d10_close_below_ma10 == true",
+      "conditions": [
+        {"field": "d10_close_from_entry", "operator": "<=", "value": 0.0},
+        {"field": "d10_close_below_ma10", "operator": "==", "value": true}
+      ]
+    },
+    {
+      "rule_id": "CND2-X02-D10-BELOW-SIGNAL-LOW",
+      "role": "D10_EXIT",
+      "decision_at": "d10_checkpoint_close",
+      "action_at": "next_legal_open",
+      "definition": "d10_close_below_signal_low == true",
+      "conditions": [
+        {"field": "d10_close_below_signal_low", "operator": "==", "value": true}
+      ]
+    },
+    {
+      "rule_id": "CND2-X03-D10-PROFIT-GIVEBACK",
+      "role": "D10_EXIT",
+      "decision_at": "d10_checkpoint_close",
+      "action_at": "next_legal_open",
+      "definition": "d10_max_runup >= 0.08 AND d10_close_from_peak <= -0.05",
+      "conditions": [
+        {"field": "d10_max_runup", "operator": ">=", "value": 0.08},
+        {"field": "d10_close_from_peak", "operator": "<=", "value": -0.05}
+      ]
+    },
+    {
+      "rule_id": "CND2-X04-D15-NO-PROGRESS-BELOW-MA10",
+      "role": "D15_EXIT",
+      "decision_at": "d15_checkpoint_close",
+      "action_at": "next_legal_open",
+      "definition": "d15_close_from_entry <= 0 AND d15_close_below_ma10 == true",
+      "conditions": [
+        {"field": "d15_close_from_entry", "operator": "<=", "value": 0.0},
+        {"field": "d15_close_below_ma10", "operator": "==", "value": true}
+      ]
+    },
+    {
+      "rule_id": "CND2-X05-D15-PROFIT-GIVEBACK",
+      "role": "D15_EXIT",
+      "decision_at": "d15_checkpoint_close",
+      "action_at": "next_legal_open",
+      "definition": "d15_max_runup >= 0.10 AND d15_close_from_peak <= -0.07",
+      "conditions": [
+        {"field": "d15_max_runup", "operator": ">=", "value": 0.10},
+        {"field": "d15_close_from_peak", "operator": "<=", "value": -0.07}
+      ]
+    }
+  ],
+  "pruning_gate": {
+    "minimum_affected_2021_trades": 30,
+    "positive_mean_payoff_improvement_in_2018_2020": true,
+    "positive_mean_payoff_improvement_in_2021": true,
+    "minimum_2021_mean_payoff_improvement_pp": 0.25,
+    "maximum_survivors": 2,
+    "ranking": ["2021_mean_payoff_improvement", "2021_severe_loss_improvement"],
+    "no_threshold_changes": true,
+    "no_rescue_tests": true
+  },
+  "fixed_validation_gate": {
+    "years": [2022, 2023],
+    "minimum_affected_trades": 40,
+    "annualized_return_delta_pp": 1.0,
+    "sharpe_must_not_decline": true,
+    "maximum_drawdown_worsening_pp": 2.0,
+    "severe_loss_fraction_must_not_increase": true,
+    "turnover_increase_limit_fraction": 0.10,
+    "both_year_return_deltas_nonnegative": true,
+    "one_portfolio_replay_per_survivor": true,
+    "no_combination_unless_both_survive_individually": true
+  },
+  "prohibited": [
+    "No new chart feature after 2021 pruning outcomes are seen.",
+    "No threshold, checkpoint, or rule-role rescue.",
+    "No post-2023 or CY011 outcome read.",
+    "No claim of independent confirmation."
+  ]
+}

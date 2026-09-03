@@ -1,36 +1,36 @@
 # Market Behavior Research OS V2 state
 
-Updated 2026-09-02.
+Updated 2026-09-03.
 
 ## Program identity
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `b6fb8974f38e3606633e23c7caed25428a45819b` (clean start of Historical Opposite-Sign Closed-Family Audit V1)
-- `CURRENT_PHASE`: `HISTORICAL_OPPOSITE_SIGN_AUDIT_COMPLETE_NO_ALPHA_CONFIRMATION`
-- `CURRENT_PRIMARY_FRONTIER`: `ONE_BOUNDED_PRICE_LIMIT_STABLE_ACCEPTANCE_NEGATIVE_LEG_ANATOMY`: the artifact audit found broad adverse lifecycle evidence but no demonstrated opposite long leg. Run one frozen leg-versus-event-baseline anatomy only; if it is merely less bad, resume `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`, which remains `SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`
+- `CURRENT_BASELINE`: `1b467df2ee60a24a44d21d38bfa204b45666f5a5` (clean start of Champion Candlestick Rule Discovery V1--V3)
+- `CURRENT_PHASE`: `CHAMPION_CANDLESTICK_RULE_DISCOVERY_COMPLETE_NO_RULE_PROMOTED`
+- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`, still `SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`; do not spend another cycle threshold-mining champion candlestick exits
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `b6fb8974f38e3606633e23c7caed25428a45819b`
+- `STARTING_HEAD`: `1b467df2ee60a24a44d21d38bfa204b45666f5a5`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `b6fb8974f38e3606633e23c7caed25428a45819b`
-- `CURRENT_SCIENTIFIC_LAYER`: `ARTIFACT_ONLY_RESEARCH_GOVERNANCE_AUDIT; FAILED_EXPECTED_SIGN_SEPARATED_FROM_SCIENTIFIC_NULL; NO_NEW_OUTCOME_RESEARCH; NO_REPLAY`
-- `REPRESENTATIONS_TESTED`: none newly; the audit consolidated prior outcome-bearing strategy/factor families from tracked reports, results, specs, and registries under one frozen six-class governance contract
-- `ECONOMIC_RESPONSE_STATUS`: `NO_NEW_RESPONSE_ESTIMATE; FOUR_TRUE_NULL; SEVEN_CHRONOLOGICALLY_UNSTABLE; FIVE_STABLE_ADVERSE_ALREADY_USED; EIGHT_POST_HOC_AVOIDANCE_ANATOMY_QUESTIONS; ZERO_OPPOSITE_LONG_CANDIDATES; FOUR_UNRESOLVED`
-- `LEVEL_VS_TRANSITION_STATUS`: `LEG_VERSUS_ZERO_AND_EVENT_DATE_BASELINE_DECOMPOSITION_NOW_REQUIRED_BEFORE_ECONOMIC_NULL_CLOSURE`
+- `CURRENT_HEAD_AT_RESUME`: `1b467df2ee60a24a44d21d38bfa204b45666f5a5`
+- `CURRENT_SCIENTIFIC_LAYER`: `POST_HOC_CONSUMED_DEVELOPMENT_VISUAL_RULE_DISCOVERY; THREE_FROZEN_ITERATIONS; NO_RULE_PROMOTED; NO_PORTFOLIO_REPLAY`
+- `REPRESENTATIONS_TESTED`: 12 frozen chart-derived translations across entry admission, individual d3/d5/d10/d15 exits, and cohort-synchronous d5/d10 exits
+- `ECONOMIC_RESPONSE_STATUS`: `ZERO_OF_TWELVE_RULES_SURVIVED; DOWNSIDE_RISK_REDUCTION_DID_NOT_TRANSLATE_TO_RETURN_IMPROVEMENT`
+- `LEVEL_VS_TRANSITION_STATUS`: `SIGNAL_DAY_SHAPES_OVERLAP; POST_ENTRY_FAILURE_DESCRIBES_RISK_BUT_FIXED_EXIT_TIMING_DESTROYS_REBOUND_PAYOFF`
 - `EVENT_EPISODE_RULES`: inherited exact experiment definitions only; no event, score, threshold, horizon, state, or action was changed or recomputed
-- `YEAR_BY_YEAR_RESULTS`: no new yearly outcome aggregation; existing year evidence was cited only where present in compact tracked artifacts and missing year diagnostics remain unknown
-- `PLACEBO_RESULTS`: no new controls/placebos; existing control evidence was cited without recomputation
+- `YEAR_BY_YEAR_RESULTS`: temporal discovery gates used 2018--2019 then 2020 for V1, 2018--2020 then boundary-purged 2021 for V2, and 2018--2019 versus 2020--2021 for V3; failed gates kept later fixed validation unopened
+- `PLACEBO_RESULTS`: frozen champion trade payoff is the comparator; no new control zoo or alternative baseline was introduced
 - `SUPPORTED_MARKET_STATES`: none newly established by this audit
-- `DESCRIPTIVE_ONLY_STATES`: eight stable adverse rows identify post-hoc avoidance questions only; none establishes a profitable opposite leg
+- `DESCRIPTIVE_ONLY_STATES`: below-signal-low, below-MA10, fixed drawdown, profit-giveback, and synchronized-cohort failure remain risk descriptors only
 - `STRATEGY_HABITAT_STATUS`: `NO_STRATEGY_A_TRANSFER_OR_CHANGE; NO_STRATEGY_B_REPLAY; FROZEN_CHAMPION_UNCHANGED`
-- `CURRENT_MECHANISMS`: Price-limit stable/early acceptance has the broadest under-analyzed adverse lifecycle topology. Relative-rank acceleration and same-month seasonality are reserve negative-leg anatomies. All remain consumed-development hypotheses, not Alpha or strategy components
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: in the frozen Price-Limit Cycle-014 lifecycle only, is stable/early acceptance intrinsically adverse versus the all-event baseline across horizons/years, or merely less bad than other negative states? This is one post-hoc anatomy, not a veto or strategy. If it fails, resume frozen Dispersion rather than cascading through every ledgered adverse family.
+- `CURRENT_MECHANISMS`: chart-visible failure reliably reduces severe-loss incidence, but the champion's rebound convexity makes fixed causal exits return-adverse; signal-day candle shape has insufficient stable separation
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: complete the already-frozen Cross-Sectional Dispersion science only when its resource contract is safely executable; otherwise prioritize a genuinely distinct Alpha engine. Do not reopen the 12 rejected candlestick translations with neighboring thresholds.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,36 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Champion Candlestick Rule Discovery V1--V3
+
+All 730 frozen champion trades from 2018--2019 and all 478 from 2020 were
+rendered and individually inspected: 1,208 charts on 63 atlas sheets. The chart
+contract used corporate-action-consistent coordinates, 40 pre-signal and up to
+25 post-signal sessions, and explicit signal/entry/exit markers.
+
+Three separately frozen iterations tested 12 translations. V1 tested two
+entry-time admission vetoes and four d3/d5 exits; no rule survived 2020. V2
+tested five d10/d15 failure or profit-giveback exits; every rule reduced mean
+payoff in 2018--2020, and none survived the 2021 pruning gate. V3 tested one
+cohort-synchronous d5/d10 exit. It improved mean payoff only +0.009 pp in
+2018--2019 and reduced it -0.323 pp in 2020--2021, so its generation gate failed
+and 2022--2023 stayed unopened.
+
+Final classification:
+`NO_CANDLESTICK_RULE_EARNED_ANNUALIZED_RETURN_IMPROVEMENT`. The recurring
+mechanism is downside-risk detection without return improvement: most exit
+rules reduce severe-loss incidence but destroy more rebound payoff. Strategy A
+remains unchanged at 16.34% annualized, 122.43% total return, -25.77% maximum
+drawdown, and 0.731 Sharpe. No portfolio replay was authorized. Preserve the 12
+exact rejected rules and do not rescue them with nearby thresholds.
+
+What market behavior are we still not studying? An executable, resource-safe
+Cross-Sectional Dispersion Alpha and independent return sources not based on
+fixed candle stops.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The charts expose risk anatomy, not a stable new entry or exit Alpha.
 
 ### Historical Opposite-Sign Closed-Family Audit V1
 

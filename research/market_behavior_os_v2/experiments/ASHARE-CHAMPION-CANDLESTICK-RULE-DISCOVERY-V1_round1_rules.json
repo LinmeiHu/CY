@@ -1,0 +1,97 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-CANDLESTICK-RULE-DISCOVERY-V1",
+  "research_status": "POST_HOC_CANDLESTICK_GENERATED_DEVELOPMENT_HYPOTHESIS",
+  "discovery_sample": {
+    "years": [2018, 2019],
+    "trade_count": 730,
+    "charts_reviewed_individually": 730,
+    "outcome_strata": {
+      "severe_loss": 116,
+      "normal_loss": 258,
+      "normal_win": 220,
+      "extreme_win": 136
+    }
+  },
+  "rule_count": 6,
+  "rules": [
+    {
+      "rule_id": "CND-A01-OVEREXTENDED-REBOUND",
+      "role": "ADMISSION_VETO",
+      "decision_at": "signal_date_close",
+      "action_at": "next_legal_open",
+      "definition": "distance_ma20 >= 0.05 AND r5 >= 0.02",
+      "conditions": [
+        {"field": "distance_ma20", "operator": ">=", "value": 0.05},
+        {"field": "r5", "operator": ">=", "value": 0.02}
+      ],
+      "visual_hypothesis": "Avoid late rebound entries already at least 5% above the 20-session mean after a positive five-session run."
+    },
+    {
+      "rule_id": "CND-A02-VOLATILE-SURGE",
+      "role": "ADMISSION_VETO",
+      "decision_at": "signal_date_close",
+      "action_at": "next_legal_open",
+      "definition": "atr20_fraction >= 0.04 AND signal_body_return >= 0.01",
+      "conditions": [
+        {"field": "atr20_fraction", "operator": ">=", "value": 0.04},
+        {"field": "signal_body_return", "operator": ">=", "value": 0.01}
+      ],
+      "visual_hypothesis": "Avoid entries where a high-volatility stock arrives through a one-session upward surge that may be exhaustion rather than durable continuation."
+    },
+    {
+      "rule_id": "CND-X01-D3-BELOW-SIGNAL-LOW",
+      "role": "D3_EXIT",
+      "decision_at": "third_held_session_close",
+      "action_at": "next_legal_open",
+      "definition": "d3_close_below_signal_low == true",
+      "conditions": [
+        {"field": "d3_close_below_signal_low", "operator": "==", "value": true}
+      ],
+      "visual_hypothesis": "Exit when the initial thesis fails within three held sessions and price closes below the pre-entry signal-day low."
+    },
+    {
+      "rule_id": "CND-X02-D3-BELOW-MA10",
+      "role": "D3_EXIT",
+      "decision_at": "third_held_session_close",
+      "action_at": "next_legal_open",
+      "definition": "d3_close_below_ma10 == true",
+      "conditions": [
+        {"field": "d3_close_below_ma10", "operator": "==", "value": true}
+      ],
+      "visual_hypothesis": "Exit an early loss of short-term trend structure rather than waiting for the frozen 20-session exit."
+    },
+    {
+      "rule_id": "CND-X03-D3-LOSS-3PCT",
+      "role": "D3_EXIT",
+      "decision_at": "third_held_session_close",
+      "action_at": "next_legal_open",
+      "definition": "d3_close_from_entry <= -0.03",
+      "conditions": [
+        {"field": "d3_close_from_entry", "operator": "<=", "value": -0.03}
+      ],
+      "visual_hypothesis": "Exit an economically material failed launch of at least 3% within the first three held sessions."
+    },
+    {
+      "rule_id": "CND-X04-D5-BELOW-SIGNAL-LOW",
+      "role": "D5_EXIT",
+      "decision_at": "fifth_held_session_close",
+      "action_at": "next_legal_open",
+      "definition": "d5_close_below_signal_low == true",
+      "conditions": [
+        {"field": "d5_close_below_signal_low", "operator": "==", "value": true}
+      ],
+      "visual_hypothesis": "Allow a wider initial noise window but exit a failure to hold the pre-entry signal-day low by the fifth held session."
+    }
+  ],
+  "round2_gate": {
+    "years": [2020],
+    "minimum_affected_trades": 30,
+    "same_direction_as_round1": true,
+    "minimum_mean_net_payoff_improvement_pp": 0.50,
+    "alternative_minimum_severe_loss_improvement_pp": 2.0,
+    "maximum_survivors": 3,
+    "no_threshold_changes": true,
+    "no_rescue_tests": true
+  },
+  "prohibited_interpretation": "This is post-hoc development discovery on consumed 2018-2019 outcomes, not independent confirmation."
+}

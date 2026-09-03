@@ -1,8 +1,31 @@
 # Lean discovery map
 
-Updated 2026-09-02. This is the compact exploration-funnel view. Detailed
+Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
+
+## Champion Candlestick Rule Discovery V1--V3 conclusions
+
+- Individually inspected 1,208 frozen champion charts from 2018--2020 on 63
+  sheets, separated into severe loss, normal loss, normal win, and extreme win.
+- Tested 12 frozen translations over three iterations: two admission vetoes,
+  nine individual d3/d5/d10/d15 exits, and one cohort-synchronous exit.
+- No rule survived its temporal gate. Signal-day candle states overlapped
+  winners and losers. Fixed exits reduced severe losses but generally reduced
+  mean payoff more by cutting recoveries.
+- Final classification:
+  `NO_CANDLESTICK_RULE_EARNED_ANNUALIZED_RETURN_IMPROVEMENT`. No full replay was
+  authorized and the frozen champion remains unchanged at 16.34% annualized.
+- Preserve all exact rejected definitions. Nearby lookbacks, moving averages,
+  drawdown levels, giveback levels, and cohort thresholds are closed as rescue
+  searches.
+
+What market behavior are we still not studying? A resource-safe executable
+Cross-Sectional Dispersion Alpha and genuinely independent non-stop-loss return
+engines.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The stable finding is risk-description value without deployable return value.
 
 ## Historical Opposite-Sign Closed-Family Audit V1 conclusions
 

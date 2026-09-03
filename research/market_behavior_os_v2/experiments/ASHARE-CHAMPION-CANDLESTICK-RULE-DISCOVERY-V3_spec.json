@@ -1,0 +1,85 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-CANDLESTICK-RULE-DISCOVERY-V3",
+  "status": "FROZEN_BEFORE_COHORT_CONFIRMATION_OUTCOMES",
+  "research_status": "POST_HOC_CONSUMED_DEVELOPMENT_RULE_DISCOVERY",
+  "scientific_question": "Can synchronized post-entry failure across the frozen weekly cohort improve annualized return where individual candlestick exits failed?",
+  "motivation_frozen_from_visual_review": [
+    "Individual entry candles overlap heavily between winners and losers.",
+    "Individual d3/d5/d10/d15 exits reduce severe losses but also cut recoveries and failed the return gate.",
+    "Losing charts frequently cluster by signal date, suggesting cohort-level failure may be more informative than an individual stop."
+  ],
+  "inputs": {
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "causal_chart_feature_panel_v2": {
+      "path": "/Volumes/quant/CY_quant_research/champion_candlestick_rule_discovery_v1/causal_chart_feature_panel_v2.parquet",
+      "sha256": "6704e70f5fa9518d25194a839d86ab8eee6b06e3d05e1f227e6437c4b4db9c8e"
+    },
+    "champion_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    }
+  },
+  "frozen_champion": {
+    "name": "Industry Diffusion + Weekly Low-MAX",
+    "signal_time": "weekly decision close",
+    "entry": "next legal open",
+    "selection": "Top 10 equal weight per cohort",
+    "lifecycle_sessions": 20,
+    "overlapping_cohorts": 4,
+    "cost_per_side": 0.002,
+    "all_other_semantics_unchanged": true
+  },
+  "single_candidate_translation": {
+    "name": "SYNCHRONIZED_COHORT_FAILURE_EXIT",
+    "rule_1": {
+      "decision_checkpoint": "d5 close",
+      "condition": "at least 70% of the actually executed cohort closes below its own signal-day low",
+      "action": "exit every still-live lot in that cohort at its next legal sellable open"
+    },
+    "rule_2": {
+      "decision_checkpoint": "d10 close",
+      "condition": "median close-from-entry return of the actually executed cohort is at most -3%",
+      "action": "exit every still-live lot in that cohort at its next legal sellable open"
+    },
+    "priority": "earliest triggered rule wins; rule 2 is evaluated only for cohorts not already triggered",
+    "missingness": "fail closed: a checkpoint cannot trigger unless every originally executed non-corporate-action-exited member has a valid causal checkpoint observation",
+    "maximum_conditions_per_rule": 1,
+    "parameter_search": false,
+    "neighboring_threshold_search": false,
+    "second_mapping_if_failed": false
+  },
+  "sequence": {
+    "generation_signal_years": [2018, 2019, 2020, 2021],
+    "fixed_validation_signal_years": [2022, 2023],
+    "validation_outcomes_open_only_if_generation_gate_passes": true,
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "generation_gate_all_required": {
+    "triggered_cohorts_minimum": 15,
+    "mean_all_trade_payoff_improvement_minimum": 0.0025,
+    "improvement_positive_2018_2019": true,
+    "improvement_positive_2020_2021": true,
+    "severe_trade_fraction_not_worse": true
+  },
+  "fixed_validation_gate_all_required": {
+    "triggered_cohorts_minimum": 8,
+    "mean_affected_trade_payoff_improvement_positive": true,
+    "improvement_nonnegative_2022": true,
+    "improvement_nonnegative_2023": true,
+    "severe_trade_fraction_not_worse": true
+  },
+  "portfolio_replay_authorization": "Only if both generation and fixed-validation gates pass; then one unchanged full-period replay is allowed.",
+  "prohibited": [
+    "post-2023 outcomes",
+    "CY-011",
+    "threshold grids",
+    "alternative cohort-failure rules",
+    "individual-rule rescue",
+    "same-session execution",
+    "modified champion selection"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-CANDLESTICK-RULE-DISCOVERY-V1",
+  "status": "FROZEN_BEFORE_CANDLESTICK_REVIEW_OR_NEW_RULE_OUTCOMES",
+  "starting_checkpoint": "1b467df2ee60a24a44d21d38bfa204b45666f5a5",
+  "required_branch": "research/chinext-v1-research-os-v2",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_DISCOVERY_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "purpose": "Inspect the frozen champion's individual causal daily candlestick paths, compress recurring entry/exit observations into a few rules, and test those rules through a strictly chronological three-stage development protocol.",
+  "inputs": {
+    "trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "champion_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    },
+    "low_max_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json",
+      "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"
+    },
+    "daily_partitions": [
+      {"year": 2018, "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet", "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"},
+      {"year": 2019, "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet", "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"},
+      {"year": 2020, "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet", "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"},
+      {"year": 2021, "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet", "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"},
+      {"year": 2022, "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet", "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1"},
+      {"year": 2023, "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet", "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"}
+    ]
+  },
+  "chart_contract": {
+    "one_chart_per_executed_trade": true,
+    "window": "40 completed stock sessions before the signal date through 25 sessions after entry, where available",
+    "price_coordinate": "corporate-action-consistent cumulative log-return coordinate; intraday OHLC scaled by raw OHLC/close",
+    "panels": ["adjusted-coordinate candlesticks", "turnover/amount activity relative to trailing 20-session median"],
+    "markers": ["signal close", "entry open", "frozen due/actual exit"],
+    "outcome_labels": "allowed only for the currently opened development stage",
+    "large_outputs": "/Volumes/quant/CY_quant_research/champion_candlestick_rule_discovery_v1"
+  },
+  "chronological_protocol": {
+    "round_1_visual_discovery": {
+      "years": [2018, 2019],
+      "scope": "review every individual trade chart; compare winners, ordinary trades, and severe losers",
+      "maximum_candidate_rules": 6
+    },
+    "round_2_pruning": {
+      "years": [2020],
+      "rule_freeze": "all Round-1 definitions and thresholds frozen before 2020 outcomes are aggregated",
+      "keep_all_required": [
+        "at least 30 affected trades",
+        "same economic direction as Round 1",
+        "at least +0.50 percentage point mean net-payoff improvement or at least 2 percentage point severe-loss improvement",
+        "simple causal action at next legal open"
+      ],
+      "maximum_surviving_rules": 3
+    },
+    "round_3_internal_validation": {
+      "years": [2021, 2022, 2023],
+      "status": "unopened until surviving rules and at most one simple combination are frozen",
+      "claim": "consumed-history internal chronological validation only",
+      "no_rule_change_after_open": true
+    }
+  },
+  "rule_budget": {
+    "allowed_entry_roles": ["admission veto", "one-session delay only if signal remains valid and fill contract is causal"],
+    "allowed_exit_roles": ["one deterministic d3 or d5 next-open exit trigger"],
+    "maximum_round_1_rules": 6,
+    "maximum_round_2_survivors": 3,
+    "maximum_combination": 1,
+    "maximum_conditions_per_final_rule": 2,
+    "no_parameter_grid": true,
+    "no_threshold_rescue": true
+  },
+  "portfolio_gate": {
+    "baseline": "exact frozen Industry Diffusion plus Weekly Low-MAX, equal-weight weekly cohorts, 20-session lifecycle, 20 bps per side",
+    "validation_all_required": {
+      "annualized_return_delta_minimum": 0.02,
+      "daily_sharpe_not_below_baseline": true,
+      "maximum_drawdown_worsening_limit": 0.02,
+      "severe_trade_fraction_not_worse": true,
+      "turnover_increase_limit_fraction": 0.10,
+      "both_2021_and_2022_2023_subblocks_nonnegative_return_delta": true,
+      "affected_validation_trades_minimum": 60
+    },
+    "failure_action": "retain the frozen champion unchanged; no rescue rule"
+  },
+  "governance": {
+    "post_2023_outcome_read": false,
+    "cy011_read": false,
+    "strategy_a_changed_before_gate": false,
+    "independent_validation_claim": false,
+    "new_rule_status": "POST_HOC_CANDLESTICK_GENERATED_DEVELOPMENT_HYPOTHESIS",
+    "raw_minute_data": false,
+    "machine_learning": false,
+    "visual_outcome_mining_outside_open_stage": false
+  },
+  "prohibited": [
+    "post-2023 outcome or CY-011 access",
+    "changing Industry Diffusion, Weekly Low-MAX, Top-10, weekly schedule, cohort weights, or baseline cost",
+    "indicator or threshold grids",
+    "trying multiple entry, exit, sizing, and habitat roles for the same observation",
+    "same-session fills from close-known information",
+    "using future extrema to define an entry predictor",
+    "relabeling internal chronological validation as OOS or confirmation",
+    "rescuing a failed rule after Round 3 is opened"
+  ]
+}
