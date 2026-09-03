@@ -1,0 +1,51 @@
+{
+  "authorization_status": "NOT_AUTHORIZED_DO_NOT_EXECUTE",
+  "candidate": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4",
+  "candidate_commit": "3474b9e6e42654ab64ac648c9cbc11111051fdf4",
+  "candidate_contract_sha256": "18e827a10d044a2e77b4a762243ffe79a80f41e06b7fac12fec5529b8ce7ea0f",
+  "candidate_development_result_sha256": "07b6b92bc1f79bf9488787fe6be9b8b89271feebe872e2a14cbfe0f2b5bffd4b",
+  "candidate_runner_sha256": "222b779649611c41f3f9222301f0761f600c61451b834f8bc7a725a573051f59",
+  "candidate_secondary_diagnostic_result_sha256": "9f3f1dfd08df8d326e7bb3726bbbd0eec95038ae31a49eb34c84c4c4322be43c",
+  "execution_requires_explicit_user_authorization": true,
+  "frozen_strategy": {
+    "entry": "next legal 1-minute open after first completed daily MA5 reclaim",
+    "failure_stop": "NONE",
+    "inventory": "exact 120-session minute VAP; [L,U] and [L-0.5W,U+0.5W] density each <= local average",
+    "portfolio": "50% Main sleeve + 50% ChiNext sleeve; K20 per sleeve; 1/20 current sleeve NAV per accepted position",
+    "post_gap_state": "maximum depth >=10% below L; signal close >=5% below L; recent low age 2-10 sessions; recovery >=3%",
+    "pre_gap_state": "20-session coordinate return <=0",
+    "profit_target": "entry + 0.80*(L-entry), strictly below L",
+    "round_trip_cost": 0.004,
+    "time_stop": "H20"
+  },
+  "no_rescue_after_open": [
+    "no board deletion",
+    "no threshold change",
+    "no entry or target change",
+    "no stop or holding-period change",
+    "no feature or model addition",
+    "no result-conditioned second run"
+  ],
+  "primary_challenge_period": [
+    "2024-01-01",
+    "2025-12-31"
+  ],
+  "proposed_pass_criteria": {
+    "both_board_mean_net_positive": true,
+    "both_calendar_year_portfolio_returns_positive": true,
+    "completed_trades_two_years_min": 70,
+    "executable_entries_two_years_max": 120,
+    "executable_entries_two_years_min": 80,
+    "max_drawdown_floor": -0.15,
+    "mean_net_trade_min": 0.03,
+    "median_net_trade_positive": true,
+    "return_excluding_best_five_days_positive": true,
+    "severe_loss10_max": 0.15,
+    "top_five_entry_date_trade_share_max": 0.35,
+    "top_five_symbol_trade_share_max": 0.15
+  },
+  "repository_2024_plus_data_opened_while_creating_proposal": false,
+  "research_logic_changed_while_creating_proposal": false,
+  "secondary_challenge_period": "2026_REMAINS_SEALED",
+  "status_if_any_required_criterion_fails": "FINAL_CHALLENGE_FAILED_NO_RESCUE"
+}
