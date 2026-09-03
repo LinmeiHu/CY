@@ -6,9 +6,9 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Raw-tick-corrected all-governed-Main/ChiNext Development yields a positive forced-choice diagnostic, but every TRAIN deployment gate is false, best-five-day exclusion is negative, and the visually intended clean-fracture semantics remain too broad | Review all 355 marked OOF signals; if continuing, freeze a stricter outcome-blind corridor-empty/long-decline mother before any new payoff test; keep 2021+ unused |
+| EXPLORE | 20% | A frozen four-condition clean-corridor rule passes its sole previously unread 2021 gate at +6.91% K2 return, but only 24 trades, negative ChiNext and negative best-five-day exclusion prevent a strategy claim | Preserve the exact 50/50 K2 rule; review all 182 charts, then consider one unchanged 2022--2023 replication only with separate authorization |
 | EXPLOIT | 10% | Industry Diffusion plus conditional Low-MAX is cost-resilient but all current history is consumed and the modifier is not portable | Preserve both exact rules; use only genuinely independent confirmation, not another implementation test |
-| INVENT | 65% | Order-book/queue state and investor-flow identity now offer more information headroom than another summary-price/volume panic or down-gap-reclaim neighbor | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
+| INVENT | 55% | Order-book/queue state and investor-flow identity still offer more information headroom than repeated threshold tuning, while the clean-corridor lane receives one bounded replication budget | Prefer one bounded data contract when acquisition is separately justified; do not proxy unavailable queue or flow state from OHLCV |
 | REPLICATE | 5% | Canonical IVOL and residual momentum are factor-data blocked; PIT fundamentals remain parked | Resume only when a source-ready PIT factor or immutable statement history exists |
 | TRANSFER | 5% | The sole Confirmed-Breakdown admission mapping affected zero decisions | Park the translation; do not open the exit role as a rescue |
 | FALSIFY | 5% | Low-MAX survives 40 bps friction but fails the one distinct CHINEXT portability replay | Preserve it as Industry-Diffusion-specific conditional information and close further Low-MAX research |
@@ -17,6 +17,25 @@ Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+## All-true-gap clean-corridor one-shot confirmation V2
+
+This lane receives one bounded replication budget and no production capital.
+Its simple rule was selected from consumed 2014--2020 evidence, then frozen
+before the complete 2021 first-return cohort was built and outcomes opened.
+The exact rule combines a low mean-inventory mother with a maximum-bin corridor
+density gate, a >=60-session old reference peak, a <=20% recent high-low range,
+and executable >=1.5% net U headroom. It keeps the same E1/U/X1/H10/T+1/40-bp
+translation and fixed 50/50 Main/ChiNext K2 portfolio.
+
+The design reconstruction is strong but not fresh evidence: 85 K2 trades,
++6.36% CAGR, -5.80% MaxDD and +13.65% return after removing the best five days.
+The only fresh year has 24 K2 trades, +6.91% return, -5.66% MaxDD, 1.399 Sharpe,
+positive mean/median and no severe-loss10. It passes the frozen one-year gate,
+but Main is +19.41% while ChiNext is -5.59%, and excluding the best five days
+turns slightly negative. Therefore neither Main-only selection nor new K/feature
+tuning is admissible. Preserve the exact combined rule for one separately
+authorized 2022--2023 replication; repository 2024+ remains unopened.
 
 ## All-true-gap executable simple-profit Development V1
 

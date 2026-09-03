@@ -4,6 +4,26 @@ Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## All-true-gap clean-corridor one-shot confirmation V2
+
+- Rule discovery used already-consumed 2014--2020 outcomes. Before opening
+  2021, the implementation froze the exact rule and rebuilt the complete cohort
+  from all 98,750 governed 2014--2021 gaps; eight retained candidates formed
+  before 2021 and first returned in 2021.
+- Frozen gates: broad low mean inventory; maximum 0.10W-bin turnover density in
+  `[L-0.5W,U+0.5W)` <=2.5x local average; 120-session peak at least 60 sessions
+  before gap; pre-gap 20-session high-low range <=20%; and >=1.5% net U
+  headroom at E1. The 1% gap-width floor is retrieval only.
+- Stage A: 62 fixed candidates, 32 executable entries. Four outcome paths fail
+  closed, leaving 28 valid signals. K2 executes 24 after four sleeve-cash skips.
+- Previously unread 2021 K2: +1.04% mean, +1.74% median, 58.33% wins, 50.00%
+  U hit, 0 severe-loss10, +6.91% total, -5.66% MaxDD and 1.399 Sharpe. Ex-best
+  day is +4.99%; ex-best-five is -0.49%. Main +19.41%, ChiNext -5.59%.
+- Verdict `ONE_YEAR_CLEAN_CORRIDOR_EDGE_CONFIRMED` under the frozen one-year
+  gate, with explicit small-sample/board-instability qualification. No post-2021
+  tuning is allowed. The 183-page book covers all 182 design/confirmation
+  signals. 2022+ and repository 2024+ remain unopened.
+
 ## All-true-gap executable simple-profit Development V1
 
 - Source is all 88,785 governed 2014--2020 Main/ChiNext true gaps, not V6 CORE

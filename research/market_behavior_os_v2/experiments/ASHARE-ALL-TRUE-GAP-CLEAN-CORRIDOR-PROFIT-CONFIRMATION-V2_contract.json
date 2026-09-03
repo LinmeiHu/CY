@@ -1,0 +1,101 @@
+{
+  "chronology": {
+    "2021_post_entry_outcomes_known_before_freeze": false,
+    "2022_and_later_used": false,
+    "design_outcomes_already_consumed": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "design_portfolio_reference": [
+      "2017-01-01",
+      "2020-12-31"
+    ],
+    "one_shot_confirmation": [
+      "2021-01-01",
+      "2021-12-31"
+    ],
+    "repository_2024_plus_opened": false
+  },
+  "entry": {
+    "buy_limit": "IOC limit preserving minimum net U headroom",
+    "fill": "next legal one-minute open strictly after trigger",
+    "trigger": "first completed one-minute close >= L on exact first-return day"
+  },
+  "exit": {
+    "failure": "first completed sellable-session daily close below L; exit next legal open",
+    "target": "legal U realization, no earlier than T+1",
+    "time_stop": "H10 close information; exit next legal open"
+  },
+  "experiment": "ASHARE-ALL-TRUE-GAP-CLEAN-CORRIDOR-PROFIT-CONFIRMATION-V2",
+  "fixed_simple_rule": {
+    "condition_1": "maximum pre-gap VAP mass in any 0.10W bin of z=[-0.5,1.5) <=2.5 times mean bin mass in z=[-2,3)",
+    "condition_2": "120-session reference peak is at least 60 sessions before gap",
+    "condition_3": "pre-gap 20-session coordinate high-low range <=20%; this is a range/non-acute condition, not a chronological run-up statistic",
+    "condition_4": "entry retains at least 1.5% net target headroom after 40 bp",
+    "threshold_origin": "chosen after already-consumed 2014-2020 Development and chart review; frozen before 2021 outcomes; no retrospective OOF claim"
+  },
+  "portfolio": {
+    "chinext_weight": 0.5,
+    "collision_rank": [
+      "earlier entry timestamp",
+      "higher realized net U headroom",
+      "lower pre-gap inside density",
+      "symbol",
+      "gap_id"
+    ],
+    "main_weight": 0.5,
+    "no_leverage": true,
+    "one_position_per_symbol": true,
+    "primary_k_per_board_sleeve": 2,
+    "sensitivity_k": [
+      2,
+      3,
+      5,
+      10
+    ],
+    "unused_cash": true
+  },
+  "scientific_role": "development-informed fixed-rule reconstruction plus one-shot previously unread 2021 outcome confirmation",
+  "source": {
+    "confirmation_gap_cohort": "all governed 2014-2021 gaps whose first exact raw-fen return occurs in 2021",
+    "historical_all_gap_ledger_sha256": "afdb8b05b2166d71466fa7d8413030ac9b3fafe141e7f0326718d89fddd9b288",
+    "interval": "[High_t, Low_t_minus_1] = [L,U]",
+    "population": "all governed Main/ChiNext downward true gaps",
+    "raw_tick_interaction": "floor(raw_price*100+0.5+1e-6) compared with the mapped QD-010 coordinate boundary in raw fen",
+    "true_gap": "High_t < Low_t_minus_1",
+    "v2_selected_305_used": false,
+    "v6_core_gate_used": false
+  },
+  "stage_a_mother": {
+    "corridor_z": [
+      -0.5,
+      1.5
+    ],
+    "exact_minutes_per_session": 241,
+    "exact_pre_gap_sessions": 120,
+    "local_vap_window_z": [
+      -2.0,
+      3.0
+    ],
+    "maximum_pre_gap_corridor_touch_sessions": 20,
+    "maximum_pre_gap_inside_touch_sessions": 12,
+    "mean_corridor_density_relative_local_max": 1.0,
+    "mean_inside_density_relative_local_max": 1.0,
+    "minimum_fully_below_sessions": 5,
+    "minimum_gap_width_pct_retrieval_only": 0.01,
+    "prior_exact_touch_resets_clock": false,
+    "vap_bin_width_w": 0.1
+  },
+  "validation_gate": {
+    "interpretation": "one-year confirmation only, never final external validation",
+    "minimum_completed_trades": 15,
+    "required": [
+      "mean_net>0",
+      "median_net>0",
+      "combined_return>0",
+      "return_excluding_best_day>0",
+      "severe_loss10<=5%",
+      "max_drawdown>-10%"
+    ]
+  }
+}

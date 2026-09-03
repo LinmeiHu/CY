@@ -2,6 +2,40 @@
 
 Updated 2026-09-03.
 
+## Latest checkpoint: all-true-gap clean-corridor one-shot confirmation V2
+
+Resume from the commit containing
+`ASHARE-ALL-TRUE-GAP-CLEAN-CORRIDOR-PROFIT-CONFIRMATION-V2`. Its start
+checkpoint is `fa3e87792a6cfd0b4ae5eef3df1cdc3f65eb2c8d`. The exact rule was
+selected from already-consumed 2014--2020 outcomes and frozen before 2021 was
+opened, so 2017--2020 results are design reconstruction, not new OOF evidence.
+
+Stage A considers all 98,750 governed 2014--2021 true gaps and keeps only gaps
+whose lifetime first exact raw-fen return is in 2021. This includes eight gaps
+formed before 2021 that a calendar-year-only constructor would have missed.
+The frozen simple rule requires broad low inventory, no 0.10W corridor bin over
+2.5x local-average density, a 120-session reference peak at least 60 sessions
+before gap formation, pre-gap 20-session high-low range <=20%, and >=1.5% net
+U headroom at E1 entry. Translation remains next legal minute open, U target,
+X1 next-open failure, H10, T+1 and 40 bp. Do not reinterpret the recent range
+condition as chronological run-up and do not add a maximum gap-width rule.
+
+Frozen 2021 Stage A yields 62 semantic candidates, 32 executable entries and
+28 fail-closed valid outcomes. K2 executes 24 after four insufficient-free-cash
+skips: +1.04% mean, +1.74% median, 58.33% wins, 50.00% U hit, +6.91% total,
+-5.66% MaxDD and 1.399 Sharpe. Return excluding the best day is +4.99%, but
+excluding the best five days is -0.49%. Main is +19.41% on 18 trades; ChiNext
+is -5.59% on six. The exact preregistered one-year gate passes and verdict is
+`ONE_YEAR_CLEAN_CORRIDOR_EDGE_CONFIRMED`, but sample size and board divergence
+make this provisional rather than external validation.
+
+Do not delete ChiNext, switch K, change thresholds, or revise entry/exit after
+seeing 2021. Review the complete 183-page chart book if desired. The next
+scientifically admissible payoff action is one separately authorized, unchanged
+50/50 K2 replication on 2022--2023; 2024+ remains sealed. Contract/spec/freeze/
+result/PDF hashes are `0e1360f5...4383`, `a76b0230...15f4`,
+`11179eb6...afb7`, `579c028b...4f88`, `ca11ecd5...f101`.
+
 ## Latest checkpoint: all-true-gap executable simple-profit Development V1
 
 Resume from the commit containing

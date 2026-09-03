@@ -7,15 +7,58 @@ Updated 2026-09-03.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `45f1312680a597e9ac00e48432ec6ff761140242` (corrected all-governed-Main/ChiNext executable Development start checkpoint)
-- `CURRENT_PHASE`: `ASHARE_ALL_TRUE_GAP_EXECUTABLE_SIMPLE_PROFIT_DEVELOPMENT_COMPLETE`
-- `CURRENT_PRIMARY_FRONTIER`: direct PIT reconstruction of every governed Main/ChiNext downward true gap replaces V6 CORE as the source universe. A raw-tick-corrected 2014--2020 mother, bounded executable translations and expanding 2017--2020 walk-forward are complete. The best forced-choice path is positive but fails every TRAIN deployment gate and loses its full return after removing the best five days; it is `SIMPLE_RULE_MARGINAL`, not a strategy
+- `CURRENT_BASELINE`: `fa3e87792a6cfd0b4ae5eef3df1cdc3f65eb2c8d` (clean-corridor one-shot confirmation start checkpoint)
+- `CURRENT_PHASE`: `ASHARE_ALL_TRUE_GAP_CLEAN_CORRIDOR_ONE_YEAR_CONFIRMATION_COMPLETE`
+- `CURRENT_PRIMARY_FRONTIER`: a four-condition clean-corridor/non-acute rule was chosen using already-consumed 2014--2020 evidence, frozen before any 2021 outcome, and then tested once on the complete 2021 first-return cohort. Fixed K2 returns +6.91% with positive mean/median and no severe-loss10, so the preregistered one-year gate passes. This is promising confirmation, not external validation: only 24 portfolio trades, Main is positive while ChiNext is negative, and return excluding the best five days is slightly negative
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: none. The forced-choice diagnostic has +0.45% mean trade and +1.80% CAGR, but all four TRAIN deployment decisions are cash and the literal long-decline/no-near-touch rule is negative. No Validation is authorized; 2021 and later remain unread
+- `CURRENT_STRATEGY_CANDIDATE`: provisional exact `CLEAN_CORRIDOR_K2` hypothesis only. Preserve the frozen 50/50 Main/ChiNext rule unchanged; do not post-hoc delete ChiNext, change K, or tune the four conditions from 2021. A separately authorized unchanged-rule 2022--2023 replication is the next admissible payoff test. Repository 2024+ remains unopened
 - `BRANCH`: `research/ashare-ultrashort-v1`
-- `STARTING_HEAD`: `45f1312680a597e9ac00e48432ec6ff761140242`
+- `STARTING_HEAD`: `fa3e87792a6cfd0b4ae5eef3df1cdc3f65eb2c8d`
 
 ## Current continuation state
+
+### All-true-gap clean-corridor one-shot confirmation V2
+
+The rule was explicitly designed from already-consumed 2014--2020 outcomes;
+those years are not relabeled as OOF evidence. Before opening 2021, Stage A
+froze a complete confirmation cohort across every governed 2014--2021 true gap
+whose first exact raw-fen return occurs in 2021. This corrects the initial
+implementation boundary that would have missed gaps formed before 2021. The
+frozen funnel is 98,750 true gaps -> 40,872 at least 1% wide -> 550 exact
+daily/VAP candidates with complete H10 room -> 348 broad low-inventory rows ->
+62 fixed clean-corridor/non-acute rows -> 32 executable E1 entries. Eight of the
+62 gaps formed before 2021. Thirty events repair too quickly for a legal E1
+trigger and four executable entries fail closed on an unresolved exit path,
+leaving 28 valid trade outcomes.
+
+The frozen rule is: broad low mean inventory; maximum turnover mass in any
+0.10W bin of `[L-0.5W,U+0.5W)` no more than 2.5 times the local average;
+the 120-session reference peak at least 60 sessions before gap formation;
+pre-gap 20-session high-low range no more than 20%; and at entry at least 1.5%
+net U headroom after 40 bp. Entry is first completed minute close >=L then next
+legal minute open; target U, failure X1 next legal open after a sellable daily
+close below L, H10 and strict T+1. The 1% gap floor remains retrieval only; the
+rule does not claim that narrower gaps are intrinsically more profitable.
+
+Already-consumed 2017--2020 fixed-rule K2 reconstruction has 154 signals/85
+executed trades, +1.21% mean, +1.84% median, 67.06% wins, +27.92% total,
++6.36% CAGR, -5.80% MaxDD and 1.128 Sharpe. All four years are positive and
+return excluding the best five days is +13.65%, but this is design evidence.
+The sole previously unread 2021 confirmation has 28 valid signals/24 K2 trades,
++1.04% mean, +1.74% median, 58.33% wins, 50.00% U hit, 0 severe-loss10,
++6.91% total, -5.66% MaxDD and 1.399 Sharpe. Excluding the best day remains
++4.99%; excluding the best five days is -0.49%. Main contributes +19.41% with
+18 trades, while six ChiNext trades contribute -5.59%. Four other valid signals
+are skipped for insufficient free sleeve cash under frozen K2 sizing.
+
+Verdict `ONE_YEAR_CLEAN_CORRIDOR_EDGE_CONFIRMED` under the preregistered gate,
+with explicit board/concentration qualification. It is neither a production
+strategy nor permission to tune 2021. The 183-page chart book contains a cover
+plus all 154 design and 28 confirmation signals; all pages passed render QA.
+Contract/spec/freeze/result/PDF hashes are `0e1360f5...4383`,
+`a76b0230...15f4`, `11179eb6...afb7`, `579c028b...4f88` and
+`ca11ecd5...f101`. Seven focused tests pass; all future-bar/T+1/impossible-price
+audits are zero. No 2022+ or repository 2024+ row was opened.
 
 ### All-true-gap executable simple-profit Development V1
 
