@@ -1,0 +1,78 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-TRUE-GAP-ZONE-SEMANTIC-FIDELITY-V2",
+  "stage": "OUTCOME_BLIND_SEMANTIC_FIDELITY",
+  "authoritative_start_head": "af174fd0840b96759edd5e9ebe804e742250aaab",
+  "independent_from_v1_trading_rules": true,
+  "outcome_access": "NONE",
+  "strategy_backtest": false,
+  "economic_sequence": [
+    "prior strong or leader-like stock",
+    "major peak",
+    "main collapse or liquidation leg",
+    "actual no-trade downward gaps",
+    "lower price regime",
+    "unresolved true gaps overhead",
+    "later first upward interaction with the lowest relevant unresolved original-collapse gap"
+  ],
+  "true_gap_identity": {
+    "condition": "High_t < Low_t_minus_1",
+    "lower": "High_t",
+    "upper": "Low_t_minus_1",
+    "width": "Low_t_minus_1 - High_t",
+    "width_pct": "width / Close_t_minus_1",
+    "future_depth_used": false,
+    "corporate_action_comparability_required": true
+  },
+  "ledger": {
+    "scope": "every true gap between the causal episode peak and observed postcollapse low",
+    "delete_for_depth": false,
+    "merge_separate_gaps": false,
+    "importance": {
+      "MAJOR": "width_pct >= 0.025 OR width_share_of_observed_peak_to_low_decline >= 0.08",
+      "SECONDARY": "otherwise width_pct >= 0.01 OR width_share >= 0.03",
+      "MINOR": "all remaining true gaps",
+      "interpretation": "SEMANTIC_RETRIEVAL_RULE_NOT_STRATEGY_PARAMETER"
+    }
+  },
+  "primary_hierarchy": {
+    "relevant": "MAJOR or SECONDARY true gap",
+    "selection": "lowest relevant true gap in the original main collapse leg",
+    "minor_gap_can_replace_relevant_gap": false,
+    "later_gap_outside_main_collapse_leg_allowed": false
+  },
+  "lifecycle": {
+    "minimum_completed_sessions_after_gap": 5,
+    "minimum_consecutive_completed_sessions_high_below_true_lower": 5,
+    "postcollapse_settling_sessions": "continuous descriptor only; not a candidate filter",
+    "full_resolution": "High >= true upper",
+    "post_gap_depth": "continuous descriptor with fixed 5,8,10,12.5,15 percent flags; never identity or selection gate",
+    "first_return": "first later minute whose prior price is below true lower and whose high reaches true lower after lifecycle establishment",
+    "event_marker_only": true
+  },
+  "forbidden_inheritance": [
+    "V1_E1_ENTRY",
+    "AGE_LE_90",
+    "TURNOVER_LE_Q66_67",
+    "V1_U_TRADING_TARGET",
+    "H40",
+    "K10",
+    "FIXED_50_50_BOARD_ALLOCATION",
+    "V1_FAILURE_STOP",
+    "V1_VALIDATION_CONCLUSIONS"
+  ],
+  "blind_pilot": {
+    "charts": 30,
+    "main": 20,
+    "chinext": 10,
+    "selection": "deterministic outcome-free diversity greedy sample",
+    "chart_end": "first-return event marker",
+    "post_event_bars": 0,
+    "all_episode_true_gaps_visible": true
+  },
+  "governance": {
+    "2022_2023_not_pristine_v2_validation": true,
+    "pristine_external_validation_claim": false,
+    "repository_2024_plus_opened_in_this_experiment": false,
+    "profitability_verdict_prohibited": true
+  }
+}

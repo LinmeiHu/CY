@@ -1,0 +1,390 @@
+{
+  "deployment_gate": {
+    "clean_success_10": ">baseline",
+    "mean_net_return": ">0",
+    "median_inner_utility": ">0",
+    "median_net_return": ">0",
+    "positive_inner_blocks": ">=3",
+    "severe_loss10": "<baseline"
+  },
+  "direct_analysis": {
+    "surfaces": [
+      [
+        "vacuum_score",
+        "progress_per_turnover"
+      ],
+      [
+        "overhang_support_ratio",
+        "acceptance_ratio_l_15"
+      ],
+      [
+        "breadth_recovery",
+        "stock_minus_industry_return_10d"
+      ],
+      [
+        "prior_attack_count",
+        "failed_l_test_count"
+      ],
+      [
+        "remaining_net_target_at_entry",
+        "structural_stop_distance"
+      ]
+    ],
+    "two_dimensional_bins": "TRAIN tertiles on each axis, applied unchanged to outer TEST",
+    "univariate_bins": "TRAIN quintiles, applied unchanged to the corresponding outer TEST",
+    "weightings": [
+      "event",
+      "attack_date_equal",
+      "gap_formation_date_equal"
+    ]
+  },
+  "edge_adjudication_exact": {
+    "attack_date_equal": ">0",
+    "board_not_explaining_entire_edge": "both sleeves non-negative over the full period, otherwise board-specific only",
+    "catastrophic_full_year": "annual sleeve-combined return <= -10%",
+    "marginal_trade_range": [
+      50,
+      99
+    ],
+    "material_severe10_improvement": "at least 20% relative reduction or 1 percentage point absolute reduction versus L0",
+    "minimum_outer_test_trades": 100,
+    "near_positive_excluding_best_five_days": ">=-1%",
+    "positive_calendar_years": ">=4 of 5",
+    "positive_half_years": ">=6 of 10",
+    "post_2021_metrics_used": false,
+    "return_excluding_best_day": ">0"
+  },
+  "entry": {
+    "acceptance_forms": [
+      "CLOSE",
+      "HOLD5_60",
+      "HOLD5_80",
+      "HOLD15_60",
+      "HOLD15_80",
+      "RETEST_RECLAIM"
+    ],
+    "entry": "next legal one-minute open after completed trigger",
+    "penetration_levels": {
+      "Z0": 0.0,
+      "Z25": 0.25,
+      "Z50": 0.5
+    },
+    "remaining_net_target_minimums": [
+      0.01,
+      0.015,
+      0.02
+    ],
+    "selection": "hierarchical TRAIN OOF, not uncontrolled joint Cartesian search"
+  },
+  "final_rule_selection_population": "CORE attacks only; BOUNDARY diagnostic never enters selection",
+  "fixed_environment_extensions": {
+    "APPROACH_QUALITY": [
+      "higher_low_share_10d>=TRAIN_Q50",
+      "approach_path_efficiency_10d>=TRAIN_Q50"
+    ],
+    "BREADTH_REPAIR": [
+      "breadth_recovery>=0"
+    ],
+    "NONE": [],
+    "NO_LOWER_CLUSTER": [
+      "new_lower_cluster_since_gap=0"
+    ],
+    "RELATIVE_REPAIR": [
+      "stock_minus_board_return_10d>=TRAIN_Q50",
+      "stock_minus_industry_return_10d>=TRAIN_Q50"
+    ],
+    "SYSTEM_REPAIR": [
+      "board_return_20d>=0",
+      "industry_return_20d>=0"
+    ]
+  },
+  "fixed_low_overhang_rules": {
+    "ABOVE_Q30": [
+      "decayed_overhang_above_u<=TRAIN_Q30"
+    ],
+    "INSIDE_Q30": [
+      "decayed_overhang_inside_gap<=TRAIN_Q30"
+    ],
+    "INSIDE_Q30_ABOVE_Q30": [
+      "decayed_overhang_inside_gap<=TRAIN_Q30",
+      "decayed_overhang_above_u<=TRAIN_Q30"
+    ],
+    "OVERHANG_VOTE_2_OF_4_Q70": [
+      "at least 2 of: vacuum>=Q70, inside<=Q30, above<=Q30, ratio<=Q30"
+    ],
+    "OVERHANG_VOTE_3_OF_4_Q50": [
+      "at least 3 of: vacuum>=Q50, inside<=Q50, above<=Q50, ratio<=Q50"
+    ],
+    "RATIO_Q30": [
+      "overhang_support_ratio<=TRAIN_Q30"
+    ],
+    "VACUUM_Q50_RATIO_Q50": [
+      "vacuum_score>=TRAIN_Q50",
+      "overhang_support_ratio<=TRAIN_Q50"
+    ],
+    "VACUUM_Q70": [
+      "vacuum_score>=TRAIN_Q70"
+    ],
+    "VACUUM_Q70_RATIO_Q50": [
+      "vacuum_score>=TRAIN_Q70",
+      "overhang_support_ratio<=TRAIN_Q50"
+    ]
+  },
+  "generated_simple_rules": {
+    "LGBM_DISTILLED_LEAF": "strongly regularized LightGBM ceiling is distilled, inside each TRAIN only, to one depth<=3 binary-flag surrogate leaf; the distilled leaf is retested from scratch in each later block",
+    "RULEFIT_LITE": "elastic-net logistic over TRAIN p30/p50/p70 favorable flags; retain at most five positive-coefficient flags and require a natural 60% majority; at least one flag must be an overhang flag",
+    "TREE_SINGLE_LEAF": "depth<=3 tree over TRAIN p30/p50/p70 binary flags; retain its highest predicted CLEAN_SUCCESS leaf containing at least one favorable overhang flag; one leaf path is at most three conditions",
+    "all_numeric_boundaries": "natural zero/count or TRAIN p30/p50/p70 only",
+    "raw_model_scores_deployable": false
+  },
+  "hierarchical_selection_exact": {
+    "condition_limit": "overhang + environment + remaining-target admission conditions <=5",
+    "step_1": "select one low-overhang/state rule on CORE ATTACK_1, Z0+CLOSE, U/H20, X0",
+    "step_2": "holding step 1 fixed, select one frozen environment extension on the same translation/outcome",
+    "step_3": "holding steps 1-2 fixed, select one of 18 translations and one of exactly 1.0/1.5/2.0 percent remaining-net-target floors",
+    "step_4": "holding steps 1-3 fixed, select one of 9 failure policies and H5/H10/H20",
+    "step_5": "holding steps 1-4 fixed, compare ATTACK_1 only with one independently admitted ATTACK_2 retry"
+  },
+  "hierarchy": [
+    "overhang/state",
+    "environment",
+    "entry translation",
+    "failure exit",
+    "retry"
+  ],
+  "high_overhang_diagnostic": {
+    "definition": "overhang_support_ratio>=TRAIN_Q70 within board and outer fold",
+    "mix_into_vacuum_returns": false,
+    "strategy_development": "PROHIBITED"
+  },
+  "inner_calmar_definition": "compounded chronological completed-trade path ordered by exit time; selection diagnostic only; exact K-sleeve replay is performed after the rule is frozen",
+  "lane_contract": {
+    "L0_ATTACK_BASELINE": "CORE ATTACK_1, Z0+CLOSE, no admission, U/H20, X0, no retry",
+    "L1_LOW_OVERHANG": "L0 plus selected low-overhang rule",
+    "L2_LOW_OVERHANG_ENVIRONMENT": "L1 plus selected environment extension",
+    "L3_ATTACK_ACCEPTANCE": "L2 plus selected translation and remaining-target floor",
+    "L4_FAILURE_EXIT": "L0 plus the selected failure policy and time stop",
+    "L5_FULL_SIMPLE_RULE": "all selected admission, entry, exit, horizon and retry semantics",
+    "L6_ONE_RETRY_INCREMENT": "ATTACK_2 trades only when R1 is selected"
+  },
+  "lightgbm_material_outperformance_for_distillation": "OOF AUC at least 0.03 and OOF economic utility at least 20bp above the best simple method",
+  "matched_analysis": {
+    "controls": [
+      "board",
+      "calendar_year",
+      "attack_date",
+      "gap_width_train_quintile",
+      "gap_age",
+      "remaining_target",
+      "memory_class",
+      "single_or_multigap",
+      "market_condition"
+    ],
+    "low_overhang": "vacuum_score>=TRAIN_Q70",
+    "method": "Frisch-Waugh-Lovell fixed-effect residual difference",
+    "outcomes": [
+      "net_return",
+      "attack_success",
+      "severe_loss10"
+    ],
+    "report": [
+      "combined",
+      "board-specific",
+      "attack-date-equal"
+    ]
+  },
+  "maximum_final_conditions": 5,
+  "methods": {
+    "LIGHTGBM_CEILING": {
+      "colsample_bytree": 0.8,
+      "deployable": false,
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "min_child_samples": 80,
+      "n_estimators": 400,
+      "n_jobs": 4,
+      "num_leaves": 7,
+      "objective": "binary",
+      "random_state": 20260903,
+      "reg_alpha": 2.0,
+      "reg_lambda": 20.0,
+      "subsample": 0.8,
+      "verbosity": -1
+    },
+    "MONOTONE_SCORECARD": {
+      "directions": [
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "features": [
+        "vacuum_score",
+        "overhang_support_ratio",
+        "acceptance_ratio_l_15",
+        "stock_minus_industry_return_10d",
+        "target_to_risk_ratio"
+      ],
+      "weights": "equal"
+    },
+    "RULEFIT_LITE": {
+      "distillation_thresholds": "TRAIN p30/p50/p70 only",
+      "maximum_active_rules": 5,
+      "source_tree_depth": 2,
+      "source_tree_min_leaf": 40
+    },
+    "SHALLOW_DECISION_TREE": {
+      "class_weight": "balanced",
+      "criterion": "log_loss",
+      "max_depth": 3,
+      "min_samples_leaf": 40,
+      "random_state": 20260903
+    },
+    "SPARSE_LOGISTIC": {
+      "C": 0.1,
+      "class_weight": "balanced",
+      "l1_ratio": 0.8,
+      "max_iter": 4000,
+      "penalty": "elasticnet",
+      "random_state": 20260903,
+      "solver": "saga",
+      "time_respecting_scaling": true
+    }
+  },
+  "minimum_latest_full_train_year": 15,
+  "minimum_train_completed_attacks": 80,
+  "model_features": [
+    "vacuum_score",
+    "decayed_overhang_inside_gap",
+    "decayed_overhang_above_u",
+    "overhang_support_ratio",
+    "poc_inside_gap",
+    "cum_turnover_near_l",
+    "prior_attack_count",
+    "number_of_prior_rejections",
+    "stock_minus_board_return_10d",
+    "stock_minus_industry_return_10d",
+    "board_return_20d",
+    "industry_return_20d",
+    "breadth_recovery",
+    "higher_low_share_10d",
+    "approach_path_efficiency_10d",
+    "new_lower_cluster_since_gap",
+    "gap_age_sessions",
+    "remaining_net_target_at_entry",
+    "structural_stop_distance",
+    "target_to_risk_ratio",
+    "acceptance_ratio_l_5",
+    "acceptance_ratio_l_15",
+    "acceptance_ratio_l_30",
+    "current_z",
+    "max_z",
+    "rejection_depth_z",
+    "failed_l_test_count",
+    "reclaim_count",
+    "vwap_hold_ratio",
+    "stock_minus_board_intraday_return",
+    "stock_minus_industry_intraday_return",
+    "attack_cost_ratio"
+  ],
+  "model_target": "CLEAN_ATTACK_SUCCESS_10",
+  "nested_walkforward": {
+    "complete_h20_rule": "entry_cal_idx + 20 <= validation_boundary_cal_idx - 20",
+    "inner_training_start": "2014-01-01",
+    "inner_validation_blocks": "expanding half-years beginning 2015-H1 and ending before the outer TEST half",
+    "minimum_valid_inner_blocks": 3,
+    "outer_partition_anchor": "ATTACK_START_TIME",
+    "purge_embargo_sessions": 20,
+    "same_gap_partition": true,
+    "threshold_refit": "every quantile, score, tree, logistic and surrogate is refit using only that inner TRAIN; final outer TEST transform is fit on full outer TRAIN"
+  },
+  "one_standard_error": true,
+  "one_standard_error_exact": "find the best median inner utility; retain candidates no worse than one standard error of that candidate's block utilities; among them choose fewer admission conditions, then higher median utility, higher median inner trade-path Calmar, lower severe10, higher clean10, higher retention, and lexicographic id",
+  "outer_fold_boundaries": [
+    {
+      "end": "2017-06-30",
+      "id": "2017H1",
+      "start": "2017-01-01"
+    },
+    {
+      "end": "2017-12-31",
+      "id": "2017H2",
+      "start": "2017-07-01"
+    },
+    {
+      "end": "2018-06-30",
+      "id": "2018H1",
+      "start": "2018-01-01"
+    },
+    {
+      "end": "2018-12-31",
+      "id": "2018H2",
+      "start": "2018-07-01"
+    },
+    {
+      "end": "2019-06-30",
+      "id": "2019H1",
+      "start": "2019-01-01"
+    },
+    {
+      "end": "2019-12-31",
+      "id": "2019H2",
+      "start": "2019-07-01"
+    },
+    {
+      "end": "2020-06-30",
+      "id": "2020H1",
+      "start": "2020-01-01"
+    },
+    {
+      "end": "2020-12-31",
+      "id": "2020H2",
+      "start": "2020-07-01"
+    },
+    {
+      "end": "2021-06-30",
+      "id": "2021H1",
+      "start": "2021-01-01"
+    },
+    {
+      "end": "2021-12-31",
+      "id": "2021H2",
+      "start": "2021-07-01"
+    }
+  ],
+  "portfolio_collision_order": [
+    "simple_rule_score descending",
+    "vacuum_score descending",
+    "remaining_target_to_risk descending",
+    "entry_time",
+    "symbol",
+    "gap_id"
+  ],
+  "procedures": {
+    "DEPLOYMENT_GATED_WF": "same frozen choice, but hold cash unless every preregistered gate passes",
+    "FORCED_CHOICE_WF": "always deploy the highest-ranked TRAIN-only hierarchical choice",
+    "primary_for_verdict": "DEPLOYMENT_GATED_WF; FORCED_CHOICE_WF diagnoses selector generalization"
+  },
+  "selection_utility": "mean net trade return - 0.20*abs(CVaR5)",
+  "selector_order": [
+    "median inner utility",
+    "median inner Calmar",
+    "lower severe10",
+    "higher clean10",
+    "retention",
+    "fewer conditions",
+    "simpler translation"
+  ],
+  "thresholds": {
+    "natural": [
+      0,
+      1
+    ],
+    "train_only_quantiles": [
+      0.3,
+      0.5,
+      0.7
+    ]
+  }
+}

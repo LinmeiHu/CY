@@ -1,0 +1,98 @@
+{
+  "experiment_id": "ASHARE-COLLAPSE-TRUE-GAP-PRIMARY-HIERARCHY-SEMANTIC-V3",
+  "authoritative_start_head": "b62291f3a1dacb90c1a69e5711e1c27df94a664f",
+  "stage": "OUTCOME_BLIND_SEMANTIC_REFINEMENT",
+  "outcome_access": "NONE",
+  "entry_defined": false,
+  "strategy_backtest": false,
+  "economic_sequence": [
+    "prior strong or leader-like stock",
+    "major peak",
+    "one original impulsive collapse or liquidation leg",
+    "one or more true no-trade gaps inside that leg",
+    "impulsive collapse terminates",
+    "lower price regime",
+    "original collapse gaps remain unresolved overhead",
+    "active capital-memory window",
+    "later first return from below to the lowest eligible unresolved true gap"
+  ],
+  "true_gap_identity_frozen": {
+    "condition": "High_t < Low_t_minus_1",
+    "lower": "High_t",
+    "upper": "Low_t_minus_1",
+    "interval": "[High_t, Low_t_minus_1]",
+    "all_true_gaps_remain_in_ledger": true,
+    "future_depth_used": false
+  },
+  "hierarchy": {
+    "level_1": "TRUE_GAP_IDENTITY",
+    "level_2": "ORIGINAL_COLLAPSE_GAP_ELIGIBILITY",
+    "level_3": "ACTIVE_REPAIR_EVENT"
+  },
+  "original_impulsive_collapse_leg": {
+    "start": "frozen provisional prior major peak",
+    "material_drawdown_from_peak": 0.30,
+    "termination": "earliest candidate trough at or beyond material drawdown whose next 10 completed sessions contain no low more than 5 percent below that trough and no new MAJOR true downward gap",
+    "forward_stabilization_sessions": 10,
+    "maximum_additional_low_breach": 0.05,
+    "post_end_gap_class": "POST_COLLAPSE_LOCAL_GAP",
+    "post_end_gap_primary_eligible": false,
+    "interpretation": "SEMANTIC_SEGMENTATION_RULE_NOT_PROFITABILITY_PARAMETER"
+  },
+  "significance": {
+    "source": "unchanged V2 outcome-blind MAJOR_SECONDARY_MINOR classification",
+    "primary_eligible": ["MAJOR", "SECONDARY"],
+    "minor_retained_in_ledger": true,
+    "minor_primary_eligible": false
+  },
+  "primary_selection": "lowest coordinate-price MAJOR or SECONDARY unresolved active gap formed on or before original impulsive collapse leg end",
+  "multi_gap": {
+    "merge_gaps": false,
+    "higher_eligible_layers": "UPPER_COLLAPSE_GAPS"
+  },
+  "persistence": {
+    "minimum_completed_sessions_after_formation": 10,
+    "minimum_consecutive_completed_sessions_high_below_lower": 5,
+    "affects_gap_identity": false
+  },
+  "memory": {
+    "CORE": "age_sessions <= 60",
+    "BOUNDARY": "61 <= age_sessions <= 90",
+    "STALE": "age_sessions > 90",
+    "stale_active_primary_eligible": false,
+    "interpretation": "SEMANTIC_CAPITAL_MEMORY_BANDS_NOT_ALPHA_THRESHOLDS"
+  },
+  "first_return": "earliest later minute upward interaction from below with price at or above true lower after persistence is established; event marker only",
+  "depth_diagnostics": [
+    "MAX_BELOW_TRUE_GAP_PCT",
+    "MAX_BELOW_TRUE_GAP_IN_GAP_WIDTHS"
+  ],
+  "regression_30": {
+    "source": "frozen TG2-001 through TG2-030 V2 pilot identities",
+    "outcome_fields": false
+  },
+  "new_blind_pilot": {
+    "charts": 20,
+    "core": 14,
+    "boundary": 6,
+    "target_main": 13,
+    "target_chinext": 7,
+    "reuse_tg2_ids": false,
+    "selection": "deterministic outcome-blind diversity sample",
+    "post_event_bars": 0
+  },
+  "forbidden_inheritance": [
+    "V1_DUAL_FRESH",
+    "V1_TURNOVER_Q66_67",
+    "V1_E1",
+    "V1_U_EXIT",
+    "V1_H40",
+    "V1_K10",
+    "V1_BOARD_ALLOCATION"
+  ],
+  "sealed": {
+    "return_analysis": false,
+    "strategy_backtest": false,
+    "repository_2024_plus_opened": false
+  }
+}

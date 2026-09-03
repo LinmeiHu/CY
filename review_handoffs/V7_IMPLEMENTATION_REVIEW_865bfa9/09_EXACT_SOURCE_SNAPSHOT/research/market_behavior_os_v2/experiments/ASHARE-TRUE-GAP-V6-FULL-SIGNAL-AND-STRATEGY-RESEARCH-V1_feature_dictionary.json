@@ -1,0 +1,1473 @@
+{
+  "additions_beyond_required": [],
+  "experiment": "ASHARE-TRUE-GAP-V6-FULL-SIGNAL-AND-STRATEGY-RESEARCH-V1",
+  "features": [
+    {
+      "expected_direction": "higher may indicate distribution",
+      "family": "F1",
+      "formula": "mean turnover[-5:-1]/mean turnover[-65:-6]",
+      "latest_observable": "gap formation previous completed session",
+      "name": "pre5_turnover_vs_prior60",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher may indicate distribution",
+      "family": "F1",
+      "formula": "mean turnover[-10:-1]/mean turnover[-70:-11]",
+      "latest_observable": "gap formation previous completed session",
+      "name": "pre10_turnover_vs_prior60",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher means more capital exchange",
+      "family": "F1",
+      "formula": "sum turnover[-20:-1]",
+      "latest_observable": "gap formation previous completed session",
+      "name": "pre20_cum_turnover",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher indicates supply",
+      "family": "F1",
+      "formula": "share of prior10 down days whose turnover exceeds prior60 median",
+      "latest_observable": "gap formation previous completed session",
+      "name": "high_turnover_down_day_share_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher indicates supply",
+      "family": "F1",
+      "formula": "share of prior20 down days whose turnover exceeds prior60 median",
+      "latest_observable": "gap formation previous completed session",
+      "name": "high_turnover_down_day_share_20",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "lower indicates distribution",
+      "family": "F1",
+      "formula": "mean turnover on up days / mean turnover on down days in prior20",
+      "latest_observable": "gap formation previous completed session",
+      "name": "up_vs_down_turnover_asymmetry",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher indicates overhead supply",
+      "family": "F1",
+      "formula": "mean (high-max(open,close))/range prior10",
+      "latest_observable": "gap formation previous completed session",
+      "name": "upper_shadow_pressure_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher indicates failed leadership",
+      "family": "F1",
+      "formula": "count prior10 high>=prior20 high and close<open",
+      "latest_observable": "gap formation previous completed session",
+      "name": "failed_new_high_count_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "higher indicates distribution",
+      "family": "F1",
+      "formula": "count prior10 turnover>prior60 median and abs(return)<1%",
+      "latest_observable": "gap formation previous completed session",
+      "name": "high_volume_stall_count_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "lower indicates weak price progress",
+      "family": "F1",
+      "formula": "prior10 return/sum turnover prior10",
+      "latest_observable": "gap formation previous completed session",
+      "name": "price_advance_per_turnover_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "lower indicates deceleration",
+      "family": "F1",
+      "formula": "prior5 return - prior20 return/4",
+      "latest_observable": "gap formation previous completed session",
+      "name": "return_deceleration_5_vs_20",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "more negative means damaged leader",
+      "family": "F1",
+      "formula": "gap-eve comparable close/reference high-1",
+      "latest_observable": "gap formation previous completed session",
+      "name": "distance_from_causal_reference_high",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "negative means pre-gap relative weakness",
+      "family": "F1",
+      "formula": "stock prior5 return minus board prior5 return",
+      "latest_observable": "gap formation previous completed session",
+      "name": "board_relative_return_5",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "negative means pre-gap relative weakness",
+      "family": "F1",
+      "formula": "stock prior10 return minus board prior10 return",
+      "latest_observable": "gap formation previous completed session",
+      "name": "board_relative_return_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "negative means pre-gap relative weakness",
+      "family": "F1",
+      "formula": "stock prior20 return minus board prior20 return",
+      "latest_observable": "gap formation previous completed session",
+      "name": "board_relative_return_20",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "negative means pre-gap relative weakness",
+      "family": "F1",
+      "formula": "stock prior5 return minus industry prior5 return",
+      "latest_observable": "gap formation previous completed session",
+      "name": "industry_relative_return_5",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "negative means pre-gap relative weakness",
+      "family": "F1",
+      "formula": "stock prior10 return minus industry prior10 return",
+      "latest_observable": "gap formation previous completed session",
+      "name": "industry_relative_return_10",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "negative means pre-gap relative weakness",
+      "family": "F1",
+      "formula": "stock prior20 return minus industry prior20 return",
+      "latest_observable": "gap formation previous completed session",
+      "name": "industry_relative_return_20",
+      "nonredundancy": "distinct F1 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative means systematic shock",
+      "family": "F2",
+      "formula": "equal-weight market open return on gap day",
+      "latest_observable": "gap formation close",
+      "name": "market_open_return",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative means systematic shock",
+      "family": "F2",
+      "formula": "equal-weight board open return on gap day",
+      "latest_observable": "gap formation close",
+      "name": "board_open_return",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative means systematic shock",
+      "family": "F2",
+      "formula": "equal-weight industry open return on gap day",
+      "latest_observable": "gap formation close",
+      "name": "industry_open_return",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative means systematic shock",
+      "family": "F2",
+      "formula": "equal-weight market close return on gap day",
+      "latest_observable": "gap formation close",
+      "name": "market_close_return",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative means systematic shock",
+      "family": "F2",
+      "formula": "equal-weight board close return on gap day",
+      "latest_observable": "gap formation close",
+      "name": "board_close_return",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative means systematic shock",
+      "family": "F2",
+      "formula": "equal-weight industry close return on gap day",
+      "latest_observable": "gap formation close",
+      "name": "industry_close_return",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "higher means systematic stress",
+      "family": "F2",
+      "formula": "share negative close returns in market",
+      "latest_observable": "gap formation close",
+      "name": "market_down_breadth",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "higher means systematic gap shock",
+      "family": "F2",
+      "formula": "share High<prior Low in market",
+      "latest_observable": "gap formation close",
+      "name": "market_true_gap_breadth",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "higher means systematic stress",
+      "family": "F2",
+      "formula": "share negative close returns in board",
+      "latest_observable": "gap formation close",
+      "name": "board_down_breadth",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "higher means systematic gap shock",
+      "family": "F2",
+      "formula": "share High<prior Low in board",
+      "latest_observable": "gap formation close",
+      "name": "board_true_gap_breadth",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "higher means systematic stress",
+      "family": "F2",
+      "formula": "share negative close returns in industry",
+      "latest_observable": "gap formation close",
+      "name": "industry_down_breadth",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "higher means systematic gap shock",
+      "family": "F2",
+      "formula": "share High<prior Low in industry",
+      "latest_observable": "gap formation close",
+      "name": "industry_true_gap_breadth",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative residual means idiosyncratic supply",
+      "family": "F2",
+      "formula": "market share at lower limit",
+      "latest_observable": "gap formation close",
+      "name": "lower_limit_stress",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative residual means idiosyncratic supply",
+      "family": "F2",
+      "formula": "market share within 1% of lower limit",
+      "latest_observable": "gap formation close",
+      "name": "near_limit_stress",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative residual means idiosyncratic supply",
+      "family": "F2",
+      "formula": "same-industry count with true gap or near-limit decline",
+      "latest_observable": "gap formation close",
+      "name": "peers_with_comparable_shock",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative residual means idiosyncratic supply",
+      "family": "F2",
+      "formula": "stock open return minus prior60 beta times market/board/industry open returns",
+      "latest_observable": "gap formation close",
+      "name": "gap_day_open_residual",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "more negative residual means idiosyncratic supply",
+      "family": "F2",
+      "formula": "stock close return minus prior60 beta times market/board/industry close returns",
+      "latest_observable": "gap formation close",
+      "name": "gap_day_close_residual",
+      "nonredundancy": "distinct F2 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "(gap turnover-prior60 mean)/prior60 std",
+      "latest_observable": "completed gap-formation session",
+      "name": "gap_day_turnover_zscore",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "close5/open1-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "opening_5m_return",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "close15/open1-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "opening_15m_return",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "close30/open1-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "opening_30m_return",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "max close/running low-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "max_rebound_from_low",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "max close/close_last-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "rebound_giveback_to_close",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "(close-low)/(high-low)",
+      "latest_observable": "completed gap-formation session",
+      "name": "gap_day_close_location",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "share closes below running VWAP",
+      "latest_observable": "completed gap-formation session",
+      "name": "time_below_vwap",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "close/VWAP-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "gap_day_close_vs_vwap",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "volume on negative bars/total volume",
+      "latest_observable": "completed gap-formation session",
+      "name": "down_bar_volume_share",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "volume on positive bars/total volume",
+      "latest_observable": "completed gap-formation session",
+      "name": "up_bar_volume_share",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "sum sign(return)*volume/total volume",
+      "latest_observable": "completed gap-formation session",
+      "name": "signed_volume_proxy",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "open-to-close return/turnover",
+      "latest_observable": "completed gap-formation session",
+      "name": "gap_day_price_progress_per_volume",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "close/13:01 open-1",
+      "latest_observable": "completed gap-formation session",
+      "name": "afternoon_return",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "afternoon volume/total",
+      "latest_observable": "completed gap-formation session",
+      "name": "afternoon_volume_share",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "count local rebound highs followed by >=2% giveback",
+      "latest_observable": "completed gap-formation session",
+      "name": "failed_intraday_rebound_count",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "last30m return",
+      "latest_observable": "completed gap-formation session",
+      "name": "late_day_recovery",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "not near/locked/released lower limit",
+      "latest_observable": "completed gap-formation session",
+      "name": "ordinary_gap_flag",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "gap close within 1% of down limit",
+      "latest_observable": "completed gap-formation session",
+      "name": "near_lower_limit_flag",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "all bars locked at down limit",
+      "latest_observable": "completed gap-formation session",
+      "name": "exact_locked_limit_flag",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "supply/absorption coordinate; sign interpreted jointly",
+      "family": "F3",
+      "formula": "touches down limit and later trades above",
+      "latest_observable": "completed gap-formation session",
+      "name": "partially_released_limit_flag",
+      "nonredundancy": "distinct F3 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + PIT daily limits"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "sum turnover from cluster start through prior completed day",
+      "latest_observable": "prior completed session before decision",
+      "name": "cum_turnover_since_cluster",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "sum turnover from primary formation through prior completed day",
+      "latest_observable": "prior completed session before decision",
+      "name": "cum_turnover_since_primary",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "stock return primary-to-prior close",
+      "latest_observable": "prior completed session before decision",
+      "name": "stock_cum_return",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "board return primary-to-prior close",
+      "latest_observable": "prior completed session before decision",
+      "name": "board_cum_return",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "industry return primary-to-prior close",
+      "latest_observable": "prior completed session before decision",
+      "name": "industry_cum_return",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "stock minus board cumulative return",
+      "latest_observable": "prior completed session before decision",
+      "name": "stock_minus_board_return",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "stock minus industry cumulative return",
+      "latest_observable": "prior completed session before decision",
+      "name": "stock_minus_industry_return",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "sum negative stock-industry daily residual",
+      "latest_observable": "prior completed session before decision",
+      "name": "cum_negative_residual",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "count residual<0 and turnover>prior60 median",
+      "latest_observable": "prior completed session before decision",
+      "name": "high_turnover_negative_residual_day_count",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "count market>0 stock<0",
+      "latest_observable": "prior completed session before decision",
+      "name": "market_up_stock_down_day_count",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "count industry>0 stock<0",
+      "latest_observable": "prior completed session before decision",
+      "name": "industry_up_stock_down_day_count",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "causal lower M/S gaps after freeze",
+      "latest_observable": "prior completed session before decision",
+      "name": "new_lower_major_secondary_gap_count",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "forward superseding lower cluster count",
+      "latest_observable": "prior completed session before decision",
+      "name": "new_lower_cluster_count",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "count 5% rebounds followed by close below prior swing low",
+      "latest_observable": "prior completed session before decision",
+      "name": "failed_recovery_count",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "completed sessions with High<L",
+      "latest_observable": "prior completed session before decision",
+      "name": "time_below_l",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "persistent weakness/supply generally adverse",
+      "family": "F4",
+      "formula": "minimum comparable low/L-1",
+      "latest_observable": "prior completed session before decision",
+      "name": "max_distance_below_l",
+      "nonredundancy": "distinct F4 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/V6 causal ledger"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "market return gap-to-prior day",
+      "latest_observable": "completed decision bar",
+      "name": "market_return_since_gap",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "board return gap-to-prior day",
+      "latest_observable": "completed decision bar",
+      "name": "board_return_since_gap",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "industry return gap-to-prior day",
+      "latest_observable": "completed decision bar",
+      "name": "industry_return_since_gap",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "market return freeze-to-prior day",
+      "latest_observable": "completed decision bar",
+      "name": "market_return_since_freeze",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "board return freeze-to-prior day",
+      "latest_observable": "completed decision bar",
+      "name": "board_return_since_freeze",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "industry return freeze-to-prior day",
+      "latest_observable": "completed decision bar",
+      "name": "industry_return_since_freeze",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "current prior20 up breadth minus gap-day breadth",
+      "latest_observable": "completed decision bar",
+      "name": "breadth_recovery",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "gap-day lower-limit stress minus prior5 mean stress",
+      "latest_observable": "completed decision bar",
+      "name": "lower_limit_stress_recovery",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "prior5 market abs return/prior60",
+      "latest_observable": "completed decision bar",
+      "name": "volatility_normalization",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "prior20 market median cumulative return",
+      "latest_observable": "completed decision bar",
+      "name": "market_median_return_recovery",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "prior20 industry median cumulative return",
+      "latest_observable": "completed decision bar",
+      "name": "industry_median_return_recovery",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "market open-to-decision equal-weight return",
+      "latest_observable": "completed decision bar",
+      "name": "entry_day_market_return_to_clock",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "board open-to-decision equal-weight return",
+      "latest_observable": "completed decision bar",
+      "name": "entry_day_board_return_to_clock",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "industry open-to-decision equal-weight return",
+      "latest_observable": "completed decision bar",
+      "name": "entry_day_industry_return_to_clock",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "higher repair expected supportive except residual",
+      "family": "F5",
+      "formula": "stock open-to-decision minus board/industry context",
+      "latest_observable": "completed decision bar",
+      "name": "stock_intraday_residual_to_clock",
+      "nonredundancy": "distinct F5 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily + QD-004 same-clock context"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "close[-1]/close[-w]-1 over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "net_advance_toward_l_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "abs(net return)/sum abs daily returns over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "path_efficiency_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "minimum close/running max-1 over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "max_pullback_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "sum negative returns absolute over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "pullback_burden_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share positive sessions over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "up_session_share_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share lows above prior low over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "higher_low_share_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share lows below prior low over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "lower_low_share_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "last-half mean range/first-half mean range over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "range_compression_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "slope of daily close location over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "close_location_trend_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "mean turnover positive days over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "turnover_on_up_days_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "mean turnover negative days over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "turnover_on_down_days_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "net return/sum turnover over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "approach_price_progress_per_turnover_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "stock minus board return over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "board_relative_approach_return_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "stock minus industry return over prior 5 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "industry_relative_approach_return_5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "close[-1]/close[-w]-1 over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "net_advance_toward_l_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "abs(net return)/sum abs daily returns over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "path_efficiency_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "minimum close/running max-1 over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "max_pullback_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "sum negative returns absolute over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "pullback_burden_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share positive sessions over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "up_session_share_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share lows above prior low over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "higher_low_share_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share lows below prior low over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "lower_low_share_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "last-half mean range/first-half mean range over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "range_compression_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "slope of daily close location over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "close_location_trend_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "mean turnover positive days over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "turnover_on_up_days_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "mean turnover negative days over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "turnover_on_down_days_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "net return/sum turnover over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "approach_price_progress_per_turnover_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "stock minus board return over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "board_relative_approach_return_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "stock minus industry return over prior 10 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "industry_relative_approach_return_10",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "close[-1]/close[-w]-1 over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "net_advance_toward_l_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "abs(net return)/sum abs daily returns over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "path_efficiency_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "minimum close/running max-1 over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "max_pullback_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "sum negative returns absolute over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "pullback_burden_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share positive sessions over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "up_session_share_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share lows above prior low over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "higher_low_share_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "share lows below prior low over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "lower_low_share_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "last-half mean range/first-half mean range over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "range_compression_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "slope of daily close location over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "close_location_trend_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "mean turnover positive days over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "turnover_on_up_days_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "mean turnover negative days over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "turnover_on_down_days_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "net return/sum turnover over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "approach_price_progress_per_turnover_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "stock minus board return over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "board_relative_approach_return_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "approach-state coordinate; no assumed monotonic sign",
+      "family": "F6",
+      "formula": "stock minus industry return over prior 20 completed sessions",
+      "latest_observable": "prior completed session before decision",
+      "name": "industry_relative_approach_return_20",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily/industry"
+    },
+    {
+      "expected_direction": "positive means late acceleration",
+      "family": "F6",
+      "formula": "prior5 return minus preceding5 return",
+      "latest_observable": "prior completed session before decision",
+      "name": "late_acceleration_5_vs_previous5",
+      "nonredundancy": "distinct F6 economic coordinate required by frozen research tree",
+      "pit_source": "PIT daily"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "decision close/session open-1",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "return_to_contact",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "abs(open-to-decision return)/sum abs minute returns",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "path_efficiency_to_contact",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "minimum close/running max-1",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "max_pullback_to_contact",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "cumulative volume/prior20 same-clock median-1",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "volume_surprise_same_clock",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "decision-day cumulative turnover/prior20 same-clock-equivalent turnover-1",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "turnover_surprise",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "open-to-decision return/cumulative volume share",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "price_progress_per_volume",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "share closes above running VWAP",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "time_above_intraday_vwap",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "decision close/running VWAP-1",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "current_close_vs_vwap",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "stock open-to-decision minus board",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "stock_minus_board_intraday_return",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "stock open-to-decision minus industry",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "stock_minus_industry_intraday_return",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "(decision close-L)/W",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "penetration_into_gap",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "abs(close-open)/(high-low)",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "decision_bar_body_ratio",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "(close-low)/(high-low)",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "decision_bar_close_location",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "(high-max(open,close))/(high-low)",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "decision_bar_upper_wick_ratio",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "bar volume/prior20 same-clock median-1",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "decision_bar_volume_surprise",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "bar return/bar volume share",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "decision_bar_price_impact_per_volume",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "decision is first bar and open>=T",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "opening_jump_flag",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "minute index/241",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "time_of_day",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "post-contact share closes>=L",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "share_closes_at_or_above_l",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "min close/L-1 since contact",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "minimum_close_distance_from_l",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "max(close-L)/W",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "maximum_penetration",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "(close-L)/W",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "current_penetration",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "min(close/L-1,0)",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "rejection_depth_below_l",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "count transitions >=L to <L",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "failed_test_count",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "count transitions <L to >=L",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "reclaim_count",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "post-contact share closes>=VWAP",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "vwap_hold_share",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "up minute volume/down minute volume",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "up_vs_down_minute_volume",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "penetration change/cumulative volume",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "penetration_gain_per_volume",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "close exceeds prior post-contact high after a below-L retest",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "local_high_break_after_retest",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "last5 minute return",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "pre5_return",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "last15 minute return",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "pre15_return",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "last30 minute return",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "pre30_return",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    },
+    {
+      "expected_direction": "attack acceptance coordinate; signs tested OOF",
+      "family": "F7",
+      "formula": "last60 minute return",
+      "latest_observable": "completed entry confirmation bar",
+      "name": "pre60_return",
+      "nonredundancy": "distinct F7 economic coordinate required by frozen research tree",
+      "pit_source": "QD-004 minute + same-clock PIT context"
+    }
+  ]
+}

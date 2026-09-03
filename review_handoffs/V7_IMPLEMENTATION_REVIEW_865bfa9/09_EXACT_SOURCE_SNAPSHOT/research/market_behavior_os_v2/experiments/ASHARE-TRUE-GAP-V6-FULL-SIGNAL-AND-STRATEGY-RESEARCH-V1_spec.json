@@ -1,0 +1,138 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-V6-FULL-SIGNAL-AND-STRATEGY-RESEARCH-V1",
+  "start_head": "c68623ea2c408bb2e7ce60b529bf7c82c1982888",
+  "source_experiment": "ASHARE-TRUE-GAP-CAUSAL-CLUSTER-V6-ONE-SHOT-DISCOVERY",
+  "source_semantic_hash": "2705011d21792acfea34c6fe07819aa1a9e6dd91247bc27e66616749cc3ee162",
+  "governance": {
+    "development": [2014, 2021],
+    "outer_test_years": [2017, 2018, 2019, 2020, 2021],
+    "post_observation_diagnostic": [2022, 2023],
+    "repository_2024_plus": "SEALED",
+    "feature_additions_after_outcome": "FORBIDDEN",
+    "parameter_additions_after_outcome": "FORBIDDEN"
+  },
+  "economic_sequence": [
+    "former strong or leader-like stock",
+    "causal local selloff creates frozen cluster of true no-trade gaps",
+    "gap birth reflects systematic shock, idiosyncratic supply, locked-limit supply, or mixture",
+    "post-gap history reveals supply persistence and environment repair",
+    "stock approaches frozen primary gap",
+    "minute attack gains acceptance or is rejected",
+    "next legal minute-open entry",
+    "legal U fill or destructive unresolved tail",
+    "causal profit, failure, or time exit"
+  ],
+  "v6_identity_freeze": {
+    "true_gap": "High_t < Low_t_minus_1",
+    "interval": "[High_t, Low_t_minus_1]",
+    "immutable": [
+      "causal local cluster",
+      "cluster freeze",
+      "causal primary",
+      "pre-freeze-touch rejection",
+      "new-lower-cluster supersession",
+      "memory bands",
+      "causal first return"
+    ]
+  },
+  "time_anchors": {
+    "formation": "completed gap-formation session",
+    "supply_persistence": "completed history strictly before decision bar plus declared completed current bars",
+    "daily_approach": "completed sessions before decision day",
+    "minute_attack": "completed one-minute bars through decision bar",
+    "entry": "next legal executable one-minute open",
+    "outcome": "strictly after executable entry"
+  },
+  "data": {
+    "daily": "frozen PIT daily compact 2013-2023",
+    "minute": "QD-004 exact 241-bar canonical raw shards 2014-2023",
+    "industry": "registered causal_industry at observation date",
+    "corporate_actions": "QD-010",
+    "l2_bundle_available": "NO",
+    "l2_reason": "registered capability matrix has no authoritative historical order/queue data; OHLCV approximation prohibited"
+  },
+  "entry_grid": {
+    "levels": {
+      "ABS_0": "L",
+      "ABS_0P5": "L*1.005",
+      "ABS_1P0": "L*1.010",
+      "ABS_2P0": "L*1.020",
+      "GAP_10": "L+0.10*W",
+      "GAP_25": "L+0.25*W",
+      "GAP_50": "L+0.50*W"
+    },
+    "confirmations": ["C1_TOUCH", "C2_CLOSE", "C3_HOLD5", "C4_HOLD15", "C5_SECOND_RECLAIM"],
+    "fill": "next legal executable one-minute open strictly after completed confirmation bar",
+    "baseline": "ABS_0+C2_CLOSE"
+  },
+  "outcomes": {
+    "cost_per_side": 0.002,
+    "Y_NET_U_OR_H40": "legal U fill else legal H40 exit, net of 40bp round trip",
+    "Y_CLEAN_U20": "legal U by D20 before adverse mark <=-8%",
+    "Y_CLEAN_U40": "legal U by D40 before adverse mark <=-10%",
+    "Y_TAIL_FAILURE40": "no legal U by D40 and (H40 net<=-10% or MAE40<=-20%)",
+    "loss_landmarks": [0.05, 0.08, 0.10, 0.12, 0.15],
+    "severe_landmarks": [0.10, 0.20]
+  },
+  "models": {
+    "M1_INTERPRETABLE": {
+      "clean": "L2 logistic C=0.10 class_weight=balanced max_iter=2000",
+      "tail": "L2 logistic C=0.10 class_weight=balanced max_iter=2000",
+      "return": "Ridge alpha=10",
+      "preprocess": "TRAIN median imputation and TRAIN standardization"
+    },
+    "M2_NONLINEAR": {
+      "library": "LightGBM",
+      "learning_rate": 0.03,
+      "n_estimators": 800,
+      "max_depth": 4,
+      "num_leaves": 15,
+      "min_child_samples": 100,
+      "reg_lambda": 20.0,
+      "reg_alpha": 1.0,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "random_state": 20260903,
+      "early_stopping": "latest 20% of TRAIN chronology, patience 50; persist iteration and causal refit"
+    },
+    "attack_score": "equal mean of within-TRAIN percentile ranks: P(clean), 1-P(tail), predicted net return"
+  },
+  "bundles": {
+    "B1": ["F1", "F2"],
+    "B2": ["F1", "F2", "F3"],
+    "B3": ["F1", "F2", "F3", "F4", "F5"],
+    "B4": ["F1", "F2", "F3", "F4", "F5", "F6"],
+    "B5": ["F1", "F2", "F3", "F4", "F5", "F6", "F7"],
+    "B6": "UNAVAILABLE_NO_L2"
+  },
+  "admission": ["A100", "A70", "A50", "A30", "A20"],
+  "time_stops": [10, 20, 40],
+  "exit_families": {
+    "X0_NO_STOP": ["U_OR_H"],
+    "X1_HARD_PCT_INTRADAY": [0.05, 0.08, 0.10, 0.12],
+    "X2_HARD_PCT_DAILY": [0.05, 0.08, 0.10, 0.12],
+    "X3_ZONE_WIDTH_DAILY": [1, 2, 3],
+    "X4_STRUCTURAL_LOWER_GAP": ["NEW_CAUSAL_MAJOR_OR_SECONDARY_ENTIRELY_BELOW_L"],
+    "X5_TIME_PROGRESS": {"checkpoints": [3, 5, 10], "progress": [0.10, 0.25, 0.50]},
+    "X6_PROGRESS_FAILURE": [0.50, 0.75],
+    "X7_DYNAMIC_TAIL": {"checkpoints": [3, 5, 10], "train_quantiles": [0.80, 0.90]},
+    "X8_HYBRID": ["HYBRID_CONSERVATIVE", "HYBRID_FAST"]
+  },
+  "walk_forward": [
+    {"train": [2014, 2016], "test": 2017},
+    {"train": [2014, 2017], "test": 2018},
+    {"train": [2014, 2018], "test": 2019},
+    {"train": [2014, 2019], "test": 2020},
+    {"train": [2014, 2020], "test": 2021}
+  ],
+  "portfolio": {
+    "primary_k": 10,
+    "sensitivity_k": [5, 10, 20],
+    "main_sleeve": 0.5,
+    "chinext_sleeve": 0.5,
+    "position_weight": "1/K of current sleeve NAV",
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "one_active_position_per_symbol": true
+  }
+}
