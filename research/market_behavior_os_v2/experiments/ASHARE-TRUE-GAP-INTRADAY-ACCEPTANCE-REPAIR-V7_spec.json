@@ -1,0 +1,12 @@
+{
+  "contract_sha256": "d0088ebabfc570a627cfbfd90505f9d94b60d89c114920ea3376734069a74f15",
+  "development_disclosure": "The acceptance mechanism and 5/15/30-minute family were fixed after prior V4R1 and V6 failures, before delayed-entry outcomes were computed.",
+  "diagnostic_disclosure": "2022-2023 remains post-observation evidence.",
+  "experiment": "ASHARE-TRUE-GAP-INTRADAY-ACCEPTANCE-REPAIR-V7",
+  "pre_outcome_mechanical_amendment": {
+    "delayed_entry_outcomes_opened_before_repair": "NO",
+    "issue": "The first Stage-A attempt required a volume field that the authoritative execution-minute panel does not carry, so every otherwise accepted trigger failed closed.",
+    "repair": "Use the authoritative V4R1 legal-minute state fields and the existence of the raw minute bar, without inventing volume."
+  },
+  "status": "OUTCOME_BLIND_THREE_WINDOW_ENTRY_TRANSLATION"
+}

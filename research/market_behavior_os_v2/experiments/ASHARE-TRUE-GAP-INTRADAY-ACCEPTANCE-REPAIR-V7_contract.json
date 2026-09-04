@@ -1,0 +1,50 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A daily below-gap reversal that immediately loses its next-session opening cost is likely a weak reflex bounce. Requiring completed-minute acceptance above both opening cost and the signal close seeks genuine follow-through before committing capital.",
+  "entry_family": {
+    "condition_1": "share of completed closes >= original opening coordinate is at least 60%",
+    "condition_2": "final completed close >= prior signal close coordinate",
+    "entry": "next legal 1-minute open strictly after the completed acceptance window",
+    "minimum_net_headroom_to_L": 0.05,
+    "missing_policy": "FAIL_CLOSED",
+    "windows_completed_minutes": [
+      5,
+      15,
+      30
+    ]
+  },
+  "experiment": "ASHARE-TRUE-GAP-INTRADAY-ACCEPTANCE-REPAIR-V7",
+  "post_2023_scope": "pre-2024 trade-resolution tail only; no post-2023 signal",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "executable_entries_per_year_min": 50.0,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_calendar_years_min": 4
+    },
+    "order": [
+      "higher portfolio mean net return",
+      "higher portfolio median net return",
+      "lower severe_loss10",
+      "shorter confirmation window"
+    ]
+  },
+  "source": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "unchanged_v4r1": {
+    "T1_limits_suspensions_and_corporate_actions": true,
+    "failure_stop": "NONE",
+    "portfolio": "50/50 Main/ChiNext; K20 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_population_and_features": true,
+    "target": "delayed_entry + 0.80*(L-delayed_entry)",
+    "time_stop": "H20 from delayed-entry session"
+  }
+}
