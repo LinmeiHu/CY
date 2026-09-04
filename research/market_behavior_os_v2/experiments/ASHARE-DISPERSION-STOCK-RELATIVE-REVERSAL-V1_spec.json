@@ -1,0 +1,89 @@
+{
+  "experiment_id": "ASHARE-DISPERSION-STOCK-RELATIVE-REVERSAL-V1",
+  "status": "FROZEN_BEFORE_OUTCOME_AGGREGATION",
+  "research_level": "EXPLORE",
+  "frozen_at": "2026-09-04",
+  "question": "When the accepted causal cross-industry dispersion state is high, does the worst same-session stock-versus-PIT-industry residual in each sufficiently broad industry subsequently reverse over three sessions?",
+  "why_not_a_repeat": "The exact unconditional five-session stock reversal, post-shock recovery, and industry-rank continuation families are closed. This experiment uses one-session stock-minus-leave-one-out-industry displacement, the independently accepted high-dispersion state, one representative per industry, and no recovery confirmation. It reads the accepted compact daily panel and does not rerun MKT-DISP-RANK-001/002/003/004/005.",
+  "inputs": {
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012",
+      "bytes": 252545994,
+      "rows": 3009296,
+      "first_date": "2018-07-03",
+      "last_date": "2023-12-29"
+    },
+    "industry_state_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_panel.csv",
+      "sha256": "c9e8d44935261256c1f3a6246026ba2ff0a02d3373386771fe58182ad3baeaf4",
+      "bytes": 12637811
+    }
+  },
+  "population": {
+    "market_view": "ALL_A",
+    "denominator": "ALL_STATUS",
+    "security_universe": "exact accepted Cycle-015 daily eligible liquid universe",
+    "minimum_industry_members_at_t": 6,
+    "future_response_requires_exact_consecutive_rows": true,
+    "minimum_industry_response_retention": 0.8
+  },
+  "predictor": {
+    "signal": "step_return minus industry_return_loo on completed session t",
+    "selection": "within every supported PIT industry, choose the one security with the lowest signal; ties break by symbol ascending",
+    "dispersion_state": "ALL_A/ALL_STATUS industry_return_dispersion_iqr_pit_3y_pct",
+    "high_state": ">= 0.80",
+    "no_alternative_state_or_stock_threshold": true,
+    "decision_at": "completed session t close",
+    "earliest_execution": "next legal session open; screen response begins with t+1 action-aware step and does not assume a t-bar fill"
+  },
+  "response": {
+    "primary_horizon_sessions": 3,
+    "screen_return": "expm1(sum of exact consecutive t+1 through t+3 action-aware step_return))",
+    "round_trip_cost": 0.004,
+    "candidate": "equal-weight mean of one lowest-residual security per supported industry",
+    "event_control": "equal-weight mean of all response-complete eligible securities on the same date",
+    "opposite_arm": "equal-weight mean of one highest-residual security per supported industry; diagnostic only",
+    "severe_loss": "net response <= -0.10",
+    "event_schedule": "all supported high-dispersion dates for the information screen; no portfolio capital ledger is opened"
+  },
+  "temporal_sequence": {
+    "generation": "2020-07-01 through 2021-12-31",
+    "fixed_validation": "2022-01-01 through 2023-12-31, opened only if every generation gate passes",
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "generation_gate_all_required": {
+    "minimum_high_state_dates": 80,
+    "candidate_mean_net_positive": true,
+    "candidate_minus_event_mean_minimum": 0.002,
+    "candidate_minus_opposite_arm_minimum": 0.003,
+    "candidate_median_event_net_positive": true,
+    "both_calendar_year_candidate_minus_event_mean_positive": true,
+    "candidate_severe_loss_not_more_than_event_by_pp": 0.01,
+    "minimum_candidate_response_retention": 0.8
+  },
+  "validation_gate_all_required": {
+    "candidate_mean_net_positive": true,
+    "candidate_minus_event_mean_positive": true,
+    "candidate_minus_opposite_arm_positive": true,
+    "both_calendar_year_candidate_minus_event_mean_nonnegative": true,
+    "candidate_severe_loss_not_more_than_event_by_pp": 0.01,
+    "minimum_candidate_response_retention": 0.8
+  },
+  "post_result_action": {
+    "if_both_gates_pass": "Freeze one separate next-open executable portfolio contract before reading portfolio PnL.",
+    "if_generation_fails": "Close the exact high-dispersion stock-relative one-session reversal family; do not open validation or change state, horizon, selection depth, confirmation, or sign.",
+    "if_validation_fails": "Reject the exact translation without replay or rescue."
+  },
+  "prohibited": [
+    "post-2023 outcomes",
+    "CY-011",
+    "same-session fills",
+    "threshold, horizon, Top-N, confirmation, state, sign, or control search",
+    "industry-rank builder rerun",
+    "Strategy A or Industry-Consensus Q1 modification",
+    "portfolio PnL before both information gates pass",
+    "validation opening after a generation failure"
+  ]
+}

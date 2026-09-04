@@ -1,5 +1,15 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Independent-engine extension
+
+| Family | Frozen definition | Generation evidence | Decision |
+|---|---|---|---|
+| High-dispersion stock-relative reversal | Accepted high cross-industry dispersion; one lowest same-session stock-minus-leave-one-out-industry residual per supported industry; t+1--t+3; 20 bps/side | 130 dates; -0.567% net; -0.328% versus control; -0.305% versus opposite; severe 6.30% versus 3.98%; both year slices adverse | `GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY` |
+| Medium-term overnight strength | Local external-prior approximation: 20-session cumulative gap return; month-end Top-20; h20; 20 bps/side | 21 dates; +0.521% net and +3.020% top-bottom, but -0.088% versus control; 2019/2020 excess +0.746%/-0.714%; severe 8.91% versus 3.31% | `GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY` |
+
+Neither later temporal block, executable replay, failed-sign inversion,
+Strategy-A/Q1 combination, post-2023 outcome, or CY-011 field was opened.
+
 ## Industry-Consensus Q1 authorized 2024--2025 temporal validation V1.1
 
 | Layer | Frozen evidence | Result | Decision |

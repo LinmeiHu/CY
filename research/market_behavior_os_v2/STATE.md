@@ -8,8 +8,8 @@ Updated 2026-09-04.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a` (authoritative start of the authorized 2024--2025 temporal validation)
-- `CURRENT_PHASE`: `TEMPORAL_TRANSFER_INCONCLUSIVE_POST_HOC_REPAIR_GATES_FAILED`
-- `CURRENT_PRIMARY_FRONTIER`: the authorized 2024--2025 test is complete and does not independently confirm the Industry-Consensus Q1 engine. Do not tune it on the newly consumed years. Reallocate toward an independent Alpha engine, a genuinely new registered PIT information source, or a materially different resource-safe Dispersion contract
+- `CURRENT_PHASE`: `TEMPORAL_TRANSFER_INCONCLUSIVE_INDEPENDENT_ENGINE_EXTENSION_GENERATION_REJECTED`
+- `CURRENT_PRIMARY_FRONTIER`: two further pre-2024 independent-engine screens are complete and rejected at generation. Do not tune the Industry-Consensus Q1 engine, invert either failed screen, or enumerate more transformations of the same registered Price--Volume inputs. The next justified frontier requires genuinely new PIT information or a separately frozen non-overlapping research contract
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` with the frozen V1.1 causal numeric erratum: machine-noise `r20` ties at `|r20| <= 1e-12` are neutral. The economic rule is otherwise unchanged: exact diffusion-intensity Q1 pair, same signal-date PIT industry, at most one-half pre-entry NAV, next legal open, and unchanged h20 due open
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
@@ -30,7 +30,7 @@ Updated 2026-09-04.
 - `DESCRIPTIVE_ONLY_STATES`: Cycle-019 Absolute Market State is chronologically unstable for Q1 and cannot be used as a veto; two-industry Q1 remains positive overall and is not a proven bad state
 - `STRATEGY_HABITAT_STATUS`: `WEAK_POSITIVE_TEMPORAL_TRANSFER; INDEPENDENT_CONFIRMATION_FAILED; NO_RESCUE`
 - `CURRENT_MECHANISMS`: concentrated within-industry diffusion leadership identifies fewer but stronger continuation cohorts; the gain comes from event selection and natural capital reuse, not from a new exit, stop, or market-timing rule
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: which genuinely independent return engine can diversify an Industry-Consensus candidate whose absolute temporal transfer weakened sharply? Do not spend 2024--2025 again on filters, thresholds, exits, or capital rescue. Keep 2026 and CY-011 quarantined; prefer a new PIT mechanism or resource-safe Dispersion science.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: which genuinely new PIT source can support a return engine independent of concentrated industry continuation? Immutable-vintage fundamentals and identifiable flow/order-book data outrank further feature mining. Do not spend 2024--2025 again; keep 2026 and CY-011 quarantined.
 - `POST_HOC_REPAIR_STATUS`: user-authorized diagnosis produced two single-rule
   consumed-development checks. A fixed prior-20 industry-return >10% entry veto
   failed because vetoed events had higher mean payoff in both 2018--2020 and
@@ -38,6 +38,12 @@ Updated 2026-09-04.
   strong events in both blocks but failed because the later triggered arm still
   earned +0.487% mean h20 payoff. Neither rule received a portfolio replay; no
   threshold, checkpoint, sizing, or role rescue is authorized.
+- `INDEPENDENT_ENGINE_EXTENSION_STATUS`: a resource-safe high-dispersion
+  stock-relative reversal screen and one externally motivated medium-term
+  overnight-strength approximation both fail frozen generation gates. Neither
+  opens its later block, portfolio replay, Strategy-A/Q1 combination, or sign
+  inversion. Current registered Price--Volume research returns to a genuine
+  scientific stop rather than another rescue loop.
 
 ## Research OS V2.3 resource and worker state
 
@@ -149,6 +155,44 @@ risk information, while prior industry overextension is a return/risk tradeoff,
 not a valid admission veto. These results do not repair temporal transfer and
 do not justify mining the newly consumed years. The strategy remains unchanged.
 No 2026 market outcome or CY-011 was read.
+
+### Independent-engine extension: two generation rejections
+
+`ASHARE-DISPERSION-STOCK-RELATIVE-REVERSAL-V1` uses the accepted compact
+Cycle-015 panel and the already accepted ALL_A/ALL_STATUS cross-industry
+dispersion state. On each high-dispersion close it selects the one security with
+the lowest same-session stock-minus-leave-one-out-industry return in every
+industry with at least six eligible names. The t+1--t+3 response is exact and
+action-aware, with 20 bps per side. In the frozen 2020H2--2021 generation block,
+130 dates and 13,100 complete selections earn -0.567% mean net, underperform the
+same-date control by -0.328%, underperform the opposite arm by -0.305%, and have
+6.30% severe losses versus 3.98% for the control. Both calendar slices are
+adverse. Classification:
+`GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY`; 2022--2023 remain unopened for
+this exact hypothesis.
+
+`ASHARE-MEDIUM-TERM-OVERNIGHT-STRENGTH-V1` is a disclosed local approximation
+of a 2026 external A-share overnight-return prior, not an exact paper
+replication. It freezes 20 completed overnight gaps, month-end Top-20, next-open
+availability, and h20 before outcomes. Across 21 generation dates in 2019--2020,
+the Top-20 earn +0.521% net and beat Bottom-20 by +3.020%, but trail the broad
+same-date control by -0.088%, reverse from +0.746% excess in 2019 to -0.714% in
+2020, and suffer 8.91% severe losses versus 3.31% for the control. The signal is
+distinct from r20 at median rank rho 0.260, but it is not useful long Alpha under
+the frozen economics. Classification:
+`GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY`; 2021--2023 remain unopened.
+
+Both outputs reproduce byte-identically, six focused tests pass, no same-bar
+fill is assumed, and neither the frozen Strategy A nor Industry-Consensus Q1 is
+modified. No post-2023 outcome or CY-011 field was read.
+
+What market behavior are we still not studying? Immutable-vintage fundamental
+change, identifiable investor flow and queue pressure, and borrow-feasible
+relative value with executable instruments.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The dispersion-relative reversal direction is adverse; overnight direction has
+a top-minus-bottom shape but fails control, chronology, and tail-risk gates.
 
 ### Strategy-B bounded continuation and genuine stop
 

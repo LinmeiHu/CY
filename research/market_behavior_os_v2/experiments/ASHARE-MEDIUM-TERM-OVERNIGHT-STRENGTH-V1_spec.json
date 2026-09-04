@@ -1,0 +1,91 @@
+{
+  "experiment_id": "ASHARE-MEDIUM-TERM-OVERNIGHT-STRENGTH-V1",
+  "status": "FROZEN_BEFORE_OUTCOME_AGGREGATION",
+  "research_level": "EXPLORE_EXTERNAL_PRIOR_APPROXIMATION",
+  "frozen_at": "2026-09-04",
+  "external_prior": {
+    "title": "Overnight Returns, Trading Constraints, and Future Stock Returns: Evidence from the Chinese A-Share Market",
+    "authors": "Rong Chen, Zhen Hu, Hai Lin",
+    "date": "2026",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6840249",
+    "independent_claim": "Medium-term overnight returns have a positive relation with future A-share returns while intraday returns do not; T+1 delayed incorporation is the proposed mechanism.",
+    "local_claim_boundary": "The full paper implementation was not available from the accessible source. The 20-session monthly construction below is a frozen local canonical approximation, not a claimed exact replication."
+  },
+  "why_not_a_repeat": "Prior overnight/daytime tug-of-war required repeated positive-night/negative-day states and was chronologically mixed; overnight-information stability studied variability rather than direction. This experiment uses the raw 20-session cumulative overnight direction specified before outcomes and does not add a daytime sign condition.",
+  "inputs": {
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012",
+      "rows": 3009296,
+      "first_date": "2018-07-03",
+      "last_date": "2023-12-29"
+    }
+  },
+  "population": {
+    "security_universe": "exact accepted Cycle-015 daily eligible liquid universe",
+    "decision_schedule": "last accepted market session of each calendar month",
+    "formation_requires_exact_consecutive_rows": 20,
+    "response_requires_exact_consecutive_rows": 20,
+    "minimum_candidates_per_date": 1000
+  },
+  "predictor": {
+    "signal": "sum gap_return over t-19 through completed session t",
+    "orientation": "higher cumulative overnight return is preferred",
+    "selection": "20 highest signal securities, ties by symbol ascending",
+    "opposite_arm": "20 lowest signal securities, ties by symbol ascending; diagnostic only",
+    "decision_at": "completed month-end session close",
+    "earliest_execution": "next legal session open",
+    "no_alternative_lookback_or_top_n": true
+  },
+  "response": {
+    "natural_horizon_sessions": 20,
+    "screen_return": "expm1(sum of exact consecutive t+1 through t+20 action-aware step_return))",
+    "round_trip_cost": 0.004,
+    "event_control": "equal-weight mean of all response-complete eligible securities on the same decision date",
+    "severe_loss": "net response <= -0.20"
+  },
+  "independence_diagnostics": {
+    "same_date_rank_correlation_with_r20": true,
+    "same_date_rank_correlation_with_intraday20": true,
+    "maximum_absolute_median_correlation_for_distinctness": 0.8,
+    "no_control_model_or_residual_score": true
+  },
+  "temporal_sequence": {
+    "generation": "2019-01-01 through 2020-12-31",
+    "fixed_validation": "2021-01-01 through 2023-12-31, opened only if every generation gate passes",
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "generation_gate_all_required": {
+    "minimum_decision_dates": 20,
+    "top20_mean_net_positive": true,
+    "top20_minus_event_mean_minimum": 0.005,
+    "top20_minus_bottom20_minimum": 0.01,
+    "both_calendar_year_top20_minus_event_mean_positive": true,
+    "top20_severe_loss_not_more_than_event_by_pp": 0.02,
+    "minimum_top20_response_retention": 0.8,
+    "maximum_absolute_median_signal_r20_rank_correlation": 0.8
+  },
+  "validation_gate_all_required": {
+    "top20_mean_net_positive": true,
+    "top20_minus_event_mean_positive": true,
+    "top20_minus_bottom20_positive": true,
+    "at_least_two_of_three_years_top20_minus_event_mean_nonnegative": true,
+    "top20_severe_loss_not_more_than_event_by_pp": 0.02,
+    "minimum_top20_response_retention": 0.8
+  },
+  "post_result_action": {
+    "if_both_gates_pass": "Freeze one separate exact next-open executable portfolio contract before portfolio PnL.",
+    "if_generation_fails": "Reject this exact local approximation; do not invert, change 20 sessions, alter Top-20, add intraday conditions, or open validation.",
+    "if_validation_fails": "Reject without replay or rescue."
+  },
+  "prohibited": [
+    "post-2023 outcomes",
+    "CY-011",
+    "same-session fills",
+    "lookback, holding, Top-N, month schedule, sign, daytime condition, or liquidity threshold search",
+    "Strategy A or Industry-Consensus Q1 modification or combination",
+    "portfolio PnL before both information gates pass",
+    "validation opening after generation failure"
+  ]
+}

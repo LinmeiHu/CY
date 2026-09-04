@@ -2,6 +2,41 @@
 
 Updated 2026-09-04.
 
+## Latest checkpoint: two independent-engine generation screens rejected
+
+Resume after the commit containing
+`ASHARE-DISPERSION-STOCK-RELATIVE-REVERSAL-V1` and
+`ASHARE-MEDIUM-TERM-OVERNIGHT-STRENGTH-V1`. Both use only registered pre-2024
+data, freeze their exact definition before outcome aggregation, and stop before
+the later temporal block when generation fails. They do not modify Strategy A
+or Industry-Consensus Q1.
+
+The dispersion screen is a materially different resource-safe contract, not a
+rerun of MKT-DISP-RANK-001/002. It uses the accepted 241-MiB Cycle-015 panel,
+the frozen ALL_A/ALL_STATUS high-dispersion state, and one lowest same-session
+stock-minus-PIT-industry residual per supported industry. The 130 generation
+dates yield -0.567% candidate net, -0.328% versus same-date control, -0.305%
+versus the opposite arm, and 6.30% severe losses versus 3.98%. Every return and
+tail gate except support/retention fails. Classification:
+`GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY`; do not invert the sign, add a
+recovery condition, or change state/horizon/selection depth.
+
+The overnight screen is a transparent local approximation of Chen, Hu, and
+Lin's 2026 A-share medium-term overnight-return prior; it is not claimed to be
+an exact paper replication. The frozen 20-session month-end Top-20 earns +0.521%
+net and beats Bottom-20 by +3.020% over 21 generation dates, but trails the
+same-date control by -0.088%, reverses from +0.746% excess in 2019 to -0.714% in
+2020, and has 8.91% severe losses versus 3.31%. Classification:
+`GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY`; do not change lookback, Top-N,
+daytime condition, sign, or open 2021--2023 for this failed definition.
+
+Both runs reproduce byte-identically; six focused tests and targeted Ruff pass.
+No portfolio replay, 2024--2025 optimization, post-2023 outcome, CY-011 read, or
+push occurred. The current registered Price--Volume space is again at a genuine
+scientific stop. The next rational research capital requires a new PIT source:
+immutable-vintage fundamentals or identifiable flow/order-book information.
+Do not treat more transformations of the same consumed inputs as persistence.
+
 ## Latest checkpoint: two post-hoc repair rules fail frozen promotion gates
 
 Resume after the commit containing

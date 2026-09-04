@@ -4,6 +4,29 @@ Updated 2026-09-04. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Independent-engine extension
+
+- High-dispersion stock-relative reversal: 130 frozen 2020H2--2021 generation
+  dates, -0.567% candidate net, -0.328% versus control, -0.305% versus opposite
+  arm, and 6.30% versus 3.98% severe losses. Both calendar slices are adverse.
+  `GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY`; no sign inversion or later
+  block.
+- Medium-term overnight strength: a frozen local external-prior approximation,
+  not an exact paper replication. Top-20 net is +0.521% and top-minus-bottom is
+  +3.020%, but excess versus control is -0.088%, 2019/2020 excess is
+  +0.746%/-0.714%, and severe loss is 8.91% versus 3.31%.
+  `GENERATION_REJECTED_NO_VALIDATION_OR_REPLAY`; no later block or replay.
+- Both screens are distinct from the frozen Industry-Consensus Q1 rule and use
+  only pre-2024 registered data. They add no executable Alpha engine.
+
+What market behavior are we still not studying? Immutable-vintage fundamental
+change, identifiable flow/queue pressure, and executable borrow-feasible
+relative value.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Return to a genuine stop rather than enumerating more transformations of the
+same consumed Price--Volume inputs.
+
 ## Industry-Consensus Q1 2024--2025 temporal validation
 
 - Initial V1 failed closed before replay: adding future partitions changed the
