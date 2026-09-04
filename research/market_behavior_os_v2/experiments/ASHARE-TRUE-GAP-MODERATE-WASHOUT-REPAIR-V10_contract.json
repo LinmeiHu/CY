@@ -1,0 +1,58 @@
+{
+  "candidate_rules": {
+    "DEPTH_15_25": "15% <= maximum causal depth below L <= 25%",
+    "DEPTH_15_30": "15% <= maximum causal depth below L <= 30%",
+    "DEPTH_15_30_RECOVERY_05_15": "15%-30% maximum depth and 5%-15% recovery from the signal-known 20-session low"
+  },
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A first causal MA5 reclaim below a low-occupancy true gap is most useful after a meaningful but non-destructive washout. Shallow declines are noise, while extreme declines may represent unresolved structural damage.",
+  "execution": {
+    "T1_limits_suspensions_and_QD010": true,
+    "collision_low_occupancy_rank": "pre_gap_inside_touch_sessions / 120; lower first; causal daily proxy used because the broader direct population has no minute-VAP field",
+    "cost": 0.004,
+    "entry": "first legal buyable 1-minute open strictly after signal close",
+    "failure_stop": "NONE",
+    "minimum_net_headroom_to_L": 0.05,
+    "portfolio": "Main/ChiNext 50/50; K20 per sleeve",
+    "target": "entry + 0.80*(L-entry), strictly below L",
+    "time_stop": "H20 then next legal sellable 1-minute open"
+  },
+  "experiment": "ASHARE-TRUE-GAP-MODERATE-WASHOUT-REPAIR-V10",
+  "post_2023_scope": "trade management/completion only; no post-2023 signal or selection",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "attack_date_equal_mean_positive": true,
+      "portfolio_accepted_trades_per_year_min": 50.0,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_calendar_years_min": 4
+    },
+    "order": [
+      "higher accepted-trade frequency",
+      "fewer rule conditions",
+      "higher portfolio mean net",
+      "lower severe_loss10"
+    ]
+  },
+  "source_population": {
+    "base_reversal": "first MA5 reclaim with recent low age 2-10 and recovery from low >=3%",
+    "base_washout": "max_depth >=10%; current_depth >=5%",
+    "daily_low_occupancy": {
+      "gap_corridor_touch_sessions_max": 20,
+      "inside_gap_touch_sessions_max": 12
+    },
+    "gap_width_min": 0.01,
+    "pre_L_touch": "none before the first signal",
+    "pre_gap_history": "exact 120 valid coordinate-consistent sessions",
+    "source": "V4R1 direct_first_ma5_candidates, before VAP and pre-gap-return filtering",
+    "true_gap": "High_t < Low_t_minus_1"
+  }
+}
