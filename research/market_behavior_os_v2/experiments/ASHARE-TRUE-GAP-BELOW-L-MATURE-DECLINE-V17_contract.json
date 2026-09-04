@@ -1,0 +1,48 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A 30% decline that reaches a clean downward true gap in fewer than one trading month is an acute crash or rise-and-fall episode rather than the mature liquidation path in the visual hypothesis. Requiring at least 20 completed sessions from the prior 120-session peak to gap formation may exclude acute failures while retaining broad signal coverage.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-MATURE-DECLINE-V17",
+  "fixed_conditions": {
+    "decline_duration": "pre_peak_to_gap_sessions >= 20",
+    "duration_definition": "completed-session distance from the maximum coordinate high in the exact prior 120 sessions to true-gap formation",
+    "known_time": "true-gap formation close; before reversal signal",
+    "missing_policy": "fail closed",
+    "prior_drawdown": "pre_gap_drawdown_from_120d_peak >= 0.30",
+    "threshold_search": "NONE"
+  },
+  "governance": {
+    "diagnostic_outcomes_opened_only_after_development_pass": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "one_rule_no_parameter_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-MEANINGFUL-PRIOR-DECLINE-V16",
+  "success_contract": {
+    "accepted_trades_per_year_min": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "frequency_has_no_upper_cap": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "unchanged": {
+    "T1_limits_suspensions_and_QD010": true,
+    "V13_strict_true_gap_vap_and_first_reversal": true,
+    "entry": "next legal buyable 1-minute open",
+    "failure_stop": "NONE",
+    "no_L_touch_before_signal": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "target": "A67 below L",
+    "time_stop": "H20"
+  }
+}
