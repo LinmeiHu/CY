@@ -1,0 +1,634 @@
+{
+  "2026_new_signal_use_count": 0,
+  "blocking_audit": {},
+  "causality_audit": {
+    "admission_uses_outcome_field_count": 0,
+    "condition_ledger": [
+      {
+        "binding": true,
+        "condition": "TRUE_GAP",
+        "known_by_signal": true,
+        "latest_source": "gap-day completed daily high and previous completed daily low"
+      },
+      {
+        "binding": true,
+        "condition": "QD010_COORDINATE_AND_LINEAGE",
+        "known_by_signal": true,
+        "latest_source": "gap day; PIT corporate-action state known by each date"
+      },
+      {
+        "binding": true,
+        "condition": "EXACT_120_DAILY_HISTORY",
+        "known_by_signal": true,
+        "latest_source": "completed session immediately before gap"
+      },
+      {
+        "binding": true,
+        "condition": "EXACT_120x241_MINUTE_VAP",
+        "known_by_signal": true,
+        "latest_source": "15:00 of completed session immediately before gap"
+      },
+      {
+        "binding": true,
+        "condition": "PRE_GAP_TOUCH_AND_DENSITY",
+        "known_by_signal": true,
+        "latest_source": "completed session immediately before gap"
+      },
+      {
+        "binding": true,
+        "condition": "PRE_GAP_RETURN_20D_NONPOSITIVE",
+        "known_by_signal": true,
+        "latest_source": "completed session immediately before gap"
+      },
+      {
+        "binding": true,
+        "condition": "NO_L_TOUCH_BEFORE_SIGNAL",
+        "known_by_signal": true,
+        "latest_source": "completed signal-day high"
+      },
+      {
+        "binding": true,
+        "condition": "MAX_DEPTH_CURRENT_DEPTH_AND_LOW20_RECOVERY",
+        "known_by_signal": true,
+        "latest_source": "completed signal-day OHLC and trailing 20 completed sessions"
+      },
+      {
+        "binding": true,
+        "condition": "FIRST_PRIOR_HIGH_REVERSAL",
+        "known_by_signal": true,
+        "latest_source": "signal close and previous completed high"
+      },
+      {
+        "binding": true,
+        "condition": "V26_WIDTH_AND_CORRIDOR_BRANCH",
+        "known_by_signal": true,
+        "latest_source": "gap day and pre-gap history"
+      },
+      {
+        "binding": true,
+        "condition": "V27_PEAK_AGE_GAP_AGE_REBOUND_BRANCH",
+        "known_by_signal": true,
+        "latest_source": "completed signal-day close"
+      },
+      {
+        "binding": true,
+        "condition": "UNION_OR_AND_DEDUP",
+        "known_by_signal": true,
+        "latest_source": "completed signal time"
+      },
+      {
+        "binding": true,
+        "condition": "NEXT_LEGAL_MINUTE_OPEN_AND_HEADROOM",
+        "known_by_entry": true,
+        "known_by_signal": false,
+        "latest_source": "entry minute open and PIT daily execution state"
+      },
+      {
+        "binding": true,
+        "condition": "PORTFOLIO_COLLISION_RANK",
+        "known_by_entry": true,
+        "known_by_signal": false,
+        "latest_source": "entry time, entry price/target, and pre-gap density"
+      },
+      {
+        "binding": false,
+        "condition": "A67_TARGET_H20_T1",
+        "known_by_entry": false,
+        "known_by_signal": false,
+        "latest_source": "future bars used only for post-entry execution/outcome",
+        "outcome_only": true
+      }
+    ],
+    "experiment": "ASHARE-TRUE-GAP-BELOW-L-V26-V27-UNION-V1",
+    "future_touch_used_to_validate_earlier_signal_count": 0,
+    "future_trough_used_count": 0,
+    "later_recovery_confirms_earlier_signal_count": 0,
+    "negative_shift_or_lead_in_admission_count": 0,
+    "portfolio_rank_uses_outcome_field_count": 0,
+    "row_level_failure_counts": {
+      "DIAGNOSTIC_2024_2025_corridor_touch_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_current_depth_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_entry_below_up_limit_if_executable_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_entry_coordinate_recomputed_if_executable_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_entry_lineage_matches_signal_if_executable_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_entry_strictly_after_signal_if_executable_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_exact_120_session_history_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_exact_120x241_minute_history_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_feature_latest_timestamp_at_or_before_signal_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_frozen_pre_gap_return_gate_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_frozen_reversal_state_gate_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_frozen_vap_density_gate_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_gap_age_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_gap_coordinate_match_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_headroom_valid_if_executable_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_max_depth_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_no_L_touch_through_signal_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_peak_age_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_prefix_first_prior_high_signal_match_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_signal_calendar_identity_match_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_signal_is_completed_daily_close_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_signal_rolling_window_complete_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_signal_rolling_window_valid_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_source_trigger_is_frozen_prior_high_reversal_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_true_gap_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_union_branch_recomputed_failure_count": 0,
+      "DIAGNOSTIC_2024_2025_vap_latest_source_before_gap_failure_count": 0,
+      "OBSERVED_2017_2023_corridor_touch_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_current_depth_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_entry_below_up_limit_if_executable_failure_count": 0,
+      "OBSERVED_2017_2023_entry_coordinate_recomputed_if_executable_failure_count": 0,
+      "OBSERVED_2017_2023_entry_lineage_matches_signal_if_executable_failure_count": 0,
+      "OBSERVED_2017_2023_entry_strictly_after_signal_if_executable_failure_count": 0,
+      "OBSERVED_2017_2023_exact_120_session_history_failure_count": 0,
+      "OBSERVED_2017_2023_exact_120x241_minute_history_failure_count": 0,
+      "OBSERVED_2017_2023_feature_latest_timestamp_at_or_before_signal_failure_count": 0,
+      "OBSERVED_2017_2023_frozen_pre_gap_return_gate_failure_count": 0,
+      "OBSERVED_2017_2023_frozen_reversal_state_gate_failure_count": 0,
+      "OBSERVED_2017_2023_frozen_vap_density_gate_failure_count": 0,
+      "OBSERVED_2017_2023_gap_age_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_gap_coordinate_match_failure_count": 0,
+      "OBSERVED_2017_2023_headroom_valid_if_executable_failure_count": 0,
+      "OBSERVED_2017_2023_max_depth_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_no_L_touch_through_signal_failure_count": 0,
+      "OBSERVED_2017_2023_peak_age_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_prefix_first_prior_high_signal_match_failure_count": 0,
+      "OBSERVED_2017_2023_signal_calendar_identity_match_failure_count": 0,
+      "OBSERVED_2017_2023_signal_is_completed_daily_close_failure_count": 0,
+      "OBSERVED_2017_2023_signal_rolling_window_complete_failure_count": 0,
+      "OBSERVED_2017_2023_signal_rolling_window_valid_failure_count": 0,
+      "OBSERVED_2017_2023_source_trigger_is_frozen_prior_high_reversal_failure_count": 0,
+      "OBSERVED_2017_2023_true_gap_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_union_branch_recomputed_failure_count": 0,
+      "OBSERVED_2017_2023_vap_latest_source_before_gap_failure_count": 0
+    },
+    "verdict": "NO_FORWARD_INFORMATION_DETECTED"
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-V26-V27-UNION-V1",
+  "periods": {
+    "DIAGNOSTIC_2024_2025": {
+      "accepted_per_year": 79.5,
+      "accepted_source": {
+        "BOTH": 57,
+        "V26_ONLY": 40,
+        "V27_ONLY": 62
+      },
+      "complete_outcomes": 163,
+      "complete_source": {
+        "BOTH": 59,
+        "V26_ONLY": 40,
+        "V27_ONLY": 64
+      },
+      "hashes": {
+        "portfolio_accepted": "96885fbf05e3d01d4e1749b4b245e94bc9a1dbf63bbbd8fb7b366fdb30da8080",
+        "portfolio_nav": "9ae85cd0c6e1184faf941e7bef96e6b91cee9c59ee2baf979871244b1609a5a4",
+        "union_outcomes": "6ad55c0b0711385ec75abb06b42b61447e9067345cd4520b86f399955587e703"
+      },
+      "outcome_audit": {
+        "duplicate_gap_outcome_count": 0,
+        "outcome_without_stage_a_identity_count": 0,
+        "overlap_outcome_mismatch_count": 0,
+        "t1_violation_count": 0,
+        "target_at_or_above_L_count": 0
+      },
+      "portfolio": {
+        "CHINEXT": {
+          "annual_returns": {
+            "2024": 0.04181699089291224,
+            "2025": 0.013784701688966505,
+            "2026": 0.0
+          },
+          "average_utilization": 0.009993642107287985,
+          "best_day": 0.009105256437138776,
+          "cagr": 0.027048400482486024,
+          "cvar5": -0.09350352194354161,
+          "max_drawdown": -0.005876250508727976,
+          "mean_holding_sessions": 7.277777777777778,
+          "mean_net": 0.08174527483068969,
+          "median_holding_sessions": 4.5,
+          "median_net": 0.060062716730098775,
+          "return_excluding_best_day": 0.046648127724483235,
+          "return_excluding_best_five_days": 0.023182379583612356,
+          "severe10": 0.037037037037037035,
+          "sharpe": 1.9601089788019779,
+          "top5_positive_trade_pnl_share": 0.3039742263889776,
+          "total_return": 0.05617812732686778,
+          "trades": 54,
+          "u_hit": 0.8518518518518519,
+          "win": 0.9074074074074074,
+          "worst_day": -0.005876250508727976
+        },
+        "COMBINED": {
+          "annual_returns": {
+            "2024": 0.04745889486906263,
+            "2025": 0.009562650940881712,
+            "2026": -0.00025969196231279135
+          },
+          "average_utilization": 0.018520442570942975,
+          "best_day": 0.011868960902550185,
+          "cagr": 0.027533862019074595,
+          "cvar5": -0.1932079360845238,
+          "max_drawdown": -0.009785590939854316,
+          "mean_holding_sessions": 9.377358490566039,
+          "mean_net": 0.05679253561054955,
+          "median_holding_sessions": 6.0,
+          "median_net": 0.06008834664778506,
+          "return_excluding_best_day": 0.044800069622109806,
+          "return_excluding_best_five_days": 0.015272519469204493,
+          "severe10": 0.07547169811320754,
+          "sharpe": 1.713241629947872,
+          "top5_positive_trade_pnl_share": 0.1273284238698851,
+          "top_five_entry_date_trade_share": 0.5849056603773585,
+          "total_return": 0.0572007607994367,
+          "trades": 159,
+          "u_hit": 0.7232704402515723,
+          "unique_entry_dates": 50,
+          "unique_symbols": 157,
+          "win": 0.8238993710691824,
+          "worst_day": -0.004497159212900059
+        },
+        "MAIN": {
+          "annual_returns": {
+            "2024": 0.05310079884521279,
+            "2025": 0.005385838796602815,
+            "2026": -0.0005187475542971498
+          },
+          "average_utilization": 0.0269584071308712,
+          "best_day": 0.014616173988412529,
+          "cagr": 0.028019083327692096,
+          "cvar5": -0.21452030134613853,
+          "max_drawdown": -0.020311297613770152,
+          "mean_holding_sessions": 10.457142857142857,
+          "mean_net": 0.043959698297334614,
+          "median_holding_sessions": 6.0,
+          "median_net": 0.060168019385701044,
+          "return_excluding_best_day": 0.042979031284484215,
+          "return_excluding_best_five_days": 0.005071232968923978,
+          "severe10": 0.09523809523809523,
+          "sharpe": 1.3706205052441556,
+          "top5_positive_trade_pnl_share": 0.15333383050271776,
+          "total_return": 0.058223394272005624,
+          "trades": 105,
+          "u_hit": 0.6571428571428571,
+          "win": 0.780952380952381,
+          "worst_day": -0.0032121006048274614
+        },
+        "audit": {
+          "capacity_skips": 0,
+          "duplicate_symbol_skips": 4,
+          "max_k_violation_count": 0,
+          "negative_cash_or_leverage_count": 0
+        }
+      },
+      "portfolio_accepted": 159,
+      "portfolio_audit": {
+        "max_k_violation_count": 0,
+        "negative_cash_or_leverage_count": 0
+      },
+      "yearly": {
+        "2024": {
+          "mean_net": 0.06854095945155181,
+          "median_net": 0.07524733472688583,
+          "severe10": 0.08181818181818182,
+          "trades": 110,
+          "win": 0.8363636363636363
+        },
+        "2025": {
+          "mean_net": 0.030418522906258738,
+          "median_net": 0.04404696286032128,
+          "severe10": 0.061224489795918366,
+          "trades": 49,
+          "win": 0.7959183673469388
+        }
+      }
+    },
+    "OBSERVED_2017_2023": {
+      "accepted_per_year": 90.85714285714286,
+      "accepted_source": {
+        "BOTH": 189,
+        "V26_ONLY": 258,
+        "V27_ONLY": 189
+      },
+      "complete_outcomes": 780,
+      "complete_source": {
+        "BOTH": 269,
+        "V26_ONLY": 275,
+        "V27_ONLY": 236
+      },
+      "hashes": {
+        "portfolio_accepted": "f6c1eda138618ce7d6325bce3d5c60a3456345460f46ca85b478458223d82340",
+        "portfolio_nav": "a68bb2332f8a5b506914d6ec1351fabd73ebfcc6527e522ca6b8f8dc6001c593",
+        "union_outcomes": "c25ec41f7459a45e7a795a79d1e086d0774358a7f8b128df083a8e959169fa57"
+      },
+      "outcome_audit": {
+        "duplicate_gap_outcome_count": 0,
+        "outcome_without_stage_a_identity_count": 0,
+        "overlap_outcome_mismatch_count": 0,
+        "t1_violation_count": 0,
+        "target_at_or_above_L_count": 0
+      },
+      "portfolio": {
+        "CHINEXT": {
+          "annual_returns": {
+            "2017": 0.001751688779325855,
+            "2018": 0.06811573513258318,
+            "2019": 0.009422014111683419,
+            "2020": 0.0010611670808648999,
+            "2021": 0.010073284841703112,
+            "2022": 0.011267528702705976,
+            "2023": 0.0013699924237078331,
+            "2024": 0.0
+          },
+          "average_utilization": 0.015432277786919937,
+          "best_day": 0.020410545038777483,
+          "cagr": 0.01433869073359606,
+          "cvar5": -0.20091653425636488,
+          "max_drawdown": -0.019980906474222793,
+          "mean_holding_sessions": 11.229166666666666,
+          "mean_net": 0.042769978188332135,
+          "median_holding_sessions": 10.0,
+          "median_net": 0.05746743977542057,
+          "return_excluding_best_day": 0.08380304021247409,
+          "return_excluding_best_five_days": 0.04526547473045617,
+          "severe10": 0.078125,
+          "sharpe": 1.0393230550528045,
+          "top5_positive_trade_pnl_share": 0.0854590753548291,
+          "total_return": 0.10592405097789115,
+          "trades": 192,
+          "u_hit": 0.6822916666666666,
+          "win": 0.7864583333333334,
+          "worst_day": -0.006839373377224844
+        },
+        "COMBINED": {
+          "annual_returns": {
+            "2017": 0.005365025001094148,
+            "2018": 0.09604215526111748,
+            "2019": 0.022625882918829054,
+            "2020": 0.0032982331132933584,
+            "2021": 0.018493913160082975,
+            "2022": 0.01804099050313801,
+            "2023": 0.00395795237983898,
+            "2024": -0.0011060976839154524
+          },
+          "average_utilization": 0.0281361105647712,
+          "best_day": 0.022242635954733858,
+          "cagr": 0.023138994444794392,
+          "cvar5": -0.19397831272787477,
+          "max_drawdown": -0.028299007202839843,
+          "mean_holding_sessions": 12.281446540880504,
+          "mean_net": 0.04117234048781863,
+          "median_holding_sessions": 11.0,
+          "median_net": 0.057453924049899796,
+          "return_excluding_best_day": 0.15001222485762788,
+          "return_excluding_best_five_days": 0.0963245179433525,
+          "severe10": 0.08490566037735849,
+          "sharpe": 1.2840024014792695,
+          "top5_positive_trade_pnl_share": 0.04346034303031599,
+          "top_five_entry_date_trade_share": 0.2531446540880503,
+          "total_return": 0.17559152811862755,
+          "trades": 636,
+          "u_hit": 0.6446540880503144,
+          "unique_entry_dates": 261,
+          "unique_symbols": 563,
+          "win": 0.7720125786163522,
+          "worst_day": -0.009343501388084818
+        },
+        "MAIN": {
+          "annual_returns": {
+            "2017": 0.008978361222862441,
+            "2018": 0.1237685561439017,
+            "2019": 0.03508596399951469,
+            "2020": 0.005356941452633768,
+            "2021": 0.02621006654766278,
+            "2022": 0.024150180811511213,
+            "2023": 0.0062627507429902085,
+            "2024": -0.0020863819770099434
+          },
+          "average_utilization": 0.040162736555163135,
+          "best_day": 0.024004954726513095,
+          "cagr": 0.0315023678648243,
+          "cvar5": -0.18782037078897418,
+          "max_drawdown": -0.03628828063520961,
+          "mean_holding_sessions": 12.736486486486486,
+          "mean_net": 0.04048147013083981,
+          "median_holding_sessions": 11.0,
+          "median_net": 0.05733726975779052,
+          "return_excluding_best_day": 0.21606736325992038,
+          "return_excluding_best_five_days": 0.14442261307206894,
+          "severe10": 0.08783783783783784,
+          "sharpe": 1.3077427769918575,
+          "top5_positive_trade_pnl_share": 0.061315386914502217,
+          "total_return": 0.24525900525936395,
+          "trades": 444,
+          "u_hit": 0.6283783783783784,
+          "win": 0.7657657657657657,
+          "worst_day": -0.011777175483574376
+        },
+        "audit": {
+          "capacity_skips": 132,
+          "duplicate_symbol_skips": 12,
+          "max_k_violation_count": 0,
+          "negative_cash_or_leverage_count": 0
+        }
+      },
+      "portfolio_accepted": 636,
+      "portfolio_audit": {
+        "max_k_violation_count": 0,
+        "negative_cash_or_leverage_count": 0
+      },
+      "yearly": {
+        "2017": {
+          "mean_net": 0.01729294738441709,
+          "median_net": 0.046198989562386994,
+          "severe10": 0.08620689655172414,
+          "trades": 58,
+          "win": 0.6724137931034483
+        },
+        "2018": {
+          "mean_net": 0.04997535742064334,
+          "median_net": 0.06675809609557892,
+          "severe10": 0.08666666666666667,
+          "trades": 300,
+          "win": 0.8333333333333334
+        },
+        "2019": {
+          "mean_net": 0.048819569017082454,
+          "median_net": 0.05112355016121506,
+          "severe10": 0.013888888888888888,
+          "trades": 72,
+          "win": 0.7916666666666666
+        },
+        "2020": {
+          "mean_net": 0.012072737402607685,
+          "median_net": 0.0370481606089158,
+          "severe10": 0.16666666666666666,
+          "trades": 42,
+          "win": 0.6190476190476191
+        },
+        "2021": {
+          "mean_net": 0.04113111978430455,
+          "median_net": 0.05885509446962245,
+          "severe10": 0.09230769230769231,
+          "trades": 65,
+          "win": 0.7692307692307693
+        },
+        "2022": {
+          "mean_net": 0.04236361335252035,
+          "median_net": 0.06109575848486504,
+          "severe10": 0.1111111111111111,
+          "trades": 72,
+          "win": 0.7638888888888888
+        },
+        "2023": {
+          "mean_net": 0.016453462528249346,
+          "median_net": 0.0024650797975682703,
+          "severe10": 0.037037037037037035,
+          "trades": 27,
+          "win": 0.5185185185185185
+        }
+      }
+    }
+  },
+  "scientific_status": "RETROSPECTIVE_UNION_CANDIDATE_NOT_NEW_VALIDATION",
+  "source_hashes_with_outcomes": {
+    "diagnostic_2024_2025_outcome_daily_0": "538272c99a32cd888d96c3dddc91dba8e72a4341c65830c22eb7a8f218df4e20",
+    "diagnostic_2024_2025_outcome_daily_1": "265f1a5d65099694b0a87ac6418cca61006be89d0df1e6c1d5ed5678c38ef7b0",
+    "diagnostic_2024_2025_v26_entries_0": "8dc7046b1a995975bdfd55906b8c639c4c4cad125b4df59d557320f3a8894151",
+    "diagnostic_2024_2025_v26_outcomes_0": "45267597ce362aafa6790b99c7140ce9de7bea42b5e328718455303358da09a5",
+    "diagnostic_2024_2025_v27_entries_0": "bda4fac645192dedf0cf3574555993fd83b2c7512196abc4f5a286ea0adc747a",
+    "diagnostic_2024_2025_v27_outcomes_0": "a2ffbe9e7f08f1b554f9ee601724bc5c2ebd7b51f3249c300af24e25000dbde6",
+    "execution_runner": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+    "new_daily": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+    "observed_2017_2023_outcome_daily_0": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+    "observed_2017_2023_outcome_daily_1": "a700f7cb32c2496475cdd745ea691835601e1f003954beb26ac4341407504048",
+    "observed_2017_2023_v26_entries_0": "6e96bd5d55618ad701913abe0e9e10244be0c8327b6befa154f15450fc061436",
+    "observed_2017_2023_v26_entries_1": "ab46c958991ba26b37118b5dbf839a35d5b089ff21271faff06142bae1b2f629",
+    "observed_2017_2023_v26_outcomes_0": "16fe367fe3a77b319d30439a3680fa42444671a4474ba9802caa90facec74f2a",
+    "observed_2017_2023_v26_outcomes_1": "413cf066487551906684ebdd5694249f9ebf3f92ec5009bff7d8795a793f2591",
+    "observed_2017_2023_v27_entries_0": "f98bb7f626422aa999c7a9d3582aaa60b2ebec881c18ee5e2dd2cb731518ba98",
+    "observed_2017_2023_v27_entries_1": "3a3eeac3870b83f8fe11358f0178485a10c703fb1ce7c1802d63812e647f2418",
+    "observed_2017_2023_v27_outcomes_0": "f9e0fa4097783592c7e01d359e8c323418eff64339bc1e575c1e1da86f121059",
+    "observed_2017_2023_v27_outcomes_1": "901cc8b20cc81d9d0860fcf534e34ecb95ab5ab597d8d53b14306907f063894e",
+    "old_daily": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "portfolio_base": "3b536b131f4e89663d8cf2e4167a7f429274e304d14485194aca90f9670e91e4",
+    "portfolio_runner": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5",
+    "v13_contract": "1a103219811492a79ba52b1cf078d6902a19ae3479330d69d2fefcdb079e43a3",
+    "v13_runner": "a156657128053cdeda68e53d5f433de34976353bcc79f25cfab9410bb779dc26",
+    "v26_contract": "994b816bd6a925fedfee96466e4c50da75f366ee6caeb3405cdfc2668ffd2f45",
+    "v26_runner": "8b160482de2df7de93e2ce18daab2bb47c7174f808be9f43d7b622a4695e645b",
+    "v27_contract": "73851238f72f9ece1f7c47e332cce917da99d13fc9e1b9a941b3ce5d76edb693",
+    "v27_runner": "86dd15e8a49da1f6481d3552f02ffbbcdb874eaf6b8b0754220d36b4dee9face"
+  },
+  "stage_a_verification": {
+    "checks": {
+      "causality_audit_sha256": "a0197d48ab356ae04200db2889f71a17656ee9d3b9bbdfd7d30a43b7852a73e8",
+      "contract_sha256": "4ba25990713180979ec58977075bb6cbb6a6c5155189ae9ce340e9f068649240",
+      "runner_sha256": "1f354df5445fe5798f2b5fc2a9b58eae459b5ed8580c7fed0814378e8a6bd132",
+      "spec_sha256": "7c2b2413c8cadebe0deb8bc9a247ea4655eb026216d95b0d4f55d8194ea5bbd2"
+    },
+    "periods": {
+      "DIAGNOSTIC_2024_2025": {
+        "buy_at_or_above_up_limit_count": 0,
+        "causal_prefix_audit_sha256": "9772b83fd71e0a4cd47627e96da5cfca5ff3fb1ed53d23de9d1b7c03157203d5",
+        "causal_prefix_failures": {
+          "corridor_touch_recomputed_failure_count": 0,
+          "current_depth_recomputed_failure_count": 0,
+          "entry_below_up_limit_if_executable_failure_count": 0,
+          "entry_coordinate_recomputed_if_executable_failure_count": 0,
+          "entry_lineage_matches_signal_if_executable_failure_count": 0,
+          "entry_strictly_after_signal_if_executable_failure_count": 0,
+          "exact_120_session_history_failure_count": 0,
+          "exact_120x241_minute_history_failure_count": 0,
+          "feature_latest_timestamp_at_or_before_signal_failure_count": 0,
+          "frozen_pre_gap_return_gate_failure_count": 0,
+          "frozen_reversal_state_gate_failure_count": 0,
+          "frozen_vap_density_gate_failure_count": 0,
+          "gap_age_recomputed_failure_count": 0,
+          "gap_coordinate_match_failure_count": 0,
+          "headroom_valid_if_executable_failure_count": 0,
+          "max_depth_recomputed_failure_count": 0,
+          "no_L_touch_through_signal_failure_count": 0,
+          "peak_age_recomputed_failure_count": 0,
+          "prefix_first_prior_high_signal_match_failure_count": 0,
+          "signal_calendar_identity_match_failure_count": 0,
+          "signal_is_completed_daily_close_failure_count": 0,
+          "signal_rolling_window_complete_failure_count": 0,
+          "signal_rolling_window_valid_failure_count": 0,
+          "source_trigger_is_frozen_prior_high_reversal_failure_count": 0,
+          "true_gap_recomputed_failure_count": 0,
+          "union_branch_recomputed_failure_count": 0,
+          "vap_latest_source_before_gap_failure_count": 0
+        },
+        "entry_at_or_before_signal_count": 0,
+        "entry_status": {
+          "EXECUTABLE_ENTRY": 163,
+          "INSUFFICIENT_L_HEADROOM": 17,
+          "NO_NEXT_BUYABLE_OPEN": 1
+        },
+        "feature_uses_post_signal_information_count": 0,
+        "overlap_signals": 68,
+        "union_entries_sha256": "3ac64b881306325553e5795495163d771a65e1d2ae410e647270a8d7755110f4",
+        "union_signals": 181,
+        "union_source": {
+          "BOTH": 68,
+          "V26_ONLY": 41,
+          "V27_ONLY": 72
+        },
+        "v26_signals": 109,
+        "v27_signals": 140
+      },
+      "OBSERVED_2017_2023": {
+        "buy_at_or_above_up_limit_count": 0,
+        "causal_prefix_audit_sha256": "b027f8f739dec65657a336c02b82105b3aa48a4d236785dbbf5e60e682d8ce55",
+        "causal_prefix_failures": {
+          "corridor_touch_recomputed_failure_count": 0,
+          "current_depth_recomputed_failure_count": 0,
+          "entry_below_up_limit_if_executable_failure_count": 0,
+          "entry_coordinate_recomputed_if_executable_failure_count": 0,
+          "entry_lineage_matches_signal_if_executable_failure_count": 0,
+          "entry_strictly_after_signal_if_executable_failure_count": 0,
+          "exact_120_session_history_failure_count": 0,
+          "exact_120x241_minute_history_failure_count": 0,
+          "feature_latest_timestamp_at_or_before_signal_failure_count": 0,
+          "frozen_pre_gap_return_gate_failure_count": 0,
+          "frozen_reversal_state_gate_failure_count": 0,
+          "frozen_vap_density_gate_failure_count": 0,
+          "gap_age_recomputed_failure_count": 0,
+          "gap_coordinate_match_failure_count": 0,
+          "headroom_valid_if_executable_failure_count": 0,
+          "max_depth_recomputed_failure_count": 0,
+          "no_L_touch_through_signal_failure_count": 0,
+          "peak_age_recomputed_failure_count": 0,
+          "prefix_first_prior_high_signal_match_failure_count": 0,
+          "signal_calendar_identity_match_failure_count": 0,
+          "signal_is_completed_daily_close_failure_count": 0,
+          "signal_rolling_window_complete_failure_count": 0,
+          "signal_rolling_window_valid_failure_count": 0,
+          "source_trigger_is_frozen_prior_high_reversal_failure_count": 0,
+          "true_gap_recomputed_failure_count": 0,
+          "union_branch_recomputed_failure_count": 0,
+          "vap_latest_source_before_gap_failure_count": 0
+        },
+        "entry_at_or_before_signal_count": 0,
+        "entry_status": {
+          "EXECUTABLE_ENTRY": 780,
+          "INSUFFICIENT_L_HEADROOM": 32,
+          "RISK_BLOCKED_ENTRY": 3
+        },
+        "feature_uses_post_signal_information_count": 0,
+        "overlap_signals": 284,
+        "union_entries_sha256": "221fdb21ed74ae1d17de250fb24e5ce7cfe2edf81bf2b0c7e30ed1d6dd4c1441",
+        "union_signals": 815,
+        "union_source": {
+          "BOTH": 284,
+          "V26_ONLY": 285,
+          "V27_ONLY": 246
+        },
+        "v26_signals": 569,
+        "v27_signals": 530
+      }
+    },
+    "verified": true
+  },
+  "strategy_logic_changed_after_union_result_count": 0,
+  "verdict": "V26_V27_UNION_CAUSAL_IMPLEMENTATION_VALID"
+}

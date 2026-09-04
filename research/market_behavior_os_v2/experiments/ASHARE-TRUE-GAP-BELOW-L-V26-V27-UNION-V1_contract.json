@@ -1,0 +1,49 @@
+{
+  "base": {
+    "entry": "first legal 1-minute open strictly after signal",
+    "minimum_maximum_depth_below_L": 0.1,
+    "minimum_net_L_headroom": 0.05,
+    "minimum_signal_depth_below_L": 0.05,
+    "no_L_touch_before_signal": true,
+    "pre_gap_daily_and_minute_history": "exact 120 completed sessions",
+    "trigger": "first completed daily close > previous completed daily high",
+    "true_gap": "High_t < Low_t_minus_1"
+  },
+  "execution": {
+    "T1": true,
+    "collision_order": [
+      "entry_time ascending",
+      "realized_net_target_at_entry descending",
+      "pre_gap_inside_density_relative_local ascending",
+      "symbol ascending",
+      "gap_id ascending"
+    ],
+    "failure_stop": "NONE",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve; one active symbol",
+    "round_trip_cost": 0.004,
+    "target": "entry + 0.67 * (L - entry), strictly below L",
+    "time_stop": "H20"
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-V26-V27-UNION-V1",
+  "governance": {
+    "2017_2025_already_observed": true,
+    "2026_new_signal_use": false,
+    "no_rule_selection_from_union_results": true
+  },
+  "scientific_status": "RETROSPECTIVE_UNION_CANDIDATE_NOT_NEW_VALIDATION",
+  "strategy_identity": "V13_BASE_AND_(V26_OR_V27)",
+  "union": {
+    "operator": "OR",
+    "overlap_policy": "one GAP_ID, one signal, one position",
+    "priority_between_branches": "NONE"
+  },
+  "v26_branch": {
+    "gap_width_pct_max": 0.03,
+    "pre_gap_corridor_touch_sessions_max": 10
+  },
+  "v27_branch": {
+    "gap_age_sessions_max": 14,
+    "pre_peak_to_gap_sessions_min": 20,
+    "rebound_from_post_gap_low_over_L_min": 0.05
+  }
+}

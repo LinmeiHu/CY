@@ -1,0 +1,162 @@
+{
+  "admission_uses_outcome_field_count": 0,
+  "condition_ledger": [
+    {
+      "binding": true,
+      "condition": "TRUE_GAP",
+      "known_by_signal": true,
+      "latest_source": "gap-day completed daily high and previous completed daily low"
+    },
+    {
+      "binding": true,
+      "condition": "QD010_COORDINATE_AND_LINEAGE",
+      "known_by_signal": true,
+      "latest_source": "gap day; PIT corporate-action state known by each date"
+    },
+    {
+      "binding": true,
+      "condition": "EXACT_120_DAILY_HISTORY",
+      "known_by_signal": true,
+      "latest_source": "completed session immediately before gap"
+    },
+    {
+      "binding": true,
+      "condition": "EXACT_120x241_MINUTE_VAP",
+      "known_by_signal": true,
+      "latest_source": "15:00 of completed session immediately before gap"
+    },
+    {
+      "binding": true,
+      "condition": "PRE_GAP_TOUCH_AND_DENSITY",
+      "known_by_signal": true,
+      "latest_source": "completed session immediately before gap"
+    },
+    {
+      "binding": true,
+      "condition": "PRE_GAP_RETURN_20D_NONPOSITIVE",
+      "known_by_signal": true,
+      "latest_source": "completed session immediately before gap"
+    },
+    {
+      "binding": true,
+      "condition": "NO_L_TOUCH_BEFORE_SIGNAL",
+      "known_by_signal": true,
+      "latest_source": "completed signal-day high"
+    },
+    {
+      "binding": true,
+      "condition": "MAX_DEPTH_CURRENT_DEPTH_AND_LOW20_RECOVERY",
+      "known_by_signal": true,
+      "latest_source": "completed signal-day OHLC and trailing 20 completed sessions"
+    },
+    {
+      "binding": true,
+      "condition": "FIRST_PRIOR_HIGH_REVERSAL",
+      "known_by_signal": true,
+      "latest_source": "signal close and previous completed high"
+    },
+    {
+      "binding": true,
+      "condition": "V26_WIDTH_AND_CORRIDOR_BRANCH",
+      "known_by_signal": true,
+      "latest_source": "gap day and pre-gap history"
+    },
+    {
+      "binding": true,
+      "condition": "V27_PEAK_AGE_GAP_AGE_REBOUND_BRANCH",
+      "known_by_signal": true,
+      "latest_source": "completed signal-day close"
+    },
+    {
+      "binding": true,
+      "condition": "UNION_OR_AND_DEDUP",
+      "known_by_signal": true,
+      "latest_source": "completed signal time"
+    },
+    {
+      "binding": true,
+      "condition": "NEXT_LEGAL_MINUTE_OPEN_AND_HEADROOM",
+      "known_by_entry": true,
+      "known_by_signal": false,
+      "latest_source": "entry minute open and PIT daily execution state"
+    },
+    {
+      "binding": true,
+      "condition": "PORTFOLIO_COLLISION_RANK",
+      "known_by_entry": true,
+      "known_by_signal": false,
+      "latest_source": "entry time, entry price/target, and pre-gap density"
+    },
+    {
+      "binding": false,
+      "condition": "A67_TARGET_H20_T1",
+      "known_by_entry": false,
+      "known_by_signal": false,
+      "latest_source": "future bars used only for post-entry execution/outcome",
+      "outcome_only": true
+    }
+  ],
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-V26-V27-UNION-V1",
+  "future_touch_used_to_validate_earlier_signal_count": 0,
+  "future_trough_used_count": 0,
+  "later_recovery_confirms_earlier_signal_count": 0,
+  "negative_shift_or_lead_in_admission_count": 0,
+  "portfolio_rank_uses_outcome_field_count": 0,
+  "row_level_failure_counts": {
+    "DIAGNOSTIC_2024_2025_corridor_touch_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_current_depth_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_entry_below_up_limit_if_executable_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_entry_coordinate_recomputed_if_executable_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_entry_lineage_matches_signal_if_executable_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_entry_strictly_after_signal_if_executable_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_exact_120_session_history_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_exact_120x241_minute_history_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_feature_latest_timestamp_at_or_before_signal_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_frozen_pre_gap_return_gate_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_frozen_reversal_state_gate_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_frozen_vap_density_gate_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_gap_age_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_gap_coordinate_match_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_headroom_valid_if_executable_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_max_depth_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_no_L_touch_through_signal_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_peak_age_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_prefix_first_prior_high_signal_match_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_signal_calendar_identity_match_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_signal_is_completed_daily_close_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_signal_rolling_window_complete_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_signal_rolling_window_valid_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_source_trigger_is_frozen_prior_high_reversal_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_true_gap_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_union_branch_recomputed_failure_count": 0,
+    "DIAGNOSTIC_2024_2025_vap_latest_source_before_gap_failure_count": 0,
+    "OBSERVED_2017_2023_corridor_touch_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_current_depth_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_entry_below_up_limit_if_executable_failure_count": 0,
+    "OBSERVED_2017_2023_entry_coordinate_recomputed_if_executable_failure_count": 0,
+    "OBSERVED_2017_2023_entry_lineage_matches_signal_if_executable_failure_count": 0,
+    "OBSERVED_2017_2023_entry_strictly_after_signal_if_executable_failure_count": 0,
+    "OBSERVED_2017_2023_exact_120_session_history_failure_count": 0,
+    "OBSERVED_2017_2023_exact_120x241_minute_history_failure_count": 0,
+    "OBSERVED_2017_2023_feature_latest_timestamp_at_or_before_signal_failure_count": 0,
+    "OBSERVED_2017_2023_frozen_pre_gap_return_gate_failure_count": 0,
+    "OBSERVED_2017_2023_frozen_reversal_state_gate_failure_count": 0,
+    "OBSERVED_2017_2023_frozen_vap_density_gate_failure_count": 0,
+    "OBSERVED_2017_2023_gap_age_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_gap_coordinate_match_failure_count": 0,
+    "OBSERVED_2017_2023_headroom_valid_if_executable_failure_count": 0,
+    "OBSERVED_2017_2023_max_depth_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_no_L_touch_through_signal_failure_count": 0,
+    "OBSERVED_2017_2023_peak_age_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_prefix_first_prior_high_signal_match_failure_count": 0,
+    "OBSERVED_2017_2023_signal_calendar_identity_match_failure_count": 0,
+    "OBSERVED_2017_2023_signal_is_completed_daily_close_failure_count": 0,
+    "OBSERVED_2017_2023_signal_rolling_window_complete_failure_count": 0,
+    "OBSERVED_2017_2023_signal_rolling_window_valid_failure_count": 0,
+    "OBSERVED_2017_2023_source_trigger_is_frozen_prior_high_reversal_failure_count": 0,
+    "OBSERVED_2017_2023_true_gap_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_union_branch_recomputed_failure_count": 0,
+    "OBSERVED_2017_2023_vap_latest_source_before_gap_failure_count": 0
+  },
+  "verdict": "NO_FORWARD_INFORMATION_DETECTED"
+}
