@@ -1,0 +1,40 @@
+{
+  "experiment": "ASHARE-BEAR-MARKET-ACTIVE-DEMAND-REVERSAL-TRANSLATION-V3",
+  "selected_profile": "T20_H60",
+  "selection_period": "2014-01-01 through 2018-12-31",
+  "selection_rule": "highest median of five annual mean net returns among profiles with at least four positive years",
+  "selection_statistics": {
+    "positive_years": 4,
+    "median_annual_mean_net": 0.08330654092467031,
+    "pooled_median_net": 0.19599999999999995,
+    "severe_loss10": 0.22021419009370816
+  },
+  "frozen_translation": {
+    "entry": "first legal executable daily open strictly after the completed signal, no later than three market sessions",
+    "profit_target_from_entry": 0.20,
+    "time_stop_completed_sessions": 60,
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004
+  },
+  "frozen_capacity_replay": {
+    "main_sleeve_weight": 0.50,
+    "chinext_sleeve_weight": 0.50,
+    "maximum_positions_per_sleeve": 10,
+    "one_active_position_per_symbol": true,
+    "no_cross_sleeve_transfer": true,
+    "no_leverage": true,
+    "same_entry_date_ranking": [
+      "higher signal turnover versus prior-20-session mean",
+      "higher completed signal close location",
+      "lexicographically smaller event_id"
+    ],
+    "same_date_order": "legal open exits first, then ranked open entries, then intraday target exits"
+  },
+  "chronological_robustness_2019_2021": {
+    "2019_mean_net": 0.04093487093795504,
+    "2020_mean_net": 0.03446157385530333,
+    "2021_mean_net": 0.04747581049441569
+  },
+  "selection_used_2022_2023_outcomes": false,
+  "repository_2024_plus_data_opened": false
+}

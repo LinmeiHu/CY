@@ -1,0 +1,68 @@
+{
+  "experiment": "ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-V10",
+  "status": "FULL_HISTORY_HISTORICAL_CANDIDATE_REQUIRES_NEW_FUTURE_CHALLENGE",
+  "economic_hypothesis": "A broad bear state contains both slow inventory erosion and fast forced liquidation. A stock that has fallen at least eight percent over the ten completed sessions before the signal, then prints the frozen OAI active-demand ignition while all-market twenty-session breadth is recovering, is more consistent with a capitulation transfer than with a weak bounce in a grinding decline.",
+  "scientific_governance": {
+    "development": ["2014-01-01", "2021-12-31"],
+    "post_observation_diagnostic": ["2022-01-01", "2023-12-31"],
+    "post_observation_used_for_strategy_claim": false,
+    "repository_2024_plus_data_opened": false,
+    "required_next_test": "one newly arriving, never-used future period"
+  },
+  "causal_market_state": {
+    "decision_clock": "completed signal session close",
+    "bear": "market median ret20 <= 0 AND market median ret60 <= 0 AND positive-ret20 share <= 0.50 AND positive-ret60 share <= 0.50",
+    "breadth_repair": "positive-ret20 share at the completed signal close is strictly greater than its value five completed market sessions earlier",
+    "bull_action": "HOLD_CASH",
+    "transition_action": "HOLD_CASH",
+    "entry_clock": "first legal executable open strictly after the completed signal"
+  },
+  "stock_signal": {
+    "base": "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1",
+    "base_conditions": [
+      "completed ret20 <= -10%",
+      "completed signal return >= +5%",
+      "completed close above the maximum high of the prior five completed sessions",
+      "signal turnover >= prior twenty-session mean",
+      "signal close location >= 70%",
+      "non-upper-limit signal close",
+      "twenty-session same-symbol cooldown"
+    ],
+    "fast_capitulation_gate": "prior10_return <= -8%, where prior10_return ends at the completed session immediately before the signal",
+    "future_extrema_used": false
+  },
+  "execution": {
+    "entry": "first legal executable open after the signal, no later than three market sessions",
+    "profit_target": "+20% from executable entry",
+    "time_stop": "after 60 completed holding sessions, exit at next legal executable open",
+    "failure_stop": "NONE",
+    "entry_cost_bps": 20,
+    "exit_cost_bps": 20,
+    "t_plus_one": true,
+    "suspension_limit_and_qd010_semantics": "unchanged authoritative contract"
+  },
+  "capacity": {
+    "main_sleeve_weight": 0.5,
+    "chinext_sleeve_weight": 0.5,
+    "maximum_active_positions_per_sleeve": 75,
+    "maximum_new_entries_per_sleeve_per_date": 20,
+    "daily_cap_selection": "smallest of the predeclared 5, 10 and 20 caps retaining more than fifty capacity-accepted completed trades per year on average",
+    "same_date_rank": "higher signal close location, then higher signal turnover ratio, then event_id",
+    "one_active_position_per_symbol": true,
+    "unused_capital": "CASH",
+    "no_leverage": true,
+    "no_cross_sleeve_transfer": true
+  },
+  "primary_portfolio": {
+    "position_fraction": "1/75 of current sleeve NAV",
+    "reason": "capacity-consistent primary replay",
+    "cohort_sizing_diagnostic": "10% sleeve-NAV date budget with a 2.5% per-name cap was weaker and is not selected"
+  },
+  "frozen_sources": {
+    "candidate_panel": "/Volumes/quant/CY_quant_research/ashare_oversold_stabilized_demand_reversal_v2/stage_a/candidates_2014_2023_outcome_blind.parquet",
+    "candidate_panel_sha256": "3391b3f9763c9c699e2bc09dccd2fe9748e93ee8e6316c4413ccd50753e2d263",
+    "causal_regime": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+    "causal_regime_sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a",
+    "daily": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet"
+  }
+}

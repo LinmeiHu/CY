@@ -1,0 +1,63 @@
+{
+  "experiment": "ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1",
+  "research_lane": "independent oversold active-demand reversal",
+  "economic_hypothesis": "After a completed twenty-session decline of at least ten percent, a non-limit advance of at least five percent that closes above the known prior-five-session high, in the upper thirty percent of its range, on at least normal turnover represents active demand crossing short-term trapped supply rather than passive absorption of an overnight gap.",
+  "stage_a": {
+    "candidate_count": 2707,
+    "blind_chart_count": 48,
+    "outcomes_opened": false,
+    "post_signal_bars_used": false,
+    "same_symbol_cooldown_sessions": 20,
+    "outcome_blind_coverage_revision": "The initial 15% decline state was broadened to 10% before returns to avoid crisis-only concentration."
+  },
+  "frozen_signal": {
+    "boards": ["MAIN", "CHINEXT"],
+    "st_stocks_excluded": true,
+    "history": "twenty completed same-symbol sessions hard-valid, tradable, market-rule-valid and corporate-action-valid",
+    "maximum_completed_twenty_session_return": -0.10,
+    "minimum_signal_step_return": 0.05,
+    "breakout": "signal completed coordinate close > maximum coordinate high of prior five completed sessions",
+    "minimum_signal_turnover_vs_prior20_mean": 1.0,
+    "minimum_signal_close_location": 0.70,
+    "signal_upper_limit_close_excluded": true
+  },
+  "execution": {
+    "entry": "first legal executable daily open after completed signal, no later than three market sessions",
+    "signal_bar_fill_allowed": false,
+    "t1_enforced": true,
+    "suspension_and_limit_tradability_enforced": true,
+    "corporate_action_lineage_fail_closed": true,
+    "entry_cost_bps": 20,
+    "exit_cost_bps": 20
+  },
+  "predeclared_profiles": [
+    "H10_NEXT_OPEN",
+    "H20_NEXT_OPEN",
+    "T10_H20_NO_STOP",
+    "T10_H20_SIGNAL_LOW_STOP"
+  ],
+  "profile_selection": {
+    "selection_years": [2014, 2015, 2016, 2017, 2018],
+    "minimum_positive_selection_years": 3,
+    "order": [
+      "highest median annual mean net return",
+      "highest pooled median net return",
+      "lowest pooled severe_loss10",
+      "shorter horizon",
+      "profile name"
+    ],
+    "confirmation_years": [2019, 2020, 2021],
+    "confirmation_gate": {
+      "average_completed_trades_per_year_strictly_above": 50,
+      "pooled_mean_net_at_least": 0.03,
+      "pooled_median_net_strictly_above": 0.0,
+      "each_confirmation_year_mean_net_strictly_above": 0.0
+    }
+  },
+  "data_governance": {
+    "development_data_latest_date": "2021-12-31",
+    "validation_2022_2023_opened_in_stage_b": false,
+    "repository_2024_plus_data_opened": false,
+    "no_post_outcome_signal_semantic_change": true
+  }
+}

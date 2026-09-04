@@ -1,0 +1,47 @@
+{
+  "experiment": "ASHARE-BEAR-MARKET-ACTIVE-DEMAND-REVERSAL-TRANSLATION-V3",
+  "status": "BOUNDED_TRANSLATION_FAMILY_FREEZE",
+  "economic_hypothesis": "A causally identified broad-bear-state active-demand ignition may require more than twenty sessions to complete its rebound. A known-at-entry twenty-percent target can realize a large repair without using future extrema.",
+  "signal": {
+    "identity": "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1",
+    "regime_gate": "exact causal BEAR state from ASHARE-CAUSAL-MARKET-REGIME-ROUTED-SIMPLE-STRATEGY-V1",
+    "additional_security_filter": "NONE"
+  },
+  "translation_candidates": [
+    {"profile": "H20", "target": null, "time_stop_sessions": 20},
+    {"profile": "H40", "target": null, "time_stop_sessions": 40},
+    {"profile": "H60", "target": null, "time_stop_sessions": 60},
+    {"profile": "T20_H40", "target": 0.20, "time_stop_sessions": 40},
+    {"profile": "T20_H60", "target": 0.20, "time_stop_sessions": 60}
+  ],
+  "common_execution": {
+    "entry": "first legal executable open strictly after the completed signal, no later than three market sessions",
+    "profit_target_eligible": "first T+1-sellable session after entry",
+    "time_exit": "next legal sellable open after the completed time-stop session",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "corporate_action_lineage": "fail closed"
+  },
+  "selection": {
+    "years": "2014-2018",
+    "primary": "highest median of five annual mean net returns",
+    "minimum_positive_years": 4,
+    "tie_breaks": [
+      "higher pooled median net return",
+      "lower severe_loss10",
+      "shorter time stop",
+      "profile name"
+    ]
+  },
+  "chronology": {
+    "robustness": "2019-2021 after selection",
+    "post_observation_diagnostic": "2022-2023 only after one profile is frozen",
+    "repository_2024_plus": "SEALED"
+  },
+  "governance": {
+    "new_signal_features": false,
+    "new_target_after_results": false,
+    "new_horizon_after_results": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

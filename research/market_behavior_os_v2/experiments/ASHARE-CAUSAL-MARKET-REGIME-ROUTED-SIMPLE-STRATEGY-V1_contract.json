@@ -1,0 +1,62 @@
+{
+  "experiment": "ASHARE-CAUSAL-MARKET-REGIME-ROUTED-SIMPLE-STRATEGY-V1",
+  "status": "OUTCOME_BLIND_REGIME_AND_ROUTING_FREEZE",
+  "economic_hypothesis": "Quiet-inventory upward information repricing is a risk-seeking continuation mechanism and should be admitted only when broad market participation is positive. Oversold active-demand ignition is a forced-supply reversal mechanism and should be admitted only when broad participation is negative. Mixed regimes hold cash rather than combining incompatible mechanisms.",
+  "independence": "No collapse-gap, true-gap repair, V6, V7, V26, or V27 identity is used.",
+  "regime_clock": {
+    "decision_at": "completed signal-session close",
+    "entry": "next legal executable daily open after the completed signal",
+    "future_index_interval_used": false,
+    "future_high_or_low_used": false,
+    "same_session_fill_allowed": false
+  },
+  "regime_population": {
+    "universe": "all PIT hard-valid, current-valid, non-ST Main Board and ChiNext observations available at the completed session close",
+    "statistics": [
+      "cross-sectional median completed 20-session coordinate return",
+      "cross-sectional share with positive completed 20-session coordinate return",
+      "cross-sectional median completed 60-session coordinate return",
+      "cross-sectional share with positive completed 60-session coordinate return"
+    ],
+    "missing_policy": "fail closed to TRANSITION"
+  },
+  "frozen_regime": {
+    "BULL": "both return medians are strictly positive and both positive-return shares are strictly above 0.50",
+    "BEAR": "both return medians are non-positive and both positive-return shares are at most 0.50",
+    "TRANSITION": "all other combinations"
+  },
+  "frozen_routing": {
+    "BULL": {
+      "signal": "exact ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1 identity",
+      "translation": "exact frozen T20_H60_NO_STOP from ASHARE-QUIET-INVENTORY-INFORMATION-REPRICING-LONG-TRANSLATION-V2"
+    },
+    "BEAR": {
+      "signal": "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1 identity",
+      "translation": "exact accepted H20_NEXT_OPEN"
+    },
+    "TRANSITION": {
+      "action": "HOLD_CASH"
+    }
+  },
+  "chronology": {
+    "discovery": "2014-01-01 through 2018-12-31",
+    "confirmation": "2019-01-01 through 2021-12-31",
+    "post_observation_diagnostic": "2022-01-01 through 2023-12-31; not pristine because component outcomes have previously been observed",
+    "repository_2024_plus": "SEALED"
+  },
+  "gate": {
+    "average_completed_trades_per_year_strictly_above": 50,
+    "pooled_mean_net_return_min": 0.03,
+    "pooled_median_net_return_positive": true,
+    "each_confirmation_year_mean_net_positive": true,
+    "post_observation_2023_mean_net_positive": true,
+    "no_single_signal_date_dominance": true
+  },
+  "governance": {
+    "regime_threshold_selected_from_outcomes": false,
+    "routing_selected_from_2022_2023_outcomes": false,
+    "component_signal_changed": false,
+    "component_translation_changed": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

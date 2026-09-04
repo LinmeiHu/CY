@@ -1,0 +1,49 @@
+{
+  "experiment": "ASHARE-BEAR-BREADTH-REPAIR-DAILY-CAPPED-BASKET-V8",
+  "status": "FULL_HISTORY_RESEARCH_HYPOTHESIS_FREEZE_REQUIRES_NEW_FUTURE_CHALLENGE",
+  "economic_hypothesis": "When broad participation remains bearish but improves over five completed sessions, a small daily basket of individually oversold active-demand ignitions captures early risk-transfer without treating a market-wide rebound as hundreds of independent opportunities.",
+  "admission": [
+    "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1 signal",
+    "exact causal all-market BEAR state at completed signal close",
+    "all-market positive completed-20-session-return share is strictly greater than five completed market sessions earlier"
+  ],
+  "translation": {
+    "entry": "first legal executable open strictly after completed signal, no later than three market sessions",
+    "profit_target": 0.20,
+    "time_stop_completed_sessions": 60,
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "portfolio": {
+    "main_sleeve_weight": 0.50,
+    "chinext_sleeve_weight": 0.50,
+    "maximum_active_positions_per_sleeve": 75,
+    "maximum_new_entries_per_sleeve_per_date": 5,
+    "position_fraction_of_current_sleeve_nav": 0.013333333333333334,
+    "same_date_rank": "higher completed signal step return, then event_id",
+    "one_active_position_per_symbol": true,
+    "unused_capital": "CASH",
+    "no_leverage": true,
+    "no_cross_sleeve_transfer": true
+  },
+  "daily_cap_selection_rationale": "smallest predeclared cap among 5, 10 and 20 new entries per sleeve per day that retained more than fifty capacity-accepted trades per year on average; not selected by return",
+  "historical_status": {
+    "2014_2018": "consumed Development; 2017 and 2018 were negative",
+    "2019_2021": "positive each year",
+    "2022_2023": "positive each year but post-observation, not pristine OOS",
+    "repository_2024_plus": "SEALED"
+  },
+  "known_limitations": [
+    "2017 and 2018 historical means were negative",
+    "2022-2023 component outcomes were observed during research",
+    "a genuinely new future challenge is required before deployment"
+  ],
+  "audit": {
+    "future_regime_used": false,
+    "future_breadth_used": false,
+    "future_extrema_used": false,
+    "signal_bar_fill": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

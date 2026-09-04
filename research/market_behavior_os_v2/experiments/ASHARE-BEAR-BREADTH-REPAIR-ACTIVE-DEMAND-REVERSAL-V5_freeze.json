@@ -1,0 +1,57 @@
+{
+  "experiment": "ASHARE-BEAR-BREADTH-REPAIR-ACTIVE-DEMAND-REVERSAL-V5",
+  "status": "FROZEN_BEFORE_2022_2023_RULE_DIAGNOSTIC",
+  "economic_sequence": "broad market remains in a causally known bear state -> twenty-session participation improves versus five completed sessions earlier -> an individually oversold stock prints a high-turnover active-demand ignition -> enter next legal open -> realize a twenty-percent rebound or exit after sixty completed sessions",
+  "admission_conditions": [
+    "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1 signal",
+    "exact causal all-market BEAR state at completed signal close",
+    "all-market positive completed-20-session-return share at signal close is strictly greater than its value five completed market sessions earlier"
+  ],
+  "future_information": {
+    "future_market_regime": false,
+    "future_breadth": false,
+    "future_extrema": false,
+    "signal_bar_fill": false
+  },
+  "translation": {
+    "entry": "first legal executable open strictly after completed signal, no later than three market sessions",
+    "profit_target_from_entry": 0.20,
+    "time_stop_completed_sessions": 60,
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "portfolio": {
+    "main_sleeve_weight": 0.50,
+    "chinext_sleeve_weight": 0.50,
+    "maximum_positions_per_sleeve": 40,
+    "position_fraction_of_current_sleeve_nav": 0.025,
+    "same_date_rank": "higher completed signal step return, then event_id",
+    "one_active_position_per_symbol": true,
+    "no_leverage": true,
+    "no_cross_sleeve_transfer": true
+  },
+  "development_summary_2014_2021": {
+    "capacity_accepted_trades": 813,
+    "average_accepted_trades_per_year": 101.625,
+    "pooled_mean_net_return": 0.05004932641631284,
+    "all_calendar_year_means_positive": true,
+    "2017_mean_net_return": 0.001956,
+    "2018_mean_net_return": 0.034807,
+    "2019_mean_net_return": 0.015957,
+    "2020_mean_net_return": 0.066167,
+    "2021_mean_net_return": 0.032462
+  },
+  "chronology": {
+    "2014_2021": "consumed Development and robustness evidence",
+    "2022_2023": "post-observation diagnostic; component outcomes were previously observed, so not pristine OOS",
+    "repository_2024_plus": "SEALED"
+  },
+  "acceptance_gate": {
+    "average_capacity_accepted_trades_per_year_strictly_above": 50,
+    "pooled_capacity_accepted_mean_net_return_min": 0.03,
+    "each_2022_2023_mean_net_positive": true,
+    "2023_mean_net_min": 0.03
+  },
+  "repository_2024_plus_data_opened": false
+}
