@@ -1,0 +1,84 @@
+{
+  "experiment": "ASHARE-PANIC-GAP-DOWN-FULL-ABSORPTION-REVERSAL-V1",
+  "verdict": "SIMPLE_TRADE_LEVEL_EDGE_WITH_CAPACITY_CONCENTRATION",
+  "period": [
+    "2014-01-01",
+    "2023-12-31"
+  ],
+  "economic_hypothesis": "After a material twenty-session decline, an overnight gap-down to a new five-session low is a forced-sale shock. A fully tradable session that absorbs at least normal turnover and closes above the preceding high in the upper thirty percent of its own range evidences completed demand dominance.",
+  "contract_sha256": "bb3bd8bcc0a81b0f242a125b1b2df40ab505d2e4aa5e32b01e5a1a04e63714a7",
+  "development_candidates_sha256": "c4d4d5a4feef587d6ec5ea4f69b39f0992e4cb758bd1336c4740f1bde173dd85",
+  "development_outcomes_sha256": "c13281f9702f6b89831a514810f281745637819e5860fda36810c1bfb548496f",
+  "validation_candidates_sha256": "791dec7f430fb8d2fdee22e77f77745b908f87fac3b9754f0a09c9a2a2f3464f",
+  "validation_outcomes_sha256": "44474f1a5e88c0a747b65daa2fd9356a18e7fcd7aa34ff93c7734ad8fad95130",
+  "selected_profile": "T10_H20_NO_STOP",
+  "selection_block": [
+    "2014-01-01",
+    "2018-12-31"
+  ],
+  "chronological_confirmation": [
+    "2019-01-01",
+    "2021-12-31"
+  ],
+  "validation": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "combined": {
+    "completed_trades": 840,
+    "average_completed_trades_per_year": 84.0,
+    "mean_net_return": 0.04704808617127517,
+    "median_net_return": 0.09600000000000009,
+    "win_rate": 0.7797619047619048,
+    "target_hit_rate": 0.6619047619047619,
+    "severe_loss10_rate": 0.07738095238095238,
+    "mean_holding_sessions": 12.142857142857142,
+    "unique_signal_dates": 231,
+    "signal_date_equal_mean_net_return": 0.016471452506034087
+  },
+  "annual": {
+    "2014": {"trades": 11, "mean_net_return": 0.056832301939021404},
+    "2015": {"trades": 67, "mean_net_return": 0.0489425946657022},
+    "2016": {"trades": 70, "mean_net_return": 0.013254349817395985},
+    "2017": {"trades": 28, "mean_net_return": 0.005380503692006151},
+    "2018": {"trades": 147, "mean_net_return": 0.0691749378376421},
+    "2019": {"trades": 134, "mean_net_return": 0.037523887769165085},
+    "2020": {"trades": 94, "mean_net_return": 0.055159629592533475},
+    "2021": {"trades": 67, "mean_net_return": 0.027644571259527843},
+    "2022": {"trades": 200, "mean_net_return": 0.06085688468437264},
+    "2023": {"trades": 22, "mean_net_return": 0.006006336962882618}
+  },
+  "board": {
+    "MAIN": {"trades": 597, "mean_net_return": 0.045052265886510894},
+    "CHINEXT": {"trades": 243, "mean_net_return": 0.05195139773507875}
+  },
+  "concentration": {
+    "share_of_trades_on_top_five_signal_dates": 0.5,
+    "mean_net_return_excluding_top_five_signal_dates": 0.024127666649655564,
+    "interpretation": "The event-level gate passes, but same-day capacity concentration is material and prevents an unconditional deployment-ready verdict."
+  },
+  "k10_portfolio": {
+    "accepted_trades": 446,
+    "accepted_mean_net_return": 0.023445415910815278,
+    "total_return": 0.6332498622432579,
+    "cagr": 0.05034396438543487,
+    "max_drawdown": -0.1531026652926597,
+    "sharpe": 0.6139956128731588,
+    "positive_years": 7,
+    "capacity_skips": 394,
+    "average_utilization": 0.1187455322629561
+  },
+  "audit": {
+    "candidate_rows_checked": 858,
+    "detector_condition_failure_count": 0,
+    "available_after_decision_count": 0,
+    "signal_bar_fill_count": 0,
+    "t1_same_day_exit_count": 0,
+    "unknown_exit_reason_count": 0,
+    "target_price_mismatch_count": 0,
+    "net_cost_mismatch_count": 0,
+    "post_2023_signal_count": 0,
+    "post_2023_exit_count": 0,
+    "repository_2024_plus_data_opened": false
+  }
+}
