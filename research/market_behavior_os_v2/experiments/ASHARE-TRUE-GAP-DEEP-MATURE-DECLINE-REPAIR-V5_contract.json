@@ -1,0 +1,52 @@
+{
+  "candidate_family": {
+    "only_added_condition": "pre_gap_drawdown_from_120d_peak >= threshold",
+    "threshold_meaning": "causally completed maximum decline from the highest coordinate high inside the 120 completed sessions preceding gap formation",
+    "thresholds": [
+      0.4,
+      0.45,
+      0.5
+    ]
+  },
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A clean downward true gap is more likely to mark late-stage forced liquidation when it forms only after a deep, already-mature decline. The subsequent below-L washout and first MA5 reclaim may then monetize a reflexive repair toward, but not into, the gap.",
+  "experiment": "ASHARE-TRUE-GAP-DEEP-MATURE-DECLINE-REPAIR-V5",
+  "post_2023_scope": "No post-2023 signal, feature, threshold, or selection row. Existing V4R1 post-cutoff rows may be inherited only for pre-2024 trade closure.",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_calendar_years_min": 4,
+      "selected_signals_per_year": [
+        40.0,
+        80.0
+      ]
+    },
+    "order": [
+      "minimum absolute distance from 50 selected signals per year",
+      "lower severe_loss10",
+      "lower threshold"
+    ]
+  },
+  "source": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "source_execution_outcomes": "UNCHANGED_AND_IDENTITY_CONSERVED",
+  "unchanged_v4r1": {
+    "corporate_action_and_t1": true,
+    "failure_stop": "NONE",
+    "next_legal_minute_entry": true,
+    "portfolio": "50/50 Main/ChiNext; K20 per sleeve",
+    "round_trip_cost": 0.004,
+    "target": "entry + 0.80*(L-entry)",
+    "time_stop": "H20",
+    "true_gap_and_vap": true,
+    "washout_and_first_ma5_trigger": true
+  }
+}
