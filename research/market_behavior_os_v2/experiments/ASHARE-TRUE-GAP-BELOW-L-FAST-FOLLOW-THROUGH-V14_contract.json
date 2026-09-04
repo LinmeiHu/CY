@@ -1,0 +1,58 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A genuine first close-above-prior-high reversal below a clean true gap should continue promptly. If the A67 target remains unresolved for many sessions, the reversal is more likely being absorbed by persistent supply; a fixed earlier time stop may prevent slow deterioration.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-FAST-FOLLOW-THROUGH-V14",
+  "fixed_horizon_family": [
+    5,
+    10,
+    15,
+    20
+  ],
+  "governance": {
+    "diagnostic_opened_only_for_development_selected_horizon": true,
+    "h20_result_already_known_from_v13": true,
+    "h5_h10_h15_not_computed_before_freeze": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "accepted_trades_per_year_min": 50.0,
+      "attack_date_equal_mean_positive": true,
+      "frequency_has_no_upper_cap": true,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_portfolio_years_min": 4,
+      "positive_trade_mean_years_min": 4
+    },
+    "order": [
+      "higher portfolio mean net",
+      "higher portfolio median net",
+      "lower severe_loss10",
+      "shorter horizon"
+    ]
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "source_trigger": "PRIOR_HIGH_REVERSAL",
+  "time_stop_execution": "after completed close information at entry_cal_idx + H, exit at next legal sellable 1-minute open; A-share T+1 remains binding",
+  "unchanged": {
+    "T1_limits_suspensions_and_QD010": true,
+    "collision_rank": true,
+    "entry": true,
+    "failure_stop": "NONE",
+    "minimum_net_headroom_to_L": 0.05,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_population_and_features": true,
+    "target": "entry + 0.67*(L-entry), strictly below L",
+    "trigger": "first completed daily close above previous completed daily high"
+  }
+}
