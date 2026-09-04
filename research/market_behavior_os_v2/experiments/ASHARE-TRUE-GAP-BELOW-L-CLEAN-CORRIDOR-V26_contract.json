@@ -1,0 +1,52 @@
+{
+  "economic_hypothesis": "A tradable below-gap rebound requires a modest price discontinuity rather than an extreme structural break, and little historical occupancy in the immediate gap corridor. Gap width does not define the profit distance: the unchanged target remains a fraction of the entry-to-L rebound path.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-CLEAN-CORRIDOR-V26",
+  "goal_contract": {
+    "combined_2017_2023_accepted_trades_per_year_strictly_greater_than": 50.0,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "every_signal_year_portfolio_return_positive": true,
+    "every_signal_year_trade_mean_positive": true
+  },
+  "governance": {
+    "no_claim_of_external_validation": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "no_target_horizon_entry_cost_or_execution_change": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only",
+    "rule_discovered_after_2022_2023_were_observed": true
+  },
+  "observed_period": [
+    "2017-01-01",
+    "2023-12-31"
+  ],
+  "scientific_status": "RETROSPECTIVE_FULL_OBSERVED_CANDIDATE_NOT_EXTERNAL_VALIDATION",
+  "simple_admission": {
+    "conditions": 2,
+    "corridor": "[L-0.5W, U+0.5W]",
+    "gap_width_pct": "source minimum 1%; maximum 3%",
+    "known_time": "gap-formation close, before reversal signal and entry",
+    "missing_policy": "fail closed",
+    "pre_gap_corridor_touch_sessions": "<=10 of exact 120 completed sessions"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "source_trigger": "PRIOR_HIGH_REVERSAL",
+  "unchanged_v13": {
+    "T1_limits_suspensions_and_QD010": true,
+    "entry": "first legal buyable 1-minute open after signal",
+    "failure_stop": "NONE",
+    "inside_and_corridor_density_relative_local_max": 1.0,
+    "inside_touch_sessions_max": 12,
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_net_headroom_to_L": 0.05,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "pre_gap_history": "exact 120 completed sessions with exact 241-minute VAP history",
+    "pre_gap_return_20d_max": 0.0,
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "target": "A67 below L",
+    "time_stop": "H20",
+    "trigger": "first completed daily close > previous completed daily high",
+    "true_gap": "High_t < Low_t_minus_1"
+  }
+}
