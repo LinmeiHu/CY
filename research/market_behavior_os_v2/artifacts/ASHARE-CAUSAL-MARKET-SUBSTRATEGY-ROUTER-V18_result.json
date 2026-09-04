@@ -1,0 +1,67 @@
+{
+  "experiment": "ASHARE-CAUSAL-MARKET-SUBSTRATEGY-ROUTER-V18",
+  "verdict": "CAUSAL_MARKET_SUBSTRATEGY_ROUTER_HISTORICAL_GOAL_MET",
+  "routing": {
+    "BEAR_REPAIR": "V13R1 fast-capitulation active-demand T10/H20",
+    "BULL_ACCELERATING": "V15 delayed supply-contraction T10/H20 when market_median_ret20 >= market_median_ret60",
+    "BULL_DECELERATING": "HOLD_CASH",
+    "TRANSITION": "HOLD_CASH"
+  },
+  "overall": {
+    "trades": 630,
+    "average_completed_trades_per_year": 63.0,
+    "mean_net": 0.034849817430613654,
+    "median_net": 0.09600000000000009,
+    "win_rate": 0.7111111111111111,
+    "severe10": 0.10952380952380952,
+    "target_hit": 0.6238095238095238,
+    "average_holding_sessions": 13.093650793650793,
+    "date_equal_mean": 0.01940873625976954,
+    "mean_excluding_best5_signal_dates": 0.02243242216216396
+  },
+  "challenge_2021_2023": {
+    "trades": 239,
+    "average_completed_trades_per_year": 79.66666666666667,
+    "mean_net": 0.03296247255307907,
+    "average_holding_sessions": 12.117154811715482,
+    "mean_excluding_best5_signal_dates": 0.013319514241467947
+  },
+  "annual_trade_mean": {
+    "2014": 0.021535268501231723,
+    "2015": 0.07774946812919749,
+    "2016": -0.0018095911441873191,
+    "2017": 0.01814103112873273,
+    "2018": 0.03192845323567774,
+    "2019": 0.05853723590646574,
+    "2020": 0.04630792733374423,
+    "2021": 0.014318143689835063,
+    "2022": 0.04835546866107543,
+    "2023": 0.038709218752441245
+  },
+  "portfolio": {
+    "total_return": 0.15782358728875368,
+    "cagr": 0.014780139751034094,
+    "max_drawdown": -0.03957864276946854,
+    "sharpe": 0.7400508153099471,
+    "average_utilization": 0.02990896830192261
+  },
+  "gates": {
+    "average_trades_per_year_gt_50": true,
+    "mean_net_gt_3pct": true,
+    "average_holding_sessions_le_15": true,
+    "2022_mean_net_gt_3pct": true,
+    "2023_mean_net_gt_3pct": true,
+    "challenge_mean_net_gt_3pct": true,
+    "mean_excluding_best5_dates_positive": true
+  },
+  "audit_all_required_zero": true,
+  "repository_2024_plus_data_opened": false,
+  "post_observation_warning": "2021-2023 are chronological diagnostics but not pristine because predecessor outcomes were already observed.",
+  "external_artifacts": {
+    "accepted_trades_sha256": "b63d7a63a9bb7f4cc099710f00d1f06631b518328b121cedf77102912af804a1",
+    "cash_routed_trades_sha256": "d3770434bf6dc8688cffd68cd4ed096037d0568b248283c865a8483f7fcca4b5",
+    "development_candidate_table_sha256": "b7c1e1d7f449a2f7d44b98121bcec50db814d02c8a8a00db15837c6e7f5f99c4",
+    "portfolio_nav_sha256": "700a7e37320649b21f96ca02aacc5f6a6fa253407cc2df25d7f2c741f5497694",
+    "full_result_sha256": "388dd52bb62cc13a9bbce2eaf1e655b9232ff24c4e93c3a60df34eb6493b76e3"
+  }
+}
