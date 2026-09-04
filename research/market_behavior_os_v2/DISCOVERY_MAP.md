@@ -1,8 +1,41 @@
 # Lean discovery map
 
-Updated 2026-09-03. This is the compact exploration-funnel view. Detailed
+Updated 2026-09-04. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
+
+## Industry-Consensus Diffusion-Q1 Event V1 conclusions
+
+- A bounded depth study of the frozen Champion found that its exact two-name
+  causal diffusion-intensity Q1 subset was materially stronger than the full
+  Top-10. This direction was identified after the predeclared Top-5 intensity
+  translation failed, so all subsequent evidence is explicitly post-hoc and
+  development-only.
+- Exact Q1 Top-2 with unchanged one-quarter cohort capital earned 26.15%
+  annualized with -21.95% drawdown. Fixed lifecycle anatomy rejected earlier
+  exits: mean payoff continued from +1.328% at d15 to +2.201% at d20.
+- Reused Absolute Market State failed as a veto because LOW was +4.543% in
+  2018--2020 and -0.531% in 2021--2023. Do not reopen market filtering.
+- One frozen binary structure separated same-industry from two-industry Q1
+  pairs. Same-industry mean payoff was +3.714%/+4.011% by broad block and
+  positive in every year; two-industry payoff remained positive overall, so it
+  is not a proven bad state.
+- Median two concurrent same-industry h20 events on active days fixed the one
+  natural event capital divisor at two. The single replay earned 33.7037%
+  annualized, 363.7225% total, -18.0468% max drawdown, 1.4222 Sharpe, and
+  1.8676 Calmar. It had 99 event dates and 180 completed trades.
+- Final status:
+  `DEVELOPMENT_TARGET_ACHIEVED_NOT_INDEPENDENTLY_VALIDATED`. Freeze the exact
+  candidate. No neighboring Top-N, capital fraction, score gap, state, hold,
+  exit, or weighting work is authorized on 2018--2023.
+
+What market behavior are we still not studying? Independent temporal transfer,
+resource-safe Dispersion Alpha, and currently blocked PIT fundamental or
+order-book mechanisms.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? Yes:
+`INDUSTRY_CONSENSUS_EVENT`, an episodic concentrated-leadership continuation
+candidate. It is not confirmed Alpha.
 
 ## Champion Candlestick Rule Discovery V1--V3 conclusions
 

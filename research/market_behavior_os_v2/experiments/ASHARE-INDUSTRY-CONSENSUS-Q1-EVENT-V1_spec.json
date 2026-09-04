@@ -1,0 +1,68 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1",
+  "frozen_at": "2026-09-04",
+  "status": "FROZEN_SINGLE_DATA_GENERATED_EVENT_TRANSLATION_BEFORE_REPLAY",
+  "claim_boundary": "DATA_GENERATED_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "research_role": "translate the binary same-industry Q1 confirmation mechanism once using outcome-blind natural event concurrency",
+  "inputs": {
+    "q1_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-DIFFUSION-Q1-CONCENTRATION-V1_spec.json",
+      "sha256": "7b1896d8ba98ecf7ade27ea548994cec959987728334693dc9dc12e92e22036c"
+    },
+    "q1_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_diffusion_q1_concentration_v1.py",
+      "sha256": "1a2333c7aa8cf01c3b62cbf316642bc116c67a055e8fab2b9c6582480eb1fc9f"
+    },
+    "q1_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-Q1-CONCENTRATION-V1_result.json",
+      "sha256": "45af1eaec616f5bbc4280c8929372d76ee6684ce181f0d4afcd17374b42dc592"
+    },
+    "pair_anatomy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-DIFFUSION-Q1-PAIR-STRUCTURE-ANATOMY-V1_spec.json",
+      "sha256": "43b2ca544a5ca3dc695f64cdf80df56da14ab194cb0d5e8269fec75f8996b7db"
+    },
+    "pair_anatomy_report": {
+      "path": "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-DIFFUSION-Q1-PAIR-STRUCTURE-ANATOMY-V1_report.md",
+      "sha256": "8cd35faa64e9f264011915aa9c5b2011c81efe6d7812231898b4443b1769ca2f"
+    },
+    "ca_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py",
+      "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"
+    }
+  },
+  "frozen_strategy": {
+    "signal": "unchanged weekly completed-close Industry Diffusion plus Low-MAX Champion signal",
+    "selection": "take the exact diffusion-Q1 first two names only when both share the same signal-date PIT industry",
+    "pair_order": "higher diffusion_score, then lower exact max_return20, then symbol",
+    "entry": "next legal open; a blocked name is not backfilled",
+    "holding": "20 market sessions to due open, plus unchanged QD-010 pre-effective and legal-fill handling",
+    "cohort_capital": "minimum of available cash and one-half of pre-entry NAV",
+    "capital_rationale": "the outcome-blind 99-event schedule has median two concurrent h20 event cohorts on active days; one-half is the single natural fully-invested divisor",
+    "weights": "equal across executable names in the event cohort",
+    "cost_per_side": 0.002,
+    "leverage": false,
+    "cross_event_cash_transfer": "cash may fund later valid events, but no position is sold early and no borrowing occurs"
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "required_diagnostics": [
+    "annualized and total return, max drawdown, Sharpe and Calmar",
+    "calendar-year returns",
+    "turnover, trade count, severe loss, breadth, concentration and capacity",
+    "event funding fraction and cash-constrained event count",
+    "comparison with frozen Champion and diffusion-Q1 Top-2"
+  ],
+  "prohibited": [
+    "one-third, one-quarter, full-NAV, volatility-targeted, or optimized cohort capital",
+    "two-industry event, Top-1, Top-3, score-gap, threshold, or market-state rescue",
+    "changed signal, Low-MAX, horizon, entry, exit, cost, or weighting",
+    "leverage or borrowing",
+    "second replay",
+    "post-2023 outcomes",
+    "CY-011",
+    "OOS, confirmation, validation, or live claim"
+  ]
+}

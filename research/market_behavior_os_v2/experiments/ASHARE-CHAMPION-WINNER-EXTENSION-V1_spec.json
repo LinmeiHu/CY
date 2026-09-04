@@ -1,0 +1,79 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-WINNER-EXTENSION-V1",
+  "frozen_at": "2026-09-04",
+  "status": "FROZEN_BEFORE_GENERATION_OUTCOMES",
+  "research_role": "one deeper lifecycle experiment after uniform h40 and fixed early exits failed",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "inputs": {
+    "champion_anatomy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-ANATOMY-CYCLE-016_spec.json",
+      "sha256": "59ecfed283bee0becd2c146f3c350db2679a292cbb275cfdfd2f43732033fe43"
+    },
+    "champion_anatomy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_anatomy_cycle_016.py",
+      "sha256": "cb01e2cfc43acd3f11b0de1edb23ecf9308f2674edaab7e04fdb6cd341bb91da"
+    },
+    "ca_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json",
+      "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"
+    },
+    "ca_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py",
+      "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"
+    },
+    "champion_authoritative_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json",
+      "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"
+    }
+  },
+  "economic_hypothesis": {
+    "observation": "the frozen Champion accrues positively through d20, while blanket h40 diluted capital and failed",
+    "question": "does retaining only positions already profitable at the causal h20 decision allow persistent winners to compound without keeping the full losing cohort?",
+    "novelty": "conditional winner retention is distinct from the closed uniform h40 lifecycle and all closed fixed d3/d5/d10/d15 exit rules"
+  },
+  "frozen_strategy": {
+    "selection": "unchanged Weekly Industry Diffusion plus within-industry prior-20-session Low-MAX, exact Top 10",
+    "signal": "completed weekly close",
+    "entry": "next legal open",
+    "base_due": "entry market-session index plus 20, at the due open",
+    "extension_decision": "at the base due open, use only the immediately preceding market session close and cash actions already visible; extend iff hypothetical net liquidation proceeds at that close are strictly greater than invested cost",
+    "extended_due": "entry market-session index plus 40, at the due open",
+    "capital": "unchanged one-quarter pre-entry-NAV cohort target, capped by available cash; no sale or borrowing to fund a new cohort",
+    "weights": "equal across executable names in each new cohort",
+    "execution": "unchanged T+1, price limits, suspensions, QD-010 pre-effective exits, cash actions, and 20 bps per side"
+  },
+  "chronological_protocol": {
+    "generation": {
+      "signal_years": [2018, 2019, 2020],
+      "maximum_outcome_date": "2020-12-31",
+      "drop_any_plan_whose_extended_due_exceeds_cutoff": true,
+      "all_required_to_open_validation": {
+        "minimum_extended_positions": 50,
+        "minimum_candidate_annualized_return": 0.25,
+        "minimum_annualized_delta_vs_same-plan_h20": 0.04,
+        "maximum_drawdown_not_worse": true,
+        "daily_sharpe_not_worse": true
+      }
+    },
+    "validation": {
+      "signal_years": [2021, 2022, 2023],
+      "maximum_outcome_date": "2023-12-31",
+      "status": "UNOPENED_UNTIL_GENERATION_GATE_PASSES",
+      "no_rule_change": true
+    }
+  },
+  "success_target": {
+    "minimum_full_annualized_return": 0.326838766,
+    "full_maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "prohibited": [
+    "profit threshold grid or neighboring extension horizon",
+    "loss extension, trailing stop, take-profit, re-entry, or market-state rescue",
+    "changed selection, ranking, Top-N, schedule, or cohort weights",
+    "leverage or borrowing",
+    "same-open extension decision using that open or later information",
+    "post-2023 outcomes",
+    "CY-011"
+  ]
+}

@@ -1,5 +1,17 @@
 # Strategy research frontier
 
+## Current checkpoint override
+
+`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` is now the leading development
+candidate: 33.7037% annualized, -18.0468% maximum drawdown, and 1.4222 Sharpe on
+consumed 2018--2023 history. It is a post-hoc data-generated industry-consensus
+event, not independent confirmation. Freeze its exact two-name same-PIT-industry
+selection, one-half-NAV event capital, next-open entry, and h20 exit. No further
+development tuning is authorized. The highest-value candidate-specific frontier
+is untouched temporal confirmation when separately authorized; the highest-value
+discovery frontier remains an independent Alpha engine or resource-safe
+Cross-Sectional Dispersion.
+
 This frontier is separate from market hypotheses. Scores are qualitative until
 the independent Market State Engine and opportunity definitions exist.
 

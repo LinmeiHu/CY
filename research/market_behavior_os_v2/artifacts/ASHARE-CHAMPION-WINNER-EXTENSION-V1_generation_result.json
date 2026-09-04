@@ -1,0 +1,159 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "baseline": {
+    "annualized_return": 0.23123630500653936,
+    "calmar": 0.8971823858248144,
+    "completed_trades": 1128,
+    "daily_sharpe": 0.9445308321961771,
+    "end_date": "2020-11-27",
+    "entries": 1128,
+    "entry_execution_fraction": 0.9982300884955753,
+    "excess_return_vs_cash": 0.6154262897394445,
+    "family": "industry_diffusion_low_max",
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 13,
+    "maximum_drawdown": -0.25773611771697336,
+    "mean_industries": 12.25473321858864,
+    "mean_industry_hhi_invested_days": 0.19363734280416237,
+    "mean_positions": 38.64027538726334,
+    "median_capacity_cny_at_5pct_amount": 297539661.53999996,
+    "p10_capacity_cny_at_5pct_amount": 105787095.82000001,
+    "planned_entries": 1130,
+    "risk_blocked_entries": 2,
+    "severe_trade_fraction": 0.15780141843971632,
+    "start_date": "2018-07-10",
+    "status": "COMPLETE",
+    "terminal_open_lots": 0,
+    "total_return": 0.6154262897394445,
+    "turnover_multiple_initial_capital": 63.471676275612246
+  },
+  "baseline_calendar_year_returns": {
+    "2018": -0.20877774012784145,
+    "2019": 0.47882807352688084,
+    "2020": 0.38060983530779646
+  },
+  "baseline_forced_exit_rows": 13,
+  "candidate": {
+    "annualized_return": 0.2243762411100918,
+    "calmar": 0.9098342675763967,
+    "capital_constrained_cohorts": 96,
+    "completed_trades": 1128,
+    "daily_sharpe": 0.9138585817098901,
+    "end_date": "2020-12-28",
+    "entries": 1128,
+    "entry_execution_fraction": 0.9982300884955753,
+    "extended_mean_base_net_mark": 0.1184616969615033,
+    "extended_mean_final_net_return": 0.14939015502519762,
+    "extended_mean_second_leg_delta": 0.03092845806369433,
+    "extended_median_second_leg_delta": -0.002117443139468267,
+    "extended_positions": 560,
+    "extended_positive_second_leg_fraction": 0.49107142857142855,
+    "extension_decisions": 1115,
+    "extension_fraction": 0.5022421524663677,
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 19,
+    "maximum_drawdown": -0.24661221181279747,
+    "mean_cohort_allocation_fraction": 0.6627904055944798,
+    "mean_industries": 17.064784053156146,
+    "mean_industry_hhi_invested_days": 0.1997083664653634,
+    "mean_positions": 55.785714285714285,
+    "median_capacity_cny_at_5pct_amount": 297539661.53999996,
+    "minimum_cohort_allocation_fraction": 0.07792797805881356,
+    "p10_capacity_cny_at_5pct_amount": 105787095.82000001,
+    "planned_entries": 1130,
+    "risk_blocked_entries": 2,
+    "severe_trade_fraction": 0.17464539007092197,
+    "start_date": "2018-07-10",
+    "total_return": 0.6218807245830118,
+    "turnover_multiple_initial_capital": 41.59916271217788
+  },
+  "candidate_calendar_year_returns": {
+    "2018": -0.22555671376023512,
+    "2019": 0.5137529891972272,
+    "2020": 0.38348444158365225
+  },
+  "candidate_exit_rows": 1128,
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "comparison": {
+    "annualized_return_delta": -0.006860063896447555,
+    "daily_sharpe_delta": -0.030672250486286967,
+    "maximum_drawdown_improvement": 0.01112390590417589,
+    "severe_trade_fraction_improvement": -0.016843971631205656,
+    "total_return_delta": 0.006454434843567336
+  },
+  "cy011_read": "NO",
+  "decision_dates": 113,
+  "experiment_id": "ASHARE-CHAMPION-WINNER-EXTENSION-V1",
+  "generation_gate_passed": false,
+  "generation_gates": {
+    "annualized_delta": false,
+    "candidate_annualized": false,
+    "drawdown_not_worse": true,
+    "extended_positions": true,
+    "sharpe_not_worse": false
+  },
+  "hashes": {
+    "equity_sha256": "0637cf183eab8c4dbb9afe61de9baf433e8c7f23f68bc4c746a7994967acd3be",
+    "exits_sha256": "93db327fb124595c415cd03a38369fe75d29176aaa8c21e728fc16306709d5c0",
+    "spec_sha256": "a56703f3b2dbd72e250ec18e22cdd22a10da471b639387a2abcc7bfa14b5b5a9"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "maximum_outcome_date": "2020-12-31",
+  "plans": 1130,
+  "post_2023_outcome_read": "NO",
+  "signal_years": [
+    2018,
+    2019,
+    2020
+  ],
+  "stage": "generation",
+  "status": "GENERATION_REJECTED_VALIDATION_UNOPENED"
+}

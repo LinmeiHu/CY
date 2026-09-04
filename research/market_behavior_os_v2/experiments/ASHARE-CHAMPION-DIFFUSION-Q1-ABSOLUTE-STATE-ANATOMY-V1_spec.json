@@ -1,0 +1,44 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-DIFFUSION-Q1-ABSOLUTE-STATE-ANATOMY-V1",
+  "frozen_at": "2026-09-04",
+  "status": "FROZEN_SINGLE_DIMENSION_BEFORE_Q1_STATE_OUTCOMES",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_ANATOMY_NOT_OOS_NOT_CONFIRMATION",
+  "purpose": "test whether the previously strongest Champion applicability dimension contains incremental admission information for the new diffusion-Q1 Top-2 translation",
+  "inputs": {
+    "q1_strategy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-Q1-CONCENTRATION-V1_result.json",
+      "sha256": "45af1eaec616f5bbc4280c8929372d76ee6684ce181f0d4afcd17374b42dc592"
+    },
+    "q1_trade_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_panel.csv",
+      "sha256": "01c52ffcb8e5c4a48274cd4ae18c0867a6b1931696314c24e5bc267248fed881"
+    },
+    "applicability_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_panel.csv",
+      "sha256": "698bc4ca2942a49daf55d1d8cef4bbef164a2814fd9fbc7cc778dd600cc54ccd"
+    }
+  },
+  "frozen_dimension": "absolute_market_state_state LOW/MEDIUM/HIGH exactly as causally assigned in Cycle 019",
+  "frozen_domain": "exact diffusion intensity Q1 executed trades",
+  "required_views": [
+    "Q1 trade mean median winner and severe-loss fraction by state",
+    "2018-2020 and 2021-2023 state economics",
+    "calendar-year state support",
+    "decision-date and trade breadth"
+  ],
+  "promotion_condition": "only a state with negative Q1 mean in both chronological blocks, adequate support in both, and worse severe-loss incidence may motivate one separately frozen admission-veto replay",
+  "governance": {
+    "single_dimension_only": true,
+    "no_state_redefinition": true,
+    "no_portfolio_replay": true,
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "prohibited": [
+    "dispersion, synchronization, persistence, pair map, or combination search",
+    "state threshold or horizon change",
+    "exposure scaling, leverage, or market timing replay",
+    "post-2023 outcomes",
+    "CY-011"
+  ]
+}

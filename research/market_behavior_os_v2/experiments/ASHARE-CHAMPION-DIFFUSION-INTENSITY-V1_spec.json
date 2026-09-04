@@ -1,0 +1,77 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1",
+  "status": "FROZEN_BEFORE_DIFFUSION_INTENSITY_OUTCOMES",
+  "purpose": "Determine whether the original causal Industry Diffusion score contains stable payoff ordering inside the frozen Champion's ten selected names, and concentrate capital once only if it does.",
+  "claim_boundary": "CONSUMED_2018_2023_SEQUENTIAL_DEVELOPMENT_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "inputs": {
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "construction_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py",
+      "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"
+    },
+    "champion_anatomy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    }
+  },
+  "frozen_signal": {
+    "domain": "exact executed frozen Champion names on each weekly signal date",
+    "score": "same-date causal diffusion_score from the accepted daily feature panel",
+    "orientation": "higher is better",
+    "ties": "lower exact max_return20, then symbol",
+    "diagnostic_buckets": 5,
+    "natural_horizon_sessions": 20,
+    "cost_per_side_bps": 20
+  },
+  "sequential_periods": {
+    "generation": [2018, 2019, 2020],
+    "fixed_validation": [2021, 2022, 2023],
+    "validation_access": "only if every generation gate passes"
+  },
+  "generation_gate_all_required": {
+    "highest_minus_lowest_bucket_mean_minimum": 0.005,
+    "highest_bucket_mean_positive": true,
+    "minimum_favorable_adjacent_steps": 3,
+    "positive_subblocks": ["2018_2019", "2020"]
+  },
+  "validation_gate_all_required": {
+    "highest_minus_lowest_bucket_mean_positive": true,
+    "highest_half_mean_positive": true,
+    "minimum_favorable_adjacent_steps": 3,
+    "highest_half_minus_lowest_half_nonnegative_each_year": [2021, 2022, 2023],
+    "highest_half_severe_loss_no_worse_than_lowest_half": true
+  },
+  "single_executable_translation": {
+    "authorization": "only if both sequential gates pass",
+    "rule": "From each frozen Champion Top-10 cohort, keep the five names with the highest diffusion_score; break score ties by lower max_return20 then symbol.",
+    "capital": "use the unchanged Champion cohort capital and redistribute it equally across executable retained names",
+    "schedule": "unchanged weekly signal close",
+    "entry": "unchanged next legal open",
+    "exit": "unchanged 20-session due-open plus QD-010 and legal-fill handling",
+    "cost_per_side_bps": 20,
+    "no_alternative_breadth": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 access",
+    "alternative score, rank, cutoff, Top-N, schedule, horizon, cost, weighting, or tie rule",
+    "daily refresh, exit overlay, habitat filter, leverage, or second replay",
+    "OOS, independent confirmation, or live claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_panel.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_report.md"
+  ]
+}

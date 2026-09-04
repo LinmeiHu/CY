@@ -1,5 +1,20 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Industry-Consensus Diffusion-Q1 Event V1
+
+| Layer | Frozen definition | Development evidence | Decision |
+|---|---|---|---|
+| Diffusion intensity | Exact Champion names ranked by higher causal diffusion score, lower prior-20 MAX, symbol | Predeclared Top-5 validation failed; post-hoc Q1 Top-2 replay 26.15% annualized, -21.95% drawdown | Q1 direction is data-generated, not confirmation |
+| Lifecycle | Exact Q1 at d1/d3/d5/d10/d15/d20 | Mean payoff -0.227%/-0.033%/+0.172%/+0.669%/+1.328%/+2.201% | `FULL_HORIZON_REQUIRED`; no early exit |
+| Absolute state | Exact causal Cycle-019 LOW/MEDIUM/HIGH | LOW +4.543% early and -0.531% late | `CHRONOLOGICALLY_UNSTABLE_NO_VETO` |
+| Pair structure | Both Q1 names share one PIT industry versus two industries | Same-industry +3.714%/+4.011% by block and positive every year; two-industry positive overall | New same-industry event candidate; not an avoidance claim |
+| Event replay | Same-industry Q1, one-half pre-entry NAV capped by cash, next legal open, h20, 20 bps/side | 33.70% annualized, 363.72% total, -18.05% drawdown, 1.422 Sharpe; 99 dates/180 trades | `DEVELOPMENT_TARGET_ACHIEVED_NOT_INDEPENDENTLY_VALIDATED` |
+
+The rule was generated from consumed 2018--2023 outcomes and must not be
+described as OOS or independently confirmed. Post-2023 outcomes and CY-011 were
+not read. Freeze the exact strategy; no parameter rescue or further in-sample
+tuning is authorized.
+
 ## Post-Shock Strong-Recovery Avoidance Anatomy V1
 
 | Anatomy | Frozen evidence | Result | Decision |

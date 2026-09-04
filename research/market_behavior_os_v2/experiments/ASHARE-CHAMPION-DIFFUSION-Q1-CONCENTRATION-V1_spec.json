@@ -1,0 +1,74 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-DIFFUSION-Q1-CONCENTRATION-V1",
+  "frozen_at": "2026-09-04",
+  "status": "FROZEN_SINGLE_POST_HOC_TRANSLATION_BEFORE_EXECUTABLE_REPLAY",
+  "claim_boundary": "DATA_GENERATED_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "research_role": "one deeper test of the already observed stable Q1 diffusion-intensity arm after the predeclared Top-5 translation failed",
+  "inputs": {
+    "intensity_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_panel.csv",
+      "sha256": "01c52ffcb8e5c4a48274cd4ae18c0867a6b1931696314c24e5bc267248fed881"
+    },
+    "intensity_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_result.json",
+      "sha256": "cf8193b6171bef4e1bce335454de82c5f1512d78cad2b2bd1d3432e6f772f8a8"
+    },
+    "intensity_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_diffusion_intensity_v1.py",
+      "sha256": "23778bdcb7f71812f2af6a4c4c3313b21d963f1284299fa7de782b6f647a7528"
+    },
+    "construction_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py",
+      "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"
+    },
+    "champion_anatomy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-ANATOMY-CYCLE-016_spec.json",
+      "sha256": "59ecfed283bee0becd2c146f3c350db2679a292cbb275cfdfd2f43732033fe43"
+    },
+    "champion_anatomy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_anatomy_cycle_016.py",
+      "sha256": "cb01e2cfc43acd3f11b0de1edb23ecf9308f2674edaab7e04fdb6cd341bb91da"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "champion_authoritative_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json",
+      "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"
+    }
+  },
+  "observed_motivation": {
+    "warning": "Q1 was identified after the original Top-5 validation gate failed; this replay can measure development economics but cannot confirm the hypothesis",
+    "q1_definition": "the two executed Champion names with the highest same-date causal diffusion_score; ties use lower exact max_return20 then symbol",
+    "q1_full_mean": 0.022007182977435754,
+    "q1_full_severe_fraction": 0.09695817490494296,
+    "yearly_mean_pattern": "2018 negative; 2019, 2020, 2021, 2022, and 2023 positive"
+  },
+  "frozen_strategy": {
+    "candidate_domain": "unchanged frozen Champion Top-10 signal cohort before next-open execution",
+    "selection": "at the completed signal close retain the first two names ordered by higher diffusion_score, lower max_return20, symbol; a blocked name is not backfilled",
+    "breadth": 2,
+    "capital": "unchanged one-quarter pre-entry NAV cohort capital redistributed equally across executable retained names",
+    "schedule": "unchanged weekly completed-close signal",
+    "entry": "unchanged next legal open",
+    "exit": "unchanged 20-market-session due open plus QD-010 and legal-fill handling",
+    "cost_per_side": 0.002,
+    "weighting": "equal within each cohort",
+    "leverage": false
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "prohibited": [
+    "Top-1, Top-3, Top-4, Top-5, cutoff, threshold, or weighting comparison",
+    "changed diffusion, Low-MAX, schedule, holding period, entry, exit, or cost",
+    "market filter, stop, take-profit, lifecycle overlay, or second replay",
+    "leverage or borrowing",
+    "post-2023 outcomes",
+    "CY-011",
+    "OOS, confirmation, validation, or live claim"
+  ]
+}

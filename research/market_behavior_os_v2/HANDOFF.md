@@ -1,6 +1,46 @@
 # Market Behavior Research OS V2 handoff
 
-Updated 2026-09-03.
+Updated 2026-09-04.
+
+## Latest checkpoint: user development target achieved; candidate frozen
+
+Resume after the commit containing
+`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1`; its clean starting checkpoint was
+`aa46eea96d55a90e1b27ffbefe520233a1582c94`. Preserve the new candidate exactly
+as frozen and preserve the old Champion as its comparator. Post-2023 outcomes
+and CY-011 remain unread.
+
+The simple rule is: start from the unchanged weekly Industry Diffusion plus
+Low-MAX Champion selection; retain the two names with the highest causal
+diffusion intensity only when both share the same signal-date PIT industry;
+allocate at most one-half pre-entry NAV equally to the executable pair, enter
+next legal open, and exit at the unchanged h20 due open. Keep all T+1, price
+limit, suspension, QD-010, corporate-action, no-backfill, no-leverage, and
+20-bps-per-side rules.
+
+On consumed 2018--2023 development history, the corrected fixed-endpoint replay
+earns 33.7037% annualized, 363.7225% total return, -18.0468% maximum drawdown,
+1.4222 Sharpe, and 1.8676 Calmar. The frozen Champion comparator earns 16.3419%
+annualized with -25.7736% drawdown. Calendar returns are +4.98%, +45.83%,
++44.92%, +19.88%, +12.00%, and +55.68% for 2018--2023. There are 99 event
+dates and 180 completed trades. P10 capacity at 5% of daily amount is CNY
+9.46m; mean invested-day industry HHI is 0.773, so capacity and concentration
+remain important risks.
+
+The evidence is post-hoc and data-generated. The predeclared Top-5 intensity
+translation failed; exact Q1 Top-2 was inspected only afterward. A single
+binary pair-structure anatomy then found same-industry Q1 payoff positive in
+both broad blocks and every calendar year. Median two concurrent h20 events on
+active days supplied the one-half-NAV divisor. The final candidate is therefore
+development optimization, not OOS, independent confirmation, or a live claim.
+
+Do not tune Top-N, capital fraction, score gap, pair taxonomy, horizon, state,
+entry, exit, cost, or weighting on 2018--2023. Fixed earlier exits remain
+closed because Q1 accrues materially through d20. Absolute Market State remains
+closed as a veto because LOW was strongest in 2018--2020 and negative in
+2021--2023. The next valid step for this candidate is separately authorized
+untouched temporal confirmation; otherwise return research capital to an
+independent Alpha engine or resource-safe Dispersion.
 
 ## Latest checkpoint: champion candlestick rules do not improve return
 

@@ -6,6 +6,7 @@ exist to justify a family record.
 
 | Archetype | Candidate recurring process | Distinctive trigger/exit implication | Current basis | Map status |
 |---|---|---|---|---|
+| Industry-consensus event | unusually concentrated causal Industry Diffusion leadership identifies episodic continuation opportunity | enter the exact two-name diffusion-Q1 pair only when both share one PIT industry; unchanged h20 exit | 99 consumed-history events; 33.70% annualized, -18.05% DD, positive all six years; post-hoc and high industry concentration | DEVELOPMENT_CANDIDATE_REQUIRES_INDEPENDENT_CONFIRMATION |
 | Breakout | supply clears and price is accepted beyond objective resistance | acceptance trigger; rejection/failure exit | CHINEXT seed; formation evidence mixed | REPRESENTED_BY_SEED |
 | Trend continuation | established quality trend survives consolidation | reacceleration trigger; deterioration exit | market mechanism unbuilt | SEARCH_SPACE |
 | Trend acceleration | trend strength/participation transition upward | transition trigger; deceleration exit | untested | SEARCH_SPACE |
@@ -22,11 +23,10 @@ exist to justify a family record.
 | Intraday reversal | intraday selling/buying pressure exhausts and reverses | recovery trigger; renewed excursion exit | data feasible, mechanism unproven | SEARCH_SPACE |
 | Defensive/low exposure | rising multi-day intraday volatility progression warrants less gross risk without changing security selection | at t 15:30, move selected holdings between fixed 10% and 5% next-open targets | the admission-veto form remains parked, but the fixed half-gross translation improves return, DD, Sharpe, and severe-loss incidence in both consumed blocks while preserving all cycle identities | DEVELOPMENT_CANDIDATE_REQUIRES_INDEPENDENT_CONFIRMATION |
 
-No archetype is authorized for live implementation. Two development candidates
-now pass fixed executable replay gates: an RS-acceleration selection veto inside
-the breakout seed and a minute-volatility defensive exposure overlay. Neither
-has independent confirmation. Dispersion/relative value remains the sole
-genuinely new research archetype and stays resource-parked.
+No archetype is authorized for live implementation. Industry-consensus event,
+the RS-acceleration selection veto, and the minute-volatility defensive exposure
+overlay pass development replay gates but have no independent confirmation.
+Dispersion/relative value remains scientifically unresolved and resource-parked.
 
 ## Independent-funnel status overlay
 

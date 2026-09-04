@@ -1,0 +1,41 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-DIFFUSION-Q1-PAIR-STRUCTURE-ANATOMY-V1",
+  "frozen_at": "2026-09-04",
+  "status": "FROZEN_BINARY_STRUCTURE_BEFORE_Q1_PAIR_OUTCOMES",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_ANATOMY_NOT_OOS_NOT_CONFIRMATION",
+  "purpose": "test whether Q1's two-name cohort works differently when diffusion leadership is concentrated in one PIT industry versus split across two",
+  "inputs": {
+    "q1_strategy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-Q1-CONCENTRATION-V1_result.json",
+      "sha256": "45af1eaec616f5bbc4280c8929372d76ee6684ce181f0d4afcd17374b42dc592"
+    },
+    "q1_trade_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_panel.csv",
+      "sha256": "01c52ffcb8e5c4a48274cd4ae18c0867a6b1931696314c24e5bc267248fed881"
+    }
+  },
+  "frozen_states": {
+    "SAME_INDUSTRY": "both exact Q1 names share the same signal-date PIT industry",
+    "TWO_INDUSTRIES": "the two exact Q1 names have different signal-date PIT industries"
+  },
+  "required_views": [
+    "decision dates, trades, mean cohort payoff, trade median, winner and severe-loss fraction",
+    "2018-2020 and 2021-2023",
+    "calendar-year support and payoff"
+  ],
+  "promotion_condition": "only a state with negative mean cohort payoff in both chronological blocks, adequate support in both, and worse severe-loss incidence may motivate one separately frozen admission-veto replay",
+  "governance": {
+    "binary_state_only": true,
+    "no_threshold": true,
+    "no_portfolio_replay": true,
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "prohibited": [
+    "diffusion-score gap, industry-count, threshold, or neighboring taxonomy search",
+    "within-pair Top-1 selection or weighting change",
+    "market-state combination",
+    "post-2023 outcomes",
+    "CY-011"
+  ]
+}

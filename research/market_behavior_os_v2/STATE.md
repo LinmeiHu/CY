@@ -1,36 +1,36 @@
 # Market Behavior Research OS V2 state
 
-Updated 2026-09-03.
+Updated 2026-09-04.
 
 ## Program identity
 
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `1b467df2ee60a24a44d21d38bfa204b45666f5a5` (clean start of Champion Candlestick Rule Discovery V1--V3)
-- `CURRENT_PHASE`: `CHAMPION_CANDLESTICK_RULE_DISCOVERY_COMPLETE_NO_RULE_PROMOTED`
-- `CURRENT_PRIMARY_FRONTIER`: `FROZEN_CROSS_SECTIONAL_DISPERSION_SCIENCE`, still `SCIENTIFICALLY_UNRESOLVED_RESOURCE_BLOCKED`; do not spend another cycle threshold-mining champion candlestick exits
+- `CURRENT_BASELINE`: `aa46eea96d55a90e1b27ffbefe520233a1582c94` (clean start of the bounded user-target development optimization cycle)
+- `CURRENT_PHASE`: `DEVELOPMENT_TARGET_ACHIEVED_NOT_INDEPENDENTLY_VALIDATED`
+- `CURRENT_PRIMARY_FRONTIER`: freeze `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` exactly; do not tune it on consumed history. The next valid scientific step is untouched temporal confirmation only when separately authorized
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: preserve Industry Diffusion plus weekly Low-MAX unchanged as the frozen champion. Cycle 020 changes no entry or exit because its Phase-B gate failed; Cycle 019 authorizes no deployment rule and all prior construction closures remain unchanged
+- `CURRENT_STRATEGY_CANDIDATE`: `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1`, a post-hoc development candidate derived from the frozen Industry Diffusion plus Weekly Low-MAX Champion. On a normal weekly Champion signal it keeps the exact diffusion-intensity Q1 pair only when both names share the same signal-date PIT industry; it assigns at most one-half pre-entry NAV to the two-name event, enters next legal open, and exits at the unchanged h20 due open
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `1b467df2ee60a24a44d21d38bfa204b45666f5a5`
+- `STARTING_HEAD`: `aa46eea96d55a90e1b27ffbefe520233a1582c94`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `1b467df2ee60a24a44d21d38bfa204b45666f5a5`
-- `CURRENT_SCIENTIFIC_LAYER`: `POST_HOC_CONSUMED_DEVELOPMENT_VISUAL_RULE_DISCOVERY; THREE_FROZEN_ITERATIONS; NO_RULE_PROMOTED; NO_PORTFOLIO_REPLAY`
-- `REPRESENTATIONS_TESTED`: 12 frozen chart-derived translations across entry admission, individual d3/d5/d10/d15 exits, and cohort-synchronous d5/d10 exits
-- `ECONOMIC_RESPONSE_STATUS`: `ZERO_OF_TWELVE_RULES_SURVIVED; DOWNSIDE_RISK_REDUCTION_DID_NOT_TRANSLATE_TO_RETURN_IMPROVEMENT`
-- `LEVEL_VS_TRANSITION_STATUS`: `SIGNAL_DAY_SHAPES_OVERLAP; POST_ENTRY_FAILURE_DESCRIBES_RISK_BUT_FIXED_EXIT_TIMING_DESTROYS_REBOUND_PAYOFF`
-- `EVENT_EPISODE_RULES`: inherited exact experiment definitions only; no event, score, threshold, horizon, state, or action was changed or recomputed
-- `YEAR_BY_YEAR_RESULTS`: temporal discovery gates used 2018--2019 then 2020 for V1, 2018--2020 then boundary-purged 2021 for V2, and 2018--2019 versus 2020--2021 for V3; failed gates kept later fixed validation unopened
-- `PLACEBO_RESULTS`: frozen champion trade payoff is the comparator; no new control zoo or alternative baseline was introduced
-- `SUPPORTED_MARKET_STATES`: none newly established by this audit
-- `DESCRIPTIVE_ONLY_STATES`: below-signal-low, below-MA10, fixed drawdown, profit-giveback, and synchronized-cohort failure remain risk descriptors only
-- `STRATEGY_HABITAT_STATUS`: `NO_STRATEGY_A_TRANSFER_OR_CHANGE; NO_STRATEGY_B_REPLAY; FROZEN_CHAMPION_UNCHANGED`
-- `CURRENT_MECHANISMS`: chart-visible failure reliably reduces severe-loss incidence, but the champion's rebound convexity makes fixed causal exits return-adverse; signal-day candle shape has insufficient stable separation
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: complete the already-frozen Cross-Sectional Dispersion science only when its resource contract is safely executable; otherwise prioritize a genuinely distinct Alpha engine. Do not reopen the 12 rejected candlestick translations with neighboring thresholds.
+- `CURRENT_HEAD_AT_RESUME`: `aa46eea96d55a90e1b27ffbefe520233a1582c94`
+- `CURRENT_SCIENTIFIC_LAYER`: `POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION; USER_NUMERICAL_TARGET_ACHIEVED; NOT_OOS; NOT_CONFIRMATION`
+- `REPRESENTATIONS_TESTED`: causal diffusion-intensity depth, exact Q1 Top-2 translation, fixed lifecycle checkpoints, reused causal Absolute Market State, and one binary PIT-industry pair structure. No threshold grid, Top-N grid, state combination, stop, or exit search was used in the promoted path
+- `ECONOMIC_RESPONSE_STATUS`: the exact same-industry Q1 event earns 33.7037% annualized return, 363.7225% total return, -18.0468% maximum drawdown, 1.4222 Sharpe, and 1.8676 Calmar over consumed 2018--2023 development history
+- `LEVEL_VS_TRANSITION_STATUS`: full h20 lifecycle remains necessary; d15-to-d20 adds +0.872 percentage points of mean trade payoff. Fixed earlier exits remain closed
+- `EVENT_EPISODE_RULES`: 99 weekly same-industry events, 198 planned entries, 180 completed trades; one-half pre-entry NAV is the single frozen capital divisor implied by median two concurrent event cohorts, capped by available cash with no leverage or backfill
+- `YEAR_BY_YEAR_RESULTS`: 2018 +4.98%, 2019 +45.83%, 2020 +44.92%, 2021 +19.88%, 2022 +12.00%, 2023 +55.68%. These are consumed development outcomes, not six independent validations
+- `PLACEBO_RESULTS`: versus the unchanged Champion, annualized return improves +17.36 points and drawdown improves +7.73 points; versus the exact Q1 Top-2 replay, annualized return improves +7.55 points and drawdown improves +3.90 points
+- `SUPPORTED_MARKET_STATES`: one data-generated stock-selection event: both exact diffusion-Q1 names share the same signal-date PIT industry
+- `DESCRIPTIVE_ONLY_STATES`: Cycle-019 Absolute Market State is chronologically unstable for Q1 and cannot be used as a veto; two-industry Q1 remains positive overall and is not a proven bad state
+- `STRATEGY_HABITAT_STATUS`: `DATA_GENERATED_INDUSTRY_CONSENSUS_EVENT_CANDIDATE; FREEZE_ONLY; INDEPENDENT_CONFIRMATION_REQUIRED`
+- `CURRENT_MECHANISMS`: concentrated within-industry diffusion leadership identifies fewer but stronger continuation cohorts; the gain comes from event selection and natural capital reuse, not from a new exit, stop, or market-timing rule
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do not optimize this candidate further on 2018--2023. Preserve post-2023 and CY-011 quarantine; only a separately authorized untouched confirmation can establish transfer. Independent Alpha and resource-safe Dispersion remain the next discovery frontiers if no confirmation is opened.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,55 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Industry-Consensus Diffusion-Q1 Event V1
+
+`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` meets the user's two numerical
+development targets with one simple event rule. Starting from the unchanged
+weekly Industry Diffusion plus Low-MAX Champion signal, order the ten selected
+names by higher causal `diffusion_score`, lower exact prior-20-session MAX, and
+symbol. Keep the first two only when both share the same signal-date PIT
+industry. Allocate the lesser of available cash and one-half pre-entry NAV
+equally across executable names, enter next legal open, and exit at the
+unchanged h20 due open. Preserve all T+1, suspension, price-limit, QD-010,
+corporate-action, and 20-bps-per-side semantics. There is no backfill, leverage,
+market filter, early exit, or stop.
+
+The corrected fixed-endpoint replay runs from 2018-07-10 through 2023-12-28.
+It earns 33.7037% annualized and 363.7225% total return with -18.0468% maximum
+drawdown, 1.4222 Sharpe, and 1.8676 Calmar. The unchanged Champion earns
+16.3419% annualized with -25.7736% drawdown. All six calendar years are
+positive. The candidate has 99 event dates, 180 completed trades, 7.22% severe
+trades, 176.69x turnover relative to initial capital, and p10/median capacity
+of CNY 9.46m/CNY 29.77m at 5% of daily amount. Its mean invested-day industry
+HHI is 0.773, so concentration and modest capacity are material deployment
+risks.
+
+The causal evidence chain is deliberately bounded. The original predeclared
+Top-5 intensity translation failed its validation gate. Q1 Top-2 was then
+generated from that observed surface and improved annualized return to 26.15%
+with -21.95% drawdown. Fixed lifecycle anatomy rejected a shorter hold; reused
+Absolute Market State reversed across blocks and rejected a market veto. The
+single binary pair-structure anatomy found same-industry Q1 mean payoff of
++3.714% in 2018--2020 and +4.011% in 2021--2023, positive in every calendar
+year. Its 99-event schedule had median two concurrent h20 event cohorts on
+active days, fixing one-half NAV as the single outcome-blind capital divisor.
+
+This is explicitly `DATA_GENERATED_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION`,
+not independent validation, OOS evidence, or a live recommendation. The
+hypothesis and direction were learned from consumed outcomes. Post-2023
+outcomes and CY-011 were not read. The exact candidate is now frozen; no nearby
+Top-N, capital fraction, state, score-gap, holding-period, or exit rescue is
+authorized.
+
+What market behavior are we still not studying? Independent temporal transfer
+of this event, a resource-safe Cross-Sectional Dispersion Alpha, and PIT
+fundamental/order-book mechanisms remain unresolved.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? Yes:
+an `INDUSTRY_CONSENSUS_EVENT` archetype, where concentrated causal breadth
+leadership creates episodic long continuation rather than continuous weekly
+exposure. It is a development candidate, not confirmed Alpha.
 
 ### Champion Candlestick Rule Discovery V1--V3
 

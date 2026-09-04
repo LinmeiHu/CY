@@ -6,17 +6,24 @@ time.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 55% | The artifact audit found eight stable adverse avoidance questions but no opposite long Alpha; only Price-limit stable acceptance has enough evidence and low enough cost for one immediate anatomy | Run one frozen Price-Limit Cycle-014 negative-leg/event-baseline anatomy; if it is merely less bad, resume frozen Cross-Sectional Dispersion |
-| EXPLOIT | 5% | Champion remains cost-resilient and Low-MAX helpful in both losing years, but no modification is authorized | Freeze exact rules; seek only genuinely independent confirmation |
-| INVENT | 20% | Relative-value, investor-flow identity, PIT factors, and order-book/queue information directly address the diversification gap | Prefer one bounded multi-family contract only when acquisition is separately justified |
-| REPLICATE | 15% | Canonical IVOL/residual momentum and PIT fundamentals are blocked; lawful independent confirmation is also unavailable | Resume only with a source-ready factor/history contract or genuinely independent data |
-| TRANSFER | 0% | Confirmed Breakdown affected 1,071 champion lots but continuing payoff was positive in both blocks; the natural exit role failed before replay | Close admission and exit translations; no alternative support mapping or rescue |
-| FALSIFY | 5% | Cycle 019 leaves the applicability map partial because 2018 and 2022 do not share one adverse habitat | Close immediate market-state deployment/filter inference; preserve the descriptive map only |
+| EXPLORE | 25% | The new event candidate addresses return generation but remains one concentrated industry-continuation source | Prefer a genuinely independent Alpha engine or resource-safe Dispersion rather than another Q1 variant |
+| EXPLOIT | 0% | The user target is met on consumed development history and further tuning would spend the same evidence twice | Freeze exact Industry-Consensus Q1 rules; no in-sample parameter, exit, or habitat work |
+| INVENT | 15% | Relative value, investor-flow identity, PIT factors, and order-book/queue information still address the diversification gap | Open only a bounded multi-family contract when data acquisition is separately justified |
+| REPLICATE | 50% | The main uncertainty is now temporal transfer, not another development improvement | Seek untouched confirmation only under separate authorization; keep post-2023 and CY-011 locked until then |
+| TRANSFER | 5% | Translation to realistic capital is constrained by p10 capacity CNY 9.46m and industry HHI 0.773 | Perform no live transfer; preserve capacity and concentration warnings for future confirmation design |
+| FALSIFY | 5% | Q1 lifecycle and Absolute State alternatives were already falsified; exact event identity still requires future transfer stress | No new consumed-outcome falsification; predefine any future confirmation contract before opening outcomes |
 
 Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
+
+Current answers: learn whether `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1`
+transfers to untouched time without changing one rule. Independent
+cross-sectional relative-value, PIT fundamental, and order-book/queue return
+mechanisms remain under-studied. The new `INDUSTRY_CONSENSUS_EVENT` archetype is
+a development candidate only; it does not remove the need for Strategy-B
+diversification.
 
 ## Historical opposite-sign audit allocation
 

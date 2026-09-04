@@ -1,0 +1,31 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1",
+  "amendment_id": "MECHANICAL_AMENDMENT_001",
+  "created_at": "2026-09-04",
+  "status": "FROZEN_AFTER_FIRST_REPLAY_BEFORE_CORRECTED_METRIC_REPLAY",
+  "reason": "the first replay stopped its annualization clock on 2023-11-23 when the last event position closed, while the authoritative Champion comparison ends on 2023-12-28",
+  "observed_first_replay": {
+    "result_sha256": "c101d5c09b966edd96599e2f6dd3d584acf31f36c62210d7cf584e9b91d90355",
+    "equity_sha256": "68153eaf189356abfc65e240dece8cc2b35f297381c5287cbf159818c8358f30",
+    "runner_sha256": "c15727f70b9fa538f8d99da118339542a3752c2a2ad22db9e71bee52c9a8cae5",
+    "reported_annualized_return": 0.344492027440779,
+    "reported_maximum_drawdown": -0.18046774418308165
+  },
+  "frozen_correction": {
+    "evaluation_end": "2023-12-28",
+    "after_last_position": "append unchanged cash NAV on every market session through the fixed evaluation end",
+    "strategy_change": false,
+    "signal_change": false,
+    "trade_change": false,
+    "cost_change": false,
+    "ledger_detail": "debit each equal allocation directly rather than recomputing the algebraically identical amount through shares times price times one plus cost; expose minimum cash and capital-skipped entries"
+  },
+  "prohibited": [
+    "changing event selection or pair definition",
+    "changing one-half cohort capital",
+    "changing entry, holding, exit, cost, or execution",
+    "using the first replay outcome to alter the strategy",
+    "post-2023 outcomes",
+    "CY-011"
+  ]
+}
