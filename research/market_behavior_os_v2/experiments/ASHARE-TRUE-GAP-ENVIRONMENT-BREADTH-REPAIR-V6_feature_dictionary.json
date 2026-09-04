@@ -1,0 +1,38 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-ENVIRONMENT-BREADTH-REPAIR-V6",
+  "features": {
+    "board_breadth_above_ma5": {
+      "coordinate": "QD-010 corporate-action-consistent coord_close",
+      "decision_clock": "completed signal-date daily close",
+      "definition": "share of board members with completed close above exact valid 5-session MA",
+      "latest_source_timestamp": "signal_time",
+      "missing_policy": "FAIL_CLOSED",
+      "universe": "hard-valid and tradable Main/ChiNext daily rows"
+    },
+    "board_breadth_ma5_change5": {
+      "coordinate": "QD-010 corporate-action-consistent coord_close",
+      "decision_clock": "completed signal-date daily close",
+      "definition": "current board_breadth_above_ma5 minus its value exactly 5 market sessions earlier",
+      "latest_source_timestamp": "signal_time",
+      "missing_policy": "FAIL_CLOSED",
+      "universe": "hard-valid and tradable Main/ChiNext daily rows"
+    },
+    "board_median_ret5": {
+      "coordinate": "QD-010 corporate-action-consistent coord_close",
+      "decision_clock": "completed signal-date daily close",
+      "definition": "cross-sectional median causal 5-session coordinate return within board",
+      "latest_source_timestamp": "signal_time",
+      "missing_policy": "FAIL_CLOSED",
+      "universe": "hard-valid and tradable Main/ChiNext daily rows"
+    },
+    "industry_median_ret5": {
+      "coordinate": "QD-010 corporate-action-consistent coord_close",
+      "decision_clock": "completed signal-date daily close",
+      "definition": "cross-sectional median causal 5-session coordinate return in PIT causal industry",
+      "latest_source_timestamp": "signal_time",
+      "minimum_members": 5,
+      "missing_policy": "FAIL_CLOSED",
+      "universe": "hard-valid and tradable Main/ChiNext daily rows"
+    }
+  }
+}

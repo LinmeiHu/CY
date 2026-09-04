@@ -1,0 +1,55 @@
+{
+  "candidate_rules": {
+    "BOARD_MA5_BREADTH_RISING_AND_INDUSTRY_RET5_POS": [
+      "board_breadth_ma5_change5 > 0",
+      "industry_median_ret5 > 0"
+    ],
+    "BOARD_MA5_MAJORITY_AND_INDUSTRY_RET5_POS": [
+      "board_breadth_above_ma5 >= 0.50",
+      "industry_median_ret5 > 0"
+    ],
+    "BOARD_RET5_POS_AND_INDUSTRY_RET5_POS": [
+      "board_median_ret5 > 0",
+      "industry_median_ret5 > 0"
+    ]
+  },
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A stock-level below-gap MA5 reclaim is more likely to persist when it occurs during expanding board participation and a positive same-industry five-session state, rather than as an isolated rebound against continuing systematic liquidation.",
+  "experiment": "ASHARE-TRUE-GAP-ENVIRONMENT-BREADTH-REPAIR-V6",
+  "post_2023_scope": "pre-2024 trade-resolution tail only; no post-2023 signal or feature",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_calendar_years_min": 4,
+      "selected_signals_per_year": [
+        40.0,
+        80.0
+      ]
+    },
+    "order": [
+      "minimum absolute distance from 50 selected signals per year",
+      "lower severe_loss10",
+      "lexicographic rule name"
+    ]
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "unchanged_v4r1": {
+    "entry": true,
+    "execution_and_corporate_actions": true,
+    "failure_stop": "NONE",
+    "portfolio": "50/50 Main/ChiNext; K20 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_and_vap": true,
+    "target": "entry + 0.80*(L-entry)",
+    "time_stop": "H20"
+  }
+}
