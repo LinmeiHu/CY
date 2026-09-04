@@ -1,0 +1,54 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "The V13 signal has positive median economics but a damaging left tail. A completed daily close materially below entry is a direct falsification of the first-reversal thesis. A hard boundary may cut structural failures while avoiding the frequent winner interruption of swing-low or no-progress exits.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-HARD-LOSS-BOUNDARY-V15",
+  "fixed_rule_family": {
+    "S0_NO_STOP": "A67 target or H20",
+    "S10_DAILY_CLOSE": "first completed valid daily close <= entry coordinate * 0.90",
+    "S12_DAILY_CLOSE": "first completed valid daily close <= entry coordinate * 0.88",
+    "S8_DAILY_CLOSE": "first completed valid daily close <= entry coordinate * 0.92"
+  },
+  "governance": {
+    "diagnostic_opened_only_for_development_selected_rule": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only",
+    "stop_clocks_built_before_stop_returns": true
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "accepted_trades_per_year_min": 50.0,
+      "attack_date_equal_mean_positive": true,
+      "frequency_has_no_upper_cap": true,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_portfolio_years_min": 4,
+      "positive_trade_mean_years_min": 4
+    },
+    "order": [
+      "higher portfolio mean net",
+      "higher portfolio median net",
+      "lower severe_loss10",
+      "less restrictive stop"
+    ]
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "source_trigger": "PRIOR_HIGH_REVERSAL",
+  "stop_execution": "next legal sellable 1-minute open strictly after completed daily close; actual gap-through price; no fill at or below authoritative down limit",
+  "unchanged": {
+    "T1_limits_suspensions_and_QD010": true,
+    "collision_rank": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_population_features_and_entry": true,
+    "target": "entry + 0.67*(L-entry), strictly below L",
+    "time_stop": "H20"
+  }
+}
