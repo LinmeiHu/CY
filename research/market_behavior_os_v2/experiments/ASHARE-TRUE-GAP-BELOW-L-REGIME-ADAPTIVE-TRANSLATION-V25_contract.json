@@ -1,0 +1,72 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "development_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "diagnostic_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "both_2022_and_2023_portfolio_returns_positive": true,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "year_2022_trade_mean_positive": true,
+    "year_2023_mean_net_min": 0.01,
+    "year_2023_median_net_min": 0.0,
+    "year_2023_win_rate_min": 0.5
+  },
+  "economic_hypothesis": "A nonnegative signal-day board bounce inside a still-negative five-session board path is a weaker counter-trend state than a board whose five-session return has recovered to nonnegative. Keep the same stock signal and entry, but realize a nearer half-path rebound over H10 in the weak state while retaining A67/H20 in the repaired state.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-REGIME-ADAPTIVE-TRANSLATION-V25",
+  "governance": {
+    "development_disclosure": "A50/H10 in a negative five-session board regime was specified after Development-only mechanism analysis.",
+    "development_informed_fixed_regime_translation": true,
+    "diagnostic_opened_only_after_development_pass": true,
+    "no_diagnostic_threshold_selection": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "signal_identity": {
+    "entry": "unchanged first legal buyable 1-minute open after signal",
+    "same_day_board_gate": "completed signal-day equal-weight board return >= 0",
+    "trigger": "V13 PRIOR_HIGH_REVERSAL"
+  },
+  "single_translation_rule": {
+    "admission_filter": "NONE; all V24 signals remain eligible",
+    "feature": "five-session compounded equal-weight board return ending on signal day",
+    "if_negative": {
+      "target": "A50 below L",
+      "time_stop": "H10"
+    },
+    "if_nonnegative": {
+      "target": "A67 below L",
+      "time_stop": "H20"
+    },
+    "known_time": "signal-day close, before next-session entry",
+    "missing_policy": "fail closed",
+    "threshold": "natural zero; no threshold search"
+  },
+  "source_signal": "ASHARE-TRUE-GAP-BELOW-L-BOARD-SUPPORTED-REVERSAL-V24",
+  "unchanged": {
+    "T1_limits_suspensions_and_QD010": true,
+    "failure_stop": "NONE",
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_net_headroom_to_L": 0.05,
+    "no_L_touch_before_signal": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "true_gap_and_clean_vap_corridor": true
+  }
+}
