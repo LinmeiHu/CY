@@ -1,0 +1,46 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "The strict low-inventory below-gap signal may identify a rebound, but an 80%-to-L target can overstay a partial repair. Earlier fixed targets may monetize the rebound before renewed overhead supply appears.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-TARGET-TRANSLATION-V11",
+  "post_2023_scope": "trade management/completion only; no post-2023 signal or selection",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "attack_date_equal_mean_positive": true,
+      "portfolio_accepted_trades_per_year_min": 50.0,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_calendar_years_min": 4
+    },
+    "order": [
+      "higher portfolio mean net return",
+      "higher portfolio median net return",
+      "lower severe_loss10",
+      "lower target fraction"
+    ]
+  },
+  "source": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "target_family": {
+    "A50": "entry + 0.50*(L-entry), strictly below L",
+    "A67": "entry + 0.67*(L-entry), strictly below L",
+    "A80": "entry + 0.80*(L-entry), strictly below L"
+  },
+  "unchanged_v4r1": {
+    "T1_limits_suspensions_and_QD010": true,
+    "collision_rank": true,
+    "entry": true,
+    "failure_stop": "NONE",
+    "minimum_net_headroom_to_L": 0.05,
+    "portfolio": "Main/ChiNext 50/50; K20 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_population_and_features": true,
+    "time_stop": "H20"
+  }
+}
