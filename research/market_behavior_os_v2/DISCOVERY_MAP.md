@@ -4,6 +4,33 @@ Updated 2026-09-04. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Strategy-B bounded continuation and stop conclusions
+
+- Panic liquid-basket reversal: +13.15% annualized generation, then -4.41%
+  frozen validation. `VALIDATION_REJECTED_NO_FULL_REPLAY`.
+- New-high/new-low exhaustion: +12.16% annualized generation, then -1.95%
+  frozen validation. `VALIDATION_REJECTED_NO_FULL_REPLAY`.
+- Liquidity activity, post-share-distribution drift, cash-dividend capture, and
+  six-index trend direction all fail generation; validation remains unopened.
+- Q1 recurrence has strong generation return separation (+4.160% versus
+  +0.847%) but worsens severe-loss incidence (8.889% versus 7.143%). Its frozen
+  tail gate fails, so validation remains unopened and no recurrence rule is
+  added.
+- Same-industry-specific recurrence and suspension reopening fail outcome-blind
+  sample/portability checks. No outcome experiment is opened for either.
+- No new Strategy B is promoted. Final classification:
+  `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`.
+
+What market behavior are we still not studying? Immutable-vintage PIT
+fundamental change, identifiable investor flow and order-book/queue pressure,
+borrow-feasible relative value, and a completed resource-safe Dispersion Alpha.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The current registered pre-2024 information set produced no independent engine
+that survived sequential gates. Preserve the frozen Industry-Consensus Q1
+candidate and wait for genuinely new information or separately authorized
+untouched time.
+
 ## Industry-Consensus Diffusion-Q1 Event V1 conclusions
 
 - A bounded depth study of the frozen Champion found that its exact two-name

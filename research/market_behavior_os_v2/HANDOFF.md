@@ -2,6 +2,51 @@
 
 Updated 2026-09-04.
 
+## Latest checkpoint: bounded Strategy-B continuation reaches a genuine stop
+
+Resume after the commit containing
+`ASHARE-STRATEGY-B-STOP-CYCLE-V1`; its authoritative starting checkpoint was
+`1be08c4153d124850ebbbd80208d2637e6feeb6d`. Preserve
+`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` exactly. Post-2023 outcomes and CY-011
+remain unread.
+
+Seven frozen experiments were completed without parameter rescue. Panic
+liquid-basket reversal and new-high/new-low exhaustion passed generation at
++13.15% and +12.16% annualized but failed the frozen 2022--2023 validation at
+-4.41% and -1.95%; no full replay followed. Liquidity activity,
+post-share-distribution drift, cash-dividend capture, and the six-index trend
+translation failed generation and never opened validation.
+
+The only Champion deepening tested was exact h20 recurrence. Recurrent events
+had +4.160% mean trade payoff versus +0.847% for isolated events, but severe
+losses were 8.889% versus 7.143%. Because the frozen gate required tail risk not
+to worsen, generation failed and 2021--2023 validation stayed unopened. Do not
+relax this gate or try recurrence windows, industry-specific variants, or
+neighboring definitions. The industry-specific recurrence variant and
+suspension reopening already failed outcome-blind sample/portability checks.
+
+MKT-TRND-001 established neighboring-horizon representation stability for
+trend direction, not strategy usefulness. The adverse six-index translation
+does not rewrite that representation result and does not reject the broader
+trend families.
+
+Final decision: `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`. Do not keep
+mining 2018--2023. Resume only if one of these conditions changes:
+
+1. untouched temporal confirmation is separately authorized;
+2. an immutable-vintage PIT source or another genuinely new registered data
+   contract becomes available;
+3. Cross-Sectional Dispersion receives a materially different resource-safe
+   design rather than a rerun of failed 003/004/005 attempts.
+
+The preserved strategy remains simple: start from the unchanged weekly
+Industry Diffusion plus Low-MAX Top-10; rank by higher causal diffusion score,
+lower prior-20 MAX, then symbol; trade the first two only when they share the
+same signal-date PIT industry; allocate at most one-half pre-entry NAV equally;
+enter next legal open and exit at h20. Keep all execution and 20-bps-per-side
+semantics unchanged. Its consumed development result remains 33.7037%
+annualized with -18.0468% maximum drawdown. It is not independently validated.
+
 ## Latest checkpoint: user development target achieved; candidate frozen
 
 Resume after the commit containing

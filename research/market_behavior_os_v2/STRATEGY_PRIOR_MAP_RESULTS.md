@@ -1,5 +1,22 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Strategy-B bounded continuation and stop V1
+
+| Family | Frozen canonical translation | Sequential evidence | Decision |
+|---|---|---|---|
+| Panic liquid-basket reversal | PIT downside-extreme participation >= historical 80th percentile; liquid Top-20; next open; h5 | +13.15% annualized generation, then -4.41% frozen validation | `VALIDATION_REJECTED_NO_FULL_REPLAY` |
+| New-high/new-low exhaustion | PIT new-high-minus-new-low60 <= historical 20th percentile; liquid Top-20; next open; h5 | +12.16% annualized generation, then -1.95% frozen validation | `VALIDATION_REJECTED_NO_FULL_REPLAY` |
+| Liquidity activity | PIT market amount-ratio state >= historical 80th percentile; liquid Top-20; h5 | -1.35% annualized generation | `GENERATION_REJECTED_VALIDATION_UNOPENED` |
+| Share-distribution drift | PIT-known complete share distribution; next open; h20 | -2.93% annualized generation | `GENERATION_REJECTED_VALIDATION_UNOPENED` |
+| Cash-dividend capture | PIT-known cash-only distribution before effective date; exact cash ledger; h20 | +3.19% annualized, -25.82% DD, 2018/2019 negative | `GENERATION_REJECTED_VALIDATION_UNOPENED` |
+| Six-index trend | Frozen MKT-TRND-001 median direction positive; monthly liquid Top-20; h20 | -5.05% annualized generation | `GENERATION_REJECTED_VALIDATION_UNOPENED`; representation stability is not strategy usefulness |
+| Exact Q1 recurrence | Current same-industry Q1 event after any accepted Q1 event in prior h20 lifecycle | Return gap favorable, but severe loss 8.889% versus 7.143% violates frozen gate | `GENERATION_REJECTED_VALIDATION_UNOPENED` |
+
+No family promotes. Post-2023 outcomes and CY-011 were not read. No validation
+gate was relaxed, no failed family was inverted, and no full replay or
+combination was run. Final portfolio decision:
+`GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`.
+
 ## Industry-Consensus Diffusion-Q1 Event V1
 
 | Layer | Frozen definition | Development evidence | Decision |

@@ -1,0 +1,122 @@
+{
+  "experiment_id": "ASHARE-LIQUIDITY-ACTIVITY-LIQUID-BASKET-V1",
+  "frozen_at": "2026-09-04",
+  "status": "FROZEN_SEQUENTIAL_STRATEGY_B_BEFORE_GENERATION_REPLAY",
+  "claim_boundary": "CONSUMED_2020H2_2023_DEVELOPMENT_RESEARCH_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "research_role": "test one simple market-liquidity-activity continuation engine economically distinct from Industry Diffusion continuation",
+  "inputs": {
+    "liquidity_state_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-CLQ-001_correlation_liquidity_panel.csv",
+      "sha256": "d45993ceb0a1d28d23ff9c7f10552890f82629f4d63b729a9bd73a9101a6e573"
+    },
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "shared_replay_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_panic_liquid_basket_reversal_v1.py",
+      "sha256": "7364e886b3ad6c70e9753acfc175e7b0f4eace01ac18339155a5b5b4f3729246"
+    },
+    "execution_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json",
+      "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"
+    },
+    "execution_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py",
+      "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"
+    },
+    "industry_consensus_q1_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1_result.json",
+      "sha256": "764188fcd0f42960b53ed117ff6a188eae74c68176f3492acc64347c0d88ab23"
+    },
+    "industry_consensus_q1_equity": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1_equity.csv",
+      "sha256": "5d3a05fe93341c88c31599f9b16d236430f92dd7f668e2dab764784be4dc6ed4"
+    },
+    "diffusion_q1_trade_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-DIFFUSION-INTENSITY-V1_panel.csv",
+      "sha256": "01c52ffcb8e5c4a48274cd4ae18c0867a6b1931696314c24e5bc267248fed881"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    }
+  },
+  "economic_hypothesis": {
+    "mechanism": "unusually broad market liquidity activity may reflect sustained attention and risk-taking that carries into a liquid A-share basket over the next five sessions",
+    "independence": "the trigger is a market-wide causal liquidity state and the basket is chosen only for capacity; it does not use Industry Diffusion, Low-MAX, trend, support, breakout, panic, or Champion membership",
+    "prior_evidence_boundary": "MKT-STATE-ECON-SCREEN-001 found a positive five-day market response association for the already-accepted liquidity-activity representation; it did not test this executable basket"
+  },
+  "frozen_strategy": {
+    "state_row": "market_view == ALL_A and denominator == ALL_STATUS",
+    "state_coordinate": "liquidity_median_amount_ratio20_pit_3y_pct",
+    "signal": "coordinate >= 0.80 at completed day-t close; one event on every qualifying completed session",
+    "activation": "first causally available 504-observation PIT coordinate, expected 2020-07-28",
+    "stock_universe": "exact causal daily-feature-panel rows available by day-t close; this panel already requires prior-20 average amount >= CNY 50m",
+    "selection": "20 highest prior-20-session average-amount stocks, descending avg_amount20 then symbol",
+    "selection_role": "capacity-only broad basket; no return score or outcome-trained rank",
+    "entry": "next legal market-session open; blocked names are not backfilled",
+    "holding": "five market sessions from entry to due open, with unchanged QD-010 pre-effective and legal-fill handling",
+    "event_capital": "minimum of available cash and one-fifth pre-entry NAV",
+    "weights": "equal across executable names",
+    "cost_per_side": 0.002,
+    "leverage": false
+  },
+  "sequential_protocol": {
+    "generation": {
+      "signal_period": ["2020-07-28", "2021-12-31"],
+      "maximum_outcome_date": "2021-12-31",
+      "drop_plans_whose_due_open_exceeds_cutoff": true,
+      "all_required_to_open_validation": {
+        "minimum_signal_dates": 30,
+        "minimum_entry_execution_fraction": 0.90,
+        "minimum_annualized_return": 0.10,
+        "minimum_daily_sharpe": 0.60,
+        "maximum_drawdown_must_be_greater_than": -0.20,
+        "maximum_severe_trade_fraction": 0.10,
+        "positive_calendar_subperiods": ["2020", "2021"]
+      }
+    },
+    "validation": {
+      "signal_period": ["2022-01-01", "2023-12-31"],
+      "maximum_outcome_date": "2023-12-31",
+      "status": "UNOPENED_UNTIL_GENERATION_GATE_PASSES",
+      "all_required": {
+        "minimum_signal_dates": 80,
+        "minimum_entry_execution_fraction": 0.90,
+        "minimum_annualized_return": 0.08,
+        "minimum_daily_sharpe": 0.40,
+        "maximum_drawdown_must_be_greater_than": -0.25,
+        "maximum_severe_trade_fraction": 0.12,
+        "positive_calendar_years": ["2022", "2023"]
+      }
+    },
+    "full_replay": "run exact 2020-07-28 through 2023-12-29 only when both gates pass; no rule change",
+    "final_candidate_all_required": {
+      "minimum_annualized_return": 0.10,
+      "minimum_daily_sharpe": 0.50,
+      "maximum_drawdown_must_be_greater_than": -0.25,
+      "maximum_daily_return_correlation_with_industry_consensus_q1": 0.50
+    }
+  },
+  "required_diagnostics": [
+    "signal dates, planned and completed trades, entry coverage and capital-skipped entries",
+    "total and annualized return, maximum drawdown, Sharpe, Calmar and calendar returns",
+    "severe-loss incidence, turnover, breadth, industry concentration and capacity",
+    "daily-return correlation and signal-date overlap with frozen Industry-Consensus Q1"
+  ],
+  "prohibited": [
+    "state threshold, basket size, liquidity window, capital divisor, or holding-period search",
+    "stock return, momentum, Low-MAX, industry, support, candle, VWAP, panic, or post-shock recovery rank",
+    "signal onset, cooldown, persistence, multiple-event suppression, or habitat search",
+    "validation outcome access before every generation requirement passes",
+    "combination with Strategy A before Strategy B independently passes",
+    "post-2023 outcomes",
+    "CY-011",
+    "OOS, independent-confirmation, production, or live claim"
+  ]
+}

@@ -1,29 +1,46 @@
 # Autonomous research portfolio
 
-Allocation is re-ranked at every synthesis checkpoint. The current portfolio is
-intentionally diversified across objectives rather than evenly split by clock
-time.
+Allocation is re-ranked at every synthesis checkpoint. No active experiment is
+authorized at this stop checkpoint; the percentages below rank the next unit of
+research capital conditional on the named information or authority becoming
+available.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 25% | The new event candidate addresses return generation but remains one concentrated industry-continuation source | Prefer a genuinely independent Alpha engine or resource-safe Dispersion rather than another Q1 variant |
-| EXPLOIT | 0% | The user target is met on consumed development history and further tuning would spend the same evidence twice | Freeze exact Industry-Consensus Q1 rules; no in-sample parameter, exit, or habitat work |
-| INVENT | 15% | Relative value, investor-flow identity, PIT factors, and order-book/queue information still address the diversification gap | Open only a bounded multi-family contract when data acquisition is separately justified |
-| REPLICATE | 50% | The main uncertainty is now temporal transfer, not another development improvement | Seek untouched confirmation only under separate authorization; keep post-2023 and CY-011 locked until then |
-| TRANSFER | 5% | Translation to realistic capital is constrained by p10 capacity CNY 9.46m and industry HHI 0.773 | Perform no live transfer; preserve capacity and concentration warnings for future confirmation design |
-| FALSIFY | 5% | Q1 lifecycle and Absolute State alternatives were already falsified; exact event identity still requires future transfer stress | No new consumed-outcome falsification; predefine any future confirmation contract before opening outcomes |
+| EXPLORE | 10% | Cross-Sectional Dispersion remains scientifically unresolved, not null | Use only a materially different resource-safe design; do not rerun failed attempts unchanged |
+| EXPLOIT | 0% | The user target is met on consumed development history and further tuning would spend the same evidence twice | Freeze exact Industry-Consensus Q1 rules; no in-sample parameter, exit, recurrence, or habitat work |
+| INVENT | 30% | PIT fundamentals, identifiable flows, and order-book/queue information are the clearest diversification gaps | Open only after a bounded, registered, PIT-safe source unlocks multiple high-value mechanisms |
+| REPLICATE | 55% | The dominant uncertainty is temporal transfer of the frozen candidate | Predefine untouched confirmation only under separate authorization; post-2023 and CY-011 stay locked meanwhile |
+| TRANSFER | 5% | P10 capacity CNY 9.46m and industry HHI 0.773 constrain deployment | Preserve warnings and predefine capacity checks; no live transfer |
+| FALSIFY | 0% | Sequential development falsification is saturated under current inputs | Do not create more consumed-history filters or neighboring rules |
 
 Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
 
-Current answers: learn whether `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1`
-transfers to untouched time without changing one rule. Independent
-cross-sectional relative-value, PIT fundamental, and order-book/queue return
-mechanisms remain under-studied. The new `INDUSTRY_CONSENSUS_EVENT` archetype is
-a development candidate only; it does not remove the need for Strategy-B
-diversification.
+Current answers: the only high-value candidate-specific question is whether
+`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` transfers to untouched time without
+changing one rule. The bounded Strategy-B continuation rejected six direct
+engines and one Q1 recurrence deepening; further work on current consumed inputs
+has insufficient expected information value. Immutable-vintage fundamentals,
+identifiable flows/order-book queues, borrow-feasible relative value, and a
+resource-safe Dispersion mechanism remain under-studied. The
+`INDUSTRY_CONSENSUS_EVENT` archetype is a development candidate only.
+
+## Strategy-B stop allocation
+
+Panic reversal and new-high/new-low exhaustion both reversed from positive
+generation to negative frozen validation. Liquidity activity, share
+distribution drift, cash-dividend capture, and six-index trend failed
+generation. Q1 recurrence failed its frozen severe-loss gate, and suspension
+reopening failed outcome-blind portability. No candidate earns more consumed
+history.
+
+Final status: `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`. Research resumes
+only when untouched time is separately authorized, a genuinely new PIT data
+contract is registered, or Dispersion has a materially different resource-safe
+design.
 
 ## Historical opposite-sign audit allocation
 

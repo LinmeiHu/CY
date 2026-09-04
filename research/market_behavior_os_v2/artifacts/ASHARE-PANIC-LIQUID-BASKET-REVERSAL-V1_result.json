@@ -1,0 +1,163 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "claim_boundary": "CONSUMED_2020H2_2023_DEVELOPMENT_RESEARCH_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "cy011_read": "NO",
+  "experiment_id": "ASHARE-PANIC-LIQUID-BASKET-REVERSAL-V1",
+  "full_replay_opened": false,
+  "generation": {
+    "annualized_return": 0.13150732210388827,
+    "calendar_year_returns": {
+      "2020": 0.07373006317750264,
+      "2021": 0.1056788700393132
+    },
+    "calmar": 2.584799033615383,
+    "capital_skipped_entries": 0,
+    "cash_constrained_events": 0,
+    "completed_trades": 1240,
+    "daily_sharpe": 1.391071612065901,
+    "end_date": "2021-12-31",
+    "entries": 1240,
+    "entry_execution_fraction": 1.0,
+    "family": "panic_liquid_basket_reversal",
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 2,
+    "market_unexecutable_entries": 0,
+    "maximum_drawdown": -0.05087719408496827,
+    "mean_event_allocation_fraction": 1.0,
+    "mean_industries": 6.734285714285714,
+    "mean_industry_hhi_invested_days": 0.10083065645981054,
+    "mean_positions": 17.71142857142857,
+    "median_capacity_cny_at_5pct_amount": 21101414913.65,
+    "minimum_cash": 2188849.2654921054,
+    "p10_capacity_cny_at_5pct_amount": 10483564074.595001,
+    "planned_entries": 1240,
+    "risk_blocked_entries": 0,
+    "severe_trade_fraction": 0.04838709677419355,
+    "signal_dates": 62,
+    "start_date": "2020-07-28",
+    "status": "COMPLETE",
+    "terminal_open_lots": 0,
+    "total_return": 0.18720064298134131,
+    "turnover_multiple_initial_capital": 27.35327246109807
+  },
+  "generation_checks": {
+    "annualized_return": true,
+    "complete": true,
+    "daily_sharpe": true,
+    "entry_execution": true,
+    "maximum_drawdown": true,
+    "positive_2020": true,
+    "positive_2021": true,
+    "severe_trade_fraction": true,
+    "signal_dates": true
+  },
+  "generation_passed": true,
+  "hashes": {
+    "generation_equity_sha256": "0d6e82a4000d8a08ae2c4a4593c8ce10dc3f48f384d79af68a903fbdee838b30",
+    "generation_trades_sha256": "2f7d7c462740bf841e451d2137415cec56848e6ad6bf41133ca2328969acbc93",
+    "selection_sha256": "f8efd21a0e252cca4f4ee45e3fd2d9d1198e5ebe7a7bfda7332e4b135eef19d6",
+    "spec_sha256": "ce9631f6721c4ab91fac33ee5bed48f745bf185f9f8350689b50acd704056462",
+    "validation_equity_sha256": "d4a7439827ae6e718716a3caa801c1ca5370f01e84a48f8e8f580eb08ebb67cd",
+    "validation_trades_sha256": "a2192eb97183b189a5f4f555207274cd816fd3e3e61ba3610f02c90751d6e5c1"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "post_2023_outcome_read": "NO",
+  "status": "VALIDATION_REJECTED_NO_FULL_REPLAY",
+  "validation": {
+    "annualized_return": -0.04405930879955133,
+    "calendar_year_returns": {
+      "2022": -0.05101561962907275,
+      "2023": -0.03360220144370385
+    },
+    "calmar": -0.42659735002474514,
+    "capital_skipped_entries": 0,
+    "cash_constrained_events": 0,
+    "completed_trades": 890,
+    "daily_sharpe": -0.5590477295498092,
+    "end_date": "2023-12-29",
+    "entries": 890,
+    "entry_execution_fraction": 0.9888888888888889,
+    "family": "panic_liquid_basket_reversal",
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 4,
+    "market_unexecutable_entries": 6,
+    "maximum_drawdown": -0.10328078408596686,
+    "mean_event_allocation_fraction": 1.0,
+    "mean_industries": 3.90702479338843,
+    "mean_industry_hhi_invested_days": 0.09062440513769415,
+    "mean_positions": 9.183884297520661,
+    "median_capacity_cny_at_5pct_amount": 15258699633.375,
+    "minimum_cash": 25559.293296454853,
+    "p10_capacity_cny_at_5pct_amount": 7511477465.695001,
+    "planned_entries": 900,
+    "risk_blocked_entries": 4,
+    "severe_trade_fraction": 0.1101123595505618,
+    "signal_dates": 45,
+    "start_date": "2022-01-04",
+    "status": "COMPLETE",
+    "terminal_open_lots": 0,
+    "total_return": -0.08290358394522523,
+    "turnover_multiple_initial_capital": 17.0169121136383
+  },
+  "validation_checks": {
+    "annualized_return": false,
+    "complete": true,
+    "daily_sharpe": false,
+    "entry_execution": true,
+    "maximum_drawdown": true,
+    "positive_2022": false,
+    "positive_2023": false,
+    "severe_trade_fraction": true,
+    "signal_dates": true
+  },
+  "validation_opened": true,
+  "validation_passed": false
+}

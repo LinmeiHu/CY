@@ -7,20 +7,20 @@ Updated 2026-09-04.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `aa46eea96d55a90e1b27ffbefe520233a1582c94` (clean start of the bounded user-target development optimization cycle)
-- `CURRENT_PHASE`: `DEVELOPMENT_TARGET_ACHIEVED_NOT_INDEPENDENTLY_VALIDATED`
-- `CURRENT_PRIMARY_FRONTIER`: freeze `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` exactly; do not tune it on consumed history. The next valid scientific step is untouched temporal confirmation only when separately authorized
+- `CURRENT_BASELINE`: `1be08c4153d124850ebbbd80208d2637e6feeb6d` (authoritative start of the bounded Strategy-B continuation)
+- `CURRENT_PHASE`: `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`
+- `CURRENT_PRIMARY_FRONTIER`: freeze `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` exactly. No further consumed-history tuning or Strategy-B mining is authorized; resume only with separately authorized untouched time, a genuinely new registered PIT information source, or a materially different resource-safe Dispersion contract
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1`, a post-hoc development candidate derived from the frozen Industry Diffusion plus Weekly Low-MAX Champion. On a normal weekly Champion signal it keeps the exact diffusion-intensity Q1 pair only when both names share the same signal-date PIT industry; it assigns at most one-half pre-entry NAV to the two-name event, enters next legal open, and exits at the unchanged h20 due open
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `aa46eea96d55a90e1b27ffbefe520233a1582c94`
+- `STARTING_HEAD`: `1be08c4153d124850ebbbd80208d2637e6feeb6d`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `aa46eea96d55a90e1b27ffbefe520233a1582c94`
-- `CURRENT_SCIENTIFIC_LAYER`: `POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION; USER_NUMERICAL_TARGET_ACHIEVED; NOT_OOS; NOT_CONFIRMATION`
-- `REPRESENTATIONS_TESTED`: causal diffusion-intensity depth, exact Q1 Top-2 translation, fixed lifecycle checkpoints, reused causal Absolute Market State, and one binary PIT-industry pair structure. No threshold grid, Top-N grid, state combination, stop, or exit search was used in the promoted path
+- `CURRENT_HEAD_AT_RESUME`: `1be08c4153d124850ebbbd80208d2637e6feeb6d`
+- `CURRENT_SCIENTIFIC_LAYER`: `CONSUMED_PRE2024_SEQUENTIAL_DEVELOPMENT_RESEARCH; STRATEGY_B_STOP; NOT_OOS; NOT_CONFIRMATION`
+- `REPRESENTATIONS_TESTED`: frozen downside-extreme participation, new-high/new-low exhaustion, liquidity activity, six-index trend direction, PIT-known share distribution, PIT-known cash distribution, and exact Q1 event recurrence. No threshold, horizon, Top-N, combination, or validation rescue was used
 - `ECONOMIC_RESPONSE_STATUS`: the exact same-industry Q1 event earns 33.7037% annualized return, 363.7225% total return, -18.0468% maximum drawdown, 1.4222 Sharpe, and 1.8676 Calmar over consumed 2018--2023 development history
 - `LEVEL_VS_TRANSITION_STATUS`: full h20 lifecycle remains necessary; d15-to-d20 adds +0.872 percentage points of mean trade payoff. Fixed earlier exits remain closed
 - `EVENT_EPISODE_RULES`: 99 weekly same-industry events, 198 planned entries, 180 completed trades; one-half pre-entry NAV is the single frozen capital divisor implied by median two concurrent event cohorts, capped by available cash with no leverage or backfill
@@ -30,7 +30,7 @@ Updated 2026-09-04.
 - `DESCRIPTIVE_ONLY_STATES`: Cycle-019 Absolute Market State is chronologically unstable for Q1 and cannot be used as a veto; two-industry Q1 remains positive overall and is not a proven bad state
 - `STRATEGY_HABITAT_STATUS`: `DATA_GENERATED_INDUSTRY_CONSENSUS_EVENT_CANDIDATE; FREEZE_ONLY; INDEPENDENT_CONFIRMATION_REQUIRED`
 - `CURRENT_MECHANISMS`: concentrated within-industry diffusion leadership identifies fewer but stronger continuation cohorts; the gain comes from event selection and natural capital reuse, not from a new exit, stop, or market-timing rule
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: do not optimize this candidate further on 2018--2023. Preserve post-2023 and CY-011 quarantine; only a separately authorized untouched confirmation can establish transfer. Independent Alpha and resource-safe Dispersion remain the next discovery frontiers if no confirmation is opened.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: no currently authorized experiment has positive expected information value after the bounded Strategy-B continuation. Preserve post-2023 and CY-011 quarantine. Resume only when untouched confirmation is separately authorized, a versioned PIT dataset unlocks a genuinely new mechanism, or Dispersion receives a materially different resource-safe contract.
 
 ## Research OS V2.3 resource and worker state
 
@@ -69,6 +69,43 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Strategy-B bounded continuation and genuine stop
+
+Seven frozen experiments consumed the final bounded research budget available
+from the currently registered pre-2024 inputs. Panic liquid-basket reversal and
+new-high/new-low exhaustion both passed their generation screens at +13.15%
+and +12.16% annualized, then failed the separately frozen 2022--2023 validation
+at -4.41% and -1.95% annualized. No full replay or rescue was opened.
+
+Liquidity activity, post-share-distribution drift, cash-dividend capture, and
+the six-index trend translation failed their generation gates. The exact Q1
+recurrence deepening showed +4.160% mean recurrent trade payoff versus +0.847%
+for isolated events, but recurrent severe-loss incidence was 8.889% versus
+7.143%; the predeclared no-worse-tail gate failed and 2021--2023 validation
+remained unopened. Same-industry-specific recurrence and suspension reopening
+failed outcome-blind coverage/portability gates before outcome research.
+
+MKT-TRND-001 still means representation stability for trend direction, not
+strategy usefulness. Its direct six-index strategy translation is adverse; the
+result neither rewrites MKT-TRND-001 nor rejects the broader quality, age,
+transition, strength, or alignment families.
+
+Final status: `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`. Continued
+search inside the same consumed 2018--2023 Price--Volume/industry/event space
+would be additional in-sample mining. High-value unresolved work requires new
+authority or information: untouched temporal confirmation; immutable-vintage
+PIT fundamentals; registered order-book/queue/investor-flow/borrow data; or a
+materially different resource-safe Dispersion contract. Post-2023 outcomes and
+CY-011 remain unread.
+
+What market behavior are we still not studying? Immutable-vintage fundamental
+change, identifiable investor flow and queue pressure, borrow-feasible relative
+value, and a completed executable cross-sectional Dispersion mechanism.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No
+additional archetype survived. The frozen `INDUSTRY_CONSENSUS_EVENT` candidate
+remains the only return engine that met the user's development targets.
 
 ### Industry-Consensus Diffusion-Q1 Event V1
 

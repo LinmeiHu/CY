@@ -7,10 +7,17 @@ candidate: 33.7037% annualized, -18.0468% maximum drawdown, and 1.4222 Sharpe on
 consumed 2018--2023 history. It is a post-hoc data-generated industry-consensus
 event, not independent confirmation. Freeze its exact two-name same-PIT-industry
 selection, one-half-NAV event capital, next-open entry, and h20 exit. No further
-development tuning is authorized. The highest-value candidate-specific frontier
-is untouched temporal confirmation when separately authorized; the highest-value
-discovery frontier remains an independent Alpha engine or resource-safe
-Cross-Sectional Dispersion.
+development tuning is authorized.
+
+The bounded Strategy-B continuation now closes with
+`GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`. Two market-state ideas passed
+generation and failed frozen validation; four direct strategy translations
+failed generation; exact Q1 recurrence failed its predeclared severe-loss gate;
+and suspension reopening failed outcome-blind portability. The highest-value
+candidate-specific frontier is untouched temporal confirmation when separately
+authorized. New discovery requires a genuinely new PIT information source or a
+materially different resource-safe Cross-Sectional Dispersion contract; it is
+not another transformation of consumed 2018--2023 Price--Volume history.
 
 This frontier is separate from market hypotheses. Scores are qualitative until
 the independent Market State Engine and opportunity definitions exist.

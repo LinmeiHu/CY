@@ -1,0 +1,115 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_RESEARCH_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "cy011_read": "NO",
+  "experiment_id": "ASHARE-POST-DISTRIBUTION-DRIFT-V1",
+  "full_replay_opened": false,
+  "generation": {
+    "annualized_return": -0.029263046517402524,
+    "calendar_year_returns": {
+      "2018": -0.11482486379036105,
+      "2019": -0.13706415742545164,
+      "2020": 0.2012344089360638
+    },
+    "calmar": -0.10306734749502974,
+    "capital_skipped_entries": 0,
+    "cash_constrained_events": 5,
+    "completed_trades": 387,
+    "daily_sharpe": -0.18593593730441677,
+    "end_date": "2020-12-31",
+    "entries": 387,
+    "entry_execution_fraction": 0.9974226804123711,
+    "family": "post_share_distribution_drift",
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 0,
+    "market_unexecutable_entries": 1,
+    "maximum_drawdown": -0.2839216029966589,
+    "mean_event_allocation_fraction": 0.99529397515964,
+    "mean_industries": 7.112328767123287,
+    "mean_industry_hhi_invested_days": 0.33600155122145464,
+    "mean_positions": 10.610958904109589,
+    "median_capacity_cny_at_5pct_amount": 477208261.24000007,
+    "minimum_cash": -2.9103830456733704e-11,
+    "p10_capacity_cny_at_5pct_amount": 121751075.444,
+    "planned_entries": 388,
+    "risk_blocked_entries": 0,
+    "severe_trade_fraction": 0.22997416020671835,
+    "signal_dates": 160,
+    "start_date": "2018-01-02",
+    "status": "COMPLETE",
+    "terminal_open_lots": 0,
+    "total_return": -0.08243787514476908,
+    "turnover_multiple_initial_capital": 13.16444764464953
+  },
+  "generation_checks": {
+    "annualized_return": false,
+    "complete": true,
+    "daily_sharpe": false,
+    "entry_execution": true,
+    "maximum_drawdown": false,
+    "positive_2018": false,
+    "positive_2019": false,
+    "positive_2020": true,
+    "severe_trade_fraction": false,
+    "signal_dates": true
+  },
+  "generation_passed": false,
+  "hashes": {
+    "generation_equity_sha256": "b867d02933d3eb13d989edc22200b5ebcdfad73ceb5fb88cee9d69cc0a9bda66",
+    "generation_trades_sha256": "866adeee3753aef91ad99a8affd86e7ea80995226a623e1855592a0ff0502a96",
+    "selection_sha256": "e60ba3d2e8f1feb6226b31ec47a5ad9dd7a7a87e366325477de1ccf76cd8363f",
+    "spec_sha256": "21d85109c394cf52c3c6cd3e103ab4fdd94d50b6ed141418e3f3d0412cb6b8fe"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "post_2023_outcome_read": "NO",
+  "status": "GENERATION_REJECTED_VALIDATION_UNOPENED",
+  "validation_opened": false
+}
