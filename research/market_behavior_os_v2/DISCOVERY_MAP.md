@@ -30,6 +30,30 @@ Has any discovered mechanism implied a genuinely new strategy archetype? No.
 The validation weakens the existing event candidate and increases the value of
 strategy diversification.
 
+## Post-hoc Industry-Consensus repair audit
+
+- Prior-20 industry overextension veto: fixed at >10% with no grid. Retained
+  payoff is lower than vetoed payoff in both consumed blocks despite lower tail
+  risk. `OVEREXTENSION_VETO_SCREEN_FAILED`; no replay.
+- Industry d5 continuation-failure exit: nonpositive d5 industry path separates
+  weak and strong h20 cohorts in both blocks, but the triggered late-block arm
+  remains +0.487% rather than nonpositive. `INDUSTRY_D5_EXIT_SCREEN_FAILED`; no
+  replay or alternative action.
+- Information decision: prior overextension is a return/risk tradeoff; industry
+  d5 failure is `CONDITIONAL_RISK_INFORMATION`, not an authorized exit rule.
+- Exact rejected neighbors remain closed: no nearby return threshold, d3/d10
+  checkpoint, partial sale, delayed entry, capital scaling, or role remapping.
+- The frozen candidate remains unchanged. No 2024--2025 replay, 2026 outcome,
+  or CY-011 read occurred in either repair experiment.
+
+What market behavior are we still not studying? An independent return source
+that is not concentrated long industry continuation, and genuinely new PIT
+fundamental/flow/order-book information.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The d5 result identifies risk anatomy inside the existing engine but does not
+earn an executable translation.
+
 ## Strategy-B bounded continuation and stop conclusions
 
 - Panic liquid-basket reversal: +13.15% annualized generation, then -4.41%

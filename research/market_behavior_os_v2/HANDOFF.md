@@ -2,6 +2,41 @@
 
 Updated 2026-09-04.
 
+## Latest checkpoint: two post-hoc repair rules fail frozen promotion gates
+
+Resume after the commit containing
+`ASHARE-INDUSTRY-CONSENSUS-Q1-OVEREXTENSION-VETO-V1` and
+`ASHARE-INDUSTRY-CONSENSUS-Q1-INDUSTRY-D5-EXIT-V1`. These are user-authorized
+post-hoc development checks after the 2024--2025 temporal result was already
+known. Their runners read only 2018--2023 market outcomes; they do not restore
+an untouched validation claim.
+
+The one frozen entry repair vetoes a same-industry Q1 event when the signal-date
+PIT industry's arithmetic mean member prior-20 return exceeds 10%. It fails in
+both blocks: retained versus vetoed mean payoff is +1.579%/+4.923% in
+2018--2020 and +4.279%/+4.682% in 2021--2023. Retained tail risk is lower, but
+the veto removes the stronger-return arm. No portfolio replay or threshold
+neighbor is allowed. Classification: `OVEREXTENSION_VETO_SCREEN_FAILED`.
+
+The second rule leaves entry unchanged and checks selected-industry continuation
+after five completed holding sessions. If compounded causal industry d5 return
+is nonpositive, the only proposed action is full exit at the next legal open;
+otherwise h20 is unchanged. The state is economically informative: triggered
+versus continued h20 payoff is -3.849%/+7.485% early and +0.487%/+7.825% late,
+with triggered severe losses 25.00%/10.00% versus 1.72%/6.25%. The frozen gate
+required triggered mean payoff to be nonpositive in both blocks, so the later
+block fails and no dynamic-exit replay is opened. Classification:
+`INDUSTRY_D5_EXIT_SCREEN_FAILED`.
+
+Do not retry 10% with nearby thresholds; do not retry d5 as d3/d10, a partial
+sale, delayed entry, or another strategy role. Ordinary stock candlestick exits,
+market-state gates, recurrence, lifecycle shortening, and industry-first
+diversification were already closed. The honest conclusion is that current
+price/volume information has not produced a simple repair that both preserves
+return and earns lower drawdown. Keep the corrected Industry-Consensus Q1 rule
+unchanged and direct new capital to a genuinely independent engine or new PIT
+information. No 2026 market outcome or CY-011 was read; no push was performed.
+
 ## Latest checkpoint: 2024--2025 temporal transfer is weak and not confirmed
 
 Resume after the commit containing

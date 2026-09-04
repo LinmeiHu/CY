@@ -1,0 +1,101 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-INDUSTRY-D5-EXIT-V1",
+  "status": "FROZEN_POST_HOC_SINGLE_INDUSTRY_EXIT_BEFORE_2018_2023_OUTCOME_JOIN",
+  "starting_head": "f664930bcaa9e1e4a5d888dea9bb8b97a01bdb0f",
+  "claim_boundary": "POST_HOC_INDUSTRY_CONTINUATION_REPAIR_ON_CONSUMED_2018_2023_DEVELOPMENT_NOT_OOS_NOT_CONFIRMATION",
+  "research_question": "Can one causal industry-level d5 continuation failure exit preserve the Industry-Consensus Q1 return source while reducing failed-industry tail losses?",
+  "hypothesis_origin": {
+    "consumed_2024_2025_anatomy": "The temporal-transfer failure was upstream selected-industry absolute continuation, while within-industry stock selection retained relative value.",
+    "preceding_failed_rule": "The frozen 10% entry veto failed because overextended events had higher mean payoff but worse severe-loss incidence in both 2018-2020 and 2021-2023.",
+    "interpretation": "Do not remove the high-payoff entry family; test whether an observed post-entry industry continuation failure supplies a natural risk exit.",
+    "status": "DATA_GENERATED_DEVELOPMENT_HYPOTHESIS"
+  },
+  "inputs": {
+    "accepted_pre2024_daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "causal_numeric_erratum_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_temporal_validation_2024_2025_v1.py",
+      "sha256": "cce4b1961998e1b6df2f1f5b676f0c364bd80f9b449c34891af47f25fdd87b6d"
+    },
+    "frozen_event_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_event_v1.py",
+      "sha256": "6bd5268401a648d14f0e6bd2914a7641bc18b28f0012f4920d9efb049add712f"
+    },
+    "q1_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_diffusion_q1_concentration_v1.py",
+      "sha256": "1a2333c7aa8cf01c3b62cbf316642bc116c67a055e8fab2b9c6582480eb1fc9f"
+    },
+    "frozen_event_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1_spec.json",
+      "sha256": "717c1b8bf5dfacbe9bbe6d5a549143ddd1e52b31396624904b185e36b3c900d5"
+    },
+    "temporal_validation_erratum_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1_spec.json",
+      "sha256": "b77b2a5c9b608b95f18637d96a1690cfd285b8c1ed11d4403b4e37b36ab42247"
+    },
+    "failed_overextension_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-CONSENSUS-Q1-OVEREXTENSION-VETO-V1_result.json",
+      "sha256": "4fced2d51a1258c5b12c434b614c5dc0c543c27fb1921cb92eafa87668f31f6e"
+    },
+    "overextension_helper_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_overextension_veto_v1.py",
+      "sha256": "43645fd289383080a216ec72830d6fce981b2a0631bcacd57b9d485058cc8191"
+    }
+  },
+  "frozen_baseline": {
+    "selection": "exact causal-numeric-erratum Industry Diffusion plus Weekly Low-MAX same-industry Q1 pair",
+    "capital": "at most one-half pre-entry NAV, equal across executable names, cash only",
+    "entry": "next legal open",
+    "normal_exit": "h20 due open",
+    "cost_per_side": 0.002,
+    "corrected_2018_2023_annualized_return": 0.2805074830980854,
+    "corrected_2018_2023_maximum_drawdown": -0.18046774418308176
+  },
+  "single_candidate_rule": {
+    "name": "INDUSTRY_D5_CONTINUATION_FAILURE_EXIT",
+    "checkpoint": "After the fifth completed holding-session close, including the entry session as day 1.",
+    "feature": "Compound five causal daily equal-weight simple returns of all eligible rows in the selected PIT industry from entry_index through entry_index+4.",
+    "trigger": "industry_d5_return <= 0",
+    "action": "Exit the entire surviving event pair at the next legal sellable open, entry_index+5 or later if blocked.",
+    "nontriggered": "Keep the exact h20 due-open exit.",
+    "unchanged": [
+      "signal, diffusion, Low-MAX, Q1 pair, and same-industry entry requirement",
+      "next-open entry and one-half-NAV event capital",
+      "equal weights, no leverage, and no backfill",
+      "T+1, price limits, suspensions, QD-010 corporate actions",
+      "20 bps per side costs"
+    ]
+  },
+  "evaluation": {
+    "outcome_period": "2018-2023 consumed development history only",
+    "blocks": [
+      "2018-2020",
+      "2021-2023"
+    ],
+    "screen_gate_all_required": {
+      "minimum_triggered_event_dates_each_block": 15,
+      "triggered_h20_mean_trade_payoff_nonpositive_each_block": true,
+      "nontriggered_minus_triggered_h20_mean_positive_each_block": true,
+      "triggered_severe_loss_fraction_worse_each_block": true
+    },
+    "replay": "exactly one dynamic-exit replay only if every screen gate passes",
+    "user_target": {
+      "minimum_annualized_return": 0.326838,
+      "maximum_drawdown_must_be_greater_than": -0.18046774418308176
+    }
+  },
+  "prohibited": [
+    "2024 or 2025 outcome aggregation or replay",
+    "2026 market outcome read",
+    "CY-011 read",
+    "d3, d10, d15, or neighboring checkpoint",
+    "nonzero return threshold or threshold grid",
+    "stock-level candlestick stop previously tested",
+    "entry filter, Top-N, pair, capital, or weighting change",
+    "market-state, recurrence, saturation, or concentration rule",
+    "second replay or failed-gate rescue",
+    "independent-validation or confirmed-Alpha claim"
+  ]
+}

@@ -8,7 +8,7 @@ Updated 2026-09-04.
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
 - `CURRENT_BASELINE`: `beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a` (authoritative start of the authorized 2024--2025 temporal validation)
-- `CURRENT_PHASE`: `TEMPORAL_TRANSFER_INCONCLUSIVE_NO_PARAMETER_RESCUE`
+- `CURRENT_PHASE`: `TEMPORAL_TRANSFER_INCONCLUSIVE_POST_HOC_REPAIR_GATES_FAILED`
 - `CURRENT_PRIMARY_FRONTIER`: the authorized 2024--2025 test is complete and does not independently confirm the Industry-Consensus Q1 engine. Do not tune it on the newly consumed years. Reallocate toward an independent Alpha engine, a genuinely new registered PIT information source, or a materially different resource-safe Dispersion contract
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
 - `CURRENT_STRATEGY_CANDIDATE`: `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` with the frozen V1.1 causal numeric erratum: machine-noise `r20` ties at `|r20| <= 1e-12` are neutral. The economic rule is otherwise unchanged: exact diffusion-intensity Q1 pair, same signal-date PIT industry, at most one-half pre-entry NAV, next legal open, and unchanged h20 due open
@@ -31,6 +31,13 @@ Updated 2026-09-04.
 - `STRATEGY_HABITAT_STATUS`: `WEAK_POSITIVE_TEMPORAL_TRANSFER; INDEPENDENT_CONFIRMATION_FAILED; NO_RESCUE`
 - `CURRENT_MECHANISMS`: concentrated within-industry diffusion leadership identifies fewer but stronger continuation cohorts; the gain comes from event selection and natural capital reuse, not from a new exit, stop, or market-timing rule
 - `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: which genuinely independent return engine can diversify an Industry-Consensus candidate whose absolute temporal transfer weakened sharply? Do not spend 2024--2025 again on filters, thresholds, exits, or capital rescue. Keep 2026 and CY-011 quarantined; prefer a new PIT mechanism or resource-safe Dispersion science.
+- `POST_HOC_REPAIR_STATUS`: user-authorized diagnosis produced two single-rule
+  consumed-development checks. A fixed prior-20 industry-return >10% entry veto
+  failed because vetoed events had higher mean payoff in both 2018--2020 and
+  2021--2023. A fixed industry-d5 nonpositive full-exit gate separated weak from
+  strong events in both blocks but failed because the later triggered arm still
+  earned +0.487% mean h20 payoff. Neither rule received a portfolio replay; no
+  threshold, checkpoint, sizing, or role rescue is authorized.
 
 ## Research OS V2.3 resource and worker state
 
@@ -112,6 +119,36 @@ resource-safe Dispersion Alpha.
 Has any discovered mechanism implied a genuinely new strategy archetype? No.
 Temporal validation weakens the existing `INDUSTRY_CONSENSUS_EVENT` candidate;
 it does not create a new engine.
+
+### Post-hoc Industry-Consensus repair audit
+
+The user requested a bounded attempt to solve the 2025 failure after its
+outcomes had already been opened. Both experiments are explicitly post-hoc and
+read only 2018--2023 market outcomes; 2024--2025 were not replayed or used as a
+new validation set.
+
+`ASHARE-INDUSTRY-CONSENSUS-Q1-OVEREXTENSION-VETO-V1` froze one 10% rule before
+joining the new feature to 2018--2023 outcomes. It retained 25 versus vetoed 22
+events in 2018--2020 and 21 versus 23 in 2021--2023. Retained mean trade payoff
+was +1.579% versus +4.923% early and +4.279% versus +4.682% late. Severe-loss
+incidence improved, but the mean-payoff direction failed in both blocks. Status:
+`OVEREXTENSION_VETO_SCREEN_FAILED`; no replay and no neighboring threshold.
+
+`ASHARE-INDUSTRY-CONSENSUS-Q1-INDUSTRY-D5-EXIT-V1` then tested one distinct
+post-entry industry-state action rather than another entry filter or stock
+candlestick stop. At the fifth completed holding-session close, a nonpositive
+selected-industry d5 path identified h20 mean payoff of -3.849% versus +7.485%
+for continued events in 2018--2020 and +0.487% versus +7.825% in 2021--2023.
+Triggered severe-loss incidence was 25.00%/10.00% versus 1.72%/6.25%. The
+predeclared full-exit gate required the triggered mean to be nonpositive in both
+blocks, so the later block failed. Status: `INDUSTRY_D5_EXIT_SCREEN_FAILED`; no
+dynamic-exit replay, alternate checkpoint, partial sale, or role remapping.
+
+The economic conclusion is narrower than a rule: industry d5 failure is useful
+risk information, while prior industry overextension is a return/risk tradeoff,
+not a valid admission veto. These results do not repair temporal transfer and
+do not justify mining the newly consumed years. The strategy remains unchanged.
+No 2026 market outcome or CY-011 was read.
 
 ### Strategy-B bounded continuation and genuine stop
 

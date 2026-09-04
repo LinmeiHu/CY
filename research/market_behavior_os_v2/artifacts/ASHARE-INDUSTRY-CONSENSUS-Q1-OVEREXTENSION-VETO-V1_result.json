@@ -1,0 +1,173 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "baseline": {
+    "annualized_return": 0.2805074830980854,
+    "calmar": 1.5543358419414544,
+    "capital_skipped_entries": 16,
+    "cash_constrained_events": 41,
+    "completed_trades": 182,
+    "daily_sharpe": 1.2288710898908446,
+    "end_date": "2023-12-28",
+    "entries": 182,
+    "entry_execution_fraction": 0.9191919191919192,
+    "event_dates": 99,
+    "family": "industry_consensus_q1_event",
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 2,
+    "market_unexecutable_entries": 0,
+    "maximum_drawdown": -0.18046774418308176,
+    "mean_event_allocation_fraction": 0.785261724280764,
+    "mean_industries": 1.2734785875281742,
+    "mean_industry_hhi_invested_days": 0.7726590384719813,
+    "mean_positions": 2.720510894064613,
+    "median_capacity_cny_at_5pct_amount": 29809712.373,
+    "minimum_cash": 0.0,
+    "minimum_event_allocation_fraction": 0.0,
+    "p10_capacity_cny_at_5pct_amount": 9753801.402800001,
+    "planned_entries": 198,
+    "risk_blocked_entries": 0,
+    "severe_trade_fraction": 0.09340659340659341,
+    "start_date": "2018-07-10",
+    "status": "COMPLETE",
+    "total_return": 2.6911788627629667,
+    "turnover_multiple_initial_capital": 145.32606086072295
+  },
+  "calendar_year_returns": null,
+  "candidate": null,
+  "claim_boundary": "DATA_GENERATED_REPAIR_HYPOTHESIS_FROM_CONSUMED_2024_2025_ANATOMY_TESTED_ONLY_AS_CONSUMED_2018_2023_DEVELOPMENT_NOT_OOS_NOT_CONFIRMATION",
+  "comparison": null,
+  "cy011_read": "NO",
+  "event_feature_summary": {
+    "admitted_events": 52,
+    "events": 99,
+    "maximum": 0.47205694762421957,
+    "median": 0.09727572902604842,
+    "minimum": -0.0321016892658517,
+    "vetoed_events": 47
+  },
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-OVEREXTENSION-VETO-V1",
+  "frozen_rule": {
+    "admit": "industry_prior20_member_mean <= 0.10",
+    "missingness": "fail closed and do not admit",
+    "name": "INDUSTRY_PRIOR20_OVEREXTENSION_VETO",
+    "signal_time_feature": "At the completed signal close, compute the arithmetic mean of expm1(r20) across all eligible rows in the selected signal-date PIT industry.",
+    "threshold_reason": "One fixed economically interpretable 10% industry move over approximately one trading month; no neighboring threshold is authorized.",
+    "unchanged": [
+      "diffusion and Low-MAX definitions",
+      "Q1 pair and same-industry requirement",
+      "weekly signal clock",
+      "next-open entry",
+      "h20 due-open exit",
+      "one-half-NAV event capital",
+      "equal weights",
+      "T+1, price limits, suspensions, QD-010 corporate actions",
+      "20 bps per side costs",
+      "no backfill and no leverage"
+    ],
+    "veto": "industry_prior20_member_mean > 0.10"
+  },
+  "hashes": {
+    "equity_sha256": "e5faca137323c40eefb38f7644496d1909ca5c07d1e65162ef7bd5d1c029e43e",
+    "screen_sha256": "9a6f98dd481f9d365f90fea6dadff5f990398418dc9a2d936757cd704343f2d3",
+    "spec_sha256": "2e1fbf5cf00703aa3cd0610a49dc8f3c02d85f1bf5e6fcd019d402643c936113",
+    "trades_sha256": "b02781800b64b205926758f935bc29521eecc8f7644ec2d0e64fa50216762290"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "market_2026_outcome_read": "NO",
+  "maximum_market_outcome_date": "2023-12-29",
+  "post_2023_outcome_read": "NO",
+  "screen": {
+    "checks": {
+      "2018-2020_minimum_retained_dates": true,
+      "2018-2020_retained_mean_positive": true,
+      "2018-2020_retained_minus_vetoed_positive": false,
+      "2018-2020_severe_no_worse": true,
+      "2021-2023_minimum_retained_dates": true,
+      "2021-2023_retained_mean_positive": true,
+      "2021-2023_retained_minus_vetoed_positive": false,
+      "2021-2023_severe_no_worse": true
+    },
+    "passed": false,
+    "rows": [
+      {
+        "block": "2018-2020",
+        "retained_event_dates": 25,
+        "retained_mean_trade_payoff": 0.015786973696851826,
+        "retained_minus_vetoed": -0.0334478093687596,
+        "retained_severe_loss_fraction": 0.1,
+        "retained_trades": 50,
+        "vetoed_event_dates": 22,
+        "vetoed_mean_trade_payoff": 0.04923478306561142,
+        "vetoed_severe_loss_fraction": 0.11363636363636363,
+        "vetoed_trades": 44
+      },
+      {
+        "block": "2021-2023",
+        "retained_event_dates": 21,
+        "retained_mean_trade_payoff": 0.042788217847807855,
+        "retained_minus_vetoed": -0.00402897408861802,
+        "retained_severe_loss_fraction": 0.023809523809523808,
+        "retained_trades": 42,
+        "vetoed_event_dates": 23,
+        "vetoed_mean_trade_payoff": 0.046817191936425875,
+        "vetoed_severe_loss_fraction": 0.13043478260869565,
+        "vetoed_trades": 46
+      }
+    ]
+  },
+  "status": "OVEREXTENSION_VETO_SCREEN_FAILED",
+  "target": {
+    "maximum_drawdown_must_be_greater_than": -0.18046774418308176,
+    "minimum_annualized_return": 0.326838
+  },
+  "target_checks": null,
+  "target_met": false
+}

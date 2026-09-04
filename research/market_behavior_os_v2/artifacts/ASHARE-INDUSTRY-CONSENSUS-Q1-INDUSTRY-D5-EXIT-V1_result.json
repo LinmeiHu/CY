@@ -1,0 +1,169 @@
+{
+  "action_audit": {
+    "events_without_pre_effective_decision_session": 0,
+    "first_effective_date": "2018-02-09",
+    "last_effective_date": "2023-12-29",
+    "rights_events": 60,
+    "risk_events_2018_2023": 2904,
+    "share_distribution_events": 2844
+  },
+  "baseline": {
+    "annualized_return": 0.2805074830980854,
+    "calmar": 1.5543358419414544,
+    "capital_skipped_entries": 16,
+    "cash_constrained_events": 41,
+    "completed_trades": 182,
+    "daily_sharpe": 1.2288710898908446,
+    "end_date": "2023-12-28",
+    "entries": 182,
+    "entry_execution_fraction": 0.9191919191919192,
+    "event_dates": 99,
+    "family": "industry_consensus_q1_event",
+    "forced_exit_pending_days": 0,
+    "forced_pre_effective_exits": 2,
+    "market_unexecutable_entries": 0,
+    "maximum_drawdown": -0.18046774418308176,
+    "mean_event_allocation_fraction": 0.785261724280764,
+    "mean_industries": 1.2734785875281742,
+    "mean_industry_hhi_invested_days": 0.7726590384719813,
+    "mean_positions": 2.720510894064613,
+    "median_capacity_cny_at_5pct_amount": 29809712.373,
+    "minimum_cash": 0.0,
+    "minimum_event_allocation_fraction": 0.0,
+    "p10_capacity_cny_at_5pct_amount": 9753801.402800001,
+    "planned_entries": 198,
+    "risk_blocked_entries": 0,
+    "severe_trade_fraction": 0.09340659340659341,
+    "start_date": "2018-07-10",
+    "status": "COMPLETE",
+    "total_return": 2.6911788627629667,
+    "turnover_multiple_initial_capital": 145.32606086072295
+  },
+  "calendar_year_returns": null,
+  "candidate": null,
+  "claim_boundary": "POST_HOC_INDUSTRY_CONTINUATION_REPAIR_ON_CONSUMED_2018_2023_DEVELOPMENT_NOT_OOS_NOT_CONFIRMATION",
+  "comparison": null,
+  "cy011_read": "NO",
+  "decision_summary": {
+    "continued_events": 56,
+    "events": 99,
+    "maximum_industry_d5_return": 0.2080164719812989,
+    "median_industry_d5_return": 0.0063653687123015334,
+    "minimum_industry_d5_return": -0.11905724617006863,
+    "triggered_events": 43
+  },
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-INDUSTRY-D5-EXIT-V1",
+  "frozen_rule": {
+    "action": "Exit the entire surviving event pair at the next legal sellable open, entry_index+5 or later if blocked.",
+    "checkpoint": "After the fifth completed holding-session close, including the entry session as day 1.",
+    "feature": "Compound five causal daily equal-weight simple returns of all eligible rows in the selected PIT industry from entry_index through entry_index+4.",
+    "name": "INDUSTRY_D5_CONTINUATION_FAILURE_EXIT",
+    "nontriggered": "Keep the exact h20 due-open exit.",
+    "trigger": "industry_d5_return <= 0",
+    "unchanged": [
+      "signal, diffusion, Low-MAX, Q1 pair, and same-industry entry requirement",
+      "next-open entry and one-half-NAV event capital",
+      "equal weights, no leverage, and no backfill",
+      "T+1, price limits, suspensions, QD-010 corporate actions",
+      "20 bps per side costs"
+    ]
+  },
+  "hashes": {
+    "decision_sha256": "525bcf292a841298ea232ff7d58eaf604fe48c8687f26a0990cb48b6c6e1063d",
+    "equity_sha256": "e5faca137323c40eefb38f7644496d1909ca5c07d1e65162ef7bd5d1c029e43e",
+    "screen_sha256": "204987655fd27e9a7358c80b170e88f8b2aebc26db313e9dd18e0e0f17dcecac",
+    "spec_sha256": "e8ebfe2ff8744141622d77c7b2d2419b3f007aff954c29199f213ee250b2fd26",
+    "trades_sha256": "b02781800b64b205926758f935bc29521eecc8f7644ec2d0e64fa50216762290"
+  },
+  "input_identity": {
+    "asset_id": "CY-006",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "bytes": 42011064,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "year": 2018
+      },
+      {
+        "bytes": 43320252,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "year": 2019
+      },
+      {
+        "bytes": 46073783,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "year": 2020
+      },
+      {
+        "bytes": 52153081,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+        "year": 2021
+      },
+      {
+        "bytes": 56255217,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2022/data_0.parquet",
+        "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+        "year": 2022
+      },
+      {
+        "bytes": 59157938,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2023/data_0.parquet",
+        "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+        "year": 2023
+      }
+    ]
+  },
+  "market_2026_outcome_read": "NO",
+  "maximum_market_outcome_date": "2023-12-29",
+  "post_2023_outcome_read": "NO",
+  "screen": {
+    "checks": {
+      "2018-2020_continued_minus_triggered_positive": true,
+      "2018-2020_minimum_triggered_dates": true,
+      "2018-2020_triggered_h20_nonpositive": true,
+      "2018-2020_triggered_severe_worse": true,
+      "2021-2023_continued_minus_triggered_positive": true,
+      "2021-2023_minimum_triggered_dates": true,
+      "2021-2023_triggered_h20_nonpositive": false,
+      "2021-2023_triggered_severe_worse": true
+    },
+    "passed": false,
+    "rows": [
+      {
+        "block": "2018-2020",
+        "continued_event_dates": 29,
+        "continued_h20_mean_trade_payoff": 0.07485234343885735,
+        "continued_minus_triggered": 0.11334558732008602,
+        "continued_severe_loss_fraction": 0.017241379310344827,
+        "continued_trades": 58,
+        "triggered_event_dates": 18,
+        "triggered_h20_mean_trade_payoff": -0.03849324388122867,
+        "triggered_severe_loss_fraction": 0.25,
+        "triggered_trades": 36
+      },
+      {
+        "block": "2021-2023",
+        "continued_event_dates": 24,
+        "continued_h20_mean_trade_payoff": 0.078251298689225,
+        "continued_minus_triggered": 0.073385457649207,
+        "continued_severe_loss_fraction": 0.0625,
+        "continued_trades": 48,
+        "triggered_event_dates": 20,
+        "triggered_h20_mean_trade_payoff": 0.0048658410400179986,
+        "triggered_severe_loss_fraction": 0.1,
+        "triggered_trades": 40
+      }
+    ]
+  },
+  "status": "INDUSTRY_D5_EXIT_SCREEN_FAILED",
+  "target": {
+    "maximum_drawdown_must_be_greater_than": -0.18046774418308176,
+    "minimum_annualized_return": 0.326838
+  },
+  "target_checks": null,
+  "target_met": false
+}

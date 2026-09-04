@@ -1,0 +1,103 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-OVEREXTENSION-VETO-V1",
+  "status": "FROZEN_POST_HOC_SINGLE_RULE_BEFORE_2018_2023_OUTCOME_JOIN",
+  "starting_head": "f664930bcaa9e1e4a5d888dea9bb8b97a01bdb0f",
+  "claim_boundary": "DATA_GENERATED_REPAIR_HYPOTHESIS_FROM_CONSUMED_2024_2025_ANATOMY_TESTED_ONLY_AS_CONSUMED_2018_2023_DEVELOPMENT_NOT_OOS_NOT_CONFIRMATION",
+  "research_question": "Does one causal industry-overextension veto repair the Industry-Consensus Q1 engine without changing its stock ranking, entry, holding, sizing, costs, or execution semantics?",
+  "hypothesis_origin": {
+    "status": "POST_HOC_FROM_CONSUMED_TEMPORAL_VALIDATION",
+    "observation": "The selected industry had strong prior-20-session participation but weak subsequent absolute continuation in 2025; the rule direction is therefore data-generated and cannot confirm Alpha.",
+    "post_2023_outcome_reuse": "PROHIBITED_IN_THIS_EXPERIMENT"
+  },
+  "inputs": {
+    "accepted_pre2024_daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "causal_numeric_erratum_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_temporal_validation_2024_2025_v1.py",
+      "sha256": "cce4b1961998e1b6df2f1f5b676f0c364bd80f9b449c34891af47f25fdd87b6d"
+    },
+    "frozen_event_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_event_v1.py",
+      "sha256": "6bd5268401a648d14f0e6bd2914a7641bc18b28f0012f4920d9efb049add712f"
+    },
+    "q1_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_diffusion_q1_concentration_v1.py",
+      "sha256": "1a2333c7aa8cf01c3b62cbf316642bc116c67a055e8fab2b9c6582480eb1fc9f"
+    },
+    "frozen_event_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1_spec.json",
+      "sha256": "717c1b8bf5dfacbe9bbe6d5a549143ddd1e52b31396624904b185e36b3c900d5"
+    },
+    "temporal_validation_erratum_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1_spec.json",
+      "sha256": "b77b2a5c9b608b95f18637d96a1690cfd285b8c1ed11d4403b4e37b36ab42247"
+    },
+    "temporal_validation_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1_result.json",
+      "sha256": "b4c27c837bde6858589fc7f38ac9e031add331f55c3b5d6ec7aadb30fabdf2cd"
+    }
+  },
+  "frozen_baseline": {
+    "selection": "exact causal-numeric-erratum Industry Diffusion plus Weekly Low-MAX Q1 pair, accepted only when both names share the same signal-date PIT industry",
+    "capital": "at most one-half pre-entry NAV, equal across executable names, cash only",
+    "entry": "next legal open",
+    "exit": "unchanged h20 due open",
+    "cost_per_side": 0.002,
+    "corrected_2018_2023_annualized_return": 0.2805074830980854,
+    "corrected_2018_2023_maximum_drawdown": -0.18046774418308176
+  },
+  "single_candidate_rule": {
+    "name": "INDUSTRY_PRIOR20_OVEREXTENSION_VETO",
+    "signal_time_feature": "At the completed signal close, compute the arithmetic mean of expm1(r20) across all eligible rows in the selected signal-date PIT industry.",
+    "admit": "industry_prior20_member_mean <= 0.10",
+    "veto": "industry_prior20_member_mean > 0.10",
+    "threshold_reason": "One fixed economically interpretable 10% industry move over approximately one trading month; no neighboring threshold is authorized.",
+    "missingness": "fail closed and do not admit",
+    "unchanged": [
+      "diffusion and Low-MAX definitions",
+      "Q1 pair and same-industry requirement",
+      "weekly signal clock",
+      "next-open entry",
+      "h20 due-open exit",
+      "one-half-NAV event capital",
+      "equal weights",
+      "T+1, price limits, suspensions, QD-010 corporate actions",
+      "20 bps per side costs",
+      "no backfill and no leverage"
+    ]
+  },
+  "evaluation": {
+    "outcome_period": "2018-01-01 through 2023-12-31 consumed development history only",
+    "blocks": [
+      "2018-2020",
+      "2021-2023"
+    ],
+    "screen_gate_all_required": {
+      "minimum_retained_event_dates_each_block": 20,
+      "retained_mean_trade_payoff_positive_each_block": true,
+      "retained_minus_vetoed_mean_trade_payoff_positive_each_block": true,
+      "retained_severe_loss_fraction_no_worse_each_block": true
+    },
+    "replay": "exactly one replay only if every screen gate passes",
+    "user_target": {
+      "minimum_annualized_return": 0.326838,
+      "maximum_drawdown_must_be_greater_than": -0.18046774418308176
+    }
+  },
+  "prohibited": [
+    "2024 or 2025 outcome aggregation or replay",
+    "2026 market outcome read",
+    "CY-011 read",
+    "threshold grid or neighboring threshold",
+    "diffusion-saturation companion rule",
+    "Top-N or Q1 pair change",
+    "holding-period or exit change",
+    "market-state filter",
+    "industry recurrence or cooldown rule",
+    "capital or weight optimization",
+    "second replay or failed-gate rescue",
+    "independent-validation or confirmed-Alpha claim"
+  ]
+}
