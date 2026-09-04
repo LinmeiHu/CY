@@ -1,0 +1,51 @@
+{
+  "authorized_trade_completion_tail": "2026-03-31",
+  "daily_extension": {
+    "mandatory_full_2023_reproduction_before_signal_freeze": true,
+    "same_qd010_coordinate_semantics": true,
+    "source": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily"
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-CLEAN-CORRIDOR-V26-VALIDATION-2024-2025-V1",
+  "frozen_rule": {
+    "T1_limits_suspensions_and_QD010": true,
+    "corridor": "[L-0.5W,U+0.5W]",
+    "entry": "first legal buyable 1-minute open after signal",
+    "failure_stop": "NONE",
+    "gap_width_pct": "source minimum 1%; maximum 3%",
+    "inside_and_corridor_density_relative_local_max": 1.0,
+    "inside_touch_sessions_max": 12,
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_net_headroom_to_L": 0.05,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "pre_gap_corridor_touch_sessions": "<=10 of exact 120 completed sessions",
+    "pre_gap_history": "exact 120 completed sessions with exact 241-minute VAP history",
+    "pre_gap_return_20d_max": 0.0,
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "target": "A67 below L",
+    "time_stop": "H20",
+    "trigger": "first completed daily close > previous completed daily high",
+    "true_gap": "High_t < Low_t_minus_1"
+  },
+  "governance": {
+    "2026_signal_feature_or_selection_use": false,
+    "2026_use": "trade completion only for signals formed by 2025-12-31",
+    "rule_threshold_entry_target_cost_horizon_portfolio_change": false
+  },
+  "one_shot_governance": "2024 and 2025 identities freeze together before either year's outcomes; no 2024 inspection, modification, or selection before 2025 evaluation",
+  "scientific_status": "ONE_SHOT_REPOSITORY_FUTURE_COHORT_CHALLENGE",
+  "source_v26_experiment": "ASHARE-TRUE-GAP-BELOW-L-CLEAN-CORRIDOR-V26",
+  "source_v26_head": "aa1044023bd6cef0c681322b055238b4e2919734",
+  "validation_checks_frozen_before_outcomes": {
+    "accepted_trades_per_signal_year_strictly_greater_than": 50.0,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "each_2024_2025_calendar_portfolio_return_positive": true,
+    "each_2024_2025_trade_mean_positive": true
+  },
+  "validation_signal_period": [
+    "2024-01-01",
+    "2025-12-31"
+  ]
+}
