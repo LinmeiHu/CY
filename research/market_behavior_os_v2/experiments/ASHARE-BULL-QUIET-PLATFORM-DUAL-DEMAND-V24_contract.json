@@ -1,0 +1,66 @@
+{
+  "admission": {
+    "IDIOSYNCRATIC_INFORMATION_JUMP": "synchronized majority demand is false and frozen signal open_gap>=2%",
+    "SYNCHRONIZED_MAJORITY_DEMAND": "market daily median return>0 and positive-member share>50%; PIT industry daily median return>0 and positive-member share>50%",
+    "combination": "logical OR; the two lanes are mutually exclusive"
+  },
+  "base_signal": {
+    "identity": "exact frozen ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1 candidates",
+    "signal_clock": "completed daily close",
+    "source_freeze_sha256": "831f63dfc3e80def77735c615f1ae78f4c8be507b90ede7f3fbabe7bc728b611",
+    "source_sha256": "887ffd4d92fb992a718671f1b0d6eda28e4a6086ec948e27956ec3ceb3b5daea"
+  },
+  "causal_bull": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "collision_rank": [
+    "industry_positive_ret20_share descending",
+    "stock_minus_industry_ret20 descending",
+    "turnover_expansion descending",
+    "event_id ascending"
+  ],
+  "economic_hypothesis": "A frozen quiet forty-session inventory platform followed by an upward non-limit information gap and high-location volume expansion is a demand repricing event. In a causally known broad BULL market, it is admitted either when both the market and PIT industry show same-session majority participation, or, absent that synchronization, when the stock-specific opening information jump is at least 2%.",
+  "entry": "first legal next daily open within three market sessions",
+  "evidence_governance": {
+    "2014_2018": "mechanism discovery period",
+    "2019_2023": "post-discovery chronological stability; not pristine validation",
+    "post_2023_data": "permitted only to resolve pre-2024 positions",
+    "reason_not_pristine": "outcomes have been observed during autonomous iterative research",
+    "signals_or_features_after_2023": false
+  },
+  "experiment": "ASHARE-BULL-QUIET-PLATFORM-DUAL-DEMAND-V24",
+  "failure_stop": "none",
+  "independence": "No downward collapse gap, repair zone, V6/V7/V26/V27 event identity, feature, signal, or outcome is used.",
+  "pit_industry_health": "members>=5, median ret20>0, positive-ret20 share>50%",
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "required_gate": {
+    "capacity_accepted_completed_trades_2014_2023_gt": 500,
+    "each_2019_2023_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_le": 15,
+    "mean_net_return_gt": 0.03,
+    "top_five_signal_date_positive_pnl_share_le": 0.25
+  },
+  "round_trip_cost": 0.004,
+  "target": "+15% coordinate standing target from first T+1-sellable session",
+  "time_stop": "completed H15 state, then next legal daily open"
+}
