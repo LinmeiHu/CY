@@ -1,0 +1,64 @@
+{
+  "authorized_tail_boundaries": {
+    "Development_2021_signal_cohort": "outcomes/execution only through 2022-03-31",
+    "Diagnostic_2023_signal_cohort": "outcomes/execution only through 2024-03-31"
+  },
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "frozen_rule": {
+    "corridor_density_max": 1.0,
+    "costs": {
+      "entry": 0.002,
+      "exit": 0.002
+    },
+    "entry": "first buyable 1-minute open strictly after signal",
+    "failure_stop": "NONE",
+    "inside_density_max": 1.0,
+    "maximum_post_gap_depth_min": 0.1,
+    "minimum_gap_width_pct": 0.01,
+    "minimum_net_headroom_to_L": 0.05,
+    "minimum_recovery": 0.03,
+    "portfolio": "50/50 Main/ChiNext; K20 per sleeve",
+    "pre_gap_return_20d_max": 0.0,
+    "pre_gap_vap": "exact 120 sessions x 241 minutes",
+    "recent_low_age_sessions": [
+      2,
+      10
+    ],
+    "signal_depth_below_L_min": 0.05,
+    "target": "entry + 0.80*(L-entry)",
+    "time_stop": "H20 close information then next sellable 1-minute open",
+    "trigger": "first completed daily MA5 reclaim",
+    "true_gap": "High_t < Low_t_minus_1"
+  },
+  "non_changes": [
+    "no threshold change",
+    "no feature addition",
+    "no target or holding change",
+    "no board deletion",
+    "no model",
+    "no 2024+ signal, feature, selection, threshold, or new-entry research"
+  ],
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "pre_result_mechanical_amendment_sha256": "e9339c9d39df2756e6d6211c79f49681356f39e6251aed664d89cf8d822bb4b2",
+  "repairs": {
+    "buy_limit": "buy open must be strictly below authoritative upper limit",
+    "corporate_actions": "authoritative QD-010 known-at pre-effective risk exit and cash entitlement",
+    "execution_coverage": "period-local full selected-symbol buy/sell opens",
+    "lineage_break": "target disabled after lineage break; raw-share H20/risk exit remains mandatory",
+    "outcome_conservation": "every evaluation-eligible executable entry must have exactly one outcome",
+    "outcome_tail": "follow every pre-cutoff signal through H20 and its next legal exit, including later calendar data",
+    "sell_limit": "sell open must be strictly above authoritative lower limit",
+    "signal_constructor": "direct first-MA5 constructor in both periods"
+  },
+  "repository_2024_plus": "SIGNAL_AND_SELECTION_SEALED; AUTHORIZED_OUTCOME_TAIL_ONLY",
+  "scientific_status": "IMPLEMENTATION_CORRECTION_REPLAY_NOT_NEW_ALPHA",
+  "source_v4_contract_sha256": "18e827a10d044a2e77b4a762243ffe79a80f41e06b7fac12fec5529b8ce7ea0f",
+  "source_v4_result_sha256": "9f3f1dfd08df8d326e7bb3726bbbd0eec95038ae31a49eb34c84c4c4322be43c"
+}
