@@ -1,0 +1,47 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A V19 signal should only be bought when the first legal open leaves enough absolute reward to support the 3% net objective. Requiring 6% realized net headroom to L implies about 3.9% net return at the unchanged A67 target, leaving a modest execution/outcome buffer without selecting on future return.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ECONOMIC-HEADROOM-V20",
+  "governance": {
+    "diagnostic_outcomes_opened_only_after_development_pass": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "one_rule_no_parameter_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "single_fixed_gate": {
+    "condition": "realized_net_l_headroom >= 0.06 at first legal buyable open",
+    "equivalent_execution": "pre-specified maximum buy-price limit derived from L, 40 bp round-trip cost, and 6% net headroom; fill at the legal open only when price is at or below that limit",
+    "implied_a67_net_target_return": 0.03888263473053888,
+    "missing_policy": "fail closed",
+    "threshold_search": "NONE"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FRESH-MATURE-DECLINE-V19",
+  "success_contract": {
+    "accepted_trades_per_year_min": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "diagnostic_each_year_trade_mean_positive": true,
+    "frequency_has_no_upper_cap": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "unchanged": {
+    "D30_M20_AGE30_signal_population": true,
+    "T1_limits_suspensions_and_QD010": true,
+    "V13_first_reversal": true,
+    "failure_stop": "NONE",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "target": "A67 below L",
+    "time_stop": "H20"
+  }
+}
