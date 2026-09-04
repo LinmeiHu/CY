@@ -1,0 +1,46 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "The V17 mature-decline signal should begin a reflexive repair rather than remain below cost without traversing meaningful distance. At the close of D10, failure to reach half of the fixed A67 target distance while closing at or below entry is a direct, causal failure of the rebound thesis.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-NO-PROGRESS-EXIT-V18",
+  "governance": {
+    "diagnostic_opened_only_after_development_pass": true,
+    "failure_clocks_built_before_failure_exit_returns": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "single_fixed_failure_exit": {
+    "condition_1": "maximum coordinate high since entry < entry + 0.50*(A67 target-entry)",
+    "condition_2": "D10 completed valid coordinate close <= entry coordinate",
+    "decision_time": "close of entry_cal_idx + 10 market sessions",
+    "execution": "next legal sellable 1-minute open strictly after D10 close",
+    "parameter_search": "NONE",
+    "unavailable_state": "fail closed to no early exit; retain original H20 path"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-MATURE-DECLINE-V17",
+  "success_contract": {
+    "accepted_trades_per_year_min": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "frequency_has_no_upper_cap": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "unchanged": {
+    "D30_M20_signal_population": true,
+    "T1_limits_suspensions_gap_through_and_QD010": true,
+    "V13_first_reversal_and_next_minute_entry": true,
+    "fallback_time_stop": "H20",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "target": "A67 below L"
+  }
+}

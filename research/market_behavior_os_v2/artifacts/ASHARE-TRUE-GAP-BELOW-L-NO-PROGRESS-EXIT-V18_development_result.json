@@ -1,0 +1,234 @@
+{
+  "development_exit_returns_opened": "YES",
+  "diagnostic_exit_returns_opened": "NO",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-NO-PROGRESS-EXIT-V18",
+  "goal_checks": {
+    "accepted_trades_per_year_ge_50": true,
+    "attack_date_equal_mean_positive": true,
+    "portfolio_mean_net_ge_3pct": true,
+    "portfolio_median_positive": true,
+    "positive_portfolio_years_ge_4": true,
+    "positive_trade_mean_years_ge_4": true,
+    "post_2023_signal_count_zero": true,
+    "severe10_le_15pct": true
+  },
+  "rule_result": {
+    "accepted_trade_yearly": {
+      "2017": {
+        "mean_net": 0.009284504719394711,
+        "median_net": 0.031182248471472995,
+        "trades": 60
+      },
+      "2018": {
+        "mean_net": 0.04525619764824907,
+        "median_net": 0.06368822622720482,
+        "trades": 330
+      },
+      "2019": {
+        "mean_net": 0.038173910070886954,
+        "median_net": 0.0435728086118754,
+        "trades": 65
+      },
+      "2020": {
+        "mean_net": 0.00033563153815015944,
+        "median_net": 0.010992497035156479,
+        "trades": 45
+      },
+      "2021": {
+        "mean_net": 0.02461281847913658,
+        "median_net": 0.040531889294521894,
+        "trades": 78
+      }
+    },
+    "attack_date_equal_mean": 0.009028909723667081,
+    "event_metrics": {
+      "cvar5": -0.16313543044134596,
+      "mean_holding_sessions": 9.39185393258427,
+      "mean_net": 0.038310562343965536,
+      "median_holding_sessions": 9.0,
+      "median_net": 0.05399781944394999,
+      "severe10": 0.05898876404494382,
+      "target_hit": 0.6882022471910112,
+      "trades": 712,
+      "unique_dates": 218,
+      "unique_signals": 712,
+      "unique_symbols": 617,
+      "win": 0.7570224719101124,
+      "yearly": {
+        "2017": {
+          "mean_holding": 12.412698412698413,
+          "mean_net": 0.00805340019382796,
+          "median_net": 0.028810682846428293,
+          "severe10": 0.1111111111111111,
+          "trades": 63,
+          "win": 0.5555555555555556
+        },
+        "2018": {
+          "mean_holding": 8.629067245119305,
+          "mean_net": 0.04848925978632372,
+          "median_net": 0.05867074468048239,
+          "severe10": 0.04772234273318872,
+          "trades": 461,
+          "win": 0.8373101952277657
+        },
+        "2019": {
+          "mean_holding": 8.507692307692308,
+          "mean_net": 0.038173910070886954,
+          "median_net": 0.0435728086118754,
+          "severe10": 0.046153846153846156,
+          "trades": 65,
+          "win": 0.6923076923076923
+        },
+        "2020": {
+          "mean_holding": 11.177777777777777,
+          "mean_net": 0.00033563153815015944,
+          "median_net": 0.010992497035156479,
+          "severe10": 0.1111111111111111,
+          "trades": 45,
+          "win": 0.5333333333333333
+        },
+        "2021": {
+          "mean_holding": 11.166666666666666,
+          "mean_net": 0.02461281847913658,
+          "median_net": 0.040531889294521894,
+          "severe10": 0.0641025641025641,
+          "trades": 78,
+          "win": 0.6282051282051282
+        }
+      }
+    },
+    "hashes": {
+      "outcomes": "1f02afd0531f7cfbd52f10727bd6fd385f4ae49b1cbbc6299033b16095e5d6ea",
+      "portfolio_accepted": "a8f22390377649043588ba596fd1de3a2b3d0156e8e5c242fa676a35d07e7d70",
+      "portfolio_nav": "6572c4d266d936784f861aeddfcf0b849e690e480fda0023b4a5872855109e9b"
+    },
+    "loss_saved_total": 3.5003850555638785,
+    "maximum_exit_date_used": "2022-01-14",
+    "mean_net_delta_vs_v17": -0.0017512484905501055,
+    "no_progress_exits_applied": 114,
+    "outcome_audit": {},
+    "portfolio": {
+      "CHINEXT": {
+        "annual_returns": {
+          "2017": 0.0023513587445407325,
+          "2018": 0.058419693209342816,
+          "2019": 0.012983227440488854,
+          "2020": -0.0005124808599300534,
+          "2021": 0.012226490228346432,
+          "2022": 0.0
+        },
+        "average_utilization": 0.0176425950304722,
+        "best_day": 0.01981244828445128,
+        "cagr": 0.016774201827867596,
+        "cvar5": -0.16530272618260639,
+        "max_drawdown": -0.02388043228054526,
+        "mean_holding_sessions": 9.432432432432432,
+        "mean_net": 0.036967359463665875,
+        "median_holding_sessions": 10.0,
+        "median_net": 0.05134179482822088,
+        "return_excluding_best_day": 0.06614166263132182,
+        "return_excluding_best_five_days": 0.027919187689968483,
+        "severe10": 0.06486486486486487,
+        "sharpe": 1.0604947945490273,
+        "top5_positive_trade_pnl_share": 0.09864272252671513,
+        "total_return": 0.08726453918610422,
+        "trades": 185,
+        "u_hit": 0.6648648648648648,
+        "win": 0.7081081081081081,
+        "worst_day": -0.006658270254212284
+      },
+      "COMBINED": {
+        "annual_returns": {
+          "2017": 0.0035412701146140257,
+          "2018": 0.09491161140961801,
+          "2019": 0.01566496028775588,
+          "2020": -0.0004030650197620611,
+          "2021": 0.01343286357425666,
+          "2022": -0.0009115180142883483
+        },
+        "average_utilization": 0.030167746899383712,
+        "best_day": 0.022585148526470755,
+        "cagr": 0.024509108511282296,
+        "cvar5": -0.17115739969702157,
+        "max_drawdown": -0.02827323485709432,
+        "mean_holding_sessions": 10.269896193771626,
+        "mean_net": 0.03444260021156218,
+        "median_holding_sessions": 11.0,
+        "median_net": 0.052890178042889646,
+        "return_excluding_best_day": 0.10455956076704687,
+        "return_excluding_best_five_days": 0.05149534681376222,
+        "severe10": 0.07093425605536333,
+        "sharpe": 1.173478532773994,
+        "top5_positive_trade_pnl_share": 0.03566592088553582,
+        "top_five_entry_date_trade_share": 0.2750865051903114,
+        "total_return": 0.12950620250330291,
+        "trades": 578,
+        "u_hit": 0.6245674740484429,
+        "unique_entry_dates": 216,
+        "unique_symbols": 517,
+        "win": 0.7058823529411765,
+        "worst_day": -0.010418280156836102
+      },
+      "MAIN": {
+        "annual_returns": {
+          "2017": 0.004731181484687097,
+          "2018": 0.13131709425448235,
+          "2019": 0.01816795064634813,
+          "2020": -0.0003014619810541852,
+          "2021": 0.014552859773486082,
+          "2022": -0.0017558302655407143
+        },
+        "average_utilization": 0.04216428166974018,
+        "best_day": 0.025236015801403333,
+        "cagr": 0.03201562256082302,
+        "cvar5": -0.17177474392485909,
+        "max_drawdown": -0.037388176935413076,
+        "mean_holding_sessions": 10.664122137404581,
+        "mean_net": 0.03325410030917239,
+        "median_holding_sessions": 11.0,
+        "median_net": 0.05377936993516297,
+        "return_excluding_best_day": 0.1429054849429705,
+        "return_excluding_best_five_days": 0.06911834553289675,
+        "severe10": 0.0737913486005089,
+        "sharpe": 1.1518183519775378,
+        "top5_positive_trade_pnl_share": 0.05034506750139075,
+        "total_return": 0.1717478658205016,
+        "trades": 393,
+        "u_hit": 0.6055979643765903,
+        "win": 0.7048346055979644,
+        "worst_day": -0.015303153336025055
+      },
+      "audit": {
+        "capacity_skips": 121,
+        "duplicate_symbol_skips": 13,
+        "max_k_violation_count": 0,
+        "negative_cash_or_leverage_count": 0
+      }
+    },
+    "portfolio_accepted_trades": 578,
+    "portfolio_accepted_trades_per_year": 115.6,
+    "portfolio_cagr": 0.024509108511282296,
+    "portfolio_max_drawdown": -0.02827323485709432,
+    "portfolio_mean_net": 0.03444260021156218,
+    "portfolio_median_net": 0.052890178042889646,
+    "portfolio_severe10": 0.07093425605536333,
+    "portfolio_sharpe": 1.173478532773994,
+    "portfolio_win": 0.7058823529411765,
+    "positive_portfolio_years": 4,
+    "positive_trade_mean_years": 5,
+    "post_2023_signal_count": 0,
+    "rule": "D30_M20_D10_NO_PROGRESS_EXIT",
+    "source_complete_outcomes": 712,
+    "winner_regret_total": -4.747273980835552
+  },
+  "selector_passed": true,
+  "stage_a_verification": {
+    "checks": {
+      "contract_sha256": "6ad4c2b4b6c9d71af4192fd8cf5d31b78a974de0e98474f18db708a42ed1fa99",
+      "runner_sha256": "7c245ce079554a07cee9ab25b0cc946872721b5a0df22fd2024f37d09842ff0e",
+      "spec_sha256": "5914017eb12f80a8c556623ee97f195216159962caa90dd49589bf4d0322aa2d"
+    },
+    "verified": true
+  },
+  "verdict": "NO_PROGRESS_EXIT_DEVELOPMENT_CANDIDATE"
+}
