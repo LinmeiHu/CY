@@ -1,0 +1,39 @@
+{
+  "experiment": "ASHARE-BULL-DELAYED-SUPPLY-CONTRACTION-SHORT-REPRICING-V15",
+  "stage": "OUTCOME_BLIND_REGIME_AND_TRANSLATION_FREEZE",
+  "economic_hypothesis": "In a causally known BULL state, a non-extended three-session demand impulse, immediate low-turnover inside day, and first completed breakout within five sessions represents temporary supply contraction followed by renewed price discovery. The same chart sequence should not be traded in BEAR or TRANSITION states.",
+  "signal_source": "exact ASHARE-DEMAND-IMPULSE-INSIDE-DAY-DELAYED-BREAKOUT-V5 identity",
+  "market_routing": {
+    "BULL": "evaluate signal",
+    "BEAR": "HOLD_CASH for this lane",
+    "TRANSITION": "HOLD_CASH for this lane",
+    "clock": "completed breakout-signal close",
+    "future_realized_regime_used": false
+  },
+  "entry": "exact V5 next legal executable open strictly after completed breakout, maximum three market sessions",
+  "translation_family": {
+    "T10_H20": "+10% target or H20 next legal open, no failure stop",
+    "T15_H20": "+15% target or H20 next legal open, no failure stop"
+  },
+  "cost": "20 bp entry plus 20 bp exit",
+  "selection": {
+    "development": "2014-01-01 through 2018-12-31",
+    "confirmation": "2019-01-01 through 2021-12-31",
+    "selector": "among profiles with development mean >3% and average hold <=15, prefer higher median annual mean, then higher pooled mean, then T10",
+    "confirmation_used_for_selection": false
+  },
+  "frozen_before_2022_2023_short_translation": {
+    "selected_profile": "T10_H20",
+    "selection_result_sha256": "2429f594d4ad9c3202905ad3364acc3aa1391fbe49606dae8e7f3fd910c654ed",
+    "full_candidate_source_sha256": "492be15a5ee8c2623587a89f2239f15584bec3f134ac4659f619dfa1278e3fff",
+    "post_observation_diagnostic": "2022-01-01 through 2023-12-31",
+    "diagnostic_may_change_rule": false,
+    "warning": "2022-2023 outcomes were observed by predecessor research and are not pristine"
+  },
+  "governance": {
+    "contract_frozen_before_short_translation_outcomes": true,
+    "no_new_signal_threshold": true,
+    "no_failure_exit_grid": true,
+    "repository_2024_plus_data_opened": false
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "experiment": "ASHARE-CAUSAL-BULL-BEAR-DUAL-MECHANISM-SHORT-V16",
+  "status": "DETERMINISTIC_COMBINATION_FREEZE",
+  "economic_hypothesis": "A-share short-horizon opportunity is state dependent: broad BEAR markets can support forced-supply reversal after breadth repair, while broad BULL markets can support continuation after a demand impulse and observable supply contraction. Mixed states hold cash.",
+  "routing": {
+    "BEAR": "exact V13R1 fast-capitulation active-demand T10/H20 trade identity",
+    "BULL": "exact V15 delayed supply-contraction T10/H20 trade identity",
+    "TRANSITION": "HOLD_CASH",
+    "clock": "completed signal-session close",
+    "future_realized_market_state_used": false
+  },
+  "frozen_sources": {
+    "bear_trades_sha256": "8e62f4b3a9552cac769e95eb6e172ec65e8d53af207cccb06a60c6ad21ca8140",
+    "bull_trades_sha256": "08fdec7808d6c462519f0d87cc63a3367543a4277da0a452b0b169ba3edaa883"
+  },
+  "shared_capacity": {
+    "main_sleeve": 0.5,
+    "chinext_sleeve": 0.5,
+    "K_per_sleeve": 75,
+    "daily_entry_cap_per_sleeve": 20,
+    "one_active_position_per_symbol": true,
+    "bear_rank": "higher stock-minus-industry ret20, higher close-vs-prior10-high, higher close location, event_id",
+    "bull_rank": "higher impulse3, lower pre-impulse ret60, symbol, event_id",
+    "entry_date_cohort_budget": "10% of current sleeve NAV",
+    "per_name_cap": "2.5% of current sleeve NAV",
+    "event_order": "open exits, then open entries, then intraday targets",
+    "no_leverage": true,
+    "no_cross_sleeve_transfer": true
+  },
+  "execution": {
+    "entry": "next legal open after completed signal",
+    "target": "+10%",
+    "time_stop": "H20 next legal open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004
+  },
+  "governance": {
+    "combination_adds_no_new_threshold": true,
+    "2022_2023_are_post_observation": true,
+    "repository_2024_plus_data_opened": false
+  }
+}

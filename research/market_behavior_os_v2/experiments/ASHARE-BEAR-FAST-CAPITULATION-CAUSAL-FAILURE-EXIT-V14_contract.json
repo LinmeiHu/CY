@@ -1,0 +1,47 @@
+{
+  "experiment": "ASHARE-BEAR-FAST-CAPITULATION-CAUSAL-FAILURE-EXIT-V14",
+  "stage": "OUTCOME_BLIND_EXIT_FAMILY_FREEZE",
+  "mother": "ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-SHORT-RANKING-V13R1",
+  "economic_question": "Can losses caused by a failed forced-supply transfer be reduced when the stock breaks the completed signal-session demand low or when the causal market breadth repair disappears while the position is underwater?",
+  "unchanged": [
+    "causal BULL/BEAR/TRANSITION definition",
+    "BEAR-only routing; BULL and TRANSITION hold cash",
+    "OAI plus prior10_return <= -8% signal",
+    "breadth-repair admission at signal",
+    "RELATIVE_LEADER capacity ranking",
+    "next-legal-open entry",
+    "+10% target",
+    "H20 maximum holding",
+    "40 bp round-trip cost",
+    "K75 and daily cap 20"
+  ],
+  "failure_exit_family": {
+    "F0_NO_FAILURE": "target or H20 only",
+    "F1_SIGNAL_LOW_BREAK": "after entry, completed coordinate close is strictly below the frozen signal-session coordinate low",
+    "F2_BREADTH_REPAIR_LOST_UNDERWATER": "after entry, completed market positive-ret20 share is at most its value five completed market sessions earlier and completed stock coordinate close is below executable entry price",
+    "F3_HYBRID": "earliest completed F1 or F2 condition"
+  },
+  "failure_execution": "next legal executable open after completed failure information; A-share T+1, suspension, limit and QD-010 semantics unchanged",
+  "candidate_selection": {
+    "selection_period": "2014-01-01 through 2020-12-31",
+    "challenge_period": "2021-01-01 through 2023-12-31",
+    "hard_eligibility": [
+      "development mean net trade > 3%",
+      "development average holding <= 15 sessions"
+    ],
+    "selector_order": [
+      "more development calendar years with positive signal-date-equal mean",
+      "more development calendar years with positive portfolio return",
+      "higher development mean after excluding best five signal dates",
+      "lower development severe_loss10",
+      "fewer failure conditions"
+    ],
+    "challenge_used_for_selection": false
+  },
+  "governance": {
+    "contract_frozen_before_new_exit_outcomes": true,
+    "no_new_signal": true,
+    "no_2024_plus_data": true,
+    "repository_2024_plus_data_opened": false
+  }
+}

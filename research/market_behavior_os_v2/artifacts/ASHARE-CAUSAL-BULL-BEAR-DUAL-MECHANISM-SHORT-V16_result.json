@@ -1,0 +1,67 @@
+{
+  "experiment": "ASHARE-CAUSAL-BULL-BEAR-DUAL-MECHANISM-SHORT-V16",
+  "verdict": "DUAL_REGIME_HISTORICAL_TRADE_LEVEL_GOAL_MET",
+  "routing": {
+    "BULL": "V15 delayed supply-contraction T10/H20",
+    "BEAR": "V13R1 fast-capitulation active-demand T10/H20",
+    "TRANSITION": "HOLD_CASH"
+  },
+  "overall": {
+    "trades": 806,
+    "average_completed_trades_per_year": 80.6,
+    "mean_net": 0.03176397524283463,
+    "median_net": 0.09600000000000009,
+    "win_rate": 0.7047146401985112,
+    "severe10": 0.12531017369727046,
+    "target_hit": 0.6265508684863523,
+    "average_holding_sessions": 12.857320099255583,
+    "date_count": 315,
+    "date_equal_mean": 0.021407323976701392,
+    "top5_positive_pnl_share": 0.21439750299885066,
+    "mean_excluding_best5_signal_dates": 0.021984090459188102
+  },
+  "challenge_2021_2023": {
+    "trades": 272,
+    "average_completed_trades_per_year": 90.66666666666667,
+    "mean_net": 0.02625572474360427,
+    "average_holding_sessions": 12.382352941176471,
+    "date_equal_mean": 0.006175109358974543,
+    "mean_excluding_best5_signal_dates": 0.00728865383175524
+  },
+  "annual_trade_mean": {
+    "2014": 0.027140312361856118,
+    "2015": 0.06360189691089144,
+    "2016": -0.0014793433834614394,
+    "2017": 0.01814103112873273,
+    "2018": 0.03192845323567774,
+    "2019": 0.05210029607955438,
+    "2020": 0.02729650228119783,
+    "2021": 0.016232273787492438,
+    "2022": 0.037417292480305446,
+    "2023": 0.0174283166566646
+  },
+  "portfolio": {
+    "total_return": 0.211729721141384,
+    "cagr": 0.019414233490825383,
+    "max_drawdown": -0.0399669987211394,
+    "sharpe": 0.8603062152621129,
+    "average_utilization": 0.04057211565472021,
+    "max_active_positions": 59
+  },
+  "gates": {
+    "average_trades_per_year_gt_50": true,
+    "mean_net_gt_3pct": true,
+    "average_holding_sessions_le_15": true,
+    "post_2018_every_year_mean_positive": true,
+    "top5_positive_pnl_share_lt_50pct": true,
+    "mean_excluding_best5_dates_positive": true
+  },
+  "audit_all_required_zero": true,
+  "repository_2024_plus_data_opened": false,
+  "post_observation_warning": "2022-2023 are not pristine because predecessor outcomes were already observed.",
+  "external_artifacts": {
+    "accepted_trades_sha256": "8cf493c6718738806f45338c4f1966b1f2472ddfcaac0746f37046399180f6b8",
+    "portfolio_nav_sha256": "13e1296a396c98ea4002ce0caa9a1b4f347c4e64a92e2480d4233012b4b91fcc",
+    "full_result_sha256": "197067252ac895079c52b78f104602643d69f73ff03bf7c2bec651a473d7eaf9"
+  }
+}

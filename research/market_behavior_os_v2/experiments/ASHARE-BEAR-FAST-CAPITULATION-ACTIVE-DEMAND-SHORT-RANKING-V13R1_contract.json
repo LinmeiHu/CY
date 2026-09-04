@@ -1,0 +1,53 @@
+{
+  "experiment": "ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-SHORT-RANKING-V13R1",
+  "purpose": "Fail-closed correction and deterministic reproduction of V13; no new signal or return translation.",
+  "economic_hypothesis": "In a causally known broad BEAR state, improving breadth plus a stock-specific fast washout and completed-session active-demand ignition represents forced-supply transfer. BULL and TRANSITION hold cash.",
+  "market_state": {
+    "clock": "completed signal-session close",
+    "BULL": "both 20d/60d cross-sectional return medians > 0 and both positive-return shares > 0.50",
+    "BEAR": "both 20d/60d cross-sectional return medians <= 0 and both positive-return shares <= 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "BEAR_action": "evaluate signal",
+    "BULL_action": "HOLD_CASH",
+    "TRANSITION_action": "HOLD_CASH",
+    "future_realized_regime_used": false
+  },
+  "signal": {
+    "base": "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1",
+    "fast_capitulation": "prior10_return <= -8%; window ends before signal session",
+    "breadth_repair": "completed-session positive-ret20 share exceeds its value five completed market sessions earlier"
+  },
+  "capacity_ranking": [
+    "higher stock_minus_industry_ret20",
+    "higher close_vs_prior10_high",
+    "higher close_location",
+    "event_id"
+  ],
+  "missing_required_rank_input": "FAIL_CLOSED",
+  "execution": {
+    "entry": "first legal open strictly after signal, no later than three market sessions",
+    "target": "+10% from executable entry",
+    "time_stop": "H20 then next legal open",
+    "failure_stop": "NONE",
+    "entry_cost": 0.002,
+    "exit_cost": 0.002,
+    "t_plus_one": true
+  },
+  "portfolio": {
+    "sleeves": "MAIN 50%, CHINEXT 50%",
+    "K_per_sleeve": 75,
+    "maximum_new_entries_per_sleeve_date": 20,
+    "entry_date_cohort_budget": "10% current sleeve NAV",
+    "per_name_cap": "2.5% current sleeve NAV",
+    "one_active_position_per_symbol": true,
+    "event_order": "legal open exits, then legal open entries, then intraday targets",
+    "no_leverage": true,
+    "cross_sleeve_transfer": false
+  },
+  "selection": {
+    "ranking_selected_on": "2014-01-01 through 2020-12-31",
+    "challenge": "2021-01-01 through 2023-12-31",
+    "post_observation_warning": "2022-2023 are not pristine",
+    "repository_2024_plus_data_opened": false
+  }
+}
