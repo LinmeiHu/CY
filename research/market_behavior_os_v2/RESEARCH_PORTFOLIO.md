@@ -7,26 +7,25 @@ available.
 
 | Mode | Current allocation | Rationale | Next action |
 |---|---:|---|---|
-| EXPLORE | 10% | Cross-Sectional Dispersion remains scientifically unresolved, not null | Use only a materially different resource-safe design; do not rerun failed attempts unchanged |
-| EXPLOIT | 0% | The user target is met on consumed development history and further tuning would spend the same evidence twice | Freeze exact Industry-Consensus Q1 rules; no in-sample parameter, exit, recurrence, or habitat work |
-| INVENT | 30% | PIT fundamentals, identifiable flows, and order-book/queue information are the clearest diversification gaps | Open only after a bounded, registered, PIT-safe source unlocks multiple high-value mechanisms |
-| REPLICATE | 55% | The dominant uncertainty is temporal transfer of the frozen candidate | Predefine untouched confirmation only under separate authorization; post-2023 and CY-011 stay locked meanwhile |
-| TRANSFER | 5% | P10 capacity CNY 9.46m and industry HHI 0.773 constrain deployment | Preserve warnings and predefine capacity checks; no live transfer |
-| FALSIFY | 0% | Sequential development falsification is saturated under current inputs | Do not create more consumed-history filters or neighboring rules |
+| EXPLORE | 40% | Cross-Sectional Dispersion remains scientifically unresolved, not null, and may diversify broad long continuation | Use only a materially different resource-safe design; do not rerun failed attempts unchanged |
+| EXPLOIT | 0% | The candidate's 2024--2025 result is weak and those years are now consumed | No parameter, exit, habitat, Top-N, or capital rescue on 2018--2025 |
+| INVENT | 50% | Temporal transfer sharply weakens the existing engine; PIT fundamentals, identifiable flows, and order-book/queue information are the clearest independent gaps | Open only after a bounded, registered, PIT-safe source unlocks multiple high-value mechanisms |
+| REPLICATE | 0% | The authorized 2024--2025 temporal question has been answered | Preserve `TEMPORAL_TRANSFER_INCONCLUSIVE`; keep 2026 and CY-011 locked |
+| TRANSFER | 0% | 4.26% validation annualized return and 0.308 Sharpe do not support live transfer | No deployment work |
+| FALSIFY | 10% | A future independent engine should be challenged for redundancy with concentrated industry continuation | Use only frozen incremental tests after a new engine survives standalone screening |
 
 Mandatory checkpoint questions:
 
 1. What should be learned next about current strategies?
 2. What important market behavior or archetype is not being studied at all?
 
-Current answers: the only high-value candidate-specific question is whether
-`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` transfers to untouched time without
-changing one rule. The bounded Strategy-B continuation rejected six direct
-engines and one Q1 recurrence deepening; further work on current consumed inputs
-has insufficient expected information value. Immutable-vintage fundamentals,
-identifiable flows/order-book queues, borrow-feasible relative value, and a
-resource-safe Dispersion mechanism remain under-studied. The
-`INDUSTRY_CONSENSUS_EVENT` archetype is a development candidate only.
+Current answers: the temporal-transfer question has now been answered with weak
+positive but inconclusive 2024--2025 evidence: +4.26% annualized, -18.74% drawdown,
+0.308 Sharpe, and a negative 2025. The highest-value question is no longer how
+to tune this event strategy, but what independent return source can diversify
+it. Immutable-vintage fundamentals, identifiable flows/order-book queues,
+borrow-feasible relative value, and a resource-safe Dispersion mechanism remain
+under-studied. The `INDUSTRY_CONSENSUS_EVENT` archetype is not confirmed.
 
 ## Strategy-B stop allocation
 

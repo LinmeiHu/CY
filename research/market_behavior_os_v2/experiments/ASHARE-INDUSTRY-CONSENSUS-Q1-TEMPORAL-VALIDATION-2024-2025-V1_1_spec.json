@@ -1,0 +1,109 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1",
+  "frozen_at": "2026-09-04",
+  "starting_checkpoint": "beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a",
+  "status": "FROZEN_NUMERIC_ERRATUM_BEFORE_ANY_2024_2025_STRATEGY_OUTCOME_AGGREGATION",
+  "authorization": "User explicitly requested opening 2024 and 2025 validation outcomes.",
+  "claim_boundary": "AUTHORIZED_TEMPORAL_VALIDATION_2024_2025_AFTER_PRE_OUTCOME_CAUSAL_NUMERIC_ERRATUM_USING_REGISTERED_PIT_B_INPUTS_NOT_LIVE",
+  "research_question": "Does the economically frozen Industry-Consensus Diffusion-Q1 event strategy retain positive absolute long economics in 2024-2025 after removing a diagnosed future-batch-dependent floating-point sign artifact at mathematically zero r20?",
+  "base_contract": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_spec.json",
+    "sha256": "ea00dd6b7bbb7f02fda3750048174340760528835852388265c8e634504d9d35"
+  },
+  "initial_contract_failure": {
+    "stage": "mandatory 2023 feature replication gate before strategy selection or replay",
+    "accepted_2024_2025_portfolio_outcome": false,
+    "error": "2023 numeric parity failed:diffusion_score:2943",
+    "first_diagnosed_key": {
+      "trade_date": "2023-01-04",
+      "symbol": "001202.SZ",
+      "industry": "物流"
+    },
+    "root_cause": "Adding later yearly partitions changed the floating-point sign of mathematically zero rolling log-return sums inside DuckDB's window aggregation. The r20 > 0 diffusion count therefore depended on the future batch boundary even though the economic return did not.",
+    "proof": "The original 2018-2023 runner reproduced the accepted feature panel byte-for-byte at SHA-256 b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012; only the appended-batch calculation failed. The first affected peer had accepted r20 -6.938893903907228e-18, economically zero."
+  },
+  "numerical_erratum": {
+    "scope": "Industry Diffusion positive-r20 membership only",
+    "rule": "r20 is positive only when r20 > 1e-12; values with absolute magnitude at or below 1e-12 are neutral/non-positive",
+    "epsilon": 1e-12,
+    "economic_basis": "A 1e-12 log return is far below an A-share price tick and only resolves machine-noise ties; it is not a return threshold or fitted parameter.",
+    "unchanged": [
+      "eligible universe",
+      "every-fifth-session schedule",
+      "Industry Diffusion leave-one-out construction",
+      "Weekly Low-MAX Top-10 industry allocation and stock ranking",
+      "same-industry Q1 pair rule",
+      "next-legal-open execution",
+      "20-session holding",
+      "one-half-NAV event capital",
+      "equal weights",
+      "20 bps per side costs",
+      "T+1, limits, suspensions, and QD-010 corporate actions"
+    ]
+  },
+  "corrected_development_diagnostic": {
+    "outcome_period": "2018-2023 consumed development history only",
+    "future_validation_outcome_used": false,
+    "selection_rows": 534,
+    "selection_sha256": "98e7ef4229b688bbc3dbb9f30bc6008cc8729d92541f847a54248d1c6f69e3bc",
+    "legacy_selection_rows_unchanged": 519,
+    "legacy_selection_rows_removed": 15,
+    "corrected_selection_rows_added": 15,
+    "decision_dates_with_any_pair_change": 13,
+    "candidate": {
+      "family": "industry_consensus_q1_event_causal_numeric_erratum",
+      "status": "COMPLETE",
+      "start_date": "2018-07-10",
+      "end_date": "2023-12-28",
+      "total_return": 2.6911788627629667,
+      "annualized_return": 0.2805074830980854,
+      "maximum_drawdown": -0.18046774418308176,
+      "daily_sharpe": 1.2288710898908446,
+      "calmar": 1.5543358419414544,
+      "turnover_multiple_initial_capital": 145.32606086072295,
+      "event_dates": 99,
+      "planned_entries": 198,
+      "entries": 182,
+      "entry_execution_fraction": 0.9191919191919192,
+      "completed_trades": 182,
+      "severe_trade_fraction": 0.09340659340659341
+    },
+    "calendar_year_returns": {
+      "2018": -0.03909240044062301,
+      "2019": 0.4446069564308712,
+      "2020": 0.2721632362889277,
+      "2021": 0.19883933861798297,
+      "2022": 0.11996833967407938,
+      "2023": 0.556769047463676
+    }
+  },
+  "classification": {
+    "INDEPENDENT_TEMPORAL_CONFIRMATION_PASS_all_required": {
+      "minimum_event_dates": 20,
+      "minimum_entry_execution_fraction": 0.90,
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.50,
+      "maximum_drawdown_must_be_greater_than": -0.257736118,
+      "maximum_severe_trade_fraction": 0.10,
+      "positive_calendar_years": ["2024", "2025"],
+      "terminal_open_lots": 0
+    },
+    "POSITIVE_BUT_MIXED_TRANSFER_all_required": {
+      "minimum_event_dates": 10,
+      "minimum_entry_execution_fraction": 0.85,
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.0,
+      "maximum_drawdown_must_be_greater_than": -0.35,
+      "terminal_open_lots": 0
+    },
+    "NO_TEMPORAL_TRANSFER": "combined total return is nonpositive or daily Sharpe is nonpositive",
+    "TEMPORAL_TRANSFER_INCONCLUSIVE": "combined return and Sharpe are positive but one or more mixed-transfer requirements fail",
+    "REPLAY_BLOCKED": "causal representation parity, PIT, execution, corporate-action, or full-liquidation contract fails closed"
+  },
+  "additional_prohibited": [
+    "classifying machine-noise ties as positive r20",
+    "changing the 1e-12 numerical epsilon after any 2024-2025 portfolio outcome is calculated",
+    "using the erratum as permission to tune any economic strategy rule",
+    "reading 2026 market outcomes or CY-011"
+  ]
+}

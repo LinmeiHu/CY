@@ -4,6 +4,32 @@ Updated 2026-09-04. This is the compact exploration-funnel view. Detailed
 lineage remains in the experiment registry, frozen specs, result artifacts, and
 engine ledgers.
 
+## Industry-Consensus Q1 2024--2025 temporal validation
+
+- Initial V1 failed closed before replay: adding future partitions changed the
+  sign of mathematically zero rolling `r20` values and broke 2023 diffusion
+  replication. Pure 2018--2023 reproduction was byte-identical, proving a
+  future-batch-dependent numeric artifact rather than data drift.
+- V1.1 froze machine-noise `|r20| <= 1e-12` as neutral before any validation
+  portfolio outcome was aggregated. This changed 15/534 historical selection
+  rows across 13 dates. Corrected development falls from legacy 33.70% to
+  28.05% annualized, with the same -18.05% maximum drawdown.
+- Authorized 2024--2025 result: +8.36% total, +4.26% annualized, -18.74% maximum
+  drawdown, 0.308 Sharpe, 50 event dates, and 84 completed trades. 2024 is
+  +10.62%; 2025 is -2.05%.
+- Classification: `TEMPORAL_TRANSFER_INCONCLUSIVE`. Combined return is positive,
+  but Sharpe, positive-both-years, and frozen entry-ratio gates fail. This is
+  weak positive transfer, not independent confirmation. No rescue or retuning
+  is authorized on the now-consumed 2024--2025 interval.
+
+What market behavior are we still not studying? A return source independent of
+concentrated long industry continuation, immutable-vintage fundamentals,
+identifiable flows/queues, and completed resource-safe Dispersion.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+The validation weakens the existing event candidate and increases the value of
+strategy diversification.
+
 ## Strategy-B bounded continuation and stop conclusions
 
 - Panic liquid-basket reversal: +13.15% annualized generation, then -4.41%

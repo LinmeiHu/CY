@@ -1,0 +1,145 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1",
+  "frozen_at": "2026-09-04",
+  "starting_checkpoint": "beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a",
+  "status": "FROZEN_BEFORE_AUTHORIZED_2024_2025_OUTCOME_ACCESS",
+  "authorization": "User explicitly requested opening 2024 and 2025 validation outcomes after the strategy and all rules were frozen.",
+  "claim_boundary": "AUTHORIZED_UNTOUCHED_TEMPORAL_VALIDATION_2024_2025_USING_REGISTERED_PIT_B_INPUTS_NOT_LIVE",
+  "research_question": "Does the exact frozen Industry-Consensus Diffusion-Q1 event strategy retain positive absolute long economics in untouched 2024-2025 time without changing one rule?",
+  "inputs": {
+    "frozen_strategy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1_spec.json",
+      "sha256": "717c1b8bf5dfacbe9bbe6d5a549143ddd1e52b31396624904b185e36b3c900d5"
+    },
+    "frozen_strategy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_event_v1.py",
+      "sha256": "6bd5268401a648d14f0e6bd2914a7641bc18b28f0012f4920d9efb049add712f"
+    },
+    "frozen_strategy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1_result.json",
+      "sha256": "764188fcd0f42960b53ed117ff6a188eae74c68176f3492acc64347c0d88ab23"
+    },
+    "q1_construction_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-DIFFUSION-Q1-CONCENTRATION-V1_spec.json",
+      "sha256": "7b1896d8ba98ecf7ade27ea548994cec959987728334693dc9dc12e92e22036c"
+    },
+    "q1_construction_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_diffusion_q1_concentration_v1.py",
+      "sha256": "1a2333c7aa8cf01c3b62cbf316642bc116c67a055e8fab2b9c6582480eb1fc9f"
+    },
+    "cycle015_feature_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_multiscale_diffusion_daily_alpha_cycle_015.py",
+      "sha256": "d276ea990982228637b1304e6d803a9ed7467d23483d612f4cf5b86f9dd45144"
+    },
+    "industry_diffusion_construction_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-DIFFUSION-CONSTRUCTION-011_spec.json",
+      "sha256": "0d9f809a9e19bd000f559c4c64cb73e7f6010883b82ebc4f625c9ba845c11ac0"
+    },
+    "industry_diffusion_construction_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py",
+      "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"
+    },
+    "accepted_pre2024_daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "qd010_distributions": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+    },
+    "qd010_rights": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+    }
+  },
+  "cy006_partitions": [
+    {"year": 2018, "path": "partition_year=2018/data_0.parquet", "bytes": 42011064, "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"},
+    {"year": 2019, "path": "partition_year=2019/data_0.parquet", "bytes": 43320252, "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"},
+    {"year": 2020, "path": "partition_year=2020/data_0.parquet", "bytes": 46073783, "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"},
+    {"year": 2021, "path": "partition_year=2021/data_0.parquet", "bytes": 52153081, "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"},
+    {"year": 2022, "path": "partition_year=2022/data_0.parquet", "bytes": 56255217, "sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1"},
+    {"year": 2023, "path": "partition_year=2023/data_0.parquet", "bytes": 59157938, "sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740"},
+    {"year": 2024, "path": "partition_year=2024/data_0.parquet", "bytes": 59881763, "sha256": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e"},
+    {"year": 2025, "path": "partition_year=2025/data_0.parquet", "bytes": 61756440, "sha256": "846ca46ce65dd9bd1e9c89df5b26c143af8e8829365671c6f7e43b801cb09d9a"}
+  ],
+  "frozen_strategy": {
+    "signal": "unchanged every-fifth-market-session completed-close Industry Diffusion plus Weekly Low-MAX Top-10 signal",
+    "selection": "rank the exact Top-10 by higher causal diffusion_score, then lower exact prior-20-session max_return20, then symbol; retain ranks 1 and 2 only when both share the same signal-date PIT industry",
+    "entry": "next legal open; blocked names are not backfilled",
+    "holding": "20 market sessions to due open, with unchanged accepted corporate-action and legal-fill handling",
+    "event_capital": "minimum of available cash and one-half pre-entry NAV",
+    "weights": "equal across executable names in the accepted pair",
+    "cost_per_side": 0.002,
+    "leverage": false,
+    "cross_event_cash_transfer": "cash may fund later valid events; no early sale, borrowing, replacement, or backfill"
+  },
+  "validation_window": {
+    "signal_start": "2024-01-01",
+    "signal_end": "2025-12-31",
+    "maximum_market_outcome_date": "2025-12-31",
+    "complete_h20_only": true,
+    "nav_start": "first 2024 market session with CNY 10000000 cash",
+    "nav_end": "last 2025 market session",
+    "report_2024_and_2025_separately": true,
+    "read_2026_market_outcomes": false,
+    "read_cy011": false
+  },
+  "mandatory_pre_outcome_replication_gate": {
+    "overlap_period": ["2023-01-03", "2023-12-29"],
+    "require_identical_rows_and_keys": true,
+    "require_exact_nonfloating_columns": true,
+    "maximum_absolute_numeric_difference": 1e-12,
+    "maximum_relative_numeric_difference": 1e-10,
+    "failure_action": "fail closed before strategy selection, replay, or outcome reporting"
+  },
+  "classification": {
+    "INDEPENDENT_TEMPORAL_CONFIRMATION_PASS_all_required": {
+      "minimum_event_dates": 20,
+      "minimum_entry_execution_fraction": 0.90,
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.50,
+      "maximum_drawdown_must_be_greater_than": -0.257736118,
+      "maximum_severe_trade_fraction": 0.10,
+      "positive_calendar_years": ["2024", "2025"],
+      "terminal_open_lots": 0
+    },
+    "POSITIVE_BUT_MIXED_TRANSFER_all_required": {
+      "minimum_event_dates": 10,
+      "minimum_entry_execution_fraction": 0.85,
+      "minimum_total_return": 0.0,
+      "minimum_daily_sharpe": 0.0,
+      "maximum_drawdown_must_be_greater_than": -0.35,
+      "terminal_open_lots": 0
+    },
+    "NO_TEMPORAL_TRANSFER": "combined total return is nonpositive or daily Sharpe is nonpositive",
+    "TEMPORAL_TRANSFER_INCONCLUSIVE": "combined return and Sharpe are positive but one or more mixed-transfer execution, drawdown, breadth, or liquidation requirements fail",
+    "REPLAY_BLOCKED": "representation parity, PIT, execution, corporate-action, or full-liquidation contract fails closed"
+  },
+  "required_outputs": [
+    "2024, 2025, and combined total/annualized return",
+    "maximum drawdown, Sharpe, Calmar, severe-loss incidence, turnover, event and trade counts",
+    "entry execution coverage, cash-constrained events, concentration and capacity",
+    "year-by-year event dates and completed trades",
+    "comparison with frozen 2018-2023 development metrics without changing or selecting a rule"
+  ],
+  "prohibited": [
+    "any signal, Top-N, pair, same-industry, score, threshold, schedule, horizon, capital, weight, cost, entry, exit, stop, or execution change",
+    "using 2024 or 2025 results to rescue, filter, combine, size, or retune the strategy",
+    "reading 2026 market prices, returns, fills, or strategy outcomes",
+    "CY-011 access",
+    "dropping blocked holdings, quoting partial equity, or ignoring unresolved corporate actions",
+    "live, production, guaranteed-return, or investment-advice claim"
+  ]
+}

@@ -1,5 +1,19 @@
 # External strategy prior map — cycle-005 checkpoint classifications
 
+## Industry-Consensus Q1 authorized 2024--2025 temporal validation V1.1
+
+| Layer | Frozen evidence | Result | Decision |
+|---|---|---|---|
+| Causal numeric parity | Initial V1 mandatory 2023 overlap before selection/replay | Future partitions changed machine-noise signs of mathematically zero `r20`; pure 2018--2023 output was byte-identical | V1 fails closed; do not accept legacy extended calculation |
+| Numeric erratum | Before any validation portfolio aggregation, freeze `r20 > 1e-12` as positive; all smaller machine-noise ties neutral | 15/534 historical Q1 rows change on 13 dates; corrected development 28.05% annualized, -18.05% DD, 1.229 Sharpe | Semantic correction only; no economic parameter rescue |
+| 2024--2025 replay | Same-industry Q1 pair, half-NAV cash cap, next legal open, h20, 20 bps/side | +8.36% total, +4.26% annualized, -18.74% DD, 0.308 Sharpe; 50 dates/84 trades | Positive but weak transfer |
+| Calendar stability | Frozen 2024 and 2025 slices | 2024 +10.62%; 2025 -2.05% | Positive-both-years confirmation gate fails |
+| Predeclared classification | Event count, execution ratio, total, Sharpe, DD, severe loss, both years, liquidation | Sharpe and both-years fail; 84% entry ratio misses 90% confirmation and 85% mixed gate; no open lots | `TEMPORAL_TRANSFER_INCONCLUSIVE`; no retuning |
+
+The user-authorized 2024--2025 interval is now consumed. No 2026 market outcome
+or CY-011 was read. The result does not confirm the strategy and does not permit
+a regime, Top-N, score, capital, entry, exit, holding, or combination rescue.
+
 ## Strategy-B bounded continuation and stop V1
 
 | Family | Frozen canonical translation | Sequential evidence | Decision |
@@ -17,7 +31,7 @@ gate was relaxed, no failed family was inverted, and no full replay or
 combination was run. Final portfolio decision:
 `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`.
 
-## Industry-Consensus Diffusion-Q1 Event V1
+## Industry-Consensus Diffusion-Q1 Event V1 — legacy pre-validation checkpoint
 
 | Layer | Frozen definition | Development evidence | Decision |
 |---|---|---|---|
@@ -27,10 +41,10 @@ combination was run. Final portfolio decision:
 | Pair structure | Both Q1 names share one PIT industry versus two industries | Same-industry +3.714%/+4.011% by block and positive every year; two-industry positive overall | New same-industry event candidate; not an avoidance claim |
 | Event replay | Same-industry Q1, one-half pre-entry NAV capped by cash, next legal open, h20, 20 bps/side | 33.70% annualized, 363.72% total, -18.05% drawdown, 1.422 Sharpe; 99 dates/180 trades | `DEVELOPMENT_TARGET_ACHIEVED_NOT_INDEPENDENTLY_VALIDATED` |
 
-The rule was generated from consumed 2018--2023 outcomes and must not be
-described as OOS or independently confirmed. Post-2023 outcomes and CY-011 were
-not read. Freeze the exact strategy; no parameter rescue or further in-sample
-tuning is authorized.
+The rule was generated from consumed 2018--2023 outcomes and was not OOS or
+independently confirmed at this checkpoint. Its 33.70% result is now a legacy
+floating implementation superseded by the causal numeric V1.1 section above.
+No parameter rescue or further in-sample tuning is authorized.
 
 ## Post-Shock Strong-Recovery Avoidance Anatomy V1
 

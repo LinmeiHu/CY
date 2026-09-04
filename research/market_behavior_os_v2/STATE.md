@@ -7,30 +7,30 @@ Updated 2026-09-04.
 - `RESEARCH_OBJECT`: recurring market behavior
 - `ACTIVE_TRACK`: `MARKET`
 - `RESEARCH_OS_VERSION`: `2.3-LEAN`
-- `CURRENT_BASELINE`: `1be08c4153d124850ebbbd80208d2637e6feeb6d` (authoritative start of the bounded Strategy-B continuation)
-- `CURRENT_PHASE`: `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`
-- `CURRENT_PRIMARY_FRONTIER`: freeze `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` exactly. No further consumed-history tuning or Strategy-B mining is authorized; resume only with separately authorized untouched time, a genuinely new registered PIT information source, or a materially different resource-safe Dispersion contract
+- `CURRENT_BASELINE`: `beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a` (authoritative start of the authorized 2024--2025 temporal validation)
+- `CURRENT_PHASE`: `TEMPORAL_TRANSFER_INCONCLUSIVE_NO_PARAMETER_RESCUE`
+- `CURRENT_PRIMARY_FRONTIER`: the authorized 2024--2025 test is complete and does not independently confirm the Industry-Consensus Q1 engine. Do not tune it on the newly consumed years. Reallocate toward an independent Alpha engine, a genuinely new registered PIT information source, or a materially different resource-safe Dispersion contract
 - `SUPPORTING_FRONTIER`: `PIT_FUNDAMENTALS = DATA_BLOCKED_PARKED`; archival fundamentals require a licensed/versioned historical statement source or a separately authorized filing-extraction project
-- `CURRENT_STRATEGY_CANDIDATE`: `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1`, a post-hoc development candidate derived from the frozen Industry Diffusion plus Weekly Low-MAX Champion. On a normal weekly Champion signal it keeps the exact diffusion-intensity Q1 pair only when both names share the same signal-date PIT industry; it assigns at most one-half pre-entry NAV to the two-name event, enters next legal open, and exits at the unchanged h20 due open
+- `CURRENT_STRATEGY_CANDIDATE`: `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` with the frozen V1.1 causal numeric erratum: machine-noise `r20` ties at `|r20| <= 1e-12` are neutral. The economic rule is otherwise unchanged: exact diffusion-intensity Q1 pair, same signal-date PIT industry, at most one-half pre-entry NAV, next legal open, and unchanged h20 due open
 - `BRANCH`: `research/chinext-v1-research-os-v2` (retained from the authorized
   workspace; branch name does not define research scope)
-- `STARTING_HEAD`: `1be08c4153d124850ebbbd80208d2637e6feeb6d`
+- `STARTING_HEAD`: `beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a`
 
 ## Current continuation state
 
-- `CURRENT_HEAD_AT_RESUME`: `1be08c4153d124850ebbbd80208d2637e6feeb6d`
-- `CURRENT_SCIENTIFIC_LAYER`: `CONSUMED_PRE2024_SEQUENTIAL_DEVELOPMENT_RESEARCH; STRATEGY_B_STOP; NOT_OOS; NOT_CONFIRMATION`
+- `CURRENT_HEAD_AT_RESUME`: `beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a`
+- `CURRENT_SCIENTIFIC_LAYER`: `AUTHORIZED_2024_2025_TEMPORAL_VALIDATION_CONSUMED; PIT_B; NOT_LIVE; INCONCLUSIVE`
 - `REPRESENTATIONS_TESTED`: frozen downside-extreme participation, new-high/new-low exhaustion, liquidity activity, six-index trend direction, PIT-known share distribution, PIT-known cash distribution, and exact Q1 event recurrence. No threshold, horizon, Top-N, combination, or validation rescue was used
-- `ECONOMIC_RESPONSE_STATUS`: the exact same-industry Q1 event earns 33.7037% annualized return, 363.7225% total return, -18.0468% maximum drawdown, 1.4222 Sharpe, and 1.8676 Calmar over consumed 2018--2023 development history
+- `ECONOMIC_RESPONSE_STATUS`: after the causal numeric erratum, consumed 2018--2023 development is 28.0507% annualized, 269.1179% total, -18.0468% maximum drawdown, and 1.2289 Sharpe. Authorized 2024--2025 temporal validation is only 4.2585% annualized, 8.3570% total, -18.7414% maximum drawdown, and 0.3084 Sharpe
 - `LEVEL_VS_TRANSITION_STATUS`: full h20 lifecycle remains necessary; d15-to-d20 adds +0.872 percentage points of mean trade payoff. Fixed earlier exits remain closed
-- `EVENT_EPISODE_RULES`: 99 weekly same-industry events, 198 planned entries, 180 completed trades; one-half pre-entry NAV is the single frozen capital divisor implied by median two concurrent event cohorts, capped by available cash with no leverage or backfill
-- `YEAR_BY_YEAR_RESULTS`: 2018 +4.98%, 2019 +45.83%, 2020 +44.92%, 2021 +19.88%, 2022 +12.00%, 2023 +55.68%. These are consumed development outcomes, not six independent validations
-- `PLACEBO_RESULTS`: versus the unchanged Champion, annualized return improves +17.36 points and drawdown improves +7.73 points; versus the exact Q1 Top-2 replay, annualized return improves +7.55 points and drawdown improves +3.90 points
+- `EVENT_EPISODE_RULES`: corrected development has 99 weekly same-industry events and 182 completed trades. Validation has 50 event dates, 100 planned entries, and 84 completed trades; 16 entries were capital-skipped, with no market-unexecutable entries and no terminal open lot
+- `YEAR_BY_YEAR_RESULTS`: causal-corrected development is 2018 -3.91%, 2019 +44.46%, 2020 +27.22%, 2021 +19.88%, 2022 +12.00%, 2023 +55.68%. Authorized temporal validation is 2024 +10.62% and 2025 -2.05%. These years are now consumed and may not be used to tune a rescue
+- `PLACEBO_RESULTS`: the legacy Champion and Q1 comparisons were computed under the superseded floating implementation and are retained only as historical diagnostics. No causal-numeric-erratum incremental comparator has been opened, and none is authorized as a validation rescue
 - `SUPPORTED_MARKET_STATES`: one data-generated stock-selection event: both exact diffusion-Q1 names share the same signal-date PIT industry
 - `DESCRIPTIVE_ONLY_STATES`: Cycle-019 Absolute Market State is chronologically unstable for Q1 and cannot be used as a veto; two-industry Q1 remains positive overall and is not a proven bad state
-- `STRATEGY_HABITAT_STATUS`: `DATA_GENERATED_INDUSTRY_CONSENSUS_EVENT_CANDIDATE; FREEZE_ONLY; INDEPENDENT_CONFIRMATION_REQUIRED`
+- `STRATEGY_HABITAT_STATUS`: `WEAK_POSITIVE_TEMPORAL_TRANSFER; INDEPENDENT_CONFIRMATION_FAILED; NO_RESCUE`
 - `CURRENT_MECHANISMS`: concentrated within-industry diffusion leadership identifies fewer but stronger continuation cohorts; the gain comes from event selection and natural capital reuse, not from a new exit, stop, or market-timing rule
-- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: no currently authorized experiment has positive expected information value after the bounded Strategy-B continuation. Preserve post-2023 and CY-011 quarantine. Resume only when untouched confirmation is separately authorized, a versioned PIT dataset unlocks a genuinely new mechanism, or Dispersion receives a materially different resource-safe contract.
+- `NEXT_HIGHEST_INFORMATION_VALUE_QUESTION`: which genuinely independent return engine can diversify an Industry-Consensus candidate whose absolute temporal transfer weakened sharply? Do not spend 2024--2025 again on filters, thresholds, exits, or capital rescue. Keep 2026 and CY-011 quarantined; prefer a new PIT mechanism or resource-safe Dispersion science.
 
 ## Research OS V2.3 resource and worker state
 
@@ -50,8 +50,9 @@ Updated 2026-09-04.
   7.21-GiB reading was system-available RAM, not disk; it remains separately
   `WAITING_RESOURCE` under the 9/8-GiB RAM floors. Repository disk free was about
   347 GiB at reconciliation.
-- `LOCKED_HOLDOUTS`: CY-011 unopened; post-2023 strategy and market confirmation
-  data remain locked; all current construction stays through 2023-12-31.
+- `LOCKED_HOLDOUTS`: CY-011 and all 2026 market outcomes remain unopened. The
+  explicitly authorized 2024--2025 partitions are now consumed temporal
+  validation evidence and may not be reused for optimization.
 - `FORMATION_QA`: `PASS_ORTHOGONAL_REPLICATION`; WORKER-QA-001 independently
   matched 2,360 response rows, 288 geometry rows, and all five accepted
   ATTR/PROP/CLOSE/PATH/IMMED classifications with no quarantine trigger.
@@ -69,6 +70,48 @@ The existing `research/chinext_v1/research_os_v2/` checkpoint is retained as
 Track 2 archaeology. Its valid evidence and exact rejections are unchanged.
 
 ## Current evidence
+
+### Authorized 2024--2025 Industry-Consensus Q1 temporal validation
+
+The user explicitly authorized opening 2024 and 2025. The initial frozen
+validation contract failed closed before strategy selection or replay because
+appending later partitions changed the floating-point sign of mathematically
+zero rolling `r20` sums. The original 2018--2023 runner reproduced its accepted
+panel byte-for-byte, proving that the discrepancy was future-batch-dependent
+numeric behavior rather than source drift. Before any 2024--2025 portfolio
+outcome was aggregated, V1.1 froze `r20 > 1e-12` as the positive-membership
+rule. This is a machine-noise tie correction, not a fitted return threshold.
+
+The correction changes 15 of 534 historical Q1 selection rows across 13 dates.
+Corrected 2018--2023 development performance is 28.0507% annualized, 269.1179%
+total, -18.0468% maximum drawdown, 1.2289 Sharpe, and 182 completed trades. The
+legacy 33.7037% result therefore contained a real numerical-artifact benefit and
+must not remain the primary performance claim.
+
+On the untouched-at-freeze 2024--2025 interval, the unchanged economic rule
+earns 8.3570% total and 4.2585% annualized with -18.7414% maximum drawdown,
+0.3084 Sharpe, and 0.2272 Calmar. Calendar returns are +10.6227% in 2024 and
+-2.0481% in 2025. There are 50 event dates, 100 planned entries, 84 completed
+trades, 7.1429% severe trades, no market-unexecutable entries, and no terminal
+open lots. Sixteen planned entries receive no capital because overlapping
+events exhaust available cash; the frozen 84% entry ratio misses both the 90%
+confirmation and 85% mixed-transfer gates.
+
+Final classification: `TEMPORAL_TRANSFER_INCONCLUSIVE`. Total return, drawdown,
+tail loss, breadth, and liquidation checks pass, but Sharpe, positive-both-years,
+and entry-ratio confirmation checks fail; 2025 is negative. This is weak positive
+transfer, not independent confirmation. No 2024--2025 filter, threshold, Top-N,
+holding, exit, sizing, or combination rescue is authorized. No 2026 market
+outcome or CY-011 was read.
+
+What market behavior are we still not studying? A return source structurally
+independent of concentrated long industry continuation, immutable-vintage
+fundamental change, identifiable investor flow/queue pressure, and a completed
+resource-safe Dispersion Alpha.
+
+Has any discovered mechanism implied a genuinely new strategy archetype? No.
+Temporal validation weakens the existing `INDUSTRY_CONSENSUS_EVENT` candidate;
+it does not create a new engine.
 
 ### Strategy-B bounded continuation and genuine stop
 
@@ -107,7 +150,11 @@ Has any discovered mechanism implied a genuinely new strategy archetype? No
 additional archetype survived. The frozen `INDUSTRY_CONSENSUS_EVENT` candidate
 remains the only return engine that met the user's development targets.
 
-### Industry-Consensus Diffusion-Q1 Event V1
+### Industry-Consensus Diffusion-Q1 Event V1 — legacy pre-erratum checkpoint
+
+This section preserves the state that existed before the V1.1 causal numeric
+parity audit. Its 33.7037% implementation result is superseded by the corrected
+development and temporal evidence above and is not the current primary claim.
 
 `ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` meets the user's two numerical
 development targets with one simple event rule. Starting from the unchanged

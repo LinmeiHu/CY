@@ -12,18 +12,18 @@ Only actual strategy families belong here. Search-space concepts remain in
 | CORE MARKET MECHANISM | A weekly Industry Diffusion signal is more actionable when its two highest-intensity Low-MAX stock candidates come from the same PIT industry, indicating concentrated industry demand rather than diffuse ranking noise |
 | MARKET HABITAT HYPOTHESIS | No market-timing habitat is accepted. Reused Absolute Market State was chronologically unstable for this candidate |
 | SETUP | Unchanged frozen weekly Industry Diffusion plus prior-20-session Low-MAX Champion Top-10 |
-| CONFIRMATION | Exact first two names by higher causal diffusion score, lower Low-MAX, symbol, and both names share the same signal-date PIT industry |
+| CONFIRMATION | Exact first two names by higher causal diffusion score, lower Low-MAX, symbol, and both names share the same signal-date PIT industry. V1.1 treats machine-noise `|r20| <= 1e-12` as neutral before the positive-r20 diffusion count |
 | TRIGGER | Completed weekly signal close; earliest entry at next legal open |
 | VETO | No market veto. Do not trade when the exact Q1 pair spans two PIT industries; blocked names are not backfilled |
 | EXIT LOGIC | Unchanged h20 due open plus legal-fill and QD-010 pre-effective handling; no stop or early exit |
 | CAPITAL / WEIGHTING | Lesser of available cash and one-half pre-entry NAV per event, equal across executable pair, no leverage |
 | TIME SCALE | Weekly episodic entry; 20-market-session lifecycle |
 | DATA REQUIREMENTS | Registered PIT daily universe, historical PIT industry, causal diffusion score, exact Low-MAX, and accepted A-share execution/corporate-action facts |
-| PIT STATUS | PIT-B development replay; post-2023 and CY-011 remain quarantined |
-| CURRENT EVIDENCE | Consumed 2018--2023: 33.7037% annualized, 363.7225% total, -18.0468% drawdown, 1.4222 Sharpe; 99 event dates and 180 trades. Mean industry HHI 0.773 and p10 capacity CNY 9.46m are material risks |
+| PIT STATUS | PIT-B/current-history contract. User-authorized 2024--2025 temporal outcomes are now consumed; 2026 and CY-011 remain quarantined |
+| CURRENT EVIDENCE | Causal-numeric-corrected 2018--2023 development: 28.0507% annualized, 269.1179% total, -18.0468% drawdown, 1.2289 Sharpe; 99 event dates/182 trades. Authorized 2024--2025: 4.2585% annualized, 8.3570% total, -18.7414% drawdown, 0.3084 Sharpe; 2024 +10.62%, 2025 -2.05%; 50 dates/84 trades |
 | FAILED VARIANTS | Predeclared Top-5 intensity, earlier Q1 lifecycle exits, and Absolute Market State veto; two-industry pairs are not labeled adverse because their full mean remained positive |
-| VALIDATION STATUS | `DEVELOPMENT_TARGET_ACHIEVED_NOT_INDEPENDENTLY_VALIDATED`; data-generated post-hoc candidate, exact rule frozen |
-| TRANSFER STATUS | Unknown; untouched temporal confirmation required before live use |
+| VALIDATION STATUS | `TEMPORAL_TRANSFER_INCONCLUSIVE`; positive combined return but frozen Sharpe, positive-both-years, and entry-ratio confirmation gates fail |
+| TRANSFER STATUS | Weak positive transfer, not independent confirmation; no live use and no rescue on consumed 2024--2025 |
 
 ## STRAT-CHINEXT-V1
 
@@ -67,5 +67,5 @@ Only actual strategy families belong here. Search-space concepts remain in
 | VALIDATION STATUS | `EXPLORATORY` within this library |
 | TRANSFER STATUS | Unknown |
 
-The Industry-Consensus Q1 event crosses the development-candidate threshold but
-not the independent-confirmation threshold.
+The Industry-Consensus Q1 event crosses the corrected development-candidate
+threshold but not the independent-confirmation threshold.

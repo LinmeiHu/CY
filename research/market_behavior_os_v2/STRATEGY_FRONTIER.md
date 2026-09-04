@@ -2,22 +2,30 @@
 
 ## Current checkpoint override
 
-`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` is now the leading development
-candidate: 33.7037% annualized, -18.0468% maximum drawdown, and 1.4222 Sharpe on
-consumed 2018--2023 history. It is a post-hoc data-generated industry-consensus
-event, not independent confirmation. Freeze its exact two-name same-PIT-industry
-selection, one-half-NAV event capital, next-open entry, and h20 exit. No further
-development tuning is authorized.
+`ASHARE-INDUSTRY-CONSENSUS-Q1-EVENT-V1` no longer has unknown temporal transfer.
+The authorized 2024--2025 V1.1 validation is weak positive and inconclusive:
+4.2585% annualized, -18.7414% maximum drawdown, and 0.3084 Sharpe; 2024 is
++10.62% and 2025 is -2.05%. It fails the frozen Sharpe, positive-both-years, and
+entry-ratio confirmation gates. Do not describe it as independently confirmed.
 
-The bounded Strategy-B continuation now closes with
+The initial validation also found a causal implementation defect before replay:
+future partitions changed the floating-point sign of mathematically zero `r20`
+sums. V1.1 froze machine-noise `|r20| <= 1e-12` as neutral before validation
+portfolio outcomes were aggregated. Corrected 2018--2023 development becomes
+28.0507% annualized, -18.0468% maximum drawdown, and 1.2289 Sharpe. Preserve the
+simple economic rule and numerical erratum, but authorize no further tuning on
+the now-consumed 2018--2025 record.
+
+The bounded Strategy-B continuation remains closed with
 `GENUINE_SCIENTIFIC_STOP_NO_PROMOTED_STRATEGY_B`. Two market-state ideas passed
 generation and failed frozen validation; four direct strategy translations
 failed generation; exact Q1 recurrence failed its predeclared severe-loss gate;
-and suspension reopening failed outcome-blind portability. The highest-value
-candidate-specific frontier is untouched temporal confirmation when separately
-authorized. New discovery requires a genuinely new PIT information source or a
-materially different resource-safe Cross-Sectional Dispersion contract; it is
-not another transformation of consumed 2018--2023 Price--Volume history.
+and suspension reopening failed outcome-blind portability. The temporal
+confirmation budget has now been spent. The highest-value frontier is a
+structurally independent Alpha engine using a genuinely new PIT information
+source or a materially different resource-safe Cross-Sectional Dispersion
+contract; it is not another transformation or rescue on consumed 2018--2025
+Price--Volume history.
 
 This frontier is separate from market hypotheses. Scores are qualitative until
 the independent Market State Engine and opportunity definitions exist.

@@ -2,6 +2,55 @@
 
 Updated 2026-09-04.
 
+## Latest checkpoint: 2024--2025 temporal transfer is weak and not confirmed
+
+Resume after the commit containing
+`ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1`; its clean
+starting checkpoint is `beab86e0e0da8a4ce0f79f801a4c8a88f3e9b82a`. The user
+explicitly authorized reading 2024 and 2025 outcomes. Those years are now
+consumed. No 2026 market outcome or CY-011 was read.
+
+The initial contract (`ea00dd6b...d35`) failed closed at its mandatory 2023
+replication gate, before strategy replay. Appending 2024--2025 rows changed the
+floating-point sign of mathematically zero rolling `r20` sums and therefore
+changed the `r20 > 0` Industry Diffusion count. A pure 2018--2023 rerun matched
+the accepted panel byte-for-byte, isolating a future-batch-dependent numerical
+artifact. Do not bypass or forget this failure.
+
+Before any 2024--2025 portfolio outcome was aggregated, the V1.1 erratum
+(`b77b2a5c...42247`) froze `r20 > 1e-12` as positive and treated machine-noise
+ties as neutral. No economic rule changed. The corrected 2018--2023 replay is
+28.0507% annualized, 269.1179% total, -18.0468% maximum drawdown, and 1.2289
+Sharpe. It changes 15 of 534 historical Q1 rows on 13 decision dates. The old
+33.7037% annualized result is retained only as legacy floating-implementation
+history, not the current primary claim.
+
+Authorized 2024--2025 validation earns 8.3570% total, 4.2585% annualized,
+-18.7414% maximum drawdown, 0.3084 Sharpe, and 0.2272 Calmar. 2024 returns
++10.6227%; 2025 returns -2.0481%. Fifty event dates produce 100 planned entries
+and 84 completed trades; severe trades are 7.1429%, no market entry is
+unexecutable, and all positions are closed by 2025-12-31. Sixteen entries are
+capital-skipped under the frozen cash-only overlapping-event ledger.
+
+Final classification is `TEMPORAL_TRANSFER_INCONCLUSIVE`, not confirmation.
+The strategy passes positive combined return, drawdown, severe-loss, event-count,
+and terminal-liquidation checks. It fails the 0.50 Sharpe gate, the requirement
+that both years be positive, and the 90% entry-ratio gate; at 84%, it also misses
+the frozen 85% mixed-transfer gate. Do not change those gates after seeing the
+result.
+
+The simple economic rule remains: on every fifth market session, form the
+Industry Diffusion plus Weekly Low-MAX Top-10; rank by higher causal diffusion,
+lower prior-20 MAX, then symbol; trade the first two only when both share the
+same PIT industry; allocate at most one-half pre-entry NAV; enter next legal
+open; exit at h20; preserve costs and all execution constraints. The only
+implementation correction is the neutral machine-noise `r20` tie.
+
+Do not tune or rescue this strategy on 2024--2025. The next high-value frontier
+is a genuinely independent Alpha engine or a materially different resource-safe
+Dispersion design, not a regime filter, exit, sizing change, threshold, or Top-N
+search on the now-consumed validation interval.
+
 ## Latest checkpoint: bounded Strategy-B continuation reaches a genuine stop
 
 Resume after the commit containing

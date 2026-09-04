@@ -1,0 +1,41 @@
+{
+  "manifest_id": "INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-DATA-V1_1",
+  "created_at": "2026-09-04",
+  "purpose": "Compact repository-side identity and lineage for the large external feature materializations used by the authorized 2024-2025 temporal validation.",
+  "artifacts": [
+    {
+      "role": "causal_numeric_erratum_feature_panel",
+      "path": "/Volumes/quant/CY_quant_research/industry_consensus_q1_temporal_validation_2024_2025_v1_1/daily_feature_panel_2023_2025.parquet",
+      "sha256": "fc2b62d79fa0e1c8c40462520d7e12ba676a6bf7d192a881eca0a4d22497c502",
+      "bytes": 207521409,
+      "rows": 2451181,
+      "coverage": "2023-01-03 through 2025-12-31",
+      "schema_version": "Cycle-015 causal daily feature schema, 23 columns, with r20 > 1e-12 positive-membership numeric erratum"
+    },
+    {
+      "role": "preoutcome_original_runner_reproduction_diagnostic",
+      "path": "/Volumes/quant/CY_quant_research/industry_consensus_q1_temporal_validation_2024_2025_v1/diagnostic_cycle015_2018_2023.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012",
+      "bytes": 252545994,
+      "rows": 3009296,
+      "coverage": "2018-07-03 through 2023-12-29",
+      "schema_version": "Exact original Cycle-015 daily feature output; byte-identical to the accepted pre-2024 panel"
+    }
+  ],
+  "source": {
+    "asset_id": "CY-006",
+    "pit_grade": "B",
+    "source_manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "source_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions_read": "2018 through 2025 only",
+    "market_2026_partition_read": false,
+    "cy011_read": false
+  },
+  "processing_lineage": {
+    "runner": "research/market_behavior_os_v2/scripts/run_ashare_industry_consensus_q1_temporal_validation_2024_2025_v1.py",
+    "frozen_erratum_spec": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1_spec.json",
+    "frozen_erratum_spec_sha256": "b77b2a5c9b608b95f18637d96a1690cfd285b8c1ed11d4403b4e37b36ab42247",
+    "compact_result": "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-CONSENSUS-Q1-TEMPORAL-VALIDATION-2024-2025-V1_1_result.json",
+    "pit_assumption": "Registered CY-006 PIT-B current-history semantics with hard_valid, availability, identity, corporate-action, market-rule, suspension, and price-limit checks; no PIT-A claim."
+  }
+}
