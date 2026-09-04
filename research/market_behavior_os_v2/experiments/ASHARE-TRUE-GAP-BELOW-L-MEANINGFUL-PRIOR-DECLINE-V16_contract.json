@@ -1,0 +1,51 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A strict low-inventory true gap formed after at least a 30% decline from the highest coordinate high in the prior 120 completed sessions is more likely to be part of a meaningful liquidation episode than an ordinary sideways-market gap. The unchanged first daily reversal below L may then retain more absolute rebound economics.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-MEANINGFUL-PRIOR-DECLINE-V16",
+  "governance": {
+    "diagnostic_outcomes_opened_only_after_development_pass": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "one_rule_no_parameter_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "single_fixed_gate": {
+    "condition": "pre_gap_drawdown_from_120d_peak >= 0.30",
+    "definition": "1 - gap-day coordinate low / maximum coordinate high over the exact 120 completed sessions preceding true-gap formation",
+    "known_time": "gap formation close; strictly before V13 reversal signal",
+    "missing_policy": "fail closed",
+    "threshold_search": "NONE"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "source_trigger": "PRIOR_HIGH_REVERSAL",
+  "success_contract": {
+    "accepted_trades_per_year_min": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "frequency_has_no_upper_cap": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "unchanged": {
+    "T1_limits_suspensions_and_QD010": true,
+    "entry": "next legal buyable 1-minute open",
+    "failure_stop": "NONE",
+    "maximum_depth_below_L_min": 0.1,
+    "no_L_touch_before_signal": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "target": "entry + 0.67*(L-entry), strictly below L",
+    "time_stop": "H20",
+    "trigger": "first completed daily close > previous completed daily high",
+    "true_gap_and_strict_vap_corridor": true
+  }
+}
