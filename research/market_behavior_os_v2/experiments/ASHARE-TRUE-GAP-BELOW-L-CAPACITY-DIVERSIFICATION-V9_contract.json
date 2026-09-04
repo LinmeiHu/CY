@@ -1,0 +1,49 @@
+{
+  "allocation": "each accepted position receives 1/K of current board-sleeve NAV",
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "The corrected V4R1 event population has positive average economics, but the deterministic K20 sleeve-capacity ordering may preferentially admit a weaker clustered subset. Broader diversification can test this without changing any signal or trade semantic.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-CAPACITY-DIVERSIFICATION-V9",
+  "fixed_k_family_per_board_sleeve": [
+    20,
+    40,
+    80
+  ],
+  "governance": {
+    "frequency_has_no_upper_cap": true,
+    "no_cross_sleeve_transfer": true,
+    "no_leverage": true,
+    "one_active_position_per_symbol": true,
+    "post_2023_scope": "trade completion only; no new signal or selection data",
+    "unused_cash_stays_cash": true
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "portfolio_accepted_trades_per_year_min": 50.0,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "portfolio_total_return_positive": true,
+      "positive_calendar_years_min": 4
+    },
+    "order": "smallest K that passes every eligibility condition"
+  },
+  "source": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "unchanged_v4r1": {
+    "T1_limits_suspensions_and_corporate_actions": true,
+    "collision_rank": "entry time, higher realized target headroom, lower inside density, symbol, gap_id",
+    "costs": 0.004,
+    "entry": true,
+    "failure_stop": "NONE",
+    "features": true,
+    "signal_population": true,
+    "target": "entry + 0.80*(L-entry)",
+    "time_stop": "H20"
+  }
+}

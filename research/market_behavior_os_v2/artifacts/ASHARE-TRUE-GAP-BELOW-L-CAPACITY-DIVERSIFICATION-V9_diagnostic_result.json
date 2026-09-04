@@ -1,0 +1,70 @@
+{
+  "diagnostic": {
+    "accepted_trade_yearly": {
+      "2022": {
+        "mean_net": 0.0317350075262711,
+        "median_net": 0.04995838483809156,
+        "trades": 81
+      },
+      "2023": {
+        "mean_net": -0.0037185821172154554,
+        "median_net": 0.000405526320822136,
+        "trades": 48
+      }
+    },
+    "annual_returns": {
+      "2022": 0.015562393493495641,
+      "2023": 0.0025916052209191687,
+      "2024": -0.003329991633486684
+    },
+    "capacity_skips": 0,
+    "duplicate_symbol_skips": 0,
+    "hashes": {
+      "portfolio_accepted": "3eaec7577c265aadcf41c60f335bfaea6212c90d0c167efbfe20f8cf23ee7b0c",
+      "portfolio_nav": "6447a85626675cc111eb658fff8a4cba04718178b6e06aaf4d7ce550aa73c850"
+    },
+    "k_per_board_sleeve": 80,
+    "max_k_violation_count": 0,
+    "maximum_exit_date_used": "2024-01-30",
+    "negative_cash_or_leverage_count": 0,
+    "portfolio_accepted_trades": 129,
+    "portfolio_accepted_trades_per_year": 64.5,
+    "portfolio_average_utilization": 0.024333740051384226,
+    "portfolio_cagr": 0.007125049607658029,
+    "portfolio_max_drawdown": -0.013543650418757047,
+    "portfolio_mean_net": 0.01854297417055517,
+    "portfolio_median_net": 0.03515488855876603,
+    "portfolio_severe10": 0.14728682170542637,
+    "portfolio_sharpe": 0.7529095672206233,
+    "portfolio_total_return": 0.01480375169349779,
+    "portfolio_win": 0.6201550387596899,
+    "positive_calendar_years": 2,
+    "post_2023_signal_count": 0,
+    "source_executable_trades": 129
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-CAPACITY-DIVERSIFICATION-V9",
+  "freeze_verification": {
+    "checks": {
+      "contract_sha256": "d752cb602c2b50c9b3bfba869ce524bbb209ff7f29ebdcb0b66442b480c0f906",
+      "development_result_sha256": "6afbb0ff50be2b7b111fb8e9cba5e2a4ac1ed528ecc36d336fa2bfe89605df94",
+      "runner_sha256": "cfd8614b59135951f70028d212a8ae3f16e9231402b4ec59dc9928b0aa7b5934",
+      "spec_sha256": "b5ffea34521c13fbe3537ec1907be551de495986d27d0a89528915696afbd80f",
+      "stage_a_freeze_sha256": "6e1a8f5c2c9d60ce19b4ea8a8ff8682f1565046b1e373faa31ddf8b499b4d1e9"
+    },
+    "verified": true
+  },
+  "goal_checks": {
+    "accepted_mean_net_ge_3pct": false,
+    "accepted_median_positive": true,
+    "accepted_trades_per_year_ge_50": true,
+    "both_year_portfolio_returns_positive": true,
+    "both_year_trade_means_positive": false,
+    "post_2023_signal_count_zero": true,
+    "severe10_le_15pct": true
+  },
+  "post_2023_signal_data_opened": "NO",
+  "repository_2024_plus_data_opened": "AUTHORIZED_PRE_2024_TRADE_COMPLETION_ONLY",
+  "scientific_status": "POST_OBSERVATION_ROBUSTNESS_DIAGNOSTIC_ONLY",
+  "selected_k": 80,
+  "verdict": "CAPACITY_DIVERSIFICATION_POST_OBSERVATION_FAILED"
+}
