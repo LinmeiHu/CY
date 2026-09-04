@@ -1,0 +1,69 @@
+{
+  "bounded_trigger_family": {
+    "PRIOR_HIGH_REVERSAL": "current completed daily close > previous completed daily high",
+    "THREE_DAY_HIGH_BREAK": "current completed daily close > maximum high of prior three completed sessions",
+    "TWO_HIGHER_CLOSES": "two consecutive completed daily close increases"
+  },
+  "common_state": {
+    "days_since_20d_low": [
+      1,
+      10
+    ],
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_gap_width_pct": 0.01,
+    "minimum_recovery_from_20d_low": 0.03,
+    "no_L_touch_before_signal": true,
+    "pre_gap_corridor_density_relative_local_max": 1.0,
+    "pre_gap_corridor_touch_sessions_max": 20,
+    "pre_gap_history": "exact 120 sessions x 241 minutes",
+    "pre_gap_inside_density_relative_local_max": 1.0,
+    "pre_gap_inside_touch_sessions_max": 12,
+    "pre_gap_return_20d_max": 0.0,
+    "signal_depth_below_L_min": 0.05,
+    "true_gap": "High_t < Low_t_minus_1"
+  },
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "development_selector": {
+    "eligibility": {
+      "accepted_trades_per_year_min": 50.0,
+      "attack_date_equal_mean_positive": true,
+      "frequency_has_no_upper_cap": true,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_portfolio_years_min": 4,
+      "positive_trade_mean_years_min": 4
+    },
+    "order": [
+      "higher portfolio mean net",
+      "higher portfolio median net",
+      "lower severe_loss10",
+      "fixed trigger order"
+    ]
+  },
+  "economic_hypothesis": "The first daily MA5 reclaim can enter after much of a below-gap rebound has already occurred. A first causal price-action reversal after a 10% washout may capture more of the path while the same clean-corridor and pre-L first-touch protections remain binding.",
+  "entry": "first legal buyable 1-minute open strictly after completed daily trigger",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "failure_stop": "NONE",
+  "first_trigger_only_per_gap": true,
+  "governance": {
+    "T1_limits_suspensions_and_QD010": true,
+    "diagnostic_opened_only_for_selected_trigger": true,
+    "no_leverage_or_cross_sleeve_transfer": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_data_scope": "entry/management/completion of pre-2024 signals only"
+  },
+  "minimum_net_headroom_to_L": 0.05,
+  "portfolio": "Main/ChiNext 50/50; K80 per sleeve; 1/80 sleeve NAV per position",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "round_trip_cost": 0.004,
+  "source_population": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "target": "entry + 0.67*(L-entry), strictly below L",
+  "time_stop": "H20 completed sessions then next legal sellable 1-minute open"
+}
