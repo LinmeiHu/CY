@@ -1,0 +1,69 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "development_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 5
+  },
+  "diagnostic_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "both_2022_and_2023_portfolio_returns_positive": true,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "year_2022_trade_mean_positive": true,
+    "year_2023_mean_net_min": 0.01,
+    "year_2023_median_net_min": 0.0,
+    "year_2023_win_rate_min": 0.5
+  },
+  "economic_hypothesis": "A close above only the previous day's high can be a one-day weak rebound. Requiring the first completed close above the maximum high of the prior three completed sessions demonstrates multi-session demand acceptance. The native A80 target retains 20% of the entry-to-L path as a supply buffer while seeking enough absolute return to exceed the 3% trade objective.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-THREE-DAY-CONFIRMED-A80-V23",
+  "fixed_translation": {
+    "failure_stop": "NONE",
+    "target": "entry + 0.80*(L-entry), strictly below L",
+    "target_origin": "native A80 target in the causal replay infrastructure",
+    "time_stop": "H20"
+  },
+  "fixed_trigger": {
+    "condition": "current completed daily close > maximum high of prior three completed sessions",
+    "entry": "first legal buyable 1-minute open strictly after completed trigger",
+    "first_trigger_only_per_gap": true,
+    "name": "THREE_DAY_HIGH_BREAK"
+  },
+  "governance": {
+    "diagnostic_opened_only_after_development_pass": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only",
+    "single_trigger_single_target_no_grid": true
+  },
+  "not_carried_forward": [
+    "D30",
+    "M20",
+    "AGE30",
+    "H6",
+    "dry3",
+    "V21 progress-protection exit"
+  ],
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "unchanged_v13": {
+    "T1_limits_suspensions_and_QD010": true,
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_net_headroom_to_L": 0.05,
+    "no_L_touch_before_signal": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "strict_true_gap_and_clean_vap_corridor": true
+  }
+}
