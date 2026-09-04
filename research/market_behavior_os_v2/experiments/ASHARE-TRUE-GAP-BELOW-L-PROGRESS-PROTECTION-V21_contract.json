@@ -1,0 +1,56 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "development_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "frequency_has_no_upper_cap": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "diagnostic_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "both_2022_and_2023_portfolio_returns_positive": true,
+    "both_2022_and_2023_trade_means_positive": true,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "year_2023_mean_net_min": 0.01,
+    "year_2023_median_net_min": 0.0,
+    "year_2023_win_rate_min": 0.5
+  },
+  "economic_hypothesis": "The V20 signal has adequate reward headroom, but some attacks demonstrate real repair progress and then lose the entire move. Once half of the fixed A67 path has been reached, a completed daily close back at or below entry invalidates persistence of the rebound and should exit before H20.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-PROGRESS-PROTECTION-V21",
+  "governance": {
+    "diagnostic_opened_only_after_development_pass": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "one_exit_no_parameter_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "single_fixed_exit": {
+    "arm": "cumulative post-entry coordinate high >= entry + 0.50*(A67 target-entry)",
+    "entry_day_policy": "entry-day high may arm only for a 09:30 opening fill; later fills begin daily-high accumulation on the next completed session",
+    "execution": "next legal sellable 1-minute open strictly after completed failure close",
+    "failure": "first completed valid daily close <= entry coordinate after arm",
+    "parameter_search": "NONE",
+    "unavailable_state": "fail closed to no early exit; retain original A67/H20 path"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-ECONOMIC-HEADROOM-V20",
+  "unchanged": {
+    "T1_limits_suspensions_gap_through_and_QD010": true,
+    "V20_signal_population_and_entry": true,
+    "fallback_time_stop": "H20",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "target": "A67 below L"
+  }
+}
