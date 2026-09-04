@@ -1,0 +1,53 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "development_gate": {
+    "attack_date_equal_mean_positive": true,
+    "frequency_has_no_upper_cap": true,
+    "portfolio_accepted_trades_per_year_min": 50.0,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "development_inputs_disclosed": {
+    "a67_2022_2023": "not opened before this contract freeze",
+    "a67_k20_development": "known from V11",
+    "a67_k80_development": "not computed before this contract freeze",
+    "a80_k80_development": "known from V9"
+  },
+  "economic_hypothesis": "Two independently observed Development mechanisms may be complementary: A67 realizes a partial repair before renewed overhead supply, while K80 reduces the adverse collision-selection effect of K20. The exact A67+K80 combination is tested once without another target or capacity search.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-A67-K80-COMBINATION-V12",
+  "governance": {
+    "no_alternative_target_or_k": true,
+    "no_cross_sleeve_transfer": true,
+    "no_leverage": true,
+    "no_post_2023_signals_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only",
+    "unused_capital_stays_cash": true
+  },
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "single_fixed_translation": {
+    "allocation": "1/80 of current board-sleeve NAV per accepted position",
+    "k_per_board_sleeve": 80,
+    "target": "entry + 0.67*(L-entry), strictly below L"
+  },
+  "source_signal": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "unchanged_v4r1": {
+    "T1_limits_suspensions_and_QD010": true,
+    "board_sleeves": "Main 50% / ChiNext 50%",
+    "collision_rank": true,
+    "entry": true,
+    "failure_stop": "NONE",
+    "minimum_net_headroom_to_L": 0.05,
+    "round_trip_cost": 0.004,
+    "signal_population_and_features": true,
+    "time_stop": "H20"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-A67-K80-COMBINATION-V12",
+  "stage": "PRE_RESULT_IMPLEMENTATION_AMENDMENT",
+  "failure": "FileNotFoundError while hashing /development/a67_k80/outcomes.parquet after the unchanged replay completed",
+  "root_cause": "The reused V11 target builder writes target outcomes under /development/a67/outcomes.parquet; the V12 portfolio is independently written under /development/a67_k80/.",
+  "repair_scope": "correct outcomes.parquet hash path from a67_k80 to a67",
+  "original_runner_sha256": "28b57116ac1b84a795de75c18ca13d35625a1bafdcde7ade0a18ab3750624f7b",
+  "amended_runner_sha256": "decb8c3081e0441a5a6b435eaef52818910f23827867e0879c32ed13534d3bc8",
+  "development_combination_metrics_observed": false,
+  "development_result_written": false,
+  "diagnostic_outcomes_opened": false,
+  "research_semantics_changed": false,
+  "target_changed": false,
+  "capacity_changed": false,
+  "signal_changed": false,
+  "entry_or_exit_changed": false,
+  "frequency_gate_changed": false
+}
