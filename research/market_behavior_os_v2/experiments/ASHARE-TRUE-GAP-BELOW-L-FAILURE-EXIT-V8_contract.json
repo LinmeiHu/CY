@@ -1,0 +1,48 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "The below-gap reflex repair has positive gross direction but H20 retains failed rebounds too long. A completed daily structural break or persistent lack of progress can invalidate the repair thesis without reducing signal count.",
+  "entry_changed": false,
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-FAILURE-EXIT-V8",
+  "failure_exit_family": {
+    "X1_SWING_LOW_BREAK": "first completed valid daily close strictly below the signal-known swing_low",
+    "X2_NO_PROGRESS_D3": "at entry_cal_idx+3, max completed daily high progress toward L is below 25% and completed close is below entry coordinate",
+    "X3_NO_PROGRESS_D5": "same no-progress rule at entry_cal_idx+5",
+    "X4_SWING_LOW_OR_D3": "earliest X1 or X2 trigger",
+    "execution": "next authoritative legal sellable 1-minute open strictly after the completed daily trigger and strictly before inherited exit",
+    "missing_or_lineage_break_policy": "FAIL_CLOSED_NO_NEW_FAILURE_TRIGGER"
+  },
+  "post_2023_scope": "only execution/outcome management of signals formed no later than 2023-12-31; no post-2023 signal, feature, threshold, or selection",
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "selector": {
+    "eligibility": {
+      "executable_entries_per_year_min": 50.0,
+      "portfolio_mean_net_min": 0.03,
+      "portfolio_median_net_positive": true,
+      "portfolio_severe10_max": 0.15,
+      "positive_calendar_years_min": 4
+    },
+    "order": [
+      "higher portfolio mean net return",
+      "higher portfolio median net return",
+      "lower severe_loss10",
+      "fewer failure components"
+    ]
+  },
+  "signal_admission_changed": false,
+  "source": "ASHARE-TRUE-GAP-BELOW-L-EARLY-REPAIR-V4R1-CAUSAL-REPLAY",
+  "unchanged_v4r1": {
+    "T1_limits_suspensions_and_corporate_actions": true,
+    "entry": "first buyable 1-minute open strictly after daily signal",
+    "portfolio": "50/50 Main/ChiNext; K20 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_population_and_features": true,
+    "target": "entry + 0.80*(L-entry)",
+    "terminal_time_stop": "H20"
+  }
+}
