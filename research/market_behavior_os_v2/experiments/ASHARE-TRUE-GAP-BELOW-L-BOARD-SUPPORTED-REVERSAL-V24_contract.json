@@ -1,0 +1,75 @@
+{
+  "development": [
+    "2017-01-01",
+    "2021-12-31"
+  ],
+  "development_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "attack_date_equal_mean_positive": true,
+    "portfolio_mean_net_min": 0.03,
+    "portfolio_median_net_positive": true,
+    "portfolio_severe10_max": 0.15,
+    "positive_portfolio_years_min": 4,
+    "positive_trade_mean_years_min": 4
+  },
+  "diagnostic_success_contract": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "both_2022_and_2023_portfolio_returns_positive": true,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "year_2022_trade_mean_positive": true,
+    "year_2023_mean_net_min": 0.01,
+    "year_2023_median_net_min": 0.0,
+    "year_2023_win_rate_min": 0.5
+  },
+  "economic_hypothesis": "A first stock-level reversal below a clean true gap has a greater chance of propagating when its board has stopped falling by the same completed close. A nonnegative same-day equal-weight board return is a causal zero boundary for common repair support, preserving early entry and reward space.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-BOARD-SUPPORTED-REVERSAL-V24",
+  "governance": {
+    "development_informed_single_natural_gate": true,
+    "diagnostic_opened_only_after_development_pass": true,
+    "no_post_2023_signals_features_or_selection": true,
+    "post_2023_scope": "management/completion of pre-2024 trades only"
+  },
+  "not_carried_forward": [
+    "D30",
+    "M20",
+    "AGE30",
+    "H6",
+    "dry3",
+    "three-day confirmation",
+    "V21 progress-protection exit"
+  ],
+  "post_observation_diagnostic": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "single_fixed_gate": {
+    "board_groups": [
+      "MAIN",
+      "CHINEXT"
+    ],
+    "condition": "same completed signal-day equal-weight board return >= 0",
+    "context_source": "/Volumes/quant/CY_quant_research/ashare_true_gap_v6_full_signal_strategy_research_v1/board_daily_context.parquet",
+    "known_time": "signal-day close, before next-session entry",
+    "missing_policy": "fail closed",
+    "threshold_semantics": "natural zero; no numeric search"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "source_trigger": "PRIOR_HIGH_REVERSAL",
+  "unchanged_v13": {
+    "T1_limits_suspensions_and_QD010": true,
+    "entry": "first legal buyable 1-minute open after signal",
+    "failure_stop": "NONE",
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_net_headroom_to_L": 0.05,
+    "no_L_touch_before_signal": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "strict_true_gap_and_clean_vap_corridor": true,
+    "target": "A67 below L",
+    "time_stop": "H20",
+    "trigger": "first completed daily close > previous completed daily high"
+  }
+}
