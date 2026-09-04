@@ -1,0 +1,51 @@
+{
+  "economic_hypothesis": "A recent downward true gap may create a tradable below-gap snapback only when it occurs after an already-mature decline rather than an acute blow-off, price then washes out below L, and demand recovers a meaningful part of that fresh washout before the first prior-high reversal entry.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-FRESH-CAPITULATION-SNAPBACK-V27",
+  "goal_contract": {
+    "combined_2017_2023_accepted_trades_per_year_strictly_greater_than": 50.0,
+    "combined_mean_net_min": 0.03,
+    "combined_median_net_positive": true,
+    "combined_severe10_max": 0.15,
+    "every_signal_year_portfolio_return_positive": true,
+    "every_signal_year_trade_mean_positive": true,
+    "return_excluding_best_five_days_positive": true
+  },
+  "governance": {
+    "2024_2025_outcomes_not_used_for_rule_selection": true,
+    "2026_new_signal_use": false,
+    "no_claim_of_external_validation": true,
+    "no_target_horizon_entry_cost_or_execution_change": true,
+    "rule_discovered_after_2017_2023_outcomes_were_observed": true
+  },
+  "observed_period": [
+    "2017-01-01",
+    "2023-12-31"
+  ],
+  "scientific_status": "RETROSPECTIVE_FULL_OBSERVED_CANDIDATE_NOT_EXTERNAL_VALIDATION",
+  "simple_admission": {
+    "condition_count": 3,
+    "forceful_snapback": "max_depth - current_depth >= 0.05 of frozen L",
+    "fresh_shock": "gap_age <= 14 completed sessions at signal",
+    "known_time": "all three conditions known by completed signal-day close",
+    "mature_decline": "pre_peak_to_gap_sessions >= 20",
+    "missing_policy": "fail closed"
+  },
+  "source_strategy": "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+  "source_trigger": "PRIOR_HIGH_REVERSAL",
+  "unchanged_v13": {
+    "T1_limits_suspensions_and_QD010": true,
+    "entry": "first legal buyable 1-minute open after signal",
+    "failure_stop": "NONE",
+    "maximum_depth_below_L_min": 0.1,
+    "minimum_net_headroom_to_L": 0.05,
+    "no_L_touch_before_signal": true,
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "signal_depth_below_L_min": 0.05,
+    "strict_120_session_241_minute_vap": true,
+    "target": "A67 below L",
+    "time_stop": "H20",
+    "trigger": "first completed daily close > previous completed daily high",
+    "true_gap": "High_t < Low_t_minus_1"
+  }
+}
