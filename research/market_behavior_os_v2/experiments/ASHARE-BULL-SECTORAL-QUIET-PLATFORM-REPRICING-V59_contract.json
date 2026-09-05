@@ -1,0 +1,57 @@
+{
+  "admission": {
+    "base_signal": "Exact frozen ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1 candidate identity; no chart-selected rows",
+    "industry_local_bull": [
+      "PIT industry member count >= 5",
+      "industry median return_20d > 0",
+      "industry median return_60d > -5%",
+      "industry positive-return_20d share >= 50%",
+      "industry cross-sectional return_20d percentile >= 50%",
+      "same-session industry median return_1d > 0",
+      "same-session industry positive-return_1d share >= 50%"
+    ],
+    "market_crash_veto": [
+      "market median return_20d > -8%",
+      "market positive-return_20d share > 30%"
+    ],
+    "regime_lanes": {
+      "BROAD_AND_SECTOR_BULL": "frozen PIT broad-market regime is BULL and industry-local-bull conditions pass",
+      "SECTOR_BULL_ONLY": "frozen PIT broad-market regime is not BULL, market-crash veto passes, and industry-local-bull conditions pass"
+    }
+  },
+  "economic_hypothesis": "A low-volatility, low-turnover forty-session inventory platform that gaps upward on expanded turnover is a repricing candidate. A broad bull market is not required when capital is causally concentrated in a healthy and improving PIT industry, provided the whole market is not in a crash state.",
+  "entry": "First legal next daily open within three market sessions after the completed signal close",
+  "evidence_governance": {
+    "candidate_contract_frozen_before_v59_outcomes_opened": true,
+    "development_period": "2014-01-01 through 2023-12-31",
+    "post_2023_data": "Only rows needed to resolve positions signaled no later than 2023-12-31",
+    "post_2023_signal_or_feature_rows": false,
+    "prior_outcome_exposure": "Related predecessor outcomes have been observed; this is iterative research, not pristine external validation"
+  },
+  "experiment": "ASHARE-BULL-SECTORAL-QUIET-PLATFORM-REPRICING-V59",
+  "failure_stop": "NONE",
+  "frozen_candidate_sha256": "1be1c277d0f4c07a69bed6912054fc6c8a14ff8046158395a44d19b387a35681",
+  "independence": "No collapse-gap, true-gap repair, V6/V7/V26 event identity, or downward-gap feature is used",
+  "portfolio": {
+    "capital": "50% Main Board sleeve and 50% ChiNext sleeve; no cross-sleeve transfer",
+    "collision_rank": "higher PIT industry positive-return_20d share, then higher stock-minus-industry return_20d, then higher frozen turnover expansion, then event_id",
+    "daily_new_position_cap_per_sleeve": 10,
+    "k_per_sleeve": 30,
+    "one_active_position_per_symbol": true,
+    "position_size": "1/30 of current sleeve NAV",
+    "unused_capital": "cash"
+  },
+  "required_gate": {
+    "capacity_accepted_completed_trades_2014_2023_gt": 500,
+    "each_2021_2023_mean_net_positive": true,
+    "mean_holding_sessions_lt": 15,
+    "mean_net_return_gt": 0.03,
+    "mean_return_excluding_best_five_signal_dates_positive": true,
+    "sector_bull_only_mean_net_positive": true,
+    "top_five_signal_date_positive_pnl_share_le": 0.25
+  },
+  "round_trip_cost": 0.004,
+  "signal_clock": "Completed daily close; every required feature latest_source_timestamp <= decision_at",
+  "target": "+15% in QD-010 coordinate, standing from the first T+1-sellable session",
+  "time_stop": "H15 completed-session state, exit at the next legal daily open"
+}

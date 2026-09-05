@@ -1,0 +1,42 @@
+{
+  "admission": {
+    "active_demand": "Completed daily return >=5%, close location >=80%, turnover >=1.5x the strictly prior-20-session median, and close not locked at the upper limit",
+    "confirmation": "The next two exchange-session closes are both >= the active-demand close; all confirmation data are known at the second close",
+    "first_event": "No identical active-demand event for the same stock in the strictly previous 20 completed sessions",
+    "industry_structural_bull": "PIT members >=10; median ret20>0; positive-ret20 share>=55%; median ret60>0; positive-ret60 share>=50%, at both mother and confirmation closes",
+    "market_structural_bull": "Market median ret20>0 and positive-ret20 share>50%; median ret60>0 and positive-ret60 share>50%, at both mother and confirmation closes",
+    "participation_cluster": "At least 10 qualifying first active-demand mother events on the completed mother session",
+    "relative_position": "On the strictly previous completed session, stock industry-ret20 percentile <=50%"
+  },
+  "economic_hypothesis": "In a sustained broad and industry bull state, simultaneous first active-demand bars reveal capital diffusion. A previously non-leading constituent whose higher price is accepted for two completed sessions has undergone an observable demand-led inventory transfer rather than a one-day rebound.",
+  "entry": "First legal daily open within three market sessions after the completed confirmation close",
+  "evidence_governance": {
+    "candidate_rules_fixed_before_v60_outcomes": true,
+    "development": "2014-2020",
+    "post_observation_stability": "2021-2023; related aggregate predecessor outcomes were already observed, so not pristine validation",
+    "post_2023_signal_or_feature_data": false,
+    "post_2023_execution_data": "Only to resolve positions signaled through 2023-12-31"
+  },
+  "experiment": "ASHARE-BULL-STRUCTURAL-PARTICIPATION-FIRST-DEMAND-V60",
+  "failure_stop": "NONE",
+  "independence": "No downward-gap, true-gap, collapse-repair, quiet-platform, or V24 event identity is used",
+  "portfolio": {
+    "daily_new_cap_per_sleeve": 10,
+    "k_per_sleeve": 30,
+    "main_chinext_weights": "50/50 with no cross-sleeve transfer",
+    "one_active_position_per_symbol": true,
+    "position_size": "1/30 of current sleeve NAV",
+    "unused_capital": "cash"
+  },
+  "required_gate": {
+    "capacity_accepted_completed_trades_2014_2023_gt": 500,
+    "each_2021_2023_mean_net_positive": true,
+    "mean_holding_sessions_lt": 15,
+    "mean_net_return_gt": 0.03,
+    "mean_return_excluding_best_five_signal_dates_positive": true,
+    "top_five_signal_date_positive_pnl_share_le": 0.25
+  },
+  "round_trip_cost": 0.004,
+  "target": "+15% QD-010 coordinate standing target",
+  "time_stop": "H15 completed-session state, then next legal daily open"
+}
