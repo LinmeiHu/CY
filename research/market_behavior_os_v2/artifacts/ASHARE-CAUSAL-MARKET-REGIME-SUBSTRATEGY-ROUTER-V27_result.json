@@ -1,0 +1,95 @@
+{
+  "experiment": "ASHARE-CAUSAL-MARKET-REGIME-SUBSTRATEGY-ROUTER-V27",
+  "verdict": "CAUSAL_MARKET_REGIME_SUBSTRATEGY_ROUTER_HISTORICAL_GOAL_MET",
+  "contract_sha256": "8fdaf43e7d0f44cb5607fb1a37d4a12fefbf43cb1ededf334bc5bf474f0a20a7",
+  "external_result_sha256": "d50ea992529a2a202d8d17ed7eb5dc0908291224a74948616aa84a39fcf65537",
+  "selected_slow_bear_gate": "DEEP_MARKET_REQUIRES_EITHER",
+  "routing": {
+    "BEAR_WORSENING": "V13R1 fast capitulation active demand T10/H20",
+    "BEAR_STABILIZING_MILD": "slow supply exhaustion T10/H20",
+    "BEAR_STABILIZING_DEEP": "slow supply exhaustion T10/H20; require exact_prior20_return <= -0.15 OR last5_downside_turnover <= 0.01",
+    "BULL_ACCELERATING": "V15 delayed supply contraction T10/H20",
+    "BULL_DECELERATING": "V19R2 quiet inventory continuation T15/H15",
+    "TRANSITION": "HOLD_CASH"
+  },
+  "overall_2014_2023": {
+    "trades": 1213,
+    "average_completed_trades_per_year": 121.3,
+    "mean_net": 0.04489132683862643,
+    "median_net": 0.09600000000000009,
+    "win_rate": 0.7345424567188789,
+    "severe10": 0.07007419620774938,
+    "target_hit": 0.5548227535037098,
+    "average_holding_sessions": 13.303380049464138,
+    "signal_date_equal_mean": 0.029050808083761325,
+    "mean_excluding_best5_signal_dates": 0.04422006593797002
+  },
+  "development_2014_2020": {
+    "trades": 809,
+    "mean_net": 0.04531334394017666,
+    "median_net": 0.09600000000000009,
+    "win_rate": 0.7416563658838071,
+    "severe10": 0.08034610630407911,
+    "average_holding_sessions": 13.400494437577256,
+    "signal_date_equal_mean": 0.026509500869963842
+  },
+  "post_observation_challenge_2021_2023": {
+    "trades": 404,
+    "average_completed_trades_per_year": 134.66666666666666,
+    "mean_net": 0.044046248038739966,
+    "median_net": 0.09600000000000009,
+    "win_rate": 0.7202970297029703,
+    "severe10": 0.04950495049504951,
+    "average_holding_sessions": 13.108910891089108,
+    "signal_date_equal_mean": 0.03454261604578132
+  },
+  "annual": [
+    {"year": 2014, "trades": 57, "mean_net": 0.022313812815532, "portfolio_return": 0.016628217230773},
+    {"year": 2015, "trades": 129, "mean_net": 0.077383926464410, "portfolio_return": 0.100822628888035},
+    {"year": 2016, "trades": 102, "mean_net": 0.013200095854712, "portfolio_return": 0.005236336462436},
+    {"year": 2017, "trades": 71, "mean_net": 0.019087929740430, "portfolio_return": -0.000619004861864},
+    {"year": 2018, "trades": 259, "mean_net": 0.060289646895485, "portfolio_return": 0.076408944916713},
+    {"year": 2019, "trades": 28, "mean_net": 0.038260232668884, "portfolio_return": 0.014149682469295},
+    {"year": 2020, "trades": 163, "mean_net": 0.036908733458885, "portfolio_return": 0.046708392907077},
+    {"year": 2021, "trades": 108, "mean_net": 0.044872869420810, "portfolio_return": 0.044382983037318},
+    {"year": 2022, "trades": 173, "mean_net": 0.050722179836089, "portfolio_return": 0.064088511150225},
+    {"year": 2023, "trades": 123, "mean_net": 0.033930708931382, "portfolio_return": 0.028794875671880}
+  ],
+  "portfolio_2014_2023": {
+    "total_return": 0.4687577471800486,
+    "cagr": 0.039238597133660846,
+    "max_drawdown": -0.03308424819651856,
+    "sharpe": 1.3862319922910078,
+    "average_utilization": 0.05767934628152095,
+    "max_active_positions": 108
+  },
+  "lanes": {
+    "BEAR_STABILIZING_SLOW_SUPPLY_EXHAUSTION": {"trades": 651, "mean_net": 0.04755329516433122},
+    "BEAR_WORSENING_FAST_CAPITULATION": {"trades": 153, "mean_net": 0.04655988432929695},
+    "BULL_ACCELERATING_DELAYED_SUPPLY_CONTRACTION": {"trades": 79, "mean_net": 0.0385153097318039},
+    "BULL_DECELERATING_QUIET_INVENTORY": {"trades": 330, "mean_net": 0.04039276524872515}
+  },
+  "audit": {
+    "raw_trade_count": 1630,
+    "accepted_trade_count": 1213,
+    "capacity_skip_count": 417,
+    "market_state_after_signal_decision_count": 0,
+    "slow_feature_available_after_decision_count": 0,
+    "slow_market_state_after_decision_count": 0,
+    "challenge_rows_used_for_candidate_selection_count": 0,
+    "post_2023_signal_count": 0,
+    "post_2023_exit_count": 0,
+    "same_symbol_signal_date_duplicate_count": 0,
+    "entry_at_or_before_signal_count": 0,
+    "entry_execution_violation_count": 0,
+    "target_execution_violation_count": 0,
+    "open_exit_execution_violation_count": 0,
+    "corporate_action_coordinate_lineage_violation_count": 0,
+    "t1_same_day_exit_count": 0,
+    "true_duplicate_active_symbol_count": 0,
+    "negative_cash_count": 0,
+    "repository_2024_plus_security_rows_included": false,
+    "security_outcome_reconstruction_run": false
+  },
+  "post_observation_warning": "2021-2023 are chronological diagnostics but are not pristine validation because predecessor outcomes were already observed."
+}

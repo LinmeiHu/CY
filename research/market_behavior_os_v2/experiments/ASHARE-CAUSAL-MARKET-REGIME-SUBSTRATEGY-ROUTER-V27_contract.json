@@ -1,0 +1,98 @@
+{
+  "experiment": "ASHARE-CAUSAL-MARKET-REGIME-SUBSTRATEGY-ROUTER-V27",
+  "research_status": "retrospective_development_with_post_observation_challenge",
+  "research_question": "Can completed-close market state route four independent, economically distinct supply-demand mechanisms without a future market function?",
+  "periods": {
+    "bounded_rule_selection": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "post_observation_challenge": [
+      "2021-01-01",
+      "2023-12-31"
+    ]
+  },
+  "causal_market_clock": {
+    "decision_clock": "security signal close",
+    "source": "causal_market_regime_2014_2023.parquet",
+    "required": "latest_source_timestamp <= security decision_at",
+    "acceleration_test": "market_median_ret20 >= market_median_ret60",
+    "deep_bear_test": "market_median_ret60 <= -0.05"
+  },
+  "routing": {
+    "BEAR_WORSENING": {
+      "condition": "market_regime == BEAR and market_median_ret20 < market_median_ret60",
+      "mechanism": "V13R1 fast capitulation active demand",
+      "target_and_horizon": "T10/H20"
+    },
+    "BEAR_STABILIZING_MILD": {
+      "condition": "market_regime == BEAR and market_median_ret20 >= market_median_ret60 and market_median_ret60 > -0.05",
+      "mechanism": "slow supply exhaustion takeover",
+      "additional_gate": "none",
+      "target_and_horizon": "T10/H20"
+    },
+    "BEAR_STABILIZING_DEEP": {
+      "condition": "market_regime == BEAR and market_median_ret20 >= market_median_ret60 and market_median_ret60 <= -0.05",
+      "mechanism": "slow supply exhaustion takeover",
+      "additional_gate": "exact_prior20_return <= -0.15 OR last5_downside_turnover <= 0.01",
+      "economic_meaning": "a broad market rebound inside a deep drawdown is accepted only when the stock experienced its own deep washout or its recent downside turnover indicates genuinely exhausted fresh selling",
+      "target_and_horizon": "T10/H20"
+    },
+    "BULL_ACCELERATING": {
+      "condition": "market_regime == BULL and market_median_ret20 >= market_median_ret60",
+      "mechanism": "V15 delayed supply contraction repricing",
+      "target_and_horizon": "T10/H20"
+    },
+    "BULL_DECELERATING": {
+      "condition": "market_regime == BULL and market_median_ret20 < market_median_ret60",
+      "mechanism": "V19R2 quiet inventory continuation",
+      "target_and_horizon": "T15/H15"
+    },
+    "TRANSITION": {
+      "condition": "market_regime == TRANSITION",
+      "mechanism": "hold cash"
+    }
+  },
+  "bounded_deep_bear_gate_family": {
+    "selection_period_only": true,
+    "minimum_completed_development_trades": 500,
+    "minimum_positive_development_years": 6,
+    "selector": [
+      "higher event-weighted mean net return",
+      "higher signal-date-equal mean net return",
+      "lower severe_loss10",
+      "fewer additional gates",
+      "lexical candidate id"
+    ],
+    "candidates": {
+      "NO_ADDITIONAL_GATE": "accept every BEAR_STABILIZING slow signal",
+      "DEEP_MARKET_REQUIRES_DEEP_STOCK_15": "if market_median_ret60 <= -0.05 require exact_prior20_return <= -0.15",
+      "DEEP_MARKET_REQUIRES_LOW_LAST5_DOWNSIDE_TURNOVER_1PCT": "if market_median_ret60 <= -0.05 require last5_downside_turnover <= 0.01",
+      "DEEP_MARKET_REQUIRES_BOTH": "if market_median_ret60 <= -0.05 require both stock-depth and low-downside-turnover conditions",
+      "DEEP_MARKET_REQUIRES_EITHER": "if market_median_ret60 <= -0.05 require either stock-depth or low-downside-turnover condition"
+    }
+  },
+  "portfolio": {
+    "main_initial_weight": 0.5,
+    "chinext_initial_weight": 0.5,
+    "max_active_per_sleeve": 75,
+    "daily_entry_cap_per_sleeve": 20,
+    "one_active_position_per_symbol": true,
+    "same_open_release_before_entry": true,
+    "intraday_target_exit_does_not_finance_same_open_entries": true,
+    "cohort_budget_fraction_of_sleeve_nav": 0.1,
+    "max_single_name_fraction_of_sleeve_nav": 0.025,
+    "entry_cost": 0.002,
+    "exit_cost": 0.002,
+    "unused_capital": "cash",
+    "leverage": false,
+    "cross_sleeve_transfer": false
+  },
+  "governance": {
+    "security_outcomes_reconstructed": false,
+    "frozen_outcome_ledgers_only": true,
+    "challenge_used_for_candidate_selection": false,
+    "post_2023_security_rows_included": false,
+    "post_observation_warning": "2021-2023 outcomes were already seen in predecessor research and are not pristine validation evidence."
+  }
+}
