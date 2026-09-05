@@ -1,0 +1,91 @@
+{
+  "experiment": "ASHARE-MORNING-DEMAND-OVERNIGHT-SUPPLY-ACCEPTANCE-V6",
+  "stage": "A_OUTCOME_BLIND_CONTRACT_FREEZE",
+  "research_status": "RETROSPECTIVE_DEVELOPMENT_WITH_PREVIOUSLY_OPENED_CALENDAR_OUTCOMES",
+  "starting_commit": "e7c1dfffcfa6c0fe0ddb34f4df8a93aa4ede6883",
+  "economic_sequence": [
+    "an industry demand shock is visible by 10:00 on D0",
+    "the stock preserves the morning low and remains accepted through 14:25 on D0",
+    "overnight holders receive a full opportunity to supply stock",
+    "completed bars through 10:00 on D1 reveal whether demand survived that supply",
+    "a trade exists only after D1 price acceptance plus either persistent acceptance or renewed industry-relative demand",
+    "entry occurs at the next legal one-minute open after the D1 10:00 bar",
+    "the position is first sellable on D2 under A-share T+1",
+    "the trade reaches its fixed target, fails the preserved D0 acceptance level, or times out after three completed holding sessions"
+  ],
+  "economic_hypothesis": "A late-D0 industry-demand event is not durable merely because it remains strong into the close. Durable demand must survive the overnight release of inventory and remain accepted during the first 30 completed minutes of D1. Requiring D1 price to hold the D0 14:25 confirmation price, plus either persistent bar-by-bar acceptance or positive industry-relative renewal, separates continuing price discovery from D0 exhaustion.",
+  "failure_hypothesis": "The parent strategy's MORNING_LOW_FAILURE losses arise because D0 tail strength is sometimes terminal demand. Waiting through D1 10:00 should reject overnight supply failures before capital is committed; any remaining loss should represent a genuinely failed post-confirmation continuation rather than an untested overnight assumption.",
+  "mother_event": {
+    "source": "exact frozen ASHARE-MORNING-TO-TAIL-INDUSTRY-DEMAND-ACCEPTANCE-V2 event identity",
+    "source_contract_sha256": "0a7425ced0c1914cf3f8c8b4b8b13f010e2ec325135d8a1620f1ebfed88c77cd",
+    "source_events_sha256_2014_2023": "0a3097fe68195cf49dc2d426a55c35ea48b240b88b956711341a6caab60a47ed",
+    "mother_event_changed": false,
+    "d0_decision_at": "14:25:00 after the one-minute bar ending 14:25 is complete",
+    "d0_reference_price": "raw unadjusted D0 cutoff_close at 14:25",
+    "d0_entry_used": false
+  },
+  "d1_acceptance": {
+    "decision_at": "10:00:00 after 30 completed continuous-auction one-minute bars",
+    "required_session_shape": "exact 241-minute D1 session and exact 30 completed bars from 09:31 through 10:00",
+    "hard_price_acceptance": "D1 close at 10:00 >= D0 cutoff_close",
+    "confirmation_any_of": [
+      "at least 60 percent of D1 09:31 through 10:00 completed closes are >= D0 cutoff_close",
+      "D1 industry median return through 10:00 > 0 and stock return through 10:00 minus D1 PIT-industry median return >= 0"
+    ],
+    "maximum_entry_premium_to_d0_cutoff": 0.05,
+    "premium_rationale": "Do not spend more than five percentage points of an eight-percent target before entry; this is frozen outcome-blind and is not a searched threshold.",
+    "missing_required_feature_policy": "FAIL_CLOSED"
+  },
+  "execution": {
+    "entry": "D1 10:01 actual one-minute open after the completed 10:00 decision bar",
+    "same_bar_fill_allowed": false,
+    "entry_limit_and_suspension_checks": true,
+    "t_plus_one": true,
+    "first_sellable_session": "D2",
+    "profit_target": 0.08,
+    "profit_target_execution": "standing limit sell from D2; gap-through at the first legal minute open uses that actual open, otherwise first legal minute whose high reaches target executes at target",
+    "failure": "if the completed D2 10:00 close is below D0 cutoff_close and target has not executed, sell at the next legal one-minute open",
+    "time_stop": "after D3 is complete, sell at the first legal open on or after D4",
+    "round_trip_cost": 0.004,
+    "corporate_action_policy": "fail closed if a corporate action affects the raw-price coordinate from D0 through exit"
+  },
+  "simple_rule": {
+    "binding_conditions": [
+      "D1 close1000 >= D0 cutoff_close",
+      "D1 acceptance_ratio_to_d0_cutoff >= 0.60 OR (D1 industry_ret1000 > 0 AND D1 relative_ret1000 >= 0)",
+      "D1 entry premium to D0 cutoff_close <= 5 percent"
+    ],
+    "condition_count": 3,
+    "threshold_search_allowed": false,
+    "model_fit_allowed": false
+  },
+  "chronology": {
+    "development_description": "2014-2020 relationship generation",
+    "challenge_description": "2021-2023 previously opened calendar challenge",
+    "recent_description": "2024-2026-08-12 post-observation robustness diagnostic",
+    "warning": "The parent calendar outcomes through 2026-08-12 have already been observed. This experiment is not a pristine OOS claim. No rule may be revised after its V6 outcomes are attached."
+  },
+  "minimum_goal": {
+    "average_completed_signals_per_full_year_gt": 50,
+    "pooled_mean_net_return_gt": 0.02,
+    "pooled_median_net_return_gt": 0,
+    "date_equal_mean_net_return_gt": 0,
+    "severe_loss10_lt": 0.10,
+    "annual_stability_required": true
+  },
+  "data_contract": {
+    "raw_minute": "QD-004 canonical unadjusted one-minute bars",
+    "daily_2014_2017": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/daily",
+    "daily_2018_2026": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily",
+    "industry_membership": "QD-008 PIT membership known by D1; UNKNOWN fails closed",
+    "corporate_actions": "QD-010 PIT state; coordinate-changing rows fail closed",
+    "large_output_root": "/Volumes/quant/CY_quant_research/ashare_morning_demand_overnight_supply_acceptance_v6"
+  },
+  "governance": {
+    "feature_after_d1_decision_allowed": false,
+    "outcome_in_stage_a_allowed": false,
+    "rule_change_after_outcome_attach_allowed": false,
+    "2024_2026_claimed_pristine_oos": false,
+    "repository_post_2026_08_12_opened": false
+  }
+}

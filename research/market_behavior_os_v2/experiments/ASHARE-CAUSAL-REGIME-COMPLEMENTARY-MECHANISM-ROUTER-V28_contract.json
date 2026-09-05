@@ -1,0 +1,86 @@
+{
+  "experiment": "ASHARE-CAUSAL-REGIME-COMPLEMENTARY-MECHANISM-ROUTER-V28",
+  "research_status": "retrospective_composition_frozen_before_shared_capacity_replay",
+  "economic_hypothesis": "A single long-only pattern should not be forced through every market state. In causally known bear states, sharp stock-specific washout followed by active demand or exhausted downside supply can support a short repair. In broad bull or early diffusion states, an underextended stock making its first controlled 20-session pressure break while its PIT industry breadth accelerates can support a slower continuation. Transition states without either mechanism remain cash.",
+  "evidence_warning": "Both source strategies and all 2014-2026 source outcomes were already observed before this composition was proposed. V28 is a retrospective, multiple-testing-exposed engineering candidate, not pristine validation evidence. The shared-capacity replay is the only previously uncomputed result frozen by this contract.",
+  "source_commits": {
+    "v27_bear_router": "e7c1dfffcfa6c0fe0ddb34f4df8a93aa4ede6883",
+    "v65_bull_participation": "6cfac5f5406610f45235aff50618e7da3ae65521"
+  },
+  "routing": {
+    "BEAR_WORSENING": {
+      "source_lane": "BEAR_WORSENING_FAST_CAPITULATION",
+      "mechanism": "stock-specific fast capitulation followed by active demand",
+      "entry_target_horizon": "exact frozen V27 lane; next legal open; T10/H20"
+    },
+    "BEAR_STABILIZING": {
+      "source_lane": "BEAR_STABILIZING_SLOW_SUPPLY_EXHAUSTION",
+      "mechanism": "slow downside-supply exhaustion during causal bear stabilization",
+      "entry_target_horizon": "exact frozen V27 lane including its frozen deep-bear gate; next legal open; T10/H20"
+    },
+    "BULL_MEDIUM_PARTICIPATION": {
+      "source_lane": "MEDIUM_PARTICIPATION",
+      "mechanism": "underextended first 20-session pressure break during broad market and PIT industry breadth ignition",
+      "entry_target_horizon": "exact frozen V65 lane; first legal open within three sessions; T15/H15"
+    },
+    "EARLY_DIFFUSION": {
+      "source_lane": "EARLY_TRANSITION",
+      "mechanism": "underextended old-pressure break while short breadth has diffused but medium breadth is not established",
+      "entry_target_horizon": "exact frozen V65 lane; first legal open within three sessions; T15/H15"
+    },
+    "OTHER": {
+      "action": "CASH"
+    }
+  },
+  "source_identity_freeze": {
+    "v27": "consume only the two exact frozen bear-lane outcome rows; do not recompute or alter security signals",
+    "v65": "consume only exact frozen MEDIUM_PARTICIPATION and EARLY_TRANSITION candidate/outcome identities; do not include rejected P2",
+    "source_rule_or_threshold_change_count": 0,
+    "outcome_reconstruction": false
+  },
+  "shared_portfolio": {
+    "main_initial_weight": 0.5,
+    "chinext_initial_weight": 0.5,
+    "max_active_per_sleeve": 30,
+    "max_new_per_sleeve_date": 10,
+    "position_budget": "1/30 of current sleeve open NAV",
+    "one_active_position_per_symbol": true,
+    "unused_capital": "cash",
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "open_exit_before_open_entry": true,
+    "intraday_target_exit_after_open_entry": true,
+    "intraday_target_cash_does_not_finance_same_open_entries": true,
+    "collision_order": [
+      "more recent signal_date",
+      "source-lane rank order within signal-date and sleeve",
+      "event_id"
+    ],
+    "entry_cost": 0.002,
+    "exit_cost": 0.002
+  },
+  "chronology": {
+    "retrospective_development_and_seen_forward": "2014-01-01 through 2023-12-31",
+    "non_pristine_post_observation_diagnostic": "2024-01-01 through 2026-09-04",
+    "year_basis": "signal_date year",
+    "right_censored_source_rows": "excluded exactly as recorded by source status"
+  },
+  "acceptance_goal": {
+    "average_completed_trades_per_full_year_2014_2025": "> 50",
+    "pooled_mean_net_return_2014_2025": "> 2%",
+    "each_full_year_mean_net_return_2014_2025": "> 0",
+    "fresh_2026_ytd_mean_net_return": "> 0",
+    "signal_date_equal_mean_net_return_2014_2025": "> 0",
+    "causal_audit": "all required counters zero"
+  },
+  "governance": {
+    "future_features_forbidden": true,
+    "signal_bar_fill_forbidden": true,
+    "t1_enforced": true,
+    "corporate_action_coordinate": "QD-010 unchanged",
+    "new_threshold_search": false,
+    "source_outcomes_already_observed": true,
+    "multiple_testing_risk": "HIGH",
+    "claim_if_goal_passes": "RETROSPECTIVE_CAUSAL_CANDIDATE_ONLY"
+  }
+}

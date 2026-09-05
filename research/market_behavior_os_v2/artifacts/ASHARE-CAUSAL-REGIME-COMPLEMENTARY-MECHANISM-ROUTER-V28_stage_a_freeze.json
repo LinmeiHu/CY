@@ -1,0 +1,110 @@
+{
+  "annual_source_rows": {
+    "2014": 302,
+    "2015": 232,
+    "2016": 240,
+    "2017": 196,
+    "2018": 675,
+    "2019": 494,
+    "2020": 513,
+    "2021": 206,
+    "2022": 288,
+    "2023": 400,
+    "2024": 1457,
+    "2025": 419,
+    "2026": 191
+  },
+  "audit": {
+    "cost_identity_violation_count": 0,
+    "cross_source_same_entry_sleeve_cohort_count": 0,
+    "cross_source_same_symbol_signal_count": 0,
+    "duplicate_event_count": 0,
+    "duplicate_source_symbol_signal_count": 0,
+    "entry_at_or_before_signal_count": 0,
+    "exit_at_or_before_entry_count": 0,
+    "missing_rank_count": 0,
+    "source_audit": {
+      "nonzero_required_counter_count": 0,
+      "required_counters": {
+        "v27_2024_2025": {
+          "entry_at_or_before_signal_count": 0,
+          "exit_at_or_before_entry_count": 0,
+          "future_market_function_count": 0
+        },
+        "v27_2026": {
+          "corporate_action_coordinate_lineage_violation_count": 0,
+          "entry_execution_violation_count": 0,
+          "open_exit_execution_violation_count": 0,
+          "parameter_selection_on_2026_count": 0,
+          "target_execution_violation_count": 0
+        },
+        "v27_historical": {
+          "corporate_action_coordinate_lineage_violation_count": 0,
+          "entry_at_or_before_signal_count": 0,
+          "exit_at_or_before_entry_count": 0,
+          "market_state_after_signal_decision_count": 0,
+          "signal_available_after_decision_count": 0,
+          "slow_feature_available_after_decision_count": 0
+        },
+        "v65_2014_2023": {
+          "accepted_cost_identity_violation_count": 0,
+          "availability_after_decision_count": 0,
+          "early_prior_peak_lineage_mismatch_count": 0,
+          "feature_after_decision_count": 0,
+          "signal_bar_fill_count": 0,
+          "t1_same_day_exit_count": 0
+        },
+        "v65_post_2023": {
+          "coordinate_reproduction_price_mismatch_count": 0,
+          "signal_bar_fill_count": 0
+        }
+      }
+    },
+    "source_completed_trade_count": 5613,
+    "v27_bear_completed_count": 2044,
+    "v65_available_after_decision_count": 0,
+    "v65_completed_count": 3569,
+    "v65_feature_after_decision_count": 0,
+    "v65_outcome_status": {
+      "COMPLETED": 3569,
+      "INCOMPLETE_OUTCOME_TAIL": 14,
+      "NO_LEGAL_ENTRY": 7
+    }
+  },
+  "contract_sha256": "0b43ab07de90a25de12ad7f5b8196bbb8e888081974cbe58de9a7d78652a71a2",
+  "evidence_label": "RETROSPECTIVE_MULTIPLE_TESTING_EXPOSED_COMPOSITION",
+  "experiment": "ASHARE-CAUSAL-REGIME-COMPLEMENTARY-MECHANISM-ROUTER-V28",
+  "input_hashes": {
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27/result.json": "d50ea992529a2a202d8d17ed7eb5dc0908291224a74948616aa84a39fcf65537",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27/routed_raw_trades.parquet": "8cf9a74bab8e02bc1ab25ca0570ebecad4fecace77a712a3324d507a681f7bed",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2024_2025_v1/stage_b/result.json": "9632d2a2f84a47e90d2ada04fe2e2adadd83158add8c54254c9f02ff91e11d02",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2024_2025_v1/stage_b/routed_raw_trades.parquet": "db96ecea3bee2de877f916ed4ebf256ed6f1b182b6629a4365b2e29beda670fe",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2026ytd_v1/pit_daily_qd010_exact_2022_2026_08_12.parquet": "d092206b2c36212cf95ab0540bf6905a3274f1ba4706a50510e7cd24c9e1929c",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2026ytd_v2/execution_daily_frozen_symbols_through_2026_09_04.parquet": "3864569cf59bc1262002e065c3713a26ee36529b428d74e4ab952fb90c55e67d",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2026ytd_v2/result.json": "4dfa8dec01015b140f581036b3e266c730e627f603b55e060482ddb4368b5f01",
+    "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2026ytd_v2/routed_raw_trades.parquet": "2503db0811d42dfdad85d085e1243b0600a8373aa4544deffdd00023a8388e0e",
+    "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "/Volumes/quant/CY_quant_research/bull_early_medium_participation_industry_ignition_v65/stage_a/candidates.parquet": "98cadcfd388ae788eb083b7a1dc7e7128b55ac4db6ccf6402728e3c31b30779b",
+    "/Volumes/quant/CY_quant_research/bull_early_medium_participation_industry_ignition_v65/stage_b/development_outcomes.parquet": "88d669d09db59ad7d14af52dfbab10e0d1e9e9b6f6dd36efa761851503440e88",
+    "/Volumes/quant/CY_quant_research/bull_early_medium_participation_industry_ignition_v65/stage_b/forward_outcomes.parquet": "a2e5adbd5a5d05d904dfe8388b1edb34b39c9546a5975c303dd4a361e48ffa6c",
+    "/Volumes/quant/CY_quant_research/bull_medium_participation_industry_ignition_v64/post_2023_exact_diagnostic_through_2026_09_04/pit_daily_qd010_exact_frozen_symbols_2022_2026_09_04.parquet": "0ed55ccef40815ab057fdc500ce73af69bf4a71878fabf7a6895c98192c715af",
+    "/Volumes/quant/CY_quant_research/bull_medium_participation_industry_ignition_v64/post_2023_exact_diagnostic_through_2026_09_04/result.json": "1dad5fd10c5efd2fcf5b91389bc182ec44dea7dd10e3a5931b5f864b8190bf32",
+    "/Volumes/quant/CY_quant_research/bull_medium_participation_industry_ignition_v64/post_2023_exact_diagnostic_through_2026_09_04/v64_candidates_2024_2026_09_04.parquet": "b1011e4dba1e262a7ec745887501a57553383d5174b1e8c16db696cebc826b28",
+    "/Volumes/quant/CY_quant_research/bull_medium_participation_industry_ignition_v64/post_2023_exact_diagnostic_through_2026_09_04/v64_outcomes_2024_2026_09_04.parquet": "8899082e222ba188969639cb7f666aa4ab028b1cd2ecd45ba503e03a4f33799e",
+    "/Volumes/quant/CY_quant_research/bull_v64_expansion_complement_v65_mechanism/post_2023_diagnostics_through_2026_09_04/early_candidates.parquet": "3503b87d85e3b731228149510b2a53e27aaf700dff13dd19db904834bf431e93",
+    "/Volumes/quant/CY_quant_research/bull_v64_expansion_complement_v65_mechanism/post_2023_diagnostics_through_2026_09_04/early_outcomes.parquet": "5d4ff45b0ce40be4b5a393c1cf7a806bf62a70acb56fd198b43f96f6fbaf2b3d",
+    "/Volumes/quant/CY_quant_research/bull_v64_expansion_complement_v65_mechanism/post_2023_diagnostics_through_2026_09_04/result.json": "fa9e295d97902bcc2ae48f6033f189f04a413d8acb9e0dea400517baf3214a89",
+    "git_blob:v27_contract": "8fdaf43e7d0f44cb5607fb1a37d4a12fefbf43cb1ededf334bc5bf474f0a20a7",
+    "git_blob:v27_runner": "e44b83efff24356a328d485b0d54623578cfb74a63e495e6a3fef976e219c05a",
+    "git_blob:v65_contract": "902694b1cffdcd38990d5cd379d28f872ef48ff9f397458ddfef379ab4696a39",
+    "git_blob:v65_result": "701e78140ca0c999a133d01f3a57db57f157d61560cb7f0a17a16b5b13772908",
+    "git_blob:v65_runner": "44f4d89e82987d6221f9e9c998fc30f97348eedca8f52fd19d2de6952ddced99"
+  },
+  "research_logic_changed": false,
+  "runner_sha256": "46a5ad7bdc2f6114487969d4124e4496bba15b9937e983f7dc43dfe3dcf4b0d0",
+  "shared_capacity_result_opened": false,
+  "source_outcomes_already_observed": true,
+  "source_union_rows": 5613,
+  "source_union_sha256": "f3cb511657745245a5c62c8cc5c264f56c2faa97096b39cd470d79271d929841",
+  "status": "FROZEN_BEFORE_SHARED_CAPACITY_REPLAY"
+}

@@ -1,0 +1,93 @@
+{
+  "experiment": "ASHARE-MORNING-TAIL-V5-FRESH-PRICE-DISCOVERY-SCORECARD-V1",
+  "stage": "A_OUTCOME_RELATIONSHIP_FREEZE",
+  "research_status": "RETROSPECTIVE_DEVELOPMENT_WITH_PREVIOUSLY_OPENED_CALENDAR_OUTCOMES",
+  "starting_commit": "e7c1dfffcfa6c0fe0ddb34f4df8a93aa4ede6883",
+  "parent_contract": {
+    "experiment": "ASHARE-MORNING-TAIL-REGIME-ROUTED-DEMAND-PRICE-DISCOVERY-V4",
+    "sha256": "f4f33eca5c01e29dfdfc2b782ba91b943a14d8c763cbcdcbdcdd79686e98a029",
+    "identity_changed": false
+  },
+  "economic_hypothesis": "The tradable subset is not generic late-day strength. It is fresh price discovery: a stock that was not already extended receives an industry-confirmed morning demand impulse, then follows a directionally efficient path with meaningful afternoon participation while the cross-section is dispersed enough for stock-specific repricing. Requiring at least two independent confirmations avoids treating any one noisy proxy as participant identity.",
+  "failure_hypothesis": "V4 fails when an opening impulse becomes late-day exhaustion and the next-day loss is large relative to the fixed 15 percent target. The primary diagnostic asks whether freshness, path efficiency, persistent afternoon participation, and cross-sectional opportunity state jointly reduce morning-low failures without collapsing signal count.",
+  "signal_identity": {
+    "source": "exact frozen V4 routed completed trades",
+    "mother_event_changed": false,
+    "decision_at": "14:25:00 after the one-minute bar ending 14:25 is complete",
+    "entry_at": "14:56:00 actual open from the frozen V4 event",
+    "target": 0.15,
+    "failure": "completed daily close below the frozen signal-day morning low, then next legal open",
+    "time_stop": "H20 next legal open",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "fixed_scorecard": {
+    "rule": "admit when at least two of four conditions are true",
+    "conditions": [
+      {
+        "id": "RECENTLY_UNEXTENDED",
+        "definition": "prior_ret_10 <= 0",
+        "time_anchor": "ten completed sessions ending before signal date"
+      },
+      {
+        "id": "DIRECTIONALLY_EFFICIENT",
+        "definition": "path_efficiency_1425 >= 0.20",
+        "time_anchor": "completed 09:31 through 14:25 one-minute path"
+      },
+      {
+        "id": "AFTERNOON_PARTICIPATION",
+        "definition": "afternoon_amount_fraction_1425 >= 0.30",
+        "time_anchor": "completed 13:01 through 14:25 amount divided by completed 09:31 through 14:25 amount"
+      },
+      {
+        "id": "CROSS_SECTIONAL_OPPORTUNITY",
+        "definition": "market_dispersion_1425 >= 0.03",
+        "time_anchor": "same-clock 14:25 cross-sectional standard deviation of eligible-stock log returns from causal previous close"
+      }
+    ],
+    "condition_count": 4,
+    "minimum_true_conditions": 2,
+    "threshold_search_allowed": false,
+    "additional_condition_search_allowed": false
+  },
+  "auxiliary_diagnostics_not_binding": [
+    "same-clock industry return persistence from 10:00 to 14:25",
+    "same-clock industry breadth",
+    "entry-to-morning-low structural risk",
+    "market breadth",
+    "route and board decomposition"
+  ],
+  "chronology": {
+    "development_rule_generation": ["2014-01-01", "2020-12-31"],
+    "post_observation_challenge": ["2021-01-01", "2023-12-31"],
+    "fresh_feature_relationship_diagnostic": ["2024-01-01", "2026-08-12"],
+    "warning": "V4 calendar outcomes through 2026-08-12 were already observed. The 2024-2026 test is a frozen-feature-relationship diagnostic, not pristine OOS."
+  },
+  "minimum_goal": {
+    "average_completed_signals_per_full_year_gt": 50,
+    "pooled_mean_net_return_gt": 0.02,
+    "pooled_median_net_return_gt": 0,
+    "date_equal_mean_net_return_gt": 0,
+    "severe_loss10_lt": 0.10,
+    "annual_stability_required": true
+  },
+  "data_contract": {
+    "raw_minute": "QD-004 exact frozen canonical unadjusted one-minute bars",
+    "daily_2014_2023": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/daily_contract_2013_2023.parquet",
+    "same_clock_panel_2014_2023": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/model_panel_2013_2023.parquet",
+    "daily_2024_2026": "CY-006 exact annual PIT-B partitions through 2026-08-12",
+    "industry_membership": "QD-008 causal membership; UNKNOWN fails closed",
+    "corporate_actions": "QD-010 semantics inherited unchanged",
+    "large_output_root": "/Volumes/quant/CY_quant_research/ashare_morning_tail_v5_fresh_price_discovery_scorecard_v1"
+  },
+  "governance": {
+    "future_bar_feature_allowed": false,
+    "same_bar_fill_allowed": false,
+    "parent_outcome_replay_changed": false,
+    "model_fit_allowed": false,
+    "rule_optimization_after_2024_2026_open": false,
+    "claim_pristine_oos": false,
+    "full_current_universe_context_required": true,
+    "missing_required_feature_policy": "FAIL_CLOSED"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "experiment": "ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29",
+  "research_status": "mechanism_distillation_frozen_before_expanded_bull_population_outcomes",
+  "research_question": "Can the V28 complementary market-state idea retain its economics when the bull continuation detector is reduced to five causal, visually interpretable condition groups?",
+  "evidence_warning": "Threshold values are inherited from the previously observed V65 neighborhood. The identities and outcomes of the expanded five-group bull population have not been inspected at this freeze, but this remains iterative research rather than pristine hypothesis formation.",
+  "economic_sequence": {
+    "bear": "causally known broad weakness -> stock-specific forced selling or exhausted downside supply -> completed strong demand bar -> next legal open -> T10 or H20",
+    "bull": "broad participation -> PIT industry breadth ignition -> underextended stock -> first controlled 20-session pressure break -> next legal open -> T15 or H15",
+    "other": "cash"
+  },
+  "bear_source": {
+    "identity": "the two exact frozen V27 Bear lanes, unchanged",
+    "commit": "e7c1dfffcfa6c0fe0ddb34f4df8a93aa4ede6883",
+    "immutable_source": "V28 Stage-A source union, SHA256 f3cb511657745245a5c62c8cc5c264f56c2faa97096b39cd470d79271d929841; use only source == V27_BEAR",
+    "reason": "the upstream V27 Parquet was mechanically rewritten after V28 freeze; row-level contents matched exactly, but V29 fails closed on byte drift and therefore consumes the already hash-frozen V28 copy",
+    "lanes": [
+      "BEAR_WORSENING_FAST_CAPITULATION",
+      "BEAR_STABILIZING_SLOW_SUPPLY_EXHAUSTION"
+    ]
+  },
+  "simple_bull_five_groups": {
+    "1_market_participation": "market_breadth20 >= 65%",
+    "2_industry_ignition": "industry20 > 3%, industry_breadth20 > 60%, and its five-session change >= 25 percentage points",
+    "3_underextended_stock": "ret60 between 0% and 15% and zero prior-20 upper-limit closes",
+    "4_controlled_first_pressure_break": "close above the known prior-20 coordinate high, signal return between 2% and 6%, and close location >= 70%",
+    "5_turnover_confirmation": "signal turnover / prior-20 mean turnover between 1.5 and 4.0",
+    "cooldown": "at least 21 market cal_idx between raw simple-bull events for the same symbol"
+  },
+  "explicitly_removed_v65_gates": [
+    "market20 > -3%",
+    "industry20 five-session return acceleration >= 3pp",
+    "market_breadth60 split at 45%",
+    "early-lane industry-breadth acceleration cap at 60pp",
+    "early-lane prior-250 peak age >= 120 calendar days",
+    "separate MEDIUM_PARTICIPATION versus EARLY_TRANSITION labels"
+  ],
+  "causal_clock": {
+    "features": "completed signal-session data only",
+    "latest_feature_timestamp": "decision_at at signal close",
+    "entry": "first legal daily open strictly after signal and within three market sessions",
+    "target": "+15% from executable entry coordinate; first legal realization after entry",
+    "failure_stop": "NONE",
+    "time_stop": "H15 completed-session decision then first legal sellable open",
+    "costs": "20bp entry plus 20bp exit",
+    "corporate_action_coordinate": "QD-010 unchanged",
+    "t_plus_one": true
+  },
+  "shared_portfolio": {
+    "main_initial_weight": 0.5,
+    "chinext_initial_weight": 0.5,
+    "K_per_sleeve": 30,
+    "max_new_per_sleeve_date": 10,
+    "position_budget": "1/30 current sleeve open NAV",
+    "one_active_position_per_symbol": true,
+    "open_exits_before_open_entries": true,
+    "intraday_target_cash_after_open_entries": true,
+    "unused_capital": "cash",
+    "leverage": false,
+    "cross_sleeve_transfer": false
+  },
+  "analysis_plan": {
+    "freeze_first": "build and hash all simple-bull candidate identities through 2026-09-04 without calculating their returns",
+    "then": "attach frozen T15/H15 outcomes and combine with unchanged V27 Bear rows under one causal portfolio replay",
+    "no_search": "no alternative threshold, condition, target, horizon, ranking, or portfolio grid in V29",
+    "failure_diagnostic": "if V29 fails, attribute degradation to the removed semantic components by population overlap and chronology only; do not rescue V29"
+  },
+  "acceptance_goal": {
+    "average_completed_trades_per_full_year_2014_2025": "> 50",
+    "pooled_mean_net_return_2014_2025": "> 2%",
+    "each_full_year_mean_net_return_2014_2025": "> 0",
+    "fresh_2026_ytd_mean_net_return": "> 0",
+    "signal_date_equal_mean_2014_2025": "> 0",
+    "causal_and_execution_audits": "all zero"
+  },
+  "governance": {
+    "expanded_bull_outcomes_opened_before_freeze": false,
+    "new_threshold_search": false,
+    "future_features_forbidden": true,
+    "post_signal_feature_forbidden": true,
+    "claim_if_passed": "iterative simple causal candidate; future paper validation required"
+  }
+}
