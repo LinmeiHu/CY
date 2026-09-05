@@ -1,0 +1,83 @@
+{
+  "experiment": "ASHARE-BULL-EARLY-MEDIUM-PARTICIPATION-INDUSTRY-IGNITION-V65",
+  "research_role": "causal signal-count and portfolio-efficiency expansion of frozen V64",
+  "economic_hypothesis": "An underextended stock making its first controlled 20-session pressure break during PIT industry breadth ignition can continue for roughly 15 sessions in either of two mutually exclusive participation states: an established medium-term broad bull state, or an early diffusion state in which 20-session market breadth is already broad but 60-session breadth has not yet recovered. In the early state, excluding explosive industry breadth saturation and requiring an old pressure memory distinguishes price discovery from a short-lived crowded snapback.",
+  "source": {
+    "experiment": "ASHARE-BULL-INDUSTRY-BREADTH-IGNITION-FIRST-BREAKOUT-V53",
+    "candidate_identity": "exact frozen post-cooldown V53 candidates",
+    "cooldown": "at least 21 market cal_idx between accepted source events for a symbol"
+  },
+  "source_contract_inherited": {
+    "market": "market20 > -3% and market breadth20 > 40%",
+    "industry": "industry20 > 3%, industry breadth20 > 60%, industry20 five-session delta >= 3pp, industry breadth20 five-session delta >= 15pp",
+    "stock": "ret60 in [0%,30%], no prior-20 limit-up, close above frozen prior-20 high",
+    "signal": "return in [2%,8%], close location >= 70%, turnover ratio in [1.2,4.0]"
+  },
+  "common_v65_additions": {
+    "market_breadth20": ">= 65%",
+    "industry_breadth20_delta5": ">= 25pp",
+    "stock_ret60": "<= 15%",
+    "signal_return": "<= 6%",
+    "turnover_ratio": ">= 1.5"
+  },
+  "lanes": {
+    "MEDIUM_PARTICIPATION": {
+      "identity": "exact frozen V64 admission",
+      "market_breadth60": ">= 45%"
+    },
+    "EARLY_TRANSITION": {
+      "market_breadth60": "< 45%",
+      "industry_breadth20_delta5": "<= 60pp",
+      "prior250_peak_age_calendar_days": ">= 120",
+      "prior250_peak_lineage": "prior250_peak_invalid_cum equals signal invalid_step_cum",
+      "interpretation": "short breadth has diffused, long breadth is not yet established, industry participation is accelerating without complete saturation, and the broken pressure is old rather than a recent local ceiling"
+    }
+  },
+  "mutual_exclusivity": "market_breadth60 >=45% versus <45%; one source event can enter only one lane",
+  "decision_clock": "completed daily signal bar close; all state and pressure fields available no later than decision_at",
+  "entry": "first legal daily open strictly after signal, within three exchange sessions",
+  "target": "+15% from executable entry coordinate",
+  "failure_stop": "NONE",
+  "time_stop": "H15 decision followed by next legal sell open",
+  "costs": {
+    "entry": 0.002,
+    "exit": 0.002
+  },
+  "portfolio": {
+    "main_sleeve": 0.5,
+    "chinext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "max_new_per_sleeve_date": 10,
+    "unused_capital": "cash",
+    "one_active_position_per_symbol": true,
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "collision_rank": [
+      "higher industry breadth20 five-session delta",
+      "lower stock ret60",
+      "higher turnover ratio",
+      "event_id"
+    ]
+  },
+  "chronology": {
+    "development_rule_discovery": "2014-01-01 through 2020-12-31",
+    "fixed_forward_check": "2021-01-01 through 2023-12-31",
+    "post_observation_diagnostic": "2024-01-01 through 2026-09-04; non-pristine and excluded from rule selection"
+  },
+  "threshold_governance": {
+    "early_industry_delta_caps_checked_in_development": [0.5, 0.6, 0.7, 1.0],
+    "old_peak_age_calendar_days_checked_in_development": [60, 90, 120, 150],
+    "selected": {
+      "industry_delta_cap": 0.6,
+      "old_peak_age_calendar_days": 120
+    },
+    "selection_reason": "best development mean among variants with every active development year positive, positive median and date-equal mean, and a stable 90-120 day neighborhood; forward and post-observation outcomes did not select thresholds"
+  },
+  "governance": {
+    "future_feature_forbidden": true,
+    "signal_bar_fill_forbidden": true,
+    "t1_enforced": true,
+    "corporate_action_coordinate": "QD-010 unchanged",
+    "2024_plus_role": "POST_OBSERVATION_NON_PRISTINE_DIAGNOSTIC"
+  }
+}
