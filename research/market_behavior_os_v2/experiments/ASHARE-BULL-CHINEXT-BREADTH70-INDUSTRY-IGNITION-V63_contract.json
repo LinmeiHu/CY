@@ -1,0 +1,51 @@
+{
+  "experiment": "ASHARE-BULL-CHINEXT-BREADTH70-INDUSTRY-IGNITION-V63",
+  "research_status": "iterative 2014-2023 rule freeze; all 2014-2023 years are observed research evidence and none is represented as pristine validation",
+  "economic_hypothesis": "When at least 70% of the executable market has a positive completed 20-session return, risk appetite is broad enough to fund growth-stock price discovery. If a PIT industry simultaneously shows positive 20-session performance, majority participation, and a sharp five-session breadth acceleration, a ChiNext stock making its first non-limit 20-session pressure break on meaningful but non-euphoric demand is a sector diffusion event rather than an isolated chase.",
+  "independence": "No collapse-gap, true-gap, gap-repair, V24 quiet-platform information-gap identity, or V26 120-session ceiling identity is used.",
+  "decision_clock": "completed daily signal-session close",
+  "four_binding_conditions": {
+    "BREADTH70_RISK_APPETITE": "completed-session executable-universe positive-ret20 share >=70%; market median ret20 >-3%",
+    "PIT_INDUSTRY_IGNITION": "industry median ret20 >3%; industry positive-ret20 share >60%; over the last five completed market sessions industry median ret20 rises by at least 3 percentage points and industry positive-ret20 share rises by at least 15 percentage points",
+    "CHINEXT_FIRST_PRESSURE_DISCOVERY": "ChiNext only; stock ret60 in [0%,30%]; no prior20 limit-up close; completed close exceeds the prior completed 20-session high",
+    "CONTROLLED_ACTIVE_DEMAND": "signal return in [2%,6%]; close location >=70%; signal turnover is in [1.5x,4.0x] of prior20 mean"
+  },
+  "entry": "first legal daily open strictly after the signal, within three exchange sessions",
+  "target": "+15% coordinate standing target from the first T+1-sellable session",
+  "failure_stop": "none",
+  "time_stop": "completed H15 state, then next legal daily open",
+  "round_trip_cost": 0.004,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "Main_sleeve": 0.5,
+    "Main_action": "cash",
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 of current sleeve NAV",
+    "collision_rank": [
+      "industry breadth 5-session acceleration descending",
+      "stock ret60 ascending",
+      "signal turnover expansion descending",
+      "event_id ascending"
+    ],
+    "unused_capital": "cash",
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "same_symbol_overlap": "forbidden"
+  },
+  "required_gate": {
+    "capacity_accepted_completed_trades_2014_2023_gt": 500,
+    "mean_net_return_gt": 0.03,
+    "mean_holding_sessions_lt": 15,
+    "2021_2022_2023_each_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "top_five_signal_date_positive_pnl_share_le": 0.25,
+    "future_information_count": 0
+  },
+  "evidence_governance": {
+    "2014_2020": "mechanism and support evidence",
+    "2021_2023": "observed chronological robustness diagnostic; not pristine validation",
+    "post_2023_signal_or_feature_rows": false,
+    "post_2023_daily_rows": "permitted only to resolve positions signaled no later than 2023-12-31"
+  }
+}
