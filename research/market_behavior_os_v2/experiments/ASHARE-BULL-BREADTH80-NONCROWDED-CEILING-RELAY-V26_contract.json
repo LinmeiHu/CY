@@ -1,0 +1,61 @@
+{
+  "collision_rank": [
+    "industry_positive_ret20_share descending",
+    "stock_minus_industry_ret20 descending",
+    "turnover_expansion descending",
+    "event_id ascending"
+  ],
+  "complementarity_to_v24": "V24 requires a quiet forty-session platform plus an upward information gap and dual-demand confirmation. V26 uses no information-gap identity: its bull definition is extreme twenty-session market breadth and its stock mechanism is rotation through a bounded 120-session ceiling.",
+  "decision_clock": "completed signal-session close",
+  "economic_hypothesis": "When at least eighty percent of the executable A-share cross-section has a positive completed twenty-session return, demand is broad rather than index-concentrated. Inside that breadth bull, a healthy but still noncrowded PIT industry can receive rotation capital. A stock's first causal escape through a bounded 120-session holder-cost ceiling, on a moderate rather than euphoric demand bar, can continue while old holders are relieved rather than creating overwhelming new supply.",
+  "entry": "first legal next daily open within three market sessions",
+  "evidence_governance": {
+    "2014_2018": "iterative mechanism discovery",
+    "2019_2023": "observed chronological robustness, not pristine validation",
+    "post_2023_rows": "permitted only to resolve positions signaled by 2023-12-31",
+    "reason_not_pristine": "later outcomes were inspected during autonomous strategy discovery",
+    "signals_or_features_after_2023": false
+  },
+  "experiment": "ASHARE-BULL-BREADTH80-NONCROWDED-CEILING-RELAY-V26",
+  "failure_stop": "none",
+  "four_simple_rules": {
+    "BOUNDED_MODERATE_DEMAND": "prior 120-session high/low range <=60% and signal step return is between +2% and +7% inclusive",
+    "BREADTH80_BULL": "completed-session executable-universe positive-ret20 share >= 80%",
+    "FIRST_CAUSAL_CEILING_RELAY": "completed close crosses its prior 120-session high from below; signal closes in the top 30% of its bar, turnover is >=1.5x prior20 mean, prior20 return is between -8% and +15%, and the frozen mother population enforces a 30-session same-symbol cooldown",
+    "HEALTHY_NONCROWDED_INDUSTRY": "PIT industry members >=5, median ret20 >0, positive-ret20 share >50%, and industry median-ret20 percentile <=50%"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "required_gate": {
+    "active_2019_2023_years_have_positive_mean": true,
+    "both_boards_positive_mean": true,
+    "capacity_accepted_completed_trades_2014_2023_gt": 500,
+    "capacity_accepted_completed_trades_per_year_gt": 50,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_lt": 15,
+    "mean_net_return_gt": 0.05,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "round_trip_cost": 0.004,
+  "source_population": {
+    "identity": "frozen causal V18 idiosyncratic 120-session ceiling-breakout mother",
+    "role": "candidate representation, not accepted strategy evidence",
+    "source_sha256": "aa9f518ef4c29fd70e03b56b1931119de9d9cb97c18aa3ee57717750033b77cd"
+  },
+  "target": "+15% coordinate standing target from the first T+1-sellable session",
+  "time_stop": "completed H15 state, then next legal daily open"
+}

@@ -1,0 +1,69 @@
+{
+  "admission_lanes": {
+    "EARLY_BREADTH_ACCELERATION": "market median ret20>=median ret60 and positive-ret20 share>=positive-ret60 share",
+    "LOW_OVERHEAD_ROTATION": "EARLY_BREADTH_ACCELERATION is false and overhead_share<=25%",
+    "combination": "logical OR with mutually exclusive lane labels"
+  },
+  "decision_at": "second acceptance-session close",
+  "diffusion_bull": {
+    "bear": "market median ret20<=0 and positive-ret20 share<=50%",
+    "breadth": "at least 10 mother events on the completed signal session",
+    "confirmation": "the short-cycle market and PIT industry-health states remain positive at the second acceptance close",
+    "mature_exhaustion_veto": "not(market median ret60>=20% and median ret20<=10%)",
+    "short_cycle": "market median ret20>0 and positive-ret20 share>50%",
+    "transition": "all other states; no entry unless the diffusion-bull definition passes"
+  },
+  "economic_hypothesis": "When a PIT-healthy industry is already rising but one constituent is still in the bottom quartile of completed 20-session relative performance, a first high-location active-demand day followed by two completed sessions of price acceptance can mark leader-to-laggard capital diffusion. The move is tradable only when many such demand events occur together and either market participation is accelerating or the next 15-percent price corridor contains little historical turnover pressure.",
+  "entry": "first legal next daily open within three market sessions",
+  "evidence_governance": {
+    "2014_2020": "consumed mechanism and chart-rule development",
+    "2021_2023": "chronological extension opened only after this contract and blind charts freeze",
+    "post_2023_execution_data": "permitted only to resolve pre-2024 positions",
+    "post_2023_signal_or_feature": false
+  },
+  "experiment": "ASHARE-DIFFUSION-BULL-LAGGARD-PRESSURE-RELEASE-V25",
+  "failure_stop": "none",
+  "independence_from_v24": "No V24 quiet-platform or upward information-gap identity is used. The stock starts as an industry laggard and is admitted by demand diffusion plus causal pressure release.",
+  "mother_event": {
+    "active_demand": "completed step return>=5%, close location>=80%, turnover>=1.5x prior-20 median, not locked at the upper limit",
+    "first_event": "no identical active-demand event in the previous 20 sessions",
+    "industry": "PIT members>=10, median completed ret20>0, positive-ret20 share>=55%",
+    "laggard": "previous completed session industry ret20 percentile<=25%"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "pressure_proxy": {
+    "local_corridor": "[0.85*decision_close,1.15*decision_close]",
+    "low_overhead": "overhead_share<=25%; missing/short history fails closed",
+    "overhead_corridor": "(decision_close,1.15*decision_close]",
+    "overhead_share": "overhead turnover divided by local-corridor turnover",
+    "price": "daily coordinate typical price=(high+low+close)/3",
+    "window": "120 completed stock sessions strictly before the second acceptance close"
+  },
+  "price_acceptance": "the next two exchange sessions are valid, tradable, corporate-action safe, on the same coordinate lineage, and each completed close is at least the mother close",
+  "required_gate": {
+    "capacity_accepted_completed_trades_gt": 500,
+    "each_2021_2023_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_lt": 15,
+    "mean_net_gt": 0.05,
+    "top_five_signal_date_positive_pnl_share_le": 0.25
+  },
+  "round_trip_cost": 0.004,
+  "target": "+15% coordinate standing target from the first T+1-sellable session",
+  "time_stop": "completed H15 state followed by the next legal daily open"
+}
