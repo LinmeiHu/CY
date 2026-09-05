@@ -1,0 +1,32 @@
+{
+  "experiment": "ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72",
+  "source_strategy": "ASHARE-BULL-EARLY-MEDIUM-PARTICIPATION-INDUSTRY-IGNITION-V65",
+  "economic_hypothesis": "A V65 pressure break is higher quality when qualified demand is simultaneously present in Main and ChiNext, distinguishing cross-board bull diffusion from a local board or theme pulse.",
+  "admission_change": {
+    "cross_board_confirmation": "On the same completed signal close, at least one frozen V65 candidate exists in MAIN and at least one frozen V65 candidate exists in CHINEXT.",
+    "time_anchor": "15:00 completed daily close",
+    "future_rows_allowed": false,
+    "numeric_threshold_added": false
+  },
+  "unchanged": {
+    "v65_candidate_identity": true,
+    "market_industry_stock_conditions": true,
+    "entry": "first legal daily open within three sessions after signal",
+    "target": "+15% standing target from first T+1-sellable session",
+    "failure_exit": "NONE",
+    "time_stop": "H15 next legal open",
+    "round_trip_cost": 0.004,
+    "portfolio": "50/50 isolated Main/ChiNext sleeves; K30 per sleeve; max 10 new positions per sleeve/date; no leverage or cross-sleeve transfer"
+  },
+  "chronology": {
+    "development": "2014-2020",
+    "fixed_forward_robustness": "2021-2023",
+    "post_observation_non_pristine": "2024-01-01 through 2026-09-04"
+  },
+  "role": "HIGH_CONFIDENCE_QUALITY_PROFILE_NOT_INDEPENDENT_FROM_V65",
+  "governance": {
+    "do_not_double_count_with_v65": true,
+    "do_not_tune_further_on_observed_years": true,
+    "charts_may_not_change_rule": true
+  }
+}

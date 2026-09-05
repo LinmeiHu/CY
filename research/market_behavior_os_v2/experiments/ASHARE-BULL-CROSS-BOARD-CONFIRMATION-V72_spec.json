@@ -1,0 +1,44 @@
+{
+  "experiment": "ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72",
+  "stage": "OUTCOME_BLIND_CATEGORICAL_GATE_FREEZE",
+  "source_candidate_sha256": "98cadcfd388ae788eb083b7a1dc7e7128b55ac4db6ccf6402728e3c31b30779b",
+  "cross_board_gate": {
+    "group_key": "signal_date normalized to the exchange session",
+    "main_condition": "count(sleeve == MAIN) >= 1",
+    "chinext_condition": "count(sleeve == CHINEXT) >= 1",
+    "known_at": "max decision_at among same-day frozen V65 candidates",
+    "must_be_known_no_later_than_each_selected_signal_decision": true
+  },
+  "blind_semantic_audit": {
+    "total": 30,
+    "cross_board_confirmed": 15,
+    "single_board_control": 15,
+    "selection": "SHA256 identity order, year-balanced where available",
+    "post_signal_bars": 0,
+    "manual_exclusion_allowed": false
+  },
+  "scientific_gates": {
+    "completed_trades": ">500",
+    "average_completed_trades_per_year": ">50",
+    "mean_net_return": ">3%",
+    "mean_holding_sessions": "<15",
+    "all_2014_2023_annual_trade_means": ">0",
+    "all_2021_2023_trade_and_date_equal_means": ">0",
+    "both_boards_mean": ">0",
+    "mean_excluding_best_five_signal_dates": ">0",
+    "top_five_signal_date_positive_pnl_share": "<=25%",
+    "v72_minus_v65_mean_cluster_bootstrap_ci_lower": ">0",
+    "v72_minus_v65_severe10_cluster_bootstrap_ci_upper": "<0"
+  },
+  "cluster_bootstrap": {
+    "resampling_unit": "signal date",
+    "draws": 1000000,
+    "seed": 720072,
+    "implementation": "multinomial-equivalent paired date resampling",
+    "precision_note": "The large fixed draw count prevents a borderline severe-loss CI endpoint from being classified by ordinary Monte Carlo noise."
+  },
+  "evidence_labels": {
+    "2014_2023": "ITERATIVE_DEVELOPMENT_FIXED_FORWARD_ROBUSTNESS",
+    "2024_current": "NON_PRISTINE_DIAGNOSTIC_NOT_USED_FOR_GATE_SELECTION"
+  }
+}
