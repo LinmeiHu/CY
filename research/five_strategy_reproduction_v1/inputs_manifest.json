@@ -1,0 +1,26 @@
+{
+  "source_export": {"path": "/Users/linmei/Downloads/CY_five_strategy_source_export_20260906/SOURCE_EXPORT_REPORT.json", "result": "IDENTITY_CHECKS_INCOMPLETE", "snapshot_count": 6},
+  "registered_strategy_hashes": {
+    "OGR_runner": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+    "IFCGR_runner": "14f28130cfdcd985d707feb1e4f5ff11ab074df79f73c8d612dcce854821c0c5",
+    "MCB_runner": "7baab4279b886af495ed4f763c4fb3d06ba0e9aabd737e4391437138247efdf5",
+    "ATRDR_runner": "69a83159aa2bd1aa2426268c3036a9759148c19d0f03d15eedf5e7ad95edbfba",
+    "SMV6_strategy": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33"
+  },
+  "external_inputs": {
+    "root": "/Volumes/quant/CY_quant_research",
+    "OGR_CY033": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1",
+    "IFCGR_evidence_grade": "PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE",
+    "SMV6_qmt_daily": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1",
+    "SMV6_hybrid_critical": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1"
+  },
+  "old_outputs_policy": "READ_ONLY_RECONCILIATION_ONLY",
+  "new_outputs": "/Volumes/quant/CY_quant_research/five_strategy_reproduction_v1",
+  "semantic_preflight": {
+    "EVENT_FORMATION_TIME": "completed strategy-specific signal bar",
+    "ENTRY_TIME": "first frozen legal post-signal execution time",
+    "OUTCOME_START_TIME": "actual entry",
+    "STATE_VARIABLES": "frozen runner state plus explicit cash/positions for SMV6 local replay",
+    "CHOSEN_TIME_ANCHORS": "native frozen periods; no forced 2022-2023 common window"
+  }
+}

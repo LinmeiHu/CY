@@ -1,0 +1,24 @@
+# 恢复源码清单
+
+源码导出根：`/Users/linmei/Downloads/CY_five_strategy_source_export_20260906`
+
+|提交|源码快照 ZIP|SHA-256|导出文件数|
+|---|---|---|---:|
+|60970d7235b9ab7ad8da8d1a7fc5631f015462c9|snapshot_60970d7235b9ab7ad8da8d1a7fc5631f015462c9.zip|3cbbc9f39ba7a03465b33992fa671edb1b0f6b16cc22062bdb73891338e7b0b3|2115|
+|6cfac5f5406610f45235aff50618e7da3ae65521|snapshot_6cfac5f5406610f45235aff50618e7da3ae65521.zip|77481972186ca685680b24a172b9687947130abdb497aa4b8ace502b293ce9a7|2108|
+|a740489df7022f2caeec19d7fd61cd4b18900f63|snapshot_a740489df7022f2caeec19d7fd61cd4b18900f63.zip|55d6310bc08f8a558af8e5a72b5fdeb317587ec5866212b730af4ad22f74af70|2226|
+|bba5bc4b76f128d216fa7ef2a6b370771faf65ba|snapshot_bba5bc4b76f128d216fa7ef2a6b370771faf65ba.zip|f6a5fd62deb3cf80d6eaf8a4485e4063d073f993324be00e22bcaa82423f96ce|2222|
+|c12a7fdd269cdc7f240d9de3d0943c609edb5317|snapshot_c12a7fdd269cdc7f240d9de3d0943c609edb5317.zip|982b0f6c752d50cd7946ccd2ee7f9e8f29e2e7de58d3c9954d3f2d04f761d9ba|2098|
+|e7c1dfffcfa6c0fe0ddb34f4df8a93aa4ede6883|snapshot_e7c1dfffcfa6c0fe0ddb34f4df8a93aa4ede6883.zip|a7e13ca598eeae569ba2cff866924b28b63857b5371cfd6ce043d5fc5e392d23|2075|
+
+登记源码身份：
+
+|策略|入口/策略 SHA-256|状态|
+|---|---|---|
+|OGR|540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af|MATCH|
+|IFCGR|14f28130cfdcd985d707feb1e4f5ff11ab074df79f73c8d612dcce854821c0c5|MATCH|
+|MCB|7baab4279b886af495ed4f763c4fb3d06ba0e9aabd737e4391437138247efdf5|MATCH|
+|ATRDR|69a83159aa2bd1aa2426268c3036a9759148c19d0f03d15eedf5e7ad95edbfba|MATCH；声明提交缺身份记录|
+|SMV6|7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33|MATCH|
+
+最终交付 ZIP 内的 `restored_sources/` 是上述快照 ZIP 的直接解包结果，包含实际 `.py` 源文件；`source_export/` 保留导出报告与快照 ZIP，`reproduction_delivery/` 包含本轮代码、状态和报告。ZIP 不是只有清单的“空壳包”。

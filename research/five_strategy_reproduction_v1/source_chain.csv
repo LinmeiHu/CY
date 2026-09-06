@@ -1,0 +1,15 @@
+strategy,route,producer,source_ref,input,input_type,output,hash_status,can_rebuild,blocker
+OGR,orderly-demand,run_ashare_true_gap_below_l_orderly_demand_v28r2.py,bba5bc4b76f,registered CY-033 daily partitions,base_data,orderly amount features,CY-033 files manifest verified,PASS,current integration registry lacks CY-033; matching local registry recovered
+OGR,parent,run_ashare_true_gap_below_l_demand_not_locked_v28r1.py,bba5bc4b76f,V28R1 selected entries,candidate,397 parent events,existing intermediate only,FAIL,V28R1 and earlier chain not rerun in this pass
+OGR,execution,run_lane via V28 replay,bba5bc4b76f,370 rebuilt selected events,signal,255 accepted trades and daily NAV,logical values exact,PASS,parent-chain limitation remains
+IFCGR,cooldown,CY-063 index-correction verifier,c5e3ec548e,issuer fact routes and parent selected,candidate,186 selected events,in-memory deterministic verification PASS,PASS,PIT-B and current-enumeration limitations remain
+IFCGR,execution,run_lane via frozen replay,bba5bc4b76f,170 filtered outcomes,trade,168 accepted trades and daily NAV,logical values exact,PASS,official sealed CLI cannot be repeated or redirected
+MCB,cross-board confirmation,run_ashare_bull_cross_board_confirmation_v72.py,60970d7235b,V65 candidates,candidate,1904 confirmed candidates,logical values exact,PASS,V65 V64 V53 base-feature chain not rerun
+MCB,execution,V72 replay,60970d7235b,V65 development and forward outcomes,trade,1021 accepted trades and daily NAV,logical values exact,PASS,source outcomes are frozen intermediates
+ATRDR,bull,run_ashare_simple_regime_complementary_demand_router_v29.py,c12a7fdd269,registered daily PIT data,base_data,4361 candidates and outcomes,logical values exact,PASS,none in Bull route
+ATRDR,fast-bear,V27 parent,e7c1dfffcf,V27 routed raw trades,candidate,V28/V29 union,frozen intermediate hash-bound,FAIL,V27 full producer chain not rerun
+ATRDR,slow-bear,V27 slow supply parent,e7c1dfffcf,V27 routed raw trades,candidate,V28/V29 union,frozen intermediate hash-bound,FAIL,slow-supply mother producer not closed
+ATRDR,portfolio,V29 shared replay,c12a7fdd269,6379 union outcomes,trade,2898 accepted trades and daily NAV,logical values exact,PASS,Bear routes begin from frozen intermediate
+SMV6,signals,run_v6_hybrid_annual_replay.py,bba5bc4b76f,QMT daily plus longest hybrid critical bars,base_data,779 shadow events,physical parquet SHA exact,PASS,SuperMind native market-data equivalence not proven
+SMV6,shadow-account,build_v6_longest_equity_curves.py,bba5bc4b76f,779 newly rebuilt events,trade,shadow daily NAV,physical parquet SHA exact,PASS,reproduces 31 negative-cash days
+SMV6,cash-account,replay_smv6_cash_constrained.py,a740489df7+,frozen callbacks plus base market data,base_data,local cash-constrained events and daily NAV,local semantics tests PASS,PASS,fees fixed at zero and native equivalence NOT_RUN

@@ -1,0 +1,12 @@
+{
+  "captured_on": "2026-09-06",
+  "branch": "codex/five-strategy-integration-20260906",
+  "start_head": "a740489df7022f2caeec19d7fd61cd4b18900f63",
+  "python": "3.13.5 Anaconda Clang 14.0.6",
+  "platform": "macOS-26.5.1-arm64",
+  "packages": {"pandas": "2.2.3", "numpy": "2.1.3", "duckdb": "1.5.2", "pyarrow": "19.0.0", "matplotlib": "3.10.0"},
+  "source_export": "/Users/linmei/Downloads/CY_five_strategy_source_export_20260906/SOURCE_EXPORT_REPORT.json",
+  "reproduction_output_root": "/Volumes/quant/CY_quant_research/five_strategy_reproduction_v1",
+  "matched_historical_environment": {"worktree": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830", "commit": "c5e3ec548e93df15f4ef492d2aef2dcdd5063df1"},
+  "notes": ["Current PyArrow cannot read several older nested Parquet schemas; DuckDB 1.5.2 was used for read-only content comparison.", "Timestamp us/ns serialization differences were normalized before logical-value comparison; numeric tolerances were not relaxed."]
+}
