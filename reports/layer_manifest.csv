@@ -1,0 +1,19 @@
+strategy,layer,producer,new_row_count,golden_row_count,identity_match_count,missing_count,extra_count,value_mismatch_count,first_difference,status
+MCB,V53,five_strategy_bundle.strategies.mcb.build_v53,8760,8760,8760,0,0,0,,PASS
+MCB,V64,five_strategy_bundle.strategies.mcb.build_v64,2112,2112,2112,0,0,0,,PASS
+MCB,V65,five_strategy_bundle.strategies.mcb.build_v65,2383,2383,2383,0,0,0,,PASS
+MCB,V72_SIGNAL,five_strategy_bundle.strategies.mcb.build_v72,1904,1904,1904,0,0,0,,PASS
+MCB,ACCEPTED,five_strategy_bundle.execution.daily.replay_sleeves,1021,1021,1021,0,0,0,,PASS
+MCB,NAV,five_strategy_bundle.execution.daily.replay_sleeves,2397,2397,2397,0,0,0,,PASS
+ATRDR,MARKET_STATE,five_strategy_bundle.strategies.atrdr.build_market_state,2434,2434,2434,0,0,0,,PASS
+ATRDR,OAI_MOTHER,five_strategy_bundle.strategies.atrdr.build_oai_mother,3433,3433,3433,0,0,0,,PASS
+ATRDR,FAST_V11_OUTCOMES,five_strategy_bundle.execution.daily.fixed_target_outcomes,660,660,660,0,0,0,,PASS
+ATRDR,FAST_V13R1_ACCEPTED,five_strategy_bundle.strategies.atrdr.select_fast_capacity,550,550,550,0,0,0,,PASS
+ATRDR,V27_BEAR_ROUTE,five_strategy_bundle.strategies.atrdr.route_v27_bear,1174,1174,1174,0,0,149,SLOW_SUPPLY_EXHAUSTION_TAKEOVER|20220225|300573.SZ,LOGICAL_PASS_PHYSICAL_FAIL
+ATRDR,V29_BULL_MOTHER,five_strategy_bundle.strategies.atrdr.build_simple_bull,2877,2877,2877,0,0,429,first turnover-ratio last-bit drift,LOGICAL_PASS_PHYSICAL_FAIL
+ATRDR,V29_SOURCE_COMPLETED,five_strategy_bundle.reproduce.run_atrdr,4036,4036,4036,0,0,577,V29|BULL|V29B|20140210|000910.SZ,LOGICAL_PASS_PHYSICAL_FAIL
+ATRDR,V29_ACCEPTED,five_strategy_bundle.execution.daily.replay_shared_router,2119,2119,2119,0,0,276,V29|BULL|V29B|20220526|002446.SZ,LOGICAL_PASS_PHYSICAL_FAIL
+ATRDR,V29_NAV,five_strategy_bundle.execution.daily.replay_shared_router,2423,2433,2423,10,0,399,2022-03-11,LOGICAL_PASS_PHYSICAL_FAIL
+OGR,ZERO_TO_SIGNAL,not_bundled,0,397,0,397,0,0,missing V13 mother producer closure,BLOCKED
+IFCGR,ZERO_TO_SIGNAL,not_bundled,0,186,0,186,0,0,standalone OGR unavailable,BLOCKED
+SMV6,MARKET_TO_EVENTS,not_bundled,0,779,0,779,0,0,frozen callback compatibility closure unavailable,BLOCKED

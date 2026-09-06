@@ -1,0 +1,11 @@
+{
+  "strategy": "MCB-V72",
+  "signal_clock": "same completed close at 15:00",
+  "entry": "first legal open strictly after signal within 3 sessions",
+  "target": 0.15,
+  "horizon_sessions": 15,
+  "cost_per_side": 0.002,
+  "sleeves": {"MAIN": 0.5, "CHINEXT": 0.5},
+  "k_per_sleeve": 30,
+  "daily_entry_cap": 10
+}
