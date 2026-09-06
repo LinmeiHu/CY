@@ -3,6 +3,29 @@
 Only actual strategy families belong here. Search-space concepts remain in
 `STRATEGY_ARCHETYPE_MAP.md` until the creation threshold is met.
 
+## STRAT-ASHARE-MAIN-CHINEXT-CONFIRMATION-BREAKOUT-V72
+
+| Field | Value |
+|---|---|
+| REGISTERED NAME | `主创共振突破` |
+| ENGLISH NAME | `Main-ChiNext Confirmation Breakout` |
+| ALIASES | `V72`; `MCB-V72`; `主创共振`; `双板共振突破`; `跨板确认突破`; `Cross-Board Confirmation Breakout` |
+| STRATEGY_ID | `STRAT-ASHARE-MAIN-CHINEXT-CONFIRMATION-BREAKOUT-V72` |
+| EXPERIMENT_ID | `ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72` |
+| ARCHETYPE | Long-only bull-diffusion first-pressure breakout quality profile |
+| CORE MARKET MECHANISM | A frozen V65 first-pressure break is admitted only when qualified demand is simultaneously visible in Main and ChiNext at the same completed close, distinguishing cross-board bull diffusion from a local board or theme pulse. |
+| FULL RULE IDENTITY | Exact frozen V65 candidate identity plus same-close `MAIN >= 1` and `CHINEXT >= 1`; no added numeric threshold |
+| DECISION / ENTRY | Cross-board state known at the completed 15:00 signal close; enter first legal daily open strictly afterward and within three exchange sessions |
+| EXIT | +15% standing target from executable entry; otherwise H15 then next legal sellable open; no failure stop |
+| PORTFOLIO | Main/ChiNext isolated 50/50 sleeves, K30 per sleeve, at most 10 new positions per sleeve/date, no leverage or cross-sleeve transfer |
+| COST | 20 bp per side |
+| PIT / EXECUTION | Frozen V65 T+1, trading-status, limit, QD-010 corporate-action, lineage and fail-closed semantics |
+| FROZEN COMMIT | `60970d7235b9ab7ad8da8d1a7fc5631f015462c9` |
+| CONTRACT SHA-256 | `7b76833ee523d0329b4905910962abe0163cc370c3e0d8870a222dc43432cad0` |
+| STATUS | Frozen high-confidence quality profile; strict subset of V65 and not an independent return stream |
+| SCIENTIFIC WARNING | Do not double-count with V65 or tune on already observed years; 2024-current is non-pristine diagnostic evidence |
+| CANONICAL REGISTRY | `STRATEGY_ALIAS_REGISTRY.json` |
+
 ## STRAT-ASHARE-ORDERLY-GAP-REPAIR-V28R2
 
 | Field | Value |

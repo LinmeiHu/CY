@@ -43,6 +43,55 @@
       ],
       "registered_at": "2026-09-06",
       "resolution_rule": "Any exact or case-insensitive alias match resolves to this exact frozen V28R2 identity. Do not silently resolve to V29 or another descendant."
+    },
+    {
+      "strategy_id": "STRAT-ASHARE-MAIN-CHINEXT-CONFIRMATION-BREAKOUT-V72",
+      "registered_name_zh": "主创共振突破",
+      "registered_name_en": "Main-ChiNext Confirmation Breakout",
+      "short_code": "MCB-V72",
+      "aliases": [
+        "V72",
+        "主创共振",
+        "主创共振突破",
+        "双板共振突破",
+        "跨板确认突破",
+        "Main-ChiNext Confirmation Breakout",
+        "Cross-Board Confirmation Breakout",
+        "MCB-V72"
+      ],
+      "experiment_id": "ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72",
+      "identity": {
+        "identity_location": "GIT_OBJECT_AT_FROZEN_COMMIT",
+        "frozen_commit": "60970d7235b9ab7ad8da8d1a7fc5631f015462c9",
+        "frozen_branch_at_registration": "codex/ashare-bull-complementary-v1",
+        "path_resolution": "Read each path with git show 60970d7235b9ab7ad8da8d1a7fc5631f015462c9:<path>; do not substitute a working-tree file from another branch.",
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_contract.json",
+        "contract_sha256": "7b76833ee523d0329b4905910962abe0163cc370c3e0d8870a222dc43432cad0",
+        "spec_path": "research/market_behavior_os_v2/experiments/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_spec.json",
+        "spec_sha256": "65539716ac916a404c4ca75a220b32470634e404bd28e4c8858ed37fca7cc702",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_bull_cross_board_confirmation_v72.py",
+        "runner_sha256_at_registration": "7baab4279b886af495ed4f763c4fb3d06ba0e9aabd737e4391437138247efdf5",
+        "stage_a_freeze_path": "research/market_behavior_os_v2/artifacts/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_stage_a_freeze.json",
+        "stage_a_freeze_sha256_at_registration": "b04865bc769df3958d1b603ffd02e8d2cbfab1ee8b106b3d26b494381256a005",
+        "result_path": "research/market_behavior_os_v2/artifacts/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_result.json",
+        "result_sha256_at_registration": "90e3cfc8ce2fe98195211d5c43273f6215dd4c1c5f87e19743bb76f4638e4aaf"
+      },
+      "frozen_parent_chain": [
+        "ASHARE-BULL-INDUSTRY-BREADTH-IGNITION-FIRST-BREAKOUT-V53",
+        "ASHARE-BULL-MEDIUM-PARTICIPATION-INDUSTRY-IGNITION-V64",
+        "ASHARE-BULL-EARLY-MEDIUM-PARTICIPATION-INDUSTRY-IGNITION-V65",
+        "ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72"
+      ],
+      "compact_definition": "A-share Main/ChiNext long-only bull-diffusion breakout quality profile: retain the exact frozen V65 market, industry, stock and first-pressure-break candidate identity, but admit a signal date only when at least one frozen V65 Main candidate and one frozen V65 ChiNext candidate coexist at the same completed 15:00 close; enter the first legal daily open within three sessions, target +15%, no failure stop, H15 then next legal sellable open, 20 bp per side, isolated 50/50 Main/ChiNext sleeves with K30 per sleeve and at most 10 new positions per sleeve/date.",
+      "status": "FROZEN_HIGH_CONFIDENCE_QUALITY_PROFILE_NON_INDEPENDENT_FROM_V65",
+      "scientific_warning": "V72 is a strict subset and deployment profile of V65, not an independent strategy. Do not add V65 and V72 signal counts or PnL, and do not tune the rule on already observed 2014-2026 data. The 2024-current evidence is explicitly non-pristine diagnostic evidence.",
+      "not_the_same_as": [
+        "ASHARE-BULL-EARLY-MEDIUM-PARTICIPATION-INDUSTRY-IGNITION-V65 full-coverage profile",
+        "STRAT-ASHARE-ORDERLY-GAP-REPAIR-V28R2",
+        "STRAT-CHINEXT-V1"
+      ],
+      "registered_at": "2026-09-06",
+      "resolution_rule": "Any exact or case-insensitive alias match resolves to the exact V72 files at frozen commit 60970d7235b9ab7ad8da8d1a7fc5631f015462c9. Do not silently resolve to V65, a later bull-strategy variant, or another branch's working-tree copy."
     }
   ]
 }
