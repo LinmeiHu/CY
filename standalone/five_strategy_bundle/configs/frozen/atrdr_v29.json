@@ -1,0 +1,7 @@
+{
+  "strategy": "ATRDR-V29",
+  "fast_bear": {"mother": "OAI", "prior10_return_max": -0.08, "target": 0.10, "horizon_sessions": 20, "k": 75, "daily_cap": 20},
+  "slow_bear": {"target": 0.10, "horizon_sessions": 20, "frozen_gate": "deep market requires stock ret20 <= -0.15 OR last5 downside turnover <= 0.01"},
+  "bull": {"target": 0.15, "horizon_sessions": 15},
+  "shared_account": {"sleeves": {"MAIN": 0.5, "CHINEXT": 0.5}, "k": 30, "daily_cap": 10, "cost_per_side": 0.002}
+}

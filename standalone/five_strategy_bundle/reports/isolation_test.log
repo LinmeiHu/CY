@@ -1,0 +1,10 @@
+STATUS=PASS
+ISOLATION_DIR=/tmp/five_strategy_bundle_isolation_test.gaeSaP
+COPY_SCOPE=standalone/five_strategy_bundle only
+INSTALL=/opt/anaconda3/bin/python3 -m pip install -e . --no-deps
+TEST=/opt/anaconda3/bin/python3 -m pytest -q
+TEST_RESULT=3 passed, 1 external-data test skipped
+MODULE_ORIGIN=/private/tmp/five_strategy_bundle_isolation_test.gaeSaP/bundle/src/five_strategy_bundle/__init__.py
+FIREWALL=PASS
+REAL_REPRODUCTION=MCB FULL_END_TO_END_REPRODUCIBLE
+MCB_TOTAL_RETURN=0.9617491025224512
