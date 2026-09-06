@@ -1,0 +1,57 @@
+{
+  "experiment": "ASHARE-BULL-FIRST-LIMITUP-QUIET-PULLBACK-V51",
+  "stage": "A_OUTCOME_BLIND_CONTRACT",
+  "research_status": "2014-2020 is disclosed iterative Development; 2021-2023 remains unopened until the Development gate passes",
+  "economic_hypothesis": "A broad positive market and a rising PIT industry provide demand sponsorship. A stock's first limit-up through its prior 20-session high creates a new informed-holder cohort. If the next 2-8 completed sessions make a real pullback while closes preserve the ignition-body midpoint and turnover contracts sharply, available supply has fallen before a second markup attempt. Buying the first completed quiet-pullback state seeks that second wave without paying for a later relaunch breakout.",
+  "independence": "This is not a collapse-gap repair strategy and does not use any V6/V7/V26 downward-gap identity.",
+  "decision_clock": "completed daily signal close",
+  "binding_conditions": {
+    "PIT_MARKET_INDUSTRY_BULL": "market20 > 0, market breadth20 > 50%, PIT industry20 > 3%, PIT industry breadth20 > 55%, and signal-day PIT industry breadth > 45%",
+    "FIRST_NONCROWDED_LIMITUP_IGNITION": "ignition closes at its historical PIT up-limit, closes above the prior 20-session high, has zero limit-up closes in the prior 20 completed stock sessions, and pre-ignition 20-session return <= 15%",
+    "FIRST_QUIET_PULLBACK": "the first qualifying completed session 2-8 sessions after ignition; no intervening limit-up; post-ignition minimum close >= 98% of ignition body midpoint; post-ignition low <= 97% of ignition close; signal close is between ignition body midpoint and 102% of ignition close",
+    "SUPPLY_CONTRACTION_AND_ACCEPTANCE": "signal turnover <= 70% of ignition turnover; pre-signal interim mean turnover <= 80% of ignition turnover; signal return is between -2% and +4%; signal close location >= 55%"
+  },
+  "entry": "first legal next daily open within three market sessions",
+  "outcome_profiles_frozen_before_development": {
+    "T10_H10_NO_STOP": {"target": 0.10, "horizon": 10},
+    "T15_H10_NO_STOP": {"target": 0.15, "horizon": 10},
+    "T20_H10_NO_STOP": {"target": 0.20, "horizon": 10},
+    "T10_H15_NO_STOP": {"target": 0.10, "horizon": 15},
+    "T15_H15_NO_STOP": {"target": 0.15, "horizon": 15},
+    "T20_H15_NO_STOP": {"target": 0.20, "horizon": 15}
+  },
+  "cost": 0.004,
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 of current sleeve NAV",
+    "collision_rank": [
+      "industry_day_breadth descending",
+      "close_vs_body_mid descending",
+      "signal_to_ignition_turnover ascending",
+      "event_id ascending"
+    ],
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "same_symbol_overlap": "forbidden"
+  },
+  "development_gate": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "capacity_accepted_completed_minimum": 350,
+    "mean_net_return_strictly_greater_than": 0.05,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "minimum_positive_active_years": 6,
+    "mean_excluding_best_five_signal_dates_positive": true
+  },
+  "forward_gate": {
+    "years": [2021, 2022, 2023],
+    "open_only_after_development_gate": true,
+    "all_three_year_mean_net_positive": true,
+    "combined_2014_2023_capacity_accepted_completed_strictly_greater_than": 500,
+    "combined_mean_net_return_strictly_greater_than": 0.05,
+    "combined_mean_holding_sessions_strictly_less_than": 15
+  },
+  "repository_2024_plus_signal_or_feature_opened": false
+}

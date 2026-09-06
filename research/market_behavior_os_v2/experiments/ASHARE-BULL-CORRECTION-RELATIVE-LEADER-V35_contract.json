@@ -1,0 +1,74 @@
+{
+  "cost": 0.004,
+  "decision_clock": "completed signal daily close",
+  "development_gate": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 400,
+    "minimum_mean_net": 0.03,
+    "minimum_positive_years": 5,
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "economic_hypothesis": "During a causally known bull market, a broad correction can force liquidity-motivated selling without ending the trend. A previously strong stock in a healthy industry that loses materially less than the market, closes high in its range, and trades normal-or-higher turnover reveals relative demand. Entry after the completed correction seeks resumption as forced supply normalizes.",
+  "entry": "first legal daily open after signal within three market sessions",
+  "experiment": "ASHARE-BULL-CORRECTION-RELATIVE-LEADER-V35",
+  "failure_exit": "after T+1, first completed close below signal-day low; next legal open",
+  "forward": {
+    "2024_q1_use": "late-2023 execution resolution only",
+    "opened_only_after_profile_freeze": true,
+    "years": [
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "four_binding_conditions": {
+    "BROAD_CORRECTION": "signal-day eligible-universe median return <= -1.0% and positive-stock share <= 40%",
+    "HEALTHY_RESILIENT_INDUSTRY": "prior PIT industry median ret20 > 0, positive-ret20 share > 50%, n20 >= 5; signal-day industry median exceeds market median by >= 0.3 percentage point",
+    "PRIOR_PIT_BULL": "immediately prior completed market state is BULL",
+    "RELATIVE_LEADER_DEMAND": "pre-signal completed ret20 in [+5%,+50%]; signal return >= max(-1.0%, market median +2.0 percentage points) and <= +8%; close location >=60%; turnover >=80% of prior20 mean"
+  },
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_SIGNAL_LOW_FAILURE": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_SIGNAL_LOW_FAILURE": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H5_SIGNAL_LOW_FAILURE": {
+      "horizon": 5,
+      "target": 0.1
+    },
+    "T15_H10_SIGNAL_LOW_FAILURE": {
+      "horizon": 10,
+      "target": 0.15
+    }
+  },
+  "stage": "A_OUTCOME_BLIND_CONTRACT"
+}

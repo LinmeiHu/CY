@@ -1,0 +1,63 @@
+{
+  "binding_conditions": {
+    "BROAD_ACCUMULATION_BULL": "at completed signal close: market positive-ret20 share>90%; market median ret20 in (0%,20%]; market median ret60>5%; positive-ret60 share>60%; market median ret120>5%; positive-ret120 share>55%",
+    "HEALTHY_PIT_INDUSTRY": "signal-close PIT industry has >=5 valid members, median ret20>0, and positive-ret20 share>60%",
+    "ORDERLY_PAUSE": "completed signal-session return is between -5% and +3%",
+    "RELATIVE_LAGGARD_WITH_INTACT_SUPPORT": "signal-close ret20 industry percentile<=40%; prior completed 60-session return>5%; prior close no more than 10% below the prior60 high"
+  },
+  "chronology": {
+    "2024_plus_signal_or_feature": false,
+    "2024_q1": "execution resolution for late-2023 entries only after forward freeze",
+    "frozen_forward": [
+      2021,
+      2022,
+      2023
+    ],
+    "hypothesis_formation": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "decision_at": "completed signal-session close",
+  "economic_hypothesis": "A bull market is most supportive when gains are broad enough that more than 90% of stocks are above their 20-session cost reference, while the cross-sectional median 20-session gain remains bounded.  Positive 60- and 120-session trends reject short bear-market rebounds.  In that broad accumulation state, capital can rotate toward a healthy-industry laggard whose own long trend remains intact near overhead price support and whose signal day is an orderly pause rather than a momentum chase.",
+  "entry": "first legal daily open after signal within three exchange sessions",
+  "entry_rank": [
+    "higher industry positive-ret20 share",
+    "higher prior completed 60-session return",
+    "closer prior close to prior60 high",
+    "event_id"
+  ],
+  "experiment": "ASHARE-BROAD-ACCUMULATION-LAGGARD-SUPPORT-V41",
+  "failure_stop": "none",
+  "independence": "No downward gap, collapse-zone, true-gap repair, V6/V7/V26 identity, feature, or outcome is used.",
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "cross_sleeve_transfer": false,
+    "intraday_target_cash_reuse": "not available for same-day opening entries",
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden",
+    "unused_capital": "cash"
+  },
+  "profit_target": "+15% coordinate target, standing only from the first T+1-sellable session",
+  "required_gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "each_2021_2023_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_lt": 15,
+    "mean_net_return_gt": 0.05,
+    "top_five_signal_date_positive_pnl_share_le": 0.25
+  },
+  "research_status": "2014-2020 is disclosed hypothesis formation after outcome inspection; 2021-2023 is the frozen chronological extension",
+  "round_trip_cost": 0.004,
+  "time_stop": "H15 decision followed by the next legal daily open"
+}

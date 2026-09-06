@@ -1,0 +1,64 @@
+{
+  "experiment": "ASHARE-BULL-INDUSTRY-BREADTH-IGNITION-FIRST-BREAKOUT-V53",
+  "stage": "A_OUTCOME_BLIND_CONTRACT",
+  "research_status": "2014-2020 is disclosed iterative Development; 2021-2023 remains unopened until the Development gate passes",
+  "economic_hypothesis": "A sector-specific bull phase begins when PIT industry return and participation breadth accelerate together over five completed sessions while the broad market is not bearish. During that capital-diffusion window, the first moderate-volume close through a stock's prior 20-session pressure level can be the stock-level transmission of new sector demand, provided the stock was already in a positive but non-euphoric 60-session trend and had no recent limit-up crowding.",
+  "independence": "No downward collapse-gap, V6/V7/V26 event identity, or gap-repair outcome is used.",
+  "decision_clock": "completed daily signal close",
+  "binding_conditions": {
+    "PIT_MARKET_NOT_BEARISH": "market20 > -3% and market breadth20 > 40%",
+    "PIT_INDUSTRY_BREADTH_IGNITION": "industry20 > 3%, industry breadth20 > 60%, five-session industry20 increase >=3 percentage points, and five-session industry breadth20 increase >=15 percentage points",
+    "POSITIVE_NON_EUPHORIC_STOCK": "completed stock ret60 is between 0% and 30%; there was no limit-up close in the prior 20 completed stock sessions",
+    "FIRST_MODERATE_PRESSURE_BREAK": "completed close exceeds the prior 20-session high; signal return is +2% to +8%; close location >=70%; turnover is 1.2x-4.0x prior20 mean"
+  },
+  "event_cooldown": "after an accepted signal identity, the same symbol cannot form another signal for 20 market sessions",
+  "entry": "first legal next daily open within three market sessions",
+  "outcome_profiles_frozen_before_development": {
+    "T10_H10_NO_STOP": {"target": 0.10, "horizon": 10},
+    "T15_H10_NO_STOP": {"target": 0.15, "horizon": 10},
+    "T20_H10_NO_STOP": {"target": 0.20, "horizon": 10},
+    "T10_H15_NO_STOP": {"target": 0.10, "horizon": 15},
+    "T15_H15_NO_STOP": {"target": 0.15, "horizon": 15},
+    "T20_H15_NO_STOP": {"target": 0.20, "horizon": 15}
+  },
+  "cost": 0.004,
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "maximum_one_new_position_per_industry_sleeve_date": true,
+    "position_size": "1/30 of current sleeve NAV",
+    "within_industry_rank": [
+      "stock ret60 descending",
+      "turnover_ratio descending",
+      "event_id ascending"
+    ],
+    "cross_industry_collision_rank": [
+      "industry_breadth20_delta5 descending",
+      "industry20_delta5 descending",
+      "industry_breadth20 descending",
+      "event_id ascending"
+    ],
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "same_symbol_overlap": "forbidden"
+  },
+  "development_gate": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "capacity_accepted_completed_minimum": 350,
+    "mean_net_return_strictly_greater_than": 0.05,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "minimum_positive_active_years": 6,
+    "mean_excluding_best_five_signal_dates_positive": true
+  },
+  "forward_gate": {
+    "years": [2021, 2022, 2023],
+    "open_only_after_development_gate": true,
+    "all_three_year_mean_net_positive": true,
+    "combined_2014_2023_capacity_accepted_completed_strictly_greater_than": 500,
+    "combined_mean_net_return_strictly_greater_than": 0.05,
+    "combined_mean_holding_sessions_strictly_less_than": 15
+  },
+  "repository_2024_plus_signal_or_feature_opened": false
+}

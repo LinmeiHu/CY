@@ -1,0 +1,65 @@
+{
+  "chronology": {
+    "2014_2020": "profile selection and mechanism development",
+    "2021_2023": "predetermined later chronological check, not used in selection",
+    "post_2023_signal_or_feature": false
+  },
+  "cost": 0.004,
+  "decision_clock": "completed daily signal close",
+  "economic_hypothesis": "An early or middle bull diffusion phase can finance a stock's first support test after a demand-backed 60-session ceiling break. If the pullback preserves the old ceiling and the ignition cost area on lower turnover, a later high-location, turnover-backed short-ceiling reclaim represents renewed demand after a supply test, not saturated market beta.",
+  "entry": "first legal daily open after signal within three market sessions",
+  "experiment": "ASHARE-BULL-EARLY-DIFFUSION-SUPPORT-REACCELERATION-V28",
+  "failure_stop": "none",
+  "four_grouped_conditions": {
+    "DEMAND_REACCELERATION": "completed close above prior-three-session high; +1.5% to +8% signal bar; close location >=65%; turnover >=1.1 times prior five-session mean",
+    "EARLY_MID_BULL_NOT_SATURATED": "PIT market regime BULL; positive-ret20 breadth <=85%; five-session breadth change >=-5 percentage points",
+    "FIRST_SUPPORT_TEST_AFTER_IGNITION": "first frozen high-recall episode 2-30 sessions after a causal first 60-session ceiling ignition; pullback drawdown 4-20%; old ceiling preserved within 5%; ignition-cost test between -12% and +6%; three-session pullback turnover <= prior ignition baseline; when multiple old ignitions map to one symbol/signal date, retain the most recent ignition because it is the current holder-cost episode",
+    "INDUSTRY_PARTICIPATION": "PIT industry median ret20 >0; positive-ret20 share >50%; cross-industry ret20 percentile >=30%; five-session breadth change >=-10 points"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profile_selection": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 350,
+    "minimum_positive_years": 5,
+    "order": [
+      "median annual mean net return",
+      "pooled mean net return",
+      "lower severe-loss10",
+      "shorter horizon"
+    ],
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "profiles": {
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  }
+}

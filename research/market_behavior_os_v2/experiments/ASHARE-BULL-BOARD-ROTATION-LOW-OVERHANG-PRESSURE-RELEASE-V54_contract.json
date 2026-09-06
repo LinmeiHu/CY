@@ -1,0 +1,54 @@
+{
+  "experiment": "ASHARE-BULL-BOARD-ROTATION-LOW-OVERHANG-PRESSURE-RELEASE-V54",
+  "stage": "A_OUTCOME_BLIND_FREEZE",
+  "independence": "No collapse-gap, gap-repair, V6/V7, or below-gap event identity is used.",
+  "economic_hypothesis": "A Main-Board or ChiNext sleeve can sustain a bull phase even when whole-market breadth is not extreme. Inside a healthy industry, a stock with a positive but bounded medium trend that builds a rising-floor, shrinking-turnover base below a previously traded pressure level has absorbed nearby supply. A first high-location close through that pressure level on renewed turnover is tradable only when the historical turnover-decayed inventory in the symmetric 15% corridor above the level is small relative to the 15% corridor below it.",
+  "binding_conditions": {
+    "PIT_BOARD_PHASE_AND_INDUSTRY_DEMAND": "same-sleeve board60>3%, board breadth60>=55%, board120>0, board breadth120>=50%, board20>-5%, board breadth20>=40%; PIT industry n>=5, industry60>0, breadth60>=55%, industry20>0, breadth20>=55%",
+    "BOUNDED_TREND_AND_RISING_FLOOR_BASE": "prior completed 60-session return in [5%,60%], completed signal ret120>0, prior20 pressure / prior10 floor - 1 <=20%, prior10 range<=15%, and prior10 floor>=prior11-20 floor",
+    "SUPPLY_CONTRACTION_AND_FIRST_PRESSURE_RELEASE": "prior10 mean turnover / prior11-40 mean turnover<=0.85; frozen prior21-120 high is between -3% and +20% of prior20 pressure; previous close below prior20 pressure; completed signal close at/above pressure; signal return [2%,7%], close location>=70%, signal turnover 1.3x to 5x prior20 mean",
+    "LOW_DECAYED_OVERHEAD": "using only prior 120 completed valid same-lineage sessions, typical coordinate price=(high+low+close)/3 and mass=turnover_fraction*exp(-subsequent completed cumulative turnover); at least 10 historical observations in [0.85P,P); decayed mass in [P,1.15P] divided by total decayed mass in [0.85P,1.15P] <=20%"
+  },
+  "pressure_level": "P = prior-completed 20-session high",
+  "feature_clock": "completed signal-session close; all stock history used by base and inventory excludes the signal session; board and PIT industry state use the completed signal session",
+  "entry": "first legal daily open strictly after signal, within three exchange sessions",
+  "costs": {"entry": 0.002, "exit": 0.002},
+  "development": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "minimum_capacity_accepted_completed": 350,
+    "minimum_mean_net": 0.05,
+    "maximum_mean_holding_sessions": 15,
+    "minimum_positive_active_years": 5
+  },
+  "frozen_forward": {
+    "years": [2021, 2022, 2023],
+    "open_only_if_development_gate_passes": true,
+    "may_not_select_or_modify_rules": true
+  },
+  "profiles": {
+    "T15_H10_X0": {"target": 0.15, "time_stop": 10, "failure": "NONE"},
+    "T15_H12_X0": {"target": 0.15, "time_stop": 12, "failure": "NONE"},
+    "T20_H10_X0": {"target": 0.20, "time_stop": 10, "failure": "NONE"},
+    "T20_H12_X0": {"target": 0.20, "time_stop": 12, "failure": "NONE"},
+    "T15_H10_X1": {"target": 0.15, "time_stop": 10, "failure": "completed close below frozen prior10 floor, then next legal open"},
+    "T15_H12_X1": {"target": 0.15, "time_stop": 12, "failure": "completed close below frozen prior10 floor, then next legal open"},
+    "T20_H10_X1": {"target": 0.20, "time_stop": 10, "failure": "completed close below frozen prior10 floor, then next legal open"},
+    "T20_H12_X1": {"target": 0.20, "time_stop": 12, "failure": "completed close below frozen prior10 floor, then next legal open"}
+  },
+  "profile_selection": "Among Development-gate-qualified profiles, maximize median active-year mean net, then pooled mean net, then lower severe_loss10, then shorter mean holding, then X0 over X1, then lower target.",
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 of current sleeve NAV",
+    "unused_capital": "cash",
+    "one_active_position_per_symbol": true,
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "collision_rank": ["lower overhead_share", "higher industry_breadth20", "higher trigger_turnover_ratio", "event_id"]
+  },
+  "stage_a_candidate_sha256": "bb438525e95cfcbc6ca27c09de2ffd4dacc571decc7e4447bc3ab29badc88a3b",
+  "outcomes_opened": false,
+  "repository_2024_plus_signal_or_feature_opened": false
+}

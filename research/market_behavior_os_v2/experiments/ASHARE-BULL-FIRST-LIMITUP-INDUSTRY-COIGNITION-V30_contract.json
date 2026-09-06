@@ -1,0 +1,79 @@
+{
+  "blind_chart": "130 completed stock sessions ending at signal close, plus PIT market and industry state; no post-signal bar and no outcome",
+  "candidate_identity": "signal_date + symbol; one row per symbol/date",
+  "chronology": {
+    "2014_2020": "profile development and selection",
+    "2021_2023": "predetermined forward check opened only after profile freeze"
+  },
+  "decision_clock": "completed daily close",
+  "economic_hypothesis": "In a causally known broad bull market, two or more same-industry stocks making their first limit-up close through a completed 60-session ceiling on the same day is observable sector-level information arrival. For a stock that was bounded rather than already extended, the first limit-up is a price-discovery event backed by synchronized capital, not a one-candle inference of absorption.",
+  "entry": "first legal daily open after signal, within three market sessions",
+  "experiment": "ASHARE-BULL-FIRST-LIMITUP-INDUSTRY-COIGNITION-V30",
+  "failure_exit": "after T+1, first completed daily close below the frozen prior60 platform ceiling; exit at the next legal open",
+  "four_grouped_conditions": {
+    "FIRST_LIMITUP_PLATFORM_BREAK": "close equals the historical price-limit coordinate; no prior limit-up close in 20 completed sessions; current coordinate close >= prior 60-session coordinate high while previous close was below it; the ceiling was approached within 3% on at least three completed sessions during the prior 60; prior completed 20-session high/low range <=25%; prior completed 20-session return in [-15%,+15%]; prior 60-session high/low range <= 40%",
+    "HEALTHY_INDUSTRY": "PIT industry n20 >= 5, median completed ret20 > 0, and positive-ret20 share > 50% at signal close",
+    "INDUSTRY_COIGNITION": "at least two stocks in the same PIT industry make a first limit-up 60-session ceiling break from bounded prior state on the same signal close; the traded stock must additionally satisfy the repeated-ceiling and compact-last20 platform semantics",
+    "PIT_BULL_MARKET": "frozen causal market_regime equals BULL at signal close"
+  },
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "post_2023_signal_or_feature_used": false,
+  "profile_selection": {
+    "development_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 400,
+    "minimum_positive_years": 5,
+    "order": [
+      "median annual mean net return",
+      "pooled mean net return",
+      "lower severe-loss10",
+      "shorter horizon"
+    ]
+  },
+  "profit_target": "profile target, standing only from the first T+1 session",
+  "round_trip_cost": 0.004,
+  "stage": "A_OUTCOME_BLIND_SEMANTIC_PREFLIGHT",
+  "time_stop": "profile H10 or H15 decision, then next legal open",
+  "translation_profiles": {
+    "H10_BREAKOUT_FAILURE": {
+      "horizon": 10,
+      "target": null
+    },
+    "H15_BREAKOUT_FAILURE": {
+      "horizon": 15,
+      "target": null
+    },
+    "T15_H15_BREAKOUT_FAILURE": {
+      "horizon": 15,
+      "target": 0.15
+    },
+    "T20_H15_BREAKOUT_FAILURE": {
+      "horizon": 15,
+      "target": 0.2
+    }
+  }
+}

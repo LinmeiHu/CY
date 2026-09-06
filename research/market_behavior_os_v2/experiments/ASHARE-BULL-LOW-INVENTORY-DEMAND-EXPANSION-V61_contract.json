@@ -1,0 +1,59 @@
+{
+  "experiment": "ASHARE-BULL-LOW-INVENTORY-DEMAND-EXPANSION-V61",
+  "stage": "A_OUTCOME_BLIND_CONTRACT",
+  "research_status": "2014-2020 is disclosed iterative Development; 2021-2023 remains unopened until the fixed Development gate passes",
+  "economic_hypothesis": "A locally bullish PIT industry can sustain a second markup only when the stock has accumulated gradually, a completed non-limit demand bar escapes the recent ceiling, the next 15 percent price corridor has little completed historical occupancy, and both broad-market and industry participation are expanding again. Low overhead supply and renewed sponsorship must both be present; either alone is insufficient.",
+  "independence": "No collapse-gap, true-gap repair, V6, V7, V26, or V27 event identity is used. This is a non-gap bull participation strategy.",
+  "decision_clock": "completed daily close",
+  "binding_conditions": {
+    "PIT_LOCAL_INDUSTRY_BULL": "PIT industry has at least 10 members; median ret20 and ret60 are positive; positive-ret20 and positive-ret60 shares both exceed 50 percent",
+    "DISTRIBUTED_ACCUMULATION": "strictly prior 20-session return is 5 to 25 percent; at least 60 percent of prior sessions are positive; maximum absolute prior daily return is below 7 percent; downside/upside turnover ratio is at most 0.65",
+    "ACTIVE_DEMAND_BREAKOUT": "completed non-limit return is 2 to 7 percent, close location at least 75 percent, close above the strictly prior 20-session high, and turnover is 1.2 to 2.5 times the strictly prior 20-session median",
+    "LOW_INVENTORY_TARGET_CORRIDOR": "exactly 126 completed, hard-valid, same-coordinate-lineage sessions precede the signal; no more than 10 intersect [signal close, 1.15 times signal close]",
+    "RENEWED_MARKET_AND_INDUSTRY_DEMAND": "current market and PIT-industry positive-ret20 breadth are each at least 70 percent and each exceeds its exact 10-market-session lag by at least 10 percentage points; current and lag coverage are market at least 200 and industry at least 10"
+  },
+  "cooldown": "more than 20 market sessions since the prior raw identical stock event",
+  "entry": "first legal daily open after the completed signal, within three market sessions",
+  "profit_target": "+15 percent gross, standing only from the first T+1 session",
+  "time_stop": "H15 decision, then next legal open",
+  "failure_exit": "none",
+  "round_trip_cost": 0.004,
+  "chronology": {
+    "development": "2014-01-01 through 2020-12-31",
+    "forward_check": "2021-01-01 through 2023-12-31, opened once only if Development passes",
+    "tail_read": "2024-01-01 through 2024-03-31 may be read only to resolve legal exits of 2023 entries"
+  },
+  "development_gate": {
+    "capacity_accepted_completed_minimum": 300,
+    "mean_net_return_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "minimum_positive_calendar_years": 4,
+    "mean_excluding_best_five_signal_dates_positive": true
+  },
+  "final_gate": {
+    "capacity_accepted_completed_strictly_greater_than": 500,
+    "mean_net_return_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "2021_2022_2023_each_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "top_five_signal_date_positive_pnl_share_at_most": 0.25
+  },
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 of current sleeve NAV",
+    "collision_rank": [
+      "industry positive-ret20 breadth descending",
+      "stock minus industry ret20 descending",
+      "turnover expansion descending",
+      "event_id ascending"
+    ],
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "same_symbol_overlap": "forbidden"
+  },
+  "outcomes_opened": false,
+  "post_2023_signal_or_feature_used": false
+}

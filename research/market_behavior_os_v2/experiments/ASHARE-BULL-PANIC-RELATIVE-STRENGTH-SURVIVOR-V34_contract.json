@@ -1,0 +1,74 @@
+{
+  "cost": 0.004,
+  "decision_clock": "completed signal daily close",
+  "development": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 400,
+    "minimum_mean_net": 0.03,
+    "minimum_positive_years": 5,
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "economic_hypothesis": "When a causally known bull market suffers a broad one-day liquidity shock, forced de-risking supplies stock indiscriminately. A previously strong stock whose PIT industry and own price both resist that shock while closing in the upper part of its range reveals latent demand. Buying after the completed shock seeks the normalization rebound, not a generic oversold bounce.",
+  "entry": "first legal daily open after signal within three market sessions",
+  "experiment": "ASHARE-BULL-PANIC-RELATIVE-STRENGTH-SURVIVOR-V34",
+  "failure_exit": "after T+1, first completed daily close below signal-day low; exit next legal open",
+  "forward": {
+    "2024_q1_use": "late-2023 execution resolution only",
+    "opened_only_after_profile_freeze": true,
+    "years": [
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "four_binding_conditions": {
+    "BROAD_LIQUIDITY_PANIC": "signal-day executable-universe median return<=-1.5% and positive-stock share<=30%",
+    "INDUSTRY_RELATIVE_RESILIENCE": "prior PIT industry is healthy and signal-day industry median return exceeds market median by >=0.5 percentage point",
+    "LEADER_REJECTS_PANIC": "pre-signal completed 20-session return is +5% to +50%; signal return is at least max(-1.5%, market+2.5%); close location>=60%; turnover>=80% of prior20 mean",
+    "PRIOR_PIT_BULL": "market regime at immediately prior completed session is BULL"
+  },
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_SIGNAL_LOW_FAILURE": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_SIGNAL_LOW_FAILURE": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H5_SIGNAL_LOW_FAILURE": {
+      "horizon": 5,
+      "target": 0.1
+    },
+    "T15_H10_SIGNAL_LOW_FAILURE": {
+      "horizon": 10,
+      "target": 0.15
+    }
+  },
+  "stage": "A_OUTCOME_BLIND_CONTRACT"
+}

@@ -1,0 +1,28 @@
+{
+  "experiment": "ASHARE-BULL-FIRST-BREAKOUT-SUPPORT-RECLAIM-V49",
+  "economic_hypothesis": "A volume-confirmed breakout in a PIT-observable sector bull freezes the old 20-session ceiling as a support reference. A subsequent lower-volume pullback that first closes below that reference and then causally reclaims it transfers risk from the breakout buyer to a support-tested entry at a lower price.",
+  "independence": "No gap-repair or collapse-zone identity is used.",
+  "mother_breakout": "signal-close ret120>0; prior60 return>8%; completed close>=prior completed 20-session high; daily return in [2.5%,9.5%]; close location>65%; turnover/prior20 mean>1.20; PIT market guard and PIT industry median/breadth leadership",
+  "frozen_support": "mother event prior completed 20-session high",
+  "pullback": "3-15 exchange sessions after mother; minimum low at least 5% below mother high; average turnover through reclaim below mother turnover",
+  "reclaim_trigger": "immediately prior completed close below frozen support and current completed close>=support; current return in (0%,6%]; close location>55%; signal close<=1.02*mother high; PIT market/industry not structurally broken",
+  "deduplication": "one signal per symbol-date; use the most recent qualifying mother",
+  "coordinate_lineage": "mother and reclaim signal must have identical hard-valid corporate-action coordinate lineage; mismatch is rejected fail-closed",
+  "decision_at": "completed reclaim session close",
+  "entry": "first legal daily open strictly after decision, within three exchange sessions",
+  "capacity_rank": ["higher signal-day industry breadth20", "lower pullback average turnover relative to mother", "higher reclaim close relative to frozen support", "event_id"],
+  "predeclared_exit_space": {
+    "targets": [0.10, 0.15, 0.20],
+    "time_stops": [10, 15],
+    "X0": "no failure exit",
+    "X1": "after T+1, first completed close below 0.98*frozen support; sell next legal open",
+    "X2": "after T+1, two consecutive completed exchange-session closes below frozen support; sell next legal open"
+  },
+  "costs": {"entry": 0.002, "exit": 0.002},
+  "portfolio": {"Main_sleeve": 0.5, "ChiNext_sleeve": 0.5, "K_per_sleeve": 30, "max_new_per_sleeve_date": 10, "one_active_position_per_symbol": true, "unused_capital": "cash", "leverage": false, "cross_sleeve_transfer": false},
+  "development": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+  "frozen_forward": [2021, 2022, 2023],
+  "goal_gate": {"2014_2023_completed_trades_gt": 500, "mean_net_return_gt": 0.05, "mean_holding_sessions_lt": 15, "2021_2022_2023_each_positive": true, "future_information_count": 0},
+  "outcomes_opened_for_exact_contract": false,
+  "repository_2024_plus_opened_for_exact_contract": false
+}

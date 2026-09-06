@@ -1,0 +1,70 @@
+{
+  "experiment": "ASHARE-BULL-ANCHOR-COST-FIRST-DRY-PULLBACK-V56",
+  "status": "OUTCOME_BLIND_FROZEN",
+  "economic_hypothesis": "In a PIT board-and-industry bull phase, a high-location, high-turnover demand bar creates a newly observable cost cohort. If the first later test of that bar's daily VWAP closes back above the cohort cost on sharply lower turnover, available supply has contracted and a short mark-up continuation may follow.",
+  "independence": "No downward-gap, collapse-zone, true-gap-repair, V6, V7, V24 or V26 event identity or outcome is used.",
+  "market_and_industry_state": {
+    "board": "signal and anchor: board60 > 0, board breadth60 >= 0.50, board120 > 0, board breadth120 >= 0.45; signal also board20 > -0.08 and board breadth20 >= 0.35",
+    "industry": "PIT causal industry has at least five members; industry20 and industry60 > 0; breadth20 and breadth60 >= 0.50",
+    "latest_observable_time": "completed decision-session close"
+  },
+  "demand_anchor": {
+    "return": "5% through 9.5% on Main; 5% through 15% on ChiNext",
+    "close_location_min": 0.70,
+    "turnover_vs_prior_completed_baseline_min": 1.8,
+    "cost_coordinate": "daily amount / volume, transformed to QD-010 coordinate",
+    "purpose": "observable demand-cohort proxy, not shareholder identity"
+  },
+  "first_dry_test": {
+    "age_sessions": [1, 15],
+    "first_touch": "signal low is the first post-anchor low at or below anchor VWAP; signal low must be within [-3%, +1%] of anchor VWAP",
+    "close_acceptance": "signal close >= anchor VWAP and <= 1.005 * anchor close",
+    "signal_return": [-0.03, 0.01],
+    "signal_turnover_to_anchor_max": 0.70,
+    "close_location_min": 0.60,
+    "interim_turnover_to_anchor_max": 0.90,
+    "one_signal_per_anchor": true
+  },
+  "execution": {
+    "entry": "first legal open after completed signal session, no later than three calendar sessions in the daily PIT calendar",
+    "targets": [0.10, 0.15],
+    "time_stops_sessions": [8, 12],
+    "failure_variants": ["none", "completed close below anchor-day low, exit next legal open"],
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "development": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "meaningful_years_required_positive": [2014, 2015, 2016, 2019, 2020],
+    "minimum_capacity_accepted_completed_trades": 450,
+    "mean_net_return_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15
+  },
+  "forward_gate": {
+    "years": [2021, 2022, 2023],
+    "open_only_after_development_passes": true,
+    "each_year_mean_net_positive": true,
+    "2014_2023_capacity_accepted_completed_trades_strictly_greater_than": 500,
+    "2014_2023_mean_net_return_strictly_greater_than": 0.03,
+    "2014_2023_mean_holding_sessions_strictly_less_than": 15,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "top_five_positive_date_pnl_share_max": 0.25
+  },
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 current sleeve NAV",
+    "collision_rank": ["lower signal/anchor turnover", "higher industry breadth20", "higher anchor turnover expansion", "event_id"],
+    "unused_cash": "stays in sleeve",
+    "leverage": false,
+    "cross_sleeve_transfer": false
+  },
+  "governance": {
+    "candidate_and_profiles_frozen_before_outcome_open": true,
+    "same_bar_fill": false,
+    "unknown_required_lineage": "fail closed",
+    "post_2023_data": "may only resolve a pre-2024 trade; cannot create a signal or feature"
+  }
+}

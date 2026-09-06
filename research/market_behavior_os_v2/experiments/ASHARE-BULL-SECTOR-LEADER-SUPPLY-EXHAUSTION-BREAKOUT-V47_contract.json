@@ -1,0 +1,54 @@
+{
+  "experiment": "ASHARE-BULL-SECTOR-LEADER-SUPPLY-EXHAUSTION-BREAKOUT-V47",
+  "research_status": "2014-2020 outcome-blind semantic freeze followed by Development; 2021-2023 remains unopened for this exact contract until the Development gate is resolved",
+  "economic_hypothesis": "In a PIT-observable sector bull, an already orderly long-cycle leader that forms a tight, lower-turnover high base has reduced immediately available supply. A completed close through the prior five-session pressure level on expanding turnover is evidence of renewed demand. The trade begins only at a later legal open.",
+  "independence": "No collapse-gap, true-gap, gap-repair, or below-gap event identity is used.",
+  "binding_conditions": {
+    "PIT_SECTOR_BULL_WITH_MARKET_GUARD": "industry_n>=5; industry median ret20>8%; industry positive-ret20 share>65%; industry median ret60>10%; industry positive-ret60 share>60%; industry-minus-market ret20>5%; market median ret20>-5%; market positive-ret20 share>35%; market median ret60>-8%; market positive-ret60 share>35%; market median ret120>-12%; market positive-ret120 share>30%",
+    "ORDERLY_ESTABLISHED_LEADER": "signal-close ret120>0; prior-completed-60-session return>10%; prior60 net-return / sum(abs(daily returns))>=8%; prior60 high/low range<=35%; prior close no more than 18% below prior60 high",
+    "SUPPLY_EXHAUSTION_BASE": "prior-completed-10-session high/low range<=18%; prior5 mean turnover / prior6-20 mean turnover<1.05",
+    "RENEWED_DEMAND_TRIGGER": "completed signal close>=prior completed 5-session high; signal return in [1.5%,8.5%]; close location>65%; signal turnover / prior20 mean turnover>1.10"
+  },
+  "feature_clock": "completed signal-session close; all rolling stock windows exclude the signal session except ret120 and the trigger bar itself; market and industry cross-sections use only the completed signal session",
+  "entry": "first legal daily open strictly after the signal, within three exchange sessions",
+  "development_period": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+  "frozen_forward_period": [2021, 2022, 2023],
+  "predeclared_exit_space": {
+    "targets": [0.10, 0.15, 0.20],
+    "time_stop_sessions": 15,
+    "failure_exits": {
+      "X0": "none",
+      "X1": "after T+1, two consecutive completed exchange sessions close below the frozen prior5 breakout level; sell next legal open",
+      "X2": "after T+1, completed close below frozen prior10 platform floor; sell next legal open"
+    }
+  },
+  "costs": {"entry": 0.002, "exit": 0.002},
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "one_active_position_per_symbol": true,
+    "unused_capital": "cash",
+    "leverage": false,
+    "cross_sleeve_transfer": false
+  },
+  "selection_order": [
+    "mean_net_return",
+    "median_net_return",
+    "severe_loss10",
+    "mean_holding_sessions",
+    "simpler_failure_exit",
+    "lower_target"
+  ],
+  "required_gate": {
+    "2014_2023_capacity_accepted_completed_trades_gt": 500,
+    "mean_net_return_gt": 0.05,
+    "mean_holding_sessions_lt": 15,
+    "2021_2022_2023_each_mean_positive": true,
+    "date_concentration_not_dominant": true,
+    "future_information_count": 0
+  },
+  "outcomes_opened_for_exact_contract": false,
+  "repository_2024_plus_opened_for_exact_contract": false
+}

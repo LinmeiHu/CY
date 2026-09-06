@@ -1,0 +1,12 @@
+{
+  "experiment": "ASHARE-BULL-SECTOR-LEADER-SUPPLY-EXHAUSTION-BREAKOUT-V47",
+  "version": 1,
+  "source_daily": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+  "large_artifact_root": "/Volumes/quant/CY_quant_research/bull_sector_leader_supply_exhaustion_breakout_v47",
+  "candidate_source": "/Volumes/quant/CY_quant_research/bull_high_base_supply_exhaustion_breakout_v45/stage_a/candidate_path_quality.parquet",
+  "candidate_filter": "prior60_path_efficiency>=0.08 AND ret120>0",
+  "blind_chart_source": "outcome-blind deterministic hash sample; all charts stop at completed signal close",
+  "outcome_opening_order": ["2014-2020 Development", "freeze selected exit", "2021-2023 frozen chronological extension"],
+  "signal_or_feature_rows_after_2023_allowed": false,
+  "2024_plus_signal_or_feature_rows_opened": false
+}

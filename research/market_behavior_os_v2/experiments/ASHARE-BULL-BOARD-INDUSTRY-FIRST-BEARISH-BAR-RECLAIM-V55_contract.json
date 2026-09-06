@@ -1,0 +1,32 @@
+{
+  "experiment": "ASHARE-BULL-BOARD-INDUSTRY-FIRST-BEARISH-BAR-RECLAIM-V55",
+  "stage": "A_OUTCOME_BLIND_FREEZE",
+  "economic_hypothesis": "During a PIT-observable bull phase in one board sleeve and a healthy PIT industry, a coherent four-session stock impulse reveals active demand. The first meaningful down session is a direct supply test. If the next completed session closes above that pullback session's high with at least as much turnover, the observed auction has absorbed the offered supply and resumed price discovery. This uses an actual sell-test and reclaim rather than inferring demand from an empty price corridor.",
+  "independence": "No collapse gap, gap repair, static VAP-vacuum, V6/V7, V24, or V26 event identity is used.",
+  "binding_conditions": {
+    "PIT_BOARD_PHASE": "same-sleeve board60>0, breadth60>=50%, board120>0, breadth120>=45%, board20>-8%, breadth20>=35%",
+    "PIT_HEALTHY_INDUSTRY": "PIT industry n>=5, industry60>0, breadth60>=50%, industry20>0, breadth20>=50%",
+    "COHERENT_FOUR_SESSION_IMPULSE": "return from t-6 close to t-2 close in [10%,45%], at least 3 of the 4 intervening returns positive, path efficiency >=65%",
+    "FIRST_SUPPLY_TEST_AND_RECLAIM": "t-1 return in [-10%,-1%], t-1 low above t-6 close; signal close above t-1 high; signal return [2%,8%], close location>=65%, signal turnover/t-1 turnover in [1,5]"
+  },
+  "decision_clock": "completed reclaim-session close; every stock, board, and industry condition is known no later than that close",
+  "entry": "first legal daily open strictly after the signal within three exchange sessions",
+  "costs": {"entry": 0.002, "exit": 0.002},
+  "development": {"years": [2014, 2015, 2016, 2017, 2018, 2019, 2020], "minimum_capacity_accepted_completed": 350, "minimum_mean_net": 0.05, "maximum_mean_holding_sessions": 15, "minimum_positive_active_years": 5},
+  "frozen_forward": {"years": [2021, 2022, 2023], "open_only_if_development_gate_passes": true, "may_not_modify_or_select_rules": true},
+  "profiles": {
+    "T15_H8_X0": {"target": 0.15, "time_stop": 8, "failure": "NONE"},
+    "T15_H12_X0": {"target": 0.15, "time_stop": 12, "failure": "NONE"},
+    "T20_H8_X0": {"target": 0.20, "time_stop": 8, "failure": "NONE"},
+    "T20_H12_X0": {"target": 0.20, "time_stop": 12, "failure": "NONE"},
+    "T15_H8_X1": {"target": 0.15, "time_stop": 8, "failure": "after T+1, completed close below frozen pullback low; next legal open"},
+    "T15_H12_X1": {"target": 0.15, "time_stop": 12, "failure": "after T+1, completed close below frozen pullback low; next legal open"},
+    "T20_H8_X1": {"target": 0.20, "time_stop": 8, "failure": "after T+1, completed close below frozen pullback low; next legal open"},
+    "T20_H12_X1": {"target": 0.20, "time_stop": 12, "failure": "after T+1, completed close below frozen pullback low; next legal open"}
+  },
+  "profile_selection": "Development-gate-qualified profiles only; highest median active-year mean, then pooled mean, lower severe_loss10, shorter hold, X0, lower target.",
+  "portfolio": {"Main_sleeve": 0.5, "ChiNext_sleeve": 0.5, "K_per_sleeve": 30, "maximum_new_positions_per_sleeve_date": 10, "unused_capital": "cash", "one_active_position_per_symbol": true, "leverage": false, "cross_sleeve_transfer": false, "collision_rank": ["higher industry breadth20", "higher impulse efficiency", "higher demand/pullback turnover", "event_id"]},
+  "stage_a_candidate_sha256": "014795a9376774476475fb58976a545279ae31e66ea4796d9f853fa4ff807622",
+  "outcomes_opened": false,
+  "repository_2024_plus_signal_or_feature_opened": false
+}

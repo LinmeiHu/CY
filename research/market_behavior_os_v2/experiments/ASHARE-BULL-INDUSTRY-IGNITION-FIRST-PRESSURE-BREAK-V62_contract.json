@@ -1,0 +1,56 @@
+{
+  "experiment": "ASHARE-BULL-INDUSTRY-IGNITION-FIRST-PRESSURE-BREAK-V62",
+  "economic_hypothesis": "A broad market with positive 20-session median return and at least 70% positive 20-session breadth supplies a demand floor, while a PIT industry whose 60-session median return is positive and whose 20-session return and breadth accelerate sharply over five completed sessions identifies fresh sector capital diffusion. The first moderate, volume-confirmed stock close through its prior 20-session pressure ceiling is then a short-horizon transmission event rather than a mature market-wide ceiling relay.",
+  "independence": "No collapse gap, gap repair, quiet-platform identity, prior-120-session ceiling, noncrowded-industry rank, or V24/V26 source event is used.",
+  "source_contract": {
+    "experiment": "ASHARE-BULL-INDUSTRY-BREADTH-IGNITION-FIRST-BREAKOUT-V53",
+    "candidate_path": "/Volumes/quant/CY_quant_research/bull_industry_breadth_ignition_first_breakout_v53/stage_a/candidates.parquet",
+    "candidate_sha256": "b0dd2daed6cbcc5ff6cad2f7d8caead5fd9b7f4fbaaff349a0dfdd4d0f2530f4",
+    "outcome_blind_source": true
+  },
+  "bull_definition": {
+    "broad_demand_floor": "completed PIT market median ret20 > 0 and positive-ret20 breadth >= 70%",
+    "persistent_industry_bull": "completed PIT industry median ret60 > 0",
+    "industry_ignition": "industry median ret20 > 3%, industry positive-ret20 breadth > 60%, five-session ret20 increase >= 3 percentage points, and five-session breadth increase >= 15 percentage points"
+  },
+  "stock_event": {
+    "positive_non_euphoric_leader": "stock ret60 in [0%,30%] with zero prior-20-session limit-up closes",
+    "first_pressure_break": "completed close exceeds prior completed 20-session high; signal return in [2%,8%]; close location >=70%; turnover in [1.2x,4.0x] prior20 mean",
+    "same_symbol_cooldown": "more than 20 market sessions after the prior accepted identity"
+  },
+  "decision_at": "completed daily signal close",
+  "entry": "first legal daily open strictly after decision, within three exchange sessions",
+  "target": "+15% from executable entry",
+  "failure_exit": "none",
+  "time_stop": "H15 completed sessions",
+  "costs": {"entry": 0.002, "exit": 0.002},
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "position_size": "1/30 current sleeve NAV",
+    "capacity_rank": ["higher industry breadth ignition", "higher industry ret20 ignition", "higher industry breadth20", "event_id"],
+    "unused_capital": "cash",
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "one_active_position_per_symbol": true
+  },
+  "development": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+  "forward": [2021, 2022, 2023],
+  "development_gate": {
+    "capacity_accepted_completed_at_least": 800,
+    "mean_net_return_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "positive_development_years_at_least": 6,
+    "mean_excluding_best_five_signal_dates_positive": true
+  },
+  "final_goal_gate": {
+    "capacity_accepted_completed_trades_strictly_greater_than": 500,
+    "mean_net_return_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "2021_2022_2023_each_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "top_five_signal_date_positive_pnl_share_at_most": 0.25
+  },
+  "repository_2024_plus_signal_or_feature_opened": false
+}

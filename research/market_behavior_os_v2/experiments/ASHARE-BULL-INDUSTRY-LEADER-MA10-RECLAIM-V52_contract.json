@@ -1,0 +1,59 @@
+{
+  "experiment": "ASHARE-BULL-INDUSTRY-LEADER-MA10-RECLAIM-V52",
+  "stage": "A_OUTCOME_BLIND_CONTRACT",
+  "research_status": "2014-2020 is disclosed iterative Development; 2021-2023 remains unopened until the Development gate passes",
+  "economic_hypothesis": "When the broad market is positive and a PIT industry is leading with majority participation, a stock already outperforming within that industry can undergo ordinary profit taking without losing sponsorship. A shallow pullback that preserves rising 20-session support and then makes its first completed reclaim of the 10-session average above the prior bar high is evidence that available supply was absorbed before the next markup attempt.",
+  "independence": "No downward collapse-gap, V6/V7/V26 event identity, or gap-repair outcome is used.",
+  "decision_clock": "completed daily signal close",
+  "binding_conditions": {
+    "PIT_MARKET_AND_LEADING_INDUSTRY": "market20 > 0, market breadth20 > 50%, PIT industry20 > 5%, PIT industry breadth20 > 60%, PIT industry60 > 0, and industry20 > market20",
+    "PRIOR_RELATIVE_STRENGTH": "stock completed ret20 is between +5% and +35%, and ret60 is between +10% and +60%",
+    "CONTROLLED_SUPPORT_PULLBACK": "signal close is 2%-12% below the prior 10-session high; signal low touches no higher than 102% of the prior completed MA10; minimum close in the prior three sessions is at least 97% of the prior completed MA20",
+    "FIRST_MA10_RECLAIM": "prior close is below the prior completed MA10; signal close is at or above that MA10 and above the prior bar high; signal return is +0.5% to +6%; close location >=65%; turnover is 0.6x-1.5x prior20 mean"
+  },
+  "event_cooldown": "after an accepted signal identity, the same symbol cannot form another signal for 20 market sessions",
+  "entry": "first legal next daily open within three market sessions",
+  "outcome_profiles_frozen_before_development": {
+    "T10_H10_NO_STOP": {"target": 0.10, "horizon": 10},
+    "T15_H10_NO_STOP": {"target": 0.15, "horizon": 10},
+    "T20_H10_NO_STOP": {"target": 0.20, "horizon": 10},
+    "T10_H15_NO_STOP": {"target": 0.10, "horizon": 15},
+    "T15_H15_NO_STOP": {"target": 0.15, "horizon": 15},
+    "T20_H15_NO_STOP": {"target": 0.20, "horizon": 15}
+  },
+  "cost": 0.004,
+  "portfolio": {
+    "Main_sleeve": 0.5,
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 of current sleeve NAV",
+    "collision_rank": [
+      "industry_breadth20 descending",
+      "stock ret20 minus industry20 descending",
+      "pullback_from_prior10_high descending",
+      "turnover_ratio ascending",
+      "event_id ascending"
+    ],
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "same_symbol_overlap": "forbidden"
+  },
+  "development_gate": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "capacity_accepted_completed_minimum": 350,
+    "mean_net_return_strictly_greater_than": 0.05,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "minimum_positive_active_years": 6,
+    "mean_excluding_best_five_signal_dates_positive": true
+  },
+  "forward_gate": {
+    "years": [2021, 2022, 2023],
+    "open_only_after_development_gate": true,
+    "all_three_year_mean_net_positive": true,
+    "combined_2014_2023_capacity_accepted_completed_strictly_greater_than": 500,
+    "combined_mean_net_return_strictly_greater_than": 0.05,
+    "combined_mean_holding_sessions_strictly_less_than": 15
+  },
+  "repository_2024_plus_signal_or_feature_opened": false
+}

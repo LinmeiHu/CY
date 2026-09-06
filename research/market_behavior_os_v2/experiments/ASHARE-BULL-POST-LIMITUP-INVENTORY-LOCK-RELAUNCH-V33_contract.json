@@ -1,0 +1,74 @@
+{
+  "cost": 0.004,
+  "decision_clock": "completed daily relaunch close",
+  "development": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 400,
+    "minimum_mean_net": 0.03,
+    "minimum_positive_years": 5,
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "economic_hypothesis": "A first limit-up creates a new holder-cost cohort. If the next 2-15 completed sessions absorb turnover without another limit-up, preserve the first-limit-up body midpoint, and contract volume, a later high-location volume expansion through the shelf high in a PIT bull market and healthy industry represents a second price-discovery auction after weak holders have had time to exit.",
+  "entry": "first legal daily open after signal within three market sessions",
+  "experiment": "ASHARE-BULL-POST-LIMITUP-INVENTORY-LOCK-RELAUNCH-V33",
+  "failure_exit": "after T+1, first completed daily close below the frozen ignition body midpoint; exit next legal open",
+  "forward": {
+    "2024_q1_use": "late-2023 execution resolution only",
+    "opened_only_after_profile_freeze": true,
+    "years": [
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "four_binding_conditions": {
+    "FIRST_LIMITUP_INFORMATION_EVENT": "ignition closes at the historical price limit, exceeds the prior20 high, has no limit-up close in the prior20 completed stock sessions, and the pre-ignition prior20 return is not below -10%",
+    "INVENTORY_LOCK_SHELF": "2-15 sessions after ignition; no intervening limit-up; shelf low >=95% of ignition body midpoint; shelf high/low range<=25%; shelf mean turnover<=1.2x ignition turnover",
+    "PIT_BULL_AND_HEALTHY_INDUSTRY": "at completed relaunch close, frozen PIT market regime BULL; industry n20>=5, median ret20>0, positive-ret20 share>50%",
+    "RELAUNCH_AUCTION": "completed close exceeds every intervening shelf high; signal return +1.5% to +8%; close location>=65%; turnover>=1.1x shelf mean"
+  },
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_LOCK_FLOOR_FAILURE": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_LOCK_FLOOR_FAILURE": {
+      "horizon": 5,
+      "target": null
+    },
+    "T15_H10_LOCK_FLOOR_FAILURE": {
+      "horizon": 10,
+      "target": 0.15
+    },
+    "T20_H15_LOCK_FLOOR_FAILURE": {
+      "horizon": 15,
+      "target": 0.2
+    }
+  },
+  "stage": "A_OUTCOME_BLIND_CONTRACT"
+}

@@ -1,0 +1,106 @@
+{
+  "admission_profiles": {
+    "A80_ACTIVE": {
+      "acceptance_open": 0.5,
+      "acceptance_prev": 0.8,
+      "close_over_open": 0.0,
+      "early_amount_share": 0.15
+    },
+    "A80_PROGRESS": {
+      "acceptance_open": 0.6,
+      "acceptance_prev": 0.8,
+      "close_over_open": 0.01,
+      "early_amount_share": 0.15
+    },
+    "A90_ACTIVE": {
+      "acceptance_open": 0.6,
+      "acceptance_prev": 0.9,
+      "close_over_open": 0.0,
+      "early_amount_share": 0.2
+    }
+  },
+  "cost": {
+    "entry": 0.002,
+    "exit": 0.002
+  },
+  "decision_clock": "10:00:00 after exactly 30 completed continuous-auction 1m bars, 09:31-10:00",
+  "development": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 350,
+    "minimum_mean_net_for_forward_open": 0.03,
+    "minimum_positive_years": 5,
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "economic_hypothesis": "A prior-session PIT bull market and broad positive industry create demand context. A stock with a low-turnover bounded platform that opens through its nearby inventory ceiling is only a quote change at 09:30.  It becomes a tradable information-repricing event only when completed 09:31-10:00 bars show persistent acceptance above the old close, actual traversal of the ceiling, and non-trivial early turnover.",
+  "experiment": "ASHARE-BULL-OPENING-GAP-30M-ACCEPTANCE-V38",
+  "failure": "information-gap failure: completed signal-day or later daily coordinate close below prior coordinate close; after T+1, exit at next legal daily open",
+  "forward": {
+    "final_gate": "2014-2023 capacity accepted completed/year>50, mean net>5%, mean hold<15, every 2021-2023 annual mean positive, at least 8/10 annual means positive, and no dominant signal date",
+    "opened_only_after_development_profile_freeze": true,
+    "years": [
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "independence": "No collapse, downward-gap, gap-repair, V6/V7/V26 identity or outcome is used.",
+  "opening_information_gap": "09:30 minute open is +1% to +7% versus prior raw close and no more than 5% below the frozen prior20 coordinate high; open is below the known upper price limit",
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "prior_only_conditions": {
+    "HEALTHY_INDUSTRY": "prior PIT industry n20>=5, median ret20>0, positive-ret20 share>50%",
+    "PIT_BULL": "immediately prior completed session market_regime=BULL",
+    "QUIET_NEAR_PLATFORM": "prior20 return [-8%,+12%], prior20 range<=25%, prior60 range<=40%, no prior20 limit-up close, prior5 mean amount/prior20 mean amount<=1, and prior close >=90% of prior20 coordinate high"
+  },
+  "repository_2024_plus_opened": false,
+  "stage": "A_OUTCOME_BLIND_CONTRACT",
+  "target": "coordinate target from exact 10:01 entry; first target realization is T+1",
+  "ten_oclock_features": {
+    "acceptance_open": "share of 30 completed closes >= 09:30 open",
+    "acceptance_prev": "share of 30 completed closes >= prior raw close",
+    "early_amount_share": "09:30-10:00 amount / mean amount of prior20 completed stock sessions",
+    "entry": "exact next 1m bar open at 10:01; positive bar volume and below upper limit",
+    "platform_traversed": "10:00 close in QD-010 coordinate >= frozen prior20 high"
+  },
+  "translations": {
+    "T10_H10_GAP_FAILURE": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H10_GAP_FAILURE": {
+      "horizon": 10,
+      "target": 0.15
+    },
+    "T15_H15_GAP_FAILURE": {
+      "horizon": 15,
+      "target": 0.15
+    },
+    "T20_H15_GAP_FAILURE": {
+      "horizon": 15,
+      "target": 0.2
+    }
+  }
+}

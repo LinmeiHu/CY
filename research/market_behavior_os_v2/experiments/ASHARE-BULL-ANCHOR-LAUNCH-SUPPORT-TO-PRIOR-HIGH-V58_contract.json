@@ -1,0 +1,65 @@
+{
+  "experiment": "ASHARE-BULL-ANCHOR-LAUNCH-SUPPORT-TO-PRIOR-HIGH-V58",
+  "status": "OUTCOME_BLIND_FROZEN",
+  "economic_hypothesis": "In a PIT board-and-industry bull state, a high-turnover demand bar creates an observable launch price and prior high. The first low-turnover deep test that closes back above the launch price is tradable only when the frozen prior high leaves enough executable net room. The launch price is both the support premise and the failure boundary; the prior high is the first real supply target.",
+  "bull_state": "board60 > 0, board breadth60 >= 0.50, board120 > 0, board breadth120 >= 0.45; industry20 and industry60 > 0, industry breadth20 and breadth60 >= 0.50; all known at signal close",
+  "demand_anchor": {
+    "return": "5% through 9.5% Main; 5% through 15% ChiNext",
+    "close_location_min": 0.70,
+    "turnover_expansion_min": 1.8,
+    "launch_price": "max(anchor open, prior coordinate close)",
+    "target": "anchor coordinate high"
+  },
+  "first_supply_test": {
+    "age_sessions": [2, 20],
+    "all_prior_post_anchor_lows_above_launch_price": true,
+    "signal_low_zone": "0.97 through 1.02 times launch price",
+    "signal_close": "at or above launch price and no higher than 1.02 times anchor VWAP",
+    "signal_return": [-0.05, 0.02],
+    "signal_turnover_to_anchor_max": 0.70,
+    "interim_turnover_to_anchor_max": 0.90,
+    "close_location_min": 0.55,
+    "signal_gross_room_to_prior_high_min": 0.04
+  },
+  "execution": {
+    "entry": "first legal open after completed signal, within three calendar sessions",
+    "entry_net_room_to_prior_high_min_after_40bp_cost": 0.03,
+    "target": "frozen anchor coordinate high, realizable no earlier than T+1",
+    "failure": "completed close below frozen launch price, then next legal open",
+    "time_stops_sessions": [5, 8, 12],
+    "failure_variants": ["none", "launch-price failure"],
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "development": {
+    "years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "meaningful_years_required_positive": [2014, 2015, 2016, 2019, 2020],
+    "minimum_capacity_accepted_completed_trades": 450,
+    "mean_net_return_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15
+  },
+  "forward_gate": {
+    "years": [2021, 2022, 2023],
+    "open_only_after_development_passes": true,
+    "each_year_mean_net_positive": true,
+    "completed_trades_2014_2023_strictly_greater_than": 500,
+    "mean_net_return_2014_2023_strictly_greater_than": 0.03,
+    "mean_holding_sessions_strictly_less_than": 15,
+    "date_concentration_checks": true
+  },
+  "portfolio": {
+    "sleeves": {"Main": 0.5, "ChiNext": 0.5},
+    "K_per_sleeve": 30,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/30 current sleeve NAV",
+    "collision_rank": ["lower test/anchor turnover", "higher PIT industry breadth20", "higher anchor turnover expansion", "event_id"],
+    "leverage": false,
+    "cross_sleeve_transfer": false
+  },
+  "governance": {
+    "dynamic_target_and_failure_frozen_before_outcomes": true,
+    "no_same_bar_fill": true,
+    "missing_required_lineage": "fail closed",
+    "post_2023_rows": "only legal resolution of a pre-2024 trade"
+  }
+}

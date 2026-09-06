@@ -72,6 +72,18 @@ def build_candidates() -> tuple[pd.DataFrame, pd.DataFrame]:
         median(turnover_fraction) OVER (
           PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 20 PRECEDING AND 1 PRECEDING
         ) AS prior20_turn,
+        median(turnover_fraction) OVER (
+          PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 60 PRECEDING AND 21 PRECEDING
+        ) AS prior21_60_turn,
+        min(coord_low) OVER (
+          PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 20 PRECEDING AND 1 PRECEDING
+        ) AS prior20_low,
+        min(coord_low) OVER (
+          PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 60 PRECEDING AND 21 PRECEDING
+        ) AS prior21_60_low,
+        max(coord_high) OVER (
+          PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 60 PRECEDING AND 1 PRECEDING
+        ) AS prior60_high,
         CASE WHEN coord_high>coord_low THEN (coord_close-coord_low)/(coord_high-coord_low) END AS close_location
       FROM read_parquet('{daily}') d
       WHERE trade_date BETWEEN DATE '2013-01-01' AND DATE '2023-12-31'
@@ -115,8 +127,9 @@ def build_candidates() -> tuple[pd.DataFrame, pd.DataFrame]:
         THEN 1 ELSE 0 END AS raw_event
       FROM descriptors d
       JOIN eligible_industry p ON p.symbol=d.symbol AND p.cal_idx=d.cal_idx-1
-      JOIN industry_state s USING(trade_date,causal_industry)
-      JOIN read_parquet('{v1.SOURCE_REGIME}') r USING(trade_date)
+      JOIN industry_state s
+        ON s.trade_date=d.trade_date AND s.causal_industry=d.causal_industry
+      JOIN read_parquet('{v1.SOURCE_REGIME}') r ON r.trade_date=d.trade_date
     ), first_event AS (
       SELECT *,max(raw_event) OVER (
         PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 20 PRECEDING AND 1 PRECEDING
@@ -193,6 +206,9 @@ def build_candidates() -> tuple[pd.DataFrame, pd.DataFrame]:
       market_median_ret20,market_positive_ret20_share,market_median_ret60,market_positive_ret60_share,
       same_date_mother_count,coord_close AS mother_close,step_return,close_location,
       turnover_fraction/prior20_turn AS turnover_expansion,
+      prior20_turn,prior21_60_turn,prior20_low,prior21_60_low,prior60_high,
+      prior20_low>=prior21_60_low AS higher_support,
+      prior20_turn<=prior21_60_turn AS supply_contraction,
       acceptance_date_1,acceptance_close_1,confirmation_close,
       confirmation_market_median_ret20,confirmation_market_positive_ret20_share,
       confirmation_market_median_ret60,confirmation_market_positive_ret60_share,
@@ -207,6 +223,8 @@ def build_candidates() -> tuple[pd.DataFrame, pd.DataFrame]:
     WHERE same_date_mother_count>=10 AND confirmation_data_valid
       AND coordinate_lineage_valid AND price_acceptance
       AND confirmation_market_structural_bull AND confirmation_industry_structural_bull
+      AND coord_close<=prior60_high
+      AND prior20_low>=prior21_60_low
     ORDER BY signal_date,sleeve,symbol,event_id
     """
     frame = con.execute(query).fetchdf()
@@ -251,11 +269,21 @@ def blind_sample(frame: pd.DataFrame, count: int = 30) -> pd.DataFrame:
     work = frame.copy()
     work["year"] = work.signal_date.dt.year
     work["blind_key"] = work.event_id.map(lambda value: hashlib.sha256(str(value).encode()).hexdigest())
-    picked = (
-        work.sort_values("blind_key", kind="mergesort")
-        .groupby(["year", "sleeve", "relative_lane"], sort=True, group_keys=False)
-        .head(1)
-    )
+    pieces = []
+    per_year = count // len(YEARS)
+    for year in YEARS:
+        year_frame = work.loc[work.year.eq(year)].sort_values("blind_key", kind="mergesort")
+        if year_frame.empty:
+            continue
+        diverse = year_frame.groupby(["sleeve", "relative_lane"], sort=True, group_keys=False).head(1)
+        selected = diverse.sort_values("blind_key", kind="mergesort").head(per_year)
+        if len(selected) < per_year:
+            remainder = year_frame.loc[~year_frame.event_id.isin(selected.event_id)]
+            selected = pd.concat(
+                [selected, remainder.head(per_year - len(selected))], ignore_index=True
+            )
+        pieces.append(selected)
+    picked = pd.concat(pieces, ignore_index=True)
     if len(picked) < count:
         remainder = work.loc[~work.event_id.isin(picked.event_id)].sort_values("blind_key")
         picked = pd.concat([picked, remainder.head(count - len(picked))], ignore_index=True)
@@ -280,6 +308,10 @@ def render_blind_charts(sample: pd.DataFrame) -> None:
     con.close()
     daily.trade_date = pd.to_datetime(daily.trade_date)
     groups = {str(symbol): part.reset_index(drop=True) for symbol, part in daily.groupby("symbol", sort=False)}
+    market = v1.read_parquet_duckdb(v1.SOURCE_REGIME)
+    market.trade_date = pd.to_datetime(market.trade_date)
+    industry = v1.read_parquet_duckdb(INDUSTRY_STATE)
+    industry.trade_date = pd.to_datetime(industry.trade_date)
     for event in sample.itertuples(index=False):
         part = groups[str(event.symbol)]
         positions = np.flatnonzero(part.trade_date.eq(pd.Timestamp(event.signal_date)).to_numpy())
@@ -287,7 +319,15 @@ def render_blind_charts(sample: pd.DataFrame) -> None:
             raise ResearchError(f"chart signal clock missing {event.event_id}")
         end = int(positions[0])
         stock = part.iloc[max(0, end - 119):end + 1].copy()
-        figure, axes = v1.plt.subplots(3, 1, figsize=(10, 7), gridspec_kw={"height_ratios": [3, 0.8, 1]})
+        start = stock.trade_date.min()
+        market_part = market.loc[market.trade_date.between(start, event.signal_date)]
+        industry_part = industry.loc[
+            industry.causal_industry.eq(event.causal_industry)
+            & industry.trade_date.between(start, event.signal_date)
+        ]
+        figure, axes = v1.plt.subplots(
+            5, 1, figsize=(10, 8), gridspec_kw={"height_ratios": [3, 0.7, 0.8, 0.8, 0.8]}
+        )
         x = v1.mdates.date2num(stock.trade_date)
         colors = np.where(stock.coord_close.ge(stock.coord_open), "#dc2626", "#059669")
         axes[0].vlines(x, stock.coord_low, stock.coord_high, color=colors, linewidth=0.65)
@@ -296,14 +336,24 @@ def render_blind_charts(sample: pd.DataFrame) -> None:
         axes[0].bar(x, body_height, bottom=body_low, width=0.65, color=colors, edgecolor=colors)
         axes[0].axvline(pd.Timestamp(event.mother_signal_date), color="#f59e0b", linestyle=":", label="First demand")
         axes[0].axvline(pd.Timestamp(event.signal_date), color="#dc2626", linestyle="--", label="Two-day acceptance")
-        axes[0].set_title(f"{event.chart_id} | {event.symbol} | {event.sleeve} | {event.causal_industry} | {event.relative_lane}")
+        axes[0].axhline(float(event.prior60_high), color="#7c3aed", linestyle=":", linewidth=0.9, label="Prior 60d high")
+        axes[0].set_title(
+            f"{event.chart_id} | {event.symbol} | {event.sleeve} | {event.causal_industry} | {event.relative_lane}",
+            fontproperties=v1.CJK_FONT,
+        )
         axes[0].legend(loc="upper left", fontsize=8); axes[0].grid(alpha=0.2)
         axes[1].bar(stock.trade_date, stock.turnover_fraction, color=colors, width=0.75)
         axes[1].axvline(pd.Timestamp(event.signal_date), color="#dc2626", linestyle="--"); axes[1].grid(alpha=0.2)
         axes[2].plot(stock.trade_date, stock.ret20, label="Stock ret20", color="#b45309")
         axes[2].plot(stock.trade_date, stock.ret60, label="Stock ret60", color="#7c3aed")
         axes[2].axhline(0, color="black", linewidth=0.7); axes[2].legend(fontsize=8); axes[2].grid(alpha=0.2)
-        axes[2].xaxis.set_major_formatter(v1.mdates.DateFormatter("%Y-%m"))
+        axes[3].plot(market_part.trade_date, market_part.market_median_ret20, label="Market ret20", color="#166534")
+        axes[3].plot(market_part.trade_date, market_part.market_median_ret60, label="Market ret60", color="#0f766e")
+        axes[3].axhline(0, color="black", linewidth=0.7); axes[3].legend(fontsize=8); axes[3].grid(alpha=0.2)
+        axes[4].plot(industry_part.trade_date, industry_part.industry_median_ret20, label="Industry ret20", color="#c2410c")
+        axes[4].plot(industry_part.trade_date, industry_part.industry_median_ret60, label="Industry ret60", color="#7e22ce")
+        axes[4].axhline(0, color="black", linewidth=0.7); axes[4].legend(fontsize=8); axes[4].grid(alpha=0.2)
+        axes[4].xaxis.set_major_formatter(v1.mdates.DateFormatter("%Y-%m"))
         figure.text(0.01, 0.01, f"Outcome-blind; market20 {event.market_median_ret20:+.1%}; market60 {event.market_median_ret60:+.1%}; cluster {event.same_date_mother_count}; no post-signal bar.", fontsize=8)
         figure.tight_layout(rect=[0, 0.035, 1, 1])
         figure.savefig(BLIND_DIR / f"{event.chart_id}.png", dpi=140)

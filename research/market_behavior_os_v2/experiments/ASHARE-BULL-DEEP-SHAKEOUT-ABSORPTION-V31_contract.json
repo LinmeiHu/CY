@@ -1,0 +1,75 @@
+{
+  "blind_chart": "130 completed sessions ending at signal; no post-signal bar",
+  "decision_clock": "completed daily close",
+  "economic_hypothesis": "A stock with an established but non-euphoric positive trend can suffer a deep intraday liquidity shakeout while the causally known broad market and PIT industry close non-negative. If the stock recovers to the top of its daily range on expanded turnover, urgent supply has been absorbed by observable demand without requiring the buyer to chase a prior limit-up.",
+  "entry": "first legal daily open after signal within three market sessions",
+  "experiment": "ASHARE-BULL-DEEP-SHAKEOUT-ABSORPTION-V31",
+  "failure_exit": "after T+1, first completed daily close below 98% of the signal's prior close; exit at next legal open",
+  "grouped_conditions": {
+    "CAUSAL_BULL_ENVIRONMENT": "frozen market_regime BULL; PIT industry n20>=5, median ret20>0, positive-ret20 share>50%; same-day executable-universe market median return>=0 and PIT-industry median return>=0",
+    "DEEP_INTRADAY_SHAKEOUT": "(prior close-low)/(prior close-historical down-limit coordinate)>=50%",
+    "ESTABLISHED_NONSATURATED_STRENGTH": "prior completed 20-session return in [0%,50%] and prior20 high / prior60 low - 1 >=20%",
+    "MINUTE_PATH_CONFIRMATION": "exact 241-minute session; first 50%-down-limit-depth touch occurs without price first rallying more than 3% above prior close; a later completed minute close reclaims 98% of prior close; at least 12 of the final 15 completed minute closes retain that reclaimed level",
+    "SAME_DAY_ABSORPTION": "close in top 25% of daily range, close return>=-2%, turnover>=1.2x prior completed 20-session mean"
+  },
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profile_selection": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 700,
+    "minimum_mean_net": 0.03,
+    "minimum_positive_years": 5,
+    "order": [
+      "median annual mean net",
+      "pooled mean net",
+      "lower severe10",
+      "shorter horizon"
+    ],
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "profit_target": "profile target standing from first T+1 session",
+  "round_trip_cost": 0.004,
+  "stage": "A_OUTCOME_BLIND_SEMANTIC_PREFLIGHT",
+  "time_stop": "profile H5 or H10 decision, then next legal open",
+  "translation_profiles": {
+    "H10_RECLAIM_FAILURE": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_RECLAIM_FAILURE": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_RECLAIM_FAILURE": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H10_RECLAIM_FAILURE": {
+      "horizon": 10,
+      "target": 0.15
+    }
+  }
+}

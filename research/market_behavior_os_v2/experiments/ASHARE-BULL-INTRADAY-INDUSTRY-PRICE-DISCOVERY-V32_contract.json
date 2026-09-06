@@ -1,0 +1,80 @@
+{
+  "binding_conditions": {
+    "BOUNDED_REPEATED_CEILING": "no limit-up close in prior 20 completed stock sessions; prior20 return in [-15%,+15%]; prior20 range<=18%; prior60 range<=40%; prior close is from 90% up to but below the prior60 ceiling; at least three prior60 highs within 3% of that ceiling",
+    "CAUSAL_INDUSTRY_CODISCOVERY": "stock first closes across its frozen prior60 ceiling before 14:25 while its intraday return is +4% to +8%; at least one other prequalified same-industry stock first crossed its own ceiling during the preceding 60 completed trading minutes",
+    "PRIOR_HEALTHY_INDUSTRY": "prior-session PIT industry n20>=5, median ret20>0, positive-ret20 share>50%",
+    "PRIOR_PIT_BULL": "market regime at the immediately prior completed session is BULL"
+  },
+  "cost": {
+    "entry": 0.002,
+    "exit": 0.002
+  },
+  "economic_hypothesis": "In a bull market, a bounded stock crossing a repeatedly tested 60-session cost ceiling while another prequalified stock in the same PIT industry has crossed within the preceding 60 completed trading minutes is observable industry price discovery. Buying at the next executable minute participates in the unfinished repricing rather than buying the next-day relay from first-board holders.",
+  "entry": "next same-session 1-minute open; must be below the known upper price limit",
+  "experiment": "ASHARE-BULL-INTRADAY-INDUSTRY-PRICE-DISCOVERY-V32",
+  "failure_exit": "after A-share T+1, first completed daily close below the frozen prior60 ceiling; exit at next legal daily open",
+  "forward_gate": {
+    "2024_q1_use": "execution resolution for late-2023 entries only; no 2024 signal",
+    "final_target": "2014-2023 capacity-accepted completed/year>50; mean net>5%; mean hold<15; each 2021-2023 annual mean positive; >=8/10 positive annual means",
+    "opened_only_after_profile_freeze": true,
+    "years": [
+      2021,
+      2022,
+      2023
+    ]
+  },
+  "outcomes_opened": false,
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profile_development": {
+    "maximum_mean_holding_sessions": 15,
+    "minimum_completed": 350,
+    "minimum_mean_net": 0.03,
+    "minimum_positive_years": 5,
+    "years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "repository_2024_plus_opened": "only if development gate passes, and only to resolve late-2023 trades",
+  "signal_clock": "completed 1-minute bar",
+  "stage": "A_OUTCOME_BLIND_CONTRACT",
+  "target": "profile target from entry; first eligible realization is T+1",
+  "translation_profiles": {
+    "H10_PLATFORM_FAILURE": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_PLATFORM_FAILURE": {
+      "horizon": 5,
+      "target": null
+    },
+    "T15_H10_PLATFORM_FAILURE": {
+      "horizon": 10,
+      "target": 0.15
+    },
+    "T20_H10_PLATFORM_FAILURE": {
+      "horizon": 10,
+      "target": 0.2
+    }
+  }
+}
