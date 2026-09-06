@@ -1,0 +1,236 @@
+{
+  "central_registry_modified": false,
+  "installation_instruction": "After independent review, append exactly the asset object to configs/data_asset_registry.json assets and exactly the bounded_authorization object to bounded_authorizations. Do not run V37 Stage B before the installed objects exactly match this suggestion.",
+  "asset": {
+    "asset_id": "CY-061",
+    "name": "Bounded V37 frozen-candidate development outcome input",
+    "kind": "bounded_daily_pit_b_development_outcome_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "source": "Exact candidate-keyed join of the immutable CY-059 V37 Stage-A cohort to registered CY-006 raw 2018-2021Q3 execution facts and the accepted action-coordinate state; only the 854 frozen identities may enter, and 2021 rows may only complete paths belonging to frozen 2020 signals.",
+    "coverage": {
+      "authorized_start": "2018-08-31",
+      "authorized_end": "2021-09-30",
+      "signal_start": "2018-08-31",
+      "signal_end": "2020-12-31",
+      "maximum_path_row_date": "2021-09-30",
+      "frozen_candidate_rows": 854,
+      "annual_candidate_rows": {
+        "2018": 163,
+        "2019": 357,
+        "2020": 334
+      }
+    },
+    "schema_and_units": "Candidate-keyed CY-006 raw OHLC, price-limit, availability and action facts joined by symbol/trade_date to adjusted-coordinate OHLC, global cal_idx and invalid_step_cum. Entry/exit returns use coordinate CNY ratios and subtract 0.004 round-trip cost.",
+    "quality_evidence": {
+      "stage_a_semantic_gate_passed": true,
+      "stage_a_representation_gate_passed": true,
+      "stage_a_opportunity_gate_passed": true,
+      "stage_a_neighboring_stability_gate_passed": true,
+      "stage_a_redundancy_gate_passed": true,
+      "stage_a_outcome_columns_read": false,
+      "stage_a_post_signal_rows_read_as_predictors": false,
+      "stage_a_post_2020_rows_read": false,
+      "candidate_rows": 854,
+      "candidate_sha256": "1f890b90b8cdaf26242cd876875d0929bd0050ad9c3dceb71d0c45a49880e509",
+      "candidate_event_id_set_sha256": "1d716ae548a2feff4b6722242cbe92c82eefdf683b6b3b7add4b22aae952ea70",
+      "stage_a_result_sha256": "ae24cd37c0629abccc8973c5262acfed4bbe9eb0374a371def89e1cfe09b439a",
+      "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+    },
+    "lineage": {
+      "record_available_at": true,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V37-CY061_DATA_ASSET_MANIFEST.json",
+      "manifest_sha256": "b252e8e6a30f0e650d99ec5d4da7f25fde7710e2e62b1f34c905acd8e26cbd14",
+      "component_assets": [
+        "CY-059",
+        "CY-006",
+        "QD-010"
+      ],
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-V37-STAGE-B-2018-2021Q3-V1",
+      "pipeline_version": "v37-cy059-cy006-action-coordinate-outcome-v1"
+    },
+    "allowed_uses": [
+      "one frozen V37 Stage-B outcome attachment for exactly 854 immutable Stage-A candidates",
+      "fixed first-legal-open entry, exact 10-percent target, strict H20 fallback and 40-bps signal-level accounting",
+      "use 2021 rows only through 2021-09-30 as a path-completion buffer for frozen 2020 signals"
+    ],
+    "blocked_uses": [
+      "candidate reselection, volatility-exposure direction change, charts, manual labels, rule construction, portfolio replay, validation, parameter search or alternate execution",
+      "2021 signals, rows after 2021-09-30, any 2022-plus read, live trading or strict PIT-A claims"
+    ],
+    "activation_gates": [
+      "public spec, manifest, suggestion and runner declarations validate before external source access",
+      "central CY-061 asset and bounded authorization exactly equal this reviewed suggestion before external source access",
+      "all 854 frozen candidates join exact raw and coordinate signal rows before candidate-keyed paths are built",
+      "the 2021 partition is query-capped at 2021-09-30 and may only complete paths from frozen 2020 signals",
+      "availability, T+1, limits, suspensions, corporate actions and coordinate lineage fail closed",
+      "all inputs are rehashed and canonical Stage-B output is published atomically without replacement"
+    ]
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-V37-STAGE-B-2018-2021Q3-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "asset_id": "CY-061",
+    "dependency_asset_id": "CY-059",
+    "dependency_asset_ids": [
+      "CY-059",
+      "CY-006",
+      "QD-010"
+    ],
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "2018-08-31",
+      "end": "2021-09-30",
+      "signal_start": "2018-08-31",
+      "signal_end": "2020-12-31",
+      "maximum_path_row_date": "2021-09-30",
+      "frozen_candidate_rows": 854,
+      "frozen_candidate_sha256": "1f890b90b8cdaf26242cd876875d0929bd0050ad9c3dceb71d0c45a49880e509"
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V37-CY061_DATA_ASSET_MANIFEST.json",
+      "sha256": "b252e8e6a30f0e650d99ec5d4da7f25fde7710e2e62b1f34c905acd8e26cbd14"
+    },
+    "bound_artifacts": [
+      {
+        "role": "parent_spec",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_freeze.json",
+        "sha256": "e1d3f55df399ece5f1395894e8be285a60bf424ebac5bbfa254b020e408e8d44"
+      },
+      {
+        "role": "stage_b_spec",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_stage_b_freeze.json",
+        "sha256": "f2a1f5b7bdfa9d8c960892300b88f4dd55aa8c064dad2c1706710a5b3a4d00aa"
+      },
+      {
+        "role": "stage_a_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37_stage_a.py",
+        "sha256": "39eea0f3a9790c53ab4dcbc495dfee5f420fd797bf23f3bc0479d126dd9f9836"
+      },
+      {
+        "role": "stage_a_manifest",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V37-CY059_DATA_ASSET_MANIFEST.json",
+        "sha256": "d2d16fbf17ff47fc6d6376b129b843d4be061812fc60658f13efdd214ec17f7e"
+      },
+      {
+        "role": "stage_a_result",
+        "path": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a/result.json",
+        "sha256": "ae24cd37c0629abccc8973c5262acfed4bbe9eb0374a371def89e1cfe09b439a"
+      },
+      {
+        "role": "stage_a_representation",
+        "path": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a/representation_panel.parquet",
+        "sha256": "a657e259111291fd3eea66ac3d492e179a4dcba4b5cea573afa00a2162223159"
+      },
+      {
+        "role": "stage_a_candidates",
+        "path": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a/candidates_frozen.parquet",
+        "sha256": "1f890b90b8cdaf26242cd876875d0929bd0050ad9c3dceb71d0c45a49880e509"
+      },
+      {
+        "role": "accepted_v36_stage_b_spec",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_stage_b_freeze.json",
+        "sha256": "c3867b272c05c5e558b56abe6097aa5a7ee6b3bca5c649d577643e0446f47655"
+      },
+      {
+        "role": "cy006_inventory",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+      },
+      {
+        "role": "qd010_inventory",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      },
+      {
+        "role": "cy006_2018",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "role": "cy006_2019",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "role": "cy006_2020",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      },
+      {
+        "role": "cy006_2021",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+        "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+      },
+      {
+        "role": "coordinate_state",
+        "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+        "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+      },
+      {
+        "role": "coordinate_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+        "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"
+      },
+      {
+        "role": "corporate_action_coordinate_contract",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+        "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+      },
+      {
+        "role": "execution_reference",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+        "sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+      }
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_stage_b_freeze.json",
+      "sha256": "f2a1f5b7bdfa9d8c960892300b88f4dd55aa8c064dad2c1706710a5b3a4d00aa"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_stage_b_freeze.json",
+      "sha256": "f2a1f5b7bdfa9d8c960892300b88f4dd55aa8c064dad2c1706710a5b3a4d00aa",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37_stage_b.py",
+      "runner_sha256": "5944275a935a21eecfa765fb1eb6e982718bac1e43a3b2cc09f1ec0f89f059dc"
+    },
+    "authorized_arms": [
+      "V37_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY"
+    ],
+    "stage_b_authorized": true,
+    "outcome_attachment_authorized": true,
+    "whole_artifact_hash_authorized": true,
+    "source_parquet_stage_b_parse_authorized": true,
+    "post_signal_row_read_authorized": true,
+    "post_2020_read_authorized": true,
+    "2021_path_completion_authorized": true,
+    "post_2021_q3_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "charts_authorized": false,
+    "manual_labels_read_authorized": false,
+    "rule_aggregation_authorized": false,
+    "portfolio_replay_authorized": false,
+    "parameter_search_authorized": false,
+    "candidate_reselection_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": false,
+    "allowed_uses": [
+      "attach the one frozen development lifecycle to all 854 immutable V37 Stage-A events",
+      "use 2021 rows only through 2021-09-30 to complete paths belonging to frozen 2020 signals"
+    ],
+    "blocked_uses": [
+      "candidate reselection, direction change, charts, manual labels, rules, portfolio replay, validation, parameter search or alternate execution",
+      "2021 signals, rows after 2021-09-30, 2022-plus data, live trading, strict PIT-A or use outside this protocol"
+    ],
+    "known_limitations": [
+      "2018-2020 signal outcomes become consumed development history and cannot support an independent confirmation claim",
+      "CY-006 and the action-coordinate state remain PIT-B research inputs without complete historical supplier revision vintages",
+      "the 2021 rows are completion context only and cannot define or select a signal"
+    ]
+  }
+}

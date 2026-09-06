@@ -1,0 +1,190 @@
+{
+  "experiment": "ASHARE-PERSISTENT-RISK-WARNING-REMOVAL-PRICE-DISCOVERY-MOTHER-V33",
+  "stage": "OUTCOME_BLIND_COUNT_ONLY_MOTHER_FREEZE",
+  "status": "COUNT_ONLY_EARLY_CLOSE_BEFORE_ANY_FORWARD_OUTCOME_READ",
+  "authorship_disclosure": "This mother was proposed from an outcome-blind audit of the remaining repository research frontier after V32. Its economic direction, event identity, timing, count gate, hypothetical execution and chart protocol were fixed without reading any V33 forward path or payoff. A count-only audit then established that the event family is too sparse for the user's annual opportunity requirement.",
+  "economic_hypothesis": "Removal of a persistent ST or other risk-warning trading state may mark a discrete change in investability, financing constraints and investor attention. The first completed normal-status session could therefore begin issuer-specific price discovery. This is a hypothesis about an observable administrative trading-state transition, not proof that risk has disappeared and not an announcement-timing claim.",
+  "scientific_classification": "DATA_FEASIBILITY_CLOSED_INSUFFICIENT_EVENT_BREADTH_NOT_AN_ALPHA_NULL",
+  "novelty_audit": {
+    "classification": "NEW_EVENT_FAMILY_BUT_NOT_COUNT_FEASIBLE",
+    "repository_boundary": "Repository V1-V32 specifications, reports and dead-end maps use ST status principally as a universe exclusion, execution/risk control or prohibited rescue. No prior frozen experiment was found that used the first normal-status session after a persistent risk-warning state as the standalone mother event.",
+    "not_gap_or_collapse": "No gap, collapse, support, reclaim, breakout or future price extremum defines the event.",
+    "not_momentum_or_low_risk": "No return direction, momentum, MAX, volatility, skewness or other low-risk representation enters event identity.",
+    "not_turnover_or_vwap": "No turnover, volume shock, VWAP, candlestick or intraday field enters event identity.",
+    "not_v30_v31_v32": "V30 is own price-turnover positive feedback, V31 is a stock-minus-industry return-serial transition, and V32 is turnover-innovation independence from PIT-industry peers. V33 is an effective trading-state transition and contains none of those representations.",
+    "not_suspension_reopening": "A normal session after a suspension is not sufficient. The target transition is specifically persistent risk-warning status to normal status; suspension/reopening research remains separate.",
+    "not_issuer_risk_rescue": "The event is not an issuer-risk veto or a repair of a prior gap strategy. It would admit every otherwise valid frozen removal event if the opportunity gate were feasible."
+  },
+  "data_contract": {
+    "primary_input_asset": "CY-006",
+    "pit_grade": "B",
+    "registry_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/configs/data_asset_registry.json",
+    "primary_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "partitions_allowed": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ],
+    "maximum_queried_row_date": "2020-06-30",
+    "observed_trading_state_source": "baostock_none_daily",
+    "required_fields": [
+      "trade_date",
+      "symbol",
+      "decision_at",
+      "available_at",
+      "is_st",
+      "trade_status",
+      "current_day_data_tradable",
+      "hard_valid",
+      "bar_valid",
+      "trading_state_valid",
+      "market_valid",
+      "market_rule_valid",
+      "historical_identity_valid",
+      "corporate_action_valid",
+      "corporate_action_blocking",
+      "corporate_action_count",
+      "open",
+      "high",
+      "low",
+      "close",
+      "preclose",
+      "amount",
+      "snapshot_id",
+      "daily_snapshot_id",
+      "trading_state_snapshot_id",
+      "corporate_action_snapshot_id",
+      "market_snapshot_id"
+    ],
+    "missing_policy": "FAIL_CLOSED",
+    "availability_limitation": "CY-006 provides a registered PIT-B effective daily is_st state, not an immutable exchange announcement history for removal decisions. V33 therefore recognizes removal only after the first completed non-ST bar's available_at, never at that day's open and never from a reconstructed announcement timestamp.",
+    "strict_claim_boundary": "No PIT-A, official-announcement-time, live-trading or disappearance-of-fundamental-risk claim is permitted."
+  },
+  "frozen_mother_signal": {
+    "universe": "CY-006 historical Main Board plus ChiNext identities only: 600/601/603/605.SH and 000/001/002/300/301.SZ; no current-survivor substitution.",
+    "schedule": "Event driven; evaluate each completed market session from 2018-07-01 through 2020-06-30.",
+    "persistent_warning_antecedent": "For the same symbol, every one of the exact twenty global market sessions t-20 through t-1 must have one registered row with is_st=true, hard_valid=true, available_at<=its own decision_at, and non-null aggregate, daily and trading-state snapshot identities. The first and last indices must be exactly signal_cal_idx-20 and signal_cal_idx-1.",
+    "removal_transition": "Session t must be the first exact global session after that persistent block with is_st=false. In particular t-1 is ST and t is non-ST; later normal-status days are never additional signals.",
+    "signal_bar_validity": "At t require hard_valid, bar_valid, trading_state_valid, market_valid, market_rule_valid, historical_identity_valid, corporate_action_valid, non-blocking corporate-action state, corporate_action_count=0, current_day_data_tradable, trade_status=1, available_at<=decision_at, all required snapshot identities, and positive finite OHLC, preclose and amount.",
+    "decision_at": "Completed session-t close, after the registered t effective state is available.",
+    "event_id": "RISK_WARNING_REMOVAL|YYYYMMDD|SYMBOL",
+    "cooldown": "For a symbol, retain a later qualifying transition only when its global signal calendar index is strictly more than 252 sessions after the last retained event.",
+    "direction": "LONG_NORMALIZATION_PRICE_DISCOVERY_FROZEN_BEFORE_OUTCOMES",
+    "no_price_condition": "Price return, gap, location, support, breakout, volatility, turnover, volume, industry, market regime and candlestick shape may not enter mother-event identity.",
+    "no_duplicate_days": "Do not count the second or later normal-status day, repeat holding days, or overlapping observation windows as separate signals."
+  },
+  "count_only_protocol": {
+    "purpose": "Determine whether the fixed event family can possibly satisfy the user's annual opportunity floor before authorizing any outcome attachment.",
+    "allowed_calculation": "Exact event identities, signal dates, symbols, causal validity fields, prior-state counts, annual counts, decision-date counts and cooldown counts only.",
+    "opportunity_gate": "Strictly more than fifty retained mother events in each represented signal year. This precedes, and is separate from, the later completed-trade gate.",
+    "upper_bound_test": "Also count every raw Main/ChiNext effective ST-to-non-ST transition before the twenty-session validity, current-row validity and cooldown gates. If even this superset has no more than fifty events in a year, the frozen family must close without definition rescue.",
+    "outcome_columns_read": false,
+    "forward_price_rows_joined": false,
+    "post_signal_rows_used": false,
+    "post_2020_rows_read": false,
+    "stage_b_artifacts_read": false
+  },
+  "count_only_observation": {
+    "audit_date": "2026-09-05",
+    "signal_range": [
+      "2018-07-01",
+      "2020-06-30"
+    ],
+    "maximum_source_row_date": "2020-06-30",
+    "annual": {
+      "2018": {
+        "coverage": "July through December",
+        "raw_st_to_non_st_transition_upper_bound": 8,
+        "frozen_eligible_events_before_cooldown": 7,
+        "retained_after_252_session_cooldown": 7,
+        "retained_symbols": 7,
+        "retained_decision_dates": 7
+      },
+      "2019": {
+        "coverage": "full calendar year",
+        "raw_st_to_non_st_transition_upper_bound": 32,
+        "frozen_eligible_events_before_cooldown": 18,
+        "retained_after_252_session_cooldown": 18,
+        "retained_symbols": 18,
+        "retained_decision_dates": 17
+      },
+      "2020": {
+        "coverage": "January through June",
+        "raw_st_to_non_st_transition_upper_bound": 17,
+        "frozen_eligible_events_before_cooldown": 11,
+        "retained_after_252_session_cooldown": 11,
+        "retained_symbols": 11,
+        "retained_decision_dates": 11
+      }
+    },
+    "total_raw_transition_upper_bound": 57,
+    "total_frozen_eligible_events": 36,
+    "total_retained_events": 36,
+    "cooldown_drops": 0,
+    "decisive_fact": "The raw transition superset itself has only 32 events in the sole complete year, 2019. Therefore no stricter faithful V33 implementation can exceed fifty events in every year.",
+    "scientific_interpretation": "This is an event-frequency result only. It says nothing about future return, loss avoidance or economic sign."
+  },
+  "early_close_decision": {
+    "opportunity_gate_passed": false,
+    "stage_a_candidate_materialization_authorized": false,
+    "stage_b_outcome_attachment_authorized": false,
+    "chart_rendering_authorized": false,
+    "later_period_read_authorized": false,
+    "classification": "COUNT_ONLY_EARLY_CLOSE_INSUFFICIENT_ANNUAL_EVENT_BREADTH",
+    "no_rescue": "Do not shorten the warning-history requirement, count repeated post-removal days, add other trading-state transitions, enlarge the universe, or extend the signal range after observing the count. Any such idea is a new mother family requiring a new outcome-blind specification.",
+    "next_action": "Close V33 without forward outcomes and return research capital to a broader independent mother-signal frontier."
+  },
+  "hypothetical_stage_b_contract_if_the_count_gate_had_passed": {
+    "authorization_state": "NOT_AUTHORIZED_AND_UNREACHABLE_FOR_V33",
+    "population": "Exactly the immutable count-gated candidates; no reselection.",
+    "entry": "First legal buyable coordinate open in global sessions t+1 through t+3; never session t.",
+    "target": "First later same-lineage legal +10 percent coordinate target, filled at the exact target under accepted price-limit semantics.",
+    "fallback": "Otherwise strict H20 decision followed by the first legal sellable open under the accepted execution contract.",
+    "round_trip_cost": 0.004,
+    "execution": "T+1, historical limits, suspensions, corporate actions, availability and adjusted-coordinate lineage all fail closed.",
+    "development_gate": "For each signal year separately, strictly more than fifty completed trades and mean net return strictly greater than 0.04.",
+    "later_period": "2021 and all later periods remain closed until the every-year development gate passes and a separate complete chart-rule freeze exists."
+  },
+  "hypothetical_chart_protocol_if_the_economic_gate_had_passed": {
+    "authorization_state": "NOT_AUTHORIZED_AND_UNREACHABLE_FOR_V33",
+    "window": "Every immutable event, 126 global market sessions before through 126 after the signal; missing sessions remain blank.",
+    "phase_1": "Render anonymous chronology-masked charts with only relative_session<=0 visible. Review every event and freeze/hash the complete signal-time morphology ledger before any outcome grouping is opened.",
+    "phase_2": "Only after the phase-1 hash, reveal post-signal attribution charts and append observations and counterexamples without changing phase-1 labels.",
+    "scale_isolation": "Pre-signal price and turnover scales use only relative_session<=0. Entry, target, exit, status, return and all post-signal pixels cannot influence the masked chart.",
+    "outcome_groups": [
+      "completed net return >= 0.04",
+      "0 <= completed net return < 0.04",
+      "-0.10 < completed net return < 0",
+      "completed net return <= -0.10",
+      "no completed trade"
+    ],
+    "rule_budget": "At most five simple causal signal-time rules under a separately hashed rule-compression specification; no rule aggregation is permitted during chart construction or phase-1 labeling.",
+    "no_sampling": true,
+    "post_signal_used_as_predictor": false
+  },
+  "prohibited": [
+    "reading any V33 forward return, post-signal price path, target hit, entry, exit or payoff after the count gate failed",
+    "reading any 2021 or later row or outcome",
+    "relaxing hard_valid, availability, snapshot, corporate-action, execution or coordinate-lineage requirements",
+    "using an inferred historical announcement time to trade at session t open",
+    "counting repeated normal-status days to manufacture event breadth",
+    "combining ST removal with suspension reopening, gap, momentum, support, turnover, volume, VWAP, market-state or candlestick filters",
+    "changing the twenty-session antecedent, 252-session cooldown, universe or dates after seeing counts",
+    "parameter grids, sign rescue, chart generation, outcome attachment, portfolio replay, validation or live-trading claims"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "experiment": "ASHARE-BEARISH-DISPLACEMENT-SUPPLY-ZONE-REENTRY-V1",
+  "stage": "V26_INSPIRED_A67_TRANSLATION_V4_FREEZE",
+  "scientific_status": "POST_HOC_CHART_GENERATED_DEVELOPMENT_TRANSLATION",
+  "development_signal_period": ["2014-01-01", "2020-12-31"],
+  "visual_basis": "many H20 losers entered the frozen supply zone materially but reversed before reaching the full upper boundary; full repair is not required for a tradable partial repair",
+  "frozen_translations": [
+    {
+      "id": "T1_A67_TARGET",
+      "definition": "target = entry_price + 0.67 * (frozen zone_u - entry_price)",
+      "origin": "same fixed partial-repair fraction used by repository V26/V27",
+      "threshold_search": false
+    },
+    {
+      "id": "T2_A67_NET4_HEADROOM",
+      "definition": "enter only when A67 target gross return minus frozen 40 bp round-trip cost is at least 4%",
+      "origin": "the user's explicit minimum per-signal economic hurdle",
+      "threshold_search": false
+    }
+  ],
+  "profiles": ["FULL_ZONE_U", "A67", "A67_NET4"],
+  "unchanged": {
+    "mother_signal": true,
+    "entry_clock": true,
+    "H20": true,
+    "failure_stop": "NONE",
+    "cost": 0.004,
+    "execution_semantics": true
+  },
+  "market_state": {
+    "definition": "causal broad median ret20/ret60 sign quadrant",
+    "use": "diagnostic only"
+  },
+  "outcome_governance": {
+    "2021_signal_outcomes_read": false,
+    "2022_plus_outcomes_read": false,
+    "post_2024_outcomes_read": false,
+    "cy011_read": false
+  },
+  "anti_overfit": {
+    "no_target_fraction_grid": true,
+    "no_horizon_change": true,
+    "no_stop_combination": true,
+    "no_semantic_filter_combination": true
+  }
+}

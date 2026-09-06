@@ -1,0 +1,131 @@
+{
+  "experiment": "ASHARE-IMPULSE-CONTRACTION-REBREAK-SIMPLE-RULE-DEVELOPMENT-V1",
+  "lane": "independent_price_limit_impulse_continuation",
+  "stage_a_outcomes_opened": false,
+  "scientific_development": [
+    "2014-01-01",
+    "2021-12-31"
+  ],
+  "semantic_discovery_block": [
+    "2014-01-01",
+    "2018-12-31"
+  ],
+  "chronological_confirmation_block": [
+    "2019-01-01",
+    "2021-12-31"
+  ],
+  "sealed_validation": [
+    "2022-01-01",
+    "2023-12-31"
+  ],
+  "repository_2024_plus_opened": false,
+  "economic_hypothesis": "A first price-limit breakout from a bounded platform reveals an abrupt demand shock. If supply then contracts without erasing the launch and price makes its first completed-close rebreak of all post-launch highs, delayed price discovery may continue.",
+  "population": {
+    "boards": [
+      "MAIN",
+      "CHINEXT"
+    ],
+    "hard_valid_required": true,
+    "non_st_required": true,
+    "same_coordinate_lineage_required": true,
+    "launch": {
+      "first_limit_up_in_prior_sessions": 40,
+      "close_at_or_above_prior_40_session_high": true,
+      "prelaunch_40_session_range_max": 0.35
+    },
+    "contraction": {
+      "completed_sessions_min": 4,
+      "completed_sessions_max": 10,
+      "strict_calendar_session_contiguity": true,
+      "max_close_drawdown_from_launch_min": 0.01,
+      "max_close_drawdown_from_launch_max": 0.12,
+      "median_turnover_over_launch_turnover_max": 0.9,
+      "minimum_close_over_launch_close_min": 0.85
+    },
+    "trigger": {
+      "first_completed_close_above_all_launch_through_prior_contraction_highs": true,
+      "close_location_min": 0.7,
+      "first_trigger_per_launch": true,
+      "symbol_cooldown_sessions": 30
+    }
+  },
+  "frozen_candidate_artifact": "/Volumes/quant/CY_quant_research/ashare_impulse_contraction_rebreak_v1/semantic_refined/refined_candidates.parquet",
+  "frozen_candidate_sha256": "f0f94dc916acdfe9ea57a3c85da0a5cafe58954aedeb95cf83e8ccf350359d5d",
+  "frozen_candidate_count": 435,
+  "frozen_symbol_count": 406,
+  "annual_candidate_counts": {
+    "2014": 58,
+    "2015": 61,
+    "2016": 44,
+    "2017": 34,
+    "2018": 15,
+    "2019": 64,
+    "2020": 92,
+    "2021": 67
+  },
+  "blind_chart_count": 48,
+  "blind_charts_end_at_signal_close": true,
+  "entry": "first legal executable daily open strictly after the completed trigger session, no later than the third subsequent market session; otherwise the signal expires",
+  "costs": {
+    "entry_bps": 20,
+    "exit_bps": 20,
+    "round_trip_bps": 40
+  },
+  "execution": {
+    "signal_bar_fill_allowed": false,
+    "maximum_entry_delay_market_sessions": 3,
+    "t_plus_one_required": true,
+    "suspension_and_price_limit_tradability_required": true,
+    "corporate_action_coordinate_fail_closed": true,
+    "unknown_required_lineage_fail_closed": true
+  },
+  "frozen_exit_profiles": [
+    {
+      "profile": "T10_H10_NO_STOP",
+      "profit_target_from_entry": 0.1,
+      "time_stop_completed_sessions": 10,
+      "failure_exit": "NONE"
+    },
+    {
+      "profile": "T10_H10_CONTRACTION_LOW",
+      "profit_target_from_entry": 0.1,
+      "time_stop_completed_sessions": 10,
+      "failure_exit": "next legal open after completed close below frozen contraction low"
+    },
+    {
+      "profile": "T20_H20_NO_STOP",
+      "profit_target_from_entry": 0.2,
+      "time_stop_completed_sessions": 20,
+      "failure_exit": "NONE"
+    },
+    {
+      "profile": "T20_H20_CONTRACTION_LOW",
+      "profit_target_from_entry": 0.2,
+      "time_stop_completed_sessions": 20,
+      "failure_exit": "next legal open after completed close below frozen contraction low"
+    },
+    {
+      "profile": "H10_CLOSE",
+      "profit_target_from_entry": null,
+      "time_stop_completed_sessions": 10,
+      "failure_exit": "NONE"
+    },
+    {
+      "profile": "H20_CLOSE",
+      "profit_target_from_entry": null,
+      "time_stop_completed_sessions": 20,
+      "failure_exit": "NONE"
+    }
+  ],
+  "selection": "Choose at most one exit profile using 2014-2018 only; report the unchanged selected profile on 2019-2021. Trigger-at-limit is descriptive only and cannot remove events.",
+  "continuation_gate": {
+    "average_signals_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_trade_return_min": 0.03,
+    "pooled_median_net_trade_return_positive": true,
+    "confirmation_2019_mean_net_positive": true,
+    "confirmation_2020_mean_net_positive": true,
+    "confirmation_2021_mean_net_positive": true,
+    "severe_loss10_controlled": true,
+    "validation_only_if_development_passes": true
+  }
+}

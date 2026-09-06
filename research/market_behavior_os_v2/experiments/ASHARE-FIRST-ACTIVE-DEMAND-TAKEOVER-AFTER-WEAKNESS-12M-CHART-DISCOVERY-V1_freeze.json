@@ -1,0 +1,87 @@
+{
+  "experiment": "ASHARE-FIRST-ACTIVE-DEMAND-TAKEOVER-AFTER-WEAKNESS-12M-CHART-DISCOVERY-V1",
+  "scientific_status": "OUTCOME_BLIND_ECONOMIC_MOTHER_AND_CHART_PROTOCOL_FREEZE",
+  "economic_hypothesis": "After a non-positive 20-session stock path, the first non-limit-up session in at least 60 sessions that combines a large positive price move, a close near the session high, and exceptional turnover is an observable transfer from passive inventory to active demand. Some transfers should begin durable repricing while others should be terminal short-covering or distribution; full path anatomy is required before compressing the distinction.",
+  "relationship_to_prior_work": "This is a deeper, higher-recall active-demand family, not the existing overnight-gap V10, inside-day V1-V8, limit-up, support/reclaim, or raw momentum formulation. It deliberately excludes an upper-limit close and does not require a gap, inside day, future breakout, or future market state.",
+  "candidate_definition": {
+    "universe": "registered MAIN and CHINEXT PIT daily population with current_valid, hard_valid, tradable market state, market-rule validity and corporate-action validity",
+    "signal_bar": "fully completed daily bar",
+    "prior_20_return": "ret20 <= 0",
+    "demand_return": "step_return >= 7%",
+    "close_location": "(coord_close - coord_low) / (coord_high - coord_low) >= 80%",
+    "turnover_expansion": "signal turnover_fraction and the prior-20-session median turnover_fraction must both be strictly positive, and signal turnover_fraction >= 2 times that prior median",
+    "not_locked_limit_up": "raw close rounded to cents is strictly below the rounded upper-limit price",
+    "first_demand_takeover": "the same raw demand-takeover condition has not occurred for the stock in the prior 60 market sessions",
+    "missing_required_input": "fail closed"
+  },
+  "identity_and_frequency_audit": {
+    "audited_without_reading_forward_returns": true,
+    "signal_period": ["2014-01-01", "2020-12-31"],
+    "expected_signals": 1754,
+    "expected_annual_signals": {
+      "2014": 115,
+      "2015": 436,
+      "2016": 199,
+      "2017": 148,
+      "2018": 322,
+      "2019": 210,
+      "2020": 324
+    },
+    "every_calendar_year_more_than_50_before_rule_compression": true
+  },
+  "execution_profile": {
+    "entry": "first legal executable open strictly after the completed signal bar",
+    "maximum_entry_delay_market_sessions": 3,
+    "target": 0.15,
+    "time_horizon_market_sessions": 30,
+    "time_stop": "next legal sellable open after the horizon decision",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "price_limits_and_suspensions": true,
+    "corporate_action_and_coordinate_lineage": "fail closed",
+    "same_bar_fill": false
+  },
+  "chart_protocol": {
+    "render_every_signal": true,
+    "pre_signal_completed_sessions": 126,
+    "post_signal_completed_sessions": 126,
+    "group_for_review_by_realized_bucket": true,
+    "buckets": {
+      "PROFIT_GE_4PCT": "completed net return >= 4%",
+      "PROFIT_0_TO_4PCT": "completed net return in [0%, 4%)",
+      "LOSS_0_TO_10PCT": "completed net return in (-10%, 0%)",
+      "SEVERE_LOSS": "completed net return <= -10%",
+      "NO_COMPLETED_TRADE": "entry or exit could not be completed under the frozen contract"
+    },
+    "visual_questions": [
+      "Did active demand emerge from a durable inventory base or from a vertical rebound inside a longer decline?",
+      "Was there clear overhead from a prior failed peak or distribution shelf?",
+      "Did price accept the demand-day value area during the first few completed sessions?",
+      "Was turnover transfer isolated or followed by sustained participation?",
+      "Did the causal broad market state support continuation, or was the event an idiosyncratic repricing?"
+    ],
+    "maximum_compressed_rules_after_full_review": 5
+  },
+  "causal_market_state": {
+    "source": "existing registered causal market regime at the signal close",
+    "base_regime": "BULL / TRANSITION / BEAR from causal market ret20, ret60 and breadth",
+    "return_acceleration": "market_median_ret20 - market_median_ret60",
+    "breadth_acceleration": "market_positive_ret20_share - market_positive_ret60_share",
+    "future_market_return_used": false
+  },
+  "continuation_gate": {
+    "literal_each_calendar_year_signals_strictly_greater_than": 50,
+    "mean_net_return_strictly_greater_than": 0.04,
+    "also_report_independent_signal_dates_and_date_concentration": true,
+    "later_period_open_only_after_visual_rules_are_frozen_and_gate_passes": ["2022-01-01", "2024-12-31"]
+  },
+  "governance": {
+    "2014_2020_are_consumed_rule_discovery": true,
+    "2021_not_used_to_define_visual_rules": true,
+    "2022_2024_not_read_for_this_family_before_rule_freeze": true,
+    "post_2024_outcome_read": false,
+    "no_threshold_grid": true,
+    "no_target_or_horizon_search": true,
+    "no_independent_confirmation_claim": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "experiment": "ASHARE-BULL-QUIET-INVENTORY-REPRICING-CHART-RULES-V1",
+  "stage": "PRE_CHART_RULE_DISCOVERY_FREEZE",
+  "purpose": "Apply the V26 workflow to the frozen quiet-inventory information-repricing mother event inside the independently frozen causal BULL state: review every 2014-2020 signal chart, distinguish genuine information repricing from terminal-distribution breakouts, and compress observations into at most five causal rules before any 2021-plus challenge aggregation.",
+  "mother_signal": "ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1",
+  "translation": "exact T20_H60_QUIET_INFORMATION_REPRICING; next legal open, +20% target, H60, no stop, 40 bps round trip",
+  "market_state": {
+    "source": "ASHARE-CAUSAL-MARKET-REGIME-ROUTED-SIMPLE-STRATEGY-V1",
+    "definition": "BULL when completed cross-sectional median ret20 and ret60 are both positive and the positive-return shares at both horizons are both strictly above 0.50",
+    "decision_time": "completed signal-session close",
+    "future_values_used": false,
+    "missing_policy": "fail closed"
+  },
+  "chart_rule_development": {
+    "signal_start": "2014-01-01",
+    "signal_end": "2020-12-31",
+    "expected_signals": 606,
+    "annual_signal_counts": {
+      "2014": 81,
+      "2015": 88,
+      "2016": 41,
+      "2017": 29,
+      "2018": 2,
+      "2019": 160,
+      "2020": 205
+    },
+    "pre_signal_market_sessions": 126,
+    "post_signal_market_sessions": 126,
+    "all_signals_rendered": true,
+    "review_order": "outcome bucket, then chronological contact sheets",
+    "outcome_threshold_for_visual_label_only": "net return >= 4%"
+  },
+  "review_axes": [
+    "whether the prior 40-session inventory is genuinely horizontal or already late-stage elevated",
+    "whether turnover contracts progressively before the breakout",
+    "whether the breakout is the first clean range escape or a repeated failed escape",
+    "whether the demand bar is accepted without an excessive next-open chase",
+    "whether longer-term price structure shows fresh price discovery or terminal distribution"
+  ],
+  "rule_compression": {
+    "maximum_plain_language_rules": 5,
+    "no_threshold_grid": true,
+    "no_automated_subset_search": true,
+    "no_lookback_change": true,
+    "no_market_state_change": true,
+    "no_target_horizon_entry_or_cost_change": true,
+    "rules_must_be_known_no_later_than_entry": true
+  },
+  "outcome_governance": {
+    "2014_2020": "consumed visual-rule development",
+    "2021": "not permitted in visual rule discovery",
+    "2022_2023": "previously consumed mother-signal outcomes but not permitted in rule discovery",
+    "2024_plus": "not permitted in this chart build",
+    "interpretation": "post-hoc development anatomy, not independent confirmation"
+  }
+}

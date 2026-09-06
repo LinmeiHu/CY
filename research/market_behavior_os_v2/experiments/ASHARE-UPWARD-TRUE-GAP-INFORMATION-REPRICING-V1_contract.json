@@ -1,0 +1,30 @@
+{
+  "experiment_id": "ASHARE-UPWARD-TRUE-GAP-INFORMATION-REPRICING-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FROZEN",
+  "scientific_period": "2014-01-01 through 2021-12-31",
+  "outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "A strict upward true gap means the market abandoned an entire price interval overnight. When that interval is at least one percent, occurs after a bounded sixty-session inventory regime, carries participation expansion, closes high, and is not a locked limit-up, the gap is a tradable information-repricing event whose next sessions may continue discovering a higher equilibrium.",
+  "causal_state": {
+    "history": "60 prior symbol rows exist; all 20 most recent rows are hard-valid/current-valid/tradable.",
+    "bounded_inventory": "prior-60 minimum coordinate low / maximum coordinate high >=70%."
+  },
+  "trigger": {
+    "strict_true_gap": "signal coordinate low is strictly above the immediately prior market-session coordinate high, and their market-session indices are adjacent.",
+    "meaningful_gap": "signal coordinate low / prior coordinate high - 1 >=1%.",
+    "signal_return": "signal step return is between +5% and +12%, inclusive.",
+    "participation": "signal turnover >=1.5 times the preceding-20-row mean turnover.",
+    "high_close": "signal close location >=75%.",
+    "not_limit_up": "signal coordinate close is strictly below the legal upper-limit coordinate.",
+    "deduplication": "qualifying events separated by no more than 20 market-session indices form one symbol cluster; retain its first event."
+  },
+  "universe": ["MAIN", "CHINEXT"],
+  "hard_validity": ["hard_valid", "history_valid", "current_valid", "tradable", "market_rule_valid", "corporate_action_valid", "not corporate_action_blocking", "not ST"],
+  "decision_at": "signal close",
+  "entry": "next legal executable session open",
+  "cost": "40 bp round trip",
+  "predeclared_outcome_profiles": ["H10_NEXT_OPEN", "H20_NEXT_OPEN", "T10_H20_NEXT_OPEN"],
+  "profile_selection": "2014-2018 only: maximize median annual mean net return, then pooled mean, then shorter horizon.",
+  "confirmation": "Only the selected profile is evaluated on 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, and every confirmation-year mean >0.",
+  "prohibited": ["no outcome-driven threshold changes", "no 2022-2023 before Development passes", "no repository 2024+", "no model", "no signal-bar fill"]
+}

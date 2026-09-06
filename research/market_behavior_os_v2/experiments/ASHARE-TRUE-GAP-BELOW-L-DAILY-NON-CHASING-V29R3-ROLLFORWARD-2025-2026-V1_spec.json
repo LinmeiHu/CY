@@ -1,0 +1,68 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-DAILY-NON-CHASING-V29R3-ROLLFORWARD-2025-2026-V1",
+  "frozen_at": "2026-09-06",
+  "scientific_status": "FROZEN_RULE_POST_OBSERVATION_ROLLFORWARD_DIAGNOSTIC_NOT_PRISTINE_OOS",
+  "purpose": "Apply the already-frozen V29R3 rule without modification to the latest complete local evidence and publish annual signal and completed-trade statistics without replacing any prior artifact.",
+  "fixed_rule": {
+    "parent": "V27 M20/F14/R5 prior-high reversal with next legal one-minute entry, A67 target, H20 time stop and no failure stop",
+    "v28": "At the completed signal close require registered CY-033 hard_valid, known non-ST state, and at most one one-price limit-down in the 20 completed sessions strictly before the signal.",
+    "v28r1": "Raw signal close must be strictly below registered signal-day up-limit price minus 0.006 CNY.",
+    "v28r2": "Raw signal-day amount must be positive and no more than 2.0 times the positive median raw amount of exactly 20 completed trading sessions strictly before the signal; every source row must be hard-valid, snapshot-bound and available by the signal decision.",
+    "v29r3": "Raw signal-day stock return minus the unweighted median return of all eligible rows physically present in the same registered CY-033 partition must be no more than 0.02, inclusively.",
+    "cost_per_side": 0.002,
+    "round_trip_cost": 0.004,
+    "portfolio": "Main and ChiNext 50/50 sleeves; K80 per sleeve; same-symbol overlap and capacity rules unchanged.",
+    "parameter_change_count": 0
+  },
+  "rollforward_scope": {
+    "2025": "Complete signal-year diagnostic sourced from the simultaneously frozen V27 2024-2025 diagnostic; maximum source exit is 2025-12-09.",
+    "2026": "Mature YTD diagnostic only. Data end is 2026-09-04 and only V27 signals formed no later than the frozen maturity cutoff 2026-08-03 are eligible; later signals are right-censored and are not counted as zero-return trades.",
+    "development_or_threshold_selection_allowed": false
+  },
+  "input_governance": {
+    "registered_daily_asset": "CY-033",
+    "registered_daily_location": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1",
+    "registered_daily_manifest_sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977",
+    "daily_partition_sha256": {
+      "2018": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "2019": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "2021": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "2022": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "2023": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+      "2024": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e",
+      "2025": "846ca46ce65dd9bd1e9c89df5b26c143af8e8829365671c6f7e43b801cb09d9a",
+      "2026": "cbf898ccaf165310b511fdc7822b3370ce32cc0fd7d09c35a6d5ba0b38821fe8"
+    },
+    "cross_section_limitation": "Conditional observed-row cross-section only. Historical security-master completeness and survivorship freedom are not proven because QD-007 is not materialized.",
+    "pit_grade": "B",
+    "live_trading_or_order_release_allowed": false
+  },
+  "frozen_rollforward_sources": {
+    "v27_2024_2025_result_sha256": "d44947237bc6315d93c4e7232ab3df8805eecab6796cb79cced21a8c55d88653",
+    "v27_2024_2025_entries_sha256": "bda4fac645192dedf0cf3574555993fd83b2c7512196abc4f5a286ea0adc747a",
+    "v27_2024_2025_outcomes_sha256": "a2ffbe9e7f08f1b554f9ee601724bc5c2ebd7b51f3249c300af24e25000dbde6",
+    "v27_2024_2025_daily_sha256": "265f1a5d65099694b0a87ac6418cca61006be89d0df1e6c1d5ed5678c38ef7b0",
+    "v27_2026_result_sha256": "5a83048c92f44aeb2dfd76475adee556afd303f0011a0e8a74c9c08a0c219a1c",
+    "v27_2026_entries_sha256": "62c2f475c3a09d18b4524933fcf14bb69149f7f236d3e4af33d8c188b2579b69",
+    "v27_2026_outcomes_sha256": "29c10f6e04e3f18949a53214ada7f9ffbb2b3b501a31976871ab485699503f2a",
+    "v27_2026_daily_sha256": "5766eec79c790b969be593b64a2d5c8935b82b8605e5bccf2412b62686e56d47"
+  },
+  "publication": {
+    "output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_daily_non_chasing_v29r3_rollforward_2025_2026_v1",
+    "overwrite_prior_results": false,
+    "required_annual_fields": [
+      "signals",
+      "executable_entries",
+      "accepted",
+      "completed",
+      "mean_net",
+      "median_net",
+      "win",
+      "severe10",
+      "mean_holding_sessions",
+      "median_holding_sessions",
+      "exit_reasons"
+    ]
+  }
+}

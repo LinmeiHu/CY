@@ -1,0 +1,86 @@
+{
+  "experiment": "ASHARE-BEARISH-DISPLACEMENT-SUPPLY-ZONE-REENTRY-V1",
+  "stage": "V26_STYLE_CHART_RULE_COMPRESSION_ROUND_1_FREEZE",
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "outcome_governance": {
+    "2021_signal_outcomes_read": false,
+    "2022_plus_outcomes_read": false,
+    "post_2024_outcomes_read": false,
+    "cy011_read": false
+  },
+  "visual_discovery_basis": {
+    "chart_window": "126 sessions before through 126 sessions after signal",
+    "review_order": "chronological and outcome-stratified contact sheets",
+    "economic_observation": "pre-entry shapes overlap materially; profitable events usually reach frozen zone upper boundary quickly, while large losses commonly lose the frozen lower boundary after entry and continue lower",
+    "not_an_independent_confirmation": true
+  },
+  "baseline": {
+    "entry": "first legal next open no later than signal_idx+3",
+    "entry_headroom_to_zone_u": 0.044,
+    "target": "frozen zone_u, recognized only on a legal state",
+    "time_stop": "after 20 calendar indices, next legal sellable open",
+    "round_trip_cost": 0.004
+  },
+  "compressed_rules": [
+    {
+      "id": "R1_ENTRY_MUST_RETAIN_ZONE_L",
+      "role": "BUY_VALIDITY",
+      "definition": "the first otherwise legal entry open must be greater than or equal to the frozen pre-existing zone_l; otherwise do not enter",
+      "economic_claim": "a gap back below zone_l before entry means the re-entry/acceptance thesis is already invalid",
+      "uses_future_information": false
+    },
+    {
+      "id": "R2_CLOSE_BACK_BELOW_ZONE_L_EXIT",
+      "role": "THESIS_INVALIDATION_EXIT",
+      "definition": "after entry and before target, the first legal daily close strictly below frozen zone_l arms an exit at the next legal sellable open; an intraday zone_u target reached on that same day has priority because it occurs before the close is known",
+      "economic_claim": "loss of the accepted supply-zone boundary indicates that trapped supply remains dominant",
+      "uses_future_information": false
+    }
+  ],
+  "market_state": {
+    "id": "CAUSAL_BROAD_MEDIAN_RET60_SIGN",
+    "definition": "on each signal date, compute the median ret60 across the broad PIT-valid, current-day-tradable, non-ST A-share cross-section",
+    "bull": "median_ret60 >= 0",
+    "bear": "median_ret60 < 0",
+    "use_in_round_1": "diagnostic stratification only; not an admission filter and not exposure scaling",
+    "uses_future_information": false,
+    "forbidden_inputs": [
+      "future returns",
+      "future extrema",
+      "calendar-year outcome labels",
+      "full-sample quantiles"
+    ]
+  },
+  "round_1_comparisons": [
+    "BASELINE",
+    "R1_ONLY",
+    "R2_ONLY",
+    "R1_PLUS_R2"
+  ],
+  "evaluation": {
+    "primary": [
+      "annual completed events",
+      "annual mean net return",
+      "annual median net return",
+      "positive-return rate",
+      "net return >= 4% rate",
+      "severe-loss incidence at net return <= -10%",
+      "target-hit retention"
+    ],
+    "state_anatomy": [
+      "same metrics within frozen bull and bear states",
+      "state distribution by year"
+    ],
+    "user_gate": "at least 50 completed signals in every development year and mean net return above 4% in every development year before opening 2022-2024 signal outcomes"
+  },
+  "anti_overfit": {
+    "no_threshold_grid": true,
+    "no_neighboring_lookbacks": true,
+    "no_full_sample_percentiles": true,
+    "no_rule_rescue_after_round_1": true,
+    "next_iteration_requires_new_chart_evidence": true
+  }
+}

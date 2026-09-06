@@ -1,0 +1,140 @@
+{
+  "asset_id": "CY-047",
+  "name": "Bounded V34R1 outcome-blind realized-cash-payout semantic-correction input",
+  "status": "FROZEN_OUTCOME_BLIND_SEMANTIC_CORRECTION_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "stage_a_binding": {
+    "spec": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_freeze.json",
+      "sha256": "e41bfe9de6c68878ea556cf31397075adda9076adc19a4089215284436c6bdb4"
+    },
+    "runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_stage_a.py",
+      "sha256": "deb4856ab9cf21cb117428db3e54f45cc0422cf5eef5ca8eebcb2e12357167d1"
+    },
+    "inputs": {
+      "corporate_action_id_contract": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+        "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+      },
+      "qd010_inventory": {
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      },
+      "qd010_source_manifest": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+        "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+      },
+      "qd010_distributions": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+        "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+      },
+      "qd010_rights": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+        "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+      },
+      "cy006_inventory": {
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+      },
+      "cy006_2018": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      "cy006_2019": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      "cy006_2020": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      },
+      "v34_base_runner": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34_stage_a.py",
+        "sha256": "72fe4f7a6300b726ceed0f675ead921e8209aeca994b6cd7c014cbc0258b03d6"
+      },
+      "qd010_normalizer_semantics": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/lineage/cninfo_current_snapshot.py",
+        "sha256": "6b012c19c825b2fb7026b83a55710cf00b2d40cfcb4d334543d2a4511dac1eae"
+      },
+      "v34_parent_spec": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34_freeze.json",
+        "sha256": "86adf9667245638671ec9c4b733ff47fbd16abd20306d3f4c2bc048a394e489d"
+      },
+      "v34_parent_manifest": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34-CY045_DATA_ASSET_MANIFEST.json",
+        "sha256": "f8407b4c7aa18f420880416c83f23041ae4d42f49c37902a348dc9bd4c964794"
+      },
+      "v34_parent_stage_a_result": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/result.json",
+        "sha256": "b6c6906fccb70b8af287d7c1f5741a096cf4386624df5e4b91b6f872ab7e7322"
+      },
+      "v34_parent_stage_a_representation": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/representation_panel.parquet",
+        "sha256": "9112509523807f0901a975d97fe9daef0584481dba577f4cdb1397bfba606537"
+      },
+      "v34_parent_stage_a_candidates": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/candidates_frozen.parquet",
+        "sha256": "d8845e11504d95029ae55f05b6d060a9528ffd0e99cc17e8094bee818cf2d8c1"
+      }
+    }
+  },
+  "bound_artifacts": [
+    {"role": "corporate_action_id_contract", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py", "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"},
+    {"role": "qd010_inventory", "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json", "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"},
+    {"role": "qd010_source_manifest", "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json", "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"},
+    {"role": "qd010_distributions", "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet", "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"},
+    {"role": "qd010_rights", "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet", "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"},
+    {"role": "cy006_inventory", "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+    {"role": "cy006_2018", "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet", "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"},
+    {"role": "cy006_2019", "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet", "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"},
+    {"role": "cy006_2020", "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet", "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"},
+    {"role": "v34_base_runner", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34_stage_a.py", "sha256": "72fe4f7a6300b726ceed0f675ead921e8209aeca994b6cd7c014cbc0258b03d6"},
+    {"role": "qd010_normalizer_semantics", "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/lineage/cninfo_current_snapshot.py", "sha256": "6b012c19c825b2fb7026b83a55710cf00b2d40cfcb4d334543d2a4511dac1eae"},
+    {"role": "v34_parent_spec", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34_freeze.json", "sha256": "86adf9667245638671ec9c4b733ff47fbd16abd20306d3f4c2bc048a394e489d"},
+    {"role": "v34_parent_manifest", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34-CY045_DATA_ASSET_MANIFEST.json", "sha256": "f8407b4c7aa18f420880416c83f23041ae4d42f49c37902a348dc9bd4c964794"},
+    {"role": "v34_parent_stage_a_result", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/result.json", "sha256": "b6c6906fccb70b8af287d7c1f5741a096cf4386624df5e4b91b6f872ab7e7322"},
+    {"role": "v34_parent_stage_a_representation", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/representation_panel.parquet", "sha256": "9112509523807f0901a975d97fe9daef0584481dba577f4cdb1397bfba606537"},
+    {"role": "v34_parent_stage_a_candidates", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/candidates_frozen.parquet", "sha256": "d8845e11504d95029ae55f05b6d060a9528ffd0e99cc17e8094bee818cf2d8c1"}
+  ],
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-STAGE-A-2018-2020-V1",
+    "purpose": "ASHARE_OUTCOME_BLIND_MOTHER_REPRESENTATION",
+    "authorized_arm": "V34R1_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY",
+    "project": "research/market_behavior_os_v2",
+    "start": "2018-01-01",
+    "end": "2020-12-31",
+    "signal_start": "2018-01-01",
+    "signal_end": "2020-12-31",
+    "maximum_source_row_date": "2020-12-31",
+    "stage_a_authorized": true,
+    "whole_artifact_hash_authorized": true,
+    "inventory_metadata_parse_authorized": true,
+    "source_parquet_stage_a_parse_authorized": true,
+    "stage_b_authorized": false,
+    "outcome_attachment_authorized": false,
+    "outcome_artifact_parse_authorized": false,
+    "outcome_columns_read_authorized": false,
+    "post_signal_row_read_authorized": false,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "parameter_search_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false
+  },
+  "semantic_correction": {
+    "distribution_structural_na_required": true,
+    "independent_rights_table_collision_guard": true,
+    "cy006_optional_null_coalesced_to_zero_under_frozen_contract": true,
+    "cy006_nonzero_rights_rejected": true,
+    "threshold_direction_universe_timing_changed": false,
+    "outcome_informed": false
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 consumed development history; Stage A remains outcome blind.",
+    "claim": "CY-047 authorizes one bounded PIT-B semantic-correction count and representation audit only.",
+    "next_step": "Run once after the registry independently binds this manifest, exact R1 spec, exact wrapper and all source/provenance artifacts."
+  }
+}

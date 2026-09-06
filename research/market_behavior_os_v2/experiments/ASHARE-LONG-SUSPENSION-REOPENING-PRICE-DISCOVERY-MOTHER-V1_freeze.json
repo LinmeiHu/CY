@@ -1,0 +1,81 @@
+{
+  "experiment": "ASHARE-LONG-SUSPENSION-REOPENING-PRICE-DISCOVERY-MOTHER-V1",
+  "frozen_before_outcome_read": true,
+  "scientific_status": "OUTCOME_BLIND_HIGH_RECALL_MOTHER_EVENT",
+  "economic_hypothesis": "A multi-session trading suspension accumulates public and corporate information while the last tradable price remains frozen. The first reopening session is therefore an objective information-release auction and a new price-discovery event. Whether the repricing is subsequently accepted, rejected, or partially repaired may contain long-side information, but direction is deliberately not assumed in the mother family.",
+  "v26_methodology_transfer": {
+    "objective_pre_existing_object": "the last tradable corporate-action-coordinate close strictly before a genuine suspension episode",
+    "information_discontinuity": "at least five consecutive market sessions with trade_status not equal to one immediately before the reopening session",
+    "interaction": "the first hard-valid, tradable, non-ST reopening session and the later path around the frozen pre-suspension price",
+    "natural_reference": "the frozen pre-suspension coordinate close",
+    "why_distinct": "The price discontinuity is caused by a trading and information hiatus, not a normal overnight true gap, an ordinary price-limit event, a generic bearish displacement candle, or a new listing."
+  },
+  "development_window": {
+    "daily_warmup_start": "2013-01-01",
+    "signal_start": "2015-01-01",
+    "signal_end": "2020-12-31",
+    "maximum_chart_and_outcome_context": "2021-06-30",
+    "2022_2024_signal_feature_or_outcome_read_before_gate": "NO",
+    "cy011_read": "NO"
+  },
+  "mother_definition": {
+    "reopening": "current trade_status equals one and the immediately preceding row has trade_status not equal to one",
+    "minimum_suspension": "none of the five immediately preceding exact market-calendar rows has trade_status equal to one",
+    "left_truncation_guard": "the exact row 125 market sessions earlier exists, has cal_idx=current cal_idx-125, and shares the current invalid_step_cum",
+    "pre_suspension_reference": "last prior row with trade_status equal to one and positive coord_close",
+    "coordinate_guard": "the pre-suspension reference shares the current invalid_step_cum",
+    "signal_validity": "hard_valid, current_valid, current_day_data_tradable, market_rule_valid, corporate_action_valid, not corporate_action_blocking, historical_identity_valid, non-ST, positive coordinate OHLC, and available_at no later than decision_at",
+    "direction_filter": "NONE",
+    "deduplication": "one event per reopening episode"
+  },
+  "market_state_protocol": {
+    "source": "frozen causal market-regime panel",
+    "attached_at": "reopening-session completed close",
+    "fields": [
+      "market_regime",
+      "market_median_ret20",
+      "market_median_ret60",
+      "market_positive_ret20_share",
+      "market_positive_ret60_share"
+    ],
+    "mother_filter": "NONE",
+    "future_function": false
+  },
+  "frozen_chart_label": {
+    "entry": "first legal non-limit-up coordinate open in signal+1 through signal+3",
+    "exit": "first legal non-limit-down coordinate open at or after 20 held market sessions",
+    "profit_target": "NONE",
+    "failure_exit_before_visual_rule_compression": "NONE",
+    "round_trip_cost": 0.004,
+    "same_bar_fill": false,
+    "t_plus_one": true,
+    "corporate_action_contract": "QD-010 exact coordinate lineage; fail closed on any blocking or unresolved change"
+  },
+  "chart_protocol": {
+    "render_every_signal": true,
+    "sessions_before": 126,
+    "sessions_after": 126,
+    "review_order": "all chronological sheets first, then complete profit/loss groups",
+    "visual_review_precedes_rule_compression": true,
+    "maximum_compressed_rules": 5,
+    "manual_event_deletion": "FORBIDDEN"
+  },
+  "development_gate": {
+    "completed_signals_each_calendar_year_strictly_greater_than": 50,
+    "pooled_completed_mean_net_strictly_greater_than": 0.04,
+    "later_2022_2024_open_only_if_both_pass": true
+  },
+  "prohibited": [
+    "no suspension-length grid",
+    "no reopening-gap direction chosen before full chart review",
+    "no outcome aggregation before all charts are rendered and reviewed",
+    "no generic price-limit or new-listing substitution",
+    "no 2022-2024 read before the development gate",
+    "no future market state",
+    "no signal-bar fill"
+  ],
+  "source_hashes": {
+    "pit_daily_compact_2013_2023.parquet": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_market_regime_2014_2023.parquet": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  }
+}

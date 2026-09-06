@@ -1,0 +1,111 @@
+{
+  "experiment": "ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31-STAGE-B",
+  "research_status": "PRE_OUTCOME_EXECUTION_FREEZE_AWAITING_CY038_REGISTRATION",
+  "frozen_before_any_v31_forward_path_or_payoff_read": true,
+  "parent_freeze": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31_freeze.json",
+    "sha256": "d43d03bc04b26fbc0b79207c5d0598024f5d60921522e186283d523ed670c65c"
+  },
+  "stage_a_identity": {
+    "result_path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/result.json",
+    "result_sha256": "55c772d5c77ff4ee2c333aececa08d24a787dc3a4033952d7d2371e70ccba165",
+    "representation_path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/representation_panel.parquet",
+    "representation_sha256": "91f18e9ca0646a33ceb172ad45293ee4e4979f0b4e5ffce865dca9841249f62c",
+    "candidates_path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/candidates_frozen.parquet",
+    "candidates_sha256": "0585a0da912626f6403a90e9345622cbf2c34fe6aeefec636ffa6276a13df9b8",
+    "candidate_rows": 1602,
+    "signal_start": "2018-07-31",
+    "signal_end": "2020-06-30",
+    "required_result_state": {
+      "stage_a_gate_passed": true,
+      "outcome_columns_read": false,
+      "post_signal_rows_read": false,
+      "post_2020_rows_read": false
+    }
+  },
+  "outcome_data": {
+    "raw_daily_asset": "CY-006",
+    "raw_partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ],
+    "coordinate_state_path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "maximum_path_row_date": "2020-12-31",
+    "join": "Exact symbol/trade_date join of CY-006 raw execution facts to the accepted coordinate state. coordinate_factor equals adjusted_close/raw close and coordinate OHLC equals raw OHLC times that factor. Missing joins fail closed.",
+    "scope": "Only exact frozen candidate symbols and rows no later than 2020-12-31 may enter candidate-keyed paths. No 2021 or later row may be queried."
+  },
+  "required_registry_authorization": {
+    "asset_id": "CY-038",
+    "authorization_id": "CYQ-AUTH-ASHARE-RESIDUAL-SERIAL-V31-STAGE-B-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V31_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "must_bind": [
+      "CY-006 manifest and exact 2018-2020 partitions",
+      "accepted adjusted-coordinate state and builder",
+      "parent V31 freeze, Stage-A runner/result/representation/candidates",
+      "this Stage-B freeze and completed Stage-B runner"
+    ]
+  },
+  "outcome_attachment": {
+    "signal_coordinate": "Join each frozen candidate to the exact signal-date coordinate row; its global cal_idx and invalid_step_cum become the execution anchor.",
+    "entry": "Inspect global market cal_idx signal+1 through signal+3 in order. Fill at the first legal, non-upper-limit coordinate open. A signal cannot fill on its own bar.",
+    "legal_row": "Known trade_status=1, current_day_data_tradable, hard_valid raw row, valid/non-blocking corporate-action state, valid market rule, available_at no later than decision_at, and positive finite raw/coordinate prices and coordinate factor.",
+    "target": "Before fallback eligibility, the first later same-lineage legal coordinate high at least 1.10 times entry exits at the exact target only when raw high and raw down-limit prove the bar was not locked down.",
+    "fallback": "On the first same-lineage row with cal_idx strictly greater than entry_cal_idx+20, process the open before any same-day high. A sellable open at/above target fills at exact target; a sellable open below target exits immediately at coordinate open. Only an unsellable open may defer to a later same-day legal target touch.",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "limits_suspensions_actions_and_coordinate_lineage": "Binding and fail closed",
+    "maximum_path_date": "2020-12-31",
+    "no_stop": true,
+    "no_portfolio_replay": true
+  },
+  "development_gate_before_later_period": {
+    "years": [
+      2018,
+      2019,
+      2020
+    ],
+    "completed_signals_strictly_greater_than_each_year": 50,
+    "mean_net_return_strictly_greater_than_each_year": 0.04,
+    "2021": "UNUSED_TEMPORAL_BUFFER",
+    "2022_2024": "CLOSED_UNTIL_ALL_GATES_PASS_AND_COMPLETE_CHART_RULES_ARE_FROZEN"
+  },
+  "outputs": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_b",
+    "files": [
+      "prepared_candidates.parquet",
+      "future_paths.parquet",
+      "outcomes.parquet",
+      "result.json"
+    ],
+    "publication": "Same-parent temporary construction and atomic rename; refuse overwrite."
+  },
+  "prohibited": [
+    "running before CY-038 registration binds the completed runner",
+    "candidate reselection or signal-definition changes",
+    "same-bar entry, entry after signal+3, or same-bar target",
+    "limit, suspension, corporate-action or coordinate-lineage relaxation",
+    "target, horizon, cost, threshold, market-state or portfolio search",
+    "chart-rule aggregation under this authorization",
+    "2021-plus row or outcome read",
+    "overwriting an existing canonical Stage-B directory",
+    "independent-confirmation or live-trading claim"
+  ]
+}

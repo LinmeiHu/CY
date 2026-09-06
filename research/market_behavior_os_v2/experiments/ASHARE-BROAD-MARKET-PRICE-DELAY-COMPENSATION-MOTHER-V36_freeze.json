@@ -1,0 +1,180 @@
+{
+  "experiment": "ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36",
+  "stage": "OUTCOME_BLIND_REPRESENTATION_OPPORTUNITY_AND_REDUNDANCY_FREEZE",
+  "status": "FROZEN_BEFORE_SOURCE_ACCESS_AWAITING_CY054_REGISTRATION",
+  "frozen_at": "2026-09-06",
+  "scientific_role": "Test whether a canonical price-delay statistic can be represented broadly and distinctly in PIT A-share data before any V36 forward path or payoff is read.",
+  "economic_hypothesis": "Limited attention and trading frictions can cause an individual stock to incorporate already-observed broad-market price information with delay. The high-delay direction is frozen as a possible long-only compensation premium, but Stage A cannot establish Alpha and failure may not be rescued by reversing the sign.",
+  "novelty_boundary": {
+    "new_claim": "The predictor is the incremental historical explanatory power of four lagged broad-market weekly returns beyond the contemporaneous broad-market weekly return.",
+    "not_v31": "V31 measures a prior-40 to recent-20 sign change in lag-one serial dependence of stock-minus-industry daily residual returns and requires a positive current residual. V36 measures one annual weekly price-delay level, has no phase change, no own-residual autocorrelation and no current return sign.",
+    "not_v32": "V32 measures contemporaneous independence between stock and PIT-industry turnover innovations. V36 uses price returns and lagged broad-market information; turnover is a non-filtering redundancy control only.",
+    "not_rank_acceleration_or_industry_follower": "Previously tested market-relative and industry-follower signals rank changes in trailing returns. V36 contains no trailing-return rank change, winner, laggard or catch-up condition.",
+    "not_minute_lead_follow": "Cycle 013 begins with a unique one-percent minute leader shock and measures later peer propagation. V36 has no minute data, leader event or post-event peer path.",
+    "not_momentum_or_reversal": "No sign or level of cumulative past return selects an event. Raw prior return is a redundancy diagnostic only.",
+    "not_liquidity_or_low_risk": "Size, Amihud price impact, turnover, trading continuity and idiosyncratic volatility are controls, never the V36 ordering. Strong reconstruction by one of them closes V36 before outcomes."
+  },
+  "governance_incident_disclosure": {
+    "incident": "During the preceding V36 novelty audit, an over-broad repository rg command unintentionally printed several V32 Phase-2 annotation lines containing outcome-bucket and post-path labels.",
+    "exact_command": "rg -n -i \"price delay|delay statistic|lagged (market|industry)|nonsynchronous|non-synchronous|serial_phase|residual.*lag|industry.follower|follower.*industry|amihud|trading continuity|stock-view|synchron\" research/market_behavior_os_v2/{experiments,DISCOVERY_MAP.md,STRATEGY_PRIOR_MAP_RESULTS.md,STATE.md,HANDOFF.md,DEAD_ENDS.md,STRATEGY_FRONTIER.md} --glob '*.json' --glob '*.md'",
+    "scope": "Repository V32 Phase-2 annotation JSON text only; no external Stage-B table, numeric outcome table or post-2020 V36 source row was opened.",
+    "used_for_v36_definition_or_selection": false,
+    "mitigation": "The V36 definition below was fixed from economic semantics and nearest-prior specifications only. V32 annotations, buckets and post-path labels are prohibited V36 inputs."
+  },
+  "inputs": {
+    "registry": {
+      "path": "configs/data_asset_registry.json",
+      "required_assets": [
+        "CY-054",
+        "CY-006",
+        "QD-010"
+      ],
+      "policy": "The runner must validate the public four-file CY-054 contract, then require exact installation of the CY-054 asset and bounded authorization before any source path is stated, hashed, resolved or opened."
+    },
+    "cy054_authorization": {
+      "asset_id": "CY-054",
+      "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+      "registry_suggestion_path": "research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_REGISTRY_SUGGESTION.json",
+      "authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-STAGE-A-2018-2020-V1",
+      "authorized_arm": "V36_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ],
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "corporate_action_coordinate_contract": {
+      "path": "src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+    }
+  },
+  "source_and_time_boundary": {
+    "source_start": "2018-01-01",
+    "maximum_source_row_date": "2020-12-31",
+    "signal_start": "2019-03-01",
+    "signal_end": "2020-12-31",
+    "decision_schedule": "Last completed A-share market session of each calendar month.",
+    "decision_at": "Completed signal-session close.",
+    "completed_week_rule": "A calendar week can enter formation only after its Sunday is strictly earlier than the signal date. The signal's partial calendar week is always excluded even if the signal is a Friday or holiday-shortened week.",
+    "post_2020_row_read": false,
+    "forward_or_post_signal_row_read": false
+  },
+  "eligible_history": {
+    "boards": "Historical Main Board and ChiNext identities 600/601/603/605.SH and 000/001/002/300/301.SZ.",
+    "daily_base_requirements": "For every global market session inside a weekly return, require exactly one target row with hard_valid, bar_valid, trading_state_valid, corporate_action_valid, nonblocking corporate action, market_valid, market_rule_valid, historical_identity_valid, available_at<=decision_at, all seven registered snapshot IDs nonblank, finite positive OHLC/preclose, coherent OHLC and finite action-safe log(close/preclose). Actual non-trading sessions may remain only when their registered row is otherwise valid; they are measured by the continuity control.",
+    "action_safe_return": "Daily log(close/preclose) only under the accepted CY-006/QD-010 valid nonblocking action coordinate. Unknown, invalid or blocking action evidence fails the affected weekly history closed; no adjusted future price series is used.",
+    "weekly_return": "Sum action-safe daily log returns over every global market session in the calendar week. The stock must have exactly the market-session count and exact first/last calendar indices for that week.",
+    "target_history": "Exactly 56 consecutive completed calendar-week returns ending at the latest completed week before the signal. Missing/noncontiguous weeks or nonfinite values fail closed.",
+    "market_peer_history": "For each week use the exact leave-one-out median weekly return among at least 500 other then-eligible historical Main/ChiNext stocks. Peer membership is rebuilt causally each week; current membership is never projected backward.",
+    "signal_row_requirements": "At t require non-ST, trade_status=1, current_day_data_tradable, valid nonblank PIT industry, float_valid, every base validity gate, positive finite amount, turnover_fraction and circulating_shares, and available_at<=decision_at.",
+    "snapshot_semantics": "Every historical row must carry nonblank snapshot identities. Snapshot IDs prove row provenance and are not required to be equal across dates."
+  },
+  "canonical_price_delay": {
+    "response_observations": 52,
+    "lag_count": 4,
+    "restricted_model": "For weeks w=5..56, OLS R_i,w = alpha + beta_0*M_-i,w + error.",
+    "unrestricted_model": "For the same 52 weeks, OLS R_i,w = alpha + beta_0*M_-i,w + sum(k=1..4,beta_k*M_-i,w-k) + error.",
+    "score": "PRICE_DELAY_52W_4L = 1 - R2_restricted/R2_unrestricted.",
+    "exactness": "Both design matrices must be full rank, response SST must be strictly positive, unrestricted R2 must be strictly positive, nested R2 ordering must hold within 1e-12, and the unrounded score must be finite and lie in [0,1] within 1e-12. Any failure is null; values are never clipped, imputed or regularized.",
+    "direction": "HIGH_PRICE_DELAY_BETTER_FROZEN_NO_SIGN_RESCUE",
+    "interpretation_limit": "The score measures historical response timing to a causal broad-market price proxy. It does not establish investor attention, order flow, true liquidity supply or future return."
+  },
+  "candidate_contract": {
+    "amount_floor": "Current amount must be at least the same-date median among the full otherwise-eligible signal-row Main/ChiNext cross-section. The floor never enters the delay score.",
+    "industry_support": "At least 12 amount-eligible complete V36 representations in the same current PIT industry and decision date.",
+    "selection": "Within each supported current PIT industry/date, retain exactly the stock with maximum PRICE_DELAY_52W_4L; break ties by larger current amount then lexical symbol.",
+    "cooldown": "After ranking, retain a repeated symbol only when its global signal calendar index is strictly more than 60 sessions after its last retained V36 event.",
+    "event_id": "BROAD_MARKET_PRICE_DELAY|YYYYMMDD|PIT_INDUSTRY|SYMBOL",
+    "market_filter": "NONE",
+    "past_return_sign_filter": "NONE",
+    "outcome_filter": "NONE"
+  },
+  "outcome_blind_controls": {
+    "controls": [
+      "log current circulating market value",
+      "prior complete-calendar-year mean abs(action-safe log return)/amount with at least 200 positive-amount traded observations",
+      "mean turnover_fraction over exact latest 60 global sessions",
+      "trading continuity over exact latest 60 global sessions",
+      "raw cumulative log return over exact latest 60 global sessions",
+      "standard deviation of stock minus same-day leave-one-out broad-market median log return over exact latest 60 global sessions"
+    ],
+    "test": "For the amount-eligible complete representation panel, report median same-date Spearman and median same-date-within-PIT-industry Spearman between delay and every control, with row/date/group support.",
+    "minimum_same_date_observations": 50,
+    "minimum_within_industry_observations": 8,
+    "minimum_supported_decision_dates_per_control": 8,
+    "absolute_redundancy_limit": 0.8,
+    "failure": "If either supported median absolute correlation is at least 0.80 for any control, or a control has fewer than eight supported decision dates, close V36 before outcomes."
+  },
+  "stage_a_gates": {
+    "years": [
+      2019,
+      2020
+    ],
+    "retained_candidates_each_year_strictly_greater_than": 50,
+    "decision_months": {
+      "2019_minimum": 8,
+      "2020_minimum": 10
+    },
+    "pit_industries_each_year_at_least": 20,
+    "unique_symbols_each_year_strictly_greater_than": 50,
+    "representation_delay_values_finite_and_in_unit_interval": true,
+    "redundancy_gate_must_pass": true,
+    "all_must_pass": true,
+    "failure_policy": "If input/PIT/semantic checks fail, publish nothing. If only representation opportunity or redundancy gates fail, atomically publish compact result.json only, permanently close this exact family and do not inspect charts, outcomes, alternate lags, windows, directions or thresholds."
+  },
+  "stage_a_protocol": {
+    "allowed": [
+      "construct historical weekly returns, causal leave-one-out broad-market medians, exact price-delay representations, frozen representatives and outcome-blind controls",
+      "report coverage, dates, securities, PIT industries, regression rejection reasons, opportunity counts and redundancy correlations",
+      "write representation_panel.parquet and candidates_frozen.parquet only if every Stage-A gate passes"
+    ],
+    "forbidden": [
+      "any 2021-plus partition or row",
+      "any row after a signal used as that signal's predictor",
+      "any future return, target, fill, MFE, MAE, outcome bucket, chart label, strategy result or portfolio artifact",
+      "V32 Phase-2 annotations exposed by the disclosed rg incident",
+      "alternate lag count, formation window, schedule, market proxy, sign, industry threshold, cooldown or favorable subset",
+      "Stage B, charts, portfolio replay or later-period validation"
+    ]
+  },
+  "output_contract": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a",
+    "files_if_passed": [
+      "representation_panel.parquet",
+      "candidates_frozen.parquet",
+      "result.json"
+    ],
+    "files_if_failed_gate": [
+      "result.json"
+    ],
+    "publication": "Build in a sibling staging directory, reverify public contract, registry installation and every source hash, then atomically rename without overwrite."
+  },
+  "later_stage_boundary": {
+    "stage_b_authorized": false,
+    "charts_authorized": false,
+    "outcome_read_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_plus_read_authorized": false,
+    "passing_stage_a_meaning": "Representation, opportunity and non-obvious-redundancy readiness only; never strategy usefulness."
+  }
+}

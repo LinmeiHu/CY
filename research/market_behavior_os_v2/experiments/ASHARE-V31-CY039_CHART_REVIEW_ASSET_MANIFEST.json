@@ -1,0 +1,85 @@
+{
+  "asset_id": "CY-039",
+  "name": "Bounded V31 frozen-development two-pass chart-review input",
+  "status": "FROZEN_DEVELOPMENT_CHART_REVIEW_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "upstream_bounded_asset": {
+    "asset_id": "CY-038",
+    "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V31-CY038_DATA_ASSET_MANIFEST.json",
+    "manifest_sha256": "86d6f448b938468c3e9bd106ec3086e3dd1665dc3ec053ac44cc1ee7fd79a2ed",
+    "stage_b_result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_b/result.json",
+      "sha256": "2c28f3b4ee1437d9dbdb1460792a72c09063d55067cdcb74aff918b58fb988b0",
+      "bytes": 9054
+    },
+    "prepared_candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_b/prepared_candidates.parquet",
+      "sha256": "9184615d9c24b408c0895c17f0162aed39c0073c785a3df82e032b2698fe6f79",
+      "rows": 1602
+    },
+    "future_paths": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_b/future_paths.parquet",
+      "sha256": "680dac2abdd6464383fc360b022194f388d74e2f2b6117697639b502c8c0f2b0"
+    },
+    "outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_b/outcomes.parquet",
+      "sha256": "d0ceeaee1e68f86eada2a2566a607aeba54163c005b48f998bf81d7b2a8e60de",
+      "rows": 1602
+    }
+  },
+  "daily_chart_source": {
+    "asset_id": "CY-006",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partition_sha256": {
+      "2018": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "2019": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+    },
+    "coordinate_state_path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "authorized_physical_start": "2018-01-22",
+    "authorized_physical_end": "2020-12-31",
+    "join_semantics": "Exact symbol/trade_date join; coordinate factor is adjusted_close/raw_close; missing global sessions remain blank."
+  },
+  "frozen_cohort": {
+    "event_rows": 1602,
+    "signal_start": "2018-07-31",
+    "signal_end": "2020-06-30",
+    "stage_a_candidates_sha256": "0585a0da912626f6403a90e9345622cbf2c34fe6aeefec636ffa6276a13df9b8",
+    "stage_a_representation_sha256": "91f18e9ca0646a33ceb172ad45293ee4e4979f0b4e5ffce865dca9841249f62c",
+    "calendar_semantics": "Stage-A local cal_idx is retained only for identity audit; Stage-C windows use the prepared/outcome global coordinate cal_idx."
+  },
+  "protocol": {
+    "visual_review_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31_visual_review_spec.json",
+    "visual_review_spec_sha256": "30b281e890c1d37c8d772883f77c4b54caf0251b4bb9d4db3af41d583a5e9853",
+    "chart_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_industry_residual_serial_phase_change_mother_v31_charts.py",
+    "chart_runner_sha256": "f8522f4e643aa54c06100f34b504627041604f6f07a88aeac2400508fbe2b283",
+    "review_state": "PRE_VISUAL_REVIEW_BUT_POST_STAGE_B_AGGREGATE",
+    "scale_contract": "Pre-signal price and turnover pixels are computed only from relative_session<=0; post-signal data cannot alter the blue panel."
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-RESIDUAL-SERIAL-V31-STAGE-C-CY039-CHART-REVIEW-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "authorized_arm": "V31_CY039_FROZEN_STAGE_C_CHART_REVIEW_ONLY",
+    "minimum_chart_date": "2018-01-22",
+    "maximum_chart_date": "2020-12-31",
+    "completed_stage_b_artifact_read_authorized": true,
+    "charts_authorized": true,
+    "outcome_attachment_authorized": false,
+    "rule_aggregation_authorized": false,
+    "portfolio_replay_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Render and index exactly one full and one chronology-masked [-126,+126] chart for each immutable V31 event, then review signal-time morphology before outcome attribution.",
+    "blocked": "Reselection, outcome recomputation, rule aggregation, strategy replay, validation, parameter search and any row after 2020-12-31."
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history.",
+    "development_gate_passed": false,
+    "claim": "The corpus supports post-hoc chart anatomy only. It cannot establish independent confirmation or authorize later-period reads.",
+    "next_step": "Freeze the complete masked chronology review before opening outcome-group sheets."
+  }
+}

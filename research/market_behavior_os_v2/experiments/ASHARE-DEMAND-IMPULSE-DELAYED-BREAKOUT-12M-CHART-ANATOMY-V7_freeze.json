@@ -1,0 +1,50 @@
+{
+  "experiment": "ASHARE-DEMAND-IMPULSE-DELAYED-BREAKOUT-12M-CHART-ANATOMY-V7",
+  "scientific_status": "POST_HOC_DEVELOPMENT_CHART_ANATOMY",
+  "source_signal": "ASHARE-DEMAND-IMPULSE-INSIDE-DAY-DELAYED-BREAKOUT-V5",
+  "economic_mother": "non-extended three-session demand impulse, immediate low-turnover inside day, then first completed close above the frozen inside-day high within five sessions",
+  "identity_changed": false,
+  "chart_population": {
+    "signal_start": "2014-01-01",
+    "signal_end": "2020-12-31",
+    "pre_signal_completed_sessions": 126,
+    "post_signal_completed_sessions": 126,
+    "include_every_frozen_source_identity": true,
+    "outcome_profile": "T15_H30_DELAYED_BREAKOUT"
+  },
+  "outcome_buckets_fixed_before_chart_aggregation": {
+    "PROFIT_GE_4PCT": "completed net return >= 4%",
+    "PROFIT_0_TO_4PCT": "completed net return in [0%, 4%)",
+    "LOSS_0_TO_10PCT": "completed net return in (-10%, 0%)",
+    "SEVERE_LOSS": "completed net return <= -10%",
+    "NO_COMPLETED_TRADE": "no completed outcome"
+  },
+  "visual_questions": [
+    "Did the impulse begin from a genuine base or from a late extended rise?",
+    "Was the inside-day contraction real supply contraction or merely a pause inside unstable price action?",
+    "Did the delayed breakout clear meaningful prior overhead or remain inside a larger distribution range?",
+    "Was the broad market causally accelerating or decelerating at the signal close?",
+    "Are outcomes repeated across independent signal dates or concentrated in synchronized market bursts?"
+  ],
+  "causal_market_descriptors": {
+    "known_at": "signal-session completed close",
+    "base_regime": "BULL only when market median ret20 and ret60 are positive and both positive-return shares exceed 50%; BEAR only for the symmetric non-positive state; otherwise TRANSITION",
+    "return_acceleration": "market_median_ret20 - market_median_ret60",
+    "breadth_acceleration": "market_positive_ret20_share - market_positive_ret60_share",
+    "future_market_return_used": false
+  },
+  "rule_budget_after_visual_review": {
+    "maximum_compressed_rules": 5,
+    "no_threshold_grid": true,
+    "no_target_or_horizon_search": true,
+    "no_same_bar_entry": true,
+    "next_step": "freeze one simple causal rule set before any later-period evaluation"
+  },
+  "governance": {
+    "2014_2020_are_consumed_development": true,
+    "2021_not_used_for_visual_rule_discovery": true,
+    "2022_2024_not_used_for_visual_rule_discovery": true,
+    "post_2024_not_read": true,
+    "no_independent_confirmation_claim": true
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "experiment": "ASHARE-DEMAND-IMPULSE-DELAYED-BREAKOUT-VISUAL-RULES-V8",
+  "scientific_status": "POST_HOC_VISUAL_RULE_FREEZE_BEFORE_NUMERIC_EVALUATION",
+  "source_signal": "exact ASHARE-DEMAND-IMPULSE-INSIDE-DAY-DELAYED-BREAKOUT-V5 identities",
+  "visual_source": {
+    "experiment": "ASHARE-DEMAND-IMPULSE-DELAYED-BREAKOUT-12M-CHART-ANATOMY-V7",
+    "signals_reviewed_one_by_one": 421,
+    "signal_period": ["2014-01-01", "2020-12-31"],
+    "pre_signal_completed_sessions": 126,
+    "post_signal_completed_sessions": 126,
+    "outcome_buckets_reviewed": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ]
+  },
+  "economic_interpretation": "The source mother identifies a short demand impulse and temporary supply contraction. Visual anatomy suggests that the mother is useful only when it is an early repricing from inventory or a genuine deep reset, when it is not a late half-year blow-off, and when demand remains accepted after the first breakout close. Market context is routed causally rather than inferred from later market returns.",
+  "compressed_rules": [
+    {
+      "rule_id": "R1_PRICE_LIFECYCLE",
+      "definition": "At the source signal close, classify the stock as INVENTORY_ESCAPE when signal coordinate close is at least the maximum coordinate high of the prior 126 completed sessions; classify as DEEP_RESET_REPRICING when pre-impulse 60-session return is non-positive and signal coordinate close is at least 20% below the maximum coordinate high of the prior 126 completed sessions. Reject the middle/overhead state.",
+      "rationale": "Winners repeatedly began with first price discovery from a long inventory area or a genuine reset. Losers frequently represented a second spike beneath old distribution overhead.",
+      "future_data_used": false
+    },
+    {
+      "rule_id": "R2_NO_LATE_BLOWOFF",
+      "definition": "For INVENTORY_ESCAPE only, reject when signal coordinate close is more than 50% above the first coordinate close in the prior-126-session window. DEEP_RESET_REPRICING is unaffected.",
+      "rationale": "The worst tails frequently occurred after a long half-year rise followed by a terminal rebreak rather than an early repricing. Fifty percent is a single economically broad extension boundary, not a searched cutoff.",
+      "future_data_used": false
+    },
+    {
+      "rule_id": "R3_TWO_SESSION_ACCEPTANCE",
+      "definition": "The first and second scheduled market sessions after the source breakout must each have a fully valid, tradable stock bar with unchanged coordinate lineage, and both completed coordinate closes must remain strictly above the frozen inside-day coordinate high. Otherwise reject.",
+      "rationale": "Profitable charts usually accepted the new price area; losing charts often fell straight back below the frozen breakout level. Two sessions expresses immediate acceptance without searching observation windows.",
+      "decision_at": "close of the second scheduled market session after the source breakout",
+      "future_data_used_at_revised_decision": false
+    },
+    {
+      "rule_id": "R4_CAUSAL_MARKET_ROUTE",
+      "definition": "INVENTORY_ESCAPE is admissible when the signal-close market regime is BULL or market median-return acceleration (median ret20 minus median ret60) is non-negative. DEEP_RESET_REPRICING is admissible only when signal-close market breadth acceleration (positive-ret20 share minus positive-ret60 share) is non-negative.",
+      "rationale": "Continuation requires either an already positive habitat or improving broad direction; deep-reset repricing requires improving participation. Every input is known at the original signal close.",
+      "future_market_return_used": false
+    },
+    {
+      "rule_id": "R5_EXECUTION_AND_EXIT",
+      "definition": "After R3 is known, buy only at the first legal executable open strictly after the acceptance decision, with maximum three scheduled market sessions of entry delay. Preserve T+1, suspension, price-limit, hard-valid, corporate-action and coordinate-lineage checks. Exit at +15% from entry when sellable or at the next legal open after 30 market sessions. Charge 20 bps per side.",
+      "same_bar_fill_allowed": false,
+      "target_or_horizon_search": false
+    }
+  ],
+  "predeclared_reports": {
+    "components": "Report the exact source mother and the incremental effect of each R1-R4 gate in the stated order; do not select the best subset.",
+    "market_states": "Report BULL, TRANSITION and BEAR separately using the original signal-close causal state, without using future market outcomes.",
+    "opportunity_independence": [
+      "raw signal count",
+      "completed count",
+      "signals per calendar year",
+      "independent signal dates per calendar year",
+      "largest-date share",
+      "top-five-date share"
+    ],
+    "economic_metrics": [
+      "mean and median net trade return",
+      "positive-return rate",
+      "severe-loss incidence",
+      "target-hit rate",
+      "average holding sessions"
+    ]
+  },
+  "continuation_gate": {
+    "mean_net_return_strictly_greater_than": 0.04,
+    "literal_each_calendar_year_signals_strictly_greater_than": 50,
+    "also_report_average_signals_per_year_for_v26_comparability": true,
+    "do_not_equate_same_date_clustered_stocks_with_independent_opportunities": true,
+    "later_period_open_only_if_gate_passes": ["2022-01-01", "2024-12-31"]
+  },
+  "governance": {
+    "rule_direction_generated_from_2014_2020_outcome_charts": true,
+    "no_independent_confirmation_claim": true,
+    "no_threshold_grid": true,
+    "no_rule_subset_search": true,
+    "no_target_search": true,
+    "no_holding_period_search": true,
+    "2021_outcomes_not_used_to_define_rules": true,
+    "2022_2024_outcomes_not_used_to_define_rules": true,
+    "post_2024_outcome_read": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ASHARE-V32-PHASE1-ANONYMOUS-ANNOTATION-V1",
+  "title": "V32 anonymous signal-time chart annotations",
+  "description": "One outcome-blind annotation batch. Labels may co-occur. NONE_CLEAR is deliberately absent because the finalizer derives it only when all five labels are false.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 1781,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "chart_number",
+      "BASE_COMPRESSION",
+      "ORDERLY_PRICE_DISCOVERY",
+      "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT",
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE",
+      "DOWNTREND_OR_BREAKDOWN",
+      "evidence",
+      "reviewer"
+    ],
+    "properties": {
+      "chart_number": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 1781
+      },
+      "BASE_COMPRESSION": {
+        "type": "boolean",
+        "description": "A bounded base or visibly compressed price/turnover structure exists at or before the signal bar."
+      },
+      "ORDERLY_PRICE_DISCOVERY": {
+        "type": "boolean",
+        "description": "The visible signal-time path shows orderly price discovery, such as a coherent advance or progressive higher structure."
+      },
+      "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {
+        "type": "boolean",
+        "description": "Turnover is visibly elevated while contemporaneous price displacement remains modest."
+      },
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {
+        "type": "boolean",
+        "description": "The signal-time structure is already mature or extended, or ends in a terminal-looking price/turnover spike."
+      },
+      "DOWNTREND_OR_BREAKDOWN": {
+        "type": "boolean",
+        "description": "The visible path is a downtrend, failed repair, or structural breakdown at the signal bar."
+      },
+      "evidence": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240,
+        "pattern": "^[^\\r\\n]+$",
+        "description": "A short, single-line observation based only on the anonymous signal-time chart."
+      },
+      "reviewer": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80,
+        "pattern": "^[^\\r\\n]+$"
+      }
+    }
+  }
+}

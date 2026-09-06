@@ -1,0 +1,110 @@
+{
+  "experiment": "ASHARE-POST-LOW-FULL-FLOAT-TRANSFER-BASE-RESOLUTION-MOTHER-V1",
+  "frozen_before_outcome_aggregation": true,
+  "scientific_status": "DATA_GENERATED_ECONOMIC_MOTHER_EVENT_DEVELOPMENT",
+  "economic_hypothesis": "A fresh causal 120-session low identifies a completed loss of prior price support. If at least one full free-float equivalent then changes hands without another coordinate break and price later closes through the ceiling frozen during the first ten sessions after that low, the base may represent a real ownership transfer rather than a cosmetic candle pattern. The pre-anchor 60-session high is a causal repair target and the anchor low is a causal failure coordinate.",
+  "v26_methodology_transfer": {
+    "objective_pre_existing_object": "fresh 120-session low plus the first-ten-session base ceiling",
+    "capital_memory": "authoritative PIT turnover_fraction summed only from completed sessions after the anchor and strictly before the signal",
+    "natural_target": "maximum corporate-action-coordinate high in the 60 completed sessions strictly before the anchor",
+    "natural_failure_coordinate": "the frozen anchor-session coordinate low",
+    "not_a_candle_pattern": "The signal candle is only acceptance through a pre-existing ceiling after ownership transfer; it cannot define the anchor, base ceiling, or target."
+  },
+  "novelty_boundary": {
+    "different_from_true_gap": "No gap or untraded price interval is required.",
+    "different_from_support_hold": "The hypothesis is completed ownership transfer followed by resolution, not proximity to or holding of a rolling low.",
+    "different_from_former_leader_base": "No former-leader runup is required; one full-float-equivalent turnover after a fresh causal low is mandatory, and the ceiling is anchored to the first ten sessions after that low.",
+    "different_from_quiet_inventory": "The core state is high cumulative ownership transfer, not low recent turnover or a quiet platform.",
+    "different_from_chip_density": "No reconstructed chip distribution, density, or CY-011 field is used."
+  },
+  "development_window": {
+    "warmup_start": "2013-01-01",
+    "signal_start": "2015-01-01",
+    "signal_end": "2020-12-31",
+    "reason_for_2015_start": "2014 is reserved as structural warmup after the 120-session anchor-history and 90-session post-anchor clocks; it is not a selectively removed outcome year.",
+    "post_2020_signal_or_outcome_read_before_gate": "NO",
+    "2021_role": "UNUSED_BUFFER"
+  },
+  "causal_anchor": {
+    "fresh_low": "anchor coordinate low is strictly below every coordinate low in the preceding 120 completed symbol rows",
+    "history_continuity": "the 120th preceding row is exactly 120 market-calendar indices earlier and invalid_step_cum is unchanged",
+    "anchor_validity": "hard_valid, history_valid, current_valid, tradable, non-ST, market-rule valid, and nonblocking corporate-action state",
+    "base_ceiling": "maximum coordinate high from anchor offset 0 through offset 9 inclusive",
+    "base_validity": "all ten anchor/base rows exist at consecutive market-calendar indices, are valid/tradable/non-ST, and preserve the anchor coordinate lineage",
+    "base_information_available": "only after the close of anchor offset 9"
+  },
+  "ownership_transfer": {
+    "measure": "sum authoritative PIT turnover_fraction from anchor offset 1 through the completed session strictly before the signal",
+    "minimum": 1.0,
+    "meaning": "at least one free-float-equivalent has traded; this is a natural economic unit, not a fitted quantile",
+    "no_future_turnover": true
+  },
+  "causal_opportunity": {
+    "old_high": "maximum coordinate high in the 60 completed sessions strictly before the anchor",
+    "old_high_over_anchor_low_min": 0.2,
+    "old_high_over_signal_close_min": 0.1,
+    "rationale": "Require both an economically material prior breakdown and enough frozen repair headroom to matter after costs."
+  },
+  "first_resolution_trigger": {
+    "eligible_signal_offsets": [10, 90],
+    "close_strictly_above_frozen_base_ceiling": true,
+    "previous_completed_close_at_or_below_ceiling": true,
+    "first_eligible_cross_per_anchor": true,
+    "signal_close_above_open": true,
+    "close_location_min": 0.7,
+    "turnover_at_least_prior20_median": true,
+    "registered_upper_limit_close_excluded": true,
+    "decision_at": "completed signal-session close after all registered daily and market-state fields are available"
+  },
+  "market_state_protocol": {
+    "source": "frozen causal market-regime panel",
+    "mother_filter": "NONE",
+    "attached_fields": [
+      "market_regime",
+      "market_median_ret20",
+      "market_median_ret60",
+      "market_positive_ret20_share",
+      "market_positive_ret60_share"
+    ],
+    "future_function": false,
+    "reason": "BULL, BEAR, and TRANSITION candidates are retained for chart anatomy so a causal state distinction can be learned without deleting a market condition before seeing its full chart population."
+  },
+  "frozen_chart_label": {
+    "entry": "first legal non-limit-up open in signal+1 through signal+3",
+    "target": "frozen pre-anchor 60-session old-high coordinate",
+    "time_stop": "first legal open after 40 held market sessions if target is not legally realized",
+    "failure_exit_before_rule_compression": "NONE",
+    "cost": "20 bps per side, 40 bps round trip",
+    "same_bar_fill": false,
+    "t_plus_one": true,
+    "corporate_action_contract": "QD-010 exact coordinate lineage; fail closed on a blocking or unresolved change"
+  },
+  "chart_protocol": {
+    "render_every_signal": true,
+    "window_sessions_before": 126,
+    "window_sessions_after": 126,
+    "review_order": "chronological first, with outcome/state contact sheets as secondary aids",
+    "visual_review_precedes_rule_compression": true,
+    "compressed_rule_budget": 5,
+    "manual_event_deletion_forbidden": true
+  },
+  "development_gate": {
+    "completed_signals_each_calendar_year_strictly_greater_than": 50,
+    "pooled_completed_mean_net_strictly_greater_than": 0.04,
+    "later_2022_2024_open_only_if_both_pass": true
+  },
+  "prohibited": [
+    "no alternate anchor lookback",
+    "no alternate float-turnover threshold",
+    "no alternate base window",
+    "no target grid",
+    "no market-state outcome aggregation before all charts are reviewed",
+    "no 2021-2024 signal or outcome read before the development gate",
+    "no CY-011 read",
+    "no signal-bar fill"
+  ],
+  "source_hashes": {
+    "pit_daily_compact_2013_2023.parquet": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_market_regime_2014_2023.parquet": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  }
+}

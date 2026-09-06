@@ -1,0 +1,88 @@
+{
+  "experiment": "ASHARE-UPWARD-INFORMATION-GAP-REJECTION-REACCEPTANCE-12M-CHART-DISCOVERY-V1",
+  "scientific_status": "OUTCOME_BLIND_MOTHER_STRUCTURE_AND_CHART_PROTOCOL_FREEZE",
+  "economic_hypothesis": "A strict upward true gap is an observable information repricing and fixes an untraded price interval [L,U]. If that repricing is later fully rejected by a completed close below L, but price subsequently records its first completed close back above U, the rejection itself has failed. The pre-rejection peak P is already fixed before reacceptance and provides a natural structural destination. This tests second acceptance of a previously rejected information event, not generic support holding, raw momentum, or a visual gap chosen with hindsight.",
+  "independence_from_existing_families": {
+    "V26": "V26 begins below a downward true gap and targets partial recovery toward L. This experiment begins with an upward information gap, requires a later full close below L, and studies a second complete acceptance above U toward the already formed peak P.",
+    "upward_gap_hold": "A hold is insufficient. A qualifying event must first close below the gap origin L and later close above the opposite boundary U.",
+    "generic_failed_breakdown": "The broken and reclaimed zone is a strict adjacent-session untraded interval fixed by an earlier information event, not a rolling low or shelf.",
+    "stale_resistance": "No annual high or breakout age is used. The destination is the event-specific pre-rejection peak."
+  },
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "chart_window": {
+    "completed_market_sessions_before_signal": 126,
+    "completed_market_sessions_after_signal": 126,
+    "late_2020_signal_tail_may_enter_2021": true,
+    "maximum_chart_bar_date": "2021-12-31",
+    "render_every_signal": true,
+    "manual_review_order": "chronological within outcome class; every chart must be opened and logged"
+  },
+  "mother_structure": {
+    "universe": [
+      "MAIN",
+      "CHINEXT"
+    ],
+    "strict_upward_true_gap": "raw low_t is strictly greater than raw high_t_minus_1 on adjacent market sessions; coordinate lineage is unchanged",
+    "minimum_gap_width": 0.01,
+    "gap_boundaries": {
+      "L": "prior completed-session coordinate high",
+      "U": "gap-session coordinate low"
+    },
+    "gap_session": "hard-valid, current-valid, tradable, non-ST, corporate-action-valid and not a locked upper-limit close",
+    "full_rejection": "within the next 60 market sessions, the first hard-valid completed coordinate close strictly below L",
+    "pre_rejection_peak_P": "maximum completed coordinate high from the gap session through the session before full rejection; fixed at rejection close",
+    "second_acceptance": "within 60 market sessions after full rejection, the first hard-valid completed close strictly above U that also closes above the immediately prior completed-session high and in the upper 40% of its own daily range",
+    "signal": "second-acceptance completed-session close",
+    "deduplication": "if multiple gaps map to the same symbol and signal date retain the most recent gap; after a retained signal apply a 40-market-session symbol cooldown",
+    "missing_or_lineage_policy": "fail closed"
+  },
+  "causal_market_state": {
+    "used_for_candidate_selection": false,
+    "attached_for_chart_anatomy": true,
+    "definition": "existing signal-close BULL/BEAR/TRANSITION state using only completed same-date and prior market data",
+    "future_state_allowed": false
+  },
+  "baseline_translation_for_chart_labels": {
+    "entry": "first legal buyable daily open strictly after the signal, within the next three market sessions",
+    "minimum_net_target_headroom": 0.04,
+    "target": "entry + 0.67 * (P - entry)",
+    "target_must_be_strictly_above_entry_and_below_P": true,
+    "failure_stop": "NONE",
+    "time_stop": "after 60 completed market sessions, exit at the next legal sellable open",
+    "profit_fill": "known target may fill intraday beginning with the first legally sellable session; never on the entry bar",
+    "round_trip_cost": 0.004,
+    "T_plus_1": true,
+    "limits_suspensions_and_corporate_actions": "existing fail-closed daily execution contract"
+  },
+  "chart_review_questions": [
+    "Was the original upward gap a genuine information repricing or merely late trend extension?",
+    "Did the full rejection occur through abrupt forced selling or slow fundamental deterioration?",
+    "Was second acceptance decisive, quiet, crowded, or already extended relative to P?",
+    "Did winners travel through a visibly clean corridor toward P while losers encounter intervening supply?",
+    "Did causal market state alter target speed, failure shape, or only the time required?"
+  ],
+  "rule_compression": {
+    "maximum_rules": 5,
+    "rules_must_be_visible_and_economically_distinct": true,
+    "market_state_must_be_signal_time_causal": true,
+    "no_parameter_grid": true,
+    "no_rule_may_use_post_signal_information": true,
+    "freeze_before_rule_replay": true
+  },
+  "promotion_gate_before_2022_2024": {
+    "signals_each_2014_2020_year_strictly_greater_than": 50,
+    "pooled_completed_mean_net_strictly_greater_than": 0.04,
+    "pooled_completed_median_net_positive": true,
+    "no_same_bar_entry": true,
+    "no_future_market_state": true
+  },
+  "outcome_governance": {
+    "at_freeze_no_post_signal_return_or_chart_was_opened": true,
+    "2022_2024_signal_feature_or_outcome_read_before_development_gate": false,
+    "2025_plus_signal_feature_or_outcome_read": false,
+    "no_claim_of_independent_confirmation_from_2014_2020": true
+  }
+}

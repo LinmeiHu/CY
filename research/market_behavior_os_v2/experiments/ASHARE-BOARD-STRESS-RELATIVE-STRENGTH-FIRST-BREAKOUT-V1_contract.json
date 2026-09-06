@@ -1,0 +1,52 @@
+{
+  "experiment_id": "ASHARE-BOARD-STRESS-RELATIVE-STRENGTH-FIRST-BREAKOUT-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FROZEN",
+  "scientific_period": "2014-01-01 through 2021-12-31",
+  "outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "When an entire board has already been under sustained pressure, a stock that preserved a non-negative twenty-session return and at least twelve percentage points of relative strength has revealed stock-specific demand. Its first high-location, participation-confirmed close above the preceding twenty-session high may begin independent price discovery after weak holders have already sold into the board decline.",
+  "causal_state": {
+    "board_stress": "At the session immediately before the signal, the same-board cross-sectional median 20-session return is <= -5%.",
+    "stress_persistence": "At least 5 of the 10 completed sessions immediately before the signal have same-board median 20-session return <= -5%.",
+    "stock_resilience": "At the session immediately before the signal, stock 20-session return is >= 0% and exceeds the same-board median 20-session return by >= 12 percentage points.",
+    "continuous_trading": "Every row in the preceding 20-session window is hard-valid, current-valid and tradable, and those 20 rows span no more than 30 market-session indices, excluding suspension-generated flat records and stale post-suspension reappearances.",
+    "compact_inventory": "Across the preceding 20 completed symbol sessions, minimum coordinate low divided by maximum coordinate high is >= 85%, so resilience is a compact holding range rather than a deep-collapse rebound."
+  },
+  "trigger": {
+    "breakout": "Completed signal-session corporate-action-coordinate close is strictly above every coordinate high in the preceding 20 completed symbol sessions.",
+    "participation": "Signal-session turnover fraction is >= its mean over the preceding 20 completed symbol sessions.",
+    "close_location": "Signal-session close location within the daily range is >= 70%; zero-range sessions are assigned 100%.",
+    "not_limit_up": "Signal-session coordinate close is strictly below the legal upper-limit coordinate.",
+    "event_deduplication": "Retain the first qualifying event per symbol when qualifying events are more than 20 calendar-session indices apart; no future information is used."
+  },
+  "universe": [
+    "MAIN",
+    "CHINEXT"
+  ],
+  "hard_validity": [
+    "hard_valid",
+    "history_valid",
+    "current_valid",
+    "current_day_data_tradable",
+    "market_rule_valid",
+    "corporate_action_valid",
+    "not corporate_action_blocking"
+  ],
+  "decision_at": "signal session close after all state and trigger fields are completed",
+  "entry": "next legal executable session open; never fill on the signal bar",
+  "cost": "40 bp round trip",
+  "predeclared_outcome_profiles": [
+    "H10_NEXT_OPEN",
+    "H20_NEXT_OPEN",
+    "T10_H20_NEXT_OPEN"
+  ],
+  "profile_selection": "Use 2014-2018 only; maximize median annual mean net trade return, then pooled mean, then shorter holding period.",
+  "confirmation": "Apply the single frozen profile unchanged to 2019, 2020, and 2021 and require positive annual mean net trade return in each year, pooled mean net trade return >3%, >=50 completed trades/year on average, and no single discovery year as the sole source of the edge.",
+  "prohibited": [
+    "no 2022-2023 until Development rule is frozen and passes",
+    "no repository 2024+",
+    "no outcome-driven threshold change",
+    "no black-box model",
+    "no signal-bar execution"
+  ]
+}

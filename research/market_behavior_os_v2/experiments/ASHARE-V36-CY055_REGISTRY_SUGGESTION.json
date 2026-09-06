@@ -1,0 +1,248 @@
+{
+  "central_registry_modified": false,
+  "installation_instruction": "After independent review, append exactly the asset object to configs/data_asset_registry.json assets and exactly the bounded_authorization object to bounded_authorizations. Recompute no field. Do not run either source coverage or chart generation until the installed objects pass schema validation and the runner public preflight.",
+  "asset": {
+    "asset_id": "CY-055",
+    "name": "Bounded V36 Phase-1 anonymous causal chart-review input",
+    "kind": "bounded_daily_pit_b_development_chart_review_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a",
+    "source": "Exactly 531 immutable outcome-blind CY-054 Stage-A candidates joined only to canonical registered CY-006 2018-2020 raw daily rows and the accepted QD-010 adjusted-coordinate state for anonymous causal windows ending at each signal close.",
+    "coverage": {
+      "authorized_start": "2018-01-01",
+      "authorized_end": "2020-12-31",
+      "signal_start": "2019-03-29",
+      "signal_end": "2020-12-31",
+      "frozen_candidate_rows": 531,
+      "annual_candidate_rows": {
+        "2019": 249,
+        "2020": 282
+      },
+      "causal_chart_window_sessions": 127,
+      "anonymous_contact_sheets": 22
+    },
+    "schema_and_units": "Anonymous adjusted-coordinate OHLC derived ratio-first as adjusted_close times raw_price/raw_close after strict raw-geometry validation; registered turnover_fraction; independently scaled all-industry Main-plus-ChiNext same-day median adjusted-step market line; global sessions -126 through 0 only.",
+    "quality_evidence": {
+      "stage_a_gate_passed": true,
+      "stage_a_candidates_sha256": "6f9e84f1828bb054d8baea187e72563c8454909fe71f3a932ee8ea5456ff4e0b",
+      "stage_a_result_sha256": "5d05d21c78f5c4722cdcf3eb86db53e0d9d37d7a37e45a465b1ee78a924d8529",
+      "candidate_rows": 531,
+      "annual_candidate_rows": {
+        "2019": 249,
+        "2020": 282
+      },
+      "low_redundancy_gate_passed": true,
+      "source_coverage_gate_run": false,
+      "post_signal_row_read": false,
+      "post_2020_row_read": false,
+      "stage_b_artifacts_exist": false,
+      "stage_b_artifact_path_declared": false,
+      "outcome_artifact_parse_authorized": false,
+      "identity_crosswalk_persisted": false
+    },
+    "lineage": {
+      "record_available_at": true,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY055_CHART_REVIEW_ASSET_MANIFEST.json",
+      "manifest_sha256": "71b07ee62502ebd08fcc9ff8e1f89943b243abe8bdceebf6d95883048e34eb9c",
+      "component_assets": [
+        "CY-054",
+        "CY-006",
+        "QD-010"
+      ],
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-PHASE1-CY055-ANONYMOUS-CHARTS-2019-2020-V1",
+      "pipeline_version": "v36-phase1-anonymous-causal-chart-review-v1"
+    },
+    "allowed_uses": [
+      "run one aggregate-only canonical-source coverage preflight",
+      "render exactly 531 anonymous global-session-minus-126 through signal-time charts",
+      "build 22 exactly-once 5-by-5 contact sheets and one blank four-axis review template"
+    ],
+    "blocked_uses": [
+      "construct, guess, state, resolve, stat, hash, open, or parse any V36 Stage-B or outcome artifact path",
+      "post-signal rows, identity crosswalk, outcome grouping, rule aggregation, validation, replay, tuning, candidate reselection, 2021-plus rows, live use, or strict PIT-A claims"
+    ],
+    "activation_gates": [
+      "central CY-055 asset and bounded authorization exactly match this suggestion",
+      "public registry/spec/manifest/runner/schema and all 15 lexical roles validate before any external source stat, hash, or read",
+      "coverage preflight finds all 531 exact signal rows and 127 global coordinate slots per event with strict raw geometry and zero raw-coordinate identity mismatch",
+      "every displayed row is at or before its own signal and available by that frozen decision time",
+      "all 531 events appear exactly once without a persisted identity crosswalk",
+      "all allowed inputs are rehashed before atomic no-overwrite publication"
+    ]
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-PHASE1-CY055-ANONYMOUS-CHARTS-2019-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "asset_id": "CY-055",
+    "dependency_asset_id": "CY-054",
+    "dependency_asset_ids": [
+      "CY-054",
+      "CY-006",
+      "QD-010"
+    ],
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "2018-01-01",
+      "end": "2020-12-31",
+      "signal_start": "2019-03-29",
+      "signal_end": "2020-12-31",
+      "maximum_chart_date": "2020-12-31",
+      "frozen_candidate_rows": 531,
+      "phase1_relative_global_sessions": [
+        -126,
+        0
+      ]
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY055_CHART_REVIEW_ASSET_MANIFEST.json",
+      "sha256": "71b07ee62502ebd08fcc9ff8e1f89943b243abe8bdceebf6d95883048e34eb9c"
+    },
+    "bound_artifacts": [
+      {
+        "role": "parent_spec",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+        "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc"
+      },
+      {
+        "role": "stage_a_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_a.py",
+        "sha256": "3cf20dead4f7a04b1e8981502d484fd1e56599747129f3ff92085a462c0edf51"
+      },
+      {
+        "role": "stage_a_manifest",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+        "sha256": "8466e1ccd6cbbff159beb4ee9d582a0917f7eba9015d7a76251f273727e4973c"
+      },
+      {
+        "role": "stage_a_registry_suggestion",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_REGISTRY_SUGGESTION.json",
+        "sha256": "c228f6b5e837fcd99d4feb14d9be11436f4f4a3845af79bddfb7eecce64ff014"
+      },
+      {
+        "role": "coordinate_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+        "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"
+      },
+      {
+        "role": "corporate_action_coordinate_contract",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+        "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+      },
+      {
+        "role": "phase1_annotation_schema",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_anonymous_annotation_schema.json",
+        "sha256": "89eeb590b025a4d126d328acbd47a803696606a891a8b804264bf326705fb90d"
+      },
+      {
+        "role": "stage_a_frozen_candidates",
+        "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/candidates_frozen.parquet",
+        "sha256": "6f9e84f1828bb054d8baea187e72563c8454909fe71f3a932ee8ea5456ff4e0b"
+      },
+      {
+        "role": "stage_a_outcome_blind_result",
+        "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/result.json",
+        "sha256": "5d05d21c78f5c4722cdcf3eb86db53e0d9d37d7a37e45a465b1ee78a924d8529"
+      },
+      {
+        "role": "cy006_manifest",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+      },
+      {
+        "role": "cy006_2018",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "role": "cy006_2019",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "role": "cy006_2020",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      },
+      {
+        "role": "qd010_inventory",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      },
+      {
+        "role": "coordinate_state",
+        "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+        "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+      }
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+      "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_visual_review_spec.json",
+      "sha256": "5ece0d1f5cd1c269a9eda771fee756ae7e0ff96560384eb810dc6a4957166d56",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_phase1_charts.py",
+      "runner_sha256": "1c9fffcaee7701af87858cb29b3e7ccf6aae89c9ec63e72439b0811ad7bf5ad8"
+    },
+    "authorized_arms": [
+      "V36_CY055_PHASE1_ANONYMOUS_CAUSAL_CHARTS_ONLY"
+    ],
+    "charts_authorized": true,
+    "phase1_anonymous_charts_authorized": true,
+    "stage_a_frozen_candidates_read_authorized": true,
+    "stage_a_outcome_blind_result_read_authorized": true,
+    "canonical_cy006_raw_daily_read_authorized": true,
+    "coordinate_state_bounded_row_read_authorized": true,
+    "coordinate_artifact_hash_authorized": true,
+    "source_lineage_metadata_hash_authorized": true,
+    "coverage_preflight_authorized": true,
+    "stage_b_authorized": false,
+    "stage_b_artifact_any_path_declaration_authorized": false,
+    "stage_b_artifact_stat_authorized": false,
+    "stage_b_artifact_hash_authorized": false,
+    "stage_b_artifact_open_authorized": false,
+    "stage_b_artifact_parse_authorized": false,
+    "outcome_artifact_parse_authorized": false,
+    "outcome_artifact_hash_authorized": false,
+    "outcome_artifact_stat_authorized": false,
+    "outcome_artifact_open_authorized": false,
+    "outcome_columns_read_authorized": false,
+    "post_signal_row_read_authorized": false,
+    "full_chart_authorized": false,
+    "identity_reveal_authorized": false,
+    "identity_crosswalk_persist_authorized": false,
+    "outcome_grouping_authorized": false,
+    "outcome_attachment_authorized": false,
+    "phase2_authorized": false,
+    "rule_aggregation_authorized": false,
+    "rule_compression_authorized": false,
+    "portfolio_replay_authorized": false,
+    "validation_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": false,
+    "allowed_uses": [
+      "certify aggregate canonical-source coverage without rendering or persisting identities",
+      "render exactly 531 anonymous causal Phase-1 charts and 22 contact sheets",
+      "create one empty four-axis review template without identity, score, or outcomes"
+    ],
+    "blocked_uses": [
+      "construct, guess, state, resolve, stat, hash, open, or parse a V36 Stage-B or outcome artifact path",
+      "post-signal or 2021-plus rows, full charts, identity crosswalk, outcome grouping, rule aggregation, validation, replay, tuning, or candidate reselection"
+    ],
+    "known_limitations": [
+      "2019-2020 is consumed development history and cannot establish independent Alpha confirmation",
+      "CY-006 and QD-010 remain PIT-B research inputs without complete historical supplier revision vintages",
+      "V36 Stage B does not yet exist and must be separately frozen before any payoff data is constructed",
+      "the shared annotation schema has a 1483-item ceiling; this asset uses only the exact chart-number range 1 through 531"
+    ]
+  }
+}

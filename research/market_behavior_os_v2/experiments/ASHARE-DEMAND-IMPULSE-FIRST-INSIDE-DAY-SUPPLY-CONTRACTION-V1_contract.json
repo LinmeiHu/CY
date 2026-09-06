@@ -1,0 +1,29 @@
+{
+  "experiment_id": "ASHARE-DEMAND-IMPULSE-FIRST-INSIDE-DAY-SUPPLY-CONTRACTION-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FROZEN",
+  "scientific_period": "2014-01-01 through 2021-12-31",
+  "outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "A three-session demand impulse of at least fifteen percent reveals urgent repricing. If the immediately following completed session is fully inside the prior session range, closes in that range's upper half, and trades no more than seventy percent of the impulse's mean turnover, aggressive buying has paused without eliciting expanded supply. The next legal open tests continuation after a causal supply contraction.",
+  "causal_state": {
+    "history": "20 preceding rows exist and all are hard-valid/current-valid/tradable.",
+    "demand_impulse": "coordinate close / coordinate close four rows earlier - 1 >=15%, with at least two positive step-return sessions among the preceding three rows."
+  },
+  "trigger": {
+    "inside_day": "signal coordinate high <= immediately prior coordinate high and signal coordinate low >= immediately prior coordinate low.",
+    "quiet_return": "signal step return is between -3% and +3%, inclusive.",
+    "supply_contraction": "signal turnover <=70% of mean turnover over the preceding three completed rows.",
+    "upper_half_hold": "signal coordinate close is at or above the midpoint of the immediately prior coordinate range.",
+    "not_limit_up": "signal coordinate close is below its legal upper-limit coordinate.",
+    "deduplication": "qualifying rows no more than 20 market-session indices apart form one symbol event cluster; retain its first row."
+  },
+  "universe": ["MAIN", "CHINEXT"],
+  "hard_validity": ["hard_valid", "history_valid", "current_valid", "tradable", "market_rule_valid", "corporate_action_valid", "not corporate_action_blocking", "not ST"],
+  "decision_at": "inside-day close",
+  "entry": "next legal executable session open",
+  "cost": "40 bp round trip",
+  "predeclared_outcome_profiles": ["H10_NEXT_OPEN", "H20_NEXT_OPEN", "T10_H20_NEXT_OPEN"],
+  "profile_selection": "2014-2018 only: maximize median annual mean net return, then pooled mean, then shorter horizon.",
+  "confirmation": "Only the selected profile is evaluated on 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, and every confirmation-year mean >0.",
+  "prohibited": ["no outcome-driven threshold change", "no 2022-2023 before Development passes", "no repository 2024+", "no model", "no signal-bar fill"]
+}

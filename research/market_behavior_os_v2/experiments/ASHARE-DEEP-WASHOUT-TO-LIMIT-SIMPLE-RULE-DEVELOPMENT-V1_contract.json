@@ -1,0 +1,59 @@
+{
+  "experiment": "ASHARE-DEEP-WASHOUT-TO-LIMIT-SIMPLE-RULE-DEVELOPMENT-V1",
+  "lane": "intraday_panic_absorption_reversal",
+  "stage_a_outcomes_opened": false,
+  "scientific_development": ["2014-01-01", "2021-12-31"],
+  "selection_block": ["2014-01-01", "2018-12-31"],
+  "chronological_confirmation_block": ["2019-01-01", "2021-12-31"],
+  "sealed_validation": ["2022-01-01", "2023-12-31"],
+  "repository_2024_plus_opened": false,
+  "economic_hypothesis": "A stock that records a completed-minute loss of at least five percent versus the prior close and then reverses to five consecutive closing minutes at the registered upper limit has absorbed an observable intraday panic supply shock.",
+  "identity": {
+    "boards": ["MAIN", "CHINEXT"],
+    "hard_valid_non_st_same_lineage": true,
+    "strict_prior_market_sessions": 60,
+    "signal_minute_close_return_max": -0.05,
+    "signal_daily_close_equals_registered_up_limit": true,
+    "exact_qd004_bars": 241,
+    "final_consecutive_upper_limit_minute_closes": 5,
+    "signal_turnover_fraction_max": 0.30
+  },
+  "frozen_candidate_artifact": "/Volumes/quant/CY_quant_research/ashare_deep_washout_to_limit_v1/stage_a/candidate_states.parquet",
+  "frozen_candidate_sha256": "9e3f2def04aa28cc35265192bfb9107b2d9da1d721c401a182ad6ef2ece311f1",
+  "minute_semantic_ledger_sha256": "ed4d19b31b7069770ef01a1d4a43a9091b1af2866a5fdcac05f639a7b5456c07",
+  "candidate_count": 1471,
+  "candidate_symbol_count": 1044,
+  "annual_candidate_counts": {"2014": 16, "2015": 946, "2016": 95, "2017": 22, "2018": 68, "2019": 80, "2020": 140, "2021": 104},
+  "predeclared_cohorts": {
+    "ALL_DEEP_WASHOUT_TO_LIMIT": "all frozen candidates",
+    "NON_OVERHEATED_TREND": "signal-time 60-session return is greater than zero and no greater than 50 percent"
+  },
+  "entry": "first legal executable daily open strictly after signal close and no later than the third subsequent market session",
+  "execution": {
+    "signal_bar_fill_allowed": false,
+    "maximum_entry_delay_market_sessions": 3,
+    "t_plus_one_required": true,
+    "buy_open_strictly_below_up_limit": true,
+    "sell_open_strictly_above_down_limit": true,
+    "corporate_action_coordinate_fail_closed": true,
+    "round_trip_cost_bps": 40
+  },
+  "frozen_exit_profiles": [
+    {"profile": "T10_H5_NO_STOP", "target": 0.10, "horizon": 5, "failure": "NONE"},
+    {"profile": "T10_H5_PRIOR_CLOSE", "target": 0.10, "horizon": 5, "failure": "next legal open after completed close below the pre-signal close"},
+    {"profile": "T20_H10_NO_STOP", "target": 0.20, "horizon": 10, "failure": "NONE"},
+    {"profile": "T20_H10_PRIOR_CLOSE", "target": 0.20, "horizon": 10, "failure": "next legal open after completed close below the pre-signal close"},
+    {"profile": "H5_CLOSE", "target": null, "horizon": 5, "failure": "NONE"},
+    {"profile": "H10_CLOSE", "target": null, "horizon": 10, "failure": "NONE"}
+  ],
+  "selection": "Use 2014-2018 only to select one cohort and exit profile by mean then median net trade return; apply unchanged in 2019-2021.",
+  "continuation_gate": {
+    "average_executable_signals_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_trade_return_min": 0.03,
+    "pooled_median_net_trade_return_positive": true,
+    "confirmation_2019_mean_positive": true,
+    "confirmation_2020_mean_positive": true,
+    "confirmation_2021_mean_positive": true,
+    "validation_only_if_development_passes": true
+  }
+}

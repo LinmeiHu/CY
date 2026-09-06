@@ -1,0 +1,268 @@
+{
+  "spec_id": "ASHARE-V34R1-PHASE2A-SIGNAL-TIME-ANONYMOUS-SYNTHESIS-FREEZE-V1",
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1",
+  "stage": "PHASE2A_SIGNAL_TIME_ANONYMOUS_DESCRIPTIVE_SYNTHESIS",
+  "status": "STATIC_FROZEN_AWAITING_CY060_MANIFEST_AND_REGISTRY_AUTHORIZATION",
+  "frozen_at": "2026-09-06T00:00:00+08:00",
+  "purpose": "Join the immutable outcome-blind Phase-1 signal-time labels to the immutable anonymous 2018-2019 Phase-2A categorical attribution ledger, then publish only predeclared descriptive contingency tables. No identity, date, numeric return, rule, threshold, ranking, portfolio replay, or 2020 holdout access is permitted.",
+  "scientific_status": "POST_HOC_DEVELOPMENT_DESCRIPTIVE_SYNTHESIS_ONLY_NOT_ALPHA_CONFIRMATION",
+  "protocol_identity": {
+    "asset_id": "CY-060",
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE2A-SYNTHESIS-CY060-V1",
+    "authorized_arm": "V34R1_PHASE2A_FROZEN_ANONYMOUS_SYNTHESIS_ONLY",
+    "authorization_purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "pipeline_version": "v34r1-phase2a-signal-time-anonymous-synthesis-v1"
+  },
+  "runner_binding": {
+    "path": "research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase2a_signal_time_synthesis.py",
+    "spec_sha256_must_be_hardcoded_by_runner": true,
+    "runner_sha256_binding": "FUTURE_CY060_MANIFEST_AND_CENTRAL_REGISTRY_MUST_BIND_THE_EXACT_RUNTIME_RUNNER_SHA256",
+    "static_mode": "--verify-static-contract",
+    "public_authorization_mode": "--verify-public-authorization",
+    "run_mode": "--run"
+  },
+  "frozen_anonymous_inputs": {
+    "phase1_annotation_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "a70aac69ca58f9302f7af59a301800f6398b806705d461b7b18a91d92a56f474",
+      "rows": 1483,
+      "columns_allowed_for_synthesis": [
+        "chart_number",
+        "blind_chart_id",
+        "primary_morphology",
+        "market_tape",
+        "turnover_state"
+      ]
+    },
+    "phase1_annotation_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "540c77afb93d61d3b729491936b720f76a77eeb6302d93e6989d2574421e041d",
+      "rows": 1483
+    },
+    "phase2a_annotation_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review/phase2a_annotation_ledger.json",
+      "sha256": "777e7a86fb3adfb8293248d503cee91f4ce40131fdd5bd2888ab11ac6142c6c4",
+      "rows": 915,
+      "columns_allowed_for_synthesis": [
+        "chart_number",
+        "blind_chart_id",
+        "outcome_bucket",
+        "post_path_label"
+      ]
+    },
+    "phase2a_annotation_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review/manifest.json",
+      "sha256": "51095ce31fe1b96327cda489cfe601940cd54611596a6f5affa34f76e2c08460",
+      "rows": 915
+    }
+  },
+  "input_boundary": {
+    "only_external_files": [
+      "phase1_annotation_ledger",
+      "phase1_annotation_manifest",
+      "phase2a_annotation_ledger",
+      "phase2a_annotation_manifest"
+    ],
+    "public_modes_external_file_touch": false,
+    "external_access_before_joint_authorization": false,
+    "identity_or_crosswalk_read": false,
+    "date_or_year_read": false,
+    "stage_b_artifact_read_or_hash": false,
+    "numeric_return_read": false,
+    "2020_signal_outcome_or_label_read": false,
+    "2021_plus_read": false,
+    "reverify_all_four_inputs_before_publication": true
+  },
+  "join_contract": {
+    "keys_exact": [
+      "chart_number",
+      "blind_chart_id"
+    ],
+    "phase1_population": 1483,
+    "phase2a_population": 915,
+    "expected_exact_matches": 915,
+    "expected_phase1_unmatched": 568,
+    "phase2a_unmatched_allowed": 0,
+    "duplicate_key_allowed": false,
+    "join_type": "PHASE2A_LEFT_JOIN_TO_PHASE1_WITH_EXACTLY_ONE_MATCH",
+    "persist_row_level_join": false,
+    "persist_identity_crosswalk": false
+  },
+  "pre_outcome_eligible_axes": {
+    "primary_morphology": [
+      "BASE_COMPRESSION",
+      "ORDERLY_UPTREND",
+      "EXTENDED_OR_SPIKE",
+      "DOWNTREND_OR_BREAKDOWN",
+      "CHOPPY_NO_STRUCTURE"
+    ],
+    "market_tape": [
+      "BROAD_UP",
+      "BROAD_DOWN",
+      "MIXED_TRANSITION"
+    ],
+    "turnover_state": [
+      "DRY_OR_CONTRACTING",
+      "SURGE_OR_EXPANDING",
+      "NORMAL_MIXED"
+    ]
+  },
+  "excluded_phase1_fields": {
+    "signal_candle": "COMPLETELY_EXCLUDED_FROM_SYNTHESIS_AND_OUTPUTS_BECAUSE_PRE_OUTCOME_RELIABILITY_GATE_FAILED",
+    "evidence": "NOT_CONSUMED",
+    "reviewer": "NOT_CONSUMED",
+    "chart_paths_and_hashes": "NOT_CONSUMED"
+  },
+  "frozen_categorical_attribution": {
+    "outcome_buckets": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "post_path_labels": [
+      "IMMEDIATE_ACCEPTANCE",
+      "DELAYED_ACCEPTANCE",
+      "EARLY_REJECTION",
+      "LATE_REJECTION",
+      "CHOP_OR_AMBIGUOUS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "acceptance_labels": [
+      "IMMEDIATE_ACCEPTANCE",
+      "DELAYED_ACCEPTANCE"
+    ],
+    "rejection_labels": [
+      "EARLY_REJECTION",
+      "LATE_REJECTION"
+    ],
+    "completed_outcome_buckets": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS"
+    ],
+    "numeric_return_available_to_runner": false,
+    "post_path_label_predictor_use": false
+  },
+  "fixed_aggregations": {
+    "single_axes": [
+      "primary_morphology",
+      "market_tape",
+      "turnover_state"
+    ],
+    "pairwise_axes": [
+      [
+        "primary_morphology",
+        "market_tape"
+      ],
+      [
+        "primary_morphology",
+        "turnover_state"
+      ],
+      [
+        "market_tape",
+        "turnover_state"
+      ]
+    ],
+    "emit_every_predeclared_level_and_cartesian_cell_in_frozen_order": true,
+    "single_axis_contingencies": [
+      "axis level x outcome_bucket",
+      "axis level x post_path_label"
+    ],
+    "pairwise_contingencies": [
+      "fixed axis-pair cell x outcome_bucket",
+      "fixed axis-pair cell x post_path_label"
+    ],
+    "best_cell_selection": false,
+    "combination_ordering_or_ranking": false,
+    "threshold_or_rule_generation": false
+  },
+  "rate_denominators": {
+    "bucket_rates": "Each outcome-bucket count divided by total N in the same frozen label cell; all five rates sum to one apart from serialization rounding.",
+    "completed_n": "Total N minus NO_COMPLETED_TRADE count.",
+    "acceptance_rate": "IMMEDIATE_ACCEPTANCE plus DELAYED_ACCEPTANCE divided by completed N.",
+    "rejection_rate": "EARLY_REJECTION plus LATE_REJECTION divided by completed N.",
+    "chop_rate": "CHOP_OR_AMBIGUOUS divided by completed N.",
+    "zero_denominator": "Serialize rate as null; never impute, normalize, clip, or relax a check."
+  },
+  "support_policy": {
+    "minimum_total_n": 25,
+    "minimum_completed_n": 25,
+    "flags_only": true,
+    "flags": [
+      "total_n_ge_25",
+      "completed_n_ge_25",
+      "all_four_completed_outcome_buckets_observed",
+      "acceptance_and_rejection_both_observed",
+      "descriptive_rate_support"
+    ],
+    "descriptive_rate_support_definition": "total_n_ge_25 AND completed_n_ge_25",
+    "insufficient_support_action": "Publish counts and rates with descriptive_rate_support=false; do not drop, rank, select, interpret, or rescue the cell."
+  },
+  "output_contract": {
+    "root": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_g_phase2a_signal_time_outcome_synthesis",
+    "files": [
+      "coverage.json",
+      "single_axis_contingencies.json",
+      "pairwise_contingencies.json",
+      "summary.json",
+      "manifest.json"
+    ],
+    "row_level_output": false,
+    "identity_or_date_output": false,
+    "signal_candle_output": false,
+    "numeric_return_output": false,
+    "rule_or_threshold_output": false,
+    "atomic_exclusive_no_overwrite": true,
+    "deterministic_serialization": true
+  },
+  "required_authorization_permissions": {
+    "phase2a_synthesis_authorized": true,
+    "phase1_frozen_anonymous_ledger_read_authorized": true,
+    "phase2a_frozen_anonymous_ledger_read_authorized": true,
+    "anonymous_join_authorized": true,
+    "outcome_bucket_parse_authorized": true,
+    "post_path_label_parse_authorized": true,
+    "categorical_descriptive_aggregation_authorized": true,
+    "single_axis_contingency_authorized": true,
+    "fixed_pairwise_contingency_authorized": true,
+    "atomic_publication_authorized": true,
+    "identity_read_authorized": false,
+    "date_or_year_read_authorized": false,
+    "stage_b_artifact_read_authorized": false,
+    "numeric_return_read_authorized": false,
+    "signal_candle_use_authorized": false,
+    "phase1_label_rewrite_authorized": false,
+    "post_signal_predictor_authorized": false,
+    "threshold_search_authorized": false,
+    "rule_generation_authorized": false,
+    "combination_ranking_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2020_signal_outcome_read_authorized": false,
+    "2021_plus_read_authorized": false
+  },
+  "execution_sequence": [
+    "verify the frozen repository spec and hardcoded spec SHA without touching external artifacts",
+    "verify one exact CY-060 manifest and central bounded authorization using literal external path/hash strings only",
+    "after joint authorization only, hash and validate the two anonymous manifests and two anonymous ledgers",
+    "project only the three eligible Phase-1 axes and the two categorical Phase-2A attribution fields",
+    "join exactly 915 rows by chart_number and blind_chart_id in memory without persisting row-level data",
+    "emit all fixed single-axis and three pairwise contingency cells without selection or ranking",
+    "reverify every input and the runner, then atomically publish to a new no-overwrite root"
+  ],
+  "prohibited": [
+    "reading, resolving, statting, hashing, opening, or parsing any Stage-B artifact",
+    "reading or persisting symbol, event_id, date, year, industry, payout yield, identity mapping, or crosswalk",
+    "reading or aggregating any numeric return",
+    "reading any 2020 signal outcome or Phase-1 label, or any 2021-plus artifact or row",
+    "using signal_candle in any table, output, decision, rule, or interpretation",
+    "using outcome_bucket or post_path_label as a predictor",
+    "modifying a Phase-1 or Phase-2A annotation",
+    "selecting a best level, cell, pair, direction, threshold, rule, or combination",
+    "ranking combinations, creating objective trading clauses, opening the 2020 holdout, or replaying a portfolio",
+    "overwriting or incrementally updating a prior output"
+  ],
+  "next_action": "Independently review this freeze and runner, then create and install an exact CY-060 manifest and bounded registry authorization. Only after those bindings pass may the descriptive synthesis be run."
+}

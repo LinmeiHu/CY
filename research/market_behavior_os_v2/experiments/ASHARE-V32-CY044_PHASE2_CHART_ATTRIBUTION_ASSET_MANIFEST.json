@@ -1,0 +1,117 @@
+{
+  "asset_id": "CY-044",
+  "name": "Bounded V32 Phase-2 anonymous outcome-attribution chart input",
+  "status": "FROZEN_DEVELOPMENT_PHASE2_CHART_ATTRIBUTION_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "upstream_bounded_asset": {
+    "asset_id": "CY-043",
+    "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V32-CY043_CHART_REVIEW_ASSET_MANIFEST.json",
+    "manifest_sha256": "70fc0c44c603b53f8ffc5e8879bac5e2304ea02e1ab9ad52d8da74400fed441c",
+    "phase1_complete": true,
+    "phase1_events": 1781,
+    "phase1_outcomes_read": false,
+    "phase1_identity_mapping_read": false
+  },
+  "frozen_phase1_binding": {
+    "annotation_ledger_path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+    "annotation_ledger_sha256": "1835c4d0eec87a736e9f9f639ea6aafa281aef0f0ee96a2ddd0de8a0c4b29140",
+    "annotation_ledger_bytes": 507452,
+    "annotation_manifest_path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_d_phase1_anonymous_review/manifest.json",
+    "annotation_manifest_sha256": "bd820935d8b1f492896364d7da9b7de1c9543bf5ef08add5b68c6c145ac02bee",
+    "annotation_manifest_bytes": 3363,
+    "blind_index_path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_c_phase1_masked_charts/blind_index.csv",
+    "blind_index_sha256": "96fc0983edf5091c7c2535f0b13b9eefefc6ee4031819d1af70ebce54b630d96",
+    "blind_index_bytes": 267036,
+    "chart_corpus_manifest_path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_c_phase1_masked_charts/manifest.json",
+    "chart_corpus_manifest_sha256": "9075ad905d6566ce93e97839da04df46c49e06f829d42799da7144c1e753b089",
+    "chart_corpus_manifest_bytes": 4334,
+    "reviewer_drift_freeze_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V32_phase1_reviewer_drift_freeze.json",
+    "reviewer_drift_freeze_sha256": "9b1dadba17f1ae1b219a887e29bced13a0ddc304a2ebe40eb954ccd5e39d3850",
+    "reviewer_drift_freeze_bytes": 7501
+  },
+  "daily_chart_source": {
+    "asset_id": "CY-006",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partition_sha256": {
+      "2018": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "2019": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+    },
+    "coordinate_state_path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "coordinate_hash_semantics": "The complete immutable file may be hashed only after joint CY-044 authorization. Row parsing is restricted in SQL to 2018-01-22 through 2020-12-31.",
+    "authorized_physical_start": "2018-01-22",
+    "authorized_physical_end": "2020-12-31"
+  },
+  "reserved_stage_b_identities": {
+    "result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/result.json",
+      "sha256": "64cb4c19b38968bb0b59cb7f0bc2a4f16bd58a3c6af2f31c7e01cd95569bf2f7",
+      "bytes": 9568
+    },
+    "future_paths": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/future_paths.parquet",
+      "sha256": "4d06ccb23bbf660d17f4f58fc3140364ed5fc9b9213b3cd4f2f0b69752068377",
+      "bytes": 21067054
+    },
+    "outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/outcomes.parquet",
+      "sha256": "9c016be56517d08419ceeca2c16da055ede39acca35aa253d90bfbe8c166ecfa",
+      "bytes": 136133,
+      "rows": 1781
+    },
+    "pre_authorization_touch": "Only declared path/hash strings may be compared. The runner's public mode cannot stat, resolve, hash, open or parse these three files.",
+    "authorized_run_touch": "After joint registry/spec/manifest authorization and coordinate hash validation, the runner may hash and parse only these exact artifacts for anonymous categorical outcome grouping and lifecycle markers."
+  },
+  "protocol": {
+    "phase2_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32_phase2_visual_attribution_freeze.json",
+    "phase2_spec_sha256": "f818afb17947498f82bd5ec7844b8aabac7bd994951ea1e29d783d8545dfff64",
+    "phase2_spec_bytes": 12316,
+    "phase2_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_phase2_charts.py",
+    "phase2_runner_sha256": "59b338057f3e56c2c832ab39101b055ac7624970cbd2c6f41e19844bf96b41bb",
+    "phase2_runner_bytes": 76903,
+    "phase2_annotation_schema_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V32_phase2_post_path_annotation_schema.json",
+    "phase2_annotation_schema_sha256": "f4aaade524dac4a85a79f4b8fda03c00451267e915b4c77973b0110539eda603",
+    "phase2_annotation_schema_bytes": 1888,
+    "phase2_finalizer_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/finalize_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_phase2.py",
+    "phase2_finalizer_sha256": "d2a924a8cd162d193ea1bef9b4f7783e0db2497dcd1928a5e21efde8b3f8d654",
+    "phase2_finalizer_bytes": 45975
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-INNOVATION-DECOUPLING-V32-PHASE2-CY044-OUTCOME-ATTRIBUTION-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_CHART_ATTRIBUTION",
+    "authorized_arm": "V32_CY044_FROZEN_PHASE2_OUTCOME_ATTRIBUTION_ONLY",
+    "signal_start": "2018-07-31",
+    "signal_end": "2020-06-30",
+    "minimum_chart_date": "2018-01-22",
+    "maximum_chart_date": "2020-12-31",
+    "charts_authorized": true,
+    "phase2_authorized": true,
+    "completed_stage_b_artifact_read_authorized": true,
+    "coordinate_artifact_hash_authorized": true,
+    "outcome_artifact_hash_authorized": true,
+    "outcome_artifact_parse_authorized": true,
+    "post_signal_row_read_authorized": true,
+    "full_charts_authorized": true,
+    "outcome_grouping_authorized": true,
+    "outcome_attachment_authorized": true,
+    "in_memory_identity_reconstruction_authorized": true,
+    "identity_crosswalk_persistence_authorized": false,
+    "identity_reveal_authorized": false,
+    "phase1_label_rewrite_authorized": false,
+    "rule_aggregation_authorized": false,
+    "portfolio_replay_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Render and review exactly 1,781 anonymous full development charts with independent pre/post scales, frozen categorical outcome grouping and immutable Phase-1 labels.",
+    "blocked": "Identity persistence/reveal, Phase-1 relabeling, numeric-return display, rule search/aggregation, portfolio replay, candidate reselection, parameter search and every 2021-plus row or outcome."
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history.",
+    "claim": "The asset supports post-hoc visual attribution of an immutable development population only. It does not validate a trading rule or authorize a later-period outcome read.",
+    "next_step": "Review every Phase-2 chart and freeze the complete anonymous categorical ledger. Only a signal-time label passing the predeclared reviewer-stratified categorical gate can earn a separate Stage-G rule freeze."
+  }
+}

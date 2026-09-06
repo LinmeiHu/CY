@@ -1,0 +1,48 @@
+{
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1",
+  "stage": "PHASE1_OUTCOME_BLIND_REVIEWER_DRIFT_CORRECTION",
+  "status": "FROZEN_BEFORE_SECONDARY_REVIEWS_WERE_READ",
+  "scope": {
+    "chart_number_start": 501,
+    "chart_number_end": 525,
+    "rows": 25,
+    "reason": "The Root reviewer had materially lower calibration agreement on signal_candle and was the sole primary reviewer for charts 501-525."
+  },
+  "inputs": {
+    "original_primary": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_root_0501_0525.json",
+      "sha256": "fe42bac91ca1fb9cdc65a643db2b2c09f8ec8d907cec5554a640a0481b96c282"
+    },
+    "secondary_review_1": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_calibration_galileo_0501_0525.json",
+      "sha256": "4e02d83b46c81de57931bfea3cd4e7030f432b607d43705de60ed21f0fa46c1d"
+    },
+    "secondary_review_2": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_calibration_templateaudit_0501_0525.json",
+      "sha256": "63202e6a73d57d8c6c42d962fe59837d552aa1e419fa3679f022b26c07f82f70"
+    },
+    "annotation_schema": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_anonymous_annotation_schema.json",
+      "sha256": "89eeb590b025a4d126d328acbd47a803696606a891a8b804264bf326705fb90d"
+    }
+  },
+  "frozen_consensus_rule": {
+    "axes": [
+      "primary_morphology",
+      "market_tape",
+      "signal_candle",
+      "turnover_state"
+    ],
+    "per_axis": "If both independent secondary reviewers agree, use their label. If they disagree, retain the original Root label.",
+    "evidence": "Choose the evidence text from the input row whose four-axis tuple has the smallest Hamming distance from the consensus tuple; break ties in the fixed order secondary_review_1, secondary_review_2, original_primary.",
+    "reviewer": "PHASE1_BLIND_CONSENSUS",
+    "original_primary_is_preserved": true,
+    "no_label_is_selected_using_outcomes": true
+  },
+  "prohibited": [
+    "opening or hashing any Stage-B result, outcomes or future paths",
+    "reading identity mappings or post-signal rows",
+    "changing the consensus rule after seeing the secondary labels",
+    "deleting or overwriting the original primary annotations"
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "experiment": "ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30",
+  "status": "OUTCOME_BLIND_VISUAL_REVIEW_PROTOCOL_FROZEN_BEFORE_ANY_STAGE_B_ARTIFACT_READ",
+  "outcome_blind_authorship": true,
+  "purpose": "Render and manually inspect every frozen V30 development event without allowing post-signal candles or lifecycle outcomes to become signal-time predictors.",
+  "renderer": {
+    "path": "research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_charts.py",
+    "sha256": "7a20756243d861d290356df2882d8e7d605194442df19a4ab1ec3fb945287368"
+  },
+  "required_future_chart_authorization": {
+    "asset_id": "CY-037",
+    "dependency_asset_id": "CY-035",
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-C-CY037-CHART-REVIEW-2013-2020-V1",
+    "authorized_arm": "V30_CY037_FROZEN_STAGE_C_CHART_REVIEW_ONLY",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V30-CY037_CHART_REVIEW_ASSET_MANIFEST.json",
+    "manifest_status": "FROZEN_DEVELOPMENT_CHART_REVIEW_BOUNDED_INPUT",
+    "gate": "The renderer must fail before opening any completed Stage-B artifact unless the registry contains exactly one matching CY-037 asset and authorization and the immutable manifest hash, this review-spec hash, and the completed renderer hash all match. CY-037 manifest upstream_bounded_asset.stage_b_registry_sha256 must bind the historical registry hash recorded under the completed Stage-B result's short registry key; it is not compared with the necessarily newer CY-037 registry file.",
+    "required_permissions": {
+      "completed_stage_b_artifact_read_authorized": true,
+      "charts_authorized": true,
+      "outcome_attachment_authorized": false,
+      "portfolio_replay_authorized": false,
+      "post_2020_read_authorized": false,
+      "2021_read_authorized": false,
+      "2022_plus_read_authorized": false,
+      "current_survivor_fallback_allowed": false
+    },
+    "required_bound_artifact_roles": [
+      "daily_compact",
+      "stage_a_candidates",
+      "stage_b_spec",
+      "stage_b_runner",
+      "stage_b_result",
+      "stage_b_future_paths",
+      "stage_b_outcomes"
+    ],
+    "current_state": "INTENTIONALLY_FAIL_CLOSED_UNTIL_CY037_REGISTRY_AUTHORIZATION_AND_MANIFEST_EXIST"
+  },
+  "inputs": {
+    "stage_a_candidates": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/candidates_frozen.parquet",
+    "candidate_identity": "The Stage-A result must bind the exact candidates and representation SHA-256 values and must show stage_a_gate_passed=true, outcomes_read=false, post_signal_end_row_read=false, and post_2020_row_read=false.",
+    "future_stage_b_outcomes": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_b/outcomes.parquet",
+    "stage_b_identity": "The completed result must have stage=SEPARATELY_AUTHORIZED_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT, post_2020_row_read=false, and short-key source_hashes binding parent_spec, stage_b_spec, stage_a_runner, stage_b_runner, cy034_manifest, asset_manifest, historical registry, daily, stage_a_result, representation, and candidates. It must bind the exact future_paths and outcomes hashes and declare the corrected fallback-open-before-same-day-high, limit-evidence, unknown-corporate-action, and immediate-prepublish-rehash contract. Missing files, hashes, flags, or columns fail closed.",
+    "future_stage_b_required_columns": [
+      "event_id",
+      "symbol",
+      "sleeve",
+      "causal_industry",
+      "signal_date",
+      "signal_cal_idx",
+      "signal_invalid_step_cum",
+      "target_return",
+      "horizon_sessions",
+      "round_trip_cost",
+      "status",
+      "lineage_invalid_date",
+      "lineage_invalid_cal_idx",
+      "data_invalid_date",
+      "data_invalid_cal_idx",
+      "data_invalid_reason",
+      "entry_date",
+      "entry_cal_idx",
+      "entry_price",
+      "target_price",
+      "exit_date",
+      "exit_cal_idx",
+      "exit_price",
+      "exit_reason",
+      "exit_execution_phase",
+      "exit_coord_open",
+      "exit_coord_high",
+      "exit_raw_open",
+      "exit_raw_high",
+      "exit_raw_down_limit_price",
+      "holding_sessions",
+      "gross_return",
+      "net_return"
+    ],
+    "stage_b_allowed_statuses": [
+      "NO_LEGAL_ENTRY",
+      "INVALID_COORDINATE_LINEAGE_BEFORE_ENTRY",
+      "INVALID_COORDINATE_LINEAGE_AFTER_ENTRY",
+      "INVALID_CORPORATE_ACTION_STATE_BEFORE_ENTRY",
+      "INVALID_CORPORATE_ACTION_STATE_AFTER_ENTRY",
+      "INCOMPLETE_PATH",
+      "COMPLETED"
+    ],
+    "stage_b_schema_basis": "Exact V30 Stage-B outcome_base schema. No fallback column aliases, inferred lifecycle values, or renderer-side execution reinterpretation are allowed. The renderer consumes the final frozen lifecycle as recorded and does not encode a fallback-day intraday ordering rule."
+  },
+  "chart_contract": {
+    "window": "Exactly 126 global trading sessions before signal through 126 global trading sessions after signal, inclusive; 253 calendar slots per event.",
+    "maximum_chart_date": "2020-12-31",
+    "individual_chart_per_event": 1,
+    "contact_sheet_layout": "5 by 5, at most 25 charts per sheet",
+    "complete_coverages": [
+      "Every event_id appears exactly once in the individual-chart index.",
+      "Every event_id appears exactly once across chronological contact sheets.",
+      "Every event_id appears exactly once across the mutually exclusive outcome-group contact sheets."
+    ],
+    "publication": "Build under a unique same-parent staging directory, audit all individual files, hashes, sheets, placements, templates, and three exactly-once event_id coverages, then rehash every bound input immediately before atomically renaming to stage_c_charts. Refuse if any input changes or the canonical directory exists initially or appears before publication; remove only the runner-owned staging directory on failure.",
+    "marks": [
+      "signal close and signal-session divider",
+      "executed entry",
+      "frozen +10 percent target beginning at entry",
+      "executed exit at its true session and price when exit_rel is within +126",
+      "for the exactly four audited completed exits at exit_rel 129, 135, 145, or 244, a right-boundary EXIT OUTSIDE WINDOW annotation containing the true exit date, relative session, exit_reason, and literal 'price not plotted', with no fabricated x/y price point",
+      "exact lifecycle status and mutually exclusive outcome bucket"
+    ],
+    "out_of_window_exit_contract": {
+      "expected_completed_exit_count": 4,
+      "eligibility": "Only COMPLETED rows with exit_rel > 126 whose event/symbol/date/cal_idx maps to exactly one current_valid=true, hard_valid=true, finite-positive-OHLC daily row no later than 2020-12-31 may use the boundary annotation.",
+      "price_axis_rule": "An out-of-window exit_price is retained in the ledger but is never included in the plotted window's y-axis min/max and is never drawn at the +126 boundary.",
+      "fail_closed": "Any entry outside +1 through +3, any completed exit with a missing/nonpositive relative session, any in-window exit missing from valid chart bars, or any unaudited/invalid out-of-window exit aborts publication."
+    },
+    "visual_separation": "Blue PRE-SIGNAL region is eligible rule evidence. Orange POST-SIGNAL region, including entry, target, exit, status, and return, is attribution only and is forbidden as an original signal rule input."
+  },
+  "outcome_groups": {
+    "PROFIT_GE_4PCT": "completed net return >= 0.04",
+    "PROFIT_0_TO_4PCT": "0 <= completed net return < 0.04",
+    "LOSS_0_TO_10PCT": "-0.10 < completed net return < 0",
+    "SEVERE_LOSS": "completed net return <= -0.10",
+    "NO_COMPLETED_TRADE": "no completed lifecycle under the frozen Stage-B contract"
+  },
+  "per_chart_review": {
+    "one_row_per_event_id": true,
+    "columns": [
+      "event_id",
+      "chart_number",
+      "outcome_bucket",
+      "reviewed",
+      "pre_signal_trend_structure",
+      "pre_signal_level_location",
+      "pre_signal_turnover_structure",
+      "signal_candle_structure",
+      "immediate_post_signal_attribution",
+      "profit_loss_group_observation",
+      "counterexample_flag",
+      "counterexample_to_rule_ids",
+      "admissible_signal_time_rule_candidate",
+      "post_signal_used_as_rule",
+      "reviewer_notes"
+    ],
+    "pre_signal_labels": {
+      "trend_structure": [
+        "BASE_OR_COMPRESSION",
+        "ORDERLY_ADVANCE",
+        "MATURE_EXTENDED_HIGH",
+        "VOLATILE_TOPPING",
+        "DOWNTREND_OR_REPAIR",
+        "STRUCTURAL_BREAKDOWN",
+        "NONE_CLEAR"
+      ],
+      "level_location": [
+        "LOW_RANGE",
+        "MID_RANGE",
+        "NEAR_PRIOR_HIGH",
+        "NEW_HIGH_OR_BREAKOUT",
+        "NONE_CLEAR"
+      ],
+      "turnover_structure": [
+        "CONTRACTING",
+        "EXPANDING",
+        "TERMINAL_SPIKE",
+        "MIXED",
+        "NONE_CLEAR"
+      ],
+      "signal_candle_structure": [
+        "BULLISH_BODY",
+        "BEARISH_BODY",
+        "LONG_UPPER_WICK",
+        "LONG_LOWER_WICK",
+        "NARROW_OR_DOJI",
+        "GAP_OR_BREAKOUT",
+        "NONE_CLEAR"
+      ]
+    },
+    "immediate_post_signal_labels": [
+      "ACCEPTANCE",
+      "REJECTION",
+      "MIXED",
+      "NO_LEGAL_ENTRY",
+      "UNOBSERVABLE"
+    ],
+    "causal_rule_boundary": "Only information completed and available by signal decision_at may populate admissible_signal_time_rule_candidate. immediate_post_signal_attribution and every outcome field are explanatory labels only. post_signal_used_as_rule must remain false."
+  },
+  "review_sequence": [
+    "Review every chronological contact sheet and every occupied cell; do not delete, sample, or skip events.",
+    "Review every outcome-group sheet and record recurring pre-signal structures separately for large profit, small profit, ordinary loss, severe loss, and incomplete lifecycles.",
+    "For every proposed discriminator, record strong counterexamples from both profitable and losing groups and note any calendar clustering.",
+    "Reconcile the per-chart ledger against the renderer coverage manifest before compressing rules."
+  ],
+  "group_summary_required": {
+    "profit_groups": "Summarize recurring pre-signal structures and explicit losing counterexamples.",
+    "loss_groups": "Summarize recurring pre-signal failure structures and explicit profitable counterexamples.",
+    "post_signal_observations": "Report separately as attribution; never back-project acceptance, rejection, entry, target, or exit behavior into the original buy rule."
+  },
+  "maximum_compressed_rules": 5,
+  "rule_compression": {
+    "requirements": [
+      "Each rule is deterministic, auditable, and computable entirely from fields available at or before signal decision_at.",
+      "Each rule cites the reviewed event_ids supporting it and the strongest counterexamples.",
+      "Rules compress recurring structure; they may not become symbol, date, industry, or outcome-specific exceptions.",
+      "No neighboring-threshold, lookback, target, holding-period, Top-N, or calendar grid is permitted."
+    ],
+    "freeze_before_aggregation": "Write the final zero-to-five rules and their exact data semantics to one immutable hash-bound rule file before computing any compressed-strategy aggregate outcome."
+  },
+  "one_time_validation": {
+    "prerequisite": "The frozen development rule must first pass the V30 annual development gate exactly as preregistered.",
+    "validation_period": "2022-2024",
+    "temporal_buffer": "2021 remains unused.",
+    "policy": "Open the validation outcomes once under a separately authorized, hash-bound runner. If the rule fails, close it without threshold rescue, variant selection, or a second validation read."
+  },
+  "prohibited": [
+    "using any entry-day or later candle as an original signal-time rule",
+    "manual chart deletion, duplicate review, sampling, or skipped cells",
+    "outcome-informed thresholds or more than five compressed rules",
+    "opening 2021 or 2022-2024 before rule freeze and development-gate passage",
+    "rewriting the mother definition, entry, target, horizon, or costs during visual review"
+  ]
+}

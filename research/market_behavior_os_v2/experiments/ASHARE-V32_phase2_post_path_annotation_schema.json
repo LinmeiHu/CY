@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ASHARE-V32-PHASE2-ANONYMOUS-POST-PATH-ANNOTATION-V1",
+  "title": "V32 anonymous post-signal path attribution",
+  "description": "One outcome-aware visual attribution batch created only after the complete Phase-1 signal-time ledger was frozen. It appends post-signal path observations and cannot revise Phase-1 labels or authorize post-signal predictors.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 1781,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "chart_number",
+      "blind_chart_id",
+      "outcome_bucket",
+      "post_path_label",
+      "evidence",
+      "reviewer",
+      "phase1_labels_modified",
+      "post_signal_used_as_predictor"
+    ],
+    "properties": {
+      "chart_number": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 1781
+      },
+      "blind_chart_id": {
+        "type": "string",
+        "pattern": "^B-[0-9a-f]{20}$"
+      },
+      "outcome_bucket": {
+        "enum": [
+          "PROFIT_GE_4PCT",
+          "PROFIT_0_TO_4PCT",
+          "LOSS_0_TO_10PCT",
+          "SEVERE_LOSS",
+          "NO_COMPLETED_TRADE"
+        ]
+      },
+      "post_path_label": {
+        "enum": [
+          "IMMEDIATE_ACCEPTANCE",
+          "DELAYED_ACCEPTANCE",
+          "EARLY_REJECTION",
+          "LATE_REJECTION",
+          "CHOP_OR_AMBIGUOUS",
+          "NO_COMPLETED_TRADE"
+        ]
+      },
+      "evidence": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240,
+        "pattern": "^[^\\r\\n]+$"
+      },
+      "reviewer": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80,
+        "pattern": "^[^\\r\\n]+$"
+      },
+      "phase1_labels_modified": {
+        "const": false
+      },
+      "post_signal_used_as_predictor": {
+        "const": false
+      }
+    }
+  }
+}

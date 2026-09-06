@@ -1,0 +1,113 @@
+{
+  "asset_id": "CY-060",
+  "name": "Bounded V34R1 Phase-2A frozen anonymous signal-time synthesis input",
+  "status": "FROZEN_ANONYMOUS_CATEGORICAL_SYNTHESIS_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "pipeline_version": "v34r1-phase2a-signal-time-anonymous-synthesis-v1",
+  "protocol": {
+    "spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_phase2a_signal_time_synthesis_freeze.json",
+    "spec_sha256": "ec0881ac1a648d456883d82d729ffaf4ef6047d93f3e2acd3606cf46dab61121",
+    "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase2a_signal_time_synthesis.py",
+    "runner_sha256": "6979ec037f7c4cc831ea74bb25fdebbdd31886c96d3be82c12a61afebe53c693"
+  },
+  "frozen_scope": {
+    "phase1_events": 1483,
+    "phase2a_events": 915,
+    "phase1_unmatched": 568,
+    "join_keys": [
+      "chart_number",
+      "blind_chart_id"
+    ],
+    "eligible_phase1_axes": [
+      "primary_morphology",
+      "market_tape",
+      "turnover_state"
+    ],
+    "excluded_phase1_axis": "signal_candle",
+    "single_axis_tables": 3,
+    "fixed_pairwise_tables": 3
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE2A-SYNTHESIS-CY060-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V34R1_PHASE2A_FROZEN_ANONYMOUS_SYNTHESIS_ONLY",
+    "phase2a_synthesis_authorized": true,
+    "phase1_frozen_anonymous_ledger_read_authorized": true,
+    "phase2a_frozen_anonymous_ledger_read_authorized": true,
+    "anonymous_join_authorized": true,
+    "outcome_bucket_parse_authorized": true,
+    "post_path_label_parse_authorized": true,
+    "categorical_descriptive_aggregation_authorized": true,
+    "single_axis_contingency_authorized": true,
+    "fixed_pairwise_contingency_authorized": true,
+    "atomic_publication_authorized": true,
+    "identity_read_authorized": false,
+    "date_or_year_read_authorized": false,
+    "stage_b_artifact_read_authorized": false,
+    "numeric_return_read_authorized": false,
+    "signal_candle_use_authorized": false,
+    "phase1_label_rewrite_authorized": false,
+    "post_signal_predictor_authorized": false,
+    "threshold_search_authorized": false,
+    "rule_generation_authorized": false,
+    "combination_ranking_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2020_signal_outcome_read_authorized": false,
+    "2021_plus_read_authorized": false
+  },
+  "bound_artifacts": [
+    {
+      "role": "synthesis_freeze",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_phase2a_signal_time_synthesis_freeze.json",
+      "sha256": "ec0881ac1a648d456883d82d729ffaf4ef6047d93f3e2acd3606cf46dab61121"
+    },
+    {
+      "role": "synthesis_runner",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase2a_signal_time_synthesis.py",
+      "sha256": "6979ec037f7c4cc831ea74bb25fdebbdd31886c96d3be82c12a61afebe53c693"
+    },
+    {
+      "role": "phase1_annotation_ledger",
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "a70aac69ca58f9302f7af59a301800f6398b806705d461b7b18a91d92a56f474"
+    },
+    {
+      "role": "phase1_annotation_manifest",
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "540c77afb93d61d3b729491936b720f76a77eeb6302d93e6989d2574421e041d"
+    },
+    {
+      "role": "phase2a_annotation_ledger",
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review/phase2a_annotation_ledger.json",
+      "sha256": "777e7a86fb3adfb8293248d503cee91f4ce40131fdd5bd2888ab11ac6142c6c4"
+    },
+    {
+      "role": "phase2a_annotation_manifest",
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review/manifest.json",
+      "sha256": "51095ce31fe1b96327cda489cfe601940cd54611596a6f5affa34f76e2c08460"
+    }
+  ],
+  "canonical_output": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_g_phase2a_signal_time_outcome_synthesis",
+  "publication_contract": {
+    "atomic_exclusive_no_overwrite": true,
+    "files": [
+      "coverage.json",
+      "single_axis_contingencies.json",
+      "pairwise_contingencies.json",
+      "summary.json",
+      "manifest.json"
+    ],
+    "row_level_output": false,
+    "identity_or_date_output": false,
+    "numeric_return_output": false,
+    "signal_candle_output": false,
+    "rule_or_threshold_output": false
+  },
+  "scientific_boundary": {
+    "claim": "Anonymous post-hoc 2018-2019 categorical development description only; it is not Alpha confirmation and cannot authorize a rule or portfolio replay.",
+    "aggregation": "All frozen levels and all cells of exactly three frozen pairwise tables are emitted; no best-cell selection, direction search, combination ranking, threshold search, or rule generation is allowed.",
+    "temporal_seal": "No 2020 signal outcome or label and no 2021-plus row or artifact may be read. The 568 unmatched Phase-1 rows are counted by anonymous key only and their label fields are not projected.",
+    "stage_b_boundary": "No Stage-B artifact is an input or bound artifact, and none may be resolved, statted, hashed, opened, or parsed."
+  },
+  "registry_modified": false
+}

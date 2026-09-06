@@ -1,0 +1,92 @@
+{
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1",
+  "stage": "PHASE1_OUTCOME_BLIND_AXIS_RELIABILITY",
+  "status": "FROZEN_BEFORE_ANY_OUTCOME_ATTRIBUTION_AFTER_TEMPLATEAUDIT_SIGNAL_BAR_CORRECTION",
+  "quality_incident": {
+    "discovered_before_outcome_attribution": true,
+    "affected_input": "TemplateAudit calibration charts 0001-0025",
+    "issue": "The reviewer's auxiliary pixel boundary could select the penultimate candle on some charts because the true final candle center can extend through x=710.",
+    "containment": "The original TemplateAudit calibration is permanently excluded. The outcome-blind corrected calibration below replaces it, and all agreement metrics were recomputed before outcome attribution."
+  },
+  "calibration_scope": {
+    "charts": "0001-0025",
+    "reviewers": 4,
+    "pairwise_comparisons_per_axis": 6,
+    "outcome_or_identity_read": false
+  },
+  "inputs": [
+    {
+      "reviewer": "Root",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_root_calibration_0001_0025.json",
+      "sha256": "014bb9941ebc8cd16a6620f45c99f612187490a701f8ec98639f5a9859e1a70b"
+    },
+    {
+      "reviewer": "Bacon",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_bacon_0001_0500.json",
+      "sha256": "eedd03a47e2c7a621067a3142b7bfdc2dd48183f75379efe0481c4d1aa582c20",
+      "rows_used": "0001-0025 only"
+    },
+    {
+      "reviewer": "Galileo",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_calibration_galileo_0001_0025.json",
+      "sha256": "f22c21fb8301710896f42258058c218433ff1d4a611375997acd59423db2f4be"
+    },
+    {
+      "reviewer": "TemplateAuditCorrectedSignalBar",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_calibration_templateaudit_corrected_0001_0025.json",
+      "sha256": "e54a7dc97b0f6cd357dcf436c0631e17d4e8e88ed2e458046521802917aac295"
+    }
+  ],
+  "pre_outcome_eligibility_rule": {
+    "median_pairwise_exact_agreement_at_least": 0.6,
+    "charts_with_at_least_three_of_four_agreeing_at_least": 16,
+    "meaning": "An axis that fails either descriptive reliability threshold may be reported but cannot define or enter a compressed trading rule."
+  },
+  "axis_results": {
+    "primary_morphology": {
+      "pairwise_exact_agreements": [0.6, 0.6, 0.76, 0.64, 0.6, 0.64],
+      "median_pairwise_exact_agreement": 0.62,
+      "unanimous_charts": 9,
+      "three_of_four_majority_charts": 21,
+      "rule_eligible": true
+    },
+    "market_tape": {
+      "pairwise_exact_agreements": [0.84, 0.72, 0.84, 0.72, 0.68, 0.72],
+      "median_pairwise_exact_agreement": 0.72,
+      "unanimous_charts": 14,
+      "three_of_four_majority_charts": 21,
+      "rule_eligible": true
+    },
+    "signal_candle": {
+      "pairwise_exact_agreements": [0.48, 0.48, 0.52, 0.88, 0.44, 0.48],
+      "median_pairwise_exact_agreement": 0.48,
+      "unanimous_charts": 6,
+      "three_of_four_majority_charts": 17,
+      "rule_eligible": false,
+      "decision": "DESCRIPTIVE_ONLY_INTER_REVIEWER_RELIABILITY_TOO_LOW"
+    },
+    "turnover_state": {
+      "pairwise_exact_agreements": [0.6, 0.56, 0.96, 0.76, 0.56, 0.6],
+      "median_pairwise_exact_agreement": 0.6,
+      "unanimous_charts": 12,
+      "three_of_four_majority_charts": 16,
+      "rule_eligible": true
+    }
+  },
+  "active_rule_axes": [
+    "primary_morphology",
+    "market_tape",
+    "turnover_state"
+  ],
+  "descriptive_only_axes": [
+    "signal_candle"
+  ],
+  "usage_boundary": {
+    "manual_labels_may_group_development_outcomes_for_visual_anatomy": true,
+    "manual_labels_are_directly_executable_rules": false,
+    "promotion_requirement": "Any morphology, market-tape or turnover observation must be translated into a deterministic causal numeric condition and frozen before the held-out temporal block is evaluated.",
+    "signal_candle_may_enter_promoted_rule": false,
+    "reason": "Opaque-order chunk proportions show reviewer-style drift even where small-set agreement is moderate; the labels are discovery evidence, not production predicates."
+  },
+  "scientific_interpretation": "The single signal candle is less reproducible than the broader causal path, market tape and turnover state. It is excluded before returns are attached, so later performance cannot rescue it."
+}

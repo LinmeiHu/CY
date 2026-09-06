@@ -1,0 +1,64 @@
+{
+  "experiment_id": "ASHARE-CAUSAL-BEAR-STRONG-BULL-DUAL-ENGINE-V17",
+  "status": "PRE_OUTCOME_COMBINATION_FREEZE",
+  "economic_hypothesis": "Forced-supply reversal and quiet-inventory price discovery are different Alpha engines. Fast capitulation followed by active demand belongs in a causal broad BEAR state. Quiet-inventory breakout belongs only in a causal broad and meaningfully positive STRONG_BULL state; a merely positive but weak market does not provide enough continuation headroom.",
+  "routing": {
+    "BEAR": "exact frozen ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-V10 accepted trade identity and T20/H60 execution",
+    "STRONG_BULL": "exact ASHARE-BULL-QUIET-INVENTORY-THREE-SESSION-ACCEPTANCE-V2 identity and T20/H60 execution",
+    "WEAK_BULL": "HOLD_CASH",
+    "TRANSITION": "HOLD_CASH"
+  },
+  "causal_market_state": {
+    "base_state_source": "ASHARE-CAUSAL-MARKET-REGIME-ROUTED-SIMPLE-STRATEGY-V1",
+    "bear": "market median ret20 <= 0, median ret60 <= 0, positive-ret20 share <= 0.50, and positive-ret60 share <= 0.50 at the completed signal close",
+    "strong_bull": "base BULL plus market median ret60 >= 0.05 and positive-ret60 share >= 0.60 at the completed mother-signal close",
+    "weak_bull": "base BULL that does not meet STRONG_BULL",
+    "future_values_used": false,
+    "missing_policy": "fail closed",
+    "threshold_search": false,
+    "economic_reason": "five percent is a meaningful sixty-session median stock advance rather than a sign-only threshold; sixty percent breadth requires a clear majority of stocks to participate"
+  },
+  "bear_engine": {
+    "stock_event": "ret20 <= -10%, signal return >= +5%, close above prior-five high, turnover at least prior-20 mean, close location >=70%, non-limit close, and prior10 return <= -8%",
+    "market_event": "causal BEAR and completed positive-ret20 breadth above its five-session lag",
+    "entry": "first legal open after signal",
+    "exit": "+20% target or first legal open after H60 close decision",
+    "cost": 0.004
+  },
+  "strong_bull_engine": {
+    "stock_event": "exact quiet-inventory information-gap mother event in base BULL",
+    "acceptance": "third subsequent completed tradable stock session closes at or above the pre-signal frozen prior-40 platform high",
+    "entry": "first legal open after the third-session acceptance decision",
+    "exit": "+20% target or first legal open after H60 close decision",
+    "cost": 0.004
+  },
+  "development": {
+    "signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "post_hoc_status": "Both engine directions and STRONG_BULL semantics are development hypotheses; no independent confirmation claim is allowed.",
+    "gate": {
+      "completed_trades_per_year_strictly_greater_than": 50,
+      "pooled_mean_net_strictly_greater_than": 0.04,
+      "pooled_median_net_positive": true,
+      "every_calendar_year_mean_positive": true,
+      "severe_loss_10pct_max": 0.20
+    }
+  },
+  "challenge_governance": {
+    "2021": "not part of the requested challenge and not used in development",
+    "2022_2023": "previously consumed engine history; robustness only",
+    "2024": "may be opened only after the combined development gate passes and all 2024 identities are frozen without outcomes",
+    "2025_signals": "forbidden in the requested challenge",
+    "2025_rows": "permitted only to complete frozen 2024 trades"
+  },
+  "anti_overfit": {
+    "market_state_variants_tested_for_this_combination": 1,
+    "engine_weight_search": false,
+    "signal_threshold_search": false,
+    "holding_horizon_search": false,
+    "target_search": false,
+    "portfolio_optimization_before_signal_gate": false
+  }
+}

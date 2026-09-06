@@ -1,0 +1,153 @@
+{
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34",
+  "stage": "OUTCOME_BLIND_COUNT_AND_REPRESENTATION_FREEZE_BEFORE_STAGE_A",
+  "frozen_at": "2026-09-06",
+  "purpose": "Test only whether a causally known, material pure-cash distribution can form a sufficiently broad and semantically valid pre-2021 mother population. Stage A may count identities and inspect contemporaneous representation geometry, but it may not attach any forward price, trade, payoff, target, exit, chart outcome or portfolio field.",
+  "economic_hypothesis": "A large cash distribution is an issuer action that has actually transferred cash to shareholders. After the mechanical ex-date adjustment, a high gross cash yield may identify realized payout quality and valuation support without substituting a restated accounting statement. The frozen natural direction is long higher realized cash yield, but Stage A cannot establish Alpha or even read a future return.",
+  "scientific_claim_boundary": "PIT-B bounded research feasibility only. QD-010 is a frozen current historical snapshot without a complete historical revision-vintage chain; this experiment cannot make a strict archival PIT, production, live-trading or fundamental-quality claim.",
+  "novelty_boundary": {
+    "not_material_supply_expansion": "V34 requires share_multiplier exactly one and tests an issuer cash transfer; the prior supply-expansion mother explicitly excluded same-day corporate-action coordinate events and tested a change in circulating shares.",
+    "not_price_or_volume": "No return, momentum, MAX, volatility, gap, support, breakout, VWAP, candle, turnover or volume field defines the mother event.",
+    "not_fundamental_statement_proxy": "No income statement, balance sheet, cash-flow statement, book value, earnings or restated PIT fundamental field is read. The representation is the announced and effective cash actually distributed per pre-ex-date market price.",
+    "not_v30_v31_v32_v33": "V30 is price-turnover positive feedback, V31 is a stock-minus-industry return-serial transition, V32 is turnover-innovation decoupling, and V33 is risk-warning removal. V34 uses none of those identities or states.",
+    "no_prior_strategy_repair": "No existing strategy, champion, candidate list, trade or outcome is an input."
+  },
+  "inputs": {
+    "registry": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/configs/data_asset_registry.json",
+      "identity_policy": "Validate exact QD-010/CY-006 semantics, hash the registry at runner start, and require the identical hash immediately before publication.",
+      "required_assets": [
+        "CY-045",
+        "QD-010",
+        "CY-006"
+      ]
+    },
+    "corporate_action_id_contract": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726",
+      "accepted_wire_forms": [
+        "JSON list",
+        "pipe-delimited string",
+        "in-memory list or tuple"
+      ],
+      "v34_strictness": "The overall string wire may first receive the canonical whole-string strip. Before calling the hash-bound repository parse_action_ids function directly, V34 rejects every null/NaN, empty, padded or duplicate member using its original canonical str(item) value. The QD-010 event_id must itself be a nonempty string equal to its stripped value, and the canonical parsed event-day tuple must equal that original QD-010 event_id exactly."
+    },
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "qd010_source_manifest": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+      "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+    },
+    "qd010_distributions": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+    },
+    "qd010_rights": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ]
+  },
+  "cy045_joint_authorization_envelope": {
+    "asset_id": "CY-045",
+    "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34-CY045_DATA_ASSET_MANIFEST.json",
+    "purpose": "ASHARE_OUTCOME_BLIND_MOTHER_REPRESENTATION",
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34-STAGE-A-2018-2020-V1",
+    "authorized_arm": "V34_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY",
+    "joint_binding": "Before any source parquet is statted, hashed or opened, the runner must validate the registry CY-045 asset, the exact bounded authorization and this immutable manifest as a three-way binding to the current spec SHA-256, current runner SHA-256 and every frozen input path/SHA-256.",
+    "pre_authorization_access": "Only the V34 spec, repository registry, CY-045 manifest and current runner may be statted, hashed or parsed. No QD-010/CY-006 source or inventory may be touched.",
+    "authorized_after_joint_binding": {
+      "stage_a_authorized": true,
+      "whole_artifact_hash_authorized": true,
+      "inventory_metadata_parse_authorized": true,
+      "source_parquet_stage_a_parse_authorized": true
+    },
+    "inventory_metadata_only": "QD-010 and CY-006 inventory JSON may be parsed only to verify frozen root/path/SHA-256 metadata. Inventory contents may not authorize extra files, dates, rows, outcomes or fields.",
+    "whole_artifact_hash_boundary": "After joint authorization only, each exact bound source artifact may be read byte-for-byte solely to verify its complete SHA-256 before any permitted Stage-A row parse. A matching whole-file hash does not authorize rows after 2020, future paths, outcomes, charts or a portfolio.",
+    "forbidden_even_after_authorization": "Every post-signal row, outcome attachment, outcome artifact, chart, Stage B, portfolio, 2021-plus row, parameter search and current-survivor fallback remains false."
+  },
+  "frozen_mother_signal": {
+    "signal_period": "2018-01-01 through 2020-12-31 inclusive",
+    "universe": "Historical Main Board and ChiNext identities only: 600/601/603/605.SH and 000/001/002/300/301.SZ. The CY-006 event-date row must be non-ST, hard-valid, currently tradable, trade_status=1, PIT-industry-valid, nonblocking and available by its completed close. Industry and every required snapshot ID must be non-null and non-blank after whitespace stripping.",
+    "pure_cash_action": "Exactly one QD-010 distribution row may exist for symbol/effective_date. It must have cash_per_share_gross>0, share_multiplier exactly 1, rights_subscription_ratio exactly 0, source_terms_complete=true, finite known_at and effective_date, no changed/previous revision marker, revision_ordinal=1, and no QD-010 rights row for the same symbol/effective_date. The parsed CY-006 corporate_action_ids must contain exactly the same sole QD-010 event_id and corporate_action_count must equal one. Missing, malformed, duplicate or conflicting terms/identities fail closed.",
+    "availability": "The original QD-010 known_at must be no later than the CY-006 event-date decision_at. effective_date must equal the CY-006 trade_date. No announcement-time inference other than the accepted QD-010 conservative known_at semantics is allowed.",
+    "representation": "cash_yield = cash_per_share_gross / raw CY-006 preclose on effective date t. Both terms must be finite and strictly positive.",
+    "materiality": "cash_yield >= 0.02 exactly. This one 2 percent gross distribution-yield threshold is frozen once as an economically material realized payout; no neighboring threshold is authorized.",
+    "decision_at": "Completed effective-date session t close. The event is not allowed to fill in session t; the earliest hypothetical fill is a later legal open, which Stage A does not inspect or evaluate.",
+    "event_id": "CASH_PAYOUT_QUALITY|QD010_EVENT_ID|YYYYMMDD|SYMBOL",
+    "cooldown": "Process qualifying events in signal-date/event-id order per symbol. Retain an event only when its global signal calendar index is strictly more than 120 sessions after the last retained event for that symbol.",
+    "direction": "LONG_HIGH_REALIZED_CASH_YIELD_FROZEN_BEFORE_OUTCOMES",
+    "market_filter": "NONE",
+    "industry_filter": "NONE",
+    "price_path_filter": "NONE",
+    "turnover_filter": "NONE"
+  },
+  "stage_a_protocol": {
+    "allowed": [
+      "validate the frozen CY-045 registry/authorization/manifest envelope before touching any source or inventory",
+      "verify frozen file hashes and QD-010/CY-006 registry semantics",
+      "parse CY-006 corporate_action_ids under the frozen repository encoding contract and require exact one-ID equality to the QD-010 event_id",
+      "audit relevant 2018-2020 QD-010 duplicates, row revisions, completeness, known_at and effective-date ordering",
+      "join only the event-date CY-006 row and market-calendar index",
+      "calculate cash_yield and the frozen 120-session cooldown",
+      "write an outcome-free eligible representation panel and retained candidate identity table",
+      "report exact annual retained candidates, unique symbols, decision dates, PIT industries and cash-yield distribution",
+      "report non-filtering contemporaneous Spearman collision diagnostics against raw preclose, circulating market value, turnover fraction and cash per share"
+    ],
+    "forbidden": [
+      "any row after 2020-12-31",
+      "any stock price, return, volume, state, entry, target, exit or outcome after signal session t",
+      "any future return, payoff, MFE, MAE, hit label, outcome bucket, chart path or portfolio artifact",
+      "any 2021 or later source partition or corporate-action row",
+      "any existing strategy candidate, trade or outcome artifact",
+      "parameter grids, threshold rescue, sign rescue or added candidate filters"
+    ],
+    "opportunity_gate": {
+      "retained_candidates_each_year_strictly_greater_than": 50,
+      "pit_industries_each_year_at_least": 20,
+      "all_years_required": [
+        2018,
+        2019,
+        2020
+      ]
+    },
+    "semantic_gate": "Every duplicate, time-order, row-revision, action-conflict, source-term, source-hash, corporate-action identity, nonblank PIT industry, nonblank required snapshot ID and event-date CY-006 validity audit must pass exactly. Unknown required lineage fails closed and forbids canonical Stage-A publication.",
+    "opportunity_gate_failure_policy": "If and only if every semantic/PIT/input gate passes, failure of the annual >50-candidate or >=20-industry opportunity gate may publish the canonical Stage-A count/candidate audit with status FAILED_OPPORTUNITY_GATE_PERMANENTLY_CLOSED. That artifact permanently forbids V34 Stage B, charts, forward outcomes and definition rescue.",
+    "collision_diagnostics_are_not_filters": true,
+    "outcome_columns_read": false,
+    "post_signal_rows_read": false,
+    "post_2020_rows_read": false
+  },
+  "output_contract": {
+    "root": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a",
+    "files": [
+      "representation_panel.parquet",
+      "candidates_frozen.parquet",
+      "result.json"
+    ],
+    "write_policy": "Create through a sibling staging directory. At startup and again immediately before publication, independently revalidate the complete CY-045 registry/authorization/manifest envelope, then re-hash every frozen input including spec, registry, manifest and runner; require the two complete hash maps to be identical, re-check that canonical stage_a does not exist, and atomically rename without overwrite. Any semantic/PIT/input failure removes staging and publishes nothing. An opportunity-gate failure may publish only an explicit FAILED_OPPORTUNITY_GATE_PERMANENTLY_CLOSED Stage-A audit/candidate corpus and can never authorize Stage B or charts."
+  },
+  "next_action": "Run Stage A only after an independent audit of this freeze and its bound runner. If every semantic and opportunity gate passes, a separate outcome contract would still be required. If only the opportunity gate fails, freeze the explicit FAILED Stage-A audit and permanently close V34. This freeze never authorizes Stage B, charts, portfolio replay or later-period access."
+}

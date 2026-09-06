@@ -1,0 +1,46 @@
+{
+  "experiment_id": "ASHARE-HIGH-TIGHT-FLAG-STRUCTURAL-RISK-CONTROL-V2",
+  "status": "DEVELOPMENT_TRANSLATION_FREEZE_BEFORE_2022_2023",
+  "scientific_development": "2014-01-01 through 2021-12-31",
+  "sealed_validation": "2022-01-01 through 2023-12-31",
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "The frozen refined high-tight flag represents temporary supply absorption only while the entire ten-session platform remains intact. A completed close below its frozen lower boundary invalidates the trade's causal structure and should be exited at the next legal open rather than held mechanically to H30.",
+  "source_signal": {
+    "experiment": "ASHARE-HIGH-TIGHT-FLAG-SUPPLY-ABSORPTION-BREAKOUT-V1",
+    "candidate_sha256": "36cec753e551f6b214b965f251dc1238d5e7601cb676538d3f0660037592ed8b",
+    "signal_identity_changed": false
+  },
+  "entry": "first legal executable daily open strictly after the completed breakout signal, no later than the third subsequent market session",
+  "fixed_profiles": [
+    {
+      "profile": "T15_H30_FLAG_LOW_STOP",
+      "target": 0.15,
+      "horizon": 30,
+      "stop": true
+    }
+  ],
+  "failure_exit": "After T+1 sellability, the first fully valid completed daily close strictly below the frozen prior-ten-session coordinate low creates a pending exit at the next legal sellable open.",
+  "costs": {"entry_bps": 20, "exit_bps": 20, "round_trip_bps": 40},
+  "development_origin": {
+    "winner_loser_chart_audit_years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+    "chart_count": 40,
+    "machine_tree_adopted": false,
+    "rule_conditions_added": 0,
+    "natural_failure_exit_added": 1
+  },
+  "continuation_gate": {
+    "development_completed_trades_per_year_average_strictly_greater_than": 50,
+    "development_mean_net_return_min": 0.03,
+    "development_positive_years_min": 6,
+    "validation_2022_2023_pooled_mean_net_return_min": 0.03,
+    "validation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20,
+    "no_single_board_explains_edge": true
+  },
+  "governance": {
+    "entry_or_signal_threshold_changed_after_v1_outcomes": false,
+    "failure_exit_is_frozen_before_2022_2023": true,
+    "validation_rule_change_allowed": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

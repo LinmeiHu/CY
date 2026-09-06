@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ASHARE-V34R1-PHASE1-ANONYMOUS-ANNOTATION-V1",
+  "title": "V34R1 anonymous signal-time chart annotations",
+  "description": "Exactly one outcome-blind categorical judgment on each of four frozen causal chart axes. Empty strings occur only in the generated review template; a completed annotation ledger must satisfy this schema.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 1483,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "chart_number",
+      "primary_morphology",
+      "market_tape",
+      "signal_candle",
+      "turnover_state",
+      "evidence",
+      "reviewer"
+    ],
+    "properties": {
+      "chart_number": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 1483
+      },
+      "primary_morphology": {
+        "type": "string",
+        "enum": [
+          "BASE_COMPRESSION",
+          "ORDERLY_UPTREND",
+          "EXTENDED_OR_SPIKE",
+          "DOWNTREND_OR_BREAKDOWN",
+          "CHOPPY_NO_STRUCTURE"
+        ]
+      },
+      "market_tape": {
+        "type": "string",
+        "enum": [
+          "BROAD_UP",
+          "BROAD_DOWN",
+          "MIXED_TRANSITION"
+        ]
+      },
+      "signal_candle": {
+        "type": "string",
+        "enum": [
+          "STRONG_CLOSE",
+          "WEAK_CLOSE",
+          "NEUTRAL"
+        ]
+      },
+      "turnover_state": {
+        "type": "string",
+        "enum": [
+          "DRY_OR_CONTRACTING",
+          "SURGE_OR_EXPANDING",
+          "NORMAL_MIXED"
+        ]
+      },
+      "evidence": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240,
+        "pattern": "^[^\\r\\n]+$",
+        "description": "A concrete single-line observation based only on the anonymous signal-time chart."
+      },
+      "reviewer": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80,
+        "pattern": "^[^\\r\\n]+$"
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1-STAGE-B",
+  "research_status": "PRE_OUTCOME_EXECUTION_FREEZE_AWAITING_CY049_REGISTRATION",
+  "frozen_before_any_v34r1_forward_path_or_payoff_read": true,
+  "scientific_role": "Attach one fixed development lifecycle to every frozen V34R1 high-realized-cash-yield event. This is a mother-signal economic screen, not a portfolio replay or parameter search.",
+  "parent_stage_a": {
+    "semantic_freeze_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_freeze.json",
+    "semantic_freeze_sha256": "e41bfe9de6c68878ea556cf31397075adda9076adc19a4089215284436c6bdb4",
+    "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_stage_a.py",
+    "runner_sha256": "deb4856ab9cf21cb117428db3e54f45cc0422cf5eef5ca8eebcb2e12357167d1",
+    "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY047_DATA_ASSET_MANIFEST.json",
+    "manifest_sha256": "4f3453d0afadf14e71fe332c7d84e49c0842253b152849281a6dfc40f3a5655f",
+    "result_path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_a/result.json",
+    "result_sha256": "ed8beec7bebe604a0aed9904f96b48580e5020f3709ca06dab95e7e7642dff58",
+    "representation_path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_a/representation_panel.parquet",
+    "representation_sha256": "d46729a8fc90321b7cc1d0a2572f17f9944808ccdd6bdc1145c08ed51a950fb6",
+    "candidates_path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_a/candidates_frozen.parquet",
+    "candidates_sha256": "44c55eefc7148aa530a79e71cc5569003c76e9598a2ac85193d8d5db102fbcd8",
+    "candidate_rows": 1483,
+    "required_state": {
+      "semantic_gate_passed": true,
+      "opportunity_gate_passed": true,
+      "stage_a_gate_passed": true,
+      "outcome_columns_read": false,
+      "post_signal_rows_read": false,
+      "post_2020_rows_read": false,
+      "direction": "LONG_HIGH_REALIZED_CASH_YIELD_FROZEN_BEFORE_OUTCOMES"
+    }
+  },
+  "signal_scope": {
+    "signal_start": "2018-03-27",
+    "signal_end": "2020-12-01",
+    "required_signal_years": [2018, 2019, 2020],
+    "signal_time": "the exact completed effective-date close recorded in each frozen candidate decision_at; all frozen Stage-A candidates currently carry 15:00",
+    "candidate_definition_change": false
+  },
+  "outcome_data": {
+    "raw_daily_asset": "CY-006",
+    "partitions": [2018, 2019, 2020, 2021],
+    "maximum_path_row_date": "2021-06-30",
+    "maximum_event_path": "126 global market sessions strictly after each frozen signal, additionally capped at 2021-06-30",
+    "2021_role": "Path-completion buffer for late-2020 frozen signals only; no 2021 signal may enter.",
+    "2022_plus": "FORBIDDEN",
+    "coordinate_state_path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "path_completeness": "The half-year cap is later than global signal_cal_idx+126 for every frozen candidate. A candidate with no post-signal path rows fails closed rather than being mislabeled NO_LEGAL_ENTRY; incomplete sellability remains an explicit non-completed outcome."
+  },
+  "outcome_attachment": {
+    "entry": "Inspect global market cal_idx signal+1 through signal+3 in order. Fill at the first legal, fully valid, non-upper-limit coordinate open. Never fill on the signal bar.",
+    "target": "The first later same-lineage legal coordinate high at least 1.10 times entry exits at exactly +10% gross, subject to the frozen sellability check.",
+    "fallback": "At the first same-lineage row with cal_idx strictly greater than entry_cal_idx+20, process the open before same-day high. Exit at target if sellable open is at/above target; otherwise exit at coordinate open. Only an unsellable open may defer to a later same-day legal target touch.",
+    "target_return": 0.10,
+    "horizon_sessions": 20,
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "no_stop": true,
+    "limits_suspensions_corporate_actions_and_coordinate_lineage": "BINDING_FAIL_CLOSED",
+    "execution_reference_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+    "execution_reference_sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+  },
+  "development_gate": {
+    "completed_signals_strictly_greater_than_each_year": 50,
+    "mean_net_return_strictly_greater_than_each_year": 0.04,
+    "years": [2018, 2019, 2020],
+    "if_failed": "Keep 2022-2024 closed. Still render and manually inspect every development chart under a separately frozen chart authorization, because the user's discovery protocol requires full visual anatomy before closing or compressing rules.",
+    "if_passed": "Still require complete chart review and a separately frozen causal rule before any 2022-2024 opening."
+  },
+  "required_registry_authorization": {
+    "asset_id": "CY-049",
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-STAGE-B-2018-2021H1-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V34R1_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "must_bind_completed_runner_before_source_access": true
+  },
+  "outputs": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b",
+    "files": ["prepared_candidates.parquet", "future_paths.parquet", "outcomes.parquet", "result.json"],
+    "publication": "same-parent temporary construction, complete audits, re-hash every bound input, then one atomic no-overwrite rename"
+  },
+  "prohibited": [
+    "changing cash yield threshold, event family, cooldown, boards, direction, signal dates or candidate membership",
+    "same-bar entry, entry after signal+3, target/horizon/cost search, stop search or alternate execution",
+    "2021 signals, any row after 2021-06-30, or any 2022-2024 read",
+    "chart-rule construction under this authorization",
+    "portfolio replay, threshold rescue, market-state filter or strategy combination",
+    "overwriting any V34 or V34R1 artifact",
+    "claiming independent confirmation"
+  ]
+}

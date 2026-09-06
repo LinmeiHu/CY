@@ -1,0 +1,214 @@
+{
+  "experiment": "ASHARE-QUIET-INVENTORY-FAST-REPRICING-V1",
+  "freeze_status": "FROZEN_BEFORE_2022_2024_VALIDATION",
+  "frozen_at": "2026-09-05",
+  "research_question": "Which causally observable low-volume setup can exceed 50 signals per development year, 4% mean net return per completed signal, and remain below 15 trading sessions mean holding time?",
+  "economic_hypothesis": "Low volume is only the background state: ownership and supply first become quiet inside a bounded inventory range. The tradable edge appears when fresh demand accepts a non-limit information gap and a high-location, volume-expanded breakout. The edge is strongest in a broadly positive but not overheated market and when the stock has not already produced too many large up days.",
+  "development_boundary": {
+    "signal_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "latest_signal_date": "2021-12-31",
+    "validation_years_unopened_at_freeze": [
+      2022,
+      2023,
+      2024
+    ],
+    "outcome_blind_threshold_selection": true
+  },
+  "frozen_signal": {
+    "mother_signal": "ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1",
+    "universe": {
+      "boards": [
+        "MAIN",
+        "CHINEXT"
+      ],
+      "st_excluded": true,
+      "upstream_daily_asset_industry_exclusions": [
+        "煤炭开采",
+        "油气开采Ⅱ",
+        "油服工程",
+        "炼化及贸易",
+        "普钢",
+        "特钢Ⅱ",
+        "冶钢原料",
+        "工业金属",
+        "小金属",
+        "贵金属",
+        "能源金属",
+        "金属新材料",
+        "化学原料",
+        "化学制品",
+        "农化制品",
+        "化学纤维",
+        "电子化学品Ⅱ",
+        "水泥",
+        "玻璃玻纤",
+        "非金属材料Ⅱ",
+        "电力",
+        "燃气Ⅱ"
+      ],
+      "exclusion_provenance": "Inherited unchanged from the registered upstream comparable-daily asset used to freeze the mother candidate identity; this is a data-universe contract, not an outcome-selected industry filter."
+    },
+    "required_history": "The last 60 completed same-symbol sessions through signal t are hard-valid, tradable, market-rule-valid and corporate-action-valid; unknown required lineage fails closed.",
+    "quiet_inventory": {
+      "platform_window": "40 completed sessions strictly before t",
+      "maximum_platform_width": 0.3,
+      "turnover_contraction": "mean turnover over t-20..t-1 <= mean turnover over t-60..t-21"
+    },
+    "fresh_demand_confirmation": {
+      "opening_gap_vs_prior_close_inclusive": [
+        0.01,
+        0.08
+      ],
+      "signal_close_above_prior40_coordinate_high": true,
+      "minimum_signal_turnover_vs_prior20_mean": 1.5,
+      "minimum_signal_close_location": 0.7,
+      "upper_limit_close_excluded": true
+    },
+    "causal_market_filter": {
+      "regime": "BULL",
+      "bull_definition": "At the completed signal close, the upstream comparable-daily universe cross-sectional coordinate-return medians over both 20 and 60 sessions are > 0 and positive-return shares over both horizons are > 0.50.",
+      "market_median_ret60_inclusive": [
+        0.025,
+        0.18
+      ],
+      "interpretation": "Broad participation must be positive, but the 60-session median market advance must not yet be euphoric."
+    },
+    "non_overextension_filter": {
+      "large_up_days120_maximum_inclusive": 9,
+      "large_up_day_definition": "same-symbol coordinate step return >= 5%",
+      "window": "121 completed rows from t-120 through signal t, using only information available at the signal close"
+    }
+  },
+  "frozen_execution": {
+    "profile": "T10_H20_NO_STOP",
+    "entry": "first legal executable open strictly after completed signal t, no later than t+3 market sessions",
+    "signal_bar_fill_allowed": false,
+    "t1_enforced": true,
+    "entry_upper_limit_blocked": true,
+    "exit_lower_limit_blocked": true,
+    "suspension_and_trading_status_enforced": true,
+    "corporate_action_coordinate_lineage_fail_closed": true,
+    "target_gross_return": 0.1,
+    "time_stop_decision_sessions_after_entry": 20,
+    "time_stop_fill": "first subsequent legal sellable open",
+    "stop_loss": null,
+    "entry_cost_bps": 20,
+    "exit_cost_bps": 20,
+    "target_net_return_after_costs": 0.096
+  },
+  "development_results_2014_2021": {
+    "signals": 430,
+    "completed_trades": 417,
+    "mean_signals_per_year": 53.75,
+    "mean_completed_trades_per_year": 52.125,
+    "mean_net_return": 0.05144222134125974,
+    "median_net_return": 0.096,
+    "mean_holding_sessions": 12.191846522781775,
+    "win_rate": 0.7601918465227818,
+    "target_hit_rate": 0.6858513189448441,
+    "severe_loss_10pct_rate": 0.06474820143884892,
+    "user_gates": {
+      "mean_signals_per_year_strictly_above_50": true,
+      "mean_net_return_at_least_4pct": true,
+      "mean_holding_sessions_strictly_below_15": true
+    },
+    "development_blocks": {
+      "2014_2018": {
+        "signals": 133,
+        "mean_net_return": 0.0420699,
+        "mean_holding_sessions": 13.313
+      },
+      "2019_2021": {
+        "signals": 297,
+        "mean_net_return": 0.0557351,
+        "mean_holding_sessions": 11.678
+      }
+    },
+    "neighbor_sensitivity": {
+      "description": "Nearby market lower bounds 2%-3%, upper bounds 16%-20%, and large-up-day caps 8-10 generally retain approximately 4.7%-5.3% mean net return with approximately 12.2-12.4 session mean holding time; the frozen rule keeps a frequency buffer above 50 signals per year.",
+      "parameters_changed_after_validation": false
+    }
+  },
+  "context_research": {
+    "chart_review": {
+      "development_signals_rendered": 606,
+      "completed_outcomes_rendered": 595,
+      "individual_charts": 606,
+      "contact_sheets": 152,
+      "outcome_sheets": 154,
+      "window": "126 trading sessions before and 126 trading sessions after each signal",
+      "manual_examples_reviewed": 28,
+      "summary": "Winners usually show prolonged turnover contraction followed by the first accepted gap-and-breakout with clean follow-through. Losers cluster in repeated or late impulses, stale breakouts, broad-market rollover, or euphoria near a market peak."
+    },
+    "chip_review": {
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "covered_signals": 299,
+      "covered_completed_trades": 288,
+      "mass_conservation_required": true,
+      "summary": "The setup remains profitable across broad chip-state quartiles. It is strongest when price is accepting or reclaiming the upper cost band near P90 with moderate profit migration and retained base inventory; an extreme one-step jump in profitable holders is weaker and resembles chasing.",
+      "hard_chip_filter_added": false,
+      "reason": "No stable monotonic threshold was found and chip coverage begins only in 2018, so chip state is retained as an explanation and diagnostic rather than a fitted gate."
+    },
+    "industry_review": {
+      "summary": "Positive industry breadth supports the interpretation but majority/leader hard filters did not materially improve mean return and reduced coverage.",
+      "hard_industry_filter_added": false
+    }
+  },
+  "yearly_development_results": {
+    "2014": {"signals": 41, "completed": 40, "mean_net_return": 0.017618, "mean_holding_sessions": 14.425},
+    "2015": {"signals": 56, "completed": 55, "mean_net_return": 0.0911496, "mean_holding_sessions": 9.5273},
+    "2016": {"signals": 23, "completed": 23, "mean_net_return": -0.0156023, "mean_holding_sessions": 18.565},
+    "2017": {"signals": 11, "completed": 11, "mean_net_return": 0.0426595, "mean_holding_sessions": 15.818},
+    "2018": {"signals": 2, "completed": 2, "mean_net_return": -0.158597, "mean_holding_sessions": 21.0},
+    "2019": {"signals": 135, "completed": 135, "mean_net_return": 0.0689993, "mean_holding_sessions": 11.0815},
+    "2020": {"signals": 127, "completed": 123, "mean_net_return": 0.0471343, "mean_holding_sessions": 11.813},
+    "2021": {"signals": 35, "completed": 28, "mean_net_return": 0.0295652, "mean_holding_sessions": 13.9643}
+  },
+  "artifact_hashes_sha256": {
+    "mother_contract": "658c0b430e54654c33749f30f77b18622d44952e971c47cabcbe0d4d9d5d0bf6",
+    "mother_candidates": "a62e83c31c8ca18732481a35028c0a21baaf3da095a4aba62300baa1409e79af",
+    "mother_outcomes": "790f94ed4cb5ac96cabe22ad112d1ee1ed8fa54d02b7c6e5c841f815a40c91e4",
+    "enriched_candidates": "9c518b2f94b961a37c4b2cdff74ed3e255c63b50ecd11f1126f320333e43a49b",
+    "causal_market_regime": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a",
+    "development_chart_manifest": "4271d9dbdcb71d83534906cc79c37e9f49797a51e6a582414bc39a6f1efd29c2"
+  },
+  "post_freeze_contract": {
+    "validation_years": [
+      2022,
+      2023,
+      2024
+    ],
+    "threshold_or_semantic_changes_allowed": false,
+    "validation_failure_is_reported_not_repaired": true,
+    "required_reporting": [
+      "pooled and annual signal counts",
+      "completed trades",
+      "mean and median net return",
+      "mean holding sessions",
+      "win and target-hit rates",
+      "severe-loss rate",
+      "execution exclusions and lineage failures"
+    ]
+  },
+  "pre_outcome_validation_identity_audit": {
+    "performed_after_initial_json_write_but_before_any_2022_2024_outcome_read": true,
+    "purpose": "Make the 2024 generator reproduce the already frozen mother-candidate data universe.",
+    "finding": "The upstream comparable-daily asset carries 22 causal-industry exclusions that were implicit in the mother candidate identity but omitted from the prose mother contract.",
+    "action": "The inherited exclusions were recorded explicitly; no return, exit, or 2022-2024 outcome was inspected and no fitted threshold changed.",
+    "2023_identity_result": "After applying the inherited universe, the exact 2022+ PIT reconstruction has one extra 2023 row whose inclusive 1% opening-gap boundary differs by 8.67e-18, and misses two frozen rows whose strict close-above-prior-high comparison differs by 4.44e-16. These are floating-point boundary cases. The 2024 generator retains the literal frozen comparisons and does not add a tolerance."
+  }
+}

@@ -33,6 +33,25 @@ REQUIRED_ASSET_FIELDS = {
 PATH_REQUIRED_STATES = {"MATERIALIZED", "GENERATED_MUTABLE"}
 NO_PATH_STATES = {"VIRTUAL", "CANDIDATE_NOT_MATERIALIZED", "NOT_AVAILABLE"}
 INPUT_CAPABLE_STATUS = {"RESEARCH_CONDITIONAL"}
+SUPPORTED_BOUNDED_PURPOSES = {
+    "ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_A",
+    "ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_B",
+    "ASHARE_ISSUER_FACT_V29R2_ROLLFORWARD_2022_2026",
+    "ASHARE_ISSUER_FACT_V29R2_DEVELOPMENT_SELECTOR_REPLAY",
+    "ASHARE_ISSUER_RISK_V29R1_DEVELOPMENT_SELECTOR_REPLAY",
+    "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_CHART_ATTRIBUTION",
+    "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "ASHARE_OUTCOME_BLIND_MOTHER_REPRESENTATION",
+    "CHINEXT_PIT_B_RESEARCH",
+    "CHINEXT_V1_TEMPORAL_HOLDOUT_VALIDATION",
+}
+RECORD_LEVEL_AVAILABLE_AT_PURPOSES = {
+    "ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_A",
+    "ASHARE_ISSUER_FACT_V29R2_ROLLFORWARD_2022_2026",
+    "ASHARE_ISSUER_FACT_V29R2_DEVELOPMENT_SELECTOR_REPLAY",
+    "ASHARE_ISSUER_RISK_V29R1_DEVELOPMENT_SELECTOR_REPLAY",
+}
 
 
 def sha256_file(path: Path) -> str:
@@ -246,7 +265,7 @@ def _validate_bounded_authorizations(
         if missing:
             errors.append(f"{label}: missing fields: {', '.join(missing)}")
             continue
-        if item["purpose"] != "CHINEXT_PIT_B_RESEARCH":
+        if item["purpose"] not in SUPPORTED_BOUNDED_PURPOSES:
             errors.append(f"{label}: unsupported bounded purpose {item['purpose']!r}")
         asset = assets.get(item["asset_id"])
         if asset is None or asset.get("status") != "RESEARCH_CONDITIONAL":
@@ -317,8 +336,12 @@ def _validate_bounded_authorizations(
                 )
         if item.get("current_survivor_fallback_allowed") is not False:
             errors.append(f"{label}: current-survivor fallback must be false")
-        if item.get("record_level_available_at_available") is not False:
-            errors.append(f"{label}: missing record-level available_at must remain explicit")
+        expected_record_available_at = item["purpose"] in RECORD_LEVEL_AVAILABLE_AT_PURPOSES
+        if item.get("record_level_available_at_available") is not expected_record_available_at:
+            errors.append(
+                f"{label}: record-level available_at must be "
+                f"{expected_record_available_at} for purpose {item['purpose']!r}"
+            )
         for list_field in ("allowed_uses", "blocked_uses", "known_limitations"):
             if not isinstance(item.get(list_field), list) or not item[list_field]:
                 errors.append(f"{label}: {list_field} must be a non-empty list")

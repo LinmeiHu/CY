@@ -1,0 +1,83 @@
+{
+  "experiment": "ASHARE-FIRST-ACTIVE-DEMAND-TAKEOVER-CAUSAL-ACCEPTANCE-V2",
+  "scientific_status": "POST_CHART_REVIEW_RULE_FREEZE_BEFORE_RULE_OUTCOME_AGGREGATION",
+  "parent_experiment": "ASHARE-FIRST-ACTIVE-DEMAND-TAKEOVER-AFTER-WEAKNESS-12M-CHART-DISCOVERY-V1",
+  "parent_candidate_sha256": "d9db88581007601b7ba4c72723ec55f9f37207358c987b3fa44aeffa0657192a",
+  "parent_review_ledger_sha256": "f1c45cb28c2781266e45dc7c3d3201fc8ffc2569be3d1beeebc4c1f1e862baa6",
+  "visual_review": {
+    "signals_reviewed": 1754,
+    "profit_ge_4pct": 935,
+    "profit_0_to_4pct": 99,
+    "loss_0_to_10pct": 307,
+    "severe_loss": 375,
+    "no_completed_trade": 38,
+    "review_completed_before_rule_outcome_aggregation": true,
+    "dominant_observation": "The durable distinction was not bear versus bull by itself. Winners commonly appeared in deep bear repairs, while failures commonly showed an isolated demand bar that the next completed session did not accept. Market state is therefore used causally to demand broader repair outside an established bull state, rather than to ban bear signals."
+  },
+  "compressed_rules": [
+    {
+      "rule": 1,
+      "name": "CAUSAL_MARKET_STATE",
+      "definition": "Use the parent's registered BULL / TRANSITION / BEAR state observed at the completed signal close. The state and its source timestamps must be no later than the signal decision timestamp."
+    },
+    {
+      "rule": 2,
+      "name": "EXACT_NEXT_SESSION_CONFIRMATION",
+      "definition": "The stock must have a fully valid, tradable, same-coordinate-lineage observation on market calendar session t+1. A later observation after suspension does not substitute for t+1. Confirmation becomes available only at the t+1 close."
+    },
+    {
+      "rule": 3,
+      "name": "STATE_DEPENDENT_DEMAND_ACCEPTANCE",
+      "definition": "If signal state is BULL, t+1 coordinate close must be at least the signal coordinate close. If signal state is TRANSITION or BEAR, t+1 coordinate close must be at least the signal candle body midpoint, defined before outcome aggregation as (signal coordinate open + signal coordinate close) / 2."
+    },
+    {
+      "rule": 4,
+      "name": "NON_BULL_MARKET_REPAIR",
+      "definition": "For TRANSITION or BEAR signals, at least 50% of the fully valid, legally tradable PIT stock cross-section on t+1 must have strictly positive same-session step return. BULL signals do not require this additional repair condition. The 50% threshold is the economically neutral breadth boundary and is not tuned."
+    },
+    {
+      "rule": 5,
+      "name": "NEXT_LEGAL_OPEN_EXECUTION",
+      "definition": "After confirmation at the t+1 close, buy only at the first legal executable open in market sessions t+2 through t+4. Never fill on the signal or confirmation bar."
+    }
+  ],
+  "execution_profile": {
+    "target": 0.15,
+    "time_horizon_market_sessions_from_entry": 30,
+    "time_stop": "next legal sellable open after the horizon decision",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "price_limits_and_suspensions": true,
+    "corporate_action_and_coordinate_lineage": "fail closed"
+  },
+  "market_breadth_contract": {
+    "eligible_denominator": "current_valid AND hard_valid AND trade_status=1 AND current_day_data_tradable AND market_rule_valid AND corporate_action_valid AND NOT corporate_action_blocking, with known availability and decision timestamps",
+    "positive_numerator": "eligible rows with step_return > 0",
+    "decision_time": "t+1 completed daily close",
+    "future_data": false,
+    "full_sample_thresholds": false
+  },
+  "development_gate": {
+    "signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "literal_each_calendar_year_selected_signals_strictly_greater_than": 50,
+    "literal_each_calendar_year_mean_net_return_strictly_greater_than": 0.04,
+    "later_period_open_only_if_both_conditions_pass": [
+      "2022-01-01",
+      "2024-12-31"
+    ]
+  },
+  "governance": {
+    "rules_derived_from_full_2014_2020_chart_review": true,
+    "rules_frozen_before_rule_outcome_aggregation": true,
+    "no_rule_subset_search": true,
+    "no_threshold_grid": true,
+    "no_target_or_horizon_search": true,
+    "2021_signal_or_rule_read": false,
+    "2022_2024_signal_or_outcome_read": false,
+    "post_2024_outcome_read": false,
+    "no_independent_confirmation_claim": true
+  }
+}

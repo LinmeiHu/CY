@@ -1,0 +1,77 @@
+{
+  "asset_id": "CY-037",
+  "name": "Bounded V30 frozen-development chart-review input",
+  "status": "FROZEN_DEVELOPMENT_CHART_REVIEW_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "upstream_bounded_asset": {
+    "asset_id": "CY-035",
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-B-2013-2020-V1",
+    "stage_b_registry_sha256": "5252604ed13f2a0c0f0913fb490b80235d66ac8d811ce83b3c61f56680bbc652",
+    "relationship": "CY-037 consumes the immutable completed CY-035 lifecycle only for the separately frozen V30 chart-review protocol; it does not enlarge or rewrite the Stage-B outcome authorization."
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-C-CY037-CHART-REVIEW-2013-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "authorized_arm": "V30_CY037_FROZEN_STAGE_C_CHART_REVIEW_ONLY",
+    "candidate_signal_start": "2014-01-30",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_chart_date": "2020-12-31",
+    "completed_stage_b_artifact_read_authorized": true,
+    "charts_authorized": true,
+    "outcome_attachment_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Render exactly one signal-minus-126 through signal-plus-126 daily candlestick chart for each of the 2,312 immutable V30 event identities, plus exactly-once chronological and outcome-group contact sheets and an empty manual-review ledger.",
+    "blocked": "Candidate reselection, changed lifecycle outcomes, rule aggregation before rule freeze, portfolio replay, validation, rows after 2020-12-31, 2021-plus reads, live use and strict PIT-A claims."
+  },
+  "bound_artifacts": [
+    {
+      "role": "daily_compact",
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+      "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+    },
+    {
+      "role": "stage_a_candidates",
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/candidates_frozen.parquet",
+      "sha256": "ef1b4126637382071f0d9d563f83205bff04731c7b51a5e3a83a07bee8324c3f"
+    },
+    {
+      "role": "stage_b_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30_stage_b_freeze.json",
+      "sha256": "cef22a12d0216d42a397c5d263f6efb0344cfd581e24ec0091f471e09d0ce779"
+    },
+    {
+      "role": "stage_b_runner",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+      "sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+    },
+    {
+      "role": "stage_b_result",
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_b/result.json",
+      "sha256": "799822d8e7b943689207c520170c8b11959a21a4ef885e2d8044c631f2f1064a"
+    },
+    {
+      "role": "stage_b_future_paths",
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_b/future_paths.parquet",
+      "sha256": "a156c41bb59ee76751eb08db703b656ffe3a62be0c8861d65f96f88fa0994c0a"
+    },
+    {
+      "role": "stage_b_outcomes",
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_b/outcomes.parquet",
+      "sha256": "abc01716a3bac7329c3a6687953de60d589b10fe8ae83d33bc5d70d6597c79a7"
+    }
+  ],
+  "chart_protocol": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30_visual_review_spec.json",
+    "sha256": "4af0a7bb997193f05b7a9de88df1edb6deb157de48c2cff7ab90702c857db154",
+    "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_charts.py",
+    "runner_sha256": "7a20756243d861d290356df2882d8e7d605194442df19a4ab1ec3fb945287368"
+  },
+  "scientific_boundary": {
+    "history_status": "2014-2020 is consumed development history.",
+    "predictor_boundary": "Only the blue signal-time-or-earlier region may motivate compressed rules; all orange post-signal candles and lifecycle labels are attribution only.",
+    "claim": "The chart corpus supports post-hoc development anatomy only and is neither an independent confirmation nor a portfolio replay.",
+    "validation_gate": "No 2022-2024 outcome may be opened unless zero-to-five rules are frozen first and every development year passes more than 50 completed signals and greater than 4 percent mean net return."
+  }
+}

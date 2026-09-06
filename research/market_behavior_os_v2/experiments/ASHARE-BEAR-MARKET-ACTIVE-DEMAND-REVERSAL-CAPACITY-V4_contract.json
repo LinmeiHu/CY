@@ -1,0 +1,56 @@
+{
+  "experiment": "ASHARE-BEAR-MARKET-ACTIVE-DEMAND-REVERSAL-CAPACITY-V4",
+  "status": "BOUNDED_CAPACITY_RANKING_FREEZE",
+  "signal": "exact causal-BEAR-gated ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1",
+  "translation": "exact frozen T20_H60 from ASHARE-BEAR-MARKET-ACTIVE-DEMAND-REVERSAL-TRANSLATION-V3",
+  "capacity": {
+    "main_sleeve_weight": 0.50,
+    "chinext_sleeve_weight": 0.50,
+    "maximum_positions_per_sleeve": 20,
+    "position_fraction_of_current_sleeve_nav": 0.05,
+    "one_active_position_per_symbol": true,
+    "no_cross_sleeve_transfer": true,
+    "no_leverage": true,
+    "rationale": "broad bear-state demand repair is a cross-sectional episode; diversification is preferred to pretending that one security can be forecast precisely"
+  },
+  "predeclared_same_date_rankings": [
+    {
+      "name": "DEMAND_EFFICIENCY",
+      "order": "completed signal step return divided by turnover-versus-prior20, descending"
+    },
+    {
+      "name": "LOW_CHURN",
+      "order": "turnover-versus-prior20 ascending, then step return descending"
+    },
+    {
+      "name": "CLOSE_LOCATION",
+      "order": "completed signal close location descending"
+    },
+    {
+      "name": "STEP_RETURN",
+      "order": "completed signal step return descending"
+    }
+  ],
+  "selection": {
+    "years": "2014-2018",
+    "primary": "highest median annual capacity-accepted mean net trade return",
+    "minimum_average_accepted_trades_per_year": 50,
+    "tie_breaks": [
+      "higher pooled mean net return",
+      "lower severe_loss10",
+      "ranking name"
+    ]
+  },
+  "same_date_order": "legal open exits first, then ranked open entries, then intraday target exits",
+  "chronology": {
+    "robustness": "2019-2021",
+    "post_observation_diagnostic": "2022-2023 after ranking selection",
+    "repository_2024_plus": "SEALED"
+  },
+  "governance": {
+    "admission_changed": false,
+    "exit_changed": false,
+    "post_2021_used_for_ranking_selection": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

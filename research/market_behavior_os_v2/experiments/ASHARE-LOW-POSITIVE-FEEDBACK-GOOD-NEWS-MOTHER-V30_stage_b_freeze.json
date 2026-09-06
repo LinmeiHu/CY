@@ -1,0 +1,105 @@
+{
+  "experiment": "ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30-STAGE-B",
+  "research_status": "PRE_OUTCOME_EXECUTION_FREEZE_AWAITING_SEPARATE_CY035_AUTHORIZATION",
+  "frozen_before_any_v30_outcome_read": true,
+  "parent_freeze": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30_freeze.json",
+    "sha256": "c0f8c1c0617099f2705a873608fae390dbb30dd929b38ce040bab649e5841b0d"
+  },
+  "stage_a_identity": {
+    "result_path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/result.json",
+    "representation_path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/representation_panel.parquet",
+    "representation_sha256": "3408f5728764331ec910c649ef8ef65afb80703d6e22e7bfaefd845b3be5ba4b",
+    "candidates_path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/candidates_frozen.parquet",
+    "candidates_sha256": "ef1b4126637382071f0d9d563f83205bff04731c7b51a5e3a83a07bee8324c3f",
+    "required_result_state": {
+      "stage_a_gate_passed": true,
+      "outcomes_read": false,
+      "post_2020_row_read": false
+    },
+    "rule": "The external Stage-A result, representation, candidates and Stage-A runner must be hash-bound by the future CY-035 authorization and manifest. A true gate and false outcome-read declaration are necessary but not sufficient."
+  },
+  "data": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "authorized_context_start": "2013-01-04",
+    "candidate_signal_start": "2014-01-01",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_physical_path_row_date": "2020-12-31",
+    "path_scope": "Only exact frozen candidate symbols may be joined, and returned rows must be strictly after each event's signal cal_idx and no later than 2020-12-31. No arbitrary signal-relative path truncation is permitted."
+  },
+  "required_future_registry_authorization": {
+    "asset_id": "CY-035",
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-B-2013-2020-V1",
+    "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V30-CY035_DATA_ASSET_MANIFEST.json",
+    "authorized_arm": "V30_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "dependency_asset_id": "CY-034",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "must_bind": [
+      "daily compact path and SHA-256",
+      "CY-034 upstream manifest path and SHA-256",
+      "parent V30 freeze path and SHA-256",
+      "this Stage-B freeze path and SHA-256",
+      "Stage-A runner path and SHA-256",
+      "external Stage-A result path and SHA-256",
+      "Stage-A representation path and SHA-256",
+      "Stage-A candidates path and SHA-256",
+      "Stage-B runner path and SHA-256"
+    ],
+    "runner_hash_rule": "This freeze and the runner contain no placeholder or self-referential expected Stage-B runner hash. The registry authorization must record the completed runner's actual SHA-256, and runtime must compare that registered value with sha256(__file__)."
+  },
+  "outcome_attachment": {
+    "entry": "Inspect global market cal_idx signal+1 through signal+3 in order. Any non-finite or changed invalid_step_cum invalidates before entry. Otherwise execute the first legal non-limit-up raw open and fill at its positive finite coordinate open.",
+    "legal_row": "Known trade_status=1, current_day_data_tradable, current_valid, market_rule_valid, corporate_action_valid, non-blocking, explicitly zero corporate_action_count, hard_valid, finite positive raw open, coordinate open and coordinate factor, with available_at no later than decision_at.",
+    "buy_limit": "The rounded raw open in fen must be strictly below the rounded finite positive raw up_limit_price in fen.",
+    "target": "Before fallback eligibility, the first later same-lineage legal row whose finite coordinate high is at least entry coordinate price times 1.10 exits at the exact coordinate target only when raw high and raw down-limit are finite and positive and rounded raw high is strictly above rounded raw down-limit. Unknown limit state or an all-day locked down-limit bar can never create a target fill. On a fallback-eligible row, the chronological open rule below is evaluated first.",
+    "fallback": "On the first same-lineage row with cal_idx strictly greater than entry_cal_idx+20, evaluate the open before using any same-day high. If the open is sellable and coordinate open is at or above target, exit at the exact target as TARGET_10. If the open is sellable and below target, exit immediately at coordinate open as H20_TIME_STOP. Only when that open is not sellable may a later same-day legal coordinate-high target touch exit at the exact target; otherwise continue to the next row.",
+    "sell_limit": "The rounded raw open in fen must be strictly above the rounded finite positive raw down_limit_price in fen.",
+    "fallback_day_chronology": "The fallback-eligible open decision precedes all same-day high information. Exact-target treatment of a sellable open at or above target declines favorable gap slippage; immediate time-stop treatment of a sellable open below target declines hindsight use of a later intraday high. A target after an unsellable open is allowed only when the same legal row later records a coordinate high at the target, and still fills only at the exact target. These are conservative execution semantics, not a signal rule.",
+    "round_trip_cost": 0.004,
+    "no_entry": "NO_LEGAL_ENTRY; never substitute a close, a same-session fill or a row after signal+3.",
+    "lineage": "Every inspected entry-window and post-entry row must have a finite invalid_step_cum equal to the signal value. Any non-finite or changed value invalidates immediately; never normalize, splice or repair coordinates.",
+    "corporate_action_unknown": "Every physically present entry-window and post-entry row must have non-null corporate_action_count, corporate_action_valid and corporate_action_blocking. Unknown action state invalidates the event immediately before or after entry rather than being skipped and later recovered under an unchanged lineage counter.",
+    "maximum_path_date": "2020-12-31",
+    "no_stop": true,
+    "no_portfolio_replay": true
+  },
+  "outputs": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_b",
+    "files": [
+      "future_paths.parquet",
+      "outcomes.parquet",
+      "result.json"
+    ],
+    "publication": "Build all files in a same-parent temporary directory, close DuckDB, remove temporary work files, then atomically rename the complete directory. Refuse to run if the canonical Stage-B directory already exists and recheck immediately before publish."
+  },
+  "required_audits": [
+    "candidate and representation hashes exactly match this freeze",
+    "Stage-A result gate is true and all outcome/post-2020 read flags are false",
+    "future CY-035 registry asset, authorization, manifest and runner hash all match",
+    "candidate event_ids are non-null and unique",
+    "path (event_id,cal_idx) keys are unique and map only to the exact candidate event/symbol pairs",
+    "no path row is at or before its signal cal_idx or after 2020-12-31",
+    "outcome event_id set equals the candidate event_id set exactly",
+    "entry cal_idx is signal+1 through signal+3 and every exit is strictly after entry",
+    "unknown corporate-action state is retained as an explicit invalid-before-entry or invalid-after-entry lifecycle",
+    "every target fill has a finite positive raw high and down-limit with rounded raw high strictly above rounded down-limit",
+    "completed returns are finite and all completed exits are no later than 2020-12-31"
+  ],
+  "prohibited": [
+    "running before the separate CY-035 authorization and manifest exist and bind the completed runner",
+    "reading or reusing any pre-existing V30 outcome artifact",
+    "reading path rows after 2020-12-31 or for non-candidate symbols",
+    "same-bar entry or exit",
+    "entry after signal+3",
+    "fallback at or before entry+20",
+    "cross-lineage coordinate use",
+    "limit-price, suspension, invalid-row or corporate-action relaxation",
+    "target, horizon, entry-window or cost variation",
+    "portfolio replay, chart-rule compression or 2021-plus read",
+    "overwriting or merging into an existing canonical Stage-B directory"
+  ]
+}

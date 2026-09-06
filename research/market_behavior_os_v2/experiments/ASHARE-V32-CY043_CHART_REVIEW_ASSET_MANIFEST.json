@@ -1,0 +1,106 @@
+{
+  "asset_id": "CY-043",
+  "name": "Bounded V32 Phase-1 anonymous causal chart-review input",
+  "status": "FROZEN_DEVELOPMENT_CHART_REVIEW_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "upstream_bounded_asset": {
+    "asset_id": "CY-042",
+    "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V32-CY042_DATA_ASSET_MANIFEST.json",
+    "manifest_sha256": "3af0ab075604cf0adb7405e821cf8594d9bc1ec22d70b5bce8395bef19baf4df",
+    "prepared_candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/prepared_candidates.parquet",
+      "sha256": "491c8089b36907777903256d932383710b1105ad540f5109fb1a23c778a99ec5",
+      "bytes": 281941,
+      "rows": 1781,
+      "phase1_parse_authorized": true
+    },
+    "reserved_phase2_identities": {
+      "result": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/result.json",
+        "sha256": "64cb4c19b38968bb0b59cb7f0bc2a4f16bd58a3c6af2f31c7e01cd95569bf2f7",
+        "bytes": 9568
+      },
+      "future_paths": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/future_paths.parquet",
+        "sha256": "4d06ccb23bbf660d17f4f58fc3140364ed5fc9b9213b3cd4f2f0b69752068377",
+        "bytes": 21067054
+      },
+      "outcomes": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/outcomes.parquet",
+        "sha256": "9c016be56517d08419ceeca2c16da055ede39acca35aa253d90bfbe8c166ecfa",
+        "bytes": 136133,
+        "rows": 1781
+      },
+      "phase1_parse_or_hash_authorized": false,
+      "binding_semantics": "The Phase-1 runner compares only these declared path/hash strings in authorization metadata and does not open, parse, or hash these outcome-bearing files."
+    }
+  },
+  "daily_chart_source": {
+    "asset_id": "CY-006",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partition_sha256": {
+      "2018": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "2019": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+    },
+    "coordinate_state_path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "authorized_physical_start": "2018-01-22",
+    "authorized_physical_end": "2020-06-30",
+    "join_semantics": "Exact symbol/trade_date join; coordinate factor is adjusted_close/raw_close; missing global sessions remain blank; every rendered row is available by its event decision timestamp."
+  },
+  "frozen_cohort": {
+    "event_rows": 1781,
+    "signal_dates": 24,
+    "signal_start": "2018-07-31",
+    "signal_end": "2020-06-30",
+    "stage_a_candidates_sha256": "4d57fafc3418bc7923e747910add5f503313582e0b0ef9d5e8bdb4a92dcf539d",
+    "stage_a_representation_sha256": "1a67e4dfcd4cc6e20000be3890d12e37f8a91da5afa47aaf8b84960d2bf7c13d",
+    "calendar_semantics": "Stage-A local cal_idx is identity/history only. Phase-1 windows use prepared global coordinate cal_idx; the frozen local-to-global offset is 1215."
+  },
+  "protocol": {
+    "visual_review_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32_visual_review_spec.json",
+    "visual_review_spec_sha256": "493885190524c28cd916f26efd16ba99fa2660ae81887ed61268eb1d397495e2",
+    "visual_review_spec_bytes": 13707,
+    "chart_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_charts.py",
+    "chart_runner_sha256": "5dfd15a7857b78df5fe25dbf92e0f91c2847130213e28a50f93827004464aa9d",
+    "chart_runner_bytes": 40035,
+    "annotation_schema_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V32_phase1_anonymous_annotation_schema.json",
+    "annotation_schema_sha256": "0b2aa65e71d460439149e80538d0d317bcce8b6f1d2c43a4168c928321402c43",
+    "annotation_finalizer_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/finalize_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_phase1.py",
+    "annotation_finalizer_sha256": "cfd9fb199e73c8d4b42ab1b767fbb782b18acb15de05dedce5fd4884ee995b2a",
+    "review_state": "PRE_PHASE1_ANONYMOUS_REVIEW",
+    "scale_contract": "Every chart uses only relative sessions -126 through 0 and its own causal price/turnover scales."
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-INNOVATION-DECOUPLING-V32-STAGE-C-CY043-CHART-REVIEW-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "authorized_arm": "V32_CY043_FROZEN_STAGE_C_CHART_REVIEW_ONLY",
+    "minimum_chart_date": "2018-01-22",
+    "maximum_chart_date": "2020-06-30",
+    "charts_authorized": true,
+    "phase1_masked_charts_authorized": true,
+    "stage_b_prepared_candidates_read_authorized": true,
+    "outcome_artifact_parse_authorized": false,
+    "post_signal_row_read_authorized": false,
+    "full_charts_authorized": false,
+    "outcome_grouping_authorized": false,
+    "identity_reveal_authorized": false,
+    "phase2_authorized": false,
+    "outcome_attachment_authorized": false,
+    "rule_aggregation_authorized": false,
+    "portfolio_replay_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Render and index exactly one anonymous signal-minus-126 through signal-time chart for each immutable V32 event, then classify every chart before any identity or outcome is revealed.",
+    "blocked": "Identity mapping, post-signal rows, result/outcome parsing, full charts, outcome grouping, rule aggregation, strategy replay, validation, parameter search and any 2021-plus row."
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history.",
+    "claim": "Phase 1 supports outcome-blind signal-time morphology only. It cannot establish independent confirmation, a trading rule, or authorize later-period reads.",
+    "next_step": "Freeze all 1,781 anonymous Phase-1 annotations and their hashes before writing a separate Phase-2 outcome-attribution specification."
+  }
+}

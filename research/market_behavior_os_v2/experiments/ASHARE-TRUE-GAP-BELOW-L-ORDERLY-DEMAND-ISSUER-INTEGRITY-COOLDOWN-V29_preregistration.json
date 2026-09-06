@@ -1,0 +1,61 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29",
+  "frozen_at": "2026-09-05T18:46:09+08:00",
+  "status": "SEMANTIC_RULE_FROZEN_BEFORE_DEVELOPMENT_EVENT_OUTCOME_JOIN",
+  "parent": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+  "parent_runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+  "parent_development_stage_a_sha256": "3655b7f67bd4728e2b610123ee075219b174461c24a48cb6064fe6cc9c04c5f9",
+  "parent_development_result_sha256": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9",
+  "economic_hypothesis": "Price and volume can reveal that ordinary market supply was absorbed, but they cannot neutralize a fresh issuer-integrity or solvency shock. A rebound shortly after an official severe-risk disclosure is therefore a different economic population and is vetoed rather than scored more highly.",
+  "only_new_condition": {
+    "rule": "Admit only when zero high-precision OPEN issuer-risk title events became available in the 120 calendar days ending at the completed signal decision.",
+    "window": "signal_time - 120 calendar days <= event available_at <= signal_time",
+    "families": [
+      "RISK_WARNING_OR_DELISTING",
+      "REGULATORY_INVESTIGATION",
+      "ILLEGAL_GUARANTEE",
+      "CONTROLLER_FUND_MISAPPROPRIATION",
+      "ISSUER_BANK_ACCOUNT_FREEZE"
+    ],
+    "close_treatment": "An explicit CLOSE does not erase the 120-day cooling period; the gate measures recent severe disclosure, not only current legal state.",
+    "threshold_origin": "120 days is an ex-ante economic cooling horizon aligned with the fixed chart context, not a searched return optimum.",
+    "missing_policy": "Reject unless official exchange metadata coverage, every required page, identity, hash, classification version, and available_at relation are proven for the whole window."
+  },
+  "classifier": {
+    "version": "EXCHANGE_ISSUER_RISK_TITLE_RULES_V1",
+    "runner_sha256": "66e6ae928ffb2deed983c1933cf08a06a93aa9261b81f9331fa96881d75b9879",
+    "knowledge_time": "available_at only",
+    "source_claim": "Official announcement-title disclosure only; no claim about unparsed PDF contents.",
+    "date_only_policy": "A source date without a clock becomes available at 00:00 on the following calendar day.",
+    "revision_limit": "Current official API enumeration is PIT-B reconstructed metadata and does not claim complete supplier revision-vintage history."
+  },
+  "development": {
+    "signal_years": [2018, 2019, 2020, 2021],
+    "announcement_capture_start": "2017-10-01",
+    "announcement_capture_end": "2021-12-31",
+    "outcomes_may_open_only_after": [
+      "source snapshot is fully conserved, sealed, registered and revalidated",
+      "the V29 selected identity is frozen before its outcomes are joined"
+    ]
+  },
+  "locked_later_periods": {
+    "2022_2024": "Do not collect, classify or evaluate until the development selector passes without changing this rule.",
+    "2025_plus": "Post-selection observation only; 2026 known failures motivated the issuer-risk hypothesis and therefore cannot be described as pristine validation."
+  },
+  "unchanged": {
+    "parent_price_volume_rules": true,
+    "entry": "first legal buyable one-minute open after the completed signal",
+    "target": "A67 below L",
+    "maximum_holding_sessions": 20,
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "portfolio": "Main/ChiNext 50/50, K80 per sleeve"
+  },
+  "development_success": {
+    "accepted_trades_per_year_strictly_greater_than": 50,
+    "mean_net_at_least": 0.04,
+    "average_holding_sessions_strictly_less_than": 15,
+    "each_signal_year_mean_net_positive": true
+  },
+  "degrees_of_freedom_after_freeze": "NONE"
+}

@@ -1,0 +1,109 @@
+{
+  "experiment": "ASHARE-INDUSTRY-NEUTRAL-CIRCULATING-SIZE-EXTREMES-MOTHER-V1",
+  "status": "OUTCOME_BLIND_MOTHER_FREEZE",
+  "purpose": "Apply the V26 discovery hierarchy to an untested canonical size mechanism: freeze a broad, industry-neutral pre-2021 circulating-size mother, render every six-month-before/six-month-after chart, review every event, and compress only repeated causal distinctions before aggregation.",
+  "economic_question": "Within the same PIT industry, do the smallest versus largest causally known circulating-market-value firms express distinct risk-on continuation or defensive behavior, and does a causal broad-market state determine which side has usable absolute long opportunity?",
+  "semantic_boundary": {
+    "accepted_coordinate": "circulating_market_value_cny = raw completed close * causally available circulating_shares",
+    "not_total_market_cap": true,
+    "not_true_free_float_cap": true,
+    "not_enterprise_value": true,
+    "not_fundamental_value": true,
+    "pit_grade": "B",
+    "reason_for_use": "MKT-STYLE-DATA-001 already passed exact announcement/effective-date, turnover-unit, availability, population, and identity gates for this narrow coordinate; no small-size premium or strategy usefulness has yet been tested."
+  },
+  "inputs": {
+    "size_data_contract_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-STYLE-DATA-001_spec.json",
+      "sha256": "506c24bcdd498162b3d44faa3008aa54ddf9a4132606b5da9a890240e224484b"
+    },
+    "size_data_contract_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-DATA-001_result.json",
+      "sha256": "a03954d6315f29c7c5a119b91729fbfeef84feb51c7c12ed2330b7822a19f019"
+    },
+    "cy006_partitions": {
+      "2018": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      "2019": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      "2020": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    },
+    "coordinate_daily": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+      "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+    },
+    "causal_market_state": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+      "sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+    },
+    "causal_size_state": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-001_panel.csv",
+      "sha256": "5ed526187d71cb0c719a98ba99fcba368ea6dc53b6ad097efbebb5bb1f2863ad"
+    }
+  },
+  "mother_identity": {
+    "signal_period": "2018-01-01 through 2020-12-31",
+    "signal_clock": "the first completed Friday exchange session in each calendar month; a month without a Friday session produces no signal",
+    "universe": "non-ST Main Board and ChiNext rows passing CY-006 hard/bar/float/corporate-action/market-rule/historical-identity/current-tradability gates, with available_at <= decision_at, positive raw close/circulating shares/volume/amount, nonblocking zero current corporate actions, valid PIT industry, and a matching accepted coordinate-daily row",
+    "history": "exactly 60 prior global exchange sessions with complete accepted same-lineage coordinate rows; missing or invalid history fails closed",
+    "industry_minimum": 10,
+    "lanes": {
+      "SMALL_CIRCULATING_SIZE": "the eligible stock with minimum current circulating_market_value_cny inside each PIT industry/date",
+      "LARGE_CIRCULATING_SIZE": "the eligible stock with maximum current circulating_market_value_cny inside each PIT industry/date"
+    },
+    "tie_break": "larger current amount, then lexical symbol",
+    "cooldown": "after a stock is selected in either lane, suppress every later event for that stock during the next 60 global exchange-session indices",
+    "market_filter": "NONE",
+    "direction_filter": "NONE",
+    "outcome_filter": "NONE"
+  },
+  "chart_and_label_plan": {
+    "chart_window": "126 global exchange sessions before through 126 after the mother signal",
+    "maximum_context_date": "2021-06-30",
+    "entry_label": "first legal non-upper-limit open in signal+1 through signal+3; never same-session",
+    "fixed_anatomy_horizons": [20, 60, 120],
+    "round_trip_cost": 0.004,
+    "individual_chart_for_every_event": true,
+    "chronological_contact_sheets": true,
+    "outcome_contact_sheets": true,
+    "review_order": "all chronological sheets first; outcome groups only challenge proposed distinctions",
+    "rule_limit": 5
+  },
+  "development_gate_after_rule_freeze": {
+    "years": [2018, 2019, 2020],
+    "every_year_completed_signals_strictly_greater_than": 50,
+    "every_year_mean_net_return_strictly_greater_than": 0.04,
+    "every_year_median_net_return_strictly_greater_than": 0.0,
+    "validation_open": "2022-2024 only after every development gate passes",
+    "one_frozen_rule_replay": true,
+    "neighboring_rule_rescue": false
+  },
+  "governance": {
+    "mother_identity_frozen_before_outcome_read": true,
+    "2021_signal_identity_read": false,
+    "2021_use": "completion/context for pre-2021 signals only",
+    "2022_2024_signal_feature_or_outcome_read": false,
+    "future_market_function": false,
+    "future_extremum_in_predictor": false,
+    "same_bar_fill": false,
+    "unknown_lineage_policy": "FAIL_CLOSED",
+    "no_claim_of_independent_confirmation": true
+  },
+  "not_reused": [
+    "V26 true-gap identity or corridor thresholds",
+    "Low-MAX",
+    "Low Idio, Low Skewness, or Low Vol-of-Vol",
+    "momentum, 52-week-high, or prior support rules",
+    "high-turnover seller anchor",
+    "annual Amihud",
+    "high-transfer/low-displacement acceptance",
+    "future or present-day constituent membership"
+  ]
+}

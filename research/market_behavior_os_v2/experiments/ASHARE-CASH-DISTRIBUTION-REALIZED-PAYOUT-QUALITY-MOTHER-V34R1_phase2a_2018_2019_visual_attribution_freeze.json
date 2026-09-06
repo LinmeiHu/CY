@@ -1,0 +1,320 @@
+{
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1",
+  "stage": "PHASE2A_2018_2019_ANONYMOUS_OUTCOME_ATTRIBUTION",
+  "status": "STATIC_FROZEN_AWAITING_CY056_AUTHORIZATION",
+  "frozen_at": "2026-09-06T00:00:00+08:00",
+  "purpose": "After the complete 1,483-event Phase-1 signal-time annotation ledger was frozen without outcomes, expose only the 2018-2019 signal cohorts to anonymous coarse outcome buckets and full post-signal paths for visual attribution. Preserve every 2020 signal outcome as a sealed temporal holdout until a separate objective numeric rule is frozen.",
+  "post_hoc_status": "DEVELOPMENT_VISUAL_DISCOVERY_ONLY_NOT_INDEPENDENT_CONFIRMATION",
+  "workflow_precedent": {
+    "reference": "ASHARE-TRUE-GAP-BELOW-L-CLEAN-CORRIDOR-V26",
+    "principle_reused": "Start from an economically interpretable mother signal, inspect complete pre/post chart anatomy, compress recurring causal-time observations, then translate those observations into a small deterministic numeric rule before a later temporal block is opened.",
+    "principle_not_reused": "No V26 gap or corridor condition is imported into V34R1, and no retrospective outcome-derived chart label is itself executable."
+  },
+  "renderer": {
+    "path": "research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase2a_2018_2019_charts.py",
+    "sha256": "d614793a387c883f2c8492cfe15489df15fdc0b68123cd21285fe7e69c1c39d4",
+    "static_mode": "--verify-static-contract",
+    "public_authorization_mode": "--verify-public-authorization",
+    "run_mode": "--run"
+  },
+  "required_authorization": {
+    "asset_id": "CY-056",
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE2A-CY056-OUTCOME-ATTRIBUTION-2018-2019-V1",
+    "authorized_arm": "V34R1_PHASE2A_2018_2019_OUTCOME_ATTRIBUTION_ONLY",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_CHART_ATTRIBUTION",
+    "registry_status": "NOT_INSTALLED_BY_THIS_STATIC_PACKAGE",
+    "permissions": {
+      "phase2a_authorized": true,
+      "phase1_frozen_ledger_read_authorized": true,
+      "prepared_identity_read_authorized": true,
+      "outcome_artifact_hash_authorized": true,
+      "2018_2019_outcome_row_parse_authorized": true,
+      "2018_2019_post_signal_row_parse_authorized": true,
+      "outcome_grouping_authorized": true,
+      "anonymous_full_chart_authorized": true,
+      "in_memory_identity_reconstruction_authorized": true,
+      "stage_b_result_access_authorized": false,
+      "2020_outcome_row_parse_authorized": false,
+      "2020_path_row_parse_authorized": false,
+      "2020_phase1_label_parse_authorized": false,
+      "2021_plus_row_parse_authorized": false,
+      "identity_crosswalk_persistence_authorized": false,
+      "identity_reveal_authorized": false,
+      "phase1_label_rewrite_authorized": false,
+      "signal_candle_rule_authorized": false,
+      "post_signal_predictor_authorized": false,
+      "rule_aggregation_authorized": false,
+      "portfolio_replay_authorized": false,
+      "candidate_reselection_authorized": false
+    },
+    "activation_condition": "The runner must fail before every external path access unless one exact CY-056 asset and bounded authorization bind this spec, this runner, every frozen repository input, every frozen Phase-1 public artifact, and the four declared Stage-B identities with the exact permission booleans above."
+  },
+  "scope": {
+    "all_phase1_events": 1483,
+    "phase2a_events": 915,
+    "annual_signal_counts": {
+      "2018": 395,
+      "2019": 520
+    },
+    "signal_start": "2018-03-27",
+    "signal_end": "2019-12-31",
+    "pre_panel": [-126, 0],
+    "post_window": [1, 126],
+    "primary_attribution_window": [1, 20],
+    "entry_window": [1, 3],
+    "target_return": 0.1,
+    "horizon_sessions": 20,
+    "round_trip_cost": 0.004,
+    "maximum_parsed_path_date": "2020-12-31",
+    "maximum_signal_year_parsed_from_outcomes_or_paths": 2019
+  },
+  "temporal_holdout_seal": {
+    "sealed_signal_year": 2020,
+    "sealed_signal_events": 568,
+    "2020_outcome_row_parse_authorized": false,
+    "2020_path_row_parse_authorized": false,
+    "2020_phase1_label_parse_authorized": false,
+    "2021_plus_row_parse_authorized": false,
+    "stage_b_result_access_authorized": false,
+    "shared_parquet_rule": "After exact authorization, the immutable outcomes and future-path files may be hashed as whole files, but SQL must project and fetch only rows whose event signal date is before 2020-01-01 and belongs to the frozen 915-event set.",
+    "calendar_2020_completion_context": "A calendar-2020 path row is allowed only when it completes the plus-126 path of a 2019 signal. It is not a 2020 holdout event and cannot be pooled with, compared with, or used to infer the sealed 2020 signal cohort.",
+    "stage_b_result_boundary": "The Stage-B result aggregates the sealed 2020 cohort. Its path and SHA are declared for lineage only; the Phase-2A runner may never resolve, stat, hash, open, or parse it.",
+    "future_holdout_open": "A separate rule-freeze contract must bind an objective signal-time formula and its hashes before any 2020 outcome/path row is read."
+  },
+  "frozen_phase1_binding": {
+    "visual_review_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_visual_review_spec.json",
+      "sha256": "91396a0792729efc5f2ab0b9535cd8b930a4d635563840ce0436eb7648a445db"
+    },
+    "ledger_freeze_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_ledger_freeze_spec.json",
+      "sha256": "c61fa74261a30a6ac115c594ab6cd7102591efe0e47710b930a086cdeba3ae4f"
+    },
+    "axis_reliability_decision": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_axis_reliability_decision.json",
+      "sha256": "247dea6890a4053a5c9f7f3abfef167046cbdd14535cffe9b4ae7711bfdbd68f"
+    },
+    "annotation_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "a70aac69ca58f9302f7af59a301800f6398b806705d461b7b18a91d92a56f474",
+      "rows": 1483
+    },
+    "annotation_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "540c77afb93d61d3b729491936b720f76a77eeb6302d93e6989d2574421e041d"
+    },
+    "chart_corpus_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_c_phase1_anonymous_charts/manifest.json",
+      "sha256": "69d660b35c8f3183cf82220888572fcca7494607c0224606b2c33064c535edcc"
+    },
+    "ledger_state": "FROZEN_BEFORE_ANY_OUTCOME_OR_POST_SIGNAL_READ",
+    "labels_immutable": true,
+    "runner_phase1_label_columns_parsed": false,
+    "active_discovery_prompt_axes": [
+      "primary_morphology",
+      "market_tape",
+      "turnover_state"
+    ],
+    "descriptive_only_axis": "signal_candle"
+  },
+  "frozen_stage_b_binding": {
+    "freeze": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_stage_b_freeze.json",
+      "sha256": "94def5859b602bde8a635d2e4079c9aea4c1c27bee4161843259ac9dfb928041"
+    },
+    "runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_stage_b.py",
+      "sha256": "8755bbe18ca76c788ca74ed1743a34bbbd09c8ffc75889b49f026c7e2fad13e5"
+    },
+    "asset_manifest": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY049_DATA_ASSET_MANIFEST.json",
+      "sha256": "88789d69a4cc4e68d13eefcd8ccf09376f6588b4861939c0c8b0158bdf2be877"
+    },
+    "execution": "First legal fully valid non-upper-limit coordinate open in global sessions signal+1 through signal+3; +10 percent target; strict H20 fallback with open processed before same-day target; T+1; 40 bps round trip; no stop.",
+    "candidate_reselection": false
+  },
+  "declared_artifacts": {
+    "phase1_chart_corpus_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_c_phase1_anonymous_charts/manifest.json",
+      "sha256": "69d660b35c8f3183cf82220888572fcca7494607c0224606b2c33064c535edcc",
+      "access": "NON_OUTCOME_READ_AFTER_CY056_GATE"
+    },
+    "phase1_annotation_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "540c77afb93d61d3b729491936b720f76a77eeb6302d93e6989d2574421e041d",
+      "access": "NON_OUTCOME_READ_AFTER_CY056_GATE"
+    },
+    "phase1_annotation_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "a70aac69ca58f9302f7af59a301800f6398b806705d461b7b18a91d92a56f474",
+      "access": "IDENTITY_AND_CHART_HASH_COLUMNS_ONLY_AFTER_CY056_GATE; LABEL_COLUMNS_EXCLUDED"
+    },
+    "stage_b_prepared_candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/prepared_candidates.parquet",
+      "sha256": "7f103518ca4fd00628ab1d7fddf97367aa208adce099aa3894008d92afa4a52b",
+      "access": "HASH_AND_PRE_SIGNAL_IDENTITY_COLUMNS_ONLY_AFTER_CY056_GATE"
+    },
+    "stage_b_result_declared_only_unread": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/result.json",
+      "sha256": "cec33ec8e571effe73e86f7517a0c5cebcf09c07d41850202fc9ca8cf3cb84eb",
+      "access": "DECLARED_ONLY_NEVER_STAT_HASH_OPEN_OR_PARSE_IN_PHASE2A"
+    },
+    "stage_b_future_paths": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/future_paths.parquet",
+      "sha256": "371db6417b92974fa1d1860d67f89dab7654b97c95e97dad25be0d7f0d9050a5",
+      "access": "WHOLE_FILE_HASH_AFTER_CY056_GATE; PARSE_ONLY_2018_2019_SIGNAL_EVENT_ROWS"
+    },
+    "stage_b_outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/outcomes.parquet",
+      "sha256": "ef21c19376e1db63bbbbfe8b2e9b62b436a647168cbd83640f7f14ad8312c356",
+      "access": "WHOLE_FILE_HASH_AFTER_CY056_GATE; PARSE_ONLY_2018_2019_SIGNAL_EVENT_ROWS"
+    }
+  },
+  "outcome_groups": {
+    "ordered_buckets": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "definitions": {
+      "PROFIT_GE_4PCT": "status=COMPLETED and net_return>=0.04",
+      "PROFIT_0_TO_4PCT": "status=COMPLETED and 0<=net_return<0.04",
+      "LOSS_0_TO_10PCT": "status=COMPLETED and -0.10<net_return<0",
+      "SEVERE_LOSS": "status=COMPLETED and net_return<=-0.10",
+      "NO_COMPLETED_TRADE": "status!=COMPLETED or net_return is nonfinite"
+    },
+    "counts_known_before_authorized_run": false,
+    "numeric_return_visible_or_persisted": false,
+    "2020_bucket_assignment": "PROHIBITED"
+  },
+  "chart_contract": {
+    "event_coverage": "Every one of the 915 frozen 2018-2019 events exactly once; no 2020 event; each event must have exactly the raw relative sessions +1 through +126 before any display-validity filtering.",
+    "left_panel": "The exact immutable 720x440 Phase-1 anonymous signal-time chart (-126..0), hash-verified per ledger. It contains adjusted OHLC, turnover and the causal broad-market line but no identity, date, industry, yield or outcome.",
+    "right_panel": "An independently scaled 720x440 adjusted-coordinate post path (+1..+126) reconstructed from the frozen Stage-B future path. Raw OHLC geometry is audited exactly and display OHLC uses adjusted_close*(raw_price/raw_close), preserving equality and order without clipping or tolerance. +1..+20 is primary attribution; +21..+126 is context. Entry, target and exit markers are attribution only.",
+    "combined_size": "1440x440",
+    "post_turnover": "Not rendered because the frozen Stage-B future-path artifact does not carry turnover. No new raw-data source is introduced merely to add it.",
+    "outcome_display": "One coarse outcome bucket only; no numeric return.",
+    "identity_display": "chart_number and blind_chart_id only",
+    "contact_sheets": "5x5, grouped by one frozen outcome bucket",
+    "publication": "Same-parent temporary staging, no-overwrite output, complete hash revalidation, exactly-once coverage, then Darwin RENAME_EXCL atomic exclusive rename; fail closed if that primitive is unavailable or the target exists.",
+    "canonical_output": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_e_phase2a_2018_2019_outcome_attribution",
+    "outputs": [
+      "individual_attribution_charts/",
+      "outcome_sheets/",
+      "phase2a_chart_index.csv",
+      "outcome_sheet_placements.csv",
+      "outcome_sheet_index.csv",
+      "phase2a_review_template.json",
+      "manifest.json"
+    ],
+    "identity_crosswalk_output": false
+  },
+  "phase2a_review_schema": {
+    "exact_fields": [
+      "chart_number",
+      "blind_chart_id",
+      "outcome_bucket",
+      "post_path_label",
+      "evidence",
+      "reviewer",
+      "phase1_labels_modified",
+      "signal_candle_used_for_rule",
+      "post_signal_used_as_predictor"
+    ],
+    "post_path_labels": [
+      "IMMEDIATE_ACCEPTANCE",
+      "DELAYED_ACCEPTANCE",
+      "EARLY_REJECTION",
+      "LATE_REJECTION",
+      "CHOP_OR_AMBIGUOUS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "definitions": {
+      "IMMEDIATE_ACCEPTANCE": "A clear sustained upward response begins in +1..+5 and remains accepted through the relevant H20 path or reaches the target without earlier decisive rejection.",
+      "DELAYED_ACCEPTANCE": "After early basing or a recoverable pullback, a clear sustained upward response begins in +6..+20.",
+      "EARLY_REJECTION": "A clear sustained downside break begins in +1..+5 and is not promptly reclaimed by +10.",
+      "LATE_REJECTION": "No early rejection; the path is initially stable or favorable, but a clear sustained downside break begins after +5 and by +20.",
+      "CHOP_OR_AMBIGUOUS": "No clear sustained acceptance or rejection in +1..+20, or conflicting path evidence prevents a directional label.",
+      "NO_COMPLETED_TRADE": "Mandatory when the frozen lifecycle is not completed or net return is nonfinite."
+    },
+    "evidence": "One concrete line, no symbol/date/industry/yield/numeric return.",
+    "phase1_labels_modified": false,
+    "signal_candle_used_for_rule": false,
+    "post_signal_used_as_predictor": false
+  },
+  "discovery_interpretation": {
+    "primary_morphology": "Discovery prompt only. Any apparent base, trend, extension, or breakdown relation must later be translated into a causal numeric signal-time predicate.",
+    "market_tape": "Discovery prompt only. Any apparent broad-tape relation must later be translated from the same-day-and-prior causal cross-sectional market series.",
+    "turnover_state": "Discovery prompt only. Any apparent dry-up or expansion relation must later be translated from signal-time-and-prior registered turnover values.",
+    "signal_candle": "Descriptive only and permanently forbidden from rule formation because Phase-1 inter-reviewer reliability failed its ex-ante gate.",
+    "post_path_label": "Outcome attribution only and permanently forbidden from predictor formation.",
+    "outcome_bucket": "Outcome attribution only and permanently forbidden from predictor formation."
+  },
+  "future_rule_translation_boundary": {
+    "rule_search_authorized_in_phase2a_runner": false,
+    "maximum_objective_numeric_clauses": 5,
+    "maximum_final_ruleset": "One simple causal candidate containing at most five independently interpretable numeric clauses.",
+    "signal_candle_axis_rule_eligible": false,
+    "post_signal_path_rule_eligible": false,
+    "allowed_prompt_axes": [
+      "primary_morphology",
+      "market_tape",
+      "turnover_state"
+    ],
+    "translation_requirement": "Before any 2020 outcome is accessed, every retained visual observation must be rewritten as an exact formula computed only from rows available no later than signal_at, with one fixed lookback, one fixed threshold, orientation, missing-data behavior and PIT lineage.",
+    "objective_primitive_examples_not_authorized_rules": {
+      "morphology": "Fixed-window adjusted-return efficiency, fixed-window range width, fixed-window drawdown, or fixed-window distance from a prior high/base.",
+      "market": "Fixed-window return or slope of the same causal same-day cross-sectional median market line displayed in Phase 1.",
+      "turnover": "One fixed recent-versus-prior turnover ratio or same-day causal cross-sectional rank."
+    },
+    "no_parameter_grid": true,
+    "no_neighbor_search": true,
+    "no_label_as_rule": true,
+    "no_rule_after_2020_read": true,
+    "required_separate_artifacts_before_holdout": [
+      "complete Phase-2A anonymous review ledger",
+      "Phase-2A descriptive synthesis",
+      "objective causal feature-definition code",
+      "one frozen rule specification with at most five clauses",
+      "frozen 2018 and 2019 development counts/economics",
+      "new bounded 2020 holdout authorization"
+    ]
+  },
+  "future_economic_gate": {
+    "development_years": [2018, 2019],
+    "development_gate_before_holdout": "For each year separately, the frozen objective candidate must have more than 50 completed signals and mean net return greater than 4 percent under the unchanged +10 percent/H20/40-bps lifecycle.",
+    "sealed_confirmation_year": 2020,
+    "holdout_gate": "Without modifying any clause, 2020 must independently have more than 50 completed signals and mean net return greater than 4 percent under the same lifecycle.",
+    "failure_action": "Fail closed; do not rescue with threshold changes, neighboring windows, signal-candle conditions, post-path conditions, or a second look at 2020.",
+    "claim_if_passed": "Temporal holdout confirmation inside the already consumed pre-2021 research era, not validation on post-2020 or untouched production history."
+  },
+  "outcome_access_sequence": [
+    "verify repository-only static contract",
+    "verify exact CY-056 registry asset/authorization and literal bindings without external access",
+    "verify frozen non-outcome Phase-1 corpus and identity-only ledger columns",
+    "hash and parse prepared pre-signal identity; reconstruct all 1,483 opaque keys in memory",
+    "discard 2020 signal identities before attaching any Phase-1 chart path or label",
+    "hash outcomes and future paths; never touch Stage-B result",
+    "SQL INNER JOIN both outcome and path reads to the frozen 915 event IDs before fetch; limit signal dates before 2020 and nullable entry/exit/path dates no later than 2020-12-31",
+    "render 915 anonymous charts and coarse buckets",
+    "reverify all allowed hashes and atomically publish"
+  ],
+  "rule_aggregation_authorized": false,
+  "portfolio_replay_authorized": false,
+  "registry_modified": false,
+  "prohibited": [
+    "statting, hashing, opening or parsing Stage-B result in Phase-2A",
+    "fetching any outcome or path row for a 2020 signal",
+    "fetching any 2021-plus row",
+    "persisting or displaying event_id, symbol, date, year, industry, payout yield or any identity crosswalk",
+    "displaying or persisting a numeric return",
+    "rewriting a Phase-1 annotation after an outcome is available",
+    "using signal_candle in any rule",
+    "using a post-signal path label, entry, target, exit or outcome bucket as a predictor",
+    "testing label combinations, parameter grids, neighboring thresholds, rule subsets, portfolio replay or candidate reselection",
+    "opening the 2020 holdout before a separately hashed objective rule freeze and authorization"
+  ],
+  "next_action": "Install a separately reviewed CY-056 manifest/registry authorization, run only the bound renderer, review every one of 915 anonymous Phase-2A charts, then freeze a separate objective translation contract before any 2020 holdout read."
+}

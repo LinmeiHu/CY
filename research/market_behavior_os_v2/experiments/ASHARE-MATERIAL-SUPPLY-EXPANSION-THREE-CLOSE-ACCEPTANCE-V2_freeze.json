@@ -1,0 +1,44 @@
+{
+  "experiment": "ASHARE-MATERIAL-SUPPLY-EXPANSION-THREE-CLOSE-ACCEPTANCE-V2",
+  "research_status": "FROZEN_POST_HOC_CHART_GUIDED_DEVELOPMENT_RULE",
+  "scientific_status": "The direction was generated after reviewing all 525 completed 2018-2020 parent charts. This is consumed-history development, not independent confirmation.",
+  "parent_rule": "ASHARE-MATERIAL-SUPPLY-EXPANSION-DEMAND-REASSERTION-V1",
+  "fixed_parent_input": {
+    "completed_parent_trades": 525,
+    "signal_years": [2018, 2019, 2020],
+    "parent_trigger_definition_unchanged": true,
+    "parent_market_condition_unchanged": true,
+    "parent_event_level_definitions_unchanged": true
+  },
+  "single_incremental_question": "Does requiring the initial reclaim plus two additional consecutive completed closes above the frozen supply-event high remove one-day false reassertions without destroying annual breadth and long-payoff economics?",
+  "entry_rule": {
+    "initial_trigger": "Exact frozen parent trigger close.",
+    "confirmation_session_1": "The next market session must be PIT-valid in the same corporate-action coordinate lineage and close strictly above the frozen event high.",
+    "confirmation_session_2": "The following market session must be PIT-valid in the same corporate-action coordinate lineage and close strictly above the frozen event high.",
+    "decision_at": "After confirmation session 2 close and its data are available.",
+    "entry": "First legally buyable open during the next three market sessions; never the confirmation bar."
+  },
+  "exit_rule": {
+    "unchanged_parent_failure_exit": "After entry, two consecutive PIT-valid completed closes strictly below the frozen event low schedule an exit at the next legally sellable open.",
+    "unchanged_time_exit": "Otherwise first legally sellable open at or after 120 market sessions from entry.",
+    "round_trip_cost": 0.004
+  },
+  "staged_evaluation": {
+    "stage_1": "Apply the frozen entry confirmation and execution contract without reading or aggregating trade returns.",
+    "breadth_gate": "More than 50 completed signals in each of 2018, 2019, and 2020.",
+    "stage_2": "If and only if the breadth gate passes, run one development aggregation.",
+    "annual_return_gates": [
+      "mean net return greater than 4% in every development signal year",
+      "median net return greater than 0% in every development signal year"
+    ],
+    "no_parameter_rescue": true
+  },
+  "governance": {
+    "post_2021_signal_identity_read": false,
+    "validation_2022_2024_outcome_read": false,
+    "maximum_context_date": "2021-06-30",
+    "no_exit_change_in_this_test": true,
+    "no_threshold_grid": true,
+    "no_market_regime_redefinition": true
+  }
+}

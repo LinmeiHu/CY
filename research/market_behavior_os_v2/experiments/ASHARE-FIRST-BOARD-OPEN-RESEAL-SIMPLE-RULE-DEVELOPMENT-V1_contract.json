@@ -1,0 +1,70 @@
+{
+  "experiment": "ASHARE-FIRST-BOARD-OPEN-RESEAL-SIMPLE-RULE-DEVELOPMENT-V1",
+  "lane": "intraday_supply_test_and_limit_reseal",
+  "stage_a_outcomes_opened": false,
+  "scientific_development": ["2014-01-01", "2021-12-31"],
+  "selection_block": ["2014-01-01", "2018-12-31"],
+  "chronological_confirmation_block": ["2019-01-01", "2021-12-31"],
+  "sealed_validation": ["2022-01-01", "2023-12-31"],
+  "repository_2024_plus_opened": false,
+  "economic_hypothesis": "A first limit-up breakout that genuinely opens by at least two percent after an initial seal and then reabsorbs supply into a five-minute closing seal is a stronger demand observation than an ordinary limit-up close.",
+  "daily_recall": {
+    "boards": ["MAIN", "CHINEXT"],
+    "hard_valid_non_st_same_lineage": true,
+    "first_limit_up_in_prior_sessions": 20,
+    "signal_close_equals_registered_up_limit": true,
+    "signal_close_at_or_above_prior_20_session_high": true,
+    "signal_low_at_least_two_percent_below_up_limit": true,
+    "turnover_fraction_min": 0.03,
+    "turnover_fraction_max": 0.25
+  },
+  "minute_identity": {
+    "source": "QD-004 frozen one-minute bars",
+    "exact_bars_per_session": 241,
+    "initial_seal": "at least one completed one-minute close at the registered up-limit",
+    "meaningful_open": "a later completed one-minute close at or below 98 percent of the registered up-limit",
+    "reseal": "a subsequent completed one-minute close at the up-limit",
+    "closing_acceptance": "the final five completed one-minute closes all equal the registered up-limit",
+    "sequence_strict": true
+  },
+  "frozen_candidate_artifact": "/Volumes/quant/CY_quant_research/ashare_first_board_reseal_v1/stage_a/candidate_states.parquet",
+  "frozen_candidate_sha256": "3677b2efbd9a184b5f3b44b9d9b5a6b8ab81cdd52ac55e5ce938686284caef36",
+  "minute_semantic_ledger_sha256": "4d35c32de1991bf21e2b34d6eecfff7bd021d9289353766b0b6995e71eb14070",
+  "candidate_count": 1715,
+  "candidate_symbol_count": 1233,
+  "annual_candidate_counts": {"2014": 202, "2015": 332, "2016": 137, "2017": 109, "2018": 123, "2019": 266, "2020": 278, "2021": 268},
+  "predeclared_cohorts": {
+    "ALL_TRUE_RESEAL": "all frozen candidates",
+    "TREND_BREAKOUT_RESEAL": "signal ret60 >= 10 percent and signal coordinate close >= the prior 60-session coordinate high"
+  },
+  "prohibited_selection_cohorts": ["base reversal", "late reseal", "early reseal", "turnover threshold variants"],
+  "entry": "first legal executable daily open strictly after signal close and no later than the third subsequent market session",
+  "execution": {
+    "signal_bar_fill_allowed": false,
+    "maximum_entry_delay_market_sessions": 3,
+    "t_plus_one_required": true,
+    "buy_open_must_be_strictly_below_registered_up_limit": true,
+    "sell_open_must_be_strictly_above_registered_down_limit": true,
+    "corporate_action_coordinate_fail_closed": true,
+    "unknown_required_lineage_fail_closed": true,
+    "round_trip_cost_bps": 40
+  },
+  "frozen_exit_profiles": [
+    {"profile": "T10_H5_NO_STOP", "target": 0.10, "horizon": 5, "failure": "NONE"},
+    {"profile": "T10_H5_SIGNAL_LOW", "target": 0.10, "horizon": 5, "failure": "next legal open after completed close below signal-day low"},
+    {"profile": "T20_H10_NO_STOP", "target": 0.20, "horizon": 10, "failure": "NONE"},
+    {"profile": "T20_H10_SIGNAL_LOW", "target": 0.20, "horizon": 10, "failure": "next legal open after completed close below signal-day low"},
+    {"profile": "H5_CLOSE", "target": null, "horizon": 5, "failure": "NONE"},
+    {"profile": "H10_CLOSE", "target": null, "horizon": 10, "failure": "NONE"}
+  ],
+  "selection": "Use only 2014-2018 to select one cohort and one exit profile by mean net return then median net return; apply unchanged to 2019-2021.",
+  "continuation_gate": {
+    "average_executable_signals_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_trade_return_min": 0.03,
+    "pooled_median_net_trade_return_positive": true,
+    "confirmation_year_2019_mean_positive": true,
+    "confirmation_year_2020_mean_positive": true,
+    "confirmation_year_2021_mean_positive": true,
+    "validation_only_if_development_passes": true
+  }
+}

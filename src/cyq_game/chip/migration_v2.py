@@ -988,15 +988,12 @@ def _compact_packed_lots_by_dimensions(
     keep = positive.copy()
     merged = False
     while True:
-        capped = np.flatnonzero(
+        candidates = np.flatnonzero(
             positive & (lots._holding_days[: len(lots)] == max_holding_days)
         )
-        if capped.size < 2:
+        if candidates.size < 2:
             break
-        # The public/writer boundary keys inventory by stable cell id.  Derive
-        # the same identity here, rather than relying on a parallel raw-float
-        # comparison that can leave cells which materialize to one id apart.
-        capped_cell_ids = np.fromiter(
+        candidate_cell_ids = np.fromiter(
             (
                 stable_cell_id(
                     cost_bucket_id=(
@@ -1014,15 +1011,15 @@ def _compact_packed_lots_by_dimensions(
                         else float(lots._economic_break_evens[index])
                     ),
                 )
-                for index in capped
+                for index in candidates
             ),
             dtype=np.int64,
-            count=int(capped.size),
+            count=int(candidates.size),
         )
-        lots._cell_ids[capped] = capped_cell_ids
-        order = np.argsort(capped_cell_ids, kind="stable")
-        ordered = capped[order]
-        ordered_cell_ids = capped_cell_ids[order]
+        lots._cell_ids[candidates] = candidate_cell_ids
+        order = np.argsort(candidate_cell_ids, kind="stable")
+        ordered = candidates[order]
+        ordered_cell_ids = candidate_cell_ids[order]
         group_starts = np.flatnonzero(
             np.r_[
                 True,
@@ -1036,6 +1033,24 @@ def _compact_packed_lots_by_dimensions(
                 continue
             members = ordered[start:stop]
             first = int(members[0])
+            if (
+                not np.all(lots._cost_bucket_ids[members] == lots._cost_bucket_ids[first])
+                or not np.all(lots._holding_days[members] == lots._holding_days[first])
+                or not np.all(
+                    lots._sensitivity_codes[members]
+                    == lots._sensitivity_codes[first]
+                )
+                or (
+                    int(lots._cost_bucket_ids[first]) != _UNKNOWN_BUCKET_ID
+                    and not np.all(
+                        lots._economic_break_evens[members]
+                        == lots._economic_break_evens[first]
+                    )
+                )
+            ):
+                raise ChipStateContractError(
+                    f"packed stable-cell hash collision for {int(ordered_cell_ids[start])}"
+                )
             member_shares = lots._shares[members]
             combined_shares = stable_sum(member_shares)
             lots._initialization_prior_units[first] = stable_sum(
@@ -1046,10 +1061,12 @@ def _compact_packed_lots_by_dimensions(
                     stable_weighted_sum(member_shares, lots._acquisition_costs[members])
                     / combined_shares
                 )
-                lots._economic_break_evens[first] = (
-                    stable_weighted_sum(member_shares, lots._economic_break_evens[members])
-                    / combined_shares
-                )
+                # Stable identity includes the exact economic break-even bits,
+                # and the collision guard above proves every member has the
+                # same value.  Re-averaging an identical float can move it by
+                # one ULP under extreme share weights, leaving the stored id
+                # inconsistent with its dimensions and creating a new arc
+                # collision on the next day.  Preserve the identity value.
             lots._shares[first] = combined_shares
             keep[members[1:]] = False
             merged = True
@@ -1059,12 +1076,7 @@ def _compact_packed_lots_by_dimensions(
         lots.retain(keep)
         positive = lots._shares[: len(lots)] > 0
         keep = positive.copy()
-    # A canonical merge can replace the economic break-even with its weighted
-    # aggregate.  The cached ids therefore no longer describe this packed
-    # state and must be regenerated before a lineage/writer boundary.
-    if merged:
-        lots._cell_ids_current = False
-    elif not bool(np.all(keep)):
+    if not merged and not bool(np.all(keep)):
         lots.retain(keep)
 
 
@@ -1885,8 +1897,39 @@ class DailyMigrationEngine:
                     strict=True,
                 )
             )
-            if any(previous[:2] == current[:2] for previous, current in pairwise(arcs)):
-                raise ChipStateContractError("daily source lineage produced duplicate arcs")
+            duplicate_arc = next(
+                (
+                    current[:2]
+                    for previous, current in pairwise(arcs)
+                    if previous[:2] == current[:2]
+                ),
+                None,
+            )
+            if duplicate_arc is not None:
+                duplicate_source = duplicate_arc[0]
+                duplicate_positions = source_indices[
+                    source_cell_ids[source_indices] == duplicate_source
+                ]
+                duplicate_details = [
+                    {
+                        "bucket": int(cost_bucket_ids[position]),
+                        "holding": int(holding_days[position]),
+                        "sensitivity": int(sensitivity_codes[position]),
+                        "economic": float(economic_break_evens[position]),
+                        "shares": float(source_shares[offset]),
+                    }
+                    for offset, position in enumerate(source_indices)
+                    if int(source_cell_ids[position]) == duplicate_source
+                ]
+                raise ChipStateContractError(
+                    "daily source lineage produced duplicate arcs: "
+                    f"symbol={state.symbol}, date={decision_at.date()}, "
+                    f"model={self.seller_model.value}, arc={duplicate_arc}, "
+                    f"source_lots={len(source_indices)}, "
+                    f"unique_source_ids={len(set(source_cell_ids[source_indices].tolist()))}, "
+                    f"duplicate_positions={duplicate_positions.tolist()}, "
+                    f"duplicate_details={duplicate_details}"
+                )
 
         lots.append_purchases(
             prepared_minute_path,

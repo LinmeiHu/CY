@@ -1,0 +1,223 @@
+{
+  "central_registry_modified": false,
+  "installation_instruction": "After independent review, append exactly the asset object to configs/data_asset_registry.json assets and exactly the bounded_authorization object to bounded_authorizations. Recompute no field and do not run V36 before that separate registry change is reviewed.",
+  "asset": {
+    "asset_id": "CY-054",
+    "name": "Bounded V36 outcome-blind broad-market price-delay input",
+    "kind": "bounded_daily_pit_b_broad_market_price_delay_representation_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+    "source": "Exact registered CY-006 2018-2020 daily rows with action-safe raw close/preclose returns, causal PIT identities, amount, turnover and circulating size under QD-010 corporate-action coordinate semantics",
+    "coverage": {
+      "authorized_start": "2018-01-01",
+      "authorized_end": "2020-12-31",
+      "signal_start": "2019-03-01",
+      "signal_end": "2020-12-31",
+      "maximum_source_row_date": "2020-12-31"
+    },
+    "lineage": {
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-STAGE-A-2018-2020-V1",
+      "component_assets": [
+        "CY-006",
+        "QD-010"
+      ],
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+      "manifest_sha256": "8466e1ccd6cbbff159beb4ee9d582a0917f7eba9015d7a76251f273727e4973c",
+      "pipeline_version": "v36-broad-market-price-delay-outcome-blind-stage-a-v1",
+      "record_available_at": true,
+      "record_snapshot_id": true
+    },
+    "quality_evidence": {
+      "outcome_blind_contract_frozen": true,
+      "outcome_columns_read": false,
+      "post_signal_rows_read": false,
+      "post_2020_rows_read": false,
+      "exact_56_completed_week_history_required": true,
+      "leave_one_out_weekly_market_proxy_required": true,
+      "central_registration_required_before_source_access": true
+    },
+    "allowed_uses": [
+      "one frozen V36 outcome-blind 2018-2020 Stage-A representation, opportunity and redundancy audit"
+    ],
+    "blocked_uses": [
+      "outcome, post-signal row, chart, Stage B, portfolio, parameter search, 2021-plus row, live use or strict PIT-A claim"
+    ],
+    "schema_and_units": "Action-safe daily log(close/preclose) aggregated to exact completed calendar weeks; exact leave-one-out weekly cross-sectional median market proxy; 52-response-week four-lag nested OLS delay score; amount and circulating market value in CNY",
+    "activation_gates": [
+      "central CY-054 asset and bounded authorization exactly match this frozen repository-side suggestion",
+      "public spec, runner, manifest and all six declared input identities remain hash-identical before source access",
+      "only causal 2018-2020 source rows and 2019-03 through 2020-12 signal dates may enter the outcome-blind representation and count diagnostics",
+      "Stage A publishes atomically into a previously absent canonical stage_a directory and never opens outcome or post-signal data"
+    ],
+    "stage_a_binding": {
+      "spec": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+        "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc"
+      },
+      "runner": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_a.py",
+        "sha256": "3cf20dead4f7a04b1e8981502d484fd1e56599747129f3ff92085a462c0edf51"
+      },
+      "inputs": {
+        "corporate_action_coordinate_contract": {
+          "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+          "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+        },
+        "cy006_inventory": {
+          "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+          "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+        },
+        "cy006_2018": {
+          "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+          "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+        },
+        "cy006_2019": {
+          "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+          "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+        },
+        "cy006_2020": {
+          "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+          "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+        },
+        "qd010_inventory": {
+          "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+          "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+        }
+      }
+    }
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-STAGE-A-2018-2020-V1",
+    "asset_id": "CY-054",
+    "purpose": "ASHARE_OUTCOME_BLIND_MOTHER_REPRESENTATION",
+    "authorized_arms": [
+      "V36_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY"
+    ],
+    "dependency_asset_id": "CY-006",
+    "dependency_asset_ids": [
+      "CY-006",
+      "QD-010"
+    ],
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "2018-01-01",
+      "end": "2020-12-31",
+      "signal_start": "2019-03-01",
+      "signal_end": "2020-12-31",
+      "maximum_source_row_date": "2020-12-31"
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+      "sha256": "8466e1ccd6cbbff159beb4ee9d582a0917f7eba9015d7a76251f273727e4973c"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+      "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_a.py",
+      "runner_sha256": "3cf20dead4f7a04b1e8981502d484fd1e56599747129f3ff92085a462c0edf51"
+    },
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+      "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc"
+    },
+    "stage_a_binding": {
+      "spec": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+        "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc"
+      },
+      "runner": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_a.py",
+        "sha256": "3cf20dead4f7a04b1e8981502d484fd1e56599747129f3ff92085a462c0edf51"
+      },
+      "inputs": {
+        "corporate_action_coordinate_contract": {
+          "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+          "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+        },
+        "cy006_inventory": {
+          "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+          "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+        },
+        "cy006_2018": {
+          "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+          "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+        },
+        "cy006_2019": {
+          "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+          "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+        },
+        "cy006_2020": {
+          "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+          "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+        },
+        "qd010_inventory": {
+          "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+          "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+        }
+      }
+    },
+    "bound_artifacts": [
+      {
+        "role": "corporate_action_coordinate_contract",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+        "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+      },
+      {
+        "role": "cy006_inventory",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+      },
+      {
+        "role": "cy006_2018",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "role": "cy006_2019",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "role": "cy006_2020",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      },
+      {
+        "role": "qd010_inventory",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      }
+    ],
+    "stage_a_authorized": true,
+    "whole_artifact_hash_authorized": true,
+    "inventory_metadata_parse_authorized": true,
+    "source_parquet_stage_a_parse_authorized": true,
+    "stage_b_authorized": false,
+    "outcome_attachment_authorized": false,
+    "outcome_artifact_parse_authorized": false,
+    "outcome_columns_read_authorized": false,
+    "post_signal_row_read_authorized": false,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "parameter_search_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": false,
+    "allowed_uses": [
+      "parse only exact 2018-2020 causal CY-006 rows for the frozen V36 outcome-blind Stage-A gate"
+    ],
+    "blocked_uses": [
+      "outcome, post-signal row, chart, Stage B, portfolio, parameter search, 2021-plus row, live use or strict PIT-A claim"
+    ],
+    "known_limitations": [
+      "CY-006 and QD-010 remain PIT-B research inputs without complete historical supplier revision vintages",
+      "Stage A measures only representation feasibility, opportunity breadth and proxy redundancy; it cannot establish return Alpha or authorize Stage B"
+    ]
+  }
+}

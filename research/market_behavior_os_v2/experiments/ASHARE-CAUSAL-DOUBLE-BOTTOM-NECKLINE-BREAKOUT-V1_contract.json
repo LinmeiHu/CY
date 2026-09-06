@@ -1,0 +1,76 @@
+{
+  "experiment": "ASHARE-CAUSAL-DOUBLE-BOTTOM-NECKLINE-BREAKOUT-V1",
+  "research_lane": "independent simple-rule price-structure strategy",
+  "economic_hypothesis": "After a material decline, a first low reveals demand, an intervening rebound establishes a causal neckline, and a later second low that holds slightly above the first indicates seller exhaustion. A high-close, normal-or-better-turnover first close through the neckline marks completed transfer from weak holders to stronger buyers.",
+  "stage_a_governance": {
+    "outcomes_opened": false,
+    "post_signal_bars_used": false,
+    "blind_chart_count": 48,
+    "outcome_blind_semantic_revision": "Require temporal separation around the neckline peak, a non-undercutting second low, and a signal close no more than 5% above the neckline. This revision was frozen before any return was read."
+  },
+  "population": {
+    "boards": ["MAIN", "CHINEXT"],
+    "signal_period": ["2014-01-01", "2021-12-31"],
+    "coordinate": "QD-010 corporate-action-consistent coordinate",
+    "required_history_sessions": 60,
+    "history_must_be_hard_valid_and_tradable": true,
+    "invalid_coordinate_step_allowed_in_history": false,
+    "same_symbol_cooldown_sessions": 30
+  },
+  "frozen_signal": {
+    "pre_structure_high_window": "60 through 36 completed same-symbol sessions before signal",
+    "first_low_window": "35 through 12 completed same-symbol sessions before signal",
+    "second_low_window": "10 through 2 completed same-symbol sessions before signal",
+    "decline_to_first_low_max": -0.15,
+    "minimum_first_to_second_low_spacing_sessions": 12,
+    "second_low_vs_first_low_range": [0.0, 0.05],
+    "neckline": "maximum coordinate high strictly between first-low and second-low sessions",
+    "minimum_first_low_to_neckline_spacing_sessions": 4,
+    "minimum_neckline_to_second_low_spacing_sessions": 4,
+    "minimum_neckline_rebound_from_first_low": 0.10,
+    "breakout": "prior completed close below neckline and signal completed close at or above neckline",
+    "maximum_signal_close_above_neckline": 0.05,
+    "minimum_signal_close_location": 0.70,
+    "minimum_signal_turnover_vs_prior20_mean": 1.0,
+    "signal_upper_limit_close_excluded": true
+  },
+  "execution": {
+    "entry": "first legal executable daily open after completed signal, no later than three market sessions",
+    "signal_bar_fill_allowed": false,
+    "t1_enforced": true,
+    "suspension_and_limit_tradability_enforced": true,
+    "corporate_action_lineage_fail_closed": true,
+    "entry_cost_bps": 20,
+    "exit_cost_bps": 20
+  },
+  "predeclared_profiles": [
+    "H10_NEXT_OPEN",
+    "H20_NEXT_OPEN",
+    "T10_H20_NO_STOP",
+    "T10_H20_SECOND_LOW_STOP"
+  ],
+  "profile_selection": {
+    "selection_years": [2014, 2015, 2016, 2017, 2018],
+    "minimum_positive_selection_years": 3,
+    "order": [
+      "highest median annual mean net return",
+      "highest pooled median net return",
+      "lowest pooled severe_loss10",
+      "shorter horizon",
+      "profile name"
+    ],
+    "confirmation_years": [2019, 2020, 2021],
+    "confirmation_gate": {
+      "average_completed_trades_per_year_strictly_above": 50,
+      "pooled_mean_net_at_least": 0.03,
+      "pooled_median_net_strictly_above": 0.0,
+      "each_confirmation_year_mean_net_strictly_above": 0.0
+    }
+  },
+  "data_governance": {
+    "development_data_latest_date": "2021-12-31",
+    "validation_2022_2023_opened_in_stage_b": false,
+    "repository_2024_plus_data_opened": false,
+    "no_post_outcome_signal_semantic_change": true
+  }
+}

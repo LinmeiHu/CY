@@ -1,0 +1,67 @@
+{
+  "experiment": "ASHARE-CAUSAL-LOCAL-INDUSTRY-DEMAND-STATE-MOTHER-V22",
+  "scientific_status": "OUTCOME_BLIND_PRE_2021_LOCAL_STATE_MOTHER_FREEZE",
+  "economic_hypothesis": "Broad market labels can hide simultaneous industry bull and bear structures. A stock should be matched to the supply-demand mechanism of its own causally known PIT industry: distributed accumulation can continue only inside a locally strong industry, while a weak industry requires observable selling exhaustion and demand takeover. Mixed local states remain cash.",
+  "novelty_boundary": "This tests local PIT-industry state routing, not another global BULL/BEAR threshold, industry-follower rank acceleration, industry momentum, industry diffusion variant, or parameter change to either mother event.",
+  "local_industry_state": {
+    "population": "same-date hard-valid, current-valid, non-ST securities with valid PIT causal_industry and completed ret20/ret60",
+    "minimum_members": 10,
+    "latest_information": "completed signal-date closes whose available_at is no later than each row's decision_at",
+    "LOCAL_BULL": "industry median ret20 > 0 AND median ret60 > 0 AND positive-ret20 share > 0.50 AND positive-ret60 share > 0.50",
+    "LOCAL_BEAR": "industry median ret20 <= 0 AND median ret60 <= 0 AND positive-ret20 share <= 0.50 AND positive-ret60 share <= 0.50",
+    "LOCAL_TRANSITION": "every other valid industry configuration; hold cash",
+    "future_function": false,
+    "full_period_threshold": false
+  },
+  "frozen_mothers": [
+    {
+      "route": "LOCAL_BULL_DISTRIBUTED_ACCUMULATION_ESCAPE",
+      "local_state": "LOCAL_BULL",
+      "stock_setup": "exact prior mother without its global-state clause: prior20 return 5% to 25%; at least 60% positive sessions; maximum absolute daily return below 7%; downside/upside turnover ratio at most 0.65",
+      "trigger": "completed 2% to 7% non-limit session, close location at least 0.75, close above the prior20 high, turnover 1.20x to 2.50x the prior20 median",
+      "cooldown": "more than 20 market sessions since the prior raw same-mechanism event",
+      "translation": "+15% gross target or H30, first legal open within three later market sessions, 40 bps round trip"
+    },
+    {
+      "route": "LOCAL_BEAR_SLOW_SUPPLY_EXHAUSTION_TAKEOVER",
+      "local_state": "LOCAL_BEAR",
+      "stock_setup": "exact prior mother without its global-state clause: prior20 return at most -8%; latest five-session low no lower than the preceding five-session low; latest five-session downside turnover no greater than the preceding five-session downside turnover",
+      "trigger": "completed 2% to 7% non-limit session, close location at least 0.75, close above the prior5 high, turnover 1.00x to 2.50x the prior20 median",
+      "cooldown": "more than 20 market sessions since the prior raw same-mechanism event",
+      "translation": "+10% gross target or H20, first legal open within three later market sessions, 40 bps round trip"
+    }
+  ],
+  "data_and_execution": {
+    "candidate_signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "maximum_path_date_for_completed_2020_signals": "2021-12-31",
+    "PIT_industry_membership": "causal_industry on the completed signal date",
+    "signal_bar_fill": false,
+    "T_plus_1": true,
+    "limits_suspensions_and_corporate_actions": "binding and fail closed",
+    "round_trip_cost": 0.004
+  },
+  "research_sequence": [
+    "freeze local-state and mother identities",
+    "build identity-only candidates and verify every 2014-2020 year has more than 50 combined signals",
+    "attach only 2014-2020 development outcomes",
+    "render every candidate with 126 completed sessions before and after",
+    "review every chronological contact sheet",
+    "compress repeated chart observations into at most five causal rules",
+    "freeze one rule set before aggregation",
+    "require more than 50 completed signals and mean net return above 4 percent in every 2014-2020 calendar year before any later-period opening"
+  ],
+  "prohibited": [
+    "calendar-year state labels",
+    "future market or industry state",
+    "industry-rank or state threshold grid",
+    "different mother thresholds",
+    "manual event deletion",
+    "rule selection from 2021-plus signals",
+    "2022-2024 signal or outcome read before the strict development gate",
+    "post-2024 read",
+    "independent confirmation language"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "experiment": "ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31",
+  "review_phase": "PHASE2_OUTCOME_GROUP_VISUAL_ATTRIBUTION",
+  "reviewer": "primary_reviewer",
+  "review_method": "Every occupied cell was inspected from the original-resolution outcome-group contact sheet. These notes describe post-signal paths only and do not rewrite Phase-1 morphology.",
+  "buckets": {
+    "PROFIT_0_TO_4PCT": {
+      "reviewed_cells": 113,
+      "sheets": {
+        "0001": [4, 7, 23, 53, 55, 65, 80, 96, 101, 102, 104, 105, 117, 154, 174, 176, 180, 183, 185, 186, 216, 245, 259, 281, 289],
+        "0002": [319, 326, 330, 347, 380, 387, 388, 423, 430, 465, 474, 475, 504, 523, 613, 646, 677, 678, 692, 694, 701, 718, 721, 732, 765],
+        "0003": [772, 779, 780, 793, 798, 806, 824, 847, 853, 858, 862, 890, 896, 899, 902, 908, 910, 921, 945, 948, 952, 976, 979, 981, 982],
+        "0004": [986, 1023, 1026, 1027, 1035, 1052, 1067, 1071, 1089, 1097, 1113, 1115, 1126, 1127, 1140, 1191, 1205, 1212, 1229, 1251, 1261, 1288, 1375, 1381, 1409],
+        "0005": [1410, 1433, 1438, 1444, 1449, 1451, 1462, 1465, 1500, 1508, 1517, 1537, 1559]
+      },
+      "bucket_observation": "The small-profit paths are heterogeneous. Many H20 exits occur near flat after a choppy holding interval, and post-H20 continuation varies in both directions. No exclusive signal-time candle prototype is visible.",
+      "counterexample_observation": "Both visually strong and visibly damaged Phase-1 structures occur in the small-profit group; neither is sufficient to identify a clean acceptance path."
+    },
+    "SEVERE_LOSS": {
+      "reviewed_cells": 245,
+      "sheets": {
+        "0001": [1, 2, 6, 12, 13, 27, 29, 31, 35, 36, 37, 38, 41, 43, 47, 48, 50, 59, 61, 68, 73, 74, 77, 78, 79],
+        "0002": [83, 86, 88, 95, 97, 103, 113, 124, 129, 131, 133, 135, 137, 140, 141, 142, 146, 147, 151, 152, 153, 156, 160, 161, 164],
+        "0003": [167, 169, 170, 173, 175, 179, 184, 187, 211, 217, 240, 257, 263, 264, 266, 267, 273, 276, 278, 283, 284, 285, 287, 288, 292],
+        "0004": [293, 298, 302, 303, 304, 305, 306, 309, 315, 318, 339, 344, 346, 357, 363, 364, 366, 369, 375, 376, 381, 484, 527, 530, 531],
+        "0005": [538, 542, 547, 549, 551, 559, 561, 562, 569, 571, 573, 574, 575, 580, 581, 582, 585, 596, 601, 604, 608, 610, 612, 619, 620],
+        "0006": [627, 628, 632, 635, 638, 639, 640, 645, 648, 659, 667, 674, 684, 685, 688, 693, 715, 728, 733, 736, 740, 744, 748, 762, 766],
+        "0007": [783, 786, 787, 788, 791, 792, 794, 831, 871, 876, 911, 915, 925, 927, 931, 934, 940, 959, 966, 974, 985, 987, 989, 990, 992],
+        "0008": [997, 999, 1004, 1007, 1021, 1028, 1046, 1050, 1116, 1130, 1131, 1132, 1133, 1137, 1143, 1144, 1151, 1154, 1155, 1156, 1158, 1160, 1166, 1168, 1169],
+        "0009": [1171, 1176, 1178, 1180, 1186, 1187, 1188, 1189, 1192, 1196, 1198, 1200, 1264, 1267, 1269, 1271, 1282, 1286, 1289, 1301, 1304, 1307, 1308, 1311, 1312],
+        "0010": [1313, 1317, 1321, 1326, 1330, 1341, 1342, 1346, 1348, 1351, 1358, 1359, 1366, 1412, 1427, 1499, 1504, 1521, 1566, 1573]
+      },
+      "bucket_observation": "Severe losses usually reject the signal during the early part of the frozen holding window and are near a local low around the H20 exit. A material subset repairs only after H20, so merely extending the hold would exchange realized loss for deeper path drawdown and is not supported by this review.",
+      "counterexample_observation": "Terminal surges and mature advances are common among some severe losses, but the same Phase-1 appearances also occur among fast winners. Static pre-signal appearance alone does not separate them."
+    },
+    "NO_COMPLETED_TRADE": {
+      "reviewed_cells": 8,
+      "sheets": {
+        "0001": [727, 901, 955, 1110, 1203, 1247, 1385, 1526]
+      },
+      "bucket_observation": "The eight paths were visually inspected, but their frozen lifecycle is unobservable because no legal entry or valid coordinate-continuous completed trade exists.",
+      "counterexample_observation": "No return inference is assigned to an unexecuted or invalid-lineage path."
+    }
+  },
+  "aggregate": {
+    "reviewed_cells": 366,
+    "reviewed_sheets": 16,
+    "dominant_observation": "The clearest outcome-side distinction is rapid post-entry acceptance versus early rejection, not a unique signal-time candle shape.",
+    "rule_compression_performed": false,
+    "phase1_labels_modified": false,
+    "post_signal_used_as_predictor": false
+  },
+  "certification": {
+    "original_resolution": true,
+    "every_occupied_cell_reviewed": true,
+    "chart_numbers_unique_within_each_bucket": true,
+    "outcome_groups_opened_only_after_phase1_freeze": true
+  }
+}

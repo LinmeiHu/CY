@@ -1,0 +1,68 @@
+{
+  "experiment": "ASHARE-CAUSAL-BULL-PRICE-DISCOVERY-BEAR-SUPPLY-EXHAUSTION-V21",
+  "scientific_status": "POST_HOC_CHART_GENERATED_MULTI_STATE_DEVELOPMENT_FREEZE",
+  "post_hoc_disclosure": "The BULL component was generated after chronological visual review of all 3422 frozen 2014-2020 distributed-accumulation charts. The BEAR components were previously frozen development mechanisms. This union is a consumed-history development hypothesis, not independent confirmation.",
+  "economic_hypothesis": "Positive absolute opportunity has different observable causes in different market states: genuine price discovery through a clear supply corridor in a strengthening BULL state, and active demand after fast capitulation or slow supply exhaustion in a BEAR state. A causal TRANSITION state provides neither premise and therefore remains cash.",
+  "causal_market_state": {
+    "source": "the exact already-frozen causal market-regime labels carried by each component",
+    "future_market_function": false,
+    "BULL": "both completed signal-date cross-sectional 20/60-session median returns and positive-return participation exceed their frozen zero/50-percent definitions",
+    "BEAR": "both completed signal-date cross-sectional 20/60-session median returns and positive-return participation are at or below their frozen zero/50-percent definitions",
+    "TRANSITION": "all other causal configurations; hold cash"
+  },
+  "frozen_routes": [
+    {
+      "market_state": "BULL",
+      "component": "ASHARE-BULL-DISTRIBUTED-ACCUMULATION-CHART-RULES-V3",
+      "source_path": "/Volumes/quant/CY_quant_research/ashare_bull_distributed_accumulation_chart_rules_v3/development_2014_2020/outcomes.parquet",
+      "source_sha256": "362a995b40839849744ca33daaa9a8bb088e0e15fa13ac5626abf0d8359b2a1a",
+      "freeze_sha256": "9a201c35c4f2dd7c88a6d1e957a7235e6ca4b5718bc3b72df624ba0f950b0787",
+      "selection": "status=COMPLETED",
+      "mechanism": "confirmed distributed accumulation escaping through a clear target corridor while causal market return pace and participation strengthen",
+      "target_and_horizon": "+15 percent gross target / 30 held market sessions"
+    },
+    {
+      "market_state": "BEAR",
+      "component": "ASHARE-CAUSAL-BEAR-BULL-DUAL-ENGINE-LANE-SPECIFIC-ACCEPTANCE-V19R2",
+      "source_path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_bull_dual_engine_lane_specific_acceptance_v19r2/development_2014_2020_outcomes.parquet",
+      "source_sha256": "53d552de91a87b31eb3a81c16d5acd00a44e89c10e95fc31edcf71af7e2e60fe",
+      "selection": "status=COMPLETED AND engine=BEAR_REPAIR AND expected_market_regime=BEAR",
+      "mechanism": "fast capitulation followed by active demand",
+      "target_and_horizon": "+10 percent gross target / 20 held market sessions"
+    },
+    {
+      "market_state": "BEAR",
+      "component": "ASHARE-DISTRIBUTED-ACCUMULATION-SLOW-EXHAUSTION-MOTHER-SCREEN-V1",
+      "source_path": "/Volumes/quant/CY_quant_research/ashare_distributed_accumulation_slow_exhaustion_mother_screen_v1/development_2014_2020_outcomes.parquet",
+      "source_sha256": "8e410688aba5f07f1a36c87bd0e061c8d052fe6d2b051656b59970589320285d",
+      "selection": "status=COMPLETED AND mechanism=SLOW_SUPPLY_EXHAUSTION_TAKEOVER AND market_regime=BEAR",
+      "mechanism": "slow selling-pressure exhaustion followed by demand takeover",
+      "target_and_horizon": "+10 percent gross target / 20 held market sessions"
+    }
+  ],
+  "union_semantics": {
+    "same_symbol_same_signal_date": "keep BEAR fast capitulation before BEAR slow exhaustion; BULL and BEAR routes are mutually exclusive",
+    "weighting": "event-level equal weight for the discovery gate; no portfolio sizing or overlapping-position optimization",
+    "transaction_cost": "the net_return already carries the frozen 40 bps round-trip cost",
+    "T_plus_1_limits_suspensions_and_corporate_actions": "unchanged and binding in each frozen component"
+  },
+  "development_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "strict_annual_gate_before_later_period": {
+    "every_calendar_year_completed_signals_strictly_greater_than": 50,
+    "every_calendar_year_mean_net_return_strictly_greater_than": 0.04,
+    "every_calendar_year_median_net_return_positive": true,
+    "every_calendar_year_severe_loss10_at_most": 0.20,
+    "pooled_mean_net_return_strictly_greater_than": 0.04
+  },
+  "governance": {
+    "2021_signal_or_outcome_read_for_this_union": false,
+    "2022_2024_signal_or_outcome_read_for_this_union": false,
+    "later_period_open_only_if_all_strict_annual_gates_pass": true,
+    "post_2024_read": false,
+    "no_rescue_after_result": true,
+    "no_independent_confirmation_claim": true
+  }
+}

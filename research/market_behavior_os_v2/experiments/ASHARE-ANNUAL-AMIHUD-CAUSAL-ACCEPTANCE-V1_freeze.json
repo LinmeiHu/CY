@@ -1,0 +1,81 @@
+{
+  "experiment": "ASHARE-ANNUAL-AMIHUD-CAUSAL-ACCEPTANCE-V1",
+  "status": "FROZEN_AFTER_COMPLETE_VISUAL_REVIEW_BEFORE_DYNAMIC_OUTCOME_AGGREGATION",
+  "scientific_role": "CANDLE_DERIVED_DEVELOPMENT_RULE_CHALLENGE",
+  "relationship_to_mother": "One fixed causal translation of ASHARE-ANNUAL-AMIHUD-ILLIQUIDITY-COMPENSATION-MOTHER-V1 after every chronological and outcome-group chart sheet was reviewed.",
+  "visual_review": {
+    "individual_candidate_charts": 2286,
+    "chronological_sheets_reviewed": 254,
+    "outcome_group_sheets_reviewed": 257,
+    "review_log": "research/market_behavior_os_v2/results/ASHARE-ANNUAL-AMIHUD-ILLIQUIDITY-COMPENSATION-MOTHER-V1-VISUAL-REVIEW-LOG.md",
+    "compression": "The stable visual abstraction was a dynamically observed transfer into an accepted higher price area, conditioned on causal broad-market opportunity and followed by one deterministic loss-of-acceptance exit. Static signal-date trend, named candles, single rebounds, and single breakouts were rejected by material counterexamples."
+  },
+  "five_rules": [
+    "Mother set: retain the already-frozen highest annual Amihud quintile formed from the complete preceding calendar year with at least 200 valid daily observations.",
+    "Observation clock: do not buy at the annual signal. From the first possible causal 20-session stock window through signal_cal_idx+120, recompute the causal market state after each close; STRONG means market_median_ret20>0 and WEAK means market_median_ret20<=0.",
+    "Accepted repricing trigger: take the first close for which at least 15 of the stock's most recent 20 valid traded coordinate closes are strictly above the frozen annual-signal coordinate close and current stock ret20 is strictly greater than max(0, causal market_median_ret20). The same frozen coordinate lineage must hold throughout the observation history.",
+    "Entry: after a trigger close, buy only at the first legal non-limit-up open in trigger_cal_idx+1 through trigger_cal_idx+3. A trigger that cannot obtain such an entry is not a completed signal.",
+    "Exit: after entry, the first close completing five consecutive valid traded closes strictly below each close's own causal rolling median of the most recent 20 valid traded coordinate closes generates a failure exit for the next legal non-limit-down open. Otherwise exit at the first legal non-limit-down open on or after entry_cal_idx+120."
+  ],
+  "exact_parameters": {
+    "mother_annual_amihud_quintile": 1,
+    "mother_minimum_valid_daily_observations": 200,
+    "observation_end_market_sessions_after_annual_signal": 120,
+    "stock_acceptance_window_valid_traded_sessions": 20,
+    "minimum_closes_above_annual_anchor": 15,
+    "market_state_horizon_sessions": 20,
+    "relative_return_condition": "stock_ret20 > max(0, market_median_ret20)",
+    "entry_search_market_sessions": 3,
+    "failure_median_window_valid_traded_sessions": 20,
+    "consecutive_failure_closes": 5,
+    "maximum_holding_market_sessions": 120,
+    "round_trip_cost_fraction": 0.004
+  },
+  "timing_and_execution": {
+    "trigger_available": "Only after the trigger-session close and after all source timestamps are at or before that session decision_at.",
+    "same_bar_fill": false,
+    "entry": "First legal non-limit-up open one to three market sessions strictly after the trigger close.",
+    "failure_exit": "First legal non-limit-down open strictly after the fifth qualifying failure close.",
+    "time_exit": "First legal non-limit-down open on or after entry_cal_idx+120.",
+    "t_plus_one": true,
+    "suspensions_and_price_limits": "Preserve existing accepted legal-open and limit-price checks.",
+    "corporate_actions_and_coordinate_lineage": "Require the frozen signal invalid_step_cum coordinate lineage through trigger, entry, and exit; fail closed immediately on drift or unknown required lineage.",
+    "unknown_required_semantics": "FAIL_CLOSED"
+  },
+  "market_state_semantics": {
+    "source": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+    "source_sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a",
+    "representation": "Causal cross-sectional median 20-session stock return, recomputed at the actual trigger date.",
+    "no_future_function": true,
+    "purpose": "In a weak market the stock must itself have positive 20-session return; in a strong market it must exceed the positive market median. This is a single asymmetric proof rule, not a hindsight annual label."
+  },
+  "development_contract": {
+    "portfolio_years": [2015, 2016, 2017, 2018, 2019, 2020],
+    "maximum_signal_or_trigger_date": "2020-12-31",
+    "maximum_evaluation_outcome_date": "2020-12-31",
+    "post_2020_data_read": false,
+    "post_2021_signal_read": false,
+    "post_2023_outcome_read": false,
+    "cy011_read": false,
+    "one_rule_set_only": true,
+    "no_parameter_grid": true,
+    "no_rule_rescue_after_results": true
+  },
+  "success_gate": {
+    "completed_signals_each_portfolio_year_strictly_greater_than": 50,
+    "mean_net_return_each_portfolio_year_strictly_greater_than": 0.04,
+    "all_development_years_must_pass": true,
+    "if_pass": "Freeze unchanged and only then open the 2022-2024 validation partition.",
+    "if_fail": "Close this exact family without threshold, window, exit, or market-state rescue and continue to a genuinely different economic mother family."
+  },
+  "frozen_inputs": {
+    "mother_candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_annual_amihud_illiquidity_compensation_mother_v1/stage_a/candidates_frozen.parquet",
+      "sha256": "575f0b7ebd22947b9b61729f91ef7182d492c2261c713bb1681c76aebe8e457e"
+    },
+    "pit_daily": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+      "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+    }
+  }
+}

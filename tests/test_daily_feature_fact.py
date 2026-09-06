@@ -64,4 +64,55 @@ def test_daily_fact_rejects_stale_scalar_only_peak_artifact(tmp_path: Path) -> N
     pq.write_table(pa.Table.from_pylist([]), source)
     with pytest.raises(ValueError, match="canonical_peaks_json"):
         build_daily_feature_fact(source, tmp_path / "fact.parquet")
+
+
+def test_daily_fact_preserves_unknown_cost_null_metrics(tmp_path: Path) -> None:
+    timestamp = datetime(2018, 1, 3, 15, tzinfo=ZoneInfo("Asia/Shanghai"))
+    scalar_names = (
+        "average_cost", "cost_p01", "cost_p10", "cost_p50", "cost_p90",
+        "cost_p99", "profit_ratio", "asr", "cbw", "concentration_20",
+        "dominant_peak_today", "dominant_band_lower", "dominant_band_upper",
+        "dominant_band_mass",
+    )
+    rows = []
+    for index, model in enumerate(("uniform", "disposition", "active_sticky")):
+        row = {
+            "symbol": "002004.SZ",
+            "trade_date": date(2018, 1, 3),
+            "seller_model": model,
+            "snapshot_id": f"unknown-{index}",
+            "available_at": timestamp,
+            "peak_count": None,
+            "canonical_peaks_json": None,
+            "cash_dividend_per_share": 0.0,
+            "share_multiplier": 1.0,
+            "action_provenance_ids": [],
+            "known_cost_fraction": 0.0,
+            "model_quality": 0.0,
+            "hard_valid": False,
+            "research_valid": True,
+            "quality_reason_codes": ["UNKNOWN_COST_PRESENT"],
+            **{name: None for name in scalar_names},
+        }
+        rows.append(row)
+
+    source = tmp_path / "operator.parquet"
+    target = tmp_path / "fact.parquet"
+    pq.write_table(pa.Table.from_pylist(rows), source)
+
+    assert build_daily_feature_fact(source, target) == 1
+    result = pq.read_table(target).to_pylist()[0]
+    for name in (
+        "average_cost", "p01", "p10", "p50", "p90", "p99", "profit_ratio",
+        "asr", "cbw", "concentration_20", "dominant_peak_today",
+        "dominant_band_lower", "dominant_band_upper", "dominant_band_mass",
+        "model_spread_cost_p50", "model_spread_cost_p90",
+        "model_spread_dominant_peak_today", "tracked_base_peak",
+    ):
+        assert result[name] is None
+    assert result["peak_count"] is None
+    assert result["known_cost_fraction_min"] == 0.0
+    assert result["hard_valid"] is False
+    assert result["research_valid"] is True
+    assert result["quality_reason_codes"] == ["UNKNOWN_COST_PRESENT"]
 import json

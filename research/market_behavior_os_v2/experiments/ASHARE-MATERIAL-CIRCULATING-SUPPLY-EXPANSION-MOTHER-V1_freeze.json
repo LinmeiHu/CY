@@ -1,0 +1,92 @@
+{
+  "experiment": "ASHARE-MATERIAL-CIRCULATING-SUPPLY-EXPANSION-MOTHER-V1",
+  "research_status": "FROZEN_OUTCOME_BLIND_MOTHER_HYPOTHESIS",
+  "economic_hypothesis": "A large, causally observable increase in circulating shares that is not a split, bonus-share, or same-day corporate-action coordinate event is a material expansion of tradable supply. The event may create persistent selling pressure, or it may reveal unusually strong demand if the added supply is absorbed. Direction is not assumed before complete chart anatomy.",
+  "novelty": "This is an exogenous tradable-supply event family, not nominal size, ordinary turnover, full-float turnover completion, price/volume compression, gap, VWAP, support, momentum, or generic breakout research.",
+  "data_contract": {
+    "source": "CY-006 PIT-B daily capital/share coordinate joined to the accepted action-coordinate daily panel",
+    "accepted_semantic_label": "circulating_shares",
+    "availability_rule": "The first completed market session on which the changed circulating-share value is available and all effective, announcement, and availability dates are no later than the session date.",
+    "not_claimed": [
+      "true free-float shares",
+      "total shares",
+      "lockup-release identity",
+      "secondary-offering identity",
+      "seller identity"
+    ],
+    "fail_closed": "Unknown availability, invalid historical identity, blocking corporate action, non-consecutive history, or coordinate-lineage change rejects the event."
+  },
+  "mother_definition": {
+    "universe": "MAIN plus CHINEXT, non-ST, valid and tradable on the event session",
+    "signal_start": "2018-01-01",
+    "signal_end": "2020-12-31",
+    "prior_observation": "Immediately preceding consecutive market session for the same symbol",
+    "circulating_share_increase_minimum": 0.5,
+    "threshold_rationale": "A one-half expansion is a deliberately material supply shock, fixed once before outcomes rather than selected from neighboring thresholds.",
+    "same_day_corporate_action_count": 0,
+    "same_day_share_multiplier": 1.0,
+    "coordinate_lineage_must_be_unchanged_from_prior_session": true,
+    "required_prior_coordinate_history_sessions": 60,
+    "causal_symbol_cooldown_market_sessions": 120,
+    "direction": "NONE",
+    "market_filter": "NONE",
+    "price_path_filter": "NONE",
+    "turnover_filter": "NONE"
+  },
+  "stage_sequence": {
+    "stage_a": "Freeze all governed mother events and audit annual breadth without reading outcomes.",
+    "stage_b_if_stage_a_has_more_than_50_events_each_year": "Attach fixed H20/H60/H120 anatomy labels and materialize plus/minus 126-session chart windows through 2021-06-30 only.",
+    "stage_c": "Render every mother event and review every chronological contact sheet before compressing any executable rule.",
+    "stage_d": "Freeze at most five causal rules before annual rule-level return aggregation."
+  },
+  "chart_contract": {
+    "sessions_before": 126,
+    "sessions_after": 126,
+    "maximum_context_date": "2021-06-30",
+    "render_every_frozen_event": true,
+    "chronological_review_required": true,
+    "outcome_groups": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ]
+  },
+  "anatomy_only_execution": {
+    "entry": "first legal buyable open during market sessions t+1 through t+3",
+    "horizons_market_sessions": [
+      20,
+      60,
+      120
+    ],
+    "round_trip_cost": 0.004,
+    "same_session_fill": false,
+    "price_limits": "enforced",
+    "suspensions": "enforced",
+    "corporate_actions": "fail closed on blocking event or coordinate-lineage change",
+    "portfolio_replay": false
+  },
+  "future_gate": {
+    "required_completed_signals_per_development_year_strictly_greater_than": 50,
+    "required_mean_net_return_per_development_year_strictly_greater_than": 0.04,
+    "required_median_net_return_per_development_year_strictly_greater_than": 0.0,
+    "development_years": [
+      2018,
+      2019,
+      2020
+    ],
+    "validation_years_only_if_all_gates_pass": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "outcome_governance": {
+    "post_2021_signal_identity_read_before_development_gate": false,
+    "validation_2022_2024_outcome_read_before_development_gate": false,
+    "no_threshold_grid": true,
+    "no_sign_inversion_after_outcomes": true,
+    "no_rule_rescue_after_one_shot_test": true
+  }
+}

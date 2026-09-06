@@ -1,0 +1,40 @@
+{
+  "experiment": "ASHARE-MATERIAL-SUPPLY-EXPANSION-EVENT-HIGH-FAILURE-EXIT-V3",
+  "research_status": "FROZEN_POST_HOC_CHART_GUIDED_DEVELOPMENT_RULE",
+  "scientific_status": "The sell rule was generated after reviewing all 525 parent charts and after the three-close entry refinement failed. This is consumed-history development, not independent confirmation.",
+  "parent_rule": "ASHARE-MATERIAL-SUPPLY-EXPANSION-DEMAND-REASSERTION-V1",
+  "fixed_parent_input": {
+    "completed_parent_trades": 525,
+    "signal_years": [2018, 2019, 2020],
+    "parent_entry_dates_unchanged": true,
+    "parent_trigger_definition_unchanged": true,
+    "parent_market_condition_unchanged": true,
+    "parent_event_level_definitions_unchanged": true
+  },
+  "single_incremental_question": "Does recognizing failed acceptance at the frozen supply-event high, rather than waiting for failure below the event low, reduce false-reassertion losses while preserving durable H120 winners?",
+  "entry_rule": "Use every exact completed parent entry without delay or reselection.",
+  "exit_rule": {
+    "failure_observation": "After entry, two consecutive PIT-valid completed closes strictly below the frozen supply-event high schedule a failure exit.",
+    "failure_execution": "Exit at the next legally sellable open after the second below-high close; never inside the signal bar.",
+    "time_exit": "Otherwise first legally sellable open at or after 120 market sessions from the unchanged parent entry.",
+    "round_trip_cost": 0.004
+  },
+  "staged_evaluation": {
+    "stage_1": "Apply only the frozen exit lifecycle and record completed decisions without return aggregation.",
+    "breadth_gate": "More than 50 completed trades in each of 2018, 2019, and 2020.",
+    "stage_2": "If and only if the breadth gate passes, run one development return aggregation.",
+    "annual_return_gates": [
+      "mean net return greater than 4% in every development signal year",
+      "median net return greater than 0% in every development signal year"
+    ],
+    "no_parameter_rescue": true
+  },
+  "governance": {
+    "post_2021_signal_identity_read": false,
+    "validation_2022_2024_outcome_read": false,
+    "maximum_context_date": "2021-06-30",
+    "no_entry_change_in_this_test": true,
+    "no_threshold_grid": true,
+    "no_market_regime_redefinition": true
+  }
+}

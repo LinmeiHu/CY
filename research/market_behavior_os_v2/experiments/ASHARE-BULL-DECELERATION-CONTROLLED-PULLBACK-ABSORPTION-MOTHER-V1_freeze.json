@@ -1,0 +1,65 @@
+{
+  "experiment": "ASHARE-BULL-DECELERATION-CONTROLLED-PULLBACK-ABSORPTION-MOTHER-V1",
+  "scientific_status": "OUTCOME_BLIND_PRE_2021_MOTHER_CANDIDATE_FREEZE",
+  "purpose": "Test a market-explainable bull-market rotation mechanism before any future-return aggregation: when the broad market remains causally positive but its recent advance has slowed, an established stock leader may begin a second leg only if a controlled pullback is visibly absorbed. This is a mother-candidate and chart-discovery experiment, not a fitted trading rule or independent confirmation.",
+  "novelty_boundary": "This is not another breakout, quiet-inventory, panic-reversal, support-hold, limit-up, true-gap, or generic trend-pullback screen. The signal is the same-session rejection of a bounded pullback low inside a causally decelerating bull market; the economic claim is rotation absorption, not raw momentum.",
+  "development_governance": {
+    "signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "candidate_coverage_audit_reads_outcomes": false,
+    "chart_rule_source": "all frozen candidates, each with approximately 126 completed market sessions before and after where available",
+    "post_2020_signal_or_rule_fit": false,
+    "2021_plus_signal_outcome_before_rule_freeze": false,
+    "2022_2024_open_condition": "Only after one chart-derived rule set is frozen and the 2014-2020 strategy has more than 50 completed signals in every calendar year and pooled mean net return above 4 percent.",
+    "post_2024_signal_or_outcome_read": false
+  },
+  "causal_market_state": {
+    "source": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+    "base_state": "BULL at the completed signal close: market median ret20 and ret60 are positive and both positive-return shares exceed 0.50.",
+    "deceleration": "market_median_ret20 < market_median_ret60 at the completed signal close.",
+    "economic_meaning": "The broad long-equity backdrop is still positive, but the recent advance is slower than the medium-horizon advance; capital rotation and pullback absorption are more natural than a fresh indiscriminate breakout.",
+    "future_market_return": false,
+    "missing_policy": "fail closed"
+  },
+  "mother_candidate": {
+    "universe": "MAIN and CHINEXT, non-ST, fully hard-valid and tradable, with unchanged corporate-action coordinate lineage across every required history row.",
+    "established_leader": "At the close immediately before the signal, the stock has a positive 60-session coordinate return of at least 5 percent and no more than 60 percent.",
+    "controlled_pullback": "The signal-session coordinate low is 5 to 15 percent below the highest coordinate high in the preceding ten completed stock sessions.",
+    "fresh_undercut": "The signal-session coordinate low is at or below every coordinate low in the preceding five completed stock sessions.",
+    "same_session_absorption": "The signal opens below the preceding coordinate close, trades at least 2 percent below it intraday, then closes at or above the preceding coordinate close and in the top 30 percent of its own range.",
+    "active_participation": "Signal turnover is at least the median turnover of the preceding 20 completed stock sessions.",
+    "no_price_limit_artifact": "The signal close is strictly below the historical upper limit and strictly above the historical lower limit.",
+    "deduplication": "Retain only the first qualifying signal per symbol until more than 20 market-session indices have elapsed; no future observation is used."
+  },
+  "candidate_stage": {
+    "outcome_columns_read": [],
+    "required_outputs": [
+      "frozen event identity",
+      "annual raw signal counts",
+      "independent signal dates",
+      "symbols",
+      "causal market-state audit",
+      "lineage and timestamp audit"
+    ],
+    "coverage_decision": "If the bull-lane candidate density is too small to merit complete chart review, close this exact mother without attaching outcomes and move to a different economic mother. It is not required to cover bear years because it is intentionally one future router sleeve."
+  },
+  "future_translation_if_chart_rules_earn_it": {
+    "decision_at": "completed signal-session close",
+    "entry": "first legal executable open strictly after the signal and no later than the third subsequent market session",
+    "initial_economic_profile": "+10 percent gross target or H20 next legal open, 20 bps per side",
+    "bear_state": "cash in this mother experiment; any later dual-engine combination must be separately frozen and cannot alter the bull chart findings"
+  },
+  "prohibited": [
+    "future market-state classification",
+    "calendar-year bull/bear labels",
+    "future troughs or rebound labels in the candidate definition",
+    "threshold grid or neighboring lookback search",
+    "outcome-driven candidate deletion",
+    "same-bar entry",
+    "2022-2024 outcomes before the frozen development gate",
+    "automatic combination with a prior bear engine",
+    "black-box model"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "experiment": "ASHARE-FAILED-BREAKDOWN-SPRING-SIMPLE-RULE-DEVELOPMENT-V1",
+  "status": "OUTCOME_BLIND_SEMANTIC_AND_TRANSLATION_FREEZE",
+  "economic_mechanism": "A stock in an established advance forms a short support shelf during its first meaningful pullback. A completed session trades materially below the strictly prior shelf but closes back above it in the upper part of its own range, consistent with failed supply expansion and trapped late sellers.",
+  "independence": "No true-gap, collapse-zone, gap-fill, gap-reclaim, V6 event, V26, or V27 identity participates.",
+  "development": {
+    "warmup": "2013",
+    "semantic_and_discovery": "2014-2018",
+    "chronological_confirmation": "2019-2021",
+    "validation_if_development_passes": "2022-2023",
+    "later_diagnostic_if_validation_passes": "2024-2025"
+  },
+  "signal": {
+    "universe": "PIT hard-valid non-ST Main and ChiNext common shares",
+    "trend": "completed-session ret60 >= 10%; a causal 20-session advance into the prior peak is >=20% with directional efficiency >=0.35",
+    "pullback": "prior peak is 5-30 completed sessions old; signal close is 10-30% below that peak",
+    "shelf": "strictly prior 10-session high-low range <=18%, close drift >=-10%, and at least two lows are within 1.5% of the frozen prior-10-session low",
+    "spring": "signal low is 2-8% below the frozen prior-10-session low; signal close is above that level, above signal open, and in the upper 25% of the completed range",
+    "deduplication": "first eligible signal per symbol followed by a 20-completed-session cooldown",
+    "decision_at": "completed signal-session close",
+    "missing_policy": "fail closed"
+  },
+  "translation_family": {
+    "entry": "next legal executable open strictly after signal",
+    "targets": [
+      "entry plus 80% of the distance to the frozen prior peak",
+      "frozen prior peak"
+    ],
+    "failure_exits": [
+      "none",
+      "next legal open after first sellable completed-session close below frozen signal low"
+    ],
+    "time_stops": [10, 20],
+    "round_trip_cost": 0.004,
+    "t1": true,
+    "suspension_limit_and_corporate_action_handling": "authoritative existing fail-closed contracts"
+  },
+  "selection": {
+    "maximum_translation_profiles": 8,
+    "choose_using": "2014-2018 only; prefer simplest profile within one standard error",
+    "do_not_change_signal_after_outcomes": true
+  },
+  "success_gate": {
+    "accepted_trades_per_2014_2021_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_min": 0.03,
+    "pooled_median_net_return_positive": true,
+    "each_2019_2021_confirmation_year_mean_positive": true,
+    "return_excluding_best_five_days_positive": true,
+    "no_single_year_or_board_explains_edge": true
+  },
+  "governance": {
+    "thresholds_selected_from_blind_pre_signal_charts_only": true,
+    "post_signal_bars_used_in_signal": false,
+    "future_trough_or_recovery_confirmation": false,
+    "repository_files_modified_after_outcome_open_only_for_mechanical_reporting": true
+  }
+}

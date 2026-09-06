@@ -1,0 +1,69 @@
+{
+  "experiment": "ASHARE-CROSS-INDUSTRY-CAP3-FAST-TAKEOVER-V4",
+  "stage": "FROZEN_AFTER_PRE_2022_DEVELOPMENT_BEFORE_2022_2025_CHALLENGE",
+  "scientific_status": "PRE_2022_MECHANISM_DERIVED_SEQUENTIAL_TEMPORAL_CHALLENGE",
+  "economic_hypothesis": "A broad seller-cost takeover should be diversified across industries and should reprice quickly. Limiting each causal industry to three depressed reclaimers reduces duplicated industry exposure, while an H18 decision rejects demand that cannot produce timely follow-through.",
+  "inherits": {
+    "selection_and_market_failure": "ASHARE-CROSS-INDUSTRY-SELL-PRESSURE-DEPRESSED-TAKEOVER-V3",
+    "v3_freeze_sha256": "865d4895a7cd30bf95ec906b45321b6d5d7d0cf82f66f7ea9cd684e82528fabf",
+    "mother_freeze_sha256": "a8225c15d5b57faebed547002e82658ad3ad7d24827ad247f76efa6c815c8cb4"
+  },
+  "unchanged_core_rules": [
+    "a valid high-turnover down anchor defines frozen seller cost",
+    "all intervening closes remain below seller cost",
+    "the signal touches and reclaims seller cost on at least 1.5 times prior-twenty turnover and closes above the prior-session high",
+    "at least twelve symbols across at least eight point-in-time causal industries reclaim on the same date",
+    "retain the lowest prior-sixty-return sixty percent of the pre-ranking event cohort",
+    "enter only at the first legal non-upper-limit open in signal plus one through plus three",
+    "exit a ten-percent target no earlier than the first post-entry bar",
+    "if the valid tradable non-ST market median-return curve falls ten percent from the signal close, decide market takeover failure and exit at the next legal sellable open",
+    "charge forty basis points round trip"
+  ],
+  "v4_changes": [
+    "within each signal date and causal industry, keep at most the three lowest prior-sixty-return stocks",
+    "for capacity priority, cycle through first industry choices before second and third choices, sorting each layer by prior-sixty return",
+    "replace the H20 time decision with an H18 close decision followed by the next legal sellable open"
+  ],
+  "development_quarantine": {
+    "signal_period": ["2014-01-01", "2021-11-30"],
+    "outcome_and_market_bar_end": "2021-12-31",
+    "post_2021_bar_read": false
+  },
+  "development_evidence": {
+    "selected_signals": 414,
+    "completed": 412,
+    "completed_per_year": 51.5,
+    "mean_net_return": 0.05137033272447045,
+    "mean_holding_sessions": 12.87621359223301,
+    "severe_loss10": 0.04611650485436893,
+    "distinct_signal_dates": 31,
+    "signal_date_equal_weight_mean_net": 0.04496520445546239,
+    "largest_date_share": 0.13106796116504854,
+    "positive_signal_date_share": 0.8709677419354839,
+    "diversified_top10_completed": 277,
+    "diversified_top10_mean_net": 0.04567990729066686,
+    "diversified_top10_mean_holding": 12.545126353790614,
+    "every_year_with_trades_positive": true,
+    "all_frozen_gates_pass": true
+  },
+  "development_artifacts": {
+    "runner_sha256_before_freeze_guard": "40794d3e4fd24851af29d5ac7f23f7ef88500e117b97a9bb46d206977f0f2a1e",
+    "result_sha256": "07cb823df5b48cab6695b0c86d35555201cf418204e5c95cccdc36c1c37a7265",
+    "selected_candidates_sha256": "e9102abd9e5b0979011b211cccd1aeb5ca0801ccdedaef970131447bfeff5f6b",
+    "outcomes_sha256": "a3d2f4fe398cac03b05df4969b41b4c699e46956234fe577a4daa4ebd74b8aa1"
+  },
+  "challenge": {
+    "signal_period": ["2022-01-01", "2025-12-31"],
+    "outcome_tail_end": "2026-03-31",
+    "open_once": true,
+    "no_threshold_rescue": true,
+    "report_years_event_concentration_and_diversified_top10": true
+  },
+  "governance": {
+    "same_bar_fill": false,
+    "future_market_function": false,
+    "unknown_required_state": "fail closed",
+    "independent_confirmation_claim": false,
+    "disclosure": "V4 development read no bar after 2021-12-31. V3 challenge results were already known before V4, so this is a frozen sequential challenge and not pristine independent confirmation; V4 thresholds were selected from the pre-2022 development replay."
+  }
+}

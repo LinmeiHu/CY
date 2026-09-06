@@ -1,0 +1,69 @@
+{
+  "experiment": "ASHARE-DISTRIBUTED-ACCUMULATION-SLOW-EXHAUSTION-MOTHER-SCREEN-V1",
+  "scientific_status": "OUTCOME_BLIND_MOTHER_SIGNAL_FREEZE",
+  "question": "Do either distributed demand accumulation or slow selling-pressure exhaustion create a broad, causal A-share event family worth full candlestick review?",
+  "data": {
+    "daily": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "daily_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_regime": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+    "causal_regime_sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  },
+  "shared_contract": {
+    "signal_period": ["2014-01-01", "2020-12-31"],
+    "history": "exact prior completed market sessions only; require contiguous 60-session stock history and unchanged corporate-action coordinate lineage",
+    "universe": "registered MAIN and CHINEXT non-ST hard-valid, tradable, identity-valid and market-rule-valid rows",
+    "signal_bar": "completed daily bar; close must not equal the upper price limit",
+    "deduplication": "keep only the first raw occurrence for the symbol and mechanism after 20 completed market sessions without another raw occurrence",
+    "entry": "first legal non-upper-limit open in the next three market sessions",
+    "target_execution": "no earlier than the first stock session after entry, preserving T+1",
+    "time_stop": "decision after the frozen number of completed market sessions, then first legal sellable open",
+    "round_trip_cost": 0.004,
+    "missing_or_lineage_change": "fail closed"
+  },
+  "mothers": [
+    {
+      "id": "DISTRIBUTED_ACCUMULATION_ESCAPE",
+      "economic_claim": "A moderate 20-session advance built by repeated small gains and relatively little downside turnover represents distributed accumulation; the first non-extreme, high-close escape above the pre-existing 20-session ceiling is delayed price discovery rather than lottery demand.",
+      "causal_market_route": ["BULL", "TRANSITION"],
+      "prior_20_return": [0.05, 0.25],
+      "prior_20_positive_session_share_min": 0.60,
+      "prior_20_max_absolute_session_return_strictly_below": 0.07,
+      "prior_20_downside_to_upside_turnover_sum_max": 0.65,
+      "signal_return": [0.02, 0.07],
+      "signal_close_location_min": 0.75,
+      "signal_close_above": "prior 20-session coordinate high",
+      "signal_turnover_to_prior20_median": [1.20, 2.50],
+      "profile": {"target": 0.15, "horizon_sessions": 30}
+    },
+    {
+      "id": "SLOW_SUPPLY_EXHAUSTION_TAKEOVER",
+      "economic_claim": "After a material decline, five sessions of non-deteriorating lows and lower downside turnover than the preceding five sessions indicate selling-pressure exhaustion; a moderate high-close clearance of the prior-five ceiling is the first new demand takeover.",
+      "causal_market_route": ["BEAR", "TRANSITION"],
+      "prior_20_return_max": -0.08,
+      "last_5_low_at_least_previous_5_low": true,
+      "last_5_downside_turnover_sum_at_most_previous_5": true,
+      "signal_return": [0.02, 0.07],
+      "signal_close_location_min": 0.75,
+      "signal_close_above": "prior 5-session coordinate high",
+      "signal_turnover_to_prior20_median": [1.00, 2.50],
+      "profile": {"target": 0.10, "horizon_sessions": 20}
+    }
+  ],
+  "screen_gate": {
+    "minimum_completed_each_calendar_year": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_positive": true,
+    "maximum_severe_loss_rate": 0.20,
+    "promotion": "Only a mother passing all gates may receive a full plus/minus-six-month chartbook. No union, sign inversion, threshold rescue, or neighboring horizon is allowed in this batch."
+  },
+  "governance": {
+    "future_market_function": false,
+    "2021_signal_read": false,
+    "2022_2024_signal_or_outcome_read": false,
+    "post_2024_read": false,
+    "no_parameter_grid": true,
+    "no_post_result_rule_change": true,
+    "consumed_development_history": true,
+    "no_independent_confirmation_claim": true
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "experiment": "ASHARE-INDUSTRY-NEUTRAL-SIZE-EVENT-CORRIDOR-ACCEPTANCE-V1",
+  "research_status": "FROZEN_VISUAL_DATA_GENERATED_DEVELOPMENT_HYPOTHESIS",
+  "frozen_before_rule_level_annual_aggregation": true,
+  "source_mother": {
+    "experiment": "ASHARE-INDUSTRY-NEUTRAL-CIRCULATING-SIZE-EXTREMES-MOTHER-V1",
+    "candidate_path": "/Volumes/quant/CY_quant_research/ashare_industry_neutral_circulating_size_extremes_mother_v1/stage_a/candidates_frozen.parquet",
+    "candidate_sha256": "5d05b6a0d3bc4b812484d3513cb3f67f60f05982c56fb2930d18c6b892614dfc",
+    "lanes": [
+      "SMALL_CIRCULATING_SIZE",
+      "LARGE_CIRCULATING_SIZE"
+    ],
+    "signal_start": "2018-01-01",
+    "signal_end": "2020-12-31",
+    "event_count": 1975
+  },
+  "visual_derivation": {
+    "chronological_contact_sheets_reviewed": 220,
+    "individual_charts_reviewed": 1975,
+    "chart_context_sessions_before": 126,
+    "chart_context_sessions_after": 126,
+    "maximum_context_date": "2021-06-30",
+    "review_log": "research/market_behavior_os_v2/results/ASHARE-INDUSTRY-NEUTRAL-CIRCULATING-SIZE-EXTREMES-MOTHER-V1-VISUAL-REVIEW-LOG.md"
+  },
+  "rules": {
+    "rule_1_mother": "Retain the exact frozen industry-neutral small and large circulating-market-value mother events; the size lane is not a forecast direction.",
+    "rule_2_event_corridor": {
+      "definition": "Use the mother session and the next four consecutive market sessions with valid, unchanged coordinate lineage.",
+      "formation_market_sessions": 5,
+      "ceiling": "maximum coord_high across the five formation sessions",
+      "floor": "minimum coord_low across the five formation sessions",
+      "trade_during_formation": false,
+      "fail_closed": "Reject the event if any of the five required market sessions is missing, invalid, or crosses coordinate lineage."
+    },
+    "rule_3_price_acceptance": {
+      "search_relative_market_sessions_inclusive": [
+        5,
+        19
+      ],
+      "pretrigger_failure": "Reject the event if two consecutive valid closes strictly below the frozen corridor floor occur before the first qualifying acceptance close.",
+      "current_close_above_frozen_ceiling": true,
+      "latest_five_market_sessions_minimum_closes_strictly_above_ceiling": 3,
+      "latest_five_sessions_must_be_valid_unchanged_lineage": true,
+      "selection": "first qualifying completed close only"
+    },
+    "rule_4_causal_market_opportunity": {
+      "evaluate_on_price_acceptance_close": true,
+      "pass_if": "existing market_regime is BULL OR both repair inequalities are true",
+      "repair_inequalities": [
+        "market_median_ret20 > market_median_ret60",
+        "market_positive_ret20_share > market_positive_ret60_share"
+      ],
+      "latest_source_timestamp_must_not_exceed_decision_at": true,
+      "future_market_data": false
+    },
+    "rule_5_execution_and_exit": {
+      "entry": "First legal buyable open in the next three market sessions after the qualifying close.",
+      "same_session_fill": false,
+      "entry_delay_market_sessions_inclusive": [
+        1,
+        3
+      ],
+      "failure_exit_signal": "Two consecutive valid completed closes strictly below the frozen corridor ceiling after entry.",
+      "failure_exit": "First legal sellable open after the failure signal and after T+1 is satisfied.",
+      "time_exit": "First legal sellable open at or after entry market-session index plus 120.",
+      "maximum_holding_market_sessions": 120,
+      "round_trip_cost": 0.004,
+      "price_limits": "enforced",
+      "suspensions": "enforced",
+      "corporate_actions": "fail closed on blocking event or coordinate-lineage change",
+      "t_plus_one": "enforced"
+    }
+  },
+  "gate_sequence": {
+    "stage_1": "Build qualifying entries and completed exits without producing annual or pooled return aggregates.",
+    "annual_completed_signal_minimum_strictly_greater_than": 50,
+    "breadth_years": [
+      2018,
+      2019,
+      2020
+    ],
+    "breadth_failure_action": "Close this exact rule without annual return aggregation and do not rescue thresholds.",
+    "stage_2_if_breadth_passes": "Produce exactly one annual development aggregation.",
+    "annual_mean_net_return_strictly_greater_than": 0.04,
+    "annual_median_net_return_strictly_greater_than": 0.0,
+    "all_years_must_pass": true,
+    "validation_open_condition": "Only if every development-year breadth, mean, and median gate passes.",
+    "validation_years_if_authorized": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "outcome_governance": {
+    "development_signal_years": [
+      2018,
+      2019,
+      2020
+    ],
+    "maximum_context_date": "2021-06-30",
+    "post_2021_signal_identity_read": false,
+    "validation_2022_2024_outcome_read_before_gate": false,
+    "no_parameter_rescue": true,
+    "no_sign_rescue": true,
+    "no_lane_selection_after_results": true
+  }
+}

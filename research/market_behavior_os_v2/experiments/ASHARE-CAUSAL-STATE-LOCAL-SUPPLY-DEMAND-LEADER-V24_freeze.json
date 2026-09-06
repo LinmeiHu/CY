@@ -1,0 +1,74 @@
+{
+  "experiment": "ASHARE-CAUSAL-STATE-LOCAL-SUPPLY-DEMAND-LEADER-V24",
+  "research_status": "SECOND_POST_CHART_DEVELOPMENT_RULE_FREEZE",
+  "purpose": "Test the distinct chart-derived claim that common industry demand creates many simultaneous V22 candidates but only the cleanest stock-level supply/demand structure should be purchased. This uses causal global-state routing and one deterministic representative per PIT industry/date rather than another threshold rescue.",
+  "relationship_to_v23": "V23 is closed at its frozen failed gate. V24 does not change any V23 threshold and does not select a Top-N. It tests an independent cross-sectional redundancy/composition mechanism observed across the complete V22 chart corpus.",
+  "frozen_inputs": {
+    "v22_candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_local_industry_demand_state_mother_v22/stage_a/candidates_frozen.parquet",
+      "sha256": "58dcf3aaa232bc15e364dfb16806a944521eb782b62e7dc26d9e9068165c9e1e"
+    },
+    "v22_outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_local_industry_demand_state_mother_v22/stage_b/outcomes.parquet",
+      "sha256": "e86f96fdc18f3d5f6db57ed35a52165f5bbd499101dc8af80c0ea73ba0650fbe"
+    },
+    "v23_causal_features": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_demand_expansion_low_inventory_recovery_v23/causal_features.parquet",
+      "sha256": "a66bfdd9e84fc5101cb1693e8c4e649b9ae729c07a0bdeb923b6f55ef6ec5fd9"
+    },
+    "causal_global_market_state": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+      "sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+    }
+  },
+  "chart_basis": {
+    "individual_charts": 4933,
+    "chronological_contact_sheets": 549,
+    "observation": "same-industry and same-date candidate clusters contain both winners and losers; visually stronger cases have less overhead/maturity on the bull side and clearer selling-pressure decay plus demand recovery on the bear side"
+  },
+  "frozen_rules": {
+    "global_route": {
+      "BULL": "only LOCAL_BULL_DISTRIBUTED_ACCUMULATION_ESCAPE candidates",
+      "BEAR": "only LOCAL_BEAR_SLOW_SUPPLY_EXHAUSTION_TAKEOVER candidates",
+      "TRANSITION": "cash",
+      "timing": "global state is known at signal-date close and uses no future observation"
+    },
+    "local_alignment": "the candidate already belongs to the matching V22 PIT-industry LOCAL_BULL or LOCAL_BEAR state",
+    "one_per_industry_date": "within signal_date, PIT causal_industry, and routed mechanism retain exactly the first deterministic structural ranking; this is economic common-mode deduplication, not a fitted Top-N",
+    "bull_priority": [
+      "valid exact 126-session history before invalid history",
+      "fewer prior-126 daily ranges intersecting [signal close, 1.15 * signal close]",
+      "smaller exact prior-20 return to avoid the more mature path",
+      "lexical event_id tie break"
+    ],
+    "bear_priority": [
+      "smaller last5_downside_turnover / previous5_downside_turnover, with zero previous turnover ranked last",
+      "larger causal 20-session recovery_fraction",
+      "lexical event_id tie break"
+    ],
+    "execution": "reuse exact V22 target, horizon, entry, T+1, limit, suspension, corporate-action, and 40 bp round-trip-cost outcomes"
+  },
+  "development_governance": {
+    "signal_period": "2014-01-01 through 2020-12-31",
+    "post_2021_outcome_read": false,
+    "validation_2022_2024_read": false,
+    "validation_open_condition": "every year 2014-2020 has >50 completed events and mean net event return >4.0%",
+    "no_rescue": true
+  },
+  "predeclared_outputs": [
+    "candidate and completed count",
+    "annual count and mean/median net return",
+    "bull/bear decomposition",
+    "same-industry duplicates removed",
+    "causal route and timing audits"
+  ],
+  "prohibited": [
+    "Top-N search",
+    "score-weight search",
+    "threshold changes",
+    "alternative global states",
+    "transition trades",
+    "outcome-dependent tie break",
+    "2022-2024 read before gate"
+  ]
+}

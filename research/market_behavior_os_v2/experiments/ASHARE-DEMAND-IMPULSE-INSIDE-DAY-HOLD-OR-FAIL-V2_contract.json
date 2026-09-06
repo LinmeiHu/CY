@@ -1,0 +1,27 @@
+{
+  "experiment_id": "ASHARE-DEMAND-IMPULSE-INSIDE-DAY-HOLD-OR-FAIL-V2",
+  "status": "FROZEN_BEFORE_V2_ROW_LEVEL_REPLAY",
+  "parent_signal_contract": "ASHARE-DEMAND-IMPULSE-FIRST-INSIDE-DAY-SUPPLY-CONTRACTION-V1",
+  "parent_signal_contract_sha256": "2a16de379528bca95b18cae3ca533dbc76273ee13b0dd2aea1d71988d4d589ce",
+  "parent_candidate_sha256": "af6e53755dcc4b627cb01d3ad8681f0ba2e5bb20dabe58a6888ee1cd47f05578",
+  "governance_note": "V1 aggregate results were observed before this V2 was stated. No row-level outcome-conditioned feature selection or failure-threshold search was performed. The signal-day low is the natural boundary of the supply-contraction state.",
+  "signal_identity_changed": false,
+  "entry": "next legal executable session open after the V1 inside-day signal",
+  "target": "+10% from executable entry after T+1",
+  "failure": "first completed daily coordinate close strictly below the signal inside-day coordinate low; exit next legal executable open",
+  "time_stop": "H20, then next legal executable open",
+  "cost": "40 bp round trip",
+  "fixed_profiles": [
+    {
+      "profile": "T10_H20_INSIDE_LOW_FAILURE",
+      "target": 0.10,
+      "horizon": 20,
+      "stop": true
+    }
+  ],
+  "development": "Report 2014-2018 without selecting parameters.",
+  "confirmation": "Apply unchanged to 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, and every confirmation-year mean >0.",
+  "repository_2022_plus_outcomes_opened": false,
+  "repository_2024_plus_data_opened": false,
+  "prohibited": ["no alternate stop boundary", "no signal filter changes", "no 2022+", "no signal-bar fill"]
+}

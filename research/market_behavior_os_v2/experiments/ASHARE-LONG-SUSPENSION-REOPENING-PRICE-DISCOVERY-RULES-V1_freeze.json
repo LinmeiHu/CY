@@ -1,0 +1,83 @@
+{
+  "experiment": "ASHARE-LONG-SUSPENSION-REOPENING-PRICE-DISCOVERY-RULES-V1",
+  "status": "FROZEN_BEFORE_RULE_FILTERED_OUTCOME_AGGREGATION",
+  "scientific_role": "DATA_GENERATED_CANDLE_ANATOMY_RULE_COMPRESSION",
+  "mother_experiment": "ASHARE-LONG-SUSPENSION-REOPENING-PRICE-DISCOVERY-MOTHER-V1",
+  "development_signal_start": "2015-01-01",
+  "development_signal_end": "2020-12-31",
+  "development_outcome_cap": "2021-03-31",
+  "post_2021_signal_read_before_gate": false,
+  "candidate_identity": {
+    "minimum_consecutive_no_trade_market_sessions": 5,
+    "mother_events": 4459,
+    "mother_definition_unchanged": true
+  },
+  "compressed_rules": [
+    {
+      "rule": 1,
+      "name": "FIRST_BUYABLE_OPEN_ANCHOR",
+      "definition": "Within market sessions signal_cal_idx+1 through signal_cal_idx+3, take the first PIT-valid, lineage-valid, legally tradable open strictly below the contemporaneous upper limit. Freeze its corporate-action coordinate open as the price-discovery anchor. If none exists, do not trade."
+    },
+    {
+      "rule": 2,
+      "name": "FIVE_TRADED_SESSION_RELATIVE_ACCEPTANCE",
+      "definition": "Count the anchor session as observation session 1 and use the first five PIT-valid traded sessions with unchanged coordinate lineage. At session 5 close require coord_close >= anchor_coord_open and stock return anchor_coord_open-to-observation_coord_close strictly greater than the contemporaneous broad-market median return over the identical anchor-date open to observation-date close interval. All market constituents must be valid at both endpoints and retain unchanged coordinate lineage."
+    },
+    {
+      "rule": 3,
+      "name": "NEXT_LEGAL_OPEN_ENTRY",
+      "definition": "After the observation-session-5 close, enter only at the first PIT-valid, lineage-valid, legally tradable non-limit-up open in observation_cal_idx+1 through observation_cal_idx+3. No same-bar fill and no later chase."
+    },
+    {
+      "rule": 4,
+      "name": "CONFIRMED_ANCHOR_FAILURE_OR_H20_EXIT",
+      "definition": "After entry, retain the frozen 20-market-session lifecycle. If two consecutive PIT-valid traded closes are below the frozen anchor, schedule an exit for the next PIT-valid, lineage-valid, legally tradable non-limit-down open. Otherwise exit at the first such open on or after entry_cal_idx+20. The earlier executable action wins. T+1, suspensions, limits, corporate actions, and fail-closed lineage remain binding."
+    }
+  ],
+  "market_state_semantics": {
+    "hard_market_regime_filter": false,
+    "causal_market_handling": "The admission rule compares stock and broad-market return over the same already-completed observation interval; no future market state is used.",
+    "reporting_phase_only": {
+      "UP_ACCELERATING": "market_median_ret60 >= 0 and market_median_ret20/20 > market_median_ret60/60",
+      "UP_DECELERATING": "market_median_ret60 >= 0 and market_median_ret20/20 <= market_median_ret60/60",
+      "DOWN_RECOVERING": "market_median_ret60 < 0 and market_median_ret20/20 > market_median_ret60/60",
+      "DOWN_DETERIORATING": "market_median_ret60 < 0 and market_median_ret20/20 <= market_median_ret60/60"
+    }
+  },
+  "costs": {
+    "round_trip_fraction": 0.004
+  },
+  "development_gate": {
+    "completed_signals_each_calendar_year_strictly_greater_than": 50,
+    "years": [2015, 2016, 2017, 2018, 2019, 2020],
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "if_pass": "Freeze unchanged and evaluate signal years 2022-2024.",
+    "if_fail": "Close this exact family without parameter, threshold, horizon, or market-regime rescue and move to a genuinely different economic mother family."
+  },
+  "forbidden_rescues": [
+    "alternative suspension duration",
+    "gap threshold or sign filter",
+    "first-day limit-state taxonomy",
+    "volume-pattern rule",
+    "pre-suspension-close reclaim rule",
+    "one-close stop",
+    "coarse BULL/BEAR hard veto",
+    "alternative observation length",
+    "alternative holding horizon",
+    "late entry after the three-session window"
+  ],
+  "frozen_inputs": {
+    "candidates_frozen_parquet_sha256": "0f29af9f2b747a9650c9593da15a6f49c82a2a5984ec6d9c2f3da0610ecdae35",
+    "future_paths_parquet_sha256": "bcfe149df26aa4a06672d6bb6e8a8d45b36b9ab7f8956ab84805215eb6649a26",
+    "mother_outcomes_parquet_sha256": "7fb637bb2deae3486fe3fa832c1303d8cea2bb4b65649e16e789eed675236b98",
+    "causal_market_regime_parquet_sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a",
+    "daily_parquet_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "visual_review_log_sha256": "22dbe54f485a10caf7db3f9cc21f99f75381f5d10626a4bd9d37095d41347485"
+  },
+  "governance": {
+    "post_2023_outcome_read": false,
+    "cy011_read": false,
+    "no_rule_change_after_outcome_aggregation": true,
+    "no_portfolio_replay_before_development_gate": true
+  }
+}

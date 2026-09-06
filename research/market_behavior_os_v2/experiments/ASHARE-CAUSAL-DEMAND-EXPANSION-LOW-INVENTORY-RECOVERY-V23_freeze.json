@@ -1,0 +1,93 @@
+{
+  "experiment": "ASHARE-CAUSAL-DEMAND-EXPANSION-LOW-INVENTORY-RECOVERY-V23",
+  "research_status": "POST_CHART_DEVELOPMENT_RULE_FREEZE",
+  "purpose": "Compress the complete chronological review of all 4,933 V22 mother-candidate charts into a small causal supply/demand structure. This is a V26-style experiment: freeze observable market structure first, then evaluate whether the structure selects economically useful events. It is not independent confirmation.",
+  "source_mother": {
+    "experiment": "ASHARE-CAUSAL-LOCAL-INDUSTRY-DEMAND-STATE-MOTHER-V22",
+    "candidate_path": "/Volumes/quant/CY_quant_research/ashare_causal_local_industry_demand_state_mother_v22/stage_a/candidates_frozen.parquet",
+    "candidate_sha256": "58dcf3aaa232bc15e364dfb16806a944521eb782b62e7dc26d9e9068165c9e1e",
+    "outcome_path": "/Volumes/quant/CY_quant_research/ashare_causal_local_industry_demand_state_mother_v22/stage_b/outcomes.parquet",
+    "outcome_sha256": "e86f96fdc18f3d5f6db57ed35a52165f5bbd499101dc8af80c0ea73ba0650fbe",
+    "charts_reviewed": 4933,
+    "chronological_contact_sheets_reviewed": 549,
+    "review_scope": "every V22 event in signal-time chronological order"
+  },
+  "development_governance": {
+    "signal_start": "2014-01-01",
+    "signal_end": "2020-12-31",
+    "maximum_context_date": "2021-06-30",
+    "post_2021_signal_or_rule_fit": false,
+    "post_2021_outcome_read": false,
+    "validation_open_condition": "Only if every calendar year 2014-2020 has more than 50 completed selected events and mean net event return greater than 4.0% under the frozen V22 execution lifecycle.",
+    "validation_if_earned": "one frozen 2022-2024 read; no rescue"
+  },
+  "chart_compression": [
+    "A short-horizon breakout inside dense six-to-twelve-month overhead inventory is usually repair, not price discovery.",
+    "Bull winners commonly make a first passage from an accepted base into a sparsely occupied target corridor.",
+    "Broad synchronized demand expansion can overcome old inventory, but a high participation level without recent expansion often marks a mature phase.",
+    "Bear-side low-volatility pauses are not enough; stronger cases have already recovered a material fraction of the causal decline before entry.",
+    "Missing bars, suspensions, and coordinate discontinuities are not interpreted as chart structure."
+  ],
+  "frozen_rules": {
+    "common": {
+      "candidate_identity": "exact V22 frozen event_id; no new mother search",
+      "signal_clock": "completed signal-date close at decision_at",
+      "history_contract": "only hard-valid, current-valid, market-rule-valid, corporate-action-valid rows with unchanged invalid_step_cum and available_at <= decision_at",
+      "execution": "reuse exact V22 entry, target, horizon, T+1, costs, suspension, limit, and corporate-action outcomes without modification"
+    },
+    "bull": {
+      "applies_to": "LOCAL_BULL_DISTRIBUTED_ACCUMULATION_ESCAPE",
+      "target_corridor": "[signal coordinate close, 1.15 * signal coordinate close]",
+      "inventory_history": "126 completed symbol sessions strictly before signal date",
+      "inventory_touch": "a prior daily coordinate range intersects the target corridor",
+      "low_inventory_passage": "valid exact 126-session history and no more than 10 inventory-touch sessions; the count threshold is inherited from the successful V26 clean-corridor representation rather than searched here",
+      "causal_demand_expansion": {
+        "market_breadth20": "share of eligible A-share securities with ret20 > 0, computed at the signal-date close",
+        "industry_breadth20": "share of eligible members of the signal's PIT causal industry with ret20 > 0, computed at the signal-date close",
+        "lag": "10 completed market sessions",
+        "renewed_demand": "current market breadth20 >= 0.70 and current industry breadth20 >= 0.70 and both breadth measures increased by at least 0.10 versus their exact ten-session lags",
+        "minimum_coverage": "market N >= 200 and industry N >= 10 at current and lag dates"
+      },
+      "admission": "low_inventory_passage OR renewed_demand",
+      "economic_meaning": "admit either objective first passage through scarce overhead supply or a synchronized new wave of market and industry demand; reject ordinary repair breakouts inside dense supply"
+    },
+    "bear": {
+      "applies_to": "LOCAL_BEAR_SLOW_SUPPLY_EXHAUSTION_TAKEOVER",
+      "decline_reference": "maximum coordinate high over the 20 completed symbol sessions strictly before the signal",
+      "decline_trough": "minimum coordinate low over those same 20 sessions plus the signal session",
+      "recovery_fraction": "(signal coordinate close - decline trough) / (decline reference - decline trough)",
+      "admission": "valid exact 20-session history and recovery_fraction >= 1/3",
+      "economic_meaning": "supply exhaustion must be accompanied by observable demand recovery of a material portion of the completed decline; a pause near the trough is not accepted"
+    }
+  },
+  "predeclared_outputs": {
+    "primary": [
+      "selected and completed event counts",
+      "pooled mean and median net return",
+      "positive-return and severe-loss rates",
+      "annual selected count and mean net return for 2014-2020",
+      "bull and bear sleeve decomposition"
+    ],
+    "diagnostics": [
+      "selection counts by bull admission branch",
+      "causal timing and exact-history audits",
+      "no post-2021 read audit"
+    ]
+  },
+  "pass_gate": {
+    "annual_completed_events": ">50 in every year 2014-2020",
+    "annual_mean_net_return": ">4.0% in every year 2014-2020",
+    "no_parameter_rescue": true
+  },
+  "prohibited": [
+    "future market state",
+    "full-period normalization",
+    "threshold grid",
+    "alternative inventory lookbacks",
+    "alternative recovery fractions",
+    "post-signal acceptance rule",
+    "exit optimization",
+    "2021 signal or rule fitting",
+    "2022-2024 read unless the frozen development gate passes"
+  ]
+}

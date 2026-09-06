@@ -1,0 +1,35 @@
+{
+  "experiment": "ASHARE-DEEP-DECLINE-INTRADAY-UNDERCUT-FULL-ABSORPTION-V1",
+  "freeze_status": "FROZEN_BEFORE_2021_SIGNAL_OUTCOMES",
+  "formation_history": "2014-01-01 through 2020-12-31 signal charts and their consumed development outcomes",
+  "confirmation_history_unread_at_freeze": "2021-01-01 through 2021-12-31 signal outcomes",
+  "scientific_note": "The chart review found substantial winner/loser overlap in stock-only candle shape, opening gap, turnover multiple and prior return. The only retained incremental hypothesis is a causal market-state branch. This is a chart-derived development rule, not independent confirmation.",
+  "plain_language_rules": [
+    "The stock has fallen at least 10% over the prior 20 completed sessions.",
+    "On the signal session it undercuts the prior five-session low, trades at least its prior-20-session average turnover, then closes above the prior session high and in the top 30% of its own range.",
+    "The signal session is PIT-valid, fully tradable, non-ST, in one valid corporate-action coordinate lineage, and does not close at the legal upper limit.",
+    "The first qualifying event per stock is used and another event requires more than 20 market-session indices.",
+    "Admit the signal only when the signal-close market state is either positive 60-session trend, prior-five-session systemic capitulation, or same-session broad recovery."
+  ],
+  "market_state": {
+    "availability": "All components are computed after the signal-session close from that close and earlier completed sessions only. State is frozen at decision_at and cannot change using later data.",
+    "cross_section": "All symbols on that trade date satisfying hard_valid, history_valid, current_valid, current_day_data_tradable, market_rule_valid, corporate_action_valid, not corporate_action_blocking, and not is_st.",
+    "positive_60_session_trend": "Cross-sectional median of registered ret60 is strictly greater than 0.",
+    "prior_five_session_systemic_capitulation": "Cross-sectional median of each eligible symbol's coordinate return from six sessions before the signal to the session immediately before the signal is <= -5%; five-session history must be contiguous in market-session index and remain in one coordinate lineage.",
+    "same_session_broad_recovery": "At least 90% of the eligible signal-date cross-section has registered step_return > 0.",
+    "admission": "positive_60_session_trend OR prior_five_session_systemic_capitulation OR same_session_broad_recovery"
+  },
+  "threshold_rationale": {
+    "zero_trend_boundary": "Economically neutral boundary, not a fitted percentile.",
+    "minus_five_percent_prior_five_sessions": "Predeclared round systemic-stress magnitude, not selected from a threshold grid.",
+    "ninety_percent_positive_fraction": "Predeclared extreme breadth boundary for a market-wide recovery, not a fitted percentile."
+  },
+  "execution_unchanged": "First legal executable open strictly after the signal and no later than the third subsequent market session; +10% target from T+1; H20 next legal sellable open; 40 bps round-trip cost; no stop.",
+  "prohibited_interpretations": [
+    "No calendar-year bull/bear label.",
+    "No future return, future extrema, future breadth, or later market state enters admission.",
+    "No full-sample percentile or retrospectively normalized state threshold.",
+    "No same-session fill.",
+    "No alternative threshold is authorized after reading 2021 or challenge outcomes."
+  ]
+}

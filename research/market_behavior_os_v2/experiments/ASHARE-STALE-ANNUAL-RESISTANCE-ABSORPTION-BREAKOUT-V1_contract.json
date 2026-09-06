@@ -1,0 +1,58 @@
+{
+  "experiment_id": "ASHARE-STALE-ANNUAL-RESISTANCE-ABSORPTION-BREAKOUT-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FREEZE",
+  "scientific_period": "2014-01-01 through 2023-12-31",
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "A prior 250-session high that has remained unbroken for at least sixty completed market sessions represents observable stale overhead supply. A first non-limit, high-location, volume-expansion close through that old high, without chasing more than five percent above it, indicates that long-standing inventory has been absorbed and price discovery can resume.",
+  "population": {
+    "boards": ["MAIN", "CHINEXT"],
+    "hard_valid_signal_required": true,
+    "non_st_required": true,
+    "prior_250_session_peak_required": true,
+    "same_corporate_action_coordinate_as_prior_peak_required": true
+  },
+  "stale_resistance": {
+    "prior_peak_age_market_sessions_min": 60,
+    "signal_close_at_or_above_prior_peak": true,
+    "signal_close_over_prior_peak_max": 1.05
+  },
+  "trigger": {
+    "completed_step_return_min": 0.02,
+    "completed_step_return_max": 0.095,
+    "turnover_over_prior_20_completed_session_mean_min": 1.5,
+    "close_location_min": 0.75,
+    "upper_limit_close_excluded": true,
+    "symbol_cooldown_market_sessions": 60
+  },
+  "decision_at": "completed breakout close",
+  "entry": "first legal executable daily open strictly after signal, no later than the third subsequent market session",
+  "fixed_profiles": [
+    {
+      "profile": "T20_H60_STALE_ANNUAL_RESISTANCE",
+      "target": 0.20,
+      "horizon": 60,
+      "stop": false
+    }
+  ],
+  "costs": {"entry_bps": 20, "exit_bps": 20, "round_trip_bps": 40},
+  "chronology": {
+    "discovery": ["2014-01-01", "2018-12-31"],
+    "confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "completed_trades_per_year_average_strictly_greater_than": 50,
+    "mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20,
+    "no_single_board_explains_edge": true
+  },
+  "governance": {
+    "semantic_thresholds_selected_before_outcomes": true,
+    "translation_profiles_tested": 1,
+    "manual_blind_chart_pruning_allowed": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

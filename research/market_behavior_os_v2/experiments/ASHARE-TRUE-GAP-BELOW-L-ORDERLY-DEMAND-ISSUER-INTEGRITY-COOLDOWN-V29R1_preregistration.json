@@ -1,0 +1,141 @@
+{
+  "development": {
+    "event_classification_opened": false,
+    "event_outcome_join_opened": false,
+    "outcomes_opened": false,
+    "signal_years": [
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "success_contract": {
+      "accepted_trades_per_year_strictly_greater_than": 50,
+      "average_holding_sessions_strictly_less_than": 15,
+      "each_signal_year_mean_net_positive": true,
+      "mean_net_at_least": 0.04
+    }
+  },
+  "economic_hypothesis": "Price and volume can show that ordinary market supply was absorbed, but cannot neutralize a fresh issuer-integrity or solvency shock. A V28R2 rebound after a recent official severe-risk disclosure is a different economic population and is vetoed, not rescored.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1",
+  "frozen_at": "2026-09-05T19:58:28+08:00",
+  "knowledge_time_repair": {
+    "derivation_must_preserve_original_fields": [
+      "ADDDATE",
+      "SSEDATE",
+      "publishTime"
+    ],
+    "sse": {
+      "causal_available_at": "max(original ADDDATE, SSEDATE + 1 calendar day 00:00 Asia/Shanghai)",
+      "interpretation": "SSEDATE proves only official query/display membership. The next-day floor prevents a currently enumerated or backfilled row from being treated as known before that displayed date, while a later original ADDDATE retains the later knowledge time.",
+      "missing_or_invalid_adddate_or_ssedate": "FAIL_CLOSED",
+      "timezone": "Asia/Shanghai"
+    },
+    "szse": {
+      "date_only_or_midnight_publishTime": "next calendar day 00:00 Asia/Shanghai",
+      "intraday_publishTime": "official source second in Asia/Shanghai",
+      "missing_or_invalid_publishTime": "FAIL_CLOSED"
+    }
+  },
+  "locked_later_periods": {
+    "2022_2024": "Do not collect, classify, join, or evaluate until the 2018-2021 selector passes without changing this preregistration.",
+    "2025_plus": "Post-selection observation only. The known 2026 failures motivated the issuer-risk hypothesis and are not pristine validation evidence."
+  },
+  "only_new_economic_condition": {
+    "close_treatment": "An explicit CLOSE never shortens the 120-calendar-day cooling period.",
+    "families": [
+      "RISK_WARNING_OR_DELISTING",
+      "REGULATORY_INVESTIGATION",
+      "ILLEGAL_GUARANTEE",
+      "CONTROLLER_FUND_MISAPPROPRIATION",
+      "ISSUER_BANK_ACCOUNT_FREEZE"
+    ],
+    "missing_or_unproven_coverage": "REJECT",
+    "rule": "Admit only when zero high-precision OPEN issuer-risk title events have causal_available_at inside the inclusive 120-calendar-day window ending at the completed signal decision.",
+    "threshold_origin": "The 120-day horizon is the ex-ante economic and chart-context cooling horizon; it is not selected from returns.",
+    "window": "signal_time - 120 calendar days <= causal_available_at <= signal_time"
+  },
+  "parent": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+  "parent_development_result_sha256": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9",
+  "parent_development_stage_a_sha256": "3655b7f67bd4728e2b610123ee075219b174461c24a48cb6064fe6cc9c04c5f9",
+  "parent_runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+  "prior_v29_blocker": {
+    "artifact_sha256": "42c3848ac9244e4ea7288f71594e639a3889b0a19e4036ee9955b82c55b91a7d",
+    "status": "FAIL_CLOSED_SSE_ADDDATE_DOMAIN_COVERAGE_NOT_PROVEN",
+    "v29_cy036_registration_or_backtest_authorized": false
+  },
+  "source_coverage_contract": {
+    "current_snapshot_claim": "PIT-B reconstruction with incomplete revision history. A zero-event result means zero qualifying titles in the sealed current official enumeration snapshot after the frozen reconstruction; it is not PIT-A proof and is not a live-trading claim.",
+    "sse": {
+      "end": "2021-12-31",
+      "membership_field": "SSEDATE",
+      "start": "1990-12-19",
+      "start_basis": "Shanghai Stock Exchange opening date; no earlier SSEDATE query-membership domain exists for this exchange.",
+      "universe": "Every SSE symbol in the frozen V28R2 parent-candidate identity uses the same 1990-12-19 start, irrespective of listing date or first candidate date."
+    },
+    "szse": {
+      "end": "2021-12-31",
+      "knowledge_field": "publishTime",
+      "start": "2017-10-01",
+      "sufficiency": "The earliest frozen parent-candidate signal is 2018-02-22, so its inclusive 120-calendar-day window starts 2017-10-25. The 2017-10-01 capture start provides 24 additional calendar days of coverage without consulting returns."
+    },
+    "title_metadata_only": true,
+    "unknown_page_identity_hash_or_coverage": "FAIL_CLOSED"
+  },
+  "stage_b_identity_and_replay_freeze": {
+    "actual_parent_source_hashes": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "constant_contract": {
+      "entry": "first legal buyable one-minute open strictly after the completed signal",
+      "failure_stop": "NONE",
+      "maximum_holding_sessions": 20,
+      "portfolio": "Main/ChiNext 50/50",
+      "portfolio_k_per_sleeve": 80,
+      "round_trip_cost": 0.004,
+      "side_cost_entry": 0.002,
+      "side_cost_exit": 0.002,
+      "target": "entry + 0.67 * (L - entry), strictly below L",
+      "target_fraction": 0.67
+    },
+    "join_contract": {
+      "cardinality": "one_to_one by gap_id; selected executable count, joined count, and identity sets must conserve exactly",
+      "equality": "Exact field equality after a declared source-preserving dtype canonicalization; no tolerance, rounding, clipping, normalization, many-to-one join, or silent row loss.",
+      "exact_fields": [
+        "symbol",
+        "signal_date",
+        "signal_time",
+        "entry_date",
+        "entry_time",
+        "entry_status",
+        "entry_cal_idx",
+        "entry_raw_price",
+        "entry_coordinate_factor",
+        "entry_coordinate_price",
+        "entry_invalid_step_cum",
+        "up_limit_price",
+        "entry_at_or_before_signal",
+        "entry_after_signal_period_boundary",
+        "buy_at_or_above_up_limit"
+      ],
+      "source_hash_rule": "Before opening outcomes, re-hash the exact outcomes and outcome_daily bytes. Both hashes must equal actual_parent_source_hashes and the values recorded in the frozen V28R2 development result."
+    },
+    "required_before_any_outcome_join": true,
+    "required_freeze_contents": [
+      "sealed announcement-source manifest and data hashes",
+      "classified-event identity hash and V29R1 selected/rejected signal identity hashes",
+      "V29R1 runner hash",
+      "actual outcomes and outcome_daily source hashes",
+      "replay, repair, and portfolio pass-through code hashes",
+      "K80, A67, H20, cost, stop, entry, T+1, limit, suspension, and corporate-action constants"
+    ],
+    "software_hashes_frozen_now": {
+      "execution_repair_runner_sha256": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+      "lane_replay_runner_sha256": "253b8c8755b556f9b18c90f4622979309bc6f11a3947507ca3f37427acfd8555",
+      "parent_selector_runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+      "portfolio_runner_sha256": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5"
+    }
+  },
+  "status": "SEMANTIC_RULE_FROZEN_BEFORE_DEVELOPMENT_EVENT_OR_OUTCOME_JOIN"
+}

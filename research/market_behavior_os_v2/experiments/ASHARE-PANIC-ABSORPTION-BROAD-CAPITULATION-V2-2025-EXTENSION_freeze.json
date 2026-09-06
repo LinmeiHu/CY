@@ -1,0 +1,36 @@
+{
+  "experiment": "ASHARE-PANIC-ABSORPTION-BROAD-CAPITULATION-V2-2025-EXTENSION",
+  "stage": "FROZEN_BEFORE_2025_CANDIDATE_BUILD_OR_OUTCOME_READ",
+  "scientific_status": "UNCHANGED_RULE_TEMPORAL_EXTENSION",
+  "economic_hypothesis": "A stock-specific decline becomes a tradable forced-inventory transfer only when a gap-down to a fresh low is completely absorbed by demand and at least one independent stock shows the same completed-session event. This tests local panic repair inside any market regime; it does not use the 2025 bull label to select trades.",
+  "unchanged_rules": [
+    "The stock lost at least 10 percent over the preceding 20 exact completed sessions.",
+    "The completed signal opened at least 1 percent below the prior close and made a new five-session low.",
+    "Signal turnover was at least the prior-20 mean.",
+    "The signal closed at or above the prior high and in the upper 30 percent of its range, without closing at the upper price limit.",
+    "At least two independent stocks produced the same completed-session mother signal.",
+    "Enter at the first legal non-limit-up open in signal plus one through three; exit at +10 percent or the first legal sellable open after H20; charge 40 bps round trip."
+  ],
+  "signal_period": "2025-01-01 through 2025-12-31",
+  "outcome_tail_end": "2026-03-31",
+  "evaluation": {
+    "report": "signals, completed trades, mean and median net return, mean holding sessions, target hit, severe loss, date concentration, and signal-month results",
+    "user_gates": "completed signals >50, mean net return >=4 percent, mean holding sessions <15",
+    "no_rescue": true
+  },
+  "governance": {
+    "2025_candidate_or_outcome_read_for_this_rule_before_freeze": false,
+    "same_bar_fill": false,
+    "T_plus_1": true,
+    "unknown_lineage_or_execution_state": "fail closed",
+    "future_market_function": false
+  },
+  "source_hashes": {
+    "parent_contract": "69531d56e1728a2b1af64803639d0974992a4031686544e11b4fd4a613f85875",
+    "chart_rule_freeze": "8313df3f825dc1ef8cef14fcc4e0fa1d657a047b51d091d53c127934cfcdaeba",
+    "parent_runner": "c46e327d6ea0fd791af2e10989701ab807fea57bff530069dcf76a526d7c6efe",
+    "parent_2024_stage_a_freeze": "bb871f912163771168c46a6ec33243a0d3f407a97b624727ac61739d9d4cbe24",
+    "parent_2024_outcomes": "a018c8e06734028324f673b8a14adb7ea4bb12f79eadfeb9f220ebb2fafb0601",
+    "exact_daily_2022_2026q1": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9"
+  }
+}

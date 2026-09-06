@@ -1,0 +1,114 @@
+{
+  "experiment": "ASHARE-HIGH-TURNOVER-SELLER-ANCHOR-FIRST-RECLAIM-V1",
+  "frozen_before_outcome_attachment": true,
+  "scientific_status": "OUTCOME_BLIND_ECONOMIC_MOTHER_AND_CHART_PROTOCOL_FREEZE",
+  "economic_hypothesis": "The maximum-turnover down session in a stock's recent causal history records a large transfer of inventory at an objective cost anchor. If price then remains capped below that session's high and repeatedly trades below its volume-weighted cost, the first later liquid, high-location close above the anchor high may reveal that trapped supply has finally been absorbed. The pre-anchor 60-session high was already observable when the anchor formed and supplies a natural unfinished repair destination.",
+  "v26_methodological_inheritance": {
+    "inherited": [
+      "an objective price-memory structure exists before the signal",
+      "the signal confirms demand entering that structure",
+      "the destination is a pre-existing unfinished price path rather than an arbitrary fixed percentage",
+      "all charts are reviewed before no more than five causal rules are frozen"
+    ],
+    "not_reused": "No true gap, V13, V26, V27, collapse-zone, rolling support, industry shock, price-limit identity, or future pivot participates."
+  },
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "universe": {
+    "boards": [
+      "MAIN",
+      "CHINEXT"
+    ],
+    "st_excluded": true,
+    "signal_required": "hard_valid, current_valid, current_day_data_tradable, market_rule_valid, corporate_action_valid, not corporate_action_blocking",
+    "missing_required_lineage": "fail closed"
+  },
+  "pre_existing_anchor": {
+    "search_window": "signal t-60 through t-10 market-session rows, inclusive",
+    "selection": "the eligible same-lineage row with maximum turnover_fraction; earliest cal_idx breaks an exact tie",
+    "anchor_validity": "hard_valid, current_valid, tradable, market-rule-valid, corporate-action-valid, and not corporate-action-blocking",
+    "seller_transfer": "anchor coordinate step_return <= -3 percent and anchor close location <= 50 percent",
+    "anchor_vwap": "raw amount / raw volume multiplied by the anchor coordinate_factor",
+    "age_rationale": "At least ten market sessions separate anchor and signal so later behavior can represent absorption rather than the anchor bar itself. Sixty sessions bounds the economic memory without a lookback search."
+  },
+  "absorption_history": {
+    "path_validity": "Every row from anchor+1 through signal must remain hard-valid, current-valid, market-rule-valid, corporate-action-valid, non-blocking, and on the frozen anchor/signal coordinate lineage; otherwise fail closed.",
+    "first_reclaim": "No tradable same-lineage completed close from anchor+1 through signal-1 is above the frozen anchor coordinate high.",
+    "trapped_inventory_evidence": "At least five tradable same-lineage completed closes from anchor+1 through signal-1 are below frozen anchor VWAP.",
+    "target": "Maximum valid tradable same-lineage coordinate high in anchor-60 through anchor-1, fixed before the anchor formed.",
+    "minimum_signal_close_headroom_to_target": 0.05
+  },
+  "demand_confirmation": {
+    "signal_coordinate_close_strictly_above_anchor_high": true,
+    "signal_step_return_minimum": 0.03,
+    "signal_close_location_minimum": 0.70,
+    "signal_turnover_over_prior20_median_minimum": 1.50,
+    "signal_upper_limit_close_excluded": true,
+    "decision_at": "completed signal-session close"
+  },
+  "outcome_blind_coverage_audit": {
+    "future_return_columns_read": false,
+    "raw_mother_counts": {
+      "2014": 73,
+      "2015": 68,
+      "2016": 55,
+      "2017": 64,
+      "2018": 140,
+      "2019": 133,
+      "2020": 122
+    },
+    "comment": "Counts are data-readiness evidence only. No entry, exit, target hit, or future return was read. The first draft count omitted an explicit all-path validity guard; this guard was added before Stage A identity materialization or any outcome attachment and reduced counts without consulting payoff."
+  },
+  "frozen_translation_for_chart_labels": {
+    "entry": "first legal non-upper-limit open strictly after signal t and no later than t+3 market sessions",
+    "entry_headroom_gate": "The fixed A67 target must imply at least +4 percent net return after 40 bp round-trip cost at the executable entry; otherwise no trade.",
+    "profit_target": "entry + 0.67 * (frozen pre-anchor-60 high - entry)",
+    "profit_fill": "known target may fill intraday beginning with the first legally sellable session; never on the entry bar",
+    "time_stop": "after 20 held market sessions, exit at the first later legal sellable open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "T_plus_1": true,
+    "limits_suspensions_corporate_actions": "preserve accepted fail-closed execution and coordinate-lineage semantics"
+  },
+  "chart_protocol": {
+    "render_every_frozen_mother_event": true,
+    "pre_signal_market_sessions": 126,
+    "post_signal_market_sessions": 126,
+    "maximum_context_date": "2021-06-30",
+    "chronological_review_required": true,
+    "outcome_class_sheets_are_secondary": true,
+    "rule_budget": 5,
+    "freeze_rules_before_aggregate": true
+  },
+  "chart_questions": [
+    "Did the anchor represent forced seller transfer or mature distribution near a peak?",
+    "Was the period below anchor VWAP an orderly base, continued deterioration, or repeated failed reclaim?",
+    "Did the first anchor-high reclaim begin a new repair leg or merely retest overhead supply?",
+    "Was the pre-anchor target corridor sparsely occupied or crowded with intervening supply?",
+    "Did causal market direction and acceleration alter the mechanism without using a future bull/bear label?"
+  ],
+  "development_gate_before_later_period": {
+    "completed_signals_each_year_2014_2020_strictly_greater_than": 50,
+    "mean_net_each_year_2014_2020_strictly_greater_than": 0.04,
+    "median_net_each_year_positive": true,
+    "later_2022_2024_open_only_if_all_annual_gates_pass": true,
+    "no_threshold_rescue_after_failure": true
+  },
+  "governance": {
+    "post_2021_06_chart_or_rule_discovery_read": false,
+    "2022_2024_signal_feature_or_outcome_read_before_gate": false,
+    "future_market_function": false,
+    "future_anchor_or_target_definition": false,
+    "same_bar_fill": false,
+    "parameter_grid": false,
+    "independent_confirmation_claim": false
+  },
+  "source": {
+    "pit_daily": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "pit_daily_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_market_state": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+    "causal_market_state_sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "experiment": "ASHARE-BEAR-SLOW-SUPPLY-EXHAUSTION-12M-CHART-DISCOVERY-V2",
+  "scientific_status": "POST_SCREEN_DATA_GENERATED_DEVELOPMENT_CANDIDATE_FROZEN_FOR_COMPLETE_CHART_ANATOMY",
+  "purpose": "Apply the V26 sequence to one economically interpretable candidate: render every pre-2021 causal-BEAR signal with six months before and after, inspect every chart, compare profitable and failed paths, compress repeated structures to at most five causal rules, and only then run one frozen development replay.",
+  "disclosure": "The causal-BEAR sub-lane was selected after the mother screen showed materially better development economics than TRANSITION. This is not an independent or preregistered alpha confirmation.",
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "candidate": {
+    "name": "BEAR_SLOW_SUPPLY_EXHAUSTION_TAKEOVER",
+    "market_state": "Exact already-frozen causal BEAR state on the signal date. The state uses only completed same-date market observations available by the close; no future market return is used.",
+    "economic_sequence": "After at least an 8% completed twenty-session decline, the latest five-session low stops falling versus the preceding five sessions, downside turnover does not increase, and the signal day is a 2%-7% high-location demand bar that closes above the prior five-session high on moderate rather than explosive turnover.",
+    "objective_rules": [
+      "causal market_regime equals BEAR",
+      "signal close versus exact twenty-session-prior close is at most -8%",
+      "minimum low over sessions t-5 through t-1 is at least the minimum low over t-10 through t-6",
+      "downside turnover over t-5 through t-1 is no greater than downside turnover over t-10 through t-6",
+      "signal return is between +2% and +7%, close location is at least 0.75, and close exceeds the prior-five-session high",
+      "signal turnover is between 1.0 and 2.5 times its prior-twenty-session median",
+      "no prior raw occurrence for the same symbol within twenty completed market sessions"
+    ],
+    "frozen_translation_for_outcome_labels_only": "Buy the first legal open during t+1 through t+3; sell at +10% coordinate-price target or the first legal open after twenty holding sessions; 40 bp round trip; no stop.",
+    "signal_availability": "signal close, approximately 15:30",
+    "earliest_entry": "next legal session open; never the signal bar"
+  },
+  "frozen_candidate_snapshot": {
+    "signals": 1765,
+    "completed": 1757,
+    "independent_signal_dates": 233,
+    "mean_net": 0.04406040375790124,
+    "median_net": 0.09600000000000009,
+    "win_rate": 0.7342060330108139,
+    "severe_loss_rate": 0.07455890722822994,
+    "weak_years_requiring_visual_explanation": [
+      "2017",
+      "2020"
+    ]
+  },
+  "source_hashes": {
+    "mother_screen_freeze": "6a54a3e82c0f4578526a189d855cc62682c896a9bbec9c17bbe911cb239c4a58",
+    "mother_screen_runner": "4c4992e333c9f7931ca84454e1f71742cf49bcfa8ff333ba8876cc202f351870",
+    "mother_candidates": "7c08a9ed2090fd1b9b27ee0068ed2c438b8583fc876872bc0523d5e00f5ab364",
+    "mother_outcomes": "8e410688aba5f07f1a36c87bd0e061c8d052fe6d2b051656b59970589320285d",
+    "mother_result": "60c09f0630a158538af388fce09ee6ea9d9e71a271267c89604bb88d33dd6cf0",
+    "pit_daily": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_market_state": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  },
+  "chart_protocol": {
+    "completed_market_sessions_before_signal": 126,
+    "completed_market_sessions_after_signal": 126,
+    "maximum_bar_date": "2021-12-31",
+    "render_every_candidate_including_noncompleted": true,
+    "review_every_chart": true,
+    "fixed_outcome_classes": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "review_slices": [
+      "outcome class",
+      "calendar year",
+      "2017 and 2020 failures versus 2015 and 2018 successes"
+    ]
+  },
+  "chart_questions": [
+    "Is the apparent low stabilization a real base with higher lows, or merely a pause inside an intact falling knife?",
+    "Does downside turnover visibly decay before the signal, and does demand persist after the first takeover bar?",
+    "Is nearby overhead supply compact and already absorbed, or does the signal run directly into a large prior distribution zone?",
+    "Do successful cases reclaim an objective pre-existing structure while failures remain below it or reject immediately?",
+    "What causal market and stock path structure distinguishes weak 2017/2020 outcomes from strong 2015/2018 outcomes without using future state?"
+  ],
+  "rule_compression": {
+    "maximum_rules": 5,
+    "freeze_before_any_rule_outcome_aggregation": true,
+    "no_threshold_grid": true,
+    "no_rule_subset_search": true,
+    "no_neighboring_signal_definition": true,
+    "all_post_signal_confirmations_shift_decision_time": true,
+    "all_market_state_inputs_must_be_available_by_the_revised_decision": true
+  },
+  "later_period_gate": {
+    "literal_completed_signals_each_2014_2020_year_gt_50": true,
+    "frozen_rule_pooled_mean_net_gt_4pct": true,
+    "frozen_rule_pooled_median_net_positive": true,
+    "2022_2024_remain_closed_until_the_final_frozen_development_candidate_passes": true
+  },
+  "outcome_governance": {
+    "2021_signal_read": false,
+    "2022_2024_signal_or_outcome_read": false,
+    "future_market_function": false
+  }
+}

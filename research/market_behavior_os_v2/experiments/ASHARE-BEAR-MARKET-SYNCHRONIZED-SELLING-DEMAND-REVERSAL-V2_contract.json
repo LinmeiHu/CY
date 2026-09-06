@@ -1,0 +1,44 @@
+{
+  "experiment": "ASHARE-BEAR-MARKET-SYNCHRONIZED-SELLING-DEMAND-REVERSAL-V2",
+  "status": "SIMPLE_RULE_FREEZE_BEFORE_FILTERED_POST_OBSERVATION_DIAGNOSTIC",
+  "economic_hypothesis": "In a causally known broad bear state, an oversold stock whose twenty-session loss is broadly synchronized with its industry is more likely to reflect market-wide forced selling than company-specific adverse information. A completed high-turnover demand ignition can then support a multi-session rebound.",
+  "signal_identity": "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1 candidate identity",
+  "conditions": [
+    "causal all-market regime at signal close is BEAR",
+    "stock completed 20-session coordinate return minus PIT-industry median completed 20-session coordinate return is between -0.10 and 0.00 inclusive"
+  ],
+  "condition_count": 2,
+  "threshold_rationale": {
+    "market_regime": "natural sign and 50-percent breadth boundary",
+    "industry_residual": "rounded economic bounds: no more than ten percentage points of idiosyncratic underperformance and no relative outperformance"
+  },
+  "entry": "first legal executable daily open strictly after the completed signal, no later than three market sessions",
+  "exit": "exact accepted H20_NEXT_OPEN translation: after twenty completed market-session indices, exit at the next legal sellable open",
+  "failure_stop": "NONE",
+  "round_trip_cost": 0.004,
+  "execution": {
+    "signal_bar_fill_allowed": false,
+    "t_plus_one_required": true,
+    "suspension_and_price_limits_binding": true,
+    "corporate_action_coordinate_fail_closed": true
+  },
+  "chronology": {
+    "rule_discovery_consumed": "2014-2018",
+    "chronological_robustness_consumed": "2019-2021; not pristine after prior feature diagnostics",
+    "post_observation_diagnostic": "2022-2023; component outcomes already observed, so not independent OOS",
+    "repository_2024_plus": "SEALED"
+  },
+  "gate": {
+    "average_completed_trades_per_year_strictly_above": 50,
+    "pooled_mean_net_return_min": 0.03,
+    "pooled_median_net_return_positive": true,
+    "each_2019_2023_year_mean_net_positive": true,
+    "2023_mean_net_min": 0.03,
+    "no_single_signal_date_dominance": true
+  },
+  "audit": {
+    "future_market_regime_used": false,
+    "future_industry_return_used": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

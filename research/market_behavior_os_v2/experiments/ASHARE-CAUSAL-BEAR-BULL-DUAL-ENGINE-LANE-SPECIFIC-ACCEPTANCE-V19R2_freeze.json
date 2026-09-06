@@ -1,0 +1,47 @@
+{
+  "experiment": "ASHARE-CAUSAL-BEAR-BULL-DUAL-ENGINE-LANE-SPECIFIC-ACCEPTANCE-V19R2",
+  "scientific_status": "POST_FULL_CHART_REVIEW_SEMANTIC_CORRECTION_FREEZE_BEFORE_NEW_OUTCOME_AGGREGATION",
+  "parent_chart_experiment": "ASHARE-CAUSAL-BEAR-BULL-DUAL-ENGINE-12M-CHART-DISCOVERY-V19",
+  "supersedes_for_this_single_test": "ASHARE-CAUSAL-BEAR-BULL-DUAL-ENGINE-CHART-RULE-COMPRESSION-V19R1",
+  "why_one_deeper_retry_is_allowed": "The complete 840-chart review found different confirmation semantics by lane. V19R1 incorrectly imposed a second active-demand confirmation on the BEAR lane even though the frozen BEAR mother bar is itself the active-demand ignition. This test corrects that semantic mismatch; it does not search thresholds, horizons, targets, stops, or rule subsets.",
+  "frozen_mother_identity": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_bull_dual_engine_12m_chart_discovery_v19/frozen_candidate_ledger.parquet",
+    "sha256": "b19991bc6ae2e6540c794faf3c83fdb0ce8eb2f09f1539cad2702f63ba1e2ed6",
+    "development_signals": 840,
+    "signal_period": ["2014-01-01", "2020-12-31"]
+  },
+  "compressed_rules": [
+    "At the completed mother-signal close, route with the already registered causal state: exact V24 BULL continuation in BULL, exact accepted V13R1 forced-supply repair in BEAR, and cash in TRANSITION. No future market value defines the route.",
+    "For a BULL synchronized-majority-demand signal, require the exact next market-session valid coordinate close to remain at or above the frozen pre-signal platform high.",
+    "For a BULL idiosyncratic-information-jump signal, require that same exact next-session close to remain at or above both the frozen platform high and the signal close.",
+    "For a BEAR signal, do not impose another confirmation: the mother signal already contains the completed-session fast liquidation, improving breadth, prior-five-high clearance, high close location, and turnover-backed active demand.",
+    "Execute each surviving lane only under its original simple profile: BEAR first legal non-upper-limit open after the signal with +10% target / H20; confirmed BULL first legal non-upper-limit open in sessions t+2 through t+4 with +15% target / H15; no stop; 40 bp round trip."
+  ],
+  "causal_timing": {
+    "router_available_at": "mother signal close, using only same-date completed and prior registered data",
+    "bull_confirmation_available_at": "exact next market-session close",
+    "bear_entry_earliest": "first legal open strictly after the mother signal",
+    "bull_entry_earliest": "first legal open strictly after the confirmation close",
+    "future_market_state_used": false,
+    "same_bar_fill": false
+  },
+  "fixed_gate": {
+    "every_calendar_year_completed_signals_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "also_report_each_year_mean_without_requiring_each_year_above_4pct": true,
+    "later_2022_2024_open_only_if_count_and_pooled_mean_pass": true
+  },
+  "governance": {
+    "all_840_parent_charts_already_reviewed": true,
+    "no_new_chart_selection": true,
+    "no_rule_subset_search": true,
+    "no_threshold_search": true,
+    "no_target_or_horizon_search": true,
+    "no_stop_search": true,
+    "2021_outcome_read": false,
+    "2022_2024_outcome_read_before_gate": false,
+    "post_2024_outcome_read": false,
+    "consumed_development_history": true,
+    "no_independent_confirmation_claim": true
+  }
+}

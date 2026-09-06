@@ -1,0 +1,108 @@
+{
+  "asset_id": "CY-042",
+  "name": "Bounded V32 frozen-candidate development outcome input",
+  "status": "FROZEN_DEVELOPMENT_OUTCOME_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "raw_daily": {
+    "asset_id": "CY-006",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "manifest_bytes": 1677,
+    "partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "bytes": 42011064
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "bytes": 43320252
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "bytes": 46073783
+      }
+    ],
+    "authorized_row_end": "2020-12-31"
+  },
+  "coordinate_state": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "bytes": 342272911,
+    "builder_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+    "builder_sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787",
+    "builder_bytes": 80254,
+    "join_semantics": "Exact symbol/trade_date join. adjusted_close/raw CY-006 close is the coordinate factor; all OHLC coordinates use that same factor and invalid_step_cum is immutable lineage. The Stage-A local calendar index is retained only for representation-history audits; the coordinate-state global calendar index is the execution anchor."
+  },
+  "frozen_cohort": {
+    "parent_spec": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32_freeze.json",
+      "sha256": "d389cda8f743441a4c46df61a2c044169f33550d05a5153bb96bea5abab75089",
+      "bytes": 11216
+    },
+    "stage_a_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_stage_a.py",
+      "sha256": "a892ce53141c835ee6573427d97d12629ebffbaa869b5a5b789d5f33c6292054",
+      "bytes": 42616
+    },
+    "stage_a_result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_a/result.json",
+      "sha256": "db6dd269340e7bed1153ca160492b91f6aaedd0b44aee853e447a8f8aa4c96f4",
+      "bytes": 9582,
+      "required_state": "stage_a_gate_passed=true; opportunity, neighboring-stability and non-reconstruction gates=true; outcome_columns_read=false; post_signal_primary_rows_read=false; post_2020_rows_read=false; direction=HIGH_D60_ONLY_FROZEN_BEFORE_OUTCOMES"
+    },
+    "representation": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_a/representation_panel.parquet",
+      "sha256": "1a67e4dfcd4cc6e20000be3890d12e37f8a91da5afa47aaf8b84960d2bf7c13d",
+      "bytes": 7652932,
+      "rows": 67628,
+      "use_in_stage_b": "Identity audit only; candidate reselection, D40/D80 substitution and direction changes are forbidden."
+    },
+    "candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_a/candidates_frozen.parquet",
+      "sha256": "4d57fafc3418bc7923e747910add5f503313582e0b0ef9d5e8bdb4a92dcf539d",
+      "bytes": 266953,
+      "rows": 1781,
+      "unique_event_ids": 1781,
+      "decision_dates": 24,
+      "signal_start": "2018-07-31",
+      "signal_end": "2020-06-30"
+    }
+  },
+  "protocol": {
+    "stage_b_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32_stage_b_freeze.json",
+    "stage_b_spec_sha256": "23103c3910a83416da52ec149135731a2589782bd539967cab630e39ee041d9b",
+    "stage_b_spec_bytes": 6679,
+    "stage_b_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_stage_b.py",
+    "stage_b_runner_sha256": "fc28f2be60d683ef66d7d33b7baba65043390c9b893d1410e7f004c3a56c97c5",
+    "stage_b_runner_bytes": 33083,
+    "execution_reference_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+    "execution_reference_sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997",
+    "execution_reference_bytes": 45750
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-INNOVATION-DECOUPLING-V32-STAGE-B-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V32_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "candidate_signal_start": "2018-07-31",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_path_row_date": "2020-12-31",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Attach exactly one frozen +10-percent/H20/40-bps development lifecycle to each of the 1,781 immutable V32 Stage-A event identities.",
+    "blocked": "Candidate reselection, D40/D80 substitution, direction reversal, price/return conditions, charts, portfolio replay, validation, grids, changed execution, rows after 2020-12-31, live use and strict PIT-A claims."
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history.",
+    "claim": "Outcome attachment measures the frozen mother population only; it is neither chart-rule validation nor a portfolio backtest.",
+    "next_step": "Render and review all development charts under a separately frozen protocol. Later years remain closed unless every development-year count and mean-return gate passes and any chart rule is frozen before later-period data."
+  }
+}

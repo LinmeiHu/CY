@@ -1,0 +1,51 @@
+{
+  "experiment": "ASHARE-BEARISH-DISPLACEMENT-SUPPLY-ZONE-REENTRY-V1",
+  "stage": "V26_STYLE_CHART_RULE_COMPRESSION_ROUND_2_FREEZE",
+  "development_signal_period": ["2014-01-01", "2020-12-31"],
+  "scientific_status": "POST_HOC_CHART_GENERATED_DEVELOPMENT_RULES",
+  "round_1_result": {
+    "finding": "a first close below zone_l was too sensitive: it reduced severe losses but prematurely exited many eventual target winners",
+    "action": "R1 and R2 from round 1 are not retained"
+  },
+  "new_visual_evidence": {
+    "matched_review": "same-date eventual winners and severe losers plus round-1 false-negative winners",
+    "observation_1": "eventual winners often retest or close below zone_l but more often preserve the full signal recovery candle low",
+    "observation_2": "severe losers more often invalidate the full signal recovery candle and continue lower",
+    "observation_3": "76.6% of baseline target hits occurred within 10 holding sessions across 2014-2020"
+  },
+  "frozen_rules": [
+    {
+      "id": "R3_CLOSE_BELOW_SIGNAL_LOW_EXIT",
+      "role": "STRUCTURAL_INVALIDATION_EXIT",
+      "definition": "after entry and before target, first legal daily close strictly below the already-known signal candle low arms exit at next legal sellable open",
+      "target_priority": "a legal intraday touch of frozen zone_u on the same day is filled before the close-based exit can be known",
+      "uses_future_information": false
+    },
+    {
+      "id": "R4_H10_TIME_STOP",
+      "role": "FAILED_REPRICING_EXIT",
+      "definition": "if frozen zone_u has not been reached by calendar index entry_idx+10, arm exit at next legal sellable open",
+      "economic_claim": "the setup is a repricing/re-entry event; failure to complete within the empirically visible fast phase means the expected mechanism did not arrive",
+      "uses_future_information": false
+    }
+  ],
+  "profiles": ["BASELINE_H20", "R3_SIGNAL_LOW", "R4_H10", "R3_PLUS_R4"],
+  "market_state": {
+    "id": "CAUSAL_BROAD_MEDIAN_RET60_SIGN",
+    "use": "diagnostic stratification only",
+    "future_function": false
+  },
+  "outcome_governance": {
+    "2021_signal_outcomes_read": false,
+    "2022_plus_outcomes_read": false,
+    "post_2024_outcomes_read": false,
+    "cy011_read": false
+  },
+  "user_gate": "at least 50 completed signals in every 2014-2020 year and mean net event return above 4% in every year",
+  "anti_overfit": {
+    "no_stop_percent_grid": true,
+    "no_time_stop_grid": true,
+    "no_market_state_filter": true,
+    "no_entry_threshold_change": true
+  }
+}

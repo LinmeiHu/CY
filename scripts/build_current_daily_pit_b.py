@@ -37,7 +37,7 @@ INDUSTRY_ASSET = "CY-023"
 BASE_INDUSTRY_ASSET = "QD-008-BS-MERGED-20260821"
 FLOAT_ASSET = "QD-009"
 ACTION_ASSET = "QD-010"
-PIPELINE_VERSION = "daily-pit-b-current-extension-v1"
+PIPELINE_VERSION = "daily-pit-b-current-extension-v2"
 
 
 def _sha256(path: Path) -> str:
@@ -117,6 +117,14 @@ def _verify_asset_file_hashes(asset: dict[str, Any]) -> None:
         raise ValueError(f"{asset['asset_id']} has no verifiable data file")
 
 
+def _daily_partition_root(asset: dict[str, Any]) -> Path:
+    """Resolve either a partition root or a frozen asset containing ``daily``."""
+
+    root = Path(asset["location"])
+    nested = root / "daily"
+    return nested if nested.is_dir() else root
+
+
 @dataclass(frozen=True)
 class _SnapshotManifest:
     snapshots: dict[str, tuple[str, str]]
@@ -150,6 +158,24 @@ def _create_delta_sources(
     raw_daily = market_root / "raw_daily.parquet"
     base_2026 = base_daily_root / "partition_year=2026" / "data_0.parquet"
     symbol_sql = _symbol_sql("code")
+    raw_columns = {
+        str(row[0])
+        for row in connection.execute(
+            f"DESCRIBE SELECT * FROM read_parquet({_sql(raw_daily)})"
+        ).fetchall()
+    }
+    minute_session_valid_sql = (
+        "COALESCE(TRY_CAST(minute_session_valid AS BOOLEAN), FALSE)"
+        if "minute_session_valid" in raw_columns
+        else "TRUE"
+    )
+    state_source_sql = (
+        "CASE WHEN source LIKE 'sina-%' "
+        "THEN 'sina_none_5m_aggregate+baostock_universe' "
+        "ELSE 'baostock_none_daily' END"
+        if "source" in raw_columns
+        else "'baostock_none_daily'"
+    )
     connection.execute(
         f"""
         CREATE TEMP TABLE raw_delta AS
@@ -165,7 +191,9 @@ def _create_delta_sources(
                TRY_CAST(amount AS DOUBLE) AS amount,
                TRY_CAST(turn AS DOUBLE) AS source_turnover_rate,
                TRY_CAST(tradestatus AS INTEGER) AS trade_status,
-               CASE WHEN isST = '1' THEN TRUE WHEN isST = '0' THEN FALSE END AS is_st
+               CASE WHEN isST = '1' THEN TRUE WHEN isST = '0' THEN FALSE END AS is_st,
+               {minute_session_valid_sql} AS source_minute_session_valid,
+               {state_source_sql} AS source_state
         FROM read_parquet({_sql(raw_daily)})
         WHERE CAST(date AS DATE) BETWEEN DATE '{START}' AND DATE '{END}';
 
@@ -225,7 +253,7 @@ def _create_delta_sources(
                CASE WHEN trade_status = 0 THEN TRUE
                     WHEN open IS NULL OR down_limit_price IS NULL THEN NULL
                     ELSE open <= down_limit_price END AS sell_blocked_open,
-               'baostock_none_daily' AS state_source
+               source_state AS state_source
         FROM limits;
         """
     )
@@ -330,8 +358,10 @@ def _strengthen_delta(connection: duckdb.DuckDBPyConnection) -> None:
               e.volume / (e.source_turnover_rate / 100.0) - e.circulating_shares
             ) / e.circulating_shares
           END AS float_turnover_relative_error,
+          r.source_minute_session_valid,
           p.previous_close
         FROM enriched e
+        JOIN raw_delta r USING (symbol, trade_date)
         LEFT JOIN previous_prices p USING (symbol, trade_date);
 
         CREATE TEMP TABLE delta_enriched AS
@@ -340,24 +370,35 @@ def _strengthen_delta(connection: duckdb.DuckDBPyConnection) -> None:
           e.corporate_action_valid AND c.reference_price_continuity_valid
             AS corporate_action_valid,
           e.hard_valid AND c.float_turnover_crosscheck_valid
-            AND c.reference_price_continuity_valid AS hard_valid,
+            AND c.reference_price_continuity_valid
+            AND c.source_minute_session_valid AS hard_valid,
           e.trade_status = 1 AND e.hard_valid
             AND c.float_turnover_crosscheck_valid
-            AND c.reference_price_continuity_valid AS current_day_data_tradable,
+            AND c.reference_price_continuity_valid
+            AND c.source_minute_session_valid AS current_day_data_tradable,
           CONCAT_WS('|', NULLIF(e.invalid_reasons, ''),
             CASE WHEN NOT c.reference_price_continuity_valid
                  THEN 'UNRESOLVED_REFERENCE_PRICE_DISCONTINUITY' END,
             CASE WHEN NOT c.float_turnover_crosscheck_valid
-                 THEN 'FLOAT_TURNOVER_CROSSCHECK_FAILED' END
+                 THEN 'FLOAT_TURNOVER_CROSSCHECK_FAILED' END,
+            CASE WHEN NOT c.source_minute_session_valid
+                 THEN 'INCOMPLETE_NATIVE_5M_SESSION' END
           ) AS invalid_reasons
         ),
         c.reference_price_continuity_valid,
         c.float_turnover_crosscheck_valid,
+        c.source_minute_session_valid,
         c.float_turnover_relative_error,
         c.previous_close,
-        'CY022_CY023_QD009_QD010_FAIL_CLOSED_V1' AS metadata_extension_policy
+        '{MARKET_ASSET}_{INDUSTRY_ASSET}_{FLOAT_ASSET}_{ACTION_ASSET}_FAIL_CLOSED_V2'
+          AS metadata_extension_policy
         FROM enriched e JOIN extension_checks c USING (symbol, trade_date);
-        """
+        """.format(
+            MARKET_ASSET=MARKET_ASSET.replace("-", ""),
+            INDUSTRY_ASSET=INDUSTRY_ASSET.replace("-", ""),
+            FLOAT_ASSET=FLOAT_ASSET.replace("-", ""),
+            ACTION_ASSET=ACTION_ASSET.replace("-", ""),
+        )
     )
 
 
@@ -402,6 +443,8 @@ def _audit(
     output: Path,
     build_id: str,
     component_hashes: dict[str, str],
+    base_root: Path,
+    market_root: Path,
 ) -> dict[str, Any]:
     delta = connection.execute(
         """
@@ -435,15 +478,35 @@ def _audit(
         """
     ).fetchall()
     assert full is not None
+    base_2026 = base_root / "partition_year=2026" / "data_0.parquet"
+    raw_daily = market_root / "raw_daily.parquet"
+    base = connection.execute(
+        "SELECT COUNT(*), MAX(trade_date) FROM read_parquet(?)",
+        [str(base_2026)],
+    ).fetchone()
+    raw = connection.execute(
+        "SELECT COUNT(*), MIN(CAST(date AS DATE)), MAX(CAST(date AS DATE)) "
+        "FROM read_parquet(?) WHERE CAST(date AS DATE) BETWEEN ? AND ?",
+        [str(raw_daily), START, END],
+    ).fetchone()
+    assert base is not None and raw is not None
     delta_ratio = int(delta[1]) / int(delta[0]) if delta[0] else 0.0
     checks = {
-        "delta_rows_match_raw": int(delta[0]) == 41668,
+        "delta_rows_match_raw": int(delta[0]) == int(raw[0]) and int(raw[0]) > 0,
         "delta_hard_valid_at_least_95pct": delta_ratio >= 0.95,
         "delta_unique": int(delta[2]) == 0,
         "delta_no_time_travel": int(delta[3]) == 0,
+        "base_and_delta_do_not_overlap": (
+            raw[1] is not None
+            and base[1] is not None
+            and base[1] < raw[1]
+            and raw[1] == START
+        ),
         "current_partition_unique": int(full[4]) == 0,
-        "current_partition_end_is_2026_08_24": str(full[2]) == END.isoformat(),
-        "current_partition_preserves_base_rows": int(full[0]) == 765643 + 41668,
+        "current_partition_end_matches_requested": str(full[2]) == END.isoformat(),
+        "current_partition_preserves_base_rows": (
+            int(full[0]) == int(base[0]) + int(raw[0])
+        ),
         "invalid_rows_have_reasons": connection.execute(
             "SELECT COUNT(*)=0 FROM delta_enriched WHERE NOT hard_valid "
             "AND COALESCE(invalid_reasons,'')=''"
@@ -452,7 +515,7 @@ def _audit(
     return {
         "schema_version": 1,
         "status": "PASS" if all(checks.values()) else "FAIL",
-        "gate": "CURRENT_DAILY_PIT_B_20260824_V1",
+        "gate": f"CURRENT_DAILY_PIT_B_{END:%Y%m%d}_V2",
         "build_id": build_id,
         "pipeline_version": PIPELINE_VERSION,
         "created_at": datetime.now(UTC).isoformat(),
@@ -494,6 +557,11 @@ def _audit(
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--start", type=date.fromisoformat, default=START)
+    parser.add_argument("--end", type=date.fromisoformat, default=END)
+    parser.add_argument("--base-asset", default=BASE_ASSET)
+    parser.add_argument("--market-asset", default=MARKET_ASSET)
+    parser.add_argument("--industry-asset", default=INDUSTRY_ASSET)
     parser.add_argument(
         "--registry", type=Path, default=ROOT / "configs" / "data_asset_registry.json"
     )
@@ -501,7 +569,14 @@ def _parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    global START, END, BASE_ASSET, MARKET_ASSET, INDUSTRY_ASSET
     args = _parse_args()
+    if args.end < args.start:
+        raise ValueError("end must not precede start")
+    START, END = args.start, args.end
+    BASE_ASSET = args.base_asset
+    MARKET_ASSET = args.market_asset
+    INDUSTRY_ASSET = args.industry_asset
     output = args.output.resolve()
     if output.exists():
         raise FileExistsError(output)
@@ -526,7 +601,12 @@ def main() -> int:
         for asset_id in required
     }
     identity = _canonical_json(
-        {"pipeline": PIPELINE_VERSION, "components": component_hashes}
+        {
+            "pipeline": PIPELINE_VERSION,
+            "components": component_hashes,
+            "start": START,
+            "end": END,
+        }
     )
     build_id = "PITB-CURRENT-" + hashlib.sha256(identity.encode()).hexdigest()[:20].upper()
     snapshot_manifest = _SnapshotManifest(
@@ -560,7 +640,7 @@ def main() -> int:
             market_root=Path(required[MARKET_ASSET]["location"]),
             industry_root=Path(required[INDUSTRY_ASSET]["location"]),
             base_industry_root=Path(required[BASE_INDUSTRY_ASSET]["location"]),
-            base_daily_root=Path(required[BASE_ASSET]["location"]),
+            base_daily_root=_daily_partition_root(required[BASE_ASSET]),
             float_root=Path(required[FLOAT_ASSET]["location"]),
             action_root=Path(required[ACTION_ASSET]["location"]),
         )
@@ -569,13 +649,15 @@ def main() -> int:
         _create_enriched(connection, snapshot_manifest, build_id)  # type: ignore[arg-type]
         _strengthen_delta(connection)
         files = _copy_base_and_write_current(
-            connection, Path(required[BASE_ASSET]["location"]), temporary
+            connection, _daily_partition_root(required[BASE_ASSET]), temporary
         )
         audit = _audit(
             connection,
             output=temporary,
             build_id=build_id,
             component_hashes=component_hashes,
+            base_root=_daily_partition_root(required[BASE_ASSET]),
+            market_root=Path(required[MARKET_ASSET]["location"]),
         )
         audit["files"] = files
         (temporary / "audit.json").write_text(

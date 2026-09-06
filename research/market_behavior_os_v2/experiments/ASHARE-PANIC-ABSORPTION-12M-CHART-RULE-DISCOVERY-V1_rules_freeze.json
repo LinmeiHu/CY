@@ -1,0 +1,69 @@
+{
+  "experiment": "ASHARE-PANIC-ABSORPTION-12M-CHART-RULE-DISCOVERY-V1",
+  "freeze_stage": "POST_CHART_REVIEW_PRE_RULE_OUTCOME_EVALUATION",
+  "source_signal": "ASHARE-PANIC-GAP-DOWN-FULL-ABSORPTION-REVERSAL-V1",
+  "chart_review": {
+    "charts_reviewed": 625,
+    "review_order": "outcome_bucket_then_signal_date",
+    "windows": "126 market sessions before and after each signal",
+    "review_complete": true
+  },
+  "compressed_five_rules": [
+    "The stock lost at least 10 percent over the preceding 20 completed sessions.",
+    "The completed signal session opened at least 1 percent below the preceding close and made a new five-session low.",
+    "Signal-session turnover was at least the preceding 20-session mean.",
+    "The signal session closed at or above the preceding high and in the upper 30 percent of its own range.",
+    "At least one other independent stock produced the same frozen mother signal on that completed session."
+  ],
+  "frozen_candidate_sets": [
+    {
+      "candidate_id": "MOTHER_CONTROL",
+      "definition": "Exact frozen mother signal; no chart-derived filter.",
+      "role": "control"
+    },
+    {
+      "candidate_id": "BROAD_CAPITULATION_GE2",
+      "definition": "Exact frozen mother signal AND same completed-session frozen mother-signal count >= 2.",
+      "economic_meaning": "Cross-sectional confirmation that forced selling was market-wide rather than purely idiosyncratic.",
+      "causal_availability": "signal-session close",
+      "role": "only chart-derived candidate"
+    }
+  ],
+  "explicitly_rejected_chart_rules": [
+    "No maximum gap-down cutoff: large-gap winners were common.",
+    "No signal-low stop: many target winners breached the signal low first.",
+    "No mandatory next-session rise: profitable paths often retested or delayed.",
+    "No 60-session trend-sign filter: winners and losers occupied both signs.",
+    "No five-session structural-reclaim requirement: only 35 of 625 development signals qualified, too sparse for the declared opportunity goal."
+  ],
+  "selection_prohibition": {
+    "threshold_search": false,
+    "subset_search": false,
+    "model_fit": false,
+    "post_result_rule_change": false
+  },
+  "development_gate": {
+    "period": "2014-01-01 through 2021-12-31",
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_strictly_greater_than": 0.0,
+    "severe_loss_10_rate_at_most": 0.15,
+    "every_calendar_year_mean_net_return_strictly_greater_than": 0.0
+  },
+  "validation_gate": {
+    "period": "2022-01-01 through 2024-12-31",
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_strictly_greater_than": 0.0,
+    "severe_loss_10_rate_at_most": 0.15,
+    "every_calendar_year_mean_net_return_strictly_greater_than": 0.0
+  },
+  "execution": "Unchanged frozen T10_H20_NO_STOP source translation with 40 bps round-trip cost.",
+  "outcome_governance": {
+    "development_consumed": "2014-2021",
+    "previously_consumed_validation": "2022-2023",
+    "newly_authorized_challenge": "2024",
+    "post_2024_outcomes_authorized": false,
+    "cy011_read": false
+  }
+}

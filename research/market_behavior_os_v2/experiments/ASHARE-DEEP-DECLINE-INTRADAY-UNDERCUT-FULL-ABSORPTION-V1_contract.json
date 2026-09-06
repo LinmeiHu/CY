@@ -1,0 +1,80 @@
+{
+  "experiment": "ASHARE-DEEP-DECLINE-INTRADAY-UNDERCUT-FULL-ABSORPTION-V1",
+  "status": "OUTCOME_BLIND_SIGNAL_CHART_AND_TRANSLATION_FREEZE",
+  "economic_hypothesis": "After a material twenty-session decline, an intraday break of the prior five-session low followed by a completed high-turnover close above the prior session high and in the upper thirty percent of the range is evidence that urgent supply was absorbed. Unlike the prior panic-gap family, the forced sale may occur intraday and no opening-gap condition is used.",
+  "development": {
+    "warmup": "2013",
+    "chart_and_rule_discovery": "2014-01-01 through 2020-12-31",
+    "frozen_rule_confirmation": "2021-01-01 through 2021-12-31",
+    "challenge_only_after_development_gate": "2022-01-01 through 2024-12-31"
+  },
+  "signal": {
+    "universe": "PIT hard-valid, fully tradable, non-ST Main Board and ChiNext common shares",
+    "history": "The preceding 20 market sessions are contiguous, current-valid and tradable in one corporate-action coordinate lineage.",
+    "decline": "Completed twenty-session coordinate return <= -10%.",
+    "undercut": "Signal-session coordinate low <= the minimum coordinate low of the preceding five completed sessions.",
+    "participation": "Signal-session turnover fraction >= the preceding twenty-session mean.",
+    "full_absorption": "Signal-session coordinate close >= the preceding session coordinate high and close location >=70%.",
+    "limit_exclusion": "Signal session does not close at its legal upper price limit.",
+    "cooldown": "Retain the first qualifying event per symbol; the next event must be more than 20 market-session indices later.",
+    "decision_at": "completed signal-session close"
+  },
+  "explicit_difference_from_prior_family": {
+    "opening_gap_condition": "NONE",
+    "reason": "This tests intraday forced-sale absorption, not a neighboring gap threshold."
+  },
+  "chart_review": {
+    "one_chart_per_signal": true,
+    "window": "126 market sessions before and 126 after the signal where available",
+    "coordinate": "accepted corporate-action-aware coordinate normalized to signal close 100",
+    "labels": ["signal", "entry", "exit", "target", "signal low"],
+    "outcome_buckets": ["PROFIT_GE_4PCT", "PROFIT_0_TO_4PCT", "LOSS_0_TO_10PCT", "SEVERE_LOSS", "NO_COMPLETED_TRADE"]
+  },
+  "chart_rule_compression": {
+    "maximum_plain_language_rules": 5,
+    "maximum_candidate_sets": 3,
+    "rules_frozen_before_changed_rule_outcomes": true,
+    "threshold_grid": false,
+    "subset_search": false,
+    "model_fit": false
+  },
+  "execution": {
+    "entry": "first legal executable daily open strictly after the signal, no later than the third subsequent market session",
+    "target": "+10% from executable entry, eligible from the first T+1 sellable session",
+    "time_stop": "after 20 completed market-session indices, exit at the next legal sellable open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "signal_bar_fill": false,
+    "corporate_action_lineage": "fail closed",
+    "suspension_and_price_limits": "binding"
+  },
+  "development_gate": {
+    "period": "2014-01-01 through 2021-12-31 after rules are frozen from 2014-2020 charts",
+    "each_year_completed_trades_strictly_greater_than": 50,
+    "each_year_mean_net_return_strictly_greater_than": 0.04,
+    "each_year_median_net_return_strictly_greater_than": 0.0,
+    "each_year_severe_loss10_rate_at_most": 0.15
+  },
+  "challenge_gate": {
+    "each_year_completed_trades_strictly_greater_than": 50,
+    "each_year_mean_net_return_strictly_greater_than": 0.04,
+    "each_year_median_net_return_strictly_greater_than": 0.0,
+    "each_year_severe_loss10_rate_at_most": 0.15
+  },
+  "outcome_governance": {
+    "2014_2020": "consumed chart/rule-discovery history",
+    "2021": "held out from signal-chart rule formation; used once for frozen-rule development confirmation",
+    "2022_2023": "previously consumed elsewhere; challenge only, never independent OOS",
+    "2024": "newly authorized challenge",
+    "post_2024_outcomes_authorized": false,
+    "cy011_read": false
+  },
+  "prohibited": [
+    "no opening-gap threshold",
+    "no future extrema in signal",
+    "no same-session execution",
+    "no 2022-2024 rule tuning",
+    "no post-2024 outcome read",
+    "no machine learning"
+  ]
+}

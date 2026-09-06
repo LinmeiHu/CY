@@ -1,0 +1,49 @@
+{
+  "contract_version": 1,
+  "strategy_id": "STRAT-SUPERMIND-V6-COMPRESSION-IGNITION",
+  "registered_name_zh": "蓄势点火",
+  "registered_name_en": "Compression Ignition",
+  "short_code": "SMV6-CI",
+  "status": "FROZEN_SUPPLIED_BASELINE",
+  "authoritative_identity": {
+    "identity_type": "HASH_BOUND_WORKSPACE_SOURCE",
+    "strategy_path": "research/supermind_v6/strategy/SuperMind_V6_CSI1000_MA15_ENTRY_HS300_MA20_EXIT_MINVOLLOC30_CAP50_SET_TAIL_SELL_OPEN_BUY_COMMENTS_FIXED.py",
+    "strategy_sha256": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+    "identity_rule": "The exact strategy file bytes at this SHA-256 define the strategy. If the workspace path has a different hash, resolution must fail closed rather than silently accepting the changed file.",
+    "origin_rule": "This is the SuperMind V6 code supplied directly by the user. Do not search for, infer, or substitute another purported original implementation."
+  },
+  "frozen_definition": {
+    "universe": "The literal 152-code ETF pool embedded in the authoritative strategy source, intersected causally with the platform's effective ETF security list.",
+    "eligibility": "At least 121 valid closes and prior-20 average turnover of at least CNY 20,000,000.",
+    "entry_environment": "CSI1000 000852.SH close relative to MA15 controls permission for new entries only.",
+    "entry_structure": "ETF official close above its own MA20 and above the previous 60-session high, after FULL40 contraction: prior-40 box width no more than 12.5%, prior-day MA5/10/20/30 dispersion no more than 5%, direction efficiency no more than 0.40, and prior vol10/vol60 no more than 0.90.",
+    "volume_location": "HARD MINVOLLOC30: the minimum-volume session in the prior 30 sessions must lie at or below 0.50 of that price window's low-to-high location.",
+    "ranking": "Equal-weight cross-sectional percentile ranks of 20-, 60-, and 120-session momentum across the full eligible ETF cross-section; deterministic mom60 and code tie-breaks are preserved from source.",
+    "portfolio": "Maximum five holdings. CAP50_SET resizes to min(50%, 1/N) only when target membership changes. A full portfolio is not rank-replaced merely because a new ETF has a higher RS score.",
+    "own_exit": "An ETF exits after two consecutive completed closes below its contemporaneous MA40, with sticky retry semantics until liquidation succeeds.",
+    "market_exit": "510300.SH retains portfolio-level weekly MA20 liquidation and the separate daily 2% below-MA20 emergency liquidation under BOTH mode.",
+    "execution": "Preserve the source's official-close signal formation, next-session opening entry, tail sell, trading-status, fill retry, and no-same-bar-entry semantics. A signal formed on bar t cannot enter inside bar t."
+  },
+  "interpretation": "A long-only ETF compression-to-ignition strategy: identify low-volatility equilibrium and low-position supply exhaustion, require a confirmed 60-session breakout, select persistent relative-strength leaders, and avoid prematurely truncating the trend right tail.",
+  "aliases": [
+    "蓄势点火",
+    "蓄势点火V6",
+    "SuperMind V6",
+    "SuperMind-V6",
+    "SMV6",
+    "SMV6-CI",
+    "最开始的SuperMind V6",
+    "最初SuperMind V6",
+    "原始SuperMind V6",
+    "最初V6",
+    "原始V6",
+    "Compression Ignition"
+  ],
+  "not_the_same_as": [
+    "Any sixth/seventh-position overlay or RS-threshold expansion",
+    "Any dynamic or expanded ETF-universe V7 research variant",
+    "Any version that changes FULL40, MINVOLLOC30, B60, market gates, exits, CAP50_SET, T+1, or real-executability semantics"
+  ],
+  "scientific_warning": "Local hybrid replay evidence is shadow evidence and does not establish exact native SuperMind/QMT fill equivalence. The registered name identifies strategy semantics and exact source bytes; it does not upgrade data lineage, validation status, or live-trading authorization.",
+  "registered_at": "2026-09-06"
+}

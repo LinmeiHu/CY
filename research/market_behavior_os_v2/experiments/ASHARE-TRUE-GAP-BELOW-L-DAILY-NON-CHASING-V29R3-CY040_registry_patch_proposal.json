@@ -1,0 +1,190 @@
+{
+  "proposal": "CY-040 V29R3 outcome-blind Stage-A registration only",
+  "status": "PROPOSAL_NOT_APPLIED_NOT_AUTHORIZED",
+  "apply_ready": false,
+  "reason_not_apply_ready": "The metadata-only CY-040 builder has deliberately not been run. The manifest and activation-audit SHA256 values must be filled from that immutable build before any registry append.",
+  "concurrency_warning": "configs/data_asset_registry.json is under concurrent append-only research work. Re-read and validate the then-current registry, confirm CY-040 and the authorization id remain unused, and append without replacing unrelated bytes.",
+  "frozen_code_bindings": {
+    "preregistration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-DAILY-NON-CHASING-V29R3_preregistration.json",
+      "sha256": "33595c6c163ef65a65298f1a2751b105e9d1ada149f7ec6f834385cd68fcb15d"
+    },
+    "runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_daily_non_chasing_v29r3_validation_2022_2024.py",
+      "sha256": "19391bf747180c575e6bd606511ff43cceb357e8fafeb79fe08f3ad46f60640c"
+    },
+    "asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_ashare_true_gap_below_l_daily_non_chasing_v29r3_activation_assets.py",
+      "sha256": "048b387f19019eabb6b4ad81708afd760a140462e97f38a5a71e7079714f78f7"
+    },
+    "parent_validation_identity_freeze": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2-VALIDATION-2022-2024_identity_freeze.json",
+      "sha256": "8b61ca22a211d91be01c3da7669e1412ef201bc8ca0440ac052b804d0397f39c"
+    },
+    "parent_validation_selected_identity": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2_validation_2022_2024/diagnostic_2022_2024/orderly_demand_selected_entries.parquet",
+      "sha256": "c439ea1a74e7d1f865cf187fadca3834e8d8963537eeab9230e4f3981db14c23"
+    },
+    "cy033_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/asset_manifest.json",
+      "sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977"
+    },
+    "cy033_exact_daily_partition_hashes": {
+      "2022": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "2023": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+      "2024": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e"
+    }
+  },
+  "validator_patch_required": {
+    "scripts/validate_data_registry.py": {
+      "SUPPORTED_BOUNDED_PURPOSES_add": [
+        "ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_A"
+      ],
+      "RECORD_LEVEL_AVAILABLE_AT_PURPOSES_add": [
+        "ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_A"
+      ]
+    },
+    "tests/test_data_asset_registry.py": "Extend the exact RECORD_LEVEL_AVAILABLE_AT_PURPOSES expectation with ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_A and run the targeted registry test after the append."
+  },
+  "registry_asset_append_template": {
+    "asset_id": "CY-040",
+    "name": "Outcome-blind V29R3 signal-close market-median wrapper for 2022-2024 Stage A",
+    "kind": "outcome_blind_signal_feature_activation_wrapper",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Users/linmei/Documents/CY/data/staging/CY-040-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1",
+    "source": "Metadata-only wrapper over exact registered CY-033 2022, 2023 and 2024 daily partitions plus the frozen V28R2 validation selected identity; contains no outcome or title content and copies no Parquet rows.",
+    "coverage": {
+      "start": "2022-01-01",
+      "end": "2024-12-31",
+      "partition_years": [
+        2022,
+        2023,
+        2024
+      ],
+      "parent_selected_signals_declared": 120
+    },
+    "schema_and_units": "Reference manifest only. Stage-A consumer reads raw CNY/share close and preclose plus trade_status, current_day_data_tradable, hard_valid, decision_at, available_at and snapshot_id from exact CY-033 partitions to compute unweighted same-day cross-sectional median returns.",
+    "quality_evidence": {
+      "audit_path": "/Users/linmei/Documents/CY/data/staging/CY-040-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1/activation_audit.json",
+      "audit_sha256": "PENDING_EXPLICITLY_AUTHORIZED_METADATA_ONLY_BUILD",
+      "gate": "V29R3_OUTCOME_BLIND_STAGE_A_INPUT_BINDING",
+      "gate_pass": true,
+      "outcome_or_title_content_parsed": false,
+      "parquet_rows_copied": 0
+    },
+    "lineage": {
+      "record_available_at": true,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY/data/staging/CY-040-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1/asset_manifest.json",
+      "manifest_sha256": "PENDING_EXPLICITLY_AUTHORIZED_METADATA_ONLY_BUILD",
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1",
+      "dependency_asset_id": "CY-033",
+      "pipeline_version": "daily-non-chasing-v29r3-stage-a-wrapper-v1"
+    },
+    "allowed_uses": [
+      "one exact outcome-blind V29R3 2022-2024 Stage-A computation of completed-signal-day stock return minus the full-market hard-valid PIT median",
+      "freeze one exact cohort under the hash-bound preregistration and runner"
+    ],
+    "blocked_uses": [
+      "outcome, exit, target, portfolio, NAV or result reads",
+      "announcement titles, documents, issuer classifiers or issuer-veto inheritance",
+      "2025-or-later rows or partitions",
+      "other thresholds, strategies, current-survivor fallback, live trading, sizing or order generation"
+    ],
+    "activation_gates": [
+      "manifest and audit hashes are filled from the immutable metadata-only build and remain exact",
+      "CY-033 manifest and exact 2022-2024 partition hashes remain exact",
+      "V28R2 validation identity freeze and selected identity hashes remain exact",
+      "V29R3 preregistration, runner and asset-builder hashes remain exact",
+      "one-to-one bounded authorization exists and Stage-A outcome/title permissions remain false"
+    ]
+  },
+  "registry_authorization_append_template": {
+    "authorization_id": "CYQ-AUTH-ASHARE-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1",
+    "purpose": "ASHARE_DAILY_NON_CHASING_V29R3_VALIDATION_STAGE_A",
+    "asset_id": "CY-040",
+    "dependency_asset_id": "CY-033",
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "2022-01-01",
+      "end": "2024-12-31",
+      "signal_start": "2022-01-01",
+      "signal_end": "2024-12-31"
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-040-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1/asset_manifest.json",
+      "sha256": "PENDING_EXPLICITLY_AUTHORIZED_METADATA_ONLY_BUILD"
+    },
+    "bound_artifacts": [
+      {
+        "role": "asset_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_ashare_true_gap_below_l_daily_non_chasing_v29r3_activation_assets.py",
+        "sha256": "048b387f19019eabb6b4ad81708afd760a140462e97f38a5a71e7079714f78f7"
+      },
+      {
+        "role": "runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_daily_non_chasing_v29r3_validation_2022_2024.py",
+        "sha256": "19391bf747180c575e6bd606511ff43cceb357e8fafeb79fe08f3ad46f60640c"
+      },
+      {
+        "role": "parent_validation_identity_freeze",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2-VALIDATION-2022-2024_identity_freeze.json",
+        "sha256": "8b61ca22a211d91be01c3da7669e1412ef201bc8ca0440ac052b804d0397f39c"
+      },
+      {
+        "role": "parent_validation_selected_identity",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2_validation_2022_2024/diagnostic_2022_2024/orderly_demand_selected_entries.parquet",
+        "sha256": "c439ea1a74e7d1f865cf187fadca3834e8d8963537eeab9230e4f3981db14c23"
+      },
+      {
+        "role": "cy033_asset_manifest",
+        "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/asset_manifest.json",
+        "sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977"
+      }
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-DAILY-NON-CHASING-V29R3_preregistration.json",
+      "sha256": "33595c6c163ef65a65298f1a2751b105e9d1ada149f7ec6f834385cd68fcb15d"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-DAILY-NON-CHASING-V29R3_preregistration.json",
+      "sha256": "33595c6c163ef65a65298f1a2751b105e9d1ada149f7ec6f834385cd68fcb15d",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_daily_non_chasing_v29r3_validation_2022_2024.py",
+      "runner_sha256": "19391bf747180c575e6bd606511ff43cceb357e8fafeb79fe08f3ad46f60640c"
+    },
+    "authorized_arms": [
+      "V29R3_OUTCOME_BLIND_STAGE_A_ONLY"
+    ],
+    "stage_a_outcome_read_authorized": false,
+    "stage_a_title_read_authorized": false,
+    "2025_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": true,
+    "allowed_uses": [
+      "read only the exact parent selected identity and exact CY-033 2022-2024 partitions after all hash gates pass",
+      "compute the frozen signal-close feature and freeze one exact V29R3 cohort without outcomes"
+    ],
+    "blocked_uses": [
+      "any outcome, result, portfolio or issuer-title read",
+      "any 2025-plus read, threshold change, rescue, second cohort, sizing, live or production use"
+    ],
+    "known_limitations": [
+      "CY-033 is PIT-B rather than strict archival PIT-A",
+      "DAILY_NON_CHASING_2PCT is post-hoc to consumed 2018-2021 outcomes",
+      "development accepted frequency is highly concentrated on 2018-10-26",
+      "Stage A does not authorize Stage B; CY-041 must be built and registered separately after the exact Stage-A freeze exists"
+    ]
+  },
+  "required_sequence": [
+    "Obtain explicit approval to run the metadata-only CY-040 builder; do not invoke Stage A.",
+    "Run builder --stage a, verify no Parquet row or outcome/title content was parsed, and freeze manifest/audit hashes.",
+    "Re-read the latest registry and validator, fill the two pending manifest/audit hashes, append CY-040 and its one-to-one authorization, and run only targeted registry validation.",
+    "Only after the registered activation passes may the separate runner --mode stage-a read the authorized 2022-2024 signal-time rows.",
+    "Do not prepare or register CY-041 until the completed immutable Stage-A freeze is independently verified."
+  ],
+  "cy041_stage_b": "DEFERRED_NOT_PROPOSED_NOT_AUTHORIZED"
+}

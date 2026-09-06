@@ -1,0 +1,65 @@
+{
+  "experiment": "ASHARE-BULL-DISTRIBUTED-ACCUMULATION-FAST-PRICE-DISCOVERY-V1",
+  "stage": "FROZEN_BEFORE_2022_2025_CHALLENGE_BUILD_OR_OUTCOME_READ",
+  "scientific_status": "POST_CHART_DEVELOPMENT_TRANSLATION_CANDIDATE",
+  "economic_hypothesis": "A moderate advance made through many small positive sessions and little downside turnover can represent distributed demand. A bounded-turnover breakout through the prior twenty-session ceiling becomes actionable only when the broader market is causally strengthening, the path has target headroom, and the first later legal close accepts the new price. Low turnover is a supply descriptor inside this hierarchy, not the mother signal.",
+  "development": {
+    "signal_period": "2014-01-01 through 2020-12-31",
+    "mother_signals": 3422,
+    "completed": 420,
+    "mean_completed_signals_per_year": 60.0,
+    "mean_net_return": 0.04101521291229482,
+    "mean_holding_sessions": 14.14047619047619,
+    "median_net_return": 0.09600000000000009,
+    "all_original_user_gates_pass": true,
+    "annual_instability_disclosed": "2014, 2016, 2017, 2018, and 2020 do not individually satisfy the pooled return/frequency target; challenge authorization uses only the user's original pooled gates and is not an annual-stability claim.",
+    "runner_sha256": "387ff2063bd11164a667c1081fa6f2b05374fba2028c0ee06a8c6185d505f5f7",
+    "result_sha256": "1ad39be288c949ac8340b978557a64146878fc7d842d6cc28808040914d058f8",
+    "outcomes_sha256": "948184d99ea2ee354bab306c7436b1e76295799f7cc5e984654e1874b7b7a11c"
+  },
+  "frozen_mother": {
+    "market": "causal BULL at the completed signal close",
+    "history": "exact valid contiguous prior sixty sessions in one coordinate lineage",
+    "distributed_advance": "completed current close is 5 to 25 percent above the exact close twenty sessions earlier; at least 60 percent of the prior twenty step returns are positive; prior-twenty maximum absolute step return is below 7 percent",
+    "contracted_selling": "prior-twenty downside-turnover sum divided by upside-turnover sum is at most 0.65",
+    "demand_escape": "completed signal step return is 2 to 7 percent, close location at least 0.75, coordinate close above the frozen prior-twenty high, and turnover 1.2 to 2.5 times the prior-twenty median",
+    "limit_and_cooldown": "non-upper-limit close and first raw event after more than twenty sessions without another raw mother event"
+  },
+  "frozen_chart_rules": {
+    "target_corridor": "require exact valid prior-126 history and either signal close above its prior-126 high or that high at least 15 percent above signal close; preserve the parent chart rule unchanged even though the execution target is shortened to +10 percent",
+    "market_strengthening": "(1 + market median ret20)^3 >= (1 + market median ret60) and market positive-ret20 share >= positive-ret60 share",
+    "crowding": "market positive-ret60 share >= 0.80 or same-date mother count <= 25",
+    "acceptance": "the first legal completed stock session after the signal within three market sessions must close at or above the signal close; later recovery cannot repair first-observation failure"
+  },
+  "translation": {
+    "entry": "first legal non-limit-up open strictly after acceptance and no later than acceptance plus three market sessions",
+    "target": "+10 percent gross from executable entry",
+    "horizon": "after twenty held market sessions, then first legal sellable open",
+    "round_trip_cost": 0.004,
+    "same_bar_fill": false,
+    "T_plus_1": true,
+    "limits_suspensions_and_corporate_actions": "binding and fail closed"
+  },
+  "challenge": {
+    "signal_period": "2022-01-01 through 2025-12-31",
+    "outcome_tail_end": "2026-03-31",
+    "primary_gates": "mean completed signals per signal year > 50, pooled completed mean net return >= 4 percent, pooled mean holding < 15 sessions",
+    "mandatory_diagnostics": "report every signal year separately, especially 2025; report date concentration and results excluding the largest signal date",
+    "no_rescue": true
+  },
+  "governance": {
+    "2022_2025_candidate_or_outcome_read_before_this_freeze": false,
+    "quiet_inventory_2025_outcomes_consumed": true,
+    "relationship_to_consumed_2025": "The consumed 2025 quiet-inventory failure motivates abandoning low volume as a mother signal, but no post-2021 distributed-accumulation V3 identity or outcome was read before this freeze.",
+    "exact_challenge_daily_path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet",
+    "exact_challenge_daily_sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+    "challenge_industry_lineage": "Use causal_industry only when industry_valid and historical_identity_valid are true and available_at <= decision_at; do not substitute a current or non-PIT industry snapshot.",
+    "unknown_required_state": "fail closed",
+    "future_market_function": false
+  },
+  "parent": {
+    "chart_rule_freeze_sha256": "9a201c35c4f2dd7c88a6d1e957a7235e6ca4b5718bc3b72df624ba0f950b0787",
+    "causal_rule_panel_sha256": "c9d46433fa18d87307cc2105ca6ee1e157a5160b1ebe7ab015be3f174379f114",
+    "future_paths_sha256": "c814ce76f61c4ec1d6dcd4fce30ec9ab649ac9f914bf629b1a6b966f53d61eb0"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "experiment_id": "ASHARE-FIRST-LIMIT-PLATFORM-IMMEDIATE-PRICE-DISCOVERY-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FROZEN",
+  "scientific_period": "2014-01-01 through 2021-12-31",
+  "outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false,
+  "relationship_to_prior_lane": "Uses the same causal first-limit platform launch representation as the prior contraction-rebreak lane, but tests a previously untested immediate price-discovery translation. It does not reuse the later contraction or rebreak event.",
+  "economic_hypothesis": "The first upper-limit close after forty sessions without any upper-limit close, when it also breaks a bounded forty-session platform, reveals demand that remains unsatisfied at the legal price ceiling. The first subsequent legal non-limit open is the earliest executable observation of the new price-discovery regime.",
+  "causal_state": {
+    "history": "40 preceding symbol rows exist; at least 38 are hard-valid/current-valid/tradable.",
+    "no_recent_limit": "zero preceding upper-limit closes in those 40 rows.",
+    "bounded_platform": "preceding-40 maximum coordinate high / minimum coordinate low - 1 <=35%."
+  },
+  "trigger": {
+    "first_limit": "signal actual close rounds to at least the registered upper-limit price.",
+    "platform_breakout": "signal coordinate close >= preceding-40 maximum coordinate high.",
+    "deduplication": "qualifying events no more than 30 market-session indices apart form one symbol cluster; retain its first event."
+  },
+  "universe": ["MAIN", "CHINEXT"],
+  "hard_validity": ["hard_valid", "history_valid", "current_valid", "tradable", "market_rule_valid", "corporate_action_valid", "not corporate_action_blocking", "not ST"],
+  "decision_at": "upper-limit signal close",
+  "entry": "first legal executable non-limit open within the next three market-session indices; otherwise expire",
+  "cost": "40 bp round trip",
+  "fixed_profiles": [
+    {"profile": "T15_H20_FIRST_LIMIT", "target": 0.15, "horizon": 20, "stop": false},
+    {"profile": "T15_H30_FIRST_LIMIT", "target": 0.15, "horizon": 30, "stop": false}
+  ],
+  "profile_selection": "2014-2018 only: maximize median annual mean net return, then pooled mean, then shorter horizon.",
+  "confirmation": "Only selected profile on 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, every confirmation-year mean >0.",
+  "prohibited": ["no contraction/rebreak future state", "no outcome threshold changes", "no 2022+ before Development passes", "no repository 2024+", "no signal-bar fill"]
+}

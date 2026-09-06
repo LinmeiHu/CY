@@ -1,0 +1,42 @@
+{
+  "experiment_id": "ASHARE-QUIET-INVENTORY-INFORMATION-REPRICING-LONG-TRANSLATION-V2",
+  "status": "SINGLE_TRANSLATION_FREEZE_AFTER_V1_DEVELOPMENT",
+  "parent": "ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1",
+  "parent_signal_identity_changed": false,
+  "parent_candidate_sha256": "a62e83c31c8ca18732481a35028c0a21baaf3da095a4aba62300baa1409e79af",
+  "known_parent_result": "V1 T10/H20 had positive 2019, 2020 and 2021 means but pooled confirmation mean net 2.9215%, below the 3% objective.",
+  "economic_hypothesis": "A genuinely accepted information repricing out of a quiet forty-session inventory can require several weeks to compound. A ten-percent profit cap may truncate the right tail before price discovery completes; a single twenty-percent target with a sixty-session horizon measures the same signal without changing admission semantics.",
+  "signal": "exact unchanged frozen V1 candidate identity",
+  "entry": "exact unchanged first legal executable daily open after completed signal, no later than three market sessions",
+  "fixed_profiles": [
+    {
+      "profile": "T20_H60_QUIET_INFORMATION_REPRICING",
+      "target": 0.20,
+      "horizon": 60,
+      "stop": false
+    }
+  ],
+  "costs": {
+    "entry_bps": 20,
+    "exit_bps": 20,
+    "round_trip_bps": 40
+  },
+  "chronology": {
+    "discovery": ["2014-01-01", "2018-12-31"],
+    "confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "completed_trades_per_year_average_strictly_greater_than": 50,
+    "mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20
+  },
+  "governance": {
+    "translation_profiles_tested": 1,
+    "feature_or_admission_filter_added": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

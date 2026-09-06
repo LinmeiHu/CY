@@ -1,0 +1,186 @@
+{
+  "experiment": "ASHARE-EXACT-V10-V17-ROLLFORWARD-2021-2026YTD-V1",
+  "status": "SPEC_FIRST_NO_RULE_CHANGE_ROLLFORWARD",
+  "purpose": "Fill only the missing exact V17 2021, 2025 and mature-2026YTD signal years and the missing exact V10 2025 and mature-2026YTD years. This is a mechanical roll-forward, not strategy research, optimization or an independent-validation claim.",
+  "frozen_parents": {
+    "v10_contract": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-V10_contract.json",
+      "sha256": "d4d2ec268f384d10acd48c88b09a71cb66a06c980585915e4af52264046e8aa6"
+    },
+    "v17_contract": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CAUSAL-BEAR-STRONG-BULL-DUAL-ENGINE-V17_contract.json",
+      "sha256": "5bcca65c12fb590137a45e454e309f79b70a1a79cfa3fff51124246d3a809b7c"
+    },
+    "bull_acceptance_contract": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BULL-QUIET-INVENTORY-THREE-SESSION-ACCEPTANCE-V2_contract.json",
+      "sha256": "4d5b4249276cc4f2ca5ab3651443832aa3c581dc57022e479a8ef51d8f251822"
+    },
+    "base_regime_contract": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CAUSAL-MARKET-REGIME-ROUTED-SIMPLE-STRATEGY-V1_contract.json",
+      "sha256": "9810a9fecfa2a0d0cfc09bf875f67b76050e57b3569305e5b8d9942044ccebe4"
+    }
+  },
+  "unchanged_rules": {
+    "market_state": {
+      "BEAR": "completed-close market median ret20 <= 0, median ret60 <= 0, positive-ret20 share <= 0.50 and positive-ret60 share <= 0.50",
+      "STRONG_BULL": "base BULL plus completed-close market median ret60 >= 0.05 and positive-ret60 share >= 0.60",
+      "WEAK_BULL_TRANSITION": "cash",
+      "bear_breadth_repair": "completed positive-ret20 share strictly above its value five completed market sessions earlier"
+    },
+    "v10_stock_event": "exact OAI ret20 <= -0.10, signal step return >= 0.05, close above prior-five high, turnover >= prior-20 mean, close location >= 0.70, non-upper-limit close, prior10 return <= -0.08, and exact 20-session same-symbol cooldown",
+    "v17_strong_bull_event": "exact quiet-inventory mother event followed by the frozen third subsequent valid-stock-session close at or above the pre-signal prior-40 platform high",
+    "execution": "first legal open strictly after the applicable decision and no later than three global market sessions; +20 percent target or first legal open after H60 close decision; no stop; T+1; 20 bps each side; fail closed on suspension, limit or coordinate-lineage failure",
+    "v10_capacity": "K75 per MAIN/CHINEXT sleeve; no more than 20 new entries per sleeve/date; one active position per symbol; higher signal close location then higher turnover ratio then event_id",
+    "v17_combination": "exact capacity-accepted V10 BEAR events plus all completed accepted STRONG_BULL events; no newly invented shared cross-engine capacity or portfolio rule"
+  },
+  "periods": {
+    "identity_and_outcome_canary": [
+      "2023-01-01",
+      "2024-12-31"
+    ],
+    "v17_backfill_signal_year": 2021,
+    "new_full_signal_year": 2025,
+    "new_ytd_signal_year": 2026,
+    "authorized_data_end": "2026-09-04",
+    "v10_2026_maturity_lag_global_sessions": 64,
+    "v17_strong_bull_2026_maturity_lag_global_sessions": 67,
+    "maturity_note": "The cutoffs are defined before new outcomes. Events can still be INCOMPLETE because stock-specific suspensions or blocked exits remain real; no completion-based identity selection is allowed."
+  },
+  "stage_separation": {
+    "freeze": "Verify all public/source identities, reconstruct the registered coordinate tail, reproduce 2023 and 2024 identities plus already-consumed outcomes and capacity exactly, then write immutable 2021/2025/eligible-2026 identities. No new-period post-decision path or return may be read in this stage.",
+    "evaluate": "Only after the exact Stage-A freeze and candidate hashes verify may candidate-keyed post-decision paths be read for 2021/2025/eligible-2026 and the unchanged execution/capacity rules be applied.",
+    "new_outcome_read_before_identity_freeze": false,
+    "canary_outcomes_are_previously_consumed": true
+  },
+  "canary_gates": {
+    "market_state_2023_exact": true,
+    "market_state_2024_exact": true,
+    "v10_raw_identity_2023_exact": true,
+    "v10_raw_identity_2024_exact": true,
+    "v10_outcome_2023_exact": true,
+    "v10_outcome_2024_exact": true,
+    "v10_capacity_2023_exact": true,
+    "v10_capacity_2024_exact": true,
+    "v17_bull_mother_and_acceptance_2023_exact": true,
+    "v17_bull_mother_and_acceptance_2024_exact": true,
+    "v17_bull_outcome_2023_exact": true,
+    "v17_bull_outcome_2024_exact": true,
+    "numeric_comparison": "dates/status/reasons exact and finite execution prices/returns absolute difference <= 1e-12"
+  },
+  "bound_inputs": {
+    "historical_full_daily_2013_2023": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+      "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+    },
+    "historical_coordinate_daily_2013_2023": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+      "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+    },
+    "accepted_coordinate_daily_2022_2026q1": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet",
+      "sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9"
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "cy033_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/asset_manifest.json",
+      "sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977"
+    },
+    "cy006_2024": {
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2024/data_0.parquet",
+      "sha256": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e"
+    },
+    "cy006_2025": {
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2025/data_0.parquet",
+      "sha256": "846ca46ce65dd9bd1e9c89df5b26c143af8e8829365671c6f7e43b801cb09d9a"
+    },
+    "cy033_2026": {
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2026/data_0.parquet",
+      "sha256": "cbf898ccaf165310b511fdc7822b3370ce32cc0fd7d09c35a6d5ba0b38821fe8"
+    },
+    "frozen_base_regime_2014_2023": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_routed_simple_strategy_v1/stage_a/causal_market_regime_2014_2023.parquet",
+      "sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+    },
+    "frozen_quiet_inventory_features_2014_2023": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_quiet_inventory_information_repricing_long_translation_v2/stage_a/candidates_features_2014_2023_frozen.parquet",
+      "sha256": "887ffd4d92fb992a718671f1b0d6eda28e4a6086ec948e27956ec3ceb3b5daea"
+    },
+    "frozen_v10_accepted_2014_2023": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_bear_fast_capitulation_active_demand_v10/stage_b/accepted_trades.parquet",
+      "sha256": "d4e3c43e64ddae0b81c93b802ceb9cc7b674defd87d18ecb2c01d09b387b5835"
+    },
+    "frozen_v10_skipped_2014_2023": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_bear_fast_capitulation_active_demand_v10/stage_b/skipped_trades.parquet",
+      "sha256": "72446287ac47c3c983784a73fde486fbf87591b31364d8d366fdb097a33faded"
+    },
+    "frozen_v17_market_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_a/causal_market_2024.parquet",
+      "sha256": "71d1bb376d1d923c175cce28e0c0623f6fee2b654f123871d4f0d2a061fd14fc"
+    },
+    "frozen_v17_bull_mothers_2022_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_a/bull_mother_candidates_2022_2024.parquet",
+      "sha256": "f8088bde2eb4fb54e08b2cb8087b9b2e1fb255f6c9570e2233f04b2332097e70"
+    },
+    "frozen_v17_bull_accepted_2022_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_a/bull_accepted_candidates_2022_2024.parquet",
+      "sha256": "def483e08dac31804b50a15efb5a64dcdb1b95cd94682a710746f8be09c4fc0d"
+    },
+    "frozen_v17_bear_raw_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_a/bear_raw_candidates_2024.parquet",
+      "sha256": "f2f6117c6651bb412f0b0d87312f08784653056234a1ebc5852fa18f59f70d41"
+    },
+    "frozen_v17_bull_outcomes_2022_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_b/bull_outcomes_2022_2024.parquet",
+      "sha256": "4c91ebbbcaff0bacaf601c467123650c524f9d2aa022e17ceeeb33bb2cc1cda3"
+    },
+    "frozen_v17_bear_raw_outcomes_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_b/bear_raw_outcomes_2024.parquet",
+      "sha256": "73539a57a3e3d0e39bed63208cb63b37d67a3606b2916039554ff26c8c443b23"
+    },
+    "frozen_v17_bear_accepted_2024": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_bear_strong_bull_dual_engine_v17/challenge_2022_2024/stage_b/bear_accepted_trades_2024.parquet",
+      "sha256": "fae3d3289a36bf05a183b73b219dc6ee6b12f1deb316974a21059d0f374455ab"
+    },
+    "v17_challenge_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_causal_bear_strong_bull_dual_engine_v17_challenge.py",
+      "sha256": "dddd8a852b6b3e447be22b1151495288ea535fdba4f6037a6988b49485dee32b"
+    },
+    "quiet_inventory_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_quiet_inventory_fast_repricing_v1.py",
+      "sha256": "42be0aed77c63197320b127b483bd7bb0b9518c8dc999405be80ab1b84d45da5"
+    },
+    "three_session_acceptance_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_bull_quiet_inventory_three_session_acceptance_v2.py",
+      "sha256": "c963f7ce1acaaf06f593f4860b28bc9159eb812320ef8b313c72403af9baedb3"
+    },
+    "coordinate_extension_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1.py",
+      "sha256": "4c01f3c07b8a3e0210cccaf4cf2f6451978c8b5442ac99463a8eddb56b3cc13e"
+    }
+  },
+  "governance": {
+    "parameter_search": false,
+    "rule_change": false,
+    "market_state_change": false,
+    "target_horizon_cost_change": false,
+    "capacity_change": false,
+    "2026_full_year_claim": false,
+    "strict_pit_a_claim": false,
+    "scientific_status": "MECHANICAL_POST_OBSERVATION_ROLLFORWARD",
+    "known_gate_mismatch": "The legacy V17 development runner tested pooled trades/7 > 50 although its contract says every development year must exceed 50. The roll-forward must report both facts and must not relabel the old verdict."
+  },
+  "outputs": {
+    "external_root": "/Volumes/quant/CY_quant_research/ashare_exact_v10_v17_rollforward_2021_2026ytd_v1",
+    "stage_a": "stage_a",
+    "stage_b": "stage_b",
+    "repo_result": "research/market_behavior_os_v2/artifacts/ASHARE-EXACT-V10-V17-ROLLFORWARD-2021-2026YTD-V1_result.json",
+    "repo_report": "research/market_behavior_os_v2/reports/ASHARE-EXACT-V10-V17-ROLLFORWARD-2021-2026YTD-V1_report.md"
+  }
+}

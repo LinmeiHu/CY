@@ -1,0 +1,520 @@
+{
+  "protocol_version": "V30-UNIFIED-PREREGISTRATION-DRAFT-2",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-CAUSAL-DEMAND-RECAPTURE-V30",
+  "status": "DRAFT_AWAITING_FINAL_IMPLEMENTATION_HASHES_AND_REVIEW",
+  "scientific_role": "outcome-blind unified development protocol for causal signal construction, bounded concurrency acceptance, entry execution, exit execution, and the one-time validation unlock",
+  "governance": {
+    "development_interval": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "maximum_source_trade_date_opened_during_development": "2021-12-31",
+    "right_censor_rule": "A candidate is administratively censored before arm counting unless its entry session and its complete H1-through-H30 market-session horizon all exist and H30 is no later than 2021-12-31.",
+    "post_2021_access": "FORBIDDEN_UNTIL_ALL_DEVELOPMENT_GATES_PASS",
+    "identity_outcome_or_exit_peeking_during_rule_freeze": false,
+    "unknown_policy": "UNKNOWN is a third state. It is never false, no-fill, zero return, an administrative censor, or permission to use a fallback arm.",
+    "single_attempt_policy": "Freeze implementation hashes, inputs, both arms, arm selection, the accepted cohort, execution, metrics, and gates before opening any development outcomes. Validation years 2022-2024 may be opened exactly once and only after every development gate passes.",
+    "forbidden": [
+      "opening any 2022-or-later row before the unlock",
+      "using entry-day completed daily state at an intraday decision",
+      "using CY-008 as causal entry evidence",
+      "using a fill price, exit path, return, holding period, symbol identity, year result, industry result, market result, or chart to select or alter a rule",
+      "changing arms, thresholds, ordering, cohort membership, fills, exits, or gates after any outcome is opened",
+      "treating absent, invalid, ambiguous, late, or noncanonical evidence as zero or false",
+      "backfilling a rejected, no-fill, duplicate-symbol, capacity-blocked, or unknown row with a later candidate"
+    ]
+  },
+  "immutable_known_bindings": {
+    "v29r4_preregistration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-FIRST-INVESTABLE-RECLAIM-V29R4_preregistration.json",
+      "sha256": "a6771186cc2b54fb7665f8fe17490e36e033f22b8fb018e7a4d2795d6031bc36"
+    },
+    "v29r4_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_first_investable_reclaim_v29r4.py",
+      "sha256": "085870fb8cb03dda25848a70fb2de6550b9289f6e4296da00923a50a7bee0ebe"
+    },
+    "v13_parent_gap_identities": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_first_reversal_v13/prior_high_reversal/development/entries.parquet",
+      "sha256": "b8672a9dcba7357b4944ddc9dba8d1425fad56ff3cdbfa33d93e6d27c2a79ac0",
+      "authorized_projection": "The frozen 850-row V13 gap-family identity and pre-gap fields needed to rescan each episode; V13 signal timing is lineage/audit only and does not select the V30 signal."
+    },
+    "v13_parent_stage_a_freeze": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13_stage_a_freeze.json",
+      "sha256": "f6fb352678b831f31460fe62a719a83f87f61e5540b2e34f4e98bf9c302d92dc"
+    },
+    "v29r4_stage_a_freeze": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-FIRST-INVESTABLE-RECLAIM-V29R4_stage_a_freeze.json",
+      "sha256": "7b7fe3ea6f4789a29b0cd7e846169506e079c3936c20a17860385915766fe236"
+    },
+    "v29r4_report": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/reports/ASHARE-TRUE-GAP-BELOW-L-FIRST-INVESTABLE-RECLAIM-V29R4-STAGE-A_report.md",
+      "sha256": "c0351be10557d900ad383d8cf49c7fba8bb0eb5f2a12d1467d28042d95702249"
+    },
+    "v29r45_preregistration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45_stage_b_preregistration.json",
+      "sha256": "0280a61744b64b1b9bf4f028ce3e3b237bd2324e9447b6de8e088bfac8cca4d7"
+    },
+    "cy050_diagnostic_preregistration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-V29R4_entry_evidence_diagnostic_v1_preregistration.json",
+      "sha256": "dae23e23983bff0e915a583931b6fd3f3f7987e0e7b7e3d1a14c3a7d7731a037"
+    },
+    "cy050_diagnostic_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_demand_recapture_v29r4_entry_evidence_diagnostic_v1.py",
+      "sha256": "dfb7a809e48a5209b499918b983352f7e08fb699d3e229a8570a47f768920bb4"
+    },
+    "cy050_diagnostic_result_identity_only": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r4_entry_evidence_diagnostic_v1/diagnostic/result.json",
+      "sha256": "e55ded206347090b0ffbd30c173500950e151488a2b4377b12bea6b02a5ea204"
+    },
+    "cy050_diagnostic_attempt_identity_only": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r4_entry_evidence_diagnostic_v1/diagnostic/attempt_seal.json",
+      "sha256": "da628b32664ac318b7f9f1e820866cbac9fec9cb74219f00d97d36bf92a9b7df"
+    },
+    "cy050_wrapper_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-050-DEMAND-RECAPTURE-V29R4-ENTRY-EVIDENCE-DIAGNOSTIC-V1/asset_manifest.json",
+      "sha256": "cf7fc3ec05c90cc45afb264b4460c34ba5d342e78dca70ed031f280b63bcc5e1"
+    },
+    "cy050_wrapper_activation_audit": {
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-050-DEMAND-RECAPTURE-V29R4-ENTRY-EVIDENCE-DIAGNOSTIC-V1/activation_audit.json",
+      "sha256": "e6147863bff51d9308ee84d558363148ce0dca62e6681f9ca6436e016781e257"
+    },
+    "cy033": {
+      "root": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1",
+      "manifest": {
+        "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/asset_manifest.json",
+        "sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977"
+      },
+      "development_partitions": {
+        "2018": {
+          "path": "daily/partition_year=2018/data_0.parquet",
+          "size": 42011064,
+          "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+        },
+        "2019": {
+          "path": "daily/partition_year=2019/data_0.parquet",
+          "size": 43320252,
+          "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+        },
+        "2020": {
+          "path": "daily/partition_year=2020/data_0.parquet",
+          "size": 46073783,
+          "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+        },
+        "2021": {
+          "path": "daily/partition_year=2021/data_0.parquet",
+          "size": 52153081,
+          "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+        }
+      },
+      "development_calendar_projection": {
+        "derivation": "Project distinct trade_date from only the four bound CY-033 development partitions, require for every date at least one row with market_valid exact true, nonempty market_snapshot_id, available_at<=decision_at, and every row's decision_at exactly 15:00; sort ascending and assign zero-based contiguous calendar_index.",
+        "row_count": 973,
+        "minimum_trade_date": "2018-01-02",
+        "maximum_trade_date": "2021-12-31",
+        "canonical_payload": "JSON object with keys derivation='CY033_DISTINCT_TRADE_DATE_SORT_ASC_ZERO_BASED' and dates=[ISO dates], UTF-8, sorted keys, compact separators",
+        "canonical_payload_sha256": "bf5da2b2e1436758b59086d3a6cb29952ed9b3385309c7e445876f8b18490e8a",
+        "newline_iso_date_sha256": "220988be72d36581dfbf279730116ae34427df21f192fca2cd7972f1c67b3676"
+      }
+    },
+    "qd004": {
+      "root": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813",
+      "inventory": {
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-004-2018-2026-20260820.json",
+        "sha256": "767298a88618f30d4cc6d5db8a7f609670f88ba32987de6a32994844ad75746c"
+      },
+      "source_manifest": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/manifest.json",
+        "sha256": "b1a6c88996e5015a23544d63398b49d5dd269d50c71567dc03344fbb83e69e8e"
+      },
+      "development_receipts": {
+        "structural_use_only": "The four frozen source receipts are opened only for schema/density validation, never for candidate identity or outcome selection. Across their 973 daily receipt entries, every date has row_count=symbol_count*241, duplicate_keys=0, exact 09:30 minimum and 15:00 maximum bar labels, and zero wrong-date/timestamp-date-mismatch counts.",
+        "2018": {
+          "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/receipts/2018.json",
+          "sha256": "363e2874675218d400d9021a2fe0ace50cfb8b51291729ff1f346ab8b221eff5",
+          "daily_receipt_count": 243
+        },
+        "2019": {
+          "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/receipts/2019.json",
+          "sha256": "db3b6d6829da97f88202e255faa3808b28f2dc7ca81d0c150c274925c2ca95c9",
+          "daily_receipt_count": 244
+        },
+        "2020": {
+          "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/receipts/2020.json",
+          "sha256": "8f0a20782e59a42b315ae4d67a69028dbc9d3e322b4903d733528a88b3da28c0",
+          "daily_receipt_count": 243
+        },
+        "2021": {
+          "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/receipts/2021.json",
+          "sha256": "ad072754c37bb8ef873410df9c1e79bb3c02cf704f63c3c1448d497e1b6aa1b4",
+          "daily_receipt_count": 243
+        }
+      },
+      "development_partitions": {
+        "2018": {
+          "path": "bars/2018_day_parquet_none.parquet",
+          "size": 1981815548,
+          "sha256": "83fbb3e0fda4b278e1072836a9695b7d9a6dfa396a07248e40f85db0d2ba0812"
+        },
+        "2019": {
+          "path": "bars/2019_day_parquet_none.parquet",
+          "size": 2146783112,
+          "sha256": "b31fccebb8f2319099b412233263dbc99f965a091b0995e62d275997b411130c"
+        },
+        "2020": {
+          "path": "bars/2020_day_parquet_none.parquet",
+          "size": 2452223478,
+          "sha256": "67d6b958f2b4113750df8f1a98d6e48d93ef00e04cab0fbf0cf0661b1600d45e"
+        },
+        "2021": {
+          "path": "bars/2021_day_parquet_none.parquet",
+          "size": 2779030728,
+          "sha256": "efd3b1a4bf60c47ba36b83792c97fc08d600aa8cde58014ff44e3c005eebac61"
+        }
+      }
+    },
+    "qd010": {
+      "root": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5",
+      "inventory": {
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      },
+      "source_manifest": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+        "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+      },
+      "distributions": {
+        "path": "normalized/distributions.parquet",
+        "size": 7583125,
+        "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+      },
+      "rights_issues": {
+        "path": "normalized/rights_issues.parquet",
+        "size": 266563,
+        "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+      },
+      "canonical_symbol_reference": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/data/full_market.py",
+        "sha256": "8ea136aa024120bea2b175f50bab5e6c416e27a276e9be390f16ae7b31cc3962",
+        "required_function": "_canonical_symbol_sql"
+      }
+    }
+  },
+  "pending_implementation_bindings": {
+    "stage_a_runner_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_a_asset_builder_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_a_tests_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_a_asset_builder_tests_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_b_runner_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_b_asset_builder_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_b_tests_sha256": "PENDING_FINAL_IMPLEMENTATION_HASH_AND_REVIEW",
+    "stage_a_output_asset_manifest_sha256": "PENDING_PRE_OUTCOME_STAGE_A_BUILD",
+    "stage_a_activation_audit_sha256": "PENDING_PRE_OUTCOME_STAGE_A_BUILD",
+    "stage_b_output_asset_manifest_sha256": "PENDING_PRE_OUTCOME_STAGE_B_BUILD",
+    "stage_b_activation_audit_sha256": "PENDING_PRE_OUTCOME_STAGE_B_BUILD"
+  },
+  "data_contract": {
+    "daily_signal_source": "CY-033 development partitions only",
+    "minute_source": "QD-004 day_parquet_none partitions only; direct raw-row access, never CY-008",
+    "action_source": "QD-010 exact distributions and rights-issues files only",
+    "minute_row_identity": "Every declared minute scaffold key, including source_match_count=0, carries its deterministic query_locator and query_partition_sha256 so the requested key and frozen annual partition are auditable without asserting that a physical row exists. Require each reached source_match_count=1 physical row to have qmt_code equal to the full canonical candidate symbol, physical symbol equal to its six-digit code, exchange equal to its suffix, trade_date and bar_end_time exact, period=1m, adjust=none, source=day_parquet_none, a unique key, physical_source_locator, and the same frozen query_partition_sha256. Only such a unique physical row carries source_snapshot_id='QD004:'+the bound source-manifest SHA256+':'+its bound annual-partition SHA256 and its canonical permitted-projection content hash. A zero-match scaffold must set physical_source_locator, source_snapshot_id, all physical values, and the physical projection hash to null; duplicate matches are UNKNOWN and are never collapsed into one physical identity. The builder revalidates the frozen inventory, source manifest, declared shares/CNY units, and canonical-source anomaly exclusions before any row access. Deterministic later scaffold keys may be declared without opening or fabricating their physical values or snapshot after an earlier fill.",
+    "minute_available_at": "The completed bar_end_time is the row available_at. No row may affect a decision or order whose timestamp is earlier than that completed bar_end_time.",
+    "minute_price_codec": "For every QD-004 OHLC source float64 p, preserve its little-endian float64 bits in the permitted-projection hash. tick=round(p*100) is authorized only when p is bit-exactly equal to float64(float32(tick/100)); preserve the derived float32 bits and int64 tick as well. Otherwise the row is UNKNOWN. Generic rounding, epsilons, approximate equality, and a relaxed observed-price tick are forbidden.",
+    "source_volume_amount_codec": "QD-004 and CY-033 source volume/amount are physical float64 columns. Preserve each reached raw little-endian float64 bit pattern. Volume must be finite, nonnegative, exactly integral in source representation, no greater than 2^53, and convertible without loss to nonnegative int64 shares. Amount must be finite and nonnegative; use Decimal.from_float on the exact raw float64 for every unit/conservation comparison and retain its bits in the row digest. For a QD-004 execution lower bound only, additionally publish an adverse integer-total-cent projection: ceiling of exact raw total cents on the buy side and floor on the sell side, so a sub-cent binary/source representation cannot add one proved through-limit share in the favorable direction. The runner's generic Decimal threshold parser rejects binary floats; builder-produced normalized values must be Decimal, native integer, or one canonical no-whitespace decimal string.",
+    "action_numeric_codec": "For every QD-010 double term publish the exact raw float64 bits, source-null flag, typed exact Decimal string, and normalization status in the permitted-projection digest. The bound source schemas have exactly two explicit not-applicable cases: a distributions row has physical NULL rights_subscription_ratio and rights_subscription_price and maps them to typed zero with status SOURCE_NOT_APPLICABLE_NEUTRAL_0; a rights_issues row has physical NULL cash_per_share_gross and share_multiplier and maps them respectively to typed zero and one with statuses SOURCE_NOT_APPLICABLE_NEUTRAL_0 and SOURCE_NOT_APPLICABLE_NEUTRAL_1. Raw bits remain NULL in those cases and the source NULL must never be rewritten as a claimed physical zero or one. Any other NULL, NaN, nonfinite value, table/field mismatch, or silent fill is UNKNOWN. Nonnull source doubles retain raw bits and are converted into declared cent/ratio units exactly once before threshold or ledger use.",
+    "daily_price_codec": "Every CY-033 daily source price used by a gate or order level retains its raw float64 bits and must reproduce exactly as float64(tick/100) for one positive int64 cent tick. Generic rounding or epsilon repair is forbidden.",
+    "numeric_policy": "All price comparisons use int64 cents. All ratios, fees, cash actions, and means use integers, exact rational cross-products, or Decimal; binary floating point may carry frozen source identity but may not decide a threshold or ordering.",
+    "action_symbol_join": "Preserve QD-010 raw symbol and derive canonical symbol with the exact bound full_market.py _canonical_symbol_sql logic before joining to .SH/.SZ candidates.",
+    "action_availability": "QD-010 available_at is transparently aliased to known_at because no independent physical available_at exists; preserve both fields, known_at_precision, vintage_id, source table, source locator, raw revision/event identity, snapshot, the source table's own row_hash as source_row_hash, and a separately recomputed permitted_projection_sha256. Never overwrite or conflate those two hashes. Assert known_at=available_at and require both no later than each observation decision. effective_date may further restrict an already-causal row and can never bypass these cutoffs. Exact-timestamp knowledge uses that timestamp. DAY-only knowledge cancels a target from that session's open to avoid favorable intraday ordering but cannot create a risk-exit order until the following market session. A cash term may alter an effective-session target, pivot, or exchange reference only when its causal availability before that session's open is provable; same-day DAY-only cash knowledge is UNKNOWN for that use. Candidate-scope ledger completeness is proven by an exact query-scope digest and returned source-match accounting, never by an unbound caller boolean; the complete normalized action-ledger digest chains both row identities into the frozen order and accepted cohort.",
+    "no_entry_day_daily_state": "Entry-day CY-033 or other completed-day OHLC, preclose, up/down-limit prices, limit percentage, market prices, or return-like fields are forbidden throughout Stage A. Before the minute settlement is terminal, every H0 daily field is forbidden. After 15:00 and only after terminal settlement, Stage A must open the exact price-free H0 integrity envelope below solely to satisfy QD-004 activation and detect contradictions; it can convert a terminal fill/no-fill to UNKNOWN but can never create a fill, improve a price, repair a missing minute, rank, select, or change an order. A security becoming ST overnight is allowed and the post-close is_st audit value never sets the preopen order. QD-004 day_parquet_none is a dense 241-key symbol/session source in the bound development partitions: a genuine full-session suspension remains represented by 241 unique positive-price, zero-volume/zero-amount physical rows. Therefore a missing minute key is a source defect and may never be repaired or reclassified with a completed daily row. H0 completed close may be opened only by Stage B after the arm and exact accepted cohort are immutable.",
+    "stage_a_h0_integrity_envelope": {
+      "source_projection_exact_order": [
+        "trade_date",
+        "decision_at",
+        "decision_timezone",
+        "symbol",
+        "volume",
+        "amount",
+        "trade_status",
+        "is_st",
+        "state_source",
+        "float_effective_date",
+        "float_announced_date",
+        "float_available_date",
+        "circulating_shares",
+        "float_source",
+        "corporate_action_count",
+        "corporate_action_ids",
+        "corporate_action_source",
+        "corporate_action_available_date",
+        "corporate_action_blocking",
+        "corporate_action_problems",
+        "share_multiplier",
+        "cash_per_share",
+        "rights_ratio",
+        "rights_price",
+        "market_rule_id",
+        "market_rule_source",
+        "bar_valid",
+        "trading_state_valid",
+        "industry_valid",
+        "float_valid",
+        "corporate_action_valid",
+        "market_valid",
+        "market_rule_valid",
+        "historical_identity_valid",
+        "hard_valid",
+        "invalid_reasons",
+        "current_day_data_tradable",
+        "available_at",
+        "snapshot_id",
+        "pit_grade",
+        "strict_archive_ready",
+        "daily_snapshot_id",
+        "trading_state_snapshot_id",
+        "industry_snapshot_id",
+        "float_snapshot_id",
+        "corporate_action_snapshot_id",
+        "market_snapshot_id"
+      ],
+      "derived_scaffold_fields_exact_order": [
+        "protocol_arm",
+        "gap_id",
+        "expected_trade_date",
+        "source_match_count",
+        "query_locator",
+        "query_partition_sha256",
+        "physical_source_locator",
+        "source_snapshot_id",
+        "permitted_projection_sha256"
+      ],
+      "validation": "Require one exact CY-033 H0 row, clocks available only at completed 15:00, exact canonical identity, bound partition/hash/locator/snapshot, raw float64 bit preservation for volume/amount/circulating_shares/action numerics, positive causal circulating shares with float_valid, every required validity component and hard_valid exact true, no blocking or nonzero H0 corporate action, and exact QD-010 action-envelope consistency. A terminal accepted fill requires trade_status=1, current_day_data_tradable=true, positive daily volume/amount, and daily volume/amount no smaller than the reached minute-prefix sums. A terminal no-fill permits either the same traded state or exact trade_status=0/current_day_data_tradable=false/zero daily volume/amount, but never repairs a minute defect. Unknown, duplicate, extra-column, malformed, unavailable, noncausal, or contradictory evidence makes the entire arm UNKNOWN. `is_st` is retained only as an audit fact; the universal D5/U5 order proof must already be complete without it."
+    },
+    "universal_limit_safety": "For every preopen order derive both conservative boundaries D5=round-half-up(ex-reference*95/100) and U5=round-half-up(ex-reference*105/100) from the causally known prior close and complete preopen cash-action state. Never infer the actual same-day ST or board limit. A buy or sell limit must lie in [D5,U5]; a target sell outside this universal band is not submitted that session. Unknown reference price, empty rounded band, or unresolved action evidence is UNKNOWN; Stage A separately treats an otherwise complete but economically impossible headroom price as deterministic no-order.",
+    "projection_before_decode": "Every storage read must project the exact preregistered column whitelist before any row is decoded or materialized. Every runner DataFrame or Mapping boundary must then require that exact column/key set and reject unknown, outcome-like, exit-like, or merely unused extra fields. Selecting an allowed subset after an over-broad row has already entered the runner is not proof of outcome blindness. The preferred amount arm's daily projection excludes raw share volume; only a separately authorized fallback invocation may project and decode that field.",
+    "exact_publication_schemas": "Every published Stage-A and Stage-B table must have its exact frozen output schema in exact order. The signal table must retain signal_raw_close_tick needed to reproduce U5. Its fallback-only raw-share-volume evidence fields are exact NULL/NOT_OPENED for AMOUNT_NORMAL_OR_HIGHER and exact nonnull typed values for SHARE_VOLUME_NORMAL_OR_HIGHER. Arm accounting must retain protocol_arm. No helper may publish arbitrary source keys through Mapping expansion or DataFrame carry-through."
+  },
+  "coordinate_contract": {
+    "raw_l_tick": "Positive int64 cents copied directly from the registered CY-033 gap-day raw high after strict Decimal-cent validation.",
+    "raw_l_authority": "raw_l_tick is the only authorized L coordinate for gates, ranking, targets, and order headroom.",
+    "legacy_fields": "L, factor, adjusted coordinates, and coordinate epoch may be retained only as non-authorizing audit lineage. They may neither reconstruct raw_l_tick nor accept, reject, rank, block, price, or exit a row.",
+    "forbidden": "Dividing L by factor, multiplying an adjusted price by factor, or otherwise regenerating a raw tick from a float or a legacy adjusted coordinate."
+  },
+  "daily_signal_arms": {
+    "shared_inherited_v29r4_conditions": {
+      "scope": "Keep every V29R4 daily identity and validity condition except the explicitly deleted R5 rebound gate, with the corrections in this preregistration taking precedence.",
+      "economic_conditions": [
+        "true gap-below-L family identity is valid",
+        "maximum post-gap depth below raw_l_tick is at least 10 percent",
+        "signal close remains at least 5 percent below raw_l_tick",
+        "post-gap low age is from 1 through 10 sessions",
+        "recovery from the post-gap low to signal close is at least 3 percent",
+        "signal close tick is strictly greater than the previous session high tick, so demand has reclaimed the persisted short-term seller-control pivot",
+        "signal age is from 10 through 14 sessions",
+        "pre-peak age is at least 20 sessions",
+        "signal row is hard-valid, tradable, non-ST, action-free, and its close tick is strictly below the registered up-limit tick",
+        "the prior-20-session window is complete and contains at most one one-price down-limit session",
+        "signal amount divided by the prior-20-session median amount is positive and no greater than 2"
+      ],
+      "threshold_implementation": "Percent and amount thresholds must be implemented by exact integer or Decimal inequalities with explicit equality behavior. Missing denominators, nonpositive denominators, overflow, or noncanonical cents are UNKNOWN.",
+      "deleted_condition": "Delete only V29R4 R5: (signal close minus post-gap low) divided by L is at least 5 percent.",
+      "retained_soft_influence": "The deleted rebound ratio remains a prespecified CAP25 within-industry ranking key, so V30 does not claim that rebound information is absent."
+    },
+    "SHARE_VOLUME_NORMAL_OR_HIGHER": {
+      "rule": "Apply exactly the shared conditions after deleting R5; retain the shared amount-ratio interval (0,2] and additionally require a complete prior-20 raw share-volume window, every value an exact nonnegative integer-share source value, a strictly positive exact median, no share-coordinate-changing action inside the comparison window, and signal raw share volume divided by that median at least 1 using exact integer/Decimal cross-products. Publish the exact signal raw share volume, exact prior-20 median numerator and denominator, and their comparison result in the sealed signal evidence. This is a genuine share-count expansion branch, not a low-volume price-only fallback.",
+      "first_only": "Within each gap episode select the chronologically first row satisfying this arm. Later satisfying rows in the same gap are permanently ineligible."
+    },
+    "AMOUNT_NORMAL_OR_HIGHER": {
+      "rule": "Apply the shared conditions after deleting R5 and additionally require signal amount divided by the prior-20-session median amount to be at least 1, yielding the exact interval [1,2]. This is the preferred money-demand branch.",
+      "first_only": "Independently rescan every gap episode and select the chronologically first row satisfying this arm. It is forbidden to filter the share-volume first row to manufacture this sibling."
+    },
+    "independence": "Construct each arm by a separate single-arm scan rather than manufacturing one sibling from the other's first row. First project only the amount-arm daily whitelist, construct its first-only cohort and CAP25, and settle AMOUNT_NORMAL_OR_HIGHER through its sealed accepted count. Only if that arm is complete with Naccepted<201 may a new invocation project raw share volume, construct SHARE_VOLUME_NORMAL_OR_HIGHER independently, and open its entry evidence. When opened, the share-volume arm receives its own independent CAP25 and K50 ledgers and may not inherit amount-arm reservations, no-fills, accepts, ordering, or first-row decisions. The two arms are not assumed nested."
+  },
+  "cap25": {
+    "timing": "Apply per signal date after each arm's independent first-only construction and before any entry-session minute read.",
+    "industry_source": "Use only the PIT industry value whose available_at is no later than the signal decision. Missing, unknown, noncausal, or conflicting industry is UNKNOWN.",
+    "capacity": 25,
+    "algorithm": "Group by the exact PIT industry string. Sort industries by bytewise lexical ascending order. Within each industry sort rebound descending by exact rational comparison of (signal_close_tick-post_gap_low_tick)/raw_l_tick using cross-products; ties sort by canonical symbol, gap date, signal date, and frozen gap identifier ascending. Visit industries in lexical round-robin passes, taking at most one next row per industry per pass until 25 rows or exhaustion.",
+      "no_backfill": "After CAP25 is frozen there is no replacement for any later no-fill, duplicate-symbol, K50-capacity rejection, administrative censor, or unknown.",
+      "atomic_ledger": "CAP25 is evaluated for exactly one protocol arm at a time and publishes exact selected, excluded, and unknown identity ledgers whose disjoint union equals that arm/date input. An empty arm/date is a complete zero-row ledger, not an error. Mixed-arm inputs, native non-string or empty industries, and byte-key collisions are UNKNOWN."
+  },
+  "stage_a_entry_and_acceptance": {
+    "purpose": "Build the causal accepted cohort without opening any future return or exit path.",
+    "administrative_horizon_gate": "Apply the H30<=2021-12-31 right-censor rule before the entry order, K50 allocation, or counts.",
+    "preopen_freeze": {
+      "decision_cutoff": "09:14:59 Asia/Shanghai on the entry session",
+      "authorized_inputs": "Only the frozen prior-session daily candidate, exact development calendar, complete causal QD-010 envelope through the cutoff, same-symbol reservations, and K50 capacity may affect allocation or the order. No entry-session minute OHLCVA field may be opened before allocation and order freezing.",
+      "order_submission": "Freeze the order no later than 09:14:59 and model the 100-share DAY limit order as submitted and active at 09:15:00 when the exchange begins accepting opening-call-auction declarations. An unfilled remainder carries into the subsequent continuous-auction stage; no cancellation or replacement occurs before 09:37:01.",
+      "market_structure_reason": "Submitting before the opening call auction avoids treating a post-open limit declaration outside a continuous-auction dynamic price cage as active. Price priority then makes trades strictly through the resting limit relevant execution evidence, but one extremum print does not prove that a counterfactual 100-share order would complete. V30 therefore combines the frozen source OHLC, integer volume, and exact source aggregate amount to require at least 10000 shares of source-OHLCVA-conditionally unavoidable strict-through-limit volume.",
+      "official_rule_basis": {
+        "sse_2018_rules_notice": "https://www.sse.com.cn/lawandrules/sselawsrules/repeal/rules/c/c_20210531_5478087.shtml",
+        "szse_2020_trading_rules": "https://www.szse.cn/lawrules/rule/repeal/rules/P020231230545338442079.pdf",
+        "szse_2019_price_time_priority": "https://investor.szse.cn/knowledge/stock/deal/t20191204_572385.html",
+        "szse_2020_chinext_price_cage": "https://investor.szse.cn/knowledge/qa/t20200721_579820.html",
+        "bound_interpretation": "The development-era rules establish 09:15-through-09:25 opening call auction, later continuous auction, price then time priority, complete fill for opening-call buy declarations strictly above and sell declarations strictly below the clearing price, and carry-forward of unfilled current-stage declarations. The ChiNext continuous-auction price cage makes a newly submitted post-open declaration an unsafe activation assumption; no rule URL supplies a return or outcome input."
+      }
+    },
+    "k50_preallocation": {
+      "capacity": 50,
+      "per_arm_independent": true,
+      "ordering": "At each entry session's 09:14:59 cutoff process market sessions ascending, then that arm's frozen CAP25 order. Same-date ordering is exactly CAP25 order.",
+      "same_symbol_rule": "At most one live reservation for a canonical symbol. A later same-symbol row receives no slot and is not backfilled.",
+      "same_date_rule": "Multiple CAP25 candidates may be preallocated on one date in frozen CAP order while capacity remains, but no candidate rejected or released later that date may be replaced by a same-date row after any subsequent result.",
+      "filled_reservation_release": "A filled reservation occupies one of 50 sample-concurrency slots through the close of that candidate's frozen H30 session, irrespective of its actual exit date or outcome.",
+      "no_fill_release": "A causally complete NO_FILL reservation is released only at the next market-session allocation boundary; there is no same-day backfill.",
+      "unknown_rule": "Any UNKNOWN makes the entire arm incomplete and blocks counts, arm selection, and development publication; it is not released or reused as if it were a no-fill.",
+      "interpretation": "K50 is a deterministic maximum concurrent research-sample cap, not a cash budget, portfolio, leverage rule, capital allocation claim, or deployable sizing model."
+    },
+    "entry_minute_read": {
+      "authorized_population": "Only candidates with a K50 reservation and a frozen order acknowledged at 09:15 may be read.",
+      "expected_grid": "Declare exactly eight chronological keys ending 09:30, 09:31, 09:32, 09:33, 09:34, 09:35, 09:36, and 09:37. The vendor's 09:30-labelled row is the opening-call-auction result; later rows are continuous-auction bars.",
+      "strict_prefix": "Read keys in order. Every reached scaffold key must pass its exact query_locator/query_partition_sha256 identity. Every reached physical key must have source_match_count=1 and pass exact identity, raw qmt_code, physical symbol, exchange, trade date, bar_end_time, period, adjust, physical_source_locator, source_snapshot_id, frozen partition SHA256, permitted-projection hash, price codec, OHLC ordering, finite nonnegative OHLCVA, integer-share volume, and amount-unit checks without trimming, case-folding, dropping, deduplication, or repair. A zero-match key has no physical locator, snapshot, projection hash, or physical values; a duplicate key is UNKNOWN. A zero-volume physical row is valid only with zero amount; a positive-volume row requires positive amount and exact low_tick*volume/100<=amount<=high_tick*volume/100.",
+      "early_stop": "Stop physical reading immediately after the first proven fill. Later deterministic scaffold keys remain NOT_OPENED_AFTER_FILL; their physical rows, values, and hashes may not be touched. Missing, duplicate, invalid, noncanonical, or unit-inconsistent evidence in the reached prefix is UNKNOWN and cannot be cured by a later key.",
+      "dense_source_and_suspension": "The bound QD-004 source represents a full-session suspension with eight reached unique physical entry-window rows whose positive canonical OHLC is flat and whose volume and amount are exactly zero. Those rows are valid execution evidence and, absent a later strict price-cross bar, end in deterministic NO_FILL. Any reached source_match_count=0 or duplicate is UNKNOWN even when all eight keys are missing; Stage A never opens CY-033 H0 to repair or reinterpret it.",
+      "no_same_bar_fill": true
+    },
+    "entry_order": {
+      "shares": 100,
+      "fee_rate_each_side": "0.002",
+      "target_fraction_a67": "0.67",
+      "target_tick_for_hypothetical_entry_e": "ceil((33*e + 67*raw_l_tick)/100) using positive integers",
+      "max_buy_tick": "The greatest positive int64 cent e below raw_l_tick for which target_tick(e)<raw_l_tick and target_tick(e)*998*100 >= e*1002*104. If no such e exists, classify a deterministic PREOPEN_RESOLVED_NO_ORDER before K50 reservation; it is not UNKNOWN.",
+      "universal_entry_band": "Freeze D5=round-half-up(signal_close_tick*95/100) and U5=round-half-up(signal_close_tick*105/100) using integer arithmetic after ruling out a causally known intervening action. Both boundaries and their source close are retained in the sealed order.",
+      "planned_limit_tick": "min(max_buy_tick, universal_u5_tick), computed and frozen at 09:14:59 before any entry-session minute read. Submit only when the result is a positive cent tick satisfying universal_d5_tick<=planned_limit_tick<=universal_u5_tick. If max headroom does not exist or this otherwise complete economic price lies outside the nonempty universal band, classify deterministic PREOPEN_RESOLVED_NO_ORDER rather than submit an invalid price. Missing, noncanonical, action-conflicted, or internally inconsistent inputs are UNKNOWN.",
+      "execution_proxy_name": "PREOPEN_RESTING_LIMIT_STRICT_PRICE_CROSS_PROXY",
+      "provable_strict_through_volume": "For one fully valid positive-volume bar let V be exact integer shares, Araw be Decimal.from_float(raw_amount_CNY)*100 exact source total cents, Aup=ceil(Araw) be the adverse integer-total-cent projection, L/H be low/high ticks, and P be the frozen buy-limit tick. First require L*V<=Araw<=H*V exactly. Define the mathematical lower bound B on shares strictly below P as: B=V when H<P; B=0 when L>=P; otherwise B=max(0,ceil((P*V-Aup)/(P-L))). Require 0<=B<=V; a violation is UNKNOWN and may not be clipped or normalized. The mixed-bar inequality follows because with at most b strict-below shares, total cents cannot be smaller than b*L+(V-b)*P. Rounding Araw upward is deliberately adverse because B is nonincreasing in amount and prevents a sub-cent float representation from favorably adding one proved share. Preserve every raw float64 bit, Araw, Aup, and every exact Decimal/integer term in the evidence digest.",
+      "fill_rule": "Scan the exact reached prefix from 09:30 through 09:37. The first fully valid bar whose provable_strict_through_volume B is at least 10000 shares is the prespecified conservative full-lot counterfactual fill proxy. Conditional on the registered source OHLCVA statistic, price priority plus at least 10000 source-conditionally unavoidable shares strictly below the already-resting higher-priced bid makes the 100-share research lot no more than 1 percent of the proved through-limit volume. Set fill_tick equal to planned_limit_tick even when source prices were lower; do not use open, high, low, VWAP, amount-implied average, or clearing price to improve the modeled buy price. QD-004 supplies no registered error bound against exchange tick totals and cannot reconstruct the historical order queue, auction equilibrium, cancellations, or market impact, so this remains a bounded source-conditional research proxy and never a claim of exchange truth, observed broker execution, or queue truth.",
+      "possible_partial_state": "Before a full-lot proxy occurs, any positive-volume bar with low_tick<=planned_limit_tick and proved strict-through-volume B<10000 creates POSSIBLE_PARTIAL_OR_FULL_FILL, including equality-only contact with B=0 and a strict low whose aggregate amount cannot prove 10000 through shares. Continue only within the same frozen 09:30-through-09:37 order window: a later qualifying B>=10000 proxy proves the remaining order completed at the same limit and resolves the state, using the later proof timestamp conservatively. If the window ends first, settlement is UNKNOWN because assuming either zero or 100 shares could select outcomes. Zero-volume/zero-amount rows cannot create this state regardless of carried prices.",
+      "volume_reason": "The 10000-share threshold is exactly the 1-percent participation guard for a 100-share lot against provable strict-through-limit volume, not total bar volume and not a claim about exchange queue priority. A lone extremum print, equality touch, or large bar whose volume was mostly on the wrong side of the limit cannot prove full execution.",
+      "no_fill_rule": "Cancel at 09:37:01 and classify deterministic NO_FILL only when all eight rows are fully valid, no full-lot proxy occurred, and every positive-volume bar had low_tick strictly above the frozen buy limit. Eight fully valid zero-volume/zero-amount physical rows also meet NO_FILL after the H0 integrity audit. If any positive-volume row touched or crossed the limit without a later full-lot proxy, the terminal state is UNKNOWN rather than NO_FILL. There is no same-day replacement or backfill.",
+      "unknown_rule": "Missing, duplicated, invalid, noncanonical, wrong-source, wrong-time, wrong-identity, noncausal, action-conflicted, or unit-inconsistent evidence is UNKNOWN rather than NO_FILL."
+    },
+    "entry_known_action_gate": "Stage A materializes only QD-010 rows whose known_at and aliased available_at are either NULL/invalid or no later than the entry-session 09:14:59 cutoff; later-known rows are not opened in Stage A. Candidate-symbol source rows whose effective_date is NULL/invalid must also remain visible. NULL/invalid knowledge, availability, effectiveness, or terms are UNKNOWN and may never disappear through a SQL WHERE predicate. Any causally known action effective in (signal_date,entry_date] blocks the unadjusted reference coordinate. A causally known RISK_SHARE, RISK_RIGHTS, or unsupported event effective after entry and no later than H30 blocks a new order. A complete known CASH_ONLY event effective strictly after entry does not block and is handed to the Stage-B cash ledger.",
+    "sealed_evidence_chain": {
+      "candidate_key": "The immutable key is exactly (protocol_arm,gap_id,canonical symbol,signal_date,entry_date). It is carried through every phase and prevents evidence from two same-symbol same-entry-date gap episodes from being exchanged.",
+      "digests": "Compute deterministic canonical digests for candidate identity, typed action envelope, K50 reservation, frozen preopen order, every reached minute row in the chronological execution prefix, every exact provable-through-volume calculation, each possible-partial state transition, and terminal entry settlement. Each downstream digest includes the candidate digest and every upstream digest it depends on. The frozen-order digest also includes raw_l_tick, signal_raw_close_tick, reclaimed_pivot_tick, D5, U5, maximum headroom tick, planned limit, 100-share size, the 10000-share/1-percent proved-through-volume guard, action-ledger and query-scope digests, 09:14:59 decision cutoff, and 09:15:00 acknowledgement. The terminal prefix digest binds all and only reached physical rows plus deterministic NOT_OPENED_AFTER_FILL scaffold states.",
+      "settlement": "Settlement may accept only the frozen immutable evidence object produced by the registered validation chain, never an opaque partial dict. It must revalidate the full exact schema, candidate key, all upstream digests and clocks, accepted preopen order, strict chronological prefix, first B>=10000 strict-through-volume proof, conservative fill at the frozen limit, and accepted/no-fill consistency. All validated evidence fields are copied into the settlement output rather than discarded.",
+      "accepted_cohort": "Derive accepted rows only from SETTLED_PROXY_ACCEPTED evidence, sort by the frozen canonical key, publish the exact cohort schema and canonical cohort SHA256, and derive Naccepted from that sealed cohort. No separate count or caller-supplied accepted frame is authoritative."
+    },
+    "accepted_definition": "A Stage-A accepted row is exactly a K50-preallocated candidate whose 09:15 preopen order has a COMPLETE strict minute prefix ending at its first 09:30-through-09:37 bar with at least 10000 shares of mathematically proved strict-below-limit volume, with any earlier possible-partial state resolved by that later full-lot proxy and the price-free H0 integrity audit complete. No H1-or-later future path is part of acceptance.",
+    "arm_selection_three_valued": [
+      "Evaluate AMOUNT_NORMAL_OR_HIGHER first. If and only if that arm is complete and Naccepted>=201, select it.",
+      "If and only if AMOUNT_NORMAL_OR_HIGHER is complete and Naccepted<201, evaluate SHARE_VOLUME_NORMAL_OR_HIGHER.",
+      "If SHARE_VOLUME_NORMAL_OR_HIGHER is complete and Naccepted>=201, select it; if it is complete and Naccepted<201, development fails frequency.",
+      "When the amount arm passes frequency, the share-volume arm must remain strictly NOT_OPENED: no reader call, materialization, accounting object, or output table is permitted. Supplying share-volume accounting after Na>=201 is a protocol violation and blocks selection.",
+      "UNKNOWN or incompleteness in the arm currently required by this sequence blocks the experiment. It never authorizes fallback. Complete conserving amount and share-volume results both below 201 return FAILED_FREQUENCY, not BLOCKED. Empty arms and fully censored arms are complete N=0 states when their identity ledgers conserve."
+    ]
+  },
+  "stage_b_exit_protocol": {
+    "freeze_boundary": "Stage A must publish and immutably freeze the selected arm and its exact accepted cohort before any accepted row's H1-or-later minute path is opened.",
+    "cohort_lock": "Stage B may use only the selected arm's exact accepted cohort after recomputing and matching its canonical cohort SHA256 and every candidate/evidence-chain digest. Naccepted is recomputed from that seal. It may not add, delete, substitute, rerank, change arms, retry a no-fill, backfill, or use a later same-gap signal.",
+    "horizon": "H1 through H30 are successive market-calendar sessions after the entry session. A suspended market day still increments the session index. No path after H30 may be opened for a development decision.",
+    "preopen_order_clock": "For every H1-through-H30 target, failure, time, or risk sell order, freeze all causal inputs and the order decision at 09:14:59 Asia/Shanghai on the attempted session, then model the already-frozen order as submitted and active at 09:15:00 when the exchange begins accepting opening-call-auction declarations. Every fact used by that order must have known_at and available_at no later than 09:14:59; equality at 09:15:00 is too late. The vendor's 09:30-labelled opening-auction result bar is the first eligible fill bar. This clock follows the 2018-through-2021 SSE and SZSE market structure in which 09:15-through-09:25 is the opening call auction and 09:30 begins continuous trading; an order first frozen at 09:29:59 is forbidden from claiming an auction fill.",
+    "calendar_revalidation": "Before opening the first Stage-B outcome, independently rederive and match the exact frozen CY-033 development calendar: 973 rows, 2018-01-02 through 2021-12-31, zero-based contiguous ordering, canonical-payload SHA256 bf5da2b2e1436758b59086d3a6cb29952ed9b3385309c7e445876f8b18490e8a, and newline-ISO-date SHA256 220988be72d36581dfbf279730116ae34427df21f192fca2cd7972f1c67b3676. A merely self-consistent caller calendar is not authority.",
+    "bounded_daily_projection": {
+      "authorized_population": "Only the already frozen selected accepted cohort.",
+      "authorized_offsets": "Exactly H0 through H29 CY-033 completed daily close rows, where H0 is the entry session. H0 may be opened only after Stage A arm and cohort freezing. H29 close is the latest close needed to freeze an H30 D5 order; H30 completed daily close and all H30 price fields are outside the authorized projection because no H31 order exists. Separately, and only if the reached H30 minute session has all 241 unique physical bars flat at the computed reference with zero volume/amount, a lazy price-free H30 terminal audit may open after 15:00 solely to corroborate trade_status=0, current_day_data_tradable=false, daily volume=0, daily amount=0 and their required lineage/action envelope. A traded H30, an earlier exit, or an earlier defect may not call that audit loader.",
+      "authorized_columns": "For H0 through H29: completed close tick plus the minimum record lineage, available_at, snapshot_id, hard_valid/invalid-reason evidence, corporate-action fields required to prove that close and action state, and completed trade_status/current_day_data_tradable/daily volume/daily amount solely for the all-day-suspension classification below. For the lazy H30 price-free terminal audit: the same required nonprice lineage/action/state/volume/amount evidence but no open, high, low, close, preclose, actual limit, ST, return-like, or other price field. Each projection must be column-bounded before row decoding.",
+      "causal_use": "A completed Hk close may affect only an order acknowledged after Hk close, normally the next market session. It may supply the next session's universal D5 reference and, for H1 through H9, the after-close persisted-pivot failure test that schedules a next-session order.",
+      "forbidden_columns_and_uses": "Daily open, high, low, actual up/down limits, and ST state are forbidden. The narrowly authorized completed trade status and daily volume/amount may only prove an all-day suspension after that session has ended; they may not set an exit price, establish a fill, relax a partially missing minute prefix, or make an intraday/same-day exit decision. No bounded daily field may flow backward into Stage A entry, arm selection, CAP25, K50, or acceptance.",
+      "unknown_rule": "Missing, noncausal, invalid, noncanonical, lineage-incomplete, action-conflicted, or not-hard-valid required projected evidence is UNKNOWN and blocks the experiment."
+    },
+    "daily_scaffold_and_prefix": "For each accepted row predeclare the deterministic H0-through-H29 key scaffold with source_match_count and NOT_OPENED state. Validate and decode a daily source row only when chronological replay first requires that offset. Missing, duplicate, invalid, or malformed later daily evidence cannot invalidate an exit already completed earlier; future offsets remain NOT_OPENED_AFTER_EXIT. A reached zero or duplicate count is UNKNOWN. The canonical permitted daily-projection hash is recomputed from the exact raw fields and must equal the stored digest.",
+    "exchange_reference_ledger": "Initialize the causal reference ledger only after cohort lock from the unique valid H0 completed CY-033 close. Before each H1-through-H30 order session, start from the ledger's prior reference tick and apply each complete causal CASH_ONLY event effective on that session exactly once: subtract that session's aggregate exact gross cash cents per original share and round half-up once to a positive cent tick. Freeze D5 and U5 from that session reference. After 15:00, a unique lineage-valid traded CY-033 row with trade_status=1, current_day_data_tradable=true and positive volume/amount updates the ledger to its exact close tick. A corroborated full-session suspension does not invent a close: its 241 physical rows must all be positive, flat at the computed session reference, and zero-volume/zero-amount; the daily row must state trade_status=0, current_day_data_tradable=false and zero volume/amount, and the computed session reference is carried forward. A contradictory, partial, missing, duplicate, noncausal, nonpositive, or already-applied reference/action transition is UNKNOWN. Thus a dividend effective during a suspended stretch changes the reference once and cannot be subtracted again at reopening.",
+    "expected_minute_grid": "The builder always materializes the exact 241-key expected scaffold per H1-through-H30 session in chronological order: 09:30, then 09:31 through 11:30, then 13:01 through 15:00. Every scaffold key carries query_locator, query_partition_sha256, and source_match_count. Only a unique physical match may carry physical_source_locator and source_snapshot_id; a zero match must keep both null, and multiple physical rows are UNKNOWN rather than repaired by dropping or choosing a row. The 09:30 auction bar is first and may not be skipped.",
+    "source_projection_hashes": "For every reached scaffold key, validate its deterministic query_locator and query_partition_sha256. For every reached source_match_count=1 minute or daily key, separately validate physical_source_locator/source_snapshot_id and recompute the canonical permitted-projection SHA256 from exact raw identities, timestamps, price bits/ticks, volume/amount and frozen partition provenance; checking only that a supplied digest has 64 hexadecimal characters is forbidden. A reached zero-match minute key must set physical_source_locator, source_snapshot_id, physical projection hash, and all physical row values to null. Deterministic later scaffold keys may exist, but physical values after an already completed exit must remain NOT_OPENED and are not decoded or hashed.",
+    "stage_b_action_envelope": "Actions are supplied only through a typed candidate-keyed query envelope that binds the exact authorized source files and hashes, query predicate and cutoffs, raw source-match accounting, snapshot/vintage, canonical normalized ledger, completeness state, and query-scope digest. Its source predicate must preserve candidate-symbol rows satisfying `(effective_date IS NULL OR entry_date<effective_date<=H30)` and `(known_at IS NULL OR known_at<=terminal knowledge cutoff)`; NULL/invalid rows then become UNKNOWN inside the typed validator instead of disappearing before accounting. Empty action rows are complete only when that null-preserving envelope proves a complete zero-row result. Raw QD-010 symbols use the exact bound full_market.py SQL canonicalization before the separate strict SH/SZ accepted-candidate check.",
+    "controlled_replay": "A terminal COMPLETE outcome may be emitted only by the registered deterministic replay over the sealed candidate and reached evidence chain. An arbitrary caller-supplied outcome object is not authoritative. Publish a canonical per-row outcome-evidence digest and a cohort terminal-ledger digest; the aggregate recomputes all cash, holding and identity ledgers from those sealed rows.",
+    "provable_sell_strict_through_volume": "For one fully valid positive-volume bar let V be exact integer shares, Araw be Decimal.from_float(raw_amount_CNY)*100 exact source total cents, Adown=floor(Araw) be the adverse integer-total-cent projection, L/H be low/high ticks, and P be the frozen sell-limit tick. First require L*V<=Araw<=H*V exactly. Define the mathematical lower bound S on shares strictly above P as: S=V when L>P; S=0 when H<=P; otherwise S=max(0,ceil((Adown-P*V)/(H-P))). Require 0<=S<=V; a violation is UNKNOWN and may not be clipped or normalized. The mixed-bar inequality follows because with at most s strict-above shares, total cents cannot exceed s*H+(V-s)*P. Rounding Araw downward is deliberately adverse because S is nondecreasing in amount and prevents a sub-cent float representation from favorably adding one proved share. Preserve every raw float64 bit, Araw, Adown, and every exact Decimal/integer term in the evidence digest.",
+    "resting_sell_execution_proof": "Every target, failure, time, or pre-action risk order is a frozen 100-share DAY sell limit accepted at 09:15 and left unchanged while its chronological prefix is scanned. The first fully valid minute whose provable_sell_strict_through_volume S is at least 10000 shares is the conservative full-lot counterfactual proxy. Conditional on the registered source OHLCVA statistic, price priority plus at least 10000 source-conditionally unavoidable shares strictly above the lower-priced resting ask makes the research lot no more than 1 percent of proved through-limit volume. Credit exactly the frozen sell-limit tick even when source prices were higher; do not improve the fill with open, high, low, VWAP, amount-implied average, or clearing price. QD-004 supplies no registered error bound against exchange tick totals and cannot reconstruct queue position, auction equilibrium, cancellations, or market impact, so this is never described as exchange truth, observed broker execution, or queue truth.",
+    "sell_possible_partial_state": "Before a full-lot sell proxy occurs, any positive-volume bar with high_tick>=the frozen sell limit and proved strict-through-volume S<10000 creates POSSIBLE_PARTIAL_OR_FULL_EXIT, including equality-only contact with S=0 and a strict high whose aggregate amount cannot prove 10000 through shares. Continue only within that same frozen DAY-order session: a later qualifying S>=10000 proxy proves the remainder completed at the same limit and resolves the state, using the later proof time conservatively. If the session ends first, the candidate is UNKNOWN; it is forbidden to roll an assumed intact 100-share position or to choose zero versus full execution using its later outcome. Zero-volume/zero-amount carried-price rows cannot create a possible fill.",
+    "all_day_suspension_only": "A full-session suspension is represented only by all 241 reached keys having source_match_count=1, exact canonical positive OHLC all equal to the session's computed exchange-reference tick, and zero volume/amount, corroborated after 15:00 by the bounded lineage-complete CY-033 state trade_status=0, current_day_data_tradable=false, daily volume=0, and daily amount=0. It rolls a pending order without a fill and carries that computed causal reference forward. Any reached zero or duplicate minute match, any nonflat/positive-volume minute mixed with a claimed suspension, a price inconsistent with the causal reference, a traded/tradable or nonzero daily state, or unknown daily evidence is UNKNOWN. A missing QD-004 row is never repaired by daily data.",
+    "strict_prefix_rule": "Before accepting a trigger in minute m, every earlier expected minute in every previously required order session and earlier in the same session must have source_match_count=1 and be valid, canonical, and scanned. A session with deterministic no legal target order has no required minute prefix and its physical minute values remain unopened. Validate a scaffold key's source_match_count and OHLCVA only when chronological scanning reaches it. A later missing, duplicate, or invalid source row may not invalidate an already completed earlier exit and must not be opened after that exit; if no earlier exit occurs, the first reached defect makes the row UNKNOWN and it is forbidden to skip ahead to a later trigger. A possible-partial state may be resolved only by a later full-lot proxy in the same DAY-order session; otherwise the session ends UNKNOWN and may not roll.",
+    "a67_target": {
+      "target_tick": "Let cumulative_gross_cash_coordinate_cents_per_original_entry_share G include only complete cash distributions effective before the session. Freeze target_tick(G)=ceil((33*entry_tick + 67*raw_l_tick)/100 - G) before that session opens; with G=0 this is the original A67 target. G adjusts only the price coordinate and is never credited to performance. A nonpositive or unprovable adjusted target is UNKNOWN.",
+      "universal_legal_limit": "Before each H1-through-H10 session, derive the cash-adjusted official ex-reference from the previous completed reference close, then freeze universal_d5_tick=round-half-up(ex-reference*95/100) and universal_u5_tick=round-half-up(ex-reference*105/100). Compute target_sell_limit_tick=max(target_tick(G),universal_d5_tick). The target order is universally legal only when target_sell_limit_tick<=universal_u5_tick; actual same-day ST or board limits may never repair or refine this test. Using D5 itself is conservative and legal: the strict proved-through-volume execution rule refuses equality or a locked lower-limit queue, while crediting D5 rather than D5+1 never improves modeled proceeds.",
+      "daily_order": "While no earlier exit trigger exists, place the frozen 100-share target sell order at target_sell_limit_tick at 09:15 only when it lies in the nonempty universal band. If target_sell_limit_tick>universal_u5_tick, emit deterministic TARGET_NO_ORDER_OUTSIDE_UNIVERSAL_BAND, do not open that session's minute values, and still open only the completed daily projection after 15:00 for the prespecified pivot-failure or H10-time transition and the next session's reference.",
+      "scan": "Scan every valid expected minute continuously in chronological order and apply resting_sell_execution_proof to target_sell_limit_tick.",
+      "strictness": "A positive-volume equality or partial-cross bar creates POSSIBLE_PARTIAL_OR_FULL_EXIT; only a later qualifying full-lot minute in the same session resolves it, otherwise the row is UNKNOWN at session end. A later qualifying minute cannot cure missing or invalid earlier source evidence."
+    },
+    "failure_trigger": {
+      "sessions": "H1 through H9 only",
+    "condition": "Only after that day's complete target scan has produced no target fill, or after a deterministic TARGET_NO_ORDER_OUTSIDE_UNIVERSAL_BAND without opening minute values, compare the valid completed 15:00 close tick with pivot_tick(G)=ceil(persisted_reclaimed_pivot_tick-G), where G is cumulative gross cash-coordinate cents per original entry share effective by that close. G is not performance cash. If close_tick is strictly below pivot_tick(G), freeze a failure-exit order for the next market session. A nonpositive or unprovable adjusted pivot is UNKNOWN.",
+      "persisted_reclaimed_pivot_tick": "The exact previous-session-high tick reclaimed by the frozen daily signal; it is stored in Stage A and never recomputed from future data.",
+      "priority": "A target fill earlier that day ends the row. The close-based failure trigger cannot act intraday or retroactively."
+    },
+    "time_trigger": {
+      "condition": "If H10 completes its entire target scan without a target fill, or deterministically has no universally legal target order, freeze a time-exit order for H11. H10 does not create a separate close-based failure order.",
+      "latest_roll": "A pending failure, time, or pre-action risk order may roll mechanically through H30 only."
+    },
+    "failure_time_and_risk_order": {
+      "daily_limit_freeze": "Before each attempted session's first minute, derive the causal exchange reference from the previous completed reference close. With no effective action it is that prior raw close tick. For complete cash-only entitlements effective on the attempted session, first compute official_ex_reference_tick=round-half-up(previous_reference_close_cents minus that session's gross cash cents per share), then universal_d5_tick=round-half-up(official_ex_reference_tick*95/100), universal_u5_tick=round-half-up(official_ex_reference_tick*105/100), and freeze sell_limit_tick=universal_d5_tick. Require sell_limit_tick<=universal_u5_tick. If this exact formula or nonempty legal band is not applicable or provable, the candidate is UNKNOWN; actual same-day ST or limit fields may never repair it.",
+      "order_timing": "The sell order and its limit must exist before any bar that can fill it.",
+      "scan": "Scan valid expected minutes in chronological order and apply resting_sell_execution_proof plus sell_possible_partial_state to sell_limit_tick.",
+      "roll": "A fully valid scanned session rolls the pending order only when no full-lot proxy occurred and every positive-volume bar had high_tick strictly below the sell limit, so no possible partial fill exists. Freeze the next session from the newly causal reference ledger and D5, through H30.",
+      "strictness": "A positive-volume equality or partial cross that lacks a later same-session full-lot proxy is UNKNOWN, not a roll. Missing or invalid prefix evidence is likewise UNKNOWN."
+    },
+    "h30_terminal_rule": "If a row has not exited by the end of H30, or if any required evidence is UNKNOWN at any earlier point, the entire development experiment is UNRESOLVED and no aggregate gate may be computed.",
+    "holding_sessions": "exit_market_calendar_index - entry_market_calendar_index. Suspended market-calendar sessions count even when they have no trades.",
+    "no_maximum_holding_claim": "The thesis trigger is H10, but execution may roll. This protocol does not claim a guaranteed <=10, <=13, or <15 holding period; mean holding<15 is an empirical development gate."
+  },
+  "corporate_actions_and_ledgers": {
+    "causal_cutoff": "At every decision require canonical symbol plus known_at<=decision and available_at<=decision; effective_date cannot make a late row causal.",
+    "cash_distributions": "Accrue every supported cash distribution effective while the 100 shares are held into an exact Decimal gross-coordinate ledger G in cents per original entry share. Use gross G only to preserve ex-dividend price coordinates through target_tick(G)=ceil(original_A67_raw_cents-G), pivot_tick(G)=ceil(original_reclaimed_pivot_tick-G), and the exchange-reference ledger. Credit zero cash-distribution proceeds to performance because QD-010 supplies gross cash but does not identify the investor account, FIFO history, or applicable dividend-tax withholding; zero credit is deliberately conservative and avoids a gross-cash return uplift. Missing, late, conflicting, nonfinite, or unit-ambiguous cash terms are UNKNOWN.",
+    "share_distributions_and_rights": "Participation, ratio approximation, and silent share-count rebasing are forbidden. As soon as a complete supported share-distribution or rights event is causally known before its effective session, cancel the target and freeze a pre-action risk exit for the earliest possible session strictly before effectiveness using the same D5 execution proxy.",
+    "pre_action_failure": "If the event was not causally known early enough, a complete pre-effective exit cannot be proven, the risk order does not fill before effectiveness, action class or terms are unsupported, or action evidence is missing or conflicting, the row is UNKNOWN and the entire development experiment is unresolved.",
+    "share_count": 100,
+    "entry_cash_out_cents": "Decimal(100*entry_tick)*(Decimal(1)+Decimal('0.002'))",
+  "exit_cash_in_cents": "Decimal(100*exit_tick)*(Decimal(1)-Decimal('0.002'))",
+  "cash_distribution_performance_credit_cents": "Exactly zero. The separate exact gross-coordinate ledger may alter ex-dividend price levels but never enters realized proceeds.",
+  "net_return": "Seal the exact rational numerator exit_tick*998-entry_tick*1002 and positive denominator entry_tick*1002 after cancelling the common 100-share/1000 fee scale. All signs, means, medians and the 4-percent gate use integers/Fraction and exact cross-products; any Decimal rendering is presentation-only at a frozen precision and may never decide a gate.",
+  "fees": "Exactly 0.2 percent on entry notional and 0.2 percent on exit notional. No dividend cash, other fee, slippage, tax, or rounding term may be introduced after outcomes are opened; omitting gross dividend proceeds is a frozen conservative convention, not a claim that investors receive no distribution."
+  },
+  "evidence_grade": {
+    "classification": "PIT-B_CONDITIONAL_RESEARCH_ONLY",
+    "reason": "QD-010 is a bound current snapshot whose complete revision history is not available, QD-004 supplies no registered error bound from its aggregate amount field to exchange tick totals, and registry asset UN-001 confirms that historical full-depth order queues/tick orders are unavailable. Dual known_at and available_at-as-known_at cutoffs, exact action reconciliation, an adverse-quantized source-OHLCVA lower bound requiring at least 10000 shares strictly through the resting limit, a 1-percent participation guard against that proved through-volume, and fail-closed possible-partial handling are mandatory, but they do not upgrade the evidence to strict historical PIT, exchange-truth, or observed-fill grade.",
+    "claim_limit": "A passing result is conditional bar-proxy research evidence under the frozen snapshots. It may not be represented as strict PIT proof, historical broker execution, queue-position truth, zero market impact, or a live-trading guarantee."
+  },
+  "development_publication_and_gates": {
+    "completeness": "Every accepted row in the selected arm must have exactly one COMPLETE exit by H30; any UNKNOWN, unresolved action, unexited row, duplicate, conservation error, hash mismatch, or prefix violation blocks all aggregate performance publication.",
+    "counts": "Naccepted must equal Nexited and must be at least 201, which is strictly more than 50 signals per year on the four-year development average.",
+    "mean_net_return": "Exact arithmetic mean of accepted-row net_return must be at least 0.04.",
+    "mean_holding_sessions": "Exact arithmetic mean of accepted-row holding_sessions must be strictly less than 15.",
+    "required_detailed_statistics": "For the complete cohort and separately for signal years 2018, 2019, 2020, and 2021, publish exact accepted and exited counts; A67 target, pivot-failure, H10-time, and pre-action-risk exit counts; positive, zero, and negative-return counts; exact mean and median net return; exact win rate; and exact mean and median holding sessions. Also publish accepted/4 as the exact four-year average annual signal frequency. A zero-row year has exact zero counts and NULL ratios/means/medians rather than fabricated zeros.",
+    "success": "Development passes only when completeness, Naccepted=Nexited>=201, mean_net_return>=0.04, and mean_holding_sessions<15 all hold simultaneously.",
+    "failure": "A complete result that misses any gate rejects V30. An incomplete or UNKNOWN result is unresolved, not a failed performance result and not authority to tune.",
+    "required_conservation": [
+      "per arm: raw episode rows = first-only selected + deterministic nonselected + unknown",
+      "per date and arm: CAP25 input = CAP25 selected + CAP25 excluded + unknown",
+      "per arm: CAP25 selected = administratively censored + preopen resolved no-order + preopen unknown + K50 capacity/same-symbol rejected + preallocated",
+      "per arm: PREOPEN_ORDER_ELIGIBLE = K50 capacity/same-symbol rejected + preallocated",
+      "preallocated = sealed accepted fills + complete mechanical no-fills + settlement unknown",
+      "selected-arm Naccepted = target exits + failure exits + time exits + pre-action risk exits + unexited + unknown",
+      "when publishable: unexited=0, unknown=0, and Naccepted=Nexited"
+    ]
+  },
+  "validation_unlock": {
+    "years": [
+      2022,
+      2023,
+      2024
+    ],
+    "unlock_condition": "All development gates pass under final frozen hashes and immutable outputs.",
+    "attempts": 1,
+    "rule_changes_after_unlock": false,
+    "validation_contract": "Replay the identical selected arm, first-only rule, CAP25, K50 reservation policy, entry proxy, action policy, exit protocol, fees, metrics, and gates without refitting or replacing any threshold."
+  },
+  "post_freeze_explanatory_charting": {
+    "authorized_only_after": "The rule, implementation hashes, selected arm, and exact accepted cohort are immutable and Stage B development metrics have been computed.",
+    "window": "Up to 120 market sessions before and 120 market sessions after each signal, subject to the development/validation access boundary.",
+    "annotations": [
+      "candlesticks and exact volume/amount",
+      "causally constructible support and resistance lines",
+      "raw L, reclaimed pivot, entry, A67 target, failure trigger, and exit",
+      "causally available chip/cost evidence with exact action handling",
+      "causally available broad-market condition",
+      "causally available PIT industry condition"
+    ],
+    "role": "Explanation, failure analysis, and economic interpretation only. Charts, clusters, anecdotes, market slices, and industry slices may not feed back into V30 rules, thresholds, arm selection, cohort membership, or validation."
+  },
+  "economic_interpretation": "A mature security experiences a true downside gap and meaningful post-gap selling, remains well below the gap cost boundary, but later closes above the prior session high without crowding beyond twice normal amount. This is a short-term demand recapture of a seller-control pivot, not a claim that the old gap boundary itself has been reclaimed. Rather than chase that close, the strategy submits a next-session preopen bid capped by both no-action A67 net-return headroom and a universal 5-percent legal-safety boundary. Acceptance requires the frozen source OHLCVA statistic to imply at least 10000 source-conditionally unavoidable shares strictly through that resting bid, so the 100-share lot is no larger than 1 percent of proved through-limit source volume; the research fill is conservatively charged at the full limit, possible partial states fail closed, and no exchange-tick, order-book, or observed-fill claim is made."
+}

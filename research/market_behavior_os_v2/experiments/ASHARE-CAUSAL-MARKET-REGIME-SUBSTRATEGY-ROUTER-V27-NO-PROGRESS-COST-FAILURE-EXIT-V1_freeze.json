@@ -1,0 +1,82 @@
+{
+  "experiment": "ASHARE-CAUSAL-MARKET-REGIME-SUBSTRATEGY-ROUTER-V27-NO-PROGRESS-COST-FAILURE-EXIT-V1",
+  "frozen_before_outcome_aggregation": true,
+  "research_status": "POST_HOC_CHART_GENERATED_DEVELOPMENT_HYPOTHESIS",
+  "purpose": "Test the single causal failure pattern compressed after complete visual review of all 809 frozen V27 development trades. This is an exit overlay anatomy of V27, not independent confirmation and not a new mother signal.",
+  "source_identity": {
+    "chart_anatomy_spec_sha256": "00acf923865287b37a891f3b23eb331989f2ee81e860958f1ddcb2205ba52a14",
+    "v27_accepted_trades_sha256": "73ed476190c29044cae79c2d0f9e38c11f0ddf2ba200e756f240131d8e9143ea",
+    "v27_result_sha256": "d50ea992529a2a202d8d17ed7eb5dc0908291224a74948616aa84a39fcf65537",
+    "daily_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+  },
+  "visual_review_complete": {
+    "trades": 809,
+    "chronological_sheets": 90,
+    "profit_ge_4pct": {
+      "trades": 526,
+      "sheets": 59
+    },
+    "profit_0_to_4pct": {
+      "trades": 74,
+      "sheets": 9
+    },
+    "loss_0_to_10pct": {
+      "trades": 144,
+      "sheets": 16
+    },
+    "severe_loss": {
+      "trades": 65,
+      "sheets": 8
+    }
+  },
+  "frozen_rule": {
+    "name": "D5_NO_HALF_TARGET_PROGRESS_AND_TWO_CLOSES_BELOW_COST",
+    "observation_clock": "The entry session is valid session 1. Count the first five security-tradable, hard-valid daily rows beginning with the executed entry session; suspensions and invalid rows do not advance the observation clock.",
+    "eligible_trade": "The frozen V27 position must still be open after the close of valid session 5. A target or other frozen exit on or before that close takes precedence.",
+    "target_return": "Use the already-frozen V27 lane target: 15% only for BULL_DECELERATING_QUIET_INVENTORY; 10% for the other three lanes.",
+    "no_meaningful_progress": "Maximum action-coordinate high from valid session 1 through valid session 5 is strictly below entry_price * (1 + 0.5 * target_return).",
+    "cost_failure": "Action-coordinate close on both valid session 4 and valid session 5 is strictly below entry_price.",
+    "decision": "Signal the early failure exit only when no_meaningful_progress AND cost_failure are both true at the valid-session-5 close.",
+    "execution": "Exit at the first later legal open. Never fill on the decision session. The frozen original exit remains if it occurs earlier. A next-open target event is processed after the open exit decision.",
+    "sell_legality": "Require trade_status=1, current_day_data_tradable, market_rule_valid, corporate_action_valid, not corporate_action_blocking, hard_valid, finite raw/action-coordinate open, and raw open strictly above the rounded-cent down-limit price.",
+    "corporate_actions": "Use action-coordinate prices and require invariant invalid_step_cum from entry through executed exit; fail closed otherwise.",
+    "costs": "Preserve 20 bps entry plus 20 bps exit cost."
+  },
+  "discarded_visual_shortcuts": [
+    "One close below entry cost: rejected because many profitable mean-reversion entries temporarily lose cost and recover.",
+    "First-session positive candle: rejected because ordinary and severe losers often make a small false rebound.",
+    "No day-1 progress or a generic early time stop: rejected because many valid winners start slowly and realize payoff later in the frozen lifecycle.",
+    "Raw-price gap rules: rejected because corporate-action and discontinuity charts require coordinate semantics."
+  ],
+  "one_shot_evaluation": {
+    "trade_signal_start": "2014-01-01",
+    "trade_signal_end": "2020-12-31",
+    "expected_trades": 809,
+    "portfolio_membership": "Keep the 809 accepted V27 entries fixed. Freed capacity is not reused, making the portfolio test conservative and preventing a second selection problem.",
+    "comparators": [
+      "unchanged frozen V27 development trades",
+      "same fixed entries with the one frozen dynamic exit"
+    ],
+    "required_outputs": [
+      "trigger count and lane/year distribution",
+      "trade mean, median, win rate, >=4% rate, severe-loss rate, holding period",
+      "winner sacrifices and loss reductions",
+      "portfolio total return, CAGR, maximum drawdown, Sharpe and utilization",
+      "yearly portfolio returns and drawdowns",
+      "PIT, T+1, sell-legality and coordinate-lineage audits"
+    ],
+    "parameter_neighbors": false,
+    "rescue_after_result": false
+  },
+  "governance": {
+    "post_2020_signal_cohort_outcomes_read": false,
+    "december_2020_lifecycle_completion": "Two frozen December-2020 signal cohorts may use their already-defined daily paths through the latest frozen exit on 2021-01-21. No 2021 signal cohort enters discovery or evaluation.",
+    "post_2023_outcomes_read": false,
+    "cy011_read": false,
+    "same_bar_fill": false,
+    "t_plus_one": true,
+    "future_function": false,
+    "strategy_a_or_v26_modified": false,
+    "claim_limit": "Development-only evidence. Even a positive result is not independent validation."
+  }
+}

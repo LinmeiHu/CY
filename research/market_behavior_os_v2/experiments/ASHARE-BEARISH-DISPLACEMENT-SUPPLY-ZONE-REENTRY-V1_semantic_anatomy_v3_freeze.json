@@ -1,0 +1,68 @@
+{
+  "experiment": "ASHARE-BEARISH-DISPLACEMENT-SUPPLY-ZONE-REENTRY-V1",
+  "stage": "V26_V27_INSPIRED_SEMANTIC_ANATOMY_V3_FREEZE",
+  "scientific_status": "POST_HOC_DEVELOPMENT_HYPOTHESIS_MAP",
+  "development_signal_period": ["2014-01-01", "2020-12-31"],
+  "mother_event_unchanged": true,
+  "economic_architecture": "modest and clean overhead supply + mature prior decline + meaningful washout + dry pre-signal base + frozen demand re-entry trigger",
+  "semantic_descriptors": [
+    {
+      "id": "S1_MODEST_ZONE_WIDTH",
+      "definition": "(zone_u / zone_l - 1) <= 10%",
+      "rationale": "a very wide bearish displacement is more likely structural impairment than a bounded trapped-supply zone"
+    },
+    {
+      "id": "S2_CLEAN_PREFORMATION_CORRIDOR",
+      "definition": "in the exact 120 same-lineage completed sessions before formation, no more than 10 sessions overlap [zone_l-0.5W, zone_u+0.5W], W=zone_u-zone_l",
+      "rationale": "little prior occupancy means less distributed historical inventory around the future repair corridor"
+    },
+    {
+      "id": "S3_MATURE_PRIOR_DECLINE",
+      "definition": "the highest coordinate high in the exact 120 same-lineage sessions before formation occurred at least 20 calendar indices before formation",
+      "rationale": "the displacement should occur after a mature decline, not as the first break from a fresh peak"
+    },
+    {
+      "id": "S4_MEANINGFUL_WASHOUT",
+      "definition": "minimum coordinate low from first complete-below session through the session before signal is at least 10% below frozen zone_l",
+      "rationale": "a real inventory reset requires meaningful distance below the trapped-supply boundary"
+    },
+    {
+      "id": "S5_DRY_PRE_SIGNAL_BASE",
+      "definition": "mean turnover over the 20 completed sessions before signal is no greater than formation-day turnover",
+      "rationale": "selling activity should contract after the displacement rather than remain more intense than the original supply shock"
+    }
+  ],
+  "profile_order": [
+    "BASELINE",
+    "S1_ONLY",
+    "S2_ONLY",
+    "S3_ONLY",
+    "S4_ONLY",
+    "S5_ONLY",
+    "S1_TO_S5_BUNDLE"
+  ],
+  "market_state": {
+    "definition": "same-date broad PIT-valid non-ST tradable cross-sectional median ret20 and median ret60 signs",
+    "states": {
+      "BROAD_BULL": "ret20>=0 and ret60>=0",
+      "BROAD_BEAR": "ret20<0 and ret60<0",
+      "RECOVERY_TRANSITION": "ret20>=0 and ret60<0",
+      "DETERIORATION_TRANSITION": "ret20<0 and ret60>=0"
+    },
+    "use": "diagnostic only, never an admission input in V3",
+    "uses_future_information": false
+  },
+  "outcome_governance": {
+    "2021_signal_outcomes_read": false,
+    "2022_plus_outcomes_read": false,
+    "post_2024_outcomes_read": false,
+    "cy011_read": false
+  },
+  "anti_overfit": {
+    "no_threshold_grid": true,
+    "no_subset_search": true,
+    "one_all-five_bundle_only": true,
+    "no_exit_change": true,
+    "no_target_change": true
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "central_registry_modified": false,
+  "installation_instruction": "After independent review, append the exact asset object to configs/data_asset_registry.json assets and the exact bounded_authorization object to bounded_authorizations. Do not alter either object, and validate schema plus runner --verify-public-authorization before any --run.",
+  "asset": {
+    "asset_id": "CY-060",
+    "name": "Bounded V34R1 Phase-2A frozen anonymous signal-time synthesis input",
+    "kind": "bounded_anonymous_categorical_signal_time_synthesis_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review",
+    "source": "Exact immutable outcome-blind Phase-1 anonymous annotation ledger joined by chart_number and blind_chart_id to the exact immutable anonymous 2018-2019 Phase-2A categorical attribution ledger. No identity, date, Stage-B artifact, or numeric return is an input.",
+    "coverage": {
+      "authorized_start": "2018-03-27",
+      "authorized_end": "2019-12-31",
+      "phase1_events": 1483,
+      "phase2a_events": 915,
+      "anonymous_exact_matches": 915,
+      "phase1_unmatched_labels_not_projected": 568,
+      "join_keys": [
+        "chart_number",
+        "blind_chart_id"
+      ]
+    },
+    "schema_and_units": "Anonymous categorical data only: three pre-outcome Phase-1 axes (primary_morphology, market_tape, turnover_state), one coarse outcome_bucket and one post_path_label. Outputs contain counts, rates, and fixed support flags; no row-level output, identity, date, signal_candle, or numeric return.",
+    "quality_evidence": {
+      "synthesis_freeze_sha256": "ec0881ac1a648d456883d82d729ffaf4ef6047d93f3e2acd3606cf46dab61121",
+      "synthesis_runner_sha256": "6979ec037f7c4cc831ea74bb25fdebbdd31886c96d3be82c12a61afebe53c693",
+      "phase1_annotation_ledger_sha256": "a70aac69ca58f9302f7af59a301800f6398b806705d461b7b18a91d92a56f474",
+      "phase1_annotation_manifest_sha256": "540c77afb93d61d3b729491936b720f76a77eeb6302d93e6989d2574421e041d",
+      "phase2a_annotation_ledger_sha256": "777e7a86fb3adfb8293248d503cee91f4ce40131fdd5bd2888ab11ac6142c6c4",
+      "phase2a_annotation_manifest_sha256": "51095ce31fe1b96327cda489cfe601940cd54611596a6f5affa34f76e2c08460",
+      "phase1_population": 1483,
+      "phase2a_population": 915,
+      "signal_candle_excluded": true,
+      "stage_b_artifact_input": false,
+      "numeric_return_input": false
+    },
+    "lineage": {
+      "record_available_at": false,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY060_SIGNAL_TIME_SYNTHESIS_ASSET_MANIFEST.json",
+      "manifest_sha256": "6c6083427bf1b8058a2cda85410195cadc7ea5e2d11a1fa37cd9c5206741d2d5",
+      "component_assets": [
+        "CY-052",
+        "CY-056"
+      ],
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE2A-SYNTHESIS-CY060-V1",
+      "pipeline_version": "v34r1-phase2a-signal-time-anonymous-synthesis-v1"
+    },
+    "allowed_uses": [
+      "after exact CY-060 joint authorization, join the two frozen anonymous ledgers by chart_number and blind_chart_id and publish the three frozen single-axis categorical contingency tables",
+      "publish every cell of exactly three predeclared pairwise axis tables with counts, categorical rates, acceptance/rejection rates, and fixed sparse-support flags"
+    ],
+    "blocked_uses": [
+      "read identity, date, year, Stage-B artifacts, numeric returns, 2020 signal outcomes or labels, or any 2021-plus artifact or row",
+      "consume signal_candle, rewrite labels, use post-signal attribution as a predictor, select or rank cells, search thresholds, generate a rule, replay a portfolio, or overwrite an output"
+    ],
+    "activation_gates": [
+      "one exact immutable CY-060 manifest and central bounded authorization jointly bind the frozen spec, runtime runner, and all four anonymous inputs by literal path and SHA-256",
+      "the runner public gate passes before any external path is resolved, statted, hashed, opened, or parsed",
+      "the exact 915 Phase-2A keys each match one of 1,483 Phase-1 keys, while the remaining 568 Phase-1 label fields are not projected",
+      "publication emits all predeclared levels/cells atomically with no row-level data, identity, date, signal_candle, numeric return, ranking, rule, or replay"
+    ]
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE2A-SYNTHESIS-CY060-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "asset_id": "CY-060",
+    "dependency_asset_id": "CY-056",
+    "dependency_asset_ids": [
+      "CY-052",
+      "CY-056"
+    ],
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "2018-03-27",
+      "end": "2019-12-31",
+      "frozen_phase1_events": 1483,
+      "frozen_phase2a_events": 915,
+      "phase1_unmatched_not_parsed": 568
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY060_SIGNAL_TIME_SYNTHESIS_ASSET_MANIFEST.json",
+      "sha256": "6c6083427bf1b8058a2cda85410195cadc7ea5e2d11a1fa37cd9c5206741d2d5"
+    },
+    "bound_artifacts": [
+      {
+        "role": "synthesis_freeze",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_phase2a_signal_time_synthesis_freeze.json",
+        "sha256": "ec0881ac1a648d456883d82d729ffaf4ef6047d93f3e2acd3606cf46dab61121"
+      },
+      {
+        "role": "synthesis_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase2a_signal_time_synthesis.py",
+        "sha256": "6979ec037f7c4cc831ea74bb25fdebbdd31886c96d3be82c12a61afebe53c693"
+      },
+      {
+        "role": "phase1_annotation_ledger",
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+        "sha256": "a70aac69ca58f9302f7af59a301800f6398b806705d461b7b18a91d92a56f474"
+      },
+      {
+        "role": "phase1_annotation_manifest",
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review/manifest.json",
+        "sha256": "540c77afb93d61d3b729491936b720f76a77eeb6302d93e6989d2574421e041d"
+      },
+      {
+        "role": "phase2a_annotation_ledger",
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review/phase2a_annotation_ledger.json",
+        "sha256": "777e7a86fb3adfb8293248d503cee91f4ce40131fdd5bd2888ab11ac6142c6c4"
+      },
+      {
+        "role": "phase2a_annotation_manifest",
+        "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_f_phase2a_anonymous_review/manifest.json",
+        "sha256": "51095ce31fe1b96327cda489cfe601940cd54611596a6f5affa34f76e2c08460"
+      }
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_freeze.json",
+      "sha256": "e41bfe9de6c68878ea556cf31397075adda9076adc19a4089215284436c6bdb4"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_phase2a_signal_time_synthesis_freeze.json",
+      "sha256": "ec0881ac1a648d456883d82d729ffaf4ef6047d93f3e2acd3606cf46dab61121",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase2a_signal_time_synthesis.py",
+      "runner_sha256": "6979ec037f7c4cc831ea74bb25fdebbdd31886c96d3be82c12a61afebe53c693"
+    },
+    "authorized_arms": [
+      "V34R1_PHASE2A_FROZEN_ANONYMOUS_SYNTHESIS_ONLY"
+    ],
+    "phase2a_synthesis_authorized": true,
+    "phase1_frozen_anonymous_ledger_read_authorized": true,
+    "phase2a_frozen_anonymous_ledger_read_authorized": true,
+    "anonymous_join_authorized": true,
+    "outcome_bucket_parse_authorized": true,
+    "post_path_label_parse_authorized": true,
+    "categorical_descriptive_aggregation_authorized": true,
+    "single_axis_contingency_authorized": true,
+    "fixed_pairwise_contingency_authorized": true,
+    "atomic_publication_authorized": true,
+    "identity_read_authorized": false,
+    "date_or_year_read_authorized": false,
+    "stage_b_artifact_read_authorized": false,
+    "numeric_return_read_authorized": false,
+    "signal_candle_use_authorized": false,
+    "phase1_label_rewrite_authorized": false,
+    "post_signal_predictor_authorized": false,
+    "threshold_search_authorized": false,
+    "rule_generation_authorized": false,
+    "combination_ranking_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2020_signal_outcome_read_authorized": false,
+    "2021_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": false,
+    "allowed_uses": [
+      "after exact joint authorization, hash and parse only the two immutable anonymous ledgers and their manifests",
+      "publish exhaustive fixed single-axis and three fixed pairwise categorical contingency tables with descriptive sparse-support flags"
+    ],
+    "blocked_uses": [
+      "read or hash Stage-B artifacts, identity, dates, numeric returns, 2020 signal outcomes or labels, or 2021-plus data",
+      "consume signal_candle, rewrite annotations, select/rank cells or combinations, search thresholds, generate rules, replay portfolios, or overwrite output"
+    ],
+    "known_limitations": [
+      "2018-2019 is consumed development history and supports only anonymous post-hoc categorical description, not Alpha confirmation",
+      "manual Phase-1 and Phase-2A labels are discovery/attribution evidence and are not executable trading predicates",
+      "CY-060 is PIT-B and preserves the 2020 signal cohort seal; any future objective rule requires a separate freeze and authorization"
+    ]
+  }
+}

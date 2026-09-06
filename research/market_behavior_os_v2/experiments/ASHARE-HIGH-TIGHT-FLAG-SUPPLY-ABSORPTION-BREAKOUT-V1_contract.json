@@ -1,0 +1,76 @@
+{
+  "experiment_id": "ASHARE-HIGH-TIGHT-FLAG-SUPPLY-ABSORPTION-BREAKOUT-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_SEMANTIC_FREEZE",
+  "scientific_period": "2014-01-01 through 2023-12-31",
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "A stock that has already repriced upward, then holds a narrow ten-session platform while turnover contracts, has absorbed part of the readily available profit-taking supply. A non-limit, high-location, renewed-turnover close above the whole platform is a causal demand-resumption event.",
+  "independence": "No downward gap, collapse zone, panic date, limit-up identity, or machine-learning score participates.",
+  "population": {
+    "boards": ["MAIN", "CHINEXT"],
+    "hard_valid_signal_required": true,
+    "non_st_required": true,
+    "strict_prior_40_market_session_contiguity": true,
+    "same_corporate_action_coordinate_over_prior_40_sessions": true
+  },
+  "pre_existing_repricing": {
+    "lag10_close_over_lag40_close_return_min": 0.20,
+    "lag10_close_over_lag40_close_return_max": 0.70
+  },
+  "tight_flag": {
+    "window_completed_sessions": 10,
+    "prior_10_high_over_low_minus_one_max": 0.18,
+    "prior_10_mean_turnover_not_above_prior_40_mean_turnover": true,
+    "entire_flag_above_lag40_close_by_min": 0.15,
+    "prior_10_high_over_prior_40_high_min": 0.97
+  },
+  "trigger": {
+    "completed_close_strictly_above_prior_10_high": true,
+    "completed_step_return_min": 0.03,
+    "completed_step_return_max": 0.095,
+    "turnover_over_prior_10_mean_min": 1.2,
+    "close_location_min": 0.75,
+    "not_upper_limit_close": true,
+    "symbol_cooldown_market_sessions": 20
+  },
+  "decision_at": "completed trigger close",
+  "entry": "first legal executable daily open strictly after the trigger, no later than the third subsequent market session",
+  "fixed_translation": {
+    "profile": "T15_H30_HIGH_TIGHT_FLAG",
+    "profit_target_from_entry": 0.15,
+    "time_stop_completed_sessions": 30,
+    "failure_exit": "NONE",
+    "round_trip_cost_bps": 40
+  },
+  "fixed_profiles": [
+    {
+      "profile": "T15_H30_HIGH_TIGHT_FLAG",
+      "target": 0.15,
+      "horizon": 30,
+      "stop": false
+    }
+  ],
+  "chronology": {
+    "semantic_discovery": ["2014-01-01", "2018-12-31"],
+    "chronological_confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "completed_trades_per_year_average_strictly_greater_than": 50,
+    "mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20,
+    "no_single_board_explains_edge": true
+  },
+  "governance": {
+    "semantic_thresholds_selected_before_outcome_open": true,
+    "translation_profiles_tested": 1,
+    "blind_chart_semantic_repairs_before_outcome_open": [
+      "Require the whole flag to remain at least 15% above the lag-40 close.",
+      "Require the flag upper frontier to remain within 3% of the preceding-40-session high."
+    ],
+    "manual_blind_chart_pruning_allowed": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

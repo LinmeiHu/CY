@@ -1,0 +1,94 @@
+{
+  "experiment": "ASHARE-MULTI-LIMIT-LEADER-FIRST-PULLBACK-SUPPORT-V1",
+  "lane": "independent_multi_limit_leader_first_pullback_support",
+  "stage_a_outcomes_opened": false,
+  "scientific_development": ["2014-01-01", "2021-12-31"],
+  "semantic_discovery_block": ["2014-01-01", "2018-12-31"],
+  "chronological_confirmation_block": ["2019-01-01", "2021-12-31"],
+  "sealed_validation": ["2022-01-01", "2023-12-31"],
+  "repository_2024_plus_opened": false,
+  "economic_hypothesis": "Two to four tradable upper-limit closes establish a recognized but not policy-style short-term leader. The first controlled eight-to-fifteen-percent pullback transfers inventory. A low-turnover, high-close, non-chasing stabilization session marks the first support confirmation, allowing entry at the next legal open before any renewed breakout.",
+  "population": {
+    "boards": ["MAIN", "CHINEXT"],
+    "hard_valid_signal_required": true,
+    "non_st_required": true,
+    "no_invalid_price_step_in_prior_20_sessions": true,
+    "leader_identity": {
+      "upper_limit_close_count_prior_20_sessions_min": 2,
+      "upper_limit_close_count_prior_20_sessions_max": 4,
+      "completed_20_session_return_min": 0.25,
+      "completed_20_session_return_max": 0.60,
+      "signal_close_above_20_session_anchor_min": 0.15
+    },
+    "first_controlled_pullback": {
+      "recent_peak_window_sessions": 8,
+      "recent_peak_age_sessions_min": 2,
+      "recent_peak_age_sessions_max": 6,
+      "signal_drawdown_from_recent_peak_min": -0.15,
+      "signal_drawdown_from_recent_peak_max": -0.08
+    },
+    "stabilization_trigger": {
+      "completed_signal_step_return_min": 0.00,
+      "completed_signal_step_return_max": 0.04,
+      "signal_low_not_below_prior_session_low": true,
+      "signal_close_not_below_prior_session_close": true,
+      "signal_turnover_not_above_prior_5_session_mean": true,
+      "signal_close_location_min": 0.60,
+      "symbol_cooldown_sessions": 20
+    }
+  },
+  "frozen_candidate_artifact": "/Volumes/quant/CY_quant_research/ashare_multi_limit_leader_first_pullback_support_v1/stage_a/freeze/frozen_candidates.parquet",
+  "frozen_candidate_sha256": "b128dc666ece4c715fd7d4b91ecc42c949669024627be400d19aa6f6f6fa6b8b",
+  "frozen_candidate_count": 908,
+  "annual_candidate_counts": {"2014": 81, "2015": 329, "2016": 54, "2017": 40, "2018": 52, "2019": 143, "2020": 124, "2021": 85},
+  "annual_board_counts": {
+    "2014": {"MAIN": 64, "CHINEXT": 17},
+    "2015": {"MAIN": 259, "CHINEXT": 70},
+    "2016": {"MAIN": 36, "CHINEXT": 18},
+    "2017": {"MAIN": 28, "CHINEXT": 12},
+    "2018": {"MAIN": 36, "CHINEXT": 16},
+    "2019": {"MAIN": 103, "CHINEXT": 40},
+    "2020": {"MAIN": 83, "CHINEXT": 41},
+    "2021": {"MAIN": 80, "CHINEXT": 5}
+  },
+  "blind_chart_count": 96,
+  "refined_blind_chart_count": 48,
+  "blind_charts_end_at_signal_close": true,
+  "entry": "first legal executable daily open strictly after the completed stabilization session, no later than the third subsequent market session; otherwise the signal expires",
+  "costs": {"entry_bps": 20, "exit_bps": 20, "round_trip_bps": 40},
+  "execution": {
+    "signal_bar_fill_allowed": false,
+    "maximum_entry_delay_market_sessions": 3,
+    "t_plus_one_required": true,
+    "known_at_entry_profit_limit_order_may_fill_intraday_from_first_sellable_session": true,
+    "completed_close_failure_or_time_stop_executes_at_next_legal_open": true,
+    "suspension_and_price_limit_tradability_required": true,
+    "corporate_action_coordinate_fail_closed": true,
+    "unknown_required_lineage_fail_closed": true
+  },
+  "frozen_exit_profiles": [
+    {"profile": "H10_NEXT_OPEN", "profit_target_from_entry": null, "time_stop_completed_sessions": 10, "failure_exit": "NONE"},
+    {"profile": "H20_NEXT_OPEN", "profit_target_from_entry": null, "time_stop_completed_sessions": 20, "failure_exit": "NONE"},
+    {"profile": "T10_H20_NO_STOP", "profit_target_from_entry": 0.10, "time_stop_completed_sessions": 20, "failure_exit": "NONE"},
+    {"profile": "T10_H20_STABILIZED_LOW_STOP", "profit_target_from_entry": 0.10, "time_stop_completed_sessions": 20, "failure_exit": "next legal open after a completed close below the frozen post-peak pullback low"}
+  ],
+  "selection": {
+    "block": "2014-01-01 through 2018-12-31 only",
+    "primary_score": "median of the five calendar-year mean net trade returns; every year is one equal observation",
+    "minimum_positive_calendar_years": 3,
+    "tie_breaks": ["higher pooled median net trade return", "lower severe_loss10 rate", "shorter maximum holding period", "lexicographically smaller profile name"],
+    "pooled_trade_count_cannot_override_year_equal_score": true,
+    "choose_at_most_one_profile": true
+  },
+  "continuation_gate": {
+    "average_executed_signals_per_year_strictly_greater_than": 50,
+    "confirmation_pooled_mean_net_trade_return_min": 0.03,
+    "confirmation_pooled_median_net_trade_return_positive": true,
+    "confirmation_2019_mean_net_positive": true,
+    "confirmation_2020_mean_net_positive": true,
+    "confirmation_2021_mean_net_positive": true,
+    "confirmation_not_entirely_one_year_or_board": true,
+    "severe_loss10_controlled": true,
+    "validation_only_if_development_passes": true
+  }
+}

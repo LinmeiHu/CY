@@ -1,0 +1,169 @@
+{
+  "experiment": "ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31",
+  "scientific_status": "OUTCOME_BLIND_MOTHER_REPRESENTATION_FROZEN_BEFORE_ANY_FORWARD_PATH_OR_PAYOFF_READ",
+  "purpose": "Test whether a stock-specific information-diffusion process has begun when daily returns relative to PIT industry peers change from nonpositive rank serial dependence during the preceding two months to positive rank serial dependence during the latest month, with a positive current residual return fixing the long direction.",
+  "economic_mechanism": "Public or private information may be incorporated gradually. A fresh switch from mean-reverting or uncorrelated industry-residual returns to persistent positive residual returns is a temporal mechanism, not merely high cumulative momentum.",
+  "novelty_boundary": {
+    "new_claim": "The predictor is the sign change in nonoverlapping lag-one serial dependence of daily PIT-industry residual returns.",
+    "not_equivalent_to": [
+      "raw 20/60/120-session momentum",
+      "V30 turnover-positive-feedback correlation",
+      "cross-sectional dispersion tail magnitude",
+      "industry diffusion, industry momentum, or leader-follower ranking",
+      "breakout, support, gap, VWAP, low-risk, or low-skewness rules"
+    ],
+    "current_residual_direction_role": "The strictly positive decision-session residual fixes the economically intended good-news direction without adding a residual-momentum path condition; it is not the ranked score."
+  },
+  "input": {
+    "asset_id": "CY-006",
+    "registry_path": "configs/data_asset_registry.json",
+    "registry_asset_status": "RESEARCH_CONDITIONAL",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ],
+    "stage_a_maximum_row_date": "2020-06-30",
+    "later_partition_read": false
+  },
+  "eligible_universe": {
+    "boards": {
+      "MAIN_SH": [
+        "600",
+        "601",
+        "603",
+        "605"
+      ],
+      "MAIN_SZ": [
+        "000",
+        "001",
+        "002"
+      ],
+      "CHINEXT": [
+        "300",
+        "301"
+      ]
+    },
+    "required": [
+      "hard_valid",
+      "bar_valid",
+      "trading_state_valid",
+      "industry_valid",
+      "corporate_action_valid",
+      "not corporate_action_blocking",
+      "market_valid",
+      "market_rule_valid",
+      "historical_identity_valid",
+      "current_day_data_tradable",
+      "trade_status equals one",
+      "not ST",
+      "available_at no later than decision_at",
+      "positive finite OHLC, preclose, amount, and turnover",
+      "nonmissing industry_snapshot_id and daily snapshot_id"
+    ],
+    "industry_minimum_members_each_day": 10
+  },
+  "representation": {
+    "daily_stock_return": "close / preclose - 1 on a completed eligible daily row",
+    "daily_industry_reference": "exact leave-one-out median daily stock return among eligible members of the same PIT industry and date",
+    "daily_residual_return": "daily_stock_return minus daily_industry_reference",
+    "recent_serial_dependence": "lag-one Spearman correlation of daily_residual_return over exactly the latest 20 contiguous market-session pairs ending at the decision close",
+    "prior_serial_dependence": "lag-one Spearman correlation over exactly the nonoverlapping preceding 40 contiguous market-session pairs",
+    "serial_phase_change": "recent_serial_dependence minus prior_serial_dependence",
+    "positive_current_residual": "daily_residual_return on the completed decision session is strictly positive",
+    "exact_history": "The prior 40 pairs and recent 20 pairs share only their boundary endpoint, so exactly 60 lag-one pairs and 61 residual endpoint rows are required. All endpoint rows must be contiguous global market sessions; every pair window must be nondegenerate. A suspension, missing/invalid row, absent industry reference, or nonfinite value fails closed.",
+    "timing": "Every component ends at the completed month-end close and is available no later than that decision_at."
+  },
+  "mother_event": {
+    "decision_schedule": "last completed market session of each calendar month",
+    "signal_start": "2018-07-01",
+    "signal_end": "2020-06-30",
+    "conditions": [
+      "recent_serial_dependence is strictly positive",
+      "prior_serial_dependence is nonpositive",
+      "positive_current_residual is true",
+      "signal-day amount is at least the same-date eligible-universe median"
+    ],
+    "selection": "Within each PIT industry and decision date, retain exactly the stock with the largest serial_phase_change; break ties by larger amount and then lexical symbol.",
+    "cooldown": "After ranking, reject a repeated symbol whose local market-session index is no more than 20 after its last retained event.",
+    "event_id": "RESIDUAL_SERIAL_PHASE|YYYYMMDD|PIT_INDUSTRY|SYMBOL"
+  },
+  "outcome_blind_stage_a_gates": {
+    "candidate_signals_strictly_greater_than_each_development_year": 50,
+    "minimum_independent_decision_dates_each_development_year": 5,
+    "years": [
+      2018,
+      2019,
+      2020
+    ],
+    "maximum_absolute_same_date_median_spearman_to_each_control": 0.8,
+    "controls": [
+      "raw_return_20",
+      "raw_return_60",
+      "return_volatility_60",
+      "turnover_ratio_1_to_60"
+    ],
+    "if_failed": "Close V31 before constructing or reading any post-signal row."
+  },
+  "future_stage_b_if_stage_a_passes": {
+    "entry": "first legal non-upper-limit open in market sessions signal plus one through plus three",
+    "target": "10 percent gross above the executable entry coordinate",
+    "fallback": "on the first legal sellable open strictly after entry plus 20 market sessions, with the open evaluated before any same-session high",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "limits_suspensions_actions_and_coordinate_lineage": "binding and fail closed",
+    "portfolio_replay": false
+  },
+  "future_visual_review_if_stage_a_passes": {
+    "window": "126 global market sessions before through 126 after every frozen signal",
+    "individual_chart_per_event": 1,
+    "complete_chronological_and_outcome_group_review": true,
+    "maximum_compressed_rules": 5,
+    "post_signal_candles_as_original_predictors": false,
+    "freeze_rules_before_any_rule_level_aggregation": true
+  },
+  "development_gate_before_later_period": {
+    "completed_signals_strictly_greater_than_each_year": 50,
+    "mean_net_return_strictly_greater_than_each_year": 0.04,
+    "years": [
+      2018,
+      2019,
+      2020
+    ],
+    "2021": "UNUSED_TEMPORAL_BUFFER",
+    "2022_2024": "CLOSED_UNTIL_ALL_DEVELOPMENT_GATES_PASS_AND_A_SEPARATE_HASH_BOUND_ONE_TIME_PROTOCOL_EXISTS"
+  },
+  "readiness_probe_disclosure": {
+    "performed_before_freeze": true,
+    "outcome_fields_or_post_signal_rows_read": false,
+    "definitions_tried": 1,
+    "prototype_definition": "A nonbinding implementation probe used Pearson serial dependence and positive latest-20 residual path. It was superseded before any outcome read after an adversarial semantic review identified thick-tail sensitivity and residual-momentum contamination.",
+    "frozen_definition_probe_status": "UNRUN",
+    "purpose": "The prior probe established only that the broad residual phase-change family was computationally feasible. The frozen Spearman/current-residual definition must pass its own one-time outcome-blind gates; no outcome may be attached if it fails."
+  },
+  "prohibited": [
+    "neighboring 20/40 window search",
+    "autocorrelation magnitude thresholds other than the frozen zero crossings",
+    "alternative residual definitions, Pearson rescue, or nonlinear transformations",
+    "raw-momentum ranking or industry-return ranking",
+    "Top-N, holding-period, target, market-regime, or execution grids",
+    "outcome-based rule selection",
+    "2021 or 2022-2024 read before the written gates",
+    "portfolio replay before a visually compressed rule earns it",
+    "independent-confirmation or live-trading claim"
+  ]
+}

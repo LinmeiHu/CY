@@ -1,0 +1,30 @@
+{
+  "experiment_id": "ASHARE-DEMAND-IMPULSE-NONEXTENDED-INSIDE-DAY-V4",
+  "status": "FROZEN_BEFORE_V4_PROFILE_REPLAY",
+  "parent_rule_contract": "ASHARE-DEMAND-IMPULSE-NONEXTENDED-INSIDE-DAY-V3",
+  "parent_candidate_sha256": "c7ab5931358cfaec987d35ef1cb65f461d867fd71362d10aa02185430012b50f",
+  "governance_note": "V3 aggregate conditional results were observed. V4 changes no signal or admission rule and performs one bounded development-only target/horizon translation. No V4 profile result has been observed at freeze.",
+  "signal_and_admission": "unchanged V3: demand impulse, first inside-day supply contraction, impulse-start 60-session return <=47%",
+  "entry": "next legal executable session open",
+  "failure": "none",
+  "cost": "40 bp round trip",
+  "fixed_profiles": [
+    {
+      "profile": "T15_H20_NONEXTENDED",
+      "target": 0.15,
+      "horizon": 20,
+      "stop": false
+    },
+    {
+      "profile": "T15_H30_NONEXTENDED",
+      "target": 0.15,
+      "horizon": 30,
+      "stop": false
+    }
+  ],
+  "profile_selection": "2014-2018 only: maximize median annual mean net return, then pooled mean net return, then shorter horizon.",
+  "confirmation": "Evaluate only the selected profile on 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, and every confirmation-year mean >0.",
+  "repository_2022_plus_outcomes_opened": false,
+  "repository_2024_plus_data_opened": false,
+  "prohibited": ["no new admission condition", "no target other than 15%", "no horizon other than H20/H30", "no stop", "no 2022+", "no signal-bar fill"]
+}

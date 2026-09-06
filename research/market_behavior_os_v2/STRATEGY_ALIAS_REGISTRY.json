@@ -45,6 +45,55 @@
       "resolution_rule": "Any exact or case-insensitive alias match resolves to this exact frozen V28R2 identity. Do not silently resolve to V29 or another descendant."
     },
     {
+      "strategy_id": "STRAT-ASHARE-ISSUER-FACT-COOLDOWN-GAP-REPAIR-V29R2",
+      "registered_name_zh": "风险冷却缺口修复",
+      "registered_name_en": "Issuer-Fact Cooldown Gap Repair",
+      "short_code": "IFCGR-V29R2",
+      "aliases": [
+        "V29R2",
+        "风险冷却缺口修复",
+        "风险冷却",
+        "发行人事实冷却",
+        "公告风险冷却",
+        "Issuer-Fact Cooldown Gap Repair",
+        "Issuer-Fact Cooldown",
+        "IFCGR-V29R2"
+      ],
+      "experiment_id": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2",
+      "identity": {
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_preregistration.json",
+        "contract_sha256": "076566c5cd85158997d39e4690c090e98110e85597d55ebf7d5b4fa0e63a5a3a",
+        "rollforward_protocol_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_stage_output_root_seal_correction_r4_freeze.json",
+        "rollforward_protocol_sha256": "a444f8aef2e9d492e6a9d40eb5d5e557cab4bc1aa22205c67649c6db31a74bac",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_root_seal_correction.py",
+        "runner_sha256_at_registration": "14f28130cfdcd985d707feb1e4f5ff11ab074df79f73c8d612dcce854821c0c5",
+        "development_result_path": "research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_development_result.json",
+        "development_result_sha256_at_registration": "dc1539b1bfaf6de09c0be34483a226643f167232e5df0e5caa2c5a2d8b3fec4b",
+        "latest_rollforward_result_path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy065_through_20260904_v1/result.json",
+        "latest_rollforward_result_sha256_at_registration": "41681f281d55a7b0ab03ceeb7a7131f6627361557d95fdb9b218e9833dbc2b1e"
+      },
+      "frozen_parent_chain": [
+        "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+        "ASHARE-TRUE-GAP-BELOW-L-MEANINGFUL-PRIOR-DECLINE-V16",
+        "ASHARE-TRUE-GAP-BELOW-L-FRESH-CAPITULATION-SNAPBACK-V27",
+        "ASHARE-TRUE-GAP-BELOW-L-LIQUIDITY-TRAP-GUARD-V28",
+        "ASHARE-TRUE-GAP-BELOW-L-DEMAND-NOT-LOCKED-V28R1",
+        "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+        "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2"
+      ],
+      "compact_definition": "Main/ChiNext long-only deep-decline true-gap repair: retain the exact frozen V28R2 price, liquidity, amount and execution rules, then fail closed unless the inclusive prior 120 calendar days contain zero causally available official-title issuer-level adverse facts in the frozen fund-misappropriation, illegal-guarantee, issuer-account-freeze, issuer-regulatory-investigation, or risk-warning/delisting families. Generic governance discussion, replies and verification attachments do not create a fact without an explicit adverse title, and CLOSE never shortens the cooldown. Entry is the next legal one-minute open, target A67 below L, H20, no price stop, 20 bp per side, K80 per 50/50 sleeve.",
+      "status": "FROZEN_RESEARCH_CANDIDATE_WITH_CY065_ROLLFORWARD_DIAGNOSTICS",
+      "scientific_warning": "The parent ancestry is retrospective and announcement evidence is PIT-B current-enumeration reconstruction with incomplete historical revision/deletion vintages. The 2022-2024 period is dependent fixed-rule validation and 2025-2026 is temporal diagnostic evidence; this is not pristine external validation or live-trading authorization.",
+      "not_the_same_as": [
+        "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1 retired semantic classifier",
+        "ASHARE-TRUE-GAP-BELOW-L-DAILY-NON-CHASING-V29R3",
+        "STRAT-ASHARE-ORDERLY-GAP-REPAIR-V28R2",
+        "STRAT-ASHARE-MAIN-CHINEXT-CONFIRMATION-BREAKOUT-V72"
+      ],
+      "registered_at": "2026-09-06",
+      "resolution_rule": "Any exact or case-insensitive alias match resolves to the frozen V29R2 semantic contract and its independently released CY065 rollforward result. Do not silently resolve to retired V29R1, sibling V29R3, parent V28R2, or any later descendant."
+    },
+    {
       "strategy_id": "STRAT-ASHARE-MAIN-CHINEXT-CONFIRMATION-BREAKOUT-V72",
       "registered_name_zh": "主创共振突破",
       "registered_name_en": "Main-ChiNext Confirmation Breakout",
@@ -92,6 +141,52 @@
       ],
       "registered_at": "2026-09-06",
       "resolution_rule": "Any exact or case-insensitive alias match resolves to the exact V72 files at frozen commit 60970d7235b9ab7ad8da8d1a7fc5631f015462c9. Do not silently resolve to V65, a later bull-strategy variant, or another branch's working-tree copy."
+    },
+    {
+      "strategy_id": "STRAT-SUPERMIND-V6-COMPRESSION-IGNITION",
+      "registered_name_zh": "蓄势点火",
+      "registered_name_en": "Compression Ignition",
+      "short_code": "SMV6-CI",
+      "aliases": [
+        "蓄势点火",
+        "蓄势点火V6",
+        "SuperMind V6",
+        "SuperMind-V6",
+        "SMV6",
+        "SMV6-CI",
+        "最开始的SuperMind V6",
+        "最初SuperMind V6",
+        "原始SuperMind V6",
+        "最初V6",
+        "原始V6",
+        "Compression Ignition"
+      ],
+      "experiment_id": "SUPERMIND-V6-ORIGINAL-SUPPLIED-CODE",
+      "identity": {
+        "identity_location": "HASH_BOUND_WORKSPACE_SOURCE",
+        "contract_path": "research/supermind_v6/contracts/SUPERMIND-V6-ORIGINAL-SUPPLIED-CODE_contract.json",
+        "contract_sha256": "4b44f21c58b9992711dd52c1d191414d7fd549c1c44776a103caa4d6e3408599",
+        "strategy_path": "research/supermind_v6/strategy/SuperMind_V6_CSI1000_MA15_ENTRY_HS300_MA20_EXIT_MINVOLLOC30_CAP50_SET_TAIL_SELL_OPEN_BUY_COMMENTS_FIXED.py",
+        "strategy_sha256_at_registration": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+        "baseline_summary_path": "research/supermind_v6/manifests/v6_hybrid_longest_replay_summary.json",
+        "baseline_summary_sha256_at_registration": "e6fef4745db3386e945a476705241e4a3dc7adff3748e8d97c59ab556e8c179d",
+        "research_note_path": "research/supermind_v6/reports/v6_model_thesis_and_optimization_research_20260904.md",
+        "research_note_sha256_at_registration": "4bbceb4eb112a69f5a0003756eac327189a7ed8f109d47f42d54bdb8e04f0ebd",
+        "path_resolution": "Resolve the name only when the contract and strategy hashes match. A mismatch must fail closed and must not be treated as the registered strategy."
+      },
+      "frozen_parent_chain": [
+        "SUPERMIND-V6-ORIGINAL-SUPPLIED-CODE"
+      ],
+      "compact_definition": "Long-only ETF compression-to-ignition strategy on the exact embedded 152-code pool: CSI1000 MA15 permits new entries; B60, own-MA20, FULL40 contraction and HARD MINVOLLOC30 identify ignition; equal 20/60/120 cross-sectional RS ranks leaders; CAP50_SET holds at most five positions without RS replacement; ETF MA40x2 and 510300 weekly MA20 plus daily 2% emergency rules exit; completed-close signals preserve next-session opening entry and real-executability semantics.",
+      "status": "FROZEN_SUPPLIED_BASELINE",
+      "scientific_warning": "This registered name identifies the exact user-supplied source bytes and frozen semantics. Local hybrid replay remains shadow evidence and does not establish native SuperMind/QMT fill equivalence, strict PIT-A status, or live-trading authorization.",
+      "not_the_same_as": [
+        "Any sixth/seventh-position overlay or RS-threshold expansion",
+        "Any dynamic or expanded ETF-universe V7 research variant",
+        "Any later strategy that changes the registered source hash or frozen semantics"
+      ],
+      "registered_at": "2026-09-06",
+      "resolution_rule": "Any exact or case-insensitive alias match resolves only to the hash-bound user-supplied SuperMind V6 contract and source. Do not search for another original, or silently substitute an overlay, expanded-universe variant, later descendant, or changed workspace file."
     }
   ]
 }

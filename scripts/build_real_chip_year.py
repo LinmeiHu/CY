@@ -619,6 +619,7 @@ class _CellCodec:
             economic_break_evens = packed._economic_break_evens
             holding_days_array = packed._holding_days
             sensitivity_codes = packed._sensitivity_codes
+            view_collisions: dict[int, list[float]] = {}
 
             known_indices = active_indices[
                 np.isfinite(economic_break_evens[active_indices])
@@ -679,17 +680,43 @@ class _CellCodec:
                         holding_days,
                         SENSITIVITY_CODE[sensitivity],
                     )
-                view[cell_id] = (
+                cell_view = (
                     cost_bucket_id,
                     holding_days,
                     sensitivity,
                     shares,
                 )
+                previous_view = view.get(cell_id)
+                if previous_view is None:
+                    view[cell_id] = cell_view
+                else:
+                    if previous_view[:3] != cell_view[:3]:
+                        raise ValueError(f"cell hash collision for {cell_id}")
+                    collision = view_collisions.get(cell_id)
+                    if collision is None:
+                        view_collisions[cell_id] = [previous_view[3], shares]
+                    else:
+                        collision.append(shares)
                 economic_break_even = float(economic_break_evens[index])
-                economic_bucket_by_cell_id[cell_id] = (
+                economic_bucket = (
                     bucket_for_economic_break_even(grid, economic_break_even)
                     if math.isfinite(economic_break_even)
                     else None
+                )
+                previous_economic_bucket = economic_bucket_by_cell_id.get(cell_id)
+                if (
+                    cell_id in economic_bucket_by_cell_id
+                    and previous_economic_bucket != economic_bucket
+                ):
+                    raise ValueError(f"economic cell hash collision for {cell_id}")
+                economic_bucket_by_cell_id[cell_id] = economic_bucket
+            for cell_id, parts in view_collisions.items():
+                cost_bucket_id, holding_days, sensitivity, _ = view[cell_id]
+                view[cell_id] = (
+                    cost_bucket_id,
+                    holding_days,
+                    sensitivity,
+                    math.fsum(parts),
                 )
             return view, by_bucket, known_shares, economic_bucket_by_cell_id
 
@@ -1076,6 +1103,40 @@ def _file_sha256(path: Path | None) -> str | None:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _delta_file_records(paths: tuple[Path, ...]) -> list[dict[str, str]]:
+    """Return deterministic identities for every registered minute delta."""
+
+    records: list[dict[str, str]] = []
+    for path in paths:
+        schema = pq.read_schema(path)
+        if "source" in schema.names:
+            source_column = pq.read_table(path, columns=["source"]).column("source")
+            if source_column.null_count:
+                raise ValueError(f"minute delta contains null source values: {path}")
+            source_values = {
+                str(value)
+                for value in source_column.unique().to_pylist()
+                if str(value)
+            }
+            if len(source_values) != 1:
+                raise ValueError(
+                    f"minute delta must contain exactly one non-empty source: {path}"
+                )
+            minute_source = next(iter(source_values))
+        else:
+            # CY-022 predates the explicit source column and is itself a frozen
+            # BaoStock asset.  Preserve that registered legacy interpretation.
+            minute_source = "baostock-none-5m"
+        records.append(
+            {
+                "path": str(path.resolve()),
+                "sha256": str(_file_sha256(path)),
+                "minute_source": minute_source,
+            }
+        )
+    return records
+
+
 def _minute_paths_for_year(year: int, root: Path = MINUTE_ROOT) -> list[Path]:
     return [
         root / f"{year}_day_parquet_none.parquet",
@@ -1096,6 +1157,7 @@ def _stage_marker_matches(
     minute_root: Path = MINUTE_ROOT,
     action_override_sha256: str | None = None,
     baostock_delta_sha256: str | None = None,
+    baostock_delta_files: tuple[dict[str, str], ...] = (),
 ) -> bool:
     base = {
         "year": year,
@@ -1108,12 +1170,14 @@ def _stage_marker_matches(
         "minute_root": str(minute_root.resolve()),
         "action_override_sha256": action_override_sha256,
         "baostock_delta_sha256": baostock_delta_sha256,
+        "baostock_delta_files": list(baostock_delta_files),
     }
     comparable = dict(metadata)
     comparable.setdefault("daily_root", str(DAILY_ROOT.resolve()))
     comparable.setdefault("minute_root", str(MINUTE_ROOT.resolve()))
     comparable.setdefault("action_override_sha256", None)
     comparable.setdefault("baostock_delta_sha256", None)
+    comparable.setdefault("baostock_delta_files", [])
     if any(comparable.get(key) != value for key, value in base.items()):
         return False
     staged_symbols = metadata.get("symbols")
@@ -1139,10 +1203,13 @@ def _stage_inputs(
     daily_root: Path = DAILY_ROOT,
     minute_root: Path = MINUTE_ROOT,
     research_action_overrides: Path | None = None,
-    baostock_delta_file: Path | None = None,
+    baostock_delta_files: tuple[Path, ...] = (),
 ) -> None:
     action_override_sha256 = _file_sha256(research_action_overrides)
-    baostock_delta_sha256 = _file_sha256(baostock_delta_file)
+    delta_file_records = _delta_file_records(baostock_delta_files)
+    baostock_delta_sha256 = (
+        delta_file_records[0]["sha256"] if len(delta_file_records) == 1 else None
+    )
     marker = stage_root / "COMPLETE.json"
     if marker.exists():
         try:
@@ -1161,6 +1228,7 @@ def _stage_inputs(
             minute_root=minute_root,
             action_override_sha256=action_override_sha256,
             baostock_delta_sha256=baostock_delta_sha256,
+            baostock_delta_files=tuple(delta_file_records),
         ):
             return
     if stage_root.exists():
@@ -1177,8 +1245,7 @@ def _stage_inputs(
     required_paths = daily_paths + minute_paths
     if research_action_overrides is not None:
         required_paths.append(research_action_overrides)
-    if baostock_delta_file is not None:
-        required_paths.append(baostock_delta_file)
+    required_paths.extend(baostock_delta_files)
     missing = [path for path in required_paths if not path.exists()]
     if missing:
         raise FileNotFoundError(f"missing inputs: {missing[:3]}")
@@ -1264,8 +1331,11 @@ def _stage_inputs(
                'qmt-none-1m' AS minute_source
         FROM read_parquet({_sql_paths(minute_paths)}) m
     """
-    if baostock_delta_file is not None:
+    for baostock_delta_file, delta_record in zip(
+        baostock_delta_files, delta_file_records, strict=True
+    ):
         escaped_delta = str(baostock_delta_file.resolve()).replace("'", "''")
+        escaped_source = delta_record["minute_source"].replace("'", "''")
         minute_source_sql += f"""
           UNION ALL
           SELECT SUBSTR(code, 4) || '.' || UPPER(SUBSTR(code, 1, 2)) AS qmt_code,
@@ -1277,7 +1347,7 @@ def _stage_inputs(
                  TRY_CAST(close AS DOUBLE) AS close,
                  TRY_CAST(volume AS DOUBLE) AS volume,
                  TRY_CAST(amount AS DOUBLE) AS amount,
-                 'baostock-none-5m' AS minute_source
+                 '{escaped_source}' AS minute_source
           FROM read_parquet('{escaped_delta}')
         """
     daily_bucketed = stage_root / "_daily_bucketed"
@@ -1384,6 +1454,7 @@ def _stage_inputs(
         "minute_root": str(minute_root.resolve()),
         "action_override_sha256": action_override_sha256,
         "baostock_delta_sha256": baostock_delta_sha256,
+        "baostock_delta_files": delta_file_records,
     }
     if symbols:
         marker_metadata["symbols"] = sorted(set(symbols))
@@ -1677,6 +1748,7 @@ def _output_row(
             ordered_destinations = tuple(transition.destination_cell_ids)
             ordered_fractions = tuple(transition.retained_fractions)
         predicted: dict[int, float] = {}
+        predicted_collisions: dict[int, list[float]] = {}
         for position, (source_id, destination_id, retained_fraction) in enumerate(
             zip(
                 ordered_sources,
@@ -1705,9 +1777,20 @@ def _output_row(
             destination_override_cell_ids.append(codec.local_id(destination_id))
             retained_shares = source_cell[3] * retained_fraction
             if retained_shares != 0.0:
-                predicted[destination_id] = (
-                    predicted.get(destination_id, 0.0) + retained_shares
-                )
+                previous_predicted = predicted.get(destination_id)
+                if previous_predicted is None:
+                    predicted[destination_id] = retained_shares
+                else:
+                    collision = predicted_collisions.get(destination_id)
+                    if collision is None:
+                        predicted_collisions[destination_id] = [
+                            previous_predicted,
+                            retained_shares,
+                        ]
+                    else:
+                        collision.append(retained_shares)
+        for destination_id, parts in predicted_collisions.items():
+            predicted[destination_id] = math.fsum(parts)
 
         # v12 must be independently replayable without deriving sensitivity
         # from a compact id.  Retention is therefore stored exactly, and every
@@ -1732,11 +1815,21 @@ def _output_row(
                     if previous_economic_buckets is None
                     else previous_economic_buckets.get(cell_id)
                 )
-        reconstructed_total = math.fsum(predicted.values()) + math.fsum(adjustment_shares)
+        reconstructed_values = []
+        max_cell_error = 0.0
+        for cell_id, cell in current.items():
+            predicted_shares = predicted.get(cell_id, 0.0)
+            adjustment = cell[3] - predicted_shares
+            replayed_shares = predicted_shares + adjustment
+            reconstructed_values.append(replayed_shares)
+            max_cell_error = max(max_cell_error, abs(cell[3] - replayed_shares))
+        reconstructed_total = math.fsum(reconstructed_values)
         if abs(reconstructed_total - total) > tolerance(total):
             raise ValueError(
                 "compact operator does not conserve inventory: "
-                f"{reconstructed_total} != {total}"
+                f"symbol={state.symbol}, date={state.trading_date}, "
+                f"model={state.seller_model.value}, aggregate={reconstructed_total}, "
+                f"max_cell_error={max_cell_error}, cells={len(current)}"
             )
     row = (
         STORAGE_VERSION,
@@ -2730,7 +2823,13 @@ def main() -> int:
     parser.add_argument(
         "--baostock-delta-file",
         type=Path,
-        help="Optional registered raw BaoStock native-5m delta for the target year.",
+        action="append",
+        default=[],
+        help=(
+            "Optional registered raw native-5m delta for the target year; repeat "
+            "the option to append disjoint registered deltas. Legacy files without "
+            "a source column are interpreted only as frozen BaoStock inputs."
+        ),
     )
     parser.add_argument(
         "--research-action-overrides",
@@ -2801,7 +2900,7 @@ def main() -> int:
         daily_root=args.daily_root,
         minute_root=args.minute_root,
         research_action_overrides=args.research_action_overrides,
-        baostock_delta_file=args.baostock_delta_file,
+        baostock_delta_files=tuple(args.baostock_delta_file),
     )
     payloads = _task_payloads(
         selected_buckets=selected_buckets,
@@ -2883,11 +2982,18 @@ def main() -> int:
             args.research_action_overrides
         ),
         "baostock_delta_file": (
-            None
-            if args.baostock_delta_file is None
-            else str(args.baostock_delta_file.resolve())
+            str(args.baostock_delta_file[0].resolve())
+            if len(args.baostock_delta_file) == 1
+            else None
         ),
-        "baostock_delta_sha256": _file_sha256(args.baostock_delta_file),
+        "baostock_delta_sha256": (
+            _file_sha256(args.baostock_delta_file[0])
+            if len(args.baostock_delta_file) == 1
+            else None
+        ),
+        "baostock_delta_files": _delta_file_records(
+            tuple(args.baostock_delta_file)
+        ),
         "terminal_only": args.terminal_only,
         "emit_start_date": (
             None if args.emit_start_date is None else args.emit_start_date.isoformat()

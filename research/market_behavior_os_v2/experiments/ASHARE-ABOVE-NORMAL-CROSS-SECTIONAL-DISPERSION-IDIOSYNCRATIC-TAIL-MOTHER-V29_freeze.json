@@ -1,0 +1,60 @@
+{
+  "experiment": "ASHARE-ABOVE-NORMAL-CROSS-SECTIONAL-DISPERSION-IDIOSYNCRATIC-TAIL-MOTHER-V29",
+  "research_status": "OUTCOME_BLIND_MOTHER_FREEZE",
+  "frozen_before_candidate_build": true,
+  "purpose": "Test a chart-reviewable long-only mother built from an above-normal broad-market stock-specific dispersion state and an extreme current move relative to PIT industry. Direction is unresolved, so upward and downward idiosyncratic tails remain separate outcome-blind lanes.",
+  "v28_semantic_correction": {
+    "observed_without_outcomes": "V28 incorrectly applied the candidate liquidity/history filters before constructing the market state. Requiring at least 500 securities after removing the less-liquid half made the market calendar structurally incomplete and produced zero candidates before any outcome or chart was read.",
+    "correction": "Construct the market dispersion state from every currently valid security with a valid current step and PIT industry. Apply the exact 60-session history and same-date median-liquidity requirements only to securities that may become candidates.",
+    "not_a_result_rescue": "No V28 return, future path, or chart was read. V29 changes the economic state from rare p80 dispersion to above-normal p50 dispersion because the outcome-blind p80 weekly state had zero decision dates in 2016 and could not satisfy the predeclared annual opportunity gate. No threshold grid is permitted."
+  },
+  "data": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "candidate_signal_start": "2014-01-01",
+    "candidate_signal_end": "2020-12-31",
+    "outcome_read_during_stage_a": false,
+    "post_2020_outcome_read": false
+  },
+  "broad_market_state": {
+    "current_member": "Current row is hard/current valid, tradable, trade_status=1, market/corporate-action valid, non-blocking, no current corporate action, historical identity and PIT industry valid, non-ST, available_at <= decision_at, with positive finite coordinate prices, amount, and current step_return.",
+    "industry_step": "Same-date median current step_return for PIT industries with at least 10 broad valid members.",
+    "stock_specific_step": "Current security step_return minus its same-date PIT-industry median step_return.",
+    "dispersion": "Same-date cross-sectional IQR of broad-member stock_specific_step_return, requiring at least 500 securities and 20 PIT industries.",
+    "causal_history": "Exactly 252 strictly prior consecutive global market cal_idx observations. The current date is excluded.",
+    "above_normal_state": "Current broad-market dispersion is at or above the median of those exact 252 prior completed observations.",
+    "weekly_clock": "Completed Friday close only; no weekday search.",
+    "economic_meaning": "Stock-specific price discovery is wider than its own causal one-year norm, so security selection has more cross-sectional opportunity than in a common-mode market. This is an applicability state, not a directional market-return prediction."
+  },
+  "candidate_security": {
+    "history": "Exactly 60 strictly prior consecutive market-session rows with unchanged coordinate lineage and all required PIT validity flags.",
+    "current": "Same current validity contract as broad members.",
+    "liquidity": "Current amount is at or above the causal same-date median among history-eligible securities whose PIT industry has at least 10 broad current members.",
+    "direction_lanes": {
+      "IDIOSYNCRATIC_UP_SHOCK": "Candidate stock-specific step return is in the current liquid-candidate top decile.",
+      "IDIOSYNCRATIC_DOWN_SHOCK": "Candidate stock-specific step return is in the current liquid-candidate bottom decile."
+    },
+    "industry_representation": "Within each PIT industry and lane keep the eligible tail stock with the largest current amount; tie-break lexically by symbol.",
+    "cooldown": "After a selected symbol event, suppress later events for the next 20 global market cal_idx values, applied causally in chronological order."
+  },
+  "stage_a_gate": {
+    "minimum_candidates_each_year_2014_2020": 50,
+    "minimum_decision_dates_each_year": 5,
+    "action_if_failed": "Close before charts or outcomes. Do not change p50, decile, liquidity, weekday, industry, or cooldown definitions."
+  },
+  "chart_plan_if_gate_passes": {
+    "window": "126 sessions before through 126 sessions after signal. Signals stop at 2020-12-31 and chart context is capped at 2021-06-30.",
+    "review": "Render every candidate; inspect every chronological contact sheet; then inspect all complete outcome-group contradiction sheets.",
+    "rule_limit": 5,
+    "development_only": true,
+    "later_validation_gate": "Only after frozen chart rules produce more than 50 completed signals and mean net return above 4% in every development year may 2022-2024 be opened once."
+  },
+  "prohibited": [
+    "future or full-period normalization",
+    "outcome-selected shock direction",
+    "percentile, lookback, weekday, Top-N, target, or holding-period grids",
+    "silent substitution for missing PIT industry or lineage",
+    "resource-blocked MKT-DISP-RANK-001/002 architecture",
+    "2021+ signal outcomes before development chart rules are frozen"
+  ]
+}

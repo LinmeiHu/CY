@@ -1,0 +1,61 @@
+{
+  "experiment": "ASHARE-PANIC-ABSORPTION-BROAD-CAPITULATION-V2",
+  "scientific_status": "CHART_DERIVED_RULE_FROZEN_BEFORE_2024_OUTCOME_CHALLENGE",
+  "economic_hypothesis": "A gap-down panic day that is fully absorbed by strong completed-session demand is more likely to represent a market-wide forced-inventory transfer when at least one other independent stock shows the same frozen event on that session. An isolated event is more likely to reflect stock-specific adverse information.",
+  "source_mother_signal": "ASHARE-PANIC-GAP-DOWN-FULL-ABSORPTION-REVERSAL-V1",
+  "source_rule_freeze": "ASHARE-PANIC-ABSORPTION-12M-CHART-RULE-DISCOVERY-V1_rules_freeze.json",
+  "frozen_plain_language_rules": [
+    "The stock lost at least 10 percent over the preceding 20 completed sessions.",
+    "The completed signal session opened at least 1 percent below the preceding close and made a new five-session low.",
+    "Signal-session turnover was at least the preceding 20-session mean.",
+    "The signal session closed at or above the preceding high and in the upper 30 percent of its own range.",
+    "At least one other independent stock produced the same frozen mother signal on that completed session."
+  ],
+  "only_incremental_chart_rule": "same completed-session frozen mother-signal count >= 2",
+  "causal_clock": {
+    "signal": "completed daily session close at 15:00",
+    "cluster_count_availability": "same completed-session close after all constituent signals are observable",
+    "entry": "first legal executable open strictly after the signal close, no later than the third subsequent market session",
+    "same_bar_fill_allowed": false,
+    "future_extrema_in_signal_or_market_state": false
+  },
+  "frozen_translation": {
+    "profit_target": "+10% from executable entry, actionable only from the first sellable session",
+    "time_stop": "next legal open after the H20 completed-session decision",
+    "failure_stop": "NONE",
+    "round_trip_cost_bps": 40,
+    "t_plus_one_limits_suspensions_and_corporate_action_coordinate_contract": "unchanged"
+  },
+  "development_gate": {
+    "period": ["2014-01-01", "2020-12-31"],
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_positive": true,
+    "severe_loss10_at_most": 0.15,
+    "every_calendar_year_with_completed_trades_mean_net_positive": true
+  },
+  "challenge_gate": {
+    "period": ["2022-01-01", "2024-12-31"],
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_positive": true,
+    "severe_loss10_at_most": 0.15,
+    "every_calendar_year_with_completed_trades_mean_net_positive": true
+  },
+  "outcome_governance": {
+    "chart_rule_formation": "2014-2021 already consumed; requested development gate is reported on 2014-2020",
+    "2022_2023": "previously consumed validation, reused without claiming untouched confirmation",
+    "2024": "single newly authorized challenge; identity must freeze before outcomes attach",
+    "2025_signals": "PROHIBITED",
+    "post_2024_rows": "permitted only to complete pre-2025 frozen trades",
+    "no_threshold_grid_or_subset_search": true,
+    "no_post_challenge_rule_change": true
+  },
+  "data": {
+    "development_candidates": "/Volumes/quant/CY_quant_research/ashare_panic_gap_down_full_absorption_reversal_v1/stage_a/freeze/frozen_candidates.parquet",
+    "development_outcomes": "/Volumes/quant/CY_quant_research/ashare_panic_gap_down_full_absorption_reversal_v1/stage_b/outcomes.parquet",
+    "validation_2022_2023_candidates": "/Volumes/quant/CY_quant_research/ashare_panic_gap_down_full_absorption_reversal_v1/validation/freeze/frozen_candidates_2022_2023.parquet",
+    "validation_2022_2023_outcomes": "/Volumes/quant/CY_quant_research/ashare_panic_gap_down_full_absorption_reversal_v1/validation/results/validation_outcomes.parquet",
+    "registered_2024_daily": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet"
+  }
+}

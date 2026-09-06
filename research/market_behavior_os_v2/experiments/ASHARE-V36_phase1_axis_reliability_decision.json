@@ -1,0 +1,100 @@
+{
+  "experiment": "ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36",
+  "stage": "PHASE1_OUTCOME_BLIND_AXIS_RELIABILITY",
+  "status": "FROZEN_BEFORE_ANY_OUTCOME_CONTRACT_OR_ATTRIBUTION",
+  "calibration_scope": {
+    "charts": "0001-0025",
+    "reviewers": 3,
+    "pairwise_comparisons_per_axis": 3,
+    "outcome_or_identity_read": false,
+    "post_signal_row_read": false
+  },
+  "inputs": [
+    {
+      "reviewer": "Root",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_annotations_root_calibration_0001_0025.json",
+      "sha256": "93e3ddbc8a06958341bd8414ea82d67fdc211cb87d24137f43e50ec49f2ea80a"
+    },
+    {
+      "reviewer": "Galileo",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_annotations_galileo_0001_0200.json",
+      "sha256": "ab92667b64bf38fe4252df5da95b749feb9f3a6c3ed244f7609f401adaeef41b",
+      "rows_used": "0001-0025 only"
+    },
+    {
+      "reviewer": "BaconCalibration",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_annotations_bacon_calibration_0001_0025.json",
+      "sha256": "17051d88a9fc6c132a135abea24c4ecdf2f5ccb4db40a09ebc2705991ff7284a"
+    }
+  ],
+  "pre_outcome_eligibility_rule": {
+    "median_pairwise_exact_agreement_at_least": 0.6,
+    "charts_with_at_least_two_of_three_agreeing_at_least": 20,
+    "meaning": "An axis that fails either outcome-blind descriptive reliability threshold may be reported but cannot define or enter a compressed trading rule."
+  },
+  "axis_results": {
+    "primary_morphology": {
+      "pairwise_exact_agreements": {
+        "Root__Galileo": 0.6,
+        "Root__BaconCalibration": 0.6,
+        "Galileo__BaconCalibration": 0.8
+      },
+      "median_pairwise_exact_agreement": 0.6,
+      "unanimous_charts": 13,
+      "two_of_three_majority_charts": 24,
+      "rule_prompt_eligible": true
+    },
+    "market_tape": {
+      "pairwise_exact_agreements": {
+        "Root__Galileo": 0.84,
+        "Root__BaconCalibration": 0.76,
+        "Galileo__BaconCalibration": 0.8
+      },
+      "median_pairwise_exact_agreement": 0.8,
+      "unanimous_charts": 18,
+      "two_of_three_majority_charts": 24,
+      "rule_prompt_eligible": true
+    },
+    "signal_candle": {
+      "pairwise_exact_agreements": {
+        "Root__Galileo": 0.4,
+        "Root__BaconCalibration": 0.36,
+        "Galileo__BaconCalibration": 0.68
+      },
+      "median_pairwise_exact_agreement": 0.4,
+      "unanimous_charts": 6,
+      "two_of_three_majority_charts": 24,
+      "rule_prompt_eligible": false,
+      "decision": "DESCRIPTIVE_ONLY_INTER_REVIEWER_RELIABILITY_TOO_LOW"
+    },
+    "turnover_state": {
+      "pairwise_exact_agreements": {
+        "Root__Galileo": 0.4,
+        "Root__BaconCalibration": 0.52,
+        "Galileo__BaconCalibration": 0.8
+      },
+      "median_pairwise_exact_agreement": 0.52,
+      "unanimous_charts": 10,
+      "two_of_three_majority_charts": 23,
+      "rule_prompt_eligible": false,
+      "decision": "DESCRIPTIVE_ONLY_INTER_REVIEWER_RELIABILITY_TOO_LOW"
+    }
+  },
+  "eligible_discovery_prompt_axes": [
+    "primary_morphology",
+    "market_tape"
+  ],
+  "descriptive_only_axes": [
+    "signal_candle",
+    "turnover_state"
+  ],
+  "usage_boundary": {
+    "manual_labels_may_group_later_development_outcomes_for_visual_anatomy": true,
+    "manual_labels_are_directly_executable_rules": false,
+    "promotion_requirement": "Any morphology or market-tape observation must be translated into a deterministic causal numeric condition and frozen before a separately authorized temporal holdout is evaluated.",
+    "signal_candle_may_enter_promoted_rule": false,
+    "turnover_state_may_enter_promoted_rule": false,
+    "reason": "Only the broad market state and broad pre-signal path reached the frozen outcome-blind reproducibility gate; all chart judgments remain hypothesis prompts rather than production predicates."
+  },
+  "scientific_interpretation": "V36 may use market tape and broad price-path morphology to organize later development anatomy. The single candle and visually judged turnover state are too reviewer-dependent and are excluded before any return is attached."
+}

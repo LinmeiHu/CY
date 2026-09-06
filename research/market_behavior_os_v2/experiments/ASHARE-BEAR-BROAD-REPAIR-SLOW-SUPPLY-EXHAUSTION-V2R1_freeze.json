@@ -1,0 +1,73 @@
+{
+  "experiment": "ASHARE-BEAR-BROAD-REPAIR-SLOW-SUPPLY-EXHAUSTION-V2R1",
+  "scientific_status": "POST_CHART_DATA_GENERATED_DEVELOPMENT_RULES_FROZEN_BEFORE_OUTCOME_AGGREGATION",
+  "purpose": "Test one compact causal interpretation produced by complete visual review of the 1,765-chart BEAR slow-supply-exhaustion book: stock-level supply exhaustion should be actionable only when same-day broad market repair is already observable, and a repeatedly lost frozen platform should end the trade.",
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "market_state": {
+    "long_horizon_state": "Exact pre-existing causal market_regime must equal BEAR on the signal date.",
+    "same_day_repair_universe": "On the signal date, include only rows whose bar is PIT available by decision_at and whose hard_valid, current_valid, current_day_data_tradable, market_rule_valid, corporate_action_valid, historical_identity_valid are true; trade_status equals 1; corporate_action_blocking is false; corporate_action_count equals zero; is_st is false; and step_return is finite.",
+    "same_day_repair_rule": "Cross-sectional median step_return > 0 and fraction of eligible rows with step_return > 0 > 0.50.",
+    "causal_timing": "Both repair measures use only completed signal-date bars available by approximately 15:30. They contain no future return and can first affect the following legal open."
+  },
+  "stock_candidate": {
+    "source": "Exact frozen BEAR_SLOW_SUPPLY_EXHAUSTION_TAKEOVER candidate ledger; no candidate feature, lookback, threshold, or cooldown change.",
+    "frozen_level": "Signal-date prior5_high already stored in the candidate ledger."
+  },
+  "execution": {
+    "entry": "First legal buyable coordinate open during signal cal_idx +1 through +3, preserving coordinate lineage.",
+    "profit_exit": "After the entry session, if a legal observed coordinate high reaches entry_price * 1.10, fill at the target price.",
+    "failed_acceptance_observation": "After entry, count consecutive valid completed closes with coordinate close strictly below frozen prior5_high. A close at or above the level resets the count. Missing or invalid bars fail closed and do not create a false observation.",
+    "failed_acceptance_trigger": "The second consecutive below-level valid close creates a pending exit after that close.",
+    "failed_acceptance_fill": "Fill the pending exit at the earliest subsequent legal sellable coordinate open. Never fill on the trigger close.",
+    "time_exit": "After twenty holding sessions, fill at the earliest subsequent legal sellable coordinate open under the pre-existing H20 convention.",
+    "priority": "At each new session, fill an already-pending failed-acceptance or time exit at the legal open before considering that session's high. Otherwise a +10% target reached intraday takes precedence over any new close-based trigger created later that day.",
+    "round_trip_cost": 0.004,
+    "same_bar_fill": false,
+    "t_plus_one_preserved": true
+  },
+  "comparison": {
+    "baseline": "Exact frozen candidate with its original +10%/H20 replay.",
+    "required": [
+      "candidate and completed counts",
+      "independent signal dates",
+      "pooled and annual mean/median/win/severe-loss economics",
+      "exit attribution",
+      "return delta versus exact mother on the identical filtered candidates"
+    ]
+  },
+  "gate": {
+    "completed_trades_each_2014_2020_year_strictly_gt_50": true,
+    "pooled_mean_net_strictly_gt_4pct": true,
+    "pooled_median_net_positive": true,
+    "severe_loss_rate_at_most_20pct": true,
+    "report_annual_mean_net_gt_4pct_separately": true,
+    "open_2022_2024_only_if_all_written_gate_conditions_pass": true
+  },
+  "research_constraints": {
+    "maximum_rules": 5,
+    "no_threshold_grid": true,
+    "no_rule_subset_search": true,
+    "no_neighboring_signal_definition": true,
+    "no_future_market_function": true,
+    "no_2021_signal": true,
+    "no_2022_2024_signal_or_outcome_before_gate": true,
+    "no_rescue_after_result": true
+  },
+  "source_hashes": {
+    "chart_discovery_freeze": "9ad639a78415811ec12d551c145cbd62edce2d66c126bd1ba96f7923f0269cce",
+    "frozen_candidate_ledger": "cb8459b95b9c11edea88183c33af7384cd284cf45b5410103ff1463361a28913",
+    "chart_window_panel": "4939d92a90b1a26fae1122069f28bd06be316bebca4fc22ffd1d86604bfc6ef1",
+    "chart_index": "73a4268d493c13a0cb03916caebf650ac93306387735ba81b740bac73e5a5e8d",
+    "pit_daily": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_market_state": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  },
+  "outcome_governance": {
+    "2014_2020": "consumed development",
+    "2021_signal_read": false,
+    "2022_2024_signal_or_outcome_read": false,
+    "post_2024_outcome_read": false
+  }
+}

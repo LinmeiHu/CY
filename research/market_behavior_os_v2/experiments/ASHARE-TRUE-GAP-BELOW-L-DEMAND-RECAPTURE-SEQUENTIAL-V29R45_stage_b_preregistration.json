@@ -1,0 +1,214 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45",
+  "stage": "DEVELOPMENT_STAGE_B_PRE_OUTCOME_EXECUTION_FREEZE",
+  "status": "FROZEN_PROTOCOL_AWAITING_CY046_ACTIVATION_AND_RUNNER_REVIEW",
+  "protocol_version": "V1_PRE_OUTCOME",
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "post_2021_access": "PROHIBITED",
+  "scientific_disclosure": "The broader gap-below-L family and older implementations have consumed development evidence. This protocol tests two newly frozen identity repairs in a predeclared sequence; it is not independent discovery evidence.",
+  "success_gate": {
+    "average_accepted_trades_per_development_year": ">50",
+    "frequency_formula": "completed capacity-accepted trades / 4; this is not a requirement that every individual signal year exceed 50",
+    "mean_net_return": ">=0.04",
+    "mean_holding_sessions": "<15",
+    "all_three_required": true,
+    "annual_denominator_years": 4,
+    "comparison_precision": "Use unrounded integer counts and full-precision event-equal arithmetic means. Display rounding may never determine PASS."
+  },
+  "sequential_testing": {
+    "order": [
+      "V29R4_CAP25",
+      "V29R5_CAP25"
+    ],
+    "stop_rule": "If V29R4_CAP25 passes all three success gates, seal it and do not open any V29R5 outcome row. V29R5_CAP25 may be opened only after an immutable V29R4 failure result exists.",
+    "after_both_fail": "No threshold repair is permitted inside this Stage B. Return to a new outcome-blind Stage A; the already-precommitted remove-R5 capacity expansion is next in order.",
+    "multiple_comparison_disclosure": "The two ordered attempts are development experiments, not independent validation."
+  },
+  "frozen_cohorts": {
+    "V29R4_CAP25": {
+      "stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-FIRST-INVESTABLE-RECLAIM-V29R4_stage_a_freeze.json",
+        "sha256": "7b7fe3ea6f4789a29b0cd7e846169506e079c3936c20a17860385915766fe236"
+      },
+      "stage_a_selected": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_first_investable_reclaim_v29r4/development_stage_a/first_investable_reclaim_signals.parquet",
+        "sha256": "dc47fd00383045957d9ee6cb94f03f09f5a9f1688821799f6e0d8d3d4047c5ba",
+        "rows": 394
+      },
+      "capacity_derivation_before_outcomes": {
+        "event_cap": 25,
+        "selection": "For each signal_date cycle through lexical industries; within each industry order rebound_from_post_gap_low_over_l descending, symbol, gap_id; repeat until 25 or exhaustion.",
+        "alpha_admission": true,
+        "sole_primary": true,
+        "expected_rows": 251,
+        "expected_by_signal_year": {
+          "2018": 178,
+          "2019": 25,
+          "2020": 12,
+          "2021": 36
+        },
+        "raw_cohort_after_outcome_open": "identity/morphology audit only; may not compete with CAP25"
+      }
+    },
+    "V29R5_CAP25": {
+      "stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-RENEWED-SELL-WAVE-REFRESH-V29R5_stage_a_freeze.json",
+        "sha256": "59403e3be36351f76637aec5e4f1dd156ddfae482bacfebe1df878d93ffbdbd0"
+      },
+      "stage_a_primary": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_renewed_sell_wave_refresh_v29r5/development_stage_a/renewed_sell_wave_cap25_identity.parquet",
+        "sha256": "e225daa011d3851ad406fac525281efa1b0e5e52700e613117637eb82a15857c",
+        "rows": 255,
+        "by_signal_year": {
+          "2018": 180,
+          "2019": 30,
+          "2020": 16,
+          "2021": 29
+        }
+      },
+      "sole_primary": true,
+      "raw_cohort_after_outcome_open": "identity/morphology audit only; may not compete with CAP25"
+    }
+  },
+  "required_bounded_input": {
+    "asset_id": "CY-046",
+    "authorization_id": "CYQ-AUTH-ASHARE-DEMAND-RECAPTURE-V29R45-STAGE-B-2018-2021-V1",
+    "components": [
+      "CY-006",
+      "CY-008",
+      "QD-010"
+    ],
+    "pit_limitation": {
+      "grade": "PIT-B_RESEARCH_CONDITIONAL",
+      "strict_pit_eligible": false,
+      "qd010_revision_history_complete": false,
+      "publication_allowed": false,
+      "interpretation": "QD-010 is an immutable current-snapshot reconstruction with available_at lineage but without a complete historical revision stream. Results are bounded causal hypothesis evidence only, not strict PIT-A evidence, deployment evidence, or independent validation."
+    },
+    "required_materializations": [
+      "V29R4 CAP25 identity",
+      "V29R5 frozen primary CAP25 identity",
+      "candidate administrative-bound ledger for both complete frozen cohorts",
+      "candidate-keyed CY-006 daily rows from signal through entry+23 for administratively eligible candidates only",
+      "candidate-keyed CY-008 window_index=0 rows from entry through entry+23 for administratively eligible candidates only",
+      "candidate-keyed QD-010 event rows that become effective after signal and no later than entry+23 for administratively eligible candidates only",
+      "2018-2021 market-session calendar"
+    ],
+    "fixed_file_interface": {
+      "identities": [
+        "v29r4_cap25_identity.parquet",
+        "v29r5_cap25_identity.parquet"
+      ],
+      "identity_common_fields": "protocol_arm,gap_id,symbol,board,signal_date,signal_time,L,coordinate_factor,signal_industry,cap25_rank,signal_available_at,signal_snapshot_id,signal_daily_snapshot_id,signal_corporate_action_snapshot_id; signal_time must be the completed 15:00 Asia/Shanghai close, signal_available_at<=signal_time, and the signal daily/corporate-action snapshots must bind exactly to the candidate-keyed CY006 signal row",
+      "administrative_bounds": "candidate_admin_bounds.parquet: protocol_arm,gap_id,symbol,signal_date,signal_calendar_index,entry_date,h20_date,h21_date,h22_date,h23_date,admin_eligible",
+      "daily": "candidate_daily_path.parquet keyed by protocol_arm,gap_id,symbol,signal_date,entry_date,trade_date,signal_session_offset,entry_session_offset; signal=(0,-1), entry=(1,0), final=(24,23)",
+      "execution": "candidate_execution_window0.parquet with the same candidate/date keys, signal_session_offset 1..24, entry_session_offset 0..23 and window_index=0",
+      "actions": "candidate_action_events.parquet keyed by protocol_arm,gap_id,symbol,signal_date,entry_date,h23_date plus the exact event identity, timing, terms, completeness and frozen-source lineage",
+      "calendar": "market_calendar.parquet: unique trade_date and contiguous zero-based calendar_index for 2018-01-01..2021-12-31"
+    },
+    "materialization_minimization": "The builder must first derive the administrative horizon from identities plus calendar, then semi-join each source by arm+gap_id+symbol and its exact bounded session interval. It may not copy whole-symbol histories, non-window0 minute rows, a candidate's rows outside its interval, or any 2022-plus row. Repeated source facts are deliberately duplicated under each authorized candidate key so the runner never needs an unbounded symbol join.",
+    "daily_field_use": "CY006 OHLC is target evidence only at offsets entry+1 through entry+20. Signal/entry and offsets +21..+23 rows exist solely for lineage, action reconciliation and CY008 snapshot binding; their high/low/close fields are forbidden target evidence.",
+    "activation_before_outcome": true
+  },
+  "administrative_censor": {
+    "computed_before_any_candidate_price_path_is_joined": true,
+    "rule": "Using only signal_date and the frozen 2018-2021 market calendar, map entry=session(signal)+1, H20=entry+20 and the three possible time-exit sessions=entry+21,+22,+23. Retain only when entry+23 exists and is no later than 2021-12-31. This censor is applied to every frozen candidate before opening or joining CY046 daily/action/execution rows.",
+    "status": "RIGHT_CENSORED_2021_ADMINISTRATIVE",
+    "outcome_independent": true
+  },
+  "entry_contract": {
+    "order_created": "completed signal close",
+    "entry_date": "exactly the next global market session; never search or roll to a later favorable day",
+    "source": "CY008 window_index=0 open, labelled CY008_WINDOW0_OPEN_0931_0935_OBSERVED_0935; never call it a one-minute fill",
+    "observation_use": "The prior close fixes the order. CY008 available_at=09:35 and embedded full-day hard_valid/state are ex-post execution/data-quality evidence only, never 09:31 alpha features.",
+    "required_evidence": "First require one unique candidate-keyed CY006 entry-date row with complete lineage and known trading state. If that state is traded/tradable, require one unique CY008 window0: available_at exactly trade_date 09:35 Asia/Shanghai; source_resolution_minutes=1; minute_count=distinct_minute_count=5; nonempty snapshot_id and daily_snapshot_id; CY008 daily_snapshot_id equals that candidate/date CY006 snapshot_id; ohlc_valid, unit_valid, causal_inputs_valid, market_rule_valid and hard_valid all true. A known CY006 suspension/nontrading state is mechanical without requiring a usable CY008 price row.",
+    "mechanical_fill": "known trade_status=1 and current_day_data_tradable=true; finite positive open, up_limit_price and down_limit_price; all observed prices must be canonical two-decimal A-share ticks; down-limit tick must be strictly below up-limit tick and raw open must be inside both legal bounds, with the open cent tick strictly below the up-limit cent tick",
+    "no_entry": "Suspended/not traded or open exactly at the up-limit is NO_ENTRY_MECHANICAL. An open above the legal up-limit is a market-rule conflict. Missing, duplicate, invalid or snapshot-inconsistent evidence is UNRESOLVED_DATA_QUALITY and blocks aggregate publication.",
+    "coordinate": "The frozen signal coordinate_factor and L must be finite and positive. No action may become effective in (signal_date,entry_date]. entry_coordinate=open_raw*the frozen signal coordinate_factor, and entry_coordinate must be strictly below L.",
+    "headroom": "Compute the A67 coordinate target, translate it to a legal raw sell-limit cent tick by the fixed tick arithmetic below, and require that legal target tick to remain strictly below the raw L tick. Its exact-target net return after 20bp per side must be at least +4%; otherwise NO_ENTRY_INSUFFICIENT_A67_HEADROOM."
+  },
+  "fixed_tick_and_cash_arithmetic": {
+    "numeric_conversion": "Construct Decimal values from the source value's canonical string representation; binary floating point comparisons or epsilon tolerances may not decide any price-limit, target, cost, or conservation gate.",
+    "observed_price_tick": "An observed A-share raw open/high/limit price is valid only if it equals a positive 0.01-CNY tick under Decimal ROUND_HALF_UP. Reject rather than round a noncanonical observed price.",
+    "theoretical_sell_limit": "For a positive theoretical raw sell threshold x, legal_sell_tick=ceil(x*100) integer cents. The ceiling is deliberately conservative and fixed before outcome access.",
+    "raw_L_tick": "raw_L=L/frozen_signal_coordinate_factor must itself resolve to the original observed gap-high cent tick; reject a noncanonical or inconsistent boundary.",
+    "entry_headroom_target": "target_coordinate=entry_raw*frozen_signal_coordinate_factor+0.67*(L-entry_raw*frozen_signal_coordinate_factor); entry target_raw_unrounded=target_coordinate/frozen_signal_coordinate_factor; target_tick=ceil(target_raw_unrounded*100); require target_tick<raw_L_tick and ((target_tick/100)*(1-0.002))/(entry_raw*(1+0.002))-1>=0.04.",
+    "cash_adjusted_target": "With C cumulative complete cash-only entitlement per original entry share effective after entry and by the session, target_tick(C)=ceil((target_coordinate/frozen_signal_coordinate_factor-C)*100). A target is reached only when canonical raw open_tick or high_tick is at least target_tick(C); fill is exactly target_tick(C)/100 even after a favorable gap.",
+    "cash_conservation": "Each eligible cash event enters C exactly once on its effective date and appears once in an immutable event ledger. Exit proceeds are exit_raw*(1-0.002)+C; cash is not multiplied by (1-0.002) and is never added again elsewhere."
+  },
+  "exit_contract": {
+    "target": "target_coordinate=entry_coordinate+0.67*(L-entry_coordinate)",
+    "target_order_active": "global sessions entry_cal_idx+1 through entry_cal_idx+20 inclusive; entry-day high is ignored",
+    "target_evidence": "Use the registered bounded CY006 full-day row only as ex-post evidence for the already-standing sell limit. The row and all required lineage/state/action fields must be complete and hard-valid.",
+    "target_fill": "Apply fixed_tick_and_cash_arithmetic. After cash-only entitlements, if raw open or raw high reaches the current legal target tick, fill at that exact tick; favorable gap slippage is discarded.",
+    "time_stop": "At the completed close of entry_cal_idx+20 create an exit order. On sessions +21 through +23, first require the unique valid CY006 state row. A known suspension/nontrading state mechanically rolls without requiring a usable CY008 price. A traded/tradable state requires one unique valid snapshot-bound CY008 window0; finite canonical open/down-limit/up-limit, strict down-limit<up-limit, and raw open inside both bounds. An open strictly above the down-limit fills at raw open, while an open exactly at the down-limit mechanically rolls. An open outside either legal bound is a market-rule conflict. Unknown/inconsistent daily state or missing/invalid evidence for a traded day is unresolved.",
+    "h20_day_priority": "The standing target remains active through the H20 day. H20+1 open is a time exit even if it is above target; no later daily high can replace it.",
+    "exit_arbitration": "Choose the earliest executable event in market time among an H1..H20 standing target, a next-session corporate-risk open order and the H21..H23 time-open order. An open order executes before that session's later daily high. Once the trade exits, every later action or exit event is irrelevant and may not invalidate or replace the completed exit.",
+    "stop": "NONE",
+    "t_plus_one": true,
+    "cost_per_side": 0.002,
+    "net_return": "(exit_raw*(1-0.002)+cash_per_original_entry_share)/(entry_raw*(1+0.002))-1",
+    "holding_sessions": "exit_global_cal_idx-entry_global_cal_idx"
+  },
+  "corporate_action_contract": {
+    "source": "CY046 bounded event-level derivative of registered QD-010; exact manifest and source terms required",
+    "classification": "All classes require nonempty immutable event lineage, source_terms_complete=true, a canonical timezone-naive effective_date at 00:00 with no time component, and known_at=available_at<effective_date. CASH_ONLY requires finite cash_per_share_gross>=0, share_multiplier exactly 1 and rights ratio exactly 0. Any complete finite positive share_multiplier not exactly 1 with rights ratio exactly 0 is RISK_SHARE, including a mixed cash+share distribution with its cash retained in the ledger row. Every rights-issue row requires a finite positive rights ratio and finite nonnegative rights price and is RISK_RIGHTS. Any other, ambiguous, duplicate-revision or unsupported class is unresolved; no keep-last deduplication is allowed.",
+    "qd010_generic_resolution_flags": "execution_timing_resolved, price_terms_resolved and execution_resolved describe downstream credit/listing/subscription execution in the bound current-snapshot asset and are retained for audit but are not blanket eligibility gates. This strategy either exits a share/rights event strictly before effective_date or books a complete cash entitlement from effective_date; only the explicit causal timing and direct economic terms in classification are required. Missing direct fields or source_terms_complete still fails closed.",
+    "registry_semantics": "CY046 never applies an action to price/share/cash accounting before effective_date. For a pre-effective risk decision only, an announced effective_date may be inspected when the same immutable QD-010 row has known_at<=decision_at; this is a bounded risk-veto use, not premature corporate-action application. Every accounting use still requires known_at<=decision_at and effective_date<=decision_at.",
+    "entry_block": "Any action effective in (signal_date,entry_date] blocks the coordinate. Any RISK_SHARE or RISK_RIGHTS event whose complete terms and effective_date are already known by the 09:35 entry observation and whose effective date is no later than H20+3 blocks new entry.",
+    "post_entry_risk": "A newly known RISK_SHARE/RISK_RIGHTS event creates a risk decision at the first completed market close on or after known_at and a next-session legal CY008 sell; the fill must be strictly before effective_date. If impossible, mark UNRESOLVED_ACTION_BLOCK and block aggregate publication.",
+    "cash_only": "Complete cash-only distributions effective after entry and no later than exit accrue exactly once per original entry share; the target raw threshold and net proceeds use the identical conserved cash ledger defined above.",
+    "effective_day_reconciliation": "For every candidate/date, CY006 corporate_action_count, sorted corporate_action_ids, cash sum, share-multiplier composition and rights terms must reconcile exactly to the candidate-keyed QD-010 ledger. Count-only matching is insufficient; no tolerance, clipping, normalization or inferred term is permitted.",
+    "unknown_or_unsupported": "Missing known_at/available_at/effective_date or required direct economic terms, incomplete source terms, rights participation, unsupported action class, any QD-010/CY006 effective-day mismatch, or a share action occurring before the risk exit fails closed."
+  },
+  "portfolio_admission": {
+    "max_concurrent_positions": 50,
+    "same_symbol_overlap": "REJECT",
+    "order": "entry_date, signal_date, cap25_rank, symbol, gap_id",
+    "same_day_exit_capacity_release": false,
+    "chronological_online_rule": "At each entry session remove only positions with exit_date strictly earlier than the current entry_date. Process that day's candidates in the frozen order; positions exiting on the current day still consume capacity. Only after a candidate passes entry gates and receives capacity may its future target/action/exit path be opened. A capacity or same-symbol rejection must never have an outcome computed or persisted.",
+    "return_or_future_path_used_for_priority": false
+  },
+  "required_reporting": {
+    "primary": [
+      "candidate signals",
+      "administratively censored",
+      "mechanical no-entry by reason",
+      "executable entries",
+      "capacity accepted and rejected",
+      "accepted trades per 4 development years",
+      "mean and median net return",
+      "win rate",
+      "mean and median holding sessions",
+      "severe loss <=-10%",
+      "target/time/risk exit counts"
+    ],
+    "by_signal_year": true,
+    "by_board": true,
+    "event_equal": true,
+    "largest_date_share": true,
+    "no_raw_vs_cap25_outcome_comparison": true
+  },
+  "publication": {
+    "attempt_seal_before_price_rows": true,
+    "attempt_seal_semantics": "Before either arm opens any CY046 Parquet row, create one immutable O_EXCL attempt_seal.json inside that arm's already reserved slot under a 0555 UF_IMMUTABLE two-slot anchor. The immutable anchor prevents replacing either slot. The seal binds arm, runner, protocol, CY046 manifest, activation audit and frozen cohort hashes. A post-seal failure or crash consumes that arm attempt and cannot be silently rerun.",
+    "sequential_result_semantics": "V29R5 requires a complete immutable V29R4 result with verdict FAIL_ALL_GATES or FAIL_ONE_OR_MORE_GATES and aggregate_publication_status=COMPLETE. BLOCKED/UNRESOLVED/partial/crashed V29R4 does not authorize V29R5. A V29R4 PASS makes V29R5 permanently ineligible.",
+    "canonical_output_exists": "REFUSE",
+    "preallocated_anchor": "Create exactly v29r4 and v29r5 child slots before sealing the parent output anchor 0555 plus Darwin UF_IMMUTABLE. Require exact root/slot inventory and reject every symlink or dangling directory entry before any row access.",
+    "commit_semantics": "Publish data files without replacement, publish result.json last, then require the exact arm inventory, every member 0444 plus UF_IMMUTABLE, and the arm slot 0555 plus UF_IMMUTABLE. Mere presence or JSON text is never COMPLETE unless all seals and hashes verify. A partial/crashed bundle is a consumed unresolved attempt and cannot authorize V29R5.",
+    "trust_model": "The no-rerun seal is a local cooperative-research control. Darwin UF_IMMUTABLE is owner-clearable and is not claimed to be root-owned WORM or protection against a malicious filesystem owner.",
+    "read_only_after_publish": true,
+    "activation_binding": "asset_manifest.json binds the exact seven Parquet files plus protocol, runner and builder hashes. activation_audit.json is written after and binds the manifest hash. To avoid a circular hash, the manifest does not hash the audit; the central bounded authorization independently binds both immutable JSON hashes.",
+    "charts_authorized": false,
+    "validation_authorized": false,
+    "forbidden_reads": "Any source or artifact row dated 2022-01-01 or later, any prior outcome/entry/return artifact, and any non-CY046 price/action/execution Parquet is prohibited. Runtime must resolve symlinks and fail before reading rows when a declared path escapes the exact bound files."
+  },
+  "aggregate_fail_closed": {
+    "complete_identity_accounting": "Every administratively eligible frozen candidate must end in exactly one mutually exclusive terminal class: mechanical no-entry, insufficient headroom, announced-action entry block, capacity rejection, same-symbol rejection, or one completed accepted trade.",
+    "publication_blockers": "Any missing/duplicate/unexpected identity, missing or invalid required row, snapshot mismatch, action mismatch, unsupported action before exit, unresolved legal exit, date beyond 2021, noncanonical price tick, conservation error, or nonfinite arithmetic sets aggregate_publication_status=BLOCKED and forbids PASS/FAIL performance gates.",
+    "no_deletion_or_imputation": true
+  }
+}

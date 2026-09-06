@@ -1,0 +1,100 @@
+{
+  "asset_id": "CY-038",
+  "name": "Bounded V31 frozen-candidate development outcome input",
+  "status": "FROZEN_DEVELOPMENT_OUTCOME_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "raw_daily": {
+    "asset_id": "CY-006",
+    "manifest_path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+        "bytes": 42011064
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+        "bytes": 43320252
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+        "bytes": 46073783
+      }
+    ],
+    "authorized_row_end": "2020-12-31"
+  },
+  "coordinate_state": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "bytes": 342272911,
+    "builder_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+    "builder_sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787",
+    "join_semantics": "Exact symbol/trade_date join. adjusted_close/raw CY-006 close is the coordinate factor; all OHLC coordinates use that same factor and invalid_step_cum is immutable lineage."
+  },
+  "frozen_cohort": {
+    "parent_spec": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31_freeze.json",
+      "sha256": "d43d03bc04b26fbc0b79207c5d0598024f5d60921522e186283d523ed670c65c"
+    },
+    "stage_a_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_industry_residual_serial_phase_change_mother_v31_stage_a.py",
+      "sha256": "620cb7b32c95e62d82b2bccf0638048f2522d36071da48273afabd66d1495f9a"
+    },
+    "stage_a_result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/result.json",
+      "sha256": "55c772d5c77ff4ee2c333aececa08d24a787dc3a4033952d7d2371e70ccba165",
+      "bytes": 4771,
+      "required_state": "stage_a_gate_passed=true; outcome_columns_read=false; post_signal_rows_read=false; post_2020_rows_read=false"
+    },
+    "representation": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/representation_panel.parquet",
+      "sha256": "91f18e9ca0646a33ceb172ad45293ee4e4979f0b4e5ffce865dca9841249f62c",
+      "bytes": 4825762,
+      "rows": 70713,
+      "use_in_stage_b": "Identity audit only; reselection is forbidden."
+    },
+    "candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/candidates_frozen.parquet",
+      "sha256": "0585a0da912626f6403a90e9345622cbf2c34fe6aeefec636ffa6276a13df9b8",
+      "bytes": 157802,
+      "rows": 1602,
+      "unique_event_ids": 1602,
+      "signal_start": "2018-07-31",
+      "signal_end": "2020-06-30"
+    }
+  },
+  "protocol": {
+    "stage_b_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31_stage_b_freeze.json",
+    "stage_b_spec_sha256": "036b165d6fbeac85dd3af52b83365ead620fd2541d0ed76fe150a4636b7ab48a",
+    "stage_b_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_industry_residual_serial_phase_change_mother_v31_stage_b.py",
+    "stage_b_runner_sha256": "af3248c0070d2440cf3c82f72c2459c430b7adef27c6fe613703b2e418ac2aa8",
+    "execution_reference_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+    "execution_reference_sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-RESIDUAL-SERIAL-V31-STAGE-B-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V31_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "candidate_signal_start": "2018-07-31",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_path_row_date": "2020-12-31",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Attach exactly one frozen +10-percent/H20/40-bps development lifecycle to each of the 1,602 immutable V31 Stage-A event identities.",
+    "blocked": "Candidate reselection, charts, portfolio replay, validation, grids, changed execution, rows after 2020-12-31, live use and strict PIT-A claims."
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history.",
+    "claim": "Outcome attachment measures the frozen mother population only; it is neither chart-rule validation nor a portfolio backtest.",
+    "next_step": "Render and review all development charts under a separately frozen protocol. Later years remain closed unless every development-year count and mean-return gate passes."
+  }
+}

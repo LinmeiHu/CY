@@ -1,0 +1,79 @@
+{
+  "experiment": "ASHARE-WEEKLY-INDUSTRY-DEMAND-SHOCK-DIRECTION-MOTHER-V1-CHART-RULES",
+  "frozen_before_rule_aggregate": true,
+  "research_status": "CHART_GENERATED_DEVELOPMENT_HYPOTHESIS",
+  "chart_review": {
+    "events_reviewed": 590,
+    "chronological_contact_sheets_reviewed": 66,
+    "review_order": "sheet_001.jpg through sheet_066.jpg, chronological",
+    "review_completed_before_this_freeze": true,
+    "chart_window": "126 causal sessions before signal through 126 context sessions after signal, capped at 2021-06-30",
+    "review_ledger_sha256": "f0175f8f8c1fb5492d6c1a8cec073ebd25731aed95019bca45bcdd776ded8f46",
+    "chart_manifest_sha256": "32e6e9c08485b35ce7a4215803a57abc6cb3a51301f9f6fc05a0296adc521833",
+    "chart_runner_sha256": "6d262bbdaf76812f5cc7dcd0c03b532be62540edbf105e8874ead684f2b4b60f"
+  },
+  "economic_interpretation": {
+    "mother_signal": "An extreme PIT-industry one-session median move is a common-demand shock, not by itself an alpha signal.",
+    "compressed_mechanism": "A demand shock is deployable when broad risk is already non-bearish or is causally repairing. Stock path is used only to admit economically coherent repair exceptions and veto obvious mature-distribution or structural-falling-knife states.",
+    "bull_bear_semantics": "All market state and acceleration fields are observed at the signal close. No future market classification is used."
+  },
+  "causal_features": {
+    "market_regime": "Existing frozen causal state using signal-date market_median_ret20, market_median_ret60, market_positive_ret20_share, and market_positive_ret60_share.",
+    "market_return_acceleration": "market_median_ret20 - market_median_ret60",
+    "market_breadth_acceleration": "market_positive_ret20_share - market_positive_ret60_share",
+    "stock_path": "signal-date ret20, ret60, close_location, signal_turnover_ratio, and pre126_position, all ending at the signal close"
+  },
+  "rules": [
+    {
+      "id": "R1_NON_BEAR_CORE",
+      "meaning": "Broad absolute conditions are not simultaneously negative across both frozen horizons and breadth measures.",
+      "condition": "market_regime != 'BEAR'"
+    },
+    {
+      "id": "R2_CAUSAL_BEAR_REPAIR",
+      "meaning": "In a trailing bear state, both return and participation have improved from the 60-session scale to the 20-session scale.",
+      "condition": "market_return_acceleration > 0 and market_breadth_acceleration > 0"
+    },
+    {
+      "id": "R3_LOW_INVENTORY_PRICE_DISCOVERY_EXCEPTION",
+      "meaning": "A positive-industry demand shock hits a stock in the lower half of its causal six-month range while its 20-session path improves on its 60-session path and it closes in the upper half of the signal-day range.",
+      "condition": "direction_lane == 'CONTINUATION' and ret20 > ret60 and pre126_position <= 0.50 and close_location >= 0.50"
+    },
+    {
+      "id": "R4_WEAK_INDUSTRY_STOCK_RESILIENCE_EXCEPTION",
+      "meaning": "A stock selected from the weakest industry has positive 20-session stock return, is not in the upper 30% of its causal six-month range, and closes in the upper half of the signal-day range.",
+      "condition": "direction_lane == 'REVERSAL' and ret20 >= 0 and pre126_position <= 0.70 and close_location >= 0.50"
+    },
+    {
+      "id": "R5_STRUCTURAL_TRAP_VETO",
+      "meaning": "Reject either a mature high-inventory demand spike or a structural falling knife while market trend and breadth are still worsening.",
+      "condition": "(pre126_position >= 0.95 and ret20 >= 0.20 and signal_turnover_ratio >= 1.50) or (ret20 < ret60 and ret20 < 0 and market_return_acceleration <= 0 and market_breadth_acceleration <= 0)"
+    }
+  ],
+  "frozen_admission": "(R1_NON_BEAR_CORE or R2_CAUSAL_BEAR_REPAIR or R3_LOW_INVENTORY_PRICE_DISCOVERY_EXCEPTION or R4_WEAK_INDUSTRY_STOCK_RESILIENCE_EXCEPTION) and not R5_STRUCTURAL_TRAP_VETO",
+  "threshold_rationale": {
+    "zero": "Direction and acceleration sign, not an optimized percentile.",
+    "0.50": "Range midpoint / upper-half close: canonical balance boundary.",
+    "0.70": "Exclude only the upper 30% inventory region for the resilience exception.",
+    "0.95": "Extreme six-month high-inventory state.",
+    "0.20": "Mature 20-session advance of at least 20%, economically large rather than a neighboring search.",
+    "1.50": "Signal turnover at least 1.5 times prior-20 median, a broad abnormal-activity threshold."
+  },
+  "evaluation": {
+    "development_signal_years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "entry": "First legal non-limit-up open in signal+1 through signal+3.",
+    "exit": "+10% coordinate target or first legal sellable open at H20.",
+    "round_trip_cost": 0.004,
+    "pass_gate": "For every development signal year 2014-2020: completed events > 50 and mean net return > 0.04.",
+    "later_period_policy": "Read 2022-2024 signal/outcome data only if the complete per-year development gate passes. Otherwise close this exact chart-derived formulation without threshold rescue."
+  },
+  "governance": {
+    "post_2021_06_rule_discovery_read": "NO",
+    "2022_2024_signal_or_outcome_read_before_gate": "NO",
+    "future_market_state_used": false,
+    "future_industry_state_used": false,
+    "parameter_search_after_chart_review": false,
+    "same_bar_fill": false,
+    "corporate_action_coordinate_contract": "unchanged from frozen mother Stage B"
+  }
+}

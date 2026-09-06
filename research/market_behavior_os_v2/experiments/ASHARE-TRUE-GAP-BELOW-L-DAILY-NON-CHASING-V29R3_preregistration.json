@@ -1,0 +1,149 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-DAILY-NON-CHASING-V29R3-VALIDATION-2022-2024",
+  "strategy_version": "V29R3",
+  "scientific_status": "POST_HOC_DEVELOPMENT_CANDIDATE_TEMPORAL_CHALLENGE_NOT_PRISTINE_OOS",
+  "frozen_before_new_2022_2024_daily_or_selected_row_read": true,
+  "development_origin": {
+    "period": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "threshold_selected_after_development_outcomes_were_seen": true,
+    "description": "DAILY_NON_CHASING_2PCT was selected after a read-only morphology audit and a post-hoc exact-capacity replay over consumed 2018-2021 V28R2 evidence. It is a candidate, not an independently discovered or validated edge.",
+    "capacity_replay": {
+      "parent_plus_gate_candidates": 265,
+      "true_k80_accepted": 202,
+      "accepted_per_year": 50.5,
+      "mean_net_return": 0.07277598,
+      "mean_holding_sessions": 7.53465
+    },
+    "concentration_risk": {
+      "largest_signal_date": "2018-10-26",
+      "accepted_on_largest_signal_date": 95,
+      "share_of_full_accepted": 0.47029702970297027,
+      "accepted_after_removing_date_and_rerunning_capacity": 139,
+      "accepted_per_year_after_removing_date": 34.75,
+      "capacity_replacements_after_removing_date": 32,
+      "disclosure": "The development frequency threshold is only barely cleared and depends heavily on one crowded 2018 signal date. Validation must report signal-date concentration and must not treat clustered names as independent confirmations."
+    }
+  },
+  "parent": {
+    "strategy": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+    "validation_identity_freeze_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2-VALIDATION-2022-2024_identity_freeze.json",
+    "validation_identity_freeze_sha256": "8b61ca22a211d91be01c3da7669e1412ef201bc8ca0440ac052b804d0397f39c",
+    "validation_selected_path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2_validation_2022_2024/diagnostic_2022_2024/orderly_demand_selected_entries.parquet",
+    "validation_selected_sha256": "c439ea1a74e7d1f865cf187fadca3834e8d8963537eeab9230e4f3981db14c23",
+    "selected_signals_declared_by_parent_freeze": 120,
+    "issuer_veto_inherited": false,
+    "issuer_announcement_or_title_input_allowed": false,
+    "clarification": "V29R3 is exactly V28R2 plus one contemporaneous price non-chasing gate. It does not inherit V29R1 or V29R2 issuer-risk selection, event taxonomy, cooldown, announcement keys, or titles."
+  },
+  "single_additional_gate": {
+    "name": "DAILY_NON_CHASING_2PCT",
+    "condition": "signal_stock_return - full_market_hard_valid_pit_median_return <= 0.02",
+    "threshold": 0.02,
+    "comparison": "inclusive_less_than_or_equal",
+    "signal_stock_return": "raw signal-day close / raw signal-day preclose - 1; no adjustment, rounding, clipping, winsorization, or use of any later bar",
+    "market_universe": "Every symbol row present in the exact registered CY-033 partition on the signal trade_date; no current-survivor, board, industry, index-member, liquidity, ST, return-sign, or outcome filter. The signal stock remains in the cross-section when eligible.",
+    "market_row_eligibility": [
+      "trade_date equals the completed signal date",
+      "hard_valid is true",
+      "current_day_data_tradable is true and trade_status equals 1",
+      "available_at is non-null and no later than the signal decision timestamp",
+      "decision_at is non-null and no later than the signal decision timestamp",
+      "snapshot_id is non-null and non-empty",
+      "close and preclose are finite and strictly positive",
+      "step return close/preclose-1 is finite"
+    ],
+    "aggregation": "Unweighted exact cross-sectional median across all eligible rows. For an even count, use the arithmetic mean of the two central ordered values, matching pandas/DuckDB continuous median semantics.",
+    "signal_row_eligibility": "The exact symbol/signal_date row must exist exactly once and satisfy every market-row eligibility condition.",
+    "missing_invalid_or_unknown": "Reject the signal. Missing signal row, duplicate symbol-date, missing/empty snapshot_id, invalid/nontradable signal state, nonpositive price, nonfinite return, no eligible market rows, or any availability after the signal decision fails closed.",
+    "feature_known_at": "Completed signal close",
+    "post_signal_information": false
+  },
+  "validation_window": {
+    "signal_years": [
+      2022,
+      2023,
+      2024
+    ],
+    "maximum_permitted_timestamp": "2024-12-31T23:59:59+08:00",
+    "2025_or_later_read_permitted": false,
+    "run_count": "ONE exact 2022-2024 temporal challenge after Stage A identity freeze and separate Stage B authorization",
+    "rule_change_after_any_validation_result": "PROHIBITED"
+  },
+  "stage_a": {
+    "purpose": "Outcome-blind exact cohort construction",
+    "required_wrapper_asset_id": "CY-040",
+    "required_bounded_authorization_id": "CYQ-AUTH-ASHARE-DAILY-NON-CHASING-V29R3-STAGE-A-2022-2024-V1",
+    "allowed_reads_after_protocol_freeze": [
+      "the exact frozen V28R2 validation identity JSON",
+      "the exact frozen V28R2 validation selected-identity Parquet",
+      "only the exact CY-033 2022, 2023 and 2024 partitions referenced by registered outcome-blind wrapper CY-040"
+    ],
+    "prohibited_reads": [
+      "strategy outcomes, exits, targets, portfolio ledgers, NAV, reports or result summaries",
+      "announcement titles, announcement documents or issuer-risk classifier outputs",
+      "any 2025-or-later row or partition"
+    ],
+    "required_outputs": [
+      "all parent identities with signal-time feature eligibility and rejection reason",
+      "the exact selected V29R3 cohort",
+      "a Stage-A freeze binding protocol, runner, wrapper asset, registry authorization, parent identity, source partitions and selected cohort hashes"
+    ],
+    "outcomes_opened": false
+  },
+  "stage_b": {
+    "purpose": "One fixed-cohort outcome attachment and exact capacity replay",
+    "precondition": "Verify the immutable Stage-A freeze and selected cohort before resolving, hashing, opening, or summarizing any 2022-2024 outcome source.",
+    "separate_bounded_authorization_required": true,
+    "authorization_must_bind": [
+      "this preregistration and exact runner hash",
+      "the completed Stage-A freeze and V29R3 selected cohort hashes",
+      "the exact V28R2 validation outcome and execution-daily sources",
+      "one fixed Stage-B run only"
+    ],
+    "identity_join": "Attach outcomes only for exact Stage-A-selected gap_id values whose parent entry_status is EXECUTABLE_ENTRY; require one-to-one conservation and reject extras, duplicates or omissions.",
+    "outcome_source_before_precondition": "MUST NOT BE RESOLVED, HASHED, OPENED OR SUMMARIZED",
+    "issuer_title_read_permitted": false
+  },
+  "unchanged_execution": {
+    "entry": "V28R2 frozen next legal one-minute entry strictly after the completed signal; no fill inside signal bar",
+    "target": "A67 below L",
+    "time_stop": "H20",
+    "failure_stop": "NONE",
+    "cost": "20 basis points per side, 40 basis points round trip",
+    "portfolio": "Main and ChiNext 50/50 sleeves; K80 per sleeve",
+    "trading_status_price_limits_corporate_actions": "Preserve the frozen V28R2 fail-closed semantics exactly"
+  },
+  "evaluation": {
+    "required_overall_statistics": [
+      "true capacity accepted count and accepted per signal year",
+      "mean and median net return",
+      "win rate",
+      "severe10 incidence",
+      "mean and median holding sessions"
+    ],
+    "required_yearly_statistics": "The same statistics for each of 2022, 2023 and 2024, including zero-trade years.",
+    "required_dependence_diagnostics": [
+      "signal-date equal-weight return summary",
+      "largest signal-date accepted count and share",
+      "descriptive rerun after removing the largest signal-date cluster without changing any rule"
+    ],
+    "development_objective_reference_only": {
+      "accepted_per_year_strictly_greater_than": 50,
+      "mean_net_return_at_least": 0.04,
+      "mean_holding_sessions_strictly_less_than": 15
+    },
+    "no_rescue": "No threshold, cohort, year, board, rank, target, stop, horizon, cost, K, missing-data treatment or market-universe change may be chosen after outcomes are opened."
+  },
+  "governance": {
+    "new_daily_or_selected_rows_read_before_this_file_was_frozen": false,
+    "post_hoc_status_must_be_disclosed": true,
+    "independent_confirmation_claim_allowed": false,
+    "live_trading_sizing_or_order_generation_allowed": false,
+    "registry_requirement": "Stage A must fail closed unless CY-040 and its one-to-one bounded authorization are present and exact. Stage B must fail closed until a separate exact bounded authorization is registered after Stage A freeze.",
+    "current_survivor_fallback_allowed": false,
+    "silent_asset_substitution_allowed": false
+  }
+}

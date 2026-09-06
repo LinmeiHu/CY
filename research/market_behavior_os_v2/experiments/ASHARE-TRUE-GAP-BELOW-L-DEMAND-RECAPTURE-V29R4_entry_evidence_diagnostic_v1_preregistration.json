@@ -1,0 +1,189 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-V29R4-ENTRY-EVIDENCE-DIAGNOSTIC-V1",
+  "stage": "OPERATIONAL_ENTRY_EVIDENCE_DIAGNOSTIC",
+  "status": "FROZEN_PRE_ROW_AWAITING_CY050_ACTIVATION_AND_RUNNER_REVIEW",
+  "protocol_version": "V1_OUTCOME_BLIND_ENTRY_EVIDENCE_FORENSIC",
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "arm": "V29R4_CAP25_ONLY",
+  "post_2021_access": "PROHIBITED",
+  "scientific_role": "REPRESENTATION_AND_EXECUTION_LINEAGE_DIAGNOSTIC_ONLY",
+  "alpha_selection_allowed": false,
+  "threshold_selection_allowed": false,
+  "performance_replay_allowed": false,
+  "predecessor": {
+    "correction_experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45-STAGE-B-CALENDAR-CORRECTION-R1",
+    "attempt_seal": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b_calendar_correction_r1/v29r4/attempt_seal.json",
+      "sha256": "9f7a5cf926d9a87e8a461e18856248120e6ac6c3427aa46955b6fa55568b1524"
+    },
+    "blocked_result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b_calendar_correction_r1/v29r4/result.json",
+      "sha256": "643a35fc9004c174cf1523401f4ab81ea65778beb4f773ad281985ef5cfcdf87",
+      "aggregate_publication_status": "BLOCKED",
+      "blocker": "unexpected unresolved blocks aggregate publication",
+      "performance_gates_computed": false
+    },
+    "conservative_outcome_disclosure": {
+      "replay_boundary_crossed": true,
+      "accepted_candidate_paths_may_have_been_decoded": true,
+      "candidate_level_outcomes_may_have_been_computed_in_memory": true,
+      "outcome_count_observed": false,
+      "returns_or_holding_periods_persisted": false,
+      "aggregate_performance_observed": false,
+      "completed_scientific_performance_attempts_claimed": false,
+      "reason": "The frozen runner checks unresolved entry rows only inside summarize, after replay_online_portfolio. Fail closed: treat the computation as outcome-bearing even though no outcome or aggregate was persisted."
+    },
+    "static_stop_point_proof": "The exact blocker text can only be raised by summarize after build_entries and replay_online_portfolio returned. evaluate_one_outcome either returns COMPLETED or raises a more specific exception, so at least one entry_status was UNRESOLVED_DATA_QUALITY.",
+    "v29r4_retry_authorized": false,
+    "v29r5_unlock_authorized": false
+  },
+  "static_temporal_finding": {
+    "finding": "The frozen 09:35 entry decision consumes entry-day CY-006 daily fields whose available_at and decision_at are 15:00, and CY-008 window validity binds those same full-day fields.",
+    "entry_daily_after_observation_is_fatal": true,
+    "daily_available_at_relabel_allowed": false,
+    "hard_valid_relaxation_allowed": false,
+    "silent_field_substitution_allowed": false
+  },
+  "diagnostic_objective": "Count, without identities or outcomes, the first mutually exclusive entry-evidence failure and independent static masks for the exact 251 V29R4 candidates, then stop before portfolio admission or any candidate outcome path.",
+  "authorized_input": {
+    "reference_wrapper_asset_id": "CY-050",
+    "source_asset_id": "CY-046",
+    "source_manifest_sha256": "2b1d6756a9c0401e47a2616eeac78b424c30eccbbd51bd3339caf86ec46addd0",
+    "source_activation_audit_sha256": "82d5b944d1840817eb76592264430abcc87a5d15f5443725fcc3a9c87d4be46c",
+    "v29r4_identity_sha256": "cfa5ef5343e046c7be469c9d0df5c6a592d506fcac5c18874df964fb71a88005",
+    "market_calendar_sha256": "d5dabc0c51769e9be1348d8a4effb0b05816e1cfea51a73046ca9e7b9d9aed2a",
+    "candidate_admin_bounds_sha256": "697ae03699245d06a427cec6610e1992ee96fa7f29c4dff4adfcb99c135d569b",
+    "candidate_daily_path_sha256": "5e002401e0b20ec14c9cfeec4bc3b38acbb88a2d54c15639c1c62d6a32233890",
+    "candidate_execution_window0_sha256": "ce2bf8a376eb72143e7e9e5ffe804574f37faccf856523a285564f53f048e66a",
+    "candidate_action_events_sha256": "cccad05457305ef898771528321ad025168fd4924b63f86a71c57a75a0e3e687",
+    "daily_entry_session_offsets": [
+      -1,
+      0
+    ],
+    "execution_entry_session_offsets": [
+      0
+    ],
+    "execution_window_indices": [
+      0
+    ],
+    "entry_day_daily_ohlc_authorized": false,
+    "action_cutoff": "known_at and available_at must both be no later than entry 09:35; effective_date can only further bound an already-causal row and can never bypass that cutoff",
+    "maximum_trade_date": "2021-12-31"
+  },
+  "first_failure_order": [
+    "DAILY_CARDINALITY_OR_OFFSETS",
+    "SIGNAL_BINDING_OR_LINEAGE",
+    "ENTRY_BINDING_OR_LINEAGE",
+    "ENTRY_DAILY_CONTEXT_AFTER_EXECUTION_OBSERVATION",
+    "ACTION_RECONCILIATION",
+    "ENTRY_DAILY_STATE",
+    "EXECUTION_CARDINALITY_OR_DATE",
+    "EXECUTION_TIMING_OR_COMPLETENESS",
+    "EXECUTION_SNAPSHOT_BINDING",
+    "ENTRY_PRICE_NONCANONICAL",
+    "RAW_L_COORDINATE_NONCANONICAL",
+    "LIMIT_GEOMETRY_INVALID",
+    "RESOLVED_MECHANICAL_NO_ENTRY",
+    "RESOLVED_ENTRY_EVIDENCE"
+  ],
+  "independent_static_masks": [
+    "ENTRY_DAILY_AVAILABLE_AFTER_EXECUTION_OBSERVATION",
+    "ENTRY_DAILY_DECISION_AFTER_EXECUTION_OBSERVATION",
+    "EXECUTION_DAILY_CONTEXT_AVAILABLE_AFTER_EXECUTION_OBSERVATION",
+    "RAW_L_COORDINATE_NONCANONICAL",
+    "ENTRY_OPEN_NONCANONICAL",
+    "UP_LIMIT_NONCANONICAL",
+    "DOWN_LIMIT_NONCANONICAL",
+    "ACTION_COUNT_OR_TERMS_MISMATCH",
+    "ENTRY_DAILY_STATE_UNRESOLVED",
+    "EXECUTION_CARDINALITY_OR_DATE",
+    "EXECUTION_AVAILABLE_AT_MISSING_OR_MISMATCH",
+    "EXECUTION_MINUTE_SHAPE_OR_RESOLUTION_INVALID",
+    "EXECUTION_VALIDITY_FLAGS_INVALID",
+    "EXECUTION_TRADE_STATUS_INVALID",
+    "EXECUTION_SNAPSHOT_ID_MISSING",
+    "EXECUTION_DAILY_SNAPSHOT_ID_MISSING",
+    "EXECUTION_TIMING_OR_COMPLETENESS",
+    "EXECUTION_SNAPSHOT_BINDING_MISMATCH",
+    "LIMIT_GEOMETRY_INVALID",
+    "BASE_ENTRY_UNRESOLVED"
+  ],
+  "required_output": {
+    "format": "ONE_IMMUTABLE_AGGREGATE_JSON_PLUS_PRE_ROW_ATTEMPT_SEAL",
+    "candidate_identities_persisted": false,
+    "symbols_dates_prices_or_ratios_persisted": false,
+    "by_year_board_industry_or_market_slices_persisted": false,
+    "first_failure_counts": true,
+    "independent_static_mask_counts": "For every mask publish true, false, unknown and evaluated counts; true + false + unknown must equal administratively eligible candidates and evaluated must equal true + false.",
+    "total_candidates": 251,
+    "conservation": "total_candidates = administratively_censored + sum(first_failure_counts)",
+    "maximum_daily_entry_session_offset_decoded": 0,
+    "maximum_execution_entry_session_offset_decoded": 0,
+    "candidate_outcome_paths_opened": 0,
+    "outcomes_computed": 0,
+    "return_columns_opened": [],
+    "portfolio_replay_run": false,
+    "charts_run": false,
+    "post_2021_rows_opened": 0,
+    "blocked_exception_text_persisted": false,
+    "blocked_row_scope_is_null_until_audit_complete": true,
+    "unresolved_first_failure_total": true,
+    "deterministic_repair_directive": true
+  },
+  "predeclared_branch": {
+    "directives_are_cumulative": true,
+    "if_any_after_observation_mask": "Set causal_adapter_required=true. Build a new field-level execution adapter using only facts available no later than 09:35, without relabeling available_at.",
+    "if_any_raw_l_noncanonical": "Set raw_l_tick_regeneration_required=true. Regenerate a new outcome-blind identity from the source gap row with source-provenanced raw_l_tick:int64; never round or clip L/coordinate_factor after the fact.",
+    "if_both_temporal_and_raw_l": "Both repairs are mandatory in the same new outcome-blind rebuild; neither repair supersedes the other.",
+    "if_any_execution_evidence_failure": "Set execution_evidence_rebuild_required=true and repair the specifically named cardinality, timestamp, minute-shape, validity, trade-state or snapshot evidence in a new registered asset.",
+    "if_any_price_or_limit_failure": "Set price_limit_evidence_repair_required=true and regenerate canonical source ticks or limit geometry without rounding, clipping or relaxed tolerance.",
+    "if_any_daily_lineage_action_or_state_failure": "Set upstream_lineage_repair_required=true and repair the upstream representation in a new registered asset.",
+    "if_base_entry_unresolved_zero": "Set classifier_parity_failure=true; do not infer that the blocked performance arm was valid.",
+    "performance_run_from_this_result": "PROHIBITED"
+  },
+  "next_scientific_stage_after_causal_repair": {
+    "cohort_rule": "Regenerate an independent outcome-blind signal cohort; do not reuse either consumed V29R4 slot.",
+    "frequency_feasibility_gate": "At least 201 administratively eligible and causally executable 2018-2021 candidates are required before any Stage-B attempt because the target is strictly more than 50 accepted trades per development year.",
+    "preferred_simple_expansion": "Remove only the redundant rebound_from_post_gap_low_over_L >= 5 percent gate while retaining true gap/depth, recent-low recovery >=3 percent, prior-high reclaim, non-ST/tradable/not-limit-locked, amount <=2x prior-20 median, CAP25 industry round-robin, T+1, costs, target and horizon.",
+    "optional_strict_sibling": "Add only signal amount >= prior-20 median as the economically interpretable volume-demand confirmation, and test it only if the blind executable count is at least 201."
+  },
+  "wrapper": {
+    "asset_id": "CY-050",
+    "authorization_id": "CYQ-AUTH-ASHARE-DEMAND-RECAPTURE-V29R4-ENTRY-EVIDENCE-DIAGNOSTIC-2018-2021-V1",
+    "root": "/Users/linmei/Documents/CY/data/staging/CY-050-DEMAND-RECAPTURE-V29R4-ENTRY-EVIDENCE-DIAGNOSTIC-V1",
+    "exact_inventory": [
+      "asset_manifest.json",
+      "activation_audit.json"
+    ],
+    "builder_parquet_rows_decoded": false,
+    "builder_parquet_bytes_copied": false
+  },
+  "publication": {
+    "output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r4_entry_evidence_diagnostic_v1",
+    "slot": "diagnostic",
+    "attempt_before_any_parquet_row": true,
+    "no_replace": true,
+    "readonly_plus_uf_immutable": true,
+    "single_attempt_no_retry": true
+  },
+  "forbidden": [
+    "V29R5 row access",
+    "daily or execution offsets after entry_session_offset 0",
+    "candidate outcome path access",
+    "portfolio replay, target-hit, exit, return, holding-period or NAV computation",
+    "candidate identity, symbol, date, price, ratio or subgroup publication",
+    "signal selection, ranking, threshold choice or strategy comparison",
+    "charts, validation, publication, live use or strict PIT-A claims",
+    "any 2022-plus read"
+  ],
+  "pit_contract": {
+    "grade": "B",
+    "strict_pit_eligible": false,
+    "qd010_revision_history_complete": false,
+    "publication_allowed": false,
+    "usage": "RESEARCH_CONDITIONAL_HYPOTHESIS_ONLY"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "experiment": "ASHARE-CAUSAL-MARKET-REGIME-SUBSTRATEGY-ROUTER-V27-TRADE-CHART-ANATOMY-V1",
+  "frozen_before_chart_render_and_rule_compression": true,
+  "research_status": "POST_HOC_DEVELOPMENT_TRADE_ANATOMY",
+  "purpose": "Inspect every frozen V27 development trade to determine whether a simple causal failure-recognition pattern can reduce downside before any later exposure experiment. This is an optimization anatomy of an existing strategy, not a new high-recall mother and not independent validation.",
+  "frozen_sources": {
+    "v27_contract_sha256": "8fdaf43e7d0f44cb5607fb1a37d4a12fefbf43cb1ededf334bc5bf474f0a20a7",
+    "v27_runner_sha256": "e44b83efff24356a328d485b0d54623578cfb74a63e495e6a3fef976e219c05a",
+    "v27_accepted_trades_sha256": "73ed476190c29044cae79c2d0f9e38c11f0ddf2ba200e756f240131d8e9143ea",
+    "v27_result_sha256": "d50ea992529a2a202d8d17ed7eb5dc0908291224a74948616aa84a39fcf65537",
+    "daily_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+  },
+  "development_corpus": {
+    "signal_start": "2014-01-01",
+    "signal_end": "2020-12-31",
+    "expected_accepted_trades": 809,
+    "expected_unique_event_ids": 809,
+    "expected_by_year": {
+      "2014": 57,
+      "2015": 129,
+      "2016": 102,
+      "2017": 71,
+      "2018": 259,
+      "2019": 28,
+      "2020": 163
+    },
+    "expected_by_lane": {
+      "BEAR_STABILIZING_SLOW_SUPPLY_EXHAUSTION": 444,
+      "BEAR_WORSENING_FAST_CAPITULATION": 100,
+      "BULL_ACCELERATING_DELAYED_SUPPLY_CONTRACTION": 54,
+      "BULL_DECELERATING_QUIET_INVENTORY": 211
+    },
+    "later_trade_rows_policy": "Query only signal dates through 2020-12-31. Do not use 2021-2023 trade outcomes during chart-rule compression."
+  },
+  "chart_contract": {
+    "window": "126 market sessions before through 126 market sessions after the signal, capped at 2021-06-30",
+    "markers": [
+      "signal close",
+      "entry open",
+      "exit open",
+      "entry coordinate",
+      "frozen target coordinate"
+    ],
+    "panels": [
+      "action-coordinate daily candles normalized to signal close",
+      "daily turnover"
+    ],
+    "review_order": "all chronological sheets first, then complete outcome-group contradiction sheets",
+    "outcome_groups": {
+      "PROFIT_GE_4PCT": "net_return >= 0.04",
+      "PROFIT_0_TO_4PCT": "0 <= net_return < 0.04",
+      "LOSS_0_TO_10PCT": "-0.10 < net_return < 0",
+      "SEVERE_LOSS": "net_return <= -0.10"
+    }
+  },
+  "rule_compression": {
+    "maximum_rules": 5,
+    "allowed_roles": [
+      "early failure exit",
+      "profit protection",
+      "entry veto only if visible before the frozen entry"
+    ],
+    "requirements": [
+      "Every rule must have an economic supply-demand interpretation.",
+      "Every rule must use only information available by its decision close.",
+      "No threshold, day-count, target, stop, lane, or market-state grid.",
+      "Direct visual counterexamples must be recorded.",
+      "Do not combine rules until each has a distinct mechanism."
+    ],
+    "post_review_sequence": "Freeze at most five exact causal rules, then run one one-shot development replay. No rescue after the result."
+  },
+  "success_question": "Can a chart-derived causal failure rule materially reduce V27 drawdown and severe losses while preserving enough return that a separately frozen higher-utilization test could plausibly double annualized return without worsening the original drawdown?",
+  "governance": {
+    "same_bar_fill": false,
+    "t_plus_one": true,
+    "limits_suspensions_corporate_actions": "unchanged V27 execution contract",
+    "round_trip_cost": 0.004,
+    "post_2020_trade_outcomes_used_for_rule_discovery": false,
+    "2024_plus_used_for_rule_discovery": false,
+    "parameter_search": false,
+    "strategy_a_or_v26_modified": false,
+    "new_strategy_signal_count_gate_claim": false
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "experiment": "ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32",
+  "stage": "OUTCOME_BLIND_MOTHER_REPRESENTATION_AND_CANDIDATE_FREEZE",
+  "status": "FROZEN_BEFORE_ANY_V32_FORWARD_OUTCOME_READ",
+  "economic_hypothesis": "A stock whose day-to-day turnover innovations have become persistently independent of the common turnover innovations of its PIT industry may be undergoing company-specific attention or information discovery. The high-independence direction is frozen before outcomes, but it is not yet an Alpha claim and it is not evidence about true liquidity supply, order flow or accumulation.",
+  "pre_outcome_revision_record": {
+    "superseded_unexecuted_draft_sha256": "a3c5ed6a5c5d189986a6724dbd66f9f182df069cfc1ce7ae9047b2ecba03626a",
+    "outcome_or_stage_a_read_before_revision": false,
+    "reason": "Independent novelty review correctly found that a prior-40 to recent-20 sign transition was structurally too close to V31 and that a negative recent correlation is not economic decoupling. The unexecuted draft was therefore replaced before any V32 calculation by one fixed 60-session independence level plus prespecified 40/80 representation-stability audits."
+  },
+  "novelty_audit": {
+    "classification": "NEW_RELATIONSHIP_WITHIN_EXISTING_TURNOVER_ATTENTION_FAMILY",
+    "name_boundary": "Call the observable turnover-innovation independence, not real liquidity decoupling. CY-006 has no spread, depth, signed order flow or investor identity.",
+    "not_v30": "V30 correlates own turnover with own lagged positive returns. V32 correlates own day-to-day turnover innovation with the contemporaneous leave-one-out common innovation of PIT-industry peers and contains no return-direction condition.",
+    "not_v31": "V31 searches a prior/recent sign transition in stock-minus-industry returns. V32 uses a single 60-session turnover-independence level; 40 and 80 sessions are representation-stability audits only and can never replace the frozen 60-session definition.",
+    "not_cycle014": "Cycle 014 begins with an extreme single-day own-history traded-amount shock and minute price acceptance. V32 has no single-day shock threshold, no minute data and no price-acceptance field.",
+    "not_high_transfer_or_quiet_inventory": "V32 is neither high turnover with low price displacement nor a low-turnover level. It measures persistence of company-specific versus industry-common turnover innovations.",
+    "not_alpha_claim": "Novelty and neighboring-window stability establish representation quality only, never strategy usefulness."
+  },
+  "data_contract": {
+    "primary_input_asset": "CY-006",
+    "primary_manifest": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+    "partitions_allowed": [
+      2018,
+      2019,
+      2020
+    ],
+    "maximum_primary_source_row_date": "2020-06-30",
+    "outcome_blind_control_inputs": {
+      "v30_representation_panel": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/representation_panel.parquet",
+        "sha256": "3408f5728764331ec910c649ef8ef65afb80703d6e22e7bfaefd845b3be5ba4b",
+        "allowed_columns": [
+          "trade_date",
+          "symbol",
+          "turnover_pfc_score"
+        ]
+      },
+      "v31_representation_panel": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_industry_residual_serial_phase_change_mother_v31/stage_a/representation_panel.parquet",
+        "sha256": "91f18e9ca0646a33ceb172ad45293ee4e4979f0b4e5ffce865dca9841249f62c",
+        "allowed_columns": [
+          "signal_date",
+          "symbol",
+          "serial_phase_change"
+        ]
+      }
+    },
+    "signal_start": "2018-07-01",
+    "signal_end": "2020-06-30",
+    "decision_at": "completed month-end session close",
+    "required_semantics": [
+      "hard_valid, bar_valid, trading_state_valid, market_valid and market_rule_valid",
+      "current-day tradable non-ST Main/ChiNext stock with historical identity and PIT industry",
+      "available_at <= decision_at and non-null snapshot identities",
+      "corporate_action_valid, non-blocking and unchanged accepted history",
+      "finite positive turnover, amount and OHLC"
+    ],
+    "missing_policy": "FAIL_CLOSED",
+    "post_2020_signal_or_primary_source_read": false,
+    "forward_outcome_columns_read": false
+  },
+  "representation": {
+    "exact_history": "Require exactly eighty-three contiguous, fully valid market-session endpoints t-82 through t. The target stock's PIT industry must not change across the history; every endpoint must carry its own non-null registered snapshot identities and valid, non-blocking corporate-action evidence. Snapshot identifiers are provenance fields and are not incorrectly required to be identical across dates. The last eighty-one endpoints t-80 through t support the 80-session neighboring audit.",
+    "stock_turnover_innovation": "u_i,s = ln(turnover_fraction_i,s / turnover_fraction_i,s-1), defined only from two consecutive, finite, positive, fully valid completed sessions.",
+    "industry_common_innovation": "g_-i,I,s is the exact leave-one-out median u_j,s among at least ten other eligible stocks in the target's same PIT industry I on s. Every peer must have two consecutive valid observations and unchanged PIT industry across s-1 and s. Peer membership may change causally across historical dates; no current membership is projected backward.",
+    "main_coupling": "rho_60 is Spearman(u_i,g_-i,I) over exactly sixty innovation pairs s=t-59 through t; require at least three distinct finite values in each series.",
+    "main_independence": "D_60 = 1 - rho_60^2. Squaring preserves the fact that both strong positive and strong negative correlation are systematic coupling; values near one mean low linear rank coupling.",
+    "neighboring_audits": "Compute D_40 from s=t-39 through t and D_80 from s=t-79 through t with the same formula and nondegeneracy contract. They are audits only, never candidate alternatives.",
+    "no_price_direction": "No price return, candlestick, breakout, support, volatility, market state, current attention sign or VWAP field enters the candidate identity."
+  },
+  "candidate_contract": {
+    "schedule": "Each completed calendar-month final market session from July 2018 through June 2020.",
+    "liquidity_floor": "Current amount must be at least the same-date median among the full exact-history eligible A-share cross-section. This is an executability floor and does not enter D_60.",
+    "industry_support": "At least ten exact-history eligible V32 representations must exist in the PIT industry on the decision date.",
+    "selection": "Within every supported PIT industry, retain the eligible stock with the largest D_60; break exact ties by larger current amount and then lexical symbol.",
+    "cooldown": "For the same symbol, retain a later candidate only when its signal calendar index is strictly more than twenty sessions after the last retained signal.",
+    "direction": "HIGH_D60_ONLY_FROZEN_BEFORE_OUTCOMES",
+    "no_sign_rescue": "If high D_60 is adverse, do not reverse to low D_60 inside V32.",
+    "target_candidate_count": "Stage A passes only if there are more than fifty candidates in each represented signal year, at least six decision dates in partial 2018 and 2020, at least twelve in 2019, and at least twenty PIT industries overall."
+  },
+  "representation_quality_gates": {
+    "neighboring_definition_stability": {
+      "tests": [
+        "median same-date Spearman(D_60,D_40)",
+        "median same-date Spearman(D_60,D_80)",
+        "median same-date-within-PIT-industry Spearman(D_60,D_40)",
+        "median same-date-within-PIT-industry Spearman(D_60,D_80)"
+      ],
+      "minimum": 0.7,
+      "action_if_failed": "Close V32 before any forward-outcome read; do not choose D_40 or D_80."
+    },
+    "non_reconstruction": {
+      "controls": [
+        "current stock turnover innovation",
+        "current turnover divided by exact prior-20 median turnover",
+        "mean turnover over t-19:t divided by mean turnover over t-59:t",
+        "raw stock return over twenty sessions",
+        "raw stock return over sixty sessions",
+        "stock return volatility over sixty sessions",
+        "frozen V30 turnover_pfc_score on exact overlapping symbol-dates",
+        "frozen V31 serial_phase_change on exact overlapping symbol-dates"
+      ],
+      "test": "Median same-date Spearman and median same-date-within-PIT-industry Spearman between D_60 and each control, using only the outcome-blind representation panel and reporting overlap counts.",
+      "absolute_redundancy_limit": 0.8,
+      "action_if_failed": "Close before outcomes as a reconstruction of an existing representation."
+    },
+    "interpretation": "Passing establishes a stable and nontrivially distinct representation only, never trading usefulness."
+  },
+  "stage_a_output": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_a",
+    "contents": "Compact representation panel, immutable candidates, coverage/redundancy/stability result and hashes only.",
+    "atomic_publish": true,
+    "refuse_overwrite": true
+  },
+  "future_stage_b_if_separately_authorized": {
+    "population": "Exactly the immutable Stage-A candidates and hashes; no reselection.",
+    "entry": "First legal buyable open in market sessions t+1 through t+3; never the signal bar.",
+    "exit": "Exact +10 percent coordinate target after entry; otherwise strict H20 decision followed by the first legal sellable open.",
+    "round_trip_cost": 0.004,
+    "execution": "T+1, historical price limits, suspensions, trading state, corporate actions and coordinate lineage all fail closed.",
+    "development_gate": "For each signal year separately: more than fifty completed trades and mean net return strictly greater than four percent.",
+    "later_data": "2021 and 2022-2024 remain closed unless the every-year development gate passes after complete chart review and a separate frozen rule decision."
+  },
+  "chart_protocol_if_stage_b_earns_it": {
+    "window": "126 market sessions before through 126 after each immutable signal",
+    "review": "Every chart, strict masked chronology pass before outcome buckets, independently scaled pre/post panels, then no more than five simple causal rules.",
+    "no_sampling": true,
+    "no_future_as_predictor": true
+  },
+  "prohibited": [
+    "reading any V32 post-signal row or return during Stage A",
+    "reading 2021-plus data or post-2023 quarantined outcomes",
+    "changing the 60-session definition, high-independence direction, month-end schedule, liquidity floor, selection or cooldown after outcomes",
+    "using D_40 or D_80 as a candidate after seeing stability or future outcomes",
+    "adding a current volume-shock or price-direction condition to rescue candidate counts or returns",
+    "substituting current industry membership for PIT membership",
+    "claiming that turnover innovations measure true market liquidity, order flow, accumulation or demand",
+    "parameter grids, model fitting, portfolio replay or rule search before separate authorization"
+  ]
+}

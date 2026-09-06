@@ -1,0 +1,159 @@
+{
+  "spec_id": "ASHARE-V34R1-PHASE1-ANONYMOUS-LEDGER-FREEZE-V1",
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1",
+  "stage": "PHASE1_ANONYMOUS_LEDGER_FREEZE",
+  "expected_events": 1483,
+  "expected_sheets": 60,
+  "finalizer": {
+    "path": "research/market_behavior_os_v2/scripts/finalize_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase1.py",
+    "sha256": "205b97379e47c2f207398d1fe1db3a1e71e1c79c4740b5942089bf9640b5f970"
+  },
+  "public_anonymous_inputs": {
+    "chart_corpus_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_c_phase1_anonymous_charts/manifest.json",
+      "sha256": "69d660b35c8f3183cf82220888572fcca7494607c0224606b2c33064c535edcc"
+    },
+    "blind_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_c_phase1_anonymous_charts/blind_index.csv",
+      "sha256": "a15086ca815d6f9bebe3c36aef9d8181a4f5d969325a7c7cbdc27ef6da0d2a16",
+      "columns": [
+        "chart_number",
+        "blind_chart_id",
+        "blind_chart_path",
+        "blind_chart_sha256",
+        "sheet_number",
+        "slot"
+      ]
+    },
+    "contact_sheet_placements": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_c_phase1_anonymous_charts/contact_sheet_placements.csv",
+      "sha256": "4a412dee016b1a93c255ab8ebf4fd9491b355c0910aa12f98ee53f20c674ef8a",
+      "columns": [
+        "sheet_number",
+        "slot",
+        "chart_number",
+        "blind_chart_id"
+      ]
+    },
+    "annotation_schema": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_anonymous_annotation_schema.json",
+      "sha256": "89eeb590b025a4d126d328acbd47a803696606a891a8b804264bf326705fb90d"
+    }
+  },
+  "primary_annotation_segments": [
+    {
+      "segment_id": "bacon_0001_0500",
+      "start": 1,
+      "end": 500,
+      "rows": 500,
+      "reviewer": "Bacon",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_bacon_0001_0500.json",
+      "sha256": "eedd03a47e2c7a621067a3142b7bfdc2dd48183f75379efe0481c4d1aa582c20"
+    },
+    {
+      "segment_id": "blind_consensus_0501_0525",
+      "start": 501,
+      "end": 525,
+      "rows": 25,
+      "reviewer": "PHASE1_BLIND_CONSENSUS",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_consensus_0501_0525.json",
+      "sha256": "0fac174e60e65f8c28898cbba36535dcbacf80f1790cbb7b33835e9a0dc4ed7d"
+    },
+    {
+      "segment_id": "bacon_0526_0750",
+      "start": 526,
+      "end": 750,
+      "rows": 225,
+      "reviewer": "Bacon",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_bacon_0526_0750.json",
+      "sha256": "59ed990255bac4cb5cf19cdec63e795fa2ebbcb09eab20073785a8e355a0672f"
+    },
+    {
+      "segment_id": "galileo_0751_1000",
+      "start": 751,
+      "end": 1000,
+      "rows": 250,
+      "reviewer": "Galileo",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_galileo_0751_1000.json",
+      "sha256": "95d60a3774ad79ab140046a8b86e7472c0f894a212149cc9f26f96b645fca62c"
+    },
+    {
+      "segment_id": "templateaudit_corrected_1001_1483",
+      "start": 1001,
+      "end": 1483,
+      "rows": 483,
+      "reviewer": "TemplateAuditCorrectedSignalBar",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_templateaudit_corrected_1001_1483.json",
+      "sha256": "2c149c2ffe5587afd387eb55d2a54d4f35f2c14a5d0816f90593a1e53f15a9f4"
+    }
+  ],
+  "supporting_contracts": [
+    {
+      "role": "blind_consensus_protocol_0501_0525",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_0501_0525_consensus_protocol.json",
+      "sha256": "1c7ba7d2baa6f3a170e2bb63c2fc88f3a8ff09ab779ee89c10771751e9a45d6b",
+      "ledger_input": false
+    },
+    {
+      "role": "corrected_axis_reliability_decision",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_axis_reliability_decision.json",
+      "sha256": "247dea6890a4053a5c9f7f3abfef167046cbdd14535cffe9b4ae7711bfdbd68f",
+      "ledger_input": false
+    },
+    {
+      "role": "templateaudit_signal_bar_correction_receipt",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_templateaudit_signal_bar_correction_receipt.md",
+      "sha256": "fdc9b04ddf15a8ac7825cb2920e28112ba6a3729d75d06a52f724166ff0bd377",
+      "ledger_input": false
+    }
+  ],
+  "excluded_superseded": [
+    {
+      "role": "superseded_root_primary_0501_0525",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_root_0501_0525.json",
+      "sha256": "fe42bac91ca1fb9cdc65a643db2b2c09f8ec8d907cec5554a640a0481b96c282",
+      "ledger_input": false,
+      "superseded_by": "blind_consensus_0501_0525"
+    },
+    {
+      "role": "superseded_templateaudit_main_1001_1483",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_annotations_nested_1001_1483.json",
+      "sha256": "3372fbedecf17cb06bcf145d22cd122d486cc21ceef68aa957277b5e06cbeca8",
+      "ledger_input": false,
+      "superseded_by": "templateaudit_corrected_1001_1483"
+    },
+    {
+      "role": "superseded_templateaudit_calibration_0001_0025",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_calibration_templateaudit_0001_0025.json",
+      "sha256": "5f78f8b39c195f87ef91c53456301ceda37959328d3dcb0ee2772b87e4de7a2f",
+      "ledger_input": false,
+      "superseded_by": "corrected_axis_reliability_decision"
+    }
+  ],
+  "output": {
+    "directory": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_d_phase1_anonymous_review",
+    "ledger_file": "phase1_annotation_ledger.csv",
+    "manifest_file": "manifest.json",
+    "no_overwrite": true
+  },
+  "statistics_policy": {
+    "label_counts_only": true,
+    "reviewer_drift_only": true,
+    "rule_aggregation": false,
+    "returns": false
+  },
+  "phase2_constraints": {
+    "manual_labels_usage": "DISCOVERY_AND_ATTRIBUTION_ONLY",
+    "executable_rule_requirement": "TRANSLATE_TO_OBJECTIVE_CAUSAL_QUANTITIES_AND_VALIDATE_IN_TEMPORAL_HOLDOUT",
+    "signal_candle": "PROHIBITED_FROM_RULES_PER_CORRECTED_RELIABILITY_DECISION",
+    "label_changes_from_reviewer_drift": false
+  },
+  "prohibited": [
+    "reading or hashing identity mappings or crosswalks",
+    "reading, statting, or hashing Stage-B result, outcomes, or future paths",
+    "reading post-signal rows",
+    "aggregating returns or constructing rules",
+    "using excluded or superseded annotations as ledger inputs",
+    "overwriting an existing Phase1 freeze output"
+  ]
+}

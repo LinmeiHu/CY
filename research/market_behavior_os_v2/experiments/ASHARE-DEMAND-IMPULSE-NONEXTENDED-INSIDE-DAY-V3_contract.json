@@ -1,0 +1,29 @@
+{
+  "experiment_id": "ASHARE-DEMAND-IMPULSE-NONEXTENDED-INSIDE-DAY-V3",
+  "status": "FROZEN_BEFORE_CONFIRMATION_CONDITIONAL_REPLAY",
+  "parent_signal_contract": "ASHARE-DEMAND-IMPULSE-FIRST-INSIDE-DAY-SUPPLY-CONTRACTION-V1",
+  "parent_candidate_sha256": "af6e53755dcc4b627cb01d3ad8681f0ba2e5bb20dabe58a6888ee1cd47f05578",
+  "development_source": "2014-2018 parent selected-profile outcomes only",
+  "development_method": "depth-2 transparent regression tree with minimum leaf 80, used only as a structure grouper",
+  "economic_interpretation": "The same three-session demand impulse is less informative when it starts after an already extreme sixty-session appreciation, because embedded profit supply and late-stage chasing dominate. Excluding only that overextended state retains both washout reversals and ordinary early/mid-stage impulses.",
+  "signal_identity": "unchanged parent V1 demand-impulse plus first inside-day supply contraction",
+  "single_added_condition": "completed 60-session return observed four rows before the signal (the impulse start clock) <=47%",
+  "threshold_provenance": "development tree split 47.29%, rounded to 47% before any 2019-2021 conditional outcome was inspected",
+  "entry": "next legal executable session open",
+  "target": "+10% from executable entry after T+1",
+  "failure": "none",
+  "time_stop": "H20 then next legal open",
+  "cost": "40 bp round trip",
+  "fixed_profiles": [
+    {
+      "profile": "T10_H20_NONEXTENDED",
+      "target": 0.10,
+      "horizon": 20,
+      "stop": false
+    }
+  ],
+  "confirmation": "Apply unchanged to 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, every confirmation-year mean >0.",
+  "repository_2022_plus_outcomes_opened": false,
+  "repository_2024_plus_data_opened": false,
+  "prohibited": ["no second condition after confirmation", "no threshold movement", "no exit change", "no 2022+", "no signal-bar fill"]
+}

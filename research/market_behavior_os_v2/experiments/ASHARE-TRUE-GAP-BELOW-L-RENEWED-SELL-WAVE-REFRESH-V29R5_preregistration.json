@@ -1,0 +1,80 @@
+{
+  "capacity_identity": {
+    "alpha_gate": true,
+    "event_cap": 25,
+    "industry_queue_order": "rebound_from_post_gap_low_over_l descending, then symbol and gap_id",
+    "purpose": "precommitted economic admission: diversify simultaneous supply shocks across industries, then prefer the strongest verified demand recovery within each industry",
+    "raw_signal_role_after_outcome_open": "morphology and rejection audit only; raw outcomes may not compete with the primary result",
+    "selection_order": "per signal_date, lexical-industry round-robin",
+    "sole_primary_outcome_cohort": "CAP25"
+  },
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A gap older than 14 sessions can become economically fresh again when a renewed sell wave has just printed the stock's 20-session low and demand then completes the already-frozen V13 prior-high reversal. The recent low resets seller urgency without changing the frozen trigger, cost zone, or demand-quality gates.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-RENEWED-SELL-WAVE-REFRESH-V29R5",
+  "frozen_signal_rule": {
+    "action_coordinate_policy": "require an action-free exact-CY033 union of the gap-to-signal path and signal-inclusive trailing-20 window; otherwise fail closed, including unknown corporate_action_blocking",
+    "amount_gate": "signal raw amount <= 2.0 * median raw amount over exactly 20 completed trading sessions strictly before signal",
+    "fixed_parent_identity": "frozen V13 PRIOR_HIGH_REVERSAL gap_id and signal_time from development/signals.parquet; never read the sibling entry artifact and never search a later trigger",
+    "liquidity_and_state_gate": "signal hard_valid, tradable, traded, non-ST; prior 20 completed daily rows have known trade status and, when traded, known positive OHLC/down-limit, and contain <=1 raw one-price limit-down",
+    "mature_decline": "pre_peak_to_gap_sessions >= 20",
+    "not_locked_gate": "signal raw close < registered up_limit_price - 0.006 CNY",
+    "only_signal_morphology_change_from_v27": "replace F14 by gap_age<=14 OR (15<=gap_age<=30 AND 1<=days_since_low20<=3)",
+    "primary_outcome_rule": "the morphology gate plus the separately preregistered CAP25 industry-diversified, rebound-ranked economic admission",
+    "rebound_gate": "uniform raw-CY033 max_depth-current_depth >= 0.05 of frozen L",
+    "uniform_feature_recomputation": "At the fixed parent signal only, recompute gap_age, max/current depth, most-recent minimum raw-cent-tick low in the signal-inclusive trailing 20, recovery using that exact row raw low, and all V13 thresholds. Parent feature columns are audit comparators, not gates.",
+    "required_lineage": "every accessed CY033 row hard_valid with all component snapshot IDs and available_at<=row.decision_at<=frozen signal_time"
+  },
+  "governance": {
+    "entry_identity_built": false,
+    "entry_or_execution_columns_read_from_parent": [],
+    "forward_or_return_columns_read_from_parent": [],
+    "missing_or_unknown_required_input": "fail closed",
+    "no_stage_b_code": true,
+    "post_2021_partitions_allowed": [],
+    "primary_cohort_fixed_before_outcomes": "CAP25 only",
+    "raw_and_cap25_may_compete_after_outcomes": false
+  },
+  "outcome_access": "PROHIBITED",
+  "runner_sha256": "b2cd440deccd630505f02fb4a409844c48a7016e6eedcb1f448630fec986d64f",
+  "source_identity": {
+    "cy033": {
+      "asset_id": "CY-033",
+      "manifest_sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977",
+      "partitions": {
+        "2018": {
+          "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+          "size": 42011064
+        },
+        "2019": {
+          "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+          "size": 43320252
+        },
+        "2020": {
+          "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+          "size": 46073783
+        },
+        "2021": {
+          "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+          "size": 52153081
+        }
+      },
+      "registry_asset_normalized_sha256": "4df39a5b041942a434690d8327ea54cce1075a5ebe429ffb6411cee6c5ce3200"
+    },
+    "parent_artifacts": {
+      "v13_development_signals_identity_only": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_first_reversal_v13/prior_high_reversal/development/signals.parquet",
+        "sha256": "a5c752f74ef72b362b256df4adce1f750da9b1d95223ba9e3868fc22e8fb125c"
+      },
+      "v13_stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13_stage_a_freeze.json",
+        "sha256": "f6fb352678b831f31460fe62a719a83f87f61e5540b2e34f4e98bf9c302d92dc"
+      }
+    }
+  },
+  "stage": "DEVELOPMENT_STAGE_A_ONLY",
+  "stage_a_authorized": true,
+  "status": "FINAL_GOVERNANCE_REVIEW_PASSED_STAGE_A_AUTHORIZED"
+}

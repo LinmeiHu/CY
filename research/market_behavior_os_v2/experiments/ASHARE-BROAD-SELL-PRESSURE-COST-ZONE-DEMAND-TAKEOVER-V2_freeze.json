@@ -1,0 +1,55 @@
+{
+  "experiment": "ASHARE-BROAD-SELL-PRESSURE-COST-ZONE-DEMAND-TAKEOVER-V2",
+  "stage": "FROZEN_AFTER_PRE_2022_DEVELOPMENT_BEFORE_2022_2025_RULE_APPLICATION",
+  "scientific_status": "CHART_AND_DEVELOPMENT_DERIVED_TEMPORAL_CHALLENGE",
+  "economic_hypothesis": "A seller-cost reclaim is credible only when the reclaim itself carries substantially renewed turnover and the same transfer completes across many independent stocks. This distinguishes broad demand takeover after common forced selling from an isolated reflex bounce.",
+  "inherits": {
+    "mother": "ASHARE-SELL-PRESSURE-COST-ZONE-VOLUME-RECLAIM-V1",
+    "mother_freeze_sha256": "a8225c15d5b57faebed547002e82658ad3ad7d24827ad247f76efa6c815c8cb4",
+    "development_candidates_sha256": "ff72c1ff499acc3df5226e03d03bf029b9545f554102b444d8a087265d960cae",
+    "development_outcomes_sha256": "b9d0706ceef892aa7c0270d6978484633973bc6dd98837de57215440c88e8474",
+    "development_result_sha256": "07620a3931188044cbf47ecd35b9fc197a71c80a4997eb416634dbc2f17af9e8"
+  },
+  "incremental_rules": [
+    "the completed reclaim close is at or above the strictly prior session high",
+    "reclaim-session turnover is at least 1.5 times its strictly prior 20-session mean",
+    "after applying the stock-level rules and cooldown, at least 20 independent stocks complete the same signal on that date"
+  ],
+  "unchanged_execution": {
+    "entry": "first legal non-upper-limit open in signal plus one through three",
+    "profit_target": "+10 percent",
+    "time_stop": "first legal sellable open after H20 decision",
+    "failure_stop": "none",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "same_bar_fill": false
+  },
+  "development_evidence_2014_2021": {
+    "selected_signals": 433,
+    "completed": 431,
+    "completed_per_year": 53.875,
+    "mean_net_return": 0.05869206523515023,
+    "median_net_return": 0.096,
+    "mean_holding_sessions": 14.721577726218097,
+    "severe_loss10": 0.009280742459396751,
+    "distinct_signal_dates": 10,
+    "signal_date_equal_weight_mean_net": 0.05394533028864719,
+    "largest_date_share": 0.2691415313225058
+  },
+  "challenge": {
+    "signal_period": ["2022-01-01", "2025-12-31"],
+    "outcome_tail_end": "2026-03-31",
+    "open_once": true,
+    "no_rescue": true,
+    "report_years_separately": true,
+    "report_date_concentration": true
+  },
+  "governance": {
+    "future_market_function": false,
+    "same_bar_fill": false,
+    "unknown_required_lineage_or_execution_state": "fail closed",
+    "participant_identity_claim": false,
+    "independent_confirmation_claim": false,
+    "disclosure": "The rule was derived after extensive pre-2022 chart and outcome review; related 2022-2025 strategy families have been observed previously, so the challenge is temporal and frozen but not pristine independent confirmation."
+  }
+}

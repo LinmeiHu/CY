@@ -1,0 +1,144 @@
+{
+  "asset_id": "CY-045",
+  "name": "Bounded V34 outcome-blind realized-cash-payout Stage-A input",
+  "status": "FROZEN_OUTCOME_BLIND_MOTHER_REPRESENTATION_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "stage_a_binding": {
+    "spec": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34_freeze.json",
+      "sha256": "86adf9667245638671ec9c4b733ff47fbd16abd20306d3f4c2bc048a394e489d"
+    },
+    "runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34_stage_a.py",
+      "sha256": "72fe4f7a6300b726ceed0f675ead921e8209aeca994b6cd7c014cbc0258b03d6"
+    },
+    "inputs": {
+      "corporate_action_id_contract": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+        "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+      },
+      "qd010_inventory": {
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      },
+      "qd010_source_manifest": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+        "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+      },
+      "qd010_distributions": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+        "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+      },
+      "qd010_rights": {
+        "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+        "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+      },
+      "cy006_inventory": {
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+      },
+      "cy006_2018": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      "cy006_2019": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      "cy006_2020": {
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    }
+  },
+  "bound_artifacts": [
+    {
+      "role": "corporate_action_id_contract",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+    },
+    {
+      "role": "qd010_inventory",
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    {
+      "role": "qd010_source_manifest",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+      "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+    },
+    {
+      "role": "qd010_distributions",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
+    },
+    {
+      "role": "qd010_rights",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
+    },
+    {
+      "role": "cy006_inventory",
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    {
+      "role": "cy006_2018",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+      "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+    },
+    {
+      "role": "cy006_2019",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+      "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+    },
+    {
+      "role": "cy006_2020",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+      "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+    }
+  ],
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34-STAGE-A-2018-2020-V1",
+    "purpose": "ASHARE_OUTCOME_BLIND_MOTHER_REPRESENTATION",
+    "authorized_arm": "V34_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY",
+    "project": "research/market_behavior_os_v2",
+    "start": "2018-01-01",
+    "end": "2020-12-31",
+    "signal_start": "2018-01-01",
+    "signal_end": "2020-12-31",
+    "maximum_source_row_date": "2020-12-31",
+    "stage_a_authorized": true,
+    "whole_artifact_hash_authorized": true,
+    "inventory_metadata_parse_authorized": true,
+    "source_parquet_stage_a_parse_authorized": true,
+    "stage_b_authorized": false,
+    "outcome_attachment_authorized": false,
+    "outcome_artifact_parse_authorized": false,
+    "outcome_columns_read_authorized": false,
+    "post_signal_row_read_authorized": false,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "parameter_search_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "allowed": "After the exact registry/spec/manifest/runner binding passes, hash each whole bound input, parse inventory root/path/hash metadata, and read only causally available 2018-2020 rows needed for the frozen outcome-blind Stage-A count and representation gate.",
+    "blocked": "Any source touch before joint authorization; any row after 2020; any post-signal price path, return, outcome, trade, chart, Stage B, portfolio, parameter search, survivor fallback, live use or strict PIT-A claim."
+  },
+  "source_boundaries": {
+    "component_assets": [
+      "QD-010",
+      "CY-006"
+    ],
+    "whole_artifact_hash_semantics": "The exact complete bound artifacts may be read byte-for-byte for SHA-256 only after joint CY-045 authorization. Matching hashes do not broaden row or field access.",
+    "inventory_parse_semantics": "Inventory JSON is metadata-only: use only frozen root, member path and member SHA-256 identities; do not discover or authorize additional files.",
+    "row_parse_semantics": "QD-010 and CY-006 parquet parsing is limited to the frozen Stage-A fields and 2018-01-01 through 2020-12-31 inclusive."
+  },
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history and Stage A is outcome blind.",
+    "claim": "CY-045 authorizes only a bounded PIT-B count and representation gate for one frozen mother signal; it cannot establish Alpha.",
+    "next_step": "Run only after the matching CY-045 registry asset and bounded authorization independently bind this manifest, exact spec, exact runner and every source artifact."
+  }
+}

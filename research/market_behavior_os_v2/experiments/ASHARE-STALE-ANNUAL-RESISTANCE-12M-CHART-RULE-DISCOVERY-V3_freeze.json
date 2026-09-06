@@ -1,0 +1,80 @@
+{
+  "candidate_definition": {
+    "decision_at": "completed breakout close",
+    "economic_hypothesis": "A first high-location, volume-expansion close through a prior 250-session high that has remained unbroken for at least 60 completed market sessions represents absorption of stale overhead supply and entry into renewed price discovery.",
+    "entry": "first legal executable open strictly after the signal, no later than the third subsequent market session",
+    "identity": "unchanged ASHARE-STALE-ANNUAL-RESISTANCE-ABSORPTION-BREAKOUT-V1 candidate",
+    "source_candidate_sha256": "4518bd47845d068d36f85016786d3743276364410a5bec6c434f10c82b27e455",
+    "source_contract_sha256": "358d0a76144b05e3bea372aa1acb9e0891790c290c38a749665ddc75f13786bc",
+    "target_and_horizon": "+20 percent from entry or H60, no failure stop, 40 bp round trip"
+  },
+  "chronology": {
+    "candidate_signal_end": "2020-12-31",
+    "candidate_signal_start": "2014-01-01",
+    "chart_post_window": "126 completed market sessions after signal; late-2020 charts may extend into already-consumed 2021 only",
+    "chart_pre_window": "126 completed market sessions before signal",
+    "post_2021_signal_or_selection_read": false,
+    "post_2021_outcome_read": false,
+    "rule_discovery_period": "2014-2020 consumed development history"
+  },
+  "experiment": "ASHARE-STALE-ANNUAL-RESISTANCE-12M-CHART-RULE-DISCOVERY-V3",
+  "market_state_contract": {
+    "allowed": "registered causal market regime and historical/current cross-sectional market measures whose latest source timestamp is no later than signal decision_at",
+    "forbidden": [
+      "calendar-year bull/bear labels",
+      "future returns",
+      "future breadth",
+      "full-period thresholds",
+      "ex-post peaks or troughs",
+      "state defined from strategy outcome"
+    ],
+    "missing_or_late_state": "FAIL_CLOSED"
+  },
+  "outcome_labels": {
+    "loss_0_to_10pct": "-10 percent < net return < 0",
+    "no_completed_trade": "source replay did not complete",
+    "profit_0_to_4pct": "0 <= net return < 4 percent",
+    "profit_ge_4pct": "net return >= 4 percent",
+    "severe_loss": "net return <= -10 percent"
+  },
+  "purpose": "Apply the V26 discovery workflow more deeply to the already-frozen stale annual resistance mother: render and inspect every 2014-2020 candidate, compare profitable and losing structures, compress recurring causal observations into at most five simple rules, then test exactly one frozen rule set on the same development history before any 2022-2024 opening decision.",
+  "review_contract": {
+    "chart_order": "deterministic by outcome group, then signal date, sleeve, symbol, event_id",
+    "charts_reviewed": "every candidate, one by one; no sampling",
+    "compression_limit": 5,
+    "manual_event_deletion": false,
+    "required_marks": [
+      "prior stale high coordinate",
+      "signal close",
+      "next legal entry",
+      "+20 percent target",
+      "actual exit"
+    ],
+    "rule_requirements": [
+      "economically interpretable",
+      "observable no later than the frozen decision time unless explicitly a later confirmation with later entry",
+      "no optimized numerical grid",
+      "no future-defined market state",
+      "no event-by-event discretionary exception"
+    ]
+  },
+  "scientific_status": "POST_HOC_DEVELOPMENT_CHART_RULE_DISCOVERY_NOT_INDEPENDENT_CONFIRMATION",
+  "source_outcome_sha256": {
+    "2014_2018": "8e86ef65b0f0f6bfaf82e5424165dfd4c5d6768a67fe7f6a584bd09ba6d0c711",
+    "2019_2021_file_but_rows_limited_to_2019_2020": "f05ac84340f65839ae1ef8f45b4b2a861644e5e0da067d8c0c5fd281ae587981"
+  },
+  "stage_order": [
+    "FREEZE_REVIEW_AND_MARKET_STATE_CONTRACT",
+    "BUILD_ALL_2014_2020_TWELVE_MONTH_CHARTS",
+    "REVIEW_EVERY_PROFIT_AND_FAILURE_CHART",
+    "WRITE_RECURRING_SEMANTIC_OBSERVATIONS",
+    "COMPRESS_TO_AT_MOST_FIVE_CAUSAL_RULES",
+    "FREEZE_ONE_RULE_SET",
+    "AGGREGATE_2014_2020_RULE_RESULT",
+    "OPEN_2022_2024_ONLY_IF_USER_GATE_PASSES"
+  ],
+  "user_gate_before_2022_2024": {
+    "all_2014_2020_calendar_years_signals_strictly_greater_than": 50,
+    "pooled_completed_trade_mean_net_strictly_greater_than": 0.04
+  }
+}

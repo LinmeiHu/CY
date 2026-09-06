@@ -1,0 +1,136 @@
+{
+  "asset_id": "CY-035",
+  "name": "Bounded V30 frozen-candidate development outcome input",
+  "status": "FROZEN_DEVELOPMENT_OUTCOME_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "artifact": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "bytes": 987945900,
+    "physical_coverage": {
+      "start": "2013-01-04",
+      "end": "2023-12-29",
+      "rows": 7111699,
+      "symbols": 3725,
+      "trade_dates": 2672
+    },
+    "authorized_context_slice": {
+      "start": "2013-01-04",
+      "end": "2020-12-31",
+      "rows": 4598207,
+      "hard_valid_rows": 4590485,
+      "symbols": 3103,
+      "trade_dates": 1945
+    }
+  },
+  "upstream_bounded_asset": {
+    "asset_id": "CY-034",
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-A-2013-2020-V1",
+    "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V30-CY034_DATA_ASSET_MANIFEST.json",
+    "manifest_sha256": "e56bb0b79132a3c355c87e15ce12997295eb8817bfc295e9a07fd6c8592d2077",
+    "relationship": "CY-035 does not enlarge the CY-034 Stage-A authorization. It is a separate, runner-bound development-outcome arm over the same immutable physical compact and the exact frozen Stage-A cohort."
+  },
+  "frozen_cohort": {
+    "parent_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30_freeze.json",
+      "sha256": "c0f8c1c0617099f2705a873608fae390dbb30dd929b38ce040bab649e5841b0d"
+    },
+    "stage_a_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_a.py",
+      "sha256": "e3c8bccdb21644e2cc7cd6bfa3cdfe7820684a8157311e7fead76c67c9b27c28"
+    },
+    "stage_a_result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/result.json",
+      "sha256": "31de4fcce303e8efcf462e1f126abe67540fbe15b80a8e915de2412d5f2ab371",
+      "bytes": 4270,
+      "required_state": "stage_a_gate_passed=true; outcomes_read=false; post_signal_end_row_read=false; post_2020_row_read=false"
+    },
+    "representation": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/representation_panel.parquet",
+      "sha256": "3408f5728764331ec910c649ef8ef65afb80703d6e22e7bfaefd845b3be5ba4b",
+      "bytes": 10540946,
+      "rows": 82111,
+      "use_in_stage_b": "identity audit only; reselection is forbidden"
+    },
+    "candidates": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_low_positive_feedback_good_news_mother_v30/stage_a/candidates_frozen.parquet",
+      "sha256": "ef1b4126637382071f0d9d563f83205bff04731c7b51a5e3a83a07bee8324c3f",
+      "bytes": 810573,
+      "rows": 2312,
+      "unique_event_ids": 2312,
+      "signal_start": "2014-01-30",
+      "signal_end": "2020-06-30",
+      "signal_cal_idx_min": 258,
+      "signal_cal_idx_max": 1818
+    }
+  },
+  "lineage": {
+    "actual_build_wrapper": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_collapse_gap_zone_dual_fresh_k10_validation_v1.py",
+      "sha256": "3d6c9a887b36cb15c712acab2fb391c9b2a8c6afd62cc6e142b0322f5f070dc4"
+    },
+    "compact_builder": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_collapse_gap_zone_pattern_fidelity_audit_v1.py",
+      "sha256": "2b8b5c09df390b8ff2133244fad4a3fdfecbadf6052884b4f9c567e40edccee0"
+    },
+    "adjusted_coordinate_builder": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+      "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"
+    },
+    "adjusted_coordinate_source": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+      "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+      "bytes": 342272911
+    },
+    "chronology_extension_audit": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_chronology_extension_audit.json",
+      "sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f"
+    },
+    "daily_pit_audit": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/audit.json",
+      "sha256": "8071fdae37f38f9ef8bca18815c3ddc1ddd9a89a83df6761aec015818249c752"
+    },
+    "daily_prep_input_manifest": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_daily_prep_2013_2023_input_manifest.json",
+      "sha256": "4746a5873b351a0c925bc21ca005b02d4f759a9b38c473702f58130ccfa20394"
+    },
+    "daily_contract": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/daily_contract_2013_2023.parquet",
+      "sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df"
+    },
+    "snapshot_limitation": "The compact retains row available_at/decision_at and industry_snapshot_id but omits the daily source snapshot_id. Use is therefore limited by exact physical, upstream-lineage, cohort, protocol and runner hashes.",
+    "coverage_limitation": "2013-2017 is a certified CY-006-schema chronology extension rather than globally registered CY-006; the physical 2018-plus extension is semantically certified but not hash-identical canonical CY-006."
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-B-2013-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V30_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "candidate_signal_start": "2014-01-30",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_physical_row_date": "2020-12-31",
+    "maximum_evaluation_path_date": "2020-12-31",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "allowed": "Attach exactly one frozen +10-percent/H20/40-bps development lifecycle to each of the 2,312 immutable Stage-A event identities, preserving no-entry, invalid-lineage and incomplete outcomes.",
+    "blocked": "Candidate reselection, representation changes, charts, portfolio replay, validation, grids, threshold changes, rows after 2020-12-31, live use and strict PIT-A claims."
+  },
+  "execution_contract": {
+    "signal_time": "Completed month-end close.",
+    "entry": "First later legal non-limit-up raw open in signal cal_idx +1 through +3, filled at coordinate open.",
+    "target": "Before fallback eligibility, the first later same-lineage legal coordinate high at or above 1.10 times entry fills at the exact coordinate target only when finite positive raw high and raw down-limit prove the bar was not locked at the down limit.",
+    "fallback": "On a row with cal_idx strictly greater than entry cal_idx +20, process the opening auction before any same-day high: a sellable coordinate open at or above target fills conservatively at the exact target; a sellable open below target exits immediately at coordinate open; only an unsellable open may defer to a later same-day legal target touch.",
+    "within_bar_chronology": "The fallback-eligible open decision always precedes that day's high. No later intraday high may cancel a legal time-stop fill already available at the open.",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "limits_suspensions_and_actions": "Binding; missing or changed required state fails closed and is never normalized or substituted.",
+    "unknown_action_state": "A physically present entry-window or post-entry row with null corporate_action_count, corporate_action_valid or corporate_action_blocking invalidates the event immediately; it may not be skipped and later recovered."
+  },
+  "scientific_boundary": {
+    "history_status": "2014-2020 is consumed development history.",
+    "claim": "Outcome attachment measures the frozen mother population only; it is neither chart-rule validation nor a portfolio backtest.",
+    "next_step": "Any chart rendering requires a new bounded authorization that binds the completed Stage-B artifacts and the frozen visual protocol."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ISSUER-RISK-V29R2-DEVELOPMENT-ANATOMY-V1",
+  "status": "POST_HOC_DEVELOPMENT_ONLY_DIAGNOSTIC_FROZEN",
+  "purpose": "Audit whether the V29R1 issuer-title veto removes economically distinct failures or merely reshuffles a capacity-constrained portfolio.",
+  "temporal_quarantine": {
+    "signal_start": "2018-01-01",
+    "signal_end": "2021-12-31",
+    "maximum_market_or_chart_row": "2021-12-31",
+    "post_2021_announcement_title_read": false,
+    "post_2021_return_or_validation_read": false
+  },
+  "frozen_strategy_semantics": {
+    "parent": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1",
+    "selector_changed": false,
+    "classifier_changed": false,
+    "portfolio_or_execution_changed": false,
+    "diagnostic_findings_may_not_retroactively_change_validation": true
+  },
+  "review_corpus": {
+    "vetoed": "all 60 V29R1 development vetoes, including rows without complete outcomes",
+    "kept_losers": "all V29R1 development portfolio-accepted trades with net_return below zero",
+    "kept_winners": "nearest positive-return observations to the 25th, 50th and 75th percentile within each signal year",
+    "deduplication_key": "gap_id",
+    "outcome_sampling_is_diagnostic_only": true
+  },
+  "title_buckets": {
+    "CLEAR_HIGH_RISK_VETO": "At least one title-only OPEN family is regulatory investigation, delisting warning, illegal guarantee or issuer bank-account freeze.",
+    "SUSPECTED_ROUTINE_OCCUPANCY_TITLE_FALSE_POSITIVE": "Only the fund-misappropriation family matched, while every title reads like a recurring independent-director, audit or special-report heading and no assertive adverse token appears.",
+    "OTHER_FUND_OCCUPANCY_VETO": "A fund-occupancy title that cannot be safely called routine from the title alone.",
+    "guardrail": "These are anatomy labels, not a replacement classifier and not evidence about document contents. Ambiguity remains fail-closed in the frozen V29R1 selector."
+  },
+  "chart_contract": {
+    "daily_window": "signal minus 120 through signal plus 120 trading sessions, physically capped at 2021-12-31",
+    "price": "causal coordinate OHLC with invalid rows omitted; frozen gap L/U, prior-only 20-session support/resistance and 120-session extrema",
+    "chip": "latest strict CY-009 state whose available_at is no later than each daily decision_at; p10/p50/p90 are never normalized or clipped",
+    "inventory": "raw pre-gap float-turnover mass by frozen z_bin, with z=(price-L)/W",
+    "market_industry": "PIT signal-date industry and hard-valid CY-006 cross-sectional median daily returns, normalized only as plotted cumulative-return indices",
+    "intraday": "hard-valid CY-008 six 5-minute execution windows on signal and entry dates; no same-bar fill inference",
+    "lifecycle": "signal, first legal T+1 entry and frozen exit are annotated when a complete outcome exists"
+  },
+  "registered_inputs": {
+    "CY-006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "CY-008_manifest_sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f",
+    "CY-009_manifest_sha256": "d8a8d6c77de3eadb119315bf0c2a9513d94a1f4a28419dc15e616b2713316c32"
+  },
+  "interpretation_guards": [
+    "Post-signal candles and outcomes are labels for anatomy and never signal-time predictors.",
+    "A higher conditional mean after deletions is not itself proof that issuer risk predicts losses.",
+    "Capacity replacement and crowded entry dates must be separated from event-level selection effect.",
+    "No threshold search, title-rule edit, stop edit or validation rescue is authorized by this diagnostic."
+  ]
+}

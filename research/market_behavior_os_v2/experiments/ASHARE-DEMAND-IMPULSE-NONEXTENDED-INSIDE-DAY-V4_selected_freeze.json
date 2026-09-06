@@ -1,0 +1,37 @@
+{
+  "experiment_id": "ASHARE-DEMAND-IMPULSE-NONEXTENDED-INSIDE-DAY-V4",
+  "freeze_stage": "PRE_2022_2023_VALIDATION",
+  "candidate_sha256": "c7ab5931358cfaec987d35ef1cb65f461d867fd71362d10aa02185430012b50f",
+  "development_result_sha256": "8eba7b1b09123aa63c2602af086a48adf0d2bbd27aceb42fe3f13e3878603383",
+  "selected_profile": "T15_H30_NONEXTENDED",
+  "signal": "three-session return >=15% with >=2 up sessions, followed immediately by an inside day with -3% to +3% return, turnover <=70% of the impulse three-session mean, and close in the prior range's upper half",
+  "single_admission_condition": "impulse-start completed 60-session return <=47%",
+  "entry": "next legal executable session open, at most three market-session indices after signal",
+  "target": "+15% from executable entry, first legal realization after T+1",
+  "failure": "none",
+  "time_stop": "H30 completed market-session indices, then next legal executable open",
+  "round_trip_cost": 0.004,
+  "portfolio": {
+    "main_sleeve": 0.5,
+    "chinext_sleeve": 0.5,
+    "k_per_sleeve": 10,
+    "position_fraction_of_current_sleeve_nav": 0.1,
+    "leverage": false,
+    "cross_sleeve_transfer": false,
+    "one_active_position_per_symbol": true,
+    "collision_rank": ["higher impulse3", "lower pre_impulse_ret60", "symbol"]
+  },
+  "development_2014_2018_mean_net": 0.03580839934468653,
+  "confirmation_2019_2021_mean_net": 0.036448281014734414,
+  "confirmation_2019_2021_completed_trades": 328,
+  "confirmation_yearly_mean_net": {
+    "2019": 0.031286834578530515,
+    "2020": 0.03650754503095423,
+    "2021": 0.0388339464604774
+  },
+  "known_instability": "2017 and 2018 development means are negative; 2022-2023 must be treated as external confirmation, not tuning data.",
+  "validation_period": "2022-01-01 through 2023-12-31",
+  "validation_rule_change_allowed": false,
+  "repository_2022_2023_outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false
+}

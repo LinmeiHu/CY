@@ -1,0 +1,54 @@
+{
+  "experiment": "ASHARE-WEEKLY-INDUSTRY-DEMAND-SHOCK-DIRECTION-MOTHER-V1",
+  "research_status": "OUTCOME_BLIND_MOTHER_FREEZE",
+  "purpose": "Create a compact, complete-chart candidate family for a one-session common industry demand/supply shock. Every Friday contributes one strongest-industry continuation candidate and one weakest-industry repair candidate when coverage is valid.",
+  "novelty": "This is not the tested 20-session industry momentum/rotation, minute leader-follower propagation, stock short reversal, or a dispersion-threshold rescue. The score is the PIT-industry median one-session stock return and the selected stock is the industry medoid, so the event represents common industry demand rather than an extreme individual mover.",
+  "data": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "signal_period": "2014-01-01 through 2020-12-31",
+    "maximum_chart_and_outcome_context": "2021-06-30",
+    "post_2021_signal_or_outcome_read": false
+  },
+  "mother_definition": {
+    "clock": "Friday completed daily close; no signal in holiday weeks without a Friday bar",
+    "eligible_security": "exact valid prior-60 history; hard/current/tradable/market-rule/corporate-action/historical-identity/PIT-industry valid; non-ST; available_at <= decision_at; positive coordinate prices and amount",
+    "industry_score": "median signal-session step_return among eligible current PIT-industry members",
+    "minimum_industry_members": 10,
+    "minimum_industries_per_date": 20,
+    "continuation_lane": "industry with the maximum industry_score",
+    "reversal_lane": "industry with the minimum industry_score",
+    "representative_stock": "eligible member minimizing absolute step_return minus industry_score; tie break by larger amount then lexical symbol",
+    "deduplication": "exactly one representative event per direction lane per Friday"
+  },
+  "event_lifecycle": {
+    "decision": "Friday close",
+    "entry": "first legal non-limit-up open during signal+1 through signal+3",
+    "target": "+10% from coordinate entry open",
+    "horizon": "20 market sessions after entry",
+    "exit": "target when first legally sellable after T+1; otherwise first legal sellable open at/after horizon",
+    "cost": "40 bp round trip",
+    "lineage": "unchanged invalid_step_cum from signal; fail closed on coordinate break"
+  },
+  "chart_contract": {
+    "window": "126 completed sessions before through 126 after signal",
+    "all_individual_events": true,
+    "chronological_contact_sheets": true,
+    "outcome_contact_sheets": true,
+    "required_review": "view every chronological sheet before chart-rule freeze",
+    "market_context": "join the already accepted signal-date causal BULL/BEAR/TRANSITION state for annotation only; no future-state classification"
+  },
+  "later_gate": {
+    "after_chart_compression": "every year 2014-2020 must have >50 completed events and mean net event return >4.0%",
+    "validation": "only then open 2022-2024 once under frozen rules"
+  },
+  "prohibited": [
+    "weekday search",
+    "top/bottom K industry search",
+    "industry lookback search",
+    "extreme-stock selection",
+    "target/horizon search",
+    "future market state",
+    "post-2021 outcome during chart-rule development"
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "experiment": "ASHARE-QUIET-INVENTORY-STRUCTURAL-ACCEPTANCE-V2",
+  "freeze_status": "FROZEN_BEFORE_V2_TEMPORAL_CHALLENGE",
+  "frozen_at": "2026-09-05",
+  "research_boundary": {
+    "development_mother_signal_start": "2014-01-01",
+    "development_mother_signal_end": "2021-12-31",
+    "latest_admitted_confirmation_date": "2021-12-31",
+    "development_outcome_tail_end": "2022-03-31",
+    "outcome_tail_purpose": "Execution completion for positions whose final signal decision was known by 2021-12-31 only; no 2022 mother signal or confirmation enters development.",
+    "temporal_challenge_years": [2022, 2023, 2024],
+    "fresh_sealed_signal_year": 2025,
+    "important_caveat": "The earlier V1 study already exposed 2022-2024 outcomes. Therefore those years are a frozen-rule temporal challenge, not a pristine out-of-sample test for V2. The exact V2 rule is frozen here before V2 replay; 2025 remains the cleaner untouched signal-year holdout."
+  },
+  "economic_hypothesis": "A low-volume platform means only that supply has become quiet; it is not a buy signal. Fresh demand must first break the old inventory ceiling, and the first legal post-breakout close must prove that sellers cannot push price back below that ceiling. The former resistance then becomes observable support. Broad market participation must be positive but not euphoric so that the repricing is supported without paying for a late-cycle chase.",
+  "frozen_signal": {
+    "mother_signal": "ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1",
+    "universe": {
+      "boards": ["MAIN", "CHINEXT"],
+      "st_excluded": true,
+      "industry_exclusions": [
+        "煤炭开采", "油气开采Ⅱ", "油服工程", "炼化及贸易", "普钢", "特钢Ⅱ",
+        "冶钢原料", "工业金属", "小金属", "贵金属", "能源金属", "金属新材料",
+        "化学原料", "化学制品", "农化制品", "化学纤维", "电子化学品Ⅱ",
+        "水泥", "玻璃玻纤", "非金属材料Ⅱ", "电力", "燃气Ⅱ"
+      ],
+      "exclusion_provenance": "Inherited unchanged from the registered upstream comparable-daily asset and mother-candidate identity; not selected from V2 outcomes."
+    },
+    "required_signal_history": "The prior 60 completed same-symbol sessions are valid and remain on the same coordinate lineage. Unknown required availability, market-rule, trading-status or corporate-action state fails closed.",
+    "quiet_inventory": {
+      "platform": "Prior 40 completed coordinate-price sessions, strictly before mother signal t.",
+      "maximum_platform_width_inclusive": 0.30,
+      "turnover_contraction": "Mean turnover over t-20..t-1 is no greater than mean turnover over t-60..t-21."
+    },
+    "fresh_demand": {
+      "opening_gap_vs_prior_coordinate_close_inclusive": [0.01, 0.08],
+      "close_strictly_above_frozen_prior40_coordinate_high": true,
+      "signal_turnover_vs_prior20_mean_minimum_inclusive": 1.50,
+      "signal_close_location_minimum_inclusive": 0.70,
+      "upper_limit_close_excluded": true
+    },
+    "market_context": {
+      "regime": "BULL",
+      "definition": "At the completed mother-signal close, comparable-universe median coordinate returns over 20 and 60 sessions are positive and the positive-return shares over both horizons exceed 0.50.",
+      "market_median_ret60_inclusive": [0.025, 0.18]
+    },
+    "structural_acceptance": {
+      "observation": "The first legal completed same-lineage session after mother signal t, found no later than t+3 market sessions.",
+      "condition": "Its coordinate close is greater than or equal to the platform high frozen at mother signal t.",
+      "later_recovery_allowed_to_repair_a_failed_first_observation": false,
+      "confirmation_after_2021_allowed_in_development": false
+    },
+    "additional_technical_or_chip_gate": null
+  },
+  "frozen_execution": {
+    "profile": "FIRST-LEGAL-HOLD-T10-H20",
+    "mother_signal_bar_fill_allowed": false,
+    "confirmation_bar_fill_allowed": false,
+    "entry": "First legal buyable open strictly after the completed confirmation close and no later than confirmation+3 market sessions.",
+    "entry_upper_limit_blocked": true,
+    "exit_lower_limit_blocked": true,
+    "suspension_and_trading_status_enforced": true,
+    "corporate_action_coordinate_lineage_fail_closed": true,
+    "target_gross_return": 0.10,
+    "target_cannot_hit_on_entry_bar": true,
+    "time_stop_decision_sessions_after_entry": 20,
+    "time_stop_fill": "First subsequent legal sellable open.",
+    "round_trip_cost_bps": 40,
+    "stop_loss": null
+  },
+  "development_results_2014_2021": {
+    "mother_candidates": 496,
+    "formal_signals_after_acceptance": 426,
+    "completed_trades": 422,
+    "mean_signals_per_year": 53.25,
+    "mean_completed_trades_per_year": 52.75,
+    "mean_net_return": 0.050402408086179906,
+    "median_net_return": 0.09600000000000009,
+    "mean_holding_sessions": 11.637440758293838,
+    "win_rate": 0.7725118483412322,
+    "target_hit_rate": 0.6943127962085308,
+    "severe_loss_10pct_rate": 0.08056872037914692,
+    "user_gates": {
+      "mean_signals_per_year_strictly_above_50": true,
+      "mean_net_return_at_least_4pct": true,
+      "mean_holding_sessions_strictly_below_15": true
+    },
+    "development_blocks": {
+      "2014_2018": {
+        "signals": 124,
+        "mean_net_return": 0.03523711547106885,
+        "mean_holding_sessions": 13.0
+      },
+      "2019_2021": {
+        "signals": 302,
+        "mean_net_return": 0.056712798301863696,
+        "mean_holding_sessions": 11.070469798657719
+      }
+    },
+    "concentration_diagnostics": {
+      "distinct_confirmation_dates": 126,
+      "maximum_signals_on_one_date": 93,
+      "top5_dates_signal_share": 0.46919431279620855,
+      "confirmation_date_equal_weight_mean_net_return": 0.0313522471945116,
+      "mean_net_return_excluding_largest_date": 0.03869802906798621,
+      "interpretation": "The per-signal gates pass, but returns remain materially clustered in market-wide repricing days. This is an explicit portfolio-capacity warning, not a reason to fit another threshold."
+    }
+  },
+  "chart_and_structure_research": {
+    "enhanced_charts_rendered": 496,
+    "window": "120 market sessions before and after every mother signal",
+    "enhanced_charts_manually_reviewed_stratified": 85,
+    "earlier_v1_charts_manually_reviewed": 73,
+    "annotations": [
+      "frozen 40-session platform high and low",
+      "prior-120 high and low",
+      "prior-120 turnover-weighted price anchor",
+      "pre-signal 45-session log-price trend and causal 45-session moving average",
+      "turnover contraction and resistance-touch count",
+      "individual, industry and market 20/60-session return context",
+      "mother signal, first legal confirmation, later entry, target and exit",
+      "strict-sample chip P10/P50/P90 only when chip mass_sum equals exactly 1.0"
+    ],
+    "accepted_mother_counterfactual_mean_net_return": 0.05332345589589258,
+    "failed_support_mother_counterfactual_mean_net_return": 0.015894686500252386,
+    "visual_conclusion": "The useful distinction is immediate market acceptance of the old ceiling as support. Many failed holds rally months later, but the original short-horizon entry timing is already invalid. Winners and losses overlap heavily on trend angle, 120-day breakout distance and chip state, so those are diagnostics rather than hard gates.",
+    "chip_constraint": "Most available chip rows do not have mass_sum bit-equal to 1.0. They were not normalized, rounded or admitted with a relaxed tolerance; only exact-mass rows were eligible for display, leaving chip coverage too sparse for a frozen gate."
+  },
+  "rejected_extra_conditions": [
+    {
+      "condition": "Require 45-session trend slope above zero.",
+      "reason": "It removes too many signals, is weak under date-cluster stress, and a slope including the breakout bar would be partly tautological."
+    },
+    {
+      "condition": "Require a fresh 120-session high.",
+      "reason": "It was less profitable and too sparse; old overhead supply can be fuel when demand is accepted."
+    },
+    {
+      "condition": "Require confirmation low, rather than close, to remain above the platform.",
+      "reason": "It improves return but leaves only about 304 completed trades, below the frequency gate."
+    },
+    {
+      "condition": "Cap pre-signal ATR20 at 4%.",
+      "reason": "It leaves only 405 signals, a five-signal frequency buffer, and the threshold is an outcome-selected boundary. It is retained as a risk diagnostic, not frozen as an admission rule."
+    },
+    {
+      "condition": "Add a chip percentile or industry-leader threshold.",
+      "reason": "No stable monotonic threshold with complete, exact-mass PIT coverage was found."
+    }
+  ],
+  "frozen_artifacts_sha256": {
+    "development_script": "884312c1890162be1e08ea4addd6a09403c71cd2728ce79623573c237b20f3d3",
+    "chart_script": "7207eaf277280225e0cdc246b84d3528e5a600d0f2d38b552b0bede58b41a67a",
+    "regression_test": "8cfd9077fa4313f22869f318c62f77affe4de7f66e27c60ceb1dd0213f32dc3e",
+    "development_result": "bb9afd9ad7d003d9a77b218274b4758315a6a52f6571e886d241212e3eec43c8",
+    "mother_candidates": "cc2326b2568f02490b6f78f4c731c75ca06449949738e2b47486521d29ffba6f",
+    "acceptance_ledger": "3fa5057d0f56d147871134d8b24ee157a70128a4fee978bcc2f37c6306e4a219",
+    "development_outcomes": "5726a8ba3929730ded41397e121e2b9cc04575da1bb0771d55690be15bacdede",
+    "chart_manifest": "913a83670a6737f332d3afb6f8dbd3c025d6bbea02889a11a6d53f0139377535",
+    "structural_summary": "7fb1688b7684169c9dd6cf875953a770549da5922a454813d80eab2e92cccb82",
+    "feature_input": "887ffd4d92fb992a718671f1b0d6eda28e4a6086ec948e27956ec3ceb3b5daea",
+    "market_regime_input": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a",
+    "development_daily_input": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+  },
+  "post_freeze_rules": {
+    "threshold_changes_after_temporal_challenge_open": false,
+    "validation_failure_is_reported_not_repaired": true,
+    "portfolio_claim_allowed_from_per-signal_statistics": false,
+    "required_reporting": [
+      "pooled and annual mother/accepted counts",
+      "completed trades and all execution exclusions",
+      "mean and median net return, holding time, win, target-hit and severe-loss rates",
+      "confirmation-date concentration and largest-date exclusion",
+      "results excluding the 2024-09-27 market-wide cluster",
+      "clear distinction between 2022-2024 temporal challenge and untouched 2025 holdout"
+    ]
+  }
+}

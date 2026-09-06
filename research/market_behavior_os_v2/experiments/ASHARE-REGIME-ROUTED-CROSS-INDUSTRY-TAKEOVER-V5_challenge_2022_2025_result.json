@@ -1,0 +1,87 @@
+{
+  "experiment": "ASHARE-REGIME-ROUTED-CROSS-INDUSTRY-TAKEOVER-V5",
+  "stage": "FROZEN_RULE_OPEN_ONCE_CHALLENGE_COMPLETE_NO_RESCUE",
+  "freeze_sha256": "b173048b185841695762a7ffd316ba8d7995974c88c40063daeb31a1f63190b3",
+  "challenge_period": [
+    "2022-01-01",
+    "2025-12-31"
+  ],
+  "outcome_tail_end": "2026-03-31",
+  "core_user_targets": {
+    "completed_per_year_gt_50": true,
+    "pooled_mean_net_ge_4pct": true,
+    "pooled_mean_holding_lt_15": true
+  },
+  "strengthened_robustness_targets": {
+    "signal_date_equal_mean_ge_4pct": false,
+    "diversified_top10_mean_net_ge_4pct": false,
+    "at_least_24_signal_dates": true,
+    "largest_date_share_le_20pct": true,
+    "every_year_has_positive_trades": true,
+    "all_pass": false
+  },
+  "pooled": {
+    "selected": 1013,
+    "completed": 1009,
+    "completed_per_year": 252.25,
+    "mean_net_return": 0.05312504493009833,
+    "median_net_return": 0.09600000000000009,
+    "mean_holding_sessions": 10.417244796828543,
+    "win_rate": 0.7770069375619425,
+    "severe_loss10": 0.05946481665014866,
+    "target_hit": 0.6907829534192269
+  },
+  "event_and_capacity": {
+    "distinct_signal_dates": 33,
+    "signal_date_equal_weight_mean_net": 0.03671412895884665,
+    "diversified_top10_mean_net": 0.03607054179917324,
+    "largest_date_share": 0.12586719524281467,
+    "positive_signal_date_share": 0.8181818181818182
+  },
+  "yearly": {
+    "2022": {
+      "completed": 79,
+      "mean_net_return": 0.05699511931728348,
+      "mean_holding_sessions": 11.20253164556962,
+      "distinct_signal_dates": 3
+    },
+    "2023": {
+      "completed": 46,
+      "mean_net_return": 0.020790261734634358,
+      "mean_holding_sessions": 15.41304347826087,
+      "distinct_signal_dates": 3
+    },
+    "2024": {
+      "completed": 815,
+      "mean_net_return": 0.05601202025845083,
+      "mean_holding_sessions": 9.680981595092025,
+      "distinct_signal_dates": 22
+    },
+    "2025": {
+      "completed": 69,
+      "mean_net_return": 0.03615083127497403,
+      "mean_holding_sessions": 14.884057971014492,
+      "distinct_signal_dates": 5
+    }
+  },
+  "routes": {
+    "BULL_TREND": {
+      "completed": 571,
+      "mean_net_return": 0.03685903489856445,
+      "mean_holding_sessions": 12.658493870402802
+    },
+    "DEEP_CAPITULATION": {
+      "completed": 438,
+      "mean_net_return": 0.07433027718581944,
+      "mean_holding_sessions": 7.495433789954338
+    }
+  },
+  "artifact_sha256": {
+    "result_json": "8a81ee4710161298596823884d268764521be5a8d18b78761f6f7ed8da4dedc3",
+    "selected_candidates_parquet": "9a5e53d073f5214e765736b6d2e34689c3387b4219d069367c6d7e4c30197217",
+    "future_paths_parquet": "c087f08863f845eb60476809d5f18b1ffd451ce4f1a1e95eb2b5a9def5d6695f",
+    "outcomes_parquet": "eb0049738751e71347641781af38e78135f27fca621c39d588c58daa15b72a17"
+  },
+  "decision": "Do not promote V5 as a capacity-ready portfolio strategy. Preserve it unchanged as a passed pooled-signal mother rule and a failed event-equal/top-ten robustness test.",
+  "no_post_challenge_threshold_rescue": true
+}

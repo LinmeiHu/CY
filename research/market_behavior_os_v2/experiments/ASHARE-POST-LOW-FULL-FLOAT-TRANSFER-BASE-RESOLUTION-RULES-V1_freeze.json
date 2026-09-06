@@ -1,0 +1,103 @@
+{
+  "experiment": "ASHARE-POST-LOW-FULL-FLOAT-TRANSFER-BASE-RESOLUTION-RULES-V1",
+  "frozen_before_rule_outcome_aggregation": true,
+  "scientific_status": "DATA_GENERATED_VISUAL_RULE_COMPRESSION_DEVELOPMENT",
+  "source_mother": "ASHARE-POST-LOW-FULL-FLOAT-TRANSFER-BASE-RESOLUTION-MOTHER-V1",
+  "visual_review": {
+    "completed_before_freeze": true,
+    "individual_charts": 910,
+    "chronological_contact_sheets_reviewed": 102,
+    "profit_ge_4pct_contact_sheets_reviewed": 42,
+    "severe_loss_contact_sheets_reviewed": 33,
+    "loss_0_to_10pct_contact_sheets_reviewed": 20,
+    "profit_0_to_4pct_contact_sheets_reviewed": 7,
+    "no_completed_trade_contact_sheets_reviewed": 2,
+    "manual_event_deletion": "NONE"
+  },
+  "compressed_economic_rules": [
+    {
+      "rule": 1,
+      "name": "OBJECTIVE_LOSS_AND_TRANSFER_BASE",
+      "definition": "Reuse the frozen mother event without alteration: a fresh causal 120-session low, a ceiling frozen from anchor offsets 0 through 9, at least one full-float-equivalent of PIT turnover strictly before resolution, and at least 10% old-high repair headroom.",
+      "economic_meaning": "A completed loss of support followed by real ownership transfer creates an objective price-memory structure rather than a subjective candle pattern."
+    },
+    {
+      "rule": 2,
+      "name": "FIRST_RESOLUTION",
+      "definition": "Reuse the frozen first eligible close above the frozen base ceiling; the signal session itself is never fillable.",
+      "economic_meaning": "The stock first attempts to leave the transferred ownership base."
+    },
+    {
+      "rule": 3,
+      "name": "NEXT_SESSION_ACCEPTANCE",
+      "definition": "The first lineage-valid, hard-valid, tradable completed symbol session in signal+1 through signal+3 must close strictly above the frozen base ceiling. Enter only at the first legal non-limit-up open in the next three market sessions after that confirmation. If the frozen old-high target was already reached before entry, do not enter.",
+      "economic_meaning": "A real resolution must remain accepted after one additional completed auction cycle; a signal-bar print alone is insufficient."
+    },
+    {
+      "rule": 4,
+      "name": "BASE_CEILING_DYNAMIC_INVALIDATION",
+      "definition": "After T+1, the first lineage-valid completed session whose close is strictly below the frozen base ceiling creates an exit instruction. Fill at the next legal non-limit-down open; do not replace the instruction with a later target hit.",
+      "economic_meaning": "Falling back into the transferred base falsifies the same price-discovery hypothesis that justified entry."
+    },
+    {
+      "rule": 5,
+      "name": "CAUSAL_TARGET_AND_TIME_LIMIT",
+      "definition": "Before invalidation, take profit at the frozen pre-anchor 60-session old high when legally reached after T+1; otherwise exit at the first legal open at or after 40 held market sessions.",
+      "economic_meaning": "The old price-memory coordinate is the natural repair target; unresolved repair has a bounded capital clock."
+    }
+  ],
+  "causal_market_state": {
+    "state_fields_available_at": "signal-session close only",
+    "future_function": false,
+    "existing_context_labels": [
+      "BULL",
+      "BEAR",
+      "TRANSITION"
+    ],
+    "single_extreme_warning": {
+      "name": "VIOLENT_REBOUND_FROM_DEEP_DAMAGE",
+      "definition": "market_median_ret20 > 0.08 AND market_median_ret60 < -0.08 AND market_positive_ret20_share > 0.70 AND market_positive_ret60_share < 0.35",
+      "action": "Do not enter the event.",
+      "rationale": "This describes a broad, violent short-horizon rebound while the medium-horizon market remains deeply damaged. It is deliberately narrow so ordinary BEAR repair and 2018-11 style medium-horizon repair are not equated with the July-August 2015 crash rebound.",
+      "threshold_search": "NONE"
+    },
+    "why_not_simple_bull_bear_filter": "Profitable and losing charts both occurred in all three existing causal labels. The market state describes opportunity habitat; individual post-resolution acceptance remains mandatory."
+  },
+  "execution": {
+    "decision_clock": "completed close only",
+    "entry": "strictly later legal open",
+    "exit": "strictly later legal open for close-generated invalidation; target may fill intraday only after T+1",
+    "t_plus_one": true,
+    "upper_and_lower_limits": true,
+    "suspensions": true,
+    "corporate_action_contract": "QD-010 exact coordinate lineage; fail closed on a blocking or unresolved change",
+    "round_trip_cost": 0.004,
+    "same_bar_fill": false
+  },
+  "development_window": {
+    "signal_start": "2015-01-01",
+    "signal_end": "2020-12-31",
+    "maximum_allowed_outcome_path_date": "2021-06-30",
+    "2022_2024_open_before_gate": "NO",
+    "cy011_read": "NO"
+  },
+  "gate": {
+    "completed_trades_each_signal_year_strictly_greater_than": 50,
+    "pooled_completed_mean_net_return_strictly_greater_than": 0.04,
+    "open_2022_2024_only_if_both_pass": true
+  },
+  "no_rescue": [
+    "no neighboring anchor, base, turnover, confirmation, target, or holding parameters",
+    "no alternate market-state thresholds",
+    "no base-age or base-width filter",
+    "no Top-N portfolio translation before the signal gate",
+    "no 2022-2024 read before the gate"
+  ],
+  "source_hashes": {
+    "mother_candidates": "a681269172910f0b1fc05864c4cf8a53889cc3c5e591ceb9a169c102989a4338",
+    "future_paths": "97cbbe07fe78cb5ecbfdd947076e8eab22fd90685cba44b83a84d6973ef655e3",
+    "mother_outcomes": "06c64bbeda4b1ee7b9dca16d6e036815ded86a960ba7b3aafc981bb9409ad2d3",
+    "chart_manifest": "4af4561b1dc6026da5afbaed1428d82001893a9997646528b69e541fa79db7d0",
+    "chart_runner": "32a0f38297878562585ab31ba56ea5848d7898be0ade79831a15a74423b637e4"
+  }
+}

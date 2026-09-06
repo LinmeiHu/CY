@@ -1,0 +1,82 @@
+{
+  "experiment_id": "ASHARE-BULL-QUIET-INVENTORY-THREE-SESSION-ACCEPTANCE-V2",
+  "status": "POST_CHART_RULE_AND_EXECUTION_FREEZE",
+  "parents": [
+    "ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1",
+    "ASHARE-CAUSAL-MARKET-REGIME-ROUTED-SIMPLE-STRATEGY-V1",
+    "ASHARE-BULL-QUIET-INVENTORY-REPRICING-CHART-RULES-V1"
+  ],
+  "economic_hypothesis": "A quiet-inventory breakout is useful when the new information is accepted rather than immediately auctioned back into the old inventory. Acceptance is represented by the third subsequent completed tradable session closing at or above the already frozen prior-40 platform high.",
+  "chart_review": {
+    "development_signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "charts_reviewed": 606,
+    "profitable_ge_4pct": 357,
+    "profit_0_to_4pct": 25,
+    "loss_0_to_10pct": 82,
+    "severe_loss": 131,
+    "no_completed_trade": 11,
+    "review_complete": true,
+    "interpretation": "Profitable and losing charts did not support a simple gap-size, signal-bar-strength, long-overhead, or same-day-crowding veto. The repeated visual distinction was post-breakout acceptance versus rapid return into the old platform."
+  },
+  "frozen_plain_language_rules": [
+    "Use the unchanged quiet-inventory information-gap mother event: a prior-40 platform no wider than 30%, prior-20 turnover below the older 60-to-21-session mean, a +1% to +8% opening gap, close above the frozen prior-40 high, turnover at least 1.5 times its prior-20 mean, and a close in the top 30% of the signal range.",
+    "Admit only when the causal market state at the completed mother-signal close is BULL: median stock ret20 and ret60 are positive and the positive-return share at both horizons is above 50%.",
+    "Observe exactly the first three subsequent completed tradable stock sessions; the acceptance decision is available only after the third such session closes.",
+    "Accept only when that third-session close is at or above the platform high frozen before the mother signal; otherwise do not trade.",
+    "After acceptance, buy the first legal non-limit-up open within the next three market sessions; sell at +20% or the first legal open after the H60 close decision; use no stop and charge 40 bps round trip."
+  ],
+  "market_state": {
+    "state": "BULL",
+    "known_at": "completed mother-signal close",
+    "future_values_used": false,
+    "missing_policy": "fail closed"
+  },
+  "acceptance": {
+    "observation_sessions": 3,
+    "session_definition": "subsequent row for the same security with hard_valid, current_valid, current_day_data_tradable, market_rule_valid, corporate_action_valid, no corporate_action_blocking, and unchanged coordinate lineage",
+    "test": "third_observation_coord_close >= frozen_signal_platform_high",
+    "decision_at": "close of the third completed observation session",
+    "same_signal_bar_fill": false,
+    "same_acceptance_bar_fill": false
+  },
+  "execution": {
+    "entry": "first legal non-limit-up open strictly after the acceptance decision, no later than three market sessions",
+    "target": 0.20,
+    "horizon_sessions": 60,
+    "stop": false,
+    "entry_bps": 20,
+    "exit_bps": 20,
+    "round_trip_bps": 40,
+    "t_plus_one": true,
+    "suspension_limit_and_corporate_action_semantics": "accepted repository contracts; fail closed on lineage change"
+  },
+  "development_gate": {
+    "period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_strictly_greater_than": 0.04,
+    "every_calendar_year_with_completed_trades_mean_positive": true,
+    "pooled_median_net_positive": true,
+    "severe_loss_10pct_max": 0.15
+  },
+  "challenge_governance": {
+    "2021": "not used to derive the rule; may be reported only after development gate is evaluated",
+    "2022_2023": "previously consumed history; robustness only",
+    "2024": "may be opened only after an outcome-blind identity freeze and only if the routed full strategy passes the development gate",
+    "2025_signals": "forbidden",
+    "2025_rows": "permitted only to complete frozen 2024 trades"
+  },
+  "anti_overfit": {
+    "acceptance_windows_tested": 1,
+    "acceptance_thresholds_tested": 1,
+    "alternative_platform_levels_tested": 0,
+    "parameter_grid": false,
+    "subset_search": false,
+    "rule_rescue_after_result": false
+  }
+}

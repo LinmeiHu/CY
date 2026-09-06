@@ -1,0 +1,172 @@
+{
+  "experiment": "ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37",
+  "stage": "OUTCOME_BLIND_REPRESENTATION_OPPORTUNITY_STABILITY_AND_REDUNDANCY_FREEZE",
+  "status": "FROZEN_BEFORE_SOURCE_ACCESS_AWAITING_CY059_IMPLEMENTATION_AND_REGISTRATION",
+  "frozen_at": "2026-09-06",
+  "scientific_role": "Test whether stock exposure to causal innovations in aggregate equity-market volatility can be represented broadly, stably and distinctly in pre-2021 PIT A-share history before any V37 forward path or payoff is read.",
+  "economic_hypothesis": "A stock that historically loses more when aggregate market volatility unexpectedly rises is a poor hedge against worsening market uncertainty. If investors require compensation for holding that covariance risk, the most negative aggregate-volatility-innovation exposures may earn higher subsequent long-only returns. This direction is frozen from the risk-compensation mechanism and may not be reversed after results.",
+  "novelty_boundary": {
+    "new_claim": "V37 measures a stock's contemporaneous 120-session conditional exposure to changes in already-observed broad-market realized volatility, after controlling for the contemporaneous broad-market return.",
+    "not_low_idio": "Low Idio ranks residual return dispersion. V37 ranks the signed covariance loading on an aggregate volatility innovation; idiosyncratic volatility is only a redundancy control.",
+    "not_low_vol_of_vol": "Low Vol-of-Vol ranks instability of the stock's own realized volatility. V37 uses a common market-volatility innovation and a signed stock-return loading.",
+    "not_low_skew_or_max": "No stock-return skewness, extreme-return maximum or lottery-preference statistic defines the V37 ordering; both are controls.",
+    "not_market_or_downside_beta": "The contemporaneous market return is explicitly controlled in the V37 regression. Ordinary market beta and down-market beta are separate reconstruction controls.",
+    "not_v36_price_delay": "V36 measures incremental explanatory power of lagged weekly market returns. V37 has no lagged-price regressors or delay ratio; exact V36 score is an overlap control where available.",
+    "not_momentum_reversal_or_chart_shape": "No cumulative-return sign, breakout, reversal, support, candle or visual label selects a V37 event. Prior return is only a redundancy control.",
+    "not_dispersion_alpha": "The common state is aggregate realized-volatility innovation, not cross-sectional return dispersion. The previously parked Dispersion Alpha family is neither completed nor modified."
+  },
+  "inputs": {
+    "registry": {
+      "path": "configs/data_asset_registry.json",
+      "required_assets": ["CY-059", "CY-006", "QD-010", "CY-054"],
+      "policy": "A future Stage-A runner must validate a runner-bound CY-059 public contract and require exact central installation before any source path is stated, resolved, hashed or opened."
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ],
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "corporate_action_coordinate_contract": {
+      "path": "src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+    },
+    "v36_outcome_blind_representation_control": {
+      "asset_id": "CY-054",
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/representation_panel.parquet",
+      "sha256": "17a50b0aeb4a9ae36d10754280ca43c8bc06504920f51ba66d34ef506b03a3ec",
+      "access": "Exact signal-date/symbol overlap and price_delay_52w_4l column only; no V36 outcome or chart artifact."
+    }
+  },
+  "source_and_time_boundary": {
+    "source_start": "2018-01-01",
+    "maximum_source_row_date": "2020-12-31",
+    "signal_start": "2018-08-01",
+    "signal_end": "2020-12-31",
+    "decision_schedule": "Last completed A-share market session of each calendar month.",
+    "decision_at": "Completed signal-session close after that session's registered row is available.",
+    "formation_window": "The exact latest 120 consecutive global market sessions ending at and including the signal session; an additional exact 20-session causal prefix is required to form the first RV20 observation and its first innovation.",
+    "post_2020_row_read": false,
+    "forward_or_post_signal_row_read": false,
+    "outcome_columns_read": false
+  },
+  "eligible_history": {
+    "boards": "Historical Main Board and ChiNext identities 600/601/603/605.SH and 000/001/002/300/301.SZ.",
+    "base_row_requirements": "For every target and peer row require hard_valid, bar_valid, trading_state_valid, corporate_action_valid, nonblocking corporate action, market_valid, market_rule_valid, historical_identity_valid, available_at<=decision_at, all registered snapshot IDs nonblank, finite positive OHLC/preclose, coherent OHLC and finite action-safe log(close/preclose). Missing or invalid formation rows fail the target-date representation closed.",
+    "market_return": "For every stock and global session use the exact leave-one-out median action-safe daily log return among at least 500 other then-eligible historical Main/ChiNext stocks. Peer membership is rebuilt causally on each date.",
+    "signal_row_requirements": "At t require non-ST, trade_status=1, current_day_data_tradable, valid nonblank PIT industry, float_valid, every base validity gate, positive finite amount, turnover_fraction and circulating_shares, and available_at<=decision_at.",
+    "amount_floor": "Current amount must be at least the same-date median among otherwise eligible signal rows; amount never enters the exposure score.",
+    "snapshot_semantics": "Every historical row must carry nonblank registered snapshot identities. Snapshot IDs prove row provenance and are not required to be equal across dates."
+  },
+  "canonical_representation": {
+    "market_realized_volatility": "For target i and day t, RV20_-i,t = sqrt(sum over s=t-19..t of M_-i,s squared), using the causal leave-one-out market-return series and exactly 20 consecutive global sessions.",
+    "aggregate_volatility_innovation": "NU_-i,t = log(RV20_-i,t) - log(RV20_-i,t-1). Both RV values must be finite and strictly positive; no zero replacement, clipping or smoothing is permitted.",
+    "regression_window": "Exactly 120 consecutive response sessions ending at the signal close.",
+    "regression": "OLS r_i,t = alpha_i + beta_mkt_i*M_-i,t + beta_vol_i*NU_-i,t + epsilon_i,t over the exact 120-session response window.",
+    "score": "NEGATIVE_AGGREGATE_VOLATILITY_INNOVATION_BETA_120 = -beta_vol_i. Higher score means a more negative signed return exposure to an increase in aggregate volatility.",
+    "direction": "MOST_NEGATIVE_BETA_VOL_BETTER_FROZEN_NO_SIGN_RESCUE",
+    "numeric_fail_closed": "The 120 by 3 design must have full column rank; response and both regressors must be finite; each regressor must have strictly positive centered sum of squares; coefficients must be finite. Any failure is null, never imputed, winsorized, clipped, regularized or sign-flipped.",
+    "interpretation_limit": "The statistic is an exposure representation under a robust broad-market proxy. It does not prove a priced volatility-risk factor, tradable hedge, option-implied variance premium or causal investor preference."
+  },
+  "neighboring_definition_stability": {
+    "purpose": "Representation stability only; neighbors may not replace the canonical 120-session score or select outcomes.",
+    "neighbors": [
+      "the identical regression over the latest 100 complete response sessions",
+      "the identical regression over the latest 140 complete response sessions"
+    ],
+    "test": "Within the common eligible panel, calculate same-date and same-date-within-PIT-industry Spearman correlations of the canonical score with each neighbor.",
+    "minimum_same_date_observations": 50,
+    "minimum_within_industry_observations": 8,
+    "minimum_supported_decision_dates_per_neighbor": 8,
+    "required_median_spearman": 0.5,
+    "gate": "Both neighbors must have median same-date and median within-industry Spearman at least +0.50 with the canonical score. Failure closes the exact family before candidate payoff or charts."
+  },
+  "candidate_contract": {
+    "industry_support": "At least 12 amount-eligible complete canonical representations in the same current PIT industry and decision date.",
+    "selection": "Within each supported current PIT industry/date, retain exactly the stock with maximum frozen score (most negative beta_vol); break ties by larger current amount then lexical symbol.",
+    "cooldown": "After ranking, retain a repeated symbol only when its global signal calendar index is strictly more than 60 sessions after its last retained V37 event.",
+    "event_id": "AGGREGATE_VOLATILITY_INNOVATION_EXPOSURE|YYYYMMDD|PIT_INDUSTRY|SYMBOL",
+    "market_filter": "NONE",
+    "past_return_sign_filter": "NONE",
+    "chart_filter": "NONE",
+    "outcome_filter": "NONE"
+  },
+  "outcome_blind_redundancy_controls": {
+    "controls": [
+      "ordinary 120-session contemporaneous market beta from the canonical regression",
+      "120-session market-down-day beta using the same causal market return and at least 30 negative-market observations",
+      "60-session idiosyncratic volatility against the causal leave-one-out market return",
+      "60-session volatility of the stock's own fixed RV5 path using the existing Cycle-009 formula",
+      "60-session stock-return skewness",
+      "20-session maximum daily stock return",
+      "60-session cumulative stock log return",
+      "60-session mean turnover_fraction",
+      "exact V36 price_delay_52w_4l on signal-date/symbol overlaps"
+    ],
+    "test": "Report median same-date and median same-date-within-PIT-industry Spearman between the V37 score and every control, including row/date/group support. V36 overlap is evaluated only where the frozen representation already exists.",
+    "minimum_same_date_observations": 50,
+    "minimum_within_industry_observations": 8,
+    "minimum_supported_decision_dates": 8,
+    "absolute_redundancy_limit": 0.8,
+    "failure": "If either supported median absolute correlation is at least 0.80 for any control, or a non-V36 control lacks eight supported dates, close V37 before outcomes. V36 is reported as a bounded overlap diagnostic and cannot alone fail coverage when its calendar does not overlap."
+  },
+  "stage_a_gates": {
+    "years": [2018, 2019, 2020],
+    "retained_candidates_each_year_strictly_greater_than": 50,
+    "decision_months_minimum": {"2018": 4, "2019": 10, "2020": 10},
+    "pit_industries_each_year_at_least": 20,
+    "unique_symbols_each_year_strictly_greater_than": 50,
+    "canonical_coefficients_finite": true,
+    "neighboring_definition_stability_gate_must_pass": true,
+    "redundancy_gate_must_pass": true,
+    "all_must_pass": true,
+    "failure_policy": "If input/PIT/semantic checks fail, publish nothing. If only representation, opportunity, neighboring-stability or redundancy gates fail, atomically publish compact outcome-blind result.json, permanently close this exact family and do not inspect outcomes, charts, alternate signs, windows or thresholds."
+  },
+  "stage_a_protocol": {
+    "allowed": [
+      "construct exact causal leave-one-out market returns, RV20 innovations, signed exposure representations, fixed neighbors, candidates and outcome-blind controls",
+      "report coverage, dates, industries, regression rejection reasons, opportunity counts, stability and redundancy correlations",
+      "write representation_panel.parquet and candidates_frozen.parquet only if every Stage-A gate passes"
+    ],
+    "forbidden": [
+      "any 2021-plus partition or row",
+      "any row after a signal used as that signal's predictor",
+      "any future return, target, fill, MFE, MAE, outcome bucket, chart label, strategy result or portfolio artifact",
+      "alternate volatility estimator, innovation transformation, regression window, direction, schedule, market proxy, industry threshold or cooldown",
+      "winsorization, clipping, beta sign reversal, favorable-subset selection, Stage B, charts, portfolio replay or later-period validation"
+    ]
+  },
+  "output_contract": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a",
+    "files_if_passed": ["representation_panel.parquet", "candidates_frozen.parquet", "result.json"],
+    "files_if_failed_gate": ["result.json"],
+    "publication": "Build in a same-parent temporary directory, reverify public contract, registry installation and every source hash, then atomically rename without overwrite."
+  },
+  "later_stage_boundary": {
+    "stage_b_authorized": false,
+    "charts_authorized": false,
+    "outcome_read_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_plus_read_authorized": false,
+    "passing_stage_a_meaning": "Representation quality, opportunity breadth, neighboring-definition stability and non-obvious-redundancy readiness only; never strategy usefulness."
+  }
+}

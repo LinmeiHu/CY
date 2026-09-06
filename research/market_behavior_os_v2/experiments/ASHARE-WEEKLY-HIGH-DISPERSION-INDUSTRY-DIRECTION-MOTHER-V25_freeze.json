@@ -1,0 +1,60 @@
+{
+  "experiment": "ASHARE-WEEKLY-HIGH-DISPERSION-INDUSTRY-DIRECTION-MOTHER-V25",
+  "research_status": "OUTCOME_BLIND_MOTHER_FREEZE",
+  "purpose": "Create a lightweight, chart-reviewable stock-event mother for the unresolved dispersion/relative-value mechanism. This is not a rerun of the failed MKT-DISP-RANK-001/002 full daily rank builders: it uses one weekly ALL_A/NON_ST view, one horizon, and one representative security per selected PIT industry.",
+  "economic_question": "When causal cross-industry return dispersion is unusually high, does the representative stock of a currently strong industry continue, or does the representative stock of a currently weak industry repair?",
+  "data": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "allowed_signal_period": "2014-01-01 through 2020-12-31",
+    "maximum_outcome_context": "2021-06-30",
+    "post_2021_signal_or_outcome_read": false
+  },
+  "causal_market_structure": {
+    "decision_clock": "completed Friday daily bars at decision_at; holiday weeks without a Friday observation generate no decision",
+    "eligible_security": "hard_valid, current_valid, current_day_data_tradable, market_rule_valid, corporate_action_valid, no blocking/current corporate action, valid historical identity and PIT industry, non-ST, available_at <= decision_at, positive coordinate prices, and exact valid prior-60 history",
+    "industry_score": "median signal-session step_return among eligible current PIT-industry members",
+    "minimum_industry_members": 10,
+    "dispersion": "cross-industry IQR of current industry_score",
+    "high_dispersion": "current dispersion >= the 80th percentile of the 252 completed market observations strictly before the decision, requiring all 252 prior observations",
+    "minimum_industries": 20,
+    "direction_lanes": {
+      "CONTINUATION": "industries in the current top quintile of industry_score",
+      "REVERSAL": "industries in the current bottom quintile of industry_score"
+    },
+    "representative_stock": "within each selected industry/date choose the eligible stock with minimum absolute difference between step_return and industry_score; break ties by larger current amount, then lexical symbol",
+    "reason_for_representative": "measure the common industry move rather than an outcome-picked extreme or lottery spike"
+  },
+  "event_lifecycle": {
+    "signal": "Friday close",
+    "entry": "first legal non-limit-up open in signal+1 through signal+3; never the signal bar",
+    "target": "+10% from entry coordinate open",
+    "horizon": "20 market sessions after entry",
+    "exit": "first legal session whose coordinate high reaches target, otherwise first legal sellable open at or after the horizon",
+    "cost": "40 bp round trip",
+    "T_plus_1": true,
+    "execution_contract": "trading status, price limits, suspensions, coordinate lineage, and corporate actions fail closed exactly as in recent accepted daily event replays"
+  },
+  "chart_plan": {
+    "window": "126 completed sessions before through 126 after signal, bounded by 2013-01-01 and 2021-06-30",
+    "individual_chart_for_every_event": true,
+    "chronological_contact_sheets": true,
+    "outcome_contact_sheets": true,
+    "manual_review": "review every chronological sheet before freezing any chart-compressed rules"
+  },
+  "development_gate_after_chart_compression": {
+    "annual_completed_events": ">50 in every year 2014-2020",
+    "annual_mean_net_return": ">4.0% in every year 2014-2020",
+    "later_data": "open 2022-2024 exactly once only after the frozen chart rules pass both annual gates"
+  },
+  "prohibited": [
+    "future/full-period dispersion threshold",
+    "daily/weekday search",
+    "dispersion percentile search",
+    "industry-count or quintile search",
+    "Top-N stock search",
+    "holding-period or target search",
+    "post-2021 outcome use during mother/chart compression",
+    "reusing failed full MKT-DISP-RANK execution architecture"
+  ]
+}

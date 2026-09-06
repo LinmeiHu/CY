@@ -1,0 +1,53 @@
+{
+  "experiment": "ASHARE-HIGH-CROSS-SECTIONAL-DISPERSION-IDIOSYNCRATIC-TAIL-MOTHER-V28",
+  "research_status": "OUTCOME_BLIND_MOTHER_FREEZE",
+  "frozen_before_candidate_build": true,
+  "purpose": "Translate the established market-level dispersion-opportunity result into a chart-reviewable long-only mother without rerunning the resource-blocked daily rank experiment. The mother asks whether liquid stocks experiencing an extreme one-day move relative to their current PIT industry during a broadly high stock-specific-dispersion state subsequently continue or reverse.",
+  "novelty_boundary": "This is not unconditioned short reversal or momentum. The economic state is unusually wide stock-specific price discovery across the whole market, while the event is an extreme move relative to the stock's current PIT industry. Direction remains unresolved and is represented by two outcome-blind lanes.",
+  "data": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "candidate_signal_start": "2014-01-01",
+    "candidate_signal_end": "2020-12-31",
+    "post_2020_outcome_read": false
+  },
+  "eligible_security": {
+    "history": "Exactly 60 strictly prior consecutive market-session rows with unchanged coordinate lineage and all required PIT validity flags.",
+    "current": "hard/current valid, tradable, trade_status=1, market/corporate-action valid, not blocked, no current corporate action, historical identity and PIT industry valid, non-ST, available_at <= decision_at, positive finite coordinate prices and amount.",
+    "liquidity": "Current amount must be at or above the causal same-date eligible-universe median. This is a capacity guard, not a tunable rank."
+  },
+  "market_state": {
+    "weekly_clock": "Completed Friday close only; no weekday search.",
+    "stock_specific_step_return": "Current coordinate step return minus the current same-date median step return of the stock's PIT industry, requiring at least 10 eligible members in that industry.",
+    "dispersion": "Cross-sectional IQR of stock_specific_step_return across all eligible liquid securities, requiring at least 500 securities and 20 industries.",
+    "causal_high_state": "Current dispersion is at or above the 80th percentile of exactly 252 prior completed eligible market observations. Threshold excludes the current date and requires consecutive market cal_idx history.",
+    "reason": "MKT-DISP-ECON-001 found that higher current dispersion preceded wider opportunity rather than directional market return. The p80 state is a fixed rare-opportunity definition, not selected from security outcomes."
+  },
+  "event_lanes": {
+    "IDIOSYNCRATIC_UP_SHOCK": "Stock-specific step return lies in the current top decile.",
+    "IDIOSYNCRATIC_DOWN_SHOCK": "Stock-specific step return lies in the current bottom decile.",
+    "industry_representation": "Within each PIT industry and lane keep the eligible tail stock with largest current amount; tie-break lexically by symbol.",
+    "cooldown": "After a selected symbol event, suppress later events for the next 20 market cal_idx values, applied causally in time order."
+  },
+  "stage_a_gate": {
+    "minimum_candidates_each_year_2014_2020": 50,
+    "minimum_decision_dates_each_year": 5,
+    "action_if_failed": "Close before charts or outcomes. Do not change percentile, decile, liquidity, weekday, industry, or cooldown definitions."
+  },
+  "chart_plan_if_gate_passes": {
+    "window": "126 sessions before through 126 sessions after signal, capped at 2021-06-30 only to complete late-2020 chart context.",
+    "review": "Render every candidate, inspect every chronological contact sheet, then inspect complete outcome-group contradiction sheets.",
+    "rule_limit": 5,
+    "later_validation_gate": "Only after frozen chart rules produce more than 50 completed signals and mean net return above 4% in every development year may 2022-2024 be opened once."
+  },
+  "prohibited": [
+    "future/full-period normalization",
+    "outcome-selected shock direction",
+    "threshold or lookback grids",
+    "weekday search",
+    "Top-N search",
+    "holding-period or target search",
+    "resource-blocked MKT-DISP-RANK-001/002 architecture",
+    "2021+ signal outcomes before development rules are frozen"
+  ]
+}

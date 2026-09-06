@@ -1,0 +1,71 @@
+{
+  "experiment": "ASHARE-ABOVE-NORMAL-CROSS-SECTIONAL-DISPERSION-IDIOSYNCRATIC-TAIL-MOTHER-V29-STAGE-B",
+  "research_status": "PRE_OUTCOME_EXECUTION_AND_CHART_FREEZE",
+  "parent_spec_sha256": "c0be8faf50ff4b01efefa914f5631b648df2c79ca91d9a2da437a77326238dc4",
+  "stage_a_runner_sha256": "c2a6c7c061f1fbca5122a1cab71396e02b85721b9092128a081842b50ded5155",
+  "stage_a_result_sha256": "4d4240be667dd9e33a32f7f6d9b14252d177e4650ecc8b3b73e203f0f2455bbe",
+  "candidate_sha256": "5c5d70e96ae65552bc5f53a008c50fcba34392b252a666f43386b9d1b6bde6ef",
+  "candidate_rows": 9368,
+  "outcome_attachment": {
+    "signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "maximum_path_date": "2021-06-30",
+    "same_rule_both_direction_lanes": true,
+    "entry": "First legal, fully valid, non-limit-up coordinate open strictly after the completed Friday signal close and no later than signal_cal_idx+3.",
+    "target": "+10 percent gross from executed coordinate entry, first sellable target touch strictly after the entry session.",
+    "time_exit": "First legal sellable coordinate open strictly after entry_cal_idx+20 if target was not reached.",
+    "t_plus_one": true,
+    "round_trip_cost": 0.004,
+    "suspension_and_price_limits": "binding",
+    "corporate_action_coordinate": "The signal invalid_step_cum must remain unchanged through entry and exit; fail closed on any break.",
+    "no_same_bar_fill": true,
+    "no_portfolio_replay": true
+  },
+  "outcome_buckets": {
+    "PROFIT_GE_4PCT": "completed net return >= 0.04",
+    "PROFIT_0_TO_4PCT": "0 <= completed net return < 0.04",
+    "LOSS_0_TO_10PCT": "-0.10 < completed net return < 0",
+    "SEVERE_LOSS": "completed net return <= -0.10",
+    "NO_COMPLETED_TRADE": "no legal complete lifecycle under the frozen contract"
+  },
+  "chart_contract": {
+    "window": "Up to 126 available coordinate sessions before and 126 after signal, never after 2021-06-30.",
+    "marks": [
+      "signal close",
+      "executed entry",
+      "frozen 10 percent target",
+      "executed exit"
+    ],
+    "review_order": [
+      "all candidates chronologically",
+      "all candidates by direction lane and complete outcome bucket",
+      "explicit profitable-versus-losing contradiction review"
+    ],
+    "rule_limit": 5
+  },
+  "development_gate_after_rule_freeze": {
+    "minimum_completed_signals_each_year": 50,
+    "minimum_mean_net_return_each_year": 0.04,
+    "required_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "if_failed": "Close the exact chart rule; do not open 2022-2024 and do not rescue thresholds."
+  },
+  "prohibited": [
+    "2022-2024 reads before the development gate passes",
+    "direction chosen from aggregate returns without chart-rule freeze",
+    "target or horizon search",
+    "parameter grids",
+    "manual chart deletion",
+    "same-session signal fills",
+    "portfolio replay before a chart rule passes the annual event gate"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "experiment": "ASHARE-REGIME-ROUTED-CROSS-INDUSTRY-TAKEOVER-V5",
+  "stage": "FROZEN_AFTER_PRE_2022_DEVELOPMENT_BEFORE_2022_2025_CHALLENGE",
+  "scientific_status": "PRE_2022_MECHANISM_DERIVED_SEQUENTIAL_TEMPORAL_CHALLENGE",
+  "economic_hypothesis": "A high-turnover reclaim of a recently revealed seller cost is genuine demand only when it is a cross-industry event and the broad market is either already supportive or deeply capitulated. A mildly negative sixty-session market is the unresolved distribution regime: apparent reclaims there are more likely temporary inventory transfer than a durable change in marginal price setter.",
+  "inherits": {
+    "mother": "ASHARE-SELL-PRESSURE-COST-ZONE-VOLUME-RECLAIM-V1",
+    "mother_freeze_sha256": "a8225c15d5b57faebed547002e82658ad3ad7d24827ad247f76efa6c815c8cb4",
+    "development_candidates_sha256": "ff72c1ff499acc3df5226e03d03bf029b9545f554102b444d8a087265d960cae",
+    "development_daily_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "challenge_daily_sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9"
+  },
+  "signal_rules": [
+    "the most recent eligible seller anchor is three through twenty sessions before the signal",
+    "the seller anchor falls at least three percent, trades at least 1.5 times its strictly prior twenty-session mean turnover, and closes in the bottom thirty-five percent of its range",
+    "the frozen seller cost is anchor amount divided by volume in the valid corporate-action coordinate",
+    "every intervening close remains below the frozen seller cost with unchanged valid lineage",
+    "the signal touches the cost, closes at least 0.5 percent above it and no lower than the anchor close, rises at least two percent, closes in the top thirty percent of its range, and is not limit-up",
+    "the signal closes at or above the strictly prior session high on at least 1.5 times its strictly prior twenty-session mean turnover",
+    "before stock ranking, at least eleven independent symbols and eight point-in-time causal industries complete the takeover on the same close",
+    "admit the event only when the valid tradable non-ST universe median sixty-session adjusted return is at least zero or no greater than minus ten percent; reject the unresolved interval strictly between minus ten percent and zero",
+    "within each date and causal industry keep at most three stocks, preferring the more negative seller-anchor return; cycle first industry choices before second and third choices with deterministic tie-breakers"
+  ],
+  "execution": {
+    "entry": "first legal non-upper-limit open in signal plus one through signal plus three",
+    "profit_target": "ten percent above entry, never eligible on the entry bar",
+    "time_stop": "H20 close decision followed by the first legal sellable open",
+    "market_failure": "compound the daily cross-sectional median return of the valid tradable non-ST universe from the first post-signal close; at or below 0.90 of signal-close level, decide failure and exit at the next legal sellable open",
+    "stock_cost_retest_stop": "none",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "same_bar_fill": false
+  },
+  "development_quarantine": {
+    "signal_period": [
+      "2014-01-01",
+      "2021-11-30"
+    ],
+    "outcome_and_market_bar_end": "2021-12-31",
+    "post_2021_price_or_outcome_bar_read_for_v5_selection": false,
+    "post_2021_dataset_extent_metadata_seen": true,
+    "charts_reviewed": 62,
+    "chart_contact_sheets_reviewed": 11,
+    "chart_runner_sha256": "7c41415eb9fa0a6391379649d4d900a221aa9f6b62389c7e7105d46a7fdd4b93"
+  },
+  "development_evidence": {
+    "selected_signals": 555,
+    "completed": 552,
+    "completed_per_year": 69.0,
+    "mean_net_return": 0.05384756280010562,
+    "median_net_return": 0.09600000000000009,
+    "mean_holding_sessions": 13.360507246376812,
+    "win_rate": 0.7952898550724637,
+    "severe_loss10": 0.04528985507246377,
+    "target_hit": 0.644927536231884,
+    "distinct_signal_dates": 26,
+    "signal_date_equal_weight_mean_net": 0.04584957660716566,
+    "largest_date_share": 0.14855072463768115,
+    "positive_signal_date_share": 0.9230769230769231,
+    "diversified_top10_mean_net": 0.04874499025855629,
+    "every_year_has_positive_trades": true,
+    "all_frozen_gates_pass": true
+  },
+  "development_artifacts": {
+    "runner_sha256_before_freeze_guard": "2617c498f3a4e76cfed2da06558c80e99501445d771cded6ba2cbda5df5ac660",
+    "result_sha256": "7d90ee5924dc0f257145cf486f2963fe88bce6651cd7dd28bd14da802f89aadd",
+    "selected_candidates_sha256": "d00c6dedb430bc58e3200e6471219a44bb424e748ba8b6ad8d98821e5fee3f24",
+    "outcomes_sha256": "67fcdcb11be336c9aed013b6de9bb09bfefc18cb554cedc85ef62a63a04b4188"
+  },
+  "challenge": {
+    "signal_period": [
+      "2022-01-01",
+      "2025-12-31"
+    ],
+    "outcome_tail_end": "2026-03-31",
+    "market_regime_warmup": "use the current challenge asset whenever its sixty-session median exists; only missing early-2022 warmup dates use the separately frozen historical PIT asset",
+    "open_once": true,
+    "no_threshold_rescue": true,
+    "report_years_event_concentration_routes_and_diversified_top10": true
+  },
+  "governance": {
+    "future_market_function": false,
+    "same_bar_fill": false,
+    "unknown_required_lineage_market_or_execution_state": "fail closed",
+    "participant_identity_claim": false,
+    "independent_confirmation_claim": false,
+    "disclosure": "The exact V5 selection was developed without reading post-2021 price or outcome values. V3 and V4 family challenge outcomes were already known, so V5 is a frozen sequential temporal no-rescue test rather than pristine independent confirmation. The V5 market-state split and every threshold were selected only on the pre-2022 replay."
+  }
+}

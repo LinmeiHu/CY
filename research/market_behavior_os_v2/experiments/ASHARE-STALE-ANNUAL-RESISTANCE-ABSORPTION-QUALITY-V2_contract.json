@@ -1,0 +1,76 @@
+{
+  "experiment_id": "ASHARE-STALE-ANNUAL-RESISTANCE-ABSORPTION-QUALITY-V2",
+  "status": "PRE_FEATURE_OUTCOME_FREEZE_AFTER_V1_BASELINE_OPEN",
+  "parent": "ASHARE-STALE-ANNUAL-RESISTANCE-ABSORPTION-BREAKOUT-V1",
+  "parent_contract_sha256": "358d0a76144b05e3bea372aa1acb9e0891790c290c38a749665ddc75f13786bc",
+  "parent_candidate_sha256": "9ec18654de81df90fa09b396a95b2bbcb649fde610c4e8a38e80fa4f9edc4832",
+  "known_before_v2_freeze": {
+    "v1_discovery_2014_2018_pooled_mean_net": 0.061638129052303134,
+    "v1_confirmation_2019_2021_pooled_mean_net": 0.02819506751301799,
+    "v1_confirmation_annual_means": {
+      "2019": 0.021309710690182896,
+      "2020": 0.024507421006611456,
+      "2021": 0.041723804072858535
+    },
+    "v1_feature_conditioned_outcomes_inspected": false,
+    "v1_2022_2023_outcomes_opened": false
+  },
+  "economic_hypothesis": "A stale annual resistance breakout is more credible when price has approached and tested the old supply zone through an orderly, low-damage absorption process before the breakout. A one-day jump after a loose or overextended approach is not equivalent to prior supply absorption.",
+  "population_and_execution": {
+    "unchanged_from_parent_v1": true,
+    "target": 0.20,
+    "horizon_sessions": 60,
+    "round_trip_cost_bps": 40
+  },
+  "pre_signal_feature_clock": "all features end at the last completed daily bar strictly before the breakout signal close",
+  "feature_dictionary": {
+    "near_resistance_close_share_20": "share of the prior 20 completed closes in [0.90R, R), where R is the frozen stale prior-250-session peak",
+    "near_resistance_touch_count_60": "count in the prior 60 completed sessions with high >= 0.97R and close < R",
+    "approach_path_efficiency_20": "positive-coordinate displacement over sum of absolute close-to-close moves during the prior 20 completed sessions",
+    "prebreakout_runup_20": "last prior completed close / first close in the prior-20 window - 1",
+    "prebreakout_max_drawdown_20": "minimum prior close / running prior close maximum - 1 within the prior-20 window",
+    "prior5_turnover_over_prior20": "mean turnover in the last 5 completed pre-signal sessions divided by mean turnover in the prior-20 window"
+  },
+  "allowed_condition_directions": {
+    "near_resistance_close_share_20": ">=",
+    "near_resistance_touch_count_60": ">=",
+    "approach_path_efficiency_20": ">=",
+    "prebreakout_runup_20": "<=",
+    "prebreakout_max_drawdown_20": ">=",
+    "prior5_turnover_over_prior20": "<="
+  },
+  "threshold_space": {
+    "continuous_features": ["discovery_q30", "discovery_q50", "discovery_q70"],
+    "near_resistance_touch_count_60": [1, 3, 5],
+    "no_arbitrary_numeric_thresholds_after_confirmation_open": true
+  },
+  "rule_space": {
+    "maximum_conditions": 2,
+    "minimum_discovery_completed_trades": 300,
+    "minimum_each_discovery_year_completed_trades": 20,
+    "selection_primary": "highest median annual mean net return across 2014-2018",
+    "selection_secondary": "highest worst annual mean net return",
+    "selection_tertiary": "higher retained completed-trade count",
+    "simplicity_tolerance_median_annual_mean": 0.01,
+    "prefer_one_condition_if_within_tolerance": true
+  },
+  "chronology": {
+    "rule_discovery": ["2014-01-01", "2018-12-31"],
+    "fixed_rule_confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "confirmation_completed_trades_per_year_average_strictly_greater_than": 50,
+    "confirmation_mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20
+  },
+  "audit": {
+    "parent_signal_identity_changed": false,
+    "entry_exit_changed": false,
+    "feature_uses_signal_or_future_bar": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

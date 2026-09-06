@@ -1,0 +1,56 @@
+{
+  "experiment": "ASHARE-SELL-PRESSURE-COST-ZONE-VOLUME-RECLAIM-V1",
+  "stage": "RULE_FROZEN_BEFORE_EXACT_CANDIDATE_OR_OUTCOME_AGGREGATION",
+  "scientific_status": "PRE_2022_DEVELOPMENT_RULE",
+  "economic_hypothesis": "A large down session with unusually high turnover records observable forced supply and an objective average transfer cost. If price remains below that cost for several sessions and later retests then closes back above it with strong price progress, high close location, and renewed turnover, demand has paid through the seller's cost rather than merely benefiting from quiet supply.",
+  "development_signal_period": ["2014-01-01", "2021-12-31"],
+  "challenge_signal_period": ["2022-01-01", "2025-12-31"],
+  "rules": {
+    "seller_anchor": [
+      "most recent eligible session from signal minus 20 through signal minus 3",
+      "anchor close-to-close return <= -3 percent",
+      "anchor turnover >= 1.5 times its strictly prior 20-session mean",
+      "anchor close location <= 35 percent of its completed range",
+      "anchor key cost equals raw amount divided by raw volume, mapped into the anchor coordinate system"
+    ],
+    "inventory_pressure": [
+      "every intervening completed close remains strictly below the frozen anchor key cost",
+      "all anchor-through-signal rows remain on the same coordinate lineage and pass required validity"
+    ],
+    "demand_reclaim": [
+      "signal low touches or trades below the frozen anchor key cost",
+      "signal close is at least 0.5 percent above the frozen anchor key cost and not below the anchor close",
+      "signal close-to-close return >= 2 percent",
+      "signal close location >= 70 percent",
+      "signal turnover >= its strictly prior 20-session mean",
+      "signal is not an upper-limit close"
+    ],
+    "deduplication": "first qualifying signal per symbol followed by a 20-session cooldown"
+  },
+  "execution": {
+    "decision_at": "completed signal close",
+    "entry": "first legal non-upper-limit open in signal plus one through three",
+    "profit_target": "+10 percent from executable entry, first eligible from the first sellable session",
+    "time_stop": "first legal sellable open after the H20 completed-session decision",
+    "failure_stop": "none",
+    "round_trip_cost": 0.004,
+    "same_bar_fill": false,
+    "t_plus_one": true,
+    "unknown_required_state": "fail closed"
+  },
+  "development_gate": {
+    "completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_at_least": 0.04,
+    "pooled_mean_holding_sessions_strictly_less_than": 15,
+    "every_development_year_with_completed_trades_mean_positive": true,
+    "challenge_may_open_only_if_all_pass": true
+  },
+  "governance": {
+    "2022_plus_candidate_or_outcome_read_before_development_pass": false,
+    "future_market_function": false,
+    "future_anchor_or_cost_definition": false,
+    "threshold_grid": false,
+    "post_failure_threshold_rescue": false,
+    "participant_identity_claim": false
+  }
+}

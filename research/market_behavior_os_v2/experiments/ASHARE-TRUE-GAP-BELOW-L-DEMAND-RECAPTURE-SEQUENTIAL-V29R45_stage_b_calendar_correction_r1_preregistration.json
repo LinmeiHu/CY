@@ -1,0 +1,203 @@
+{
+  "correction_experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45-STAGE-B-CALENDAR-CORRECTION-R1",
+  "base_experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45",
+  "stage": "DEVELOPMENT_STAGE_B_OPERATIONAL_CORRECTION_PRE_OUTCOME",
+  "status": "FROZEN_OPERATIONAL_CORRECTION_AWAITING_CY048_ACTIVATION_AND_RUNNER_REVIEW",
+  "protocol_version": "V1_OPERATIONAL_CORRECTION_PRE_OUTCOME",
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "post_2021_access": "PROHIBITED",
+  "scientific_change": "NONE",
+  "scientific_disclosure": "The first CY-046 V29R4 attempt was consumed by a deterministic calendar-schema orchestration defect before any daily, minute, corporate-action, portfolio, trade-summary or performance-gate computation. This correction creates a new asset wrapper, authorization, runner and output root. It changes no candidate, feature, threshold, execution rule, cost, capacity rule, exit rule or success gate.",
+  "inherited_contract": "Every unmentioned scientific, reporting, fail-closed, execution, accounting and publication contract is inherited unchanged from base preregistration SHA256 0280a61744b64b1b9bf4f028ce3e3b237bd2324e9447b6de8e088bfac8cca4d7.",
+  "predecessor_blocked_attempt": {
+    "parent_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b",
+    "parent_exact_slots": [
+      "v29r4",
+      "v29r5"
+    ],
+    "root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b/v29r4",
+    "exact_inventory": [
+      "attempt_seal.json",
+      "result.json"
+    ],
+    "attempt_seal": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b/v29r4/attempt_seal.json",
+      "sha256": "9c56d919e35f4e544763a10ff0f36cc49d4ade0f12c5b2e6fba6020411eed9ee"
+    },
+    "blocked_result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b/v29r4/result.json",
+      "sha256": "9b0b62a5e5dfd237766aaa6ec1079bd0f34ac203278fd21fcb15f7463b1d6fa9",
+      "aggregate_publication_status": "BLOCKED",
+      "verdict": "UNRESOLVED",
+      "performance_gates_computed": false,
+      "blocker": "market calendar misses columns: ['calendar_index']"
+    },
+    "rows_decoded_before_block": [
+      "V29R4 frozen identity",
+      "market calendar"
+    ],
+    "rows_not_decoded_before_block": [
+      "candidate administrative bounds",
+      "candidate daily price path",
+      "candidate minute execution path",
+      "candidate corporate-action events"
+    ],
+    "performance_information_revealed": false,
+    "completed_scientific_performance_attempts": 0,
+    "v29r5_unlock_authorized": false,
+    "old_slot_replay_authorized": false,
+    "old_v29r5_slot_required_state": "EMPTY_0700_NOT_IMMUTABLE"
+  },
+  "root_cause": {
+    "raw_calendar_schema": [
+      "trade_date",
+      "calendar_index"
+    ],
+    "internal_calendar_schema": [
+      "trade_date",
+      "cal_idx"
+    ],
+    "first_differing_state": "The original run_arm normalized the raw calendar and renamed calendar_index to cal_idx before passing the same object to administrative_censor, whose unchanged input contract requires the raw calendar_index schema.",
+    "same_defect_sites": [
+      "administrative_censor",
+      "verify_admin_bounds",
+      "evaluate_one_outcome"
+    ]
+  },
+  "only_allowed_functional_change": {
+    "location": "run_arm calendar orchestration",
+    "before": "calendar = normalize_calendar(_projected_read(MARKET_CALENDAR, CALENDAR_COLUMNS)); pass calendar to three existing consumers",
+    "after": "raw_calendar = _projected_read(MARKET_CALENDAR, CALENDAR_COLUMNS); pass raw_calendar to the same three existing consumers",
+    "normalizer_change_allowed": false,
+    "consumer_change_allowed": false,
+    "strategy_or_accounting_change_allowed": false
+  },
+  "allowed_operational_identity_changes": {
+    "asset_id": "CY-048",
+    "experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45-STAGE-B-CALENDAR-CORRECTION-R1",
+    "protocol_version": "V1_OPERATIONAL_CORRECTION_PRE_OUTCOME",
+    "authorization_id": "CYQ-AUTH-ASHARE-DEMAND-RECAPTURE-V29R45-STAGE-B-CALENDAR-CORRECTION-R1-2018-2021-V1",
+    "new_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b_calendar_correction_r1",
+    "scientific_effect": "NONE"
+  },
+  "immutable_base_implementation": {
+    "runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_demand_recapture_sequential_v29r45_stage_b.py",
+      "sha256": "e406c671fccdc6558c8bf9f51ec6df39a2c92b01fea4b663c96358a105b929e0"
+    },
+    "preregistration": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-DEMAND-RECAPTURE-SEQUENTIAL-V29R45_stage_b_preregistration.json",
+      "sha256": "0280a61744b64b1b9bf4f028ce3e3b237bd2324e9447b6de8e088bfac8cca4d7"
+    },
+    "asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_ashare_true_gap_below_l_demand_recapture_v29r45_stage_b_asset.py",
+      "sha256": "5a082f61bd1166907dc8a1180ba132c1f25788f90d44e0db96666249b01ecf44"
+    }
+  },
+  "referenced_input_asset": {
+    "asset_id": "CY-046",
+    "root": "/Users/linmei/Documents/CY/data/staging/CY-046-DEMAND-RECAPTURE-V29R45-STAGE-B-2018-2021-V1",
+    "manifest_sha256": "2b1d6756a9c0401e47a2616eeac78b424c30eccbbd51bd3339caf86ec46addd0",
+    "activation_audit_sha256": "82d5b944d1840817eb76592264430abcc87a5d15f5443725fcc3a9c87d4be46c",
+    "registry_asset_normalized_sha256": "eda8d1e6bb5ac1ae037490c02e85f0cb807cca10927b8a656290ed0456f89bc9",
+    "registry_authorization_normalized_sha256": "43926b77d0428757a95d0aa2dc03dcb4d1f2290d6b48817fec1893a019aee690",
+    "activation_normalized_sha256": "edb4fefc9b58ba6240068d6ef0f8e1f573986bb43aa51a889ab707601427f4c5",
+    "parquet_files": 7,
+    "physical_copy_allowed": false,
+    "row_reselection_allowed": false
+  },
+  "required_reference_wrapper": {
+    "asset_id": "CY-048",
+    "authorization_id": "CYQ-AUTH-ASHARE-DEMAND-RECAPTURE-V29R45-STAGE-B-CALENDAR-CORRECTION-R1-2018-2021-V1",
+    "kind": "operational_correction_immutable_reference_wrapper",
+    "root": "/Users/linmei/Documents/CY/data/staging/CY-048-DEMAND-RECAPTURE-V29R45-STAGE-B-CALENDAR-CORRECTION-R1-V1",
+    "exact_inventory": [
+      "asset_manifest.json",
+      "activation_audit.json"
+    ],
+    "parquet_rows_decoded_by_builder": false,
+    "parquet_bytes_copied_by_builder": false,
+    "outcomes_or_returns_opened_by_builder": false,
+    "activation_before_retry": true,
+    "manifest_required_bindings": [
+      "corrected preregistration path and sha256",
+      "corrected runner path and sha256",
+      "reference-wrapper builder path and sha256",
+      "CY-046 manifest and activation audit",
+      "all seven referenced parquet paths, sizes, rows, row groups, schema hashes and content hashes",
+      "predecessor attempt and BLOCKED result"
+    ],
+    "audit_binds_manifest": true,
+    "central_authorization_binds_manifest_and_audit": true
+  },
+  "frozen_cohorts": {
+    "V29R4_CAP25": {
+      "rows": 251,
+      "identity_sha256": "cfa5ef5343e046c7be469c9d0df5c6a592d506fcac5c18874df964fb71a88005",
+      "stage_a_selected_sha256": "dc47fd00383045957d9ee6cb94f03f09f5a9f1688821799f6e0d8d3d4047c5ba"
+    },
+    "V29R5_CAP25": {
+      "rows": 255,
+      "identity_sha256": "fa70e3716b9bb868fe78caa55e461930d2c225f4bd0a22c2150916d5702957b9",
+      "stage_a_primary_sha256": "e225daa011d3851ad406fac525281efa1b0e5e52700e613117637eb82a15857c"
+    }
+  },
+  "sequential_testing": {
+    "order": [
+      "V29R4_CAP25",
+      "V29R5_CAP25"
+    ],
+    "authorized_operational_replay_count": 1,
+    "completed_scientific_performance_attempts_before_correction": 0,
+    "stop_rule": "If corrected V29R4_CAP25 passes all three gates, stop and never open V29R5. Corrected V29R5 may open exactly once only after a COMPLETE immutable corrected-V29R4 performance failure in the new output root.",
+    "old_blocked_result_does_not_unlock_v29r5": true,
+    "correction_consumption_rule": "If the corrected V29R4 attempt becomes BLOCKED, partial or crash-consumed, no further operational retry is authorized by this protocol and V29R5 remains locked.",
+    "after_both_fail": "Return to a new outcome-blind Stage A. No threshold repair is allowed here."
+  },
+  "success_gate": {
+    "average_accepted_trades_per_development_year": ">50",
+    "annual_denominator_years": 4,
+    "mean_net_return": ">=0.04",
+    "mean_holding_sessions": "<15",
+    "all_three_required": true,
+    "comparison_precision": "Unrounded counts and full-precision event-equal arithmetic means"
+  },
+  "unchanged_execution_contract": {
+    "entry": "T+1 first legal open in CY-008 window_index=0 under the frozen A67 demand-recapture contract",
+    "portfolio_capacity": "online K50; same-day exits do not release capacity and rejected candidates never open a future path",
+    "target_and_exits": "unchanged fixed tick-exact target, H1-H20 target evidence, H21-H23 time/risk handling",
+    "costs": "unchanged frozen round-trip costs and Decimal cash/share conservation",
+    "corporate_actions": "unchanged direct QD-010 terms, knowledge-time and effective-session reconciliation",
+    "price_limits_and_status": "unchanged legal open, suspension and up/down-limit fail-closed rules"
+  },
+  "pit_contract": {
+    "grade": "B",
+    "strict_pit_eligible": false,
+    "qd010_revision_history_complete": false,
+    "publication_allowed": false,
+    "usage": "RESEARCH_CONDITIONAL_HYPOTHESIS_ONLY"
+  },
+  "forbidden": [
+    "candidate reselection or cohort substitution",
+    "raw competing-cohort outcomes",
+    "charts or visual outcome attribution",
+    "threshold, target, holding-period, capacity, cost or execution changes",
+    "validation or publication",
+    "strict PIT-A claims",
+    "any 2022-plus read"
+  ],
+  "publication": {
+    "new_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_recapture_v29r45_stage_b_calendar_correction_r1",
+    "slots": [
+      "v29r4",
+      "v29r5"
+    ],
+    "attempt_seal_before_any_referenced_parquet_row": true,
+    "no_replace": true,
+    "readonly_plus_uf_immutable": true,
+    "old_output_root_may_not_be_modified": true
+  }
+}

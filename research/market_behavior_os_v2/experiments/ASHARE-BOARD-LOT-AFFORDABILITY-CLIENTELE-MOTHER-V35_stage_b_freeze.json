@@ -1,0 +1,90 @@
+{
+  "experiment": "ASHARE-BOARD-LOT-AFFORDABILITY-CLIENTELE-MOTHER-V35-STAGE-B",
+  "research_status": "PRE_OUTCOME_EXECUTION_FREEZE_AWAITING_CY053_REGISTRATION",
+  "frozen_before_any_v35_forward_path_or_payoff_read": true,
+  "scientific_role": "Attach one fixed development lifecycle to every frozen V35 board-lot-affordability event. This is a mother-signal economic screen, not a portfolio replay or parameter search.",
+  "parent_stage_a": {
+    "semantic_freeze_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BOARD-LOT-AFFORDABILITY-CLIENTELE-MOTHER-V35_freeze.json",
+    "semantic_freeze_sha256": "31d2da975d9d1d6c57b91dfd5eac26b2cb0fc0001cb4055c5c1c629dded9ffe0",
+    "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_board_lot_affordability_clientele_mother_v35_stage_a.py",
+    "runner_sha256": "5b403fddf00112ea62c9c67a10a78a131bc7936a329c62f0fdd2dd9b69a7d814",
+    "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V35-CY051_DATA_ASSET_MANIFEST.json",
+    "manifest_sha256": "74ec117836c04003e600fc105096ef4ae8ec95e60b418f68abe84ab991d63b94",
+    "result_path": "/Volumes/quant/CY_quant_research/ashare_board_lot_affordability_clientele_mother_v35/stage_a/result.json",
+    "result_sha256": "a0a425be6995809689c310bf0a373283abe6e9623890942075b8bd0feea9c976",
+    "candidates_path": "/Volumes/quant/CY_quant_research/ashare_board_lot_affordability_clientele_mother_v35/stage_a/candidates_frozen.parquet",
+    "candidates_sha256": "4fef77ac834a55a2805dd93c2359e218c0c47dec5a154f7cb9585e8d15b2cd81",
+    "candidate_rows": 1047,
+    "candidate_annual_counts": {"2018": 365, "2019": 326, "2020": 356},
+    "required_state": {
+      "status": "PASSED_OUTCOME_BLIND_OPPORTUNITY_GATE_STAGE_B_NOT_AUTHORIZED",
+      "semantic_gate_passed": true,
+      "opportunity_gate_passed": true,
+      "stage_a_gate_passed": true,
+      "outcome_columns_read": false,
+      "post_signal_rows_read": false,
+      "post_2020_rows_read": false
+    }
+  },
+  "signal_scope": {
+    "signal_start": "2018-01-05",
+    "signal_end": "2020-12-04",
+    "required_signal_years": [2018, 2019, 2020],
+    "candidate_definition": "Exactly the 1,047 Stage-A frozen event_id rows; no re-ranking, reselection, cooldown change, proxy change or membership change.",
+    "candidate_definition_change": false
+  },
+  "outcome_data": {
+    "raw_daily_asset": "CY-006",
+    "partitions": [2018, 2019, 2020, 2021],
+    "maximum_path_row_date": "2021-06-30",
+    "maximum_event_path": "126 global market sessions strictly after each frozen signal, additionally capped at 2021-06-30",
+    "2021_role": "Path-completion buffer for late-2020 frozen signals only; no 2021 signal may enter.",
+    "2022_plus": "FORBIDDEN",
+    "coordinate_state_path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+    "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+    "path_completeness": "The cap must provide at least 126 global sessions after the latest signal. Missing candidate paths fail closed; unsellable or invalid paths remain explicit non-completed outcomes."
+  },
+  "outcome_attachment": {
+    "entry": "Inspect global market cal_idx signal+1 through signal+3 in order. Fill at the first legal, fully valid, non-upper-limit coordinate open. Never fill on the signal bar.",
+    "target": "The first later same-lineage legal coordinate high at least 1.10 times entry exits at exactly +10% gross, subject to the frozen sellability check.",
+    "fallback": "At the first same-lineage row with cal_idx strictly greater than entry_cal_idx+20, process the open before same-day high. Exit at target if sellable open is at/above target; otherwise exit at coordinate open. Only an unsellable open may defer to a later same-day legal target touch.",
+    "target_return": 0.10,
+    "horizon_sessions": 20,
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "no_stop": true,
+    "limits_suspensions_corporate_actions_and_coordinate_lineage": "BINDING_FAIL_CLOSED",
+    "execution_reference_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+    "execution_reference_sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+  },
+  "development_gate": {
+    "completed_signals_strictly_greater_than_each_year": 50,
+    "mean_net_return_strictly_greater_than_each_year": 0.04,
+    "years": [2018, 2019, 2020],
+    "if_failed": "Keep later periods closed; no threshold rescue, parameter change or portfolio inference.",
+    "if_passed": "A pass is development evidence only and does not authorize any later-period read, chart phase or portfolio replay."
+  },
+  "required_registry_authorization": {
+    "asset_id": "CY-053",
+    "authorization_id": "CYQ-AUTH-ASHARE-BOARD-LOT-AFFORDABILITY-V35-STAGE-B-2018-2021H1-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V35_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "outcome_attachment_authorized": true,
+    "charts_authorized": false,
+    "portfolio_replay_authorized": false,
+    "must_exactly_install_registry_suggestion_before_source_access": true
+  },
+  "outputs": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_board_lot_affordability_clientele_mother_v35/stage_b",
+    "files": ["prepared_candidates.parquet", "future_paths.parquet", "outcomes.parquet", "result.json"],
+    "publication": "same-parent temporary construction, complete audits, re-hash every bound input, then one atomic no-overwrite rename"
+  },
+  "prohibited": [
+    "changing the Stage-A signal definition, thresholds, ranks, cooldown, direction, dates or candidate membership",
+    "same-bar entry, entry after signal+3, target/horizon/cost search, stop search or alternate execution",
+    "2021 signals, any row after 2021-06-30, or any 2022-plus read",
+    "chart construction, portfolio replay, threshold rescue or market-state filtering",
+    "overwriting any V35 Stage-A or existing Stage-B artifact",
+    "claiming independent confirmation or strict PIT-A"
+  ]
+}

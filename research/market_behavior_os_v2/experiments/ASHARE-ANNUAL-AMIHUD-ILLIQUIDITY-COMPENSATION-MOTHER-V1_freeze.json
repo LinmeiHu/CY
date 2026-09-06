@@ -1,0 +1,73 @@
+{
+  "experiment": "ASHARE-ANNUAL-AMIHUD-ILLIQUIDITY-COMPENSATION-MOTHER-V1",
+  "status": "FROZEN_BEFORE_OUTCOME_LABELS",
+  "scientific_role": "NEW_ECONOMIC_MOTHER_FAMILY_FOR_CANDLE_DISCOVERY",
+  "relationship_to_prior_map": "This activates the previously deferred canonical annual Amihud characteristic without silently converting it to a monthly factor. The later candle-derived strategy, if any, is an A-share adaptation and must be named separately.",
+  "economic_hypothesis": "Stocks with high realized price impact per unit currency turnover may earn a future illiquidity-risk premium, but the long leg must be established directly under A-share execution and capacity semantics.",
+  "formation": {
+    "portfolio_years": [2015, 2016, 2017, 2018, 2019, 2020],
+    "sleeves": ["MAIN", "CHINEXT"],
+    "decision_time": "Close of the last market session of the preceding calendar year.",
+    "lookback": "All valid traded sessions in the preceding calendar year only.",
+    "daily_measure": "abs(causal coordinate step_return) / reported RMB amount; no arbitrary scale multiplier changes rank order",
+    "annual_measure": "Arithmetic mean of the valid daily measure.",
+    "minimum_valid_daily_observations": 200,
+    "mother_selection": "Within the complete eligible decision-date cross-section, deterministic descending NTILE(5); retain quintile 1 (highest annual Amihud illiquidity).",
+    "no_outcome_based_direction_change": true
+  },
+  "eligibility": {
+    "not_st": true,
+    "positive_amount": true,
+    "trade_status": 1,
+    "current_day_data_tradable": true,
+    "current_valid": true,
+    "history_valid": true,
+    "market_rule_valid": true,
+    "historical_identity_valid": true,
+    "hard_valid": true,
+    "corporate_action_count": 0,
+    "corporate_action_valid": true,
+    "corporate_action_blocking": false,
+    "unknown_required_lineage": "FAIL_CLOSED"
+  },
+  "chart_contract": {
+    "pre_decision_market_sessions": 126,
+    "post_decision_market_sessions": 126,
+    "show_ohlc": true,
+    "show_turnover": true,
+    "individual_chart_for_every_mother_signal": true,
+    "chronological_review_before_rule_outcome_aggregation": true,
+    "complete_outcome_group_review_before_rule_freeze": true
+  },
+  "label_only_execution": {
+    "signal_available": "preceding-year final-session close",
+    "entry": "first legal non-limit-up open in signal_cal_idx+1 through signal_cal_idx+3",
+    "fixed_horizon_market_sessions": 120,
+    "exit": "first legal non-limit-down open on or after entry_cal_idx+120",
+    "round_trip_cost_fraction": 0.004,
+    "labels_may_sort_charts_but_may_not_be_aggregated_before_review": true
+  },
+  "market_context": {
+    "construction": "Causal 20/60-session broad-market median state known at the decision close.",
+    "role_before_visual_review": "context only; no hard filter"
+  },
+  "success_gate_after_chart_rule_freeze": {
+    "completed_signals_each_portfolio_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "if_pass": "Freeze unchanged and open portfolio years 2022-2024.",
+    "if_fail": "Close without threshold, quintile, horizon, or regime rescue and continue to a different economic mother family."
+  },
+  "governance": {
+    "development_history": "2014-2021 context supporting 2015-2020 signals and H120 labels",
+    "post_2021_signal_read_before_gate": false,
+    "post_2023_outcome_read": false,
+    "cy011_read": false,
+    "no_parameter_grid": true,
+    "no_same_bar_fill": true,
+    "no_portfolio_replay": true
+  },
+  "frozen_input": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
+  }
+}

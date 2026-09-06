@@ -1,0 +1,71 @@
+{
+  "experiment": "ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1",
+  "stage": "POST_COUNT_OUTCOME_BLIND_SEMANTIC_CORRECTION_FREEZE",
+  "frozen_at": "2026-09-06",
+  "purpose": "Correct one source-schema interpretation error discovered by the outcome-blind V34 count audit. This is not a threshold, direction, universe or outcome rescue, and it does not alter any economic signal choice.",
+  "parent_definition": {
+    "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34_freeze.json",
+    "sha256": "86adf9667245638671ec9c4b733ff47fbd16abd20306d3f4c2bc048a394e489d",
+    "all_terms_inherited_except": "distribution_rights_subscription_ratio_semantics"
+  },
+  "triggering_outcome_blind_incident": {
+    "result_path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34/stage_a/result.json",
+    "result_sha256": "b6c6906fccb70b8af287d7c1f5741a096cf4386624df5e4b91b6f872ab7e7322",
+    "observed": "All 8,197 in-scope distribution rows were rejected because the parent runner required a finite rights_subscription_ratio equal to zero; zero candidate and representation rows were produced.",
+    "outcome_columns_read": false,
+    "post_signal_rows_read": false,
+    "post_2020_rows_read": false,
+    "scientific_effect": "The parent V34 exact implementation remains permanently closed and its artifacts remain unchanged. The first V34R1 publication attempt failed closed before publication when the same optional-zero issue was detected in the CY-006 joined rights_ratio. A later publication attempt reached the non-filtering collision summary and failed closed because the active isolated runtime lacks SciPy; no artifact was published. All observations were outcome blind; V34R1 is a separately named semantic-correction experiment."
+  },
+  "source_semantic_authority": {
+    "normalizer_path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/lineage/cninfo_current_snapshot.py",
+    "normalizer_sha256": "6b012c19c825b2fb7026b83a55710cf00b2d40cfcb4d334543d2a4511dac1eae",
+    "distribution_contract": "The distribution branch assigns rights_subscription_ratio=np.nan and rights_subscription_price=np.nan because rights terms are structurally inapplicable to a distribution row.",
+    "rights_contract": "Actual rights issues are normalized into the separate rights_issues.parquet asset with a positive rights_subscription_ratio when source terms are complete.",
+    "composite_contract": "The sealed normalizer's composite action logic maps a distribution structural N/A to economic zero only while separately summing actual rights rows.",
+    "cy006_optional_zero_authority": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/chinext_v1/original_breakout_lineage/experiments/EXP-OBL-014_spec.json",
+      "sha256": "aeee3d1612b867edb91fbbdf1d0dba40ca5032ad0e5b8f95d4e2d8dffebdfd14",
+      "frozen_engineering_contract": "Coalesce null optional rights_ratio to zero exactly as canonical finite_or_default semantics require; no lineage, feature, gate, population or interpretation change."
+    }
+  },
+  "only_semantic_correction": {
+    "parent_incorrect_test": "distribution rights_subscription_ratio must be finite and equal to zero",
+    "v34r1_test": "Every distribution row entering the pure-cash test must have rights_subscription_ratio structurally missing exactly as required by the sealed distribution normalizer; then and only then it may be represented internally as economic zero for reuse of the parent eligibility logic.",
+    "independent_rights_guard": "No rights_issues row may exist for the same normalized market symbol and effective date. Rights-table duplicate, revision, identity, completeness and collision checks remain fail closed.",
+    "cy006_guard": "The joined CY-006 event-date optional rights_ratio may be null or finite zero under the already-frozen canonical optional-zero contract; only null is represented as economic zero. Any finite nonzero or nonfinite nonmissing value fails closed. The row must still exactly match the sole QD-010 action ID, cash amount and share_multiplier=1.",
+    "unexpected_value_policy": "Any finite distribution rights_subscription_ratio, schema drift or nonmissing unexpected value fails closed; it is not silently coerced."
+  },
+  "unchanged_frozen_science": {
+    "signal_period": "2018-01-01 through 2020-12-31 inclusive",
+    "universe": "Historical non-ST, valid and tradable Main Board and ChiNext identities under the exact parent V34 contract.",
+    "cash_yield": "cash_per_share_gross divided by raw event-date preclose",
+    "materiality": "cash_yield >= 0.02 exactly",
+    "share_multiplier": "exactly 1",
+    "cooldown": "strictly more than 120 global sessions since the last retained event for the same symbol",
+    "direction": "LONG_HIGH_REALIZED_CASH_YIELD_FROZEN_BEFORE_OUTCOMES",
+    "decision_at": "completed effective-date close",
+    "outcome_blind_stage_a_only": true,
+    "annual_opportunity_gate": "retained candidates strictly greater than 50 and at least 20 PIT industries in each of 2018, 2019 and 2020"
+  },
+  "implementation": {
+    "base_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34_stage_a.py",
+    "base_runner_sha256": "72fe4f7a6300b726ceed0f675ead921e8209aeca994b6cd7c014cbc0258b03d6",
+    "reuse_boundary": "After CY-047 joint authorization, the R1 runner hash-verifies and dynamically loads the parent runner. Narrow connection adapters verify that the distribution column is entirely structural N/A and that CY-006 optional rights values are only null or zero before presenting economic zero to the unchanged parent eligibility function. The non-filtering Spearman collision summary uses the same average-rank Pearson definition through NumPy so it does not require an unavailable SciPy package. All candidate validation, joining, counting, cooldown and atomic-publication code is otherwise reused.",
+    "output_root": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_a",
+    "publication": "single canonical atomic no-overwrite publication"
+  },
+  "cy047_joint_authorization": {
+    "asset_id": "CY-047",
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-STAGE-A-2018-2020-V1",
+    "purpose": "ASHARE_OUTCOME_BLIND_MOTHER_REPRESENTATION",
+    "authorized_arm": "V34R1_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY",
+    "pre_authorization_access": "Only this spec, the current runner, the CY-047 manifest and the central registry may be opened before joint authorization. The exact base runner and normalizer may be hashed only after that public envelope passes; no market/corporate-action source may be touched until the inherited source gate also passes."
+  },
+  "forbidden": [
+    "changing the 2-percent yield threshold, cooldown, direction, universe, board set, event timing or annual opportunity gate",
+    "any future price, return, payoff, outcome, chart, Stage B, portfolio, parameter search or 2021-plus row",
+    "modifying, deleting, overwriting or treating the original V34 Stage-A artifacts as valid economic evidence"
+  ],
+  "next_action": "Independently audit and hash-bind the narrow V34R1 runner and CY-047 manifest, then run exactly one outcome-blind Stage-A count audit. If its semantic or opportunity gate fails, close the corrected family without further rescue."
+}

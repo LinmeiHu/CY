@@ -1,0 +1,93 @@
+{
+  "experiment": "ASHARE-BEARISH-DISPLACEMENT-SUPPLY-ZONE-REENTRY-V1",
+  "status": "OUTCOME_BLIND_MOTHER_EVENT_AND_TRANSLATION_FREEZE",
+  "economic_hypothesis": "A high-turnover bearish displacement candle creates an objective traded overhead-supply zone between its close and open. After price has spent a meaningful interval completely below that zone, a later high-participation close back into its lower portion may reveal that trapped supply is being absorbed and create a measurable repair path toward the frozen upper boundary.",
+  "independence": "This is a traded bearish-candle body, not the untraded adjacent-session true-gap structure used by V26. No true-gap, collapse-gap, V13, V26, or V27 identity is used.",
+  "scientific_periods": {
+    "warmup_and_formation_context": "2013",
+    "chart_and_rule_discovery": "2014-01-01 through 2020-12-31",
+    "frozen_rule_confirmation": "2021-01-01 through 2021-12-31; signal outcomes remain unread until chart rules are frozen",
+    "challenge_only_after_development_gate": "2022-01-01 through 2024-12-31",
+    "post_2024_outcomes_authorized": false
+  },
+  "mother_event": {
+    "formation_bar": [
+      "PIT hard-valid, fully tradable, non-ST bar in one valid corporate-action coordinate lineage.",
+      "Coordinate close/open - 1 <= -5%.",
+      "Formation turnover >= its preceding-20-session mean.",
+      "Formation close location is in the bottom 30% of its range.",
+      "Formation low <= the minimum low of the preceding 20 completed sessions."
+    ],
+    "frozen_zone": "L = formation coordinate close; U = formation coordinate open. Both boundaries are known at formation close and never revised.",
+    "departure": "Within 60 market-session indices after formation, the stock completes a session whose coordinate high is strictly below L.",
+    "persistence": "A strong re-entry signal cannot occur until at least 20 market-session indices after the first complete-below session.",
+    "zone_integrity": "No completed post-formation/pre-signal coordinate high may reach U.",
+    "signal": [
+      "Occurs no later than 120 market-session indices after formation.",
+      "Completed coordinate close is >=L and <U.",
+      "Completed coordinate close is >= the preceding session coordinate high.",
+      "Close location is in the top 30% of the signal range.",
+      "Signal turnover >= its preceding-20-session mean.",
+      "Frozen U / signal close - 1 >= 5%."
+    ],
+    "primary_zone": "If several zones produce the same symbol/signal session, retain the most recently formed intact zone.",
+    "overlap_control": "After retaining an event, the same symbol requires more than 120 market-session indices before another retained event; this prevents overlapping 120-session zone lifecycles from being treated as independent."
+  },
+  "decision_and_execution": {
+    "decision_at": "completed signal-session close",
+    "entry": "first legal executable daily open strictly after the signal, no later than the third subsequent market-session index",
+    "entry_headroom": "U / executable entry coordinate - 1 >= 4.4%, providing at least 4.0% net target payoff after the frozen 40 bp round-trip cost",
+    "target": "frozen zone upper boundary U, eligible from the first T+1 sellable session",
+    "time_stop": "after 20 completed market-session indices, exit at the next legal sellable open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "price_limits_suspensions_and_corporate_actions": "binding; coordinate-lineage changes fail closed",
+    "signal_bar_fill": false
+  },
+  "chart_anatomy": {
+    "one_chart_per_retained_signal": true,
+    "window": "126 market-session indices before and after signal where observable",
+    "markers": ["formation", "L", "U", "first complete-below", "signal", "entry", "exit"],
+    "discovery_outcome_buckets": ["PROFIT_GE_4PCT", "PROFIT_0_TO_4PCT", "LOSS_0_TO_10PCT", "SEVERE_LOSS", "NO_COMPLETED_TRADE"],
+    "maximum_plain_language_rules_after_review": 5,
+    "rule_freeze_before_2021_signal_outcomes": true
+  },
+  "development_gate": {
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_positive": true,
+    "every_2014_2021_calendar_year_mean_net_positive": true,
+    "severe_loss10_rate_at_most": 0.15
+  },
+  "challenge_gate": {
+    "each_2022_2024_year_completed_trades_strictly_greater_than": 50,
+    "each_2022_2024_year_mean_net_return_strictly_greater_than": 0.04,
+    "each_year_median_net_return_positive": true,
+    "each_year_severe_loss10_rate_at_most": 0.15
+  },
+  "causality": {
+    "state_timestamp": "Every formation, zone, departure, persistence, integrity, and signal field is known by signal close.",
+    "future_extrema_in_signal": false,
+    "future_return_in_signal": false,
+    "full_sample_percentile_in_signal": false,
+    "calendar_year_bull_bear_label_in_signal": false,
+    "2021_signal_outcomes_read_before_rule_freeze": false,
+    "2022_plus_outcomes_read_before_development_pass": false
+  },
+  "coverage_only_history": {
+    "outcomes_read": false,
+    "amendments": [
+      "A prior-60-session +20% strength condition was rejected before outcomes because it produced only 6-75 raw events in several years; prior strength is retained as an anatomy descriptor rather than a mother-event gate.",
+      "A 20-session complete-below persistence and 5% remaining-zone headroom were selected for structural meaning and verified to preserve more than 50 raw events in every development year. No outcome was read during this coverage audit."
+    ]
+  },
+  "prohibited": [
+    "No true-gap or V26 identity reuse.",
+    "No future bar in formation, zone, signal, or market state.",
+    "No signal-bar entry or T+0 target exit.",
+    "No mother-event threshold change after development outcomes are attached.",
+    "No 2021 signal outcome read before chart-rule freeze.",
+    "No 2022-2024 outcome read unless the full development gate passes.",
+    "No machine learning, feature subset search, or threshold grid."
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-FIRST-INVESTABLE-RECLAIM-V29R4",
+  "governance": {
+    "current_runner_scope": "daily signal identity only",
+    "development_outcomes_opened_for_this_rule": false,
+    "missing_or_unknown_required_lineage": "FAIL_CLOSED",
+    "post_2021_partition_or_row_read_permitted": false,
+    "prohibited_inputs": [
+      "raw QD-004 minute partitions",
+      "CY-034 pit_daily_compact_2013_2023 because its bounded authorization does not cover V29R4 or rows after 2020-06-30",
+      "any return, exit, target-hit, outcome, capacity, portfolio, NAV, validation, challenge, or post-2021 row/result"
+    ],
+    "registry_modified": false
+  },
+  "hypothesis": "The old pipeline permanently consumed a gap after its first prior-high reversal even when that bar failed a contemporaneous investability gate. Keeping the gap armed until the first bar that simultaneously shows a fresh below-L snapback, valid liquidity state, two-sided price discovery, and orderly demand can recover economically identical opportunities without adding an outcome-conditioned feature.",
+  "parent_reproduction_policy": {
+    "old_protocol_exceptions_allowed": false,
+    "old_signal_drop_classes": [
+      "OLD_SIGNAL_DROPPED_FOR_LATENT_LINEAGE_DEFECT",
+      "OLD_SIGNAL_DROPPED_FOR_CROSS_ACTION_COORDINATE_DEFECT",
+      "OLD_SIGNAL_DROPPED_FOR_UNIFORM_RAW_TICK_REPRODUCTION"
+    ],
+    "retention_assertion": "Every old V28R2 gap whose old signal itself satisfies the uniform new CY033 raw-tick, action-free, lineage-complete final gate must remain selected. Old coordinate floating-point artifacts and cross-action coordinates are not grandfathered."
+  },
+  "runner_sha256": "085870fb8cb03dda25848a70fb2de6550b9289f6e4296da00923a50a7bee0ebe",
+  "scientific_status": "POST_HOC_DEVELOPMENT_SIGNAL_IDENTITY_REPAIR_NOT_EXTERNAL_VALIDATION",
+  "signal_rule": {
+    "action_coordinate_rule": "The gap row, every post-gap row through the candidate, and every row in the candidate trailing-20 window must be action-free: corporate_action_count=0, corporate_action_blocking=false, share_multiplier=1, cash_per_share=0. Unknown fails closed.",
+    "candidate_window": "completed CY033 daily bars with gap_age 10 through 14 inclusive, stopping at the first L touch, invalid lineage, or post-gap corporate-action coordinate barrier",
+    "first_only": "Select the first final-quality bar per frozen V13 gap_id; at most one signal per gap.",
+    "raw_price_tick_semantics": {
+      "cent_tick": "floor(raw_price*100 + 0.5 + 1e-6)",
+      "low20_tie": "Use the most recent occurrence of the minimum raw cent tick in the trailing 20 rows.",
+      "no_L_touch": "post-gap high tick must remain strictly below frozen raw L tick",
+      "prior_high_reversal": "current close tick > previous high tick"
+    },
+    "required_composite": {
+      "V13": "max post-gap depth below L >=10%; candidate remains >=5% below L; days since most-recent 20-row low tick 1..10; recovery from that raw low >=3%; prior-high raw-tick reversal",
+      "V27": "pre_peak_to_gap_sessions>=20; gap_age<=14; max_depth-current_depth>=5% of L",
+      "V28": "signal state valid and non-ST; exactly 20 prior daily rows have complete lineage; at most one prior one-price limit-down row",
+      "V28R1": "signal raw close < registered up-limit price - 0.006 CNY",
+      "V28R2": "positive signal amount <=2.0 times the median positive amount of the 20 completed trading sessions strictly before the signal; unknown intervening trade_status or incomplete lineage fails closed"
+    },
+    "signal_timestamp": "completed daily decision_at; every consumed available_at and decision_at must be no later than the candidate decision_at",
+    "snapshot_columns_preserved": [
+      "snapshot_id",
+      "daily_snapshot_id",
+      "trading_state_snapshot_id",
+      "industry_snapshot_id",
+      "corporate_action_snapshot_id",
+      "available_at",
+      "decision_at"
+    ]
+  },
+  "source_identity": {
+    "cy033": {
+      "manifest_sha256": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977",
+      "partitions": {
+        "2018": {
+          "path": "daily/partition_year=2018/data_0.parquet",
+          "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+          "size": 42011064
+        },
+        "2019": {
+          "path": "daily/partition_year=2019/data_0.parquet",
+          "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+          "size": 43320252
+        },
+        "2020": {
+          "path": "daily/partition_year=2020/data_0.parquet",
+          "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+          "size": 46073783
+        },
+        "2021": {
+          "path": "daily/partition_year=2021/data_0.parquet",
+          "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+          "size": 52153081
+        }
+      },
+      "registry_asset_normalized_sha256": "4df39a5b041942a434690d8327ea54cce1075a5ebe429ffb6411cee6c5ce3200",
+      "root": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1"
+    },
+    "parent_artifacts": {
+      "v13_contract": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13_contract.json",
+        "sha256": "1a103219811492a79ba52b1cf078d6902a19ae3479330d69d2fefcdb079e43a3"
+      },
+      "v13_entries": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_first_reversal_v13/prior_high_reversal/development/entries.parquet",
+        "sha256": "b8672a9dcba7357b4944ddc9dba8d1425fad56ff3cdbfa33d93e6b27c2a79ac0"
+      },
+      "v13_runner": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_first_reversal_v13.py",
+        "sha256": "a156657128053cdeda68e53d5f433de34976353bcc79f25cfab9410bb779dc26"
+      },
+      "v13_spec": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13_spec.json",
+        "sha256": "847b44cf8cf233d0b8094d77a891ddc6783402ddc0bc980a8d27256cd89d595d"
+      },
+      "v13_stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13_stage_a_freeze.json",
+        "sha256": "f6fb352678b831f31460fe62a719a83f87f61e5540b2e34f4e98bf9c302d92dc"
+      },
+      "v27_selected": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_fresh_capitulation_snapback_v27/development/fresh_snapback_selected_entries.parquet",
+        "sha256": "f98bb7f626422aa999c7a9d3582aaa60b2ebec881c18ee5e2dd2cb731518ba98"
+      },
+      "v27_stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-FRESH-CAPITULATION-SNAPBACK-V27_stage_a_freeze.json",
+        "sha256": "fc924f174232fdb1d88f703e38abbf2a65b8c31f9c5bef4bcf9a2cdadd185820"
+      },
+      "v28_selected": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_liquidity_trap_guard_v28/development/liquidity_guard_selected_entries.parquet",
+        "sha256": "2b71da3d16cf86a00700cf354328f62a4aea52adf3aef309a3911ea7a2b6a26a"
+      },
+      "v28_stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-LIQUIDITY-TRAP-GUARD-V28_stage_a_freeze.json",
+        "sha256": "87e42c1ecb2c4918bb4a1720e5af4a567b6c2abd31385a42a9d80af30d98b7c3"
+      },
+      "v28r1_selected": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_demand_not_locked_v28r1/development/demand_not_locked_selected_entries.parquet",
+        "sha256": "5f8d7e9440611d570dc55100d69c9ae017e44777ab4a434c8ab577c2c5227f99"
+      },
+      "v28r1_stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-DEMAND-NOT-LOCKED-V28R1_stage_a_freeze.json",
+        "sha256": "dab0dd0cc7c63295b56b5d3df3b95ed96a21f29b562aad0a228afec9c6ff2611"
+      },
+      "v28r2_selected": {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2/development/orderly_demand_selected_entries.parquet",
+        "sha256": "963aaae2053c4b62a5060931c757a51bc7776324f14089d4def5502db9e6d112"
+      },
+      "v28r2_stage_a_freeze": {
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_stage_a_freeze.json",
+        "sha256": "3655b7f67bd4728e2b610123ee075219b174461c24a48cb6064fe6cc9c04c5f9"
+      }
+    }
+  },
+  "stage_a_authorized": true,
+  "stage": "DEVELOPMENT_STAGE_A_ONLY",
+  "status": "FINAL_GOVERNANCE_REVIEW_PASSED_STAGE_A_AUTHORIZED",
+  "subsequent_execution_stage": {
+    "current_status": "NOT_AUTHORIZED_OR_IMPLEMENTED",
+    "fixed_direction_if_separately_preregistered": "Use registered CY-008 execution_5m window_index=0 only, require trade_date>signal_date and record available_at after the signal; describe its price as the next-day 09:31-09:35 first-window open, never as a 1-minute fill. Do not use entry-day 15:00 CY033 state as a 09:31 selection feature. Preserve pending corporate-action known<=signal and effective>=entry blocking semantics.",
+    "stage_a_execution_count": null
+  }
+}

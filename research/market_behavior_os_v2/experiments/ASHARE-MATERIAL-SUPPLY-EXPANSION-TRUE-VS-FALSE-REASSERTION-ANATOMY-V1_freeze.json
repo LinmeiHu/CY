@@ -1,0 +1,53 @@
+{
+  "experiment": "ASHARE-MATERIAL-SUPPLY-EXPANSION-TRUE-VS-FALSE-REASSERTION-ANATOMY-V1",
+  "research_status": "FROZEN_POST_HOC_FAILURE_ANATOMY",
+  "parent_rule": "ASHARE-MATERIAL-SUPPLY-EXPANSION-DEMAND-REASSERTION-V1",
+  "scientific_status": "The parent rule failed its one-shot 2018-2020 development gate. This anatomy is allowed only to locate the first pre-entry difference between durable demand reassertion and one-day false reassertion. It is not a rescue result or independent confirmation.",
+  "fixed_corpus": {
+    "completed_parent_trades": 525,
+    "event_low_failure": 385,
+    "time_exit_h120": 140,
+    "signal_years": [2018, 2019, 2020],
+    "validation_2022_2024_read": false
+  },
+  "primary_question": "Before the actual parent entry open, is there an observable price/turnover distinction between an apparently absorbed supply expansion that later remains accepted and a one-day reclaim that later fails?",
+  "chart_contract": {
+    "sessions_before_event": 126,
+    "sessions_after_event": 126,
+    "maximum_context_date": "2021-06-30",
+    "markers": [
+      "supply event",
+      "frozen event high and low",
+      "parent trigger close",
+      "parent entry open",
+      "parent exit open"
+    ],
+    "render_every_completed_parent_trade": true,
+    "review_every_chronological_contact_sheet": true
+  },
+  "pre_entry_observations_only": [
+    "event-to-trigger elapsed market sessions",
+    "trigger close distance above event high",
+    "stock-minus-industry return at trigger",
+    "turnover behavior from event through trigger",
+    "pre-event path context",
+    "whether any persistence is observable before the entry open"
+  ],
+  "explicit_hindsight_separation": {
+    "descriptive_only_after_entry": [
+      "later hold above event high",
+      "later retest outcome",
+      "event-low failure",
+      "H120 return"
+    ],
+    "prohibited_as_entry_predictor": "Any bar or event after the frozen parent entry timestamp."
+  },
+  "decision_rule": {
+    "maximum_new_pre_entry_mechanisms": 3,
+    "require_repeated_visual_evidence_and_counterexample_review": true,
+    "no_return_aggregation_during_visual_review": true,
+    "no_parent_parameter_change": true,
+    "no_validation_access": true,
+    "if_no_pre_entry_distinction": "Close the supply-expansion direction family and move research capital."
+  }
+}

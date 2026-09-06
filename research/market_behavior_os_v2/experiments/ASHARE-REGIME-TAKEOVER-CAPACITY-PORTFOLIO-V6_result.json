@@ -1,0 +1,61 @@
+{
+  "experiment": "ASHARE-REGIME-TAKEOVER-CAPACITY-PORTFOLIO-V6",
+  "contract_sha256": "038edc58d3bbdeace87bd527bc7868d360da52c2a0f900ffccd7d826a2056c47",
+  "development_2014_2021": {
+    "event_capped_candidates": 435,
+    "admitted_entries": 415,
+    "capacity_rejected": 19,
+    "completed": 413,
+    "completed_per_year": 51.625,
+    "mean_net_return": 0.05295239026057483,
+    "mean_holding_sessions": 12.772397094430993,
+    "event_equal_mean_net": 0.048400344001702,
+    "bull_lane_mean_net": 0.045976026547548954,
+    "deep_capitulation_lane_mean_net": 0.061720497659459785,
+    "all_gates_pass": true,
+    "artifact_sha256": {
+      "capacity_decisions": "b502d41ba3cede2e6278f8426df4b612f69eaa87e7113a19fc281297be8a252b",
+      "cash_ledger": "3b80d1277e873c38a0eb39276ba6e6c6c0a3481e87ed9910bc873b2e7bb3617e",
+      "result": "ff928c2d9ed04f0c3ef3ec815c50e95eea4f6f69097a1abd19fec449da535538"
+    }
+  },
+  "post_challenge_diagnostic_2022_2025": {
+    "independent_validation": false,
+    "event_capped_candidates": 635,
+    "admitted_entries": 431,
+    "capacity_rejected": 204,
+    "completed": 428,
+    "completed_per_year": 107.0,
+    "mean_net_return": 0.03984417002748416,
+    "mean_holding_sessions": 11.69158878504673,
+    "event_equal_mean_net": 0.04123795334899692,
+    "bull_lane_mean_net": 0.031630884151231616,
+    "deep_capitulation_lane_mean_net": 0.05293564993932912,
+    "all_gates_pass": false,
+    "failed_gates": [
+      "mean_net_ge_4pct",
+      "each_lane_mean_ge_4pct"
+    ],
+    "yearly_mean_net": {
+      "2022": 0.04982112137317047,
+      "2023": 0.020790261734634358,
+      "2024": 0.042011452291580174,
+      "2025": 0.03615083127497403
+    },
+    "portfolio_at_open_cost": {
+      "ending_nav": 1.390920768129463,
+      "annualized_return": 0.08598942917315444,
+      "maximum_open_positions": 49,
+      "realized_closed_trade_max_drawdown": -0.04543501023905605,
+      "unresolved_positions_at_end": 3,
+      "warning": "Open positions are carried at entry cost; this is a conserved accounting view, not complete mark-to-market performance."
+    },
+    "artifact_sha256": {
+      "capacity_decisions": "1ee93e1bc298d3b5a3bba4a5d2e8f7dddfb92151054ead10d72a219969cb545b",
+      "cash_ledger": "c921463839173c7bb5842fe8213b7fbc33eeed5c9ba5a377ac09ba91915fbcad",
+      "result": "6d6f67398862f6286eee9bc938b4c33634325ba891c7ba0123bc350ec15a8b77"
+    }
+  },
+  "decision": "Reject V6 as a fully validated combined strategy. Preserve the capacity architecture; retain deep capitulation as the stronger research sleeve; do not deploy or tune the bull sleeve on the already observed 2022-2025 period.",
+  "no_post_diagnostic_threshold_rescue": true
+}

@@ -1,0 +1,153 @@
+{
+  "experiment": "ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32",
+  "stage": "STAGE_G_SINGLE_PHASE1_LABEL_CATEGORICAL_GATE_FREEZE",
+  "frozen_at": "2026-09-06",
+  "purpose": "Mechanically evaluate the pre-outcome Phase-1 label gate already frozen in the Phase-2 attribution contract. Phase-1 signal-time booleans are the only candidate predictors. Phase-2 contributes only the frozen categorical completed-trade outcome bucket. This stage cannot change a label, inspect a numeric return, select a threshold, combine labels, or replay a strategy.",
+  "pre_outcome_authority": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32_phase2_visual_attribution_freeze.json",
+    "sha256": "f818afb17947498f82bd5ec7844b8aabac7bd994951ea1e29d783d8545dfff64",
+    "section": "future_rule_gate_frozen_before_phase2",
+    "policy": "This Stage-G freeze only restates the already-frozen gate and adds no outcome-contingent choice."
+  },
+  "frozen_phase1_anchors": {
+    "annotation_ledger_sha256": "1835c4d0eec87a736e9f9f639ea6aafa281aef0f0ee96a2ddd0de8a0c4b29140",
+    "annotation_manifest_sha256": "bd820935d8b1f492896364d7da9b7de1c9543bf5ef08add5b68c6c145ac02bee",
+    "reviewer_drift_freeze": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V32_phase1_reviewer_drift_freeze.json",
+      "sha256": "9b1dadba17f1ae1b219a887e29bced13a0ddc304a2ebe40eb954ccd5e39d3850"
+    },
+    "phase1_reviewers_exact": [
+      "Bacon",
+      "Codex-root",
+      "Galileo",
+      "Singer"
+    ]
+  },
+  "stage_f_input_contract": {
+    "producer": {
+      "path": "research/market_behavior_os_v2/scripts/finalize_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_phase2.py",
+      "sha256": "d2a924a8cd162d193ea1bef9b4f7783e0db2497dcd1928a5e21efde8b3f8d654"
+    },
+    "root": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_f_phase2_review_frozen",
+    "required_files": [
+      "phase1_label_x_outcome_by_reviewer_block.csv",
+      "summary.json",
+      "manifest.json"
+    ],
+    "binding": "Before Stage G can run, one separate immutable authorization must bind the exact Stage-F manifest SHA-256 and the manifest-bound diagnostic and summary SHA-256 values. Unknown or inconsistent identity fails closed. No Stage-F output hash may be filled into this pre-result freeze after outcomes are visible.",
+    "diagnostic_fields_consumed": [
+      "label",
+      "phase1_reviewer",
+      "pre_outcome_usage_decision",
+      "true_n",
+      "false_n",
+      "minimum_support_per_side",
+      "eligible_each_side_ge_25",
+      "profit_ge4_true_n",
+      "profit_ge4_false_n",
+      "severe_loss_true_n",
+      "severe_loss_false_n"
+    ],
+    "diagnostic_fields_not_needed": [
+      "profit_ge4_true_rate",
+      "profit_ge4_false_rate",
+      "profit_ge4_delta_true_minus_false",
+      "severe_loss_true_rate",
+      "severe_loss_false_rate",
+      "severe_loss_delta_true_minus_false"
+    ],
+    "prohibited_inputs": [
+      "phase2_merged_anonymous_ledger.csv",
+      "post_path_label",
+      "phase2 evidence or reviewer",
+      "numeric return or payoff",
+      "security, industry, date or identity crosswalk",
+      "any 2021-plus row, outcome or artifact"
+    ]
+  },
+  "eligible_single_labels": {
+    "ORDERLY_PRICE_DISCOVERY": {
+      "profit_ge4": "TRUE_RATE_GREATER_THAN_FALSE_RATE",
+      "severe_loss": "TRUE_RATE_LESS_THAN_FALSE_RATE"
+    },
+    "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {
+      "profit_ge4": "TRUE_RATE_LESS_THAN_FALSE_RATE",
+      "severe_loss": "TRUE_RATE_GREATER_THAN_FALSE_RATE"
+    },
+    "DOWNTREND_OR_BREAKDOWN": {
+      "profit_ge4": "TRUE_RATE_LESS_THAN_FALSE_RATE",
+      "severe_loss": "TRUE_RATE_GREATER_THAN_FALSE_RATE"
+    }
+  },
+  "ineligible_labels": {
+    "BASE_COMPRESSION": "POOLED_UNUSABLE_AND_CANNOT_BE_RESCUED",
+    "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": "POOLED_UNUSABLE_AND_CANNOT_BE_RESCUED",
+    "NONE_CLEAR": "DERIVED_DESCRIPTIVE_ONLY_AND_CANNOT_BE_PROMOTED"
+  },
+  "denominator_and_support": {
+    "completed_buckets": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS"
+    ],
+    "excluded_bucket": "NO_COMPLETED_TRADE",
+    "stratification_key": "phase1_reviewer",
+    "minimum_completed_true_per_reviewer": 25,
+    "minimum_completed_false_per_reviewer": 25,
+    "insufficient_support_policy": "A reviewer block with either side below 25 is INELIGIBLE and cannot count as a passing block."
+  },
+  "exact_gate_algorithm": {
+    "rates": "For each eligible label and Phase-1 reviewer, derive each endpoint rate directly from integer counts divided by true_n or false_n. Recompute rather than trusting serialized rate columns.",
+    "strict_direction": "GREATER_THAN and LESS_THAN are strict. Equality, missing, nonfinite, inconsistent, or zero-denominator values fail that endpoint.",
+    "reviewer_block_pass": "Support is eligible and both the PROFIT_GE_4PCT direction and SEVERE_LOSS direction pass simultaneously for the same label and reviewer.",
+    "minimum_reviewer_blocks_passing": 3,
+    "total_reviewer_blocks": 4,
+    "pooled_calculation": "Sum the integer true/false denominators and endpoint numerators across all four frozen Phase-1 reviewer blocks, then recompute pooled rates.",
+    "pooled_pass": "Both endpoint directions must pass simultaneously in the pooled completed-event population.",
+    "label_gate_pass": "At least three of four reviewer blocks pass and the pooled result passes, all in the label's frozen direction.",
+    "multiplicity_policy": "Evaluate the three eligible labels independently as single booleans. Do not compare magnitudes, choose a best label, combine labels, or automatically promote any label. Zero, one, or multiple labels may pass; every pass only authorizes a separate future rule freeze."
+  },
+  "required_validation": [
+    "Exactly six diagnostic rows exist for each of the four Phase-1 reviewers: the three eligible labels, the two pooled-unusable labels, and NONE_CLEAR.",
+    "Every diagnostic row's pre_outcome_usage_decision matches the frozen reviewer-drift decision.",
+    "For each row, true_n plus false_n equals that reviewer's completed-event count and all endpoint numerators lie within their matching denominator.",
+    "The same completed-event count is recovered for all labels within a reviewer block.",
+    "The Stage-F summary and manifest assert Phase-1 labels unmodified, post-signal not used as predictor, no numeric return read or aggregated, no security identity read or published, no rule search, no replay, and no post-2020 row read."
+  ],
+  "outputs": {
+    "gate_table": "stage_g_single_label_gate_by_reviewer.csv",
+    "summary": "summary.json",
+    "manifest": "manifest.json",
+    "minimum_fields": [
+      "label",
+      "phase1_reviewer_or_pooled",
+      "completed_true_n",
+      "completed_false_n",
+      "support_pass",
+      "profit_ge4_true_rate",
+      "profit_ge4_false_rate",
+      "profit_direction_pass",
+      "severe_loss_true_rate",
+      "severe_loss_false_rate",
+      "severe_direction_pass",
+      "block_pass"
+    ],
+    "publication": "Atomic no-overwrite publication with exact input/output hashes and a second pre-publication input re-verification."
+  },
+  "scientific_status": "DEVELOPMENT_CATEGORICAL_GATE_ONLY_NOT_ALPHA_CONFIRMATION",
+  "authorizations": {
+    "phase1_label_gate_aggregation": true,
+    "numeric_return_read_or_aggregation": false,
+    "post_path_predictor_use": false,
+    "label_rewrite_or_adjudication": false,
+    "threshold_or_direction_search": false,
+    "label_combination": false,
+    "portfolio_replay": false,
+    "stage_b_rerun": false,
+    "post_2020_read": false,
+    "2021_plus_read": false,
+    "automatic_rule_promotion": false
+  },
+  "next_action": "After Stage F is independently validated and exactly hash-bound, implement one mechanical Stage-G evaluator for this contract. A passing label may only become a data-generated development candidate under a separate frozen rule specification; it is not a strategy and does not authorize later-year access."
+}

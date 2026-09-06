@@ -1,0 +1,59 @@
+{
+  "experiment": "ASHARE-BULL-DECELERATION-CONTROLLED-PULLBACK-ABSORPTION-CHART-RULES-V1",
+  "scientific_status": "CHART_DERIVED_DEVELOPMENT_RULE_FREEZE_BEFORE_AGGREGATION",
+  "parent_mother": "ASHARE-BULL-DECELERATION-CONTROLLED-PULLBACK-ABSORPTION-MOTHER-V1",
+  "chart_review": {
+    "candidates": 1113,
+    "chronological_contact_sheets": 124,
+    "review_order": "strictly chronological; every sheet and every chart was inspected before this rule freeze",
+    "signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "maximum_chart_context_date": "2021-03-19",
+    "post_2021_signal_or_outcome_used_to_form_rules": false,
+    "post_2024_read": false
+  },
+  "economic_hypothesis": "A broad-market uptrend can pause while capital rotates among stocks. A same-session undercut and recovery is only evidence that supply may have been absorbed. It becomes actionable only when a still-valid leader subsequently closes through the objective pre-existing ten-session pressure platform. The absorption low is the causal invalidation level.",
+  "compressed_five_rules": {
+    "1_market_habitat": "At the completed mother-session close the causal market state is BULL: median stock ret20 and ret60 are positive and their positive-return shares exceed 0.50. The current ret20 is below ret60, representing a slowing but still positive broad market. No future market return, future trough, calendar label, or later regime revision is permitted.",
+    "2_leader_structure": "At the close immediately before the mother session, the stock's close lies in the upper half of its preceding 60 completed-session coordinate high-low range. The already-frozen mother also requires lagged ret60 between +5% and +60%. This excludes nominal relative leaders whose own price structure has already broken.",
+    "3_absorption_mother": "Reuse the parent mother unchanged: 5%-15% controlled pullback from the prior-ten-session high, fresh five-session low undercut, down-open, at least 2% intraday downside excursion, close at or above the prior close in the top 30% of the range, turnover at least its prior-20 median, and no price-limit artifact.",
+    "4_demand_confirmation": "During the next three market sessions, before any completed close below the frozen mother-session coordinate low, require the first fully valid completed close strictly above the frozen prior-ten-session coordinate high. The confirmation decision is made only after that close; no same-session fill is allowed.",
+    "5_execution_and_exit": "Buy at the first legal, non-limit-up open strictly after confirmation and no later than three market sessions after it. Then take +10% gross if reached after entry; if a fully valid completed close falls strictly below the frozen mother low, exit at the first later legal, non-limit-down open; otherwise exit at the H20 legal open. Charge 20 bps per side. Preserve T+1, suspensions, price limits, coordinate lineage, and corporate-action gates."
+  },
+  "why_these_rules": [
+    "Across losing clusters, the mother candle often occurred at a mature top or inside repeated range churn and was followed by no genuine platform acceptance.",
+    "Across profitable charts, the recurring structure was a still-intact leader, a bounded shakeout, and a prompt close through the already-known pressure platform followed by price discovery.",
+    "The mother candle alone was not enough in the 2016 range market, the April 2019 rollover, or the August-September 2020 distribution cluster.",
+    "The mother low is objective and known before entry; using it as invalidation avoids hindsight support drawing."
+  ],
+  "fixed_parameters": {
+    "pre_signal_structure_sessions": 60,
+    "minimum_pre60_position": 0.5,
+    "confirmation_sessions": 3,
+    "confirmation_level": "parent mother frozen prior10_high",
+    "failure_level": "parent mother frozen coord_low",
+    "entry_search_sessions_after_confirmation": 3,
+    "target_gross_return": 0.1,
+    "maximum_holding_sessions": 20,
+    "round_trip_cost": 0.004
+  },
+  "development_gate": {
+    "minimum_completed_signals_each_calendar_year_2014_2020": 51,
+    "minimum_mean_net_return_each_calendar_year_2014_2020": 0.04,
+    "open_2022_2024_only_if_all_conditions_pass": true,
+    "no_partial_credit_or_threshold_rescue": true
+  },
+  "prohibited": [
+    "changing the parent mother",
+    "neighboring confirmation windows",
+    "alternate platform horizons",
+    "future market-state classification",
+    "same-session confirmation fill",
+    "intraday ordering assumptions for a close-confirmed signal",
+    "outcome-driven threshold changes",
+    "2022-2024 signal or outcome access before the gate",
+    "portfolio replay before the signal-level gate"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "central_registry_modified": true,
+  "installation_instruction": "Installed exactly into configs/data_asset_registry.json. The former compact-bound attempt failed before publication; do not run charts until registry schema validation and the runner public gate pass.",
+  "asset": {
+    "asset_id": "CY-052",
+    "name": "Bounded V34R1 Phase-1 anonymous causal chart-review input V2",
+    "kind": "bounded_daily_pit_b_development_chart_review_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b",
+    "source": "Separate runner-bound anonymous Phase-1 review over exactly 1,483 immutable V34R1 events. V2 uses the certified 2017 chronology extension plus canonical registered CY-006 2018-2020 raw OHLC joined to the accepted action-coordinate state; only global -126..0 rows may be parsed.",
+    "coverage": {
+      "authorized_start": "2017-01-01",
+      "authorized_start_semantics": "exact per-event global signal_cal_idx minus 126",
+      "authorized_end": "2020-12-01",
+      "signal_start": "2018-03-27",
+      "signal_end": "2020-12-01",
+      "frozen_candidate_rows": 1483,
+      "causal_chart_window_sessions": 127,
+      "anonymous_contact_sheets": 60
+    },
+    "schema_and_units": "Anonymous adjusted-coordinate OHLC derived as adjusted_close times raw_price/raw_close after exact raw-geometry validation, registered turnover, and an independently scaled all-industry Main-plus-ChiNext causal broad-market median-step line over global sessions -126 through 0; no identity crosswalk, post-signal row, yield, return, or outcome.",
+    "quality_evidence": {
+      "stage_b_prepared_candidates_sha256": "7f103518ca4fd00628ab1d7fddf97367aa208adce099aa3894008d92afa4a52b",
+      "chronology_extension_2017_sha256": "5a8d7b0d48d4ff3b9323c53a812539115bb62a2cfe197369ef3b5f5499816f88",
+      "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+      "coordinate_state_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+      "chronology_extension_audit_sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f",
+      "candidate_rows": 1483,
+      "maximum_chart_date": "2020-12-01",
+      "hybrid_source_coverage_gate_run": false,
+      "post_signal_row_read": false,
+      "outcome_artifact_parse_authorized": false,
+      "identity_crosswalk_persisted": false,
+      "failed_prepublication_source_attempt": {
+        "status": "FAILED_PREPUBLICATION_SOURCE_COVERAGE",
+        "expected_signal_rows": 1483,
+        "present_exact_valid_signal_rows": 1149,
+        "absent_exact_signal_rows": 334,
+        "missing_exact_signal_identity_set_sha256": "9cdbad45139fb75bd98ad5ba25d08c4ad48712a0c0019330547ef3885a37ed0b",
+        "canonical_output_created": false,
+        "runner_owned_staging_left": false,
+        "stage_b_outcome_artifact_statted_hashed_opened_or_parsed": false
+      },
+      "failed_prepublication_transform_attempt": {
+        "status": "FAILED_PREPUBLICATION_TRANSFORM_GEOMETRY",
+        "expected_signal_rows": 1483,
+        "present_exact_valid_signal_rows": 1480,
+        "rejected_signal_rows": 3,
+        "rejected_event_identity_set_sha256": "e956a03428885a7350cf97f60c30598482c0fd072eac5314b7694cc2f8e39c07",
+        "first_differing_predicate": "transformed_ohlc_geometry_only",
+        "raw_source_ohlc_geometry_failures": 0,
+        "maximum_high_deficit": 1.1102230246251565e-16,
+        "maximum_low_excess": 2.220446049250313e-16,
+        "scientific_correction": "preserve raw values; compute adjusted OHLC as adjusted_close times raw_price divided by raw_close so exact raw equality remains exact",
+        "canonical_output_created": false,
+        "runner_owned_staging_left": false,
+        "outcome_artifact_statted_hashed_opened_or_parsed": false
+      }
+    },
+    "lineage": {
+      "record_available_at": true,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY052_CHART_REVIEW_ASSET_MANIFEST.json",
+      "manifest_sha256": "3872507b707c17dce66c489452d75423f367e365e1fcee3f6573f6ccb9d2976f",
+      "component_assets": ["CY-049", "CY-006", "QD-010"],
+      "chronology_extension_certification": "2017 exact 73-column/type CY-006-schema extension under e57ed5cf; it is not claimed as globally registered CY-006.",
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE1-CY052-ANONYMOUS-CHARTS-2018-2020-V1",
+      "pipeline_version": "v34r1-phase1-anonymous-causal-chart-review-v2"
+    },
+    "allowed_uses": [
+      "run one aggregate-only hybrid-source coverage preflight",
+      "render exactly 1,483 anonymous global-session-minus-126 through signal-time charts",
+      "build 60 exactly-once contact sheets and one blank four-axis review template"
+    ],
+    "blocked_uses": [
+      "the retired V30 daily compact; outcome artifact stat/hash/open/parse; post-signal rows; identity mapping; outcome grouping",
+      "rule aggregation, validation, replay, candidate reselection, 2021-plus rows, live use or strict PIT-A claims"
+    ],
+    "activation_gates": [
+      "central CY-052 authorization binds the exact V2 manifest, visual spec, runner, schema and full role set",
+      "public gate passes before any permitted external source is statted, hashed or read",
+      "coverage preflight finds all 1,483 exact signal rows, 127 calendar slots per event, exact raw OHLC geometry, zero raw-coordinate identity mismatch and at least 500 market members per visible date",
+      "all chart rows are available by the frozen event decision timestamp and relative_session never exceeds zero",
+      "all 1,483 events appear exactly once without a persisted identity crosswalk",
+      "allowed inputs are rehashed before atomic no-overwrite publication"
+    ]
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-CASH-DISTRIBUTION-PAYOUT-QUALITY-V34R1-PHASE1-CY052-ANONYMOUS-CHARTS-2018-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "asset_id": "CY-052",
+    "dependency_asset_id": "CY-049",
+    "dependency_asset_ids": ["CY-049", "CY-006", "QD-010"],
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "2017-01-01",
+      "start_semantics": "exact per-event global signal_cal_idx minus 126",
+      "end": "2020-12-01",
+      "signal_start": "2018-03-27",
+      "signal_end": "2020-12-01",
+      "maximum_chart_date": "2020-12-01",
+      "frozen_candidate_rows": 1483,
+      "phase1_relative_global_sessions": [-126, 0]
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY052_CHART_REVIEW_ASSET_MANIFEST.json",
+      "sha256": "3872507b707c17dce66c489452d75423f367e365e1fcee3f6573f6ccb9d2976f"
+    },
+    "bound_artifacts": [
+      {"role": "parent_spec", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_freeze.json", "sha256": "e41bfe9de6c68878ea556cf31397075adda9076adc19a4089215284436c6bdb4"},
+      {"role": "stage_b_spec", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_stage_b_freeze.json", "sha256": "94def5859b602bde8a635d2e4079c9aea4c1c27bee4161843259ac9dfb928041"},
+      {"role": "stage_a_runner", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_stage_a.py", "sha256": "deb4856ab9cf21cb117428db3e54f45cc0422cf5eef5ca8eebcb2e12357167d1"},
+      {"role": "stage_b_runner", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_stage_b.py", "sha256": "8755bbe18ca76c788ca74ed1743a34bbbd09c8ffc75889b49f026c7e2fad13e5"},
+      {"role": "stage_a_manifest", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY047_DATA_ASSET_MANIFEST.json", "sha256": "4f3453d0afadf14e71fe332c7d84e49c0842253b152849281a6dfc40f3a5655f"},
+      {"role": "stage_b_manifest", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1-CY049_DATA_ASSET_MANIFEST.json", "sha256": "88789d69a4cc4e68d13eefcd8ccf09376f6588b4861939c0c8b0158bdf2be877"},
+      {"role": "chronology_extension_audit", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_chronology_extension_audit.json", "sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f"},
+      {"role": "coordinate_builder", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py", "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"},
+      {"role": "corporate_action_coordinate_contract", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py", "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"},
+      {"role": "phase1_annotation_schema", "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_anonymous_annotation_schema.json", "sha256": "89eeb590b025a4d126d328acbd47a803696606a891a8b804264bf326705fb90d"},
+      {"role": "stage_b_prepared_candidates", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/prepared_candidates.parquet", "sha256": "7f103518ca4fd00628ab1d7fddf97367aa208adce099aa3894008d92afa4a52b"},
+      {"role": "chronology_extension_2017", "path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/daily/partition_year=2017/data_0.parquet", "sha256": "5a8d7b0d48d4ff3b9323c53a812539115bb62a2cfe197369ef3b5f5499816f88"},
+      {"role": "cy006_manifest", "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json", "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"},
+      {"role": "cy006_2018", "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet", "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"},
+      {"role": "cy006_2019", "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet", "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"},
+      {"role": "cy006_2020", "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet", "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"},
+      {"role": "coordinate_state", "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet", "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"},
+      {"role": "chronology_daily_pit_audit", "path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/audit.json", "sha256": "8071fdae37f38f9ef8bca18815c3ddc1ddd9a89a83df6761aec015818249c752"},
+      {"role": "stage_b_result", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/result.json", "sha256": "cec33ec8e571effe73e86f7517a0c5cebcf09c07d41850202fc9ca8cf3cb84eb"},
+      {"role": "stage_b_future_paths", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/future_paths.parquet", "sha256": "371db6417b92974fa1d1860d67f89dab7654b97c95e97dad25be0d7f0d9050a5"},
+      {"role": "stage_b_outcomes", "path": "/Volumes/quant/CY_quant_research/ashare_cash_distribution_realized_payout_quality_mother_v34r1/stage_b/outcomes.parquet", "sha256": "ef21c19376e1db63bbbbfe8b2e9b62b436a647168cbd83640f7f14ad8312c356"}
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_freeze.json",
+      "sha256": "e41bfe9de6c68878ea556cf31397075adda9076adc19a4089215284436c6bdb4"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-CASH-DISTRIBUTION-REALIZED-PAYOUT-QUALITY-MOTHER-V34R1_visual_review_spec.json",
+      "sha256": "91396a0792729efc5f2ab0b9535cd8b930a4d635563840ce0436eb7648a445db",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_cash_distribution_realized_payout_quality_mother_v34r1_phase1_charts.py",
+      "runner_sha256": "9f53f6ba73ce931c1c77d919d2e3b5f5fcee45954a4bad7a48d4695d2f7d5e5a"
+    },
+    "authorized_arms": ["V34R1_CY052_PHASE1_ANONYMOUS_CAUSAL_CHARTS_ONLY"],
+    "charts_authorized": true,
+    "phase1_anonymous_charts_authorized": true,
+    "stage_b_prepared_candidates_read_authorized": true,
+    "hybrid_raw_daily_partitions_read_authorized": true,
+    "coordinate_state_bounded_row_read_authorized": true,
+    "source_lineage_metadata_hash_authorized": true,
+    "coverage_preflight_authorized": true,
+    "causal_daily_compact_read_authorized": false,
+    "outcome_artifact_parse_authorized": false,
+    "outcome_artifact_hash_authorized": false,
+    "outcome_artifact_stat_authorized": false,
+    "outcome_artifact_open_authorized": false,
+    "post_signal_row_read_authorized": false,
+    "full_chart_authorized": false,
+    "identity_reveal_authorized": false,
+    "identity_crosswalk_persist_authorized": false,
+    "outcome_grouping_authorized": false,
+    "outcome_attachment_authorized": false,
+    "phase2_authorized": false,
+    "rule_aggregation_authorized": false,
+    "rule_compression_authorized": false,
+    "portfolio_replay_authorized": false,
+    "validation_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2020_read_authorized": false,
+    "2021_read_authorized": false,
+    "2022_plus_read_authorized": false,
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": false,
+    "allowed_uses": [
+      "certify aggregate hybrid-source coverage without rendering or persisting identities",
+      "render exactly 1,483 anonymous causal Phase-1 charts and 60 contact sheets",
+      "create an empty four-axis review template without identity or outcomes"
+    ],
+    "blocked_uses": [
+      "read the retired V30 compact or stat, hash, open or parse Stage-B result/future_paths/outcomes",
+      "post-signal/full charts, identity crosswalk, outcome grouping, rule aggregation, validation, replay, tuning, or 2021-plus reads"
+    ],
+    "known_limitations": [
+      "2017 is a certified CY-006-schema chronology extension, not globally registered CY-006",
+      "2018-2020 is consumed development history and cannot establish independent confirmation",
+      "the first source attempt failed before publication because a V30-specific compact omitted 334 signal rows",
+      "Phase-1 annotations must be complete and hash-frozen before any Phase-2 authorization"
+    ]
+  }
+}

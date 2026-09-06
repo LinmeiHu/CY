@@ -1,0 +1,58 @@
+{
+  "candidate_identity": {
+    "2022_2023": "reuse exact outcome-blind candidate identities from the frozen V1 candidate file",
+    "2024": "rebuild the exact stale-resistance mother from the registered PIT coordinate daily panel before reading any 2024 outcome",
+    "2024_reproduction_audit": "rebuild 2023 from the same panel and compare with frozen 2023 identities; report every difference and fail on any rebuilt-only row",
+    "symbol_cooldown": "greedy 60 market-session cooldown after each accepted mother signal",
+    "universe": "MAIN and CHINEXT, non-ST, hard-valid, excluding the same 22 commodity/cyclical industries used by the source research universe"
+  },
+  "chronology": {
+    "outcome_end_for_2024_signals": "2025-03-31",
+    "signal_period": "2022-01-01 through 2024-12-31",
+    "stage_a": "candidate and causal-market-state identity only; no entry, exit, target, future high, or return read",
+    "stage_b": "may run only after Stage-A candidate hashes are frozen and verified",
+    "state_cutoff": "registered state inputs available no later than the completed signal close",
+    "validation_authorization": "user explicitly authorized opening 2022, 2023, and 2024 after the 2014-2020 gate passed"
+  },
+  "evaluation": {
+    "annual": [
+      "signals",
+      "completed trades",
+      "mean and median net return",
+      "positive and at-least-four-percent rate",
+      "severe-loss rate",
+      "market-state composition"
+    ],
+    "primary_gate": {
+      "each_2022_2024_calendar_year_signal_count_strictly_greater_than": 50,
+      "pooled_completed_trade_mean_net_return_strictly_greater_than": 0.04
+    },
+    "secondary_transparency": "also report whether each individual validation year has mean net return above 4 percent; this is diagnostic, not a tunable rule"
+  },
+  "experiment": "ASHARE-STALE-ANNUAL-RESISTANCE-CAUSAL-STATE-TARGET-V5-VALIDATION-2022-2024",
+  "frozen_strategy": {
+    "bear_or_transition": "+10 percent target or H60",
+    "bull": "+20 percent target or H60",
+    "costs": "20 bp per side",
+    "entry": "first legal executable open strictly after the frozen signal, no later than the third subsequent market session",
+    "exit": "target no earlier than T+1; otherwise next legal sellable open after the H60 close",
+    "failure_stop": false,
+    "market_state": "state observed at signal decision_at and frozen for the trade"
+  },
+  "governance": {
+    "no_parameter_change_after_validation": true,
+    "no_state_relabeling": true,
+    "no_threshold_or_horizon_rescue": true,
+    "no_manual_event_deletion": true,
+    "validation_is_not_independent_of_all_project_history": "2022-2023 had been consumed by older unrelated experiments, but V5 target routing was frozen solely from 2014-2020 before this validation read"
+  },
+  "source_identity": {
+    "candidate_file_sha256": "4518bd47845d068d36f85016786d3743276364410a5bec6c434f10c82b27e455",
+    "causal_regime_2014_2023_sha256": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a",
+    "pit_coordinate_daily_2022_2026q1_sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+    "qfast_market_state_builder_sha256": "42be0aed77c63197320b127b483bd7bb0b9518c8dc999405be80ab1b84d45da5",
+    "v5_development_result_sha256": "c5197fc4f167167297a7657a520908a4d79d51e0ec76e7760e6c23ac19206bbf",
+    "v5_freeze_sha256": "f2ee17f59d37d4204cfee0518924a98588dfc6578fd82010c912b18ff7f5df1c"
+  },
+  "status": "OUTCOME_BLIND_VALIDATION_PROTOCOL_FREEZE"
+}

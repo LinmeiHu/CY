@@ -1,0 +1,29 @@
+{
+  "experiment_id": "ASHARE-SYSTEMATIC-SELL-OFF-IDIOSYNCRATIC-DEMAND-BREAKOUT-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FROZEN",
+  "scientific_period": "2014-01-01 through 2021-12-31",
+  "outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "When the same-board median stock falls at least 1.5% in a completed session, systematic sellers have a strong common opportunity to dominate prices. A stock that simultaneously rises at least 6%, exceeds its board by at least 8 points, closes above its prior-20 high on expanded turnover and near the daily high reveals an idiosyncratic demand shock strong enough to defeat that common supply.",
+  "causal_state": {
+    "history": "20 preceding symbol rows exist and all are hard-valid/current-valid/tradable.",
+    "systematic_supply": "same-board cross-sectional median completed-session step return <=-1.5%."
+  },
+  "trigger": {
+    "idiosyncratic_return": "stock completed-session step return >=+6% and stock minus same-board median >=8 percentage points.",
+    "price_discovery": "coordinate close strictly above preceding-20 maximum coordinate high.",
+    "participation": "turnover >=1.5 times preceding-20 mean turnover.",
+    "high_close": "close location >=75%.",
+    "not_limit_up": "coordinate close strictly below the legal upper-limit coordinate.",
+    "deduplication": "qualifying events no more than 20 market-session indices apart form one symbol cluster; retain its first event."
+  },
+  "universe": ["MAIN", "CHINEXT"],
+  "hard_validity": ["hard_valid", "history_valid", "current_valid", "tradable", "market_rule_valid", "corporate_action_valid", "not corporate_action_blocking", "not ST"],
+  "decision_at": "signal close after same-board cross-section is complete",
+  "entry": "next legal executable session open",
+  "cost": "40 bp round trip",
+  "predeclared_outcome_profiles": ["H10_NEXT_OPEN", "H20_NEXT_OPEN", "T10_H20_NEXT_OPEN"],
+  "profile_selection": "2014-2018 only: maximize median annual mean net return, then pooled mean, then shorter horizon.",
+  "confirmation": "Only selected profile on 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, every confirmation-year mean >0.",
+  "prohibited": ["no threshold change after outcomes", "no 2022-2023 before Development passes", "no repository 2024+", "no model", "no signal-bar fill"]
+}

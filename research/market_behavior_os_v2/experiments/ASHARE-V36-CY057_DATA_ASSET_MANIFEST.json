@@ -1,0 +1,181 @@
+{
+  "asset_id": "CY-057",
+  "name": "Bounded V36 frozen-candidate development outcome input",
+  "status": "FROZEN_DEVELOPMENT_OUTCOME_BOUNDED_INPUT",
+  "created_at": "2026-09-06",
+  "pit_grade": "B",
+  "scientific_scope": "One candidate-keyed attachment of the frozen +10%-target/H20/40bp lifecycle to exactly 531 V36 high-price-delay events after all 531 outcome-blind charts and labels were frozen. The 2021 partition may only complete late-2020 paths through 2021-09-30; 2021 signals and 2022-plus rows are forbidden.",
+  "frozen_cohort": {
+    "rows": 531,
+    "sha256": "6f9e84f1828bb054d8baea187e72563c8454909fe71f3a932ee8ea5456ff4e0b",
+    "annual_counts": {
+      "2019": 249,
+      "2020": 282
+    },
+    "signal_start": "2019-03-29",
+    "signal_end": "2020-12-31",
+    "parent_asset_id": "CY-054",
+    "phase1_frozen_before_outcomes": true,
+    "phase1_rows": 531,
+    "phase1_ledger_sha256": "dafc4594cb502f50e22946f1206f147b1083d0e41f849b13bc32e058b46c36a6"
+  },
+  "protocol": {
+    "stage_b_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_stage_b_freeze.json",
+    "stage_b_spec_sha256": "c3867b272c05c5e558b56abe6097aa5a7ee6b3bca5c649d577643e0446f47655",
+    "stage_b_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_b.py",
+    "stage_b_runner_sha256": "85097db23525a357664073ded605fb3ab92ca3454f5fc40b2f173e8c2e35b96e",
+    "execution_reference_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+    "execution_reference_sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997",
+    "target_return": 0.1,
+    "horizon_sessions": 20,
+    "round_trip_cost": 0.004
+  },
+  "source_artifacts": [
+    {
+      "role": "stage_a_result",
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/result.json",
+      "sha256": "5d05d21c78f5c4722cdcf3eb86db53e0d9d37d7a37e45a465b1ee78a924d8529"
+    },
+    {
+      "role": "stage_a_representation",
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/representation_panel.parquet",
+      "sha256": "17a50b0aeb4a9ae36d10754280ca43c8bc06504920f51ba66d34ef506b03a3ec"
+    },
+    {
+      "role": "stage_a_candidates",
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/candidates_frozen.parquet",
+      "sha256": "6f9e84f1828bb054d8baea187e72563c8454909fe71f3a932ee8ea5456ff4e0b"
+    },
+    {
+      "role": "phase1_manifest",
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "7a3133223e5aecf99ecf33d843c31f18d726d927810a46f54f5863027005bc7b"
+    },
+    {
+      "role": "phase1_ledger",
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "dafc4594cb502f50e22946f1206f147b1083d0e41f849b13bc32e058b46c36a6"
+    },
+    {
+      "role": "cy006_manifest",
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    {
+      "role": "qd010_inventory",
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    {
+      "role": "cy006_2019",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+      "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+    },
+    {
+      "role": "cy006_2020",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+      "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+    },
+    {
+      "role": "cy006_2021",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+      "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+    },
+    {
+      "role": "coordinate_state",
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+      "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+    }
+  ],
+  "public_lineage_artifacts": [
+    {
+      "role": "parent_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+      "sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc"
+    },
+    {
+      "role": "stage_b_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_stage_b_freeze.json",
+      "sha256": "c3867b272c05c5e558b56abe6097aa5a7ee6b3bca5c649d577643e0446f47655"
+    },
+    {
+      "role": "stage_a_runner",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_a.py",
+      "sha256": "3cf20dead4f7a04b1e8981502d484fd1e56599747129f3ff92085a462c0edf51"
+    },
+    {
+      "role": "stage_a_manifest",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+      "sha256": "8466e1ccd6cbbff159beb4ee9d582a0917f7eba9015d7a76251f273727e4973c"
+    },
+    {
+      "role": "phase1_freeze_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_ledger_freeze_spec.json",
+      "sha256": "4ee8ef1b2912bebd857c3fbb19b9f9d94227f5f16c15583a81bf1c7f8a53f390"
+    },
+    {
+      "role": "phase1_finalizer",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/finalize_ashare_broad_market_price_delay_compensation_mother_v36_phase1.py",
+      "sha256": "c1fe1d2fe3f48f4d55878348d0125c7a34d3461a6b77f8530ccc17a8781d68ea"
+    },
+    {
+      "role": "phase1_reliability",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_axis_reliability_decision.json",
+      "sha256": "6f5c76d0abcb0ad2e7836f32ae48587036ffa5c5a585919996b6d0370f3ea1e6"
+    },
+    {
+      "role": "coordinate_builder",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+      "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"
+    },
+    {
+      "role": "corporate_action_coordinate_contract",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+    },
+    {
+      "role": "execution_reference",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+      "sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+    }
+  ],
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-STAGE-B-2019-2021Q3-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V36_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "signal_start": "2019-03-29",
+    "signal_end": "2020-12-31",
+    "frozen_candidate_rows": 531,
+    "frozen_candidate_sha256": "6f9e84f1828bb054d8baea187e72563c8454909fe71f3a932ee8ea5456ff4e0b",
+    "maximum_path_row_date": "2021-09-30",
+    "maximum_event_path_sessions": 126,
+    "outcome_attachment_authorized": true,
+    "post_signal_row_read_authorized": true,
+    "2021_path_completion_authorized": true,
+    "charts_authorized": false,
+    "manual_labels_read_authorized": false,
+    "rule_aggregation_authorized": false,
+    "portfolio_replay_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2021_q3_read_authorized": false,
+    "2022_plus_read_authorized": false
+  },
+  "publication_contract": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_b",
+    "outputs": [
+      "prepared_candidates.parquet",
+      "future_paths.parquet",
+      "outcomes.parquet",
+      "result.json"
+    ],
+    "atomic_no_overwrite": true,
+    "source_reverification_before_publish": true
+  },
+  "claims": {
+    "pit_grade": "B",
+    "development_only": true,
+    "independent_confirmation": false,
+    "strict_pit_a": false,
+    "portfolio_or_live_use": false
+  }
+}

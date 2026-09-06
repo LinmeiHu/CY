@@ -1,0 +1,63 @@
+{
+  "experiment": "ASHARE-REGIME-TAKEOVER-CAPACITY-PORTFOLIO-V6",
+  "stage": "CAPACITY_RULE_FROZEN_AFTER_PRE_2022_DEVELOPMENT",
+  "scientific_status": "CAPACITY_AND_PORTFOLIO_AUDIT_WITH_NONINDEPENDENT_LATER_DIAGNOSTIC",
+  "inherits_unchanged": {
+    "signal_and_execution_rule": "ASHARE-REGIME-ROUTED-CROSS-INDUSTRY-TAKEOVER-V5",
+    "v5_freeze_sha256": "b173048b185841695762a7ffd316ba8d7995974c88c40063daeb31a1f63190b3"
+  },
+  "capacity_rules": [
+    "retain at most the first twenty-five V5 diversified causal ranks on each signal date",
+    "admit at most fifty concurrent positions across both market-state lanes",
+    "rank colliding entries by earlier signal date, then V5 diversified rank, symbol, and event identity",
+    "an exit occurring on an entry date does not release its slot for that date's opening entries",
+    "allocate at most two percent of current cash-plus-open-cost equity to each admitted slot",
+    "unknown terminal outcomes remain in the ledger at entry cost and continue occupying their slots"
+  ],
+  "lane_policy": {
+    "BULL_TREND": "report as an independent sleeve; do not average it with deep capitulation to hide failure",
+    "DEEP_CAPITULATION": "report as an independent sleeve; do not average it with bull trend to hide failure",
+    "different_lane_exits_or_thresholds": false
+  },
+  "development_period": [
+    "2014-01-01",
+    "2021-12-31"
+  ],
+  "development_evidence": {
+    "event_capped_candidates": 435,
+    "admitted_entries": 415,
+    "completed": 413,
+    "completed_per_year": 51.625,
+    "mean_net_return": 0.05295239026057483,
+    "mean_holding_sessions": 12.772397094430993,
+    "event_equal_mean_net": 0.048400344001702,
+    "bull_lane_mean_net": 0.045976026547548954,
+    "deep_capitulation_lane_mean_net": 0.061720497659459785,
+    "all_gates_pass": true
+  },
+  "portfolio_open_cost_evidence": {
+    "ending_nav_at_open_cost": 1.5306867108555866,
+    "annualized_return_at_open_cost": 0.054655905883234546,
+    "maximum_open_positions": 49,
+    "minimum_cash_fraction_of_initial": 0.029882101763337825,
+    "unresolved_positions_at_end": 2,
+    "unresolved_entry_cost_at_end": 0.05105192175857052,
+    "warning": "Open positions are carried at entry cost, so these are conserved accounting values rather than a complete mark-to-market performance claim."
+  },
+  "development_artifacts": {
+    "runner_sha256_before_contract_guard": "e57d099fd64bf97198d3fdde0905effcb37abc244626d0256a025cd6c92bfeea",
+    "result_sha256": "ff928c2d9ed04f0c3ef3ec815c50e95eea4f6f69097a1abd19fec449da535538",
+    "capacity_decisions_sha256": "b502d41ba3cede2e6278f8426df4b612f69eaa87e7113a19fc281297be8a252b",
+    "cash_ledger_sha256": "3b80d1277e873c38a0eb39276ba6e6c6c0a3481e87ed9910bc873b2e7bb3617e"
+  },
+  "later_period": {
+    "period": [
+      "2022-01-01",
+      "2025-12-31"
+    ],
+    "role": "post-challenge capacity diagnostic only",
+    "independent_validation_claim": false,
+    "post_2021_v5_results_known_before_this_contract": true,
+    "no_capacity_threshold_rescue_after_formal_diagnostic": true
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "experiment": "ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32",
+  "stage": "PHASE1_OUTCOME_BLIND_REVIEWER_DRIFT_DECISION_FROZEN",
+  "inputs": {
+    "phase1_annotation_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "1835c4d0eec87a736e9f9f639ea6aafa281aef0f0ee96a2ddd0de8a0c4b29140",
+      "rows": 1781
+    },
+    "phase1_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "bd820935d8b1f492896364d7da9b7de1c9543bf5ef08add5b68c6c145ac02bee"
+    }
+  },
+  "governance": {
+    "blind_order_hash_randomized": true,
+    "outcomes_read": false,
+    "stage_b_result_read": false,
+    "future_paths_read": false,
+    "post_signal_artifacts_read": false,
+    "identity_mapping_read": false,
+    "relabeling_permitted": false,
+    "labels_frozen_as_recorded": true
+  },
+  "labels": [
+    "BASE_COMPRESSION",
+    "ORDERLY_PRICE_DISCOVERY",
+    "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT",
+    "MATURE_EXTENSION_OR_TERMINAL_SPIKE",
+    "DOWNTREND_OR_BREAKDOWN",
+    "NONE_CLEAR"
+  ],
+  "rate_semantics": "Each exact rate is positive_count divided by that reviewer's n; displayed decimals are rounded to 12 places.",
+  "reviewer_rates": {
+    "Bacon": {
+      "n": 450,
+      "BASE_COMPRESSION": {"positive_count": 24, "rate": 0.053333333333},
+      "ORDERLY_PRICE_DISCOVERY": {"positive_count": 148, "rate": 0.328888888889},
+      "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {"positive_count": 7, "rate": 0.015555555556},
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {"positive_count": 201, "rate": 0.446666666667},
+      "DOWNTREND_OR_BREAKDOWN": {"positive_count": 205, "rate": 0.455555555556},
+      "NONE_CLEAR": {"positive_count": 27, "rate": 0.06}
+    },
+    "Codex-root": {
+      "n": 431,
+      "BASE_COMPRESSION": {"positive_count": 65, "rate": 0.150812064965},
+      "ORDERLY_PRICE_DISCOVERY": {"positive_count": 157, "rate": 0.364269141531},
+      "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {"positive_count": 3, "rate": 0.006960556845},
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {"positive_count": 202, "rate": 0.4686774942},
+      "DOWNTREND_OR_BREAKDOWN": {"positive_count": 153, "rate": 0.354988399072},
+      "NONE_CLEAR": {"positive_count": 48, "rate": 0.111368909513}
+    },
+    "Galileo": {
+      "n": 450,
+      "BASE_COMPRESSION": {"positive_count": 137, "rate": 0.304444444444},
+      "ORDERLY_PRICE_DISCOVERY": {"positive_count": 186, "rate": 0.413333333333},
+      "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {"positive_count": 1, "rate": 0.002222222222},
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {"positive_count": 231, "rate": 0.513333333333},
+      "DOWNTREND_OR_BREAKDOWN": {"positive_count": 201, "rate": 0.446666666667},
+      "NONE_CLEAR": {"positive_count": 19, "rate": 0.042222222222}
+    },
+    "Singer": {
+      "n": 450,
+      "BASE_COMPRESSION": {"positive_count": 46, "rate": 0.102222222222},
+      "ORDERLY_PRICE_DISCOVERY": {"positive_count": 171, "rate": 0.38},
+      "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {"positive_count": 14, "rate": 0.031111111111},
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {"positive_count": 184, "rate": 0.408888888889},
+      "DOWNTREND_OR_BREAKDOWN": {"positive_count": 185, "rate": 0.411111111111},
+      "NONE_CLEAR": {"positive_count": 45, "rate": 0.1}
+    }
+  },
+  "reviewer_drift_statistics": {
+    "method": "Pearson chi-square test of reviewer by binary-label contingency table; descriptive only",
+    "BASE_COMPRESSION": {
+      "minimum_reviewer": "Bacon",
+      "minimum_rate": 0.053333333333,
+      "maximum_reviewer": "Galileo",
+      "maximum_rate": 0.304444444444,
+      "maximum_minus_minimum_percentage_points": 25.1111111111,
+      "chi_square": 123.287,
+      "degrees_of_freedom": 3,
+      "p_value": 1.51166e-26,
+      "cramers_v": 0.2631,
+      "descriptive_flag": "SEVERE_REVIEWER_DRIFT"
+    },
+    "ORDERLY_PRICE_DISCOVERY": {
+      "minimum_reviewer": "Bacon",
+      "minimum_rate": 0.328888888889,
+      "maximum_reviewer": "Galileo",
+      "maximum_rate": 0.413333333333,
+      "maximum_minus_minimum_percentage_points": 8.4444444444,
+      "chi_square": 7.1061,
+      "degrees_of_freedom": 3,
+      "p_value": 0.0685916,
+      "cramers_v": 0.0632,
+      "descriptive_flag": "LOW_REVIEWER_DRIFT"
+    },
+    "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {
+      "minimum_reviewer": "Galileo",
+      "minimum_rate": 0.002222222222,
+      "maximum_reviewer": "Singer",
+      "maximum_rate": 0.031111111111,
+      "maximum_minus_minimum_percentage_points": 2.8888888889,
+      "chi_square": 15.6518,
+      "degrees_of_freedom": 3,
+      "p_value": 0.00133642,
+      "cramers_v": 0.0937,
+      "total_positive_count": 25,
+      "descriptive_flag": "SPARSE_AND_REVIEWER_DEPENDENT"
+    },
+    "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {
+      "minimum_reviewer": "Singer",
+      "minimum_rate": 0.408888888889,
+      "maximum_reviewer": "Galileo",
+      "maximum_rate": 0.513333333333,
+      "maximum_minus_minimum_percentage_points": 10.4444444444,
+      "chi_square": 10.337,
+      "degrees_of_freedom": 3,
+      "p_value": 0.0159085,
+      "cramers_v": 0.0762,
+      "descriptive_flag": "SMALL_REVIEWER_DRIFT"
+    },
+    "DOWNTREND_OR_BREAKDOWN": {
+      "minimum_reviewer": "Codex-root",
+      "minimum_rate": 0.354988399072,
+      "maximum_reviewer": "Bacon",
+      "maximum_rate": 0.455555555556,
+      "maximum_minus_minimum_percentage_points": 10.0567156484,
+      "chi_square": 11.2525,
+      "degrees_of_freedom": 3,
+      "p_value": 0.0104359,
+      "cramers_v": 0.0795,
+      "descriptive_flag": "SMALL_REVIEWER_DRIFT"
+    },
+    "NONE_CLEAR": {
+      "minimum_reviewer": "Galileo",
+      "minimum_rate": 0.042222222222,
+      "maximum_reviewer": "Codex-root",
+      "maximum_rate": 0.111368909513,
+      "maximum_minus_minimum_percentage_points": 6.9146687291,
+      "chi_square": 19.7281,
+      "degrees_of_freedom": 3,
+      "p_value": 0.000193254,
+      "cramers_v": 0.1052,
+      "descriptive_flag": "MODERATE_REVIEWER_DRIFT"
+    }
+  },
+  "pre_outcome_usage_decisions": {
+    "BASE_COMPRESSION": {
+      "decision": "POOLED_UNUSABLE",
+      "reason": "Severe reviewer drift: 25.1111 percentage-point spread and Cramer's V 0.2631."
+    },
+    "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": {
+      "decision": "POOLED_UNUSABLE",
+      "reason": "Only 25 positives overall and positive counts range from 1 to 14 by reviewer."
+    },
+    "NONE_CLEAR": {
+      "decision": "DESCRIPTIVE_ONLY",
+      "reason": "Derived all-false state with moderate reviewer drift; not an independent visual mechanism."
+    },
+    "ORDERLY_PRICE_DISCOVERY": {
+      "decision": "ELIGIBLE_WITH_REVIEWER_GUARDS",
+      "required_guards": [
+        "REVIEWER_STRATIFIED_AGGREGATION",
+        "WITHIN_REVIEWER_DIRECTION_CONSISTENCY"
+      ]
+    },
+    "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {
+      "decision": "ELIGIBLE_WITH_REVIEWER_GUARDS",
+      "required_guards": [
+        "REVIEWER_STRATIFIED_AGGREGATION",
+        "WITHIN_REVIEWER_DIRECTION_CONSISTENCY"
+      ]
+    },
+    "DOWNTREND_OR_BREAKDOWN": {
+      "decision": "ELIGIBLE_WITH_REVIEWER_GUARDS",
+      "required_guards": [
+        "REVIEWER_STRATIFIED_AGGREGATION",
+        "WITHIN_REVIEWER_DIRECTION_CONSISTENCY"
+      ]
+    }
+  },
+  "decision_locked_before_outcome_attachment": true
+}

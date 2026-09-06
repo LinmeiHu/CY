@@ -1,0 +1,67 @@
+{
+  "experiment_id": "ASHARE-FORMER-LEADER-DEEP-BASE-REACCUMULATION-BREAKOUT-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_CONTRACT_FREEZE",
+  "economic_hypothesis": "A genuinely strong stock can undergo a material inventory reset without losing all sponsorship. If it then forms a quiet multi-week base well below its former peak and breaks that base on renewed demand, the old peak supplies a causal, economically meaningful repair target. This is a reaccumulation-under-resistance mechanism, not a gap-fill mechanism.",
+  "population": {
+    "boards": ["MAIN", "CHINEXT"],
+    "hard_valid_signal_required": true,
+    "non_st_required": true,
+    "same_corporate_action_coordinate_required": true,
+    "minimum_prior_history_sessions": 140
+  },
+  "former_leader_state": {
+    "old_peak_search_window_sessions_before_signal": [20, 120],
+    "pre_peak_run_start_window_sessions": 60,
+    "peak_over_pre_peak_low_min": 1.50,
+    "old_peak_age_sessions_min": 20,
+    "old_peak_age_sessions_max": 120
+  },
+  "inventory_reset": {
+    "prior_completed_close_drawdown_from_old_peak_min": -0.45,
+    "prior_completed_close_drawdown_from_old_peak_max": -0.15
+  },
+  "quiet_base": {
+    "lookback_completed_sessions": 15,
+    "high_over_low_max": 1.20,
+    "last5_turnover_over_prior20_max": 1.00,
+    "all_base_bars_after_old_peak_required": true
+  },
+  "trigger": {
+    "completed_close_at_or_above_prior15_high": true,
+    "completed_step_return_min": 0.02,
+    "completed_step_return_max": 0.095,
+    "completed_turnover_over_prior20_mean_min": 1.50,
+    "completed_close_location_min": 0.75,
+    "registered_upper_limit_close_excluded": true,
+    "symbol_cooldown_market_sessions": 30
+  },
+  "decision_at": "completed breakout close",
+  "entry": "first legal executable daily open strictly after signal, no later than the third subsequent market session",
+  "target": "frozen old-peak coordinate, legally executable from the first sellable session",
+  "time_stop": "H60 completed sessions, then next legal open",
+  "failure_stop": "NONE",
+  "costs": {
+    "entry_bps": 20,
+    "exit_bps": 20,
+    "round_trip_bps": 40
+  },
+  "chronology": {
+    "semantic_and_rule_discovery": ["2014-01-01", "2018-12-31"],
+    "fixed_confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "completed_trades_per_year_average_strictly_greater_than": 50,
+    "mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20
+  },
+  "governance": {
+    "blind_chart_semantic_audit_required_before_outcomes": true,
+    "manual_chart_pruning_allowed": false,
+    "thresholds_are_semantic_retrieval_rules_not_optimized_strategy_parameters": true,
+    "repository_2024_plus_data_opened": false
+  }
+}

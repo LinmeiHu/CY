@@ -1,0 +1,46 @@
+{
+  "experiment_id": "ASHARE-COMPRESSION-VOLUME-EXPANSION-PRICE-DISCOVERY-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FROZEN",
+  "scientific_period": "2014-01-01 through 2021-12-31",
+  "outcomes_opened_at_freeze": false,
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "A continuously traded stock that remains inside a bounded sixty-session inventory range, tightens further during the last twenty sessions, and experiences declining five-session turnover has limited immediately available supply. A non-limit, high-location, volume-expansion close above the entire prior sixty-session range is a causal price-discovery event rather than a policy-locked limit move.",
+  "causal_state": {
+    "continuous_history": "60 preceding symbol rows exist; at least 55 are hard-valid, current-valid and tradable.",
+    "broad_inventory_range": "minimum coordinate low / maximum coordinate high over the preceding 60 completed symbol rows is >=65%.",
+    "recent_compression": "minimum coordinate low / maximum coordinate high over the preceding 20 completed symbol rows is >=85%.",
+    "supply_contraction": "mean turnover over the preceding 5 completed rows is <= mean turnover over the preceding 20 completed rows."
+  },
+  "trigger": {
+    "return": "signal-session step return is between +4% and +12%, inclusive.",
+    "new_price_discovery": "completed coordinate close is strictly above the maximum coordinate high of the preceding 60 completed symbol rows.",
+    "volume_expansion": "signal-session turnover is >=1.5 times preceding-20-session mean turnover.",
+    "high_location": "signal close location within its range is >=75%; a zero-range bar is 100%.",
+    "not_limit_up": "signal coordinate close is strictly below the legal upper-limit coordinate.",
+    "deduplication": "consecutive qualifying events no more than 20 market-session indices apart form one event cluster; retain its first event only."
+  },
+  "universe": ["MAIN", "CHINEXT"],
+  "hard_validity": [
+    "hard_valid",
+    "history_valid",
+    "current_valid",
+    "current_day_data_tradable",
+    "market_rule_valid",
+    "corporate_action_valid",
+    "not corporate_action_blocking",
+    "not ST"
+  ],
+  "decision_at": "signal close",
+  "entry": "next legal executable session open, with no signal-bar fill",
+  "cost": "40 bp round trip",
+  "predeclared_outcome_profiles": ["H10_NEXT_OPEN", "H20_NEXT_OPEN", "T10_H20_NEXT_OPEN"],
+  "profile_selection": "Using 2014-2018 only, maximize median annual mean net return, then pooled mean net return, then prefer the shorter horizon.",
+  "confirmation": "Evaluate only the selected profile on 2019, 2020 and 2021; require average completed trades/year >50, pooled mean net return >3%, positive pooled median, and positive mean net return in each confirmation year.",
+  "prohibited": [
+    "no outcome-driven threshold changes",
+    "no 2022-2023 before Development passes",
+    "no repository 2024+",
+    "no black-box model",
+    "no signal-bar execution"
+  ]
+}

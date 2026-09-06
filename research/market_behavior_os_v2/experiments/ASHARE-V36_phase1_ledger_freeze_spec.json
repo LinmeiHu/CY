@@ -1,0 +1,114 @@
+{
+  "spec_id": "ASHARE-V36-PHASE1-ANONYMOUS-LEDGER-FREEZE-V1",
+  "experiment": "ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36",
+  "stage": "PHASE1_ANONYMOUS_LEDGER_FREEZE",
+  "expected_events": 531,
+  "expected_sheets": 22,
+  "finalizer": {
+    "path": "research/market_behavior_os_v2/scripts/finalize_ashare_broad_market_price_delay_compensation_mother_v36_phase1.py",
+    "sha256": "c1fe1d2fe3f48f4d55878348d0125c7a34d3461a6b77f8530ccc17a8781d68ea"
+  },
+  "public_anonymous_inputs": {
+    "chart_corpus_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_c_phase1_anonymous_charts/manifest.json",
+      "sha256": "322ff9ce07e183de52d12dccab59d50e813c7377f80bb4462f0011898aeee162"
+    },
+    "blind_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_c_phase1_anonymous_charts/blind_index.csv",
+      "sha256": "088e639a187fc92a8c246876254cc6ab3657c29dfdb2ac499f3af040833cbc0b",
+      "columns": [
+        "chart_number",
+        "blind_chart_id",
+        "blind_chart_path",
+        "blind_chart_sha256",
+        "sheet_number",
+        "slot"
+      ]
+    },
+    "contact_sheet_placements": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_c_phase1_anonymous_charts/contact_sheet_placements.csv",
+      "sha256": "0d59295f2fdb57e90c890eea6ad0c86f3fb20da2e5d99335e099eefdb90fa6a7",
+      "columns": [
+        "sheet_number",
+        "slot",
+        "chart_number",
+        "blind_chart_id"
+      ]
+    },
+    "annotation_schema": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_anonymous_annotation_schema.json",
+      "sha256": "89eeb590b025a4d126d328acbd47a803696606a891a8b804264bf326705fb90d"
+    }
+  },
+  "primary_annotation_segments": [
+    {
+      "segment_id": "galileo_0001_0200",
+      "start": 1,
+      "end": 200,
+      "rows": 200,
+      "reviewer": "Galileo",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_annotations_galileo_0001_0200.json",
+      "sha256": "ab92667b64bf38fe4252df5da95b749feb9f3a6c3ed244f7609f401adaeef41b"
+    },
+    {
+      "segment_id": "bacon_0201_0400",
+      "start": 201,
+      "end": 400,
+      "rows": 200,
+      "reviewer": "Bacon",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_annotations_bacon_0201_0400.json",
+      "sha256": "edbbf46ae88181f352933bad6cd0b7978c615febee157b262831b3f729c29de2"
+    },
+    {
+      "segment_id": "templateaudit_0401_0531",
+      "start": 401,
+      "end": 531,
+      "rows": 131,
+      "reviewer": "TemplateAudit",
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_annotations_templateaudit_0401_0531.json",
+      "sha256": "9a8705f2b3e35d4b89803c25bb07515cd507db3c91e4d011cd82969e9ffecbee"
+    }
+  ],
+  "axis_reliability_decision": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-V36_phase1_axis_reliability_decision.json",
+    "sha256": "6f5c76d0abcb0ad2e7836f32ae48587036ffa5c5a585919996b6d0370f3ea1e6",
+    "ledger_input": false
+  },
+  "output": {
+    "directory": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_d_phase1_anonymous_review",
+    "ledger_file": "phase1_annotation_ledger.csv",
+    "manifest_file": "manifest.json",
+    "no_overwrite": true
+  },
+  "statistics_policy": {
+    "label_counts_only": true,
+    "reviewer_drift_only": true,
+    "rule_aggregation": false,
+    "returns": false
+  },
+  "phase2_constraints": {
+    "manual_labels_usage": "DISCOVERY_AND_ATTRIBUTION_ONLY",
+    "executable_rule_requirement": "TRANSLATE_ELIGIBLE_PROMPTS_TO_OBJECTIVE_CAUSAL_QUANTITIES_AND_FREEZE_BEFORE_TEMPORAL_HOLDOUT",
+    "eligible_discovery_prompt_axes": [
+      "primary_morphology",
+      "market_tape"
+    ],
+    "descriptive_only_axes": [
+      "signal_candle",
+      "turnover_state"
+    ],
+    "label_changes_from_reviewer_drift": false,
+    "maximum_compressed_rule_clauses": 5,
+    "annual_gate": "EACH_DEVELOPMENT_YEAR_COMPLETED_SIGNALS_GT_50_AND_MEAN_NET_RETURN_GT_4PCT",
+    "later_period_open_before_gate": false
+  },
+  "prohibited": [
+    "reading or hashing any identity mapping or crosswalk",
+    "declaring, statting, hashing, opening, or parsing any Stage-B or outcome path",
+    "reading any post-signal row or post-2020 row",
+    "aggregating returns or constructing rules during Phase 1",
+    "using manual chart labels directly as executable predicates",
+    "allowing signal-candle or turnover-state labels into a promoted rule",
+    "overwriting an existing Phase-1 freeze output"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "asset_id": "CY-061",
+  "name": "Bounded V37 frozen-candidate development outcome input",
+  "status": "FROZEN_DEVELOPMENT_OUTCOME_BOUNDED_INPUT",
+  "created_at": "2026-09-06",
+  "pit_grade": "B",
+  "scientific_scope": "One candidate-keyed attachment of the frozen +10%-target/H20/40bp lifecycle to exactly 854 immutable V37 aggregate-volatility-innovation-exposure events. The 2021 partition may only complete paths for frozen 2020 signals through 2021-09-30; 2021 signals and 2022-plus rows are forbidden.",
+  "frozen_cohort": {
+    "rows": 854,
+    "sha256": "1f890b90b8cdaf26242cd876875d0929bd0050ad9c3dceb71d0c45a49880e509",
+    "event_id_set_sha256": "1d716ae548a2feff4b6722242cbe92c82eefdf683b6b3b7add4b22aae952ea70",
+    "annual_counts": {
+      "2018": 163,
+      "2019": 357,
+      "2020": 334
+    },
+    "signal_start": "2018-08-31",
+    "signal_end": "2020-12-31",
+    "decision_dates": 29,
+    "unique_symbols": 688,
+    "pit_industries": 68,
+    "parent_asset_id": "CY-059",
+    "stage_a_passed_before_outcome_authorization": true
+  },
+  "protocol": {
+    "stage_b_spec_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_stage_b_freeze.json",
+    "stage_b_spec_sha256": "f2a1f5b7bdfa9d8c960892300b88f4dd55aa8c064dad2c1706710a5b3a4d00aa",
+    "stage_b_runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37_stage_b.py",
+    "stage_b_runner_sha256": "5944275a935a21eecfa765fb1eb6e982718bac1e43a3b2cc09f1ec0f89f059dc"
+  },
+  "source_artifacts": [
+    {
+      "role": "stage_a_result",
+      "path": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a/result.json",
+      "sha256": "ae24cd37c0629abccc8973c5262acfed4bbe9eb0374a371def89e1cfe09b439a"
+    },
+    {
+      "role": "stage_a_representation",
+      "path": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a/representation_panel.parquet",
+      "sha256": "a657e259111291fd3eea66ac3d492e179a4dcba4b5cea573afa00a2162223159"
+    },
+    {
+      "role": "stage_a_candidates",
+      "path": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_a/candidates_frozen.parquet",
+      "sha256": "1f890b90b8cdaf26242cd876875d0929bd0050ad9c3dceb71d0c45a49880e509"
+    },
+    {
+      "role": "cy006_inventory",
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    {
+      "role": "qd010_inventory",
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    {
+      "role": "cy006_2018",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+      "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+    },
+    {
+      "role": "cy006_2019",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+      "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+    },
+    {
+      "role": "cy006_2020",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+      "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+    },
+    {
+      "role": "cy006_2021",
+      "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2021/data_0.parquet",
+      "sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+    },
+    {
+      "role": "coordinate_state",
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+      "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+    }
+  ],
+  "public_lineage_artifacts": [
+    {
+      "role": "parent_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_freeze.json",
+      "sha256": "e1d3f55df399ece5f1395894e8be285a60bf424ebac5bbfa254b020e408e8d44"
+    },
+    {
+      "role": "stage_b_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-COMPENSATION-MOTHER-V37_stage_b_freeze.json",
+      "sha256": "f2a1f5b7bdfa9d8c960892300b88f4dd55aa8c064dad2c1706710a5b3a4d00aa"
+    },
+    {
+      "role": "stage_a_runner",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37_stage_a.py",
+      "sha256": "39eea0f3a9790c53ab4dcbc495dfee5f420fd797bf23f3bc0479d126dd9f9836"
+    },
+    {
+      "role": "stage_a_manifest",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-V37-CY059_DATA_ASSET_MANIFEST.json",
+      "sha256": "d2d16fbf17ff47fc6d6376b129b843d4be061812fc60658f13efdd214ec17f7e"
+    },
+    {
+      "role": "accepted_v36_stage_b_spec",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_stage_b_freeze.json",
+      "sha256": "c3867b272c05c5e558b56abe6097aa5a7ee6b3bca5c649d577643e0446f47655"
+    },
+    {
+      "role": "coordinate_builder",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+      "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"
+    },
+    {
+      "role": "corporate_action_coordinate_contract",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726"
+    },
+    {
+      "role": "execution_reference",
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_low_positive_feedback_good_news_mother_v30_stage_b.py",
+      "sha256": "1774512c6811fdd0b7c3ea24234254327378faa078f5ecc9fd9078c86d996997"
+    }
+  ],
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-AGGREGATE-VOLATILITY-INNOVATION-EXPOSURE-V37-STAGE-B-2018-2021Q3-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_ATTACHMENT",
+    "authorized_arm": "V37_FROZEN_STAGE_B_OUTCOME_ATTACHMENT_ONLY",
+    "signal_start": "2018-08-31",
+    "signal_end": "2020-12-31",
+    "frozen_candidate_rows": 854,
+    "frozen_candidate_sha256": "1f890b90b8cdaf26242cd876875d0929bd0050ad9c3dceb71d0c45a49880e509",
+    "maximum_path_row_date": "2021-09-30",
+    "maximum_event_path_sessions": 126,
+    "outcome_attachment_authorized": true,
+    "post_signal_row_read_authorized": true,
+    "2021_path_completion_authorized": true,
+    "charts_authorized": false,
+    "manual_labels_read_authorized": false,
+    "rule_aggregation_authorized": false,
+    "portfolio_replay_authorized": false,
+    "candidate_reselection_authorized": false,
+    "post_2021_q3_read_authorized": false,
+    "2022_plus_read_authorized": false
+  },
+  "publication_contract": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_aggregate_volatility_innovation_exposure_compensation_mother_v37/stage_b",
+    "outputs": [
+      "prepared_candidates.parquet",
+      "future_paths.parquet",
+      "outcomes.parquet",
+      "result.json"
+    ],
+    "atomic_no_overwrite": true,
+    "source_reverification_before_publish": true
+  },
+  "claims": {
+    "pit_grade": "B",
+    "development_only": true,
+    "independent_confirmation": false,
+    "strict_pit_a": false,
+    "portfolio_or_live_use": false
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "experiment": "ASHARE-PANIC-ABSORPTION-12M-CHART-RULE-DISCOVERY-V1",
+  "scientific_status": "POST_DISCOVERY_CHART_ANATOMY_WITH_SEPARATELY_FROZEN_2024_CHALLENGE",
+  "source_experiment": "ASHARE-PANIC-GAP-DOWN-FULL-ABSORPTION-REVERSAL-V1",
+  "economic_hypothesis": "After a material decline, an overnight forced-sale gap that is fully absorbed by completed-session demand may identify an inventory-transfer reversal. Twelve-month chart anatomy asks which causal pre-signal structures distinguish genuine transfer from a temporary dead-cat bounce.",
+  "governance": {
+    "chart_rule_design_period": ["2014-01-01", "2021-12-31"],
+    "previously_consumed_validation": ["2022-01-01", "2023-12-31"],
+    "newly_authorized_challenge": ["2024-01-01", "2024-12-31"],
+    "post_2024_signal_or_outcome_read": false,
+    "rules_must_freeze_before_2024_outcomes": true,
+    "2022_2023_not_claimed_as_untouched": true,
+    "2024_is_the_only_new_outcome_challenge": true,
+    "no_same_bar_fill": true,
+    "t_plus_one_limits_suspensions_and_corporate_actions_unchanged": true,
+    "unknown_required_lineage_fails_closed": true
+  },
+  "source_signal": {
+    "ret20_max": -0.10,
+    "open_gap_to_prior_close_max": -0.01,
+    "new_five_session_low": true,
+    "turnover_not_below_prior20_mean": true,
+    "close_not_below_prior_session_high": true,
+    "close_location_min": 0.70,
+    "upper_limit_close_excluded": true,
+    "prior20_completed_market_sessions_fully_tradable_and_coordinate_valid": true,
+    "symbol_cooldown_market_sessions": 20
+  },
+  "frozen_trade_translation": {
+    "entry": "first legal executable open strictly after signal close, no later than the third subsequent market session",
+    "profit_target": "+10% from entry, actionable only from the first sellable session",
+    "time_stop": "next legal open after 20 completed trading sessions",
+    "failure_stop": "NONE",
+    "round_trip_cost_bps": 40
+  },
+  "chart_protocol": {
+    "one_event_per_chart": true,
+    "pre_signal_market_sessions": 126,
+    "post_signal_market_sessions": 126,
+    "price_coordinate": "accepted action-aware coordinate OHLC normalized to signal close=100",
+    "marks": ["signal", "entry", "exit", "profit target", "signal low"],
+    "outcome_buckets": {
+      "PROFIT_GE_4PCT": "net_return >= 0.04",
+      "PROFIT_0_TO_4PCT": "0 <= net_return < 0.04",
+      "LOSS_0_TO_10PCT": "-0.10 < net_return < 0",
+      "SEVERE_LOSS": "net_return <= -0.10",
+      "NO_COMPLETED_TRADE": "no valid completed source-profile trade"
+    },
+    "review_axes": [
+      "decline shape and duration",
+      "multi-month base versus continuing freefall",
+      "signal candle demand dominance",
+      "turnover expansion versus exhaustion",
+      "post-signal follow-through, retest, or failure"
+    ]
+  },
+  "rule_compression": {
+    "maximum_total_plain_language_rules": 5,
+    "maximum_chart_derived_candidate_sets": 3,
+    "no_threshold_grid": true,
+    "no_automated_subsets": true,
+    "no_sign_inversion": true,
+    "only_information_available_by_entry_may_select": true,
+    "rules_must_have_market_microstructure_or_supply_demand_meaning": true
+  },
+  "development_gate_v26_convention": {
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_positive": true,
+    "severe_loss10_max": 0.15,
+    "calendar_year_mean_net_positive_for_every_2014_2021_year_with_trades": true
+  },
+  "validation_gate_same_definition": {
+    "period": ["2022-01-01", "2024-12-31"],
+    "average_completed_trades_per_year_strictly_greater_than": 50,
+    "pooled_mean_net_return_strictly_greater_than": 0.04,
+    "pooled_median_net_return_positive": true,
+    "severe_loss10_max": 0.15,
+    "report_each_year_without_repair": true
+  }
+}

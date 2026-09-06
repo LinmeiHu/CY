@@ -1,0 +1,29 @@
+{
+  "experiment": "ASHARE-DEMAND-IMPULSE-DELAYED-BREAKOUT-LONG-REPRICING-V6",
+  "status": "SINGLE_TRANSLATION_FREEZE",
+  "economic_hypothesis": "A non-extended three-session demand impulse, immediate low-turnover inside day, and first completed breakout within five sessions is a renewed price-discovery sequence. Its economic horizon may exceed thirty sessions, so the existing signal is translated once with a twenty-percent target and sixty-session time stop.",
+  "signal": "exact ASHARE-DEMAND-IMPULSE-INSIDE-DAY-DELAYED-BREAKOUT-V5 identity",
+  "signal_changed": false,
+  "market_regime_filter": "NONE; causal regime remains a reported diagnostic",
+  "translation": {
+    "entry": "first legal executable open strictly after completed breakout signal, no later than three market sessions",
+    "target": 0.20,
+    "time_stop_sessions": 60,
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "translation_profile_count": 1,
+  "chronology": {
+    "development": "2014-2021",
+    "post_observation_diagnostic": "2022-2023; prior V5 outcomes already observed",
+    "repository_2024_plus": "SEALED"
+  },
+  "governance": {
+    "future_extrema_used": false,
+    "same_bar_fill": false,
+    "post_result_target_search": false,
+    "post_result_horizon_search": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

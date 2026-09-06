@@ -1,0 +1,37 @@
+{
+  "experiment": "ASHARE-BEAR-IDIOSYNCRATIC-DEMAND-IGNITION-V7",
+  "status": "CAUSAL_IDIOSYNCRATIC_CROWDING_FREEZE",
+  "economic_hypothesis": "During a causally known broad bear state, an isolated oversold active-demand ignition is more likely to contain stock-specific information. A day with many simultaneous ignitions is primarily a market-beta rebound and must not be counted as many independent opportunities.",
+  "admission": [
+    "exact ASHARE-OVERSOLD-ACTIVE-DEMAND-IGNITION-V1 signal",
+    "exact causal all-market BEAR state at completed signal close",
+    "total exact OAI signals across Main and ChiNext on the completed signal date is at most 10"
+  ],
+  "same_date_signal_count_clock": "completed signal-session close; every constituent signal is itself known at that close",
+  "translation": {
+    "entry": "first legal executable open strictly after completed signal, no later than three market sessions",
+    "target": 0.20,
+    "time_stop_sessions": 60,
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true
+  },
+  "portfolio": {
+    "maximum_positions_per_board_sleeve": 40,
+    "same_date_rank": "higher completed signal step return, then event_id",
+    "one_active_position_per_symbol": true,
+    "no_leverage": true,
+    "no_cross_sleeve_transfer": true
+  },
+  "chronology": {
+    "2014_2021": "consumed research history",
+    "2022_2023": "post-observation diagnostic; not pristine OOS",
+    "repository_2024_plus": "SEALED"
+  },
+  "governance": {
+    "crowding_threshold_selected_from_returns": false,
+    "future_signal_count_used": false,
+    "future_regime_used": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

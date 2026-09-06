@@ -1,0 +1,72 @@
+{
+  "experiment": "ASHARE-BULL-DISTRIBUTED-ACCUMULATION-CHART-RULES-V3",
+  "scientific_status": "POST_HOC_FULL_CHART_RULE_COMPRESSION_DEVELOPMENT_FREEZE",
+  "parent_chart_experiment": "ASHARE-BULL-DISTRIBUTED-ACCUMULATION-12M-CHART-DISCOVERY-V2",
+  "post_hoc_disclosure": "The rules below were generated after visually reviewing every one of the 3422 frozen 2014-2020 mother-signal charts in chronological order. This is development research, not independent confirmation. No 2021 signal or outcome and no 2022-2024 outcome was used to define the rules.",
+  "chart_corpus": {
+    "signals": 3422,
+    "chronological_contact_sheets": 381,
+    "all_chronological_sheets_reviewed": true,
+    "candidate_sha256": "6ba8527303c69c29a6fff74aefc4823e57195a7358489da68fedbb5d62a564f5",
+    "outcome_sha256": "ec2d271c81d35ec83392d651e1fe2a9a084cc94d592c82431ee71da8ab58e9e1",
+    "review_ledger_sha256": "5f0c8abf7d9f0852fe9de34c118340964afa3df6ffce424fb8686bbf6b8ad103",
+    "manifest_sha256": "f3a1d7b4500824e1ae03e9e0e0db571744381f3ee02085a7ec888dddea3fe657"
+  },
+  "economic_summary": "The mother event is useful only when it represents genuine price discovery through a clear supply corridor, occurs while broad demand is strengthening rather than merely retaining a stale BULL label, is not one of many simultaneous early-bull escapes unsupported by durable breadth, and is accepted on the next observable trading session.",
+  "frozen_rules": [
+    {
+      "id": "R1_MOTHER_EVENT",
+      "plain_language": "Keep the exact frozen BULL distributed-accumulation escape mother signal without changing any of its thresholds or cooldown.",
+      "implementation": "event identity must be present in candidates_frozen.parquet from ASHARE-BULL-DISTRIBUTED-ACCUMULATION-12M-CHART-DISCOVERY-V2"
+    },
+    {
+      "id": "R2_CLEAR_TARGET_CORRIDOR",
+      "plain_language": "The breakout must either exceed the highest pre-existing high in the prior 126 completed market sessions or leave at least the fixed 15 percent target distance before that old high; reject breakouts that run directly into old overhead supply.",
+      "implementation": "after an exact, valid, corporate-action-clean 126-session pre-signal coordinate history, require signal_coord_close > prior126_coord_high OR prior126_coord_high >= 1.15 * signal_coord_close"
+    },
+    {
+      "id": "R3_CAUSAL_BULL_STRENGTHENING",
+      "plain_language": "At the signal close, both the return pace and participation of the most recent 20 sessions must be at least as strong as the prior 60-session market path.",
+      "implementation": "require (1 + market_median_ret20)^3 >= (1 + market_median_ret60) AND market_positive_ret20_share >= market_positive_ret60_share; all inputs are completed signal-date cross-sectional observations"
+    },
+    {
+      "id": "R4_EARLY_BULL_CROWDING_AND_ACCEPTANCE",
+      "plain_language": "If fewer than 80 percent of stocks have positive 60-session returns, reject days with more than 25 simultaneous mother signals; then require the first legal completed stock session after the signal, within three market sessions, to close at or above the signal close before buying on a later legal open.",
+      "implementation": "require market_positive_ret60_share >= 0.80 OR same_date_mother_count <= 25; find the first post-signal valid tradable session within cal_idx+3 in the unchanged coordinate lineage and require coord_close >= signal_coord_close; entry begins strictly after that confirmation close"
+    }
+  ],
+  "translation": {
+    "entry": "first legal non-upper-limit open in the three market sessions strictly after the acceptance-confirmation session",
+    "target": "+15 percent gross from executable entry",
+    "time_stop": "after thirty held market sessions, then the first legal sellable open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "T_plus_1": true,
+    "limits_suspensions_and_corporate_actions": "binding and fail closed"
+  },
+  "rule_budget": {
+    "plain_language_rules": 4,
+    "threshold_grid": false,
+    "rule_subset_search": false,
+    "alternative_holding_periods": false,
+    "alternative_targets": false,
+    "rescue_after_result": false
+  },
+  "development_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "development_gate_before_later_period": {
+    "each_calendar_year_completed_signals_strictly_greater_than": 50,
+    "each_calendar_year_mean_net_return_strictly_greater_than": 0.04,
+    "each_calendar_year_median_net_return_positive": true,
+    "each_calendar_year_severe_loss10_at_most": 0.20
+  },
+  "later_period_governance": {
+    "2021_signal_or_outcome_used_for_rule_discovery": false,
+    "2022_2024_open_only_after_rules_are_frozen_and_development_gate_passes": true,
+    "post_2024_read": false,
+    "future_market_function": false,
+    "no_independent_confirmation_claim": true
+  }
+}

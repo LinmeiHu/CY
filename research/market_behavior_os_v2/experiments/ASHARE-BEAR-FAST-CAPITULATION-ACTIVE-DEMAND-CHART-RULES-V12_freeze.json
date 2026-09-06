@@ -1,0 +1,73 @@
+{
+  "experiment": "ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-CHART-RULES-V12",
+  "status": "POST_HOC_CHART_RULE_DISCOVERY_FREEZE",
+  "purpose": "Apply the V26 workflow to the already frozen V10 mother event: review every 2014-2020 signal chart, distinguish profitable from unprofitable structures, compress observations into at most five causal rules, and freeze those rules before any 2021-plus challenge aggregation.",
+  "mother_event": "ASHARE-BEAR-FAST-CAPITULATION-ACTIVE-DEMAND-V10",
+  "mother_event_changes": "NONE",
+  "rule_discovery_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "chart_window": {
+    "pre_signal_completed_sessions": 120,
+    "post_signal_completed_sessions": 120,
+    "normalization": "signal close = 100",
+    "marks": [
+      "signal close",
+      "next-legal-open entry",
+      "frozen +20% target",
+      "frozen exit"
+    ]
+  },
+  "population": {
+    "use_all_raw_v10_signals_before_capacity_selection": true,
+    "expected_count": 447,
+    "expected_annual_counts": {
+      "2014": 2,
+      "2015": 90,
+      "2016": 59,
+      "2017": 32,
+      "2018": 214,
+      "2019": 5,
+      "2020": 45
+    },
+    "reason": "Visual rule discovery must not learn the arbitrary same-date capacity ordering."
+  },
+  "frozen_outcome_translation": {
+    "entry": "first legal executable open strictly after the completed signal, no later than three market sessions",
+    "target": "+20% from executable entry",
+    "time_stop": "H60 then next legal executable open",
+    "failure_stop": "NONE",
+    "round_trip_cost_bps": 40
+  },
+  "outcome_buckets": [
+    "TARGET_OR_PROFIT_GE_4PCT",
+    "PROFIT_0_TO_4PCT",
+    "LOSS_0_TO_10PCT",
+    "SEVERE_LOSS",
+    "NO_COMPLETED_TRADE"
+  ],
+  "visual_questions": [
+    "Was the pre-signal decline a fast forced-liquidation leg or a long unresolved stair-step decline?",
+    "Did the signal occur after mature prior weakness or after a fresh peak with large overhead inventory?",
+    "Was the signal a first decisive demand transfer or a late rebound already extended from the local low?",
+    "Did the signal beat its industry and board because of stock-specific demand rather than a synchronized rebound?",
+    "Was pre-signal turnover contracting before the demand ignition, or was supply still expanding?",
+    "Did the signal close through an objective nearby supply level with adequate reward headroom?"
+  ],
+  "rule_budget": {
+    "maximum_rules": 5,
+    "threshold_search": false,
+    "lookback_search": false,
+    "outcome_bucket_switching": false,
+    "allowed_translation_change": false,
+    "allowed_market_state_change": false
+  },
+  "challenge_governance": {
+    "2021_plus_signal_outcomes_used_in_rule_discovery": false,
+    "2022_plus_signal_outcomes_used_in_rule_discovery": false,
+    "2024_plus_outcomes_opened": false,
+    "next_step": "Freeze at most five chart-derived causal rules, aggregate once on 2014-2020, and only if the requested signal-count and per-signal-return gate survives may the unchanged rule be challenged later."
+  },
+  "interpretation": "This is post-hoc development research inspired by V26, not independent confirmation."
+}

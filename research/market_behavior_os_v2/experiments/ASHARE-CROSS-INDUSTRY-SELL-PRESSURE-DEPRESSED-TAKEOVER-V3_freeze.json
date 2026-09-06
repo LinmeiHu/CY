@@ -1,0 +1,92 @@
+{
+  "experiment": "ASHARE-CROSS-INDUSTRY-SELL-PRESSURE-DEPRESSED-TAKEOVER-V3",
+  "stage": "FROZEN_AFTER_PRE_2022_DEVELOPMENT_BEFORE_2022_2025_CHALLENGE",
+  "scientific_status": "PRE_2022_CHART_AND_DEVELOPMENT_DERIVED_TEMPORAL_CHALLENGE",
+  "economic_hypothesis": "A seller-cost reclaim is more credible when it occurs across many causal industries and in stocks still depressed over the prior market quarter. The thesis is invalidated only when the broad equal-weight market loses ten percent after the signal, rather than by an ordinary single-stock retest of the reclaimed cost zone.",
+  "inherits": {
+    "mother": "ASHARE-SELL-PRESSURE-COST-ZONE-VOLUME-RECLAIM-V1",
+    "mother_freeze_sha256": "a8225c15d5b57faebed547002e82658ad3ad7d24827ad247f76efa6c815c8cb4",
+    "development_candidates_sha256": "ff72c1ff499acc3df5226e03d03bf029b9545f554102b444d8a087265d960cae"
+  },
+  "mother_rules": [
+    "the most recent eligible seller anchor is three through twenty sessions before the signal",
+    "the seller anchor falls at least three percent, trades at least 1.5 times its strictly prior twenty-session mean turnover, and closes in the bottom thirty-five percent of its range",
+    "the frozen seller cost is anchor amount divided by volume in the valid corporate-action coordinate",
+    "every intervening close remains below the frozen seller cost with unchanged valid lineage",
+    "the signal touches the cost and closes at least 0.5 percent above it and no lower than the anchor close, rises at least two percent, closes in the top thirty percent of its range, has at least prior-twenty mean turnover, and is not limit-up",
+    "the first qualifying stock event is retained, followed by a twenty-session symbol cooldown"
+  ],
+  "incremental_rules": [
+    "the signal closes at or above the strictly prior session high",
+    "signal turnover is at least 1.5 times its strictly prior twenty-session mean",
+    "before stock ranking, at least twelve independent symbols and at least eight point-in-time causal industries complete the takeover on the same date",
+    "within each admitted date, rank stocks from lowest to highest strictly prior sixty-session return and retain the first floor(sixty percent times the pre-ranking event count), with symbol and event identity as deterministic tie-breakers"
+  ],
+  "execution": {
+    "entry": "first legal non-upper-limit open in signal plus one through signal plus three",
+    "profit_target": "ten percent above entry, never eligible on the entry bar",
+    "time_stop": "H20 close decision followed by the first legal sellable open",
+    "market_failure": "compound the daily cross-sectional median return of the valid tradable non-ST universe from the first post-signal close; at or below 0.90 of signal-close level, decide failure and exit at the next legal sellable open",
+    "stock_cost_retest_stop": "none",
+    "round_trip_cost": 0.004,
+    "t_plus_one": true,
+    "same_bar_fill": false
+  },
+  "development_quarantine": {
+    "signal_period": [
+      "2014-01-01",
+      "2021-11-30"
+    ],
+    "outcome_and_market_bar_end": "2021-12-31",
+    "post_2021_bar_read": false,
+    "charts_reviewed": 62,
+    "chart_contact_sheets_reviewed": 11,
+    "chart_runner_sha256": "7c41415eb9fa0a6391379649d4d900a221aa9f6b62389c7e7105d46a7fdd4b93"
+  },
+  "development_evidence": {
+    "selected_signals": 436,
+    "completed": 434,
+    "completed_per_year": 54.25,
+    "mean_net_return": 0.052802407587395975,
+    "median_net_return": 0.09600000000000009,
+    "mean_holding_sessions": 13.68663594470046,
+    "severe_loss10": 0.04608294930875576,
+    "target_hit": 0.6359447004608295,
+    "market_failure_exit": 0.03225806451612903,
+    "distinct_signal_dates": 31,
+    "signal_date_equal_weight_mean_net": 0.0444272679784417,
+    "largest_date_share": 0.15898617511520738,
+    "positive_signal_date_share": 0.8387096774193549,
+    "top10_depressed_completed": 278,
+    "top10_depressed_mean_net": 0.045171651299680766,
+    "top10_depressed_mean_holding": 13.251798561151078,
+    "every_year_with_trades_positive": true,
+    "all_frozen_gates_pass": true
+  },
+  "development_artifacts": {
+    "runner_sha256_before_freeze_guard": "417d594e0148502a5043335b859c3b6eb782739e3365820585cb3b170896f1a5",
+    "development_result_sha256": "dca7d69cabe15b1cabb6273a30be2a325e68a07fa379c92631c63b7e7593ba07",
+    "selected_candidates_sha256": "5a13990bb3190016a01993ce44443914bd735f9d03f879a1a58307f38a5af0ba",
+    "outcomes_sha256": "176b85fc39a2b30fbb8fea9b78bb2d5774dea2939ed558ec0237d6f018be25e5"
+  },
+  "challenge": {
+    "signal_period": [
+      "2022-01-01",
+      "2025-12-31"
+    ],
+    "outcome_tail_end": "2026-03-31",
+    "open_once": true,
+    "no_threshold_rescue": true,
+    "report_years_separately": true,
+    "report_event_date_concentration": true,
+    "report_top10_depressed_capacity": true
+  },
+  "governance": {
+    "future_market_function": false,
+    "same_bar_fill": false,
+    "unknown_required_lineage_market_or_execution_state": "fail closed",
+    "participant_identity_claim": false,
+    "independent_confirmation_claim": false,
+    "disclosure": "The exact V3 formulation used no market or outcome bar after 2021-12-31 during development. Related 2022-2025 family outcomes were observed before V3 began, so the frozen challenge is a temporal no-rescue test but not pristine independent confirmation."
+  }
+}

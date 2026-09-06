@@ -1,0 +1,87 @@
+{
+  "experiment": "ASHARE-CAUSAL-BEAR-BULL-DUAL-ENGINE-CHART-RULE-COMPRESSION-V19R1",
+  "scientific_status": "POST_HOC_DEVELOPMENT_CHART_RULES_FROZEN_BEFORE_REPLAY",
+  "purpose": "Compress the complete manual review of all 840 V19 development charts into one simple causal state-routed replay. This is a deeper, higher-breadth follow-up to the previously closed three-session quiet-inventory acceptance test: it uses the exact V24 dual-demand bull mother, adds the independent V13R1 bear-repair engine, shortens acceptance to one completed session to preserve opportunity breadth, and freezes lane-specific acceptance before replay.",
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "chart_review": {
+    "individual_charts_reviewed": 840,
+    "review_sheets_reviewed": 98,
+    "review_complete": true,
+    "six_month_sessions_before": 126,
+    "six_month_sessions_after": 126,
+    "chart_ledger_sha256": "b19991bc6ae2e6540c794faf3c83fdb0ce8eb2f09f1539cad2702f63ba1e2ed6",
+    "chart_window_sha256": "cdf53395975c7b6e8adc35fcb598f65b4da0b5424d3834595066c18cc48325eb",
+    "chart_index_sha256": "88c80cbccb8701d808c90c9c5ea5c718f13baa672d0888de7ceacb68da05b179",
+    "chart_result_sha256": "d5aaa25b66e8eb18f3ba0fc4376040c4d4e924dd0a705e91f39734b7fcc9cdfe",
+    "observations": [
+      "Bull winners usually converted the frozen platform high into accepted support quickly; bull losers more often jumped above it and promptly closed back inside the old inventory.",
+      "Synchronized bull demand tolerated an ordinary retest better than isolated information jumps; isolated jumps needed to retain the signal close because no broad demand confirmation existed.",
+      "Bear winners and losers both followed fast capitulation, but severe losers more often behaved as a single-session reflex rally that immediately lost the already-cleared prior-five-session high.",
+      "Requiring the next session itself to be positive would reject visible winners that consolidated above structure, so acceptance is defined against the pre-existing level rather than next-day return.",
+      "Fixed targets captured many economically successful moves before later reversal; no chart-derived trailing exit or discretionary hold extension is authorized."
+    ]
+  },
+  "frozen_plain_language_rules": [
+    "At the mother-signal close, route causally: BULL uses the exact V24 quiet-platform dual-demand continuation mother; BEAR uses the exact accepted V13R1 fast-capitulation active-demand repair mother; TRANSITION holds cash.",
+    "The same causal market direction must still be present at the next completed market-session close; an engine-state reversal or missing state fails closed.",
+    "For a synchronized-majority-demand BULL signal, accept only if the immediate next market session is a valid completed stock session and closes at or above the platform high frozen before the signal. For an idiosyncratic-information-jump BULL signal, require the same and also a close at or above the signal close.",
+    "For a BEAR repair signal, accept only if the immediate next market session is a valid completed stock session and closes at or above the prior-five-session high already cleared on the signal day.",
+    "After the confirmation close, buy the first legal non-limit-up open within the next three market sessions. Keep the mother engine economics unchanged from the revised entry: BULL sells at +15% or the first legal open after H15; BEAR sells at +10% or the first legal open after H20; no stop; 40 bp round trip."
+  ],
+  "exact_confirmation_contract": {
+    "confirmation_market_cal_idx": "signal_cal_idx + 1",
+    "missing_or_invalid_immediate_next_stock_bar": "FAIL_CLOSED_NO_TRADE",
+    "required_stock_bar": "trade_status=1, current_day_data_tradable, current_valid, market_rule_valid, corporate_action_valid, no corporate_action_blocking, hard_valid, unchanged invalid_step_cum coordinate lineage",
+    "bull_synchronized_test": "confirmation_coord_close >= frozen_platform_high",
+    "bull_idiosyncratic_test": "confirmation_coord_close >= max(frozen_platform_high, signal_coord_close)",
+    "bear_test": "confirmation_coord_close >= frozen_prior5_high",
+    "market_state_test": "confirmation causal market_regime equals the mother engine state",
+    "decision_at": "confirmation session close",
+    "same_signal_or_confirmation_bar_fill": false
+  },
+  "execution": {
+    "entry": "first legal non-limit-up open strictly after confirmation, no later than three market sessions",
+    "bull_target": 0.15,
+    "bull_horizon_sessions": 15,
+    "bear_target": 0.10,
+    "bear_horizon_sessions": 20,
+    "stop": false,
+    "entry_bps": 20,
+    "exit_bps": 20,
+    "round_trip_bps": 40,
+    "t_plus_one": true,
+    "lineage_change": "FAIL_CLOSED"
+  },
+  "development_gate": {
+    "completed_trades_strictly_greater_than_50_in_each_year_2014_2020": true,
+    "pooled_mean_net_strictly_greater_than": 0.04,
+    "pooled_median_net_positive": true,
+    "every_calendar_year_mean_net_positive": true,
+    "severe_loss_10pct_max": 0.15
+  },
+  "later_period_governance": {
+    "2021_plus_outcomes_open_during_rule_derivation": false,
+    "2022_2024_outcomes": "CLOSED_UNTIL_ALL_DEVELOPMENT_GATES_PASS",
+    "2025_plus_outcomes": "FORBIDDEN_IN_THIS_EXPERIMENT"
+  },
+  "anti_overfit": {
+    "confirmation_windows_tested": 1,
+    "confirmation_thresholds_tested": 1,
+    "market_state_variants_tested": 0,
+    "target_or_horizon_variants_tested": 0,
+    "rule_subset_search": false,
+    "parameter_grid": false,
+    "no_rescue_after_result": true
+  },
+  "source_hashes": {
+    "bear_trades": "8e62f4b3a9552cac769e95eb6e172ec65e8d53af207cccb06a60c6ad21ca8140",
+    "bull_candidates": "ad25518cb1e04ca58db6cd4d49e1e00dc65da049b7e089c489d83c6464819cab",
+    "bull_outcomes": "dc97ef0f459c1a5e4e6832b48762076a342c752df4a7321d0d388be0cd87c9ed",
+    "pit_daily": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "causal_market_state": "5f56af1a7650c5a4d4a885ee1b6e75496a2cb0d7449621801b299a1ccd931c0a"
+  },
+  "scientific_disclosure": "All rule directions were generated after viewing outcome-labeled 2014-2020 charts. The replay is post-hoc development evidence, not independent confirmation."
+}

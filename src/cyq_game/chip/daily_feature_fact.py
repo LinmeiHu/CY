@@ -132,10 +132,12 @@ def _ensemble_row(
         "profit_ratio", "asr", "cbw", "concentration_20", "dominant_peak_today",
         "dominant_band_lower", "dominant_band_upper", "dominant_band_mass",
     )
-    values = {name: median(float(row[name]) for row in models) for name in scalar_names}
+    values = {name: _nullable_median(models, name) for name in scalar_names}
     candidates_by_model = {
         str(model["seller_model"]): _canonical_peaks_from_json(
-            model["canonical_peaks_json"], expected_day=day
+            model["canonical_peaks_json"],
+            expected_day=day,
+            known_cost_fraction=float(model["known_cost_fraction"]),
         )
         for model in models
     }
@@ -150,9 +152,6 @@ def _ensemble_row(
     peak_state = tracking.fail_closed_reason or (
         "TRACKED" if tracked is not None else "LOST"
     )
-    p50s = [float(row["cost_p50"]) for row in models]
-    p90s = [float(row["cost_p90"]) for row in models]
-    peaks = [float(row["dominant_peak_today"]) for row in models]
     return (
         symbol, day, snapshot_id, max(row["available_at"] for row in models),
         values["average_cost"], values["cost_p01"], values["cost_p10"], values["cost_p50"],
@@ -161,10 +160,12 @@ def _ensemble_row(
         None if dominant is None else dominant.center_price,
         dominant is None or dominant.ambiguity,
         values["dominant_band_lower"], values["dominant_band_upper"],
-        values["dominant_band_mass"], round(median(int(row["peak_count"]) for row in models)),
+        values["dominant_band_mass"], _nullable_peak_count(models),
         min(float(row["known_cost_fraction"]) for row in models),
-        min(float(row["model_quality"]) for row in models), max(p50s)-min(p50s),
-        max(p90s)-min(p90s), max(peaks)-min(peaks),
+        min(float(row["model_quality"]) for row in models),
+        _nullable_spread(models, "cost_p50"),
+        _nullable_spread(models, "cost_p90"),
+        _nullable_spread(models, "dominant_peak_today"),
         None if tracked is None else tracked.center_price,
         None if tracked is None else tracked.peak_track_id,
         None if tracked is None else tracked.band[0], None if tracked is None else tracked.band[1],
@@ -179,9 +180,35 @@ def _ensemble_row(
     )
 
 
-def _canonical_peaks_from_json(value: object, *, expected_day: date) -> tuple[CanonicalPeak, ...]:
+def _nullable_median(models: list[dict[str, Any]], name: str) -> float | None:
+    values = [row[name] for row in models]
+    if any(value is None for value in values):
+        return None
+    return median(float(value) for value in values)
+
+
+def _nullable_spread(models: list[dict[str, Any]], name: str) -> float | None:
+    values = [row[name] for row in models]
+    if any(value is None for value in values):
+        return None
+    numeric = [float(value) for value in values]
+    return max(numeric) - min(numeric)
+
+
+def _nullable_peak_count(models: list[dict[str, Any]]) -> int | None:
+    values = [row["peak_count"] for row in models]
+    if any(value is None for value in values):
+        return None
+    return round(median(int(value) for value in values))
+
+
+def _canonical_peaks_from_json(
+    value: object, *, expected_day: date, known_cost_fraction: float
+) -> tuple[CanonicalPeak, ...]:
     """Decode only the active, complete canonical peak artifact."""
 
+    if value is None and known_cost_fraction == 0.0:
+        return ()
     if not isinstance(value, str):
         raise ValueError("canonical peak artifact is missing; rebuild from raw inputs")
     try:

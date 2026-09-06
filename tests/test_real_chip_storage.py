@@ -10,7 +10,10 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 import numpy as np
-from cyq_game.chip.migration_v2 import _PackedWorkingLots
+from cyq_game.chip.migration_v2 import (
+    _PackedWorkingLots,
+    _compact_packed_lots_by_dimensions,
+)
 from math import isclose
 from cyq_game.chip.profile_metrics import compute_distribution_metrics
 from cyq_game.strategy.exact_chip_features import _FAST_OPERATOR_COLUMNS
@@ -107,6 +110,83 @@ def test_packed_profile_refreshes_stale_cell_ids_even_when_marked_current() -> N
     assert np.array_equal(packed.holding_days, dimensions_before[1])
     assert np.array_equal(packed.sensitivity_codes, dimensions_before[2])
     assert np.array_equal(packed.shares, dimensions_before[3])
+
+
+def test_packed_profile_aggregates_duplicate_stable_cell_ids_without_mass_loss() -> None:
+    grid = MODULE["StableLogPriceGrid"](1.0, 0.0025, "test-grid")
+    sensitivity = MODULE["TurnoverSensitivity"].NEUTRAL
+    economic_break_even = 10.0
+    canonical_id = MODULE["stable_cell_id"](
+        cost_bucket_id=100,
+        holding_days=240,
+        sensitivity=sensitivity,
+        economic_break_even=economic_break_even,
+    )
+    shares = np.array([525_951_304.36365926, 56.63634074], dtype=np.float64)
+    packed = _PackedWorkingLots(
+        cell_ids=np.array([canonical_id, canonical_id], dtype=np.int64),
+        cost_bucket_ids=np.array([100, 100], dtype=np.int64),
+        holding_days=np.array([240, 240], dtype=np.int16),
+        sensitivity_codes=np.array([1, 1], dtype=np.int8),
+        acquisition_costs=np.array([10.0, 10.0], dtype=np.float64),
+        economic_break_evens=np.array([10.0, 10.0], dtype=np.float64),
+        shares=shares,
+        initialization_prior_units=np.zeros(2, dtype=np.float64),
+    )
+
+    view, _, known_shares, economic = MODULE["_CellCodec"]().register_state_and_profile(
+        SimpleNamespace(packed_lots=packed), grid
+    )
+
+    expected = math.fsum(shares.tolist())
+    assert list(view) == [canonical_id]
+    assert view[canonical_id][3] == expected
+    assert math.fsum(cell[3] for cell in view.values()) == expected
+    assert known_shares == expected
+    assert economic[canonical_id] == grid.bucket_for_price(economic_break_even)
+
+
+def test_packed_compaction_preserves_economic_identity_bits() -> None:
+    sensitivity = MODULE["TurnoverSensitivity"].NEUTRAL
+    economic_break_even = float.fromhex("0x1.c3c1b02a94791p-3")
+    shares = np.array(
+        [
+            2.4656614831537294e-06,
+            17_532_054.333975907,
+            154.05735599814636,
+            2.8408728392883626e-10,
+            4.15251463970847e-05,
+            3.433449503495439e-12,
+            3_882.4623476908664,
+            1.6631006194052743e-12,
+            1_411_278_138.547715,
+        ],
+        dtype=np.float64,
+    )
+    canonical_id = MODULE["stable_cell_id"](
+        cost_bucket_id=12,
+        holding_days=180,
+        sensitivity=sensitivity,
+        economic_break_even=economic_break_even,
+    )
+    count = len(shares)
+    packed = _PackedWorkingLots(
+        cell_ids=np.full(count, canonical_id, dtype=np.int64),
+        cost_bucket_ids=np.full(count, 12, dtype=np.int64),
+        holding_days=np.full(count, 180, dtype=np.int16),
+        sensitivity_codes=np.full(count, 1, dtype=np.int8),
+        acquisition_costs=np.full(count, 0.22, dtype=np.float64),
+        economic_break_evens=np.full(count, economic_break_even, dtype=np.float64),
+        shares=shares,
+        initialization_prior_units=np.zeros(count, dtype=np.float64),
+    )
+
+    _compact_packed_lots_by_dimensions(packed, max_holding_days=180)
+
+    assert len(packed) == 1
+    assert packed.economic_break_evens[0].hex() == economic_break_even.hex()
+    packed.refresh_cell_ids()
+    assert packed.cell_ids.tolist() == [canonical_id]
 
 
 def test_v12_schema_keeps_full_cell_identity_and_economic_coordinates() -> None:
@@ -851,6 +931,75 @@ def test_stage_marker_separates_end_date_contract() -> None:
         symbols=(),
         end_date=date(2020, 6, 18),
     )
+
+
+def test_stage_marker_separates_multiple_minute_delta_contract() -> None:
+    matches = MODULE["_stage_marker_matches"]
+    first = {"path": "/registered/first.parquet", "sha256": "a" * 64}
+    second = {"path": "/registered/second.parquet", "sha256": "b" * 64}
+    metadata = {
+        "year": 2026,
+        "warmup_start": 2026,
+        "buckets": 10,
+        "layout_version": MODULE["STAGE_LAYOUT_VERSION"],
+        "prior_history_start": 2018,
+        "end_date": "2026-09-04",
+        "baostock_delta_files": [first, second],
+    }
+
+    assert matches(
+        metadata,
+        year=2026,
+        warmup_start=2026,
+        buckets=10,
+        symbols=(),
+        prior_history_start=2018,
+        end_date=date(2026, 9, 4),
+        baostock_delta_files=(first, second),
+    )
+    assert not matches(
+        metadata,
+        year=2026,
+        warmup_start=2026,
+        buckets=10,
+        symbols=(),
+        prior_history_start=2018,
+        end_date=date(2026, 9, 4),
+        baostock_delta_files=(first,),
+    )
+
+
+def test_minute_delta_records_preserve_embedded_source(tmp_path: Path) -> None:
+    legacy = tmp_path / "legacy.parquet"
+    sourced = tmp_path / "sourced.parquet"
+    nullable = tmp_path / "nullable.parquet"
+    pq.write_table(pa.table({"date": ["2026-08-24"]}), legacy)
+    pq.write_table(
+        pa.table({"date": ["2026-08-25"], "source": ["sina-none-5m"]}),
+        sourced,
+    )
+    pq.write_table(
+        pa.table(
+            {
+                "date": ["2026-08-25", "2026-08-26"],
+                "source": ["sina-none-5m", None],
+            }
+        ),
+        nullable,
+    )
+
+    records = MODULE["_delta_file_records"]((legacy, sourced))
+
+    assert [record["minute_source"] for record in records] == [
+        "baostock-none-5m",
+        "sina-none-5m",
+    ]
+    assert [record["path"] for record in records] == [
+        str(legacy.resolve()),
+        str(sourced.resolve()),
+    ]
+    with pytest.raises(ValueError, match="null source"):
+        MODULE["_delta_file_records"]((nullable,))
 
 
 def test_adjacent_year_terminal_is_discovered_automatically(tmp_path: Path) -> None:

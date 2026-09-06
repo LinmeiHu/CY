@@ -1,0 +1,56 @@
+{
+  "experiment_id": "ASHARE-FORMER-LEADER-HIGHER-BASE-REACCUMULATION-BREAKOUT-V2",
+  "status": "STAGE_A_OUTCOME_BLIND_SEMANTIC_REPAIR_FREEZE",
+  "parent": "ASHARE-FORMER-LEADER-DEEP-BASE-REACCUMULATION-BREAKOUT-V1",
+  "parent_candidate_sha256": "03149fd1c8f87f06c2a9b71b7f7096882f5fb9ad5a529e347de34e165cae80c9",
+  "repair_reason": "Blind charts showed that a narrow final 15-session window alone could admit a short pause inside an ongoing decline. V2 requires a visibly higher and non-declining base before the breakout. No outcome was opened for V1 before this repair.",
+  "unchanged_parent_semantics": [
+    "former leader run and old-peak clock",
+    "15-45 percent inventory reset",
+    "non-limit high-location volume-expansion breakout",
+    "next-legal-open execution",
+    "old-peak target",
+    "H60 time stop",
+    "40 bp round-trip cost"
+  ],
+  "higher_base_repair": {
+    "prior15_high_over_low_max": 1.15,
+    "prior15_low_over_sessions_16_to_40_low_min": 1.03,
+    "last_pre_signal_close_at_or_above_first_prior15_close": true,
+    "all_inputs_end_strictly_before_signal_except_breakout_trigger": true
+  },
+  "capacity_audit_before_outcomes": {
+    "candidate_count": 837,
+    "annual_counts": {
+      "2014": 82,
+      "2015": 63,
+      "2016": 110,
+      "2017": 39,
+      "2018": 26,
+      "2019": 99,
+      "2020": 130,
+      "2021": 86,
+      "2022": 103,
+      "2023": 99
+    },
+    "average_candidates_per_year": 83.7
+  },
+  "chronology": {
+    "discovery": ["2014-01-01", "2018-12-31"],
+    "confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "completed_trades_per_year_average_strictly_greater_than": 50,
+    "mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20
+  },
+  "audit": {
+    "v1_or_v2_returns_opened_before_freeze": false,
+    "manual_chart_pruning_allowed": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "experiment": "ASHARE-UPWARD-GAP-REACCEPTANCE-CHART-RULE-COMPRESSION-V1",
+  "scientific_status": "POST_HOC_CHART_DERIVED_RULES_FROZEN_BEFORE_AGGREGATE_REPLAY",
+  "parent_experiment": "ASHARE-UPWARD-INFORMATION-GAP-REJECTION-REACCEPTANCE-12M-CHART-DISCOVERY-V1",
+  "development_signal_period": [
+    "2014-01-01",
+    "2020-12-31"
+  ],
+  "chart_review": {
+    "eligible_completed_trade_charts_opened": 3041,
+    "review_classes_completed": [
+      "SEVERE_LOSS",
+      "LOSS_0_TO_10PCT",
+      "PROFIT_0_TO_4PCT",
+      "PROFIT_GE_4PCT"
+    ],
+    "window": "126 completed market sessions before and after the original signal, with the frozen 2021 tail only",
+    "important_scope_note": "The 4764 candidates rejected by execution, lineage, structural-target, headroom, or 2021-tail rules remain in the parent chart index but are not completed eligible trades and do not define winner/loser rules."
+  },
+  "chart_derived_mechanisms": [
+    {
+      "name": "POST_BUBBLE_DISTANCE",
+      "observation": "Many large losses are weak second acceptances after a parabolic peak and deep collapse; the old peak is too remote to represent a credible nearby supply destination.",
+      "causal_rule": "At the original signal close, require pre-rejection peak P divided by frozen gap upper boundary U minus one to be no greater than 0.30.",
+      "threshold_rationale": "Thirty percent is a single coarse economic boundary separating a nearby structural destination from a remote post-bubble peak; no neighboring threshold is authorized."
+    },
+    {
+      "name": "ACCEPTANCE_PERSISTENCE",
+      "observation": "Profitable charts more often remain accepted above U after the first reclaim; many losses immediately fall back into or through the old gap.",
+      "causal_rule": "Use the first hard-valid completed session strictly after the original signal and no later than three market sessions after it. It must have coordinate close strictly above U. This confirmation close becomes the new decision time. If no such first valid session exists, do not trade.",
+      "execution_consequence": "Entry can occur only at the first legal buyable open strictly after the confirmation close and within three market sessions."
+    },
+    {
+      "name": "CAUSAL_MARKET_DETERIORATION",
+      "observation": "Static BULL/BEAR labels do not separate charts. The economically relevant distinction is whether the completed 20-session market direction and participation have both deteriorated relative to their 60-session counterparts.",
+      "causal_rule": "At the confirmation close, reject only when market_median_ret20 is below market_median_ret60 AND market_positive_ret20_share is below market_positive_ret60_share.",
+      "future_function_prohibition": "All four inputs must come from the already registered causal market-state row whose latest_source_timestamp is no later than the confirmation decision time."
+    },
+    {
+      "name": "STRUCTURAL_FAILURE_EXIT",
+      "observation": "The clearest repeated losing pattern is renewed completed acceptance below L after entry.",
+      "causal_rule": "After entry, the first hard-valid completed coordinate close strictly below frozen L schedules an exit at the next legal sellable open. No same-bar close fill is allowed."
+    },
+    {
+      "name": "UNCHANGED_DESTINATION_AND_CLOCK",
+      "observation": "Many winning charts reach the frozen structural destination before later weakness; changing the profit objective or optimizing holding time is not justified by the chart review.",
+      "causal_rule": "Keep target entry + 0.67*(P-entry), minimum net headroom 4%, round-trip cost 40 bps, and the existing H60 next-legal-open time exit."
+    }
+  ],
+  "fixed_incremental_replays": [
+    "R0_PARENT_BASELINE",
+    "R1_STRUCTURAL_FAILURE_EXIT_ONLY",
+    "R2_ACCEPTANCE_PERSISTENCE_PLUS_EXIT",
+    "R3_PEAK_DISTANCE_PLUS_PERSISTENCE_PLUS_EXIT",
+    "R4_FINAL_ALL_FIVE_RULES"
+  ],
+  "incremental_replay_policy": "The sequence is mechanism attribution, not a model-selection grid. Report every step. Do not select a neighboring threshold or reorder rules after outcomes are visible.",
+  "promotion_gate_before_newer_outcomes": {
+    "qualified_signals_each_2014_2020_year_strictly_greater_than": 50,
+    "pooled_completed_mean_net_strictly_greater_than": 0.04,
+    "pooled_completed_median_net_positive": true,
+    "no_same_bar_entry_or_exit": true,
+    "no_future_market_state": true
+  },
+  "outcome_governance": {
+    "rule_direction_is_post_hoc_from_2014_2020_charts": true,
+    "development_replay_is_not_independent_confirmation": true,
+    "2022_2024_remain_closed_until_gate": true,
+    "2025_plus_remain_unread": true
+  },
+  "forbidden": [
+    "headroom threshold grid",
+    "confirmation window grid",
+    "market regime classifier training",
+    "full-period or future-defined bull/bear labels",
+    "same-bar entry or failure exit",
+    "target or holding-period optimization"
+  ]
+}

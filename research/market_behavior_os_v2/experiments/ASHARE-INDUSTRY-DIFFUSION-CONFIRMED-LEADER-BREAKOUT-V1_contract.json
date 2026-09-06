@@ -1,0 +1,54 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-DIFFUSION-CONFIRMED-LEADER-BREAKOUT-V1",
+  "status": "STAGE_A_OUTCOME_BLIND_FREEZE",
+  "scientific_period": "2014-01-01 through 2023-12-31",
+  "repository_2024_plus_data_opened": false,
+  "economic_hypothesis": "An individual high-platform breakout is more likely to reflect persistent thematic capital when the stock's point-in-time industry has broad positive twenty-session participation, ranks in the strongest thirty percent of industries that day, and its board has positive central twenty-session direction. This distinguishes a shared demand wave from an isolated chart breakout.",
+  "base_event": {
+    "source": "Frozen outcome-blind refined high-tight-flag candidates",
+    "candidate_sha256": "36cec753e551f6b214b965f251dc1238d5e7601cb676538d3f0660037592ed8b",
+    "semantics_changed": false
+  },
+  "industry_state_at_completed_signal_close": {
+    "identity": "causal_industry with industry_valid and hard-valid contemporaneous members",
+    "minimum_valid_members": 5,
+    "industry_median_ret20_strictly_positive": true,
+    "industry_positive_ret20_share_min": 0.55,
+    "industry_median_ret20_cross_industry_percentile_min": 0.50
+  },
+  "board_state_at_completed_signal_close": {
+    "board_median_ret20_strictly_positive": true
+  },
+  "decision_at": "completed individual breakout close after contemporaneous PIT industry and board state are known",
+  "entry": "first legal executable daily open strictly after signal, no later than the third subsequent market session",
+  "fixed_profiles": [
+    {
+      "profile": "T15_H30_INDUSTRY_DIFFUSION_LEADER",
+      "target": 0.15,
+      "horizon": 30,
+      "stop": false
+    }
+  ],
+  "costs": {"entry_bps": 20, "exit_bps": 20, "round_trip_bps": 40},
+  "chronology": {
+    "discovery": ["2014-01-01", "2018-12-31"],
+    "confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_robustness_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "completed_trades_per_year_average_strictly_greater_than": 50,
+    "mean_net_return_min": 0.03,
+    "confirmation_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20,
+    "no_single_board_or_industry_explains_edge": true
+  },
+  "governance": {
+    "thresholds_are_natural_zero_majority_or_cross_industry_median": true,
+    "coverage_only_amendment_before_outcomes": "The initial 60% participation plus top-30% industry state yielded only 489 raw candidates, below the required greater-than-50 completed-trades-per-year capacity before execution attrition. Before any outcome was read, it was replaced once by 55% majority participation plus above-median industry strength.",
+    "translation_profiles_tested": 1,
+    "outcomes_opened_before_freeze": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "protocol_schema": "CY_V29R2_STAGE_OUTPUT_ROOT_SEAL_CORRECTION_R4_FREEZE_V1",
+  "created_at": "2026-09-06T01:20:15Z",
+  "status": "FROZEN_ROOT_SEAL_CORRECTION_BEFORE_OUTER_VERIFICATION",
+  "asset_id": "CY-065",
+  "dependency_asset_id": "CY-063",
+  "superseded_unregistered_wrapper": "CY-064",
+  "cy064_blocker_audit": {
+    "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_cy064_unregistered_root_seal_blocker.json",
+    "sha256": "f33fe34a16f7b1f44fb024b54ecc1f2a82cf16449f43a7ae38797403ef9ea869"
+  },
+  "cy064_immutable_identity": {
+    "root": "/Users/linmei/Documents/CY/data/staging/CY-064-V29R2-ISSUER-FACT-ROLLFORWARD-VERIFIER-CORRECTION-2022-2026-V1",
+    "asset_manifest_sha256": "c0e0ad5d5a7cca834a0eb0361a3105f7c6b13991252ddfbb0399f9c9d0b1eda6",
+    "activation_audit_sha256": "f2ae2265cf6e0305524d7560312fa3c5daaa8f741ac9c1575f3880851a594779",
+    "builder_sha256": "62a2ee454ab61fbd8d72a08725c751a710aa1cc52300095461b821b4c8d873cf",
+    "runner_sha256": "9f4088144e41d1370830e25cfd0927feb98f230af2774bd8e5df382d112a7480",
+    "r3_protocol_sha256": "3ddb06396629e084d5741caf127e567aec08edd2f09fef28af3391caff6ff1ff",
+    "registry_suggestion_sha256": "332ec8eb04f0cd4c89a3e4f913ba69204c6e92e1a021435b120646001bb51029",
+    "registered": false,
+    "verification_root_created": false,
+    "stage_b_root_created": false
+  },
+  "cy064_execution_boundary": {
+    "registered_or_cli_outer_verification_or_stage_b_workflow_run": false,
+    "exact_bound_read_only_validation_and_comparator_software_invoked_under_cy065": true
+  },
+  "fix": {
+    "only_change": "failure-path sealing covers Path.mkdir create-then-raise",
+    "try_finally_begins_before_mkdir": true,
+    "seal_if_dedicated_root_exists_or_is_symlink": true,
+    "reject_symlink_or_non_directory_without_following": true,
+    "validate_complete_tree_before_any_chmod": true,
+    "regular_files_mode": "0444",
+    "directories_mode": "0555",
+    "repeat_attempt_after_any_created_root": "reject",
+    "covered_dedicated_roots": [
+      "asset_wrapper_root",
+      "verification_root",
+      "stage_b_output_root"
+    ]
+  },
+  "canonical_comparator": {
+    "permitted_representation_columns": [
+      "available_at",
+      "risk_family"
+    ],
+    "available_at": {
+      "dtype_both": "DatetimeTZDtype[ns, Asia/Shanghai]",
+      "na_mask": "exact",
+      "utc_nanoseconds": "exact",
+      "only_permitted_difference": "pytz versus zoneinfo timezone backend object"
+    },
+    "risk_family": {
+      "dtype_both": "object",
+      "na_mask": "exact",
+      "non_null_type": "str",
+      "non_null_values": "exact",
+      "only_permitted_missing_scalars": [
+        "None",
+        "pd.NA"
+      ]
+    },
+    "all_other_columns": "dtype, value, column order, row order and index exact",
+    "selector_audit_selected_rejected": "strict frame exact after reclassification"
+  },
+  "new_stage_a_artifacts_or_selection_materialization": false,
+  "in_memory_deterministic_stage_a_verification_replay": true,
+  "in_memory_title_classification_verification_replay": true,
+  "rule_or_research_logic_changed": false,
+  "asset_root_contract": {
+    "must_be_absent_before_build": true,
+    "exact_top_after_success": [
+      "activation_audit.json",
+      "asset_manifest.json"
+    ],
+    "root_mode": "0555",
+    "file_mode": "0444",
+    "single_attempt_only": true,
+    "create_then_raise_is_sealed_and_blocks_retry": true
+  },
+  "verification_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy065_stage_a_verification_v1",
+  "verification_root_contract": {
+    "must_be_absent_before_attempt": true,
+    "exact_top_after_success": [
+      "verified_stage_a_freeze.json"
+    ],
+    "root_mode": "0555",
+    "file_mode": "0444",
+    "single_attempt_only": true,
+    "create_then_raise_is_sealed_and_blocks_retry": true
+  },
+  "stage_b_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy065_through_20260904_v1",
+  "stage_b_contract": {
+    "must_be_absent_before_attempt": true,
+    "expected_outer_freeze_sha256_required": true,
+    "canonical_verifier_replay_before_outcome_parse": true,
+    "cy063_seven_file_hash_and_mode_recheck_before_outcome_parse": true,
+    "pre_outcome_attempt_seal_required": true,
+    "attempt_seal_is_first_top_level_file": true,
+    "attempt_seal_mode": "0444",
+    "single_attempt_only": true,
+    "create_then_raise_is_sealed_and_blocks_retry": true,
+    "target": "A67",
+    "time_stop_horizon": "H20 clock; legal execution can extend across non-valid sessions",
+    "round_trip_cost": 0.004,
+    "portfolio_k_per_sleeve": 80
+  },
+  "scientific_boundary": {
+    "evidence_grade": "PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE",
+    "outcome_or_daily_parquet_content_rows_parsed_before_stage_b_attempt_seal": false,
+    "performance_statistics_computed_before_stage_b_attempt_seal": false,
+    "2022_2024": "DEPENDENT_FIXED_RULE_VALIDATION_NOT_PRISTINE_OOS",
+    "2025_2026": "POST_SELECTION_TEMPORAL_DIAGNOSTIC",
+    "v29r1_2022_2026": "BLOCKED_BY_IMMUTABLE_SEMANTIC_INVALIDITY"
+  },
+  "software_identity": {
+    "root_seal_correction_asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_root_seal_correction_asset_v29r2.py",
+      "sha256": "57fcf6967a4b0eef090dc07312b3a9139badbb1e0a67358dc37bffc58fa55a43"
+    },
+    "root_seal_stage_b_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_root_seal_correction.py",
+      "sha256": "14f28130cfdcd985d707feb1e4f5ff11ab074df79f73c8d612dcce854821c0c5"
+    },
+    "blocked_cy064_asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_verifier_correction_asset_v29r2.py",
+      "sha256": "62a2ee454ab61fbd8d72a08725c751a710aa1cc52300095461b821b4c8d873cf"
+    },
+    "blocked_cy064_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_verifier_correction.py",
+      "sha256": "9f4088144e41d1370830e25cfd0927feb98f230af2774bd8e5df382d112a7480"
+    }
+  }
+}

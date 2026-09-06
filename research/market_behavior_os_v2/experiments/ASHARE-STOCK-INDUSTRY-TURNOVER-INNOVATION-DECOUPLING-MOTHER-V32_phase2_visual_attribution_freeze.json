@@ -1,0 +1,205 @@
+{
+  "experiment": "ASHARE-STOCK-INDUSTRY-TURNOVER-INNOVATION-DECOUPLING-MOTHER-V32",
+  "stage": "STAGE_E_PHASE2_OUTCOME_ATTRIBUTION",
+  "status": "FROZEN_AFTER_PHASE1_BEFORE_OUTCOME_READ",
+  "frozen_at": "2026-09-06T00:35:00+08:00",
+  "purpose": "After all 1,781 signal-time charts and Phase-1 labels were frozen without outcomes, render the same anonymous events with independent post-signal panels, group them by four completed-trade outcome categories plus no-completed-trade, and review every chart. This is development attribution only; it cannot rewrite Phase-1 labels, create a trading rule, or authorize a replay.",
+  "scientific_boundary": {
+    "history_status": "2018-2020 is consumed development history.",
+    "claim": "Phase 2 may describe how already-frozen signal-time morphology relates to coarse categorical outcomes and how paths unfold after the signal. It cannot claim independent confirmation or use a post-signal observation as an entry predictor.",
+    "later_years": "All 2021-plus rows and outcomes remain closed. A later rule and any 2022-2024 read would require separate freezes and the user's annual count/mean-return gate.",
+    "counts_frozen_before_run": false
+  },
+  "renderer": {
+    "path": "research/market_behavior_os_v2/scripts/run_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_phase2_charts.py",
+    "sha256": "59b338057f3e56c2c832ab39101b055ac7624970cbd2c6f41e19844bf96b41bb"
+  },
+  "annotation_finalizer": {
+    "path": "research/market_behavior_os_v2/scripts/finalize_ashare_stock_industry_turnover_innovation_decoupling_mother_v32_phase2.py",
+    "sha256": "d2a924a8cd162d193ea1bef9b4f7783e0db2497dcd1928a5e21efde8b3f8d654"
+  },
+  "phase2_annotation_schema": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-V32_phase2_post_path_annotation_schema.json",
+    "sha256": "f4aaade524dac4a85a79f4b8fda03c00451267e915b4c77973b0110539eda603"
+  },
+  "required_authorization": {
+    "asset_id": "CY-044",
+    "dependency_asset_id": "CY-043",
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-INNOVATION-DECOUPLING-V32-PHASE2-CY044-OUTCOME-ATTRIBUTION-2018-2020-V1",
+    "authorized_arm": "V32_CY044_FROZEN_PHASE2_OUTCOME_ATTRIBUTION_ONLY",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_OUTCOME_CHART_ATTRIBUTION",
+    "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V32-CY044_PHASE2_CHART_ATTRIBUTION_ASSET_MANIFEST.json",
+    "permissions": {
+      "charts_authorized": true,
+      "phase2_authorized": true,
+      "completed_stage_b_artifact_read_authorized": true,
+      "coordinate_artifact_hash_authorized": true,
+      "outcome_artifact_hash_authorized": true,
+      "outcome_artifact_parse_authorized": true,
+      "post_signal_row_read_authorized": true,
+      "full_charts_authorized": true,
+      "outcome_grouping_authorized": true,
+      "outcome_attachment_authorized": true,
+      "in_memory_identity_reconstruction_authorized": true,
+      "identity_crosswalk_persistence_authorized": false,
+      "identity_reveal_authorized": false,
+      "phase1_label_rewrite_authorized": false,
+      "rule_aggregation_authorized": false,
+      "portfolio_replay_authorized": false,
+      "candidate_reselection_authorized": false,
+      "post_2020_read_authorized": false,
+      "2021_read_authorized": false,
+      "2022_plus_read_authorized": false
+    }
+  },
+  "frozen_phase1_binding": {
+    "annotation_ledger": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_d_phase1_anonymous_review/phase1_annotation_ledger.csv",
+      "sha256": "1835c4d0eec87a736e9f9f639ea6aafa281aef0f0ee96a2ddd0de8a0c4b29140",
+      "rows": 1781
+    },
+    "annotation_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_d_phase1_anonymous_review/manifest.json",
+      "sha256": "bd820935d8b1f492896364d7da9b7de1c9543bf5ef08add5b68c6c145ac02bee"
+    },
+    "blind_index": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_c_phase1_masked_charts/blind_index.csv",
+      "sha256": "96fc0983edf5091c7c2535f0b13b9eefefc6ee4031819d1af70ebce54b630d96"
+    },
+    "chart_corpus_manifest": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_c_phase1_masked_charts/manifest.json",
+      "sha256": "9075ad905d6566ce93e97839da04df46c49e06f829d42799da7144c1e753b089"
+    },
+    "reviewer_drift_freeze": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-V32_phase1_reviewer_drift_freeze.json",
+      "sha256": "9b1dadba17f1ae1b219a887e29bced13a0ddc304a2ebe40eb954ccd5e39d3850"
+    },
+    "labels_immutable": true,
+    "outcomes_read_when_frozen": false,
+    "identity_mapping_read_when_frozen": false
+  },
+  "frozen_stage_b_identity": {
+    "result": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/result.json",
+      "sha256": "64cb4c19b38968bb0b59cb7f0bc2a4f16bd58a3c6af2f31c7e01cd95569bf2f7"
+    },
+    "future_paths": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/future_paths.parquet",
+      "sha256": "4d06ccb23bbf660d17f4f58fc3140364ed5fc9b9213b3cd4f2f0b69752068377"
+    },
+    "outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_stock_industry_turnover_innovation_decoupling_mother_v32/stage_b/outcomes.parquet",
+      "sha256": "9c016be56517d08419ceeca2c16da055ede39acca35aa253d90bfbe8c166ecfa"
+    },
+    "execution": "First legal open in global sessions +1 through +3; +10 percent target; strict H20 fallback; 40 bps round-trip signal-level cost.",
+    "candidate_reselection": false
+  },
+  "frozen_scope": {
+    "event_rows": 1781,
+    "signal_dates": 24,
+    "signal_start": "2018-07-31",
+    "signal_end": "2020-06-30",
+    "window_relative_global_sessions": [-126, 126],
+    "window_slots_per_event": 253,
+    "minimum_chart_date": "2018-01-22",
+    "maximum_chart_date": "2020-12-31",
+    "maximum_evaluation_year": 2020,
+    "post_2020_read": false
+  },
+  "coordinate_hash_boundary": "The authorized runner may hash the complete immutable coordinate artifact after the joint CY-044 gate solely to verify its frozen byte identity. SQL row parsing remains hard-bounded to 2018-01-22 through 2020-12-31; hashing is not authorization to parse a post-2020 row.",
+  "outcome_groups": {
+    "ordered_buckets": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "definitions": {
+      "PROFIT_GE_4PCT": "status=COMPLETED and net_return>=0.04",
+      "PROFIT_0_TO_4PCT": "status=COMPLETED and 0<=net_return<0.04",
+      "LOSS_0_TO_10PCT": "status=COMPLETED and -0.10<net_return<0",
+      "SEVERE_LOSS": "status=COMPLETED and net_return<=-0.10",
+      "NO_COMPLETED_TRADE": "status!=COMPLETED or net_return is nonfinite"
+    },
+    "counts_frozen_before_run": false,
+    "numeric_return_shown_to_reviewer": false,
+    "security_identity_shown_to_reviewer": false
+  },
+  "chart_contract": {
+    "individual_full_charts": 1781,
+    "contact_sheet_layout": "5 by 5; at most 25 anonymous charts per page, grouped by one frozen outcome bucket",
+    "pre_panel": "Relative global sessions -126 through 0 with a per-event causal price and turnover scale.",
+    "post_panel": "Relative global sessions +1 through +126 with a separate per-event price and turnover scale. Entry, +10-percent target and realized exit markers are attribution only.",
+    "visible_identity": "Only chart_number and blind_chart_id; symbol, date, industry and event_id never appear in a published Phase-2 file or image.",
+    "review_requirement": "Every occupied contact-sheet cell must be opened at original resolution and assigned exactly one post-path label; difficult cases use the individual PNG.",
+    "publication": "Same-parent staging, exact hash revalidation, exactly-once anonymous coverage, atomic rename and overwrite refusal."
+  },
+  "phase2_path_taxonomy": {
+    "labels": [
+      "IMMEDIATE_ACCEPTANCE",
+      "DELAYED_ACCEPTANCE",
+      "EARLY_REJECTION",
+      "LATE_REJECTION",
+      "CHOP_OR_AMBIGUOUS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "primary_attribution_window": "Relative sessions +1 through +20, aligned with the frozen trade lifecycle. Sessions +21 through +126 remain visible six-month context but do not determine the primary label.",
+    "definitions": {
+      "IMMEDIATE_ACCEPTANCE": "A clear sustained upward response starts during +1 through +5 and remains accepted through the relevant H20 path or reaches the marked target without an earlier decisive rejection.",
+      "DELAYED_ACCEPTANCE": "No clear immediate acceptance; after early basing or a recoverable pullback, a clear sustained upward response starts during +6 through +20.",
+      "EARLY_REJECTION": "A clear sustained downside break begins during +1 through +5 and is not promptly reclaimed by +10.",
+      "LATE_REJECTION": "No early rejection; the path is initially stable or favorable, but a clear sustained downside break begins after +5 and by +20.",
+      "CHOP_OR_AMBIGUOUS": "The completed trade has no clear sustained acceptance or rejection in +1 through +20, or conflicting path evidence prevents one of the four directional labels.",
+      "NO_COMPLETED_TRADE": "The frozen lifecycle status is not COMPLETED or its net return is nonfinite; this label is mandatory and cannot be reassigned from visual appearance."
+    },
+    "use": "Post-path labels explain realized development trajectories only. They may not be predictors or replace the Phase-1 signal-time labels.",
+    "phase1_labels_modified": false,
+    "post_signal_used_as_predictor": false
+  },
+  "phase1_usage_decisions_frozen_before_outcomes": {
+    "BASE_COMPRESSION": "POOLED_UNUSABLE",
+    "HIGH_TURNOVER_LOW_PRICE_DISPLACEMENT": "POOLED_UNUSABLE",
+    "NONE_CLEAR": "DESCRIPTIVE_ONLY",
+    "ORDERLY_PRICE_DISCOVERY": "ELIGIBLE_WITH_REVIEWER_GUARDS",
+    "MATURE_EXTENSION_OR_TERMINAL_SPIKE": "ELIGIBLE_WITH_REVIEWER_GUARDS",
+    "DOWNTREND_OR_BREAKDOWN": "ELIGIBLE_WITH_REVIEWER_GUARDS"
+  },
+  "future_rule_gate_frozen_before_phase2": {
+    "eligible_labels": {
+      "ORDERLY_PRICE_DISCOVERY": {
+        "expected_profit_ge4_direction": "TRUE_RATE_GREATER_THAN_FALSE_RATE",
+        "expected_severe_loss_direction": "TRUE_RATE_LESS_THAN_FALSE_RATE"
+      },
+      "MATURE_EXTENSION_OR_TERMINAL_SPIKE": {
+        "expected_profit_ge4_direction": "TRUE_RATE_LESS_THAN_FALSE_RATE",
+        "expected_severe_loss_direction": "TRUE_RATE_GREATER_THAN_FALSE_RATE"
+      },
+      "DOWNTREND_OR_BREAKDOWN": {
+        "expected_profit_ge4_direction": "TRUE_RATE_LESS_THAN_FALSE_RATE",
+        "expected_severe_loss_direction": "TRUE_RATE_GREATER_THAN_FALSE_RATE"
+      }
+    },
+    "completed_event_denominator_only": true,
+    "minimum_completed_true_and_false_per_reviewer": 25,
+    "minimum_consistent_eligible_reviewer_blocks": 3,
+    "total_phase1_reviewer_blocks": 4,
+    "both_endpoints_required": ["PROFIT_GE_4PCT", "SEVERE_LOSS"],
+    "pooled_direction_must_also_agree": true,
+    "base_and_high_turnover_labels_cannot_be_rescued": true,
+    "none_clear_cannot_be_promoted": true,
+    "passing_this_gate_only_authorizes_a_separate_stage_g_rule_freeze": true
+  },
+  "phase1_labels_immutable": true,
+  "identity_crosswalk_persisted": false,
+  "maximum_compressed_rules": 0,
+  "prohibited": [
+    "any 2021-plus row or outcome",
+    "persisting or exposing chart-number-to-security identity",
+    "changing, relabeling or adjudicating a Phase-1 signal-time label after outcome reveal",
+    "using a post-signal path label, entry marker, target marker or exit marker as an entry predictor",
+    "numeric-return display, parameter search, candidate reselection, rule compression, rule aggregation or portfolio replay",
+    "opening later years because the mother population or one categorical diagnostic looks favorable"
+  ],
+  "next_action": "After CY-044 is registered, run only the bound renderer, review all 1,781 anonymous Phase-2 charts, and freeze the complete categorical ledger with the bound finalizer. A rule search remains unauthorized."
+}

@@ -1,0 +1,88 @@
+{
+  "experiment": "ASHARE-MATERIAL-SUPPLY-EXPANSION-DEMAND-REASSERTION-V1",
+  "research_status": "FROZEN_CHART_COMPRESSED_DEVELOPMENT_RULES",
+  "parent_mother": "ASHARE-MATERIAL-CIRCULATING-SUPPLY-EXPANSION-MOTHER-V1",
+  "development_origin": "Rules were compressed only after a complete chronological review of all 119 contact sheets and all 1,068 mother events. They are chart-guided development hypotheses, not independent confirmation.",
+  "economic_hypothesis": "A material PIT-observable expansion of circulating supply is not a directional signal by itself. If the new supply is not immediately rejected, the stock subsequently closes above the event high while outperforming its PIT industry, and the broad market is favorable or causally repairing at that later decision time, demand may have become strong enough to absorb the added supply.",
+  "novel_incremental_question": "Unlike the closed nominal-size event-corridor experiment, this test begins with a causally observed exogenous tradable-supply expansion and asks whether stock-versus-industry demand reassertion after that supply shock has value. It does not retest generic support proximity, generic breakout, ordinary turnover, or unconditional size.",
+  "frozen_rules": [
+    {
+      "rule": 1,
+      "name": "exact_material_supply_event",
+      "definition": "Reuse every frozen parent event unchanged: circulating_shares increases by at least 50% versus the immediately preceding consecutive market session; same-day corporate_action_count is zero; share_multiplier is 1.0; coordinate lineage is unchanged; MAIN or CHINEXT, non-ST, valid and tradable."
+    },
+    {
+      "rule": 2,
+      "name": "five_session_supply_absorption",
+      "definition": "Across market sessions t+1 through t+5 after the supply event, reject the event if two consecutive valid closes are below the event-session coordinate low. Unknown or invalid coordinate lineage fails closed."
+    },
+    {
+      "rule": 3,
+      "name": "absolute_and_industry_relative_demand_reassertion",
+      "definition": "During t+6 through t+30, the first valid close strictly above the event-session coordinate high is a trigger only when the stock's coordinate close return from the event close is also strictly greater than the compounded PIT-industry median step return from t+1 through the trigger session. At least 80% of those industry-session observations must be finite."
+    },
+    {
+      "rule": 4,
+      "name": "causal_market_state_at_trigger",
+      "definition": "On the trigger session, require either accepted market_regime == BULL or dual causal repair: market_median_ret20 > market_median_ret60 and market_positive_ret20_share > market_positive_ret60_share. All market-state source timestamps must be no later than the trigger decision timestamp."
+    },
+    {
+      "rule": 5,
+      "name": "executable_entry_and_event_failure_exit",
+      "definition": "Enter at the first legal buyable open in trigger+1 through trigger+3. Starting after T+1 eligibility, two consecutive valid closes below the frozen event-session coordinate low create a failure decision; exit at the first subsequent legal sellable open. Otherwise exit at the first legal sellable open at or after entry+120 market sessions. Charge 40 bps round trip."
+    }
+  ],
+  "timing": {
+    "event_signal_time": "event session close after all parent inputs are available",
+    "absorption_window_market_sessions": [1, 5],
+    "trigger_window_market_sessions": [6, 30],
+    "entry_window_after_trigger_market_sessions": [1, 3],
+    "same_session_fill": false,
+    "maximum_holding_market_sessions": 120,
+    "failure_requires_consecutive_closes": 2,
+    "t_plus_one": true
+  },
+  "market_state": {
+    "static_event_date_filter": "NONE",
+    "evaluated_at": "trigger session close",
+    "favorable": "accepted BULL",
+    "repair": "market_median_ret20 > market_median_ret60 AND market_positive_ret20_share > market_positive_ret60_share",
+    "future_information": "PROHIBITED"
+  },
+  "execution": {
+    "price_limits": "enforced",
+    "suspensions": "enforced",
+    "corporate_actions": "fail closed on blocking event or coordinate-lineage change",
+    "round_trip_cost": 0.004,
+    "portfolio_replay": false
+  },
+  "stage_order": {
+    "stage_1": "Apply frozen causal rules without outcome columns; audit annual selected-signal breadth only.",
+    "stage_2_if_each_development_year_has_more_than_50_selected_signals": "Attach and aggregate the single frozen executable outcome once.",
+    "validation_if_all_development_gates_pass": "Only then open 2022-2024 signal identity and outcomes under the same frozen specification."
+  },
+  "development_gate": {
+    "years": [2018, 2019, 2020],
+    "required_completed_signals_per_year_strictly_greater_than": 50,
+    "required_mean_net_return_per_year_strictly_greater_than": 0.04,
+    "required_median_net_return_per_year_strictly_greater_than": 0.0
+  },
+  "closed_rescue_paths": [
+    "neighboring circulating-share thresholds",
+    "alternative absorption windows",
+    "alternative trigger windows",
+    "event-high or event-low buffers",
+    "pre-event trend filters",
+    "static BULL-only rescue",
+    "alternate industry-relative threshold",
+    "alternate failure exits",
+    "sign inversion",
+    "Top-N or portfolio optimization"
+  ],
+  "outcome_governance": {
+    "post_2021_signal_identity_read_before_development_gate": false,
+    "validation_2022_2024_outcome_read_before_development_gate": false,
+    "single_one_shot_development_test": true,
+    "no_rule_rescue_after_test": true
+  }
+}

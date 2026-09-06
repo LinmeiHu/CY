@@ -1,0 +1,80 @@
+{
+  "experiment": "ASHARE-BULL-DISTRIBUTED-ACCUMULATION-12M-CHART-DISCOVERY-V2",
+  "scientific_status": "POST_HOC_CAUSAL_STATE_SEPARATION_AND_FULL_CHART_PROTOCOL_FREEZE",
+  "economic_hypothesis": "In a causally observable broad BULL state, a moderate twenty-session advance built through many small positive sessions and relatively little downside turnover represents distributed demand rather than a single attention shock. The first non-limit, high-location, moderately expanded-turnover close above the already known twenty-session ceiling may begin a further repricing leg. TRANSITION is excluded because the earlier frozen mother screen showed that the same stock pattern has different economics when broad participation and direction are not jointly positive.",
+  "relationship_to_v26": "V26 succeeds because an objective low-inventory structure exists before entry and the later event only confirms that demand has started to traverse it. This experiment applies the same hierarchy rather than copying the true-gap signal: the prior twenty-session path defines distributed ownership and limited downside supply before the breakout; the completed escape is the demand confirmation. No true-gap, V26, V27, support, limit-up, or industry-laggard identity is reused.",
+  "post_hoc_disclosure": "The parent 2014-2020 BULL and TRANSITION aggregate outcomes were already observed. Choosing BULL-only for this deeper anatomy is a data-generated development decision, not independent confirmation. No 2021 or 2022-2024 signal outcome may define chart rules.",
+  "frozen_parent": {
+    "experiment": "ASHARE-DISTRIBUTED-ACCUMULATION-SLOW-EXHAUSTION-MOTHER-SCREEN-V1",
+    "runner_sha256": "4c4992e333c9f7931ca84454e1f71742cf49bcfa8ff333ba8876cc202f351870",
+    "candidate_sha256": "7c08a9ed2090fd1b9b27ee0068ed2c438b8583fc876872bc0523d5e00f5ab364",
+    "outcomes_sha256": "8e410688aba5f07f1a36c87bd0e061c8d052fe6d2b051656b59970589320285d"
+  },
+  "mother_signal": {
+    "signal_period": [
+      "2014-01-01",
+      "2020-12-31"
+    ],
+    "market_route": "BULL only, using the registered signal-close causal state: market median ret20 and ret60 are both greater than zero and their positive-return shares both exceed 50 percent",
+    "history": "exact prior sixty completed market sessions, valid and contiguous in one corporate-action coordinate lineage",
+    "prior_twenty_return": "5 percent through 25 percent",
+    "distributed_path": "at least 60 percent of the prior twenty sessions are positive; maximum absolute session return is strictly below 7 percent",
+    "selling_supply": "prior-twenty downside-turnover sum divided by upside-turnover sum is at most 0.65",
+    "escape": "completed signal return is 2 to 7 percent, close location at least 75 percent, and coordinate close strictly exceeds the known prior-twenty high",
+    "participation": "signal turnover is 1.2 to 2.5 times the prior-twenty median",
+    "limit_rule": "signal close is not the registered upper price limit",
+    "cooldown": "first raw event after more than twenty completed market sessions without another raw distributed-accumulation event",
+    "decision_at": "completed signal-session close",
+    "future_market_function": false
+  },
+  "baseline_translation_for_chart_labels": {
+    "entry": "first legal non-upper-limit open in the next three market sessions, strictly after the signal",
+    "target": "+15 percent gross from executable entry",
+    "time_stop": "after thirty held market sessions, then the first legal sellable open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "T_plus_1": true,
+    "limits_suspensions_and_corporate_actions": "binding and fail closed"
+  },
+  "chart_protocol": {
+    "render_every_mother_signal": true,
+    "completed_market_sessions_before_signal": 126,
+    "completed_market_sessions_after_signal": 126,
+    "maximum_chart_bar_date": "2021-12-31",
+    "review": "open every chronological nine-up sheet and record repeated winner and failure structures before freezing any rule",
+    "outcome_buckets": [
+      "PROFIT_GE_4PCT",
+      "PROFIT_0_TO_4PCT",
+      "LOSS_0_TO_10PCT",
+      "SEVERE_LOSS",
+      "NO_COMPLETED_TRADE"
+    ],
+    "questions": [
+      "Was the twenty-session advance a genuine base escape or the last leg of a mature six-month run?",
+      "Did repeated small gains reflect stable accumulation or low-liquidity drift?",
+      "Was the old ceiling a clean nearby inventory boundary or embedded in repeated overhead supply?",
+      "Did the signal create immediate accepted price discovery or an isolated terminal demand candle?",
+      "Was the causal BULL state newly broadening, mature, or short-horizon exhausted at the decision close?"
+    ]
+  },
+  "rule_compression": {
+    "maximum_plain_language_rules": 5,
+    "rules_must_represent_distinct_supply_demand_or_market_lifecycle_mechanisms": true,
+    "no_threshold_grid": true,
+    "no_rule_subset_search": true,
+    "no_future_or_full_period_market_label": true,
+    "freeze_before_changed_rule_outcome_aggregation": true
+  },
+  "development_gate_before_later_period": {
+    "each_2014_2020_calendar_year_completed_signals_strictly_greater_than": 50,
+    "each_2014_2020_calendar_year_mean_net_return_strictly_greater_than": 0.04,
+    "each_year_median_net_return_positive": true,
+    "each_year_severe_loss10_at_most": 0.20
+  },
+  "later_period_governance": {
+    "2021_signal_or_outcome_used_for_rule_discovery": false,
+    "2022_2024_open_only_after_chart_rules_are_frozen_and_development_gate_passes": true,
+    "post_2024_read": false,
+    "no_independent_confirmation_claim": true
+  }
+}

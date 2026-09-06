@@ -1,0 +1,274 @@
+{
+  "experiment": "ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36",
+  "stage": "PHASE1_ANONYMOUS_CAUSAL_VISUAL_REVIEW",
+  "status": "FROZEN_BEFORE_RENDER_OR_ANNOTATION",
+  "pipeline_version": "v36-phase1-anonymous-causal-chart-review-v1",
+  "frozen_at": "2026-09-06",
+  "purpose": "Render and review all 531 immutable outcome-blind V36 Stage-A candidates one by one using only adjusted-coordinate OHLC, turnover, and a causal broad-market line through the signal close. Freeze the same four categorical visual judgments used by the established Phase-1 review protocol before any V36 payoff contract exists.",
+  "authorship_disclosure": "This Phase-1 contract was written only after the outcome-blind V36 Stage-A opportunity and redundancy gate passed. No V36 forward outcome has been constructed, read, hashed, stated, or used. Stage B does not yet exist.",
+  "renderer": {
+    "path": "research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_phase1_charts.py",
+    "sha256": "1c9fffcaee7701af87858cb29b3e7ccf6aae89c9ec63e72439b0811ad7bf5ad8",
+    "modes": {
+      "public_preflight": "--verify-public-inputs verifies only repository registry/spec/manifest/runner/schema bindings and performs no external source operation",
+      "source_coverage": "--verify-source-coverage is available only after exact CY-055 registration; it hashes and reads only the permitted outcome-blind sources, emits aggregate coverage, and renders or persists nothing",
+      "build": "--run is unavailable until exact CY-055 joint authorization binds this spec, runner, schema, immutable cohort, raw partitions, metadata, and coordinate state"
+    }
+  },
+  "annotation_schema": {
+    "path": "research/market_behavior_os_v2/experiments/ASHARE-V34R1_phase1_anonymous_annotation_schema.json",
+    "sha256": "89eeb590b025a4d126d328acbd47a803696606a891a8b804264bf326705fb90d",
+    "reuse_note": "The schema permits chart numbers 1 through 1483; V36 uses the exact prefix 1 through 531 and the identical four-axis taxonomy."
+  },
+  "required_authorization": {
+    "asset_id": "CY-055",
+    "dependency_asset_id": "CY-054",
+    "authorization_id": "CYQ-AUTH-ASHARE-BROAD-MARKET-PRICE-DELAY-V36-PHASE1-CY055-ANONYMOUS-CHARTS-2019-2020-V1",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "authorized_arm": "V36_CY055_PHASE1_ANONYMOUS_CAUSAL_CHARTS_ONLY",
+    "permissions": {
+      "charts_authorized": true,
+      "phase1_anonymous_charts_authorized": true,
+      "stage_a_frozen_candidates_read_authorized": true,
+      "stage_a_outcome_blind_result_read_authorized": true,
+      "canonical_cy006_raw_daily_read_authorized": true,
+      "coordinate_state_bounded_row_read_authorized": true,
+      "coordinate_artifact_hash_authorized": true,
+      "source_lineage_metadata_hash_authorized": true,
+      "coverage_preflight_authorized": true,
+      "stage_b_authorized": false,
+      "stage_b_artifact_any_path_declaration_authorized": false,
+      "stage_b_artifact_stat_authorized": false,
+      "stage_b_artifact_hash_authorized": false,
+      "stage_b_artifact_open_authorized": false,
+      "stage_b_artifact_parse_authorized": false,
+      "outcome_artifact_parse_authorized": false,
+      "outcome_artifact_hash_authorized": false,
+      "outcome_artifact_stat_authorized": false,
+      "outcome_artifact_open_authorized": false,
+      "outcome_columns_read_authorized": false,
+      "post_signal_row_read_authorized": false,
+      "full_chart_authorized": false,
+      "identity_reveal_authorized": false,
+      "identity_crosswalk_persist_authorized": false,
+      "outcome_grouping_authorized": false,
+      "outcome_attachment_authorized": false,
+      "phase2_authorized": false,
+      "rule_aggregation_authorized": false,
+      "rule_compression_authorized": false,
+      "portfolio_replay_authorized": false,
+      "validation_authorized": false,
+      "candidate_reselection_authorized": false,
+      "post_2020_read_authorized": false,
+      "2021_read_authorized": false,
+      "2022_plus_read_authorized": false,
+      "current_survivor_fallback_allowed": false
+    }
+  },
+  "frozen_parent_identity": {
+    "parent_spec_path": "research/market_behavior_os_v2/experiments/ASHARE-BROAD-MARKET-PRICE-DELAY-COMPENSATION-MOTHER-V36_freeze.json",
+    "parent_spec_sha256": "2dc6e2b1ac6e29105172cddc8a6d5dbafa06b30645a8f48b08abdf8f348286fc",
+    "stage_a_runner_path": "research/market_behavior_os_v2/scripts/run_ashare_broad_market_price_delay_compensation_mother_v36_stage_a.py",
+    "stage_a_runner_sha256": "3cf20dead4f7a04b1e8981502d484fd1e56599747129f3ff92085a462c0edf51",
+    "stage_a_manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_DATA_ASSET_MANIFEST.json",
+    "stage_a_manifest_sha256": "8466e1ccd6cbbff159beb4ee9d582a0917f7eba9015d7a76251f273727e4973c",
+    "stage_a_registry_suggestion_path": "research/market_behavior_os_v2/experiments/ASHARE-V36-CY054_REGISTRY_SUGGESTION.json",
+    "stage_a_registry_suggestion_sha256": "c228f6b5e837fcd99d4feb14d9be11436f4f4a3845af79bddfb7eecce64ff014"
+  },
+  "permitted_data_inputs": {
+    "source_artifacts": [
+      {
+        "role": "stage_a_frozen_candidates",
+        "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/candidates_frozen.parquet",
+        "sha256": "6f9e84f1828bb054d8baea187e72563c8454909fe71f3a932ee8ea5456ff4e0b"
+      },
+      {
+        "role": "stage_a_outcome_blind_result",
+        "path": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_a/result.json",
+        "sha256": "5d05d21c78f5c4722cdcf3eb86db53e0d9d37d7a37e45a465b1ee78a924d8529"
+      },
+      {
+        "role": "cy006_manifest",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+        "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+      },
+      {
+        "role": "cy006_2018",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "role": "cy006_2019",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "role": "cy006_2020",
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      },
+      {
+        "role": "qd010_inventory",
+        "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+        "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+      },
+      {
+        "role": "coordinate_state",
+        "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+        "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60"
+      }
+    ]
+  },
+  "stage_b_nonexistence_boundary": {
+    "stage_b_artifacts_exist": false,
+    "any_stage_b_path_declared": false,
+    "any_stage_b_artifact_may_be_statted_hashed_opened_or_parsed": false,
+    "meaning": "No V36 Stage-B contract or artifact exists. Phase 1 may not construct, probe, guess, or record a path for one."
+  },
+  "frozen_scope": {
+    "event_rows": 531,
+    "signal_start": "2019-03-29",
+    "signal_end": "2020-12-31",
+    "annual_event_rows": {
+      "2019": 249,
+      "2020": 282
+    },
+    "phase1_relative_global_sessions": [
+      -126,
+      0
+    ],
+    "window_slots_per_event": 127,
+    "source_start": "2018-01-01",
+    "maximum_source_date": "2020-12-31",
+    "post_signal_rows": 0,
+    "post_2020_rows": 0,
+    "2021_plus_rows": 0
+  },
+  "causal_chart_contract": {
+    "calendar": "The Stage-A signal_cal_idx belongs to the bounded CY-006 Stage-A calendar and is not assumed to share the accepted 2013-2023 coordinate origin. Map each immutable signal_date to the unique coordinate_state cal_idx, then expand exactly global relative sessions -126 through 0. Missing stock bars remain blank and are never filled.",
+    "stock_bars": "Join canonical CY-006 2018-2020 raw rows to coordinate_state by symbol and trade_date. Require exact raw close, low, and corporate-action-count identity and strict raw OHLC geometry. Compute adjusted open/high/low as adjusted_close*(raw price/raw close), keep adjusted close exact, and never clip, normalize, round, or relax tolerance.",
+    "validity": "A rendered stock bar must satisfy raw and coordinate current/history/hard/bar/trading/market-rule/corporate-action/historical-identity/industry validity, nonblocking corporate action, exact signal invalid_step_cum lineage, all seven nonblank snapshot identities, and availability no later than the event signal decision time.",
+    "signal_bar": "Require exactly one fully valid relative-session-zero bar for every immutable event, exact symbol and signal-date identity, current non-ST tradability, float validity, and exact date-to-global-coordinate anchoring.",
+    "turnover": "Render only registered turnover_fraction on its own per-chart causal scale.",
+    "market_line": "For each global date, use at least 500 distinct valid, tradable, historical non-ST Main Board plus ChiNext stocks across all industries. Compute the same-date median adjacent adjusted-coordinate step return, compound only within each event's -126..0 window, rebase the first point to 100, and use an independent scale.",
+    "availability": "Every displayed stock bar and market constituent is known by its own close and no later than the event's frozen signal decision time. No relative session above zero may enter a query result or renderer.",
+    "chart_canvas": "Each event receives one native 720x440 PNG. Adjusted price, broad-market line, and turnover each use their own strictly causal scale."
+  },
+  "source_coverage_gate": {
+    "mode": "--verify-source-coverage",
+    "runs_before_any_chart_staging": true,
+    "required": "Exactly 531 unique candidates, annual counts 249/282, exactly 127 unique global coordinate slots per event, one exact fully valid signal row per event, zero raw rows missing coordinate, zero raw-coordinate identity mismatches, strict raw geometry, no source date after 2020-12-31, and at least 500 broad-market members on every visible date.",
+    "missing_pre_signal_stock_slots": "May be counted and left blank; they may not be filled and may not cause candidate reselection. The signal row is mandatory.",
+    "publication": "Print aggregate coverage only. Persist no symbol, date, event identity, chart mapping, or outcome field."
+  },
+  "blind_order_contract": {
+    "salt": "V36_PHASE1_CAUSAL_MASKED_ORDER_V1",
+    "full_digest": "SHA256(UTF8(salt + '|' + exact event_id))",
+    "order": "Ascending full digest, then exact event_id only as an in-memory deterministic collision tie-break.",
+    "blind_chart_id": "B- followed by the first 20 lowercase hexadecimal digest characters.",
+    "chart_number": "One-based exact sequence 1 through 531 after opaque sorting.",
+    "persist_identity_crosswalk": false,
+    "visible_identity": "Only chart_number and blind_chart_id may appear. Symbol, date, year, industry, event identity, price-delay score, and any later payoff are hidden."
+  },
+  "output_contract": {
+    "canonical_directory": "/Volumes/quant/CY_quant_research/ashare_broad_market_price_delay_compensation_mother_v36/stage_c_phase1_anonymous_charts",
+    "individual_anonymous_charts": 531,
+    "chart_size_pixels": [
+      720,
+      440
+    ],
+    "contact_sheet_layout": "5 by 5; at most 25 native panels per page",
+    "anonymous_contact_sheets": 22,
+    "files": [
+      "individual_anonymous_charts/*.png",
+      "anonymous_contact_sheets/sheet_*.jpg",
+      "blind_index.csv",
+      "contact_sheet_placements.csv",
+      "contact_sheet_index.csv",
+      "phase1_review_template.json",
+      "manifest.json"
+    ],
+    "public_index_fields": [
+      "chart_number",
+      "blind_chart_id",
+      "blind_chart_path",
+      "blind_chart_sha256",
+      "sheet_number",
+      "slot"
+    ],
+    "review_template_fields": [
+      "chart_number",
+      "primary_morphology",
+      "market_tape",
+      "signal_candle",
+      "turnover_state",
+      "evidence",
+      "reviewer"
+    ],
+    "publication": "Build in a unique same-parent staging directory, reverify all bound inputs, require exactly-once chart and sheet coverage, atomically rename, refuse overwrite, and clean only runner-owned staging on failure."
+  },
+  "frozen_manual_taxonomy": {
+    "one_value_required_per_axis": true,
+    "axes": {
+      "primary_morphology": [
+        "BASE_COMPRESSION",
+        "ORDERLY_UPTREND",
+        "EXTENDED_OR_SPIKE",
+        "DOWNTREND_OR_BREAKDOWN",
+        "CHOPPY_NO_STRUCTURE"
+      ],
+      "market_tape": [
+        "BROAD_UP",
+        "BROAD_DOWN",
+        "MIXED_TRANSITION"
+      ],
+      "signal_candle": [
+        "STRONG_CLOSE",
+        "WEAK_CLOSE",
+        "NEUTRAL"
+      ],
+      "turnover_state": [
+        "DRY_OR_CONTRACTING",
+        "SURGE_OR_EXPANDING",
+        "NORMAL_MIXED"
+      ]
+    },
+    "label_definitions": {
+      "BASE_COMPRESSION": "The last roughly 20-60 visible sessions form a bounded or visibly narrowing sideways base versus the earlier visible range.",
+      "ORDERLY_UPTREND": "The pre-signal path shows a sustained coherent advance, progressive higher structure, or steady price discovery rather than one isolated jump.",
+      "EXTENDED_OR_SPIKE": "Price is steeply extended above its earlier base or ends in a terminal-looking price/turnover burst near the signal.",
+      "DOWNTREND_OR_BREAKDOWN": "The path shows lower structure, failed repair, or a decisive breakdown near the signal.",
+      "CHOPPY_NO_STRUCTURE": "No other primary morphology clearly dominates; the price path is irregular or structurally ambiguous.",
+      "BROAD_UP": "The independently scaled causal broad-market line is visibly rising into the signal over the economically dominant part of the window.",
+      "BROAD_DOWN": "The independently scaled causal broad-market line is visibly falling into the signal over the economically dominant part of the window.",
+      "MIXED_TRANSITION": "The broad-market line is mixed, flat, reversing, or lacks a clear dominant direction.",
+      "STRONG_CLOSE": "The signal candle closes visibly strong within its adjusted high-low range and its body or close-near-high behavior is clear.",
+      "WEAK_CLOSE": "The signal candle closes visibly weak within its adjusted high-low range and its body or close-near-low behavior is clear.",
+      "NEUTRAL": "The signal candle does not clearly meet the strong- or weak-close visual definition.",
+      "DRY_OR_CONTRACTING": "Recent turnover is visibly dry or contracting relative to the earlier causal window.",
+      "SURGE_OR_EXPANDING": "Recent turnover is visibly surging or expanding relative to the earlier causal window.",
+      "NORMAL_MIXED": "Recent turnover is ordinary, mixed, or lacks a clear dry/expanding state."
+    },
+    "evidence": "A required concrete, nonempty, single-line causal observation of at most 240 characters.",
+    "reviewer": "A required nonempty reviewer identity of at most 80 characters."
+  },
+  "future_gate": {
+    "stage_b_exists_now": false,
+    "phase2_authorized_now": false,
+    "required_before_any_later_payoff_work": "First complete and freeze the exact hashes of all 531 Phase-1 images, indexes, producer manifest, and one complete annotation ledger. Then write a separate outcome contract before constructing any V36 payoff.",
+    "phase1_labels_rewritable_after_later_payoff_access": false,
+    "rule_aggregation_authorized_now": false,
+    "strategy_replay_authorized_now": false
+  },
+  "maximum_compressed_rules": 0,
+  "prohibited": [
+    "constructing, guessing, stating, resolving, hashing, opening, or parsing any V36 Stage-B or outcome artifact path",
+    "querying, displaying, or scaling with any per-event relative session greater than zero",
+    "reading any post-2020 or 2021-plus source row",
+    "displaying or persisting symbol, date, year, industry, event identity, price-delay score, return, or outcome",
+    "persisting an event-to-chart identity crosswalk",
+    "ordering by chronology, symbol, industry, score, or any non-opaque identity",
+    "skipping, sampling, duplicating, deleting, or reselecting a frozen event",
+    "outcome grouping, rule aggregation, rule compression, strategy replay, validation, threshold search, or parameter tuning"
+  ]
+}

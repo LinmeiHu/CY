@@ -1,0 +1,41 @@
+{
+  "experiment": "ASHARE-EARLY-LISTING-SECOND-PRICE-DISCOVERY-V1",
+  "lane": "independent_early_listing_second_price_discovery",
+  "stage_a_outcomes_opened": false,
+  "scientific_development": ["2014-01-01", "2021-12-31"],
+  "semantic_discovery_block": ["2014-01-01", "2018-12-31"],
+  "chronological_confirmation_block": ["2019-01-01", "2021-12-31"],
+  "sealed_validation": ["2022-01-01", "2023-12-31"],
+  "repository_2024_plus_opened": false,
+  "economic_hypothesis": "During the first 30-120 listed sessions, limited floating inventory and unresolved price discovery can produce a second independent repricing after the first peak/correction. A settled low-turnover ten-session base followed by a high-close breakout is the causal trigger.",
+  "population": {
+    "boards": ["MAIN", "CHINEXT"],
+    "left_truncated_listing_history_excluded": true,
+    "earliest_accepted_listing_date": "2013-03-01",
+    "listing_age_sessions_min": 30,
+    "listing_age_sessions_max": 120,
+    "hard_valid_signal_required": true,
+    "non_st_required": true,
+    "no_invalid_price_step_in_prior_20_sessions": true,
+    "first_correction": {"early_peak_age_sessions_min": 8, "early_peak_age_sessions_max": 80, "signal_drawdown_from_early_peak_min": -0.40, "signal_drawdown_from_early_peak_max": -0.15},
+    "settled_base": {"prior_sessions": 10, "high_low_range_max": 0.20, "base_low_age_sessions_min": 3, "base_low_age_sessions_max": 10, "prior_5_session_turnover_over_prior_20_session_turnover_max": 1.0},
+    "trigger": {"completed_signal_step_return_min": 0.03, "completed_signal_close_above_open": true, "completed_signal_close_above_prior_10_session_base_high": true, "signal_turnover_over_prior_20_session_mean_min": 1.0, "signal_close_location_min": 0.60, "symbol_cooldown_sessions": 20}
+  },
+  "frozen_candidate_artifact": "/Volumes/quant/CY_quant_research/ashare_early_listing_second_price_discovery_v1/stage_a/freeze/frozen_candidates.parquet",
+  "frozen_candidate_sha256": "c96f8c1c058037d663a00924e6d2a6d72ad023e699fff17d983f709fd35b3bc8",
+  "frozen_candidate_count": 600,
+  "annual_candidate_counts": {"2014": 27, "2015": 65, "2016": 55, "2017": 187, "2018": 51, "2019": 48, "2020": 63, "2021": 104},
+  "blind_chart_count": 48,
+  "blind_charts_end_at_signal_close": true,
+  "entry": "first legal executable daily open strictly after the completed trigger session, no later than the third subsequent market session; otherwise the signal expires",
+  "costs": {"entry_bps": 20, "exit_bps": 20, "round_trip_bps": 40},
+  "execution": {"signal_bar_fill_allowed": false, "maximum_entry_delay_market_sessions": 3, "t_plus_one_required": true, "known_at_entry_profit_limit_order_may_fill_intraday_from_first_sellable_session": true, "completed_close_failure_or_time_stop_executes_at_next_legal_open": true, "suspension_and_price_limit_tradability_required": true, "corporate_action_coordinate_fail_closed": true, "unknown_required_lineage_fail_closed": true},
+  "frozen_exit_profiles": [
+    {"profile": "H10_NEXT_OPEN", "profit_target_from_entry": null, "time_stop_completed_sessions": 10, "failure_exit": "NONE"},
+    {"profile": "H20_NEXT_OPEN", "profit_target_from_entry": null, "time_stop_completed_sessions": 20, "failure_exit": "NONE"},
+    {"profile": "T10_H20_NO_STOP", "profit_target_from_entry": 0.10, "time_stop_completed_sessions": 20, "failure_exit": "NONE"},
+    {"profile": "T10_H20_STABILIZED_LOW_STOP", "profit_target_from_entry": 0.10, "time_stop_completed_sessions": 20, "failure_exit": "next legal open after a completed close below the frozen ten-session base low"}
+  ],
+  "selection": {"block": "2014-01-01 through 2018-12-31 only", "primary_score": "median of the five calendar-year mean net trade returns; every year is one equal observation", "minimum_positive_calendar_years": 3, "tie_breaks": ["higher pooled median net trade return", "lower severe_loss10 rate", "shorter maximum holding period", "lexicographically smaller profile name"], "pooled_trade_count_cannot_override_year_equal_score": true, "choose_at_most_one_profile": true},
+  "continuation_gate": {"average_executed_signals_per_year_strictly_greater_than": 50, "confirmation_pooled_mean_net_trade_return_min": 0.03, "confirmation_pooled_median_net_trade_return_positive": true, "confirmation_2019_mean_net_positive": true, "confirmation_2020_mean_net_positive": true, "confirmation_2021_mean_net_positive": true, "confirmation_not_entirely_one_year_or_board": true, "severe_loss10_controlled": true, "validation_only_if_development_passes": true}
+}

@@ -1,0 +1,188 @@
+{
+  "experiment": "ASHARE-BOARD-LOT-AFFORDABILITY-CLIENTELE-MOTHER-V35",
+  "stage": "OUTCOME_BLIND_COUNT_AND_REDUNDANCY_FREEZE_BEFORE_STAGE_A",
+  "frozen_at": "2026-09-06",
+  "pre_run_static_correction": {
+    "status": "ORIGINAL_V35_CORRECTED_BEFORE_ANY_RUN_OR_REGISTRATION",
+    "reason": "Independent static review found that CY-006 legally represents an optional no-rights value as either true null or finite zero, while the first unexecuted runner draft required finite zero. The same review found a nullable-boolean fail-open risk and an opportunity-failure publication mismatch.",
+    "scientific_change": false,
+    "threshold_direction_universe_schedule_or_cooldown_changed": false,
+    "source_rows_read": false,
+    "outcome_or_post_signal_rows_read": false,
+    "prior_draft_registered": false,
+    "prior_draft_executed": false,
+    "versioning_decision": "Retain V35 identity because no source access, count, candidate population, result or authorization existed under the withdrawn draft. Git history preserves the superseded bytes."
+  },
+  "purpose": "Test only whether the minimum cash ticket implied by the supported A-share 100-share board lot yields a sufficiently broad, causally observable and non-obviously-duplicate pre-2021 mother population. Stage A may count frozen identities and inspect contemporaneous or prior-only redundancy geometry; it may not attach any future path, fill, return, target, exit, chart outcome or portfolio field.",
+  "economic_hypothesis": "Without fractional shares, a lower 100-share cash ticket can admit a broader marginal retail clientele. Among liquid firms in the same PIT industry and the middle circulating-size tercile, the lowest-ticket stock may receive broader attention and demand. The frozen direction is LOWER_TICKET_BETTER. Failure cannot be rescued by reversing to high-ticket stocks.",
+  "representation_boundary": {
+    "board_lot_ticket_cny": "100 * raw completed-close CNY/share on signal session t",
+    "mathematical_identity": "This is exactly nominal raw price scaled by the supported 100-share lot. It is not claimed to add mathematical information beyond nominal price.",
+    "not_low_max": "No return, MAX, momentum or path field selects a candidate. Prior-20 MAX is calculated only as an outcome-blind redundancy diagnostic after identity selection.",
+    "not_size": "Circulating market value is used only to form the within-industry middle tercile. The lowest or highest circulating-size stock cannot enter the rankable pool.",
+    "not_liquidity": "Same-date amount provides one fixed executability floor. Amount, turnover and volume never determine the ticket ordering.",
+    "not_corporate_action_alpha": "Raw current price is the economically quoted ticket coordinate. Signal-day corporate actions are excluded; no split, distribution, supply event or adjusted price defines the signal.",
+    "pit_grade": "B",
+    "claim_limit": "No investor-account, holdings, order-flow, wealth or true clientele field exists. Passing Stage A establishes only representation and opportunity readiness."
+  },
+  "inputs": {
+    "registry": {
+      "path": "configs/data_asset_registry.json",
+      "required_assets": [
+        "CY-051",
+        "CY-006",
+        "QD-010",
+        "QD-012"
+      ],
+      "policy": "At run time require exact registered PIT-B/RESEARCH_CONDITIONAL or DERIVE_ONLY dependency semantics plus the exact CY-051 asset and bounded authorization. Re-hash the registry before publication. This freeze and its repository-side registry suggestion do not modify the central registry or authorize a run."
+    },
+    "cy051_authorization_envelope": {
+      "asset_id": "CY-051",
+      "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V35-CY051_DATA_ASSET_MANIFEST.json",
+      "registry_suggestion_path": "research/market_behavior_os_v2/experiments/ASHARE-V35-CY051_REGISTRY_SUGGESTION.json",
+      "authorization_id": "CYQ-AUTH-ASHARE-BOARD-LOT-AFFORDABILITY-V35-STAGE-A-2018-2020-V1",
+      "authorized_arm": "V35_FROZEN_OUTCOME_BLIND_STAGE_A_ONLY",
+      "activation": "The runner must fail before touching source artifacts unless the central registry independently contains the exact suggested CY-051 asset and authorization bound to the completed spec, runner, manifest and source identities."
+    },
+    "cy006_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "cy006_partitions": [
+      {
+        "year": 2018,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2018/data_0.parquet",
+        "sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4"
+      },
+      {
+        "year": 2019,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2019/data_0.parquet",
+        "sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd"
+      },
+      {
+        "year": 2020,
+        "path": "/Users/linmei/Documents/CY/data/processed/pit_b_daily_2018_2026_v2/daily/partition_year=2020/data_0.parquet",
+        "sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62"
+      }
+    ],
+    "qd010_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-010-cninfo-actions-20260820.json",
+      "sha256": "e1ca622ee227ce308b44933160754d450b80d3ecca79c1470037558e1011ceb8"
+    },
+    "qd010_source_manifest": {
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json",
+      "sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c"
+    },
+    "corporate_action_id_contract": {
+      "path": "src/cyq_game/chip/price_coordinate.py",
+      "sha256": "60c9f80fcaa2bf4a6ebfaab37bc56e81dd716cc3bea00891b4fc28d077dd1726",
+      "v35_strictness": "Before a historical action step can enter the MAX diagnostic, empty, padded or duplicate action-ID members fail the step closed; the strict parsed member count must equal corporate_action_count."
+    },
+    "qd012_inventory": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/QD-002-20260820.json",
+      "sha256": "36fe6f09c04ede7423f9dd7ec593eb558e9aee2384205660f8b0fa0cc4f85982"
+    },
+    "circulating_size_contract": {
+      "spec_path": "research/market_behavior_os_v2/experiments/MKT-STYLE-DATA-001_spec.json",
+      "spec_sha256": "506c24bcdd498162b3d44faa3008aa54ddf9a4132606b5da9a890240e224484b",
+      "result_path": "research/market_behavior_os_v2/artifacts/MKT-STYLE-DATA-001_result.json",
+      "result_sha256": "a03954d6315f29c7c5a119b91729fbfeef84feb51c7c12ed2330b7822a19f019"
+    }
+  },
+  "frozen_mother_signal": {
+    "signal_period": "2018-01-01 through 2020-12-31 inclusive",
+    "decision_schedule": "The first completed Friday exchange session in each calendar month. A month with no Friday session produces no decision.",
+    "decision_at": "Completed signal-session t close. Every signal input must have available_at no later than decision_at.",
+    "universe": "Historical Main Board and ChiNext identities only: 600/601/603/605.SH and 000/001/002/300/301.SZ. Require non-ST, trade_status=1, current-day tradable, nonblank PIT industry and all CY-006 hard/bar/trading-state/industry/float/corporate-action/market/market-rule/historical-identity gates true, with nonblocking corporate actions and nonblank required snapshot IDs.",
+    "current_numeric_validity": "Raw close, preclose, amount, volume, turnover_fraction and circulating_shares must be finite and strictly positive.",
+    "signal_day_action_exclusion": "corporate_action_count must equal zero, the strict action-ID aggregate must be empty, corporate_action_blocking must be explicitly false, and the accepted action coordinate must have share_multiplier=1 and cash_per_share=0. CY-006 rights_ratio is optional-zero: only a true null or a finite numeric zero may represent economic zero, and only in conjunction with every other no-action gate. A non-null nonnumeric value, nonfinite value or nonzero value fails closed. Unknown or inconsistent action state fails closed.",
+    "amount_floor": "On each decision date, compute the median current CNY amount across the entire otherwise-eligible Main Board and ChiNext cross-section. A rankable stock must have current amount greater than or equal to that same-date median. The floor never enters ticket ordering.",
+    "industry_minimum": 12,
+    "size_neutralization": "After the amount floor, within each decision-date/PIT-industry group of at least 12 stocks, deterministically NTILE(3) by circulating_market_value_cny ascending then symbol. Only tercile 2 is rankable.",
+    "selection": "Within each rankable date/industry middle-size tercile, select exactly the stock with minimum board_lot_ticket_cny. Break ticket ties by larger current amount, then lexical symbol.",
+    "direction": "LOWER_TICKET_BETTER_FROZEN_NO_SIGN_RESCUE",
+    "cooldown": "Process selected rows by signal date, PIT industry and symbol. Retain a stock only when its global signal calendar index is strictly more than 60 exchange sessions after its last retained V35 event.",
+    "event_id": "BOARD_LOT_AFFORDABILITY|YYYYMMDD|PIT_INDUSTRY|SYMBOL",
+    "market_filter": "NONE",
+    "return_filter": "NONE",
+    "max_filter": "NONE",
+    "future_filter": "NONE",
+    "earliest_hypothetical_fill": "A later legal open, never session t. Stage A does not read or evaluate a fill."
+  },
+  "prior20_max_redundancy_coordinate": {
+    "use": "NON_FILTERING_OUTCOME_BLIND_DIAGNOSTIC_ONLY",
+    "step_return": "Causal log close-to-close return. A zero-action step requires an explicitly known zero count, empty strict action-ID aggregate, explicit nonblocking state, share_multiplier=1 and cash_per_share=0, then uses raw close_t/raw close_t-1. For rights_ratio only, true null or finite numeric zero is canonical optional-zero; non-null nonnumeric, nonfinite or nonzero fails the step. A causally available non-rights QD-010 action step requires a strict action-ID member count exactly equal to corporate_action_count and uses close_t divided by ((close_t-1-cash_per_share)/share_multiplier), with the same optional-zero rights rule. Every invalid, noncontiguous, blocking, unknown, duplicate-ID or actual-rights step is null.",
+    "window": "Twenty close-to-close steps ending at t, using 21 contiguous session endpoints t-20 through t inclusive. A missing diagnostic never changes candidate identity.",
+    "orientation": "Higher MAX means more lottery-like recent upside; no orientation is authorized as a V35 filter."
+  },
+  "stage_a_protocol": {
+    "allowed": [
+      "verify exact frozen file hashes and CY-006/QD-010/QD-012 registry semantics",
+      "read only exact 2018, 2019 and 2020 CY-006 partitions",
+      "construct the completed-close monthly universe, amount floor, middle size tercile, lowest-ticket identity and 60-session cooldown",
+      "write an outcome-free pre-cooldown representation and retained candidate table",
+      "report count, date, industry, symbol, PIT, snapshot and corporate-action audits",
+      "report non-filtering rank/collision diagnostics between ticket cost and circulating size, amount, turnover and causal prior-20 MAX"
+    ],
+    "redundancy_diagnostics": {
+      "rankable_pool": "Within-date/PIT-industry fractional-rank associations for board-lot ticket versus circulating market value, amount, turnover fraction and available prior-20 MAX.",
+      "selected_rows": "Distribution of selected stocks' deterministic average fractional ranks for circulating size and amount within the full otherwise-eligible date/PIT-industry group before the amount floor, plus identity collision with deterministic same-pool lowest circulating-size and lowest prior-20-MAX representatives.",
+      "decision_role": "Descriptive redundancy challenge only. No association may add, remove, reorder or rescue a V35 event during Stage A."
+    },
+    "forbidden": [
+      "any source row after 2020-12-31",
+      "any price, return, state, entry, target, exit or outcome after signal session t",
+      "any future payoff, MFE, MAE, hit label, chart path, outcome bucket or portfolio artifact",
+      "any 2021-plus partition, signal identity or outcome",
+      "any existing strategy trade, candidate outcome or result artifact",
+      "a high-ticket alternative, parameter grid, neighboring schedule, alternate tercile, threshold rescue, market regime or added price-path filter"
+    ]
+  },
+  "stage_a_opportunity_gate": {
+    "years": [
+      2018,
+      2019,
+      2020
+    ],
+    "retained_candidates_each_year_strictly_greater_than": 50,
+    "pit_industries_each_year_at_least": 20,
+    "decision_months_each_year_at_least": 10,
+    "unique_symbols_each_year_strictly_greater_than": 50,
+    "all_years_must_pass": true,
+    "failure_policy": "If semantic/PIT/input gates pass but any annual opportunity gate fails, publish only the Stage-A count audit as FAILED_OPPORTUNITY_GATE_PERMANENTLY_CLOSED. Do not inspect charts, outcomes or alternative definitions."
+  },
+  "later_stage_boundary_not_authorized": {
+    "chart_window_if_stage_a_passes": "A separately frozen asset may render signal-126 through signal+126 only after Stage-A identity audit.",
+    "fixed_economic_hurdle_if_a_rule_is_later_frozen": "+10% target, H20 lifecycle, 40 bps round-trip cost; every year must have more than 50 completed signals and mean net return greater than 4%.",
+    "stage_b_authorized": false,
+    "charts_authorized": false,
+    "outcome_read_authorized": false,
+    "portfolio_replay_authorized": false,
+    "2021_plus_read_authorized": false
+  },
+  "output_contract": {
+    "root": "/Volumes/quant/CY_quant_research/ashare_board_lot_affordability_clientele_mother_v35/stage_a",
+    "files_if_passed": [
+      "representation_panel.parquet",
+      "candidates_frozen.parquet",
+      "result.json"
+    ],
+    "files_if_opportunity_failed": [
+      "result.json"
+    ],
+    "write_policy": "Build in a sibling staging directory, verify every frozen input again, refuse an existing canonical path, and atomically rename without overwrite. Semantic/PIT/input failure publishes nothing. A pure opportunity failure publishes one compact permanent-close result.json and never publishes either Parquet identity table."
+  },
+  "governance": {
+    "spec_frozen_before_source_or_outcome_read": true,
+    "runner_requires_independent_static_audit_before_run": true,
+    "cy051_central_registry_authorization_required_before_source_access": true,
+    "2018_2020_status": "CONSUMED_DEVELOPMENT_HISTORY_OUTCOME_BLIND_STAGE_A_ONLY",
+    "post_2020_row_read": false,
+    "outcome_columns_read": false,
+    "post_signal_rows_read": false,
+    "same_bar_fill": false,
+    "unknown_lineage_policy": "FAIL_CLOSED",
+    "strict_pit_a_claim": false
+  },
+  "next_action": "Independently audit the corrected spec, completed runner, CY-051 manifest and registry suggestion. Only after a separate change installs the exact suggestion in the central registry may Stage A run once without opening any outcome."
+}

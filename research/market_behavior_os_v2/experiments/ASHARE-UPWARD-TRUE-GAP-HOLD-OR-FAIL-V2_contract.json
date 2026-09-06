@@ -1,0 +1,28 @@
+{
+  "experiment_id": "ASHARE-UPWARD-TRUE-GAP-HOLD-OR-FAIL-V2",
+  "status": "FROZEN_BEFORE_V2_ROW_LEVEL_REPLAY",
+  "parent_signal_contract": "ASHARE-UPWARD-TRUE-GAP-INFORMATION-REPRICING-V1",
+  "parent_signal_contract_sha256": "e28de35b08cd752858b03b94441823442eb6cc74abeaa39697cfa9255174deaf",
+  "parent_candidate_sha256": "8bf156aa6c2459badcca4fc3503b08006b11554739cfab4ccd1b540f8a9cc172",
+  "governance_note": "V1 aggregate results were observed before this V2 was stated. No V1 row-level winner/loser feature analysis or exit-path optimization was performed. V2 adds one economic invalidation rule and is a separate strategy contract.",
+  "signal_identity_changed": false,
+  "entry": "next legal executable session open after the frozen V1 signal",
+  "target": "+10% from executable entry, first legal realization after T+1",
+  "failure": "after the position is legally sellable, the first completed daily coordinate close at or below the upward true-gap lower boundary (the prior session coordinate high) invalidates repricing; exit at the next legal executable open",
+  "time_stop": "H20, then next legal executable open",
+  "cost": "40 bp round trip",
+  "fixed_profiles": [
+    {
+      "profile": "T10_H20_FULL_GAP_FILL_FAILURE",
+      "target": 0.10,
+      "horizon": 20,
+      "stop": true
+    }
+  ],
+  "development": "Report 2014-2018 without selecting any parameter.",
+  "confirmation": "Apply the identical fixed contract to 2019-2021; require average completed trades/year >50, pooled mean net >3%, pooled median >0, and every confirmation-year mean >0.",
+  "outcomes_opened_at_v2_freeze": "V1 aggregates only; no V2 replay",
+  "repository_2022_plus_outcomes_opened": false,
+  "repository_2024_plus_data_opened": false,
+  "prohibited": ["no alternate failure boundary", "no stop threshold search", "no signal filter change", "no 2022+", "no signal-bar fill"]
+}

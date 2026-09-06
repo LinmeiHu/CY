@@ -1,0 +1,166 @@
+{
+  "experiment": "ASHARE-LOW-POSITIVE-FEEDBACK-GOOD-NEWS-MOTHER-V30",
+  "research_status": "OUTCOME_BLIND_MOTHER_FREEZE",
+  "frozen_before_candidate_build": true,
+  "purpose": "Discover whether stocks with prior positive price information but weak turnover response to lagged positive returns form a chart-reviewable A-share underreaction mother. The economic object is a paper-inspired turnover-PFC relation, not canonical volume-PFC, turnover level, raw momentum, a one-day volume shock, or a candle pattern.",
+  "pre_stage_a_semantic_amendment": {
+    "timing": "Applied before candidate materialization and before any V30 outcome was read.",
+    "reason": "A read-only adversarial audit found that the first draft overstated registry coverage, used a 20-session project approximation for monthly return, and did not bind the compact builder and chronology-extension lineage.",
+    "changes": "Rename the object turnover-PFC, use fixed causal 1/5/22-session drivers, require an exact valid 83-session chain, disclose the derived panel's exact source and universe exclusions, fail closed on null required fields, and test redundancy in both global and within-PIT-industry views.",
+    "outcome_informed": false
+  },
+  "external_prior": {
+    "paper": "Liu, Xufeng and Wan, Die (2022), Asymmetric positive feedback trading and stock pricing in China, North American Journal of Economics and Finance 60, 101658",
+    "doi": "10.1016/j.najef.2022.101658",
+    "prior_used": "The paper measures buying-winner feedback from return-volume lead-lag relationships, reports that the low-feedback long leg carries the anomaly, and reports stronger economics following historical good news.",
+    "replication_boundary": "This is a paper-inspired turnover-PFC chart mother, not a claimed canonical or faithful factor replication. The local derived panel supplies turnover_fraction rather than the paper's daily volume input, the public paper page does not establish that this project's exact 1/5/22-session choices reproduce the authors' full equation, and no size-neutral long-short factor is constructed."
+  },
+  "novelty_boundary": {
+    "not_previously_tested": "Repository-wide exact-term and formula search found no prior positive-feedback/PFC/AFC experiment and no rolling turnover-versus-lagged-positive-return correlation signal.",
+    "nearest_closed_families": [
+      "single-day demand-volume shock",
+      "signed price-volume disagreement",
+      "FIP continuous-good-news path shape",
+      "low-turnover attention level",
+      "high-transfer low-displacement",
+      "Amihud illiquidity",
+      "liquidity-shock assimilation"
+    ],
+    "why_distinct": "Those experiments measure level, contemporaneous shock, displacement, or return-path shape. V30 measures whether today's turnover repeatedly covaries with already completed positive returns at three economically fixed horizons."
+  },
+  "data": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "warmup_start": "2013-01-01",
+    "candidate_signal_start": "2014-01-01",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_chart_and_evaluation_date": "2020-12-31",
+    "why_signal_end_is_2020_06_30": "The final 2020-06-30 signal has exactly 126 global market sessions through 2020-12-31, so every plus-six-month chart remains inside the pre-2021 discovery boundary.",
+    "stage_a_maximum_physical_row_date": "2020-06-30",
+    "post_signal_end_row_read_during_stage_a": false,
+    "post_2020_row_read": false,
+    "outcome_read_during_stage_a": false,
+    "bounded_authorization": {
+      "asset_id": "CY-034",
+      "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-A-2013-2020-V1",
+      "authorized_arm": "V30_OUTCOME_BLIND_STAGE_A_ONLY",
+      "future_outcome_arm_authorized": false,
+      "rule": "Stage B requires a separate runner-hash-bound registry authorization after Stage A passes; registration here does not authorize outcome attachment."
+    },
+    "lineage": {
+      "status": "DETERMINISTIC_BOUNDED_DERIVED_ARTIFACT_NOT_COMPLETE_REGISTERED_CY006_PANEL",
+      "compact_build_wrapper": "research/market_behavior_os_v2/scripts/run_ashare_collapse_gap_zone_dual_fresh_k10_validation_v1.py",
+      "compact_build_wrapper_sha256": "3d6c9a887b36cb15c712acab2fb391c9b2a8c6afd62cc6e142b0322f5f070dc4",
+      "compact_builder": "research/market_behavior_os_v2/scripts/run_ashare_collapse_gap_zone_pattern_fidelity_audit_v1.py",
+      "compact_builder_sha256": "2b8b5c09df390b8ff2133244fad4a3fdfecbadf6052884b4f9c567e40edccee0",
+      "adjusted_coordinate_builder": "research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+      "adjusted_coordinate_builder_sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787",
+      "chronology_extension_audit": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_chronology_extension_audit.json",
+      "chronology_extension_audit_sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f",
+      "daily_contract": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/daily_contract_2013_2023.parquet",
+      "daily_contract_sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df",
+      "adjusted_coordinate_source": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+      "adjusted_coordinate_source_sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+      "pre_2018_source": "Certified CY-006-schema chronology extension recorded by the bound audit; it is not globally registered CY-006.",
+      "from_2018_source": "The physical chronology-extension root is not hash-identical to canonical CY-006. The bound audit certifies it as schema-exact and semantically equivalent, with an invalid-industry null encoding instead of canonical UNKNOWN; V30 makes only this bounded derived-artifact claim.",
+      "snapshot_limitation": "The compact retains industry_snapshot_id but not daily snapshot_id. V30 therefore binds the immutable compact content hash plus the actual build wrapper, both imported builders, chronology audit, daily contract, and actual adjusted-coordinate source hashes and fails closed on any drift."
+    },
+    "universe_scope": {
+      "included": "Shanghai Main Board excluding 688 STAR, Shenzhen 00 Main/SME, and Shenzhen 30 ChiNext.",
+      "excluded_boards": ["STAR 688", "Beijing"],
+      "excluded_pit_industries": [
+        "煤炭开采",
+        "油气开采Ⅱ",
+        "油服工程",
+        "炼化及贸易",
+        "普钢",
+        "特钢Ⅱ",
+        "冶钢原料",
+        "工业金属",
+        "小金属",
+        "贵金属",
+        "能源金属",
+        "金属新材料",
+        "化学原料",
+        "化学制品",
+        "农化制品",
+        "化学纤维",
+        "电子化学品Ⅱ",
+        "水泥",
+        "玻璃玻纤",
+        "非金属材料Ⅱ",
+        "电力",
+        "燃气Ⅱ"
+      ],
+      "interpretation": "Results describe this fixed Main-plus-ChiNext derived universe, not the full A-share market."
+    }
+  },
+  "pit_contract": {
+    "required_current_row": "hard_valid, current_valid, current_day_data_tradable, trade_status=1, market_rule_valid, corporate_action_valid, non-blocking, explicitly known zero current corporate_action_count, historical_identity_valid, industry_valid, non-ST, available_at<=decision_at, finite positive coordinate prices/factor, known lineage counter, amount and turnover_fraction. Null required fields fail closed.",
+    "history": "Every correlation observation and all lag endpoints must belong to an exact consecutive market-cal_idx chain with unchanged invalid_step_cum and the same required validity contract. Missing, suspended, action-blocked, unknown-industry, or non-finite rows fail closed.",
+    "signal_time": "Completed month-end close, available at that row's decision_at; no same-session fill is permitted.",
+    "coordinate": "Use the bound causal action coordinate for returns and the compact builder's deterministic turnover_fraction for trading intensity. No future-adjusted vendor return or substituted volume series is allowed."
+  },
+  "positive_feedback_representation": {
+    "name": "TURNOVER_PFC_1_5_22",
+    "window": "Exactly 60 activity/driver pairs ending on the decision row, embedded in one exact 83-session consecutive, fully valid cal_idx chain so the earliest 22-session driver is causal and intact.",
+    "daily_driver": "max(previous completed session step_return, 0)",
+    "weekly_driver": "max(previous-session coord_close / coord_close six sessions earlier - 1, 0)",
+    "monthly_driver": "max(previous-session coord_close / coord_close twenty-three sessions earlier - 1, 0)",
+    "fixed_horizon_boundary": "The project freezes broad daily/weekly/monthly proxies as 1/5/22 trading sessions. These are economically standard approximations selected before outcomes, not a claim that the unavailable full publisher equation has been reproduced.",
+    "components": "Three Pearson correlations between current turnover_fraction and the daily, weekly, and monthly positive-return drivers over the exact 60-observation window.",
+    "turnover_pfc_score": "Unweighted arithmetic mean of the three finite correlations.",
+    "nondegeneracy": "Each component requires 60 finite pairs and nonzero variance in both turnover_fraction and its positive-return driver. Otherwise the security-date is ineligible.",
+    "neighboring_window_search": false
+  },
+  "mother_selection": {
+    "clock": "Last completed broad-market session of each calendar month; no day-of-month or weekday search.",
+    "liquidity": "Current amount is at or above the same-date median among fully history-eligible securities.",
+    "industry_support": "Causal PIT industry has at least 10 fully eligible securities on the decision date.",
+    "historical_good_news": "Current causal ret60 is strictly positive and at or above the same-date PIT-industry median. The zero boundary makes 'prior positive price information' literal and is fixed before counts or outcomes; charts may later determine whether any simpler pre-entry structure is useful.",
+    "selection": "Within each supported PIT industry, keep the eligible historical-good-news security with the lowest turnover_pfc_score; break ties by larger current amount and then lexical symbol.",
+    "cooldown": "After selection, suppress the same symbol for the next 20 global market cal_idx values, applied causally in chronological order.",
+    "direction": "Low PFC only. The direction is externally motivated and is not inferred from this repository's returns."
+  },
+  "stage_a_representation_gate": {
+    "annual_opportunity": "At least 50 mother events and five independent monthly decision dates in every calendar year 2014-2020, noting that 2020 intentionally contains only January-June signals.",
+    "redundancy_controls": [
+      "ret60",
+      "rolling mean turnover_fraction",
+      "rolling return volatility",
+      "prior-20-session maximum step return",
+      "current signed return-times-turnover"
+    ],
+    "redundancy_views": "For every control report both the complete month-end history-eligible universe's same-date Spearman relationship and its supported same-date PIT-industry relationship, using only groups with at least 20 and 10 observations respectively. Liquidity and good-news filters are applied only after this gate panel is preserved.",
+    "redundancy_rule": "If the absolute median correlation in either frozen view is at least 0.80, close before outcomes as economically reconstructable.",
+    "claim_boundary": "Passing this five-proxy pairwise screen establishes exact-formula novelty and lack of trivial single-proxy reconstruction only. It does not establish economic independence from every closed family or a useful trading signal.",
+    "action_if_failed": "Close without changing the 60-session window, three drivers, month-end clock, historical-good-news definition, liquidity rule, industry selection, cooldown, or redundancy threshold."
+  },
+  "frozen_development_outcome_if_stage_a_passes": {
+    "entry": "First legal non-limit-up open in global cal_idx +1 through +3 after the signal.",
+    "target": "First later valid session whose coordinate high reaches entry coordinate price times 1.10; fill at the exact target coordinate.",
+    "fallback": "First later sellable legal open strictly after 20 global market sessions from entry.",
+    "round_trip_cost": 0.004,
+    "no_entry": "Record NO_LEGAL_ENTRY; never substitute a close or same-session price.",
+    "lineage": "Any coordinate-lineage change after entry invalidates that event; do not normalize or repair it.",
+    "maximum_path_date": "2020-12-31"
+  },
+  "chart_and_rule_plan": {
+    "window": "126 global market sessions before through 126 after every mother signal, capped at 2020-12-31.",
+    "review": "Render every individual chart and chronological/outcome-group contact sheet; inspect every chart, explicitly including profitable, ordinary, losing, severe-loss, and incomplete cases.",
+    "market_state": "The existing causal close-known market regime may be annotated and may route an eventual rule, but no future state or full-period normalization is allowed.",
+    "maximum_rules": 5,
+    "rule_freeze": "All final pre-entry rules must be written and hashed before the compressed strategy outcome is aggregated.",
+    "strict_development_gate": "More than 50 completed signals and mean net return above 4% in every calendar year 2014-2020.",
+    "validation_if_and_only_if_passed": "Freeze once, then open 2022-2024 exactly once. 2021 remains unused as a temporal buffer in this workflow."
+  },
+  "prohibited": [
+    "AFC/PFC formula variants after outcomes",
+    "lookback, horizon, quantile, weekday, Top-N, target, or holding-period grids",
+    "using entry-day or later candles as predictors unless a new later decision time is frozen before aggregation",
+    "relabeling turnover level, momentum, Low-MAX, or a one-day volume shock as PFC",
+    "silent missing-data substitution or relaxed PIT/action/execution gates",
+    "opening 2021 or 2022-2024 outcomes before the strict development gate",
+    "portfolio replay before the signal-level gate"
+  ]
+}

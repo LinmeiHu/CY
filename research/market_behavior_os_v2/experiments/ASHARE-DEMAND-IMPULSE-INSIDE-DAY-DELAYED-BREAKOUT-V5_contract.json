@@ -1,0 +1,70 @@
+{
+  "experiment_id": "ASHARE-DEMAND-IMPULSE-INSIDE-DAY-DELAYED-BREAKOUT-V5",
+  "status": "OUTCOME_BLIND_DELAYED_TRIGGER_AND_TRANSLATION_FREEZE",
+  "economic_hypothesis": "A three-session demand impulse followed immediately by a low-turnover inside day represents temporary supply contraction. The setup is tradable only if price confirms continued demand by completing its first close above the inside-day high within five completed market sessions.",
+  "independence": "No collapse gap, true-gap repair, market panic date, limit-up event, or machine-learning score participates.",
+  "source_setup": {
+    "development_candidate_sha256": "c7ab5931358cfaec987d35ef1cb65f461d867fd71362d10aa02185430012b50f",
+    "post_observation_2022_2023_candidate_sha256": "fda15081747d695205248a91ffa73627e52fbe640436c9cc7031f92fa3485c99",
+    "setup_semantics": "Frozen non-extended three-session demand impulse followed by the immediate low-turnover inside day from V3/V4.",
+    "pre_impulse_ret60_max": 0.47
+  },
+  "trigger": {
+    "clock_starts": "the completed inside-day setup close",
+    "condition": "first subsequent fully valid completed daily close strictly above the frozen inside-day coordinate high",
+    "maximum_wait_completed_market_sessions": 5,
+    "same_setup_day_trigger_allowed": false,
+    "missing_or_coordinate_change_policy": "fail closed",
+    "no_trigger_within_window": "setup expires"
+  },
+  "entry": {
+    "rule": "first legal executable daily open strictly after the completed breakout trigger",
+    "maximum_delay_market_sessions": 3,
+    "signal_bar_fill_allowed": false
+  },
+  "fixed_profiles": [
+    {
+      "profile": "T15_H30_DELAYED_BREAKOUT",
+      "target": 0.15,
+      "horizon": 30,
+      "stop": false
+    }
+  ],
+  "costs": {
+    "entry_bps": 20,
+    "exit_bps": 20,
+    "round_trip_bps": 40
+  },
+  "execution": {
+    "t_plus_one_required": true,
+    "suspension_and_price_limit_tradability_required": true,
+    "corporate_action_coordinate_fail_closed": true,
+    "unknown_required_lineage_fail_closed": true,
+    "target_may_fill_only_from_first_sellable_session": true,
+    "time_stop_executes_at_next_legal_open": true
+  },
+  "chronology": {
+    "semantic_and_profile_freeze": "before delayed-trigger outcomes",
+    "development_discovery": ["2014-01-01", "2018-12-31"],
+    "chronological_confirmation": ["2019-01-01", "2021-12-31"],
+    "post_observation_diagnostic": ["2022-01-01", "2023-12-31"],
+    "repository_2024_plus_opened": false
+  },
+  "continuation_gate": {
+    "capacity_accepted_completed_trades_per_year_strictly_greater_than": 50,
+    "capacity_accepted_mean_net_return_min": 0.03,
+    "confirmation_2019_2021_each_year_mean_positive": true,
+    "post_observation_2023_mean_nonnegative": true,
+    "top_five_signal_dates_share_max": 0.20,
+    "signal_date_equal_mean_positive": true,
+    "no_single_board_explains_edge": true
+  },
+  "governance": {
+    "trigger_window_profiles_tested": 1,
+    "target_horizon_profiles_tested": 1,
+    "post_trigger_bars_used_in_setup_identity": false,
+    "future_return_used_in_trigger": false,
+    "outcome_driven_threshold_search": false,
+    "repository_2024_plus_data_opened": false
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "experiment": "ASHARE-INDUSTRY-RESIDUAL-SERIAL-PHASE-CHANGE-MOTHER-V31",
+  "stage": "STAGE_C_COMPLETE_DEVELOPMENT_CHART_CORPUS",
+  "status": "PRE_VISUAL_REVIEW_BUT_POST_STAGE_B_AGGREGATE",
+  "authorship_disclosure": "The V31 aggregate and annual Stage-B outcomes were already visible when this chart protocol was frozen. The chart window, outcome buckets, 5x5 sheet layout and signal-time taxonomy inherit the earlier V30 protocol; the V31-specific changes correct calendar-coordinate identity and prevent future-dependent visual scaling.",
+  "purpose": "Render every one of the 1,602 immutable V31 development events and enforce a two-pass review in which signal-time morphology is frozen before outcome-group attribution is opened.",
+  "renderer": {
+    "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_residual_serial_phase_change_mother_v31_charts.py",
+    "sha256": "f8522f4e643aa54c06100f34b504627041604f6f07a88aeac2400508fbe2b283"
+  },
+  "required_authorization": {
+    "asset_id": "CY-039",
+    "dependency_asset_id": "CY-038",
+    "authorization_id": "CYQ-AUTH-ASHARE-RESIDUAL-SERIAL-V31-STAGE-C-CY039-CHART-REVIEW-2018-2020-V1",
+    "authorized_arm": "V31_CY039_FROZEN_STAGE_C_CHART_REVIEW_ONLY",
+    "purpose": "ASHARE_FROZEN_DEVELOPMENT_CHART_REVIEW",
+    "manifest_path": "research/market_behavior_os_v2/experiments/ASHARE-V31-CY039_CHART_REVIEW_ASSET_MANIFEST.json",
+    "permissions": {
+      "completed_stage_b_artifact_read_authorized": true,
+      "charts_authorized": true,
+      "outcome_attachment_authorized": false,
+      "rule_aggregation_authorized": false,
+      "portfolio_replay_authorized": false,
+      "candidate_reselection_authorized": false,
+      "post_2020_read_authorized": false,
+      "2021_read_authorized": false,
+      "2022_plus_read_authorized": false
+    }
+  },
+  "frozen_scope": {
+    "event_rows": 1602,
+    "signal_start": "2018-07-31",
+    "signal_end": "2020-06-30",
+    "window_relative_global_sessions": [-126, 126],
+    "window_slots_per_event": 253,
+    "minimum_chart_date": "2018-01-22",
+    "maximum_chart_date": "2020-12-31",
+    "expected_global_signal_cal_idx": [1355, 1818],
+    "expected_stage_a_local_to_global_cal_idx_offset": 1215,
+    "expected_out_of_window_completed_exits": 0
+  },
+  "calendar_coordinate_contract": {
+    "stage_a_local_index": "Stage-A candidate signal_cal_idx is local to the CY-006 2018-start input and may not define the chart window.",
+    "chart_index": "Use prepared_candidates.signal_cal_idx, which is the accepted global coordinate-state cal_idx and must equal outcomes.signal_cal_idx.",
+    "identity_audits": [
+      "prepared.source_signal_cal_idx equals Stage-A candidate.signal_cal_idx",
+      "prepared.signal_cal_idx equals outcome.signal_cal_idx",
+      "prepared.invalid_step_cum equals outcome.signal_invalid_step_cum"
+    ],
+    "ohlc": "factor=adjusted_close/raw_close; coord_open/high/low=raw_open/high/low times factor; coord_close=adjusted_close",
+    "missing_slots": "Retain the global calendar slot as blank; no forward fill, backfill, or current-survivor substitution."
+  },
+  "chart_contract": {
+    "individual_full_chart_per_event": 1,
+    "chronology_masked_chart_per_event": 1,
+    "contact_sheet_layout": "5 by 5; at most 25 charts per page",
+    "expected_chronological_masked_sheets": 65,
+    "expected_outcome_group_sheets": 66,
+    "complete_coverages": [
+      "Every event appears exactly once in the full individual-chart index.",
+      "Every event appears exactly once in the masked chronological collection.",
+      "Every event appears exactly once in the mutually exclusive outcome-group collection."
+    ],
+    "blue_region": "relative_session<=0; SIGNAL-TIME pattern evidence only",
+    "orange_region": "relative_session>=1; attribution only",
+    "scale_isolation": [
+      "Blue price scale is computed only from valid relative_session<=0 OHLC.",
+      "Blue turnover scale is computed only from relative_session<=0 turnover.",
+      "Orange OHLC, turnover, entry, target, exit, status and return cannot affect any blue plot pixel.",
+      "The masked chronological chart reveals no post-signal candle or outcome label."
+    ],
+    "marks_in_full_attribution_chart": [
+      "signal close and signal-time divider",
+      "actual first-legal entry",
+      "frozen +10 percent target beginning at entry",
+      "actual completed exit",
+      "exact lifecycle status and mutually exclusive outcome bucket"
+    ],
+    "publication": "Build in a unique same-parent staging directory, rehash every bound input before publication, audit all files and exactly-once coverages, atomically rename, refuse overwrite, and delete only runner-owned staging on failure."
+  },
+  "outcome_groups": {
+    "PROFIT_GE_4PCT": {
+      "definition": "completed net return >= 0.04",
+      "expected_events": 815,
+      "expected_pages": 33
+    },
+    "PROFIT_0_TO_4PCT": {
+      "definition": "0 <= completed net return < 0.04",
+      "expected_events": 113,
+      "expected_pages": 5
+    },
+    "LOSS_0_TO_10PCT": {
+      "definition": "-0.10 < completed net return < 0",
+      "expected_events": 421,
+      "expected_pages": 17
+    },
+    "SEVERE_LOSS": {
+      "definition": "completed net return <= -0.10",
+      "expected_events": 245,
+      "expected_pages": 10
+    },
+    "NO_COMPLETED_TRADE": {
+      "definition": "no completed lifecycle under the frozen Stage-B contract",
+      "expected_events": 8,
+      "expected_pages": 1
+    }
+  },
+  "strict_two_pass_review": {
+    "phase_1": [
+      "Review all 65 chronological pages at original resolution with post-signal panels and all outcome labels masked.",
+      "Assign signal-time morphology or NONE_CLEAR to every occupied cell.",
+      "Freeze and hash the complete 1,602-row chronology ledger before phase 2."
+    ],
+    "phase_2": [
+      "Only after phase-1 freeze, review all 66 outcome-group pages at original resolution.",
+      "Append attribution, group observations and counterexamples; do not rewrite phase-1 morphology.",
+      "post_signal_used_as_predictor must remain false for every event."
+    ]
+  },
+  "signal_time_taxonomy": {
+    "trend_structure": [
+      "BASE_OR_COMPRESSION",
+      "ORDERLY_ADVANCE",
+      "MATURE_EXTENDED_HIGH",
+      "VOLATILE_TOPPING",
+      "DOWNTREND_OR_REPAIR",
+      "STRUCTURAL_BREAKDOWN",
+      "NONE_CLEAR"
+    ],
+    "level_location": [
+      "LOW_RANGE",
+      "MID_RANGE",
+      "NEAR_PRIOR_HIGH",
+      "NEW_HIGH_OR_BREAKOUT",
+      "NONE_CLEAR"
+    ],
+    "turnover_structure": [
+      "CONTRACTING",
+      "EXPANDING",
+      "TERMINAL_SPIKE",
+      "MIXED",
+      "NONE_CLEAR"
+    ],
+    "signal_candle_structure": [
+      "BULLISH_BODY",
+      "BEARISH_BODY",
+      "LONG_UPPER_WICK",
+      "LONG_LOWER_WICK",
+      "NARROW_OR_DOJI",
+      "GAP_OR_BREAKOUT",
+      "NONE_CLEAR"
+    ]
+  },
+  "maximum_compressed_rules": 0,
+  "future_rule_policy": "Stage C creates and reviews charts only. If review evidence warrants zero to five deterministic signal-time rules, a separate Stage-D rule-compression contract must be frozen before any rule-level outcome aggregation.",
+  "development_gate_state": {
+    "passed": false,
+    "annual_mean_net": {
+      "2018": -0.026876426262621763,
+      "2019": 0.013953466100115733,
+      "2020": 0.047929084064167016
+    },
+    "later_period": "2021 and 2022-2024 remain closed regardless of Stage-C visual observations."
+  },
+  "prohibited": [
+    "using any post-signal candle, entry, target, exit, status, return, panel scale, date, symbol or industry as a signal-time rule",
+    "opening outcome-group pages before the complete chronology ledger is frozen and hashed",
+    "skipping, sampling, deleting, duplicating or reselecting events",
+    "rule aggregation, strategy replay, market-state filtering or parameter search in Stage C",
+    "opening 2021 or later rows or outcomes"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "experiment": "ASHARE-HIGH-TURNOVER-SELLER-ANCHOR-FIRST-RECLAIM-V1-CHART-RULES",
+  "frozen_before_rule_aggregate": true,
+  "research_status": "CHART_GENERATED_DEVELOPMENT_HYPOTHESIS",
+  "chart_review": {
+    "events_reviewed": 655,
+    "chronological_contact_sheets_reviewed": 73,
+    "review_order": "sheet_001.jpg through sheet_073.jpg, chronological",
+    "review_completed_before_this_freeze": true,
+    "chart_window": "126 causal sessions before signal through 126 context sessions after signal, capped at 2021-06-30",
+    "review_ledger_sha256": "39e26703482a761bef5967f8eac6db5ad5aae82dc339cc8f04fe5c83b4d5ac34",
+    "chart_window_panel_sha256": "9c8d0afaebcaa1bcde178f426e269845ff8881bdee59f20583adecbdc49d805a",
+    "chart_manifest_sha256": "e4f8beec11156dd1a9aeeb62098378d617cfcaeded71ce1179399e6e401e91ef",
+    "chart_runner_sha256": "0c7a59e55986927c74115cb8179e9ef0f546fc1b7c3c7c6d14aa94c84504121d"
+  },
+  "compressed_chart_interpretation": {
+    "not_a_shape_rule": "Long horizontal duration alone did not distinguish winners; many failed signals also formed long bases.",
+    "mechanism": "The useful visual question is whether a forced seller-transfer anchor was followed by genuine supply digestion before a first demand reclaim, rather than a one-bar spike into still-active inventory.",
+    "market_state": "Bull and bear labels alone did not separate outcomes. Weak states therefore require stronger stock-level digestion plus causal improvement in both market return and participation; no future market label is used."
+  },
+  "derived_causal_features": {
+    "anchor_pre60_position": "Anchor coordinate close within the min-low/max-high range of valid tradable same-lineage bars from anchor-60 through anchor, known when the anchor completed. Fewer than ten valid observations fails R1 closed; the window is never shortened.",
+    "absorption_share": "Frozen below-anchor-VWAP session count divided by anchor_age_sessions minus one.",
+    "prior10_range": "Max coordinate high divided by min coordinate low minus one over the last ten valid tradable bars strictly before the signal.",
+    "late_to_early_turnover": "Median turnover of the last five valid tradable pre-signal bars divided by median turnover of the first five valid tradable post-anchor bars.",
+    "late_low_progression": "Median coordinate low of the last five valid tradable pre-signal bars divided by that of the preceding five bars minus one.",
+    "market_acceleration": "Signal-close market_median_ret20 minus ret60 and positive-ret20 share minus positive-ret60 share."
+  },
+  "rules": [
+    {
+      "id": "R1_FORCED_TRANSFER_NOT_MATURE_DISTRIBUTION",
+      "meaning": "The seller anchor did not occur in the top fifth of its already-observable prior-60 price range.",
+      "condition": "anchor_pre60_position <= 0.80"
+    },
+    {
+      "id": "R2_INVENTORY_ABSORPTION_TIME",
+      "meaning": "At least one market month separated anchor and reclaim, with a majority of the intervening sessions below anchor VWAP.",
+      "condition": "anchor_age_sessions >= 20 and absorption_share >= 0.50"
+    },
+    {
+      "id": "R3_LATE_BASE_COMPRESSION",
+      "meaning": "The ten tradable bars before reclaim occupied a broad but bounded base rather than a highly unstable path.",
+      "condition": "prior10_range <= 0.15"
+    },
+    {
+      "id": "R4_LATE_SUPPLY_NOT_STRENGTHENING",
+      "meaning": "Late pre-reclaim turnover did not exceed early post-anchor turnover and the recent five-bar low distribution did not break more than two percent below the preceding five-bar distribution.",
+      "condition": "late_to_early_turnover <= 1.00 and late_low_progression >= -0.02"
+    },
+    {
+      "id": "R5_CAUSAL_MARKET_ROUTE",
+      "meaning": "Bull states need two of the three digestion confirmations; transition states additionally need one improving market scale; bear states need all three confirmations and improving return plus breadth.",
+      "condition": "R1 and ((BULL and digestion_score >= 2) or (TRANSITION and digestion_score >= 2 and (return_acceleration > 0 or breadth_acceleration > 0)) or (BEAR and digestion_score == 3 and return_acceleration > 0 and breadth_acceleration > 0))"
+    }
+  ],
+  "frozen_admission": "R1_FORCED_TRANSFER_NOT_MATURE_DISTRIBUTION and R5_CAUSAL_MARKET_ROUTE, where digestion_score is the count of R2, R3, and R4.",
+  "threshold_rationale": {
+    "0.80": "Exclude the upper price-range quintile as mature distribution risk; no neighboring percentile was tested.",
+    "20": "One market month of digestion.",
+    "0.50": "A simple majority of the absorption interval below frozen anchor VWAP.",
+    "0.15": "A deliberately broad ten-bar base boundary, not an optimized tight-range cutoff.",
+    "1.00": "No increase in median turnover from early transfer to late base.",
+    "-0.02": "Recent low distribution remains economically stable within two percent.",
+    "market_signs": "Only sign of already-observed horizon acceleration is used."
+  },
+  "evaluation": {
+    "development_signal_years": [2014, 2015, 2016, 2017, 2018, 2019, 2020],
+    "translation": "Unchanged frozen A67 target, first legal buyable open signal+1 through signal+3, T+1 target eligibility, H20 time stop, and 40 bp round-trip cost.",
+    "strict_pass_gate": "For every signal year: completed events > 50, mean net return > 4%, and median net return > 0.",
+    "later_period_policy": "Read no 2022-2024 feature or outcome unless every annual development gate passes; close exact formulation without threshold rescue otherwise."
+  },
+  "governance": {
+    "post_2021_06_rule_discovery_read": "NO",
+    "2022_2024_signal_or_outcome_read_before_gate": "NO",
+    "future_market_state_used": false,
+    "future_price_feature_used": false,
+    "parameter_search_after_chart_review": false,
+    "same_bar_fill": false,
+    "corporate_action_coordinate_contract": "unchanged from frozen mother Stage B"
+  }
+}

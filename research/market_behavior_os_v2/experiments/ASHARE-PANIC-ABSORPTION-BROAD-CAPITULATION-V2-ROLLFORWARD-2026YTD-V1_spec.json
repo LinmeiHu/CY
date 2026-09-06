@@ -1,0 +1,116 @@
+{
+  "experiment": "ASHARE-PANIC-ABSORPTION-BROAD-CAPITULATION-V2-ROLLFORWARD-2026YTD-V1",
+  "purpose": "Mechanically complete the frozen V2 annual signal table through consumed 2021 and extend the unchanged rule to the fully mature 2026 YTD cohort. This is reporting and temporal rollforward only, not optimization or a new strategy search.",
+  "source_strategy": "ASHARE-PANIC-ABSORPTION-BROAD-CAPITULATION-V2",
+  "scientific_status": {
+    "2014_2021": "CONSUMED_HISTORY_MECHANICAL_SUMMARY",
+    "2022_2025": "PREVIOUSLY_REPORTED_EVIDENCE",
+    "2026": "UNCHANGED_RULE_MATURE_YTD_TEMPORAL_DIAGNOSTIC"
+  },
+  "frozen_signal": {
+    "mother": [
+      "ret20 <= -10% over exact completed sessions",
+      "signal open <= -1% versus the previous coordinate close",
+      "signal low is below the prior five-session low",
+      "signal turnover is at least its prior-20 mean",
+      "signal close is at or above the prior completed-session high",
+      "signal close location is at least 70%",
+      "signal close is not at the upper price limit"
+    ],
+    "incremental_v2_rule": "same completed-session frozen mother-signal count >= 2 independent symbols",
+    "cooldown": "more than 20 global market sessions since the same symbol's preceding mother signal",
+    "decision_clock": "completed signal session close at 15:00",
+    "missing_or_invalid": "FAIL_CLOSED"
+  },
+  "frozen_execution": {
+    "entry": "first legal non-limit-up open in signal+1 through signal+3",
+    "profit_target": "+10% from coordinate entry, evaluated only after the entry session",
+    "time_stop": "H20 decision followed by the first legal sellable open",
+    "failure_stop": "NONE",
+    "round_trip_cost": 0.004,
+    "same_bar_fill": false,
+    "t_plus_one": true,
+    "unknown_lineage_or_execution_state": "FAIL_CLOSED"
+  },
+  "historical_summary": {
+    "signal_years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+    "candidate_population": "exact frozen mother candidates",
+    "outcome_profile": "T10_H20_NO_STOP",
+    "2021_disclosure": "The chart-rule formation consumed 2021. Its row is descriptive consumed history and is not validation evidence."
+  },
+  "overlap_reproduction_before_2026_freeze": {
+    "years": [2024, 2025],
+    "required": [
+      "registered CY-033 raw detector/execution projection is row-identical to the frozen coordinate daily source over both years",
+      "raw detector identities and signal fields match the frozen yearly raw candidates",
+      "same-day cluster-selected identities match the frozen yearly selected candidates",
+      "replayed status, dates, prices, reason, holding sessions and returns match frozen outcomes"
+    ],
+    "numeric_absolute_tolerance": 1e-12,
+    "failure_policy": "ABORT_BEFORE_2026_IDENTITY_WRITE"
+  },
+  "mature_2026_scope": {
+    "registered_asset_id": "CY-033",
+    "data_end": "2026-09-04",
+    "maturity_rule": "signal_cal_idx <= maximum_calendar_cal_idx - 24",
+    "maturity_reason": "worst-case T+3 entry plus H20 decision plus the next legal-open session",
+    "outcome_use_in_cutoff_or_selection": false,
+    "post_cutoff_signals": "RIGHT_CENSORED_AND_EXCLUDED"
+  },
+  "source_hashes_sha256": {
+    "parent_contract": "69531d56e1728a2b1af64803639d0974992a4031686544e11b4fd4a613f85875",
+    "parent_rule_freeze": "8313df3f825dc1ef8cef14fcc4e0fa1d657a047b51d091d53c127934cfcdaeba",
+    "parent_runner": "c46e327d6ea0fd791af2e10989701ab807fea57bff530069dcf76a526d7c6efe",
+    "parent_2025_extension_freeze": "7128cb23ffb2fea248fa03f3349151985d9b4a5638a5b849dbe63bb39bb3c105",
+    "historical_frozen_candidates": "c4d4d5a4feef587d6ec5ea4f69b39f0992e4cb758bd1336c4740f1bde173dd85",
+    "historical_frozen_outcomes": "c13281f9702f6b89831a514810f281745637819e5860fda36810c1bfb548496f",
+    "frozen_2024_raw": "1bd99ef4102697ecc06870c07121bd0099db6a9926dccf49c72e61a5d825cf4d",
+    "frozen_2024_selected": "daecf7f8289b2654b581ea4f4b232f9edfee732e77e536268a66e88273681a6b",
+    "frozen_2024_outcomes": "a018c8e06734028324f673b8a14adb7ea4bb12f79eadfeb9f220ebb2fafb0601",
+    "frozen_2025_raw": "27cebdd065df6ace3df9cb75be99d12783781b017cf218d5d0ab67166b9a0d3e",
+    "frozen_2025_selected": "11ecd22db748fb2ee4d18bc9a7f2ad2f0b3223dcec27d565d66a7997bc1465c6",
+    "frozen_2025_outcomes": "8192c94a05f78f5c01abf9b50b1a8309a8ed8cfe3738546fce650593df595d90",
+    "frozen_coordinate_daily_through_2026q1": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+    "coordinate_reconstruction_runner": "4c01f3c07b8a3e0210cccaf4cf2f6451978c8b5442ac99463a8eddb56b3cc13e",
+    "cy033_manifest": "95905858212f9a79a4f99ba8746fe47c66619ea5f4815eeeb4f0ead195219977",
+    "cy033_2024_partition": "fa10819c433224d3a3da5b1b1bb5222fdc5279aa3636abcbe6f2fa68f7a5771e",
+    "cy033_2025_partition": "846ca46ce65dd9bd1e9c89df5b26c143af8e8829365671c6f7e43b801cb09d9a",
+    "cy033_2026_partition": "cbf898ccaf165310b511fdc7822b3370ce32cc0fd7d09c35a6d5ba0b38821fe8"
+  },
+  "outputs": {
+    "external_root": "/Volumes/quant/CY_quant_research/ashare_panic_absorption_broad_capitulation_v2_rollforward_2026ytd_v1",
+    "stage_a": [
+      "detector_daily_2025q4_through_mature_cutoff.parquet",
+      "raw_candidates_2026_mature.parquet",
+      "selected_candidates_2026_mature.parquet",
+      "stage_a_freeze.json"
+    ],
+    "stage_b": [
+      "outcome_daily_2025q4_2026ytd.parquet",
+      "future_paths_2026_mature.parquet",
+      "outcomes_2026_mature.parquet",
+      "result.json"
+    ],
+    "repository": [
+      "artifact result JSON",
+      "Markdown report"
+    ]
+  },
+  "reported_annual_fields": [
+    "signals",
+    "completed",
+    "mean_net",
+    "median_net",
+    "win",
+    "severe10",
+    "target_hit",
+    "mean_holding"
+  ],
+  "prohibitions": [
+    "no threshold, subset, ranking, target, horizon, stop, cost or execution change",
+    "no use of 2026 outcomes to form identities or the maturity cutoff",
+    "no rescue for missing, invalid, suspended, limit-blocked or coordinate-lineage cases",
+    "no registry or prior artifact modification",
+    "no live, sizing or deployment claim"
+  ]
+}

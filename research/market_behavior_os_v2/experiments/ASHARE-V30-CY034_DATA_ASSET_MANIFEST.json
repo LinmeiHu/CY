@@ -1,0 +1,104 @@
+{
+  "asset_id": "CY-034",
+  "name": "Bounded Main-plus-ChiNext chronology-extension daily compact for V30 Stage A",
+  "status": "FROZEN_OUTCOME_BLIND_BOUNDED_INPUT",
+  "pit_grade": "B",
+  "artifact": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+    "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+    "bytes": 987945900,
+    "physical_coverage": {
+      "start": "2013-01-04",
+      "end": "2023-12-29",
+      "rows": 7111699,
+      "symbols": 3725,
+      "trade_dates": 2672
+    },
+    "authorized_slice_coverage": {
+      "start": "2013-01-04",
+      "end": "2020-06-30"
+    }
+  },
+  "lineage": {
+    "actual_build_wrapper": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_collapse_gap_zone_dual_fresh_k10_validation_v1.py",
+      "sha256": "3d6c9a887b36cb15c712acab2fb391c9b2a8c6afd62cc6e142b0322f5f070dc4"
+    },
+    "compact_builder": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_collapse_gap_zone_pattern_fidelity_audit_v1.py",
+      "sha256": "2b8b5c09df390b8ff2133244fad4a3fdfecbadf6052884b4f9c567e40edccee0"
+    },
+    "adjusted_coordinate_builder": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_former_leader_strict_gap_reclaim_v3.py",
+      "sha256": "358b62014c52b7bf936937746223954512fe9451eaa5009063e14f39e1bb1787"
+    },
+    "adjusted_coordinate_source": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_adjusted_daily_state_2013_2023.parquet",
+      "sha256": "76fe88cb7509ae33a3d32b1bfd6d0c90560083127bdfaf63da1d7d24ec72bf60",
+      "bytes": 342272911
+    },
+    "chronology_extension_audit": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_chronology_extension_audit.json",
+      "sha256": "e57ed5cf1730d53cd156cad162271c6be29f1c7074a257bbad81f22b09cd993f",
+      "status": "CERTIFIED_BUILD_ONLY_NO_VALID_MODEL_OUTCOME_OBSERVED"
+    },
+    "daily_pit_audit": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/pit_daily_2013_2023_cy006/audit.json",
+      "sha256": "8071fdae37f38f9ef8bca18815c3ddc1ddd9a89a83df6761aec015818249c752"
+    },
+    "daily_prep_input_manifest": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-TAIL-OPEN-LGBM-V1_daily_prep_2013_2023_input_manifest.json",
+      "sha256": "4746a5873b351a0c925bc21ca005b02d4f759a9b38c473702f58130ccfa20394"
+    },
+    "daily_contract": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_tail_open_lgbm_v1/daily_contract_2013_2023.parquet",
+      "sha256": "4bb61e07eaa72f04e0d01e8585066010cf2e8ab0d1025d5a9cb634f5839c84df"
+    },
+    "source_semantics": "2013-2017 is a certified CY-006-schema chronology extension, not globally registered CY-006. The physical extension root from 2018 onward is schema-exact and certified semantically equivalent to accepted CY-006 but is not content-hash or snapshot-id identical.",
+    "snapshot_limitation": "The derived compact retains industry_snapshot_id and row available_at/decision_at but omits the daily source snapshot_id. Authorization therefore binds the complete compact and upstream lineage identities and remains limited to the exact V30 Stage-A protocol."
+  },
+  "universe": {
+    "included": "Shanghai Main excluding 688 STAR, Shenzhen 00 Main/SME, and Shenzhen 30 ChiNext",
+    "excluded_boards": [
+      "STAR 688",
+      "Beijing"
+    ],
+    "excluded_pit_industries": [
+      "煤炭开采",
+      "油气开采Ⅱ",
+      "油服工程",
+      "炼化及贸易",
+      "普钢",
+      "特钢Ⅱ",
+      "冶钢原料",
+      "工业金属",
+      "小金属",
+      "贵金属",
+      "能源金属",
+      "金属新材料",
+      "化学原料",
+      "化学制品",
+      "农化制品",
+      "化学纤维",
+      "电子化学品Ⅱ",
+      "水泥",
+      "玻璃玻纤",
+      "非金属材料Ⅱ",
+      "电力",
+      "燃气Ⅱ"
+    ]
+  },
+  "authorization_boundary": {
+    "authorization_id": "CYQ-AUTH-ASHARE-TURNOVER-PFC-V30-STAGE-A-2013-2020-V1",
+    "authorized_arm": "V30_OUTCOME_BLIND_STAGE_A_ONLY",
+    "warmup_start": "2013-01-04",
+    "candidate_signal_start": "2014-01-01",
+    "candidate_signal_end": "2020-06-30",
+    "maximum_physical_row_date": "2020-06-30",
+    "stage_a_outcome_read": false,
+    "outcome_attachment_authorized": false,
+    "post_2020_read_authorized": false,
+    "allowed": "PIT representation, causal candidate selection, opportunity counts, and frozen pairwise proxy-redundancy diagnostics only.",
+    "blocked": "Entry/path attachment, return aggregation, charts containing post-signal price, 2021-plus rows, strategy replay, parameter changes, live use, and strict PIT-A claims."
+  }
+}
