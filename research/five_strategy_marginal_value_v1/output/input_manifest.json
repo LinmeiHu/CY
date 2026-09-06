@@ -1,0 +1,223 @@
+{
+  "as_of": "2026-08-03",
+  "strategies": {
+    "ATRDR": {
+      "registered_id": "ATRDR-V29",
+      "contract_or_identity": {
+        "identity_location": "GIT_OBJECT_AT_FROZEN_COMMIT",
+        "frozen_commit": "c12a7fdd269cdc7f240d9de3d0943c609edb5317",
+        "identity_record_path": "research/market_behavior_os_v2/experiments/ASHARE-THREE-ROUTE-DEMAND-ROUTER-V29_identity.json",
+        "identity_record_sha256": "723e962d47e9e7fe23ba87925011643aa627a6d4d4e74805d0045b6199249250",
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_contract.json",
+        "contract_sha256": "5d7d4abfcb562a2461c102f26ce38f6d3657e3587972717967c192a707fec61e",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_simple_regime_complementary_demand_router_v29.py",
+        "runner_sha256_at_registration": "69a83159aa2bd1aa2426268c3036a9759148c19d0f03d15eedf5e7ad95edbfba",
+        "result_path": "research/market_behavior_os_v2/artifacts/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_result.json",
+        "result_sha256_at_registration": "cfb91129301accd5a8349534700fb7f4daa52d8d0fa4a831f1cd1f26744045ab",
+        "report_path": "research/market_behavior_os_v2/reports/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_report.md",
+        "report_sha256_at_registration": "f4a815da79b136c0336e537ec440f079cbc4dd80cfd147152b8e70c2fd6b2a5c",
+        "robustness_report_path": "research/market_behavior_os_v2/reports/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_robustness_audit.md",
+        "robustness_report_sha256_at_registration": "0cd0696f9c9bca6b8f28905235af3c176d6183fab2054d0753f40d053e4e168f"
+      },
+      "paths": {
+        "trade": "/Volumes/quant/CY_quant_research/ashare_simple_regime_complementary_demand_router_v29/stage_b/accepted_trades.parquet",
+        "nav": "/Volumes/quant/CY_quant_research/ashare_simple_regime_complementary_demand_router_v29/stage_b/portfolio_nav.parquet"
+      },
+      "sha256": {
+        "trade": "392ee04937180eaa7d7f61370bc64e2467b1e21b714caf6d68d11c0d4fa2b25b",
+        "nav": "bf229125d8a10e421adfc97418e7cbebd550bd52e492e855105bd75c71769a18"
+      },
+      "available": true,
+      "coverage": [
+        "2014-01-03",
+        "2026-08-03"
+      ],
+      "evidence_stage": "2014-2025 historical plus 2026 diagnostic",
+      "cost_basis": "20bp/side included",
+      "semantic_preflight": {
+        "ECONOMIC_SEQUENCE": "frozen contract",
+        "CAUSAL_BACKGROUND": "frozen contract",
+        "STATE_VARIABLES": "see contract",
+        "EVENT_FORMATION_TIME": "completed signal",
+        "CONFIRMATION_TRIGGER": "strategy-specific",
+        "ENTRY_TIME": "next legal entry",
+        "OUTCOME_START_TIME": "entry",
+        "POSSIBLE_SEMANTIC_AMBIGUITIES": "no new interpretation",
+        "CHOSEN_TIME_ANCHORS": "signal_date/entry_date/as_of"
+      }
+    },
+    "MCB": {
+      "registered_id": "STRAT-ASHARE-MAIN-CHINEXT-CONFIRMATION-BREAKOUT-V72",
+      "contract_or_identity": {
+        "identity_location": "GIT_OBJECT_AT_FROZEN_COMMIT",
+        "frozen_commit": "60970d7235b9ab7ad8da8d1a7fc5631f015462c9",
+        "frozen_branch_at_registration": "codex/ashare-bull-complementary-v1",
+        "path_resolution": "Read each path with git show 60970d7235b9ab7ad8da8d1a7fc5631f015462c9:<path>; do not substitute a working-tree file from another branch.",
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_contract.json",
+        "contract_sha256": "7b76833ee523d0329b4905910962abe0163cc370c3e0d8870a222dc43432cad0",
+        "spec_path": "research/market_behavior_os_v2/experiments/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_spec.json",
+        "spec_sha256": "65539716ac916a404c4ca75a220b32470634e404bd28e4c8858ed37fca7cc702",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_bull_cross_board_confirmation_v72.py",
+        "runner_sha256_at_registration": "7baab4279b886af495ed4f763c4fb3d06ba0e9aabd737e4391437138247efdf5",
+        "stage_a_freeze_path": "research/market_behavior_os_v2/artifacts/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_stage_a_freeze.json",
+        "stage_a_freeze_sha256_at_registration": "b04865bc769df3958d1b603ffd02e8d2cbfab1ee8b106b3d26b494381256a005",
+        "result_path": "research/market_behavior_os_v2/artifacts/ASHARE-BULL-CROSS-BOARD-CONFIRMATION-V72_result.json",
+        "result_sha256_at_registration": "90e3cfc8ce2fe98195211d5c43273f6215dd4c1c5f87e19743bb76f4638e4aaf"
+      },
+      "paths": {
+        "trade": "/Volumes/quant/CY_quant_research/bull_cross_board_confirmation_v72/stage_b/combined_accepted.parquet",
+        "nav": "/Volumes/quant/CY_quant_research/bull_cross_board_confirmation_v72/stage_b/combined_nav.parquet"
+      },
+      "sha256": {
+        "trade": "4d9695d0db2af5c8690b77fcfc38484faba12b391f1d394233c038a699d1b137",
+        "nav": "9f60a2e210b2903d2d947e8ee089fcaab6ee4aea803b3ddadba758fba1b12b77"
+      },
+      "available": true,
+      "coverage": [
+        "2014-02-13",
+        "2023-12-13"
+      ],
+      "evidence_stage": "2014-2023 scientific; later diagnostic",
+      "cost_basis": "20bp/side included",
+      "semantic_preflight": {
+        "ECONOMIC_SEQUENCE": "frozen contract",
+        "CAUSAL_BACKGROUND": "frozen contract",
+        "STATE_VARIABLES": "see contract",
+        "EVENT_FORMATION_TIME": "completed signal",
+        "CONFIRMATION_TRIGGER": "strategy-specific",
+        "ENTRY_TIME": "next legal entry",
+        "OUTCOME_START_TIME": "entry",
+        "POSSIBLE_SEMANTIC_AMBIGUITIES": "no new interpretation",
+        "CHOSEN_TIME_ANCHORS": "signal_date/entry_date/as_of"
+      }
+    },
+    "OGR": {
+      "registered_id": "STRAT-ASHARE-ORDERLY-GAP-REPAIR-V28R2",
+      "contract_or_identity": {
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_contract.json",
+        "contract_sha256": "5f3b681e0b18150a8e6aced9996fb48ed98a87b2f52710547f762fc7bf65cda6",
+        "spec_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_spec.json",
+        "spec_sha256": "4af850ab27855201fe74b8810f861abbe671d96e3f35e8b4dbf286eb379590a4",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_orderly_demand_v28r2.py",
+        "runner_sha256_at_registration": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+        "development_result_path": "research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_development_result.json",
+        "development_result_sha256_at_registration": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9"
+      },
+      "paths": {
+        "trade": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2_validation_2022_2024/diagnostic_2022_2024/orderly_demand/portfolio_accepted.parquet",
+        "nav": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2_validation_2022_2024/diagnostic_2022_2024/orderly_demand/portfolio_nav.parquet"
+      },
+      "sha256": {
+        "trade": "282d01b70f8fb73746aa203bd0e58878dfa1537112c1b53d482dbedd9db8880c",
+        "nav": "695b68a14c1071bbf5d83e6f03de68886fab4f9a2d863595dbff93ae91a945ed"
+      },
+      "available": true,
+      "coverage": [
+        "2022-01-04",
+        "2024-08-30"
+      ],
+      "evidence_stage": "2022-2024 consumed dependent validation",
+      "cost_basis": "20bp/side included",
+      "semantic_preflight": {
+        "ECONOMIC_SEQUENCE": "frozen contract",
+        "CAUSAL_BACKGROUND": "frozen contract",
+        "STATE_VARIABLES": "see contract",
+        "EVENT_FORMATION_TIME": "completed signal",
+        "CONFIRMATION_TRIGGER": "strategy-specific",
+        "ENTRY_TIME": "next legal entry",
+        "OUTCOME_START_TIME": "entry",
+        "POSSIBLE_SEMANTIC_AMBIGUITIES": "no new interpretation",
+        "CHOSEN_TIME_ANCHORS": "signal_date/entry_date/as_of"
+      }
+    },
+    "IFCGR": {
+      "registered_id": "STRAT-ASHARE-ISSUER-FACT-COOLDOWN-GAP-REPAIR-V29R2",
+      "contract_or_identity": {
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_preregistration.json",
+        "contract_sha256": "076566c5cd85158997d39e4690c090e98110e85597d55ebf7d5b4fa0e63a5a3a",
+        "rollforward_protocol_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_stage_output_root_seal_correction_r4_freeze.json",
+        "rollforward_protocol_sha256": "a444f8aef2e9d492e6a9d40eb5d5e557cab4bc1aa22205c67649c6db31a74bac",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_root_seal_correction.py",
+        "runner_sha256_at_registration": "14f28130cfdcd985d707feb1e4f5ff11ab074df79f73c8d612dcce854821c0c5",
+        "development_result_path": "research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_development_result.json",
+        "development_result_sha256_at_registration": "dc1539b1bfaf6de09c0be34483a226643f167232e5df0e5caa2c5a2d8b3fec4b",
+        "latest_rollforward_result_path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy065_through_20260904_v1/result.json",
+        "latest_rollforward_result_sha256_at_registration": "41681f281d55a7b0ab03ceeb7a7131f6627361557d95fdb9b218e9833dbc2b1e"
+      },
+      "paths": {
+        "trade": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy065_through_20260904_v1/stage_b/lane/portfolio_accepted.parquet",
+        "nav": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy065_through_20260904_v1/stage_b/lane/portfolio_nav.parquet"
+      },
+      "sha256": {
+        "trade": "5979d31c5f3aacd1f3b3dc4940f5cd70e3aa6ad95172f3e148404539a8819e90",
+        "nav": "c6dba7d7c52997ee0b29006d2f3e9761bb24f355b0215b361ef6bb9ccccc4233"
+      },
+      "available": true,
+      "coverage": [
+        "2022-01-04",
+        "2026-08-03"
+      ],
+      "evidence_stage": "2022-2024 dependent validation; 2025-26 diagnostic",
+      "cost_basis": "20bp/side included",
+      "semantic_preflight": {
+        "ECONOMIC_SEQUENCE": "frozen contract",
+        "CAUSAL_BACKGROUND": "frozen contract",
+        "STATE_VARIABLES": "see contract",
+        "EVENT_FORMATION_TIME": "completed signal",
+        "CONFIRMATION_TRIGGER": "strategy-specific",
+        "ENTRY_TIME": "next legal entry",
+        "OUTCOME_START_TIME": "entry",
+        "POSSIBLE_SEMANTIC_AMBIGUITIES": "no new interpretation",
+        "CHOSEN_TIME_ANCHORS": "signal_date/entry_date/as_of"
+      }
+    },
+    "SMV6": {
+      "registered_id": "STRAT-SUPERMIND-V6-COMPRESSION-IGNITION",
+      "contract_or_identity": {
+        "identity_location": "HASH_BOUND_WORKSPACE_SOURCE",
+        "contract_path": "research/supermind_v6/contracts/SUPERMIND-V6-ORIGINAL-SUPPLIED-CODE_contract.json",
+        "contract_sha256": "4b44f21c58b9992711dd52c1d191414d7fd549c1c44776a103caa4d6e3408599",
+        "strategy_path": "research/supermind_v6/strategy/SuperMind_V6_CSI1000_MA15_ENTRY_HS300_MA20_EXIT_MINVOLLOC30_CAP50_SET_TAIL_SELL_OPEN_BUY_COMMENTS_FIXED.py",
+        "strategy_sha256_at_registration": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33",
+        "baseline_summary_path": "research/supermind_v6/manifests/v6_hybrid_longest_replay_summary.json",
+        "baseline_summary_sha256_at_registration": "e6fef4745db3386e945a476705241e4a3dc7adff3748e8d97c59ab556e8c179d",
+        "research_note_path": "research/supermind_v6/reports/v6_model_thesis_and_optimization_research_20260904.md",
+        "research_note_sha256_at_registration": "4bbceb4eb112a69f5a0003756eac327189a7ed8f109d47f42d54bdb8e04f0ebd",
+        "path_resolution": "Resolve the name only when the contract and strategy hashes match. A mismatch must fail closed and must not be treated as the registered strategy."
+      },
+      "paths": {
+        "trade": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/output/v6_hybrid_longest_replay_events.parquet",
+        "nav": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/output/v6_hybrid_longest_daily_equity.parquet"
+      },
+      "sha256": {
+        "trade": "00237162cfe7d829c6af9010cc20c5d584facd136fb5a29d7c2fc62b23ae4781",
+        "nav": "2ca5153bd035d46dd8d7f727eafafbf4077a50a6c03420d4e2c54ddedefc9475"
+      },
+      "available": true,
+      "coverage": [
+        "2010-01-04",
+        "2026-08-03"
+      ],
+      "evidence_stage": "shadow replay only",
+      "cost_basis": "zero fees/slippage; not comparable net return",
+      "semantic_preflight": {
+        "ECONOMIC_SEQUENCE": "frozen contract",
+        "CAUSAL_BACKGROUND": "frozen contract",
+        "STATE_VARIABLES": "see contract",
+        "EVENT_FORMATION_TIME": "completed signal",
+        "CONFIRMATION_TRIGGER": "strategy-specific",
+        "ENTRY_TIME": "next legal entry",
+        "OUTCOME_START_TIME": "entry",
+        "POSSIBLE_SEMANTIC_AMBIGUITIES": "no new interpretation",
+        "CHOSEN_TIME_ANCHORS": "signal_date/entry_date/as_of"
+      }
+    }
+  },
+  "smv6_accounting_status": "SMV6_ACCOUNTING_BLOCKED",
+  "smv6_accounting": {
+    "negative_cash_days": 282,
+    "minimum_cash": -0.16941112320506146,
+    "maximum_gross_exposure": 1.0517824357253878,
+    "reason": "existing shadow ledger permits negative cash / gross exposure above NAV; no state replay attempted"
+  }
+}
