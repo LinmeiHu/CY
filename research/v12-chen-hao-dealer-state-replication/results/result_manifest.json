@@ -1,0 +1,174 @@
+{
+  "artifacts": {
+    "V12_CHEN_HAO_DEALER_STATE_REPLICATION_STUDY.md": {
+      "bytes": 11239,
+      "sha256": "a82b561e7e28722e34a2b5201d13b59c0dea18642427ca4a5627dea073d162c4"
+    },
+    "results/auxiliary_pattern_results.csv": {
+      "bytes": 29091,
+      "rows": 336,
+      "sha256": "b9397609018267ada8f4f0cfbf7fe001bbb4e332dd81e96edfa3b4e01401e18d"
+    },
+    "results/base_retention_vs_migration.csv": {
+      "bytes": 411193,
+      "rows": 1374,
+      "sha256": "5976f07d49840309052157961751e10d3d32af18247681039c8df34c814eb390"
+    },
+    "results/consolidation_method_results.csv": {
+      "bytes": 147231,
+      "rows": 756,
+      "sha256": "df860ede44c48706cdf0044aa0803ffa4c74a443776e6aae12dfd0e4d2f44e9a"
+    },
+    "results/crossing_event_panel.parquet": {
+      "bytes": 704477,
+      "sha256": "a0966004cdc9598249cdf61e6c537873d087ab95af115c6d9efead8f74213fc3"
+    },
+    "results/dealer_method_scorecard.csv": {
+      "bytes": 3442,
+      "rows": 17,
+      "sha256": "df67a2ea7178a608f44338ea4e81621d22c12efe23379eec1651d11c9121f54d"
+    },
+    "results/dealer_profit_state_outcomes.csv": {
+      "bytes": 508312,
+      "rows": 1926,
+      "sha256": "817e4afd9c9c8c307ce79daea76d582a436f9dfb5b8dc9d89425f794c77534b2"
+    },
+    "results/dealer_state_panel.parquet": {
+      "bytes": 15100365,
+      "sha256": "b91aac333a794a0bd1b6a5e533ee4d552e701d366e16dda21cbd3a53f73a97ac"
+    },
+    "results/dealer_state_transitions.csv": {
+      "bytes": 13503433,
+      "rows": 25152,
+      "sha256": "95ca09f746d19e96884c43a2bcdf3331154c34b99dbc050384642a74f6babfc4"
+    },
+    "results/double_peak_results.csv": {
+      "bytes": 472574,
+      "rows": 1734,
+      "sha256": "e8af83a2951cb69c5ab03264c8c74f06fea5f0ff78ca87c5e4c50565087a3346"
+    },
+    "results/downshift_method_results.csv": {
+      "bytes": 340618,
+      "rows": 1326,
+      "sha256": "c40de6ac3d3986b91675c7841a9a935b3526cb29973d0e1e96de374bde62c411"
+    },
+    "results/frozen_discovery_thresholds.json": {
+      "bytes": 308,
+      "sha256": "94961cc9f3e1fc21cbeb09f92ca215f1c81905676cc892543c17fb91db5b2006"
+    },
+    "results/horizon_comparison.csv": {
+      "bytes": 1009779,
+      "rows": 3126,
+      "sha256": "8e9550861e0fb459bdbf6506601ec61544eeea177f2ea78c776b52afd5ff44a9"
+    },
+    "results/locked_profitable_inventory.csv": {
+      "bytes": 92538655,
+      "rows": 125760,
+      "sha256": "b5f12fcdf662c7bc61d6885c034aeabc49f19165fd56acc2f777fd47e276928f"
+    },
+    "results/low_turnover_crossing_results.csv": {
+      "bytes": 288791,
+      "rows": 1020,
+      "sha256": "511271bd598649a9008d32e0394a4f4e277cc3b482a95e57610cb110173af664"
+    },
+    "results/market_regime_interactions.csv": {
+      "bytes": 159424,
+      "rows": 528,
+      "sha256": "51797c9d7e6b07820308e24dadc561a280347c632584f6c269c5a43e89b6fc06"
+    },
+    "results/method_reproducibility_catalog.csv": {
+      "bytes": 6771,
+      "rows": 17,
+      "sha256": "1e79046ae6026613ce07ef8146de3ed181fb682a8a16d0139369e0cc640f1830"
+    },
+    "results/ninety_vs_three_results.csv": {
+      "bytes": 510408,
+      "rows": 1836,
+      "sha256": "64e3cd2cc8262a97188d9a17c7b42a0b8eabcf70074b936b40e9db5c2d71a194"
+    },
+    "results/seller_model_dealer_state_scorecard.csv": {
+      "bytes": 6821,
+      "rows": 71,
+      "sha256": "b8ec77339781f2b80f73ab472c7706ae1a3de7eeb94f3b17dc9c4867e34a5ec3"
+    },
+    "results/wounded_dealer_results.csv": {
+      "bytes": 250797,
+      "rows": 1032,
+      "sha256": "763fbcf210e19ab16b285ba817460dc2bfb2dfa93d78c743d39e68ddb0fe45fe"
+    }
+  },
+  "canonical_peak_required": false,
+  "chronology": {
+    "discovery_end": "2020-04-30",
+    "holdout_start": "2020-09-01",
+    "horizons": [
+      5,
+      10,
+      20,
+      40,
+      60,
+      120
+    ],
+    "t_plus_one": true,
+    "validation_end": "2020-08-31"
+  },
+  "counts": {
+    "crossing_events": 2862,
+    "dealer_state_panel_rows": 25152,
+    "locked_profitable_inventory_rows": 125760,
+    "method_catalog_rows": 17,
+    "scorecard_rows": 17,
+    "transition_rows": 25152
+  },
+  "cyqk_exact_status": "UNAVAILABLE",
+  "frozen_input_bindings": {
+    "artifact_contract_fingerprint": "447c2fb85485bbd0c38d12d0bed9930c97f31ff142af30342987d9db07387d7f",
+    "daily_inventory_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "daily_partition_sha256": {
+      "2019": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "2021": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+    },
+    "freeze_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "replay_parameter_manifest_digest": "cdd37cc4d6978fc2bf854657170516e5a76866b7e5bcab261558314b24430612",
+    "root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+    "seller_models": [
+      "UNIFORM",
+      "DISPOSITION",
+      "ACTIVE_STICKY"
+    ],
+    "semantic_fingerprint": "6a20b7be1b60f6c978bbe28b28816e47c4e7debcb2ba48458aa3f3a52d7cbf6f",
+    "verified_all_parts": true,
+    "verified_part_bytes": 4251350259,
+    "verified_part_count": 12978
+  },
+  "full_market_build_started": false,
+  "gates": {
+    "CHEN_HAO_CORE_METHODS_REPRODUCED_FAITHFULLY": "PARTIAL",
+    "CHEN_HAO_DEALER_FRAMEWORK_OVERALL": "PARTIALLY_VALIDATED",
+    "CONSOLIDATION_METHOD_VALIDATES": "MIXED",
+    "DEALER_SIGNAL_STRONGER_AT_MEDIUM_TERM_HORIZONS": "MIXED",
+    "DOUBLE_PEAK_DEALER_STRUCTURE_VALIDATES": "MIXED",
+    "DOWNSHIFT_METHOD_VALIDATES": "MIXED",
+    "FULL_DISTRIBUTION_SUPPORTS_DEALER_STATE_INFERENCE": "MIXED",
+    "HIGH_CONTROL_EXTREME_PROFIT_IS_RISKIER": "MIXED",
+    "HIGH_CONTROL_LOW_MODERATE_PROFIT_HAS_SIGNAL": "MIXED",
+    "LOCKED_PROFITABLE_INVENTORY_HAS_MEDIUM_TERM_SIGNAL": "MIXED",
+    "LOW_COST_BASE_MIGRATION_PREDICTS_DISTRIBUTION_RISK": "MIXED",
+    "LOW_COST_BASE_RETENTION_PREDICTS_CONTINUATION": "MIXED",
+    "LOW_TURNOVER_TRAPPED_CHIP_CROSSING_VALIDATES": "YES",
+    "MARKET_REGIME_MATERIALLY_CONDITIONS_DEALER_SIGNAL": "YES",
+    "NINETY_VS_THREE_VALIDATES": "MIXED",
+    "SAFE_TO_CHANGE_PRODUCTION_CHIP_SEMANTICS": "NO",
+    "SAFE_TO_DESIGN_DEALER_STATE_TRADING_STUDY": "NO",
+    "SAFE_TO_EXPAND_RESEARCH_TO_FULL_MARKET_3941": "NO",
+    "SAFE_TO_IMPLEMENT_PRODUCTION_DEALER_STRATEGY": "NO",
+    "SELLER_MODEL_AGREEMENT_IMPROVES_DEALER_STATE_VALIDITY": "MIXED",
+    "WOUNDED_DEALER_HYPOTHESIS_VALIDATES": "MIXED"
+  },
+  "manifest_version": "v12-chen-hao-dealer-state-replication-result-manifest-v1",
+  "production_or_frozen_artifacts_modified": false,
+  "prohibited_inputs_used": [],
+  "source_commit": "d52f9c97970b37f48525bc7320d337b6fb932a4f",
+  "study_protocol_sha256": "d475d1280d8d395b5a5c2f267554e9005412f760eba31acca286d2e8463ffe84"
+}

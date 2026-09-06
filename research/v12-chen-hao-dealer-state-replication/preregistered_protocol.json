@@ -1,0 +1,135 @@
+{
+  "protocol_id": "v12-chen-hao-dealer-state-replication-preregistered-v1",
+  "purpose": "Research-only replication of Chen Hao dealer-state inferences using the immutable V12 500-symbol full chip distributions; investor identity is never claimed observable.",
+  "source_commit": "d52f9c97970b37f48525bc7320d337b6fb932a4f",
+  "frozen_inputs": {
+    "frozen_root_manifest_sha256": "915686c6b9a069688e4790a1e6a8e699feafaf951ca7b720c11ca8b21b85c29a",
+    "freeze_lock_sha256": "95a7b33ec28fe3c188b309e962522cb1bea16a23b7647c68068864a1e17fd6d9",
+    "expected_symbols": 500,
+    "seller_models": ["UNIFORM", "DISPOSITION", "ACTIVE_STICKY"],
+    "ensemble_rule": "arithmetic mean of the three model-specific distribution-derived variables; agreement is reported separately"
+  },
+  "chronology": {
+    "discovery": ["2020-01-01", "2020-04-30"],
+    "validation": ["2020-05-01", "2020-08-31"],
+    "holdout": ["2020-09-01", "2020-12-31"],
+    "future_horizons_sessions": [5, 10, 20, 40, 60, 120],
+    "t_plus_one": true,
+    "random_cross_time_shuffle": false
+  },
+  "eligibility": {
+    "research_valid_required": true,
+    "hard_valid_is_never_redefined": true,
+    "minimum_known_cost_fraction": 0.5,
+    "required_quality_reasons": ["TURNOVER_CAPPED_AT_FLOAT", "UNKNOWN_COST_INITIALIZATION", "UNKNOWN_COST_PRESENT"],
+    "corporate_action_rule": "transform frozen economic coordinates by (coordinate-cash_per_share)/share_multiplier; fail closed on invalid or blocking action paths"
+  },
+  "locked_profitable_inventory": {
+    "floating_profit_distances": [0.10, 0.20, 0.25, 0.30, 0.40],
+    "low_cost_threshold": "economic_break_even <= close/(1+distance)",
+    "locked_age_minimum_sessions": 20,
+    "age_source": "exact checkpoint identity holding_days, noting the production 180-day age bucket cap",
+    "persistence_definition": "consecutive checkpoint count with locked profitable mass >= 30% of float",
+    "turnover_since_profitable": "approximate: cumulative authoritative turnover since the first close above (weighted-median locked cost)*(1+distance), bounded by the surviving inventory's capped weighted age",
+    "turnover_since_profitable_exactness": "APPROXIMATELY_REPRODUCIBLE"
+  },
+  "control_and_profit": {
+    "inferred_control_mass": "mass with holding_days >= 20 and economic_break_even below current close",
+    "control_states": {"LOW_CONTROL": [0.0, 0.30], "MODERATE_CONTROL": [0.30, 0.50], "HIGH_CONTROL": [0.50, 1.01]},
+    "dealer_profit_states": {"LOW_PROFIT": [-1.0, 0.20], "MODERATE_PROFIT": [0.20, 0.50], "HIGH_PROFIT": [0.50, 1.00], "VERY_HIGH_PROFIT": [1.00, null]},
+    "terminology": "All states are inferred distribution proxies, never observed dealer identity or holdings."
+  },
+  "retention": {
+    "anchor": "previous checkpoint's 20%-profitable low-cost zone, corporate-action transformed to the current checkpoint",
+    "LOCKED_BASE_INTACT": "current mass / previous mass >= 0.80",
+    "BASE_MIGRATING": "0.50 <= current mass / previous mass < 0.80",
+    "BASE_LARGELY_DISTRIBUTED": "current mass / previous mass < 0.50",
+    "no_clipping_or_normalization": true
+  },
+  "downshift": {
+    "recent_high_lookback_sessions": 60,
+    "shift_fractions": [0.25, 0.27],
+    "primary_shift_fraction": 0.27,
+    "applicability": "current close within 15% of the recent high and the recent-high/prior-60-session-low markup is at least 25%",
+    "estimate": "current full-distribution mass below recent_high*(1-shift_fraction)"
+  },
+  "consolidation": {
+    "lookback_sessions": 40,
+    "maximum_box_range": 0.10,
+    "minimum_cumulative_turnover": "discovery-period median cumulative turnover among 40-session boxes with range <= 10%, frozen without using outcomes",
+    "estimate": "current full-distribution mass below the 40-session box floor",
+    "exactness": "APPROXIMATELY_REPRODUCIBLE because the source specifies two months and about 10% but not an exchange-calendar or turnover lower bound"
+  },
+  "ninety_vs_three": {
+    "profit_ratio": 0.90,
+    "turnover_fraction": 0.03,
+    "nearby_descriptive_turnover": 0.02,
+    "exact_at_checkpoint": true
+  },
+  "trapped_inventory_crossing": {
+    "dense_peak_minimum_mass": 0.15,
+    "large_released_inventory": 0.18,
+    "low_turnover": 0.03,
+    "event": "first close above a pre-existing upper tracked-mode band after a prior close below its lower band, before the next checkpoint",
+    "distribution": "static prior immutable checkpoint distribution, transformed for intervening corporate actions",
+    "exactness": "APPROXIMATELY_REPRODUCIBLE; it is not exact daily CYQKLEN"
+  },
+  "cyqk": {
+    "book_condition": "CYQKLEN > 18 and turnover < 3%",
+    "status": "UNAVAILABLE",
+    "reason": "exact CYQKLEN requires the authoritative full distribution immediately preceding every daily OHLC observation; the frozen governed bundle provides full distributions only at checkpoints and replay is out of scope"
+  },
+  "price_position": {
+    "measure": "(close - trailing_252_session_low)/(trailing_252_session_high - trailing_252_session_low), minimum 120 observations",
+    "LOW": [0.0, 0.40],
+    "MODERATE": [0.40, 0.70],
+    "HIGH": [0.70, 1.01]
+  },
+  "market_environment": {
+    "source": "PIT-safe equal-weight return and 20-session moving-average breadth of the frozen 500-symbol cohort",
+    "BROADLY_WEAK": "60-session cohort return <= -10% or breadth < 35%",
+    "RECOVERING": "not broadly weak, 20-session return > 0, and 60-session return <= 5%",
+    "OVERHEATED": "not broadly weak, 60-session return >= 20%, and breadth >= 70%",
+    "STRONG": "remaining observations"
+  },
+  "matching": {
+    "exact_cells": ["seller_model", "chronological_split", "market_environment"],
+    "nearest_variables_and_fixed_scales": {"prior_return_60": 0.20, "volatility_20": 0.02, "price_position_252": 0.25, "market_return_60": 0.10, "calendar_days": 60.0},
+    "reuse": "deterministic nearest controls may repeat",
+    "outcomes": ["future_return", "MFE", "MAE", "probability_+10%", "probability_+20%", "probability_+30%", "probability_-10%_drawdown"]
+  },
+  "auxiliary_patterns": {
+    "scope": "small predetermined descriptive translations only; no arbitrary pattern engine",
+    "slow_bullish_rise": "positive 60-session return <= 30%, positive-session fraction >= 55%, low/moderate position",
+    "bull_long_bear_short": "mean positive-run length at least 1.5 times mean negative-run length over 60 sessions, low/moderate position",
+    "pit_edge_horizontal": "20-session drawdown <= -10%, recovery to within 5% of the prior edge, then 10-session range <= 10%",
+    "secondary_low_narrow_consolidation": "price position 20%-50% and 20-session range <= 10%",
+    "double_peak_valley": "two tracked full-distribution modes separated by >= 10%, current price between them, lower mass >= 15%, upper mass >= 10%",
+    "low_position_dense": "price position <= 40% and full-distribution HHI above the discovery-period 75th percentile",
+    "high_position_dense": "price position >= 70% and the same frozen density threshold"
+  },
+  "wounded_dealer": {
+    "prior_high_control": "previous inferred control mass >= 50%",
+    "prior_markup": "previous 60-session return >= 30%",
+    "rapid_adverse_decline": "current 20-session drawdown <= -20%",
+    "base_not_distributed": "retention >= 80%",
+    "near_cost": "current close within 15% of current inferred-base weighted cost"
+  },
+  "statistics": {
+    "cluster_unit": "symbol",
+    "confidence_interval": "normal 95% interval over symbol-level means",
+    "minimum_independent_symbols": 30,
+    "gate_periods": ["validation", "holdout"],
+    "medium_term_horizons": [40, 60, 120],
+    "return_materiality": 0.01,
+    "probability_materiality": 0.03
+  },
+  "prohibitions": {
+    "production_strategy_changes": false,
+    "v3_semantic_changes": false,
+    "seller_model_redesign": false,
+    "frozen_universe_changes": false,
+    "full_market_build": false,
+    "holdout_optimization": false
+  }
+}
