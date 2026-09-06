@@ -50,3 +50,7 @@ Do not change these layers based only on a hypothesis.
 ## Strategy semantics
 
 Strategy states and participant interpretations are hypotheses, not facts. Preserve existing strategy semantics unless the task explicitly asks to change them.
+
+## Persistent strategy names
+
+When the user refers to a saved strategy by name, alias, or registered ID, resolve it through `research/market_behavior_os_v2/STRATEGY_ALIAS_REGISTRY.json` before answering or running research. Treat the referenced frozen contract—not conversational memory—as authoritative. Never silently substitute a later variant or another strategy family.

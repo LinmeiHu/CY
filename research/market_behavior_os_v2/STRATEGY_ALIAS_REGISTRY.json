@@ -1,0 +1,48 @@
+{
+  "registry_version": 1,
+  "purpose": "Persistent, repository-authoritative resolution of user-facing strategy names across Codex sessions.",
+  "strategies": [
+    {
+      "strategy_id": "STRAT-ASHARE-ORDERLY-GAP-REPAIR-V28R2",
+      "registered_name_zh": "有序缺口修复",
+      "registered_name_en": "Orderly Gap Repair",
+      "short_code": "OGR-V28R2",
+      "aliases": [
+        "V28R2",
+        "有序缺口修复",
+        "深跌缺口有序修复",
+        "缺口修复V28R2",
+        "Orderly Gap Repair",
+        "OGR-V28R2"
+      ],
+      "experiment_id": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+      "identity": {
+        "contract_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_contract.json",
+        "contract_sha256": "5f3b681e0b18150a8e6aced9996fb48ed98a87b2f52710547f762fc7bf65cda6",
+        "spec_path": "research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_spec.json",
+        "spec_sha256": "4af850ab27855201fe74b8810f861abbe671d96e3f35e8b4dbf286eb379590a4",
+        "runner_path": "research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_orderly_demand_v28r2.py",
+        "runner_sha256_at_registration": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+        "development_result_path": "research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2_development_result.json",
+        "development_result_sha256_at_registration": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9"
+      },
+      "frozen_parent_chain": [
+        "ASHARE-TRUE-GAP-BELOW-L-FIRST-REVERSAL-V13",
+        "ASHARE-TRUE-GAP-BELOW-L-MEANINGFUL-PRIOR-DECLINE-V16",
+        "ASHARE-TRUE-GAP-BELOW-L-FRESH-CAPITULATION-SNAPBACK-V27",
+        "ASHARE-TRUE-GAP-BELOW-L-LIQUIDITY-TRAP-GUARD-V28",
+        "ASHARE-TRUE-GAP-BELOW-L-DEMAND-NOT-LOCKED-V28R1",
+        "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2"
+      ],
+      "compact_definition": "Main/ChiNext long-only deep-decline true-gap repair: frozen V13 prior-high reversal, D30, M20/F14/R5, non-ST, no repeated one-price limit-down, signal close not locked at up-limit, and signal amount no more than 2.0 times the strict prior-20 traded-session median; enter next legal one-minute open with at least 5% net L headroom, exit at A67 or H20, no price stop, 20 bp per side, K80 per 50/50 sleeve.",
+      "status": "FROZEN_DEVELOPMENT_CANDIDATE_WITH_LATER_ROLLFORWARD_DIAGNOSTICS",
+      "scientific_warning": "Retrospective parent ancestry and later diagnostics mean this is not pristine external validation. Do not confuse per-trade mean return with portfolio annualized return.",
+      "not_the_same_as": [
+        "Industry Diffusion + Weekly Low-MAX",
+        "STRAT-CHINEXT-V1"
+      ],
+      "registered_at": "2026-09-06",
+      "resolution_rule": "Any exact or case-insensitive alias match resolves to this exact frozen V28R2 identity. Do not silently resolve to V29 or another descendant."
+    }
+  ]
+}
