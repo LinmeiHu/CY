@@ -1,0 +1,39 @@
+{
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A genuine demand recapture should finish with two-sided price discovery. If the signal close remains locked at the daily up limit, the observable move contains rationed buying and the next-session order chases an exhausted imbalance rather than entering a newly accepted cost zone.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-NOT-LOCKED-V28R1",
+  "governance": {
+    "diagnostic_identity_after_development_pass_only": true,
+    "diagnostic_outcomes_after_identity_freeze_only": true,
+    "parent_v27_and_v28_are_retrospective": true,
+    "post_2021_gate_result_not_used_for_selection": true
+  },
+  "locked_diagnostic": [
+    "2022-01-01",
+    "2024-12-31"
+  ],
+  "parent": "ASHARE-TRUE-GAP-BELOW-L-LIQUIDITY-TRAP-GUARD-V28",
+  "scientific_status": "RETROSPECTIVE_ONE_GATE_DEVELOPMENT_WITH_LOCKED_LATER_DIAGNOSTIC",
+  "single_additional_gate": {
+    "condition": "signal raw close < registered signal-day up-limit price - 0.006 CNY",
+    "known_time": "completed signal close",
+    "missing_or_invalid": "fail closed",
+    "threshold_search": "NONE; 0.006 is the existing half-fen price-equality tolerance"
+  },
+  "success": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "average_holding_sessions_strictly_less_than": 15.0,
+    "each_development_signal_year_mean_net_positive": true,
+    "mean_net_min": 0.04
+  },
+  "unchanged": {
+    "entry_target_horizon_stop_cost": "unchanged next legal 1m entry/A67/H20/no stop/40bp",
+    "execution_lineage_and_T1": "unchanged",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "v27_M20_F14_R5": true,
+    "v28_liquidity_trap_and_non_st_gates": true
+  }
+}

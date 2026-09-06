@@ -1,0 +1,143 @@
+{
+  "accepted_summary": {
+    "accepted_trades": 111,
+    "accepted_trades_per_year": 37.0,
+    "average_holding_sessions": 9.378378378378379,
+    "mean_net": 0.0734734101593606,
+    "median_net": 0.06715139069309739,
+    "severe10": 0.06306306306306306,
+    "win": 0.8558558558558559,
+    "yearly_by_signal_year": {
+      "2022": {
+        "average_holding_sessions": 11.378378378378379,
+        "mean_net": 0.0689931972691739,
+        "median_net": 0.06395822663366002,
+        "severe10": 0.02702702702702703,
+        "trades": 37,
+        "win": 0.8648648648648649
+      },
+      "2023": {
+        "average_holding_sessions": 14.166666666666666,
+        "mean_net": 0.041193381390836364,
+        "median_net": 0.02012416666891781,
+        "severe10": 0.08333333333333333,
+        "trades": 12,
+        "win": 0.6666666666666666
+      },
+      "2024": {
+        "average_holding_sessions": 7.258064516129032,
+        "mean_net": 0.08239483309741219,
+        "median_net": 0.08171295680552615,
+        "severe10": 0.08064516129032258,
+        "trades": 62,
+        "win": 0.8870967741935484
+      }
+    }
+  },
+  "diagnostic_descriptive_checks": {
+    "accepted_trades_per_year_gt_50": false,
+    "average_holding_sessions_lt_15": true,
+    "mean_net_ge_4pct": true
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-NOT-LOCKED-V28R1",
+  "maximum_exit_date_used": "2024-08-30",
+  "portfolio": {
+    "CHINEXT": {
+      "annual_returns": {
+        "2022": 0.009288171384423283,
+        "2023": 0.0010749222566022176,
+        "2024": 0.030010382638950173
+      },
+      "average_utilization": 0.007085455682164612,
+      "best_day": 0.008706066895480813,
+      "cagr": 0.015148982018780677,
+      "cvar5": -0.0938035135085794,
+      "max_drawdown": -0.008774822656726244,
+      "mean_holding_sessions": 9.075,
+      "mean_net": 0.08050688778603832,
+      "median_holding_sessions": 5.5,
+      "median_net": 0.06752409746515531,
+      "return_excluding_best_day": 0.031712601448018685,
+      "return_excluding_best_five_days": 0.010914821759263393,
+      "severe10": 0.025,
+      "sharpe": 1.3561443737761643,
+      "top5_positive_trade_pnl_share": 0.34245048558556385,
+      "total_return": 0.040694760373135797,
+      "trades": 40,
+      "u_hit": 0.725,
+      "win": 0.875,
+      "worst_day": -0.008774822656726244
+    },
+    "COMBINED": {
+      "annual_returns": {
+        "2022": 0.016020548925963052,
+        "2023": 0.004153369710632848,
+        "2024": 0.03095889420630149
+      },
+      "average_utilization": 0.010041850387896626,
+      "best_day": 0.008464460295238396,
+      "cagr": 0.019228174438725265,
+      "cvar5": -0.16297598318890275,
+      "max_drawdown": -0.006017118395367005,
+      "mean_holding_sessions": 9.378378378378379,
+      "mean_net": 0.0734734101593606,
+      "median_holding_sessions": 6.0,
+      "median_net": 0.06715139069309739,
+      "return_excluding_best_day": 0.04299756284164058,
+      "return_excluding_best_five_days": 0.01944508538998857,
+      "severe10": 0.06306306306306306,
+      "sharpe": 1.7341491122080437,
+      "top5_positive_trade_pnl_share": 0.184798790058861,
+      "top_five_entry_date_trade_share": 0.4954954954954955,
+      "total_return": 0.05182597430034441,
+      "trades": 111,
+      "u_hit": 0.7027027027027027,
+      "unique_entry_dates": 45,
+      "unique_symbols": 108,
+      "win": 0.8558558558558559,
+      "worst_day": -0.006017118395367005
+    },
+    "MAIN": {
+      "annual_returns": {
+        "2022": 0.02275292646750282,
+        "2023": 0.0071912887633927,
+        "2024": 0.03188923423100598
+      },
+      "average_utilization": 0.012955587534272612,
+      "best_day": 0.009112844943991893,
+      "cagr": 0.023280557540571012,
+      "cvar5": -0.17741098096596047,
+      "max_drawdown": -0.00876378943752687,
+      "mean_holding_sessions": 9.549295774647888,
+      "mean_net": 0.0695108875527816,
+      "median_holding_sessions": 6.0,
+      "median_net": 0.06574458962982055,
+      "return_excluding_best_day": 0.05335809919905299,
+      "return_excluding_best_five_days": 0.027979034356354182,
+      "severe10": 0.08450704225352113,
+      "sharpe": 1.8863493593501057,
+      "top5_positive_trade_pnl_share": 0.24767496594380872,
+      "total_return": 0.06295718822755303,
+      "trades": 71,
+      "u_hit": 0.6901408450704225,
+      "win": 0.8450704225352113,
+      "worst_day": -0.004757861441107236
+    },
+    "audit": {
+      "capacity_skips": 0,
+      "duplicate_symbol_skips": 2,
+      "max_k_violation_count": 0,
+      "negative_cash_or_leverage_count": 0
+    }
+  },
+  "scientific_status": "LOCKED_POST_OBSERVATION_DIAGNOSTIC_NOT_PRISTINE_EXTERNAL_VALIDATION",
+  "stage_a_verification": {
+    "checks": {
+      "contract_sha256": "d64523f7ef01715d7fe2d37134275058caf1eb90e540db89393f9ca873ca17de",
+      "runner_sha256": "b74bdc04a7b898cbac7bb042601b33d7ae52643af6cff758e22b314ea24a7dc8",
+      "selected_entries_sha256": "005e3ef98e103f69704c77c4287bbc66ceafe7aa7e6e6023483e2d14a9145be8",
+      "spec_sha256": "9f2218f56c3a6f2207a9edf03d9a4dfbc91d1fb6fcd5bb87b8690a2c723462dd"
+    },
+    "verified": true
+  }
+}

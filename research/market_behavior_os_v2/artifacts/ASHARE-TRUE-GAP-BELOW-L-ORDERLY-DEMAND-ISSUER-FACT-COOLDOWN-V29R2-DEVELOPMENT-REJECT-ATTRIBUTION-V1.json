@@ -1,0 +1,326 @@
+{
+  "analysis_id": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2-DEVELOPMENT-REJECT-ATTRIBUTION-V1",
+  "analyzed_at": "2026-09-05T21:59:04+08:00",
+  "status": "POST_HOC_DEVELOPMENT_ONLY_NOT_INDEPENDENT_VALIDATION",
+  "temporal_guard": {
+    "signal_date_max": "2021-02-18",
+    "exit_date_max": "2021-02-22",
+    "classified_title_available_at_max": "2021-11-10T17:44:02+08:00",
+    "hard_cutoff": "2021-12-31T23:59:59.999999999+08:00",
+    "post_2021_title_or_return_rows_read": false,
+    "future_inference_allowed": false
+  },
+  "scientific_role": "Attribution of eight already-consumed development rejects. It can falsify a development justification for a hard veto, but cannot prove future issuer-risk safety or define a new threshold.",
+  "market_relative_method": {
+    "source": "registered CY-006 PIT-B daily rows for 2018-2021 only",
+    "market_proxy": "the row-bound csi000300 market series",
+    "stock_signal_return": "signal-day close / preclose - 1",
+    "market_return": "same signal-day market return",
+    "stock_excess_market_1d": "stock_signal_return - market_return",
+    "industry_comparison": "same-day PIT industry median return; descriptive only",
+    "availability_guard": "hard_valid rows with available_at <= decision_at"
+  },
+  "source_lineage": {
+    "v29r2_stage_a_freeze": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_stage_a_freeze.json",
+      "sha256": "c9610486c2750ac40a6baee9f6aa74c5ef7daa35648bcd78074d5e3390e283df"
+    },
+    "v29r2_development_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_development_result.json",
+      "sha256": "dc1539b1bfaf6de09c0be34483a226643f167232e5df0e5caa2c5a2d8b3fec4b"
+    },
+    "v29r2_rejected_entries": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_issuer_fact_cooldown_v29r2/development/issuer_fact_rejected_entries.parquet",
+      "sha256": "4b686b2f07ebd26917e2863c7161ec22bcec7c82e5a70727113f25f319b5d75a"
+    },
+    "v29r2_classified_events": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_issuer_fact_cooldown_v29r2/development/issuer_fact_classified_events.parquet",
+      "sha256": "53b2d3b027e4aca26d788fa63613e6dbaff826a647e6bccf707d5bf62b4a3863"
+    },
+    "parent_development_outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_first_reversal_v13/prior_high_reversal/development/outcomes.parquet",
+      "sha256": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "v28r2_portfolio_accepted": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_v28r2/development/orderly_demand/portfolio_accepted.parquet",
+      "sha256": "13a97d3d5b34243c7c53a5395178a72c6c55316059d0f1e5e81b28e0e7c5993f"
+    },
+    "v29r2_portfolio_accepted": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_issuer_fact_cooldown_v29r2/development/issuer_fact/portfolio_accepted.parquet",
+      "sha256": "6404fc96ef0c9d6c2fe5b6a718c7d31aa9679865d9ef36c35fe6e2b31ea034ca"
+    },
+    "development_anatomy_join": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_issuer_risk_v29r2_development_anatomy_v1/v29r2_issuer_fact_reject_summary.csv",
+      "sha256": "206ef62b4e37f71e1fb2bd7c3465bdd7ac948ee5f6f10476175d6eb077de943f"
+    },
+    "cy006_manifest_sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2",
+    "cy006_development_partition_sha256": {
+      "2018": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "2019": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "2020": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "2021": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311"
+    }
+  },
+  "per_reject": [
+    {
+      "gap_id": "000519.SZ|2018-01-31",
+      "symbol": "000519.SZ",
+      "signal_date": "2018-02-22",
+      "entry_date": "2018-02-23",
+      "exit_date": "2018-02-27",
+      "risk_families": ["REGULATORY_INVESTIGATION"],
+      "open_announcement_count": 4,
+      "latest_fact_age_calendar_days": 21,
+      "representative_fact_title": "中兵红箭:关于立案调查事项进展暨风险提示的公告",
+      "stock_signal_return": 0.0192307692307691,
+      "market_return": 0.0158982511923688,
+      "stock_excess_market_1d": 0.0033325180384002,
+      "stock_excess_industry_1d": 0.0022209214241444,
+      "signal_amount_to_prior20_median": 0.6199335341376825,
+      "counterfactual_net_return": 0.09131331899178474,
+      "holding_sessions": 2,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    },
+    {
+      "gap_id": "600397.SH|2018-01-31",
+      "symbol": "600397.SH",
+      "signal_date": "2018-02-23",
+      "entry_date": "2018-02-26",
+      "exit_date": "2018-03-07",
+      "risk_families": ["RISK_WARNING_OR_DELISTING"],
+      "open_announcement_count": 1,
+      "latest_fact_age_calendar_days": 23,
+      "representative_fact_title": "安源煤业关于公司股票可能被实施退市风险警示的提示性公告",
+      "stock_signal_return": 0.0068493150684931,
+      "market_return": 0.0022839823889045,
+      "stock_excess_market_1d": 0.0045653326795885,
+      "stock_excess_industry_1d": 0.0042653357403279,
+      "signal_amount_to_prior20_median": 0.5962738009724502,
+      "counterfactual_net_return": 0.03989984448544903,
+      "holding_sessions": 7,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    },
+    {
+      "gap_id": "600749.SH|2018-02-01",
+      "symbol": "600749.SH",
+      "signal_date": "2018-02-26",
+      "entry_date": "2018-02-27",
+      "exit_date": "2018-03-07",
+      "risk_families": ["RISK_WARNING_OR_DELISTING"],
+      "open_announcement_count": 1,
+      "latest_fact_age_calendar_days": 25,
+      "representative_fact_title": "西藏旅游关于公司股票可能被实施退市风险警示的风险提示公告",
+      "stock_signal_return": 0.0182615047479912,
+      "market_return": 0.0218855218855218,
+      "stock_excess_market_1d": -0.0036240171375305,
+      "stock_excess_industry_1d": 0.0063476393342677,
+      "signal_amount_to_prior20_median": 0.6361041930111341,
+      "counterfactual_net_return": 0.08031859195714453,
+      "holding_sessions": 6,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    },
+    {
+      "gap_id": "603111.SH|2018-08-20",
+      "symbol": "603111.SH",
+      "signal_date": "2018-09-04",
+      "entry_date": "2018-09-05",
+      "exit_date": "2018-09-19",
+      "risk_families": ["ILLEGAL_GUARANTEE", "ISSUER_BANK_ACCOUNT_FREEZE", "REGULATORY_INVESTIGATION"],
+      "open_announcement_count": 4,
+      "latest_fact_age_calendar_days": 11,
+      "representative_fact_title": "康尼机电关于收到中国证监会立案调查通知书的公告",
+      "stock_signal_return": 0.0418604651162792,
+      "market_return": 0.0101010101010101,
+      "stock_excess_market_1d": 0.0317594550152691,
+      "stock_excess_industry_1d": 0.0311407101392502,
+      "signal_amount_to_prior20_median": 0.9977545595146872,
+      "counterfactual_net_return": 0.17890323939600195,
+      "holding_sessions": 10,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    },
+    {
+      "gap_id": "002181.SZ|2018-10-11",
+      "symbol": "002181.SZ",
+      "signal_date": "2018-10-26",
+      "entry_date": "2018-10-29",
+      "exit_date": "2018-11-07",
+      "risk_families": ["REGULATORY_INVESTIGATION"],
+      "open_announcement_count": 4,
+      "latest_fact_age_calendar_days": 16,
+      "representative_fact_title": "粤传媒:关于立案调查事项进展暨风险提示公告",
+      "stock_signal_return": 0.0259740259740259,
+      "market_return": 0.0051020408163264,
+      "stock_excess_market_1d": 0.0208719851576995,
+      "stock_excess_industry_1d": 0.0159740259740259,
+      "signal_amount_to_prior20_median": 1.285257950835008,
+      "counterfactual_net_return": 0.0628327619920479,
+      "holding_sessions": 7,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": false
+    },
+    {
+      "gap_id": "600568.SH|2019-08-02",
+      "symbol": "600568.SH",
+      "signal_date": "2019-08-19",
+      "entry_date": "2019-08-20",
+      "exit_date": "2019-08-23",
+      "risk_families": ["CONTROLLER_FUND_MISAPPROPRIATION", "REGULATORY_INVESTIGATION"],
+      "open_announcement_count": 3,
+      "latest_fact_age_calendar_days": 16,
+      "representative_fact_title": "中珠医疗关于立案调查进展暨风险提示的公告",
+      "stock_signal_return": 0.0377358490566037,
+      "market_return": 0.0271616677310206,
+      "stock_excess_market_1d": 0.010574181325583,
+      "stock_excess_industry_1d": 0.0176063199125464,
+      "signal_amount_to_prior20_median": 1.983062046469354,
+      "counterfactual_net_return": 0.05637211954046184,
+      "holding_sessions": 3,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    },
+    {
+      "gap_id": "002535.SZ|2019-11-22",
+      "symbol": "002535.SZ",
+      "signal_date": "2019-12-06",
+      "entry_date": "2019-12-09",
+      "exit_date": "2019-12-18",
+      "risk_families": ["ISSUER_BANK_ACCOUNT_FREEZE", "REGULATORY_INVESTIGATION"],
+      "open_announcement_count": 2,
+      "latest_fact_age_calendar_days": 13,
+      "representative_fact_title": "林州重机:关于公司及子公司部分银行账户被冻结的公告",
+      "stock_signal_return": 0.0150375939849625,
+      "market_return": 0.0033557046979866,
+      "stock_excess_market_1d": 0.0116818892869758,
+      "stock_excess_industry_1d": 0.0106548328454445,
+      "signal_amount_to_prior20_median": 1.345021721194265,
+      "counterfactual_net_return": 0.04011164396061573,
+      "holding_sessions": 7,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    },
+    {
+      "gap_id": "300278.SZ|2021-01-26",
+      "symbol": "300278.SZ",
+      "signal_date": "2021-02-18",
+      "entry_date": "2021-02-19",
+      "exit_date": "2021-02-22",
+      "risk_families": ["RISK_WARNING_OR_DELISTING"],
+      "open_announcement_count": 1,
+      "latest_fact_age_calendar_days": 20,
+      "representative_fact_title": "华昌达:关于公司股票交易可能被实施退市风险警示的风险提示公告",
+      "stock_signal_return": 0.079847908745247,
+      "market_return": 0.0254924681344146,
+      "stock_excess_market_1d": 0.0543554406108324,
+      "stock_excess_industry_1d": 0.0590559717735704,
+      "signal_amount_to_prior20_median": 0.825471100893667,
+      "counterfactual_net_return": 0.23078131551383052,
+      "holding_sessions": 1,
+      "exit_reason": "PRE_L_TARGET",
+      "v28r2_portfolio_accepted": true
+    }
+  ],
+  "aggregate_attribution": {
+    "all_eight_rejects": {
+      "signals": 8,
+      "mean_net": 0.09756660447966703,
+      "median_net": 0.07157567697459621,
+      "win_rate": 1.0,
+      "severe10_rate": 0.0,
+      "average_holding_sessions": 5.375,
+      "pre_l_target_exits": 8,
+      "sum_trade_level_net_return": 0.7805328358373362
+    },
+    "seven_rejects_that_v28r2_portfolio_would_accept": {
+      "signals": 7,
+      "mean_net": 0.10252858197789834,
+      "win_rate": 1.0,
+      "average_holding_sessions": 5.142857142857143,
+      "sum_trade_level_net_return": 0.7177000738452883
+    },
+    "portfolio_set_comparison": {
+      "v28r2_accepted": 255,
+      "v29r2_accepted": 248,
+      "intersection": 248,
+      "v29r2_new_replacements": 0,
+      "removed_by_hard_veto": 7,
+      "accepted_per_year_change": -1.75,
+      "mean_net_change": -0.0010092990552459102,
+      "win_rate_change": -0.0025458570524984347,
+      "severe10_rate_change": 0.0006641366223908915,
+      "average_holding_sessions_change": 0.10909234661606604,
+      "interpretation": "The hard veto produced a strict subset and no capacity replacements; every removed portfolio trade was a winner. These are trade-level comparisons, not an exact capital-weighted NAV attribution."
+    },
+    "market_confirmation": {
+      "market_up_signal_days": 8,
+      "stock_outperformed_market": 7,
+      "stock_outperformed_pit_industry": 8,
+      "median_stock_excess_market_1d": 0.0111280353062794,
+      "market_return_range": [0.0022839823889045, 0.0271616677310206]
+    },
+    "uncertainty": {
+      "baseline_v28r2_win_rate": 0.9098039215686274,
+      "probability_of_eight_wins_under_baseline_win_rate_if_independent": 0.46944253314760137,
+      "warning": "Eight wins are not statistically surprising under a roughly 91% baseline win rate. The relevant finding is not proof of positive issuer-risk alpha; it is that this sample supplies no avoided loss and shows a known opportunity cost for the hard veto."
+    }
+  },
+  "interaction_audit": [
+    {
+      "candidate": "single family versus multiple simultaneous families",
+      "single_family": {"n": 5, "mean_net": 0.10102916658805135, "win_rate": 1.0},
+      "multiple_families": {"n": 3, "mean_net": 0.09179566763235984, "win_rate": 1.0},
+      "decision": "NO_DISCRIMINATION"
+    },
+    {
+      "candidate": "latest fact age no more than 20 versus more than 20 calendar days",
+      "age_le_20": {"n": 5, "mean_net": 0.11380021608059158, "win_rate": 1.0},
+      "age_gt_20": {"n": 3, "mean_net": 0.07051058514479276, "win_rate": 1.0},
+      "decision": "NO_SUPPORT_FOR_RECENCY_VETO"
+    },
+    {
+      "candidate": "stock signal-day return relative to market",
+      "positive_excess": {"n": 7, "mean_net": 0.10003060626859882, "win_rate": 1.0},
+      "nonpositive_excess": {"n": 1, "mean_net": 0.08031859195714453, "win_rate": 1.0},
+      "decision": "MARKET_OUTPERFORMANCE_IS_COMMON_BUT_NOT_NECESSARY_IN_THIS_SAMPLE"
+    },
+    {
+      "candidate": "signal amount versus prior-20 median",
+      "ratio_ge_1": {"n": 3, "mean_net": 0.05310550849770849, "win_rate": 1.0},
+      "ratio_lt_1": {"n": 5, "mean_net": 0.12424326206884215, "win_rate": 1.0},
+      "decision": "NO_SUPPORT_FOR_VOLUME_THRESHOLD"
+    },
+    {
+      "candidate": "daily non-chasing excess no more than 2 percent",
+      "pass_count": 5,
+      "fail_count": 3,
+      "fail_gap_ids": ["603111.SH|2018-08-20", "002181.SZ|2018-10-11", "300278.SZ|2021-01-26"],
+      "decision": "DO_NOT_USE; THE THREE FAILURES ALSO WON, INCLUDING THE TWO LARGEST RETURNS"
+    }
+  ],
+  "economic_interpretation": [
+    "The issuer facts were public 11-25 calendar days before the signal. The observed collapse can therefore already embody forced supply and adverse expectations.",
+    "V28R2 waits for price-volume demand to reclaim a small part of the gap and exits at a target strictly below L. In this short mean-reversion horizon, the adverse fact can be the cause of the discount rather than evidence that the partial rebound must fail.",
+    "Several charts resume weak longer-run behavior after the fast target. Issuer risk may remain relevant to long-horizon ownership, but that is a different payoff and cannot justify deleting an A67/H20 rebound signal."
+  ],
+  "decision": {
+    "hard_120_calendar_day_issuer_veto": "RETIRE_AS_A_SIGNAL_SELECTOR",
+    "issuer_fact_label": "KEEP_AS_NON_SELECTING_RISK_METADATA",
+    "supported_current_use": [
+      "audit and exposure reporting",
+      "separate monitoring of new facts that become available after signal formation",
+      "prevent an untested extension from the frozen A67/H20 rebound into long-horizon ownership"
+    ],
+    "only_plausible_signal_time_interaction_for_future_blind_test": "Broad-market nonnegative confirmation plus stock outperformance of its PIT industry is economically coherent with absorption of already-public bad news; all eight observed rejects satisfy it. The complement is unobserved here, so it is a hypothesis, not an adoptable rule.",
+    "not_authorized_from_this_audit": [
+      "new numeric threshold",
+      "family-specific veto",
+      "recency cutoff",
+      "position sizing change",
+      "stop, target or horizon change",
+      "any inference about 2022 or later"
+    ]
+  }
+}

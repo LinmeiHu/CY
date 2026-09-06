@@ -1,0 +1,69 @@
+{
+  "artifact_schema": "CY_STAGE_A_FAIL_CLOSED_AUDIT_CORRECTION_V2",
+  "recorded_at": "2026-09-06T08:00:57+08:00",
+  "status": "AUTHORITATIVE_DISCLOSURE_CORRECTION",
+  "superseded_wording_artifact": {
+    "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_stage_a_attempt1_index_failure.json",
+    "sha256": "3e3d644e1bdf18df6b31385a41941c2d8a280af5357b53474d582df65a19c2d4",
+    "preserved_immutable": true
+  },
+  "authoritative_corrections": {
+    "recovery": "The failed CY-062 Stage-A output root and its two pretitle artifacts are immutable predecessor evidence. They must never be deleted, overwritten, reused, or resumed. A corrected attempt must use a newly registered correction wrapper and a distinct pristine output root.",
+    "source_title_bytes": "Before the failed pretitle freeze, verify_asset called wrapper and nested-seal validation. Those integrity checks mechanically read the title-bearing sealed announcements parquet and reparsed raw source pages. Therefore a literal claim that no title bytes were opened is false.",
+    "candidate_title_semantics": "Before the exact candidate-window keys were frozen, no candidate-window title projection, human inspection, classification, selector use, or performance use occurred. The scientific key-before-title-projection boundary remained intact.",
+    "outcome_and_daily_bytes": "Registry, manifest, and wrapper fingerprint checks mechanically hashed the bound parent outcomes and outcome_daily bytes before the failed freeze. They did not parse either parquet into content rows, inspect outcomes, compute performance statistics, or use outcomes in selection.",
+    "failure_boundary": "The attempt stopped immediately after writing and re-reading the two title-free pretitle artifacts, when strict frame equality found only non-semantic DataFrame index-label drift. attach_titles, classify_titles, apply_cooldown, Stage-B outcome parsing, and portfolio replay were not called."
+  },
+  "precise_access_flags": {
+    "sealed_title_bearing_sources_mechanically_read_or_reparsed_for_integrity": true,
+    "candidate_window_title_projection_before_key_freeze": false,
+    "candidate_window_title_inspection_before_key_freeze": false,
+    "candidate_window_title_classification_before_key_freeze": false,
+    "candidate_window_title_selector_use_before_key_freeze": false,
+    "parent_outcome_bytes_hashed_for_identity": true,
+    "parent_daily_bytes_hashed_for_identity": true,
+    "parent_outcomes_parquet_content_rows_parsed_or_viewed_by_attempt": false,
+    "parent_daily_parquet_content_rows_parsed_or_viewed_by_attempt": false,
+    "performance_statistics_computed_or_viewed_by_attempt": false,
+    "stage_b_started": false
+  },
+  "index_only_failure_proof": {
+    "rows": 7925,
+    "columns": 19,
+    "column_names_order_dtypes_values_and_row_order_exact_after_reset_index_drop_true": true,
+    "only_difference": "in-memory non-contiguous source index labels versus parquet-reloaded RangeIndex",
+    "permitted_fix": "reset_index(drop=True) before exclusive title-free parquet persistence",
+    "source_causal_classifier_cooldown_threshold_execution_and_portfolio_rules_changed": false
+  },
+  "preserved_failed_output": {
+    "root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_through_20260904_v1",
+    "root_mode": "0555",
+    "stage_a_directory_mode": "0555",
+    "exact_files": [
+      {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_through_20260904_v1/stage_a/title_route_selection.parquet",
+        "sha256": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3",
+        "mode": "0444"
+      },
+      {
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_through_20260904_v1/stage_a/pretitle_route_freeze.json",
+        "sha256": "7cc9c9493251cf647f555cc2c157a13bf24428b678b2272412f409b882cc0925",
+        "mode": "0444"
+      }
+    ],
+    "title_route_rows": 7925,
+    "title_column_absent": true,
+    "announcement_key_unique": true,
+    "pretitle_freeze_declares_titles_opened_false": true,
+    "pretitle_freeze_field_interpretation": "This legacy field is superseded by the precise access flags above and can mean only that no candidate-window title projection/classification occurred; it cannot mean that recursive integrity validation avoided title-bearing source bytes."
+  },
+  "future_cy063_requirements": {
+    "component_asset": "CY-062",
+    "new_asset_root": true,
+    "new_runner_identity": true,
+    "new_output_root": true,
+    "candidate_title_projection_or_classification_before_key_freeze": false,
+    "stage_b_expected_stage_a_sha256_required": true,
+    "stage_b_exclusive_read_only_pre_outcome_attempt_seal_required": true
+  }
+}

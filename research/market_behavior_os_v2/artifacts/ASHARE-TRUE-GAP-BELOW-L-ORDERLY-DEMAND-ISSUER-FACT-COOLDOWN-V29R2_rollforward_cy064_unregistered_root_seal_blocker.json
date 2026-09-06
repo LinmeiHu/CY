@@ -1,0 +1,58 @@
+{
+  "audit_schema": "CY_UNREGISTERED_CORRECTION_WRAPPER_ROOT_SEAL_BLOCKER_V1",
+  "created_at": "2026-09-06T01:03:41Z",
+  "status": "SUPERSEDED_UNREGISTERED_BLOCKED_WRAPPER",
+  "asset_id": "CY-064",
+  "central_registration": {
+    "asset_entries": 0,
+    "bounded_authorization_entries": 0,
+    "ever_authorized_to_run_outer_verification": false,
+    "ever_authorized_to_run_stage_b": false
+  },
+  "immutable_wrapper": {
+    "root": "/Users/linmei/Documents/CY/data/staging/CY-064-V29R2-ISSUER-FACT-ROLLFORWARD-VERIFIER-CORRECTION-2022-2026-V1",
+    "root_mode": "0555",
+    "exact_top": [
+      "activation_audit.json",
+      "asset_manifest.json"
+    ],
+    "files_mode": "0444",
+    "asset_manifest_sha256": "c0e0ad5d5a7cca834a0eb0361a3105f7c6b13991252ddfbb0399f9c9d0b1eda6",
+    "activation_audit_sha256": "f2ae2265cf6e0305524d7560312fa3c5daaa8f741ac9c1575f3880851a594779",
+    "builder_sha256": "62a2ee454ab61fbd8d72a08725c751a710aa1cc52300095461b821b4c8d873cf",
+    "runner_sha256": "9f4088144e41d1370830e25cfd0927feb98f230af2774bd8e5df382d112a7480",
+    "r3_protocol_sha256": "3ddb06396629e084d5741caf127e567aec08edd2f09fef28af3391caff6ff1ff",
+    "cy063_discrepancy_audit_sha256": "e54169c257fff4d8aa6008c760f86f7db5c6abaad7558c82ad197472ce1d887f",
+    "registry_suggestion_sha256": "332ec8eb04f0cd4c89a3e4f913ba69204c6e92e1a021435b120646001bb51029"
+  },
+  "first_difference": {
+    "component": "failure-path root sealing",
+    "affected_functions": [
+      "run_verify_only",
+      "run_stage_b"
+    ],
+    "fault": "The local created flag becomes true only after Path.mkdir returns. If mkdir creates the dedicated directory and then raises, finally sees false and leaves the new directory writable.",
+    "ordinary_success_or_post_mkdir_failure_paths_affected": false,
+    "create_then_raise_fault_injection_reproduces_writable_root": true,
+    "source_causal_classification_selector_execution_or_portfolio_semantics_affected": false
+  },
+  "unused_output_boundaries": {
+    "verification_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_stage_a_verification_v1",
+    "verification_root_exists": false,
+    "stage_b_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_through_20260904_v1",
+    "stage_b_output_root_exists": false,
+    "outer_freeze_created": false,
+    "stage_b_attempt_seal_created": false,
+    "outcome_or_daily_parquet_content_rows_parsed": false,
+    "performance_statistics_computed": false
+  },
+  "disposition": {
+    "cy064_wrapper_software_protocol_suggestion_are_immutable_failure_evidence": true,
+    "delete_overwrite_rebind_register_or_execute_cy064": false,
+    "required_successor": "CY-065 root-seal correction wrapper",
+    "successor_dependency_asset_id": "CY-063",
+    "successor_must_bind_cy064_failure_chain_directly": true,
+    "successor_fix": "After the exact dedicated root was proven absent, finally seals it whenever it exists or is a symlink, including create-then-raise faults; sealing must reject and never follow symlinks or non-directories.",
+    "rule_or_research_logic_changed": false
+  }
+}

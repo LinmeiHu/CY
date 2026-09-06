@@ -1,0 +1,86 @@
+{
+  "audit_schema": "CY_STAGE_A_VERIFIER_SERIALIZATION_REPRESENTATION_FAILURE_V1",
+  "created_at": "2026-09-06T00:34:28Z",
+  "status": "FAILED_CLOSED_BEFORE_STAGE_B",
+  "asset_id": "CY-063",
+  "stage_a_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1",
+  "stage_a_freeze": {
+    "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/freeze.json",
+    "sha256": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658"
+  },
+  "immutable_inventory": {
+    "classified_events.parquet": "1140acde5b10686371a51d6ac3a40573e21a8eb4feacd2c37373f5eb7f866d51",
+    "freeze.json": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658",
+    "pretitle_route_freeze.json": "5b142633fbde9f953bbb5376f0a7b653ce42e973d04d71e1ff485c7debb0eac0",
+    "rejected_entries.parquet": "f79baf069ec7b92aead6cac7fdf2107082b31bafce61a8801dda1f7752c7810d",
+    "selected_entries.parquet": "e5d4aba6aac8474b2e8580ebafc8a5089a0f621224d6ca4b0a061a612ba8a767",
+    "selector_audit.parquet": "d5e95fbb14905db793fdd68e2e782416601a4690dc121a480b1d85bbc4e11d24",
+    "title_route_selection.parquet": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3"
+  },
+  "directory_modes": {
+    "output_root": "0555",
+    "stage_a": "0555",
+    "files": "0444"
+  },
+  "first_difference": {
+    "operation": "pd.testing.assert_frame_equal persisted classified_events versus deterministic in-memory reclassification with check_dtype=true and check_exact=true",
+    "frame_shape": [
+      7926,
+      24
+    ],
+    "column_index": 19,
+    "column_name": "available_at",
+    "persisted_dtype_repr": "datetime64[ns, Asia/Shanghai]",
+    "reproduced_dtype_repr": "datetime64[ns, Asia/Shanghai]",
+    "persisted_timezone_implementation": "pytz",
+    "reproduced_timezone_implementation": "zoneinfo",
+    "na_mask_exact": true,
+    "utc_nanoseconds_exact": true,
+    "semantic_time_values_exact": true
+  },
+  "second_serialization_representation": {
+    "column_name": "risk_family",
+    "dtype_both": "object",
+    "missing_rows": 7908,
+    "persisted_missing_representation": "None",
+    "reproduced_missing_representation": "pd.NA",
+    "na_mask_exact": true,
+    "non_null_values_are_strings": true,
+    "non_null_values_exact": true
+  },
+  "full_reproduction": {
+    "columns_order_and_index_exact": true,
+    "all_other_columns_dtype_and_value_exact": true,
+    "all_columns_null_aware_value_exact": true,
+    "selector_audit_strict_exact_after_canonical_classified_comparison": true,
+    "selected_entries_strict_exact_after_canonical_classified_comparison": true,
+    "rejected_entries_strict_exact_after_canonical_classified_comparison": true,
+    "parent_partition": "197=186+11",
+    "selected_by_signal_year": {
+      "2022": 40,
+      "2023": 10,
+      "2024": 68,
+      "2025": 36,
+      "2026": 32
+    },
+    "execution_contract_exact": true,
+    "mature_signal_cutoff_pass": true
+  },
+  "scientific_boundary": {
+    "rule_selector_threshold_source_causal_execution_or_portfolio_changed": false,
+    "outcome_or_daily_parquet_content_rows_parsed_by_cy063_stage_a_or_verifier": false,
+    "performance_statistics_computed_by_cy063_stage_a_or_verifier": false,
+    "stage_b_started": false,
+    "stage_b_attempt_seal_created": false,
+    "result_created": false
+  },
+  "disposition": {
+    "cy063_output_is_immutable_failure_evidence": true,
+    "delete_overwrite_resume_or_reuse_cy063_output": false,
+    "cy063_stage_b_authorized": false,
+    "required_successor": "CY-064 verifier-only correction wrapper",
+    "successor_must_not_materialize_new_stage_a_artifacts_or_selection": true,
+    "successor_must_perform_in_memory_deterministic_stage_a_verification_replay": true,
+    "successor_comparator_scope": "Only available_at timezone-backend representation and risk_family None-versus-pd.NA missing representation may be canonicalized; every semantic value, all other dtypes, order and index remain exact."
+  }
+}

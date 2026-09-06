@@ -1,0 +1,255 @@
+{
+  "causal_available_from_2022_titles_classified_or_selector_used": false,
+  "causal_available_from_2022_titles_read": false,
+  "cy036r2_scoped_identity": {
+    "activation_audit_sha256": "c4237549565d59836803e82640885c1ec4419618442b09e30ec79767d5c2afea",
+    "asset_manifest_sha256": "45bbf99a140541d6e02b6914b4860f3ec7669ae3bd32d8f13b2d502ba3f717b1",
+    "asset_root": "/Users/linmei/Documents/CY/data/staging/CY-036-R2-EXCHANGE-ISSUER-FACT-V29R2-DEV-19901219-20211231-V1",
+    "base_component_root": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture",
+    "base_nested_files_verified": 4451,
+    "bounded_authorization_sha256": "ad5cfb22e2e32b5dd8c36db7e3f32723f8a5ac36032266fa768dffa6379767d4",
+    "registered_asset_entry_sha256": "42168e1a0d9b21da0c3d033c2c5a8c6e4fe80f3153ea3aeb40ecbaf3ecb7b186",
+    "route_index_sha256": "f9bf1a275fa5a3294ed7c571eef583cb88c7f3e011a397acfd5d616bf4225af3",
+    "sse_nested_files_verified": 4606,
+    "title_route_contract": {
+      "activation_wrapper": {
+        "route_index_byte_identical_to_upstream": true,
+        "title_classification_performed_by_builder": false,
+        "title_column_projected_or_opened_by_builder": false,
+        "upstream_asset_id": "CY-036-R1"
+      },
+      "build_time_title_handling": {
+        "nested_sealer_reparsed_and_validated_title_metadata_from_raw_pages": true,
+        "wrapper_classified_title_column": false,
+        "wrapper_projected_or_copied_title_column": false
+      },
+      "causal_cutoff_column": "causal_available_at",
+      "causal_cutoff_relation": "causal_available_at <= decision_at",
+      "component_selection_key": "component_role",
+      "join_cardinality": "one_to_one",
+      "nested_join_keys": [
+        "snapshot_id",
+        "announcement_key"
+      ],
+      "nested_title_column": "title",
+      "post_join_exact_fields": [
+        "raw_record_sha256",
+        "symbol",
+        "exchange",
+        "source_publication_field",
+        "source_publication_value",
+        "source_query_date_field",
+        "source_query_date"
+      ],
+      "required_access_order": [
+        "Validate CY-036-R2 and filter announcement_route_index.parquet using window_start <= causal_available_at <= decision_at.",
+        "Freeze the selected component_role, snapshot_id, announcement_key and lineage hashes before opening a nested title column.",
+        "Open only the routed nested announcements rows for those frozen keys, then enforce the exact one-to-one join and lineage equality."
+      ],
+      "roles": {
+        "BASE_SZSE_AUTHORITATIVE": {
+          "expected_exchange": "SZSE",
+          "inventory_role": "base_nested_announcements",
+          "nested_announcements_path": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture/announcements.parquet",
+          "snapshot_id": "exchange-announcement-258a32a6e4694987f22fb8386ee72683508fc91192becdc2fa2556fb57deddf3"
+        },
+        "SSE_FULL_HISTORY_AUTHORITATIVE": {
+          "expected_exchange": "SSE",
+          "inventory_role": "sse_full_history_nested_announcements",
+          "nested_announcements_path": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1/sse_full_history_capture/announcements.parquet",
+          "snapshot_id": "exchange-announcement-48401c3861b9fc7e4721e4ae99be83c4ae010cf7fe4ca90ae31be316041f6b33"
+        }
+      },
+      "route_index_selection_fields": [
+        "component_role",
+        "snapshot_id",
+        "announcement_key",
+        "raw_record_sha256"
+      ],
+      "unmatched_or_duplicate_policy": "FAIL_CLOSED_NO_SILENT_ROW_LOSS_OR_DEDUPLICATION"
+    },
+    "upstream_asset_root": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1"
+  },
+  "development": {
+    "candidate_announcement_titles": 13338,
+    "candidate_signals": 370,
+    "classified_events_sha256": "53b2d3b027e4aca26d788fa63613e6dbaff826a647e6bccf707d5bf62b4a3863",
+    "classified_open_by_family": {
+      "CONTROLLER_FUND_MISAPPROPRIATION": 1,
+      "ILLEGAL_GUARANTEE": 2,
+      "ISSUER_BANK_ACCOUNT_FREEZE": 2,
+      "REGULATORY_INVESTIGATION": 12,
+      "RISK_WARNING_OR_DELISTING": 3
+    },
+    "classified_open_rows": 20,
+    "classified_row_identity_sha256": "8164f6392c541bdbbe5467d0f4ea9d9a81332f2e579c470911a57b9f51530cb2",
+    "parent_signals": 370,
+    "rejected_entries_sha256": "4b686b2f07ebd26917e2863c7161ec22bcec7c82e5a70727113f25f319b5d75a",
+    "rejected_gap_identity_sha256": "b80cfadeb47fd9c86981263270e44f97d2ab937b57dda74ae0b528467814b492",
+    "rejected_gap_ids": [
+      "000519.SZ|2018-01-31",
+      "002181.SZ|2018-10-11",
+      "002535.SZ|2019-11-22",
+      "300278.SZ|2021-01-26",
+      "600397.SH|2018-01-31",
+      "600568.SH|2019-08-02",
+      "600749.SH|2018-02-01",
+      "603111.SH|2018-08-20"
+    ],
+    "rejected_incomplete_coverage": 0,
+    "rejected_recent_open_event": 8,
+    "rejected_risk_family_signal_counts": {
+      "CONTROLLER_FUND_MISAPPROPRIATION": 1,
+      "ILLEGAL_GUARANTEE": 1,
+      "ISSUER_BANK_ACCOUNT_FREEZE": 2,
+      "REGULATORY_INVESTIGATION": 5,
+      "RISK_WARNING_OR_DELISTING": 3
+    },
+    "rejected_signals": 8,
+    "selected_by_signal_year": {
+      "2018": 305,
+      "2019": 22,
+      "2020": 10,
+      "2021": 25
+    },
+    "selected_entries_sha256": "dbb43e8c623a098d30f15e374f5d7d843241b232e72d9a107d25797f4f8f0c65",
+    "selected_gap_identity_sha256": "fc0dac8e29829cc653bb7bb0b41fe66e336638f2ee510bb420baf124608245d5",
+    "selected_signals": 362,
+    "selector_audit_sha256": "77da8a5f4a7026130fc9d20320608f0ab49dee6fac61c7d77266450787aeffea",
+    "title_route_selection_sha256": "bb3b06d01b06abfd19f161ded5fb9bf6f20b0d7b7d1d3f92ad2a429a93cd81f7"
+  },
+  "development_outcomes_opened": "NO_BYTES_HASHED_ONLY",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2",
+  "parent_development_result_parsed": false,
+  "post_2021_query_partition_collected_or_opened": false,
+  "preregistered_selector_identity": {
+    "candidate_announcement_titles": 13338,
+    "candidate_signals": 370,
+    "classified_open_by_family": {
+      "CONTROLLER_FUND_MISAPPROPRIATION": 1,
+      "ILLEGAL_GUARANTEE": 2,
+      "ISSUER_BANK_ACCOUNT_FREEZE": 2,
+      "REGULATORY_INVESTIGATION": 12,
+      "RISK_WARNING_OR_DELISTING": 3
+    },
+    "classified_open_rows": 20,
+    "classified_row_identity_sha256": "8164f6392c541bdbbe5467d0f4ea9d9a81332f2e579c470911a57b9f51530cb2",
+    "rejected_gap_identity_sha256": "b80cfadeb47fd9c86981263270e44f97d2ab937b57dda74ae0b528467814b492",
+    "rejected_gap_ids": [
+      "000519.SZ|2018-01-31",
+      "002181.SZ|2018-10-11",
+      "002535.SZ|2019-11-22",
+      "300278.SZ|2021-01-26",
+      "600397.SH|2018-01-31",
+      "600568.SH|2019-08-02",
+      "600749.SH|2018-02-01",
+      "603111.SH|2018-08-20"
+    ],
+    "rejected_signals": 8,
+    "selected_by_signal_year": {
+      "2018": 305,
+      "2019": 22,
+      "2020": 10,
+      "2021": 25
+    },
+    "selected_gap_identity_sha256": "fc0dac8e29829cc653bb7bb0b41fe66e336638f2ee510bb420baf124608245d5",
+    "selected_signals": 362
+  },
+  "protocol_hashes": {
+    "classifier_sha256": "127f62e551d4344ede9d41970ea7a6634f5f4b192fe2829a78eed8c72cf2da9d",
+    "parent_identity": {
+      "development_result_sha256": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9",
+      "development_stage_a_sha256": "3655b7f67bd4728e2b610123ee075219b174461c24a48cb6064fe6cc9c04c5f9",
+      "runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af"
+    },
+    "parent_source_hashes_streamed_without_parsing": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "preregistration_sha256": "076566c5cd85158997d39e4690c090e98110e85597d55ebf7d5b4fa0e63a5a3a",
+    "retired_v29r1_semantic_blocker_sha256": "df1654f143cf534c4101cd12671092e3dc61d475b439ff7ee75daca83cc5bd45",
+    "software_hashes": {
+      "execution_repair_runner_sha256": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+      "lane_replay_runner_sha256": "253b8c8755b556f9b18c90f4622979309bc6f11a3947507ca3f37427acfd8555",
+      "portfolio_runner_sha256": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5"
+    }
+  },
+  "rule": {
+    "action": "OPEN issuer-fact title only",
+    "classification_version": "EXCHANGE_ISSUER_RISK_TITLE_RULES_V2",
+    "close_treatment": "CLOSE_NEVER_SHORTENS_120_CALENDAR_DAY_COOLDOWN",
+    "document_role_gate": "GOVERNANCE_DISCUSSION_WITHOUT_EXPLICIT_ADVERSE_FACT_IS_IGNORE",
+    "families": [
+      "RISK_WARNING_OR_DELISTING",
+      "REGULATORY_INVESTIGATION",
+      "ILLEGAL_GUARANTEE",
+      "CONTROLLER_FUND_MISAPPROPRIATION",
+      "ISSUER_BANK_ACCOUNT_FREEZE"
+    ],
+    "missing_or_unproven_coverage": "REJECT",
+    "window": "signal_time-120 calendar days <= causal_available_at <= signal_time"
+  },
+  "runner_sha256": "20e67ddb9256568e177f3569e7325b6ea5245ccd943bb34829507239c0114520",
+  "stage": "DEVELOPMENT_PREREGISTERED_IDENTITY_AND_EXECUTION_BINDING_BEFORE_OUTCOME_OPEN",
+  "stage_b_binding_frozen_before_outcome_open": {
+    "constant_contract": {
+      "entry": "first legal buyable one-minute open strictly after the completed signal",
+      "failure_stop": "NONE",
+      "maximum_holding_sessions": 20,
+      "portfolio": "Main/ChiNext 50/50",
+      "portfolio_k_per_sleeve": 80,
+      "round_trip_cost": 0.004,
+      "side_cost_entry": 0.002,
+      "side_cost_exit": 0.002,
+      "target": "entry + 0.67 * (L - entry), strictly below L",
+      "target_fraction": 0.67
+    },
+    "join_fields": [
+      "symbol",
+      "signal_date",
+      "signal_time",
+      "entry_date",
+      "entry_time",
+      "entry_status",
+      "entry_cal_idx",
+      "entry_raw_price",
+      "entry_coordinate_factor",
+      "entry_coordinate_price",
+      "entry_invalid_step_cum",
+      "up_limit_price",
+      "entry_at_or_before_signal",
+      "entry_after_signal_period_boundary",
+      "buy_at_or_above_up_limit"
+    ],
+    "parent_source_hashes": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "software_hashes": {
+      "execution_repair_runner_sha256": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+      "lane_replay_runner_sha256": "253b8c8755b556f9b18c90f4622979309bc6f11a3947507ca3f37427acfd8555",
+      "portfolio_runner_sha256": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5"
+    }
+  },
+  "temporal_scope": {
+    "candidate_announcement_titles_preregistered": 13338,
+    "candidate_windows": 370,
+    "causal_available_from_2022_rows_selector_used": false,
+    "causal_available_from_2022_titles_classified": false,
+    "causal_available_from_2022_titles_read": false,
+    "latest_candidate_decision_at": "2021-11-15T15:00:00+08:00",
+    "route_keys_selected_and_frozen_before_title_read": 13338,
+    "rows_causal_available_from_2022": 218,
+    "rows_classified_and_selector_eligible_before_2022": 13338,
+    "sealed_route_rows_read_for_integrity_and_timing": 285347,
+    "title_access_order": "route index causal-window filter -> immutable role/snapshot/key/hash freeze -> routed nested-title projection -> exact one-to-one lineage join",
+    "title_route_selection_fields": [
+      "component_role",
+      "snapshot_id",
+      "announcement_key",
+      "raw_record_sha256",
+      "causal_available_at"
+    ],
+    "title_route_selection_sha256": "bb3b06d01b06abfd19f161ded5fb9bf6f20b0d7b7d1d3f92ad2a429a93cd81f7"
+  }
+}

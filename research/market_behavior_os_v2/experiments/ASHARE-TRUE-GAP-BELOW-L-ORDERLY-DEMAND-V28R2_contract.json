@@ -1,0 +1,38 @@
+{
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "economic_hypothesis": "A recovered key cost zone is more credible when buyers regain it through orderly two-sided trade. Signal-day value above twice the stock's own preceding-month median is more likely to be a crowded terminal scramble whose next-session entry pays for already-realized demand rather than fresh acceptance.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+  "governance": {
+    "identity_frozen_before_development_outcome_open": true,
+    "later_diagnostic_authorization_created": false,
+    "parent_v27_v28_v28r1_are_retrospective": true,
+    "post_2021_entries_and_outcomes_opened": false
+  },
+  "parent": "ASHARE-TRUE-GAP-BELOW-L-DEMAND-NOT-LOCKED-V28R1",
+  "retained_parent_gate": "V28R1 signal close strictly below registered up-limit by more than 0.006 CNY",
+  "scientific_status": "FROZEN_SECOND_DEVELOPMENT_CANDIDATE_LATER_DATA_LOCKED",
+  "single_additional_gate": {
+    "condition": "signal-day amount <= 2.0 * median(amount over the 20 completed trading sessions strictly before the signal)",
+    "coverage": "exactly 20 completed trading sessions; every row hard_valid with snapshot_id and available_at<=decision_at",
+    "input": "registered CY033 raw CNY amount only",
+    "missing_invalid_or_unknown": "fail closed",
+    "signal_day_in_baseline": false,
+    "threshold_search": "NONE_IN_THIS_RUN; 2.0 was frozen before outcome replay"
+  },
+  "success": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "average_holding_sessions_strictly_less_than": 15.0,
+    "each_development_signal_year_mean_net_positive": true,
+    "mean_net_min": 0.04
+  },
+  "unchanged": {
+    "entry_target_horizon_stop_cost": "unchanged next legal 1m entry/A67/H20/no stop/40bp",
+    "execution_lineage_and_T1": "unchanged",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "v27_M20_F14_R5": true,
+    "v28_liquidity_trap_and_non_st_gates": true
+  }
+}

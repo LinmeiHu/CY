@@ -1,0 +1,193 @@
+{
+  "causal_available_from_2022_titles_classified_or_selector_used": false,
+  "causal_available_from_2022_titles_read": false,
+  "cy036r1_identity": {
+    "activation_audit_sha256": "a54d35adab885e1aa789685f7c56cb916f15fdc167d46a320804b05538c9ddb0",
+    "asset_manifest_sha256": "327d1ded0866405cfb1ca9d8f5c371042dae3fbea6f89cd32dca4d096ed12d98",
+    "asset_root": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1",
+    "base_component_root": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture",
+    "base_nested_files_verified": 4451,
+    "bounded_authorization_sha256": "d8f43b5e3d0e073ce27cbadbbb4b0b5b84beb8c9ac79f378fc1f224412237ffa",
+    "composite_sha256": "f9bf1a275fa5a3294ed7c571eef583cb88c7f3e011a397acfd5d616bf4225af3",
+    "data_asset_registry_sha256": "c6baedeb2f9573b9600fc5e9daf2974b415efda9ade5588b981d2fa5cbe9cef3",
+    "registered_asset_entry_sha256": "5fa90cc2acd8763297c34be80025a8dbfda4b4107a85742a8d8309ab8fda7eb8",
+    "sse_nested_files_verified": 4606,
+    "title_route_contract": {
+      "build_time_title_handling": {
+        "nested_sealer_reparsed_and_validated_title_metadata_from_raw_pages": true,
+        "wrapper_classified_title_column": false,
+        "wrapper_projected_or_copied_title_column": false
+      },
+      "causal_cutoff_column": "causal_available_at",
+      "causal_cutoff_relation": "causal_available_at <= decision_at",
+      "component_selection_key": "component_role",
+      "join_cardinality": "one_to_one",
+      "nested_join_keys": [
+        "snapshot_id",
+        "announcement_key"
+      ],
+      "nested_title_column": "title",
+      "post_join_exact_fields": [
+        "raw_record_sha256",
+        "symbol",
+        "exchange",
+        "source_publication_field",
+        "source_publication_value",
+        "source_query_date_field",
+        "source_query_date"
+      ],
+      "required_access_order": [
+        "Validate CY-036-R1 and filter announcement_route_index.parquet using window_start <= causal_available_at <= decision_at.",
+        "Freeze the selected component_role, snapshot_id, announcement_key and lineage hashes before opening a nested title column.",
+        "Open only the routed nested announcements rows for those frozen keys, then enforce the exact one-to-one join and lineage equality."
+      ],
+      "roles": {
+        "BASE_SZSE_AUTHORITATIVE": {
+          "expected_exchange": "SZSE",
+          "inventory_role": "base_nested_announcements",
+          "nested_announcements_path": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture/announcements.parquet",
+          "snapshot_id": "exchange-announcement-258a32a6e4694987f22fb8386ee72683508fc91192becdc2fa2556fb57deddf3"
+        },
+        "SSE_FULL_HISTORY_AUTHORITATIVE": {
+          "expected_exchange": "SSE",
+          "inventory_role": "sse_full_history_nested_announcements",
+          "nested_announcements_path": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1/sse_full_history_capture/announcements.parquet",
+          "snapshot_id": "exchange-announcement-48401c3861b9fc7e4721e4ae99be83c4ae010cf7fe4ca90ae31be316041f6b33"
+        }
+      },
+      "route_index_selection_fields": [
+        "component_role",
+        "snapshot_id",
+        "announcement_key",
+        "raw_record_sha256"
+      ],
+      "unmatched_or_duplicate_policy": "FAIL_CLOSED_NO_SILENT_ROW_LOSS_OR_DEDUPLICATION"
+    }
+  },
+  "development": {
+    "classified_event_identity_sha256": "db75ab2e35ef68ae3ce4ec0d905ee8cec77d4e65434a69720c7aab807f0a3ee0",
+    "classified_events_sha256": "183370ff9223c6dac78244e9ca3ffe68616bfb392ad8053f796099bf14fbaea9",
+    "parent_signals": 370,
+    "rejected_entries_sha256": "0d8ce59c8cfbd479aa772ded90e4273b5e5808d34150417031b3d5c65e61bf06",
+    "rejected_gap_identity_sha256": "0375c700ab8ceeaa8635775ccff838961ad37b6e509b68951ecb49d1c35ef116",
+    "rejected_incomplete_coverage": 0,
+    "rejected_recent_open_event": 60,
+    "rejected_risk_family_signal_counts": {
+      "CONTROLLER_FUND_MISAPPROPRIATION": 51,
+      "ILLEGAL_GUARANTEE": 2,
+      "ISSUER_BANK_ACCOUNT_FREEZE": 2,
+      "REGULATORY_INVESTIGATION": 5,
+      "RISK_WARNING_OR_DELISTING": 3
+    },
+    "rejected_signals": 60,
+    "selected_by_signal_year": {
+      "2018": 269,
+      "2019": 12,
+      "2020": 9,
+      "2021": 20
+    },
+    "selected_entries_sha256": "8281ce69908d24d76e20bad0ab84aabc5f8a6c40e2e11ce8fa112472bcdfd2fb",
+    "selected_gap_identity_sha256": "6d4d4a077bb919d0a2e300870d9b20b12cb12df77700c24acaf54ad19dd973ab",
+    "selected_signals": 310,
+    "selector_audit_sha256": "5a5f341d669734414dc8093e5acd09f822264a91fe57cb768edfd2b7247ef654",
+    "title_route_selection_sha256": "bb3b06d01b06abfd19f161ded5fb9bf6f20b0d7b7d1d3f92ad2a429a93cd81f7"
+  },
+  "development_outcomes_opened": "NO_BYTES_HASHED_ONLY",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1",
+  "parent_development_result_parsed": false,
+  "post_2021_query_partition_collected_or_opened": false,
+  "protocol_hashes": {
+    "classifier_runner_sha256": "66e6ae928ffb2deed983c1933cf08a06a93aa9261b81f9331fa96881d75b9879",
+    "parent_development_result_sha256": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9",
+    "parent_runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+    "parent_source_hashes_streamed_without_parsing": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "parent_stage_a_sha256": "3655b7f67bd4728e2b610123ee075219b174461c24a48cb6064fe6cc9c04c5f9",
+    "preregistration_sha256": "583e35cf4722daf569feec8bc64118cf430aa5b278b4c7149d6147ef79504b34",
+    "prior_v29_blocker_sha256": "42c3848ac9244e4ea7288f71594e639a3889b0a19e4036ee9955b82c55b91a7d",
+    "software_hashes": {
+      "execution_repair_runner_sha256": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+      "lane_replay_runner_sha256": "253b8c8755b556f9b18c90f4622979309bc6f11a3947507ca3f37427acfd8555",
+      "parent_selector_runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+      "portfolio_runner_sha256": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5"
+    }
+  },
+  "rule": {
+    "action": "OPEN only",
+    "close_treatment": "CLOSE_NEVER_SHORTENS_120_CALENDAR_DAY_COOLDOWN",
+    "families": [
+      "RISK_WARNING_OR_DELISTING",
+      "REGULATORY_INVESTIGATION",
+      "ILLEGAL_GUARANTEE",
+      "CONTROLLER_FUND_MISAPPROPRIATION",
+      "ISSUER_BANK_ACCOUNT_FREEZE"
+    ],
+    "missing_or_unproven_coverage": "REJECT",
+    "window": "signal_time-120 calendar days <= causal_available_at <= signal_time"
+  },
+  "runner_sha256": "1e76c873a7b3285b3019cd8f6b01ab073efe04f575d66fbfdeabe4a637551f6e",
+  "stage": "DEVELOPMENT_IDENTITY_AND_EXECUTION_BINDING_BEFORE_OUTCOME_OPEN",
+  "stage_b_binding_frozen_before_outcome_open": {
+    "constant_contract": {
+      "entry": "first legal buyable one-minute open strictly after the completed signal",
+      "failure_stop": "NONE",
+      "maximum_holding_sessions": 20,
+      "portfolio": "Main/ChiNext 50/50",
+      "portfolio_k_per_sleeve": 80,
+      "round_trip_cost": 0.004,
+      "side_cost_entry": 0.002,
+      "side_cost_exit": 0.002,
+      "target": "entry + 0.67 * (L - entry), strictly below L",
+      "target_fraction": 0.67
+    },
+    "join_fields": [
+      "symbol",
+      "signal_date",
+      "signal_time",
+      "entry_date",
+      "entry_time",
+      "entry_status",
+      "entry_cal_idx",
+      "entry_raw_price",
+      "entry_coordinate_factor",
+      "entry_coordinate_price",
+      "entry_invalid_step_cum",
+      "up_limit_price",
+      "entry_at_or_before_signal",
+      "entry_after_signal_period_boundary",
+      "buy_at_or_above_up_limit"
+    ],
+    "parent_source_hashes": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "software_hashes": {
+      "execution_repair_runner_sha256": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+      "lane_replay_runner_sha256": "253b8c8755b556f9b18c90f4622979309bc6f11a3947507ca3f37427acfd8555",
+      "parent_selector_runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+      "portfolio_runner_sha256": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5"
+    }
+  },
+  "temporal_scope": {
+    "candidate_windows": 370,
+    "causal_available_from_2022_rows_selector_used": false,
+    "causal_available_from_2022_titles_classified": false,
+    "causal_available_from_2022_titles_read": false,
+    "latest_candidate_decision_at": "2021-11-15T15:00:00+08:00",
+    "route_keys_selected_and_frozen_before_title_read": 13338,
+    "rows_causal_available_from_2022": 218,
+    "rows_classified_and_selector_eligible_before_2022": 13338,
+    "sealed_route_rows_read_for_integrity_and_timing": 285347,
+    "title_access_order": "route index causal-window filter -> immutable role/snapshot/key/hash freeze -> routed nested-title projection -> exact one-to-one lineage join",
+    "title_route_selection_fields": [
+      "component_role",
+      "snapshot_id",
+      "announcement_key",
+      "raw_record_sha256",
+      "causal_available_at"
+    ],
+    "title_route_selection_sha256": "bb3b06d01b06abfd19f161ded5fb9bf6f20b0d7b7d1d3f92ad2a429a93cd81f7"
+  }
+}

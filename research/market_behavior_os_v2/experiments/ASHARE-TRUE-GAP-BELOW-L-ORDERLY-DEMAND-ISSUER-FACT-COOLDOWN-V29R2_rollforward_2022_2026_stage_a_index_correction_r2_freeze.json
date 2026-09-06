@@ -1,0 +1,117 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2-ROLLFORWARD-2022-2026-STAGE-A-INDEX-CORRECTION-R2",
+  "frozen_at": "2026-09-06T08:09:51+08:00",
+  "status": "FROZEN_AFTER_FAIL_CLOSED_PRETITLE_ATTEMPT_BEFORE_TITLE_CLASSIFICATION",
+  "trigger": "PARQUET_RANGEINDEX_VS_SOURCE_INDEX_IDENTITY_CHECK",
+  "root_cause": "The first CY-062 Stage-A attempt selected the correct 7,925 title-free causal-window rows but retained their non-contiguous source DataFrame index in memory. Parquet index=False intentionally omitted those implementation-only labels and reloaded with RangeIndex, so an otherwise exact 19-column frame comparison failed closed before candidate-window title projection or classification.",
+  "rule_or_threshold_changed": false,
+  "title_classification_had_started": false,
+  "stage_b_had_started": false,
+  "fix": {
+    "operation": "reset_index(drop=True)",
+    "applied_before": "exclusive title_route_selection parquet persistence",
+    "semantic_effect": "NONE; index labels are not a parquet data column and are not announcement, signal, causal-time, classifier, selector, execution, or portfolio state",
+    "all_19_columns_values_dtypes_and_order_unchanged": true,
+    "independently_reproduced_first_difference": true
+  },
+  "predecessor_identity": {
+    "asset_id": "CY-062",
+    "asset_root": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1",
+    "asset_manifest_sha256": "6a4f1bcbeb443aff7d7233948e6236ae16f1b2a75461a8598acf62b6bb530922",
+    "activation_audit_sha256": "436f1d9445184ac08d5c0ddb0baa1bdcecdb64d64662d1cfa93c616481800f6c",
+    "announcement_route_index_sha256": "ddcd4717bf3301d99d4df3d4b6908620b701b95eaebbc06215107409f2fda679",
+    "calendar_coverage_correction_r1_sha256": "9634653e47f6578091cfc6f95ff732dfad8678829e578be81204f62c5cca6f2a",
+    "failure_audit_sha256": "3e3d644e1bdf18df6b31385a41941c2d8a280af5357b53474d582df65a19c2d4",
+    "failure_audit_correction_v2_sha256": "49f4fa1a2079f0c4533e13c78e19724d67ac77dd7338e4fe13b17043c1864810",
+    "failed_title_route_sha256": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3",
+    "failed_pretitle_freeze_sha256": "7cc9c9493251cf647f555cc2c157a13bf24428b678b2272412f409b882cc0925",
+    "failed_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_through_20260904_v1",
+    "failed_output_root_and_stage_a_mode": "0555",
+    "failed_files_mode": "0444",
+    "preservation": "IMMUTABLE; never delete, overwrite, reuse, resume, or silently reinterpret"
+  },
+  "authoritative_failure_disclosure": {
+    "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_stage_a_attempt1_failure_audit_correction_v2.json",
+    "sha256": "49f4fa1a2079f0c4533e13c78e19724d67ac77dd7338e4fe13b17043c1864810",
+    "supersedes_only_inaccurate_access_and_recovery_wording_in_v1": true
+  },
+  "failed_attempt": {
+    "sealed_title_bearing_sources_mechanically_revalidated": true,
+    "candidate_title_projection_or_classification_before_key_freeze": false,
+    "candidate_title_inspection_or_selector_use_before_key_freeze": false,
+    "outcome_and_daily_bytes_hashed_for_identity": true,
+    "outcome_or_daily_parquet_content_rows_parsed": false,
+    "performance_statistics_computed_or_viewed": false,
+    "portfolio_replay_started": false
+  },
+  "unchanged_scientific_contract": {
+    "parent": "exact frozen V28R2 selected identity",
+    "source": "immutable registered CY-062 PIT-B dual-route bytes",
+    "causal_window": "signal_time minus 120 calendar days <= causal_available_at <= signal_time",
+    "classifier": "EXCHANGE_ISSUER_RISK_TITLE_RULES_V2",
+    "admit": "zero V2 explicit OPEN issuer-fact titles in the inclusive window",
+    "close_treatment": "CLOSE never shortens the cooldown",
+    "missing_or_unproven_coverage": "FAIL_CLOSED",
+    "execution": "first legal post-signal minute open, A67 target, H20 evaluable clock, 20 bp per side, K80 per Main/ChiNext sleeve"
+  },
+  "new_identity": {
+    "asset_id": "CY-063",
+    "asset_root": "/Users/linmei/Documents/CY/data/staging/CY-063-V29R2-ISSUER-FACT-ROLLFORWARD-INDEX-CORRECTION-2022-2026-V1",
+    "component_assets": [
+      "CY-062"
+    ],
+    "corrected_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1",
+    "output_root_must_be_absent_at_wrapper_build": true,
+    "failed_corrected_attempt_must_be_preserved_and_cannot_move_to_another_root": true
+  },
+  "stage_a_contract": {
+    "new_runner_locally_orchestrates_and_does_not_relabel_predecessor_outputs": true,
+    "predecessor_stage_a_pure_transform_functions_only": true,
+    "candidate_window_route_must_use_range_index_before_exclusive_write": true,
+    "pretitle_route_and_freeze_must_be_0444_before_title_projection": true,
+    "stage_a_exact_inventory_files": 7,
+    "verify_replays_route_title_projection_classification_selector_and_selected_rejected_frames": true,
+    "authoritative_freeze_binds_cy063_cy062_new_and_predecessor_runner_and_this_r2": true
+  },
+  "stage_b_contract": {
+    "expected_stage_a_sha256_required": true,
+    "expected_stage_a_sha256_must_be_independently_supplied": true,
+    "pre_outcome_attempt_seal_required": true,
+    "attempt_seal_exclusive_and_mode_0444": true,
+    "attempt_seal_after_all_preflight_before_outcome_or_daily_content_parse": true,
+    "second_attempt_same_or_alternate_output_root_prohibited": true,
+    "execution_and_portfolio": "unchanged A67 H20 40-bp K80"
+  },
+  "software_identity": {
+    "correction_asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_index_correction_asset_v29r2.py",
+      "sha256": "69e6443cc15dd892b8581799f84d20936d8435e5b1a02ba0c88b33eb04b0f34f"
+    },
+    "rollforward_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_index_correction.py",
+      "sha256": "a867e5bbf54e09fa9b492df3eea437773e995e75c2d2093dab60b7e59438e584"
+    },
+    "predecessor_asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_asset_v29r2.py",
+      "sha256": "3eeeca68c8160ddaee564a5319b4be49a4f4e84be26b2a9d6a1293d5387e1e8f"
+    },
+    "predecessor_rollforward_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_rollforward.py",
+      "sha256": "bf810eb80cf7ee1b71c780515cfdc8cb1bbde26b640d32b6d97c9c22a6bd594b"
+    }
+  },
+  "parent_identity": {
+    "selected_sha256": "825d5a0dc81a1c242d8e8fb250511f298876f8750ae7374d4657d49abe1fb918",
+    "outcomes_sha256": "973e90149f04a2545443e5ec117c1326eafee849c27748f0739d53f71782ac62",
+    "outcome_daily_sha256": "4a7f0351c19ca6584c5b686a3e90d833583a44910f96dc96f45f1d4db8fee93c"
+  },
+  "scientific_periods": {
+    "2022_2024": "DEPENDENT_FIXED_RULE_VALIDATION_NOT_PRISTINE_OOS",
+    "2025_2026": "POST_SELECTION_TEMPORAL_DIAGNOSTIC_ONLY"
+  },
+  "evidence_grade": "PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE",
+  "v29r1": {
+    "status": "RETIRED_NOT_ROLLED",
+    "later_period_computation": "PROHIBITED_BY_IMMUTABLE_SEMANTIC_BLOCKER"
+  }
+}

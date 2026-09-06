@@ -1,0 +1,46 @@
+{
+  "audit_id": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2-STAGE-A-ABORTED-FULL-REGISTRY-CHURN-V1",
+  "created_at": "2026-09-05T21:45:00+08:00",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2",
+  "status": "ABORTED_BEFORE_DEVELOPMENT_OUTCOME_OPEN",
+  "reason": "The original Stage-A identity incorrectly included the byte SHA of the complete central registry. Stage B failed closed when unrelated registry bytes changed even though the target CY-036-R2 asset entry and bounded authorization were unchanged.",
+  "first_differing_state": {
+    "field": "cy036r2_identity.data_asset_registry_sha256",
+    "frozen_sha256": "94e77032744d265ecaa7fbbbbcb025d1d908616f03ecee8329f3a5d06e6e85f3",
+    "observed_failure_sha256_prefix": "3853b8",
+    "frozen_registered_asset_entry_sha256": "42168e1a0d9b21da0c3d033c2c5a8c6e4fe80f3153ea3aeb40ecbaf3ecb7b186",
+    "observed_registered_asset_entry_sha256": "42168e1a0d9b21da0c3d033c2c5a8c6e4fe80f3153ea3aeb40ecbaf3ecb7b186",
+    "frozen_bounded_authorization_sha256": "51d63697a5503528fbdcfaf8793f5364fe41decdd14838acea5746caa782e891",
+    "observed_bounded_authorization_sha256": "51d63697a5503528fbdcfaf8793f5364fe41decdd14838acea5746caa782e891"
+  },
+  "outcome_access_audit": {
+    "stage_b_entered_outcome_reader": false,
+    "development_outcome_bytes_parsed": false,
+    "development_result_created": false,
+    "development_report_created": false,
+    "post_2021_data_opened": false
+  },
+  "aborted_stage_a": {
+    "freeze_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_stage_a_aborted_full_registry_churn_freeze.json",
+    "freeze_sha256": "cf4ecace80d26531eea3d06fac499ee29f85ea7f94545f93577e6cfc3aa16272",
+    "runner_sha256": "8156d886f136a779fa3df0c19945f6b5ec38f9489a55ff7b36313ba75d3546f1",
+    "external_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_orderly_demand_issuer_fact_cooldown_v29r2_aborted_full_registry_churn_stage_a",
+    "output_sha256": {
+      "issuer_fact_classified_events.parquet": "53b2d3b027e4aca26d788fa63613e6dbaff826a647e6bccf707d5bf62b4a3863",
+      "issuer_fact_rejected_entries.parquet": "4b686b2f07ebd26917e2863c7161ec22bcec7c82e5a70727113f25f319b5d75a",
+      "issuer_fact_selected_entries.parquet": "dbb43e8c623a098d30f15e374f5d7d843241b232e72d9a107d25797f4f8f0c65",
+      "issuer_fact_selector_audit.parquet": "77da8a5f4a7026130fc9d20320608f0ab49dee6fac61c7d77266450787aeffea",
+      "issuer_fact_title_route_selection.parquet": "bb3b06d01b06abfd19f161ded5fb9bf6f20b0d7b7d1d3f92ad2a429a93cd81f7"
+    }
+  },
+  "corrective_control": {
+    "runner_sha256": "20e67ddb9256568e177f3569e7325b6ea5245ccd943bb34829507239c0114520",
+    "current_registry_sha256_after_protocol_rebind": "a9db65e17e04db7f5c47b8124ef1d0c42aa1e05a68a5194c917b19f61ade3c88",
+    "current_registered_asset_entry_sha256": "42168e1a0d9b21da0c3d033c2c5a8c6e4fe80f3153ea3aeb40ecbaf3ecb7b186",
+    "current_bounded_authorization_sha256": "ad5cfb22e2e32b5dd8c36db7e3f32723f8a5ac36032266fa768dffa6379767d4",
+    "stage_a_identity_scope": "Exact normalized CY-036-R2 asset entry, exact normalized bounded authorization, and every bound artifact. The complete registry remains validated but unrelated registry container bytes are excluded from the frozen experiment identity.",
+    "target_asset_or_authorization_drift_policy": "FAIL_CLOSED",
+    "unrelated_registry_byte_drift_policy": "ALLOWED_ONLY_AFTER_COMPLETE_REGISTRY_VALIDATION",
+    "old_stage_a_reuse_allowed": false
+  }
+}

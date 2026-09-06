@@ -1,0 +1,199 @@
+{
+  "suggestion_schema": "CY_DATA_REGISTRY_PATCH_SUGGESTION_V1",
+  "created_at": "2026-09-06T07:40:35+08:00",
+  "apply_policy": "Independent review and central registry validation are required before Stage A; this file is not itself an authorization.",
+  "asset": {
+    "asset_id": "CY-062",
+    "name": "Bounded V29R2 2022-2026 routed issuer-fact announcement roll-forward wrapper",
+    "kind": "bounded_exchange_issuer_announcement_pit_b_research_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1",
+    "source": "Immutable dual-route wrapper over official current-enumeration exchange announcement metadata: full-history SSEDATE membership for the exact 39 parent SSE symbols and bounded publishTime membership for the exact parent SZSE symbols; construction is title-free and binds the exact V28R2 parent bridge.",
+    "coverage": {
+      "sse_query_start": "1990-12-19",
+      "szse_query_start": "2021-10-18",
+      "query_end": "2026-08-03",
+      "signal_start": "2022-01-01",
+      "signal_end": "2026-08-03",
+      "outcome_end": "2026-09-04",
+      "source_capture_symbols": 227,
+      "symbols": 188,
+      "sse_symbols": 39,
+      "szse_symbols": 149,
+      "route_rows": 149545
+    },
+    "schema_and_units": "One immutable title-free route-index row per announcement_key with exchange-local source publication and availability fields sufficient for deterministic conservative causal-time derivation, authoritative component role, nested snapshot identity and raw-record SHA-256; causal_available_at is materialized only in the Stage-A title-free freeze, before any title projection.",
+    "quality_evidence": {
+      "asset_manifest_sha256": "6a4f1bcbeb443aff7d7233948e6236ae16f1b2a75461a8598acf62b6bb530922",
+      "activation_audit_sha256": "436f1d9445184ac08d5c0ddb0baa1bdcecdb64d64662d1cfa93c616481800f6c",
+      "announcement_route_index_sha256": "ddcd4717bf3301d99d4df3d4b6908620b701b95eaebbc06215107409f2fda679",
+      "route_rows": 149545,
+      "sse_full_history_canonical_announcements": 54662,
+      "szse_window_canonical_announcements": 145358,
+      "sse_window_full_history_overlap_keys": 21460,
+      "sse_window_full_history_key_or_record_differences": 0,
+      "title_column_absent_from_route_index": true,
+      "title_projected_or_classified_during_build": false,
+      "outcome_content_opened_during_build": false,
+      "wrapper_validation_pass": true
+    },
+    "lineage": {
+      "record_available_at": true,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/asset_manifest.json",
+      "manifest_sha256": "6a4f1bcbeb443aff7d7233948e6236ae16f1b2a75461a8598acf62b6bb530922",
+      "component_assets": [
+        "CY-033"
+      ],
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-ISSUER-FACT-V29R2-ROLLFORWARD-2022-2026-V1",
+      "pipeline_version": "exchange-issuer-fact-rollforward-wrapper-v29r2-v1"
+    },
+    "allowed_uses": [
+      "V29R2 exact-key official-title issuer-fact classification for frozen 2022-2026 parent-signal cooling windows after a persisted title-free route-key freeze",
+      "one exact dependent validation and temporal-diagnostic replay under the separately registered bounded authorization"
+    ],
+    "blocked_uses": [
+      "V29R1 fallback semantics, alternate taxonomies, parameter search, threshold tuning, execution changes or rescue experiments",
+      "strict PIT-A, complete revision-vintage, pristine-OOS, live trading, sizing or order-generation claims",
+      "treating missing or unproven announcement coverage as zero events or using any unbound parent file"
+    ],
+    "activation_gates": [
+      "central bounded authorization CYQ-AUTH-ASHARE-ISSUER-FACT-V29R2-ROLLFORWARD-2022-2026-V1 exists and the complete registry validates",
+      "wrapper manifest, activation audit, route index, correction freeze, software and all recursive nested source seals remain hash-identical",
+      "runtime persists and makes read-only the exact title-free causal-window route keys before any title projection",
+      "runtime exact-joins the frozen V28R2 bridge only after immutable Stage-A verification and replays unchanged A67 H20 40-bp K80 semantics",
+      "PIT-B current-enumeration and 2025-2026 post-selection limitations remain explicit"
+    ]
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-ISSUER-FACT-V29R2-ROLLFORWARD-2022-2026-V1",
+    "purpose": "ASHARE_ISSUER_FACT_V29R2_ROLLFORWARD_2022_2026",
+    "asset_id": "CY-062",
+    "dependency_asset_id": "CY-033",
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "1990-12-19",
+      "end": "2026-09-04",
+      "sse_query_start": "1990-12-19",
+      "szse_query_start": "2021-10-18",
+      "announcement_query_end": "2026-08-03",
+      "signal_start": "2022-01-01",
+      "signal_end": "2026-08-03",
+      "outcome_end": "2026-09-04"
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/asset_manifest.json",
+      "sha256": "6a4f1bcbeb443aff7d7233948e6236ae16f1b2a75461a8598acf62b6bb530922"
+    },
+    "bound_artifacts": [
+      {
+        "role": "activation_audit",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/activation_audit.json",
+        "sha256": "436f1d9445184ac08d5c0ddb0baa1bdcecdb64d64662d1cfa93c616481800f6c"
+      },
+      {
+        "role": "asset_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_asset_v29r2.py",
+        "sha256": "3eeeca68c8160ddaee564a5319b4be49a4f4e84be26b2a9d6a1293d5387e1e8f"
+      },
+      {
+        "role": "announcement_route_index",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/announcement_route_index.parquet",
+        "sha256": "ddcd4717bf3301d99d4df3d4b6908620b701b95eaebbc06215107409f2fda679"
+      },
+      {
+        "role": "calendar_coverage_correction_r1_freeze",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_calendar_coverage_correction_r1_freeze.json",
+        "sha256": "9634653e47f6578091cfc6f95ff732dfad8678829e578be81204f62c5cca6f2a"
+      },
+      {
+        "role": "collector",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/fetch_exchange_issuer_announcements_v1.py",
+        "sha256": "52eadae39e507667098ad389e7e44c60870c2a3f8722887f362218838ec098e3"
+      },
+      {
+        "role": "sealer",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/seal_exchange_issuer_announcements_v1.py",
+        "sha256": "dda822be65f78debacba0f1943a353fed0f6efe140a2f5ab94cbfd3e6c0039f8"
+      },
+      {
+        "role": "issuer_fact_classifier",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/classify_exchange_issuer_risk_events_v2.py",
+        "sha256": "127f62e551d4344ede9d41970ea7a6634f5f4b192fe2829a78eed8c72cf2da9d"
+      },
+      {
+        "role": "rollforward_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_rollforward.py",
+        "sha256": "bf810eb80cf7ee1b71c780515cfdc8cb1bbde26b640d32b6d97c9c22a6bd594b"
+      },
+      {
+        "role": "parent_selected",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/v28r2/selected_signals_2022_2026.parquet",
+        "sha256": "825d5a0dc81a1c242d8e8fb250511f298876f8750ae7374d4657d49abe1fb918"
+      },
+      {
+        "role": "parent_outcomes",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/v28r2/outcomes_2022_2026.parquet",
+        "sha256": "973e90149f04a2545443e5ec117c1326eafee849c27748f0739d53f71782ac62"
+      },
+      {
+        "role": "parent_outcome_daily",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/common/outcome_daily_2022_2026.parquet",
+        "sha256": "4a7f0351c19ca6584c5b686a3e90d833583a44910f96dc96f45f1d4db8fee93c"
+      },
+      {
+        "role": "retired_v29r1_semantic_blocker",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1_semantic_blocker.json",
+        "sha256": "df1654f143cf534c4101cd12671092e3dc61d475b439ff7ee75daca83cc5bd45"
+      },
+      {
+        "role": "v29r2_frozen_preregistration",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_preregistration.json",
+        "sha256": "076566c5cd85158997d39e4690c090e98110e85597d55ebf7d5b4fa0e63a5a3a"
+      },
+      {
+        "role": "v29r2_development_result",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_development_result.json",
+        "sha256": "dc1539b1bfaf6de09c0be34483a226643f167232e5df0e5caa2c5a2d8b3fec4b"
+      }
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_calendar_coverage_correction_r1_freeze.json",
+      "sha256": "9634653e47f6578091cfc6f95ff732dfad8678829e578be81204f62c5cca6f2a"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_calendar_coverage_correction_r1_freeze.json",
+      "sha256": "9634653e47f6578091cfc6f95ff732dfad8678829e578be81204f62c5cca6f2a",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_rollforward.py",
+      "runner_sha256": "bf810eb80cf7ee1b71c780515cfdc8cb1bbde26b640d32b6d97c9c22a6bd594b"
+    },
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": true,
+    "event_classification_authorized": true,
+    "validation_outcome_join_authorized": true,
+    "portfolio_replay_authorized": true,
+    "strict_pit_a_authorized": false,
+    "live_trading_authorized": false,
+    "v29r1_fallback_authorized": false,
+    "post_2024_pristine_validation_claim_authorized": false,
+    "allowed_uses": [
+      "classify only exact routed title rows inside frozen 2022-2026 parent-signal cooling windows after a persisted title-free route-key freeze",
+      "apply the unchanged V29R2 120-calendar-day issuer-fact cooldown and run one exact A67 H20 40-bp K80 roll-forward after Stage-A freeze"
+    ],
+    "blocked_uses": [
+      "V29R1 fallback semantics, alternate taxonomy, cooldown tuning, threshold search, execution changes or rescue experiments",
+      "unbound files, strict PIT-A claims, live trading, sizing or order generation",
+      "claiming 2025-2026 as pristine validation or treating missing unproven coverage as zero events"
+    ],
+    "known_limitations": [
+      "Official current-enumeration metadata is PIT-B because historical revision and deletion vintages are incomplete.",
+      "SSE causal availability uses the conservative later of original ADDDATE and SSEDATE plus one day; this is not proof of a complete archival publication vintage.",
+      "The parent outcomes were already consumed by V28 and a pre-Stage-A schema-only contract diagnostic opened their bytes without computing performance; no period is claimed to be untouched pristine OOS.",
+      "The known 2025-2026 behavior remains post-selection temporal diagnostic evidence rather than pristine validation."
+    ]
+  }
+}

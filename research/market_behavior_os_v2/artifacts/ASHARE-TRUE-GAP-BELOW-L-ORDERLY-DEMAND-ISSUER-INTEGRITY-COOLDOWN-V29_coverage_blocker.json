@@ -1,0 +1,59 @@
+{
+  "artifact": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29-COVERAGE-BLOCKER",
+  "blocked_asset_id": "CY-036",
+  "blocked_experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29",
+  "conclusion": {
+    "backtest_authorized": false,
+    "central_registry_registration_authorized": false,
+    "event_classification_opened": false,
+    "outcomes_opened": false,
+    "status": "FAIL_CLOSED_SSE_ADDDATE_DOMAIN_COVERAGE_NOT_PROVEN"
+  },
+  "evidence_snapshot": {
+    "announcements_parquet_sha256": "65096c160af25b172d6c310804036a4b6dc57031ae45b9b4f9af220f251b9a65",
+    "audit_validation_json_sha256": "9eb06d1bc0c2f12a8525120724e599d492a2b780cb4cbd5ae9dfb4bf08e7d24f",
+    "capture_end": "2021-12-31",
+    "capture_start": "2017-10-01",
+    "pit_grade": "B",
+    "revision_history_incomplete": true,
+    "snapshot_id": "exchange-announcement-258a32a6e4694987f22fb8386ee72683508fc91192becdc2fa2556fb57deddf3",
+    "source_manifest_json_sha256": "86381ed1027ea1836c70dd2648d35ba5e94d58683d9340f6a7dd5bbbc3b74a09",
+    "title_metadata_only": true
+  },
+  "frozen_at": "2026-09-05T19:57:11+08:00",
+  "independent_sse_url_audit": {
+    "audited_rows": 61007,
+    "comparison": "original ADDDATE versus SSEDATE in every captured SSE row with a unique official document URL",
+    "late_definition": "original ADDDATE > SSEDATE + 1 calendar day 00:00 Asia/Shanghai",
+    "late_rows": 57,
+    "maximum_lag_from_ssedate_days": 153.7874189814815,
+    "maximum_lag_from_v29r1_causal_floor_days": 152.7874189814815,
+    "official_document_urls_nonempty": 61007,
+    "official_document_urls_unique": 61007,
+    "result": "SSE permits late-added or backfilled rows whose ADDDATE is materially later than their SSEDATE query-membership date"
+  },
+  "reason": {
+    "coverage_failure": "The bounded capture enumerated SSE rows only where SSEDATE lay between 2017-10-01 and 2021-12-31. Because V29 gates events by ADDDATE-derived available_at, a row with ADDDATE inside a candidate's 120-day decision window may have an SSEDATE before 2017-10-01 and therefore be absent from this capture.",
+    "logical_scope": "The audit does not assert that a missing severe-risk row exists. It proves that absence cannot be established over the knowledge-time domain from the captured query-membership domain.",
+    "why_page_conservation_is_insufficient": "Exact pages, hashes, pagination totals, and within-query conservation prove only what each requested SSEDATE interval returned; they do not prove ADDDATE-domain completeness outside those requested intervals."
+  },
+  "required_remediation": {
+    "new_experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1",
+    "sse_causal_available_at": "max(original ADDDATE, SSEDATE + 1 calendar day 00:00 Asia/Shanghai)",
+    "sse_query_membership_coverage": "For every SSE symbol in the frozen V28R2 parent-candidate universe, enumerate SSEDATE from the SSE opening date 1990-12-19 through 2021-12-31.",
+    "szse_minimum_coverage": "publishTime from at least 2017-10-01 through 2021-12-31; date-only or midnight values become available at next calendar day 00:00 Asia/Shanghai"
+  },
+  "scope_guards": {
+    "post_2021_collection_or_classification": false,
+    "post_2021_outcome_access": false,
+    "v29_event_or_outcome_join_permitted": false,
+    "v29_source_may_be_registered_as_cy036": false
+  },
+  "software_hashes": {
+    "classifier_runner_sha256": "66e6ae928ffb2deed983c1933cf08a06a93aa9261b81f9331fa96881d75b9879",
+    "collector_runner_sha256": "52eadae39e507667098ad389e7e44c60870c2a3f8722887f362218838ec098e3",
+    "sealer_runner_sha256": "dda822be65f78debacba0f1943a353fed0f6efe140a2f5ab94cbfd3e6c0039f8",
+    "v29_preregistration_sha256": "663f5c8bd953983ac041f2279f6d43ea408182b15613b46d903661690d1f8c42",
+    "v29_runner_sha256": "f1281e4f213a3a088aad442d6308bbefdca5fb093b6612dd67acf1c08dd44d7d"
+  }
+}

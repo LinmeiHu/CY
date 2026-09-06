@@ -1,0 +1,39 @@
+{
+  "blocked_actions": [
+    "2022-2024 validation under the V29R1 title taxonomy",
+    "2025-or-later diagnostic use under the V29R1 title taxonomy",
+    "production, sizing, order generation or live-trading claims"
+  ],
+  "development_evidence": {
+    "classified_events_sha256": "183370ff9223c6dac78244e9ca3ffe68616bfb392ad8053f796099bf14fbaea9",
+    "controller_fund_misappropriation_open_announcement_rows": 53,
+    "controller_fund_misappropriation_open_announcement_symbols": 50,
+    "fund_family_rejected_signals": 51,
+    "fund_only_rejected_signals": 50,
+    "rejected_entries_sha256": "0d8ce59c8cfbd479aa772ded90e4273b5e5808d34150417031b3d5c65e61bf06",
+    "rejected_signals": 60,
+    "stage_a_freeze_sha256": "a73d30f7f254557bf9c13b54756e1b5277bf1099f6bd33d161ac734af4f0dc7e",
+    "stage_b_result_sha256": "b3da693163d0521a01107caf8d75532fd40c21c220c79ce0e2424809995e6cb5"
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1",
+  "finding": {
+    "economic_interpretation": "A title that merely names the mandatory related-party fund-occupation review does not establish that an issuer actually suffered controller fund misappropriation. Treating the noun phrase as an adverse event confounds issuer risk with annual and interim reporting seasons.",
+    "first_differing_semantic_state": "The V1 title classifier emitted OPEN for generic titles such as related-party fund-occupation special explanations, audit explanations and independent-director opinions even when the title contained no explicit adverse predicate, non-operating occupation, remediation, repayment, investigation or risk-warning language.",
+    "root_cause": "The CONTROLLER_FUND_MISAPPROPRIATION OPEN rule required only an actor noun and a fund-occupation noun after a narrow routine-report exclusion. The exclusion omitted common special-explanation, special-report and independent-opinion boilerplate.",
+    "severity": "MATERIAL_SELECTOR_SEMANTIC_INVALIDITY"
+  },
+  "governance": {
+    "announcement_source_asset_status": "CY-036-R1 remains an immutable PIT-B metadata source; this blocker concerns the V29R1 classification semantics, not source conservation or lineage.",
+    "development_result_status": "RETIRED_NOT_VALIDATION_ELIGIBLE",
+    "later_period_outcome_content_opened_for_this_audit": "NO_V29R1_OR_V29R2_LATER_PERIOD_OUTCOME_REPLAY; THE PREEXISTING V28R2 2022-2024 SUMMARY WAS ALREADY CONSUMED BY THE STRATEGY FAMILY",
+    "later_period_title_content_opened_for_this_audit": false,
+    "required_repair": "Freeze a new versioned high-precision taxonomy before any later-period title is opened. Ambiguous governance-review titles must be ignored unless the title itself contains an explicit adverse predicate. Rerun development with unchanged price, execution, target, horizon, cost and capacity semantics before authorizing validation.",
+    "validation_consumed": "V29R1_VALIDATION_NOT_CONSUMED"
+  },
+  "source_classifier": {
+    "path": "research/market_behavior_os_v2/scripts/classify_exchange_issuer_risk_events_v1.py",
+    "sha256": "66e6ae928ffb2deed983c1933cf08a06a93aa9261b81f9331fa96881d75b9879"
+  },
+  "status": "BLOCKED",
+  "version": 1
+}

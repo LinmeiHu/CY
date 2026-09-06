@@ -1,0 +1,286 @@
+{
+  "accepted_summary": {
+    "accepted_trades": 248,
+    "accepted_trades_per_year": 62.0,
+    "average_holding_sessions": 9.116935483870968,
+    "mean_net": 0.06576125925108306,
+    "median_net": 0.0683374144198049,
+    "severe10": 0.024193548387096774,
+    "win": 0.907258064516129,
+    "yearly_by_signal_year": {
+      "2018": {
+        "average_holding_sessions": 8.762886597938145,
+        "mean_net": 0.07089993161140512,
+        "median_net": 0.07450454218779023,
+        "severe10": 0.020618556701030927,
+        "trades": 194,
+        "win": 0.9329896907216495
+      },
+      "2019": {
+        "average_holding_sessions": 11.238095238095237,
+        "mean_net": 0.05313904032939738,
+        "median_net": 0.056102343005431266,
+        "severe10": 0.0,
+        "trades": 21,
+        "win": 0.8571428571428571
+      },
+      "2020": {
+        "average_holding_sessions": 13.0,
+        "mean_net": 0.06024672895130383,
+        "median_net": 0.06309563582580224,
+        "severe10": 0.0,
+        "trades": 10,
+        "win": 0.8
+      },
+      "2021": {
+        "average_holding_sessions": 8.478260869565217,
+        "mean_net": 0.03633993153154894,
+        "median_net": 0.04754786600042915,
+        "severe10": 0.08695652173913043,
+        "trades": 23,
+        "win": 0.782608695652174
+      }
+    }
+  },
+  "development_outcomes_opened": "YES_EXACT_HASH_BOUND_2018_2021_SIGNALS_ONLY",
+  "exact_join_audit": {
+    "canonicalization": {
+      "boolean": "strict bool/np.bool_ value",
+      "date_or_timestamp": "exact pandas Timestamp ISO-8601; no rounding or timezone conversion",
+      "float": "finite real source type then exact IEEE-754 float64 hexadecimal value",
+      "integer": "finite integral numeric source value then exact int64 value",
+      "string": "nonempty exact Unicode code-point sequence"
+    },
+    "exact_fields_equal": true,
+    "gap_identity_sha256": "6aacb57cfbb32c0b43c87e9b714e4a6c7726991e3ed9809b998beb9a6a3cdb72",
+    "identity_sets_equal": true,
+    "joined_outcome_rows": 347,
+    "selected_executable_rows": 347
+  },
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2",
+  "goal_checks": {
+    "accepted_trades_per_year_gt_50": true,
+    "average_holding_sessions_lt_15": true,
+    "each_signal_year_has_trades": true,
+    "each_signal_year_mean_positive": true,
+    "mean_net_ge_4pct": true
+  },
+  "hashes": {
+    "filtered_outcomes": "9f08d5ae59f1ce59a28f40e8ab90f37bcef0b51c94d76211c8fb021079d5a554",
+    "parent_outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+    "parent_outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4",
+    "portfolio_accepted": "6404fc96ef0c9d6c2fe5b6a718c7d31aa9679865d9ef36c35fe6e2b31ea034ca"
+  },
+  "lane": {
+    "accepted_trade_yearly": {
+      "2018": {
+        "mean_net": 0.07089993161140512,
+        "median_net": 0.07450454218779023,
+        "trades": 194
+      },
+      "2019": {
+        "mean_net": 0.05313904032939738,
+        "median_net": 0.056102343005431266,
+        "trades": 21
+      },
+      "2020": {
+        "mean_net": 0.06024672895130383,
+        "median_net": 0.06309563582580224,
+        "trades": 10
+      },
+      "2021": {
+        "mean_net": 0.03633993153154894,
+        "median_net": 0.04754786600042915,
+        "trades": 23
+      }
+    },
+    "attack_date_equal_mean": 0.04424223396600606,
+    "event_metrics": {
+      "cvar5": -0.08769684985751104,
+      "mean_holding_sessions": 7.9510086455331415,
+      "mean_net": 0.06308671936691611,
+      "median_holding_sessions": 5.0,
+      "median_net": 0.06371048419437364,
+      "severe10": 0.01729106628242075,
+      "target_hit": 0.8933717579250721,
+      "trades": 347,
+      "unique_dates": 54,
+      "unique_signals": 347,
+      "unique_symbols": 331,
+      "win": 0.9337175792507204,
+      "yearly": {
+        "2018": {
+          "mean_holding": 7.501706484641638,
+          "mean_net": 0.06599619815243644,
+          "median_net": 0.06543098383838442,
+          "severe10": 0.013651877133105802,
+          "trades": 293,
+          "win": 0.9556313993174061
+        },
+        "2019": {
+          "mean_holding": 11.238095238095237,
+          "mean_net": 0.05313904032939738,
+          "median_net": 0.056102343005431266,
+          "severe10": 0.0,
+          "trades": 21,
+          "win": 0.8571428571428571
+        },
+        "2020": {
+          "mean_holding": 13.0,
+          "mean_net": 0.06024672895130383,
+          "median_net": 0.06309563582580224,
+          "severe10": 0.0,
+          "trades": 10,
+          "win": 0.8
+        },
+        "2021": {
+          "mean_holding": 8.478260869565217,
+          "mean_net": 0.03633993153154894,
+          "median_net": 0.04754786600042915,
+          "severe10": 0.08695652173913043,
+          "trades": 23,
+          "win": 0.782608695652174
+        }
+      }
+    },
+    "executable_entries": 347,
+    "hashes": {
+      "outcomes": "9f08d5ae59f1ce59a28f40e8ab90f37bcef0b51c94d76211c8fb021079d5a554",
+      "portfolio_accepted": "6404fc96ef0c9d6c2fe5b6a718c7d31aa9679865d9ef36c35fe6e2b31ea034ca",
+      "portfolio_nav": "d32478557eff469cc76ac4049b28bcfd0ccb0ceb1e2fe3f84c8b5ff751ff1ac8"
+    },
+    "largest_year_trade_share": 0.782258064516129,
+    "maximum_exit_date_used": "2021-12-15",
+    "portfolio": {
+      "CHINEXT": {
+        "annual_returns": {
+          "2018": 0.057704962493114964,
+          "2019": 0.0029020501436565205,
+          "2020": 0.0014779305547945043,
+          "2021": 0.004405269686546864
+        },
+        "average_utilization": 0.008810665737991812,
+        "best_day": 0.01567933464376825,
+        "cagr": 0.016555783755371145,
+        "cvar5": -0.07741813098978752,
+        "max_drawdown": -0.00981917309083713,
+        "mean_holding_sessions": 8.407407407407407,
+        "mean_net": 0.06518673811962199,
+        "median_holding_sessions": 7.0,
+        "median_net": 0.05917708053744697,
+        "return_excluding_best_day": 0.050550202166886216,
+        "return_excluding_best_five_days": 0.022721301066319644,
+        "severe10": 0.024691358024691357,
+        "sharpe": 1.3834414309257312,
+        "top5_positive_trade_pnl_share": 0.1585130276482103,
+        "total_return": 0.06702213034673843,
+        "trades": 81,
+        "u_hit": 0.8518518518518519,
+        "win": 0.9135802469135802,
+        "worst_day": -0.004796291987739787
+      },
+      "COMBINED": {
+        "annual_returns": {
+          "2018": 0.08746077183940004,
+          "2019": 0.007109114897803748,
+          "2020": 0.0038376305400771304,
+          "2021": 0.005259814633425952
+        },
+        "average_utilization": 0.0146288126626559,
+        "best_day": 0.02037628508621081,
+        "cagr": 0.025636392774045946,
+        "cvar5": -0.10158149933120991,
+        "max_drawdown": -0.015496829810301649,
+        "mean_holding_sessions": 9.116935483870968,
+        "mean_net": 0.06576125925108306,
+        "median_holding_sessions": 7.0,
+        "median_net": 0.0683374144198049,
+        "return_excluding_best_day": 0.08310750092527552,
+        "return_excluding_best_five_days": 0.037657586053882586,
+        "severe10": 0.024193548387096774,
+        "sharpe": 1.4810128875238913,
+        "top5_positive_trade_pnl_share": 0.05938731500825852,
+        "top_five_entry_date_trade_share": 0.5846774193548387,
+        "total_return": 0.10517720814314191,
+        "trades": 248,
+        "u_hit": 0.8548387096774194,
+        "unique_entry_dates": 53,
+        "unique_symbols": 241,
+        "win": 0.907258064516129,
+        "worst_day": -0.00942102952603685
+      },
+      "MAIN": {
+        "annual_returns": {
+          "2018": 0.11721658118568534,
+          "2019": 0.011092078758999202,
+          "2020": 0.006053538768814537,
+          "2021": 0.0060586369350699165
+        },
+        "average_utilization": 0.02025303527444179,
+        "best_day": 0.024926373850612027,
+        "cagr": 0.03448578629013532,
+        "cvar5": -0.10449214451532787,
+        "max_drawdown": -0.021197263465624006,
+        "mean_holding_sessions": 9.461077844311378,
+        "mean_net": 0.06603991920107317,
+        "median_holding_sessions": 8.0,
+        "median_net": 0.07406958849942624,
+        "return_excluding_best_day": 0.1155262613099548,
+        "return_excluding_best_five_days": 0.05223966511597178,
+        "severe10": 0.023952095808383235,
+        "sharpe": 1.4712318865877552,
+        "top5_positive_trade_pnl_share": 0.08407029192532439,
+        "total_return": 0.1433322859395454,
+        "trades": 167,
+        "u_hit": 0.8562874251497006,
+        "win": 0.9041916167664671,
+        "worst_day": -0.013957031310732115
+      },
+      "audit": {
+        "capacity_skips": 93,
+        "duplicate_symbol_skips": 6,
+        "max_k_violation_count": 0,
+        "negative_cash_or_leverage_count": 0
+      }
+    },
+    "portfolio_accepted_trades": 248,
+    "portfolio_accepted_trades_per_year": 62.0,
+    "portfolio_cagr": 0.025636392774045946,
+    "portfolio_max_drawdown": -0.015496829810301649,
+    "portfolio_mean_net": 0.06576125925108306,
+    "portfolio_median_net": 0.0683374144198049,
+    "portfolio_severe10": 0.024193548387096774,
+    "portfolio_sharpe": 1.4810128875238913,
+    "portfolio_win": 0.907258064516129,
+    "positive_portfolio_years": 4,
+    "positive_trade_mean_years": 4,
+    "post_2023_signal_count": 0,
+    "rule": "D30_PRIOR_120D_PEAK_DRAWDOWN",
+    "selected_signals": 362,
+    "source_complete_outcomes": 347,
+    "source_hashes_opened_in_stage_b": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    }
+  },
+  "later_period_authorization_created": "NO",
+  "parent_result_source_binding": {
+    "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+    "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+  },
+  "post_2021_signal_selection_classification_or_validation_opened": "NO",
+  "selector_passed": true,
+  "stage": "DEVELOPMENT_EXACT_BOUND_OUTCOME_REPLAY",
+  "stage_a_verification": {
+    "parent_source_hashes": {
+      "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+      "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+    },
+    "runner_sha256": "20e67ddb9256568e177f3569e7325b6ea5245ccd943bb34829507239c0114520",
+    "selected_entries_sha256": "dbb43e8c623a098d30f15e374f5d7d843241b232e72d9a107d25797f4f8f0c65",
+    "selected_signals": 362,
+    "stage_a_freeze_sha256": "c9610486c2750ac40a6baee9f6aa74c5ef7daa35648bcd78074d5e3390e283df",
+    "verified": true
+  },
+  "verdict": "DEVELOPMENT_PASS_LATER_DATA_REMAINS_LOCKED"
+}

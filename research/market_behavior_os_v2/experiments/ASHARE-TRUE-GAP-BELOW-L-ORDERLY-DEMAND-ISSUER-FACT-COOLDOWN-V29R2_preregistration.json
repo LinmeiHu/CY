@@ -1,0 +1,115 @@
+{
+  "development": {
+    "candidate_title_population_already_consumed": true,
+    "outcomes_already_consumed_by_parent_and_retired_v29r1": true,
+    "scientific_role": "post-hoc development semantic repair; not independent confirmation",
+    "signal_years": [
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "success_contract": {
+      "accepted_trades_per_year_strictly_greater_than": 50,
+      "average_holding_sessions_strictly_less_than": 15,
+      "each_signal_year_mean_net_positive": true,
+      "mean_net_at_least": 0.04
+    }
+  },
+  "economic_hypothesis": "Price and volume can confirm that ordinary supply was absorbed, but an unresolved issuer-level solvency or integrity shock can create a discontinuous left tail. The guard may veto only an official title that itself states an issuer-level adverse fact. A governance document that merely discusses a risk topic is not the adverse fact.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2",
+  "frozen_at": "2026-09-05T21:00:45+08:00",
+  "knowledge_time": {
+    "sse": "max(original ADDDATE, SSEDATE + 1 calendar day 00:00 Asia/Shanghai)",
+    "szse": "source-second publishTime when present; otherwise publishTime date + 1 calendar day 00:00 Asia/Shanghai",
+    "unknown_missing_or_unprovable": "FAIL_CLOSED",
+    "window": "signal_time - 120 calendar days <= causal_available_at <= signal_time"
+  },
+  "later_period_protocol": {
+    "2022_2024": "Open exactly once only after the corrected 2018-2021 replay passes this frozen success contract. The parent V28R2 summary is already known, but V29R2 titles, selected identities and exact outcome replay remain unopened.",
+    "2025_plus": "Post-selection diagnostic only. Known 2025-2026 V27 behavior motivated the issuer-risk hypothesis and cannot be pristine validation evidence.",
+    "no_rule_change_after_open": true
+  },
+  "parent": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-V28R2",
+  "parent_identity": {
+    "development_result_sha256": "a923a3447eb37bf4c1d84b085354fa5f2d7fb1ecd9869e8abf89a0440f08fbb9",
+    "development_stage_a_sha256": "3655b7f67bd4728e2b610123ee075219b174461c24a48cb6064fe6cc9c04c5f9",
+    "runner_sha256": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af"
+  },
+  "retired_parent_correction": {
+    "blocked_experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1",
+    "semantic_blocker_sha256": "df1654f143cf534c4101cd12671092e3dc61d475b439ff7ee75daca83cc5bd45",
+    "v29r1_validation_consumed": false
+  },
+  "selector_identity_frozen_before_v29r2_outcome_replay": {
+    "candidate_announcement_titles": 13338,
+    "candidate_signals": 370,
+    "classified_open_by_family": {
+      "CONTROLLER_FUND_MISAPPROPRIATION": 1,
+      "ILLEGAL_GUARANTEE": 2,
+      "ISSUER_BANK_ACCOUNT_FREEZE": 2,
+      "REGULATORY_INVESTIGATION": 12,
+      "RISK_WARNING_OR_DELISTING": 3
+    },
+    "classified_open_rows": 20,
+    "classified_row_identity_sha256": "8164f6392c541bdbbe5467d0f4ea9d9a81332f2e579c470911a57b9f51530cb2",
+    "rejected_gap_ids": [
+      "000519.SZ|2018-01-31",
+      "002181.SZ|2018-10-11",
+      "002535.SZ|2019-11-22",
+      "300278.SZ|2021-01-26",
+      "600397.SH|2018-01-31",
+      "600568.SH|2019-08-02",
+      "600749.SH|2018-02-01",
+      "603111.SH|2018-08-20"
+    ],
+    "rejected_signals": 8,
+    "rejected_gap_identity_sha256": "b80cfadeb47fd9c86981263270e44f97d2ab937b57dda74ae0b528467814b492",
+    "selected_by_signal_year": {
+      "2018": 305,
+      "2019": 22,
+      "2020": 10,
+      "2021": 25
+    },
+    "selected_gap_identity_sha256": "fc0dac8e29829cc653bb7bb0b41fe66e336638f2ee510bb420baf124608245d5",
+    "selected_signals": 362
+  },
+  "semantic_rule": {
+    "close_treatment": "An explicit CLOSE never shortens the 120-calendar-day cooling period.",
+    "document_role_gate": "Independent-director opinions, routine special audit/review/explanation reports, related-fund-flow tables, lawyer/accountant/valuer/broker verification attachments, and inquiry replies cannot create or reset OPEN unless the title itself contains a new explicit adverse fact.",
+    "families": {
+      "CONTROLLER_FUND_MISAPPROPRIATION": "OPEN only for illegal transfer or an explicit fund-occupation event/state predicate such as occurrence, existence, non-operating occupation, unreturned funds, remediation or progress; generic topic/review titles are IGNORE.",
+      "ILLEGAL_GUARANTEE": "OPEN only for a non-derived event notice explicitly stating illegal guarantee or guarantee without required approval; an official notice that the issuer received an exchange inquiry is a new OPEN, while replies and verification attachments are IGNORE.",
+      "ISSUER_BANK_ACCOUNT_FREEZE": "Unchanged V1 issuer or subsidiary bank-account freeze fact rule.",
+      "REGULATORY_INVESTIGATION": "OPEN only for a securities regulator investigation of the issuer or an explicit issuer investigation progress/risk notice; police cases and titles explicitly naming a shareholder, controller, director or executive as the subject are IGNORE.",
+      "RISK_WARNING_OR_DELISTING": "Unchanged V1 risk-warning or delisting-risk fact rule."
+    },
+    "missing_or_unproven_coverage": "REJECT",
+    "rule": "Admit only when zero qualifying OPEN issuer-fact titles fall inside the inclusive prior 120-calendar-day window.",
+    "threshold_search": "NONE; 120 calendar days is carried unchanged from V29R1 so this experiment isolates the semantic repair."
+  },
+  "software_frozen_before_v29r2_outcome_replay": {
+    "classifier_path": "research/market_behavior_os_v2/scripts/classify_exchange_issuer_risk_events_v2.py",
+    "classifier_sha256": "127f62e551d4344ede9d41970ea7a6634f5f4b192fe2829a78eed8c72cf2da9d",
+    "execution_repair_runner_sha256": "b20967c009996c15679ec2d2774baa24101a867c70989dfde0721feaf757cd18",
+    "lane_replay_runner_sha256": "253b8c8755b556f9b18c90f4622979309bc6f11a3947507ca3f37427acfd8555",
+    "portfolio_runner_sha256": "a342243d2cf3b72c390d69d58e07c4e80669c7ae9988f6977675860590a22ce5"
+  },
+  "stage_b_constant_contract": {
+    "entry": "first legal buyable one-minute open strictly after the completed signal",
+    "failure_stop": "NONE",
+    "maximum_holding_sessions": 20,
+    "portfolio": "Main/ChiNext 50/50",
+    "portfolio_k_per_sleeve": 80,
+    "round_trip_cost": 0.004,
+    "side_cost_entry": 0.002,
+    "side_cost_exit": 0.002,
+    "target": "entry + 0.67 * (L - entry), strictly below L",
+    "target_fraction": 0.67
+  },
+  "stage_b_source_hashes": {
+    "outcome_daily": "c288f088c26657abc105f291e95217bdf79096bb5bc771cbc9d7e37c108b0d0f",
+    "outcomes": "6663b459b522018fb4ed274318fca02379250d07236f43c2e28ee70defed85b4"
+  },
+  "status": "SEMANTIC_REPAIR_AND_SELECTOR_IDENTITY_FROZEN_BEFORE_V29R2_OUTCOME_REPLAY"
+}

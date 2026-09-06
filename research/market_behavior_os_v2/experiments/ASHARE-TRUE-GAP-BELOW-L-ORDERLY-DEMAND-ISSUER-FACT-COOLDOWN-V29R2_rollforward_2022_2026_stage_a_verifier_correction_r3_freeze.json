@@ -1,0 +1,105 @@
+{
+  "protocol_schema": "CY_V29R2_STAGE_A_VERIFIER_ONLY_CORRECTION_R3_FREEZE_V1",
+  "created_at": "2026-09-06T00:34:28Z",
+  "status": "FROZEN_VERIFIER_ONLY_BEFORE_OUTCOME_ACCESS",
+  "asset_id": "CY-064",
+  "predecessor_asset_id": "CY-063",
+  "trigger": "PARQUET_SERIALIZATION_REPRESENTATION_VS_IN_MEMORY_EXACT_DTYPE_CHECK",
+  "cy063_stage_a_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1",
+  "cy063_stage_a_freeze_sha256": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658",
+  "cy063_stage_a_artifact_hashes": {
+    "classified_events.parquet": "1140acde5b10686371a51d6ac3a40573e21a8eb4feacd2c37373f5eb7f866d51",
+    "freeze.json": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658",
+    "pretitle_route_freeze.json": "5b142633fbde9f953bbb5376f0a7b653ce42e973d04d71e1ff485c7debb0eac0",
+    "rejected_entries.parquet": "f79baf069ec7b92aead6cac7fdf2107082b31bafce61a8801dda1f7752c7810d",
+    "selected_entries.parquet": "e5d4aba6aac8474b2e8580ebafc8a5089a0f621224d6ca4b0a061a612ba8a767",
+    "selector_audit.parquet": "d5e95fbb14905db793fdd68e2e782416601a4690dc121a480b1d85bbc4e11d24",
+    "title_route_selection.parquet": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3"
+  },
+  "discrepancy_audit": {
+    "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_cy063_stage_a_verifier_representation_failure.json",
+    "sha256": "e54169c257fff4d8aa6008c760f86f7db5c6abaad7558c82ad197472ce1d887f"
+  },
+  "verifier_only": true,
+  "new_stage_a_artifacts_or_selection_materialization": false,
+  "in_memory_deterministic_stage_a_verification_replay": true,
+  "in_memory_title_classification_verification_replay": true,
+  "rule_or_threshold_changed": false,
+  "source_causal_title_taxonomy_cooldown_selector_execution_or_portfolio_changed": false,
+  "canonical_comparator": {
+    "permitted_representation_columns": [
+      "available_at",
+      "risk_family"
+    ],
+    "available_at": {
+      "dtype_both": "DatetimeTZDtype[ns, Asia/Shanghai]",
+      "na_mask": "exact",
+      "utc_nanoseconds": "exact",
+      "only_permitted_difference": "pytz versus zoneinfo timezone backend object"
+    },
+    "risk_family": {
+      "dtype_both": "object",
+      "na_mask": "exact",
+      "non_null_type": "str",
+      "non_null_values": "exact",
+      "only_permitted_missing_scalars": [
+        "None",
+        "pd.NA"
+      ]
+    },
+    "all_other_columns": "dtype, value, column order, row order and index exact",
+    "selector_audit_selected_rejected": "strict frame exact after reclassification"
+  },
+  "verification_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_stage_a_verification_v1",
+  "verification_root_contract": {
+    "must_be_absent_before_verifier_only_run": true,
+    "exact_top_after_success": [
+      "verified_stage_a_freeze.json"
+    ],
+    "root_mode": "0555",
+    "file_mode": "0444",
+    "single_verification_attempt_only": true
+  },
+  "stage_b_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_through_20260904_v1",
+  "stage_b_contract": {
+    "must_be_absent_before_attempt": true,
+    "expected_outer_freeze_sha256_required": true,
+    "canonical_verifier_replay_before_outcome_parse": true,
+    "cy063_seven_file_hash_and_mode_recheck_before_outcome_parse": true,
+    "pre_outcome_attempt_seal_required": true,
+    "attempt_seal_is_first_top_level_file": true,
+    "attempt_seal_mode": "0444",
+    "single_attempt_only": true,
+    "selected_source": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/selected_entries.parquet",
+    "target": "A67",
+    "time_stop_horizon": "H20 clock; legal execution can extend across non-valid sessions",
+    "round_trip_cost": 0.004,
+    "portfolio_k_per_sleeve": 80
+  },
+  "scientific_boundary": {
+    "evidence_grade": "PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE",
+    "outcome_or_daily_parquet_content_rows_parsed_before_stage_b_attempt_seal": false,
+    "performance_statistics_computed_before_stage_b_attempt_seal": false,
+    "2022_2024": "DEPENDENT_FIXED_RULE_VALIDATION_NOT_PRISTINE_OOS",
+    "2025_2026": "POST_SELECTION_TEMPORAL_DIAGNOSTIC",
+    "v29r1_2022_2026": "BLOCKED_BY_IMMUTABLE_SEMANTIC_INVALIDITY"
+  },
+  "software_identity": {
+    "verifier_correction_asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_verifier_correction_asset_v29r2.py",
+      "sha256": "62a2ee454ab61fbd8d72a08725c751a710aa1cc52300095461b821b4c8d873cf"
+    },
+    "verifier_stage_b_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_verifier_correction.py",
+      "sha256": "9f4088144e41d1370830e25cfd0927feb98f230af2774bd8e5df382d112a7480"
+    },
+    "cy063_correction_asset_builder": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_index_correction_asset_v29r2.py",
+      "sha256": "69e6443cc15dd892b8581799f84d20936d8435e5b1a02ba0c88b33eb04b0f34f"
+    },
+    "cy063_rollforward_runner": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_index_correction.py",
+      "sha256": "a867e5bbf54e09fa9b492df3eea437773e995e75c2d2093dab60b7e59438e584"
+    }
+  }
+}

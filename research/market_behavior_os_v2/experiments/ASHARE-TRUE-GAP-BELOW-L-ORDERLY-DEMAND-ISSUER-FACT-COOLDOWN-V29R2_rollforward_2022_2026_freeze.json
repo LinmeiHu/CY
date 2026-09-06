@@ -1,0 +1,94 @@
+{
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2-ROLLFORWARD-2022-2026-V1",
+  "frozen_at": "2026-09-06T07:03:46+08:00",
+  "status": "FIXED_BEFORE_CURRENT_WINDOW_TITLE_CLASSIFICATION_AND_OUTCOME_JOIN",
+  "purpose": "Report the already-frozen V29R2 rule by signal year through the latest fully mature cohort; no rule, threshold, taxonomy, target, exit, capacity, or execution selection is permitted.",
+  "scientific_periods": {
+    "2022_2024": "ONE_TIME_FIXED_RULE_VALIDATION",
+    "2025_2026": "POST_SELECTION_TEMPORAL_DIAGNOSTIC_ONLY"
+  },
+  "data_boundary": {
+    "signal_start": "2022-01-01",
+    "fully_mature_signal_cutoff": "2026-08-03",
+    "outcome_data_end": "2026-09-04",
+    "announcement_query_start": "2021-10-18",
+    "announcement_query_end": "2026-08-03",
+    "annual_grouping": "signal_date calendar year",
+    "2026_label": "YTD_FULLY_MATURE_SIGNALS_ONLY"
+  },
+  "frozen_rule": {
+    "parent": "V28R2 unchanged",
+    "window": "signal_time minus 120 calendar days <= causal_available_at <= signal_time",
+    "admit": "zero V2-classified explicit OPEN issuer-fact titles in the inclusive window",
+    "close_treatment": "CLOSE never shortens the cooldown",
+    "missing_or_unproven_coverage": "REJECT",
+    "classifier_version": "EXCHANGE_ISSUER_RISK_TITLE_RULES_V2",
+    "entry_target_exit_cost_capacity": "unchanged first legal post-signal minute open, A67, H20, 20 bp per side, K80 per Main/ChiNext sleeve"
+  },
+  "knowledge_time": {
+    "sse": "max(original ADDDATE, SSEDATE plus 1 calendar day 00:00 Asia/Shanghai)",
+    "szse": "source-second publishTime; date-only or midnight publishTime plus 1 calendar day 00:00 Asia/Shanghai",
+    "source_grade": "PIT-B current official enumeration with incomplete historical revision/deletion vintages",
+    "unknown_invalid_or_missing": "FAIL_CLOSED"
+  },
+  "stage_boundary": {
+    "stage_a": "read only the exact parent selected identity and announcement identity/time projection; select exact 120-day route keys before title projection; classify titles and freeze selected/rejected gap identities",
+    "stage_a_parent_outcome_content": "PROHIBITED; hash-only binding is allowed",
+    "stage_b": "only after immutable Stage-A freeze, exact-join parent outcomes and replay unchanged K80 portfolio",
+    "silent_missing_equals_zero": false
+  },
+  "parent_identity": {
+    "selected": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/v28r2/selected_signals_2022_2026.parquet",
+      "sha256": "825d5a0dc81a1c242d8e8fb250511f298876f8750ae7374d4657d49abe1fb918",
+      "rows": 197
+    },
+    "outcomes": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/v28r2/outcomes_2022_2026.parquet",
+      "sha256": "973e90149f04a2545443e5ec117c1326eafee849c27748f0739d53f71782ac62",
+      "rows": 180
+    },
+    "outcome_daily": {
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/common/outcome_daily_2022_2026.parquet",
+      "sha256": "4a7f0351c19ca6584c5b686a3e90d833583a44910f96dc96f45f1d4db8fee93c",
+      "rows": 138117
+    }
+  },
+  "software_identity": {
+    "runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_rollforward.py",
+      "sha256": "1132bae28a183517fb50f38d6889a5ed5f035ceb8bc1a875abcbb0959ae1bf6d"
+    },
+    "asset_builder": {
+      "path": "research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_asset_v29r2.py",
+      "sha256": "2598b28e2ab119b15e92611af87d54f318f0c89a945f9f552aac07596c59d42a"
+    },
+    "classifier": {
+      "path": "research/market_behavior_os_v2/scripts/classify_exchange_issuer_risk_events_v2.py",
+      "sha256": "127f62e551d4344ede9d41970ea7a6634f5f4b192fe2829a78eed8c72cf2da9d"
+    }
+  },
+  "frozen_predecessor": {
+    "v29r2_preregistration_sha256": "076566c5cd85158997d39e4690c090e98110e85597d55ebf7d5b4fa0e63a5a3a",
+    "v29r2_development_result_sha256": "dc1539b1bfaf6de09c0be34483a226643f167232e5df0e5caa2c5a2d8b3fec4b",
+    "v29r1_semantic_blocker_sha256": "df1654f143cf534c4101cd12671092e3dc61d475b439ff7ee75daca83cc5bd45"
+  },
+  "v29r1": {
+    "status": "RETIRED_NOT_ROLLED",
+    "later_period_computation": "PROHIBITED_BY_IMMUTABLE_SEMANTIC_BLOCKER",
+    "reporting": "Only previously completed 2018-2021 statistics may be shown; 2022-2026 must be explicitly marked prohibited/not computed."
+  },
+  "required_annual_metrics": [
+    "signals_after_veto",
+    "executable_signals",
+    "accepted",
+    "completed",
+    "mean_net",
+    "median_net",
+    "win",
+    "severe10",
+    "mean_holding_sessions",
+    "median_holding_sessions",
+    "exit_reasons"
+  ]
+}

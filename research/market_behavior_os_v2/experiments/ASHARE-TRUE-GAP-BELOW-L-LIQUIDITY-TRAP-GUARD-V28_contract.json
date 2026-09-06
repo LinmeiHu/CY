@@ -1,0 +1,47 @@
+{
+  "additional_conditions": {
+    "feature_timestamp": "completed signal close; never entry day or later",
+    "issuer_state": "signal-close CY033 hard_valid and non-ST",
+    "liquidity_trap_guard": "one-price limit-down count in 20 completed pre-signal sessions <= 1",
+    "missing_policy": "fail closed",
+    "one_price_definition": "raw open=high=low=close=registered down_limit_price within 0.006"
+  },
+  "development": [
+    "2018-01-01",
+    "2021-12-31"
+  ],
+  "development_start_reason": "registered CY033 state begins in 2018",
+  "development_success": {
+    "accepted_trades_per_year_strictly_greater_than": 50.0,
+    "average_holding_sessions_strictly_less_than": 15.0,
+    "each_development_signal_year_mean_net_positive": true,
+    "mean_net_min": 0.04
+  },
+  "economic_hypothesis": "One isolated limit-down can be capitulation, but repeated one-price limit-downs in the preceding month indicate rationed liquidity: apparent low turnover is not supply exhaustion because holders could not sell. Demand-recapture entries are admitted only after this liquidity-trap pattern is absent and the issuer is known non-ST at the completed signal close.",
+  "experiment": "ASHARE-TRUE-GAP-BELOW-L-LIQUIDITY-TRAP-GUARD-V28",
+  "governance": {
+    "2022_2024_outcomes_opened_only_after_diagnostic_identity_freeze": true,
+    "announcement_risk_gate": "NOT_IMPLEMENTED_UNTIL_A_REGISTERED_PIT_EVENT_ASSET_EXISTS",
+    "development_outcomes_only_before_selector_pass": true,
+    "diagnostic_identity_built_only_after_selector_pass": true,
+    "parent_v27_was_selected_after_2017_2023_observation": true,
+    "therefore_diagnostic_is_not_pristine_external_validation": true
+  },
+  "locked_diagnostic": [
+    "2022-01-01",
+    "2024-12-31"
+  ],
+  "parent": "ASHARE-TRUE-GAP-BELOW-L-FRESH-CAPITULATION-SNAPBACK-V27",
+  "scientific_status": "RETROSPECTIVE_GUARD_DEVELOPMENT_WITH_LOCKED_LATER_DIAGNOSTIC",
+  "unchanged_v27": {
+    "admission": "M20/F14/R5",
+    "entry": "first legal buyable 1-minute open after signal",
+    "execution_and_lineage": "unchanged",
+    "failure_stop": "NONE",
+    "portfolio": "Main/ChiNext 50/50; K80 per sleeve",
+    "round_trip_cost": 0.004,
+    "target": "A67 below L",
+    "time_stop": "H20",
+    "trigger": "first completed daily close above previous completed daily high"
+  }
+}

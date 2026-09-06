@@ -1,0 +1,328 @@
+{
+  "suggestion_schema": "CY_DATA_REGISTRY_PATCH_SUGGESTION_V1",
+  "created_at": "2026-09-06T08:58:47.053270+08:00",
+  "apply_policy": "Independent review and central registry validation are required before the one authorized CY-064 verifier-only run; this suggestion is not itself authorization.",
+  "asset": {
+    "asset_id": "CY-064",
+    "name": "V29R2 verifier-only serialization-representation correction over immutable CY-063 Stage A",
+    "kind": "bounded_verifier_correction_wrapper_over_registered_pit_b_research_input",
+    "status": "RESEARCH_CONDITIONAL",
+    "pit_grade": "B",
+    "physical_state": "MATERIALIZED",
+    "location": "/Users/linmei/Documents/CY/data/staging/CY-064-V29R2-ISSUER-FACT-ROLLFORWARD-VERIFIER-CORRECTION-2022-2026-V1",
+    "source": "Two-file immutable verifier-only wrapper over registered CY-063. It copies and materializes no Stage-A rows; it replays the frozen transforms in memory and permits only the proved pytz-versus-zoneinfo and None-versus-pd.NA serialization representations.",
+    "coverage": {
+      "sse_query_start": "1990-12-19",
+      "szse_query_start": "2021-10-18",
+      "query_end": "2026-08-03",
+      "signal_start": "2022-01-01",
+      "signal_end": "2026-08-03",
+      "outcome_end": "2026-09-04",
+      "source_capture_symbols": 227,
+      "symbols": 188,
+      "sse_symbols": 39,
+      "szse_symbols": 149,
+      "route_rows": 149545,
+      "verification_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_stage_a_verification_v1",
+      "stage_b_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_through_20260904_v1"
+    },
+    "schema_and_units": "Metadata-only immutable correction wrapper containing activation audit and manifest. CY-063 remains the sole materialized Stage-A cohort. CY-064 verifies it with exact UTC nanoseconds, NA masks, strings, all unexcepted dtypes/values/order/index, and strict selector outputs.",
+    "quality_evidence": {
+      "asset_manifest_sha256": "c0e0ad5d5a7cca834a0eb0361a3105f7c6b13991252ddfbb0399f9c9d0b1eda6",
+      "activation_audit_sha256": "f2ae2265cf6e0305524d7560312fa3c5daaa8f741ac9c1575f3880851a594779",
+      "stage_a_verifier_correction_r3_sha256": "3ddb06396629e084d5741caf127e567aec08edd2f09fef28af3391caff6ff1ff",
+      "cy063_manifest_sha256": "9f5e02860e28eb94157599b9bc2572bd04fd2cc195ee091e9d7b6a7a8cb8f2c4",
+      "cy063_stage_a_freeze_sha256": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658",
+      "cy063_stage_a_seven_file_hashes": {
+        "classified_events.parquet": "1140acde5b10686371a51d6ac3a40573e21a8eb4feacd2c37373f5eb7f866d51",
+        "freeze.json": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658",
+        "pretitle_route_freeze.json": "5b142633fbde9f953bbb5376f0a7b653ce42e973d04d71e1ff485c7debb0eac0",
+        "rejected_entries.parquet": "f79baf069ec7b92aead6cac7fdf2107082b31bafce61a8801dda1f7752c7810d",
+        "selected_entries.parquet": "e5d4aba6aac8474b2e8580ebafc8a5089a0f621224d6ca4b0a061a612ba8a767",
+        "selector_audit.parquet": "d5e95fbb14905db793fdd68e2e782416601a4690dc121a480b1d85bbc4e11d24",
+        "title_route_selection.parquet": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3"
+      },
+      "canonical_reproduction_pass": true,
+      "selector_outputs_strict_exact_pass": true,
+      "negative_comparator_and_failure_seal_tests_pass": true,
+      "wrapper_semantic_reconstruction_pass": true,
+      "wrapper_root_mode": "0555",
+      "wrapper_files_mode": "0444"
+    },
+    "lineage": {
+      "record_available_at": true,
+      "record_snapshot_id": true,
+      "immutable_manifest": true,
+      "manifest_path": "/Users/linmei/Documents/CY/data/staging/CY-064-V29R2-ISSUER-FACT-ROLLFORWARD-VERIFIER-CORRECTION-2022-2026-V1/asset_manifest.json",
+      "manifest_sha256": "c0e0ad5d5a7cca834a0eb0361a3105f7c6b13991252ddfbb0399f9c9d0b1eda6",
+      "component_assets": [
+        "CY-063"
+      ],
+      "bounded_authorization_id": "CYQ-AUTH-ASHARE-ISSUER-FACT-V29R2-ROLLFORWARD-2022-2026-VERIFIER-CORRECTION-V1",
+      "pipeline_version": "exchange-issuer-fact-rollforward-verifier-correction-v29r2-v1"
+    },
+    "allowed_uses": [
+      "verify the immutable CY-063 Stage-A seven-file cohort using only the narrowly bounded serialization-representation comparator and freeze one outer verification",
+      "after independent outer-freeze SHA review, run one unchanged A67 H20 40-bp K80 Stage-B replay in the exact new output root under a read-only pre-outcome seal"
+    ],
+    "blocked_uses": [
+      "materializing or selecting a new Stage-A cohort; copying, deleting, overwriting, resuming or mutating CY-063 Stage-A artifacts; or broad dtype/null normalization beyond the two frozen representations",
+      "changing source, causal, title taxonomy, cooldown, selector, threshold, execution, portfolio or reporting semantics",
+      "alternate roots, repeated Stage-B attempts, strict PIT-A, pristine-OOS or live claims"
+    ],
+    "activation_gates": [
+      "central bounded authorization CYQ-AUTH-ASHARE-ISSUER-FACT-V29R2-ROLLFORWARD-2022-2026-VERIFIER-CORRECTION-V1 exists and the complete registry validates",
+      "CY-064 manifest/audit reconstruct exactly and all 36 direct artifact fingerprints remain exact",
+      "registered CY-063 recursively validates; its read-only seven-file Stage A reproduces under only the two frozen representation exceptions; selector outputs remain strict exact",
+      "one read-only outer verification freeze at the exact verification root is independently audited before Stage B",
+      "Stage B uses only the exact new root, first writes a 0444 pre-outcome attempt seal, seals every partial failure read-only, and rejects every retry"
+    ]
+  },
+  "bounded_authorization": {
+    "authorization_id": "CYQ-AUTH-ASHARE-ISSUER-FACT-V29R2-ROLLFORWARD-2022-2026-VERIFIER-CORRECTION-V1",
+    "purpose": "ASHARE_ISSUER_FACT_V29R2_ROLLFORWARD_2022_2026",
+    "asset_id": "CY-064",
+    "dependency_asset_id": "CY-063",
+    "dependency_status": "RESEARCH_CONDITIONAL",
+    "scope": {
+      "project": "research/market_behavior_os_v2",
+      "start": "1990-12-19",
+      "end": "2026-09-04",
+      "sse_query_start": "1990-12-19",
+      "szse_query_start": "2021-10-18",
+      "announcement_query_end": "2026-08-03",
+      "signal_start": "2022-01-01",
+      "signal_end": "2026-08-03",
+      "outcome_end": "2026-09-04",
+      "verification_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_stage_a_verification_v1",
+      "stage_b_output_root": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy064_through_20260904_v1"
+    },
+    "bound_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-064-V29R2-ISSUER-FACT-ROLLFORWARD-VERIFIER-CORRECTION-2022-2026-V1/asset_manifest.json",
+      "sha256": "c0e0ad5d5a7cca834a0eb0361a3105f7c6b13991252ddfbb0399f9c9d0b1eda6"
+    },
+    "bound_artifacts": [
+      {
+        "role": "activation_audit",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-064-V29R2-ISSUER-FACT-ROLLFORWARD-VERIFIER-CORRECTION-2022-2026-V1/activation_audit.json",
+        "sha256": "f2ae2265cf6e0305524d7560312fa3c5daaa8f741ac9c1575f3880851a594779"
+      },
+      {
+        "role": "verifier_correction_asset_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_verifier_correction_asset_v29r2.py",
+        "sha256": "62a2ee454ab61fbd8d72a08725c751a710aa1cc52300095461b821b4c8d873cf"
+      },
+      {
+        "role": "stage_a_verifier_correction_r3_freeze",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_stage_a_verifier_correction_r3_freeze.json",
+        "sha256": "3ddb06396629e084d5741caf127e567aec08edd2f09fef28af3391caff6ff1ff"
+      },
+      {
+        "role": "verifier_stage_b_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_verifier_correction.py",
+        "sha256": "9f4088144e41d1370830e25cfd0927feb98f230af2774bd8e5df382d112a7480"
+      },
+      {
+        "role": "cy063_stage_a_verifier_discrepancy_audit",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_cy063_stage_a_verifier_representation_failure.json",
+        "sha256": "e54169c257fff4d8aa6008c760f86f7db5c6abaad7558c82ad197472ce1d887f"
+      },
+      {
+        "role": "cy063_asset_manifest",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-063-V29R2-ISSUER-FACT-ROLLFORWARD-INDEX-CORRECTION-2022-2026-V1/asset_manifest.json",
+        "sha256": "9f5e02860e28eb94157599b9bc2572bd04fd2cc195ee091e9d7b6a7a8cb8f2c4"
+      },
+      {
+        "role": "cy063_bound_activation_audit",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-063-V29R2-ISSUER-FACT-ROLLFORWARD-INDEX-CORRECTION-2022-2026-V1/activation_audit.json",
+        "sha256": "2148823bbf5a98d3c5bf007f91a070f239d06ab354ef3ff00312b6f1e6880688"
+      },
+      {
+        "role": "cy063_bound_correction_asset_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_index_correction_asset_v29r2.py",
+        "sha256": "69e6443cc15dd892b8581799f84d20936d8435e5b1a02ba0c88b33eb04b0f34f"
+      },
+      {
+        "role": "cy063_bound_stage_a_index_correction_r2_freeze",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_stage_a_index_correction_r2_freeze.json",
+        "sha256": "e323cd126af2ef144b2fb42550e6545b6d21f976f2bcb28958118402fd667828"
+      },
+      {
+        "role": "cy063_bound_rollforward_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_index_correction.py",
+        "sha256": "a867e5bbf54e09fa9b492df3eea437773e995e75c2d2093dab60b7e59438e584"
+      },
+      {
+        "role": "cy063_bound_predecessor_asset_manifest",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/asset_manifest.json",
+        "sha256": "6a4f1bcbeb443aff7d7233948e6236ae16f1b2a75461a8598acf62b6bb530922"
+      },
+      {
+        "role": "cy063_bound_predecessor_activation_audit",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/activation_audit.json",
+        "sha256": "436f1d9445184ac08d5c0ddb0baa1bdcecdb64d64662d1cfa93c616481800f6c"
+      },
+      {
+        "role": "cy063_bound_announcement_route_index",
+        "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/announcement_route_index.parquet",
+        "sha256": "ddcd4717bf3301d99d4df3d4b6908620b701b95eaebbc06215107409f2fda679"
+      },
+      {
+        "role": "cy063_bound_predecessor_asset_builder",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/build_exchange_issuer_fact_rollforward_asset_v29r2.py",
+        "sha256": "3eeeca68c8160ddaee564a5319b4be49a4f4e84be26b2a9d6a1293d5387e1e8f"
+      },
+      {
+        "role": "cy063_bound_predecessor_rollforward_runner",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_rollforward.py",
+        "sha256": "bf810eb80cf7ee1b71c780515cfdc8cb1bbde26b640d32b6d97c9c22a6bd594b"
+      },
+      {
+        "role": "cy063_bound_calendar_coverage_correction_r1_freeze",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_calendar_coverage_correction_r1_freeze.json",
+        "sha256": "9634653e47f6578091cfc6f95ff732dfad8678829e578be81204f62c5cca6f2a"
+      },
+      {
+        "role": "cy063_bound_stage_a_attempt1_failure_audit",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_stage_a_attempt1_index_failure.json",
+        "sha256": "3e3d644e1bdf18df6b31385a41941c2d8a280af5357b53474d582df65a19c2d4"
+      },
+      {
+        "role": "cy063_bound_stage_a_attempt1_failure_audit_correction_v2",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_stage_a_attempt1_failure_audit_correction_v2.json",
+        "sha256": "49f4fa1a2079f0c4533e13c78e19724d67ac77dd7338e4fe13b17043c1864810"
+      },
+      {
+        "role": "cy063_bound_failed_stage_a_title_route_selection",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_through_20260904_v1/stage_a/title_route_selection.parquet",
+        "sha256": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3"
+      },
+      {
+        "role": "cy063_bound_failed_stage_a_pretitle_route_freeze",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_through_20260904_v1/stage_a/pretitle_route_freeze.json",
+        "sha256": "7cc9c9493251cf647f555cc2c157a13bf24428b678b2272412f409b882cc0925"
+      },
+      {
+        "role": "cy063_bound_parent_selected",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/v28r2/selected_signals_2022_2026.parquet",
+        "sha256": "825d5a0dc81a1c242d8e8fb250511f298876f8750ae7374d4657d49abe1fb918"
+      },
+      {
+        "role": "cy063_bound_parent_outcomes",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/v28r2/outcomes_2022_2026.parquet",
+        "sha256": "973e90149f04a2545443e5ec117c1326eafee849c27748f0739d53f71782ac62"
+      },
+      {
+        "role": "cy063_bound_parent_outcome_daily",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v28_family_rollforward_through_20260904_v1/common/outcome_daily_2022_2026.parquet",
+        "sha256": "4a7f0351c19ca6584c5b686a3e90d833583a44910f96dc96f45f1d4db8fee93c"
+      },
+      {
+        "role": "cy063_bound_issuer_fact_classifier",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/classify_exchange_issuer_risk_events_v2.py",
+        "sha256": "127f62e551d4344ede9d41970ea7a6634f5f4b192fe2829a78eed8c72cf2da9d"
+      },
+      {
+        "role": "cy063_bound_collector",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/fetch_exchange_issuer_announcements_v1.py",
+        "sha256": "52eadae39e507667098ad389e7e44c60870c2a3f8722887f362218838ec098e3"
+      },
+      {
+        "role": "cy063_bound_sealer",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/seal_exchange_issuer_announcements_v1.py",
+        "sha256": "dda822be65f78debacba0f1943a353fed0f6efe140a2f5ab94cbfd3e6c0039f8"
+      },
+      {
+        "role": "cy063_bound_v29r2_frozen_preregistration",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_preregistration.json",
+        "sha256": "076566c5cd85158997d39e4690c090e98110e85597d55ebf7d5b4fa0e63a5a3a"
+      },
+      {
+        "role": "cy063_bound_v29r2_development_result",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_development_result.json",
+        "sha256": "dc1539b1bfaf6de09c0be34483a226643f167232e5df0e5caa2c5a2d8b3fec4b"
+      },
+      {
+        "role": "cy063_bound_retired_v29r1_semantic_blocker",
+        "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/artifacts/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-INTEGRITY-COOLDOWN-V29R1_semantic_blocker.json",
+        "sha256": "df1654f143cf534c4101cd12671092e3dc61d475b439ff7ee75daca83cc5bd45"
+      },
+      {
+        "role": "cy063_stage_a_classified_events",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/classified_events.parquet",
+        "sha256": "1140acde5b10686371a51d6ac3a40573e21a8eb4feacd2c37373f5eb7f866d51"
+      },
+      {
+        "role": "cy063_stage_a_freeze",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/freeze.json",
+        "sha256": "a71733a36d423cc69c2880df5f8b50f1336b9dc57551d9a8784ef8edb11f0658"
+      },
+      {
+        "role": "cy063_stage_a_pretitle_route_freeze",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/pretitle_route_freeze.json",
+        "sha256": "5b142633fbde9f953bbb5376f0a7b653ce42e973d04d71e1ff485c7debb0eac0"
+      },
+      {
+        "role": "cy063_stage_a_rejected_entries",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/rejected_entries.parquet",
+        "sha256": "f79baf069ec7b92aead6cac7fdf2107082b31bafce61a8801dda1f7752c7810d"
+      },
+      {
+        "role": "cy063_stage_a_selected_entries",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/selected_entries.parquet",
+        "sha256": "e5d4aba6aac8474b2e8580ebafc8a5089a0f621224d6ca4b0a061a612ba8a767"
+      },
+      {
+        "role": "cy063_stage_a_selector_audit",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/selector_audit.parquet",
+        "sha256": "d5e95fbb14905db793fdd68e2e782416601a4690dc121a480b1d85bbc4e11d24"
+      },
+      {
+        "role": "cy063_stage_a_title_route_selection",
+        "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_v29r2_issuer_fact_rollforward_cy063_through_20260904_v1/stage_a/title_route_selection.parquet",
+        "sha256": "d5ec0a5f89fdd4d0fba05dc3954241fdca0aa62d7190ea3049ae1a8dfb94fad3"
+      }
+    ],
+    "bound_strategy": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_stage_a_verifier_correction_r3_freeze.json",
+      "sha256": "3ddb06396629e084d5741caf127e567aec08edd2f09fef28af3391caff6ff1ff"
+    },
+    "bound_protocol": {
+      "path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/experiments/ASHARE-TRUE-GAP-BELOW-L-ORDERLY-DEMAND-ISSUER-FACT-COOLDOWN-V29R2_rollforward_2022_2026_stage_a_verifier_correction_r3_freeze.json",
+      "sha256": "3ddb06396629e084d5741caf127e567aec08edd2f09fef28af3391caff6ff1ff",
+      "runner_path": "/Users/linmei/Documents/CY-supermind-v6-autonomous-20260830/research/market_behavior_os_v2/scripts/run_ashare_true_gap_below_l_issuer_fact_cooldown_v29r2_verifier_correction.py",
+      "runner_sha256": "9f4088144e41d1370830e25cfd0927feb98f230af2774bd8e5df382d112a7480"
+    },
+    "current_survivor_fallback_allowed": false,
+    "record_level_available_at_available": true,
+    "new_event_classification_or_selection_authorized": false,
+    "new_stage_a_artifacts_or_selection_materialization_authorized": false,
+    "in_memory_deterministic_stage_a_verification_replay_authorized": true,
+    "in_memory_title_classification_verification_replay_authorized": true,
+    "verifier_only_correction": true,
+    "bounded_serialization_representation_comparison": true,
+    "validation_outcome_join_authorized": true,
+    "portfolio_replay_authorized": true,
+    "strict_pit_a_authorized": false,
+    "live_trading_authorized": false,
+    "v29r1_fallback_authorized": false,
+    "post_2024_pristine_validation_claim_authorized": false,
+    "single_stage_b_attempt_authorized": true,
+    "allowed_uses": [
+      "verify the immutable CY-063 Stage-A seven-file cohort using only the narrowly bounded serialization-representation comparator and freeze one outer verification",
+      "after independent outer-freeze SHA review, run one unchanged A67 H20 40-bp K80 Stage-B replay in the exact new output root under a read-only pre-outcome seal"
+    ],
+    "blocked_uses": [
+      "materializing or selecting a new Stage-A cohort; copying, deleting, overwriting, resuming or mutating CY-063 Stage-A artifacts; or broad dtype/null normalization beyond the two frozen representations",
+      "changing source, causal, title taxonomy, cooldown, selector, threshold, execution, portfolio or reporting semantics",
+      "alternate roots, repeated Stage-B attempts, strict PIT-A, pristine-OOS or live claims"
+    ],
+    "known_limitations": [
+      "CY-064 inherits CY-063/CY-062 PIT-B current-enumeration evidence; historical revision and deletion vintages remain incomplete.",
+      "The verifier replays route, title attachment, classification, and cooldown in memory but creates no new Stage-A cohort or selection artifacts.",
+      "Only persisted pytz versus reproduced zoneinfo Asia/Shanghai with exact UTC nanoseconds/NA mask, and risk_family None versus pd.NA with exact NA mask/non-null strings, are equivalent; everything else remains exact.",
+      "Parent outcome and daily bytes are hashed before Stage B, while parquet content rows may be parsed only after the exclusive 0444 attempt seal.",
+      "Parent outcomes were already consumed by V28 and a pre-Stage-A schema diagnostic; no period is claimed as untouched pristine OOS."
+    ]
+  }
+}
