@@ -1,0 +1,73 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-LOW-MAX-INTENSITY-V1",
+  "status": "FROZEN_BEFORE_WITHIN_COHORT_INTENSITY_OUTCOMES",
+  "research_level": "EXPLORE_THEN_ONE_TRANSLATION",
+  "question": "Within each frozen champion cohort, does stronger exact Weekly Low-MAX intensity contain a stable payoff gradient beyond the industry-preserving replacement already established?",
+  "why_not_a_repeat": "The frozen champion uses Low-MAX only within each selected industry's allocation. This experiment tests cross-industry within-cohort intensity and does not alter the 20-session lookback, signal, industry diffusion, or outcome horizon.",
+  "inputs": {
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "champion_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    }
+  },
+  "signal": {
+    "field": "exact max_return20 already used by Weekly Low-MAX",
+    "orientation": "lower is stronger",
+    "comparison": "rank only among the actually executed names sharing the same frozen signal_date",
+    "diagnostic_buckets": 5,
+    "ties": "average rank then deterministic symbol order for executable selection",
+    "new_lookback_or_transform": false
+  },
+  "outcome": {
+    "primary": "frozen final_net_return through the exact 20-session lifecycle",
+    "secondary": ["median payoff", "winner fraction", "severe-loss fraction"],
+    "same_session_outcome": false
+  },
+  "temporal_sequence": {
+    "generation": [2018, 2019, 2020],
+    "fixed_validation": [2021, 2022, 2023],
+    "validation_open_only_if_generation_passes": true,
+    "post_2023_outcome_read": false,
+    "cy011_read": false
+  },
+  "generation_gate_all_required": {
+    "lowest_minus_highest_bucket_mean_minimum": 0.005,
+    "lowest_bucket_mean_positive": true,
+    "at_least_three_of_four_adjacent_steps_favorable": true,
+    "2018_2019_and_2020_lowest_minus_highest_positive": true
+  },
+  "validation_gate_all_required": {
+    "lowest_minus_highest_bucket_mean_positive": true,
+    "lowest_bucket_mean_positive": true,
+    "at_least_three_of_four_adjacent_steps_favorable": true,
+    "each_calendar_year_lowest_minus_highest_nonnegative": true
+  },
+  "single_translation_if_both_gates_pass": {
+    "rule": "On every frozen weekly signal date retain the five actually executable champion names with the lowest exact max_return20, equal weight them, and leave every other champion and execution semantic unchanged.",
+    "selection_count": 5,
+    "alternative_counts": false,
+    "weight_search": false,
+    "holding_search": false,
+    "rescue": false
+  },
+  "portfolio_target": {
+    "annualized_return_minimum": 0.32683876637754006,
+    "maximum_drawdown_must_be_better_than": -0.25773611771697336
+  },
+  "prohibited": [
+    "alternative MAX lookbacks",
+    "Top-N grid",
+    "industry or market habitat filters",
+    "post-2023 outcomes",
+    "CY-011",
+    "portfolio replay before both intensity gates"
+  ]
+}

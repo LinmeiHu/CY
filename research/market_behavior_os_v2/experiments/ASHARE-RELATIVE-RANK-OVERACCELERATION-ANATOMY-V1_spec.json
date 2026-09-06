@@ -1,0 +1,125 @@
+{
+  "experiment_id": "ASHARE-RELATIVE-RANK-OVERACCELERATION-ANATOMY-V1",
+  "status": "FROZEN_BEFORE_LOW_LEG_FORWARD_OUTCOME_AGGREGATION",
+  "purpose": "Determine whether the previously observed adverse high relative-rank-acceleration leg implies a genuine low-acceleration long alpha, a continuous overacceleration penalty, or high-leg avoidance only.",
+  "claim_boundary": "POST_HOC_DIRECTIONAL_ANATOMY_ON_CONSUMED_2018_2023_DEVELOPMENT_HISTORY_NOT_OOS_NOT_CONFIRMATION",
+  "starting_checkpoint": "aa46eea96d55a90e1b27ffbefe520233a1582c94",
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cycle009_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009_spec.json",
+      "sha256": "6b061236608b4e24b6bd01908c16c5a203d5a9ebc6c33c4f4b864c05bcf9619f"
+    },
+    "cycle009_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_defensive_alpha_cycle_009.py",
+      "sha256": "0eb32312e2d86b8b19137a25c61082ff5b9b6389a5a693635004dd761b7b61bb"
+    },
+    "cycle009_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009_panel.csv",
+      "sha256": "4777b1429b0bec9f76c8be6c204ef087247913cc51055c9a2055be921b21097c"
+    }
+  },
+  "research_window": {
+    "start": "2018-01-02",
+    "end": "2023-12-29",
+    "generation": ["2018-01-02", "2020-12-31"],
+    "generation_subblocks": {
+      "2018_2019": ["2018-01-02", "2019-12-31"],
+      "2020": ["2020-01-01", "2020-12-31"]
+    },
+    "fixed_validation": ["2021-01-01", "2023-12-29"],
+    "validation_access": "Only after every generation gate passes for at least one family; this is a fixed diagnostic split within already consumed history, not OOS.",
+    "decision_schedule": "Exact Cycle-009 every-twentieth-session close schedule.",
+    "signal_clock": "Completed decision-session close at 15:30 Asia/Shanghai.",
+    "entry_clock": "Next legal session open."
+  },
+  "population": {
+    "definition": "Exact Cycle-009 eligible all-A frame with 120 consecutive causal observations, valid PIT lineage, current tradability, non-ST state, and prior-20-session mean amount at least CNY 50 million.",
+    "no_universe_change": true
+  },
+  "families": [
+    {
+      "id": "market_relative_rank_acceleration_20",
+      "mechanism": "Extreme improvement in the same-date rank of trailing-20 market-residual return may represent crowded late demand; low or negative rank change may instead capture uncrowded relative reset.",
+      "exact_score": "Same-date percentile rank of trailing-20 causal return minus cross-sectional median causal return, minus the same percentile rank exactly 20 sessions earlier.",
+      "known_prior_result": "Cycle-009 selected the highest 20 scores and found -1.260% h20 net excess; the low leg and full bucket ordering were not evaluated."
+    },
+    {
+      "id": "industry_follower_rank_acceleration_20",
+      "mechanism": "Rapid within-industry rank catch-up by prior followers may be late diffusion rather than durable leadership; low acceleration may identify an unforced reset.",
+      "exact_score": "Within-PIT-industry percentile rank of trailing-20 residual return minus its value exactly 20 sessions earlier, restricted to prior below-industry-median rank.",
+      "known_prior_result": "Cycle-009 selected the highest 20 scores and found -0.835% h20 net excess; the low leg and full bucket ordering were not evaluated."
+    }
+  ],
+  "anatomy": {
+    "buckets": "Within each decision date, deterministic equal-count quintiles of the exact score; Q1 is lowest acceleration and Q5 highest acceleration.",
+    "response": "Next legal open through twentieth completed-session close, accepted QD-010 corporate-action handling, 20 bps per side.",
+    "required_metrics": [
+      "N and decision dates",
+      "mean and median net return",
+      "positive-return fraction",
+      "severe-loss fraction",
+      "Q1 minus all-eligible event-date mean",
+      "Q5 minus all-eligible event-date mean",
+      "Q1 minus Q5",
+      "four adjacent favorable steps from Q1 to Q5",
+      "Spearman bucket-return ordering",
+      "entry execution coverage and liquidity"
+    ]
+  },
+  "generation_gate_all_required": {
+    "minimum_decision_dates": 20,
+    "minimum_entry_execution_coverage": 0.9,
+    "minimum_q1_mean_net_return": 0.01,
+    "minimum_q1_excess_vs_all_eligible": 0.002,
+    "minimum_q1_minus_q5": 0.01,
+    "minimum_favorable_adjacent_steps": 3,
+    "q1_minus_q5_positive_in_2018_2019": true,
+    "q1_minus_q5_positive_in_2020": true,
+    "maximum_q1_severe_loss_disadvantage_vs_all_eligible": 0.0
+  },
+  "validation_gate_all_required": {
+    "minimum_q1_mean_net_return": 0.0,
+    "minimum_q1_excess_vs_all_eligible": 0.0,
+    "minimum_q1_minus_q5": 0.005,
+    "minimum_favorable_adjacent_steps": 3,
+    "minimum_positive_calendar_year_q1_minus_q5": 2,
+    "maximum_q1_severe_loss_disadvantage_vs_all_eligible": 0.01
+  },
+  "executable_translation": {
+    "authorization": "Only families passing every generation and fixed-validation gate.",
+    "maximum_replays": 1,
+    "selection_if_both_pass": "Choose the family with the larger minimum of generation and validation Q1 excess versus all eligible; deterministic family-id tie break.",
+    "rule": "At each exact 20-session decision close, rank the exact acceleration score ascending, retain the lowest 20, and equal-weight the lowest 10 at the next legal open.",
+    "holding_sessions": 20,
+    "rebalance_sessions": 20,
+    "cost_per_side_bps": 20,
+    "initial_capital_cny": 10000000,
+    "no_shorting": true,
+    "no_leverage": true,
+    "no_alternative_top_n_quantile_horizon_or_schedule": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "interpretation": "User optimization target only; never tune the frozen definition to cross it."
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011",
+    "OOS, independent-validation, confirmation, or live language",
+    "changing either Cycle-009 score, schedule, universe, cost, horizon, or direction after outcomes",
+    "alternative bucket counts, Top-N values, residual definitions, industry definitions, or liquidity floors",
+    "champion combination or veto unless a separate later experiment is frozen after this anatomy",
+    "using the high leg as a short strategy",
+    "parameter or habitat rescue"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-RELATIVE-RANK-OVERACCELERATION-ANATOMY-V1_bucket_table.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-RELATIVE-RANK-OVERACCELERATION-ANATOMY-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-RELATIVE-RANK-OVERACCELERATION-ANATOMY-V1_report.md"
+  ]
+}

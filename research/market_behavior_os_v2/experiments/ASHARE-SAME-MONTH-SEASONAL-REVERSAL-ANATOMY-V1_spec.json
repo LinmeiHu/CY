@@ -1,0 +1,101 @@
+{
+  "experiment_id": "ASHARE-SAME-MONTH-SEASONAL-REVERSAL-ANATOMY-V1",
+  "status": "FROZEN_BEFORE_LOW_SEASONAL_SCORE_OUTCOME_AGGREGATION",
+  "purpose": "Determine whether the canonical same-calendar-month seasonality prior failed because the high-score leg is intrinsically bad or because the exact low-score leg contains a genuine, executable seasonal-reversal long alpha.",
+  "claim_boundary": "POST_HOC_OPPOSITE_DIRECTION_ON_CONSUMED_2018_2023_DEVELOPMENT_HISTORY_NOT_OOS_NOT_CONFIRMATION",
+  "starting_checkpoint": "aa46eea96d55a90e1b27ffbefe520233a1582c94",
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cycle009_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009_spec.json",
+      "sha256": "6b061236608b4e24b6bd01908c16c5a203d5a9ebc6c33c4f4b864c05bcf9619f"
+    },
+    "cycle009_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_defensive_alpha_cycle_009.py",
+      "sha256": "0eb32312e2d86b8b19137a25c61082ff5b9b6389a5a693635004dd761b7b61bb"
+    },
+    "cycle009_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-DEFENSIVE-ALPHA-DISCOVERY-CYCLE-009_panel.csv",
+      "sha256": "4777b1429b0bec9f76c8be6c204ef087247913cc51055c9a2055be921b21097c"
+    },
+    "rank_anatomy_helper": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_relative_rank_overacceleration_anatomy_v1.py",
+      "sha256": "6a4bbfb142db187d15b86b6efc8905239b453629f37c571dbed09f2cbf9c3e41"
+    }
+  },
+  "research_window": {
+    "generation": ["2018-01-02", "2020-12-31"],
+    "generation_subblocks": {
+      "2018_2019": ["2018-01-02", "2019-12-31"],
+      "2020": ["2020-01-01", "2020-12-31"]
+    },
+    "fixed_validation": ["2021-01-01", "2023-12-29"],
+    "validation_access": "Only after all generation gates pass; a fixed diagnostic split inside consumed development history, never OOS.",
+    "decision_schedule": "Exact Cycle-009 every-twentieth-session close schedule.",
+    "entry_clock": "Next legal session open."
+  },
+  "signal": {
+    "id": "same_month_seasonality_1y",
+    "exact_score": "Causal total log return in the same completed calendar month one year earlier, requiring at least 15 valid observations, unchanged from Cycle-009.",
+    "known_prior_result": "Cycle-009's highest-score Top-20 lost 1.250% absolute and 1.841% versus date control, with adverse excess in both broad blocks.",
+    "frozen_post_hoc_direction": "lower prior-year same-month return is better",
+    "economic_hypothesis": "The A-share result may be seasonal reversal rather than continuation: names that were weak in this calendar month last year may rebound while prior same-month winners suffer recurring supply."
+  },
+  "anatomy": {
+    "buckets": "Within-date deterministic equal-count quintiles; Q1 is the lowest prior-year same-month return and Q5 the highest.",
+    "response": "Next legal open through twentieth completed-session close with accepted QD-010 actions and 20 bps per side.",
+    "baseline": "All exact score-valid eligible stocks on the same decision dates.",
+    "metrics": ["Q1 through Q5 mean/median/positive/severe", "Q1 and Q5 versus all eligible", "Q1-Q5", "adjacent ordering", "Spearman ordering", "year and block stability", "execution and capacity"]
+  },
+  "generation_gate_all_required": {
+    "minimum_decision_dates": 20,
+    "minimum_entry_execution_coverage": 0.9,
+    "minimum_q1_mean_net_return": 0.01,
+    "minimum_q1_excess_vs_all_eligible": 0.003,
+    "minimum_q1_minus_q5": 0.015,
+    "minimum_favorable_adjacent_steps": 3,
+    "q1_minus_q5_positive_in_2018_2019": true,
+    "q1_minus_q5_positive_in_2020": true,
+    "maximum_q1_severe_loss_disadvantage_vs_all_eligible": 0.0
+  },
+  "validation_gate_all_required": {
+    "minimum_q1_mean_net_return": 0.005,
+    "minimum_q1_excess_vs_all_eligible": 0.002,
+    "minimum_q1_minus_q5": 0.01,
+    "minimum_favorable_adjacent_steps": 3,
+    "minimum_positive_calendar_year_q1_minus_q5": 2,
+    "maximum_q1_severe_loss_disadvantage_vs_all_eligible": 0.01
+  },
+  "executable_translation": {
+    "authorization": "Only after all generation and validation gates pass.",
+    "maximum_replays": 1,
+    "selection_if_both_pass": "The single frozen family is selected.",
+    "rule": "Every 20 sessions rank eligible stocks by exact prior-year same-month return ascending, retain the lowest 20, and equal-weight the lowest 10 at the next legal open.",
+    "holding_sessions": 20,
+    "rebalance_sessions": 20,
+    "cost_per_side_bps": 20,
+    "initial_capital_cny": 10000000,
+    "no_shorting": true,
+    "no_leverage": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011",
+    "changing year lag, month definition, minimum observations, score sign, buckets, Top-N, schedule, horizon, costs, universe, or liquidity floor",
+    "calendar-month partition search",
+    "generic reversal, momentum, industry, market-state, or champion rescue",
+    "OOS, independent-validation, confirmation, or live language"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-SAME-MONTH-SEASONAL-REVERSAL-ANATOMY-V1_bucket_table.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-SAME-MONTH-SEASONAL-REVERSAL-ANATOMY-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-SAME-MONTH-SEASONAL-REVERSAL-ANATOMY-V1_report.md"
+  ]
+}

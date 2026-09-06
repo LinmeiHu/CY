@@ -1,0 +1,48 @@
+{
+  "experiment_id": "MKT-DISP-RANK-005",
+  "research_level": "EXPLORE",
+  "status": "FROZEN_FINAL_SUPPORT_AMENDMENT_BEFORE_RESPONSE_SUMMARIES",
+  "frozen_at": "2026-09-03",
+  "question": "Inside the frozen high-dispersion state, do causal same-session PIT-industry return ranks continue, reverse, or lose direction over h1/h3/h5?",
+  "inputs": {
+    "amended_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-DISP-RANK-004_spec.json",
+      "sha256": "130bc11b00c3268c34159927ebc932b8767423916cba9171542b79703a629e98"
+    },
+    "amended_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_disp_rank_004.py",
+      "sha256": "3bd7a145b5952994dba473bed13aea00886e9394fbaa81935720df469e118b32"
+    }
+  },
+  "amendment_provenance": {
+    "prior_attempt": "MKT-DISP-RANK-004",
+    "prior_stop_stage": "annual high-state support gate before any response summary, rank IC, attribution, or classification was returned or persisted",
+    "observed_non_outcome_support_issue": "2023 high-dispersion state supplied 15-37 dates per cell versus the inherited 20-date annual floor; pooled high-state support remained at least 104 dates per cell",
+    "outcome_information_available_when_frozen": "NONE_FROM_MKT_DISP_RANK_003_OR_004"
+  },
+  "only_change": {
+    "minimum_high_state_rows_per_supported_cell_year": 15,
+    "prior_floor": 20,
+    "rationale": "retain all four frozen PIT years and all eight cells while acknowledging that high dispersion was genuinely scarce in 2023",
+    "claim_limit": "any direction finding remains consumed-history exploratory evidence with an explicitly thin 2023 cell-year"
+  },
+  "everything_else": "exact MKT-DISP-RANK-004 state, response, eight cells, four years, three phases, direction boundaries, resource contract, descriptive-only low state, and prohibitions",
+  "finality": "No further support-floor amendment is allowed if this run fails support or direction classification.",
+  "post_result_action": {
+    "if_continuation_or_reversal": "freeze one separate simple industry-selection translation before portfolio outcomes",
+    "if_directionless_or_unstable": "close this exact high-dispersion industry-rank family"
+  },
+  "prohibited": [
+    "any state, response, horizon, rank, view, denominator, member, retention, or direction-boundary change",
+    "another support amendment",
+    "security selection or portfolio PnL in this experiment",
+    "same-bar fill",
+    "post-2023 data",
+    "CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-005_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-005_result.json",
+    "research/market_behavior_os_v2/reports/MKT-DISP-RANK-005_industry_rank.md"
+  ]
+}

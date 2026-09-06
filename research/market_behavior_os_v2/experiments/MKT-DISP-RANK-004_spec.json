@@ -1,0 +1,75 @@
+{
+  "experiment_id": "MKT-DISP-RANK-004",
+  "research_level": "EXPLORE",
+  "status": "FROZEN_SUPPORT_ONLY_AMENDMENT_BEFORE_RESPONSE_SUMMARIES",
+  "frozen_at": "2026-09-03",
+  "question": "Inside the already frozen high-dispersion state, do causal same-session PIT-industry return ranks continue, reverse, or lose direction over h1/h3/h5?",
+  "inputs": {
+    "scientific_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-DISP-RANK-001_spec.json",
+      "sha256": "502d5db1779fad76f73b45a4f6587c79398fb198a7a19f6404a6e2f7e92ac57c"
+    },
+    "resource_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-DISP-RANK-003_spec.json",
+      "sha256": "7758ffc29b03aa344858d2a25f993d2e1071dc26c6207efd63032b8fe3c3de75"
+    },
+    "scientific_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_disp_rank_001.py",
+      "sha256": "499b3a8cd4c83f25ae8498623a82f1a385b43d2de03bc9b5d5420ecae6c86b31"
+    },
+    "resource_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_disp_rank_003.py",
+      "sha256": "c86fae4e0d0884f7f5e69da6d59ef01ff8decc7099deb1c17f878a4b3d63178b"
+    },
+    "industry_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-INDRS-001_panel.csv",
+      "sha256": "c9e8d44935261256c1f3a6246026ba2ff0a02d3373386771fe58182ad3baeaf4"
+    },
+    "dispersion_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-DISP-ECON-001_result.json",
+      "sha256": "f130db89a837327a335266552a26b268d2d1782e57af55dbfc33cdb6602eea1d"
+    }
+  },
+  "amendment_provenance": {
+    "prior_attempt": "MKT-DISP-RANK-003",
+    "prior_stop_stage": "support gate before any high/low response summary or direction classification was returned or persisted",
+    "observed_non_outcome_support_issue": "minimum low-state rows were 94/95 in two otherwise valid cells versus the inherited 100-row floor",
+    "scientific_reason": "the frozen question and every direction-classification condition use only the high-dispersion state; low dispersion was a descriptive contrast and should not invalidate the high-state discriminator",
+    "outcome_information_available_when_frozen": "NONE_FROM_MKT_DISP_RANK_003"
+  },
+  "unchanged_science": {
+    "high_dispersion_state": "industry_return_dispersion_iqr_pit_3y_pct >= 0.80",
+    "current_industry_score": "median same-session action-coordinate security return among causal t-industry members",
+    "response_horizons": [1, 3, 5],
+    "primary_horizon": 3,
+    "views": ["ALL_A", "SH_A", "SZ_A", "CHINEXT_BOARD"],
+    "denominators": ["ALL_STATUS", "NON_ST"],
+    "classification": "exact MKT-DISP-RANK-001 continuation/reversal/directionless boundaries, all eight cells, four supported PIT years, and three nonoverlap phases",
+    "high_state_minimum_rows_per_cell": 100,
+    "high_state_minimum_rows_per_cell_year": 20
+  },
+  "only_scientific_change": {
+    "low_dispersion_state": "retained as descriptive context",
+    "low_state_hard_gate": "removed because low-state response is absent from every direction-classification condition",
+    "minimum_low_rows_for_descriptive_reporting": 90,
+    "no_low_state_inference": true
+  },
+  "resource_contract": "exact MKT-DISP-RANK-003 machine-sized external-scratch contract",
+  "post_result_action": {
+    "if_continuation_or_reversal": "freeze one separate simple industry-selection translation before portfolio outcomes",
+    "if_directionless_or_unstable": "close this exact high-dispersion industry-rank family"
+  },
+  "prohibited": [
+    "any high-state, response, horizon, rank, view, denominator, member, retention, or classification change",
+    "security selection or portfolio PnL in this experiment",
+    "same-bar fill",
+    "post-2023 data",
+    "CY-011",
+    "using the under-supported low state for an economic claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-004_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-004_result.json",
+    "research/market_behavior_os_v2/reports/MKT-DISP-RANK-004_industry_rank.md"
+  ]
+}

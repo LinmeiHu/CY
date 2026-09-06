@@ -1,0 +1,88 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1",
+  "status": "FROZEN_POST_HOC_TRANSLATION_BEFORE_CONCENTRATED_REPLAY",
+  "purpose": "Test one simple capital-concentration translation of the already reported, block-stable Champion ranks 3-5 payoff advantage.",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "starting_checkpoint": "aa46eea96d55a90e1b27ffbefe520233a1582c94",
+  "inputs": {
+    "champion_anatomy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-ANATOMY-CYCLE-016_spec.json",
+      "sha256": "59ecfed283bee0becd2c146f3c350db2679a292cbb275cfdfd2f43732033fe43"
+    },
+    "champion_anatomy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_anatomy_cycle_016.py",
+      "sha256": "cb01e2cfc43acd3f11b0de1edb23ecf9308f2674edaab7e04fdb6cd341bb91da"
+    },
+    "champion_anatomy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "champion_authoritative_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json",
+      "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"
+    }
+  },
+  "data_generated_motivation": {
+    "source": "Cycle-016 frozen champion anatomy, which was diagnostic and authorized no strategy change.",
+    "full_mean_net_return": {
+      "ranks_1_2": 0.00955,
+      "ranks_3_5": 0.022097,
+      "ranks_6_10": 0.012431
+    },
+    "early_mean_net_return": {
+      "ranks_1_2": 0.019138,
+      "ranks_3_5": 0.033079,
+      "ranks_6_10": 0.014754
+    },
+    "late_mean_net_return": {
+      "ranks_1_2": 0.001288,
+      "ranks_3_5": 0.012573,
+      "ranks_6_10": 0.010417
+    },
+    "interpretation": "The nonmonotonic middle-rank advantage may reflect a balance between over-defensive lowest-MAX names and lottery-like lower-ranked names. This is hypothesis generation, not prior confirmation."
+  },
+  "frozen_strategy": {
+    "baseline": "Exact Industry Diffusion plus Weekly Low-MAX Champion.",
+    "signal_dates": "Exact frozen weekly dates.",
+    "selection": "On each date retain only exact emitted signal ranks 3, 4, and 5 from the frozen Champion Top-10; do not rerank or replace a name.",
+    "capital": "Allocate the same one-quarter-of-NAV cohort capital equally across executable retained names.",
+    "entry": "Exact next legal open.",
+    "holding": "Exact 20-session due-open lifecycle with accepted forced corporate-action exits.",
+    "cost_per_side_bps": 20,
+    "overlapping_cohorts": 4,
+    "no_leverage": true,
+    "no_shorting": true
+  },
+  "evaluation": {
+    "metrics": ["total and annualized return", "maximum drawdown", "Sharpe and Calmar", "severe trade fraction", "turnover", "trades and execution", "mean positions and industries", "industry HHI", "capacity", "calendar-year returns"],
+    "no_rescue": "No ranks 2-5, 3-6, Top-3, Top-5, weights, holding, timing, filter, or combination is opened after this replay."
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011",
+    "any rank set other than exact 3,4,5",
+    "reranking, replacement, threshold, weighting, Top-N, holding, schedule, cost, industry, Low-MAX, or diffusion changes",
+    "entry or exit candlestick rules",
+    "market-state, opportunity-richness, or dispersion filter",
+    "second replay or rescue",
+    "OOS, independent-validation, confirmation, live, or production claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_equity.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_report.md"
+  ]
+}

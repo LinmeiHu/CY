@@ -1,0 +1,94 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-MID-RANK-MARKET-GATE-V1",
+  "status": "FROZEN_BEFORE_MID_RANK_STATE_OUTCOME_JOIN",
+  "purpose": "Test whether the one pre-existing causal Absolute Market State can remove genuinely negative opportunity from the new fixed ranks-3-to-5 Champion without searching market dimensions or cells.",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "starting_checkpoint": "aa46eea96d55a90e1b27ffbefe520233a1582c94",
+  "inputs": {
+    "mid_rank_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_spec.json",
+      "sha256": "6c6eb74250ab3d3882ba16c45665d4dc76ac0df7211e266ff5a60a7490f64150"
+    },
+    "mid_rank_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_mid_rank_concentration_v1.py",
+      "sha256": "8a1394eef89af0e346b08feabda75be7767c9a023dee89cdf1e73d5fb075961e"
+    },
+    "mid_rank_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_result.json",
+      "sha256": "528d5f8600a858202e9658d999767bf05d8eb3c858d38874f8331485c82091e6"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "applicability_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_spec.json",
+      "sha256": "96490dee5f4777f4ad27d1a6a7520dd61099afac8d148e4cbec0b6018fe0a567"
+    },
+    "applicability_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_panel.csv",
+      "sha256": "698bc4ca2942a49daf55d1d8cef4bbef164a2814fd9fbc7cc778dd600cc54ccd"
+    },
+    "applicability_reconciliation": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-APPLICABILITY-MAP-CYCLE-019_reconciliation_result.json",
+      "sha256": "46cae601d9038901ff8c01ece25d9132f08d2e81c3863aeea526e99bba8058c4"
+    }
+  },
+  "fixed_state": {
+    "id": "ABSOLUTE_MARKET_STATE",
+    "definition": "Compound the daily cross-sectional median PIT-valid stock step return over the 20 completed sessions ending at the decision close.",
+    "normalization": "Exact causal expanding-prior LOW/MEDIUM/HIGH state already emitted by Cycle-019; no recomputation or threshold change.",
+    "adverse_state": "LOW",
+    "why_selected_before_join": "It was Cycle-019's only STRONG_APPLICABILITY_INFORMATION single dimension, with favorable early and late spreads. Dispersion, synchronization, persistence, and every 2D cell are prohibited."
+  },
+  "anatomy": {
+    "population": "Exact frozen ranks 3, 4, and 5 trades grouped equally by original signal date.",
+    "generation": [2018, 2019, 2020],
+    "fixed_validation": [2021, 2022, 2023],
+    "metrics": ["cohort dates", "mean cohort payoff", "winner and severe fraction", "retained-minus-LOW payoff", "year direction"]
+  },
+  "generation_gate_all_required": {
+    "minimum_low_state_dates": 20,
+    "maximum_low_state_mean_cohort_payoff": 0.0,
+    "minimum_nonlow_state_mean_cohort_payoff": 0.01,
+    "minimum_nonlow_minus_low_payoff": 0.015,
+    "minimum_severe_fraction_improvement": 0.0
+  },
+  "validation_gate_all_required": {
+    "maximum_low_state_mean_cohort_payoff": 0.0,
+    "minimum_nonlow_state_mean_cohort_payoff": 0.005,
+    "minimum_nonlow_minus_low_payoff": 0.01,
+    "minimum_positive_calendar_year_spreads": 2,
+    "minimum_severe_fraction_improvement": 0.0
+  },
+  "frozen_translation": {
+    "authorization": "Only if both anatomy gates pass.",
+    "rule": "If exact Absolute Market State is LOW at the weekly decision close, open no new ranks-3-to-5 cohort; otherwise execute the exact ranks-3-to-5 strategy.",
+    "existing_positions": "Never changed; retain exact due-open and forced corporate-action exits.",
+    "cash": "Skipped cohort allocation remains cash; no redistribution, leverage, hedge, or later backfill.",
+    "entry": "Next legal open.",
+    "holding_sessions": 20,
+    "cost_per_side_bps": 20,
+    "maximum_replays": 1
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011",
+    "MEDIUM-only, HIGH-only, continuous scaling, synchronization, dispersion, persistence, or 2D state rules",
+    "state threshold, lookback, normalization, direction, or timing changes",
+    "rank-set, weight, holding, exit, cost, or industry changes",
+    "second replay or rescue",
+    "OOS, independent-validation, confirmation, live, or production claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-MARKET-GATE-V1_anatomy.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-MARKET-GATE-V1_equity.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-MARKET-GATE-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-MID-RANK-MARKET-GATE-V1_report.md"
+  ]
+}

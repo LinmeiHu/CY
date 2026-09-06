@@ -1,0 +1,63 @@
+{
+  "experiment_id": "ASHARE-LARGE-CAP-DOMINANCE-V1",
+  "status": "FROZEN_BEFORE_FIXED_VALIDATION_OUTCOME_ACCESS",
+  "purpose": "Test whether the monotonic large-over-small relation discovered by ASHARE-SMALL-CAP-PREMIUM-V1 is a stable long-only large-cap quality/liquidity effect rather than a generation-period artifact.",
+  "hypothesis_origin": "POST_HOC_DATA_GENERATED_FROM_2018_2020_SMALL_CAP_FAILURE",
+  "claim_boundary": "CONSUMED_DEVELOPMENT_SEQUENTIAL_VALIDATION_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "inputs": {
+    "small_cap_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-SMALL-CAP-PREMIUM-V1_result.json",
+      "sha256": "bfb438f4dc90e6e2c58dce9030c92df32927485d55c2d1ef0745d0c3b8121dec"
+    },
+    "small_cap_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_small_cap_premium_v1.py",
+      "sha256": "6261a865dbae0263f07a7f2b63a296654ccdc74d269bba49df5b4a2bfa622f8d"
+    }
+  },
+  "frozen_generation_evidence": {
+    "period": "2018-07-30 through 2020-12-31",
+    "q1_to_q5_mean_net_returns": [-0.0015194220217471495, 0.0001514843567675061, 0.0009052286576622286, 0.0062174258584997665, 0.00925060025453328],
+    "q5_minus_q1": 0.01077002227628043,
+    "favorable_large_cap_adjacent_steps": 4,
+    "orientation_was_not_preregistered": true
+  },
+  "fixed_validation": {
+    "start": "2021-01-01",
+    "end": "2023-12-29",
+    "signal": "largest completed-t-1 circulating-market-value quintile is favorable",
+    "natural_horizon_sessions": 20,
+    "cost_per_side_bps": 20,
+    "all_required": {
+      "q5_mean_net_return_positive": true,
+      "q5_minus_q1_positive": true,
+      "q5_minus_q1_positive_each_calendar_year": [2021, 2022, 2023],
+      "q5_severe_loss_no_worse_than_q1": true,
+      "minimum_favorable_adjacent_steps": 3
+    }
+  },
+  "executable_translation": {
+    "authorization": "only if every fixed-validation requirement passes",
+    "rule": "Equal weight the largest circulating-market-value decile every 20 sessions.",
+    "holding": "Next-legal-open entry; hold through 20 completed sessions; sell at the next legal open.",
+    "initial_capital_cny": 10000000,
+    "cost_per_side_bps": 20,
+    "no_alternative_quantile_or_top_n": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736
+  },
+  "prohibited": [
+    "post-2023 data or metadata",
+    "CY-011 access",
+    "same-bar execution",
+    "alternative size definitions, cutoffs, schedules, horizons, costs, or liquidity floors",
+    "industry, habitat, momentum, Low-MAX, or champion rescue",
+    "OOS, independent confirmation, or live claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-LARGE-CAP-DOMINANCE-V1_bucket_table.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-LARGE-CAP-DOMINANCE-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-LARGE-CAP-DOMINANCE-V1_report.md"
+  ]
+}

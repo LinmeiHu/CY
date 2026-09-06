@@ -1,0 +1,116 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-SHALLOW-PATH-RANK-V1",
+  "frozen_at": "2026-09-03",
+  "status": "FROZEN_GENERATION_PROTOCOL_BEFORE_OUTCOME_MODEL",
+  "research_role": "distill one transparent price-volume-path ranking rule from the consumed generation block",
+  "claim_boundary": "POST_HOC_GENERATION_DISCOVERY_NOT_OOS_NOT_CONFIRMATION",
+  "inputs": {
+    "champion_anatomy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-ANATOMY-CYCLE-016_spec.json",
+      "sha256": "59ecfed283bee0becd2c146f3c350db2679a292cbb275cfdfd2f43732033fe43"
+    },
+    "champion_anatomy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_anatomy_cycle_016.py",
+      "sha256": "cb01e2cfc43acd3f11b0de1edb23ecf9308f2674edaab7e04fdb6cd341bb91da"
+    },
+    "champion_anatomy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "causal_daily_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    }
+  },
+  "outcome_governance": {
+    "generation_outcome_period": "2018-01-01 through 2020-12-31 only",
+    "validation_outcomes": "PROHIBITED_IN_V1",
+    "post_2023_outcomes": "PROHIBITED",
+    "cy011": "PROHIBITED",
+    "next_step": "only a generated rule that clears every V1 gate may be hashed into a separate validation/replay specification"
+  },
+  "fixed_features": [
+    {
+      "name": "diffusion_score",
+      "meaning": "same-close PIT industry participation strength"
+    },
+    {
+      "name": "max_return20",
+      "meaning": "largest causal daily return in the prior 20-session Low-MAX window"
+    },
+    {
+      "name": "r20",
+      "meaning": "causal 20-session stock return"
+    },
+    {
+      "name": "compression_ratio",
+      "meaning": "current range relative to the fixed prior range reference"
+    },
+    {
+      "name": "close_location",
+      "meaning": "signal-close location inside the completed daily range"
+    },
+    {
+      "name": "activity_ratio",
+      "meaning": "signal-day amount relative to causal prior activity"
+    },
+    {
+      "name": "gap_return",
+      "meaning": "completed signal-day overnight gap component"
+    },
+    {
+      "name": "intraday_return",
+      "meaning": "completed signal-day open-to-close component"
+    }
+  ],
+  "fixed_model": {
+    "estimator": "sklearn.tree.DecisionTreeRegressor",
+    "criterion": "squared_error",
+    "max_depth": 2,
+    "min_samples_leaf": 120,
+    "random_state": 0,
+    "sample_weight": "equal per executed Champion trade",
+    "missing_values": "fail closed; no imputation",
+    "target": "exact final_net_return net of the Champion's accepted 20 bps per side lifecycle"
+  },
+  "fixed_selection_screen": {
+    "universe": "the unchanged ten Weekly Industry Diffusion plus Low-MAX names on each decision date",
+    "selection": "three highest frozen tree predictions per date",
+    "tie_break": [
+      "higher diffusion_score",
+      "lower max_return20",
+      "symbol ascending"
+    ],
+    "rationale_for_three": "a compact three-name cohort tests whether the distilled rule supplies enough return concentration while preserving the unchanged one-quarter cohort risk budget"
+  },
+  "generation_gate_all_required": {
+    "minimum_complete_rows": 1200,
+    "minimum_decision_dates": 120,
+    "selected_mean_return": 0.025,
+    "selected_minus_all_mean_return": 0.01,
+    "selected_median_return": 0.0,
+    "minimum_severe_loss_improvement": 0.0,
+    "minimum_2018_2019_selected_minus_all": 0.005,
+    "minimum_2020_selected_minus_all": 0.005,
+    "minimum_distinct_split_features": 1,
+    "maximum_distinct_split_features": 3
+  },
+  "prohibited": [
+    "reading 2021-2023 outcomes before serializing and hashing the generated rule",
+    "other features, transforms, trees, depths, leaf sizes, losses, seeds, Top-N values, horizons, weights, or model zoo",
+    "industry identity, symbol identity, calendar year, market state, future path, or execution outcome as a feature",
+    "using Champion signal_rank as economic information",
+    "portfolio replay in V1",
+    "post-2023 outcomes or CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-SHALLOW-PATH-RANK-V1_generated_rule.json",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-SHALLOW-PATH-RANK-V1_generation_selection.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-SHALLOW-PATH-RANK-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-SHALLOW-PATH-RANK-V1_report.md"
+  ]
+}

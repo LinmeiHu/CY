@@ -1,0 +1,76 @@
+{
+  "experiment_id": "ASHARE-INDUSTRY-FIRST-DIFFUSION-LOW-MAX-V1",
+  "status": "FROZEN_BEFORE_INDUSTRY_FIRST_OUTCOMES",
+  "purpose": "Test whether ranking industries before stocks removes the frozen Champion's unintended repeated-industry allocation while preserving Industry Diffusion plus Low-MAX economics.",
+  "claim_boundary": "CONSUMED_2018_2023_SEQUENTIAL_DEVELOPMENT_NOT_OOS_NOT_CONFIRMATION_NOT_LIVE",
+  "inputs": {
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "construction_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_industry_diffusion_construction_011.py",
+      "sha256": "667bc1580c21216499f02c7109302b7d7b15760759cdc8077b110496926ddaf7"
+    },
+    "champion_anatomy_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-ANATOMY-CYCLE-016_result.json",
+      "sha256": "4a43e63313bdd72afe50518813f15cc32cf384d689aee6b39996598df256699d"
+    }
+  },
+  "frozen_construction": {
+    "schedule": "exact frozen Champion weekly signal dates",
+    "industry_score": "inclusive fraction of exact eligible industry members with causal action-coordinate r20 greater than zero",
+    "industry_selection": "ten industries ranked by industry_score descending, then industry",
+    "stock_selection": "within each selected industry choose one stock by max_return20 ascending, then symbol",
+    "breadth": "exactly ten stocks from ten distinct PIT industries",
+    "entry": "next legal open",
+    "holding": "20 completed sessions, then next legal due open",
+    "cost_per_side_bps": 20,
+    "cohort_weight": "unchanged one-quarter NAV; equal stock weights",
+    "corporate_actions": "unchanged QD-010 pre-effective exit and cash/share ledger contract"
+  },
+  "sequential_periods": {
+    "generation": [2018, 2019, 2020],
+    "fixed_validation": [2021, 2022, 2023],
+    "validation_access": "only after every generation requirement passes"
+  },
+  "screen_gate_generation_all_required": {
+    "minimum_new_cohort_mean_net_improvement": 0.005,
+    "minimum_each_subblock_improvement": 0.0,
+    "subblocks": ["2018_2019", "2020"],
+    "severe_loss_fraction_no_worse": true,
+    "minimum_entry_execution_fraction": 0.9
+  },
+  "screen_gate_validation_all_required": {
+    "minimum_new_cohort_mean_net_improvement": 0.0,
+    "minimum_each_calendar_year_improvement": 0.0,
+    "years": [2021, 2022, 2023],
+    "severe_loss_fraction_no_worse": true,
+    "minimum_entry_execution_fraction": 0.9
+  },
+  "single_executable_translation": {
+    "authorization": "only after both screen gates pass",
+    "rule": "Top ten industries by diffusion; one lowest-MAX stock per industry.",
+    "no_alternative_industry_count_or_stock_count": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736
+  },
+  "prohibited": [
+    "post-2023 outcomes or metadata",
+    "CY-011 access",
+    "alternative industry count, member floor, score, stock count, rank, schedule, horizon, cost, or weighting",
+    "market filter, exposure overlay, exit change, leverage, or second replay",
+    "OOS, independent confirmation, or live claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-FIRST-DIFFUSION-LOW-MAX-V1_panel.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-INDUSTRY-FIRST-DIFFUSION-LOW-MAX-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-INDUSTRY-FIRST-DIFFUSION-LOW-MAX-V1_report.md"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-MID-RANK-STABLE-TREND-GATE-V1",
+  "frozen_at": "2026-09-03",
+  "status": "FROZEN_BEFORE_MID_RANK_TREND_OUTCOME_JOIN",
+  "research_role": "one bounded strategy-usefulness test of the only MKT-TRND-001 representation that passed neighboring-horizon stability",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "inputs": {
+    "mid_rank_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_spec.json",
+      "sha256": "6c6eb74250ab3d3882ba16c45665d4dc76ac0df7211e266ff5a60a7490f64150"
+    },
+    "mid_rank_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_mid_rank_concentration_v1.py",
+      "sha256": "8a1394eef89af0e346b08feabda75be7767c9a023dee89cdf1e73d5fb075961e"
+    },
+    "mid_rank_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-CONCENTRATION-V1_result.json",
+      "sha256": "528d5f8600a858202e9658d999767bf05d8eb3c858d38874f8331485c82091e6"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "trend_spec": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-TRND-001_spec.json",
+      "sha256": "865b5d22c439c1741a299fd40bc0e3a352701bf73b616199b91cda5c374a3608"
+    },
+    "trend_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_trnd_001.py",
+      "sha256": "6228d9b1cc7cfb96646078c8f09dd9bee5e8fdbac0a6ea935e5aa805cad59273"
+    },
+    "trend_result": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_result.json",
+      "sha256": "784db3a54046e569c55912c5fff0afed7bf45b6c33573fcb13d23a6bca5cc7d5"
+    },
+    "trend_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/MKT-TRND-001_trend_panel.csv",
+      "sha256": "fd933284bec590b5dee15549b176db973bebc07c8ee71edab64249c9b2e26e5a"
+    }
+  },
+  "outcome_governance": {
+    "development_history": "2018-2023 consumed",
+    "generation_period": "2018-2020",
+    "validation_period": "2021-2023 remains unopened unless every generation gate passes",
+    "post_2023_outcome_read": "PROHIBITED",
+    "cy011_read": "PROHIBITED",
+    "maximum_outcome_date": "2023-12-31"
+  },
+  "fixed_state": {
+    "source": "MKT-TRND-001",
+    "representation": "direction_return_60",
+    "aggregation": "same-date median across the exact six registered broad indices; require all six finite",
+    "adverse_state": "NEGATIVE when the median 60-session log return is strictly below zero",
+    "non_adverse_state": "NONNEGATIVE otherwise",
+    "decision_at": "completed same-day official closes at 15:00 Asia/Shanghai",
+    "first_actionable_time": "next legal open",
+    "scientific_boundary": "MKT-TRND-001 established representation stability only; this is its first bounded strategy-usefulness test",
+    "why_this_single_representation": "direction is MKT-TRND-001's sole accepted nonredundant role and 60 sessions is its frozen primary horizon",
+    "why_zero_threshold": "zero is the natural economic boundary between a positive and negative broad-market path and is not estimated from Champion outcomes"
+  },
+  "generation_gate_all_required": {
+    "minimum_negative_state_dates": 20,
+    "minimum_nonnegative_state_dates": 20,
+    "maximum_negative_state_mean_cohort_payoff": 0.0,
+    "minimum_nonnegative_state_mean_cohort_payoff": 0.01,
+    "minimum_nonnegative_minus_negative_payoff": 0.015,
+    "minimum_severe_fraction_improvement": 0.0
+  },
+  "validation_gate_all_required": {
+    "maximum_negative_state_mean_cohort_payoff": 0.0,
+    "minimum_nonnegative_state_mean_cohort_payoff": 0.005,
+    "minimum_nonnegative_minus_negative_payoff": 0.01,
+    "minimum_positive_calendar_year_spreads": 2,
+    "minimum_severe_fraction_improvement": 0.0
+  },
+  "frozen_translation_if_both_gates_pass": {
+    "baseline": "Industry Diffusion plus Weekly Low-MAX, exact emitted ranks 3, 4, and 5",
+    "rule": "when the exact six-index median direction_return_60 is negative at the weekly decision close, open no new cohort; otherwise open the unchanged three-name cohort",
+    "existing_positions": "unchanged until the exact due exit",
+    "cash": "blocked cohort capital remains cash",
+    "weights": "unchanged one-quarter NAV cohort capital split equally across ranks 3, 4, and 5",
+    "execution": "exact accepted next-legal-open, T+1, limits, suspensions, QD-010 corporate actions, 20 bps per side, h20 due exit"
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "prohibited": [
+    "other trend horizons or neighboring definitions",
+    "single-index selection after outcomes",
+    "percentile thresholds",
+    "dispersion, synchronization, persistence, breadth, or 2D states",
+    "exposure scaling or changed existing-position management",
+    "alternative rank sets, weights, holds, entries, costs, or rescue replay",
+    "post-2023 outcomes or CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-STABLE-TREND-GATE-V1_anatomy.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-STABLE-TREND-GATE-V1_equity.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-MID-RANK-STABLE-TREND-GATE-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-MID-RANK-STABLE-TREND-GATE-V1_report.md"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-HIGH-MAX-TAIL-AVOIDANCE-V1",
+  "status": "FROZEN_AFTER_2018_2020_GENERATION_BEFORE_2021_2023_VALIDATION",
+  "research_status": "DATA_GENERATED_CONSUMED_DEVELOPMENT_HYPOTHESIS",
+  "question": "Does the highest exact max_return20 fifth consistently dilute otherwise frozen champion cohorts, even though monotonic Low-MAX intensity failed?",
+  "generation_observation": "In 2018-2020 the highest-MAX Q5 mean was 0.136% versus 2.606% for Q1-Q4 combined, with materially worse severe-loss incidence; the middle buckets, not Q1, were strongest.",
+  "inputs": {
+    "intensity_panel": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-LOW-MAX-INTENSITY-V1_panel.csv",
+      "sha256": "de83c811cce639a43b2005f4e419a879878a14f4c3b33c87ccffefd24cf66bc2"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "daily_feature_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    }
+  },
+  "frozen_comparison": {
+    "retained": "within each signal_date, executed intensity buckets Q1-Q4",
+    "avoided": "within each signal_date, executed highest exact max_return20 bucket Q5",
+    "primary": "Q1-Q4 pooled mean final_net_return minus Q5 mean",
+    "secondary": ["pooled median", "winner fraction", "severe-loss fraction"],
+    "no_bucket_substitution": true
+  },
+  "fixed_validation": {
+    "years": [2021, 2022, 2023],
+    "all_required": {
+      "pooled_mean_spread_minimum": 0.005,
+      "retained_mean_positive": true,
+      "each_year_mean_spread_nonnegative": true,
+      "pooled_severe_loss_improvement_positive": true
+    }
+  },
+  "single_translation_if_validation_passes": {
+    "rule": "From every frozen weekly champion Top-10 plan, retain the eight names with the lowest exact max_return20, equal weight them, enter next legal open, and retain the exact 20-session lifecycle and all execution semantics.",
+    "planned_names": 8,
+    "cost_per_side": 0.002,
+    "alternative_counts": false,
+    "weight_search": false,
+    "holding_search": false,
+    "habitat_filter": false,
+    "rescue": false
+  },
+  "portfolio_success_all_required": {
+    "annualized_return_minimum": 0.32683876637754006,
+    "maximum_drawdown_better_than": -0.25773611771697336,
+    "each_calendar_year_return_delta_nonnegative": true,
+    "turnover_increase_maximum_fraction": 0.1
+  },
+  "governance": {
+    "post_2023_outcome_read": false,
+    "cy011_read": false,
+    "oos_claim": false,
+    "independent_confirmation_claim": false
+  },
+  "prohibited": [
+    "different excluded fraction",
+    "middle-bucket selection",
+    "alternative MAX lookback",
+    "threshold search",
+    "holding or exit search",
+    "post-2023 outcomes",
+    "CY-011"
+  ]
+}

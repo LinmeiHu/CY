@@ -1,0 +1,131 @@
+{
+  "experiment_id": "ASHARE-CHINA-TREND-EXPECTED-RETURN-V1",
+  "status": "FROZEN_BEFORE_ANY_2018_2023_FORWARD_OUTCOME_AGGREGATION_AFTER_DATA_AVAILABILITY_CORRECTION",
+  "frozen_at": "2026-09-04",
+  "starting_checkpoint": "aa46eea96d55",
+  "research_role": "one faithful price-volume China trend prior with a single long-only executable translation; not a Champion overlay or another raw momentum variant",
+  "claim_boundary": "CONSUMED_2018_2023_DEVELOPMENT_DISCOVERY_NOT_OOS_NOT_INDEPENDENT_CONFIRMATION",
+  "pre_outcome_amendment": {
+    "reason": "The first fail-closed construction pass established that the frozen 36-beta-update warmup and at-least-200-stock complete-regression requirement first produce an evaluation score on 2018-07-31, not 2018-01-31.",
+    "outcome_boundary": "No next-open forward-return arm, validation arm, portfolio replay, or performance aggregation had run when the coverage assertion stopped the program. Past monthly returns used causally inside the frozen recursive predictor are model inputs, not evaluation outcomes.",
+    "correction": "Keep every scientific parameter unchanged; begin the cheap screen at 2018-07-31, leave prior 2018 sessions in cash for headline replay, and require exactly 64 sampled signal dates through 2023-10-31.",
+    "parameters_changed": false
+  },
+  "source_prior": {
+    "primary_reference": "Liu, Zhou, and Zhu (2024), Trend Factor in China: The Role of Large Individual Trading, Review of Asset Pricing Studies 14(2), 348-380, DOI 10.1093/rapstu/raae003",
+    "source_formula": "At each month-end, normalized price and volume moving averages at 3,5,10,20,50,100,200,300,400 sessions enter a cross-sectional regression of month-t return on month-(t-1) signals. Coefficients are forecast recursively with EMA lambda 0.02 and applied to month-t signals to forecast month t+1.",
+    "economic_mechanism": "persistent price and volume trends jointly reveal dominant individual trading, momentum, and liquidity information in the A-share market",
+    "long_only_boundary": "The paper constructs a long-short factor and reports monotonically increasing long-leg returns. This experiment tests one explicitly labeled long-only Top-10 translation of the paper's stock-level expected-return score; it does not claim to reproduce the paper's EP-controlled factor portfolio."
+  },
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "prehistory_manifest": {
+      "path": "research/market_behavior_os_v2/TREND_PREHISTORY_DATA_MANIFEST.json",
+      "sha256": "926f0c6b2609b1923854e1306b6efb1ca8f3deab08ac668b6ecb977e3f950529"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "daily_eligibility_panel": {
+      "path": "/Volumes/quant/CY_quant_research/multiscale_diffusion_daily_alpha_cycle_015/daily_feature_panel.parquet",
+      "sha256": "b957c69d5c9bf5c3c641ccf2f92cf5dd7640672757b3926eb0f24dcc8eff5012"
+    },
+    "ca_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CA-REPLAY-003_spec.json",
+      "sha256": "db71f4d03eefcba4f5e2b8c75913ddc1f92d475362a8cd91971ecd325145c90b"
+    },
+    "ca_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_ca_replay_003.py",
+      "sha256": "f9ccaab314847ad4e9226f428a09690b1e97e34ff13caa2cfb3b979733c4aecd"
+    },
+    "screen_replay_utility": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_speculative_turnover_ratio_v1.py",
+      "sha256": "588070074af830cc8630c133ba3899f16e9c243d7a76e337443ad0e21c0fb22c"
+    }
+  },
+  "frozen_model": {
+    "clock": "last exchange session of each calendar month after the completed 15:00 daily bar; decision_at 15:30",
+    "price_coordinate": "causal total-return coordinate built with the accepted QD-010 cash/share action contract; an explicitly observed full-session suspension may carry the prior coordinate, while any other unresolved path day fails closed",
+    "price_signals": "simple averages of the adjusted coordinate over exactly 3,5,10,20,50,100,200,300,400 exchange sessions divided by the current adjusted coordinate",
+    "volume_signals": "simple averages of registered daily share volume over the same nine horizons divided by current-day volume; at least half of the horizon must contain valid trading records, otherwise the immediately preceding month-end signal is carried as in the source paper",
+    "monthly_response": "causal simple adjusted return from the previous exchange month-end coordinate to the current exchange month-end coordinate",
+    "cross_sectional_regression": "ordinary least squares with an intercept, month-t response on month-(t-1) eighteen signals, numpy deterministic least-squares solution, complete rows only",
+    "coefficient_forecast": "E_t(beta_{t+1})=(1-0.02)*E_{t-1}(beta_t)+0.02*beta_t; initialize with the first estimable beta and require at least 36 completed beta updates before an evaluation signal",
+    "expected_return": "dot product of current eighteen signals and the recursively forecast coefficients; the intercept is retained",
+    "prehistory_use": "2013-2017 rows may form signals, monthly responses, and recursive coefficients only; all 2018-2023 evaluation features, eligibility, outcomes, and executions use the authoritative CY-006/Cycle-015 inputs",
+    "model_universe": "complete causal signal rows with current tradability and prior-20 average amount at least CNY 50 million; no total-market-cap or fundamental substitution",
+    "evaluation_eligibility": "exact registered Cycle-015 PIT daily eligibility at the calendar month-end, including non-ST, valid industry, continuous causal history, and prior-20 average amount at least CNY 50 million",
+    "orientation": "higher expected return is preferred; implementation stores negative expected return so lower sort order is preferred",
+    "ties": "negative expected return ascending then symbol ascending",
+    "earliest_entry": "next legal session open after the month-end signal",
+    "natural_exit": "the following calendar-month signal's next legal session open, delayed only by the unchanged sellability and QD-010 execution contract"
+  },
+  "cheap_screen": {
+    "dates": "2018-07 month-end through 2023-10 month-end; 2023-11 supplies the last causal rebalance exit and no post-2023 row is read",
+    "sample_arms_per_date": {
+      "highest_expected20": "the exact twenty lowest stored negative-expected-return scores",
+      "lowest_expected20": "the exact twenty highest stored negative-expected-return scores",
+      "Q1_to_Q5": "twenty deterministic SHA-256 samples from each same-date stored-score quintile using seed CHINA-TREND-V1; Q1 is highest expected return",
+      "date_control20": "twenty deterministic SHA-256 samples from the complete same-date eligible set using seed CHINA-TREND-CONTROL-V1"
+    },
+    "outcome": "net next-open-to-next-month-next-open return after 20 bps per side, with PIT actions, limits, suspensions, T+1, delayed exits, and QD-010 pre-effective exits",
+    "severe_loss": "net return <= -10 percent",
+    "generation": [2018, 2019, 2020],
+    "fixed_validation": [2021, 2022, 2023],
+    "validation_open_only_if_generation_passes": true,
+    "generation_gate_all_required": {
+      "lowest20_mean_excess_vs_date_control_minimum": 0.005,
+      "lowest20_mean_return_positive": true,
+      "lowest20_minus_highest20_minimum": 0.01,
+      "lowest20_excess_nonnegative_each_generation_year": true,
+      "at_least_three_of_four_sampled_quintile_steps_favorable": true,
+      "lowest20_severe_loss_not_worse_than_control": true
+    },
+    "validation_gate_all_required": {
+      "lowest20_mean_excess_vs_date_control_minimum": 0.003,
+      "lowest20_mean_return_positive": true,
+      "lowest20_minus_highest20_positive": true,
+      "lowest20_excess_nonnegative_each_validation_year": true,
+      "at_least_three_of_four_sampled_quintile_steps_favorable": true,
+      "lowest20_severe_loss_not_worse_than_control": true
+    }
+  },
+  "single_replay_if_both_gates_pass": {
+    "selection": "the exact ten highest forecast expected-return stocks at each completed calendar month-end",
+    "weights": "equal weight across executable names",
+    "rebalance": "sell the prior monthly cohort and buy the new cohort at the next legal open, using only available cash and never borrowing",
+    "cost_per_side": 0.002,
+    "target_window": "include cash from 2018-01-02 until the first lawfully formed signal so headline annualized return spans the same 2018-2023 development window",
+    "no_alternative_top_n": true,
+    "no_holding_search": true,
+    "no_champion_overlay": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "prohibited": [
+    "alternative moving-average horizons",
+    "alternative EMA lambda or initialization",
+    "alternative regression, regularization, transformations, or winsorization",
+    "alternative Top-N, holding period, quantile boundaries, or signal sign",
+    "fundamental or total-market-cap substitution",
+    "Champion combination, habitat rescue, or exposure scaling",
+    "same-session fill, leverage, borrowing, or shorting",
+    "prehistory substitution for 2018-2023 evaluation or execution",
+    "post-2023 outcomes",
+    "CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHINA-TREND-EXPECTED-RETURN-V1_coefficients.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHINA-TREND-EXPECTED-RETURN-V1_screen.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHINA-TREND-EXPECTED-RETURN-V1_equity.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHINA-TREND-EXPECTED-RETURN-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHINA-TREND-EXPECTED-RETURN-V1_report.md"
+  ]
+}

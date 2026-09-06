@@ -1,0 +1,118 @@
+{
+  "experiment_id": "ASHARE-CHAMPION-LATE-DEMAND-TRAP-RANK-V1",
+  "frozen_at": "2026-09-03",
+  "status": "FROZEN_BEFORE_CHAMPION_INTRADAY_SCORE_JOIN",
+  "research_role": "one bounded portability test of the previously observed adverse apparent-demand mechanism",
+  "claim_boundary": "POST_HOC_CONSUMED_2018_2023_DEVELOPMENT_OPTIMIZATION_NOT_OOS_NOT_CONFIRMATION",
+  "inputs": {
+    "intraday_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-INTRADAY-INDEP-CYCLE-004_spec.json",
+      "sha256": "fa923737b7fe9f6e38b263e751f1c2b39b871c6cc86677efcb24238f3337a103"
+    },
+    "intraday_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_intraday_indep_cycle_004.py",
+      "sha256": "b679c4b677108bff46bc7f68633141ba8727b89c5e7ebccb009dbcb94fd25b98"
+    },
+    "intraday_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-INTRADAY-INDEP-CYCLE-004_result.json",
+      "sha256": "8c5983051601d08a4a5b99282d0ba0e3f0284177106b2d90684c98b95ae68d2f"
+    },
+    "champion_anatomy_spec": {
+      "path": "research/market_behavior_os_v2/experiments/ASHARE-CHAMPION-ANATOMY-CYCLE-016_spec.json",
+      "sha256": "59ecfed283bee0becd2c146f3c350db2679a292cbb275cfdfd2f43732033fe43"
+    },
+    "champion_anatomy_runner": {
+      "path": "research/market_behavior_os_v2/scripts/run_ashare_champion_anatomy_cycle_016.py",
+      "sha256": "cb01e2cfc43acd3f11b0de1edb23ecf9308f2674edaab7e04fdb6cd341bb91da"
+    },
+    "champion_trade_panel": {
+      "path": "/Volumes/quant/CY_quant_research/champion_anatomy_cycle_016/trade_path_panel.parquet",
+      "sha256": "195e688849785dee076fa25a0e5dc858aec14f412a95849fbe31c5ef0b62efbb"
+    },
+    "daily_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "minute_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-008-pit-b-minute-v2-2018-2026-20260821.json",
+      "sha256": "5903149da5d8afe37fa18719d17e8a5726856d11e8441d25d51217b05d6adf9f"
+    },
+    "champion_authoritative_result": {
+      "path": "research/market_behavior_os_v2/artifacts/ASHARE-LOW-MAX-CONFIRMATION-CYCLE-012_result.json",
+      "sha256": "296ea026882b629f1ed6eed3944d216ac6cd02757db525c02d31aa6fcefc1e7e"
+    }
+  },
+  "prior_evidence": {
+    "source": "ASHARE-INTRADAY-INDEP-CYCLE-004",
+    "exact_high_score_result": "late_volume_confirmed_demand Top-20 trailed its date control by 0.463 percentage points at h5, with adverse direction in both broad blocks and 4.577 percentage points worse severe-loss incidence",
+    "interpretation": "strong apparent late demand may be a selection trap; this experiment tests a down-ranking/avoidance role inside an independently constructed Champion cohort",
+    "not_claimed": "the low-score side has not been independently established as standalone long Alpha"
+  },
+  "fixed_score": {
+    "raw": "same-date mean percentile rank of close_vs_vwap, closing_30m_return, and last_hour_volume_share",
+    "daily_controls": [
+      "same-date percentile rank of causal daily return",
+      "same-date percentile rank of completed daily range divided by preclose",
+      "same-date percentile rank of causal r20"
+    ],
+    "incremental_score": "same-date OLS residual of the raw rank on intercept plus the three fixed daily-control ranks",
+    "orientation": "lower is preferred because the already observed high side was adverse",
+    "decision_at": "15:30 Asia/Shanghai after the exact completed-session minute summary",
+    "earliest_entry": "next legal market open"
+  },
+  "fixed_selection": {
+    "universe": "the unchanged ten Weekly Industry Diffusion plus Low-MAX names",
+    "rule": "choose the three lowest valid late-demand residual scores per weekly date",
+    "tie_break": "symbol ascending",
+    "insufficient_valid_names": "skip the whole cohort when fewer than three scores are valid",
+    "capital": "unchanged one-quarter current NAV per cohort, split equally among the three selected names",
+    "holding": "unchanged 20-session due exit",
+    "execution": "accepted T+1, next-legal-open, limits, suspensions, QD-010 corporate actions, and 20 bps per side"
+  },
+  "sequential_evaluation": {
+    "generation": "2018-2020",
+    "validation": "2021-2023 opened only if every generation gate passes",
+    "replay": "full 2018-2023 executable replay only if every fixed validation gate passes"
+  },
+  "generation_gate_all_required": {
+    "minimum_score_coverage": 0.9,
+    "minimum_decision_dates": 115,
+    "minimum_selected_mean_return": 0.025,
+    "minimum_selected_minus_all_mean_return": 0.01,
+    "minimum_selected_median_return": 0.0,
+    "minimum_severe_loss_improvement": 0.0,
+    "minimum_2018_2019_selected_minus_all": 0.005,
+    "minimum_2020_selected_minus_all": 0.005
+  },
+  "validation_gate_all_required": {
+    "minimum_score_coverage": 0.9,
+    "minimum_selected_mean_return": 0.01,
+    "minimum_selected_minus_all_mean_return": 0.005,
+    "minimum_severe_loss_improvement": 0.0,
+    "minimum_positive_calendar_year_improvements": 2
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736118,
+    "both_required": true
+  },
+  "resource": {
+    "scratch_root": "/Volumes/quant/CY_quant_research/champion_late_demand_trap_rank_v1_tmp",
+    "large_durable_output": "NONE"
+  },
+  "prohibited": [
+    "other minute descriptors, window lengths, composites, residual controls, orientations, thresholds, Top-N values, weights, or holds",
+    "same-session fill",
+    "using invalid or missing minute scores",
+    "changing the Champion industry or Low-MAX construction",
+    "rescue after generation, validation, or replay",
+    "post-2023 outcomes",
+    "CY-011"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-LATE-DEMAND-TRAP-RANK-V1_score_panel.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-LATE-DEMAND-TRAP-RANK-V1_equity.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-CHAMPION-LATE-DEMAND-TRAP-RANK-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-CHAMPION-LATE-DEMAND-TRAP-RANK-V1_report.md"
+  ]
+}

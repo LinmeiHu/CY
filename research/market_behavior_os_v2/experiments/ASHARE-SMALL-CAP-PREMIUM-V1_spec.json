@@ -1,0 +1,107 @@
+{
+  "experiment_id": "ASHARE-SMALL-CAP-PREMIUM-V1",
+  "status": "FROZEN_BEFORE_FORWARD_OUTCOME_ACCESS",
+  "purpose": "Test the canonical long-only A-share small-cap premium as a distinct return-generating alpha engine using the already accepted PIT-B circulating-size coordinate.",
+  "claim_boundary": "EXPLORE_ONLY_CONSUMED_2018_2023_NOT_OOS_NOT_VALIDATION_NOT_LIVE",
+  "inputs": {
+    "data_asset_registry": {
+      "path": "configs/data_asset_registry.json",
+      "sha256": "1161ab5e1e509f117833a69e43aa275b4b3e4379a39471fa5ea1701e3f69bde5"
+    },
+    "cy006_manifest": {
+      "path": "/Users/linmei/Documents/CY/data/input_inventories/CY-006-pit-b-daily-v2-2018-2026-20260821.json",
+      "sha256": "de8795f2ff78947997930933ad3354c7aa0c208fe0c4d3c09427c0d043e78ae2"
+    },
+    "size_contract": {
+      "path": "research/market_behavior_os_v2/experiments/MKT-STYLE-001_spec.json",
+      "sha256": "a32ca8fcdb6080beb97f4226a891c44270a46e9d0a4818d4132501fdc1a808a3"
+    }
+  },
+  "research_window": {
+    "start": "2018-01-02",
+    "end": "2023-12-29",
+    "generation": ["2018-01-02", "2020-12-31"],
+    "fixed_validation": ["2021-01-01", "2023-12-29"],
+    "validation_access": "only after every generation gate passes",
+    "decision_schedule": "Every twentieth CY-006 market session after 120 completed sessions.",
+    "signal_clock": "completed decision-session close at 15:00 Asia/Shanghai",
+    "entry_clock": "next legal session open"
+  },
+  "population": {
+    "security_scope": "Historical all-A .SH/.SZ securities in CY-006; no current-survivor list.",
+    "eligibility": [
+      "hard_valid and all component validity flags",
+      "available_at <= decision_at",
+      "trade_status=1, current_day_data_tradable=true, is_st=false on decision date",
+      "120 consecutive causal history rows",
+      "prior-20-session mean amount >= 50000000 CNY",
+      "positive prior-session close and circulating_shares with valid availability"
+    ]
+  },
+  "signal": {
+    "canonical_definition": "ascending completed t-1 close times causal t-1 circulating_shares",
+    "reason_for_t_minus_1": "Reuse the accepted MKT-STYLE-001 coordinate and prevent the current return from changing size assignment.",
+    "screen_buckets": 5,
+    "favorable_direction": "smaller is better",
+    "natural_horizon_sessions": 20
+  },
+  "screen": {
+    "entry": "next-session open when legally executable",
+    "response": "entry open through twentieth completed-session close",
+    "cost_per_side_bps": 20,
+    "severe_loss_threshold": -0.1,
+    "metrics": [
+      "N",
+      "decision_dates",
+      "mean_and_median_net_return",
+      "positive_fraction",
+      "severe_loss_fraction",
+      "Q1_minus_Q5",
+      "adjacent_monotonic_steps",
+      "entry_execution_coverage",
+      "liquidity_and_capacity"
+    ]
+  },
+  "generation_gate": {
+    "minimum_decision_dates": 20,
+    "minimum_entry_execution_coverage": 0.9,
+    "minimum_q1_mean_net_return": 0.01,
+    "minimum_q1_minus_q5": 0.005,
+    "minimum_favorable_adjacent_steps": 3,
+    "required_positive_subblocks": ["2018_2019", "2020"]
+  },
+  "validation_gate": {
+    "minimum_q1_minus_q5": 0.0,
+    "minimum_q1_mean_net_return": 0.0,
+    "required_positive_calendar_year_spreads": [2021, 2022, 2023],
+    "maximum_q1_severe_loss_disadvantage_vs_q5": 0.0
+  },
+  "executable_translation": {
+    "authorization": "only if generation and fixed-validation gates both pass",
+    "rule": "Equal weight the smallest circulating-market-value decile on each frozen 20-session signal date.",
+    "holding": "Hold through 20 completed sessions; sell at the next legal open, then admit the next cohort at that same open.",
+    "initial_capital_cny": 10000000,
+    "cost_per_side_bps": 20,
+    "no_leverage": true,
+    "no_shorting": true,
+    "no_alternative_quantile_or_top_n": true
+  },
+  "success_target": {
+    "minimum_annualized_return": 0.326838766,
+    "maximum_drawdown_must_be_greater_than": -0.257736,
+    "interpretation": "This is the user's optimization target, not a promotion gate that can be tuned."
+  },
+  "prohibited": [
+    "post-2023 data or metadata",
+    "CY-011 access",
+    "same-bar execution",
+    "alternative size definitions, quantiles, Top-N counts, schedules, horizons, costs, or liquidity floors after outcomes",
+    "industry, market-habitat, momentum, Low-MAX, or champion combination rescue",
+    "strict PIT-A, OOS, independent-validation, confirmation, or live claim"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/ASHARE-SMALL-CAP-PREMIUM-V1_bucket_table.csv",
+    "research/market_behavior_os_v2/artifacts/ASHARE-SMALL-CAP-PREMIUM-V1_result.json",
+    "research/market_behavior_os_v2/reports/ASHARE-SMALL-CAP-PREMIUM-V1_report.md"
+  ]
+}

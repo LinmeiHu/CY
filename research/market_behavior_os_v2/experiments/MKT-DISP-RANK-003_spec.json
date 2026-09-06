@@ -1,0 +1,79 @@
+{
+  "experiment_id": "MKT-DISP-RANK-003",
+  "research_level": "EXPLORE",
+  "status": "FROZEN_MATERIALLY_DIFFERENT_RESOURCE_CONTRACT_RETRY",
+  "frozen_at": "2026-09-03",
+  "inherits_scientific_spec": {
+    "path": "research/market_behavior_os_v2/experiments/MKT-DISP-RANK-001_spec.json",
+    "sha256": "502d5db1779fad76f73b45a4f6587c79398fb198a7a19f6404a6e2f7e92ac57c"
+  },
+  "inherits_year_batched_engineering": {
+    "path": "research/market_behavior_os_v2/experiments/MKT-DISP-RANK-002_spec.json",
+    "sha256": "b3fe4a343dbd1f438852a033d78621f1290ec74b6e4dce31e6e5305c75571480"
+  },
+  "bound_runners": {
+    "rank_001": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_disp_rank_001.py",
+      "sha256": "499b3a8cd4c83f25ae8498623a82f1a385b43d2de03bc9b5d5420ecae6c86b31"
+    },
+    "rank_002": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_disp_rank_002.py",
+      "sha256": "08eba97c4c18c100dd0395bcd2b34c149770f68838b2cf30eee1a5e28e308853"
+    },
+    "industry_source": {
+      "path": "research/market_behavior_os_v2/scripts/run_mkt_indrs_001.py",
+      "sha256": "33bd5684b3a81fccd5b352b13423a6176e960d87c5a7fa1c9131992c57ab6419"
+    }
+  },
+  "scientific_changes": "NONE",
+  "why_not_a_repeat": "MKT-DISP-RANK-001 stopped at its 12-GiB local spill ceiling and 002 at an inherited 1.5-GiB process-RSS ceiling. This retry preserves the exact frozen science and exact year batching, but adopts a new machine-sized bounded contract and the verified 3.6-TiB external scratch filesystem. No prior scientific output exists.",
+  "resource_contract": {
+    "machine_physical_memory_gib": 32,
+    "duckdb_threads": 2,
+    "duckdb_memory_limit_gib": 6,
+    "prelaunch_available_memory_floor_gib": 4,
+    "in_run_available_memory_floor_gib": 3,
+    "peak_rss_ceiling_gib": 12,
+    "temporary_spill_ceiling_gib": 50,
+    "wall_clock_ceiling_minutes": 45,
+    "scratch_root": "/Volumes/quant/CY_quant_research/mkt_disp_rank_003_tmp",
+    "scratch_filesystem": "/dev/disk9s1",
+    "minimum_scratch_free_gib": 200,
+    "observed_pre_free_gib_approx": 3685,
+    "durable_output_ceiling_mib": 100
+  },
+  "engineering": {
+    "method": "Exact MKT-DISP-RANK-002 annual context batches, with all DuckDB temporary directories forced under the verified external scratch root.",
+    "year_context": {
+      "2018": [2018, 2019],
+      "2019": [2018, 2019, 2020],
+      "2020": [2019, 2020, 2021],
+      "2021": [2020, 2021, 2022],
+      "2022": [2021, 2022, 2023],
+      "2023": [2022, 2023]
+    },
+    "source_audit": "Full six-partition identity and row audit remains mandatory.",
+    "cross_batch_duplicate_gate": true,
+    "partial_output_policy": "No panel, result, or interpretation is accepted unless all six batches and every inherited support/classification gate complete."
+  },
+  "scientific_question": "Unchanged: inside the frozen high-dispersion state, do causal same-session PIT-industry return ranks continue, reverse, or lose direction over h1/h3/h5?",
+  "strategy_boundary": "This run is direction science only. It does not select stocks, calculate portfolio PnL, modify Strategy A, or authorize a trading rule by itself.",
+  "post_result_action": {
+    "if_continuation_or_reversal": "Freeze one separate simple industry-selection translation before any portfolio outcome is read.",
+    "if_directionless_or_unstable": "Close the frozen dispersion-direction translation and move to a distinct Alpha engine."
+  },
+  "prohibited": [
+    "post-2023 data",
+    "CY-011",
+    "scientific definition, state, threshold, horizon, market view, denominator, member gate, retention gate, or classification change",
+    "partial-output interpretation",
+    "security selection, portfolio PnL, champion modification, or exposure rule",
+    "weakening PIT, corporate-action, historical-industry, or response-completeness semantics",
+    "another resource retry if this materially expanded bounded contract fails"
+  ],
+  "outputs": [
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-003_panel.csv",
+    "research/market_behavior_os_v2/artifacts/MKT-DISP-RANK-003_result.json",
+    "research/market_behavior_os_v2/reports/MKT-DISP-RANK-003_industry_rank.md"
+  ]
+}
