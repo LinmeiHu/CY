@@ -1,0 +1,45 @@
+{
+  "spec_id": "OC-SPEC-P6-P7-001",
+  "frozen_before_execution": true,
+  "strategy_changes": 0,
+  "breadth_threshold_searches": 0,
+  "phase6": {
+    "dispersion_context": [
+      "cross_sectional_return20_std",
+      "cross_sectional_return20_p90_p10_spread",
+      "cross_sectional_return20_right_tail_ge20"
+    ],
+    "dispersion_estimands": [
+      "daily continuous breadth association after fixed year",
+      "selected-trade MFE/opportunity20/right-tail/terminal association after continuous breadth and fixed year"
+    ],
+    "entry_interactions": {
+      "form": "within-year rank-standardized breadth times within-year rank-standardized causal stock feature",
+      "features": "the same nine frozen causal entry features",
+      "outcomes": ["mfe", "right_tail_classification", "false_breakout"],
+      "controls": ["both continuous main effects", "fixed year"],
+      "multiplicity": "BH across 27 interactions"
+    },
+    "path_context": "within MFE>=20%, continuous breadth versus frozen timing/persistence/giveback fields controlling MFE and year",
+    "cohort_context": "calendar-quarter strata, continuous breadth only; no cohort is selected as a rule"
+  },
+  "phase7": {
+    "neighboring_outcomes": {
+      "opportunity": [0.15, 0.20, 0.25],
+      "right_tail_terminal": [0.15, 0.20, 0.25],
+      "extreme_opportunity": [0.40, 0.50, 0.60],
+      "severe_loss": [-0.08, -0.10, -0.12],
+      "false_breakout_mfe_ceiling": [0.08, 0.10, 0.12]
+    },
+    "rolling_windows": [2, 3],
+    "extreme_removals": [1, 5, 10, 20],
+    "top_n_concentration": [1, 5, 10, 20],
+    "primary_core_relations": [
+      "breadth -> MFE/opportunity availability",
+      "breadth -> terminal return",
+      "causal entry features -> selection outcomes",
+      "breadth/path -> opportunity capture"
+    ],
+    "strategy_gate": "a candidate must pass decision-time availability, yearly, LOYO, neighboring-definition, economic-mechanism, cost/coverage/exposure, and frozen-counterevidence gates"
+  }
+}

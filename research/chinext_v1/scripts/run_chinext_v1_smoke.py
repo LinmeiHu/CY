@@ -396,8 +396,18 @@ def schedule_target_set(
     signal_date: date,
     reason: str,
     config: ChinNextV1Config,
+    target_weights: dict[str, float] | None = None,
 ) -> None:
-    weights = desired_target_weights(desired, config)
+    weights = desired_target_weights(desired, config) if target_weights is None else dict(target_weights)
+    if set(weights) != set(desired):
+        raise ValueError("explicit target weights must exactly match desired members")
+    if any(
+        not math.isfinite(float(weight))
+        or float(weight) < 0
+        or float(weight) > config.target_weight
+        for weight in weights.values()
+    ):
+        raise ValueError("explicit target weight is outside the frozen per-member bound")
     relevant = set(previous) | set(desired) | set(positions) | set(pending)
     for symbol in sorted(relevant):
         target = weights.get(symbol, 0.0)
@@ -410,6 +420,32 @@ def schedule_target_set(
             # unrelated later set change must not relabel its original signal.
             continue
         pending[symbol] = PendingOrder(symbol, target, signal_date, reason)
+
+
+def entry_regime_target_weights(
+    *,
+    desired: tuple[str, ...],
+    previous: tuple[str, ...],
+    previous_weights: dict[str, float],
+    new_entry_multiplier: float,
+    config: ChinNextV1Config,
+) -> dict[str, float]:
+    """Keep survivor sizing sticky and apply a causal multiplier only to additions."""
+
+    multiplier = float(new_entry_multiplier)
+    if not math.isfinite(multiplier) or not 0 <= multiplier <= 1:
+        raise ValueError("new-entry multiplier must be finite and inside [0, 1]")
+    previous_set = set(previous)
+    if set(previous_weights) != previous_set:
+        raise ValueError("previous target-weight state does not match previous members")
+    result: dict[str, float] = {}
+    for symbol in desired:
+        result[symbol] = (
+            float(previous_weights[symbol])
+            if symbol in previous_set
+            else config.target_weight * multiplier
+        )
+    return result
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -480,6 +516,23 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError(
             f"PIT membership/session coverage mismatch; missing={missing[:5]}, extra={extra[:5]}"
         )
+    entry_weight_multipliers = getattr(args, "entry_weight_multipliers", None)
+    entry_weight_overlay_identity = getattr(args, "entry_weight_overlay_identity", None)
+    if entry_weight_multipliers is not None:
+        if not isinstance(entry_weight_overlay_identity, dict) or not entry_weight_overlay_identity:
+            raise ValueError("entry-weight overlay requires a non-empty immutable identity")
+        if set(entry_weight_multipliers) != set(simulation_sessions):
+            missing = sorted(set(simulation_sessions) - set(entry_weight_multipliers))
+            extra = sorted(set(entry_weight_multipliers) - set(simulation_sessions))
+            raise ValueError(
+                "entry-weight multiplier/session coverage mismatch; "
+                f"missing={missing[:5]}, extra={extra[:5]}"
+            )
+        if any(
+            not math.isfinite(float(value)) or not 0 <= float(value) <= 1
+            for value in entry_weight_multipliers.values()
+        ):
+            raise ValueError("entry-weight multiplier is outside [0, 1]")
     rows_by_date = row_map(panel)
 
     histories_close: dict[str, list[float]] = {symbol: [] for symbol in sample}
@@ -492,6 +545,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     pending: dict[str, PendingOrder] = {}
     forced_exits: set[str] = set()
     planned_members: tuple[str, ...] = ()
+    planned_target_weights: dict[str, float] = {}
     last_prices: dict[str, float] = {}
     cash = float(args.initial_cash)
     transaction_cost_rate = config.transaction_cost_bps / 10_000.0
@@ -940,6 +994,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 
         if set_change_required(planned_members, desired):
             previous = planned_members
+            explicit_target_weights = None
+            if entry_weight_multipliers is not None:
+                explicit_target_weights = entry_regime_target_weights(
+                    desired=desired,
+                    previous=previous,
+                    previous_weights=planned_target_weights,
+                    new_entry_multiplier=float(entry_weight_multipliers[day]),
+                    config=config,
+                )
             schedule_target_set(
                 desired=desired,
                 previous=previous,
@@ -948,8 +1011,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 signal_date=day,
                 reason=membership_reason,
                 config=config,
+                target_weights=explicit_target_weights,
             )
             planned_members = desired
+            if explicit_target_weights is not None:
+                planned_target_weights = explicit_target_weights
             counts["set_changes"] += 1
             events.append(
                 {
@@ -957,6 +1023,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     "signal_date": day,
                     "previous": previous,
                     "desired": desired,
+                    **(
+                        {"desired_target_weights": explicit_target_weights}
+                        if explicit_target_weights is not None
+                        else {}
+                    ),
                     "reason": membership_reason,
                 }
             )
@@ -985,6 +1056,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "invested_ratio": 0.0 if value <= 0 else invested / value,
             "pending_orders": len(pending),
             "planned_members": len(planned_members),
+            **(
+                {"planned_target_weight_sum": sum(planned_target_weights.values())}
+                if entry_weight_multipliers is not None
+                else {}
+            ),
             "market_entry_permission": market_state["entry_permission"],
             "market_normal_exit": market_state["normal_exit"],
             "market_emergency_exit": market_state["emergency_exit"],
@@ -1180,6 +1256,21 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "survivor_overflow_days": counts["capacity_survivor_overflow_days"],
             "survivor_overflow_total_slots": counts["capacity_survivor_overflow_total"],
             "max_survivor_overflow_slots": counts["capacity_survivor_overflow_max"],
+        }
+    if entry_weight_multipliers is not None:
+        multiplier_counts = Counter(float(value) for value in entry_weight_multipliers.values())
+        summary["entry_weight_overlay"] = {
+            "active": True,
+            "identity": entry_weight_overlay_identity,
+            "application": "ENTRY_SIGNAL_DATE_MULTIPLIER_STICKY_THROUGH_MEMBER_LIFETIME",
+            "survivor_target_weights_are_sticky": True,
+            "zero_weight_member_reserves_no_replacement_slot": True,
+            "multiplier_counts": {
+                str(key): int(multiplier_counts[key]) for key in sorted(multiplier_counts)
+            },
+            "average_planned_target_weight_sum": fmean(
+                row["planned_target_weight_sum"] for row in daily_nav
+            ),
         }
     write_json(args.summary, summary)
     write_report(args.report, summary)

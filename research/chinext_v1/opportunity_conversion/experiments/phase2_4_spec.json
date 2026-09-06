@@ -1,0 +1,74 @@
+{
+  "spec_id": "OC-SPEC-P2-P4-001",
+  "frozen_before_execution": true,
+  "strategy_changes": 0,
+  "breadth_threshold_searches": 0,
+  "phase2": {
+    "daily_supply_population": "all authoritative daily_nav sessions for which neither normal nor emergency market exit suppresses candidate evaluation",
+    "final_candidate": "persisted ENTRY_SIGNAL_EVALUATED row with minvol.passed=true and a non-missing frozen RS score",
+    "primary_breadth": "breadth_above_ma20",
+    "estimands": [
+      "Spearman candidate_count versus continuous breadth",
+      "Spearman candidate_count/basic_eligible versus continuous breadth",
+      "candidate-positive rate by within-year breadth quintile",
+      "selected-entry count versus candidate count",
+      "selected-trade MFE, opportunity20, opportunity50, time-to-MFE fraction, and terminal return versus continuous breadth",
+      "MFE median, IQR, p90, and opportunity rates by within-year breadth quintile"
+    ],
+    "stability": ["yearly sign", "LOYO sign", "sample and zero-count audit"]
+  },
+  "phase3": {
+    "eligible_predictors": [
+      "entry_rs_score",
+      "entry_mom20",
+      "entry_mom60",
+      "entry_mom120",
+      "entry_box_width",
+      "entry_vol_ratio",
+      "entry_minvol_location",
+      "entry_minimum_volume_ratio",
+      "entry_breakout_volume_ratio"
+    ],
+    "outcomes": [
+      "mfe",
+      "opportunity20",
+      "terminal_return",
+      "right_tail_classification",
+      "false_breakout",
+      "severe_loss_classification"
+    ],
+    "primary_model": "partial Spearman after rank-transform with fixed year and continuous breadth controls",
+    "secondary_model": "year-controlled partial Spearman and raw yearly Spearman",
+    "same_breadth_comparison": "each right-tail winner is compared with its nearest false-breakout observation in the same year by absolute continuous breadth distance, with replacement; descriptive only",
+    "multiplicity": "Benjamini-Hochberg within the 9-feature x 6-outcome family",
+    "promotion_rule": "continuous economic sign, at least 6/8 yearly signs where estimable, 8/8 LOYO signs, BH q<=0.10, and no single-year or extreme-trade dependence"
+  },
+  "phase4": {
+    "primary_population": "MFE >= 20% completed cycles",
+    "secondary_population": "MFE >= 50% completed cycles",
+    "capture_outcomes": [
+      "opportunity20_capture",
+      "terminal_return",
+      "positive_capture",
+      "right_tail_conversion20",
+      "post_mfe_giveback"
+    ],
+    "pre_peak_path_variables": [
+      "time_to_mfe_fraction",
+      "pre_mfe_mae",
+      "pre_peak_direction_efficiency",
+      "pre_peak_positive_day_fraction",
+      "pre_peak_max_drawdown"
+    ],
+    "holding_and_decay_variables": [
+      "holding_trading_days",
+      "days_from_peak_to_exit",
+      "post_peak_positive_day_fraction",
+      "holding_path_mean_close_return",
+      "post_peak_decay_rate"
+    ],
+    "primary_model": "partial Spearman controlling MFE magnitude and fixed year",
+    "secondary_summaries": ["MFE band", "canonical exit reason", "year"],
+    "mechanical_warning": "post-peak giveback, mean close return, and decay contain terminal-path information and can locate leakage but cannot establish predictability"
+  }
+}

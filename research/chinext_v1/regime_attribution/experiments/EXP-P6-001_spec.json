@@ -1,0 +1,79 @@
+{
+  "experiment_id": "EXP-P6-001",
+  "spec_id": "CHINEXT-V1-WINNER-LOSS-CONVERSION-MECHANISMS-2018-2025-V1",
+  "status": "FROZEN_BEFORE_ARCHETYPE_RESULT",
+  "created_on": "2026-08-30",
+  "objective": "Describe the fixed top-winner, failed-opportunity, false-breakout, and severe-loss archetypes, then test whether breadth retains MFE-to-return capture information after fixed observable path, year, and exit-lineage controls.",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE; all 2018-2025 outcomes are consumed",
+  "inputs": {
+    "phase5_spec_sha256": "25806c3528fa6bf9c5657218fa26054a9ef86df24b5344602136812d644300b7",
+    "phase5_trade_mechanism_sha256": "2b026a4117b3b6a257085d46f2048657cbbf95df963198979f72152ef16d6b41",
+    "phase5_entry_cohort_sha256": "a2b7934bae35ce9eabc434ad0f7c00af9dcafb00b2485a5277071d0ffbd54995",
+    "phase5_result_sha256": "2bb830692d365ea37ed929bd8f6e77b6346c177cf96649df8c717f385b199912"
+  },
+  "sample": {
+    "expected_completed_cycles": 399,
+    "archetype_sample": "all frozen completed cycles; breadth summaries are complete-case only and counts always report missing breadth",
+    "controlled_sample": "fixed MFE>=20% opportunity cycles with complete breadth composite, MFE, holding duration, days-to-MFE, entry year, exit reason, and endpoint",
+    "missingness": "endpoint deletion only; no imputation, clipping, normalization, post-exit extension, or zero-filling"
+  },
+  "fixed_archetypes": {
+    "winner20": "round_trip_return >= 0.20",
+    "winner50": "round_trip_return >= 0.50",
+    "annual_top10_pnl": "top 10 realized_pnl cycles inside exit execution year, ordered by realized_pnl descending then trade_id ascending",
+    "annual_top20_pnl": "top 20 realized_pnl cycles inside exit execution year with the same deterministic ordering",
+    "global_top10_pnl": "top 10 realized_pnl cycles over all blocks with the same deterministic ordering",
+    "global_top20_pnl": "top 20 realized_pnl cycles over all blocks with the same deterministic ordering",
+    "failed_opportunity20": "mfe >= 0.20 and round_trip_return < 0.20",
+    "lost_opportunity20": "mfe >= 0.20 and round_trip_return <= 0",
+    "false_breakout": "mfe < 0.10 and round_trip_return <= 0",
+    "severe_loss": "round_trip_return <= -0.10",
+    "extreme_loss": "round_trip_return <= -0.20"
+  },
+  "archetype_summaries": [
+    "count and share of all cycles",
+    "breadth completeness and breadth-composite distribution",
+    "MFE, MAE, return, realized P&L, holding duration, days-to-MFE fraction, 5/10/20-session path",
+    "entry-year, exit-year, breadth-tercile, and canonical-exit-reason composition",
+    "winner/opportunity/conversion/false-breakout/severe-loss overlap"
+  ],
+  "controlled_model": {
+    "predictor": "within-controlled-sample percentile rank of breadth_composite",
+    "continuous_controls": [
+      "within-controlled-sample percentile rank of mfe",
+      "within-controlled-sample percentile rank of holding_trading_days",
+      "within-controlled-sample percentile rank of days_to_mfe / max(holding_trading_days, 1)"
+    ],
+    "categorical_controls": [
+      "entry-year fixed effects",
+      "canonical-exit-reason fixed effects"
+    ],
+    "endpoints": {
+      "capture_ratio_opportunity20": "ranked continuous; expected positive",
+      "conversion20_within_opportunity": "binary; expected positive",
+      "giveback_from_peak": "ranked continuous; expected negative"
+    },
+    "estimator": "Pearson correlation of predictor/outcome residuals after separate least-squares projections on the identical fixed design",
+    "minimum_complete_sample": 50,
+    "loyo": "repeat the identical model omitting each entry year 2018 through 2025"
+  },
+  "falsification": {
+    "incremental_conversion_support": "at least one fixed endpoint has direction-adjusted absolute partial-rank rho >= 0.10 and the expected sign in at least 7/8 LOYO estimates",
+    "entry_only_support": "incremental_conversion_support fails while prior Phase 4/5 opportunity support remains intact",
+    "downside_gate_support": "rejected unless higher breadth has negative severe-loss association with at least 7/8 same expected-sign LOYO estimates; Phase 5 is the frozen test and is not recomputed or redefined",
+    "exit_causality": "never inferred because no counterfactual post-exit path is available"
+  },
+  "forbidden": [
+    "new feature, alternative control set, interaction, or threshold search",
+    "year-specific parameters or year-as-regime rules",
+    "new replay, post-exit price, exit counterfactual, or causal exit claim",
+    "overlay simulation or strategy candidate",
+    "re-ranking after seeing archetype results",
+    "untouched OOS claim"
+  ],
+  "outputs": [
+    "artifacts/winner_severe_archetypes.csv",
+    "artifacts/conversion_incrementality.json",
+    "reports/phase6_winner_loss_conversion_mechanisms.md"
+  ]
+}

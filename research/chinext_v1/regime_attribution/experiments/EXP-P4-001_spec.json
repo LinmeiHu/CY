@@ -1,0 +1,23 @@
+{
+  "experiment_id": "EXP-P4-001",
+  "status": "FROZEN_BEFORE_INCREMENTAL_RESULT",
+  "created_on": "2026-08-30",
+  "objective": "Falsify whether the qualified breadth association is incremental to fixed observed trend controls.",
+  "inputs": {
+    "features_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+    "trades_sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb",
+    "phase3_result_sha256": "db73da0af4e026c04856b7fc25122134474a018dd0e22251c83ad09c8bafad5c"
+  },
+  "breadth_features": ["breadth_above_ma20", "breadth_positive_return20", "breadth_above_ma20_change20"],
+  "fixed_controls": ["index_return_60d", "index_close_to_ma60", "index_above_ma20_fraction20"],
+  "outcomes": ["mfe", "winner_ge20", "winner_ge50", "round_trip_return", "mae"],
+  "method": {
+    "partial_rank": "Pearson correlation of feature/outcome residuals after pooled percentile ranks for continuous variables, fixed control ranks, and entry-year dummies; binary outcomes remain 0/1 before residualization",
+    "loyo": "repeat unchanged model omitting each entry year 2018..2025",
+    "trend_strata": "fixed quintiles of the mean within-year percentile rank of the three controls; compare top versus bottom breadth terciles inside each stratum",
+    "missing": "complete cases per breadth-outcome-control set; no imputation"
+  },
+  "support_gate": "At least two breadth features have partial rho >=0.10 for MFE or winner_ge20, positive sign in >=7/8 LOYO estimates, positive top-minus-bottom effect in >=4/5 trend strata, and no winner_ge50 partial rho <=-0.10.",
+  "forbidden": ["additional controls", "interaction search", "strategy threshold", "overlay simulation", "year-specific parameters", "untouched OOS claim"],
+  "outputs": ["artifacts/breadth_incrementality.json", "reports/phase4_breadth_incrementality.md"]
+}

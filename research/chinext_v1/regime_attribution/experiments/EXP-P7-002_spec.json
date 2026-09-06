@@ -1,0 +1,21 @@
+{
+  "experiment_id": "EXP-P7-002",
+  "spec_id": "CHINEXT-V1R-RAW-BREADTH-ENTRY-EXPOSURE-CANDIDATE-2018-2025-V2",
+  "status": "FROZEN_BEFORE_ANY_CANDIDATE_PORTFOLIO_RESULT",
+  "created_on": "2026-08-30",
+  "base_spec": {
+    "path": "experiments/EXP-P7-001_spec.json",
+    "sha256": "db1ba58b240d0bb21b6289815aa66c3145aceae84fb86a51fdfe3e775ec5d4c8",
+    "inheritance": "All fields, rules, arms, metrics, gates, prohibitions, and outputs are inherited exactly except the explicit replacements below."
+  },
+  "replacements": {
+    "experiment_id": "EXP-P7-002",
+    "status": "FROZEN_BEFORE_ANY_CANDIDATE_PORTFOLIO_RESULT",
+    "bounded_block_inputs.DEVELOPMENT_2024_2025.warmup_start": "2023-01-01"
+  },
+  "invalidation_reason_for_base": "EXP-P7-001 incorrectly recorded 2023-07-07, while the frozen development baseline engine uses its default date(start.year-1, 1, 1) = 2023-01-01. The error was found during outcome-blind authorization audit before any candidate portfolio result or replay.",
+  "additional_forbidden": [
+    "executing EXP-P7-001",
+    "any replacement beyond the three exact fields declared above"
+  ]
+}

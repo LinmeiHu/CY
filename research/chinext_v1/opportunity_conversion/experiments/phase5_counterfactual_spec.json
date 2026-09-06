@@ -1,0 +1,34 @@
+{
+  "spec_id": "OC-SPEC-P5-001",
+  "frozen_before_execution": true,
+  "strategy_changes": 0,
+  "formal_replays": 0,
+  "selection_ceilings": {
+    "perfect_terminal_sign": "negative realized P&L avoided on the fixed 399-cycle ledger",
+    "false_breakout_avoidance": "negative realized P&L avoided for inherited MFE<10% and terminal<=0 cycles",
+    "severe_loss_avoidance": "negative realized P&L avoided for terminal<=-10% cycles",
+    "warning": "ceilings overlap, ignore vacancy/crowding/alternate trades, and are not NAVs"
+  },
+  "exit_ceilings": {
+    "mfe_ceiling": "sum initial capital * (MFE - terminal return), unclipped",
+    "peak_close_ceiling": "sum initial capital * (peak close return - terminal return), unclipped",
+    "primary_population": "MFE>=20%",
+    "secondary_population": "all 399 completed cycles",
+    "warning": "MFE is an unexecutable intraday-high oracle; peak-close and initial-capital amounts ignore execution, resizing, vacancy, and path feedback"
+  },
+  "post_exit_path": {
+    "anchor": "actual exit execution price",
+    "eligible_sessions": "next 1 through 20 authoritative market sessions after exit; exit-day close is excluded",
+    "horizons": [5, 10, 20],
+    "return_coordinates": "corporate-action-adjusted close and high total return from exit execution",
+    "coverage": "a horizon is missing unless every intervening symbol-session row is present, hard_valid=true, finite, and every corporate action is visible, valid, non-blocking, and has zero rights ratio",
+    "premature_exit_diagnostic": "post_exit_max_high_20 >= 10%",
+    "warning": "all post-exit fields are future outcomes; maximum high is an oracle and none is a tradable candidate"
+  },
+  "frozen_executable_counterevidence": [
+    "2024-2025 E1 individual-exit-disabled replay",
+    "2024-2025 E2 market-exit-disabled replay",
+    "2024-2025 winner-hold development replay",
+    "2022-2023 winner-hold OOS replay"
+  ]
+}

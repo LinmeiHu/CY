@@ -1,0 +1,25 @@
+{
+  "spec_id": "OC-SPEC-P2-002",
+  "frozen_before_execution": true,
+  "purpose": "separate selected-trade false positives from actual within-day candidate ranking efficiency",
+  "strategy_changes": 0,
+  "formal_replays": 0,
+  "population": "all 1,821 persisted final candidate events across the three independent authoritative blocks",
+  "hypothetical_entry": "next authoritative market-session open only when the symbol row is present, hard_valid=true, current_day_data_tradable=true, buy_blocked_open=false, and open is finite and positive",
+  "fixed_horizon_path": {
+    "horizons": [5, 10, 20],
+    "coordinate": "corporate-action-adjusted total return from hypothetical next-session open",
+    "mfe": "maximum daily high through the horizon, including the entry session after its open",
+    "terminal": "close on the final horizon session",
+    "coverage": "missing unless every intervening symbol-session row and corporate action is valid; no imputation"
+  },
+  "selected_definition": "authoritative filled new-position BUY whose signal date and symbol match the final candidate event; terminal-open cycles are retained because fixed-horizon outcomes do not require completed V1 exits",
+  "primary_comparisons": [
+    "selected versus unselected MFE20/opportunity20/opportunity50/close20 within candidate-positive signal days",
+    "within-day de-meaned opportunity quality of selected candidates",
+    "candidate-day best MFE20 captured by any selected member",
+    "frozen RS score relation with MFE20 by year and LOYO",
+    "candidate count versus same-day mean/best/dispersion of MFE20 after breadth and year"
+  ],
+  "oracle_warning": "unselected outcomes use hypothetical fills and fixed horizons, not authoritative V1 exits; best-candidate capture and regret are hindsight oracles and cannot form a strategy or NAV"
+}

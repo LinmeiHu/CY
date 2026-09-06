@@ -1,0 +1,70 @@
+{
+  "experiment_id": "EXP-P5-001",
+  "spec_id": "CHINEXT-V1-BREADTH-OPPORTUNITY-CONVERSION-EXIT-2018-2025-V1",
+  "status": "FROZEN_BEFORE_MECHANISM_RESULT",
+  "created_on": "2026-08-30",
+  "objective": "Explain why breadth has stable incremental association with MFE but a weaker terminal-return association by separating opportunity formation, early path, winner conversion, adverse path, peak giveback, and exit lineage.",
+  "evidence_grade": "EXPLORATORY_MECHANISM_EVIDENCE; all 2018-2025 outcomes are consumed",
+  "inputs": {
+    "daily_regime_features_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6",
+    "yearly_trades_sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb",
+    "baseline_manifest_sha256": "682b45455442f00e15e6273622ab6566d1c5c1d94069efc5fbbd40cb17f0977b",
+    "phase4_spec_sha256": "f2416ab0f902ec458f01f5bb0caf0460f0a978a4658ba5a0d03ae81800c3041e",
+    "phase4_result_sha256": "0c8a4daa293db99e173b642976b11def80f5f50b30eca2d5f061f8efdd388b4f"
+  },
+  "sample": {
+    "expected_completed_cycles": 399,
+    "join": ["baseline_block", "entry_signal_date=trade_date"],
+    "primary_cohort": "entry-signal date/year/quarter for mechanism attribution; exit year remains the Phase 1 realized-P&L reconciliation convention",
+    "missingness": "pairwise/endpoint deletion; no imputation and no zero-filling of short holding paths"
+  },
+  "breadth_state": {
+    "components": ["breadth_above_ma20", "breadth_positive_return20", "breadth_above_ma20_change20"],
+    "formula": "equal-weight mean of each component's within-entry-year percentile rank, requiring all three",
+    "coarse_bins": "pooled feature-only terciles of the composite rank; duplicate edges fail closed",
+    "purpose": "attribution only; not a strategy threshold"
+  },
+  "fixed_outcome_definitions": {
+    "opportunity20": "mfe >= 0.20",
+    "opportunity50": "mfe >= 0.50",
+    "converted20": "round_trip_return >= 0.20",
+    "converted50": "round_trip_return >= 0.50",
+    "severe_loss": "round_trip_return <= -0.10",
+    "extreme_loss": "round_trip_return <= -0.20",
+    "false_breakout": "mfe < 0.10 and round_trip_return <= 0",
+    "giveback_from_peak": "frozen Phase 1 definition: mfe - round_trip_return",
+    "capture_ratio": "round_trip_return / mfe only for opportunity20 cycles; no clipping",
+    "conversion20": "converted20 among opportunity20 cycles",
+    "conversion50": "converted50 among opportunity50 cycles"
+  },
+  "analyses": {
+    "opportunity": "breadth composite Spearman/terciles versus MFE and opportunity20/50",
+    "early_path": "return_5d/10d/20d and MAE by breadth tercile; horizon remains missing when a frozen path ends earlier",
+    "conversion": "within opportunity20 and opportunity50, breadth versus conversion rate, capture ratio, giveback, realized return, and exit lineage",
+    "adverse_path": "breadth versus MAE, false-breakout, severe-loss and extreme-loss rates",
+    "exit_lineage": "canonical frozen exit reason by opportunity status and breadth tercile; descriptive selection only, never causal exit effect",
+    "entry_cohorts": "fixed entry-year and entry-quarter counts, breadth, MFE, realized return, opportunity/conversion/severe-loss rates"
+  },
+  "falsification": {
+    "loyo": "Full-sample and omit-one-entry-year estimates for opportunity, conversion, giveback, capture, false-breakout, and severe-loss endpoints",
+    "entry_opportunity_support": "breadth composite rho >= 0.10 for MFE or opportunity20 and same positive sign in >=7/8 LOYO estimates",
+    "conversion_support": "within opportunity20, breadth absolute rho >= 0.10 for conversion20, capture ratio, or giveback with >=7/8 same-direction LOYO estimates",
+    "H8_entry_primary": "entry-opportunity support passes while conversion support fails; otherwise H8 remains qualified/ambiguous",
+    "exit_secondary": "may be claimed only descriptively; no counterfactual post-exit path is available"
+  },
+  "forbidden": [
+    "new replay or post-exit price use",
+    "breadth threshold optimization",
+    "alternative composite weights",
+    "year-specific parameters",
+    "exit counterfactual or causal exit claim",
+    "overlay simulation or strategy candidate",
+    "untouched OOS claim"
+  ],
+  "outputs": [
+    "artifacts/trade_mechanism_attribution.csv",
+    "artifacts/entry_cohort_attribution.csv",
+    "artifacts/breadth_opportunity_conversion.json",
+    "reports/phase5_breadth_opportunity_conversion.md"
+  ]
+}

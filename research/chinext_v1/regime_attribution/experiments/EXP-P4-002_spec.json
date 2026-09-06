@@ -1,0 +1,14 @@
+{
+  "experiment_id": "EXP-P4-002",
+  "status": "FROZEN_BEFORE_INCREMENTAL_RESULT",
+  "created_on": "2026-08-30",
+  "supersedes": {"experiment_id": "EXP-P4-001", "reason": "Phase 3 evidence serialization was correctness-expanded before any Phase 4 model ran; the selected conclusions are unchanged but the bound result hash changed."},
+  "objective": "Falsify whether the qualified breadth association is incremental to fixed observed trend controls.",
+  "inputs": {"features_sha256": "5fe1ec1cb1bdfa922dd838bd1f559de9463d4926f56dfed09427d826c7465bc6", "trades_sha256": "77f28da56a3e36801373b0b356a6e36236095b17dbdb3183a8b1b0a4c8ab3deb", "phase3_result_sha256": "9fec0656ccc7b0a44b31800878160bc0e5c16d06fd67773bf3bab6be93c30a0c"},
+  "breadth_features": ["breadth_above_ma20", "breadth_positive_return20", "breadth_above_ma20_change20"],
+  "fixed_controls": ["index_return_60d", "index_close_to_ma60", "index_above_ma20_fraction20"],
+  "outcomes": ["mfe", "winner_ge20", "winner_ge50", "round_trip_return", "mae"],
+  "method": {"partial_rank": "Residual correlation after pooled percentile ranks, fixed control ranks and entry-year dummies; binary outcomes remain 0/1", "loyo": "omit each entry year 2018..2025", "trend_strata": "quintiles of mean within-year control ranks; top versus bottom breadth terciles", "missing": "complete cases; no imputation"},
+  "support_gate": "At least two breadth features have partial rho >=0.10 for MFE or winner_ge20, positive sign in >=7/8 LOYO estimates, positive top-minus-bottom effect in >=4/5 trend strata, and no winner_ge50 partial rho <=-0.10.",
+  "forbidden": ["additional controls", "interaction search", "strategy threshold", "overlay simulation", "year-specific parameters", "untouched OOS claim"]
+}
