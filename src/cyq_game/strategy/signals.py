@@ -763,7 +763,7 @@ def observation_from_record(
             record.get("recent_band_overlap"), fallback=0.0
         ),
         distribution_score=distribution_score,
-        structure_support=_finite_number(record.get("structure_support"), fallback=0.0),
+        structure_support=_optional_finite_number(record.get("structure_support")),
         close=current_close,
         close_vs_vwap=_finite_number(
             record.get("close_vs_vwap"),
@@ -774,8 +774,8 @@ def observation_from_record(
         turnover=_finite_number(record.get("turnover_fraction"), fallback=0.0),
         average_cost=_finite_number(record.get("average_cost"), fallback=0.0),
         cost_p50=_finite_number(record.get("cost_p50"), fallback=0.0),
-        prior_average_cost=_finite_number(record.get("prior_average_cost"), fallback=0.0),
-        prior_cost_p50=_finite_number(record.get("prior_cost_p50"), fallback=0.0),
+        prior_average_cost=_optional_finite_number(record.get("prior_average_cost")),
+        prior_cost_p50=_optional_finite_number(record.get("prior_cost_p50")),
         atr=atr,
         chip_model_disagreement_atr=model_spread_atr,
         share_multiplier=_positive_number(

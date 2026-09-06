@@ -877,7 +877,7 @@ class LifecycleObservation:
     peak_count: int
     recent_band_overlap: float
     distribution_score: float
-    structure_support: float
+    structure_support: float | None
     close: float
     close_vs_vwap: float
     low: float
@@ -885,8 +885,8 @@ class LifecycleObservation:
     turnover: float
     average_cost: float
     cost_p50: float
-    prior_average_cost: float
-    prior_cost_p50: float
+    prior_average_cost: float | None
+    prior_cost_p50: float | None
     atr: float
     chip_model_disagreement_atr: float = 0.0
     share_multiplier: float = 1.0
@@ -935,7 +935,11 @@ class LifecycleObservation:
             self.share_multiplier,
             self.cash_per_share,
         )
-        if any(not math.isfinite(value) for value in numeric_values):
+        if any(
+            not math.isfinite(value)
+            for value in numeric_values
+            if value is not None
+        ):
             raise ValueError("lifecycle numeric fields must be finite")
         if self.atr <= 0:
             raise ValueError("ATR must be positive")
@@ -944,7 +948,7 @@ class LifecycleObservation:
         if self.cost_p10 > self.cost_p90:
             raise ValueError("cost_p10 cannot exceed cost_p90")
         if any(
-            value <= 0.0
+            value is not None and value <= 0.0
             for value in (
                 self.cost_p10,
                 self.cost_p90,
@@ -1488,6 +1492,17 @@ class LifecycleMachine:
                 return TransitionResult(memory)
             if memory.accumulation_anchor is None:
                 raise ValueError("ACCUMULATING state is missing its frozen anchor")
+            if any(
+                value is None
+                for value in (
+                    observation.structure_support,
+                    observation.prior_average_cost,
+                    observation.prior_cost_p50,
+                )
+            ):
+                raise ValueError(
+                    "authoritative breakout operands are absent on an actionable row"
+                )
             return TransitionResult(
                 replace(
                     memory,
@@ -1731,7 +1746,11 @@ class LifecycleMachine:
 
         holding_days = memory.holding_days + 1
         base = replace(memory, holding_days=holding_days)
-        support = memory.breakout_support or observation.structure_support
+        support = memory.breakout_support
+        if support is None:
+            support = observation.structure_support
+        if support is None:
+            raise ValueError("open lifecycle is missing authoritative support")
         if chip_structure_broken(
             memory.accumulation_anchor,
             observation,

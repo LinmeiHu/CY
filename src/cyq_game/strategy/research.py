@@ -847,6 +847,17 @@ def _advance_entries(
     accumulating &= ~stale
     broke_out = accumulating & breakout
     if np.any(broke_out):
+        if any(
+            value is None
+            for value in (
+                observation.structure_support,
+                observation.prior_average_cost,
+                observation.prior_cost_p50,
+            )
+        ):
+            raise ValueError(
+                "authoritative breakout operands are absent on an actionable row"
+            )
         state[broke_out] = _BREAKOUT
         breakout_at[broke_out] = observation.decision_at.date()
         breakout_index[broke_out] = trading_index
