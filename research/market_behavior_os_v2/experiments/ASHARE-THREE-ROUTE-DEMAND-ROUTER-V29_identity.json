@@ -1,0 +1,45 @@
+{
+  "strategy_id": "ATRDR-V29",
+  "canonical_name_zh": "A股三路需求路由 V29",
+  "canonical_name_en": "A-Share Three-Route Demand Router V29",
+  "aliases": [
+    "三路需求路由",
+    "需求路由V29",
+    "ATRDR",
+    "ATRDR-V29",
+    "A股需求路由"
+  ],
+  "identity_status": "REGISTERED_ITERATIVE_CAUSAL_HISTORICAL_CANDIDATE",
+  "origin_experiment": "ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29",
+  "origin_commit": "c12a7fdd269cdc7f240d9de3d0943c609edb5317",
+  "origin_branch": "codex/morning-tail-v5-causal-industry-risk",
+  "frozen_contract_path": "research/market_behavior_os_v2/experiments/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_contract.json",
+  "frozen_contract_sha256": "5d7d4abfcb562a2461c102f26ce38f6d3657e3587972717967c192a707fec61e",
+  "result_path": "research/market_behavior_os_v2/artifacts/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_result.json",
+  "report_path": "research/market_behavior_os_v2/reports/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_report.md",
+  "robustness_report_path": "research/market_behavior_os_v2/reports/ASHARE-SIMPLE-REGIME-COMPLEMENTARY-DEMAND-ROUTER-V29_robustness_audit.md",
+  "economic_identity": {
+    "route_1": "Bear worsening: fast capitulation followed by active demand takeover; frozen V27 source; T10/H20.",
+    "route_2": "Bear stabilizing: slow downside-supply exhaustion; frozen V27 source; T10/H20.",
+    "route_3": "High participation: PIT industry-breadth ignition in an underextended stock making a controlled first pressure break; V29-defined; T15/H15."
+  },
+  "execution_identity": {
+    "entry": "First legal daily open strictly after the completed signal, within three market sessions.",
+    "costs": "20bp entry plus 20bp exit.",
+    "coordinate": "QD-010 corporate-action-consistent coordinate.",
+    "t_plus_one": true,
+    "portfolio": "Main and ChiNext sleeves are each 50% initial NAV, K30 per sleeve, maximum ten new positions per sleeve per date, no leverage or cross-sleeve transfer."
+  },
+  "governance": {
+    "claim_limit": "Iterative, multiple-testing-exposed causal historical candidate; not pristine external validation or a live deployment recommendation.",
+    "known_transparency_limit": "V29 fully rebuilds the simple Bull route. Its two Bear routes consume the exact V27 frozen ledgers; the slow-supply mother-screen source must be separately reconstructed and ledger-matched before the whole strategy can be called fully source-transparent.",
+    "post_2026_rule_change_forbidden": true,
+    "next_permitted_work": "Freeze the current rules, paper-run an untouched future period, and separately repair Bear slow-source reproducibility without changing its semantics."
+  },
+  "resolution_protocol": [
+    "Resolve an alias to this strategy_id.",
+    "Read this identity record and the frozen V29 contract before making any claim.",
+    "Read the V29 result and robustness report for outcome statements.",
+    "Preserve the stated evidence label and transparency limitation."
+  ]
+}
