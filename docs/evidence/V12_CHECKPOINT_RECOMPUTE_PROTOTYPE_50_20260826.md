@@ -1,6 +1,6 @@
 # V12 monthly checkpoint + replay-journal prototype: 50-symbol evidence
 
-Date: 2026-08-26  
+Date: 2026-08-26
 Scope: offline prototype only; no production schema/code migration and no V13 full-market build.
 
 ## Result
@@ -93,4 +93,3 @@ Targeted tests:
 Result: 4 passed.
 
 Raw machine-readable report: `data/validation/v12_checkpoint_recompute_50_v1/benchmark_report.json`.
-
