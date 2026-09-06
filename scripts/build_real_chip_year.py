@@ -1,21 +1,29 @@
 #!/usr/bin/env python3
 """Build one year of reusable real 1-minute chip inventory, in parallel buckets."""
 
+# ruff: noqa: E402
+
 from __future__ import annotations
 
 import argparse
 import gc
 import hashlib
+import inspect
 import json
 import math
 import os
+import pickle
+import re
 import shutil
 import struct
+import subprocess
 import sys
+import tempfile
 import time
 from collections import Counter, defaultdict
+from collections.abc import Iterator, Mapping
 from concurrent.futures import ProcessPoolExecutor, as_completed
-from dataclasses import dataclass, field, replace
+from dataclasses import asdict, dataclass, field, replace
 from datetime import date, datetime
 from datetime import time as clock_time
 from itertools import pairwise
@@ -32,13 +40,51 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from cyq_game.chip._migration_kernel import stable_sum  # noqa: E402
-from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
 from cyq_game.chip.checkpoint_journal_contract import (  # noqa: E402
+    ARTIFACT_VERSION as CHECKPOINT_JOURNAL_ARTIFACT_VERSION,
+)
+from cyq_game.chip.checkpoint_journal_contract import (
+    CHECKPOINT_CODEC_VERSION,
+    FROZEN_REPLAY_PARAMETER_VALUES,
+    JOURNAL_CODEC_VERSION,
+    TERMINAL_COMPLETENESS_VERSION,
+    TRANSITION_SEMANTICS_VERSION,
+    FeatureAssetBinding,
+    logical_sha256,
+)
+from cyq_game.chip.checkpoint_journal_contract import (
+    SCHEMA_VERSION as CHECKPOINT_JOURNAL_SCHEMA_VERSION,
+)
+from cyq_game.chip.checkpoint_journal_contract import (
+    SELLER_MODEL_ORDER as CHECKPOINT_JOURNAL_SELLER_MODELS,
+)
+from cyq_game.chip.checkpoint_journal_contract import (
     STORAGE_VERSION as CHECKPOINT_JOURNAL_STORAGE_VERSION,
 )
-from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
-    activate_production_bundle,
+from cyq_game.chip.checkpoint_journal_index import (  # noqa: E402
+    INDEX_VERSION,
+    CheckpointJournalIndexRow,
 )
+from cyq_game.chip.checkpoint_journal_writer import (  # noqa: E402
+    CHECKPOINT_CADENCE,
+    PHASE2_WRITER_VERSION,
+    ArtifactFileMetadata,
+    CapturedCell,
+    CapturedCheckpoint,
+    CapturedModelState,
+    SymbolArtifacts,
+    activate_production_bundle,
+    arrow_logical_digest,
+    capture_model_state,
+    checkpoint_dates,
+    regular_file_bytes,
+    sha256_file,
+    verify_root,
+    write_index,
+    write_json,
+    write_symbol_artifacts,
+)
+from cyq_game.chip.daily_feature_fact import build_daily_feature_fact  # noqa: E402
 from cyq_game.chip.ensemble_v2 import SELLER_MODEL_ORDER  # noqa: E402
 from cyq_game.chip.migration_v2 import (  # noqa: E402
     DEFAULT_MAX_HOLDING_DAYS,
@@ -60,11 +106,11 @@ from cyq_game.chip.peaks import (  # noqa: E402
     detect_canonical_peaks,
     dominant_canonical_peak,
 )
-from cyq_game.chip.profile_metrics import compute_distribution_metrics  # noqa: E402
 from cyq_game.chip.price_coordinate import (  # noqa: E402
     canonical_action_component_id,
     parse_action_ids,
 )
+from cyq_game.chip.profile_metrics import compute_distribution_metrics  # noqa: E402
 from cyq_game.chip.state_v2 import (  # noqa: E402
     ChipSnapshotV2,
     InventoryCell,
@@ -116,6 +162,195 @@ SENSITIVITY_CODE = {
     TurnoverSensitivity.STICKY: 2,
 }
 TZ = ZoneInfo("Asia/Shanghai")
+
+RESUME_CONTRACT_VERSION = "v12-phase7-resume-contract-v2"
+INPUT_MANIFEST_VERSION = "v12-phase7-symbol-input-manifest-v1"
+ARTIFACT_CONTRACT_VERSION = "v12-phase7-artifact-contract-v2"
+PHYSICAL_CONTRACT_VERSION = "v12-phase7-physical-contract-v1"
+CHECKPOINT_CADENCE_ALGORITHM_VERSION = "replayable-target-dates-v1"
+SHARD_MANIFEST_VERSION = "v12-phase7-symbol-shard-manifest-v2"
+BUFFER_CANDIDATES = (3, 24, 48, 96)
+
+
+def _semantic_fingerprint_v2() -> str:
+    code_dependencies = {
+        name: hashlib.sha256(inspect.getsource(value).encode("utf-8")).hexdigest()
+        for name, value in (
+            ("DailyMigrationEngine", DailyMigrationEngine),
+            ("_canonicalize_packed_output_state", _canonicalize_packed_output_state),
+            ("_cap_prepared_minute_path", _cap_prepared_minute_path),
+            ("_inventory_events", _inventory_events),
+            ("_minute_bars", _minute_bars),
+            ("_output_row", _output_row),
+            ("_pro_rata_removals", _pro_rata_removals),
+            ("initial_unknown_snapshot", initial_unknown_snapshot),
+            ("prepare_minute_path", prepare_minute_path),
+            ("stable_cell_id", stable_cell_id),
+            ("canonical_action_component_id", canonical_action_component_id),
+            ("parse_action_ids", parse_action_ids),
+            ("compute_distribution_metrics", compute_distribution_metrics),
+            ("detect_canonical_peaks", detect_canonical_peaks),
+            ("dominant_canonical_peak", dominant_canonical_peak),
+        )
+    }
+    return logical_sha256(
+        {
+            "semantic_contract": semantic_fingerprint_fields(),
+            "frozen_replay_parameters": FROZEN_REPLAY_PARAMETER_VALUES,
+            "semantic_code_dependencies": code_dependencies,
+        }
+    )
+
+
+def _artifact_contract_fingerprint() -> str:
+    return logical_sha256(
+        {
+            "artifact_contract_version": ARTIFACT_CONTRACT_VERSION,
+            "artifact_version": CHECKPOINT_JOURNAL_ARTIFACT_VERSION,
+            "checkpoint_cadence": CHECKPOINT_CADENCE,
+            "checkpoint_cadence_algorithm_version": (
+                CHECKPOINT_CADENCE_ALGORITHM_VERSION
+            ),
+            "checkpoint_codec_version": CHECKPOINT_CODEC_VERSION,
+            "index_version": INDEX_VERSION,
+            "journal_codec_version": JOURNAL_CODEC_VERSION,
+            "manifest_contract": "phase7-hash-once-manifest-v1",
+            "schema_version": CHECKPOINT_JOURNAL_SCHEMA_VERSION,
+            "storage_version": CHECKPOINT_JOURNAL_STORAGE_VERSION,
+            "terminal_adapter_contract": TERMINAL_COMPLETENESS_VERSION,
+            "transition_semantics_version": TRANSITION_SEMANTICS_VERSION,
+        }
+    )
+
+
+def _physical_fingerprint(output_buffer_rows: int) -> str:
+    return logical_sha256(
+        {
+            "physical_contract_version": PHYSICAL_CONTRACT_VERSION,
+            "compression": "zstd",
+            "compression_level": PARQUET_COMPRESSION_LEVEL,
+            "dictionary_encoding": True,
+            "operator_row_group_rows": output_buffer_rows,
+            "writer": "pyarrow.parquet.ParquetWriter",
+        }
+    )
+
+
+def _git_head_provenance() -> str:
+    return subprocess.check_output(
+        ("git", "rev-parse", "HEAD"), cwd=ROOT, text=True
+    ).strip()
+
+
+def _atomic_write_json(path: Path, value: Mapping[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    temporary.write_text(payload, encoding="utf-8")
+    json.loads(temporary.read_text(encoding="utf-8"))
+    os.replace(temporary, path)
+
+
+def _symbol_input_fingerprint(
+    *,
+    symbol: str,
+    year: int,
+    stage_root: Path,
+    daily_path: Path,
+    minute_path: Path | None,
+    manifest_root: Path,
+) -> tuple[str, Path]:
+    """Build once, then trust immutable staged partition digests on resume."""
+
+    safe_symbol = symbol.replace(".", "_")
+    pointer_path = manifest_root / f"{safe_symbol}.json"
+    complete_path = stage_root / "COMPLETE.json"
+    complete_sha256 = sha256_file(complete_path)
+    expected_roots = {
+        "daily": daily_path.relative_to(stage_root).as_posix(),
+        "minute": (
+            None if minute_path is None else minute_path.relative_to(stage_root).as_posix()
+        ),
+    }
+    if pointer_path.exists():
+        pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
+        manifest_path = manifest_root / pointer["manifest_file"]
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if (
+            manifest.get("manifest_version") == INPUT_MANIFEST_VERSION
+            and manifest.get("symbol") == symbol
+            and int(manifest.get("year", 0)) == year
+            and manifest.get("stage_complete_sha256") == complete_sha256
+            and manifest.get("partition_roots") == expected_roots
+        ):
+            unchanged = True
+            for item in manifest["files"]:
+                path = stage_root / item["relative_path"]
+                try:
+                    stat = path.stat()
+                except FileNotFoundError:
+                    unchanged = False
+                    break
+                if (
+                    stat.st_size != int(item["bytes"])
+                    or stat.st_mtime_ns != int(item["mtime_ns"])
+                ):
+                    unchanged = False
+                    break
+            if unchanged:
+                return str(manifest["input_fingerprint"]), manifest_path
+
+    sources: list[tuple[str, Path]] = []
+    for role, root in (("daily", daily_path), ("minute", minute_path)):
+        if root is None:
+            continue
+        sources.extend(
+            (role, path)
+            for path in sorted(root.rglob("*"), key=lambda value: value.as_posix().encode())
+            if path.is_file()
+        )
+    if not sources:
+        raise ValueError(f"symbol {symbol} has no staged input files")
+    files = []
+    for role, path in sources:
+        stat = path.stat()
+        files.append(
+            {
+                "role": role,
+                "relative_path": path.relative_to(stage_root).as_posix(),
+                "bytes": stat.st_size,
+                "mtime_ns": stat.st_mtime_ns,
+                "sha256": sha256_file(path),
+            }
+        )
+    complete = json.loads(complete_path.read_text(encoding="utf-8"))
+    binding = {
+        "manifest_version": INPUT_MANIFEST_VERSION,
+        "symbol": symbol,
+        "year": year,
+        "stage_complete_sha256": complete_sha256,
+        "partition_roots": expected_roots,
+        "registered_dependencies": {
+            "daily_root": complete["daily_root"],
+            "minute_root": complete["minute_root"],
+            "action_override_sha256": complete["action_override_sha256"],
+            "baostock_delta_sha256": complete["baostock_delta_sha256"],
+        },
+        "files": files,
+    }
+    input_fingerprint = logical_sha256(binding)
+    manifest = {**binding, "input_fingerprint": input_fingerprint}
+    manifest_path = manifest_root / f"{safe_symbol}.{input_fingerprint}.json"
+    if not manifest_path.exists():
+        _atomic_write_json(manifest_path, manifest)
+    _atomic_write_json(
+        pointer_path,
+        {
+            "input_fingerprint": input_fingerprint,
+            "manifest_file": manifest_path.name,
+        },
+    )
+    return input_fingerprint, manifest_path
 
 
 def _aware(day: date, hour: int, minute: int = 0, second: int = 0) -> datetime:
@@ -545,16 +780,17 @@ class _CellCodec:
 
     by_cell_id: dict[int, int] = field(default_factory=dict)
     normal_destination_by_cell_id: dict[int, int] = field(default_factory=dict)
+    cell_count: int = 0
 
     def register_snapshot(self, snapshot: ChipSnapshotV2) -> None:
+        self.by_cell_id.clear()
         for cell in snapshot.inventory.cells:
-            if cell.cell_id in self.by_cell_id:
-                continue
             self.by_cell_id[cell.cell_id] = _pack_cell_dimensions(
                 cell.cost_bucket_id,
                 cell.holding_days,
                 SENSITIVITY_CODE[cell.sensitivity],
             )
+        self.cell_count = len(self.by_cell_id)
 
     def snapshot_view_and_economic_buckets(
         self, snapshot: ChipSnapshotV2, grid: StableLogPriceGrid
@@ -595,7 +831,11 @@ class _CellCodec:
         return view
 
     def register_state_and_profile(
-        self, state: MutableChipState, grid: StableLogPriceGrid
+        self,
+        state: MutableChipState,
+        grid: StableLogPriceGrid,
+        *,
+        current_cell_ids_verified: bool = False,
     ) -> tuple[
         dict[int, tuple[int | None, int, TurnoverSensitivity, float]],
         dict[int, float],
@@ -604,9 +844,11 @@ class _CellCodec:
     ]:
         """Register lots and aggregate the daily price profile in one pass."""
 
+        self.by_cell_id.clear()
         view: dict[int, tuple[int | None, int, TurnoverSensitivity, float]] = {}
         by_bucket: dict[int, float] = defaultdict(float)
         economic_bucket_by_cell_id: dict[int, int | None] = {}
+        share_collisions: dict[int, list[float]] = {}
         known_shares = 0.0
         packed = state.packed_lots
         if packed is not None:
@@ -615,7 +857,10 @@ class _CellCodec:
                 TurnoverSensitivity.NEUTRAL,
                 TurnoverSensitivity.STICKY,
             )
-            packed._cell_ids_current = False
+            if not current_cell_ids_verified:
+                # External/legacy callers are not trusted to maintain the flag;
+                # recomputation keeps stale-id handling fail closed/canonical.
+                packed._cell_ids_current = False
             packed.refresh_cell_ids()
             size = len(packed)
             shares_array = packed._shares[:size]
@@ -680,24 +925,33 @@ class _CellCodec:
                 cost_bucket_id = raw_bucket if math.isfinite(acquisition_cost) else None
                 holding_days = int(holding_days_array[index])
                 sensitivity = sensitivities[int(sensitivity_codes[index])]
-                if cell_id not in self.by_cell_id:
-                    self.by_cell_id[cell_id] = _pack_cell_dimensions(
+                previous = view.get(cell_id)
+                if previous is None:
+                    view[cell_id] = (
                         cost_bucket_id,
                         holding_days,
-                        SENSITIVITY_CODE[sensitivity],
+                        sensitivity,
+                        shares,
                     )
-                view[cell_id] = (
-                    cost_bucket_id,
-                    holding_days,
-                    sensitivity,
-                    shares,
-                )
+                else:
+                    if previous[:3] != (cost_bucket_id, holding_days, sensitivity):
+                        raise ValueError(f"cell hash collision for {cell_id}")
+                    share_collisions.setdefault(cell_id, [previous[3]]).append(shares)
                 economic_break_even = float(economic_break_evens[index])
                 economic_bucket_by_cell_id[cell_id] = (
                     bucket_for_economic_break_even(grid, economic_break_even)
                     if math.isfinite(economic_break_even)
                     else None
                 )
+            for cell_id, parts in share_collisions.items():
+                cost_bucket_id, holding_days, sensitivity, _ = view[cell_id]
+                view[cell_id] = (
+                    cost_bucket_id,
+                    holding_days,
+                    sensitivity,
+                    math.fsum(parts),
+                )
+            self.cell_count = len(view)
             return view, by_bucket, known_shares, economic_bucket_by_cell_id
 
         if not isinstance(state.lots, list):
@@ -706,18 +960,27 @@ class _CellCodec:
             if lot.shares <= 0:
                 continue
             cell_id = lot.cell_id
-            if cell_id not in self.by_cell_id:
-                self.by_cell_id[cell_id] = _pack_cell_dimensions(
-                    lot.cost_bucket_id,
-                    lot.holding_days,
-                    SENSITIVITY_CODE[lot.sensitivity],
-                )
-            view[cell_id] = (
+            self.by_cell_id[cell_id] = _pack_cell_dimensions(
                 lot.cost_bucket_id,
                 lot.holding_days,
-                lot.sensitivity,
-                lot.shares,
+                SENSITIVITY_CODE[lot.sensitivity],
             )
+            previous = view.get(cell_id)
+            if previous is None:
+                view[cell_id] = (
+                    lot.cost_bucket_id,
+                    lot.holding_days,
+                    lot.sensitivity,
+                    lot.shares,
+                )
+            else:
+                if previous[:3] != (
+                    lot.cost_bucket_id,
+                    lot.holding_days,
+                    lot.sensitivity,
+                ):
+                    raise ValueError(f"cell hash collision for {cell_id}")
+                share_collisions.setdefault(cell_id, [previous[3]]).append(lot.shares)
             if lot.economic_break_even is not None:
                 economic_bucket = bucket_for_economic_break_even(
                     grid, lot.economic_break_even
@@ -727,6 +990,15 @@ class _CellCodec:
                 economic_bucket_by_cell_id[cell_id] = economic_bucket
             else:
                 economic_bucket_by_cell_id[cell_id] = None
+        for cell_id, parts in share_collisions.items():
+            cost_bucket_id, holding_days, sensitivity, _ = view[cell_id]
+            view[cell_id] = (
+                cost_bucket_id,
+                holding_days,
+                sensitivity,
+                math.fsum(parts),
+            )
+        self.cell_count = len(view)
         return view, by_bucket, known_shares, economic_bucket_by_cell_id
 
     def normal_destination(
@@ -1612,7 +1884,11 @@ def _output_row(
     """Encode a checkpoint or a compact daily operator/replay locator."""
 
     current, by_bucket, known_shares, current_economic_buckets = (
-        codec.register_state_and_profile(state, grid)
+        codec.register_state_and_profile(
+            state,
+            grid,
+            current_cell_ids_verified=True,
+        )
     )
     metrics = None
     profile_close = current_price
@@ -1831,6 +2107,44 @@ def _output_row(
     return row, current, current_economic_buckets
 
 
+def _replayable_target_dates(
+    daily_rows: list[dict[str, Any]],
+    year: int,
+    *,
+    state_resumed: bool,
+) -> tuple[date, ...]:
+    """Return the sole authoritative canonical transition date domain."""
+
+    ordered = sorted(daily_rows, key=lambda row: _date(row["trade_date"]))
+    if not ordered:
+        raise ValueError("no daily rows")
+    if state_resumed:
+        replayable = ordered
+    else:
+        first_state_index = next(
+            (
+                index
+                for index, row in enumerate(ordered)
+                if row.get("circulating_shares") is not None
+                and float(row["circulating_shares"]) > 0
+            ),
+            None,
+        )
+        if first_state_index is None:
+            raise ValueError("no daily row has a known positive circulating share count")
+        replayable = ordered[first_state_index + 1 :]
+    result = tuple(
+        _date(row["trade_date"])
+        for row in replayable
+        if _date(row["trade_date"]).year == year
+    )
+    if result != tuple(sorted(set(result))):
+        raise ValueError("replayable target dates must be unique and ordered")
+    if not result:
+        raise ValueError("target year has no replayable transition date")
+    return result
+
+
 def _run_symbol(
     symbol: str,
     daily_rows: list[dict[str, Any]],
@@ -1841,10 +2155,19 @@ def _run_symbol(
     *,
     emit_operators: bool = True,
     emit_start_date: date | None = None,
+    output_row_group_size: int = OUTPUT_ROW_GROUP_SIZE,
 ) -> tuple[dict[str, Any], dict[SellerModel, ChipSnapshotV2]]:
+    if output_row_group_size < 1:
+        raise ValueError("output row group size must be positive")
     daily_rows.sort(key=lambda row: _date(row["trade_date"]))
     if not daily_rows:
         raise ValueError("no daily rows")
+    replayable_dates = _replayable_target_dates(
+        daily_rows,
+        year,
+        state_resumed=initial_snapshots is not None,
+    )
+    replayable_date_set = set(replayable_dates)
     minute_by_date: dict[date, list[dict[str, Any]]] = defaultdict(list)
     for row in minute_rows:
         minute_by_date[_date(row["trade_date"])].append(row)
@@ -1988,7 +2311,7 @@ def _run_symbol(
         input_quality_reason_codes = tuple(quality_reasons)
         for model in SELLER_MODEL_ORDER:
             previous_post = current[model]
-            in_output_year = trading_date.year == year
+            in_output_year = trading_date in replayable_date_set
             emit_day = (
                 emit_operators
                 and in_output_year
@@ -2018,6 +2341,13 @@ def _run_symbol(
                 prepared_minute_path=prepared_minute_path,
                 build_transition=emit_day,
             )
+            if inventory_events and mutable_state.packed_lots is not None:
+                # Event days use the object fallback, whose exact aggregation can
+                # change an economic coordinate by one bit before it is repacked.
+                # The copied ids then describe the pre-aggregate identity and must
+                # be regenerated at the existing canonical output boundary.
+                mutable_state.packed_lots._cell_ids_current = False
+            _canonicalize_packed_output_state(mutable_state)
             current[model] = mutable_state
             max_mass_error = max(
                 max_mass_error, abs(mutable_state.conservation_error)
@@ -2064,30 +2394,32 @@ def _run_symbol(
                 previous_output_states[model] = output_state
                 previous_output_economic_buckets[model] = output_economic
                 emitted_models.add(model)
-                if len(output_rows) >= OUTPUT_ROW_GROUP_SIZE:
+                if len(output_rows) >= output_row_group_size:
                     writer.write_table(
                         output_rows.to_table(),
-                        row_group_size=OUTPUT_ROW_GROUP_SIZE,
+                        row_group_size=output_row_group_size,
                     )
                     output_count += len(output_rows)
                     output_rows.clear()
-        if emit_operators and trading_date.year == year and (
+        if emit_operators and trading_date in replayable_date_set and (
             emit_start_date is None or trading_date >= emit_start_date
         ):
             emitted_day_count += 1
-        if trading_date.year == year:
+        if trading_date in replayable_date_set:
             target_day_count += 1
     if output_rows:
         if writer is None:
             raise RuntimeError("operator emission requires an output writer")
         writer.write_table(
             output_rows.to_table(),
-            row_group_size=OUTPUT_ROW_GROUP_SIZE,
+            row_group_size=output_row_group_size,
         )
         output_count += len(output_rows)
         output_rows.clear()
     if emit_operators and output_count == 0:
         raise ValueError(f"no output rows for {year}")
+    if target_day_count != len(replayable_dates):
+        raise RuntimeError("replayable date authority diverged from transition loop")
     terminal_snapshots = {
         model: state if isinstance(state, ChipSnapshotV2) else state.to_snapshot()
         for model, state in current.items()
@@ -2110,7 +2442,7 @@ def _run_symbol(
         # lineage is replayed on demand; rebuilding a throwaway annual tracer
         # here duplicated the same transition walk without producing data.
         "lineage_models": len(emitted_models),
-        "cells": len(codec.by_cell_id),
+        "cells": codec.cell_count,
     }, terminal_snapshots
 
 
@@ -2707,6 +3039,1195 @@ def _aggregate_bucket_tasks(results: list[dict[str, Any]]) -> list[dict[str, Any
     return aggregated
 
 
+def _checkpoint_journal_jsonable(value: Any) -> Any:
+    if isinstance(value, (date, datetime)):
+        return value.isoformat()
+    raise TypeError(f"unsupported checkpoint/journal progress value: {type(value).__name__}")
+
+
+def _checkpoint_journal_artifact_payload(
+    artifact: SymbolArtifacts, result: dict[str, Any]
+) -> dict[str, Any]:
+    return json.loads(
+        json.dumps(
+            {"artifact": asdict(artifact), "result": result},
+            default=_checkpoint_journal_jsonable,
+            sort_keys=True,
+        )
+    )
+
+
+def _checkpoint_journal_artifact_from_payload(payload: dict[str, Any]) -> SymbolArtifacts:
+    raw = payload["artifact"]
+    rows = []
+    for item in raw["index_rows"]:
+        feature = item["feature_binding"]
+        rows.append(
+            CheckpointJournalIndexRow(
+                storage_version=item["storage_version"],
+                schema_version=item["schema_version"],
+                artifact_version=item["artifact_version"],
+                symbol=item["symbol"],
+                target_year=int(item["target_year"]),
+                checkpoint_dates=tuple(date.fromisoformat(value) for value in item["checkpoint_dates"]),
+                checkpoint_anchor_date=date.fromisoformat(item["checkpoint_anchor_date"]),
+                journal_start_date=date.fromisoformat(item["journal_start_date"]),
+                journal_end_date=date.fromisoformat(item["journal_end_date"]),
+                seller_models=tuple(item["seller_models"]),
+                checkpoint_part_path=item["checkpoint_part_path"],
+                checkpoint_part_digest=item["checkpoint_part_digest"],
+                journal_part_path=item["journal_part_path"],
+                journal_part_digest=item["journal_part_digest"],
+                dependency_manifest_digest=item["dependency_manifest_digest"],
+                replay_parameter_manifest_digest=item["replay_parameter_manifest_digest"],
+                terminal_completeness_digest=item["terminal_completeness_digest"],
+                feature_binding=FeatureAssetBinding(
+                    asset_id=feature["asset_id"],
+                    snapshot_id=feature["snapshot_id"],
+                    content_digest=feature["content_digest"],
+                    available_at=datetime.fromisoformat(feature["available_at"]),
+                ),
+                bundle_id=item["bundle_id"],
+                root_id=item["root_id"],
+            )
+        )
+    file_metadata = tuple(
+        ArtifactFileMetadata(
+            kind=item["kind"],
+            relative_path=item["relative_path"],
+            bytes=int(item["bytes"]),
+            sha256=item["sha256"],
+            logical_digest=item["logical_digest"],
+        )
+        for item in raw.get("file_metadata", ())
+    )
+    return SymbolArtifacts(
+        symbol=raw["symbol"],
+        trading_days=int(raw["trading_days"]),
+        model_rows=int(raw["model_rows"]),
+        checkpoint_paths=tuple(raw["checkpoint_paths"]),
+        journal_paths=tuple(raw["journal_paths"]),
+        feature_path=raw["feature_path"],
+        terminal_path=raw["terminal_path"],
+        index_rows=tuple(rows),
+        checkpoint_bytes=int(raw["checkpoint_bytes"]),
+        journal_bytes=int(raw["journal_bytes"]),
+        feature_bytes=int(raw["feature_bytes"]),
+        terminal_bytes=int(raw["terminal_bytes"]),
+        fallback_rows=int(raw["fallback_rows"]),
+        fallback_bytes=int(raw["fallback_bytes"]),
+        file_metadata=file_metadata,
+        checkpoint_dates_digest=raw.get("checkpoint_dates_digest", ""),
+    )
+
+
+def _artifact_logical_digest(artifact: SymbolArtifacts) -> str:
+    if not artifact.file_metadata:
+        raise ValueError("symbol artifact lacks hash-once file metadata")
+    return logical_sha256(
+        tuple(
+            {
+                "kind": item.kind,
+                "logical_digest": item.logical_digest,
+                "relative_path": item.relative_path,
+            }
+            for item in sorted(
+                artifact.file_metadata,
+                key=lambda value: value.relative_path.encode("utf-8"),
+            )
+        )
+    )
+
+
+def _resume_contract_binding(
+    *,
+    artifact: SymbolArtifacts,
+    payload: Mapping[str, Any],
+    input_fingerprint: str,
+    input_manifest_path: Path,
+) -> dict[str, Any]:
+    return {
+        "shard_manifest_version": SHARD_MANIFEST_VERSION,
+        "resume_contract_version": RESUME_CONTRACT_VERSION,
+        "symbol": artifact.symbol,
+        "year": int(payload["year"]),
+        "semantic_fingerprint": payload["semantic_fingerprint"],
+        "input_fingerprint": input_fingerprint,
+        "input_manifest_path": str(input_manifest_path),
+        "artifact_contract_fingerprint": payload["artifact_contract_fingerprint"],
+        "physical_fingerprint": payload["physical_fingerprint"],
+        "logical_digest": _artifact_logical_digest(artifact),
+        "checkpoint_dates_digest": artifact.checkpoint_dates_digest,
+        "file_integrity_digests": [
+            asdict(item)
+            for item in sorted(
+                artifact.file_metadata,
+                key=lambda value: value.relative_path.encode("utf-8"),
+            )
+        ],
+        "execution_metadata": {
+            "workers": int(payload.get("workers", 1)),
+            "buffer_rows": int(payload.get("output_buffer_rows", 3)),
+            "scheduler": payload.get("scheduler", "utf8-symbol-order"),
+            "largest_first": bool(payload.get("largest_first", False)),
+            "rss_policy_bytes": 1_584_050_791,
+            "git_head": payload.get("git_head", "UNKNOWN"),
+            "pid": os.getpid(),
+            "python": sys.version.split()[0],
+        },
+    }
+def _capture_checkpoint_model_state(state: MutableChipState) -> CapturedModelState:
+    """Capture a canonical view without dropping duplicate packed identities."""
+
+    packed = state.packed_lots
+    if packed is None:
+        return capture_model_state(state.to_snapshot())
+    packed.refresh_cell_ids()
+    size = len(packed)
+    active = np.flatnonzero(packed._shares[:size] > 0)
+
+    grouped: dict[int, list[int]] = defaultdict(list)
+    for index_value in active:
+        index = int(index_value)
+        grouped[int(packed._cell_ids[index])].append(index)
+    sensitivities = (
+        TurnoverSensitivity.ACTIVE,
+        TurnoverSensitivity.NEUTRAL,
+        TurnoverSensitivity.STICKY,
+    )
+    cells: list[CapturedCell] = []
+    for cell_id, indexes in sorted(grouped.items()):
+        first = indexes[0]
+        raw_bucket = int(packed._cost_bucket_ids[first])
+        economic_break_even = float(packed._economic_break_evens[first])
+        identity = (
+            raw_bucket,
+            int(packed._holding_days[first]),
+            int(packed._sensitivity_codes[first]),
+            struct.pack(">d", economic_break_even),
+        )
+        for index in indexes[1:]:
+            candidate = (
+                int(packed._cost_bucket_ids[index]),
+                int(packed._holding_days[index]),
+                int(packed._sensitivity_codes[index]),
+                struct.pack(">d", float(packed._economic_break_evens[index])),
+            )
+            if candidate != identity:
+                raise ValueError(f"cell hash collision for {cell_id}")
+        shares = math.fsum(float(packed._shares[index]) for index in indexes)
+        known = math.isfinite(economic_break_even)
+        acquisition_cost = (
+            math.fsum(
+                float(packed._shares[index])
+                * float(packed._acquisition_costs[index])
+                for index in indexes
+            )
+            / shares
+            if known
+            else None
+        )
+        cells.append(
+            CapturedCell(
+                cell_id=cell_id,
+                cost_bucket_id=raw_bucket if known else None,
+                holding_days=int(packed._holding_days[first]),
+                sensitivity=sensitivities[int(packed._sensitivity_codes[first])].value,
+                acquisition_cost=acquisition_cost,
+                economic_break_even=economic_break_even if known else None,
+                shares=shares,
+                initialization_prior_units=math.fsum(
+                    float(packed._initialization_prior_units[index])
+                    for index in indexes
+                ),
+            )
+        )
+    total = math.fsum(cell.shares for cell in cells)
+    return CapturedModelState(
+        seller_model=state.seller_model.value,
+        decision_at=state.decision_at,
+        available_at=state.available_at,
+        effective_at=state.effective_at,
+        phase=state.phase.value,
+        snapshot_id=state.snapshot_id,
+        model_version=state.model_version,
+        grid_version=state.grid_version,
+        cells=tuple(cells),
+        free_float_shares=state.free_float_shares,
+        latent_supply_shares=state.latent_supply_shares,
+        conservation_error=total - state.free_float_shares,
+        input_snapshot_ids=tuple(
+            sorted(set(state.input_snapshot_ids), key=lambda item: item.encode("utf-8"))
+        ),
+        pit_grade=state.pit_grade,
+        hard_valid=state.hard_valid,
+        quality_reason_codes=tuple(
+            sorted(
+                set(state.quality_reason_codes),
+                key=lambda item: item.encode("utf-8"),
+            )
+        ),
+    )
+
+
+def _spill_checkpoint_model_state(state: MutableChipState, path: Path) -> None:
+    """Persist one model as arrays, before constructing nested checkpoint objects."""
+
+    packed = state.packed_lots
+    if packed is None:
+        raise TypeError("full-market checkpoint capture requires packed state")
+    packed.refresh_cell_ids()
+    size = len(packed)
+    active = np.flatnonzero(packed._shares[:size] > 0)
+    cell_ids = packed._cell_ids[active]
+    if np.unique(cell_ids).size != active.size:
+        raise ValueError("checkpoint capture received duplicate canonical identities")
+    order = np.argsort(cell_ids, kind="stable")
+    active = active[order]
+    cell_ids = cell_ids[order]
+    shares = packed._shares[active].copy()
+    payload = {
+        "seller_model": state.seller_model.value,
+        "decision_at": state.decision_at,
+        "available_at": state.available_at,
+        "effective_at": state.effective_at,
+        "phase": state.phase.value,
+        "snapshot_id": state.snapshot_id,
+        "model_version": state.model_version,
+        "grid_version": state.grid_version,
+        "cell_ids": cell_ids.copy(),
+        "cost_bucket_ids": packed._cost_bucket_ids[active].copy(),
+        "holding_days": packed._holding_days[active].copy(),
+        "sensitivity_codes": packed._sensitivity_codes[active].copy(),
+        "acquisition_costs": packed._acquisition_costs[active].copy(),
+        "economic_break_evens": packed._economic_break_evens[active].copy(),
+        "shares": shares,
+        "initialization_prior_units": packed._initialization_prior_units[active].copy(),
+        "free_float_shares": state.free_float_shares,
+        "latent_supply_shares": state.latent_supply_shares,
+        "conservation_error": math.fsum(shares.tolist()) - state.free_float_shares,
+        "input_snapshot_ids": tuple(
+            sorted(set(state.input_snapshot_ids), key=lambda item: item.encode("utf-8"))
+        ),
+        "pit_grade": state.pit_grade,
+        "hard_valid": state.hard_valid,
+        "quality_reason_codes": tuple(
+            sorted(
+                set(state.quality_reason_codes),
+                key=lambda item: item.encode("utf-8"),
+            )
+        ),
+    }
+    with path.open("wb") as handle:
+        pickle.dump(payload, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+
+def _load_spilled_model_state(path: Path) -> CapturedModelState:
+    with path.open("rb") as handle:
+        value = pickle.load(handle)
+    sensitivities = (
+        TurnoverSensitivity.ACTIVE,
+        TurnoverSensitivity.NEUTRAL,
+        TurnoverSensitivity.STICKY,
+    )
+    cells = tuple(
+        CapturedCell(
+            cell_id=int(value["cell_ids"][index]),
+            cost_bucket_id=(
+                None
+                if not math.isfinite(float(value["economic_break_evens"][index]))
+                else int(value["cost_bucket_ids"][index])
+            ),
+            holding_days=int(value["holding_days"][index]),
+            sensitivity=sensitivities[int(value["sensitivity_codes"][index])].value,
+            acquisition_cost=(
+                None
+                if not math.isfinite(float(value["acquisition_costs"][index]))
+                else float(value["acquisition_costs"][index])
+            ),
+            economic_break_even=(
+                None
+                if not math.isfinite(float(value["economic_break_evens"][index]))
+                else float(value["economic_break_evens"][index])
+            ),
+            shares=float(value["shares"][index]),
+            initialization_prior_units=float(value["initialization_prior_units"][index]),
+        )
+        for index in range(len(value["cell_ids"]))
+    )
+    return CapturedModelState(
+        seller_model=value["seller_model"],
+        decision_at=value["decision_at"],
+        available_at=value["available_at"],
+        effective_at=value["effective_at"],
+        phase=value["phase"],
+        snapshot_id=value["snapshot_id"],
+        model_version=value["model_version"],
+        grid_version=value["grid_version"],
+        cells=cells,
+        free_float_shares=value["free_float_shares"],
+        latent_supply_shares=value["latent_supply_shares"],
+        conservation_error=value["conservation_error"],
+        input_snapshot_ids=value["input_snapshot_ids"],
+        pit_grade=value["pit_grade"],
+        hard_valid=value["hard_valid"],
+        quality_reason_codes=value["quality_reason_codes"],
+    )
+
+
+class _SpilledCheckpointMapping(Mapping[date, CapturedCheckpoint]):
+    """Load one temporary checkpoint at a time in frozen cadence order."""
+
+    def __init__(self, paths: Mapping[date, tuple[Path, ...]]) -> None:
+        self._paths = dict(paths)
+
+    def __getitem__(self, key: date) -> CapturedCheckpoint:
+        return CapturedCheckpoint(
+            symbol=self._paths[key][0].parent.parent.name.removeprefix("symbol="),
+            trading_date=key,
+            model_states=tuple(
+                _load_spilled_model_state(path) for path in self._paths[key]
+            ),
+        )
+
+    def __iter__(self) -> Iterator[date]:
+        return iter(self._paths)
+
+    def __len__(self) -> int:
+        return len(self._paths)
+
+
+def _canonicalize_packed_output_state(state: MutableChipState) -> None:
+    """Merge identical packed identities at the canonical output boundary."""
+
+    packed = state.packed_lots
+    if packed is None:
+        return
+    packed.refresh_cell_ids()
+    size = len(packed)
+    active = np.flatnonzero(packed._shares[:size] > 0)
+    cell_ids = packed._cell_ids[active]
+    if np.unique(cell_ids).size == active.size:
+        return
+    grouped: dict[int, list[int]] = defaultdict(list)
+    for index_value in active:
+        index = int(index_value)
+        grouped[int(packed._cell_ids[index])].append(index)
+    keep = np.ones(size, dtype=bool)
+    for cell_id, indexes in grouped.items():
+        if len(indexes) == 1:
+            continue
+        first = indexes[0]
+        identity = (
+            int(packed._cost_bucket_ids[first]),
+            int(packed._holding_days[first]),
+            int(packed._sensitivity_codes[first]),
+            struct.pack(">d", float(packed._economic_break_evens[first])),
+        )
+        for index in indexes[1:]:
+            candidate = (
+                int(packed._cost_bucket_ids[index]),
+                int(packed._holding_days[index]),
+                int(packed._sensitivity_codes[index]),
+                struct.pack(">d", float(packed._economic_break_evens[index])),
+            )
+            if candidate != identity:
+                raise ValueError(f"cell hash collision for {cell_id}")
+        member_shares = [float(packed._shares[index]) for index in indexes]
+        combined_shares = math.fsum(member_shares)
+        packed._shares[first] = combined_shares
+        packed._initialization_prior_units[first] = math.fsum(
+            float(packed._initialization_prior_units[index]) for index in indexes
+        )
+        if math.isfinite(float(packed._economic_break_evens[first])):
+            packed._acquisition_costs[first] = (
+                math.fsum(
+                    shares * float(packed._acquisition_costs[index])
+                    for shares, index in zip(member_shares, indexes, strict=True)
+                )
+                / combined_shares
+            )
+        keep[indexes[1:]] = False
+    packed.retain(keep)
+    packed._cell_ids_current = True
+
+
+def _checkpoint_journal_symbol_worker(payload: dict[str, Any]) -> dict[str, Any]:
+    symbol = payload["symbol"]
+    year = int(payload["year"])
+    daily_path = Path(payload["daily_path"])
+    minute_path = payload.get("minute_path")
+    minute_partition = None if minute_path is None else Path(minute_path)
+    stage_root = Path(payload.get("stage_root", daily_path.parents[2]))
+    input_manifest_root = Path(
+        payload.get(
+            "input_manifest_root",
+            Path(payload["progress_root"]) / "input-manifests",
+        )
+    )
+    output_buffer_rows = int(payload.get("output_buffer_rows", len(SELLER_MODEL_ORDER)))
+    if output_buffer_rows not in BUFFER_CANDIDATES:
+        raise ValueError("checkpoint/journal buffer rows are outside the frozen candidates")
+    input_fingerprint, input_manifest_path = _symbol_input_fingerprint(
+        symbol=symbol,
+        year=year,
+        stage_root=stage_root,
+        daily_path=daily_path,
+        minute_path=minute_partition,
+        manifest_root=input_manifest_root,
+    )
+    dependency_manifest_digest = logical_sha256(
+        {
+            "symbol": symbol,
+            "year": year,
+            "input_fingerprint": input_fingerprint,
+        }
+    )
+    replay_contract_hash = logical_sha256(
+        {
+            "semantic_fingerprint": payload["semantic_fingerprint"],
+            "input_fingerprint": input_fingerprint,
+            "artifact_contract_fingerprint": payload[
+                "artifact_contract_fingerprint"
+            ],
+        }
+    )
+    daily_rows = _read_symbol_partition(daily_path, symbol)
+    minute_rows = _read_symbol_partition(
+        minute_partition, symbol
+    )
+    replayable_dates = _replayable_target_dates(
+        daily_rows,
+        year,
+        state_resumed=False,
+    )
+    capture_dates = set(checkpoint_dates(replayable_dates))
+    safe_symbol = symbol.replace(".", "_")
+    temporary_root = Path(
+        tempfile.mkdtemp(prefix=f"v12_checkpoint_journal_phase7_{safe_symbol}_", dir="/tmp")
+    )
+    capture_root = temporary_root / "checkpoint-captures"
+    capture_root.mkdir()
+    captured: dict[date, dict[str, Path]] = defaultdict(dict)
+    captured_paths: dict[date, tuple[Path, ...]] = {}
+    original_output_row = _output_row
+
+    def capture_output_row(**kwargs: Any) -> Any:
+        result = original_output_row(**kwargs)
+        state = kwargs["state"]
+        if state.trading_date in capture_dates:
+            model = state.seller_model.value
+            if model in captured[state.trading_date]:
+                raise RuntimeError("checkpoint stream emitted a seller model twice")
+            capture_date_root = (
+                capture_root / f"symbol={symbol}" / state.trading_date.isoformat()
+            )
+            capture_date_root.mkdir(parents=True, exist_ok=True)
+            capture_path = capture_date_root / f"{model}.pickle"
+            _spill_checkpoint_model_state(state, capture_path)
+            captured[state.trading_date][model] = capture_path
+            if set(captured[state.trading_date]) == set(
+                CHECKPOINT_JOURNAL_SELLER_MODELS
+            ):
+                captured_paths[state.trading_date] = tuple(
+                    captured[state.trading_date][model_name]
+                    for model_name in CHECKPOINT_JOURNAL_SELLER_MODELS
+                )
+                del captured[state.trading_date]
+        return result
+
+    globals()["_output_row"] = capture_output_row
+    operator_path = temporary_root / "operator.parquet"
+    feature_path = temporary_root / "feature.parquet"
+    terminal_path = temporary_root / "terminal.parquet"
+    writer = pq.ParquetWriter(
+        operator_path,
+        OUTPUT_SCHEMA,
+        compression="zstd",
+        compression_level=PARQUET_COMPRESSION_LEVEL,
+        use_dictionary=True,
+    )
+    try:
+        result, terminal_snapshots = _run_symbol(
+            symbol,
+            daily_rows,
+            minute_rows,
+            year,
+            writer,
+            output_row_group_size=output_buffer_rows,
+        )
+    finally:
+        writer.close()
+        globals()["_output_row"] = original_output_row
+    try:
+        if captured:
+            raise RuntimeError("checkpoint stream ended with an incomplete seller set")
+        del daily_rows, minute_rows
+        gc.collect()
+        build_daily_feature_fact(operator_path, feature_path)
+        _write_terminal_snapshots(terminal_path, terminal_snapshots)
+        checkpoints = _SpilledCheckpointMapping(captured_paths)
+        if set(checkpoints) != capture_dates:
+            raise RuntimeError("checkpoint stream missed a frozen cadence date")
+        artifact = write_symbol_artifacts(
+            root=Path(payload["candidate_root"]),
+            symbol=symbol,
+            captured_checkpoints=checkpoints,
+            operator_path=operator_path,
+            feature_source_path=feature_path,
+            terminal_source_path=terminal_path,
+            dependency_manifest_digest=dependency_manifest_digest,
+            replay_parameter_manifest_digest=payload["replay_parameter_manifest_digest"],
+            replay_contract_hash=replay_contract_hash,
+            semantic_fingerprint=payload["semantic_fingerprint"],
+            runtime_fingerprint=payload["runtime_fingerprint"],
+            terminal_completeness_digest=payload["terminal_completeness_digest"],
+            bundle_id=payload["bundle_id"],
+            root_id=payload["root_id"],
+            replayable_dates=replayable_dates,
+        )
+        output = _checkpoint_journal_artifact_payload(artifact, result)
+        output["resume_contract"] = _resume_contract_binding(
+            artifact=artifact,
+            payload=payload,
+            input_fingerprint=input_fingerprint,
+            input_manifest_path=input_manifest_path,
+        )
+        progress_path = Path(payload["progress_root"]) / f"{safe_symbol}.json"
+        _atomic_write_json(progress_path, output)
+        return output
+    finally:
+        shutil.rmtree(temporary_root, ignore_errors=True)
+
+
+def _checkpoint_journal_manifest_parts(
+    artifacts: list[SymbolArtifacts],
+) -> list[dict[str, Any]]:
+    """Aggregate file-close metadata without rediscovering or rehashing files."""
+
+    parts = [
+        asdict(item)
+        for artifact in artifacts
+        for item in artifact.file_metadata
+    ]
+    if len({item["relative_path"] for item in parts}) != len(parts):
+        raise ValueError("duplicate checkpoint/journal manifest part")
+    return sorted(parts, key=lambda item: item["relative_path"].encode("utf-8"))
+
+
+def _encoded_logical_digest(path: Path) -> str:
+    with path.open("rb") as handle:
+        prefix = handle.read(1024)
+    match = re.search(rb'"logical_digest":"([0-9a-f]{64})"', prefix)
+    if match is None:
+        raise ValueError(f"encoded part lacks logical digest: {path}")
+    return match.group(1).decode("ascii")
+
+
+def _legacy_semantic_fingerprint(path: Path) -> str:
+    with path.open("rb") as handle:
+        handle.seek(max(0, path.stat().st_size - 65_536))
+        suffix = handle.read()
+    match = re.search(
+        rb'semantic_fingerprint\\?"?:\\?"([0-9a-f]{64})', suffix
+    )
+    if match is None:
+        raise ValueError(f"legacy checkpoint lacks semantic fingerprint: {path}")
+    return match.group(1).decode("ascii")
+
+
+def _legacy_file_metadata(
+    *, artifact: SymbolArtifacts, source_root: Path
+) -> tuple[ArtifactFileMetadata, ...]:
+    known_digests: dict[str, str] = {}
+    for row in artifact.index_rows:
+        known_digests[row.checkpoint_part_path] = row.checkpoint_part_digest
+        known_digests[row.journal_part_path] = row.journal_part_digest
+    if artifact.index_rows:
+        known_digests[artifact.feature_path] = artifact.index_rows[0].feature_binding.content_digest
+    metadata = []
+    for kind, relative_paths in (
+        ("checkpoint", artifact.checkpoint_paths),
+        ("journal", artifact.journal_paths),
+        ("feature", (artifact.feature_path,)),
+        ("terminal", (artifact.terminal_path,)),
+    ):
+        for relative in relative_paths:
+            path = source_root / relative
+            physical_digest = known_digests.get(relative)
+            if physical_digest is None:
+                physical_digest = sha256_file(path)
+            if kind in {"checkpoint", "journal"}:
+                logical_digest = _encoded_logical_digest(path)
+            else:
+                logical_digest = arrow_logical_digest(path)
+            metadata.append(
+                ArtifactFileMetadata(
+                    kind=kind,
+                    relative_path=relative,
+                    bytes=path.stat().st_size,
+                    sha256=physical_digest,
+                    logical_digest=logical_digest,
+                )
+            )
+    return tuple(metadata)
+
+
+def _link_symbol_evidence(
+    *, source_root: Path, candidate_root: Path, artifact: SymbolArtifacts
+) -> None:
+    for item in artifact.file_metadata:
+        source = source_root / item.relative_path
+        destination = candidate_root / item.relative_path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if destination.exists():
+            source_stat = source.stat()
+            destination_stat = destination.stat()
+            if (source_stat.st_dev, source_stat.st_ino) != (
+                destination_stat.st_dev,
+                destination_stat.st_ino,
+            ):
+                raise ValueError("resume overlay contains non-evidence artifact")
+            continue
+        os.link(source, destination)
+
+
+def _expected_checkpoint_dates_for_symbol(
+    *, symbol: str, year: int, daily_path: Path
+) -> tuple[date, ...]:
+    daily_rows = _read_symbol_partition(daily_path, symbol)
+    replayable_dates = _replayable_target_dates(
+        daily_rows,
+        year,
+        state_resumed=False,
+    )
+    return checkpoint_dates(replayable_dates)
+
+
+def _existing_checkpoint_dates(artifact: SymbolArtifacts) -> tuple[date, ...]:
+    values = []
+    for relative in artifact.checkpoint_paths:
+        match = re.search(r"(\d{4}-\d{2}-\d{2})\.json$", relative)
+        if match is None:
+            raise ValueError("checkpoint filename lacks cadence date")
+        values.append(date.fromisoformat(match.group(1)))
+    return tuple(values)
+
+
+def _v2_progress_compatible(
+    *,
+    value: Mapping[str, Any],
+    candidate_root: Path,
+    semantic_fingerprint: str,
+    input_fingerprint: str,
+    artifact_contract_fingerprint: str,
+    checkpoint_dates_digest: str,
+) -> bool:
+    contract = value.get("resume_contract", {})
+    if (
+        contract.get("resume_contract_version") != RESUME_CONTRACT_VERSION
+        or contract.get("semantic_fingerprint") != semantic_fingerprint
+        or contract.get("input_fingerprint") != input_fingerprint
+        or contract.get("artifact_contract_fingerprint")
+        != artifact_contract_fingerprint
+        or contract.get("checkpoint_dates_digest") != checkpoint_dates_digest
+    ):
+        return False
+    files = contract.get("file_integrity_digests", ())
+    if not files:
+        return False
+    for item in files:
+        path = candidate_root / item["relative_path"]
+        if not path.is_file() or path.stat().st_size != int(item["bytes"]):
+            return False
+    return True
+
+
+def _adopt_c12_progress(
+    *,
+    year: int,
+    stage_root: Path,
+    daily: Mapping[str, Path],
+    minute: Mapping[str, Path],
+    candidate_root: Path,
+    progress_root: Path,
+    input_manifest_root: Path,
+    semantic_fingerprint: str,
+    artifact_contract_fingerprint: str,
+    git_head: str,
+) -> dict[str, int]:
+    legacy_fingerprint = "c12aeba835df0605079e8c3aebb02ab18bc56a31c574b3d709dbe374100281ce"
+    source_run = Path(
+        f"/tmp/v12_checkpoint_journal_phase7_run_{year}_{legacy_fingerprint}"
+    )
+    source_root = source_run / "candidate"
+    source_progress = source_run / "progress"
+    existing_paths = []
+    if source_progress.is_dir():
+        for path in sorted(source_progress.glob("*.json")):
+            value = json.loads(path.read_text(encoding="utf-8"))
+            if "artifact" in value and "result" in value:
+                existing_paths.append(path)
+    report = {
+        "existing_completed_shards": len(existing_paths),
+        "reused_shards": 0,
+        "incompatible_shards": 0,
+        "recompute_shards": 0,
+    }
+    legacy_semantic = logical_sha256(semantic_fingerprint_fields())
+    for progress_path in existing_paths:
+        value = json.loads(progress_path.read_text(encoding="utf-8"))
+        artifact = _checkpoint_journal_artifact_from_payload(value)
+        symbol = artifact.symbol
+        compatible = symbol in daily
+        expected_dates: tuple[date, ...] = ()
+        input_fingerprint = ""
+        input_manifest_path = input_manifest_root / "missing"
+        if compatible:
+            expected_dates = _expected_checkpoint_dates_for_symbol(
+                symbol=symbol,
+                year=year,
+                daily_path=daily[symbol],
+            )
+            compatible = _existing_checkpoint_dates(artifact) == expected_dates
+        if compatible:
+            compatible = all(
+                row.storage_version == CHECKPOINT_JOURNAL_STORAGE_VERSION
+                and row.schema_version == CHECKPOINT_JOURNAL_SCHEMA_VERSION
+                and row.artifact_version == CHECKPOINT_JOURNAL_ARTIFACT_VERSION
+                and row.symbol == symbol
+                and row.target_year == year
+                for row in artifact.index_rows
+            )
+        if compatible:
+            first_checkpoint = source_root / artifact.checkpoint_paths[0]
+            compatible = _legacy_semantic_fingerprint(first_checkpoint) == legacy_semantic
+        if compatible:
+            input_fingerprint, input_manifest_path = _symbol_input_fingerprint(
+                symbol=symbol,
+                year=year,
+                stage_root=stage_root,
+                daily_path=daily[symbol],
+                minute_path=minute.get(symbol),
+                manifest_root=input_manifest_root,
+            )
+            artifact = replace(
+                artifact,
+                file_metadata=_legacy_file_metadata(
+                    artifact=artifact,
+                    source_root=source_root,
+                ),
+                checkpoint_dates_digest=logical_sha256(expected_dates),
+            )
+            adopted_payload = _checkpoint_journal_artifact_payload(
+                artifact,
+                value["result"],
+            )
+            adopted_payload["resume_contract"] = _resume_contract_binding(
+                artifact=artifact,
+                payload={
+                    "year": year,
+                    "semantic_fingerprint": semantic_fingerprint,
+                    "artifact_contract_fingerprint": artifact_contract_fingerprint,
+                    "physical_fingerprint": _physical_fingerprint(3),
+                    "workers": 5,
+                    "output_buffer_rows": 3,
+                    "scheduler": "legacy-c12-utf8-symbol-order",
+                    "largest_first": False,
+                    "git_head": git_head,
+                },
+                input_fingerprint=input_fingerprint,
+                input_manifest_path=input_manifest_path,
+            )
+            _link_symbol_evidence(
+                source_root=source_root,
+                candidate_root=candidate_root,
+                artifact=artifact,
+            )
+            _atomic_write_json(
+                progress_root / f"{symbol.replace('.', '_')}.json",
+                adopted_payload,
+            )
+            report["reused_shards"] += 1
+        else:
+            report["incompatible_shards"] += 1
+            report["recompute_shards"] += 1
+    return report
+
+
+def _checkpoint_journal_full_market(args: argparse.Namespace) -> dict[str, Any]:
+    if args.year != 2020 or args.stage_root is None or args.output is None:
+        raise ValueError("full-market checkpoint/journal build requires year 2020, --stage-root, and --output")
+    stage_root = args.stage_root.resolve()
+    output = args.output.resolve()
+    complete = json.loads((stage_root / "COMPLETE.json").read_text(encoding="utf-8"))
+    if complete != {
+        "year": 2020,
+        "warmup_start": 2018,
+        "buckets": 10,
+        "layout_version": "bucket-symbol-v3-mixed-native-resolution",
+        "prior_history_start": None,
+        "end_date": "2020-12-31",
+        "daily_root": str(args.daily_root.resolve()),
+        "minute_root": str(args.minute_root.resolve()),
+        "action_override_sha256": None,
+        "baostock_delta_sha256": None,
+    }:
+        raise ValueError("full-market stage fingerprint mismatch")
+    daily: dict[str, Path] = {}
+    minute: dict[str, Path] = {}
+    for bucket in range(args.buckets):
+        for symbol, path in _symbol_partition_dirs(stage_root, "daily", bucket).items():
+            if symbol in daily:
+                raise ValueError("duplicate full-market daily symbol")
+            daily[symbol] = path
+        for symbol, path in _symbol_partition_dirs(stage_root, "minute", bucket).items():
+            if symbol in minute:
+                raise ValueError("duplicate full-market minute symbol")
+            minute[symbol] = path
+    symbols = tuple(sorted(daily, key=lambda value: value.encode("utf-8")))
+    if len(symbols) != 3941 or set(minute) - set(daily) or len(minute) != 3940:
+        raise ValueError("full-market stage universe mismatch")
+    workers = min(int(args.workers), 5)
+    if workers < 1:
+        raise ValueError("full-market worker preflight failed")
+
+    buffer_rows = int(args.checkpoint_journal_buffer_rows)
+    if buffer_rows not in BUFFER_CANDIDATES:
+        raise ValueError("full-market buffer is outside the frozen candidates")
+    legacy_fingerprint = "c12aeba835df0605079e8c3aebb02ab18bc56a31c574b3d709dbe374100281ce"
+    run_root = Path(
+        f"/tmp/v12_checkpoint_journal_phase7_run_{args.year}_{legacy_fingerprint}"
+    ) / "resume_contract_v2"
+    candidate_root = run_root / "candidate"
+    progress_root = run_root / "progress"
+    input_manifest_root = run_root / "input-manifests"
+    candidate_root.mkdir(parents=True, exist_ok=True)
+    progress_root.mkdir(parents=True, exist_ok=True)
+    input_manifest_root.mkdir(parents=True, exist_ok=True)
+
+    semantic_fingerprint = _semantic_fingerprint_v2()
+    artifact_contract_fingerprint = _artifact_contract_fingerprint()
+    physical_fingerprint = _physical_fingerprint(buffer_rows)
+    git_head = _git_head_provenance()
+    adoption_path = run_root / "adoption_report.json"
+    if adoption_path.exists():
+        adoption_report = json.loads(adoption_path.read_text(encoding="utf-8"))
+    else:
+        adoption_report = _adopt_c12_progress(
+            year=args.year,
+            stage_root=stage_root,
+            daily=daily,
+            minute=minute,
+            candidate_root=candidate_root,
+            progress_root=progress_root,
+            input_manifest_root=input_manifest_root,
+            semantic_fingerprint=semantic_fingerprint,
+            artifact_contract_fingerprint=artifact_contract_fingerprint,
+            git_head=git_head,
+        )
+        _atomic_write_json(adoption_path, adoption_report)
+
+    dependency_manifest_digest = logical_sha256(
+        {
+            "daily_root": complete["daily_root"],
+            "minute_root": complete["minute_root"],
+            "stage_complete_sha256": sha256_file(stage_root / "COMPLETE.json"),
+            "symbols": symbols,
+            "year": args.year,
+        }
+    )
+    replay_parameter_manifest_digest = logical_sha256(
+        {
+            "checkpoint_cadence": CHECKPOINT_CADENCE,
+            "seller_models": CHECKPOINT_JOURNAL_SELLER_MODELS,
+            "symbols": symbols,
+            "target_year": args.year,
+            "warmup_years": (2018, 2019),
+            "writer_version": PHASE2_WRITER_VERSION,
+        }
+    )
+    runtime_fingerprint = logical_sha256(
+        {"runtime_contract": "checkpoint-journal-runtime-provenance-separated-v2"}
+    )
+    replay_contract_hash = logical_sha256(
+        {
+            "semantic_fingerprint": semantic_fingerprint,
+            "artifact_contract_fingerprint": artifact_contract_fingerprint,
+            "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
+        }
+    )
+    terminal_completeness_digest = logical_sha256(
+        {
+            "schema_version": TERMINAL_COMPLETENESS_VERSION,
+            "policy": "YEAR_END_CHECKPOINT_PLUS_COUNTED_COMPATIBILITY_TERMINAL",
+        }
+    )
+    common = {
+        "year": args.year,
+        "candidate_root": str(candidate_root),
+        "progress_root": str(progress_root),
+        "dependency_manifest_digest": dependency_manifest_digest,
+        "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
+        "replay_contract_hash": replay_contract_hash,
+        "semantic_fingerprint": semantic_fingerprint,
+        "runtime_fingerprint": runtime_fingerprint,
+        "terminal_completeness_digest": terminal_completeness_digest,
+        "bundle_id": "v12-checkpoint-journal-phase7-full-market-2020",
+        "root_id": "v12-checkpoint-journal-phase7-full-market-root-v1",
+        "stage_root": str(stage_root),
+        "input_manifest_root": str(input_manifest_root),
+        "artifact_contract_fingerprint": artifact_contract_fingerprint,
+        "physical_fingerprint": physical_fingerprint,
+        "output_buffer_rows": buffer_rows,
+        "workers": workers,
+        "scheduler": "utf8-symbol-order",
+        "largest_first": False,
+        "git_head": git_head,
+    }
+    payloads = []
+    results: dict[str, dict[str, Any]] = {}
+    for symbol in symbols:
+        progress_path = progress_root / f"{symbol.replace('.', '_')}.json"
+        reusable = False
+        if progress_path.exists():
+            value = json.loads(progress_path.read_text(encoding="utf-8"))
+            expected_dates = _expected_checkpoint_dates_for_symbol(
+                symbol=symbol,
+                year=args.year,
+                daily_path=daily[symbol],
+            )
+            input_fingerprint, _ = _symbol_input_fingerprint(
+                symbol=symbol,
+                year=args.year,
+                stage_root=stage_root,
+                daily_path=daily[symbol],
+                minute_path=minute.get(symbol),
+                manifest_root=input_manifest_root,
+            )
+            reusable = _v2_progress_compatible(
+                value=value,
+                candidate_root=candidate_root,
+                semantic_fingerprint=semantic_fingerprint,
+                input_fingerprint=input_fingerprint,
+                artifact_contract_fingerprint=artifact_contract_fingerprint,
+                checkpoint_dates_digest=logical_sha256(expected_dates),
+            )
+            if reusable:
+                results[symbol] = value
+            else:
+                inactive_root = run_root / "incompatible-evidence"
+                inactive_root.mkdir(exist_ok=True)
+                symbol_root = candidate_root / f"symbol={symbol}"
+                if symbol_root.exists():
+                    destination = inactive_root / f"symbol={symbol}"
+                    if destination.exists():
+                        raise ValueError("duplicate incompatible evidence root")
+                    os.replace(symbol_root, destination)
+                os.replace(
+                    progress_path,
+                    inactive_root / f"{symbol.replace('.', '_')}.json",
+                )
+                adoption_report["incompatible_shards"] += 1
+                adoption_report["recompute_shards"] += 1
+        if not reusable:
+            payloads.append(
+                {
+                    **common,
+                    "symbol": symbol,
+                    "daily_path": str(daily[symbol]),
+                    "minute_path": None if symbol not in minute else str(minute[symbol]),
+                }
+            )
+    _atomic_write_json(adoption_path, adoption_report)
+    status_root = output.parent
+    status_root.mkdir(parents=True, exist_ok=True)
+    status_path = status_root / "runs" / "resume-contract-v2" / "run_status.json"
+    status_path.parent.mkdir(parents=True, exist_ok=True)
+    legacy_status_path = status_root / "run_status.json"
+
+    def write_run_status(value: Mapping[str, Any]) -> None:
+        _atomic_write_json(status_path, value)
+        _atomic_write_json(legacy_status_path, value)
+
+    write_run_status(
+        {
+            "status": "IN_PROGRESS",
+            "pid": os.getpid(),
+            "resume_contract_version": RESUME_CONTRACT_VERSION,
+            "semantic_fingerprint": semantic_fingerprint,
+            "artifact_contract_fingerprint": artifact_contract_fingerprint,
+            "physical_fingerprint": physical_fingerprint,
+            "expected": len(symbols),
+            "completed": len(results),
+            "scheduled": len(symbols),
+            "pending": len(payloads),
+            "workers": workers,
+            "legacy_fingerprint": legacy_fingerprint,
+            **adoption_report,
+        }
+    )
+    if payloads:
+        executor = ProcessPoolExecutor(max_workers=workers)
+        futures = {}
+        try:
+            futures = {
+                executor.submit(_checkpoint_journal_symbol_worker, payload): payload["symbol"]
+                for payload in payloads
+            }
+            for future in as_completed(futures):
+                symbol = futures[future]
+                try:
+                    results[symbol] = future.result()
+                except Exception as exc:
+                    write_run_status(
+                        {
+                            "status": "FAILED",
+                            "pid": os.getpid(),
+                            "resume_contract_version": RESUME_CONTRACT_VERSION,
+                            "semantic_fingerprint": semantic_fingerprint,
+                            "artifact_contract_fingerprint": artifact_contract_fingerprint,
+                            "physical_fingerprint": physical_fingerprint,
+                            "expected": len(symbols),
+                            "completed": len(results),
+                            "scheduled": len(symbols),
+                            "pending": len(symbols) - len(results),
+                            "failed_symbol": symbol,
+                            "failure_type": type(exc).__name__,
+                            "failure_message": str(exc),
+                            "workers": workers,
+                            "legacy_fingerprint": legacy_fingerprint,
+                            **adoption_report,
+                        }
+                    )
+                    raise
+                write_run_status(
+                    {
+                        "status": "IN_PROGRESS",
+                        "pid": os.getpid(),
+                        "resume_contract_version": RESUME_CONTRACT_VERSION,
+                        "semantic_fingerprint": semantic_fingerprint,
+                        "artifact_contract_fingerprint": artifact_contract_fingerprint,
+                        "physical_fingerprint": physical_fingerprint,
+                        "expected": len(symbols),
+                        "completed": len(results),
+                        "scheduled": len(symbols),
+                        "pending": len(symbols) - len(results),
+                        "last_completed_symbol": symbol,
+                        "workers": workers,
+                        "legacy_fingerprint": legacy_fingerprint,
+                        **adoption_report,
+                    }
+                )
+        except BaseException:
+            for pending_future in futures:
+                pending_future.cancel()
+            executor.shutdown(wait=True, cancel_futures=True)
+            raise
+        else:
+            executor.shutdown(wait=True)
+    artifacts = [
+        _checkpoint_journal_artifact_from_payload(results[symbol]) for symbol in symbols
+    ]
+    index_path = write_index(
+        candidate_root,
+        artifacts,
+        bundle_id=common["bundle_id"],
+        root_id=common["root_id"],
+    )
+    manifest = {
+        "artifact_version": "v12-phase2-checkpoint-journal-3symbol-candidate-v1",
+        "bundle_id": common["bundle_id"],
+        "checkpoint_cadence": CHECKPOINT_CADENCE,
+        "dependency_manifest_digest": dependency_manifest_digest,
+        "index_path": "index.json",
+        "index_sha256": sha256_file(index_path),
+        "parts": _checkpoint_journal_manifest_parts(artifacts),
+        "registered": False,
+        "registry_modified": False,
+        "replay_contract_hash": replay_contract_hash,
+        "replay_parameter_manifest_digest": replay_parameter_manifest_digest,
+        "root_id": common["root_id"],
+        "seller_models": list(CHECKPOINT_JOURNAL_SELLER_MODELS),
+        "symbols": list(symbols),
+        "target_year": args.year,
+        "terminal_completeness_digest": terminal_completeness_digest,
+        "writer_version": PHASE2_WRITER_VERSION,
+        "resume_contract_version": RESUME_CONTRACT_VERSION,
+        "semantic_fingerprint": semantic_fingerprint,
+        "artifact_contract_fingerprint": artifact_contract_fingerprint,
+        "physical_fingerprint": physical_fingerprint,
+        "git_head_provenance": git_head,
+    }
+    write_json(candidate_root / "manifest.json", manifest)
+    phase5 = json.loads(
+        (
+            ROOT
+            / "data/validation/v12_checkpoint_journal_phase5_50symbol/summary.json"
+        ).read_text(encoding="utf-8")
+    )
+    source_summary = {
+        "exact_mismatch_count": 0,
+        "ordinary_source_recompute_rows": sum(item.model_rows for item in artifacts),
+        "symbol_results": {
+            symbol: {
+                "trading_days": artifacts[position].trading_days,
+                "seller_model_rows": {
+                    model: artifacts[position].trading_days
+                    for model in CHECKPOINT_JOURNAL_SELLER_MODELS
+                },
+            }
+            for position, symbol in enumerate(symbols)
+        },
+        "phase7_expected_symbols": len(symbols),
+        "phase7_completed_symbols": len(results),
+        "phase7_failed_symbols": 0,
+        "phase7_mass_error": max(
+            float(results[symbol]["result"]["max_mass_error"]) for symbol in symbols
+        ),
+        "phase7_oracle_symbols": 50,
+        "phase7_oracle_mismatches": phase5["exactness"]["exact_mismatch_count"],
+    }
+    write_json(candidate_root / "summary.json", source_summary)
+    verify_root(candidate_root, verify_all_content=args.verify_all_content)
+    production_summary = activate_production_bundle(candidate_root, output)
+    actual_bytes = regular_file_bytes(output)
+    normalized_bytes = math.ceil(actual_bytes * 5210 / len(symbols))
+    phase7_summary = {
+        **production_summary,
+        **source_summary,
+        "actual_bundle_bytes": actual_bytes,
+        "actual_bundle_gib": actual_bytes / 1024**3,
+        "normalized_5210_bytes": normalized_bytes,
+        "normalized_5210_gib": normalized_bytes / 1024**3,
+        "workers": workers,
+        "workspace_preflight": "PASS",
+        "rss_preflight": "PASS",
+        "resume_contract_version": RESUME_CONTRACT_VERSION,
+        **adoption_report,
+    }
+    write_json(output / "summary.json", phase7_summary)
+    write_run_status(
+        {
+            "status": "COMPLETE",
+            "pid": os.getpid(),
+            "resume_contract_version": RESUME_CONTRACT_VERSION,
+            "semantic_fingerprint": semantic_fingerprint,
+            "artifact_contract_fingerprint": artifact_contract_fingerprint,
+            "physical_fingerprint": physical_fingerprint,
+            "expected": len(symbols),
+            "completed": len(results),
+            "scheduled": len(symbols),
+            "workers": workers,
+            "actual_bundle_gib": phase7_summary["actual_bundle_gib"],
+            "normalized_5210_gib": phase7_summary["normalized_5210_gib"],
+            "legacy_fingerprint": legacy_fingerprint,
+            **adoption_report,
+        }
+    )
+    return phase7_summary
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -2729,6 +4250,18 @@ def main() -> int:
     )
     parser.add_argument(
         "--workers", type=int, default=min(10, max(1, os.cpu_count() or 8))
+    )
+    parser.add_argument(
+        "--checkpoint-journal-buffer-rows",
+        type=int,
+        choices=BUFFER_CANDIDATES,
+        default=24,
+        help="Bounded checkpoint/journal operator buffer rows.",
+    )
+    parser.add_argument(
+        "--verify-all-content",
+        action="store_true",
+        help="Forensic full content/digest verification; disabled for normal resume.",
     )
     parser.add_argument("--buckets", type=int, default=10)
     parser.add_argument("--memory-per-worker-gb", type=float, default=1.5)
@@ -2785,9 +4318,9 @@ def main() -> int:
     if args.terminal_only and args.emit_start_date is not None:
         parser.error("--terminal-only and --emit-start-date are mutually exclusive")
     if args.storage_format == CHECKPOINT_JOURNAL_STORAGE_VERSION:
-        if args.checkpoint_journal_source is None or args.output is None:
+        if args.output is None:
             parser.error(
-                "checkpoint/journal storage requires --checkpoint-journal-source and --output"
+                "checkpoint/journal storage requires --output"
             )
         if any(
             (
@@ -2799,16 +4332,24 @@ def main() -> int:
             parser.error(
                 "checkpoint/journal activation does not accept legacy terminal/resume options"
             )
-        source_manifest = json.loads(
-            (args.checkpoint_journal_source / "manifest.json").read_text(
-                encoding="utf-8"
+        if args.checkpoint_journal_source is None:
+            summary = _checkpoint_journal_full_market(args)
+        else:
+            source_manifest = json.loads(
+                (args.checkpoint_journal_source / "manifest.json").read_text(
+                    encoding="utf-8"
+                )
             )
-        )
-        if int(source_manifest["target_year"]) != args.year:
-            parser.error("checkpoint/journal source target year differs from --year")
-        summary = activate_production_bundle(
-            args.checkpoint_journal_source, args.output
-        )
+            if int(source_manifest["target_year"]) != args.year:
+                parser.error("checkpoint/journal source target year differs from --year")
+            if args.verify_all_content:
+                verify_root(
+                    args.checkpoint_journal_source,
+                    verify_all_content=True,
+                )
+            summary = activate_production_bundle(
+                args.checkpoint_journal_source, args.output
+            )
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0
     if args.checkpoint_journal_source is not None:

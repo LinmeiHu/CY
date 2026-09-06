@@ -12,12 +12,12 @@ import json
 import math
 import os
 import shutil
-import struct
 import uuid
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
 from datetime import date, datetime
 from pathlib import Path
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -33,19 +33,18 @@ from cyq_game.chip.checkpoint_journal_contract import (
     SCHEMA_VERSION,
     SELLER_MODEL_ORDER,
     STORAGE_VERSION,
-    TERMINAL_COMPLETENESS_VERSION,
     TRANSITION_SEMANTICS_VERSION,
     CellIdentity,
     CheckpointLogical,
     CheckpointLot,
     CheckpointModelState,
+    DependencyClass,
     FeatureAssetBinding,
     LifecycleContinuation,
     SellerContinuation,
     TemporalTrackerContinuation,
     TrackedPeakContinuation,
     TrackerScopeContinuation,
-    canonical_json_bytes,
     f64be_bits,
     logical_sha256,
 )
@@ -67,7 +66,6 @@ from cyq_game.chip.journal_codec import (
     encode_journal,
     journal_logical_digest,
 )
-from cyq_game.chip.checkpoint_journal_contract import DependencyClass
 
 PHASE2_SYMBOLS = ("002260.SZ", "002706.SZ", "300604.SZ")
 PHASE2_TARGET_YEAR = 2020
@@ -122,6 +120,15 @@ class CapturedCheckpoint:
 
 
 @dataclass(frozen=True)
+class ArtifactFileMetadata:
+    kind: str
+    relative_path: str
+    bytes: int
+    sha256: str
+    logical_digest: str
+
+
+@dataclass(frozen=True)
 class SymbolArtifacts:
     symbol: str
     trading_days: int
@@ -137,6 +144,8 @@ class SymbolArtifacts:
     terminal_bytes: int
     fallback_rows: int
     fallback_bytes: int
+    file_metadata: tuple[ArtifactFileMetadata, ...] = ()
+    checkpoint_dates_digest: str = ""
 
 
 def sha256_file(path: Path) -> str:
@@ -145,6 +154,16 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def arrow_logical_digest(path: Path) -> str:
+    """Hash Arrow values independently of Parquet row-group/layout choices."""
+
+    table = pq.ParquetFile(path).read().combine_chunks()
+    sink = pa.BufferOutputStream()
+    with pa.ipc.new_stream(sink, table.schema) as writer:
+        writer.write_table(table)
+    return hashlib.sha256(sink.getvalue().to_pybytes()).hexdigest()
 
 
 def digest_suffix(value: str) -> str:
@@ -546,6 +565,7 @@ def write_symbol_artifacts(
     terminal_completeness_digest: str,
     bundle_id: str,
     root_id: str,
+    replayable_dates: Sequence[date] | None = None,
 ) -> SymbolArtifacts:
     symbol_root = root / f"symbol={symbol}"
     checkpoint_root = symbol_root / "checkpoints"
@@ -559,12 +579,19 @@ def write_symbol_artifacts(
     for row in operator_rows:
         rows_by_date.setdefault(row["trade_date"], []).append(row)
     trading_dates = tuple(sorted(rows_by_date))
+    if replayable_dates is not None:
+        authoritative_dates = tuple(replayable_dates)
+        if trading_dates != authoritative_dates:
+            raise ValueError("operator dates differ from authoritative replayable dates")
+        trading_dates = authoritative_dates
     cadence_dates = checkpoint_dates(trading_dates)
     if set(cadence_dates) != set(captured_checkpoints):
         raise ValueError("captured checkpoint dates do not match frozen cadence")
 
     checkpoint_paths: list[str] = []
     checkpoint_digests: dict[date, str] = {}
+    checkpoint_file_digests: dict[str, str] = {}
+    file_metadata: list[ArtifactFileMetadata] = []
     checkpoint_bytes = 0
     for position, checkpoint_date in enumerate(cadence_dates):
         label = (
@@ -586,13 +613,26 @@ def write_symbol_artifacts(
         payload = encode_checkpoint(logical)
         path = checkpoint_root / f"{label}.json"
         path.write_bytes(payload)
-        decoded = decode_checkpoint(path.read_bytes())
+        decoded = decode_checkpoint(payload)
         if decoded != logical:
             raise ValueError("checkpoint independent read mismatch")
         relative = path.relative_to(root).as_posix()
         checkpoint_paths.append(relative)
         checkpoint_digests[checkpoint_date] = checkpoint_logical_digest(logical)
-        checkpoint_bytes += path.stat().st_size
+        physical_digest = hashlib.sha256(payload).hexdigest()
+        checkpoint_file_digests[relative] = physical_digest
+        size = len(payload)
+        checkpoint_bytes += size
+        file_metadata.append(
+            ArtifactFileMetadata(
+                kind="checkpoint",
+                relative_path=relative,
+                bytes=size,
+                sha256=physical_digest,
+                logical_digest=checkpoint_digests[checkpoint_date],
+            )
+        )
+        del decoded, logical, payload
 
     journal_paths: list[str] = []
     journal_parts: dict[tuple[date, date], tuple[str, str]] = {}
@@ -629,13 +669,26 @@ def write_symbol_artifacts(
         payload = encode_journal(logical)
         path = journal_root / f"month-{month:02d}.json"
         path.write_bytes(payload)
-        decoded = decode_journal(path.read_bytes())
+        decoded = decode_journal(payload)
         if decoded != logical:
             raise ValueError("journal independent read mismatch")
         relative = path.relative_to(root).as_posix()
         journal_paths.append(relative)
-        journal_parts[(start, end)] = (relative, journal_logical_digest(logical))
-        journal_bytes += path.stat().st_size
+        logical_digest = journal_logical_digest(logical)
+        journal_parts[(start, end)] = (relative, logical_digest)
+        physical_digest = hashlib.sha256(payload).hexdigest()
+        size = len(payload)
+        journal_bytes += size
+        file_metadata.append(
+            ArtifactFileMetadata(
+                kind="journal",
+                relative_path=relative,
+                bytes=size,
+                sha256=physical_digest,
+                logical_digest=logical_digest,
+            )
+        )
+        del decoded, logical, payload
 
     feature_path = symbol_root / "daily_feature_candidate.parquet"
     terminal_path = symbol_root / "year_end_terminal_candidate.parquet"
@@ -649,6 +702,24 @@ def write_symbol_artifacts(
     terminal_relative = terminal_path.relative_to(root).as_posix()
     feature_digest = sha256_file(feature_path)
     terminal_digest = sha256_file(terminal_path)
+    file_metadata.extend(
+        (
+            ArtifactFileMetadata(
+                kind="feature",
+                relative_path=feature_relative,
+                bytes=feature_path.stat().st_size,
+                sha256=feature_digest,
+                logical_digest=arrow_logical_digest(feature_path),
+            ),
+            ArtifactFileMetadata(
+                kind="terminal",
+                relative_path=terminal_relative,
+                bytes=terminal_path.stat().st_size,
+                sha256=terminal_digest,
+                logical_digest=arrow_logical_digest(terminal_path),
+            ),
+        )
+    )
     feature_binding = FeatureAssetBinding(
         asset_id=f"unregistered-phase2-feature-{symbol}",
         snapshot_id=f"phase2-{symbol}-2020",
@@ -656,7 +727,7 @@ def write_symbol_artifacts(
         available_at=max(row["available_at"] for row in features),
     )
     index_rows = []
-    for (start, end), (journal_relative, journal_digest) in journal_parts.items():
+    for (start, end), (journal_relative, _journal_digest) in journal_parts.items():
         anchor = max(item for item in cadence_dates if item <= start)
         checkpoint_relative = checkpoint_paths[cadence_dates.index(anchor)]
         index_rows.append(
@@ -672,9 +743,13 @@ def write_symbol_artifacts(
                 journal_end_date=end,
                 seller_models=SELLER_MODEL_ORDER,
                 checkpoint_part_path=checkpoint_relative,
-                checkpoint_part_digest=sha256_file(root / checkpoint_relative),
+                checkpoint_part_digest=checkpoint_file_digests[checkpoint_relative],
                 journal_part_path=journal_relative,
-                journal_part_digest=sha256_file(root / journal_relative),
+                journal_part_digest=next(
+                    item.sha256
+                    for item in file_metadata
+                    if item.relative_path == journal_relative
+                ),
                 dependency_manifest_digest=dependency_manifest_digest,
                 replay_parameter_manifest_digest=replay_parameter_manifest_digest,
                 terminal_completeness_digest=terminal_completeness_digest,
@@ -698,10 +773,18 @@ def write_symbol_artifacts(
         terminal_bytes=terminal_path.stat().st_size,
         fallback_rows=0,
         fallback_bytes=0,
+        file_metadata=tuple(file_metadata),
+        checkpoint_dates_digest=logical_sha256(cadence_dates),
     )
 
 
-def write_index(root: Path, artifacts: Sequence[SymbolArtifacts], *, bundle_id: str, root_id: str) -> Path:
+def write_index(
+    root: Path,
+    artifacts: Sequence[SymbolArtifacts],
+    *,
+    bundle_id: str,
+    root_id: str,
+) -> Path:
     rows = tuple(
         sorted(
             (row for artifact in artifacts for row in artifact.index_rows),
@@ -725,10 +808,16 @@ def write_index(root: Path, artifacts: Sequence[SymbolArtifacts], *, bundle_id: 
     )
     value = replace(value, index_digest=checkpoint_journal_index_digest(value))
     known = {
-        relative: sha256_file(root / relative)
+        item.relative_path: item.sha256
         for artifact in artifacts
-        for relative in (*artifact.checkpoint_paths, *artifact.journal_paths)
+        for item in artifact.file_metadata
+        if item.kind in {"checkpoint", "journal"}
     }
+    if len(known) != sum(
+        len(artifact.checkpoint_paths) + len(artifact.journal_paths)
+        for artifact in artifacts
+    ):
+        raise ValueError("index construction lacks hash-once part metadata")
     validate_checkpoint_journal_index(value, known_part_digests=known)
     path = root / "index.json"
     path.write_bytes(checkpoint_journal_index_bytes(value))
@@ -784,7 +873,7 @@ def write_json(path: Path, value: Mapping[str, Any]) -> int:
     return path.stat().st_size
 
 
-def verify_root(root: Path) -> None:
+def verify_root(root: Path, *, verify_all_content: bool = False) -> None:
     for path in root.rglob("*"):
         if not path.is_file():
             continue
@@ -799,14 +888,27 @@ def verify_root(root: Path) -> None:
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
     for part in manifest["parts"]:
         path = root / part["relative_path"]
-        if not path.is_file() or sha256_file(path) != part["sha256"]:
-            raise ValueError("manifest part missing or digest mismatch")
-        if part["kind"] == "checkpoint":
-            decode_checkpoint(path.read_bytes())
-        elif part["kind"] == "journal":
-            decode_journal(path.read_bytes())
-        elif part["kind"] in {"feature", "terminal"}:
-            pq.ParquetFile(path)
+        if not path.is_file():
+            raise ValueError("manifest part missing")
+        legacy_digest_verified = False
+        if "bytes" in part:
+            if path.stat().st_size != int(part["bytes"]):
+                raise ValueError("manifest part size mismatch")
+        else:
+            # Older manifests predate hash-once size bindings.  Their only
+            # fail-closed compatibility path is the already-stored digest.
+            if sha256_file(path) != part["sha256"]:
+                raise ValueError("legacy manifest part digest mismatch")
+            legacy_digest_verified = True
+        if verify_all_content:
+            if not legacy_digest_verified and sha256_file(path) != part["sha256"]:
+                raise ValueError("manifest part digest mismatch")
+            if part["kind"] == "checkpoint":
+                decode_checkpoint(path.read_bytes())
+            elif part["kind"] == "journal":
+                decode_journal(path.read_bytes())
+            elif part["kind"] in {"feature", "terminal"}:
+                pq.ParquetFile(path)
     if sha256_file(root / "index.json") != manifest["index_sha256"]:
         raise ValueError("manifest index digest mismatch")
 
