@@ -1,0 +1,91 @@
+{
+  "cost": 0.004,
+  "economic_hypothesis": "In a causal broad BULL state with majority-positive PIT industry participation, the first upper-limit close in twenty completed sessions can reveal demand left unsatisfied by the price-limit constraint. A bounded prior range, limited prior appreciation and turnover expansion distinguish fresh ignition from late acceleration.",
+  "entry": "first legal next daily open within three market sessions",
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-FIRST-LIMIT-DEMAND-IGNITION-V3",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "2024_only_resolves_pre_2024_trade": true,
+    "no_post_2023_signal_or_feature": true,
+    "not_downward_gap_repair": true,
+    "rules_frozen_before_outcomes": true
+  },
+  "industry": "n20>=5, median ret20>0, positive-ret20 share>0.50",
+  "market": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "rules": {
+    "R1": "range<=30%, prior ret20<=20%, turnover>=1.5x",
+    "R2": "range<=40%, prior ret20<=30%, turnover>=1.5x",
+    "R3": "range<=30%, prior ret20<=20%, turnover>=2.0x",
+    "R4": "range<=40%, prior ret20<=30%, turnover>=2.0x"
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "order": "median annual mean, pooled mean, severe10, simplicity",
+    "positive_years_min": 3
+  },
+  "signal": {
+    "first_in_20": "zero upper-limit closes in prior20 completed valid sessions",
+    "limit_close": "raw close rounded to cents >= historical upper limit",
+    "prior_range": "prior20 coordinate high / prior20 coordinate low - 1",
+    "prior_return": "completed prior-session ret20",
+    "turnover": "signal turnover / prior20 mean turnover"
+  }
+}

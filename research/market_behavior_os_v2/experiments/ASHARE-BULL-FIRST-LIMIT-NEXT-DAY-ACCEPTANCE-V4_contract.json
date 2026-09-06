@@ -1,0 +1,89 @@
+{
+  "acceptance_rules": {
+    "R1_HOLD_NEAR_LIMIT": "confirmation close>=98% ignition close and close location>=70%",
+    "R2_ADVANCE_ABOVE_LIMIT_CLOSE": "R1 and confirmation close>=ignition close",
+    "R3_LOW_SUPPLY_HOLD": "R1 and confirmation turnover<=ignition turnover",
+    "R4_POSITIVE_BODY_HOLD": "R1 and confirmation close>=confirmation open"
+  },
+  "cost": 0.004,
+  "economic_hypothesis": "A first upper-limit close can leave demand unsatisfied. Continuation is credible only when the next completed session, still in a causal broad bull market and majority-positive PIT industry, accepts price near or above the constrained close and finishes in the upper part of its range.",
+  "entry": "first legal next daily open within three market sessions after confirmation close",
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-FIRST-LIMIT-NEXT-DAY-ACCEPTANCE-V4",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "2024_only_resolves_pre_2024_trade": true,
+    "frozen_before_outcomes": true,
+    "independent_from_gap_repair": true,
+    "no_post_2023_signal_or_feature": true
+  },
+  "ignition": {
+    "bounded_base": "prior20 range<=40%, pre-ignition ret20<=30%",
+    "demand_expansion": "ignition turnover>=1.5x preceding20 mean",
+    "first_limit": "previous session closes at historical upper limit; no limit close in prior20 valid sessions"
+  },
+  "industry": "confirmation-day n20>=5, median ret20>0, positive share>0.50",
+  "market": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "order": "median annual mean, pooled mean, severe10, simplicity",
+    "positive_years_min": 3
+  }
+}

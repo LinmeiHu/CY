@@ -1,0 +1,86 @@
+{
+  "base": "prior10 range<=15% and turnover<=prior60 average",
+  "cost": 0.004,
+  "economic_hypothesis": "In a causally known broad BULL market and healthy PIT industry, a former leader with at least 30% prior 120-session appreciation or two prior limit-up closes may reset inventory through a 15%-35% drawdown. A ten-session narrow, lower-turnover base followed by the first high-location, expanded-turnover close above its ceiling marks reaccumulation and a potential second markup phase.",
+  "entry": "first legal next daily open within three market sessions",
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-FORMER-LEADER-REACCUMULATION-BREAKOUT-V23",
+  "former_leader": "prior completed ret120>=30% or at least two limit-up closes in prior120",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "frozen_before_outcomes": true,
+    "independent_from_downward_gap_repair": true,
+    "no_post_2023_signal_or_feature": true
+  },
+  "industry": "PIT median ret20>0 and positive share>50%",
+  "market": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "reset": "previous close 15%-35% below prior60 high",
+  "rules": {
+    "R1_REACCUMULATION_BREAKOUT": "base contract",
+    "R2_TIGHT_REACCUMULATION": "R1 and prior10 range<=10%",
+    "R3_LOW_SUPPLY_BASE": "R1 and prior10/prior60 turnover<=70%",
+    "R4_STRONG_DEMAND_BREAKOUT": "R1 and return>=5%"
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "positive_years_min": 3
+  },
+  "trigger": "first close above prior10 high, return>=3%, turnover>=1.5x prior10, location>=75%"
+}

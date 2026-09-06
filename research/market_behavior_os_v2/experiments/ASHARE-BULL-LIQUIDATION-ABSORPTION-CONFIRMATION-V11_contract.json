@@ -1,0 +1,89 @@
+{
+  "confirmation_day": "next market session; close>=reversal high and close location>=70%",
+  "cooldown": "first confirmation per symbol in each causal 10-session window",
+  "cost": 0.004,
+  "economic_hypothesis": "Inside a causal broad BULL state and healthy industry, a former strong stock's lower-low positive reversal is only provisional absorption. The next completed session must close above the reversal high and in its own upper 30% before supply transfer is treated as confirmed.",
+  "entry": "first legal next daily open after completed confirmation",
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-LIQUIDATION-ABSORPTION-CONFIRMATION-V11",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "frozen_before_outcomes": true,
+    "independent_from_gap_repair": true,
+    "no_post_2023_signal_or_feature": true
+  },
+  "industry": "confirmation-day median ret20>0 and positive-ret20 share>50%",
+  "market": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "reversal_day": {
+    "former_strength": "ret60 known before reversal>=10% or 20%",
+    "liquidation": "new five-session low >=10% or 15% below prior20 high",
+    "provisional_absorption": "close>=open; close location>=70%; turnover>=preceding20 mean"
+  },
+  "rules": {
+    "R1_STRENGTH10_DD10": "strength>=10%; drawdown>=10%",
+    "R2_STRENGTH20_DD10": "strength>=20%; drawdown>=10%",
+    "R3_STRENGTH10_DD15": "strength>=10%; drawdown>=15%",
+    "R4_STRENGTH20_DD15": "strength>=20%; drawdown>=15%"
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "positive_years_min": 3
+  }
+}

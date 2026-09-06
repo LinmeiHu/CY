@@ -1,0 +1,94 @@
+{
+  "base_signal": "Exact frozen ASHARE-QUIET-INVENTORY-INFORMATION-GAP-BREAKOUT-V1 outcome-blind identity.",
+  "bounded_rules": [
+    "BULL_ONLY",
+    "BULL_INDUSTRY_POSITIVE",
+    "BULL_INDUSTRY_MAJORITY",
+    "BULL_INDUSTRY_LEADER"
+  ],
+  "bounded_translations": {
+    "H10_NEXT_OPEN": "next legal open after ten completed holding sessions",
+    "T10_H20_NO_STOP": "+10% coordinate target from first T+1-sellable session; otherwise next legal open after twenty completed holding sessions",
+    "round_trip_cost": 0.004
+  },
+  "economic_hypothesis": "In a causally observed broad bull market, a stock leaving a quiet forty-session inventory platform through an executable non-limit information gap and high-location volume expansion represents shared demand acceptance. Positive PIT industry participation should distinguish persistent thematic repricing from isolated stock noise.",
+  "experiment": "ASHARE-BULL-QUIET-INVENTORY-INDUSTRY-ACCEPTANCE-V1",
+  "governance": {
+    "missing_required_lineage": "fail closed",
+    "no_same_bar_fill": true,
+    "post_2023_rows_allowed_only_to_resolve_pre_2024_trades": true,
+    "repository_2024_plus_signal_or_feature_use": false,
+    "rules_and_profiles_frozen_before_new_filtered_outcomes": true
+  },
+  "independence": "No downward gap, collapse zone, gap repair, V6, V7, V26 or V27 identity or outcome is used.",
+  "industry_state": {
+    "identity": "signal-day PIT causal_industry",
+    "latest_source": "completed signal-session close",
+    "leader": "stock completed ret20 >= industry median completed ret20",
+    "majority": "industry positive-ret20 share > 0.50",
+    "minimum_members": 5,
+    "positive": "industry median completed ret20 > 0"
+  },
+  "market_regime": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "required_gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "selection": {
+    "candidate_mean_holding_sessions_max": 15,
+    "candidate_must_have_completed_trades": 150,
+    "candidate_positive_discovery_years_min": 3,
+    "confirmation": [
+      2019,
+      2020,
+      2021
+    ],
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "order": [
+      "highest median annual mean net return",
+      "higher pooled mean net return",
+      "higher completed trade count",
+      "fewer industry conditions",
+      "shorter profile"
+    ],
+    "post_observation_diagnostic": [
+      2022,
+      2023
+    ],
+    "support_amendment": "Outcome-blind correction from 250 to 150 because frozen Stage-A coverage proved the maximum possible BULL discovery population was 241; amended before any candidate performance was selected or inspected."
+  }
+}

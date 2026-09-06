@@ -1,0 +1,122 @@
+{
+  "bounded_rules": {
+    "R1_RUN30_D5_20_U3": {
+      "close_location": 0.7,
+      "drawdown_high": -0.05,
+      "drawdown_low": -0.2,
+      "runup": 0.3,
+      "step": 0.03,
+      "turnover_expansion": 1.2
+    },
+    "R2_RUN40_D8_20_U3": {
+      "close_location": 0.7,
+      "drawdown_high": -0.08,
+      "drawdown_low": -0.2,
+      "runup": 0.4,
+      "step": 0.03,
+      "turnover_expansion": 1.2
+    },
+    "R3_RUN30_D5_20_U4": {
+      "close_location": 0.75,
+      "drawdown_high": -0.05,
+      "drawdown_low": -0.2,
+      "runup": 0.3,
+      "step": 0.04,
+      "turnover_expansion": 1.5
+    },
+    "R4_RUN40_D8_25_U4": {
+      "close_location": 0.75,
+      "drawdown_high": -0.08,
+      "drawdown_low": -0.25,
+      "runup": 0.4,
+      "step": 0.04,
+      "turnover_expansion": 1.5
+    }
+  },
+  "cost": 0.004,
+  "economic_hypothesis": "In a causally observed broad bull market with positive majority industry participation, a recent leader's first high-location, turnover-backed break above its five-session approach ceiling after an orderly pullback represents renewed active demand rather than a downward-gap repair.",
+  "entry": "first legal daily open after signal, within three market sessions",
+  "exit": "standing target from first T+1 session through the causal horizon decision; otherwise first legal open after the horizon decision",
+  "experiment": "ASHARE-BULL-LEADER-FIRST-PULLBACK-REACCELERATION-V2",
+  "governance": {
+    "2024_rows_only_close_pre_2024_trade": true,
+    "downward_gap_identity_used": false,
+    "no_post_2023_signal_or_feature": true,
+    "no_same_bar_fill": true,
+    "stage_a_before_outcomes": true
+  },
+  "industry_gate": "PIT industry n20 >= 5, median completed ret20 > 0, and positive-ret20 share > 0.50 at signal close",
+  "market_gate": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "T10_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "required_gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "selection": {
+    "discovery_years": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "minimum_positive_years": 3,
+    "order": [
+      "median annual discovery mean",
+      "pooled discovery mean",
+      "lower severe_loss10",
+      "fewer strict trigger requirements",
+      "shorter profile"
+    ]
+  },
+  "shared_semantics": {
+    "history": "exactly 60 prior valid completed same-symbol sessions",
+    "leader_runup": "prior20 coordinate high / prior60 coordinate low - 1",
+    "pullback": "previous coordinate close / prior20 coordinate high - 1",
+    "reacceleration": "current completed close first crosses above prior5 coordinate high; current step return, close location and turnover expansion satisfy rule",
+    "trend_integrity": "current close > completed-session lag20 close"
+  }
+}

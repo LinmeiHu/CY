@@ -1,0 +1,90 @@
+{
+  "cost": 0.004,
+  "economic_hypothesis": "When the causally observable broad market and the stock's PIT industry remain healthy, a stock-specific intraday fall of at least 6% that is fully reclaimed by the completed close on expanded turnover is a temporary liquidity shock absorbed by demand, not a market-wide trend break.",
+  "entry": "first legal next daily open within three market sessions",
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-IDIOSYNCRATIC-PANIC-RECLAIM-V19",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "frozen_before_outcomes": true,
+    "independent_from_gap_repair": true,
+    "no_post_2023_signal_or_feature": true
+  },
+  "industry": "PIT industry median ret20>0 and positive-ret20 share>50%",
+  "market": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "rules": {
+    "R1_HEALTHY_ENVIRONMENT": "base contract",
+    "R2_STRONG_BULL": "R1 and market median ret20>=5% and breadth>=60%",
+    "R3_DEEP_CLEAN_RECLAIM": "R1 and panic<=-7%, close location>=80%, turnover>=1.5x",
+    "R4_FORMER_LEADER": "R1 and pre-signal ret60>=20%"
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "positive_years_min": 3
+  },
+  "stock": {
+    "close_acceptance": "close location in daily range >=75%",
+    "cooldown": "first retained signal per symbol in causal 20-session window",
+    "demand": "turnover >=1.3x preceding20-session mean",
+    "full_reclaim": "signal close >= prior completed close",
+    "panic": "signal low <= prior completed close * 0.94",
+    "prior_strength": "pre-signal ret60>=15% or pre-signal ret20>=10%"
+  }
+}

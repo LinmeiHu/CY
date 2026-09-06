@@ -1,0 +1,86 @@
+{
+  "cost": 0.004,
+  "economic_hypothesis": "A causal long-horizon bull cycle can contain a short-horizon market correction. During that correction, a stock already down at least 10% over twenty sessions that makes a new five-session low but closes above the prior high in the upper 30% of its range on normal-or-higher turnover shows completed-session supply absorption and may rebound rapidly.",
+  "entry": "first legal next daily open within three market sessions",
+  "event": {
+    "cooldown": "retain first event per symbol in each causal 10-session window",
+    "full_absorption": "close>=prior-session high; close location>=70%; turnover>=prior20 mean",
+    "new_low": "signal low<=prior-five-session low",
+    "stock_correction": "prior completed-session ret20<=-10%"
+  },
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-CYCLE-CORRECTION-FULL-ABSORPTION-V10",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "frozen_before_outcomes": true,
+    "independent_from_gap_repair": true,
+    "no_post_2023_signal_or_feature": true
+  },
+  "market_state": {
+    "BEAR_CYCLE": "market median ret60<=0 and positive-ret60 share<=50%",
+    "BULL_CYCLE": "market median ret60>0 and positive-ret60 share>50%",
+    "TRANSITION_CYCLE": "remaining mixed states",
+    "correction": "median ret20<=0 or positive-ret20 share<=50%"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "rules": {
+    "R1_BULL_CORRECTION": "base contract",
+    "R2_INDUSTRY_LONG_HEALTHY": "R1 and industry median ret60>0",
+    "R3_DEEP_STOCK_CORRECTION": "R1 and prior ret20<=-15%",
+    "R4_GAP_SHOCK_ABSORBED": "R1 and signal open<=99% of prior close"
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "positive_years_min": 3
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "cost": 0.004,
+  "economic_hypothesis": "During a causally known broad BULL market, an industry whose twenty-session trend remains positive but whose five-session median return fell below -3% can offer a rotation entry when at least 65% of its members turn positive and its daily median return exceeds 1%. Stocks with intact medium-term strength and demand confirmation carry that repair.",
+  "entry": "first legal next daily open within three market sessions",
+  "exit": "target or causal H5/H10/H15 decision then next legal open",
+  "experiment": "ASHARE-BULL-INDUSTRY-PULLBACK-BREADTH-REPAIR-V22",
+  "gate": {
+    "2014_2023_capacity_accepted_completed_trades_per_year_gt": 50,
+    "2014_2023_mean_net_return_min": 0.03,
+    "2022_mean_positive": true,
+    "2023_mean_positive": true,
+    "confirmation_each_year_mean_positive": true,
+    "mean_excluding_best_five_signal_dates_positive": true,
+    "mean_holding_sessions_max": 15,
+    "top_five_signal_date_positive_pnl_share_max": 0.25
+  },
+  "governance": {
+    "frozen_before_outcomes": true,
+    "independent_from_downward_gap_repair": true,
+    "no_post_2023_signal_or_feature": true
+  },
+  "industry": {
+    "pullback": "previous completed industry median five-session return<=-3%",
+    "repair": "current median daily return>=1%, positive share>=65%, median5 improving",
+    "trend": "PIT ret20 percentile>=60% and median ret20>0"
+  },
+  "market": {
+    "BEAR": "both medians <= 0 AND both positive-return shares <= 0.50",
+    "BULL": "market median ret20 > 0 AND positive-ret20 share > 0.50 AND market median ret60 > 0 AND positive-ret60 share > 0.50",
+    "TRANSITION": "all other combinations or missing required state",
+    "decision_at": "completed signal-session close",
+    "strategy_action": "trade only BULL; BEAR and TRANSITION hold cash"
+  },
+  "portfolio": {
+    "ChiNext_sleeve": 0.5,
+    "K_per_sleeve": 30,
+    "Main_sleeve": 0.5,
+    "collision_rank": [
+      "industry_positive_ret20_share descending",
+      "stock_minus_industry_ret20 descending",
+      "turnover_expansion descending",
+      "event_id ascending"
+    ],
+    "cross_sleeve_transfer": false,
+    "leverage": false,
+    "maximum_new_positions_per_sleeve_date": 10,
+    "position_size": "1/K of current sleeve NAV",
+    "same_symbol_overlap": "forbidden"
+  },
+  "profiles": {
+    "H10_NEXT_OPEN": {
+      "horizon": 10,
+      "target": null
+    },
+    "H5_NEXT_OPEN": {
+      "horizon": 5,
+      "target": null
+    },
+    "T10_H10_NO_STOP": {
+      "horizon": 10,
+      "target": 0.1
+    },
+    "T15_H15_NO_STOP": {
+      "horizon": 15,
+      "target": 0.15
+    }
+  },
+  "rules": {
+    "R1_INDUSTRY_BREADTH_REPAIR": "base contract",
+    "R2_DEEP_INDUSTRY_PULLBACK": "R1 and prior industry median5<=-5%",
+    "R3_LEADING_INDUSTRY_REPAIR": "R1 and PIT industry ret20 percentile>=70%",
+    "R4_STRONG_STOCK_CARRIER": "R1 and stock return>=3%, location>=80%"
+  },
+  "selection": {
+    "discovery": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018
+    ],
+    "mean_holding_max": 15,
+    "minimum_completed": 300,
+    "positive_years_min": 3
+  },
+  "stock": "prior ret20>=0, prior ret60>=10%, daily return>=2%, close location>=70%, turnover>=prior20 mean"
+}

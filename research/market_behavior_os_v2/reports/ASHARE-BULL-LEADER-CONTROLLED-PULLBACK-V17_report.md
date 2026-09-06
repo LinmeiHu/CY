@@ -1,0 +1,5 @@
+# ASHARE-BULL-LEADER-CONTROLLED-PULLBACK-V17
+
+`STRONG_BULL_PERSISTENT_BREAKOUT_FAILS_DISCOVERY_SUPPORT`
+
+No frozen rule/profile meets discovery support. No portfolio replay.
