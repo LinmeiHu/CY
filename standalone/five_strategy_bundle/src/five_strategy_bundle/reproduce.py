@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -26,6 +27,9 @@ from .strategies.atrdr import (
     select_fast_capacity,
 )
 from .strategies.mcb import build_v53, build_v64, build_v65, build_v72
+from .strategies import ogr
+from .strategies.ifcgr import select_issuer_facts
+from .strategies.smv6 import FROZEN_SHA256 as SMV6_SHA256, run_local as run_smv6_local
 
 
 def run_mcb(inputs: dict[str, Path], output: Path) -> dict[str, object]:
@@ -51,6 +55,129 @@ def run_mcb(inputs: dict[str, Path], output: Path) -> dict[str, object]:
     write_parquet(nav, output / "nav.parquet")
     write_json(output / "result.json", {"strategy": "MCB", "metrics": metrics, "counts": {"v53": len(v53), "v64": len(v64), "v65": len(v65), "signals": len(v72), "outcomes": len(outcomes), "accepted": len(accepted), "nav": len(nav)}})
     return {"strategy": "MCB", "status": "FULL_END_TO_END_REPRODUCIBLE", "metrics": metrics}
+
+
+def run_ogr(inputs: dict[str, Path], output: Path) -> dict[str, object]:
+    """Run the audited V13 -> V27 -> V28 -> V28R1 -> V28R2 chain."""
+    output.mkdir(parents=True, exist_ok=True)
+    layers = ogr.build_signal_chain(
+        inputs["daily_hist"],
+        inputs["raw_minute_root"],
+        inputs["cy033_daily_amount"],
+        output,
+    )
+    signals = layers["v28r2"]
+    daily = ogr.load_daily(inputs["daily_hist"], end="2022-03-31")
+    actions = ogr.load_actions(
+        inputs["qd010_distributions"],
+        inputs["qd010_rights"],
+        signals.symbol.astype(str).tolist(),
+    )
+    entries = ogr.build_entries(signals, daily, inputs["raw_minute_root"], actions)
+    outcomes = ogr.build_outcomes(entries, daily, inputs["raw_minute_root"], actions)
+    accepted, skipped, nav = ogr.replay_portfolio(outcomes, daily)
+    write_parquet(entries, output / "entries.parquet")
+    write_parquet(outcomes, output / "trades.parquet")
+    write_parquet(accepted, output / "accepted.parquet")
+    write_parquet(skipped, output / "skipped.parquet")
+    write_parquet(nav, output / "nav.parquet")
+    result = {
+        "strategy": "OGR",
+        "status": "FULL_END_TO_END_REPRODUCIBLE",
+        "counts": {
+            "v13": len(layers["v13"]),
+            "v27": len(layers["v27"]),
+            "v28": len(layers["v28"]),
+            "v28r1": len(layers["v28r1"]),
+            "signals": len(signals),
+            "executable": int(entries.entry_status.eq("EXECUTABLE_ENTRY").sum()),
+            "outcomes": len(outcomes),
+            "accepted": len(accepted),
+            "nav": len(nav),
+        },
+    }
+    write_json(output / "result.json", result)
+    return result
+
+
+def run_ifcgr(inputs: dict[str, Path], output: Path) -> dict[str, object]:
+    """Generate OGR in the same run, then apply the frozen PIT-B fact gate."""
+    output.mkdir(parents=True, exist_ok=True)
+    ogr_output = output / "parent_ogr"
+    parent_result = run_ogr(inputs, ogr_output)
+    parents = pd.read_parquet(ogr_output / "signals.parquet")
+    kept, rejected, facts = select_issuer_facts(
+        parents,
+        inputs["ifcgr_route_index"],
+        inputs["ifcgr_sse_titles"],
+        inputs["ifcgr_szse_titles"],
+    )
+    parent_trades = pd.read_parquet(ogr_output / "trades.parquet")
+    trades = parent_trades.loc[
+        parent_trades.gap_id.isin(set(kept.gap_id.astype(str)))
+    ].copy()
+    daily = ogr.load_daily(inputs["daily_hist"], end="2022-03-31")
+    accepted, skipped, nav = ogr.replay_portfolio(trades, daily)
+    write_parquet(parents, output / "parent_population.parquet")
+    write_parquet(facts, output / "fact_matches.parquet")
+    write_parquet(kept, output / "kept.parquet")
+    write_parquet(rejected, output / "rejected.parquet")
+    write_parquet(trades, output / "trades.parquet")
+    write_parquet(accepted, output / "accepted.parquet")
+    write_parquet(skipped, output / "skipped.parquet")
+    write_parquet(nav, output / "nav.parquet")
+    result = {
+        "strategy": "IFCGR",
+        "status": "END_TO_END_REPRODUCIBLE_WITH_PIT_B",
+        "pit_classification": "PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE",
+        "parent": parent_result,
+        "counts": {
+            "parents": len(parents),
+            "facts": len(facts),
+            "kept": len(kept),
+            "rejected": len(rejected),
+            "outcomes": len(trades),
+            "accepted": len(accepted),
+            "nav": len(nav),
+        },
+    }
+    write_json(output / "result.json", result)
+    return result
+
+
+def run_smv6(inputs: dict[str, Path], output: Path) -> dict[str, object]:
+    """Run exact frozen callbacks and a separate deterministic cash execution."""
+    output.mkdir(parents=True, exist_ok=True)
+    strategy_events, local_events, accounts = run_smv6_local(
+        inputs["smv6_qmt_root"],
+        inputs["smv6_hybrid_root"],
+        start=date(2010, 1, 1),
+        end=date(2026, 8, 28),
+    )
+    write_parquet(strategy_events, output / "events.parquet")
+    write_parquet(local_events, output / "local_execution_events.parquet")
+    write_parquet(accounts, output / "nav.parquet")
+    result = {
+        "strategy": "SMV6",
+        "status": "LOCAL_END_TO_END_REPRODUCIBLE_PLATFORM_EQUIVALENCE_UNVERIFIED",
+        "strategy_source_sha256": SMV6_SHA256,
+        "counts": {
+            "strategy_events": len(strategy_events),
+            "local_execution_events": len(local_events),
+            "nav": len(accounts),
+        },
+        "minimum_cash": float(accounts.cash.min()),
+        "local_execution": {
+            "lot_size": 100,
+            "commission_rate": 0.0002,
+            "slippage_total": 0.0016,
+            "slippage_per_side": 0.0008,
+            "minute_volume_limit": 0.5,
+        },
+        "native_platform_equivalence": "UNVERIFIED",
+    }
+    write_json(output / "result.json", result)
+    return result
 
 
 def run_atrdr(inputs: dict[str, Path], output: Path) -> dict[str, object]:
@@ -124,7 +251,9 @@ def run_atrdr(inputs: dict[str, Path], output: Path) -> dict[str, object]:
     union["source_rank_order"] = union.groupby(["signal_date", "sleeve", "source"], sort=False).cumcount()
     write_parquet(union, output / "source_completed_trades.parquet")
     portfolio_daily = load_daily([daily_hist, inputs["daily_tail"]], union.symbol.tolist())
-    accepted, skipped, nav = replay_shared_router(union, portfolio_daily)
+    accepted, skipped, nav = replay_shared_router(
+        union, portfolio_daily, nav_end=pd.Timestamp("2023-12-31")
+    )
     write_parquet(accepted, output / "accepted.parquet")
     write_parquet(skipped, output / "skipped.parquet")
     write_parquet(nav, output / "nav.parquet")
@@ -156,6 +285,27 @@ def comparisons(strategy: str, output: Path, golden: dict[str, Path]) -> pd.Data
             ("fast_accepted", "atrdr_fast_accepted", ("event_id",), ("entry_date", "entry_price", "exit_date", "exit_price", "net_return")),
             ("v27_bear_routes", "atrdr_v27_bear", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return")),
         ],
+        "OGR": [
+            ("v13_signals", "ogr_v13", ("gap_id",), ("symbol", "signal_date", "pre_gap_inside_density_relative_local")),
+            ("v27", "ogr_v27", ("gap_id",), ("symbol", "signal_date")),
+            ("v28", "ogr_v28", ("gap_id",), ("symbol", "signal_date")),
+            ("v28r1", "ogr_v28r1", ("gap_id",), ("symbol", "signal_date")),
+            ("signals", "ogr_v28r2", ("gap_id",), ("symbol", "signal_date")),
+            ("trades", "ogr_trades", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return")),
+            ("accepted", "ogr_accepted", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return", "qty", "entry_outlay")),
+            ("nav", "ogr_nav", ("trade_date", "board"), ("nav", "cash", "gross_exposure", "active_positions")),
+        ],
+        "IFCGR": [
+            ("parent_population", "ifcgr_parents", ("gap_id",), ("symbol", "signal_date")),
+            ("kept", "ifcgr_kept", ("gap_id",), ("v29r2_issuer_fact_cooldown_gate",)),
+            ("rejected", "ifcgr_rejected", ("gap_id",), ("v29r2_rejection_reason",)),
+            ("trades", "ifcgr_trades", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return")),
+            ("accepted", "ifcgr_accepted", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return", "qty", "entry_outlay")),
+            ("nav", "ifcgr_nav", ("trade_date", "board"), ("nav", "cash", "gross_exposure", "active_positions")),
+        ],
+        "SMV6": [
+            ("events", "smv6_events", ("trade_date", "symbol", "event_type"), ("stage", "price_pre_adj", "reason", "target_weight")),
+        ],
     }
     rows = []
     for layer, key, identity, values in specs.get(strategy, []):
@@ -178,6 +328,12 @@ def main(argv: list[str] | None = None) -> int:
     target = args.output_root / args.strategy.lower()
     if args.strategy == "MCB":
         result = run_mcb(inputs, target)
+    elif args.strategy == "OGR":
+        result = run_ogr(inputs, target)
+    elif args.strategy == "IFCGR":
+        result = run_ifcgr(inputs, target)
+    elif args.strategy == "SMV6":
+        result = run_smv6(inputs, target)
     elif args.strategy == "ATRDR":
         result = run_atrdr(inputs, target)
     else:

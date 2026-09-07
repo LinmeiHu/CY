@@ -1,0 +1,13 @@
+API/callback,source call site,required semantics,standalone implementation,test coverage
+init,smv6_frozen.py:74,initialize frozen parameters and state,strategies.smv6.frozen_namespace plus _run_callbacks,test_smv6_source_sha256_and_pool
+before_trading,smv6_frozen.py:1825,completed-day history only and queue next-open set,strategies.smv6._run_callbacks,full registered-input event comparison
+execute_pending_open,smv6_frozen.py:2399,sells before buys at executable 09:30 price,ShadowPlatform and CashPlatform,full registered-input event comparison
+run_1457_exit_signal,smv6_frozen.py:1158,14:57 pseudo-close signal without same-bar close fill,ShadowPlatform.bar_dict,full registered-input event comparison
+execute_pending_close_sells,smv6_frozen.py:1337,15:00 executable close and retry state,ShadowPlatform and CashPlatform,full registered-input event comparison
+history,smv6_frozen.py:332,strictly prior completed 1d rows,ShadowPlatform.history,full registered-input event comparison
+get_all_securities,smv6_frozen.py:450,ETF listing-date availability,ShadowPlatform.get_all_securities,full registered-input event comparison
+get_trade_days,smv6_frozen.py:651,local trading calendar bounded by request,ShadowPlatform.get_trade_days,full registered-input event comparison
+get_datetime,smv6_frozen.py callbacks,current replay session timestamp,frozen_namespace closure,full registered-input event comparison
+order_target_percent,smv6_frozen.py:2519,source target weight plus cash round-lot cost slippage and 50% minute-volume constraint,ShadowPlatform.order_target_percent and CashPlatform.order_target_percent,full registered-input cash and volume invariant
+order_target,smv6_frozen.py:1376,liquidation and partial-fill retry with stage availability,ShadowPlatform.order_target and CashPlatform.order_target,full registered-input cash and volume invariant
+bar_dict,smv6_frozen.py:858 and 1303,09:30 14:57 and 15:00 critical bars,ShadowPlatform.bar_dict,full registered-input event comparison

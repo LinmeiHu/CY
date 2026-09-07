@@ -373,6 +373,7 @@ def replay_shared_router(
     *,
     k_per_sleeve: int = 30,
     daily_cap: int = 10,
+    nav_end: pd.Timestamp | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Exact shared-account replay used by the frozen V28/V29 router."""
     ordered = trades.sort_values(
@@ -402,7 +403,8 @@ def replay_shared_router(
             value = value.iloc[-1]
         return None if pd.isna(value) else float(value)
 
-    first_entry, last_exit = pd.Timestamp(ordered.entry_date.min()), pd.Timestamp(ordered.exit_date.max())
+    first_entry = pd.Timestamp(ordered.entry_date.min())
+    last_exit = pd.Timestamp(ordered.exit_date.max()) if nav_end is None else pd.Timestamp(nav_end)
     for date in dates:
         date = pd.Timestamp(date)
         if date < first_entry or date > last_exit:
