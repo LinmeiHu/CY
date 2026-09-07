@@ -1,20 +1,13 @@
 # ATRDR V27 2026YTD V1 reconstruction proof
 
-Status: **FAIL — exact population closure is not yet achieved.** V2 is preserved only as schema, execution-tail, and downstream-contract evidence; it is not treated as the V1 producer.
+Status: **PASS — full registered-input population and end-to-end V1 closure.** V2 and all frozen V1 outputs remain evidence/golden only.
 
-## Frozen rule evidence and inputs
+The registered input is QD-010 exact through 2026-08-12, SHA256 `d092206b2c36212cf95ab0540bf6905a3274f1ba4706a50510e7cd24c9e1929c`. The same unchanged market, Fast, Slow, V1/V5 accelerating-Bull, QIG/V24/V19R2 decelerating-Bull, execution, capacity, and portfolio semantics documented in the 2024-2025 proof are used.
 
-The same frozen V27 contract and unchanged Fast/Slow rules described in the 2024-2025 proof were applied to the QD-010 exact 2022-2026-08-12 daily panel. Signal decisions are completed-close only. The fixed maturity lag is 24 sessions and the V1 authorized data end is 2026-08-12. No outcome field was used in reconstruction or selection.
+The first prior mismatch was 2026-01-05. `atrdr_market_feature_forensics.csv` records the exact frozen and prior median units, price endpoints, lineage, and asset version. Restoring the registered universe/validity/calendar contract makes all 147 market dates exact, including ret20, ret60, both breadths, and regime.
 
-## Population comparison
+The fixed V1 maturity lag remains 24 global sessions. At the 2026-08-12 authorized data end, the last mature signal index is 3279; 24 later Slow signals remain right-censored and do not enter outcomes.
 
-- Market calendar identity: 147/147 dates.
-- Direct compact-panel market reconstruction differs in 145 ret20 values, 144 ret60 values, and 9 regime labels, so it is not accepted as an exact replacement.
-- With frozen non-outcome market values used only to isolate the downstream rule, reconstructed Slow is exact: 38 new / 38 golden, missing 0, extra 0.
-- Reconstructed Fast after worsening-state routing is 18 new / 15 golden, missing 0, extra 3.
-- Extra identities: `OAI-20260330-000612.SZ`, `OAI-20260330-000782.SZ`, and `OAI-20260401-002182.SZ`.
-- 2026 Bull-accelerating and Bull-decelerating production generation remains unwired.
+Exact closure: Market 147/147; Fast 15/15; Slow candidates 38/38 and mature outcomes 14/14; Bull accelerating 9/9; Bull decelerating 2/2; source union 38/38; accepted trades 38/38; NAV 147/147. Missing identities, extra identities, value mismatches, and maximum absolute delta are all zero.
 
-First difference: the market-feature producer value for `2026-01-05`; downstream Fast first identity difference is `OAI-20260330-000612.SZ`.
-
-Conclusion: this missing producer remains unaccepted. Frozen V1 candidates and the recovered V2 consumer inputs are never used as production signal inputs.
+Conclusion: 2026YTD V1 is accepted as an exact outcome-blind behavioral reconstruction from registered inputs.
