@@ -1,0 +1,51 @@
+{
+  "run_id": "20260907_visual_v1_01",
+  "parent_run": "20260907_v2_01",
+  "source_head": "1628f14a3949244998e0223cc0f419a00e66c856",
+  "external_root": "/Volumes/quant/CY_quant_research/five_strategy_exit_risk_v1/20260907_visual_v1_01",
+  "periods": "Inherit research_contract.json route discovery/evaluation boundaries; no 2024+ data. IFCGR inherits OGR, not independent evidence.",
+  "evidence": "CASE_BLINDED_CONDITIONAL_ON_PRIOR_RESULT_EXPOSURE; all route histories already consumed. No untouched OOS or independent observer claim.",
+  "blind_order": ["price_only", "price_volume", "price_rs_if_available", "full", "persist observations and hashes", "reveal outcomes", "discovery postmortem", "freeze motifs and representations", "temporal quantitative check and error analysis"],
+  "matching": {
+    "pairs_per_route": 2,
+    "ages": [3, 8],
+    "current_return_range": [-0.10, -0.005],
+    "max_age_difference": 1,
+    "max_current_return_difference": 0.015,
+    "max_mae_difference": 0.02,
+    "max_entry_atr_difference": 0.01,
+    "primary_outcomes_stock": "native net return >= .05 versus <= -.10",
+    "primary_outcomes_smv6": "native net return >= .02 versus <= -.02",
+    "predeclared_fallback": "If fewer than two strict pairs, fill remaining slots with native return >= .02 versus <= -.02 under identical path calipers. Never relax calipers; report shortage.",
+    "algorithm": "Enumerate valid opposite-outcome pairs; ascending sum of squared caliper-normalized distances; SHA256 tie breaker; greedy unique episode and event cluster across all selected routes. Anonymous order determined by independent SHA256. One decision per episode.",
+    "exclusions": ["V53-20160606-002401.SZ", "V53-20160714-600410.SH"],
+    "information_limit": "Observer knows matched-pair design but not case identities, dates, outcome class, final return, native exit time or reason. Selection by future contrast is not population prevalence sampling."
+  },
+  "chart_template": {
+    "panel_a": "Entry-normalized coordinate/raw price OHLC; entry; target known at entry; registered structural anchor. SMV6 rolling40 close anchor. Native exit only FULL-PATH-POSTMORTEM. Eligibility marker is known earliest policy sell session, not future successful execution.",
+    "panel_b": "current return, MAE-so-far, MFE-so-far and giveback-so-far; never final excursions on blind charts",
+    "panel_c": "volume relative to entry-day volume and current volume/prior five held-session mean (min3). Fixed scale; no volume available => NA",
+    "panel_d": "SMV6 price ratio relative to existing frozen 000852.SH daily benchmark, normalized at entry open. Other routes NA: frozen market/industry signal-state aggregates are not a verified cumulative return benchmark.",
+    "panel_e": "SMV6 FINAL_CLOSE_BAR pre_adj_close / PSEUDO_CLOSE_14_57_OPEN pre_adj_open - 1, both VALID and available_at <= decision t. Role/field clarification from frozen callback, before any image view. Stocks NA: existing first-minute execution evidence does not support VWAP or full-session quality. No new minute data downloaded.",
+    "fixed_axes": {"blind_age": [0, 9], "postmortem_age": [0, 160], "blind_normalized_price": [0.84, 1.16], "postmortem_normalized_price": [0.4, 1.6], "blind_excursions": [-0.2, 0.2], "postmortem_excursions": [-0.6, 0.6], "relative_volume": [0, 5], "relative_strength": [-0.3, 0.3], "critical_bar_change": [-0.03, 0.03]},
+    "layout": "Five rows; columns are anonymous cases in stable order, identical scales across routes and outcomes. Postmortem adds fixed 0..20 zoom inset for ALL cases; full path retained. Clipped-point counts recorded; never outcome-driven autoscale.",
+    "blind_payload": "Explicit allowlist of prefix chart fields; no symbol, actual date, future or outcome fields. Truncate before serialization. Invalid bars create gaps, no forward fill.",
+    "ablation_limit": "Same observer and same cases in fixed sequence; carryover is unavoidable. Descriptive repeatability check only, no causal information-gain or accuracy inference from confidence."
+  },
+  "galleries": {
+    "per_route_category": 2,
+    "categories": {"severe_loss": "native net return <= -.10", "recovered_deep_winner": "MAE <= -.10 and native return >= .05", "never_worked": "MFE < .02 and native return < 0", "worked_gave_back": "MFE >= .05 and native return <= 0", "simple_stop_rescued": "fixed10 filled; native return <= -.10; policy advantage > 0", "simple_stop_harmed": "fixed10 filled; native return >= .05; policy advantage < 0"},
+    "sampling": "First case closest to category median native return, ties SHA256; second lowest independent SHA256 among remaining episodes. Empty categories remain empty. Blind samples are not preferred. All selections discovery-mature only.",
+    "smv6": "No new fixed-stop replay for gallery; existing frozen actual-callback native residuals only. Simple-stop categories NOT_OPENED; severe/deep categories may be empty, no threshold lowering."
+  },
+  "motif_budget": "At most 2 KEEP_FOR_TEST motifs per route, 1..3 computable representations each. At most 6 distinct new representations globally, <=12 predictors per route including B0. New post-evaluation ideas only NEXT_RESEARCH_HYPOTHESIS.",
+  "quantitative_contract": {
+    "label": "Inherited exit_advantage_normalized: next-legal-open liquidation of current inventory versus native hold, fees/execution included. No newly inferred fill rules.",
+    "models": "B0 six existing price-path features; same alpha10 Ridge B0+motif; existing B0+close_location+recovery_3 as price-only augmentation control; B1 eleven existing features as incumbent control. Same-fold rows and event weights. Tree depth2 both sides only >=100 training events, as corroboration, never rescue a failed primary Ridge.",
+    "splits": "Existing annual expanding, event/cluster purged and label availability < training cutoff. Discovery labels mature before evaluation boundary. Fit only on preceding years; no selection from temporal results.",
+    "incremental_gate": "Discovery MSE improvement over both B0 and price-augmentation control; positive top-quintile realized exit advantage over >=20 distinct episodes and >=5 signal dates; improvement remains after removing top five contributing signal dates. Temporal check must repeat all gates without feature/rule changes. Otherwise no robust-state claim and no mechanism exit candidate.",
+    "missing": "Train-only median for models; all-missing representation is unavailable, not evidence. Full representation availability reported. Policy cannot rely on imputed state.",
+    "account_gate": "Only a motif meeting both phases may be considered for a separately frozen <=2 mechanism policy within parent execution contract. Full cash replay then required; ATRDR account quarantine remains. No signal, allocation or live changes in visual stage.",
+    "visual_case_reuse": "Discovery cases are hypothesis-generating, not an independent statistical validation set. Report selected-case overlap; consumed temporal history is also not pristine OOS."
+  }
+}

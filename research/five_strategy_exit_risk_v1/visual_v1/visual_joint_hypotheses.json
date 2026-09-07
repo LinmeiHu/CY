@@ -1,0 +1,43 @@
+{
+  "ATRDR_FAST_BEAR": {
+    "motif": "VM_FAST_RECOVERY",
+    "representations": [
+      "close_location_mean3",
+      "recovery_3"
+    ],
+    "model": "Ridge alpha10 same preprocessing and purged annual splits",
+    "interpretation": "test conditional exit-advantage information; not an exit rule",
+    "nonprice_test": false
+  },
+  "ATRDR_SLOW_BEAR": {
+    "motif": "VM_SLOW_VOLUME",
+    "representations": [
+      "close_location_mean3",
+      "recovery_3",
+      "down_volume_mean3"
+    ],
+    "model": "Ridge alpha10 same preprocessing and purged annual splits",
+    "interpretation": "test conditional exit-advantage information; not an exit rule",
+    "nonprice_test": true
+  },
+  "MCB": {
+    "motif": "VM_MCB_CLOSE",
+    "representations": [
+      "close_location_mean3",
+      "recovery_3"
+    ],
+    "model": "Ridge alpha10 same preprocessing and purged annual splits",
+    "interpretation": "test conditional exit-advantage information; not an exit rule",
+    "nonprice_test": false
+  },
+  "OGR": {
+    "motif": "VM_OGR_RECOVERY",
+    "representations": [
+      "close_location_mean3",
+      "recovery_3"
+    ],
+    "model": "Ridge alpha10 same preprocessing and purged annual splits",
+    "interpretation": "test conditional exit-advantage information; not an exit rule",
+    "nonprice_test": false
+  }
+}

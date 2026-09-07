@@ -1,0 +1,52 @@
+{
+  "frozen_at": "2026-09-07T17:46:38.863790+08:00",
+  "evidence": "USER_PREFERENCE_UPDATE_AFTER_RESULT_EXPOSURE; not untouched OOS",
+  "selection": "Bounded existing grid, discovery risk profiles plus account/counterexample downgrades. No global minimum-cost claim.",
+  "candidates": {
+    "ATRDR_BULL": {
+      "conclusion": "RISK_RETURN_TRADEOFF_REQUIRES_PREFERENCE",
+      "policy": "NONE",
+      "reason": "Risk preference is known: minimize sacrifice. Tight fixed3 costs 4.268pp CAGR; cheaper ATR2.5 leaves six losses below20pct and raises full-history MDD. Neither is the primary low-cost shortlist."
+    },
+    "ATRDR_FAST_BEAR": {
+      "conclusion": "SIMPLE_STOP_SUFFICIENT",
+      "policy": "fixed_0.05",
+      "status": "CONDITIONAL_RESEARCH_CANDIDATE_QUARANTINED",
+      "rule": "After valid completed close, current_pnl<=-0.05: latch exit, next legal open; earlier native exit wins.",
+      "reason": "Strong-tail representative chosen before account replay. ATR3 downgraded after consumed-period check: its worst funded loss remains24.66pct."
+    },
+    "ATRDR_SLOW_BEAR": {
+      "conclusion": "NO_EXIT_CHANGE_SUPPORTED",
+      "policy": "NONE",
+      "reason": "Tight stop improves tail mean but worsens worst funded trade19.61pct to22.34pct and costs1.561pp CAGR."
+    },
+    "MCB": {
+      "conclusion": "PROFIT_PROTECTION_CANDIDATE",
+      "policy": "profit_0",
+      "status": "RESEARCH_CANDIDATE",
+      "rule": "Completed-close state: MFE-so-far>=0.05 and current_pnl<=0; latch exit at next legal open. No visual condition added.",
+      "reason": "Discovery-selected lowest static cost among policies improving both worst-trade and tail loss; cheapest of the three complete-account risk controls and improves full-history MDD."
+    },
+    "OGR": {
+      "conclusion": "SIMPLE_STOP_SUFFICIENT",
+      "policy": "atr_1",
+      "status": "RESEARCH_CANDIDATE",
+      "rule": "Completed-close current_pnl<=-entry_ATR20/entry_price; entry scale frozen from preceding20 valid sessions. Missing reliable ATR: no trigger, explicitly unavailable. Next legal open, latched.",
+      "reason": "Preserve discovery-selected lowest-cost risk profile. Fixed5 remains stronger price-only comparator; do not switch to it merely because its consumed-period return cost is smaller."
+    },
+    "IFCGR": {
+      "conclusion": "SIMPLE_STOP_SUFFICIENT",
+      "policy": "atr_1",
+      "status": "INHERITED_RESEARCH_CANDIDATE_WITH_PIT_B_LIMITATION",
+      "rule": "Inherit OGR atr_1, unchanged original issuer filter.",
+      "reason": "No independent parameter search; disclosure revisions/deletions completeness unresolved."
+    },
+    "SMV6": {
+      "conclusion": "NO_EXIT_CHANGE_SUPPORTED",
+      "policy": "NONE",
+      "reason": "Primary2018-2023 actual callbacks65 episodes, worst loss6.821pct, no10pct loss. No new visual state or new stop grid; native-platform equivalence unverified."
+    }
+  },
+  "visual_mechanism_candidates": 0,
+  "production_changed": false
+}
