@@ -1,10 +1,16 @@
-STATUS=PASS
-ISOLATION_DIR=/tmp/five_strategy_bundle_isolation_test.gaeSaP
+STATUS=PARTIAL_PASS_ATRDR_CODE_CHAIN_FAIL
+ISOLATION_DIR=/private/tmp/five_strategy_bundle_final_isolation_JchBQi/five_strategy_bundle
 COPY_SCOPE=standalone/five_strategy_bundle only
-INSTALL=/opt/anaconda3/bin/python3 -m pip install -e . --no-deps
-TEST=/opt/anaconda3/bin/python3 -m pytest -q
-TEST_RESULT=3 passed, 1 external-data test skipped
-MODULE_ORIGIN=/private/tmp/five_strategy_bundle_isolation_test.gaeSaP/bundle/src/five_strategy_bundle/__init__.py
+INSTALL=python -m pip install -e . --no-deps
+TEST=PYTHONPATH= python -m pytest -q tests/unit
+TEST_RESULT=5 passed
+MODULE_ORIGIN_ROOT=/private/tmp/five_strategy_bundle_final_isolation_JchBQi/five_strategy_bundle/src/five_strategy_bundle
+MODULES_CHECKED=package,atrdr,ifcgr,mcb,ogr,smv6
 FIREWALL=PASS
-REAL_REPRODUCTION=MCB FULL_END_TO_END_REPRODUCIBLE
-MCB_TOTAL_RETURN=0.9617491025224512
+MCB=FULL_END_TO_END_REPRODUCIBLE;accepted=1021;nav=2397;total_return=0.9617491025224512
+OGR=FULL_END_TO_END_REPRODUCIBLE;signals=370;executable=355;accepted=255;nav=2883
+IFCGR=END_TO_END_REPRODUCIBLE_WITH_PIT_B;parent=370;kept=362;rejected=8;accepted=248;nav=2883
+ATRDR=CODE_CHAIN_FAIL;historical_status=SOURCE_CHAIN_INCOMPLETE;accepted_2014_2023=2119;nav_2014_2023=2433
+SMV6=LOCAL_END_TO_END_REPRODUCIBLE_PLATFORM_EQUIVALENCE_UNVERIFIED;source_events=779;local_events=1081;nav=3260;minimum_cash=4.513061951322015
+SMV6_EVENT_GATE=PASS_EXACT_779
+SMV6_NATIVE_PLATFORM=EXECUTION_EQUIVALENCE_UNVERIFIED

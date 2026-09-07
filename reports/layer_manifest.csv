@@ -9,11 +9,25 @@ ATRDR,MARKET_STATE,five_strategy_bundle.strategies.atrdr.build_market_state,2434
 ATRDR,OAI_MOTHER,five_strategy_bundle.strategies.atrdr.build_oai_mother,3433,3433,3433,0,0,0,,PASS
 ATRDR,FAST_V11_OUTCOMES,five_strategy_bundle.execution.daily.fixed_target_outcomes,660,660,660,0,0,0,,PASS
 ATRDR,FAST_V13R1_ACCEPTED,five_strategy_bundle.strategies.atrdr.select_fast_capacity,550,550,550,0,0,0,,PASS
-ATRDR,V27_BEAR_ROUTE,five_strategy_bundle.strategies.atrdr.route_v27_bear,1174,1174,1174,0,0,149,SLOW_SUPPLY_EXHAUSTION_TAKEOVER|20220225|300573.SZ,LOGICAL_PASS_PHYSICAL_FAIL
-ATRDR,V29_BULL_MOTHER,five_strategy_bundle.strategies.atrdr.build_simple_bull,2877,2877,2877,0,0,429,first turnover-ratio last-bit drift,LOGICAL_PASS_PHYSICAL_FAIL
-ATRDR,V29_SOURCE_COMPLETED,five_strategy_bundle.reproduce.run_atrdr,4036,4036,4036,0,0,577,V29|BULL|V29B|20140210|000910.SZ,LOGICAL_PASS_PHYSICAL_FAIL
-ATRDR,V29_ACCEPTED,five_strategy_bundle.execution.daily.replay_shared_router,2119,2119,2119,0,0,276,V29|BULL|V29B|20220526|002446.SZ,LOGICAL_PASS_PHYSICAL_FAIL
-ATRDR,V29_NAV,five_strategy_bundle.execution.daily.replay_shared_router,2423,2433,2423,10,0,399,2022-03-11,LOGICAL_PASS_PHYSICAL_FAIL
-OGR,ZERO_TO_SIGNAL,not_bundled,0,397,0,397,0,0,missing V13 mother producer closure,BLOCKED
-IFCGR,ZERO_TO_SIGNAL,not_bundled,0,186,0,186,0,0,standalone OGR unavailable,BLOCKED
-SMV6,MARKET_TO_EVENTS,not_bundled,0,779,0,779,0,0,frozen callback compatibility closure unavailable,BLOCKED
+ATRDR,V27_BEAR_ROUTE,five_strategy_bundle.strategies.atrdr.route_v27_bear,1174,1174,1174,0,0,0,,PASS_ATOL_5E-14
+ATRDR,V29_BULL_MOTHER,five_strategy_bundle.strategies.atrdr.build_simple_bull,2877,2877,2877,0,0,0,,PASS_ATOL_5E-14
+ATRDR,V29_SOURCE_COMPLETED,five_strategy_bundle.reproduce.run_atrdr,4036,4036,4036,0,0,0,,PASS_ATOL_5E-14
+ATRDR,V29_ACCEPTED,five_strategy_bundle.execution.daily.replay_shared_router,2119,2119,2119,0,0,0,,PASS_ATOL_5E-14
+ATRDR,V29_NAV,five_strategy_bundle.execution.daily.replay_shared_router,2433,2433,2433,0,0,0,,PASS_ATOL_3E-15
+OGR,V13_SIGNAL,five_strategy_bundle.strategies.ogr.attach_v13_vap,939,939,939,0,0,0,,PASS_ATOL_2E-15
+OGR,V27,five_strategy_bundle.strategies.ogr.select_v27,470,470,470,0,0,0,,PASS
+OGR,V28,five_strategy_bundle.strategies.ogr.select_v28,411,411,411,0,0,0,,PASS
+OGR,V28R1,five_strategy_bundle.strategies.ogr.select_v28r1,397,397,397,0,0,0,,PASS
+OGR,V28R2,five_strategy_bundle.strategies.ogr.select_v28r2,370,370,370,0,0,0,,PASS
+OGR,OUTCOMES,five_strategy_bundle.strategies.ogr.build_outcomes,355,355,355,0,0,0,,PASS
+OGR,ACCEPTED,five_strategy_bundle.strategies.ogr.replay_portfolio,255,255,255,0,0,0,,PASS
+OGR,NAV,five_strategy_bundle.strategies.ogr.replay_portfolio,2883,2883,2883,0,0,0,,PASS
+IFCGR,PARENT_SAME_RUN_OGR,five_strategy_bundle.reproduce.run_ogr,370,370,370,0,0,0,,PASS
+IFCGR,KEEP,five_strategy_bundle.strategies.ifcgr.select_issuer_facts,362,362,362,0,0,0,,PASS
+IFCGR,REJECT,five_strategy_bundle.strategies.ifcgr.select_issuer_facts,8,8,8,0,0,0,,PASS
+IFCGR,OUTCOMES,five_strategy_bundle.strategies.ogr.build_outcomes,347,347,347,0,0,0,,PASS
+IFCGR,ACCEPTED,five_strategy_bundle.strategies.ogr.replay_portfolio,248,248,248,0,0,0,,PASS
+IFCGR,NAV,five_strategy_bundle.strategies.ogr.replay_portfolio,2883,2883,2883,0,0,0,,PASS
+SMV6,FROZEN_CALLBACK_EVENTS,five_strategy_bundle.strategies.smv6._run_callbacks,779,779,779,0,0,0,,PASS
+SMV6,LOCAL_EXECUTION,five_strategy_bundle.strategies.smv6.CashPlatform,1081,,0,0,0,0,,PASS_NO_NEGATIVE_CASH
+SMV6,LOCAL_NAV,five_strategy_bundle.strategies.smv6.CashPlatform.record_account,3260,,0,0,0,0,2013-05-22 vs old fractional zero-cost shadow,PASS_LOCAL_CONTRACT_NATIVE_UNVERIFIED

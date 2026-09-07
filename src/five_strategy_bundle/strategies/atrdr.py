@@ -20,15 +20,39 @@ from ..errors import ReproductionError
 from ..io import _sql_path, write_parquet
 
 
-def build_market_state(daily: Path, output: Path) -> pd.DataFrame:
+def _columns(path: Path) -> set[str]:
+    con = duckdb.connect()
+    try:
+        return set(
+            con.execute(
+                f"DESCRIBE SELECT * FROM read_parquet('{_sql_path(path)}')"
+            ).fetchdf()["column_name"]
+        )
+    finally:
+        con.close()
+
+
+def build_market_state(
+    daily: Path,
+    output: Path,
+    *,
+    start: str = "2014-01-01",
+    end: str = "2023-12-31",
+    history_start: str | None = None,
+) -> pd.DataFrame:
     """Rebuild the causal market state from completed PIT daily rows."""
     query = f"""
-    WITH base AS (
-      SELECT trade_date,available_at,decision_at,
-        coord_close/nullif(lag20_close,0)-1 AS ret20,
-        coord_close/nullif(lag60_close,0)-1 AS ret60
+    WITH lagged AS (
+      SELECT *,lag(coord_close,20) OVER w AS calc_lag20_close,
+        lag(coord_close,60) OVER w AS calc_lag60_close
       FROM read_parquet('{_sql_path(daily)}')
-      WHERE trade_date BETWEEN DATE '2014-01-01' AND DATE '2023-12-31'
+      WINDOW w AS (PARTITION BY symbol ORDER BY cal_idx)
+    ), base AS (
+      SELECT trade_date,available_at,decision_at,
+        coord_close/nullif(calc_lag20_close,0)-1 AS ret20,
+        coord_close/nullif(calc_lag60_close,0)-1 AS ret60
+      FROM lagged
+      WHERE trade_date BETWEEN DATE '{history_start or start}' AND DATE '{end}'
         AND current_valid AND hard_valid AND NOT is_st
     ), market0 AS (
       SELECT trade_date,
@@ -50,7 +74,9 @@ def build_market_state(daily: Path, output: Path) -> pd.DataFrame:
       WHEN market_median_ret20<=0 AND market_median_ret60<=0
        AND market_positive_ret20_share<=0.50 AND market_positive_ret60_share<=0.50 THEN 'BEAR'
       ELSE 'TRANSITION' END AS market_regime
-    FROM market ORDER BY trade_date
+    FROM market
+    WHERE trade_date BETWEEN DATE '{start}' AND DATE '{end}'
+    ORDER BY trade_date
     """
     con = duckdb.connect()
     try:
@@ -65,10 +91,27 @@ def build_market_state(daily: Path, output: Path) -> pd.DataFrame:
     return frame
 
 
-def build_oai_mother(daily: Path, output: Path) -> pd.DataFrame:
+def build_oai_mother(
+    daily: Path,
+    output: Path,
+    *,
+    start: str = "2014-01-01",
+    end: str = "2023-12-31",
+    expected_count: int | None = 3433,
+) -> pd.DataFrame:
     """Rebuild the frozen OAI mother panel, including its 20-session cooldown."""
+    daily_columns = _columns(daily)
+    lag20 = "" if "lag20_close" in daily_columns else ",lag(coord_close,20) OVER w AS lag20_close"
+    step = "" if "step_return" in daily_columns else ",coord_close/nullif(prior_coord_close,0)-1 AS step_return"
+    industry_identity = (
+        "industry_snapshot_id IS NOT NULL"
+        if "industry_snapshot_id" in daily_columns
+        else "causal_industry IS NOT NULL"
+    )
     query = f"""
-    WITH d AS (
+    WITH source AS (
+      SELECT * {step} FROM read_parquet('{_sql_path(daily)}')
+    ), d AS (
       SELECT *,
         max(coord_high) OVER w5 AS prior5_high_x,
         max(coord_high) OVER w10 AS prior10_high,
@@ -90,7 +133,8 @@ def build_oai_mother(daily: Path, output: Path) -> pd.DataFrame:
         sum((step_return>0)::INTEGER) OVER w10 AS prior10_up_days,
         max(coord_high) OVER w20 AS prior20_high,
         min(coord_low) OVER w10 AS prior10_low
-      FROM read_parquet('{_sql_path(daily)}')
+        {lag20}
+      FROM source
       WINDOW
         w AS (PARTITION BY symbol ORDER BY cal_idx),
         w5 AS (PARTITION BY symbol ORDER BY cal_idx ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING),
@@ -116,12 +160,12 @@ def build_oai_mother(daily: Path, output: Path) -> pd.DataFrame:
       FROM d
     ), eligible AS (
       SELECT * FROM feature
-      WHERE trade_date BETWEEN DATE '2014-01-01' AND DATE '2023-12-31'
+      WHERE trade_date BETWEEN DATE '{start}' AND DATE '{end}'
         AND prior20_n_x=20 AND prior20_valid_x
         AND invalid_min_x=invalid_step_cum AND invalid_max_x=invalid_step_cum
         AND hard_valid AND current_valid AND current_day_data_tradable AND trade_status=1
         AND market_rule_valid AND corporate_action_valid AND NOT corporate_action_blocking
-        AND industry_valid AND historical_identity_valid AND industry_snapshot_id IS NOT NULL
+        AND industry_valid AND historical_identity_valid AND {industry_identity}
         AND NOT is_st AND available_at<=decision_at
         AND round(close*100)<round(up_limit_price*100)
         AND coord_close/nullif(lag20_close,0)-1<=-0.10
@@ -133,10 +177,14 @@ def build_oai_mother(daily: Path, output: Path) -> pd.DataFrame:
         avg((ret20>0)::INTEGER) AS industry_positive_ret20_share,
         count(*) AS industry_n
       FROM (
-        SELECT trade_date,causal_industry,coord_close/nullif(lag20_close,0)-1 AS ret20
+        SELECT trade_date,causal_industry,
+          coord_close/nullif(lag(coord_close,20) OVER w,0)-1 AS ret20,
+          current_valid,hard_valid,is_st
         FROM read_parquet('{_sql_path(daily)}')
+        WINDOW w AS (PARTITION BY symbol ORDER BY cal_idx)
+      )
         WHERE current_valid AND hard_valid AND NOT is_st AND causal_industry IS NOT NULL
-      ) GROUP BY trade_date,causal_industry
+      GROUP BY trade_date,causal_industry
     )
     SELECT e.*,e.coord_close/nullif(e.lag20_close,0)-1 AS ret20,
       i.industry_median_ret20,i.industry_positive_ret20_share,i.industry_n,
@@ -163,7 +211,9 @@ def build_oai_mother(daily: Path, output: Path) -> pd.DataFrame:
     frame = raw.loc[kept].copy()
     frame["event_id"] = "OAI-" + pd.to_datetime(frame.trade_date).dt.strftime("%Y%m%d") + "-" + frame.symbol.astype(str)
     frame = frame.sort_values(["trade_date", "event_id"], kind="mergesort").reset_index(drop=True)
-    if frame.event_id.duplicated().any() or len(frame) != 3433:
+    if frame.event_id.duplicated().any() or (
+        expected_count is not None and len(frame) != expected_count
+    ):
         raise ReproductionError(f"OAI mother identity drift: {len(frame)} rows")
     write_parquet(frame, output)
     return frame
@@ -223,10 +273,28 @@ def select_fast_capacity(outcomes: pd.DataFrame, output: Path) -> pd.DataFrame:
     return frame
 
 
-def build_slow_mother(daily: Path, regime: Path, output: Path) -> pd.DataFrame:
+def build_slow_mother(
+    daily: Path,
+    regime: Path,
+    output: Path,
+    *,
+    history_start: str = "2013-01-01",
+    start: str = "2014-01-01",
+    end: str = "2023-12-31",
+) -> pd.DataFrame:
     """Minimal extract of the original slow-supply mother SQL, extended to 2023."""
+    daily_columns = _columns(daily)
+    lag20 = "" if "lag20_close" in daily_columns else ",lag(d.coord_close,20) OVER wfull AS lag20_close"
+    step = "" if "step_return" in daily_columns else ",coord_close/nullif(prior_coord_close,0)-1 AS step_return"
+    industry_identity = (
+        "industry_snapshot_id IS NOT NULL"
+        if "industry_snapshot_id" in daily_columns
+        else "causal_industry IS NOT NULL"
+    )
     query = f"""
-    WITH base AS (
+    WITH source AS (
+      SELECT * {step} FROM read_parquet('{_sql_path(daily)}')
+    ), base AS (
       SELECT d.*,r.market_regime,r.latest_source_timestamp AS market_latest_source_timestamp,
         count(*) OVER w60 AS prior60_rows,
         lag(d.cal_idx,60) OVER (PARTITION BY d.symbol ORDER BY d.cal_idx) AS lag60_cal_idx_exact,
@@ -245,9 +313,11 @@ def build_slow_mother(daily: Path, regime: Path, output: Path) -> pd.DataFrame:
         sum(CASE WHEN d.step_return<0 THEN d.turnover_fraction ELSE 0 END) OVER wprev5 AS previous5_downside_turnover,
         median(d.turnover_fraction) OVER w20 AS prior20_turnover_median,
         CASE WHEN d.coord_high>d.coord_low THEN (d.coord_close-d.coord_low)/(d.coord_high-d.coord_low) END AS close_location
-      FROM read_parquet('{_sql_path(daily)}') d LEFT JOIN read_parquet('{_sql_path(regime)}') r USING(trade_date)
-      WHERE d.trade_date BETWEEN DATE '2013-01-01' AND DATE '2023-12-31'
+        {lag20}
+      FROM source d LEFT JOIN read_parquet('{_sql_path(regime)}') r USING(trade_date)
+      WHERE d.trade_date BETWEEN DATE '{history_start}' AND DATE '{end}'
       WINDOW w60 AS(PARTITION BY d.symbol ORDER BY d.cal_idx ROWS BETWEEN 60 PRECEDING AND 1 PRECEDING),
+        wfull AS(PARTITION BY d.symbol ORDER BY d.cal_idx),
         w20 AS(PARTITION BY d.symbol ORDER BY d.cal_idx ROWS BETWEEN 20 PRECEDING AND 1 PRECEDING),
         w5 AS(PARTITION BY d.symbol ORDER BY d.cal_idx ROWS BETWEEN 5 PRECEDING AND 1 PRECEDING),
         wprev5 AS(PARTITION BY d.symbol ORDER BY d.cal_idx ROWS BETWEEN 10 PRECEDING AND 6 PRECEDING)
@@ -260,7 +330,7 @@ def build_slow_mother(daily: Path, regime: Path, output: Path) -> pd.DataFrame:
           AND prior60_lineage_valid AND hard_valid AND current_valid AND current_day_data_tradable
           AND trade_status=1 AND market_rule_valid AND corporate_action_valid
           AND NOT corporate_action_blocking AND coalesce(corporate_action_count,0)=0
-          AND industry_valid AND historical_identity_valid AND industry_snapshot_id IS NOT NULL
+          AND industry_valid AND historical_identity_valid AND {industry_identity}
           AND NOT is_st AND available_at<=decision_at AND market_latest_source_timestamp<=decision_at
           AND round(close*100)<round(up_limit_price*100) AND coord_close>0 AND coord_high>=coord_low
           AND turnover_fraction>0 AND prior20_turnover_median>0) AS row_eligible
@@ -288,7 +358,7 @@ def build_slow_mother(daily: Path, regime: Path, output: Path) -> pd.DataFrame:
       prior20_positive_share,prior20_max_abs_return,downside_upside_turnover_ratio,
       last5_downside_turnover,previous5_downside_turnover,turnover_expansion,
       close_location,step_return,causal_industry
-    FROM cooled WHERE trade_date BETWEEN DATE '2014-01-01' AND DATE '2023-12-31'
+    FROM cooled WHERE trade_date BETWEEN DATE '{start}' AND DATE '{end}'
       AND raw_slow AND (prior_slow_cal_idx IS NULL OR cal_idx-prior_slow_cal_idx>20)
     ORDER BY signal_date,event_id
     """

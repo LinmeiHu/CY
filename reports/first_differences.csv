@@ -1,7 +1,11 @@
 strategy,layer,first_difference,cause,status
-OGR,ZERO_TO_MOTHER,V13 and earlier true-gap/minute dependency closure not bundled,source-chain incomplete,BLOCKED
-IFCGR,PARENT,standalone OGR producer unavailable,depends on blocked parent,BLOCKED
+OGR,NONE,,all compared signal trade portfolio and NAV identities and values exact,PASS
+IFCGR,NONE,,same-run standalone OGR parent plus PIT-B gate and portfolio exact,PASS
 MCB,NONE,,all compared keys and values exact,PASS
-ATRDR,V27_BEAR_VALUE,SLOW_SUPPLY_EXHAUSTION_TAKEOVER|20220225|300573.SZ,golden cache and current registered daily reader differ only at about 1e-14; identity/date/reason exact,PHYSICAL_FAIL_LOGICAL_PASS
-ATRDR,POST_2023_SOURCE,2024 first signal,post-2023 validation producers not bundled,BLOCKED
-SMV6,MARKET_TO_EVENT,frozen callback source not bundled,779 ledger is golden-only and therefore intentionally not consumed,BLOCKED
+ATRDR,HISTORICAL_FLOAT,SLOW_SUPPLY_EXHAUSTION_TAKEOVER|20220225|300573.SZ,deterministic last-bit drift below 5e-14; identities dates reasons and acceptance exact,PASS_WITH_DECLARED_TOLERANCE
+ATRDR,V27_2024_2025_MARKET,2024-01-02,compact downstream daily does not reproduce the frozen parent market values,FAIL
+ATRDR,V27_2024_2025_FAST,OAI-20240129-300835.SZ,reconstruction has 10 extra and zero missing Fast identities after isolated golden non-outcome market comparison,FAIL
+ATRDR,V27_2026_V1_MARKET,2026-01-05,compact downstream daily does not reproduce the frozen parent market values,FAIL
+ATRDR,V27_2026_V1_FAST,OAI-20260330-000612.SZ,reconstruction has 3 extra and zero missing Fast identities after isolated golden non-outcome market comparison,FAIL
+SMV6,SOURCE_EVENT_GATE,,779 source-generated events and all compared fields exactly match the golden ledger,PASS
+SMV6,LOCAL_VS_OLD_FRACTIONAL_SHADOW_NAV,2013-05-22,expected divergence from 100-share rounding plus 2bp commission and 8bp buy-side slippage; old shadow used fractional zero-cost accounting,PASS_LOCAL_CONTRACT_NATIVE_UNVERIFIED

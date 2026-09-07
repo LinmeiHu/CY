@@ -2,15 +2,21 @@
   "path_injection": "All physical paths are supplied by --input-config; no location is implicit.",
   "assets": {
     "daily_hist": {
-      "consumers": ["MCB","ATRDR"],
+      "consumers": ["MCB","OGR","IFCGR","ATRDR"],
       "pit_grade": "registered PIT daily with available_at and decision_at",
       "symbol_semantics": "NNNNNN.SH or NNNNNN.SZ",
       "required_columns": ["trade_date","cal_idx","symbol","sleeve","open","high","low","close","turnover_fraction","is_st","causal_industry","trade_status","current_day_data_tradable","up_limit_price","down_limit_price","market_rule_valid","corporate_action_count","corporate_action_valid","corporate_action_blocking","industry_valid","historical_identity_valid","industry_snapshot_id","hard_valid","available_at","decision_at","history_valid","current_valid","invalid_step_cum","coord_open","coord_high","coord_low","coord_close","prior_coord_close","lag20_close","lag60_close","ret60","step_return","prior250_peak_date","prior250_peak_invalid_cum"]
     },
     "daily_tail": {"consumers":["MCB","ATRDR"],"semantics":"post-2023 execution tail; earlier overlapping rows must not override daily_hist"},
     "mcb_market_industry_state": {"consumers":["MCB"],"pit_grade":"completed-close causal state","required_columns":["trade_date","causal_industry","market20","market60","market_breadth20","market_breadth60","industry20","industry60","industry_breadth20"]},
-    "cy033_daily_amount": {"consumers":["OGR","IFCGR"],"pit_grade":"PIT-B","status":"adapter not bundled"},
-    "issuer_announcement_facts": {"consumers":["IFCGR"],"pit_grade":"PIT-B current official enumeration; revision/deletion history incomplete","status":"adapter not bundled"},
-    "smv6_qmt_daily_and_minute": {"consumers":["SMV6"],"pit_grade":"registered local QMT/hybrid replay data","status":"adapter not bundled"}
+    "raw_minute_root": {"consumers":["OGR","IFCGR"],"semantics":"canonical unadjusted one-minute partitions named partition_year=YYYY/data_0.parquet"},
+    "cy033_daily_amount": {"consumers":["OGR","IFCGR"],"pit_grade":"PIT-B","semantics":"registered yearly PIT-B daily partitions"},
+    "qd010_distributions": {"consumers":["OGR","IFCGR"],"semantics":"registered distribution actions; cash and share terms"},
+    "qd010_rights": {"consumers":["OGR","IFCGR"],"semantics":"registered rights-issue actions"},
+    "ifcgr_route_index": {"consumers":["IFCGR"],"pit_grade":"PIT-B current official enumeration; revision/deletion history incomplete"},
+    "ifcgr_sse_titles": {"consumers":["IFCGR"],"pit_grade":"PIT-B","semantics":"SSE announcement titles joined by announcement_key"},
+    "ifcgr_szse_titles": {"consumers":["IFCGR"],"pit_grade":"PIT-B","semantics":"SZSE announcement titles joined by announcement_key"},
+    "smv6_qmt_root": {"consumers":["SMV6"],"pit_grade":"registered local QMT replay data","semantics":"per-symbol daily parquet root"},
+    "smv6_hybrid_root": {"consumers":["SMV6"],"pit_grade":"registered local hybrid replay data","semantics":"critical minute and execution availability root"}
   }
 }

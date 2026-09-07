@@ -1,64 +1,48 @@
-# Five Strategy Standalone Reproduction V2
+# Five Strategy Standalone Final Closure V4
 
 ## Result
 
-`TASK_STATUS = PARTIAL_COMPLETE`.
+`TASK_STATUS = PARTIAL_COMPLETE` because ATRDR's two missing post-2023 V27 producers do not yet have exact-population reconstructions. The other four production chains are closed without frozen strategy intermediates:
 
-The subtree is import-independent and contains no CY runtime imports, Git-object retrieval, or built-in machine paths. MCB is genuinely closed from registered inputs to NAV and passed exact layer reconciliation. ATRDR's previously missing Fast and Slow Bear mother chains were recovered/reconstructed and replayed from registered daily input for 2014–2023; its historical event identities, routed trades and accepted set match exactly. OGR, IFCGR, SMV6 and ATRDR's post-2023 extension are not complete, so this report does not promote the overall task to COMPLETE.
+- OGR: `FULL_END_TO_END_REPRODUCIBLE`
+- IFCGR: `END_TO_END_REPRODUCIBLE_WITH_PIT_B`
+- MCB: `FULL_END_TO_END_REPRODUCIBLE`
+- ATRDR: `SOURCE_CHAIN_INCOMPLETE`
+- SMV6: `LOCAL_END_TO_END_REPRODUCIBLE_PLATFORM_EQUIVALENCE_UNVERIFIED`
 
-No frozen strategy file or sealed result was modified. No new sealed validation was opened.
+No frozen strategy was modified and no sealed validation was opened.
 
-## Environment
+## Actual results
 
-- Branch: `codex/five-strategy-integration-20260906`
-- Start HEAD: `4d9e70794736d1158624c8a58fd62b2cf4a7ce49`
-- Starting worktree: clean, branch ahead of origin by two commits
-- New production code: only under `standalone/five_strategy_bundle/`
-- New large outputs: `/Volumes/quant/CY_quant_research/five_strategy_standalone_v2`
+OGR rebuilt V13 939, V27 470, V28 411, V28R1 397, and V28R2 370 signals. It produced 355 completed outcomes, accepted 255 trades, and materialized 2,883 board/account NAV rows. Signal, trade, accepted-position, cash, exposure, active-position, and NAV comparisons are exact; the only tolerated lower-layer difference is a V13 density representation delta below `2e-15`.
 
-## What was actually run
+IFCGR regenerated that full 370-row OGR parent inside the same run, classified 13,338 PIT-B title facts, kept 362 parents and rejected the exact frozen eight. It produced 347 outcomes, accepted 248, and materialized 2,883 NAV rows. Trades, accepted quantities/outlays, cash, positions, and NAV match exactly. The evidence grade remains `PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE`.
 
-MCB ran through the public package CLI. Rebuilt row counts were V53 8,760, V64 2,112, V65 2,383, V72 1,904, accepted 1,021 and NAV 2,397. Every configured identity and value comparison passed exactly, including `qty`, `entry_outlay` and `combined_nav`. Ending NAV is 1.9617491025224512.
+MCB rebuilt V53 8,760, V64 2,112, V65 2,383, and V72 1,904 signals, accepted 1,021 trades, and produced 2,397 NAV rows. Its ending NAV is `1.9617491025224512`; all configured identities and values match exactly.
 
-ATRDR ran from daily PIT data for 2014–2023. The reconstructed OAI mother produced 3,433 exact identities; Fast Bear produced 660 exact V11 outcomes and 550 exact V13R1 accepted trades. The recovered Slow producer reproduced all 2014–2020 mother identities and the completed 2021/2022–2023 cache identities. Frozen V27 Bear routing produced 1,174 exact identities (153 fast, 1,021 slow). V29 Bull produced 2,877 exact mother identities and the combined historical source contained 4,036 exact identities. Shared portfolio acceptance matched all 2,119 historical event identities.
+ATRDR's historical interval remains closed: OAI mother 3,433, Fast accepted 550, V27 Bear 1,174, Bull mother 2,877, combined sources 4,036, and accepted 2,119. The account calendar fix now materializes all 2,433 NAV dates; the previous ten missing dates were trailing cash-only sessions and are listed in `reports/atrdr_missing_nav_dates.csv`. Maximum historical NAV delta is `2.7e-15`. Post-2023 reconstruction evidence and the still-failing first differences are in the two requested proof reports.
 
-The first ATRDR value difference is confined to tiny floating representations in 2022–2023 Slow rows (maximum observed price delta about `5e-14`); symbol, date, route, entry/exit reason and accepted identity are unchanged. Because the request requires exact value comparison, these layers are not labeled exact PASS. Post-2023 producers are still absent from the standalone closure, so the registered V29 result of 2,898 accepted trades is not claimed reproduced by this package.
+SMV6 includes and executes the exact registered strategy bytes with SHA256 `7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33`. The frozen callback compatibility run reproduces all 779 source events and all eight compared event fields exactly; `reports/smv6_event_comparison.csv` contains one exact row per event. The separate local execution emitted 1,081 events and 3,260 account rows while applying 100-share lots, 2bp commission, 8bp-per-side slippage, the source's sell-before-buy ordering, available cash, holding state, and the source's 50% minute-volume limit. Minimum cash was `4.513061951322015`, ending NAV was `2795610.471913912`, and hidden leverage was not used. The old fractional, zero-cost shadow NAV first differs on `2013-05-22`, as expected from the execution-contract change; it is not treated as the Gate B authority. Native SuperMind was not run, so platform equivalence is intentionally unverified.
 
-## Source archaeology and provenance
+## Production boundary
 
-One original upstream producer was recovered: the Slow Supply Exhaustion mother screen at commit `c5e3ec548e93df15f4ef492d2aef2dcdd5063df1`. Its candidate SQL was minimally extracted. The original OAI and MCB V53 producer files were not found in reachable branches, tags, logs, reflog, registered worktrees or restored-source locations. They are explicitly marked behavioral reconstructions and were accepted only after whole-interval exact event/key-value comparisons. Downstream V64/V65/V72, V29 Bull, execution and portfolio functions are minimal extracts.
-
-- Recovered original producer modules: 1
-- Behavioral reconstruction modules: 2 (OAI mother and MCB V53)
-- Mixed minimal-extract modules: 3
-
-The detailed mapping is in `manifests/source_provenance.json`.
-
-## Strategy status
-
-- OGR — `SOURCE_CHAIN_INCOMPLETE`. Zero point is registered PIT daily/minute/amount. The V13→V27→V28→V28R1→V28R2 closure was not bundled; no frozen intermediate is consumed by production code.
-- IFCGR — `SOURCE_CHAIN_INCOMPLETE`. Intended zero point is standalone OGR plus registered PIT-B issuer facts. OGR is unavailable and the PIT-B fact adapter is not bundled. The evidence grade remains PIT-B.
-- MCB — `FULL_END_TO_END_REPRODUCIBLE`. Zero point is registered daily PIT plus causal completed-close market/industry state. Production frozen-intermediate dependency: NO. Signal/trade/NAV: exact PASS.
-- ATRDR — `SOURCE_CHAIN_INCOMPLETE`. Zero point is registered daily PIT. Production frozen-intermediate dependency: NO. Historical 2014–2023 identity closure: PASS. Post-2023 production closure: blocked.
-- SMV6 — `SOURCE_CHAIN_INCOMPLETE`. Intended zero point is registered QMT daily plus hybrid critical minute data. The 779-event ledger is never consumed. Frozen callbacks/compatibility layer are not bundled. Native SuperMind equivalence remains UNVERIFIED.
+Installed runtime code is only under `src/`. It has no CY imports, Git-object calls, machine-specific paths, or frozen signal/trade/event/NAV inputs. Exact audited producer files under `original_sources/` are hash evidence and are excluded from the installed package. Golden references are optional comparison inputs and production succeeds without them.
 
 ## Commands
 
 ```bash
-python -m five_strategy_bundle.reproduce --strategy MCB --input-config /path/inputs.json --golden-config /path/mcb-golden.json --output-root /path/output
-python -m five_strategy_bundle.reproduce --strategy ATRDR --input-config /path/inputs.json --output-root /path/output
-python -m five_strategy_bundle.reproduce --strategy OGR --input-config /path/inputs.json --output-root /path/output
-python -m five_strategy_bundle.reproduce --strategy IFCGR --input-config /path/inputs.json --output-root /path/output
-python -m five_strategy_bundle.reproduce --strategy SMV6 --input-config /path/inputs.json --output-root /path/output
+python -m pip install -e standalone/five_strategy_bundle --no-deps
+python -m pytest -q standalone/five_strategy_bundle/tests/unit
+python -m five_strategy_bundle.reproduce --strategy MCB --input-config /path/mcb-inputs.json --golden-config /path/mcb-golden.json --output-root /path/output
+python -m five_strategy_bundle.reproduce --strategy OGR --input-config /path/ogr-inputs.json --golden-config /path/ogr-golden.json --output-root /path/output
+python -m five_strategy_bundle.reproduce --strategy IFCGR --input-config /path/ifcgr-inputs.json --golden-config /path/ifcgr-golden.json --output-root /path/output
+python -m five_strategy_bundle.reproduce --strategy ATRDR --input-config /path/atrdr-inputs.json --golden-config /path/atrdr-golden.json --output-root /path/output
+python -m five_strategy_bundle.reproduce --strategy SMV6 --input-config /path/smv6-inputs.json --golden-config /path/smv6-golden.json --output-root /path/output
 ```
 
-The last three commands fail closed with `SOURCE_CHAIN_INCOMPLETE`; they are documented to make the missing boundary explicit, not presented as successful reproduction commands.
+ATRDR's command deliberately returns a non-FULL status after writing its historical artifacts. It never substitutes the frozen post-2023 V27 ledgers.
 
-Focused verification: 4 tests passed, 0 failed (including one real registered-input MCB reproduction test). Style/static checks excluding inherited long SQL lines passed.
-
-## Isolation and split
-
-The isolation test copies only this directory, installs it locally with `--no-deps`, runs tests/firewall, verifies imported module origins, and runs MCB from real registered paths. See `reports/isolation_test.log` for the executed command and result.
+## Split command
 
 ```bash
 git subtree split --prefix=standalone/five_strategy_bundle -b five-strategy-standalone
