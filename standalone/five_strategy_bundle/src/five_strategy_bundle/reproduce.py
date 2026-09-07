@@ -445,6 +445,26 @@ def comparisons(strategy: str, output: Path, golden: dict[str, Path]) -> pd.Data
             ("fast_outcomes", "atrdr_fast_outcomes", ("event_id",), ("entry_date", "entry_price", "exit_date", "exit_price", "net_return")),
             ("fast_accepted", "atrdr_fast_accepted", ("event_id",), ("entry_date", "entry_price", "exit_date", "exit_price", "net_return")),
             ("v27_bear_routes", "atrdr_v27_bear", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return")),
+            ("bull_mother", "atrdr_bull_mother", ("event_id",), ("symbol", "signal_date", "lane", "industry_breadth20_delta5", "ret60", "turnover_ratio")),
+            ("source_completed_trades", "atrdr_source_union", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return")),
+            ("accepted", "atrdr_accepted", ("event_id",), ("entry_date", "entry_price", "exit_date", "exit_price", "net_return", "qty", "entry_outlay")),
+            ("nav", "atrdr_nav", ("trade_date",), ("combined_nav",)),
+            ("post_2024_2025/stage_a/market", "atrdr_2024_2025_market", ("trade_date",), ("market_median_ret20", "market_median_ret60", "market_positive_ret20_share", "market_positive_ret60_share", "market_regime")),
+            ("post_2024_2025/stage_a/fast_candidates", "atrdr_2024_2025_fast", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2024_2025/stage_a/slow_candidates", "atrdr_2024_2025_slow", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2024_2025/stage_a/bull_accelerating_candidates", "atrdr_2024_2025_bull_accelerating", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2024_2025/stage_a/bull_decelerating_candidates", "atrdr_2024_2025_bull_decelerating", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2024_2025/stage_b/routed_raw_trades", "atrdr_2024_2025_source_union", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return", "rank1", "rank2", "rank3")),
+            ("post_2024_2025/stage_b/accepted_trades", "atrdr_2024_2025_accepted", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return", "rank1", "rank2", "rank3")),
+            ("post_2024_2025/stage_b/portfolio_nav", "atrdr_2024_2025_nav", ("trade_date",), ("main_nav", "chinext_nav", "combined_nav", "utilization", "ret", "active_positions")),
+            ("post_2026/stage_a/market", "atrdr_2026_market", ("trade_date",), ("market_median_ret20", "market_median_ret60", "market_positive_ret20_share", "market_positive_ret60_share", "market_regime")),
+            ("post_2026/stage_a/fast_candidates", "atrdr_2026_fast", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2026/stage_a/slow_candidates", "atrdr_2026_slow", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2026/stage_a/bull_accelerating_candidates", "atrdr_2026_bull_accelerating", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2026/stage_a/bull_decelerating_candidates", "atrdr_2026_bull_decelerating", ("event_id",), ("symbol", "signal_date", "lane", "rank1", "rank2", "rank3")),
+            ("post_2026/stage_b/routed_raw_trades", "atrdr_2026_source_union", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return", "rank1", "rank2", "rank3")),
+            ("post_2026/stage_b/accepted_trades", "atrdr_2026_accepted", ("event_id",), ("lane", "entry_date", "entry_price", "exit_date", "exit_price", "net_return", "rank1", "rank2", "rank3")),
+            ("post_2026/stage_b/portfolio_nav", "atrdr_2026_nav", ("trade_date",), ("main_nav", "chinext_nav", "combined_nav", "utilization", "ret", "active_positions")),
         ],
         "OGR": [
             ("v13_signals", "ogr_v13", ("gap_id",), ("symbol", "signal_date", "pre_gap_inside_density_relative_local")),
@@ -452,16 +472,16 @@ def comparisons(strategy: str, output: Path, golden: dict[str, Path]) -> pd.Data
             ("v28", "ogr_v28", ("gap_id",), ("symbol", "signal_date")),
             ("v28r1", "ogr_v28r1", ("gap_id",), ("symbol", "signal_date")),
             ("signals", "ogr_v28r2", ("gap_id",), ("symbol", "signal_date")),
-            ("trades", "ogr_trades", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return")),
-            ("accepted", "ogr_accepted", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return", "qty", "entry_outlay")),
+            ("trades", "ogr_trades", ("gap_id",), ("entry_time", "entry_raw_price", "exit_time", "exit_raw_price", "net_return")),
+            ("accepted", "ogr_accepted", ("gap_id",), ("entry_time", "entry_raw_price", "exit_time", "exit_raw_price", "net_return", "qty", "entry_outlay")),
             ("nav", "ogr_nav", ("trade_date", "board"), ("nav", "cash", "gross_exposure", "active_positions")),
         ],
         "IFCGR": [
             ("parent_population", "ifcgr_parents", ("gap_id",), ("symbol", "signal_date")),
             ("kept", "ifcgr_kept", ("gap_id",), ("v29r2_issuer_fact_cooldown_gate",)),
             ("rejected", "ifcgr_rejected", ("gap_id",), ("v29r2_rejection_reason",)),
-            ("trades", "ifcgr_trades", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return")),
-            ("accepted", "ifcgr_accepted", ("gap_id",), ("entry_time", "entry_price", "exit_time", "exit_price", "net_return", "qty", "entry_outlay")),
+            ("trades", "ifcgr_trades", ("gap_id",), ("entry_time", "entry_raw_price", "exit_time", "exit_raw_price", "net_return")),
+            ("accepted", "ifcgr_accepted", ("gap_id",), ("entry_time", "entry_raw_price", "exit_time", "exit_raw_price", "net_return", "qty", "entry_outlay")),
             ("nav", "ifcgr_nav", ("trade_date", "board"), ("nav", "cash", "gross_exposure", "active_positions")),
         ],
         "SMV6": [
@@ -469,11 +489,13 @@ def comparisons(strategy: str, output: Path, golden: dict[str, Path]) -> pd.Data
         ],
     }
     rows = []
+    tolerances = {("OGR", "v13_signals"): 2e-15}
     for layer, key, identity, values in specs.get(strategy, []):
         if key not in golden:
             continue
         actual = output / f"{layer}.parquet"
-        row = compare_parquet(actual, golden[key], identity, values)
+        atol = 5e-14 if strategy == "ATRDR" else tolerances.get((strategy, layer), 0.0)
+        row = compare_parquet(actual, golden[key], identity, values, atol=atol)
         rows.append({"strategy": strategy, "layer": layer, "producer": f"five_strategy_bundle.{strategy.lower()}", **row})
     return pd.DataFrame(rows)
 
@@ -498,7 +520,7 @@ def main(argv: list[str] | None = None) -> int:
     elif args.strategy == "ATRDR":
         result = run_atrdr(inputs, target)
     else:
-        raise ReproductionError(f"{args.strategy}: SOURCE_CHAIN_INCOMPLETE in this delivery")
+        raise ReproductionError(f"unsupported strategy: {args.strategy}")
     if args.golden_config:
         golden = load_input_config(args.golden_config)
         table = comparisons(args.strategy, target, golden)

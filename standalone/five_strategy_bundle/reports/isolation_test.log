@@ -1,16 +1,22 @@
-STATUS=PARTIAL_PASS_ATRDR_CODE_CHAIN_FAIL
-ISOLATION_DIR=/private/tmp/five_strategy_bundle_final_isolation_JchBQi/five_strategy_bundle
+STATUS=PASS
+ISOLATION_DIR=/private/tmp/five_strategy_bundle_final_seal_zXId1x/five_strategy_bundle
 COPY_SCOPE=standalone/five_strategy_bundle only
-INSTALL=python -m pip install -e . --no-deps
-TEST=PYTHONPATH= python -m pytest -q tests/unit
-TEST_RESULT=5 passed
-MODULE_ORIGIN_ROOT=/private/tmp/five_strategy_bundle_final_isolation_JchBQi/five_strategy_bundle/src/five_strategy_bundle
-MODULES_CHECKED=package,atrdr,ifcgr,mcb,ogr,smv6
-FIREWALL=PASS
-MCB=FULL_END_TO_END_REPRODUCIBLE;accepted=1021;nav=2397;total_return=0.9617491025224512
-OGR=FULL_END_TO_END_REPRODUCIBLE;signals=370;executable=355;accepted=255;nav=2883
+INSTALL=PYTHONPATH= python -m pip install -e . --no-deps
+PYTHON=/opt/anaconda3/bin/python
+PACKAGE_ORIGIN=/private/tmp/five_strategy_bundle_final_seal_zXId1x/five_strategy_bundle/src/five_strategy_bundle/__init__.py
+MODULES_CHECKED=16
+ALL_MODULES_FROM_ISOLATION_COPY=YES
+CY_CODE_RUNTIME_DEPENDENCY=NO
+PRODUCTION_REQUIRES_GOLDEN=NO
+PRODUCTION_FROZEN_INTERMEDIATE_DEPENDENCY=NO
+TEST_RESULT=8 passed, 1 external-input test skipped
+MCB=FULL_END_TO_END_REPRODUCIBLE;accepted=1021;nav=2397
+OGR=FULL_END_TO_END_REPRODUCIBLE;signals=370;outcomes=355;accepted=255;nav=2883
 IFCGR=END_TO_END_REPRODUCIBLE_WITH_PIT_B;parent=370;kept=362;rejected=8;accepted=248;nav=2883
-ATRDR=CODE_CHAIN_FAIL;historical_status=SOURCE_CHAIN_INCOMPLETE;accepted_2014_2023=2119;nav_2014_2023=2433
+ATRDR=FULL_END_TO_END_REPRODUCIBLE;historical_accepted=2119;historical_nav=2433;post_2024_2025_accepted=397;post_2026_accepted=38
 SMV6=LOCAL_END_TO_END_REPRODUCIBLE_PLATFORM_EQUIVALENCE_UNVERIFIED;source_events=779;local_events=1081;nav=3260;minimum_cash=4.513061951322015
-SMV6_EVENT_GATE=PASS_EXACT_779
-SMV6_NATIVE_PLATFORM=EXECUTION_EQUIVALENCE_UNVERIFIED
+GOLDEN_VALIDATION=MCB_6_PASS;OGR_8_PASS;IFCGR_6_PASS;ATRDR_25_PASS;SMV6_1_PASS
+FIRST_DIFFERENCE=NONE
+SMV6_STRATEGY_LOGIC_EQUIVALENCE=PASS
+SMV6_LOCAL_EXECUTION_REPRODUCTION=PASS
+SMV6_NATIVE_SUPERMIND_EXECUTION_EQUIVALENCE=UNVERIFIED
