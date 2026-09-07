@@ -1,0 +1,13 @@
+source,line,evidence
+src/five_strategy_bundle/strategies/ogr.py,69,"def load_daily(path: Path, end: str = ""2021-12-31"") -> pd.DataFrame:"
+src/five_strategy_bundle/strategies/ogr.py,302,"selected = entries.loc[mask & pd.to_datetime(entries.signal_date).dt.year.isin((2017, 2018, 2019, 2020, 2021))].copy()"
+src/five_strategy_bundle/strategies/ogr.py,325,"daily = _load_cy033(cy033_root, (2018, 2019, 2020, 2021), [""symbol"", ""trade_date"", ""open"", ""high"", ""low"", ""close"", ""down_limit_price""], include_prior=True)"
+src/five_strategy_bundle/strategies/ogr.py,333,"state = _load_cy033(cy033_root, (2018, 2019, 2020, 2021), [""symbol"", ""trade_date"", ""is_st"", ""hard_valid"", ""available_at"", ""snapshot_id""])"
+src/five_strategy_bundle/strategies/ogr.py,349,"state = _load_cy033(cy033_root, (2018, 2019, 2020, 2021), [""symbol"", ""trade_date"", ""close"", ""up_limit_price"", ""hard_valid"", ""available_at"", ""snapshot_id""])"
+src/five_strategy_bundle/strategies/ogr.py,365,"daily = _load_cy033(cy033_root, (2018, 2019, 2020, 2021), [""symbol"", ""trade_date"", ""decision_at"", ""amount"", ""trade_status"", ""hard_valid"", ""available_at"", ""snapshot_id""], include_prior=True)"
+src/five_strategy_bundle/strategies/ogr.py,395,"v13_candidates = v13_candidates.loc[pd.to_datetime(v13_candidates.signal_date).dt.year.isin((2017, 2018, 2019, 2020, 2021))].copy()"
+src/five_strategy_bundle/strategies/ogr.py,605,"account_end: str = ""2021-12-31"","
+src/five_strategy_bundle/strategies/ogr.py,675,"account_end: str = ""2021-12-31"","
+src/five_strategy_bundle/strategies/ifcgr.py,24,WHERE r.causal_available_at<TIMESTAMP '2022-01-01'
+research/five_strategy_exit_risk_v1/state_v2.py,63,"for strategy, key in [('OGR', 'ogr_rollforward_outcomes'), ('IFCGR', 'ifcgr_cy065_trades')]:"
+research/five_strategy_exit_risk_v1/state_v2.py,64,"part = read_bound(p[key], ""signal_date BETWEEN DATE '2022-01-01' AND DATE '2023-12-31' AND entry_date <= DATE '2023-12-31' AND exit_date <= DATE '2023-12-31'"")"

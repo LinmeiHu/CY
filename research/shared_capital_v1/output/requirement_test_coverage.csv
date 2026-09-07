@@ -1,0 +1,34 @@
+requirement,status,evidence
+1 P0 reconciles native sleeves,NOT_IMPLEMENTED,No historical P0 account replay
+2 Gap exclusion,PRIMITIVE_TEST_PASSED,test_gap_exclusive
+3 Precapital source rather than accepted trades,PARTIAL_INVENTORY_ONLY,Derived trade inputs are not admitted; adapters missing
+4 Actual funded position state,NOT_IMPLEMENTED,Integrated replay missing
+5 P0 home budget independence,PRIMITIVE_TEST_PASSED,test_entitlement_does_not_accept_shared_profit_input
+6 No recursive shared PNL entitlement,PRIMITIVE_TEST_PASSED,test_entitlement_does_not_accept_shared_profit_input
+7 Native size ceiling,PRIMITIVE_TEST_PASSED,test_native_requested_notional_ceiling
+8 No enlarged fully funded position,NOT_IMPLEMENTED,No lifecycle test
+9 Base before shared,NOT_IMPLEMENTED,No integrated allocator
+10 Proportional unmet allocation,PRIMITIVE_TEST_PASSED,test_unmet_proportions_not_return_ranking
+11 Deterministic lot rounding,PARTIAL_PRIMITIVE_TEST,Floor tested; residual redistribution missing
+12 Deterministic tie breaking,PARTIAL_PRIMITIVE_TEST,Strategy proportions tested; event scheduler missing
+13 No future information,NOT_IMPLEMENTED,No historical event replay
+14 Legal exits before entries,NOT_IMPLEMENTED,No historical event replay
+15 Nonnegative cash,NOT_IMPLEMENTED,No physical account
+16 Gross exposure at most NAV,NOT_IMPLEMENTED,No physical account
+17 Physical virtual quantity reconciliation,NOT_IMPLEMENTED,No virtual ledger
+18 Attributed equity reconciliation,NOT_IMPLEMENTED,No virtual ledger
+19 Costs charged once,NOT_IMPLEMENTED,No fee ledger
+20 Strategy caps,PRIMITIVE_TEST_PASSED,test_demand_family_cannot_net_borrow
+21 Demand family caps,PRIMITIVE_TEST_PASSED,test_demand_family_cannot_net_borrow
+22 Drift does not force sell,PRIMITIVE_TEST_PASSED,test_market_drift_only_removes_new_headroom
+23 Exact MCB confirmation,PRIMITIVE_TEST_PASSED,Four exact identity and mismatch tests
+24 MCB-only remains executable,NOT_IMPLEMENTED,No execution integration
+25 Previous completed close gate,PARTIAL_PRIMITIVE_TEST,Monotonic completed-close API tested; scheduler missing
+26 Gate never force sells,PARTIAL_PRIMITIVE_TEST,Gate has no position operation; scheduler missing
+27 Three-day one-level recovery,PRIMITIVE_TEST_PASSED,Recovery and reset tests
+28 D not guaranteed MDD,PRIMITIVE_TEST_PASSED,test_gate_exact_thresholds_and_overshoot
+29 Base shortfall recorded,NOT_IMPLEMENTED,No event audit
+30 Independent periods,PARTIAL_PRIMITIVE_TEST,Gate initialization tested; accounts missing
+31 Deterministic full replay,NOT_IMPLEMENTED,Only policy arithmetic tested
+32 No other-worktree production imports,READ_ONLY_SOURCE_CHECK,Research imports only current root package and installed dependencies
+33 Frozen and input hashes unchanged,PARTIAL_HASH_VERIFICATION,All frozen files and consumed standalone raw files verified; unconsumed directories not hashed
