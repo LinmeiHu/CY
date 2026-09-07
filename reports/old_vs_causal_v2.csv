@@ -1,0 +1,25 @@
+strategy,metric,old_value,new_value,delta,expected_change,explanation
+MCB,accepted_funded_event_count,1021,1010,-11,YES,Target proceeds and slots are no longer released before open buys and entered immature positions remain active
+MCB,changed_funded_identities,0,21,21,YES,Symmetric identity difference against old seal after both confirmed causal corrections
+MCB,ending_cash,1.9617491025224523,1.879640542048723,-0.0821085604737293,YES,Corrected account ends with real entered positions rather than deleting immature positions
+MCB,max_combined_gross_exposure_ratio,0.9886415415919944,0.982806095121433,-0.0058354464705614,YES,Combined-account exposure path changes with causal funding and position persistence
+MCB,ending_nav,1.9617491025224512,1.9355958013324606,-0.0261533011899906,YES,Execution correction changes funded identities and terminal open-position marks
+MCB,total_return,0.9617491025224512,0.9355958013324606,-0.0261533011899906,YES,No signal threshold changed
+MCB,max_drawdown,-0.051344078733173704,-0.051264860698954307,0.000079218034219397,YES,Account path changed by corrected execution timing
+ATRDR,fast_bear_restored_completed_events,0,2,2,YES,Two legal T10 H20 completions were restored after removing the unrelated future H60 gate
+ATRDR,fast_bear_outcome_count,660,666,6,YES,All 666 frozen Fast Bear signals now receive their own T10 H20 outcome evaluation
+ATRDR,fast_bear_capacity_accepted_count,550,556,6,YES,Capacity preserves four entered immature tails plus the two restored completed events
+ATRDR,accepted_funded_event_count,2119,2121,2,YES,Two additional routed events survive the corrected causal account
+ATRDR,ending_cash,3.123001895478578,3.1105406156705437,-0.0124612798080344,YES,Historical account is flat at its end so ending cash equals NAV
+ATRDR,max_combined_gross_exposure_ratio,0.9860059990857625,0.9859497266403345,-0.0000562724454280,YES,Funding path changes without leverage
+ATRDR,ending_nav,3.123001895478578,3.1105406156705437,-0.0124612798080344,YES,Corrected event cohort changes the account path
+ATRDR,total_return,2.123001895478578,2.1105406156705437,-0.0124612798080344,YES,Future-maturity filter removal is a causal cohort correction not a threshold change
+ATRDR,max_drawdown,-0.06169084324170304,-0.06169084324170304,0.0,NO,Drawdown is unchanged
+OGR,accepted_funded_event_count,255,255,0,NO,Default registered account window preserves sealed behavior
+OGR,ending_nav,1.1101694677651062,1.1101694677651062,0.0,NO,Accepted identities trade economics and NAV regress; only binary diagnostic floats differ below 5.4e-15
+IFCGR,accepted_funded_event_count,248,248,0,NO,Same-run OGR parent and PIT-B gate preserve sealed behavior
+IFCGR,ending_nav,1.105177208143142,1.105177208143142,0.0,NO,Accepted identities trade economics and NAV regress
+SMV6,strategy_event_count,779,779,0,NO,Frozen callback event output is unchanged
+SMV6,local_execution_event_count,1081,1081,0,NO,Only audit metadata columns were added; execution values are unchanged
+SMV6,nav_row_count,3260,3260,0,NO,Local cash-account NAV is unchanged
+SMV6,minimum_cash,4.513061951322015,4.513061951322015,0.0,NO,Existing 2bp commission and 16bp round-trip slippage semantics were already correct

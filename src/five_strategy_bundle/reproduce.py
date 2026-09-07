@@ -337,10 +337,8 @@ def run_atrdr(inputs: dict[str, Path], output: Path) -> dict[str, object]:
     oai = build_oai_mother(daily_hist, output / "fast_oai_mother.parquet")
     fast_signal = select_fast_bear(oai, market, output / "fast_signal.parquet")
     trade_daily = load_daily([daily_hist], fast_signal.symbol.tolist())
-    long_outcomes = fixed_target_outcomes(fast_signal, trade_daily, target=0.20, horizon=60, profile="T20_H60_NO_STOP")
-    eligible_ids = set(long_outcomes.loc[long_outcomes.status.eq("COMPLETED"), "event_id"])
     fast_outcomes = fixed_target_outcomes(
-        fast_signal.loc[fast_signal.event_id.isin(eligible_ids)],
+        fast_signal,
         trade_daily,
         target=0.10,
         horizon=20,
@@ -417,9 +415,11 @@ def run_atrdr(inputs: dict[str, Path], output: Path) -> dict[str, object]:
     }
     result = {
         "strategy": "ATRDR",
-        "status": "FULL_END_TO_END_REPRODUCIBLE",
-        "ATRDR_REPRO_STATUS": "FULL_END_TO_END_REPRODUCIBLE",
-        "closed_interval": "2014-01-01/2026-08-12",
+        "status": "HISTORICAL_ATRDR_V29_PLUS_REGISTERED_V27_CONTINUATIONS",
+        "ATRDR_REPRO_STATUS": "HISTORICAL_ATRDR_V29_PLUS_REGISTERED_V27_CONTINUATIONS",
+        "closed_interval": "2014-01-01/2023-12-31",
+        "continuation_intervals": "2024-01-01/2026-08-12",
+        "continuation_identity": "REGISTERED_V27_NOT_ATRDR_V29",
         "post_2023": post,
         "float_tolerance": 1e-12,
         "float_tolerance_scope": "binary coordinate equality only; no threshold-crossing difference accepted",

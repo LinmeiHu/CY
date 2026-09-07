@@ -596,10 +596,22 @@ class OgrReplay:
     ledger: pd.DataFrame
 
 
-def _replay_board(trades: pd.DataFrame, daily: pd.DataFrame, board: str) -> OgrReplay:
+def _replay_board(
+    trades: pd.DataFrame,
+    daily: pd.DataFrame,
+    board: str,
+    *,
+    account_start: str = "2018-01-01",
+    account_end: str = "2021-12-31",
+) -> OgrReplay:
     signals = trades.loc[trades.board.eq(board)].copy().sort_values(["entry_time", "realized_net_target_at_entry", "pre_gap_inside_density_relative_local", "symbol", "gap_id"], ascending=[True, False, True, True, True], kind="mergesort")
-    period_end = pd.Timestamp(trades.exit_date.max()).normalize()
-    calendar = daily.loc[daily.trade_date.dt.year.between(2018, 2021) & daily.trade_date.le(period_end), ["trade_date", "cal_idx"]].drop_duplicates("trade_date").sort_values("trade_date")
+    period_end = min(
+        pd.Timestamp(trades.exit_date.max()).normalize(), pd.Timestamp(account_end)
+    )
+    calendar = daily.loc[
+        daily.trade_date.between(pd.Timestamp(account_start), period_end),
+        ["trade_date", "cal_idx"],
+    ].drop_duplicates("trade_date").sort_values("trade_date")
     relevant = daily.loc[daily.symbol.isin(signals.symbol.unique())].copy()
     by_symbol = {key: part.sort_values("trade_date") for key, part in relevant.groupby("symbol", sort=False)}
     marks = {(row.symbol, pd.Timestamp(row.trade_date)): float(row.close) for row in relevant.itertuples(index=False) if np.isfinite(row.close)}
@@ -646,16 +658,36 @@ def _replay_board(trades: pd.DataFrame, daily: pd.DataFrame, board: str) -> OgrR
         exposure = sum(position["qty"] * marks.get((symbol, date), mark(position, date, inclusive=True)) for symbol, position in live.items()); nav = cash_daily + exposure
         nav_rows.append({"trade_date": date, "nav": nav, "cash": cash_daily, "gross_exposure": exposure, "utilization": 0 if nav == 0 else exposure / nav, "active_positions": len(live), "board": board})
     nav = pd.DataFrame(nav_rows)
-    if nav.active_positions.max() > 80 or nav.cash.min() < -1e-10: raise ReproductionError("OGR portfolio capacity/leverage breach")
+    if (
+        nav.active_positions.max() > 80
+        or nav.cash.min() < -1e-10
+        or nav.gross_exposure.gt(nav.nav + 1e-10).any()
+    ):
+        raise ReproductionError("OGR portfolio capacity/leverage breach")
     return OgrReplay(nav, pd.DataFrame(accepted), pd.DataFrame(ledger))
 
 
-def replay_portfolio(outcomes: pd.DataFrame, daily: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def replay_portfolio(
+    outcomes: pd.DataFrame,
+    daily: pd.DataFrame,
+    *,
+    account_start: str = "2018-01-01",
+    account_end: str = "2021-12-31",
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     trades = outcomes.copy()
     trades["procedure"] = "FIXED_BELOW_L_REPAIR"
     trades["realized_net_target_at_entry"] = (trades.target_coordinate / trades.entry_coordinate_price) * (1 - 0.002) / (1 + 0.002) - 1
     trades["u_hit"] = trades.exit_reason.eq("PRE_L_TARGET"); trades["outcome_valid"] = True
-    replays = {board: _replay_board(trades, daily, board) for board in ("MAIN", "CHINEXT")}
+    replays = {
+        board: _replay_board(
+            trades,
+            daily,
+            board,
+            account_start=account_start,
+            account_end=account_end,
+        )
+        for board in ("MAIN", "CHINEXT")
+    }
     accepted = pd.concat([replays["MAIN"].accepted.assign(board="MAIN", sleeve_weight=0.5), replays["CHINEXT"].accepted.assign(board="CHINEXT", sleeve_weight=0.5)], ignore_index=True)
     main, chinext = replays["MAIN"].nav, replays["CHINEXT"].nav
     combined = main.merge(chinext, on="trade_date", suffixes=("_main", "_chinext"), validate="one_to_one")

@@ -51,10 +51,32 @@ Production zero points:
 - MCB: `FULL_END_TO_END_REPRODUCIBLE`
 - OGR: `FULL_END_TO_END_REPRODUCIBLE`
 - IFCGR: `END_TO_END_REPRODUCIBLE_WITH_PIT_B`
-- ATRDR: `FULL_END_TO_END_REPRODUCIBLE`
+- ATRDR: `HISTORICAL_ATRDR_V29_PLUS_REGISTERED_V27_CONTINUATIONS`
 - SMV6: `LOCAL_END_TO_END_REPRODUCIBLE_PLATFORM_EQUIVALENCE_UNVERIFIED`
 
 IFCGR uses current official PIT-B enumeration whose revision/deletion history is incomplete. SMV6 reproduces local execution but does not claim native SuperMind broker equivalence.
+
+The ATRDR V29 identity is closed only through 2023-12-31. The registered
+2024-2026 continuations are V27 route/account runs and are not represented as
+ATRDR V29.
+
+## Capital and leverage policy
+
+Every production account is long-only and cash-funded. Financing, margin,
+borrowed cash, temporary negative cash, synthetic cash injection, and borrowing
+between sleeves are prohibited. Gross long market value may not exceed account
+NAV. Buy affordability is decided before execution using the applicable
+commission, slippage-adjusted fill price, volume cap, and board-lot size; a
+minimum fee is included only where the frozen execution contract defines one.
+When available cash is insufficient, the existing execution contract either
+reduces the order to an affordable lot or rejects/skips it. Later intraday sale
+proceeds cannot finance an earlier open order.
+
+After a complete run, verify both sleeve and fixed-portfolio aggregates with:
+
+```bash
+python verify_no_financing.py --output-root output --report-dir reports
+```
 
 ## Provenance
 

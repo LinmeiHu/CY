@@ -272,13 +272,16 @@ def replay_sleeves(
     k_per_sleeve: int,
     daily_cap: int,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, Any]]:
-    completed = trades.loc[trades.status.eq("COMPLETED")].copy()
-    completed = completed.sort_values(
+    eligible = trades.loc[
+        trades.status.eq("COMPLETED")
+        | (trades.status.eq("INCOMPLETE_OUTCOME_TAIL") & trades.entry_date.notna())
+    ].copy()
+    eligible = eligible.sort_values(
         ["entry_date", *rank_columns, "event_id"],
         ascending=[True, False, False, False, True],
         kind="mergesort",
     )
-    by_date = {date: part for date, part in completed.groupby("entry_date", sort=True)}
+    by_date = {date: part for date, part in eligible.groupby("entry_date", sort=True)}
     daily_groups = {
         str(symbol): part.sort_values("trade_date").set_index("trade_date")
         for symbol, part in daily.groupby("symbol", sort=False)
@@ -301,12 +304,23 @@ def replay_sleeves(
             value = value.iloc[-1]
         return None if pd.isna(value) else float(value)
 
+    first_entry = pd.Timestamp(eligible.entry_date.min())
+    last_date = (
+        pd.Timestamp(daily.trade_date.max())
+        if eligible.exit_date.isna().any()
+        else pd.Timestamp(eligible.exit_date.max())
+    )
     for value in dates:
         date = pd.Timestamp(value)
-        if date < completed.entry_date.min() or date > completed.exit_date.max():
+        if date < first_entry or date > last_date:
             continue
         for sleeve, state in states.items():
-            exits = [p for p in state["active"].values() if pd.Timestamp(p["exit_date"]) == date]
+            exits = [
+                p for p in state["active"].values()
+                if pd.notna(p["exit_date"])
+                and pd.Timestamp(p["exit_date"]) == date
+                and not str(p["exit_reason"]).startswith("TARGET_")
+            ]
             for position in sorted(exits, key=lambda item: item["symbol"]):
                 state["cash"] += position["qty"] * float(position["exit_price"]) * (1 - EXIT_COST)
                 del state["active"][position["symbol"]]
@@ -343,18 +357,47 @@ def replay_sleeves(
                 state["active"][row.symbol] = {**row._asdict(), "qty": qty, "entry_outlay": budget}
                 accepted_rows.append({**row._asdict(), "qty": qty, "entry_outlay": budget})
                 new_count += 1
+            exits = [
+                p for p in state["active"].values()
+                if pd.notna(p["exit_date"])
+                and pd.Timestamp(p["exit_date"]) == date
+                and str(p["exit_reason"]).startswith("TARGET_")
+            ]
+            for position in sorted(exits, key=lambda item: item["symbol"]):
+                state["cash"] += position["qty"] * float(position["exit_price"]) * (1 - EXIT_COST)
+                del state["active"][position["symbol"]]
             close_value = 0.0
             for symbol, position in state["active"].items():
                 price = mark(symbol, date, "coord_close")
                 if price is not None:
                     state["last"][symbol] = price
                 close_value += position["qty"] * state["last"].get(symbol, position["entry_price"])
-            nav_rows.append({"trade_date": date, "sleeve": sleeve, "nav": state["cash"] + close_value, "cash": state["cash"], "active": len(state["active"])})
-            if state["cash"] < -1e-10 or len(state["active"]) > k_per_sleeve:
+            sleeve_close_nav = state["cash"] + close_value
+            nav_rows.append({"trade_date": date, "sleeve": sleeve, "nav": sleeve_close_nav, "cash": state["cash"], "active": len(state["active"])})
+            if (
+                state["cash"] < -1e-10
+                or close_value > sleeve_close_nav + 1e-10
+                or len(state["active"]) > k_per_sleeve
+            ):
                 raise ReproductionError("cash or capacity invariant violated")
     accepted, skipped, nav = pd.DataFrame(accepted_rows), pd.DataFrame(skipped_rows), pd.DataFrame(nav_rows)
-    combined = nav.pivot(index="trade_date", columns="sleeve", values="nav").ffill().sum(axis=1)
+    nav_wide = nav.pivot(index="trade_date", columns="sleeve", values="nav").ffill()
+    cash_wide = nav.pivot(index="trade_date", columns="sleeve", values="cash").ffill()
+    active_wide = nav.pivot(index="trade_date", columns="sleeve", values="active").ffill()
+    combined = nav_wide.sum(axis=1)
     combined_frame = combined.rename("combined_nav").reset_index()
+    for sleeve, prefix in (("MAIN", "main"), ("CHINEXT", "chinext")):
+        combined_frame[f"{prefix}_nav"] = nav_wide[sleeve].to_numpy()
+        combined_frame[f"{prefix}_cash"] = cash_wide[sleeve].to_numpy()
+        combined_frame[f"{prefix}_gross_exposure"] = (
+            nav_wide[sleeve] - cash_wide[sleeve]
+        ).to_numpy()
+        combined_frame[f"{prefix}_active"] = active_wide[sleeve].to_numpy()
+    combined_frame["cash"] = combined_frame.main_cash + combined_frame.chinext_cash
+    combined_frame["gross_exposure"] = combined_frame.combined_nav - combined_frame.cash
+    combined_frame["gross_exposure_ratio"] = (
+        combined_frame.gross_exposure / combined_frame.combined_nav
+    )
     returns = combined.pct_change(); returns.iloc[0] = combined.iloc[0] - 1
     drawdown = combined / combined.cummax().clip(lower=1.0) - 1
     years = max((combined.index.max() - combined.index.min()).days / 365.25, 1 / 252)
@@ -474,4 +517,6 @@ def replay_shared_router(
     nav["ret"] = nav.combined_nav.pct_change().fillna(nav.combined_nav.iloc[0] - 1.0)
     if (nav[["main_cash", "chinext_cash"]] < -1e-10).any(axis=None):
         raise ReproductionError("router produced negative cash")
+    if nav.utilization.gt(1 + 1e-10).any():
+        raise ReproductionError("router produced financed gross exposure")
     return accepted, skipped, nav

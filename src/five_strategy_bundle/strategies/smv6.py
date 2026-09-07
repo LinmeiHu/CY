@@ -250,6 +250,18 @@ class ShadowPlatform:
         return f"shadow-{self.event_stage}-{symbol}-{self.current_date.isoformat()}"
 
 
+def affordable_lot_quantity(
+    cash: float, fill_price: float, commission_rate: float, lot_size: int
+) -> int:
+    """Maximum long quantity whose price plus commission fits available cash."""
+    if fill_price <= 0 or commission_rate < 0 or lot_size <= 0:
+        raise ValueError("invalid long-only affordability contract")
+    if cash <= 0:
+        return 0
+    unit_cost = fill_price * (1 + commission_rate)
+    return max(0, math.floor((cash / unit_cost) / lot_size) * lot_size)
+
+
 class CashPlatform(ShadowPlatform):
     """The same callbacks with deterministic cash, fee, and round-lot fills."""
 
@@ -290,11 +302,22 @@ class CashPlatform(ShadowPlatform):
         delta = max(-volume_cap, min(delta, volume_cap))
         side = 1 if delta >= 0 else -1
         price = self._fill_price(mark_price, side)
+        cash_limited = False
+        affordable = 0
         if delta > 0:
-            affordable = math.floor((self.cash / (price * (1 + self.commission_rate))) / self.lot_size) * self.lot_size
+            affordable = affordable_lot_quantity(
+                self.cash, price, self.commission_rate, self.lot_size
+            )
+            cash_limited = delta > affordable
             delta = min(delta, affordable)
         if delta == 0 and current == 0:
-            self._record("BUY_OR_REBALANCE_NO_FILL", symbol, price=mark_price, target_weight=float(target_weight), reject_reason="INSUFFICIENT_CASH_LOT_OR_VOLUME")
+            self._record(
+                "BUY_OR_REBALANCE_NO_FILL", symbol, price=mark_price,
+                target_weight=float(target_weight),
+                reject_reason="INSUFFICIENT_CASH_LOT_OR_VOLUME",
+                requested_qty=desired, cash_affordable_qty=affordable,
+                cash_limited=cash_limited,
+            )
             return None
         fee = abs(delta) * price * self.commission_rate
         self.cash -= delta * price + fee
@@ -307,7 +330,7 @@ class CashPlatform(ShadowPlatform):
         else:
             self.positions[symbol].target_weight = float(target_weight)
         self.shares[symbol] = new_qty
-        self._record(kind, symbol, price=price, market_price=mark_price, target_weight=float(target_weight), requested_qty=desired, filled_delta_qty=delta, position_qty=new_qty, volume_cap_qty=volume_cap, fee=fee, cash_after=self.cash)
+        self._record(kind, symbol, price=price, market_price=mark_price, target_weight=float(target_weight), requested_qty=desired, filled_delta_qty=delta, position_qty=new_qty, volume_cap_qty=volume_cap, cash_affordable_qty=affordable, cash_limited=cash_limited, fee=fee, cash_after=self.cash)
         return f"local-cash-open-{symbol}-{self.current_date.isoformat()}"
 
     def order_target(self, symbol: str, target: float) -> object | None:
@@ -347,6 +370,8 @@ class CashPlatform(ShadowPlatform):
     def record_account(self) -> None:
         nav = self.nav("eod")
         exposure = nav - self.cash
+        if self.cash < -1e-10 or exposure > nav + 1e-10:
+            raise ReproductionError("SMV6 financing invariant violated")
         self.accounts.append({"trade_date": self.current_date, "nav": nav, "cash": self.cash, "gross_exposure": exposure, "cash_weight": self.cash / nav, "gross_exposure_ratio": exposure / nav, "position_count": len(self.positions)})
 
 

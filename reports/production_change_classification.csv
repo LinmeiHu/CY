@@ -1,0 +1,12 @@
+path,function_or_section,classification,materiality,port_to_standalone,reason,source_commit
+src/five_strategy_bundle/execution/daily.py,replay_sleeves target-exit ordering,CONFIRMED_PRODUCTION_BUGFIX,HIGH,YES,Later intraday target exits must not finance or release capacity for earlier open buys,b72181242360d530bbff972966b68945d674851b
+src/five_strategy_bundle/execution/daily.py,replay_sleeves entered incomplete tail,CONFIRMED_PRODUCTION_BUGFIX,HIGH,YES,An already entered position remains in cash positions and NAV until a causal exit,b72181242360d530bbff972966b68945d674851b
+src/five_strategy_bundle/reproduce.py,run_atrdr Fast Bear outcomes,CONFIRMED_PRODUCTION_BUGFIX,HIGH,YES,T10 H20 eligibility must not depend on unrelated future T20 H60 maturity,b72181242360d530bbff972966b68945d674851b
+src/five_strategy_bundle/strategies/atrdr.py,select_fast_capacity,CONFIRMED_PRODUCTION_BUGFIX,HIGH,YES,Capacity must retain entered positions whose final outcome tail is immature,b72181242360d530bbff972966b68945d674851b
+src/five_strategy_bundle/strategies/ogr.py,replay_portfolio account window,DATE_PARAMETERIZATION_FIX,MEDIUM,YES,Exposes registered account dates without changing OGR economic rules or selecting on outcomes,04f31aa04b3d7b34230817acaf676f1ad31c2827
+src/five_strategy_bundle/reproduce.py,ATRDR result identity labels,METADATA_FIX,MEDIUM,YES,Post-2023 registered V27 continuations must not be labeled ATRDR V29,4217e30c7171306ec2778d7349312f96abfa0c16
+README.md,SMV6 cost and ATRDR identity wording,METADATA_FIX,LOW,YES,Documents 2bp commission 16bp round-trip slippage and the actual identity boundary,4217e30c7171306ec2778d7349312f96abfa0c16
+tests/unit/test_execution.py,causal execution regression tests,TEST_ONLY,LOW,YES,Locks cash slot incomplete-position and prefix invariants,b72181242360d530bbff972966b68945d674851b
+tests/unit/test_ogr_replay_window.py,OGR date-window regression test,TEST_ONLY,LOW,YES,Locks explicit later account-window behavior,04f31aa04b3d7b34230817acaf676f1ad31c2827
+research/five_strategy_portfolio_v2,portfolio research runner tests and outputs,RESEARCH_ONLY,NONE,NO,Portfolio research is outside standalone production closure,4217e30c7171306ec2778d7349312f96abfa0c16
+research/five_strategy_portfolio_v1/test_runner.py,portfolio V1 report regression test,TEST_ONLY,NONE,NO,Research-layer test is excluded with portfolio research,4217e30c7171306ec2778d7349312f96abfa0c16

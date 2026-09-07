@@ -311,7 +311,11 @@ def select_fast_capacity(outcomes: pd.DataFrame, output: Path) -> pd.DataFrame:
     """Apply the frozen V13R1 rank, active-symbol, K75 and daily-20 gates."""
     rank = ("stock_minus_industry_ret20", "close_vs_prior10_high", "close_location_x")
     eligible = outcomes.loc[
-        outcomes.status.eq("COMPLETED") & outcomes[list(rank)].notna().all(axis=1)
+        (
+            outcomes.status.eq("COMPLETED")
+            | (outcomes.status.eq("INCOMPLETE_OUTCOME_TAIL") & outcomes.entry_date.notna())
+        )
+        & outcomes[list(rank)].notna().all(axis=1)
     ].sort_values(
         ["entry_date", "sleeve", *rank, "event_id"],
         ascending=[True, True, False, False, False, True],

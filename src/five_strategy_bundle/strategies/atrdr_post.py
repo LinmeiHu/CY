@@ -627,12 +627,22 @@ def replay_portfolio(
                 for position in sleeve["positions"].values()
             )
             nav = float(sleeve["cash"] + market_value)
-            payload[f"{prefix}_nav"], payload[f"{prefix}_active"] = nav, len(sleeve["positions"])
+            payload[f"{prefix}_nav"] = nav
+            payload[f"{prefix}_cash"] = float(sleeve["cash"])
+            payload[f"{prefix}_gross_exposure"] = float(market_value)
+            payload[f"{prefix}_active"] = len(sleeve["positions"])
+            if sleeve["cash"] < -1e-10 or market_value > nav + 1e-10:
+                raise ReproductionError("V27 continuation financing invariant violated")
             invested += market_value
             total_nav += nav
             active += len(sleeve["positions"])
         payload["combined_nav"], payload["active_positions"] = total_nav, active
         payload["utilization"] = 0.0 if total_nav == 0 else invested / total_nav
+        payload["cash"] = float(
+            state["MAIN"]["cash"] + state["CHINEXT"]["cash"]
+        )
+        payload["gross_exposure"] = float(invested)
+        payload["gross_exposure_ratio"] = payload["utilization"]
         rows.append(payload)
     nav = pd.DataFrame(rows)
     nav["ret"] = nav.combined_nav.pct_change().fillna(0.0)
