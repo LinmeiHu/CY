@@ -1,0 +1,1017 @@
+[
+  {
+    "file": "ATRDR_CONTINUOUS_2014_2023_accepted.parquet",
+    "rows": 2121,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "ATRDR_CONTINUOUS_2014_2023_audited_event_states.parquet",
+    "rows": 4242,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "ATRDR_CONTINUOUS_2014_2023_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "ATRDR_CONTINUOUS_2014_2023_skipped.parquet",
+    "rows": 1917,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4928"
+  },
+  {
+    "file": "ATRDR_CONTINUOUS_2014_2023_source.parquet",
+    "rows": 4038,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[us]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[us]\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4806"
+  },
+  {
+    "file": "ATRDR_ENTERED_RETAINED_DIAGNOSTIC_accepted.parquet",
+    "rows": 2070,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "ATRDR_ENTERED_RETAINED_DIAGNOSTIC_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "ATRDR_ENTERED_RETAINED_DIAGNOSTIC_source.parquet",
+    "rows": 4046,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[us]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[us]\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4806"
+  },
+  {
+    "file": "IFCGR_2018_2021_accepted.parquet",
+    "rows": 248,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17733"
+  },
+  {
+    "file": "IFCGR_2018_2021_audited_event_states.parquet",
+    "rows": 504,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "IFCGR_2018_2021_nav.parquet",
+    "rows": 961,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "IFCGR_2018_2021_skipped.parquet",
+    "rows": 347,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "IFCGR_2018_2021_source.parquet",
+    "rows": 347,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: bool\nprocedure: null\nrealized_net_target_at_entry: double\nu_hit: null\noutcome_valid: null\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17052"
+  },
+  {
+    "file": "IFCGR_2022_2023_accepted.parquet",
+    "rows": 44,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: null\nv27_fresh_gap_gate: null\nv27_forceful_snapback_gate: null\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: double\nsignal_is_st: double\nsignal_state_hard_valid: double\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: double\nsignal_state_available_by_decision: double\nv28_liquidity_trap_gate: double\nv28_signal_non_st_gate: double\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: double\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: double\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: double\nsignal_price_available_by_decision: double\nsignal_closed_at_up_limit: double\nv28r1_demand_not_locked_gate: double\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: double\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: double\nsignal_amount_available_by_decision: double\nsignal_amount_snapshot_id: double\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: double\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: double\nv28r2_feature_uses_post_signal_information: double\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17847"
+  },
+  {
+    "file": "IFCGR_2022_2023_audited_event_states.parquet",
+    "rows": 94,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "IFCGR_2022_2023_nav.parquet",
+    "rows": 459,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "IFCGR_2022_2023_skipped.parquet",
+    "rows": 44,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "IFCGR_2022_2023_source.parquet",
+    "rows": 44,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: null\nsignal_is_st: null\nsignal_state_hard_valid: null\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: null\nsignal_state_available_by_decision: null\nv28_liquidity_trap_gate: null\nv28_signal_non_st_gate: null\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: null\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: null\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: null\nsignal_price_available_by_decision: null\nsignal_closed_at_up_limit: null\nv28r1_demand_not_locked_gate: null\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: null\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: null\nsignal_amount_available_by_decision: null\nsignal_amount_snapshot_id: null\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: null\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: null\nv28r2_feature_uses_post_signal_information: null\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: bool\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17063"
+  },
+  {
+    "file": "MCB_CONTINUOUS_2014_2023_accepted.parquet",
+    "rows": 1010,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3234"
+  },
+  {
+    "file": "MCB_CONTINUOUS_2014_2023_audited_event_states.parquet",
+    "rows": 2018,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "MCB_CONTINUOUS_2014_2023_nav.parquet",
+    "rows": 2409,
+    "schema": "trade_date: timestamp[ns]\nnav: double\nmain_nav: double\nmain_cash: double\nmain_gross_exposure: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_gross_exposure: double\nchinext_active: int64\ncash: double\ngross_exposure: double\ngross_exposure_ratio: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1702"
+  },
+  {
+    "file": "MCB_CONTINUOUS_2014_2023_skipped.parquet",
+    "rows": 889,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3124"
+  },
+  {
+    "file": "MCB_CONTINUOUS_2014_2023_source.parquet",
+    "rows": 1904,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[us]\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3002"
+  },
+  {
+    "file": "OGR_2018_2021_accepted.parquet",
+    "rows": 255,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17733"
+  },
+  {
+    "file": "OGR_2018_2021_audited_event_states.parquet",
+    "rows": 518,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "OGR_2018_2021_nav.parquet",
+    "rows": 961,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "OGR_2018_2021_skipped.parquet",
+    "rows": 355,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "OGR_2018_2021_source.parquet",
+    "rows": 355,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 16547"
+  },
+  {
+    "file": "OGR_2022_2023_accepted.parquet",
+    "rows": 44,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: null\nv27_fresh_gap_gate: null\nv27_forceful_snapback_gate: null\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: double\nsignal_is_st: double\nsignal_state_hard_valid: double\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: double\nsignal_state_available_by_decision: double\nv28_liquidity_trap_gate: double\nv28_signal_non_st_gate: double\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: double\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: double\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: double\nsignal_price_available_by_decision: double\nsignal_closed_at_up_limit: double\nv28r1_demand_not_locked_gate: double\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: double\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: double\nsignal_amount_available_by_decision: double\nsignal_amount_snapshot_id: double\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: double\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: double\nv28r2_feature_uses_post_signal_information: double\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17847"
+  },
+  {
+    "file": "OGR_2022_2023_audited_event_states.parquet",
+    "rows": 94,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "OGR_2022_2023_nav.parquet",
+    "rows": 459,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "OGR_2022_2023_skipped.parquet",
+    "rows": 44,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "OGR_2022_2023_source.parquet",
+    "rows": 44,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: null\nsignal_is_st: null\nsignal_state_hard_valid: null\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: null\nsignal_state_available_by_decision: null\nv28_liquidity_trap_gate: null\nv28_signal_non_st_gate: null\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: null\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: null\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: null\nsignal_price_available_by_decision: null\nsignal_closed_at_up_limit: null\nv28r1_demand_not_locked_gate: null\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: null\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: null\nsignal_amount_available_by_decision: null\nsignal_amount_snapshot_id: null\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: null\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: null\nv28r2_feature_uses_post_signal_information: null\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 16558"
+  },
+  {
+    "file": "SMV6_current_events.parquet",
+    "rows": 612,
+    "schema": "trade_date: timestamp[ns]\nsymbol: string\nevent_type: string\nstage: string\nprice_pre_adj: double\nevent_sequence: int64\nreason: string\nsignal_date: date32[day]\nmarket_price: double\ntarget_weight: double\nrequested_qty: double\nfilled_delta_qty: double\nposition_qty: double\nvolume_cap_qty: double\ncash_affordable_qty: double\ncash_limited: bool\nfee: double\ncash_after: double\nentry_date: date32[day]\nentry_price: double\nholding_pnl_pct: double\nreject_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2780"
+  },
+  {
+    "file": "SMV6_current_nav.parquet",
+    "rows": 2616,
+    "schema": "trade_date: date32[day]\nnav: double\ncash: double\ngross_exposure: double\ncash_weight: double\ngross_exposure_ratio: double\nposition_count: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 926"
+  },
+  {
+    "file": "SMV6_event_account_states.parquet",
+    "rows": 365,
+    "schema": "timestamp: timestamp[ns]\nstage: string\nevent_sequence: int64\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nborrowed_cash: int64\nmargin: int64\nreserved_buy_cash: int64\nevent_type: string\nsymbol: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1633"
+  },
+  {
+    "file": "SMV6_inventory.parquet",
+    "rows": 1565,
+    "schema": "symbol: string\ntrade_date: timestamp[ns]\nqty: int64\nentry_date: timestamp[ns]\nentry_price: double\nprice: double\naccount_nav: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 905"
+  },
+  {
+    "file": "SMV6_position_state_snapshots.parquet",
+    "rows": 1565,
+    "schema": "route: string\nsegment: string\nepisode_id: string\nevent_cluster: string\nsymbol: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nstate_observed_at: timestamp[ns]\ndecision_at: timestamp[ns]\ndata_available_at: timestamp[ns]\nearliest_legal_execution_at: timestamp[ns]\nnative_time: timestamp[ns]\nlabel_available_at: timestamp[ns]\nlabel_status: string\nstate_valid: bool\nquantity_coordinate: int64\nholding_value: double\nEXIT_ADVANTAGE_NET: double\nexit_advantage_normalized: double\nnative_net_return: double\ncurrent_pnl: double\nage: int64\nremaining_horizon: double\nmfe_sofar: double\ngiveback: double\natr_entry_frac: double\nanchor_distance: double\nanchor_below_run: double\nclose_location: double\ndown_volume_ratio: double\nrecovery_3: double\nmae_sofar: double\nfailed_attempts: int64\npartial_fills: int64\nexit_filled: bool\nlabel_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4688"
+  },
+  {
+    "file": "all_source_normalized.parquet",
+    "rows": 6732,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[us]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: double\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nsegment: string\nentry_time: timestamp[ns]\nnative_time: timestamp[ns]\nepisode_id: string\nevent_cluster: string\nhorizon: int64\nqty: double\nentry_outlay: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\ngap_id: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: double\ngap_seq: double\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: double\npre_gap_corridor_touch_sessions: double\npre_peak_to_gap_sessions: double\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_time: timestamp[ns]\nsignal_coord_close: double\nswing_low: double\ngap_age: double\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: double\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: double\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_raw_price: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_raw_price: double\ncash_events_json: string\nlineage_break_before_exit: bool\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: bool\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 21647"
+  },
+  {
+    "file": "baseline_event_account_states.parquet",
+    "rows": 7470,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2089"
+  },
+  {
+    "file": "bear_routes.parquet",
+    "rows": 1177,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[us]"
+  },
+  {
+    "file": "candidate_position_paths.parquet",
+    "rows": 99829,
+    "schema": "symbol: string\ntrade_date: timestamp[us]\ncal_idx: int64\nopen: double\nhigh: double\nlow: double\nclose: double\nvolume: double\namount: double\ncoord_open: double\ncoord_high: double\ncoord_low: double\ncoord_close: double\ncoordinate_factor: double\ninvalid_step_cum: double\nhard_valid: bool\nhistory_valid: bool\ncurrent_valid: bool\ncorporate_action_valid: bool\ncorporate_action_count: int64\ncorporate_action_blocking: bool\ncurrent_day_data_tradable: bool\nmarket_rule_valid: bool\ntrade_status: int32\nup_limit_price: double\ndown_limit_price: double\navailable_at: timestamp[us]\ndecision_at: timestamp[us]\nis_st: bool\ncausal_industry: string\ncash_accrued_per_share: double\nstate_valid: bool\nsellable_open: bool\nage: double\ncurrent_pnl: double\nmae_sofar: double\nmfe_sofar: double\ngiveback: double\nremaining_horizon: double\natr_entry_frac: double\nanchor_distance: double\nanchor_below_run: double\nclose_location: double\ndown_volume_ratio: double\nrecovery_3: double\nepisode_id: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5780"
+  },
+  {
+    "file": "daily_relevant.parquet",
+    "rows": 6182494,
+    "schema": "symbol: string\ntrade_date: timestamp[us]\ncal_idx: int64\nopen: double\nhigh: double\nlow: double\nclose: double\nvolume: double\namount: double\ncoord_open: double\ncoord_high: double\ncoord_low: double\ncoord_close: double\ncoordinate_factor: double\ninvalid_step_cum: double\nhard_valid: bool\nhistory_valid: bool\ncurrent_valid: bool\ncorporate_action_valid: bool\ncorporate_action_count: int64\ncorporate_action_blocking: bool\ncurrent_day_data_tradable: bool\nmarket_rule_valid: bool\ntrade_status: int32\nup_limit_price: double\ndown_limit_price: double\navailable_at: timestamp[us]\ndecision_at: timestamp[us]\nis_st: bool\ncausal_industry: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3779"
+  },
+  {
+    "file": "events_ATRDR_BULL_H1_2.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_H2_0.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_atr_1.5.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_atr_1.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_atr_2.5.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_atr_2.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_atr_3.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.03.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.05.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.075.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.1.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.125.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.15.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_fixed_0.2.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_BULL_native_0.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_time_3.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_time_5.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_BULL_time_8.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_H1_2.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_H2_0.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_atr_1.5.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_atr_1.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_atr_2.5.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_atr_2.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_atr_3.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.03.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.05.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.075.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.1.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.125.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.15.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_fixed_0.2.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_FAST_BEAR_native_0.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_H1_2.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_H2_0.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_atr_1.5.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_atr_1.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_atr_2.5.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_atr_2.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_atr_3.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.03.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.05.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.075.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.1.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.125.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.15.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_fixed_0.2.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_ATRDR_SLOW_BEAR_native_0.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_MCB_H1_2.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_H2_0.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_atr_1.5.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_atr_1.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_atr_2.5.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_atr_2.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_atr_3.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_fixed_0.03.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_fixed_0.05.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_fixed_0.075.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_fixed_0.1.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_fixed_0.125.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_fixed_0.15.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_fixed_0.2.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "events_MCB_native_0.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_profit_0.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_time_3.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_time_5.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_MCB_time_8.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_H1_2.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_H2_0.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_atr_1.5.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_atr_1.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_atr_2.5.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_atr_2.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_atr_3.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_fixed_0.03.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_fixed_0.05.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_fixed_0.075.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_fixed_0.1.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_fixed_0.125.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_fixed_0.15.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_fixed_0.2.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "events_OGR_native_0.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_time_3.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_time_5.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "events_OGR_time_8.parquet",
+    "rows": 399,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "fast_capacity.parquet",
+    "rows": 556,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: int64\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nstep_return: double\nsignal_decision_at: timestamp[us]\nregime_latest_source_timestamp: timestamp[us]\nb20_l5_source_timestamp: timestamp[us]\nmarket_positive_ret20_share: double\nb20_l5: double\nprior10_return: double\nclose_location_x: double\nturnover_ratio_x: double\nsignal_invalid: double\nstock_minus_industry_ret20: double\nclose_vs_prior10_high: double\nv13r1_capacity_status: string"
+  },
+  {
+    "file": "fast_corrected.parquet",
+    "rows": 666,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: int64\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nstep_return: double\nsignal_decision_at: timestamp[us]\nregime_latest_source_timestamp: timestamp[us]\nb20_l5_source_timestamp: timestamp[us]\nmarket_positive_ret20_share: double\nb20_l5: double\nprior10_return: double\nclose_location_x: double\nturnover_ratio_x: double\nsignal_invalid: double\nstock_minus_industry_ret20: double\nclose_vs_prior10_high: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3969"
+  },
+  {
+    "file": "loss_episodes.parquet",
+    "rows": 3722,
+    "schema": "route: string\nsegment: string\nepisode_id: string\nsymbol: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nmature: bool\nnative_net_return: double\nqty_coordinate: double\nentry_outlay: double\nmae_observed: double\nmfe_observed: double\nnever_profited_5pct: bool\nprofit_giveback: bool\nbreached_then_recovered: bool\nsustained_breach: bool\nunderwater_days: int64\nuntradable_days: int64\npath_days: int64\nlabel_status: string\nmae_scope: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2805"
+  },
+  {
+    "file": "minute_open_execution_evidence.parquet",
+    "rows": 67175,
+    "schema": "symbol: string\ntrade_date: timestamp[us]\ndaily_open: double\ndown_limit_price: double\nstate_valid: bool\nbar_end_time: timestamp[ns]\nminute_open: double\nminute_volume: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1070"
+  },
+  {
+    "file": "out_of_training_predictions.parquet",
+    "rows": 139326,
+    "schema": "route: string\nepisode_id: string\nevent_cluster: string\nentry_date: timestamp[ns]\nsignal_date: timestamp[ns]\ndecision_at: timestamp[ns]\nlabel_available_at: timestamp[ns]\nexit_advantage_normalized: double\nyear: int64\nphase: string\nmodel: string\nprediction: double\nprediction_bin: int64\nevent_weight: double\nout_of_domain: bool\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1935"
+  },
+  {
+    "file": "policy_ATRDR_BULL_CONTINUOUS_2014_2023_fixed_0.1_accepted.parquet",
+    "rows": 2122,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "policy_ATRDR_BULL_CONTINUOUS_2014_2023_fixed_0.1_audited_event_states.parquet",
+    "rows": 4244,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_BULL_CONTINUOUS_2014_2023_fixed_0.1_event_states.parquet",
+    "rows": 4244,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_BULL_CONTINUOUS_2014_2023_fixed_0.1_events.parquet",
+    "rows": 2862,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_ATRDR_BULL_CONTINUOUS_2014_2023_fixed_0.1_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "policy_ATRDR_BULL_CONTINUOUS_2014_2023_fixed_0.1_skipped.parquet",
+    "rows": 1916,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4928"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H1_2_accepted.parquet",
+    "rows": 2122,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H1_2_audited_event_states.parquet",
+    "rows": 4244,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H1_2_event_states.parquet",
+    "rows": 4244,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H1_2_events.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H1_2_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H1_2_skipped.parquet",
+    "rows": 1916,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4928"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H2_0_accepted.parquet",
+    "rows": 2124,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H2_0_audited_event_states.parquet",
+    "rows": 4248,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H2_0_event_states.parquet",
+    "rows": 4248,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H2_0_events.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H2_0_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_H2_0_skipped.parquet",
+    "rows": 1914,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4928"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_fixed_0.1_accepted.parquet",
+    "rows": 2122,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_fixed_0.1_audited_event_states.parquet",
+    "rows": 4244,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_fixed_0.1_event_states.parquet",
+    "rows": 4244,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_fixed_0.1_events.parquet",
+    "rows": 155,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_fixed_0.1_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "policy_ATRDR_FAST_BEAR_CONTINUOUS_2014_2023_fixed_0.1_skipped.parquet",
+    "rows": 1916,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4928"
+  },
+  {
+    "file": "policy_ATRDR_SLOW_BEAR_CONTINUOUS_2014_2023_fixed_0.1_accepted.parquet",
+    "rows": 2121,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 5038"
+  },
+  {
+    "file": "policy_ATRDR_SLOW_BEAR_CONTINUOUS_2014_2023_fixed_0.1_audited_event_states.parquet",
+    "rows": 4242,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_SLOW_BEAR_CONTINUOUS_2014_2023_fixed_0.1_event_states.parquet",
+    "rows": 4242,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_ATRDR_SLOW_BEAR_CONTINUOUS_2014_2023_fixed_0.1_events.parquet",
+    "rows": 1021,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_ATRDR_SLOW_BEAR_CONTINUOUS_2014_2023_fixed_0.1_nav.parquet",
+    "rows": 2433,
+    "schema": "trade_date: timestamp[ns]\nmain_nav: double\nmain_cash: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_active: int64\nnav: double\nactive_positions: int64\nutilization: double\nret: double\ncash: double\ngross_exposure: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1636"
+  },
+  {
+    "file": "policy_ATRDR_SLOW_BEAR_CONTINUOUS_2014_2023_fixed_0.1_skipped.parquet",
+    "rows": 1917,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nholding_sessions: double\ngross_return: double\nnet_return: double\nlane: string\nrank1: double\nrank2: double\nrank3: double\nmarket_regime: string\nmarket_median_ret20: double\nmarket_median_ret60: double\nlatest_source_timestamp: timestamp[ns]\nsource: string\nsource_event_id: string\nsource_rank1: double\nsource_rank2: double\nsource_rank3: double\nsignal_cal_idx: double\nprofile: string\nstatus: string\nexit_decision_cal_idx: double\nindustry_breadth20_delta5: double\nret60: double\nturnover_ratio: double\nsource_rank_order: int64\nroute: string\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4928"
+  },
+  {
+    "file": "policy_IFCGR_2018_2021_fixed_0.1_accepted.parquet",
+    "rows": 250,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17733"
+  },
+  {
+    "file": "policy_IFCGR_2018_2021_fixed_0.1_audited_event_states.parquet",
+    "rows": 508,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_IFCGR_2018_2021_fixed_0.1_event_states.parquet",
+    "rows": 508,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_IFCGR_2018_2021_fixed_0.1_events.parquet",
+    "rows": 347,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_IFCGR_2018_2021_fixed_0.1_nav.parquet",
+    "rows": 961,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "policy_IFCGR_2018_2021_fixed_0.1_skipped.parquet",
+    "rows": 347,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "policy_IFCGR_2022_2023_fixed_0.1_accepted.parquet",
+    "rows": 44,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: null\nv27_fresh_gap_gate: null\nv27_forceful_snapback_gate: null\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: null\nsignal_is_st: null\nsignal_state_hard_valid: null\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: null\nsignal_state_available_by_decision: null\nv28_liquidity_trap_gate: null\nv28_signal_non_st_gate: null\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: null\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: null\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: null\nsignal_price_available_by_decision: null\nsignal_closed_at_up_limit: null\nv28r1_demand_not_locked_gate: null\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: null\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: null\nsignal_amount_available_by_decision: null\nsignal_amount_snapshot_id: null\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: null\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: null\nv28r2_feature_uses_post_signal_information: null\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17787"
+  },
+  {
+    "file": "policy_IFCGR_2022_2023_fixed_0.1_audited_event_states.parquet",
+    "rows": 92,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_IFCGR_2022_2023_fixed_0.1_event_states.parquet",
+    "rows": 92,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_IFCGR_2022_2023_fixed_0.1_events.parquet",
+    "rows": 44,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_IFCGR_2022_2023_fixed_0.1_nav.parquet",
+    "rows": 459,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "policy_IFCGR_2022_2023_fixed_0.1_skipped.parquet",
+    "rows": 44,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_fixed_0.1_accepted.parquet",
+    "rows": 1010,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3234"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_fixed_0.1_audited_event_states.parquet",
+    "rows": 2018,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_fixed_0.1_event_states.parquet",
+    "rows": 2018,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_fixed_0.1_events.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3759"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_fixed_0.1_nav.parquet",
+    "rows": 2409,
+    "schema": "trade_date: timestamp[ns]\nnav: double\nmain_nav: double\nmain_cash: double\nmain_gross_exposure: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_gross_exposure: double\nchinext_active: int64\ncash: double\ngross_exposure: double\ngross_exposure_ratio: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1702"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_fixed_0.1_skipped.parquet",
+    "rows": 889,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3124"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_profit_0_accepted.parquet",
+    "rows": 1010,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[ns]\nqty: double\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3234"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_profit_0_audited_event_states.parquet",
+    "rows": 2018,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_profit_0_event_states.parquet",
+    "rows": 2018,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_profit_0_events.parquet",
+    "rows": 1899,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_profit_0_nav.parquet",
+    "rows": 2409,
+    "schema": "trade_date: timestamp[ns]\nnav: double\nmain_nav: double\nmain_cash: double\nmain_gross_exposure: double\nmain_active: int64\nchinext_nav: double\nchinext_cash: double\nchinext_gross_exposure: double\nchinext_active: int64\ncash: double\ngross_exposure: double\ngross_exposure_ratio: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 1702"
+  },
+  {
+    "file": "policy_MCB_CONTINUOUS_2014_2023_profit_0_skipped.parquet",
+    "rows": 889,
+    "schema": "event_id: string\nsymbol: string\nsleeve: string\nsignal_date: timestamp[ns]\nsignal_cal_idx: int64\nprofile: string\nstatus: string\nentry_date: timestamp[ns]\nentry_cal_idx: double\nentry_price: double\nexit_date: timestamp[ns]\nexit_cal_idx: double\nexit_price: double\nexit_reason: string\nexit_decision_cal_idx: double\nholding_sessions: double\ngross_return: double\nnet_return: double\nindustry_positive_ret20_share: double\nstock_minus_industry_ret20: double\nturnover_expansion: double\nanchor: double\nanchor_available_at: timestamp[ns]\nskip_reason: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3124"
+  },
+  {
+    "file": "policy_OGR_2018_2021_fixed_0.1_accepted.parquet",
+    "rows": 257,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: bool\nv27_fresh_gap_gate: bool\nv27_forceful_snapback_gate: bool\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: bool\nsignal_is_st: bool\nsignal_state_hard_valid: bool\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: string\nsignal_state_available_by_decision: bool\nv28_liquidity_trap_gate: bool\nv28_signal_non_st_gate: bool\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: bool\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: bool\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: string\nsignal_price_available_by_decision: bool\nsignal_closed_at_up_limit: bool\nv28r1_demand_not_locked_gate: bool\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: bool\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: bool\nsignal_amount_available_by_decision: bool\nsignal_amount_snapshot_id: string\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: bool\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: bool\nv28r2_feature_uses_post_signal_information: bool\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17733"
+  },
+  {
+    "file": "policy_OGR_2018_2021_fixed_0.1_audited_event_states.parquet",
+    "rows": 522,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_OGR_2018_2021_fixed_0.1_event_states.parquet",
+    "rows": 522,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_OGR_2018_2021_fixed_0.1_events.parquet",
+    "rows": 355,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_OGR_2018_2021_fixed_0.1_nav.parquet",
+    "rows": 961,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "policy_OGR_2018_2021_fixed_0.1_skipped.parquet",
+    "rows": 355,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "policy_OGR_2022_2023_fixed_0.1_accepted.parquet",
+    "rows": 44,
+    "schema": "gap_id: string\nsymbol: string\nboard: string\ngap_date: timestamp[ns]\ncal_idx: int64\ngap_seq: int64\ninvalid_step_cum: double\ncoordinate_factor: double\nL: double\nU: double\nW: double\ngap_width_pct: double\npre_gap_inside_touch_sessions: int64\npre_gap_corridor_touch_sessions: int64\npre_peak_to_gap_sessions: int64\npre_gap_drawdown_from_120d_peak: double\npre_gap_return_20d: double\npre_gap_range_20d: double\ntrigger: string\nsignal_date: timestamp[ns]\nsignal_time: timestamp[ns]\nsignal_cal_idx: int64\nsignal_coord_close: double\nswing_low: double\ngap_age: int64\nmax_depth: double\ncurrent_depth: double\ndays_since_low20: int64\nrecovery_from_low20: double\ndry3: double\ntrigger_expansion: double\nform: string\nminute_history_sessions: double\nexact_241_minute_sessions: double\nlocal_mass: double\ninside_mass: double\ncorridor_mass: double\ncorridor_max_bin_mass: double\npre_gap_inside_density_relative_local: double\npre_gap_corridor_density_relative_local: double\npre_gap_corridor_max_bin_density_relative_local: double\nexact_minute_history: bool\ndaily_history_rejected: bool\nsignal_year: int64\ndecision_latest_timestamp: timestamp[ns]\nfeature_uses_post_signal_information: bool\nrebound_from_post_gap_low_over_l: double\nv27_mature_decline_gate: null\nv27_fresh_gap_gate: null\nv27_forceful_snapback_gate: null\nsemantic_feature_latest_timestamp: timestamp[ns]\nprior20_one_price_limit_down_count: double\nliquidity_trap_guard: null\nsignal_is_st: null\nsignal_state_hard_valid: null\nsignal_state_available_at: timestamp[ns]\nsignal_state_snapshot_id: null\nsignal_state_available_by_decision: null\nv28_liquidity_trap_gate: null\nv28_signal_non_st_gate: null\nv28_feature_latest_timestamp: timestamp[ns]\nv28_feature_uses_post_signal_information: null\nsignal_raw_close: double\nsignal_up_limit_price: double\nsignal_price_hard_valid: null\nsignal_price_available_at: timestamp[ns]\nsignal_price_snapshot_id: null\nsignal_price_available_by_decision: null\nsignal_closed_at_up_limit: null\nv28r1_demand_not_locked_gate: null\nv28r1_feature_latest_timestamp: timestamp[ns]\nv28r1_feature_uses_post_signal_information: null\nsignal_raw_amount: double\nsignal_amount_state_hard_valid: null\nsignal_amount_available_by_decision: null\nsignal_amount_snapshot_id: null\nprior20_completed_trading_sessions: double\nprior20_unknown_trading_state_rows: double\nprior20_hard_valid_sessions: double\nprior20_available_by_decision_sessions: double\nprior20_finite_positive_amount_sessions: double\nprior20_amount_history_complete: null\nprior20_median_amount: double\nsignal_amount_to_prior20_median: double\nv28r2_feature_latest_timestamp: timestamp[ns]\nv28r2_orderly_amount_gate: null\nv28r2_feature_uses_post_signal_information: null\nentry_date: timestamp[ns]\nentry_time: timestamp[ns]\nentry_raw_price: double\nentry_cal_idx: double\nentry_coordinate_factor: double\nentry_invalid_step_cum: double\nup_limit_price: double\nentry_coordinate_price: double\nrealized_net_l_headroom: double\nentry_status: string\nentry_at_or_before_signal: bool\nentry_after_signal_period_boundary: bool\nbuy_at_or_above_up_limit: bool\nalpha: double\nhorizon: int64\nstop: string\ntarget_coordinate: double\nexit_time: timestamp[ns]\nexit_date: timestamp[ns]\nexit_raw_price: double\nexit_cal_idx: int64\nexit_reason: string\nnet_return: double\nholding_sessions: int64\ncash_events_json: string\nlineage_break_before_exit: bool\nsegment: string\nformer_ordered_runup_120d: double\nformer_range_120d: double\ndaily_lineage_break_before_exit: null\nprocedure: string\nrealized_net_target_at_entry: double\nu_hit: bool\noutcome_valid: bool\nqty: double\nentry_outlay: double\ncompleted: bool\ncash_events: list<element: struct<cash_per_share: double, date: string, event_id: string>>\n  child 0, element: struct<cash_per_share: double, date: string, event_id: string>\n      child 0, cash_per_share: double\n      child 1, date: string\n      child 2, event_id: string\ncash_event_index: int64\nsleeve_weight: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 17787"
+  },
+  {
+    "file": "policy_OGR_2022_2023_fixed_0.1_audited_event_states.parquet",
+    "rows": 92,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_OGR_2022_2023_fixed_0.1_event_states.parquet",
+    "rows": 92,
+    "schema": "strategy: string\nsegment: string\npolicy: string\nsleeve: string\ntimestamp: timestamp[ns]\nkind: string\nevent_id: string\ncash_before: double\ncash: double\navailable_cash: double\ngross_long_value: double\nnav: double\ngross_ratio: double\nreserved_buy_cash: double\nborrowed_cash: double\nmargin: double\nunits: string\nmarking_contract: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 2221"
+  },
+  {
+    "file": "policy_OGR_2022_2023_fixed_0.1_events.parquet",
+    "rows": 44,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  },
+  {
+    "file": "policy_OGR_2022_2023_fixed_0.1_nav.parquet",
+    "rows": 459,
+    "schema": "trade_date: timestamp[ns]\nnav: double\ncash: double\ngross_exposure: double\nutilization: double\nactive_positions: int64\nboard: string\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 911"
+  },
+  {
+    "file": "policy_OGR_2022_2023_fixed_0.1_skipped.parquet",
+    "rows": 44,
+    "schema": "procedure: string\ngap_id: string\nsymbol: string\nboard: string\nentry_time: timestamp[ns]\nstatus: string\nentry_outlay: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 893"
+  },
+  {
+    "file": "position_state_snapshots.parquet",
+    "rows": 52251,
+    "schema": "route: string\nsegment: string\nepisode_id: string\nevent_cluster: string\nsymbol: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nstate_observed_at: timestamp[ns]\ndecision_at: timestamp[ns]\ndata_available_at: timestamp[ns]\nearliest_legal_execution_at: timestamp[ns]\nnative_time: timestamp[ns]\nlabel_available_at: timestamp[ns]\nlabel_status: string\nstate_valid: bool\nquantity_coordinate: double\nholding_value: double\nEXIT_ADVANTAGE_NET: double\nexit_advantage_normalized: double\nnative_net_return: double\nfuture_downside: double\nfuture_downside_scope: string\nstate_days_to_native: double\nexit_filled: bool\nfailed_attempts: int64\ncurrent_pnl: double\nage: double\nremaining_horizon: double\nmfe_sofar: double\ngiveback: double\natr_entry_frac: double\nanchor_distance: double\nanchor_below_run: double\nclose_location: double\ndown_volume_ratio: double\nrecovery_3: double\nmae_sofar: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 4859"
+  },
+  {
+    "file": "upstream_fast_H1_2.parquet",
+    "rows": 200,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "upstream_fast_H2_0.parquet",
+    "rows": 200,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: int64\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3751"
+  },
+  {
+    "file": "upstream_fast_fixed_0.1.parquet",
+    "rows": 200,
+    "schema": "episode_id: string\nevent_id: string\nroute: string\nsegment: string\nevent_cluster: string\nsignal_date: timestamp[ns]\nentry_date: timestamp[ns]\nnative_time: timestamp[ns]\nnative_price: double\nentry_price: double\nqty: double\nentry_outlay: double\nfamily: string\nvalue: double\nmature: bool\nexit_time_policy: timestamp[ns]\nexit_price_policy: double\nexit_cal_idx_policy: double\nexit_cost: double\ntriggered: bool\nfilled: bool\nattempts: int64\nunfilled: int64\ngap_return: double\ndecision_at: timestamp[ns]\nnative_return: double\npolicy_return: double\nadvantage_return: double\nadvantage_amount: double\nreleased_calendar_days: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 3755"
+  }
+]

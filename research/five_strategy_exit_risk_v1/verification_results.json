@@ -1,0 +1,32 @@
+{
+  "candidate_min_cash_by_units": {
+    "CNY": 4.513061951322015,
+    "NORMALIZED_NAV": 0.00016163635573010482
+  },
+  "caveat": "Audit proves declared local models; normalized stock fills do not prove broker integer lots or auction depth. A test proving a known production defect does not make its invariant pass.",
+  "censored_states": 1716,
+  "frozen_file_count": 22,
+  "frozen_rules_unchanged": true,
+  "identical_paired_account_windows": 11,
+  "maturity_boundary_excluded_states": 42,
+  "maximum_independent_account_residual": 6.217248937900877e-15,
+  "no_financing": "CASH_PASS; EXPOSURE_PASS_WHERE_VALUED; SMV6_FULL_HISTORY_TWO_UNVALUED_DAYS",
+  "production_prefix_invariance": "FAIL_ATRDR_BULL_SLOW_COMPLETION_GATE",
+  "research_checks": "PASS",
+  "research_feature_action_prefix": "PASS_UNIT_COUNTEREXAMPLES",
+  "runtime": {
+    "duckdb": "1.5.2",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+    "sklearn": "1.6.1"
+  },
+  "same_input_determinism_hashes": {
+    "accepted": "b54edb632c4f4f72ea59d1a23a1a1c85eb2d5eada9095fb9a43f9e0080590af4",
+    "events": "df93b81cf68f79a41778ac00bc2782f8d432efdd5525a487ec09be00c850f9d9",
+    "nav": "a98ab69febd12382af26efaedb58caff03587d183db2ca193fd6f2c051eaef1e"
+  },
+  "smv6_exit_after_native_states": 0,
+  "states": 53816,
+  "temporal_split": "PASS_AFTER_DISCOVERY_MATURITY_BOUNDARY_FIX"
+}

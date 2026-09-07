@@ -1,0 +1,58 @@
+[
+  {
+    "layer": "MCB_signal",
+    "rows": 1904,
+    "first": "2014-02-12 00:00:00",
+    "last": "2023-11-20 00:00:00",
+    "statuses": {},
+    "source": "/Volumes/quant/CY_quant_research/five_strategy_standalone_v4/mcb_integrated/signals.parquet"
+  },
+  {
+    "layer": "MCB_trade",
+    "rows": 1904,
+    "first": "2014-02-12 00:00:00",
+    "last": "2023-11-20 00:00:00",
+    "statuses": {
+      "status": {
+        "COMPLETED": 1895,
+        "NO_LEGAL_ENTRY": 5,
+        "INCOMPLETE_OUTCOME_TAIL": 4
+      }
+    },
+    "source": "/Volumes/quant/CY_quant_research/five_strategy_standalone_v4/mcb_integrated/trades.parquet"
+  },
+  {
+    "layer": "OGR_signal",
+    "rows": 370,
+    "first": "2018-02-22 00:00:00",
+    "last": "2021-11-15 00:00:00",
+    "statuses": {},
+    "source": "/Volumes/quant/CY_quant_research/five_strategy_standalone_v4/ogr_integrated/signals.parquet"
+  },
+  {
+    "layer": "OGR_entry",
+    "rows": 370,
+    "first": "2018-02-22 00:00:00",
+    "last": "2021-11-15 00:00:00",
+    "statuses": {
+      "entry_status": {
+        "EXECUTABLE_ENTRY": 355,
+        "INSUFFICIENT_L_HEADROOM": 14,
+        "RISK_BLOCKED_ENTRY": 1
+      }
+    },
+    "source": "/Volumes/quant/CY_quant_research/five_strategy_standalone_v4/ogr_integrated/entries.parquet"
+  },
+  {
+    "layer": "IFCGR_trade",
+    "rows": 347,
+    "first": "2018-02-22 00:00:00",
+    "last": "2021-11-15 00:00:00",
+    "statuses": {
+      "entry_status": {
+        "EXECUTABLE_ENTRY": 347
+      }
+    },
+    "source": "/Volumes/quant/CY_quant_research/five_strategy_standalone_v4/ifcgr_integrated/trades.parquet"
+  }
+]

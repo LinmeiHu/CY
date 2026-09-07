@@ -1,0 +1,150 @@
+{
+  "baseline_bug_handling": "Document exact production reproducer, do not alter src/config; quarantine affected account conclusions; research adapter differences explicitly named, never claim unchanged baseline",
+  "budgets": {
+    "atr": [
+      1,
+      1.5,
+      2,
+      2.5,
+      3
+    ],
+    "bootstrap": "1000 paired calendar-month blocks, mean daily return difference CI only; not executable resampled NAV",
+    "event_weights": "1/state_count within training event; capital weighting separately",
+    "features_max_global": 24,
+    "features_max_route": 12,
+    "fixed": [
+      0.03,
+      0.05,
+      0.075,
+      0.1,
+      0.125,
+      0.15,
+      0.2
+    ],
+    "folds": "Annual expanding windows; discovery checks after >=2 calendar years; final fit at evaluation boundary, annual update uses only labels available before Jan1; episode/event groups purged",
+    "mechanism_candidates_per_route": 2,
+    "model_classes": [
+      "Ridge B0/B1, alpha=10; standardized train only",
+      "B2 shallow decision tree depth=2,min_samples_leaf=event-adjusted >=10, same capacity both feature sets, only >=100 training events"
+    ],
+    "negative_control": "one cyclic rotation of event labels within signal-year blocks in discovery only",
+    "time": [
+      3,
+      5,
+      8
+    ]
+  },
+  "evidence": "CONSUMED_HISTORY_TEMPORAL_CHECK",
+  "execution_contract": {
+    "censor": "Never replace unknown native payoff with zero; outstanding positions remain until registered endpoint",
+    "daily_stock": "T+1; next-open simulation only, raw open above lower limit and positive volume with valid coordinate lineage; no daily-low fill claim",
+    "fees": "stocks .002 per side; SMV6 frozen .0002 plus .0016 total spread",
+    "hard_stop_clock": "V1 intraday fills SUPERSEDED; main fixed/ATR baselines are close-trigger/next-open, identical to mechanism clock",
+    "new_policy": "completed valid close -> next legal open; latched first trigger; no cancellation on price recovery; native exit earlier wins; no same-episode reentry added",
+    "units": "MCB/ATRDR NAV=1, each sleeve=.5, coordinate quantity; OGR board NAV=1 and .5 aggregation, raw-price quantity; these frozen continuous quantities do not prove broker lot/volume execution. SMV6 initial CNY 1000000, lot100, actual local callbacks",
+    "volume": "Daily stocks require positive volume but exact opening auction capacity unavailable; mark execution model limitation; minute extensions only on prospectively selected paths",
+    "missing_features": "Implementation clarification: required feature missing or invalid current state => no new trigger, native exit retained. The live shadow rules use fixed conditions, not a fitted prediction; model domain is descriptive, not used to impute favorable actions.",
+    "trigger_pnl_definition": "(current raw/coordinate price + already credited per-share cash) / entry price - 1, before historical entry fee. All EXIT/HOLD labels and reported trade returns are net of applicable exit cost and entry basis."
+  },
+  "extra_features": [
+    "anchor_distance",
+    "anchor_below_run",
+    "close_location",
+    "down_volume_ratio",
+    "recovery_3"
+  ],
+  "hypotheses": {
+    "H1": "structural breach sustained >=2 closes and failure to recover (close_location<.5); rival: bear retest rebounds after apparent break",
+    "H2": "negative current PnL with repeated high down-volume proxy (ratio>1) and negative 3-session recovery; rival: capitulation offers rebound",
+    "H3": "NOT_OPENED; profit protection only if discovery residual headroom plus incremental evidence justifies one family"
+  },
+  "price_features": [
+    "current_pnl",
+    "age",
+    "remaining_horizon",
+    "mfe_sofar",
+    "giveback",
+    "atr_entry_frac"
+  ],
+  "profit_protection_activation": {
+    "family_count": 1,
+    "origin": "Inherited prior semantic_preflight V1 gate, source copy prior_source/semantic_preflight.md; 31 discovery severe events,13 had MFE>=5%; no new threshold chosen",
+    "registered_before_policy_results": true,
+    "route": "MCB",
+    "rule": "prior observed MFE >=5% and completed close PnL<=0; next legal open; first trigger latched",
+    "visibility": "Loss anatomy through2023 already consumed; gate computed discovery<=2020 only; no profit policy result seen",
+    "account_followthrough": "The inherited single MCB family receives one full cash replay to measure its observed return/tail tradeoff; no parameter search or admission based on late returns."
+  },
+  "registered_at_actual": "2026-09-07T14:55:34.014173+08:00",
+  "run_id": "20260907_v2_01",
+  "selection": {
+    "mechanism": "At most H1/H2; only expanded time-out prediction improves B0 weighted MSE and top predicted group net advantage positive over >=20 events/5 dates in discovery; no post-boundary tuning",
+    "shortlist": "Requires positive temporal evidence relative same-clock simple plus actual account result and all invariants; tail-only improvements reported Pareto, no implicit risk preference",
+    "simple": "Discovery only: adjacent >=3 fixed or >=2 ATR levels with positive equal-event advantage and non-worse worst5% event return; longest contiguous region, simpler fixed first, lower-middle representative; else NO_STABLE_SIMPLE_STOP and predeclared FIXED_10PCT diagnostic only"
+  },
+  "smv6_gate": "Compute rebalance-aware residual and state value first; no additional stop grid unless discovery severe/downside headroom and new-state information support it",
+  "split_basis": "Retain previously consumed development/post-observation date boundaries; no untouched OOS claim. OGR/IFCGR 2022+ explicitly separate reset account.",
+  "splits": {
+    "ATRDR_BULL": [
+      "2014-01-01",
+      "2020-12-31",
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "ATRDR_FAST_BEAR": [
+      "2014-01-01",
+      "2020-12-31",
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "ATRDR_SLOW_BEAR": [
+      "2014-01-01",
+      "2020-12-31",
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "IFCGR": [
+      "2018-01-01",
+      "2021-12-31",
+      "2022-01-01",
+      "2023-12-31"
+    ],
+    "MCB": [
+      "2014-01-01",
+      "2020-12-31",
+      "2021-01-01",
+      "2023-12-31"
+    ],
+    "OGR": [
+      "2018-01-01",
+      "2021-12-31",
+      "2022-01-01",
+      "2023-12-31"
+    ],
+    "SMV6": [
+      "2018-01-01",
+      "2021-12-31",
+      "2022-01-01",
+      "2023-12-31"
+    ]
+  },
+  "stress": {
+    "delay_sessions": 1,
+    "extra_exit_cost_bps": 10,
+    "source_ambiguity": "quarantine if unresolved changes prior account states",
+    "top_dates_removed": [
+      1,
+      5
+    ]
+  },
+  "study_end": "2023-12-31",
+  "rebuttal_corrections": {
+    "registered_at": "2026-09-07T15:28:07.600890+08:00",
+    "old_results_status": "SUPERSEDED_AFTER_SEMANTIC_BUGS",
+    "prices": "OGR feature wealth price=raw+cash already credited, raw price still fill/valuation; ATR raw entry scale from original coordinate",
+    "native_priority": "Same-open already marketable native target wins; SMV6 stage-based native orders continue for remaining EXIT inventory",
+    "new_feature_group": "Additional same-Ridge ablation drops BOTH structure and volume, leaving close-location/recovery price augmentation",
+    "selection": "No grid or original parameter changes; redo existing causal labels and the same prior gating rules; all history consumed",
+    "final_scope": "Future downside excludes native exit-day OHLC, includes known native exit; event marks are past/open only; structural NaN separated from domain; discovery labels mature before boundary; negative control rotation is within year."
+  }
+}

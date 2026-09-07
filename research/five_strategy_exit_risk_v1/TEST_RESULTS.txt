@@ -1,0 +1,8 @@
+................................                                         [100%]
+=============================== warnings summary ===============================
+research/five_strategy_exit_risk_v1/test_v2.py::test_current_production_slow_completion_filter_reproduces_known_prefix_defect
+  /Users/linmei/Documents/CY-worktrees/five-strategy-exit-risk-v1/src/five_strategy_bundle/strategies/atrdr.py:499: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+    frame = pd.concat([fast[columns], slow[columns]], ignore_index=True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+32 passed, 1 warning in 4.85s

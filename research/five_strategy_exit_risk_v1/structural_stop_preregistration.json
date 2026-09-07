@@ -1,0 +1,63 @@
+{
+  "registered_before_result_read": true,
+  "registration_date": "2026-09-07",
+  "baseline_head": "40d924ca718be40c6e891a64b3a9cac7f8d58f95",
+  "execution_contract": {
+    "stocks": "T+1; trigger may remain unfilled; gap-through fills at first executable price; daily same-bar ambiguity is resolved conservatively against the candidate",
+    "ogr": "T+1 with registered one-minute bars and frozen 20 bp per-side costs",
+    "scale": "ENTRY_TIME_FROZEN_SCALE",
+    "structural_anchor_gate": "reference_available_at <= entry_time"
+  },
+  "rules": [
+    {
+      "strategy": "ATRDR",
+      "route": "ATRDR_BULL",
+      "economic_failure": "participation ignition has lost the completed-close demand structure that justified entry",
+      "reference_variable": "signal_coord_low",
+      "reference_time": "signal completed close",
+      "stop_definition": "first post-entry executable breach of the frozen signal-day coordinate low",
+      "why_known_at_entry": "coord_low and available_at are fields in the frozen Bull mother row before the next-open entry",
+      "execution_time": "first causal executable price after breach, subject to T+1"
+    },
+    {
+      "strategy": "MCB",
+      "route": "MCB",
+      "economic_failure": "the cross-board-confirmed participation breakout has lost its confirmation-day demand boundary",
+      "reference_variable": "signal_coord_low",
+      "reference_time": "confirmation signal completed close",
+      "stop_definition": "first post-entry executable breach of the frozen confirmation-day coordinate low",
+      "why_known_at_entry": "coord_low and feature_latest_timestamp are frozen in V72 before the next-open entry",
+      "execution_time": "first causal executable price after breach, subject to T+1"
+    },
+    {
+      "strategy": "ATRDR",
+      "route": "ATRDR_FAST_BEAR",
+      "economic_failure": "the capitulation reversal has undercut the signal-day event low instead of establishing demand takeover",
+      "reference_variable": "signal_coord_low",
+      "reference_time": "capitulation signal completed close",
+      "stop_definition": "first post-entry executable breach of the frozen signal-day coordinate low",
+      "why_known_at_entry": "coord_low and signal_decision_at are frozen in the Fast Bear signal row",
+      "execution_time": "first causal executable price after breach, subject to T+1"
+    },
+    {
+      "strategy": "ATRDR",
+      "route": "ATRDR_SLOW_BEAR",
+      "economic_failure": "the five-session supply-exhaustion floor has failed after the takeover entry",
+      "reference_variable": "last5_low",
+      "reference_time": "slow-supply signal completed close",
+      "stop_definition": "first post-entry executable breach of the frozen last-five-session coordinate low",
+      "why_known_at_entry": "last5_low and available_at are frozen in the Slow Bear mother row",
+      "execution_time": "first causal executable price after breach, subject to T+1"
+    },
+    {
+      "strategy": "OGR",
+      "route": "OGR",
+      "economic_failure": "the first reversal has lost the pre-entry swing low and the below-gap repair has failed",
+      "reference_variable": "swing_low",
+      "reference_time": "reversal signal completed close",
+      "stop_definition": "first post-entry executable minute breach of the frozen coordinate swing low",
+      "why_known_at_entry": "swing_low and semantic_feature_latest_timestamp are frozen before the next executable entry minute",
+      "execution_time": "first causal executable minute after breach, subject to T+1"
+    }
+  ]
+}

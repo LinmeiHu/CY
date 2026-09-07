@@ -1,0 +1,55 @@
+{
+  "start_head": "40d924ca718be40c6e891a64b3a9cac7f8d58f95",
+  "prior_task_id": "01a07a7b-3aab-7e31-9e70-6489769536d9",
+  "active_exit_processes": [],
+  "applicable_agents_files": [],
+  "prior_items": [
+    {
+      "path": "research/five_strategy_exit_risk_v1/engine.py",
+      "sha256": "3fc5cab1123cdd1397095f975e114522563af39556389959b5e1b8ed0a4d5ce0",
+      "status": "SUPERSEDED",
+      "reason": "Source retained; V1 execution logic not accepted as V2 results"
+    },
+    {
+      "path": "research/five_strategy_exit_risk_v1/run_exit_risk_v1.py",
+      "sha256": "7ab4707bb1e32f8cb2551b0542a7872d88805a84b1af42d30f600be228445774",
+      "status": "SUPERSEDED",
+      "reason": "Source retained; V1 execution logic not accepted as V2 results"
+    },
+    {
+      "path": "research/five_strategy_exit_risk_v1/semantic_preflight.md",
+      "sha256": "3ad39194556af697aba29402e1e2234af5967a6047ccae7d52aa8e3a93e09501",
+      "status": "SUPERSEDED",
+      "reason": "Source retained; V1 execution logic not accepted as V2 results"
+    },
+    {
+      "path": "research/five_strategy_exit_risk_v1/structural_stop_preregistration.json",
+      "sha256": "10c52c1e7e0c2ad5a973c6fa50f21afade5e1210ed8240b58da71356fe8ec8a0",
+      "status": "VERIFIED_REUSABLE",
+      "reason": "Source retained; V1 execution logic not accepted as V2 results"
+    },
+    {
+      "path": "/private/tmp/exit_risk_bear.parquet",
+      "sha256": "8ad71b0e2aea3bb4cf2e111ef13f380f52c4a74aff303a9b76edf12cf681650d",
+      "status": "UNVERIFIED",
+      "reason": "Prior inspected intermediate; rebuilt from current source before numeric reuse"
+    },
+    {
+      "path": "/private/tmp/exit_risk_fast_accepted.parquet",
+      "sha256": "40b51d80f7a215c788f4602979614ea589ad2bdf7cdae3a986ccbc2168267f83",
+      "status": "UNVERIFIED",
+      "reason": "Prior inspected intermediate; rebuilt from current source before numeric reuse"
+    }
+  ],
+  "prior_results_exposure": [
+    "ATRDR baseline counts and end NAV; MCB prior accepted count; SMV6 52 completed episodes, 4 below -5%, 0 below -10%; candidate stop results not produced",
+    "Historical later windows remain CONSUMED_HISTORY_TEMPORAL_CHECK",
+    "Takeover schema inspection fetched slow_outcomes including 2024 tail rows and printed date extrema only; no post-2023 policy result calculated. Further reads predicate-bound before retrieval."
+  ],
+  "prior_failures": [
+    "SMV6 reason merge KeyError",
+    "legacy dynamic import ModuleNotFoundError; py_compile only"
+  ],
+  "prior_output_manifest": "NOT_CREATED",
+  "prior_registry": "NOT_CREATED"
+}
