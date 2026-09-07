@@ -1,0 +1,7 @@
+question,verdict,evidence,limitation
+MCB_INCREMENT,REDUNDANT_EXPOSURE | CAPITAL_INEFFICIENT,qualified key overlap=1890/1904 MCB; MCB_unique=14; P1-R1 return=-0.069407; P2-R2 return=-0.069407; P1-R1 MDD=0.004015; P1-R1 utilization=-0.028875,"no cross-strategy parent id, so symbol-date fallback; R controls are not risk matched"
+GAP_VARIANT,OGR CORE_CANDIDATE | IFCGR INSUFFICIENT_EVIDENCE,IFCGR rejects=8; avoided_negative=0; missed_winner=8; substitute fills=0; P2-P1 return=-0.001248,IFCGR remains PIT-B; only eight rejects
+BEAR_OGR_RELATIONSHIP,INSUFFICIENT_EVIDENCE,see route-specific exact/date/near/holding overlaps in family_analysis.csv,no validated route NAV; account correlation is ATRDR total only
+SMV6_DIVERSIFICATION,RETURN_COMPLEMENT_CANDIDATE | DIFFICULTY_DIVERSIFICATION_INSUFFICIENT_EVIDENCE,SMV6 mean on stock worst5%=-0.004605; tail_n=48; P1 minus leave-cash return=0.062805; MDD=-0.006117,cash cadence contributes; native SuperMind equivalence unverified
+FAMILY_STRUCTURE,ATRDR+MCB_BULL_CONFIRMATION | OGR+IFCGR_GAP | SMV6_ETF_ROTATION; BEAR-vs-OGR boundary unresolved,"mechanism labels with event, holding and account diagnostics","family boundaries are descriptive, not a count of proven independent alphas"
+PRIMARY_RESEARCH_CANDIDATE,R1,"R1 Sharpe=1.6402, return=0.4184, MDD=-0.0409; P1 Sharpe=1.6021, return=0.3490, MDD=-0.0368",R1 has higher ATRDR concentration and utilization; historical sleeve composite only

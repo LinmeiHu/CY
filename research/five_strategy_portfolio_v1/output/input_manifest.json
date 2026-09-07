@@ -1,0 +1,852 @@
+{
+  "research_contract": {
+    "signal_start": "2018-01-01",
+    "signal_end": "2026-08-03",
+    "as_of": "2026-08-03",
+    "portfolio_type": "HISTORICAL_SLEEVE_NAV_COMPOSITE"
+  },
+  "standalone_baseline": "806cafdd96b9778654d531319c615293b47e593b",
+  "integration_provenance_only": "a3f34189f7a6b7ded76ea60a68889bbc1163308c",
+  "assets": [
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "daily_hist",
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
+      "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+      "bytes": 987945900,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "daily_tail",
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet",
+      "sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+      "bytes": 306757165,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "atrdr_daily_2024_2025",
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet",
+      "sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+      "bytes": 306757165,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "atrdr_daily_2026",
+      "path": "/Volumes/quant/CY_quant_research/ashare_causal_market_regime_substrategy_router_v27_validation_2026ytd_v1/pit_daily_qd010_exact_2022_2026_08_12.parquet",
+      "sha256": "d092206b2c36212cf95ab0540bf6905a3274f1ba4706a50510e7cd24c9e1929c",
+      "bytes": 335088043,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "mcb_market_industry_state",
+      "path": "/Volumes/quant/CY_quant_research/bull_sectoral_rotation_v43/market_industry_state.parquet",
+      "sha256": "2c0ff6c7a65818c61f68932927ad7a0ce08f7d3fb991c10bfeb0c278a84c58f3",
+      "bytes": 14285843,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "raw_minute_root",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars",
+      "sha256": "DIRECTORY_REGISTERED_NOT_REHASHED",
+      "bytes": "NA",
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "cy033_daily_amount",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1",
+      "sha256": "DIRECTORY_REGISTERED_NOT_REHASHED",
+      "bytes": "NA",
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "qd010_distributions",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
+      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387",
+      "bytes": 7583125,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "qd010_rights",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
+      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb",
+      "bytes": 266563,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "ifcgr_route_index",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-036-R2-EXCHANGE-ISSUER-FACT-V29R2-DEV-19901219-20211231-V1/announcement_route_index.parquet",
+      "sha256": "f9bf1a275fa5a3294ed7c571eef583cb88c7f3e011a397acfd5d616bf4225af3",
+      "bytes": 29814254,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "ifcgr_sse_titles",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1/sse_full_history_capture/announcements.parquet",
+      "sha256": "b69af9e0ea707babe6a3ecd2d02c2220e09f4d52502f09025c6df8dec34015c9",
+      "bytes": 21088003,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "ifcgr_szse_titles",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture/announcements.parquet",
+      "sha256": "65096c160af25b172d6c310804036a4b6dc57031ae45b9b4f9af220f251b9a65",
+      "bytes": 22553919,
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "smv6_qmt_root",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1",
+      "sha256": "DIRECTORY_REGISTERED_NOT_REHASHED",
+      "bytes": "NA",
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "RAW_INPUT",
+      "logical_name": "smv6_hybrid_root",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1",
+      "sha256": "DIRECTORY_REGISTERED_NOT_REHASHED",
+      "bytes": "NA",
+      "producing_commit": "EXTERNAL_REGISTERED_ASSET"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/accepted.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/accepted.parquet",
+      "sha256": "e80404d75387082b6eb3b90f9fd47e23b771496d3d9f83b92b255d99992f1fc4",
+      "bytes": 221825,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/bull_mother.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/bull_mother.parquet",
+      "sha256": "d040a2074aeecf06073a88da94a44d026e2bfb5f4d45b672802fc1edc01646ec",
+      "bytes": 926933,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/bull_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/bull_outcomes.parquet",
+      "sha256": "3c2917250633246dfa27fe7887e5e54de7edc3956e80bf7814b83159dd97c0ab",
+      "bytes": 126145,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/fast_accepted.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/fast_accepted.parquet",
+      "sha256": "ac179e50d4598859c63c34d99794dc20fb2d1586211d8bbdf8c27bf8e1c4bccf",
+      "bytes": 56953,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/fast_oai_mother.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/fast_oai_mother.parquet",
+      "sha256": "660fd0c5091b97e1771162fb5f1a72e8f254d58a3a7893437c0dcbf2c8348a1f",
+      "bytes": 1538132,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/fast_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/fast_outcomes.parquet",
+      "sha256": "818cff4fa965bf02393a5d0fcd673859e8e48cd89a5d9d627721c77db659c2a2",
+      "bytes": 64313,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/fast_signal.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/fast_signal.parquet",
+      "sha256": "ad6c7bf4e71e14c1b876c5b4654fadd1d86056cabc322199b415d501aa0688c6",
+      "bytes": 331428,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/market_state.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/market_state.parquet",
+      "sha256": "9baf752e2657f3049b98044efce7ceaedb5f9d53edbe5876d4802b274b578627",
+      "bytes": 127023,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/nav.parquet",
+      "sha256": "dabae480414acb6da872ba5bafa7508f06a46f403639bada1fd5afc549f1bdd3",
+      "bytes": 103604,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_a/bull_accelerating_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_a/bull_accelerating_candidates.parquet",
+      "sha256": "adb51c273ab7e2c691c20f7aaa9ca75527cb5198bb45d9267a10fe5f07ec4a7a",
+      "bytes": 8456,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_a/bull_decelerating_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_a/bull_decelerating_candidates.parquet",
+      "sha256": "e16af6818952d41f9a03c13cd7afe81316106e7b82c8b3afef71ff5cf33992d8",
+      "bytes": 10444,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_a/fast_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_a/fast_candidates.parquet",
+      "sha256": "5c77467896c0bdd03f8bfcae22fb9fdcd3e4ab234a9379dbf8f831f8d47c7746",
+      "bytes": 14120,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_a/market.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_a/market.parquet",
+      "sha256": "fca09aca6af712ace91ed3bed11fe59fbfa3cdbbdfdf210a2c0ee2962ad7602a",
+      "bytes": 28300,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_a/slow_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_a/slow_candidates.parquet",
+      "sha256": "708a0f92b7be1bde579b67a18ddaa4bfdc52533662d7731d6f787e28f1eea29b",
+      "bytes": 110720,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_a/slow_mother_all.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_a/slow_mother_all.parquet",
+      "sha256": "9115b8b2095b625f96294351ee5961548f596c1e866e5a2b72ba575da3147e42",
+      "bytes": 205350,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/accepted_trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/accepted_trades.parquet",
+      "sha256": "5e4ffee2360856f94f9b08963341cf2c16833f4117d1294c22e2fc949e97f7ac",
+      "bytes": 27704,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/bull_accelerating_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/bull_accelerating_outcomes.parquet",
+      "sha256": "0ce5b5d144828f5428a541eec6f7702268fbf80c1b12209bde053bb22d7c8405",
+      "bytes": 5267,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/bull_decelerating_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/bull_decelerating_outcomes.parquet",
+      "sha256": "75ad9c12b67092f4ad3d24f6b3dd06f26f5ebc30d13e6313561e6385ed3c6a3f",
+      "bytes": 16909,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/capacity_skips.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/capacity_skips.parquet",
+      "sha256": "0209f7615cd9b907d512da06f328ebbcc24474a1f300a971fe86702057343ff1",
+      "bytes": 30680,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/fast_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/fast_outcomes.parquet",
+      "sha256": "0a822950893383964b37c993b9754453e77737808a3d22497af35dabdf29f8ad",
+      "bytes": 9305,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/portfolio_nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/portfolio_nav.parquet",
+      "sha256": "59b3ef6846299602e85c155ac36d46a446a5493a5cd689d906da05e0e122b1d6",
+      "bytes": 17434,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/routed_raw_trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/routed_raw_trades.parquet",
+      "sha256": "db96ecea3bee2de877f916ed4ebf256ed6f1b182b6629a4365b2e29beda670fe",
+      "bytes": 52690,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2024_2025/stage_b/slow_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2024_2025/stage_b/slow_outcomes.parquet",
+      "sha256": "e1eef9e35c0473f0ba7a2151f4e9738db732afea7dad4743d47f2f47c85f65d4",
+      "bytes": 26458,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_a/bull_accelerating_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_a/bull_accelerating_candidates.parquet",
+      "sha256": "18a33cbfe43cf7f676a17ea8806d03ea580742418e0e83cc986b94cf94d33d9e",
+      "bytes": 8207,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_a/bull_decelerating_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_a/bull_decelerating_candidates.parquet",
+      "sha256": "f280ee04ef792a697eb2ea6c22f14757dccf42d7b35fe9bffd3e3a4c3e3763e7",
+      "bytes": 3886,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_a/fast_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_a/fast_candidates.parquet",
+      "sha256": "5cb688360ff967bf644a571342e01c340097f9af9ffc3cf131442e488902186b",
+      "bytes": 5925,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_a/market.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_a/market.parquet",
+      "sha256": "3d08193975f4add1e0a7be1b623f23a446ebb0860d2ab7e78c34b20913b42eed",
+      "bytes": 10098,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_a/slow_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_a/slow_candidates.parquet",
+      "sha256": "f719518789e7a7ecd52e989443192190dc326177812f5bb487ca73a9a58426d7",
+      "bytes": 14494,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_a/slow_mother_all.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_a/slow_mother_all.parquet",
+      "sha256": "b9bc407b6e043e930a9d6d384d01ce61420f4ad4a6bad87792064ef1f5b2c907",
+      "bytes": 44048,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/accepted_trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/accepted_trades.parquet",
+      "sha256": "3d77b2c4294e07f7c3999a66ab30aaef6442593614d133b2eaa71c3691aec5b2",
+      "bytes": 6810,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/bull_accelerating_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/bull_accelerating_outcomes.parquet",
+      "sha256": "90e359d8102e865ea0b8a6acc1d76e9eaf90f9c09c6fb443a77a030d6ce6f892",
+      "bytes": 4983,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/bull_decelerating_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/bull_decelerating_outcomes.parquet",
+      "sha256": "e9a03cd1954693f6c87b03db5fb79e74bcf72f6ac6525fc73c24ad15ac229676",
+      "bytes": 5585,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/capacity_skips.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/capacity_skips.parquet",
+      "sha256": "af3e7cca75a894a888522cd503b008aadd89c9d9c367a7755c538af5ec012248",
+      "bytes": 518,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/fast_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/fast_outcomes.parquet",
+      "sha256": "08fe41fe528cc18d3e3cbd166802619e4b7a79f78f3a9a74efad76f60fa87d5e",
+      "bytes": 4897,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/portfolio_nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/portfolio_nav.parquet",
+      "sha256": "1e9b2be8d1f4f2df659af406a96704305bdcee60cb9376e03e5abc6a46cc4824",
+      "bytes": 6690,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/routed_raw_trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/routed_raw_trades.parquet",
+      "sha256": "b7fcc81b8f81b6f94f51d050b05a3e950bc2ce9df770e68b082ad8c09ab18270",
+      "bytes": 6477,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/post_2026/stage_b/slow_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/post_2026/stage_b/slow_outcomes.parquet",
+      "sha256": "f4149e4fd85a42eb36589bfd71ec29d48e69ea172772596621b86277563a82e6",
+      "bytes": 5210,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/result.json",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/result.json",
+      "sha256": "0e5ee89f8e4209cae1a8ebce23c8ee795441647e1cf3664fbb8db12b5501aedf",
+      "bytes": 1679,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/skipped.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/skipped.parquet",
+      "sha256": "f607e98a811358da619e7e792234a7bcdbc799fdf6cf74173aec1a6a5e2e405a",
+      "bytes": 165152,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/slow_mother.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/slow_mother.parquet",
+      "sha256": "cbb22156fefda332ae1068c65b2fcc5d0ab5f1a9c6caf607137d9bf2f29cb53d",
+      "bytes": 479158,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/slow_outcomes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/slow_outcomes.parquet",
+      "sha256": "5dfef05c76e527ddfdadd432d9469cae3ebff8ef2b5e73a63f558a08c7e598c9",
+      "bytes": 138081,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/source_completed_trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/source_completed_trades.parquet",
+      "sha256": "08672b83ece92bb20366bca3f8e6b4e622dc4768aeda7404eea2d114c5c1d15b",
+      "bytes": 354147,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "atrdr/v27_bear_routes.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/atrdr/v27_bear_routes.parquet",
+      "sha256": "4c407a245a9938ff37c44a9bab09712368b5a555b2a2e1eed70e8c7ed53067b5",
+      "bytes": 77473,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/accepted.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/accepted.parquet",
+      "sha256": "2179cdc07dcce2784993ad1b803fac73c6b11fb55dd5e91ea0724d573af0590f",
+      "bytes": 103891,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/fact_matches.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/fact_matches.parquet",
+      "sha256": "2ae2e5b364053e05e78ed6b955922f5187470fa4d92bd0b138609d64d5c14f97",
+      "bytes": 1509007,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/kept.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/kept.parquet",
+      "sha256": "165f15af20497938afe6f4f2d6ae76786e4c599d7f17be2cad10fd7b703f43f2",
+      "bytes": 104704,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/nav.parquet",
+      "sha256": "db1e5464946302ca67be6f9cee2313267a4eac9b6ce3c6c66dd93db27b42c17a",
+      "bytes": 32635,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/accepted.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/accepted.parquet",
+      "sha256": "a6619b63949e127f06375d33f3c6d6a7c516ed384663ad1929baa0e7edd0559f",
+      "bytes": 106188,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/entries.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/entries.parquet",
+      "sha256": "d1c205cf1380ec75c0f05859a2f2ef808ad47ae170c1c917bd81b0482792c935",
+      "bytes": 117105,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/nav.parquet",
+      "sha256": "b5e8ce93d6af9d9b4786b5b447e3abc43e3b2bc5c676097dc07698eaec5020ee",
+      "bytes": 32869,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/result.json",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/result.json",
+      "sha256": "c3d928a428d9141bc18e48a74548ec25d9bbf9374d6af2f8da0c9db66dfa231f",
+      "bytes": 254,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/signals.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/signals.parquet",
+      "sha256": "a7bb0df06dfe2e883a79b3668c4ef018d01f30a41e402f476d66b006b6f6f74e",
+      "bytes": 101797,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/skipped.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/skipped.parquet",
+      "sha256": "99715d8b59769d02fbdfd9c3e18576f91b2dafeec4f3840da78cddf83937c225",
+      "bytes": 7093,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/trades.parquet",
+      "sha256": "ddf9f9cc924d044ca26d919a635d004f2c10b8825a0ed4ae93a501dd15e58a44",
+      "bytes": 126835,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/v13_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/v13_candidates.parquet",
+      "sha256": "0131f20772da3c39ffabc7ef30381ba6a316503df890eca28ce455915234e792",
+      "bytes": 291015,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/v13_pre_gap_days.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/v13_pre_gap_days.parquet",
+      "sha256": "8a47f373e62f44db879bf95556cf0e72911817d01934890ca878cad7e9dcdf9e",
+      "bytes": 2358090,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/v13_signals.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/v13_signals.parquet",
+      "sha256": "34021d4adaf9b6cd6e0b9d964031076258109a7e7cbf2413400029bcd47610b6",
+      "bytes": 181469,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/v27.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/v27.parquet",
+      "sha256": "01f34aec4b8d026feb20254808759588ddedb765f089cb519c3117d1b23503b5",
+      "bytes": 99499,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/v28.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/v28.parquet",
+      "sha256": "249544af83198134ef0863fceafc34813da37d834e19e9b264b97fdc32bc910c",
+      "bytes": 93651,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_ogr/v28r1.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_ogr/v28r1.parquet",
+      "sha256": "3a41eac365d4c3bfd5ae11e27aaa4d43b49f7b4cd7312d1b7712e012f0ffb2f8",
+      "bytes": 96210,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/parent_population.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/parent_population.parquet",
+      "sha256": "a7bb0df06dfe2e883a79b3668c4ef018d01f30a41e402f476d66b006b6f6f74e",
+      "bytes": 101797,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/rejected.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/rejected.parquet",
+      "sha256": "782bee4ddc19cd90e1059ad9e63a8e9fad3b29dab6184f44df3a8892e4407a24",
+      "bytes": 23863,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/result.json",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/result.json",
+      "sha256": "91628b368e5dc6cc992468d536e44f25510de82eaf5b41bafe652d9bcdf2da44",
+      "bytes": 614,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/skipped.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/skipped.parquet",
+      "sha256": "e581d89ad5a576c70f8e532045ee25ade05d92cc310a4d8872c18a01b79b25cf",
+      "bytes": 6948,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ifcgr/trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ifcgr/trades.parquet",
+      "sha256": "16b5ff13a1782bae92997a05cce4a852fce19c1fe3449a21957166de8f60f226",
+      "bytes": 124505,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/accepted.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/accepted.parquet",
+      "sha256": "8a0a25f1ce578c0c13718932d83f2df8e195f34271085ed9c062af0eefbe6566",
+      "bytes": 78353,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/nav.parquet",
+      "sha256": "ff1c966b3de02a41e1f5d2aad857d8bc001d827ad3e4ed30545948420811548c",
+      "bytes": 22824,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/result.json",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/result.json",
+      "sha256": "ba1261d79cfc6d65b750290388ddb6cf89833272471dd86734162d377872cf9d",
+      "bytes": 344,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/signals.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/signals.parquet",
+      "sha256": "73939a8bb19f24a41604f688cff420db3ed44261dd92d3986b79e0537ca81afa",
+      "bytes": 698914,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/skipped.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/skipped.parquet",
+      "sha256": "2d7970dabd5ac4df5eaff4d006c3f5ca88c320e311acb43c2381b7eb65300302",
+      "bytes": 55965,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/trades.parquet",
+      "sha256": "1906d31da3857883d074da2ed2ac24bb7019e054283cf2b44c3296e1358180cf",
+      "bytes": 118146,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/v53.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/v53.parquet",
+      "sha256": "4184ebbd2d00181e5c0d44db39b65e77b6f08790a4f3d4a5c61d3c30363b8f53",
+      "bytes": 2793755,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/v64.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/v64.parquet",
+      "sha256": "5910a00814c9be3c3c8b34d537d050a61f03123096dcd0d5ef4bdc0f979334ac",
+      "bytes": 756492,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "mcb/v65.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/mcb/v65.parquet",
+      "sha256": "e641623cec9233bf377e0739cae4b53b1813ec0095769991e0767d1471717a05",
+      "bytes": 877170,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/accepted.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/accepted.parquet",
+      "sha256": "7259cdc7790508ffe06ee65a5d728eec3b807a734e467330c8b1c3626f4c88e1",
+      "bytes": 106190,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/entries.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/entries.parquet",
+      "sha256": "ebc130be63eb9addb60d383a0a6a75671dacc2fb7fa20f9dd1b94a8377352fbe",
+      "bytes": 117081,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/nav.parquet",
+      "sha256": "b5e8ce93d6af9d9b4786b5b447e3abc43e3b2bc5c676097dc07698eaec5020ee",
+      "bytes": 32869,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/result.json",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/result.json",
+      "sha256": "c3d928a428d9141bc18e48a74548ec25d9bbf9374d6af2f8da0c9db66dfa231f",
+      "bytes": 254,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/signals.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/signals.parquet",
+      "sha256": "41922d7d15d42c34ef70abfa5b3ac50991a67d21e6b178da00fe460737964b50",
+      "bytes": 101773,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/skipped.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/skipped.parquet",
+      "sha256": "99715d8b59769d02fbdfd9c3e18576f91b2dafeec4f3840da78cddf83937c225",
+      "bytes": 7093,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/trades.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/trades.parquet",
+      "sha256": "3ddee8abc98a637d0af1e3285b19a2ff8462b02b0cdd5771d3a49aefa9563eee",
+      "bytes": 126834,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/v13_candidates.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/v13_candidates.parquet",
+      "sha256": "0131f20772da3c39ffabc7ef30381ba6a316503df890eca28ce455915234e792",
+      "bytes": 291015,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/v13_pre_gap_days.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/v13_pre_gap_days.parquet",
+      "sha256": "8a47f373e62f44db879bf95556cf0e72911817d01934890ca878cad7e9dcdf9e",
+      "bytes": 2358090,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/v13_signals.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/v13_signals.parquet",
+      "sha256": "86d45968bf5bb57ceefd746b440f1958e70a4d725b792f83183e14590a8a06fa",
+      "bytes": 181480,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/v27.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/v27.parquet",
+      "sha256": "ef000efdf41813cf80b508fb1db5bc0cf9933c6763fb30031a507da7bee232fc",
+      "bytes": 99491,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/v28.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/v28.parquet",
+      "sha256": "743b47b850d58649b325140fa1325f9ce11408403a1737ae37af8be9dd58e131",
+      "bytes": 93649,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "ogr/v28r1.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/ogr/v28r1.parquet",
+      "sha256": "668f83454d8f01eba0211d338d4850ea163d9d3369b034104e78c38ff712024f",
+      "bytes": 96209,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "smv6/events.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/smv6/events.parquet",
+      "sha256": "234b51aa1048753ee7f0131bf7c4d2af35e7120de9754a26ab415a253fe7daa7",
+      "bytes": 12863,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "smv6/local_execution_events.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/smv6/local_execution_events.parquet",
+      "sha256": "5ff86d1b3fcbc2b9af0f6c74b880445370eb7dbb25a8e27ebb312cdf1b551973",
+      "bytes": 41005,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "smv6/nav.parquet",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/smv6/nav.parquet",
+      "sha256": "9f3e3ac33930282bcfa9c9bf80519da6a8e3e10cf1dad5cd7e3b131cf8ff6df3",
+      "bytes": 38496,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    },
+    {
+      "kind": "SEALED_STANDALONE_OUTPUT",
+      "logical_name": "smv6/result.json",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_portfolio_v1/standalone_outputs_806cafdd96/smv6/result.json",
+      "sha256": "58f94eebfc09eea753b31c35940708600a499dcbe3db49ad63db09334256b14b",
+      "bytes": 555,
+      "producing_commit": "806cafdd96b9778654d531319c615293b47e593b"
+    }
+  ]
+}
