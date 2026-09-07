@@ -19,6 +19,17 @@ import pandas as pd
 from ..errors import ReproductionError
 from ..io import _sql_path, write_parquet
 
+EXCLUDED_MARKET_INDUSTRIES = (
+    "煤炭开采", "油气开采Ⅱ", "油服工程", "炼化及贸易", "普钢", "特钢Ⅱ",
+    "冶钢原料", "工业金属", "小金属", "贵金属", "能源金属", "金属新材料",
+    "化学原料", "化学制品", "农化制品", "化学纤维", "电子化学品Ⅱ",
+    "水泥", "玻璃玻纤", "非金属材料Ⅱ", "电力", "燃气Ⅱ",
+)
+
+
+def _quoted(values: tuple[str, ...]) -> str:
+    return ",".join("'" + value.replace("'", "''") + "'" for value in values)
+
 
 def _columns(path: Path) -> set[str]:
     con = duckdb.connect()
@@ -39,28 +50,98 @@ def build_market_state(
     start: str = "2014-01-01",
     end: str = "2023-12-31",
     history_start: str | None = None,
+    post_v27_contract: bool = False,
 ) -> pd.DataFrame:
-    """Rebuild the causal market state from completed PIT daily rows."""
-    query = f"""
-    WITH lagged AS (
+    """Rebuild the causal market state for its frozen source generation."""
+    if not post_v27_contract:
+        query = f"""
+        WITH lagged AS (
+          SELECT *,lag(coord_close,20) OVER w AS calc_lag20_close,
+            lag(coord_close,60) OVER w AS calc_lag60_close
+          FROM read_parquet('{_sql_path(daily)}')
+          WINDOW w AS (PARTITION BY symbol ORDER BY cal_idx)
+        ), base AS (
+          SELECT trade_date,available_at,decision_at,
+            coord_close/nullif(calc_lag20_close,0)-1 AS ret20,
+            coord_close/nullif(calc_lag60_close,0)-1 AS ret60
+          FROM lagged
+          WHERE trade_date BETWEEN DATE '{history_start or start}' AND DATE '{end}'
+            AND current_valid AND hard_valid AND NOT is_st
+        ), market0 AS (
+          SELECT trade_date,
+            median(ret20) AS market_median_ret20,
+            median(ret60) AS market_median_ret60,
+            avg((ret20>0)::INTEGER) AS market_positive_ret20_share,
+            avg((ret60>0)::INTEGER) AS market_positive_ret60_share,
+            max(available_at) AS latest_source_timestamp
+          FROM base GROUP BY trade_date
+        ), market AS (
+          SELECT *,lag(market_positive_ret20_share,5) OVER (ORDER BY trade_date) AS b20_l5,
+            lag(latest_source_timestamp,5) OVER (ORDER BY trade_date) AS b20_l5_source_timestamp
+          FROM market0
+        )
+        SELECT *,CASE
+          WHEN market_median_ret20>0 AND market_median_ret60>0
+           AND market_positive_ret20_share>0.50 AND market_positive_ret60_share>0.50 THEN 'BULL'
+          WHEN market_median_ret20<=0 AND market_median_ret60<=0
+           AND market_positive_ret20_share<=0.50 AND market_positive_ret60_share<=0.50 THEN 'BEAR'
+          ELSE 'TRANSITION' END AS market_regime
+        FROM market WHERE trade_date BETWEEN DATE '{start}' AND DATE '{end}' ORDER BY trade_date
+        """
+    else:
+        query = _post_v27_market_query(daily, start, end, history_start)
+    con = duckdb.connect()
+    try:
+        frame = con.execute(query).fetchdf()
+    finally:
+        con.close()
+    for column in ("trade_date", "latest_source_timestamp", "b20_l5_source_timestamp"):
+        frame[column] = pd.to_datetime(frame[column])
+    if frame.latest_source_timestamp.gt(frame.trade_date + pd.Timedelta(hours=15)).any():
+        raise ReproductionError("market source is later than completed close")
+    write_parquet(frame, output)
+    return frame
+
+
+def _post_v27_market_query(
+    daily: Path, start: str, end: str, history_start: str | None
+) -> str:
+    """Return the hash-audited post-2023 V17/QIG market query."""
+    excluded = _quoted(EXCLUDED_MARKET_INDUSTRIES)
+    return f"""
+    WITH source AS (
+      SELECT * FROM read_parquet('{_sql_path(daily)}')
+      WHERE trade_date BETWEEN DATE '{history_start or start}' AND DATE '{end}'
+        AND sleeve IN ('MAIN','CHINEXT')
+        AND causal_industry NOT IN ({excluded})
+    ), lagged AS (
       SELECT *,lag(coord_close,20) OVER w AS calc_lag20_close,
-        lag(coord_close,60) OVER w AS calc_lag60_close
-      FROM read_parquet('{_sql_path(daily)}')
+        lag(cal_idx,20) OVER w AS calc_lag20_idx,
+        lag(coord_close,60) OVER w AS calc_lag60_close,
+        lag(cal_idx,60) OVER w AS calc_lag60_idx
+      FROM source
       WINDOW w AS (PARTITION BY symbol ORDER BY cal_idx)
     ), base AS (
       SELECT trade_date,available_at,decision_at,
-        coord_close/nullif(calc_lag20_close,0)-1 AS ret20,
-        coord_close/nullif(calc_lag60_close,0)-1 AS ret60
+        CASE WHEN calc_lag20_idx=cal_idx-20
+          THEN coord_close/nullif(calc_lag20_close,0)-1 END AS ret20,
+        CASE WHEN calc_lag60_idx=cal_idx-60
+          THEN coord_close/nullif(calc_lag60_close,0)-1 END AS ret60,
+        current_valid,is_st
       FROM lagged
-      WHERE trade_date BETWEEN DATE '{history_start or start}' AND DATE '{end}'
-        AND current_valid AND hard_valid AND NOT is_st
     ), market0 AS (
       SELECT trade_date,
-        median(ret20) AS market_median_ret20,
-        median(ret60) AS market_median_ret60,
-        avg((ret20>0)::INTEGER) AS market_positive_ret20_share,
-        avg((ret60>0)::INTEGER) AS market_positive_ret60_share,
-        max(available_at) AS latest_source_timestamp
+        median(ret20) FILTER(WHERE current_valid AND NOT is_st AND ret20 IS NOT NULL)
+          AS market_median_ret20,
+        avg((ret20>0)::INTEGER) FILTER(WHERE current_valid AND NOT is_st AND ret20 IS NOT NULL)
+          AS market_positive_ret20_share,
+        median(ret60) FILTER(WHERE current_valid AND NOT is_st AND ret60 IS NOT NULL)
+          AS market_median_ret60,
+        avg((ret60>0)::INTEGER) FILTER(WHERE current_valid AND NOT is_st AND ret60 IS NOT NULL)
+          AS market_positive_ret60_share,
+        count(ret20) FILTER(WHERE current_valid AND NOT is_st AND ret20 IS NOT NULL) AS n20,
+        count(ret60) FILTER(WHERE current_valid AND NOT is_st AND ret60 IS NOT NULL) AS n60,
+        max(available_at) FILTER(WHERE current_valid AND NOT is_st) AS latest_source_timestamp
       FROM base GROUP BY trade_date
     ), market AS (
       SELECT *,
@@ -78,17 +159,6 @@ def build_market_state(
     WHERE trade_date BETWEEN DATE '{start}' AND DATE '{end}'
     ORDER BY trade_date
     """
-    con = duckdb.connect()
-    try:
-        frame = con.execute(query).fetchdf()
-    finally:
-        con.close()
-    for column in ("trade_date", "latest_source_timestamp", "b20_l5_source_timestamp"):
-        frame[column] = pd.to_datetime(frame[column])
-    if frame.latest_source_timestamp.gt(frame.trade_date + pd.Timedelta(hours=15)).any():
-        raise ReproductionError("market source is later than completed close")
-    write_parquet(frame, output)
-    return frame
 
 
 def build_oai_mother(
