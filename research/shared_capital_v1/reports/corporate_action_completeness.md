@@ -1,17 +1,5 @@
-# 公司行动完整性审计
+# corporate_action_completeness
 
-COMPLETENESS = NOT_CLOSED
+全体已执行场景与连续 warmup 实际涉及 180 个 strategy/action 身份；缺失执行字段为 0。逐场景数量不可混同，完整行见 corporate_action_execution_completeness.csv。
 
-已对现有可证成交前缀一次性连接注册 distributions/rights 表，以登记日收盘是否持有确定权益，不能用除权日是否持有替代。
-
-- ATRDR：23 个实际前缀事件，连续证据止于 2017-06-29。
-- MCB：17 个实际前缀事件，连续证据止于 2020-06-23。
-- OGR/IFCGR：各 14 个持仓事件身份覆盖到 2023；2022 金额不能拿独立重置诊断代替连续资金反馈。
-
-合计 68 条，完整原始账户重建未通过 68 条。这个数是工程未核销数，绝不是官方缺失日期数。尚不能确定 ATRDR/MCB 后续实际资助持仓总数，因而完整历史事件总数为 UNKNOWN。
-
-另外从预资本候选及原生退出状态建立保守潜在事件搜集包络。所有不完整退出只为搜集目的延伸到 2023 末，不用于持有期、资助、NAV 或信号。潜在包络与真实持仓分文件保存。16 个缺少上市日期的 share 事件全部取得巨潮原始实施公告，官方链接、哈希与日期见 official_backfill manifest/facts。
-
-优先检查了现有 input config、注册 normalized/raw/receipt、既有官方标题目录与此前 schema 取证。标题目录未提供两项关键实施公告原文。上交所直接请求返回校验网页，浏览器原件下载被策略阻止；未绕过该策略。独立巨潮官方 hisAnnouncement/query 返回原件标识，static.cninfo.com.cn 提供 PDF。第三方检索只定位上交所链接，没有作为事实生产来源。
-
-出错不静默通过：缺少唯一公告、PDF 头不符、登记/除权/支付日期与注册数据冲突、原件/文本哈希变化均会失败。完全闭合仍需连续 raw 账户、原生退出坐标映射和全部真实持仓重新审计。
+详见 ../REPORT.md 与相关 CSV。

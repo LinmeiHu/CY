@@ -10,20 +10,21 @@ from research.shared_capital_v1.causal_adapters import corrected_function
 from research.shared_capital_v1.shared_account.engine import Intent, PhysicalAccount
 from research.shared_capital_v1.shared_account.scheduler import Event, run_streams
 from research.shared_capital_v1.validation import account_validation
+from research.shared_capital_v1.shared_account.held_actions import HeldActions, registered_actions
 
 HERE = Path(__file__).resolve().parent
 
 
-def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None, stream_only=False, initial_state=None):
+def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None, stream_only=False, initial_state=None, action_registry=None):
     all_trades = trades
     trades = trades.loc[trades.entry_date.between(start, end)].copy()
     trades["target_at_entry"] = trades.target_coordinate / trades.entry_coordinate_price * .998 / 1.002 - 1
     trades = trades.sort_values(["entry_time", "target_at_entry", "pre_gap_inside_density_relative_local", "symbol", "gap_id"], ascending=[True, False, True, True, True], kind="stable")
     days = pd.DatetimeIndex(sorted(daily.loc[daily.trade_date.between(start, end), "trade_date"].unique()))
-    bysymbol = {s: f.set_index("trade_date").close.sort_index() for s, f in daily.loc[daily.symbol.isin(trades.symbol)].groupby("symbol")}
+    bysymbol = {s: f.set_index("trade_date").close.sort_index() for s, f in daily.loc[daily.symbol.isin(set(trades.symbol)|set((initial_state or {}).get('positions',{})))].groupby("symbol")}
     bydate = {pd.Timestamp(d): f for d, f in trades.groupby("entry_date")}
     account = physical if physical is not None else PhysicalAccount(strategy)
-    account.boundary_snapshots = {}
+    if not hasattr(account,'boundary_snapshots'):account.boundary_snapshots = {}
     cash = {"MAIN": account.sleeve_cash[strategy]/2, "CHINEXT": account.sleeve_cash[strategy]/2}
     active, intents, other, nav = {}, [], [], []
     if initial_state is not None:
@@ -33,27 +34,36 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
             if len(rows)!=1:raise ValueError('native inherited Gap identity missing')
             active[eid]=rows.iloc[0].to_dict()
 
+    native_marks={}
     def mark(when, include_close=False):
         for eid, row in active.items():
             series = bysymbol[row["symbol"]]
             before = series.loc[series.index <= when.normalize()] if include_close else series.loc[series.index < when.normalize()]
             price = float(before.iloc[-1]) if len(before) else row["entry_raw_price"]
-            account.mark({row["symbol"]: price}, basis="RAW")
+            native_marks[row['symbol']]=price
+            observed=before.index[-1]+pd.Timedelta(hours=15) if len(before) else pd.Timestamp(row['entry_time'])
+            account.mark({row["symbol"]: price}, basis="RAW", observed_at=observed)
 
-    def actions(day):
-        for eid, row in list(active.items()):
-            for event in json.loads(row.cash_events_json if hasattr(row, 'cash_events_json') else row["cash_events_json"]):
-                if pd.Timestamp(event["date"]) == day:
-                    before = account.cash
-                    account.credit(eid, float(event["cash_per_share"]), day)
-                    cash[row["board"]] += account.cash - before
+    def credit(board, amount): cash[board] += amount
+    actions = HeldActions(account, registered_actions() if action_registry is None else action_registry, strategy, credit)
+    account.held_actions = getattr(account, 'held_actions', {})
+    account.held_actions[strategy] = actions
+    def corporate_open(day):
+        # Gap's sealed daily contract marks from completed closes; these
+        # actually held Gap events are cash-only. A held conversion requires
+        # an explicit executable opening mark, never a substituted close.
+        prices={}
+        actions.open(day,prices)
     def exits(when):
         for eid, row in sorted(list(active.items()), key=lambda item: (pd.Timestamp(item[1]["exit_time"]), item[1]["symbol"])):
             if pd.Timestamp(row["exit_time"]) <= when:
                 before = account.cash
-                account.close(eid, row["exit_raw_price"], when, .002)
+                for key,lot in list(account.lots.items()):
+                    if key==eid or lot.get('root_event_id')==eid:
+                        if lot['quantity']-lot.get('nontradable_quantity',0.)>0:
+                            account.close(key, row["exit_raw_price"], when, .002)
                 cash[row["board"]] += account.cash - before
-                del active[eid]
+                if not any(k==eid or l.get('root_event_id')==eid for k,l in account.lots.items()):del active[eid]
     def enter(when, cohort):
         incoming = cohort.loc[cohort.entry_time.eq(when)] if len(cohort) else cohort
         for row in incoming.itertuples(index=False):
@@ -63,7 +73,7 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
                 other.append({"event_id": row.gap_id, "reason": reason})
                 continue
             mark(when)
-            value = sum(account.lots[eid]["quantity"] * account.marks[p["symbol"]] for eid, p in active.items() if p["board"] == row.board)
+            value = sum(account.lots[eid]["quantity"] * native_marks[p["symbol"]] for eid, p in active.items() if p["board"] == row.board)
             outlay = (cash[row.board] + value) / 80
             intent = Intent(strategy, "FIXED_BELOW_L_REPAIR", "GAP", row.gap_id, row.gap_id, row.symbol,
                 pd.Timestamp(row.signal_time), when, (-row.target_at_entry, row.pre_gap_inside_density_relative_local, row.symbol, row.gap_id),
@@ -74,7 +84,7 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
             before = account.cash
             account.fund([intent], home, "P0", when)
             if row.gap_id in account.lots:
-                cash[row.board] -= before - account.cash
+                cash[row.board] -= account.lots[row.gap_id]['funded_notional']
                 active[row.gap_id] = row._asdict()
     def close(day):
         mark(day, True)
@@ -89,13 +99,14 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
                         'cash':sum(cash.values()), 'board_cash':dict(cash), 'nav':sum(cash.values())+account.exposure(strategy),
                         'positions':dict(account.positions), 'marks':dict(account.marks), 'native_active':{k:dict(v) for k,v in active.items()},
                         'virtual_lots':{k:dict(v) for k,v in account.lots.items()}}
-            yield Event(day, 'ACTION', strategy, str(day), lambda d=day: actions(d))
+            yield Event(day+pd.Timedelta(hours=9,minutes=30), 'ACTION', strategy, str(day), lambda d=day: corporate_open(d))
             cohort = bydate.get(day, pd.DataFrame())
             times = sorted(set(pd.to_datetime(cohort.entry_time) if len(cohort) else []) | {pd.Timestamp(row['exit_time']) for row in active.values() if pd.Timestamp(row['exit_time']).normalize() == day})
             for when in times:
                 yield Event(when, 'EXIT', strategy, str(when), lambda w=when: exits(w))
                 yield Event(when, 'ENTRY', strategy, str(when), lambda w=when,c=cohort: enter(w,c))
             yield Event(day + pd.Timedelta(hours=15), 'CLOSE', strategy, str(day), lambda d=day: close(d))
+            yield Event(day+pd.Timedelta(hours=15,minutes=1), 'RECORD', strategy, str(day), lambda d=day: actions.record(d))
     if stream_only:
         return events(), lambda: (pd.DataFrame(intents), pd.DataFrame(other), pd.DataFrame(nav))
     account.scheduler_trace = run_streams([events()])

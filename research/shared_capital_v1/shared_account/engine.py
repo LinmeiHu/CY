@@ -31,6 +31,8 @@ class Intent:
     economic_event_definition: str = ""
     board: str = "COMBINED"
     native_base_cash_limit: float | None = None
+    native_max_positions: int | None = None
+    native_daily_entries: int | None = None
 
     @property
     def native_requested_notional(self):
@@ -51,23 +53,42 @@ class PhysicalAccount:
         self.lots, self.positions, self.marks = {}, {}, {}
         self.pending_positions = {}
         self.price_bases = {}
+        self.mark_times = {}
+        self.account_timeline = []
+        self.cash_distributions = []
         self.realized = {s: 0.0 for s in self.strategies}
         self.fees = 0.0
         self.checkpoints, self.fills, self.rejections, self.shortfalls = [], [], [], []
         self.seen = set()
+        self.native_failures = {}
 
     def exposure(self, strategy=None):
         return sum((lot["quantity"] + lot.get("pending_quantity", 0.)) * self.marks[lot["symbol"]] for lot in self.lots.values()
                    if strategy is None or lot["strategy"] == strategy)
 
-    def mark(self, prices, *, basis=None):
+    def mark(self, prices, *, basis=None, observed_at=None):
         if any(not isfinite(v) or v <= 0 for v in prices.values()):
             raise ValueError("invalid mark")
         if basis is not None:
             if any(s in self.price_bases and self.price_bases[s] != basis for s in prices):
                 raise ValueError('physical symbol price-unit conflict: raw conversion required')
             self.price_bases.update({s:basis for s in prices})
+        if observed_at is not None:
+            import pandas as pd
+            observed_at = pd.Timestamp(observed_at)
+            if pd.isna(observed_at): raise ValueError('invalid mark observation time')
+            prices = {s:p for s,p in prices.items() if s not in self.mark_times or observed_at >= self.mark_times[s]}
+            self.mark_times.update({s:observed_at for s in prices})
         self.marks.update(prices)
+
+    def complete_timestamp(self, when):
+        import pandas as pd
+        when=pd.Timestamp(when)
+        if self.account_timeline and when <= self.account_timeline[-1]['timestamp']:
+            raise ValueError('duplicate/backward physical account timestamp')
+        row=self.checkpoint(when,'ACCOUNT_TIMESTAMP_COMPLETE')
+        self.account_timeline.append(dict(row))
+        return row
 
     def checkpoint(self, when, stage):
         virtual, pending = {}, {}
@@ -110,7 +131,7 @@ class PhysicalAccount:
         qty = tradable if quantity is None else quantity
         if not all(isfinite(v) for v in (qty, price, fee_rate)) or qty <= 0 or qty > tradable or price <= 0 or fee_rate < 0:
             raise ValueError("invalid native exit")
-        self.mark({lot["symbol"]: price})
+        self.mark({lot["symbol"]: price}, observed_at=when)
         fraction = qty / lot["quantity"]
         basis = lot["remaining_outlay"] * fraction
         fee = qty * price * fee_rate
@@ -127,8 +148,9 @@ class PhysicalAccount:
         self.positions[lot["symbol"]] -= qty
         if lot["quantity"] == 0 and not lot.get("pending_quantity", 0.):
             del self.lots[event_id]
-        if abs(self.positions[lot["symbol"]]) < 1e-12:
-            del self.positions[lot["symbol"]]
+        if not any(l['symbol']==lot['symbol'] and l['quantity'] for l in self.lots.values()):
+            if abs(self.positions[lot['symbol']]) > 1e-8: raise ValueError('physical exit residual exceeds quantity tolerance')
+            del self.positions[lot['symbol']]
         return self.checkpoint(when, "NATIVE_EXIT")
 
     def credit(self, event_id, per_share, when):
@@ -141,7 +163,23 @@ class PhysicalAccount:
         self.realized[lot["strategy"]] += amount
         return self.checkpoint(when, "NATIVE_CASH_EVENT")
 
+    def _native_rejection(self,intent,when):
+        if intent.native_max_positions is None:return None
+        import pandas as pd
+        live=[(eid,l) for eid,l in self.lots.items() if l['strategy']==intent.strategy and l.get('board')==intent.board]
+        if any(l['symbol']==intent.symbol for _,l in live):return 'ACTIVE_SYMBOL'
+        if len({l.get('root_event_id',eid) for eid,l in live})>=intent.native_max_positions:return 'MAX_K'
+        count=sum(f['side']=='BUY' and f['strategy']==intent.strategy and f.get('board')==intent.board and pd.Timestamp(f['entry']).normalize()==pd.Timestamp(when).normalize() for f in self.fills)
+        if count>=intent.native_daily_entries:return 'DAILY_CAP'
+        return None
+
     def _fill(self, intent, budget, kind, when):
+        reason=self._native_rejection(intent,when)
+        if reason:
+            if intent.event_id not in self.native_failures:
+                self.native_failures[intent.event_id]=reason
+                self.rejections.append(dict(event_id=intent.event_id,reason=reason))
+            return False
         requested = intent.native_requested_notional
         unit = intent.price * (1 + intent.fee_rate)
         budget = min(budget, self.cash, requested)
@@ -161,7 +199,7 @@ class PhysicalAccount:
         self.cash -= outlay
         self.sleeve_cash[intent.strategy] -= outlay
         self.fees += fee
-        self.mark({intent.symbol: intent.price}, basis=intent.price_basis)
+        self.mark({intent.symbol: intent.price}, basis=intent.price_basis, observed_at=when)
         lot = {**asdict(intent), "quantity": qty, "funding_type": kind, "entry": when,
                "requested_notional": requested, "funded_notional": outlay, "remaining_outlay": outlay}
         self.lots[intent.event_id] = lot
@@ -170,14 +208,18 @@ class PhysicalAccount:
         self.checkpoint(when, kind)
         return True
 
-    def fund(self, intents, home, policy, when, *, gate_multiplier=1.0, mcb_mode="independent"):
+    def fund(self, intents, home, policy, when, *, gate_multiplier=1.0, mcb_mode="independent", base_only=False, available_capacity=None):
         if policy not in ("P0", "P1", "P2", "P3_D4", "P3_D5", "P3_D6"):
             raise ValueError("unknown frozen policy")
         if set(home) != set(self.strategies) or any(not isfinite(v) or v <= 0 for v in home.values()):
             raise ValueError("invalid independent P0 home budget")
         if mcb_mode not in ("independent", "confirmation_tag") or not 0 <= gate_multiplier <= 1:
             raise ValueError("invalid policy state")
-        ordered = sorted(intents, key=lambda i: (i.decision_at, i.strategy, i.native_priority, i.event_id, i.symbol))
+        queues={s:sorted((i for i in intents if i.strategy==s),key=lambda i:(i.native_priority,i.event_id,i.symbol)) for s in {i.strategy for i in intents}}
+        ordered=[]
+        while any(queues.values()):
+            strategy=min((s for s in queues if queues[s]),key=lambda s:(queues[s][0].decision_at,s,queues[s][0].event_id,queues[s][0].symbol))
+            ordered.append(queues[strategy].pop(0))
         ids = [i.event_id for i in ordered]
         if len(set(ids)) != len(ids) or any(i in self.seen for i in ids):
             raise ValueError("intent duplicate/replay would enlarge funded trade")
@@ -195,43 +237,59 @@ class PhysicalAccount:
             if not all(isfinite(v) for v in (intent.price, intent.fee_rate, intent.native_requested_quantity)) or intent.price <= 0 or intent.fee_rate < 0 or intent.native_requested_quantity <= 0:
                 raise ValueError("invalid native sizing")
         self.seen.update(ids)
-        pending = []
-        for intent in ordered:
-            if mcb_mode == "confirmation_tag" and intent.strategy == "MCB" and any(exact_confirmation(a.identity(), intent.identity()) for a in ordered):
-                self.rejections.append({"event_id": intent.event_id, "reason": "EXACT_CONFIRMATION_TAG"})
-            else:
-                pending.append(intent)
+        # The contract retains ATRDR's lot/priority in an exact overlap. Resolve
+        # its native capacity first; a capacity-rejected ATRDR candidate cannot
+        # suppress an otherwise executable MCB-only opportunity.
+        pending = ([i for i in ordered if i.strategy=='ATRDR']+[i for i in ordered if i.strategy!='ATRDR']) if mcb_mode=='confirmation_tag' else ordered
         exposure = {s: self.exposure(s) for s in self.strategies}
         remaining_base = {s: base_headroom(home[s], exposure[s]) for s in self.strategies}
         # Freeze each checkpoint's capacity once: repeated orders cannot reset the DD allowance.
-        entry_capacity = self.cash * (gate_multiplier if policy.startswith("P3") else 1.0)
+        entry_capacity = self.cash * (gate_multiplier if policy.startswith("P3") else 1.0) if available_capacity is None else min(self.cash,available_capacity)
         unfunded = []
+        board_remaining={}
         for intent in pending:
+            if intent.native_base_cash_limit is not None:
+                key=(intent.strategy,intent.board)
+                board_remaining[key]=min(board_remaining.get(key,float('inf')),intent.native_base_cash_limit)
+        for intent in pending:
+            if mcb_mode=='confirmation_tag' and intent.strategy=='MCB' and any(a.event_id not in self.native_failures and exact_confirmation(a.identity(),intent.identity()) for a in pending):
+                self.rejections.append(dict(event_id=intent.event_id,reason='EXACT_CONFIRMATION_TAG'))
+                continue
             s = intent.strategy
             budget = min(remaining_base[s], self.cash, entry_capacity)
             if policy == "P0":
                 budget = min(budget, self.sleeve_cash[s])
             if intent.native_base_cash_limit is not None:
-                budget = min(budget, intent.native_base_cash_limit)
+                budget = min(budget, board_remaining[(s,intent.board)])
             if policy not in ("P0", "P1"):
                 budget = min(budget, capped_headroom(s, home, {k: self.exposure(k) for k in self.strategies}))
             prior_cash = self.cash
             if self._fill(intent, budget, "BASE", when):
                 used = prior_cash - self.cash
                 remaining_base[s] -= used
+                if (s,intent.board) in board_remaining:board_remaining[(s,intent.board)]-=used
                 entry_capacity -= used
             else:
+                if intent.event_id in self.native_failures:continue
                 unfunded.append(intent)
                 if remaining_base[s] >= intent.native_requested_notional and self.cash < intent.native_requested_notional:
                     self.shortfalls.append({"timestamp": when, "strategy": s, "event_id": intent.event_id,
                                             "requested": intent.native_requested_notional, "cash": self.cash,
                                             "reason": "BASE_ENTITLEMENT_SHORTFALL"})
+        if base_only and policy != 'P0':
+            self.checkpoint(when,'ALL_CURRENT_BASE_DEMANDS_PROCESSED')
+            return unfunded
         if policy == "P0":
             if any(v < -1e-8 for v in self.sleeve_cash.values()):
                 raise ValueError("P0 cross-sleeve financing")
             for intent in unfunded:
                 self.rejections.append({"event_id": intent.event_id, "reason": "SEGMENTATION_IDLE" if self.cash >= intent.native_requested_notional else "GLOBAL_DEMAND_CONFLICT"})
             return self.checkpoint(when, "FUNDING_COMPLETE")
+        return self.fund_shared(unfunded,home,policy,when,entry_capacity,gate_multiplier=gate_multiplier)
+
+    def fund_shared(self, unfunded, home, policy, when, entry_capacity, *, gate_multiplier=1.):
+        if policy=='P0' or any(i.event_id not in self.seen or i.event_id in self.lots for i in unfunded):
+            raise ValueError('shared funding requires previously unfunded native base requests')
         unmet = {s: sum(i.native_requested_notional for i in unfunded if i.strategy == s) for s in self.strategies}
         shares = proportional_cash(min(self.cash, entry_capacity), unmet)
         residual = []
@@ -245,7 +303,7 @@ class PhysicalAccount:
                 shares[s] -= type(shares[s])(str(before - self.cash))
                 entry_capacity -= before - self.cash
             else:
-                residual.append(intent)
+                if intent.event_id not in self.native_failures:residual.append(intent)
         # One intent may be filled only once. Residual quota cannot top up a
         # base/shared-filled lot. Largest fractional native-unit remainder
         # wins; deterministic native priority resolves equal remainders.
@@ -261,6 +319,7 @@ class PhysicalAccount:
             if self._fill(intent, budget, "SHARED", when):
                 entry_capacity -= before - self.cash
                 continue
+            if intent.event_id in self.native_failures:continue
             reason = "GLOBAL_DEMAND_CONFLICT"
             if self.cash >= intent.native_requested_notional:
                 reason = "DRAWDOWN_GATE_BLOCK" if policy.startswith("P3") and gate_multiplier < 1 else "FAMILY_CAP_BLOCK" if policy != "P1" else "NATIVE_LOT_ALLOCATION_BLOCK"

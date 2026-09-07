@@ -1,19 +1,5 @@
-# 统一调度与账户 V0.6
+# common_scheduler_accounting
 
-stock_p0 (ATRDR/MCB)、gap_p0 (OGR/IFCGR)、smv6_physical 均已调用 shared_account.scheduler.run_streams。流产生原生检查点，回调执行时读取实际资金/持仓并提交原生意图，不使用已接受交易作为生产入口。stock/gap 的 stream_only 与 SMV6 callback_stream 可绑定同一个 PhysicalAccount，common_p0_v06 提供四个 P0 启动入口。
+唯一生产调度为 shared_account.scheduler.run_streams，资金会合由 NativeFunding 负责；物理总现金/持仓和虚拟 lot 每一步对账。开盘、分钟、14:57、close、record 尾部保留各自时点。SMV6 保留原生回调内卖出/调整/新买顺序，部分调整依赖先前实际成交，不能把未来回调请求提前制造出来。P0 与共享模式使用相同实现；P0禁借、共享保留策略归属现金（可负），物理总现金不可负，归属现金不代表第二个真实融资账户。
 
-按 timestamp → phase → strategy → identity 稳定调度。phase 为边界、公司行动、准备、已触发退出、SMV6 原生开盘回调、其他入场、信号、收盘。股票开盘 09:30/原生目标收盘 15:00，Gap 保留原始 minute bar_end_time，SMV6 保留 before_trading、09:30、14:57 信号及 15:00 尾卖。SMV6 原生开盘 callback 内有先卖后买及成员重置排序，为保留此资金反馈将其作为不可拆的原生批次；P0 下不跨袖融资。此安排未完成跨策略全退出/全入场阶段的共享政策验收，不能据此开放 P1/P2/P3。
-
-真实股票/Gap适配器的四袖合成夹具与单独 SMV6 全段回放分别验证接线。公司行动只实现显式转换的 RECORD_DATE、ACCOUNTING_EFFECTIVE_DATE、SHARE_ARRIVAL_DATE、TRADABLE_DATE，记录日期没有自动变成到账日期。原持仓卖出后，已确认待到账权利保留独立 lot；arrival 后仍可不可卖；tradable 转换才允许出售。该引擎只接受外部逐时点明确证据，600622 的空日期没有接入合成规则。
-
-账户对实际 physical positions 与 virtual lots 分别计算数量和 marked NAV；pending quantity 单独核对；P&L 按已实现及剩余成本独立核验。数量容差 1e-8，NAV/现金/P&L 容差 1e-6。拒绝负现金、非法数量、NaN/inf、缺失/重复交易日；P0 保留各袖现金及 home right，单袖不能借其他袖现金。继承持仓的区间 P&L 以边界市值起算，原始成本另存，不影响原生退出。
-
-仍未闭合的工程：股票是 native coordinate units，Gap 是 raw price/shares，同证券混用必须先证明数量和现金公司行动表示一致；现在冲突会在成交前拒绝，不能把不同价格单位相加后宣称物理持仓通过。SMV6 原生开盘批次的全退出/全入场分阶段共享整合、四套共同 P0 的完整独立多层对账仍未完成。当前实际四套 P0 都在初始状态门前停止，尚无共同账户历史运行。工程欠项与 600622/603368 数据欠项分别列示。
-
-## V1 权威更新
-
-新增 `shared_account.price_space.raw_intent`，以同日 price/factor 恒等式将 fractional native stock intent 等额映射到 RAW，同一原始证券可以由不同策略 lot 对账；它拒绝因子/价格不一致、非有限值和给股票添加整数批量。这是已测试的小型共同适配器，尚未接入全历史股票账户，因此不能把原来的共同 P0 阻塞标为通过。
-
-新增 CashDistribution 在登记日冻结虚拟权益，在明确现金发放时点按原登记持仓分配，不依赖派发时仍持有该 lot。当前仅接受 ex-date 同日付款语义；跨日应收未实现时明确失败。ShareConversion 保留 pending/到账不可卖/可交易状态。600622/603368 的官方时间线在单笔原始数量探针通过；不是正式多策略连续回放。
-
-当前所有正式共同 P0 仍在初始状态门被拒绝。SMV6 full-phase 跨袖调度、单一物理账户唯一时间序列与正式多层对账尚未完成。所有可能同 timestamp 的中间 checkpoint 是事件审计，不被冒充唯一的正式账户时间序列。研究若完成也只能标为 RESEARCH_GRADE_SHARED_PHYSICAL_ACCOUNT；SMV6 native SuperMind platform equivalence 继续 UNVERIFIED。
+详见 ../REPORT.md 与相关 CSV。

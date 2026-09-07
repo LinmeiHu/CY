@@ -218,8 +218,8 @@ def test_atrdr_historical_prefix_entries_cash_positions_nav():
     dates = pd.bdate_range("2020-01-02", periods=5)
     rows = []
     for idx, day in enumerate(dates):
-        rows.append(dict(symbol="A", trade_date=day, cal_idx=idx, coord_open=10., coord_close=10., coord_high=12. if idx == 4 else 10., open=10., up_limit_price=13., down_limit_price=8., invalid_step_cum=0., trade_status=1,
-                         hard_valid=True, history_valid=True, current_valid=True, corporate_action_valid=True, current_day_data_tradable=True, market_rule_valid=True, corporate_action_blocking=False))
+        rows.append(dict(symbol="A", trade_date=day, cal_idx=idx, coord_open=10., coord_close=10., coord_high=12. if idx == 4 else 10., open=10., close=10., coordinate_factor=1., corporate_action_count=0, up_limit_price=13., down_limit_price=8., invalid_step_cum=0., trade_status=1,
+                         hard_valid=True, history_valid=True, current_valid=True, corporate_action_valid=True, current_day_data_tradable=True, historical_identity_valid=True,market_rule_valid=True, corporate_action_blocking=False))
     daily = pd.DataFrame(rows)
     signal = pd.DataFrame([dict(event_id="E1", symbol="A", sleeve="MAIN", signal_date=dates[0], cal_idx=0, invalid_step_cum=0.)])
     T = dates[3]
@@ -242,6 +242,11 @@ def test_coordinate_change_is_not_silently_marked_or_deleted():
     entries = outcomes()
     entries["source_rank_order"] = 0
     daily = pd.DataFrame({"symbol": ["A", "A"], "trade_date": pd.to_datetime(["2020-01-03", "2020-01-06"]), "coord_open": [10., 5.], "coord_close": [10., 5.], "invalid_step_cum": [0., 1.]})
+    daily['open']=daily.coord_open; daily['close']=daily.coord_close; daily['coord_high']=daily.coord_close
+    daily['coordinate_factor']=1.; daily['corporate_action_count']=0; daily['cal_idx']=[1,2]
+    daily['trade_status']=1; daily['down_limit_price']=1.;daily['corporate_action_blocking']=False
+    for field in ('hard_valid','history_valid','current_valid','corporate_action_valid','current_day_data_tradable','market_rule_valid','historical_identity_valid'):daily[field]=True
+    entries['route']='BULL'
     account, _, _, nav, blocker = replay("ATRDR", entries, daily, "2020-01-01", "2020-01-31")
     assert blocker.startswith("ACTIVE_COORDINATE_LINEAGE_CHANGE")
     assert "E1" in account.lots and len(nav) == 1

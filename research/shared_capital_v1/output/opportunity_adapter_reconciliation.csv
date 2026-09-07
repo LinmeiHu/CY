@@ -1,11 +1,11 @@
-strategy,period,ELIGIBLE_COUNT,PRE_CAPITAL_INTENT_COUNT,NATIVE_FUNDED_COUNT,CAPITAL_REJECTED_COUNT,OTHER_REJECTED_COUNT,status,flow_scope,last_checkpoint,fidelity,scheduler,common_p0_validated,NATIVE_ENTRY_REJECTED_COUNT
-ATRDR,2018_2021,2150.0,571,397,174,542.0,PARTIAL_PREFIX_CORPORATE_ACTION_BLOCKED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2019-07-15 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,
-ATRDR,2022_2023,778.0,502,441,61,276.0,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2023-12-29 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,
-MCB,2018_2021,1064.0,431,325,106,258.0,PARTIAL_PREFIX_CORPORATE_ACTION_BLOCKED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2020-06-23 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,
-MCB,2022_2023,423.0,347,206,141,76.0,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2023-12-29 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,
-OGR,2018_2021,370.0,255,255,0,100.0,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2021-12-31 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,15.0
-OGR,2022_2023,50.0,44,44,0,0.0,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2023-12-29 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,6.0
-IFCGR,2018_2021,362.0,248,248,0,99.0,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2021-12-31 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,15.0
-IFCGR,2022_2023,50.0,44,44,0,0.0,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,eligible_count is full legal entry population; captured decisions stop at explicit blocker if present,2023-12-29 15:00:00,NORMALIZED_RESEARCH_ACCOUNT,shared_account.scheduler.run_streams,False,6.0
-SMV6,2018_2021,77.0,77,77,0,,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,"positive native requests after legal execution and volume cap, before affordability; independent reset diagnostic",2021-12-31 15:00:00,LOCAL_PLATFORM_APPROXIMATION,shared_account.scheduler.run_streams,False,
-SMV6,2022_2023,32.0,32,32,0,,SCHEDULER_INTEGRATED_STANDALONE_RECONCILED,"positive native requests after legal execution and volume cap, before affordability; independent reset diagnostic",2023-12-29 15:00:00,LOCAL_PLATFORM_APPROXIMATION,shared_account.scheduler.run_streams,False,
+strategy,period,ELIGIBLE_COUNT,PRE_CAPITAL_INTENT_COUNT,NATIVE_FUNDED_COUNT,CAPITAL_REJECTED_COUNT,OTHER_REJECTED_COUNT,status,common_p0_validated
+ATRDR,2018_2021,2150,1228,915,313,922,PASS,True
+ATRDR,2022_2023,778,502,441,61,276,PASS,True
+MCB,2018_2021,1064,584,478,106,480,PASS,True
+MCB,2022_2023,423,347,206,141,76,PASS,True
+OGR,2018_2021,370,255,255,0,115,PASS,True
+OGR,2022_2023,50,44,44,0,6,PASS,True
+IFCGR,2018_2021,362,248,248,0,114,PASS,True
+IFCGR,2022_2023,50,44,44,0,6,PASS,True
+SMV6,2018_2021,77,77,77,0,0,PASS,True
+SMV6,2022_2023,32,32,32,0,0,PASS,True

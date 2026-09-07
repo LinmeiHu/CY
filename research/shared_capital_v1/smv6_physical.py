@@ -1,8 +1,8 @@
 """Native SMV6 callbacks funded by the physical/virtual P0 engine.
 
 Orders enter the engine before cash rejection. Actual engine fills update the
-native callback's positions and cash. This is a local platform approximation;
-the multi-strategy simultaneous-order scheduler remains a separate gate.
+native callback's positions and cash. The same callbacks are merged by the
+common scheduler; native SuperMind platform equivalence remains unverified.
 """
 from dataclasses import asdict
 from types import SimpleNamespace
@@ -73,6 +73,7 @@ class PhysicalPlatform(CausalCashPlatform):
     _physical_order_target_percent = corrected_function(smv6.CashPlatform.order_target_percent, [
         ("delta = min(delta, affordable)", "delta = self._engine_buy(symbol, delta, price)"),
         ("self.cash -= delta * price + fee", "if delta < 0:\n        self._engine_sell(symbol, -delta, price)"),
+        ("if self.cash < -1e-8:", "if self.physical.cash < -1e-8:"),
     ])
     def order_target_percent(self, symbol, target_weight):
         self.nav("open")
@@ -82,8 +83,11 @@ class PhysicalPlatform(CausalCashPlatform):
         ("self.cash += qty * price - fee", "self._engine_sell(symbol, qty, price)"),
     ])
 
+    _attributed_record_account = corrected_function(smv6.CashPlatform.record_account, [
+        ('if self.cash < -1e-10 or exposure > nav + 1e-10:', 'if self.physical.cash < -1e-10:'),
+    ])
     def record_account(self):
-        super().record_account()
+        self._attributed_record_account()
         self.physical.mark({s: self._mark(s, "eod") for s, q in self.shares.items() if q}, basis="PRE_ADJUSTED_ETF")
         state = self.physical.checkpoint(self._timestamp(), "CLOSE")
         represented = {}

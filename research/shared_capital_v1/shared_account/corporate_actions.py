@@ -1,4 +1,4 @@
-"""Minimal explicit 4-state share conversion; synthetic until data is resolved.
+"""Explicit record, pending, arrival and tradable share conversion.
 
 No date inference, calendar arithmetic, automatic liquidation, or future scan.
 Each call is one evidenced transition at its knowledge/effective checkpoint.
@@ -20,11 +20,11 @@ class ShareConversion:
             raise ValueError('unknown corporate state timestamp')
         return when, available_at
 
-    def record(self, event_id, symbol, ratio, when, available_at):
+    def record(self, event_id, symbol, ratio, when, available_at, *, strategy=None):
         when, available_at = self._known_time(when, available_at)
         if available_at > when or event_id in self.events or not isfinite(ratio) or ratio <= 0:
             raise ValueError('invalid/unknown conversion record')
-        lots = {eid: deepcopy(lot) for eid,lot in self.account.lots.items() if lot['symbol'] == symbol}
+        lots = {eid: deepcopy(lot) for eid,lot in self.account.lots.items() if lot['symbol'] == symbol and (strategy is None or lot['strategy'] == strategy)}
         if any(lot.get('pending_quantity', 0) or lot.get('nontradable_quantity', 0) for lot in lots.values()):
             raise ValueError('overlapping conversions require explicit native contract')
         self.events[event_id] = dict(symbol=symbol, ratio=ratio, lots=lots, entitlements={eid:lot['quantity']*ratio for eid,lot in lots.items()}, phase='RECORD_DATE', last=when)
@@ -48,9 +48,9 @@ class ShareConversion:
                 lot['remaining_outlay'] -= basis
                 key = f'{eid}|CA|{event_id}'
                 account.lots[key] = {**deepcopy(prior), 'event_id':key, 'quantity':0., 'pending_quantity':qty,
-                    'nontradable_quantity':0., 'remaining_outlay':basis, 'entitlement_event':event_id}
+                    'nontradable_quantity':0., 'remaining_outlay':basis, 'entitlement_event':event_id, 'root_event_id':prior.get('root_event_id',eid)}
                 account.pending_positions[event['symbol']] = account.pending_positions.get(event['symbol'], 0.) + qty
-            account.mark({event['symbol']:ex_price})
+            account.mark({event['symbol']:ex_price}, observed_at=when)
         else:
             for lot in account.lots.values():
                 if lot.get('entitlement_event') != event_id:
@@ -79,7 +79,7 @@ class CashDistribution:
         self.account = account
         self.events = {}
 
-    def record(self, event_id, symbol, per_share, when, available_at, *, ex_date, payment_date):
+    def record(self, event_id, symbol, per_share, when, available_at, *, ex_date, payment_date, strategy=None):
         when, _ = ShareConversion._known_time(when, available_at)
         ex_date, payment_date = pd.Timestamp(ex_date), pd.Timestamp(payment_date)
         if pd.isna(ex_date) or ex_date != payment_date or ex_date.normalize() <= when.normalize():
@@ -87,12 +87,14 @@ class CashDistribution:
         if event_id in self.events or not isfinite(per_share) or per_share < 0:
             raise ValueError('invalid dividend identity/amount')
         amounts = {}
+        ownership=[]
         for lot in self.account.lots.values():
-            if lot['symbol'] == symbol:
+            if lot['symbol'] == symbol and (strategy is None or lot['strategy'] == strategy):
                 if lot.get('pending_quantity',0):
                     raise ValueError('pending dividend basis unresolved')
                 amounts[lot['strategy']] = amounts.get(lot['strategy'],0.) + lot['quantity'] * per_share
-        self.events[event_id] = dict(amounts=amounts,payment_date=payment_date,paid=False)
+                ownership.append(dict(strategy=lot['strategy'],root_event_id=lot.get('root_event_id',lot['event_id']),funding_type=lot.get('funding_type','BASE'),amount=lot['quantity']*per_share))
+        self.events[event_id] = dict(amounts=amounts,ownership=ownership,payment_date=payment_date,paid=False)
 
     def pay(self, event_id, when, available_at):
         when, _ = ShareConversion._known_time(when, available_at)
@@ -103,5 +105,6 @@ class CashDistribution:
             self.account.cash += amount
             self.account.sleeve_cash[strategy] += amount
             self.account.realized[strategy] += amount
+        self.account.cash_distributions.extend(dict(item,action_id=event_id,timestamp=when) for item in event['ownership'])
         event['paid'] = True
         return self.account.checkpoint(when,'CASH_PAYMENT_DATE')

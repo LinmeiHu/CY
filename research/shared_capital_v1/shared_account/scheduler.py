@@ -11,7 +11,7 @@ import pandas as pd
 # Exits are ahead of entries. Marks are only made by the owning native callback
 # using information legal at that clock. Native row priority stays in adapters.
 PHASES = {'BOUNDARY': 0, 'ACTION': 10, 'PREPARE': 15, 'EXIT': 20,
-          'OPEN_CALLBACK': 30, 'ENTRY': 40, 'SIGNAL': 50, 'CLOSE': 60}
+          'OPEN_CALLBACK': 30, 'ENTRY': 40, 'SIGNAL': 50, 'CLOSE': 60, 'RECORD': 70}
 
 
 @dataclass
@@ -30,7 +30,7 @@ class Event:
         return (ts, PHASES[self.phase], self.strategy, self.identity)
 
 
-def run_streams(streams):
+def run_streams(streams, *, complete_timestamp=None, funding=None):
     """Merge sorted lazy adapters. Advance only after each callback completes."""
     heap, previous, seen, trace = [], {}, set(), []
     def push(index, iterator):
@@ -49,7 +49,16 @@ def run_streams(streams):
         push(index, iter(stream))
     while heap:
         key, index, event, iterator = heapq.heappop(heap)
-        event.callback()
-        trace.append({'timestamp':key[0], 'phase':event.phase, 'strategy':event.strategy, 'identity':event.identity})
-        push(index, iterator)
+        batch=[(key,index,event,iterator)]
+        if funding is not None and event.phase in ('OPEN_CALLBACK','ENTRY'):
+            while heap and heap[0][0][0]==key[0] and heap[0][2].phase in ('OPEN_CALLBACK','ENTRY'):
+                batch.append(heapq.heappop(heap))
+            funding.run_callbacks([item[2] for item in batch])
+        else:
+            event.callback()
+        for item_key,item_index,item_event,item_iterator in batch:
+            trace.append({'timestamp':item_key[0], 'phase':item_event.phase, 'strategy':item_event.strategy, 'identity':item_event.identity})
+            push(item_index,item_iterator)
+        if complete_timestamp is not None and (not heap or heap[0][0][0] != key[0]):
+            complete_timestamp(key[0])
     return trace

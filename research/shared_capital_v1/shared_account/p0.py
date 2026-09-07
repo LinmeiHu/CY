@@ -45,5 +45,5 @@ def run(gap,states,adapter_factories):
     account=initialize(gap,states)
     if set(adapter_factories)!=set(account.strategies):raise ValueError('all four native adapters required')
     streams=[adapter_factories[s](account,states[s]) for s in account.strategies]
-    trace=run_streams(streams)
+    trace=run_streams(streams,complete_timestamp=account.complete_timestamp)
     return account,trace

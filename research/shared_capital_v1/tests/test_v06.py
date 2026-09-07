@@ -143,8 +143,8 @@ def test_common_p0_actual_stock_adapter_streams_share_one_account():
     factories={}
     for strategy in ('ATRDR','MCB'):
         symbol=strategy
-        entries=pd.DataFrame([dict(event_id=strategy,symbol=symbol,sleeve='MAIN',signal_date=day-pd.Timedelta(days=1),entry_date=day,entry_price=10.,exit_date=day+pd.Timedelta(days=1),exit_price=10.,exit_reason='H15_TIME',source_rank_order=0,industry_positive_ret20_share=1.,stock_minus_industry_ret20=1.,turnover_expansion=1.)])
-        daily=pd.DataFrame([dict(symbol=symbol,trade_date=day+pd.Timedelta(days=i),coord_open=10.,coord_close=10.,invalid_step_cum=0.) for i in range(2)])
+        entries=pd.DataFrame([dict(event_id=strategy,symbol=symbol,sleeve='MAIN',route='BULL',signal_date=day-pd.Timedelta(days=1),entry_date=day,entry_price=10.,exit_date=day+pd.Timedelta(days=1),exit_price=10.,exit_reason='H15_TIME',source_rank_order=0,industry_positive_ret20_share=1.,stock_minus_industry_ret20=1.,turnover_expansion=1.)])
+        daily=pd.DataFrame([dict(symbol=symbol,trade_date=day+pd.Timedelta(days=i),coord_open=10.,coord_close=10.,coord_high=12. if i else 10.,open=10.,close=10.,coordinate_factor=1.,cal_idx=i,invalid_step_cum=0.,corporate_action_count=0,trade_status=1,down_limit_price=1.,hard_valid=True,history_valid=True,current_valid=True,corporate_action_valid=True,current_day_data_tradable=True,historical_identity_valid=True,market_rule_valid=True,corporate_action_blocking=False) for i in range(2)])
         factories[strategy]=lambda account,state,s=strategy,e=entries,d=daily:replay(s,e,d,'2020-06-01','2020-06-02',physical=account,stream_only=True)[0]
     gap=pd.DataFrame([dict(gap_id='G',symbol='G',board='MAIN',signal_time=T-pd.Timedelta(minutes=1),entry_time=T,entry_date=day,exit_time=T+pd.Timedelta(days=1),exit_date=day+pd.Timedelta(days=1),entry_raw_price=10.,exit_raw_price=10.,entry_coordinate_price=10.,target_coordinate=11.,pre_gap_inside_density_relative_local=.1,cash_events_json='[]')])
     gd=pd.DataFrame([dict(symbol='G',trade_date=day+pd.Timedelta(days=i),close=10.) for i in range(2)])
