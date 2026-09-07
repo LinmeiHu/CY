@@ -92,7 +92,16 @@ def mcb_inputs(inputs, out):
     emit(f"MCB eligible={len(signals)} entered={len(entries)} incomplete={entries.exit_date.isna().sum()}")
 
 
-def ogr_inputs(inputs, out):
+def load_gap_actions(inputs, symbols):
+    replacements = []
+    for name in ('distributions_path', 'rights_path'):
+        old = "FROM read_parquet('{_sql_path(" + name + ")}') a JOIN registry r ON r.raw_symbol=a.symbol\n          WHERE a.effective_date BETWEEN DATE '2014-01-01' AND DATE '2022-03-31'"
+        replacements.append((old, old.replace('2022-03-31', '2023-12-31')))
+    bounded = corrected_function(ogr.load_actions, replacements)
+    return bounded(inputs["qd010_distributions"], inputs["qd010_rights"], symbols)
+
+
+def ogr_inputs(inputs, out, *, parents_only=False):
     out.mkdir(parents=True, exist_ok=True)
     emit("OGR raw daily gaps and V13 through 2023 (unchanged economic predicates)")
     daily = ogr.load_daily(inputs["daily_hist"], end="2023-12-31")
@@ -111,7 +120,9 @@ def ogr_inputs(inputs, out):
         selected.to_parquet(out / (name + ".parquet"), index=False)
         emit(f"OGR {name}={len(selected)}")
     selected.to_parquet(out / "signals.parquet", index=False)
-    actions = ogr.load_actions(inputs["qd010_distributions"], inputs["qd010_rights"], selected.symbol.tolist())
+    if parents_only:
+        return selected
+    actions = load_gap_actions(inputs, selected.symbol.tolist())
     # Entry generation is separate from exit outcomes. No future outcome status filter.
     build_entries = corrected_function(ogr.build_entries, [
         ('range(int(pd.to_datetime(seed.signal_date).dt.year.min()), 2023)', 'range(int(pd.to_datetime(seed.signal_date).dt.year.min()), 2024)'),
@@ -123,11 +134,25 @@ def ogr_inputs(inputs, out):
     build_gap_outcomes(inputs)
 
 
+def rebuild_gap_execution(inputs):
+    out = HERE / 'cache/ogr'
+    selected = pd.read_parquet(out / 'signals.parquet')
+    daily = ogr.load_daily(inputs['daily_hist'], end='2023-12-31')
+    actions = load_gap_actions(inputs, selected.symbol.tolist())
+    function = corrected_function(ogr.build_entries, [
+        ('range(int(pd.to_datetime(seed.signal_date).dt.year.min()), 2023)', 'range(int(pd.to_datetime(seed.signal_date).dt.year.min()), 2024)'),
+        ("r.trade_date<=DATE '2022-03-31'", "r.trade_date<=DATE '2023-12-31'"),
+    ])
+    entries = function(selected, daily, inputs['raw_minute_root'], actions)
+    entries.to_parquet(out / 'entries.parquet', index=False)
+    build_gap_outcomes(inputs)
+
+
 def build_gap_outcomes(inputs):
     out = HERE / "cache/ogr"
     entries = pd.read_parquet(out / "entries.parquet")
     daily = ogr.load_daily(inputs["daily_hist"], end="2023-12-31")
-    actions = ogr.load_actions(inputs["qd010_distributions"], inputs["qd010_rights"], entries.symbol.tolist())
+    actions = load_gap_actions(inputs, entries.symbol.tolist())
     function = corrected_function(ogr.build_outcomes, [
         ("range(int(eligible.entry_date.dt.year.min()), 2023)", "range(int(eligible.entry_date.dt.year.min()), 2024)"),
         ("r.trade_date<=DATE '2022-03-31'", "r.trade_date<=DATE '2023-12-31'"),

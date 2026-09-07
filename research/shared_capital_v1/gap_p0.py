@@ -8,69 +8,97 @@ import pandas as pd
 from five_strategy_bundle.strategies import ogr
 from research.shared_capital_v1.causal_adapters import corrected_function
 from research.shared_capital_v1.shared_account.engine import Intent, PhysicalAccount
+from research.shared_capital_v1.shared_account.scheduler import Event, run_streams
 from research.shared_capital_v1.validation import account_validation
 
 HERE = Path(__file__).resolve().parent
 
 
-def replay(strategy, trades, daily, start, end):
+def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None, stream_only=False, initial_state=None):
+    all_trades = trades
     trades = trades.loc[trades.entry_date.between(start, end)].copy()
     trades["target_at_entry"] = trades.target_coordinate / trades.entry_coordinate_price * .998 / 1.002 - 1
     trades = trades.sort_values(["entry_time", "target_at_entry", "pre_gap_inside_density_relative_local", "symbol", "gap_id"], ascending=[True, False, True, True, True], kind="stable")
     days = pd.DatetimeIndex(sorted(daily.loc[daily.trade_date.between(start, end), "trade_date"].unique()))
     bysymbol = {s: f.set_index("trade_date").close.sort_index() for s, f in daily.loc[daily.symbol.isin(trades.symbol)].groupby("symbol")}
     bydate = {pd.Timestamp(d): f for d, f in trades.groupby("entry_date")}
-    account = PhysicalAccount(strategy)
-    cash = {"MAIN": 500000., "CHINEXT": 500000.}
+    account = physical if physical is not None else PhysicalAccount(strategy)
+    account.boundary_snapshots = {}
+    cash = {"MAIN": account.sleeve_cash[strategy]/2, "CHINEXT": account.sleeve_cash[strategy]/2}
     active, intents, other, nav = {}, [], [], []
+    if initial_state is not None:
+        cash = dict(initial_state['board_cash'])
+        for eid in initial_state['native_active']:
+            rows=all_trades.loc[all_trades.gap_id.eq(eid)]
+            if len(rows)!=1:raise ValueError('native inherited Gap identity missing')
+            active[eid]=rows.iloc[0].to_dict()
 
     def mark(when, include_close=False):
         for eid, row in active.items():
             series = bysymbol[row["symbol"]]
             before = series.loc[series.index <= when.normalize()] if include_close else series.loc[series.index < when.normalize()]
             price = float(before.iloc[-1]) if len(before) else row["entry_raw_price"]
-            account.mark({row["symbol"]: price})
+            account.mark({row["symbol"]: price}, basis="RAW")
 
-    for day in days:
+    def actions(day):
         for eid, row in list(active.items()):
             for event in json.loads(row.cash_events_json if hasattr(row, 'cash_events_json') else row["cash_events_json"]):
                 if pd.Timestamp(event["date"]) == day:
                     before = account.cash
                     account.credit(eid, float(event["cash_per_share"]), day)
                     cash[row["board"]] += account.cash - before
-        cohort = bydate.get(day, pd.DataFrame())
-        times = sorted(set(pd.to_datetime(cohort.entry_time) if len(cohort) else []) | {pd.Timestamp(row["exit_time"]) for row in active.values() if pd.Timestamp(row["exit_time"]).normalize() == day})
-        for when in times:
-            for eid, row in sorted(list(active.items()), key=lambda item: (pd.Timestamp(item[1]["exit_time"]), item[1]["symbol"])):
-                if pd.Timestamp(row["exit_time"]) <= when:
-                    before = account.cash
-                    account.close(eid, row["exit_raw_price"], when, .002)
-                    cash[row["board"]] += account.cash - before
-                    del active[eid]
-            incoming = cohort.loc[cohort.entry_time.eq(when)] if len(cohort) else cohort
-            for row in incoming.itertuples(index=False):
-                live = [p for p in active.values() if p["board"] == row.board]
-                reason = "DUPLICATE_SYMBOL" if any(p["symbol"] == row.symbol for p in live) else "CAPACITY" if len(live) >= 80 else None
-                if reason:
-                    other.append({"event_id": row.gap_id, "reason": reason})
-                    continue
-                mark(when)
-                value = sum(account.lots[eid]["quantity"] * account.marks[p["symbol"]] for eid, p in active.items() if p["board"] == row.board)
-                outlay = (cash[row.board] + value) / 80
-                intent = Intent(strategy, "FIXED_BELOW_L_REPAIR", "GAP", row.gap_id, row.gap_id, row.symbol,
-                    pd.Timestamp(row.signal_time), when, (-row.target_at_entry, row.pre_gap_inside_density_relative_local, row.symbol, row.gap_id),
-                    outlay / (row.entry_raw_price * 1.002), row.entry_raw_price, .002, board=row.board, native_base_cash_limit=cash[row.board])
-                intents.append({**asdict(intent), "native_requested_notional": intent.native_requested_notional})
-                home = {s: 1e6 for s in account.strategies}
-                home[strategy] = sum(cash.values()) + account.exposure()
+    def exits(when):
+        for eid, row in sorted(list(active.items()), key=lambda item: (pd.Timestamp(item[1]["exit_time"]), item[1]["symbol"])):
+            if pd.Timestamp(row["exit_time"]) <= when:
                 before = account.cash
-                account.fund([intent], home, "P0", when)
-                if row.gap_id in account.lots:
-                    cash[row.board] -= before - account.cash
-                    active[row.gap_id] = row._asdict()
+                account.close(eid, row["exit_raw_price"], when, .002)
+                cash[row["board"]] += account.cash - before
+                del active[eid]
+    def enter(when, cohort):
+        incoming = cohort.loc[cohort.entry_time.eq(when)] if len(cohort) else cohort
+        for row in incoming.itertuples(index=False):
+            live = [p for p in active.values() if p["board"] == row.board]
+            reason = "DUPLICATE_SYMBOL" if any(p["symbol"] == row.symbol for p in live) else "CAPACITY" if len(live) >= 80 else None
+            if reason:
+                other.append({"event_id": row.gap_id, "reason": reason})
+                continue
+            mark(when)
+            value = sum(account.lots[eid]["quantity"] * account.marks[p["symbol"]] for eid, p in active.items() if p["board"] == row.board)
+            outlay = (cash[row.board] + value) / 80
+            intent = Intent(strategy, "FIXED_BELOW_L_REPAIR", "GAP", row.gap_id, row.gap_id, row.symbol,
+                pd.Timestamp(row.signal_time), when, (-row.target_at_entry, row.pre_gap_inside_density_relative_local, row.symbol, row.gap_id),
+                outlay / (row.entry_raw_price * 1.002), row.entry_raw_price, .002, board=row.board, native_base_cash_limit=cash[row.board])
+            intents.append({**asdict(intent), "native_requested_notional": intent.native_requested_notional})
+            home = {s: 1e6 for s in account.strategies}
+            home[strategy] = sum(cash.values()) + account.exposure(strategy)
+            before = account.cash
+            account.fund([intent], home, "P0", when)
+            if row.gap_id in account.lots:
+                cash[row.board] -= before - account.cash
+                active[row.gap_id] = row._asdict()
+    def close(day):
         mark(day, True)
         state = account.checkpoint(day + pd.Timedelta(hours=15), "CLOSE")
-        nav.append({"trade_date": day, "nav": state["nav"] - 3e6, "cash": sum(cash.values()), "gross_exposure": account.exposure(), "active_positions": len(active)})
+        nav.append({"trade_date": day, "nav": sum(cash.values()) + account.exposure(strategy), "cash": sum(cash.values()), "gross_exposure": account.exposure(strategy), "active_positions": len(active)})
+
+    def events():
+        for day in days:
+            for boundary in boundaries:
+                if day >= pd.Timestamp(boundary) and boundary not in account.boundary_snapshots:
+                    account.boundary_snapshots[boundary] = {'asof':nav[-1]['trade_date'] if nav else None,
+                        'cash':sum(cash.values()), 'board_cash':dict(cash), 'nav':sum(cash.values())+account.exposure(strategy),
+                        'positions':dict(account.positions), 'marks':dict(account.marks), 'native_active':{k:dict(v) for k,v in active.items()},
+                        'virtual_lots':{k:dict(v) for k,v in account.lots.items()}}
+            yield Event(day, 'ACTION', strategy, str(day), lambda d=day: actions(d))
+            cohort = bydate.get(day, pd.DataFrame())
+            times = sorted(set(pd.to_datetime(cohort.entry_time) if len(cohort) else []) | {pd.Timestamp(row['exit_time']) for row in active.values() if pd.Timestamp(row['exit_time']).normalize() == day})
+            for when in times:
+                yield Event(when, 'EXIT', strategy, str(when), lambda w=when: exits(w))
+                yield Event(when, 'ENTRY', strategy, str(when), lambda w=when,c=cohort: enter(w,c))
+            yield Event(day + pd.Timedelta(hours=15), 'CLOSE', strategy, str(day), lambda d=day: close(d))
+    if stream_only:
+        return events(), lambda: (pd.DataFrame(intents), pd.DataFrame(other), pd.DataFrame(nav))
+    account.scheduler_trace = run_streams([events()])
     return account, pd.DataFrame(intents), pd.DataFrame(other), pd.DataFrame(nav)
 
 

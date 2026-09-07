@@ -1,0 +1,16 @@
+gate,requirement,status,evidence
+1,600622 action state or irrelevance,FAIL_DATA_INPUT_MISSING,ca_600622_forensic.csv
+2,ATRDR 2018 initial state,FAIL_DATA_INPUT_MISSING,atrdr_initial_state_2018.json
+3,ATRDR 2022 initial state,FAIL_DATA_INPUT_MISSING,atrdr_initial_state_2022.json
+4,all five native initial states,FAIL,7/10 validated
+5,opportunity adapters reconciled,STANDALONE_ONLY_COMMON_P0_NOT_VALIDATED,opportunity_adapter_reconciliation.csv
+6,common scheduler integrated,ADAPTER_STREAMS_INTEGRATED_NATIVE_BATCH_PHASE_CLOSURE_PENDING,reports/common_scheduler_accounting.md
+7,physical virtual common account reconciled,SYNTHETIC_AND_STANDALONE_ONLY_PRICE_UNIT_CONVERSION_PENDING,virtual_physical_reconciliation.csv
+8,P0 OGR 2018_2021,NOT_RUN_INITIAL_STATE_UNRESOLVED,p0_reconciliation.csv
+9,P0 OGR 2022_2023,NOT_RUN_INITIAL_STATE_UNRESOLVED,p0_reconciliation.csv
+10,P0 IFCGR 2018_2021,NOT_RUN_INITIAL_STATE_UNRESOLVED,p0_reconciliation.csv
+11,P0 IFCGR 2022_2023,NOT_RUN_INITIAL_STATE_UNRESOLVED,p0_reconciliation.csv
+12,prefix invariance,RAW_PARENT_AND_ACCOUNT_PROBES_PASS_FULL_CONTINUOUS_ATRDR_BLOCKED,gap_raw_prefix_v06.csv; ifcgr_prefix_v06.csv; atrdr_actual_prefix_probes.csv
+13,SMV6 future close perturbation,PASS,focused_tests_v06.xml
+14,financing/account validation,ENGINE_AND_STANDALONE_PASS_COMMON_P0_NOT_RUN,virtual_physical_reconciliation.csv
+15,deterministic rerun,PASS_STANDALONE_AND_REACHABLE_STATES_COMMON_P0_NOT_RUN,v06_deterministic_rerun.csv

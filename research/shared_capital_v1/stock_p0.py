@@ -15,11 +15,13 @@ from five_strategy_bundle.execution.daily import load_daily, replay_shared_route
 from research.shared_capital_v1.build_inputs import execution_paths
 from research.shared_capital_v1.causal_adapters import corrected_function
 from research.shared_capital_v1.shared_account.engine import Intent, PhysicalAccount
+from research.shared_capital_v1.shared_account.scheduler import Event, run_streams
 
 HERE = Path(__file__).resolve().parent
 
 
-def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, boundaries=()):
+def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, boundaries=(), physical=None, stream_only=False, initial_state=None):
+    all_entries = entries
     entries = entries.loc[entries.entry_date.between(start, end)].copy()
     rank = ["source_rank_order"] if strategy == "ATRDR" else ["industry_positive_ret20_share", "stock_minus_industry_ret20", "turnover_expansion"]
     fields = ["entry_date", "sleeve", "signal_date", *rank, "event_id"] if strategy == "ATRDR" else ["entry_date", *rank, "event_id"]
@@ -29,10 +31,16 @@ def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, bounda
     columns = ["symbol", "trade_date", "coord_open", "coord_close", "invalid_step_cum"]
     grouped = {(str(row.symbol), pd.Timestamp(row.trade_date)): row for row in daily[columns].itertuples(index=False)}
     candidates = {pd.Timestamp(day): rows for day, rows in entries.groupby("entry_date")}
-    account = PhysicalAccount("OGR")
+    account = physical if physical is not None else PhysicalAccount("OGR")
     account.boundary_snapshots = {}
-    cash = {"MAIN": 500000., "CHINEXT": 500000.}
+    cash = {"MAIN": account.sleeve_cash[strategy]/2, "CHINEXT": account.sleeve_cash[strategy]/2}
     active = {}
+    if initial_state is not None:
+        cash = dict(initial_state['board_cash'])
+        for eid,known in initial_state['native_active'].items():
+            rows=all_entries.loc[all_entries.event_id.eq(eid)]
+            if len(rows)!=1:raise ValueError('native inherited entry identity missing')
+            active[eid]={**rows.iloc[0].to_dict(), 'lineage':known['lineage']}
     intents, rejects, nav_rows = [], [], []
     blocker = None
 
@@ -45,7 +53,7 @@ def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, bounda
             # The sealed stock account explicitly defines previous known mark
             # fallback. Lineage failures above never enter that fallback.
             if pd.notna(price) and np.isfinite(price) and price > 0:
-                account.mark({position["symbol"]: float(price)})
+                account.mark({position["symbol"]: float(price)}, basis="NATIVE_COORDINATE")
 
     def exits(day, target):
         for eid, position in sorted(list(active.items())):
@@ -55,57 +63,67 @@ def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, bounda
                 cash[position["sleeve"]] += account.cash - before
                 del active[eid]
 
-    for day in days:
-        try:
-            for boundary in boundaries:
-                if day >= pd.Timestamp(boundary) and boundary not in account.boundary_snapshots:
-                    account.boundary_snapshots[boundary] = {
-                        "asof": nav_rows[-1]["trade_date"] if nav_rows else None,
-                        "cash": sum(cash.values()), "board_cash": dict(cash),
-                        "nav": sum(cash.values()) + account.exposure(),
-                        "positions": dict(account.positions),
-                        "native_active": {k: dict(v) for k, v in active.items()},
-                        "virtual_lots": {k: dict(v) for k, v in account.lots.items()},
-                        "completed_fills": len(account.fills),
-                        "boundary_mark": "PREVIOUS_COMPLETED_CLOSE_BEFORE_FIRST_SESSION"}
-            # Coordinate actions known at this open must be reconciled before
-            # reusing native coordinate quantities for any exit or valuation.
-            mark(day, "coord_open")
-            exits(day, False)
-            board_nav = {b: cash[b] + sum(account.lots[eid]["quantity"] * account.marks[p["symbol"]] for eid, p in active.items() if p["sleeve"] == b) for b in cash}
-            counts = {"MAIN": 0, "CHINEXT": 0}
-            cohort = candidates.get(day, pd.DataFrame())
-            for row in cohort.itertuples(index=False):
-                board = row.sleeve
-                live = [p for p in active.values() if p["sleeve"] == board]
-                reason = "ACTIVE_SYMBOL" if any(p["symbol"] == row.symbol for p in live) else "MAX_K" if len(live) >= 30 else "DAILY_CAP" if counts[board] >= 10 else None
-                if reason:
-                    rejects.append({"event_id": row.event_id, "reason": reason})
-                    continue
-                outlay = board_nav[board] / 30
-                intent = Intent(strategy, getattr(row, "route", "MCB"), "DEMAND", row.event_id,
-                    getattr(row, "parent_event_id", ""), row.symbol, pd.Timestamp(row.signal_date) + pd.Timedelta(hours=15),
-                    day + pd.Timedelta(hours=9, minutes=30), tuple(getattr(row, k) for k in rank),
-                    outlay / (float(row.entry_price) * 1.002), float(row.entry_price), .002,
-                    board=board, native_base_cash_limit=cash[board])
-                intents.append({**asdict(intent), "native_requested_notional": intent.native_requested_notional})
-                home = {s: 1e6 for s in account.strategies}
-                home[strategy] = sum(cash.values()) + account.exposure()
-                before = account.cash
-                account.fund([intent], home, "P0", intent.earliest_execution_at)
-                if row.event_id in account.lots:
-                    cash[board] -= before - account.cash
-                    data = grouped[(str(row.symbol), day)]
-                    active[row.event_id] = {**row._asdict(), "lineage": float(data.invalid_step_cum)}
-                    counts[board] += 1
-            exits(day, True)
-            mark(day, "coord_close")
-            snapshot = account.checkpoint(day + pd.Timedelta(hours=15), "CLOSE")
-            nav_rows.append({"trade_date": day, "nav": snapshot["nav"] - 3e6, "cash": sum(cash.values()),
-                             "gross_exposure": account.exposure(), "active_positions": len(active)})
-        except ValueError as exc:
-            blocker = str(exc)
-            break
+    def boundary_step(day):
+        for boundary in boundaries:
+            if day >= pd.Timestamp(boundary) and boundary not in account.boundary_snapshots:
+                account.boundary_snapshots[boundary] = {
+                    "asof": nav_rows[-1]["trade_date"] if nav_rows else None,
+                    "cash": sum(cash.values()), "board_cash": dict(cash),
+                    "nav": sum(cash.values()) + account.exposure(strategy),
+                    "positions": dict(account.positions), "marks":dict(account.marks),
+                    "native_active": {k: dict(v) for k, v in active.items()},
+                    "virtual_lots": {k: dict(v) for k, v in account.lots.items()},
+                    "completed_fills": len(account.fills),
+                    "boundary_mark": "PREVIOUS_COMPLETED_CLOSE_BEFORE_FIRST_SESSION"}
+    def entry_step(day):
+        board_nav = {b: cash[b] + sum(account.lots[eid]["quantity"] * account.marks[p["symbol"]] for eid, p in active.items() if p["sleeve"] == b) for b in cash}
+        counts = {"MAIN": 0, "CHINEXT": 0}
+        cohort = candidates.get(day, pd.DataFrame())
+        for row in cohort.itertuples(index=False):
+            board = row.sleeve
+            live = [p for p in active.values() if p["sleeve"] == board]
+            reason = "ACTIVE_SYMBOL" if any(p["symbol"] == row.symbol for p in live) else "MAX_K" if len(live) >= 30 else "DAILY_CAP" if counts[board] >= 10 else None
+            if reason:
+                rejects.append({"event_id": row.event_id, "reason": reason})
+                continue
+            outlay = board_nav[board] / 30
+            intent = Intent(strategy, getattr(row, "route", "MCB"), "DEMAND", row.event_id,
+                getattr(row, "parent_event_id", ""), row.symbol, pd.Timestamp(row.signal_date) + pd.Timedelta(hours=15),
+                day + pd.Timedelta(hours=9, minutes=30), tuple(getattr(row, k) for k in rank),
+                outlay / (float(row.entry_price) * 1.002), float(row.entry_price), .002,
+                board=board, native_base_cash_limit=cash[board], price_basis="NATIVE_COORDINATE")
+            intents.append({**asdict(intent), "native_requested_notional": intent.native_requested_notional})
+            home = {s: 1e6 for s in account.strategies}
+            home[strategy] = sum(cash.values()) + account.exposure(strategy)
+            before = account.cash
+            account.fund([intent], home, "P0", intent.earliest_execution_at)
+            if row.event_id in account.lots:
+                cash[board] -= before - account.cash
+                data = grouped[(str(row.symbol), day)]
+                active[row.event_id] = {**row._asdict(), "lineage": float(data.invalid_step_cum)}
+                counts[board] += 1
+    def close_step(day):
+        mark(day, "coord_close")
+        snapshot = account.checkpoint(day + pd.Timedelta(hours=15), "CLOSE")
+        nav_rows.append({"trade_date": day, "nav": sum(cash.values()) + account.exposure(strategy), "cash": sum(cash.values()),
+                         "gross_exposure": account.exposure(strategy), "active_positions": len(active)})
+
+    def events():
+        for day in days:
+            yield Event(day, 'BOUNDARY', strategy, str(day), lambda d=day: boundary_step(d))
+            when = day + pd.Timedelta(hours=9, minutes=30)
+            yield Event(when, 'PREPARE', strategy, str(day), lambda d=day: mark(d, 'coord_open'))
+            yield Event(when, 'EXIT', strategy, str(day), lambda d=day: exits(d, False))
+            yield Event(when, 'ENTRY', strategy, str(day), lambda d=day: entry_step(d))
+            when = day + pd.Timedelta(hours=15)
+            yield Event(when, 'EXIT', strategy, str(day), lambda d=day: exits(d, True))
+            yield Event(when, 'CLOSE', strategy, str(day), lambda d=day: close_step(d))
+    if stream_only:
+        return events(), lambda: (pd.DataFrame(intents), pd.DataFrame(rejects), pd.DataFrame(nav_rows))
+    try:
+        account.scheduler_trace = run_streams([events()])
+    except ValueError as exc:
+        blocker = str(exc)
     return account, pd.DataFrame(intents), pd.DataFrame(rejects), pd.DataFrame(nav_rows), blocker
 
 

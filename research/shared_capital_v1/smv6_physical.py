@@ -5,6 +5,7 @@ native callback's positions and cash. This is a local platform approximation;
 the multi-strategy simultaneous-order scheduler remains a separate gate.
 """
 from dataclasses import asdict
+from types import SimpleNamespace
 import json
 
 import pandas as pd
@@ -12,13 +13,15 @@ import pandas as pd
 from five_strategy_bundle.strategies import smv6
 from research.shared_capital_v1.causal_adapters import CausalCashPlatform, corrected_function
 from research.shared_capital_v1.shared_account.engine import Intent, PhysicalAccount
+from research.shared_capital_v1.shared_account.scheduler import Event, run_streams
 from research.shared_capital_v1.smv6_baseline import HERE, load_bounded
 
 
 class PhysicalPlatform(CausalCashPlatform):
     def __init__(self, *args, **kwargs):
+        physical = kwargs.pop("physical", None)
         super().__init__(*args, **kwargs)
-        self.physical = PhysicalAccount("OGR", initial_cash=self.initial_cash * 4)
+        self.physical = physical if physical is not None else PhysicalAccount("OGR", initial_cash=self.initial_cash * 4)
         self.intent_rows = []
 
     @property
@@ -34,7 +37,7 @@ class PhysicalPlatform(CausalCashPlatform):
     def nav(self, stage):
         value = super().nav(stage)
         if hasattr(self, "physical"):
-            self.physical.mark({s: self._mark(s, stage) for s, q in self.shares.items() if q})
+            self.physical.mark({s: self._mark(s, stage) for s, q in self.shares.items() if q}, basis="PRE_ADJUSTED_ETF")
         return value
 
     def _timestamp(self):
@@ -45,7 +48,7 @@ class PhysicalPlatform(CausalCashPlatform):
         identity = f"SMV6|{self.current_date}|{symbol}|{len(self.intent_rows)}"
         intent = Intent("SMV6", "NATIVE_CALLBACK", "ETF_TIMING", identity, "", symbol,
             pd.Timestamp(self.current_date), self._timestamp(), (len(self.intent_rows),),
-            requested, price, self.commission_rate, lot_size=self.lot_size,
+            requested, price, self.commission_rate, lot_size=self.lot_size, price_basis="PRE_ADJUSTED_ETF",
             state_requirements=json.dumps(self.shares, sort_keys=True))
         self.intent_rows.append({**asdict(intent), "native_requested_notional": intent.native_requested_notional})
         home = {s: self.initial_cash for s in self.physical.strategies}
@@ -57,7 +60,7 @@ class PhysicalPlatform(CausalCashPlatform):
     def _engine_sell(self, symbol, quantity, price):
         remaining = quantity
         for eid, lot in list(self.physical.lots.items()):
-            if lot["symbol"] != symbol:
+            if lot["symbol"] != symbol or lot["strategy"] != "SMV6":
                 continue
             qty = min(remaining, lot["quantity"])
             self.physical.close(eid, price, self._timestamp(), self.commission_rate, quantity=qty)
@@ -81,12 +84,52 @@ class PhysicalPlatform(CausalCashPlatform):
 
     def record_account(self):
         super().record_account()
-        self.physical.mark({s: self._mark(s, "eod") for s, q in self.shares.items() if q})
+        self.physical.mark({s: self._mark(s, "eod") for s, q in self.shares.items() if q}, basis="PRE_ADJUSTED_ETF")
         state = self.physical.checkpoint(self._timestamp(), "CLOSE")
-        if self.physical.positions != {s: q for s, q in self.shares.items() if q}:
+        represented = {}
+        for lot in self.physical.lots.values():
+            if lot['strategy'] == 'SMV6':
+                represented[lot['symbol']] = represented.get(lot['symbol'], 0.) + lot['quantity']
+        if represented != {s: q for s, q in self.shares.items() if q}:
             raise ValueError("native/physical holdings mismatch")
-        if abs(state["nav"] - 3 * self.initial_cash - self.accounts[-1]["nav"]) > 1e-6:
+        if abs(self.physical.sleeve_cash["SMV6"] + self.physical.exposure("SMV6") - self.accounts[-1]["nav"]) > 1e-6:
             raise ValueError("native/physical equity mismatch")
+
+
+def callback_stream(platform, calendar):
+    namespace = smv6.frozen_namespace(platform)
+    context = SimpleNamespace(portfolio=SimpleNamespace(stock_account=SimpleNamespace(positions=platform.positions)))
+    namespace['init'](context)
+    platform.native_context = context
+    def before(day):
+        platform.current_date = day.date()
+        platform.event_stage = 'before_trading'
+        prior = set(platform.positions)
+        namespace['before_trading'](context)
+        smv6.record_pending_signals(platform, context, prior)
+    def opening():
+        platform.event_stage = 'open'
+        namespace['execute_pending_open'](context, platform.bar_dict(), 'LOCAL_09_30')
+    def signal():
+        platform.event_stage = 'signal'
+        namespace['run_1457_exit_signal'](context, platform.bar_dict(include_signal=True))
+        for symbol in context.pending_close_sells:
+            platform._record('TAIL_SELL_SIGNAL', symbol, price=platform._minute_price(symbol, 'PSEUDO_CLOSE_14_57_OPEN', 'pre_adj_open'), reason=context.pending_close_reason)
+    def closing():
+        platform.event_stage = 'close'
+        namespace['execute_pending_close_sells'](context, platform.bar_dict(include_close=True))
+    for day in calendar:
+        yield Event(day, 'PREPARE', 'SMV6', str(day), lambda d=day: before(d))
+        yield Event(day + pd.Timedelta(hours=9, minutes=30), 'OPEN_CALLBACK', 'SMV6', str(day), opening)
+        yield Event(day + pd.Timedelta(hours=14, minutes=57), 'SIGNAL', 'SMV6', str(day), signal)
+        yield Event(day + pd.Timedelta(hours=15), 'EXIT', 'SMV6', str(day), closing)
+        yield Event(day + pd.Timedelta(hours=15), 'CLOSE', 'SMV6', str(day), platform.record_account)
+
+
+def scheduled_callbacks(platform, calendar):
+    platform.physical.scheduler_trace = run_streams([callback_stream(platform, calendar)])
+    events = pd.DataFrame(platform.events).sort_values(['trade_date','symbol','event_type']).reset_index(drop=True)
+    return events, pd.DataFrame(platform.accounts)
 
 
 def run():
@@ -97,7 +140,7 @@ def run():
     for period, start, end in (("2018_2021", "2018-01-01", "2021-12-31"), ("2022_2023", "2022-01-01", "2023-12-31")):
         calendar = list(daily["000852.SH"].loc[start:end].dropna(subset=["pre_adj_close"]).index)
         platform = PhysicalPlatform(daily, minute, availability, calendar, initial_cash=1e6, lot_size=100, fee_bps=0)
-        events, nav = smv6._run_callbacks(platform, calendar, account=True)
+        events, nav = scheduled_callbacks(platform, calendar)
         root = HERE / "cache/smv6" / period
         reference = pd.read_parquet(root / "CAUSAL_CORRECTED_BASELINE_nav.parquet")
         reference_events = pd.read_parquet(root / "CAUSAL_CORRECTED_BASELINE_events.parquet")

@@ -24,6 +24,7 @@ class Intent:
     price: float
     fee_rate: float
     lot_size: int = 0  # zero = explicitly fractional normalized research units
+    price_basis: str = "RAW"
     side: str = "BUY"
     reason: str = "NATIVE_ELIGIBLE"
     state_requirements: str = "NATIVE_ADAPTER_ACTUAL_FUNDED_STATE"
@@ -48,31 +49,50 @@ class PhysicalAccount:
         self.initial_cash = self.cash = initial_cash
         self.sleeve_cash = {s: initial_cash / 4 for s in self.strategies}
         self.lots, self.positions, self.marks = {}, {}, {}
+        self.pending_positions = {}
+        self.price_bases = {}
         self.realized = {s: 0.0 for s in self.strategies}
         self.fees = 0.0
         self.checkpoints, self.fills, self.rejections, self.shortfalls = [], [], [], []
         self.seen = set()
 
     def exposure(self, strategy=None):
-        return sum(lot["quantity"] * self.marks[lot["symbol"]] for lot in self.lots.values()
+        return sum((lot["quantity"] + lot.get("pending_quantity", 0.)) * self.marks[lot["symbol"]] for lot in self.lots.values()
                    if strategy is None or lot["strategy"] == strategy)
 
-    def mark(self, prices):
+    def mark(self, prices, *, basis=None):
         if any(not isfinite(v) or v <= 0 for v in prices.values()):
             raise ValueError("invalid mark")
+        if basis is not None:
+            if any(s in self.price_bases and self.price_bases[s] != basis for s in prices):
+                raise ValueError('physical symbol price-unit conflict: raw conversion required')
+            self.price_bases.update({s:basis for s in prices})
         self.marks.update(prices)
 
     def checkpoint(self, when, stage):
-        virtual = {}
+        virtual, pending = {}, {}
         for lot in self.lots.values():
-            virtual[lot["symbol"]] = virtual.get(lot["symbol"], 0.0) + lot["quantity"]
+            quantities = (lot['quantity'], lot.get('pending_quantity', 0.), lot.get('nontradable_quantity', 0.), lot['remaining_outlay'])
+            if any(not isfinite(v) or v < 0 for v in quantities) or lot.get('nontradable_quantity', 0.) > lot['quantity']:
+                raise ValueError('nonfinite/invalid virtual quantities or basis')
+            if lot['quantity']:
+                virtual[lot["symbol"]] = virtual.get(lot["symbol"], 0.0) + lot["quantity"]
+            if lot.get('pending_quantity', 0.):
+                pending[lot['symbol']] = pending.get(lot['symbol'], 0.) + lot['pending_quantity']
+        if any(not isfinite(v) or v < 0 for v in [*self.positions.values(), *self.pending_positions.values()]):
+            raise ValueError('nonfinite/invalid physical quantities')
+        if set(pending) != set(self.pending_positions) or any(abs(q-self.pending_positions[s]) > 1e-8 for s,q in pending.items()):
+            raise ValueError('physical/virtual pending quantity mismatch')
         if set(virtual) != set(self.positions) or any(abs(q - self.positions[s]) > 1e-8 for s, q in virtual.items()):
             raise ValueError("physical/virtual quantity mismatch")
-        gross = self.exposure()
+        gross = sum((q + self.pending_positions.get(s,0.)) * self.marks[s] for s,q in self.positions.items())
+        gross += sum(q*self.marks[s] for s,q in self.pending_positions.items() if s not in self.positions)
+        if abs(gross - self.exposure()) > 1e-6:
+            raise ValueError('physical/virtual marked exposure mismatch')
         nav = self.cash + gross
-        unrealized = sum(lot["quantity"] * self.marks[lot["symbol"]] - lot["remaining_outlay"] for lot in self.lots.values())
+        unrealized = sum((lot["quantity"] + lot.get("pending_quantity", 0.)) * self.marks[lot["symbol"]] - lot["remaining_outlay"] for lot in self.lots.values())
         pnl_nav = self.initial_cash + sum(self.realized.values()) + unrealized
-        if not all(isfinite(v) for v in (self.cash, gross, nav, pnl_nav)) or nav <= 0:
+        if not all(isfinite(v) for v in (self.cash, gross, nav, pnl_nav, self.fees, *self.sleeve_cash.values(), *self.realized.values())) or nav <= 0:
             raise ValueError("nonfinite/invalid account")
         if self.cash < -1e-8 or gross > nav + 1e-8:
             raise ValueError("financed account")
@@ -86,8 +106,9 @@ class PhysicalAccount:
 
     def close(self, event_id, price, when, fee_rate, *, quantity=None, reason="NATIVE_EXIT"):
         lot = self.lots[event_id]
-        qty = lot["quantity"] if quantity is None else quantity
-        if not all(isfinite(v) for v in (qty, price, fee_rate)) or qty <= 0 or qty > lot["quantity"] or price <= 0 or fee_rate < 0:
+        tradable = lot["quantity"] - lot.get("nontradable_quantity", 0.)
+        qty = tradable if quantity is None else quantity
+        if not all(isfinite(v) for v in (qty, price, fee_rate)) or qty <= 0 or qty > tradable or price <= 0 or fee_rate < 0:
             raise ValueError("invalid native exit")
         self.mark({lot["symbol"]: price})
         fraction = qty / lot["quantity"]
@@ -104,7 +125,7 @@ class PhysicalAccount:
         lot["quantity"] -= qty
         lot["remaining_outlay"] -= basis
         self.positions[lot["symbol"]] -= qty
-        if lot["quantity"] == 0:
+        if lot["quantity"] == 0 and not lot.get("pending_quantity", 0.):
             del self.lots[event_id]
         if abs(self.positions[lot["symbol"]]) < 1e-12:
             del self.positions[lot["symbol"]]
@@ -140,7 +161,7 @@ class PhysicalAccount:
         self.cash -= outlay
         self.sleeve_cash[intent.strategy] -= outlay
         self.fees += fee
-        self.mark({intent.symbol: intent.price})
+        self.mark({intent.symbol: intent.price}, basis=intent.price_basis)
         lot = {**asdict(intent), "quantity": qty, "funding_type": kind, "entry": when,
                "requested_notional": requested, "funded_notional": outlay, "remaining_outlay": outlay}
         self.lots[intent.event_id] = lot
@@ -160,11 +181,17 @@ class PhysicalAccount:
         ids = [i.event_id for i in ordered]
         if len(set(ids)) != len(ids) or any(i in self.seen for i in ids):
             raise ValueError("intent duplicate/replay would enlarge funded trade")
+        batch_bases = dict(self.price_bases)
         for intent in ordered:
+            if intent.symbol in batch_bases and batch_bases[intent.symbol] != intent.price_basis:
+                raise ValueError("physical symbol price-unit conflict: raw conversion required")
+            batch_bases[intent.symbol] = intent.price_basis
             if intent.strategy not in self.strategies or not intent.event_id or intent.side != "BUY":
                 raise ValueError("invalid active strategy/intent")
             if intent.decision_at >= intent.earliest_execution_at or intent.earliest_execution_at > when:
                 raise ValueError("future or unfinished-bar intent")
+            if intent.native_base_cash_limit is not None and (not isfinite(intent.native_base_cash_limit) or intent.native_base_cash_limit < 0):
+                raise ValueError('invalid native cash limit')
             if not all(isfinite(v) for v in (intent.price, intent.fee_rate, intent.native_requested_quantity)) or intent.price <= 0 or intent.fee_rate < 0 or intent.native_requested_quantity <= 0:
                 raise ValueError("invalid native sizing")
         self.seen.update(ids)
@@ -200,6 +227,8 @@ class PhysicalAccount:
                                             "requested": intent.native_requested_notional, "cash": self.cash,
                                             "reason": "BASE_ENTITLEMENT_SHORTFALL"})
         if policy == "P0":
+            if any(v < -1e-8 for v in self.sleeve_cash.values()):
+                raise ValueError("P0 cross-sleeve financing")
             for intent in unfunded:
                 self.rejections.append({"event_id": intent.event_id, "reason": "SEGMENTATION_IDLE" if self.cash >= intent.native_requested_notional else "GLOBAL_DEMAND_CONFLICT"})
             return self.checkpoint(when, "FUNDING_COMPLETE")
