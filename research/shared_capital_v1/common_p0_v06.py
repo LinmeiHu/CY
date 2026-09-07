@@ -16,6 +16,8 @@ from research.shared_capital_v1.smv6_baseline import load_bounded
 
 
 def run():
+    from research.shared_capital_v1.universe import verify
+    verify()
     rows=[]
     for gap in ('OGR','IFCGR'):
         for period,start,end in [('2018_2021','2018-01-01','2021-12-31'),('2022_2023','2022-01-01','2023-12-31')]:

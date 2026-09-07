@@ -1,49 +1,35 @@
-# V0.6 reproduction
+# 最终推进 V1 复跑
 
-仅在 `/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1`，
-分支 `research/five-strategy-shared-capital-v1` 运行。
-
-完整注册输入重建、原生账户/边界、原始父信号前缀探针、两次确定性回放、测试与哈希：
+仅在本工作树和 `research/five-strategy-shared-capital-v1` 分支运行。
 
 ```bash
-PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.close_baseline_v06 --regenerate
+PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.final_progress_v1
 ```
 
-当前预期退出码 **2**，`TASK_STATUS=PARTIAL_COMPLETE_ENGINEERING_INCOMPLETE`。
-600622 / 603368 原生公司行动状态缺失，另有报告列明的统一物理价格单位、SMV6 原生批次分阶段整合和四套共同 P0 独立多层对账欠项。
-缺失数据、测试失败、输入变化或重跑不确定性不会成为成功；发生异常时非零退出。
-命令不执行 P1/P2/P3，也不会用现金替换 ATRDR 来运行场景。
+当前预期退出 **2**：PARTIAL_COMPLETE_ENGINEERING_INCOMPLETE。命令验证冻结股票池、全量输入/官方原件/提取文本哈希，重建已有可信成交前缀的持仓公司行动审计，生成官方日期与两项单笔时间线，更新未闭合原生边界的工程状态，执行四套共同 P0 初始化门检查，两次确定性检查及全部聚焦/原单元测试。该命令依赖本机既有原生预资本/成交缓存，**不是完整冷启动回放，也不是 48 场景运行器**。
 
-省略 `--regenerate` 会复用已有 ATRDR/MCB/OGR 父信号缓存，重新生成 Gap
-原生入场/退出、账户、前缀与边界，再重复账户验证。这是缓存依赖重跑，
-不能代替从空缓存开始的完整命令。两种命令均检查已注册输入 SHA256；
-原始行情与执行读取限定至 2023，完整容器哈希不解析 post-2023 投资结果。
-SMV6 合法注册行情目录仅作数据输入，不导入其他工作树代码。
-
-聚焦测试（包含原测试、转换状态、统一调度及初始账户恢复）：
+官方原文补录复跑（只取得研究截至 2023 的实施公告，不读取未来投资结果）：
 
 ```bash
-PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m pytest -q research/shared_capital_v1/tests tests/unit --basetemp research/shared_capital_v1/cache/pytest_v06 --junitxml research/shared_capital_v1/output/focused_tests_v06.xml
+PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.official_backfill
 ```
 
-仅重做公司行动原始响应/生产代码取证：
+其输入为 `corporate_action_potential_envelope.csv`；已有原件复用并核对 hash，失败不能以网页校验文本冒充 PDF。原件存于已注册研究数据根 `/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca`，没有其他工作树 Python 代码导入。若重新抓取到不同官方 bytes，必须审计变化，不能以当前抓取时间充当历史 alpha 可用时间。
+
+聚焦与原测试：
 
 ```bash
-PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.ca_forensic
+PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m pytest -q research/shared_capital_v1/tests tests/unit
 ```
 
-仅检查四个共同 P0 初始化入口（当前均在初始化门前停止）：
+已有冷启动父信号命令（单独重建，不宣称闭合 P0）：
 
 ```bash
-PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.common_p0_v06
+PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.build_inputs --strategy ATRDR
+PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.build_inputs --strategy MCB
+PYTHONPATH=.:src research/shared_capital_v1/.venv/bin/python -m research.shared_capital_v1.build_inputs --strategy OGR
 ```
 
-该子模块写 gate 状态，退出 0 只表示 gate 检查完成，不能表示 P0 通过；
-正式闭合判定使用完整 V0.6 命令的非零退出和 task_status_v06.json。
-`close_baseline_v05` / 原始 V0 inventory runner 保留用于历史审计，
-会覆盖新版报告，不能用作本次闭合命令。
+`close_baseline_v05/v06` 为历史流程，会覆盖报告并重新标记旧数据阻塞，不作为当前最终闭合命令。正式共同股票 raw 连续状态、SMV6 跨袖全阶段整合和 48 场景运行命令尚未完成，不能编造不存在的命令。
 
-冻结经济策略、原生退出、policy 和 initial_state_v05 合同不改。
-V0.5 的两个非经济验证修复已存在于本任务 START_HEAD，
-本次对 START_HEAD 的所有冻结源码继续要求字节不变。
-缓存、日志和大型账户明细保留在本目录且不提交；紧凑证据、源码和报告提交，不推送。
+输出清单核验：在本目录下执行 `shasum -a 256 -c output_manifest.sha256`。重新运行会更新时间相关的 pytest XML，需重新生成清单后再对新运行封存；不能把旧清单强行解释为新结果通过。

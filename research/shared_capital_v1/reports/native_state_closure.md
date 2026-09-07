@@ -21,3 +21,7 @@ IFCGR,2022_2023,NATIVE_CONTINUATION,1105177.2081431411,1105177.2081431411,0.0,VA
 SMV6,2018_2021,NATIVE_CALLBACK_INIT_RESET,1000000.0,1000000.0,0.0,VALIDATED
 SMV6,2022_2023,NATIVE_CALLBACK_INIT_RESET,1000000.0,1000000.0,0.0,VALIDATED
 ```
+
+## V1 权威更新
+
+600622 与 603368 的官方上市/现金发放日期已找到，见对应 final_closure 报告和 official backfill facts。上述 V0.6 的“官方日期缺失”仅为当时状态。现有有效边界仍为 7/10；三项未闭合边界已更新为 ENGINEERING_INCOMPLETE_RAW_CONTINUOUS_STATE，数值仍 null，没有强制现金起点。原生首次阻塞文本另存 native_blocker；股票连续 raw 会计/原生退出尚未接入，所以不能仅凭上市日期宣告状态有效。

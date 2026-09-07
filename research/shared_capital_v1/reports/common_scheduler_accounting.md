@@ -9,3 +9,11 @@ stock_p0 (ATRDR/MCB)、gap_p0 (OGR/IFCGR)、smv6_physical 均已调用 shared_ac
 账户对实际 physical positions 与 virtual lots 分别计算数量和 marked NAV；pending quantity 单独核对；P&L 按已实现及剩余成本独立核验。数量容差 1e-8，NAV/现金/P&L 容差 1e-6。拒绝负现金、非法数量、NaN/inf、缺失/重复交易日；P0 保留各袖现金及 home right，单袖不能借其他袖现金。继承持仓的区间 P&L 以边界市值起算，原始成本另存，不影响原生退出。
 
 仍未闭合的工程：股票是 native coordinate units，Gap 是 raw price/shares，同证券混用必须先证明数量和现金公司行动表示一致；现在冲突会在成交前拒绝，不能把不同价格单位相加后宣称物理持仓通过。SMV6 原生开盘批次的全退出/全入场分阶段共享整合、四套共同 P0 的完整独立多层对账仍未完成。当前实际四套 P0 都在初始状态门前停止，尚无共同账户历史运行。工程欠项与 600622/603368 数据欠项分别列示。
+
+## V1 权威更新
+
+新增 `shared_account.price_space.raw_intent`，以同日 price/factor 恒等式将 fractional native stock intent 等额映射到 RAW，同一原始证券可以由不同策略 lot 对账；它拒绝因子/价格不一致、非有限值和给股票添加整数批量。这是已测试的小型共同适配器，尚未接入全历史股票账户，因此不能把原来的共同 P0 阻塞标为通过。
+
+新增 CashDistribution 在登记日冻结虚拟权益，在明确现金发放时点按原登记持仓分配，不依赖派发时仍持有该 lot。当前仅接受 ex-date 同日付款语义；跨日应收未实现时明确失败。ShareConversion 保留 pending/到账不可卖/可交易状态。600622/603368 的官方时间线在单笔原始数量探针通过；不是正式多策略连续回放。
+
+当前所有正式共同 P0 仍在初始状态门被拒绝。SMV6 full-phase 跨袖调度、单一物理账户唯一时间序列与正式多层对账尚未完成。所有可能同 timestamp 的中间 checkpoint 是事件审计，不被冒充唯一的正式账户时间序列。研究若完成也只能标为 RESEARCH_GRADE_SHARED_PHYSICAL_ACCOUNT；SMV6 native SuperMind platform equivalence 继续 UNVERIFIED。

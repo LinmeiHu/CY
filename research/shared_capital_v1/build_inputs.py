@@ -168,6 +168,10 @@ def main():
     parser.add_argument("--input-config", type=Path, default=HERE.parent / "five_strategy_exit_risk_v1/input_config.json")
     args = parser.parse_args()
     inputs = {k: Path(v) for k, v in json.loads(args.input_config.read_text())["inputs"].items()}
+    from research.shared_capital_v1.universe import verify
+    universe = verify()
+    if str(inputs["daily_hist"]) != universe["stock_input"]["path"]:
+        raise ValueError("unregistered strategy universe input")
     {"ATRDR": atrdr_inputs, "MCB": mcb_inputs, "OGR": ogr_inputs}[args.strategy](inputs, HERE / "cache" / args.strategy.lower())
 
 

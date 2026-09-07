@@ -67,3 +67,41 @@ class ShareConversion:
                     account.pending_positions.pop(event['symbol'],None)
         event.update(phase=stage, last=when)
         return account.checkpoint(when, stage)
+
+
+class CashDistribution:
+    """Record-date entitlements paid at the explicit legal payment checkpoint.
+
+    Only same-ex-date payment is admitted here: delayed receivables need a
+    separate evidenced NAV representation, and cannot silently vanish in transit.
+    """
+    def __init__(self, account):
+        self.account = account
+        self.events = {}
+
+    def record(self, event_id, symbol, per_share, when, available_at, *, ex_date, payment_date):
+        when, _ = ShareConversion._known_time(when, available_at)
+        ex_date, payment_date = pd.Timestamp(ex_date), pd.Timestamp(payment_date)
+        if pd.isna(ex_date) or ex_date != payment_date or ex_date.normalize() <= when.normalize():
+            raise ValueError('unresolved dividend receivable timing')
+        if event_id in self.events or not isfinite(per_share) or per_share < 0:
+            raise ValueError('invalid dividend identity/amount')
+        amounts = {}
+        for lot in self.account.lots.values():
+            if lot['symbol'] == symbol:
+                if lot.get('pending_quantity',0):
+                    raise ValueError('pending dividend basis unresolved')
+                amounts[lot['strategy']] = amounts.get(lot['strategy'],0.) + lot['quantity'] * per_share
+        self.events[event_id] = dict(amounts=amounts,payment_date=payment_date,paid=False)
+
+    def pay(self, event_id, when, available_at):
+        when, _ = ShareConversion._known_time(when, available_at)
+        event = self.events[event_id]
+        if event['paid'] or when != event['payment_date']:
+            raise ValueError('duplicate/illegal dividend payment')
+        for strategy,amount in event['amounts'].items():
+            self.account.cash += amount
+            self.account.sleeve_cash[strategy] += amount
+            self.account.realized[strategy] += amount
+        event['paid'] = True
+        return self.account.checkpoint(when,'CASH_PAYMENT_DATE')
