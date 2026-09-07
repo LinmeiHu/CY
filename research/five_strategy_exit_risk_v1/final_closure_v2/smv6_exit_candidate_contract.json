@@ -1,0 +1,56 @@
+{
+  "version": "SMV6_EXISTING_EXIT_CANDIDATES_CLOSURE_V2",
+  "frozen_at": "2026-09-07T10:18:08.222792+00:00",
+  "authorized_end": "2023-12-31",
+  "prior_exposure": "Prior SMV6 native anatomy and research outcomes already exposed; no blind-validation claim. Candidate accounts not yet run.",
+  "baseline": "CURRENT_LOCAL_SOURCE_GENERATED; authoritative full standalone 779 events / 3260 days verified by sealed metadata, authorized prefix only replayed",
+  "source_implementation": {
+    "state_v2.py": "094adceb5d12121c30d4737dcae87cc7900c790295eef2a7e893abefafec3ef8",
+    "smv6.py": "6a1c06e03094ee237950f040d9172b2705f3cb78501bf8908a555cb2e97c0025",
+    "smv6_frozen.py": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33"
+  },
+  "candidates": [
+    {
+      "candidate_id": "FIXED_5_PERCENT",
+      "family": "fixed",
+      "value": 0.05,
+      "exact_definition": "current_pnl <= -0.05",
+      "source_implementation": "state_v2.policy_mask; state_v2.causal_features; state_v2.entry_atr",
+      "status": "EXECUTABLE_SUBJECT_TO_VALID_INPUT_PER_EPISODE"
+    },
+    {
+      "candidate_id": "FIXED_3_PERCENT",
+      "family": "fixed",
+      "value": 0.03,
+      "exact_definition": "current_pnl <= -0.03",
+      "source_implementation": "state_v2.policy_mask; state_v2.causal_features; state_v2.entry_atr",
+      "status": "EXECUTABLE_SUBJECT_TO_VALID_INPUT_PER_EPISODE"
+    },
+    {
+      "candidate_id": "ENTRY_ATR_X1",
+      "family": "atr",
+      "value": 1.0,
+      "exact_definition": "current_pnl <= -1 * atr_entry_frac; 20-day mean true range from 21 completed pre-entry sessions",
+      "source_implementation": "state_v2.policy_mask; state_v2.causal_features; state_v2.entry_atr",
+      "status": "EXECUTABLE_SUBJECT_TO_VALID_INPUT_PER_EPISODE"
+    },
+    {
+      "candidate_id": "EXISTING_PROFIT_PROTECTION",
+      "family": "profit",
+      "value": 0.0,
+      "exact_definition": "mfe_sofar >= 0.05 AND current_pnl <= 0; NOT a new trailing percent",
+      "source_implementation": "state_v2.policy_mask; state_v2.causal_features; state_v2.entry_atr",
+      "status": "EXECUTABLE_SUBJECT_TO_VALID_INPUT_PER_EPISODE"
+    }
+  ],
+  "trigger_information_time": "Completed valid daily OHLC at 16:00; never same-day execution; state_v2.policy_mask called directly",
+  "price_semantics": "Registered pre_adj OHLC relative to actual first fill entry price, same coordinate as local SMV6; ATR direct state_v2.entry_atr on 21 consecutive valid pre-entry sessions; no threshold fills",
+  "earliest_legal_execution_time": "Next session OPEN_BAR_09_30 completed close reference used by frozen local execution, not literal auction guarantee. Strictly after trigger, entry T+1. Latched retry. Native earlier exit wins; native simultaneous open sell wins attribution.",
+  "gap_through": "Actual executable minute reference times (1-0.0008), never threshold price",
+  "transaction_cost": "Frozen 2bp commission plus 8bp per side slippage, lot100, 50% minute volume cap. Combined native and overlay orders cannot consume same minute cap twice.",
+  "instrument_constraints": "Conservative T+1 for incremental exits; no new instrument assumptions; existing native execution unchanged. Availability and finite positive minute price/volume mandatory.",
+  "reentry_semantics": "Original callbacks and membership continue. Pending risk exit suppresses conflicting same-open target buys for that symbol only, including after liquidation; next session original entry may buy same ETF; no cooldown or cash transfer. Native buys of other symbols keep frozen ordering.",
+  "missing_handling": "Invalid completed day produces no new trigger; missing entry ATR disables ATR for episode. Existing latched exit remains pending. Missing fill availability cannot execute.",
+  "evidence_status": "HISTORICAL_ALREADY_CONSUMED_PERIODS; PLATFORM_EQUIVALENCE_UNVERIFIED",
+  "selection_policy": "No new thresholds. Compare all four in standalone, retain at most one for portfolio if account tail tradeoff is defensible; prioritize MDD/CVaR/month/quarter, portfolio tail then CAGR cost. Historical judgment, no independence or significance claims."
+}
