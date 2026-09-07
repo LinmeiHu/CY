@@ -1,0 +1,18 @@
+{
+  "version": "NATIVE_CONTINUOUS_INITIAL_STATE_V05",
+  "authority": "Explicit user clarification in this task",
+  "user_decision": "按本次要求重建原生连续状态；缺失到账状态时保持阻塞",
+  "supersedes_only": "shared_capital_policy_v1.json period_initialization",
+  "original_policy_sha256": "9fa9dac93d666618137f5f932b8c42a020f7135c6ac2d9f116673965b31d8325",
+  "original_policy_bytes_preserved": true,
+  "formal_boundary": "NATIVE_CONTINUOUS",
+  "stock_native_origin": "2014-01-01",
+  "periods": ["2018_2021", "2022_2023"],
+  "required_state": ["cash", "holdings", "virtual_lots", "native_entry_history", "cooldown", "corporate_action_entitlements", "share_credit_and_sellability", "native_exit_state"],
+  "missing_credit_state": "ACCOUNTING_BLOCKED; do not infer credit or sellability from ex-date or pay-date",
+  "missing_boundary_values": "null; never replace with diagnostic reset state",
+  "diagnostic_reset_results": "CONTROL_ONLY_NOT_COMMON_P0",
+  "economic_rules": "UNCHANGED_NATIVE_ONLY",
+  "boundary_scaling": "Not executable until native continuous quantities and NAV are reconciled; no retrospective scaling or invented liquidation",
+  "common_scenarios_gate": "Do not run any policy if required continuous P0 boundary is not reconstructed and reconciled"
+}

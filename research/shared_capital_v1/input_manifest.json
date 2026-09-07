@@ -3,10 +3,15 @@
     "IFCGR": "PIT-B",
     "SMV6": "LOCAL_PLATFORM_EQUIVALENCE_UNVERIFIED"
   },
-  "all_raw_inputs_hash_verified": false,
+  "all_consumed_inputs_hash_verified": true,
+  "causal_corrected_baseline": "cache/",
+  "common_p0_reconciled": false,
   "config_path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/five_strategy_exit_risk_v1/input_config.json",
   "config_sha256": "653252c2194cc5b38612cfd3983b2d065cbf2132887248516504a07da0a47092",
-  "evidence_stage": "SOURCE_AND_RAW_INPUT_INVENTORY_ONLY",
+  "consumed_input_count": 339,
+  "consumed_input_hash_evidence": "output/input_hash_verification.csv",
+  "current_run_head": "72e01ea52a62b07645e74837eac20f117ecd1812",
+  "evidence_stage": "V05_REGISTERED_INPUT_REBUILD_AND_NATIVE_STANDALONE_P0_DIAGNOSTICS",
   "execution_contract": "contracts/shared_capital_policy_v1.json",
   "five_strategy_entrypoint_hashes": {
     "ATRDR": "951d4aaafce634888e9f42b36fd1137917b5f730d86535adb97641398c9be107",
@@ -21,8 +26,10 @@
     "first_available": "2013-08-23 17:33:05",
     "last_available": "2022-01-01 00:00:00",
     "rows": 285347,
+    "scope": "ORIGINAL_CONFIG_ROUTE_ONLY; later verified source is separate",
     "status": "RAW_FACT_COVERAGE_NOT_ESTABLISHED_2022_2023"
   },
+  "ifcgr_later_registered_source": "output/ifcgr_data_coverage.csv",
   "implementation_hashes": {
     "configs/frozen/atrdr_v29.json": "5e3eb472223d8bccd45adee110fdf8606ed0ae0f692257d887c14ad6dbc63c8f",
     "configs/frozen/ifcgr_v29r2.json": "eca1499ba83a92c7586017da6d9138177856b6f6189a4c8a4002bf61ecfc5403",
@@ -42,12 +49,12 @@
     "original_sources/ogr/run_ashare_true_gap_below_l_liquidity_trap_guard_v28.py": "865aa4e0058b69168002ac3ce61014d41fbf502a9541565ecdeec3f075147cce",
     "original_sources/ogr/run_ashare_true_gap_below_l_orderly_demand_v28r2.py": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
     "src/five_strategy_bundle/__init__.py": "c29c0e938ed8bd29018fa99b561bd71580b9638865cf53418d0639790a44306f",
-    "src/five_strategy_bundle/compare.py": "0eb3fb3bc41a54010f72a9323759fe917b092c85e6c46fdc949d0fe563753bbc",
+    "src/five_strategy_bundle/compare.py": "d1c7d8a3ee58246248e6f5aa33f4cc1419dfe258098753adc01e30e843c2b008",
     "src/five_strategy_bundle/errors.py": "45a29d8f808ae2e4b62174e8790d67f1695384821a49ee53c179f50a3c12f5dc",
     "src/five_strategy_bundle/execution/__init__.py": "14e12333e8a9b0f8b3c67c6d92393dda199ba65d8b86bef0f41416a086a958cc",
     "src/five_strategy_bundle/execution/daily.py": "2a8c327ce5f3f4f5d0f879bb1bed184ef5fecd5baa7144ee65a8edc865c1c0eb",
     "src/five_strategy_bundle/io.py": "9416a375e06dddacaf6f14063b2ca6ad78834d15cbc335f5521e0b377034a10b",
-    "src/five_strategy_bundle/reproduce.py": "f5f778fb0b67beb8a62f479f51ced71a0652efc4be1099959c4431e621863208",
+    "src/five_strategy_bundle/reproduce.py": "3a4a53d60766a7c56e3bc5e02d7ffe811e84c15b7d0bb75bd128bd458ea0b9ec",
     "src/five_strategy_bundle/strategies/__init__.py": "cbd44169e2521426589d5f4848f361666b6dd9efafb3f638ce2583f1c7e726c9",
     "src/five_strategy_bundle/strategies/atrdr.py": "951d4aaafce634888e9f42b36fd1137917b5f730d86535adb97641398c9be107",
     "src/five_strategy_bundle/strategies/atrdr_post.py": "7a8b7f1c1aa8ad729fad0fec4581127a1e0bf5a345c37f0ec6f441b0f7f2db54",
@@ -64,12 +71,15 @@
     "per_sleeve": 1000000,
     "total": 4000000
   },
+  "initial_state_contract": "contracts/initial_state_v05.json",
+  "initial_state_contract_sha256": "70f2ed3e447b01c91f18f42e8b758ef4d2e5dd7e9bb524f4de9cf9671ec85450",
   "inputs": [
     {
       "asset": "cy033_daily_amount",
       "bytes": null,
+      "consumed_children": 6,
       "exists": true,
-      "hash_scope": "DIRECTORY_CONTENT_NOT_HASHED_OR_CONSUMED",
+      "hash_scope": "CONSUMED_CHILD_FILES_HASHED_SEE_INPUT_HASH_VERIFICATION",
       "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": null
@@ -78,19 +88,19 @@
       "asset": "daily_hist",
       "bytes": 987945900,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00"
     },
     {
       "asset": "daily_tail",
-      "bytes": null,
+      "bytes": 306757165,
       "exists": true,
-      "hash_scope": "NOT_READ",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet",
       "role": "REGISTERED_RAW_INPUT",
-      "sha256": null
+      "sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9"
     },
     {
       "asset": "ifcgr_cy065_trades",
@@ -105,7 +115,7 @@
       "asset": "ifcgr_route_index",
       "bytes": 29814254,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Users/linmei/Documents/CY/data/staging/CY-036-R2-EXCHANGE-ISSUER-FACT-V29R2-DEV-19901219-20211231-V1/announcement_route_index.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "f9bf1a275fa5a3294ed7c571eef583cb88c7f3e011a397acfd5d616bf4225af3"
@@ -114,7 +124,7 @@
       "asset": "ifcgr_sse_titles",
       "bytes": 21088003,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1/sse_full_history_capture/announcements.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "b69af9e0ea707babe6a3ecd2d02c2220e09f4d52502f09025c6df8dec34015c9"
@@ -123,7 +133,7 @@
       "asset": "ifcgr_szse_titles",
       "bytes": 22553919,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture/announcements.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "65096c160af25b172d6c310804036a4b6dc57031ae45b9b4f9af220f251b9a65"
@@ -132,7 +142,7 @@
       "asset": "mcb_market_industry_state",
       "bytes": 14285843,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Volumes/quant/CY_quant_research/bull_sectoral_rotation_v43/market_industry_state.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "2c0ff6c7a65818c61f68932927ad7a0ce08f7d3fb991c10bfeb0c278a84c58f3"
@@ -168,7 +178,7 @@
       "asset": "qd010_distributions",
       "bytes": 7583125,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387"
@@ -177,7 +187,7 @@
       "asset": "qd010_rights",
       "bytes": 266563,
       "exists": true,
-      "hash_scope": "FULL_FILE",
+      "hash_scope": "FULL_FILE_CONSUMED_VERIFIED",
       "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb"
@@ -185,8 +195,9 @@
     {
       "asset": "raw_minute_root",
       "bytes": null,
+      "consumed_children": 8,
       "exists": true,
-      "hash_scope": "DIRECTORY_CONTENT_NOT_HASHED_OR_CONSUMED",
+      "hash_scope": "CONSUMED_CHILD_FILES_HASHED_SEE_INPUT_HASH_VERIFICATION",
       "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": null
@@ -194,8 +205,9 @@
     {
       "asset": "smv6_hybrid_root",
       "bytes": null,
+      "consumed_children": 154,
       "exists": true,
-      "hash_scope": "DIRECTORY_CONTENT_NOT_HASHED_OR_CONSUMED",
+      "hash_scope": "CONSUMED_CHILD_FILES_HASHED_SEE_INPUT_HASH_VERIFICATION",
       "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": null
@@ -203,13 +215,16 @@
     {
       "asset": "smv6_qmt_root",
       "bytes": null,
+      "consumed_children": 153,
       "exists": true,
-      "hash_scope": "DIRECTORY_CONTENT_NOT_HASHED_OR_CONSUMED",
+      "hash_scope": "CONSUMED_CHILD_FILES_HASHED_SEE_INPUT_HASH_VERIFICATION",
       "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1",
       "role": "REGISTERED_RAW_INPUT",
       "sha256": null
     }
   ],
+  "legacy_sealed_reference": "/Volumes/quant/CY_quant_research/five_strategy_standalone_v4",
+  "native_continuous_state_evidence": "output/native_initial_state_probe.csv",
   "periods": {
     "2018_2021": [
       "2018-01-01",
@@ -222,5 +237,21 @@
   },
   "policy_sha256": "9fa9dac93d666618137f5f932b8c42a020f7135c6ac2d9f116673965b31d8325",
   "raw_hash_limitation": "Only inventoried raw files were hashed. Large unconsumed input directories were not recursively hashed; post-2023 execution inputs were not read.",
-  "start_head": "216e33dd46d91abcb1c8e73f0de921762df4ef86"
+  "start_head": "72e01ea52a62b07645e74837eac20f117ecd1812",
+  "validation_infrastructure_repairs": {
+    "src/five_strategy_bundle/compare.py": {
+      "after_sha256": "d1c7d8a3ee58246248e6f5aa33f4cc1419dfe258098753adc01e30e843c2b008",
+      "before_sha256": "0eb3fb3bc41a54010f72a9323759fe917b092c85e6c46fdc949d0fe563753bbc",
+      "classification": "USER_AUTHORIZED_NON_ECONOMIC_VALIDATION_REPAIR",
+      "economic_strategy_rule_change": false,
+      "legacy_source_reference": "72e01ea52a62b07645e74837eac20f117ecd1812:src/five_strategy_bundle/compare.py"
+    },
+    "src/five_strategy_bundle/reproduce.py": {
+      "after_sha256": "3a4a53d60766a7c56e3bc5e02d7ffe811e84c15b7d0bb75bd128bd458ea0b9ec",
+      "before_sha256": "f5f778fb0b67beb8a62f479f51ced71a0652efc4be1099959c4431e621863208",
+      "classification": "USER_AUTHORIZED_NON_ECONOMIC_VALIDATION_REPAIR",
+      "economic_strategy_rule_change": false,
+      "legacy_source_reference": "72e01ea52a62b07645e74837eac20f117ecd1812:src/five_strategy_bundle/reproduce.py"
+    }
+  }
 }

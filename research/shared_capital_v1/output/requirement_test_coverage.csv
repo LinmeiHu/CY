@@ -1,34 +1,34 @@
-requirement,status,evidence
-1 P0 reconciles native sleeves,NOT_IMPLEMENTED,No historical P0 account replay
-2 Gap exclusion,PRIMITIVE_TEST_PASSED,test_gap_exclusive
-3 Precapital source rather than accepted trades,PARTIAL_INVENTORY_ONLY,Derived trade inputs are not admitted; adapters missing
-4 Actual funded position state,NOT_IMPLEMENTED,Integrated replay missing
-5 P0 home budget independence,PRIMITIVE_TEST_PASSED,test_entitlement_does_not_accept_shared_profit_input
-6 No recursive shared PNL entitlement,PRIMITIVE_TEST_PASSED,test_entitlement_does_not_accept_shared_profit_input
-7 Native size ceiling,PRIMITIVE_TEST_PASSED,test_native_requested_notional_ceiling
-8 No enlarged fully funded position,NOT_IMPLEMENTED,No lifecycle test
-9 Base before shared,NOT_IMPLEMENTED,No integrated allocator
-10 Proportional unmet allocation,PRIMITIVE_TEST_PASSED,test_unmet_proportions_not_return_ranking
-11 Deterministic lot rounding,PARTIAL_PRIMITIVE_TEST,Floor tested; residual redistribution missing
-12 Deterministic tie breaking,PARTIAL_PRIMITIVE_TEST,Strategy proportions tested; event scheduler missing
-13 No future information,NOT_IMPLEMENTED,No historical event replay
-14 Legal exits before entries,NOT_IMPLEMENTED,No historical event replay
-15 Nonnegative cash,NOT_IMPLEMENTED,No physical account
-16 Gross exposure at most NAV,NOT_IMPLEMENTED,No physical account
-17 Physical virtual quantity reconciliation,NOT_IMPLEMENTED,No virtual ledger
-18 Attributed equity reconciliation,NOT_IMPLEMENTED,No virtual ledger
-19 Costs charged once,NOT_IMPLEMENTED,No fee ledger
-20 Strategy caps,PRIMITIVE_TEST_PASSED,test_demand_family_cannot_net_borrow
-21 Demand family caps,PRIMITIVE_TEST_PASSED,test_demand_family_cannot_net_borrow
-22 Drift does not force sell,PRIMITIVE_TEST_PASSED,test_market_drift_only_removes_new_headroom
-23 Exact MCB confirmation,PRIMITIVE_TEST_PASSED,Four exact identity and mismatch tests
-24 MCB-only remains executable,NOT_IMPLEMENTED,No execution integration
-25 Previous completed close gate,PARTIAL_PRIMITIVE_TEST,Monotonic completed-close API tested; scheduler missing
-26 Gate never force sells,PARTIAL_PRIMITIVE_TEST,Gate has no position operation; scheduler missing
-27 Three-day one-level recovery,PRIMITIVE_TEST_PASSED,Recovery and reset tests
-28 D not guaranteed MDD,PRIMITIVE_TEST_PASSED,test_gate_exact_thresholds_and_overshoot
-29 Base shortfall recorded,NOT_IMPLEMENTED,No event audit
-30 Independent periods,PARTIAL_PRIMITIVE_TEST,Gate initialization tested; accounts missing
-31 Deterministic full replay,NOT_IMPLEMENTED,Only policy arithmetic tested
-32 No other-worktree production imports,READ_ONLY_SOURCE_CHECK,Research imports only current root package and installed dependencies
-33 Frozen and input hashes unchanged,PARTIAL_HASH_VERIFICATION,All frozen files and consumed standalone raw files verified; unconsumed directories not hashed
+requirement_id,requirement,status,evidence
+1,ATRDR prefix invariance,FOCUSED_PASS_HISTORICAL_ACCOUNTING_BLOCKED,test_atrdr_historical_prefix_entries_cash_positions_nav
+2,future completion cannot remove entry,FOCUSED_PASS,test_future_completion_does_not_create_or_remove_entry
+3,SMV6 future close perturbation,PASS,test_future_close_and_unfinished_open_bar_cannot_change_order
+4,unfinished bar information,SMV6_AND_MICRO_STOCK_PASS_FULL_CHAIN_PENDING,test_history_excludes_current_incomplete_day
+5,missing legal mark,PASS,test_missing_legal_mark_fails_before_order_mutation
+6,duplicate actual keys,PASS,test_comparison_identity_failures
+7,duplicate golden keys,PASS,test_comparison_identity_failures
+8,null keys,PASS,test_comparison_identity_failures
+9,row count and cardinality,PASS,test_many_to_many_and_missing_layers_fail
+10,comparison CLI nonzero,PASS,test_generation_command_required_comparison_failure_nonzero
+11,missing comparison layers,PASS,test_many_to_many_and_missing_layers_fail
+12,nonfinite accounts,PASS,test_nonfinite_account_never_passes
+13,duplicate/missing dates,PASS,test_account_calendar_and_equation_fail_closed
+14,P0 budgets independent of shared PNL,PRIMITIVE_PASS_PARALLEL_PATH_NOT_INTEGRATED,test_base_first_shared_state_and_home_independent
+15,actual shared holdings drive strategy state,NOT_INTEGRATED,independent native physical bridges reconciled; common funded-state scheduler pending
+16,physical virtual holdings,STANDALONE_PASS_COMMON_PENDING,test_physical_virtual_equity_quantity_and_costs
+17,physical virtual PNL,STANDALONE_PASS_COMMON_PENDING,standalone_virtual_physical_reconciliation.csv
+18,nonnegative cash,STANDALONE_PASS_COMMON_PENDING,test_starvation_no_financing_and_determinism
+19,gross exposure bound,STANDALONE_PASS_COMMON_PENDING,test_starvation_no_financing_and_determinism
+20,base before shared,ENGINE_TEST_PASS,test_base_first_shared_state_and_home_independent
+21,native requested ceiling,ENGINE_TEST_PASS,test_base_first_shared_state_and_home_independent
+22,no funded-trade enlargement,ENGINE_TEST_PASS,test_base_first_shared_state_and_home_independent
+23,base entitlement shortfall,ENGINE_TEST_PASS,test_starvation_no_financing_and_determinism
+24,MCB exact confirmation,ENGINE_TEST_PASS,test_exact_confirmation_mcb_only_and_gap_exclusion
+25,MCB only entries,ENGINE_TEST_PASS,test_exact_confirmation_mcb_only_and_gap_exclusion
+26,Gap exclusion,ENGINE_TEST_PASS,test_exact_confirmation_mcb_only_and_gap_exclusion
+27,previous completed close DD,PRIMITIVE_PASS_SCHEDULER_PENDING,test_gate_rejects_duplicate_close
+28,gate never liquidates,ENGINE_TEST_PASS,test_drawdown_gate_does_not_liquidate
+29,three day hysteresis,PRIMITIVE_PASS,test_gate_three_day_recovery_one_level_at_a_time; test_gate_recovery_requires_margin_and_resets_streak
+30,deterministic ties and lot residuals,ENGINE_TEST_PASS,test_largest_remainder_does_not_leave_affordable_whole_native_slot_idle
+31,initial state freeze,NATIVE_CONTINUOUS_RULE_FROZEN_STATE_BLOCKED,initial_state_audit.csv;native_initial_state_probe.csv
+32,deterministic historical rerun,STANDALONE_ONLY,deterministic_baseline_rerun.csv
+33,frozen and input hashes,ECONOMIC_BYTES_PASS_TWO_AUTHORIZED_VALIDATOR_REPAIRS,input_hash_verification.csv; validation_repair_receipt.json

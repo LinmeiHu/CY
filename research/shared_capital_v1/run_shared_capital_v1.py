@@ -50,6 +50,22 @@ def frozen_hashes():
     }
 
 
+def verify_frozen_sources(expected):
+    current = frozen_hashes()
+    repairs_path = HERE / "contracts/validation_repair_receipt.json"
+    repairs = json.loads(repairs_path.read_text()) if repairs_path.exists() else {}
+    allowed = {"src/five_strategy_bundle/compare.py", "src/five_strategy_bundle/reproduce.py"}
+    if set(current) != set(expected):
+        return False
+    for path, digest in current.items():
+        if digest == expected[path]:
+            continue
+        repair = repairs.get(path, {})
+        if path not in allowed or repair.get("before_sha256") != expected[path] or repair.get("after_sha256") != digest:
+            return False
+    return True
+
+
 def freeze():
     digest = sha256(POLICY)
     receipt = HERE / "contracts/freeze_receipt.json"
@@ -57,7 +73,7 @@ def freeze():
         expected = json.loads(receipt.read_text())
         if expected["policy_sha256"] != digest:
             raise RuntimeError("Frozen economic policy changed")
-        if expected["frozen_implementation_hashes"] != frozen_hashes():
+        if not verify_frozen_sources(expected["frozen_implementation_hashes"]):
             raise RuntimeError("Frozen implementation/input-contract drift")
     else:
         write_json(receipt, {
@@ -267,7 +283,8 @@ def main(argv=None):
         "first_data_blocker": manifest["ifcgr_fact_coverage"],
         "separate_engineering_remaining": "Native independent P0 and integrated stateful opportunity/physical-account replay",
         "recommendation": "EVIDENCE_INSUFFICIENT",
-        "frozen_sources_unchanged": frozen_hashes() == receipt["frozen_implementation_hashes"],
+        "frozen_sources_unchanged": verify_frozen_sources(receipt["frozen_implementation_hashes"]),
+        "authorized_infrastructure_repairs": "contracts/validation_repair_receipt.json",
         "verified_consumed_input_files": verify_inputs(manifest),
         "all_raw_input_directories_verified": False,
         "policy_sha256": receipt["policy_sha256"],

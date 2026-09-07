@@ -492,6 +492,7 @@ def comparisons(strategy: str, output: Path, golden: dict[str, Path]) -> pd.Data
     tolerances = {("OGR", "v13_signals"): 2e-15}
     for layer, key, identity, values in specs.get(strategy, []):
         if key not in golden:
+            rows.append({"strategy": strategy, "layer": layer, "status": "FAIL", "first_difference": "missing required golden layer: " + key})
             continue
         actual = output / f"{layer}.parquet"
         atol = 5e-14 if strategy == "ATRDR" else tolerances.get((strategy, layer), 0.0)
@@ -509,24 +510,35 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     inputs = load_input_config(args.input_config)
     target = args.output_root / args.strategy.lower()
-    if args.strategy == "MCB":
-        result = run_mcb(inputs, target)
-    elif args.strategy == "OGR":
-        result = run_ogr(inputs, target)
-    elif args.strategy == "IFCGR":
-        result = run_ifcgr(inputs, target)
-    elif args.strategy == "SMV6":
-        result = run_smv6(inputs, target)
-    elif args.strategy == "ATRDR":
-        result = run_atrdr(inputs, target)
-    else:
-        raise ReproductionError(f"unsupported strategy: {args.strategy}")
+    target.mkdir(parents=True, exist_ok=True)
+    pending = {"strategy": args.strategy, "GENERATION_STATUS": "RUNNING", "COMPARISON_STATUS": "NOT_RUN",
+               "CAUSAL_VALIDATION_STATUS": "NOT_RUN", "ACCOUNT_VALIDATION_STATUS": "NOT_RUN", "status": "NOT_VALIDATED"}
+    write_json(target / "validation_status.json", pending)
+    runners = {"MCB": run_mcb, "OGR": run_ogr, "IFCGR": run_ifcgr, "SMV6": run_smv6, "ATRDR": run_atrdr}
+    try:
+        result = runners[args.strategy](inputs, target)
+    except Exception as exc:
+        pending.update(GENERATION_STATUS="FAIL", error=f"{type(exc).__name__}: {exc}")
+        write_json(target / "validation_status.json", pending)
+        write_json(target / "result.json", pending)
+        print(json.dumps(pending, ensure_ascii=False, indent=2))
+        return 1
+    result["legacy_generation_label"] = result.get("status")
+    result.update(GENERATION_STATUS="PASS", COMPARISON_STATUS="NOT_REQUESTED",
+                  CAUSAL_VALIDATION_STATUS="NOT_RUN", ACCOUNT_VALIDATION_STATUS="NOT_RUN", status="NOT_VALIDATED")
     if args.golden_config:
-        golden = load_input_config(args.golden_config)
-        table = comparisons(args.strategy, target, golden)
-        table.to_csv(target / "layer_manifest.csv", index=False)
+        try:
+            golden = load_input_config(args.golden_config)
+            table = comparisons(args.strategy, target, golden)
+            table.to_csv(target / "layer_manifest.csv", index=False)
+            result["COMPARISON_STATUS"] = "PASS" if not table.empty and table.status.eq("PASS").all() else "FAIL"
+        except Exception as exc:
+            result["COMPARISON_STATUS"] = "FAIL"
+            result["comparison_error"] = f"{type(exc).__name__}: {exc}"
+    write_json(target / "result.json", result)
+    write_json(target / "validation_status.json", result)
     print(json.dumps(result, ensure_ascii=False, indent=2, default=str))
-    return 0
+    return 1 if result["COMPARISON_STATUS"] == "FAIL" else 0
 
 
 if __name__ == "__main__":

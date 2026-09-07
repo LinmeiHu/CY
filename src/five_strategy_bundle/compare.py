@@ -17,6 +17,9 @@ def compare_parquet(
     atol: float = 0.0,
 ) -> dict[str, object]:
     keys = list(identity)
+    values = list(values)
+    if not keys:
+        return {"status": "FAIL", "first_difference": "missing primary key definition"}
     fields = [*keys, *values]
     key_sql = ",".join(f'"{column}"' for column in keys)
     field_sql = ",".join(f'"{column}"' for column in fields)
@@ -32,6 +35,18 @@ def compare_parquet(
         )
         actual_rows = con.execute("SELECT count(*) FROM actual").fetchone()[0]
         golden_rows = con.execute("SELECT count(*) FROM golden").fetchone()[0]
+        null_predicate = " OR ".join(f'"{key}" IS NULL' for key in keys)
+        for name in ("actual", "golden"):
+            nulls = con.execute(f"SELECT count(*) FROM {name} WHERE {null_predicate}").fetchone()[0]
+            duplicate_groups = con.execute(
+                f"SELECT count(*) FROM (SELECT {key_sql} FROM {name} GROUP BY {key_sql} HAVING count(*)>1)"
+            ).fetchone()[0]
+            if nulls or duplicate_groups:
+                return {"new_row_count": actual_rows, "golden_row_count": golden_rows,
+                        "status": "FAIL", "first_difference": f"{name}: null keys={nulls}, duplicate key groups={duplicate_groups}"}
+        if actual_rows != golden_rows:
+            return {"new_row_count": actual_rows, "golden_row_count": golden_rows,
+                    "status": "FAIL", "first_difference": "row count mismatch"}
         matches = con.execute(
             f"SELECT count(*) FROM actual a JOIN golden g USING({key_sql})"
         ).fetchone()[0]
@@ -98,5 +113,5 @@ def compare_parquet(
         "golden_sha256": sha256(golden),
         "absolute_tolerance": atol,
         "max_abs_delta": max((float(value) for value in deltas if value is not None), default=0.0),
-        "status": "PASS" if not (missing or extra or mismatch) else "FAIL",
+        "status": "PASS" if not (missing or extra or mismatch) and matches == actual_rows == golden_rows else "FAIL",
     }

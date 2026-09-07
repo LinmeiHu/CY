@@ -1,62 +1,90 @@
 {
-  "P0_reconciled": false,
-  "TASK_STATUS": "PARTIAL_COMPLETE",
-  "all_raw_input_directories_verified": false,
-  "first_data_blocker": {
-    "after_boundary_through_2023_rows": 0,
-    "exact_boundary_rows": 218,
-    "first_available": "2013-08-23 17:33:05",
-    "last_available": "2022-01-01 00:00:00",
-    "rows": 285347,
-    "status": "RAW_FACT_COVERAGE_NOT_ESTABLISHED_2022_2023"
-  },
-  "frozen_sources_unchanged": true,
+  "ACCOUNT_VALIDATION_STATUS": "COMMON_P0_FAIL",
+  "ATRDR_BASELINE_STATUS": "ACCOUNTING_BLOCKED",
+  "BASELINE_CAUSAL_INTEGRITY": "NOT_PASSED_ALL_STRATEGIES",
+  "BASE_ENTITLEMENT_STARVATION_STATUS": "NOT_ESTIMABLE",
+  "BEST_ADMISSIBLE_POLICY": "NOT_ESTIMABLE",
+  "BRANCH": "research/five-strategy-shared-capital-v1",
+  "CAUSAL_VALIDATION_STATUS": "NOT_PASSED_ALL_STRATEGIES",
+  "COMPARISON_STATUS": "STANDALONE_ACCOUNTS_RECONCILED_WITHIN_VALID_PREFIX",
+  "ENVIRONMENT_VALID": true,
+  "EXIT_RULES_USED": "NATIVE_ONLY",
+  "FROZEN_STRATEGIES_MODIFIED": "NO",
+  "GAP_FAMILY_CHOICE": "EVIDENCE_INSUFFICIENT",
+  "GENERATION_STATUS": "STANDALONE_INPUTS_GENERATED",
+  "IFCGR_2018_2021_DATA_STATUS": "AVAILABLE_PIT_B",
+  "IFCGR_2022_2023_DATA_STATUS": "AVAILABLE_PIT_B_VERIFIED_PARENT_WINDOWS",
+  "IFCGR_BASELINE_STATUS": "VALIDATION_BLOCKED",
+  "IFCGR_SCENARIOS_COMPLETED": "0/24",
+  "INITIAL_STATE_RULE": "NATIVE_CONTINUOUS_USER_CONFIRMED_MISSING_CREDIT_BLOCKS",
+  "MAX_DRAWDOWN_CONSTRAINT_STATUS": "NOT_ESTIMABLE",
+  "MCB_BASELINE_STATUS": "ACCOUNTING_BLOCKED",
+  "MCB_CAPITAL_ROLE": "EVIDENCE_INSUFFICIENT",
+  "NEW_SEALED_VALIDATION_OPENED": "NO",
+  "OGR_BASELINE_STATUS": "VALIDATION_BLOCKED",
+  "OGR_SCENARIOS_COMPLETED": "0/24",
+  "OPPORTUNITY_ADAPTER_STATUS": "STANDALONE_RECONCILED_COMMON_STATE_INTEGRATION_PENDING",
+  "P0_FIXED_RESULT": "NOT_ESTIMABLE",
+  "P0_STATUS": "ACCOUNTING_BLOCKED_NATIVE_CONTINUOUS_INITIAL_STATE",
+  "P1_RAW_SHARED_RESULT": "NOT_ESTIMABLE",
+  "P2_CAPPED_SHARED_RESULT": "NOT_ESTIMABLE",
+  "P3_D4_RESULT": "NOT_ESTIMABLE",
+  "P3_D5_RESULT": "NOT_ESTIMABLE",
+  "P3_D6_RESULT": "NOT_ESTIMABLE",
+  "PHYSICAL_VIRTUAL_ACCOUNT_STATUS": "ALL_FIVE_STANDALONE_INTEGRATED_COMMON_SCHEDULER_NOT_INTEGRATED",
+  "PORTFOLIO_ACCOUNTING": "SINGLE_PHYSICAL_ACCOUNT_WITH_VIRTUAL_LOTS",
+  "PORTFOLIO_ACCOUNTING_TARGET": "SINGLE_PHYSICAL_ACCOUNT_WITH_VIRTUAL_LOTS",
+  "PUSH": "NO",
+  "SHARED_FUNDED_TRADE_PNL": "NOT_ESTIMABLE",
+  "SMV6_BASELINE_STATUS": "CAUSAL_BUG_FIXED_AND_REVALIDATED",
+  "START_HEAD": "72e01ea52a62b07645e74837eac20f117ecd1812",
+  "TASK_STATUS": "PARTIAL_COMPLETE_ENGINEERING_INCOMPLETE",
+  "TOTAL_SCENARIOS_COMPLETED": "0/48",
+  "baseline_status": [
+    {
+      "fix": "entry identity separated; focused prefix test passes; active corporate action unresolved",
+      "hypothesis": "CONFIRMED_FUTURE_COMPLETION_FILTER",
+      "status": "ACCOUNTING_BLOCKED",
+      "strategy": "ATRDR"
+    },
+    {
+      "fix": "fail closed instead of stale coordinate valuation",
+      "hypothesis": "ACTIVE_COORDINATE_CHANGE_CONFIRMED",
+      "status": "ACCOUNTING_BLOCKED",
+      "strategy": "MCB"
+    },
+    {
+      "fix": "both native accounts reconcile; full causal input/initial-state gates pending",
+      "hypothesis": "LATER_RAW_PRODUCER_BOUNDARY_REMOVED_WITHOUT_ALPHA_CHANGE",
+      "status": "VALIDATION_BLOCKED",
+      "strategy": "OGR"
+    },
+    {
+      "fix": "all 50 later parent windows covered; classification unchanged; common gates pending",
+      "hypothesis": "LATER_REGISTERED_SOURCE_FOUND",
+      "status": "VALIDATION_BLOCKED",
+      "strategy": "IFCGR"
+    },
+    {
+      "fix": "local adapter uses known open; missing mark fails closed; two historical prefix replays pass",
+      "hypothesis": "CONFIRMED_FUTURE_CLOSE_AND_UNFINISHED_OPEN_BAR_MARK",
+      "status": "CAUSAL_BUG_FIXED_AND_REVALIDATED",
+      "strategy": "SMV6"
+    }
+  ],
+  "first_blocker": "ACTIVE_COORDINATE_LINEAGE_CHANGE:2017-06-30:V29|BULL|V29B|20170623|600622.SH: native outcome abort is not an executable exit",
   "historical_scenarios_completed": 0,
-  "implemented_stages": [
-    "inventory",
-    "blocker_report"
+  "independent_engineering_remaining": [
+    "user-selected native continuous boundary reconstruction; unresolved credit state blocks continuation",
+    "common physical pricing units across coordinate stocks, raw-price Gap and local ETF",
+    "common scheduler driving all native callbacks with actual shared fills (independent SMV6 bridge reconciled)",
+    "parallel P0 home-budget paths and full shared scenario scheduler"
   ],
   "policy_sha256": "9fa9dac93d666618137f5f932b8c42a020f7135c6ac2d9f116673965b31d8325",
-  "preregistered_segment_scenarios": 48,
-  "recommendation": "EVIDENCE_INSUFFICIENT",
-  "requested_stage": "all",
-  "selected_segment_scenarios": 48,
-  "separate_engineering_remaining": "Native independent P0 and integrated stateful opportunity/physical-account replay",
-  "verified_consumed_input_files": [
-    {
-      "asset": "daily_hist",
-      "sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
-      "unchanged": true
-    },
-    {
-      "asset": "ifcgr_route_index",
-      "sha256": "f9bf1a275fa5a3294ed7c571eef583cb88c7f3e011a397acfd5d616bf4225af3",
-      "unchanged": true
-    },
-    {
-      "asset": "ifcgr_sse_titles",
-      "sha256": "b69af9e0ea707babe6a3ecd2d02c2220e09f4d52502f09025c6df8dec34015c9",
-      "unchanged": true
-    },
-    {
-      "asset": "ifcgr_szse_titles",
-      "sha256": "65096c160af25b172d6c310804036a4b6dc57031ae45b9b4f9af220f251b9a65",
-      "unchanged": true
-    },
-    {
-      "asset": "mcb_market_industry_state",
-      "sha256": "2c0ff6c7a65818c61f68932927ad7a0ce08f7d3fb991c10bfeb0c278a84c58f3",
-      "unchanged": true
-    },
-    {
-      "asset": "qd010_distributions",
-      "sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387",
-      "unchanged": true
-    },
-    {
-      "asset": "qd010_rights",
-      "sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb",
-      "unchanged": true
-    }
-  ]
+  "scenario_count": 48,
+  "tests": {
+    "failed": 0,
+    "passed": 79,
+    "scope": "focused tests plus existing unit suite, not full scenario acceptance"
+  }
 }

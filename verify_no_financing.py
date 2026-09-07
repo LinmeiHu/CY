@@ -15,6 +15,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from research.shared_capital_v1.validation import account_validation
+
 
 FLOAT_TOL = 1e-10
 CANONICAL_FLOAT_DECIMALS = 12
@@ -35,6 +37,7 @@ def _account_frame(path: Path, strategy: str) -> tuple[pd.DataFrame, pd.DataFram
         total = nav.loc[nav.board.eq("COMBINED")].copy()
         total = total.rename(columns={"nav": "account_nav"})
         checks = nav.rename(columns={"nav": "account_nav"}).copy()
+        checks["account_id"] = checks.board
     elif strategy in {"MCB", "ATRDR"}:
         total = nav.copy()
         total["account_nav"] = total.combined_nav
@@ -42,12 +45,13 @@ def _account_frame(path: Path, strategy: str) -> tuple[pd.DataFrame, pd.DataFram
             total["gross_exposure"] = total.combined_nav * total.utilization
         if "cash" not in total:
             total["cash"] = total.account_nav - total.gross_exposure
-        checks = [total[["trade_date", "account_nav", "cash", "gross_exposure"]]]
+        checks = [total[["trade_date", "account_nav", "cash", "gross_exposure"]].assign(account_id="COMBINED")]
         for prefix in ("main", "chinext"):
             if f"{prefix}_cash" in total and f"{prefix}_nav" in total:
                 sleeve = total[["trade_date", f"{prefix}_nav", f"{prefix}_cash"]].copy()
                 sleeve.columns = ["trade_date", "account_nav", "cash"]
                 sleeve["gross_exposure"] = sleeve.account_nav - sleeve.cash
+                sleeve["account_id"] = prefix
                 checks.append(sleeve)
         checks = pd.concat(checks, ignore_index=True)
     else:
@@ -90,11 +94,15 @@ def _audit_row(
     total: pd.DataFrame,
     checks: pd.DataFrame,
     counts: tuple[int, int, int],
+    expected_dates=None,
 ) -> dict[str, object]:
     negative = checks.cash.lt(-FLOAT_TOL)
     over = checks.gross_exposure_ratio.gt(1 + FLOAT_TOL)
     shortfall, partial, rejected = counts
-    status = "PASS" if not negative.any() and not over.any() else "FAIL"
+    validations = [account_validation(total.rename(columns={"account_nav": "nav"}), expected_dates)]
+    keys = ("trade_date", "account_id") if "account_id" in checks else ("trade_date",)
+    validations.append(account_validation(checks.rename(columns={"account_nav": "nav"}), expected_dates, keys=keys))
+    status = "FAIL" if any(v["status"] == "FAIL" for v in validations) else "UNKNOWN" if any(v["status"] == "UNKNOWN" for v in validations) else "PASS"
     return {
         "strategy": strategy, "period": period,
         "min_available_cash": float(checks.cash.min()),
@@ -154,7 +162,9 @@ def audit_portfolios(totals: dict[str, pd.DataFrame]) -> pd.DataFrame:
             frame = frame.rename(columns={
                 "account_nav": f"{strategy}_nav", "gross_exposure": f"{strategy}_gross"
             })
-            merged = frame if merged is None else merged.merge(frame, on="trade_date", how="inner")
+            if frame.trade_date.isna().any() or frame.trade_date.duplicated().any():
+                raise ValueError(f"{strategy}: invalid or duplicate account dates")
+            merged = frame if merged is None else merged.merge(frame, on="trade_date", how="outer", validate="one_to_one")
         assert merged is not None and not merged.empty
         portfolio_nav = np.zeros(len(merged))
         portfolio_gross = np.zeros(len(merged))
@@ -179,7 +189,7 @@ def audit_portfolios(totals: dict[str, pd.DataFrame]) -> pd.DataFrame:
             "over_100pct_exposure_timestamp_count": int(over.sum()),
             "over_100pct_exposure_day_count": int(merged.loc[over, "trade_date"].nunique()),
             "borrowed_cash_max": 0.0, "margin_balance_max": 0.0,
-            "status": "PASS" if not negative.any() and not over.any() else "FAIL",
+            "status": "FAIL" if not np.isfinite(np.column_stack([cash, portfolio_nav, portfolio_gross])).all() or (portfolio_nav <= 0).any() or negative.any() or over.any() else "UNKNOWN",
         })
     return pd.DataFrame(rows)
 
