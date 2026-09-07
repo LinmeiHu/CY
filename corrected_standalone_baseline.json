@@ -1,0 +1,39 @@
+{
+  "seal_version": "FIVE_STRATEGY_STANDALONE_CAUSAL_NO_LEVERAGE_V2",
+  "old_head": "806cafdd96b9778654d531319c615293b47e593b",
+  "new_head": "4f62a0b6f4d7cb9e0266e15afb5e4f2550c592c6",
+  "new_head_role": "audited production code tests and generated validation evidence",
+  "economic_rules_changed": false,
+  "causal_execution_fixes": [
+    "OPEN_BUYS_BEFORE_LATER_INTRADAY_TARGET_EXITS",
+    "ENTERED_IMMATURE_POSITION_REMAINS_IN_ACCOUNT",
+    "ATRDR_T10_H20_INDEPENDENT_OF_UNRELATED_T20_H60_MATURITY",
+    "OGR_EXPLICIT_ACCOUNT_DATE_WINDOW"
+  ],
+  "no_financing_contract": {
+    "long_only": true,
+    "financing": false,
+    "margin": false,
+    "borrowed_cash": false,
+    "temporary_negative_cash": false,
+    "cross_sleeve_borrowing": false,
+    "gross_long_must_not_exceed_nav": true,
+    "affordability_includes_applicable_costs_slippage_lot_and_volume_rules": true,
+    "float_tolerance": 1e-10
+  },
+  "affected_strategies": {
+    "MCB": "causal funded identities and NAV changed",
+    "ATRDR": "Fast Bear cohort and historical account changed; post-2023 identity metadata corrected",
+    "OGR": "explicit window API only; default sealed behavior retained",
+    "IFCGR": "default sealed behavior retained",
+    "SMV6": "execution unchanged; cash-limitation audit metadata added"
+  },
+  "known_evidence_limitations": [
+    "ATRDR V29 identity is closed only through 2023-12-31; registered later segments are V27 continuations",
+    "IFCGR remains PIT_B_CURRENT_OFFICIAL_ENUMERATION_REVISION_HISTORY_INCOMPLETE",
+    "SMV6 native SuperMind execution equivalence remains UNVERIFIED",
+    "OGR and IFCGR VAP diagnostic accumulation can vary below 1e-14; identities economics and NAV are stable"
+  ],
+  "package_hash": "b2ad54b2cf6f6c1ebd388b01a9134bbfe9dda1638e8664d2eebc3f77c551a604",
+  "package_hash_scope": "38 files under README pyproject lock verifier configs manifests src and tests; reports and git metadata excluded"
+}
