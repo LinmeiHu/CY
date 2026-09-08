@@ -1,0 +1,23 @@
+[
+  {
+    "id": "V3-001",
+    "stage": "PRE_ACCOUNT_FEATURES",
+    "reason": "rights_ratio NaN encodes no rights event only when hard_valid and corporate_action_blocking gates pass; equality-to-zero rejected the entire new universe",
+    "scope": "new-event shards; no account results existed",
+    "action": "preserved invalid shards; corrected field semantics inherited from registered adapter; full regenerated"
+  },
+  {
+    "id": "V3-002",
+    "stage": "PRE_ACCOUNT_FEATURES",
+    "reason": "Four new-route candidates lacked required prior-day RS after prior-day ST status",
+    "action": "Required both q-day RS percentiles; regenerated all affected feature shards",
+    "affected_completed_accounts": 0
+  },
+  {
+    "id": "V3-003",
+    "stage": "PRE_ACCOUNT_PREFIX",
+    "reason": "Expiry used available array endpoint, causing mutable prefix metadata",
+    "action": "Use fixed b+15/b+20/formation+9 calendar-session expiry; all 41 prefix/identity checks passed",
+    "affected_completed_accounts": 0
+  }
+]

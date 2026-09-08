@@ -1,0 +1,36 @@
+{
+  "Q1": {
+    "status": "BLOCKED_PERMISSION",
+    "reason": "CY-036-R1/R2 and CY-062 title archives have exact other-strategy purpose restrictions; no separately authorized complete first-release positive-event dictionary for V3. Metadata inspected; restricted titles not opened.",
+    "evidence": "configs/data_asset_registry.json: CY-036-R1, CY-036-R2, CY-062"
+  },
+  "Q2": {
+    "status": "NOT_RUN_DATA_GATE",
+    "reason": "QD-011 is DISCOVERY_ONLY, location null, no first-release/revision history; states/signals/backtests/core alpha prohibited.",
+    "evidence": "configs/data_asset_registry.json: QD-011"
+  },
+  "Q3": {
+    "status": "AUDITING",
+    "reason": "Registered QD-004 prefix extraction and intraday causal/paired-account tests pending."
+  },
+  "Q4": {
+    "status": "AUDITING",
+    "reason": "Same registered minute qualification as Q3; no outcome-dependent activation."
+  },
+  "Q5": {
+    "status": "PASS_PIT_B",
+    "reason": "CY-006 registered historical membership, source_notice_date gate, leave-one-out industry rank; matched arms require known Industry score. Historical archival PIT-A not established."
+  },
+  "Q6": {
+    "status": "BLOCKED_PERMISSION",
+    "reason": "Requires Q1 exact-purpose announcement authorization and complete first-public event-anchor coverage; Q1 gate not met."
+  },
+  "I": {
+    "status": "BLOCKED_EXISTING_ACCOUNT_BASELINE",
+    "reason": "Authoritative shared-capital P0 is 4,000,000 CNY, four active native sleeves with mutually exclusive OGR/IFCGR alternatives and native fractional stock quantities. Capital-scaling contract explicitly preserves fractional stock quantities and declares market-wide stock capacity not modeled. Thus no authoritative 1,000,000 CNY legal-share/aggregate-capacity baseline satisfies V3 I0. Creating one would change/reconstruct the frozen baseline, which V3 I-gate disallows.",
+    "evidence": [
+      "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/contracts/shared_capital_policy_v1.json",
+      "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-scaling-v1/research/capital_scaling_v1/contracts/capital_scaling_policy_v1.json"
+    ]
+  }
+}
