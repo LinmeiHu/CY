@@ -69,4 +69,3 @@ def test_parent_engine_and_verdict_remain_frozen():
     manifest=json.loads((PARENT/'input_manifest.json').read_text())
     assert repair.digest(PARENT/'engine.py')==manifest['research_sources']['engine.py']
     assert json.loads((PARENT/'output/final_system_spec.json').read_text())['final_decision']=='KEEP_NATIVE'
-
