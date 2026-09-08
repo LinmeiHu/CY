@@ -1,0 +1,114 @@
+{
+  "tests": [
+    {
+      "id": 1,
+      "name": "frozen_five_unchanged",
+      "status": "PASS",
+      "detail": "32 source/config hashes match baseline"
+    },
+    {
+      "id": 2,
+      "name": "causal_opportunity_union",
+      "status": "PASS",
+      "detail": "Independent legal-opportunity join equals entire coverage map; actual funding excluded from primary union"
+    },
+    {
+      "id": 3,
+      "name": "unfunded_is_covered",
+      "status": "PASS",
+      "detail": "Zero legal unfunded opportunities labeled uncovered"
+    },
+    {
+      "id": 4,
+      "name": "no_future_chart_candles",
+      "status": "PASS",
+      "detail": "720 actual 250-session source windows verified; max relative date offset 0"
+    },
+    {
+      "id": 5,
+      "name": "chart_coordinate_identity",
+      "status": "PASS",
+      "detail": {
+        "raw_coordinate_mismatch": 0,
+        "unexplained_valid_factor_changes": 0,
+        "late_available_rows": 0
+      }
+    },
+    {
+      "id": 6,
+      "name": "operational_blinding",
+      "status": "PASS",
+      "detail": "Committed label hashes unchanged; reveal receipt identifies earlier eb8873f13b. Operational process, not proof of perfect human blinding."
+    },
+    {
+      "id": 7,
+      "name": "seeded_sample_determinism",
+      "status": "PASS",
+      "detail": {
+        "status": "PASS",
+        "first": "45612774c0d82b455dd1b2e913127ee8838f02f16d2bb72264f0080794a2cd06",
+        "rerun": "45612774c0d82b455dd1b2e913127ee8838f02f16d2bb72264f0080794a2cd06"
+      }
+    },
+    {
+      "id": 8,
+      "name": "discovery_cutoff",
+      "status": "PASS",
+      "detail": "Source SQL filters before windows/leads; discovery panels end2021; no alpha formulas created"
+    },
+    {
+      "id": 9,
+      "name": "frozen_contract_identity",
+      "status": "PASS",
+      "detail": "All discovery freeze manifest hashes match"
+    },
+    {
+      "id": 10,
+      "name": "same_spec_in_validation",
+      "status": "NOT_APPLICABLE",
+      "detail": "Zero qualified candidates; no strategy or overlay account run. Not a pass."
+    },
+    {
+      "id": 11,
+      "name": "no_leverage",
+      "status": "NOT_APPLICABLE",
+      "detail": "Zero qualified candidates; no strategy or overlay account run. Not a pass."
+    },
+    {
+      "id": 12,
+      "name": "nonnegative_cash",
+      "status": "NOT_APPLICABLE",
+      "detail": "Zero qualified candidates; no strategy or overlay account run. Not a pass."
+    },
+    {
+      "id": 13,
+      "name": "gross_le_one",
+      "status": "NOT_APPLICABLE",
+      "detail": "Zero qualified candidates; no strategy or overlay account run. Not a pass."
+    },
+    {
+      "id": 14,
+      "name": "native_trades_preserved_in_overlay",
+      "status": "NOT_APPLICABLE",
+      "detail": "Zero qualified candidates; no strategy or overlay account run. Not a pass."
+    },
+    {
+      "id": 15,
+      "name": "deterministic_reruns",
+      "status": "PARTIAL_APPLICABILITY",
+      "detail": "Discovery sample actual rerun PASS; strategy and overlay reruns NOT_APPLICABLE because no candidates"
+    },
+    {
+      "id": 16,
+      "name": "registered_inputs_unchanged",
+      "status": "PASS",
+      "detail": "Baseline daily/opportunity/ATRDR/protocol, size partitions, account and market hashes match"
+    }
+  ],
+  "additional_checks": {
+    "path_gain_then_drawdown_and_missing_session": "PASS",
+    "81_duplicate_chart_pixels_below_header_identical": "PASS"
+  },
+  "failures": 0,
+  "account_tests_not_run": true
+}

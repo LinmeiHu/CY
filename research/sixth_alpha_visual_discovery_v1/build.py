@@ -79,6 +79,7 @@ def panel(c):
   rel.extend([f"r{h}-(sum(r{h}) over(partition by trade_date,causal_industry)-r{h})/nullif(count(r{h}) over(partition by trade_date,causal_industry)-1,0) ir{h}",f"r{h}-(sum(r{h}) over(partition by trade_date)-r{h})/nullif(count(r{h}) over(partition by trade_date)-1,0) mr{h}"])
  c.execute('create temp table relative as select *, '+','.join(rel)+',avg((ret20>0)::int) over(partition by trade_date) breadth from eligible where industry_valid')
  c.execute(f'''create temp table uncovered as select r.* from relative r join read_parquet('{EXT}/coverage/five_strategy_coverage_map.parquet') c using(symbol,trade_date) where c.uncovered''')
+ c.execute(f"copy uncovered to '{EXT}/panel/discovery_uncovered_labels.parquet' (format parquet)")
  c.execute('create temp table ranks as select *, '+','.join(f'percent_rank() over(partition by trade_date order by ir{h}) q{h}' for h in [20,40,60])+' from uncovered where ir20 is not null and ir40 is not null and ir60 is not null')
  c.execute("create temp table scored as with a as(select *,list_median([q20,q40,q60]) persistent_excess_score from ranks) select *,percent_rank() over(partition by trade_date order by persistent_excess_score) persistent_rank from a")
  c.execute(f"copy scored to '{EXT}/panel/discovery_scored.parquet' (format parquet)")

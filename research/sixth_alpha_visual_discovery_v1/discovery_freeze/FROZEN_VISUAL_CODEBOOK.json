@@ -1,0 +1,120 @@
+{
+  "version": "VISUAL_CODEBOOK_V1",
+  "frozen_before_formal": true,
+  "outcomes_opened": false,
+  "judgment": "Model direct blind image observation, never formula-generated labels",
+  "scale": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "NA": "unjudgeable; never impute",
+  "dimensions": [
+    {
+      "name": "direction",
+      "economic_meaning": "整个120日可见定向供需累积",
+      "anchors": {
+        "-2": "稳定下行",
+        "-1": "偏下但反弹",
+        "0": "无明确方向",
+        "1": "偏上但回撤",
+        "2": "稳定上行"
+      },
+      "ambiguity": "易与历史动量重叠",
+      "overlap": "context;turn"
+    },
+    {
+      "name": "turn",
+      "economic_meaning": "近期路径相对更早阶段的方向改变",
+      "anchors": {
+        "-2": "显著转弱或顶部掉落",
+        "-1": "温和转弱",
+        "0": "无明显改变",
+        "1": "温和由弱转强",
+        "2": "明确底部转强或再加速"
+      },
+      "ambiguity": "持续下行不等于新转弱；最近约20日相对前段",
+      "overlap": "direction"
+    },
+    {
+      "name": "retention",
+      "economic_meaning": "过去上涨或恢复带来的价格抬升能否保留",
+      "anchors": {
+        "-2": "全部回吐且跌回起点以下",
+        "-1": "多数回吐",
+        "0": "混合或没有明确上冲",
+        "1": "大部分保留",
+        "2": "多个上移平台保留"
+      },
+      "ambiguity": "无明显上冲则0；正分不要求当日上涨",
+      "overlap": "direction;spike_distribution"
+    },
+    {
+      "name": "quieting",
+      "economic_meaning": "近期真实成交价格波动相对前段收缩",
+      "anchors": {
+        "-2": "明显扩张",
+        "-1": "偏扩张",
+        "0": "近似或不明确",
+        "1": "偏收缩",
+        "2": "明显收缩且仍有成交"
+      },
+      "ambiguity": "长停牌或零量不能当收缩，给NA；约20对前60",
+      "overlap": "volume_alignment"
+    },
+    {
+      "name": "spike_distribution",
+      "economic_meaning": "路径变化分散在多日还是依赖孤立冲击",
+      "anchors": {
+        "-2": "极端单次/少次冲击主导",
+        "-1": "较依赖脉冲",
+        "0": "混合",
+        "1": "多日分散",
+        "2": "持续多日且无尖峰依赖"
+      },
+      "ambiguity": "此项与上涨方向无关；平稳下跌也可+2",
+      "overlap": "retention;direction"
+    },
+    {
+      "name": "volume_alignment",
+      "economic_meaning": "上涨阶段与下跌阶段成交量的不对称",
+      "anchors": {
+        "-2": "下跌显著放量",
+        "-1": "下跌偏放量",
+        "0": "不明显",
+        "1": "上涨偏放量",
+        "2": "上涨显著放量并持续"
+      },
+      "ambiguity": "只有零量或复牌量比失真给NA；不可解释为真实资金流",
+      "overlap": "direction;quieting"
+    },
+    {
+      "name": "rejection",
+      "economic_meaning": "近端反复影线与急冲回吐的方向",
+      "anchors": {
+        "-2": "反复强烈上方拒绝",
+        "-1": "偏上方拒绝",
+        "0": "无一致方向",
+        "1": "偏下方拒绝",
+        "2": "反复强烈下方拒绝"
+      },
+      "ambiguity": "小图不清楚给NA；不是买卖盘观测",
+      "overlap": "retention"
+    },
+    {
+      "name": "context",
+      "economic_meaning": "末端处于250日历史路径的位置",
+      "anchors": {
+        "-2": "接近低位",
+        "-1": "偏低",
+        "0": "中间",
+        "1": "偏高",
+        "2": "接近高位"
+      },
+      "ambiguity": "只是历史绝对坐标，非行业相对强度",
+      "overlap": "direction"
+    }
+  ]
+}
