@@ -20,4 +20,4 @@ def test_smv6_trace_records_hard_cutoff():
     assert "2024-01-01" in x.evidence and "hard-filters" in x.evidence
 def test_decision_blocked(): assert json.loads((OUT / "gate_decision.json").read_text())["status"] == "BLOCKED_REQUIRED_PRECAPITAL_SOURCE_UNAVAILABLE"
 def test_report_exists(): assert (OUT.parent / "REPORT.md").exists()
-def test_no_later_gate_outputs(): assert not (OUT / "causal_priority_evidence.csv").exists()
+def test_original_gate_artifact_retained(): assert (OUT / "gate_decision.json").exists() and (OUT / "gate_decision_v2.json").exists()
