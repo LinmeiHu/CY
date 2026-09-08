@@ -14,6 +14,21 @@ from ..io import _sql_path
 
 ENTRY_COST = 0.002
 EXIT_COST = 0.002
+OUTCOME_COLUMNS = (
+    'event_id', 'symbol', 'sleeve', 'signal_date', 'signal_cal_idx', 'profile', 'status',
+    'entry_date', 'entry_cal_idx', 'entry_price', 'exit_date', 'exit_cal_idx', 'exit_price',
+    'exit_reason', 'holding_sessions', 'gross_return', 'net_return',
+)
+
+
+def _outcome_frame(rows, extra_columns=()):
+    frame = pd.DataFrame(rows)
+    for column in (*OUTCOME_COLUMNS, *extra_columns):
+        if column not in frame:
+            frame[column] = pd.Series(index=frame.index, dtype=object)
+    for column in ('signal_date', 'entry_date', 'exit_date'):
+        frame[column] = pd.to_datetime(frame[column])
+    return frame
 
 
 def load_daily(paths: list[Path], symbols: list[str]) -> pd.DataFrame:
@@ -149,11 +164,7 @@ def strict_fixed_target_outcomes(
             }
             break
         rows.append(result or {**base, "status": "INCOMPLETE_PATH", "entry_date": entry.trade_date, "entry_cal_idx": entry_idx, "entry_price": entry_price})
-    frame = pd.DataFrame(rows)
-    for column in ("signal_date", "entry_date", "exit_date"):
-        if column in frame:
-            frame[column] = pd.to_datetime(frame[column])
-    return frame
+    return _outcome_frame(rows, ('mechanism', 'market_regime'))
 
 
 def fixed_target_outcomes(
@@ -256,9 +267,7 @@ def fixed_target_outcomes(
                 "net_return": gross - ENTRY_COST - EXIT_COST if split_cost else gross - 0.004,
             }
         )
-    result = pd.DataFrame(rows)
-    for column in ("signal_date", "entry_date", "exit_date"):
-        result[column] = pd.to_datetime(result[column])
+    result = _outcome_frame(rows, ('exit_decision_cal_idx',))
     if (result.entry_date.notna() & result.entry_date.le(result.signal_date)).any():
         raise ReproductionError("same-bar entry")
     return result
@@ -272,6 +281,8 @@ def replay_sleeves(
     k_per_sleeve: int,
     daily_cap: int,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, Any]]:
+    if daily.empty:
+        raise ReproductionError('missing daily trading calendar')
     eligible = trades.loc[
         trades.status.eq("COMPLETED")
         | (trades.status.eq("INCOMPLETE_OUTCOME_TAIL") & trades.entry_date.notna())
@@ -380,7 +391,9 @@ def replay_sleeves(
                 or len(state["active"]) > k_per_sleeve
             ):
                 raise ReproductionError("cash or capacity invariant violated")
-    accepted, skipped, nav = pd.DataFrame(accepted_rows), pd.DataFrame(skipped_rows), pd.DataFrame(nav_rows)
+    accepted = pd.DataFrame(accepted_rows, columns=list(dict.fromkeys([*trades.columns, 'qty', 'entry_outlay'])))
+    skipped = pd.DataFrame(skipped_rows, columns=list(dict.fromkeys([*trades.columns, 'skip_reason'])))
+    nav = pd.DataFrame(nav_rows)
     nav_wide = nav.pivot(index="trade_date", columns="sleeve", values="nav").ffill()
     cash_wide = nav.pivot(index="trade_date", columns="sleeve", values="cash").ffill()
     active_wide = nav.pivot(index="trade_date", columns="sleeve", values="active").ffill()
@@ -419,6 +432,8 @@ def replay_shared_router(
     nav_end: pd.Timestamp | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Exact shared-account replay used by the frozen V28/V29 router."""
+    if daily.empty:
+        raise ReproductionError('missing daily trading calendar')
     ordered = trades.sort_values(
         ["entry_date", "sleeve", "signal_date", "source_rank_order", "event_id"],
         ascending=[True, True, False, True, True], kind="mergesort",
@@ -447,7 +462,7 @@ def replay_shared_router(
         return None if pd.isna(value) else float(value)
 
     first_entry = pd.Timestamp(ordered.entry_date.min())
-    last_exit = pd.Timestamp(ordered.exit_date.max()) if nav_end is None else pd.Timestamp(nav_end)
+    last_exit = pd.Timestamp(daily.trade_date.max() if ordered.exit_date.isna().any() else ordered.exit_date.max()) if nav_end is None else pd.Timestamp(nav_end)
     for date in dates:
         date = pd.Timestamp(date)
         if date < first_entry or date > last_exit:
@@ -513,7 +528,9 @@ def replay_shared_router(
         row["combined_nav"], row["active_positions"] = total_nav, total_active
         row["utilization"] = 0.0 if total_nav == 0 else total_value / total_nav
         nav_rows.append(row)
-    accepted, skipped, nav = pd.DataFrame(accepted_rows), pd.DataFrame(skipped_rows), pd.DataFrame(nav_rows)
+    accepted = pd.DataFrame(accepted_rows, columns=list(dict.fromkeys([*trades.columns, 'qty', 'entry_outlay'])))
+    skipped = pd.DataFrame(skipped_rows, columns=list(dict.fromkeys([*trades.columns, 'skip_reason'])))
+    nav = pd.DataFrame(nav_rows)
     nav["ret"] = nav.combined_nav.pct_change().fillna(nav.combined_nav.iloc[0] - 1.0)
     if (nav[["main_cash", "chinext_cash"]] < -1e-10).any(axis=None):
         raise ReproductionError("router produced negative cash")

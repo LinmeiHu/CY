@@ -15,4 +15,5 @@ five-strategy-reproduce = "five_strategy_bundle.reproduce:main"
 where = ["src"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "research/shared_capital_v1/tests", "research/capital_scaling_v1/tests"]
+pythonpath = ["src", "."]

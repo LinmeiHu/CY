@@ -11,16 +11,16 @@ from .continuous_replay import load_stock_daily
 from .native_states_v06 import state_hash
 from .shared_account.allocator import active_strategies
 from .shared_account.p0 import initialize
-from .shared_account.scheduler import run_streams
+from .shared_account.scheduler import Event, run_streams
 from .shared_account.held_actions import registered_actions
 from .run_shared_capital_v1 import HERE
 
 PERIODS=[('2018_2021','2018-01-01','2021-12-31'),('2022_2023','2022-01-01','2023-12-31')]
 
 
-def load_inputs():
+def load_inputs(*, execution_hardening=None):
     from .universe import verify
-    verify()
+    verify(execution_hardening=execution_hardening)
     inputs={k:Path(v) for k,v in json.loads((HERE.parent/'five_strategy_exit_risk_v1/input_config.json').read_text())['inputs'].items()}
     data={'actions':registered_actions()}
     for strategy in ('ATRDR','MCB'):
@@ -36,11 +36,16 @@ def load_inputs():
     return data
 
 
-def replay(data,gap,period,start,end,*,policy='P0',mode='independent',home_path=None):
+def replay(data,gap,period,start,end,*,policy='P0',mode='independent',home_path=None,scaling=None,selected=None):
     states={s:json.loads((HERE/'output'/f'{s.lower()}_initial_state_{start[:4]}.json').read_text()) for s in active_strategies(gap)}
     for s,state in states.items():
         if state_hash({k:v for k,v in state.items() if k!='state_hash'})!=state['state_hash']:raise ValueError(f'{s} state hash mismatch')
     account=initialize(gap,states)
+    if selected is not None:
+        from .shared_account.p0 import restrict_to_strategies
+        restrict_to_strategies(account, selected)
+    if scaling is not None:
+        scaling.bind(account, states, data, period, start, end)
     from .shared_account.native_funding import NativeFunding
     from .shared_account.drawdown_gate import DrawdownGate
     gate=DrawdownGate(int(policy[-1])/100,account.initial_cash) if policy.startswith('P3') else None
@@ -48,16 +53,26 @@ def replay(data,gap,period,start,end,*,policy='P0',mode='independent',home_path=
     account.funding=funding
     streams=[];results={};daily=[]
     for strategy in ('ATRDR','MCB'):
+        if strategy not in account.strategies:
+            continue
         entries,prices=data[strategy]
         stream,result=stock_replay(strategy,entries,prices,start,end,physical=account,stream_only=True,initial_state=states[strategy],action_registry=data['actions'])
         streams.append(stream);results[strategy]=result
-    trades=data['gap_outcomes'].loc[data['gap_outcomes'].gap_id.isin(data[gap].gap_id)]
-    stream,result=gap_replay(gap,trades,data['gap_daily'],start,end,physical=account,stream_only=True,initial_state=states[gap],action_registry=data['actions'])
-    streams.append(stream);results[gap]=result
+    if gap in account.strategies:
+        trades=data['gap_outcomes'].loc[data['gap_outcomes'].gap_id.isin(data[gap].gap_id)]
+        stream,result=gap_replay(gap,trades,data['gap_daily'],start,end,physical=account,stream_only=True,initial_state=states[gap],action_registry=data['actions'])
+        streams.append(stream);results[gap]=result
     etf_daily,minute,availability=data['etf']
     calendar=list(etf_daily['000852.SH'].loc[start:end].dropna(subset=['pre_adj_close']).index)
-    platform=PhysicalPlatform(etf_daily,minute,availability,calendar,initial_cash=states['SMV6']['cash'],lot_size=100,fee_bps=0,physical=account)
-    streams.append(callback_stream(platform,calendar))
+    platform = None
+    if 'SMV6' in account.strategies:
+        cls = PhysicalPlatform if scaling is None else scaling.platform_class
+        platform=cls(etf_daily,minute,availability,calendar,initial_cash=states['SMV6']['cash'],lot_size=100,fee_bps=0,physical=account)
+        streams.append(callback_stream(platform,calendar))
+    if scaling is not None:
+        streams = scaling.wrap_streams(streams, calendar, platform)
+    if account.strategies == ('SMV6',):
+        streams.append((Event(day+pd.Timedelta(hours=15, minutes=1), 'RECORD', 'ACCOUNT', str(day), lambda: None) for day in calendar))
     from collections import defaultdict
     capital_days=defaultdict(float)
     last_time=pd.Timestamp(start)
@@ -72,6 +87,8 @@ def replay(data,gap,period,start,end,*,policy='P0',mode='independent',home_path=
         elapsed=(when-last_time).total_seconds()/86400
         for eid,value in last_values.items():capital_days[eid]+=value*elapsed
         last_time,last_values=when,lot_values()
+        if scaling is not None:
+            scaling.completed(when)
         row=account.complete_timestamp(when)
         for s in account.strategies:
             row[s+'_cash']=account.sleeve_cash[s]

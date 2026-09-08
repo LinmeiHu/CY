@@ -1,0 +1,57 @@
+"""Freeze economic choices once, before the first scaling outcome."""
+import json
+
+from five_strategy_bundle.io import sha256, write_json
+from .preflight import HERE, PARENT, PARENT_HEAD
+
+POLICY = HERE/'contracts/capital_scaling_policy_v1.json'
+
+
+def freeze():
+    policy = dict(
+        version='CAPITAL_SCALING_POLICY_V1', parent_head=PARENT_HEAD,
+        frozen_strategies_modified=False, native_exits_only=True, leverage=False,
+        universes=dict(ATRDR='EXACT_PARENT_MAIN_CHINEXT_ROUTE_ELIGIBILITY', MCB='EXACT_PARENT_MAIN_CHINEXT_SAME_COMPLETED_CLOSE',
+                       OGR='EXACT_PARENT_MAIN_CHINEXT', IFCGR='EXACT_OGR_PARENT_FILTER_ONLY_PIT_B', SMV6='EXACT_FROZEN_152_ETF_AND_NATIVE_DAILY_ELIGIBILITY'),
+        universe_sha256=sha256(PARENT/'contracts/strategy_universe_v1.json'),
+        periods=[['2018-01-01', '2021-12-31'], ['2022-01-01', '2023-12-31']],
+        initial_states='Exact parent continuous stocks and original SMV6 per-segment init; no boundary liquidation or retrospective rescaling; standalone keeps its own actual parent NAV',
+        native_sizing_reference='Parent independent P0 pre-capital request monetary sizes for stock event identities; current known mark gives active native notional. ETF frozen target weights times causal independent P0 HOME_BUDGET. This is a sizing reference, not an accepted-fill or exit replay.',
+        state_feedback='Live native adapters read actual scaled physical positions/cash and fills. All exits, corporate actions, native duplicate-symbol and inventory limits use the actual account. No post-hoc multiplication of returns.',
+        full_book_normalization='At a native entry/exit/target/membership change: prior legal exits and corporate actions, complete currently active desired set, one common notional factor preserving native relative desired weights, costs/cash/inventory/quote constraints, actual fills returned to native callbacks.',
+        targets=['NATIVE', 'G25', 'G50', 'G75', 'G100'], run_order=['NATIVE_BASELINE_GATES', 'ALL_G100_EXECUTION_AND_IDEALIZED', 'G25', 'G50', 'G75', 'G100_ENTRY_ONLY', 'PRIORITY'],
+        rebalance_triggers=['NATIVE_ENTRY', 'NATIVE_EXIT', 'NATIVE_REBALANCE', 'NATIVE_TARGET_INCREASE', 'NATIVE_TARGET_DECREASE', 'NATIVE_MEMBERSHIP_CHANGE'],
+        no_daily_rebalance=True,
+        target_interpretation='At normalization target <= configured gross after estimated transaction costs. Between triggers price drift may exceed G25/G50/G75; no automatic de-risking. 100% physical gross and nonnegative cash always enforced. Locked inventory may prevent reductions; do not buy to conceal non-attainment.',
+        legal_execution='Native fresh entries/exits keep native clocks/prices. Extra stock resizing uses registered raw open at 09:30 or the next available registered minute open strictly after a completed intraday exit observation. 15:00 target observations wait for next opening; no stale mark is an executable quote. Fixed pending share targets may finish without being recomputed for price drift.',
+        stock_execution='Parent raw fractional shares, 20bp per side; registered tradability and price limits; acquisition-day inventory cannot be sold; evidenced pending corporate shares stay untradable until native release. No invented round-lot or volume participation constraint.',
+        etf_execution='Both grades retain frozen local 100-share lots, 2bp commission, 8bp one-way slippage, 50% minute-volume per-order cap, original callback clocks, one-shot CAP50_SET. No automatic retry merely for weight or volume shortfall. Native SuperMind equivalence UNVERIFIED.',
+        execution_grades=['EXECUTION_AWARE_SCALING', 'IDEALIZED_SCALING_BOUND'],
+        idealized_distinction='May omit unsupported capacity assumptions only. No additional stock market-capacity model exists, so both grades can coincide. Validated SMV6 constraints remain in both; do not fabricate a numerical gap.',
+        capacity='CAPACITY_NOT_MODELED for market-wide stock capacity and scalability to arbitrary account NAV; ETF local per-order volume check is partial execution evidence, not native aggregate same-bar platform equivalence.',
+        mcb_modes=['independent', 'confirmation_tag'], mcb_overlap='Unchanged exact_confirmation economic keys; only retained valid ATRDR can tag MCB. No date-near matching.',
+        gap_alternatives=['OGR', 'IFCGR'], gap_mutual_exclusion=True,
+        priority='Four one-sleeve G100 diagnostics, other sleeves retain native quantities; designated sleeve can absorb residual only at its own native set changes. Later base needs may reduce but cannot top up designated exposure at another sleeve event. Both Gap alternatives, independent MCB, both periods. No optimized multiplier.',
+        entry_only='Combined G100 only: existing positions unchanged by another event; only current native exposure-increasing intents absorb remaining legal budget. Native target decreases and exits still execute.',
+        concentration='No single-name, strategy or family cap in extreme/full frontier. Report name >25/50/75/90% and Demand >50/75/90%, top symbols/events/routes and deepest drawdown attribution.',
+        return_fragility='Descriptive best 1/5 day removal, top 5 symbol/event contribution; non-executable, never used as a filter.',
+        risk_reference_bands=[.05, .08, .10, .15], risk_reference='Highest existing tested target satisfying MaxDD in BOTH periods, separately for each Gap/MCB structure; no interpolation.',
+        structural_idle='Parent Native P0 days with substantial cash (cash positive as original parent day definition) and no rejected valid request. Report cash distribution and observational trend/breadth buckets; forward 5/20-day anchor and existing ETF opportunity summaries are POST-HOC HABITAT DIAGNOSTIC only.',
+        prohibited=['new alpha', 'new native exit', 'new universe', 'new ST/listing rules', 'new signal/stock/ETF candidates', 'new drawdown gate', 'P3_D4/P3_D5/P3_D6', 'intermediate gross target search', 'historical performance weights', 'risk parity', 'inverse volatility', 'post-2023 outcomes', 'sealed validation', 'production scaling authorization'],
+        decision='Historical evidence only; any promising target is a shadow candidate, with capacity and execution limitations explicit.')
+    if POLICY.exists():
+        if json.loads(POLICY.read_text()) != policy:
+            raise ValueError('frozen economic contract drift; do not overwrite')
+    else:
+        write_json(POLICY, policy)
+    receipt = HERE/'contracts/freeze_receipt.json'
+    digest = sha256(POLICY)
+    if receipt.exists() and json.loads(receipt.read_text())['contract_sha256'] != digest:
+        raise ValueError('frozen SHA256 mismatch')
+    if not receipt.exists():
+        write_json(receipt, dict(contract_sha256=digest, outcome_runs_started=0, ordering='PRE_OUTCOME_ECONOMIC_FREEZE'))
+    return digest
+
+
+if __name__ == '__main__':
+    print(freeze())

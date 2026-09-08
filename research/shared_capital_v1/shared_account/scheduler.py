@@ -11,6 +11,7 @@ import pandas as pd
 # Exits are ahead of entries. Marks are only made by the owning native callback
 # using information legal at that clock. Native row priority stays in adapters.
 PHASES = {'BOUNDARY': 0, 'ACTION': 10, 'PREPARE': 15, 'EXIT': 20,
+          'SCALING': 25,
           'OPEN_CALLBACK': 30, 'ENTRY': 40, 'SIGNAL': 50, 'CLOSE': 60, 'RECORD': 70}
 
 

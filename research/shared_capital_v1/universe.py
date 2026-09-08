@@ -73,10 +73,17 @@ def run():
     return contract
 
 
-def verify():
+def verify(*, execution_hardening=None):
     contract=json.loads(CONTRACT.read_text())
+    overrides = {} if execution_hardening is None else json.loads(Path(execution_hardening).read_text())
+    if set(overrides) - {'src/five_strategy_bundle/execution/daily.py'}:
+        raise ValueError('execution hardening cannot override frozen alpha/universe sources')
     for f,h in contract['source_hashes'].items():
-        if sha256(ROOT/f)!=h: raise ValueError('frozen universe source changed: '+f)
+        actual = sha256(ROOT/f)
+        if actual != h:
+            repair = overrides.get(f, {})
+            if repair.get('parent_sha256') != h or repair.get('corrected_sha256') != actual:
+                raise ValueError('frozen universe source changed: '+f)
     if sha256(Path(contract['stock_input']['path'])) != contract['stock_input']['sha256']:
         raise ValueError('frozen universe input changed')
     return contract

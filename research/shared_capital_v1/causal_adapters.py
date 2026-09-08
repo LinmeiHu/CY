@@ -53,12 +53,28 @@ select_fast_capacity = corrected_function(atrdr.select_fast_capacity, [
      'outcomes.entry_date.notna()'),
 ])
 
-causal_fixed_target_outcomes = corrected_function(fixed_target_outcomes, [
-    ('result = pd.DataFrame(rows)', '''result = pd.DataFrame(rows)
-    for column in ("entry_date", "exit_date", "entry_price", "exit_price", "exit_reason"):
-        if column not in result:
-            result[column] = pd.NaT if column.endswith("date") else np.nan'''),
-])
+# The shared producer now preserves its schema for every outcome population.
+causal_fixed_target_outcomes = fixed_target_outcomes
+
+
+def record_pending_signals(platform, context, prior_holdings, *, previous_event_date='CONTEXT'):
+    """Reporting metadata uses the event date already established by frozen alpha."""
+    if not context.pending_desired or set(context.pending_desired) <= prior_holdings:
+        return
+    if previous_event_date == 'CONTEXT':
+        previous_event_date = context.prev_trade_date
+    if previous_event_date is None:
+        # The first native init callback has no previous callback date, although
+        # its completed input history can already support a valid signal.
+        history = platform.history(['000852.SH'], ['close'], 1, '1d')['000852.SH']
+        previous_event_date = history.index[-1] if len(history) else pd.NaT
+    signal_date = pd.Timestamp(previous_event_date)
+    if pd.isna(signal_date) or signal_date >= pd.Timestamp(platform.current_date):
+        raise ReproductionError("missing/invalid frozen prior trading date")
+    for symbol in context.pending_desired:
+        if symbol not in prior_holdings:
+            platform._record("BUY_SIGNAL", symbol, reason=context.pending_reason,
+                             signal_date=signal_date.date())
 
 
 class CausalCashPlatform(CashPlatform):

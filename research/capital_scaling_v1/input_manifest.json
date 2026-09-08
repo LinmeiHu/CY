@@ -1,0 +1,2434 @@
+{
+  "cache_authority": "SEALED_PARENT_REUSE_WITH_INPUT_SOURCE_PERIOD_CONFIG_HASH_BINDING",
+  "etf_initial_state": "PARENT_NATIVE_CALLBACK_INIT_RESET",
+  "external_mount": "/Volumes/quant",
+  "frozen_source_hashes": {
+    "configs/frozen/atrdr_v29.json": "5e3eb472223d8bccd45adee110fdf8606ed0ae0f692257d887c14ad6dbc63c8f",
+    "configs/frozen/ifcgr_v29r2.json": "eca1499ba83a92c7586017da6d9138177856b6f6189a4c8a4002bf61ecfc5403",
+    "configs/frozen/mcb_v72.json": "7bacbfc440e8e9b091f401d3bf8445baf470253b9b45ac3913eab9c0628d8c53",
+    "configs/frozen/ogr_v28r2.json": "f954a95adc6c13393b8bd7ee2d2a0a9994d84a9e3c46c1eb56e99d5dc7b1f39e",
+    "configs/frozen/smv6_ci.json": "762fed8aabe5414d80799e6f9ebeda1438c6941cdd6d838a7e076136fa32dee1",
+    "manifests/raw_input_contract.json": "305907c3ea5cbb923812ae4d3a4d56fa8b15f2c41f7f6cdfc634d20a8b775943",
+    "manifests/source_provenance.json": "2834579f93025a9c3a2dc501574dbd5b958a45c3a7a629e7d16748f5baba58f7",
+    "manifests/strategy_identity.json": "8e0cfa03f792de4959877435c4e75dc4872746e25e6091e7a1839fe43febd5c9",
+    "original_sources/README.md": "eeb09834273f7666f466ec207daa35a3090d7a9ecce638b7690dcca58414b91d",
+    "original_sources/atrdr/run_ashare_causal_market_regime_substrategy_router_v27_diagnostic_2026ytd_v2.py": "30fe1f2f738df0285d387e7e0b55b382f77f7ca026649bec3d5e8aa9616428bb",
+    "original_sources/atrdr/run_ashare_distributed_accumulation_slow_exhaustion_mother_screen_v1.py": "4c4992e333c9f7931ca84454e1f71742cf49bcfa8ff333ba8876cc202f351870",
+    "original_sources/atrdr/run_ashare_simple_regime_complementary_demand_router_v29.py": "69a83159aa2bd1aa2426268c3036a9759148c19d0f03d15eedf5e7ad95edbfba",
+    "original_sources/ogr/run_ashare_true_gap_below_l_demand_not_locked_v28r1.py": "b74bdc04a7b898cbac7bb042601b33d7ae52643af6cff758e22b314ea24a7dc8",
+    "original_sources/ogr/run_ashare_true_gap_below_l_first_reversal_v13.py": "a156657128053cdeda68e53d5f433de34976353bcc79f25cfab9410bb779dc26",
+    "original_sources/ogr/run_ashare_true_gap_below_l_fresh_capitulation_snapback_v27.py": "86dd15e8a49da1f6481d3552f02ffbbcdb874eaf6b8b0754220d36b4dee9face",
+    "original_sources/ogr/run_ashare_true_gap_below_l_liquidity_trap_guard_v28.py": "865aa4e0058b69168002ac3ce61014d41fbf502a9541565ecdeec3f075147cce",
+    "original_sources/ogr/run_ashare_true_gap_below_l_orderly_demand_v28r2.py": "540863fde51f23efc1fc413385868d58ac0a48575b9ebc0cf9eab64acbca30af",
+    "src/five_strategy_bundle/strategies/__init__.py": "cbd44169e2521426589d5f4848f361666b6dd9efafb3f638ce2583f1c7e726c9",
+    "src/five_strategy_bundle/strategies/atrdr.py": "951d4aaafce634888e9f42b36fd1137917b5f730d86535adb97641398c9be107",
+    "src/five_strategy_bundle/strategies/atrdr_post.py": "7a8b7f1c1aa8ad729fad0fec4581127a1e0bf5a345c37f0ec6f441b0f7f2db54",
+    "src/five_strategy_bundle/strategies/ifcgr.py": "7997a21aca7721a9563820b2d678e5b1fb0b87bf035c1003d8d59698ee9974b8",
+    "src/five_strategy_bundle/strategies/issuer_classifier.py": "5d863e6f3933ef0149edc67886ca011172d7dd7db7c1ae790dad590b0eec9db2",
+    "src/five_strategy_bundle/strategies/mcb.py": "2fad119333a09cd31494994d36374ceb423080149c3e5764559cd5003c0c9312",
+    "src/five_strategy_bundle/strategies/ogr.py": "41bd16909d136f60168909a4f33a0874ddcfcef5b07d070b01120b337507cc22",
+    "src/five_strategy_bundle/strategies/smv6.py": "6a1c06e03094ee237950f040d9172b2705f3cb78501bf8908a555cb2e97c0025",
+    "src/five_strategy_bundle/strategies/smv6_frozen.py": "7fa9d715bdf4c352526d556132f8ec8502e9f355876100f357c8bdc5fdc91f33"
+  },
+  "parent_cache_files": [
+    {
+      "bytes": 68656,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2018_2021/native_reference_nav.parquet",
+      "sha256": "84a7389584b2b6cd38a7a6d1b8cca62c36b5be9109a598ccba38cfbc9316f172"
+    },
+    {
+      "bytes": 69530,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2018_2021/p0_checkpoints.parquet",
+      "sha256": "804080b709e93d3045da844bdfc2a1d8cd90e89c70b7806e9f665518ef3834c5"
+    },
+    {
+      "bytes": 70963,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2018_2021/p0_fills.parquet",
+      "sha256": "1ec4f43562fa46b8158cbff20b6f4388e1e20efa530f01ad083824a18266d1b2"
+    },
+    {
+      "bytes": 46523,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2018_2021/p0_intents.parquet",
+      "sha256": "69473d82cf1f797f2f203768961f2e2a558b47b97d9175f35ce7170a3c4f0e58"
+    },
+    {
+      "bytes": 14435,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2018_2021/p0_nav.parquet",
+      "sha256": "1b961ebf1e3a75c0a27fc6bbd3f2321349ab4781c0582fc8e237f388844d7485"
+    },
+    {
+      "bytes": 6580,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2018_2021/p0_other_rejected.parquet",
+      "sha256": "50b041d132558e91cc5e4ebbd714f93e95e6a334b9548df39245625ebea885b6"
+    },
+    {
+      "bytes": 34752,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2022_2023/native_reference_nav.parquet",
+      "sha256": "69c2be79d90bc84e1f558f1528aa3ffcaaefae0da5eb3b786a65dd90eb15c9b8"
+    },
+    {
+      "bytes": 80403,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2022_2023/p0_checkpoints.parquet",
+      "sha256": "e883a681d474d012af32d0357df15247baa08318191cb1f10fa3582edb5ebac8"
+    },
+    {
+      "bytes": 81601,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2022_2023/p0_fills.parquet",
+      "sha256": "ffa8e13342f675b959125d1dceb6a57063b6173386ec1e91eb11ad13e18a4f85"
+    },
+    {
+      "bytes": 44455,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2022_2023/p0_intents.parquet",
+      "sha256": "b897198149d4de75dbec4d1be5ad808b37479b1292ee7aa31ca23028d2f5a549"
+    },
+    {
+      "bytes": 17113,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2022_2023/p0_nav.parquet",
+      "sha256": "e732b9433ad3d18144d77977c00e78af10034509cd88e320e27e15b429ed8ec9"
+    },
+    {
+      "bytes": 4515,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/2022_2023/p0_other_rejected.parquet",
+      "sha256": "0fa39094916eeb859e104ee7722c823ba3d26370071f9f231853b08f7421263f"
+    },
+    {
+      "bytes": 77697,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/bear_routes.parquet",
+      "sha256": "5158a83f19697644f1c2061ed7024e5885ec27cc56524057930b0ca5e22f376a"
+    },
+    {
+      "bytes": 181401,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/bull_outcomes.parquet",
+      "sha256": "a30860aa57c94d1e2fe4aa9e69731a09d813b8f18de8c3f6cdcdb3a60a6cf070"
+    },
+    {
+      "bytes": 926933,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/bull_signals.parquet",
+      "sha256": "d040a2074aeecf06073a88da94a44d026e2bfb5f4d45b672802fc1edc01646ec"
+    },
+    {
+      "bytes": 39083,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/fast_capacity.parquet",
+      "sha256": "1f1f4cb4e96b408efa7d1786493927f8bdc81062c47434b2a574dd7ac1b4efed"
+    },
+    {
+      "bytes": 1538132,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/fast_mother.parquet",
+      "sha256": "660fd0c5091b97e1771162fb5f1a72e8f254d58a3a7893437c0dcbf2c8348a1f"
+    },
+    {
+      "bytes": 69744,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/fast_outcomes.parquet",
+      "sha256": "1f61754930cf77d5e0b2dc78ff9a36cb3b38dd3305b6e2eb887be46e77bc9a2d"
+    },
+    {
+      "bytes": 331428,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/fast_signals.parquet",
+      "sha256": "ad6c7bf4e71e14c1b876c5b4654fadd1d86056cabc322199b415d501aa0688c6"
+    },
+    {
+      "bytes": 127023,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/market.parquet",
+      "sha256": "9baf752e2657f3049b98044efce7ceaedb5f9d53edbe5876d4802b274b578627"
+    },
+    {
+      "bytes": 2,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/boundary_snapshots.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "bytes": 115846,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/fills.parquet",
+      "sha256": "5bf84b527f2b3d532660bcfa40b847f6dd13efe0327c27b75b2f549b1b26cccc"
+    },
+    {
+      "bytes": 60048,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/intents.parquet",
+      "sha256": "3ecf474e558f15cfb7ccac6e5356f050f52f561b3937829a0721ea41e467696f"
+    },
+    {
+      "bytes": 17737,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/last_known_lots.parquet",
+      "sha256": "863223bb3889da4f444c0e309217a29b07897fd75830f22874c5c58ee19aa39e"
+    },
+    {
+      "bytes": 27858,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/nav.parquet",
+      "sha256": "11e573997bc52846bf84473fbfca6bff81a5b1ffa39a84e9608b11db8a599197"
+    },
+    {
+      "bytes": 463057,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/precapital_entry_population.parquet",
+      "sha256": "bdad1206a4d0dbff7f11cb1593f39ffc955d0c4d3d1081ba4fda3c044dac5eaa"
+    },
+    {
+      "bytes": 42894,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/action_timeline.csv",
+      "sha256": "8249d7404159e0e77ccef2b952427be0f1a106f0413e10dcad2fd0962331bf84"
+    },
+    {
+      "bytes": 37422,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/boundary_snapshots.json",
+      "sha256": "4195fbf23e894a3052e450c3816cb604540d1890a563a626e336760addecd77d"
+    },
+    {
+      "bytes": 367874,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/checkpoints.parquet",
+      "sha256": "453c9caf06c9eb75077d0b3b2b5c3568a9093e29ee4b769d07044c47ef34aa4b"
+    },
+    {
+      "bytes": 329758,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/fills.parquet",
+      "sha256": "5bf8322633d256a3f498059624794aa1b693fa2cd3ef8678ad56f7f10b1602ec"
+    },
+    {
+      "bytes": 41427,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/held_actions.csv",
+      "sha256": "b6452100fd5d45cc413d0d47d526a110686bf9ccce37074d732f8c7d21e05b61"
+    },
+    {
+      "bytes": 151765,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/intents.parquet",
+      "sha256": "cf08df77e9b38480e9ddc75e34a3c8d597bbe8491321cf32d0fa1adab1b4272d"
+    },
+    {
+      "bytes": 75612,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/nav.parquet",
+      "sha256": "2f38b41bf8c503e5e44458b03caa576220ae5e860965cf979fa1beebbcdd0cd1"
+    },
+    {
+      "bytes": 15430,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/other_rejected.parquet",
+      "sha256": "361207a302c80aabbd30b9839320b570206fae100a0206b8ca9a0e04b32e4ca9"
+    },
+    {
+      "bytes": 269,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/raw_continuous/status.json",
+      "sha256": "52e31ed253f2c2198c91c2148fa208fa48506c6513c9ef91cb927fd51837b015"
+    },
+    {
+      "bytes": 195522,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/slow_outcomes.parquet",
+      "sha256": "13fb7233c992e3cb50eb4cacf391715dadbf82a32aad62f2475eee7e19507862"
+    },
+    {
+      "bytes": 479158,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/slow_signals.parquet",
+      "sha256": "cbb22156fefda332ae1068c65b2fcc5d0ab5f1a9c6caf607137d9bf2f29cb53d"
+    },
+    {
+      "bytes": 55622,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2018_2021/native_reference_nav.parquet",
+      "sha256": "152fef95de20c8e9538d3e42705a7047acafafcc34480307104570d411759f9f"
+    },
+    {
+      "bytes": 59955,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2018_2021/p0_checkpoints.parquet",
+      "sha256": "6d84d106254ebf76d5c0a6b95076e0800c0f05d65ff2395669be66ad4b0560e6"
+    },
+    {
+      "bytes": 64567,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2018_2021/p0_fills.parquet",
+      "sha256": "bada741ea755369e2fd9a7344dbf619543e3b004a5b7e571f0acc40d48658bb7"
+    },
+    {
+      "bytes": 43354,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2018_2021/p0_intents.parquet",
+      "sha256": "ba85687dfdb6fa9619ca6531c776c82cb73b0f595b1dc3b9c2402db85489e6f6"
+    },
+    {
+      "bytes": 14093,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2018_2021/p0_nav.parquet",
+      "sha256": "4147443f3836828da14f876b7b735fa6837fb03e3a9e53f7f549bed35bc5ff24"
+    },
+    {
+      "bytes": 4251,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2018_2021/p0_other_rejected.parquet",
+      "sha256": "818ea1226fb7fb7013d24cadb143f3e283a5781b910be5c58aa6e0c3247bfa08"
+    },
+    {
+      "bytes": 28056,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2022_2023/native_reference_nav.parquet",
+      "sha256": "9e8484de4eda59b49415246fcce21b66e9569da749f15addf8d6d5cd1cd62ff4"
+    },
+    {
+      "bytes": 45505,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2022_2023/p0_checkpoints.parquet",
+      "sha256": "16a897aaebcad85c56b0e78a184bdbb9b798f41f3d2431b22d5e245a70a94628"
+    },
+    {
+      "bytes": 49359,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2022_2023/p0_fills.parquet",
+      "sha256": "4d552d60f47f69b54fcd67f5f23fad549385ebd3c07ed5e8265744355815b07d"
+    },
+    {
+      "bytes": 36793,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2022_2023/p0_intents.parquet",
+      "sha256": "710ef643e8a015e720babae8698b88785f4b29aed0ebabb756a743915c4b6385"
+    },
+    {
+      "bytes": 12529,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2022_2023/p0_nav.parquet",
+      "sha256": "622d50c758d2fbcf61dd04f60dd1fbfdfa2623fff25b0bfd1a303de46388f86f"
+    },
+    {
+      "bytes": 2596,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/2022_2023/p0_other_rejected.parquet",
+      "sha256": "b9a901585d5ef5f1a9630c31589e2906cfca73378061c90eb52911dc93df9fec"
+    },
+    {
+      "bytes": 12351,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/boundary_snapshots.json",
+      "sha256": "20cb677625d9ea8f62c1300cf36561c3c347740766870d351f32d13cf12f2fe6"
+    },
+    {
+      "bytes": 116022,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/fills.parquet",
+      "sha256": "0b6e58a2e077b0b0d8010b3da0d9c5d737222b7ef49a901c48513f053d440def"
+    },
+    {
+      "bytes": 68356,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/intents.parquet",
+      "sha256": "0e0a3c8b5ea7c6d1e52caf935218821b14ad5e8e994c99285f6d40f710773461"
+    },
+    {
+      "bytes": 19264,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/last_known_lots.parquet",
+      "sha256": "3655b6e219658478cf6a6cc1ee9e9509cb1cee083887c960aacf39e419ef3a23"
+    },
+    {
+      "bytes": 30782,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/nav.parquet",
+      "sha256": "14aaf95ca559380537ccc90e69979fff0acd39f76aa1745dd9e5233ff3ef91ae"
+    },
+    {
+      "bytes": 117931,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/outcomes.parquet",
+      "sha256": "05c305bdc2e6826b374f35226c9d400548231d3ac0db88241f2eb35c0c37868a"
+    },
+    {
+      "bytes": 162103,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/precapital_entry_population.parquet",
+      "sha256": "6289479b68ca06364ada3a4de94de068ea3bd3715c6f9f9d4b544942ece99ddb"
+    },
+    {
+      "bytes": 15322,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/action_timeline.csv",
+      "sha256": "18d20aa4fce45a1846f5395f23d3ccac37bb9d5642b4fa5c152b9bc979d0e871"
+    },
+    {
+      "bytes": 13988,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/boundary_snapshots.json",
+      "sha256": "1392f62b15e556b1fe9fd5e0d93a018bebafccd5032b4c055924030ca6fdb021"
+    },
+    {
+      "bytes": 190456,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/checkpoints.parquet",
+      "sha256": "92224dff2ca927fddc0b974c73f0fd5ae8945238d95d65613016eaa65d39c64f"
+    },
+    {
+      "bytes": 186100,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/fills.parquet",
+      "sha256": "3c84a05e25ef7b377e08d394ac9f3c9f04ad5e6db98f735e1d76ec8433159738"
+    },
+    {
+      "bytes": 14532,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/held_actions.csv",
+      "sha256": "7d78fa7d730cab5462ec57ab31499fe0b89c8495cba420622de03f2fd08f401b"
+    },
+    {
+      "bytes": 118174,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/intents.parquet",
+      "sha256": "5cba9f7dc99ac6b4e3176ce3f60adf33ba8762fdc3e017eb8ed7edec4be91dd6"
+    },
+    {
+      "bytes": 47199,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/nav.parquet",
+      "sha256": "4aa4976b5260fe15e489e3f829ea55d54e97b283cebcd9ce8443109bc408638f"
+    },
+    {
+      "bytes": 7802,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/other_rejected.parquet",
+      "sha256": "abf55b4a345ca3dc4da1e8a1ac36d78fd649bcb6f007813b7822878d5c4e1e88"
+    },
+    {
+      "bytes": 267,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/raw_continuous/status.json",
+      "sha256": "1d315c68ab8b8c95371ba55c7ad793d588e5a24f1fe17229e76603530afb67ab"
+    },
+    {
+      "bytes": 698914,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/signals.parquet",
+      "sha256": "73939a8bb19f24a41604f688cff420db3ed44261dd92d3986b79e0537ca81afa"
+    },
+    {
+      "bytes": 2793755,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/v53.parquet",
+      "sha256": "4184ebbd2d00181e5c0d44db39b65e77b6f08790a4f3d4a5c61d3c30363b8f53"
+    },
+    {
+      "bytes": 756492,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/v64.parquet",
+      "sha256": "5910a00814c9be3c3c8b34d537d050a61f03123096dcd0d5ef4bdc0f979334ac"
+    },
+    {
+      "bytes": 877170,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/v65.parquet",
+      "sha256": "e641623cec9233bf377e0739cae4b53b1813ec0095769991e0767d1471717a05"
+    },
+    {
+      "bytes": 66479,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_checkpoints.parquet",
+      "sha256": "ed302b6999cba76324a4daa9f157e7dd0103cbeab184b36bcce71f23e903da5f"
+    },
+    {
+      "bytes": 70600,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_fills.parquet",
+      "sha256": "09a968457a0a66a598ae2335d47bcfddabd88daa9d55a3320b8715dd3b7a311c"
+    },
+    {
+      "bytes": 41016,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_intents.parquet",
+      "sha256": "7a3ce1412adff3f7e655f16ebfc92dd5bbb8309da5114e5093c428650e220156"
+    },
+    {
+      "bytes": 48215,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_native_nav.parquet",
+      "sha256": "61022183d077a6f9cb97f0e131a547e0df3214800aa21226a77e2a507c625df0"
+    },
+    {
+      "bytes": 21833,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_nav.parquet",
+      "sha256": "9c4a9c4b353a01b52364118c5ab656e16b03d11e32a726f6efc92a627fa78c5c"
+    },
+    {
+      "bytes": 2589,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_other_rejected.parquet",
+      "sha256": "509d7369d7a956979325e20b7b81dab4981357434749618fbc1e62785903f7df"
+    },
+    {
+      "bytes": 24823,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_checkpoints.parquet",
+      "sha256": "e8e859d53f501335ba3c3fdad93593d85144defb3069a3a55b4552bed142e45b"
+    },
+    {
+      "bytes": 28231,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_fills.parquet",
+      "sha256": "40010957bfb5443bf8642f3e7761bbe90c9c40bdb3cc3a4f52dc9a983f1a1ef5"
+    },
+    {
+      "bytes": 18418,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_intents.parquet",
+      "sha256": "f2ab95748a225a41a8bb8a39eb3dfcd71bb3bb8500b0f0e9abb36ca5153d22d7"
+    },
+    {
+      "bytes": 23053,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_native_nav.parquet",
+      "sha256": "3e2cf3bd4bef8f10fd9615f59cf8c910751aeca94d3ae452f4c432028bddea63"
+    },
+    {
+      "bytes": 11931,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_nav.parquet",
+      "sha256": "cc72f826346dfe0a2cdf7ad6793db8b7536c6f27716982042ba53717e0347b3f"
+    },
+    {
+      "bytes": 600,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_other_rejected.parquet",
+      "sha256": "a833e96f01ea15c0cb26621027a7441026e077093fd7fb4364da8b330d71de18"
+    },
+    {
+      "bytes": 11931,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/action_control_v06/CAUSAL_CORRECTED_P0.parquet",
+      "sha256": "cc72f826346dfe0a2cdf7ad6793db8b7536c6f27716982042ba53717e0347b3f"
+    },
+    {
+      "bytes": 11854,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/action_control_v06/LEGACY_REFERENCE.parquet",
+      "sha256": "026b22b522718e86b62e45163a804d2d63ccfa877ce839b911374d7ca5eb5249"
+    },
+    {
+      "bytes": 203910,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/entries.parquet",
+      "sha256": "eca7864efae4b81d1eddd6455f8490d55e8d4aaa2590946aa5d0f67316def425"
+    },
+    {
+      "bytes": 86490,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/native_continuous/checkpoints.parquet",
+      "sha256": "29da52afbc6665d2444897f3253c6f048bf568bb7bc9a1f25cd499c622e82efb"
+    },
+    {
+      "bytes": 30680,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/native_continuous/nav.parquet",
+      "sha256": "df5a66684e4702fcb9592c519ddc664f6d801b26ff1e28ef8a09c70f0298f90a"
+    },
+    {
+      "bytes": 220672,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/outcomes.parquet",
+      "sha256": "24e04a90584612fd0b90d949a26e173e3de8ef8f0872b6ccee0458b23ba2ffb2"
+    },
+    {
+      "bytes": 154396,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/select_v28.parquet",
+      "sha256": "672615f722cb71b78656355e415bc3be76727a09a16ec0bf469caf78cf76fb05"
+    },
+    {
+      "bytes": 163004,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/select_v28r1.parquet",
+      "sha256": "4b7299bb8b156a459ed482422377c6dbc473d163c2014b1499ff9ecee4bce659"
+    },
+    {
+      "bytes": 176864,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/select_v28r2.parquet",
+      "sha256": "fd4748ab8512caddfcaa8305001ab40ffa4a5014afa92a934f521c23ed86f1e5"
+    },
+    {
+      "bytes": 176864,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/signals.parquet",
+      "sha256": "fd4748ab8512caddfcaa8305001ab40ffa4a5014afa92a934f521c23ed86f1e5"
+    },
+    {
+      "bytes": 522122,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/v13_candidates.parquet",
+      "sha256": "90cfd881f57ead4a4caa9c6fa4abfc25459e24786b47c7974611788cc650ac05"
+    },
+    {
+      "bytes": 3073976,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/v13_pre_gap_days.parquet",
+      "sha256": "376d384b10551c6905e8915c17c47492d5298827d1d7cad2556902b4a00d34bb"
+    },
+    {
+      "bytes": 211289,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/v13_signals.parquet",
+      "sha256": "33306deef8a01073d1be7ee305a976f4dd416ba10f1c6817f893c9cb24c75877"
+    },
+    {
+      "bytes": 2821456,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/facts.parquet",
+      "sha256": "8ebe2a2b27bc51c5f688d98e43178fa962862135e56a60d994562ce503be1780"
+    },
+    {
+      "bytes": 65388,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_checkpoints.parquet",
+      "sha256": "e3832ed20a0ca945c90873ba32267696ef203a5b3b6e0ae1c3edf258a86e7ef6"
+    },
+    {
+      "bytes": 69036,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_fills.parquet",
+      "sha256": "7a80b63e9b4502009e59ea0356da502a5970826ddd9abf86741fe2150911595a"
+    },
+    {
+      "bytes": 40166,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_intents.parquet",
+      "sha256": "887f9119f18b7df75a91a4fb6d613676be2b00bb4fa156dfb75f44827ef0b297"
+    },
+    {
+      "bytes": 47935,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_native_nav.parquet",
+      "sha256": "d3ea9b04ddbb961f86a1379c0ed6fe771e10ee8ff095be1c06555fca9df53ec2"
+    },
+    {
+      "bytes": 21749,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_nav.parquet",
+      "sha256": "c504b5a29333c84cad45a6200ab7eac7dc8b8c73fb6b6bbb70a1b436f4821e00"
+    },
+    {
+      "bytes": 2580,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_other_rejected.parquet",
+      "sha256": "5e2c52fb4d8d2e6412e8898f00ffd472ad897e9125c88a1fbbe4985267a7c8e0"
+    },
+    {
+      "bytes": 74268,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/rejected.parquet",
+      "sha256": "20af5daab40292f3b1e737bffaec0012f83d1824b078117d8ecfb5487c7d485e"
+    },
+    {
+      "bytes": 168505,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/signals.parquet",
+      "sha256": "4a7e96004c4055c4b147e30da92bcd0164fcc01009be359520d4d5b6c0004614"
+    },
+    {
+      "bytes": 412100,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/facts.parquet",
+      "sha256": "17470317430f7441c833a269b1f4290bec3d802ca37a7d13247150c8e9d0d95d"
+    },
+    {
+      "bytes": 24823,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_checkpoints.parquet",
+      "sha256": "e8e859d53f501335ba3c3fdad93593d85144defb3069a3a55b4552bed142e45b"
+    },
+    {
+      "bytes": 28241,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_fills.parquet",
+      "sha256": "a582f462042fc80c281b580bacb3e6917eebcc8842a1bfab362f8bdc7d140363"
+    },
+    {
+      "bytes": 18429,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_intents.parquet",
+      "sha256": "cbb2d660a7d68ee528baaa00bcedb011eb3a86ef0ae06fc48364a5ee3a45a0e1"
+    },
+    {
+      "bytes": 23053,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_native_nav.parquet",
+      "sha256": "3e2cf3bd4bef8f10fd9615f59cf8c910751aeca94d3ae452f4c432028bddea63"
+    },
+    {
+      "bytes": 11931,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_nav.parquet",
+      "sha256": "cc72f826346dfe0a2cdf7ad6793db8b7536c6f27716982042ba53717e0347b3f"
+    },
+    {
+      "bytes": 600,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_other_rejected.parquet",
+      "sha256": "a833e96f01ea15c0cb26621027a7441026e077093fd7fb4364da8b330d71de18"
+    },
+    {
+      "bytes": 52849,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/rejected.parquet",
+      "sha256": "fdfa2147820db0606d8890ef685ef0347cb767fefe53b8d2e60c6a2cb4612128"
+    },
+    {
+      "bytes": 81535,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/signals.parquet",
+      "sha256": "c4d423c2edcf49a41da15783079d4d9ae2da8fa076475740233d4dbfd4ff5298"
+    },
+    {
+      "bytes": 11931,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/action_control_v06/CAUSAL_CORRECTED_P0.parquet",
+      "sha256": "cc72f826346dfe0a2cdf7ad6793db8b7536c6f27716982042ba53717e0347b3f"
+    },
+    {
+      "bytes": 11854,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/action_control_v06/LEGACY_REFERENCE.parquet",
+      "sha256": "026b22b522718e86b62e45163a804d2d63ccfa877ce839b911374d7ca5eb5249"
+    },
+    {
+      "bytes": 85525,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/native_continuous/checkpoints.parquet",
+      "sha256": "637b33347a48a68565d2fe919b3bc8fbacf0a1ad5d79cb3b86e5f55ef2b16b3f"
+    },
+    {
+      "bytes": 30584,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/native_continuous/nav.parquet",
+      "sha256": "ed932c120136e7926d0e058c63a567e99d0ea1a659380589c9bcf1fea3a3bcc5"
+    },
+    {
+      "bytes": 29180,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/CAUSAL_CORRECTED_BASELINE_events.parquet",
+      "sha256": "f5efc93ecb52a92cf0852675ad501fff4d50e5bb74f20bbb8e73b1faa2a2fdbf"
+    },
+    {
+      "bytes": 21005,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/CAUSAL_CORRECTED_BASELINE_nav.parquet",
+      "sha256": "e58f0d72ab8614b2fc2b4f4318f79cbeb279b6f266f3d33904cfd3f52946cfee"
+    },
+    {
+      "bytes": 28777,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/LEGACY_EXECUTION_RESET_CONTROL_events.parquet",
+      "sha256": "fdf9130ce3b7687264caa1774f3df82852e3c115e8f38451aed8de3d2299fba1"
+    },
+    {
+      "bytes": 20997,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/LEGACY_EXECUTION_RESET_CONTROL_nav.parquet",
+      "sha256": "eb99a09945acc83d4a1d5157a8758715657daac50e49624689a7eaaf2eb25088"
+    },
+    {
+      "bytes": 41953,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/physical_p0_checkpoints.parquet",
+      "sha256": "6bc60f759a71e7351bc0d0f68699ef74343c072e43215843e42ae3b5d90402a1"
+    },
+    {
+      "bytes": 29180,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/physical_p0_events.parquet",
+      "sha256": "b0ccd371f2c27a3103444131afaf58da1c0fb460e3fc8412e0410c2420f26949"
+    },
+    {
+      "bytes": 35165,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/physical_p0_fills.parquet",
+      "sha256": "38b05ade9a4097e7b422b65952b3bb1aaa1c535ca43dc129e25c287531497da5"
+    },
+    {
+      "bytes": 18068,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/physical_p0_intents.parquet",
+      "sha256": "9e573b793cd897b0b5bf8779a3d965587d50a080ea21385d6b9c5b3505e13485"
+    },
+    {
+      "bytes": 21008,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/physical_p0_nav.parquet",
+      "sha256": "af8233721d2d057829503e009f7712fcfa124754babefe244824c64d32633d02"
+    },
+    {
+      "bytes": 14653,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2018_2021/precapital_intents.parquet",
+      "sha256": "19e2ff78340510d87270f3c0a2ab29d2d3ba06c222915e687e21380e0633d266"
+    },
+    {
+      "bytes": 19774,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/CAUSAL_CORRECTED_BASELINE_events.parquet",
+      "sha256": "91c719704d1ffe919db0c52499bf04fd4bec3e2053ed661c32cff5781966b55e"
+    },
+    {
+      "bytes": 11106,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/CAUSAL_CORRECTED_BASELINE_nav.parquet",
+      "sha256": "2e59fac2642437592d06421f0dab86e8b64e792f5156c03a477da4d6580aa88a"
+    },
+    {
+      "bytes": 19800,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/LEGACY_EXECUTION_RESET_CONTROL_events.parquet",
+      "sha256": "cada7548813f0aaa4946f289cca9e7554e2d12531bf699caf898c21468fa4194"
+    },
+    {
+      "bytes": 11096,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/LEGACY_EXECUTION_RESET_CONTROL_nav.parquet",
+      "sha256": "4557b9e47d2e099d69d644d218b079b57fa3f878f4771406e5bf6a5a31860e15"
+    },
+    {
+      "bytes": 21341,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/physical_p0_checkpoints.parquet",
+      "sha256": "44314938dada9fe0d85bc03193eb5954f8ed9aeb6bd732b2f46b267577450f78"
+    },
+    {
+      "bytes": 19774,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/physical_p0_events.parquet",
+      "sha256": "ac9895ce5066fb1104c462a6dabe15b80faf0d4f8b425a64fe9b42b14e9715fb"
+    },
+    {
+      "bytes": 25048,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/physical_p0_fills.parquet",
+      "sha256": "242b0213479ffeaa55530ce358d42af2e43d69f7b959f7984c896270a9e1f487"
+    },
+    {
+      "bytes": 14959,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/physical_p0_intents.parquet",
+      "sha256": "a8b8c8e2e9d2ce5b7e7364bb4c51fbe4a9dc58c7bc184711dff962752a3d412e"
+    },
+    {
+      "bytes": 11117,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/physical_p0_nav.parquet",
+      "sha256": "aeeae96001df05c3a23abeb84cbfebf4903ad69a0b5d760b9fc64e1ad3d8e5ac"
+    },
+    {
+      "bytes": 11567,
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/smv6/2022_2023/precapital_intents.parquet",
+      "sha256": "993304bfa5b8715b3b5f2c1c89b55edb3d6c682deee17afc0170f4d854a44493"
+    }
+  ],
+  "parent_head": "7fc40594377c3ec11148e10c5c8a907b43fbd04f",
+  "parent_manifest_sha256": "a73ee496e4d8924938e1882b4a111c1cd5127d9e2052ab52c8b0c6c234deebe6",
+  "parent_producer_hashes": {
+    "research/shared_capital_v1/build_inputs.py": "2f42ec2f691cd849c7afcd5ed6e50681fb4ff95bd52a6ba48f78bde017b0e61d",
+    "research/shared_capital_v1/ca_execution_audit.py": "76b86843ada539f6bfbb4e6e35e0e71848587d778000d08d8ab8012678c28125",
+    "research/shared_capital_v1/ca_final_facts.py": "f27d622889c718aa2d8085fdfbac560e49573a0d665121f7feb46a8f2f460b23",
+    "research/shared_capital_v1/ca_forensic.py": "5288083f4c91c8a753997616f45623a6f18082702ba65aabc36ae6c7d3ab27ff",
+    "research/shared_capital_v1/causal_adapters.py": "13c6f6c0f7f8225bc5600a9b311debfb6764de544441715c9d80d948625f73f0",
+    "research/shared_capital_v1/close_baseline_v05.py": "3b520e8186345310c8c79ec93eb4e9211b2023724d405db0bb66ea8322bbc829",
+    "research/shared_capital_v1/close_baseline_v06.py": "e492b9dac8919e8b2660228cb5f1cbbadcbd4839202cfc52fce63fa3c209d711",
+    "research/shared_capital_v1/common_p0_v06.py": "cb9dc9750cecc4cd2488627a052b3c43855ebb7ff919eccdd1496a548ab2dfc1",
+    "research/shared_capital_v1/continuous_replay.py": "2f6dea5ff5342c136e60fc4d6450ad6cf3f91d3427eba5ac8419e022a9b9b85d",
+    "research/shared_capital_v1/final_analysis.py": "20bf9173220453fa2679b305a10ef96e94cd64650661ddfca9382b5ff996295a",
+    "research/shared_capital_v1/final_progress_v1.py": "c98158d837e4e014255fe081548424a2399d2788543d585b08a7190c464d0573",
+    "research/shared_capital_v1/finalize_v06.py": "faaec334a71fc570fe69721fc8ebe2892f5499364a5b1e6ec4ee7a0ee647451b",
+    "research/shared_capital_v1/finalize_v2.py": "dfe6eec15734db6b23db38bbc8f97292b9fff4b5616dafafc581969687bf295a",
+    "research/shared_capital_v1/gap_action_control_v06.py": "2b9fee2e504d1c73bf7bce35d3907e83d3f78ab10895b623692119ac14f9b623",
+    "research/shared_capital_v1/gap_p0.py": "5394eb7201a005fd335534a0c7ba2b0ca545d55bc67a4ed1f6ece07db360e71c",
+    "research/shared_capital_v1/gap_prefix_v06.py": "a0456a94ac667b2876f81f9aec3b04119fde4b2c4813d456cde8f1e1f182131d",
+    "research/shared_capital_v1/initial_state.py": "0dd4e184a42ad3649b0d2cf3352f7c7d981c7d6a63a1f1c2346c42397d0ee9bd",
+    "research/shared_capital_v1/issuer_inputs.py": "eb3f707cd85a8d22f5684c895725c03b0b6d599643fe0dd0c89125b6f94525b3",
+    "research/shared_capital_v1/native_states_v06.py": "20fb4dbd988b05723e59196f4db8982d9fa97520c6b90f861b1d3c4e563439c0",
+    "research/shared_capital_v1/official_backfill.py": "6a72fbf74064ba27f522de9cd30d246640ca5290ceeb220c3fcad126ab0837fa",
+    "research/shared_capital_v1/prefix_probe.py": "41c414cedbebcb92a5a89072a6e15adea07457714c795ebb1b7b6d7e8e3f1064",
+    "research/shared_capital_v1/reproduce_v2.py": "b2751b31b787a281dad8e9e054fd15801b9d14c9cadd24caaceb2bb6287c0e71",
+    "research/shared_capital_v1/run_shared_capital_v1.py": "6e7a5a5e995a7ac55e7a70e0b2e544a51646a3fa73d8384f45f35bf435bcf9c8",
+    "research/shared_capital_v1/shared_account/allocator.py": "10f48725684e39708beda57a141db00beb82a9a3f6c1d5735e042525db777ce2",
+    "research/shared_capital_v1/shared_account/corporate_actions.py": "f204bc7ef431621eb254db04d167ca545c73e44d5022e2c3ed34adb15d53c864",
+    "research/shared_capital_v1/shared_account/drawdown_gate.py": "947bea51d0b43703d9432293e0ef6b678154a0b8cd6cf38e28704e3b1554ba95",
+    "research/shared_capital_v1/shared_account/engine.py": "289c66407c094d08dc1aba44358bfbe5aae32676c4970d0655f765d0008c6e28",
+    "research/shared_capital_v1/shared_account/held_actions.py": "285392c1369a690b0346a32a352724dfa061c08135e079856083a9aeca522d3d",
+    "research/shared_capital_v1/shared_account/native_funding.py": "1439635c3d0a46cbde180b1508ca7119dd50b65a9f02ea9dda174096adbeecd3",
+    "research/shared_capital_v1/shared_account/p0.py": "4863a14fd71abe7aa6ea4bb8b3e924a93fdc5d8386d94b8ecc1da0a448ec6c18",
+    "research/shared_capital_v1/shared_account/price_space.py": "77f94bdfd41d80cbd823c08bc92ae06c915f833e9fb53f92fee2042023af7115",
+    "research/shared_capital_v1/shared_account/scheduler.py": "b721b81c2c289e009c3314bcd29e2bbafd37062b9a4586e2cab88e42c31a4e83",
+    "research/shared_capital_v1/shared_study.py": "60bf8cf94cb66181fe0a5b08d47fc8aebd2486bd3c1b65313f9dd862a9969848",
+    "research/shared_capital_v1/smv6_baseline.py": "3919df4006180c35cfa80ca2efe6c16817b8fab1e9289f26d7f7c54514be23fd",
+    "research/shared_capital_v1/smv6_physical.py": "795a92572e9baccd1f7ecaf1f589783d497d2ece16c93e944fb91f4f08e84372",
+    "research/shared_capital_v1/stock_p0.py": "2291eeeda49a8342737a5fbd1a9de8724c8fe25d17232f6f11dd4f6a7c091de1",
+    "research/shared_capital_v1/tests/test_baseline_closure.py": "45f6ef10234a50187b3a7334ac23428cb4fce59b55cb1c97d8d5fcffb7c053e5",
+    "research/shared_capital_v1/tests/test_execution_facts_v1.py": "bc522aedf36715b86d6b16ddc9dfd7180b6935bea458e2d095bed3d740caaf9e",
+    "research/shared_capital_v1/tests/test_policy.py": "7dcab21693ca0b8f60a7e4b9dfbf06129cdde2d409952a421ccd91490af6e6ae",
+    "research/shared_capital_v1/tests/test_raw_continuous_v2.py": "ea28ca3cfbf45a0762b784c88f93ab26c3132d07605649491cd47d6a4c77c704",
+    "research/shared_capital_v1/tests/test_universe_v1.py": "89a757a0efc3b435cd23f3e5accc069c2bc16104b3d70f1dc37e0d102c1b4f81",
+    "research/shared_capital_v1/tests/test_v06.py": "54a4898b5f3341db085e39f7b19a766502205516b178f2efcfdad97b025349e9",
+    "research/shared_capital_v1/universe.py": "984692e0ce2e990122727b6328fa31c22156de5c76d0695d66b5759bcc1c1843",
+    "research/shared_capital_v1/validate_continuous.py": "0a14cf5202f3b45c242a1e1ebc8311ee6e4e534202a3fefb5400cf8fe3427a7f",
+    "research/shared_capital_v1/validate_rerun_v2.py": "91146f77765204c414595c41dff9279f78ff48277a29d89b22a275ff0e992944",
+    "research/shared_capital_v1/validation.py": "7ef3e82ce698ddd58fa3711c4729de11de59339056c8e94f4beb6eb1a7f8f19c"
+  },
+  "periods": [
+    [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    [
+      "2022-01-01",
+      "2023-12-31"
+    ]
+  ],
+  "post_2023_outcomes_used": false,
+  "registered_inputs": [
+    {
+      "expected_sha256": "b906d2c21fd35128b8f65f1b00fa12ae6e5bd9ee476a368a63881304f38ceed4",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2018/data_0.parquet"
+    },
+    {
+      "expected_sha256": "c69a464e4a04efdca0177a8a09a13a34646531afa37a2b35b4892fd40ec3ebfd",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2019/data_0.parquet"
+    },
+    {
+      "expected_sha256": "1b0a00c6d2cfbce0ae4f907e1ee9dc5006f59677d556cc10f8f34a9893937c62",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2020/data_0.parquet"
+    },
+    {
+      "expected_sha256": "cbd4b2d2ccdff32b09ed1a2e9347f8045cde89ff7e4e1b189577bc353e4d9311",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2021/data_0.parquet"
+    },
+    {
+      "expected_sha256": "c9ff6ca51a043a32a50e7704053154ad89d58f71b3694bf36766180bfa7a68a1",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2022/data_0.parquet"
+    },
+    {
+      "expected_sha256": "8e5dc8599de88b69c9a52c2703bd1f8c3e87d962785f988cda7504a1758e6740",
+      "path": "/Users/linmei/Documents/CY/data/registered_inputs/CY-033-PIT-B-DAILY-2018-20260904-V1/daily/partition_year=2023/data_0.parquet"
+    },
+    {
+      "expected_sha256": "65096c160af25b172d6c310804036a4b6dc57031ae45b9b4f9af220f251b9a65",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-034-EXCHANGE-ISSUER-RISK-V28R1-DEV-20171001-20211231-V1/source_capture/announcements.parquet"
+    },
+    {
+      "expected_sha256": "b69af9e0ea707babe6a3ecd2d02c2220e09f4d52502f09025c6df8dec34015c9",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-036-R1-EXCHANGE-ISSUER-RISK-V29R1-DEV-19901219-20211231-V1/sse_full_history_capture/announcements.parquet"
+    },
+    {
+      "expected_sha256": "f9bf1a275fa5a3294ed7c571eef583cb88c7f3e011a397acfd5d616bf4225af3",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-036-R2-EXCHANGE-ISSUER-FACT-V29R2-DEV-19901219-20211231-V1/announcement_route_index.parquet"
+    },
+    {
+      "expected_sha256": "436f1d9445184ac08d5c0ddb0baa1bdcecdb64d64662d1cfa93c616481800f6c",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/activation_audit.json"
+    },
+    {
+      "expected_sha256": "ddcd4717bf3301d99d4df3d4b6908620b701b95eaebbc06215107409f2fda679",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/announcement_route_index.parquet"
+    },
+    {
+      "expected_sha256": "9303bfb41abab1e9eb45db27312b16ce6fd77b7454444378b606fdfe6b38fd79",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/source_capture/announcements.parquet"
+    },
+    {
+      "expected_sha256": "67b59e680eb929f38314e7da48bdd23398009721c6fd4e3c52208b566b89145f",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/source_capture/asset_manifest.json"
+    },
+    {
+      "expected_sha256": "615471295b84f55293f6361d0d3725607de90ef13c596ec7fd71885c4d8b9cc5",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/source_capture/source_manifest.json"
+    },
+    {
+      "expected_sha256": "b82e6a453dfcece08888cc2ca386cad5f0acc3962058a2472f4a0f78df6ae597",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/sse_full_history_capture/announcements.parquet"
+    },
+    {
+      "expected_sha256": "95e966411165faf85acfa79b24069240a8bf98fff3060be7758c27106cb322a1",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/sse_full_history_capture/asset_manifest.json"
+    },
+    {
+      "expected_sha256": "492af1dcaa2b27adaa51fd0b4bc46716af28107a810ac94e770f619973043e24",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/sse_full_history_capture/source_manifest.json"
+    },
+    {
+      "expected_sha256": "21e7ed5f662d8721d2247e1e3174a116f083b7758934360538e8531e125ed3e7",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/sse_full_universe.parquet"
+    },
+    {
+      "expected_sha256": "ec6d485e6585408a65576bacbfe805cec2727692803a380396eaae5829b0041f",
+      "path": "/Users/linmei/Documents/CY/data/staging/CY-062-V29R2-ISSUER-FACT-ROLLFORWARD-2022-2026-V1/universe.parquet"
+    },
+    {
+      "expected_sha256": "09bfdf52762a8d9462277361621de09d104ed82add4e519e89d171342443c23c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/execution_availability/critical_execution.parquet"
+    },
+    {
+      "expected_sha256": "3734499892f49822e7088e02e495d8ccc8fefe875cf31d99bf583f613cd51882",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=000852.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "ccb5c3cebba6940595e46336b71ab99fc4d56a400406412245daf62bd6c38755",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159141.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "c8d9cb3aacbd8d83fc256d2955314e71a99d5db891ad252c4adfa096a9096868",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159201.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "d71db85d3d31e9bccc57177993e9ce8221ada173188ea9eb5f0e262136fa8ce7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159206.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "f0375a5b7f8c56ec6cbd5f2a373360fe9edb7b0a8dd3d03b4522233f67adedc6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159207.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "c91341037cae40c790eb002c490db25d4000ebce355640420bf7a1199a85aaa5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159209.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "076cfdf5b82cd9ef6d122a344ab0e6836502f21897fc94021895dcc94480e8a2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159227.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "444547c5c3527d0b2adaf70a47fedffc9c45fa778fe646f00dda8b7c96a27373",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159235.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "309a9d21e64184845b2f65cfed8b1fe2cd9c1ff09acabd580960ebf441eed158",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159259.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "621dd78e3c3756bbca40690ca5ddeb3fa77049aea0ea05128df54f7c603da4aa",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159263.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "671465c8b0920498db9a010b63461112f2e5b61549c7c7edc50a3b8fe2134fc6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159307.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "2ce044694ae312d5b1d76e0c6dacc28a410ce0c7ac38d84a1f278fe9e524e3ae",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159325.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "61a018c9580ee47449e86bee96cebd62280050d14a10814fa646da6dbb7ba3e0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159326.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "c39a4f166c2d3d50b78154506eb0f23c1ff3b56a48f62d1153bdd89a081f24ff",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159363.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "70fac8113adeb478378faae0fb8287d63d369a1c912edcd4e1ec092478eb0dd7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159387.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "1effebe8c30537bb8d935cac3acfc89cef85818a07b12ee07bfdce88c05a544b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159399.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "0e0da524d2005847e6021b4e8e5e1b2ce9752124df9c6c94d63b4b1123b8659a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159516.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "d35517cbceb34bbbae971d5313b7d5f1d8d776cab6e62a1b1875c4325da079ba",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159530.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "1bc42e2a8a608eb042e595763011ea764456a1b9029da5e8ca613f7c09ab72a1",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159562.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "ed308c37d433ec963e9bc29e7bd8ad0c6c3c1d8c25a6ff3a40739479a69eca90",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159566.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "38b8df3df659c9ccfa871d21e099797663273522e5f9d0a82fa571260a93326f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159583.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "29c77d158f4cb27599c9b4138a81cd8f6df2c5b91cc0882959f6eed8fd2f631e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159593.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "5eef98feb3ea9e5521cba47f461c51b538241c436c1cdc81ce5bd7c461dfc153",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159601.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "a33732e86290e06a826bafba3e5f5e14d2d6bdb30c197098498cc224dcdbf103",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159611.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "71f8d3d0dcf304dc8e37c6422e9f99f85bab4287080f261b5b5c1e174d62c4bb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159622.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "da0332f8000478f464d4f618f44062d5f70185999a55f39a4aca844fe172f40f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159623.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "cca7385fb4618ef1929b8a7ac9a4d50118cf08c53e49aa2e5948a691bb30b427",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159625.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "5c5aa16291d62c53920ed7a0d95cfd1a61284fd87dc3212ec48c21dbf0ff3896",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159638.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "7538d3a404620c75258fd30cf6195aa5cd2dbb1785e3149b80acac1febc265b8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159667.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "d986b4d351c528aadf78035396db7edad764f43a7fec3099462fe5b23cd928cf",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159680.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "8ef36cefd4025d89d15e336b97d9e3b3a3884416016fee004678e1c172f95e06",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159692.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "950c82467200d25484d41e18d8b5ecd5268591c2cc11f37abc81e7b6e6e39de4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159697.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "b9eaa83105c875da2434802832c066044dc8fc794ac769e02a01fd1f54f3cd71",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159732.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "0bf7f5d3e3c593743ff65ae12ee064f8730548074c56a490cca4dadb52945ae9",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159736.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "c7214d99e4458597cd7ce123e2c4d16e4adf69e62cc58a35eb62fb1ff09b7aa2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159755.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "0de831d6c5a0e7636a98a890e6f23365c9891e4b525e8e6972936b3a8ab21168",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159758.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "8dc7baee3356ad7e519f0dd591f96ba45da80e49991e2e0302d81ff92a3b3414",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159766.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "4e0adc028f040e7000ab6d18e038d7bb75ec10a613e35be048946c47aa4a0ed4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159781.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "194043f3d289d70d2ecb9a8c636fb9f8dba8ed44525e5aadb9b61a255692f1de",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159790.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "fb55598eb736cca3cc59ac942685fb07455ee19b57d7a1dad588e47cb78b8c27",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159796.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "7fb60fb5aa3f7dae1f107e0c13d94f6451d918ba4bcc737d3cba1b35a52659c3",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159819.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "13d981406addec7d7322726da3d2d0393f1299e93df59fe7a7ff91234aa31699",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159825.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "e9e956ecba00be1b6dc8b9b8e2e4c42d6455e9742fe14b261089087d516dd4e9",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159837.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "59ddaad398a13e613a2ba18bf4b201ec8c8fdc3a1dca678d6ca34313bd0a8641",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159851.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "2f00aa7282fcd4c571858c3d33fbe0e388a825239a1291ac984cce5271dd8d8c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159852.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "5e76161a7461987c237e889d3c39d0ae7721ba1f316a21fbed7b7ac8fcae31c7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159859.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "54a8c1e00ac1aa6a383eb1bffd6250d91940a29c0c65b1c95db4007f93c3c0b6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159865.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "8e737ae345dfc166d4688488cdd3e0eb3d4bcff018803c630e4f6652bee8bb3b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159869.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "064291690af41f86724d58881f2d0985cc2106387a27871d403db52302d7a1f1",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159870.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "3904f6d56d1dfdb80cf07afe4c5d29f36a8c3d1f85b2657c18f0ee9622b5d58a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159876.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "e2b01889be05bd7a0cd558bf5e9bf32e8bd6d4146710a4c8ae2f59a08f18bcae",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159880.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "8e3ceedd5374bc04e931884b1a441123523a0bd7b66222818931d2ef4ac9ae82",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159883.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "659d709299265003f388d956390066ccd34e4a74466d5421f543ee8ecf13652a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159901.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "ee1378bc9ddc10a97e1032006af3124919157cb08342954ca345a2a6b8e9b83c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159905.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "9851cb87419cfb11329c7f7d6ae5a2b64f295c3abdc24a0e9aa647820e3ccac4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159915.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "87dbecd9f76225c7274f53aa18548ac2da5b2d8e0231157e1c443c9d5194e6ab",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159928.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "8fcadf8e5159ee5024ba38560ecb367cb855053f819c5be4804dfd3016f40449",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159929.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "7818f3c10966ae832557bda6333b18c8bfa04f79f2bf3f612e000265e0fba6de",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159938.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "4f51768dabb071999f59834767f707535155c9899ebe16b1d00ed7d10650b307",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159949.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "92d84fda6f0afd9e99f1eff06175ad5de5eec9ba927a6fec053e3557082b5fcf",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159967.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "36b301521bdf08eddbae8fc1bae23a0e76397034604b0625cae42cd193c3c994",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159980.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "941b90309511e86f10ee24368752b3add941b4c622dbadf9c43e7b45af4d8f0c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159992.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "cf5697cd42e12b70283135820d1cef23879cb065210318a13909249654e207e8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159993.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "5ebe5535e914b628b97a7f281b2d79287217a93bec179680a7f5c005b6691e61",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159995.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "3579820359770f33bcdbe830b91d4b6ae3666a6e42e1b9692de28d2421870125",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159997.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "3564dffe97e78ae84757ac6e022f75ccbd025fc222055e6f83ab4b66655c5d9a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=159998.SZ/critical.parquet"
+    },
+    {
+      "expected_sha256": "9cfa8571d7dfb66fedfd57f70d2ed44b8585b80643c49e7eaba5722648eb94d2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510050.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "befcd23b80389153db358594237475d9c62e875bc18df66e82e9e1521280426e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510150.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "9bea59e8e92185d9ca94c315a4cb7b252bfc88d9012364bf343124611e5b7491",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510180.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "437a17853e1dc16dd7e714d56a6be8a81b52ff1762c633c28c2f6b9ee9a6016e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510210.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "abd995ba5f82c3de61827f3ac5112c35a285359a6a4d4a6344a92582ab247bb6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510300.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "29a058641ff4c79b720ebdb3d28ad620a97da00ed68ced5ff1e1c3e224e41bb4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510500.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "43b3ecef51df5a30937591dd473aa187d2103e9c35635e359c1b9761c95dd3da",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510720.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "058d6835ed1ff3dceef44ad1fde5720b86b557bab811ff34babb7c14eb3ac358",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510810.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "ab5a97d8b5acc95948602eab930f8b9a45d60730614f2eff5b315b810d5a1a44",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=510880.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "b4b419b069c1b1ef5d7e6d49badb6c1cbc0841e96e79812a549bf41660d7b147",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512010.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "56f2bf8d88f446c5a0ccd069283f34b15cd820466294f6bfec3fb40f13276e85",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512040.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "f1bd08147ab15f1406da276f21a6f758d210c85df60b1b5ca5b54b91e4edc22d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512070.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "cc379892d6321f3be96f888abd6ea0b26a1908542f07efbdb21a6d75362f0b6a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512100.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "163afd86dd00a20359aa312553603712d91b8d3c89198d20c29ca2411c16ad01",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512170.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "61ff5c95c3a2da41bb713630a4244798f947278a6f9cee8fbe615a8c90d07124",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512200.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "a9b7dad51dbc4fdc1768d05cb9da3e5eacd14f21c9954e95b289e0fac0d371f4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512290.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "022948a28348a2ffc9c01246b0b55c5f7875d3a0a568955febd4d4b7dff6d77e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512400.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "b53cfdd5026603540fae9228af940906f8dc1a1ef51c4476377e891bacb55489",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512480.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "17ee8531b0a399b184d36b0e9922efb818552cc35e660c18e99d0d5b00d70f22",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512660.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "2df267f0ca5fb92dc8fda57569651eed0c99826b71e48e17bc4944d477e74e24",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512670.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "51dd4628bcef9149ca6d71c62cb0bab20260f48525ffd759dee175a3f5863384",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512690.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "04f578c5a568921075eb8ffe826fef68fac55a63fac045599a069250ad1b1930",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512710.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "1f576422c094e41dddee6076a0163eef01e780fdb2ece7d035b7d0a78906b09c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512760.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "9631ea57ac02d1d373c3b51925707d3139555c8a9bcb0949e5b3c4d2f3f6870b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512800.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "93fdedcc4b30ad8287cf68ff5748cdc734eef0a79db2557de678cc3cb61ba5ce",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512880.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "5a96644b09dbf9ef380a7e41d307ac5768dfbce4e85c06949975284f13bf8a03",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512890.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "630c03704c2b7a905be375a3c10b560b0ea5597e81c24fc2c827c72be7d50eea",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512940.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "15bc66208d6d11233d6cfcb587e4034ebf9c15d1b72bde2aeca89add47a2edeb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512950.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "72872e33d23323f3f73e43e18361d3e31ed7bc0b18a276c866a51c655eacd1ef",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=512980.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "8942ee2ef03f5e3e377cc2a4fd5dd77df3eba69922a10234f4ea63accf335b16",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515000.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "404829855783ebef994eb2eff369bc6794ef1174ca59e6d24436f2e076daed1b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515030.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "2f11e11047ad408c42a5c64f0df783c0e31989724ae553646bee6227506f0f98",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515050.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "ccada42bb8423e4bc55b7993bf2f130c73d08dfd21dfa30bf4092ecc890c6b26",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515170.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "64eb3d44f9521c86ed65875758201ae890a2a8720d377995f3c8f13fa8297bb0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515180.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "60044ed3993207cd5c947833c06105e17dcfc4f2b25bfbaa38eacdc7c63ff562",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515210.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "4afc7d7b236db4c214a4fff24da84505a8d6e853328326e79d28168ea556d4c8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515220.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "0d0863218435a83331a60064b4667abd2f4c0a3ae5dd272b5a422cf48d46ce78",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515230.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "3a26d087056ba767634fe23fb0dea64a65723c80525c399f81119a03c1053031",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515300.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "cd6cd602d8c81c54284bb62d85ab256f0888c648c9f6a6ddb81d4567424b4073",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515400.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "0331cf176130b16f14bebffa6722da95a389b91ed8389945e19a415fedde3a59",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515450.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "d150a3bc3fa571f0731f48e02a98ad52c7a6b164c1f18499e0ae3881116021ad",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515630.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "195a0f0389db81595145cc1d691eaad50e7e3a2b1caa23864e58798c3fcc693d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515650.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "ea7dbecb12b00b268fa661bee32af11a6d75edc8da340b66ec943f8b6031395c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515700.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "aed4aa3c694c1a30f62a7c993396822eb4db74bfa348cc3fa20a031a39679a1e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515790.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "53560646a7f8c9263dfb08e64563ee1304852d2cfd5729dc2c925a78f4bba8b2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515800.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "49898209cbab87f9d5ee2030209c8a22be6b74bd694c2aec752269e651fc732a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515880.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "6889a5ac4d719594e137d7a609471a219834d51ba8e5be563424e4aa2188693a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515900.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "fa584c2389a72b0a412543c2489df1a9ef78f3bf603b4259c5518a642518387a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=515980.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "cdb580a50eec558333dfe0cf483334b0f9c330e658e5254496b5631333793c9e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516130.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "4900561e710ef0a680db80811851583f58e197c1cf538138bcc3882820413d4f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516150.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "bbb46824db97617bc1abe581e31e46085d73a9212860498463364c8239776fea",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516160.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "820870834713218e57e99913c38282bc558cfcf6fab7438aaa0270bd3bc21689",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516350.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "662ecd86caa569d9b3aa6137e01461dbb18b3833bb051b850e154da0cd75093a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516510.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "a8dd304b473e5d2913fd066b2d3ad647899e6cced845281cfb1828325d4d4c13",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516570.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "c7029cfa394f6a907eb2bc5a747021fcf138b1614b8003498c3c9f497056957c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516650.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "1b64da7470c617b6e2f7a9a201d2e84cc665c05c0c8e35956722ab5e0e24014c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516820.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "cdc1b7856ad932ed997643eb3f791437c6a8cafca2e51939cb9425a170c6e00e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=516970.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "58f6dec8eccb39bf62bb12ccda3a3d7626382e452ee53841a3ba7f692d849019",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=560050.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "f868900f45b15c224f90cbca6ca900408fd0c3bb8e7b27395d997c7ff8b11dcb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=560080.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "85810d6f43406c80eb3bd8594e7b534b60be9c544468842bb7ed207954a544c1",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=560280.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "a63f9cf9a3ac9ca1dd91133e4f17bc21c8652fb2c26e8a6899adec2cac5e6f85",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=560570.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "2b046a5ef6fde816dbe529c0e08f05b5c0ffe6314af7d6f96b8f7e731ba0d5a5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=560710.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "ac0a85e5406cdf2a8e92dca50b0e9b6cbc5895bc3f061248d1ee08560f3e141b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=560860.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "b9e55168e9a390a65ce302c4fd4ee359212c66c5683cd4b21f9970c9022357eb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=561360.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "488b235dfe1f7e26d1f58913e5dd9f2e2f3bf92054c7055fd3a05575b2402e92",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=561380.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "6eb598eaa37aa43d3d5ecf6f6de90fb0389e69675f8c0e39b26925e9235835a4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=561420.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "c9dddb13a5ef3d482dc3338135425768a3db7e3d3cb4f7482dbf38be3916ee4a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=561550.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "b62f6133d04ef8eb01d5d38ee6706ea8afcb5b32e17ee28c3e1bceca81909b75",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=561580.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "e15f79bc031e36883651f92d72158133d114b30d6774647d761f0cf730457a19",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=561980.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "12e2417a8c677ccc39334cbe333a1d65380583c663063363f0d52736bc576e90",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=562060.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "3bfef3569b4a2f6d882360accda0d03d22233425783ac7c97f346ddede8cb6fd",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=562500.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "5779e9b943bcceea17839d60bb680440fd3941e2402218a97a560afdb8278ea1",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=562550.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "4a5ed8a631d95ad71630c7509a3ce8a1b883095d4d4c162884759a636dc02fa0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=562800.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "734ba31a9382c417e6aff1106f590118ca8361856ec01cec911dd97a438a911a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=562950.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "358c0a6c4cbcc70972d4a9dfec6b1c2fc6a8b80a5e1c4fa770aff42c88754123",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=563230.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "fa4abcc152084a9a748ca9459eb7dba0583333e0d98fe881009ea61fcc96b98e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=563300.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "3c4e4a030d73b68a62174222bb014ab55a68812cd3dfa01c71fb6e17c2e23936",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=563360.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "1cd08a6a84bc86220d5311f823c512ee6f1adc9df601a5afe706e0bfb8bf8f0b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588000.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "6179f7196464cf8d80c0e388d51c5aa64d64487f8e83feabfc76876d6b6f196f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588020.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "5ca0dcf820bbbf2335449863adbf7f6486f3174907277fca71dd42e201db5958",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588170.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "7e231fae7214d249cd5aa2a3b987976a5d4bfed6b825bf00322fd56cd76597fb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588200.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "e3427181d0d54892756199f31762e42708cf655211350141659378c838cd4507",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588220.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "0eca934dbfb5944d8fe3eaed2f4c0969b7be815844ffc5c46a2e762506f115c4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588460.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "9ddda67bb0d9de31783f4b55a7b2f93d0f79966bec73aa95b6f3a93e2fdd1f0d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=588790.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "8268bcc0930404e24b664f481e1946d4bbb35d6f5468baed69a0c3b48d703f1d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=589070.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "db53fda43ac0fbb555e7c42b4226115388c01763ce78af46f491d3fd9edecc9a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=589680.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "ea02dfcba635b6d6d6d9959da8949c0f0a1767c721ed7fef763b5b63ef098acc",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_hybrid_etf_longest_v1/minute_critical/symbol=589720.SH/critical.parquet"
+    },
+    {
+      "expected_sha256": "61b76afeafc91482f4429abb2c22c2fd4ca7a96836bfb10036af89fd538bf76e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=000852.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "2624b5aaf1e5ea10e3b9e3d190d7bd0be6fb64d2b7152f0f50992165bf257d49",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159141.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "0dd5b59f33e174243a1ca4a18f32c25e19ecdd427660b9784e3c9fce5bd48bdf",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159201.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "6029a348dce868883ce0e14401ad172f99917a1082f24075adea6fb079f0996d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159206.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "a26651c26f13556eacba6f88bc30c111e2f2a845ba9df43b3d5e926a758fc585",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159207.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "c258aca35a8fa0ad2e4a791609807bf960547fdf6d718a5466d35aa90e783d5a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159209.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "61c8497720b66a6a8b71a777ee5313d75a4832a430cde125434f6697ab06fc57",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159227.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "4bac6db4a46ea4d1db3a58c6abb7eadd4c88c8f92ad5dd9603920aab6c71904f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159235.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "98982ba7d560cd73a51f4db92aa811a17eade5a2e2f849105337740aae9adcc0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159259.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "f1862376054aa652e47cb35e5e2a7a062887e1ba2a4cab7c775fae8b413d785f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159263.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "73679d341acdd6b03ee68feaf0f1d3a1690693e337c33d15ee48de33f6e31c45",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159307.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "44289609ebb8f2a9749f62122f8f81d171fe1763a5181924ceaa576bc144dc3f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159325.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "31a49cca5661a9d95c7f2d2f67f8d9a7e17b4fd0936e45bc931ac5a683b5a650",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159326.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "07246a4eafc6ecf8e38203c82fdf9482e4b1222cdf42321312bc9a8f4bbdc8d0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159363.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "59757a8a9f43a9c98dd6fd0b5cd565c17897790d17aabab582250ec0eb3b296a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159387.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "67eeae1b4b9fc7361aeb72533e3169cdc863531fe875dad7e3b73d94a459b7a2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159399.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "679cf64dec6cf4f595f6ccaae727f4886dcb15ce462898b3099ff37f9fd8d995",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159516.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "fcbbc2596606e4364ea364285ebbd15bc4a2993a4f6a7109514c260c34aaa0a7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159530.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "e10a05ce3dafe9bf25be78fa040d8bf91bf8c0c5271f43ad65c1640e0e0c9066",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159562.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "2d41860baae83b35ba48ef9049c3f8231983c1c259a2055d02e4f7942c1f9d68",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159566.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "42caef0a101b5fcc4b41068baf6596a1c85f2daa87103092f9db6bb765352b36",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159583.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "35e5d83b8e35185b8dc28eb70172934c691e1a11234e4cf2b0518d731432508c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159593.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "6469ed6549c065d36ea39449d97ede87c2ca16da55b965a9c6f54cc9ea9d4629",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159601.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "53c90ca7fe6acaef9ae41136cfd1a37aa6e9d77c8bb17375f4c618f68e587c3f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159611.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "d48be6707203838ea97584fcf21a1e4d14b8d829ab0ebd66ac02bbf08d348c4e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159622.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "dd1131420c4036178628b7a1e6e84f8bffed2b813777a7ee49b525df6a5dbaf0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159623.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "cbf3fafde45edc7171edf275fccd28d69b931a3d78af2364c41d3ad40e879f81",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159625.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "7018cf992acbf91e86e40f77feb22fe8d7c7e096a6830746de0fda902cc5017d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159638.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "ea142668d200e5dbbe201dfe4ea9abfd52b926356239733c84b7b26e7f09a421",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159667.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "93ee688e6f3be7f8ff5240567cbb21ab707b34747fc4dcf161dc56c4e2cbae85",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159680.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "de9215d9dd539323822c988a5889e6b3de000e049dca18d16af5ae0bb066fba8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159692.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "58b6a898de20518918c819ea553ba1bb13d7a772919584e6e4d698c9180f248f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159697.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "507125a06cba8df4b6225e37b4eb09d6e4c83b79dca5cc9862728e4db81385aa",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159732.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "873e27c4dc346a3e0980702ca3f5c6d221f07037e4e4dda58090ac19b444edb5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159736.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "913c5ac4e1020031185e5c7ff0a883f630e13fc81391354a27db58396b09b1d9",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159755.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "60880635fd18450e690b85929c1faa6682972cbe8204ad65ca8ab848608d7ac4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159758.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "562d1d73fe718630f28b666fad8f79f93a5a02a3871b047579c67d452055d3a8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159766.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "cf8e0ef4333f702f45a4ea205ffb9c76d132ee66930ee9394756787735be4497",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159781.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "7329b7228a1c3d566058eaf0dbce04985529090117c3d261c910f1b80e7a228c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159790.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "cf6d8ab8e6b86821a921f9d99a75a55ffacac732cb20126589b651c7b0a3dd43",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159796.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "a3ff7ece04b07ba5b953687106b9c5d30000a407bb660a4b06728a274c304f51",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159819.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "d75a426c34cda82abb948a31079e1a99324c122044aaa5dbbb9e4c7815d21bd6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159825.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "607b8b210ced6a41f9ac0a6fed0f5e7a8cdbf18cd7ed8fb10368b3f2f0d5fa94",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159837.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "0f4960abf6d565a70a83fc9c96dec161709385a59bad06d9755478f8d64375f8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159851.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "80d0d1ddcc76aa94fe7345febb682bcf478a8aeeebb4df13d06c4759c7b772c2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159852.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "e3abc9f1a1776ce9133dacc51accf5316fa1280851de078242db8f4a078427c2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159859.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "fd48aa74b057afd75acc3fb1788c97e71b0a6d20ad6231ca013ebbb52b6ea0c8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159865.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "7eb469300a05786bc0a783a2f09808429a5cbeb1c1cfb0c6fe4c44dbcc417025",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159869.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "719fa53cd3f3acd3ad960c4a77be04117c8629b757ccd89ea793c8acafd88744",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159870.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "7aeea0c158d47fcc4e7436a4f37e6cfd0ceec90a9b68ca2b2fdc7b86c8c1492e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159876.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "8c9e49502adc9e58ec9b1475352f3a44deab8d054d8a0097009e22760fe2d530",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159880.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "50fd16fbc60ed3b52b2c3d1fe8afaeec08fbcb337fe1eeaf39c9191df5f1ec54",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159883.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "ad4f33ff3f26fd4e843beb54b213c53b6e7730b5acb0dcc3200033f874ac00ca",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159901.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "b9b09d7153ba18040e39cec778deca5962b65533d2da77f21551526e50fecc67",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159905.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "608c1043d7de858a9658f8574c93e50fb11434d3f4860f0983311a540b95ec91",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159915.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "ce18ea6646b6dbbf4b46a6b1d20304f2029c5721b3e6f72a7a00eac3d229692c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159928.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "e440c0644fdd73a697438db94dfca93ef6d15948a3904202a89f310942e4c09e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159929.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "e4002a7c78e6d4be814978eb8d595d58984ecffc2469b6c3baf6084ff85f59d2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159938.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "fc3090683eff4de3968bbd8c2c4b74c7c7f0c4b8846286d79d963fcb7e9d6655",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159949.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "af33dc09bcd4fb0ee007b3e675d9856612e216d9abd4e89af78dd2473508e4f6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159967.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "ce31b59e199a4c0e2be79c21707135fdb07d74eeb9d049602ea49cdc0cb66d64",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159980.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "bbc587d42389de75b4adcfd68e35ecec7b51c924a930fed7b46518039f06d670",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159992.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "6989ebdd870056b2b1cd446b8da44f57a840db125c368a7bc5ccf71e4e5d9c7e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159993.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "dc7dc2c1fb2d714929b57a366ae440a4a5613e923a2f2ed206e688ca3a62d242",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159995.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "37cfcf01a0f7460401d1dcbc29d6913b107d01112f5b52a066eb8fe836ad9c01",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159997.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "858e2f04bc80e6f665286c056c5b3b9b5aabe1887b996b9b0327a966672de539",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=159998.SZ/daily.parquet"
+    },
+    {
+      "expected_sha256": "8b55859eaf5baa12725f3db6ac264cdababe4bc216bd95d57aaeffb5dbcc3321",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510050.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "e9869996feae9d29c8c8149f75f267faa7133c19163739b249a1fe55d98ad3c6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510150.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "57ed8080ba4bcd8490ec68f159c7beef99ab0b293562031ae2f797b5a37e4ec3",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510180.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "83ab66a0b05345d2346bb29bcaf0d62062fe9e42f641680360fc0880c65f8241",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510210.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "15458d4adcd6e01d9b8d07f348df4bbb3288a5c231db0e1bcb9211338e8067cf",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510300.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "85fa3fb307a500161b8f03b311241806d3afb68024c09446139d894d6d0ee5d6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510500.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "69769bc4a1923aafa1630e8eaf7fdb11c79db77d751df3b5927561d30ed9eea7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510720.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "da63bdc6a005e09346c19aa907279ace2e4a26eeb9920f17fb9f69873e1eda8c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510810.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "888b5247104021cd88b7895bfe924ccb74918cb6fe86cef079457fc2c2586250",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=510880.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "01c95f945935f779cb8de4d3eede6ddba430c673b800a2f76751bc8d3890c4eb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512010.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "95b342e0bb32e5cd296a9f68d86ead3a650e19143870eeab894a15866abcb52d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512040.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "0484228e52065a7f258345222776d694eae941f473268d8eeb9d9474033666ef",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512070.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "0f858b288614d27c4b91a4eb28255cec965cee9fc70eef73a1952e00008e3a8f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512100.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "ae58b7275ed0a380d575e117abf817fea59d97d68e6ce18183b9875735d7f3e7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512170.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "833525907501f24700a10e1d33691796f22e9fc7118529b06d0eaf3b53a3c51a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512200.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "48943c91432348636fcd785e716781d3175a4949e391fc3b1c74e9a7f3d4954d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512290.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "7c10cf5ce5137f53fd39b7ba3cfcd2c3aec16834d429ddace63551ad02afd4cb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512400.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "622221f625157fb1319146700b461348c0e86bd52dd532a40fef0f54b13dda45",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512480.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "f8f3db8ec3dccd49a97e89aae180688fbf5a6885df2fc269ff37104aaccfb30f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512660.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "06e5a89e3859d67667d68b34f54a12568c71e35656f0ee157217d97d5ba31517",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512670.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "337bf62374292870b177a57cd4fb8a66d88ad5e38b400fadadef2cd9a9b2a7a6",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512690.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "6a6dd118d0f9b6e6c08bed1e9bdaf34e2482181bd91535d495493905755cdf0d",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512710.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "49c787f72671dbfb829974a00c1b85bb9d86246d745412d10122b60cbc250917",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512760.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "da1e3fa91582357774f0a578b26e057df8963b7ddabfb7b51d1a55f4c9f921c8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512800.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "1107ac06b170fe8c0c5e0946d45969ec1de8340c56328b864efe31fba9258be9",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512880.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "671d82e4ca1ad056d066d921c496980e2c4f45db003dd37d576b874af35c5452",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512890.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "852c4766660aa139a51792730493872ae65f57ae9efbbdf7cc7191520e5ac4a3",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512940.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "d57472658044afb2c1a342ab56dbe4257a6f1554086b91d423a415c6badd72c2",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512950.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "bae0530399c13c1fde25e71335790a3613e6e19c62765369c5ee0844e5e60dd5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=512980.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "f3dd96f47be42818c1b947828565d610464818f64d60b623a51c4020fe6fd867",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515000.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "ee3d81c2f1bf83bfbe7787e3f7429267f854f90d7239d77996b40709134743a0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515030.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "652f2ef74ca1c547062579f61b7d12d57f9f00d9cf4b70214c998d08bf5d4f46",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515050.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "9b3141e80bb7d29ea56b759054bfc0bdef9b1d18d87776e3663ed75c8bad0d4f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515170.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "d857d97b630c67e2814414a9f9d92455f98593ef90b643fa62ae743f37a8616f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515180.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "2d3afeb1298e37e30630a677944f2b364c2fe32351b0a3c64d71d5c6286b3cfa",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515210.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "a537779e9704f94e55f6ca32b0c9056075fe6e2ddd5fd2f338df431561b90b45",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515220.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "aab3221a792167fe4aeb1ed559e33cf51cc86cdaf239a3ec3517a437e71cd7ff",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515230.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "e9ef6e588f81f070a1dc7b806f95f3c9b9ea960710f6800dc47614fe3540ac96",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515300.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "2fc3f2e1cacc30191d309796a097f22c764e446c112f095b3402bfee431fbec0",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515400.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "d57b20a3d1e26169315033320c8b2012ca1dbd7e95288ce68097ede959045193",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515450.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "01fb0a359c8dea763dcb269ce426d2f045b3f1a81e0743c04c9adb36ee411a86",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515630.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "3b79b1ed47f7cbe711c43d7340bed521b8fe90ab5e238533823e16f5d82be385",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515650.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "9f608efc596a7d5d0cc4220846d18efe21ee81a10f028e3ef7a5723df314f22e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515700.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "3370e24995554a931682773c9c78dbade0d3a6c177f5f19cc0b39180a4a6f16f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515790.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "928cd91c4e863736c9c14ed38055ffbc83d8547eee81626cda2d87c9de26fc1e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515800.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "fd3223ee27f817870755f62e37540f42f098fa132e486d99b2a7e1dc83da7440",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515880.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "5d0c8302991bd0aaf640cba262e7bc61b0c9aedc7ebd4a65c95d47c535312a53",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515900.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "2564c50e0f61e433c7e2ddfaf443146099c2c39c39fa19a14c6d7ed2dbed3b94",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=515980.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "37f36a9c4eff2f5e055fa539e0d81661b83cb09e37d932d4f06400f4f17c34d9",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516130.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "2aad90d5220492b746701660e12b347b1acf43782ffbeee0075cd07c76f7194a",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516150.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "3244896495e7793fed9dddecba4fce3224aec1960794552125559da2870672b5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516160.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "47aed9190567fe3b871ef3b2558da736f986ed62334c30c11784cdfe217397fb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516350.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "fc01d96108713aee901706d1e28939897f0091f70a1c4d47c8829e00abe3727b",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516510.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "ed033fc7312ccc2f8142fe8d7b8b0fa042f66395d0b18f0f340a7d57b3a4f794",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516570.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "0d40351eb0546e31376a59c79ed4b6d4070acec79e05a73a9cafa9bf09de3e7e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516650.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "ad5f20f84f15686ec30e7c0149618c04ce766cbdf93de20950d778652fa25cc7",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516820.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "5464b3546f7f7431f3e9266a005af7d4ffe112999ebcfe60adbc32ce11f57656",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=516970.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "0b526bb0cd93d8b134af639ff29dd8edd8fa41120804282d798ba58e52c6a702",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=560050.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "8d811052316f5afea922e115784ebc997f6f3d5bce1cb924a6d75398633f906f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=560080.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "a1b64b0217cc09826a8bae4886f97d1af87b1194c95c60e277e83f83cbd4dcb8",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=560280.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "82ff25ad041536a361d69e7559011051e5302763e587ae4297c2dee2dc86f323",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=560570.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "337ad569c8aa684bfed18381db70eeba7dfa442cf375e34bbd1faf8e88af2d13",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=560710.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "36517a71bded4ef904784472f4890a4e68ee5958b329e6a7ac09bd7130d38ceb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=560860.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "c1f6049c7c5aee95595f0bb1f171fccd2e48289995c9b629887b7c2586e57bcb",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=561360.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "8cb87366b3e5db42b604d03adf8adb405ee54fbbe7a29f36fdea082c1b994e91",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=561380.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "63c5f488206a1953d2b4b5dd6e52cbd60190763bedecc5d26df07773c2750083",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=561420.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "f523160e265b6b8a6906bf65d20d0df923478d87c1ff7fd32d51a23cdcbb49b3",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=561550.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "fc69324bdf7cf3a4b27010846be31e03da17d44475140592ee3278244ce9ad4e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=561580.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "49c4c335062023ceb80618450eb47fdf21290deba7f39bc0e9351386935b2138",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=561980.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "09a6ddb3fac785478f2461ac2b3ccd41da10a6410a87d490e8d50dbc2e24efa5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=562060.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "40de99f0cfd580722f51a55dee881bcdf27a39c7a60b0420e6728720e700c594",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=562500.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "3b9f743692d6a9ffd120a23d101667ccc30de8afdc6478da1bbd129afed9cb42",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=562550.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "341279f0c9951c54d19b87bb0f3e39ffecf0752ed54f595bb31acc2ffdc460e4",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=562800.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "0415b96af84f66dbfaa3654b0fc0b0aebe69ccb0a202c25d90c4ee8b260d15a9",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=562950.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "b05bac307a69948abfa5f20e5070c9dee7e2af8b31775aaa2e001259d4d91c2e",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=563230.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "26421e1f2464c6fededa0dac6c48895c73912b1e5714e6fd4dc1275b08a95d78",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=563300.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "832dbe8dea03aae328814089e14fdfc8b49dbf5b3906ab2375de8857b61172ad",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=563360.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "687ee95625f7da757fe5b80b2b0ee5e86c527a4fa12ac908c79a2aeafb5c86a3",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588000.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "c6129c16349692aa6c3b1bcc805f5429d7adeef9c46e529ad6881ec0b769e42c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588020.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "5582f1adc2103878e844fb49703f670a93798f0ba01a63db22fcbc78549cbbf3",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588170.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "244304b905f88d09734d3dc3d560b2cfffc608602854fa86815cdc3f1ce95417",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588200.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "4dfe708e013d8fc8e3628b64e8ea06122f4d9693654ca677163ffafa7864ca1c",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588220.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "aa4eb090cc01bee918656724f1244a409c6707ac4402326b002d0543459206e5",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588460.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "c94d205164945b0497074c485215e3cac43b065823767024fc14e5c29742ecac",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=588790.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "05e4d9ee00a9ec32adb6ba0bdcf1ce7a57bd0866e38cb56a3e7f76e1f33d41cc",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=589070.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "2591b44b27d8022d2c2597e800b18f6d13ba2c1fa89ad65b56e792999a36589f",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=589680.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "8473f8d995a0f910014d617eb41f6e493a5191e713b142e0e2c04b4950418189",
+      "path": "/Users/linmei/Documents/CY-supermind-v6/research/supermind_v6/data/market_data_qmt_v1/daily/symbol=589720.SH/daily.parquet"
+    },
+    {
+      "expected_sha256": "a7c0b062a9de260c4798922aa998ca3471bdbe2690c754b732ebc7fc9272faf8",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2016_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "3bb9d8d1df8795e9cc45cb04631b796de7153798f815d629c420156e47a448d7",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2017_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "83fbb3e0fda4b278e1072836a9695b7d9a6dfa396a07248e40f85db0d2ba0812",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2018_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "b31fccebb8f2319099b412233263dbc99f965a091b0995e62d275997b411130c",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2019_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "67d6b958f2b4113750df8f1a98d6e48d93ef00e04cab0fbf0cf0661b1600d45e",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2020_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "efd3b1a4bf60c47ba36b83792c97fc08d600aa8cde58014ff44e3c005eebac61",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2021_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "32a6ff7b4d64bdb4da6a572dc9384c12f381689937c50cc3166dcec473cc4cbe",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2022_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "411402b8ad198ad2b8787dec803dce4cb2131055fabcc0539b6428e046d19dc5",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/lake/stock_1min_canonical_none_20260813/bars/2023_day_parquet_none.parquet"
+    },
+    {
+      "expected_sha256": "5982b7dd75ec53deb9ce3874aaf3e4a5168a731b5bbd6d8c2d89258fe4aff387",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/distributions.parquet"
+    },
+    {
+      "expected_sha256": "07e864ac6da1d59b69c1b9ce1bcdd01d96d913d0909a718d79627939f8ab87cb",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/normalized/rights_issues.parquet"
+    },
+    {
+      "expected_sha256": "53c9e1e62b4b1bbd45979c868f5543eea58114d0bf659f866cd37d979068cc00",
+      "path": "/Volumes/quant/CY_quant_research/ashare_collapse_gap_zone_dual_fresh_k10_validation_v1/pit_daily_compact_2013_2023.parquet"
+    },
+    {
+      "expected_sha256": "95ba886707811da9a0514d1d3a9b2ddf9df5debe69eed4e904502f8f3e1cfca9",
+      "path": "/Volumes/quant/CY_quant_research/ashare_true_gap_below_l_clean_corridor_v26_validation_2024_2025_v1/pit_daily_qd010_exact_2022_2026q1.parquet"
+    },
+    {
+      "expected_sha256": "2c0ff6c7a65818c61f68932927ad7a0ce08f7d3fb991c10bfeb0c278a84c58f3",
+      "path": "/Volumes/quant/CY_quant_research/bull_sectoral_rotation_v43/market_industry_state.parquet"
+    },
+    {
+      "expected_sha256": "70f2ed3e447b01c91f18f42e8b758ef4d2e5dd7e9bb524f4de9cf9671ec85450",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/contracts/initial_state_v05.json"
+    },
+    {
+      "expected_sha256": "e2711ee436b7188eb408e44739c6b22a86e94c2b9201d2df414894d81b362596",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/lineage/fetch_crsp_lean_cninfo_corporate_actions_v1.py"
+    },
+    {
+      "expected_sha256": "d57afb7826aa87c3929367a989a369f087a7ecf05f1026bcfed751600a3e884c",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/manifest.json"
+    },
+    {
+      "expected_sha256": "861ee563d61d21136dc4d000d349c23ae30b86e25a17630c12fe8a570a063812",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/raw/distribution/600195.parquet"
+    },
+    {
+      "expected_sha256": "97ed7fb0f3cb968d044755b1b4617e4024934f7fb7f2c0906e4bf8ac2c605da6",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/raw/distribution/600622.parquet"
+    },
+    {
+      "expected_sha256": "6621d28cff4aac9ad479a602555eed147054fd2272dc1f2d03174a501afa13d6",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/raw/distribution/603368.parquet"
+    },
+    {
+      "expected_sha256": "d8100930218faa8e14f0fd1dae9bb1ef7324149abbff3ae95b3beb81282743bf",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/receipts/distribution/600195.json"
+    },
+    {
+      "expected_sha256": "cb17e35d42ee2f25f9f579487b066408616a8b17ae73bdf8d7bfeaa3309f023a",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/receipts/distribution/600622.json"
+    },
+    {
+      "expected_sha256": "ee69124d2619f52c162a386fa8eedf5331c737df15edf02b6b47e27f2ba3c58b",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/receipts/distribution/603368.json"
+    },
+    {
+      "expected_sha256": "6f4f5e3fd324057f5bf289e6b0fb2187bc3f7640e4da2f781fd3eaf041aed0d3",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/responses/distribution/600195.json"
+    },
+    {
+      "expected_sha256": "4bf533362d10f50b80e37a6f62c7dc60cfdbe0b9b64836638cd0e7419b93e865",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/responses/distribution/600622.json"
+    },
+    {
+      "expected_sha256": "ee5b0c67b634f333e1196d7a2f2ab483ebad206f3db2e1b29878a675bff5b74b",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/responses/distribution/603368.json"
+    },
+    {
+      "expected_sha256": "bba183f4491eb08eb5a3ec457ed1572bbf7098402f5d20e760535465b0d44ca9",
+      "path": "/Users/linmei/Downloads/workspace/quant/data/staging/crsp_lean_corporate_actions_enrichment_20260809_v2/vintages/official_full_sh_sz_current_snapshot_20260809_v5/run_contract.json"
+    },
+    {
+      "expected_sha256": "3c1723540f8eb4d177b646da089142c11a58f082c0f4f16257c850b504ded246",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2017-06-23.pdf"
+    },
+    {
+      "expected_sha256": "ba9bf81fd45c3c83841d7d9eb7363b22f634e26496a06cdd47caa30d847b91e2",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2017-09-14.pdf"
+    },
+    {
+      "expected_sha256": "c64de1bf98355dfdc47c11032902a557571a707410f856e9941469633d6aa110",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2018-05-30.pdf"
+    },
+    {
+      "expected_sha256": "f19011a3aabce6c252b0844f44fd61854481144673d2a906e1d39b5a4703c81b",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2018-06-08.pdf"
+    },
+    {
+      "expected_sha256": "8490f730fe873d1c2e9f4dd56bb67486afbdf1dce979c5cc397b869c766792ae",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2019-04-11.pdf"
+    },
+    {
+      "expected_sha256": "e863233eb18d21338f13e7aa96355a919aab28dc924208a2daa268779be389c6",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2019-06-11.pdf"
+    },
+    {
+      "expected_sha256": "76fb13da00a6db25e8c8fe33b2900770be921057f9d5390b791f5234bd4cbcd8",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600195_2019-07-09.pdf"
+    },
+    {
+      "expected_sha256": "0860fbcf2bd945b46f2f3c78628e634ffad4a670a7416a3b44a8f7686174b676",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2020-05-26.pdf"
+    },
+    {
+      "expected_sha256": "c6e0392568a7b3243fbdc3bba59d631fa1a1dcd8b54cbae22866d078075f5067",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2020-05-29.pdf"
+    },
+    {
+      "expected_sha256": "0e383c257aae871915873c875f0bcdd5afb09a07cdfd85b8eea062f63602620c",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603368_2020-06-18.pdf"
+    },
+    {
+      "expected_sha256": "5969ce241843e8ee1e4a47feaf04ca82fa984288cf511ce767e0c89fdd515787",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603138_2020-06-20.pdf"
+    },
+    {
+      "expected_sha256": "3e8bdfbc6a04e48c9b7c0064d6c590c3589b829dc715bb8e355aca225d79b9a7",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600195_2020-07-01.pdf"
+    },
+    {
+      "expected_sha256": "bc043b996dfcab6bc7534a8dc191523ca8989f52156dd714c18960e314388b9f",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2021-07-12.pdf"
+    },
+    {
+      "expected_sha256": "ed15cfee3360fb93edbe0c7d8f0d6893f4f7b58e983112e8963401d4ae3d3365",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2022-05-18.pdf"
+    },
+    {
+      "expected_sha256": "3ce1336b650ad18f4dfaf7df8390db3c2f8483e5744581f745b107e5f7be86e2",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603330_2022-05-25.pdf"
+    },
+    {
+      "expected_sha256": "d07e24dcb323b7bae2ba042f280c2b4e6054970611bfe7de4885cba3ebcccf57",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2022-08-12.pdf"
+    },
+    {
+      "expected_sha256": "6999932e0cff6cf3019ad9efaf8a496d37ffee1807c7499e8f7ccaed9668b4ba",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2017-06-23.txt"
+    },
+    {
+      "expected_sha256": "8c7b2b58bc3d3908ffa0b4549641cebd5f8d6ed0e77f7de5f5bb7d3effb9c8cb",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2017-09-14.txt"
+    },
+    {
+      "expected_sha256": "ac44fd6ac965cb7bff955aca8d0c49cf0e45119041102fbd22afe678b18f795b",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2018-05-30.txt"
+    },
+    {
+      "expected_sha256": "869757ff0f756f4bed94873f6b5008b7c835a857f2bc6c2d0beaa55e00258f70",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2018-06-08.txt"
+    },
+    {
+      "expected_sha256": "48831ce28800254e7ba864c03fb3c61303fd1659177841da6492f4ea9048b893",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2019-04-11.txt"
+    },
+    {
+      "expected_sha256": "fd6d5fa5bc3e5f440cc98bc6d89f83cb5954e93302996218046946f83e34f9e0",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2019-06-11.txt"
+    },
+    {
+      "expected_sha256": "0c9cae0f79d27a89c852686b5b6af4ac0ec496feb91b6e8dab434cd86c293bbd",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600195_2019-07-09.txt"
+    },
+    {
+      "expected_sha256": "d16ed40077a40bef3c4556e0bd123b198181076d09b756305d324a0700dfc396",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2020-05-26.txt"
+    },
+    {
+      "expected_sha256": "c0bffca86038046ff4ea28fe39417b32f957ad9109d162d31ab58f3f08fa9a08",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2020-05-29.txt"
+    },
+    {
+      "expected_sha256": "0d50b88318625dc9127077015afde22d9fa244cf851ec353ffb83d3f5e155eee",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603368_2020-06-18.txt"
+    },
+    {
+      "expected_sha256": "b6df6049a68bbeb3b5714dee2d558d22c5b031af88874656ba199a19ca19b8c1",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603138_2020-06-20.txt"
+    },
+    {
+      "expected_sha256": "a88d4c13832cf9f5b5efeae22f03dc2e0415ed1d4a3268119db4c1c43b24b467",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600195_2020-07-01.txt"
+    },
+    {
+      "expected_sha256": "f3d06b76377adbf2262691bb80b5b0d9cb0edf7275689c063b9f2467e3f3c783",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2021-07-12.txt"
+    },
+    {
+      "expected_sha256": "f35c50d961a55eb2bac5f07c45fb6221373a4ef7f529959e27cf8cb5975af16c",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2022-05-18.txt"
+    },
+    {
+      "expected_sha256": "faafd615204b4e8aa85682cbb926495e70a6c3364451192f486ca2ce99f9a4d4",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603330_2022-05-25.txt"
+    },
+    {
+      "expected_sha256": "16937ad96de81da29000d56748c63a5067d0a0aaf498fcf9ebe92f2ef2918a35",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2022-08-12.txt"
+    },
+    {
+      "expected_sha256": "b3d5dd798ca7bd93edf076565506b6ad8a81335580331852edba00e960ba249e",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2017-06-23_嘉宝_query_v2.json"
+    },
+    {
+      "expected_sha256": "2b94e935ca797589cf734322f011e35d59dc19d5f4a16ca27c5f4706973926e0",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2017-09-14_603429_query_v2.json"
+    },
+    {
+      "expected_sha256": "9a54dfe08368965ee4f7854735ef25cb9cd20cecf3aabdf2f57edef0ec49ad60",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2018-05-30_603429_query_v2.json"
+    },
+    {
+      "expected_sha256": "02d11b045f9d389fa323063390df39073cb202b62d00a4f6bd2a8479552354d9",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2018-06-08_600622_query_v2.json"
+    },
+    {
+      "expected_sha256": "e2c4238ecaa447b20d900b3477162890021ea8734c3037146be8576393095fec",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2019-04-11_603429_query_v2.json"
+    },
+    {
+      "expected_sha256": "5b9e9c7898482bdb6e8ecdced7a22c00e2073435cd94207b5ab3cbd7f4ba2823",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600622_2019-06-11_600622_query_v2.json"
+    },
+    {
+      "expected_sha256": "8b0325446b74c606d9f676922b71d46f65425d7590a8084d4ebde3ec8b6ed7f7",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600195_2019-07-09_600195_query_v2.json"
+    },
+    {
+      "expected_sha256": "eb8e8edf31bb925f87a2f558f65d07d7fee08970688b53a81b2f7639ae7a5dd7",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2020-05-26_603429_query_v2.json"
+    },
+    {
+      "expected_sha256": "245fbed5f6b9f89a140dc5615db4c82833f5cd92d3d1727f153d549ee04c616d",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2020-05-29_600570_query_v2.json"
+    },
+    {
+      "expected_sha256": "3f423fe2c2be3d88d652f834dfe2acb456edf3916c6b5f394dd848662b6a7707",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603368_2020-06-18_603368_query_v2.json"
+    },
+    {
+      "expected_sha256": "ed441671075d51552996721ad78d5a085a806d99c4c54ed3f87d56f6cc2b496b",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603138_2020-06-20_603138_query_v2.json"
+    },
+    {
+      "expected_sha256": "34804acf8d6b31d2685393ab5506f89c4fb80ef5b53022e32c84ac8b49fba8b5",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600195_2020-07-01_600195_query_v2.json"
+    },
+    {
+      "expected_sha256": "61153ac9aa753b9e9a44013a5a6b7b9116f73cb1c588aa386081f6dfe74280f0",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2021-07-12_恒生电子_query_v2.json"
+    },
+    {
+      "expected_sha256": "5f207dca8840affba786708dee07a8d166148fb3eb43c4663d9a56138b97a763",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603429_2022-05-18_603429_query_v2.json"
+    },
+    {
+      "expected_sha256": "8b7363cd2c5e6b58a0c0d0f94af5f61fc7d34132a389f8fcb7c3488337310c83",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/603330_2022-05-25_603330_query_v2.json"
+    },
+    {
+      "expected_sha256": "3ff9fc992a9cf0fd2c7edb3d9ba46bbe617c9a40bd51d0d7c267c34e7a2ba00c",
+      "path": "/Volumes/quant/CY_quant_research/five_strategy_shared_capital_v1/official_ca/600570_2022-08-12_600570_query_v2.json"
+    },
+    {
+      "expected_sha256": "bdad1206a4d0dbff7f11cb1593f39ffc955d0c4d3d1081ba4fda3c044dac5eaa",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/precapital_entry_population.parquet"
+    },
+    {
+      "expected_sha256": "5bf84b527f2b3d532660bcfa40b847f6dd13efe0327c27b75b2f549b1b26cccc",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/fills.parquet"
+    },
+    {
+      "expected_sha256": "11e573997bc52846bf84473fbfca6bff81a5b1ffa39a84e9608b11db8a599197",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/atrdr/native_continuous/nav.parquet"
+    },
+    {
+      "expected_sha256": "6289479b68ca06364ada3a4de94de068ea3bd3715c6f9f9d4b544942ece99ddb",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/precapital_entry_population.parquet"
+    },
+    {
+      "expected_sha256": "0b6e58a2e077b0b0d8010b3da0d9c5d737222b7ef49a901c48513f053d440def",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/fills.parquet"
+    },
+    {
+      "expected_sha256": "14aaf95ca559380537ccc90e69979fff0acd39f76aa1745dd9e5233ff3ef91ae",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/mcb/native_continuous/nav.parquet"
+    },
+    {
+      "expected_sha256": "09a968457a0a66a598ae2335d47bcfddabd88daa9d55a3320b8715dd3b7a311c",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2018_2021/p0_fills.parquet"
+    },
+    {
+      "expected_sha256": "40010957bfb5443bf8642f3e7761bbe90c9c40bdb3cc3a4f52dc9a983f1a1ef5",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/2022_2023/p0_fills.parquet"
+    },
+    {
+      "expected_sha256": "7a80b63e9b4502009e59ea0356da502a5970826ddd9abf86741fe2150911595a",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/p0_fills.parquet"
+    },
+    {
+      "expected_sha256": "a582f462042fc80c281b580bacb3e6917eebcc8842a1bfab362f8bdc7d140363",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/p0_fills.parquet"
+    },
+    {
+      "expected_sha256": "fd4748ab8512caddfcaa8305001ab40ffa4a5014afa92a934f521c23ed86f1e5",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ogr/signals.parquet"
+    },
+    {
+      "expected_sha256": "4a7e96004c4055c4b147e30da92bcd0164fcc01009be359520d4d5b6c0004614",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2018_2021/signals.parquet"
+    },
+    {
+      "expected_sha256": "c4d423c2edcf49a41da15783079d4d9ae2da8fa076475740233d4dbfd4ff5298",
+      "path": "/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache/ifcgr/2022_2023/signals.parquet"
+    }
+  ],
+  "source_config": "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-scaling-v1/research/five_strategy_exit_risk_v1/input_config.json",
+  "source_config_sha256": "653252c2194cc5b38612cfd3983b2d065cbf2132887248516504a07da0a47092",
+  "stock_initial_state": "PARENT_VALIDATED_CONTINUOUS",
+  "universe_sha256": "bae1044e957e5f054c33c56d54e81f96a0b588ed873a6443223ef8b7412db920"
+}

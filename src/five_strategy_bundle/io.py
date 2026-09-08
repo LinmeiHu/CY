@@ -19,9 +19,21 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_input_config(path: Path) -> dict[str, Path]:
+def load_input_config(path: Path, *, required=None, prefix=None) -> dict[str, Path]:
+    path = path.expanduser().resolve()
     raw = json.loads(path.read_text(encoding="utf-8"))
-    inputs = {name: Path(value).expanduser().resolve() for name, value in raw["inputs"].items()}
+    selected = raw["inputs"]
+    if required is not None:
+        absent = set(required) - set(selected)
+        if absent:
+            raise ReproductionError("missing configured input keys: " + ", ".join(sorted(absent)))
+        selected = {k: selected[k] for k in required}
+    if prefix is not None:
+        selected = {k: v for k, v in selected.items() if k.startswith(prefix)}
+    inputs = {}
+    for name, value in selected.items():
+        value = Path(value).expanduser()
+        inputs[name] = (value if value.is_absolute() else path.parent / value).resolve()
     missing = [f"{name}: {value}" for name, value in inputs.items() if not value.exists()]
     if missing:
         raise ReproductionError("missing configured input(s): " + "; ".join(missing))

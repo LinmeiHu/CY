@@ -1,7 +1,55 @@
 import pandas as pd
+import pytest
 
 from five_strategy_bundle.execution.daily import replay_sleeves
 from five_strategy_bundle.strategies.atrdr import select_fast_capacity
+
+
+@pytest.mark.parametrize('strict', [False, True])
+@pytest.mark.parametrize('sessions', [0, 1, 2])
+def test_outcome_schema_survives_empty_no_entry_and_unfinished_paths(strict, sessions):
+    from five_strategy_bundle.execution.daily import fixed_target_outcomes, strict_fixed_target_outcomes
+    candidate = pd.DataFrame([dict(event_id='E', symbol='A', sleeve='MAIN', signal_date=pd.Timestamp('2020-01-02'), cal_idx=0, invalid_step_cum=0.)])
+    daily = pd.DataFrame([dict(symbol='A', trade_date=pd.Timestamp('2020-01-02')+pd.Timedelta(days=i), cal_idx=i,
+        open=10., coord_open=10., coord_close=10., coord_high=10., up_limit_price=11., down_limit_price=9.,
+        invalid_step_cum=0., hard_valid=True, history_valid=True, current_valid=True, corporate_action_valid=True,
+        current_day_data_tradable=True, market_rule_valid=True, corporate_action_blocking=False,
+        trade_status=1, corporate_action_count=0) for i in range(max(sessions, 1))])
+    producer = strict_fixed_target_outcomes if strict else fixed_target_outcomes
+    result = producer(candidate if sessions else candidate.iloc[:0], daily, target=.15, horizon=15, profile='TEST')
+    assert {'event_id', 'status', 'entry_date', 'exit_date', 'exit_price', 'exit_reason'} <= set(result)
+    if sessions == 2:
+        assert result.entry_date.notna().all() and result.exit_date.isna().all()
+
+
+@pytest.mark.parametrize('router', [False, True])
+def test_cash_only_replay_keeps_exportable_empty_trade_schema(tmp_path, router):
+    from five_strategy_bundle.execution.daily import replay_shared_router
+    from five_strategy_bundle.io import write_parquet
+    trades = pd.DataFrame([dict(_trade('E', 'A', '2020-01-02', '2020-01-03', exit_reason='TIME'), source_rank_order=0)]).iloc[:0]
+    daily = pd.DataFrame([dict(symbol='A', trade_date=pd.Timestamp('2020-01-02'), coord_open=10., coord_close=10.)])
+    if router:
+        accepted, skipped, nav = replay_shared_router(trades, daily)
+    else:
+        accepted, skipped, nav, _ = replay_sleeves(trades, daily, rank_columns=('r1', 'r2', 'r3'), k_per_sleeve=30, daily_cap=10)
+    assert {'event_id', 'qty', 'entry_outlay'} <= set(accepted)
+    assert {'event_id', 'skip_reason'} <= set(skipped)
+    assert nav.combined_nav.tolist() == [1.]
+    write_parquet(accepted, tmp_path/'empty.parquet')
+
+
+def test_router_marks_unfinished_position_through_available_tail():
+    from five_strategy_bundle.execution.daily import replay_shared_router
+    trades = pd.DataFrame([
+        dict(_trade('OLD', 'A', '2020-01-02', '2020-01-03', exit_reason='TIME'), source_rank_order=0),
+        dict(_trade('OPEN', 'B', '2020-01-03', None, exit_reason=None, status='INCOMPLETE_OUTCOME_TAIL'), source_rank_order=0),
+    ])
+    daily = pd.DataFrame([dict(symbol=s, trade_date=d, coord_open=10., coord_close=11. if d.day == 6 else 10.)
+                          for s in ('A', 'B') for d in pd.to_datetime(['2020-01-02', '2020-01-03', '2020-01-06'])])
+    accepted, _, nav = replay_shared_router(trades, daily)
+    assert accepted.event_id.tolist() == ['OLD', 'OPEN']
+    assert nav.trade_date.iloc[-1] == pd.Timestamp('2020-01-06')
+    assert nav.combined_nav.iloc[-1] > nav.combined_nav.iloc[-2]
 
 
 def test_replay_has_no_negative_cash_and_t1_trade():

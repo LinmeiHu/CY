@@ -508,7 +508,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--golden-config", type=Path)
     parser.add_argument("--output-root", required=True, type=Path)
     args = parser.parse_args(argv)
-    inputs = load_input_config(args.input_config)
+    required = {
+        "MCB": ("daily_hist", "daily_tail", "mcb_market_industry_state"),
+        "OGR": ("daily_hist", "raw_minute_root", "cy033_daily_amount", "qd010_distributions", "qd010_rights"),
+        "SMV6": ("smv6_qmt_root", "smv6_hybrid_root"),
+        "ATRDR": ("daily_hist", "daily_tail", "atrdr_daily_2024_2025", "atrdr_daily_2026"),
+    }
+    required["IFCGR"] = required["OGR"] + ("ifcgr_route_index", "ifcgr_sse_titles", "ifcgr_szse_titles")
     target = args.output_root / args.strategy.lower()
     target.mkdir(parents=True, exist_ok=True)
     pending = {"strategy": args.strategy, "GENERATION_STATUS": "RUNNING", "COMPARISON_STATUS": "NOT_RUN",
@@ -516,6 +522,7 @@ def main(argv: list[str] | None = None) -> int:
     write_json(target / "validation_status.json", pending)
     runners = {"MCB": run_mcb, "OGR": run_ogr, "IFCGR": run_ifcgr, "SMV6": run_smv6, "ATRDR": run_atrdr}
     try:
+        inputs = load_input_config(args.input_config, required=required[args.strategy])
         result = runners[args.strategy](inputs, target)
     except Exception as exc:
         pending.update(GENERATION_STATUS="FAIL", error=f"{type(exc).__name__}: {exc}")
@@ -528,7 +535,7 @@ def main(argv: list[str] | None = None) -> int:
                   CAUSAL_VALIDATION_STATUS="NOT_RUN", ACCOUNT_VALIDATION_STATUS="NOT_RUN", status="NOT_VALIDATED")
     if args.golden_config:
         try:
-            golden = load_input_config(args.golden_config)
+            golden = load_input_config(args.golden_config, prefix=args.strategy.lower() + "_")
             table = comparisons(args.strategy, target, golden)
             table.to_csv(target / "layer_manifest.csv", index=False)
             result["COMPARISON_STATUS"] = "PASS" if not table.empty and table.status.eq("PASS").all() else "FAIL"

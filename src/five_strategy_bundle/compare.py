@@ -21,8 +21,9 @@ def compare_parquet(
     if not keys:
         return {"status": "FAIL", "first_difference": "missing primary key definition"}
     fields = [*keys, *values]
-    key_sql = ",".join(f'"{column}"' for column in keys)
-    field_sql = ",".join(f'"{column}"' for column in fields)
+    quoted = {column: '"' + column.replace('"', '""') + '"' for column in fields}
+    key_sql = ",".join(quoted[column] for column in keys)
+    field_sql = ",".join(quoted[column] for column in fields)
     con = duckdb.connect()
     try:
         con.execute(
@@ -35,7 +36,7 @@ def compare_parquet(
         )
         actual_rows = con.execute("SELECT count(*) FROM actual").fetchone()[0]
         golden_rows = con.execute("SELECT count(*) FROM golden").fetchone()[0]
-        null_predicate = " OR ".join(f'"{key}" IS NULL' for key in keys)
+        null_predicate = " OR ".join(f'{quoted[key]} IS NULL' for key in keys)
         for name in ("actual", "golden"):
             nulls = con.execute(f"SELECT count(*) FROM {name} WHERE {null_predicate}").fetchone()[0]
             duplicate_groups = con.execute(
@@ -70,12 +71,13 @@ def compare_parquet(
         }
         terms = []
         for column in values:
-            exact = f'a."{column}" IS NOT DISTINCT FROM g."{column}"'
+            name = quoted[column]
+            exact = f'a.{name} IS NOT DISTINCT FROM g.{name}'
             if column in numeric and atol:
                 terms.append(
-                    f"(NOT ({exact}) AND (a.\"{column}\" IS NULL OR g.\"{column}\" IS NULL "
-                    f"OR abs(CAST(a.\"{column}\" AS DOUBLE)-"
-                    f"CAST(g.\"{column}\" AS DOUBLE))>{atol}))"
+                    f"(NOT ({exact}) AND (a.{name} IS NULL OR g.{name} IS NULL "
+                    f"OR abs(CAST(a.{name} AS DOUBLE)-"
+                    f"CAST(g.{name} AS DOUBLE))>{atol}))"
                 )
             else:
                 terms.append(f"NOT ({exact})")
@@ -84,17 +86,17 @@ def compare_parquet(
             f"SELECT count(*) FROM actual a JOIN golden g USING({key_sql}) WHERE {predicates}"
         ).fetchone()[0]
         order_sql = ",".join(
-            f'coalesce(a."{key}",g."{key}")' for key in keys
+            f'coalesce(a.{quoted[key]},g.{quoted[key]})' for key in keys
         )
         first = con.execute(
-            f"SELECT coalesce(a.{keys[0]},g.{keys[0]}) AS first_key "
+            f"SELECT coalesce(a.{quoted[keys[0]]},g.{quoted[keys[0]]}) AS first_key "
             f"FROM actual a FULL JOIN golden g USING({key_sql}) "
-            f"WHERE a.{keys[0]} IS NULL OR g.{keys[0]} IS NULL OR {predicates} "
+            f"WHERE a.{quoted[keys[0]]} IS NULL OR g.{quoted[keys[0]]} IS NULL OR {predicates} "
             f"ORDER BY {order_sql} LIMIT 1"
         ).fetchone()
         deltas = [
             con.execute(
-                f'SELECT max(abs(CAST(a."{column}" AS DOUBLE)-CAST(g."{column}" AS DOUBLE))) '
+                f'SELECT max(abs(CAST(a.{quoted[column]} AS DOUBLE)-CAST(g.{quoted[column]} AS DOUBLE))) '
                 f'FROM actual a JOIN golden g USING({key_sql})'
             ).fetchone()[0]
             for column in numeric

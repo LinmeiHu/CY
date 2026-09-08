@@ -47,3 +47,25 @@ def run(gap,states,adapter_factories):
     streams=[adapter_factories[s](account,states[s]) for s in account.strategies]
     trace=run_streams(streams,complete_timestamp=account.complete_timestamp)
     return account,trace
+
+
+def restrict_to_strategies(account, selected):
+    """Select an already validated standalone initial account without rescaling it."""
+    selected = tuple(selected)
+    if not selected or not set(selected) <= set(account.strategies):
+        raise ValueError('invalid standalone selection')
+    account.strategies = selected
+    account.sleeve_cash = {s: account.sleeve_cash[s] for s in selected}
+    account.initial_states = {s: account.initial_states[s] for s in selected}
+    account.realized = {s: account.realized[s] for s in selected}
+    account.lots = {eid: lot for eid, lot in account.lots.items() if lot['strategy'] in selected}
+    account.positions = {}
+    account.pending_positions = {}
+    for lot in account.lots.values():
+        symbol = lot['symbol']
+        account.positions[symbol] = account.positions.get(symbol, 0.)+lot['quantity']
+    account.cash = sum(account.sleeve_cash.values())
+    account.initial_cash = sum(s['nav'] for s in account.initial_states.values())
+    account.checkpoints.clear()
+    account.checkpoint(next(iter(account.initial_states.values()))['segment_start'], 'VALIDATED_NATIVE_INITIAL_STATE')
+    return account

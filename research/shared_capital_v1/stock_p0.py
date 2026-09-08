@@ -3,7 +3,7 @@
 Frozen signal coordinates are immutable. The ledger holds raw economic shares;
 registered corporate actions and actual fills drive all subsequent account state.
 """
-from dataclasses import asdict
+from dataclasses import asdict, fields as dataclass_fields
 from pathlib import Path
 
 import pandas as pd
@@ -47,6 +47,9 @@ def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, bounda
     account=physical if physical is not None else PhysicalAccount('OGR')
     if not hasattr(account,'boundary_snapshots'): account.boundary_snapshots={}
     cash=dict(initial_state['board_cash']) if initial_state else {b:account.sleeve_cash[strategy]/2 for b in ('MAIN','CHINEXT')}
+    scaling = getattr(account, 'scaling', None)
+    if scaling is not None:
+        scaling.board_cash[strategy] = cash
     active=deepcopy(initial_state['native_active']) if initial_state else {}
     for position in active.values():
         position['entry_date']=pd.Timestamp(position['entry_date'])
@@ -146,6 +149,11 @@ def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, bounda
                 rejects.append({'event_id':row.event_id,'reason':reason});continue
             current=get_row(str(row.symbol),day)
             outlay=board_nav[board]/30
+            if scaling is not None:
+                outlay = scaling.native_notional(row.event_id, strategy, board, when)
+                if outlay <= 0:
+                    rejects.append(dict(event_id=row.event_id, reason='NO_FROZEN_NATIVE_REFERENCE_REQUEST'))
+                    continue
             when=day+pd.Timedelta(hours=9,minutes=30)
             priority=(ordinal,)+tuple(getattr(row,k) if strategy=='ATRDR' else -getattr(row,k) for k in rank)
             intent=Intent(strategy,getattr(row,'route','MCB'),'DEMAND',row.event_id,getattr(row,'parent_event_id',''),row.symbol,
@@ -190,7 +198,9 @@ def replay(strategy, entries, daily, start, end, *, enforce_lineage=True, bounda
             yield Event(when,'EXIT',strategy,str(day),lambda d=day:exits(d,True))
             yield Event(when,'CLOSE',strategy,str(day),lambda d=day:close_step(d))
             yield Event(day+pd.Timedelta(hours=15,minutes=1),'RECORD',strategy,str(day),lambda d=day:actions.record(d))
-    result=lambda:(pd.DataFrame(intents),pd.DataFrame(rejects),pd.DataFrame(nav_rows))
+    result=lambda:(pd.DataFrame(intents, columns=[f.name for f in dataclass_fields(Intent)]+['native_requested_notional']),
+                   pd.DataFrame(rejects, columns=['event_id','reason']),
+                   pd.DataFrame(nav_rows, columns=['trade_date','nav','cash','gross_exposure','active_positions']))
     if stream_only:return events(),result
     blocker=None
     try:account.scheduler_trace=run_streams([events()])

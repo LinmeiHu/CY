@@ -11,7 +11,7 @@ import json
 import pandas as pd
 
 from five_strategy_bundle.strategies import smv6
-from research.shared_capital_v1.causal_adapters import CausalCashPlatform, corrected_function
+from research.shared_capital_v1.causal_adapters import CausalCashPlatform, corrected_function, record_pending_signals
 from research.shared_capital_v1.shared_account.engine import Intent, PhysicalAccount
 from research.shared_capital_v1.shared_account.scheduler import Event, run_streams
 from research.shared_capital_v1.smv6_baseline import HERE, load_bounded
@@ -109,8 +109,9 @@ def callback_stream(platform, calendar):
         platform.current_date = day.date()
         platform.event_stage = 'before_trading'
         prior = set(platform.positions)
+        previous_event_date = context.prev_trade_date
         namespace['before_trading'](context)
-        smv6.record_pending_signals(platform, context, prior)
+        record_pending_signals(platform, context, prior, previous_event_date=previous_event_date)
     def opening():
         platform.event_stage = 'open'
         namespace['execute_pending_open'](context, platform.bar_dict(), 'LOCAL_09_30')

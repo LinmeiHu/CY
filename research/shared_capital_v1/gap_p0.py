@@ -1,6 +1,6 @@
 """Gap native pre-capital requests replayed into a physical research account."""
 import json
-from dataclasses import asdict
+from dataclasses import asdict, fields
 from pathlib import Path
 
 import pandas as pd
@@ -34,6 +34,14 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
             if len(rows)!=1:raise ValueError('native inherited Gap identity missing')
             active[eid]=rows.iloc[0].to_dict()
 
+    scaling = getattr(account, 'scaling', None)
+    if scaling is not None:
+        scaling.board_cash[strategy] = cash
+    quote_times = {}
+    if scaling is not None:
+        for when in scaling.data['quotes']:
+            quote_times.setdefault(pd.Timestamp(when).normalize(), []).append(pd.Timestamp(when))
+
     native_marks={}
     def mark(when, include_close=False):
         for eid, row in active.items():
@@ -57,11 +65,17 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
     def exits(when):
         for eid, row in sorted(list(active.items()), key=lambda item: (pd.Timestamp(item[1]["exit_time"]), item[1]["symbol"])):
             if pd.Timestamp(row["exit_time"]) <= when:
+                price = row['exit_raw_price']
+                if scaling is not None and pd.Timestamp(row['exit_time']) < when:
+                    quote = scaling.prices(when).get(row['symbol'])
+                    if quote is None or not quote['sell']:
+                        continue
+                    price = quote['price']
                 before = account.cash
                 for key,lot in list(account.lots.items()):
                     if key==eid or lot.get('root_event_id')==eid:
                         if lot['quantity']-lot.get('nontradable_quantity',0.)>0:
-                            account.close(key, row["exit_raw_price"], when, .002)
+                            account.close(key, price, when, .002)
                 cash[row["board"]] += account.cash - before
                 if not any(k==eid or l.get('root_event_id')==eid for k,l in account.lots.items()):del active[eid]
     def enter(when, cohort):
@@ -73,8 +87,15 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
                 other.append({"event_id": row.gap_id, "reason": reason})
                 continue
             mark(when)
-            value = sum(account.lots[eid]["quantity"] * native_marks[p["symbol"]] for eid, p in active.items() if p["board"] == row.board)
+            value = sum((lot['quantity'] + lot.get('pending_quantity', 0.)) * native_marks[lot['symbol']]
+                        for eid, p in active.items() if p['board'] == row.board
+                        for key, lot in account.lots.items() if key == eid or lot.get('root_event_id') == eid)
             outlay = (cash[row.board] + value) / 80
+            if scaling is not None:
+                outlay = scaling.native_notional(row.gap_id, strategy, row.board, when)
+                if outlay <= 0:
+                    other.append(dict(event_id=row.gap_id, reason='NO_FROZEN_NATIVE_REFERENCE_REQUEST'))
+                    continue
             intent = Intent(strategy, "FIXED_BELOW_L_REPAIR", "GAP", row.gap_id, row.gap_id, row.symbol,
                 pd.Timestamp(row.signal_time), when, (-row.target_at_entry, row.pre_gap_inside_density_relative_local, row.symbol, row.gap_id),
                 outlay / (row.entry_raw_price * 1.002), row.entry_raw_price, .002, board=row.board, native_base_cash_limit=cash[row.board])
@@ -101,16 +122,22 @@ def replay(strategy, trades, daily, start, end, *, boundaries=(), physical=None,
                         'virtual_lots':{k:dict(v) for k,v in account.lots.items()}}
             yield Event(day+pd.Timedelta(hours=9,minutes=30), 'ACTION', strategy, str(day), lambda d=day: corporate_open(d))
             cohort = bydate.get(day, pd.DataFrame())
-            times = sorted(set(pd.to_datetime(cohort.entry_time) if len(cohort) else []) | {pd.Timestamp(row['exit_time']) for row in active.values() if pd.Timestamp(row['exit_time']).normalize() == day})
+            times = set(pd.to_datetime(cohort.entry_time) if len(cohort) else []) | {pd.Timestamp(row['exit_time']) for row in active.values() if pd.Timestamp(row['exit_time']).normalize() == day}
+            if scaling is not None and any(pd.Timestamp(row['exit_time']).normalize() < day for row in active.values()):
+                times.update(quote_times.get(day, []))
+            times = sorted(times)
             for when in times:
                 yield Event(when, 'EXIT', strategy, str(when), lambda w=when: exits(w))
                 yield Event(when, 'ENTRY', strategy, str(when), lambda w=when,c=cohort: enter(w,c))
             yield Event(day + pd.Timedelta(hours=15), 'CLOSE', strategy, str(day), lambda d=day: close(d))
             yield Event(day+pd.Timedelta(hours=15,minutes=1), 'RECORD', strategy, str(day), lambda d=day: actions.record(d))
+    result = lambda: (pd.DataFrame(intents, columns=[f.name for f in fields(Intent)]+['native_requested_notional']),
+                      pd.DataFrame(other, columns=['event_id','reason']),
+                      pd.DataFrame(nav, columns=['trade_date','nav','cash','gross_exposure','active_positions']))
     if stream_only:
-        return events(), lambda: (pd.DataFrame(intents), pd.DataFrame(other), pd.DataFrame(nav))
+        return events(), result
     account.scheduler_trace = run_streams([events()])
-    return account, pd.DataFrame(intents), pd.DataFrame(other), pd.DataFrame(nav)
+    return account, *result()
 
 
 def run():

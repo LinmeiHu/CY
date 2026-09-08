@@ -30,7 +30,7 @@ def test_production_dependency_firewall():
 
 def test_production_does_not_require_golden(monkeypatch, tmp_path: Path) -> None:
     sentinel_inputs = {"registered": tmp_path}
-    monkeypatch.setattr(reproduce, "load_input_config", lambda _: sentinel_inputs)
+    monkeypatch.setattr(reproduce, "load_input_config", lambda _, **kwargs: sentinel_inputs)
     monkeypatch.setattr(
         reproduce,
         "run_mcb",

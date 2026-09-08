@@ -256,7 +256,7 @@ def test_generation_command_required_comparison_failure_nonzero(tmp_path, monkey
     from five_strategy_bundle import reproduce as runner
     inp = tmp_path / "inputs.json"
     golden = tmp_path / "golden.json"
-    inp.write_text('{"inputs": {}}')
+    inp.write_text(json.dumps({'inputs': {k: str(tmp_path) for k in ('daily_hist', 'daily_tail', 'mcb_market_industry_state')}}))
     golden.write_text('{"inputs": {}}')
     def generate(_inputs, target):
         target.mkdir(parents=True, exist_ok=True)

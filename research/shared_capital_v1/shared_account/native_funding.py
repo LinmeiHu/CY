@@ -79,6 +79,11 @@ class NativeFunding:
                     if capacity is None:
                         capacity=self.account.cash*multiplier
                         self.home_history.append(dict(timestamp=when,**{s+'_nav':home[s] for s in self.account.strategies}))
+                    if self.policy == 'P0':
+                        # A synchronous native callback may legally sell between
+                        # two requests. P0 has no frozen DD allowance to consume;
+                        # its next order uses actual current physical/sleeve cash.
+                        capacity = self.account.cash
                     before=self.account.cash
                     pending=self.original(intents,home,self.policy,when,mcb_mode=self.mode,base_only=True,available_capacity=capacity)
                     capacity-=before-self.account.cash

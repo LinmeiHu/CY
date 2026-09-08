@@ -6,7 +6,16 @@ This engine deliberately has no outcome-table input or automatic exit rule.
 from dataclasses import asdict, dataclass
 from math import floor, isfinite
 
+import pandas as pd
+
 from .allocator import active_strategies, base_headroom, capped_headroom, exact_confirmation, proportional_cash
+
+
+def account_timestamp(value):
+    timestamp = pd.Timestamp(value)
+    if pd.isna(timestamp):
+        raise ValueError('invalid account timestamp')
+    return timestamp
 
 
 @dataclass(frozen=True)
@@ -36,7 +45,10 @@ class Intent:
 
     @property
     def native_requested_notional(self):
-        return self.native_requested_quantity * self.price * (1 + self.fee_rate)
+        # Match the actual cash bill's unit-cost multiplication exactly. At
+        # large native orders, alternate association can falsely reject a fully
+        # affordable request by several floating-point ULPs.
+        return self.native_requested_quantity * (self.price * (1 + self.fee_rate))
 
     def identity(self):
         return {**asdict(self), "direction": "LONG", "decision_timestamp": self.decision_at,
@@ -69,15 +81,14 @@ class PhysicalAccount:
     def mark(self, prices, *, basis=None, observed_at=None):
         if any(not isfinite(v) or v <= 0 for v in prices.values()):
             raise ValueError("invalid mark")
+        if observed_at is not None:
+            observed_at = account_timestamp(observed_at)
+            prices = {s:p for s,p in prices.items() if s not in self.mark_times or observed_at >= self.mark_times[s]}
         if basis is not None:
             if any(s in self.price_bases and self.price_bases[s] != basis for s in prices):
                 raise ValueError('physical symbol price-unit conflict: raw conversion required')
             self.price_bases.update({s:basis for s in prices})
         if observed_at is not None:
-            import pandas as pd
-            observed_at = pd.Timestamp(observed_at)
-            if pd.isna(observed_at): raise ValueError('invalid mark observation time')
-            prices = {s:p for s,p in prices.items() if s not in self.mark_times or observed_at >= self.mark_times[s]}
             self.mark_times.update({s:observed_at for s in prices})
         self.marks.update(prices)
 
@@ -91,6 +102,7 @@ class PhysicalAccount:
         return row
 
     def checkpoint(self, when, stage):
+        when = account_timestamp(when)
         virtual, pending = {}, {}
         for lot in self.lots.values():
             quantities = (lot['quantity'], lot.get('pending_quantity', 0.), lot.get('nontradable_quantity', 0.), lot['remaining_outlay'])
@@ -126,6 +138,7 @@ class PhysicalAccount:
         return row
 
     def close(self, event_id, price, when, fee_rate, *, quantity=None, reason="NATIVE_EXIT"):
+        when = account_timestamp(when)
         lot = self.lots[event_id]
         tradable = lot["quantity"] - lot.get("nontradable_quantity", 0.)
         qty = tradable if quantity is None else quantity
@@ -154,6 +167,7 @@ class PhysicalAccount:
         return self.checkpoint(when, "NATIVE_EXIT")
 
     def credit(self, event_id, per_share, when):
+        when = account_timestamp(when)
         if not isfinite(per_share) or per_share < 0:
             raise ValueError("invalid corporate cash credit")
         lot = self.lots[event_id]
@@ -164,14 +178,38 @@ class PhysicalAccount:
         return self.checkpoint(when, "NATIVE_CASH_EVENT")
 
     def _native_rejection(self,intent,when):
-        if intent.native_max_positions is None:return None
+        if intent.native_max_positions is None and intent.native_daily_entries is None:return None
         import pandas as pd
         live=[(eid,l) for eid,l in self.lots.items() if l['strategy']==intent.strategy and l.get('board')==intent.board]
         if any(l['symbol']==intent.symbol for _,l in live):return 'ACTIVE_SYMBOL'
-        if len({l.get('root_event_id',eid) for eid,l in live})>=intent.native_max_positions:return 'MAX_K'
+        if intent.native_max_positions is not None and len({l.get('root_event_id',eid) for eid,l in live})>=intent.native_max_positions:return 'MAX_K'
         count=sum(f['side']=='BUY' and f['strategy']==intent.strategy and f.get('board')==intent.board and pd.Timestamp(f['entry']).normalize()==pd.Timestamp(when).normalize() for f in self.fills)
-        if count>=intent.native_daily_entries:return 'DAILY_CAP'
+        if intent.native_daily_entries is not None and count>=intent.native_daily_entries:return 'DAILY_CAP'
         return None
+
+    def validate_intents(self, intents, when):
+        """Check the native order boundary before either funding path mutates it."""
+        when = account_timestamp(when)
+        batch_bases = dict(self.price_bases)
+        for intent in intents:
+            if intent.symbol in batch_bases and batch_bases[intent.symbol] != intent.price_basis:
+                raise ValueError("physical symbol price-unit conflict: raw conversion required")
+            batch_bases[intent.symbol] = intent.price_basis
+            if intent.strategy not in self.strategies or not intent.event_id or intent.side != "BUY":
+                raise ValueError("invalid active strategy/intent")
+            decision = account_timestamp(intent.decision_at)
+            execution = account_timestamp(intent.earliest_execution_at)
+            if decision >= execution or execution > when:
+                raise ValueError("future or unfinished-bar intent")
+            if intent.native_base_cash_limit is not None and (not isfinite(intent.native_base_cash_limit) or intent.native_base_cash_limit < 0):
+                raise ValueError('invalid native cash limit')
+            if not all(isfinite(v) for v in (intent.price, intent.fee_rate, intent.native_requested_quantity)) or intent.price <= 0 or intent.fee_rate < 0 or intent.native_requested_quantity <= 0:
+                raise ValueError("invalid native sizing")
+            if not isfinite(intent.lot_size) or intent.lot_size < 0 or int(intent.lot_size) != intent.lot_size:
+                raise ValueError('invalid native lot size')
+            for limit in (intent.native_max_positions, intent.native_daily_entries):
+                if limit is not None and (not isfinite(limit) or limit < 0 or int(limit) != limit):
+                    raise ValueError('invalid native capacity')
 
     def _fill(self, intent, budget, kind, when):
         reason=self._native_rejection(intent,when)
@@ -209,6 +247,9 @@ class PhysicalAccount:
         return True
 
     def fund(self, intents, home, policy, when, *, gate_multiplier=1.0, mcb_mode="independent", base_only=False, available_capacity=None):
+        intents = list(intents)
+        when = account_timestamp(when)
+        self.validate_intents(intents, when)
         if policy not in ("P0", "P1", "P2", "P3_D4", "P3_D5", "P3_D6"):
             raise ValueError("unknown frozen policy")
         if set(home) != set(self.strategies) or any(not isfinite(v) or v <= 0 for v in home.values()):
@@ -223,19 +264,6 @@ class PhysicalAccount:
         ids = [i.event_id for i in ordered]
         if len(set(ids)) != len(ids) or any(i in self.seen for i in ids):
             raise ValueError("intent duplicate/replay would enlarge funded trade")
-        batch_bases = dict(self.price_bases)
-        for intent in ordered:
-            if intent.symbol in batch_bases and batch_bases[intent.symbol] != intent.price_basis:
-                raise ValueError("physical symbol price-unit conflict: raw conversion required")
-            batch_bases[intent.symbol] = intent.price_basis
-            if intent.strategy not in self.strategies or not intent.event_id or intent.side != "BUY":
-                raise ValueError("invalid active strategy/intent")
-            if intent.decision_at >= intent.earliest_execution_at or intent.earliest_execution_at > when:
-                raise ValueError("future or unfinished-bar intent")
-            if intent.native_base_cash_limit is not None and (not isfinite(intent.native_base_cash_limit) or intent.native_base_cash_limit < 0):
-                raise ValueError('invalid native cash limit')
-            if not all(isfinite(v) for v in (intent.price, intent.fee_rate, intent.native_requested_quantity)) or intent.price <= 0 or intent.fee_rate < 0 or intent.native_requested_quantity <= 0:
-                raise ValueError("invalid native sizing")
         self.seen.update(ids)
         # The contract retains ATRDR's lot/priority in an exact overlap. Resolve
         # its native capacity first; a capacity-rejected ATRDR candidate cannot
