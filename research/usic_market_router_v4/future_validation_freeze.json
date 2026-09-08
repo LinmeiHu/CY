@@ -1,0 +1,12 @@
+{
+  "status": "SHADOW_ONLY_NOT_AUTHORIZED_TO_EXECUTE_NEW_SAMPLE",
+  "primary": "D08 C_10 E10 S1 ENTRY_ONLY",
+  "baseline": "D08 C_10 E10 no gate",
+  "signal_rules": "V3 original D08 unchanged",
+  "gate": "T close B60<0.5 and B20(T)-B20(T-10)<=0 blocks T+1 new entries; missing blocks",
+  "book": "native E10; no forced market exit",
+  "capital": "1m; each new buy <=10% prior NAV; V3 legal-lot/capacity/fees rules",
+  "no_new_thresholds": true,
+  "required": "explicit purpose authorization; whole-CY consumption/independence audit; compatible execution data; fixed analysis before opening sample",
+  "opened": false
+}
