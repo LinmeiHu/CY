@@ -1,5 +1,5 @@
 """Run the registered accounts, atomically checkpoint real completions, resume exact identities."""
-import argparse,json,time,traceback
+import argparse,json,time,traceback,os
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -70,7 +70,7 @@ def publish_summary():
             if gate.get('status') in ['NOT_RUN_DATA_GATE','BLOCKED_PERMISSION']:r.update(status=gate['status'],reason=gate['reason'])
         if s['group']=='I_FIVE_STRATEGY_CONDITIONAL' and gates.get('I',{}).get('status')=='BLOCKED_EXISTING_ACCOUNT_BASELINE':r.update(status='BLOCKED_INPUT',reason='BLOCKED_EXISTING_ACCOUNT_BASELINE: '+gates['I']['reason'])
         rows.append(r)
-    pd.DataFrame(rows).to_csv(HERE/'scenario_summary.csv',index=False)
+    dest=HERE/'scenario_summary.csv';temp=dest.with_name(dest.name+f'.tmp.{os.getpid()}');pd.DataFrame(rows).to_csv(temp,index=False);temp.replace(dest)
     counts=pd.Series([r['status'] for r in rows]).value_counts().to_dict();dump(HERE/'RUN_CHECKPOINT.json',dict(updated_at=time.time(),counts=counts,total_slots=296,core_slots=216))
     return counts
 
@@ -87,7 +87,11 @@ def main():
         if s['group']=='I_FIVE_STRATEGY_CONDITIONAL':continue
         if s['group']=='Q_DATA_CONDITIONAL':
             if s['id'].startswith('Q5_'):
-                f=frames['D02'];f=f[f.Industry.notna()].copy()
+                f=frames['D02'].copy()
+                # Arrow/Pandas respects case: industry is membership, Industry is the leader score.
+                score=pd.read_parquet(OUT/'cache/N_candidates.parquet',columns=['t','j','Industry'])
+                f=f.drop(columns=['Industry'],errors='ignore').merge(score,on=['t','j'],how='left',validate='one_to_one')
+                f=f[f.Industry.notna()].copy()
                 if s['arm']=='ENHANCED':f['score']=.8*f.score+.2*f.Industry
             else:continue
         else:f=frames[s['signal']].copy()
@@ -98,7 +102,8 @@ def main():
             old=json.loads(idpath.read_text());row=json.loads(resultpath.read_text())
             if old.get('inputs')==ident and row['status'] in ['COMPLETED_NEW','NO_ELIGIBLE_SIGNAL'] and all(sha(d/n)==h for n,h in old['artifacts'].items()):
                 print('RESUME_VERIFIED',s['id'],flush=True);continue
-        row=dict(s,status='RUNNING',started_at=start,output=str(d));dump(resultpath,row);publish_summary()
+        row=dict(s,status='RUNNING',started_at=start,output=str(d))
+        if not args.repeat:dump(resultpath,row);publish_summary()
         try:
             nav,trades,orders,audit,openpos,holds=replay(m,sc,f)
             artifacts={}

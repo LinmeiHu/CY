@@ -1,0 +1,123 @@
+{
+  "task_status": "COMPLETED_WITH_CONDITIONAL_GATES",
+  "method_label": "CHAMPION_INSPIRED_MECHANICAL_A_SHARE_PROXIES_NOT_REPLICATIONS",
+  "newly_executed": 252,
+  "core_completed": 216,
+  "data_conditional_completed": 36,
+  "verified_reused": 0,
+  "zero_signal_replayed": 0,
+  "exact_duplicate_evidence": 0,
+  "not_run_with_reason": 44,
+  "invalidated_by_bug_final": 0,
+  "routes": {
+    "D00": {
+      "name": "成熟趋势普通突破",
+      "research": "ALREADY_COVERED",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "信号精确继承V2 N1，本轮重新验证真实现金与容量；基准为负收益。"
+    },
+    "D01": {
+      "name": "成熟趋势加动态VCP",
+      "research": "COMPONENT_ONLY",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "收缩准入部分改善普通突破亏损，但全部三资金模式主账户仍亏损。"
+    },
+    "D02": {
+      "name": "VCP加前段路径排名",
+      "research": "NO_INCREMENTAL_EDGE",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "本轮机械定义未形成可保留的稳健净收益/增量。"
+    },
+    "D03": {
+      "name": "强趋势EMA回调收复",
+      "research": "NO_INCREMENTAL_EDGE",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "本轮机械定义未形成可保留的稳健净收益/增量。"
+    },
+    "D04": {
+      "name": "回调加AVWAP重合",
+      "research": "NO_INCREMENTAL_EDGE",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "本轮机械定义未形成可保留的稳健净收益/增量。"
+    },
+    "D05": {
+      "name": "旧突破水平与EMA支撑重合",
+      "research": "COMPONENT_ONLY",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "E10尽可能部署仅小幅正收益、回撤49.89%；作为H02可核查的同候选对照保留，不独立部署。"
+    },
+    "D06": {
+      "name": "早期低位转强",
+      "research": "NO_INCREMENTAL_EDGE",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "本轮机械定义未形成可保留的稳健净收益/增量。"
+    },
+    "D07": {
+      "name": "早期转强后的首次回测",
+      "research": "NO_INCREMENTAL_EDGE",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "本轮机械定义未形成可保留的稳健净收益/增量。"
+    },
+    "D08": {
+      "name": "父转强后的后续延续",
+      "research": "COMPONENT_ONLY",
+      "execution": "EXECUTION_FRAGILE",
+      "deployment": "SHADOW_ONLY",
+      "reason": "仅冻结C_10/E10保留机会稀疏的影子组件；成本/延迟压力仍正，但平均利用率36.94%，C_MAX与C_ONE均失败。"
+    },
+    "D09": {
+      "name": "突破前提前参与",
+      "research": "NO_INCREMENTAL_EDGE",
+      "execution": "FEASIBLE_UNDER_STATED_ASSUMPTIONS",
+      "deployment": "REJECT",
+      "reason": "本轮机械定义未形成可保留的稳健净收益/增量。"
+    },
+    "H01": {
+      "name": "VCP突破后等待第一次回调",
+      "research": "INSUFFICIENT_EVIDENCE",
+      "execution": "EXECUTION_FRAGILE",
+      "deployment": "REJECT",
+      "reason": "C_10出现正收益但明显依赖资金模式，C_MAX/C_ONE深度亏损；等待回调损失大量不回头机会。"
+    },
+    "H02": {
+      "name": "支撑重合加父突破前路径排名",
+      "research": "POSITIVE_EXPLORATORY_EVIDENCE",
+      "execution": "EXECUTION_FRAGILE",
+      "deployment": "SHADOW_ONLY",
+      "reason": "仅E10下C_MAX/C_10保留，净收益及同候选排名增量为正，成本与延迟压力仍正；区间跨零、2022/2023亏损、回撤34%-39%，不具生产证据。"
+    }
+  },
+  "shadow_candidates": [
+    "A_H02_C_MAX_E10",
+    "A_H02_C_10_E10",
+    "A_D08_C_10_E10"
+  ],
+  "portfolio_policy": "NO_GENERAL_PORTFOLIO_POLICY_PROMOTED",
+  "P3_concentrated_case": "KEEP_RECORDED_STRESS_OBSERVATION_ONLY; not a deployable shared-capital policy",
+  "Q": {
+    "Q1": "INSUFFICIENT_EVIDENCE_PERMISSION",
+    "Q2": "INSUFFICIENT_EVIDENCE_PIT_FINANCIAL_VERSIONS",
+    "Q3": "NO_INCREMENTAL_EDGE",
+    "Q4": "NO_INCREMENTAL_EDGE",
+    "Q5": "NO_INCREMENTAL_EDGE",
+    "Q6": "INSUFFICIENT_EVIDENCE_PERMISSION"
+  },
+  "I": "BLOCKED_EXISTING_ACCOUNT_BASELINE",
+  "overall_research": "LIMITED_COMPONENT_LEVEL_EXPLORATORY_EVIDENCE",
+  "overall_execution": "EXECUTION_FRAGILE",
+  "overall_deployment": "SHADOW_ONLY_NO_PRODUCTION_OR_ORDERS",
+  "best_return_case": "E_P3_CORROBORATE_C_ONE_EST",
+  "best_risk_tradeoff_case": "B_D08_C_10_DELAY1",
+  "best_incremental_case": "A_H02_C_MAX_E10 vs A_D05_C_MAX_E10",
+  "future_sample_opened": false,
+  "production_modified": false,
+  "trade_orders_sent": false
+}

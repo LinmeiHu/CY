@@ -19,5 +19,19 @@
     "reason": "Expiry used available array endpoint, causing mutable prefix metadata",
     "action": "Use fixed b+15/b+20/formation+9 calendar-session expiry; all 41 prefix/identity checks passed",
     "affected_completed_accounts": 0
+  },
+  {
+    "id": "V3-004",
+    "stage": "Q5_PRE_ACCOUNT",
+    "reason": "DuckDB case-insensitive projection confused industry membership and Industry score in inherited feature schema",
+    "action": "Q5 loads exact Arrow/Pandas Industry column and validates one-to-one t,j binding; no core score or trade used this missing field",
+    "invalidated_completed_accounts": 0
+  },
+  {
+    "id": "V3-005",
+    "stage": "PRE_REPEAT_DRIVER_REVIEW",
+    "reason": "Repeat branch would overwrite completed status with RUNNING while only writing repeated artifacts",
+    "action": "Repeat verification leaves authoritative result.json intact. Discovered before first repeat; no account was invalidated",
+    "invalidated_completed_accounts": 0
   }
 ]

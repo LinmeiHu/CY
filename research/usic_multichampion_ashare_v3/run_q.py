@@ -20,7 +20,8 @@ def main():
         if not args.repeat and (d/'identity.json').exists() and (d/'result.json').exists():
             old=json.loads((d/'identity.json').read_text());row=json.loads((d/'result.json').read_text())
             if old['inputs']==ident and row['status'] in ['COMPLETED_NEW','NO_ELIGIBLE_SIGNAL'] and all(sha(d/p)==h for p,h in old['artifacts'].items()):print('RESUME_VERIFIED',s['id'],flush=True);continue
-        row=dict(s,status='RUNNING',started_at=time.time(),output=str(d));dump(d/'result.json',row);publish_summary()
+        row=dict(s,status='RUNNING',started_at=time.time(),output=str(d))
+        if not args.repeat:dump(d/'result.json',row);publish_summary()
         try:
             nav,trades,orders,audit,op,hold=(tail_replay if tail else open_replay)(m,sc,f);artifacts={}
             assert len(nav)==sum(day>='2020-01-01' for day in m.dates)
