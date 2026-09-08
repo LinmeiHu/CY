@@ -1,0 +1,9 @@
+{
+  "economic_sequence": "Leadership(t-5) -> Pressure(t) -> Resilience(t) -> Repair(t+1..t+5) -> Outcome(t+6..t+25)",
+  "causal_background": "CY-006 PIT-B daily cache; PIT historical industry; 2018-2019 warmup and 2020-2023 consumed development sample",
+  "state_variables": ["ret20", "ret60", "industry_breadth_ma20", "industry_ret5", "market_ret5", "past60_beta_market", "past60_beta_sector"],
+  "event_formation_time": "t-5 close leadership", "pressure_time": "t close", "resilience_observation_time": "t close", "repair_confirmation_time": "t+5 close", "outcome_start_time": "t+6 close", "trading_decision_time": null,
+  "possible_semantic_ambiguities": ["Event outcomes are descriptive close-to-close associations, not executable fills.", "Repair is classified only after its five-session observation window; all group outcomes begin afterwards."],
+  "chosen_time_anchors": "All features use values at or before their stated close; each outcome is strictly later than the classification close.",
+  "future_leakage_checks": ["No future extrema", "no future industry membership", "no outcome in event formation", "repair-negative rows retained", "truncation excluded per horizon"]
+}
