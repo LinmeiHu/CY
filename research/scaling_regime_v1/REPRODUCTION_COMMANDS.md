@@ -1,34 +1,58 @@
-# 身份门禁复跑
+# 复现命令
 
-仅在 `/Users/linmei/Documents/CY-worktrees/five-strategy-scaling-regime-v1`、分支 `research/five-strategy-scaling-regime-v1` 运行。依赖已安装的 Anaconda Python 3.13、pandas、numpy、pyarrow、pytest；没有安装新依赖。
+固定工作树与分支：`/Users/linmei/Documents/CY-worktrees/five-strategy-scaling-regime-v1`，`research/five-strategy-scaling-regime-v1`。外部原始数据和父研究缓存按 input_manifest.json 绑定；Git 包含代码、契约、检查与压缩结果，不包含巨量原始行情。
 
-需要真实 `/Volumes/quant` 的父账户与连续滚动账户，以及 `input_manifest.json` 中绑定的输入。未提交滚动生产脚本已快照到 `evidence/`，对应原文件仍按哈希核验。这里不调用任何生产者，也不写外盘或父工作区。
-
-```bash
+```sh
 cd /Users/linmei/Documents/CY-worktrees/five-strategy-scaling-regime-v1
-PYTHONPATH=.:src /opt/anaconda3/bin/python -m research.scaling_regime_v1.audit
+export PYTHONPATH=.:src
+/opt/anaconda3/bin/python -c 'from research.scaling_regime_v1.audit import verify_inputs; verify_inputs()'
 ```
 
-**预期退出码为 2**，并产生 `BLOCKED_ROLLFORWARD_IDENTITY_MISMATCH`。这表示门禁正确拒绝，不是账户计算已通过。输入缺失或漂移则会抛出异常；不能把任何非零退出码都当预期的身份拒绝。
+已绑定的执行输入可直接重放。以下入口检查已有 receipt；独立实际重放证据见 continuous_determinism.csv 与 root_capital_trace_receipts.json。不要删除封存缓存后悄悄重建成不同字节；在独立命名目录回放并比较原 receipt。准备输入源码为 snapshot.py、rebuild_inputs.py、quotes.py，其原始资格和 PIT 边界见报告。
 
-父测试要求已登记缓存位于当前树 `research/shared_capital_v1/cache`。当前该路径为 Git 已忽略的软链接，指向 `/Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache`。新检出时若路径不存在，可执行：
-
-```bash
-ln -s /Users/linmei/Documents/CY-worktrees/five-strategy-shared-capital-v1/research/shared_capital_v1/cache research/shared_capital_v1/cache
+```sh
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.signal_prefix
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.closure_checks
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.run_scaling
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.scaling_postcheck
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.mechanics_identity
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.determinism_v2
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.capital_trace
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.capital_trace_extra
 ```
 
-路径已经存在时不要覆盖。测试只复用已登记的缓存版本，随后 `finalize` 再验其哈希。
+实际账户的经济归因顺序如下。全部使用固定目标与原生退出。旧 audit.py、build_report.py、finalize.py 属于原始身份拒绝研究，不要用它们覆盖本次权威报告。
 
-```bash
-/opt/anaconda3/bin/python -m pytest -q tests research --junitxml=research/scaling_regime_v1/output/tests.xml
-PYTHONPATH=.:src /opt/anaconda3/bin/python -m research.scaling_regime_v1.finalize
+```sh
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.economics
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.fee_bridge
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.rebalance
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.states
+/opt/anaconda3/bin/python -c 'from research.scaling_regime_v1.capital_state import run, portfolio_states; run(); portfolio_states()'
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.capacity
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.comparisons
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.drawdowns
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.state_details
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.state_samples
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.add_context
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.merge_final_details
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.report_v2
+/opt/anaconda3/bin/python -m pytest -q tests research --junitxml=research/scaling_regime_v1/output/tests_v2.xml
+FIVE_STRATEGY_INPUT_CONFIG=research/five_strategy_exit_risk_v1/input_config.json /opt/anaconda3/bin/python -m pytest -q tests/reproduction/test_mcb_external.py --basetemp=research/scaling_regime_v1/cache/pytest_registered_mcb --junitxml=research/scaling_regime_v1/output/registered_mcb_test.xml
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.finalize_v2
 ```
 
-`finalize` 要求真实测试 XML 无失败，提取稳定的测试名称/结果，独立执行两次完整身份核验与报告生成并比较 SHA256。它的退出码应为 0；业务身份拒绝继续保持。XML、日志、运行耗时不纳入确定性清单，`test_results.json` 保存实际测试结论。
+金额、股数、时间和原生会计均来自实际账户。日/分钟容量分母只是诊断，不改成交。逐笔输出较大，仓库中提供确定性 gzip；对应 CSV 在本机 output 下存在，可用 `gzip -dc 文件.csv.gz > 文件.csv` 恢复。若 gzip 超过 Git 单文件限制，按 `文件.csv.gz.part*` 的字典顺序拼接后解压；清单记录每份文件的 SHA256。
 
-```bash
-cd research/scaling_regime_v1
-shasum -a 256 -c output/output_manifest.sha256
+强制再次执行独立实际回放时，可先备份本任务的只读复核缓存；不要移动权威 `cache/accounts` 或父研究数据。示例：
+
+```sh
+REPLAY_BACKUP_TAG=$(date +%Y%m%d%H%M%S)
+mv research/scaling_regime_v1/cache/capital_timeline_native research/scaling_regime_v1/cache/capital_timeline_native_saved_$REPLAY_BACKUP_TAG
+mv research/scaling_regime_v1/cache/capital_timeline_scaling research/scaling_regime_v1/cache/capital_timeline_scaling_saved_$REPLAY_BACKUP_TAG
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.capital_trace
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.capital_trace_extra
+/opt/anaconda3/bin/python -m research.scaling_regime_v1.determinism_v2
 ```
 
-不重跑资本前沿，不生成年度收益、状态归因、容量、leave-year 或路由伪结果。18 个新增测试要求的未执行部分见 `output/requirement_test_coverage.csv`。继续经济研究前须明确父分段协议与连续扩展的权威关系，并闭合 MCB 快照资格证据；不应通过修改本门禁或放松误差来消除差异。
+独立复核再次生成后，必须与权威账户每个核心文件逐字节一致；仅仅读取原有 receipt 的运行不计作新一次独立回放。

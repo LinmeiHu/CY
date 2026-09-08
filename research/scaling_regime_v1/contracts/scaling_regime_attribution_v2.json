@@ -1,0 +1,135 @@
+{
+  "account_size_multiples": [
+    1,
+    2,
+    5,
+    10
+  ],
+  "amendment_reason": "V1 explicitly required per-segment SMV6 reset. User now authorizes source-defined continuous initialization; preserve all existing state features, thresholds, targets and qualification requirements",
+  "attribution_limits": "Annual amount difference contains accumulated capital/path differences; mechanics comparison is a controlled account experiment, not multiplication of historical trade returns",
+  "attribution_metrics": [
+    "actual_account_pnl",
+    "scaled_minus_native_pnl",
+    "annual_return",
+    "MaxDD",
+    "CVaR5",
+    "Sharpe",
+    "gross",
+    "turnover",
+    "fees",
+    "capital_days",
+    "single_name_exposure",
+    "Demand_exposure",
+    "strategy_route_symbol_contributions",
+    "rebalance_action_forward_1_3_5_10_20_sessions"
+  ],
+  "blocked_output_policy": "Do not fabricate numerical attribution or router results. Record not-run requirements explicitly; identity gate rejection is not evidence that no stable router exists.",
+  "capacity": "Descriptive actual order/stock daily amount and available minute amount only; distinguish same-day turnover from trailing ADV; no impact model or fill changes",
+  "capacity_descriptive_flags": [
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.2
+  ],
+  "cash_residual": "Observed uninvested cash has zero assumed interest; no invented foregone return",
+  "continuous_protocol_sha256": "f194822e1aa73037c0b2694e8484cc55a04197141e79106009641fff698874ec",
+  "freeze_order": "Before any state-conditioned outcome analysis; parent annual report was read during identity audit",
+  "full_book_forward": "Signed marginal fill quantity times forward total-return price change, with actual closing executions/CA adjustments where available; label counterfactual reductions and overlap, never treat full horizon sum as actual annual P&L",
+  "identity_gate": "Continuous source, restored predicates, historical prefix and temporal prefix gates all PASS before outcome attribution",
+  "maximum_router_candidates": 1,
+  "mechanics": [
+    "FULL_BOOK_NORMALIZATION",
+    "ENTRY_ONLY"
+  ],
+  "mechanics_minimum_targets": [
+    "G25",
+    "G100"
+  ],
+  "native_exits_only": true,
+  "no_hysteresis_tuning": true,
+  "no_new_alpha": true,
+  "no_new_thresholds": true,
+  "no_production_authorization": true,
+  "outcome_status": "POST_HOC_DIAGNOSTIC_NOT_NEW_SEALED_VALIDATION",
+  "parent_boundary_semantics": "AUTHORITATIVE_CONTINUOUS_PROTOCOL_V1; initialize once from frozen 2018 state and carry all state. Segmented parent is a separately labeled comparator",
+  "parent_head": "77128f86ff40673102f60860100d8504d801e2d2",
+  "periods": {
+    "confirmation": [
+      "2022-01-01",
+      "2023-12-31"
+    ],
+    "discovery": [
+      "2018-01-01",
+      "2021-12-31"
+    ],
+    "rollforward_diagnostic": [
+      "2024-01-01",
+      "2026-09-04"
+    ]
+  },
+  "rebalance_categories": [
+    "NEW_ENTRY_INCREASE",
+    "EXISTING_POSITION_INCREASE",
+    "EXISTING_POSITION_REDUCTION",
+    "EXIT",
+    "CASH_RESIDUAL"
+  ],
+  "return_conventions": "Annual return uses prior year-end NAV; 2026 is actual YTD; P&L is account NAV change, never annual return difference times a shared assumed capital",
+  "router_actions": [
+    "NATIVE",
+    "G25"
+  ],
+  "router_assessment": "First one-dimensional market regime and existing breadth only; evaluate leave-one-year-out direction and remove top 5 profitable root contributions without refitting. No new high-low bins for volatility/DD/liquidity or 2D search",
+  "router_independent_date_disclosure": "Report dates, decisions, annual blocks and root concentration rather than inventing a sample-size cutoff. Require positive direction in every discovery/confirmation leave-year block and after top-5 event removal to support the claimed stable positive scaling state",
+  "router_qualification": [
+    "identity gate passes",
+    "same direction in discovery and confirmation",
+    "economically meaningful",
+    "sufficient independent events and dates with annual blocks reported",
+    "directionally improves diagnostic years",
+    "not driven by tiny events",
+    "leave-one-year-out direction in 2018-2023 without retuning"
+  ],
+  "scaling_targets": [
+    "NATIVE",
+    "G25",
+    "G50",
+    "G75",
+    "G100"
+  ],
+  "state_definitions": {
+    "active_Demand": "Counts/exposure from prior completed holdings; no new threshold",
+    "breadth": "Parent habitat.py: share >=0.5 MAJORITY_POSITIVE_20D; otherwise MINORITY_POSITIVE_20D",
+    "current_account_drawdown": "Contemporaneous account drawdown; continuous only without a registered bucket",
+    "dispersion": "NOT_REGISTERED_IN_PARENT_HABITAT; unavailable unless a frozen source is proved",
+    "liquidity": "Parent 000852.SH prior completed amount_cny; no new bucket",
+    "market_regime": "Frozen ATRDR default build_market_state: BULL iff both 20/60 median returns >0 and both positive shares >0.50; BEAR iff both medians <=0 and both shares <=0.50; otherwise TRANSITION",
+    "volatility": "Parent 000852.SH prior completed daily close percentage-return rolling 20 sample std * sqrt(252); continuous only, no registered high/low threshold"
+  },
+  "state_features": [
+    "market_regime",
+    "market_positive_ret20_share",
+    "market_median_ret20",
+    "market_median_ret60",
+    "market_positive_ret60_share",
+    "index_realized_vol20_prior",
+    "index_amount_prior",
+    "current_account_drawdown",
+    "active_Demand_count",
+    "ATRDR_route_composition",
+    "gross_before"
+  ],
+  "state_outcome_allocation": "Each daily scaled-minus-native actual P&L counted once, conditioned on previous completed daily state; decision table separately counts actual normalization times. Overlapping horizon diagnostics are not summed as independent annual P&L",
+  "state_timing": "Only completed information with state_as_of <= decision_at; daily closes applied after completion; prefix invariance required",
+  "structures": [
+    "OGR/independent",
+    "OGR/confirmation_tag",
+    "IFCGR/independent",
+    "IFCGR/confirmation_tag"
+  ],
+  "supersedes_sha256": "9e3465f8c2a6234767353ee33486f4c8357bfc3d7b4081ba1a9830c8acf2dda4",
+  "two_dimensional_families_predeclared": [],
+  "version": "CAPITAL_SCALING_REGIME_ATTRIBUTION_V2_CONTINUOUS",
+  "year_is_feature": false
+}

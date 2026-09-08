@@ -1,0 +1,17 @@
+number,question,answer,evidence,status
+1,2024 亏损来自原生 alpha 还是缩放？,Native 收益 14.54%；G25 -1.61%、G100 -9.61%。原生组合整体仍盈利，负收益出现在缩放后的实际持仓路径，不能解释为原生组合整体失效。,annual_scaling_increment.csv,ANSWERED
+2,2026 亏损来自原生 alpha 还是缩放？,Native 收益 10.79%；G25 -2.05%、G100 -9.83%。原生组合整体仍盈利，负收益出现在缩放后的实际持仓路径，不能解释为原生组合整体失效。,annual_scaling_increment.csv,ANSWERED
+3,2025 为什么赚得多？,"G100 实际买入批次中，贡献最大的类别为 NEW_ENTRY_INCREASE，年度贡献 10,774,165.27 元；这是实际持仓、退出和分红归因，仍须结合集中度及路线判断。",annual_full_book_category_contribution.csv,ANSWERED
+4,2024 的主要增量路线来源？,"OGR / FIXED_BELOW_L_REPAIR，相对 Native 的实际增量盈亏 -9,776,734.58 元。完整表同时保留原生与缩放总盈亏。",annual_route_contribution.csv,ANSWERED
+5,2026 的主要增量路线来源？,"ATRDR / SLOW_BEAR，相对 Native 的实际增量盈亏 -13,022,344.65 元。完整表同时保留原生与缩放总盈亏。",annual_route_contribution.csv,ANSWERED
+6,2025 的主要增量路线来源？,"OGR / FIXED_BELOW_L_REPAIR，相对 Native 的实际增量盈亏 8,422,467.77 元。完整表同时保留原生与缩放总盈亏。",annual_route_contribution.csv,ANSWERED
+7,Full Book 每年有何影响？,"2024 Full Book 减 Entry Only 的实际年度盈亏为 -22,275,784.48 元；2025 Full Book 减 Entry Only 的实际年度盈亏为 11,661,289.62 元；2026 Full Book 减 Entry Only 的实际年度盈亏为 -19,136,761.76 元。这是完整账户路径对照，不是孤立当年调仓处理效应。",annual_scaling_mechanics_comparison.csv,ANSWERED
+8,坏年份是否重现历史坏状态？,BEAR 在所问年份贡献最显著；2018—2023 同状态有 6 个年度块，其中 3 年增量金额为正、3 年为负。相同状态出现不等于稳定路由证据。,state_annual_blocks.csv,ANSWERED
+9,2025 是否重现历史好状态？,BEAR 在所问年份贡献最显著；2018—2023 同状态有 6 个年度块，其中 3 年增量金额为正、3 年为负。相同状态出现不等于稳定路由证据。,state_annual_blocks.csv,ANSWERED
+10,哪些事前变量解释增量收益？,市场状态和既有宽度分桶提供可复核关联；连续波动率、流动性、已知账户回撤及 Demand 暴露的分期相关性另表披露。它们是条件关联，不能直接当作动态调整仓位的因果收益。,continuous_state_associations.csv,ANSWERED
+11,历史发现和确认期方向是否稳定？,20 个 G25 结构/状态中，0 个通过已声明的综合稳定性检查；各块方向、留一年、去 Top 5 事件和最佳 5 日期结果均披露。,router_candidate_evidence.csv,ANSWERED
+12,是否存在简单 Native/G25 路由？,NO_STABLE_SCALING_REGIME_ROUTER,router_qualification_status.json,ANSWERED
+13,若不成立，为什么？,任何一个阶段方向、单位净值收益增量或去集中度检查失败，都不足以支持稳定正向缩放状态；不增加阈值、年份代理、路线例外或迟滞来挽救。,scaling_regime_leave_year.csv,ANSWERED
+14,当前账户 G25 容量是否可接受？,日成交额参与率最重组的 p99 为 0.61%、最大 18.51%；分钟参与率最重组 p99 为 313.98%，显著超过该分钟实际成交额。完整分钟覆盖和尾部标记另列。该诊断没有市场冲击模型，不能据此批准实盘容量。,g25_capacity_percentiles.csv,ANSWERED
+15,容量主要负担来自哪里？,按当前日成交额参与率 p99，最重为 ATRDR（OGR/confirmation_tag）；ADV20 和分钟分母另表区分。,g25_capacity_percentiles.csv,ANSWERED
+16,下一步研究优先级？,优先对 G25 做真实容量证伪并保留固定原生配置；若状态检查不通过，不扩展复杂路由。新增 alpha 广度应另立研究任务，不能用来补齐本次归因。,final_decision_matrix.csv,ANSWERED

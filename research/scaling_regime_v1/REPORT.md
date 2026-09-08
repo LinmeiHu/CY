@@ -1,128 +1,83 @@
-# CAPITAL SCALING REGIME ATTRIBUTION V1 — 身份门禁拒绝
+# 连续账户身份闭合与缩放状态归因
 
-TASK_STATUS: BLOCKED_ROLLFORWARD_IDENTITY_MISMATCH。经济归因、容量和路由资格研究未完成。不是“已完成全部研究”，也不是“没有稳定状态路由”的统计结论。
+TASK_STATUS: COMPLETE
 
-用户任务第 3 节明确规定："If any portfolio shown in the roll-forward differs from the frozen parent scaling rule: stop economic interpretation and report exact mismatch." 本次五个 Top 组合均触发此门禁，故在状态与收益联结前停止。未新增规则、阈值、策略、退出或融资，也未开启新的封存验证。
+ROLLFORWARD_IDENTITY_STATUS: PASS
 
-## 证据链与结论
+28 个连续账户：4 个 Native、16 个 Full Book 缩放、8 个 G25/G100 Entry Only；每个账户 2106 个交易日。只有 G25 Entry Only 是按用户明确要求扩展父构造器验证，其执行方法未改。
 
-父分支 research/five-strategy-capital-scaling-v1，父 HEAD `77128f86ff40673102f60860100d8504d801e2d2`。实际滚动图位于父工作区未提交的 `research/capital_scaling_v1/reports/continuous_rollforward_v2/研究报告.md`。其生产脚本和物理账户均已找到，不能说“源码不存在”。原文件路径、快照与哈希见 `evidence/source_inventory.json` 和 `input_manifest.json`。
+下述叙述以 OGR／MCB independent 为明确数值参照；完整 CSV 覆盖四种结构，未重新选择 Top。2026 为截至 9 月 4 日的 YTD。金额差为各账户实际净值变化之差，包含此前累积资金和路径差异。
 
-- #1: OGR / confirmation_tag / G100。身份门禁 FAIL。
-- #2: IFCGR / confirmation_tag / G100。身份门禁 FAIL。
-- #3: OGR / independent / G100。身份门禁 FAIL。
-- #4: IFCGR / independent / G100。身份门禁 FAIL。
-- #5: OGR / independent / G75。身份门禁 FAIL。
+|   year | target   |   收益% |   最大回撤% |    实际盈亏元 |   平均仓位% |       费用元 |             元天 |
+|-------:|:---------|--------:|------------:|--------------:|------------:|-------------:|-----------------:|
+|   2022 | NATIVE   |  4.3048 |      2.9391 |   296339.1395 |     14.0313 |   62074.3700 |   345784698.5054 |
+|   2023 | NATIVE   |  5.2288 |      1.5081 |   375446.5240 |     13.6507 |   58322.1466 |   373509840.4582 |
+|   2024 | NATIVE   | 14.5362 |      6.1152 |  1098327.0221 |     16.5071 |   90203.3500 |   505580732.1701 |
+|   2025 | NATIVE   |  9.5161 |      3.3358 |   823531.6163 |     24.2889 |  103202.4788 |   774206651.9891 |
+|   2026 | NATIVE   | 10.7946 |      2.0023 |  1023077.9699 |     16.9893 |   66527.7607 |   420313317.3851 |
+|   2022 | G25      |  7.7516 |      4.4004 |   618182.8760 |     22.2352 |  243927.1172 |   661963764.6686 |
+|   2023 | G25      |  8.8148 |      3.6168 |   757466.7423 |     19.7621 |  245758.2751 |   641129462.5218 |
+|   2024 | G25      | -1.6110 |      9.1280 |  -150634.2125 |     20.1123 |  247430.6532 |   662360989.8893 |
+|   2025 | G25      | 11.0519 |      3.2277 |  1016762.4386 |     21.4962 |  235614.2173 |   759641861.1034 |
+|   2026 | G25      | -2.0452 |     11.7987 |  -208952.9587 |     20.6731 |  209190.1732 |   538611663.9491 |
+|   2022 | G100     | 29.9671 |     17.3786 |  8134705.2102 |     87.8049 | 3465375.0620 |  9428533941.2247 |
+|   2023 | G100     | 34.4746 |     13.9900 | 12162682.2136 |     72.8127 | 4647759.8788 | 10923241765.7313 |
+|   2024 | G100     | -9.6053 |     35.3307 | -4557010.8183 |     78.8371 | 4332194.5418 | 11316730449.9195 |
+|   2025 | G100     | 49.0956 |     11.9084 | 21055054.9089 |     86.3684 | 5516129.0445 | 16185696057.2914 |
+|   2026 | G100     | -9.8274 |     38.9704 | -6283740.0255 |     79.5636 | 6154924.0651 | 13827599113.1022 |
 
-五组都保留 2018–2021 CAGR 排名及对应 Gap、MCB 模式、gross 目标，使用同一 Full Book 引擎。直接比对各自 973 个历史日期的 NAV/cash/gross，均在绝对误差 1e-6 元内通过。冻结源文件和成本身份一致。共同截止日为 2026-09-04，2026 是 YTD。这些通过项不覆盖 2022 以后的初始化与运行时输入谓词。
+## 权威协议与边界
 
-### 1. 已证实：2022 边界协议改变
+2018-01-01 仅初始化一次；持续携带现金、持仓、冷却、待处理成员、公司行为、市场/行业与 SMV6 回调状态。没有按年份重置。起点按父契约继承真实初值：组合 NAV 4,904,782.13 元，已有股票持仓 275,214.37 元；资本占用包含这些持仓从起始边界开始的日历时间。父研究 2022 年的重建是分段研究协议；连续 SMV6 在 2022-01-04 读取 2021-12-31 的 prev_trade_date，触发周边界判断；分段初值 None 走另一分支。
 
-父经济契约的 `initial_states` 要求股票采用原生连续边界状态，SMV6 按每个父区间执行原生回调初始化。父 2022 年 SMV6 从 1,000,000 元、空仓以及重新初始化的 context 开始。
+MCB 恢复 industry_snapshot_id IS NOT NULL，绑定原始 QD-008-EASTMONEY-PIT-20260820 数据集身份；causal_industry 不代替快照资格。原行业源末日 2026-08-13，此后只延续已知原分类。遗留流程此后切换粗分类，本次恢复原生产器连接，新增 11 个 ATRDR 入场；没有 MCB 资格单独导致的信号集合变化。
 
-滚动生产器 `run_continuous_combinations.py` 仅调用一次 `replay(..., '2018-01-01', END, ...)`，沿用 2018 年初状态连续运行至 2026 年。它在 2022 年没有重新初始化 SMV6，缩放资金参照也来自这套连续 Native 的 timeline/home_before_funding。
+2018—2021 五个 Top 的 973 日历史前缀保持；20 个 Native 有界终点回放与完整连续路径在信号、意图、成交、持仓、现金、NAV 和回调状态上核对通过。Top 仅按原 2018—2021 排名保留。
 
-以下为只读账户身份比对，`SMV6_initial_cash` 对比父 2022 初始现金与滚动 2021 年末现金；其余字段取 2022-01-04。单位元：
+2022 年独立模式的初值差为 SMV6 现金 +260,255.98 元；confirmation_tag 还带着历史 MCB 过滤后的实际资金，与分段重新载入的独立 MCB 初值差 −377,365.30 元。费用属于实际盈亏，持仓是状态，均不作为独立金额重复相加。完整桥表见 segmented_vs_continuous_2022_2023.csv。
 
-|Gap|字段|父账户|滚动账户|差额|
-|---|---|---:|---:|---:|
-|OGR|SMV6_nav|1,019,454.741403|1,260,255.978086|240,801.236683|
-|OGR|SMV6_exposure|519,933.400000|0.000000|-519,933.400000|
-|OGR|SMV6_initial_cash|1,000,000.000000|1,260,255.978086|260,255.978086|
-|IFCGR|SMV6_nav|1,019,454.741403|1,260,255.978086|240,801.236683|
-|IFCGR|SMV6_exposure|519,933.400000|0.000000|-519,933.400000|
-|IFCGR|SMV6_initial_cash|1,000,000.000000|1,260,255.978086|260,255.978086|
+## 16 个主要问题
 
-父 SMV6 当日实际持仓约 519,933.40 元，滚动 Native 为零；因此差异包含回调状态和持仓路径，并非只把资金单位等比例改大。两种 Gap 结构都出现这一差异，且五个 Top 的缩放生产器均使用相应连续 Native 资金参照。
+1. **2024 亏损来自原生 alpha 还是缩放？** Native 收益 14.54%；G25 -1.61%、G100 -9.61%。原生组合整体仍盈利，负收益出现在缩放后的实际持仓路径，不能解释为原生组合整体失效。（output/annual_scaling_increment.csv）
 
-连续运行可以是合理的另一个实验，历史原生区间初始化也不应被错误恢复成“每年强制清仓”。本审计不宣称连续账户本身经济上错误，更没有计算该差异究竟解释多少 2024/2026 损失。这里证实的是它不等于本次指定的父边界协议，不能静默合并两类结果。
+2. **2026 亏损来自原生 alpha 还是缩放？** Native 收益 10.79%；G25 -2.05%、G100 -9.83%。原生组合整体仍盈利，负收益出现在缩放后的实际持仓路径，不能解释为原生组合整体失效。（output/annual_scaling_increment.csv）
 
-股票请求对照另有 6 行：OGR/IFCGR 两个独立 Native 账户的 ATRDR、MCB、Gap 在父 2022–2023 全部请求身份及金额仍对齐，最大金额差低于 1e-6 元。不能把 SMV6 问题扩大为“所有原生信号或股票定仓都变了”。详见 `native_request_comparison.csv`。
+3. **2025 为什么赚得多？** G100 实际买入批次中，贡献最大的类别为 NEW_ENTRY_INCREASE，年度贡献 10,774,165.27 元；这是实际持仓、退出和分红归因，仍须结合集中度及路线判断。（output/annual_full_book_category_contribution.csv）
 
-### 2. 已证实谓词替换；效果等价性未证实
+4. **2024 的主要增量路线来源？** OGR / FIXED_BELOW_L_REPAIR，相对 Native 的实际增量盈亏 -9,776,734.58 元。完整表同时保留原生与缩放总盈亏。（output/annual_route_contribution.csv）
 
-冻结 `mcb.build_v53` 需要 `d.industry_snapshot_id IS NOT NULL`。滚动 `build_rollforward_inputs.py:mcb_screens` 通过 `corrected_function` 改成 `d.causal_industry IS NOT NULL`。已读取 Parquet schema 验证：滚动合并面板有 causal_industry，没有 industry_snapshot_id。
+5. **2026 的主要增量路线来源？** ATRDR / SLOW_BEAR，相对 Native 的实际增量盈亏 -13,022,344.65 元。完整表同时保留原生与缩放总盈亏。（output/annual_route_contribution.csv）
 
-行业名称存在不证明对应时点行业快照有可验证身份。两谓词在逻辑上不同；2018–2023 信号集合相等也不能证明新数据中的资格条件等价。这里没有断言替换已经改变某一笔后续信号或造成某个收益差，结论是原资格谓词改变且新窗口等价性未证。恢复身份需要逐时快照映射或明确冻结新的数据资格协议，不能靠相同股票总数或相同 Python 文件哈希消除这个差异。
+6. **2025 的主要增量路线来源？** OGR / FIXED_BELOW_L_REPAIR，相对 Native 的实际增量盈亏 8,422,467.77 元。完整表同时保留原生与缩放总盈亏。（output/annual_route_contribution.csv）
 
-## 停止范围
+7. **Full Book 每年有何影响？** 2024 Full Book 减 Entry Only 的实际年度盈亏为 -22,275,784.48 元；2025 Full Book 减 Entry Only 的实际年度盈亏为 11,661,289.62 元；2026 Full Book 减 Entry Only 的实际年度盈亏为 -19,136,761.76 元。这是完整账户路径对照，不是孤立当年调仓处理效应。（output/annual_scaling_mechanics_comparison.csv）
 
-本次未运行年度损益分解、逐策略/路线/证券归因、Full Book 后续收益归因、Entry Only 重放、状态分桶收益、leave-year、router 或 G25 容量。`router_results.csv` 不生成；其他尚未计算的经济 CSV 也不写虚构数字或空壳 PASS。
+8. **坏年份是否重现历史坏状态？** BEAR 在所问年份贡献最显著；2018—2023 同状态有 6 个年度块，其中 3 年增量金额为正、3 年为负。相同状态出现不等于稳定路由证据。（output/state_annual_blocks.csv）
 
-`NO_STABLE_SCALING_REGIME_ROUTER` 与 `REGIME_EFFECT_EXISTS_BUT_NOT_ACTIONABLE` 都需要经济证据，当前均不能下结论。ROUTER_CANDIDATE_STATUS 为 NOT_EVALUATED_IDENTITY_GATE；G25 容量为 NOT_RUN_IDENTITY_GATE，既不是容量通过也不是已证明缺少成交额数据。
+9. **2025 是否重现历史好状态？** BEAR 在所问年份贡献最显著；2018—2023 同状态有 6 个年度块，其中 3 年增量金额为正、3 年为负。相同状态出现不等于稳定路由证据。（output/state_annual_blocks.csv）
 
-## 16 个问题的处理
+10. **哪些事前变量解释增量收益？** 市场状态和既有宽度分桶提供可复核关联；连续波动率、流动性、已知账户回撤及 Demand 暴露的分期相关性另表披露。它们是条件关联，不能直接当作动态调整仓位的因果收益。（output/continuous_state_associations.csv）
 
-1. 2024 亏损主要是 Native alpha 弱化还是缩放放大？
+11. **历史发现和确认期方向是否稳定？** 20 个 G25 结构/状态中，0 个通过已声明的综合稳定性检查；各块方向、留一年、去 Top 5 事件和最佳 5 日期结果均披露。（output/router_candidate_evidence.csv）
 
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
+12. **是否存在简单 Native/G25 路由？** NO_STABLE_SCALING_REGIME_ROUTER（output/router_qualification_status.json）
 
-2. 2026 YTD 亏损主要来自哪一项？
+13. **若不成立，为什么？** 任何一个阶段方向、单位净值收益增量或去集中度检查失败，都不足以支持稳定正向缩放状态；不增加阈值、年份代理、路线例外或迟滞来挽救。（output/scaling_regime_leave_year.csv）
 
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
+14. **当前账户 G25 容量是否可接受？** 日成交额参与率最重组的 p99 为 0.61%、最大 18.51%；分钟参与率最重组 p99 为 313.98%，显著超过该分钟实际成交额。完整分钟覆盖和尾部标记另列。该诊断没有市场冲击模型，不能据此批准实盘容量。（output/g25_capacity_percentiles.csv）
 
-3. 2025 为何产生大量缩放收益？
+15. **容量主要负担来自哪里？** 按当前日成交额参与率 p99，最重为 ATRDR（OGR/confirmation_tag）；ADV20 和分钟分母另表区分。（output/g25_capacity_percentiles.csv）
 
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
+16. **下一步研究优先级？** 优先对 G25 做真实容量证伪并保留固定原生配置；若状态检查不通过，不扩展复杂路由。新增 alpha 广度应另立研究任务，不能用来补齐本次归因。（output/final_decision_matrix.csv）
 
-4. 2024 哪个策略和路线主导损失？
+## 使用边界与复现
 
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
+行业和 IFCGR 保留 PIT-B 等既有数据等级。MCB 沿用父研究冻结实现的来源等级；恢复了 snapshot 资格，并不把重构实现升级为原始生产器源码。SMV6 是本地物理账户回调复现，原生 SuperMind 平台等价尚未证明。CONTINUOUS_LIVE_PROTOCOL 描述状态延续语义，不构成实盘批准。全部状态研究为事后诊断，不是新封存验证。
 
-5. 2026 哪个策略和路线主导损失？
+旧图与旧身份拒绝结果保留，不能改标为权威结果。新图：reports/top5_authoritative_continuous_protocol_v1.png。旧图与新图差异桥保留原始输入修复、累积现金和缩放反馈的联动，不强行拆成未经隔离实验支持的百分比。
 
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
+协议 SHA256：`f194822e1aa73037c0b2694e8484cc55a04197141e79106009641fff698874ec`
 
-6. 2025 哪个策略和路线主导利润？
+归因 V2 SHA256：`c661bbfa5df9e8be6160d6422f96c687c2a62764bc8c457e3c5830ca68a063af`
 
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-7. 各年 Full Book 调仓帮助还是伤害？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-8. 2024/2026 是否类似 2018–2023 已有坏状态？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-9. 2025 是否类似以前的好状态？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-10. 哪些事前状态解释增量缩放 P&L？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-11. 发现期与确认期方向是否稳定？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-12. 是否存在简单 Native/G25 路由器？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-13. 目前为什么不能给出路由决策？
-
-父契约与滚动图的初始化协议不同，MCB 运行时资格谓词也被替换；尚未进入状态归因，不能判定有或没有稳定路由器。
-
-14. 当前规模的 G25 容量是否可信？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-15. 哪个策略构成 G25 主要容量负担？
-
-NOT_ESTIMABLE_IDENTITY_GATE：尚未在身份一致的账户上计算。
-
-16. 下一步研究优先级是什么？
-
-先确定并冻结连续账户的权威协议，补足 MCB 行业快照证据，再重建全部 Native/G25 及必要机制对照。之后才是归因、容量与路由资格；本次没有新 alpha 依据。
-
-## 冻结、测试与复现
-
-状态契约在任何状态条件收益分析之前冻结；本次身份审计已看过父年度报告，因此后续只能声称事后诊断，不能称新封存验证。契约 SHA256：`9e3465f8c2a6234767353ee33486f4c8357bfc3d7b4081ba1a9830c8acf2dda4`。
-
-当前 766 个输入/来源文件全部哈希通过，覆盖 413 条父登记输入、136 个父缓存及 26 个冻结策略身份文件；多个角色可能指向同一文件，不能把角色数量相加当独立文件数。对未提交滚动来源只绑定观察到的字节；这不追认其为封存生产者。所有受 Git 跟踪的修改仅位于本工作树的 `research/scaling_regime_v1`；父回归测试另使用 Git 已忽略的 `research/shared_capital_v1/cache` 只读来源软链接。
-
-测试结果见 `output/test_results.json`；确定性复跑见 `output/determinism.csv`。测试通过表示门禁能正确拒绝不一致账户，不表示被拒绝的经济研究通过。`requirement_test_coverage.csv` 明确列出 42 个任务章节与 18 个测试要求中哪些未运行，避免用身份测试冒充 P&L/容量测试。
-
-复跑命令：`PYTHONPATH=.:src /opt/anaconda3/bin/python -m research.scaling_regime_v1.audit`。身份拒绝预期返回 2；返回 2 不是执行故障或测试失败。报告入口：`PYTHONPATH=.:src /opt/anaconda3/bin/python -m research.scaling_regime_v1.build_report`。精确步骤见 `REPRODUCTION_COMMANDS.md`。
+命令见 REPRODUCTION_COMMANDS.md；测试、输入与输出摘要见 output/test_results_v2.json、input_hash_verification.csv、output_manifest.sha256。

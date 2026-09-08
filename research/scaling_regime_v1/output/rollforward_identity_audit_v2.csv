@@ -1,0 +1,10 @@
+check,status,required,evidence
+EXPLICIT_CONTINUOUS_PROTOCOL,PASS,True,contracts/continuous_rollforward_protocol_v1.json
+SMV6_SOURCE_BASED_BOUNDARY,PASS,True,output/smv6_boundary_trace.json
+MCB_SNAPSHOT_RESTORED,PASS,True,output/mcb_snapshot_source_proof.json
+RUNTIME_IDENTITIES,PASS,True,output/continuous_runtime_identity_matrix.csv
+TOP5_2018_2021_PREFIX,PASS,True,output/new_top5_prefix_identity.csv
+NATIVE_PARENT_PREFIX,PASS,True,output/continuous_native_parent_prefix.csv
+CONTINUOUS_PREFIX_INVARIANCE,PASS,True,output/continuous_prefix_invariance.csv
+SIGNAL_PREFIX_INVARIANCE,PASS,True,output/continuous_signal_prefix_invariance.csv
+NO_TOP_RESELECTION,PASS,True,output/top_combination_selection_identity.csv
