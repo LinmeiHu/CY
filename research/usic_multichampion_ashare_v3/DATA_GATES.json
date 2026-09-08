@@ -10,12 +10,24 @@
     "evidence": "configs/data_asset_registry.json: QD-011"
   },
   "Q3": {
-    "status": "AUDITING",
-    "reason": "Registered QD-004 prefix extraction and intraday causal/paired-account tests pending."
+    "status": "PASS_PIT_B",
+    "reason": "48 registered pre-2024 monthly minute prefixes, 53 qualification checks, explicit causal price bridge and five tail-account timing tests passed; no orderbook equivalence.",
+    "evidence": [
+      "MINUTE_INPUT_MANIFEST.json",
+      "MINUTE_EXECUTION_MANIFEST.json",
+      "Q_QUALIFICATION.json",
+      "Q_SPEC.md"
+    ]
   },
   "Q4": {
-    "status": "AUDITING",
-    "reason": "Same registered minute qualification as Q3; no outcome-dependent activation."
+    "status": "PASS_PIT_B",
+    "reason": "48 registered pre-2024 monthly minute prefixes, 53 qualification checks, explicit causal price bridge and five tail-account timing tests passed; no orderbook equivalence.",
+    "evidence": [
+      "MINUTE_INPUT_MANIFEST.json",
+      "MINUTE_EXECUTION_MANIFEST.json",
+      "Q_QUALIFICATION.json",
+      "Q_SPEC.md"
+    ]
   },
   "Q5": {
     "status": "PASS_PIT_B",
