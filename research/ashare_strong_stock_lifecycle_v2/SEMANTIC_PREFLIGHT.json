@@ -1,0 +1,14 @@
+{
+  "status": "PASS_WITH_EXPLICIT_LIMITS",
+  "dynamic_peer": "top 20 trailing 20-session correlations, computed at event close and frozen",
+  "pressure": "first peer 3-session cumulative return <= prior 120-observation -1 sigma within next 15 sessions",
+  "resilience": "3-session simple peer relative and no-intercept peer/market expected-move residual",
+  "landmark": "P+4 close; all outcomes begin at L+1",
+  "controls_missing": [
+    "prior_drawdown",
+    "volatility",
+    "float_market_cap",
+    "explicit_market_state"
+  ],
+  "account_stage": "not authorized unless a mechanism reaches L3"
+}
