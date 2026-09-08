@@ -1,0 +1,39 @@
+{
+  "candidate": "R1_RP100_S10_F1",
+  "scales": [
+    1,
+    1.5,
+    2,
+    3,
+    5,
+    8,
+    10,
+    "MAX_FILL"
+  ],
+  "end": "2026-09-04",
+  "baseline_target": "Frozen Candidate-B pre-funding target at current diagnostic NAV; not old filled absolute cash",
+  "finite_target": "min(X * B_i, unchanged registered execution ceiling)",
+  "soft_budgets": "Opportunity target, security tail, total tail and family tail scale together by X. Hard security cap does not scale.",
+  "max_fill": "R1 priority, no opportunity/security/account/family soft-risk budget",
+  "hard": {
+    "single_security": 0.1,
+    "gross": 1.0,
+    "borrowing": 0,
+    "margin": 0,
+    "stock_liquidity": "1% lagged valid ADV20 else Native executable fallback",
+    "ETF_liquidity": "same registered 50% window and 100-share lot; Native target delta is B sizing, not window ceiling"
+  },
+  "frozen": [
+    "opportunity producers",
+    "R1",
+    "discovery calibration",
+    "quality threshold",
+    "Native exits",
+    "signal timing",
+    "execution facts"
+  ],
+  "native_state": "Continuous actual holdings; no re-normalization. State-dependent legal requests may differ, but no source/alpha population is added.",
+  "unused_cash_method": "Same-clock read-only nested deployment waterfall: security, liquidity/execution, soft opportunity/security/account, family. Gross and cash are redundant in an unfinanced long-only cashbook. Residual follows Native integer execution. Signed interactions are disclosed, not clipped. Daily cash provenance carries constraint attribution until next decision; new released cash is no qualifying opportunity until an eligible timestamp.",
+  "existing_verdict": "KEEP_NATIVE_UNCHANGED",
+  "no_optimization": true
+}
