@@ -39,6 +39,13 @@ def main():
  for item in sz['inputs']:assert sha(item['path'])==item['sha256']
  ctx=json.loads((HERE/'coverage/context_manifest.json').read_text())
  for prefix in ['account','market']:assert sha(ctx[prefix+'_source'])==ctx[prefix+'_sha256']
+ full=HERE/'coverage/full_context_manifest.json'
+ if full.exists():
+  fc=json.loads(full.read_text())
+  for item in fc['size_inputs']:assert sha(item['path'])==item['sha256']
+ overlap=HERE/'coverage/sample_overlap_source.json'
+ if overlap.exists():
+  oc=json.loads(overlap.read_text());assert sha(oc['path'])==oc['sha256']
  record(16,'registered_inputs_unchanged','PASS','Baseline daily/opportunity/ATRDR/protocol, size partitions, account and market hashes match')
  # Meaningful independent path fixture: drawdown after a gain, plus missing-session censoring.
  a=path_arrays(np.array([100.,120.,90.,110.]),np.array([100.,125.,95.,115.]),np.array([100.,115.,85.,105.]),np.arange(4),np.zeros(4),2)
