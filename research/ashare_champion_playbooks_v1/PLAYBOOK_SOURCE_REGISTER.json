@@ -27,7 +27,7 @@
       "blocked"
     ]
   },
-  "P3": {
+  "P3A": {
     "SOURCE_EXPLICIT": [
       "catalyst-led repricing"
     ],
@@ -37,9 +37,13 @@
     "A_SHARE_ADAPTATION": [
       "T+1"
     ],
-    "MECHANICAL_PROXY": [
-      "10% gap, 3x amount"
-    ]
+    "MECHANICAL_PROXY": ["BLOCKED_EVENT_DATA"]
+  },
+  "P3B": {
+    "SOURCE_EXPLICIT": ["large price-volume repricing is only a proxy for participation"],
+    "SOURCE_UNCERTAIN": ["catalyst identity and exact private exit"],
+    "A_SHARE_ADAPTATION": ["T+1 legal open and price limits"],
+    "MECHANICAL_PROXY": ["T open gap >=10%; T amount >=3x prior20 median; upper-half close; T+1 entry; T low stop"]
   },
   "P4": {
     "SOURCE_EXPLICIT": [
