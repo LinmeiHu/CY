@@ -1,0 +1,21 @@
+{
+  "status": "LIVE_FORWARD_SHADOW_ONLY",
+  "primary_question": "Does fixed T+2 entry outperform the original T+1 entry prospectively?",
+  "setup": "D08 frozen exactly as V4",
+  "signal_decision_time": "T close",
+  "entry_rule": "Keep the signal, frozen rank and frozen limit unchanged; attempt once at T+2 legal open; reject if illegal or above frozen limit; do not re-rank or retry",
+  "entry_variables": ["original D08 signal", "original rank", "original U", "original ATR A", "original frozen limit"],
+  "thresholds": "none added",
+  "ranking": "V4 fixed D08 score at T",
+  "position_sizing": "C_10; at most 10% of prior NAV per new position; integer legal board lot",
+  "exit": "E10, ten sessions from actual entry, with original legal deferral",
+  "costs": "original commission, tax and 5bp open slippage contract; COST2 retained as stress only",
+  "market_filter": "OFF in primary timing comparison",
+  "paired_comparator": "Original D08 C_10 E10 T+1 attempt from the same signal stream",
+  "evidence_status": "CONSUMED_DEVELOPMENT_ONLY; fixed T+2 survived COST2 but its paired 20-session interval crosses zero",
+  "excluded_from_primary": ["S1", "0.25A digestion gate", "C_MAX", "T+3", "all new market routing"],
+  "start_condition": "Only future signals after specification freeze; no historical backfill",
+  "promotion_condition": "Predeclared horizon and minimum support, full legal cash accounting, positive paired increment with acceptable drawdown and concentration",
+  "orders_authorized": false,
+  "sealed_history_authorized": false
+}
