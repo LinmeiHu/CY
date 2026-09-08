@@ -1,0 +1,61 @@
+kind,requirement,name,status,evidence
+TASK_SECTION,1,权威父研究,AUDITED_FAIL_CLOSED,output/rollforward_identity_audit.csv
+TASK_SECTION,2,主问题,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,3,滚动身份,AUDITED_FAIL_CLOSED,output/rollforward_identity_audit.csv
+TASK_SECTION,4,年度分解,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,5,Native与缩放增量,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,6,策略贡献,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,7,年度回撤,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,8,Full Book归因,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,9,机制对照,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,10,事前状态,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,11,状态条件增量,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,12,发现确认诊断顺序,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,13,简单状态族,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,14,年份禁作特征,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,15,路由资格,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,16,影子路由,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,17,时间因果与prefix,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,18,路由评价,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,19,切换与滞后,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,20,G25容量,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,21,容量旗标,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,22,规模参照,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,23,无新alpha,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,24,无新退出,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,25,无目标优化,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,26,小样本,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,27,leave-year,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,28,坏状态,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,29,2025好状态,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,30,ATRDR路线,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,31,Demand家族,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,32,Gap家族,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,33,SMV6分散,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,34,状态转移,NOT_RUN_IDENTITY_GATE,REPORT.md; user section 3 stop condition
+TASK_SECTION,35,不过拟合,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,36,交付目录,IDENTITY_REJECTION_DELIVERABLE_ONLY,REPORT.md; user section 3 stop condition
+TASK_SECTION,37,契约冻结,CONTRACT_ONLY_OR_NO_ACTION; NO_ECONOMIC_VALIDATION,contracts/scaling_regime_attribution_v1.json
+TASK_SECTION,38,测试,IDENTITY_REJECTION_DELIVERABLE_ONLY,REPORT.md; user section 3 stop condition
+TASK_SECTION,39,决策逻辑,IDENTITY_REJECTION_DELIVERABLE_ONLY,REPORT.md; user section 3 stop condition
+TASK_SECTION,40,16个问题,IDENTITY_REJECTION_DELIVERABLE_ONLY,REPORT.md; user section 3 stop condition
+TASK_SECTION,41,Git,IDENTITY_REJECTION_DELIVERABLE_ONLY,REPORT.md; user section 3 stop condition
+TASK_SECTION,42,最终响应,IDENTITY_REJECTION_DELIVERABLE_ONLY,REPORT.md; user section 3 stop condition
+REQUESTED_TEST,1,冻结排名身份,FOCUSED_TEST,tests/test_identity.py
+REQUESTED_TEST,2,2021后不重选,FOCUSED_TEST,tests/test_identity.py
+REQUESTED_TEST,3,年份不作状态特征,CONTRACT_CHECK_ONLY; NO_ROUTER_RUN,tests/test_identity.py; contracts/scaling_regime_attribution_v1.json
+REQUESTED_TEST,4,状态时间戳,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,5,未来收益不入特征,CONTRACT_CHECK_ONLY; NO_ROUTER_RUN,tests/test_identity.py; contracts/scaling_regime_attribution_v1.json
+REQUESTED_TEST,6,年度PNL对账,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,7,策略PNL对账,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,8,路线PNL对账,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,9,调仓类别对账,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,10,EntryOnly同信号初态,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,11,状态总额对账,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,12,发现期prefix,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,13,候选仅冻结字段,CONTRACT_CHECK_ONLY; NO_ROUTER_RUN,tests/test_identity.py; contracts/scaling_regime_attribution_v1.json
+REQUESTED_TEST,14,仅Native/G25,CONTRACT_CHECK_ONLY; NO_ROUTER_RUN,tests/test_identity.py; contracts/scaling_regime_attribution_v1.json
+REQUESTED_TEST,15,容量确定性,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,16,路线确定性,NOT_RUN_IDENTITY_GATE,No economic/state/router/capacity implementation after rejection
+REQUESTED_TEST,17,冻结策略不修改,FOCUSED_TEST,tests/test_identity.py
+REQUESTED_TEST,18,输出确定性,IDENTITY_OUTPUT_RERUN_ONLY,output/determinism.csv

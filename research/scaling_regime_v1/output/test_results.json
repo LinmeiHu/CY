@@ -1,0 +1,1008 @@
+{
+  "command": "/opt/anaconda3/bin/python -m pytest -q tests research --junitxml=research/scaling_regime_v1/output/tests.xml",
+  "interpretation": "Tests pass for identity rejection; downstream economic tests not run",
+  "passed": 249,
+  "skipped": 1,
+  "tests": [
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_baseline_nan_reference_cannot_pass[cash]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_baseline_nan_reference_cannot_pass[gross_exposure]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_baseline_nan_reference_cannot_pass[nav]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_cache_roundtrip_regenerates_summaries_without_invalidating_replay",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_delayed_gap_exit_uses_next_legal_quote_and_releases_all_inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_etf_native_zero_target_liquidates_scaled_holding",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_failed_preflight_replaces_stale_pass_before_loading",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_incomplete_cache_receipt_fails_before_read",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_invalid_scaling_selection_fails_at_construction[selected0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_invalid_scaling_selection_fails_at_construction[selected1]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_invalid_scaling_selection_fails_at_construction[selected2]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_native_cache_reuse_requires_same_native_producers_and_states",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_native_request_cannot_override_registered_buy_restriction",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_relative_weight_error_reports_locked_inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_satisfied_entry_only_target_is_not_a_pending_order",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaled_completed_event_cannot_be_funded_twice",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaled_intent_validation_precedes_mutation[decision_at-value0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaled_intent_validation_precedes_mutation[decision_at-value1]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaled_intent_validation_precedes_mutation[earliest_execution_at-value2]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaled_intent_validation_precedes_mutation[earliest_execution_at-value3]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaled_intent_validation_precedes_mutation[price-nan]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_bugfix_regressions::test_scaling_cannot_admit_an_unselected_strategy",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_finalize_receipts::test_deterministic_proof_requires_distinct_actual_matching_files[changed_fresh_file]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_finalize_receipts::test_deterministic_proof_requires_distinct_actual_matching_files[duplicated_rows]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_finalize_receipts::test_finalization_rejects_unverified_scenario_receipt[missing_hashes]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_finalize_receipts::test_finalization_rejects_unverified_scenario_receipt[wrong_case]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_finalize_receipts::test_habitat_cannot_start_from_partial_grid_even_with_existing_gate",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_account_missing_timestamp_rejected_before_record",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_cli_passes_approved_baseline_and_overwrites_stale_success",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_config_relative_and_selected_strategy_only",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_corrupt_cached_scenario_fails_before_reuse",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_initial_native_callback_reports_completed_input_date",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_p0_native_callback_can_reuse_legally_released_cash",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_research_cache_identity_binds_inputs_config_and_producer",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_schema_hardening_cannot_override_alpha_identity",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_signal_metadata_uses_frozen_event_date[2020-01-06-2020-01-03]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_signal_metadata_uses_frozen_event_date[2020-05-06-2020-04-30]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_signal_metadata_uses_frozen_event_date[2020-10-09-2020-09-30]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_source_changed_during_run_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_hardening::test_stock_empty_and_unfinished_schema",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_actual_scaled_inventory_drives_future_native_exit_and_state",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_entry_only_is_distinct_and_deterministic",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_etf_exact_affordable_lot_is_preserved_without_financing[0.0-100.0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_etf_exact_affordable_lot_is_preserved_without_financing[0.01-0.0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_full_book_relative_weights_and_single_name_extreme",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_native_exit_sells_old_inventory_but_waits_for_same_day_addon",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_no_new_reference_signal_or_symbol_and_gap_exclusion",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_observed_large_combined_order_uses_same_requested_and_billed_cost",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_same_day_new_quantity_cannot_be_sold_with_old_inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_scaled_corporate_entitlements_use_actual_record_ownership",
+      "status": "PASS"
+    },
+    {
+      "name": "research.capital_scaling_v1.tests.test_scaling::test_zero_book_stays_cash_and_price_drift_does_not_normalize",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_cash_affordability_and_no_hidden_financing",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_contract_frozen_before_first_replay",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_entry_atr_requires_completed_consecutive_history",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_existing_profit_definition_not_new_trailing_parameter",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_frozen_inputs_and_replay_are_deterministic",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_frozen_source_is_authority_and_no_golden_production_input",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_full_exit_then_next_legal_native_entry_allowed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_future_daily_values_do_not_change_current_feature",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_gap_family_exclusion",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_gap_through_actual_price_fees_slippage_and_lots",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_initial_equal_sleeves_not_daily_rebalanced",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_missing_minute_availability_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_missing_nav_not_imputed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_no_same_uncompleted_bar_or_t0_exit",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_no_silent_calendar_intersection",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_released_capital_cashflow_reconciles_and_reentry_exists",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_two_portfolio_periods_remain_separate",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.final_closure_v2.tests.test_closure::test_volume_cap_cannot_be_consumed_twice_at_same_minute",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_account_decomposition_independently_detects_wrong_nav_delta",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_actual_smv_partial_position_and_fee_reserved_cash_cannot_double_spend",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_current_production_slow_completion_filter_reproduces_known_prefix_defect",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_dividend_cash_only_while_still_entitled_and_censored_is_not_zero",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_known_cash_action_is_not_a_structural_break_or_price_loss",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_metric_window_does_not_fill_unknown_nav_and_accepts_native_date_type",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_missing_anchor_no_phantom_state_and_atr_requires_exact_prior_sessions",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_next_open_marketable_native_target_wins_and_later_low_is_excluded",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_not_applicable_feature_does_not_count_as_out_of_domain",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_policy_regenerates_full_opportunities_without_future_funding_or_same_episode_loop",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_prefix_features_and_first_exit_actions_ignore_future_price_and_outcome",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_purge_episode_overlapping_labels_and_training_only_preprocessing",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_recovering_final_loser_should_not_be_sold_and_buy_cost_is_common_history",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_smv_native_close_finishes_remaining_exit_inventory_with_volume_cap",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.test_v2::test_t1_gap_locked_retry_native_priority_and_no_intraday_touch_execution",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_risk_review::test_actual_fill_return_ignores_producer_fee_shortcut",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_risk_review::test_common_calendar_only_extends_uninvested_cash",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_risk_review::test_completed_risk_accounts_reconcile_and_never_finance",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_actual_pair_calipers_and_identical_blind_canvas",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_all_motifs_have_actual_counterexamples_and_small_representations",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_blind_observations_preceded_reveal_and_records_unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_feature_prefix_invariance_and_gap_invalid_propagation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_future_poison_cannot_change_blind_payload",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_parent_research_files_still_hash_identical",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_public_payload_excludes_identity_outcome_and_future",
+      "status": "PASS"
+    },
+    {
+      "name": "research.five_strategy_exit_risk_v1.visual_v1.test_visual::test_real_dates_are_prefix_bounded_and_discovery_mature",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_account_identity_fails_on_incomplete_or_invalid_evidence[duplicate_date]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_account_identity_fails_on_incomplete_or_invalid_evidence[missing_date]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_account_identity_fails_on_incomplete_or_invalid_evidence[nonfinite]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_cash_difference_detected_even_with_equal_nav",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_contract_is_frozen_and_does_not_claim_router_validation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_frozen_strategy_files_match_parent_expected_hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_mcb_runtime_guard_change_cannot_be_hidden_by_frozen_file_hash",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_ranking_ignores_post2021_outcomes_and_other_mechanics",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_real_prefix_pass_does_not_certify_boundary",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_required_mismatch_or_missing_evidence_cannot_pass[FAIL]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_required_mismatch_or_missing_evidence_cannot_pass[UNVERIFIED]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.scaling_regime_v1.tests.test_identity::test_stock_requests_are_not_misreported_as_changed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_invalid_operation_timestamp_does_not_mutate_account[close]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_invalid_operation_timestamp_does_not_mutate_account[credit]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_invalid_operation_timestamp_does_not_mutate_account[fund]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_invalid_operation_timestamp_does_not_mutate_account[mark]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_missing_intent_clock_cannot_fund[decision_at]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_missing_intent_clock_cannot_fund[earliest_execution_at]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_native_limits_work_independently[caps0-1]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_account_guards::test_native_limits_work_independently[caps1-1]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_account_calendar_and_equation_fail_closed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_atrdr_historical_prefix_entries_cash_positions_nav",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_base_first_shared_state_and_home_independent",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_comparison_cli_nonzero_and_generation_not_validation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_comparison_identity_failures[actual-keys0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_comparison_identity_failures[actual-keys2]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_comparison_identity_failures[actual-keys4]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_comparison_identity_failures[golden-keys1]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_comparison_identity_failures[golden-keys3]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_continuous_initial_state_explicit_user_contract",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_coordinate_change_is_not_silently_marked_or_deleted",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_drawdown_gate_does_not_liquidate",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_exact_confirmation_mcb_only_and_gap_exclusion",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_future_close_and_unfinished_open_bar_cannot_change_order",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_future_completion_does_not_create_or_remove_entry",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_gate_budget_is_not_reapplied_recursively_by_funding_phase",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_generation_command_required_comparison_failure_nonzero",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_generation_failure_cannot_leave_a_stale_full_status",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_history_excludes_current_incomplete_day",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_integral_native_request_survives_money_roundtrip",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_largest_remainder_does_not_leave_affordable_whole_native_slot_idle",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_legacy_smv6_future_close_defect_reproduced",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_many_to_many_and_missing_layers_fail",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_missing_legal_mark_fails_before_order_mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[cash--inf]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[cash-inf]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[cash-nan]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[gross_exposure--inf]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[gross_exposure-inf]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[gross_exposure-nan]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[nav--inf]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[nav-inf]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_nonfinite_account_never_passes[nav-nan]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_one_account_cannot_hide_another_accounts_missing_day",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_physical_virtual_equity_quantity_and_costs",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_production_financing_auditor_rejects_nonfinite_and_unknown_calendar",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_baseline_closure::test_starvation_no_financing_and_determinism",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_execution_facts_v1::test_audit_record_close_ownership_not_ex_date_overlap",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_execution_facts_v1::test_coordinate_mapping_same_symbol_two_strategies_preserves_money",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_execution_facts_v1::test_dividend_uses_record_holdings_not_payment_holdings",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_execution_facts_v1::test_official_fact_identity_dates_and_execution_only_boundary",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_execution_facts_v1::test_official_timeline_pending_dividend_nav_prefix[600622.SH-2017-06-29-2017-06-30-2017-07-03-0.3-0.21]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_execution_facts_v1::test_official_timeline_pending_dividend_nav_prefix[603368.SH-2020-06-23-2020-06-24-2020-06-29-0.4-0.68]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_accounts_initialize_independently",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_actual_sealed_gap_selector_excludes_valid_2022_candidate",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_bear_cannot_be_confirmation_target",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_blocker_evidence_contains_exact_ifcgr_cutoff",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_demand_family_cannot_net_borrow",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_entitlement_does_not_accept_shared_profit_input",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_exact_24_scenarios_each_period",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_exact_parent_confirmed",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gap_exclusive",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gate_exact_thresholds_and_overshoot[0.04]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gate_exact_thresholds_and_overshoot[0.05]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gate_exact_thresholds_and_overshoot[0.06]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gate_recovery_requires_margin_and_resets_streak",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gate_rejects_duplicate_close",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_gate_three_day_recovery_one_level_at_a_time",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_market_drift_only_removes_new_headroom",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_missing_economic_identity_is_not_overlap",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_native_requested_notional_ceiling[0-100-30-0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_native_requested_notional_ceiling[100-0-30-0]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_native_requested_notional_ceiling[100-100-25-4]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_native_requested_notional_ceiling[110-100-30-3]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_no_extra_gate_threshold",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_proportions_deterministic_across_insertion_order",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_time_proximity_is_not_identity",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_policy::test_unmet_proportions_not_return_ranking",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_actual_300561_suspension_carries_raw_holdings_and_resumes_causally",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_confirmation_never_discards_mcb_for_native_capacity_rejected_atrdr",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_native_batch_keeps_board_budgets_priority_and_exact_confirmation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_native_funding_exposes_all_base_heads_before_shared_and_commits_actual_state",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_official_events_execute_in_native_stock_replay[ATRDR-600622.SH-2017-06-26-2017-06-30-2017-07-03-2017-08-01-0.3-0.21]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_official_events_execute_in_native_stock_replay[MCB-603368.SH-2020-06-18-2020-06-24-2020-06-29-2020-07-30-0.4-0.68]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_physical_marks_never_rewind_and_completed_timestamp_is_unique",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_raw_continuous_v2::test_slow_bear_expired_open_exit_never_reads_unfinished_target_high",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_universe_v1::test_frozen_etf_pool_intersection_and_listing",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_universe_v1::test_ifcgr_registered_parent_population_does_not_broaden",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_universe_v1::test_mcb_native_same_completed_close_requires_main_and_chinext",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_universe_v1::test_registered_boards_and_metadata_not_prefix_guessing",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_common_p0_actual_stock_adapter_streams_share_one_account",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_common_p0_refuses_cash_replacement_or_missing_strategy",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_conversion_100_to_30_entitlement_nav_and_pro_rata",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_exit_before_or_after_tradable_keeps_entitlement[False]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_exit_before_or_after_tradable_keeps_entitlement[True]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_future_known_or_out_of_order_action_fails_without_mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_future_listing_information_cannot_rewrite_prefix",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_incompatible_price_units_fail_before_cash_mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_native_boundary_roundtrip_preserves_home_and_inherited_position",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[-1.0-nontradable_quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[-1.0-pending_quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[-1.0-quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[-1.0-remaining_outlay]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[inf-nontradable_quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[inf-pending_quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[inf-quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[inf-remaining_outlay]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[nan-nontradable_quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[nan-pending_quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[nan-quantity]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_nonfinite_or_negative_lot_state_fails[nan-remaining_outlay]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_physical_nan_cannot_hide_in_quantity_comparison",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_registered_gap_action_loader_includes_2023_without_changing_terms",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_scheduler_native_clocks_ties_no_cross_sleeve_and_rerun",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_scheduler_rejects_duplicate_and_backward_events",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_unknown_corporate_timestamp_never_authorizes_transition[None]",
+      "status": "PASS"
+    },
+    {
+      "name": "research.shared_capital_v1.tests.test_v06::test_unknown_corporate_timestamp_never_authorizes_transition[missing1]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.reproduction.test_mcb_external::test_mcb_registered_reproduction",
+      "status": "SKIPPED"
+    },
+    {
+      "name": "tests.unit.test_atrdr_post::test_market_state_uses_frozen_universe_and_exact_calendar_lags",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_atrdr_post::test_v27_capacity_keeps_only_top_twenty_new_entries_per_sleeve",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_compare::test_comparison_handles_quoted_column_identifiers",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_cash_only_replay_keeps_exportable_empty_trade_schema[False]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_cash_only_replay_keeps_exportable_empty_trade_schema[True]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_entered_incomplete_tail_remains_an_open_position",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_fast_capacity_does_not_depend_on_future_outcome_maturity",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_intraday_target_exit_cannot_release_slot_for_same_open_entry",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_intraday_target_exit_proceeds_cannot_fund_same_open_entry",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_one_sleeve_cannot_borrow_from_the_other",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_outcome_schema_survives_empty_no_entry_and_unfinished_paths[0-False]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_outcome_schema_survives_empty_no_entry_and_unfinished_paths[0-True]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_outcome_schema_survives_empty_no_entry_and_unfinished_paths[1-False]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_outcome_schema_survives_empty_no_entry_and_unfinished_paths[1-True]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_outcome_schema_survives_empty_no_entry_and_unfinished_paths[2-False]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_outcome_schema_survives_empty_no_entry_and_unfinished_paths[2-True]",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_replay_has_no_negative_cash_and_t1_trade",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_execution::test_router_marks_unfinished_position_through_available_tail",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_firewall::test_production_dependency_firewall",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_firewall::test_production_does_not_require_golden",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_mcb_cross_board::test_cross_board_is_same_completed_close",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_no_financing::test_affordability_rejects_invalid_contract_values",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_no_financing::test_affordability_rounds_down_to_board_lot",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_no_financing::test_fee_is_reserved_before_buy_affordability",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_ogr_replay_window::test_ogr_replay_accepts_explicit_later_account_window",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_smv6::test_smv6_frozen_execution_settings_are_captured",
+      "status": "PASS"
+    },
+    {
+      "name": "tests.unit.test_smv6::test_smv6_source_sha256_and_pool",
+      "status": "PASS"
+    }
+  ]
+}
