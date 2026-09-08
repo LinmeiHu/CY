@@ -1,8 +1,10 @@
-# 五策略组合闭环：输入验收失败
+# 五策略组合闭环：历史输入审计（已修复并被新研究替代）
 
-TASK_STATUS: BLOCKED_INHERITED_RESEARCH_DATA_ERROR
+TASK_STATUS: SUPERSEDED_BY_UNIFIED_OPPORTUNITY_RISK_V1
 
-本次尚未完成资本配置研究。按照用户“除非发现真正的数据/身份错误”的例外，在组合搜索前停止。没有冻结结果选择契约，没有执行联合网格，没有推荐 multiplier；不能将本次状态解释为 KEEP_CURRENT_NATIVE 或 NO_ROBUST_PORTFOLIO_IMPROVEMENT。
+以下保留旧审计当时的边界，不代表当前阻塞。预资金请求、实际持仓路径、盘中P0与资本天已完成修复；后续固定multiplier研究由用户替换为统一机会池研究，最终完整结果见 ../unified_opportunity_risk_v1/REPORT.md。
+
+旧审计当时尚未完成资本配置研究。按照用户“除非发现真正的数据/身份错误”的例外，在组合搜索前停止。没有冻结结果选择契约，没有执行联合网格，没有推荐 multiplier；不能将本次状态解释为 KEEP_CURRENT_NATIVE 或 NO_ROBUST_PORTFOLIO_IMPROVEMENT。
 
 ## 仍成立的事实
 

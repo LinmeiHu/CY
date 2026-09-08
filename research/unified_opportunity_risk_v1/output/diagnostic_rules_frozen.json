@@ -1,0 +1,12 @@
+{
+  "analysis_source_sha256": "0c25e559503fb9db05cc47a9f33971b8c8cd04f41a356e5bbf930b9b54e3869a",
+  "concentration_robustness": "Removal of best five events must retain positive cumulative attribution return",
+  "cost_robustness": "2x costs must retain positive cumulative return",
+  "diagnostic_catastrophe": "Contract rule; no rescue or tuning",
+  "family_incremental": "Both discovery and matched validation: MaxDD and CVaR strictly lower, retain at least 80% matched family-OFF CAGR",
+  "frozen_before_validation": true,
+  "model_risk": "Report decile realized worst-decile loss vs entry conservative tail; never recalibrate",
+  "post_hoc_robustness": "Apply the identical predeclared Native-relative validation comparison to aggregate 2024-2026 diagnostic; this remains post-hoc and cannot rescue a validation failure",
+  "ranking_incremental": "Both discovery and matched validation: CAGR and Sharpe strictly higher, MaxDD no higher than same RP/security/family R0",
+  "risk_engine_required": "Matched R0 must pass predeclared Native-relative validation; predictive ranking cannot rescue failed risk engine"
+}

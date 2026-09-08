@@ -1,0 +1,35 @@
+{
+  "allowed": [
+    "NEW_ENTRY_REQUEST",
+    "EXPOSURE_INCREASE_REQUEST"
+  ],
+  "capital_state": "immediately before the request/funding event; cash and gross at legal existing marks; no EOD substitution; fees included in requested cash bill",
+  "classification": "desired_after - desired_before: positive=increase, negative=reduction, zero=no capital change; both marked at the same causal request price",
+  "cutoff": "2026-09-04",
+  "decision_at": "live native desired-position request callback timestamp before funding, with causal sequence ordinal; preserve original intent decision_at as native_signal_decision_at",
+  "definition": "Only causal desired exposure increases before funding; fills never define the population.",
+  "excluded": [
+    "REDUCE_POSITION",
+    "PARTIAL_SELL",
+    "FULL_EXIT",
+    "STOP_EXIT",
+    "NATIVE_EXIT",
+    "CORPORATE_ACTION_ONLY",
+    "REBALANCE_REDUCTION",
+    "CASH_RELEASE",
+    "MARK_TO_MARKET_CHANGE"
+  ],
+  "experiment": "Original portfolio closure design unchanged; freeze selection contract only after all six input gates pass",
+  "funding_at": "native earliest execution timestamp; before-state captured at actual fund invocation",
+  "lineage": "Native request event_id; target-percent callback order id for requests before execution eligibility/volume filtering; map downstream engine event_id only by synchronous request call. A reduction and later increase have separate ids. Gap OGR/IFCGR share gap_id but are alternate accounts.",
+  "right_censoring": "Retain open marked paths; no invented exit",
+  "shadow_notional": "Execute independent clone with exact native requested quantity and native execution constraints; normalize economic P&L to 1,000,000 CNY entry cash outlay for comparison. Do not resize actual execution quantities for reporting normalization.",
+  "signal_at": "completed native signal information timestamp",
+  "simultaneous": "Exact timestamp legal requests require pro-rata; synchronous callback feedback dependencies must be audited before batching; never silently assign fake times.",
+  "tolerances": {
+    "cash_atol": 1e-06,
+    "quantity_atol": 1e-08,
+    "rtol": 1e-10
+  },
+  "version": "OPPORTUNITY_SEMANTICS_V2"
+}
