@@ -1,0 +1,9 @@
+metric,classification,action,status
+independent_signal_days,METRIC_IMPLEMENTATION_BUG,recomputed from opportunity decision dates,PASS
+average_holding_days,METRIC_IMPLEMENTATION_BUG,computed from entry/exit timestamps,PASS
+median_holding_days,METRIC_IMPLEMENTATION_BUG,computed from entry/exit timestamps,PASS
+max_single_security_weight,SOURCE_DATA_UNAVAILABLE,no security-level NAV denominator in frozen aggregate export,UNAVAILABLE
+return_per_capital_day,METRIC_IMPLEMENTATION_BUG,pnl divided by funded_notional*holding_days,PASS
+worst_trade_return,SEMANTIC_ERROR,raw price denominator can be invalid under corporate actions; use funded notional,PASS
+plot_nan_labels,REPORTING_ONLY,plot inputs now use explicit unavailable labels,PASS
+native_identity,GUARD,no account replay or frozen source mutation,PASS
