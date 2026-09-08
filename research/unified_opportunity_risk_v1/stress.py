@@ -9,6 +9,7 @@ from research.unified_opportunity_risk_v1.data import OUT,HERE,CONTRACT,csv
 from research.unified_opportunity_risk_v1.run import load,configs,metrics
 from research.unified_opportunity_risk_v1 import engine
 from research.capital_scaling_v1.run import save_account
+from research.unified_opportunity_risk_v1.provenance import verify_cache
 
 BASE_INIT=engine.initialize;BASE_POOL=engine.Pool;BASE_PLATFORM=engine.PoolPlatform
 
@@ -17,7 +18,7 @@ def job(args):
     identity={p.name:repair.digest(p) for p in [CONTRACT,HERE/'engine.py',HERE/'stress.py',OUT/'calibration_frozen.json',OUT/'risk_references_frozen.json']}
     receipt=dest/'receipt.json'
     if receipt.exists():
-        old=json.loads(receipt.read_text());assert old['identity']==identity;return str(dest)
+        verify_cache(receipt,identity);return str(dest)
     def init(gap,states):
         a=BASE_INIT(gap,states);close=a.close
         def cost_close(event_id,price,when,fee_rate,**kwargs):return close(event_id,price,when,fee_rate*multiplier,**kwargs)

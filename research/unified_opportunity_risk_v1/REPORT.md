@@ -2,7 +2,7 @@
 
 任务已完成。最终决策：**KEEP_NATIVE**。本轮预声明研究结论：**NO_ROBUST_UNIFIED_POOL_IMPROVEMENT**。冻结策略、alpha 和 Native exits 均未修改；无实盘部署变更。
 
-研究按 USER_REQUEST.md 执行。72/72 个配置来自真实、连续的物理账户；未使用独立生命周期收益相加生成组合净值。两种 P0 原生基线逐项重放通过；OGR 7889 条成交、IFCGR 7859 条成交，均为2106个交易日。完整独立重跑及59日独立截断前缀通过经济状态和回调状态核对。最终P0核查还覆盖OGR的10802个与IFCGR的10793个盘中时点，并与权威账户的全部终态及capital_days逐值相等。不可执行ETF请求的观测顺序副作用已修复；修复前后冻结校准与风险参考文件SHA256完全相同，因此没有重校准或改变任何已计算组合的参数。
+研究按 USER_REQUEST.md 执行。72/72 个配置来自真实、连续的物理账户；未使用独立生命周期收益相加生成组合净值。两种 P0 原生基线逐项重放通过；OGR 7889 条成交、IFCGR 7859 条成交，均为2106个交易日。同票共享流动性防线另以全部账户历史请求的非绑定上界证明及2106日独立精确重跑封存；旧缓存保留原生成代码身份，兼容性证书逐receipt及文件哈希授权复用（engine_equivalence_certificate.json）。完整独立重跑及59日独立截断前缀通过经济状态和回调状态核对。最终P0核查还覆盖OGR的10802个与IFCGR的10793个盘中时点，并与权威账户的全部终态及capital_days逐值相等。不可执行ETF请求的观测顺序副作用已修复；修复前后冻结校准与风险参考文件SHA256完全相同，因此没有重校准或改变任何已计算组合的参数。
 
 ## 核心判断
 
@@ -110,6 +110,6 @@ OGR与IFCGR通过相同gap_id合并；IFCGR作为通过标志。Bull与MCB需同
 
 最终系统：KEEP_NATIVE。统一实验的STRATEGY_CAPS=NONE、TOTAL_GROSS_CAP=100%、CASH_ALLOWED=YES；未获准的统一参数不替换生产Native。下一步：Keep authoritative Native and close this predefined Unified Pool study; do not tune on validation/diagnostic outcomes。SMV6仍为本地原生回调复放级别，未升级为Native SuperMind平台等价；股票保留原有归一化研究份额单位。
 
-69项测试全部通过，28项必需测试要求均有对应证据，见test_results.json与requirement_test_coverage.csv。442/442注册输入哈希通过。94个账户运行receipt覆盖72配置及前缀、重跑、匹配验证、诊断和成本复核。
+72项测试全部通过，28项必需测试要求均有对应证据，见test_results.json与requirement_test_coverage.csv。442/442注册输入哈希通过。95个账户运行receipt覆盖72配置及前缀、重跑、匹配验证、诊断和成本复核。
 
 合同SHA256：`6522395cf603d345eb597869575e92059d0a42281e41c56bfd52ce51a782aa37`。来源见input_manifest.json；账户缓存哈希见output/physical_account_run_manifest.json；交付清单见output/output_manifest.sha256。大体积物理账户与路径保留在本地缓存，Git提交研究代码、合同、全部规定结果和审计摘要。复现命令见REPRODUCTION_COMMANDS.md。

@@ -13,6 +13,7 @@ from research.portfolio_closure_v1 import repair
 from research.unified_opportunity_risk_v1.data import HERE,OUT,CONTRACT,csv
 from research.unified_opportunity_risk_v1 import engine
 from research.capital_scaling_v1.run import save_account
+from research.unified_opportunity_risk_v1.provenance import verify_cache
 
 
 def configs():
@@ -53,8 +54,7 @@ def case(config,end='2021-12-31',group='discovery',force=False):
     identity={p.name:repair.digest(p) for p in [CONTRACT,OUT/'calibration_frozen.json',OUT/'risk_references_frozen.json',HERE/'engine.py']}
     receipt=dest/'receipt.json'
     if receipt.exists() and not force:
-        r=json.loads(receipt.read_text())
-        if r['identity']!=identity:raise ValueError('cached configuration binding changed')
+        r=verify_cache(receipt,identity)
         print('VERIFIED',config['case_id'],flush=True);return r
     data,liq,req=load(end);start=time.monotonic();print('RUN',config['case_id'],end,flush=True)
     account,nav,pool,platform=engine.run(data,config,liq,req,end)

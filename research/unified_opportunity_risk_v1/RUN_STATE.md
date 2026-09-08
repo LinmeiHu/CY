@@ -1,1 +1,1 @@
-COMPLETE。研究计算、规定分析与数据修复已完成。最终结论KEEP_NATIVE，见REPORT.md / output/final_system_spec.json。69测试通过，442注册输入哈希通过；72配置及94次账户执行已封存。盘中P0与全部capital_days终态精确一致，最终观测修复未改变冻结校准/风险参考哈希。当前分支正常Git提交与远端HEAD提供交付身份，不得重新调参或把诊断改称验证。自动续跑在确认交付后暂停。
+COMPLETE。研究计算、规定分析与数据修复已完成。最终结论KEEP_NATIVE，见REPORT.md / output/final_system_spec.json。72测试通过，442注册输入哈希通过；72配置及95次账户执行已封存。盘中P0与全部capital_days终态精确一致，最终观测修复未改变冻结校准/风险参考哈希。当前分支正常Git提交与远端HEAD提供交付身份，不得重新调参或把诊断改称验证。自动续跑在确认交付后暂停。

@@ -173,3 +173,38 @@ def test_all_72_physical_configs_and_post_validation_immutability():
     v=pd.read_csv(OUT/'physical_account_validation.csv');assert v.status.eq('PASS').all() and v.min_cash.ge(-1e-8).all() and v.max_gross.le(1+1e-12).all()
     h=pd.read_csv(OUT/'registered_input_hash_verification.csv');assert len(h)==442 and h.status.eq('PASS').all()
     exact=pd.read_csv(OUT/'deterministic_rerun.csv');assert exact.economic_state.eq('PASS').all() and exact.actual_fills.eq('PASS').all()
+
+
+def test_same_security_validated_liquidity_is_shared():
+    a,p=book();p.liquidity={('000001.SZ',WHEN.normalize()):100000.}
+    p.allocate([request('a'),request('b',strategy='MCB')],WHEN)
+    assert np.isclose(a.exposure(),1000.)
+    assert np.isclose(a.lots['a']['quantity'],a.lots['b']['quantity'])
+
+
+def test_same_security_liquidity_consumed_across_rank_groups():
+    a,p=book('R1');original=p.cal.get
+    p.cal.get=lambda eid,*args:dict(original(eid,*args),R1=2. if eid=='best' else 1.)
+    p.liquidity={('000001.SZ',WHEN.normalize()):100000.}
+    p.allocate([request('second',strategy='MCB'),request('best')],WHEN)
+    assert np.isclose(a.exposure(),1000.)
+    assert 'best' in a.lots and 'second' not in a.lots
+
+
+def test_certified_cache_preserves_generator_identity_and_rejects_drift(tmp_path,monkeypatch):
+    from research.unified_opportunity_risk_v1 import provenance
+    from research.portfolio_closure_v1 import repair
+    monkeypatch.setattr(provenance,'OUT',tmp_path)
+    dest=tmp_path/'accounts/case';dest.mkdir(parents=True)
+    artifact=dest/'daily.parquet';artifact.write_bytes(b'physical-state')
+    receipt=dest/'receipt.json';old={'engine.py':'old','calibration':'frozen'};new=dict(old,**{'engine.py':'new'})
+    saved=dict(identity=old,hashes={artifact.name:repair.digest(artifact)})
+    repair.write_json(receipt,saved);original=receipt.read_bytes()
+    evidence=tmp_path/'proof.json';evidence.write_text('verified')
+    repair.write_json(tmp_path/'engine_equivalence_certificate.json',dict(accounts={'accounts/case':dict(receipt_sha256=repair.digest(receipt),accepted_identity=new)},evidence_hashes={'proof.json':repair.digest(evidence)}))
+    assert provenance.verify_cache(receipt,new)==saved and receipt.read_bytes()==original
+    with pytest.raises(ValueError):provenance.verify_cache(receipt,dict(new,calibration='retuned'))
+    evidence.write_text('changed')
+    with pytest.raises(ValueError,match='evidence drift'):provenance.verify_cache(receipt,new)
+    evidence.write_text('verified');artifact.write_bytes(b'changed-state')
+    with pytest.raises(ValueError,match='artifact drift'):provenance.verify_cache(receipt,new)

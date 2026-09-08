@@ -31,4 +31,8 @@ PYTHONPATH=.:src pytest -q research/unified_opportunity_risk_v1/test_engine.py r
 
 SMV6 原生 context 中 set 的字符串顺序可能随 Python 进程变化；状态相等性按集合内容规范化核对，物理成交、现金、净值和持仓保持逐项核对。Native SuperMind 平台等价性未因此升级。
 
-机器金额容差沿用权威账本：cash ≥ -1e-8 元，权益差≤1e-6元，数量差≤1e-8。现金从未clip；完整实际最小值保留在账户验证表。初次全流程复现可先运行测试，再运行finalize；已有test_results.json记录本次69项通过证据。
+机器金额容差沿用权威账本：cash ≥ -1e-8 元，权益差≤1e-6元，数量差≤1e-8。现金从未clip；完整实际最小值保留在账户验证表。初次全流程复现可先运行测试，再运行finalize；已有test_results.json记录本次72项通过证据。
+
+最终同票共享流动性防线：全部95个账户的每个同刻/同票请求上界均不触发新增约束，另独立重跑2106日逐值相等。`engine_equivalence_certificate.json`保留原生成身份，逐receipt、结果文件及证据哈希授权现有缓存复用；任何其他代码/校准/文件变化均拒绝。成本模块仅改变缓存验证调用。证书适用于枚举的原缓存，不能推广到新参数或任意历史。新缓存直接由当前代码计算。
+
+验证防线证据：`PYTHONPATH=.:src python -m research.unified_opportunity_risk_v1.equivalence`；独立账户命令：`PYTHONPATH=.:src python -m research.unified_opportunity_risk_v1.run --case R1_RP100_S10_F1 --end 2026-09-04 --group liquidity_guard_rerun`。先完成artifacts导出核对，再生成兼容性证书。

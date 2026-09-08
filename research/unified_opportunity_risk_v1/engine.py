@@ -141,7 +141,7 @@ class Pool:
         safe_nav=nav-a.cash*max([i.fee_rate/(1+i.fee_rate) for i in intents],default=0.)
         risk,sec,fam,mv,fam_mv=self.holdings(safe_nav)
         ids={i.event_id for i in intents};ordered=sorted(intents,key=lambda i:(i.strategy,i.native_priority,i.event_id))
-        records=[];eligible=[]
+        records=[];eligible=[];liquidity_used=defaultdict(float)
         for i in ordered:
             q=self.cal.get(i.event_id,i.strategy,i.route,i.native_priority)
             reason='ECONOMIC_DUPLICATE' if i.event_id in self.cal.pairs and self.cal.pairs[i.event_id] in ids else ''
@@ -166,11 +166,20 @@ class Pool:
                 liquidity_denominator=denom,liquidity_source=liq_source,target=target,allocated=0.,reason=reason,quality_source='DISCOVERY_FROZEN',strategy_cap='NONE')
             records.append(rec)
             if not reason and target>0:eligible.append((i,q,rec))
+        security_liquidity={}
+        for symbol in {i.symbol for i,_,_ in eligible}:
+            same=[r for i,_,r in eligible if i.symbol==symbol]
+            # A validated market window is shared, never repeated per strategy.
+            # Without a denominator, the aggregate conservative reference is
+            # the sum of the distinct economic Native executable requests.
+            security_liquidity[symbol]=(sum(r['liquidity_cap'] for r in same) if all(r['liquidity_source']=='NATIVE_EXECUTABLE_FALLBACK' for r in same)
+                                        else min(r['liquidity_cap'] for r in same))
         for rank in sorted({r['rank'] for _,_,r in eligible},reverse=True):
             group=[x for x in eligible if x[2]['rank']==rank];targets=[r['target'] for _,_,r in group]
             constraints=[]
             for symbol in sorted({i.symbol for i,_,_ in group}):
                 flags=[float(i.symbol==symbol) for i,_,_ in group]
+                constraints.append((flags,security_liquidity[symbol]-liquidity_used[symbol]))
                 constraints.append((flags,self.config['security_cap']*safe_nav-mv[symbol]))
                 constraints.append(([f*r['tail']/safe_nav for f,(_,_,r) in zip(flags,group)],rp*self.refs['security']-sec[symbol]))
             if self.config['family_cap']:
@@ -185,7 +194,7 @@ class Pool:
                 if quantity<=1e-12:r['reason']='RISK_OR_CASH_OR_LOT';continue
                 scaled=replace(i,native_requested_quantity=quantity,native_base_cash_limit=None)
                 if not a._fill(scaled,scaled.native_requested_notional,'UNIFIED',when):r['reason']=a.native_failures.get(i.event_id,'NO_FILL');continue
-                allocated=quantity*i.price;r['allocated']=allocated;r['reason']='FUNDED'
+                allocated=quantity*i.price;liquidity_used[i.symbol]+=allocated;r['allocated']=allocated;r['reason']='FUNDED'
                 delta=allocated/safe_nav*r['tail'];risk+=delta;sec[i.symbol]+=delta;fam[q['family']]+=delta;mv[i.symbol]+=allocated
                 a.lots[i.event_id]['estimated_tail_loss']=r['tail'];a.lots[i.event_id]['ranking_at_entry']=rank
         a.checkpoint(when,'UNIFIED_JOINT_FUNDING_COMPLETE')

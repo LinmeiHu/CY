@@ -3393,6 +3393,47 @@
     "seconds": 90.67332150001312,
     "status": "PASS"
   },
+  "accounts/liquidity_guard_rerun/R1_RP100_S10_F1": {
+    "config": {
+      "architecture": "P3_UNIFIED_RANKING_FAMILY_RISK",
+      "case_id": "R1_RP100_S10_F1",
+      "family_cap": true,
+      "ranking": "R1",
+      "risk_profile": 1.0,
+      "security_cap": 0.1
+    },
+    "days": 2106,
+    "end": "2026-09-04",
+    "hashes": {
+      "admission.parquet": "593daa54e69d12584e6e90424f4ce6b0316a8b3f2a1d8abc824a76a944765c3c",
+      "cash_distributions.parquet": "d32858475292a74f69c7ee205700d3795147243f78b4138207af81137b1b75d4",
+      "checkpoints.parquet": "b270ede3a7798b5071404b03525ef3ea0cce53bf9cf5fdce8b0608e4cf6b51d5",
+      "daily.parquet": "8b66b9b3ce7296d52329c252b80a734ebd163db83d82f8f21de2c91465ce89d9",
+      "demand.parquet": "a833e96f01ea15c0cb26621027a7441026e077093fd7fb4364da8b330d71de18",
+      "fills.parquet": "953360f5428f05336048a57fc0b6b508366377545d75c9dc4d37cb6bac5af565",
+      "risk_history.parquet": "ba15bbd19c479c72743f73282b0db4e2dae02460d8f44763ce398f7715848922",
+      "smv6_events.parquet": "e916d7dc7adcabfc7bfd8f7700022d71f0a96f6ad1b5717bd932240822063442",
+      "timeline.parquet": "c8dd3c1bfb65ef557ccc31f3f3cf1ff4773ff4feba4c6f2ff49b27c5d1712aa5"
+    },
+    "identity": {
+      "calibration_frozen.json": "6ac33c528f7a81e3451bbbfeec32c5bf9414257afc05766379ccfc64ade6544d",
+      "engine.py": "e9b150c319f11e0ea088648ab313c87d1c786d071bd0654d399c61e363f16364",
+      "risk_references_frozen.json": "0a2267f56f7e8d1fd087458296cae78f354b323ea4a6691b6ba4449a0714bd6e",
+      "unified_opportunity_risk_v1.json": "6522395cf603d345eb597869575e92059d0a42281e41c56bfd52ce51a782aa37"
+    },
+    "initial_nav": 4904782.129191859,
+    "liquidity_export_reconciliation": {
+      "ETF_requests": 272,
+      "case": "liquidity_guard_rerun/R1_RP100_S10_F1",
+      "corrected_admission_sha256": "593daa54e69d12584e6e90424f4ce6b0316a8b3f2a1d8abc824a76a944765c3c",
+      "max_funded_window_participation": 0.5,
+      "original_admission_sha256": "df519f85a73d6d3467c88d1b56f232844ac6a2cd814631c92b5cbd05c891bfc3",
+      "physical_fills_and_NAV_unchanged": "PASS",
+      "status": "PASS"
+    },
+    "seconds": 125.86284741695272,
+    "status": "PASS"
+  },
   "accounts/smoke/R0_RP75_S10_F0": {
     "config": {
       "architecture": "P1_UNIFIED_RISK_ONLY",
