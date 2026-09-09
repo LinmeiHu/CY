@@ -1,0 +1,18 @@
+{
+  "diagnostic": "CANDIDATE_B_EXPOSURE_SCALE_BY_SINGLE_SECURITY_CAP",
+  "X": [1, 1.5, 2, 3, 5, 8, 10, "MAX_FILL"],
+  "Y": [0.10, 0.15, 0.20, 0.30],
+  "cells": 32,
+  "period": ["2018-01-01", "2026-09-04"],
+  "baseline": "Frozen Candidate B R1_RP100_S10_F1",
+  "finite_target": "X times Candidate-B target at current diagnostic NAV; opportunity/security/account/family soft budgets scale by X",
+  "MAX_FILL": "No RP/family soft budget; retain R1 and all hard execution constraints",
+  "variable_hard_defense": "single-security admission cap Y",
+  "fixed_hard_defenses": ["gross <= 100%", "cash nonnegative within unchanged Native precision", "no borrowing or margin", "registered liquidity and execution limits", "same-security aggregation"],
+  "frozen": ["signal sources", "discovery calibration", "R1", "quality threshold", "Native timing and exits"],
+  "native_state_feedback": "Explicitly permitted by user",
+  "existing_positions": "Never renormalized; subsequent price drift retained under Native exits",
+  "reuse": "Existing eight Y10 accounts and three newly completed MAX_FILL accounts, with full identity/file-hash verification",
+  "optimization_or_production_promotion": false,
+  "existing_verdict": "KEEP_NATIVE_UNCHANGED"
+}
