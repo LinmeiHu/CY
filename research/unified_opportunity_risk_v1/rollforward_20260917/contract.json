@@ -1,0 +1,49 @@
+{
+  "X": [
+    1.0,
+    1.5,
+    2.0,
+    3.0,
+    5.0,
+    8.0,
+    10.0,
+    "MAX_FILL"
+  ],
+  "Y": [
+    0.1,
+    0.15,
+    0.2,
+    0.3
+  ],
+  "baseline": "Frozen Candidate B target formula evaluated using each diagnostic account current NAV",
+  "candidate": "R1_RP100_S10_F1",
+  "cutoff_reason": "2026-09-17 session incomplete at acquisition; latest completed session 2026-09-16",
+  "diagnostic_only": true,
+  "end": "2026-09-16",
+  "finite_X": "Scale new/increasing targets and RP100 total/family soft risk budgets by X",
+  "hard_defenses": [
+    "gross <= 100%",
+    "cash >= 0",
+    "no leverage",
+    "same-security aggregation",
+    "registered execution/liquidity limits"
+  ],
+  "historical_comparison": "Separate refreshed-through-20260904 changes from returns during new sessions",
+  "immutable": [
+    "R1",
+    "discovery calibration",
+    "quality threshold",
+    "Native exits",
+    "signal timing",
+    "execution rules",
+    "no renormalization of existing holdings"
+  ],
+  "latest_front_adjustment": "User authorized full 2018 replay on latest front-adjusted ETF prices; no historical price-basis splice",
+  "max_fill": "R1 order; maximum cash/gross/security/liquidity permitted; no RP or family soft budget",
+  "opportunity_population": "Frozen original signal producers; native holdings-state feedback may change legal requests",
+  "optimize_X": false,
+  "requested_today": "2026-09-17",
+  "security_cap": "Y applies to new/increasing requests; passive price drift follows unchanged Native contract",
+  "start": "2018-01-01",
+  "verdict": "KEEP_NATIVE"
+}

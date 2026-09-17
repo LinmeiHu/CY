@@ -1,0 +1,47 @@
+{
+  "X": [
+    1,
+    1.5,
+    2,
+    3,
+    5,
+    8,
+    10,
+    "MAX_FILL"
+  ],
+  "Y": [
+    0.1,
+    0.15,
+    0.2,
+    0.3
+  ],
+  "account_audit": "32/32 PASS",
+  "baseline_end": "2026-09-04",
+  "baseline_report": "../max_fill_security_cap/REPORT.md",
+  "blocker": null,
+  "checked_at_shanghai": "2026-09-17 13:05",
+  "data_gates": "PASS",
+  "effective_end": "2026-09-16",
+  "existing_verdict": "KEEP_NATIVE_UNCHANGED",
+  "last_completed_session_at_check": "2026-09-16",
+  "metrics": "32 full, 192 period, 288 yearly",
+  "new_IFCGR_parents": 1,
+  "new_OGR_parents": 1,
+  "new_stock_actions": 90,
+  "observed_data_end": {
+    "ETF_daily_and_critical_minutes": "2026-09-16",
+    "display_indices": "2026-09-16",
+    "stock_daily": "2026-09-16"
+  },
+  "requested_end": "2026-09-17",
+  "required_before_replay": [
+    "Refresh frozen-universe raw daily and corporate-action execution facts",
+    "Refresh registered ETF critical-minute and stock execution-minute inputs",
+    "Rebuild original producers with unchanged rules and verify old-period identity",
+    "Replay all 32 continuous accounts and verify data coverage, cash, gross, caps and liquidity",
+    "Update metrics and dual-axis benchmark charts"
+  ],
+  "status": "COMPLETE",
+  "tests_passed": 85,
+  "user_adjustment_choice": "Latest front-adjusted ETF history; full continuous replay from 2018; prior-period changes disclosed separately"
+}
