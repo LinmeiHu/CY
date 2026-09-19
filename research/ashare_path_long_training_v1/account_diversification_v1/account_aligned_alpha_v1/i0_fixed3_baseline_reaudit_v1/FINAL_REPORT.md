@@ -15,6 +15,10 @@ The score-generation chain is reproducible by explicit `(t,j,symbol)` identity f
 
 For 2020 (817,778 rows) and 2021 (930,284 rows), the keyed daily files, `KEYS.parquet`, and all three `I0_s*.npy` arrays agree exactly. The audit inputs now bind every `j` to the canonical panel `symbol`; missing or swapped mappings are rejected. Recomputing each seed's average-tie daily percentile, taking their fixed mean, and applying `mean(BRANCH_s17,s29,s43)>0` reproduces the stored consensus, gate, and authoritative account signal rows exactly. The account source sorts score descending and `j` ascending and scans beyond an unplannable high-ranked candidate until ten plans are made or candidates are exhausted.
 
+The centered unit chain is also explicit in the sealed producer: the frozen network output is converted to return units for `F00`; the readout objective uses `e=10*(base-y)` and `e+10*(x@theta)`, so `x@theta` is already in the same units as `base` and is added without another `/10`. The saved keyed `BRANCH_s*` values exactly match the frozen NPY inputs. No scale correction was introduced by this audit.
+
+The original daily producer, centered objective/evaluator, fixed3 gate verifier, single-seed and synergy producers, and the actual H10 exec string are now byte-exact source snapshots under `source_snapshot/`, sealed by `SOURCE_SNAPSHOT_MANIFEST.json`.
+
 ## Stock PnL repair
 
 The old diagnostic added the same BUY/SELL economic cashflow from both `lot_fills` and `cashflows`. The repaired calculation uses `lot_fills` for transactions and only non-BUY/SELL `cashflows` for dividends/tax/other stock events, plus start/end marked inventory and the account receivable/tax-reserve bridge. It reconciles exactly to NAV for archived fixed3 2020/2021 and all three archived 2020 single-seed accounts. Annual NAV and returns are unchanged. Any old profit-contribution ranking built from the duplicated formula must be regenerated; the fixed3 headline return is not invalidated by this attribution defect.
@@ -25,7 +29,7 @@ Fresh four-arm return parity, complete ledger parity, real-account triplicate-se
 
 TASK_STATUS = RUNNING  
 AUDIT_TARGET = CENTERED_TOP10_H10  
-SOURCE_LINEAGE_COMPLETE = PARTIAL_ACCOUNT_EXECUTION_PENDING  
+SOURCE_LINEAGE_COMPLETE = YES_STATIC_AND_HASHED
 FIXED3_FRESH_REPLAY_EXECUTED = NO_RESOURCE_GATED  
 OLD_I0_CACHE_SHORTCUT_USED_FOR_NEW_RESULT = NO  
 FOUR_ARMS_COMMON_CONTRACT = DESIGNED_NOT_YET_EXECUTED  
@@ -41,8 +45,8 @@ TRAINING_MODIFIED = NO
 2023_RESULTS_OPENED = NO  
 2024_2026_OPENED = NO  
 PRODUCTION_APPROVED = NO  
-LOCAL_COMMIT = db0160d6977a680ee4405b816d9b8b058de42d2e (initial audit checkpoint; current comparator patch pending commit)
-AUDIT_REMOTE_SHA = PENDING  
+LOCAL_COMMIT = 14d8a7cb9b23de546b1d79e47d09ef41504b3b5e (source-sealed audit implementation)
+AUDIT_REMOTE_SHA = f3dbdc748b (published equivalent checkpoint; reporting-only updates may advance branch head)
 REPORT_PATH = research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/FINAL_REPORT.md
 
 REPRODUCIBILITY_VERDICT：分数链已复现；账户端到端仍未完成，不能把旧摘要/旧账本一致称为完整复现。
