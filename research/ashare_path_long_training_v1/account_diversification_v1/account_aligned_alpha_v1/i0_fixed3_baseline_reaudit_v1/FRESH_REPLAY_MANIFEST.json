@@ -1,5 +1,5 @@
 {
-  "status": "2020_PASS_2021_PENDING",
+  "status": "COMPLETE_2020_2021",
   "benchmark": {
     "year": 2020,
     "arm": "I0_FIXED3",
@@ -28,6 +28,27 @@
     "I0_S29_REBUILT": {"annual_return": -0.02111644310399996, "max_drawdown": 0.2016014196667697, "score_sha256": "96ff4c4cf75601420459c4be6858f8a9565bd534005792f58edde044518aac23", "elapsed_seconds": 17.99898224999197},
     "I0_S43_REBUILT": {"annual_return": 0.09537234365440006, "max_drawdown": 0.14018310461450678, "score_sha256": "f47f9bd637fe55e4f40efe6169fa34c45b7b85663ef52d4056fe9099817cbf9a", "elapsed_seconds": 18.482866207836196},
     "I0_FIXED3_REBUILT": {"annual_return": 0.17439616309079997, "max_drawdown": 0.15313437715077305, "score_sha256": "af254971afc66997abcc380645bacf8ac7c74e81aab5ed2011038436d63e96a1", "elapsed_seconds": 18.52456587506458}
+  },
+  "common_contract_2021": {
+    "gate_sha256": "94cc4d4c9ecb22e1db8d681561d91e329fc4f28dcee2fa5598a624b55ea95941",
+    "canonical_start_sha256": "f9ce58c3090b465dc35ffebd4bf558df3d27b68f5cbcc943f2e482710264589c",
+    "exec_source_sha256": "c8ca7753ab365c856ddf947330d62dce92eff52e61bbab11275e4db406283eb7",
+    "actions_sha256": "7487f52b4cce3840d61954744adaae3cb04a11ebc82c1ea1d54633a18c9774df",
+    "holding": "H10",
+    "TopN": 10,
+    "gate": "FIXED3_COMPOSED_MEAN_POSITIVE",
+    "forecast_through": 3648,
+    "same_for_all_arms": true
+  },
+  "arms_2021": {
+    "I0_S17_REBUILT": {"annual_return": 0.5218251484484, "max_drawdown": 0.1361464271602666, "score_sha256": "0e33cd584881ff2e45fb360613b100cbc7e65fdc99b4e5d240bf3e2073f64c7c", "elapsed_seconds": 18.2101669581607},
+    "I0_S29_REBUILT": {"annual_return": 0.39547658695199983, "max_drawdown": 0.15353428968992333, "score_sha256": "efdfdbe219f6343db9bfcaa6d812a1c2078cdd3e0f5bd92b99d82b9f05a67809", "elapsed_seconds": 19.084460834041238},
+    "I0_S43_REBUILT": {"annual_return": 0.3575830283939998, "max_drawdown": 0.1715576997591699, "score_sha256": "caffc082ec40eb5ee7e48d0131d96b5aa8af38f1d388b3c72f54acd29981f160", "elapsed_seconds": 18.099104375112802},
+    "I0_FIXED3_REBUILT": {"annual_return": 0.4843660712103999, "max_drawdown": 0.14345785005145228, "score_sha256": "ffccb33d408e921ce81c29684d68433da7e80c0ba4906e57dbb2b6a0b50ef64b", "elapsed_seconds": 19.226910250028595}
+  },
+  "archived_2021_parity": {
+    "I0_FIXED3_REBUILT": "PASS_ALL_ECONOMIC_LEDGERS_AND_PLANNING",
+    "single_seed_archived_ledgers": "ABSENT_NOT_CLAIMED"
   },
   "result_class_2020": "A_ALL_FOUR_ARMS_ECONOMIC_STATE_REPRODUCED",
   "old_i0_cache_shortcut_used_for_new_result": false,
