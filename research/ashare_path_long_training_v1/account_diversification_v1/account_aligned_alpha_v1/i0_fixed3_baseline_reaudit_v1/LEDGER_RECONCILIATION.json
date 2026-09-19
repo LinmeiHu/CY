@@ -1,6 +1,8 @@
 {
   "status": "PENDING_FRESH_REPLAY",
   "comparison_layers": ["NAV", "orders", "lot_fills", "inventory", "lot_inventory", "cashflows", "inventory_events", "lot_actions", "lots", "planning"],
+  "implemented_ledger_comparator": true,
+  "value_normalization": "missing values equal; numeric scalars compared by Decimal(str(value)); dtype ignored",
   "ignored_fields": [],
   "economic_values_exact": true,
   "first_divergence": null

@@ -4,7 +4,15 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from .audit import keyed_fixed3, load_replay_signal, percentile_by_date, stock_pnl_reconciliation
+from .audit import (
+    LEDGER_KINDS,
+    compare_ledger_directories,
+    keyed_fixed3,
+    load_replay_signal,
+    percentile_by_date,
+    stock_pnl_reconciliation,
+    validate_symbol_mapping,
+)
 
 
 def seeds() -> dict[int, pd.DataFrame]:
@@ -29,6 +37,13 @@ def test_keyed_fixed3_rejects_missing_duplicate_and_wrong_keys() -> None:
     wrong = {**original, 43: original[43].assign(j=[10, 11, 99, 10, 11])}
     with pytest.raises(ValueError, match="SEED_KEY_MISMATCH"):
         keyed_fixed3(wrong)
+
+
+def test_symbol_j_mapping_is_bound_and_swaps_are_rejected() -> None:
+    frame = pd.DataFrame({"t": [1, 1], "j": [0, 1], "symbol": ["AAA", "BBB"], "score": [1.0, 2.0]})
+    validate_symbol_mapping(frame, ["AAA", "BBB"])
+    with pytest.raises(ValueError, match="SYMBOL_J_MAPPING_MISMATCH"):
+        validate_symbol_mapping(frame.assign(symbol=["BBB", "AAA"]), ["AAA", "BBB"])
 
 
 def test_average_tie_percentile_and_triplicate_identity() -> None:
@@ -103,3 +118,20 @@ def test_stock_pnl_fees_partial_sale_dividend_receivable_tax_and_multilots() -> 
     assert summary["account_nonstock_total"] == "0"
     assert summary["nav_change_less_external"] == "19"
     assert summary["pass"]
+
+
+def test_ledger_comparison_checks_all_layers_and_reports_first_value(tmp_path) -> None:
+    old, new = tmp_path / "old", tmp_path / "new"
+    old.mkdir(); new.mkdir()
+    for kind in LEDGER_KINDS:
+        frame = pd.DataFrame({"t": [1], "j": [2], "value": [D("3.00")]})
+        frame.to_parquet(old / f"OLD_funded_prefix_{kind}.parquet", index=False)
+        frame.to_parquet(new / f"NEW_funded_prefix_{kind}.parquet", index=False)
+    assert compare_ledger_directories(old, "OLD", new, "NEW")["status"] == "PASS"
+    pd.DataFrame({"t": [1], "j": [2], "value": [D("4.00")]}).to_parquet(
+        new / "NEW_funded_prefix_cashflows.parquet", index=False
+    )
+    result = compare_ledger_directories(old, "OLD", new, "NEW")
+    assert result["status"] == "FAIL"
+    assert result["first_divergence"]["kind"] == "cashflows"
+    assert result["first_divergence"]["column"] == "value"

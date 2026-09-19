@@ -2,7 +2,7 @@
 
 ## Current verdict
 
-The score-generation chain is reproducible by explicit `(t,j)` keys for both consumed years. No row misalignment, scale mismatch, seed binding error or score-cache shortcut has been observed in that layer. This does **not** yet certify the `+17.4396%` account return: the prior single-seed producer called `verify_a0(2020)`, which only re-read the archived fixed3 ledger and checked summary parity. A fresh fixed3 execution has not started because the independent all-stock attention session is actively using MPS and substantial memory.
+The score-generation chain is reproducible by explicit `(t,j,symbol)` identity for both consumed years. No row misalignment, scale mismatch, seed binding error or score-cache shortcut has been observed in that layer. This does **not** yet certify the `+17.4396%` account return: the prior single-seed producer called `verify_a0(2020)`, which only re-read the archived fixed3 ledger and checked summary parity. A fresh fixed3 execution has not started because the independent all-stock attention session is actively using MPS and substantial memory.
 
 ## What the old reports actually did
 
@@ -13,7 +13,7 @@ The score-generation chain is reproducible by explicit `(t,j)` keys for both con
 
 ## Keyed reconstruction
 
-For 2020 (817,778 rows) and 2021 (930,284 rows), the keyed daily files, `KEYS.parquet`, and all three `I0_s*.npy` arrays agree exactly. Recomputing each seed's average-tie daily percentile, taking their fixed mean, and applying `mean(BRANCH_s17,s29,s43)>0` reproduces the stored consensus, gate, and authoritative account signal rows exactly. The account source sorts score descending and `j` ascending and scans beyond an unplannable high-ranked candidate until ten plans are made or candidates are exhausted.
+For 2020 (817,778 rows) and 2021 (930,284 rows), the keyed daily files, `KEYS.parquet`, and all three `I0_s*.npy` arrays agree exactly. The audit inputs now bind every `j` to the canonical panel `symbol`; missing or swapped mappings are rejected. Recomputing each seed's average-tie daily percentile, taking their fixed mean, and applying `mean(BRANCH_s17,s29,s43)>0` reproduces the stored consensus, gate, and authoritative account signal rows exactly. The account source sorts score descending and `j` ascending and scans beyond an unplannable high-ranked candidate until ten plans are made or candidates are exhausted.
 
 ## Stock PnL repair
 
@@ -41,7 +41,7 @@ TRAINING_MODIFIED = NO
 2023_RESULTS_OPENED = NO  
 2024_2026_OPENED = NO  
 PRODUCTION_APPROVED = NO  
-LOCAL_COMMIT = PENDING  
+LOCAL_COMMIT = db0160d6977a680ee4405b816d9b8b058de42d2e (initial audit checkpoint; current comparator patch pending commit)
 AUDIT_REMOTE_SHA = PENDING  
 REPORT_PATH = research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/FINAL_REPORT.md
 

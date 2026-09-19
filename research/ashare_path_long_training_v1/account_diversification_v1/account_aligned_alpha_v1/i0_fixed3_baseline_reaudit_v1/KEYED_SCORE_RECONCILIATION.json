@@ -1,6 +1,8 @@
 {
   "status": "PASS_2020_2021",
-  "join_keys": ["t", "j"],
+  "join_keys": ["t", "j", "symbol"],
+  "canonical_numeric_keys": ["t", "j"],
+  "symbol_j_mapping": "PASS_EXACT_AGAINST_PANEL_AXES",
   "input_rows": {"2020": 817778, "2021": 930284},
   "dates": {"2020": 243, "2021": 243},
   "duplicate_keys": 0,
@@ -17,5 +19,6 @@
   "ranking_order": "score descending, j ascending",
   "gate_order": "rank complete same-date eligible universe; fixed3 composed mean positive gate then account candidate scan",
   "future_Ret20_used": false,
-  "large_artifacts": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/inputs"
+  "large_artifacts": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/inputs",
+  "input_manifest_note": "Per-year INPUT_MANIFEST.json contains the current symbol-bound score and gate hashes."
 }

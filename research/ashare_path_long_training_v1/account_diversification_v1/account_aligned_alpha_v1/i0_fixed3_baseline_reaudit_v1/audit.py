@@ -16,6 +16,10 @@ import pandas as pd
 
 
 SEEDS = (17, 29, 43)
+LEDGER_KINDS = (
+    "cashflows", "inventory", "inventory_events", "lot_actions", "lot_fills",
+    "lot_inventory", "lots", "nav", "orders",
+)
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[5]
 VOL = Path("/Volumes/quant/CY_quant_research/ashare_path_long_training_v1")
@@ -47,15 +51,32 @@ def load_module(name: str, path: Path):
     return module
 
 
-def _validate_seed_frame(seed: int, frame: pd.DataFrame) -> pd.DataFrame:
+def validate_symbol_mapping(frame: pd.DataFrame, symbols: list[str]) -> None:
+    """Reject an unbound or inconsistent j/symbol axis."""
+    if "symbol" not in frame:
+        raise ValueError("SYMBOL_IDENTITY_REQUIRED")
+    js = frame.j.to_numpy()
+    if not np.issubdtype(js.dtype, np.integer) or (js < 0).any() or (js >= len(symbols)).any():
+        raise ValueError("J_OUT_OF_SYMBOL_AXIS")
+    expected = np.asarray(symbols, dtype=object)[js]
+    if not np.array_equal(frame.symbol.astype(str).to_numpy(), expected.astype(str)):
+        raise ValueError("SYMBOL_J_MAPPING_MISMATCH")
+
+
+def _validate_seed_frame(
+    seed: int, frame: pd.DataFrame, symbols: list[str] | None = None,
+) -> pd.DataFrame:
     required = {"t", "j", "score"}
     if not required <= set(frame):
         raise ValueError(f"SEED_{seed}_MISSING_COLUMNS:{sorted(required - set(frame))}")
-    out = frame[["t", "j", "score"]].copy()
+    columns = ["t", "j"] + (["symbol"] if "symbol" in frame else []) + ["score"]
+    out = frame[columns].copy()
     if out.duplicated(["t", "j"]).any():
         raise ValueError(f"SEED_{seed}_DUPLICATE_KEYS")
     if not np.isfinite(out.score.to_numpy(float)).all():
         raise ValueError(f"SEED_{seed}_NONFINITE_SCORE")
+    if symbols is not None:
+        validate_symbol_mapping(out, symbols)
     return out.rename(columns={"score": f"score_s{seed}"})
 
 
@@ -63,13 +84,17 @@ def keyed_fixed3(seed_frames: dict[int, pd.DataFrame]) -> pd.DataFrame:
     """Fail-closed keyed average; input row order is irrelevant."""
     if set(seed_frames) != set(SEEDS):
         raise ValueError(f"EXACT_SEED_SET_REQUIRED:{sorted(seed_frames)}")
+    has_symbol = {"symbol" in frame for frame in seed_frames.values()}
+    if len(has_symbol) != 1:
+        raise ValueError("SEED_SYMBOL_IDENTITY_MISMATCH")
+    keys = ["t", "j"] + (["symbol"] if has_symbol == {True} else [])
     merged: pd.DataFrame | None = None
     for seed in SEEDS:
         frame = _validate_seed_frame(seed, seed_frames[seed])
         if merged is None:
             merged = frame
         else:
-            merged = merged.merge(frame, on=["t", "j"], how="outer", validate="one_to_one", indicator=True)
+            merged = merged.merge(frame, on=keys, how="outer", validate="one_to_one", indicator=True)
             if not merged._merge.eq("both").all():
                 counts = merged._merge.value_counts().to_dict()
                 raise ValueError(f"SEED_KEY_MISMATCH:{seed}:{counts}")
@@ -84,9 +109,10 @@ def percentile_by_date(frame: pd.DataFrame, value: str) -> pd.DataFrame:
         raise ValueError("DUPLICATE_KEYS")
     if not np.isfinite(frame[value].to_numpy(float)).all():
         raise ValueError("NONFINITE_SCORE")
-    out = frame[["t", "j", value]].copy()
+    keys = ["t", "j"] + (["symbol"] if "symbol" in frame else [])
+    out = frame[keys + [value]].copy()
     out["score"] = out.groupby("t")[value].rank(method="average", pct=True)
-    return out[["t", "j", "score"]]
+    return out[keys + ["score"]]
 
 
 def rebuild_inputs(year: int, out_root: Path = OUT) -> dict:
@@ -100,13 +126,18 @@ def rebuild_inputs(year: int, out_root: Path = OUT) -> dict:
     if frame.duplicated(["t", "j"]).any():
         raise ValueError("AUTHORITATIVE_KEY_DUPLICATE")
 
+    axes = json.loads((VOL / "panel/axes.json").read_text())
+    symbols = axes["symbols"]
+    if frame.j.min() < 0 or frame.j.max() >= len(symbols):
+        raise ValueError("AUTHORITATIVE_J_OUT_OF_SYMBOL_AXIS")
+    frame["symbol"] = np.asarray(symbols, dtype=object)[frame.j.to_numpy()]
     seed_frames = {
-        seed: percentile_by_date(frame[["t", "j", f"BRANCH_s{seed}"]], f"BRANCH_s{seed}")
+        seed: percentile_by_date(frame[["t", "j", "symbol", f"BRANCH_s{seed}"]], f"BRANCH_s{seed}")
         for seed in SEEDS
     }
     fixed = keyed_fixed3(seed_frames)
-    expected_fixed = frame[["t", "j", "consensus_rank"]].rename(columns={"consensus_rank": "expected"})
-    parity = fixed.merge(expected_fixed, on=["t", "j"], how="outer", validate="one_to_one", indicator=True)
+    expected_fixed = frame[["t", "j", "symbol", "consensus_rank"]].rename(columns={"consensus_rank": "expected"})
+    parity = fixed.merge(expected_fixed, on=["t", "j", "symbol"], how="outer", validate="one_to_one", indicator=True)
     if not parity._merge.eq("both").all() or not np.array_equal(parity.fixed3, parity.expected):
         raise ValueError("FIXED3_SAVED_SCORE_MISMATCH")
 
@@ -119,7 +150,7 @@ def rebuild_inputs(year: int, out_root: Path = OUT) -> dict:
 
     start, end = int(frame.t.min()), int(frame.t.max())
     authoritative = pd.read_parquet(AUTH_SIGNAL, filters=[("t", ">=", start), ("t", "<=", end)])
-    gate = frame.loc[gate_mask, ["t", "j", "decision_date", "final_prediction"]].rename(
+    gate = frame.loc[gate_mask, ["t", "j", "symbol", "decision_date", "final_prediction"]].rename(
         columns={"final_prediction": "pred20"}
     )
     gate = gate.merge(
@@ -129,7 +160,7 @@ def rebuild_inputs(year: int, out_root: Path = OUT) -> dict:
     )
     if not gate._merge.eq("both").all() or not np.array_equal(gate.pred20_rebuilt, gate.pred20_authoritative):
         raise ValueError("AUTHORITATIVE_GATE_MISMATCH")
-    gate = gate[["t", "j", "decision_date", "pred20_rebuilt", "logamount20"]].rename(
+    gate = gate[["t", "j", "symbol", "decision_date", "pred20_rebuilt", "logamount20"]].rename(
         columns={"pred20_rebuilt": "pred20"}
     ).sort_values(["t", "j"], kind="stable").reset_index(drop=True)
 
@@ -143,7 +174,7 @@ def rebuild_inputs(year: int, out_root: Path = OUT) -> dict:
         seed_frames[seed].sort_values(["t", "j"], kind="stable").to_parquet(path, index=False)
         score_paths[f"I0_S{seed}"] = path
     fixed_path = destination / "I0_FIXED3_SCORE.parquet"
-    fixed[["t", "j", "fixed3"]].rename(columns={"fixed3": "score"}).to_parquet(fixed_path, index=False)
+    fixed[["t", "j", "symbol", "fixed3"]].rename(columns={"fixed3": "score"}).to_parquet(fixed_path, index=False)
     score_paths["I0_FIXED3"] = fixed_path
 
     keys = pd.read_parquet(FULL_FORWARD / str(year) / "KEYS.parquet", columns=["t", "j", "decision_date"])
@@ -175,17 +206,24 @@ def rebuild_inputs(year: int, out_root: Path = OUT) -> dict:
     return manifest
 
 
-def load_replay_signal(score_path: Path, gate_path: Path) -> pd.DataFrame:
+def load_replay_signal(
+    score_path: Path, gate_path: Path, symbols: list[str] | None = None,
+) -> pd.DataFrame:
     if not score_path.is_file():
         raise FileNotFoundError(f"SCORE_FILE_NOT_FOUND:{score_path}")
     if not gate_path.is_file():
         raise FileNotFoundError(f"GATE_FILE_NOT_FOUND:{gate_path}")
-    score = _validate_seed_frame(0, pd.read_parquet(score_path)).rename(columns={"score_s0": "score"})
+    score = _validate_seed_frame(0, pd.read_parquet(score_path), symbols).rename(columns={"score_s0": "score"})
     gate = pd.read_parquet(gate_path)
     required = {"t", "j", "pred20", "logamount20"}
     if not required <= set(gate) or gate.duplicated(["t", "j"]).any():
         raise ValueError("INVALID_GATE_FILE")
-    merged = gate.merge(score, on=["t", "j"], how="left", validate="one_to_one")
+    if symbols is not None:
+        validate_symbol_mapping(gate, symbols)
+    keys = ["t", "j"] + (["symbol"] if "symbol" in score and "symbol" in gate else [])
+    if ("symbol" in score) != ("symbol" in gate):
+        raise ValueError("SCORE_GATE_SYMBOL_IDENTITY_MISMATCH")
+    merged = gate.merge(score, on=keys, how="left", validate="one_to_one")
     if merged.score.isna().any():
         raise ValueError("GATE_SCORE_KEY_MISSING")
     if not np.isfinite(merged[["score", "pred20", "logamount20"]].to_numpy(float)).all():
@@ -199,9 +237,10 @@ def _runtime():
 
 def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_root: Path = OUT) -> dict:
     """Always consumes supplied files before considering an audit-local resume."""
-    signal = load_replay_signal(score_path, gate_path)
+    load_replay_signal(score_path, gate_path)
     br = _runtime()
     dates, symbols, ts, market, actions, _ = br.context(year)
+    signal = load_replay_signal(score_path, gate_path, symbols)
     if int(signal.t.min()) != ts[0] or int(signal.t.max()) != ts[-1]:
         raise ValueError("SIGNAL_YEAR_AXIS_MISMATCH")
     starts = br.load(br.BASE / str(year) / "H10_CANONICAL_STARTS.json")
@@ -264,6 +303,83 @@ def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_roo
 
 def _decimal_sum(values: Iterable[object]) -> D:
     return sum((D(str(value)) for value in values), D(0))
+
+
+def _same_ledger_value(left: object, right: object) -> bool:
+    if pd.isna(left) and pd.isna(right):
+        return True
+    if isinstance(left, (int, float, np.integer, np.floating, D)) and isinstance(
+        right, (int, float, np.integer, np.floating, D)
+    ):
+        return D(str(left)) == D(str(right))
+    return left == right
+
+
+def compare_ledger_directories(
+    archived_dir: Path,
+    archived_policy: str,
+    rebuilt_dir: Path,
+    rebuilt_policy: str,
+    ignored_columns: tuple[str, ...] = (),
+) -> dict:
+    """Compare every economic ledger and return the earliest stored difference."""
+    allowed_ignored = {"policy", "run_id", "source_path"}
+    if not set(ignored_columns) <= allowed_ignored:
+        raise ValueError("UNAPPROVED_IGNORED_LEDGER_COLUMN")
+    report = {
+        "status": "PASS",
+        "value_normalization": "missing values equal; numeric scalars compared by Decimal(str(value)); dtype ignored",
+        "ignored_columns": list(ignored_columns),
+        "ledgers": {},
+        "first_divergence": None,
+    }
+    for kind in LEDGER_KINDS:
+        old_path = archived_dir / f"{archived_policy}_funded_prefix_{kind}.parquet"
+        new_path = rebuilt_dir / f"{rebuilt_policy}_funded_prefix_{kind}.parquet"
+        if not old_path.is_file() or not new_path.is_file():
+            detail = {
+                "kind": kind, "reason": "MISSING_LEDGER",
+                "archived_exists": old_path.is_file(), "rebuilt_exists": new_path.is_file(),
+            }
+            report["status"] = "FAIL"
+            report["first_divergence"] = detail
+            return report
+        old = pd.read_parquet(old_path).drop(columns=list(ignored_columns), errors="ignore")
+        new = pd.read_parquet(new_path).drop(columns=list(ignored_columns), errors="ignore")
+        ledger = {
+            "archived_path": str(old_path), "archived_sha256": sha256(old_path),
+            "rebuilt_path": str(new_path), "rebuilt_sha256": sha256(new_path),
+            "archived_rows": len(old), "rebuilt_rows": len(new),
+        }
+        report["ledgers"][kind] = ledger
+        if list(old.columns) != list(new.columns):
+            detail = {
+                "kind": kind, "reason": "COLUMN_MISMATCH",
+                "archived_columns": list(old.columns), "rebuilt_columns": list(new.columns),
+            }
+        elif len(old) != len(new):
+            detail = {"kind": kind, "reason": "ROW_COUNT_MISMATCH", **ledger}
+        else:
+            detail = None
+            for row in range(len(old)):
+                for column in old.columns:
+                    left, right = old.iloc[row][column], new.iloc[row][column]
+                    if not _same_ledger_value(left, right):
+                        detail = {
+                            "kind": kind, "reason": "VALUE_MISMATCH", "row": row,
+                            "column": column, "archived": str(left), "rebuilt": str(right),
+                            "archived_row": {key: str(value) for key, value in old.iloc[row].to_dict().items()},
+                            "rebuilt_row": {key: str(value) for key, value in new.iloc[row].to_dict().items()},
+                        }
+                        break
+                if detail is not None:
+                    break
+        if detail is not None:
+            report["status"] = "FAIL"
+            report["first_divergence"] = detail
+            return report
+        ledger["values_equal"] = True
+    return report
 
 
 def stock_pnl_reconciliation(
