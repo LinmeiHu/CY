@@ -1,10 +1,38 @@
 {
-  "status": "QUEUED_RESOURCE_SAFETY",
-  "reason": "Primary all-stock attention MPS training is active; latest read-only observation found PID 3343 at P2_INNER_TRAIN RELATION lr=1e-6 step=6656/32000 with about 6.1GB RSS. The audit did not start a competing fresh replay.",
-  "inputs_built": [2020, 2021],
-  "arms": ["I0_S17_REBUILT", "I0_S29_REBUILT", "I0_S43_REBUILT", "I0_FIXED3_REBUILT"],
+  "status": "2020_PASS_2021_PENDING",
+  "benchmark": {
+    "year": 2020,
+    "arm": "I0_FIXED3",
+    "sessions": 10,
+    "actual_engine_elapsed_seconds": 16.6487112918403,
+    "replay_cpu_percent": "98-100",
+    "replay_peak_rss_bytes": 1060519936,
+    "main_mps_baseline_steps_per_second": 4.03567886159096,
+    "main_mps_overlap_steps_per_second": 3.9994367199572736,
+    "throughput_drop_percent": 0.8980432506316707,
+    "decision": "CONTINUE_FULL_REPLAY_BECAUSE_DROP_LE_10_PERCENT"
+  },
+  "common_contract_2020": {
+    "gate_sha256": "435dfc7fcbec254bdfcf1e35c8937317cd6f1e0daf7a15fe5609bb7b735ee0e0",
+    "canonical_start_sha256": "b6703e6d0905111345100bdadc2eca4638342afce7f6b9d7682b7cc2598a1f2e",
+    "exec_source_sha256": "c8ca7753ab365c856ddf947330d62dce92eff52e61bbab11275e4db406283eb7",
+    "actions_sha256": "7487f52b4cce3840d61954744adaae3cb04a11ebc82c1ea1d54633a18c9774df",
+    "holding": "H10",
+    "TopN": 10,
+    "gate": "FIXED3_COMPOSED_MEAN_POSITIVE",
+    "forecast_through": 3405,
+    "same_for_all_arms": true
+  },
+  "arms_2020": {
+    "I0_S17_REBUILT": {"annual_return": -0.021267009336799925, "max_drawdown": 0.26579577256282927, "score_sha256": "1d680af0f43360dba81a485a84bfd238a77ce2df3e9bb3e912d6afdbfbe1cf20", "elapsed_seconds": 17.768836042145267},
+    "I0_S29_REBUILT": {"annual_return": -0.02111644310399996, "max_drawdown": 0.2016014196667697, "score_sha256": "96ff4c4cf75601420459c4be6858f8a9565bd534005792f58edde044518aac23", "elapsed_seconds": 17.99898224999197},
+    "I0_S43_REBUILT": {"annual_return": 0.09537234365440006, "max_drawdown": 0.14018310461450678, "score_sha256": "f47f9bd637fe55e4f40efe6169fa34c45b7b85663ef52d4056fe9099817cbf9a", "elapsed_seconds": 18.482866207836196},
+    "I0_FIXED3_REBUILT": {"annual_return": 0.17439616309079997, "max_drawdown": 0.15313437715077305, "score_sha256": "af254971afc66997abcc380645bacf8ac7c74e81aab5ed2011038436d63e96a1", "elapsed_seconds": 18.52456587506458}
+  },
+  "result_class_2020": "A_ALL_FOUR_ARMS_ECONOMIC_STATE_REPRODUCED",
   "old_i0_cache_shortcut_used_for_new_result": false,
-  "symbol_bound_inputs": true,
-  "mps_used": false,
+  "failed_attempt_preserved": "fresh_replay/2020/I0_S17_FAILED_20260919T150636_METRICS_DEPENDENCY",
+  "failed_attempt_note": "Account execution completed but an unrelated forward-label metric dependency failed before RESULT write; its ledgers were not reused.",
+  "mps_used_by_replay": false,
   "training_modified": false
 }

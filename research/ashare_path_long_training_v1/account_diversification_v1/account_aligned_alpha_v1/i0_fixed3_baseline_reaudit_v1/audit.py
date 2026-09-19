@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import time
 from datetime import datetime, timezone
 from decimal import Decimal as D
 from pathlib import Path
@@ -21,7 +22,7 @@ LEDGER_KINDS = (
     "lot_inventory", "lots", "nav", "orders",
 )
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parents[5]
+REPO = HERE.parents[4]
 VOL = Path("/Volumes/quant/CY_quant_research/ashare_path_long_training_v1")
 OUT = VOL / "account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1"
 TRANSFER = VOL / "account_diversification_v1/alpha_held_risk_v2/transfer_v1/daily"
@@ -235,7 +236,27 @@ def _runtime():
     return load_module("i0_reaudit_broader", BROADER)
 
 
-def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_root: Path = OUT) -> dict:
+def replay_return_maxdd(ts: list[int], ledgers: Path, policy: str) -> dict:
+    nav = pd.read_parquet(ledgers / f"{policy}_funded_prefix_nav.parquet")
+    values = nav[nav.t.isin(ts)].nav.astype(float).to_numpy()
+    if len(values) != len(ts):
+        raise ValueError("REPLAY_NAV_COVERAGE_MISMATCH")
+    peaks = np.maximum.accumulate(np.r_[1_000_000.0, values])[1:]
+    return {
+        "annual_return": float(values[-1] / 1_000_000.0 - 1),
+        "max_drawdown": -float(np.min(values / peaks - 1)),
+        "nav_rows": len(values),
+    }
+
+
+def fresh_replay(
+    year: int,
+    arm: str,
+    score_path: Path,
+    gate_path: Path,
+    out_root: Path = OUT,
+    forecast_sessions: int | None = None,
+) -> dict:
     """Always consumes supplied files before considering an audit-local resume."""
     load_replay_signal(score_path, gate_path)
     br = _runtime()
@@ -253,7 +274,11 @@ def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_roo
 
     archived_source = br.BASE / str(year) / "CENTERED_TOP10_H10_RUN_SOURCE.py"
     source = archived_source.read_text()
-    destination = out_root / "fresh_replay" / str(year) / arm
+    if forecast_sessions is not None and not 1 <= forecast_sessions <= len(ts):
+        raise ValueError("INVALID_FORECAST_SESSIONS")
+    replay_ts = ts if forecast_sessions is None else ts[:forecast_sessions]
+    namespace = "fresh_replay" if forecast_sessions is None else f"benchmark_{forecast_sessions}d"
+    destination = out_root / namespace / str(year) / arm
     ledgers = destination / "ledgers"
     ledgers.mkdir(parents=True, exist_ok=True)
     source_path = destination / "RUN_SOURCE.py"
@@ -267,6 +292,8 @@ def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_roo
         "archived_source_sha256": sha256(archived_source),
         "actions_sha256": sha256(br.B7 / "REGISTERED_ACTIONS_THROUGH2023.parquet"),
         "holding": "H10", "TopN": 10, "common_gate": "FIXED3_COMPOSED_MEAN_POSITIVE",
+        "forecast_sessions": forecast_sessions,
+        "forecast_through": replay_ts[-1],
     }
     if identity["source_sha256"] != identity["archived_source_sha256"]:
         raise ValueError("EXEC_SOURCE_ARCHIVE_MISMATCH")
@@ -280,21 +307,26 @@ def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_roo
     br.engine.OUT = ledgers
     scope = dict(br.engine.__dict__, holding_horizon=10, normalize_t=None, scale_for=lambda t: D(1), planning_audit=[])
     exec(source, scope)
-    policy = f"Y{year}_{arm}_REAUDIT_V1_ROOT"
+    suffix = "" if forecast_sessions is None else f"_BENCH{forecast_sessions}D"
+    policy = f"Y{year}_{arm}_REAUDIT_V1{suffix}_ROOT"
     started = datetime.now(timezone.utc).astimezone().isoformat()
+    clock = time.monotonic()
     engine_result = scope["run"](
-        policy, signal, market, actions, dates, symbols, forecast_through=ts[-1], stagger=True,
+        policy, signal, market, actions, dates, symbols, forecast_through=replay_ts[-1], stagger=True,
         resume_path=snapshot, snapshot_path=destination / f"{policy}.pkl", entitlement_branch=start["choices"],
     )
     if engine_result["block"] is not None:
         raise RuntimeError(f"ACCOUNT_BLOCKED:{arm}:{engine_result['block']}")
     pd.DataFrame(scope["planning_audit"]).to_parquet(destination / "PLANNING.parquet", index=False)
     br.dump(destination / "ENGINE.json", engine_result)
-    metrics, _ = br.account_metrics(year, arm, ledgers, policy)
+    metrics = None
+    if forecast_sessions is None:
+        metrics = replay_return_maxdd(ts, ledgers, policy)
     result = {
         "status": "COMPLETE_FRESH_REPLAY", "run_id": f"{year}-{arm}-reaudit-v1",
         "started_at": started, "finished_at": datetime.now(timezone.utc).astimezone().isoformat(),
         "identity": identity, "policy": policy, "engine": engine_result, "metrics": metrics,
+        "elapsed_seconds": time.monotonic() - clock,
         "old_i0_cache_shortcut_used": False,
     }
     br.dump(result_path, result)
@@ -303,16 +335,6 @@ def fresh_replay(year: int, arm: str, score_path: Path, gate_path: Path, out_roo
 
 def _decimal_sum(values: Iterable[object]) -> D:
     return sum((D(str(value)) for value in values), D(0))
-
-
-def _same_ledger_value(left: object, right: object) -> bool:
-    if pd.isna(left) and pd.isna(right):
-        return True
-    if isinstance(left, (int, float, np.integer, np.floating, D)) and isinstance(
-        right, (int, float, np.integer, np.floating, D)
-    ):
-        return D(str(left)) == D(str(right))
-    return left == right
 
 
 def compare_ledger_directories(
@@ -328,7 +350,7 @@ def compare_ledger_directories(
         raise ValueError("UNAPPROVED_IGNORED_LEDGER_COLUMN")
     report = {
         "status": "PASS",
-        "value_normalization": "missing values equal; numeric scalars compared by Decimal(str(value)); dtype ignored",
+        "value_normalization": "missing values equal; scalar values compared exactly; storage dtype ignored",
         "ignored_columns": list(ignored_columns),
         "ledgers": {},
         "first_divergence": None,
@@ -361,19 +383,21 @@ def compare_ledger_directories(
             detail = {"kind": kind, "reason": "ROW_COUNT_MISMATCH", **ledger}
         else:
             detail = None
-            for row in range(len(old)):
-                for column in old.columns:
-                    left, right = old.iloc[row][column], new.iloc[row][column]
-                    if not _same_ledger_value(left, right):
-                        detail = {
-                            "kind": kind, "reason": "VALUE_MISMATCH", "row": row,
-                            "column": column, "archived": str(left), "rebuilt": str(right),
-                            "archived_row": {key: str(value) for key, value in old.iloc[row].to_dict().items()},
-                            "rebuilt_row": {key: str(value) for key, value in new.iloc[row].to_dict().items()},
-                        }
-                        break
-                if detail is not None:
-                    break
+            first = []
+            for column_number, column in enumerate(old.columns):
+                equal = old[column].eq(new[column]) | (old[column].isna() & new[column].isna())
+                mismatch = np.flatnonzero(~equal.to_numpy())
+                if len(mismatch):
+                    first.append((int(mismatch[0]), column_number, column))
+            if first:
+                row, _, column = min(first)
+                left, right = old.iloc[row][column], new.iloc[row][column]
+                detail = {
+                    "kind": kind, "reason": "VALUE_MISMATCH", "row": row,
+                    "column": column, "archived": str(left), "rebuilt": str(right),
+                    "archived_row": {key: str(value) for key, value in old.iloc[row].to_dict().items()},
+                    "rebuilt_row": {key: str(value) for key, value in new.iloc[row].to_dict().items()},
+                }
         if detail is not None:
             report["status"] = "FAIL"
             report["first_divergence"] = detail
@@ -439,13 +463,17 @@ def main() -> None:
     replay = sub.add_parser("replay")
     replay.add_argument("year", type=int, choices=(2020, 2021))
     replay.add_argument("arm", choices=("I0_S17", "I0_S29", "I0_S43", "I0_FIXED3"))
+    replay.add_argument("--forecast-sessions", type=int)
     args = parser.parse_args()
     if args.command == "build-inputs":
         print(json.dumps(rebuild_inputs(args.year), indent=2))
     else:
         folder = OUT / "inputs" / str(args.year)
         score = folder / f"{args.arm}_SCORE.parquet"
-        print(json.dumps(fresh_replay(args.year, args.arm, score, folder / "COMMON_FIXED3_POSITIVE_GATE.parquet"), indent=2, default=str))
+        print(json.dumps(fresh_replay(
+            args.year, args.arm, score, folder / "COMMON_FIXED3_POSITIVE_GATE.parquet",
+            forecast_sessions=args.forecast_sessions,
+        ), indent=2, default=str))
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 {
   "status": "PASS_SMALL_CPU_TESTS",
   "command": "PYTHONPATH=. pytest -q research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/test_audit.py",
-  "passed": 9,
+  "passed": 11,
   "failed": 0,
-  "duration_seconds": 0.63,
+  "duration_seconds": 0.50,
   "covered": [
     "seed order invariance",
     "per-seed row order invariance",
@@ -17,12 +17,13 @@
     "future label isolation",
     "stock PnL minimum counterexample",
     "fees, partial sale, dividend, receivable, tax reserve and multiple-lot reconciliation",
-    "all-ledger equality and first-value-divergence reporting"
+    "all-ledger equality and first-value-divergence reporting",
+    "runtime source path resolution",
+    "NAV-only replay return and MaxDD"
   ],
   "not_yet_covered_due_active_mps": [
-    "fresh real four-arm replay",
     "triplicate-seed real account identity",
     "shuffled real input account identity",
-    "fresh-vs-archived full ledger parity"
+    "2021 fresh-vs-archived full ledger parity"
   ]
 }

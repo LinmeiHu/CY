@@ -1,9 +1,15 @@
 {
-  "status": "PENDING_FRESH_REPLAY",
-  "comparison_layers": ["NAV", "orders", "lot_fills", "inventory", "lot_inventory", "cashflows", "inventory_events", "lot_actions", "lots", "planning"],
-  "implemented_ledger_comparator": true,
-  "value_normalization": "missing values equal; numeric scalars compared by Decimal(str(value)); dtype ignored",
+  "status": "2020_PASS_ALL_FOUR_ARMS",
+  "comparison_layers": ["nav", "orders", "lot_fills", "inventory", "cashflows", "lot_inventory", "inventory_events", "lot_actions", "lots", "planning"],
   "ignored_fields": [],
+  "value_normalization": "missing values equal; scalar values compared exactly; storage dtype ignored",
+  "arms": {
+    "I0_S17_REBUILT": {"economic_ledgers": "PASS", "planning": "PASS", "first_divergence": null},
+    "I0_S29_REBUILT": {"economic_ledgers": "PASS", "planning": "PASS", "first_divergence": null},
+    "I0_S43_REBUILT": {"economic_ledgers": "PASS", "planning": "PASS", "first_divergence": null},
+    "I0_FIXED3_REBUILT": {"economic_ledgers": "PASS", "planning": "PASS", "first_divergence": null}
+  },
   "economic_values_exact": true,
-  "first_divergence": null
+  "first_divergence": null,
+  "full_machine_readable_comparison": "/tmp/i0_2020_ledger_comparison.json"
 }

@@ -5,11 +5,13 @@ import pandas as pd
 import pytest
 
 from .audit import (
+    BROADER,
     LEDGER_KINDS,
     compare_ledger_directories,
     keyed_fixed3,
     load_replay_signal,
     percentile_by_date,
+    replay_return_maxdd,
     stock_pnl_reconciliation,
     validate_symbol_mapping,
 )
@@ -18,6 +20,20 @@ from .audit import (
 def seeds() -> dict[int, pd.DataFrame]:
     keys = pd.DataFrame({"t": [1, 1, 1, 2, 2], "j": [10, 11, 12, 10, 11]})
     return {s: keys.assign(score=np.array([1, 2, 2, 5, 4], float) + s / 1000) for s in (17, 29, 43)}
+
+
+def test_runtime_source_path_exists() -> None:
+    assert BROADER.is_file()
+
+
+def test_replay_metrics_use_only_nav(tmp_path) -> None:
+    policy = "P"
+    pd.DataFrame({"t": [1, 2, 3], "nav": [1_000_000, 900_000, 1_100_000]}).to_parquet(
+        tmp_path / f"{policy}_funded_prefix_nav.parquet", index=False
+    )
+    assert replay_return_maxdd([1, 2, 3], tmp_path, policy) == {
+        "annual_return": pytest.approx(0.1), "max_drawdown": pytest.approx(0.1), "nav_rows": 3,
+    }
 
 
 def test_keyed_fixed3_is_order_and_seed_order_invariant() -> None:
