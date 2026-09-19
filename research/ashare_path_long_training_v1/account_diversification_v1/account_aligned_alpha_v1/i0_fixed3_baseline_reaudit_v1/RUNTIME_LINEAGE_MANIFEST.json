@@ -1,0 +1,43 @@
+{
+  "status": "SOURCE_AND_INPUT_LINEAGE_PARTIAL_ACCOUNT_REPLAY_PENDING",
+  "repositories": {
+    "research": {
+      "path": "/Users/linmei/Documents/CY-worktrees/minute-ret5-multiscale-autonomous-v2",
+      "branch": "codex/minute-ret5-multiscale-autonomous-v2",
+      "head": "61277275ffb8788efae40dcf91209deab3370aac",
+      "read_only": true
+    },
+    "runtime_dependency": {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908",
+      "branch": "research/ashare-champion-playbooks-v1",
+      "head": "af93019de3cfb45ca1edd09c741660cf05c86c88"
+    },
+    "audit": {
+      "path": "/Users/linmei/Documents/CY-worktrees/i0-fixed3-baseline-reaudit-v1",
+      "branch": "audit/i0-fixed3-baseline-reaudit-v1",
+      "start_head": "61277275ffb8788efae40dcf91209deab3370aac"
+    }
+  },
+  "runtime_sources": [
+    {"role": "original full daily producer", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/alpha_train_build.py", "sha256": "c7583dee1362277f74499287a90c24f0924056e962c5fefbcd5d78f1c97e4c5c"},
+    {"role": "centered objective", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/centered_branch_execute.py", "sha256": "5157f50c6c83dfba038f6f58df3c38a2c8190df5f2b7109f8d8e76582d6cee1b"},
+    {"role": "centered solver", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/centered_branch_numerical_repair.py", "sha256": "89c5a96ac7605871debefdb6a54073db7a91f60c61d581cf8615c8923813f659"},
+    {"role": "centered evaluator", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/centered_branch_evaluate.py", "sha256": "f824706e2e877cb86a56d108310bb13595b433fbe4f4e2542e15fb9406c0777a"},
+    {"role": "fixed3 and gate verifier", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/linear_transfer_prepare.py", "sha256": "bf39859d171f595cac89c9ace64569d54bf8c0bf8fd31ba13f11d62d34f7f866"},
+    {"role": "H10 source generator", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/account_diversification_v1/topn_concentration_v1/h10_top2_interaction_v1/development.py", "sha256": "374226aef2fdafcbcfcf4f9a858379cd92d2730b963d940c19c9758122116113"},
+    {"role": "engine", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/entitlement_boundary_engine.py", "sha256": "39d53f327c9ba709268d5535663c552e4ef7bbb3560967d3828600d0465e934c"},
+    {"role": "corporate action boundary", "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/entitlement_boundary.py", "sha256": "b4d5fd2d9d7818a5f720fa1ed8e5313389ac45769bfcede070d910d6691a6ab7"},
+    {"role": "old single-seed report producer", "path": "/Users/linmei/Documents/CY-worktrees/minute-ret5-multiscale-autonomous-v2/research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/training_root_cause_v2/master_alpha158_profit_first_v2/single_seed_account_diagnostic_v1/run_single_seed_accounts.py", "sha256": "51c691842146ca05e4353f4000e41a7cbd5d106f283c44aa3b6a94c9a13c0305"},
+    {"role": "old synergy report producer", "path": "/Users/linmei/Documents/CY-worktrees/minute-ret5-multiscale-autonomous-v2/research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/training_root_cause_v2/master_alpha158_profit_first_v2/ensemble_synergy_anatomy_v1/run_synergy.py", "sha256": "a62956296dc01b4feb668e4969b0c2e81a9653ef43dbbbf5a32cfabaed8d4ae3"},
+    {"role": "actual archived exec string 2020 and 2021", "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/topn_concentration_v1/h10_top2_interaction_v1/development/{year}/CENTERED_TOP10_H10_RUN_SOURCE.py", "sha256": "c8ca7753ab365c856ddf947330d62dce92eff52e61bbab11275e4db406283eb7", "current_generator_byte_equal": true}
+  ],
+  "uncommitted_evaluator_repair_observed_not_copied_into_baseline_logic": {
+    "run.py_current_sha256": "20c76828f564ccf841edf9fb47b8f62c7f19086c66430512f1d40acf5a205d16",
+    "run.py_head_sha256": "571d3e89fbccb603f8053d6c3ed566f07884e75d50a28c55e1dcd7efda48901b",
+    "formal.py_current_sha256": "16dc2d3431934620464451f9994a8fb40a9046efc3afb847e39d366918f85140",
+    "formal.py_head_sha256": "58ac328c1c8349d7d90fc976f63f82190e646e5a43afda4aca168a2169be02a2",
+    "profit_pipeline.py_current_sha256": "e2b627f024c5e82dc75056a0f6147c44855bb8d7bcf38d175cc0c0c6595e39fd",
+    "profit_pipeline.py_head_sha256": "94646f3945bd5ec432bc3a5b934015eb8715245209f0c9dcd786824f71ade484"
+  },
+  "identity_boundary": "runtime hashes and keyed parity prove provenance and score construction, not fresh account reproduction"
+}

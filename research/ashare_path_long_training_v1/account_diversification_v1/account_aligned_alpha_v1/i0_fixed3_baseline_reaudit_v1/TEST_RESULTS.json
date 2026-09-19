@@ -1,0 +1,26 @@
+{
+  "status": "PASS_SMALL_CPU_TESTS",
+  "command": "PYTHONPATH=. pytest -q research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/test_audit.py",
+  "passed": 7,
+  "failed": 0,
+  "duration_seconds": 0.45,
+  "covered": [
+    "seed order invariance",
+    "per-seed row order invariance",
+    "missing seed rejection",
+    "duplicate and wrong key rejection",
+    "average-tie percentile",
+    "triplicate seed score identity",
+    "invalid score path rejection before replay",
+    "score change changes candidate order",
+    "future label isolation",
+    "stock PnL minimum counterexample",
+    "fees, partial sale, dividend, receivable, tax reserve and multiple-lot reconciliation"
+  ],
+  "not_yet_covered_due_active_mps": [
+    "fresh real four-arm replay",
+    "triplicate-seed real account identity",
+    "shuffled real input account identity",
+    "fresh-vs-archived full ledger parity"
+  ]
+}

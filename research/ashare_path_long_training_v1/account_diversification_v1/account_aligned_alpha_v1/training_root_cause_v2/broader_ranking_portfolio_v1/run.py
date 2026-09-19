@@ -256,7 +256,9 @@ def account_metrics(year: int, arm: str, folder: Path, policy: str) -> tuple[dic
     cf = read_ledger(folder, policy, "cashflows")
     cfy = cf[cf.t.isin(ts)].copy()
     cfy["cash_f"] = cfy.cash_delta.astype(float)
-    cflow = cfy[cfy.j >= 0].groupby("j").cash_f.sum()
+    # BUY/SELL are already represented by lot_fills.  cashflows is only the
+    # authoritative source for non-trade stock events such as dividends/tax.
+    cflow = cfy[(cfy.j >= 0) & ~cfy.kind.isin(["BUY", "SELL"])].groupby("j").cash_f.sum()
     start_inv = inv[inv.t == ts[0] - 1].assign(value_f=lambda x: x.value.astype(float)).groupby("j").value_f.sum()
     end_inv = inv[inv.t == ts[-1]].assign(value_f=lambda x: x.value.astype(float)).groupby("j").value_f.sum()
     js = fflow.index.union(cflow.index).union(start_inv.index).union(end_inv.index)

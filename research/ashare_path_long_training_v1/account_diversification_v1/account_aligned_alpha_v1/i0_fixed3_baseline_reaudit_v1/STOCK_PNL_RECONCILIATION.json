@@ -1,0 +1,10 @@
+{
+  "status": "PASS_ARCHIVED_LEDGERS",
+  "confirmed_bug": "BUY and SELL cash_delta were added once from lot_fills and again from cashflows",
+  "fix": "lot_fills is the sole transaction source; cashflows contributes only non-BUY/SELL events",
+  "2020_fixed3": {"corrected_stock_pnl": "174396.1630908", "nav_change": "174396.1630908", "residual": "0E-7", "old_double_counted_stock_pnl": "299247.1761816", "old_residual": "124851.0130908"},
+  "2021_fixed3": {"corrected_stock_pnl": "484366.0712104", "nav_change": "484366.0712104", "residual": "0E-7", "old_double_counted_stock_pnl": "408374.2724208", "old_residual": "-75991.7987896"},
+  "2020_single_seed_corrected_residuals": {"17": "0E-7", "29": "0E-7", "43": "0E-7"},
+  "annual_nav_changed": false,
+  "synergy_report_effect": "The headline fixed3 return and ACCOUNT_SYNERGY use NAV returns, not the duplicated stock_pnl. run_synergy discards broader account concentration output and its lot contribution uses lot_fills plus end mark once. Profit-contribution rankings derived from the old broader stock_pnl formula are invalid until regenerated."
+}

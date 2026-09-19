@@ -1,0 +1,23 @@
+{
+  "status": "RUNNING_RESOURCE_GATED",
+  "audit_target": "CENTERED_TOP10_H10",
+  "years": [2020, 2021],
+  "seeds": [17, 29, 43],
+  "aggregation": "mean of same-date average-tie percentile ranks",
+  "gate": "mean of BRANCH_s17, BRANCH_s29, BRANCH_s43 composed predictions > 0",
+  "topn": 10,
+  "holding": "H10",
+  "account": "annual independent RMB 1000000 canonical start including cash, lots, rights, planned orders and axes",
+  "comparison": "common fixed3 gate and canonical start; ranking score is the only intended arm difference",
+  "forbidden": [
+    "training or inference on MPS while the primary session is active",
+    "modification of the primary worktree, RUN_STATE, locks or checkpoints",
+    "verify_a0 or archived RESULT as a new replay result",
+    "2022 candidate computation",
+    "opening 2023 results",
+    "opening 2024-2026"
+  ],
+  "starting_research_head": "61277275ffb8788efae40dcf91209deab3370aac",
+  "audit_branch": "audit/i0-fixed3-baseline-reaudit-v1",
+  "large_artifact_root": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1"
+}
