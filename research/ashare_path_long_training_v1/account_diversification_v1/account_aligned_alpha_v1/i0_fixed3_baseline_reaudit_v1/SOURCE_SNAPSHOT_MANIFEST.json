@@ -1,0 +1,19 @@
+{
+  "status": "BYTE_EXACT",
+  "note": "These files are provenance snapshots only; this audit does not execute training producers from this directory.",
+  "files": [
+    {"path": "source_snapshot/alpha_train_build.py", "sha256": "c7583dee1362277f74499287a90c24f0924056e962c5fefbcd5d78f1c97e4c5c", "role": "original full daily producer"},
+    {"path": "source_snapshot/centered_branch_execute.py", "sha256": "5157f50c6c83dfba038f6f58df3c38a2c8190df5f2b7109f8d8e76582d6cee1b", "role": "centered objective producer"},
+    {"path": "source_snapshot/centered_branch_evaluate.py", "sha256": "f824706e2e877cb86a56d108310bb13595b433fbe4f4e2542e15fb9406c0777a", "role": "centered evaluator"},
+    {"path": "source_snapshot/linear_transfer_prepare.py", "sha256": "bf39859d171f595cac89c9ace64569d54bf8c0bf8fd31ba13f11d62d34f7f866", "role": "fixed3 and gate verifier"},
+    {"path": "source_snapshot/run_single_seed_accounts.py", "sha256": "51c691842146ca05e4353f4000e41a7cbd5d106f283c44aa3b6a94c9a13c0305", "role": "old single-seed report producer"},
+    {"path": "source_snapshot/run_synergy.py", "sha256": "a62956296dc01b4feb668e4969b0c2e81a9653ef43dbbbf5a32cfabaed8d4ae3", "role": "old synergy report producer"},
+    {"path": "source_snapshot/CENTERED_TOP10_H10_RUN_SOURCE.py", "sha256": "c8ca7753ab365c856ddf947330d62dce92eff52e61bbab11275e4db406283eb7", "role": "actual archived H10 exec string for 2020 and 2021"}
+  ],
+  "already_present_elsewhere_in_audit_snapshot": [
+    "centered_branch_numerical_repair.py",
+    "development.py",
+    "entitlement_boundary.py",
+    "entitlement_boundary_engine.py"
+  ]
+}
