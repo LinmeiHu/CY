@@ -1,0 +1,43 @@
+{
+  "status": "RUNNING_STATE_AUDIT_SNAPSHOT",
+  "captured_at": "2026-09-19T09:47:51.769010+08:00",
+  "run_state": {
+    "status": "RUNNING",
+    "stage": "P2_INNER_TRAIN",
+    "pid": 79238,
+    "updated_at": "2026-09-19T09:46:50.026559+08:00",
+    "identity_test": {
+      "status": "PASS",
+      "dates_tested": [
+        4106,
+        4116,
+        4126
+      ],
+      "maximum_prediction_difference": 0.0,
+      "maximum_embedding_difference": 0.0,
+      "chunked_vs_unchunked_max_abs": 5.587935447692871e-09,
+      "incumbent_cached_prediction_max_abs": 1.862645149230957e-08,
+      "incumbent_cached_embedding_max_abs": 1.1920928955078125e-07,
+      "complete_same_date_universe": true,
+      "self_attention_masked": true,
+      "future_labels_used_for_context": false,
+      "account_2020_annual_return": 0.17439616309079997,
+      "account_2020_MaxDD": 0.15313437715077305,
+      "account_reconciliation": "PASS_EXACT_REPRODUCTION_OF_AUTHORITATIVE_A0"
+    },
+    "projected_primary_grid_mps_hours": 19.591867056054372,
+    "arm": "RELATION",
+    "lr": 3e-06,
+    "step": 25088,
+    "max_steps": 32000,
+    "year": 2020,
+    "seed": 17,
+    "active_seconds": 6589.282060542377
+  },
+  "pid": 79238,
+  "pid_live": true,
+  "ps": "79238 51047 Sat Sep 19 00:48:15 2026     08:59:36 python research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_allstock_attention_lr_v1/run.py inner-grid",
+  "cwd": "/Users/linmei/Documents/CY-worktrees/minute-ret5-multiscale-autonomous-v2",
+  "git_branch": "codex/minute-ret5-multiscale-autonomous-v2",
+  "head": "2d6865f25324d5d2d6ac8532d4238af4e2693ed4"
+}

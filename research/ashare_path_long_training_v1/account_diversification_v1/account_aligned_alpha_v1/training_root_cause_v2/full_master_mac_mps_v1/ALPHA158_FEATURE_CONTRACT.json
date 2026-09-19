@@ -1,0 +1,950 @@
+[
+  {
+    "index": 0,
+    "name": "KMID",
+    "formula": "(close-open)/open",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 1,
+    "name": "KLEN",
+    "formula": "(high-low)/open",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 2,
+    "name": "KMID2",
+    "formula": "(close-open)/(high-low+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 3,
+    "name": "KUP",
+    "formula": "(high-max(open,close))/open",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 4,
+    "name": "KUP2",
+    "formula": "(high-max(open,close))/(high-low+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 5,
+    "name": "KLOW",
+    "formula": "(min(open,close)-low)/open",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 6,
+    "name": "KLOW2",
+    "formula": "(min(open,close)-low)/(high-low+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 7,
+    "name": "KSFT",
+    "formula": "(2*close-high-low)/open",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 8,
+    "name": "KSFT2",
+    "formula": "(2*close-high-low)/(high-low+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 9,
+    "name": "OPEN0",
+    "formula": "open/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 10,
+    "name": "HIGH0",
+    "formula": "high/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 11,
+    "name": "LOW0",
+    "formula": "low/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 12,
+    "name": "VWAP0",
+    "formula": "vwap/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 13,
+    "name": "ROC5",
+    "formula": "Ref(close,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 14,
+    "name": "ROC10",
+    "formula": "Ref(close,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 15,
+    "name": "ROC20",
+    "formula": "Ref(close,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 16,
+    "name": "ROC30",
+    "formula": "Ref(close,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 17,
+    "name": "ROC60",
+    "formula": "Ref(close,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 18,
+    "name": "MA5",
+    "formula": "Mean(close,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 19,
+    "name": "MA10",
+    "formula": "Mean(close,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 20,
+    "name": "MA20",
+    "formula": "Mean(close,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 21,
+    "name": "MA30",
+    "formula": "Mean(close,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 22,
+    "name": "MA60",
+    "formula": "Mean(close,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 23,
+    "name": "STD5",
+    "formula": "Std(close,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 24,
+    "name": "STD10",
+    "formula": "Std(close,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 25,
+    "name": "STD20",
+    "formula": "Std(close,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 26,
+    "name": "STD30",
+    "formula": "Std(close,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 27,
+    "name": "STD60",
+    "formula": "Std(close,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 28,
+    "name": "BETA5",
+    "formula": "Slope(close,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 29,
+    "name": "BETA10",
+    "formula": "Slope(close,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 30,
+    "name": "BETA20",
+    "formula": "Slope(close,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 31,
+    "name": "BETA30",
+    "formula": "Slope(close,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 32,
+    "name": "BETA60",
+    "formula": "Slope(close,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 33,
+    "name": "RSQR5",
+    "formula": "Rsquare(close,5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 34,
+    "name": "RSQR10",
+    "formula": "Rsquare(close,10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 35,
+    "name": "RSQR20",
+    "formula": "Rsquare(close,20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 36,
+    "name": "RSQR30",
+    "formula": "Rsquare(close,30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 37,
+    "name": "RSQR60",
+    "formula": "Rsquare(close,60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 38,
+    "name": "RESI5",
+    "formula": "Resi(close,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 39,
+    "name": "RESI10",
+    "formula": "Resi(close,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 40,
+    "name": "RESI20",
+    "formula": "Resi(close,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 41,
+    "name": "RESI30",
+    "formula": "Resi(close,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 42,
+    "name": "RESI60",
+    "formula": "Resi(close,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 43,
+    "name": "MAX5",
+    "formula": "Max(high,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 44,
+    "name": "MAX10",
+    "formula": "Max(high,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 45,
+    "name": "MAX20",
+    "formula": "Max(high,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 46,
+    "name": "MAX30",
+    "formula": "Max(high,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 47,
+    "name": "MAX60",
+    "formula": "Max(high,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 48,
+    "name": "MIN5",
+    "formula": "Min(lo5,5)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 49,
+    "name": "MIN10",
+    "formula": "Min(lo10,10)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 50,
+    "name": "MIN20",
+    "formula": "Min(lo20,20)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 51,
+    "name": "MIN30",
+    "formula": "Min(lo30,30)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 52,
+    "name": "MIN60",
+    "formula": "Min(lo60,60)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 53,
+    "name": "QTLU5",
+    "formula": "Quantile(close,5,.8)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 54,
+    "name": "QTLU10",
+    "formula": "Quantile(close,10,.8)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 55,
+    "name": "QTLU20",
+    "formula": "Quantile(close,20,.8)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 56,
+    "name": "QTLU30",
+    "formula": "Quantile(close,30,.8)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 57,
+    "name": "QTLU60",
+    "formula": "Quantile(close,60,.8)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 58,
+    "name": "QTLD5",
+    "formula": "Quantile(close,5,.2)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 59,
+    "name": "QTLD10",
+    "formula": "Quantile(close,10,.2)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 60,
+    "name": "QTLD20",
+    "formula": "Quantile(close,20,.2)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 61,
+    "name": "QTLD30",
+    "formula": "Quantile(close,30,.2)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 62,
+    "name": "QTLD60",
+    "formula": "Quantile(close,60,.2)/close",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 63,
+    "name": "RANK5",
+    "formula": "Rank(close,5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 64,
+    "name": "RANK10",
+    "formula": "Rank(close,10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 65,
+    "name": "RANK20",
+    "formula": "Rank(close,20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 66,
+    "name": "RANK30",
+    "formula": "Rank(close,30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 67,
+    "name": "RANK60",
+    "formula": "Rank(close,60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 68,
+    "name": "RSV5",
+    "formula": "(close-Min(lo5,5))/(Max(high,5)-Min(lo5,5)+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 69,
+    "name": "RSV10",
+    "formula": "(close-Min(lo10,10))/(Max(high,10)-Min(lo10,10)+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 70,
+    "name": "RSV20",
+    "formula": "(close-Min(lo20,20))/(Max(high,20)-Min(lo20,20)+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 71,
+    "name": "RSV30",
+    "formula": "(close-Min(lo30,30))/(Max(high,30)-Min(lo30,30)+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 72,
+    "name": "RSV60",
+    "formula": "(close-Min(lo60,60))/(Max(high,60)-Min(lo60,60)+1e-12)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 73,
+    "name": "IMAX5",
+    "formula": "IdxMax(high,5)/5",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 74,
+    "name": "IMAX10",
+    "formula": "IdxMax(high,10)/10",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 75,
+    "name": "IMAX20",
+    "formula": "IdxMax(high,20)/20",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 76,
+    "name": "IMAX30",
+    "formula": "IdxMax(high,30)/30",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 77,
+    "name": "IMAX60",
+    "formula": "IdxMax(high,60)/60",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 78,
+    "name": "IMIN5",
+    "formula": "IdxMin(lo5,5)/5",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 79,
+    "name": "IMIN10",
+    "formula": "IdxMin(lo10,10)/10",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 80,
+    "name": "IMIN20",
+    "formula": "IdxMin(lo20,20)/20",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 81,
+    "name": "IMIN30",
+    "formula": "IdxMin(lo30,30)/30",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 82,
+    "name": "IMIN60",
+    "formula": "IdxMin(lo60,60)/60",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 83,
+    "name": "IMXD5",
+    "formula": "(IdxMax(high,5)-IdxMin(lo5,5))/5",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 84,
+    "name": "IMXD10",
+    "formula": "(IdxMax(high,10)-IdxMin(lo10,10))/10",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 85,
+    "name": "IMXD20",
+    "formula": "(IdxMax(high,20)-IdxMin(lo20,20))/20",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 86,
+    "name": "IMXD30",
+    "formula": "(IdxMax(high,30)-IdxMin(lo30,30))/30",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 87,
+    "name": "IMXD60",
+    "formula": "(IdxMax(high,60)-IdxMin(lo60,60))/60",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 88,
+    "name": "CORR5",
+    "formula": "Corr(close,Log(volume+1),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 89,
+    "name": "CORR10",
+    "formula": "Corr(close,Log(volume+1),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 90,
+    "name": "CORR20",
+    "formula": "Corr(close,Log(volume+1),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 91,
+    "name": "CORR30",
+    "formula": "Corr(close,Log(volume+1),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 92,
+    "name": "CORR60",
+    "formula": "Corr(close,Log(volume+1),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 93,
+    "name": "CORD5",
+    "formula": "Corr(close/Ref(close,1),Log(volume/Ref(volume,1)+1),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 94,
+    "name": "CORD10",
+    "formula": "Corr(close/Ref(close,1),Log(volume/Ref(volume,1)+1),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 95,
+    "name": "CORD20",
+    "formula": "Corr(close/Ref(close,1),Log(volume/Ref(volume,1)+1),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 96,
+    "name": "CORD30",
+    "formula": "Corr(close/Ref(close,1),Log(volume/Ref(volume,1)+1),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 97,
+    "name": "CORD60",
+    "formula": "Corr(close/Ref(close,1),Log(volume/Ref(volume,1)+1),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 98,
+    "name": "CNTP5",
+    "formula": "Mean(close>Ref(close,1),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 99,
+    "name": "CNTP10",
+    "formula": "Mean(close>Ref(close,1),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 100,
+    "name": "CNTP20",
+    "formula": "Mean(close>Ref(close,1),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 101,
+    "name": "CNTP30",
+    "formula": "Mean(close>Ref(close,1),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 102,
+    "name": "CNTP60",
+    "formula": "Mean(close>Ref(close,1),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 103,
+    "name": "CNTN5",
+    "formula": "Mean(close<Ref(close,1),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 104,
+    "name": "CNTN10",
+    "formula": "Mean(close<Ref(close,1),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 105,
+    "name": "CNTN20",
+    "formula": "Mean(close<Ref(close,1),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 106,
+    "name": "CNTN30",
+    "formula": "Mean(close<Ref(close,1),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 107,
+    "name": "CNTN60",
+    "formula": "Mean(close<Ref(close,1),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 108,
+    "name": "CNTD5",
+    "formula": "CNTP-CNTN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 109,
+    "name": "CNTD10",
+    "formula": "CNTP-CNTN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 110,
+    "name": "CNTD20",
+    "formula": "CNTP-CNTN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 111,
+    "name": "CNTD30",
+    "formula": "CNTP-CNTN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 112,
+    "name": "CNTD60",
+    "formula": "CNTP-CNTN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 113,
+    "name": "SUMP5",
+    "formula": "Sum(max(close-Ref(close,1),0),5)/Sum(abs(delta_close),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 114,
+    "name": "SUMP10",
+    "formula": "Sum(max(close-Ref(close,1),0),10)/Sum(abs(delta_close),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 115,
+    "name": "SUMP20",
+    "formula": "Sum(max(close-Ref(close,1),0),20)/Sum(abs(delta_close),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 116,
+    "name": "SUMP30",
+    "formula": "Sum(max(close-Ref(close,1),0),30)/Sum(abs(delta_close),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 117,
+    "name": "SUMP60",
+    "formula": "Sum(max(close-Ref(close,1),0),60)/Sum(abs(delta_close),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 118,
+    "name": "SUMN5",
+    "formula": "Sum(max(Ref(close,1)-close,0),5)/Sum(abs(delta_close),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 119,
+    "name": "SUMN10",
+    "formula": "Sum(max(Ref(close,1)-close,0),10)/Sum(abs(delta_close),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 120,
+    "name": "SUMN20",
+    "formula": "Sum(max(Ref(close,1)-close,0),20)/Sum(abs(delta_close),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 121,
+    "name": "SUMN30",
+    "formula": "Sum(max(Ref(close,1)-close,0),30)/Sum(abs(delta_close),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 122,
+    "name": "SUMN60",
+    "formula": "Sum(max(Ref(close,1)-close,0),60)/Sum(abs(delta_close),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 123,
+    "name": "SUMD5",
+    "formula": "SUMP-SUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 124,
+    "name": "SUMD10",
+    "formula": "SUMP-SUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 125,
+    "name": "SUMD20",
+    "formula": "SUMP-SUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 126,
+    "name": "SUMD30",
+    "formula": "SUMP-SUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 127,
+    "name": "SUMD60",
+    "formula": "SUMP-SUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 128,
+    "name": "VMA5",
+    "formula": "Mean(volume,5)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 129,
+    "name": "VMA10",
+    "formula": "Mean(volume,10)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 130,
+    "name": "VMA20",
+    "formula": "Mean(volume,20)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 131,
+    "name": "VMA30",
+    "formula": "Mean(volume,30)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 132,
+    "name": "VMA60",
+    "formula": "Mean(volume,60)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 133,
+    "name": "VSTD5",
+    "formula": "Std(volume,5)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 134,
+    "name": "VSTD10",
+    "formula": "Std(volume,10)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 135,
+    "name": "VSTD20",
+    "formula": "Std(volume,20)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 136,
+    "name": "VSTD30",
+    "formula": "Std(volume,30)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 137,
+    "name": "VSTD60",
+    "formula": "Std(volume,60)/volume",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 138,
+    "name": "WVMA5",
+    "formula": "Std(abs(close/Ref(close,1)-1)*volume,5)/Mean(abs(close/Ref(close,1)-1)*volume,5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 139,
+    "name": "WVMA10",
+    "formula": "Std(abs(close/Ref(close,1)-1)*volume,10)/Mean(abs(close/Ref(close,1)-1)*volume,10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 140,
+    "name": "WVMA20",
+    "formula": "Std(abs(close/Ref(close,1)-1)*volume,20)/Mean(abs(close/Ref(close,1)-1)*volume,20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 141,
+    "name": "WVMA30",
+    "formula": "Std(abs(close/Ref(close,1)-1)*volume,30)/Mean(abs(close/Ref(close,1)-1)*volume,30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 142,
+    "name": "WVMA60",
+    "formula": "Std(abs(close/Ref(close,1)-1)*volume,60)/Mean(abs(close/Ref(close,1)-1)*volume,60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 143,
+    "name": "VSUMP5",
+    "formula": "Sum(max(volume-Ref(volume,1),0),5)/Sum(abs(delta_volume),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 144,
+    "name": "VSUMP10",
+    "formula": "Sum(max(volume-Ref(volume,1),0),10)/Sum(abs(delta_volume),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 145,
+    "name": "VSUMP20",
+    "formula": "Sum(max(volume-Ref(volume,1),0),20)/Sum(abs(delta_volume),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 146,
+    "name": "VSUMP30",
+    "formula": "Sum(max(volume-Ref(volume,1),0),30)/Sum(abs(delta_volume),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 147,
+    "name": "VSUMP60",
+    "formula": "Sum(max(volume-Ref(volume,1),0),60)/Sum(abs(delta_volume),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 148,
+    "name": "VSUMN5",
+    "formula": "Sum(max(Ref(volume,1)-volume,0),5)/Sum(abs(delta_volume),5)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 149,
+    "name": "VSUMN10",
+    "formula": "Sum(max(Ref(volume,1)-volume,0),10)/Sum(abs(delta_volume),10)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 150,
+    "name": "VSUMN20",
+    "formula": "Sum(max(Ref(volume,1)-volume,0),20)/Sum(abs(delta_volume),20)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 151,
+    "name": "VSUMN30",
+    "formula": "Sum(max(Ref(volume,1)-volume,0),30)/Sum(abs(delta_volume),30)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 152,
+    "name": "VSUMN60",
+    "formula": "Sum(max(Ref(volume,1)-volume,0),60)/Sum(abs(delta_volume),60)",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 153,
+    "name": "VSUMD5",
+    "formula": "VSUMP-VSUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 154,
+    "name": "VSUMD10",
+    "formula": "VSUMP-VSUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 155,
+    "name": "VSUMD20",
+    "formula": "VSUMP-VSUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 156,
+    "name": "VSUMD30",
+    "formula": "VSUMP-VSUMN",
+    "available_at": "decision-date close"
+  },
+  {
+    "index": 157,
+    "name": "VSUMD60",
+    "formula": "VSUMP-VSUMN",
+    "available_at": "decision-date close"
+  }
+]

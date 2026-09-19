@@ -1,0 +1,60 @@
+{
+  "experiment": "MASTER_ALPHA158_PROFIT_FIRST_V2",
+  "supersedes_priority_of": "CY-FULL-MASTER V1",
+  "reuse_current_run": true,
+  "primary_objective": "highest legal independent-year RMB1m mean account return on consumed 2020/2021 subject to per-year return/MaxDD and robustness constraints",
+  "standalone_model": "Alpha158 sequence + frozen verified 63D market vector + full M-GTS + canonical cross-sectional relative Ret20",
+  "inner_candidates": {
+    "lr": [
+      1e-05,
+      0.0001
+    ],
+    "epochs": "already authorized checkpoints 3..12, optional existing 20 only if prior rule triggered",
+    "selector": "legal 2019H2 H10 account net return; reject MaxDD>I0+2pp; <1pp return tie -> lower MaxDD, earlier epoch, lower LR"
+  },
+  "formal": {
+    "years": [
+      2020,
+      2021
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "arm": "M-GTS only",
+    "full_daily": true
+  },
+  "rank_orientation": "1=best, 0=worst",
+  "blend_alphas": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "account_contract": "authoritative I0 positive admission; Top10 H10; independent RMB1m/year; unchanged legal engine",
+  "qualification": {
+    "mean_return_delta_vs_i0": ">0",
+    "per_year_return_delta_min_pp": -3.0,
+    "per_year_maxdd_worsening_max_pp": 2.0,
+    "few_date_guard": "pooled paired daily account-return delta remains >=0 after removing the three most favorable dates"
+  },
+  "selection_tie_pp": 1.0,
+  "budget_hours_total": 72,
+  "budget_not_reset": true,
+  "conditional_2022": "only one frozen selected alpha; exact M-GTS config; consumed confirmation; delta return>=0 and MaxDD worsening<=2pp",
+  "forbidden": [
+    "new alpha weights",
+    "per-year alpha",
+    "market-state alpha",
+    "new neural ensemble",
+    "new features/loss/heads",
+    "2023",
+    "2024-2026",
+    "StockMixer",
+    "MoE",
+    "DDG-DA"
+  ],
+  "production_approved": false
+}

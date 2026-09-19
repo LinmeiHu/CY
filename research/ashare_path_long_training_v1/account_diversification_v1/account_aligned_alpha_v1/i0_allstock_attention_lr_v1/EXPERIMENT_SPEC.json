@@ -1,0 +1,108 @@
+{
+  "experiment": "I0_ALLSTOCK_ATTENTION_LR_V1",
+  "incumbent": "CENTERED_TOP10_H10",
+  "inner_contract": "legal 2019H2; gradient cutoff 2019-06-28",
+  "starting_checkpoint": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/o2_nested_earlystop_v1/2020_s17/step32768.pt",
+  "starting_checkpoint_sha256": "3da936f818f307cedde4e3f3e7a0e1f7c4c57a25637e17c75f40b42dda4b1024",
+  "starting_checkpoint_role": "pre-2019H2 nested analogue used only for legal inner selection",
+  "authoritative_formal_2020_checkpoint": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/M1_OFFSET_2020_s17_O2_B32768.pt",
+  "authoritative_formal_2020_checkpoint_sha256": "980f3a39a9534ddc922f4044975be79b50d6c1c3dc738d57a05b0107f6d2874e",
+  "base_checkpoint": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/o2_nested_earlystop_v1/2020_s17/M0.joblib",
+  "base_checkpoint_sha256": "24af01dc5b3ccad46b23ef0e7506b628d31edaa6ab0fbed5ef64ee9b6fc26763",
+  "config": {
+    "trial": 45,
+    "basis": 0,
+    "bank": 1,
+    "encoder": "tcn",
+    "depth": 4,
+    "hidden": 64,
+    "heads": 4,
+    "dropout": 0.2,
+    "embedding": 32,
+    "legs": 10,
+    "wave_hidden": 32,
+    "level": 1,
+    "objective": 2,
+    "context": 1,
+    "lr": 0.00016449824804518092,
+    "weight_decay": 1.6298600134753594e-05,
+    "consistency": 0.05,
+    "fib_sigma": 0.05,
+    "time_off": false,
+    "amplitude_off": false,
+    "fixed_scale": false,
+    "batch": 256,
+    "ablation": "M1",
+    "id": "51f2b3b5b704"
+  },
+  "learning_rates": [
+    1e-05,
+    3e-06,
+    1e-06
+  ],
+  "registered_steps": [
+    8000,
+    16000,
+    32000
+  ],
+  "lower_boundary_lr": 3e-07,
+  "duration_boundary_steps": 64000,
+  "query_chunk": 256,
+  "relation": {
+    "input": "authoritative 32D core.fusion output z immediately before core.pred",
+    "normalization": "LayerNorm(z - same_date_mean(z))",
+    "attention": "single-head exact all-stock QK softmax V; self masked",
+    "dimension": 32,
+    "injection": "z + Wo(context)",
+    "initialization": "Wo weight and bias exactly zero; QKV standard initialization"
+  },
+  "sampling": "uniform year then uniform mature decision date; all same-date feature-eligible rows as context; mean masked loss per date",
+  "control_selection": [
+    "higher inner Top10 Ret20",
+    "higher leave-best-3 Top10 Ret20",
+    "higher Top10-minus-R11_20",
+    "higher RankIC20",
+    "less negative bottom-decile Top10 Ret20",
+    "shorter steps",
+    "larger LR"
+  ],
+  "relation_selection": "same lexicographic rule on relation-minus-matched-control deltas; requires positive Top10 Ret20 delta",
+  "boundary_rule": {
+    "improving_at_32k": "16k->32k Top10 Ret20 >= +0.0005 and inner MSE20 relative improvement >=0.5%",
+    "64k": "extend only the selected matched pair once when improving_at_32k",
+    "3e-7": "add exactly once only if 1e-6 is selected and improving_at_32k"
+  },
+  "profit_first_gate": {
+    "mean_annual_return_delta_gt": 0,
+    "worst_year_return_delta_ge": -0.03,
+    "max_MaxDD_delta_le": 0.02,
+    "leave_best3_active_daily_sum_ge": 0
+  },
+  "development_years": [
+    2020,
+    2021
+  ],
+  "confirmation_year": 2022,
+  "reserved_year": 2023,
+  "sealed_years": [
+    2024,
+    2025,
+    2026
+  ],
+  "mps_hour_ceiling": 55,
+  "minute_model_enabled": false,
+  "minute_data_loaded": false,
+  "source_hashes": {
+    "/Users/linmei/Documents/CY-worktrees/minute-ret5-multiscale-autonomous-v2/research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_allstock_attention_lr_v1/run.py": "571d3e89fbccb603f8053d6c3ed566f07884e75d50a28c55e1dcd7efda48901b",
+    "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/train.py": "9dbf519fa8a5a9075cbfe3d87cd941e6ae0b6e1a932ea9c5d1e71196523b481d",
+    "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/o2_nested_earlystop.py": "a5db69880596d7f802ee76fc55b6f14c7fea9b354e62bc80abf7d50c5b729290",
+    "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_wave_adaptive_path_v3/model.py": "7e2fd2a419a095d8abfdb8992230ef265b3612ffa5bfcca9873f6d334e107432",
+    "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/account_diversification_v1/O2_NESTED_EARLYSTOP_PROTOCOL.json": "ac89857ba04254862da88ebea98e136e3ceee3eef355154b280eac918939a295"
+  },
+  "git_branch": "codex/minute-ret5-multiscale-autonomous-v2",
+  "head": "2d6865f25324d5d2d6ac8532d4238af4e2693ed4",
+  "formal_outcomes_opened_at_freeze": false,
+  "inner_training_source_snapshot": "/Users/linmei/Documents/CY-worktrees/minute-ret5-multiscale-autonomous-v2/research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_allstock_attention_lr_v1/TRAINING_SOURCE_INNER_FROZEN.py",
+  "inner_training_source_sha256": "571d3e89fbccb603f8053d6c3ed566f07884e75d50a28c55e1dcd7efda48901b",
+  "frozen_at": "2026-09-18T16:47:48.685544+00:00"
+}

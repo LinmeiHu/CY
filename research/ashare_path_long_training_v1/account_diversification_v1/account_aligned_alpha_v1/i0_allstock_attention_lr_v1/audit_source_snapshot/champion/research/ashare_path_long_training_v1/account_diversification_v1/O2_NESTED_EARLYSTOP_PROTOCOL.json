@@ -1,0 +1,360 @@
+{
+  "version": "H2_REVISION_1",
+  "folds": [
+    {
+      "outer_year": 2020,
+      "seed": 17,
+      "gradient_cutoff": "2019-06-28",
+      "cut": 3036,
+      "internal_end": 3162,
+      "internal_start": "2019-07-01",
+      "internal_last": "2019-12-31",
+      "first_supervised": "2007-04-05",
+      "last_supervised": "2019-05-16",
+      "effective_years": 12.112500598917158,
+      "anniversary_gate": true,
+      "mature_ret20_samples": 402970,
+      "internal_mature_ret20_samples": 31477,
+      "candidate_steps": [
+        394,
+        787,
+        1574,
+        3148,
+        6296
+      ],
+      "actual_passes": [
+        0.2503015112787552,
+        0.49996773953396034,
+        0.9999354790679207,
+        1.9998709581358414,
+        3.9997419162716827
+      ],
+      "final_step": 32768
+    },
+    {
+      "outer_year": 2021,
+      "seed": 17,
+      "gradient_cutoff": "2020-06-30",
+      "cut": 3279,
+      "internal_end": 3405,
+      "internal_start": "2020-07-01",
+      "internal_last": "2020-12-31",
+      "first_supervised": "2007-04-05",
+      "last_supervised": "2020-05-26",
+      "effective_years": 13.141953633544837,
+      "anniversary_gate": true,
+      "mature_ret20_samples": 482880,
+      "internal_mature_ret20_samples": 33327,
+      "candidate_steps": [
+        472,
+        943,
+        1886,
+        3773,
+        7545
+      ],
+      "actual_passes": [
+        0.2502319416832339,
+        0.4999337309476474,
+        0.9998674618952949,
+        2.00026507620941,
+        4.0
+      ],
+      "final_step": 32768
+    },
+    {
+      "outer_year": 2022,
+      "seed": 17,
+      "gradient_cutoff": "2021-06-30",
+      "cut": 3523,
+      "internal_end": 3648,
+      "internal_start": "2021-07-01",
+      "internal_last": "2021-12-31",
+      "first_supervised": "2007-04-05",
+      "last_supervised": "2021-05-21",
+      "effective_years": 14.1276001560607,
+      "anniversary_gate": true,
+      "mature_ret20_samples": 566277,
+      "internal_mature_ret20_samples": 42919,
+      "candidate_steps": [
+        553,
+        1106,
+        2212,
+        4424,
+        8848
+      ],
+      "actual_passes": [
+        0.24999779259973476,
+        0.4999955851994695,
+        0.999991170398939,
+        1.999982340797878,
+        3.999964681595756
+      ],
+      "final_step": 32768
+    },
+    {
+      "outer_year": 2023,
+      "seed": 17,
+      "gradient_cutoff": "2022-06-30",
+      "cut": 3765,
+      "internal_end": 3890,
+      "internal_start": "2022-07-01",
+      "internal_last": "2022-12-30",
+      "first_supervised": "2007-04-05",
+      "last_supervised": "2022-05-19",
+      "effective_years": 15.121460399597527,
+      "anniversary_gate": true,
+      "mature_ret20_samples": 662217,
+      "internal_mature_ret20_samples": 47226,
+      "candidate_steps": [
+        647,
+        1293,
+        2587,
+        5174,
+        10347
+      ],
+      "actual_passes": [
+        0.25011740864399434,
+        0.49984823705824527,
+        1.000083054346234,
+        2.000166108692468,
+        3.9999456371551925
+      ],
+      "final_step": 32768
+    }
+  ],
+  "seed_stage_a": 17,
+  "stage_b_seeds": [
+    29,
+    43
+  ],
+  "batch_size": 256,
+  "passes": [
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "internal_selector": "lowest sample-weighted MSE20 over every mature cached H2 validation row; exact tie earlier step",
+  "internal_grid": "Original registered feature-store decision grid; no random validation probe",
+  "validation_maturity": "Every target ends within internal year; internal H2 contributes no gradient or M0 fitting",
+  "baseline_fit": "Same frozen Ridge/scaler/classifier recipe, fitted only on nested gradient rows; shared by early and matched32k",
+  "comparisons": {
+    "A": "EARLYSTOP minus MATCHED_NESTED_32K: duration",
+    "B": "MATCHED_NESTED_32K minus ORIGINAL_INCUMBENT_32K: training-window effect",
+    "C": "EARLYSTOP minus ORIGINAL_INCUMBENT_32K: practical deployment"
+  },
+  "gate": {
+    "primary_comparison": "A",
+    "original_practical_comparison": "C reported separately",
+    "mse_improved_years": 3,
+    "global_equal_year_average_delta_min": 0,
+    "tail": "Both Top1 and Top5 LocalIC improved in >=3 years OR both K5 and K10 lift improved in >=3 years",
+    "catastrophic": "Negative yearly paired effect with HAC20 95% upper bound <0, for global IC or both selected tail metrics",
+    "isolated_month": "Winning tail branch remains positive on equal-year average after removing its single best improvement month",
+    "significance": "Not required for improvements; adverse interval used only to operationalize undefined catastrophic language before new outer results"
+  },
+  "incumbent_bindings": [
+    {
+      "year": 2020,
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/M1_OFFSET_2020_s17_O2_B32768.pt",
+      "sha256": "980f3a39a9534ddc922f4044975be79b50d6c1c3dc738d57a05b0107f6d2874e",
+      "config": {
+        "trial": 45,
+        "basis": 0,
+        "bank": 1,
+        "encoder": "tcn",
+        "depth": 4,
+        "hidden": 64,
+        "heads": 4,
+        "dropout": 0.2,
+        "embedding": 32,
+        "legs": 10,
+        "wave_hidden": 32,
+        "level": 1,
+        "objective": 2,
+        "context": 1,
+        "lr": 0.00016449824804518092,
+        "weight_decay": 1.6298600134753594e-05,
+        "consistency": 0.05,
+        "fib_sigma": 0.05,
+        "time_off": false,
+        "amplitude_off": false,
+        "fixed_scale": false,
+        "batch": 256,
+        "ablation": "M1",
+        "id": "51f2b3b5b704"
+      },
+      "source": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/code_snapshots/9dbf519fa8a5a9075cbfe3d87cd941e6ae0b6e1a932ea9c5d1e71196523b481d_train.py",
+      "source_sha256": "9dbf519fa8a5a9075cbfe3d87cd941e6ae0b6e1a932ea9c5d1e71196523b481d"
+    },
+    {
+      "year": 2021,
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/M1_OFFSET_2021_s17_O2_B32768.pt",
+      "sha256": "938ede175998aa2e196ccac1abf48f883f5c1fcc624a857370a6140986700b0a",
+      "config": {
+        "trial": 45,
+        "basis": 0,
+        "bank": 1,
+        "encoder": "tcn",
+        "depth": 4,
+        "hidden": 64,
+        "heads": 4,
+        "dropout": 0.2,
+        "embedding": 32,
+        "legs": 10,
+        "wave_hidden": 32,
+        "level": 1,
+        "objective": 2,
+        "context": 1,
+        "lr": 0.00016449824804518092,
+        "weight_decay": 1.6298600134753594e-05,
+        "consistency": 0.05,
+        "fib_sigma": 0.05,
+        "time_off": false,
+        "amplitude_off": false,
+        "fixed_scale": false,
+        "batch": 256,
+        "ablation": "M1",
+        "id": "51f2b3b5b704"
+      },
+      "source": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/code_snapshots/9dbf519fa8a5a9075cbfe3d87cd941e6ae0b6e1a932ea9c5d1e71196523b481d_train.py",
+      "source_sha256": "9dbf519fa8a5a9075cbfe3d87cd941e6ae0b6e1a932ea9c5d1e71196523b481d"
+    },
+    {
+      "year": 2022,
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/M1_OFFSET_2022_s17_O2_B32768.pt",
+      "sha256": "03a6fdcd25b20f29ecfdff72d265c10982e8fe15a8407b1f0901b1079c54ff8d",
+      "config": {
+        "trial": 45,
+        "basis": 0,
+        "bank": 1,
+        "encoder": "tcn",
+        "depth": 4,
+        "hidden": 64,
+        "heads": 4,
+        "dropout": 0.2,
+        "embedding": 32,
+        "legs": 10,
+        "wave_hidden": 32,
+        "level": 1,
+        "objective": 2,
+        "context": 1,
+        "lr": 0.00016449824804518092,
+        "weight_decay": 1.6298600134753594e-05,
+        "consistency": 0.05,
+        "fib_sigma": 0.05,
+        "time_off": false,
+        "amplitude_off": false,
+        "fixed_scale": false,
+        "batch": 256,
+        "ablation": "M1",
+        "id": "51f2b3b5b704"
+      },
+      "source": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/code_snapshots/f449d45e1c1e25f0bb572f48b8b0797f4f65a294222eb52f22ffff8f1876efcf_train.py",
+      "source_sha256": "f449d45e1c1e25f0bb572f48b8b0797f4f65a294222eb52f22ffff8f1876efcf"
+    },
+    {
+      "year": 2023,
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/M1_OFFSET_2023_s17_O2_B32768.pt",
+      "sha256": "3cc72fad651637a146ecdb0a2403f9645dcb2b2ef67e36073cabfddaf8f74c5a",
+      "config": {
+        "trial": 45,
+        "basis": 0,
+        "bank": 1,
+        "encoder": "tcn",
+        "depth": 4,
+        "hidden": 64,
+        "heads": 4,
+        "dropout": 0.2,
+        "embedding": 32,
+        "legs": 10,
+        "wave_hidden": 32,
+        "level": 1,
+        "objective": 2,
+        "context": 1,
+        "lr": 0.00016449824804518092,
+        "weight_decay": 1.6298600134753594e-05,
+        "consistency": 0.05,
+        "fib_sigma": 0.05,
+        "time_off": false,
+        "amplitude_off": false,
+        "fixed_scale": false,
+        "batch": 256,
+        "ablation": "M1",
+        "id": "51f2b3b5b704"
+      },
+      "source": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/code_snapshots/f449d45e1c1e25f0bb572f48b8b0797f4f65a294222eb52f22ffff8f1876efcf_train.py",
+      "source_sha256": "f449d45e1c1e25f0bb572f48b8b0797f4f65a294222eb52f22ffff8f1876efcf"
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/o2_nested_earlystop.py",
+      "sha256": "a5db69880596d7f802ee76fc55b6f14c7fea9b354e62bc80abf7d50c5b729290"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/o2_nested_evaluate.py",
+      "sha256": "85cb7c40f83c3f7ec9b42eb5d2938bdd947b5b2c623ad2b492276dfa7c6e211d"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/train.py",
+      "sha256": "9dbf519fa8a5a9075cbfe3d87cd941e6ae0b6e1a932ea9c5d1e71196523b481d"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/sampling.py",
+      "sha256": "e449faa0c99bf5914f732f8ca0b5bc4f1e44bec6fd6d8231b7610c4a1cc68001"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/common.py",
+      "sha256": "16cae85ea0682e8f009f275cc26af454606436f05d6e789394ba02b71f28c002"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/account_daily_inference.py",
+      "sha256": "1a50cf9bf89e0557ff86936d7a132e886f75fac142c9d181cadb8799e551089e"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_path_long_training_v1/prepare.py",
+      "sha256": "8bf3adc088bfcb5285bcd873ba21024d6736ed5447103ea4d377bfa7a17c523b"
+    },
+    {
+      "path": "/Users/linmei/Documents/CY-worktrees/ashare-champion-playbooks-v1-20260908/research/ashare_wave_adaptive_path_v3/model.py",
+      "sha256": "7e2fd2a419a095d8abfdb8992230ef265b3612ffa5bfcca9873f6d334e107432"
+    }
+  ],
+  "feature_manifest_sha256": "876047db4ea4c76e39690c225ba4bd6480ad6cde74bed74ee62007dc547f6176",
+  "input_hashes": [
+    {
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/factors.npy",
+      "sha256": "24598fd0059be562a66e3c5b8071ce40faf168a3b0e84b14bb13d6d1456de61b"
+    },
+    {
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/labels.npy",
+      "sha256": "4202a023ed44721826e07d6894f4726a991fb986e0e0e170dd4530cb7464099d"
+    },
+    {
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/legs.npy",
+      "sha256": "ab738a2bd63801e5cbb760a2a80dc5f9b3db36f1d1129848c392b7467ae254b1"
+    },
+    {
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/raw.npy",
+      "sha256": "7ae0795e80ebe61d8b6e4b6601447868b3d433bac2f04f4192c17bcbb4d1dfc0"
+    },
+    {
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/index.parquet",
+      "sha256": "a020ca85e898dad775aaa494ba9414c902e21be2ce8af89add862de12b516127"
+    },
+    {
+      "path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/panel/axes.json",
+      "sha256": "d503ae4cb7b740142538ce6ab20358c3e1df17bd4b659503f62121aa08447ece"
+    }
+  ],
+  "no_account_stage_a": true,
+  "sealed_years": [
+    2024,
+    2025,
+    2026
+  ],
+  "frontier": "H20_FIXED_3SEED_PERCENTILE_RANK_CONSENSUS_TOP10",
+  "resource_deadline_not_reset": true
+}
