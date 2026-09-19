@@ -1,0 +1,32 @@
+{
+  "status": "COMPLETE_WITH_BLOCK_REPLACEMENT_DEFERRED_BY_RESOURCE_GUARD",
+  "geometry_path": "/Volumes/quant/CY_quant_research/ashare_path_long_training_v1/account_diversification_v1/account_aligned_alpha_v1/i0_fixed3_baseline_reaudit_v1/ensemble_mechanism_v2/SEED_GEOMETRY_2020_2021.parquet",
+  "geometry_sha256": "258f3dd9339d9808d31727c22b5024801c8a25bde1442260190225769138c4ee",
+  "rows": 1748062,
+  "years": [
+    2020,
+    2021
+  ],
+  "outputs": [
+    "ACTIVE_RETURN_ROBUSTNESS.csv",
+    "BLOCK_ROBUSTNESS.csv",
+    "CORRECTED_PNL_BY_CLASS.csv",
+    "EXECUTION_DIFFERENCE_ANALYSIS.csv",
+    "FIXED3_COMPOSITION_2020_2021.csv",
+    "GATE_ALIGNMENT_ANALYSIS.csv",
+    "MIDRANK_PROMOTION_ANALYSIS.csv",
+    "RETAINED_DROPPED_ANALYSIS.csv",
+    "SEED_GEOMETRY_2020_2021.csv"
+  ],
+  "block_robustness": {
+    "static_nonoverlapping_20_session_blocks": "COMPLETE",
+    "stateful_block_replacement_replays": "NOT_RUN_RESOURCE_GUARD",
+    "required_replays": 78,
+    "estimated_wall_minutes_from_fresh_replay_benchmark": 24,
+    "reason": "active primary MPS training; optional CPU/IO replay matrix deferred rather than competing for resources"
+  },
+  "own_gate_single_seed_accounts": "NOT_RUN_OPTIONAL_DIAGNOSTIC",
+  "2022_opened": false,
+  "2023_opened": false,
+  "2024_2026_opened": false
+}

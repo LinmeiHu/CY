@@ -1,0 +1,140 @@
+{
+  "audit": "I0_FIXED3_ENSEMBLE_MECHANISM_AUDIT_V2",
+  "scope": {
+    "years": [2020, 2021],
+    "development_evidence_only": true,
+    "implementation": "VERIFIED_BY_PRIOR_FRESH_COMMON_CONTRACT_REPLAY",
+    "new_strategy_selected": false,
+    "training_modified": false,
+    "future_outcomes_opened": false
+  },
+  "headline_account_returns": {
+    "2020": {
+      "s17": -0.0212670093368,
+      "s29": -0.021116443104,
+      "s43": 0.0953723436544,
+      "fixed3": 0.1743961630908,
+      "fixed3_minus_mean_single": 0.15673319935293334
+    },
+    "2021": {
+      "s17": 0.5218251484484,
+      "s29": 0.395476586952,
+      "s43": 0.357583028394,
+      "fixed3": 0.4843660712104,
+      "fixed3_minus_mean_single": 0.05940448327893327,
+      "fixed3_minus_s17": -0.037459077238000016
+    }
+  },
+  "seed_geometry": {
+    "2020": {
+      "legal_daily_pairwise_spearman_mean": 0.712155,
+      "legal_daily_pairwise_top10_overlap_fraction_mean": 0.271193,
+      "common_gate_daily_pairwise_spearman_mean": 0.358064,
+      "common_gate_daily_pairwise_top10_overlap_fraction_mean": 0.288752
+    },
+    "2021": {
+      "legal_daily_pairwise_spearman_mean": 0.752467,
+      "legal_daily_pairwise_top10_overlap_fraction_mean": 0.259945,
+      "common_gate_daily_pairwise_spearman_mean": 0.486182,
+      "common_gate_daily_pairwise_top10_overlap_fraction_mean": 0.286557
+    }
+  },
+  "gate_alignment": {
+    "2020": {
+      "mean_pass_fraction": 0.5674397341752769,
+      "fixed3_score_gate_margin_daily_spearman_mean": 0.9957542276026474,
+      "ret20_fixed3_minus_mean_single_full_universe": 0.009432786130273967,
+      "ret20_fixed3_minus_mean_single_common_gate": 0.009262556937178933,
+      "days_with_fewer_than_10_gate_names": 3
+    },
+    "2021": {
+      "mean_pass_fraction": 0.6520262844269553,
+      "fixed3_score_gate_margin_daily_spearman_mean": 0.9970640384336181,
+      "ret20_fixed3_minus_mean_single_full_universe": 0.00027450098453286886,
+      "ret20_fixed3_minus_mean_single_common_gate": -0.0009400752702768689,
+      "days_with_fewer_than_10_gate_names": 16
+    },
+    "account_causal_amount": "NOT_IDENTIFIED_WITHOUT_OWN_GATE_ACCOUNT_CONTROLS"
+  },
+  "fixed3_top10_composition": {
+    "2020": {
+      "C0_fraction": 0.258848,
+      "C1_fraction": 0.344856,
+      "C2_fraction": 0.232099,
+      "C3_fraction": 0.159671,
+      "C0_ret20_mean": 0.023617,
+      "C3_ret20_mean": 0.062747,
+      "dropped_single_seed_extreme_ret20_mean": 0.005013,
+      "C0_corrected_new_buy_lot_pnl": 50801.47
+    },
+    "2021": {
+      "C0_fraction": 0.252675,
+      "C1_fraction": 0.296708,
+      "C2_fraction": 0.240741,
+      "C3_fraction": 0.164198,
+      "C0_ret20_mean": 0.030726,
+      "C3_ret20_mean": 0.075256,
+      "dropped_single_seed_extreme_ret20_mean": 0.042557,
+      "C0_corrected_new_buy_lot_pnl": 81763.27
+    }
+  },
+  "account_path": {
+    "2020": {
+      "mean_daily_candidate_overlap_out_of_10_range": [3.930041, 4.526749],
+      "mean_daily_filled_name_symmetric_difference_range": [10.761317, 12.374486],
+      "mean_daily_aggregate_cap_rejections": 0.0,
+      "fixed3_total_reconciled_pnl": 174396.1630908,
+      "active_return_positive_20_session_blocks": "11/13",
+      "active_return_leave_best3_sum": 0.11285
+    },
+    "2021": {
+      "mean_daily_candidate_overlap_out_of_10_range": [4.160494, 4.325103],
+      "mean_daily_filled_name_symmetric_difference_range": [10.283951, 10.81893],
+      "mean_daily_aggregate_cap_rejections": 0.0,
+      "fixed3_total_reconciled_pnl": 484366.0712104,
+      "active_return_positive_20_session_blocks": "8/13",
+      "active_return_leave_best3_sum": 0.016503
+    },
+    "stateful_block_replacement": "NOT_RUN_RESOURCE_GUARD_78_REPLAYS_ESTIMATED_24_MINUTES_DURING_ACTIVE_MPS_TRAINING"
+  },
+  "mechanism_verdict": {
+    "M1_CONSENSUS_DENOISING": {
+      "verdict": "PARTIAL",
+      "layer": "SIGNAL_SUPPORTED_ACCOUNT_MIXED",
+      "reason": "retained names have far lower cross-seed dispersion and higher Ret20 in all six seed-year cells, but corrected realized lot PnL reverses for s43 in 2020"
+    },
+    "M2_STABLE_MIDRANK_PROMOTION": {
+      "verdict": "PARTIAL",
+      "layer": "SIGNAL_AND_REALIZED_PNL",
+      "reason": "C0 is about one quarter of fixed3 Top10 and is the largest 2020 new-buy PnL class, but only about half of C0 is Top50 in every seed and almost none is Top20 in every seed"
+    },
+    "M3_GATE_ALIGNMENT": {
+      "verdict": "PARTIAL",
+      "layer": "SIGNAL_CONDITIONING",
+      "reason": "gate margin and fixed3 rank are almost collinear, but the 2020 no-gate signal edge is unchanged and the 2021 common gate does not create a fixed3 Ret20 mean advantage over the single-seed mean"
+    },
+    "M4_ACCOUNT_STATE_AMPLIFICATION": {
+      "verdict": "PARTIAL",
+      "layer": "EXECUTION_AND_ACCOUNT_PATH",
+      "reason": "cash, exposure and live-lot paths diverge, but most candidate differences survive into filled-name differences and rejection rates are tiny, so state amplification is secondary rather than the source"
+    },
+    "M5_FEW_EPISODE_PATH_DEPENDENCE": {
+      "verdict": "PARTIAL",
+      "layer": "DESCRIPTIVE_ACCOUNT_PATH_ONLY",
+      "reason": "not supported descriptively in 2020 but more plausible in 2021; stateful block replacement was deferred by the resource guard"
+    },
+    "M6_BROAD_RECURRENT_ENSEMBLE_EDGE": {
+      "verdict": "PARTIAL",
+      "layer": "DESCRIPTIVE_SIGNAL_AND_ACCOUNT_PATH",
+      "reason": "supported across 2020 daily and fixed blocks, weaker in 2021 where fixed3 beats the single-seed mean but not s17"
+    }
+  },
+  "old_mechanism_label": "REVISED",
+  "causal_limits": [
+    "Ret10 and Ret20 are signal diagnostics and cannot be added to H10 account return",
+    "class lot PnL is an exact ledger partition by originating signal but is not an independently replayed causal contribution",
+    "daily active return and static 20-session blocks are descriptive for stateful accounts",
+    "the exact account contribution of the shared ensemble-positive gate is not identified without own-gate controls",
+    "2020 and 2021 are consumed development evidence, not fresh generalization evidence"
+  ]
+}

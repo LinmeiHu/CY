@@ -1,0 +1,21 @@
+{
+  "name": "I0_FIXED3_ENSEMBLE_MECHANISM_AUDIT_V2",
+  "years": [2020, 2021],
+  "development_evidence_only": true,
+  "seeds": [17, 29, 43],
+  "fixed3": "mean of same-date average-tie percentiles of composed CENTERED predictions",
+  "main_contract_scope": "fixed3 composed-mean positive gate",
+  "full_universe_scope": "signal diagnostic only; no account or candidate status",
+  "rank_tie_break": "score descending then j ascending",
+  "support_count": "diagnostic count of common-gate single-seed Top10 membership; not an admission rule",
+  "large_loss_threshold": -0.10,
+  "left_tail_quantiles": [0.01, 0.05],
+  "labels": "select first, then report finite ret10/ret20 coverage; never backfill",
+  "retained_dropped": "each seed common-gate Top10 intersected with fixed3 common-gate Top10",
+  "promoted_c0": "fixed3 common-gate Top10 and support_top10_count=0",
+  "pnl": "fresh replay ledgers; lot fill cashflow plus end inventory minus start inventory, with non-trade events added once",
+  "daily_active_return": "descriptive fixed3 daily account return minus mean single-seed daily account return",
+  "block_size_sessions": 20,
+  "own_gate_accounts": "NOT_RUN_OPTIONAL_DIAGNOSTIC",
+  "forbidden": ["new training", "new aggregation search", "weight search", "seed-pair search", "TopN change", "gate change", "H10 change", "2022+ outcomes"]
+}
