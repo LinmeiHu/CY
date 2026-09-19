@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-09-10T03:57:12.370172+00:00",
+  "authorization": "User 7b34ecb9 addendum: at least 12 effective supervised years takes priority; old 2013-2017 reserve may become training for this study only.",
+  "role_change": {
+    "years": "2013-2017",
+    "from": "RESERVED_NOT_EVALUATED",
+    "to": "SUPERVISED_TRAINING_RESERVE",
+    "labels_accessed_before_record": false
+  },
+  "train_reserve": [
+    "2007-01-01",
+    "2021-12-31"
+  ],
+  "folds": [
+    {
+      "fit_through": "2021-12-31",
+      "predict_year": 2022
+    },
+    {
+      "fit_through": "2022-12-31",
+      "predict_year": 2023
+    }
+  ],
+  "consumed_stress": [
+    "2024-01-01",
+    "2026-09-04"
+  ],
+  "predeclared_forward": [],
+  "min_supervised_anniversary_years": 12,
+  "warmup": {
+    "required_safe_sessions": 60,
+    "windows": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "short_history": "Longer windows explicitly masked; no full 256 history claim. Report complete-256 coverage separately."
+  },
+  "sampling": "equal year, equal decision date within year, equal stock within date",
+  "old_v4_commit": "d2aa02b5c80c912a9479a7874bcb5abd390fd886",
+  "old_v4_unchanged": true,
+  "other_studies_seals_unchanged": true
+}
