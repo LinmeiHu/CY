@@ -1,0 +1,39 @@
+{
+  "status": "MINUTE_GATE_BLOCKED_QMT_UNAVAILABLE",
+  "start": "2026-09-17",
+  "end": "2026-09-23",
+  "daily_source": "Baostock unadjusted fallback",
+  "daily_rows": 18565,
+  "hard_valid_rows": 17855,
+  "prior_v13_candidates_preserved": 8,
+  "new_v13_candidates": 10,
+  "new_v27_and_daily_quality_survivors": 2,
+  "formal_signals_confirmed": null,
+  "minute_requirement": "exact 120 trading sessions of 1-minute data per candidate",
+  "additional_gates": [
+    "QMT overlap",
+    "post-2026-09-16 corporate actions"
+  ],
+  "missing_symbols_with_no_post_september16_bars": [
+    "sh.600193",
+    "sh.600421",
+    "sh.600599",
+    "sh.600608",
+    "sh.600636",
+    "sh.600696",
+    "sh.605081",
+    "sz.000004",
+    "sz.000638",
+    "sz.002808",
+    "sz.002898",
+    "sz.300029"
+  ],
+  "input_hashes": {
+    "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/ogr_signal_check_20260924/baostock_daily_complete.parquet": "938c6db112ed91af7f9552b2cc85a66cf55f3909971d3423c23e0454ea132a06",
+    "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/ogr_signal_check_20260924/cache/daily_with_snapshot.parquet": "d52fb189c00ecaf90cb8404fc0217333f401e72586992539920c29d069aa79b8",
+    "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/ogr_signal_check_20260924/v13_candidates.parquet": "28c3dafbbc6caac69111f7c27ee8fadbd3c88b7cbcd61a61edc58216b2ae72af",
+    "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/ogr_signal_check_20260924/select_v28r2.parquet": "231c1d3cc30b287bf88bd3b92f90b48774eedbeddb0e00cdd608cd7748bc86f3",
+    "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/rollforward_20260917/cache/daily_with_snapshot.parquet": "561479b069495db43762dc801b383a04dede9de01ba25fd5b54038de4622abf5",
+    "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/rollforward_20260917/cache/ogr/signals_all.parquet": "2310a073b95df3f40c45ab87a78d7fa81dc404f43e3ba3eb05871d492d81d622"
+  }
+}
