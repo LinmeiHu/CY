@@ -1,5 +1,5 @@
 {
-  "status": "MINUTE_GATE_BLOCKED_NON_QMT_SOURCE_MISSING",
+  "status": "TWO_NEW_DAILY_CANDIDATES_REJECTED_BY_V13_VAP",
   "start": "2026-09-17",
   "end": "2026-09-23",
   "daily_source": "Baostock unadjusted fallback",
@@ -8,7 +8,7 @@
   "prior_v13_candidates_preserved": 8,
   "new_v13_candidates": 10,
   "new_v27_and_daily_quality_survivors": 2,
-  "formal_signals_confirmed": null,
+  "formal_signals_confirmed": 0,
   "minute_requirement": "exact 120 trading sessions of 1-minute data per candidate",
   "additional_gates": [
     "independent daily-source overlap",
@@ -36,5 +36,10 @@
     "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/rollforward_20260917/cache/daily_with_snapshot.parquet": "561479b069495db43762dc801b383a04dede9de01ba25fd5b54038de4622abf5",
     "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/rollforward_20260917/cache/ogr/signals_all.parquet": "2310a073b95df3f40c45ab87a78d7fa81dc404f43e3ba3eb05871d492d81d622"
   },
-  "minute_source_policy": "non-QMT only"
+  "minute_source_policy": "no new QMT calls; frozen historical canonical plus public minute and L2 reconstruction",
+  "minute_reconciliation_max_relative_error": {
+    "volume": 0.004616642410604997,
+    "amount": 0.004644203176533589
+  },
+  "minute_result": "Both 2026-09-18 daily candidates have 120 exact 241-bar sessions and fail inside/corridor density <=1"
 }
