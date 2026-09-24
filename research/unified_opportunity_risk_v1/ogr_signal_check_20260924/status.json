@@ -1,5 +1,5 @@
 {
-  "status": "MINUTE_GATE_BLOCKED_QMT_UNAVAILABLE",
+  "status": "MINUTE_GATE_BLOCKED_NON_QMT_SOURCE_MISSING",
   "start": "2026-09-17",
   "end": "2026-09-23",
   "daily_source": "Baostock unadjusted fallback",
@@ -11,7 +11,7 @@
   "formal_signals_confirmed": null,
   "minute_requirement": "exact 120 trading sessions of 1-minute data per candidate",
   "additional_gates": [
-    "QMT overlap",
+    "independent daily-source overlap",
     "post-2026-09-16 corporate actions"
   ],
   "missing_symbols_with_no_post_september16_bars": [
@@ -35,5 +35,6 @@
     "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/ogr_signal_check_20260924/select_v28r2.parquet": "231c1d3cc30b287bf88bd3b92f90b48774eedbeddb0e00cdd608cd7748bc86f3",
     "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/rollforward_20260917/cache/daily_with_snapshot.parquet": "561479b069495db43762dc801b383a04dede9de01ba25fd5b54038de4622abf5",
     "/Users/linmei/Documents/CY-worktrees/five-strategy-capital-admission-v1/research/unified_opportunity_risk_v1/rollforward_20260917/cache/ogr/signals_all.parquet": "2310a073b95df3f40c45ab87a78d7fa81dc404f43e3ba3eb05871d492d81d622"
-  }
+  },
+  "minute_source_policy": "non-QMT only"
 }
